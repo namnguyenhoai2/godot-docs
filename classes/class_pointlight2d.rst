@@ -13,27 +13,27 @@
 PointLight2D
 ============
 
-**Inherits:** :ref:`Light2D<class_Light2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Light2D<class_Light2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Positional 2D light source.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Casts light in a 2D environment. This light's shape is defined by a (usually grayscale) texture.
+Nguồn sáng 2D theo vị trí.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Chiếu sáng trong môi trường 2D. Hình dạng của nguồn sáng này được xác định bởi một texture (thường là grayscale).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`2D lights and shadows <../tutorials/2d/2d_lights_and_shadows>`
+- :doc:`Ánh sáng và bóng trong 2D <../tutorials/2d/2d_lights_and_shadows>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -55,8 +55,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PointLight2D_property_height:
 
@@ -69,7 +69,7 @@ Property Descriptions
 - |void| **set_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height**\ (\ )
 
-The height of the light. Used with 2D normal mapping. The units are in pixels, e.g. if the height is 100, then it will illuminate an object 100 pixels away at a 45° angle to the plane.
+Chiều cao của đèn. Được sử dụng với normal mapping 2D. Đơn vị tính là pixel; ví dụ: nếu chiều cao là 100 thì đèn sẽ chiếu sáng một đối tượng cách 100 pixel ở góc 45° so với mặt phẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ The height of the light. Used with 2D normal mapping. The units are in pixels, e
 - |void| **set_texture_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_texture_offset**\ (\ )
 
-The offset of the light's :ref:`texture<class_PointLight2D_property_texture>`.
+Độ lệch của :ref:`texture<class_PointLight2D_property_texture>` của đèn.
 
 .. rst-class:: classref-item-separator
 
@@ -96,14 +96,14 @@ The offset of the light's :ref:`texture<class_PointLight2D_property_texture>`.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_PointLight2D_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_PointLight2D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-:ref:`Texture2D<class_Texture2D>` used for the light's appearance.
+:ref:`Texture2D<class_Texture2D>` được sử dụng cho hình thức của đèn.
 
 .. rst-class:: classref-item-separator
 
@@ -120,14 +120,14 @@ The offset of the light's :ref:`texture<class_PointLight2D_property_texture>`.
 - |void| **set_texture_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_texture_scale**\ (\ )
 
-The :ref:`texture<class_PointLight2D_property_texture>`'s scale factor.
+Hệ số tỷ lệ của :ref:`texture<class_PointLight2D_property_texture>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

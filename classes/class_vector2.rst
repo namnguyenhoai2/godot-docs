@@ -10,41 +10,41 @@
 Vector2
 =======
 
-A 2D vector using floating-point coordinates.
+Một vector 2D sử dụng tọa độ dấu phẩy động.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 2-element structure that can be used to represent 2D coordinates or any other pair of numeric values.
+Một cấu trúc gồm 2 phần tử có thể được dùng để biểu diễn tọa độ 2D hoặc bất kỳ cặp giá trị số nào khác.
 
-It uses floating-point coordinates. By default, these floating-point values use 32-bit precision, unlike :ref:`float<class_float>` which is always 64-bit. If double precision is needed, compile the engine with the option ``precision=double``.
+Cấu trúc này sử dụng tọa độ dấu phẩy động. Theo mặc định, các giá trị dấu phẩy động này sử dụng độ chính xác 32 bit, không giống như :ref:`float<class_float>`, vốn luôn có độ chính xác 64 bit. Nếu cần độ chính xác kép, hãy biên dịch engine với tùy chọn ``precision=double``.
 
-See :ref:`Vector2i<class_Vector2i>` for its integer counterpart.
+Xem :ref:`Vector2i<class_Vector2i>` để biết kiểu số nguyên tương ứng.
 
-\ **Note:** In a boolean context, a Vector2 will evaluate to ``false`` if it's equal to ``Vector2(0, 0)``. Otherwise, a Vector2 will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, Vector2 sẽ được đánh giá là ``false`` nếu nó bằng ``Vector2(0, 0)``. Nếu không, Vector2 sẽ luôn được đánh giá là ``true``.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Math documentation index <../tutorials/math/index>`
+- :doc:`Chỉ mục tài liệu toán học <../tutorials/math/index>`
 
-- :doc:`Vector math <../tutorials/math/vector_math>`
+- :doc:`Toán vector <../tutorials/math/vector_math>`
 
-- :doc:`Advanced vector math <../tutorials/math/vectors_advanced>`
+- :doc:`Toán vector nâng cao <../tutorials/math/vectors_advanced>`
 
-- `3Blue1Brown Essence of Linear Algebra <https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab>`__
+- `Tinh hoa Đại số tuyến tính của 3Blue1Brown <https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab>`__
 
-- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/2787>`__
+- `Bản demo phép biến đổi ma trận <https://godotengine.org/asset-library/asset/2787>`__
 
-- `All 2D Demos <https://github.com/godotengine/godot-demo-projects/tree/master/2d>`__
+- `Tất cả bản demo 2D <https://github.com/godotengine/godot-demo-projects/tree/master/2d>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,7 +58,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -76,8 +76,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -182,49 +182,49 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator !=<class_Vector2_operator_neq_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )            |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator *<class_Vector2_operator_mul_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator *<class_Vector2_operator_mul_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator *<class_Vector2_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                   |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator *<class_Vector2_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                         |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator +<class_Vector2_operator_sum_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator -<class_Vector2_operator_dif_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator /<class_Vector2_operator_div_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator /<class_Vector2_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                   |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator /<class_Vector2_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                         |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator \<<class_Vector2_operator_lt_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator \<=<class_Vector2_operator_lte_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )           |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ==<class_Vector2_operator_eq_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ><class_Vector2_operator_gt_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )              |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator >=<class_Vector2_operator_gte_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )            |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`     | :ref:`operator []<class_Vector2_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                        |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator unary+<class_Vector2_operator_unplus>`\ (\ )                                                    |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`operator unary-<class_Vector2_operator_unminus>`\ (\ )                                                   |
-   +-------------------------------+----------------------------------------------------------------------------------------------------------------+
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator != <class_Vector2_operator_neq_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )            |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator * <class_Vector2_operator_mul_Transform2D>`\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator * <class_Vector2_operator_mul_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator * <class_Vector2_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                   |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator * <class_Vector2_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                         |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator + <class_Vector2_operator_sum_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator - <class_Vector2_operator_dif_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator / <class_Vector2_operator_div_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator / <class_Vector2_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                   |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator / <class_Vector2_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                         |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator \< <class_Vector2_operator_lt_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator \<= <class_Vector2_operator_lte_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )           |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator == <class_Vector2_operator_eq_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )             |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator > <class_Vector2_operator_gt_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )              |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator >= <class_Vector2_operator_gte_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )            |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`     | :ref:`operator [] <class_Vector2_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                        |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator unary+ <class_Vector2_operator_unplus>`\ (\ )                                                    |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`operator unary- <class_Vector2_operator_unminus>`\ (\ )                                                   |
+   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -232,14 +232,14 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Vector2_Axis:
 
 .. rst-class:: classref-enumeration
 
-enum **Axis**: :ref:`🔗<enum_Vector2_Axis>`
+enum **Axis**: :ref:`🔗 <enum_Vector2_Axis>`
 
 .. _class_Vector2_constant_AXIS_X:
 
@@ -247,7 +247,7 @@ enum **Axis**: :ref:`🔗<enum_Vector2_Axis>`
 
 :ref:`Axis<enum_Vector2_Axis>` **AXIS_X** = ``0``
 
-Enumerated value for the X axis. Returned by :ref:`max_axis_index()<class_Vector2_method_max_axis_index>` and :ref:`min_axis_index()<class_Vector2_method_min_axis_index>`.
+Giá trị liệt kê cho trục X. Được trả về bởi :ref:`max_axis_index()<class_Vector2_method_max_axis_index>` và :ref:`min_axis_index()<class_Vector2_method_min_axis_index>`.
 
 .. _class_Vector2_constant_AXIS_Y:
 
@@ -255,7 +255,7 @@ Enumerated value for the X axis. Returned by :ref:`max_axis_index()<class_Vector
 
 :ref:`Axis<enum_Vector2_Axis>` **AXIS_Y** = ``1``
 
-Enumerated value for the Y axis. Returned by :ref:`max_axis_index()<class_Vector2_method_max_axis_index>` and :ref:`min_axis_index()<class_Vector2_method_min_axis_index>`.
+Giá trị liệt kê cho trục Y. Được trả về bởi :ref:`max_axis_index()<class_Vector2_method_max_axis_index>` và :ref:`min_axis_index()<class_Vector2_method_min_axis_index>`.
 
 .. rst-class:: classref-section-separator
 
@@ -263,8 +263,8 @@ Enumerated value for the Y axis. Returned by :ref:`max_axis_index()<class_Vector
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Vector2_constant_ZERO:
 
@@ -272,7 +272,7 @@ Constants
 
 **ZERO** = ``Vector2(0, 0)`` :ref:`🔗<class_Vector2_constant_ZERO>`
 
-Zero vector, a vector with all components set to ``0``.
+Vector không, một vector có tất cả các thành phần được đặt thành ``0``.
 
 .. _class_Vector2_constant_ONE:
 
@@ -280,7 +280,7 @@ Zero vector, a vector with all components set to ``0``.
 
 **ONE** = ``Vector2(1, 1)`` :ref:`🔗<class_Vector2_constant_ONE>`
 
-One vector, a vector with all components set to ``1``.
+Vector đơn vị, một vector có tất cả các thành phần được đặt thành ``1``.
 
 .. _class_Vector2_constant_INF:
 
@@ -288,7 +288,7 @@ One vector, a vector with all components set to ``1``.
 
 **INF** = ``Vector2(inf, inf)`` :ref:`🔗<class_Vector2_constant_INF>`
 
-Infinity vector, a vector with all components set to :ref:`@GDScript.INF<class_@GDScript_constant_INF>`.
+Vector vô cực, một vector có tất cả các thành phần được đặt thành :ref:`@GDScript.INF <class_@GDScript_constant_INF>`.
 
 .. _class_Vector2_constant_LEFT:
 
@@ -296,7 +296,7 @@ Infinity vector, a vector with all components set to :ref:`@GDScript.INF<class_@
 
 **LEFT** = ``Vector2(-1, 0)`` :ref:`🔗<class_Vector2_constant_LEFT>`
 
-Left unit vector. Represents the direction of left.
+Vector đơn vị trái. Biểu thị hướng sang trái.
 
 .. _class_Vector2_constant_RIGHT:
 
@@ -304,7 +304,7 @@ Left unit vector. Represents the direction of left.
 
 **RIGHT** = ``Vector2(1, 0)`` :ref:`🔗<class_Vector2_constant_RIGHT>`
 
-Right unit vector. Represents the direction of right.
+Vector đơn vị phải. Biểu thị hướng sang phải.
 
 .. _class_Vector2_constant_UP:
 
@@ -312,7 +312,7 @@ Right unit vector. Represents the direction of right.
 
 **UP** = ``Vector2(0, -1)`` :ref:`🔗<class_Vector2_constant_UP>`
 
-Up unit vector. Y is down in 2D, so this vector points -Y.
+Vector đơn vị lên. Trong 2D, Y hướng xuống, vì vậy vector này hướng theo -Y.
 
 .. _class_Vector2_constant_DOWN:
 
@@ -320,7 +320,7 @@ Up unit vector. Y is down in 2D, so this vector points -Y.
 
 **DOWN** = ``Vector2(0, 1)`` :ref:`🔗<class_Vector2_constant_DOWN>`
 
-Down unit vector. Y is down in 2D, so this vector points +Y.
+Vector đơn vị xuống. Trong 2D, Y hướng xuống, vì vậy vector này hướng theo +Y.
 
 .. rst-class:: classref-section-separator
 
@@ -328,8 +328,8 @@ Down unit vector. Y is down in 2D, so this vector points +Y.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Vector2_property_x:
 
@@ -337,7 +337,7 @@ Property Descriptions
 
 :ref:`float<class_float>` **x** = ``0.0`` :ref:`🔗<class_Vector2_property_x>`
 
-The vector's X component. Also accessible by using the index position ``[0]``.
+Thành phần X của vector. Cũng có thể truy cập bằng cách sử dụng vị trí chỉ mục ``[0]``.
 
 .. rst-class:: classref-item-separator
 
@@ -349,7 +349,7 @@ The vector's X component. Also accessible by using the index position ``[0]``.
 
 :ref:`float<class_float>` **y** = ``0.0`` :ref:`🔗<class_Vector2_property_y>`
 
-The vector's Y component. Also accessible by using the index position ``[1]``.
+Thành phần Y của vector. Cũng có thể truy cập bằng cách sử dụng vị trí chỉ mục ``[1]``.
 
 .. rst-class:: classref-section-separator
 
@@ -357,8 +357,8 @@ The vector's Y component. Also accessible by using the index position ``[1]``.
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Vector2_constructor_Vector2:
 
@@ -366,7 +366,7 @@ Constructor Descriptions
 
 :ref:`Vector2<class_Vector2>` **Vector2**\ (\ ) :ref:`🔗<class_Vector2_constructor_Vector2>`
 
-Constructs a default-initialized **Vector2** with all components set to ``0``.
+Tạo một **Vector2** được khởi tạo mặc định với tất cả các thành phần được đặt thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -376,7 +376,7 @@ Constructs a default-initialized **Vector2** with all components set to ``0``.
 
 :ref:`Vector2<class_Vector2>` **Vector2**\ (\ from\: :ref:`Vector2<class_Vector2>`\ )
 
-Constructs a **Vector2** as a copy of the given **Vector2**.
+Tạo một **Vector2** dưới dạng bản sao của **Vector2** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -386,7 +386,7 @@ Constructs a **Vector2** as a copy of the given **Vector2**.
 
 :ref:`Vector2<class_Vector2>` **Vector2**\ (\ from\: :ref:`Vector2i<class_Vector2i>`\ )
 
-Constructs a new **Vector2** from :ref:`Vector2i<class_Vector2i>`.
+Tạo một **Vector2** mới từ :ref:`Vector2i<class_Vector2i>`.
 
 .. rst-class:: classref-item-separator
 
@@ -396,7 +396,7 @@ Constructs a new **Vector2** from :ref:`Vector2i<class_Vector2i>`.
 
 :ref:`Vector2<class_Vector2>` **Vector2**\ (\ x\: :ref:`float<class_float>`, y\: :ref:`float<class_float>`\ )
 
-Constructs a new **Vector2** from the given ``x`` and ``y``.
+Tạo một **Vector2** mới từ ``x`` và ``y`` đã cho.
 
 .. rst-class:: classref-section-separator
 
@@ -404,8 +404,8 @@ Constructs a new **Vector2** from the given ``x`` and ``y``.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Vector2_method_abs:
 
@@ -413,7 +413,7 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **abs**\ (\ ) |const| :ref:`🔗<class_Vector2_method_abs>`
 
-Returns a new vector with all components in absolute values (i.e. positive).
+Trả về một vector mới với tất cả các thành phần có giá trị tuyệt đối (tức là dương).
 
 .. rst-class:: classref-item-separator
 
@@ -425,13 +425,13 @@ Returns a new vector with all components in absolute values (i.e. positive).
 
 :ref:`float<class_float>` **angle**\ (\ ) |const| :ref:`🔗<class_Vector2_method_angle>`
 
-Returns this vector's angle with respect to the positive X axis, or ``(1, 0)`` vector, in radians.
+Trả về góc của vector này so với trục X dương, hoặc vector ``(1, 0)``, tính bằng radian.
 
-For example, ``Vector2.RIGHT.angle()`` will return zero, ``Vector2.DOWN.angle()`` will return ``PI / 2`` (a quarter turn, or 90 degrees), and ``Vector2(1, -1).angle()`` will return ``-PI / 4`` (a negative eighth turn, or -45 degrees).
+Ví dụ, ``Vector2.RIGHT.angle()`` sẽ trả về số 0, ``Vector2.DOWN.angle()`` sẽ trả về ``PI / 2`` (một phần tư vòng, hay 90 độ), còn ``Vector2(1, -1).angle()`` sẽ trả về ``-PI / 4`` (một phần tám vòng theo chiều âm, hay -45 độ).
 
-This is equivalent to calling :ref:`@GlobalScope.atan2()<class_@GlobalScope_method_atan2>` with :ref:`y<class_Vector2_property_y>` and :ref:`x<class_Vector2_property_x>`.
+Điều này tương đương với việc gọi :ref:`@GlobalScope.atan2() <class_@GlobalScope_method_atan2>` với :ref:`y<class_Vector2_property_y>` và :ref:`x<class_Vector2_property_x>`.
 
-\ `Illustration of the returned angle. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/vector2_angle.png>`__
+\ `Hình minh họa góc được trả về. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/vector2_angle.png>`__
 
 .. rst-class:: classref-item-separator
 
@@ -443,9 +443,9 @@ This is equivalent to calling :ref:`@GlobalScope.atan2()<class_@GlobalScope_meth
 
 :ref:`float<class_float>` **angle_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_angle_to>`
 
-Returns the signed angle to the given vector, in radians. The result ranges from ``-PI`` to ``PI`` (inclusive).
+Trả về góc có dấu đến vector đã cho, tính bằng radian. Kết quả nằm trong khoảng từ ``-PI`` đến ``PI`` (bao gồm cả hai đầu mút).
 
-\ `Illustration of the returned angle. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/vector2_angle_to.png>`__
+\ `Hình minh họa góc được trả về. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/vector2_angle_to.png>`__
 
 .. rst-class:: classref-item-separator
 
@@ -457,11 +457,11 @@ Returns the signed angle to the given vector, in radians. The result ranges from
 
 :ref:`float<class_float>` **angle_to_point**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_angle_to_point>`
 
-Returns the signed angle between the X axis and the line from this vector to point ``to``, in radians. The result ranges from ``-PI`` to ``PI`` (inclusive).
+Trả về góc có hướng giữa trục X và đường thẳng từ vector này đến điểm ``to``, tính bằng radian. Kết quả nằm trong khoảng từ ``-PI`` đến ``PI`` (bao gồm cả hai giá trị).
 
-\ ``a.angle_to_point(b)`` is equivalent to ``(b - a).angle()``. See also :ref:`angle()<class_Vector2_method_angle>`.
+\ ``a.angle_to_point(b)`` tương đương với ``(b - a).angle()``. Xem thêm :ref:`angle()<class_Vector2_method_angle>`.
 
-\ `Illustration of the returned angle. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/vector2_angle_to_point.png>`__
+\ `Minh họa góc được trả về. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/vector2_angle_to_point.png>`__
 
 .. rst-class:: classref-item-separator
 
@@ -473,7 +473,7 @@ Returns the signed angle between the X axis and the line from this vector to poi
 
 :ref:`float<class_float>` **aspect**\ (\ ) |const| :ref:`🔗<class_Vector2_method_aspect>`
 
-Returns this vector's aspect ratio, which is :ref:`x<class_Vector2_property_x>` divided by :ref:`y<class_Vector2_property_y>`.
+Trả về tỷ lệ khung hình của vector này, là :ref:`x<class_Vector2_property_x>` chia cho :ref:`y<class_Vector2_property_y>`.
 
 .. rst-class:: classref-item-separator
 
@@ -485,7 +485,7 @@ Returns this vector's aspect ratio, which is :ref:`x<class_Vector2_property_x>` 
 
 :ref:`Vector2<class_Vector2>` **bezier_derivative**\ (\ control_1\: :ref:`Vector2<class_Vector2>`, control_2\: :ref:`Vector2<class_Vector2>`, end\: :ref:`Vector2<class_Vector2>`, t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_bezier_derivative>`
 
-Returns the derivative at the given ``t`` on the `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ defined by this vector and the given ``control_1``, ``control_2``, and ``end`` points.
+Trả về đạo hàm tại ``t`` trên đường cong `Bézier <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ được xác định bởi vector này và các điểm ``control_1``, ``control_2`` và ``end`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -497,7 +497,7 @@ Returns the derivative at the given ``t`` on the `Bézier curve <https://en.wiki
 
 :ref:`Vector2<class_Vector2>` **bezier_interpolate**\ (\ control_1\: :ref:`Vector2<class_Vector2>`, control_2\: :ref:`Vector2<class_Vector2>`, end\: :ref:`Vector2<class_Vector2>`, t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_bezier_interpolate>`
 
-Returns the point at the given ``t`` on the `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ defined by this vector and the given ``control_1``, ``control_2``, and ``end`` points.
+Trả về điểm tại ``t`` trên đường cong `Bézier <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ được xác định bởi vector này và các điểm ``control_1``, ``control_2`` và ``end`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -509,9 +509,9 @@ Returns the point at the given ``t`` on the `Bézier curve <https://en.wikipedia
 
 :ref:`Vector2<class_Vector2>` **bounce**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_bounce>`
 
-Returns the vector "bounced off" from a line defined by the given normal ``n`` perpendicular to the line.
+Trả về vector được "bật nảy" khỏi một đường thẳng được xác định bởi pháp tuyến ``n`` đã cho, vuông góc với đường thẳng.
 
-\ **Note:** :ref:`bounce()<class_Vector2_method_bounce>` performs the operation that most engines and frameworks call ``reflect()``.
+\ **Lưu ý:** :ref:`bounce()<class_Vector2_method_bounce>` thực hiện thao tác mà hầu hết các engine và framework gọi là ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -523,7 +523,7 @@ Returns the vector "bounced off" from a line defined by the given normal ``n`` p
 
 :ref:`Vector2<class_Vector2>` **ceil**\ (\ ) |const| :ref:`🔗<class_Vector2_method_ceil>`
 
-Returns a new vector with all components rounded up (towards positive infinity).
+Trả về một vector mới với tất cả các thành phần được làm tròn lên (về phía dương vô cùng).
 
 .. rst-class:: classref-item-separator
 
@@ -535,7 +535,7 @@ Returns a new vector with all components rounded up (towards positive infinity).
 
 :ref:`Vector2<class_Vector2>` **clamp**\ (\ min\: :ref:`Vector2<class_Vector2>`, max\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_clamp>`
 
-Returns a new vector with all components clamped between the components of ``min`` and ``max``, by running :ref:`@GlobalScope.clamp()<class_@GlobalScope_method_clamp>` on each component.
+Trả về một vector mới với tất cả các thành phần bị giới hạn trong khoảng giữa các thành phần của ``min`` và ``max``, bằng cách chạy :ref:`@GlobalScope.clamp() <class_@GlobalScope_method_clamp>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -547,7 +547,7 @@ Returns a new vector with all components clamped between the components of ``min
 
 :ref:`Vector2<class_Vector2>` **clampf**\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_clampf>`
 
-Returns a new vector with all components clamped between ``min`` and ``max``, by running :ref:`@GlobalScope.clamp()<class_@GlobalScope_method_clamp>` on each component.
+Trả về một vector mới với tất cả các thành phần bị giới hạn trong khoảng giữa ``min`` và ``max``, bằng cách chạy :ref:`@GlobalScope.clamp() <class_@GlobalScope_method_clamp>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -559,11 +559,11 @@ Returns a new vector with all components clamped between ``min`` and ``max``, by
 
 :ref:`float<class_float>` **cross**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_cross>`
 
-Returns the 2D analog of the cross product for this vector and ``with``.
+Trả về phần tương tự trong 2D của tích có hướng giữa vector này và ``with``.
 
-This is the signed area of the parallelogram formed by the two vectors. If the second vector is clockwise from the first vector, then the cross product is the positive area. If counter-clockwise, the cross product is the negative area. If the two vectors are parallel this returns zero, making it useful for testing if two vectors are parallel.
+Đây là diện tích có hướng của hình bình hành được tạo bởi hai vector. Nếu vector thứ hai theo chiều kim đồng hồ so với vector thứ nhất, tích có hướng là diện tích dương. Nếu ngược chiều kim đồng hồ, tích có hướng là diện tích âm. Nếu hai vector song song, giá trị trả về là 0, vì vậy phép tính này hữu ích để kiểm tra xem hai vector có song song hay không.
 
-\ **Note:** Cross product is not defined in 2D mathematically. This method embeds the 2D vectors in the XY plane of 3D space and uses their cross product's Z component as the analog.
+\ **Lưu ý:** Tích có hướng không được định nghĩa về mặt toán học trong không gian 2D. Phương thức này nhúng các vector 2D vào mặt phẳng XY của không gian 3D và sử dụng thành phần Z của tích có hướng giữa chúng làm phần tương tự.
 
 .. rst-class:: classref-item-separator
 
@@ -575,7 +575,7 @@ This is the signed area of the parallelogram formed by the two vectors. If the s
 
 :ref:`Vector2<class_Vector2>` **cubic_interpolate**\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_cubic_interpolate>`
 
-Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and ``post_b`` as handles, and returns the result at position ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
+Thực hiện nội suy cubic giữa vector này và ``b`` bằng cách sử dụng ``pre_a`` và ``post_b`` làm các tay nắm, rồi trả về kết quả tại vị trí ``weight``. ``weight`` nằm trong phạm vi từ 0.0 đến 1.0, biểu thị mức độ nội suy.
 
 .. rst-class:: classref-item-separator
 
@@ -587,9 +587,9 @@ Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and
 
 :ref:`Vector2<class_Vector2>` **cubic_interpolate_in_time**\ (\ b\: :ref:`Vector2<class_Vector2>`, pre_a\: :ref:`Vector2<class_Vector2>`, post_b\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`, b_t\: :ref:`float<class_float>`, pre_a_t\: :ref:`float<class_float>`, post_b_t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_cubic_interpolate_in_time>`
 
-Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and ``post_b`` as handles, and returns the result at position ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
+Thực hiện nội suy cubic giữa vector này và ``b`` bằng cách sử dụng ``pre_a`` và ``post_b`` làm các tay nắm, rồi trả về kết quả tại vị trí ``weight``. ``weight`` nằm trong phạm vi từ 0.0 đến 1.0, biểu thị mức độ nội suy.
 
-It can perform smoother interpolation than :ref:`cubic_interpolate()<class_Vector2_method_cubic_interpolate>` by the time values.
+Phương thức này có thể thực hiện nội suy mượt hơn :ref:`cubic_interpolate()<class_Vector2_method_cubic_interpolate>` dựa trên các giá trị thời gian.
 
 .. rst-class:: classref-item-separator
 
@@ -601,9 +601,9 @@ It can perform smoother interpolation than :ref:`cubic_interpolate()<class_Vecto
 
 :ref:`Vector2<class_Vector2>` **direction_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_direction_to>`
 
-Returns the normalized vector pointing from this vector to ``to``.
+Trả về vector đã chuẩn hóa hướng từ vector này đến ``to``.
 
-\ ``a.direction_to(b)`` is equivalent to ``(b - a).normalized()``. See also :ref:`normalized()<class_Vector2_method_normalized>`.
+\ ``a.direction_to(b)`` tương đương với ``(b - a).normalized()``. Xem thêm :ref:`normalized()<class_Vector2_method_normalized>`.
 
 .. rst-class:: classref-item-separator
 
@@ -615,9 +615,9 @@ Returns the normalized vector pointing from this vector to ``to``.
 
 :ref:`float<class_float>` **distance_squared_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_distance_squared_to>`
 
-Returns the squared `Euclidean distance <https://en.wikipedia.org/wiki/Euclidean_distance>`__ between this vector and ``to``.
+Trả về bình phương `khoảng cách Euclidean <https://en.wikipedia.org/wiki/Euclidean_distance>`__ giữa vector này và ``to``.
 
-This method runs faster than :ref:`distance_to()<class_Vector2_method_distance_to>`, so prefer it if you need to compare vectors or need the squared distance for some formula.
+Phương thức này chạy nhanh hơn :ref:`distance_to()<class_Vector2_method_distance_to>`, vì vậy hãy ưu tiên sử dụng nó nếu bạn cần so sánh các vector hoặc cần khoảng cách bình phương cho một công thức nào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -629,7 +629,7 @@ This method runs faster than :ref:`distance_to()<class_Vector2_method_distance_t
 
 :ref:`float<class_float>` **distance_to**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_distance_to>`
 
-Returns the `Euclidean distance <https://en.wikipedia.org/wiki/Euclidean_distance>`__ between this vector and ``to``.
+Trả về `khoảng cách Euclid <https://en.wikipedia.org/wiki/Euclidean_distance>`__ giữa vector này và ``to``.
 
 .. rst-class:: classref-item-separator
 
@@ -641,13 +641,13 @@ Returns the `Euclidean distance <https://en.wikipedia.org/wiki/Euclidean_distanc
 
 :ref:`float<class_float>` **dot**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_dot>`
 
-Returns the dot product of this vector and ``with``. This can be used to compare the angle between two vectors. For example, this can be used to determine whether an enemy is facing the player.
+Trả về tích vô hướng của vector này và ``with``. Có thể sử dụng tích vô hướng để so sánh góc giữa hai vector. Ví dụ: có thể dùng để xác định xem kẻ địch có đang hướng về phía người chơi hay không.
 
-The dot product will be ``0`` for a right angle (90 degrees), greater than 0 for angles narrower than 90 degrees and lower than 0 for angles wider than 90 degrees.
+Tích vô hướng sẽ bằng ``0`` đối với góc vuông (90 độ), lớn hơn 0 đối với các góc nhỏ hơn 90 độ và nhỏ hơn 0 đối với các góc lớn hơn 90 độ.
 
-When using unit (normalized) vectors, the result will always be between ``-1.0`` (180 degree angle) when the vectors are facing opposite directions, and ``1.0`` (0 degree angle) when the vectors are aligned.
+Khi sử dụng các vector đơn vị (đã chuẩn hóa), kết quả luôn nằm trong khoảng từ ``-1.0`` (góc 180 độ), khi các vector hướng ngược chiều nhau, đến ``1.0`` (góc 0 độ), khi các vector thẳng hàng.
 
-\ **Note:** ``a.dot(b)`` is equivalent to ``b.dot(a)``.
+\ **Lưu ý:** ``a.dot(b)`` tương đương với ``b.dot(a)``.
 
 .. rst-class:: classref-item-separator
 
@@ -659,7 +659,7 @@ When using unit (normalized) vectors, the result will always be between ``-1.0``
 
 :ref:`Vector2<class_Vector2>` **floor**\ (\ ) |const| :ref:`🔗<class_Vector2_method_floor>`
 
-Returns a new vector with all components rounded down (towards negative infinity).
+Trả về một vector mới với tất cả các thành phần được làm tròn xuống (về phía âm vô cùng).
 
 .. rst-class:: classref-item-separator
 
@@ -671,7 +671,7 @@ Returns a new vector with all components rounded down (towards negative infinity
 
 :ref:`Vector2<class_Vector2>` **from_angle**\ (\ angle\: :ref:`float<class_float>`\ ) |static| :ref:`🔗<class_Vector2_method_from_angle>`
 
-Creates a **Vector2** rotated to the given ``angle`` in radians. This is equivalent to doing ``Vector2(cos(angle), sin(angle))`` or ``Vector2.RIGHT.rotated(angle)``.
+Tạo một **Vector2** được xoay theo ``angle`` đã cho, tính bằng radian. Tương đương với việc thực hiện ``Vector2(cos(angle), sin(angle))`` hoặc ``Vector2.RIGHT.rotated(angle)``.
 
 ::
 
@@ -679,7 +679,7 @@ Creates a **Vector2** rotated to the given ``angle`` in radians. This is equival
     print(Vector2(1, 0).angle()) # Prints 0.0, which is the angle used above.
     print(Vector2.from_angle(PI / 2)) # Prints (0.0, 1.0)
 
-\ **Note:** The length of the returned **Vector2** is *approximately* ``1.0``, but is is not guaranteed to be exactly ``1.0`` due to floating-point precision issues. Call :ref:`normalized()<class_Vector2_method_normalized>` on the returned **Vector2** if you require a unit vector.
+\ **Lưu ý:** Độ dài của **Vector2** được trả về là *xấp xỉ* ``1.0``, nhưng không được đảm bảo chính xác là ``1.0`` do các vấn đề về độ chính xác của số dấu phẩy động. Hãy gọi :ref:`normalized()<class_Vector2_method_normalized>` trên **Vector2** được trả về nếu bạn yêu cầu một vector đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -691,7 +691,7 @@ Creates a **Vector2** rotated to the given ``angle`` in radians. This is equival
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ to\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_is_equal_approx>`
 
-Returns ``true`` if this vector and ``to`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
+Trả về ``true`` nếu vector này và ``to`` xấp xỉ bằng nhau, bằng cách chạy :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -703,7 +703,7 @@ Returns ``true`` if this vector and ``to`` are approximately equal, by running :
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Vector2_method_is_finite>`
 
-Returns ``true`` if this vector is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on each component.
+Trả về ``true`` nếu vector này là hữu hạn, bằng cách gọi :ref:`@GlobalScope.is_finite() <class_@GlobalScope_method_is_finite>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -715,7 +715,7 @@ Returns ``true`` if this vector is finite, by calling :ref:`@GlobalScope.is_fini
 
 :ref:`bool<class_bool>` **is_normalized**\ (\ ) |const| :ref:`🔗<class_Vector2_method_is_normalized>`
 
-Returns ``true`` if the vector is normalized, i.e. its length is approximately equal to 1.
+Trả về ``true`` nếu vector đã được chuẩn hóa, tức là độ dài của nó xấp xỉ bằng 1.
 
 .. rst-class:: classref-item-separator
 
@@ -727,9 +727,9 @@ Returns ``true`` if the vector is normalized, i.e. its length is approximately e
 
 :ref:`bool<class_bool>` **is_zero_approx**\ (\ ) |const| :ref:`🔗<class_Vector2_method_is_zero_approx>`
 
-Returns ``true`` if this vector's values are approximately zero, by running :ref:`@GlobalScope.is_zero_approx()<class_@GlobalScope_method_is_zero_approx>` on each component.
+Trả về ``true`` nếu các giá trị của vector này xấp xỉ bằng không, bằng cách chạy :ref:`@GlobalScope.is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` trên từng thành phần.
 
-This method is faster than using :ref:`is_equal_approx()<class_Vector2_method_is_equal_approx>` with one value as a zero vector.
+Phương thức này nhanh hơn việc sử dụng :ref:`is_equal_approx()<class_Vector2_method_is_equal_approx>` với một giá trị làm vector không.
 
 .. rst-class:: classref-item-separator
 
@@ -741,7 +741,7 @@ This method is faster than using :ref:`is_equal_approx()<class_Vector2_method_is
 
 :ref:`float<class_float>` **length**\ (\ ) |const| :ref:`🔗<class_Vector2_method_length>`
 
-Returns the length (magnitude) of this vector.
+Trả về độ dài (độ lớn) của vector này.
 
 .. rst-class:: classref-item-separator
 
@@ -753,9 +753,9 @@ Returns the length (magnitude) of this vector.
 
 :ref:`float<class_float>` **length_squared**\ (\ ) |const| :ref:`🔗<class_Vector2_method_length_squared>`
 
-Returns the squared length (squared magnitude) of this vector.
+Trả về độ dài bình phương (độ lớn bình phương) của vector này.
 
-This method runs faster than :ref:`length()<class_Vector2_method_length>`, so prefer it if you need to compare vectors or need the squared distance for some formula.
+Phương thức này chạy nhanh hơn :ref:`length()<class_Vector2_method_length>`, vì vậy hãy ưu tiên sử dụng nó nếu bạn cần so sánh các vector hoặc cần khoảng cách bình phương cho một công thức.
 
 .. rst-class:: classref-item-separator
 
@@ -767,7 +767,7 @@ This method runs faster than :ref:`length()<class_Vector2_method_length>`, so pr
 
 :ref:`Vector2<class_Vector2>` **lerp**\ (\ to\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_lerp>`
 
-Returns the result of the linear interpolation between this vector and ``to`` by amount ``weight``. ``weight`` is on the range of ``0.0`` to ``1.0``, representing the amount of interpolation.
+Trả về kết quả nội suy tuyến tính giữa vector này và ``to`` theo amount ``weight``. ``weight`` nằm trong khoảng từ ``0.0`` đến ``1.0``, biểu thị amount nội suy.
 
 .. rst-class:: classref-item-separator
 
@@ -779,7 +779,7 @@ Returns the result of the linear interpolation between this vector and ``to`` by
 
 :ref:`Vector2<class_Vector2>` **limit_length**\ (\ length\: :ref:`float<class_float>` = 1.0\ ) |const| :ref:`🔗<class_Vector2_method_limit_length>`
 
-Returns the vector with a maximum length by limiting its length to ``length``. If the vector is non-finite, the result is undefined.
+Trả về vector có độ dài tối đa bằng cách giới hạn độ dài của nó ở ``length``. Nếu vector không hữu hạn, kết quả là không xác định.
 
 .. rst-class:: classref-item-separator
 
@@ -791,7 +791,7 @@ Returns the vector with a maximum length by limiting its length to ``length``. I
 
 :ref:`Vector2<class_Vector2>` **max**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_max>`
 
-Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2(maxf(x, with.x), maxf(y, with.y))``.
+Trả về giá trị lớn nhất theo từng thành phần của vector này và ``with``, tương đương với ``Vector2(maxf(x, with.x), maxf(y, with.y))``.
 
 .. rst-class:: classref-item-separator
 
@@ -803,7 +803,7 @@ Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2
 
 :ref:`int<class_int>` **max_axis_index**\ (\ ) |const| :ref:`🔗<class_Vector2_method_max_axis_index>`
 
-Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_X<class_Vector2_constant_AXIS_X>`.
+Trả về trục của giá trị lớn nhất trong vector. Xem các hằng số ``AXIS_*``. Nếu tất cả các thành phần bằng nhau, phương thức này trả về :ref:`AXIS_X<class_Vector2_constant_AXIS_X>`.
 
 .. rst-class:: classref-item-separator
 
@@ -815,7 +815,7 @@ Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all
 
 :ref:`Vector2<class_Vector2>` **maxf**\ (\ with\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_maxf>`
 
-Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2(maxf(x, with), maxf(y, with))``.
+Trả về giá trị lớn nhất theo từng thành phần của vector này và ``with``, tương đương với ``Vector2(maxf(x, with), maxf(y, with))``.
 
 .. rst-class:: classref-item-separator
 
@@ -827,7 +827,7 @@ Returns the component-wise maximum of this and ``with``, equivalent to ``Vector2
 
 :ref:`Vector2<class_Vector2>` **min**\ (\ with\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_min>`
 
-Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2(minf(x, with.x), minf(y, with.y))``.
+Trả về giá trị nhỏ nhất theo từng thành phần của vector này và ``with``, tương đương với ``Vector2(minf(x, with.x), minf(y, with.y))``.
 
 .. rst-class:: classref-item-separator
 
@@ -839,7 +839,7 @@ Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2
 
 :ref:`int<class_int>` **min_axis_index**\ (\ ) |const| :ref:`🔗<class_Vector2_method_min_axis_index>`
 
-Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_Y<class_Vector2_constant_AXIS_Y>`.
+Trả về trục của giá trị nhỏ nhất trong vector. Xem các hằng số ``AXIS_*``. Nếu tất cả các thành phần bằng nhau, phương thức này trả về :ref:`AXIS_Y<class_Vector2_constant_AXIS_Y>`.
 
 .. rst-class:: classref-item-separator
 
@@ -851,7 +851,7 @@ Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all 
 
 :ref:`Vector2<class_Vector2>` **minf**\ (\ with\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_minf>`
 
-Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2(minf(x, with), minf(y, with))``.
+Trả về giá trị nhỏ nhất theo từng thành phần của vector này và ``with``, tương đương với ``Vector2(minf(x, with), minf(y, with))``.
 
 .. rst-class:: classref-item-separator
 
@@ -863,7 +863,7 @@ Returns the component-wise minimum of this and ``with``, equivalent to ``Vector2
 
 :ref:`Vector2<class_Vector2>` **move_toward**\ (\ to\: :ref:`Vector2<class_Vector2>`, delta\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_move_toward>`
 
-Returns a new vector moved toward ``to`` by the fixed ``delta`` amount. Will not go past the final value.
+Trả về một vector mới được di chuyển về phía ``to`` một lượng cố định ``delta``. Không vượt quá giá trị cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -875,9 +875,9 @@ Returns a new vector moved toward ``to`` by the fixed ``delta`` amount. Will not
 
 :ref:`Vector2<class_Vector2>` **normalized**\ (\ ) |const| :ref:`🔗<class_Vector2_method_normalized>`
 
-Returns the result of scaling the vector to unit length. Equivalent to ``v / v.length()``. Returns ``(0, 0)`` if ``v.length() == 0``. See also :ref:`is_normalized()<class_Vector2_method_is_normalized>`.
+Trả về kết quả của việc đưa vector về độ dài đơn vị. Tương đương với ``v / v.length()``. Trả về ``(0, 0)`` nếu ``v.length() == 0``. Xem thêm :ref:`is_normalized()<class_Vector2_method_is_normalized>`.
 
-\ **Note:** This function may return incorrect values if the input vector length is near zero.
+\ **Lưu ý:** Hàm này có thể trả về các giá trị không chính xác nếu độ dài của vector đầu vào gần bằng không.
 
 .. rst-class:: classref-item-separator
 
@@ -889,7 +889,7 @@ Returns the result of scaling the vector to unit length. Equivalent to ``v / v.l
 
 :ref:`Vector2<class_Vector2>` **orthogonal**\ (\ ) |const| :ref:`🔗<class_Vector2_method_orthogonal>`
 
-Returns a perpendicular vector rotated 90 degrees counter-clockwise compared to the original, with the same length.
+Trả về một vector vuông góc được xoay 90 độ ngược chiều kim đồng hồ so với vector gốc, với cùng độ dài.
 
 .. rst-class:: classref-item-separator
 
@@ -901,7 +901,7 @@ Returns a perpendicular vector rotated 90 degrees counter-clockwise compared to 
 
 :ref:`Vector2<class_Vector2>` **posmod**\ (\ mod\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_posmod>`
 
-Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope_method_fposmod>` of this vector's components and ``mod``.
+Trả về một vector được tạo thành từ :ref:`@GlobalScope.fposmod() <class_@GlobalScope_method_fposmod>` của các thành phần của vector này và ``mod``.
 
 .. rst-class:: classref-item-separator
 
@@ -913,7 +913,7 @@ Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope
 
 :ref:`Vector2<class_Vector2>` **posmodv**\ (\ modv\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_posmodv>`
 
-Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope_method_fposmod>` of this vector's components and ``modv``'s components.
+Trả về một vector được tạo thành từ :ref:`@GlobalScope.fposmod() <class_@GlobalScope_method_fposmod>` của các thành phần của vector này và các thành phần của ``modv``.
 
 .. rst-class:: classref-item-separator
 
@@ -925,9 +925,9 @@ Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope
 
 :ref:`Vector2<class_Vector2>` **project**\ (\ b\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_project>`
 
-Returns a new vector resulting from projecting this vector onto the given vector ``b``. The resulting new vector is parallel to ``b``. See also :ref:`slide()<class_Vector2_method_slide>`.
+Trả về một vector mới thu được bằng cách chiếu vector này lên vector đã cho ``b``. Vector mới thu được song song với ``b``. Xem thêm :ref:`slide()<class_Vector2_method_slide>`.
 
-\ **Note:** If the vector ``b`` is a zero vector, the components of the resulting new vector will be :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>`.
+\ **Lưu ý:** Nếu vector ``b`` là vector không, các thành phần của vector mới thu được sẽ là :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>`.
 
 .. rst-class:: classref-item-separator
 
@@ -939,9 +939,9 @@ Returns a new vector resulting from projecting this vector onto the given vector
 
 :ref:`Vector2<class_Vector2>` **reflect**\ (\ line\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_reflect>`
 
-Returns the result of reflecting the vector from a line defined by the given direction vector ``line``.
+Trả về kết quả phản xạ vector qua một đường thẳng được xác định bởi vector hướng đã cho ``line``.
 
-\ **Note:** :ref:`reflect()<class_Vector2_method_reflect>` differs from what other engines and frameworks call ``reflect()``. In other engines, ``reflect()`` takes a normal direction which is a direction perpendicular to the line. In Godot, you specify the direction of the line directly. See also :ref:`bounce()<class_Vector2_method_bounce>` which does what most engines call ``reflect()``.
+\ **Lưu ý:** :ref:`reflect()<class_Vector2_method_reflect>` khác với cách các engine và framework khác gọi là ``reflect()``. Trong các engine khác, ``reflect()`` nhận một hướng pháp tuyến, tức là một hướng vuông góc với đường thẳng. Trong Godot, bạn chỉ định trực tiếp hướng của đường thẳng. Xem thêm :ref:`bounce()<class_Vector2_method_bounce>`, thao tác này tương ứng với điều mà hầu hết các engine gọi là ``reflect()``.
 
 .. rst-class:: classref-item-separator
 
@@ -953,7 +953,7 @@ Returns the result of reflecting the vector from a line defined by the given dir
 
 :ref:`Vector2<class_Vector2>` **rotated**\ (\ angle\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_rotated>`
 
-Returns the result of rotating this vector by ``angle`` (in radians). See also :ref:`@GlobalScope.deg_to_rad()<class_@GlobalScope_method_deg_to_rad>`.
+Trả về kết quả xoay vector này một góc ``angle`` (tính bằng radian). Xem thêm :ref:`@GlobalScope.deg_to_rad() <class_@GlobalScope_method_deg_to_rad>`.
 
 .. rst-class:: classref-item-separator
 
@@ -965,7 +965,7 @@ Returns the result of rotating this vector by ``angle`` (in radians). See also :
 
 :ref:`Vector2<class_Vector2>` **round**\ (\ ) |const| :ref:`🔗<class_Vector2_method_round>`
 
-Returns a new vector with all components rounded to the nearest integer, with halfway cases rounded away from zero.
+Trả về một vectơ mới với tất cả các thành phần được làm tròn đến số nguyên gần nhất; trong trường hợp nằm đúng giữa, giá trị được làm tròn ra xa số 0.
 
 .. rst-class:: classref-item-separator
 
@@ -977,7 +977,7 @@ Returns a new vector with all components rounded to the nearest integer, with ha
 
 :ref:`Vector2<class_Vector2>` **sign**\ (\ ) |const| :ref:`🔗<class_Vector2_method_sign>`
 
-Returns a new vector with each component set to ``1.0`` if it's positive, ``-1.0`` if it's negative, and ``0.0`` if it's zero. The result is identical to calling :ref:`@GlobalScope.sign()<class_@GlobalScope_method_sign>` on each component.
+Trả về một vectơ mới với mỗi thành phần được đặt thành ``1.0`` nếu nó dương, ``-1.0`` nếu nó âm và ``0.0`` nếu nó bằng 0. Kết quả giống hệt việc gọi :ref:`@GlobalScope.sign() <class_@GlobalScope_method_sign>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -989,9 +989,9 @@ Returns a new vector with each component set to ``1.0`` if it's positive, ``-1.0
 
 :ref:`Vector2<class_Vector2>` **slerp**\ (\ to\: :ref:`Vector2<class_Vector2>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_slerp>`
 
-Returns the result of spherical linear interpolation between this vector and ``to``, by amount ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
+Trả về kết quả nội suy tuyến tính hình cầu giữa vectơ này và ``to``, theo lượng ``weight``. ``weight`` nằm trong khoảng từ 0.0 đến 1.0, biểu thị mức độ nội suy.
 
-This method also handles interpolating the lengths if the input vectors have different lengths. For the special case of one or both input vectors having zero length, this method behaves like :ref:`lerp()<class_Vector2_method_lerp>`.
+Phương thức này cũng xử lý việc nội suy độ dài nếu các vectơ đầu vào có độ dài khác nhau. Trong trường hợp đặc biệt khi một hoặc cả hai vectơ đầu vào có độ dài bằng 0, phương thức này hoạt động như :ref:`lerp()<class_Vector2_method_lerp>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1003,9 +1003,9 @@ This method also handles interpolating the lengths if the input vectors have dif
 
 :ref:`Vector2<class_Vector2>` **slide**\ (\ n\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_slide>`
 
-Returns a new vector resulting from sliding this vector along a line with normal ``n``. The resulting new vector is perpendicular to ``n``, and is equivalent to this vector minus its projection on ``n``. See also :ref:`project()<class_Vector2_method_project>`.
+Trả về một vectơ mới thu được bằng cách trượt vectơ này dọc theo một đường thẳng có pháp tuyến ``n``. Vectơ mới thu được vuông góc với ``n`` và tương đương với vectơ này trừ đi hình chiếu của nó lên ``n``. Xem thêm :ref:`project()<class_Vector2_method_project>`.
 
-\ **Note:** The vector ``n`` must be normalized. See also :ref:`normalized()<class_Vector2_method_normalized>`.
+\ **Lưu ý:** Vectơ ``n`` phải được chuẩn hóa. Xem thêm :ref:`normalized()<class_Vector2_method_normalized>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1017,7 +1017,7 @@ Returns a new vector resulting from sliding this vector along a line with normal
 
 :ref:`Vector2<class_Vector2>` **snapped**\ (\ step\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Vector2_method_snapped>`
 
-Returns a new vector with each component snapped to the nearest multiple of the corresponding component in ``step``. This can also be used to round the components to an arbitrary number of decimals.
+Trả về một vectơ mới với mỗi thành phần được điều chỉnh đến bội số gần nhất của thành phần tương ứng trong ``step``. Phương thức này cũng có thể được dùng để làm tròn các thành phần đến số chữ số thập phân tùy ý.
 
 .. rst-class:: classref-item-separator
 
@@ -1029,7 +1029,7 @@ Returns a new vector with each component snapped to the nearest multiple of the 
 
 :ref:`Vector2<class_Vector2>` **snappedf**\ (\ step\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector2_method_snappedf>`
 
-Returns a new vector with each component snapped to the nearest multiple of ``step``. This can also be used to round the components to an arbitrary number of decimals.
+Trả về một vector mới với mỗi thành phần được làm tròn về bội số gần nhất của ``step``. Cách này cũng có thể được dùng để làm tròn các thành phần đến một số chữ số thập phân tùy ý.
 
 .. rst-class:: classref-section-separator
 
@@ -1037,20 +1037,20 @@ Returns a new vector with each component snapped to the nearest multiple of ``st
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Vector2_operator_neq_Vector2:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_neq_Vector2>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_neq_Vector2>`
 
-Returns ``true`` if the vectors are not equal.
+Trả về ``true`` nếu các vector không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Vector2_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do các lỗi về độ chính xác số thực, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Vector2_method_is_equal_approx>` thay vào đó vì cách này đáng tin cậy hơn.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -1060,13 +1060,13 @@ Returns ``true`` if the vectors are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_Vector2_operator_mul_Transform2D>`
+:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗 <class_Vector2_operator_mul_Transform2D>`
 
-Inversely transforms (multiplies) the **Vector2** by the given :ref:`Transform2D<class_Transform2D>` transformation matrix, under the assumption that the transformation basis is orthonormal (i.e. rotation/reflection is fine, scaling/skew is not).
+Biến đổi ngược (nhân) **Vector2** với ma trận biến đổi :ref:`Transform2D<class_Transform2D>` đã cho, với giả định rằng cơ sở biến đổi là trực chuẩn (tức là phép quay/phản xạ được chấp nhận, còn phép co giãn/nghiêng thì không).
 
-\ ``vector * transform`` is equivalent to ``transform.inverse() * vector``. See :ref:`Transform2D.inverse()<class_Transform2D_method_inverse>`.
+\ ``vector * transform`` tương đương với ``transform.inverse() * vector``. Xem :ref:`Transform2D.inverse()<class_Transform2D_method_inverse>`.
 
-For transforming by inverse of an affine transformation (e.g. with scaling) ``transform.affine_inverse() * vector`` can be used instead. See :ref:`Transform2D.affine_inverse()<class_Transform2D_method_affine_inverse>`.
+Để biến đổi bằng nghịch đảo của một phép biến đổi affine (ví dụ: có phép co giãn), có thể sử dụng ``transform.affine_inverse() * vector`` thay thế. Xem :ref:`Transform2D.affine_inverse()<class_Transform2D_method_affine_inverse>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1076,9 +1076,9 @@ For transforming by inverse of an affine transformation (e.g. with scaling) ``tr
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_mul_Vector2>`
+:ref:`Vector2<class_Vector2>` **toán tử ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_mul_Vector2>`
 
-Multiplies each component of the **Vector2** by the components of the given **Vector2**.
+Nhân từng thành phần của **Vector2** với các thành phần của **Vector2** đã cho.
 
 ::
 
@@ -1092,9 +1092,9 @@ Multiplies each component of the **Vector2** by the components of the given **Ve
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Vector2_operator_mul_float>`
+:ref:`Vector2<class_Vector2>` **toán tử ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Vector2_operator_mul_float>`
 
-Multiplies each component of the **Vector2** by the given :ref:`float<class_float>`.
+Nhân từng thành phần của **Vector2** với :ref:`float<class_float>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1104,9 +1104,9 @@ Multiplies each component of the **Vector2** by the given :ref:`float<class_floa
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector2_operator_mul_int>`
+:ref:`Vector2<class_Vector2>` **toán tử ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Vector2_operator_mul_int>`
 
-Multiplies each component of the **Vector2** by the given :ref:`int<class_int>`.
+Nhân mỗi thành phần của **Vector2** với :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1116,9 +1116,9 @@ Multiplies each component of the **Vector2** by the given :ref:`int<class_int>`.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator +**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_sum_Vector2>`
+:ref:`Vector2<class_Vector2>` **toán tử +**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_sum_Vector2>`
 
-Adds each component of the **Vector2** by the components of the given **Vector2**.
+Cộng mỗi thành phần của **Vector2** với các thành phần của **Vector2** đã cho.
 
 ::
 
@@ -1132,9 +1132,9 @@ Adds each component of the **Vector2** by the components of the given **Vector2*
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator -**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_dif_Vector2>`
+:ref:`Vector2<class_Vector2>` **toán tử -**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_dif_Vector2>`
 
-Subtracts each component of the **Vector2** by the components of the given **Vector2**.
+Trừ các thành phần của **Vector2** đã cho khỏi mỗi thành phần của **Vector2**.
 
 ::
 
@@ -1148,9 +1148,9 @@ Subtracts each component of the **Vector2** by the components of the given **Vec
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_div_Vector2>`
+:ref:`Vector2<class_Vector2>` **toán tử /**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_div_Vector2>`
 
-Divides each component of the **Vector2** by the components of the given **Vector2**.
+Chia mỗi thành phần của **Vector2** cho các thành phần của **Vector2** đã cho.
 
 ::
 
@@ -1164,9 +1164,9 @@ Divides each component of the **Vector2** by the components of the given **Vecto
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Vector2_operator_div_float>`
+:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Vector2_operator_div_float>`
 
-Divides each component of the **Vector2** by the given :ref:`float<class_float>`.
+Chia mỗi thành phần của **Vector2** cho :ref:`float<class_float>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1176,9 +1176,9 @@ Divides each component of the **Vector2** by the given :ref:`float<class_float>`
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector2_operator_div_int>`
+:ref:`Vector2<class_Vector2>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Vector2_operator_div_int>`
 
-Divides each component of the **Vector2** by the given :ref:`int<class_int>`.
+Chia mỗi thành phần của **Vector2** cho :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1188,11 +1188,11 @@ Divides each component of the **Vector2** by the given :ref:`int<class_int>`.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_lt_Vector2>`
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_lt_Vector2>`
 
-Compares two **Vector2** vectors by first checking if the X value of the left vector is less than the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
+So sánh hai vector **Vector2** bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có nhỏ hơn giá trị X của vector ``right`` hay không. Nếu các giá trị X hoàn toàn bằng nhau, phép kiểm tra này sẽ được lặp lại với các giá trị Y của hai vector. Toán tử này hữu ích khi sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -1202,11 +1202,11 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_lte_Vector2>`
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_lte_Vector2>`
 
-Compares two **Vector2** vectors by first checking if the X value of the left vector is less than or equal to the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
+So sánh hai **Vector2** vector bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có nhỏ hơn hoặc bằng giá trị X của vector ``right`` hay không. Nếu các giá trị X hoàn toàn bằng nhau, phép kiểm tra này sẽ được lặp lại với các giá trị Y của hai vector. Operator này hữu ích khi sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -1216,13 +1216,13 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_eq_Vector2>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_eq_Vector2>`
 
-Returns ``true`` if the vectors are exactly equal.
+Trả về ``true`` nếu các vector hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Vector2_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do các lỗi về độ chính xác số thực, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Vector2_method_is_equal_approx>` thay vào đó vì cách này đáng tin cậy hơn.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -1232,11 +1232,11 @@ Returns ``true`` if the vectors are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_gt_Vector2>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_gt_Vector2>`
 
-Compares two **Vector2** vectors by first checking if the X value of the left vector is greater than the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
+So sánh hai **Vector2** vector bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có lớn hơn giá trị X của vector ``right`` hay không. Nếu các giá trị X hoàn toàn bằng nhau, phép kiểm tra này sẽ được lặp lại với các giá trị Y của hai vector. Toán tử này hữu ích khi sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -1246,11 +1246,11 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Vector2_operator_gte_Vector2>`
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_Vector2_operator_gte_Vector2>`
 
-Compares two **Vector2** vectors by first checking if the X value of the left vector is greater than or equal to the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors. This operator is useful for sorting vectors.
+So sánh hai **Vector2** vector bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có lớn hơn hoặc bằng giá trị X của vector ``right`` hay không. Nếu các giá trị X hoàn toàn bằng nhau, phép kiểm tra này sẽ được lặp lại với các giá trị Y của hai vector. Toán tử này hữu ích khi sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -1260,9 +1260,9 @@ Compares two **Vector2** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector2_operator_idx_int>`
+:ref:`float<class_float>` **toán tử []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Vector2_operator_idx_int>`
 
-Access vector components using their ``index``. ``v[0]`` is equivalent to ``v.x``, and ``v[1]`` is equivalent to ``v.y``.
+Truy cập các thành phần của vector bằng ``index`` của chúng. ``v[0]`` tương đương với ``v.x``, và ``v[1]`` tương đương với ``v.y``.
 
 .. rst-class:: classref-item-separator
 
@@ -1272,9 +1272,9 @@ Access vector components using their ``index``. ``v[0]`` is equivalent to ``v.x`
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator unary+**\ (\ ) :ref:`🔗<class_Vector2_operator_unplus>`
+:ref:`Vector2<class_Vector2>` **toán tử unary+**\ (\ ) :ref:`🔗 <class_Vector2_operator_unplus>`
 
-Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, but sometimes it can make your code more readable.
+Trả về cùng giá trị như khi không có ``+``. ``+`` một ngôi không làm gì, nhưng đôi khi có thể giúp mã của bạn dễ đọc hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1284,16 +1284,16 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator unary-**\ (\ ) :ref:`🔗<class_Vector2_operator_unminus>`
+:ref:`Vector2<class_Vector2>` **toán tử unary-**\ (\ ) :ref:`🔗 <class_Vector2_operator_unminus>`
 
-Returns the negative value of the **Vector2**. This is the same as writing ``Vector2(-v.x, -v.y)``. This operation flips the direction of the vector while keeping the same magnitude. With floats, the number zero can be either positive or negative.
+Trả về giá trị âm của **Vector2**. Điều này tương đương với việc viết ``Vector2(-v.x, -v.y)``. Phép toán này đảo hướng của vector trong khi vẫn giữ nguyên độ lớn. Với số thực, số 0 có thể là số dương hoặc số âm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

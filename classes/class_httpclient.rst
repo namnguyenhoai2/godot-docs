@@ -10,47 +10,47 @@
 HTTPClient
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Low-level hyper-text transfer protocol client.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Hyper-text transfer protocol client (sometimes called "User Agent"). Used to make HTTP requests to download web content, upload files and other data or to communicate with various services, among other use cases.
-
-See the :ref:`HTTPRequest<class_HTTPRequest>` node for a higher-level alternative.
-
-\ **Note:** This client only needs to connect to a host once (see :ref:`connect_to_host()<class_HTTPClient_method_connect_to_host>`) to send multiple requests. Because of this, methods that take URLs usually take just the part after the host instead of the full URL, as the client is already connected to a host. See :ref:`request()<class_HTTPClient_method_request>` for a full example and to get started.
-
-An **HTTPClient** should be reused between multiple requests or to connect to different hosts instead of creating one client per request. Supports Transport Layer Security (TLS), including server certificate verification. HTTP status codes in the 2xx range indicate success, 3xx redirection (i.e. "try again, but over here"), 4xx something was wrong with the request, and 5xx something went wrong on the server's side.
-
-For more information on HTTP, see `MDN's documentation on HTTP <https://developer.mozilla.org/en-US/docs/Web/HTTP>`__ (or read `RFC 2616 <https://tools.ietf.org/html/rfc2616>`__ to get it straight from the source).
-
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
-
-\ **Note:** It's recommended to use transport encryption (TLS) and to avoid sending sensitive information (such as login credentials) in HTTP GET URL parameters. Consider using HTTP POST requests or HTTP headers for such information instead.
-
-\ **Note:** When performing HTTP requests from a project exported to Web, keep in mind the remote server may not allow requests from foreign origins due to `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`__. If you host the server in question, you should modify its backend to allow requests from foreign origins by adding the ``Access-Control-Allow-Origin: *`` HTTP header.
-
-\ **Note:** TLS support is currently limited to TLSv1.2 and TLSv1.3. Attempting to connect to a server that only supports older (insecure) TLS versions will return an error.
-
-\ **Warning:** TLS certificate revocation and certificate pinning are currently not supported. Revoked certificates are accepted as long as they are otherwise valid. If this is a concern, you may want to use automatically managed certificates with a short validity period.
+Client giao thức truyền siêu văn bản ở cấp thấp.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Client giao thức truyền siêu văn bản (đôi khi được gọi là "User Agent"). Được sử dụng để thực hiện các HTTP request nhằm tải xuống nội dung web, tải lên tệp và dữ liệu khác hoặc giao tiếp với nhiều dịch vụ khác nhau, cùng các trường hợp sử dụng khác.
+
+Xem node :ref:`HTTPRequest<class_HTTPRequest>` để sử dụng một giải pháp ở cấp cao hơn.
+
+\ **Lưu ý:** Client này chỉ cần kết nối với một host một lần (xem :ref:`connect_to_host()<class_HTTPClient_method_connect_to_host>`) để gửi nhiều request. Vì vậy, các method nhận URL thường chỉ nhận phần sau host thay vì toàn bộ URL, vì client đã được kết nối với một host. Xem :ref:`request()<class_HTTPClient_method_request>` để biết ví dụ đầy đủ và bắt đầu sử dụng.
+
+Nên tái sử dụng một **HTTPClient** cho nhiều request hoặc để kết nối với các host khác nhau, thay vì tạo một client cho mỗi request. Hỗ trợ Transport Layer Security (TLS), bao gồm xác minh certificate của server. Các mã trạng thái HTTP trong khoảng 2xx cho biết request thành công, 3xx cho biết chuyển hướng (tức là "thử lại, nhưng ở đây"), 4xx cho biết request có vấn đề và 5xx cho biết đã xảy ra lỗi ở phía server.
+
+Để biết thêm thông tin về HTTP, hãy xem `tài liệu HTTP của MDN <https://developer.mozilla.org/en-US/docs/Web/HTTP>`__ (hoặc đọc `RFC 2616 <https://tools.ietf.org/html/rfc2616>`__ để xem thông tin trực tiếp từ nguồn).
+
+\ **Lưu ý:** Khi xuất sang Android, hãy đảm bảo bật quyền ``INTERNET`` trong preset xuất Android trước khi xuất dự án hoặc sử dụng tính năng deploy một lần nhấp. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
+
+\ **Lưu ý:** Bạn nên sử dụng mã hóa truyền tải (TLS) và tránh gửi thông tin nhạy cảm (chẳng hạn như thông tin đăng nhập) trong các tham số URL của HTTP GET. Thay vào đó, hãy cân nhắc sử dụng các yêu cầu HTTP POST hoặc HTTP headers cho những thông tin này.
+
+\ **Lưu ý:** Khi thực hiện các yêu cầu HTTP từ một dự án được xuất sang Web, hãy lưu ý rằng máy chủ từ xa có thể không cho phép các yêu cầu từ những origin khác do `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`__. Nếu bạn lưu trữ máy chủ đó, hãy sửa backend của máy chủ để cho phép các yêu cầu từ những origin khác bằng cách thêm HTTP header ``Access-Control-Allow-Origin: *``.
+
+\ **Lưu ý:** Hỗ trợ TLS hiện chỉ giới hạn ở TLSv1.2 và TLSv1.3. Việc cố gắng kết nối với máy chủ chỉ hỗ trợ các phiên bản TLS cũ hơn (không an toàn) sẽ trả về lỗi.
+
+\ **Cảnh báo:** Hiện chưa hỗ trợ thu hồi chứng chỉ TLS và certificate pinning. Các chứng chỉ đã bị thu hồi vẫn được chấp nhận miễn là chúng vẫn hợp lệ về các mặt khác. Nếu đây là vấn đề đáng lo ngại, bạn có thể muốn sử dụng các chứng chỉ được quản lý tự động với thời hạn hiệu lực ngắn.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`HTTP client class <../tutorials/networking/http_client_class>`
+- :doc:`Lớp HTTP client <../tutorials/networking/http_client_class>`
 
-- :doc:`TLS certificates <../tutorials/networking/ssl_certificates>`
+- :doc:`Chứng chỉ TLS <../tutorials/networking/ssl_certificates>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -66,45 +66,45 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`close<class_HTTPClient_method_close>`\ (\ )                                                                                                                                                                                                                   |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`connect_to_host<class_HTTPClient_method_connect_to_host>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>` = -1, tls_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )                                                              |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`get_response_body_length<class_HTTPClient_method_get_response_body_length>`\ (\ ) |const|                                                                                                                                                                     |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`get_response_code<class_HTTPClient_method_get_response_code>`\ (\ ) |const|                                                                                                                                                                                   |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_response_headers<class_HTTPClient_method_get_response_headers>`\ (\ )                                                                                                                                                                                     |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`get_response_headers_as_dictionary<class_HTTPClient_method_get_response_headers_as_dictionary>`\ (\ )                                                                                                                                                         |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Status<enum_HTTPClient_Status>`             | :ref:`get_status<class_HTTPClient_method_get_status>`\ (\ ) |const|                                                                                                                                                                                                 |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`has_response<class_HTTPClient_method_has_response>`\ (\ ) |const|                                                                                                                                                                                             |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`is_response_chunked<class_HTTPClient_method_is_response_chunked>`\ (\ ) |const|                                                                                                                                                                               |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`poll<class_HTTPClient_method_poll>`\ (\ )                                                                                                                                                                                                                     |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`query_string_from_dict<class_HTTPClient_method_query_string_from_dict>`\ (\ fields\: :ref:`Dictionary<class_Dictionary>`\ )                                                                                                                                   |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>`     | :ref:`read_response_body_chunk<class_HTTPClient_method_read_response_body_chunk>`\ (\ )                                                                                                                                                                             |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`request<class_HTTPClient_method_request>`\ (\ method\: :ref:`Method<enum_HTTPClient_Method>`, url\: :ref:`String<class_String>`, headers\: :ref:`PackedStringArray<class_PackedStringArray>`, body\: :ref:`String<class_String>` = ""\ )                      |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`request_raw<class_HTTPClient_method_request_raw>`\ (\ method\: :ref:`Method<enum_HTTPClient_Method>`, url\: :ref:`String<class_String>`, headers\: :ref:`PackedStringArray<class_PackedStringArray>`, body\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_http_proxy<class_HTTPClient_method_set_http_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                               |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_https_proxy<class_HTTPClient_method_set_https_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                             |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`close<class_HTTPClient_method_close>`\ (\ )                                                                                                                                                                                                                    |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`              | :ref:`connect_to_host<class_HTTPClient_method_connect_to_host>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>` = -1, tls_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )                                                               |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`get_response_body_length<class_HTTPClient_method_get_response_body_length>`\ (\ ) |const|                                                                                                                                                                      |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`get_response_code<class_HTTPClient_method_get_response_code>`\ (\ ) |const|                                                                                                                                                                                    |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_response_headers<class_HTTPClient_method_get_response_headers>`\ (\ )                                                                                                                                                                                      |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`get_response_headers_as_dictionary<class_HTTPClient_method_get_response_headers_as_dictionary>`\ (\ )                                                                                                                                                          |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Trạng thái <enum_HTTPClient_Status>`        | :ref:`get_status<class_HTTPClient_method_get_status>`\ (\ ) |const|                                                                                                                                                                                                  |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`has_response<class_HTTPClient_method_has_response>`\ (\ ) |const|                                                                                                                                                                                              |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`is_response_chunked<class_HTTPClient_method_is_response_chunked>`\ (\ ) |const|                                                                                                                                                                                |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`              | :ref:`poll<class_HTTPClient_method_poll>`\ (\ )                                                                                                                                                                                                                      |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`query_string_from_dict<class_HTTPClient_method_query_string_from_dict>`\ (\ fields\: :ref:`Dictionary<class_Dictionary>`\ )                                                                                                                                    |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedByteArray<class_PackedByteArray>`     | :ref:`read_response_body_chunk<class_HTTPClient_method_read_response_body_chunk>`\ (\ )                                                                                                                                                                              |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`              | :ref:`request<class_HTTPClient_method_request>`\ (\ method\: :ref:`Method <enum_HTTPClient_Method>`, url\: :ref:`String<class_String>`, headers\: :ref:`PackedStringArray<class_PackedStringArray>`, body\: :ref:`String<class_String>` = ""\ )                      |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`              | :ref:`request_raw<class_HTTPClient_method_request_raw>`\ (\ method\: :ref:`Method <enum_HTTPClient_Method>`, url\: :ref:`String<class_String>`, headers\: :ref:`PackedStringArray<class_PackedStringArray>`, body\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_http_proxy<class_HTTPClient_method_set_http_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                                |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`set_https_proxy<class_HTTPClient_method_set_https_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                              |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -112,14 +112,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_HTTPClient_Method:
 
 .. rst-class:: classref-enumeration
 
-enum **Method**: :ref:`🔗<enum_HTTPClient_Method>`
+enum **Method**: :ref:`🔗 <enum_HTTPClient_Method>`
 
 .. _class_HTTPClient_constant_METHOD_GET:
 
@@ -127,7 +127,7 @@ enum **Method**: :ref:`🔗<enum_HTTPClient_Method>`
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_GET** = ``0``
 
-HTTP GET method. The GET method requests a representation of the specified resource. Requests using GET should only retrieve data.
+Phương thức HTTP GET. Phương thức GET yêu cầu biểu diễn của tài nguyên được chỉ định. Các yêu cầu sử dụng GET chỉ nên truy xuất dữ liệu.
 
 .. _class_HTTPClient_constant_METHOD_HEAD:
 
@@ -135,7 +135,7 @@ HTTP GET method. The GET method requests a representation of the specified resou
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_HEAD** = ``1``
 
-HTTP HEAD method. The HEAD method asks for a response identical to that of a GET request, but without the response body. This is useful to request metadata like HTTP headers or to check if a resource exists.
+Phương thức HTTP HEAD. Phương thức HEAD yêu cầu một phản hồi giống hệt phản hồi của yêu cầu GET nhưng không có phần thân phản hồi. Điều này hữu ích khi yêu cầu siêu dữ liệu như các header HTTP hoặc kiểm tra xem một tài nguyên có tồn tại hay không.
 
 .. _class_HTTPClient_constant_METHOD_POST:
 
@@ -143,7 +143,7 @@ HTTP HEAD method. The HEAD method asks for a response identical to that of a GET
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_POST** = ``2``
 
-HTTP POST method. The POST method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server. This is often used for forms and submitting data or uploading files.
+Phương thức HTTP POST. Phương thức POST được dùng để gửi một thực thể đến tài nguyên được chỉ định, thường gây ra thay đổi trạng thái hoặc các tác động phụ trên máy chủ. Phương thức này thường được dùng cho biểu mẫu, gửi dữ liệu hoặc tải tệp lên.
 
 .. _class_HTTPClient_constant_METHOD_PUT:
 
@@ -151,7 +151,7 @@ HTTP POST method. The POST method is used to submit an entity to the specified r
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_PUT** = ``3``
 
-HTTP PUT method. The PUT method asks to replace all current representations of the target resource with the request payload. (You can think of POST as "create or update" and PUT as "update", although many services tend to not make a clear distinction or change their meaning).
+Phương thức HTTP PUT. Phương thức PUT yêu cầu thay thế tất cả các biểu diễn hiện tại của tài nguyên đích bằng payload của yêu cầu. (Bạn có thể hiểu POST là "tạo hoặc cập nhật" còn PUT là "cập nhật", mặc dù nhiều dịch vụ thường không phân biệt rõ ràng hoặc thay đổi ý nghĩa của chúng).
 
 .. _class_HTTPClient_constant_METHOD_DELETE:
 
@@ -159,7 +159,7 @@ HTTP PUT method. The PUT method asks to replace all current representations of t
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_DELETE** = ``4``
 
-HTTP DELETE method. The DELETE method requests to delete the specified resource.
+Phương thức HTTP DELETE. Phương thức DELETE yêu cầu xóa tài nguyên được chỉ định.
 
 .. _class_HTTPClient_constant_METHOD_OPTIONS:
 
@@ -167,7 +167,7 @@ HTTP DELETE method. The DELETE method requests to delete the specified resource.
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_OPTIONS** = ``5``
 
-HTTP OPTIONS method. The OPTIONS method asks for a description of the communication options for the target resource. Rarely used.
+Phương thức HTTP OPTIONS. Phương thức OPTIONS yêu cầu mô tả các tùy chọn giao tiếp cho tài nguyên đích. Hiếm khi được sử dụng.
 
 .. _class_HTTPClient_constant_METHOD_TRACE:
 
@@ -175,7 +175,7 @@ HTTP OPTIONS method. The OPTIONS method asks for a description of the communicat
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_TRACE** = ``6``
 
-HTTP TRACE method. The TRACE method performs a message loop-back test along the path to the target resource. Returns the entire HTTP request received in the response body. Rarely used.
+Phương thức HTTP TRACE. Phương thức TRACE thực hiện kiểm tra vòng lặp thông báo dọc theo đường dẫn đến tài nguyên đích. Trả về toàn bộ yêu cầu HTTP đã nhận trong phần nội dung phản hồi. Hiếm khi được sử dụng.
 
 .. _class_HTTPClient_constant_METHOD_CONNECT:
 
@@ -183,7 +183,7 @@ HTTP TRACE method. The TRACE method performs a message loop-back test along the 
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_CONNECT** = ``7``
 
-HTTP CONNECT method. The CONNECT method establishes a tunnel to the server identified by the target resource. Rarely used.
+Phương thức HTTP CONNECT. Phương thức CONNECT thiết lập một tunnel đến máy chủ được xác định bởi tài nguyên đích. Hiếm khi được sử dụng.
 
 .. _class_HTTPClient_constant_METHOD_PATCH:
 
@@ -191,7 +191,7 @@ HTTP CONNECT method. The CONNECT method establishes a tunnel to the server ident
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_PATCH** = ``8``
 
-HTTP PATCH method. The PATCH method is used to apply partial modifications to a resource.
+Phương thức HTTP PATCH. Phương thức PATCH được sử dụng để áp dụng các sửa đổi một phần cho tài nguyên.
 
 .. _class_HTTPClient_constant_METHOD_MAX:
 
@@ -199,7 +199,7 @@ HTTP PATCH method. The PATCH method is used to apply partial modifications to a 
 
 :ref:`Method<enum_HTTPClient_Method>` **METHOD_MAX** = ``9``
 
-Represents the size of the :ref:`Method<enum_HTTPClient_Method>` enum.
+Biểu thị kích thước của enum :ref:`Method <enum_HTTPClient_Method>`.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Represents the size of the :ref:`Method<enum_HTTPClient_Method>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **Status**: :ref:`🔗<enum_HTTPClient_Status>`
+enum **Status**: :ref:`🔗 <enum_HTTPClient_Status>`
 
 .. _class_HTTPClient_constant_STATUS_DISCONNECTED:
 
@@ -217,7 +217,7 @@ enum **Status**: :ref:`🔗<enum_HTTPClient_Status>`
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_DISCONNECTED** = ``0``
 
-Status: Disconnected from the server.
+Trạng thái: Đã ngắt kết nối khỏi máy chủ.
 
 .. _class_HTTPClient_constant_STATUS_RESOLVING:
 
@@ -225,7 +225,7 @@ Status: Disconnected from the server.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_RESOLVING** = ``1``
 
-Status: Currently resolving the hostname for the given URL into an IP.
+Trạng thái: Hiện đang phân giải hostname của URL đã cho thành địa chỉ IP.
 
 .. _class_HTTPClient_constant_STATUS_CANT_RESOLVE:
 
@@ -233,7 +233,7 @@ Status: Currently resolving the hostname for the given URL into an IP.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_CANT_RESOLVE** = ``2``
 
-Status: DNS failure: Can't resolve the hostname for the given URL.
+Trạng thái: Lỗi DNS: Không thể phân giải hostname của URL đã cho.
 
 .. _class_HTTPClient_constant_STATUS_CONNECTING:
 
@@ -241,7 +241,7 @@ Status: DNS failure: Can't resolve the hostname for the given URL.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_CONNECTING** = ``3``
 
-Status: Currently connecting to server.
+Trạng thái: Hiện đang kết nối đến máy chủ.
 
 .. _class_HTTPClient_constant_STATUS_CANT_CONNECT:
 
@@ -249,7 +249,7 @@ Status: Currently connecting to server.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_CANT_CONNECT** = ``4``
 
-Status: Can't connect to the server.
+Trạng thái: Không thể kết nối đến máy chủ.
 
 .. _class_HTTPClient_constant_STATUS_CONNECTED:
 
@@ -257,7 +257,7 @@ Status: Can't connect to the server.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_CONNECTED** = ``5``
 
-Status: Connection established.
+Trạng thái: Đã thiết lập kết nối.
 
 .. _class_HTTPClient_constant_STATUS_REQUESTING:
 
@@ -265,7 +265,7 @@ Status: Connection established.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_REQUESTING** = ``6``
 
-Status: Currently sending request.
+Trạng thái: Hiện đang gửi request.
 
 .. _class_HTTPClient_constant_STATUS_BODY:
 
@@ -273,7 +273,7 @@ Status: Currently sending request.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_BODY** = ``7``
 
-Status: HTTP body received.
+Trạng thái: Đã nhận phần thân HTTP.
 
 .. _class_HTTPClient_constant_STATUS_CONNECTION_ERROR:
 
@@ -281,7 +281,7 @@ Status: HTTP body received.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_CONNECTION_ERROR** = ``8``
 
-Status: Error in HTTP connection.
+Trạng thái: Lỗi trong kết nối HTTP.
 
 .. _class_HTTPClient_constant_STATUS_TLS_HANDSHAKE_ERROR:
 
@@ -289,7 +289,7 @@ Status: Error in HTTP connection.
 
 :ref:`Status<enum_HTTPClient_Status>` **STATUS_TLS_HANDSHAKE_ERROR** = ``9``
 
-Status: Error in TLS handshake.
+Trạng thái: Lỗi trong quá trình bắt tay TLS.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ Status: Error in TLS handshake.
 
 .. rst-class:: classref-enumeration
 
-enum **ResponseCode**: :ref:`🔗<enum_HTTPClient_ResponseCode>`
+enum **ResponseCode**: :ref:`🔗 <enum_HTTPClient_ResponseCode>`
 
 .. _class_HTTPClient_constant_RESPONSE_CONTINUE:
 
@@ -307,7 +307,7 @@ enum **ResponseCode**: :ref:`🔗<enum_HTTPClient_ResponseCode>`
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_CONTINUE** = ``100``
 
-HTTP status code ``100 Continue``. Interim response that indicates everything so far is OK and that the client should continue with the request (or ignore this status if already finished).
+Mã trạng thái HTTP ``100 Continue``. Phản hồi tạm thời cho biết mọi thứ cho đến lúc này đều ổn và client nên tiếp tục request (hoặc bỏ qua trạng thái này nếu đã hoàn tất).
 
 .. _class_HTTPClient_constant_RESPONSE_SWITCHING_PROTOCOLS:
 
@@ -315,7 +315,7 @@ HTTP status code ``100 Continue``. Interim response that indicates everything so
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_SWITCHING_PROTOCOLS** = ``101``
 
-HTTP status code ``101 Switching Protocol``. Sent in response to an ``Upgrade`` request header by the client. Indicates the protocol the server is switching to.
+Mã trạng thái HTTP ``101 Switching Protocol``. Được gửi để phản hồi header request ``Upgrade`` từ client. Cho biết protocol mà server đang chuyển sang.
 
 .. _class_HTTPClient_constant_RESPONSE_PROCESSING:
 
@@ -323,7 +323,7 @@ HTTP status code ``101 Switching Protocol``. Sent in response to an ``Upgrade`` 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_PROCESSING** = ``102``
 
-HTTP status code ``102 Processing`` (WebDAV). Indicates that the server has received and is processing the request, but no response is available yet.
+Mã trạng thái HTTP ``102 Processing`` (WebDAV). Cho biết server đã nhận và đang xử lý request, nhưng chưa có phản hồi nào.
 
 .. _class_HTTPClient_constant_RESPONSE_OK:
 
@@ -331,15 +331,15 @@ HTTP status code ``102 Processing`` (WebDAV). Indicates that the server has rece
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_OK** = ``200``
 
-HTTP status code ``200 OK``. The request has succeeded. Default response for successful requests. Meaning varies depending on the request:
+Mã trạng thái HTTP ``200 OK``. Yêu cầu đã thành công. Phản hồi mặc định cho các yêu cầu thành công. Ý nghĩa thay đổi tùy theo yêu cầu:
 
-- :ref:`METHOD_GET<class_HTTPClient_constant_METHOD_GET>`: The resource has been fetched and is transmitted in the message body.
+- :ref:`METHOD_GET<class_HTTPClient_constant_METHOD_GET>`: Tài nguyên đã được lấy và được truyền trong message body.
 
-- :ref:`METHOD_HEAD<class_HTTPClient_constant_METHOD_HEAD>`: The entity headers are in the message body.
+- :ref:`METHOD_HEAD<class_HTTPClient_constant_METHOD_HEAD>`: Các entity header nằm trong message body.
 
-- :ref:`METHOD_POST<class_HTTPClient_constant_METHOD_POST>`: The resource describing the result of the action is transmitted in the message body.
+- :ref:`METHOD_POST<class_HTTPClient_constant_METHOD_POST>`: Tài nguyên mô tả kết quả của hành động được truyền trong message body.
 
-- :ref:`METHOD_TRACE<class_HTTPClient_constant_METHOD_TRACE>`: The message body contains the request message as received by the server.
+- :ref:`METHOD_TRACE<class_HTTPClient_constant_METHOD_TRACE>`: Message body chứa thông điệp yêu cầu như đã được máy chủ nhận.
 
 .. _class_HTTPClient_constant_RESPONSE_CREATED:
 
@@ -347,7 +347,7 @@ HTTP status code ``200 OK``. The request has succeeded. Default response for suc
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_CREATED** = ``201``
 
-HTTP status code ``201 Created``. The request has succeeded and a new resource has been created as a result of it. This is typically the response sent after a PUT request.
+Mã trạng thái HTTP ``201 Created``. Yêu cầu đã thành công và một tài nguyên mới đã được tạo do yêu cầu đó. Đây thường là phản hồi được gửi sau một yêu cầu PUT.
 
 .. _class_HTTPClient_constant_RESPONSE_ACCEPTED:
 
@@ -355,7 +355,7 @@ HTTP status code ``201 Created``. The request has succeeded and a new resource h
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_ACCEPTED** = ``202``
 
-HTTP status code ``202 Accepted``. The request has been received but not yet acted upon. It is non-committal, meaning that there is no way in HTTP to later send an asynchronous response indicating the outcome of processing the request. It is intended for cases where another process or server handles the request, or for batch processing.
+Mã trạng thái HTTP ``202 Accepted``. Yêu cầu đã được nhận nhưng chưa được xử lý. Đây là trạng thái không mang tính cam kết, nghĩa là trong HTTP không có cách nào để sau đó gửi một phản hồi bất đồng bộ cho biết kết quả xử lý yêu cầu. Trạng thái này dành cho các trường hợp một tiến trình hoặc máy chủ khác xử lý yêu cầu, hoặc để xử lý theo lô.
 
 .. _class_HTTPClient_constant_RESPONSE_NON_AUTHORITATIVE_INFORMATION:
 
@@ -363,7 +363,7 @@ HTTP status code ``202 Accepted``. The request has been received but not yet act
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NON_AUTHORITATIVE_INFORMATION** = ``203``
 
-HTTP status code ``203 Non-Authoritative Information``. This response code means returned meta-information set is not exact set as available from the origin server, but collected from a local or a third party copy. Except this condition, 200 OK response should be preferred instead of this response.
+Mã trạng thái HTTP ``203 Non-Authoritative Information``. Mã phản hồi này có nghĩa là tập hợp siêu thông tin được trả về không phải là tập hợp chính xác như tập hợp có trên máy chủ gốc, mà được thu thập từ một bản sao cục bộ hoặc bản sao của bên thứ ba. Ngoài điều kiện này, nên ưu tiên phản hồi 200 OK thay vì phản hồi này.
 
 .. _class_HTTPClient_constant_RESPONSE_NO_CONTENT:
 
@@ -371,7 +371,7 @@ HTTP status code ``203 Non-Authoritative Information``. This response code means
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NO_CONTENT** = ``204``
 
-HTTP status code ``204 No Content``. There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones.
+Mã trạng thái HTTP ``204 No Content``. Không có nội dung nào cần gửi cho yêu cầu này, nhưng các header có thể hữu ích. User-agent có thể cập nhật các header đã lưu trong bộ nhớ đệm cho tài nguyên này bằng các header mới.
 
 .. _class_HTTPClient_constant_RESPONSE_RESET_CONTENT:
 
@@ -379,7 +379,7 @@ HTTP status code ``204 No Content``. There is no content to send for this reques
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_RESET_CONTENT** = ``205``
 
-HTTP status code ``205 Reset Content``. The server has fulfilled the request and desires that the client resets the "document view" that caused the request to be sent to its original state as received from the origin server.
+Mã trạng thái HTTP ``205 Reset Content``. Máy chủ đã hoàn tất yêu cầu và mong muốn client đặt lại "document view" đã khiến yêu cầu được gửi về trạng thái ban đầu như khi nhận từ máy chủ gốc.
 
 .. _class_HTTPClient_constant_RESPONSE_PARTIAL_CONTENT:
 
@@ -387,7 +387,7 @@ HTTP status code ``205 Reset Content``. The server has fulfilled the request and
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_PARTIAL_CONTENT** = ``206``
 
-HTTP status code ``206 Partial Content``. This response code is used because of a range header sent by the client to separate download into multiple streams.
+Mã trạng thái HTTP ``206 Partial Content``. Mã phản hồi này được sử dụng do client đã gửi một range header để chia quá trình tải xuống thành nhiều luồng.
 
 .. _class_HTTPClient_constant_RESPONSE_MULTI_STATUS:
 
@@ -395,7 +395,7 @@ HTTP status code ``206 Partial Content``. This response code is used because of 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_MULTI_STATUS** = ``207``
 
-HTTP status code ``207 Multi-Status`` (WebDAV). A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.
+Mã trạng thái HTTP ``207 Multi-Status`` (WebDAV). Phản hồi Multi-Status truyền đạt thông tin về nhiều tài nguyên trong những tình huống mà nhiều mã trạng thái có thể phù hợp.
 
 .. _class_HTTPClient_constant_RESPONSE_ALREADY_REPORTED:
 
@@ -403,7 +403,7 @@ HTTP status code ``207 Multi-Status`` (WebDAV). A Multi-Status response conveys 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_ALREADY_REPORTED** = ``208``
 
-HTTP status code ``208 Already Reported`` (WebDAV). Used inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.
+Mã trạng thái HTTP ``208 Already Reported`` (WebDAV). Được sử dụng bên trong phần tử phản hồi DAV: propstat để tránh phải liệt kê lặp lại các thành viên nội bộ của nhiều binding tới cùng một collection.
 
 .. _class_HTTPClient_constant_RESPONSE_IM_USED:
 
@@ -411,7 +411,7 @@ HTTP status code ``208 Already Reported`` (WebDAV). Used inside a DAV: propstat 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_IM_USED** = ``226``
 
-HTTP status code ``226 IM Used`` (WebDAV). The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.
+Mã trạng thái HTTP ``226 IM Used`` (WebDAV). Máy chủ đã hoàn tất yêu cầu GET đối với tài nguyên và phản hồi là một biểu diễn của kết quả từ một hoặc nhiều phép thao tác trên instance được áp dụng cho instance hiện tại.
 
 .. _class_HTTPClient_constant_RESPONSE_MULTIPLE_CHOICES:
 
@@ -419,7 +419,7 @@ HTTP status code ``226 IM Used`` (WebDAV). The server has fulfilled a GET reques
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_MULTIPLE_CHOICES** = ``300``
 
-HTTP status code ``300 Multiple Choice``. The request has more than one possible responses and there is no standardized way to choose one of the responses. User-agent or user should choose one of them.
+Mã trạng thái HTTP ``300 Multiple Choice``. Yêu cầu có nhiều phản hồi khả dĩ và không có cách thức chuẩn hóa để chọn một trong số các phản hồi đó. User-agent hoặc người dùng phải chọn một phản hồi.
 
 .. _class_HTTPClient_constant_RESPONSE_MOVED_PERMANENTLY:
 
@@ -427,7 +427,7 @@ HTTP status code ``300 Multiple Choice``. The request has more than one possible
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_MOVED_PERMANENTLY** = ``301``
 
-HTTP status code ``301 Moved Permanently``. Redirection. This response code means the URI of requested resource has been changed. The new URI is usually included in the response.
+Mã trạng thái HTTP ``301 Moved Permanently``. Chuyển hướng. Mã phản hồi này cho biết URI của tài nguyên được yêu cầu đã thay đổi. URI mới thường được đưa vào phản hồi.
 
 .. _class_HTTPClient_constant_RESPONSE_FOUND:
 
@@ -435,7 +435,7 @@ HTTP status code ``301 Moved Permanently``. Redirection. This response code mean
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_FOUND** = ``302``
 
-HTTP status code ``302 Found``. Temporary redirection. This response code means the URI of requested resource has been changed temporarily. New changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.
+Mã trạng thái HTTP ``302 Found``. Chuyển hướng tạm thời. Mã phản hồi này cho biết URI của tài nguyên được yêu cầu đã tạm thời thay đổi. URI có thể tiếp tục được thay đổi trong tương lai. Do đó, client nên sử dụng URI này trong các yêu cầu sau.
 
 .. _class_HTTPClient_constant_RESPONSE_SEE_OTHER:
 
@@ -443,7 +443,7 @@ HTTP status code ``302 Found``. Temporary redirection. This response code means 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_SEE_OTHER** = ``303``
 
-HTTP status code ``303 See Other``. The server is redirecting the user agent to a different resource, as indicated by a URI in the Location header field, which is intended to provide an indirect response to the original request.
+Mã trạng thái HTTP ``303 See Other``. Máy chủ đang chuyển hướng user-agent đến một tài nguyên khác, như được chỉ ra bởi URI trong trường tiêu đề Location, nhằm cung cấp phản hồi gián tiếp cho yêu cầu ban đầu.
 
 .. _class_HTTPClient_constant_RESPONSE_NOT_MODIFIED:
 
@@ -451,7 +451,7 @@ HTTP status code ``303 See Other``. The server is redirecting the user agent to 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NOT_MODIFIED** = ``304``
 
-HTTP status code ``304 Not Modified``. A conditional GET or HEAD request has been received and would have resulted in a 200 OK response if it were not for the fact that the condition evaluated to ``false``.
+Mã trạng thái HTTP ``304 Not Modified``. Một yêu cầu GET hoặc HEAD có điều kiện đã được nhận và lẽ ra sẽ cho phản hồi 200 OK nếu không phải vì điều kiện được đánh giá là ``false``.
 
 .. _class_HTTPClient_constant_RESPONSE_USE_PROXY:
 
@@ -459,9 +459,9 @@ HTTP status code ``304 Not Modified``. A conditional GET or HEAD request has bee
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_USE_PROXY** = ``305``
 
-**Deprecated:** Many clients ignore this response code for security reasons. It is also deprecated by the HTTP standard.
+**Đã lỗi thời:** Nhiều client bỏ qua mã phản hồi này vì lý do bảo mật. Mã này cũng đã bị tiêu chuẩn HTTP loại bỏ.
 
-HTTP status code ``305 Use Proxy``.
+Mã trạng thái HTTP ``305 Use Proxy``.
 
 .. _class_HTTPClient_constant_RESPONSE_SWITCH_PROXY:
 
@@ -469,9 +469,9 @@ HTTP status code ``305 Use Proxy``.
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_SWITCH_PROXY** = ``306``
 
-**Deprecated:** Many clients ignore this response code for security reasons. It is also deprecated by the HTTP standard.
+**Đã lỗi thời:** Nhiều client bỏ qua mã phản hồi này vì lý do bảo mật. Mã này cũng đã bị tiêu chuẩn HTTP loại bỏ.
 
-HTTP status code ``306 Switch Proxy``.
+Mã trạng thái HTTP ``306 Switch Proxy``.
 
 .. _class_HTTPClient_constant_RESPONSE_TEMPORARY_REDIRECT:
 
@@ -479,7 +479,7 @@ HTTP status code ``306 Switch Proxy``.
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_TEMPORARY_REDIRECT** = ``307``
 
-HTTP status code ``307 Temporary Redirect``. The target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.
+Mã trạng thái HTTP ``307 Temporary Redirect``. Tài nguyên đích tạm thời nằm dưới một URI khác và user agent KHÔNG ĐƯỢC thay đổi phương thức yêu cầu nếu thực hiện chuyển hướng tự động đến URI đó.
 
 .. _class_HTTPClient_constant_RESPONSE_PERMANENT_REDIRECT:
 
@@ -487,7 +487,7 @@ HTTP status code ``307 Temporary Redirect``. The target resource resides tempora
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_PERMANENT_REDIRECT** = ``308``
 
-HTTP status code ``308 Permanent Redirect``. The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.
+Mã trạng thái HTTP ``308 Permanent Redirect``. Tài nguyên đích đã được gán một URI mới, vĩnh viễn và mọi tham chiếu trong tương lai đến tài nguyên này nên sử dụng một trong các URI đi kèm.
 
 .. _class_HTTPClient_constant_RESPONSE_BAD_REQUEST:
 
@@ -495,7 +495,7 @@ HTTP status code ``308 Permanent Redirect``. The target resource has been assign
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_BAD_REQUEST** = ``400``
 
-HTTP status code ``400 Bad Request``. The request was invalid. The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, invalid request contents, or deceptive request routing).
+Mã trạng thái HTTP ``400 Bad Request``. Yêu cầu không hợp lệ. Máy chủ không thể hoặc sẽ không xử lý yêu cầu do một điều gì đó được xem là lỗi phía client (ví dụ: cú pháp yêu cầu sai, định khung thông báo yêu cầu không hợp lệ, nội dung yêu cầu không hợp lệ hoặc định tuyến yêu cầu mang tính đánh lừa).
 
 .. _class_HTTPClient_constant_RESPONSE_UNAUTHORIZED:
 
@@ -503,7 +503,7 @@ HTTP status code ``400 Bad Request``. The request was invalid. The server cannot
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_UNAUTHORIZED** = ``401``
 
-HTTP status code ``401 Unauthorized``. Credentials required. The request has not been applied because it lacks valid authentication credentials for the target resource.
+Mã trạng thái HTTP ``401 Unauthorized``. Yêu cầu thông tin xác thực. Yêu cầu chưa được áp dụng vì thiếu thông tin xác thực hợp lệ cho tài nguyên đích.
 
 .. _class_HTTPClient_constant_RESPONSE_PAYMENT_REQUIRED:
 
@@ -511,7 +511,7 @@ HTTP status code ``401 Unauthorized``. Credentials required. The request has not
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_PAYMENT_REQUIRED** = ``402``
 
-HTTP status code ``402 Payment Required``. This response code is reserved for future use. Initial aim for creating this code was using it for digital payment systems, however this is not currently used.
+Mã trạng thái HTTP ``402 Payment Required``. Mã phản hồi này được dành cho việc sử dụng trong tương lai. Mục đích ban đầu khi tạo mã này là sử dụng cho các hệ thống thanh toán kỹ thuật số, tuy nhiên hiện tại mã này chưa được sử dụng.
 
 .. _class_HTTPClient_constant_RESPONSE_FORBIDDEN:
 
@@ -519,7 +519,7 @@ HTTP status code ``402 Payment Required``. This response code is reserved for fu
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_FORBIDDEN** = ``403``
 
-HTTP status code ``403 Forbidden``. The client does not have access rights to the content, i.e. they are unauthorized, so server is rejecting to give proper response. Unlike ``401``, the client's identity is known to the server.
+Mã trạng thái HTTP ``403 Forbidden``. Client không có quyền truy cập nội dung, tức là chưa được ủy quyền, nên server từ chối cung cấp phản hồi thích hợp. Không giống ``401``, danh tính của client đã được server biết.
 
 .. _class_HTTPClient_constant_RESPONSE_NOT_FOUND:
 
@@ -527,7 +527,7 @@ HTTP status code ``403 Forbidden``. The client does not have access rights to th
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NOT_FOUND** = ``404``
 
-HTTP status code ``404 Not Found``. The server can not find requested resource. Either the URL is not recognized or the endpoint is valid but the resource itself does not exist. May also be sent instead of 403 to hide existence of a resource if the client is not authorized.
+Mã trạng thái HTTP ``404 Not Found``. Server không thể tìm thấy resource được yêu cầu. URL либо không được nhận diện, hoặc endpoint hợp lệ nhưng bản thân resource không tồn tại. Cũng có thể được gửi thay cho 403 để ẩn sự tồn tại của resource nếu client không được ủy quyền.
 
 .. _class_HTTPClient_constant_RESPONSE_METHOD_NOT_ALLOWED:
 
@@ -535,7 +535,7 @@ HTTP status code ``404 Not Found``. The server can not find requested resource. 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_METHOD_NOT_ALLOWED** = ``405``
 
-HTTP status code ``405 Method Not Allowed``. The request's HTTP method is known by the server but has been disabled and cannot be used. For example, an API may forbid DELETE-ing a resource. The two mandatory methods, GET and HEAD, must never be disabled and should not return this error code.
+Mã trạng thái HTTP ``405 Method Not Allowed``. Server biết HTTP method của request nhưng method đó đã bị vô hiệu hóa và không thể sử dụng. Ví dụ: một API có thể cấm DELETE một resource. Hai method bắt buộc là GET và HEAD không bao giờ được vô hiệu hóa và không nên trả về mã lỗi này.
 
 .. _class_HTTPClient_constant_RESPONSE_NOT_ACCEPTABLE:
 
@@ -543,7 +543,7 @@ HTTP status code ``405 Method Not Allowed``. The request's HTTP method is known 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NOT_ACCEPTABLE** = ``406``
 
-HTTP status code ``406 Not Acceptable``. The target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request. Used when negotiation content.
+Mã trạng thái HTTP ``406 Not Acceptable``. Resource đích không có biểu diễn hiện tại nào được user agent chấp nhận, theo các trường header thương lượng chủ động nhận được trong request. Được sử dụng khi thương lượng nội dung.
 
 .. _class_HTTPClient_constant_RESPONSE_PROXY_AUTHENTICATION_REQUIRED:
 
@@ -551,7 +551,7 @@ HTTP status code ``406 Not Acceptable``. The target resource does not have a cur
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_PROXY_AUTHENTICATION_REQUIRED** = ``407``
 
-HTTP status code ``407 Proxy Authentication Required``. Similar to 401 Unauthorized, but it indicates that the client needs to authenticate itself in order to use a proxy.
+Mã trạng thái HTTP ``407 Proxy Authentication Required``. Tương tự 401 Unauthorized, nhưng cho biết client cần tự xác thực để sử dụng proxy.
 
 .. _class_HTTPClient_constant_RESPONSE_REQUEST_TIMEOUT:
 
@@ -559,7 +559,7 @@ HTTP status code ``407 Proxy Authentication Required``. Similar to 401 Unauthori
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_REQUEST_TIMEOUT** = ``408``
 
-HTTP status code ``408 Request Timeout``. The server did not receive a complete request message within the time that it was prepared to wait.
+Mã trạng thái HTTP ``408 Request Timeout``. Server không nhận được thông điệp request hoàn chỉnh trong khoảng thời gian mà server đã chuẩn bị để chờ.
 
 .. _class_HTTPClient_constant_RESPONSE_CONFLICT:
 
@@ -567,7 +567,7 @@ HTTP status code ``408 Request Timeout``. The server did not receive a complete 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_CONFLICT** = ``409``
 
-HTTP status code ``409 Conflict``. The request could not be completed due to a conflict with the current state of the target resource. This code is used in situations where the user might be able to resolve the conflict and resubmit the request.
+Mã trạng thái HTTP ``409 Conflict``. Request không thể hoàn tất do xung đột với trạng thái hiện tại của resource đích. Mã này được sử dụng trong các tình huống mà người dùng có thể giải quyết xung đột rồi gửi lại request.
 
 .. _class_HTTPClient_constant_RESPONSE_GONE:
 
@@ -575,7 +575,7 @@ HTTP status code ``409 Conflict``. The request could not be completed due to a c
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_GONE** = ``410``
 
-HTTP status code ``410 Gone``. The target resource is no longer available at the origin server and this condition is likely permanent.
+Mã trạng thái HTTP ``410 Gone``. Tài nguyên đích không còn khả dụng trên origin server và nhiều khả năng đây là tình trạng vĩnh viễn.
 
 .. _class_HTTPClient_constant_RESPONSE_LENGTH_REQUIRED:
 
@@ -583,7 +583,7 @@ HTTP status code ``410 Gone``. The target resource is no longer available at the
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_LENGTH_REQUIRED** = ``411``
 
-HTTP status code ``411 Length Required``. The server refuses to accept the request without a defined Content-Length header.
+Mã trạng thái HTTP ``411 Length Required``. Server từ chối chấp nhận request nếu không có header Content-Length được xác định.
 
 .. _class_HTTPClient_constant_RESPONSE_PRECONDITION_FAILED:
 
@@ -591,7 +591,7 @@ HTTP status code ``411 Length Required``. The server refuses to accept the reque
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_PRECONDITION_FAILED** = ``412``
 
-HTTP status code ``412 Precondition Failed``. One or more conditions given in the request header fields evaluated to ``false`` when tested on the server.
+Mã trạng thái HTTP ``412 Precondition Failed``. Một hoặc nhiều điều kiện được nêu trong các trường header của request được đánh giá là ``false`` khi được kiểm tra trên server.
 
 .. _class_HTTPClient_constant_RESPONSE_REQUEST_ENTITY_TOO_LARGE:
 
@@ -599,7 +599,7 @@ HTTP status code ``412 Precondition Failed``. One or more conditions given in th
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_REQUEST_ENTITY_TOO_LARGE** = ``413``
 
-HTTP status code ``413 Entity Too Large``. The server is refusing to process a request because the request payload is larger than the server is willing or able to process.
+Mã trạng thái HTTP ``413 Entity Too Large``. Server từ chối xử lý request vì payload của request lớn hơn mức mà server sẵn sàng hoặc có khả năng xử lý.
 
 .. _class_HTTPClient_constant_RESPONSE_REQUEST_URI_TOO_LONG:
 
@@ -607,7 +607,7 @@ HTTP status code ``413 Entity Too Large``. The server is refusing to process a r
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_REQUEST_URI_TOO_LONG** = ``414``
 
-HTTP status code ``414 Request-URI Too Long``. The server is refusing to service the request because the request-target is longer than the server is willing to interpret.
+Mã trạng thái HTTP ``414 Request-URI Too Long``. Server từ chối phục vụ request vì request-target dài hơn mức mà server sẵn sàng diễn giải.
 
 .. _class_HTTPClient_constant_RESPONSE_UNSUPPORTED_MEDIA_TYPE:
 
@@ -615,7 +615,7 @@ HTTP status code ``414 Request-URI Too Long``. The server is refusing to service
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_UNSUPPORTED_MEDIA_TYPE** = ``415``
 
-HTTP status code ``415 Unsupported Media Type``. The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.
+Mã trạng thái HTTP ``415 Unsupported Media Type``. Origin server từ chối phục vụ request vì payload có định dạng không được method này hỗ trợ trên tài nguyên đích.
 
 .. _class_HTTPClient_constant_RESPONSE_REQUESTED_RANGE_NOT_SATISFIABLE:
 
@@ -623,7 +623,7 @@ HTTP status code ``415 Unsupported Media Type``. The origin server is refusing t
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_REQUESTED_RANGE_NOT_SATISFIABLE** = ``416``
 
-HTTP status code ``416 Requested Range Not Satisfiable``. None of the ranges in the request's Range header field overlap the current extent of the selected resource or the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
+Mã trạng thái HTTP ``416 Requested Range Not Satisfiable``. Không có range nào trong trường header Range của request chồng lấn với phạm vi hiện tại của tài nguyên được chọn, hoặc tập hợp các range được yêu cầu đã bị từ chối do các range không hợp lệ hoặc do yêu cầu quá nhiều range nhỏ hay chồng lấn nhau.
 
 .. _class_HTTPClient_constant_RESPONSE_EXPECTATION_FAILED:
 
@@ -631,7 +631,7 @@ HTTP status code ``416 Requested Range Not Satisfiable``. None of the ranges in 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_EXPECTATION_FAILED** = ``417``
 
-HTTP status code ``417 Expectation Failed``. The expectation given in the request's Expect header field could not be met by at least one of the inbound servers.
+Mã trạng thái HTTP ``417 Expectation Failed``. Không thể đáp ứng kỳ vọng được nêu trong trường Expect của request bởi ít nhất một máy chủ nhận request.
 
 .. _class_HTTPClient_constant_RESPONSE_IM_A_TEAPOT:
 
@@ -639,7 +639,7 @@ HTTP status code ``417 Expectation Failed``. The expectation given in the reques
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_IM_A_TEAPOT** = ``418``
 
-HTTP status code ``418 I'm A Teapot``. Any attempt to brew coffee with a teapot should result in the error code "418 I'm a teapot". The resulting entity body MAY be short and stout.
+Mã trạng thái HTTP ``418 I'm A Teapot``. Mọi nỗ lực pha cà phê bằng ấm trà đều phải trả về mã lỗi "418 I'm a teapot". Phần thân entity kết quả MAY ngắn và chắc.
 
 .. _class_HTTPClient_constant_RESPONSE_MISDIRECTED_REQUEST:
 
@@ -647,7 +647,7 @@ HTTP status code ``418 I'm A Teapot``. Any attempt to brew coffee with a teapot 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_MISDIRECTED_REQUEST** = ``421``
 
-HTTP status code ``421 Misdirected Request``. The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.
+Mã trạng thái HTTP ``421 Misdirected Request``. Request được gửi đến một máy chủ không thể tạo phản hồi. Máy chủ không được cấu hình để tạo phản hồi cho tổ hợp scheme và authority có trong URI của request có thể gửi mã này.
 
 .. _class_HTTPClient_constant_RESPONSE_UNPROCESSABLE_ENTITY:
 
@@ -655,7 +655,7 @@ HTTP status code ``421 Misdirected Request``. The request was directed at a serv
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_UNPROCESSABLE_ENTITY** = ``422``
 
-HTTP status code ``422 Unprocessable Entity`` (WebDAV). The server understands the content type of the request entity (hence a 415 Unsupported Media Type status code is inappropriate), and the syntax of the request entity is correct (thus a 400 Bad Request status code is inappropriate) but was unable to process the contained instructions.
+Mã trạng thái HTTP ``422 Unprocessable Entity`` (WebDAV). Máy chủ hiểu kiểu nội dung của entity trong request (do đó mã trạng thái 415 Unsupported Media Type là không phù hợp), đồng thời cú pháp của entity trong request là chính xác (vì vậy mã trạng thái 400 Bad Request là không phù hợp), nhưng không thể xử lý các chỉ thị chứa bên trong.
 
 .. _class_HTTPClient_constant_RESPONSE_LOCKED:
 
@@ -663,7 +663,7 @@ HTTP status code ``422 Unprocessable Entity`` (WebDAV). The server understands t
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_LOCKED** = ``423``
 
-HTTP status code ``423 Locked`` (WebDAV). The source or destination resource of a method is locked.
+Mã trạng thái HTTP ``423 Locked`` (WebDAV). Resource nguồn hoặc đích của một method đang bị khóa.
 
 .. _class_HTTPClient_constant_RESPONSE_FAILED_DEPENDENCY:
 
@@ -671,7 +671,7 @@ HTTP status code ``423 Locked`` (WebDAV). The source or destination resource of 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_FAILED_DEPENDENCY** = ``424``
 
-HTTP status code ``424 Failed Dependency`` (WebDAV). The method could not be performed on the resource because the requested action depended on another action and that action failed.
+Mã trạng thái HTTP ``424 Failed Dependency`` (WebDAV). Không thể thực hiện method trên resource vì hành động được yêu cầu phụ thuộc vào một hành động khác và hành động đó đã thất bại.
 
 .. _class_HTTPClient_constant_RESPONSE_UPGRADE_REQUIRED:
 
@@ -679,7 +679,7 @@ HTTP status code ``424 Failed Dependency`` (WebDAV). The method could not be per
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_UPGRADE_REQUIRED** = ``426``
 
-HTTP status code ``426 Upgrade Required``. The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.
+Mã trạng thái HTTP ``426 Upgrade Required``. Máy chủ từ chối thực hiện request bằng giao thức hiện tại, nhưng có thể sẽ thực hiện sau khi client nâng cấp lên một giao thức khác.
 
 .. _class_HTTPClient_constant_RESPONSE_PRECONDITION_REQUIRED:
 
@@ -687,7 +687,7 @@ HTTP status code ``426 Upgrade Required``. The server refuses to perform the req
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_PRECONDITION_REQUIRED** = ``428``
 
-HTTP status code ``428 Precondition Required``. The origin server requires the request to be conditional.
+Mã trạng thái HTTP ``428 Precondition Required``. Máy chủ gốc yêu cầu yêu cầu này phải có điều kiện.
 
 .. _class_HTTPClient_constant_RESPONSE_TOO_MANY_REQUESTS:
 
@@ -695,7 +695,7 @@ HTTP status code ``428 Precondition Required``. The origin server requires the r
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_TOO_MANY_REQUESTS** = ``429``
 
-HTTP status code ``429 Too Many Requests``. The user has sent too many requests in a given amount of time (see "rate limiting"). Back off and increase time between requests or try again later.
+Mã trạng thái HTTP ``429 Too Many Requests``. Người dùng đã gửi quá nhiều yêu cầu trong một khoảng thời gian nhất định (xem "rate limiting"). Hãy giảm tốc độ và tăng khoảng thời gian giữa các yêu cầu hoặc thử lại sau.
 
 .. _class_HTTPClient_constant_RESPONSE_REQUEST_HEADER_FIELDS_TOO_LARGE:
 
@@ -703,7 +703,7 @@ HTTP status code ``429 Too Many Requests``. The user has sent too many requests 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_REQUEST_HEADER_FIELDS_TOO_LARGE** = ``431``
 
-HTTP status code ``431 Request Header Fields Too Large``. The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.
+Mã trạng thái HTTP ``431 Request Header Fields Too Large``. Máy chủ không sẵn sàng xử lý yêu cầu vì các trường header của yêu cầu quá lớn. Yêu cầu CÓ THỂ được gửi lại sau khi giảm kích thước các trường header của yêu cầu.
 
 .. _class_HTTPClient_constant_RESPONSE_UNAVAILABLE_FOR_LEGAL_REASONS:
 
@@ -711,7 +711,7 @@ HTTP status code ``431 Request Header Fields Too Large``. The server is unwillin
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_UNAVAILABLE_FOR_LEGAL_REASONS** = ``451``
 
-HTTP status code ``451 Response Unavailable For Legal Reasons``. The server is denying access to the resource as a consequence of a legal demand.
+Mã trạng thái HTTP ``451 Response Unavailable For Legal Reasons``. Máy chủ từ chối quyền truy cập vào tài nguyên do một yêu cầu pháp lý.
 
 .. _class_HTTPClient_constant_RESPONSE_INTERNAL_SERVER_ERROR:
 
@@ -719,7 +719,7 @@ HTTP status code ``451 Response Unavailable For Legal Reasons``. The server is d
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_INTERNAL_SERVER_ERROR** = ``500``
 
-HTTP status code ``500 Internal Server Error``. The server encountered an unexpected condition that prevented it from fulfilling the request.
+Mã trạng thái HTTP ``500 Internal Server Error``. Máy chủ gặp phải một điều kiện không mong đợi khiến không thể hoàn thành yêu cầu.
 
 .. _class_HTTPClient_constant_RESPONSE_NOT_IMPLEMENTED:
 
@@ -727,7 +727,7 @@ HTTP status code ``500 Internal Server Error``. The server encountered an unexpe
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NOT_IMPLEMENTED** = ``501``
 
-HTTP status code ``501 Not Implemented``. The server does not support the functionality required to fulfill the request.
+Mã trạng thái HTTP ``501 Not Implemented``. Máy chủ không hỗ trợ chức năng cần thiết để hoàn thành yêu cầu.
 
 .. _class_HTTPClient_constant_RESPONSE_BAD_GATEWAY:
 
@@ -735,7 +735,7 @@ HTTP status code ``501 Not Implemented``. The server does not support the functi
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_BAD_GATEWAY** = ``502``
 
-HTTP status code ``502 Bad Gateway``. The server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request. Usually returned by load balancers or proxies.
+Mã trạng thái HTTP ``502 Bad Gateway``. Máy chủ, khi hoạt động như một gateway hoặc proxy, đã nhận được phản hồi không hợp lệ từ một máy chủ đầu vào mà nó truy cập trong khi cố gắng hoàn thành yêu cầu. Thường được load balancer hoặc proxy trả về.
 
 .. _class_HTTPClient_constant_RESPONSE_SERVICE_UNAVAILABLE:
 
@@ -743,7 +743,7 @@ HTTP status code ``502 Bad Gateway``. The server, while acting as a gateway or p
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_SERVICE_UNAVAILABLE** = ``503``
 
-HTTP status code ``503 Service Unavailable``. The server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay. Try again later.
+Mã trạng thái HTTP ``503 Service Unavailable``. Hiện tại, máy chủ không thể xử lý yêu cầu do quá tải tạm thời hoặc đang bảo trì theo lịch, tình trạng này có thể sẽ được khắc phục sau một khoảng thời gian. Hãy thử lại sau.
 
 .. _class_HTTPClient_constant_RESPONSE_GATEWAY_TIMEOUT:
 
@@ -751,7 +751,7 @@ HTTP status code ``503 Service Unavailable``. The server is currently unable to 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_GATEWAY_TIMEOUT** = ``504``
 
-HTTP status code ``504 Gateway Timeout``. The server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request. Usually returned by load balancers or proxies.
+Mã trạng thái HTTP ``504 Gateway Timeout``. Máy chủ, khi hoạt động như một gateway hoặc proxy, đã không nhận được phản hồi kịp thời từ máy chủ upstream mà nó cần truy cập để hoàn tất yêu cầu. Thường được các bộ cân bằng tải hoặc proxy trả về.
 
 .. _class_HTTPClient_constant_RESPONSE_HTTP_VERSION_NOT_SUPPORTED:
 
@@ -759,7 +759,7 @@ HTTP status code ``504 Gateway Timeout``. The server, while acting as a gateway 
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_HTTP_VERSION_NOT_SUPPORTED** = ``505``
 
-HTTP status code ``505 HTTP Version Not Supported``. The server does not support, or refuses to support, the major version of HTTP that was used in the request message.
+Mã trạng thái HTTP ``505 HTTP Version Not Supported``. Máy chủ không hỗ trợ hoặc từ chối hỗ trợ phiên bản chính của HTTP được sử dụng trong thông điệp yêu cầu.
 
 .. _class_HTTPClient_constant_RESPONSE_VARIANT_ALSO_NEGOTIATES:
 
@@ -767,7 +767,7 @@ HTTP status code ``505 HTTP Version Not Supported``. The server does not support
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_VARIANT_ALSO_NEGOTIATES** = ``506``
 
-HTTP status code ``506 Variant Also Negotiates``. The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.
+Mã trạng thái HTTP ``506 Variant Also Negotiates``. Máy chủ có lỗi cấu hình nội bộ: tài nguyên biến thể đã chọn được cấu hình để tự thực hiện thương lượng nội dung trong suốt, do đó không phải là một điểm cuối hợp lệ trong quy trình thương lượng.
 
 .. _class_HTTPClient_constant_RESPONSE_INSUFFICIENT_STORAGE:
 
@@ -775,7 +775,7 @@ HTTP status code ``506 Variant Also Negotiates``. The server has an internal con
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_INSUFFICIENT_STORAGE** = ``507``
 
-HTTP status code ``507 Insufficient Storage``. The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.
+Mã trạng thái HTTP ``507 Insufficient Storage``. Không thể thực hiện phương thức trên tài nguyên vì máy chủ không thể lưu biểu diễn cần thiết để hoàn tất yêu cầu thành công.
 
 .. _class_HTTPClient_constant_RESPONSE_LOOP_DETECTED:
 
@@ -783,7 +783,7 @@ HTTP status code ``507 Insufficient Storage``. The method could not be performed
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_LOOP_DETECTED** = ``508``
 
-HTTP status code ``508 Loop Detected``. The server terminated an operation because it encountered an infinite loop while processing a request with "Depth: infinity". This status indicates that the entire operation failed.
+Mã trạng thái HTTP ``508 Loop Detected``. Máy chủ đã chấm dứt một thao tác vì gặp vòng lặp vô hạn khi xử lý yêu cầu với "Depth: infinity". Trạng thái này cho biết toàn bộ thao tác đã thất bại.
 
 .. _class_HTTPClient_constant_RESPONSE_NOT_EXTENDED:
 
@@ -791,7 +791,7 @@ HTTP status code ``508 Loop Detected``. The server terminated an operation becau
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NOT_EXTENDED** = ``510``
 
-HTTP status code ``510 Not Extended``. The policy for accessing the resource has not been met in the request. The server should send back all the information necessary for the client to issue an extended request.
+Mã trạng thái HTTP ``510 Not Extended``. Yêu cầu chưa đáp ứng chính sách truy cập tài nguyên. Máy chủ cần gửi lại mọi thông tin cần thiết để máy khách gửi một yêu cầu mở rộng.
 
 .. _class_HTTPClient_constant_RESPONSE_NETWORK_AUTH_REQUIRED:
 
@@ -799,7 +799,7 @@ HTTP status code ``510 Not Extended``. The policy for accessing the resource has
 
 :ref:`ResponseCode<enum_HTTPClient_ResponseCode>` **RESPONSE_NETWORK_AUTH_REQUIRED** = ``511``
 
-HTTP status code ``511 Network Authentication Required``. The client needs to authenticate to gain network access.
+Mã trạng thái HTTP ``511 Network Authentication Required``. Máy khách cần xác thực để có quyền truy cập mạng.
 
 .. rst-class:: classref-section-separator
 
@@ -807,8 +807,8 @@ HTTP status code ``511 Network Authentication Required``. The client needs to au
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_HTTPClient_property_blocking_mode_enabled:
 
@@ -821,7 +821,7 @@ Property Descriptions
 - |void| **set_blocking_mode**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_blocking_mode_enabled**\ (\ )
 
-If ``true``, execution will block until all data is read from the response.
+Nếu ``true``, quá trình thực thi sẽ chặn cho đến khi tất cả dữ liệu được đọc từ phản hồi.
 
 .. rst-class:: classref-item-separator
 
@@ -831,14 +831,14 @@ If ``true``, execution will block until all data is read from the response.
 
 .. rst-class:: classref-property
 
-:ref:`StreamPeer<class_StreamPeer>` **connection** :ref:`🔗<class_HTTPClient_property_connection>`
+:ref:`StreamPeer<class_StreamPeer>` **kết nối** :ref:`🔗 <class_HTTPClient_property_connection>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_connection**\ (\ value\: :ref:`StreamPeer<class_StreamPeer>`\ )
 - :ref:`StreamPeer<class_StreamPeer>` **get_connection**\ (\ )
 
-The connection to use for this client.
+Kết nối được sử dụng cho client này.
 
 .. rst-class:: classref-item-separator
 
@@ -855,7 +855,7 @@ The connection to use for this client.
 - |void| **set_read_chunk_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_read_chunk_size**\ (\ )
 
-The size of the buffer used and maximum bytes to read per iteration. See :ref:`read_response_body_chunk()<class_HTTPClient_method_read_response_body_chunk>`.
+Kích thước buffer được sử dụng và số byte tối đa cần đọc trong mỗi lần lặp. Xem :ref:`read_response_body_chunk()<class_HTTPClient_method_read_response_body_chunk>`.
 
 .. rst-class:: classref-section-separator
 
@@ -863,8 +863,8 @@ The size of the buffer used and maximum bytes to read per iteration. See :ref:`r
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_HTTPClient_method_close:
 
@@ -872,7 +872,7 @@ Method Descriptions
 
 |void| **close**\ (\ ) :ref:`🔗<class_HTTPClient_method_close>`
 
-Closes the current connection, allowing reuse of this **HTTPClient**.
+Đóng kết nối hiện tại, cho phép sử dụng lại **HTTPClient** này.
 
 .. rst-class:: classref-item-separator
 
@@ -884,9 +884,9 @@ Closes the current connection, allowing reuse of this **HTTPClient**.
 
 :ref:`Error<enum_@GlobalScope_Error>` **connect_to_host**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>` = -1, tls_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) :ref:`🔗<class_HTTPClient_method_connect_to_host>`
 
-Connects to a host. This needs to be done before any requests are sent.
+Kết nối đến một máy chủ. Việc này cần được thực hiện trước khi gửi bất kỳ request nào.
 
-If no ``port`` is specified (or ``-1`` is used), it is automatically set to 80 for HTTP and 443 for HTTPS. You can pass the optional ``tls_options`` parameter to customize the trusted certification authorities, or the common name verification when using HTTPS. See :ref:`TLSOptions.client()<class_TLSOptions_method_client>` and :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
+Nếu không chỉ định ``port`` (hoặc sử dụng ``-1``), giá trị này sẽ tự động được đặt thành 80 cho HTTP và 443 cho HTTPS. Bạn có thể truyền tham số tùy chọn ``tls_options`` để tùy chỉnh các cơ quan cấp chứng chỉ đáng tin cậy hoặc việc xác minh common name khi sử dụng HTTPS. Xem :ref:`TLSOptions.client()<class_TLSOptions_method_client>` và :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
 
 .. rst-class:: classref-item-separator
 
@@ -898,11 +898,11 @@ If no ``port`` is specified (or ``-1`` is used), it is automatically set to 80 f
 
 :ref:`int<class_int>` **get_response_body_length**\ (\ ) |const| :ref:`🔗<class_HTTPClient_method_get_response_body_length>`
 
-Returns the response's body length.
+Trả về độ dài body của response.
 
-\ **Note:** Some Web servers may not send a body length. In this case, the value returned will be ``-1``. If using chunked transfer encoding, the body length will also be ``-1``.
+\ **Lưu ý:** Một số Web server có thể không gửi độ dài body. Trong trường hợp này, giá trị được trả về sẽ là ``-1``. Nếu sử dụng mã hóa truyền theo chunk, độ dài body cũng sẽ là ``-1``.
 
-\ **Note:** This function always returns ``-1`` on the Web platform due to browsers limitations.
+\ **Lưu ý:** Hàm này luôn trả về ``-1`` trên nền tảng Web do các hạn chế của trình duyệt.
 
 .. rst-class:: classref-item-separator
 
@@ -914,7 +914,7 @@ Returns the response's body length.
 
 :ref:`int<class_int>` **get_response_code**\ (\ ) |const| :ref:`🔗<class_HTTPClient_method_get_response_code>`
 
-Returns the response's HTTP status code.
+Trả về mã trạng thái HTTP của response.
 
 .. rst-class:: classref-item-separator
 
@@ -926,7 +926,7 @@ Returns the response's HTTP status code.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_response_headers**\ (\ ) :ref:`🔗<class_HTTPClient_method_get_response_headers>`
 
-Returns the response headers.
+Trả về các header của response.
 
 .. rst-class:: classref-item-separator
 
@@ -938,7 +938,7 @@ Returns the response headers.
 
 :ref:`Dictionary<class_Dictionary>` **get_response_headers_as_dictionary**\ (\ ) :ref:`🔗<class_HTTPClient_method_get_response_headers_as_dictionary>`
 
-Returns all response headers as a :ref:`Dictionary<class_Dictionary>`. Each entry is composed by the header name, and a :ref:`String<class_String>` containing the values separated by ``"; "``. The casing is kept the same as the headers were received.
+Trả về tất cả các header của response dưới dạng :ref:`Dictionary<class_Dictionary>`. Mỗi mục bao gồm tên header và một :ref:`String<class_String>` chứa các giá trị được phân tách bằng ``"; "``. Kiểu chữ được giữ nguyên như khi nhận các header.
 
 ::
 
@@ -957,7 +957,7 @@ Returns all response headers as a :ref:`Dictionary<class_Dictionary>`. Each entr
 
 :ref:`Status<enum_HTTPClient_Status>` **get_status**\ (\ ) |const| :ref:`🔗<class_HTTPClient_method_get_status>`
 
-Returns a :ref:`Status<enum_HTTPClient_Status>` constant. Need to call :ref:`poll()<class_HTTPClient_method_poll>` in order to get status updates.
+Trả về một hằng số :ref:`Status <enum_HTTPClient_Status>`. Cần gọi :ref:`poll()<class_HTTPClient_method_poll>` để nhận các cập nhật trạng thái.
 
 .. rst-class:: classref-item-separator
 
@@ -969,7 +969,7 @@ Returns a :ref:`Status<enum_HTTPClient_Status>` constant. Need to call :ref:`pol
 
 :ref:`bool<class_bool>` **has_response**\ (\ ) |const| :ref:`🔗<class_HTTPClient_method_has_response>`
 
-If ``true``, this **HTTPClient** has a response available.
+Nếu ``true``, **HTTPClient** này có sẵn một response.
 
 .. rst-class:: classref-item-separator
 
@@ -981,7 +981,7 @@ If ``true``, this **HTTPClient** has a response available.
 
 :ref:`bool<class_bool>` **is_response_chunked**\ (\ ) |const| :ref:`🔗<class_HTTPClient_method_is_response_chunked>`
 
-If ``true``, this **HTTPClient** has a response that is chunked.
+Nếu ``true``, **HTTPClient** này có một response được chia thành các chunk.
 
 .. rst-class:: classref-item-separator
 
@@ -993,7 +993,7 @@ If ``true``, this **HTTPClient** has a response that is chunked.
 
 :ref:`Error<enum_@GlobalScope_Error>` **poll**\ (\ ) :ref:`🔗<class_HTTPClient_method_poll>`
 
-This needs to be called in order to have any request processed. Check results with :ref:`get_status()<class_HTTPClient_method_get_status>`.
+Cần gọi hàm này để xử lý mọi request. Kiểm tra kết quả bằng :ref:`get_status()<class_HTTPClient_method_get_status>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1005,7 +1005,7 @@ This needs to be called in order to have any request processed. Check results wi
 
 :ref:`String<class_String>` **query_string_from_dict**\ (\ fields\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_HTTPClient_method_query_string_from_dict>`
 
-Generates a GET/POST application/x-www-form-urlencoded style query string from a provided dictionary, e.g.:
+Tạo một chuỗi truy vấn theo kiểu application/x-www-form-urlencoded cho GET/POST từ một dictionary được cung cấp, ví dụ:
 
 
 .. tabs::
@@ -1014,17 +1014,17 @@ Generates a GET/POST application/x-www-form-urlencoded style query string from a
 
     var fields = { "username": "user", "password": "pass" }
     var query_string = http_client.query_string_from_dict(fields)
-    # Returns "username=user&password=pass"
+    # Trả về "username=user&password=pass"
 
  .. code-tab:: csharp
 
     var fields = new Godot.Collections.Dictionary { { "username", "user" }, { "password", "pass" } };
     string queryString = httpClient.QueryStringFromDict(fields);
-    // Returns "username=user&password=pass"
+    // Trả về "username=user&password=pass"
 
 
 
-Furthermore, if a key has a ``null`` value, only the key itself is added, without equal sign and value. If the value is an array, for each value in it a pair with the same key is added.
+Ngoài ra, nếu một key có giá trị ``null``, chỉ bản thân key được thêm vào, không có dấu bằng và giá trị. Nếu giá trị là một mảng, một cặp có cùng key sẽ được thêm vào cho mỗi giá trị trong mảng.
 
 
 .. tabs::
@@ -1033,7 +1033,7 @@ Furthermore, if a key has a ``null`` value, only the key itself is added, withou
 
     var fields = { "single": 123, "not_valued": null, "multiple": [22, 33, 44] }
     var query_string = http_client.query_string_from_dict(fields)
-    # Returns "single=123&not_valued&multiple=22&multiple=33&multiple=44"
+    # Trả về "single=123&not_valued&multiple=22&multiple=33&multiple=44"
 
  .. code-tab:: csharp
 
@@ -1044,7 +1044,7 @@ Furthermore, if a key has a ``null`` value, only the key itself is added, withou
         { "multiple", new Godot.Collections.Array { 22, 33, 44 } },
     };
     string queryString = httpClient.QueryStringFromDict(fields);
-    // Returns "single=123&not_valued&multiple=22&multiple=33&multiple=44"
+    // Trả về "single=123&not_valued&multiple=22&multiple=33&multiple=44"
 
 
 
@@ -1058,7 +1058,7 @@ Furthermore, if a key has a ``null`` value, only the key itself is added, withou
 
 :ref:`PackedByteArray<class_PackedByteArray>` **read_response_body_chunk**\ (\ ) :ref:`🔗<class_HTTPClient_method_read_response_body_chunk>`
 
-Reads one chunk from the response.
+Đọc một chunk từ response.
 
 .. rst-class:: classref-item-separator
 
@@ -1070,13 +1070,13 @@ Reads one chunk from the response.
 
 :ref:`Error<enum_@GlobalScope_Error>` **request**\ (\ method\: :ref:`Method<enum_HTTPClient_Method>`, url\: :ref:`String<class_String>`, headers\: :ref:`PackedStringArray<class_PackedStringArray>`, body\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_HTTPClient_method_request>`
 
-Sends an HTTP request to the connected host with the given ``method``.
+Gửi một HTTP request đến host đã kết nối với ``method`` đã cho.
 
-The URL parameter is usually just the part after the host, so for ``https://example.com/index.php``, it is ``/index.php``. When sending requests to an HTTP proxy server, it should be an absolute URL. For :ref:`METHOD_OPTIONS<class_HTTPClient_constant_METHOD_OPTIONS>` requests, ``*`` is also allowed. For :ref:`METHOD_CONNECT<class_HTTPClient_constant_METHOD_CONNECT>` requests, it should be the authority component (``host:port``).
+Tham số URL thường chỉ là phần sau host, vì vậy với ``https://example.com/index.php``, nó là ``/index.php``. Khi gửi request đến máy chủ proxy HTTP, tham số này phải là một URL tuyệt đối. Đối với các request :ref:`METHOD_OPTIONS<class_HTTPClient_constant_METHOD_OPTIONS>`, ``*`` cũng được phép. Đối với các request :ref:`METHOD_CONNECT<class_HTTPClient_constant_METHOD_CONNECT>`, tham số này phải là thành phần authority (``host:port``).
 
-\ ``headers`` are HTTP request headers.
+\ ``headers`` là các header của request HTTP.
 
-To create a POST request with query strings to push to the server, do:
+Để tạo một request POST có chuỗi truy vấn để gửi lên máy chủ, hãy thực hiện:
 
 
 .. tabs::
@@ -1097,7 +1097,7 @@ To create a POST request with query strings to push to the server, do:
 
 
 
-\ **Note:** The ``body`` parameter is ignored if ``method`` is :ref:`METHOD_GET<class_HTTPClient_constant_METHOD_GET>`. This is because GET methods can't contain request data. As a workaround, you can pass request data as a query string in the URL. See :ref:`String.uri_encode()<class_String_method_uri_encode>` for an example.
+\ **Lưu ý:** Tham số ``body`` bị bỏ qua nếu ``method`` là :ref:`METHOD_GET<class_HTTPClient_constant_METHOD_GET>`. Điều này là do các phương thức GET không thể chứa dữ liệu request. Cách khắc phục là truyền dữ liệu request dưới dạng chuỗi truy vấn trong URL. Xem :ref:`String.uri_encode()<class_String_method_uri_encode>` để biết ví dụ.
 
 .. rst-class:: classref-item-separator
 
@@ -1109,13 +1109,13 @@ To create a POST request with query strings to push to the server, do:
 
 :ref:`Error<enum_@GlobalScope_Error>` **request_raw**\ (\ method\: :ref:`Method<enum_HTTPClient_Method>`, url\: :ref:`String<class_String>`, headers\: :ref:`PackedStringArray<class_PackedStringArray>`, body\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_HTTPClient_method_request_raw>`
 
-Sends a raw HTTP request to the connected host with the given ``method``.
+Gửi một HTTP request thô đến host được kết nối với ``method`` đã cho.
 
-The URL parameter is usually just the part after the host, so for ``https://example.com/index.php``, it is ``/index.php``. When sending requests to an HTTP proxy server, it should be an absolute URL. For :ref:`METHOD_OPTIONS<class_HTTPClient_constant_METHOD_OPTIONS>` requests, ``*`` is also allowed. For :ref:`METHOD_CONNECT<class_HTTPClient_constant_METHOD_CONNECT>` requests, it should be the authority component (``host:port``).
+Tham số URL thường chỉ là phần sau host, vì vậy với ``https://example.com/index.php``, nó là ``/index.php``. Khi gửi request đến máy chủ proxy HTTP, tham số này phải là một URL tuyệt đối. Đối với các request :ref:`METHOD_OPTIONS<class_HTTPClient_constant_METHOD_OPTIONS>`, ``*`` cũng được phép. Đối với các request :ref:`METHOD_CONNECT<class_HTTPClient_constant_METHOD_CONNECT>`, tham số này phải là thành phần authority (``host:port``).
 
-\ ``headers`` are HTTP request headers.
+\ ``headers`` là các header của request HTTP.
 
-Sends the body data raw, as a byte array and does not encode it in any way.
+Gửi dữ liệu body ở dạng thô, dưới dạng một mảng byte và không mã hóa theo bất kỳ cách nào.
 
 .. rst-class:: classref-item-separator
 
@@ -1127,9 +1127,9 @@ Sends the body data raw, as a byte array and does not encode it in any way.
 
 |void| **set_http_proxy**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_HTTPClient_method_set_http_proxy>`
 
-Sets the proxy server for HTTP requests.
+Thiết lập proxy server cho các yêu cầu HTTP.
 
-The proxy server is unset if ``host`` is empty or ``port`` is -1.
+Proxy server sẽ bị hủy thiết lập nếu ``host`` trống hoặc ``port`` là -1.
 
 .. rst-class:: classref-item-separator
 
@@ -1141,16 +1141,16 @@ The proxy server is unset if ``host`` is empty or ``port`` is -1.
 
 |void| **set_https_proxy**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_HTTPClient_method_set_https_proxy>`
 
-Sets the proxy server for HTTPS requests.
+Thiết lập proxy server cho các yêu cầu HTTPS.
 
-The proxy server is unset if ``host`` is empty or ``port`` is -1.
+Proxy server sẽ bị hủy thiết lập nếu ``host`` trống hoặc ``port`` là -1.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

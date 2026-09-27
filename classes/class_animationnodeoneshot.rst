@@ -10,106 +10,106 @@
 AnimationNodeOneShot
 ====================
 
-**Inherits:** :ref:`AnimationNodeSync<class_AnimationNodeSync>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`AnimationNodeSync<class_AnimationNodeSync>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Plays an animation once in an :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
+Phát một animation một lần trong :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A resource to add to an :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`. This animation node will execute a sub-animation and return once it finishes. Blend times for fading in and out can be customized, as well as filters.
+Một resource để thêm vào :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`. Nút animation này sẽ thực thi một sub-animation và kết thúc khi sub-animation hoàn tất. Có thể tùy chỉnh thời gian blend để fade in và fade out, cũng như các bộ lọc.
 
-After setting the request and changing the animation playback, the one-shot node automatically clears the request on the next process frame by setting its ``request`` value to :ref:`ONE_SHOT_REQUEST_NONE<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_NONE>`.
+Sau khi đặt request và thay đổi việc phát animation, nút one-shot sẽ tự động xóa request ở frame xử lý tiếp theo bằng cách đặt giá trị ``request`` thành :ref:`ONE_SHOT_REQUEST_NONE<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_NONE>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Play child animation connected to "shot" port.
+    # Phát animation con được kết nối với cổng "shot".
     animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
-    # Abort child animation connected to "shot" port.
+    # Hủy animation con được kết nối với cổng "shot".
     animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 
-    # Abort child animation with fading out connected to "shot" port.
+    # Hủy animation con đang mờ dần được kết nối với cổng "shot".
     animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT)
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FADE_OUT
 
-    # Get current state (read-only).
+    # Lấy trạng thái hiện tại (chỉ đọc).
     animation_tree.get("parameters/OneShot/active")
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/OneShot/active"]
 
-    # Get current internal state (read-only).
+    # Lấy trạng thái nội bộ hiện tại (chỉ đọc).
     animation_tree.get("parameters/OneShot/internal_active")
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/OneShot/internal_active"]
 
  .. code-tab:: csharp
 
-    // Play child animation connected to "shot" port.
+    // Phát animation con được kết nối với cổng "shot".
     animationTree.Set("parameters/OneShot/request", (int)AnimationNodeOneShot.OneShotRequest.Fire);
 
-    // Abort child animation connected to "shot" port.
+    // Hủy animation con được kết nối với cổng "shot".
     animationTree.Set("parameters/OneShot/request", (int)AnimationNodeOneShot.OneShotRequest.Abort);
 
-    // Abort child animation with fading out connected to "shot" port.
+    // Hủy animation con được kết nối với cổng "shot" bằng cách làm mờ dần.
     animationTree.Set("parameters/OneShot/request", (int)AnimationNodeOneShot.OneShotRequest.FadeOut);
 
-    // Get current state (read-only).
+    // Lấy trạng thái hiện tại (chỉ đọc).
     animationTree.Get("parameters/OneShot/active");
 
-    // Get current internal state (read-only).
+    // Lấy trạng thái nội bộ hiện tại (chỉ đọc).
     animationTree.Get("parameters/OneShot/internal_active");
 
 
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`abort_on_reset<class_AnimationNodeOneShot_property_abort_on_reset>`                     | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`autorestart<class_AnimationNodeOneShot_property_autorestart>`                           | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                         | :ref:`autorestart_delay<class_AnimationNodeOneShot_property_autorestart_delay>`               | ``1.0``   |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                         | :ref:`autorestart_random_delay<class_AnimationNodeOneShot_property_autorestart_random_delay>` | ``0.0``   |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`break_loop_at_end<class_AnimationNodeOneShot_property_break_loop_at_end>`               | ``false`` |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`Curve<class_Curve>`                         | :ref:`fadein_curve<class_AnimationNodeOneShot_property_fadein_curve>`                         |           |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                         | :ref:`fadein_time<class_AnimationNodeOneShot_property_fadein_time>`                           | ``0.0``   |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`Curve<class_Curve>`                         | :ref:`fadeout_curve<class_AnimationNodeOneShot_property_fadeout_curve>`                       |           |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                         | :ref:`fadeout_time<class_AnimationNodeOneShot_property_fadeout_time>`                         | ``0.0``   |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
-   | :ref:`MixMode<enum_AnimationNodeOneShot_MixMode>` | :ref:`mix_mode<class_AnimationNodeOneShot_property_mix_mode>`                                 | ``0``     |
-   +---------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`abort_on_reset<class_AnimationNodeOneShot_property_abort_on_reset>`                     | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`autorestart<class_AnimationNodeOneShot_property_autorestart>`                           | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                          | :ref:`autorestart_delay<class_AnimationNodeOneShot_property_autorestart_delay>`               | ``1.0``   |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                          | :ref:`autorestart_random_delay<class_AnimationNodeOneShot_property_autorestart_random_delay>` | ``0.0``   |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`break_loop_at_end<class_AnimationNodeOneShot_property_break_loop_at_end>`               | ``false`` |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`Curve<class_Curve>`                          | :ref:`fadein_curve<class_AnimationNodeOneShot_property_fadein_curve>`                         |           |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                          | :ref:`fadein_time<class_AnimationNodeOneShot_property_fadein_time>`                           | ``0.0``   |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`Curve<class_Curve>`                          | :ref:`fadeout_curve<class_AnimationNodeOneShot_property_fadeout_curve>`                       |           |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                          | :ref:`fadeout_time<class_AnimationNodeOneShot_property_fadeout_time>`                         | ``0.0``   |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
+   | :ref:`MixMode <enum_AnimationNodeOneShot_MixMode>` | :ref:`mix_mode<class_AnimationNodeOneShot_property_mix_mode>`                                 | ``0``     |
+   +----------------------------------------------------+-----------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -117,14 +117,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AnimationNodeOneShot_OneShotRequest:
 
 .. rst-class:: classref-enumeration
 
-enum **OneShotRequest**: :ref:`🔗<enum_AnimationNodeOneShot_OneShotRequest>`
+enum **OneShotRequest**: :ref:`🔗 <enum_AnimationNodeOneShot_OneShotRequest>`
 
 .. _class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_NONE:
 
@@ -132,7 +132,7 @@ enum **OneShotRequest**: :ref:`🔗<enum_AnimationNodeOneShot_OneShotRequest>`
 
 :ref:`OneShotRequest<enum_AnimationNodeOneShot_OneShotRequest>` **ONE_SHOT_REQUEST_NONE** = ``0``
 
-The default state of the request. Nothing is done.
+Trạng thái mặc định của request. Không thực hiện thao tác nào.
 
 .. _class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_FIRE:
 
@@ -140,7 +140,7 @@ The default state of the request. Nothing is done.
 
 :ref:`OneShotRequest<enum_AnimationNodeOneShot_OneShotRequest>` **ONE_SHOT_REQUEST_FIRE** = ``1``
 
-The request to play the animation connected to "shot" port.
+Yêu cầu phát animation được kết nối với cổng "shot".
 
 .. _class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_ABORT:
 
@@ -148,7 +148,7 @@ The request to play the animation connected to "shot" port.
 
 :ref:`OneShotRequest<enum_AnimationNodeOneShot_OneShotRequest>` **ONE_SHOT_REQUEST_ABORT** = ``2``
 
-The request to stop the animation connected to "shot" port.
+Yêu cầu dừng animation được kết nối với cổng "shot".
 
 .. _class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_FADE_OUT:
 
@@ -156,7 +156,7 @@ The request to stop the animation connected to "shot" port.
 
 :ref:`OneShotRequest<enum_AnimationNodeOneShot_OneShotRequest>` **ONE_SHOT_REQUEST_FADE_OUT** = ``3``
 
-The request to fade out the animation connected to "shot" port.
+Yêu cầu làm mờ dần animation được kết nối với cổng "shot".
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ The request to fade out the animation connected to "shot" port.
 
 .. rst-class:: classref-enumeration
 
-enum **MixMode**: :ref:`🔗<enum_AnimationNodeOneShot_MixMode>`
+enum **MixMode**: :ref:`🔗 <enum_AnimationNodeOneShot_MixMode>`
 
 .. _class_AnimationNodeOneShot_constant_MIX_MODE_BLEND:
 
@@ -174,7 +174,7 @@ enum **MixMode**: :ref:`🔗<enum_AnimationNodeOneShot_MixMode>`
 
 :ref:`MixMode<enum_AnimationNodeOneShot_MixMode>` **MIX_MODE_BLEND** = ``0``
 
-Blends two animations. See also :ref:`AnimationNodeBlend2<class_AnimationNodeBlend2>`.
+Trộn hai animation. Xem thêm :ref:`AnimationNodeBlend2<class_AnimationNodeBlend2>`.
 
 .. _class_AnimationNodeOneShot_constant_MIX_MODE_ADD:
 
@@ -182,7 +182,7 @@ Blends two animations. See also :ref:`AnimationNodeBlend2<class_AnimationNodeBle
 
 :ref:`MixMode<enum_AnimationNodeOneShot_MixMode>` **MIX_MODE_ADD** = ``1``
 
-Blends two animations additively. See also :ref:`AnimationNodeAdd2<class_AnimationNodeAdd2>`.
+Trộn cộng dồn hai animation. Xem thêm :ref:`AnimationNodeAdd2<class_AnimationNodeAdd2>`.
 
 .. rst-class:: classref-section-separator
 
@@ -190,8 +190,8 @@ Blends two animations additively. See also :ref:`AnimationNodeAdd2<class_Animati
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationNodeOneShot_property_abort_on_reset:
 
@@ -204,7 +204,7 @@ Property Descriptions
 - |void| **set_abort_on_reset**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_aborted_on_reset**\ (\ )
 
-If ``true``, the sub-animation will abort if resumed with a reset after a prior interruption.
+Nếu ``true``, hoạt ảnh con sẽ bị hủy nếu được tiếp tục với thao tác reset sau một lần gián đoạn trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -221,9 +221,9 @@ If ``true``, the sub-animation will abort if resumed with a reset after a prior 
 - |void| **set_autorestart**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_autorestart**\ (\ )
 
-If ``true``, the sub-animation will restart automatically after finishing.
+Nếu ``true``, hoạt ảnh con sẽ tự động khởi động lại sau khi hoàn tất.
 
-In other words, to start auto restarting, the animation must be played once with the :ref:`ONE_SHOT_REQUEST_FIRE<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_FIRE>` request. The :ref:`ONE_SHOT_REQUEST_ABORT<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_ABORT>` request stops the auto restarting, but it does not disable the :ref:`autorestart<class_AnimationNodeOneShot_property_autorestart>` itself. So, the :ref:`ONE_SHOT_REQUEST_FIRE<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_FIRE>` request will start auto restarting again.
+Nói cách khác, để bắt đầu tự động khởi động lại, hoạt ảnh phải được phát một lần với yêu cầu :ref:`ONE_SHOT_REQUEST_FIRE<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_FIRE>`. Yêu cầu :ref:`ONE_SHOT_REQUEST_ABORT<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_ABORT>` sẽ dừng việc tự động khởi động lại, nhưng không vô hiệu hóa chính :ref:`autorestart<class_AnimationNodeOneShot_property_autorestart>`. Vì vậy, yêu cầu :ref:`ONE_SHOT_REQUEST_FIRE<class_AnimationNodeOneShot_constant_ONE_SHOT_REQUEST_FIRE>` sẽ lại bắt đầu việc tự động khởi động lại.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ In other words, to start auto restarting, the animation must be played once with
 - |void| **set_autorestart_delay**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_autorestart_delay**\ (\ )
 
-The delay after which the automatic restart is triggered, in seconds.
+Khoảng trễ trước khi tự động khởi động lại được kích hoạt, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 
@@ -257,7 +257,7 @@ The delay after which the automatic restart is triggered, in seconds.
 - |void| **set_autorestart_random_delay**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_autorestart_random_delay**\ (\ )
 
-If :ref:`autorestart<class_AnimationNodeOneShot_property_autorestart>` is ``true``, a random additional delay (in seconds) between 0 and this value will be added to :ref:`autorestart_delay<class_AnimationNodeOneShot_property_autorestart_delay>`.
+Nếu :ref:`autorestart<class_AnimationNodeOneShot_property_autorestart>` là ``true``, một khoảng trễ bổ sung ngẫu nhiên (tính bằng giây) từ 0 đến giá trị này sẽ được thêm vào :ref:`autorestart_delay<class_AnimationNodeOneShot_property_autorestart_delay>`.
 
 .. rst-class:: classref-item-separator
 
@@ -274,7 +274,7 @@ If :ref:`autorestart<class_AnimationNodeOneShot_property_autorestart>` is ``true
 - |void| **set_break_loop_at_end**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_loop_broken_at_end**\ (\ )
 
-If ``true``, breaks the loop at the end of the loop cycle for transition, even if the animation is looping.
+Nếu ``true``, sẽ ngắt vòng lặp ở cuối chu kỳ vòng lặp để chuyển tiếp, ngay cả khi hoạt ảnh đang lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -284,14 +284,14 @@ If ``true``, breaks the loop at the end of the loop cycle for transition, even i
 
 .. rst-class:: classref-property
 
-:ref:`Curve<class_Curve>` **fadein_curve** :ref:`🔗<class_AnimationNodeOneShot_property_fadein_curve>`
+:ref:`Curve<class_Curve>` **fadein_curve** :ref:`🔗 <class_AnimationNodeOneShot_property_fadein_curve>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_fadein_curve**\ (\ value\: :ref:`Curve<class_Curve>`\ )
 - :ref:`Curve<class_Curve>` **get_fadein_curve**\ (\ )
 
-Determines how cross-fading between animations is eased. If empty, the transition will be linear. Should be a unit :ref:`Curve<class_Curve>`.
+Xác định cách chuyển tiếp giữa các animation được làm mượt. Nếu để trống, chuyển tiếp sẽ là tuyến tính. Phải là một đơn vị :ref:`Curve<class_Curve>`.
 
 .. rst-class:: classref-item-separator
 
@@ -308,9 +308,9 @@ Determines how cross-fading between animations is eased. If empty, the transitio
 - |void| **set_fadein_time**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fadein_time**\ (\ )
 
-The fade-in duration. For example, setting this to ``1.0`` for a 5 second length animation will produce a cross-fade that starts at 0 second and ends at 1 second during the animation.
+Thời lượng fade-in. Ví dụ, đặt giá trị này thành ``1.0`` cho một animation dài 5 giây sẽ tạo ra hiệu ứng cross-fade bắt đầu ở giây thứ 0 và kết thúc ở giây thứ 1 trong animation.
 
-\ **Note:** **AnimationNodeOneShot** transitions the current state after the fading has finished.
+\ **Lưu ý:** **AnimationNodeOneShot** chuyển trạng thái hiện tại sau khi quá trình fade hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -320,14 +320,14 @@ The fade-in duration. For example, setting this to ``1.0`` for a 5 second length
 
 .. rst-class:: classref-property
 
-:ref:`Curve<class_Curve>` **fadeout_curve** :ref:`🔗<class_AnimationNodeOneShot_property_fadeout_curve>`
+:ref:`Curve<class_Curve>` **fadeout_curve** :ref:`🔗 <class_AnimationNodeOneShot_property_fadeout_curve>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_fadeout_curve**\ (\ value\: :ref:`Curve<class_Curve>`\ )
 - :ref:`Curve<class_Curve>` **get_fadeout_curve**\ (\ )
 
-Determines how cross-fading between animations is eased. If empty, the transition will be linear. Should be a unit :ref:`Curve<class_Curve>`.
+Xác định cách chuyển tiếp giữa các animation được làm mượt. Nếu để trống, chuyển tiếp sẽ là tuyến tính. Phải là một đơn vị :ref:`Curve<class_Curve>`.
 
 .. rst-class:: classref-item-separator
 
@@ -344,9 +344,9 @@ Determines how cross-fading between animations is eased. If empty, the transitio
 - |void| **set_fadeout_time**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fadeout_time**\ (\ )
 
-The fade-out duration. For example, setting this to ``1.0`` for a 5 second length animation will produce a cross-fade that starts at 4 second and ends at 5 second during the animation.
+Thời lượng fade-out. Ví dụ, đặt giá trị này thành ``1.0`` cho một animation dài 5 giây sẽ tạo ra hiệu ứng cross-fade bắt đầu ở giây thứ 4 và kết thúc ở giây thứ 5 trong animation.
 
-\ **Note:** **AnimationNodeOneShot** transitions the current state after the fading has finished.
+\ **Lưu ý:** **AnimationNodeOneShot** chuyển trạng thái hiện tại sau khi quá trình fade hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -363,14 +363,14 @@ The fade-out duration. For example, setting this to ``1.0`` for a 5 second lengt
 - |void| **set_mix_mode**\ (\ value\: :ref:`MixMode<enum_AnimationNodeOneShot_MixMode>`\ )
 - :ref:`MixMode<enum_AnimationNodeOneShot_MixMode>` **get_mix_mode**\ (\ )
 
-The blend type.
+Kiểu blend.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

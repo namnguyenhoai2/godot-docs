@@ -10,26 +10,26 @@
 RDHitGroup
 ==========
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Hit group (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Nhóm hit (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Defines a hit group for use with :ref:`RenderingDevice.raytracing_pipeline_create()<class_RenderingDevice_method_raytracing_pipeline_create>`.
+Xác định một nhóm hit để sử dụng với :ref:`RenderingDevice.raytracing_pipeline_create()<class_RenderingDevice_method_raytracing_pipeline_create>`.
 
-A hit group combines shaders that are executed when a ray intersects geometry. It may include a closest-hit shader, any-hit shader, and intersection shader.
+Một nhóm hit kết hợp các shader được thực thi khi một tia giao với hình học. Nhóm này có thể bao gồm closest-hit shader, any-hit shader và intersection shader.
 
-Hit groups are referenced by index when populating hit shader binding tables using :ref:`RenderingDevice.hit_sbt_range_update()<class_RenderingDevice_method_hit_sbt_range_update>`.
+Các nhóm hit được tham chiếu theo chỉ mục khi điền các bảng liên kết hit shader bằng :ref:`RenderingDevice.hit_sbt_range_update()<class_RenderingDevice_method_hit_sbt_range_update>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -49,21 +49,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDHitGroup_property_any_hit_shader:
 
 .. rst-class:: classref-property
 
-:ref:`RDPipelineShader<class_RDPipelineShader>` **any_hit_shader** :ref:`🔗<class_RDHitGroup_property_any_hit_shader>`
+:ref:`RDPipelineShader<class_RDPipelineShader>` **any_hit_shader** :ref:`🔗 <class_RDHitGroup_property_any_hit_shader>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_any_hit_shader**\ (\ value\: :ref:`RDPipelineShader<class_RDPipelineShader>`\ )
 - :ref:`RDPipelineShader<class_RDPipelineShader>` **get_any_hit_shader**\ (\ )
 
-Any-hit shader for this hit group. Executed for each potential intersection. Can be ``null``.
+Any-hit shader cho nhóm hit này. Được thực thi cho mỗi giao điểm tiềm năng. Có thể là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -73,14 +73,14 @@ Any-hit shader for this hit group. Executed for each potential intersection. Can
 
 .. rst-class:: classref-property
 
-:ref:`RDPipelineShader<class_RDPipelineShader>` **closest_hit_shader** :ref:`🔗<class_RDHitGroup_property_closest_hit_shader>`
+:ref:`RDPipelineShader<class_RDPipelineShader>` **closest_hit_shader** :ref:`🔗 <class_RDHitGroup_property_closest_hit_shader>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_closest_hit_shader**\ (\ value\: :ref:`RDPipelineShader<class_RDPipelineShader>`\ )
 - :ref:`RDPipelineShader<class_RDPipelineShader>` **get_closest_hit_shader**\ (\ )
 
-Closest-hit shader for this hit group. Executed for the closest intersection. Can be ``null``.
+Closest-hit shader cho nhóm hit này. Được thực thi cho giao điểm gần nhất. Có thể là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -90,21 +90,21 @@ Closest-hit shader for this hit group. Executed for the closest intersection. Ca
 
 .. rst-class:: classref-property
 
-:ref:`RDPipelineShader<class_RDPipelineShader>` **intersection_shader** :ref:`🔗<class_RDHitGroup_property_intersection_shader>`
+:ref:`RDPipelineShader<class_RDPipelineShader>` **intersection_shader** :ref:`🔗 <class_RDHitGroup_property_intersection_shader>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_intersection_shader**\ (\ value\: :ref:`RDPipelineShader<class_RDPipelineShader>`\ )
 - :ref:`RDPipelineShader<class_RDPipelineShader>` **get_intersection_shader**\ (\ )
 
-Intersection shader for this hit group. Required for non-triangle geometry. Must be ``null`` when using for triangle geometry.
+Intersection shader cho nhóm hit này. Bắt buộc đối với hình học không phải hình tam giác. Phải là ``null`` khi sử dụng cho hình học tam giác.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thể hiện.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thể hiện để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

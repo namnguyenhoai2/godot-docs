@@ -10,25 +10,25 @@
 MeshInstance3D
 ==============
 
-**Inherits:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`SoftBody3D<class_SoftBody3D>`
+**Được kế thừa bởi:** :ref:`SoftBody3D<class_SoftBody3D>`
 
-Node that instances meshes into a scenario.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-MeshInstance3D is a node that takes a :ref:`Mesh<class_Mesh>` resource and adds it to the current scenario by creating an instance of it. This is the class most often used to render 3D geometry and can be used to instance a single :ref:`Mesh<class_Mesh>` in many places. This allows reusing geometry, which can save on resources. When a :ref:`Mesh<class_Mesh>` has to be instantiated more than thousands of times at close proximity, consider using a :ref:`MultiMesh<class_MultiMesh>` in a :ref:`MultiMeshInstance3D<class_MultiMeshInstance3D>` instead.
+Node tạo các instance mesh trong một cảnh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+MeshInstance3D là một node nhận một tài nguyên :ref:`Mesh<class_Mesh>` và thêm tài nguyên đó vào cảnh hiện tại bằng cách tạo một instance của nó. Đây là class được sử dụng thường xuyên nhất để kết xuất hình học 3D và có thể dùng để tạo instance của một :ref:`Mesh<class_Mesh>` duy nhất ở nhiều vị trí. Điều này cho phép tái sử dụng hình học, giúp tiết kiệm tài nguyên. Khi một :ref:`Mesh<class_Mesh>` phải được tạo instance hơn hàng nghìn lần ở khoảng cách gần nhau, hãy cân nhắc sử dụng :ref:`MultiMesh<class_MultiMesh>` trong một :ref:`MultiMeshInstance3D<class_MultiMeshInstance3D>` thay thế.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `3D Material Testers Demo <https://godotengine.org/asset-library/asset/2742>`__
+- `Bản demo kiểm thử vật liệu 3D <https://godotengine.org/asset-library/asset/2742>`__
 
 - `3D Kinematic Character Demo <https://godotengine.org/asset-library/asset/2739>`__
 
@@ -38,7 +38,7 @@ Tutorials
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -89,7 +89,7 @@ Methods
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                    | :ref:`set_blend_shape_value<class_MeshInstance3D_method_set_blend_shape_value>`\ (\ blend_shape_idx\: :ref:`int<class_int>`, value\: :ref:`float<class_float>`\ )                                              |
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                    | :ref:`set_surface_override_material<class_MeshInstance3D_method_set_surface_override_material>`\ (\ surface\: :ref:`int<class_int>`, material\: :ref:`Material<class_Material>`\ )                             |
+   | |void|                                    | :ref:`set_surface_override_material<class_MeshInstance3D_method_set_surface_override_material>`\ (\ bề mặt\: :ref:`int<class_int>`, vật liệu\: :ref:`Material<class_Material>`\ )                              |
    +-------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -98,21 +98,21 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MeshInstance3D_property_mesh:
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗<class_MeshInstance3D_property_mesh>`
+:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗 <class_MeshInstance3D_property_mesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_mesh**\ (\ value\: :ref:`Mesh<class_Mesh>`\ )
 - :ref:`Mesh<class_Mesh>` **get_mesh**\ (\ )
 
-The :ref:`Mesh<class_Mesh>` resource for the instance.
+Tài nguyên :ref:`Mesh<class_Mesh>` cho instance.
 
 .. rst-class:: classref-item-separator
 
@@ -129,9 +129,9 @@ The :ref:`Mesh<class_Mesh>` resource for the instance.
 - |void| **set_skeleton_path**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_skeleton_path**\ (\ )
 
-:ref:`NodePath<class_NodePath>` to the :ref:`Skeleton3D<class_Skeleton3D>` associated with the instance.
+:ref:`NodePath<class_NodePath>` đến :ref:`Skeleton3D<class_Skeleton3D>` được liên kết với instance.
 
-\ **Note:** The default value of this property has changed in Godot 4.6. Enable :ref:`ProjectSettings.animation/compatibility/default_parent_skeleton_in_mesh_instance_3d<class_ProjectSettings_property_animation/compatibility/default_parent_skeleton_in_mesh_instance_3d>` if the old behavior is needed for compatibility.
+\ **Lưu ý:** Giá trị mặc định của thuộc tính này đã thay đổi trong Godot 4.6. Hãy bật :ref:`ProjectSettings.animation/compatibility/default_parent_skeleton_in_mesh_instance_3d <class_ProjectSettings_property_animation/compatibility/default_parent_skeleton_in_mesh_instance_3d>` nếu cần hành vi cũ để đảm bảo khả năng tương thích.
 
 .. rst-class:: classref-item-separator
 
@@ -141,14 +141,14 @@ The :ref:`Mesh<class_Mesh>` resource for the instance.
 
 .. rst-class:: classref-property
 
-:ref:`Skin<class_Skin>` **skin** :ref:`🔗<class_MeshInstance3D_property_skin>`
+:ref:`Skin<class_Skin>` **skin** :ref:`🔗 <class_MeshInstance3D_property_skin>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_skin**\ (\ value\: :ref:`Skin<class_Skin>`\ )
 - :ref:`Skin<class_Skin>` **get_skin**\ (\ )
 
-The :ref:`Skin<class_Skin>` to be used by this instance.
+:ref:`Skin<class_Skin>` được instance này sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -156,8 +156,8 @@ The :ref:`Skin<class_Skin>` to be used by this instance.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MeshInstance3D_method_bake_mesh_from_current_blend_shape_mix:
 
@@ -165,9 +165,9 @@ Method Descriptions
 
 :ref:`ArrayMesh<class_ArrayMesh>` **bake_mesh_from_current_blend_shape_mix**\ (\ existing\: :ref:`ArrayMesh<class_ArrayMesh>` = null\ ) :ref:`🔗<class_MeshInstance3D_method_bake_mesh_from_current_blend_shape_mix>`
 
-Takes a snapshot from the current :ref:`ArrayMesh<class_ArrayMesh>` with all blend shapes applied according to their current weights and bakes it to the provided ``existing`` mesh. If no ``existing`` mesh is provided a new :ref:`ArrayMesh<class_ArrayMesh>` is created, baked and returned. Mesh surface materials are not copied.
+Chụp ảnh nhanh từ :ref:`ArrayMesh<class_ArrayMesh>` hiện tại với tất cả blend shape được áp dụng theo các trọng số hiện tại, rồi bake ảnh đó vào mesh ``existing`` được cung cấp. Nếu không cung cấp mesh ``existing``, một :ref:`ArrayMesh<class_ArrayMesh>` mới sẽ được tạo, bake và trả về. Material bề mặt của mesh không được sao chép.
 
-\ **Performance:** :ref:`Mesh<class_Mesh>` data needs to be received from the GPU, stalling the :ref:`RenderingServer<class_RenderingServer>` in the process.
+\ **Hiệu năng:** Dữ liệu :ref:`Mesh<class_Mesh>` cần được nhận từ GPU, khiến :ref:`RenderingServer<class_RenderingServer>` bị đình trệ trong quá trình này.
 
 .. rst-class:: classref-item-separator
 
@@ -179,9 +179,9 @@ Takes a snapshot from the current :ref:`ArrayMesh<class_ArrayMesh>` with all ble
 
 :ref:`ArrayMesh<class_ArrayMesh>` **bake_mesh_from_current_skeleton_pose**\ (\ existing\: :ref:`ArrayMesh<class_ArrayMesh>` = null\ ) :ref:`🔗<class_MeshInstance3D_method_bake_mesh_from_current_skeleton_pose>`
 
-Takes a snapshot of the current animated skeleton pose of the skinned mesh and bakes it to the provided ``existing`` mesh. If no ``existing`` mesh is provided a new :ref:`ArrayMesh<class_ArrayMesh>` is created, baked, and returned. Requires a skeleton with a registered skin to work. Blendshapes are ignored. Mesh surface materials are not copied.
+Chụp ảnh nhanh tư thế skeleton đang hoạt ảnh hiện tại của skinned mesh và bake ảnh đó vào mesh ``existing`` được cung cấp. Nếu không cung cấp mesh ``existing``, một :ref:`ArrayMesh<class_ArrayMesh>` mới sẽ được tạo, bake và trả về. Cần có skeleton với skin đã đăng ký để hoạt động. Blend shape bị bỏ qua. Material bề mặt của mesh không được sao chép.
 
-\ **Performance:** :ref:`Mesh<class_Mesh>` data needs to be retrieved from the GPU, stalling the :ref:`RenderingServer<class_RenderingServer>` in the process.
+\ **Hiệu năng:** Dữ liệu :ref:`Mesh<class_Mesh>` cần được truy xuất từ GPU, khiến :ref:`RenderingServer<class_RenderingServer>` bị đình trệ trong quá trình này.
 
 .. rst-class:: classref-item-separator
 
@@ -193,11 +193,11 @@ Takes a snapshot of the current animated skeleton pose of the skinned mesh and b
 
 |void| **create_convex_collision**\ (\ clean\: :ref:`bool<class_bool>` = true, simplify\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_MeshInstance3D_method_create_convex_collision>`
 
-This helper creates a :ref:`StaticBody3D<class_StaticBody3D>` child node with a :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` collision shape calculated from the mesh geometry. It's mainly used for testing.
+Helper này tạo một node con :ref:`StaticBody3D<class_StaticBody3D>` với collision shape :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` được tính toán từ hình học của mesh. Nó chủ yếu được dùng để kiểm thử.
 
-If ``clean`` is ``true`` (default), duplicate and interior vertices are removed automatically. You can set it to ``false`` to make the process faster if not needed.
+Nếu ``clean`` là ``true`` (mặc định), các đỉnh trùng lặp và các đỉnh bên trong sẽ được tự động loại bỏ. Bạn có thể đặt thành ``false`` để quá trình này nhanh hơn nếu không cần thiết.
 
-If ``simplify`` is ``true``, the geometry can be further simplified to reduce the number of vertices. Disabled by default.
+Nếu ``simplify`` là ``true``, hình học có thể được đơn giản hóa thêm để giảm số lượng đỉnh. Theo mặc định, tùy chọn này bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ If ``simplify`` is ``true``, the geometry can be further simplified to reduce th
 
 |void| **create_debug_tangents**\ (\ ) :ref:`🔗<class_MeshInstance3D_method_create_debug_tangents>`
 
-This helper creates a **MeshInstance3D** child node with gizmos at every vertex calculated from the mesh geometry. It's mainly used for testing.
+Helper này tạo một node con **MeshInstance3D** với các gizmo tại mọi đỉnh được tính toán từ hình học của mesh. Nó chủ yếu được dùng để kiểm thử.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ This helper creates a **MeshInstance3D** child node with gizmos at every vertex 
 
 |void| **create_multiple_convex_collisions**\ (\ settings\: :ref:`MeshConvexDecompositionSettings<class_MeshConvexDecompositionSettings>` = null\ ) :ref:`🔗<class_MeshInstance3D_method_create_multiple_convex_collisions>`
 
-This helper creates a :ref:`StaticBody3D<class_StaticBody3D>` child node with multiple :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` collision shapes calculated from the mesh geometry via convex decomposition. The convex decomposition operation can be controlled with parameters from the optional ``settings``.
+Helper này tạo một node con :ref:`StaticBody3D<class_StaticBody3D>` với nhiều hình dạng va chạm :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` được tính toán từ hình học của mesh thông qua phép phân rã lồi. Có thể điều khiển phép phân rã lồi bằng các tham số từ ``settings`` tùy chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ This helper creates a :ref:`StaticBody3D<class_StaticBody3D>` child node with mu
 
 |void| **create_trimesh_collision**\ (\ ) :ref:`🔗<class_MeshInstance3D_method_create_trimesh_collision>`
 
-This helper creates a :ref:`StaticBody3D<class_StaticBody3D>` child node with a :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` collision shape calculated from the mesh geometry. It's mainly used for testing.
+Helper này tạo một node con :ref:`StaticBody3D<class_StaticBody3D>` với hình dạng va chạm :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` được tính toán từ hình học của mesh. Nó chủ yếu được dùng để kiểm thử.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ This helper creates a :ref:`StaticBody3D<class_StaticBody3D>` child node with a 
 
 :ref:`int<class_int>` **find_blend_shape_by_name**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_MeshInstance3D_method_find_blend_shape_by_name>`
 
-Returns the index of the blend shape with the given ``name``. Returns ``-1`` if no blend shape with this name exists, including when :ref:`mesh<class_MeshInstance3D_property_mesh>` is ``null``.
+Trả về chỉ mục của blend shape có ``name`` đã cho. Trả về ``-1`` nếu không tồn tại blend shape nào có tên này, bao gồm cả khi :ref:`mesh<class_MeshInstance3D_property_mesh>` là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -257,9 +257,9 @@ Returns the index of the blend shape with the given ``name``. Returns ``-1`` if 
 
 :ref:`Material<class_Material>` **get_active_material**\ (\ surface\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshInstance3D_method_get_active_material>`
 
-Returns the :ref:`Material<class_Material>` that will be used by the :ref:`Mesh<class_Mesh>` when drawing. This can return the :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>`, the surface override :ref:`Material<class_Material>` defined in this **MeshInstance3D**, or the surface :ref:`Material<class_Material>` defined in the :ref:`mesh<class_MeshInstance3D_property_mesh>`. For example, if :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>` is used, all surfaces will return the override material.
+Trả về :ref:`Material<class_Material>` sẽ được :ref:`Mesh<class_Mesh>` sử dụng khi vẽ. Giá trị này có thể là :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>`, :ref:`Material<class_Material>` ghi đè bề mặt được định nghĩa trong **MeshInstance3D**, hoặc :ref:`Material<class_Material>` của bề mặt được định nghĩa trong :ref:`mesh<class_MeshInstance3D_property_mesh>`. Ví dụ: nếu sử dụng :ref:`GeometryInstance3D.material_override<class_GeometryInstance3D_property_material_override>`, mọi bề mặt sẽ trả về material ghi đè.
 
-Returns ``null`` if no material is active, including when :ref:`mesh<class_MeshInstance3D_property_mesh>` is ``null``.
+Trả về ``null`` nếu không có material nào đang hoạt động, bao gồm cả khi :ref:`mesh<class_MeshInstance3D_property_mesh>` là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ Returns ``null`` if no material is active, including when :ref:`mesh<class_MeshI
 
 :ref:`int<class_int>` **get_blend_shape_count**\ (\ ) |const| :ref:`🔗<class_MeshInstance3D_method_get_blend_shape_count>`
 
-Returns the number of blend shapes available. Produces an error if :ref:`mesh<class_MeshInstance3D_property_mesh>` is ``null``.
+Trả về số lượng blend shape hiện có. Phát sinh lỗi nếu :ref:`mesh<class_MeshInstance3D_property_mesh>` là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -283,7 +283,7 @@ Returns the number of blend shapes available. Produces an error if :ref:`mesh<cl
 
 :ref:`float<class_float>` **get_blend_shape_value**\ (\ blend_shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshInstance3D_method_get_blend_shape_value>`
 
-Returns the value of the blend shape at the given ``blend_shape_idx``. Returns ``0.0`` and produces an error if :ref:`mesh<class_MeshInstance3D_property_mesh>` is ``null`` or doesn't have a blend shape at that index.
+Trả về giá trị của blend shape tại ``blend_shape_idx``. Trả về ``0.0`` và phát sinh lỗi nếu :ref:`mesh<class_MeshInstance3D_property_mesh>` là ``null`` hoặc không có blend shape tại chỉ mục đó.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ Returns the value of the blend shape at the given ``blend_shape_idx``. Returns `
 
 :ref:`SkinReference<class_SkinReference>` **get_skin_reference**\ (\ ) |const| :ref:`🔗<class_MeshInstance3D_method_get_skin_reference>`
 
-Returns the internal :ref:`SkinReference<class_SkinReference>` containing the skeleton's :ref:`RID<class_RID>` attached to this RID. See also :ref:`Resource.get_rid()<class_Resource_method_get_rid>`, :ref:`SkinReference.get_skeleton()<class_SkinReference_method_get_skeleton>`, and :ref:`RenderingServer.instance_attach_skeleton()<class_RenderingServer_method_instance_attach_skeleton>`.
+Trả về :ref:`SkinReference<class_SkinReference>` nội bộ chứa :ref:`RID<class_RID>` của skeleton được gắn vào RID này. Xem thêm :ref:`Resource.get_rid()<class_Resource_method_get_rid>`, :ref:`SkinReference.get_skeleton()<class_SkinReference_method_get_skeleton>` và :ref:`RenderingServer.instance_attach_skeleton()<class_RenderingServer_method_instance_attach_skeleton>`.
 
 .. rst-class:: classref-item-separator
 
@@ -307,9 +307,9 @@ Returns the internal :ref:`SkinReference<class_SkinReference>` containing the sk
 
 :ref:`Material<class_Material>` **get_surface_override_material**\ (\ surface\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshInstance3D_method_get_surface_override_material>`
 
-Returns the override :ref:`Material<class_Material>` for the specified ``surface`` of the :ref:`Mesh<class_Mesh>` resource. See also :ref:`get_surface_override_material_count()<class_MeshInstance3D_method_get_surface_override_material_count>`.
+Trả về :ref:`Material<class_Material>` ghi đè cho ``surface`` được chỉ định của resource :ref:`Mesh<class_Mesh>`. Xem thêm :ref:`get_surface_override_material_count()<class_MeshInstance3D_method_get_surface_override_material_count>`.
 
-\ **Note:** This returns the :ref:`Material<class_Material>` associated to the **MeshInstance3D**'s Surface Material Override properties, not the material within the :ref:`Mesh<class_Mesh>` resource. To get the material within the :ref:`Mesh<class_Mesh>` resource, use :ref:`Mesh.surface_get_material()<class_Mesh_method_surface_get_material>` instead.
+\ **Lưu ý:** Phần này trả về :ref:`Material<class_Material>` liên kết với các thuộc tính Surface Material Override của **MeshInstance3D**, không phải material bên trong resource :ref:`Mesh<class_Mesh>`. Để lấy material bên trong resource :ref:`Mesh<class_Mesh>`, hãy sử dụng :ref:`Mesh.surface_get_material()<class_Mesh_method_surface_get_material>`.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ Returns the override :ref:`Material<class_Material>` for the specified ``surface
 
 :ref:`int<class_int>` **get_surface_override_material_count**\ (\ ) |const| :ref:`🔗<class_MeshInstance3D_method_get_surface_override_material_count>`
 
-Returns the number of surface override materials. This is equivalent to :ref:`Mesh.get_surface_count()<class_Mesh_method_get_surface_count>`. See also :ref:`get_surface_override_material()<class_MeshInstance3D_method_get_surface_override_material>`.
+Trả về số lượng material ghi đè bề mặt. Giá trị này tương đương với :ref:`Mesh.get_surface_count()<class_Mesh_method_get_surface_count>`. Xem thêm :ref:`get_surface_override_material()<class_MeshInstance3D_method_get_surface_override_material>`.
 
 .. rst-class:: classref-item-separator
 
@@ -333,7 +333,7 @@ Returns the number of surface override materials. This is equivalent to :ref:`Me
 
 |void| **set_blend_shape_value**\ (\ blend_shape_idx\: :ref:`int<class_int>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_MeshInstance3D_method_set_blend_shape_value>`
 
-Sets the value of the blend shape at ``blend_shape_idx`` to ``value``. Produces an error if :ref:`mesh<class_MeshInstance3D_property_mesh>` is ``null`` or doesn't have a blend shape at that index.
+Đặt giá trị của blend shape tại ``blend_shape_idx`` thành ``value``. Phát sinh lỗi nếu :ref:`mesh<class_MeshInstance3D_property_mesh>` là ``null`` hoặc không có blend shape tại chỉ mục đó.
 
 .. rst-class:: classref-item-separator
 
@@ -345,16 +345,16 @@ Sets the value of the blend shape at ``blend_shape_idx`` to ``value``. Produces 
 
 |void| **set_surface_override_material**\ (\ surface\: :ref:`int<class_int>`, material\: :ref:`Material<class_Material>`\ ) :ref:`🔗<class_MeshInstance3D_method_set_surface_override_material>`
 
-Sets the override ``material`` for the specified ``surface`` of the :ref:`Mesh<class_Mesh>` resource. This material is associated with this **MeshInstance3D** rather than with :ref:`mesh<class_MeshInstance3D_property_mesh>`.
+Đặt override ``material`` cho ``surface`` được chỉ định của resource :ref:`Mesh<class_Mesh>`. Material này được liên kết với **MeshInstance3D** thay vì với :ref:`mesh<class_MeshInstance3D_property_mesh>`.
 
-\ **Note:** This assigns the :ref:`Material<class_Material>` associated to the **MeshInstance3D**'s Surface Material Override properties, not the material within the :ref:`Mesh<class_Mesh>` resource. To set the material within the :ref:`Mesh<class_Mesh>` resource, use :ref:`Mesh.surface_set_material()<class_Mesh_method_surface_set_material>` instead.
+\ **Lưu ý:** Lệnh này gán :ref:`Material<class_Material>` được liên kết với các thuộc tính Surface Material Override của **MeshInstance3D**, chứ không phải material bên trong resource :ref:`Mesh<class_Mesh>`. Để đặt material bên trong resource :ref:`Mesh<class_Mesh>`, hãy sử dụng :ref:`Mesh.surface_set_material()<class_Mesh_method_surface_set_material>` thay thế.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

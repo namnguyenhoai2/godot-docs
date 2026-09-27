@@ -10,20 +10,20 @@
 ResourceImporterCSVTranslation
 ==============================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports comma-separated values as :ref:`Translation<class_Translation>`\ s.
+Nhập các giá trị phân tách bằng dấu phẩy dưới dạng :ref:`Translation<class_Translation>`\ s.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Comma-separated values are a plain text table storage format. The format's simplicity makes it easy to edit in any text editor or spreadsheet software. This makes it a common choice for game localization.
+Các giá trị phân tách bằng dấu phẩy là một định dạng lưu trữ bảng dạng văn bản thuần túy. Tính đơn giản của định dạng này giúp bạn dễ dàng chỉnh sửa bằng bất kỳ trình soạn thảo văn bản hoặc phần mềm bảng tính nào. Vì vậy, đây là lựa chọn phổ biến cho việc bản địa hóa trò chơi.
 
-In the CSV file used for translation, the first column contains string identifiers, and the first row serves as the header. The first column's header can be any value. The remaining headers indicate the locale for that column. Columns whose headers begin with an underscore (``_``) will be ignored.
+Trong tệp CSV dùng để dịch, cột đầu tiên chứa các mã định danh chuỗi, còn hàng đầu tiên đóng vai trò là tiêu đề. Tiêu đề của cột đầu tiên có thể là bất kỳ giá trị nào. Các tiêu đề còn lại cho biết locale của cột đó. Các cột có tiêu đề bắt đầu bằng dấu gạch dưới (``_``) sẽ bị bỏ qua.
 
-\ **Example CSV file:**\ 
+\ **Tệp CSV mẫu:**\
 
 .. code:: text
 
@@ -33,7 +33,7 @@ In the CSV file used for translation, the first column contains string identifie
     BYE,Goodbye,Adiós,さようなら
     QUOTE,"""Hello"" said the man.","""Hola"" dijo el hombre.",「こんにちは」男は言いました
 
-Although keys in the first column typically use uppercase string identifiers, it is not uncommon to directly use strings appearing in the game as keys. To avoid string ambiguity, you can use a special ``?context`` column to specify the context to use with :ref:`Object.tr()<class_Object_method_tr>`.
+Mặc dù các khóa trong cột đầu tiên thường sử dụng mã định danh chuỗi viết hoa, việc sử dụng trực tiếp các chuỗi xuất hiện trong trò chơi làm khóa cũng không hiếm. Để tránh sự mơ hồ của chuỗi, bạn có thể sử dụng một cột ``?context`` đặc biệt để chỉ định context dùng với :ref:`Object.tr()<class_Object_method_tr>`.
 
 .. code:: text
 
@@ -41,9 +41,9 @@ Although keys in the first column typically use uppercase string identifiers, it
     Letter,Alphabet,Lettre,字母,字母
     Letter,Message,Courrier,手紙,信件
 
-To set the plural form of a string to use with :ref:`Object.tr_n()<class_Object_method_tr_n>`, add a special ``?plural`` column. After setting the plural form of the source string in this column, you can add additional rows to provide translations for more plural forms. The first column and all special columns in these plural form rows must be empty.
+Để đặt dạng số nhiều của một chuỗi dùng với :ref:`Object.tr_n()<class_Object_method_tr_n>`, hãy thêm một cột ``?plural`` đặc biệt. Sau khi đặt dạng số nhiều của chuỗi nguồn trong cột này, bạn có thể thêm các hàng bổ sung để cung cấp bản dịch cho nhiều dạng số nhiều hơn. Cột đầu tiên và tất cả các cột đặc biệt trong những hàng dạng số nhiều này phải để trống.
 
-Godot includes built-in plural rules for some languages. You can also customize them using a special ``?pluralrule`` row. See `GNU gettext <https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html>`__ for examples and more info.
+Godot tích hợp sẵn các quy tắc số nhiều cho một số ngôn ngữ. Bạn cũng có thể tùy chỉnh chúng bằng một hàng ``?pluralrule`` đặc biệt. Xem `GNU gettext <https://www.gnu.org/software/gettext/manual/html_node/Plural-forms.html>`__ để biết ví dụ và thêm thông tin.
 
 .. code:: text
 
@@ -55,14 +55,14 @@ Godot includes built-in plural rules for some languages. You can also customize 
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Importing translations <../tutorials/assets_pipeline/importing_translations>`
+- :doc:`Nhập bản dịch <../tutorials/assets_pipeline/importing_translations>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -84,8 +84,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterCSVTranslation_property_compress:
 
@@ -93,9 +93,9 @@ Property Descriptions
 
 :ref:`int<class_int>` **compress** = ``1`` :ref:`🔗<class_ResourceImporterCSVTranslation_property_compress>`
 
-- **Disabled**: Creates a :ref:`Translation<class_Translation>`.
+- **Disabled**: Tạo một :ref:`Translation<class_Translation>`.
 
-- **Auto**: Creates an :ref:`OptimizedTranslation<class_OptimizedTranslation>` when possible. This makes the resulting file smaller at the cost of a small CPU overhead. Falls back to :ref:`Translation<class_Translation>` for translations with context or plural forms.
+- **Auto**: Tạo một :ref:`OptimizedTranslation<class_OptimizedTranslation>` khi có thể. Điều này làm cho tệp kết quả nhỏ hơn, đổi lại là một chút chi phí CPU. Chuyển sang :ref:`Translation<class_Translation>` cho các bản dịch có context hoặc dạng số nhiều.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ Property Descriptions
 
 :ref:`int<class_int>` **delimiter** = ``0`` :ref:`🔗<class_ResourceImporterCSVTranslation_property_delimiter>`
 
-The delimiter to use in the CSV file. The default value matches the common CSV convention. Tab-separated values are sometimes called TSV files.
+Dấu phân cách sẽ sử dụng trong tệp CSV. Giá trị mặc định tuân theo quy ước CSV phổ biến. Các giá trị phân tách bằng tab đôi khi được gọi là tệp TSV.
 
 .. rst-class:: classref-item-separator
 
@@ -119,7 +119,7 @@ The delimiter to use in the CSV file. The default value matches the common CSV c
 
 :ref:`bool<class_bool>` **unescape_keys** = ``false`` :ref:`🔗<class_ResourceImporterCSVTranslation_property_unescape_keys>`
 
-If ``true``, message keys in the CSV file are unescaped using :ref:`String.c_unescape()<class_String_method_c_unescape>` during the import process.
+Nếu ``true``, các khóa thông báo trong tệp CSV sẽ được unescape bằng :ref:`String.c_unescape()<class_String_method_c_unescape>` trong quá trình nhập.
 
 .. rst-class:: classref-item-separator
 
@@ -131,14 +131,14 @@ If ``true``, message keys in the CSV file are unescaped using :ref:`String.c_une
 
 :ref:`bool<class_bool>` **unescape_translations** = ``true`` :ref:`🔗<class_ResourceImporterCSVTranslation_property_unescape_translations>`
 
-If ``true``, message translations in the CSV file are unescaped using :ref:`String.c_unescape()<class_String_method_c_unescape>` during the import process.
+Nếu ``true``, các bản dịch thông báo trong tệp CSV sẽ được unescape bằng :ref:`String.c_unescape()<class_String_method_c_unescape>` trong quá trình nhập.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, nên có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,23 +10,23 @@
 PhysicalSkyMaterial
 ===================
 
-**Inherits:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A material that defines a sky for a :ref:`Sky<class_Sky>` resource by a set of physical properties.
+Một material định nghĩa bầu trời cho tài nguyên :ref:`Sky<class_Sky>` bằng một tập hợp các thuộc tính vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **PhysicalSkyMaterial** uses the Preetham analytic daylight model to draw a sky based on physical properties. This results in a substantially more realistic sky than the :ref:`ProceduralSkyMaterial<class_ProceduralSkyMaterial>`, but it is slightly slower and less flexible.
+**PhysicalSkyMaterial** sử dụng mô hình ánh sáng ban ngày giải tích Preetham để vẽ bầu trời dựa trên các thuộc tính vật lý. Kết quả là bầu trời chân thực hơn đáng kể so với :ref:`ProceduralSkyMaterial<class_ProceduralSkyMaterial>`, nhưng tốc độ chậm hơn một chút và kém linh hoạt hơn.
 
-The **PhysicalSkyMaterial** only supports one sun. The color, energy, and direction of the sun are taken from the first :ref:`DirectionalLight3D<class_DirectionalLight3D>` in the scene tree.
+**PhysicalSkyMaterial** chỉ hỗ trợ một mặt trời. Màu sắc, năng lượng và hướng của mặt trời được lấy từ :ref:`DirectionalLight3D<class_DirectionalLight3D>` đầu tiên trong cây scene.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -61,8 +61,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicalSkyMaterial_property_energy_multiplier:
 
@@ -75,7 +75,7 @@ Property Descriptions
 - |void| **set_energy_multiplier**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_energy_multiplier**\ (\ )
 
-The sky's overall brightness multiplier. Higher values result in a brighter sky.
+Hệ số nhân độ sáng tổng thể của bầu trời. Giá trị cao hơn tạo ra bầu trời sáng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ The sky's overall brightness multiplier. Higher values result in a brighter sky.
 - |void| **set_ground_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_ground_color**\ (\ )
 
-Modulates the :ref:`Color<class_Color>` on the bottom half of the sky to represent the ground.
+Điều chỉnh :ref:`Color<class_Color>` ở nửa dưới của bầu trời để biểu thị mặt đất.
 
 .. rst-class:: classref-item-separator
 
@@ -109,7 +109,7 @@ Modulates the :ref:`Color<class_Color>` on the bottom half of the sky to represe
 - |void| **set_mie_coefficient**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mie_coefficient**\ (\ )
 
-Controls the strength of `Mie scattering <https://en.wikipedia.org/wiki/Mie_scattering>`__ for the sky. Mie scattering results from light colliding with larger particles (like water). On earth, Mie scattering results in a whitish color around the sun and horizon.
+Kiểm soát cường độ `Mie scattering <https://en.wikipedia.org/wiki/Mie_scattering>`__ của bầu trời. Mie scattering xảy ra khi ánh sáng va chạm với các hạt lớn hơn (chẳng hạn như nước). Trên Trái Đất, Mie scattering tạo ra màu trắng nhạt quanh mặt trời và đường chân trời.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ Controls the strength of `Mie scattering <https://en.wikipedia.org/wiki/Mie_scat
 - |void| **set_mie_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_mie_color**\ (\ )
 
-Controls the :ref:`Color<class_Color>` of the `Mie scattering <https://en.wikipedia.org/wiki/Mie_scattering>`__ effect. While not physically accurate, this allows for the creation of alien-looking planets.
+Kiểm soát :ref:`Color<class_Color>` của hiệu ứng `Mie scattering <https://en.wikipedia.org/wiki/Mie_scattering>`__. Mặc dù không chính xác về mặt vật lý, tùy chọn này cho phép tạo ra những hành tinh trông như ngoài hành tinh.
 
 .. rst-class:: classref-item-separator
 
@@ -143,7 +143,7 @@ Controls the :ref:`Color<class_Color>` of the `Mie scattering <https://en.wikipe
 - |void| **set_mie_eccentricity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mie_eccentricity**\ (\ )
 
-Controls the direction of the `Mie scattering <https://en.wikipedia.org/wiki/Mie_scattering>`__. A value of ``1`` means that when light hits a particle it's passing through straight forward. A value of ``-1`` means that all light is scatter backwards.
+Kiểm soát hướng của `Mie scattering <https://en.wikipedia.org/wiki/Mie_scattering>`__. Giá trị ``1`` có nghĩa là khi ánh sáng chiếu vào một hạt, nó truyền thẳng qua theo hướng về phía trước. Giá trị ``-1`` có nghĩa là toàn bộ ánh sáng bị tán xạ ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -153,14 +153,14 @@ Controls the direction of the `Mie scattering <https://en.wikipedia.org/wiki/Mie
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **night_sky** :ref:`🔗<class_PhysicalSkyMaterial_property_night_sky>`
+:ref:`Texture2D<class_Texture2D>` **night_sky** :ref:`🔗 <class_PhysicalSkyMaterial_property_night_sky>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_night_sky**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_night_sky**\ (\ )
 
-:ref:`Texture2D<class_Texture2D>` for the night sky. This is added to the sky, so if it is bright enough, it may be visible during the day.
+:ref:`Texture2D<class_Texture2D>` cho bầu trời đêm. Giá trị này được cộng vào bầu trời, vì vậy nếu đủ sáng, nó có thể nhìn thấy vào ban ngày.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ Controls the direction of the `Mie scattering <https://en.wikipedia.org/wiki/Mie
 - |void| **set_rayleigh_coefficient**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_rayleigh_coefficient**\ (\ )
 
-Controls the strength of the `Rayleigh scattering <https://en.wikipedia.org/wiki/Rayleigh_scattering>`__. Rayleigh scattering results from light colliding with small particles. It is responsible for the blue color of the sky.
+Điều khiển cường độ `tán xạ Rayleigh <https://en.wikipedia.org/wiki/Rayleigh_scattering>`__. Tán xạ Rayleigh xảy ra khi ánh sáng va chạm với các hạt nhỏ. Đây là nguyên nhân tạo ra màu xanh lam của bầu trời.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ Controls the strength of the `Rayleigh scattering <https://en.wikipedia.org/wiki
 - |void| **set_rayleigh_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_rayleigh_color**\ (\ )
 
-Controls the :ref:`Color<class_Color>` of the `Rayleigh scattering <https://en.wikipedia.org/wiki/Rayleigh_scattering>`__. While not physically accurate, this allows for the creation of alien-looking planets. For example, setting this to a red :ref:`Color<class_Color>` results in a Mars-looking atmosphere with a corresponding blue sunset.
+Điều khiển :ref:`Color<class_Color>` của hiện tượng `tán xạ Rayleigh <https://en.wikipedia.org/wiki/Rayleigh_scattering>`__. Mặc dù không chính xác về mặt vật lý, tùy chọn này cho phép tạo ra các hành tinh có diện mạo giống hành tinh ngoài hành tinh. Ví dụ: đặt giá trị này thành :ref:`Color<class_Color>` màu đỏ sẽ tạo ra bầu khí quyển giống sao Hỏa với hoàng hôn xanh lam tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -211,7 +211,7 @@ Controls the :ref:`Color<class_Color>` of the `Rayleigh scattering <https://en.w
 - |void| **set_sun_disk_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sun_disk_scale**\ (\ )
 
-Sets the size of the sun disk. Default value is based on Sol's perceived size from Earth.
+Đặt kích thước đĩa Mặt Trời. Giá trị mặc định dựa trên kích thước biểu kiến của Sol khi nhìn từ Trái Đất.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ Sets the size of the sun disk. Default value is based on Sol's perceived size fr
 - |void| **set_turbidity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_turbidity**\ (\ )
 
-Sets the thickness of the atmosphere. High turbidity creates a foggy-looking atmosphere, while a low turbidity results in a clearer atmosphere.
+Đặt độ dày của bầu khí quyển. Độ đục cao tạo ra bầu khí quyển trông như có sương mù, trong khi độ đục thấp tạo ra bầu khí quyển trong hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -245,14 +245,14 @@ Sets the thickness of the atmosphere. High turbidity creates a foggy-looking atm
 - |void| **set_use_debanding**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_debanding**\ (\ )
 
-If ``true``, enables debanding. Debanding adds a small amount of noise which helps reduce banding that appears from the smooth changes in color in the sky.
+Nếu ``true``, bật debanding. Debanding thêm một lượng nhỏ nhiễu, giúp giảm hiện tượng phân dải xuất hiện do sự thay đổi màu sắc mượt mà trên bầu trời.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

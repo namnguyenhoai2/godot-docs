@@ -10,28 +10,28 @@
 VisualShaderNodeFloatFunc
 =========================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A scalar floating-point function to be used within the visual shader graph.
+Một hàm số thực vô hướng được sử dụng trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Accept a floating-point scalar (``x``) to the input port and transform it according to :ref:`function<class_VisualShaderNodeFloatFunc_property_function>`.
+Nhận một giá trị vô hướng dấu phẩy động (``x``) vào cổng đầu vào và biến đổi giá trị đó theo :ref:`function<class_VisualShaderNodeFloatFunc_property_function>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------+--------------------------------------------------------------------+--------+
-   | :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` | :ref:`function<class_VisualShaderNodeFloatFunc_property_function>` | ``13`` |
-   +----------------------------------------------------------+--------------------------------------------------------------------+--------+
+   +-----------------------------------------------------------+--------------------------------------------------------------------+--------+
+   | :ref:`Function <enum_VisualShaderNodeFloatFunc_Function>` | :ref:`function<class_VisualShaderNodeFloatFunc_property_function>` | ``13`` |
+   +-----------------------------------------------------------+--------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeFloatFunc_Function:
 
 .. rst-class:: classref-enumeration
 
-enum **Function**: :ref:`🔗<enum_VisualShaderNodeFloatFunc_Function>`
+enum **Function**: :ref:`🔗 <enum_VisualShaderNodeFloatFunc_Function>`
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_SIN:
 
@@ -54,7 +54,7 @@ enum **Function**: :ref:`🔗<enum_VisualShaderNodeFloatFunc_Function>`
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_SIN** = ``0``
 
-Returns the sine of the parameter. Translates to ``sin(x)`` in the Godot Shader Language.
+Trả về sin của tham số. Tương ứng với ``sin(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_COS:
 
@@ -62,7 +62,7 @@ Returns the sine of the parameter. Translates to ``sin(x)`` in the Godot Shader 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_COS** = ``1``
 
-Returns the cosine of the parameter. Translates to ``cos(x)`` in the Godot Shader Language.
+Trả về cos của tham số. Tương ứng với ``cos(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_TAN:
 
@@ -70,7 +70,7 @@ Returns the cosine of the parameter. Translates to ``cos(x)`` in the Godot Shade
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_TAN** = ``2``
 
-Returns the tangent of the parameter. Translates to ``tan(x)`` in the Godot Shader Language.
+Trả về tan của tham số. Tương ứng với ``tan(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ASIN:
 
@@ -78,7 +78,7 @@ Returns the tangent of the parameter. Translates to ``tan(x)`` in the Godot Shad
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ASIN** = ``3``
 
-Returns the arc-sine of the parameter. Translates to ``asin(x)`` in the Godot Shader Language.
+Trả về sin ngược của tham số. Tương ứng với ``asin(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ACOS:
 
@@ -86,7 +86,7 @@ Returns the arc-sine of the parameter. Translates to ``asin(x)`` in the Godot Sh
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ACOS** = ``4``
 
-Returns the arc-cosine of the parameter. Translates to ``acos(x)`` in the Godot Shader Language.
+Trả về cos ngược của tham số. Tương ứng với ``acos(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ATAN:
 
@@ -94,7 +94,7 @@ Returns the arc-cosine of the parameter. Translates to ``acos(x)`` in the Godot 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ATAN** = ``5``
 
-Returns the arc-tangent of the parameter. Translates to ``atan(x)`` in the Godot Shader Language.
+Trả về tan ngược của tham số. Tương ứng với ``atan(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_SINH:
 
@@ -102,7 +102,7 @@ Returns the arc-tangent of the parameter. Translates to ``atan(x)`` in the Godot
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_SINH** = ``6``
 
-Returns the hyperbolic sine of the parameter. Translates to ``sinh(x)`` in the Godot Shader Language.
+Trả về sin hyperbol của tham số. Tương ứng với ``sinh(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_COSH:
 
@@ -110,7 +110,7 @@ Returns the hyperbolic sine of the parameter. Translates to ``sinh(x)`` in the G
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_COSH** = ``7``
 
-Returns the hyperbolic cosine of the parameter. Translates to ``cosh(x)`` in the Godot Shader Language.
+Trả về cos hyperbol của tham số. Tương ứng với ``cosh(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_TANH:
 
@@ -118,7 +118,7 @@ Returns the hyperbolic cosine of the parameter. Translates to ``cosh(x)`` in the
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_TANH** = ``8``
 
-Returns the hyperbolic tangent of the parameter. Translates to ``tanh(x)`` in the Godot Shader Language.
+Trả về tan hyperbol của tham số. Tương ứng với ``tanh(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_LOG:
 
@@ -126,7 +126,7 @@ Returns the hyperbolic tangent of the parameter. Translates to ``tanh(x)`` in th
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_LOG** = ``9``
 
-Returns the natural logarithm of the parameter. Translates to ``log(x)`` in the Godot Shader Language.
+Trả về logarithm tự nhiên của tham số. Tương ứng với ``log(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_EXP:
 
@@ -134,7 +134,7 @@ Returns the natural logarithm of the parameter. Translates to ``log(x)`` in the 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_EXP** = ``10``
 
-Returns the natural exponentiation of the parameter. Translates to ``exp(x)`` in the Godot Shader Language.
+Trả về lũy thừa tự nhiên của tham số. Tương ứng với ``exp(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_SQRT:
 
@@ -142,7 +142,7 @@ Returns the natural exponentiation of the parameter. Translates to ``exp(x)`` in
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_SQRT** = ``11``
 
-Returns the square root of the parameter. Translates to ``sqrt(x)`` in the Godot Shader Language.
+Trả về căn bậc hai của tham số. Tương ứng với ``sqrt(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ABS:
 
@@ -150,7 +150,7 @@ Returns the square root of the parameter. Translates to ``sqrt(x)`` in the Godot
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ABS** = ``12``
 
-Returns the absolute value of the parameter. Translates to ``abs(x)`` in the Godot Shader Language.
+Trả về giá trị tuyệt đối của tham số. Tương ứng với ``abs(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_SIGN:
 
@@ -158,7 +158,7 @@ Returns the absolute value of the parameter. Translates to ``abs(x)`` in the God
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_SIGN** = ``13``
 
-Extracts the sign of the parameter. Translates to ``sign(x)`` in the Godot Shader Language.
+Trích xuất dấu của tham số. Tương ứng với ``sign(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_FLOOR:
 
@@ -166,7 +166,7 @@ Extracts the sign of the parameter. Translates to ``sign(x)`` in the Godot Shade
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_FLOOR** = ``14``
 
-Finds the nearest integer less than or equal to the parameter. Translates to ``floor(x)`` in the Godot Shader Language.
+Tìm số nguyên gần nhất nhỏ hơn hoặc bằng tham số. Tương ứng với ``floor(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ROUND:
 
@@ -174,7 +174,7 @@ Finds the nearest integer less than or equal to the parameter. Translates to ``f
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ROUND** = ``15``
 
-Finds the nearest integer to the parameter. Translates to ``round(x)`` in the Godot Shader Language.
+Tìm số nguyên gần nhất với tham số. Tương ứng với ``round(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_CEIL:
 
@@ -182,7 +182,7 @@ Finds the nearest integer to the parameter. Translates to ``round(x)`` in the Go
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_CEIL** = ``16``
 
-Finds the nearest integer that is greater than or equal to the parameter. Translates to ``ceil(x)`` in the Godot Shader Language.
+Tìm số nguyên gần nhất lớn hơn hoặc bằng tham số. Tương ứng với ``ceil(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_FRACT:
 
@@ -190,7 +190,7 @@ Finds the nearest integer that is greater than or equal to the parameter. Transl
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_FRACT** = ``17``
 
-Computes the fractional part of the argument. Translates to ``fract(x)`` in the Godot Shader Language.
+Tính phần thập phân của đối số. Tương ứng với ``fract(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_SATURATE:
 
@@ -198,7 +198,7 @@ Computes the fractional part of the argument. Translates to ``fract(x)`` in the 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_SATURATE** = ``18``
 
-Clamps the value between ``0.0`` and ``1.0`` using ``min(max(x, 0.0), 1.0)``.
+Giới hạn giá trị trong khoảng từ ``0.0`` đến ``1.0`` bằng ``min(max(x, 0.0), 1.0)``.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_NEGATE:
 
@@ -206,7 +206,7 @@ Clamps the value between ``0.0`` and ``1.0`` using ``min(max(x, 0.0), 1.0)``.
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_NEGATE** = ``19``
 
-Negates the ``x`` using ``-(x)``.
+Phủ định ``x`` bằng ``-(x)``.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ACOSH:
 
@@ -214,7 +214,7 @@ Negates the ``x`` using ``-(x)``.
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ACOSH** = ``20``
 
-Returns the arc-hyperbolic-cosine of the parameter. Translates to ``acosh(x)`` in the Godot Shader Language.
+Trả về cosin hyperbolic ngược của tham số. Tương ứng với ``acosh(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ASINH:
 
@@ -222,7 +222,7 @@ Returns the arc-hyperbolic-cosine of the parameter. Translates to ``acosh(x)`` i
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ASINH** = ``21``
 
-Returns the arc-hyperbolic-sine of the parameter. Translates to ``asinh(x)`` in the Godot Shader Language.
+Trả về sin hyperbolic ngược của tham số. Tương ứng với ``asinh(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ATANH:
 
@@ -230,7 +230,7 @@ Returns the arc-hyperbolic-sine of the parameter. Translates to ``asinh(x)`` in 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ATANH** = ``22``
 
-Returns the arc-hyperbolic-tangent of the parameter. Translates to ``atanh(x)`` in the Godot Shader Language.
+Trả về tang hyperbolic ngược của tham số. Tương ứng với ``atanh(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_DEGREES:
 
@@ -238,7 +238,7 @@ Returns the arc-hyperbolic-tangent of the parameter. Translates to ``atanh(x)`` 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_DEGREES** = ``23``
 
-Convert a quantity in radians to degrees. Translates to ``degrees(x)`` in the Godot Shader Language.
+Chuyển một đại lượng tính bằng radian sang độ. Tương ứng với ``degrees(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_EXP2:
 
@@ -246,7 +246,7 @@ Convert a quantity in radians to degrees. Translates to ``degrees(x)`` in the Go
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_EXP2** = ``24``
 
-Returns 2 raised by the power of the parameter. Translates to ``exp2(x)`` in the Godot Shader Language.
+Trả về 2 lũy thừa tham số. Tương ứng với ``exp2(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_INVERSE_SQRT:
 
@@ -254,7 +254,7 @@ Returns 2 raised by the power of the parameter. Translates to ``exp2(x)`` in the
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_INVERSE_SQRT** = ``25``
 
-Returns the inverse of the square root of the parameter. Translates to ``inversesqrt(x)`` in the Godot Shader Language.
+Trả về nghịch đảo của căn bậc hai của tham số. Tương ứng với ``inversesqrt(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_LOG2:
 
@@ -262,7 +262,7 @@ Returns the inverse of the square root of the parameter. Translates to ``inverse
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_LOG2** = ``26``
 
-Returns the base 2 logarithm of the parameter. Translates to ``log2(x)`` in the Godot Shader Language.
+Trả về logarit cơ số 2 của tham số. Tương ứng với ``log2(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_RADIANS:
 
@@ -270,7 +270,7 @@ Returns the base 2 logarithm of the parameter. Translates to ``log2(x)`` in the 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_RADIANS** = ``27``
 
-Convert a quantity in degrees to radians. Translates to ``radians(x)`` in the Godot Shader Language.
+Chuyển đổi một đại lượng tính bằng độ sang radian. Tương ứng với ``radians(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_RECIPROCAL:
 
@@ -278,7 +278,7 @@ Convert a quantity in degrees to radians. Translates to ``radians(x)`` in the Go
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_RECIPROCAL** = ``28``
 
-Finds reciprocal value of dividing 1 by ``x`` (i.e. ``1 / x``).
+Tìm giá trị nghịch đảo của phép chia 1 cho ``x`` (tức là ``1 / x``).
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ROUNDEVEN:
 
@@ -286,7 +286,7 @@ Finds reciprocal value of dividing 1 by ``x`` (i.e. ``1 / x``).
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ROUNDEVEN** = ``29``
 
-Finds the nearest even integer to the parameter. Translates to ``roundEven(x)`` in the Godot Shader Language.
+Tìm số nguyên chẵn gần nhất với tham số. Tương ứng với ``roundEven(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_TRUNC:
 
@@ -294,7 +294,7 @@ Finds the nearest even integer to the parameter. Translates to ``roundEven(x)`` 
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_TRUNC** = ``30``
 
-Returns a value equal to the nearest integer to ``x`` whose absolute value is not larger than the absolute value of ``x``. Translates to ``trunc(x)`` in the Godot Shader Language.
+Trả về một giá trị bằng số nguyên gần nhất với ``x`` có giá trị tuyệt đối không lớn hơn giá trị tuyệt đối của ``x``. Tương ứng với ``trunc(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_ONEMINUS:
 
@@ -302,7 +302,7 @@ Returns a value equal to the nearest integer to ``x`` whose absolute value is no
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_ONEMINUS** = ``31``
 
-Subtracts scalar ``x`` from 1 (i.e. ``1 - x``).
+Trừ scalar ``x`` khỏi 1 (tức là ``1 - x``).
 
 .. _class_VisualShaderNodeFloatFunc_constant_FUNC_MAX:
 
@@ -310,7 +310,7 @@ Subtracts scalar ``x`` from 1 (i.e. ``1 - x``).
 
 :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **FUNC_MAX** = ``32``
 
-Represents the size of the :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` enum.
+Biểu diễn kích thước của enum :ref:`Function <enum_VisualShaderNodeFloatFunc_Function>`.
 
 .. rst-class:: classref-section-separator
 
@@ -318,8 +318,8 @@ Represents the size of the :ref:`Function<enum_VisualShaderNodeFloatFunc_Functio
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeFloatFunc_property_function:
 
@@ -332,14 +332,14 @@ Property Descriptions
 - |void| **set_function**\ (\ value\: :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>`\ )
 - :ref:`Function<enum_VisualShaderNodeFloatFunc_Function>` **get_function**\ (\ )
 
-A function to be applied to the scalar.
+Một hàm được áp dụng cho giá trị vô hướng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

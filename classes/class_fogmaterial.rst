@@ -10,22 +10,22 @@
 FogMaterial
 ===========
 
-**Inherits:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A material that controls how volumetric fog is rendered, to be assigned to a :ref:`FogVolume<class_FogVolume>`.
+Một material điều khiển cách sương mù thể tích được kết xuất, dùng để gán cho một :ref:`FogVolume<class_FogVolume>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A :ref:`Material<class_Material>` resource that can be used by :ref:`FogVolume<class_FogVolume>`\ s to draw volumetric effects.
+Một tài nguyên :ref:`Material<class_Material>` có thể được :ref:`FogVolume<class_FogVolume>`\ s sử dụng để vẽ các hiệu ứng thể tích.
 
-If you need more advanced effects, use a custom :doc:`fog shader <../tutorials/shaders/shader_reference/fog_shader>`.
+Nếu cần các hiệu ứng nâng cao hơn, hãy sử dụng :doc:`shader sương mù tùy chỉnh <../tutorials/shaders/shader_reference/fog_shader>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -51,8 +51,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_FogMaterial_property_albedo:
 
@@ -65,7 +65,7 @@ Property Descriptions
 - |void| **set_albedo**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_albedo**\ (\ )
 
-The single-scattering :ref:`Color<class_Color>` of the :ref:`FogVolume<class_FogVolume>`. Internally, :ref:`albedo<class_FogMaterial_property_albedo>` is converted into single-scattering, which is additively blended with other :ref:`FogVolume<class_FogVolume>`\ s and the :ref:`Environment.volumetric_fog_albedo<class_Environment_property_volumetric_fog_albedo>`.
+Giá trị tán xạ đơn của :ref:`Color<class_Color>` :ref:`FogVolume<class_FogVolume>`. Về mặt nội bộ, :ref:`albedo<class_FogMaterial_property_albedo>` được chuyển đổi thành tán xạ đơn, rồi được trộn cộng với các :ref:`FogVolume<class_FogVolume>`\ s khác và :ref:`Environment.volumetric_fog_albedo<class_Environment_property_volumetric_fog_albedo>`.
 
 .. rst-class:: classref-item-separator
 
@@ -82,9 +82,9 @@ The single-scattering :ref:`Color<class_Color>` of the :ref:`FogVolume<class_Fog
 - |void| **set_density**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_density**\ (\ )
 
-The density of the :ref:`FogVolume<class_FogVolume>`. Denser objects are more opaque, but may suffer from under-sampling artifacts that look like stripes. Negative values can be used to subtract fog from other :ref:`FogVolume<class_FogVolume>`\ s or global volumetric fog.
+Mật độ của :ref:`FogVolume<class_FogVolume>`. Các đối tượng dày đặc hơn sẽ mờ đục hơn, nhưng có thể gặp hiện tượng giả do lấy mẫu không đủ, trông giống như các sọc. Có thể sử dụng các giá trị âm để trừ sương mù khỏi các :ref:`FogVolume<class_FogVolume>`\ s khác hoặc sương mù thể tích toàn cục.
 
-\ **Note:** Due to limited precision, :ref:`density<class_FogMaterial_property_density>` values between ``-0.001`` and ``0.001`` (exclusive) act like ``0.0``. This does not apply to :ref:`Environment.volumetric_fog_density<class_Environment_property_volumetric_fog_density>`.
+\ **Lưu ý:** Do độ chính xác hạn chế, các giá trị :ref:`density<class_FogMaterial_property_density>` nằm giữa ``-0.001`` và ``0.001`` (không bao gồm hai giá trị này) sẽ hoạt động như ``0.0``. Điều này không áp dụng cho :ref:`Environment.volumetric_fog_density<class_Environment_property_volumetric_fog_density>`.
 
 .. rst-class:: classref-item-separator
 
@@ -94,14 +94,14 @@ The density of the :ref:`FogVolume<class_FogVolume>`. Denser objects are more op
 
 .. rst-class:: classref-property
 
-:ref:`Texture3D<class_Texture3D>` **density_texture** :ref:`🔗<class_FogMaterial_property_density_texture>`
+:ref:`Texture3D<class_Texture3D>` **density_texture** :ref:`🔗 <class_FogMaterial_property_density_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_density_texture**\ (\ value\: :ref:`Texture3D<class_Texture3D>`\ )
 - :ref:`Texture3D<class_Texture3D>` **get_density_texture**\ (\ )
 
-The 3D texture that is used to scale the :ref:`density<class_FogMaterial_property_density>` of the :ref:`FogVolume<class_FogVolume>`. This can be used to vary fog density within the :ref:`FogVolume<class_FogVolume>` with any kind of static pattern. For animated effects, consider using a custom :doc:`fog shader <../tutorials/shaders/shader_reference/fog_shader>`.
+Texture 3D được dùng để điều chỉnh :ref:`density<class_FogMaterial_property_density>` của :ref:`FogVolume<class_FogVolume>`. Có thể dùng texture này để thay đổi mật độ sương mù trong :ref:`FogVolume<class_FogVolume>` bằng bất kỳ mẫu tĩnh nào. Đối với các hiệu ứng động, hãy cân nhắc sử dụng :doc:`fog shader <../tutorials/shaders/shader_reference/fog_shader>` tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -118,7 +118,7 @@ The 3D texture that is used to scale the :ref:`density<class_FogMaterial_propert
 - |void| **set_edge_fade**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_edge_fade**\ (\ )
 
-The hardness of the edges of the :ref:`FogVolume<class_FogVolume>`. A higher value will result in softer edges, while a lower value will result in harder edges.
+Độ cứng của các cạnh của :ref:`FogVolume<class_FogVolume>`. Giá trị cao hơn sẽ tạo ra các cạnh mềm hơn, trong khi giá trị thấp hơn sẽ tạo ra các cạnh cứng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -135,7 +135,7 @@ The hardness of the edges of the :ref:`FogVolume<class_FogVolume>`. A higher val
 - |void| **set_emission**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_emission**\ (\ )
 
-The :ref:`Color<class_Color>` of the light emitted by the :ref:`FogVolume<class_FogVolume>`. Emitted light will not cast light or shadows on other objects, but can be useful for modulating the :ref:`Color<class_Color>` of the :ref:`FogVolume<class_FogVolume>` independently from light sources.
+:ref:`Color<class_Color>` của ánh sáng do :ref:`FogVolume<class_FogVolume>` phát ra. Ánh sáng phát ra sẽ không chiếu sáng hoặc tạo bóng lên các đối tượng khác, nhưng có thể hữu ích để điều chỉnh :ref:`Color<class_Color>` của :ref:`FogVolume<class_FogVolume>` độc lập với các nguồn sáng.
 
 .. rst-class:: classref-item-separator
 
@@ -152,14 +152,14 @@ The :ref:`Color<class_Color>` of the light emitted by the :ref:`FogVolume<class_
 - |void| **set_height_falloff**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height_falloff**\ (\ )
 
-The rate by which the height-based fog decreases in density as height increases in world space. A high falloff will result in a sharp transition, while a low falloff will result in a smoother transition. A value of ``0.0`` results in uniform-density fog. The height threshold is determined by the height of the associated :ref:`FogVolume<class_FogVolume>`.
+Mức độ mà mật độ của sương mù dựa trên độ cao giảm xuống khi độ cao tăng trong không gian thế giới. Falloff cao sẽ tạo ra sự chuyển tiếp rõ rệt, trong khi falloff thấp sẽ tạo ra sự chuyển tiếp mượt mà hơn. Giá trị ``0.0`` sẽ tạo ra sương mù có mật độ đồng nhất. Ngưỡng độ cao được xác định bởi độ cao của :ref:`FogVolume<class_FogVolume>` liên kết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

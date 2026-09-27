@@ -10,22 +10,22 @@
 PathFollow2D
 ============
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Point sampler for a :ref:`Path2D<class_Path2D>`.
+Bộ lấy mẫu điểm cho một :ref:`Path2D<class_Path2D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node takes its parent :ref:`Path2D<class_Path2D>`, and returns the coordinates of a point within it, given a distance from the first vertex.
+Nút này lấy :ref:`Path2D<class_Path2D>` cha của nó và trả về tọa độ của một điểm bên trong đó, dựa trên khoảng cách tính từ đỉnh đầu tiên.
 
-It is useful for making other nodes follow a path, without coding the movement pattern. For that, the nodes must be children of this node. The descendant nodes will then move accordingly when setting the :ref:`progress<class_PathFollow2D_property_progress>` in this node.
+Nó hữu ích khi muốn làm cho các nút khác đi theo một đường dẫn mà không cần viết mã cho mẫu chuyển động. Để làm vậy, các nút đó phải là nút con của nút này. Sau đó, các nút hậu duệ sẽ di chuyển tương ứng khi thiết lập :ref:`progress<class_PathFollow2D_property_progress>` trong nút này.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -53,8 +53,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PathFollow2D_property_cubic_interp:
 
@@ -67,11 +67,11 @@ Property Descriptions
 - |void| **set_cubic_interpolation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_cubic_interpolation**\ (\ )
 
-If ``true``, the position between two cached points is interpolated cubically, and linearly otherwise.
+Nếu ``true``, vị trí giữa hai điểm được lưu trong bộ nhớ đệm sẽ được nội suy theo phương pháp lập phương; nếu không thì nội suy tuyến tính.
 
-The points along the :ref:`Curve2D<class_Curve2D>` of the :ref:`Path2D<class_Path2D>` are precomputed before use, for faster calculations. The point at the requested offset is then calculated interpolating between two adjacent cached points. This may present a problem if the curve makes sharp turns, as the cached points may not follow the curve closely enough.
+Các điểm dọc theo :ref:`Curve2D<class_Curve2D>` của :ref:`Path2D<class_Path2D>` được tính toán trước khi sử dụng để tăng tốc độ tính toán. Sau đó, điểm tại độ lệch được yêu cầu sẽ được tính bằng cách nội suy giữa hai điểm liền kề đã lưu trong bộ nhớ đệm. Điều này có thể gây ra vấn đề nếu đường cong có các đoạn rẽ gấp, vì những điểm được lưu trong bộ nhớ đệm có thể không bám đủ sát đường cong.
 
-There are two answers to this problem: either increase the number of cached points and increase memory consumption, or make a cubic interpolation between two points at the cost of (slightly) slower calculations.
+Có hai cách giải quyết vấn đề này: либо tăng số lượng điểm được lưu trong bộ nhớ đệm và tăng mức tiêu thụ bộ nhớ, либо nội suy lập phương giữa hai điểm với cái giá là tốc độ tính toán chậm hơn (một chút).
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ There are two answers to this problem: either increase the number of cached poin
 - |void| **set_h_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_h_offset**\ (\ )
 
-The node's offset along the curve.
+Độ lệch của node dọc theo đường cong.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ The node's offset along the curve.
 - |void| **set_loop**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_loop**\ (\ )
 
-If ``true``, any offset outside the path's length will wrap around, instead of stopping at the ends. Use it for cyclic paths.
+Nếu ``true``, mọi độ lệch nằm ngoài độ dài của đường dẫn sẽ được cuộn vòng, thay vì dừng ở hai đầu. Hãy sử dụng tùy chọn này cho các đường dẫn tuần hoàn.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ If ``true``, any offset outside the path's length will wrap around, instead of s
 - |void| **set_progress**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_progress**\ (\ )
 
-The distance along the path, in pixels. Changing this value sets this node's position to a point within the path.
+Khoảng cách dọc theo đường dẫn, tính bằng pixel. Việc thay đổi giá trị này sẽ đặt vị trí của node này vào một điểm trên đường dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -139,9 +139,9 @@ The distance along the path, in pixels. Changing this value sets this node's pos
 - |void| **set_progress_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_progress_ratio**\ (\ )
 
-The distance along the path as a number in the range 0.0 (for the first vertex) to 1.0 (for the last). This is just another way of expressing the progress within the path, as the offset supplied is multiplied internally by the path's length.
+Khoảng cách dọc theo đường dẫn dưới dạng một số trong phạm vi từ 0.0 (đỉnh đầu tiên) đến 1.0 (đỉnh cuối cùng). Đây chỉ là một cách khác để biểu thị tiến độ dọc theo đường dẫn, vì độ lệch được cung cấp sẽ được nhân với độ dài của đường dẫn trong nội bộ.
 
-It can be set or get only if the **PathFollow2D** is the child of a :ref:`Path2D<class_Path2D>` which is part of the scene tree, and that this :ref:`Path2D<class_Path2D>` has a :ref:`Curve2D<class_Curve2D>` with a non-zero length. Otherwise, trying to set this field will print an error, and getting this field will return ``0.0``.
+Chỉ có thể thiết lập hoặc lấy giá trị nếu **PathFollow2D** là con của :ref:`Path2D<class_Path2D>` thuộc cây cảnh, đồng thời :ref:`Path2D<class_Path2D>` này có một :ref:`Curve2D<class_Curve2D>` với độ dài khác không. Nếu không, việc cố thiết lập trường này sẽ in ra lỗi, còn việc lấy trường này sẽ trả về ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ It can be set or get only if the **PathFollow2D** is the child of a :ref:`Path2D
 - |void| **set_rotates**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_rotating**\ (\ )
 
-If ``true``, this node rotates to follow the path, with the +X direction facing forward on the path.
+Nếu ``true``, nút này sẽ xoay để đi theo đường dẫn, với hướng +X hướng về phía trước trên đường dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -175,14 +175,14 @@ If ``true``, this node rotates to follow the path, with the +X direction facing 
 - |void| **set_v_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_v_offset**\ (\ )
 
-The node's offset perpendicular to the curve.
+Độ lệch của nút vuông góc với đường cong.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

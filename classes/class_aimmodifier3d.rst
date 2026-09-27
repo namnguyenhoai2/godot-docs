@@ -10,22 +10,22 @@
 AimModifier3D
 =============
 
-**Inherits:** :ref:`BoneConstraint3D<class_BoneConstraint3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`BoneConstraint3D<class_BoneConstraint3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-The **AimModifier3D** rotates a bone to look at a reference bone.
+**AimModifier3D** xoay một xương để hướng về một xương tham chiếu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This is a simple version of :ref:`LookAtModifier3D<class_LookAtModifier3D>` that only allows bone to the reference without advanced options such as angle limitation or time-based interpolation.
+Đây là phiên bản đơn giản của :ref:`LookAtModifier3D<class_LookAtModifier3D>`, chỉ cho phép xương hướng về xương tham chiếu mà không có các tùy chọn nâng cao như giới hạn góc hoặc nội suy dựa trên thời gian.
 
-The feature is simplified, but instead it is implemented with smooth tracking without euler, see :ref:`set_use_euler()<class_AimModifier3D_method_set_use_euler>`.
+Tính năng này được đơn giản hóa, nhưng thay vào đó được triển khai với cơ chế theo dõi mượt mà không dùng Euler, xem :ref:`set_use_euler()<class_AimModifier3D_method_set_use_euler>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -37,33 +37,33 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` | :ref:`get_forward_axis<class_AimModifier3D_method_get_forward_axis>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                   |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Axis<enum_Vector3_Axis>`                    | :ref:`get_primary_rotation_axis<class_AimModifier3D_method_get_primary_rotation_axis>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                 |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`is_relative<class_AimModifier3D_method_is_relative>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                             |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`is_using_euler<class_AimModifier3D_method_is_using_euler>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                       |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`is_using_secondary_rotation<class_AimModifier3D_method_is_using_secondary_rotation>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                             |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_forward_axis<class_AimModifier3D_method_set_forward_axis>`\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>`\ ) |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_primary_rotation_axis<class_AimModifier3D_method_set_primary_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`Axis<enum_Vector3_Axis>`\ )  |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_relative<class_AimModifier3D_method_set_relative>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_use_euler<class_AimModifier3D_method_set_use_euler>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                              |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_use_secondary_rotation<class_AimModifier3D_method_set_use_secondary_rotation>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )    |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`BoneAxis <enum_SkeletonModifier3D_BoneAxis>` | :ref:`get_forward_axis<class_AimModifier3D_method_get_forward_axis>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                    |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Axis <enum_Vector3_Axis>`                    | :ref:`get_primary_rotation_axis<class_AimModifier3D_method_get_primary_rotation_axis>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                  |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                            | :ref:`is_relative<class_AimModifier3D_method_is_relative>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                              |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                            | :ref:`is_using_euler<class_AimModifier3D_method_is_using_euler>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                        |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                            | :ref:`is_using_secondary_rotation<class_AimModifier3D_method_is_using_secondary_rotation>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                              |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_forward_axis<class_AimModifier3D_method_set_forward_axis>`\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`BoneAxis <enum_SkeletonModifier3D_BoneAxis>`\ ) |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_primary_rotation_axis<class_AimModifier3D_method_set_primary_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`Axis <enum_Vector3_Axis>`\ )  |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_relative<class_AimModifier3D_method_set_relative>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                 |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_use_euler<class_AimModifier3D_method_set_use_euler>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                               |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_use_secondary_rotation<class_AimModifier3D_method_set_use_secondary_rotation>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )     |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AimModifier3D_property_setting_count:
 
@@ -85,7 +85,7 @@ Property Descriptions
 - |void| **set_setting_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_setting_count**\ (\ )
 
-The number of settings in the modifier.
+Số lượng thiết lập trong modifier.
 
 .. rst-class:: classref-section-separator
 
@@ -93,8 +93,8 @@ The number of settings in the modifier.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_AimModifier3D_method_get_forward_axis:
 
@@ -102,7 +102,7 @@ Method Descriptions
 
 :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **get_forward_axis**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AimModifier3D_method_get_forward_axis>`
 
-Returns the forward axis of the bone.
+Trả về trục hướng về phía trước của bone.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ Returns the forward axis of the bone.
 
 :ref:`Axis<enum_Vector3_Axis>` **get_primary_rotation_axis**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AimModifier3D_method_get_primary_rotation_axis>`
 
-Returns the axis of the first rotation. It is enabled only if :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` is ``true``.
+Trả về trục của phép xoay đầu tiên. Tính năng này chỉ được bật khi :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ Returns the axis of the first rotation. It is enabled only if :ref:`is_using_eul
 
 :ref:`bool<class_bool>` **is_relative**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AimModifier3D_method_is_relative>`
 
-Returns ``true`` if the relative option is enabled in the setting at ``index``.
+Trả về ``true`` nếu tùy chọn tương đối được bật trong thiết lập tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Returns ``true`` if the relative option is enabled in the setting at ``index``.
 
 :ref:`bool<class_bool>` **is_using_euler**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AimModifier3D_method_is_using_euler>`
 
-Returns ``true`` if it provides rotation with using euler.
+Trả về ``true`` nếu nó cung cấp phép xoay bằng euler.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Returns ``true`` if it provides rotation with using euler.
 
 :ref:`bool<class_bool>` **is_using_secondary_rotation**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AimModifier3D_method_is_using_secondary_rotation>`
 
-Returns ``true`` if it provides rotation by two axes. It is enabled only if :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` is ``true``.
+Trả về ``true`` nếu nó cung cấp phép xoay bằng hai trục. Tính năng này chỉ được bật khi :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Returns ``true`` if it provides rotation by two axes. It is enabled only if :ref
 
 |void| **set_forward_axis**\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>`\ ) :ref:`🔗<class_AimModifier3D_method_set_forward_axis>`
 
-Sets the forward axis of the bone.
+Thiết lập trục hướng về phía trước của bone.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ Sets the forward axis of the bone.
 
 |void| **set_primary_rotation_axis**\ (\ index\: :ref:`int<class_int>`, axis\: :ref:`Axis<enum_Vector3_Axis>`\ ) :ref:`🔗<class_AimModifier3D_method_set_primary_rotation_axis>`
 
-Sets the axis of the first rotation. It is enabled only if :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` is ``true``.
+Thiết lập trục của phép xoay đầu tiên. Tùy chọn này chỉ được bật khi :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -186,11 +186,11 @@ Sets the axis of the first rotation. It is enabled only if :ref:`is_using_euler(
 
 |void| **set_relative**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AimModifier3D_method_set_relative>`
 
-Sets relative option in the setting at ``index`` to ``enabled``.
+Đặt tùy chọn tương đối trong thiết lập tại ``index`` thành ``enabled``.
 
-If sets ``enabled`` to ``true``, the rotation is applied relative to the pose.
+Nếu đặt ``enabled`` thành ``true``, phép xoay sẽ được áp dụng tương đối so với pose.
 
-If sets ``enabled`` to ``false``, the rotation is applied relative to the rest. It means to replace the current pose with the **AimModifier3D**'s result.
+Nếu đặt ``enabled`` thành ``false``, phép xoay sẽ được áp dụng tương đối so với rest. Điều này có nghĩa là thay thế pose hiện tại bằng kết quả của **AimModifier3D**.
 
 .. rst-class:: classref-item-separator
 
@@ -202,9 +202,9 @@ If sets ``enabled`` to ``false``, the rotation is applied relative to the rest. 
 
 |void| **set_use_euler**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AimModifier3D_method_set_use_euler>`
 
-If sets ``enabled`` to ``true``, it provides rotation with using euler.
+Nếu đặt ``enabled`` thành ``true``, phép xoay sẽ được thực hiện bằng Euler.
 
-If sets ``enabled`` to ``false``, it provides rotation with using rotation by arc generated from the forward axis vector and the vector toward the reference.
+Nếu đặt ``enabled`` thành ``false``, phép xoay sẽ được thực hiện bằng phép xoay theo cung được tạo từ vector trục hướng về phía trước và vector hướng tới tham chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -216,14 +216,14 @@ If sets ``enabled`` to ``false``, it provides rotation with using rotation by ar
 
 |void| **set_use_secondary_rotation**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AimModifier3D_method_set_use_secondary_rotation>`
 
-If sets ``enabled`` to ``true``, it provides rotation by two axes. It is enabled only if :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` is ``true``.
+Nếu đặt ``enabled`` thành ``true``, phép xoay sẽ được thực hiện bằng hai trục. Tùy chọn này chỉ được bật khi :ref:`is_using_euler()<class_AimModifier3D_method_is_using_euler>` là ``true``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, nên có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

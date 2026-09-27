@@ -10,58 +10,58 @@
 PathFollow3D
 ============
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Point sampler for a :ref:`Path3D<class_Path3D>`.
+Bộ lấy mẫu điểm cho một :ref:`Path3D<class_Path3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node takes its parent :ref:`Path3D<class_Path3D>`, and returns the coordinates of a point within it, given a distance from the first vertex.
+Nút này lấy :ref:`Path3D<class_Path3D>` cha của nó và trả về tọa độ của một điểm nằm trong đó, dựa trên khoảng cách từ đỉnh đầu tiên.
 
-It is useful for making other nodes follow a path, without coding the movement pattern. For that, the nodes must be children of this node. The descendant nodes will then move accordingly when setting the :ref:`progress<class_PathFollow3D_property_progress>` in this node.
+Nó hữu ích khi muốn các nút khác đi theo một đường dẫn mà không cần lập trình mẫu chuyển động. Để làm điều đó, các nút phải là nút con của nút này. Sau đó, các nút hậu duệ sẽ di chuyển tương ứng khi đặt :ref:`progress<class_PathFollow3D_property_progress>` trong nút này.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                             | :ref:`cubic_interp<class_PathFollow3D_property_cubic_interp>`       | ``true``  |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                           | :ref:`h_offset<class_PathFollow3D_property_h_offset>`               | ``0.0``   |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                             | :ref:`loop<class_PathFollow3D_property_loop>`                       | ``true``  |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                           | :ref:`progress<class_PathFollow3D_property_progress>`               | ``0.0``   |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                           | :ref:`progress_ratio<class_PathFollow3D_property_progress_ratio>`   | ``0.0``   |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`RotationMode<enum_PathFollow3D_RotationMode>` | :ref:`rotation_mode<class_PathFollow3D_property_rotation_mode>`     | ``3``     |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                             | :ref:`tilt_enabled<class_PathFollow3D_property_tilt_enabled>`       | ``true``  |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                             | :ref:`use_model_front<class_PathFollow3D_property_use_model_front>` | ``false`` |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                           | :ref:`v_offset<class_PathFollow3D_property_v_offset>`               | ``0.0``   |
-   +-----------------------------------------------------+---------------------------------------------------------------------+-----------+
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                              | :ref:`cubic_interp<class_PathFollow3D_property_cubic_interp>`       | ``true``  |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                            | :ref:`h_offset<class_PathFollow3D_property_h_offset>`               | ``0.0``   |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                              | :ref:`loop<class_PathFollow3D_property_loop>`                       | ``true``  |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                            | :ref:`progress<class_PathFollow3D_property_progress>`               | ``0.0``   |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                            | :ref:`progress_ratio<class_PathFollow3D_property_progress_ratio>`   | ``0.0``   |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`RotationMode <enum_PathFollow3D_RotationMode>` | :ref:`rotation_mode<class_PathFollow3D_property_rotation_mode>`     | ``3``     |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                              | :ref:`tilt_enabled<class_PathFollow3D_property_tilt_enabled>`       | ``true``  |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                              | :ref:`use_model_front<class_PathFollow3D_property_use_model_front>` | ``false`` |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                            | :ref:`v_offset<class_PathFollow3D_property_v_offset>`               | ``0.0``   |
+   +------------------------------------------------------+---------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>` | :ref:`correct_posture<class_PathFollow3D_method_correct_posture>`\ (\ transform\: :ref:`Transform3D<class_Transform3D>`, rotation_mode\: :ref:`RotationMode<enum_PathFollow3D_RotationMode>`\ ) |static| |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>` | :ref:`correct_posture<class_PathFollow3D_method_correct_posture>`\ (\ transform\: :ref:`Transform3D<class_Transform3D>`, rotation_mode\: :ref:`RotationMode <enum_PathFollow3D_RotationMode>`\ ) |static| |
+   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -69,14 +69,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_PathFollow3D_RotationMode:
 
 .. rst-class:: classref-enumeration
 
-enum **RotationMode**: :ref:`🔗<enum_PathFollow3D_RotationMode>`
+enum **RotationMode**: :ref:`🔗 <enum_PathFollow3D_RotationMode>`
 
 .. _class_PathFollow3D_constant_ROTATION_NONE:
 
@@ -84,7 +84,7 @@ enum **RotationMode**: :ref:`🔗<enum_PathFollow3D_RotationMode>`
 
 :ref:`RotationMode<enum_PathFollow3D_RotationMode>` **ROTATION_NONE** = ``0``
 
-Forbids the PathFollow3D to rotate.
+Cấm PathFollow3D xoay.
 
 .. _class_PathFollow3D_constant_ROTATION_Y:
 
@@ -92,7 +92,7 @@ Forbids the PathFollow3D to rotate.
 
 :ref:`RotationMode<enum_PathFollow3D_RotationMode>` **ROTATION_Y** = ``1``
 
-Allows the PathFollow3D to rotate in the Y axis only.
+Cho phép PathFollow3D chỉ xoay quanh trục Y.
 
 .. _class_PathFollow3D_constant_ROTATION_XY:
 
@@ -100,7 +100,7 @@ Allows the PathFollow3D to rotate in the Y axis only.
 
 :ref:`RotationMode<enum_PathFollow3D_RotationMode>` **ROTATION_XY** = ``2``
 
-Allows the PathFollow3D to rotate in both the X, and Y axes.
+Cho phép PathFollow3D xoay quanh cả hai trục X và Y.
 
 .. _class_PathFollow3D_constant_ROTATION_XYZ:
 
@@ -108,7 +108,7 @@ Allows the PathFollow3D to rotate in both the X, and Y axes.
 
 :ref:`RotationMode<enum_PathFollow3D_RotationMode>` **ROTATION_XYZ** = ``3``
 
-Allows the PathFollow3D to rotate in any axis.
+Cho phép PathFollow3D xoay theo bất kỳ trục nào.
 
 .. _class_PathFollow3D_constant_ROTATION_ORIENTED:
 
@@ -116,7 +116,7 @@ Allows the PathFollow3D to rotate in any axis.
 
 :ref:`RotationMode<enum_PathFollow3D_RotationMode>` **ROTATION_ORIENTED** = ``4``
 
-Uses the up vector information in a :ref:`Curve3D<class_Curve3D>` to enforce orientation. This rotation mode requires the :ref:`Path3D<class_Path3D>`'s :ref:`Curve3D.up_vector_enabled<class_Curve3D_property_up_vector_enabled>` property to be set to ``true``.
+Sử dụng thông tin vector hướng lên trong một :ref:`Curve3D<class_Curve3D>` để áp dụng định hướng. Chế độ xoay này yêu cầu thuộc tính :ref:`Curve3D.up_vector_enabled<class_Curve3D_property_up_vector_enabled>` của :ref:`Path3D<class_Path3D>` được đặt thành ``true``.
 
 .. rst-class:: classref-section-separator
 
@@ -124,8 +124,8 @@ Uses the up vector information in a :ref:`Curve3D<class_Curve3D>` to enforce ori
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PathFollow3D_property_cubic_interp:
 
@@ -138,11 +138,11 @@ Property Descriptions
 - |void| **set_cubic_interpolation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_cubic_interpolation**\ (\ )
 
-If ``true``, the position between two cached points is interpolated cubically, and linearly otherwise.
+Nếu ``true``, vị trí giữa hai điểm đã lưu trong bộ nhớ đệm được nội suy theo phương pháp cubic; nếu không thì được nội suy tuyến tính.
 
-The points along the :ref:`Curve3D<class_Curve3D>` of the :ref:`Path3D<class_Path3D>` are precomputed before use, for faster calculations. The point at the requested offset is then calculated interpolating between two adjacent cached points. This may present a problem if the curve makes sharp turns, as the cached points may not follow the curve closely enough.
+Các điểm dọc theo :ref:`Curve3D<class_Curve3D>` của :ref:`Path3D<class_Path3D>` được tính toán trước khi sử dụng để tăng tốc độ tính toán. Sau đó, điểm tại offset được yêu cầu sẽ được tính bằng cách nội suy giữa hai điểm liền kề đã lưu trong bộ nhớ đệm. Điều này có thể gây ra vấn đề nếu đường cong có các đoạn rẽ gấp, vì các điểm đã lưu trong bộ nhớ đệm có thể không bám đủ sát đường cong.
 
-There are two answers to this problem: either increase the number of cached points and increase memory consumption, or make a cubic interpolation between two points at the cost of (slightly) slower calculations.
+Có hai cách giải quyết vấn đề này: hoặc tăng số lượng điểm được lưu trong bộ nhớ đệm và tăng mức tiêu thụ bộ nhớ, hoặc thực hiện nội suy cubic giữa hai điểm với cái giá là tốc độ tính toán chậm hơn (một chút).
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ There are two answers to this problem: either increase the number of cached poin
 - |void| **set_h_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_h_offset**\ (\ )
 
-The node's offset along the curve.
+Offset của node dọc theo đường cong.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ The node's offset along the curve.
 - |void| **set_loop**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_loop**\ (\ )
 
-If ``true``, any offset outside the path's length will wrap around, instead of stopping at the ends. Use it for cyclic paths.
+Nếu ``true``, mọi giá trị offset nằm ngoài độ dài của path sẽ quay vòng thay vì dừng ở hai đầu. Sử dụng tùy chọn này cho các path tuần hoàn.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ If ``true``, any offset outside the path's length will wrap around, instead of s
 - |void| **set_progress**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_progress**\ (\ )
 
-The distance from the first vertex, measured in 3D units along the path. Changing this value sets this node's position to a point within the path.
+Khoảng cách tính từ vertex đầu tiên, được đo bằng đơn vị 3D dọc theo path. Thay đổi giá trị này sẽ đặt vị trí của node này tại một điểm trên path.
 
 .. rst-class:: classref-item-separator
 
@@ -210,9 +210,9 @@ The distance from the first vertex, measured in 3D units along the path. Changin
 - |void| **set_progress_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_progress_ratio**\ (\ )
 
-The distance from the first vertex, considering 0.0 as the first vertex and 1.0 as the last. This is just another way of expressing the progress within the path, as the progress supplied is multiplied internally by the path's length.
+Khoảng cách tính từ vertex đầu tiên, trong đó 0.0 là vertex đầu tiên và 1.0 là vertex cuối cùng. Đây chỉ là một cách khác để biểu diễn tiến độ dọc theo path, vì giá trị tiến độ được cung cấp sẽ được nhân với độ dài của path ở bên trong.
 
-It can be set or get only if the **PathFollow3D** is the child of a :ref:`Path3D<class_Path3D>` which is part of the scene tree, and that this :ref:`Path3D<class_Path3D>` has a :ref:`Curve3D<class_Curve3D>` with a non-zero length. Otherwise, trying to set this field will print an error, and getting this field will return ``0.0``.
+Chỉ có thể đặt hoặc lấy giá trị này nếu **PathFollow3D** là node con của :ref:`Path3D<class_Path3D>` thuộc scene tree, đồng thời :ref:`Path3D<class_Path3D>` này có một :ref:`Curve3D<class_Curve3D>` với độ dài khác 0. Nếu không, việc cố đặt trường này sẽ in ra lỗi, còn việc lấy trường này sẽ trả về ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -229,7 +229,7 @@ It can be set or get only if the **PathFollow3D** is the child of a :ref:`Path3D
 - |void| **set_rotation_mode**\ (\ value\: :ref:`RotationMode<enum_PathFollow3D_RotationMode>`\ )
 - :ref:`RotationMode<enum_PathFollow3D_RotationMode>` **get_rotation_mode**\ (\ )
 
-Allows or forbids rotation on one or more axes, depending on the :ref:`RotationMode<enum_PathFollow3D_RotationMode>` constants being used.
+Cho phép hoặc không cho phép xoay quanh một hoặc nhiều trục, tùy thuộc vào các hằng số :ref:`RotationMode <enum_PathFollow3D_RotationMode>` được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ Allows or forbids rotation on one or more axes, depending on the :ref:`RotationM
 - |void| **set_tilt_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_tilt_enabled**\ (\ )
 
-If ``true``, the tilt property of :ref:`Curve3D<class_Curve3D>` takes effect.
+Nếu ``true``, thuộc tính tilt của :ref:`Curve3D<class_Curve3D>` sẽ có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ If ``true``, the tilt property of :ref:`Curve3D<class_Curve3D>` takes effect.
 - |void| **set_use_model_front**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_model_front**\ (\ )
 
-If ``true``, the node moves on the travel path with orienting the +Z axis as forward. See also :ref:`Vector3.FORWARD<class_Vector3_constant_FORWARD>` and :ref:`Vector3.MODEL_FRONT<class_Vector3_constant_MODEL_FRONT>`.
+Nếu ``true``, node sẽ di chuyển trên travel path và định hướng trục +Z làm hướng tiến. Xem thêm :ref:`Vector3.FORWARD<class_Vector3_constant_FORWARD>` và :ref:`Vector3.MODEL_FRONT<class_Vector3_constant_MODEL_FRONT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -280,7 +280,7 @@ If ``true``, the node moves on the travel path with orienting the +Z axis as for
 - |void| **set_v_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_v_offset**\ (\ )
 
-The node's offset perpendicular to the curve.
+Độ lệch của node theo phương vuông góc với đường cong.
 
 .. rst-class:: classref-section-separator
 
@@ -288,8 +288,8 @@ The node's offset perpendicular to the curve.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PathFollow3D_method_correct_posture:
 
@@ -297,14 +297,14 @@ Method Descriptions
 
 :ref:`Transform3D<class_Transform3D>` **correct_posture**\ (\ transform\: :ref:`Transform3D<class_Transform3D>`, rotation_mode\: :ref:`RotationMode<enum_PathFollow3D_RotationMode>`\ ) |static| :ref:`🔗<class_PathFollow3D_method_correct_posture>`
 
-Correct the ``transform``. ``rotation_mode`` implicitly specifies how posture (forward, up and sideway direction) is calculated.
+Sửa ``transform``. ``rotation_mode`` chỉ định ngầm cách tính tư thế (hướng về phía trước, hướng lên trên và hướng sang bên).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

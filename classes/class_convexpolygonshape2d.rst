@@ -10,26 +10,26 @@
 ConvexPolygonShape2D
 ====================
 
-**Inherits:** :ref:`Shape2D<class_Shape2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Shape2D<class_Shape2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 2D convex polygon shape used for physics collision.
+Một hình đa giác lồi 2D được dùng để va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 2D convex polygon shape, intended for use in physics. Used internally in :ref:`CollisionPolygon2D<class_CollisionPolygon2D>` when it's in :ref:`CollisionPolygon2D.BUILD_SOLIDS<class_CollisionPolygon2D_constant_BUILD_SOLIDS>` mode.
+Một hình đa giác lồi 2D, предназначена để sử dụng trong vật lý. Được sử dụng nội bộ trong :ref:`CollisionPolygon2D<class_CollisionPolygon2D>` khi nó ở chế độ :ref:`CollisionPolygon2D.BUILD_SOLIDS<class_CollisionPolygon2D_constant_BUILD_SOLIDS>`.
 
-\ **ConvexPolygonShape2D** is *solid*, which means it detects collisions from objects that are fully inside it, unlike :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>` which is hollow. This makes it more suitable for both detection and physics.
+\ **ConvexPolygonShape2D** là *đặc*, nghĩa là nó phát hiện các va chạm từ những đối tượng nằm hoàn toàn bên trong nó, không giống như :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>`, vốn rỗng. Điều này khiến nó phù hợp hơn cho cả việc phát hiện và xử lý vật lý.
 
-\ **Convex decomposition:** A concave polygon can be split up into several convex polygons. This allows dynamic physics bodies to have complex concave collisions (at a performance cost) and can be achieved by using several **ConvexPolygonShape2D** nodes or by using the :ref:`CollisionPolygon2D<class_CollisionPolygon2D>` node in :ref:`CollisionPolygon2D.BUILD_SOLIDS<class_CollisionPolygon2D_constant_BUILD_SOLIDS>` mode. To generate a collision polygon from a sprite, select the :ref:`Sprite2D<class_Sprite2D>` node, go to the **Sprite2D** menu that appears above the viewport, and choose **Create Polygon2D Sibling**.
+\ **Phân rã lồi:** Một đa giác lõm có thể được tách thành một số đa giác lồi. Điều này cho phép các physical body động có va chạm lõm phức tạp (đổi lại là hiệu năng) và có thể thực hiện bằng cách sử dụng nhiều node **ConvexPolygonShape2D** hoặc sử dụng node :ref:`CollisionPolygon2D<class_CollisionPolygon2D>` ở chế độ :ref:`CollisionPolygon2D.BUILD_SOLIDS<class_CollisionPolygon2D_constant_BUILD_SOLIDS>`. Để tạo đa giác va chạm từ một sprite, hãy chọn node :ref:`Sprite2D<class_Sprite2D>`, đi đến menu **Sprite2D** xuất hiện phía trên viewport, rồi chọn **Create Polygon2D Sibling**.
 
-\ **Performance:** **ConvexPolygonShape2D** is faster to check collisions against compared to :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>`, but it is slower than primitive collision shapes such as :ref:`CircleShape2D<class_CircleShape2D>` and :ref:`RectangleShape2D<class_RectangleShape2D>`. Its use should generally be limited to medium-sized objects that cannot have their collision accurately represented by primitive shapes.
+\ **Hiệu năng:** **ConvexPolygonShape2D** kiểm tra va chạm nhanh hơn so với :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>`, nhưng chậm hơn các hình va chạm nguyên thủy như :ref:`CircleShape2D<class_CircleShape2D>` và :ref:`RectangleShape2D<class_RectangleShape2D>`. Nhìn chung, chỉ nên sử dụng nó cho các đối tượng kích thước trung bình mà không thể biểu diễn chính xác va chạm bằng các hình nguyên thủy.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -57,8 +57,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ConvexPolygonShape2D_property_points:
 
@@ -71,11 +71,11 @@ Property Descriptions
 - |void| **set_points**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_points**\ (\ )
 
-The polygon's list of vertices that form a convex hull. Can be in either clockwise or counterclockwise order.
+Danh sách các đỉnh của đa giác tạo thành một bao lồi (convex hull). Có thể được sắp xếp theo chiều kim đồng hồ hoặc ngược chiều kim đồng hồ.
 
-\ **Warning:** Only set this property to a list of points that actually form a convex hull. Use :ref:`set_point_cloud()<class_ConvexPolygonShape2D_method_set_point_cloud>` to generate the convex hull of an arbitrary set of points.
+\ **Cảnh báo:** Chỉ đặt thuộc tính này thành danh sách các điểm thực sự tạo thành một bao lồi. Sử dụng :ref:`set_point_cloud()<class_ConvexPolygonShape2D_method_set_point_cloud>` để tạo bao lồi của một tập hợp điểm bất kỳ.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -83,8 +83,8 @@ The polygon's list of vertices that form a convex hull. Can be in either clockwi
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ConvexPolygonShape2D_method_set_point_cloud:
 
@@ -92,14 +92,14 @@ Method Descriptions
 
 |void| **set_point_cloud**\ (\ point_cloud\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_ConvexPolygonShape2D_method_set_point_cloud>`
 
-Based on the set of points provided, this assigns the :ref:`points<class_ConvexPolygonShape2D_property_points>` property using the convex hull algorithm, removing all unneeded points. See :ref:`Geometry2D.convex_hull()<class_Geometry2D_method_convex_hull>` for details.
+Dựa trên tập hợp các điểm được cung cấp, phương thức này gán thuộc tính :ref:`points<class_ConvexPolygonShape2D_property_points>` bằng thuật toán bao lồi, loại bỏ tất cả các điểm không cần thiết. Xem :ref:`Geometry2D.convex_hull()<class_Geometry2D_method_convex_hull>` để biết chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

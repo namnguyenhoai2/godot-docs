@@ -13,15 +13,15 @@
 StatusIndicator
 ===============
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Application status indicator (aka notification area icon).
+Bộ chỉ báo trạng thái của ứng dụng (còn gọi là biểu tượng vùng thông báo).
 
-\ **Note:** Status indicator is implemented on macOS and Windows.
+\ **Lưu ý:** Bộ chỉ báo trạng thái được triển khai trên macOS và Windows.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_StatusIndicator_signal_pressed:
 
@@ -64,7 +64,7 @@ Signals
 
 **pressed**\ (\ mouse_button\: :ref:`int<class_int>`, mouse_position\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_StatusIndicator_signal_pressed>`
 
-Emitted when the status indicator is pressed.
+Được phát khi bộ chỉ báo trạng thái được nhấn.
 
 .. rst-class:: classref-section-separator
 
@@ -72,21 +72,21 @@ Emitted when the status indicator is pressed.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StatusIndicator_property_icon:
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **icon** :ref:`🔗<class_StatusIndicator_property_icon>`
+:ref:`Texture2D<class_Texture2D>` **icon** :ref:`🔗 <class_StatusIndicator_property_icon>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_icon**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_icon**\ (\ )
 
-Status indicator icon.
+Biểu tượng bộ chỉ báo trạng thái.
 
 .. rst-class:: classref-item-separator
 
@@ -103,9 +103,9 @@ Status indicator icon.
 - |void| **set_menu**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_menu**\ (\ )
 
-Status indicator native popup menu. If this is set, the :ref:`pressed<class_StatusIndicator_signal_pressed>` signal is not emitted.
+Menu bật lên gốc của bộ chỉ báo trạng thái. Nếu được thiết lập, tín hiệu :ref:`pressed<class_StatusIndicator_signal_pressed>` sẽ không được phát.
 
-\ **Note:** Native popup is only supported if :ref:`NativeMenu<class_NativeMenu>` supports :ref:`NativeMenu.FEATURE_POPUP_MENU<class_NativeMenu_constant_FEATURE_POPUP_MENU>` feature.
+\ **Lưu ý:** Menu bật lên gốc chỉ được hỗ trợ nếu :ref:`NativeMenu<class_NativeMenu>` hỗ trợ tính năng :ref:`NativeMenu.FEATURE_POPUP_MENU<class_NativeMenu_constant_FEATURE_POPUP_MENU>`.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Status indicator native popup menu. If this is set, the :ref:`pressed<class_Stat
 - |void| **set_tooltip**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_tooltip**\ (\ )
 
-Status indicator tooltip.
+Chú giải công cụ của bộ chỉ báo trạng thái.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ Status indicator tooltip.
 - |void| **set_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_visible**\ (\ )
 
-If ``true``, the status indicator is visible.
+Nếu ``true``, bộ chỉ báo trạng thái sẽ hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -147,8 +147,8 @@ If ``true``, the status indicator is visible.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StatusIndicator_method_get_rect:
 
@@ -156,14 +156,14 @@ Method Descriptions
 
 :ref:`Rect2<class_Rect2>` **get_rect**\ (\ ) |const| :ref:`🔗<class_StatusIndicator_method_get_rect>`
 
-Returns the status indicator rectangle in screen coordinates. If this status indicator is not visible, returns an empty :ref:`Rect2<class_Rect2>`.
+Trả về hình chữ nhật của bộ chỉ báo trạng thái theo tọa độ màn hình. Nếu bộ chỉ báo trạng thái này không hiển thị, trả về một :ref:`Rect2<class_Rect2>` rỗng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

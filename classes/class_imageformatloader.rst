@@ -10,18 +10,18 @@
 ImageFormatLoader
 =================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`ImageFormatLoaderExtension<class_ImageFormatLoaderExtension>`
+**Được kế thừa bởi:** :ref:`ImageFormatLoaderExtension<class_ImageFormatLoaderExtension>`
 
-Base class to add support for specific image formats.
+Lớp cơ sở để thêm khả năng hỗ trợ các định dạng hình ảnh cụ thể.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The engine supports multiple image formats out of the box (PNG, SVG, JPEG, WebP to name a few), but you can choose to implement support for additional image formats by extending :ref:`ImageFormatLoaderExtension<class_ImageFormatLoaderExtension>`.
+Engine hỗ trợ nhiều định dạng hình ảnh ngay từ đầu (PNG, SVG, JPEG, WebP và một số định dạng khác), nhưng bạn có thể chọn triển khai hỗ trợ cho các định dạng hình ảnh bổ sung bằng cách mở rộng :ref:`ImageFormatLoaderExtension<class_ImageFormatLoaderExtension>`.
 
 .. rst-class:: classref-section-separator
 
@@ -29,14 +29,14 @@ The engine supports multiple image formats out of the box (PNG, SVG, JPEG, WebP 
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ImageFormatLoader_LoaderFlags:
 
 .. rst-class:: classref-enumeration
 
-flags **LoaderFlags**: :ref:`🔗<enum_ImageFormatLoader_LoaderFlags>`
+các cờ **LoaderFlags**: :ref:`🔗 <enum_ImageFormatLoader_LoaderFlags>`
 
 .. _class_ImageFormatLoader_constant_FLAG_NONE:
 
@@ -44,7 +44,7 @@ flags **LoaderFlags**: :ref:`🔗<enum_ImageFormatLoader_LoaderFlags>`
 
 :ref:`LoaderFlags<enum_ImageFormatLoader_LoaderFlags>` **FLAG_NONE** = ``0``
 
-Default loading behavior. No processing is applied to the image.
+Hành vi tải mặc định. Không áp dụng xử lý nào cho hình ảnh.
 
 .. _class_ImageFormatLoader_constant_FLAG_FORCE_LINEAR:
 
@@ -52,7 +52,7 @@ Default loading behavior. No processing is applied to the image.
 
 :ref:`LoaderFlags<enum_ImageFormatLoader_LoaderFlags>` **FLAG_FORCE_LINEAR** = ``1``
 
-If set, the image is converted from sRGB to linear encoding.
+Nếu được đặt, hình ảnh sẽ được chuyển đổi từ sRGB sang mã hóa tuyến tính.
 
 .. _class_ImageFormatLoader_constant_FLAG_CONVERT_COLORS:
 
@@ -60,14 +60,14 @@ If set, the image is converted from sRGB to linear encoding.
 
 :ref:`LoaderFlags<enum_ImageFormatLoader_LoaderFlags>` **FLAG_CONVERT_COLORS** = ``2``
 
-If set, a predefined color map is applied to the image. Used when :ref:`ResourceImporterTexture.editor/convert_colors_with_editor_theme<class_ResourceImporterTexture_property_editor/convert_colors_with_editor_theme>` is ``true``.
+Nếu được đặt, một bảng màu định sẵn sẽ được áp dụng cho hình ảnh. Được sử dụng khi :ref:`ResourceImporterTexture.editor/convert_colors_with_editor_theme <class_ResourceImporterTexture_property_editor/convert_colors_with_editor_theme>` là ``true``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

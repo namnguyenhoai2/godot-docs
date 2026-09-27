@@ -10,25 +10,25 @@
 RenderSceneDataRD
 =================
 
-**Inherits:** :ref:`RenderSceneData<class_RenderSceneData>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RenderSceneData<class_RenderSceneData>` **<** :ref:`Object<class_Object>`
 
-Render scene data implementation for the RenderingDevice based renderers.
+Triển khai dữ liệu cảnh cho các renderer dựa trên RenderingDevice.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Object holds scene data related to rendering a single frame of a viewport. See also :ref:`RenderSceneData<class_RenderSceneData>`, :ref:`RenderData<class_RenderData>`, and :ref:`RenderDataRD<class_RenderDataRD>`.
+Đối tượng chứa dữ liệu cảnh liên quan đến việc render một khung hình duy nhất của viewport. Xem thêm :ref:`RenderSceneData<class_RenderSceneData>`, :ref:`RenderData<class_RenderData>` và :ref:`RenderDataRD<class_RenderDataRD>`.
 
-\ **Note:** This is an internal rendering server object. Do not instantiate this class from a script.
+\ **Lưu ý:** Đây là một đối tượng nội bộ của rendering server. Không khởi tạo class này từ script.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

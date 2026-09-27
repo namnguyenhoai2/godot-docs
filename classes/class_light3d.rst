@@ -10,109 +10,109 @@
 Light3D
 =======
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AreaLight3D<class_AreaLight3D>`, :ref:`DirectionalLight3D<class_DirectionalLight3D>`, :ref:`OmniLight3D<class_OmniLight3D>`, :ref:`SpotLight3D<class_SpotLight3D>`
+**Được kế thừa bởi:** :ref:`AreaLight3D<class_AreaLight3D>`, :ref:`DirectionalLight3D<class_DirectionalLight3D>`, :ref:`OmniLight3D<class_OmniLight3D>`, :ref:`SpotLight3D<class_SpotLight3D>`
 
-Provides a base class for different kinds of light nodes.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Light3D is the *abstract* base class for light nodes. As it can't be instantiated, it shouldn't be used directly. Other types of light nodes inherit from it. Light3D contains the common variables and parameters used for lighting.
+Cung cấp lớp cơ sở cho các loại node ánh sáng khác nhau.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Light3D là lớp cơ sở *trừu tượng* cho các node ánh sáng. Vì không thể được khởi tạo, lớp này không nên được sử dụng trực tiếp. Các loại node ánh sáng khác kế thừa từ lớp này. Light3D chứa các biến và tham số dùng chung cho việc chiếu sáng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`3D lights and shadows <../tutorials/3d/lights_and_shadows>`
+- :doc:`Đèn và bóng đổ 3D <../tutorials/3d/lights_and_shadows>`
 
-- :doc:`Faking global illumination <../tutorials/3d/global_illumination/faking_global_illumination>`
+- :doc:`Giả lập chiếu sáng toàn cục <../tutorials/3d/global_illumination/faking_global_illumination>`
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>`                 | ``40.0``              |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                | :ref:`distance_fade_enabled<class_Light3D_property_distance_fade_enabled>`             | ``false``             |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`distance_fade_length<class_Light3D_property_distance_fade_length>`               | ``10.0``              |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`distance_fade_shadow<class_Light3D_property_distance_fade_shadow>`               | ``50.0``              |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                | :ref:`editor_only<class_Light3D_property_editor_only>`                                 | ``false``             |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_angular_distance<class_Light3D_property_light_angular_distance>`           | ``0.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`BakeMode<enum_Light3D_BakeMode>` | :ref:`light_bake_mode<class_Light3D_property_light_bake_mode>`                         | ``2``                 |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Color<class_Color>`              | :ref:`light_color<class_Light3D_property_light_color>`                                 | ``Color(1, 1, 1, 1)`` |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                  | :ref:`light_cull_mask<class_Light3D_property_light_cull_mask>`                         | ``4294967295``        |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_energy<class_Light3D_property_light_energy>`                               | ``1.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_indirect_energy<class_Light3D_property_light_indirect_energy>`             | ``1.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_intensity_lumens<class_Light3D_property_light_intensity_lumens>`           |                       |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_intensity_lux<class_Light3D_property_light_intensity_lux>`                 |                       |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                | :ref:`light_negative<class_Light3D_property_light_negative>`                           | ``false``             |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Texture2D<class_Texture2D>`      | :ref:`light_projector<class_Light3D_property_light_projector>`                         |                       |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_size<class_Light3D_property_light_size>`                                   | ``0.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_specular<class_Light3D_property_light_specular>`                           | ``1.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_temperature<class_Light3D_property_light_temperature>`                     |                       |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`light_volumetric_fog_energy<class_Light3D_property_light_volumetric_fog_energy>` | ``1.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`shadow_bias<class_Light3D_property_shadow_bias>`                                 | ``0.1``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`shadow_blur<class_Light3D_property_shadow_blur>`                                 | ``1.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                  | :ref:`shadow_caster_mask<class_Light3D_property_shadow_caster_mask>`                   | ``4294967295``        |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                | :ref:`shadow_enabled<class_Light3D_property_shadow_enabled>`                           | ``false``             |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`shadow_normal_bias<class_Light3D_property_shadow_normal_bias>`                   | ``2.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`shadow_opacity<class_Light3D_property_shadow_opacity>`                           | ``1.0``               |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                | :ref:`shadow_reverse_cull_face<class_Light3D_property_shadow_reverse_cull_face>`       | ``false``             |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`              | :ref:`shadow_transmittance_bias<class_Light3D_property_shadow_transmittance_bias>`     | ``0.05``              |
-   +----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>`                 | ``40.0``              |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                 | :ref:`distance_fade_enabled<class_Light3D_property_distance_fade_enabled>`             | ``false``             |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`distance_fade_length<class_Light3D_property_distance_fade_length>`               | ``10.0``              |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`distance_fade_shadow<class_Light3D_property_distance_fade_shadow>`               | ``50.0``              |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                 | :ref:`editor_only<class_Light3D_property_editor_only>`                                 | ``false``             |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_angular_distance<class_Light3D_property_light_angular_distance>`           | ``0.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`BakeMode <enum_Light3D_BakeMode>` | :ref:`light_bake_mode<class_Light3D_property_light_bake_mode>`                         | ``2``                 |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Color<class_Color>`               | :ref:`light_color<class_Light3D_property_light_color>`                                 | ``Color(1, 1, 1, 1)`` |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                   | :ref:`light_cull_mask<class_Light3D_property_light_cull_mask>`                         | ``4294967295``        |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_energy<class_Light3D_property_light_energy>`                               | ``1.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_indirect_energy<class_Light3D_property_light_indirect_energy>`             | ``1.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_intensity_lumens<class_Light3D_property_light_intensity_lumens>`           |                       |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_intensity_lux<class_Light3D_property_light_intensity_lux>`                 |                       |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                 | :ref:`light_negative<class_Light3D_property_light_negative>`                           | ``false``             |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Texture2D<class_Texture2D>`       | :ref:`light_projector<class_Light3D_property_light_projector>`                         |                       |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_size<class_Light3D_property_light_size>`                                   | ``0.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_specular<class_Light3D_property_light_specular>`                           | ``1.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_temperature<class_Light3D_property_light_temperature>`                     |                       |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`light_volumetric_fog_energy<class_Light3D_property_light_volumetric_fog_energy>` | ``1.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`shadow_bias<class_Light3D_property_shadow_bias>`                                 | ``0.1``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`shadow_blur<class_Light3D_property_shadow_blur>`                                 | ``1.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                   | :ref:`shadow_caster_mask<class_Light3D_property_shadow_caster_mask>`                   | ``4294967295``        |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                 | :ref:`shadow_enabled<class_Light3D_property_shadow_enabled>`                           | ``false``             |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`shadow_normal_bias<class_Light3D_property_shadow_normal_bias>`                   | ``2.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`shadow_opacity<class_Light3D_property_shadow_opacity>`                           | ``1.0``               |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                 | :ref:`shadow_reverse_cull_face<class_Light3D_property_shadow_reverse_cull_face>`       | ``false``             |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`               | :ref:`shadow_transmittance_bias<class_Light3D_property_shadow_transmittance_bias>`     | ``0.05``              |
+   +-----------------------------------------+----------------------------------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>` | :ref:`get_correlated_color<class_Light3D_method_get_correlated_color>`\ (\ ) |const|                                                |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`get_param<class_Light3D_method_get_param>`\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|                            |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_param<class_Light3D_method_set_param>`\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ ) |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>` | :ref:`get_correlated_color<class_Light3D_method_get_correlated_color>`\ (\ ) |const|                                                 |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`get_param<class_Light3D_method_get_param>`\ (\ param\: :ref:`Param <enum_Light3D_Param>`\ ) |const|                            |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_param<class_Light3D_method_set_param>`\ (\ param\: :ref:`Param <enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ ) |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -120,14 +120,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Light3D_Param:
 
 .. rst-class:: classref-enumeration
 
-enum **Param**: :ref:`🔗<enum_Light3D_Param>`
+enum **Param**: :ref:`🔗 <enum_Light3D_Param>`
 
 .. _class_Light3D_constant_PARAM_ENERGY:
 
@@ -135,7 +135,7 @@ enum **Param**: :ref:`🔗<enum_Light3D_Param>`
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_ENERGY** = ``0``
 
-Constant for accessing :ref:`light_energy<class_Light3D_property_light_energy>`.
+Hằng số dùng để truy cập :ref:`light_energy<class_Light3D_property_light_energy>`.
 
 .. _class_Light3D_constant_PARAM_INDIRECT_ENERGY:
 
@@ -143,7 +143,7 @@ Constant for accessing :ref:`light_energy<class_Light3D_property_light_energy>`.
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_INDIRECT_ENERGY** = ``1``
 
-Constant for accessing :ref:`light_indirect_energy<class_Light3D_property_light_indirect_energy>`.
+Hằng số dùng để truy cập :ref:`light_indirect_energy<class_Light3D_property_light_indirect_energy>`.
 
 .. _class_Light3D_constant_PARAM_VOLUMETRIC_FOG_ENERGY:
 
@@ -151,7 +151,7 @@ Constant for accessing :ref:`light_indirect_energy<class_Light3D_property_light_
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_VOLUMETRIC_FOG_ENERGY** = ``2``
 
-Constant for accessing :ref:`light_volumetric_fog_energy<class_Light3D_property_light_volumetric_fog_energy>`.
+Hằng số dùng để truy cập :ref:`light_volumetric_fog_energy<class_Light3D_property_light_volumetric_fog_energy>`.
 
 .. _class_Light3D_constant_PARAM_SPECULAR:
 
@@ -159,7 +159,7 @@ Constant for accessing :ref:`light_volumetric_fog_energy<class_Light3D_property_
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SPECULAR** = ``3``
 
-Constant for accessing :ref:`light_specular<class_Light3D_property_light_specular>`.
+Hằng số dùng để truy cập :ref:`light_specular<class_Light3D_property_light_specular>`.
 
 .. _class_Light3D_constant_PARAM_RANGE:
 
@@ -167,7 +167,7 @@ Constant for accessing :ref:`light_specular<class_Light3D_property_light_specula
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_RANGE** = ``4``
 
-Constant for accessing :ref:`OmniLight3D.omni_range<class_OmniLight3D_property_omni_range>` or :ref:`SpotLight3D.spot_range<class_SpotLight3D_property_spot_range>`.
+Hằng số dùng để truy cập :ref:`OmniLight3D.omni_range<class_OmniLight3D_property_omni_range>` hoặc :ref:`SpotLight3D.spot_range<class_SpotLight3D_property_spot_range>`.
 
 .. _class_Light3D_constant_PARAM_SIZE:
 
@@ -175,7 +175,7 @@ Constant for accessing :ref:`OmniLight3D.omni_range<class_OmniLight3D_property_o
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SIZE** = ``5``
 
-Constant for accessing :ref:`light_size<class_Light3D_property_light_size>`.
+Hằng số để truy cập :ref:`light_size<class_Light3D_property_light_size>`.
 
 .. _class_Light3D_constant_PARAM_ATTENUATION:
 
@@ -183,7 +183,7 @@ Constant for accessing :ref:`light_size<class_Light3D_property_light_size>`.
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_ATTENUATION** = ``6``
 
-Constant for accessing :ref:`OmniLight3D.omni_attenuation<class_OmniLight3D_property_omni_attenuation>` or :ref:`SpotLight3D.spot_attenuation<class_SpotLight3D_property_spot_attenuation>`.
+Hằng số để truy cập :ref:`OmniLight3D.omni_attenuation<class_OmniLight3D_property_omni_attenuation>` hoặc :ref:`SpotLight3D.spot_attenuation<class_SpotLight3D_property_spot_attenuation>`.
 
 .. _class_Light3D_constant_PARAM_SPOT_ANGLE:
 
@@ -191,7 +191,7 @@ Constant for accessing :ref:`OmniLight3D.omni_attenuation<class_OmniLight3D_prop
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SPOT_ANGLE** = ``7``
 
-Constant for accessing :ref:`SpotLight3D.spot_angle<class_SpotLight3D_property_spot_angle>`.
+Hằng số để truy cập :ref:`SpotLight3D.spot_angle<class_SpotLight3D_property_spot_angle>`.
 
 .. _class_Light3D_constant_PARAM_SPOT_ATTENUATION:
 
@@ -199,7 +199,7 @@ Constant for accessing :ref:`SpotLight3D.spot_angle<class_SpotLight3D_property_s
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SPOT_ATTENUATION** = ``8``
 
-Constant for accessing :ref:`SpotLight3D.spot_angle_attenuation<class_SpotLight3D_property_spot_angle_attenuation>`.
+Hằng số để truy cập :ref:`SpotLight3D.spot_angle_attenuation<class_SpotLight3D_property_spot_angle_attenuation>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_MAX_DISTANCE:
 
@@ -207,7 +207,7 @@ Constant for accessing :ref:`SpotLight3D.spot_angle_attenuation<class_SpotLight3
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_MAX_DISTANCE** = ``9``
 
-Constant for accessing :ref:`DirectionalLight3D.directional_shadow_max_distance<class_DirectionalLight3D_property_directional_shadow_max_distance>`.
+Hằng số để truy cập :ref:`DirectionalLight3D.directional_shadow_max_distance<class_DirectionalLight3D_property_directional_shadow_max_distance>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_SPLIT_1_OFFSET:
 
@@ -215,7 +215,7 @@ Constant for accessing :ref:`DirectionalLight3D.directional_shadow_max_distance<
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_SPLIT_1_OFFSET** = ``10``
 
-Constant for accessing :ref:`DirectionalLight3D.directional_shadow_split_1<class_DirectionalLight3D_property_directional_shadow_split_1>`.
+Hằng số để truy cập :ref:`DirectionalLight3D.directional_shadow_split_1<class_DirectionalLight3D_property_directional_shadow_split_1>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_SPLIT_2_OFFSET:
 
@@ -223,7 +223,7 @@ Constant for accessing :ref:`DirectionalLight3D.directional_shadow_split_1<class
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_SPLIT_2_OFFSET** = ``11``
 
-Constant for accessing :ref:`DirectionalLight3D.directional_shadow_split_2<class_DirectionalLight3D_property_directional_shadow_split_2>`.
+Hằng số để truy cập :ref:`DirectionalLight3D.directional_shadow_split_2<class_DirectionalLight3D_property_directional_shadow_split_2>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_SPLIT_3_OFFSET:
 
@@ -231,7 +231,7 @@ Constant for accessing :ref:`DirectionalLight3D.directional_shadow_split_2<class
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_SPLIT_3_OFFSET** = ``12``
 
-Constant for accessing :ref:`DirectionalLight3D.directional_shadow_split_3<class_DirectionalLight3D_property_directional_shadow_split_3>`.
+Hằng số để truy cập :ref:`DirectionalLight3D.directional_shadow_split_3<class_DirectionalLight3D_property_directional_shadow_split_3>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_FADE_START:
 
@@ -239,7 +239,7 @@ Constant for accessing :ref:`DirectionalLight3D.directional_shadow_split_3<class
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_FADE_START** = ``13``
 
-Constant for accessing :ref:`DirectionalLight3D.directional_shadow_fade_start<class_DirectionalLight3D_property_directional_shadow_fade_start>`.
+Hằng số để truy cập :ref:`DirectionalLight3D.directional_shadow_fade_start<class_DirectionalLight3D_property_directional_shadow_fade_start>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_NORMAL_BIAS:
 
@@ -247,7 +247,7 @@ Constant for accessing :ref:`DirectionalLight3D.directional_shadow_fade_start<cl
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_NORMAL_BIAS** = ``14``
 
-Constant for accessing :ref:`shadow_normal_bias<class_Light3D_property_shadow_normal_bias>`.
+Hằng số để truy cập :ref:`shadow_normal_bias<class_Light3D_property_shadow_normal_bias>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_BIAS:
 
@@ -255,7 +255,7 @@ Constant for accessing :ref:`shadow_normal_bias<class_Light3D_property_shadow_no
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_BIAS** = ``15``
 
-Constant for accessing :ref:`shadow_bias<class_Light3D_property_shadow_bias>`.
+Hằng số để truy cập :ref:`shadow_bias<class_Light3D_property_shadow_bias>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_PANCAKE_SIZE:
 
@@ -263,7 +263,7 @@ Constant for accessing :ref:`shadow_bias<class_Light3D_property_shadow_bias>`.
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_PANCAKE_SIZE** = ``16``
 
-Constant for accessing :ref:`DirectionalLight3D.directional_shadow_pancake_size<class_DirectionalLight3D_property_directional_shadow_pancake_size>`.
+Hằng số để truy cập :ref:`DirectionalLight3D.directional_shadow_pancake_size<class_DirectionalLight3D_property_directional_shadow_pancake_size>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_OPACITY:
 
@@ -271,7 +271,7 @@ Constant for accessing :ref:`DirectionalLight3D.directional_shadow_pancake_size<
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_OPACITY** = ``17``
 
-Constant for accessing :ref:`shadow_opacity<class_Light3D_property_shadow_opacity>`.
+Hằng số để truy cập :ref:`shadow_opacity<class_Light3D_property_shadow_opacity>`.
 
 .. _class_Light3D_constant_PARAM_SHADOW_BLUR:
 
@@ -279,7 +279,7 @@ Constant for accessing :ref:`shadow_opacity<class_Light3D_property_shadow_opacit
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_SHADOW_BLUR** = ``18``
 
-Constant for accessing :ref:`shadow_blur<class_Light3D_property_shadow_blur>`.
+Hằng số để truy cập :ref:`shadow_blur<class_Light3D_property_shadow_blur>`.
 
 .. _class_Light3D_constant_PARAM_TRANSMITTANCE_BIAS:
 
@@ -287,7 +287,7 @@ Constant for accessing :ref:`shadow_blur<class_Light3D_property_shadow_blur>`.
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_TRANSMITTANCE_BIAS** = ``19``
 
-Constant for accessing :ref:`shadow_transmittance_bias<class_Light3D_property_shadow_transmittance_bias>`.
+Hằng số dùng để truy cập :ref:`shadow_transmittance_bias<class_Light3D_property_shadow_transmittance_bias>`.
 
 .. _class_Light3D_constant_PARAM_INTENSITY:
 
@@ -295,7 +295,7 @@ Constant for accessing :ref:`shadow_transmittance_bias<class_Light3D_property_sh
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_INTENSITY** = ``20``
 
-Constant for accessing :ref:`light_intensity_lumens<class_Light3D_property_light_intensity_lumens>` and :ref:`light_intensity_lux<class_Light3D_property_light_intensity_lux>`. Only used when :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units<class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` is ``true``.
+Hằng số dùng để truy cập :ref:`light_intensity_lumens<class_Light3D_property_light_intensity_lumens>` và :ref:`light_intensity_lux<class_Light3D_property_light_intensity_lux>`. Chỉ được sử dụng khi :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units <class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` là ``true``.
 
 .. _class_Light3D_constant_PARAM_MAX:
 
@@ -303,7 +303,7 @@ Constant for accessing :ref:`light_intensity_lumens<class_Light3D_property_light
 
 :ref:`Param<enum_Light3D_Param>` **PARAM_MAX** = ``21``
 
-Represents the size of the :ref:`Param<enum_Light3D_Param>` enum.
+Đại diện cho kích thước của enum :ref:`Param <enum_Light3D_Param>`.
 
 .. rst-class:: classref-item-separator
 
@@ -313,7 +313,7 @@ Represents the size of the :ref:`Param<enum_Light3D_Param>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **BakeMode**: :ref:`🔗<enum_Light3D_BakeMode>`
+enum **BakeMode**: :ref:`🔗 <enum_Light3D_BakeMode>`
 
 .. _class_Light3D_constant_BAKE_DISABLED:
 
@@ -321,9 +321,9 @@ enum **BakeMode**: :ref:`🔗<enum_Light3D_BakeMode>`
 
 :ref:`BakeMode<enum_Light3D_BakeMode>` **BAKE_DISABLED** = ``0``
 
-Light is ignored when baking. This is the fastest mode, but the light will not be taken into account when baking global illumination. This mode should generally be used for dynamic lights that change quickly, as the effect of global illumination is less noticeable on those lights.
+Ánh sáng bị bỏ qua khi bake. Đây là chế độ nhanh nhất, nhưng ánh sáng sẽ không được tính đến khi bake global illumination. Nhìn chung, nên sử dụng chế độ này cho các ánh sáng động thay đổi nhanh, vì hiệu ứng global illumination ít dễ nhận thấy hơn trên những ánh sáng đó.
 
-\ **Note:** Hiding a light does *not* affect baking :ref:`LightmapGI<class_LightmapGI>`. Hiding a light will still affect baking :ref:`VoxelGI<class_VoxelGI>` and SDFGI (see :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`).
+\ **Lưu ý:** Việc ẩn ánh sáng *không* ảnh hưởng đến quá trình bake :ref:`LightmapGI<class_LightmapGI>`. Việc ẩn ánh sáng vẫn sẽ ảnh hưởng đến quá trình bake :ref:`VoxelGI<class_VoxelGI>` và SDFGI (xem :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`).
 
 .. _class_Light3D_constant_BAKE_STATIC:
 
@@ -331,9 +331,9 @@ Light is ignored when baking. This is the fastest mode, but the light will not b
 
 :ref:`BakeMode<enum_Light3D_BakeMode>` **BAKE_STATIC** = ``1``
 
-Light is taken into account in static baking (:ref:`VoxelGI<class_VoxelGI>`, :ref:`LightmapGI<class_LightmapGI>`, SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`)). The light can be moved around or modified, but its global illumination will not update in real-time. This is suitable for subtle changes (such as flickering torches), but generally not large changes such as toggling a light on and off.
+Ánh sáng được tính đến trong quá trình bake tĩnh (:ref:`VoxelGI<class_VoxelGI>`, :ref:`LightmapGI<class_LightmapGI>`, SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`)). Bạn có thể di chuyển hoặc sửa đổi ánh sáng, nhưng global illumination của ánh sáng sẽ không được cập nhật theo thời gian thực. Cách này phù hợp với những thay đổi nhỏ (chẳng hạn như đuốc chập chờn), nhưng nhìn chung không phù hợp với những thay đổi lớn như bật hoặc tắt ánh sáng.
 
-\ **Note:** The light is not baked in :ref:`LightmapGI<class_LightmapGI>` if :ref:`editor_only<class_Light3D_property_editor_only>` is ``true``.
+\ **Lưu ý:** Đèn không được bake trong :ref:`LightmapGI<class_LightmapGI>` nếu :ref:`editor_only<class_Light3D_property_editor_only>` là ``true``.
 
 .. _class_Light3D_constant_BAKE_DYNAMIC:
 
@@ -341,7 +341,7 @@ Light is taken into account in static baking (:ref:`VoxelGI<class_VoxelGI>`, :re
 
 :ref:`BakeMode<enum_Light3D_BakeMode>` **BAKE_DYNAMIC** = ``2``
 
-Light is taken into account in dynamic baking (:ref:`VoxelGI<class_VoxelGI>` and SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`) only). The light can be moved around or modified with global illumination updating in real-time. The light's global illumination appearance will be slightly different compared to :ref:`BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>`. This has a greater performance cost compared to :ref:`BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>`. When using SDFGI, the update speed of dynamic lights is affected by :ref:`ProjectSettings.rendering/global_illumination/sdfgi/frames_to_update_lights<class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_update_lights>`.
+Ánh sáng chỉ được tính đến trong quá trình bake động (:ref:`VoxelGI<class_VoxelGI>` và SDFGI (:ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`) mà thôi). Có thể di chuyển hoặc thay đổi đèn, đồng thời global illumination được cập nhật theo thời gian thực. Hiển thị global illumination của đèn sẽ hơi khác so với :ref:`BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>`. Điều này có chi phí hiệu năng cao hơn so với :ref:`BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>`. Khi sử dụng SDFGI, tốc độ cập nhật của các đèn động bị ảnh hưởng bởi :ref:`ProjectSettings.rendering/global_illumination/sdfgi/frames_to_update_lights <class_ProjectSettings_property_rendering/global_illumination/sdfgi/frames_to_update_lights>`.
 
 .. rst-class:: classref-section-separator
 
@@ -349,8 +349,8 @@ Light is taken into account in dynamic baking (:ref:`VoxelGI<class_VoxelGI>` and
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Light3D_property_distance_fade_begin:
 
@@ -363,9 +363,9 @@ Property Descriptions
 - |void| **set_distance_fade_begin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_distance_fade_begin**\ (\ )
 
-The distance from the camera at which the light begins to fade away (in 3D units).
+Khoảng cách tính từ camera mà tại đó đèn bắt đầu mờ dần (tính theo đơn vị 3D).
 
-\ **Note:** Only effective for :ref:`OmniLight3D<class_OmniLight3D>` and :ref:`SpotLight3D<class_SpotLight3D>`.
+\ **Lưu ý:** Chỉ có hiệu lực đối với :ref:`OmniLight3D<class_OmniLight3D>` và :ref:`SpotLight3D<class_SpotLight3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -382,9 +382,9 @@ The distance from the camera at which the light begins to fade away (in 3D units
 - |void| **set_enable_distance_fade**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_distance_fade_enabled**\ (\ )
 
-If ``true``, the light will smoothly fade away when far from the active :ref:`Camera3D<class_Camera3D>` starting at :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>`. This acts as a form of level of detail (LOD). The light will fade out over :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>` + :ref:`distance_fade_length<class_Light3D_property_distance_fade_length>`, after which it will be culled and not sent to the shader at all. Use this to reduce the number of active lights in a scene and thus improve performance.
+Nếu ``true``, đèn sẽ mờ dần một cách mượt mà khi ở xa :ref:`Camera3D<class_Camera3D>` đang hoạt động, bắt đầu từ :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>`. Đây là một dạng level of detail (LOD). Đèn sẽ mờ dần trong khoảng :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>` + :ref:`distance_fade_length<class_Light3D_property_distance_fade_length>`, sau đó sẽ bị loại bỏ và hoàn toàn không được gửi đến shader. Sử dụng tùy chọn này để giảm số lượng đèn đang hoạt động trong một scene, từ đó cải thiện hiệu năng.
 
-\ **Note:** Only effective for :ref:`OmniLight3D<class_OmniLight3D>` and :ref:`SpotLight3D<class_SpotLight3D>`.
+\ **Lưu ý:** Chỉ có hiệu lực đối với :ref:`OmniLight3D<class_OmniLight3D>` và :ref:`SpotLight3D<class_SpotLight3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -401,9 +401,9 @@ If ``true``, the light will smoothly fade away when far from the active :ref:`Ca
 - |void| **set_distance_fade_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_distance_fade_length**\ (\ )
 
-Distance over which the light and its shadow fades. The light's energy and shadow's opacity is progressively reduced over this distance and is completely invisible at the end.
+Khoảng cách mà ánh sáng và bóng của nó mờ dần. Năng lượng của ánh sáng và độ mờ đục của bóng giảm dần trong khoảng cách này và hoàn toàn không thể nhìn thấy ở cuối khoảng cách.
 
-\ **Note:** Only effective for :ref:`OmniLight3D<class_OmniLight3D>` and :ref:`SpotLight3D<class_SpotLight3D>`.
+\ **Lưu ý:** Chỉ có hiệu lực đối với :ref:`OmniLight3D<class_OmniLight3D>` và :ref:`SpotLight3D<class_SpotLight3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -420,9 +420,9 @@ Distance over which the light and its shadow fades. The light's energy and shado
 - |void| **set_distance_fade_shadow**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_distance_fade_shadow**\ (\ )
 
-The distance from the camera at which the light's shadow cuts off (in 3D units). Set this to a value lower than :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>` + :ref:`distance_fade_length<class_Light3D_property_distance_fade_length>` to further improve performance, as shadow rendering is often more expensive than light rendering itself.
+Khoảng cách tính từ camera mà tại đó bóng của ánh sáng bị cắt (theo đơn vị 3D). Đặt giá trị này thấp hơn :ref:`distance_fade_begin<class_Light3D_property_distance_fade_begin>` + :ref:`distance_fade_length<class_Light3D_property_distance_fade_length>` để cải thiện hiệu suất hơn nữa, vì việc kết xuất bóng thường tốn nhiều tài nguyên hơn chính việc kết xuất ánh sáng.
 
-\ **Note:** Only effective for :ref:`OmniLight3D<class_OmniLight3D>` and :ref:`SpotLight3D<class_SpotLight3D>`, and only when :ref:`shadow_enabled<class_Light3D_property_shadow_enabled>` is ``true``.
+\ **Lưu ý:** Chỉ có hiệu lực đối với :ref:`OmniLight3D<class_OmniLight3D>` và :ref:`SpotLight3D<class_SpotLight3D>`, và chỉ khi :ref:`shadow_enabled<class_Light3D_property_shadow_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -439,7 +439,7 @@ The distance from the camera at which the light's shadow cuts off (in 3D units).
 - |void| **set_editor_only**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editor_only**\ (\ )
 
-If ``true``, the light only appears in the editor and will not be visible at runtime. If ``true``, the light will never be baked in :ref:`LightmapGI<class_LightmapGI>` regardless of its :ref:`light_bake_mode<class_Light3D_property_light_bake_mode>`.
+Nếu ``true``, ánh sáng chỉ xuất hiện trong trình chỉnh sửa và sẽ không hiển thị khi chạy. Nếu ``true``, ánh sáng sẽ không bao giờ được bake trong :ref:`LightmapGI<class_LightmapGI>` bất kể :ref:`light_bake_mode<class_Light3D_property_light_bake_mode>` của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -456,11 +456,11 @@ If ``true``, the light only appears in the editor and will not be visible at run
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-The light's angular size in degrees. Increasing this will make shadows softer at greater distances (also called percentage-closer soft shadows, or PCSS). Only available for :ref:`DirectionalLight3D<class_DirectionalLight3D>`\ s. For reference, the Sun from the Earth is approximately ``0.5``. Increasing this value above ``0.0`` for lights with shadows enabled will have a noticeable performance cost due to PCSS.
+Kích thước góc của ánh sáng, tính bằng độ. Tăng giá trị này sẽ làm cho bóng mềm hơn ở khoảng cách lớn hơn (còn gọi là percentage-closer soft shadows, hay PCSS). Chỉ khả dụng cho :ref:`DirectionalLight3D<class_DirectionalLight3D>`\ s. Để tham khảo, Mặt Trời nhìn từ Trái Đất có kích thước xấp xỉ ``0.5``. Tăng giá trị này vượt quá ``0.0`` đối với các ánh sáng đã bật bóng sẽ gây ảnh hưởng đáng kể đến hiệu suất do PCSS.
 
-\ **Note:** :ref:`light_angular_distance<class_Light3D_property_light_angular_distance>` is not affected by :ref:`Node3D.scale<class_Node3D_property_scale>` (the light's scale or its parent's scale).
+\ **Lưu ý:** :ref:`light_angular_distance<class_Light3D_property_light_angular_distance>` không bị ảnh hưởng bởi :ref:`Node3D.scale<class_Node3D_property_scale>` (tỷ lệ của ánh sáng hoặc tỷ lệ của đối tượng cha của nó).
 
-\ **Note:** PCSS for directional lights is only supported in the Forward+ rendering method, not Mobile or Compatibility.
+\ **Lưu ý:** PCSS cho đèn định hướng chỉ được hỗ trợ trong phương thức kết xuất Forward+, không được hỗ trợ trong Mobile hoặc Compatibility.
 
 .. rst-class:: classref-item-separator
 
@@ -477,9 +477,9 @@ The light's angular size in degrees. Increasing this will make shadows softer at
 - |void| **set_bake_mode**\ (\ value\: :ref:`BakeMode<enum_Light3D_BakeMode>`\ )
 - :ref:`BakeMode<enum_Light3D_BakeMode>` **get_bake_mode**\ (\ )
 
-The light's bake mode. This will affect the global illumination techniques that have an effect on the light's rendering.
+Chế độ bake của đèn. Chế độ này sẽ ảnh hưởng đến các kỹ thuật global illumination tác động đến việc kết xuất đèn.
 
-\ **Note:** Meshes' global illumination mode will also affect the global illumination rendering. See :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>`.
+\ **Lưu ý:** Chế độ global illumination của các mesh cũng sẽ ảnh hưởng đến việc kết xuất global illumination. Xem :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -496,7 +496,7 @@ The light's bake mode. This will affect the global illumination techniques that 
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The light's color in nonlinear sRGB encoding. An *overbright* color can be used to achieve a result equivalent to increasing the light's :ref:`light_energy<class_Light3D_property_light_energy>`.
+Màu của đèn ở dạng mã hóa sRGB phi tuyến. Có thể sử dụng màu *quá sáng* để đạt được kết quả tương đương với việc tăng :ref:`light_energy<class_Light3D_property_light_energy>` của đèn.
 
 .. rst-class:: classref-item-separator
 
@@ -513,9 +513,9 @@ The light's color in nonlinear sRGB encoding. An *overbright* color can be used 
 - |void| **set_cull_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_cull_mask**\ (\ )
 
-The light will affect objects in the selected layers.
+Đèn sẽ tác động đến các đối tượng trên những layer đã chọn.
 
-\ **Note:** The light cull mask is ignored by :ref:`VoxelGI<class_VoxelGI>`, SDFGI, :ref:`LightmapGI<class_LightmapGI>`, and volumetric fog. These will always render lights in a way that ignores the cull mask. See also :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>`.
+\ **Lưu ý:** Mặt nạ cull của đèn bị bỏ qua bởi :ref:`VoxelGI<class_VoxelGI>`, SDFGI, :ref:`LightmapGI<class_LightmapGI>` và sương mù thể tích. Các hệ thống này luôn kết xuất đèn theo cách bỏ qua mặt nạ cull. Xem thêm :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>`.
 
 .. rst-class:: classref-item-separator
 
@@ -532,7 +532,7 @@ The light will affect objects in the selected layers.
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-The light's strength multiplier (this is not a physical unit). For :ref:`OmniLight3D<class_OmniLight3D>` and :ref:`SpotLight3D<class_SpotLight3D>`, changing this value will only change the light color's intensity, not the light's radius.
+Hệ số cường độ của đèn (đây không phải là một đơn vị vật lý). Đối với :ref:`OmniLight3D<class_OmniLight3D>` và :ref:`SpotLight3D<class_SpotLight3D>`, việc thay đổi giá trị này chỉ thay đổi cường độ màu của đèn, không thay đổi bán kính của đèn.
 
 .. rst-class:: classref-item-separator
 
@@ -549,9 +549,9 @@ The light's strength multiplier (this is not a physical unit). For :ref:`OmniLig
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-Secondary multiplier used with indirect light (light bounces). Used with :ref:`VoxelGI<class_VoxelGI>` and SDFGI (see :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`).
+Hệ số nhân thứ cấp được sử dụng với ánh sáng gián tiếp (ánh sáng dội lại). Được sử dụng với :ref:`VoxelGI<class_VoxelGI>` và SDFGI (xem :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`).
 
-\ **Note:** This property is ignored if :ref:`light_energy<class_Light3D_property_light_energy>` is equal to ``0.0``, as the light won't be present at all in the GI shader.
+\ **Lưu ý:** Thuộc tính này bị bỏ qua nếu :ref:`light_energy<class_Light3D_property_light_energy>` bằng ``0.0``, vì ánh sáng hoàn toàn không xuất hiện trong trình đổ bóng GI.
 
 .. rst-class:: classref-item-separator
 
@@ -561,18 +561,18 @@ Secondary multiplier used with indirect light (light bounces). Used with :ref:`V
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **light_intensity_lumens** :ref:`🔗<class_Light3D_property_light_intensity_lumens>`
+:ref:`float<class_float>` **light_intensity_lumens** :ref:`🔗 <class_Light3D_property_light_intensity_lumens>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-Used by positional lights (:ref:`OmniLight3D<class_OmniLight3D>` and :ref:`SpotLight3D<class_SpotLight3D>`) when :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units<class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` is ``true``. Sets the intensity of the light source measured in Lumens. Lumens are a measure of luminous flux, which is the total amount of visible light emitted by a light source per unit of time.
+Được sử dụng bởi các đèn định vị (:ref:`OmniLight3D<class_OmniLight3D>` và :ref:`SpotLight3D<class_SpotLight3D>`) khi :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units <class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` là ``true``. Đặt cường độ của nguồn sáng, được đo bằng lumen. Lumen là đơn vị đo quang thông, tức tổng lượng ánh sáng khả kiến phát ra từ một nguồn sáng trong một đơn vị thời gian.
 
-For :ref:`SpotLight3D<class_SpotLight3D>`\ s, we assume that the area outside the visible cone is surrounded by a perfect light absorbing material. Accordingly, the apparent brightness of the cone area does not change as the cone increases and decreases in size.
+Đối với :ref:`SpotLight3D<class_SpotLight3D>`\ s, chúng tôi giả định rằng khu vực bên ngoài hình nón nhìn thấy được bao quanh bởi một vật liệu hấp thụ ánh sáng hoàn hảo. Theo đó, độ sáng biểu kiến của khu vực hình nón không thay đổi khi kích thước hình nón tăng hoặc giảm.
 
-A typical household lightbulb can range from around 600 lumens to 1,200 lumens, a candle is about 13 lumens, while a streetlight can be approximately 60,000 lumens.
+Một bóng đèn gia dụng thông thường có thể có quang thông từ khoảng 600 lumen đến 1.200 lumen, một cây nến có khoảng 13 lumen, trong khi đèn đường có thể đạt xấp xỉ 60.000 lumen.
 
 .. rst-class:: classref-item-separator
 
@@ -582,16 +582,16 @@ A typical household lightbulb can range from around 600 lumens to 1,200 lumens, 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **light_intensity_lux** :ref:`🔗<class_Light3D_property_light_intensity_lux>`
+:ref:`float<class_float>` **light_intensity_lux** :ref:`🔗 <class_Light3D_property_light_intensity_lux>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-Used by :ref:`DirectionalLight3D<class_DirectionalLight3D>`\ s when :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units<class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` is ``true``. Sets the intensity of the light source measured in Lux. Lux is a measure of luminous flux per unit area, it is equal to one lumen per square meter. Lux is the measure of how much light hits a surface at a given time.
+Được các :ref:`DirectionalLight3D<class_DirectionalLight3D>`\  sử dụng khi :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units <class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` là ``true``. Đặt cường độ của nguồn sáng, được đo bằng Lux. Lux là đơn vị đo quang thông trên một đơn vị diện tích, bằng một lumen trên mỗi mét vuông. Lux đo lượng ánh sáng chiếu tới một bề mặt tại một thời điểm nhất định.
 
-On a clear sunny day a surface in direct sunlight may be approximately 100,000 lux, a typical room in a home may be approximately 50 lux, while the moonlit ground may be approximately 0.1 lux.
+Vào một ngày nắng trong và quang đãng, một bề mặt dưới ánh nắng trực tiếp có thể đạt khoảng 100.000 lux, một căn phòng thông thường trong nhà có thể đạt khoảng 50 lux, còn mặt đất dưới ánh trăng có thể đạt khoảng 0,1 lux.
 
 .. rst-class:: classref-item-separator
 
@@ -608,7 +608,7 @@ On a clear sunny day a surface in direct sunlight may be approximately 100,000 l
 - |void| **set_negative**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_negative**\ (\ )
 
-If ``true``, the light's effect is reversed, darkening areas and casting bright shadows.
+Nếu ``true``, hiệu ứng của ánh sáng sẽ bị đảo ngược, làm tối các khu vực và tạo ra những vùng bóng sáng.
 
 .. rst-class:: classref-item-separator
 
@@ -618,18 +618,18 @@ If ``true``, the light's effect is reversed, darkening areas and casting bright 
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **light_projector** :ref:`🔗<class_Light3D_property_light_projector>`
+:ref:`Texture2D<class_Texture2D>` **light_projector** :ref:`🔗 <class_Light3D_property_light_projector>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_projector**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_projector**\ (\ )
 
-:ref:`Texture2D<class_Texture2D>` projected by light. :ref:`shadow_enabled<class_Light3D_property_shadow_enabled>` must be on for the projector to work. Light projectors make the light appear as if it is shining through a colored but transparent object, almost like light shining through stained-glass.
+:ref:`Texture2D<class_Texture2D>` được ánh sáng chiếu lên. :ref:`shadow_enabled<class_Light3D_property_shadow_enabled>` phải được bật để projector hoạt động. Light projector khiến ánh sáng trông như đang chiếu xuyên qua một vật thể có màu nhưng trong suốt, gần giống ánh sáng chiếu qua kính màu.
 
-\ **Note:** Unlike :ref:`BaseMaterial3D<class_BaseMaterial3D>` whose filter mode can be adjusted on a per-material basis, the filter mode for light projector textures is set globally with :ref:`ProjectSettings.rendering/textures/light_projectors/filter<class_ProjectSettings_property_rendering/textures/light_projectors/filter>`.
+\ **Lưu ý:** Không giống :ref:`BaseMaterial3D<class_BaseMaterial3D>`, chế độ lọc của nó có thể được điều chỉnh riêng cho từng material, chế độ lọc của texture light projector được đặt trên toàn cục bằng :ref:`ProjectSettings.rendering/textures/light_projectors/filter <class_ProjectSettings_property_rendering/textures/light_projectors/filter>`.
 
-\ **Note:** Light projector textures are only supported in the Forward+ and Mobile rendering methods, not Compatibility.
+\ **Lưu ý:** Texture light projector chỉ được hỗ trợ trong các phương thức rendering Forward+ và Mobile, không được hỗ trợ trong Compatibility.
 
 .. rst-class:: classref-item-separator
 
@@ -646,11 +646,11 @@ If ``true``, the light's effect is reversed, darkening areas and casting bright 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-The simulated size of the light in Godot units, affecting shading and shadows. For :ref:`OmniLight3D<class_OmniLight3D>`\ s and :ref:`SpotLight3D<class_SpotLight3D>`\ s, increasing this value simulates a spherical area light, expanding the size of specular highlights. If shadows are enabled, a penumbra is rendered, making shadows appear blurrier. For :ref:`AreaLight3D<class_AreaLight3D>`\ s, only the shadows are affected. Penumbras are simulated with percentage-closer soft shadows, or PCSS, which has a noticeable performance cost for values above ``0.0``.
+Kích thước mô phỏng của nguồn sáng theo đơn vị Godot, ảnh hưởng đến shading và bóng đổ. Đối với :ref:`OmniLight3D<class_OmniLight3D>`\ s và :ref:`SpotLight3D<class_SpotLight3D>`\ s, việc tăng giá trị này sẽ mô phỏng một nguồn sáng vùng hình cầu, làm mở rộng kích thước của các vùng sáng specular. Nếu bật bóng đổ, vùng nửa tối sẽ được kết xuất, khiến bóng trông mờ hơn. Đối với :ref:`AreaLight3D<class_AreaLight3D>`\ s, chỉ bóng đổ bị ảnh hưởng. Vùng nửa tối được mô phỏng bằng percentage-closer soft shadows, hay PCSS, gây ảnh hưởng đáng kể đến hiệu năng khi giá trị lớn hơn ``0.0``.
 
-\ **Note:** :ref:`light_size<class_Light3D_property_light_size>` is not affected by :ref:`Node3D.scale<class_Node3D_property_scale>` (the light's scale or its parent's scale).
+\ **Lưu ý:** :ref:`light_size<class_Light3D_property_light_size>` không bị ảnh hưởng bởi :ref:`Node3D.scale<class_Node3D_property_scale>` (scale của nguồn sáng hoặc scale của đối tượng cha).
 
-\ **Note:** PCSS for positional lights is only supported in the Forward+ and Mobile rendering methods, not Compatibility.
+\ **Lưu ý:** PCSS cho các nguồn sáng theo vị trí chỉ được hỗ trợ trong các phương thức kết xuất Forward+ và Mobile, không được hỗ trợ trong Compatibility.
 
 .. rst-class:: classref-item-separator
 
@@ -667,7 +667,7 @@ The simulated size of the light in Godot units, affecting shading and shadows. F
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-The intensity of the specular blob in objects affected by the light. At ``0``, the light becomes a pure diffuse light. When not baking emission, this can be used to avoid unrealistic reflections when placing lights above an emissive surface.
+Cường độ của vùng sáng specular trên các đối tượng chịu ảnh hưởng của nguồn sáng. Ở mức ``0``, nguồn sáng trở thành nguồn sáng diffuse thuần túy. Khi không baking emission, bạn có thể dùng tùy chọn này để tránh các phản chiếu không thực tế khi đặt nguồn sáng phía trên một bề mặt phát sáng.
 
 .. rst-class:: classref-item-separator
 
@@ -677,16 +677,16 @@ The intensity of the specular blob in objects affected by the light. At ``0``, t
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **light_temperature** :ref:`🔗<class_Light3D_property_light_temperature>`
+:ref:`float<class_float>` **light_temperature** :ref:`🔗 <class_Light3D_property_light_temperature>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_temperature**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_temperature**\ (\ )
 
-Sets the color temperature of the light source, measured in Kelvin. This is used to calculate a correlated color temperature which tints the :ref:`light_color<class_Light3D_property_light_color>`.
+Thiết lập nhiệt độ màu của nguồn sáng, được đo bằng Kelvin. Giá trị này được dùng để tính nhiệt độ màu tương quan, từ đó tạo sắc màu cho :ref:`light_color<class_Light3D_property_light_color>`.
 
-The sun on a cloudy day is approximately 6500 Kelvin, on a clear day it is between 5500 to 6000 Kelvin, and on a clear day at sunrise or sunset it ranges to around 1850 Kelvin.
+Mặt trời vào ngày nhiều mây có nhiệt độ khoảng 6500 Kelvin, vào ngày quang mây là từ 5500 đến 6000 Kelvin, còn vào ngày quang mây lúc bình minh hoặc hoàng hôn thì vào khoảng 1850 Kelvin.
 
 .. rst-class:: classref-item-separator
 
@@ -703,9 +703,9 @@ The sun on a cloudy day is approximately 6500 Kelvin, on a clear day it is betwe
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-Secondary multiplier multiplied with :ref:`light_energy<class_Light3D_property_light_energy>` then used with the :ref:`Environment<class_Environment>`'s volumetric fog (if enabled). If set to ``0.0``, computing volumetric fog will be skipped for this light, which can improve performance for large amounts of lights when volumetric fog is enabled.
+Hệ số nhân phụ được nhân với :ref:`light_energy<class_Light3D_property_light_energy>`, sau đó được sử dụng với sương mù thể tích của :ref:`Environment<class_Environment>` (nếu được bật). Nếu được đặt thành ``0.0``, việc tính toán sương mù thể tích sẽ được bỏ qua đối với nguồn sáng này, từ đó có thể cải thiện hiệu năng khi có số lượng lớn nguồn sáng và sương mù thể tích được bật.
 
-\ **Note:** To prevent short-lived dynamic light effects from poorly interacting with volumetric fog, lights used in those effects should have :ref:`light_volumetric_fog_energy<class_Light3D_property_light_volumetric_fog_energy>` set to ``0.0`` unless :ref:`Environment.volumetric_fog_temporal_reprojection_enabled<class_Environment_property_volumetric_fog_temporal_reprojection_enabled>` is disabled (or unless the reprojection amount is significantly lowered).
+\ **Lưu ý:** Để ngăn các hiệu ứng nguồn sáng động có thời gian tồn tại ngắn tương tác không tốt với sương mù thể tích, các nguồn sáng được sử dụng trong những hiệu ứng đó nên đặt :ref:`light_volumetric_fog_energy<class_Light3D_property_light_volumetric_fog_energy>` thành ``0.0``, trừ khi :ref:`Environment.volumetric_fog_temporal_reprojection_enabled<class_Environment_property_volumetric_fog_temporal_reprojection_enabled>` bị tắt (hoặc khi mức độ reprojection được giảm đáng kể).
 
 .. rst-class:: classref-item-separator
 
@@ -722,7 +722,7 @@ Secondary multiplier multiplied with :ref:`light_energy<class_Light3D_property_l
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-Used to adjust shadow appearance. Too small a value results in self-shadowing ("shadow acne"), while too large a value causes shadows to separate from casters ("peter-panning"). Adjust as needed.
+Dùng để điều chỉnh diện mạo của bóng. Giá trị quá nhỏ sẽ gây hiện tượng tự đổ bóng ("shadow acne"), trong khi giá trị quá lớn khiến bóng tách khỏi các vật thể đổ bóng ("peter-panning"). Hãy điều chỉnh khi cần.
 
 .. rst-class:: classref-item-separator
 
@@ -739,7 +739,7 @@ Used to adjust shadow appearance. Too small a value results in self-shadowing ("
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-Blurs the edges of the shadow. Can be used to hide pixel artifacts in low-resolution shadow maps. A high value can impact performance, make shadows appear grainy and can cause other unwanted artifacts. Try to keep as near default as possible.
+Làm mờ các cạnh của bóng. Có thể dùng để che các lỗi pixel trong shadow map có độ phân giải thấp. Giá trị cao có thể ảnh hưởng đến hiệu năng, khiến bóng trông nhiễu hạt và gây ra các lỗi không mong muốn khác. Hãy cố gắng giữ giá trị gần với mặc định nhất có thể.
 
 .. rst-class:: classref-item-separator
 
@@ -756,7 +756,7 @@ Blurs the edges of the shadow. Can be used to hide pixel artifacts in low-resolu
 - |void| **set_shadow_caster_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_shadow_caster_mask**\ (\ )
 
-The light will only cast shadows using objects in the selected layers.
+Nguồn sáng sẽ chỉ đổ bóng bằng các đối tượng nằm trong các layer đã chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -773,7 +773,7 @@ The light will only cast shadows using objects in the selected layers.
 - |void| **set_shadow**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_shadow**\ (\ )
 
-If ``true``, the light will cast real-time shadows. This has a significant performance cost. Only enable shadow rendering when it makes a noticeable difference in the scene's appearance, and consider using :ref:`distance_fade_enabled<class_Light3D_property_distance_fade_enabled>` to hide the light when far away from the :ref:`Camera3D<class_Camera3D>`.
+Nếu ``true``, nguồn sáng sẽ đổ bóng theo thời gian thực. Điều này gây tốn hiệu năng đáng kể. Chỉ bật tính năng kết xuất bóng khi nó tạo ra khác biệt rõ rệt trong diện mạo của cảnh, đồng thời cân nhắc sử dụng :ref:`distance_fade_enabled<class_Light3D_property_distance_fade_enabled>` để ẩn nguồn sáng khi ở xa :ref:`Camera3D<class_Camera3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -790,7 +790,7 @@ If ``true``, the light will cast real-time shadows. This has a significant perfo
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-Offsets the lookup into the shadow map by the object's normal. This can be used to reduce self-shadowing artifacts without using :ref:`shadow_bias<class_Light3D_property_shadow_bias>`. In practice, this value should be tweaked along with :ref:`shadow_bias<class_Light3D_property_shadow_bias>` to reduce artifacts as much as possible.
+Dịch phép tra cứu trong shadow map theo pháp tuyến của đối tượng. Có thể dùng cách này để giảm các lỗi tự đổ bóng mà không cần sử dụng :ref:`shadow_bias<class_Light3D_property_shadow_bias>`. Trên thực tế, nên tinh chỉnh giá trị này cùng với :ref:`shadow_bias<class_Light3D_property_shadow_bias>` để giảm các lỗi nhiều nhất có thể.
 
 .. rst-class:: classref-item-separator
 
@@ -807,7 +807,7 @@ Offsets the lookup into the shadow map by the object's normal. This can be used 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const|
 
-The opacity to use when rendering the light's shadow map. Values lower than ``1.0`` make the light appear through shadows. This can be used to fake global illumination at a low performance cost.
+Độ mờ được sử dụng khi kết xuất shadow map của đèn. Các giá trị thấp hơn ``1.0`` khiến đèn trông như xuyên qua bóng. Có thể sử dụng thuộc tính này để giả lập global illumination với chi phí hiệu năng thấp.
 
 .. rst-class:: classref-item-separator
 
@@ -824,7 +824,7 @@ The opacity to use when rendering the light's shadow map. Values lower than ``1.
 - |void| **set_shadow_reverse_cull_face**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_shadow_reverse_cull_face**\ (\ )
 
-If ``true``, reverses the backface culling of the mesh. This can be useful when you have a flat mesh that has a light behind it. If you need to cast a shadow on both sides of the mesh, set the mesh to use double-sided shadows with :ref:`GeometryInstance3D.SHADOW_CASTING_SETTING_DOUBLE_SIDED<class_GeometryInstance3D_constant_SHADOW_CASTING_SETTING_DOUBLE_SIDED>`.
+Nếu ``true``, đảo ngược việc loại bỏ các mặt sau của mesh. Điều này có thể hữu ích khi bạn có một mesh phẳng với một đèn ở phía sau. Nếu cần tạo bóng ở cả hai mặt của mesh, hãy đặt mesh sử dụng bóng hai mặt với :ref:`GeometryInstance3D.SHADOW_CASTING_SETTING_DOUBLE_SIDED<class_GeometryInstance3D_constant_SHADOW_CASTING_SETTING_DOUBLE_SIDED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -851,8 +851,8 @@ If ``true``, reverses the backface culling of the mesh. This can be useful when 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Light3D_method_get_correlated_color:
 
@@ -860,7 +860,7 @@ Method Descriptions
 
 :ref:`Color<class_Color>` **get_correlated_color**\ (\ ) |const| :ref:`🔗<class_Light3D_method_get_correlated_color>`
 
-Returns the :ref:`Color<class_Color>` of an idealized blackbody at the given :ref:`light_temperature<class_Light3D_property_light_temperature>`. This value is calculated internally based on the :ref:`light_temperature<class_Light3D_property_light_temperature>`. This :ref:`Color<class_Color>` is multiplied by :ref:`light_color<class_Light3D_property_light_color>` before being sent to the :ref:`RenderingServer<class_RenderingServer>`.
+Trả về :ref:`Color<class_Color>` của một vật đen lý tưởng tại :ref:`light_temperature<class_Light3D_property_light_temperature>` đã cho. Giá trị này được tính nội bộ dựa trên :ref:`light_temperature<class_Light3D_property_light_temperature>`. :ref:`Color<class_Color>` này được nhân với :ref:`light_color<class_Light3D_property_light_color>` trước khi gửi đến :ref:`RenderingServer<class_RenderingServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -872,7 +872,7 @@ Returns the :ref:`Color<class_Color>` of an idealized blackbody at the given :re
 
 :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`\ ) |const| :ref:`🔗<class_Light3D_method_get_param>`
 
-Returns the value of the specified :ref:`Param<enum_Light3D_Param>` parameter.
+Trả về giá trị của tham số :ref:`Param <enum_Light3D_Param>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -884,14 +884,14 @@ Returns the value of the specified :ref:`Param<enum_Light3D_Param>` parameter.
 
 |void| **set_param**\ (\ param\: :ref:`Param<enum_Light3D_Param>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Light3D_method_set_param>`
 
-Sets the value of the specified :ref:`Param<enum_Light3D_Param>` parameter.
+Đặt giá trị của tham số :ref:`Param <enum_Light3D_Param>` được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

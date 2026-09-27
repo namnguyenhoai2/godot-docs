@@ -13,46 +13,46 @@
 IP
 ==
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Internet protocol (IP) support functions such as DNS resolution.
+Các hàm hỗ trợ giao thức Internet (IP), chẳng hạn như phân giải DNS.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-IP contains support functions for the Internet Protocol (IP). TCP/IP support is in different classes (see :ref:`StreamPeerTCP<class_StreamPeerTCP>` and :ref:`TCPServer<class_TCPServer>`). IP provides DNS hostname resolution support, both blocking and threaded.
+IP chứa các hàm hỗ trợ cho Giao thức Internet (IP). Hỗ trợ TCP/IP nằm trong các class khác nhau (xem :ref:`StreamPeerTCP<class_StreamPeerTCP>` và :ref:`TCPServer<class_TCPServer>`). IP cung cấp hỗ trợ phân giải hostname DNS, cả dạng blocking và threaded.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`clear_cache<class_IP_method_clear_cache>`\ (\ hostname\: :ref:`String<class_String>` = ""\ )                                                                 |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`erase_resolve_item<class_IP_method_erase_resolve_item>`\ (\ id\: :ref:`int<class_int>`\ )                                                                    |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`                | :ref:`get_local_addresses<class_IP_method_get_local_addresses>`\ (\ ) |const|                                                                                      |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_local_interfaces<class_IP_method_get_local_interfaces>`\ (\ ) |const|                                                                                    |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                      | :ref:`get_resolve_item_address<class_IP_method_get_resolve_item_address>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                                        | :ref:`get_resolve_item_addresses<class_IP_method_get_resolve_item_addresses>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                            |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ResolverStatus<enum_IP_ResolverStatus>`                    | :ref:`get_resolve_item_status<class_IP_method_get_resolve_item_status>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                      | :ref:`resolve_hostname<class_IP_method_resolve_hostname>`\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type<enum_IP_Type>` = 3\ )                       |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`                | :ref:`resolve_hostname_addresses<class_IP_method_resolve_hostname_addresses>`\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type<enum_IP_Type>` = 3\ )   |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                            | :ref:`resolve_hostname_queue_item<class_IP_method_resolve_hostname_queue_item>`\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type<enum_IP_Type>` = 3\ ) |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`clear_cache<class_IP_method_clear_cache>`\ (\ hostname\: :ref:`String<class_String>` = ""\ )                                                                  |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`erase_resolve_item<class_IP_method_erase_resolve_item>`\ (\ id\: :ref:`int<class_int>`\ )                                                                     |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`                | :ref:`get_local_addresses<class_IP_method_get_local_addresses>`\ (\ ) |const|                                                                                       |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`get_local_interfaces<class_IP_method_get_local_interfaces>`\ (\ ) |const|                                                                                     |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                      | :ref:`get_resolve_item_address<class_IP_method_get_resolve_item_address>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                 |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                        | :ref:`get_resolve_item_addresses<class_IP_method_get_resolve_item_addresses>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                             |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`ResolverStatus <enum_IP_ResolverStatus>`                   | :ref:`get_resolve_item_status<class_IP_method_get_resolve_item_status>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                   |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                      | :ref:`resolve_hostname<class_IP_method_resolve_hostname>`\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type <enum_IP_Type>` = 3\ )                       |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`                | :ref:`resolve_hostname_addresses<class_IP_method_resolve_hostname_addresses>`\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type <enum_IP_Type>` = 3\ )   |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`resolve_hostname_queue_item<class_IP_method_resolve_hostname_queue_item>`\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type <enum_IP_Type>` = 3\ ) |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -60,14 +60,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_IP_ResolverStatus:
 
 .. rst-class:: classref-enumeration
 
-enum **ResolverStatus**: :ref:`🔗<enum_IP_ResolverStatus>`
+enum **ResolverStatus**: :ref:`🔗 <enum_IP_ResolverStatus>`
 
 .. _class_IP_constant_RESOLVER_STATUS_NONE:
 
@@ -75,7 +75,7 @@ enum **ResolverStatus**: :ref:`🔗<enum_IP_ResolverStatus>`
 
 :ref:`ResolverStatus<enum_IP_ResolverStatus>` **RESOLVER_STATUS_NONE** = ``0``
 
-DNS hostname resolver status: No status.
+Trạng thái của trình phân giải hostname DNS: Không có trạng thái.
 
 .. _class_IP_constant_RESOLVER_STATUS_WAITING:
 
@@ -83,7 +83,7 @@ DNS hostname resolver status: No status.
 
 :ref:`ResolverStatus<enum_IP_ResolverStatus>` **RESOLVER_STATUS_WAITING** = ``1``
 
-DNS hostname resolver status: Waiting.
+Trạng thái của trình phân giải hostname DNS: Đang chờ.
 
 .. _class_IP_constant_RESOLVER_STATUS_DONE:
 
@@ -91,7 +91,7 @@ DNS hostname resolver status: Waiting.
 
 :ref:`ResolverStatus<enum_IP_ResolverStatus>` **RESOLVER_STATUS_DONE** = ``2``
 
-DNS hostname resolver status: Done.
+Trạng thái của trình phân giải hostname DNS: Hoàn tất.
 
 .. _class_IP_constant_RESOLVER_STATUS_ERROR:
 
@@ -99,7 +99,7 @@ DNS hostname resolver status: Done.
 
 :ref:`ResolverStatus<enum_IP_ResolverStatus>` **RESOLVER_STATUS_ERROR** = ``3``
 
-DNS hostname resolver status: Error.
+Trạng thái của trình phân giải hostname DNS: Lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -109,7 +109,7 @@ DNS hostname resolver status: Error.
 
 .. rst-class:: classref-enumeration
 
-enum **Type**: :ref:`🔗<enum_IP_Type>`
+enum **Type**: :ref:`🔗 <enum_IP_Type>`
 
 .. _class_IP_constant_TYPE_NONE:
 
@@ -117,7 +117,7 @@ enum **Type**: :ref:`🔗<enum_IP_Type>`
 
 :ref:`Type<enum_IP_Type>` **TYPE_NONE** = ``0``
 
-Address type: None.
+Kiểu địa chỉ: None.
 
 .. _class_IP_constant_TYPE_IPV4:
 
@@ -125,7 +125,7 @@ Address type: None.
 
 :ref:`Type<enum_IP_Type>` **TYPE_IPV4** = ``1``
 
-Address type: Internet protocol version 4 (IPv4).
+Kiểu địa chỉ: giao thức Internet phiên bản 4 (IPv4).
 
 .. _class_IP_constant_TYPE_IPV6:
 
@@ -133,7 +133,7 @@ Address type: Internet protocol version 4 (IPv4).
 
 :ref:`Type<enum_IP_Type>` **TYPE_IPV6** = ``2``
 
-Address type: Internet protocol version 6 (IPv6).
+Kiểu địa chỉ: giao thức Internet phiên bản 6 (IPv6).
 
 .. _class_IP_constant_TYPE_ANY:
 
@@ -141,7 +141,7 @@ Address type: Internet protocol version 6 (IPv6).
 
 :ref:`Type<enum_IP_Type>` **TYPE_ANY** = ``3``
 
-Address type: Any.
+Kiểu địa chỉ: Any.
 
 .. rst-class:: classref-section-separator
 
@@ -149,8 +149,8 @@ Address type: Any.
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_IP_constant_RESOLVER_MAX_QUERIES:
 
@@ -158,7 +158,7 @@ Constants
 
 **RESOLVER_MAX_QUERIES** = ``256`` :ref:`🔗<class_IP_constant_RESOLVER_MAX_QUERIES>`
 
-Maximum number of concurrent DNS resolver queries allowed, :ref:`RESOLVER_INVALID_ID<class_IP_constant_RESOLVER_INVALID_ID>` is returned if exceeded.
+Số lượng truy vấn DNS resolver đồng thời tối đa được phép; :ref:`RESOLVER_INVALID_ID<class_IP_constant_RESOLVER_INVALID_ID>` được trả về nếu vượt quá giới hạn.
 
 .. _class_IP_constant_RESOLVER_INVALID_ID:
 
@@ -166,7 +166,7 @@ Maximum number of concurrent DNS resolver queries allowed, :ref:`RESOLVER_INVALI
 
 **RESOLVER_INVALID_ID** = ``-1`` :ref:`🔗<class_IP_constant_RESOLVER_INVALID_ID>`
 
-Invalid ID constant. Returned if :ref:`RESOLVER_MAX_QUERIES<class_IP_constant_RESOLVER_MAX_QUERIES>` is exceeded.
+Hằng số ID không hợp lệ. Được trả về nếu vượt quá :ref:`RESOLVER_MAX_QUERIES<class_IP_constant_RESOLVER_MAX_QUERIES>`.
 
 .. rst-class:: classref-section-separator
 
@@ -174,8 +174,8 @@ Invalid ID constant. Returned if :ref:`RESOLVER_MAX_QUERIES<class_IP_constant_RE
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_IP_method_clear_cache:
 
@@ -183,7 +183,7 @@ Method Descriptions
 
 |void| **clear_cache**\ (\ hostname\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_IP_method_clear_cache>`
 
-Removes all of a ``hostname``'s cached references. If no ``hostname`` is given, all cached IP addresses are removed.
+Xóa tất cả các tham chiếu đã lưu trong cache của ``hostname``. Nếu không cung cấp ``hostname``, tất cả địa chỉ IP đã lưu trong cache sẽ bị xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Removes all of a ``hostname``'s cached references. If no ``hostname`` is given, 
 
 |void| **erase_resolve_item**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_IP_method_erase_resolve_item>`
 
-Removes a given item ``id`` from the queue. This should be used to free a queue after it has completed to enable more queries to happen.
+Xóa mục ``id`` đã cho khỏi hàng đợi. Bạn nên sử dụng cách này để giải phóng hàng đợi sau khi hàng đợi hoàn tất, nhằm cho phép thực hiện thêm truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -207,7 +207,7 @@ Removes a given item ``id`` from the queue. This should be used to free a queue 
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_local_addresses**\ (\ ) |const| :ref:`🔗<class_IP_method_get_local_addresses>`
 
-Returns all the user's current IPv4 and IPv6 addresses as an array.
+Trả về tất cả địa chỉ IPv4 và IPv6 hiện tại của người dùng dưới dạng một mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -219,9 +219,9 @@ Returns all the user's current IPv4 and IPv6 addresses as an array.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_local_interfaces**\ (\ ) |const| :ref:`🔗<class_IP_method_get_local_interfaces>`
 
-Returns all network adapters as an array.
+Trả về tất cả bộ điều hợp mạng dưới dạng một mảng.
 
-Each adapter is a dictionary of the form:
+Mỗi bộ điều hợp là một dictionary có dạng:
 
 ::
 
@@ -242,7 +242,7 @@ Each adapter is a dictionary of the form:
 
 :ref:`String<class_String>` **get_resolve_item_address**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IP_method_get_resolve_item_address>`
 
-Returns a queued hostname's IP address, given its queue ``id``. Returns an empty string on error or if resolution hasn't happened yet (see :ref:`get_resolve_item_status()<class_IP_method_get_resolve_item_status>`).
+Trả về địa chỉ IP của hostname đang chờ xử lý, với ``id`` của hàng đợi đó. Trả về chuỗi rỗng nếu có lỗi hoặc nếu quá trình phân giải chưa diễn ra (xem :ref:`get_resolve_item_status()<class_IP_method_get_resolve_item_status>`).
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ Returns a queued hostname's IP address, given its queue ``id``. Returns an empty
 
 :ref:`Array<class_Array>` **get_resolve_item_addresses**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IP_method_get_resolve_item_addresses>`
 
-Returns resolved addresses, or an empty array if an error happened or resolution didn't happen yet (see :ref:`get_resolve_item_status()<class_IP_method_get_resolve_item_status>`).
+Trả về các địa chỉ đã được phân giải hoặc một mảng rỗng nếu xảy ra lỗi hoặc quá trình phân giải chưa diễn ra (xem :ref:`get_resolve_item_status()<class_IP_method_get_resolve_item_status>`).
 
 .. rst-class:: classref-item-separator
 
@@ -266,7 +266,7 @@ Returns resolved addresses, or an empty array if an error happened or resolution
 
 :ref:`ResolverStatus<enum_IP_ResolverStatus>` **get_resolve_item_status**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IP_method_get_resolve_item_status>`
 
-Returns a queued hostname's status as a :ref:`ResolverStatus<enum_IP_ResolverStatus>` constant, given its queue ``id``.
+Trả về trạng thái của hostname đang chờ xử lý dưới dạng hằng số :ref:`ResolverStatus <enum_IP_ResolverStatus>`, với ``id`` của hàng đợi đó.
 
 .. rst-class:: classref-item-separator
 
@@ -278,7 +278,7 @@ Returns a queued hostname's status as a :ref:`ResolverStatus<enum_IP_ResolverSta
 
 :ref:`String<class_String>` **resolve_hostname**\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type<enum_IP_Type>` = 3\ ) :ref:`🔗<class_IP_method_resolve_hostname>`
 
-Returns a given hostname's IPv4 or IPv6 address when resolved (blocking-type method). The address type returned depends on the :ref:`Type<enum_IP_Type>` constant given as ``ip_type``.
+Trả về địa chỉ IPv4 hoặc IPv6 của hostname được cung cấp khi đã phân giải (phương thức kiểu blocking). Loại địa chỉ được trả về phụ thuộc vào hằng số :ref:`Type <enum_IP_Type>` được cung cấp dưới dạng ``ip_type``.
 
 .. rst-class:: classref-item-separator
 
@@ -290,7 +290,7 @@ Returns a given hostname's IPv4 or IPv6 address when resolved (blocking-type met
 
 :ref:`PackedStringArray<class_PackedStringArray>` **resolve_hostname_addresses**\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type<enum_IP_Type>` = 3\ ) :ref:`🔗<class_IP_method_resolve_hostname_addresses>`
 
-Resolves a given hostname in a blocking way. Addresses are returned as an :ref:`Array<class_Array>` of IPv4 or IPv6 addresses depending on ``ip_type``.
+Phân giải hostname được cung cấp theo cách blocking. Các địa chỉ được trả về dưới dạng :ref:`Array<class_Array>` gồm địa chỉ IPv4 hoặc IPv6, tùy thuộc vào ``ip_type``.
 
 .. rst-class:: classref-item-separator
 
@@ -302,14 +302,14 @@ Resolves a given hostname in a blocking way. Addresses are returned as an :ref:`
 
 :ref:`int<class_int>` **resolve_hostname_queue_item**\ (\ host\: :ref:`String<class_String>`, ip_type\: :ref:`Type<enum_IP_Type>` = 3\ ) :ref:`🔗<class_IP_method_resolve_hostname_queue_item>`
 
-Creates a queue item to resolve a hostname to an IPv4 or IPv6 address depending on the :ref:`Type<enum_IP_Type>` constant given as ``ip_type``. Returns the queue ID if successful, or :ref:`RESOLVER_INVALID_ID<class_IP_constant_RESOLVER_INVALID_ID>` on error.
+Tạo một mục trong hàng đợi để phân giải hostname thành địa chỉ IPv4 hoặc IPv6, tùy thuộc vào hằng số :ref:`Type <enum_IP_Type>` được cung cấp dưới dạng ``ip_type``. Trả về ID của hàng đợi nếu thành công hoặc :ref:`RESOLVER_INVALID_ID<class_IP_constant_RESOLVER_INVALID_ID>` nếu có lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

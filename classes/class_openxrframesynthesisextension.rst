@@ -10,20 +10,20 @@
 OpenXRFrameSynthesisExtension
 =============================
 
-**Inherits:** :ref:`OpenXRExtensionWrapper<class_OpenXRExtensionWrapper>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRExtensionWrapper<class_OpenXRExtensionWrapper>` **<** :ref:`Object<class_Object>`
 
-The OpenXR Frame synthesis extension allows for advanced reprojection at low(er) framerates.
+Tiện ích mở rộng OpenXR Frame synthesis cho phép thực hiện reprojection nâng cao ở tốc độ khung hình thấp hơn.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class implements the `OpenXR Frame synthesis extension <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_frame_synthesis>`__. When enabled in the project settings and supported by the XR runtime in use, frame synthesis uses advanced reprojection techniques to inject additional frames so that your XR experience hits the full frame rate of the device.
+Lớp này triển khai `OpenXR Frame synthesis extension <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_frame_synthesis>`__. Khi được bật trong phần cài đặt dự án và được XR runtime đang sử dụng hỗ trợ, frame synthesis sử dụng các kỹ thuật reprojection nâng cao để chèn thêm các khung hình, nhờ đó trải nghiệm XR của bạn đạt tốc độ khung hình đầy đủ của thiết bị.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -37,8 +37,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRFrameSynthesisExtension_property_enabled:
 
@@ -69,7 +69,7 @@ Property Descriptions
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-Enable frame synthesis. When ``true`` motion vector and depth data is provided to the XR runtime.
+Bật tính năng tổng hợp khung hình. Khi ``true`` dữ liệu vector chuyển động và độ sâu được cung cấp cho XR runtime.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ Enable frame synthesis. When ``true`` motion vector and depth data is provided t
 - |void| **set_relax_frame_interval**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_relax_frame_interval**\ (\ )
 
-If ``true`` this informs the XR runtime we will be providing frames at a greatly reduced rate. Enable this when you expect your application to run at low framerates and wish to inject multiple reprojected frames.
+Nếu ``true`` điều này cho XR runtime biết rằng chúng ta sẽ cung cấp các khung hình với tốc độ thấp hơn đáng kể. Hãy bật tùy chọn này khi bạn dự kiến ứng dụng sẽ chạy ở tốc độ khung hình thấp và muốn chèn nhiều khung hình được tái chiếu.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ If ``true`` this informs the XR runtime we will be providing frames at a greatly
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_OpenXRFrameSynthesisExtension_method_is_available:
 
@@ -103,7 +103,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_available**\ (\ ) |const| :ref:`🔗<class_OpenXRFrameSynthesisExtension_method_is_available>`
 
-Returns ``true`` if frame synthesis is enabled in the project settings and the current XR runtime supports frame synthesis. The value returned will only be valid once OpenXR has been initialized.
+Trả về ``true`` nếu tính năng tổng hợp khung hình được bật trong cài đặt dự án và XR runtime hiện tại hỗ trợ tính năng tổng hợp khung hình. Giá trị trả về chỉ hợp lệ sau khi OpenXR đã được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -115,14 +115,14 @@ Returns ``true`` if frame synthesis is enabled in the project settings and the c
 
 |void| **skip_next_frame**\ (\ ) :ref:`🔗<class_OpenXRFrameSynthesisExtension_method_skip_next_frame>`
 
-Queues the next frame to be skipped when supplying motion vector and depth data. Call this after teleporting your player or a similar action has moved the player to prevent incorrect reprojection results due to this movement.
+Đưa khung hình tiếp theo vào hàng đợi để bỏ qua khi cung cấp dữ liệu vector chuyển động và độ sâu. Gọi phương thức này sau khi dịch chuyển player hoặc thực hiện hành động tương tự khiến player di chuyển, nhằm ngăn kết quả tái chiếu không chính xác do chuyển động này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

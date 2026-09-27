@@ -10,75 +10,75 @@
 OpenXRCompositionLayer
 ======================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`OpenXRCompositionLayerCylinder<class_OpenXRCompositionLayerCylinder>`, :ref:`OpenXRCompositionLayerEquirect<class_OpenXRCompositionLayerEquirect>`, :ref:`OpenXRCompositionLayerQuad<class_OpenXRCompositionLayerQuad>`
+**Được kế thừa bởi:** :ref:`OpenXRCompositionLayerCylinder<class_OpenXRCompositionLayerCylinder>`, :ref:`OpenXRCompositionLayerEquirect<class_OpenXRCompositionLayerEquirect>`, :ref:`OpenXRCompositionLayerQuad<class_OpenXRCompositionLayerQuad>`
 
-The parent class of all OpenXR composition layer nodes.
+Lớp cha của tất cả các node lớp kết hợp OpenXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Composition layers allow 2D viewports to be displayed inside of the headset by the XR compositor through special projections that retain their quality. This allows for rendering clear text while keeping the layer at a native resolution.
+Các lớp kết hợp cho phép hiển thị viewport 2D bên trong headset thông qua XR compositor bằng các phép chiếu đặc biệt giúp duy trì chất lượng. Điều này cho phép render văn bản rõ nét trong khi vẫn giữ lớp ở độ phân giải gốc.
 
-\ **Note:** If the OpenXR runtime doesn't support the given composition layer type, a fallback mesh can be generated with a :ref:`ViewportTexture<class_ViewportTexture>`, in order to emulate the composition layer.
+\ **Lưu ý:** Nếu OpenXR runtime không hỗ trợ loại lớp kết hợp được cung cấp, một mesh dự phòng có thể được tạo bằng :ref:`ViewportTexture<class_ViewportTexture>`, để mô phỏng lớp kết hợp.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`alpha_blend<class_OpenXRCompositionLayer_property_alpha_blend>`                                         | ``false``                |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                                 | :ref:`android_surface_size<class_OpenXRCompositionLayer_property_android_surface_size>`                       | ``Vector2i(1024, 1024)`` |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`enable_hole_punch<class_OpenXRCompositionLayer_property_enable_hole_punch>`                             | ``false``                |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`EyeVisibility<enum_OpenXRCompositionLayer_EyeVisibility>` | :ref:`eye_visibility<class_OpenXRCompositionLayer_property_eye_visibility>`                                   | ``0``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`SubViewport<class_SubViewport>`                           | :ref:`layer_viewport<class_OpenXRCompositionLayer_property_layer_viewport>`                                   |                          |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`protected_content<class_OpenXRCompositionLayer_property_protected_content>`                             | ``false``                |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                           | :ref:`sort_order<class_OpenXRCompositionLayer_property_sort_order>`                                           | ``1``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_alpha_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_alpha_swizzle>`     | ``3``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_blue_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_blue_swizzle>`       | ``2``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Color<class_Color>`                                       | :ref:`swapchain_state_border_color<class_OpenXRCompositionLayer_property_swapchain_state_border_color>`       | ``Color(0, 0, 0, 0)``    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_green_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_green_swizzle>`     | ``1``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>`                   | :ref:`swapchain_state_horizontal_wrap<class_OpenXRCompositionLayer_property_swapchain_state_horizontal_wrap>` | ``0``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Filter<enum_OpenXRCompositionLayer_Filter>`               | :ref:`swapchain_state_mag_filter<class_OpenXRCompositionLayer_property_swapchain_state_mag_filter>`           | ``1``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`float<class_float>`                                       | :ref:`swapchain_state_max_anisotropy<class_OpenXRCompositionLayer_property_swapchain_state_max_anisotropy>`   | ``1.0``                  |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Filter<enum_OpenXRCompositionLayer_Filter>`               | :ref:`swapchain_state_min_filter<class_OpenXRCompositionLayer_property_swapchain_state_min_filter>`           | ``1``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`MipmapMode<enum_OpenXRCompositionLayer_MipmapMode>`       | :ref:`swapchain_state_mipmap_mode<class_OpenXRCompositionLayer_property_swapchain_state_mipmap_mode>`         | ``2``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_red_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_red_swizzle>`         | ``0``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>`                   | :ref:`swapchain_state_vertical_wrap<class_OpenXRCompositionLayer_property_swapchain_state_vertical_wrap>`     | ``0``                    |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>`                         | ``false``                |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`alpha_blend<class_OpenXRCompositionLayer_property_alpha_blend>`                                         | ``false``                |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Vector2i<class_Vector2i>`                                  | :ref:`android_surface_size<class_OpenXRCompositionLayer_property_android_surface_size>`                       | ``Vector2i(1024, 1024)`` |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`enable_hole_punch<class_OpenXRCompositionLayer_property_enable_hole_punch>`                             | ``false``                |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`EyeVisibility <enum_OpenXRCompositionLayer_EyeVisibility>` | :ref:`eye_visibility<class_OpenXRCompositionLayer_property_eye_visibility>`                                   | ``0``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`SubViewport<class_SubViewport>`                            | :ref:`layer_viewport<class_OpenXRCompositionLayer_property_layer_viewport>`                                   |                          |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`protected_content<class_OpenXRCompositionLayer_property_protected_content>`                             | ``false``                |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`sort_order<class_OpenXRCompositionLayer_property_sort_order>`                                           | ``1``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Swizzle <enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_alpha_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_alpha_swizzle>`     | ``3``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Swizzle <enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_blue_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_blue_swizzle>`       | ``2``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Color<class_Color>`                                        | :ref:`swapchain_state_border_color<class_OpenXRCompositionLayer_property_swapchain_state_border_color>`       | ``Color(0, 0, 0, 0)``    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Swizzle <enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_green_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_green_swizzle>`     | ``1``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Wrap <enum_OpenXRCompositionLayer_Wrap>`                   | :ref:`swapchain_state_horizontal_wrap<class_OpenXRCompositionLayer_property_swapchain_state_horizontal_wrap>` | ``0``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Filter <enum_OpenXRCompositionLayer_Filter>`               | :ref:`swapchain_state_mag_filter<class_OpenXRCompositionLayer_property_swapchain_state_mag_filter>`           | ``1``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`swapchain_state_max_anisotropy<class_OpenXRCompositionLayer_property_swapchain_state_max_anisotropy>`   | ``1.0``                  |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Filter <enum_OpenXRCompositionLayer_Filter>`               | :ref:`swapchain_state_min_filter<class_OpenXRCompositionLayer_property_swapchain_state_min_filter>`           | ``1``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`MipmapMode <enum_OpenXRCompositionLayer_MipmapMode>`       | :ref:`swapchain_state_mipmap_mode<class_OpenXRCompositionLayer_property_swapchain_state_mipmap_mode>`         | ``2``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Swizzle <enum_OpenXRCompositionLayer_Swizzle>`             | :ref:`swapchain_state_red_swizzle<class_OpenXRCompositionLayer_property_swapchain_state_red_swizzle>`         | ``0``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Wrap <enum_OpenXRCompositionLayer_Wrap>`                   | :ref:`swapchain_state_vertical_wrap<class_OpenXRCompositionLayer_property_swapchain_state_vertical_wrap>`     | ``0``                    |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>`                         | ``false``                |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+--------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -97,14 +97,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OpenXRCompositionLayer_Filter:
 
 .. rst-class:: classref-enumeration
 
-enum **Filter**: :ref:`🔗<enum_OpenXRCompositionLayer_Filter>`
+enum **Filter**: :ref:`🔗 <enum_OpenXRCompositionLayer_Filter>`
 
 .. _class_OpenXRCompositionLayer_constant_FILTER_NEAREST:
 
@@ -112,7 +112,7 @@ enum **Filter**: :ref:`🔗<enum_OpenXRCompositionLayer_Filter>`
 
 :ref:`Filter<enum_OpenXRCompositionLayer_Filter>` **FILTER_NEAREST** = ``0``
 
-Perform nearest-neighbor filtering when sampling the texture.
+Thực hiện lọc nearest-neighbor khi lấy mẫu texture.
 
 .. _class_OpenXRCompositionLayer_constant_FILTER_LINEAR:
 
@@ -120,7 +120,7 @@ Perform nearest-neighbor filtering when sampling the texture.
 
 :ref:`Filter<enum_OpenXRCompositionLayer_Filter>` **FILTER_LINEAR** = ``1``
 
-Perform linear filtering when sampling the texture.
+Thực hiện lọc tuyến tính khi lấy mẫu texture.
 
 .. _class_OpenXRCompositionLayer_constant_FILTER_CUBIC:
 
@@ -128,7 +128,7 @@ Perform linear filtering when sampling the texture.
 
 :ref:`Filter<enum_OpenXRCompositionLayer_Filter>` **FILTER_CUBIC** = ``2``
 
-Perform cubic filtering when sampling the texture.
+Thực hiện lọc cubic khi lấy mẫu texture.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Perform cubic filtering when sampling the texture.
 
 .. rst-class:: classref-enumeration
 
-enum **MipmapMode**: :ref:`🔗<enum_OpenXRCompositionLayer_MipmapMode>`
+enum **MipmapMode**: :ref:`🔗 <enum_OpenXRCompositionLayer_MipmapMode>`
 
 .. _class_OpenXRCompositionLayer_constant_MIPMAP_MODE_DISABLED:
 
@@ -146,9 +146,9 @@ enum **MipmapMode**: :ref:`🔗<enum_OpenXRCompositionLayer_MipmapMode>`
 
 :ref:`MipmapMode<enum_OpenXRCompositionLayer_MipmapMode>` **MIPMAP_MODE_DISABLED** = ``0``
 
-Disable mipmapping.
+Tắt mipmapping.
 
-\ **Note:** Mipmapping can only be disabled in the Compatibility renderer.
+\ **Lưu ý:** Chỉ có thể tắt mipmapping trong Compatibility renderer.
 
 .. _class_OpenXRCompositionLayer_constant_MIPMAP_MODE_NEAREST:
 
@@ -156,7 +156,7 @@ Disable mipmapping.
 
 :ref:`MipmapMode<enum_OpenXRCompositionLayer_MipmapMode>` **MIPMAP_MODE_NEAREST** = ``1``
 
-Use the mipmap of the nearest resolution.
+Sử dụng mipmap ở độ phân giải gần nhất.
 
 .. _class_OpenXRCompositionLayer_constant_MIPMAP_MODE_LINEAR:
 
@@ -164,7 +164,7 @@ Use the mipmap of the nearest resolution.
 
 :ref:`MipmapMode<enum_OpenXRCompositionLayer_MipmapMode>` **MIPMAP_MODE_LINEAR** = ``2``
 
-Use linear interpolation of the two mipmaps of the nearest resolution.
+Sử dụng phép nội suy tuyến tính của hai mipmap ở độ phân giải gần nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ Use linear interpolation of the two mipmaps of the nearest resolution.
 
 .. rst-class:: classref-enumeration
 
-enum **Wrap**: :ref:`🔗<enum_OpenXRCompositionLayer_Wrap>`
+enum **Wrap**: :ref:`🔗 <enum_OpenXRCompositionLayer_Wrap>`
 
 .. _class_OpenXRCompositionLayer_constant_WRAP_CLAMP_TO_BORDER:
 
@@ -182,7 +182,7 @@ enum **Wrap**: :ref:`🔗<enum_OpenXRCompositionLayer_Wrap>`
 
 :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>` **WRAP_CLAMP_TO_BORDER** = ``0``
 
-Clamp the texture to its specified border color.
+Giới hạn texture ở màu viền được chỉ định.
 
 .. _class_OpenXRCompositionLayer_constant_WRAP_CLAMP_TO_EDGE:
 
@@ -190,7 +190,7 @@ Clamp the texture to its specified border color.
 
 :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>` **WRAP_CLAMP_TO_EDGE** = ``1``
 
-Clamp the texture to its edge color.
+Giới hạn texture ở màu cạnh của nó.
 
 .. _class_OpenXRCompositionLayer_constant_WRAP_REPEAT:
 
@@ -198,7 +198,7 @@ Clamp the texture to its edge color.
 
 :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>` **WRAP_REPEAT** = ``2``
 
-Repeat the texture infinitely.
+Lặp texture vô hạn.
 
 .. _class_OpenXRCompositionLayer_constant_WRAP_MIRRORED_REPEAT:
 
@@ -206,7 +206,7 @@ Repeat the texture infinitely.
 
 :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>` **WRAP_MIRRORED_REPEAT** = ``3``
 
-Repeat the texture infinitely, mirroring it on each repeat.
+Lặp texture vô hạn và phản chiếu texture ở mỗi lần lặp.
 
 .. _class_OpenXRCompositionLayer_constant_WRAP_MIRROR_CLAMP_TO_EDGE:
 
@@ -214,9 +214,9 @@ Repeat the texture infinitely, mirroring it on each repeat.
 
 :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>` **WRAP_MIRROR_CLAMP_TO_EDGE** = ``4``
 
-Mirror the texture once and then clamp the texture to its edge color.
+Phản chiếu texture một lần, sau đó giới hạn texture ở màu tại cạnh của nó.
 
-\ **Note:** This wrap mode is not available in the Compatibility renderer.
+\ **Lưu ý:** Chế độ bọc này không khả dụng trong Compatibility renderer.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ Mirror the texture once and then clamp the texture to its edge color.
 
 .. rst-class:: classref-enumeration
 
-enum **Swizzle**: :ref:`🔗<enum_OpenXRCompositionLayer_Swizzle>`
+enum **Swizzle**: :ref:`🔗 <enum_OpenXRCompositionLayer_Swizzle>`
 
 .. _class_OpenXRCompositionLayer_constant_SWIZZLE_RED:
 
@@ -234,7 +234,7 @@ enum **Swizzle**: :ref:`🔗<enum_OpenXRCompositionLayer_Swizzle>`
 
 :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **SWIZZLE_RED** = ``0``
 
-Maps a color channel to the value of the red channel.
+Ánh xạ một kênh màu tới giá trị của kênh đỏ.
 
 .. _class_OpenXRCompositionLayer_constant_SWIZZLE_GREEN:
 
@@ -242,7 +242,7 @@ Maps a color channel to the value of the red channel.
 
 :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **SWIZZLE_GREEN** = ``1``
 
-Maps a color channel to the value of the green channel.
+Ánh xạ một kênh màu tới giá trị của kênh xanh lá.
 
 .. _class_OpenXRCompositionLayer_constant_SWIZZLE_BLUE:
 
@@ -250,7 +250,7 @@ Maps a color channel to the value of the green channel.
 
 :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **SWIZZLE_BLUE** = ``2``
 
-Maps a color channel to the value of the blue channel.
+Ánh xạ một kênh màu tới giá trị của kênh xanh dương.
 
 .. _class_OpenXRCompositionLayer_constant_SWIZZLE_ALPHA:
 
@@ -258,7 +258,7 @@ Maps a color channel to the value of the blue channel.
 
 :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **SWIZZLE_ALPHA** = ``3``
 
-Maps a color channel to the value of the alpha channel.
+Ánh xạ một kênh màu tới giá trị của kênh alpha.
 
 .. _class_OpenXRCompositionLayer_constant_SWIZZLE_ZERO:
 
@@ -266,7 +266,7 @@ Maps a color channel to the value of the alpha channel.
 
 :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **SWIZZLE_ZERO** = ``4``
 
-Maps a color channel to the value of zero.
+Ánh xạ một kênh màu đến giá trị 0.
 
 .. _class_OpenXRCompositionLayer_constant_SWIZZLE_ONE:
 
@@ -274,7 +274,7 @@ Maps a color channel to the value of zero.
 
 :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **SWIZZLE_ONE** = ``5``
 
-Maps a color channel to the value of one.
+Ánh xạ một kênh màu đến giá trị 1.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ Maps a color channel to the value of one.
 
 .. rst-class:: classref-enumeration
 
-enum **EyeVisibility**: :ref:`🔗<enum_OpenXRCompositionLayer_EyeVisibility>`
+enum **EyeVisibility**: :ref:`🔗 <enum_OpenXRCompositionLayer_EyeVisibility>`
 
 .. _class_OpenXRCompositionLayer_constant_EYE_VISIBILITY_BOTH:
 
@@ -292,7 +292,7 @@ enum **EyeVisibility**: :ref:`🔗<enum_OpenXRCompositionLayer_EyeVisibility>`
 
 :ref:`EyeVisibility<enum_OpenXRCompositionLayer_EyeVisibility>` **EYE_VISIBILITY_BOTH** = ``0``
 
-The layer is visible to both the left and right eyes.
+Lớp hiển thị với cả mắt trái và mắt phải.
 
 .. _class_OpenXRCompositionLayer_constant_EYE_VISIBILITY_LEFT:
 
@@ -300,7 +300,7 @@ The layer is visible to both the left and right eyes.
 
 :ref:`EyeVisibility<enum_OpenXRCompositionLayer_EyeVisibility>` **EYE_VISIBILITY_LEFT** = ``1``
 
-The layer is visible only to the left eye.
+Lớp chỉ hiển thị với mắt trái.
 
 .. _class_OpenXRCompositionLayer_constant_EYE_VISIBILITY_RIGHT:
 
@@ -308,7 +308,7 @@ The layer is visible only to the left eye.
 
 :ref:`EyeVisibility<enum_OpenXRCompositionLayer_EyeVisibility>` **EYE_VISIBILITY_RIGHT** = ``2``
 
-The layer is visible only to the right eye.
+Lớp chỉ hiển thị với mắt phải.
 
 .. rst-class:: classref-section-separator
 
@@ -316,8 +316,8 @@ The layer is visible only to the right eye.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRCompositionLayer_property_alpha_blend:
 
@@ -330,9 +330,9 @@ Property Descriptions
 - |void| **set_alpha_blend**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_alpha_blend**\ (\ )
 
-Enables the blending the layer using its alpha channel.
+Cho phép trộn lớp bằng kênh alpha của lớp.
 
-Can be combined with :ref:`Viewport.transparent_bg<class_Viewport_property_transparent_bg>` to give the layer a transparent background.
+Có thể kết hợp với :ref:`Viewport.transparent_bg<class_Viewport_property_transparent_bg>` để tạo cho lớp một nền trong suốt.
 
 .. rst-class:: classref-item-separator
 
@@ -349,7 +349,7 @@ Can be combined with :ref:`Viewport.transparent_bg<class_Viewport_property_trans
 - |void| **set_android_surface_size**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_android_surface_size**\ (\ )
 
-The size of the Android surface to create if :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>` is enabled.
+Kích thước của Android surface cần tạo nếu :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>` được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -366,9 +366,9 @@ The size of the Android surface to create if :ref:`use_android_surface<class_Ope
 - |void| **set_enable_hole_punch**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_hole_punch**\ (\ )
 
-Enables a technique called "hole punching", which allows putting the composition layer behind the main projection layer (i.e. setting :ref:`sort_order<class_OpenXRCompositionLayer_property_sort_order>` to a negative value) while "punching a hole" through everything rendered by Godot so that the layer is still visible.
+Bật một kỹ thuật gọi là "hole punching", cho phép đặt lớp composition phía sau lớp chiếu chính (tức là đặt :ref:`sort_order<class_OpenXRCompositionLayer_property_sort_order>` thành một giá trị âm) đồng thời "đục một lỗ" xuyên qua mọi nội dung do Godot render để lớp này vẫn hiển thị.
 
-This can be used to create the illusion that the composition layer exists in the same 3D space as everything rendered by Godot, allowing objects to appear to pass both behind or in front of the composition layer.
+Có thể dùng cách này để tạo ảo giác rằng lớp composition tồn tại trong cùng không gian 3D với mọi nội dung do Godot render, cho phép các đối tượng xuất hiện như thể đi qua phía sau hoặc phía trước lớp composition.
 
 .. rst-class:: classref-item-separator
 
@@ -385,9 +385,9 @@ This can be used to create the illusion that the composition layer exists in the
 - |void| **set_eye_visibility**\ (\ value\: :ref:`EyeVisibility<enum_OpenXRCompositionLayer_EyeVisibility>`\ )
 - :ref:`EyeVisibility<enum_OpenXRCompositionLayer_EyeVisibility>` **get_eye_visibility**\ (\ )
 
-The eye(s) the composition layer is visible to.
+Mắt mà lớp composition hiển thị tới.
 
-\ **Note:** Not all composition layer types or runtimes support restricting visibility to a single eye.
+\ **Lưu ý:** Không phải tất cả các loại lớp composition hoặc runtime đều hỗ trợ giới hạn khả năng hiển thị ở một mắt duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -397,14 +397,14 @@ The eye(s) the composition layer is visible to.
 
 .. rst-class:: classref-property
 
-:ref:`SubViewport<class_SubViewport>` **layer_viewport** :ref:`🔗<class_OpenXRCompositionLayer_property_layer_viewport>`
+:ref:`SubViewport<class_SubViewport>` **layer_viewport** :ref:`🔗 <class_OpenXRCompositionLayer_property_layer_viewport>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_layer_viewport**\ (\ value\: :ref:`SubViewport<class_SubViewport>`\ )
 - :ref:`SubViewport<class_SubViewport>` **get_layer_viewport**\ (\ )
 
-The :ref:`SubViewport<class_SubViewport>` to render on the composition layer.
+:ref:`SubViewport<class_SubViewport>` để render trên composition layer.
 
 .. rst-class:: classref-item-separator
 
@@ -421,9 +421,9 @@ The :ref:`SubViewport<class_SubViewport>` to render on the composition layer.
 - |void| **set_protected_content**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_protected_content**\ (\ )
 
-If enabled, the OpenXR swapchain will be created with the ``XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT`` flag, which will protect its contents from CPU access.
+Nếu được bật, OpenXR swapchain sẽ được tạo với cờ ``XR_SWAPCHAIN_CREATE_PROTECTED_CONTENT_BIT``, cờ này sẽ bảo vệ nội dung khỏi quyền truy cập của CPU.
 
-When used with an Android Surface, this may allow DRM content to be presented, and will only take effect when the Surface is first created; later changes to this property will have no effect.
+Khi được sử dụng với Android Surface, điều này có thể cho phép trình bày nội dung DRM và chỉ có hiệu lực khi Surface được tạo lần đầu; các thay đổi sau đó đối với thuộc tính này sẽ không có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -440,9 +440,9 @@ When used with an Android Surface, this may allow DRM content to be presented, a
 - |void| **set_sort_order**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sort_order**\ (\ )
 
-The sort order for this composition layer. Higher numbers will be shown in front of lower numbers.
+Thứ tự sắp xếp của composition layer này. Các số cao hơn sẽ được hiển thị phía trước các số thấp hơn.
 
-\ **Note:** This will have no effect if a fallback mesh is being used.
+\ **Lưu ý:** Điều này sẽ không có hiệu lực nếu đang sử dụng fallback mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -459,9 +459,9 @@ The sort order for this composition layer. Higher numbers will be shown in front
 - |void| **set_alpha_swizzle**\ (\ value\: :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`\ )
 - :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **get_alpha_swizzle**\ (\ )
 
-The swizzle value for the alpha channel of the swapchain state.
+Giá trị swizzle cho kênh alpha của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -478,9 +478,9 @@ The swizzle value for the alpha channel of the swapchain state.
 - |void| **set_blue_swizzle**\ (\ value\: :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`\ )
 - :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **get_blue_swizzle**\ (\ )
 
-The swizzle value for the blue channel of the swapchain state.
+Giá trị hoán đổi kênh blue của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -497,9 +497,9 @@ The swizzle value for the blue channel of the swapchain state.
 - |void| **set_border_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_border_color**\ (\ )
 
-The border color of the swapchain state that is used when the wrap mode clamps to the border.
+Màu viền của trạng thái swapchain được sử dụng khi chế độ wrap giới hạn đến viền.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -516,9 +516,9 @@ The border color of the swapchain state that is used when the wrap mode clamps t
 - |void| **set_green_swizzle**\ (\ value\: :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`\ )
 - :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **get_green_swizzle**\ (\ )
 
-The swizzle value for the green channel of the swapchain state.
+Giá trị hoán đổi kênh green của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -535,9 +535,9 @@ The swizzle value for the green channel of the swapchain state.
 - |void| **set_horizontal_wrap**\ (\ value\: :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>`\ )
 - :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>` **get_horizontal_wrap**\ (\ )
 
-The horizontal wrap mode of the swapchain state.
+Chế độ bao theo chiều ngang của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -554,9 +554,9 @@ The horizontal wrap mode of the swapchain state.
 - |void| **set_mag_filter**\ (\ value\: :ref:`Filter<enum_OpenXRCompositionLayer_Filter>`\ )
 - :ref:`Filter<enum_OpenXRCompositionLayer_Filter>` **get_mag_filter**\ (\ )
 
-The magnification filter of the swapchain state.
+Bộ lọc phóng đại của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -573,9 +573,9 @@ The magnification filter of the swapchain state.
 - |void| **set_max_anisotropy**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max_anisotropy**\ (\ )
 
-The max anisotropy of the swapchain state.
+Độ dị hướng tối đa của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -592,9 +592,9 @@ The max anisotropy of the swapchain state.
 - |void| **set_min_filter**\ (\ value\: :ref:`Filter<enum_OpenXRCompositionLayer_Filter>`\ )
 - :ref:`Filter<enum_OpenXRCompositionLayer_Filter>` **get_min_filter**\ (\ )
 
-The minification filter of the swapchain state.
+Bộ lọc thu nhỏ của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -611,9 +611,9 @@ The minification filter of the swapchain state.
 - |void| **set_mipmap_mode**\ (\ value\: :ref:`MipmapMode<enum_OpenXRCompositionLayer_MipmapMode>`\ )
 - :ref:`MipmapMode<enum_OpenXRCompositionLayer_MipmapMode>` **get_mipmap_mode**\ (\ )
 
-The mipmap mode of the swapchain state.
+Chế độ mipmap của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -630,9 +630,9 @@ The mipmap mode of the swapchain state.
 - |void| **set_red_swizzle**\ (\ value\: :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>`\ )
 - :ref:`Swizzle<enum_OpenXRCompositionLayer_Swizzle>` **get_red_swizzle**\ (\ )
 
-The swizzle value for the red channel of the swapchain state.
+Giá trị hoán đổi kênh (swizzle) cho kênh màu đỏ của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -649,9 +649,9 @@ The swizzle value for the red channel of the swapchain state.
 - |void| **set_vertical_wrap**\ (\ value\: :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>`\ )
 - :ref:`Wrap<enum_OpenXRCompositionLayer_Wrap>` **get_vertical_wrap**\ (\ )
 
-The vertical wrap mode of the swapchain state.
+Chế độ lặp theo chiều dọc của trạng thái swapchain.
 
-\ **Note:** This property only has an effect on devices that support the OpenXR XR_FB_swapchain_update_state OpenGLES/Vulkan extensions.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực trên các thiết bị hỗ trợ các extension OpenGLES/Vulkan XR_FB_swapchain_update_state của OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -668,11 +668,11 @@ The vertical wrap mode of the swapchain state.
 - |void| **set_use_android_surface**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_android_surface**\ (\ )
 
-If enabled, an Android surface will be created (with the dimensions from :ref:`android_surface_size<class_OpenXRCompositionLayer_property_android_surface_size>`) which will provide the 2D content for the composition layer, rather than using :ref:`layer_viewport<class_OpenXRCompositionLayer_property_layer_viewport>`.
+Nếu được bật, một surface Android sẽ được tạo (với các kích thước từ :ref:`android_surface_size<class_OpenXRCompositionLayer_property_android_surface_size>`) để cung cấp nội dung 2D cho composition layer, thay vì sử dụng :ref:`layer_viewport<class_OpenXRCompositionLayer_property_layer_viewport>`.
 
-See :ref:`get_android_surface()<class_OpenXRCompositionLayer_method_get_android_surface>` for information about how to get the surface so that your application can draw to it.
+Xem :ref:`get_android_surface()<class_OpenXRCompositionLayer_method_get_android_surface>` để biết cách lấy surface để ứng dụng của bạn có thể vẽ lên đó.
 
-\ **Note:** This will only work in Android builds.
+\ **Lưu ý:** Điều này chỉ hoạt động trong các bản build Android.
 
 .. rst-class:: classref-section-separator
 
@@ -680,8 +680,8 @@ See :ref:`get_android_surface()<class_OpenXRCompositionLayer_method_get_android_
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRCompositionLayer_method_get_android_surface:
 
@@ -689,9 +689,9 @@ Method Descriptions
 
 :ref:`JavaObject<class_JavaObject>` **get_android_surface**\ (\ ) :ref:`🔗<class_OpenXRCompositionLayer_method_get_android_surface>`
 
-Returns a :ref:`JavaObject<class_JavaObject>` representing an ``android.view.Surface`` if :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>` is enabled and OpenXR has created the surface. Otherwise, this will return ``null``.
+Trả về một :ref:`JavaObject<class_JavaObject>` đại diện cho một ``android.view.Surface`` nếu :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>` được bật và OpenXR đã tạo surface. Nếu không, phương thức này sẽ trả về ``null``.
 
-\ **Note:** The surface can only be created during an active OpenXR session. So, if :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>` is enabled outside of an OpenXR session, it won't be created until a new session fully starts.
+\ **Lưu ý:** Surface chỉ có thể được tạo trong một phiên OpenXR đang hoạt động. Vì vậy, nếu :ref:`use_android_surface<class_OpenXRCompositionLayer_property_use_android_surface>` được bật bên ngoài một phiên OpenXR, surface sẽ chỉ được tạo khi một phiên mới khởi động hoàn toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -703,9 +703,9 @@ Returns a :ref:`JavaObject<class_JavaObject>` representing an ``android.view.Sur
 
 :ref:`Vector2<class_Vector2>` **intersects_ray**\ (\ origin\: :ref:`Vector3<class_Vector3>`, direction\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_OpenXRCompositionLayer_method_intersects_ray>`
 
-Returns UV coordinates where the given ray intersects with the composition layer. ``origin`` and ``direction`` must be in global space.
+Trả về các tọa độ UV tại nơi tia đã cho giao với composition layer. ``origin`` và ``direction`` phải ở global space.
 
-Returns ``Vector2(-1.0, -1.0)`` if the ray doesn't intersect.
+Trả về ``Vector2(-1.0, -1.0)`` nếu tia không giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -717,16 +717,16 @@ Returns ``Vector2(-1.0, -1.0)`` if the ray doesn't intersect.
 
 :ref:`bool<class_bool>` **is_natively_supported**\ (\ ) |const| :ref:`🔗<class_OpenXRCompositionLayer_method_is_natively_supported>`
 
-Returns ``true`` if the OpenXR runtime natively supports this composition layer type.
+Trả về ``true`` nếu runtime OpenXR hỗ trợ nguyên bản loại composition layer này.
 
-\ **Note:** This will only return an accurate result after the OpenXR session has started.
+\ **Lưu ý:** Kết quả trả về chỉ chính xác sau khi OpenXR session đã bắt đầu.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng override để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

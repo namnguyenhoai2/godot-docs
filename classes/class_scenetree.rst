@@ -10,24 +10,24 @@
 SceneTree
 =========
 
-**Inherits:** :ref:`MainLoop<class_MainLoop>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`MainLoop<class_MainLoop>` **<** :ref:`Object<class_Object>`
 
-Manages the game loop via a hierarchy of nodes.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-As one of the most important classes, the **SceneTree** manages the hierarchy of nodes in a scene, as well as scenes themselves. Nodes can be added, fetched and removed. The whole scene tree (and thus the current scene) can be paused. Scenes can be loaded, switched and reloaded.
-
-You can also use the **SceneTree** to organize your nodes into **groups**: every node can be added to as many groups as you want to create, e.g. an "enemy" group. You can then iterate these groups or even call methods and set properties on all the nodes belonging to any given group.
-
-\ **SceneTree** is the default :ref:`MainLoop<class_MainLoop>` implementation used by the engine, and is thus in charge of the game loop.
+Quản lý game loop thông qua hệ thống phân cấp các node.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Là một trong những class quan trọng nhất, **SceneTree** quản lý hệ thống phân cấp các node trong một scene, cũng như bản thân các scene. Có thể thêm, lấy và xóa các node. Toàn bộ scene tree (và do đó là scene hiện tại) có thể được tạm dừng. Có thể tải, chuyển đổi và tải lại các scene.
+
+Bạn cũng có thể sử dụng **SceneTree** để sắp xếp các node vào **groups**: mỗi node có thể được thêm vào bao nhiêu group tùy ý, chẳng hạn như group "enemy". Sau đó, bạn có thể lặp qua các group này hoặc thậm chí gọi các method và đặt các property trên tất cả node thuộc về một group bất kỳ.
+
+\ **SceneTree** là implementation :ref:`MainLoop<class_MainLoop>` mặc định được engine sử dụng, và do đó chịu trách nhiệm cho game loop.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`SceneTree <../tutorials/scripting/scene_tree>`
@@ -79,11 +79,11 @@ Methods
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                 | :ref:`call_group_flags<class_SceneTree_method_call_group_flags>`\ (\ flags\: :ref:`int<class_int>`, group\: :ref:`StringName<class_StringName>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                   |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                  | :ref:`change_scene_to_file<class_SceneTree_method_change_scene_to_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                                               |
+   | :ref:`Error <enum_@GlobalScope_Error>`                 | :ref:`change_scene_to_file<class_SceneTree_method_change_scene_to_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                                               |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                  | :ref:`change_scene_to_node<class_SceneTree_method_change_scene_to_node>`\ (\ node\: :ref:`Node<class_Node>`\ )                                                                                                                                                   |
+   | :ref:`Error <enum_@GlobalScope_Error>`                 | :ref:`change_scene_to_node<class_SceneTree_method_change_scene_to_node>`\ (\ node\: :ref:`Node<class_Node>`\ )                                                                                                                                                   |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                  | :ref:`change_scene_to_packed<class_SceneTree_method_change_scene_to_packed>`\ (\ packed_scene\: :ref:`PackedScene<class_PackedScene>`\ )                                                                                                                         |
+   | :ref:`Error <enum_@GlobalScope_Error>`                 | :ref:`change_scene_to_packed<class_SceneTree_method_change_scene_to_packed>`\ (\ packed_scene\: :ref:`PackedScene<class_PackedScene>`\ )                                                                                                                         |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`SceneTreeTimer<class_SceneTreeTimer>`            | :ref:`create_timer<class_SceneTree_method_create_timer>`\ (\ time_sec\: :ref:`float<class_float>`, process_always\: :ref:`bool<class_bool>` = true, process_in_physics\: :ref:`bool<class_bool>` = false, ignore_time_scale\: :ref:`bool<class_bool>` = false\ ) |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -117,7 +117,7 @@ Methods
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                 | :ref:`quit<class_SceneTree_method_quit>`\ (\ exit_code\: :ref:`int<class_int>` = 0\ )                                                                                                                                                                            |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                  | :ref:`reload_current_scene<class_SceneTree_method_reload_current_scene>`\ (\ )                                                                                                                                                                                   |
+   | :ref:`Error <enum_@GlobalScope_Error>`                 | :ref:`reload_current_scene<class_SceneTree_method_reload_current_scene>`\ (\ )                                                                                                                                                                                   |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                 | :ref:`set_group<class_SceneTree_method_set_group>`\ (\ group\: :ref:`StringName<class_StringName>`, property\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ )                                                                             |
    +--------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -143,7 +143,7 @@ Signals
 
 **node_added**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SceneTree_signal_node_added>`
 
-Emitted when the ``node`` enters this tree.
+Được phát ra khi ``node`` đi vào tree này.
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ Emitted when the ``node`` enters this tree.
 
 **node_configuration_warning_changed**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SceneTree_signal_node_configuration_warning_changed>`
 
-Emitted when the ``node``'s :ref:`Node.update_configuration_warnings()<class_Node_method_update_configuration_warnings>` is called. Only emitted in the editor.
+Được phát ra khi ``node``'s :ref:`Node.update_configuration_warnings()<class_Node_method_update_configuration_warnings>` được gọi. Chỉ được phát ra trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Emitted when the ``node``'s :ref:`Node.update_configuration_warnings()<class_Nod
 
 **node_removed**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SceneTree_signal_node_removed>`
 
-Emitted when the ``node`` exits this tree.
+Được phát ra khi ``node`` rời khỏi cây này.
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Emitted when the ``node`` exits this tree.
 
 **node_renamed**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SceneTree_signal_node_renamed>`
 
-Emitted when the ``node``'s :ref:`Node.name<class_Node_property_name>` is changed.
+Được phát ra khi ``node``'s :ref:`Node.name<class_Node_property_name>` được thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Emitted when the ``node``'s :ref:`Node.name<class_Node_property_name>` is change
 
 **physics_frame**\ (\ ) :ref:`🔗<class_SceneTree_signal_physics_frame>`
 
-Emitted immediately before :ref:`Node._physics_process()<class_Node_private_method__physics_process>` is called on every node in this tree.
+Được phát ra ngay trước khi :ref:`Node._physics_process()<class_Node_private_method__physics_process>` được gọi trên mọi node trong cây này.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Emitted immediately before :ref:`Node._physics_process()<class_Node_private_meth
 
 **process_frame**\ (\ ) :ref:`🔗<class_SceneTree_signal_process_frame>`
 
-Emitted immediately before :ref:`Node._process()<class_Node_private_method__process>` is called on every node in this tree.
+Được phát ra ngay trước khi :ref:`Node._process()<class_Node_private_method__process>` được gọi trên mọi node trong cây này.
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ Emitted immediately before :ref:`Node._process()<class_Node_private_method__proc
 
 **scene_changed**\ (\ ) :ref:`🔗<class_SceneTree_signal_scene_changed>`
 
-Emitted after the new scene is added to scene tree and initialized. Can be used to reliably access :ref:`current_scene<class_SceneTree_property_current_scene>` when changing scenes.
+Được phát ra ngay sau khi scene mới được thêm vào scene tree và khởi tạo. Có thể dùng để truy cập :ref:`current_scene<class_SceneTree_property_current_scene>` một cách đáng tin cậy khi chuyển scene.
 
 ::
 
@@ -234,7 +234,7 @@ Emitted after the new scene is added to scene tree and initialized. Can be used 
 
 **tree_changed**\ (\ ) :ref:`🔗<class_SceneTree_signal_tree_changed>`
 
-Emitted any time the tree's hierarchy changes (nodes being moved, renamed, etc.).
+Được phát ra mỗi khi hệ phân cấp của cây thay đổi (node được di chuyển, đổi tên, v.v.).
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ Emitted any time the tree's hierarchy changes (nodes being moved, renamed, etc.)
 
 **tree_process_mode_changed**\ (\ ) :ref:`🔗<class_SceneTree_signal_tree_process_mode_changed>`
 
-Emitted when the :ref:`Node.process_mode<class_Node_property_process_mode>` of any node inside the tree is changed. Only emitted in the editor, to update the visibility of disabled nodes.
+Được phát ra khi :ref:`Node.process_mode<class_Node_property_process_mode>` của bất kỳ node nào bên trong cây được thay đổi. Chỉ được phát ra trong editor để cập nhật khả năng hiển thị của các node bị vô hiệu hóa.
 
 .. rst-class:: classref-section-separator
 
@@ -254,14 +254,14 @@ Emitted when the :ref:`Node.process_mode<class_Node_property_process_mode>` of a
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các phép liệt kê
+----------------
 
 .. _enum_SceneTree_GroupCallFlags:
 
 .. rst-class:: classref-enumeration
 
-enum **GroupCallFlags**: :ref:`🔗<enum_SceneTree_GroupCallFlags>`
+enum **GroupCallFlags**: :ref:`🔗 <enum_SceneTree_GroupCallFlags>`
 
 .. _class_SceneTree_constant_GROUP_CALL_DEFAULT:
 
@@ -269,7 +269,7 @@ enum **GroupCallFlags**: :ref:`🔗<enum_SceneTree_GroupCallFlags>`
 
 :ref:`GroupCallFlags<enum_SceneTree_GroupCallFlags>` **GROUP_CALL_DEFAULT** = ``0``
 
-Call nodes within a group with no special behavior (default).
+Gọi các node trong một group mà không có hành vi đặc biệt (mặc định).
 
 .. _class_SceneTree_constant_GROUP_CALL_REVERSE:
 
@@ -277,7 +277,7 @@ Call nodes within a group with no special behavior (default).
 
 :ref:`GroupCallFlags<enum_SceneTree_GroupCallFlags>` **GROUP_CALL_REVERSE** = ``1``
 
-Call nodes within a group in reverse tree hierarchy order (all nested children are called before their respective parent nodes).
+Gọi các node trong một group theo thứ tự phân cấp ngược của cây (tất cả child lồng nhau được gọi trước node cha tương ứng).
 
 .. _class_SceneTree_constant_GROUP_CALL_DEFERRED:
 
@@ -285,7 +285,7 @@ Call nodes within a group in reverse tree hierarchy order (all nested children a
 
 :ref:`GroupCallFlags<enum_SceneTree_GroupCallFlags>` **GROUP_CALL_DEFERRED** = ``2``
 
-Call nodes within a group at the end of the current frame (can be either process or physics frame), similar to :ref:`Object.call_deferred()<class_Object_method_call_deferred>`.
+Gọi các node trong một group vào cuối frame hiện tại (có thể là process frame hoặc physics frame), tương tự như :ref:`Object.call_deferred()<class_Object_method_call_deferred>`.
 
 .. _class_SceneTree_constant_GROUP_CALL_UNIQUE:
 
@@ -293,9 +293,9 @@ Call nodes within a group at the end of the current frame (can be either process
 
 :ref:`GroupCallFlags<enum_SceneTree_GroupCallFlags>` **GROUP_CALL_UNIQUE** = ``4``
 
-Call nodes within a group only once, even if the call is executed many times in the same frame. Must be combined with :ref:`GROUP_CALL_DEFERRED<class_SceneTree_constant_GROUP_CALL_DEFERRED>` to work.
+Chỉ gọi các node trong một group một lần, ngay cả khi lệnh gọi được thực thi nhiều lần trong cùng một frame. Phải kết hợp với :ref:`GROUP_CALL_DEFERRED<class_SceneTree_constant_GROUP_CALL_DEFERRED>` để hoạt động.
 
-\ **Note:** Different arguments are not taken into account. Therefore, when the same call is executed with different arguments, only the first call will be performed.
+\ **Lưu ý:** Các đối số khác nhau không được xét đến. Vì vậy, khi cùng một lệnh gọi được thực thi với các đối số khác nhau, chỉ lệnh gọi đầu tiên được thực hiện.
 
 .. rst-class:: classref-section-separator
 
@@ -303,8 +303,8 @@ Call nodes within a group only once, even if the call is executed many times in 
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SceneTree_property_auto_accept_quit:
 
@@ -317,9 +317,9 @@ Property Descriptions
 - |void| **set_auto_accept_quit**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_auto_accept_quit**\ (\ )
 
-If ``true``, the application automatically accepts quitting requests.
+Nếu ``true``, ứng dụng sẽ tự động chấp nhận các yêu cầu thoát.
 
-For mobile platforms, see :ref:`quit_on_go_back<class_SceneTree_property_quit_on_go_back>`.
+Đối với các nền tảng di động, hãy xem :ref:`quit_on_go_back<class_SceneTree_property_quit_on_go_back>`.
 
 .. rst-class:: classref-item-separator
 
@@ -329,16 +329,16 @@ For mobile platforms, see :ref:`quit_on_go_back<class_SceneTree_property_quit_on
 
 .. rst-class:: classref-property
 
-:ref:`Node<class_Node>` **current_scene** :ref:`🔗<class_SceneTree_property_current_scene>`
+:ref:`Node<class_Node>` **current_scene** :ref:`🔗 <class_SceneTree_property_current_scene>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_current_scene**\ (\ value\: :ref:`Node<class_Node>`\ )
 - :ref:`Node<class_Node>` **get_current_scene**\ (\ )
 
-The root node of the currently loaded main scene, usually as a direct child of :ref:`root<class_SceneTree_property_root>`. See also :ref:`change_scene_to_file()<class_SceneTree_method_change_scene_to_file>`, :ref:`change_scene_to_packed()<class_SceneTree_method_change_scene_to_packed>`, and :ref:`reload_current_scene()<class_SceneTree_method_reload_current_scene>`.
+Node gốc của main scene hiện được tải, thường là child trực tiếp của :ref:`root<class_SceneTree_property_root>`. Xem thêm :ref:`change_scene_to_file()<class_SceneTree_method_change_scene_to_file>`, :ref:`change_scene_to_packed()<class_SceneTree_method_change_scene_to_packed>` và :ref:`reload_current_scene()<class_SceneTree_method_reload_current_scene>`.
 
-\ **Warning:** Setting this property directly may not work as expected, as it does *not* add or remove any nodes from this tree.
+\ **Cảnh báo:** Việc đặt trực tiếp thuộc tính này có thể không hoạt động như mong đợi, vì nó *không* thêm hoặc xóa bất kỳ node nào khỏi cây này.
 
 .. rst-class:: classref-item-separator
 
@@ -355,9 +355,9 @@ The root node of the currently loaded main scene, usually as a direct child of :
 - |void| **set_debug_collisions_hint**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_debugging_collisions_hint**\ (\ )
 
-If ``true``, collision shapes will be visible when running the game from the editor for debugging purposes.
+Nếu ``true``, các collision shape sẽ hiển thị khi chạy game từ editor cho mục đích debug.
 
-\ **Note:** This property is not designed to be changed at run-time. Changing the value of :ref:`debug_collisions_hint<class_SceneTree_property_debug_collisions_hint>` while the project is running will not have the desired effect.
+\ **Lưu ý:** Thuộc tính này không được thiết kế để thay đổi trong thời gian chạy. Việc thay đổi giá trị của :ref:`debug_collisions_hint<class_SceneTree_property_debug_collisions_hint>` khi project đang chạy sẽ không mang lại hiệu quả mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -374,9 +374,9 @@ If ``true``, collision shapes will be visible when running the game from the edi
 - |void| **set_debug_navigation_hint**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_debugging_navigation_hint**\ (\ )
 
-If ``true``, navigation polygons will be visible when running the game from the editor for debugging purposes.
+Nếu ``true``, các navigation polygon sẽ hiển thị khi chạy game từ editor cho mục đích debug.
 
-\ **Note:** This property is not designed to be changed at run-time. Changing the value of :ref:`debug_navigation_hint<class_SceneTree_property_debug_navigation_hint>` while the project is running will not have the desired effect.
+\ **Lưu ý:** Thuộc tính này không được thiết kế để thay đổi trong thời gian chạy. Việc thay đổi giá trị của :ref:`debug_navigation_hint<class_SceneTree_property_debug_navigation_hint>` khi project đang chạy sẽ không mang lại hiệu quả mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -393,9 +393,9 @@ If ``true``, navigation polygons will be visible when running the game from the 
 - |void| **set_debug_paths_hint**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_debugging_paths_hint**\ (\ )
 
-If ``true``, curves from :ref:`Path2D<class_Path2D>` and :ref:`Path3D<class_Path3D>` nodes will be visible when running the game from the editor for debugging purposes.
+Nếu ``true``, các đường cong từ các node :ref:`Path2D<class_Path2D>` và :ref:`Path3D<class_Path3D>` sẽ hiển thị khi chạy game từ editor cho mục đích debug.
 
-\ **Note:** This property is not designed to be changed at run-time. Changing the value of :ref:`debug_paths_hint<class_SceneTree_property_debug_paths_hint>` while the project is running will not have the desired effect.
+\ **Lưu ý:** Thuộc tính này không được thiết kế để thay đổi trong thời gian chạy. Việc thay đổi giá trị của :ref:`debug_paths_hint<class_SceneTree_property_debug_paths_hint>` khi project đang chạy sẽ không mang lại hiệu quả mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -405,16 +405,16 @@ If ``true``, curves from :ref:`Path2D<class_Path2D>` and :ref:`Path3D<class_Path
 
 .. rst-class:: classref-property
 
-:ref:`Node<class_Node>` **edited_scene_root** :ref:`🔗<class_SceneTree_property_edited_scene_root>`
+:ref:`Node<class_Node>` **edited_scene_root** :ref:`🔗 <class_SceneTree_property_edited_scene_root>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_edited_scene_root**\ (\ value\: :ref:`Node<class_Node>`\ )
 - :ref:`Node<class_Node>` **get_edited_scene_root**\ (\ )
 
-The root of the scene currently being edited in the editor. This is usually a direct child of :ref:`root<class_SceneTree_property_root>`.
+Gốc của scene hiện đang được chỉnh sửa trong editor. Đây thường là child trực tiếp của :ref:`root<class_SceneTree_property_root>`.
 
-\ **Note:** This property does nothing in release builds.
+\ **Lưu ý:** Thuộc tính này không có tác dụng trong các bản build release.
 
 .. rst-class:: classref-item-separator
 
@@ -431,9 +431,9 @@ The root of the scene currently being edited in the editor. This is usually a di
 - |void| **set_multiplayer_poll_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_multiplayer_poll_enabled**\ (\ )
 
-If ``true`` (default value), enables automatic polling of the :ref:`MultiplayerAPI<class_MultiplayerAPI>` for this SceneTree during :ref:`process_frame<class_SceneTree_signal_process_frame>`.
+Nếu ``true`` (giá trị mặc định), bật việc polling tự động :ref:`MultiplayerAPI<class_MultiplayerAPI>` cho SceneTree này trong :ref:`process_frame<class_SceneTree_signal_process_frame>`.
 
-If ``false``, you need to manually call :ref:`MultiplayerAPI.poll()<class_MultiplayerAPI_method_poll>` to process network packets and deliver RPCs. This allows running RPCs in a different loop (e.g. physics, thread, specific time step) and for manual :ref:`Mutex<class_Mutex>` protection when accessing the :ref:`MultiplayerAPI<class_MultiplayerAPI>` from threads.
+Nếu ``false``, bạn cần gọi thủ công :ref:`MultiplayerAPI.poll()<class_MultiplayerAPI_method_poll>` để xử lý các gói tin mạng và phân phối RPC. Điều này cho phép chạy RPC trong một loop khác (ví dụ: physics, thread, time step cụ thể) và bảo vệ :ref:`Mutex<class_Mutex>` thủ công khi truy cập :ref:`MultiplayerAPI<class_MultiplayerAPI>` từ các thread.
 
 .. rst-class:: classref-item-separator
 
@@ -450,11 +450,11 @@ If ``false``, you need to manually call :ref:`MultiplayerAPI.poll()<class_Multip
 - |void| **set_pause**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_paused**\ (\ )
 
-If ``true``, the scene tree is considered paused. This causes the following behavior:
+Nếu ``true``, scene tree được xem là đang tạm dừng. Điều này gây ra các hành vi sau:
 
-- 2D and 3D physics will be stopped, as well as collision detection and related signals.
+- Vật lý 2D và 3D sẽ dừng, cùng với việc phát hiện va chạm và các signal liên quan.
 
-- Depending on each node's :ref:`Node.process_mode<class_Node_property_process_mode>`, their :ref:`Node._process()<class_Node_private_method__process>`, :ref:`Node._physics_process()<class_Node_private_method__physics_process>` and :ref:`Node._input()<class_Node_private_method__input>` callback methods may not called anymore.
+- Tùy thuộc vào :ref:`Node.process_mode<class_Node_property_process_mode>` của từng node, các phương thức callback :ref:`Node._process()<class_Node_private_method__process>`, :ref:`Node._physics_process()<class_Node_private_method__physics_process>` và :ref:`Node._input()<class_Node_private_method__input>` của chúng có thể không còn được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -471,11 +471,11 @@ If ``true``, the scene tree is considered paused. This causes the following beha
 - |void| **set_physics_interpolation_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_physics_interpolation_enabled**\ (\ )
 
-If ``true``, the renderer will interpolate the transforms of objects (both physics and non-physics) between the last two transforms, so that smooth motion is seen even when physics ticks do not coincide with rendered frames.
+Nếu ``true``, renderer sẽ nội suy các transform của đối tượng (cả vật lý và không phải vật lý) giữa hai transform gần nhất, để chuyển động trông mượt mà ngay cả khi các physics tick không trùng với các frame được render.
 
-The default value of this property is controlled by :ref:`ProjectSettings.physics/common/physics_interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>`.
+Giá trị mặc định của thuộc tính này được điều khiển bởi :ref:`ProjectSettings.physics/common/physics_interpolation <class_ProjectSettings_property_physics/common/physics_interpolation>`.
 
-\ **Note:** Although this is a global setting, finer control of individual branches of the **SceneTree** is possible using :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`.
+\ **Lưu ý:** Mặc dù đây là một thiết lập toàn cục, vẫn có thể kiểm soát chi tiết hơn từng nhánh của **SceneTree** bằng :ref:`Node.physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -492,9 +492,9 @@ The default value of this property is controlled by :ref:`ProjectSettings.physic
 - |void| **set_quit_on_go_back**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_quit_on_go_back**\ (\ )
 
-If ``true``, the application quits automatically when navigating back (e.g. using the system "Back" button on Android).
+Nếu ``true``, ứng dụng sẽ tự động thoát khi điều hướng quay lại (ví dụ: sử dụng nút "Back" của hệ thống trên Android).
 
-To handle 'Go Back' button when this option is disabled, use :ref:`DisplayServer.WINDOW_EVENT_GO_BACK_REQUEST<class_DisplayServer_constant_WINDOW_EVENT_GO_BACK_REQUEST>`.
+Để xử lý nút 'Go Back' khi tùy chọn này bị tắt, hãy sử dụng :ref:`DisplayServer.WINDOW_EVENT_GO_BACK_REQUEST<class_DisplayServer_constant_WINDOW_EVENT_GO_BACK_REQUEST>`.
 
 .. rst-class:: classref-item-separator
 
@@ -504,15 +504,15 @@ To handle 'Go Back' button when this option is disabled, use :ref:`DisplayServer
 
 .. rst-class:: classref-property
 
-:ref:`Window<class_Window>` **root** :ref:`🔗<class_SceneTree_property_root>`
+:ref:`Window<class_Window>` **root** :ref:`🔗 <class_SceneTree_property_root>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`Window<class_Window>` **get_root**\ (\ )
 
-The tree's root :ref:`Window<class_Window>`. This is top-most :ref:`Node<class_Node>` of the scene tree, and is always present. An absolute :ref:`NodePath<class_NodePath>` always starts from this node. Children of the root node may include the loaded :ref:`current_scene<class_SceneTree_property_current_scene>`, as well as any :doc:`AutoLoad <../tutorials/scripting/singletons_autoload>` configured in the Project Settings.
+:ref:`Window<class_Window>` gốc của cây. Đây là :ref:`Node<class_Node>` ở trên cùng của scene tree và luôn tồn tại. Một :ref:`NodePath<class_NodePath>` tuyệt đối luôn bắt đầu từ node này. Các child của node gốc có thể bao gồm :ref:`current_scene<class_SceneTree_property_current_scene>` đã được tải, cũng như mọi :doc:`AutoLoad <../tutorials/scripting/singletons_autoload>` được cấu hình trong Project Settings.
 
-\ **Warning:** Do not delete this node. This will result in unstable behavior, followed by a crash.
+\ **Cảnh báo:** Không được xóa node này. Điều đó sẽ dẫn đến hành vi không ổn định, sau đó là crash.
 
 .. rst-class:: classref-section-separator
 
@@ -520,8 +520,8 @@ The tree's root :ref:`Window<class_Window>`. This is top-most :ref:`Node<class_N
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SceneTree_method_call_group:
 
@@ -529,11 +529,11 @@ Method Descriptions
 
 |void| **call_group**\ (\ group\: :ref:`StringName<class_StringName>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_SceneTree_method_call_group>`
 
-Calls ``method`` on each node inside this tree added to the given ``group``. You can pass arguments to ``method`` by specifying them at the end of this method call. Nodes that cannot call ``method`` (either because the method doesn't exist or the arguments do not match) are ignored. See also :ref:`set_group()<class_SceneTree_method_set_group>` and :ref:`notify_group()<class_SceneTree_method_notify_group>`.
+Gọi ``method`` trên mỗi node bên trong cây này được thêm vào ``group`` đã cho. Bạn có thể truyền đối số cho ``method`` bằng cách chỉ định chúng ở cuối lệnh gọi phương thức này. Các node không thể gọi ``method`` (do phương thức không tồn tại hoặc các đối số không khớp) sẽ bị bỏ qua. Xem thêm :ref:`set_group()<class_SceneTree_method_set_group>` và :ref:`notify_group()<class_SceneTree_method_notify_group>`.
 
-\ **Note:** This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.
+\ **Lưu ý:** Phương thức này tác động ngay lập tức lên tất cả node được chọn cùng lúc, điều này có thể gây giật trong một số tình huống yêu cầu nhiều tài nguyên.
 
-\ **Note:** In C#, ``method`` must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the ``MethodName`` class to avoid allocating a new :ref:`StringName<class_StringName>` on each call.
+\ **Lưu ý:** Trong C#, ``method`` phải ở dạng snake_case khi tham chiếu đến các phương thức Godot dựng sẵn. Nên sử dụng các tên được cung cấp trong class ``MethodName`` để tránh cấp phát một :ref:`StringName<class_StringName>` mới cho mỗi lần gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -545,7 +545,7 @@ Calls ``method`` on each node inside this tree added to the given ``group``. You
 
 |void| **call_group_flags**\ (\ flags\: :ref:`int<class_int>`, group\: :ref:`StringName<class_StringName>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_SceneTree_method_call_group_flags>`
 
-Calls the given ``method`` on each node inside this tree added to the given ``group``. Use ``flags`` to customize this method's behavior (see :ref:`GroupCallFlags<enum_SceneTree_GroupCallFlags>`). Additional arguments for ``method`` can be passed at the end of this method. Nodes that cannot call ``method`` (either because the method doesn't exist or the arguments do not match) are ignored.
+Gọi ``method`` đã cho trên mỗi node trong cây này được thêm vào ``group``. Sử dụng ``flags`` để tùy chỉnh cách thức hoạt động của phương thức này (xem :ref:`GroupCallFlags <enum_SceneTree_GroupCallFlags>`). Có thể truyền các đối số bổ sung cho ``method`` ở cuối phương thức này. Các node không thể gọi ``method`` (do phương thức không tồn tại hoặc các đối số không khớp) sẽ bị bỏ qua.
 
 ::
 
@@ -554,7 +554,7 @@ Calls the given ``method`` on each node inside this tree added to the given ``gr
             SceneTree.GROUP_CALL_DEFERRED | SceneTree.GROUP_CALL_REVERSE,
             "enemies", "hide")
 
-\ **Note:** In C#, ``method`` must be in snake_case when referring to built-in Godot methods. Prefer using the names exposed in the ``MethodName`` class to avoid allocating a new :ref:`StringName<class_StringName>` on each call.
+\ **Lưu ý:** Trong C#, ``method`` phải ở dạng snake_case khi tham chiếu đến các phương thức Godot dựng sẵn. Nên sử dụng các tên được cung cấp trong class ``MethodName`` để tránh cấp phát một :ref:`StringName<class_StringName>` mới cho mỗi lần gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -566,11 +566,11 @@ Calls the given ``method`` on each node inside this tree added to the given ``gr
 
 :ref:`Error<enum_@GlobalScope_Error>` **change_scene_to_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_SceneTree_method_change_scene_to_file>`
 
-Changes the running scene to the one at the given ``path``, after loading it into a :ref:`PackedScene<class_PackedScene>` and creating a new instance.
+Chuyển cảnh đang chạy sang cảnh tại ``path``, sau khi tải cảnh đó vào :ref:`PackedScene<class_PackedScene>` và tạo một instance mới.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, :ref:`@GlobalScope.ERR_CANT_OPEN<class_@GlobalScope_constant_ERR_CANT_OPEN>` if the ``path`` cannot be loaded into a :ref:`PackedScene<class_PackedScene>`, or :ref:`@GlobalScope.ERR_CANT_CREATE<class_@GlobalScope_constant_ERR_CANT_CREATE>` if that scene cannot be instantiated.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công, :ref:`@GlobalScope.ERR_CANT_OPEN <class_@GlobalScope_constant_ERR_CANT_OPEN>` nếu không thể tải ``path`` vào :ref:`PackedScene<class_PackedScene>`, hoặc :ref:`@GlobalScope.ERR_CANT_CREATE <class_@GlobalScope_constant_ERR_CANT_CREATE>` nếu không thể tạo instance của cảnh đó.
 
-\ **Note:** See :ref:`change_scene_to_node()<class_SceneTree_method_change_scene_to_node>` for details on the order of operations.
+\ **Lưu ý:** Xem :ref:`change_scene_to_node()<class_SceneTree_method_change_scene_to_node>` để biết chi tiết về thứ tự thao tác.
 
 .. rst-class:: classref-item-separator
 
@@ -582,21 +582,21 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, :ref:
 
 :ref:`Error<enum_@GlobalScope_Error>` **change_scene_to_node**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_SceneTree_method_change_scene_to_node>`
 
-Changes the running scene to the provided :ref:`Node<class_Node>`. Useful when you want to set up the new scene before changing.
+Chuyển cảnh đang chạy sang :ref:`Node<class_Node>` đã cung cấp. Hữu ích khi bạn muốn thiết lập cảnh mới trước khi chuyển cảnh.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the ``node`` is ``null``, or :ref:`@GlobalScope.ERR_UNCONFIGURED<class_@GlobalScope_constant_ERR_UNCONFIGURED>` if the ``node`` is already inside the scene tree.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công, :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu ``node`` là ``null``, hoặc :ref:`@GlobalScope.ERR_UNCONFIGURED <class_@GlobalScope_constant_ERR_UNCONFIGURED>` nếu ``node`` đã nằm trong scene tree.
 
-\ **Note:** Operations happen in the following order when :ref:`change_scene_to_node()<class_SceneTree_method_change_scene_to_node>` is called:
+\ **Lưu ý:** Khi gọi :ref:`change_scene_to_node()<class_SceneTree_method_change_scene_to_node>`, các thao tác sẽ diễn ra theo thứ tự sau:
 
-1. The current scene node is immediately removed from the tree. From that point, :ref:`Node.get_tree()<class_Node_method_get_tree>` called on the current (outgoing) scene will return ``null``. :ref:`current_scene<class_SceneTree_property_current_scene>` will be ``null`` too, because the new scene is not available yet.
+1. Node cảnh hiện tại lập tức bị gỡ khỏi cây. Kể từ thời điểm đó, :ref:`Node.get_tree()<class_Node_method_get_tree>` được gọi trên cảnh hiện tại (cảnh rời đi) sẽ trả về ``null``. :ref:`current_scene<class_SceneTree_property_current_scene>` cũng sẽ là ``null``, vì cảnh mới chưa khả dụng.
 
-2. At the end of the frame, the formerly current scene, already removed from the tree, will be deleted (freed from memory) and then the new scene node will be added to the tree. :ref:`Node.get_tree()<class_Node_method_get_tree>` and :ref:`current_scene<class_SceneTree_property_current_scene>` will be back to working as usual.
+2. Vào cuối frame, cảnh trước đây là cảnh hiện tại, vốn đã được gỡ khỏi cây, sẽ bị xóa (giải phóng khỏi bộ nhớ), sau đó node của cảnh mới sẽ được thêm vào cây. :ref:`Node.get_tree()<class_Node_method_get_tree>` và :ref:`current_scene<class_SceneTree_property_current_scene>` sẽ hoạt động lại như bình thường.
 
-This ensures that both scenes aren't running at the same time, while still freeing the previous scene in a safe way similar to :ref:`Node.queue_free()<class_Node_method_queue_free>`.
+Điều này đảm bảo hai cảnh không chạy đồng thời, đồng thời vẫn giải phóng cảnh trước đó theo cách an toàn tương tự :ref:`Node.queue_free()<class_Node_method_queue_free>`.
 
-If you want to reliably access the new scene, await the :ref:`scene_changed<class_SceneTree_signal_scene_changed>` signal.
+Nếu muốn truy cập cảnh mới một cách đáng tin cậy, hãy await signal :ref:`scene_changed<class_SceneTree_signal_scene_changed>`.
 
-\ **Warning:** After using this method, the **SceneTree** will take ownership of the node and will free it automatically when changing scene again. Any references you had to that node will become invalid.
+\ **Cảnh báo:** Sau khi sử dụng phương thức này, **SceneTree** sẽ sở hữu node và tự động giải phóng node đó khi chuyển cảnh lần nữa. Mọi tham chiếu bạn có đến node đó sẽ trở nên không hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -608,11 +608,11 @@ If you want to reliably access the new scene, await the :ref:`scene_changed<clas
 
 :ref:`Error<enum_@GlobalScope_Error>` **change_scene_to_packed**\ (\ packed_scene\: :ref:`PackedScene<class_PackedScene>`\ ) :ref:`🔗<class_SceneTree_method_change_scene_to_packed>`
 
-Changes the running scene to a new instance of the given :ref:`PackedScene<class_PackedScene>` (which must be valid).
+Chuyển cảnh đang chạy sang một instance mới của :ref:`PackedScene<class_PackedScene>` đã cho (phải hợp lệ).
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, :ref:`@GlobalScope.ERR_CANT_CREATE<class_@GlobalScope_constant_ERR_CANT_CREATE>` if the scene cannot be instantiated, or :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the scene is invalid.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công, :ref:`@GlobalScope.ERR_CANT_CREATE <class_@GlobalScope_constant_ERR_CANT_CREATE>` nếu không thể tạo instance của cảnh, hoặc :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu cảnh không hợp lệ.
 
-\ **Note:** See :ref:`change_scene_to_node()<class_SceneTree_method_change_scene_to_node>` for details on the order of operations.
+\ **Lưu ý:** Xem :ref:`change_scene_to_node()<class_SceneTree_method_change_scene_to_node>` để biết chi tiết về thứ tự thao tác.
 
 .. rst-class:: classref-item-separator
 
@@ -624,15 +624,15 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, :ref:
 
 :ref:`SceneTreeTimer<class_SceneTreeTimer>` **create_timer**\ (\ time_sec\: :ref:`float<class_float>`, process_always\: :ref:`bool<class_bool>` = true, process_in_physics\: :ref:`bool<class_bool>` = false, ignore_time_scale\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_SceneTree_method_create_timer>`
 
-Returns a new :ref:`SceneTreeTimer<class_SceneTreeTimer>`. After ``time_sec`` in seconds have passed, the timer will emit :ref:`SceneTreeTimer.timeout<class_SceneTreeTimer_signal_timeout>` and will be automatically freed.
+Trả về một :ref:`SceneTreeTimer<class_SceneTreeTimer>` mới. Sau khi đã trôi qua ``time_sec`` giây, timer sẽ phát :ref:`SceneTreeTimer.timeout<class_SceneTreeTimer_signal_timeout>` và tự động được giải phóng.
 
-If ``process_always`` is ``false``, the timer will be paused when setting :ref:`paused<class_SceneTree_property_paused>` to ``true``.
+Nếu ``process_always`` là ``false``, timer sẽ bị tạm dừng khi đặt :ref:`paused<class_SceneTree_property_paused>` thành ``true``.
 
-If ``process_in_physics`` is ``true``, the timer will update at the end of the physics frame, instead of the process frame.
+Nếu ``process_in_physics`` là ``true``, timer sẽ được cập nhật vào cuối physics frame thay vì process frame.
 
-If ``ignore_time_scale`` is ``true``, the timer will ignore :ref:`Engine.time_scale<class_Engine_property_time_scale>` and update with the real, elapsed time.
+Nếu ``ignore_time_scale`` là ``true``, timer sẽ bỏ qua :ref:`Engine.time_scale<class_Engine_property_time_scale>` và được cập nhật theo thời gian thực đã trôi qua.
 
-This method is commonly used to create a one-shot delay timer, as in the following example:
+Phương thức này thường được dùng để tạo timer trì hoãn một lần, như trong ví dụ sau:
 
 
 .. tabs::
@@ -655,7 +655,7 @@ This method is commonly used to create a one-shot delay timer, as in the followi
 
 
 
-\ **Note:** The timer is always updated *after* all of the nodes in the tree. A node's :ref:`Node._process()<class_Node_private_method__process>` method would be called before the timer updates (or :ref:`Node._physics_process()<class_Node_private_method__physics_process>` if ``process_in_physics`` is set to ``true``).
+\ **Lưu ý:** Timer luôn được cập nhật *sau* tất cả các node trong cây. Phương thức :ref:`Node._process()<class_Node_private_method__process>` của một node sẽ được gọi trước khi timer được cập nhật (hoặc :ref:`Node._physics_process()<class_Node_private_method__physics_process>` nếu ``process_in_physics`` được đặt thành ``true``).
 
 .. rst-class:: classref-item-separator
 
@@ -667,9 +667,9 @@ This method is commonly used to create a one-shot delay timer, as in the followi
 
 :ref:`Tween<class_Tween>` **create_tween**\ (\ ) :ref:`🔗<class_SceneTree_method_create_tween>`
 
-Creates and returns a new :ref:`Tween<class_Tween>` processed in this tree. The Tween will start automatically on the next process frame or physics frame (depending on its :ref:`TweenProcessMode<enum_Tween_TweenProcessMode>`).
+Tạo và trả về một :ref:`Tween<class_Tween>` mới được xử lý trong cây này. Tween sẽ tự động bắt đầu ở process frame hoặc physics frame tiếp theo (tùy thuộc vào :ref:`TweenProcessMode <enum_Tween_TweenProcessMode>` của nó).
 
-\ **Note:** A :ref:`Tween<class_Tween>` created using this method is not bound to any :ref:`Node<class_Node>`. It may keep working until there is nothing left to animate. If you want the :ref:`Tween<class_Tween>` to be automatically killed when the :ref:`Node<class_Node>` is freed, use :ref:`Node.create_tween()<class_Node_method_create_tween>` or :ref:`Tween.bind_node()<class_Tween_method_bind_node>`.
+\ **Lưu ý:** Một :ref:`Tween<class_Tween>` được tạo bằng phương thức này không bị ràng buộc với bất kỳ :ref:`Node<class_Node>` nào. Nó có thể tiếp tục hoạt động cho đến khi không còn gì để animate. Nếu muốn :ref:`Tween<class_Tween>` được tự động dừng khi :ref:`Node<class_Node>` được giải phóng, hãy sử dụng :ref:`Node.create_tween()<class_Node_method_create_tween>` hoặc :ref:`Tween.bind_node()<class_Tween_method_bind_node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -681,7 +681,7 @@ Creates and returns a new :ref:`Tween<class_Tween>` processed in this tree. The 
 
 :ref:`Node<class_Node>` **get_first_node_in_group**\ (\ group\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SceneTree_method_get_first_node_in_group>`
 
-Returns the first :ref:`Node<class_Node>` found inside the tree, that has been added to the given ``group``, in scene hierarchy order. Returns ``null`` if no match is found. See also :ref:`get_nodes_in_group()<class_SceneTree_method_get_nodes_in_group>`.
+Trả về :ref:`Node<class_Node>` đầu tiên được tìm thấy trong cây, đã được thêm vào ``group`` đã cho, theo thứ tự phân cấp cảnh. Trả về ``null`` nếu không tìm thấy kết quả phù hợp. Xem thêm :ref:`get_nodes_in_group()<class_SceneTree_method_get_nodes_in_group>`.
 
 .. rst-class:: classref-item-separator
 
@@ -693,7 +693,7 @@ Returns the first :ref:`Node<class_Node>` found inside the tree, that has been a
 
 :ref:`int<class_int>` **get_frame**\ (\ ) |const| :ref:`🔗<class_SceneTree_method_get_frame>`
 
-Returns how many physics process steps have been processed, since the application started. This is *not* a measurement of elapsed time. See also :ref:`physics_frame<class_SceneTree_signal_physics_frame>`. For the number of frames rendered, see :ref:`Engine.get_process_frames()<class_Engine_method_get_process_frames>`.
+Trả về số bước xử lý physics đã được xử lý kể từ khi ứng dụng khởi động. Đây *không* phải là phép đo thời gian đã trôi qua. Xem thêm :ref:`physics_frame<class_SceneTree_signal_physics_frame>`. Để biết số frame đã render, xem :ref:`Engine.get_process_frames()<class_Engine_method_get_process_frames>`.
 
 .. rst-class:: classref-item-separator
 
@@ -705,7 +705,7 @@ Returns how many physics process steps have been processed, since the applicatio
 
 :ref:`MultiplayerAPI<class_MultiplayerAPI>` **get_multiplayer**\ (\ for_path\: :ref:`NodePath<class_NodePath>` = NodePath("")\ ) |const| :ref:`🔗<class_SceneTree_method_get_multiplayer>`
 
-Searches for the :ref:`MultiplayerAPI<class_MultiplayerAPI>` configured for the given path, if one does not exist it searches the parent paths until one is found. If the path is empty, or none is found, the default one is returned. See :ref:`set_multiplayer()<class_SceneTree_method_set_multiplayer>`.
+Tìm kiếm :ref:`MultiplayerAPI<class_MultiplayerAPI>` được cấu hình cho path đã cho; nếu không tồn tại, phương thức sẽ tìm trong các path cha cho đến khi tìm thấy. Nếu path trống hoặc không tìm thấy, phương thức sẽ trả về giá trị mặc định. Xem :ref:`set_multiplayer()<class_SceneTree_method_set_multiplayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -717,7 +717,7 @@ Searches for the :ref:`MultiplayerAPI<class_MultiplayerAPI>` configured for the 
 
 :ref:`int<class_int>` **get_node_count**\ (\ ) |const| :ref:`🔗<class_SceneTree_method_get_node_count>`
 
-Returns the number of nodes inside this tree.
+Trả về số node trong cây này.
 
 .. rst-class:: classref-item-separator
 
@@ -729,7 +729,7 @@ Returns the number of nodes inside this tree.
 
 :ref:`int<class_int>` **get_node_count_in_group**\ (\ group\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SceneTree_method_get_node_count_in_group>`
 
-Returns the number of nodes assigned to the given group.
+Trả về số node được gán vào group đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -741,7 +741,7 @@ Returns the number of nodes assigned to the given group.
 
 :ref:`Array<class_Array>`\[:ref:`Node<class_Node>`\] **get_nodes_in_group**\ (\ group\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_SceneTree_method_get_nodes_in_group>`
 
-Returns an :ref:`Array<class_Array>` containing all nodes inside this tree, that have been added to the given ``group``, in scene hierarchy order.
+Trả về một :ref:`Array<class_Array>` chứa tất cả node trong cây này đã được thêm vào ``group`` đã cho, theo thứ tự phân cấp cảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -753,7 +753,7 @@ Returns an :ref:`Array<class_Array>` containing all nodes inside this tree, that
 
 :ref:`Array<class_Array>`\[:ref:`Tween<class_Tween>`\] **get_processed_tweens**\ (\ ) :ref:`🔗<class_SceneTree_method_get_processed_tweens>`
 
-Returns an :ref:`Array<class_Array>` of currently existing :ref:`Tween<class_Tween>`\ s in the tree, including paused tweens.
+Trả về một :ref:`Array<class_Array>` gồm các :ref:`Tween<class_Tween>`\ s hiện đang tồn tại trong cây, bao gồm cả các tween đang tạm dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -765,7 +765,7 @@ Returns an :ref:`Array<class_Array>` of currently existing :ref:`Tween<class_Twe
 
 :ref:`bool<class_bool>` **has_group**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_SceneTree_method_has_group>`
 
-Returns ``true`` if a node added to the given group ``name`` exists in the tree.
+Trả về ``true`` nếu một node được thêm vào group ``name`` đã cho tồn tại trong cây.
 
 .. rst-class:: classref-item-separator
 
@@ -777,7 +777,7 @@ Returns ``true`` if a node added to the given group ``name`` exists in the tree.
 
 :ref:`bool<class_bool>` **is_accessibility_enabled**\ (\ ) |const| :ref:`🔗<class_SceneTree_method_is_accessibility_enabled>`
 
-Returns ``true`` if accessibility features are enabled, and accessibility information updates are actively processed.
+Trả về ``true`` nếu các tính năng accessibility được bật và các bản cập nhật thông tin accessibility đang được xử lý.
 
 .. rst-class:: classref-item-separator
 
@@ -789,7 +789,7 @@ Returns ``true`` if accessibility features are enabled, and accessibility inform
 
 :ref:`bool<class_bool>` **is_accessibility_supported**\ (\ ) |const| :ref:`🔗<class_SceneTree_method_is_accessibility_supported>`
 
-Returns ``true`` if accessibility features are supported by the OS and enabled in project settings.
+Trả về ``true`` nếu hệ điều hành hỗ trợ các tính năng accessibility và chúng được bật trong cài đặt project.
 
 .. rst-class:: classref-item-separator
 
@@ -801,9 +801,9 @@ Returns ``true`` if accessibility features are supported by the OS and enabled i
 
 |void| **notify_group**\ (\ group\: :ref:`StringName<class_StringName>`, notification\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SceneTree_method_notify_group>`
 
-Calls :ref:`Object.notification()<class_Object_method_notification>` with the given ``notification`` to all nodes inside this tree added to the ``group``. See also :doc:`Godot notifications <../tutorials/best_practices/godot_notifications>` and :ref:`call_group()<class_SceneTree_method_call_group>` and :ref:`set_group()<class_SceneTree_method_set_group>`.
+Gọi :ref:`Object.notification()<class_Object_method_notification>` với ``notification`` đã cho trên tất cả node trong cây này được thêm vào ``group``. Xem thêm :doc:`Godot notifications <../tutorials/best_practices/godot_notifications>` và :ref:`call_group()<class_SceneTree_method_call_group>` và :ref:`set_group()<class_SceneTree_method_set_group>`.
 
-\ **Note:** This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.
+\ **Lưu ý:** Phương thức này tác động ngay lập tức lên tất cả node được chọn cùng lúc, điều này có thể gây giật trong một số tình huống yêu cầu nhiều tài nguyên.
 
 .. rst-class:: classref-item-separator
 
@@ -815,7 +815,7 @@ Calls :ref:`Object.notification()<class_Object_method_notification>` with the gi
 
 |void| **notify_group_flags**\ (\ call_flags\: :ref:`int<class_int>`, group\: :ref:`StringName<class_StringName>`, notification\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SceneTree_method_notify_group_flags>`
 
-Calls :ref:`Object.notification()<class_Object_method_notification>` with the given ``notification`` to all nodes inside this tree added to the ``group``. Use ``call_flags`` to customize this method's behavior (see :ref:`GroupCallFlags<enum_SceneTree_GroupCallFlags>`).
+Gọi :ref:`Object.notification()<class_Object_method_notification>` với ``notification`` đã cho trên tất cả node trong cây này được thêm vào ``group``. Sử dụng ``call_flags`` để tùy chỉnh cách thức hoạt động của phương thức này (xem :ref:`GroupCallFlags <enum_SceneTree_GroupCallFlags>`).
 
 .. rst-class:: classref-item-separator
 
@@ -827,7 +827,7 @@ Calls :ref:`Object.notification()<class_Object_method_notification>` with the gi
 
 |void| **queue_delete**\ (\ obj\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_SceneTree_method_queue_delete>`
 
-Queues the given ``obj`` to be deleted, calling its :ref:`Object.free()<class_Object_method_free>` at the end of the current frame. This method is similar to :ref:`Node.queue_free()<class_Node_method_queue_free>`.
+Xếp ``obj`` đã cho để xóa, gọi :ref:`Object.free()<class_Object_method_free>` của nó vào cuối frame hiện tại. Phương thức này tương tự :ref:`Node.queue_free()<class_Node_method_queue_free>`.
 
 .. rst-class:: classref-item-separator
 
@@ -839,11 +839,11 @@ Queues the given ``obj`` to be deleted, calling its :ref:`Object.free()<class_Ob
 
 |void| **quit**\ (\ exit_code\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_SceneTree_method_quit>`
 
-Quits the application at the end of the current iteration, with the given ``exit_code``.
+Thoát ứng dụng khi kết thúc lần lặp hiện tại, với ``exit_code`` đã cho.
 
-By convention, an exit code of ``0`` indicates success, whereas any other exit code indicates an error. For portability reasons, it should be between ``0`` and ``125`` (inclusive).
+Theo quy ước, mã thoát ``0`` cho biết thao tác thành công, trong khi mọi mã thoát khác đều cho biết đã xảy ra lỗi. Vì lý do khả năng chuyển đổi, mã này phải nằm trong khoảng từ ``0`` đến ``125`` (bao gồm cả hai giá trị).
 
-\ **Note:** On iOS this method doesn't work. Instead, as recommended by the `iOS Human Interface Guidelines <https://developer.apple.com/library/archive/qa/qa1561/_index.html>`__, the user is expected to close apps via the Home button.
+\ **Lưu ý:** Trên iOS, phương thức này không hoạt động. Thay vào đó, theo khuyến nghị của `iOS Human Interface Guidelines <https://developer.apple.com/library/archive/qa/qa1561/_index.html>`__, người dùng được yêu cầu đóng ứng dụng bằng nút Home.
 
 .. rst-class:: classref-item-separator
 
@@ -855,9 +855,9 @@ By convention, an exit code of ``0`` indicates success, whereas any other exit c
 
 :ref:`Error<enum_@GlobalScope_Error>` **reload_current_scene**\ (\ ) :ref:`🔗<class_SceneTree_method_reload_current_scene>`
 
-Reloads the currently active scene, replacing :ref:`current_scene<class_SceneTree_property_current_scene>` with a new instance of its original :ref:`PackedScene<class_PackedScene>`.
+Tải lại scene hiện đang hoạt động, thay thế :ref:`current_scene<class_SceneTree_property_current_scene>` bằng một instance mới của :ref:`PackedScene<class_PackedScene>` ban đầu.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, :ref:`@GlobalScope.ERR_UNCONFIGURED<class_@GlobalScope_constant_ERR_UNCONFIGURED>` if no :ref:`current_scene<class_SceneTree_property_current_scene>` is defined, :ref:`@GlobalScope.ERR_CANT_OPEN<class_@GlobalScope_constant_ERR_CANT_OPEN>` if :ref:`current_scene<class_SceneTree_property_current_scene>` cannot be loaded into a :ref:`PackedScene<class_PackedScene>`, or :ref:`@GlobalScope.ERR_CANT_CREATE<class_@GlobalScope_constant_ERR_CANT_CREATE>` if the scene cannot be instantiated.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công, :ref:`@GlobalScope.ERR_UNCONFIGURED <class_@GlobalScope_constant_ERR_UNCONFIGURED>` nếu chưa định nghĩa :ref:`current_scene<class_SceneTree_property_current_scene>`, :ref:`@GlobalScope.ERR_CANT_OPEN <class_@GlobalScope_constant_ERR_CANT_OPEN>` nếu không thể tải :ref:`current_scene<class_SceneTree_property_current_scene>` vào một :ref:`PackedScene<class_PackedScene>`, hoặc :ref:`@GlobalScope.ERR_CANT_CREATE <class_@GlobalScope_constant_ERR_CANT_CREATE>` nếu không thể khởi tạo scene.
 
 .. rst-class:: classref-item-separator
 
@@ -869,11 +869,11 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, :ref:
 
 |void| **set_group**\ (\ group\: :ref:`StringName<class_StringName>`, property\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_SceneTree_method_set_group>`
 
-Sets the given ``property`` to ``value`` on all nodes inside this tree added to the given ``group``. Nodes that do not have the ``property`` are ignored. See also :ref:`call_group()<class_SceneTree_method_call_group>` and :ref:`notify_group()<class_SceneTree_method_notify_group>`.
+Đặt ``property`` đã cho thành ``value`` trên tất cả các node bên trong tree này được thêm vào ``group`` đã cho. Các node không có ``property`` sẽ bị bỏ qua. Xem thêm :ref:`call_group()<class_SceneTree_method_call_group>` và :ref:`notify_group()<class_SceneTree_method_notify_group>`.
 
-\ **Note:** This method acts immediately on all selected nodes at once, which may cause stuttering in some performance-intensive situations.
+\ **Lưu ý:** Phương thức này tác động ngay lập tức lên tất cả node được chọn cùng lúc, điều này có thể gây giật trong một số tình huống yêu cầu nhiều tài nguyên.
 
-\ **Note:** In C#, ``property`` must be in snake_case when referring to built-in Godot properties. Prefer using the names exposed in the ``PropertyName`` class to avoid allocating a new :ref:`StringName<class_StringName>` on each call.
+\ **Lưu ý:** Trong C#, ``property`` phải ở dạng snake_case khi tham chiếu đến các thuộc tính tích hợp sẵn của Godot. Nên sử dụng các tên được cung cấp trong class ``PropertyName`` để tránh phải cấp phát một :ref:`StringName<class_StringName>` mới trong mỗi lần gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -885,9 +885,9 @@ Sets the given ``property`` to ``value`` on all nodes inside this tree added to 
 
 |void| **set_group_flags**\ (\ call_flags\: :ref:`int<class_int>`, group\: :ref:`StringName<class_StringName>`, property\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_SceneTree_method_set_group_flags>`
 
-Sets the given ``property`` to ``value`` on all nodes inside this tree added to the given ``group``. Nodes that do not have the ``property`` are ignored. Use ``call_flags`` to customize this method's behavior (see :ref:`GroupCallFlags<enum_SceneTree_GroupCallFlags>`).
+Đặt ``property`` đã cho thành ``value`` trên tất cả các node bên trong tree này được thêm vào ``group`` đã cho. Các node không có ``property`` sẽ bị bỏ qua. Sử dụng ``call_flags`` để tùy chỉnh hành vi của phương thức này (xem :ref:`GroupCallFlags <enum_SceneTree_GroupCallFlags>`).
 
-\ **Note:** In C#, ``property`` must be in snake_case when referring to built-in Godot properties. Prefer using the names exposed in the ``PropertyName`` class to avoid allocating a new :ref:`StringName<class_StringName>` on each call.
+\ **Lưu ý:** Trong C#, ``property`` phải ở dạng snake_case khi tham chiếu đến các thuộc tính tích hợp sẵn của Godot. Nên sử dụng các tên được cung cấp trong class ``PropertyName`` để tránh phải cấp phát một :ref:`StringName<class_StringName>` mới trong mỗi lần gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -899,11 +899,11 @@ Sets the given ``property`` to ``value`` on all nodes inside this tree added to 
 
 |void| **set_multiplayer**\ (\ multiplayer\: :ref:`MultiplayerAPI<class_MultiplayerAPI>`, root_path\: :ref:`NodePath<class_NodePath>` = NodePath("")\ ) :ref:`🔗<class_SceneTree_method_set_multiplayer>`
 
-Sets a custom :ref:`MultiplayerAPI<class_MultiplayerAPI>` with the given ``root_path`` (controlling also the relative subpaths), or override the default one if ``root_path`` is empty.
+Thiết lập một :ref:`MultiplayerAPI<class_MultiplayerAPI>` tùy chỉnh với ``root_path`` đã cho (đồng thời điều khiển các subpath tương đối), hoặc ghi đè ``root_path`` mặc định nếu giá trị này trống.
 
-\ **Note:** No :ref:`MultiplayerAPI<class_MultiplayerAPI>` must be configured for the subpath containing ``root_path``, nested custom multiplayers are not allowed. I.e. if one is configured for ``"/root/Foo"`` setting one for ``"/root/Foo/Bar"`` will cause an error.
+\ **Lưu ý:** Không được cấu hình :ref:`MultiplayerAPI<class_MultiplayerAPI>` nào cho subpath chứa ``root_path``, vì không cho phép các multiplayer tùy chỉnh lồng nhau. Nghĩa là, nếu một multiplayer được cấu hình cho ``"/root/Foo"``, việc thiết lập một multiplayer cho ``"/root/Foo/Bar"`` sẽ gây ra lỗi.
 
-\ **Note:** :ref:`set_multiplayer()<class_SceneTree_method_set_multiplayer>` should be called *before* the child nodes are ready at the given ``root_path``. If multiplayer nodes like :ref:`MultiplayerSpawner<class_MultiplayerSpawner>` or :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>` are added to the tree before the custom multiplayer API is set, they will not work.
+\ **Lưu ý:** Nên gọi :ref:`set_multiplayer()<class_SceneTree_method_set_multiplayer>` *trước* khi các node con sẵn sàng tại ``root_path``. Nếu các node multiplayer như :ref:`MultiplayerSpawner<class_MultiplayerSpawner>` hoặc :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>` được thêm vào tree trước khi thiết lập API multiplayer tùy chỉnh, chúng sẽ không hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -915,14 +915,14 @@ Sets a custom :ref:`MultiplayerAPI<class_MultiplayerAPI>` with the given ``root_
 
 |void| **unload_current_scene**\ (\ ) :ref:`🔗<class_SceneTree_method_unload_current_scene>`
 
-If a current scene is loaded, calling this method will unload it.
+Nếu một scene hiện tại đã được tải, việc gọi phương thức này sẽ dỡ scene đó.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không thay đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

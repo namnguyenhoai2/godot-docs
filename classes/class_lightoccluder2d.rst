@@ -10,27 +10,27 @@
 LightOccluder2D
 ===============
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Occludes light cast by a Light2D, casting shadows.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Occludes light cast by a Light2D, casting shadows. The LightOccluder2D must be provided with an :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` in order for the shadow to be computed.
+Chặn ánh sáng do một Light2D phát ra, tạo bóng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Chặn ánh sáng do một Light2D phát ra, tạo bóng. LightOccluder2D phải được cung cấp một :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` để tính toán bóng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`2D lights and shadows <../tutorials/2d/2d_lights_and_shadows>`
+- :doc:`Ánh sáng và bóng 2D <../tutorials/2d/2d_lights_and_shadows>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,21 +50,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_LightOccluder2D_property_occluder:
 
 .. rst-class:: classref-property
 
-:ref:`OccluderPolygon2D<class_OccluderPolygon2D>` **occluder** :ref:`🔗<class_LightOccluder2D_property_occluder>`
+:ref:`OccluderPolygon2D<class_OccluderPolygon2D>` **occluder** :ref:`🔗 <class_LightOccluder2D_property_occluder>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_occluder_polygon**\ (\ value\: :ref:`OccluderPolygon2D<class_OccluderPolygon2D>`\ )
 - :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` **get_occluder_polygon**\ (\ )
 
-The :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` used to compute the shadow.
+:ref:`OccluderPolygon2D<class_OccluderPolygon2D>` được dùng để tính toán bóng đổ.
 
 .. rst-class:: classref-item-separator
 
@@ -81,7 +81,7 @@ The :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` used to compute the shadow
 - |void| **set_occluder_light_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_occluder_light_mask**\ (\ )
 
-The LightOccluder2D's occluder light mask. The LightOccluder2D will cast shadows only from Light2D(s) that have the same light mask(s).
+Mặt nạ ánh sáng occluder của LightOccluder2D. LightOccluder2D sẽ chỉ đổ bóng từ các Light2D có cùng (các) mặt nạ ánh sáng.
 
 .. rst-class:: classref-item-separator
 
@@ -98,14 +98,14 @@ The LightOccluder2D's occluder light mask. The LightOccluder2D will cast shadows
 - |void| **set_as_sdf_collision**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_set_as_sdf_collision**\ (\ )
 
-If enabled, the occluder will be part of a real-time generated signed distance field that can be used in custom shaders.
+Nếu được bật, occluder sẽ là một phần của trường khoảng cách có dấu được tạo theo thời gian thực và có thể được sử dụng trong các shader tùy chỉnh.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

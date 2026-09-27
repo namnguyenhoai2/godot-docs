@@ -10,22 +10,22 @@
 EditorTranslationParserPlugin
 =============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Plugin for adding custom parsers to extract strings that are to be translated from custom files (.csv, .json etc.).
+Plugin dùng để thêm các parser tùy chỉnh nhằm trích xuất những chuỗi cần dịch từ các tệp tùy chỉnh (.csv, .json, v.v.).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EditorTranslationParserPlugin** is invoked when a file is being parsed to extract strings that require translation. To define the parsing and string extraction logic, override the :ref:`_parse_file()<class_EditorTranslationParserPlugin_private_method__parse_file>` method in script.
+**EditorTranslationParserPlugin** được gọi khi một tệp đang được phân tích để trích xuất các chuỗi cần dịch. Để định nghĩa logic phân tích và trích xuất chuỗi, hãy ghi đè phương thức :ref:`_parse_file()<class_EditorTranslationParserPlugin_private_method__parse_file>` trong script.
 
-The return value should be an :ref:`Array<class_Array>` of :ref:`PackedStringArray<class_PackedStringArray>`\ s, one for each extracted translatable string. Each entry should contain ``[msgid, msgctxt, msgid_plural, comment, source_line]``, where all except ``msgid`` are optional. Empty strings will be ignored.
+Giá trị trả về phải là một :ref:`Array<class_Array>` gồm các :ref:`PackedStringArray<class_PackedStringArray>`\ s, mỗi phần tử tương ứng với một chuỗi có thể dịch được trích xuất. Mỗi phần tử phải chứa ``[msgid, msgctxt, msgid_plural, comment, source_line]``, trong đó mọi trường ngoại trừ ``msgid`` đều là tùy chọn. Các chuỗi rỗng sẽ bị bỏ qua.
 
-The extracted strings will be written into a translation template file selected by user under "Template Generation" in "Localization" tab in "Project Settings" menu.
+Các chuỗi được trích xuất sẽ được ghi vào tệp template bản dịch do người dùng chọn trong "Template Generation" thuộc thẻ "Localization" của menu "Project Settings".
 
-Below shows an example of a custom parser that extracts strings from a CSV file to write into a template.
+Dưới đây là ví dụ về một parser tùy chỉnh trích xuất các chuỗi từ tệp CSV để ghi vào một template.
 
 
 .. tabs::
@@ -78,32 +78,32 @@ Below shows an example of a custom parser that extracts strings from a CSV file 
 
 
 
-To add a translatable string associated with a context, plural, comment, or source line:
+Để thêm một chuỗi có thể dịch được liên kết với context, plural, comment hoặc dòng mã nguồn:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # This will add a message with msgid "Test 1", msgctxt "context", msgid_plural "test 1 plurals", comment "test 1 comment", and source line "7".
+    # Thao tác này sẽ thêm một message với msgid "Test 1", msgctxt "context", msgid_plural "test 1 plurals", comment "test 1 comment" và dòng mã nguồn "7".
     ret.append(PackedStringArray(["Test 1", "context", "test 1 plurals", "test 1 comment", "7"]))
-    # This will add a message with msgid "A test without context" and msgid_plural "plurals".
+    # Thao tác này sẽ thêm một message với msgid "A test without context" và msgid_plural "plurals".
     ret.append(PackedStringArray(["A test without context", "", "plurals"]))
-    # This will add a message with msgid "Only with context" and msgctxt "a friendly context".
+    # Thao tác này sẽ thêm một message với msgid "Only with context" và msgctxt "a friendly context".
     ret.append(PackedStringArray(["Only with context", "a friendly context"]))
 
  .. code-tab:: csharp
 
-    // This will add a message with msgid "Test 1", msgctxt "context", msgid_plural "test 1 plurals", comment "test 1 comment", and source line "7".
+    // Thao tác này sẽ thêm một message với msgid "Test 1", msgctxt "context", msgid_plural "test 1 plurals", comment "test 1 comment" và dòng mã nguồn "7".
     ret.Add(["Test 1", "context", "test 1 plurals", "test 1 comment", "7"]);
-    // This will add a message with msgid "A test without context" and msgid_plural "plurals".
+    // Thao tác này sẽ thêm một thông báo với msgid "A test without context" và msgid_plural "plurals".
     ret.Add(["A test without context", "", "plurals"]);
-    // This will add a message with msgid "Only with context" and msgctxt "a friendly context".
+    // Thao tác này sẽ thêm một thông báo với msgid "Only with context" và msgctxt "a friendly context".
     ret.Add(["Only with context", "a friendly context"]);
 
 
 
-\ **Note:** If you override parsing logic for standard script types (GDScript, C#, etc.), it would be better to load the ``path`` argument using :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>`. This is because built-in scripts are loaded as :ref:`Resource<class_Resource>` type, not :ref:`FileAccess<class_FileAccess>` type. For example:
+\ **Lưu ý:** Nếu bạn ghi đè logic phân tích cú pháp cho các loại script tiêu chuẩn (GDScript, C#, v.v.), tốt hơn hết là tải đối số ``path`` bằng :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>`. Lý do là các script tích hợp được tải dưới dạng :ref:`Resource<class_Resource>`, không phải dưới dạng :ref:`FileAccess<class_FileAccess>`. Ví dụ:
 
 
 .. tabs::
@@ -113,7 +113,7 @@ To add a translatable string associated with a context, plural, comment, or sour
     func _parse_file(path):
         var res = ResourceLoader.load(path, "Script")
         var text = res.source_code
-        # Parsing logic.
+        # Logic phân tích cú pháp.
 
     func _get_recognized_extensions():
         return ["gd"]
@@ -124,7 +124,7 @@ To add a translatable string associated with a context, plural, comment, or sour
     {
         var res = ResourceLoader.Load<Script>(path, "Script");
         string text = res.SourceCode;
-        // Parsing logic.
+        // Logic phân tích cú pháp.
     }
 
     public override string[] _GetRecognizedExtensions()
@@ -134,14 +134,14 @@ To add a translatable string associated with a context, plural, comment, or sour
 
 
 
-Alternatively, the plugin can directly modify the final list of strings, by implementing :ref:`_customize_strings()<class_EditorTranslationParserPlugin_private_method__customize_strings>`.
+Ngoài ra, plugin có thể trực tiếp sửa đổi danh sách chuỗi cuối cùng bằng cách triển khai :ref:`_customize_strings()<class_EditorTranslationParserPlugin_private_method__customize_strings>`.
 
-To use **EditorTranslationParserPlugin**, register it using the :ref:`EditorPlugin.add_translation_parser_plugin()<class_EditorPlugin_method_add_translation_parser_plugin>` method first.
+Để sử dụng **EditorTranslationParserPlugin**, trước tiên hãy đăng ký nó bằng phương thức :ref:`EditorPlugin.add_translation_parser_plugin()<class_EditorPlugin_method_add_translation_parser_plugin>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -160,8 +160,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorTranslationParserPlugin_private_method__customize_strings:
 
@@ -169,7 +169,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`PackedStringArray<class_PackedStringArray>`\] **_customize_strings**\ (\ strings\: :ref:`Array<class_Array>`\[:ref:`PackedStringArray<class_PackedStringArray>`\]\ ) |virtual| |const| :ref:`🔗<class_EditorTranslationParserPlugin_private_method__customize_strings>`
 
-Called after parsing all files. You can modify the ``strings`` array to add or remove entries from the final list of strings, then return it after modifications. Each entry is a :ref:`PackedStringArray<class_PackedStringArray>` like explained in the **EditorTranslationParserPlugin**'s description.
+Được gọi sau khi phân tích cú pháp tất cả các tệp. Bạn có thể sửa đổi mảng ``strings`` để thêm hoặc xóa các mục khỏi danh sách chuỗi cuối cùng, sau đó trả về mảng này sau khi sửa đổi. Mỗi mục là một :ref:`PackedStringArray<class_PackedStringArray>`, như được giải thích trong phần mô tả của **EditorTranslationParserPlugin**.
 
 ::
 
@@ -195,7 +195,7 @@ Called after parsing all files. You can modify the ``strings`` array to add or r
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_recognized_extensions**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorTranslationParserPlugin_private_method__get_recognized_extensions>`
 
-Gets the list of file extensions to associate with this parser, e.g. ``["csv"]``.
+Lấy danh sách phần mở rộng tệp cần liên kết với parser này, ví dụ: ``["csv"]``.
 
 .. rst-class:: classref-item-separator
 
@@ -207,14 +207,14 @@ Gets the list of file extensions to associate with this parser, e.g. ``["csv"]``
 
 :ref:`Array<class_Array>`\[:ref:`PackedStringArray<class_PackedStringArray>`\] **_parse_file**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| :ref:`🔗<class_EditorTranslationParserPlugin_private_method__parse_file>`
 
-Override this method to define a custom parsing logic to extract the translatable strings.
+Ghi đè phương thức này để định nghĩa logic phân tích cú pháp tùy chỉnh nhằm trích xuất các chuỗi có thể dịch.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

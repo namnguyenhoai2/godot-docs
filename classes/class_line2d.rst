@@ -10,29 +10,29 @@
 Line2D
 ======
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A 2D polyline that can optionally be textured.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This node draws a 2D polyline, i.e. a shape consisting of several points connected by segments. **Line2D** is not a mathematical polyline, i.e. the segments are not infinitely thin. It is intended for rendering and it can be colored and optionally textured.
-
-\ **Warning:** Certain configurations may be impossible to draw nicely, such as very sharp angles. In these situations, the node uses fallback drawing logic to look decent.
-
-\ **Note:** **Line2D** is drawn using a 2D mesh.
+Một polyline 2D có thể tùy chọn áp dụng texture.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node này vẽ một polyline 2D, tức là một hình dạng gồm nhiều điểm được nối với nhau bằng các đoạn thẳng. **Line2D** không phải là một polyline theo nghĩa toán học, tức là các đoạn thẳng không mỏng vô hạn. Nó được thiết kế để render, có thể được tô màu và tùy chọn áp dụng texture.
+
+\ **Cảnh báo:** Một số cấu hình có thể không thể vẽ đẹp, chẳng hạn như các góc rất nhọn. Trong những trường hợp này, node sử dụng logic vẽ dự phòng để tạo ra hình thức khá ổn.
+
+\ **Lưu ý:** **Line2D** được vẽ bằng mesh 2D.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/2787>`__
+- `Bản trình diễn phép biến đổi ma trận <https://godotengine.org/asset-library/asset/2787>`__
 
-- `2.5D Game Demo <https://godotengine.org/asset-library/asset/2783>`__
+- `Bản trình diễn trò chơi 2.5D <https://godotengine.org/asset-library/asset/2783>`__
 
 .. rst-class:: classref-reftable-group
 
@@ -42,40 +42,40 @@ Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`antialiased<class_Line2D_property_antialiased>`         | ``false``                |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`LineCapMode<enum_Line2D_LineCapMode>`         | :ref:`begin_cap_mode<class_Line2D_property_begin_cap_mode>`   | ``0``                    |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`closed<class_Line2D_property_closed>`                   | ``false``                |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`Color<class_Color>`                           | :ref:`default_color<class_Line2D_property_default_color>`     | ``Color(1, 1, 1, 1)``    |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`LineCapMode<enum_Line2D_LineCapMode>`         | :ref:`end_cap_mode<class_Line2D_property_end_cap_mode>`       | ``0``                    |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`Gradient<class_Gradient>`                     | :ref:`gradient<class_Line2D_property_gradient>`               |                          |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`LineJointMode<enum_Line2D_LineJointMode>`     | :ref:`joint_mode<class_Line2D_property_joint_mode>`           | ``0``                    |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`points<class_Line2D_property_points>`                   | ``PackedVector2Array()`` |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                               | :ref:`round_precision<class_Line2D_property_round_precision>` | ``8``                    |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`float<class_float>`                           | :ref:`sharp_limit<class_Line2D_property_sharp_limit>`         | ``2.0``                  |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`texture<class_Line2D_property_texture>`                 |                          |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`LineTextureMode<enum_Line2D_LineTextureMode>` | :ref:`texture_mode<class_Line2D_property_texture_mode>`       | ``0``                    |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`float<class_float>`                           | :ref:`width<class_Line2D_property_width>`                     | ``10.0``                 |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
-   | :ref:`Curve<class_Curve>`                           | :ref:`width_curve<class_Line2D_property_width_curve>`         |                          |
-   +-----------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`antialiased<class_Line2D_property_antialiased>`         | ``false``                |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`LineCapMode <enum_Line2D_LineCapMode>`         | :ref:`begin_cap_mode<class_Line2D_property_begin_cap_mode>`   | ``0``                    |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`closed<class_Line2D_property_closed>`                   | ``false``                |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`Color<class_Color>`                            | :ref:`default_color<class_Line2D_property_default_color>`     | ``Color(1, 1, 1, 1)``    |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`LineCapMode <enum_Line2D_LineCapMode>`         | :ref:`end_cap_mode<class_Line2D_property_end_cap_mode>`       | ``0``                    |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`Gradient<class_Gradient>`                      | :ref:`gradient<class_Line2D_property_gradient>`               |                          |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`LineJointMode <enum_Line2D_LineJointMode>`     | :ref:`joint_mode<class_Line2D_property_joint_mode>`           | ``0``                    |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>`  | :ref:`points<class_Line2D_property_points>`                   | ``PackedVector2Array()`` |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                | :ref:`round_precision<class_Line2D_property_round_precision>` | ``8``                    |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`float<class_float>`                            | :ref:`sharp_limit<class_Line2D_property_sharp_limit>`         | ``2.0``                  |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                    | :ref:`texture<class_Line2D_property_texture>`                 |                          |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`LineTextureMode <enum_Line2D_LineTextureMode>` | :ref:`texture_mode<class_Line2D_property_texture_mode>`       | ``0``                    |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`float<class_float>`                            | :ref:`width<class_Line2D_property_width>`                     | ``10.0``                 |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
+   | :ref:`Curve<class_Curve>`                            | :ref:`width_curve<class_Line2D_property_width_curve>`         |                          |
+   +------------------------------------------------------+---------------------------------------------------------------+--------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -100,14 +100,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Line2D_LineJointMode:
 
 .. rst-class:: classref-enumeration
 
-enum **LineJointMode**: :ref:`🔗<enum_Line2D_LineJointMode>`
+enum **LineJointMode**: :ref:`🔗 <enum_Line2D_LineJointMode>`
 
 .. _class_Line2D_constant_LINE_JOINT_SHARP:
 
@@ -115,7 +115,7 @@ enum **LineJointMode**: :ref:`🔗<enum_Line2D_LineJointMode>`
 
 :ref:`LineJointMode<enum_Line2D_LineJointMode>` **LINE_JOINT_SHARP** = ``0``
 
-Makes the polyline's joints pointy, connecting the sides of the two segments by extending them until they intersect. If the rotation of a joint is too big (based on :ref:`sharp_limit<class_Line2D_property_sharp_limit>`), the joint falls back to :ref:`LINE_JOINT_BEVEL<class_Line2D_constant_LINE_JOINT_BEVEL>` to prevent very long miters.
+Làm cho các khớp của polyline nhọn, nối các cạnh của hai đoạn bằng cách kéo dài chúng cho đến khi giao nhau. Nếu góc xoay của một khớp quá lớn (dựa trên :ref:`sharp_limit<class_Line2D_property_sharp_limit>`), khớp sẽ chuyển về :ref:`LINE_JOINT_BEVEL<class_Line2D_constant_LINE_JOINT_BEVEL>` để ngăn các mối nối miter quá dài.
 
 .. _class_Line2D_constant_LINE_JOINT_BEVEL:
 
@@ -123,7 +123,7 @@ Makes the polyline's joints pointy, connecting the sides of the two segments by 
 
 :ref:`LineJointMode<enum_Line2D_LineJointMode>` **LINE_JOINT_BEVEL** = ``1``
 
-Makes the polyline's joints bevelled/chamfered, connecting the sides of the two segments with a simple line.
+Làm cho các khớp của polyline được vát, nối các cạnh của hai đoạn bằng một đường thẳng đơn giản.
 
 .. _class_Line2D_constant_LINE_JOINT_ROUND:
 
@@ -131,7 +131,7 @@ Makes the polyline's joints bevelled/chamfered, connecting the sides of the two 
 
 :ref:`LineJointMode<enum_Line2D_LineJointMode>` **LINE_JOINT_ROUND** = ``2``
 
-Makes the polyline's joints rounded, connecting the sides of the two segments with an arc. The detail of this arc depends on :ref:`round_precision<class_Line2D_property_round_precision>`.
+Làm cho các khớp của polyline bo tròn, nối các cạnh của hai đoạn bằng một cung tròn. Độ chi tiết của cung tròn này phụ thuộc vào :ref:`round_precision<class_Line2D_property_round_precision>`.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Makes the polyline's joints rounded, connecting the sides of the two segments wi
 
 .. rst-class:: classref-enumeration
 
-enum **LineCapMode**: :ref:`🔗<enum_Line2D_LineCapMode>`
+enum **LineCapMode**: :ref:`🔗 <enum_Line2D_LineCapMode>`
 
 .. _class_Line2D_constant_LINE_CAP_NONE:
 
@@ -149,7 +149,7 @@ enum **LineCapMode**: :ref:`🔗<enum_Line2D_LineCapMode>`
 
 :ref:`LineCapMode<enum_Line2D_LineCapMode>` **LINE_CAP_NONE** = ``0``
 
-Draws no line cap.
+Không vẽ đầu mút đường.
 
 .. _class_Line2D_constant_LINE_CAP_BOX:
 
@@ -157,7 +157,7 @@ Draws no line cap.
 
 :ref:`LineCapMode<enum_Line2D_LineCapMode>` **LINE_CAP_BOX** = ``1``
 
-Draws the line cap as a box, slightly extending the first/last segment.
+Vẽ đầu mút đường dưới dạng hình hộp, hơi kéo dài đoạn đầu/cuối.
 
 .. _class_Line2D_constant_LINE_CAP_ROUND:
 
@@ -165,7 +165,7 @@ Draws the line cap as a box, slightly extending the first/last segment.
 
 :ref:`LineCapMode<enum_Line2D_LineCapMode>` **LINE_CAP_ROUND** = ``2``
 
-Draws the line cap as a semicircle attached to the first/last segment.
+Vẽ đầu mút đường dưới dạng hình bán nguyệt gắn với đoạn đầu/cuối.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Draws the line cap as a semicircle attached to the first/last segment.
 
 .. rst-class:: classref-enumeration
 
-enum **LineTextureMode**: :ref:`🔗<enum_Line2D_LineTextureMode>`
+enum **LineTextureMode**: :ref:`🔗 <enum_Line2D_LineTextureMode>`
 
 .. _class_Line2D_constant_LINE_TEXTURE_NONE:
 
@@ -183,7 +183,7 @@ enum **LineTextureMode**: :ref:`🔗<enum_Line2D_LineTextureMode>`
 
 :ref:`LineTextureMode<enum_Line2D_LineTextureMode>` **LINE_TEXTURE_NONE** = ``0``
 
-Takes the left pixels of the texture and renders them over the whole polyline.
+Lấy các pixel bên trái của texture và kết xuất chúng trên toàn bộ polyline.
 
 .. _class_Line2D_constant_LINE_TEXTURE_TILE:
 
@@ -191,7 +191,7 @@ Takes the left pixels of the texture and renders them over the whole polyline.
 
 :ref:`LineTextureMode<enum_Line2D_LineTextureMode>` **LINE_TEXTURE_TILE** = ``1``
 
-Tiles the texture over the polyline. :ref:`CanvasItem.texture_repeat<class_CanvasItem_property_texture_repeat>` of the **Line2D** node must be :ref:`CanvasItem.TEXTURE_REPEAT_ENABLED<class_CanvasItem_constant_TEXTURE_REPEAT_ENABLED>` or :ref:`CanvasItem.TEXTURE_REPEAT_MIRROR<class_CanvasItem_constant_TEXTURE_REPEAT_MIRROR>` for it to work properly.
+Lặp texture trên polyline. :ref:`CanvasItem.texture_repeat<class_CanvasItem_property_texture_repeat>` của node **Line2D** phải là :ref:`CanvasItem.TEXTURE_REPEAT_ENABLED<class_CanvasItem_constant_TEXTURE_REPEAT_ENABLED>` hoặc :ref:`CanvasItem.TEXTURE_REPEAT_MIRROR<class_CanvasItem_constant_TEXTURE_REPEAT_MIRROR>` để hoạt động chính xác.
 
 .. _class_Line2D_constant_LINE_TEXTURE_STRETCH:
 
@@ -199,7 +199,7 @@ Tiles the texture over the polyline. :ref:`CanvasItem.texture_repeat<class_Canva
 
 :ref:`LineTextureMode<enum_Line2D_LineTextureMode>` **LINE_TEXTURE_STRETCH** = ``2``
 
-Stretches the texture across the polyline. :ref:`CanvasItem.texture_repeat<class_CanvasItem_property_texture_repeat>` of the **Line2D** node must be :ref:`CanvasItem.TEXTURE_REPEAT_DISABLED<class_CanvasItem_constant_TEXTURE_REPEAT_DISABLED>` for best results.
+Kéo giãn texture trên toàn bộ polyline. :ref:`CanvasItem.texture_repeat<class_CanvasItem_property_texture_repeat>` của node **Line2D** phải là :ref:`CanvasItem.TEXTURE_REPEAT_DISABLED<class_CanvasItem_constant_TEXTURE_REPEAT_DISABLED>` để đạt kết quả tốt nhất.
 
 .. rst-class:: classref-section-separator
 
@@ -207,8 +207,8 @@ Stretches the texture across the polyline. :ref:`CanvasItem.texture_repeat<class
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Line2D_property_antialiased:
 
@@ -221,9 +221,9 @@ Property Descriptions
 - |void| **set_antialiased**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_antialiased**\ (\ )
 
-If ``true``, the polyline's border will be anti-aliased.
+Nếu ``true``, đường viền của polyline sẽ được khử răng cưa.
 
-\ **Note:** **Line2D** is not accelerated by batching when being anti-aliased.
+\ **Lưu ý:** **Line2D** không được tăng tốc bằng batching khi được khử răng cưa.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ If ``true``, the polyline's border will be anti-aliased.
 - |void| **set_begin_cap_mode**\ (\ value\: :ref:`LineCapMode<enum_Line2D_LineCapMode>`\ )
 - :ref:`LineCapMode<enum_Line2D_LineCapMode>` **get_begin_cap_mode**\ (\ )
 
-The style of the beginning of the polyline, if :ref:`closed<class_Line2D_property_closed>` is ``false``.
+Kiểu của phần đầu polyline nếu :ref:`closed<class_Line2D_property_closed>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -257,11 +257,11 @@ The style of the beginning of the polyline, if :ref:`closed<class_Line2D_propert
 - |void| **set_closed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_closed**\ (\ )
 
-If ``true`` and the polyline has more than 2 points, the last point and the first one will be connected by a segment.
+Nếu ``true`` và polyline có nhiều hơn 2 điểm, điểm cuối và điểm đầu sẽ được nối với nhau bằng một đoạn.
 
-\ **Note:** The shape of the closing segment is not guaranteed to be seamless if a :ref:`width_curve<class_Line2D_property_width_curve>` is provided.
+\ **Lưu ý:** Hình dạng của đoạn nối cuối không được đảm bảo liền mạch nếu cung cấp một :ref:`width_curve<class_Line2D_property_width_curve>`.
 
-\ **Note:** The joint between the closing segment and the first segment is drawn first and it samples the :ref:`gradient<class_Line2D_property_gradient>` and the :ref:`width_curve<class_Line2D_property_width_curve>` at the beginning. This is an implementation detail that might change in a future version.
+\ **Lưu ý:** Mối nối giữa đoạn nối cuối và đoạn đầu tiên được vẽ trước, đồng thời lấy mẫu :ref:`gradient<class_Line2D_property_gradient>` và :ref:`width_curve<class_Line2D_property_width_curve>` ở phần đầu. Đây là chi tiết triển khai có thể thay đổi trong phiên bản tương lai.
 
 .. rst-class:: classref-item-separator
 
@@ -278,7 +278,7 @@ If ``true`` and the polyline has more than 2 points, the last point and the firs
 - |void| **set_default_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_default_color**\ (\ )
 
-The color of the polyline. Will not be used if a gradient is set.
+Màu của polyline. Sẽ không được sử dụng nếu đã đặt gradient.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ The color of the polyline. Will not be used if a gradient is set.
 - |void| **set_end_cap_mode**\ (\ value\: :ref:`LineCapMode<enum_Line2D_LineCapMode>`\ )
 - :ref:`LineCapMode<enum_Line2D_LineCapMode>` **get_end_cap_mode**\ (\ )
 
-The style of the end of the polyline, if :ref:`closed<class_Line2D_property_closed>` is ``false``.
+Kiểu của phần cuối polyline nếu :ref:`closed<class_Line2D_property_closed>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -305,14 +305,14 @@ The style of the end of the polyline, if :ref:`closed<class_Line2D_property_clos
 
 .. rst-class:: classref-property
 
-:ref:`Gradient<class_Gradient>` **gradient** :ref:`🔗<class_Line2D_property_gradient>`
+:ref:`Gradient<class_Gradient>` **gradient** :ref:`🔗 <class_Line2D_property_gradient>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_gradient**\ (\ value\: :ref:`Gradient<class_Gradient>`\ )
 - :ref:`Gradient<class_Gradient>` **get_gradient**\ (\ )
 
-The gradient is drawn through the whole line from start to finish. The :ref:`default_color<class_Line2D_property_default_color>` will not be used if this property is set.
+Dải màu được vẽ xuyên suốt toàn bộ đường từ đầu đến cuối. :ref:`default_color<class_Line2D_property_default_color>` sẽ không được sử dụng nếu thuộc tính này được đặt.
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ The gradient is drawn through the whole line from start to finish. The :ref:`def
 - |void| **set_joint_mode**\ (\ value\: :ref:`LineJointMode<enum_Line2D_LineJointMode>`\ )
 - :ref:`LineJointMode<enum_Line2D_LineJointMode>` **get_joint_mode**\ (\ )
 
-The style of the connections between segments of the polyline.
+Kiểu của các điểm nối giữa các đoạn của polyline.
 
 .. rst-class:: classref-item-separator
 
@@ -346,9 +346,9 @@ The style of the connections between segments of the polyline.
 - |void| **set_points**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_points**\ (\ )
 
-The points of the polyline, interpreted in local 2D coordinates. Segments are drawn between the adjacent points in this array.
+Các điểm của polyline, được diễn giải theo tọa độ 2D cục bộ. Các đoạn được vẽ giữa các điểm liền kề trong mảng này.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được *sao chép* và mọi thay đổi đối với mảng sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -365,7 +365,7 @@ The points of the polyline, interpreted in local 2D coordinates. Segments are dr
 - |void| **set_round_precision**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_round_precision**\ (\ )
 
-The smoothness used for rounded joints and caps. Higher values result in smoother corners, but are more demanding to render and update.
+Độ mượt được sử dụng cho các điểm nối và đầu mút bo tròn. Giá trị cao hơn tạo ra các góc mượt hơn, nhưng đòi hỏi nhiều tài nguyên hơn khi kết xuất và cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -382,7 +382,7 @@ The smoothness used for rounded joints and caps. Higher values result in smoothe
 - |void| **set_sharp_limit**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sharp_limit**\ (\ )
 
-Determines the miter limit of the polyline. Normally, when :ref:`joint_mode<class_Line2D_property_joint_mode>` is set to :ref:`LINE_JOINT_SHARP<class_Line2D_constant_LINE_JOINT_SHARP>`, sharp angles fall back to using the logic of :ref:`LINE_JOINT_BEVEL<class_Line2D_constant_LINE_JOINT_BEVEL>` joints to prevent very long miters. Higher values of this property mean that the fallback to a bevel joint will happen at sharper angles.
+Xác định giới hạn miter của polyline. Thông thường, khi :ref:`joint_mode<class_Line2D_property_joint_mode>` được đặt thành :ref:`LINE_JOINT_SHARP<class_Line2D_constant_LINE_JOINT_SHARP>`, các góc nhọn sẽ chuyển sang sử dụng logic của các điểm nối :ref:`LINE_JOINT_BEVEL<class_Line2D_constant_LINE_JOINT_BEVEL>` để tránh các miter quá dài. Giá trị cao hơn của thuộc tính này có nghĩa là việc chuyển sang điểm nối bevel sẽ xảy ra ở các góc nhọn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -392,14 +392,14 @@ Determines the miter limit of the polyline. Normally, when :ref:`joint_mode<clas
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_Line2D_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_Line2D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-The texture used for the polyline. Uses :ref:`texture_mode<class_Line2D_property_texture_mode>` for drawing style.
+Texture được sử dụng cho polyline. Sử dụng :ref:`texture_mode<class_Line2D_property_texture_mode>` để xác định kiểu vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -416,7 +416,7 @@ The texture used for the polyline. Uses :ref:`texture_mode<class_Line2D_property
 - |void| **set_texture_mode**\ (\ value\: :ref:`LineTextureMode<enum_Line2D_LineTextureMode>`\ )
 - :ref:`LineTextureMode<enum_Line2D_LineTextureMode>` **get_texture_mode**\ (\ )
 
-The style to render the :ref:`texture<class_Line2D_property_texture>` of the polyline.
+Kiểu dùng để hiển thị :ref:`texture<class_Line2D_property_texture>` của polyline.
 
 .. rst-class:: classref-item-separator
 
@@ -433,7 +433,7 @@ The style to render the :ref:`texture<class_Line2D_property_texture>` of the pol
 - |void| **set_width**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_width**\ (\ )
 
-The polyline's width.
+Độ rộng của polyline.
 
 .. rst-class:: classref-item-separator
 
@@ -443,14 +443,14 @@ The polyline's width.
 
 .. rst-class:: classref-property
 
-:ref:`Curve<class_Curve>` **width_curve** :ref:`🔗<class_Line2D_property_width_curve>`
+:ref:`Curve<class_Curve>` **width_curve** :ref:`🔗 <class_Line2D_property_width_curve>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_curve**\ (\ value\: :ref:`Curve<class_Curve>`\ )
 - :ref:`Curve<class_Curve>` **get_curve**\ (\ )
 
-The polyline's width curve. The width of the polyline over its length will be equivalent to the value of the width curve over its domain. The width curve should be a unit :ref:`Curve<class_Curve>`.
+Đường cong độ rộng của polyline. Độ rộng của polyline trên toàn bộ chiều dài sẽ tương ứng với giá trị của đường cong độ rộng trên miền xác định của nó. Đường cong độ rộng phải là một :ref:`Curve<class_Curve>` đơn vị.
 
 .. rst-class:: classref-section-separator
 
@@ -458,8 +458,8 @@ The polyline's width curve. The width of the polyline over its length will be eq
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Line2D_method_add_point:
 
@@ -467,9 +467,9 @@ Method Descriptions
 
 |void| **add_point**\ (\ position\: :ref:`Vector2<class_Vector2>`, index\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_Line2D_method_add_point>`
 
-Adds a point with the specified ``position`` relative to the polyline's own position. If no ``index`` is provided, the new point will be added to the end of the points array.
+Thêm một điểm với ``position`` đã chỉ định, tương đối với vị trí riêng của polyline. Nếu không cung cấp ``index``, điểm mới sẽ được thêm vào cuối mảng điểm.
 
-If ``index`` is given, the new point is inserted before the existing point identified by index ``index``. The indices of the points after the new point get increased by 1. The provided ``index`` must not exceed the number of existing points in the polyline. See :ref:`get_point_count()<class_Line2D_method_get_point_count>`.
+Nếu ``index`` được cung cấp, điểm mới sẽ được chèn trước điểm hiện có được xác định bởi chỉ số ``index``. Chỉ số của các điểm sau điểm mới sẽ tăng thêm 1. ``index`` được cung cấp không được lớn hơn số điểm hiện có trong polyline. Xem :ref:`get_point_count()<class_Line2D_method_get_point_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ If ``index`` is given, the new point is inserted before the existing point ident
 
 |void| **clear_points**\ (\ ) :ref:`🔗<class_Line2D_method_clear_points>`
 
-Removes all points from the polyline, making it empty.
+Xóa tất cả các điểm khỏi polyline, khiến polyline trở thành rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ Removes all points from the polyline, making it empty.
 
 :ref:`int<class_int>` **get_point_count**\ (\ ) |const| :ref:`🔗<class_Line2D_method_get_point_count>`
 
-Returns the number of points in the polyline.
+Trả về số điểm trong polyline.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Returns the number of points in the polyline.
 
 :ref:`Vector2<class_Vector2>` **get_point_position**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Line2D_method_get_point_position>`
 
-Returns the position of the point at index ``index``.
+Trả về vị trí của điểm tại chỉ số ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -517,7 +517,7 @@ Returns the position of the point at index ``index``.
 
 |void| **remove_point**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Line2D_method_remove_point>`
 
-Removes the point at index ``index`` from the polyline.
+Xóa điểm tại chỉ số ``index`` khỏi polyline.
 
 .. rst-class:: classref-item-separator
 
@@ -529,14 +529,14 @@ Removes the point at index ``index`` from the polyline.
 
 |void| **set_point_position**\ (\ index\: :ref:`int<class_int>`, position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Line2D_method_set_point_position>`
 
-Overwrites the position of the point at the given ``index`` with the supplied ``position``.
+Ghi đè vị trí của điểm tại ``index`` bằng ``position`` được cung cấp.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

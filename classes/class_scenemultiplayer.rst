@@ -10,29 +10,29 @@
 SceneMultiplayer
 ================
 
-**Inherits:** :ref:`MultiplayerAPI<class_MultiplayerAPI>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`MultiplayerAPI<class_MultiplayerAPI>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-High-level multiplayer API implementation.
+Triển khai API multiplayer cấp cao.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class is the default implementation of :ref:`MultiplayerAPI<class_MultiplayerAPI>`, used to provide multiplayer functionalities in Godot Engine.
+Lớp này là triển khai mặc định của :ref:`MultiplayerAPI<class_MultiplayerAPI>`, được dùng để cung cấp các chức năng multiplayer trong Godot Engine.
 
-This implementation supports RPCs via :ref:`Node.rpc()<class_Node_method_rpc>` and :ref:`Node.rpc_id()<class_Node_method_rpc_id>` and requires :ref:`MultiplayerAPI.rpc()<class_MultiplayerAPI_method_rpc>` to be passed a :ref:`Node<class_Node>` (it will fail for other object types).
+Triển khai này hỗ trợ RPC thông qua :ref:`Node.rpc()<class_Node_method_rpc>` và :ref:`Node.rpc_id()<class_Node_method_rpc_id>`, đồng thời yêu cầu :ref:`MultiplayerAPI.rpc()<class_MultiplayerAPI_method_rpc>` được truyền vào một :ref:`Node<class_Node>` (sẽ không hoạt động với các kiểu đối tượng khác).
 
-This implementation additionally provide :ref:`SceneTree<class_SceneTree>` replication via the :ref:`MultiplayerSpawner<class_MultiplayerSpawner>` and :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>` nodes, and the :ref:`SceneReplicationConfig<class_SceneReplicationConfig>` resource.
+Ngoài ra, triển khai này còn cung cấp khả năng replication của :ref:`SceneTree<class_SceneTree>` thông qua các node :ref:`MultiplayerSpawner<class_MultiplayerSpawner>` và :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`, cùng resource :ref:`SceneReplicationConfig<class_SceneReplicationConfig>`.
 
-\ **Note:** The high-level multiplayer API protocol is an implementation detail and isn't meant to be used by non-Godot servers. It may change without notice.
+\ **Lưu ý:** Giao thức API multiplayer cấp cao là một chi tiết triển khai và không предназнач để sử dụng với các server không phải Godot. Giao thức này có thể thay đổi mà không cần thông báo.
 
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+\ **Lưu ý:** Khi export sang Android, hãy đảm bảo bật quyền ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -57,25 +57,25 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`clear<class_SceneMultiplayer_method_clear>`\ (\ )                                                                                                                                                                                                          |
-   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`complete_auth<class_SceneMultiplayer_method_complete_auth>`\ (\ id\: :ref:`int<class_int>`\ )                                                                                                                                                              |
-   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`disconnect_peer<class_SceneMultiplayer_method_disconnect_peer>`\ (\ id\: :ref:`int<class_int>`\ )                                                                                                                                                          |
-   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>` | :ref:`get_authenticating_peers<class_SceneMultiplayer_method_get_authenticating_peers>`\ (\ )                                                                                                                                                                    |
-   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`send_auth<class_SceneMultiplayer_method_send_auth>`\ (\ id\: :ref:`int<class_int>`, data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                |
-   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`send_bytes<class_SceneMultiplayer_method_send_bytes>`\ (\ bytes\: :ref:`PackedByteArray<class_PackedByteArray>`, id\: :ref:`int<class_int>` = 0, mode\: :ref:`TransferMode<enum_MultiplayerPeer_TransferMode>` = 2, channel\: :ref:`int<class_int>` = 0\ ) |
-   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                          | :ref:`clear<class_SceneMultiplayer_method_clear>`\ (\ )                                                                                                                                                                                                           |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`complete_auth<class_SceneMultiplayer_method_complete_auth>`\ (\ id\: :ref:`int<class_int>`\ )                                                                                                                                                               |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                          | :ref:`disconnect_peer<class_SceneMultiplayer_method_disconnect_peer>`\ (\ id\: :ref:`int<class_int>`\ )                                                                                                                                                           |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedInt32Array<class_PackedInt32Array>` | :ref:`get_authenticating_peers<class_SceneMultiplayer_method_get_authenticating_peers>`\ (\ )                                                                                                                                                                     |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`send_auth<class_SceneMultiplayer_method_send_auth>`\ (\ id\: :ref:`int<class_int>`, data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                 |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`send_bytes<class_SceneMultiplayer_method_send_bytes>`\ (\ bytes\: :ref:`PackedByteArray<class_PackedByteArray>`, id\: :ref:`int<class_int>` = 0, mode\: :ref:`TransferMode <enum_MultiplayerPeer_TransferMode>` = 2, channel\: :ref:`int<class_int>` = 0\ ) |
+   +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -83,8 +83,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Các signal
+----------
 
 .. _class_SceneMultiplayer_signal_peer_authenticating:
 
@@ -92,7 +92,7 @@ Signals
 
 **peer_authenticating**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SceneMultiplayer_signal_peer_authenticating>`
 
-Emitted when this MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` connects to a new peer and a valid :ref:`auth_callback<class_SceneMultiplayer_property_auth_callback>` is set. In this case, the :ref:`MultiplayerAPI.peer_connected<class_MultiplayerAPI_signal_peer_connected>` will not be emitted until :ref:`complete_auth()<class_SceneMultiplayer_method_complete_auth>` is called with given peer ``id``. While in this state, the peer will not be included in the list returned by :ref:`MultiplayerAPI.get_peers()<class_MultiplayerAPI_method_get_peers>` (but in the one returned by :ref:`get_authenticating_peers()<class_SceneMultiplayer_method_get_authenticating_peers>`), and only authentication data will be sent or received. See :ref:`send_auth()<class_SceneMultiplayer_method_send_auth>` for sending authentication data.
+Được phát ra khi :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này kết nối với một peer mới và một :ref:`auth_callback<class_SceneMultiplayer_property_auth_callback>` hợp lệ được thiết lập. Trong trường hợp này, :ref:`MultiplayerAPI.peer_connected<class_MultiplayerAPI_signal_peer_connected>` sẽ chưa được phát ra cho đến khi :ref:`complete_auth()<class_SceneMultiplayer_method_complete_auth>` được gọi với ``id`` đã cho của peer. Trong trạng thái này, peer sẽ không được đưa vào danh sách do :ref:`MultiplayerAPI.get_peers()<class_MultiplayerAPI_method_get_peers>` trả về (nhưng sẽ được đưa vào danh sách do :ref:`get_authenticating_peers()<class_SceneMultiplayer_method_get_authenticating_peers>` trả về), và chỉ dữ liệu xác thực mới được gửi hoặc nhận. Xem :ref:`send_auth()<class_SceneMultiplayer_method_send_auth>` để gửi dữ liệu xác thực.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Emitted when this MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_M
 
 **peer_authentication_failed**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SceneMultiplayer_signal_peer_authentication_failed>`
 
-Emitted when this MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` disconnects from a peer for which authentication had not yet completed. See :ref:`peer_authenticating<class_SceneMultiplayer_signal_peer_authenticating>`.
+Được phát ra khi :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này ngắt kết nối khỏi một peer mà quá trình xác thực vẫn chưa hoàn tất. Xem :ref:`peer_authenticating<class_SceneMultiplayer_signal_peer_authenticating>`.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Emitted when this MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_M
 
 **peer_packet**\ (\ id\: :ref:`int<class_int>`, packet\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_SceneMultiplayer_signal_peer_packet>`
 
-Emitted when this MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` receives a ``packet`` with custom data (see :ref:`send_bytes()<class_SceneMultiplayer_method_send_bytes>`). ID is the peer ID of the peer that sent the packet.
+Được phát ra khi :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này nhận một ``packet`` có dữ liệu tùy chỉnh (xem :ref:`send_bytes()<class_SceneMultiplayer_method_send_bytes>`). ID là ID của peer đã gửi packet.
 
 .. rst-class:: classref-section-separator
 
@@ -124,8 +124,8 @@ Emitted when this MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_M
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SceneMultiplayer_property_allow_object_decoding:
 
@@ -138,9 +138,9 @@ Property Descriptions
 - |void| **set_allow_object_decoding**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_object_decoding_allowed**\ (\ )
 
-If ``true``, the MultiplayerAPI will allow encoding and decoding of object during RPCs.
+Nếu ``true``, MultiplayerAPI sẽ cho phép mã hóa và giải mã đối tượng trong các RPC.
 
-\ **Warning:** Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threat such as remote code execution.
+\ **Cảnh báo:** Các đối tượng được deserialize có thể chứa code được thực thi. Không sử dụng tùy chọn này nếu đối tượng được serialize đến từ nguồn không đáng tin cậy để tránh các mối đe dọa bảo mật tiềm ẩn, chẳng hạn như thực thi code từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ If ``true``, the MultiplayerAPI will allow encoding and decoding of object durin
 - |void| **set_auth_callback**\ (\ value\: :ref:`Callable<class_Callable>`\ )
 - :ref:`Callable<class_Callable>` **get_auth_callback**\ (\ )
 
-The callback to execute when receiving authentication data sent via :ref:`send_auth()<class_SceneMultiplayer_method_send_auth>`. If the :ref:`Callable<class_Callable>` is empty (default), peers will be automatically accepted as soon as they connect.
+Callback sẽ được thực thi khi nhận dữ liệu xác thực được gửi qua :ref:`send_auth()<class_SceneMultiplayer_method_send_auth>`. Nếu :ref:`Callable<class_Callable>` trống (mặc định), các peer sẽ được tự động chấp nhận ngay khi kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ The callback to execute when receiving authentication data sent via :ref:`send_a
 - |void| **set_auth_timeout**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_auth_timeout**\ (\ )
 
-If set to a value greater than ``0.0``, the maximum duration in seconds peers can stay in the authenticating state, after which the authentication will automatically fail. See the :ref:`peer_authenticating<class_SceneMultiplayer_signal_peer_authenticating>` and :ref:`peer_authentication_failed<class_SceneMultiplayer_signal_peer_authentication_failed>` signals.
+Nếu được đặt thành giá trị lớn hơn ``0.0``, thời lượng tối đa tính bằng giây mà các peer có thể ở trong trạng thái đang xác thực sẽ được giới hạn; sau thời gian đó, quá trình xác thực sẽ tự động thất bại. Xem các signal :ref:`peer_authenticating<class_SceneMultiplayer_signal_peer_authenticating>` và :ref:`peer_authentication_failed<class_SceneMultiplayer_signal_peer_authentication_failed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ If set to a value greater than ``0.0``, the maximum duration in seconds peers ca
 - |void| **set_max_delta_packet_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_delta_packet_size**\ (\ )
 
-Maximum size of each delta packet. Higher values increase the chance of receiving full updates in a single frame, but also the chance of causing networking congestion (higher latency, disconnections). See :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`.
+Kích thước tối đa của mỗi delta packet. Giá trị cao hơn làm tăng khả năng nhận được các bản cập nhật đầy đủ trong một frame, nhưng cũng làm tăng khả năng gây tắc nghẽn mạng (độ trễ cao hơn, mất kết nối). Xem :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ Maximum size of each delta packet. Higher values increase the chance of receivin
 - |void| **set_max_sync_packet_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_sync_packet_size**\ (\ )
 
-Maximum size of each synchronization packet. Higher values increase the chance of receiving full updates in a single frame, but also the chance of packet loss. See :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`.
+Kích thước tối đa của mỗi synchronization packet. Giá trị cao hơn làm tăng khả năng nhận được các bản cập nhật đầy đủ trong một frame, nhưng cũng làm tăng khả năng mất packet. Xem :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Maximum size of each synchronization packet. Higher values increase the chance o
 - |void| **set_refuse_new_connections**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_refusing_new_connections**\ (\ )
 
-If ``true``, the MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` refuses new incoming connections.
+Nếu ``true``, :ref:`MultiplayerAPI.multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI sẽ từ chối các kết nối đến mới.
 
 .. rst-class:: classref-item-separator
 
@@ -242,9 +242,9 @@ If ``true``, the MultiplayerAPI's :ref:`MultiplayerAPI.multiplayer_peer<class_Mu
 - |void| **set_root_path**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_root_path**\ (\ )
 
-The root path to use for RPCs and replication. Instead of an absolute path, a relative path will be used to find the node upon which the RPC should be executed.
+Root path được sử dụng cho RPC và replication. Thay vì một path tuyệt đối, một path tương đối sẽ được dùng để tìm node nơi RPC cần được thực thi.
 
-This effectively allows to have different branches of the scene tree to be managed by different MultiplayerAPI, allowing for example to run both client and server in the same scene.
+Điều này cho phép các nhánh khác nhau của scene tree được các MultiplayerAPI khác nhau quản lý, chẳng hạn cho phép chạy cả client và server trong cùng một scene.
 
 .. rst-class:: classref-item-separator
 
@@ -261,11 +261,11 @@ This effectively allows to have different branches of the scene tree to be manag
 - |void| **set_server_relay_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_server_relay_enabled**\ (\ )
 
-Enable or disable the server feature that notifies clients of other peers' connection/disconnection, and relays messages between them. When this option is ``false``, clients won't be automatically notified of other peers and won't be able to send them packets through the server.
+Bật hoặc tắt tính năng server thông báo cho client về việc các peer khác kết nối/ngắt kết nối và relay message giữa chúng. Khi tùy chọn này là ``false``, client sẽ không tự động được thông báo về các peer khác và sẽ không thể gửi packet cho chúng thông qua server.
 
-\ **Note:** Changing this option while other peers are connected may lead to unexpected behaviors.
+\ **Lưu ý:** Thay đổi tùy chọn này khi các peer khác đang kết nối có thể dẫn đến hành vi không mong muốn.
 
-\ **Note:** Support for this feature may depend on the current :ref:`MultiplayerPeer<class_MultiplayerPeer>` configuration. See :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>`.
+\ **Lưu ý:** Việc hỗ trợ tính năng này có thể phụ thuộc vào cấu hình :ref:`MultiplayerPeer<class_MultiplayerPeer>` hiện tại. Xem :ref:`MultiplayerPeer.is_server_relay_supported()<class_MultiplayerPeer_method_is_server_relay_supported>`.
 
 .. rst-class:: classref-section-separator
 
@@ -273,8 +273,8 @@ Enable or disable the server feature that notifies clients of other peers' conne
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SceneMultiplayer_method_clear:
 
@@ -282,7 +282,7 @@ Method Descriptions
 
 |void| **clear**\ (\ ) :ref:`🔗<class_SceneMultiplayer_method_clear>`
 
-Clears the current SceneMultiplayer network state (you shouldn't call this unless you know what you are doing).
+Xóa trạng thái mạng SceneMultiplayer hiện tại (bạn không nên gọi phương thức này trừ khi biết rõ mình đang làm gì).
 
 .. rst-class:: classref-item-separator
 
@@ -294,9 +294,9 @@ Clears the current SceneMultiplayer network state (you shouldn't call this unles
 
 :ref:`Error<enum_@GlobalScope_Error>` **complete_auth**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SceneMultiplayer_method_complete_auth>`
 
-Mark the authentication step as completed for the remote peer identified by ``id``. The :ref:`MultiplayerAPI.peer_connected<class_MultiplayerAPI_signal_peer_connected>` signal will be emitted for this peer once the remote side also completes the authentication. No further authentication messages are expected to be received from this peer.
+Đánh dấu bước xác thực là đã hoàn tất đối với peer từ xa được xác định bởi ``id``. Signal :ref:`MultiplayerAPI.peer_connected<class_MultiplayerAPI_signal_peer_connected>` sẽ được phát ra cho peer này sau khi phía từ xa cũng hoàn tất xác thực. Không dự kiến nhận thêm thông báo xác thực nào từ peer này.
 
-If a peer disconnects before completing authentication, either due to a network issue, the :ref:`auth_timeout<class_SceneMultiplayer_property_auth_timeout>` expiring, or manually calling :ref:`disconnect_peer()<class_SceneMultiplayer_method_disconnect_peer>`, the :ref:`peer_authentication_failed<class_SceneMultiplayer_signal_peer_authentication_failed>` signal will be emitted instead of :ref:`MultiplayerAPI.peer_disconnected<class_MultiplayerAPI_signal_peer_disconnected>`.
+Nếu một peer ngắt kết nối trước khi hoàn tất xác thực, do sự cố mạng, :ref:`auth_timeout<class_SceneMultiplayer_property_auth_timeout>` hết hạn hoặc gọi :ref:`disconnect_peer()<class_SceneMultiplayer_method_disconnect_peer>` theo cách thủ công, signal :ref:`peer_authentication_failed<class_SceneMultiplayer_signal_peer_authentication_failed>` sẽ được phát ra thay vì :ref:`MultiplayerAPI.peer_disconnected<class_MultiplayerAPI_signal_peer_disconnected>`.
 
 .. rst-class:: classref-item-separator
 
@@ -308,7 +308,7 @@ If a peer disconnects before completing authentication, either due to a network 
 
 |void| **disconnect_peer**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SceneMultiplayer_method_disconnect_peer>`
 
-Disconnects the peer identified by ``id``, removing it from the list of connected peers, and closing the underlying connection with it.
+Ngắt kết nối peer được xác định bởi ``id``, xóa peer đó khỏi danh sách các peer đã kết nối và đóng kết nối bên dưới với peer đó.
 
 .. rst-class:: classref-item-separator
 
@@ -320,7 +320,7 @@ Disconnects the peer identified by ``id``, removing it from the list of connecte
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_authenticating_peers**\ (\ ) :ref:`🔗<class_SceneMultiplayer_method_get_authenticating_peers>`
 
-Returns the IDs of the peers currently trying to authenticate with this :ref:`MultiplayerAPI<class_MultiplayerAPI>`.
+Trả về ID của các peer hiện đang cố gắng xác thực với :ref:`MultiplayerAPI<class_MultiplayerAPI>` này.
 
 .. rst-class:: classref-item-separator
 
@@ -332,7 +332,7 @@ Returns the IDs of the peers currently trying to authenticate with this :ref:`Mu
 
 :ref:`Error<enum_@GlobalScope_Error>` **send_auth**\ (\ id\: :ref:`int<class_int>`, data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_SceneMultiplayer_method_send_auth>`
 
-Sends the specified ``data`` to the remote peer identified by ``id`` as part of an authentication message. This can be used to authenticate peers, and control when :ref:`MultiplayerAPI.peer_connected<class_MultiplayerAPI_signal_peer_connected>` is emitted (and the remote peer accepted as one of the connected peers).
+Gửi ``data`` đã chỉ định đến peer từ xa được xác định bởi ``id`` như một phần của thông báo xác thực. Có thể dùng cách này để xác thực các peer và kiểm soát thời điểm :ref:`MultiplayerAPI.peer_connected<class_MultiplayerAPI_signal_peer_connected>` được phát ra (đồng thời peer từ xa được chấp nhận là một trong các peer đã kết nối).
 
 .. rst-class:: classref-item-separator
 
@@ -344,14 +344,14 @@ Sends the specified ``data`` to the remote peer identified by ``id`` as part of 
 
 :ref:`Error<enum_@GlobalScope_Error>` **send_bytes**\ (\ bytes\: :ref:`PackedByteArray<class_PackedByteArray>`, id\: :ref:`int<class_int>` = 0, mode\: :ref:`TransferMode<enum_MultiplayerPeer_TransferMode>` = 2, channel\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_SceneMultiplayer_method_send_bytes>`
 
-Sends the given raw ``bytes`` to a specific peer identified by ``id`` (see :ref:`MultiplayerPeer.set_target_peer()<class_MultiplayerPeer_method_set_target_peer>`). Default ID is ``0``, i.e. broadcast to all peers.
+Gửi ``bytes`` thô đã cho đến một peer cụ thể được xác định bởi ``id`` (xem :ref:`MultiplayerPeer.set_target_peer()<class_MultiplayerPeer_method_set_target_peer>`). ID mặc định là ``0``, tức là broadcast đến tất cả các peer.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

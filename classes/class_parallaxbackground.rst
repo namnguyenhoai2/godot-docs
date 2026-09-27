@@ -10,44 +10,44 @@
 ParallaxBackground
 ==================
 
-**Deprecated:** Use the :ref:`Parallax2D<class_Parallax2D>` node instead.
+**Đã lỗi thời:** Hãy sử dụng node :ref:`Parallax2D<class_Parallax2D>` thay thế.
 
-**Inherits:** :ref:`CanvasLayer<class_CanvasLayer>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CanvasLayer<class_CanvasLayer>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node used to create a parallax scrolling background.
+Một node dùng để tạo nền cuộn parallax.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A ParallaxBackground uses one or more :ref:`ParallaxLayer<class_ParallaxLayer>` child nodes to create a parallax effect. Each :ref:`ParallaxLayer<class_ParallaxLayer>` can move at a different speed using :ref:`ParallaxLayer.motion_offset<class_ParallaxLayer_property_motion_offset>`. This creates an illusion of depth in a 2D game. If not used with a :ref:`Camera2D<class_Camera2D>`, you must manually calculate the :ref:`scroll_offset<class_ParallaxBackground_property_scroll_offset>`.
+Một ParallaxBackground sử dụng một hoặc nhiều node con :ref:`ParallaxLayer<class_ParallaxLayer>` để tạo hiệu ứng parallax. Mỗi :ref:`ParallaxLayer<class_ParallaxLayer>` có thể di chuyển với tốc độ khác nhau bằng :ref:`ParallaxLayer.motion_offset<class_ParallaxLayer_property_motion_offset>`. Điều này tạo ra ảo giác về chiều sâu trong game 2D. Nếu không được sử dụng với một :ref:`Camera2D<class_Camera2D>`, bạn phải tự tính toán :ref:`scroll_offset<class_ParallaxBackground_property_scroll_offset>`.
 
-\ **Note:** Each **ParallaxBackground** is drawn on one specific :ref:`Viewport<class_Viewport>` and cannot be shared between multiple :ref:`Viewport<class_Viewport>`\ s, see :ref:`CanvasLayer.custom_viewport<class_CanvasLayer_property_custom_viewport>`. When using multiple :ref:`Viewport<class_Viewport>`\ s, for example in a split-screen game, you need create an individual **ParallaxBackground** for each :ref:`Viewport<class_Viewport>` you want it to be drawn on.
+\ **Lưu ý:** Mỗi **ParallaxBackground** được vẽ trên một :ref:`Viewport<class_Viewport>` cụ thể và không thể được dùng chung giữa nhiều :ref:`Viewport<class_Viewport>`\ s, xem :ref:`CanvasLayer.custom_viewport<class_CanvasLayer_property_custom_viewport>`. Khi sử dụng nhiều :ref:`Viewport<class_Viewport>`\ s, chẳng hạn trong game chia đôi màn hình, bạn cần tạo một **ParallaxBackground** riêng cho mỗi :ref:`Viewport<class_Viewport>` mà bạn muốn nó được vẽ trên đó.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`         | layer                                                                                         | ``-100`` (overrides :ref:`CanvasLayer<class_CanvasLayer_property_layer>`) |
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_base_offset<class_ParallaxBackground_property_scroll_base_offset>`               | ``Vector2(0, 0)``                                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_base_scale<class_ParallaxBackground_property_scroll_base_scale>`                 | ``Vector2(1, 1)``                                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`scroll_ignore_camera_zoom<class_ParallaxBackground_property_scroll_ignore_camera_zoom>` | ``false``                                                                 |
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_limit_begin<class_ParallaxBackground_property_scroll_limit_begin>`               | ``Vector2(0, 0)``                                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_limit_end<class_ParallaxBackground_property_scroll_limit_end>`                   | ``Vector2(0, 0)``                                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_offset<class_ParallaxBackground_property_scroll_offset>`                         | ``Vector2(0, 0)``                                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`         | layer                                                                                         | ``-100`` (ghi đè :ref:`CanvasLayer<class_CanvasLayer_property_layer>`) |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_base_offset<class_ParallaxBackground_property_scroll_base_offset>`               | ``Vector2(0, 0)``                                                      |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_base_scale<class_ParallaxBackground_property_scroll_base_scale>`                 | ``Vector2(1, 1)``                                                      |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`scroll_ignore_camera_zoom<class_ParallaxBackground_property_scroll_ignore_camera_zoom>` | ``false``                                                              |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_limit_begin<class_ParallaxBackground_property_scroll_limit_begin>`               | ``Vector2(0, 0)``                                                      |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_limit_end<class_ParallaxBackground_property_scroll_limit_end>`                   | ``Vector2(0, 0)``                                                      |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`scroll_offset<class_ParallaxBackground_property_scroll_offset>`                         | ``Vector2(0, 0)``                                                      |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -55,8 +55,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ParallaxBackground_property_scroll_base_offset:
 
@@ -69,7 +69,7 @@ Property Descriptions
 - |void| **set_scroll_base_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scroll_base_offset**\ (\ )
 
-The base position offset for all :ref:`ParallaxLayer<class_ParallaxLayer>` children.
+Độ lệch vị trí cơ sở cho tất cả các node con :ref:`ParallaxLayer<class_ParallaxLayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ The base position offset for all :ref:`ParallaxLayer<class_ParallaxLayer>` child
 - |void| **set_scroll_base_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scroll_base_scale**\ (\ )
 
-The base motion scale for all :ref:`ParallaxLayer<class_ParallaxLayer>` children.
+Tỷ lệ chuyển động cơ sở cho tất cả các node con :ref:`ParallaxLayer<class_ParallaxLayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ The base motion scale for all :ref:`ParallaxLayer<class_ParallaxLayer>` children
 - |void| **set_ignore_camera_zoom**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_ignore_camera_zoom**\ (\ )
 
-If ``true``, elements in :ref:`ParallaxLayer<class_ParallaxLayer>` child aren't affected by the zoom level of the camera.
+Nếu là ``true``, các phần tử trong node con :ref:`ParallaxLayer<class_ParallaxLayer>` sẽ không bị ảnh hưởng bởi mức thu phóng của camera.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ If ``true``, elements in :ref:`ParallaxLayer<class_ParallaxLayer>` child aren't 
 - |void| **set_limit_begin**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_limit_begin**\ (\ )
 
-Top-left limits for scrolling to begin. If the camera is outside of this limit, the background will stop scrolling. Must be lower than :ref:`scroll_limit_end<class_ParallaxBackground_property_scroll_limit_end>` to work.
+Các giới hạn trên bên trái để bắt đầu cuộn. Nếu camera nằm ngoài giới hạn này, nền sẽ ngừng cuộn. Phải nhỏ hơn :ref:`scroll_limit_end<class_ParallaxBackground_property_scroll_limit_end>` thì mới hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Top-left limits for scrolling to begin. If the camera is outside of this limit, 
 - |void| **set_limit_end**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_limit_end**\ (\ )
 
-Bottom-right limits for scrolling to end. If the camera is outside of this limit, the background will stop scrolling. Must be higher than :ref:`scroll_limit_begin<class_ParallaxBackground_property_scroll_limit_begin>` to work.
+Giới hạn dưới cùng bên phải để cuộn đến cuối. Nếu camera nằm ngoài giới hạn này, nền sẽ dừng cuộn. Phải cao hơn :ref:`scroll_limit_begin<class_ParallaxBackground_property_scroll_limit_begin>` thì mới hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -154,14 +154,14 @@ Bottom-right limits for scrolling to end. If the camera is outside of this limit
 - |void| **set_scroll_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scroll_offset**\ (\ )
 
-The ParallaxBackground's scroll value. Calculated automatically when using a :ref:`Camera2D<class_Camera2D>`, but can be used to manually manage scrolling when no camera is present.
+Giá trị cuộn của ParallaxBackground. Được tự động tính khi sử dụng một :ref:`Camera2D<class_Camera2D>`, nhưng có thể được dùng để quản lý việc cuộn theo cách thủ công khi không có camera.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường phải được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này作为 toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

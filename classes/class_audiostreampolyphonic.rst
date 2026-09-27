@@ -10,29 +10,29 @@
 AudioStreamPolyphonic
 =====================
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-AudioStream that lets the user play custom streams at any time from code, simultaneously using a single player.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-AudioStream that lets the user play custom streams at any time from code, simultaneously using a single player.
-
-Playback control is done via the :ref:`AudioStreamPlaybackPolyphonic<class_AudioStreamPlaybackPolyphonic>` instance set inside the player, which can be obtained via :ref:`AudioStreamPlayer.get_stream_playback()<class_AudioStreamPlayer_method_get_stream_playback>`, :ref:`AudioStreamPlayer2D.get_stream_playback()<class_AudioStreamPlayer2D_method_get_stream_playback>` or :ref:`AudioStreamPlayer3D.get_stream_playback()<class_AudioStreamPlayer3D_method_get_stream_playback>` methods. Obtaining the playback instance is only valid after the ``stream`` property is set as an **AudioStreamPolyphonic** in those players.
+AudioStream cho phép người dùng phát các stream tùy chỉnh bất kỳ lúc nào từ code, đồng thời sử dụng một player duy nhất.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+AudioStream cho phép người dùng phát các stream tùy chỉnh bất kỳ lúc nào từ code, đồng thời sử dụng một player duy nhất.
+
+Việc điều khiển phát được thực hiện thông qua instance :ref:`AudioStreamPlaybackPolyphonic<class_AudioStreamPlaybackPolyphonic>` được thiết lập bên trong player, có thể lấy được bằng các phương thức :ref:`AudioStreamPlayer.get_stream_playback()<class_AudioStreamPlayer_method_get_stream_playback>`, :ref:`AudioStreamPlayer2D.get_stream_playback()<class_AudioStreamPlayer2D_method_get_stream_playback>` hoặc :ref:`AudioStreamPlayer3D.get_stream_playback()<class_AudioStreamPlayer3D_method_get_stream_playback>`. Việc lấy instance phát chỉ hợp lệ sau khi thuộc tính ``stream`` được thiết lập dưới dạng **AudioStreamPolyphonic** trong các player đó.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -48,8 +48,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioStreamPolyphonic_property_polyphony:
 
@@ -62,14 +62,14 @@ Property Descriptions
 - |void| **set_polyphony**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_polyphony**\ (\ )
 
-Maximum amount of simultaneous streams that can be played.
+Số lượng tối đa các luồng đồng thời có thể được phát.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

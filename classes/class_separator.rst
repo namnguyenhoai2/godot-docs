@@ -10,23 +10,23 @@
 Separator
 =========
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`HSeparator<class_HSeparator>`, :ref:`VSeparator<class_VSeparator>`
+**Được kế thừa bởi:** :ref:`HSeparator<class_HSeparator>`, :ref:`VSeparator<class_VSeparator>`
 
-Abstract base class for separators.
+Lớp cơ sở trừu tượng cho các separator.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Abstract base class for separators, used for separating other controls. **Separator**\ s are purely visual and normally drawn as a :ref:`StyleBoxLine<class_StyleBoxLine>`.
+Lớp cơ sở trừu tượng cho các separator, được dùng để phân tách các control khác. **Separator**\ s chỉ mang tính trực quan và thường được vẽ dưới dạng :ref:`StyleBoxLine<class_StyleBoxLine>`.
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Các thuộc tính Theme
+--------------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả các thuộc tính Theme
+--------------------------
 
 .. _class_Separator_theme_constant_separation:
 
@@ -52,7 +52,7 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **separation** = ``0`` :ref:`🔗<class_Separator_theme_constant_separation>`
 
-The size of the area covered by the separator. Effectively works like a minimum width/height.
+Kích thước của vùng được separator bao phủ. Về cơ bản, thuộc tính này hoạt động như chiều rộng/chiều cao tối thiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -62,16 +62,16 @@ The size of the area covered by the separator. Effectively works like a minimum 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **separator** :ref:`🔗<class_Separator_theme_style_separator>`
+:ref:`StyleBox<class_StyleBox>` **separator** :ref:`🔗 <class_Separator_theme_style_separator>`
 
-The style for the separator line. Works best with :ref:`StyleBoxLine<class_StyleBoxLine>` (remember to enable :ref:`StyleBoxLine.vertical<class_StyleBoxLine_property_vertical>` for :ref:`VSeparator<class_VSeparator>`).
+Kiểu của đường separator. Hoạt động tốt nhất với :ref:`StyleBoxLine<class_StyleBoxLine>` (hãy nhớ bật :ref:`StyleBoxLine.vertical<class_StyleBoxLine_property_vertical>` cho :ref:`VSeparator<class_VSeparator>`).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

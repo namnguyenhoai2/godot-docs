@@ -10,51 +10,51 @@
 GPUParticlesCollisionSDF3D
 ==========================
 
-**Inherits:** :ref:`GPUParticlesCollision3D<class_GPUParticlesCollision3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`GPUParticlesCollision3D<class_GPUParticlesCollision3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A baked signed distance field 3D particle collision shape affecting :ref:`GPUParticles3D<class_GPUParticles3D>` nodes.
+Một hình dạng va chạm hạt 3D dựa trên trường khoảng cách có dấu (signed distance field) đã được bake, tác động đến các node :ref:`GPUParticles3D<class_GPUParticles3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A baked signed distance field 3D particle collision shape affecting :ref:`GPUParticles3D<class_GPUParticles3D>` nodes.
+Một hình dạng va chạm hạt 3D dựa trên trường khoảng cách có dấu đã được bake, tác động đến các node :ref:`GPUParticles3D<class_GPUParticles3D>`.
 
-Signed distance fields (SDF) allow for efficiently representing approximate collision shapes for convex and concave objects of any shape. This is more flexible than :ref:`GPUParticlesCollisionHeightField3D<class_GPUParticlesCollisionHeightField3D>`, but it requires a baking step.
+Trường khoảng cách có dấu (SDF) cho phép biểu diễn hiệu quả các hình dạng va chạm gần đúng cho các đối tượng lồi và lõm với mọi hình dạng. Cách này linh hoạt hơn :ref:`GPUParticlesCollisionHeightField3D<class_GPUParticlesCollisionHeightField3D>`, nhưng cần một bước bake.
 
-\ **Baking:** The signed distance field texture can be baked by selecting the **GPUParticlesCollisionSDF3D** node in the editor, then clicking **Bake SDF** at the top of the 3D viewport. Any *visible* :ref:`MeshInstance3D<class_MeshInstance3D>`\ s within the :ref:`size<class_GPUParticlesCollisionSDF3D_property_size>` will be taken into account for baking, regardless of their :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>`.
+\ **Tạo dữ liệu:** Có thể bake texture trường khoảng cách có dấu bằng cách chọn node **GPUParticlesCollisionSDF3D** trong editor, sau đó nhấp vào **Bake SDF** ở phía trên cùng của khung nhìn 3D. Mọi *hiển thị* :ref:`MeshInstance3D<class_MeshInstance3D>`\  trong :ref:`size<class_GPUParticlesCollisionSDF3D_property_size>` sẽ được tính đến khi bake, bất kể :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` của chúng.
 
-\ **Note:** Baking a **GPUParticlesCollisionSDF3D**'s :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>` is only possible within the editor, as there is no bake method exposed for use in exported projects. However, it's still possible to load pre-baked :ref:`Texture3D<class_Texture3D>`\ s into its :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>` property in an exported project.
+\ **Lưu ý:** Chỉ có thể bake **GPUParticlesCollisionSDF3D**'s :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>` trong editor, vì không có phương thức bake nào được cung cấp để sử dụng trong các project đã export. Tuy nhiên, vẫn có thể nạp các :ref:`Texture3D<class_Texture3D>`\  đã bake vào thuộc tính :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>` của nó trong một project đã export.
 
-\ **Note:** :ref:`ParticleProcessMaterial.collision_mode<class_ParticleProcessMaterial_property_collision_mode>` must be :ref:`ParticleProcessMaterial.COLLISION_RIGID<class_ParticleProcessMaterial_constant_COLLISION_RIGID>` or :ref:`ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT<class_ParticleProcessMaterial_constant_COLLISION_HIDE_ON_CONTACT>` on the :ref:`GPUParticles3D<class_GPUParticles3D>`'s process material for collision to work.
+\ **Lưu ý:** :ref:`ParticleProcessMaterial.collision_mode<class_ParticleProcessMaterial_property_collision_mode>` phải là :ref:`ParticleProcessMaterial.COLLISION_RIGID<class_ParticleProcessMaterial_constant_COLLISION_RIGID>` hoặc :ref:`ParticleProcessMaterial.COLLISION_HIDE_ON_CONTACT<class_ParticleProcessMaterial_constant_COLLISION_HIDE_ON_CONTACT>` trên process material của :ref:`GPUParticles3D<class_GPUParticles3D>` để va chạm hoạt động.
 
-\ **Note:** Particle collision only affects :ref:`GPUParticles3D<class_GPUParticles3D>`, not :ref:`CPUParticles3D<class_CPUParticles3D>`.
+\ **Lưu ý:** Va chạm particle chỉ ảnh hưởng đến :ref:`GPUParticles3D<class_GPUParticles3D>`, không ảnh hưởng đến :ref:`CPUParticles3D<class_CPUParticles3D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                                         | :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>`   | ``4294967295``       |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
-   | :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` | :ref:`resolution<class_GPUParticlesCollisionSDF3D_property_resolution>` | ``2``                |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>`                                 | :ref:`size<class_GPUParticlesCollisionSDF3D_property_size>`             | ``Vector3(2, 2, 2)`` |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
-   | :ref:`Texture3D<class_Texture3D>`                             | :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>`       |                      |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                     | :ref:`thickness<class_GPUParticlesCollisionSDF3D_property_thickness>`   | ``1.0``              |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
+   +----------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                                          | :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>`   | ``4294967295``       |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
+   | :ref:`Resolution <enum_GPUParticlesCollisionSDF3D_Resolution>` | :ref:`resolution<class_GPUParticlesCollisionSDF3D_property_resolution>` | ``2``                |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>`                                  | :ref:`size<class_GPUParticlesCollisionSDF3D_property_size>`             | ``Vector3(2, 2, 2)`` |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
+   | :ref:`Texture3D<class_Texture3D>`                              | :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>`       |                      |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                      | :ref:`thickness<class_GPUParticlesCollisionSDF3D_property_thickness>`   | ``1.0``              |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------+----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -71,14 +71,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_GPUParticlesCollisionSDF3D_Resolution:
 
 .. rst-class:: classref-enumeration
 
-enum **Resolution**: :ref:`🔗<enum_GPUParticlesCollisionSDF3D_Resolution>`
+enum **Resolution**: :ref:`🔗 <enum_GPUParticlesCollisionSDF3D_Resolution>`
 
 .. _class_GPUParticlesCollisionSDF3D_constant_RESOLUTION_16:
 
@@ -86,7 +86,7 @@ enum **Resolution**: :ref:`🔗<enum_GPUParticlesCollisionSDF3D_Resolution>`
 
 :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **RESOLUTION_16** = ``0``
 
-Bake a 16×16×16 signed distance field. This is the fastest option, but also the least precise.
+Tạo trường khoảng cách có dấu 16×16×16. Đây là tùy chọn nhanh nhất nhưng cũng kém chính xác nhất.
 
 .. _class_GPUParticlesCollisionSDF3D_constant_RESOLUTION_32:
 
@@ -94,7 +94,7 @@ Bake a 16×16×16 signed distance field. This is the fastest option, but also th
 
 :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **RESOLUTION_32** = ``1``
 
-Bake a 32×32×32 signed distance field.
+Tạo trường khoảng cách có dấu 32×32×32.
 
 .. _class_GPUParticlesCollisionSDF3D_constant_RESOLUTION_64:
 
@@ -102,7 +102,7 @@ Bake a 32×32×32 signed distance field.
 
 :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **RESOLUTION_64** = ``2``
 
-Bake a 64×64×64 signed distance field.
+Tạo trường khoảng cách có dấu 64×64×64.
 
 .. _class_GPUParticlesCollisionSDF3D_constant_RESOLUTION_128:
 
@@ -110,7 +110,7 @@ Bake a 64×64×64 signed distance field.
 
 :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **RESOLUTION_128** = ``3``
 
-Bake a 128×128×128 signed distance field.
+Tạo trường khoảng cách có dấu 128×128×128.
 
 .. _class_GPUParticlesCollisionSDF3D_constant_RESOLUTION_256:
 
@@ -118,7 +118,7 @@ Bake a 128×128×128 signed distance field.
 
 :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **RESOLUTION_256** = ``4``
 
-Bake a 256×256×256 signed distance field.
+Tạo trường khoảng cách có dấu 256×256×256.
 
 .. _class_GPUParticlesCollisionSDF3D_constant_RESOLUTION_512:
 
@@ -126,7 +126,7 @@ Bake a 256×256×256 signed distance field.
 
 :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **RESOLUTION_512** = ``5``
 
-Bake a 512×512×512 signed distance field. This is the slowest option, but also the most precise.
+Bake một signed distance field 512×512×512. Đây là tùy chọn chậm nhất nhưng cũng chính xác nhất.
 
 .. _class_GPUParticlesCollisionSDF3D_constant_RESOLUTION_MAX:
 
@@ -134,7 +134,7 @@ Bake a 512×512×512 signed distance field. This is the slowest option, but also
 
 :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **RESOLUTION_MAX** = ``6``
 
-Represents the size of the :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` enum.
+Biểu thị kích thước của enum :ref:`Resolution <enum_GPUParticlesCollisionSDF3D_Resolution>`.
 
 .. rst-class:: classref-section-separator
 
@@ -142,8 +142,8 @@ Represents the size of the :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Reso
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GPUParticlesCollisionSDF3D_property_bake_mask:
 
@@ -156,7 +156,7 @@ Property Descriptions
 - |void| **set_bake_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bake_mask**\ (\ )
 
-The visual layers to account for when baking the particle collision SDF. Only :ref:`MeshInstance3D<class_MeshInstance3D>`\ s whose :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` match with this :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>` will be included in the generated particle collision SDF. By default, all objects are taken into account for the particle collision SDF baking.
+Các lớp trực quan cần được tính đến khi bake SDF va chạm hạt. Chỉ những :ref:`MeshInstance3D<class_MeshInstance3D>`\ s có :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` khớp với :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>` này mới được đưa vào SDF va chạm hạt được tạo. Theo mặc định, tất cả đối tượng đều được tính đến khi bake SDF va chạm hạt.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ The visual layers to account for when baking the particle collision SDF. Only :r
 - |void| **set_resolution**\ (\ value\: :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>`\ )
 - :ref:`Resolution<enum_GPUParticlesCollisionSDF3D_Resolution>` **get_resolution**\ (\ )
 
-The bake resolution to use for the signed distance field :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>`. The texture must be baked again for changes to the :ref:`resolution<class_GPUParticlesCollisionSDF3D_property_resolution>` property to be effective. Higher resolutions have a greater performance cost and take more time to bake. Higher resolutions also result in larger baked textures, leading to increased VRAM and storage space requirements. To improve performance and reduce bake times, use the lowest resolution possible for the object you're representing the collision of.
+Độ phân giải bake được sử dụng cho :ref:`texture<class_GPUParticlesCollisionSDF3D_property_texture>` của signed distance field. Phải bake lại texture để các thay đổi đối với thuộc tính :ref:`resolution<class_GPUParticlesCollisionSDF3D_property_resolution>` có hiệu lực. Độ phân giải cao hơn có chi phí hiệu năng lớn hơn và mất nhiều thời gian bake hơn. Độ phân giải cao hơn cũng tạo ra các texture đã bake lớn hơn, dẫn đến yêu cầu cao hơn về dung lượng VRAM và dung lượng lưu trữ. Để cải thiện hiệu năng và giảm thời gian bake, hãy sử dụng độ phân giải thấp nhất có thể cho đối tượng mà bạn đang biểu diễn va chạm của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ The bake resolution to use for the signed distance field :ref:`texture<class_GPU
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-The collision SDF's size in 3D units. To improve SDF quality, the :ref:`size<class_GPUParticlesCollisionSDF3D_property_size>` should be set as small as possible while covering the parts of the scene you need.
+Kích thước của SDF va chạm theo đơn vị 3D. Để cải thiện chất lượng SDF, :ref:`size<class_GPUParticlesCollisionSDF3D_property_size>` nên được đặt nhỏ nhất có thể trong khi vẫn bao phủ các phần của cảnh mà bạn cần.
 
 .. rst-class:: classref-item-separator
 
@@ -200,14 +200,14 @@ The collision SDF's size in 3D units. To improve SDF quality, the :ref:`size<cla
 
 .. rst-class:: classref-property
 
-:ref:`Texture3D<class_Texture3D>` **texture** :ref:`🔗<class_GPUParticlesCollisionSDF3D_property_texture>`
+:ref:`Texture3D<class_Texture3D>` **texture** :ref:`🔗 <class_GPUParticlesCollisionSDF3D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture3D<class_Texture3D>`\ )
 - :ref:`Texture3D<class_Texture3D>` **get_texture**\ (\ )
 
-The 3D texture representing the signed distance field.
+Kết cấu 3D biểu diễn trường khoảng cách có dấu.
 
 .. rst-class:: classref-item-separator
 
@@ -224,7 +224,7 @@ The 3D texture representing the signed distance field.
 - |void| **set_thickness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_thickness**\ (\ )
 
-The collision shape's thickness. Unlike other particle colliders, **GPUParticlesCollisionSDF3D** is actually hollow on the inside. :ref:`thickness<class_GPUParticlesCollisionSDF3D_property_thickness>` can be increased to prevent particles from tunneling through the collision shape at high speeds, or when the **GPUParticlesCollisionSDF3D** is moved.
+Độ dày của hình dạng va chạm. Không giống các collider hạt khác, **GPUParticlesCollisionSDF3D** thực sự rỗng bên trong. :ref:`thickness<class_GPUParticlesCollisionSDF3D_property_thickness>` có thể được tăng lên để ngăn các hạt xuyên qua hình dạng va chạm ở tốc độ cao hoặc khi **GPUParticlesCollisionSDF3D** được di chuyển.
 
 .. rst-class:: classref-section-separator
 
@@ -232,8 +232,8 @@ The collision shape's thickness. Unlike other particle colliders, **GPUParticles
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GPUParticlesCollisionSDF3D_method_get_bake_mask_value:
 
@@ -241,7 +241,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **get_bake_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GPUParticlesCollisionSDF3D_method_get_bake_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc lớp được chỉ định của :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -253,14 +253,14 @@ Returns whether or not the specified layer of the :ref:`bake_mask<class_GPUParti
 
 |void| **set_bake_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_GPUParticlesCollisionSDF3D_method_set_bake_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt lớp được chỉ định trong :ref:`bake_mask<class_GPUParticlesCollisionSDF3D_property_bake_mask>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

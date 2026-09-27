@@ -10,23 +10,23 @@
 RDShaderFile
 ============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Compiled shader file in SPIR-V form (used by :ref:`RenderingDevice<class_RenderingDevice>`). Not to be confused with Godot's own :ref:`Shader<class_Shader>`.
+Tệp shader đã biên dịch dưới dạng SPIR-V (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`). Không nhầm lẫn với :ref:`Shader<class_Shader>` của Godot.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Compiled shader file in SPIR-V form.
+Tệp shader đã biên dịch dưới dạng SPIR-V.
 
-See also :ref:`RDShaderSource<class_RDShaderSource>`. **RDShaderFile** is only meant to be used with the :ref:`RenderingDevice<class_RenderingDevice>` API. It should not be confused with Godot's own :ref:`Shader<class_Shader>` resource, which is what Godot's various nodes use for high-level shader programming.
+Xem thêm :ref:`RDShaderSource<class_RDShaderSource>`. **RDShaderFile** chỉ được dùng với API :ref:`RenderingDevice<class_RenderingDevice>`. Không nên nhầm lẫn với resource :ref:`Shader<class_Shader>` của Godot, vốn được các node khác nhau của Godot sử dụng để lập trình shader cấp cao.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -37,8 +37,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -57,8 +57,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDShaderFile_property_base_error:
 
@@ -71,7 +71,7 @@ Property Descriptions
 - |void| **set_base_error**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_base_error**\ (\ )
 
-The base compilation error message, which indicates errors not related to a specific shader stage if non-empty. If empty, shader compilation is not necessarily successful (check :ref:`RDShaderSPIRV<class_RDShaderSPIRV>`'s error message members).
+Thông báo lỗi biên dịch cơ sở, cho biết các lỗi không liên quan đến một shader stage cụ thể nếu không rỗng. Nếu rỗng, việc biên dịch shader không nhất thiết thành công (hãy kiểm tra các thành viên thông báo lỗi của :ref:`RDShaderSPIRV<class_RDShaderSPIRV>`).
 
 .. rst-class:: classref-section-separator
 
@@ -79,8 +79,8 @@ The base compilation error message, which indicates errors not related to a spec
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RDShaderFile_method_get_spirv:
 
@@ -88,7 +88,7 @@ Method Descriptions
 
 :ref:`RDShaderSPIRV<class_RDShaderSPIRV>` **get_spirv**\ (\ version\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_RDShaderFile_method_get_spirv>`
 
-Returns the SPIR-V intermediate representation for the specified shader ``version``.
+Trả về biểu diễn trung gian SPIR-V cho ``version`` shader được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ Returns the SPIR-V intermediate representation for the specified shader ``versio
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_version_list**\ (\ ) |const| :ref:`🔗<class_RDShaderFile_method_get_version_list>`
 
-Returns the list of compiled versions for this shader.
+Trả về danh sách các phiên bản đã biên dịch của shader này.
 
 .. rst-class:: classref-item-separator
 
@@ -112,14 +112,14 @@ Returns the list of compiled versions for this shader.
 
 |void| **set_bytecode**\ (\ bytecode\: :ref:`RDShaderSPIRV<class_RDShaderSPIRV>`, version\: :ref:`StringName<class_StringName>` = &""\ ) :ref:`🔗<class_RDShaderFile_method_set_bytecode>`
 
-Sets the SPIR-V ``bytecode`` that will be compiled for the specified ``version``.
+Thiết lập ``bytecode`` SPIR-V sẽ được biên dịch cho ``version`` được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

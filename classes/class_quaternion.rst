@@ -10,24 +10,24 @@
 Quaternion
 ==========
 
-A unit quaternion used for representing 3D rotations.
+Một quaternion đơn vị được dùng để biểu diễn các phép xoay 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Quaternion** built-in :ref:`Variant<class_Variant>` type is a 4D data structure that represents rotation in the form of a `Hamilton convention quaternion <https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation>`__. Compared to the :ref:`Basis<class_Basis>` type which can store both rotation and scale, quaternions can *only* store rotation.
+Kiểu **Quaternion** tích hợp sẵn :ref:`Variant<class_Variant>` là một cấu trúc dữ liệu 4D biểu diễn phép xoay dưới dạng quaternion `theo quy ước Hamilton <https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation>`__. So với kiểu :ref:`Basis<class_Basis>` có thể lưu cả phép xoay và tỷ lệ, quaternion *chỉ* có thể lưu phép xoay.
 
-A **Quaternion** is composed by 4 floating-point components: :ref:`w<class_Quaternion_property_w>`, :ref:`x<class_Quaternion_property_x>`, :ref:`y<class_Quaternion_property_y>`, and :ref:`z<class_Quaternion_property_z>`. These components are very compact in memory, and because of this some operations are more efficient and less likely to cause floating-point errors. Methods such as :ref:`get_angle()<class_Quaternion_method_get_angle>`, :ref:`get_axis()<class_Quaternion_method_get_axis>`, and :ref:`slerp()<class_Quaternion_method_slerp>` are faster than their :ref:`Basis<class_Basis>` counterparts.
+Một **Quaternion** gồm 4 thành phần dấu phẩy động: :ref:`w<class_Quaternion_property_w>`, :ref:`x<class_Quaternion_property_x>`, :ref:`y<class_Quaternion_property_y>` và :ref:`z<class_Quaternion_property_z>`. Các thành phần này rất gọn về bộ nhớ, nhờ đó một số phép toán hiệu quả hơn và ít có khả năng gây ra lỗi dấu phẩy động hơn. Các phương thức như :ref:`get_angle()<class_Quaternion_method_get_angle>`, :ref:`get_axis()<class_Quaternion_method_get_axis>` và :ref:`slerp()<class_Quaternion_method_slerp>` nhanh hơn các phương thức tương ứng của :ref:`Basis<class_Basis>`.
 
-For a great introduction to quaternions, see `this video by 3Blue1Brown <https://www.youtube.com/watch?v=d4EgbgTm0Bg>`__. You do not need to know the math behind quaternions, as Godot provides several helper methods that handle it for you. These include :ref:`slerp()<class_Quaternion_method_slerp>` and :ref:`spherical_cubic_interpolate()<class_Quaternion_method_spherical_cubic_interpolate>`, as well as the ``*`` operator.
+Để có phần giới thiệu tuyệt vời về quaternion, hãy xem `video này của 3Blue1Brown <https://www.youtube.com/watch?v=d4EgbgTm0Bg>`__. Bạn không cần biết phần toán học đằng sau quaternion, vì Godot cung cấp một số phương thức trợ giúp để xử lý việc đó cho bạn. Các phương thức này bao gồm :ref:`slerp()<class_Quaternion_method_slerp>` và :ref:`spherical_cubic_interpolate()<class_Quaternion_method_spherical_cubic_interpolate>`, cũng như toán tử ``*``.
 
-\ **Note:** Quaternions must be normalized before being used for rotation (see :ref:`normalized()<class_Quaternion_method_normalized>`).
+\ **Lưu ý:** Quaternion phải được chuẩn hóa trước khi được dùng để xoay (xem :ref:`normalized()<class_Quaternion_method_normalized>`).
 
-\ **Note:** Similarly to :ref:`Vector2<class_Vector2>` and :ref:`Vector3<class_Vector3>`, the components of a quaternion use 32-bit precision by default, unlike :ref:`float<class_float>` which is always 64-bit. If double precision is needed, compile the engine with the option ``precision=double``.
+\ **Lưu ý:** Tương tự như :ref:`Vector2<class_Vector2>` và :ref:`Vector3<class_Vector3>`, các thành phần của quaternion mặc định sử dụng độ chính xác 32-bit, không giống :ref:`float<class_float>` vốn luôn là 64-bit. Nếu cần độ chính xác kép, hãy biên dịch engine với tùy chọn ``precision=double``.
 
-\ **Note:** In a boolean context, a quaternion will evaluate to ``false`` if it's equal to :ref:`IDENTITY<class_Quaternion_constant_IDENTITY>`. Otherwise, a quaternion will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một quaternion sẽ được đánh giá là ``false`` nếu nó bằng :ref:`IDENTITY<class_Quaternion_constant_IDENTITY>`. Nếu không, một quaternion sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -35,22 +35,22 @@ For a great introduction to quaternions, see `this video by 3Blue1Brown <https:/
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `3Blue1Brown's video on Quaternions <https://www.youtube.com/watch?v=d4EgbgTm0Bg>`__
+- `Video của 3Blue1Brown về Quaternion <https://www.youtube.com/watch?v=d4EgbgTm0Bg>`__
 
-- `Online Quaternion Visualization <https://quaternions.online/>`__
+- `Trực quan hóa Quaternion trực tuyến <https://quaternions.online/>`__
 
-- `Using 3D transforms <../tutorials/3d/using_transforms.html#interpolating-with-quaternions>`__
+- `Sử dụng các phép biến đổi 3D <../tutorials/3d/using_transforms.html#interpolating-with-quaternions>`__
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
-- `Advanced Quaternion Visualization <https://iwatake2222.github.io/rotation_master/rotation_master.html>`__
+- `Trực quan hóa Quaternion nâng cao <https://iwatake2222.github.io/rotation_master/rotation_master.html>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -68,7 +68,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -90,8 +90,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -138,39 +138,39 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator !=<class_Quaternion_operator_neq_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator *<class_Quaternion_operator_mul_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`       | :ref:`operator *<class_Quaternion_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ )           |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator *<class_Quaternion_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                 |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator *<class_Quaternion_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                       |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator +<class_Quaternion_operator_sum_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator -<class_Quaternion_operator_dif_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator /<class_Quaternion_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                 |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator /<class_Quaternion_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                       |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator ==<class_Quaternion_operator_eq_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator []<class_Quaternion_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator unary+<class_Quaternion_operator_unplus>`\ (\ )                                                  |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator unary-<class_Quaternion_operator_unminus>`\ (\ )                                                 |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator != <class_Quaternion_operator_neq_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator * <class_Quaternion_operator_mul_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`       | :ref:`operator * <class_Quaternion_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ )           |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator * <class_Quaternion_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                 |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator * <class_Quaternion_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                       |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator + <class_Quaternion_operator_sum_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator - <class_Quaternion_operator_dif_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator / <class_Quaternion_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                 |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator / <class_Quaternion_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                       |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator == <class_Quaternion_operator_eq_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ )  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`operator [] <class_Quaternion_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                      |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator unary+ <class_Quaternion_operator_unplus>`\ (\ )                                                  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator unary- <class_Quaternion_operator_unminus>`\ (\ )                                                 |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -178,8 +178,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Quaternion_constant_IDENTITY:
 
@@ -187,11 +187,11 @@ Constants
 
 **IDENTITY** = ``Quaternion(0, 0, 0, 1)`` :ref:`🔗<class_Quaternion_constant_IDENTITY>`
 
-The identity quaternion, representing no rotation. This has the same rotation as :ref:`Basis.IDENTITY<class_Basis_constant_IDENTITY>`.
+Quaternion identity, biểu thị không có phép xoay nào. Nó có cùng phép xoay với :ref:`Basis.IDENTITY<class_Basis_constant_IDENTITY>`.
 
-If a :ref:`Vector3<class_Vector3>` is rotated (multiplied) by this quaternion, it does not change.
+Nếu một :ref:`Vector3<class_Vector3>` được xoay (nhân) với quaternion này, nó sẽ không thay đổi.
 
-\ **Note:** In GDScript, this constant is equivalent to creating a :ref:`Quaternion<class_Quaternion_constructor_Quaternion>` without any arguments. It can be used to make your code clearer, and for consistency with C#.
+\ **Lưu ý:** Trong GDScript, hằng số này tương đương với việc tạo một :ref:`Quaternion<class_Quaternion_constructor_Quaternion>` mà không có đối số nào. Bạn có thể sử dụng nó để làm cho mã của mình rõ ràng hơn và nhất quán với C#.
 
 .. rst-class:: classref-section-separator
 
@@ -199,8 +199,8 @@ If a :ref:`Vector3<class_Vector3>` is rotated (multiplied) by this quaternion, i
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Quaternion_property_w:
 
@@ -208,9 +208,9 @@ Property Descriptions
 
 :ref:`float<class_float>` **w** = ``1.0`` :ref:`🔗<class_Quaternion_property_w>`
 
-W component of the quaternion. This is the "real" part.
+Thành phần W của quaternion. Đây là phần "thực".
 
-\ **Note:** Quaternion components should usually not be manipulated directly.
+\ **Lưu ý:** Thông thường không nên thao tác trực tiếp với các thành phần của quaternion.
 
 .. rst-class:: classref-item-separator
 
@@ -222,9 +222,9 @@ W component of the quaternion. This is the "real" part.
 
 :ref:`float<class_float>` **x** = ``0.0`` :ref:`🔗<class_Quaternion_property_x>`
 
-X component of the quaternion. This is the value along the "imaginary" ``i`` axis.
+Thành phần X của quaternion. Đây là giá trị trên "ảo" ``i`` trục.
 
-\ **Note:** Quaternion components should usually not be manipulated directly.
+\ **Lưu ý:** Thông thường không nên thao tác trực tiếp với các thành phần của quaternion.
 
 .. rst-class:: classref-item-separator
 
@@ -236,9 +236,9 @@ X component of the quaternion. This is the value along the "imaginary" ``i`` axi
 
 :ref:`float<class_float>` **y** = ``0.0`` :ref:`🔗<class_Quaternion_property_y>`
 
-Y component of the quaternion. This is the value along the "imaginary" ``j`` axis.
+Thành phần Y của quaternion. Đây là giá trị trên "ảo" ``j`` trục.
 
-\ **Note:** Quaternion components should usually not be manipulated directly.
+\ **Lưu ý:** Thông thường không nên thao tác trực tiếp với các thành phần của quaternion.
 
 .. rst-class:: classref-item-separator
 
@@ -250,9 +250,9 @@ Y component of the quaternion. This is the value along the "imaginary" ``j`` axi
 
 :ref:`float<class_float>` **z** = ``0.0`` :ref:`🔗<class_Quaternion_property_z>`
 
-Z component of the quaternion. This is the value along the "imaginary" ``k`` axis.
+Thành phần Z của quaternion. Đây là giá trị trên trục "imaginary" ``k``.
 
-\ **Note:** Quaternion components should usually not be manipulated directly.
+\ **Lưu ý:** Thông thường không nên thao tác trực tiếp với các thành phần của quaternion.
 
 .. rst-class:: classref-section-separator
 
@@ -260,8 +260,8 @@ Z component of the quaternion. This is the value along the "imaginary" ``k`` axi
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Quaternion_constructor_Quaternion:
 
@@ -269,9 +269,9 @@ Constructor Descriptions
 
 :ref:`Quaternion<class_Quaternion>` **Quaternion**\ (\ ) :ref:`🔗<class_Quaternion_constructor_Quaternion>`
 
-Constructs a **Quaternion** identical to :ref:`IDENTITY<class_Quaternion_constant_IDENTITY>`.
+Tạo một **Quaternion** giống hệt :ref:`IDENTITY<class_Quaternion_constant_IDENTITY>`.
 
-\ **Note:** In C#, this constructs a **Quaternion** with all of its components set to ``0.0``.
+\ **Lưu ý:** Trong C#, thao tác này tạo một **Quaternion** với tất cả các thành phần được đặt thành ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +281,7 @@ Constructs a **Quaternion** identical to :ref:`IDENTITY<class_Quaternion_constan
 
 :ref:`Quaternion<class_Quaternion>` **Quaternion**\ (\ from\: :ref:`Quaternion<class_Quaternion>`\ )
 
-Constructs a **Quaternion** as a copy of the given **Quaternion**.
+Tạo một **Quaternion** dưới dạng bản sao của **Quaternion** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -291,7 +291,7 @@ Constructs a **Quaternion** as a copy of the given **Quaternion**.
 
 :ref:`Quaternion<class_Quaternion>` **Quaternion**\ (\ arc_from\: :ref:`Vector3<class_Vector3>`, arc_to\: :ref:`Vector3<class_Vector3>`\ )
 
-Constructs a **Quaternion** representing the shortest arc between ``arc_from`` and ``arc_to``. These can be imagined as two points intersecting a sphere's surface, with a radius of ``1.0``.
+Tạo một **Quaternion** biểu diễn cung ngắn nhất giữa ``arc_from`` và ``arc_to``. Có thể hình dung chúng là hai điểm giao với bề mặt của một hình cầu có bán kính ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ Constructs a **Quaternion** representing the shortest arc between ``arc_from`` a
 
 :ref:`Quaternion<class_Quaternion>` **Quaternion**\ (\ axis\: :ref:`Vector3<class_Vector3>`, angle\: :ref:`float<class_float>`\ )
 
-Constructs a **Quaternion** representing rotation around the ``axis`` by the given ``angle``, in radians. The axis must be a normalized vector.
+Khởi tạo một **Quaternion** biểu diễn phép xoay quanh ``axis`` với ``angle`` đã cho, tính bằng radian. Trục phải là một vector đã được chuẩn hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -311,9 +311,9 @@ Constructs a **Quaternion** representing rotation around the ``axis`` by the giv
 
 :ref:`Quaternion<class_Quaternion>` **Quaternion**\ (\ from\: :ref:`Basis<class_Basis>`\ )
 
-Constructs a **Quaternion** from the given rotation :ref:`Basis<class_Basis>`.
+Khởi tạo một **Quaternion** từ rotation :ref:`Basis<class_Basis>` đã cho.
 
-This constructor is faster than :ref:`Basis.get_rotation_quaternion()<class_Basis_method_get_rotation_quaternion>`, but the given basis must be *orthonormalized* (see :ref:`Basis.orthonormalized()<class_Basis_method_orthonormalized>`). Otherwise, the constructor fails and returns :ref:`IDENTITY<class_Quaternion_constant_IDENTITY>`.
+Constructor này nhanh hơn :ref:`Basis.get_rotation_quaternion()<class_Basis_method_get_rotation_quaternion>`, nhưng basis đã cho phải được *chuẩn hóa trực giao* (xem :ref:`Basis.orthonormalized()<class_Basis_method_orthonormalized>`). Nếu không, constructor sẽ thất bại và trả về :ref:`IDENTITY<class_Quaternion_constant_IDENTITY>`.
 
 .. rst-class:: classref-item-separator
 
@@ -323,9 +323,9 @@ This constructor is faster than :ref:`Basis.get_rotation_quaternion()<class_Basi
 
 :ref:`Quaternion<class_Quaternion>` **Quaternion**\ (\ x\: :ref:`float<class_float>`, y\: :ref:`float<class_float>`, z\: :ref:`float<class_float>`, w\: :ref:`float<class_float>`\ )
 
-Constructs a **Quaternion** defined by the given values.
+Khởi tạo một **Quaternion** được xác định bởi các giá trị đã cho.
 
-\ **Note:** Only normalized quaternions represent rotation; if these values are not normalized, the new **Quaternion** will not be a valid rotation.
+\ **Lưu ý:** Chỉ các quaternion đã được chuẩn hóa mới biểu diễn phép xoay; nếu các giá trị này chưa được chuẩn hóa, **Quaternion** mới sẽ không phải là một phép xoay hợp lệ.
 
 .. rst-class:: classref-section-separator
 
@@ -333,8 +333,8 @@ Constructs a **Quaternion** defined by the given values.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Quaternion_method_angle_to:
 
@@ -342,9 +342,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **angle_to**\ (\ to\: :ref:`Quaternion<class_Quaternion>`\ ) |const| :ref:`🔗<class_Quaternion_method_angle_to>`
 
-Returns the angle between this quaternion and ``to``. This is the magnitude of the angle you would need to rotate by to get from one to the other.
+Trả về góc giữa quaternion này và ``to``. Đây là độ lớn của góc mà bạn cần xoay để đi từ quaternion này đến quaternion kia.
 
-\ **Note:** The magnitude of the floating-point error for this method is abnormally high, so methods such as ``is_zero_approx`` will not work reliably.
+\ **Lưu ý:** Độ lớn của sai số số thực dấu phẩy động đối với phương thức này cao bất thường, vì vậy các phương thức như ``is_zero_approx`` sẽ không hoạt động đáng tin cậy.
 
 .. rst-class:: classref-item-separator
 
@@ -356,9 +356,9 @@ Returns the angle between this quaternion and ``to``. This is the magnitude of t
 
 :ref:`float<class_float>` **dot**\ (\ with\: :ref:`Quaternion<class_Quaternion>`\ ) |const| :ref:`🔗<class_Quaternion_method_dot>`
 
-Returns the dot product between this quaternion and ``with``.
+Trả về tích vô hướng giữa quaternion này và ``with``.
 
-This is equivalent to ``(quat.x * with.x) + (quat.y * with.y) + (quat.z * with.z) + (quat.w * with.w)``.
+Điều này tương đương với ``(quat.x * with.x) + (quat.y * with.y) + (quat.z * with.z) + (quat.w * with.w)``.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +370,7 @@ This is equivalent to ``(quat.x * with.x) + (quat.y * with.y) + (quat.z * with.z
 
 :ref:`Quaternion<class_Quaternion>` **exp**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_exp>`
 
-Returns the exponential of this quaternion. The rotation axis of the result is the normalized rotation axis of this quaternion, the angle of the result is the length of the vector part of this quaternion.
+Trả về hàm mũ của quaternion này. Trục xoay của kết quả là trục xoay đã chuẩn hóa của quaternion này, còn góc của kết quả là độ dài phần vector của quaternion này.
 
 .. rst-class:: classref-item-separator
 
@@ -382,7 +382,7 @@ Returns the exponential of this quaternion. The rotation axis of the result is t
 
 :ref:`Quaternion<class_Quaternion>` **from_euler**\ (\ euler\: :ref:`Vector3<class_Vector3>`\ ) |static| :ref:`🔗<class_Quaternion_method_from_euler>`
 
-Constructs a new **Quaternion** from the given :ref:`Vector3<class_Vector3>` of `Euler angles <https://en.wikipedia.org/wiki/Euler_angles>`__, in radians. In Godot, Euler angles always use intrinsic order. This method always uses the intrinsic YXZ convention (:ref:`@GlobalScope.EULER_ORDER_YXZ<class_@GlobalScope_constant_EULER_ORDER_YXZ>`).
+Tạo một **Quaternion** mới từ :ref:`Vector3<class_Vector3>` của `góc Euler <https://en.wikipedia.org/wiki/Euler_angles>`__ đã cho, theo đơn vị radian. Trong Godot, góc Euler luôn sử dụng thứ tự nội tại. Phương thức này luôn sử dụng quy ước YXZ nội tại (:ref:`@GlobalScope.EULER_ORDER_YXZ <class_@GlobalScope_constant_EULER_ORDER_YXZ>`).
 
 .. rst-class:: classref-item-separator
 
@@ -394,9 +394,9 @@ Constructs a new **Quaternion** from the given :ref:`Vector3<class_Vector3>` of 
 
 :ref:`float<class_float>` **get_angle**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_get_angle>`
 
-Returns the angle of the rotation represented by this quaternion.
+Trả về góc xoay được biểu diễn bởi quaternion này.
 
-\ **Note:** The quaternion must be normalized.
+\ **Lưu ý:** Quaternion phải được chuẩn hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -408,7 +408,7 @@ Returns the angle of the rotation represented by this quaternion.
 
 :ref:`Vector3<class_Vector3>` **get_axis**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_get_axis>`
 
-Returns the rotation axis of the rotation represented by this quaternion.
+Trả về trục xoay của phép xoay được biểu diễn bởi quaternion này.
 
 .. rst-class:: classref-item-separator
 
@@ -420,9 +420,9 @@ Returns the rotation axis of the rotation represented by this quaternion.
 
 :ref:`Vector3<class_Vector3>` **get_euler**\ (\ order\: :ref:`int<class_int>` = 2\ ) |const| :ref:`🔗<class_Quaternion_method_get_euler>`
 
-Returns this quaternion's rotation as a :ref:`Vector3<class_Vector3>` of `Euler angles <https://en.wikipedia.org/wiki/Euler_angles>`__, in radians.
+Trả về phép xoay của quaternion này dưới dạng một :ref:`Vector3<class_Vector3>` gồm các `góc Euler <https://en.wikipedia.org/wiki/Euler_angles>`__, tính bằng radian.
 
-The order of each consecutive rotation can be changed with ``order`` (see :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` constants). In Godot, Euler angles always use intrinsic order. By default, the intrinsic YXZ convention is used (:ref:`@GlobalScope.EULER_ORDER_YXZ<class_@GlobalScope_constant_EULER_ORDER_YXZ>`): since we are decomposing, local Z (roll) is calculated first, then local X (pitch), and lastly local Y (yaw). When using the opposite method :ref:`from_euler()<class_Quaternion_method_from_euler>` to compose a rotation, this order is reversed.
+Có thể thay đổi thứ tự của mỗi phép xoay liên tiếp bằng ``order`` (xem các hằng số :ref:`EulerOrder <enum_@GlobalScope_EulerOrder>`). Trong Godot, các góc Euler luôn sử dụng thứ tự nội tại. Theo mặc định, quy ước YXZ nội tại được sử dụng (:ref:`@GlobalScope.EULER_ORDER_YXZ <class_@GlobalScope_constant_EULER_ORDER_YXZ>`): vì chúng ta đang phân rã, Z cục bộ (roll) được tính trước, sau đó đến X cục bộ (pitch), và cuối cùng là Y cục bộ (yaw). Khi sử dụng phương thức ngược lại :ref:`from_euler()<class_Quaternion_method_from_euler>` để tạo một phép xoay, thứ tự này sẽ đảo ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -434,7 +434,7 @@ The order of each consecutive rotation can be changed with ``order`` (see :ref:`
 
 :ref:`Quaternion<class_Quaternion>` **inverse**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_inverse>`
 
-Returns the inverse version of this quaternion, inverting the sign of every component except :ref:`w<class_Quaternion_property_w>`.
+Trả về phiên bản nghịch đảo của quaternion này, đảo dấu của mọi thành phần ngoại trừ :ref:`w<class_Quaternion_property_w>`.
 
 .. rst-class:: classref-item-separator
 
@@ -446,7 +446,7 @@ Returns the inverse version of this quaternion, inverting the sign of every comp
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ to\: :ref:`Quaternion<class_Quaternion>`\ ) |const| :ref:`🔗<class_Quaternion_method_is_equal_approx>`
 
-Returns ``true`` if this quaternion and ``to`` are approximately equal, by calling :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
+Trả về ``true`` nếu quaternion này và ``to`` gần bằng nhau, bằng cách gọi :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -458,7 +458,7 @@ Returns ``true`` if this quaternion and ``to`` are approximately equal, by calli
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_is_finite>`
 
-Returns ``true`` if this quaternion is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on each component.
+Trả về ``true`` nếu quaternion này là hữu hạn, bằng cách gọi :ref:`@GlobalScope.is_finite() <class_@GlobalScope_method_is_finite>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -470,7 +470,7 @@ Returns ``true`` if this quaternion is finite, by calling :ref:`@GlobalScope.is_
 
 :ref:`bool<class_bool>` **is_normalized**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_is_normalized>`
 
-Returns ``true`` if this quaternion is normalized. See also :ref:`normalized()<class_Quaternion_method_normalized>`.
+Trả về ``true`` nếu quaternion này đã được chuẩn hóa. Xem thêm :ref:`normalized()<class_Quaternion_method_normalized>`.
 
 .. rst-class:: classref-item-separator
 
@@ -482,7 +482,7 @@ Returns ``true`` if this quaternion is normalized. See also :ref:`normalized()<c
 
 :ref:`float<class_float>` **length**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_length>`
 
-Returns this quaternion's length, also called magnitude.
+Trả về độ dài của quaternion này, còn được gọi là độ lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -494,9 +494,9 @@ Returns this quaternion's length, also called magnitude.
 
 :ref:`float<class_float>` **length_squared**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_length_squared>`
 
-Returns this quaternion's length, squared.
+Trả về bình phương độ dài của quaternion này.
 
-\ **Note:** This method is faster than :ref:`length()<class_Quaternion_method_length>`, so prefer it if you only need to compare quaternion lengths.
+\ **Lưu ý:** Phương thức này nhanh hơn :ref:`length()<class_Quaternion_method_length>`, vì vậy hãy ưu tiên sử dụng phương thức này nếu bạn chỉ cần so sánh độ dài của các quaternion.
 
 .. rst-class:: classref-item-separator
 
@@ -508,7 +508,7 @@ Returns this quaternion's length, squared.
 
 :ref:`Quaternion<class_Quaternion>` **log**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_log>`
 
-Returns the logarithm of this quaternion. Multiplies this quaternion's rotation axis by its rotation angle, and stores the result in the returned quaternion's vector part (:ref:`x<class_Quaternion_property_x>`, :ref:`y<class_Quaternion_property_y>`, and :ref:`z<class_Quaternion_property_z>`). The returned quaternion's real part (:ref:`w<class_Quaternion_property_w>`) is always ``0.0``.
+Trả về logarithm của quaternion này. Nhân trục xoay của quaternion này với góc xoay của nó, rồi lưu kết quả vào phần vector của quaternion được trả về (:ref:`x<class_Quaternion_property_x>`, :ref:`y<class_Quaternion_property_y>` và :ref:`z<class_Quaternion_property_z>`). Phần thực của quaternion được trả về (:ref:`w<class_Quaternion_property_w>`) luôn là ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -520,7 +520,7 @@ Returns the logarithm of this quaternion. Multiplies this quaternion's rotation 
 
 :ref:`Quaternion<class_Quaternion>` **normalized**\ (\ ) |const| :ref:`🔗<class_Quaternion_method_normalized>`
 
-Returns a copy of this quaternion, normalized so that its length is ``1.0``. See also :ref:`is_normalized()<class_Quaternion_method_is_normalized>`.
+Trả về một bản sao của quaternion này, được chuẩn hóa sao cho độ dài của nó là ``1.0``. Xem thêm :ref:`is_normalized()<class_Quaternion_method_is_normalized>`.
 
 .. rst-class:: classref-item-separator
 
@@ -532,7 +532,7 @@ Returns a copy of this quaternion, normalized so that its length is ``1.0``. See
 
 :ref:`Quaternion<class_Quaternion>` **slerp**\ (\ to\: :ref:`Quaternion<class_Quaternion>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Quaternion_method_slerp>`
 
-Performs a spherical-linear interpolation with the ``to`` quaternion, given a ``weight`` and returns the result. Both this quaternion and ``to`` must be normalized.
+Thực hiện nội suy tuyến tính theo cầu (spherical-linear interpolation) với quaternion ``to``, sử dụng ``weight`` và trả về kết quả. Cả quaternion này và ``to`` đều phải được chuẩn hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -544,7 +544,7 @@ Performs a spherical-linear interpolation with the ``to`` quaternion, given a ``
 
 :ref:`Quaternion<class_Quaternion>` **slerpni**\ (\ to\: :ref:`Quaternion<class_Quaternion>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Quaternion_method_slerpni>`
 
-Performs a spherical-linear interpolation with the ``to`` quaternion, given a ``weight`` and returns the result. Unlike :ref:`slerp()<class_Quaternion_method_slerp>`, this method does not check if the rotation path is smaller than 90 degrees. Both this quaternion and ``to`` must be normalized.
+Thực hiện nội suy tuyến tính theo cầu (spherical-linear interpolation) với quaternion ``to``, sử dụng ``weight`` và trả về kết quả. Không giống :ref:`slerp()<class_Quaternion_method_slerp>`, phương thức này không kiểm tra xem đường đi của phép xoay có ngắn hơn 90 độ hay không. Cả quaternion này và ``to`` đều phải được chuẩn hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -556,7 +556,7 @@ Performs a spherical-linear interpolation with the ``to`` quaternion, given a ``
 
 :ref:`Quaternion<class_Quaternion>` **spherical_cubic_interpolate**\ (\ b\: :ref:`Quaternion<class_Quaternion>`, pre_a\: :ref:`Quaternion<class_Quaternion>`, post_b\: :ref:`Quaternion<class_Quaternion>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Quaternion_method_spherical_cubic_interpolate>`
 
-Performs a spherical cubic interpolation between quaternions ``pre_a``, this vector, ``b``, and ``post_b``, by the given amount ``weight``.
+Thực hiện phép nội suy lập phương cầu giữa các quaternion ``pre_a``, vector này, ``b`` và ``post_b``, theo lượng ``weight`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -568,9 +568,9 @@ Performs a spherical cubic interpolation between quaternions ``pre_a``, this vec
 
 :ref:`Quaternion<class_Quaternion>` **spherical_cubic_interpolate_in_time**\ (\ b\: :ref:`Quaternion<class_Quaternion>`, pre_a\: :ref:`Quaternion<class_Quaternion>`, post_b\: :ref:`Quaternion<class_Quaternion>`, weight\: :ref:`float<class_float>`, b_t\: :ref:`float<class_float>`, pre_a_t\: :ref:`float<class_float>`, post_b_t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Quaternion_method_spherical_cubic_interpolate_in_time>`
 
-Performs a spherical cubic interpolation between quaternions ``pre_a``, this vector, ``b``, and ``post_b``, by the given amount ``weight``.
+Thực hiện phép nội suy lập phương cầu giữa các quaternion ``pre_a``, vector này, ``b`` và ``post_b``, theo lượng ``weight`` đã cho.
 
-It can perform smoother interpolation than :ref:`spherical_cubic_interpolate()<class_Quaternion_method_spherical_cubic_interpolate>` by the time values.
+Phương thức này có thể thực hiện phép nội suy mượt mà hơn :ref:`spherical_cubic_interpolate()<class_Quaternion_method_spherical_cubic_interpolate>` nhờ các giá trị thời gian.
 
 .. rst-class:: classref-section-separator
 
@@ -578,18 +578,18 @@ It can perform smoother interpolation than :ref:`spherical_cubic_interpolate()<c
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Quaternion_operator_neq_Quaternion:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_Quaternion_operator_neq_Quaternion>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗 <class_Quaternion_operator_neq_Quaternion>`
 
-Returns ``true`` if the components of both quaternions are not exactly equal.
+Trả về ``true`` nếu các thành phần của cả hai quaternion không hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Quaternion_method_is_equal_approx>` instead, which is more reliable.
+\ **Ghi chú:** Do lỗi độ chính xác số thực, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Quaternion_method_is_equal_approx>` thay thế vì phương thức này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -599,9 +599,9 @@ Returns ``true`` if the components of both quaternions are not exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator ***\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_Quaternion_operator_mul_Quaternion>`
+:ref:`Quaternion<class_Quaternion>` **toán tử ***\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗 <class_Quaternion_operator_mul_Quaternion>`
 
-Composes (multiplies) two quaternions. This rotates the ``right`` quaternion (the child) by this quaternion (the parent).
+Kết hợp (nhân) hai quaternion. Thao tác này xoay quaternion ``right`` (đối tượng con) bằng quaternion này (đối tượng cha).
 
 .. rst-class:: classref-item-separator
 
@@ -611,9 +611,9 @@ Composes (multiplies) two quaternions. This rotates the ``right`` quaternion (th
 
 .. rst-class:: classref-operator
 
-:ref:`Vector3<class_Vector3>` **operator ***\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Quaternion_operator_mul_Vector3>`
+:ref:`Vector3<class_Vector3>` **toán tử ***\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗 <class_Quaternion_operator_mul_Vector3>`
 
-Rotates (multiplies) the ``right`` vector by this quaternion, returning a :ref:`Vector3<class_Vector3>`.
+Xoay (nhân) vector ``right`` bằng quaternion này, trả về một :ref:`Vector3<class_Vector3>`.
 
 .. rst-class:: classref-item-separator
 
@@ -623,11 +623,11 @@ Rotates (multiplies) the ``right`` vector by this quaternion, returning a :ref:`
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Quaternion_operator_mul_float>`
+:ref:`Quaternion<class_Quaternion>` **toán tử ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Quaternion_operator_mul_float>`
 
-Multiplies each component of the **Quaternion** by the right :ref:`float<class_float>` value.
+Nhân từng thành phần của **Quaternion** với giá trị :ref:`float<class_float>` bên phải.
 
-This operation is not meaningful on its own, but it can be used as a part of a larger expression.
+Phép toán này không có ý nghĩa khi được thực hiện riêng lẻ, nhưng có thể được sử dụng như một phần của biểu thức lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -637,11 +637,11 @@ This operation is not meaningful on its own, but it can be used as a part of a l
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Quaternion_operator_mul_int>`
+:ref:`Quaternion<class_Quaternion>` **toán tử ***\ (\ bên phải\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Quaternion_operator_mul_int>`
 
-Multiplies each component of the **Quaternion** by the right :ref:`int<class_int>` value.
+Nhân từng thành phần của **Quaternion** với giá trị :ref:`int<class_int>` bên phải.
 
-This operation is not meaningful on its own, but it can be used as a part of a larger expression.
+Phép toán này không có ý nghĩa khi được thực hiện riêng lẻ, nhưng có thể được sử dụng như một phần của biểu thức lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -651,11 +651,11 @@ This operation is not meaningful on its own, but it can be used as a part of a l
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator +**\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_Quaternion_operator_sum_Quaternion>`
+:ref:`Quaternion<class_Quaternion>` **toán tử +**\ (\ bên phải\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗 <class_Quaternion_operator_sum_Quaternion>`
 
-Adds each component of the left **Quaternion** to the right **Quaternion**.
+Cộng từng thành phần của **Quaternion** bên trái vào **Quaternion** bên phải.
 
-This operation is not meaningful on its own, but it can be used as a part of a larger expression, such as approximating an intermediate rotation between two nearby rotations.
+Thao tác này không có ý nghĩa khi được thực hiện riêng lẻ, nhưng có thể được sử dụng như một phần của biểu thức lớn hơn, chẳng hạn như để xấp xỉ một phép xoay trung gian giữa hai phép xoay gần nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -665,11 +665,11 @@ This operation is not meaningful on its own, but it can be used as a part of a l
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator -**\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_Quaternion_operator_dif_Quaternion>`
+:ref:`Quaternion<class_Quaternion>` **toán tử -**\ (\ bên phải\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗 <class_Quaternion_operator_dif_Quaternion>`
 
-Subtracts each component of the left **Quaternion** by the right **Quaternion**.
+Trừ từng thành phần của **Quaternion** bên trái cho **Quaternion** bên phải.
 
-This operation is not meaningful on its own, but it can be used as a part of a larger expression.
+Phép toán này không có ý nghĩa khi được thực hiện riêng lẻ, nhưng có thể được sử dụng như một phần của biểu thức lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -679,11 +679,11 @@ This operation is not meaningful on its own, but it can be used as a part of a l
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Quaternion_operator_div_float>`
+:ref:`Quaternion<class_Quaternion>` **toán tử /**\ (\ phải\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Quaternion_operator_div_float>`
 
-Divides each component of the **Quaternion** by the right :ref:`float<class_float>` value.
+Chia từng thành phần của **Quaternion** cho giá trị :ref:`float<class_float>` bên phải.
 
-This operation is not meaningful on its own, but it can be used as a part of a larger expression.
+Phép toán này không có ý nghĩa khi được thực hiện riêng lẻ, nhưng có thể được sử dụng như một phần của biểu thức lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -693,11 +693,11 @@ This operation is not meaningful on its own, but it can be used as a part of a l
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Quaternion_operator_div_int>`
+:ref:`Quaternion<class_Quaternion>` **toán tử /**\ (\ phải\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Quaternion_operator_div_int>`
 
-Divides each component of the **Quaternion** by the right :ref:`int<class_int>` value.
+Chia từng thành phần của **Quaternion** cho giá trị :ref:`int<class_int>` bên phải.
 
-This operation is not meaningful on its own, but it can be used as a part of a larger expression.
+Phép toán này không có ý nghĩa khi được thực hiện riêng lẻ, nhưng có thể được sử dụng như một phần của biểu thức lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -707,11 +707,11 @@ This operation is not meaningful on its own, but it can be used as a part of a l
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_Quaternion_operator_eq_Quaternion>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗 <class_Quaternion_operator_eq_Quaternion>`
 
-Returns ``true`` if the components of both quaternions are exactly equal.
+Trả về ``true`` nếu các thành phần của cả hai quaternion hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Quaternion_method_is_equal_approx>` instead, which is more reliable.
+\ **Ghi chú:** Do lỗi độ chính xác số thực, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Quaternion_method_is_equal_approx>` thay thế vì phương thức này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -721,11 +721,11 @@ Returns ``true`` if the components of both quaternions are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Quaternion_operator_idx_int>`
+:ref:`float<class_float>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Quaternion_operator_idx_int>`
 
-Accesses each component of this quaternion by their index.
+Truy cập từng thành phần của quaternion này theo chỉ mục của chúng.
 
-Index ``0`` is the same as :ref:`x<class_Quaternion_property_x>`, index ``1`` is the same as :ref:`y<class_Quaternion_property_y>`, index ``2`` is the same as :ref:`z<class_Quaternion_property_z>`, and index ``3`` is the same as :ref:`w<class_Quaternion_property_w>`.
+Chỉ mục ``0`` tương ứng với :ref:`x<class_Quaternion_property_x>`, chỉ mục ``1`` tương ứng với :ref:`y<class_Quaternion_property_y>`, chỉ mục ``2`` tương ứng với :ref:`z<class_Quaternion_property_z>` và chỉ mục ``3`` tương ứng với :ref:`w<class_Quaternion_property_w>`.
 
 .. rst-class:: classref-item-separator
 
@@ -735,9 +735,9 @@ Index ``0`` is the same as :ref:`x<class_Quaternion_property_x>`, index ``1`` is
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator unary+**\ (\ ) :ref:`🔗<class_Quaternion_operator_unplus>`
+:ref:`Quaternion<class_Quaternion>` **operator unary+**\ (\ ) :ref:`🔗 <class_Quaternion_operator_unplus>`
 
-Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, but sometimes it can make your code more readable.
+Trả về cùng giá trị như khi không có ``+``. Unary ``+`` không thực hiện thao tác gì, nhưng đôi khi có thể giúp mã của bạn dễ đọc hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -747,16 +747,16 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator unary-**\ (\ ) :ref:`🔗<class_Quaternion_operator_unminus>`
+:ref:`Quaternion<class_Quaternion>` **operator unary-**\ (\ ) :ref:`🔗 <class_Quaternion_operator_unminus>`
 
-Returns the negative value of the **Quaternion**. This is the same as multiplying all components by ``-1``. This operation results in a quaternion that represents the same rotation.
+Trả về giá trị âm của **Quaternion**. Điều này tương đương với việc nhân tất cả các thành phần với ``-1``. Thao tác này tạo ra một quaternion biểu diễn cùng một phép xoay.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

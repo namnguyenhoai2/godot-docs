@@ -10,22 +10,22 @@
 MainLoop
 ========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`SceneTree<class_SceneTree>`
+**Được kế thừa bởi:** :ref:`SceneTree<class_SceneTree>`
 
-Abstract base class for the game's main loop.
+Lớp cơ sở trừu tượng cho game loop của trò chơi.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**MainLoop** is the abstract base class for a Godot project's game loop. It is inherited by :ref:`SceneTree<class_SceneTree>`, which is the default game loop implementation used in Godot projects, though it is also possible to write and use one's own **MainLoop** subclass instead of the scene tree.
+**MainLoop** là lớp cơ sở trừu tượng cho game loop của một dự án Godot. Lớp này được :ref:`SceneTree<class_SceneTree>` kế thừa, đây là implementation game loop mặc định được sử dụng trong các dự án Godot, mặc dù bạn cũng có thể tự viết và sử dụng một subclass **MainLoop** của riêng mình thay cho scene tree.
 
-Upon the application start, a **MainLoop** implementation must be provided to the OS; otherwise, the application will exit. This happens automatically (and a :ref:`SceneTree<class_SceneTree>` is created) unless a **MainLoop** :ref:`Script<class_Script>` is provided from the command line (with e.g. ``godot -s my_loop.gd``) or the :ref:`ProjectSettings.application/run/main_loop_type<class_ProjectSettings_property_application/run/main_loop_type>` project setting is overwritten.
+Khi ứng dụng khởi động, phải cung cấp một implementation **MainLoop** cho OS; nếu không, ứng dụng sẽ thoát. Việc này diễn ra tự động (và một :ref:`SceneTree<class_SceneTree>` được tạo) trừ khi một **MainLoop** :ref:`Script<class_Script>` được cung cấp từ command line (ví dụ với ``godot -s my_loop.gd``) hoặc thiết lập dự án :ref:`ProjectSettings.application/run/main_loop_type <class_ProjectSettings_property_application/run/main_loop_type>` bị ghi đè.
 
-Here is an example script implementing a simple **MainLoop**:
+Sau đây là một script ví dụ triển khai một **MainLoop** đơn giản:
 
 
 .. tabs::
@@ -43,7 +43,7 @@ Here is an example script implementing a simple **MainLoop**:
 
     func _process(delta):
         time_elapsed += delta
-        # Return true to end the main loop.
+        # Trả về true để kết thúc vòng lặp chính.
         return Input.get_mouse_button_mask() != 0 || Input.is_key_pressed(KEY_ESCAPE)
 
     func _finalize():
@@ -68,7 +68,7 @@ Here is an example script implementing a simple **MainLoop**:
         public override bool _Process(double delta)
         {
             _timeElapsed += delta;
-            // Return true to end the main loop.
+            // Trả về true để kết thúc vòng lặp chính.
             return Input.GetMouseButtonMask() != 0 || Input.IsKeyPressed(Key.Escape);
         }
 
@@ -83,8 +83,8 @@ Here is an example script implementing a simple **MainLoop**:
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -105,8 +105,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_MainLoop_signal_on_request_permissions_result:
 
@@ -114,7 +114,7 @@ Signals
 
 **on_request_permissions_result**\ (\ permission\: :ref:`String<class_String>`, granted\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_MainLoop_signal_on_request_permissions_result>`
 
-Emitted when a user responds to a permission request.
+Được phát ra khi người dùng phản hồi yêu cầu cấp quyền.
 
 .. rst-class:: classref-section-separator
 
@@ -122,8 +122,8 @@ Emitted when a user responds to a permission request.
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_MainLoop_constant_NOTIFICATION_OS_MEMORY_WARNING:
 
@@ -131,9 +131,9 @@ Constants
 
 **NOTIFICATION_OS_MEMORY_WARNING** = ``2009`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_OS_MEMORY_WARNING>`
 
-Notification received from the OS when the application is exceeding its allocated memory.
+Thông báo nhận được từ hệ điều hành khi ứng dụng đang vượt quá lượng bộ nhớ được cấp phát.
 
-Specific to the iOS platform.
+Chỉ dành cho nền tảng iOS.
 
 .. _class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED:
 
@@ -141,7 +141,7 @@ Specific to the iOS platform.
 
 **NOTIFICATION_TRANSLATION_CHANGED** = ``2010`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_TRANSLATION_CHANGED>`
 
-Notification received when translations may have changed. Can be triggered by the user changing the locale. Can be used to respond to language changes, for example to change the UI strings on the fly. Useful when working with the built-in translation support, like :ref:`Object.tr()<class_Object_method_tr>`.
+Thông báo nhận được khi bản dịch có thể đã thay đổi. Có thể được kích hoạt khi người dùng thay đổi locale. Có thể dùng để phản hồi các thay đổi về ngôn ngữ, chẳng hạn như thay đổi các chuỗi UI ngay lập tức. Hữu ích khi làm việc với tính năng hỗ trợ bản dịch tích hợp sẵn, như :ref:`Object.tr()<class_Object_method_tr>`.
 
 .. _class_MainLoop_constant_NOTIFICATION_WM_ABOUT:
 
@@ -149,9 +149,9 @@ Notification received when translations may have changed. Can be triggered by th
 
 **NOTIFICATION_WM_ABOUT** = ``2011`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_WM_ABOUT>`
 
-Notification received from the OS when a request for "About" information is sent.
+Thông báo nhận được từ hệ điều hành khi một yêu cầu lấy thông tin "About" được gửi.
 
-Specific to the macOS platform.
+Chỉ dành cho nền tảng macOS.
 
 .. _class_MainLoop_constant_NOTIFICATION_CRASH:
 
@@ -159,9 +159,9 @@ Specific to the macOS platform.
 
 **NOTIFICATION_CRASH** = ``2012`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_CRASH>`
 
-Notification received from Godot's crash handler when the engine is about to crash.
+Thông báo nhận được từ trình xử lý sự cố của Godot khi engine sắp gặp sự cố.
 
-Implemented on desktop platforms if the crash handler is enabled.
+Được triển khai trên các nền tảng desktop nếu trình xử lý sự cố (crash handler) được bật.
 
 .. _class_MainLoop_constant_NOTIFICATION_OS_IME_UPDATE:
 
@@ -169,9 +169,9 @@ Implemented on desktop platforms if the crash handler is enabled.
 
 **NOTIFICATION_OS_IME_UPDATE** = ``2013`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_OS_IME_UPDATE>`
 
-Notification received from the OS when an update of the Input Method Engine occurs (e.g. change of IME cursor position or composition string).
+Thông báo nhận được từ hệ điều hành khi Input Method Engine được cập nhật (ví dụ: thay đổi vị trí con trỏ IME hoặc chuỗi composition).
 
-Implemented on desktop and web platforms.
+Được triển khai trên các nền tảng desktop và web.
 
 .. _class_MainLoop_constant_NOTIFICATION_APPLICATION_RESUMED:
 
@@ -179,9 +179,9 @@ Implemented on desktop and web platforms.
 
 **NOTIFICATION_APPLICATION_RESUMED** = ``2014`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_APPLICATION_RESUMED>`
 
-Notification received from the OS when the application is resumed.
+Thông báo nhận được từ hệ điều hành khi ứng dụng được tiếp tục hoạt động.
 
-Specific to the Android and iOS platforms.
+Chỉ áp dụng cho các nền tảng Android và iOS.
 
 .. _class_MainLoop_constant_NOTIFICATION_APPLICATION_PAUSED:
 
@@ -189,11 +189,11 @@ Specific to the Android and iOS platforms.
 
 **NOTIFICATION_APPLICATION_PAUSED** = ``2015`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_APPLICATION_PAUSED>`
 
-Notification received from the OS when the application is paused.
+Thông báo nhận được từ hệ điều hành khi ứng dụng bị tạm dừng.
 
-Specific to the Android and iOS platforms.
+Chỉ áp dụng cho các nền tảng Android và iOS.
 
-\ **Note:** On iOS, you only have approximately 5 seconds to finish a task started by this signal. If you go over this allotment, iOS will kill the app instead of pausing it.
+\ **Lưu ý:** Trên iOS, bạn chỉ có khoảng 5 giây để hoàn tất một tác vụ được tín hiệu này khởi chạy. Nếu vượt quá khoảng thời gian này, iOS sẽ buộc ứng dụng đóng thay vì tạm dừng ứng dụng.
 
 .. _class_MainLoop_constant_NOTIFICATION_APPLICATION_FOCUS_IN:
 
@@ -201,9 +201,9 @@ Specific to the Android and iOS platforms.
 
 **NOTIFICATION_APPLICATION_FOCUS_IN** = ``2016`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_APPLICATION_FOCUS_IN>`
 
-Notification received from the OS when the application is focused, i.e. when changing the focus from the OS desktop or a thirdparty application to any open window of the Godot instance.
+Thông báo nhận được từ hệ điều hành khi ứng dụng được focus, tức là khi chuyển focus từ desktop của hệ điều hành hoặc một ứng dụng bên thứ ba sang bất kỳ cửa sổ nào đang mở của instance Godot.
 
-Implemented on desktop and mobile platforms.
+Được triển khai trên các nền tảng desktop và mobile.
 
 .. _class_MainLoop_constant_NOTIFICATION_APPLICATION_FOCUS_OUT:
 
@@ -211,9 +211,9 @@ Implemented on desktop and mobile platforms.
 
 **NOTIFICATION_APPLICATION_FOCUS_OUT** = ``2017`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_APPLICATION_FOCUS_OUT>`
 
-Notification received from the OS when the application is defocused, i.e. when changing the focus from any open window of the Godot instance to the OS desktop or a thirdparty application.
+Thông báo nhận được từ hệ điều hành khi ứng dụng mất focus, tức là khi chuyển focus từ bất kỳ cửa sổ nào đang mở của instance Godot sang desktop của hệ điều hành hoặc một ứng dụng bên thứ ba.
 
-Implemented on desktop and mobile platforms.
+Được triển khai trên các nền tảng desktop và mobile.
 
 .. _class_MainLoop_constant_NOTIFICATION_TEXT_SERVER_CHANGED:
 
@@ -221,7 +221,7 @@ Implemented on desktop and mobile platforms.
 
 **NOTIFICATION_TEXT_SERVER_CHANGED** = ``2018`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_TEXT_SERVER_CHANGED>`
 
-Notification received when text server is changed.
+Thông báo nhận được khi text server được thay đổi.
 
 .. _class_MainLoop_constant_NOTIFICATION_APPLICATION_PIP_MODE_ENTERED:
 
@@ -229,7 +229,7 @@ Notification received when text server is changed.
 
 **NOTIFICATION_APPLICATION_PIP_MODE_ENTERED** = ``2019`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_APPLICATION_PIP_MODE_ENTERED>`
 
-Notification received when the application enters picture-in-picture mode.
+Thông báo nhận được khi ứng dụng chuyển sang chế độ picture-in-picture.
 
 .. _class_MainLoop_constant_NOTIFICATION_APPLICATION_PIP_MODE_EXITED:
 
@@ -237,7 +237,7 @@ Notification received when the application enters picture-in-picture mode.
 
 **NOTIFICATION_APPLICATION_PIP_MODE_EXITED** = ``2020`` :ref:`🔗<class_MainLoop_constant_NOTIFICATION_APPLICATION_PIP_MODE_EXITED>`
 
-Notification received when the application exits picture-in-picture mode.
+Thông báo được nhận khi ứng dụng thoát khỏi chế độ picture-in-picture.
 
 .. rst-class:: classref-section-separator
 
@@ -245,8 +245,8 @@ Notification received when the application exits picture-in-picture mode.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MainLoop_private_method__finalize:
 
@@ -254,7 +254,7 @@ Method Descriptions
 
 |void| **_finalize**\ (\ ) |virtual| :ref:`🔗<class_MainLoop_private_method__finalize>`
 
-Called before the program exits.
+Được gọi trước khi chương trình thoát.
 
 .. rst-class:: classref-item-separator
 
@@ -266,7 +266,7 @@ Called before the program exits.
 
 |void| **_initialize**\ (\ ) |virtual| :ref:`🔗<class_MainLoop_private_method__initialize>`
 
-Called once during initialization.
+Được gọi một lần trong quá trình khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -278,13 +278,13 @@ Called once during initialization.
 
 :ref:`bool<class_bool>` **_physics_process**\ (\ delta\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_MainLoop_private_method__physics_process>`
 
-Called each physics tick. ``delta`` is the logical time between physics ticks in seconds and is equal to :ref:`Engine.time_scale<class_Engine_property_time_scale>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. Equivalent to :ref:`Node._physics_process()<class_Node_private_method__physics_process>`.
+Được gọi trong mỗi nhịp vật lý. ``delta`` là thời gian logic giữa các nhịp vật lý, tính bằng giây và bằng :ref:`Engine.time_scale<class_Engine_property_time_scale>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. Tương đương với :ref:`Node._physics_process()<class_Node_private_method__physics_process>`.
 
-If implemented, the method must return a boolean value. ``true`` ends the main loop, while ``false`` lets it proceed to the next step.
+Nếu được triển khai, phương thức phải trả về một giá trị boolean. ``true`` kết thúc vòng lặp chính, còn ``false`` cho phép vòng lặp tiếp tục sang bước tiếp theo.
 
-\ **Note:** :ref:`_physics_process()<class_MainLoop_private_method__physics_process>` may be called up to :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` times per (idle) frame. This step limit may be reached when the engine is suffering performance issues.
+\ **Lưu ý:** :ref:`_physics_process()<class_MainLoop_private_method__physics_process>` có thể được gọi tối đa :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` lần trong mỗi khung hình (idle). Có thể đạt đến giới hạn bước này khi engine gặp vấn đề về hiệu năng.
 
-\ **Note:** Accumulated ``delta`` may diverge from real world seconds.
+\ **Lưu ý:** ``delta`` tích lũy có thể khác với số giây trong thế giới thực.
 
 .. rst-class:: classref-item-separator
 
@@ -296,22 +296,22 @@ If implemented, the method must return a boolean value. ``true`` ends the main l
 
 :ref:`bool<class_bool>` **_process**\ (\ delta\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_MainLoop_private_method__process>`
 
-Called on each idle frame, prior to rendering, and after physics ticks have been processed. ``delta`` is the time between frames in seconds. Equivalent to :ref:`Node._process()<class_Node_private_method__process>`.
+Được gọi trên mỗi khung hình idle, trước khi kết xuất và sau khi các physics tick được xử lý. ``delta`` là khoảng thời gian giữa các khung hình tính bằng giây. Tương đương với :ref:`Node._process()<class_Node_private_method__process>`.
 
-If implemented, the method must return a boolean value. ``true`` ends the main loop, while ``false`` lets it proceed to the next frame.
+Nếu được triển khai, phương thức này phải trả về một giá trị boolean. ``true`` kết thúc vòng lặp chính, còn ``false`` cho phép vòng lặp tiếp tục đến khung hình tiếp theo.
 
-\ **Note:** When the engine is struggling and the frame rate is lowered, ``delta`` will increase. When ``delta`` is increased, it's capped at a maximum of :ref:`Engine.time_scale<class_Engine_property_time_scale>` \* :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. As a result, accumulated ``delta`` may not represent real world time.
+\ **Lưu ý:** Khi engine gặp khó khăn và frame rate giảm, ``delta`` sẽ tăng. Khi ``delta`` tăng, giá trị này bị giới hạn ở mức tối đa :ref:`Engine.time_scale<class_Engine_property_time_scale>` \* :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. Do đó, ``delta`` tích lũy có thể không thể hiện thời gian thực.
 
-\ **Note:** When ``--fixed-fps`` is enabled or the engine is running in Movie Maker mode (see :ref:`MovieWriter<class_MovieWriter>`), process ``delta`` will always be the same for every frame, regardless of how much time the frame took to render.
+\ **Lưu ý:** Khi ``--fixed-fps`` được bật hoặc engine đang chạy ở Movie Maker mode (xem :ref:`MovieWriter<class_MovieWriter>`), process ``delta`` sẽ luôn giống nhau trong mọi khung hình, bất kể khung hình đó mất bao lâu để kết xuất.
 
-\ **Note:** Frame delta may be post-processed by :ref:`OS.delta_smoothing<class_OS_property_delta_smoothing>` if this is enabled for the project.
+\ **Lưu ý:** Frame delta có thể được hậu xử lý bởi :ref:`OS.delta_smoothing<class_OS_property_delta_smoothing>` nếu tùy chọn này được bật cho project.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,70 +10,70 @@
 EditorInspector
 ===============
 
-**Inherits:** :ref:`ScrollContainer<class_ScrollContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ScrollContainer<class_ScrollContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A control used to edit properties of an object.
+Một control dùng để chỉnh sửa các thuộc tính của một đối tượng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This is the control that implements property editing in the editor's Settings dialogs, the Inspector dock, etc. To get the **EditorInspector** used in the editor's Inspector dock, use :ref:`EditorInterface.get_inspector()<class_EditorInterface_method_get_inspector>`.
+Đây là control triển khai việc chỉnh sửa thuộc tính trong các hộp thoại Settings của editor, dock Inspector, v.v. Để lấy **EditorInspector** được sử dụng trong dock Inspector của editor, hãy dùng :ref:`EditorInterface.get_inspector()<class_EditorInterface_method_get_inspector>`.
 
-\ **EditorInspector** will show properties in the same order as the array returned by :ref:`Object.get_property_list()<class_Object_method_get_property_list>`.
+\ **EditorInspector** sẽ hiển thị các thuộc tính theo cùng thứ tự với mảng do :ref:`Object.get_property_list()<class_Object_method_get_property_list>` trả về.
 
-If a property's name is path-like (i.e. if it contains forward slashes), **EditorInspector** will create nested sections for "directories" along the path. For example, if a property is named ``highlighting/gdscript/node_path_color``, it will be shown as "Node Path Color" inside the "GDScript" section nested inside the "Highlighting" section.
+Nếu tên của một thuộc tính có dạng đường dẫn (tức là chứa dấu gạch chéo), **EditorInspector** sẽ tạo các section lồng nhau cho các "thư mục" trên đường dẫn. Ví dụ: nếu một thuộc tính có tên là ``highlighting/gdscript/node_path_color``, nó sẽ được hiển thị là "Node Path Color" bên trong section "GDScript", được lồng trong section "Highlighting".
 
-If a property has :ref:`@GlobalScope.PROPERTY_USAGE_GROUP<class_@GlobalScope_constant_PROPERTY_USAGE_GROUP>` usage, it will group subsequent properties whose name starts with the property's hint string. The group ends when a property does not start with that hint string or when a new group starts. An empty group name effectively ends the current group. **EditorInspector** will create a top-level section for each group. For example, if a property with group usage is named ``Collide With`` and its hint string is ``collide_with_``, a subsequent ``collide_with_area`` property will be shown as "Area" inside the "Collide With" section. There is also a special case: when the hint string contains the name of a property, that property is grouped too. This is mainly to help grouping properties like ``font``, ``font_color`` and ``font_size`` (using the hint string ``font_``).
+Nếu một thuộc tính có cách sử dụng :ref:`@GlobalScope.PROPERTY_USAGE_GROUP <class_@GlobalScope_constant_PROPERTY_USAGE_GROUP>`, nó sẽ nhóm các thuộc tính tiếp theo có tên bắt đầu bằng chuỗi gợi ý của thuộc tính đó. Nhóm kết thúc khi một thuộc tính không bắt đầu bằng chuỗi gợi ý đó hoặc khi một nhóm mới bắt đầu. Tên nhóm rỗng sẽ kết thúc nhóm hiện tại một cách hiệu quả. **EditorInspector** sẽ tạo một section cấp cao nhất cho mỗi nhóm. Ví dụ: nếu một thuộc tính có cách sử dụng nhóm có tên là ``Collide With`` và chuỗi gợi ý của nó là ``collide_with_``, thì một thuộc tính ``collide_with_area`` tiếp theo sẽ được hiển thị là "Area" bên trong section "Collide With". Ngoài ra còn có một trường hợp đặc biệt: khi chuỗi gợi ý chứa tên của một thuộc tính, thuộc tính đó cũng được nhóm. Điều này chủ yếu nhằm hỗ trợ nhóm các thuộc tính như ``font``, ``font_color`` và ``font_size`` (sử dụng chuỗi gợi ý ``font_``).
 
-If a property has :ref:`@GlobalScope.PROPERTY_USAGE_SUBGROUP<class_@GlobalScope_constant_PROPERTY_USAGE_SUBGROUP>` usage, a subgroup will be created in the same way as a group, and a second-level section will be created for each subgroup.
+Nếu một thuộc tính có cách sử dụng :ref:`@GlobalScope.PROPERTY_USAGE_SUBGROUP <class_@GlobalScope_constant_PROPERTY_USAGE_SUBGROUP>`, một subgroup sẽ được tạo theo cách tương tự như một group, và một section cấp hai sẽ được tạo cho mỗi subgroup.
 
-\ **Note:** Unlike sections created from path-like property names, **EditorInspector** won't capitalize the name for sections created from groups. So properties with group usage usually use capitalized names instead of snake_cased names.
+\ **Lưu ý:** Không giống như các section được tạo từ tên thuộc tính dạng đường dẫn, **EditorInspector** sẽ không viết hoa tên đối với các section được tạo từ group. Vì vậy, các thuộc tính có cách sử dụng group thường dùng tên viết hoa thay vì tên dạng snake_case.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                            | draw_focus_border      | ``true`` (overrides :ref:`ScrollContainer<class_ScrollContainer_property_draw_focus_border>`)   |
-   +----------------------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`           | focus_mode             | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)                             |
-   +----------------------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                            | follow_focus           | ``true`` (overrides :ref:`ScrollContainer<class_ScrollContainer_property_follow_focus>`)        |
-   +----------------------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`ScrollMode<enum_ScrollContainer_ScrollMode>` | horizontal_scroll_mode | ``0`` (overrides :ref:`ScrollContainer<class_ScrollContainer_property_horizontal_scroll_mode>`) |
-   +----------------------------------------------------+------------------------+-------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------+------------------------+----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | draw_focus_border      | ``true`` (ghi đè :ref:`ScrollContainer<class_ScrollContainer_property_draw_focus_border>`)   |
+   +-----------------------------------------------------+------------------------+----------------------------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`           | focus_mode             | ``2`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)                             |
+   +-----------------------------------------------------+------------------------+----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | follow_focus           | ``true`` (ghi đè :ref:`ScrollContainer<class_ScrollContainer_property_follow_focus>`)        |
+   +-----------------------------------------------------+------------------------+----------------------------------------------------------------------------------------------+
+   | :ref:`ScrollMode <enum_ScrollContainer_ScrollMode>` | horizontal_scroll_mode | ``0`` (ghi đè :ref:`ScrollContainer<class_ScrollContainer_property_horizontal_scroll_mode>`) |
+   +-----------------------------------------------------+------------------------+----------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                        | :ref:`collapse_all_folding<class_EditorInspector_method_collapse_all_folding>`\ (\ )                                                                                                                                                                                                                                                                                                                                          |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`EditorInspector<class_EditorInspector>` | :ref:`create_default_inspector<class_EditorInspector_method_create_default_inspector>`\ (\ filter_line_edit\: :ref:`LineEdit<class_LineEdit>` = null\ ) |static|                                                                                                                                                                                                                                                              |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                        | :ref:`edit<class_EditorInspector_method_edit>`\ (\ object\: :ref:`Object<class_Object>`\ )                                                                                                                                                                                                                                                                                                                                    |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                        | :ref:`expand_all_folding<class_EditorInspector_method_expand_all_folding>`\ (\ )                                                                                                                                                                                                                                                                                                                                              |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                        | :ref:`expand_revertable<class_EditorInspector_method_expand_revertable>`\ (\ )                                                                                                                                                                                                                                                                                                                                                |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Object<class_Object>`                   | :ref:`get_edited_object<class_EditorInspector_method_get_edited_object>`\ (\ )                                                                                                                                                                                                                                                                                                                                                |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                   | :ref:`get_selected_path<class_EditorInspector_method_get_selected_path>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                        |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`EditorProperty<class_EditorProperty>`   | :ref:`instantiate_property_editor<class_EditorInspector_method_instantiate_property_editor>`\ (\ object\: :ref:`Object<class_Object>`, type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`, path\: :ref:`String<class_String>`, hint\: :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>`, hint_text\: :ref:`String<class_String>`, usage\: :ref:`int<class_int>`, wide\: :ref:`bool<class_bool>` = false\ ) |static| |
-   +-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`collapse_all_folding<class_EditorInspector_method_collapse_all_folding>`\ (\ )                                                                                                                                                                                                                                                                                                                                            |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`EditorInspector<class_EditorInspector>` | :ref:`create_default_inspector<class_EditorInspector_method_create_default_inspector>`\ (\ filter_line_edit\: :ref:`LineEdit<class_LineEdit>` = null\ ) |static|                                                                                                                                                                                                                                                                |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`edit<class_EditorInspector_method_edit>`\ (\ object\: :ref:`Object<class_Object>`\ )                                                                                                                                                                                                                                                                                                                                      |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`expand_all_folding<class_EditorInspector_method_expand_all_folding>`\ (\ )                                                                                                                                                                                                                                                                                                                                                |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`expand_revertable<class_EditorInspector_method_expand_revertable>`\ (\ )                                                                                                                                                                                                                                                                                                                                                  |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Object<class_Object>`                   | :ref:`get_edited_object<class_EditorInspector_method_get_edited_object>`\ (\ )                                                                                                                                                                                                                                                                                                                                                  |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                   | :ref:`get_selected_path<class_EditorInspector_method_get_selected_path>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                          |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`EditorProperty<class_EditorProperty>`   | :ref:`instantiate_property_editor<class_EditorInspector_method_instantiate_property_editor>`\ (\ object\: :ref:`Object<class_Object>`, type\: :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`, path\: :ref:`String<class_String>`, hint\: :ref:`PropertyHint <enum_@GlobalScope_PropertyHint>`, hint_text\: :ref:`String<class_String>`, usage\: :ref:`int<class_int>`, wide\: :ref:`bool<class_bool>` = false\ ) |static| |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -81,8 +81,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorInspector_signal_edited_object_changed:
 
@@ -90,7 +90,7 @@ Signals
 
 **edited_object_changed**\ (\ ) :ref:`🔗<class_EditorInspector_signal_edited_object_changed>`
 
-Emitted when the object being edited by the inspector has changed.
+Được phát ra khi đối tượng đang được inspector chỉnh sửa thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ Emitted when the object being edited by the inspector has changed.
 
 **object_id_selected**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorInspector_signal_object_id_selected>`
 
-Emitted when the Edit button of an :ref:`Object<class_Object>` has been pressed in the inspector. This is mainly used in the remote scene tree Inspector.
+Được phát ra khi nút Edit của một :ref:`Object<class_Object>` được nhấn trong inspector. Tín hiệu này chủ yếu được sử dụng trong Inspector của cây cảnh từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ Emitted when the Edit button of an :ref:`Object<class_Object>` has been pressed 
 
 **property_deleted**\ (\ property\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInspector_signal_property_deleted>`
 
-Emitted when a property is removed from the inspector.
+Được phát ra khi một thuộc tính bị xóa khỏi inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ Emitted when a property is removed from the inspector.
 
 **property_edited**\ (\ property\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInspector_signal_property_edited>`
 
-Emitted when a property is edited in the inspector.
+Được phát ra khi một thuộc tính được chỉnh sửa trong inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Emitted when a property is edited in the inspector.
 
 **property_keyed**\ (\ property\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`, advance\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorInspector_signal_property_keyed>`
 
-Emitted when a property is keyed in the inspector. Properties can be keyed by clicking the "key" icon next to a property when the Animation panel is toggled.
+Được phát ra khi một thuộc tính được tạo key trong inspector. Có thể tạo key cho thuộc tính bằng cách nhấp vào biểu tượng "key" bên cạnh thuộc tính khi bảng Animation được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Emitted when a property is keyed in the inspector. Properties can be keyed by cl
 
 **property_selected**\ (\ property\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInspector_signal_property_selected>`
 
-Emitted when a property is selected in the inspector.
+Được phát ra khi một thuộc tính được chọn trong inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -162,9 +162,9 @@ Emitted when a property is selected in the inspector.
 
 **property_toggled**\ (\ property\: :ref:`String<class_String>`, checked\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorInspector_signal_property_toggled>`
 
-Emitted when a boolean property is toggled in the inspector.
+Được phát ra khi một thuộc tính boolean được bật hoặc tắt trong inspector.
 
-\ **Note:** This signal is never emitted if the internal ``autoclear`` property enabled. Since this property is always enabled in the editor inspector, this signal is never emitted by the editor itself.
+\ **Lưu ý:** Tín hiệu này không bao giờ được phát ra nếu thuộc tính nội bộ ``autoclear`` được bật. Vì thuộc tính này luôn được bật trong inspector của editor, nên bản thân editor không bao giờ phát ra tín hiệu này.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ Emitted when a boolean property is toggled in the inspector.
 
 **resource_selected**\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInspector_signal_resource_selected>`
 
-Emitted when a resource is selected in the inspector.
+Được phát ra khi một resource được chọn trong inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ Emitted when a resource is selected in the inspector.
 
 **restart_requested**\ (\ ) :ref:`🔗<class_EditorInspector_signal_restart_requested>`
 
-Emitted when a property that requires a restart to be applied is edited in the inspector. This is only used in the Project Settings and Editor Settings.
+Được phát ra khi một thuộc tính yêu cầu khởi động lại để áp dụng thay đổi được chỉnh sửa trong inspector. Tính năng này chỉ được sử dụng trong Project Settings và Editor Settings.
 
 .. rst-class:: classref-section-separator
 
@@ -196,8 +196,8 @@ Emitted when a property that requires a restart to be applied is edited in the i
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorInspector_method_collapse_all_folding:
 
@@ -205,7 +205,7 @@ Method Descriptions
 
 |void| **collapse_all_folding**\ (\ ) :ref:`🔗<class_EditorInspector_method_collapse_all_folding>`
 
-Collapses all foldable sections.
+Thu gọn tất cả các phần có thể thu gọn.
 
 .. rst-class:: classref-item-separator
 
@@ -217,7 +217,7 @@ Collapses all foldable sections.
 
 :ref:`EditorInspector<class_EditorInspector>` **create_default_inspector**\ (\ filter_line_edit\: :ref:`LineEdit<class_LineEdit>` = null\ ) |static| :ref:`🔗<class_EditorInspector_method_create_default_inspector>`
 
-Creates an inspector with the same configuration as the one used in the editor's Inspector dock. When passing a :ref:`LineEdit<class_LineEdit>` into ``filter_line_edit``, the inspector will filter its properties based on :ref:`LineEdit.text<class_LineEdit_property_text>` whenever :ref:`LineEdit.text_changed<class_LineEdit_signal_text_changed>` is emitted.
+Tạo một Inspector với cùng cấu hình như Inspector được sử dụng trong dock Inspector của editor. Khi truyền một :ref:`LineEdit<class_LineEdit>` vào ``filter_line_edit``, Inspector sẽ lọc các thuộc tính dựa trên :ref:`LineEdit.text<class_LineEdit_property_text>` mỗi khi :ref:`LineEdit.text_changed<class_LineEdit_signal_text_changed>` được phát.
 
 .. rst-class:: classref-item-separator
 
@@ -229,9 +229,9 @@ Creates an inspector with the same configuration as the one used in the editor's
 
 |void| **edit**\ (\ object\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_EditorInspector_method_edit>`
 
-Shows the properties of the given ``object`` in this inspector for editing. To clear the inspector, call this method with ``null``.
+Hiển thị các thuộc tính của ``object`` đã cho trong Inspector này để chỉnh sửa. Để xóa Inspector, hãy gọi phương thức này với ``null``.
 
-\ **Note:** If you want to edit an object in the editor's main inspector, use the ``edit_*`` methods in :ref:`EditorInterface<class_EditorInterface>` instead.
+\ **Lưu ý:** Nếu bạn muốn chỉnh sửa một đối tượng trong Inspector chính của editor, hãy sử dụng các phương thức ``edit_*`` trong :ref:`EditorInterface<class_EditorInterface>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Shows the properties of the given ``object`` in this inspector for editing. To c
 
 |void| **expand_all_folding**\ (\ ) :ref:`🔗<class_EditorInspector_method_expand_all_folding>`
 
-Expands all foldable sections.
+Mở rộng tất cả các phần có thể thu gọn.
 
 .. rst-class:: classref-item-separator
 
@@ -255,7 +255,7 @@ Expands all foldable sections.
 
 |void| **expand_revertable**\ (\ ) :ref:`🔗<class_EditorInspector_method_expand_revertable>`
 
-Expands only the foldable sections that contain a revertable (i.e. non-default) property.
+Chỉ mở rộng các phần có thể thu gọn chứa thuộc tính có thể hoàn nguyên (tức là không phải thuộc tính mặc định).
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Expands only the foldable sections that contain a revertable (i.e. non-default) 
 
 :ref:`Object<class_Object>` **get_edited_object**\ (\ ) :ref:`🔗<class_EditorInspector_method_get_edited_object>`
 
-Returns the object currently selected in this inspector.
+Trả về đối tượng hiện đang được chọn trong inspector này.
 
 .. rst-class:: classref-item-separator
 
@@ -279,7 +279,7 @@ Returns the object currently selected in this inspector.
 
 :ref:`String<class_String>` **get_selected_path**\ (\ ) |const| :ref:`🔗<class_EditorInspector_method_get_selected_path>`
 
-Gets the path of the currently selected property.
+Lấy đường dẫn của thuộc tính hiện đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -291,14 +291,14 @@ Gets the path of the currently selected property.
 
 :ref:`EditorProperty<class_EditorProperty>` **instantiate_property_editor**\ (\ object\: :ref:`Object<class_Object>`, type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`, path\: :ref:`String<class_String>`, hint\: :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>`, hint_text\: :ref:`String<class_String>`, usage\: :ref:`int<class_int>`, wide\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_EditorInspector_method_instantiate_property_editor>`
 
-Creates a property editor that can be used by plugin UI to edit the specified property of an ``object``.
+Tạo một trình chỉnh sửa thuộc tính mà UI của plugin có thể sử dụng để chỉnh sửa thuộc tính được chỉ định của một ``object``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

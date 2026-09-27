@@ -10,33 +10,33 @@
 Material
 ========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`BaseMaterial3D<class_BaseMaterial3D>`, :ref:`BlitMaterial<class_BlitMaterial>`, :ref:`CanvasItemMaterial<class_CanvasItemMaterial>`, :ref:`FogMaterial<class_FogMaterial>`, :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`, :ref:`ParticleProcessMaterial<class_ParticleProcessMaterial>`, :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>`, :ref:`PlaceholderMaterial<class_PlaceholderMaterial>`, :ref:`ProceduralSkyMaterial<class_ProceduralSkyMaterial>`, :ref:`ShaderMaterial<class_ShaderMaterial>`
+**Được kế thừa bởi:** :ref:`BaseMaterial3D<class_BaseMaterial3D>`, :ref:`BlitMaterial<class_BlitMaterial>`, :ref:`CanvasItemMaterial<class_CanvasItemMaterial>`, :ref:`FogMaterial<class_FogMaterial>`, :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`, :ref:`ParticleProcessMaterial<class_ParticleProcessMaterial>`, :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>`, :ref:`PlaceholderMaterial<class_PlaceholderMaterial>`, :ref:`ProceduralSkyMaterial<class_ProceduralSkyMaterial>`, :ref:`ShaderMaterial<class_ShaderMaterial>`
 
-Virtual base class for applying visual properties to an object, such as color and roughness.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**Material** is a base resource used for coloring and shading geometry. All materials inherit from it and almost all :ref:`VisualInstance3D<class_VisualInstance3D>` derived nodes carry a **Material**. A few flags and parameters are shared between all material types and are configured here.
-
-Importantly, you can inherit from **Material** to create your own custom material type in script or in GDExtension.
+Lớp cơ sở ảo dùng để áp dụng các thuộc tính trực quan cho một đối tượng, chẳng hạn như màu sắc và độ nhám.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**Material** là một tài nguyên cơ sở được dùng để tô màu và đổ bóng hình học. Tất cả material đều kế thừa từ nó và hầu hết các node dẫn xuất từ :ref:`VisualInstance3D<class_VisualInstance3D>` đều chứa một **Material**. Một số cờ và tham số được dùng chung cho tất cả các loại material và được cấu hình tại đây.
+
+Điều quan trọng là bạn có thể kế thừa từ **Material** để tạo kiểu material tùy chỉnh của riêng mình bằng script hoặc trong GDExtension.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `3D Material Testers Demo <https://godotengine.org/asset-library/asset/2742>`__
+- `Bản demo Trình kiểm thử vật liệu 3D <https://godotengine.org/asset-library/asset/2742>`__
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,25 +50,25 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`         | :ref:`_can_do_next_pass<class_Material_private_method__can_do_next_pass>`\ (\ ) |virtual| |const|               |
-   +---------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`         | :ref:`_can_use_render_priority<class_Material_private_method__can_use_render_priority>`\ (\ ) |virtual| |const| |
-   +---------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Mode<enum_Shader_Mode>`   | :ref:`_get_shader_mode<class_Material_private_method__get_shader_mode>`\ (\ ) |virtual| |required| |const|      |
-   +---------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`           | :ref:`_get_shader_rid<class_Material_private_method__get_shader_rid>`\ (\ ) |virtual| |required| |const|        |
-   +---------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Resource<class_Resource>` | :ref:`create_placeholder<class_Material_method_create_placeholder>`\ (\ ) |const|                               |
-   +---------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`inspect_native_shader_code<class_Material_method_inspect_native_shader_code>`\ (\ )                       |
-   +---------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   +----------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`          | :ref:`_can_do_next_pass<class_Material_private_method__can_do_next_pass>`\ (\ ) |virtual| |const|               |
+   +----------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`          | :ref:`_can_use_render_priority<class_Material_private_method__can_use_render_priority>`\ (\ ) |virtual| |const| |
+   +----------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Chế độ <enum_Shader_Mode>` | :ref:`_get_shader_mode<class_Material_private_method__get_shader_mode>`\ (\ ) |virtual| |required| |const|      |
+   +----------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`            | :ref:`_get_shader_rid<class_Material_private_method__get_shader_rid>`\ (\ ) |virtual| |required| |const|        |
+   +----------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | :ref:`Resource<class_Resource>`  | :ref:`create_placeholder<class_Material_method_create_placeholder>`\ (\ ) |const|                               |
+   +----------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   | |void|                           | :ref:`inspect_native_shader_code<class_Material_method_inspect_native_shader_code>`\ (\ )                       |
+   +----------------------------------+-----------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -76,8 +76,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Material_constant_RENDER_PRIORITY_MAX:
 
@@ -85,7 +85,7 @@ Constants
 
 **RENDER_PRIORITY_MAX** = ``127`` :ref:`🔗<class_Material_constant_RENDER_PRIORITY_MAX>`
 
-Maximum value for the :ref:`render_priority<class_Material_property_render_priority>` parameter.
+Giá trị tối đa của tham số :ref:`render_priority<class_Material_property_render_priority>`.
 
 .. _class_Material_constant_RENDER_PRIORITY_MIN:
 
@@ -93,7 +93,7 @@ Maximum value for the :ref:`render_priority<class_Material_property_render_prior
 
 **RENDER_PRIORITY_MIN** = ``-128`` :ref:`🔗<class_Material_constant_RENDER_PRIORITY_MIN>`
 
-Minimum value for the :ref:`render_priority<class_Material_property_render_priority>` parameter.
+Giá trị tối thiểu cho tham số :ref:`render_priority<class_Material_property_render_priority>`.
 
 .. rst-class:: classref-section-separator
 
@@ -101,25 +101,25 @@ Minimum value for the :ref:`render_priority<class_Material_property_render_prior
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Material_property_next_pass:
 
 .. rst-class:: classref-property
 
-:ref:`Material<class_Material>` **next_pass** :ref:`🔗<class_Material_property_next_pass>`
+:ref:`Material<class_Material>` **next_pass** :ref:`🔗 <class_Material_property_next_pass>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_next_pass**\ (\ value\: :ref:`Material<class_Material>`\ )
 - :ref:`Material<class_Material>` **get_next_pass**\ (\ )
 
-Sets the **Material** to be used for the next pass. This renders the object again using a different material.
+Đặt **Material** sẽ được sử dụng cho lượt xử lý tiếp theo. Thao tác này kết xuất lại đối tượng bằng một material khác.
 
-\ **Note:** :ref:`next_pass<class_Material_property_next_pass>` materials are not necessarily drawn immediately after the source **Material**. Draw order is determined by material properties, :ref:`render_priority<class_Material_property_render_priority>`, and distance to camera.
+\ **Lưu ý:** :ref:`next_pass<class_Material_property_next_pass>` các material không nhất thiết được vẽ ngay sau **Material** nguồn. Thứ tự vẽ được xác định bởi các thuộc tính của material, :ref:`render_priority<class_Material_property_render_priority>` và khoảng cách đến camera.
 
-\ **Note:** This only applies to :ref:`StandardMaterial3D<class_StandardMaterial3D>`\ s and :ref:`ShaderMaterial<class_ShaderMaterial>`\ s with type "Spatial".
+\ **Lưu ý:** Điều này chỉ áp dụng cho :ref:`StandardMaterial3D<class_StandardMaterial3D>`\ s và :ref:`ShaderMaterial<class_ShaderMaterial>`\ s có type "Spatial".
 
 .. rst-class:: classref-item-separator
 
@@ -129,18 +129,18 @@ Sets the **Material** to be used for the next pass. This renders the object agai
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **render_priority** :ref:`🔗<class_Material_property_render_priority>`
+:ref:`int<class_int>` **render_priority** :ref:`🔗 <class_Material_property_render_priority>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_render_priority**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_render_priority**\ (\ )
 
-Sets the render priority for objects in 3D scenes. Higher priority objects will be sorted in front of lower priority objects. In other words, all objects with :ref:`render_priority<class_Material_property_render_priority>` ``1`` will render on top of all objects with :ref:`render_priority<class_Material_property_render_priority>` ``0``.
+Đặt mức độ ưu tiên render cho các đối tượng trong cảnh 3D. Các đối tượng có mức độ ưu tiên cao hơn sẽ được sắp xếp ở phía trước các đối tượng có mức độ ưu tiên thấp hơn. Nói cách khác, tất cả các đối tượng có :ref:`render_priority<class_Material_property_render_priority>` ``1`` sẽ được render lên trên tất cả các đối tượng có :ref:`render_priority<class_Material_property_render_priority>` ``0``.
 
-\ **Note:** This only applies to :ref:`StandardMaterial3D<class_StandardMaterial3D>`\ s and :ref:`ShaderMaterial<class_ShaderMaterial>`\ s with type "Spatial".
+\ **Lưu ý:** Điều này chỉ áp dụng cho :ref:`StandardMaterial3D<class_StandardMaterial3D>`\ s và :ref:`ShaderMaterial<class_ShaderMaterial>`\ s có type "Spatial".
 
-\ **Note:** This will not impact how transparent objects are sorted relative to opaque objects or how dynamic meshes will be sorted relative to other opaque meshes. This is because all transparent objects are drawn after all opaque objects and all dynamic opaque meshes are drawn before other opaque meshes.
+\ **Lưu ý:** Điều này sẽ không ảnh hưởng đến cách các đối tượng trong suốt được sắp xếp so với các đối tượng không trong suốt, cũng như cách các mesh động được sắp xếp so với các mesh không trong suốt khác. Nguyên nhân là tất cả các đối tượng trong suốt đều được vẽ sau tất cả các đối tượng không trong suốt, còn tất cả các mesh động không trong suốt được vẽ trước các mesh không trong suốt khác.
 
 .. rst-class:: classref-section-separator
 
@@ -148,8 +148,8 @@ Sets the render priority for objects in 3D scenes. Higher priority objects will 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Material_private_method__can_do_next_pass:
 
@@ -157,7 +157,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_can_do_next_pass**\ (\ ) |virtual| |const| :ref:`🔗<class_Material_private_method__can_do_next_pass>`
 
-Only exposed for the purpose of overriding. You cannot call this function directly. Used internally to determine if :ref:`next_pass<class_Material_property_next_pass>` should be shown in the editor or not.
+Chỉ được cung cấp để ghi đè. Bạn không thể gọi trực tiếp hàm này. Hàm được sử dụng nội bộ để xác định xem :ref:`next_pass<class_Material_property_next_pass>` có nên được hiển thị trong editor hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ Only exposed for the purpose of overriding. You cannot call this function direct
 
 :ref:`bool<class_bool>` **_can_use_render_priority**\ (\ ) |virtual| |const| :ref:`🔗<class_Material_private_method__can_use_render_priority>`
 
-Only exposed for the purpose of overriding. You cannot call this function directly. Used internally to determine if :ref:`render_priority<class_Material_property_render_priority>` should be shown in the editor or not.
+Chỉ được cung cấp để ghi đè. Bạn không thể gọi trực tiếp hàm này. Hàm được sử dụng nội bộ để xác định xem :ref:`render_priority<class_Material_property_render_priority>` có nên được hiển thị trong editor hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ Only exposed for the purpose of overriding. You cannot call this function direct
 
 :ref:`Mode<enum_Shader_Mode>` **_get_shader_mode**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Material_private_method__get_shader_mode>`
 
-Only exposed for the purpose of overriding. You cannot call this function directly. Used internally by various editor tools.
+Chỉ được cung cấp để ghi đè. Bạn không thể gọi trực tiếp hàm này. Hàm được nhiều công cụ editor khác nhau sử dụng nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ Only exposed for the purpose of overriding. You cannot call this function direct
 
 :ref:`RID<class_RID>` **_get_shader_rid**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Material_private_method__get_shader_rid>`
 
-Only exposed for the purpose of overriding. You cannot call this function directly. Used internally by various editor tools. Used to access the RID of the **Material**'s :ref:`Shader<class_Shader>`.
+Chỉ được hiển thị nhằm mục đích ghi đè. Bạn không thể gọi trực tiếp hàm này. Được nhiều công cụ editor sử dụng nội bộ. Dùng để truy cập RID của **Material**'s :ref:`Shader<class_Shader>`.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Only exposed for the purpose of overriding. You cannot call this function direct
 
 :ref:`Resource<class_Resource>` **create_placeholder**\ (\ ) |const| :ref:`🔗<class_Material_method_create_placeholder>`
 
-Creates a placeholder version of this resource (:ref:`PlaceholderMaterial<class_PlaceholderMaterial>`).
+Tạo một phiên bản giữ chỗ của tài nguyên này (:ref:`PlaceholderMaterial<class_PlaceholderMaterial>`).
 
 .. rst-class:: classref-item-separator
 
@@ -217,14 +217,14 @@ Creates a placeholder version of this resource (:ref:`PlaceholderMaterial<class_
 
 |void| **inspect_native_shader_code**\ (\ ) :ref:`🔗<class_Material_method_inspect_native_shader_code>`
 
-Only available when running in the editor. Opens a popup that visualizes the generated shader code, including all variants and internal shader code. See also :ref:`Shader.inspect_native_shader_code()<class_Shader_method_inspect_native_shader_code>`.
+Chỉ khả dụng khi chạy trong editor. Mở một cửa sổ bật lên để hiển thị trực quan mã shader đã tạo, bao gồm tất cả các biến thể và mã shader nội bộ. Xem thêm :ref:`Shader.inspect_native_shader_code()<class_Shader_method_inspect_native_shader_code>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

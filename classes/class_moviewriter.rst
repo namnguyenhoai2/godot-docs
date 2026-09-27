@@ -10,39 +10,39 @@
 MovieWriter
 ===========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Abstract class for non-real-time video recording encoders.
+Lớp trừu tượng dành cho các encoder ghi video không theo thời gian thực.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Godot can record videos with non-real-time simulation. Like the ``--fixed-fps`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`, this forces the reported ``delta`` in :ref:`Node._process()<class_Node_private_method__process>` functions to be identical across frames, regardless of how long it actually took to render the frame. This can be used to record high-quality videos with perfect frame pacing regardless of your hardware's capabilities.
+Godot có thể ghi video bằng mô phỏng không theo thời gian thực. Tương tự đối số dòng lệnh ``--fixed-fps`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`, tùy chọn này buộc ``delta`` được báo cáo trong các hàm :ref:`Node._process()<class_Node_private_method__process>` phải giống hệt nhau giữa các khung hình, bất kể thời gian thực tế cần để kết xuất khung hình đó là bao lâu. Bạn có thể dùng cách này để ghi video chất lượng cao với nhịp khung hình hoàn hảo, bất kể khả năng của phần cứng.
 
-Godot has 3 built-in **MovieWriter**\ s:
+Godot có 3 **MovieWriter**\ trình ghi tích hợp sẵn:
 
-- OGV container with Theora for video and Vorbis for audio (``.ogv`` file extension). Lossy compression, medium file sizes, fast encoding. The lossy compression quality can be adjusted by changing :ref:`ProjectSettings.editor/movie_writer/video_quality<class_ProjectSettings_property_editor/movie_writer/video_quality>` and :ref:`ProjectSettings.editor/movie_writer/ogv/audio_quality<class_ProjectSettings_property_editor/movie_writer/ogv/audio_quality>`. The resulting file can be viewed in Godot with :ref:`VideoStreamPlayer<class_VideoStreamPlayer>` and most video players, but not web browsers as they don't support Theora.
+- Container OGV với Theora cho video và Vorbis cho âm thanh (phần mở rộng tệp ``.ogv``). Nén mất dữ liệu, kích thước tệp trung bình, mã hóa nhanh. Có thể điều chỉnh chất lượng nén mất dữ liệu bằng cách thay đổi :ref:`ProjectSettings.editor/movie_writer/video_quality <class_ProjectSettings_property_editor/movie_writer/video_quality>` và :ref:`ProjectSettings.editor/movie_writer/ogv/audio_quality <class_ProjectSettings_property_editor/movie_writer/ogv/audio_quality>`. Tệp kết quả có thể được xem trong Godot bằng :ref:`VideoStreamPlayer<class_VideoStreamPlayer>` và hầu hết trình phát video, nhưng không thể xem trong trình duyệt web vì chúng không hỗ trợ Theora.
 
-- AVI container with MJPEG for video and uncompressed audio (``.avi`` file extension). Lossy compression, medium file sizes, fast encoding. The lossy compression quality can be adjusted by changing :ref:`ProjectSettings.editor/movie_writer/video_quality<class_ProjectSettings_property_editor/movie_writer/video_quality>`. The resulting file can be viewed in most video players, but it must be converted to another format for viewing on the web or by Godot with :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`. MJPEG does not support transparency. AVI output is currently limited to a file of 4 GB in size at most.
+- Container AVI với MJPEG cho video và âm thanh không nén (phần mở rộng tệp ``.avi``). Nén mất dữ liệu, kích thước tệp trung bình, mã hóa nhanh. Có thể điều chỉnh chất lượng nén mất dữ liệu bằng cách thay đổi :ref:`ProjectSettings.editor/movie_writer/video_quality <class_ProjectSettings_property_editor/movie_writer/video_quality>`. Tệp kết quả có thể được xem trong hầu hết trình phát video, nhưng phải chuyển đổi sang định dạng khác để xem trên web hoặc trong Godot bằng :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`. MJPEG không hỗ trợ độ trong suốt. Đầu ra AVI hiện bị giới hạn ở kích thước tệp tối đa 4 GB.
 
-- PNG image sequence for video and WAV for audio (``.png`` file extension). Lossless compression, large file sizes, slow encoding. Designed to be encoded to a video file with another tool such as `FFmpeg <https://ffmpeg.org/>`__ after recording. Transparency is currently not supported, even if the root viewport is set to be transparent.
+- Chuỗi hình ảnh PNG cho video và WAV cho âm thanh (phần mở rộng tệp ``.png``). Nén không mất dữ liệu, kích thước tệp lớn, mã hóa chậm. Được thiết kế để mã hóa thành tệp video bằng một công cụ khác như `FFmpeg <https://ffmpeg.org/>`__ sau khi ghi. Hiện chưa hỗ trợ độ trong suốt, ngay cả khi viewport gốc được đặt ở chế độ trong suốt.
 
-If you need to encode to a different format or pipe a stream through third-party software, you can extend the **MovieWriter** class to create your own movie writers. This should typically be done using GDExtension for performance reasons.
+Nếu cần mã hóa sang định dạng khác hoặc chuyển một stream qua phần mềm bên thứ ba, bạn có thể mở rộng lớp **MovieWriter** để tạo movie writer của riêng mình. Thông thường, việc này nên được thực hiện bằng GDExtension vì lý do hiệu năng.
 
-\ **Editor usage:** A default movie file path can be specified in :ref:`ProjectSettings.editor/movie_writer/movie_file<class_ProjectSettings_property_editor/movie_writer/movie_file>`. Alternatively, for running single scenes, a ``movie_file`` metadata can be added to the root node, specifying the path to a movie file that will be used when recording that scene. Once a path is set, click the video reel icon in the top-right corner of the editor to enable Movie Maker mode, then run any scene as usual. The engine will start recording as soon as the splash screen is finished, and it will only stop recording when the engine quits. Click the video reel icon again to disable Movie Maker mode. Note that toggling Movie Maker mode does not affect project instances that are already running.
+\ **Cách sử dụng trong Editor:** Có thể chỉ định đường dẫn tệp movie mặc định trong :ref:`ProjectSettings.editor/movie_writer/movie_file <class_ProjectSettings_property_editor/movie_writer/movie_file>`. Ngoài ra, khi chạy các scene đơn, có thể thêm một ``movie_file`` metadata vào node gốc, chỉ định đường dẫn đến tệp movie sẽ được sử dụng khi ghi scene đó. Sau khi đặt đường dẫn, hãy nhấp vào biểu tượng cuộn phim ở góc trên bên phải của Editor để bật chế độ Movie Maker, sau đó chạy bất kỳ scene nào như bình thường. Engine sẽ bắt đầu ghi ngay khi màn hình splash kết thúc và chỉ dừng ghi khi engine thoát. Nhấp lại vào biểu tượng cuộn phim để tắt chế độ Movie Maker. Lưu ý rằng việc bật hoặc tắt chế độ Movie Maker không ảnh hưởng đến các instance của project đang chạy.
 
-\ **Note:** MovieWriter is available for use in both the editor and exported projects, but it is *not* designed for use by end users to record videos while playing. Players wishing to record gameplay videos should install tools such as `OBS Studio <https://obsproject.com/>`__ or `SimpleScreenRecorder <https://www.maartenbaert.be/simplescreenrecorder/>`__ instead.
+\ **Lưu ý:** MovieWriter có thể được sử dụng trong cả Editor và các project đã export, nhưng *không* được thiết kế để người dùng cuối sử dụng nhằm ghi video trong khi chơi. Người chơi muốn ghi video gameplay nên cài đặt các công cụ như `OBS Studio <https://obsproject.com/>`__ hoặc `SimpleScreenRecorder <https://www.maartenbaert.be/simplescreenrecorder/>`__ thay thế.
 
-\ **Note:** MJPEG support (``.avi`` file extension) depends on the ``jpg`` module being enabled at compile time (default behavior).
+\ **Lưu ý:** Hỗ trợ MJPEG (phần mở rộng tệp ``.avi``) phụ thuộc vào việc bật module ``jpg`` tại thời điểm biên dịch (hành vi mặc định).
 
-\ **Note:** OGV support (``.ogv`` file extension) depends on the ``theora`` module being enabled at compile time (default behavior). Theora compression is only available in editor binaries.
+\ **Lưu ý:** Hỗ trợ OGV (phần mở rộng tệp ``.ogv``) phụ thuộc vào việc bật module ``theora`` tại thời điểm biên dịch (hành vi mặc định). Chỉ các bản binary của Editor mới hỗ trợ nén Theora.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -50,17 +50,17 @@ Methods
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`_get_audio_mix_rate<class_MovieWriter_private_method__get_audio_mix_rate>`\ (\ ) |virtual| |required| |const|                                                                                               |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`SpeakerMode<enum_AudioServer_SpeakerMode>`  | :ref:`_get_audio_speaker_mode<class_MovieWriter_private_method__get_audio_speaker_mode>`\ (\ ) |virtual| |required| |const|                                                                                       |
+   | :ref:`SpeakerMode <enum_AudioServer_SpeakerMode>` | :ref:`_get_audio_speaker_mode<class_MovieWriter_private_method__get_audio_speaker_mode>`\ (\ ) |virtual| |required| |const|                                                                                       |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`_get_supported_extensions<class_MovieWriter_private_method__get_supported_extensions>`\ (\ ) |virtual| |required| |const|                                                                                   |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`_handles_file<class_MovieWriter_private_method__handles_file>`\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |required| |const|                                                                       |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`_write_begin<class_MovieWriter_private_method__write_begin>`\ (\ movie_size\: :ref:`Vector2i<class_Vector2i>`, fps\: :ref:`int<class_int>`, base_path\: :ref:`String<class_String>`\ ) |virtual| |required| |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`_write_begin<class_MovieWriter_private_method__write_begin>`\ (\ movie_size\: :ref:`Vector2i<class_Vector2i>`, fps\: :ref:`int<class_int>`, base_path\: :ref:`String<class_String>`\ ) |virtual| |required| |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`_write_end<class_MovieWriter_private_method__write_end>`\ (\ ) |virtual| |required|                                                                                                                         |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`_write_frame<class_MovieWriter_private_method__write_frame>`\ (\ frame_image\: :ref:`Image<class_Image>`, audio_frame_block\: ``const void*``\ ) |virtual| |required|                                       |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`_write_frame<class_MovieWriter_private_method__write_frame>`\ (\ frame_image\: :ref:`Image<class_Image>`, audio_frame_block\: ``const void*``\ ) |virtual| |required|                                       |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`add_writer<class_MovieWriter_method_add_writer>`\ (\ writer\: :ref:`MovieWriter<class_MovieWriter>`\ ) |static|                                                                                             |
    +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MovieWriter_private_method__get_audio_mix_rate:
 
@@ -80,7 +80,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **_get_audio_mix_rate**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_MovieWriter_private_method__get_audio_mix_rate>`
 
-Called when the audio sample rate used for recording the audio is requested by the engine. The value returned must be specified in Hz. Defaults to 48000 Hz if :ref:`_get_audio_mix_rate()<class_MovieWriter_private_method__get_audio_mix_rate>` is not overridden.
+Được gọi khi engine yêu cầu tốc độ lấy mẫu âm thanh được sử dụng để ghi âm thanh. Giá trị trả về phải được chỉ định theo Hz. Mặc định là 48000 Hz nếu :ref:`_get_audio_mix_rate()<class_MovieWriter_private_method__get_audio_mix_rate>` không được ghi đè.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Called when the audio sample rate used for recording the audio is requested by t
 
 :ref:`SpeakerMode<enum_AudioServer_SpeakerMode>` **_get_audio_speaker_mode**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_MovieWriter_private_method__get_audio_speaker_mode>`
 
-Called when the audio speaker mode used for recording the audio is requested by the engine. This can affect the number of output channels in the resulting audio file/stream. Defaults to :ref:`AudioServer.SPEAKER_MODE_STEREO<class_AudioServer_constant_SPEAKER_MODE_STEREO>` if :ref:`_get_audio_speaker_mode()<class_MovieWriter_private_method__get_audio_speaker_mode>` is not overridden.
+Được gọi khi engine yêu cầu chế độ loa âm thanh được sử dụng để ghi âm thanh. Điều này có thể ảnh hưởng đến số kênh đầu ra trong tệp/stream âm thanh kết quả. Mặc định là :ref:`AudioServer.SPEAKER_MODE_STEREO<class_AudioServer_constant_SPEAKER_MODE_STEREO>` nếu :ref:`_get_audio_speaker_mode()<class_MovieWriter_private_method__get_audio_speaker_mode>` không được ghi đè.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Called when the audio speaker mode used for recording the audio is requested by 
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_supported_extensions**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_MovieWriter_private_method__get_supported_extensions>`
 
-Returns the list of supported filename extensions for movies written with this **MovieWriter**.
+Trả về danh sách các phần mở rộng tên tệp được hỗ trợ cho các phim được ghi bằng **MovieWriter** này.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Returns the list of supported filename extensions for movies written with this *
 
 :ref:`bool<class_bool>` **_handles_file**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |required| |const| :ref:`🔗<class_MovieWriter_private_method__handles_file>`
 
-Called when the engine determines whether this **MovieWriter** is able to handle the file at ``path``. Must return ``true`` if this **MovieWriter** is able to handle the given file path, ``false`` otherwise. Typically, :ref:`_handles_file()<class_MovieWriter_private_method__handles_file>` is overridden as follows to allow the user to record a file at any path with a given file extension:
+Được gọi khi engine xác định liệu **MovieWriter** này có thể xử lý tệp tại ``path`` hay không. Phải trả về ``true`` nếu **MovieWriter** này có thể xử lý đường dẫn tệp đã cho, nếu không thì trả về ``false``. Thông thường, :ref:`_handles_file()<class_MovieWriter_private_method__handles_file>` được ghi đè như sau để cho phép người dùng ghi tệp tại bất kỳ đường dẫn nào với phần mở rộng tệp đã cho:
 
 ::
 
@@ -135,7 +135,7 @@ Called when the engine determines whether this **MovieWriter** is able to handle
 
 :ref:`Error<enum_@GlobalScope_Error>` **_write_begin**\ (\ movie_size\: :ref:`Vector2i<class_Vector2i>`, fps\: :ref:`int<class_int>`, base_path\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_MovieWriter_private_method__write_begin>`
 
-Called once before the engine starts writing video and audio data. ``movie_size`` is the width and height of the video to save. ``fps`` is the number of frames per second specified in the project settings or using the ``--fixed-fps <fps>`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>`.
+Được gọi một lần trước khi engine bắt đầu ghi dữ liệu video và âm thanh. ``movie_size`` là chiều rộng và chiều cao của video cần lưu. ``fps`` là số khung hình mỗi giây được chỉ định trong cài đặt dự án hoặc bằng ``--fixed-fps <fps>`` :doc:`đối số dòng lệnh <../tutorials/editor/command_line_tutorial>`.
 
 .. rst-class:: classref-item-separator
 
@@ -147,9 +147,9 @@ Called once before the engine starts writing video and audio data. ``movie_size`
 
 |void| **_write_end**\ (\ ) |virtual| |required| :ref:`🔗<class_MovieWriter_private_method__write_end>`
 
-Called when the engine finishes writing. This occurs when the engine quits by pressing the window manager's close button, or when :ref:`SceneTree.quit()<class_SceneTree_method_quit>` is called.
+Được gọi khi engine hoàn tất việc ghi. Điều này xảy ra khi engine thoát bằng cách nhấn nút đóng của trình quản lý cửa sổ hoặc khi gọi :ref:`SceneTree.quit()<class_SceneTree_method_quit>`.
 
-\ **Note:** Pressing :kbd:`Ctrl + C` on the terminal running the editor/project does *not* result in :ref:`_write_end()<class_MovieWriter_private_method__write_end>` being called.
+\ **Lưu ý:** Nhấn :kbd:`Ctrl + C` trên terminal đang chạy editor/project không *dẫn đến việc* :ref:`_write_end()<class_MovieWriter_private_method__write_end>` được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ Called when the engine finishes writing. This occurs when the engine quits by pr
 
 :ref:`Error<enum_@GlobalScope_Error>` **_write_frame**\ (\ frame_image\: :ref:`Image<class_Image>`, audio_frame_block\: ``const void*``\ ) |virtual| |required| :ref:`🔗<class_MovieWriter_private_method__write_frame>`
 
-Called at the end of every rendered frame. The ``frame_image`` and ``audio_frame_block`` function arguments should be written to.
+Được gọi ở cuối mỗi khung hình được render. Các đối số của hàm ``frame_image`` và ``audio_frame_block`` cần được ghi giá trị vào.
 
 .. rst-class:: classref-item-separator
 
@@ -173,16 +173,16 @@ Called at the end of every rendered frame. The ``frame_image`` and ``audio_frame
 
 |void| **add_writer**\ (\ writer\: :ref:`MovieWriter<class_MovieWriter>`\ ) |static| :ref:`🔗<class_MovieWriter_method_add_writer>`
 
-Adds a writer to be usable by the engine. The supported file extensions can be set by overriding :ref:`_handles_file()<class_MovieWriter_private_method__handles_file>`.
+Thêm một writer để engine có thể sử dụng. Các phần mở rộng tệp được hỗ trợ có thể được thiết lập bằng cách ghi đè :ref:`_handles_file()<class_MovieWriter_private_method__handles_file>`.
 
-\ **Note:** :ref:`add_writer()<class_MovieWriter_method_add_writer>` must be called early enough in the engine initialization to work, as movie writing is designed to start at the same time as the rest of the engine.
+\ **Lưu ý:** :ref:`add_writer()<class_MovieWriter_method_add_writer>` phải được gọi đủ sớm trong quá trình khởi tạo engine để hoạt động, vì việc ghi movie được thiết kế để bắt đầu cùng lúc với phần còn lại của engine.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

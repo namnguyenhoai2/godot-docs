@@ -10,28 +10,28 @@
 ConcavePolygonShape2D
 =====================
 
-**Inherits:** :ref:`Shape2D<class_Shape2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Shape2D<class_Shape2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 2D polyline shape used for physics collision.
+Một shape polyline 2D được sử dụng để xử lý va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 2D polyline shape, intended for use in physics. Used internally in :ref:`CollisionPolygon2D<class_CollisionPolygon2D>` when it's in :ref:`CollisionPolygon2D.BUILD_SEGMENTS<class_CollisionPolygon2D_constant_BUILD_SEGMENTS>` mode.
+Một shape polyline 2D, предназначված để sử dụng trong vật lý. Được sử dụng nội bộ trong :ref:`CollisionPolygon2D<class_CollisionPolygon2D>` khi nó ở chế độ :ref:`CollisionPolygon2D.BUILD_SEGMENTS<class_CollisionPolygon2D_constant_BUILD_SEGMENTS>`.
 
-Being just a collection of interconnected line segments, **ConcavePolygonShape2D** is the most freely configurable single 2D shape. It can be used to form polygons of any nature, or even shapes that don't enclose an area. However, **ConcavePolygonShape2D** is *hollow* even if the interconnected line segments do enclose an area, which often makes it unsuitable for physics or detection.
+Vì chỉ là một tập hợp các đoạn thẳng được nối với nhau, **ConcavePolygonShape2D** là shape 2D đơn lẻ có khả năng cấu hình tự do nhất. Nó có thể được dùng để tạo các polygon với mọi hình dạng, hoặc thậm chí các shape không bao kín một vùng. Tuy nhiên, **ConcavePolygonShape2D** luôn là *rỗng*, ngay cả khi các đoạn thẳng được nối với nhau bao kín một vùng, nên nó thường không phù hợp cho vật lý hoặc phát hiện.
 
-\ **Note:** When used for collision, **ConcavePolygonShape2D** is intended to work with static :ref:`CollisionShape2D<class_CollisionShape2D>` nodes like :ref:`StaticBody2D<class_StaticBody2D>` and will likely not behave well for :ref:`CharacterBody2D<class_CharacterBody2D>`\ s or :ref:`RigidBody2D<class_RigidBody2D>`\ s in a mode other than Static.
+\ **Lưu ý:** Khi được sử dụng để xử lý va chạm, **ConcavePolygonShape2D** được thiết kế để hoạt động với các node :ref:`CollisionShape2D<class_CollisionShape2D>` tĩnh như :ref:`StaticBody2D<class_StaticBody2D>` và có thể sẽ không hoạt động tốt với :ref:`CharacterBody2D<class_CharacterBody2D>`\ s hoặc :ref:`RigidBody2D<class_RigidBody2D>`\ s ở chế độ khác với Static.
 
-\ **Warning:** Physics bodies that are small have a chance to clip through this shape when moving fast. This happens because on one frame, the physics body may be on the "outside" of the shape, and on the next frame it may be "inside" it. **ConcavePolygonShape2D** is hollow, so it won't detect a collision.
+\ **Cảnh báo:** Các physics body nhỏ có khả năng xuyên qua shape này khi di chuyển nhanh. Điều này xảy ra vì trong một frame, physics body có thể ở "bên ngoài" shape, còn trong frame tiếp theo, nó có thể ở "bên trong" shape. **ConcavePolygonShape2D** là shape rỗng, nên nó sẽ không phát hiện va chạm.
 
-\ **Performance:** Due to its complexity, **ConcavePolygonShape2D** is the slowest 2D collision shape to check collisions against. Its use should generally be limited to level geometry. If the polyline is closed, :ref:`CollisionPolygon2D<class_CollisionPolygon2D>`'s :ref:`CollisionPolygon2D.BUILD_SOLIDS<class_CollisionPolygon2D_constant_BUILD_SOLIDS>` mode can be used, which decomposes the polygon into convex ones; see :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>`'s documentation for instructions.
+\ **Hiệu năng:** Do tính phức tạp, **ConcavePolygonShape2D** là hình dạng va chạm 2D chậm nhất khi kiểm tra va chạm với nó. Nhìn chung, chỉ nên sử dụng nó cho hình học cấp độ. Nếu polyline được đóng kín, có thể sử dụng chế độ :ref:`CollisionPolygon2D.BUILD_SOLIDS<class_CollisionPolygon2D_constant_BUILD_SOLIDS>` của :ref:`CollisionPolygon2D<class_CollisionPolygon2D>`, chế độ này phân tách đa giác thành các đa giác lồi; xem tài liệu của :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>` để biết hướng dẫn.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ConcavePolygonShape2D_property_segments:
 
@@ -61,16 +61,16 @@ Property Descriptions
 - |void| **set_segments**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_segments**\ (\ )
 
-The array of points that make up the **ConcavePolygonShape2D**'s line segments. The array (of length divisible by two) is naturally divided into pairs (one pair for each segment); each pair consists of the starting point of a segment and the endpoint of a segment.
+Mảng các điểm tạo nên các đoạn thẳng của **ConcavePolygonShape2D**. Mảng này (có độ dài chia hết cho hai) tự nhiên được chia thành các cặp (mỗi cặp tương ứng với một đoạn); mỗi cặp gồm điểm bắt đầu và điểm kết thúc của một đoạn.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

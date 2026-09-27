@@ -10,22 +10,22 @@
 SkeletonModification2DLookAt
 ============================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A modification that rotates a :ref:`Bone2D<class_Bone2D>` node to look at a target.
+Một modification xoay một node :ref:`Bone2D<class_Bone2D>` để hướng về một target.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`SkeletonModification2D<class_SkeletonModification2D>` rotates a bone to look a target. This is extremely helpful for moving character's head to look at the player, rotating a turret to look at a target, or any other case where you want to make a bone rotate towards something quickly and easily.
+:ref:`SkeletonModification2D<class_SkeletonModification2D>` này xoay một bone để hướng về một target. Điều này đặc biệt hữu ích khi di chuyển đầu của nhân vật để nhìn về phía người chơi, xoay một turret để hướng về một target hoặc trong bất kỳ trường hợp nào khác khi bạn muốn làm cho một bone nhanh chóng và dễ dàng xoay về phía một đối tượng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -75,8 +75,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModification2DLookAt_property_bone2d_node:
 
@@ -89,7 +89,7 @@ Property Descriptions
 - |void| **set_bone2d_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_bone2d_node**\ (\ )
 
-The :ref:`Bone2D<class_Bone2D>` node that the modification will operate on.
+node :ref:`Bone2D<class_Bone2D>` mà modification sẽ tác động lên.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ The :ref:`Bone2D<class_Bone2D>` node that the modification will operate on.
 - |void| **set_bone_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bone_index**\ (\ )
 
-The index of the :ref:`Bone2D<class_Bone2D>` node that the modification will operate on.
+Chỉ mục của node :ref:`Bone2D<class_Bone2D>` mà modification sẽ tác động lên.
 
 .. rst-class:: classref-item-separator
 
@@ -123,7 +123,7 @@ The index of the :ref:`Bone2D<class_Bone2D>` node that the modification will ope
 - |void| **set_target_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_target_node**\ (\ )
 
-The NodePath to the node that is the target for the LookAt modification. This node is what the modification will rotate the :ref:`Bone2D<class_Bone2D>` to.
+NodePath đến node là target của modification LookAt. Node này là đối tượng mà modification sẽ xoay :ref:`Bone2D<class_Bone2D>` về phía đó.
 
 .. rst-class:: classref-section-separator
 
@@ -131,8 +131,8 @@ The NodePath to the node that is the target for the LookAt modification. This no
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModification2DLookAt_method_get_additional_rotation:
 
@@ -140,7 +140,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_additional_rotation**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DLookAt_method_get_additional_rotation>`
 
-Returns the amount of additional rotation that is applied after the LookAt modification executes.
+Trả về lượng rotation bổ sung được áp dụng sau khi modification LookAt thực thi.
 
 .. rst-class:: classref-item-separator
 
@@ -152,7 +152,7 @@ Returns the amount of additional rotation that is applied after the LookAt modif
 
 :ref:`bool<class_bool>` **get_constraint_angle_invert**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DLookAt_method_get_constraint_angle_invert>`
 
-Returns whether the constraints to this modification are inverted or not.
+Trả về việc các constraint của modification này có bị đảo ngược hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ Returns whether the constraints to this modification are inverted or not.
 
 :ref:`float<class_float>` **get_constraint_angle_max**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DLookAt_method_get_constraint_angle_max>`
 
-Returns the constraint's maximum allowed angle.
+Trả về góc tối đa được phép của constraint.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ Returns the constraint's maximum allowed angle.
 
 :ref:`float<class_float>` **get_constraint_angle_min**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DLookAt_method_get_constraint_angle_min>`
 
-Returns the constraint's minimum allowed angle.
+Trả về góc tối thiểu được phép của constraint.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ Returns the constraint's minimum allowed angle.
 
 :ref:`bool<class_bool>` **get_enable_constraint**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DLookAt_method_get_enable_constraint>`
 
-Returns ``true`` if the LookAt modification is using constraints.
+Trả về ``true`` nếu modification LookAt đang sử dụng các constraint.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ Returns ``true`` if the LookAt modification is using constraints.
 
 |void| **set_additional_rotation**\ (\ rotation\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DLookAt_method_set_additional_rotation>`
 
-Sets the amount of additional rotation that is to be applied after executing the modification. This allows for offsetting the results by the inputted rotation amount.
+Đặt lượng rotation bổ sung sẽ được áp dụng sau khi thực thi modification. Điều này cho phép dịch chuyển kết quả theo lượng rotation đã nhập.
 
 .. rst-class:: classref-item-separator
 
@@ -212,9 +212,9 @@ Sets the amount of additional rotation that is to be applied after executing the
 
 |void| **set_constraint_angle_invert**\ (\ invert\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DLookAt_method_set_constraint_angle_invert>`
 
-When ``true``, the modification will use an inverted joint constraint.
+Khi ``true``, modification sẽ sử dụng một joint constraint bị đảo ngược.
 
-An inverted joint constraint only constraints the :ref:`Bone2D<class_Bone2D>` to the angles *outside of* the inputted minimum and maximum angles. For this reason, it is referred to as an inverted joint constraint, as it constraints the joint to the outside of the inputted values.
+Một joint constraint bị đảo ngược chỉ giới hạn :ref:`Bone2D<class_Bone2D>` ở các góc *bên ngoài* các góc tối thiểu và tối đa đã nhập. Vì lý do này, nó được gọi là joint constraint bị đảo ngược, vì nó giới hạn joint ở bên ngoài các giá trị đã nhập.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ An inverted joint constraint only constraints the :ref:`Bone2D<class_Bone2D>` to
 
 |void| **set_constraint_angle_max**\ (\ angle_max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DLookAt_method_set_constraint_angle_max>`
 
-Sets the constraint's maximum allowed angle.
+Đặt góc tối đa được phép của constraint.
 
 .. rst-class:: classref-item-separator
 
@@ -238,7 +238,7 @@ Sets the constraint's maximum allowed angle.
 
 |void| **set_constraint_angle_min**\ (\ angle_min\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DLookAt_method_set_constraint_angle_min>`
 
-Sets the constraint's minimum allowed angle.
+Đặt góc tối thiểu được phép của constraint.
 
 .. rst-class:: classref-item-separator
 
@@ -250,14 +250,14 @@ Sets the constraint's minimum allowed angle.
 
 |void| **set_enable_constraint**\ (\ enable_constraint\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DLookAt_method_set_enable_constraint>`
 
-Sets whether this modification will use constraints or not. When ``true``, constraints will be applied when solving the LookAt modification.
+Đặt việc modification này có sử dụng các constraint hay không. Khi ``true``, các constraint sẽ được áp dụng khi giải modification LookAt.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng argument sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

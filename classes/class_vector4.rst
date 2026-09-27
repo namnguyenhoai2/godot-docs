@@ -10,24 +10,24 @@
 Vector4
 =======
 
-A 4D vector using floating-point coordinates.
+Một vector 4D sử dụng các tọa độ dấu phẩy động.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 4-element structure that can be used to represent 4D coordinates or any other quadruplet of numeric values.
+Một cấu trúc gồm 4 phần tử có thể được dùng để biểu diễn tọa độ 4D hoặc bất kỳ bộ bốn giá trị số nào khác.
 
-It uses floating-point coordinates. By default, these floating-point values use 32-bit precision, unlike :ref:`float<class_float>` which is always 64-bit. If double precision is needed, compile the engine with the option ``precision=double``.
+Nó sử dụng các tọa độ dấu phẩy động. Theo mặc định, các giá trị dấu phẩy động này sử dụng độ chính xác 32 bit, không giống như :ref:`float<class_float>` luôn sử dụng 64 bit. Nếu cần độ chính xác kép, hãy biên dịch engine với tùy chọn ``precision=double``.
 
-See :ref:`Vector4i<class_Vector4i>` for its integer counterpart.
+Xem :ref:`Vector4i<class_Vector4i>` để biết kiểu tương ứng dùng số nguyên.
 
-\ **Note:** In a boolean context, a Vector4 will evaluate to ``false`` if it's equal to ``Vector4(0, 0, 0, 0)``. Otherwise, a Vector4 will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một Vector4 sẽ được đánh giá là ``false`` nếu nó bằng ``Vector4(0, 0, 0, 0)``. Nếu không, một Vector4 sẽ luôn được đánh giá là ``true``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,7 +45,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -63,8 +63,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -106,19 +106,19 @@ Methods
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`     | :ref:`length_squared<class_Vector4_method_length_squared>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`lerp<class_Vector4_method_lerp>`\ (\ to\: :ref:`Vector4<class_Vector4>`, weight\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                     |
+   | :ref:`Vector4<class_Vector4>` | :ref:`lerp<class_Vector4_method_lerp>`\ (\ thành\: :ref:`Vector4<class_Vector4>`, trọng số\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`max<class_Vector4_method_max>`\ (\ with\: :ref:`Vector4<class_Vector4>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   | :ref:`Vector4<class_Vector4>` | :ref:`max<class_Vector4_method_max>`\ (\ với\: :ref:`Vector4<class_Vector4>`\ ) |const|                                                                                                                                                                                                                                                                          |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`max_axis_index<class_Vector4_method_max_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`maxf<class_Vector4_method_maxf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
+   | :ref:`Vector4<class_Vector4>` | :ref:`maxf<class_Vector4_method_maxf>`\ (\ với\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                            |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`min<class_Vector4_method_min>`\ (\ with\: :ref:`Vector4<class_Vector4>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   | :ref:`Vector4<class_Vector4>` | :ref:`min<class_Vector4_method_min>`\ (\ với\: :ref:`Vector4<class_Vector4>`\ ) |const|                                                                                                                                                                                                                                                                          |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`         | :ref:`min_axis_index<class_Vector4_method_min_axis_index>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`minf<class_Vector4_method_minf>`\ (\ with\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                           |
+   | :ref:`Vector4<class_Vector4>` | :ref:`minf<class_Vector4_method_minf>`\ (\ với\: :ref:`float<class_float>`\ ) |const|                                                                                                                                                                                                                                                                            |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector4<class_Vector4>` | :ref:`normalized<class_Vector4_method_normalized>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                 |
    +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -137,49 +137,49 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator !=<class_Vector4_operator_neq_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )         |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator *<class_Vector4_operator_mul_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ ) |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator *<class_Vector4_operator_mul_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator *<class_Vector4_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator *<class_Vector4_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator +<class_Vector4_operator_sum_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator -<class_Vector4_operator_dif_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator /<class_Vector4_operator_div_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator /<class_Vector4_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator /<class_Vector4_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator \<<class_Vector4_operator_lt_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator \<=<class_Vector4_operator_lte_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )        |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ==<class_Vector4_operator_eq_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ><class_Vector4_operator_gt_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )           |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator >=<class_Vector4_operator_gte_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )         |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`     | :ref:`operator []<class_Vector4_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                     |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator unary+<class_Vector4_operator_unplus>`\ (\ )                                                 |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>` | :ref:`operator unary-<class_Vector4_operator_unminus>`\ (\ )                                                |
-   +-------------------------------+-------------------------------------------------------------------------------------------------------------+
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator != <class_Vector4_operator_neq_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )         |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator * <class_Vector4_operator_mul_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ ) |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator * <class_Vector4_operator_mul_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator * <class_Vector4_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator * <class_Vector4_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator + <class_Vector4_operator_sum_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator - <class_Vector4_operator_dif_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator / <class_Vector4_operator_div_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator / <class_Vector4_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator / <class_Vector4_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator \< <class_Vector4_operator_lt_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator \<= <class_Vector4_operator_lte_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )        |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator == <class_Vector4_operator_eq_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator > <class_Vector4_operator_gt_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )           |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator >= <class_Vector4_operator_gte_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )         |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`     | :ref:`operator [] <class_Vector4_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                     |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator unary+ <class_Vector4_operator_unplus>`\ (\ )                                                 |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>` | :ref:`operator unary- <class_Vector4_operator_unminus>`\ (\ )                                                |
+   +-------------------------------+--------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -187,14 +187,14 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Vector4_Axis:
 
 .. rst-class:: classref-enumeration
 
-enum **Axis**: :ref:`🔗<enum_Vector4_Axis>`
+enum **Axis**: :ref:`🔗 <enum_Vector4_Axis>`
 
 .. _class_Vector4_constant_AXIS_X:
 
@@ -202,7 +202,7 @@ enum **Axis**: :ref:`🔗<enum_Vector4_Axis>`
 
 :ref:`Axis<enum_Vector4_Axis>` **AXIS_X** = ``0``
 
-Enumerated value for the X axis. Returned by :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` and :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
+Giá trị liệt kê cho trục X. Được trả về bởi :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` và :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
 
 .. _class_Vector4_constant_AXIS_Y:
 
@@ -210,7 +210,7 @@ Enumerated value for the X axis. Returned by :ref:`max_axis_index()<class_Vector
 
 :ref:`Axis<enum_Vector4_Axis>` **AXIS_Y** = ``1``
 
-Enumerated value for the Y axis. Returned by :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` and :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
+Giá trị liệt kê cho trục Y. Được trả về bởi :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` và :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
 
 .. _class_Vector4_constant_AXIS_Z:
 
@@ -218,7 +218,7 @@ Enumerated value for the Y axis. Returned by :ref:`max_axis_index()<class_Vector
 
 :ref:`Axis<enum_Vector4_Axis>` **AXIS_Z** = ``2``
 
-Enumerated value for the Z axis. Returned by :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` and :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
+Giá trị liệt kê cho trục Z. Được trả về bởi :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` và :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
 
 .. _class_Vector4_constant_AXIS_W:
 
@@ -226,7 +226,7 @@ Enumerated value for the Z axis. Returned by :ref:`max_axis_index()<class_Vector
 
 :ref:`Axis<enum_Vector4_Axis>` **AXIS_W** = ``3``
 
-Enumerated value for the W axis. Returned by :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` and :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
+Giá trị liệt kê cho trục W. Được trả về bởi :ref:`max_axis_index()<class_Vector4_method_max_axis_index>` và :ref:`min_axis_index()<class_Vector4_method_min_axis_index>`.
 
 .. rst-class:: classref-section-separator
 
@@ -234,8 +234,8 @@ Enumerated value for the W axis. Returned by :ref:`max_axis_index()<class_Vector
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Vector4_constant_ZERO:
 
@@ -243,7 +243,7 @@ Constants
 
 **ZERO** = ``Vector4(0, 0, 0, 0)`` :ref:`🔗<class_Vector4_constant_ZERO>`
 
-Zero vector, a vector with all components set to ``0``.
+Vector không, một vector có tất cả các thành phần được đặt thành ``0``.
 
 .. _class_Vector4_constant_ONE:
 
@@ -251,7 +251,7 @@ Zero vector, a vector with all components set to ``0``.
 
 **ONE** = ``Vector4(1, 1, 1, 1)`` :ref:`🔗<class_Vector4_constant_ONE>`
 
-One vector, a vector with all components set to ``1``.
+Vector một, một vector có tất cả các thành phần được đặt thành ``1``.
 
 .. _class_Vector4_constant_INF:
 
@@ -259,7 +259,7 @@ One vector, a vector with all components set to ``1``.
 
 **INF** = ``Vector4(inf, inf, inf, inf)`` :ref:`🔗<class_Vector4_constant_INF>`
 
-Infinity vector, a vector with all components set to :ref:`@GDScript.INF<class_@GDScript_constant_INF>`.
+Vector vô cực, một vector có tất cả các thành phần được đặt thành :ref:`@GDScript.INF <class_@GDScript_constant_INF>`.
 
 .. rst-class:: classref-section-separator
 
@@ -267,8 +267,8 @@ Infinity vector, a vector with all components set to :ref:`@GDScript.INF<class_@
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Vector4_property_w:
 
@@ -276,7 +276,7 @@ Property Descriptions
 
 :ref:`float<class_float>` **w** = ``0.0`` :ref:`🔗<class_Vector4_property_w>`
 
-The vector's W component. Also accessible by using the index position ``[3]``.
+Thành phần W của vector. Cũng có thể truy cập bằng cách sử dụng vị trí chỉ mục ``[3]``.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ The vector's W component. Also accessible by using the index position ``[3]``.
 
 :ref:`float<class_float>` **x** = ``0.0`` :ref:`🔗<class_Vector4_property_x>`
 
-The vector's X component. Also accessible by using the index position ``[0]``.
+Thành phần X của vector. Cũng có thể truy cập bằng cách sử dụng vị trí chỉ mục ``[0]``.
 
 .. rst-class:: classref-item-separator
 
@@ -300,7 +300,7 @@ The vector's X component. Also accessible by using the index position ``[0]``.
 
 :ref:`float<class_float>` **y** = ``0.0`` :ref:`🔗<class_Vector4_property_y>`
 
-The vector's Y component. Also accessible by using the index position ``[1]``.
+Thành phần Y của vector. Cũng có thể truy cập bằng cách sử dụng vị trí chỉ mục ``[1]``.
 
 .. rst-class:: classref-item-separator
 
@@ -312,7 +312,7 @@ The vector's Y component. Also accessible by using the index position ``[1]``.
 
 :ref:`float<class_float>` **z** = ``0.0`` :ref:`🔗<class_Vector4_property_z>`
 
-The vector's Z component. Also accessible by using the index position ``[2]``.
+Thành phần Z của vector. Cũng có thể truy cập bằng cách sử dụng vị trí chỉ mục ``[2]``.
 
 .. rst-class:: classref-section-separator
 
@@ -320,8 +320,8 @@ The vector's Z component. Also accessible by using the index position ``[2]``.
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Vector4_constructor_Vector4:
 
@@ -329,7 +329,7 @@ Constructor Descriptions
 
 :ref:`Vector4<class_Vector4>` **Vector4**\ (\ ) :ref:`🔗<class_Vector4_constructor_Vector4>`
 
-Constructs a default-initialized **Vector4** with all components set to ``0``.
+Tạo một **Vector4** được khởi tạo mặc định với tất cả các thành phần được đặt thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -339,7 +339,7 @@ Constructs a default-initialized **Vector4** with all components set to ``0``.
 
 :ref:`Vector4<class_Vector4>` **Vector4**\ (\ from\: :ref:`Vector4<class_Vector4>`\ )
 
-Constructs a **Vector4** as a copy of the given **Vector4**.
+Tạo một **Vector4** dưới dạng bản sao của **Vector4** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -349,7 +349,7 @@ Constructs a **Vector4** as a copy of the given **Vector4**.
 
 :ref:`Vector4<class_Vector4>` **Vector4**\ (\ from\: :ref:`Vector4i<class_Vector4i>`\ )
 
-Constructs a new **Vector4** from the given :ref:`Vector4i<class_Vector4i>`.
+Tạo một **Vector4** mới từ :ref:`Vector4i<class_Vector4i>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ Constructs a new **Vector4** from the given :ref:`Vector4i<class_Vector4i>`.
 
 :ref:`Vector4<class_Vector4>` **Vector4**\ (\ x\: :ref:`float<class_float>`, y\: :ref:`float<class_float>`, z\: :ref:`float<class_float>`, w\: :ref:`float<class_float>`\ )
 
-Returns a **Vector4** with the given components.
+Trả về một **Vector4** với các thành phần đã cho.
 
 .. rst-class:: classref-section-separator
 
@@ -367,8 +367,8 @@ Returns a **Vector4** with the given components.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Vector4_method_abs:
 
@@ -376,7 +376,7 @@ Method Descriptions
 
 :ref:`Vector4<class_Vector4>` **abs**\ (\ ) |const| :ref:`🔗<class_Vector4_method_abs>`
 
-Returns a new vector with all components in absolute values (i.e. positive).
+Trả về một vector mới với tất cả các thành phần ở dạng giá trị tuyệt đối (tức là dương).
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ Returns a new vector with all components in absolute values (i.e. positive).
 
 :ref:`Vector4<class_Vector4>` **ceil**\ (\ ) |const| :ref:`🔗<class_Vector4_method_ceil>`
 
-Returns a new vector with all components rounded up (towards positive infinity).
+Trả về một vector mới với tất cả các thành phần được làm tròn lên (về phía vô cực dương).
 
 .. rst-class:: classref-item-separator
 
@@ -400,7 +400,7 @@ Returns a new vector with all components rounded up (towards positive infinity).
 
 :ref:`Vector4<class_Vector4>` **clamp**\ (\ min\: :ref:`Vector4<class_Vector4>`, max\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_clamp>`
 
-Returns a new vector with all components clamped between the components of ``min`` and ``max``, by running :ref:`@GlobalScope.clamp()<class_@GlobalScope_method_clamp>` on each component.
+Trả về một vector mới với tất cả các thành phần được giới hạn giữa các thành phần của ``min`` và ``max``, bằng cách chạy :ref:`@GlobalScope.clamp() <class_@GlobalScope_method_clamp>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ Returns a new vector with all components clamped between the components of ``min
 
 :ref:`Vector4<class_Vector4>` **clampf**\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_clampf>`
 
-Returns a new vector with all components clamped between ``min`` and ``max``, by running :ref:`@GlobalScope.clamp()<class_@GlobalScope_method_clamp>` on each component.
+Trả về một vector mới với tất cả các thành phần được giới hạn giữa ``min`` và ``max``, bằng cách chạy :ref:`@GlobalScope.clamp() <class_@GlobalScope_method_clamp>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -424,7 +424,7 @@ Returns a new vector with all components clamped between ``min`` and ``max``, by
 
 :ref:`Vector4<class_Vector4>` **cubic_interpolate**\ (\ b\: :ref:`Vector4<class_Vector4>`, pre_a\: :ref:`Vector4<class_Vector4>`, post_b\: :ref:`Vector4<class_Vector4>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_cubic_interpolate>`
 
-Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and ``post_b`` as handles, and returns the result at position ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
+Thực hiện nội suy bậc ba giữa vector này và ``b`` bằng cách sử dụng ``pre_a`` và ``post_b`` làm các điểm điều khiển, rồi trả về kết quả tại vị trí ``weight``. ``weight`` nằm trong khoảng từ 0.0 đến 1.0, biểu thị mức độ nội suy.
 
 .. rst-class:: classref-item-separator
 
@@ -436,9 +436,9 @@ Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and
 
 :ref:`Vector4<class_Vector4>` **cubic_interpolate_in_time**\ (\ b\: :ref:`Vector4<class_Vector4>`, pre_a\: :ref:`Vector4<class_Vector4>`, post_b\: :ref:`Vector4<class_Vector4>`, weight\: :ref:`float<class_float>`, b_t\: :ref:`float<class_float>`, pre_a_t\: :ref:`float<class_float>`, post_b_t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_cubic_interpolate_in_time>`
 
-Performs a cubic interpolation between this vector and ``b`` using ``pre_a`` and ``post_b`` as handles, and returns the result at position ``weight``. ``weight`` is on the range of 0.0 to 1.0, representing the amount of interpolation.
+Thực hiện nội suy bậc ba giữa vector này và ``b`` bằng cách sử dụng ``pre_a`` và ``post_b`` làm các điểm điều khiển, rồi trả về kết quả tại vị trí ``weight``. ``weight`` nằm trong khoảng từ 0.0 đến 1.0, biểu thị mức độ nội suy.
 
-It can perform smoother interpolation than :ref:`cubic_interpolate()<class_Vector4_method_cubic_interpolate>` by the time values.
+Nó có thể thực hiện nội suy mượt mà hơn :ref:`cubic_interpolate()<class_Vector4_method_cubic_interpolate>` dựa trên các giá trị thời gian.
 
 .. rst-class:: classref-item-separator
 
@@ -450,7 +450,7 @@ It can perform smoother interpolation than :ref:`cubic_interpolate()<class_Vecto
 
 :ref:`Vector4<class_Vector4>` **direction_to**\ (\ to\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_direction_to>`
 
-Returns the normalized vector pointing from this vector to ``to``. This is equivalent to using ``(b - a).normalized()``.
+Trả về vector đã chuẩn hóa hướng từ vector này đến ``to``. Điều này tương đương với việc sử dụng ``(b - a).normalized()``.
 
 .. rst-class:: classref-item-separator
 
@@ -462,9 +462,9 @@ Returns the normalized vector pointing from this vector to ``to``. This is equiv
 
 :ref:`float<class_float>` **distance_squared_to**\ (\ to\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_distance_squared_to>`
 
-Returns the squared `Euclidean distance <https://en.wikipedia.org/wiki/Euclidean_distance>`__ between this vector and ``to``.
+Trả về `bình phương khoảng cách Euclidean <https://en.wikipedia.org/wiki/Euclidean_distance>`__ giữa vector này và ``to``.
 
-This method runs faster than :ref:`distance_to()<class_Vector4_method_distance_to>`, so prefer it if you need to compare vectors or need the squared distance for some formula.
+Phương thức này chạy nhanh hơn :ref:`distance_to()<class_Vector4_method_distance_to>`, vì vậy hãy ưu tiên sử dụng nó nếu bạn cần so sánh các vector hoặc cần khoảng cách bình phương cho một công thức nào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -476,7 +476,7 @@ This method runs faster than :ref:`distance_to()<class_Vector4_method_distance_t
 
 :ref:`float<class_float>` **distance_to**\ (\ to\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_distance_to>`
 
-Returns the `Euclidean distance <https://en.wikipedia.org/wiki/Euclidean_distance>`__ between this vector and ``to``.
+Trả về `khoảng cách Euclidean <https://en.wikipedia.org/wiki/Euclidean_distance>`__ giữa vector này và ``to``.
 
 .. rst-class:: classref-item-separator
 
@@ -488,7 +488,7 @@ Returns the `Euclidean distance <https://en.wikipedia.org/wiki/Euclidean_distanc
 
 :ref:`float<class_float>` **dot**\ (\ with\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_dot>`
 
-Returns the dot product of this vector and ``with``.
+Trả về tích vô hướng của vector này và ``with``.
 
 .. rst-class:: classref-item-separator
 
@@ -500,7 +500,7 @@ Returns the dot product of this vector and ``with``.
 
 :ref:`Vector4<class_Vector4>` **floor**\ (\ ) |const| :ref:`🔗<class_Vector4_method_floor>`
 
-Returns a new vector with all components rounded down (towards negative infinity).
+Trả về một vector mới với tất cả các thành phần được làm tròn xuống (về phía âm vô cùng).
 
 .. rst-class:: classref-item-separator
 
@@ -512,7 +512,7 @@ Returns a new vector with all components rounded down (towards negative infinity
 
 :ref:`Vector4<class_Vector4>` **inverse**\ (\ ) |const| :ref:`🔗<class_Vector4_method_inverse>`
 
-Returns the inverse of the vector. This is the same as ``Vector4(1.0 / v.x, 1.0 / v.y, 1.0 / v.z, 1.0 / v.w)``.
+Trả về nghịch đảo của vector. Điều này giống với ``Vector4(1.0 / v.x, 1.0 / v.y, 1.0 / v.z, 1.0 / v.w)``.
 
 .. rst-class:: classref-item-separator
 
@@ -524,7 +524,7 @@ Returns the inverse of the vector. This is the same as ``Vector4(1.0 / v.x, 1.0 
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ to\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_is_equal_approx>`
 
-Returns ``true`` if this vector and ``to`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
+Trả về ``true`` nếu vector này và ``to`` xấp xỉ bằng nhau, bằng cách chạy :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -536,7 +536,7 @@ Returns ``true`` if this vector and ``to`` are approximately equal, by running :
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Vector4_method_is_finite>`
 
-Returns ``true`` if this vector is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on each component.
+Trả về ``true`` nếu vector này là hữu hạn, bằng cách gọi :ref:`@GlobalScope.is_finite() <class_@GlobalScope_method_is_finite>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -548,7 +548,7 @@ Returns ``true`` if this vector is finite, by calling :ref:`@GlobalScope.is_fini
 
 :ref:`bool<class_bool>` **is_normalized**\ (\ ) |const| :ref:`🔗<class_Vector4_method_is_normalized>`
 
-Returns ``true`` if the vector is normalized, i.e. its length is approximately equal to 1.
+Trả về ``true`` nếu vector đã được chuẩn hóa, tức là độ dài của nó xấp xỉ bằng 1.
 
 .. rst-class:: classref-item-separator
 
@@ -560,9 +560,9 @@ Returns ``true`` if the vector is normalized, i.e. its length is approximately e
 
 :ref:`bool<class_bool>` **is_zero_approx**\ (\ ) |const| :ref:`🔗<class_Vector4_method_is_zero_approx>`
 
-Returns ``true`` if this vector's values are approximately zero, by running :ref:`@GlobalScope.is_zero_approx()<class_@GlobalScope_method_is_zero_approx>` on each component.
+Trả về ``true`` nếu các giá trị của vector này xấp xỉ bằng không, bằng cách chạy :ref:`@GlobalScope.is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` trên từng thành phần.
 
-This method is faster than using :ref:`is_equal_approx()<class_Vector4_method_is_equal_approx>` with one value as a zero vector.
+Phương thức này nhanh hơn so với việc sử dụng :ref:`is_equal_approx()<class_Vector4_method_is_equal_approx>` với một giá trị làm vector không.
 
 .. rst-class:: classref-item-separator
 
@@ -574,7 +574,7 @@ This method is faster than using :ref:`is_equal_approx()<class_Vector4_method_is
 
 :ref:`float<class_float>` **length**\ (\ ) |const| :ref:`🔗<class_Vector4_method_length>`
 
-Returns the length (magnitude) of this vector.
+Trả về độ dài (độ lớn) của vector này.
 
 .. rst-class:: classref-item-separator
 
@@ -586,9 +586,9 @@ Returns the length (magnitude) of this vector.
 
 :ref:`float<class_float>` **length_squared**\ (\ ) |const| :ref:`🔗<class_Vector4_method_length_squared>`
 
-Returns the squared length (squared magnitude) of this vector.
+Trả về bình phương độ dài (bình phương độ lớn) của vector này.
 
-This method runs faster than :ref:`length()<class_Vector4_method_length>`, so prefer it if you need to compare vectors or need the squared distance for some formula.
+Phương thức này chạy nhanh hơn :ref:`length()<class_Vector4_method_length>`, vì vậy hãy ưu tiên phương thức này nếu bạn cần so sánh các vector hoặc cần khoảng cách bình phương cho một công thức nào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -600,7 +600,7 @@ This method runs faster than :ref:`length()<class_Vector4_method_length>`, so pr
 
 :ref:`Vector4<class_Vector4>` **lerp**\ (\ to\: :ref:`Vector4<class_Vector4>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_lerp>`
 
-Returns the result of the linear interpolation between this vector and ``to`` by amount ``weight``. ``weight`` is on the range of ``0.0`` to ``1.0``, representing the amount of interpolation.
+Trả về kết quả nội suy tuyến tính giữa vector này và ``to`` với lượng ``weight``. ``weight`` nằm trong khoảng từ ``0.0`` đến ``1.0``, biểu thị lượng nội suy.
 
 .. rst-class:: classref-item-separator
 
@@ -612,7 +612,7 @@ Returns the result of the linear interpolation between this vector and ``to`` by
 
 :ref:`Vector4<class_Vector4>` **max**\ (\ with\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_max>`
 
-Returns the component-wise maximum of this and ``with``, equivalent to ``Vector4(maxf(x, with.x), maxf(y, with.y), maxf(z, with.z), maxf(w, with.w))``.
+Trả về giá trị lớn nhất theo từng thành phần của vector này và ``with``, tương đương với ``Vector4(maxf(x, with.x), maxf(y, with.y), maxf(z, with.z), maxf(w, with.w))``.
 
 .. rst-class:: classref-item-separator
 
@@ -624,7 +624,7 @@ Returns the component-wise maximum of this and ``with``, equivalent to ``Vector4
 
 :ref:`int<class_int>` **max_axis_index**\ (\ ) |const| :ref:`🔗<class_Vector4_method_max_axis_index>`
 
-Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_X<class_Vector4_constant_AXIS_X>`.
+Trả về trục của thành phần có giá trị cao nhất trong vector. Xem các hằng số ``AXIS_*``. Nếu tất cả các thành phần bằng nhau, phương thức này trả về :ref:`AXIS_X<class_Vector4_constant_AXIS_X>`.
 
 .. rst-class:: classref-item-separator
 
@@ -636,7 +636,7 @@ Returns the axis of the vector's highest value. See ``AXIS_*`` constants. If all
 
 :ref:`Vector4<class_Vector4>` **maxf**\ (\ with\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_maxf>`
 
-Returns the component-wise maximum of this and ``with``, equivalent to ``Vector4(maxf(x, with), maxf(y, with), maxf(z, with), maxf(w, with))``.
+Trả về giá trị lớn nhất theo từng thành phần của vector này và ``with``, tương đương với ``Vector4(maxf(x, with), maxf(y, with), maxf(z, with), maxf(w, with))``.
 
 .. rst-class:: classref-item-separator
 
@@ -648,7 +648,7 @@ Returns the component-wise maximum of this and ``with``, equivalent to ``Vector4
 
 :ref:`Vector4<class_Vector4>` **min**\ (\ with\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_min>`
 
-Returns the component-wise minimum of this and ``with``, equivalent to ``Vector4(minf(x, with.x), minf(y, with.y), minf(z, with.z), minf(w, with.w))``.
+Trả về giá trị nhỏ nhất theo từng thành phần của vector này và ``with``, tương đương với ``Vector4(minf(x, with.x), minf(y, with.y), minf(z, with.z), minf(w, with.w))``.
 
 .. rst-class:: classref-item-separator
 
@@ -660,7 +660,7 @@ Returns the component-wise minimum of this and ``with``, equivalent to ``Vector4
 
 :ref:`int<class_int>` **min_axis_index**\ (\ ) |const| :ref:`🔗<class_Vector4_method_min_axis_index>`
 
-Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all components are equal, this method returns :ref:`AXIS_W<class_Vector4_constant_AXIS_W>`.
+Trả về trục của thành phần có giá trị thấp nhất trong vector. Xem các hằng số ``AXIS_*``. Nếu tất cả các thành phần bằng nhau, phương thức này trả về :ref:`AXIS_W<class_Vector4_constant_AXIS_W>`.
 
 .. rst-class:: classref-item-separator
 
@@ -672,7 +672,7 @@ Returns the axis of the vector's lowest value. See ``AXIS_*`` constants. If all 
 
 :ref:`Vector4<class_Vector4>` **minf**\ (\ with\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_minf>`
 
-Returns the component-wise minimum of this and ``with``, equivalent to ``Vector4(minf(x, with), minf(y, with), minf(z, with), minf(w, with))``.
+Trả về giá trị nhỏ nhất theo từng thành phần giữa giá trị này và ``with``, tương đương với ``Vector4(minf(x, with), minf(y, with), minf(z, with), minf(w, with))``.
 
 .. rst-class:: classref-item-separator
 
@@ -684,9 +684,9 @@ Returns the component-wise minimum of this and ``with``, equivalent to ``Vector4
 
 :ref:`Vector4<class_Vector4>` **normalized**\ (\ ) |const| :ref:`🔗<class_Vector4_method_normalized>`
 
-Returns the result of scaling the vector to unit length. Equivalent to ``v / v.length()``. Returns ``(0, 0, 0, 0)`` if ``v.length() == 0``. See also :ref:`is_normalized()<class_Vector4_method_is_normalized>`.
+Trả về kết quả của việc scale vector về độ dài đơn vị. Tương đương với ``v / v.length()``. Trả về ``(0, 0, 0, 0)`` nếu ``v.length() == 0``. Xem thêm :ref:`is_normalized()<class_Vector4_method_is_normalized>`.
 
-\ **Note:** This function may return incorrect values if the input vector length is near zero.
+\ **Lưu ý:** Hàm này có thể trả về các giá trị không chính xác nếu độ dài vector đầu vào gần bằng không.
 
 .. rst-class:: classref-item-separator
 
@@ -698,7 +698,7 @@ Returns the result of scaling the vector to unit length. Equivalent to ``v / v.l
 
 :ref:`Vector4<class_Vector4>` **posmod**\ (\ mod\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_posmod>`
 
-Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope_method_fposmod>` of this vector's components and ``mod``.
+Trả về một vector gồm :ref:`@GlobalScope.fposmod() <class_@GlobalScope_method_fposmod>` của các thành phần của vector này và ``mod``.
 
 .. rst-class:: classref-item-separator
 
@@ -710,7 +710,7 @@ Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope
 
 :ref:`Vector4<class_Vector4>` **posmodv**\ (\ modv\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_posmodv>`
 
-Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope_method_fposmod>` of this vector's components and ``modv``'s components.
+Trả về một vector gồm :ref:`@GlobalScope.fposmod() <class_@GlobalScope_method_fposmod>` của các thành phần của vector này và các thành phần của ``modv``.
 
 .. rst-class:: classref-item-separator
 
@@ -722,7 +722,7 @@ Returns a vector composed of the :ref:`@GlobalScope.fposmod()<class_@GlobalScope
 
 :ref:`Vector4<class_Vector4>` **round**\ (\ ) |const| :ref:`🔗<class_Vector4_method_round>`
 
-Returns a new vector with all components rounded to the nearest integer, with halfway cases rounded away from zero.
+Trả về một vector mới với tất cả các thành phần được làm tròn đến số nguyên gần nhất, trong đó các trường hợp nằm chính giữa được làm tròn ra xa số không.
 
 .. rst-class:: classref-item-separator
 
@@ -734,7 +734,7 @@ Returns a new vector with all components rounded to the nearest integer, with ha
 
 :ref:`Vector4<class_Vector4>` **sign**\ (\ ) |const| :ref:`🔗<class_Vector4_method_sign>`
 
-Returns a new vector with each component set to ``1.0`` if it's positive, ``-1.0`` if it's negative, and ``0.0`` if it's zero. The result is identical to calling :ref:`@GlobalScope.sign()<class_@GlobalScope_method_sign>` on each component.
+Trả về một vector mới với mỗi thành phần được đặt thành ``1.0`` nếu nó dương, ``-1.0`` nếu nó âm và ``0.0`` nếu nó bằng không. Kết quả giống hệt với việc gọi :ref:`@GlobalScope.sign() <class_@GlobalScope_method_sign>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -746,7 +746,7 @@ Returns a new vector with each component set to ``1.0`` if it's positive, ``-1.0
 
 :ref:`Vector4<class_Vector4>` **snapped**\ (\ step\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_Vector4_method_snapped>`
 
-Returns a new vector with each component snapped to the nearest multiple of the corresponding component in ``step``. This can also be used to round the components to an arbitrary number of decimals.
+Trả về một vector mới, trong đó mỗi thành phần được làm tròn đến bội số gần nhất của thành phần tương ứng trong ``step``. Cách này cũng có thể được dùng để làm tròn các thành phần đến một số chữ số thập phân tùy ý.
 
 .. rst-class:: classref-item-separator
 
@@ -758,7 +758,7 @@ Returns a new vector with each component snapped to the nearest multiple of the 
 
 :ref:`Vector4<class_Vector4>` **snappedf**\ (\ step\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Vector4_method_snappedf>`
 
-Returns a new vector with each component snapped to the nearest multiple of ``step``. This can also be used to round the components to an arbitrary number of decimals.
+Trả về một vector mới, trong đó mỗi thành phần được làm tròn đến bội số gần nhất của ``step``. Cách này cũng có thể được dùng để làm tròn các thành phần đến một số chữ số thập phân tùy ý.
 
 .. rst-class:: classref-section-separator
 
@@ -766,20 +766,20 @@ Returns a new vector with each component snapped to the nearest multiple of ``st
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Vector4_operator_neq_Vector4:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_neq_Vector4>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_neq_Vector4>`
 
-Returns ``true`` if the vectors are not equal.
+Trả về ``true`` nếu các vector không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Vector4_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác của số dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Vector4_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả của toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -789,11 +789,11 @@ Returns ``true`` if the vectors are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗<class_Vector4_operator_mul_Projection>`
+:ref:`Vector4<class_Vector4>` **toán tử ***\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗 <class_Vector4_operator_mul_Projection>`
 
-Transforms (multiplies) the **Vector4** by the transpose of the given :ref:`Projection<class_Projection>` matrix.
+Biến đổi (nhân) **Vector4** với ma trận chuyển vị của :ref:`Projection<class_Projection>` đã cho.
 
-For transforming by inverse of a projection ``projection.inverse() * vector`` can be used instead. See :ref:`Projection.inverse()<class_Projection_method_inverse>`.
+Để biến đổi bằng nghịch đảo của một phép chiếu, có thể sử dụng ``projection.inverse() * vector`` thay thế. Xem :ref:`Projection.inverse()<class_Projection_method_inverse>`.
 
 .. rst-class:: classref-item-separator
 
@@ -803,9 +803,9 @@ For transforming by inverse of a projection ``projection.inverse() * vector`` ca
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_mul_Vector4>`
+:ref:`Vector4<class_Vector4>` **toán tử ***\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_mul_Vector4>`
 
-Multiplies each component of the **Vector4** by the components of the given **Vector4**.
+Nhân từng thành phần của **Vector4** với các thành phần của **Vector4** đã cho.
 
 ::
 
@@ -819,9 +819,9 @@ Multiplies each component of the **Vector4** by the components of the given **Ve
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Vector4_operator_mul_float>`
+:ref:`Vector4<class_Vector4>` **toán tử ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Vector4_operator_mul_float>`
 
-Multiplies each component of the **Vector4** by the given :ref:`float<class_float>`.
+Nhân từng thành phần của **Vector4** với :ref:`float<class_float>` đã cho.
 
 ::
 
@@ -835,9 +835,9 @@ Multiplies each component of the **Vector4** by the given :ref:`float<class_floa
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector4_operator_mul_int>`
+:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Vector4_operator_mul_int>`
 
-Multiplies each component of the **Vector4** by the given :ref:`int<class_int>`.
+Nhân từng thành phần của **Vector4** với :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -847,9 +847,9 @@ Multiplies each component of the **Vector4** by the given :ref:`int<class_int>`.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator +**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_sum_Vector4>`
+:ref:`Vector4<class_Vector4>` **operator +**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_sum_Vector4>`
 
-Adds each component of the **Vector4** by the components of the given **Vector4**.
+Cộng từng thành phần của **Vector4** với các thành phần của **Vector4** đã cho.
 
 ::
 
@@ -863,9 +863,9 @@ Adds each component of the **Vector4** by the components of the given **Vector4*
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator -**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_dif_Vector4>`
+:ref:`Vector4<class_Vector4>` **operator -**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_dif_Vector4>`
 
-Subtracts each component of the **Vector4** by the components of the given **Vector4**.
+Trừ từng thành phần của **Vector4** cho các thành phần của **Vector4** đã cho.
 
 ::
 
@@ -879,9 +879,9 @@ Subtracts each component of the **Vector4** by the components of the given **Vec
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator /**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_div_Vector4>`
+:ref:`Vector4<class_Vector4>` **operator /**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_div_Vector4>`
 
-Divides each component of the **Vector4** by the components of the given **Vector4**.
+Chia từng thành phần của **Vector4** cho các thành phần của **Vector4** đã cho.
 
 ::
 
@@ -895,9 +895,9 @@ Divides each component of the **Vector4** by the components of the given **Vecto
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Vector4_operator_div_float>`
+:ref:`Vector4<class_Vector4>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Vector4_operator_div_float>`
 
-Divides each component of the **Vector4** by the given :ref:`float<class_float>`.
+Chia từng thành phần của **Vector4** cho :ref:`float<class_float>` đã cho.
 
 ::
 
@@ -911,9 +911,9 @@ Divides each component of the **Vector4** by the given :ref:`float<class_float>`
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector4_operator_div_int>`
+:ref:`Vector4<class_Vector4>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Vector4_operator_div_int>`
 
-Divides each component of the **Vector4** by the given :ref:`int<class_int>`.
+Chia từng thành phần của **Vector4** cho :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -923,11 +923,11 @@ Divides each component of the **Vector4** by the given :ref:`int<class_int>`.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_lt_Vector4>`
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_lt_Vector4>`
 
-Compares two **Vector4** vectors by first checking if the X value of the left vector is less than the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.
+So sánh hai vector **Vector4** bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có nhỏ hơn giá trị X của vector ``right`` hay không. Nếu các giá trị X hoàn toàn bằng nhau, toán tử sẽ lặp lại việc kiểm tra này với các giá trị Y của hai vector, các giá trị Z của hai vector, rồi đến các giá trị W. Toán tử này hữu ích khi sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả của toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -937,11 +937,11 @@ Compares two **Vector4** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_lte_Vector4>`
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_lte_Vector4>`
 
-Compares two **Vector4** vectors by first checking if the X value of the left vector is less than or equal to the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.
+So sánh hai **Vector4** vector bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có nhỏ hơn hoặc bằng giá trị X của vector ``right`` hay không. Nếu các giá trị X hoàn toàn bằng nhau, toán tử sẽ lặp lại việc kiểm tra này với các giá trị Y của hai vector, các giá trị Z của hai vector, rồi đến các giá trị W. Toán tử này hữu ích khi sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả của toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -951,13 +951,13 @@ Compares two **Vector4** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_eq_Vector4>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_eq_Vector4>`
 
-Returns ``true`` if the vectors are exactly equal.
+Trả về ``true`` nếu các vector hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Vector4_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác của số dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Vector4_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả của toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -967,11 +967,11 @@ Returns ``true`` if the vectors are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_gt_Vector4>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_gt_Vector4>`
 
-Compares two **Vector4** vectors by first checking if the X value of the left vector is greater than the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.
+So sánh hai **Vector4** vector bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có lớn hơn giá trị X của ``right`` vector hay không. Nếu các giá trị X hoàn toàn bằng nhau, phép kiểm tra này sẽ được lặp lại với các giá trị Y của hai vector, các giá trị Z của hai vector, rồi đến các giá trị W. Toán tử này hữu ích để sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả của toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -981,11 +981,11 @@ Compares two **Vector4** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Vector4_operator_gte_Vector4>`
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Vector4_operator_gte_Vector4>`
 
-Compares two **Vector4** vectors by first checking if the X value of the left vector is greater than or equal to the X value of the ``right`` vector. If the X values are exactly equal, then it repeats this check with the Y values of the two vectors, Z values of the two vectors, and then with the W values. This operator is useful for sorting vectors.
+So sánh hai **Vector4** vector bằng cách trước tiên kiểm tra xem giá trị X của vector bên trái có lớn hơn hoặc bằng giá trị X của ``right`` vector hay không. Nếu các giá trị X hoàn toàn bằng nhau, phép kiểm tra này sẽ được lặp lại với các giá trị Y của hai vector, các giá trị Z của hai vector, rồi đến các giá trị W. Toán tử này hữu ích để sắp xếp các vector.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống như các vector khác. Do đó, kết quả của toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -995,9 +995,9 @@ Compares two **Vector4** vectors by first checking if the X value of the left ve
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Vector4_operator_idx_int>`
+:ref:`float<class_float>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Vector4_operator_idx_int>`
 
-Access vector components using their ``index``. ``v[0]`` is equivalent to ``v.x``, ``v[1]`` is equivalent to ``v.y``, ``v[2]`` is equivalent to ``v.z``, and ``v[3]`` is equivalent to ``v.w``.
+Truy cập các thành phần của vector bằng ``index`` của chúng. ``v[0]`` tương đương với ``v.x``, ``v[1]`` tương đương với ``v.y``, ``v[2]`` tương đương với ``v.z``, và ``v[3]`` tương đương với ``v.w``.
 
 .. rst-class:: classref-item-separator
 
@@ -1007,9 +1007,9 @@ Access vector components using their ``index``. ``v[0]`` is equivalent to ``v.x`
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator unary+**\ (\ ) :ref:`🔗<class_Vector4_operator_unplus>`
+:ref:`Vector4<class_Vector4>` **operator unary+**\ (\ ) :ref:`🔗 <class_Vector4_operator_unplus>`
 
-Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, but sometimes it can make your code more readable.
+Trả về cùng giá trị như khi ``+`` không tồn tại. Unary ``+`` không thực hiện thao tác gì, nhưng đôi khi có thể giúp mã của bạn dễ đọc hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1019,16 +1019,16 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator unary-**\ (\ ) :ref:`🔗<class_Vector4_operator_unminus>`
+:ref:`Vector4<class_Vector4>` **operator unary-**\ (\ ) :ref:`🔗 <class_Vector4_operator_unminus>`
 
-Returns the negative value of the **Vector4**. This is the same as writing ``Vector4(-v.x, -v.y, -v.z, -v.w)``. This operation flips the direction of the vector while keeping the same magnitude. With floats, the number zero can be either positive or negative.
+Trả về giá trị âm của **Vector4**. Điều này tương đương với việc viết ``Vector4(-v.x, -v.y, -v.z, -v.w)``. Thao tác này đảo hướng của vector trong khi vẫn giữ nguyên độ lớn. Với số thực, số 0 có thể là số dương hoặc số âm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

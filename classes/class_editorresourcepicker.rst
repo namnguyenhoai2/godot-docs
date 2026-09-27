@@ -10,25 +10,25 @@
 EditorResourcePicker
 ====================
 
-**Inherits:** :ref:`HBoxContainer<class_HBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`HBoxContainer<class_HBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorScriptPicker<class_EditorScriptPicker>`
+**Được kế thừa bởi:** :ref:`EditorScriptPicker<class_EditorScriptPicker>`
 
-Godot editor's control for selecting :ref:`Resource<class_Resource>` type properties.
+Control của trình chỉnh sửa Godot để chọn các thuộc tính kiểu :ref:`Resource<class_Resource>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`Control<class_Control>` node is used in the editor's Inspector dock to allow editing of :ref:`Resource<class_Resource>` type properties. It provides options for creating, loading, saving and converting resources. Can be used with :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>` to recreate the same behavior.
+:ref:`Control<class_Control>` node này được dùng trong dock Inspector của trình chỉnh sửa để cho phép chỉnh sửa các thuộc tính kiểu :ref:`Resource<class_Resource>`. Nó cung cấp các tùy chọn để tạo, tải, lưu và chuyển đổi resources. Có thể dùng với :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>` để tái tạo cùng hành vi.
 
-\ **Note:** This :ref:`Control<class_Control>` does not include any editor for the resource, as editing is controlled by the Inspector dock itself or sub-Inspectors.
+\ **Lưu ý:** :ref:`Control<class_Control>` này không bao gồm bất kỳ trình chỉnh sửa nào cho resource, vì việc chỉnh sửa do chính dock Inspector hoặc các sub-Inspector kiểm soát.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -67,8 +67,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorResourcePicker_signal_resource_changed:
 
@@ -76,7 +76,7 @@ Signals
 
 **resource_changed**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_EditorResourcePicker_signal_resource_changed>`
 
-Emitted when the value of the edited resource was changed.
+Được phát ra khi giá trị của tài nguyên đang chỉnh sửa thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ Emitted when the value of the edited resource was changed.
 
 **resource_selected**\ (\ resource\: :ref:`Resource<class_Resource>`, inspect\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorResourcePicker_signal_resource_selected>`
 
-Emitted when the resource value was set and user clicked to edit it. When ``inspect`` is ``true``, the signal was caused by the context menu "Edit" or "Inspect" option.
+Được phát ra khi giá trị tài nguyên được thiết lập và người dùng nhấp để chỉnh sửa tài nguyên đó. Khi ``inspect`` là ``true``, tín hiệu được gây ra bởi tùy chọn "Edit" hoặc "Inspect" trong menu ngữ cảnh.
 
 .. rst-class:: classref-section-separator
 
@@ -96,8 +96,8 @@ Emitted when the resource value was set and user clicked to edit it. When ``insp
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorResourcePicker_property_base_type:
 
@@ -110,7 +110,7 @@ Property Descriptions
 - |void| **set_base_type**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_base_type**\ (\ )
 
-The base type of allowed resource types. Can be a comma-separated list of several options.
+Kiểu cơ sở của các loại tài nguyên được phép. Có thể là danh sách nhiều tùy chọn được phân tách bằng dấu phẩy.
 
 .. rst-class:: classref-item-separator
 
@@ -127,7 +127,7 @@ The base type of allowed resource types. Can be a comma-separated list of severa
 - |void| **set_editable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editable**\ (\ )
 
-If ``true``, the value can be selected and edited.
+Nếu ``true``, giá trị có thể được chọn và chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -137,14 +137,14 @@ If ``true``, the value can be selected and edited.
 
 .. rst-class:: classref-property
 
-:ref:`Resource<class_Resource>` **edited_resource** :ref:`🔗<class_EditorResourcePicker_property_edited_resource>`
+:ref:`Resource<class_Resource>` **edited_resource** :ref:`🔗 <class_EditorResourcePicker_property_edited_resource>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_edited_resource**\ (\ value\: :ref:`Resource<class_Resource>`\ )
 - :ref:`Resource<class_Resource>` **get_edited_resource**\ (\ )
 
-The edited resource value.
+Giá trị tài nguyên đã chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ The edited resource value.
 - |void| **set_toggle_mode**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_toggle_mode**\ (\ )
 
-If ``true``, the main button with the resource preview works in the toggle mode. Use :ref:`set_toggle_pressed()<class_EditorResourcePicker_method_set_toggle_pressed>` to manually set the state.
+Nếu ``true``, nút chính có bản xem trước tài nguyên sẽ hoạt động ở chế độ chuyển đổi. Sử dụng :ref:`set_toggle_pressed()<class_EditorResourcePicker_method_set_toggle_pressed>` để đặt trạng thái theo cách thủ công.
 
 .. rst-class:: classref-section-separator
 
@@ -169,8 +169,8 @@ If ``true``, the main button with the resource preview works in the toggle mode.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorResourcePicker_private_method__handle_menu_selected:
 
@@ -178,7 +178,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_handle_menu_selected**\ (\ id\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_EditorResourcePicker_private_method__handle_menu_selected>`
 
-This virtual method can be implemented to handle context menu items not handled by default. See :ref:`_set_create_options()<class_EditorResourcePicker_private_method__set_create_options>`.
+Phương thức ảo này có thể được triển khai để xử lý các mục menu ngữ cảnh không được xử lý theo mặc định. Xem :ref:`_set_create_options()<class_EditorResourcePicker_private_method__set_create_options>`.
 
 .. rst-class:: classref-item-separator
 
@@ -190,11 +190,11 @@ This virtual method can be implemented to handle context menu items not handled 
 
 |void| **_set_create_options**\ (\ menu_node\: :ref:`Object<class_Object>`\ ) |virtual| :ref:`🔗<class_EditorResourcePicker_private_method__set_create_options>`
 
-This virtual method is called when updating the context menu of an :ref:`editable<class_EditorResourcePicker_property_editable>` **EditorResourcePicker**. Implement this method to override the "New" items section with your own options. ``menu_node`` is a reference to the :ref:`PopupMenu<class_PopupMenu>` node.
+Phương thức ảo này được gọi khi cập nhật menu ngữ cảnh của :ref:`editable<class_EditorResourcePicker_property_editable>` **EditorResourcePicker**. Triển khai phương thức này để ghi đè phần các mục "New" bằng những tùy chọn của riêng bạn. ``menu_node`` là tham chiếu đến node :ref:`PopupMenu<class_PopupMenu>`.
 
-\ **Note:** Implement :ref:`_handle_menu_selected()<class_EditorResourcePicker_private_method__handle_menu_selected>` to handle these custom items.
+\ **Lưu ý:** Triển khai :ref:`_handle_menu_selected()<class_EditorResourcePicker_private_method__handle_menu_selected>` để xử lý các mục tùy chỉnh này.
 
-\ **Note:** Relevant built-in options ("Load", "Copy", "Paste", etc.) are automatically added to the ``menu_node`` afterwards, using their hard-coded IDs starting from ``0``. Custom options need to use non-colliding IDs to be handled properly. Using ``id = 100 + custom_option_index`` is safe (this is what the default items in the "New" section use).
+\ **Lưu ý:** Các tùy chọn tích hợp liên quan ("Load", "Copy", "Paste", v.v.) sẽ được tự động thêm vào ``menu_node`` sau đó, bằng cách sử dụng các ID được mã hóa cứng bắt đầu từ ``0``. Các tùy chọn tùy chỉnh cần sử dụng các ID không trùng lặp để được xử lý đúng cách. Sử dụng ``id = 100 + custom_option_index`` là an toàn (đây là giá trị mà các mục mặc định trong phần "New" sử dụng).
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ This virtual method is called when updating the context menu of an :ref:`editabl
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_allowed_types**\ (\ ) |const| :ref:`🔗<class_EditorResourcePicker_method_get_allowed_types>`
 
-Returns a list of all allowed types and subtypes corresponding to the :ref:`base_type<class_EditorResourcePicker_property_base_type>`. If the :ref:`base_type<class_EditorResourcePicker_property_base_type>` is empty, an empty list is returned.
+Trả về danh sách tất cả các type và subtype được phép tương ứng với :ref:`base_type<class_EditorResourcePicker_property_base_type>`. Nếu :ref:`base_type<class_EditorResourcePicker_property_base_type>` trống, một danh sách trống sẽ được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -218,14 +218,14 @@ Returns a list of all allowed types and subtypes corresponding to the :ref:`base
 
 |void| **set_toggle_pressed**\ (\ pressed\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorResourcePicker_method_set_toggle_pressed>`
 
-Sets the toggle mode state for the main button. Works only if :ref:`toggle_mode<class_EditorResourcePicker_property_toggle_mode>` is set to ``true``.
+Thiết lập trạng thái chế độ bật/tắt cho nút chính. Chỉ hoạt động nếu :ref:`toggle_mode<class_EditorResourcePicker_property_toggle_mode>` được đặt thành ``true``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

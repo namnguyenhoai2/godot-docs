@@ -10,7 +10,7 @@
 GLTFAnimation
 =============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 .. container:: contribute
 
@@ -18,14 +18,14 @@ GLTFAnimation
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -57,8 +57,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFAnimation_property_loop:
 
@@ -90,7 +90,7 @@ Property Descriptions
 - |void| **set_original_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_original_name**\ (\ )
 
-The original name of the animation.
+Tên ban đầu của animation.
 
 .. rst-class:: classref-section-separator
 
@@ -98,8 +98,8 @@ The original name of the animation.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFAnimation_method_get_additional_data:
 
@@ -107,9 +107,9 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **get_additional_data**\ (\ extension_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GLTFAnimation_method_get_additional_data>`
 
-Gets additional arbitrary data in this **GLTFAnimation** instance. This can be used to keep per-node state data in :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes, which is important because they are stateless.
+Lấy dữ liệu tùy ý bổ sung trong thực thể **GLTFAnimation** này. Có thể dùng dữ liệu này để lưu trạng thái riêng của từng node trong các lớp :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>`, điều này rất quan trọng vì chúng không lưu trạng thái.
 
-The argument should be the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is ``null``.
+Đối số phải là tên :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` (không nhất thiết phải khớp với tên extension trong tệp glTF), còn giá trị trả về có thể là bất kỳ giá trị nào bạn đặt. Nếu chưa đặt gì, giá trị trả về là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -121,16 +121,16 @@ The argument should be the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtensi
 
 |void| **set_additional_data**\ (\ extension_name\: :ref:`StringName<class_StringName>`, additional_data\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GLTFAnimation_method_set_additional_data>`
 
-Sets additional arbitrary data in this **GLTFAnimation** instance. This can be used to keep per-node state data in :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes, which is important because they are stateless.
+Đặt dữ liệu tùy ý bổ sung trong thực thể **GLTFAnimation** này. Có thể dùng dữ liệu này để lưu trạng thái riêng của từng node trong các lớp :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>`, điều này rất quan trọng vì chúng không lưu trạng thái.
 
-The first argument should be the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.
+Đối số đầu tiên phải là tên :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` (không nhất thiết phải khớp với tên extension trong tệp glTF), còn đối số thứ hai có thể là bất kỳ giá trị nào bạn muốn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

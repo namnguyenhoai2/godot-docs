@@ -10,30 +10,30 @@
 CapsuleShape3D
 ==============
 
-**Inherits:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 3D capsule shape used for physics collision.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A 3D capsule shape, intended for use in physics. Usually used to provide a shape for a :ref:`CollisionShape3D<class_CollisionShape3D>`.
-
-\ **Performance:** **CapsuleShape3D** is fast to check collisions against. It is faster than :ref:`CylinderShape3D<class_CylinderShape3D>`, but slower than :ref:`SphereShape3D<class_SphereShape3D>` and :ref:`BoxShape3D<class_BoxShape3D>`.
+Một hình dạng capsule 3D được dùng cho va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một hình dạng capsule 3D, предназначена để sử dụng trong vật lý. Thường được dùng để cung cấp hình dạng cho một :ref:`CollisionShape3D<class_CollisionShape3D>`.
+
+\ **Hiệu năng:** **CapsuleShape3D** rất nhanh khi kiểm tra va chạm. Nó nhanh hơn :ref:`CylinderShape3D<class_CylinderShape3D>`, nhưng chậm hơn :ref:`SphereShape3D<class_SphereShape3D>` và :ref:`BoxShape3D<class_BoxShape3D>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `3D Physics Tests Demo <https://godotengine.org/asset-library/asset/2747>`__
+- `Bản demo kiểm thử vật lý 3D <https://godotengine.org/asset-library/asset/2747>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -52,8 +52,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CapsuleShape3D_property_height:
 
@@ -66,9 +66,9 @@ Property Descriptions
 - |void| **set_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height**\ (\ )
 
-The capsule's full height, including the hemispheres.
+Tổng chiều cao của capsule, bao gồm cả các bán cầu.
 
-\ **Note:** The :ref:`height<class_CapsuleShape3D_property_height>` of a capsule must be at least twice its :ref:`radius<class_CapsuleShape3D_property_radius>`. Otherwise, the capsule becomes a sphere. If the :ref:`height<class_CapsuleShape3D_property_height>` is less than twice the :ref:`radius<class_CapsuleShape3D_property_radius>`, the properties adjust to a valid value.
+\ **Lưu ý:** :ref:`height<class_CapsuleShape3D_property_height>` của capsule phải ít nhất gấp đôi :ref:`radius<class_CapsuleShape3D_property_radius>`. Nếu :ref:`height<class_CapsuleShape3D_property_height>` nhỏ hơn gấp đôi :ref:`radius<class_CapsuleShape3D_property_radius>`, các thuộc tính sẽ được điều chỉnh về một giá trị hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -78,14 +78,14 @@ The capsule's full height, including the hemispheres.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **mid_height** :ref:`🔗<class_CapsuleShape3D_property_mid_height>`
+:ref:`float<class_float>` **mid_height** :ref:`🔗 <class_CapsuleShape3D_property_mid_height>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_mid_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mid_height**\ (\ )
 
-The capsule's height, excluding the hemispheres. This is the height of the central cylindrical part in the middle of the capsule, and is the distance between the centers of the two hemispheres. This is a wrapper for :ref:`height<class_CapsuleShape3D_property_height>`.
+Chiều cao của capsule, không bao gồm các bán cầu. Đây là chiều cao của phần hình trụ trung tâm ở giữa capsule và là khoảng cách giữa tâm của hai bán cầu. Đây là một wrapper cho :ref:`height<class_CapsuleShape3D_property_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -102,16 +102,16 @@ The capsule's height, excluding the hemispheres. This is the height of the centr
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The capsule's radius.
+Bán kính của capsule.
 
-\ **Note:** The :ref:`radius<class_CapsuleShape3D_property_radius>` of a capsule cannot be greater than half of its :ref:`height<class_CapsuleShape3D_property_height>`. Otherwise, the capsule becomes a sphere. If the :ref:`radius<class_CapsuleShape3D_property_radius>` is greater than half of the :ref:`height<class_CapsuleShape3D_property_height>`, the properties adjust to a valid value.
+\ **Lưu ý:** :ref:`radius<class_CapsuleShape3D_property_radius>` của một capsule không được lớn hơn một nửa :ref:`height<class_CapsuleShape3D_property_height>` của nó. Nếu không, capsule sẽ trở thành một hình cầu. Nếu :ref:`radius<class_CapsuleShape3D_property_radius>` lớn hơn một nửa :ref:`height<class_CapsuleShape3D_property_height>`, các thuộc tính sẽ được điều chỉnh về một giá trị hợp lệ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng override thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

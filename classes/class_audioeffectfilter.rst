@@ -10,53 +10,53 @@
 AudioEffectFilter
 =================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AudioEffectBandLimitFilter<class_AudioEffectBandLimitFilter>`, :ref:`AudioEffectBandPassFilter<class_AudioEffectBandPassFilter>`, :ref:`AudioEffectHighPassFilter<class_AudioEffectHighPassFilter>`, :ref:`AudioEffectHighShelfFilter<class_AudioEffectHighShelfFilter>`, :ref:`AudioEffectLowPassFilter<class_AudioEffectLowPassFilter>`, :ref:`AudioEffectLowShelfFilter<class_AudioEffectLowShelfFilter>`, :ref:`AudioEffectNotchFilter<class_AudioEffectNotchFilter>`
+**Được kế thừa bởi:** :ref:`AudioEffectBandLimitFilter<class_AudioEffectBandLimitFilter>`, :ref:`AudioEffectBandPassFilter<class_AudioEffectBandPassFilter>`, :ref:`AudioEffectHighPassFilter<class_AudioEffectHighPassFilter>`, :ref:`AudioEffectHighShelfFilter<class_AudioEffectHighShelfFilter>`, :ref:`AudioEffectLowPassFilter<class_AudioEffectLowPassFilter>`, :ref:`AudioEffectLowShelfFilter<class_AudioEffectLowShelfFilter>`, :ref:`AudioEffectNotchFilter<class_AudioEffectNotchFilter>`
 
-Base class for filters. Use effects that inherit this class instead of using it directly.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "filter" controls the gain of frequencies, using :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` as a frequency threshold. Filters can help to give room for each sound, and create interesting effects.
-
-There are different types of filter that inherit this class:
-
-Shelf filters: :ref:`AudioEffectLowShelfFilter<class_AudioEffectLowShelfFilter>` and :ref:`AudioEffectHighShelfFilter<class_AudioEffectHighShelfFilter>`\ 
-
-Band-pass and notch filters: :ref:`AudioEffectBandPassFilter<class_AudioEffectBandPassFilter>`, :ref:`AudioEffectBandLimitFilter<class_AudioEffectBandLimitFilter>`, and :ref:`AudioEffectNotchFilter<class_AudioEffectNotchFilter>`\ 
-
-Low/high-pass filters: :ref:`AudioEffectLowPassFilter<class_AudioEffectLowPassFilter>` and :ref:`AudioEffectHighPassFilter<class_AudioEffectHighPassFilter>`
+Lớp cơ sở cho các bộ lọc. Hãy sử dụng các effect kế thừa lớp này thay vì sử dụng trực tiếp lớp này.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một "bộ lọc" điều khiển độ khuếch đại của các tần số, sử dụng :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` làm ngưỡng tần số. Bộ lọc có thể giúp tạo không gian cho từng âm thanh và tạo ra các hiệu ứng thú vị.
+
+Có nhiều loại bộ lọc khác nhau kế thừa lớp này:
+
+Bộ lọc shelf: :ref:`AudioEffectLowShelfFilter<class_AudioEffectLowShelfFilter>` và :ref:`AudioEffectHighShelfFilter<class_AudioEffectHighShelfFilter>`\
+
+Bộ lọc dải thông và bộ lọc chắn dải: :ref:`AudioEffectBandPassFilter<class_AudioEffectBandPassFilter>`, :ref:`AudioEffectBandLimitFilter<class_AudioEffectBandLimitFilter>`, và :ref:`AudioEffectNotchFilter<class_AudioEffectNotchFilter>`\
+
+Bộ lọc thông thấp/cao: :ref:`AudioEffectLowPassFilter<class_AudioEffectLowPassFilter>` và :ref:`AudioEffectHighPassFilter<class_AudioEffectHighPassFilter>`
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------+--------------------------------------------------------------+------------+
-   | :ref:`float<class_float>`                        | :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` | ``2000.0`` |
-   +--------------------------------------------------+--------------------------------------------------------------+------------+
-   | :ref:`FilterDB<enum_AudioEffectFilter_FilterDB>` | :ref:`db<class_AudioEffectFilter_property_db>`               | ``0``      |
-   +--------------------------------------------------+--------------------------------------------------------------+------------+
-   | :ref:`float<class_float>`                        | :ref:`gain<class_AudioEffectFilter_property_gain>`           | ``1.0``    |
-   +--------------------------------------------------+--------------------------------------------------------------+------------+
-   | :ref:`float<class_float>`                        | :ref:`resonance<class_AudioEffectFilter_property_resonance>` | ``0.5``    |
-   +--------------------------------------------------+--------------------------------------------------------------+------------+
+   +---------------------------------------------------+--------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                         | :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` | ``2000.0`` |
+   +---------------------------------------------------+--------------------------------------------------------------+------------+
+   | :ref:`FilterDB <enum_AudioEffectFilter_FilterDB>` | :ref:`db<class_AudioEffectFilter_property_db>`               | ``0``      |
+   +---------------------------------------------------+--------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                         | :ref:`gain<class_AudioEffectFilter_property_gain>`           | ``1.0``    |
+   +---------------------------------------------------+--------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                         | :ref:`resonance<class_AudioEffectFilter_property_resonance>` | ``0.5``    |
+   +---------------------------------------------------+--------------------------------------------------------------+------------+
 
 .. rst-class:: classref-section-separator
 
@@ -64,14 +64,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AudioEffectFilter_FilterDB:
 
 .. rst-class:: classref-enumeration
 
-enum **FilterDB**: :ref:`🔗<enum_AudioEffectFilter_FilterDB>`
+enum **FilterDB**: :ref:`🔗 <enum_AudioEffectFilter_FilterDB>`
 
 .. _class_AudioEffectFilter_constant_FILTER_6DB:
 
@@ -79,7 +79,7 @@ enum **FilterDB**: :ref:`🔗<enum_AudioEffectFilter_FilterDB>`
 
 :ref:`FilterDB<enum_AudioEffectFilter_FilterDB>` **FILTER_6DB** = ``0``
 
-Cutting off at 6 dB per octave. One octave is twice the frequency above :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, or half the frequency below :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
+Suy giảm ở mức 6 dB mỗi quãng tám. Một quãng tám là tần số cao gấp đôi :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, hoặc thấp bằng một nửa :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
 
 .. _class_AudioEffectFilter_constant_FILTER_12DB:
 
@@ -87,7 +87,7 @@ Cutting off at 6 dB per octave. One octave is twice the frequency above :ref:`cu
 
 :ref:`FilterDB<enum_AudioEffectFilter_FilterDB>` **FILTER_12DB** = ``1``
 
-Cutting off at 12 dB per octave. One octave is twice the frequency above :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, or half the frequency below :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
+Suy giảm ở mức 12 dB mỗi quãng tám. Một quãng tám là tần số cao gấp đôi :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, hoặc thấp bằng một nửa :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
 
 .. _class_AudioEffectFilter_constant_FILTER_18DB:
 
@@ -95,7 +95,7 @@ Cutting off at 12 dB per octave. One octave is twice the frequency above :ref:`c
 
 :ref:`FilterDB<enum_AudioEffectFilter_FilterDB>` **FILTER_18DB** = ``2``
 
-Cutting off at 18 dB per octave. One octave is twice the frequency above :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, or half the frequency below :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
+Suy giảm ở mức 18 dB mỗi quãng tám. Một quãng tám là tần số cao gấp đôi :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, hoặc thấp bằng một nửa :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
 
 .. _class_AudioEffectFilter_constant_FILTER_24DB:
 
@@ -103,7 +103,7 @@ Cutting off at 18 dB per octave. One octave is twice the frequency above :ref:`c
 
 :ref:`FilterDB<enum_AudioEffectFilter_FilterDB>` **FILTER_24DB** = ``3``
 
-Cutting off at 24 dB per octave. One octave is twice the frequency above :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, or half the frequency below :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
+Suy giảm ở mức 24 dB mỗi quãng tám. Một quãng tám là tần số cao gấp đôi :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, hoặc thấp bằng một nửa :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
 
 .. rst-class:: classref-section-separator
 
@@ -111,8 +111,8 @@ Cutting off at 24 dB per octave. One octave is twice the frequency above :ref:`c
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectFilter_property_cutoff_hz:
 
@@ -125,7 +125,7 @@ Property Descriptions
 - |void| **set_cutoff**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_cutoff**\ (\ )
 
-Frequency threshold for the filter, in Hz. Value can range from 1 to 20500.
+Ngưỡng tần số của bộ lọc, tính bằng Hz. Giá trị có thể nằm trong khoảng từ 1 đến 20500.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ Frequency threshold for the filter, in Hz. Value can range from 1 to 20500.
 - |void| **set_db**\ (\ value\: :ref:`FilterDB<enum_AudioEffectFilter_FilterDB>`\ )
 - :ref:`FilterDB<enum_AudioEffectFilter_FilterDB>` **get_db**\ (\ )
 
-Steepness of the cutoff curve in dB per octave (twice the frequency above :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, or half the frequency below :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`), also known as the "order" of the filter. Higher orders have a more aggressive cutoff.
+Độ dốc của đường cong cắt, tính bằng dB trên mỗi octave (tần số cao gấp đôi :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`, hoặc bằng một nửa tần số thấp hơn :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`), còn được gọi là "bậc" của bộ lọc. Bộ lọc có bậc cao hơn sẽ cắt mạnh hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Steepness of the cutoff curve in dB per octave (twice the frequency above :ref:`
 - |void| **set_gain**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_gain**\ (\ )
 
-Gain of the frequencies affected by the filter. This property is only available for :ref:`AudioEffectLowShelfFilter<class_AudioEffectLowShelfFilter>` and :ref:`AudioEffectHighShelfFilter<class_AudioEffectHighShelfFilter>`. Value can range from 0 to 4.
+Độ khuếch đại của các tần số chịu ảnh hưởng của bộ lọc. Thuộc tính này chỉ khả dụng cho :ref:`AudioEffectLowShelfFilter<class_AudioEffectLowShelfFilter>` và :ref:`AudioEffectHighShelfFilter<class_AudioEffectHighShelfFilter>`. Giá trị có thể nằm trong khoảng từ 0 đến 4.
 
 .. rst-class:: classref-item-separator
 
@@ -176,22 +176,22 @@ Gain of the frequencies affected by the filter. This property is only available 
 - |void| **set_resonance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_resonance**\ (\ )
 
-Gain at or directly next to the :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` frequency threshold. Value can range from 0 to 1.
+Độ khuếch đại tại hoặc ngay cạnh ngưỡng tần số :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
-Its exact behavior depends on the selected filter type:
+Hành vi chính xác của thuộc tính này phụ thuộc vào loại bộ lọc được chọn:
 
-- For shelf filters, it accentuates or masks the order by increasing frequencies right next to the :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` frequency and decreasing frequencies on the opposite side.
+- Đối với các bộ lọc shelf, thuộc tính này làm nổi bật hoặc che bớt bậc bằng cách tăng các tần số ngay cạnh tần số :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` và giảm các tần số ở phía đối diện.
 
-- For the band-pass and notch filters, it widens or narrows the filter at the :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` frequency threshold.
+- Đối với các bộ lọc thông dải và notch, thuộc tính này mở rộng hoặc thu hẹp bộ lọc tại ngưỡng tần số :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
 
-- For low/high-pass filters, it increases or decreases frequencies at the :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>` frequency threshold.
+- Đối với các bộ lọc thông thấp/thông cao, nó tăng hoặc giảm các tần số tại ngưỡng tần số :ref:`cutoff_hz<class_AudioEffectFilter_property_cutoff_hz>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

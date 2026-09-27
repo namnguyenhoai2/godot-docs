@@ -10,61 +10,61 @@
 XRBodyTracker
 =============
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A tracked body in XR.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A body tracking system will create an instance of this object and add it to the :ref:`XRServer<class_XRServer>`. This tracking system will then obtain skeleton data, convert it to the Godot Humanoid skeleton and store this data on the **XRBodyTracker** object.
-
-Use :ref:`XRBodyModifier3D<class_XRBodyModifier3D>` to animate a body mesh using body tracking data.
+Một cơ thể được theo dõi trong XR.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Hệ thống theo dõi cơ thể sẽ tạo một thực thể của đối tượng này và thêm nó vào :ref:`XRServer<class_XRServer>`. Sau đó, hệ thống theo dõi này sẽ lấy dữ liệu bộ xương, chuyển đổi dữ liệu đó thành bộ xương Godot Humanoid và lưu trữ dữ liệu này trong đối tượng **XRBodyTracker**.
+
+Sử dụng :ref:`XRBodyModifier3D<class_XRBodyModifier3D>` để tạo hoạt ảnh cho lưới cơ thể bằng dữ liệu theo dõi cơ thể.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------------------------------------------+
-   | |bitfield|\[:ref:`BodyFlags<enum_XRBodyTracker_BodyFlags>`\] | :ref:`body_flags<class_XRBodyTracker_property_body_flags>`               | ``0``                                                              |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_tracking_data<class_XRBodyTracker_property_has_tracking_data>` | ``false``                                                          |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------------------------------------------+
-   | :ref:`TrackerType<enum_XRServer_TrackerType>`                | type                                                                     | ``32`` (overrides :ref:`XRTracker<class_XRTracker_property_type>`) |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+--------------------------------------------------------------------+
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------------------------------------------------------------+
+   | |bitfield|\[:ref:`BodyFlags <enum_XRBodyTracker_BodyFlags>`\] | :ref:`body_flags<class_XRBodyTracker_property_body_flags>`               | ``0``                                                           |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                       | :ref:`has_tracking_data<class_XRBodyTracker_property_has_tracking_data>` | ``false``                                                       |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------------------------------------------------------------+
+   | :ref:`TrackerType <enum_XRServer_TrackerType>`                | type                                                                     | ``32`` (ghi đè :ref:`XRTracker<class_XRTracker_property_type>`) |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`JointFlags<enum_XRBodyTracker_JointFlags>`\] | :ref:`get_joint_flags<class_XRBodyTracker_method_get_joint_flags>`\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`\ ) |const|                                                                 |
-   +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`                          | :ref:`get_joint_transform<class_XRBodyTracker_method_get_joint_transform>`\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`\ ) |const|                                                         |
-   +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                         | :ref:`set_joint_flags<class_XRBodyTracker_method_set_joint_flags>`\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`, flags\: |bitfield|\[:ref:`JointFlags<enum_XRBodyTracker_JointFlags>`\]\ ) |
-   +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                         | :ref:`set_joint_transform<class_XRBodyTracker_method_set_joint_transform>`\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`, transform\: :ref:`Transform3D<class_Transform3D>`\ )              |
-   +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`JointFlags <enum_XRBodyTracker_JointFlags>`\] | :ref:`get_joint_flags<class_XRBodyTracker_method_get_joint_flags>`\ (\ joint\: :ref:`Joint <enum_XRBodyTracker_Joint>`\ ) |const|                                                                  |
+   +-----------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`                           | :ref:`get_joint_transform<class_XRBodyTracker_method_get_joint_transform>`\ (\ joint\: :ref:`Joint <enum_XRBodyTracker_Joint>`\ ) |const|                                                          |
+   +-----------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                          | :ref:`set_joint_flags<class_XRBodyTracker_method_set_joint_flags>`\ (\ joint\: :ref:`Joint <enum_XRBodyTracker_Joint>`, flags\: |bitfield|\[:ref:`JointFlags <enum_XRBodyTracker_JointFlags>`\]\ ) |
+   +-----------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                          | :ref:`set_joint_transform<class_XRBodyTracker_method_set_joint_transform>`\ (\ joint\: :ref:`Joint <enum_XRBodyTracker_Joint>`, transform\: :ref:`Transform3D<class_Transform3D>`\ )               |
+   +-----------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -72,14 +72,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enum
+--------
 
 .. _enum_XRBodyTracker_BodyFlags:
 
 .. rst-class:: classref-enumeration
 
-flags **BodyFlags**: :ref:`🔗<enum_XRBodyTracker_BodyFlags>`
+flags **BodyFlags**: :ref:`🔗 <enum_XRBodyTracker_BodyFlags>`
 
 .. _class_XRBodyTracker_constant_BODY_FLAG_UPPER_BODY_SUPPORTED:
 
@@ -87,7 +87,7 @@ flags **BodyFlags**: :ref:`🔗<enum_XRBodyTracker_BodyFlags>`
 
 :ref:`BodyFlags<enum_XRBodyTracker_BodyFlags>` **BODY_FLAG_UPPER_BODY_SUPPORTED** = ``1``
 
-Upper body tracking supported.
+Hỗ trợ tracking phần thân trên.
 
 .. _class_XRBodyTracker_constant_BODY_FLAG_LOWER_BODY_SUPPORTED:
 
@@ -95,7 +95,7 @@ Upper body tracking supported.
 
 :ref:`BodyFlags<enum_XRBodyTracker_BodyFlags>` **BODY_FLAG_LOWER_BODY_SUPPORTED** = ``2``
 
-Lower body tracking supported.
+Hỗ trợ tracking phần thân dưới.
 
 .. _class_XRBodyTracker_constant_BODY_FLAG_HANDS_SUPPORTED:
 
@@ -103,7 +103,7 @@ Lower body tracking supported.
 
 :ref:`BodyFlags<enum_XRBodyTracker_BodyFlags>` **BODY_FLAG_HANDS_SUPPORTED** = ``4``
 
-Hand tracking supported.
+Hỗ trợ tracking bàn tay.
 
 .. rst-class:: classref-item-separator
 
@@ -113,7 +113,7 @@ Hand tracking supported.
 
 .. rst-class:: classref-enumeration
 
-enum **Joint**: :ref:`🔗<enum_XRBodyTracker_Joint>`
+enum **Joint**: :ref:`🔗 <enum_XRBodyTracker_Joint>`
 
 .. _class_XRBodyTracker_constant_JOINT_ROOT:
 
@@ -121,7 +121,7 @@ enum **Joint**: :ref:`🔗<enum_XRBodyTracker_Joint>`
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_ROOT** = ``0``
 
-Root joint.
+Khớp gốc.
 
 .. _class_XRBodyTracker_constant_JOINT_HIPS:
 
@@ -129,7 +129,7 @@ Root joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_HIPS** = ``1``
 
-Hips joint.
+Khớp hông.
 
 .. _class_XRBodyTracker_constant_JOINT_SPINE:
 
@@ -137,7 +137,7 @@ Hips joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_SPINE** = ``2``
 
-Spine joint.
+Khớp cột sống.
 
 .. _class_XRBodyTracker_constant_JOINT_CHEST:
 
@@ -145,7 +145,7 @@ Spine joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_CHEST** = ``3``
 
-Chest joint.
+Khớp ngực.
 
 .. _class_XRBodyTracker_constant_JOINT_UPPER_CHEST:
 
@@ -153,7 +153,7 @@ Chest joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_UPPER_CHEST** = ``4``
 
-Upper chest joint.
+Khớp ngực trên.
 
 .. _class_XRBodyTracker_constant_JOINT_NECK:
 
@@ -161,7 +161,7 @@ Upper chest joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_NECK** = ``5``
 
-Neck joint.
+Khớp cổ.
 
 .. _class_XRBodyTracker_constant_JOINT_HEAD:
 
@@ -169,7 +169,7 @@ Neck joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_HEAD** = ``6``
 
-Head joint.
+Khớp đầu.
 
 .. _class_XRBodyTracker_constant_JOINT_HEAD_TIP:
 
@@ -177,7 +177,7 @@ Head joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_HEAD_TIP** = ``7``
 
-Head tip joint.
+Khớp chóp đầu.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_SHOULDER:
 
@@ -185,7 +185,7 @@ Head tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_SHOULDER** = ``8``
 
-Left shoulder joint.
+Khớp vai trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_UPPER_ARM:
 
@@ -193,7 +193,7 @@ Left shoulder joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_UPPER_ARM** = ``9``
 
-Left upper arm joint.
+Khớp cánh tay trên trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_LOWER_ARM:
 
@@ -201,7 +201,7 @@ Left upper arm joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_LOWER_ARM** = ``10``
 
-Left lower arm joint.
+Khớp cẳng tay dưới bên trái.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_SHOULDER:
 
@@ -209,7 +209,7 @@ Left lower arm joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_SHOULDER** = ``11``
 
-Right shoulder joint.
+Khớp vai phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_UPPER_ARM:
 
@@ -217,7 +217,7 @@ Right shoulder joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_UPPER_ARM** = ``12``
 
-Right upper arm joint.
+Khớp cánh tay trên bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_LOWER_ARM:
 
@@ -225,7 +225,7 @@ Right upper arm joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_LOWER_ARM** = ``13``
 
-Right lower arm joint.
+Khớp cẳng tay dưới bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_UPPER_LEG:
 
@@ -233,7 +233,7 @@ Right lower arm joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_UPPER_LEG** = ``14``
 
-Left upper leg joint.
+Khớp đùi trên bên trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_LOWER_LEG:
 
@@ -241,7 +241,7 @@ Left upper leg joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_LOWER_LEG** = ``15``
 
-Left lower leg joint.
+Khớp cẳng chân dưới bên trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_FOOT:
 
@@ -249,7 +249,7 @@ Left lower leg joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_FOOT** = ``16``
 
-Left foot joint.
+Khớp bàn chân trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_TOES:
 
@@ -257,7 +257,7 @@ Left foot joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_TOES** = ``17``
 
-Left toes joint.
+Khớp các ngón chân trái.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_UPPER_LEG:
 
@@ -265,7 +265,7 @@ Left toes joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_UPPER_LEG** = ``18``
 
-Right upper leg joint.
+Khớp cẳng chân trên bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_LOWER_LEG:
 
@@ -273,7 +273,7 @@ Right upper leg joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_LOWER_LEG** = ``19``
 
-Right lower leg joint.
+Khớp cẳng chân dưới bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_FOOT:
 
@@ -281,7 +281,7 @@ Right lower leg joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_FOOT** = ``20``
 
-Right foot joint.
+Khớp bàn chân phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_TOES:
 
@@ -289,7 +289,7 @@ Right foot joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_TOES** = ``21``
 
-Right toes joint.
+Khớp các ngón chân phải.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_HAND:
 
@@ -297,7 +297,7 @@ Right toes joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_HAND** = ``22``
 
-Left hand joint.
+Khớp bàn tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_PALM:
 
@@ -305,7 +305,7 @@ Left hand joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_PALM** = ``23``
 
-Left palm joint.
+Khớp lòng bàn tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_WRIST:
 
@@ -313,7 +313,7 @@ Left palm joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_WRIST** = ``24``
 
-Left wrist joint.
+Khớp cổ tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_THUMB_METACARPAL:
 
@@ -321,7 +321,7 @@ Left wrist joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_THUMB_METACARPAL** = ``25``
 
-Left thumb metacarpal joint.
+Khớp xương bàn ngón cái trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_THUMB_PHALANX_PROXIMAL:
 
@@ -329,7 +329,7 @@ Left thumb metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_THUMB_PHALANX_PROXIMAL** = ``26``
 
-Left thumb phalanx proximal joint.
+Khớp đốt gần ngón cái trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_THUMB_PHALANX_DISTAL:
 
@@ -337,7 +337,7 @@ Left thumb phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_THUMB_PHALANX_DISTAL** = ``27``
 
-Left thumb phalanx distal joint.
+Khớp đốt xa ngón cái trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_THUMB_TIP:
 
@@ -345,7 +345,7 @@ Left thumb phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_THUMB_TIP** = ``28``
 
-Left thumb tip joint.
+Khớp đầu mút ngón cái trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_INDEX_FINGER_METACARPAL:
 
@@ -353,7 +353,7 @@ Left thumb tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_INDEX_FINGER_METACARPAL** = ``29``
 
-Left index finger metacarpal joint.
+Khớp xương bàn ngón trỏ trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_INDEX_FINGER_PHALANX_PROXIMAL:
 
@@ -361,7 +361,7 @@ Left index finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_INDEX_FINGER_PHALANX_PROXIMAL** = ``30``
 
-Left index finger phalanx proximal joint.
+Khớp đốt gần ngón trỏ trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_INDEX_FINGER_PHALANX_INTERMEDIATE:
 
@@ -369,7 +369,7 @@ Left index finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_INDEX_FINGER_PHALANX_INTERMEDIATE** = ``31``
 
-Left index finger phalanx intermediate joint.
+Khớp đốt giữa ngón trỏ trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_INDEX_FINGER_PHALANX_DISTAL:
 
@@ -377,7 +377,7 @@ Left index finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_INDEX_FINGER_PHALANX_DISTAL** = ``32``
 
-Left index finger phalanx distal joint.
+Khớp đốt xa ngón trỏ trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_INDEX_FINGER_TIP:
 
@@ -385,7 +385,7 @@ Left index finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_INDEX_FINGER_TIP** = ``33``
 
-Left index finger tip joint.
+Khớp đầu mút ngón trỏ trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_MIDDLE_FINGER_METACARPAL:
 
@@ -393,7 +393,7 @@ Left index finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_MIDDLE_FINGER_METACARPAL** = ``34``
 
-Left middle finger metacarpal joint.
+Khớp xương bàn ngón giữa trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_MIDDLE_FINGER_PHALANX_PROXIMAL:
 
@@ -401,7 +401,7 @@ Left middle finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_MIDDLE_FINGER_PHALANX_PROXIMAL** = ``35``
 
-Left middle finger phalanx proximal joint.
+Khớp đốt gần ngón giữa trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_MIDDLE_FINGER_PHALANX_INTERMEDIATE:
 
@@ -409,7 +409,7 @@ Left middle finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_MIDDLE_FINGER_PHALANX_INTERMEDIATE** = ``36``
 
-Left middle finger phalanx intermediate joint.
+Khớp đốt giữa ngón giữa trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_MIDDLE_FINGER_PHALANX_DISTAL:
 
@@ -417,7 +417,7 @@ Left middle finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_MIDDLE_FINGER_PHALANX_DISTAL** = ``37``
 
-Left middle finger phalanx distal joint.
+Khớp đốt xa ngón giữa trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_MIDDLE_FINGER_TIP:
 
@@ -425,7 +425,7 @@ Left middle finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_MIDDLE_FINGER_TIP** = ``38``
 
-Left middle finger tip joint.
+Khớp đầu mút ngón giữa trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_RING_FINGER_METACARPAL:
 
@@ -433,7 +433,7 @@ Left middle finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_RING_FINGER_METACARPAL** = ``39``
 
-Left ring finger metacarpal joint.
+Khớp xương bàn ngón áp út trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_RING_FINGER_PHALANX_PROXIMAL:
 
@@ -441,7 +441,7 @@ Left ring finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_RING_FINGER_PHALANX_PROXIMAL** = ``40``
 
-Left ring finger phalanx proximal joint.
+Khớp đốt gần ngón áp út trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_RING_FINGER_PHALANX_INTERMEDIATE:
 
@@ -449,7 +449,7 @@ Left ring finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_RING_FINGER_PHALANX_INTERMEDIATE** = ``41``
 
-Left ring finger phalanx intermediate joint.
+Khớp đốt giữa ngón áp út trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_RING_FINGER_PHALANX_DISTAL:
 
@@ -457,7 +457,7 @@ Left ring finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_RING_FINGER_PHALANX_DISTAL** = ``42``
 
-Left ring finger phalanx distal joint.
+Khớp đốt xa ngón áp út trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_RING_FINGER_TIP:
 
@@ -465,7 +465,7 @@ Left ring finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_RING_FINGER_TIP** = ``43``
 
-Left ring finger tip joint.
+Khớp đầu mút ngón áp út trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_PINKY_FINGER_METACARPAL:
 
@@ -473,7 +473,7 @@ Left ring finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_PINKY_FINGER_METACARPAL** = ``44``
 
-Left pinky finger metacarpal joint.
+Khớp xương bàn ngón út trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_PINKY_FINGER_PHALANX_PROXIMAL:
 
@@ -481,7 +481,7 @@ Left pinky finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_PINKY_FINGER_PHALANX_PROXIMAL** = ``45``
 
-Left pinky finger phalanx proximal joint.
+Khớp đốt gần của ngón út bàn tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_PINKY_FINGER_PHALANX_INTERMEDIATE:
 
@@ -489,7 +489,7 @@ Left pinky finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_PINKY_FINGER_PHALANX_INTERMEDIATE** = ``46``
 
-Left pinky finger phalanx intermediate joint.
+Khớp đốt giữa của ngón út bàn tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_PINKY_FINGER_PHALANX_DISTAL:
 
@@ -497,7 +497,7 @@ Left pinky finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_PINKY_FINGER_PHALANX_DISTAL** = ``47``
 
-Left pinky finger phalanx distal joint.
+Khớp đốt xa của ngón út bàn tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_PINKY_FINGER_TIP:
 
@@ -505,7 +505,7 @@ Left pinky finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_PINKY_FINGER_TIP** = ``48``
 
-Left pinky finger tip joint.
+Khớp đầu ngón út bàn tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_HAND:
 
@@ -513,7 +513,7 @@ Left pinky finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_HAND** = ``49``
 
-Right hand joint.
+Khớp bàn tay phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_PALM:
 
@@ -521,7 +521,7 @@ Right hand joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_PALM** = ``50``
 
-Right palm joint.
+Khớp lòng bàn tay phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_WRIST:
 
@@ -529,7 +529,7 @@ Right palm joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_WRIST** = ``51``
 
-Right wrist joint.
+Khớp cổ tay phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_THUMB_METACARPAL:
 
@@ -537,7 +537,7 @@ Right wrist joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_THUMB_METACARPAL** = ``52``
 
-Right thumb metacarpal joint.
+Khớp xương bàn ngón cái phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_THUMB_PHALANX_PROXIMAL:
 
@@ -545,7 +545,7 @@ Right thumb metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_THUMB_PHALANX_PROXIMAL** = ``53``
 
-Right thumb phalanx proximal joint.
+Khớp đốt gần ngón cái phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_THUMB_PHALANX_DISTAL:
 
@@ -553,7 +553,7 @@ Right thumb phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_THUMB_PHALANX_DISTAL** = ``54``
 
-Right thumb phalanx distal joint.
+Khớp đốt xa ngón cái phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_THUMB_TIP:
 
@@ -561,7 +561,7 @@ Right thumb phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_THUMB_TIP** = ``55``
 
-Right thumb tip joint.
+Khớp đầu mút ngón cái phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_INDEX_FINGER_METACARPAL:
 
@@ -569,7 +569,7 @@ Right thumb tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_INDEX_FINGER_METACARPAL** = ``56``
 
-Right index finger metacarpal joint.
+Khớp xương bàn ngón trỏ phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_INDEX_FINGER_PHALANX_PROXIMAL:
 
@@ -577,7 +577,7 @@ Right index finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_INDEX_FINGER_PHALANX_PROXIMAL** = ``57``
 
-Right index finger phalanx proximal joint.
+Khớp đốt gần ngón trỏ phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_INDEX_FINGER_PHALANX_INTERMEDIATE:
 
@@ -585,7 +585,7 @@ Right index finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_INDEX_FINGER_PHALANX_INTERMEDIATE** = ``58``
 
-Right index finger phalanx intermediate joint.
+Khớp đốt giữa ngón trỏ phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_INDEX_FINGER_PHALANX_DISTAL:
 
@@ -593,7 +593,7 @@ Right index finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_INDEX_FINGER_PHALANX_DISTAL** = ``59``
 
-Right index finger phalanx distal joint.
+Khớp đốt xa ngón trỏ phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_INDEX_FINGER_TIP:
 
@@ -601,7 +601,7 @@ Right index finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_INDEX_FINGER_TIP** = ``60``
 
-Right index finger tip joint.
+Khớp đầu ngón trỏ phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_MIDDLE_FINGER_METACARPAL:
 
@@ -609,7 +609,7 @@ Right index finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_MIDDLE_FINGER_METACARPAL** = ``61``
 
-Right middle finger metacarpal joint.
+Khớp xương bàn ngón giữa phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_PROXIMAL:
 
@@ -617,7 +617,7 @@ Right middle finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_MIDDLE_FINGER_PHALANX_PROXIMAL** = ``62``
 
-Right middle finger phalanx proximal joint.
+Khớp đốt gần ngón giữa phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_INTERMEDIATE:
 
@@ -625,7 +625,7 @@ Right middle finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_MIDDLE_FINGER_PHALANX_INTERMEDIATE** = ``63``
 
-Right middle finger phalanx intermediate joint.
+Khớp đốt giữa ngón giữa phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_MIDDLE_FINGER_PHALANX_DISTAL:
 
@@ -633,7 +633,7 @@ Right middle finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_MIDDLE_FINGER_PHALANX_DISTAL** = ``64``
 
-Right middle finger phalanx distal joint.
+Khớp đốt xa ngón giữa phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_MIDDLE_FINGER_TIP:
 
@@ -641,7 +641,7 @@ Right middle finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_MIDDLE_FINGER_TIP** = ``65``
 
-Right middle finger tip joint.
+Khớp đầu ngón giữa phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_RING_FINGER_METACARPAL:
 
@@ -649,7 +649,7 @@ Right middle finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_RING_FINGER_METACARPAL** = ``66``
 
-Right ring finger metacarpal joint.
+Khớp xương bàn của ngón áp út bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_RING_FINGER_PHALANX_PROXIMAL:
 
@@ -657,7 +657,7 @@ Right ring finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_RING_FINGER_PHALANX_PROXIMAL** = ``67``
 
-Right ring finger phalanx proximal joint.
+Khớp đốt gần của ngón áp út bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_RING_FINGER_PHALANX_INTERMEDIATE:
 
@@ -665,7 +665,7 @@ Right ring finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_RING_FINGER_PHALANX_INTERMEDIATE** = ``68``
 
-Right ring finger phalanx intermediate joint.
+Khớp đốt giữa của ngón áp út bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_RING_FINGER_PHALANX_DISTAL:
 
@@ -673,7 +673,7 @@ Right ring finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_RING_FINGER_PHALANX_DISTAL** = ``69``
 
-Right ring finger phalanx distal joint.
+Khớp đốt xa của ngón áp út bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_RING_FINGER_TIP:
 
@@ -681,7 +681,7 @@ Right ring finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_RING_FINGER_TIP** = ``70``
 
-Right ring finger tip joint.
+Khớp đầu ngón của ngón áp út bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_PINKY_FINGER_METACARPAL:
 
@@ -689,7 +689,7 @@ Right ring finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_PINKY_FINGER_METACARPAL** = ``71``
 
-Right pinky finger metacarpal joint.
+Khớp xương bàn của ngón út bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_PINKY_FINGER_PHALANX_PROXIMAL:
 
@@ -697,7 +697,7 @@ Right pinky finger metacarpal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_PINKY_FINGER_PHALANX_PROXIMAL** = ``72``
 
-Right pinky finger phalanx proximal joint.
+Khớp đốt gần của ngón út bên phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_PINKY_FINGER_PHALANX_INTERMEDIATE:
 
@@ -705,7 +705,7 @@ Right pinky finger phalanx proximal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_PINKY_FINGER_PHALANX_INTERMEDIATE** = ``73``
 
-Right pinky finger phalanx intermediate joint.
+Khớp đốt giữa ngón út phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_PINKY_FINGER_PHALANX_DISTAL:
 
@@ -713,7 +713,7 @@ Right pinky finger phalanx intermediate joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_PINKY_FINGER_PHALANX_DISTAL** = ``74``
 
-Right pinky finger phalanx distal joint.
+Khớp đốt xa ngón út phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_PINKY_FINGER_TIP:
 
@@ -721,7 +721,7 @@ Right pinky finger phalanx distal joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_PINKY_FINGER_TIP** = ``75``
 
-Right pinky finger tip joint.
+Khớp đầu ngón út phải.
 
 .. _class_XRBodyTracker_constant_JOINT_LOWER_CHEST:
 
@@ -729,7 +729,7 @@ Right pinky finger tip joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LOWER_CHEST** = ``76``
 
-Lower chest joint.
+Khớp ngực dưới.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_SCAPULA:
 
@@ -737,7 +737,7 @@ Lower chest joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_SCAPULA** = ``77``
 
-Left scapula joint.
+Khớp xương bả vai trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_WRIST_TWIST:
 
@@ -745,7 +745,7 @@ Left scapula joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_WRIST_TWIST** = ``78``
 
-Left wrist twist joint.
+Khớp xoay cổ tay trái.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_SCAPULA:
 
@@ -753,7 +753,7 @@ Left wrist twist joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_SCAPULA** = ``79``
 
-Right scapula joint.
+Khớp xương bả vai phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_WRIST_TWIST:
 
@@ -761,7 +761,7 @@ Right scapula joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_WRIST_TWIST** = ``80``
 
-Right wrist twist joint.
+Khớp xoắn cổ tay phải.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_FOOT_TWIST:
 
@@ -769,7 +769,7 @@ Right wrist twist joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_FOOT_TWIST** = ``81``
 
-Left foot twist joint.
+Khớp xoắn bàn chân trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_HEEL:
 
@@ -777,7 +777,7 @@ Left foot twist joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_HEEL** = ``82``
 
-Left heel joint.
+Khớp gót chân trái.
 
 .. _class_XRBodyTracker_constant_JOINT_LEFT_MIDDLE_FOOT:
 
@@ -785,7 +785,7 @@ Left heel joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_LEFT_MIDDLE_FOOT** = ``83``
 
-Left middle foot joint.
+Khớp giữa bàn chân trái.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_FOOT_TWIST:
 
@@ -793,7 +793,7 @@ Left middle foot joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_FOOT_TWIST** = ``84``
 
-Right foot twist joint.
+Khớp xoắn bàn chân phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_HEEL:
 
@@ -801,7 +801,7 @@ Right foot twist joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_HEEL** = ``85``
 
-Right heel joint.
+Khớp gót chân phải.
 
 .. _class_XRBodyTracker_constant_JOINT_RIGHT_MIDDLE_FOOT:
 
@@ -809,7 +809,7 @@ Right heel joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_RIGHT_MIDDLE_FOOT** = ``86``
 
-Right middle foot joint.
+Khớp giữa bàn chân phải.
 
 .. _class_XRBodyTracker_constant_JOINT_MAX:
 
@@ -817,7 +817,7 @@ Right middle foot joint.
 
 :ref:`Joint<enum_XRBodyTracker_Joint>` **JOINT_MAX** = ``87``
 
-Represents the size of the :ref:`Joint<enum_XRBodyTracker_Joint>` enum.
+Đại diện cho kích thước của enum :ref:`Joint <enum_XRBodyTracker_Joint>`.
 
 .. rst-class:: classref-item-separator
 
@@ -827,7 +827,7 @@ Represents the size of the :ref:`Joint<enum_XRBodyTracker_Joint>` enum.
 
 .. rst-class:: classref-enumeration
 
-flags **JointFlags**: :ref:`🔗<enum_XRBodyTracker_JointFlags>`
+các cờ **JointFlags**: :ref:`🔗 <enum_XRBodyTracker_JointFlags>`
 
 .. _class_XRBodyTracker_constant_JOINT_FLAG_ORIENTATION_VALID:
 
@@ -835,7 +835,7 @@ flags **JointFlags**: :ref:`🔗<enum_XRBodyTracker_JointFlags>`
 
 :ref:`JointFlags<enum_XRBodyTracker_JointFlags>` **JOINT_FLAG_ORIENTATION_VALID** = ``1``
 
-The joint's orientation data is valid.
+Dữ liệu hướng của joint hợp lệ.
 
 .. _class_XRBodyTracker_constant_JOINT_FLAG_ORIENTATION_TRACKED:
 
@@ -843,7 +843,7 @@ The joint's orientation data is valid.
 
 :ref:`JointFlags<enum_XRBodyTracker_JointFlags>` **JOINT_FLAG_ORIENTATION_TRACKED** = ``2``
 
-The joint's orientation is actively tracked. May not be set if tracking has been temporarily lost.
+Hướng của joint đang được theo dõi. Không được đặt nếu việc theo dõi tạm thời bị mất.
 
 .. _class_XRBodyTracker_constant_JOINT_FLAG_POSITION_VALID:
 
@@ -851,7 +851,7 @@ The joint's orientation is actively tracked. May not be set if tracking has been
 
 :ref:`JointFlags<enum_XRBodyTracker_JointFlags>` **JOINT_FLAG_POSITION_VALID** = ``4``
 
-The joint's position data is valid.
+Dữ liệu vị trí của joint hợp lệ.
 
 .. _class_XRBodyTracker_constant_JOINT_FLAG_POSITION_TRACKED:
 
@@ -859,7 +859,7 @@ The joint's position data is valid.
 
 :ref:`JointFlags<enum_XRBodyTracker_JointFlags>` **JOINT_FLAG_POSITION_TRACKED** = ``8``
 
-The joint's position is actively tracked. May not be set if tracking has been temporarily lost.
+Vị trí của joint đang được theo dõi. Không được đặt nếu việc theo dõi tạm thời bị mất.
 
 .. rst-class:: classref-section-separator
 
@@ -867,8 +867,8 @@ The joint's position is actively tracked. May not be set if tracking has been te
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRBodyTracker_property_body_flags:
 
@@ -881,7 +881,7 @@ Property Descriptions
 - |void| **set_body_flags**\ (\ value\: |bitfield|\[:ref:`BodyFlags<enum_XRBodyTracker_BodyFlags>`\]\ )
 - |bitfield|\[:ref:`BodyFlags<enum_XRBodyTracker_BodyFlags>`\] **get_body_flags**\ (\ )
 
-The type of body tracking data captured.
+Loại dữ liệu theo dõi cơ thể được ghi lại.
 
 .. rst-class:: classref-item-separator
 
@@ -898,7 +898,7 @@ The type of body tracking data captured.
 - |void| **set_has_tracking_data**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_has_tracking_data**\ (\ )
 
-If ``true``, the body tracking data is valid.
+Nếu ``true``, dữ liệu theo dõi cơ thể hợp lệ.
 
 .. rst-class:: classref-section-separator
 
@@ -906,8 +906,8 @@ If ``true``, the body tracking data is valid.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRBodyTracker_method_get_joint_flags:
 
@@ -915,7 +915,7 @@ Method Descriptions
 
 |bitfield|\[:ref:`JointFlags<enum_XRBodyTracker_JointFlags>`\] **get_joint_flags**\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`\ ) |const| :ref:`🔗<class_XRBodyTracker_method_get_joint_flags>`
 
-Returns flags about the validity of the tracking data for the given body joint.
+Trả về các cờ cho biết tính hợp lệ của dữ liệu theo dõi đối với khớp cơ thể đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -927,7 +927,7 @@ Returns flags about the validity of the tracking data for the given body joint.
 
 :ref:`Transform3D<class_Transform3D>` **get_joint_transform**\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`\ ) |const| :ref:`🔗<class_XRBodyTracker_method_get_joint_transform>`
 
-Returns the transform for the given body joint.
+Trả về phép biến đổi của khớp cơ thể đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -939,7 +939,7 @@ Returns the transform for the given body joint.
 
 |void| **set_joint_flags**\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`, flags\: |bitfield|\[:ref:`JointFlags<enum_XRBodyTracker_JointFlags>`\]\ ) :ref:`🔗<class_XRBodyTracker_method_set_joint_flags>`
 
-Sets flags about the validity of the tracking data for the given body joint.
+Đặt các cờ cho biết tính hợp lệ của dữ liệu theo dõi đối với khớp cơ thể đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -951,14 +951,14 @@ Sets flags about the validity of the tracking data for the given body joint.
 
 |void| **set_joint_transform**\ (\ joint\: :ref:`Joint<enum_XRBodyTracker_Joint>`, transform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_XRBodyTracker_method_set_joint_transform>`
 
-Sets the transform for the given body joint.
+Đặt phép biến đổi cho khớp cơ thể đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

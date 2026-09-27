@@ -10,23 +10,23 @@
 GDScriptTextDocument
 ====================
 
-**Deprecated:** This class may be changed or removed in future versions.
+**Đã lỗi thời:** Lớp này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Document related language server functionality.
+Chức năng language server liên quan đến tài liệu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Provides language server functionality related to documents.
+Cung cấp chức năng language server liên quan đến tài liệu.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -50,15 +50,15 @@ Methods
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`didSave<class_GDScriptTextDocument_method_didSave>`\ (\ params\: :ref:`Variant<class_Variant>`\ )                                            |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`           | :ref:`documentLink<class_GDScriptTextDocument_method_documentLink>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )                            |
+   | :ref:`Array<class_Array>`           | :ref:`documentLink<class_GDScriptTextDocument_method_documentLink>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )這                          |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`           | :ref:`documentSymbol<class_GDScriptTextDocument_method_documentSymbol>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )                        |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`           | :ref:`foldingRange<class_GDScriptTextDocument_method_foldingRange>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )                            |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`       | :ref:`hover<class_GDScriptTextDocument_method_hover>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )                                          |
+   | :ref:`Variant<class_Variant>`       | :ref:`hover<class_GDScriptTextDocument_method_hover>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )10                                        |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`       | :ref:`nativeSymbol<class_GDScriptTextDocument_method_nativeSymbol>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )                            |
+   | :ref:`Variant<class_Variant>`       | :ref:`nativeSymbol<class_GDScriptTextDocument_method_nativeSymbol>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )11                          |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Variant<class_Variant>`       | :ref:`prepareRename<class_GDScriptTextDocument_method_prepareRename>`\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ )                          |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -81,8 +81,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GDScriptTextDocument_method_codeLens:
 
@@ -90,7 +90,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **codeLens**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_codeLens>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **colorPresentation**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_colorPresentation>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **completion**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_completion>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **declaration**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_declaration>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **definition**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_definition>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Method Descriptions
 
 |void| **didChange**\ (\ params\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_didChange>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Method Descriptions
 
 |void| **didClose**\ (\ params\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_didClose>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ Method Descriptions
 
 |void| **didOpen**\ (\ params\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_didOpen>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ Method Descriptions
 
 |void| **didSave**\ (\ params\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_didSave>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **documentLink**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_documentLink>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **documentSymbol**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_documentSymbol>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **foldingRange**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_foldingRange>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -234,7 +234,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **hover**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_hover>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **nativeSymbol**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_nativeSymbol>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -258,7 +258,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **prepareRename**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_prepareRename>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **references**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_references>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **rename**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_rename>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -294,7 +294,7 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **resolve**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_resolve>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -306,7 +306,7 @@ Method Descriptions
 
 |void| **show_native_symbol_in_editor**\ (\ symbol_id\: :ref:`String<class_String>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_show_native_symbol_in_editor>`
 
-**Deprecated:** Use :ref:`ScriptEditor.goto_help()<class_ScriptEditor_method_goto_help>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`ScriptEditor.goto_help()<class_ScriptEditor_method_goto_help>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -318,7 +318,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **signatureHelp**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_signatureHelp>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -330,14 +330,14 @@ Method Descriptions
 
 |void| **willSaveWaitUntil**\ (\ params\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GDScriptTextDocument_method_willSaveWaitUntil>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến những tác động không mong muốn. Hãy kết nối với server qua TCP, như một language server client thông thường.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

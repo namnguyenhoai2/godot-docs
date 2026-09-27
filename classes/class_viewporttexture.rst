@@ -10,48 +10,48 @@
 ViewportTexture
 ===============
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides the content of a :ref:`Viewport<class_Viewport>` as a dynamic texture.
+Cung cấp nội dung của một :ref:`Viewport<class_Viewport>` dưới dạng texture động.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A **ViewportTexture** provides the content of a :ref:`Viewport<class_Viewport>` as a dynamic :ref:`Texture2D<class_Texture2D>`. This can be used to combine the rendering of :ref:`Control<class_Control>`, :ref:`Node2D<class_Node2D>` and :ref:`Node3D<class_Node3D>` nodes. For example, you can use this texture to display a 3D scene inside a :ref:`TextureRect<class_TextureRect>`, or a 2D overlay in a :ref:`Sprite3D<class_Sprite3D>`.
+Một **ViewportTexture** cung cấp nội dung của một :ref:`Viewport<class_Viewport>` dưới dạng :ref:`Texture2D<class_Texture2D>` động. Điều này có thể được dùng để kết hợp việc kết xuất các node :ref:`Control<class_Control>`, :ref:`Node2D<class_Node2D>` và :ref:`Node3D<class_Node3D>`. Ví dụ: bạn có thể dùng texture này để hiển thị một cảnh 3D bên trong một :ref:`TextureRect<class_TextureRect>`, hoặc một lớp phủ 2D trong một :ref:`Sprite3D<class_Sprite3D>`.
 
-To get a **ViewportTexture** in code, use the :ref:`Viewport.get_texture()<class_Viewport_method_get_texture>` method on the target viewport.
+Để lấy một **ViewportTexture** trong code, hãy sử dụng phương thức :ref:`Viewport.get_texture()<class_Viewport_method_get_texture>` trên viewport đích.
 
-\ **Note:** A **ViewportTexture** is always local to its scene (see :ref:`Resource.resource_local_to_scene<class_Resource_property_resource_local_to_scene>`). If the scene root is not ready, it may return incorrect data (see :ref:`Node.ready<class_Node_signal_ready>`).
+\ **Lưu ý:** Một **ViewportTexture** luôn cục bộ trong scene của nó (xem :ref:`Resource.resource_local_to_scene<class_Resource_property_resource_local_to_scene>`). Nếu scene root chưa sẵn sàng, nó có thể trả về dữ liệu không chính xác (xem :ref:`Node.ready<class_Node_signal_ready>`).
 
-\ **Note:** Instantiating scenes containing a high-resolution **ViewportTexture** may cause noticeable stutter.
+\ **Lưu ý:** Việc khởi tạo các scene chứa **ViewportTexture** có độ phân giải cao có thể gây ra hiện tượng giật đáng kể.
 
-\ **Note:** When using a :ref:`Viewport<class_Viewport>` with :ref:`Viewport.use_hdr_2d<class_Viewport_property_use_hdr_2d>` set to ``true``, the returned texture will be an HDR image that uses linear encoding. This may look darker than normal when displayed directly on screen. To convert to nonlinear sRGB encoding, you can do the following:
+\ **Lưu ý:** Khi sử dụng một :ref:`Viewport<class_Viewport>` với :ref:`Viewport.use_hdr_2d<class_Viewport_property_use_hdr_2d>` được đặt thành ``true``, texture trả về sẽ là một hình ảnh HDR sử dụng encoding tuyến tính. Khi được hiển thị trực tiếp trên màn hình, hình ảnh này có thể trông tối hơn bình thường. Để chuyển sang encoding sRGB phi tuyến, bạn có thể thực hiện như sau:
 
 ::
 
     img.convert(Image.FORMAT_RGBA8)
     img.linear_to_srgb()
 
-\ **Note:** Some nodes such as :ref:`Decal<class_Decal>`, :ref:`Light3D<class_Light3D>`, and :ref:`PointLight2D<class_PointLight2D>` do not support using **ViewportTexture** directly. To use texture data from a **ViewportTexture** in these nodes, you need to create an :ref:`ImageTexture<class_ImageTexture>` by calling :ref:`Texture2D.get_image()<class_Texture2D_method_get_image>` on the **ViewportTexture** and passing the result to :ref:`ImageTexture.create_from_image()<class_ImageTexture_method_create_from_image>`. This conversion is a slow operation, so it should not be performed every frame.
+\ **Lưu ý:** Một số node như :ref:`Decal<class_Decal>`, :ref:`Light3D<class_Light3D>` và :ref:`PointLight2D<class_PointLight2D>` không hỗ trợ sử dụng trực tiếp **ViewportTexture**. Để sử dụng dữ liệu texture từ một **ViewportTexture** trong các node này, bạn cần tạo một :ref:`ImageTexture<class_ImageTexture>` bằng cách gọi :ref:`Texture2D.get_image()<class_Texture2D_method_get_image>` trên **ViewportTexture** và truyền kết quả vào :ref:`ImageTexture.create_from_image()<class_ImageTexture_method_create_from_image>`. Đây là một thao tác chuyển đổi chậm, vì vậy không nên thực hiện thao tác này ở mỗi frame.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Tutorial
+--------
 
-- `GUI in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2807>`__
+- `Bản minh họa GUI trong 3D Viewport <https://godotengine.org/asset-library/asset/2807>`__
 
-- `3D in 2D Viewport Demo <https://godotengine.org/asset-library/asset/2804>`__
+- `Bản minh họa 3D trong 2D Viewport <https://godotengine.org/asset-library/asset/2804>`__
 
-- `2D in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2803>`__
+- `Bản minh họa 2D trong 3D Viewport <https://godotengine.org/asset-library/asset/2803>`__
 
-- `3D Resolution Scaling Demo <https://godotengine.org/asset-library/asset/2805>`__
+- `Bản minh họa Scaling độ phân giải 3D <https://godotengine.org/asset-library/asset/2805>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -67,8 +67,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ViewportTexture_property_viewport_path:
 
@@ -81,16 +81,16 @@ Property Descriptions
 - |void| **set_viewport_path_in_scene**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_viewport_path_in_scene**\ (\ )
 
-The path to the :ref:`Viewport<class_Viewport>` node to display. This is relative to the local scene root (see :ref:`Resource.get_local_scene()<class_Resource_method_get_local_scene>`), **not** to the nodes that use this texture.
+Đường dẫn đến node :ref:`Viewport<class_Viewport>` cần hiển thị. Đường dẫn này tương đối so với scene root cục bộ (xem :ref:`Resource.get_local_scene()<class_Resource_method_get_local_scene>`), **không** tương đối so với các node sử dụng texture này.
 
-\ **Note:** In the editor, this path is automatically updated when the target viewport or one of its ancestors is renamed or moved. At runtime, this path may not automatically update if the scene root cannot be found.
+\ **Lưu ý:** Trong trình chỉnh sửa, đường dẫn này được tự động cập nhật khi viewport đích hoặc một trong các node cha của nó được đổi tên hoặc di chuyển. Khi runtime, đường dẫn này có thể không được tự động cập nhật nếu không tìm thấy scene root.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

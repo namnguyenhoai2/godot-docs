@@ -10,91 +10,91 @@
 GraphEdit
 =========
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-An editor for graph-like structures, using :ref:`GraphNode<class_GraphNode>`\ s.
+Một trình chỉnh sửa dành cho các cấu trúc dạng đồ thị, sử dụng :ref:`GraphNode<class_GraphNode>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**GraphEdit** provides tools for creation, manipulation, and display of various graphs. Its main purpose in the engine is to power the visual programming systems, such as visual shaders, but it is also available for use in user projects.
+**GraphEdit** cung cấp các công cụ để tạo, thao tác và hiển thị nhiều loại đồ thị khác nhau. Mục đích chính của nó trong engine là cung cấp năng lực cho các hệ thống lập trình trực quan, chẳng hạn như visual shader, nhưng nó cũng có thể được sử dụng trong các dự án của người dùng.
 
-\ **GraphEdit** by itself is only an empty container, representing an infinite grid where :ref:`GraphNode<class_GraphNode>`\ s can be placed. Each :ref:`GraphNode<class_GraphNode>` represents a node in the graph, a single unit of data in the connected scheme. **GraphEdit**, in turn, helps to control various interactions with nodes and between nodes. When the user attempts to connect, disconnect, or delete a :ref:`GraphNode<class_GraphNode>`, a signal is emitted in the **GraphEdit**, but no action is taken by default. It is the responsibility of the programmer utilizing this control to implement the necessary logic to determine how each request should be handled.
+Bản thân \ **GraphEdit** chỉ là một vùng chứa rỗng, đại diện cho một lưới vô hạn, nơi các :ref:`GraphNode<class_GraphNode>`\  có thể được đặt. Mỗi :ref:`GraphNode<class_GraphNode>` đại diện cho một node trong đồ thị, một đơn vị dữ liệu riêng lẻ trong lược đồ được kết nối. Đến lượt mình, **GraphEdit** giúp kiểm soát nhiều tương tác khác nhau với các node và giữa các node. Khi người dùng cố gắng kết nối, ngắt kết nối hoặc xóa một :ref:`GraphNode<class_GraphNode>`, một signal được phát trong **GraphEdit**, nhưng theo mặc định không có hành động nào được thực hiện. Lập trình viên sử dụng control này có trách nhiệm triển khai logic cần thiết để xác định cách xử lý từng yêu cầu.
 
-\ **Performance:** It is greatly advised to enable low-processor usage mode (see :ref:`OS.low_processor_usage_mode<class_OS_property_low_processor_usage_mode>`) when using GraphEdits.
+\ **Hiệu năng:** Bạn nên bật chế độ sử dụng bộ xử lý thấp (xem :ref:`OS.low_processor_usage_mode<class_OS_property_low_processor_usage_mode>`) khi sử dụng GraphEdits.
 
-\ **Note:** Keep in mind that :ref:`Node.get_children()<class_Node_method_get_children>` will also return the connection layer node named ``_connection_layer`` due to technical limitations. This behavior may change in future releases.
+\ **Lưu ý:** Hãy nhớ rằng :ref:`Node.get_children()<class_Node_method_get_children>` cũng sẽ trả về node của connection layer có tên ``_connection_layer`` do các hạn chế kỹ thuật. Hành vi này có thể thay đổi trong các bản phát hành sau.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | clip_contents                                                                              | ``true`` (overrides :ref:`Control<class_Control_property_clip_contents>`) |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`connection_lines_antialiased<class_GraphEdit_property_connection_lines_antialiased>` | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`connection_lines_curvature<class_GraphEdit_property_connection_lines_curvature>`     | ``0.5``                                                                   |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`connection_lines_thickness<class_GraphEdit_property_connection_lines_thickness>`     | ``4.0``                                                                   |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`connections<class_GraphEdit_property_connections>`                                   | ``[]``                                                                    |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                         | focus_mode                                                                                 | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)       |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`GridPattern<enum_GraphEdit_GridPattern>`                   | :ref:`grid_pattern<class_GraphEdit_property_grid_pattern>`                                 | ``0``                                                                     |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`minimap_enabled<class_GraphEdit_property_minimap_enabled>`                           | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`minimap_opacity<class_GraphEdit_property_minimap_opacity>`                           | ``0.65``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                    | :ref:`minimap_size<class_GraphEdit_property_minimap_size>`                                 | ``Vector2(240, 160)``                                                     |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`PanningScheme<enum_GraphEdit_PanningScheme>`               | :ref:`panning_scheme<class_GraphEdit_property_panning_scheme>`                             | ``0``                                                                     |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`right_disconnects<class_GraphEdit_property_right_disconnects>`                       | ``false``                                                                 |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                    | :ref:`scroll_offset<class_GraphEdit_property_scroll_offset>`                               | ``Vector2(0, 0)``                                                         |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`show_arrange_button<class_GraphEdit_property_show_arrange_button>`                   | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`show_grid<class_GraphEdit_property_show_grid>`                                       | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`show_grid_buttons<class_GraphEdit_property_show_grid_buttons>`                       | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`show_menu<class_GraphEdit_property_show_menu>`                                       | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`show_minimap_button<class_GraphEdit_property_show_minimap_button>`                   | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`show_zoom_buttons<class_GraphEdit_property_show_zoom_buttons>`                       | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`show_zoom_label<class_GraphEdit_property_show_zoom_label>`                           | ``false``                                                                 |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                            | :ref:`snapping_distance<class_GraphEdit_property_snapping_distance>`                       | ``20``                                                                    |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`snapping_enabled<class_GraphEdit_property_snapping_enabled>`                         | ``true``                                                                  |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                              | :ref:`type_names<class_GraphEdit_property_type_names>`                                     | ``{}``                                                                    |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`zoom<class_GraphEdit_property_zoom>`                                                 | ``1.0``                                                                   |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`zoom_max<class_GraphEdit_property_zoom_max>`                                         | ``2.0736003``                                                             |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`zoom_min<class_GraphEdit_property_zoom_min>`                                         | ``0.23256795``                                                            |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`zoom_step<class_GraphEdit_property_zoom_step>`                                       | ``1.2``                                                                   |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | clip_contents                                                                              | ``true`` (ghi đè :ref:`Control<class_Control_property_clip_contents>`) |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`connection_lines_antialiased<class_GraphEdit_property_connection_lines_antialiased>` | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`connection_lines_curvature<class_GraphEdit_property_connection_lines_curvature>`     | ``0.5``                                                                |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`connection_lines_thickness<class_GraphEdit_property_connection_lines_thickness>`     | ``4.0``                                                                |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] | :ref:`connections<class_GraphEdit_property_connections>`                                   | ``[]``                                                                 |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`                        | focus_mode                                                                                 | ``2`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)       |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`GridPattern <enum_GraphEdit_GridPattern>`                  | :ref:`grid_pattern<class_GraphEdit_property_grid_pattern>`                                 | ``0``                                                                  |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`minimap_enabled<class_GraphEdit_property_minimap_enabled>`                           | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`minimap_opacity<class_GraphEdit_property_minimap_opacity>`                           | ``0.65``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                    | :ref:`minimap_size<class_GraphEdit_property_minimap_size>`                                 | ``Vector2(240, 160)``                                                  |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`PanningScheme <enum_GraphEdit_PanningScheme>`              | :ref:`panning_scheme<class_GraphEdit_property_panning_scheme>`                             | ``0``                                                                  |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`right_disconnects<class_GraphEdit_property_right_disconnects>`                       | ``false``                                                              |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                    | :ref:`scroll_offset<class_GraphEdit_property_scroll_offset>`                               | ``Vector2(0, 0)``                                                      |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`show_arrange_button<class_GraphEdit_property_show_arrange_button>`                   | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`show_grid<class_GraphEdit_property_show_grid>`                                       | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`show_grid_buttons<class_GraphEdit_property_show_grid_buttons>`                       | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`show_menu<class_GraphEdit_property_show_menu>`                                       | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`show_minimap_button<class_GraphEdit_property_show_minimap_button>`                   | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`show_zoom_buttons<class_GraphEdit_property_show_zoom_buttons>`                       | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`show_zoom_label<class_GraphEdit_property_show_zoom_label>`                           | ``false``                                                              |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`snapping_distance<class_GraphEdit_property_snapping_distance>`                       | ``20``                                                                 |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`snapping_enabled<class_GraphEdit_property_snapping_enabled>`                         | ``true``                                                               |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                              | :ref:`type_names<class_GraphEdit_property_type_names>`                                     | ``{}``                                                                 |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`zoom<class_GraphEdit_property_zoom>`                                                 | ``1.0``                                                                |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`zoom_max<class_GraphEdit_property_zoom_max>`                                         | ``2.0736003``                                                          |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`zoom_min<class_GraphEdit_property_zoom_min>`                                         | ``0.23256795``                                                         |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`zoom_step<class_GraphEdit_property_zoom_step>`                                       | ``1.2``                                                                |
+   +------------------------------------------------------------------+--------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -120,7 +120,7 @@ Methods
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`clear_connections<class_GraphEdit_method_clear_connections>`\ (\ )                                                                                                                                                                                                                     |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`connect_node<class_GraphEdit_method_connect_node>`\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`, keep_alive\: :ref:`bool<class_bool>` = false\ )             |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`connect_node<class_GraphEdit_method_connect_node>`\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`, keep_alive\: :ref:`bool<class_bool>` = false\ )             |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`detach_graph_element_from_frame<class_GraphEdit_method_detach_graph_element_from_frame>`\ (\ element\: :ref:`StringName<class_StringName>`\ )                                                                                                                                          |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -161,7 +161,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -217,8 +217,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_GraphEdit_signal_begin_node_move:
 
@@ -226,7 +226,7 @@ Signals
 
 **begin_node_move**\ (\ ) :ref:`🔗<class_GraphEdit_signal_begin_node_move>`
 
-Emitted at the beginning of a :ref:`GraphElement<class_GraphElement>`'s movement.
+Được phát ra khi bắt đầu chuyển động của :ref:`GraphElement<class_GraphElement>`.
 
 .. rst-class:: classref-item-separator
 
@@ -238,7 +238,7 @@ Emitted at the beginning of a :ref:`GraphElement<class_GraphElement>`'s movement
 
 **connection_drag_ended**\ (\ ) :ref:`🔗<class_GraphEdit_signal_connection_drag_ended>`
 
-Emitted at the end of a connection drag.
+Được phát ra khi kết thúc thao tác kéo kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -250,7 +250,7 @@ Emitted at the end of a connection drag.
 
 **connection_drag_started**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, is_output\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_GraphEdit_signal_connection_drag_started>`
 
-Emitted at the beginning of a connection drag.
+Được phát ra khi bắt đầu thao tác kéo kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -262,7 +262,7 @@ Emitted at the beginning of a connection drag.
 
 **connection_from_empty**\ (\ to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`, release_position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphEdit_signal_connection_from_empty>`
 
-Emitted when user drags a connection from an input port into the empty space of the graph.
+Được phát ra khi người dùng kéo một kết nối từ một cổng đầu vào vào khoảng trống của đồ thị.
 
 .. rst-class:: classref-item-separator
 
@@ -274,7 +274,7 @@ Emitted when user drags a connection from an input port into the empty space of 
 
 **connection_request**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_signal_connection_request>`
 
-Emitted to the GraphEdit when the connection between the ``from_port`` of the ``from_node`` :ref:`GraphNode<class_GraphNode>` and the ``to_port`` of the ``to_node`` :ref:`GraphNode<class_GraphNode>` is attempted to be created.
+Được phát ra tới GraphEdit khi cố gắng tạo kết nối giữa ``from_port`` của ``from_node`` :ref:`GraphNode<class_GraphNode>` và ``to_port`` của ``to_node`` :ref:`GraphNode<class_GraphNode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -286,7 +286,7 @@ Emitted to the GraphEdit when the connection between the ``from_port`` of the ``
 
 **connection_to_empty**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, release_position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphEdit_signal_connection_to_empty>`
 
-Emitted when user drags a connection from an output port into the empty space of the graph.
+Được phát ra khi người dùng kéo một connection từ một output port vào vùng trống của graph.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ Emitted when user drags a connection from an output port into the empty space of
 
 **copy_nodes_request**\ (\ ) :ref:`🔗<class_GraphEdit_signal_copy_nodes_request>`
 
-Emitted when this **GraphEdit** captures a ``ui_copy`` action (:kbd:`Ctrl + C` by default). In general, this signal indicates that the selected :ref:`GraphElement<class_GraphElement>`\ s should be copied.
+Được phát ra khi **GraphEdit** này bắt một hành động ``ui_copy`` (:kbd:`Ctrl + C` theo mặc định). Nhìn chung, signal này cho biết các :ref:`GraphElement<class_GraphElement>`\ s đã chọn sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -310,7 +310,7 @@ Emitted when this **GraphEdit** captures a ``ui_copy`` action (:kbd:`Ctrl + C` b
 
 **cut_nodes_request**\ (\ ) :ref:`🔗<class_GraphEdit_signal_cut_nodes_request>`
 
-Emitted when this **GraphEdit** captures a ``ui_cut`` action (:kbd:`Ctrl + X` by default). In general, this signal indicates that the selected :ref:`GraphElement<class_GraphElement>`\ s should be cut.
+Được phát ra khi **GraphEdit** này bắt một hành động ``ui_cut`` (:kbd:`Ctrl + X` theo mặc định). Nhìn chung, signal này cho biết các :ref:`GraphElement<class_GraphElement>`\ s đã chọn sẽ được cắt.
 
 .. rst-class:: classref-item-separator
 
@@ -322,9 +322,9 @@ Emitted when this **GraphEdit** captures a ``ui_cut`` action (:kbd:`Ctrl + X` by
 
 **delete_nodes_request**\ (\ nodes\: :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\]\ ) :ref:`🔗<class_GraphEdit_signal_delete_nodes_request>`
 
-Emitted when this **GraphEdit** captures a ``ui_graph_delete`` action (:kbd:`Delete` by default).
+Được phát ra khi **GraphEdit** này bắt một hành động ``ui_graph_delete`` (:kbd:`Delete` theo mặc định).
 
-\ ``nodes`` is an array of node names that should be removed. These usually include all selected nodes.
+\ ``nodes`` là một mảng chứa tên các node cần xóa. Các node này thường bao gồm tất cả node đã chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -336,7 +336,7 @@ Emitted when this **GraphEdit** captures a ``ui_graph_delete`` action (:kbd:`Del
 
 **disconnection_request**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_signal_disconnection_request>`
 
-Emitted to the GraphEdit when the connection between ``from_port`` of ``from_node`` :ref:`GraphNode<class_GraphNode>` and ``to_port`` of ``to_node`` :ref:`GraphNode<class_GraphNode>` is attempted to be removed.
+Được phát ra tới GraphEdit khi có yêu cầu xóa connection giữa ``from_port`` của ``from_node`` :ref:`GraphNode<class_GraphNode>` và ``to_port`` của ``to_node`` :ref:`GraphNode<class_GraphNode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -348,7 +348,7 @@ Emitted to the GraphEdit when the connection between ``from_port`` of ``from_nod
 
 **duplicate_nodes_request**\ (\ ) :ref:`🔗<class_GraphEdit_signal_duplicate_nodes_request>`
 
-Emitted when this **GraphEdit** captures a ``ui_graph_duplicate`` action (:kbd:`Ctrl + D` by default). In general, this signal indicates that the selected :ref:`GraphElement<class_GraphElement>`\ s should be duplicated.
+Được phát ra khi **GraphEdit** này bắt một hành động ``ui_graph_duplicate`` (:kbd:`Ctrl + D` theo mặc định). Nhìn chung, signal này cho biết các :ref:`GraphElement<class_GraphElement>`\ s đã chọn sẽ được nhân bản.
 
 .. rst-class:: classref-item-separator
 
@@ -360,7 +360,7 @@ Emitted when this **GraphEdit** captures a ``ui_graph_duplicate`` action (:kbd:`
 
 **end_node_move**\ (\ ) :ref:`🔗<class_GraphEdit_signal_end_node_move>`
 
-Emitted at the end of a :ref:`GraphElement<class_GraphElement>`'s movement.
+Được phát ra khi kết thúc chuyển động của :ref:`GraphElement<class_GraphElement>`.
 
 .. rst-class:: classref-item-separator
 
@@ -372,7 +372,7 @@ Emitted at the end of a :ref:`GraphElement<class_GraphElement>`'s movement.
 
 **frame_rect_changed**\ (\ frame\: :ref:`GraphFrame<class_GraphFrame>`, new_rect\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_GraphEdit_signal_frame_rect_changed>`
 
-Emitted when the :ref:`GraphFrame<class_GraphFrame>` ``frame`` is resized to ``new_rect``.
+Được phát ra khi ``frame`` :ref:`GraphFrame<class_GraphFrame>` được thay đổi kích thước thành ``new_rect``.
 
 .. rst-class:: classref-item-separator
 
@@ -384,9 +384,9 @@ Emitted when the :ref:`GraphFrame<class_GraphFrame>` ``frame`` is resized to ``n
 
 **graph_elements_linked_to_frame_request**\ (\ elements\: :ref:`Array<class_Array>`, frame\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GraphEdit_signal_graph_elements_linked_to_frame_request>`
 
-Emitted when one or more :ref:`GraphElement<class_GraphElement>`\ s are dropped onto the :ref:`GraphFrame<class_GraphFrame>` named ``frame``, when they were not previously attached to any other one.
+Được phát ra khi một hoặc nhiều :ref:`GraphElement<class_GraphElement>`\ s được thả vào :ref:`GraphFrame<class_GraphFrame>` có tên ``frame``, trong trường hợp trước đó chúng chưa được gắn vào bất kỳ đối tượng nào khác.
 
-\ ``elements`` is an array of :ref:`GraphElement<class_GraphElement>`\ s to be attached.
+\ ``elements`` là một mảng gồm các :ref:`GraphElement<class_GraphElement>`\ s cần được gắn vào.
 
 .. rst-class:: classref-item-separator
 
@@ -398,7 +398,7 @@ Emitted when one or more :ref:`GraphElement<class_GraphElement>`\ s are dropped 
 
 **node_deselected**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_GraphEdit_signal_node_deselected>`
 
-Emitted when the given :ref:`GraphElement<class_GraphElement>` node is deselected.
+Được phát ra khi node :ref:`GraphElement<class_GraphElement>` đã cho bị bỏ chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -410,7 +410,7 @@ Emitted when the given :ref:`GraphElement<class_GraphElement>` node is deselecte
 
 **node_selected**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_GraphEdit_signal_node_selected>`
 
-Emitted when the given :ref:`GraphElement<class_GraphElement>` node is selected.
+Được phát ra khi node :ref:`GraphElement<class_GraphElement>` đã cho được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -422,7 +422,7 @@ Emitted when the given :ref:`GraphElement<class_GraphElement>` node is selected.
 
 **paste_nodes_request**\ (\ ) :ref:`🔗<class_GraphEdit_signal_paste_nodes_request>`
 
-Emitted when this **GraphEdit** captures a ``ui_paste`` action (:kbd:`Ctrl + V` by default). In general, this signal indicates that previously copied :ref:`GraphElement<class_GraphElement>`\ s should be pasted.
+Được phát ra khi **GraphEdit** này bắt một hành động ``ui_paste`` (:kbd:`Ctrl + V` theo mặc định). Nhìn chung, signal này cho biết các :ref:`GraphElement<class_GraphElement>`\ s đã sao chép trước đó sẽ được dán.
 
 .. rst-class:: classref-item-separator
 
@@ -434,7 +434,7 @@ Emitted when this **GraphEdit** captures a ``ui_paste`` action (:kbd:`Ctrl + V` 
 
 **popup_request**\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphEdit_signal_popup_request>`
 
-Emitted when a popup is requested. Happens on right-clicking in the GraphEdit. ``at_position`` is the position of the mouse pointer when the signal is sent.
+Được phát ra khi yêu cầu hiển thị popup. Điều này xảy ra khi nhấp chuột phải trong GraphEdit. ``at_position`` là vị trí của con trỏ chuột tại thời điểm signal được gửi.
 
 .. rst-class:: classref-item-separator
 
@@ -446,7 +446,7 @@ Emitted when a popup is requested. Happens on right-clicking in the GraphEdit. `
 
 **scroll_offset_changed**\ (\ offset\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphEdit_signal_scroll_offset_changed>`
 
-Emitted when the scroll offset is changed by the user. It will not be emitted when changed in code.
+Được phát ra khi người dùng thay đổi độ lệch cuộn. Signal này sẽ không được phát ra khi thay đổi bằng code.
 
 .. rst-class:: classref-section-separator
 
@@ -454,14 +454,14 @@ Emitted when the scroll offset is changed by the user. It will not be emitted wh
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_GraphEdit_PanningScheme:
 
 .. rst-class:: classref-enumeration
 
-enum **PanningScheme**: :ref:`🔗<enum_GraphEdit_PanningScheme>`
+enum **PanningScheme**: :ref:`🔗 <enum_GraphEdit_PanningScheme>`
 
 .. _class_GraphEdit_constant_SCROLL_ZOOMS:
 
@@ -469,7 +469,7 @@ enum **PanningScheme**: :ref:`🔗<enum_GraphEdit_PanningScheme>`
 
 :ref:`PanningScheme<enum_GraphEdit_PanningScheme>` **SCROLL_ZOOMS** = ``0``
 
-:kbd:`Mouse Wheel` will zoom, :kbd:`Ctrl + Mouse Wheel` will move the view.
+:kbd:`Mouse Wheel` sẽ thu phóng, :kbd:`Ctrl + Mouse Wheel` sẽ di chuyển chế độ xem.
 
 .. _class_GraphEdit_constant_SCROLL_PANS:
 
@@ -477,7 +477,7 @@ enum **PanningScheme**: :ref:`🔗<enum_GraphEdit_PanningScheme>`
 
 :ref:`PanningScheme<enum_GraphEdit_PanningScheme>` **SCROLL_PANS** = ``1``
 
-:kbd:`Mouse Wheel` will move the view, :kbd:`Ctrl + Mouse Wheel` will zoom.
+:kbd:`Mouse Wheel` sẽ di chuyển chế độ xem, :kbd:`Ctrl + Mouse Wheel` sẽ thu phóng.
 
 .. rst-class:: classref-item-separator
 
@@ -487,7 +487,7 @@ enum **PanningScheme**: :ref:`🔗<enum_GraphEdit_PanningScheme>`
 
 .. rst-class:: classref-enumeration
 
-enum **GridPattern**: :ref:`🔗<enum_GraphEdit_GridPattern>`
+enum **GridPattern**: :ref:`🔗 <enum_GraphEdit_GridPattern>`
 
 .. _class_GraphEdit_constant_GRID_PATTERN_LINES:
 
@@ -495,7 +495,7 @@ enum **GridPattern**: :ref:`🔗<enum_GraphEdit_GridPattern>`
 
 :ref:`GridPattern<enum_GraphEdit_GridPattern>` **GRID_PATTERN_LINES** = ``0``
 
-Draw the grid using solid lines.
+Vẽ lưới bằng các đường liền nét.
 
 .. _class_GraphEdit_constant_GRID_PATTERN_DOTS:
 
@@ -503,7 +503,7 @@ Draw the grid using solid lines.
 
 :ref:`GridPattern<enum_GraphEdit_GridPattern>` **GRID_PATTERN_DOTS** = ``1``
 
-Draw the grid using dots.
+Vẽ lưới bằng các dấu chấm.
 
 .. rst-class:: classref-section-separator
 
@@ -511,8 +511,8 @@ Draw the grid using dots.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GraphEdit_property_connection_lines_antialiased:
 
@@ -525,7 +525,7 @@ Property Descriptions
 - |void| **set_connection_lines_antialiased**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_connection_lines_antialiased**\ (\ )
 
-If ``true``, the lines between nodes will use antialiasing.
+Nếu ``true``, các đường giữa các node sẽ sử dụng antialiasing.
 
 .. rst-class:: classref-item-separator
 
@@ -542,7 +542,7 @@ If ``true``, the lines between nodes will use antialiasing.
 - |void| **set_connection_lines_curvature**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_connection_lines_curvature**\ (\ )
 
-The curvature of the lines between the nodes. 0 results in straight lines.
+Độ cong của các đường giữa các node. Giá trị 0 tạo ra các đường thẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -559,7 +559,7 @@ The curvature of the lines between the nodes. 0 results in straight lines.
 - |void| **set_connection_lines_thickness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_connection_lines_thickness**\ (\ )
 
-The thickness of the lines between the nodes.
+Độ dày của các đường giữa các node.
 
 .. rst-class:: classref-item-separator
 
@@ -576,9 +576,9 @@ The thickness of the lines between the nodes.
 - |void| **set_connections**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_connection_list**\ (\ )
 
-The connections between :ref:`GraphNode<class_GraphNode>`\ s.
+Các kết nối giữa :ref:`GraphNode<class_GraphNode>`\ s.
 
-A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form of:
+Một connection được biểu diễn dưới dạng :ref:`Dictionary<class_Dictionary>` theo dạng:
 
 ::
 
@@ -590,7 +590,7 @@ A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form
         keep_alive: bool
     }
 
-Connections with ``keep_alive`` set to ``false`` may be deleted automatically if invalid during a redraw.
+Các connection có ``keep_alive`` được đặt thành ``false`` có thể tự động bị xóa nếu không hợp lệ trong quá trình redraw.
 
 .. rst-class:: classref-item-separator
 
@@ -607,7 +607,7 @@ Connections with ``keep_alive`` set to ``false`` may be deleted automatically if
 - |void| **set_grid_pattern**\ (\ value\: :ref:`GridPattern<enum_GraphEdit_GridPattern>`\ )
 - :ref:`GridPattern<enum_GraphEdit_GridPattern>` **get_grid_pattern**\ (\ )
 
-The pattern used for drawing the grid.
+Mẫu được sử dụng để vẽ lưới.
 
 .. rst-class:: classref-item-separator
 
@@ -624,7 +624,7 @@ The pattern used for drawing the grid.
 - |void| **set_minimap_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_minimap_enabled**\ (\ )
 
-If ``true``, the minimap is visible.
+Nếu ``true``, minimap sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -641,7 +641,7 @@ If ``true``, the minimap is visible.
 - |void| **set_minimap_opacity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_minimap_opacity**\ (\ )
 
-The opacity of the minimap rectangle.
+Độ mờ của hình chữ nhật minimap.
 
 .. rst-class:: classref-item-separator
 
@@ -658,7 +658,7 @@ The opacity of the minimap rectangle.
 - |void| **set_minimap_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_minimap_size**\ (\ )
 
-The size of the minimap rectangle. The map itself is based on the size of the grid area and is scaled to fit this rectangle.
+Kích thước của hình chữ nhật minimap. Bản đồ được xây dựng dựa trên kích thước của vùng lưới và được thu phóng để vừa với hình chữ nhật này.
 
 .. rst-class:: classref-item-separator
 
@@ -675,7 +675,7 @@ The size of the minimap rectangle. The map itself is based on the size of the gr
 - |void| **set_panning_scheme**\ (\ value\: :ref:`PanningScheme<enum_GraphEdit_PanningScheme>`\ )
 - :ref:`PanningScheme<enum_GraphEdit_PanningScheme>` **get_panning_scheme**\ (\ )
 
-Defines the control scheme for panning with mouse wheel.
+Xác định control scheme để pan bằng con lăn chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -692,7 +692,7 @@ Defines the control scheme for panning with mouse wheel.
 - |void| **set_right_disconnects**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_right_disconnects_enabled**\ (\ )
 
-If ``true``, enables disconnection of existing connections in the GraphEdit by dragging the right end.
+Nếu ``true``, cho phép ngắt kết nối các kết nối hiện có trong GraphEdit bằng cách kéo đầu bên phải.
 
 .. rst-class:: classref-item-separator
 
@@ -709,7 +709,7 @@ If ``true``, enables disconnection of existing connections in the GraphEdit by d
 - |void| **set_scroll_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scroll_offset**\ (\ )
 
-The scroll offset.
+Độ lệch cuộn.
 
 .. rst-class:: classref-item-separator
 
@@ -726,7 +726,7 @@ The scroll offset.
 - |void| **set_show_arrange_button**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_arrange_button**\ (\ )
 
-If ``true``, the button to automatically arrange graph nodes is visible.
+Nếu ``true``, nút tự động sắp xếp các node trong graph sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -743,7 +743,7 @@ If ``true``, the button to automatically arrange graph nodes is visible.
 - |void| **set_show_grid**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_grid**\ (\ )
 
-If ``true``, the grid is visible.
+Nếu ``true``, lưới sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -760,7 +760,7 @@ If ``true``, the grid is visible.
 - |void| **set_show_grid_buttons**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_grid_buttons**\ (\ )
 
-If ``true``, buttons that allow to configure grid and snapping options are visible.
+Nếu ``true``, các nút cho phép cấu hình các tùy chọn lưới và snapping sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -777,7 +777,7 @@ If ``true``, buttons that allow to configure grid and snapping options are visib
 - |void| **set_show_menu**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_menu**\ (\ )
 
-If ``true``, the menu toolbar is visible.
+Nếu ``true``, thanh công cụ menu sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -794,7 +794,7 @@ If ``true``, the menu toolbar is visible.
 - |void| **set_show_minimap_button**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_minimap_button**\ (\ )
 
-If ``true``, the button to toggle the minimap is visible.
+Nếu ``true``, nút bật/tắt minimap sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -811,7 +811,7 @@ If ``true``, the button to toggle the minimap is visible.
 - |void| **set_show_zoom_buttons**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_zoom_buttons**\ (\ )
 
-If ``true``, buttons that allow to change and reset the zoom level are visible.
+Nếu ``true``, các nút cho phép thay đổi và đặt lại mức thu phóng sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -828,7 +828,7 @@ If ``true``, buttons that allow to change and reset the zoom level are visible.
 - |void| **set_show_zoom_label**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_zoom_label**\ (\ )
 
-If ``true``, the label with the current zoom level is visible. The zoom level is displayed in percents.
+Nếu ``true``, nhãn hiển thị mức thu phóng hiện tại sẽ hiển thị. Mức thu phóng được hiển thị theo phần trăm.
 
 .. rst-class:: classref-item-separator
 
@@ -845,7 +845,7 @@ If ``true``, the label with the current zoom level is visible. The zoom level is
 - |void| **set_snapping_distance**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_snapping_distance**\ (\ )
 
-The snapping distance in pixels, also determines the grid line distance.
+Khoảng cách bắt dính tính bằng pixel, đồng thời cũng xác định khoảng cách giữa các đường lưới.
 
 .. rst-class:: classref-item-separator
 
@@ -862,7 +862,7 @@ The snapping distance in pixels, also determines the grid line distance.
 - |void| **set_snapping_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_snapping_enabled**\ (\ )
 
-If ``true``, enables snapping.
+Nếu ``true``, bật tính năng bắt dính.
 
 .. rst-class:: classref-item-separator
 
@@ -879,7 +879,7 @@ If ``true``, enables snapping.
 - |void| **set_type_names**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_type_names**\ (\ )
 
-:ref:`Dictionary<class_Dictionary>` of human-readable port type names.
+:ref:`Dictionary<class_Dictionary>` tên loại cổng dễ đọc đối với con người.
 
 .. rst-class:: classref-item-separator
 
@@ -896,7 +896,7 @@ If ``true``, enables snapping.
 - |void| **set_zoom**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_zoom**\ (\ )
 
-The current zoom value.
+Giá trị thu phóng hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -913,7 +913,7 @@ The current zoom value.
 - |void| **set_zoom_max**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_zoom_max**\ (\ )
 
-The upper zoom limit.
+Giới hạn thu phóng trên.
 
 .. rst-class:: classref-item-separator
 
@@ -930,7 +930,7 @@ The upper zoom limit.
 - |void| **set_zoom_min**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_zoom_min**\ (\ )
 
-The lower zoom limit.
+Giới hạn thu phóng thấp nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -947,7 +947,7 @@ The lower zoom limit.
 - |void| **set_zoom_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_zoom_step**\ (\ )
 
-The step of each zoom level.
+Bước của mỗi mức thu phóng.
 
 .. rst-class:: classref-section-separator
 
@@ -955,8 +955,8 @@ The step of each zoom level.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GraphEdit_private_method__get_connection_line:
 
@@ -964,7 +964,7 @@ Method Descriptions
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **_get_connection_line**\ (\ from_position\: :ref:`Vector2<class_Vector2>`, to_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const| :ref:`🔗<class_GraphEdit_private_method__get_connection_line>`
 
-Virtual method which can be overridden to customize how connections are drawn.
+Phương thức ảo có thể được ghi đè để tùy chỉnh cách vẽ các kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -976,11 +976,11 @@ Virtual method which can be overridden to customize how connections are drawn.
 
 :ref:`bool<class_bool>` **_is_in_input_hotzone**\ (\ in_node\: :ref:`Object<class_Object>`, in_port\: :ref:`int<class_int>`, mouse_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| :ref:`🔗<class_GraphEdit_private_method__is_in_input_hotzone>`
 
-Returns whether the ``mouse_position`` is in the input hot zone.
+Trả về liệu ``mouse_position`` có nằm trong vùng kích hoạt đầu vào hay không.
 
-By default, a hot zone is a :ref:`Rect2<class_Rect2>` positioned such that its center is at ``in_node``.\ :ref:`GraphNode.get_input_port_position()<class_GraphNode_method_get_input_port_position>`\ (``in_port``) (For output's case, call :ref:`GraphNode.get_output_port_position()<class_GraphNode_method_get_output_port_position>` instead). The hot zone's width is twice the Theme Property ``port_grab_distance_horizontal``, and its height is twice the ``port_grab_distance_vertical``.
+Theo mặc định, vùng kích hoạt là một :ref:`Rect2<class_Rect2>` được đặt sao cho tâm của nó nằm tại ``in_node``.\ :ref:`GraphNode.get_input_port_position()<class_GraphNode_method_get_input_port_position>`\ (``in_port``) (đối với trường hợp đầu ra, hãy gọi :ref:`GraphNode.get_output_port_position()<class_GraphNode_method_get_output_port_position>` thay thế). Chiều rộng của vùng kích hoạt gấp đôi Theme Property ``port_grab_distance_horizontal``, còn chiều cao gấp đôi ``port_grab_distance_vertical``.
 
-Below is a sample code to help get started:
+Dưới đây là đoạn mã mẫu giúp bạn bắt đầu:
 
 ::
 
@@ -1001,9 +1001,9 @@ Below is a sample code to help get started:
 
 :ref:`bool<class_bool>` **_is_in_output_hotzone**\ (\ in_node\: :ref:`Object<class_Object>`, in_port\: :ref:`int<class_int>`, mouse_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| :ref:`🔗<class_GraphEdit_private_method__is_in_output_hotzone>`
 
-Returns whether the ``mouse_position`` is in the output hot zone. For more information on hot zones, see :ref:`_is_in_input_hotzone()<class_GraphEdit_private_method__is_in_input_hotzone>`.
+Trả về liệu ``mouse_position`` có nằm trong vùng nóng đầu ra hay không. Để biết thêm thông tin về các vùng nóng, hãy xem :ref:`_is_in_input_hotzone()<class_GraphEdit_private_method__is_in_input_hotzone>`.
 
-Below is a sample code to help get started:
+Dưới đây là đoạn mã mẫu giúp bạn bắt đầu:
 
 ::
 
@@ -1024,11 +1024,11 @@ Below is a sample code to help get started:
 
 :ref:`bool<class_bool>` **_is_node_hover_valid**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_GraphEdit_private_method__is_node_hover_valid>`
 
-This virtual method can be used to insert additional error detection while the user is dragging a connection over a valid port.
+Phương thức ảo này có thể được dùng để bổ sung tính năng phát hiện lỗi khi người dùng kéo một connection qua một port hợp lệ.
 
-Return ``true`` if the connection is indeed valid or return ``false`` if the connection is impossible. If the connection is impossible, no snapping to the port and thus no connection request to that port will happen.
+Trả về ``true`` nếu connection thực sự hợp lệ hoặc trả về ``false`` nếu không thể tạo connection. Nếu không thể tạo connection, sẽ không có thao tác snap vào port và do đó cũng không có yêu cầu connection nào được gửi đến port đó.
 
-In this example a connection to same node is suppressed:
+Trong ví dụ này, connection đến cùng một node bị ngăn chặn:
 
 
 .. tabs::
@@ -1057,9 +1057,9 @@ In this example a connection to same node is suppressed:
 
 |void| **add_valid_connection_type**\ (\ from_type\: :ref:`int<class_int>`, to_type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_add_valid_connection_type>`
 
-Allows the connection between two different port types. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>` method.
+Cho phép connection giữa hai loại port khác nhau. Loại port được xác định riêng cho port bên trái và port bên phải của mỗi slot bằng phương thức :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>`.
 
-See also :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connection_type>` and :ref:`remove_valid_connection_type()<class_GraphEdit_method_remove_valid_connection_type>`.
+Xem thêm :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connection_type>` và :ref:`remove_valid_connection_type()<class_GraphEdit_method_remove_valid_connection_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1071,7 +1071,7 @@ See also :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connec
 
 |void| **add_valid_left_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_add_valid_left_disconnect_type>`
 
-Allows to disconnect nodes when dragging from the left port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. See also :ref:`remove_valid_left_disconnect_type()<class_GraphEdit_method_remove_valid_left_disconnect_type>`.
+Cho phép ngắt kết nối các node khi kéo từ cổng bên trái của slot của :ref:`GraphNode<class_GraphNode>` nếu slot có kiểu được chỉ định. Xem thêm :ref:`remove_valid_left_disconnect_type()<class_GraphEdit_method_remove_valid_left_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1083,7 +1083,7 @@ Allows to disconnect nodes when dragging from the left port of the :ref:`GraphNo
 
 |void| **add_valid_right_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_add_valid_right_disconnect_type>`
 
-Allows to disconnect nodes when dragging from the right port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. See also :ref:`remove_valid_right_disconnect_type()<class_GraphEdit_method_remove_valid_right_disconnect_type>`.
+Cho phép ngắt kết nối các node khi kéo từ cổng bên phải của slot của :ref:`GraphNode<class_GraphNode>` nếu slot có kiểu được chỉ định. Xem thêm :ref:`remove_valid_right_disconnect_type()<class_GraphEdit_method_remove_valid_right_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1095,7 +1095,7 @@ Allows to disconnect nodes when dragging from the right port of the :ref:`GraphN
 
 |void| **arrange_nodes**\ (\ ) :ref:`🔗<class_GraphEdit_method_arrange_nodes>`
 
-Rearranges selected nodes in a layout with minimum crossings between connections and uniform horizontal and vertical gap between nodes.
+Sắp xếp lại các node đã chọn theo bố cục có số giao cắt tối thiểu giữa các kết nối và khoảng cách ngang, dọc đồng đều giữa các node.
 
 .. rst-class:: classref-item-separator
 
@@ -1107,7 +1107,7 @@ Rearranges selected nodes in a layout with minimum crossings between connections
 
 |void| **attach_graph_element_to_frame**\ (\ element\: :ref:`StringName<class_StringName>`, frame\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GraphEdit_method_attach_graph_element_to_frame>`
 
-Attaches the ``element`` :ref:`GraphElement<class_GraphElement>` to the ``frame`` :ref:`GraphFrame<class_GraphFrame>`.
+Đính kèm ``element`` :ref:`GraphElement<class_GraphElement>` vào ``frame`` :ref:`GraphFrame<class_GraphFrame>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1119,7 +1119,7 @@ Attaches the ``element`` :ref:`GraphElement<class_GraphElement>` to the ``frame`
 
 |void| **clear_connections**\ (\ ) :ref:`🔗<class_GraphEdit_method_clear_connections>`
 
-Removes all connections between nodes.
+Xóa tất cả các kết nối giữa các node.
 
 .. rst-class:: classref-item-separator
 
@@ -1131,9 +1131,9 @@ Removes all connections between nodes.
 
 :ref:`Error<enum_@GlobalScope_Error>` **connect_node**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`, keep_alive\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_GraphEdit_method_connect_node>`
 
-Create a connection between the ``from_port`` of the ``from_node`` :ref:`GraphNode<class_GraphNode>` and the ``to_port`` of the ``to_node`` :ref:`GraphNode<class_GraphNode>`. If the connection already exists, no connection is created.
+Tạo kết nối giữa ``from_port`` của ``from_node`` :ref:`GraphNode<class_GraphNode>` và ``to_port`` của ``to_node`` :ref:`GraphNode<class_GraphNode>`. Nếu kết nối đã tồn tại thì không tạo kết nối mới.
 
-Connections with ``keep_alive`` set to ``false`` may be deleted automatically if invalid during a redraw.
+Các kết nối có ``keep_alive`` được đặt thành ``false`` có thể tự động bị xóa nếu không hợp lệ trong quá trình redraw.
 
 .. rst-class:: classref-item-separator
 
@@ -1145,7 +1145,7 @@ Connections with ``keep_alive`` set to ``false`` may be deleted automatically if
 
 |void| **detach_graph_element_from_frame**\ (\ element\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GraphEdit_method_detach_graph_element_from_frame>`
 
-Detaches the ``element`` :ref:`GraphElement<class_GraphElement>` from the :ref:`GraphFrame<class_GraphFrame>` it is currently attached to.
+Tách ``element`` :ref:`GraphElement<class_GraphElement>` khỏi :ref:`GraphFrame<class_GraphFrame>` mà nó hiện đang gắn vào.
 
 .. rst-class:: classref-item-separator
 
@@ -1157,7 +1157,7 @@ Detaches the ``element`` :ref:`GraphElement<class_GraphElement>` from the :ref:`
 
 |void| **disconnect_node**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_disconnect_node>`
 
-Removes the connection between the ``from_port`` of the ``from_node`` :ref:`GraphNode<class_GraphNode>` and the ``to_port`` of the ``to_node`` :ref:`GraphNode<class_GraphNode>`. If the connection does not exist, no connection is removed.
+Xóa kết nối giữa ``from_port`` của ``from_node`` :ref:`GraphNode<class_GraphNode>` và ``to_port`` của ``to_node`` :ref:`GraphNode<class_GraphNode>`. Nếu kết nối không tồn tại thì không có kết nối nào bị xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -1169,11 +1169,11 @@ Removes the connection between the ``from_port`` of the ``from_node`` :ref:`Grap
 
 |void| **force_connection_drag_end**\ (\ ) :ref:`🔗<class_GraphEdit_method_force_connection_drag_end>`
 
-Ends the creation of the current connection. In other words, if you are dragging a connection you can use this method to abort the process and remove the line that followed your cursor.
+Kết thúc việc tạo kết nối hiện tại. Nói cách khác, nếu bạn đang kéo một kết nối, bạn có thể dùng phương thức này để hủy quá trình và xóa đường nối đi theo con trỏ của bạn.
 
-This is best used together with :ref:`connection_drag_started<class_GraphEdit_signal_connection_drag_started>` and :ref:`connection_drag_ended<class_GraphEdit_signal_connection_drag_ended>` to add custom behavior like node addition through shortcuts.
+Phương thức này nên được dùng cùng với :ref:`connection_drag_started<class_GraphEdit_signal_connection_drag_started>` và :ref:`connection_drag_ended<class_GraphEdit_signal_connection_drag_ended>` để thêm hành vi tùy chỉnh, chẳng hạn như thêm node thông qua các phím tắt.
 
-\ **Note:** This method suppresses any other connection request signals apart from :ref:`connection_drag_ended<class_GraphEdit_signal_connection_drag_ended>`.
+\ **Lưu ý:** Phương thức này ngăn mọi tín hiệu yêu cầu kết nối khác ngoài :ref:`connection_drag_ended<class_GraphEdit_signal_connection_drag_ended>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1185,7 +1185,7 @@ This is best used together with :ref:`connection_drag_started<class_GraphEdit_si
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_attached_nodes_of_frame**\ (\ frame\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GraphEdit_method_get_attached_nodes_of_frame>`
 
-Returns an array of node names that are attached to the :ref:`GraphFrame<class_GraphFrame>` with the given name.
+Trả về một mảng gồm tên các node được gắn vào :ref:`GraphFrame<class_GraphFrame>` có tên đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1197,9 +1197,9 @@ Returns an array of node names that are attached to the :ref:`GraphFrame<class_G
 
 :ref:`Dictionary<class_Dictionary>` **get_closest_connection_at_point**\ (\ point\: :ref:`Vector2<class_Vector2>`, max_distance\: :ref:`float<class_float>` = 4.0\ ) |const| :ref:`🔗<class_GraphEdit_method_get_closest_connection_at_point>`
 
-Returns the closest connection to the given point in screen space. If no connection is found within ``max_distance`` pixels, an empty :ref:`Dictionary<class_Dictionary>` is returned.
+Trả về kết nối gần nhất với điểm đã cho trong không gian màn hình. Nếu không tìm thấy kết nối nào trong phạm vi ``max_distance`` pixel, một :ref:`Dictionary<class_Dictionary>` rỗng sẽ được trả về.
 
-A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form of:
+Một kết nối được biểu diễn dưới dạng :ref:`Dictionary<class_Dictionary>` theo định dạng:
 
 ::
 
@@ -1211,7 +1211,7 @@ A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form
         keep_alive: bool
     }
 
-For example, getting a connection at a given mouse position can be achieved like this:
+Ví dụ: có thể lấy một kết nối tại một vị trí chuột nhất định như sau:
 
 
 .. tabs::
@@ -1232,7 +1232,7 @@ For example, getting a connection at a given mouse position can be achieved like
 
 :ref:`int<class_int>` **get_connection_count**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_get_connection_count>`
 
-Returns the number of connections from ``from_port`` of ``from_node``.
+Trả về số lượng kết nối từ ``from_port`` của ``from_node``.
 
 .. rst-class:: classref-item-separator
 
@@ -1244,7 +1244,7 @@ Returns the number of connections from ``from_port`` of ``from_node``.
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **get_connection_line**\ (\ from_node\: :ref:`Vector2<class_Vector2>`, to_node\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_GraphEdit_method_get_connection_line>`
 
-Returns the points which would make up a connection between ``from_node`` and ``to_node``.
+Trả về các điểm cấu thành một kết nối giữa ``from_node`` và ``to_node``.
 
 .. rst-class:: classref-item-separator
 
@@ -1256,9 +1256,9 @@ Returns the points which would make up a connection between ``from_node`` and ``
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_connection_list_from_node**\ (\ node\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_GraphEdit_method_get_connection_list_from_node>`
 
-Returns an :ref:`Array<class_Array>` containing a list of all connections for ``node``.
+Trả về một :ref:`Array<class_Array>` chứa danh sách tất cả các kết nối của ``node``.
 
-A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form of:
+Một kết nối được biểu diễn dưới dạng :ref:`Dictionary<class_Dictionary>` theo định dạng:
 
 ::
 
@@ -1270,7 +1270,7 @@ A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form
         keep_alive: bool
     }
 
-\ **Example:** Get all connections on a specific port:
+\ **Ví dụ:** Lấy tất cả kết nối trên một port cụ thể:
 
 ::
 
@@ -1301,9 +1301,9 @@ A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_connections_intersecting_with_rect**\ (\ rect\: :ref:`Rect2<class_Rect2>`\ ) |const| :ref:`🔗<class_GraphEdit_method_get_connections_intersecting_with_rect>`
 
-Returns an :ref:`Array<class_Array>` containing the list of connections that intersect with the given :ref:`Rect2<class_Rect2>`.
+Trả về một :ref:`Array<class_Array>` chứa danh sách các kết nối giao với :ref:`Rect2<class_Rect2>` đã cho.
 
-A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form of:
+Một kết nối được biểu diễn dưới dạng :ref:`Dictionary<class_Dictionary>` theo định dạng:
 
 ::
 
@@ -1325,7 +1325,7 @@ A connection is represented as a :ref:`Dictionary<class_Dictionary>` in the form
 
 :ref:`GraphFrame<class_GraphFrame>` **get_element_frame**\ (\ element\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GraphEdit_method_get_element_frame>`
 
-Returns the :ref:`GraphFrame<class_GraphFrame>` that contains the :ref:`GraphElement<class_GraphElement>` with the given name.
+Trả về :ref:`GraphFrame<class_GraphFrame>` chứa :ref:`GraphElement<class_GraphElement>` có tên đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1337,9 +1337,9 @@ Returns the :ref:`GraphFrame<class_GraphFrame>` that contains the :ref:`GraphEle
 
 :ref:`HBoxContainer<class_HBoxContainer>` **get_menu_hbox**\ (\ ) :ref:`🔗<class_GraphEdit_method_get_menu_hbox>`
 
-Gets the :ref:`HBoxContainer<class_HBoxContainer>` that contains the zooming and grid snap controls in the top left of the graph. You can use this method to reposition the toolbar or to add your own custom controls to it.
+Lấy :ref:`HBoxContainer<class_HBoxContainer>` chứa các điều khiển thu phóng và bắt dính lưới ở góc trên bên trái của graph. Bạn có thể sử dụng phương thức này để định vị lại toolbar hoặc thêm các điều khiển tùy chỉnh của riêng mình vào đó.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là một node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -1351,7 +1351,7 @@ Gets the :ref:`HBoxContainer<class_HBoxContainer>` that contains the zooming and
 
 :ref:`bool<class_bool>` **is_node_connected**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_is_node_connected>`
 
-Returns ``true`` if the ``from_port`` of the ``from_node`` :ref:`GraphNode<class_GraphNode>` is connected to the ``to_port`` of the ``to_node`` :ref:`GraphNode<class_GraphNode>`.
+Trả về ``true`` nếu ``from_port`` của ``from_node`` :ref:`GraphNode<class_GraphNode>` được kết nối với ``to_port`` của ``to_node`` :ref:`GraphNode<class_GraphNode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1363,9 +1363,9 @@ Returns ``true`` if the ``from_port`` of the ``from_node`` :ref:`GraphNode<class
 
 :ref:`bool<class_bool>` **is_valid_connection_type**\ (\ from_type\: :ref:`int<class_int>`, to_type\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphEdit_method_is_valid_connection_type>`
 
-Returns whether it's possible to make a connection between two different port types. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>` method.
+Trả về việc có thể tạo kết nối giữa hai loại port khác nhau hay không. Loại port được xác định riêng cho port bên trái và port bên phải của mỗi slot bằng phương thức :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>`.
 
-See also :ref:`add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>` and :ref:`remove_valid_connection_type()<class_GraphEdit_method_remove_valid_connection_type>`.
+Xem thêm :ref:`add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>` và :ref:`remove_valid_connection_type()<class_GraphEdit_method_remove_valid_connection_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1377,9 +1377,9 @@ See also :ref:`add_valid_connection_type()<class_GraphEdit_method_add_valid_conn
 
 |void| **remove_valid_connection_type**\ (\ from_type\: :ref:`int<class_int>`, to_type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_remove_valid_connection_type>`
 
-Disallows the connection between two different port types previously allowed by :ref:`add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>`. The port type is defined individually for the left and the right port of each slot with the :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>` method.
+Không cho phép kết nối giữa hai loại cổng khác nhau mà trước đó đã được :ref:`add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>` cho phép. Loại cổng được xác định riêng cho cổng bên trái và cổng bên phải của mỗi slot bằng phương thức :ref:`GraphNode.set_slot()<class_GraphNode_method_set_slot>`.
 
-See also :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connection_type>`.
+Xem thêm :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connection_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1391,7 +1391,7 @@ See also :ref:`is_valid_connection_type()<class_GraphEdit_method_is_valid_connec
 
 |void| **remove_valid_left_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_remove_valid_left_disconnect_type>`
 
-Disallows to disconnect nodes when dragging from the left port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. Use this to disable a disconnection previously allowed with :ref:`add_valid_left_disconnect_type()<class_GraphEdit_method_add_valid_left_disconnect_type>`.
+Không cho phép ngắt kết nối các node khi kéo từ cổng bên trái của slot của :ref:`GraphNode<class_GraphNode>` nếu cổng đó có loại được chỉ định. Dùng tùy chọn này để vô hiệu hóa việc ngắt kết nối trước đó đã được cho phép bằng :ref:`add_valid_left_disconnect_type()<class_GraphEdit_method_add_valid_left_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1403,7 +1403,7 @@ Disallows to disconnect nodes when dragging from the left port of the :ref:`Grap
 
 |void| **remove_valid_right_disconnect_type**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphEdit_method_remove_valid_right_disconnect_type>`
 
-Disallows to disconnect nodes when dragging from the right port of the :ref:`GraphNode<class_GraphNode>`'s slot if it has the specified type. Use this to disable a disconnection previously allowed with :ref:`add_valid_right_disconnect_type()<class_GraphEdit_method_add_valid_right_disconnect_type>`.
+Không cho phép ngắt kết nối các node khi kéo từ cổng bên phải của slot của :ref:`GraphNode<class_GraphNode>` nếu cổng đó có loại được chỉ định. Dùng tùy chọn này để vô hiệu hóa việc ngắt kết nối trước đó đã được cho phép bằng :ref:`add_valid_right_disconnect_type()<class_GraphEdit_method_add_valid_right_disconnect_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1415,7 +1415,7 @@ Disallows to disconnect nodes when dragging from the right port of the :ref:`Gra
 
 |void| **set_connection_activity**\ (\ from_node\: :ref:`StringName<class_StringName>`, from_port\: :ref:`int<class_int>`, to_node\: :ref:`StringName<class_StringName>`, to_port\: :ref:`int<class_int>`, amount\: :ref:`float<class_float>`\ ) :ref:`🔗<class_GraphEdit_method_set_connection_activity>`
 
-Sets the coloration of the connection between ``from_node``'s ``from_port`` and ``to_node``'s ``to_port`` with the color provided in the :ref:`activity<class_GraphEdit_theme_color_activity>` theme property. The color is linearly interpolated between the connection color and the activity color using ``amount`` as weight.
+Đặt màu của kết nối giữa ``from_port`` của ``from_node`` và ``to_port`` của ``to_node`` bằng màu được cung cấp trong thuộc tính theme :ref:`activity<class_GraphEdit_theme_color_activity>`. Màu được nội suy tuyến tính giữa màu kết nối và màu hoạt động, sử dụng ``amount`` làm trọng số.
 
 .. rst-class:: classref-item-separator
 
@@ -1427,7 +1427,7 @@ Sets the coloration of the connection between ``from_node``'s ``from_port`` and 
 
 |void| **set_selected**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_GraphEdit_method_set_selected>`
 
-Sets the specified ``node`` as the one selected.
+Đặt ``node`` được chỉ định làm mục được chọn.
 
 .. rst-class:: classref-section-separator
 
@@ -1435,8 +1435,8 @@ Sets the specified ``node`` as the one selected.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_GraphEdit_theme_color_activity:
 
@@ -1444,7 +1444,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **activity** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_GraphEdit_theme_color_activity>`
 
-Color the connection line is interpolated to based on the activity value of a connection (see :ref:`set_connection_activity()<class_GraphEdit_method_set_connection_activity>`).
+Màu mà đường kết nối được nội suy về dựa trên giá trị hoạt động của kết nối (xem :ref:`set_connection_activity()<class_GraphEdit_method_set_connection_activity>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1456,7 +1456,7 @@ Color the connection line is interpolated to based on the activity value of a co
 
 :ref:`Color<class_Color>` **connection_hover_tint_color** = ``Color(0, 0, 0, 0.3)`` :ref:`🔗<class_GraphEdit_theme_color_connection_hover_tint_color>`
 
-Color which is blended with the connection line when the mouse is hovering over it.
+Màu được hòa trộn với đường kết nối khi con trỏ chuột di chuyển trên đường đó.
 
 .. rst-class:: classref-item-separator
 
@@ -1468,7 +1468,7 @@ Color which is blended with the connection line when the mouse is hovering over 
 
 :ref:`Color<class_Color>` **connection_rim_color** = ``Color(0.1, 0.1, 0.1, 0.6)`` :ref:`🔗<class_GraphEdit_theme_color_connection_rim_color>`
 
-Color of the rim around each connection line used for making intersecting lines more distinguishable.
+Màu của viền bao quanh mỗi đường kết nối, dùng để giúp phân biệt rõ hơn các đường giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -1480,7 +1480,7 @@ Color of the rim around each connection line used for making intersecting lines 
 
 :ref:`Color<class_Color>` **connection_valid_target_tint_color** = ``Color(1, 1, 1, 0.4)`` :ref:`🔗<class_GraphEdit_theme_color_connection_valid_target_tint_color>`
 
-Color which is blended with the connection line when the currently dragged connection is hovering over a valid target port.
+Màu được hòa trộn với đường kết nối khi kết nối đang được kéo hiện nằm trên một cổng đích hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -1492,7 +1492,7 @@ Color which is blended with the connection line when the currently dragged conne
 
 :ref:`Color<class_Color>` **grid_major** = ``Color(1, 1, 1, 0.2)`` :ref:`🔗<class_GraphEdit_theme_color_grid_major>`
 
-Color of major grid lines/dots.
+Màu của các đường/chấm lưới chính.
 
 .. rst-class:: classref-item-separator
 
@@ -1504,7 +1504,7 @@ Color of major grid lines/dots.
 
 :ref:`Color<class_Color>` **grid_minor** = ``Color(1, 1, 1, 0.05)`` :ref:`🔗<class_GraphEdit_theme_color_grid_minor>`
 
-Color of minor grid lines/dots.
+Màu của các đường/chấm lưới phụ.
 
 .. rst-class:: classref-item-separator
 
@@ -1516,7 +1516,7 @@ Color of minor grid lines/dots.
 
 :ref:`Color<class_Color>` **selection_fill** = ``Color(1, 1, 1, 0.3)`` :ref:`🔗<class_GraphEdit_theme_color_selection_fill>`
 
-The fill color of the selection rectangle.
+Màu tô của hình chữ nhật vùng chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1528,7 +1528,7 @@ The fill color of the selection rectangle.
 
 :ref:`Color<class_Color>` **selection_stroke** = ``Color(1, 1, 1, 0.8)`` :ref:`🔗<class_GraphEdit_theme_color_selection_stroke>`
 
-The outline color of the selection rectangle.
+Màu đường viền của hình chữ nhật vùng chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1540,7 +1540,7 @@ The outline color of the selection rectangle.
 
 :ref:`int<class_int>` **connection_hover_thickness** = ``0`` :ref:`🔗<class_GraphEdit_theme_constant_connection_hover_thickness>`
 
-Widens the line of a connection when the mouse is hovering over it by a percentage factor. A value of ``0`` disables the highlight. A value of ``100`` doubles the line width.
+Mở rộng đường nối khi chuột di trên đó theo một hệ số phần trăm. Giá trị ``0`` sẽ tắt phần đánh dấu. Giá trị ``100`` sẽ tăng gấp đôi độ rộng đường.
 
 .. rst-class:: classref-item-separator
 
@@ -1552,7 +1552,7 @@ Widens the line of a connection when the mouse is hovering over it by a percenta
 
 :ref:`int<class_int>` **port_hotzone_inner_extent** = ``22`` :ref:`🔗<class_GraphEdit_theme_constant_port_hotzone_inner_extent>`
 
-The horizontal range within which a port can be grabbed (inner side).
+Phạm vi ngang mà trong đó có thể nắm một port (phía trong).
 
 .. rst-class:: classref-item-separator
 
@@ -1564,7 +1564,7 @@ The horizontal range within which a port can be grabbed (inner side).
 
 :ref:`int<class_int>` **port_hotzone_outer_extent** = ``26`` :ref:`🔗<class_GraphEdit_theme_constant_port_hotzone_outer_extent>`
 
-The horizontal range within which a port can be grabbed (outer side).
+Phạm vi ngang mà trong đó có thể nắm một port (phía ngoài).
 
 .. rst-class:: classref-item-separator
 
@@ -1574,9 +1574,9 @@ The horizontal range within which a port can be grabbed (outer side).
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **grid_toggle** :ref:`🔗<class_GraphEdit_theme_icon_grid_toggle>`
+:ref:`Texture2D<class_Texture2D>` **grid_toggle** :ref:`🔗 <class_GraphEdit_theme_icon_grid_toggle>`
 
-The icon for the grid toggle button.
+Biểu tượng cho nút chuyển đổi lưới.
 
 .. rst-class:: classref-item-separator
 
@@ -1586,9 +1586,9 @@ The icon for the grid toggle button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **layout** :ref:`🔗<class_GraphEdit_theme_icon_layout>`
+:ref:`Texture2D<class_Texture2D>` **layout** :ref:`🔗 <class_GraphEdit_theme_icon_layout>`
 
-The icon for the layout button for auto-arranging the graph.
+Biểu tượng của nút layout để tự động sắp xếp đồ thị.
 
 .. rst-class:: classref-item-separator
 
@@ -1598,9 +1598,9 @@ The icon for the layout button for auto-arranging the graph.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **minimap_toggle** :ref:`🔗<class_GraphEdit_theme_icon_minimap_toggle>`
+:ref:`Texture2D<class_Texture2D>` **minimap_toggle** :ref:`🔗 <class_GraphEdit_theme_icon_minimap_toggle>`
 
-The icon for the minimap toggle button.
+Biểu tượng của nút bật/tắt minimap.
 
 .. rst-class:: classref-item-separator
 
@@ -1610,9 +1610,9 @@ The icon for the minimap toggle button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **snapping_toggle** :ref:`🔗<class_GraphEdit_theme_icon_snapping_toggle>`
+:ref:`Texture2D<class_Texture2D>` **snapping_toggle** :ref:`🔗 <class_GraphEdit_theme_icon_snapping_toggle>`
 
-The icon for the snapping toggle button.
+Biểu tượng của nút bật/tắt snapping.
 
 .. rst-class:: classref-item-separator
 
@@ -1622,9 +1622,9 @@ The icon for the snapping toggle button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **zoom_in** :ref:`🔗<class_GraphEdit_theme_icon_zoom_in>`
+:ref:`Texture2D<class_Texture2D>` **zoom_in** :ref:`🔗 <class_GraphEdit_theme_icon_zoom_in>`
 
-The icon for the zoom in button.
+Biểu tượng của nút phóng to.
 
 .. rst-class:: classref-item-separator
 
@@ -1634,9 +1634,9 @@ The icon for the zoom in button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **zoom_out** :ref:`🔗<class_GraphEdit_theme_icon_zoom_out>`
+:ref:`Texture2D<class_Texture2D>` **zoom_out** :ref:`🔗 <class_GraphEdit_theme_icon_zoom_out>`
 
-The icon for the zoom out button.
+Biểu tượng của nút thu nhỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -1646,9 +1646,9 @@ The icon for the zoom out button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **zoom_reset** :ref:`🔗<class_GraphEdit_theme_icon_zoom_reset>`
+:ref:`Texture2D<class_Texture2D>` **zoom_reset** :ref:`🔗 <class_GraphEdit_theme_icon_zoom_reset>`
 
-The icon for the zoom reset button.
+Biểu tượng của nút đặt lại mức thu phóng.
 
 .. rst-class:: classref-item-separator
 
@@ -1658,7 +1658,7 @@ The icon for the zoom reset button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **menu_panel** :ref:`🔗<class_GraphEdit_theme_style_menu_panel>`
+:ref:`StyleBox<class_StyleBox>` **menu_panel** :ref:`🔗 <class_GraphEdit_theme_style_menu_panel>`
 
 .. container:: contribute
 
@@ -1672,9 +1672,9 @@ The icon for the zoom reset button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_GraphEdit_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_GraphEdit_theme_style_panel>`
 
-The background drawn under the grid.
+Nền được vẽ bên dưới lưới.
 
 .. rst-class:: classref-item-separator
 
@@ -1684,16 +1684,16 @@ The background drawn under the grid.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel_focus** :ref:`🔗<class_GraphEdit_theme_style_panel_focus>`
+:ref:`StyleBox<class_StyleBox>` **panel_focus** :ref:`🔗 <class_GraphEdit_theme_style_panel_focus>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **GraphEdit** is focused (when used with assistive apps).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **GraphEdit** được focus (khi được sử dụng với các ứng dụng hỗ trợ công nghệ trợ năng).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

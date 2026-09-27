@@ -10,41 +10,41 @@
 XRHandModifier3D
 ================
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node for driving hand meshes from :ref:`XRHandTracker<class_XRHandTracker>` data.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This node uses hand tracking data from an :ref:`XRHandTracker<class_XRHandTracker>` to pose the skeleton of a hand mesh.
-
-Positioning of hands is performed by creating an :ref:`XRNode3D<class_XRNode3D>` ancestor of the hand mesh driven by the same :ref:`XRHandTracker<class_XRHandTracker>`.
-
-The hand tracking position-data is scaled by :ref:`Skeleton3D.motion_scale<class_Skeleton3D_property_motion_scale>` when applied to the skeleton, which can be used to adjust the tracked hand to match the scale of the hand model.
+Một node để điều khiển các mesh bàn tay từ dữ liệu :ref:`XRHandTracker<class_XRHandTracker>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node này sử dụng dữ liệu theo dõi bàn tay từ một :ref:`XRHandTracker<class_XRHandTracker>` để tạo tư thế cho skeleton của mesh bàn tay.
+
+Việc định vị bàn tay được thực hiện bằng cách tạo một ancestor :ref:`XRNode3D<class_XRNode3D>` của mesh bàn tay, được điều khiển bởi cùng :ref:`XRHandTracker<class_XRHandTracker>`.
+
+Dữ liệu vị trí theo dõi bàn tay được :ref:`Skeleton3D.motion_scale<class_Skeleton3D_property_motion_scale>` điều chỉnh tỷ lệ khi áp dụng cho skeleton, có thể dùng để điều chỉnh bàn tay được theo dõi khớp với tỷ lệ của mô hình bàn tay.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-------------------------------------------------------------------+--------------------------------+
-   | :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>` | :ref:`bone_update<class_XRHandModifier3D_property_bone_update>`   | ``0``                          |
-   +-----------------------------------------------------+-------------------------------------------------------------------+--------------------------------+
-   | :ref:`StringName<class_StringName>`                 | :ref:`hand_tracker<class_XRHandModifier3D_property_hand_tracker>` | ``&"/user/hand_tracker/left"`` |
-   +-----------------------------------------------------+-------------------------------------------------------------------+--------------------------------+
+   +------------------------------------------------------+-------------------------------------------------------------------+--------------------------------+
+   | :ref:`BoneUpdate <enum_XRHandModifier3D_BoneUpdate>` | :ref:`bone_update<class_XRHandModifier3D_property_bone_update>`   | ``0``                          |
+   +------------------------------------------------------+-------------------------------------------------------------------+--------------------------------+
+   | :ref:`StringName<class_StringName>`                  | :ref:`hand_tracker<class_XRHandModifier3D_property_hand_tracker>` | ``&"/user/hand_tracker/left"`` |
+   +------------------------------------------------------+-------------------------------------------------------------------+--------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -52,14 +52,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_XRHandModifier3D_BoneUpdate:
 
 .. rst-class:: classref-enumeration
 
-enum **BoneUpdate**: :ref:`🔗<enum_XRHandModifier3D_BoneUpdate>`
+enum **BoneUpdate**: :ref:`🔗 <enum_XRHandModifier3D_BoneUpdate>`
 
 .. _class_XRHandModifier3D_constant_BONE_UPDATE_FULL:
 
@@ -67,7 +67,7 @@ enum **BoneUpdate**: :ref:`🔗<enum_XRHandModifier3D_BoneUpdate>`
 
 :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>` **BONE_UPDATE_FULL** = ``0``
 
-The skeleton's bones are fully updated (both position and rotation) to match the tracked bones.
+Các xương của skeleton được cập nhật hoàn toàn (cả vị trí và góc xoay) để khớp với các xương được theo dõi.
 
 .. _class_XRHandModifier3D_constant_BONE_UPDATE_ROTATION_ONLY:
 
@@ -75,7 +75,7 @@ The skeleton's bones are fully updated (both position and rotation) to match the
 
 :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>` **BONE_UPDATE_ROTATION_ONLY** = ``1``
 
-The skeleton's bones are only rotated to align with the tracked bones, preserving bone length.
+Các xương của skeleton chỉ được xoay để căn chỉnh với các xương được theo dõi, đồng thời giữ nguyên chiều dài xương.
 
 .. _class_XRHandModifier3D_constant_BONE_UPDATE_MAX:
 
@@ -83,7 +83,7 @@ The skeleton's bones are only rotated to align with the tracked bones, preservin
 
 :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>` **BONE_UPDATE_MAX** = ``2``
 
-Represents the size of the :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>` enum.
+Biểu thị kích thước của enum :ref:`BoneUpdate <enum_XRHandModifier3D_BoneUpdate>`.
 
 .. rst-class:: classref-section-separator
 
@@ -91,8 +91,8 @@ Represents the size of the :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>` e
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRHandModifier3D_property_bone_update:
 
@@ -105,7 +105,7 @@ Property Descriptions
 - |void| **set_bone_update**\ (\ value\: :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>`\ )
 - :ref:`BoneUpdate<enum_XRHandModifier3D_BoneUpdate>` **get_bone_update**\ (\ )
 
-Specifies the type of updates to perform on the bones.
+Chỉ định loại cập nhật cần thực hiện trên các bone.
 
 .. rst-class:: classref-item-separator
 
@@ -122,14 +122,14 @@ Specifies the type of updates to perform on the bones.
 - |void| **set_hand_tracker**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_hand_tracker**\ (\ )
 
-The name of the :ref:`XRHandTracker<class_XRHandTracker>` registered with :ref:`XRServer<class_XRServer>` to obtain the hand tracking data from.
+Tên của :ref:`XRHandTracker<class_XRHandTracker>` đã đăng ký với :ref:`XRServer<class_XRServer>` để lấy dữ liệu theo dõi bàn tay.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

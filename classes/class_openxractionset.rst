@@ -10,22 +10,22 @@
 OpenXRActionSet
 ===============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Collection of :ref:`OpenXRAction<class_OpenXRAction>` resources that make up an action set.
+Tập hợp các tài nguyên :ref:`OpenXRAction<class_OpenXRAction>` tạo nên một action set.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Action sets in OpenXR define a collection of actions that can be activated in unison. This allows games to easily change between different states that require different inputs or need to reinterpret inputs. For instance we could have an action set that is active when a menu is open, an action set that is active when the player is freely walking around and an action set that is active when the player is controlling a vehicle.
+Các action set trong OpenXR định nghĩa một tập hợp các action có thể được kích hoạt đồng thời. Điều này cho phép game dễ dàng chuyển đổi giữa các trạng thái khác nhau, trong đó mỗi trạng thái yêu cầu các input khác nhau hoặc cần diễn giải lại input. Ví dụ: chúng ta có thể có một action set hoạt động khi menu đang mở, một action set hoạt động khi người chơi tự do di chuyển và một action set hoạt động khi người chơi điều khiển phương tiện.
 
-Action sets can contain the same action with the same name, if such action sets are active at the same time the action set with the highest priority defines which binding is active.
+Các action set có thể chứa cùng một action với cùng tên. Nếu các action set đó hoạt động cùng lúc, action set có mức độ ưu tiên cao nhất sẽ xác định binding nào đang hoạt động.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -61,8 +61,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRActionSet_property_actions:
 
@@ -75,7 +75,7 @@ Property Descriptions
 - |void| **set_actions**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_actions**\ (\ )
 
-Collection of actions for this action set.
+Tập hợp các action cho action set này.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Collection of actions for this action set.
 - |void| **set_localized_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_localized_name**\ (\ )
 
-The localized name of this action set.
+Tên bản địa hóa của action set này.
 
 .. rst-class:: classref-item-separator
 
@@ -109,7 +109,7 @@ The localized name of this action set.
 - |void| **set_priority**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_priority**\ (\ )
 
-The priority for this action set.
+Mức độ ưu tiên của action set này.
 
 .. rst-class:: classref-section-separator
 
@@ -117,8 +117,8 @@ The priority for this action set.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRActionSet_method_add_action:
 
@@ -126,7 +126,7 @@ Method Descriptions
 
 |void| **add_action**\ (\ action\: :ref:`OpenXRAction<class_OpenXRAction>`\ ) :ref:`🔗<class_OpenXRActionSet_method_add_action>`
 
-Add an action to this action set.
+Thêm một action vào tập hợp action này.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Add an action to this action set.
 
 :ref:`int<class_int>` **get_action_count**\ (\ ) |const| :ref:`🔗<class_OpenXRActionSet_method_get_action_count>`
 
-Retrieve the number of actions in our action set.
+Lấy số lượng action trong tập hợp action của chúng ta.
 
 .. rst-class:: classref-item-separator
 
@@ -150,14 +150,14 @@ Retrieve the number of actions in our action set.
 
 |void| **remove_action**\ (\ action\: :ref:`OpenXRAction<class_OpenXRAction>`\ ) :ref:`🔗<class_OpenXRActionSet_method_remove_action>`
 
-Remove an action from this action set.
+Xóa một action khỏi tập hợp action này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

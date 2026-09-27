@@ -10,31 +10,31 @@
 Shape2D
 =======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CapsuleShape2D<class_CapsuleShape2D>`, :ref:`CircleShape2D<class_CircleShape2D>`, :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>`, :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>`, :ref:`RectangleShape2D<class_RectangleShape2D>`, :ref:`SegmentShape2D<class_SegmentShape2D>`, :ref:`SeparationRayShape2D<class_SeparationRayShape2D>`, :ref:`WorldBoundaryShape2D<class_WorldBoundaryShape2D>`
+**Được kế thừa bởi:** :ref:`CapsuleShape2D<class_CapsuleShape2D>`, :ref:`CircleShape2D<class_CircleShape2D>`, :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>`, :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>`, :ref:`RectangleShape2D<class_RectangleShape2D>`, :ref:`SegmentShape2D<class_SegmentShape2D>`, :ref:`SeparationRayShape2D<class_SeparationRayShape2D>`, :ref:`WorldBoundaryShape2D<class_WorldBoundaryShape2D>`
 
-Abstract base class for 2D shapes used for physics collision.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Abstract base class for all 2D shapes, intended for use in physics.
-
-\ **Performance:** Primitive shapes, especially :ref:`CircleShape2D<class_CircleShape2D>`, are fast to check collisions against. :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>` is slower, and :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>` is the slowest.
+Lớp cơ sở trừu tượng cho các shape 2D được dùng để phát hiện va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở trừu tượng cho tất cả shape 2D, được thiết kế để sử dụng trong vật lý.
+
+\ **Hiệu suất:** Các shape nguyên thủy, đặc biệt là :ref:`CircleShape2D<class_CircleShape2D>`, được kiểm tra va chạm rất nhanh. :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>` chậm hơn, còn :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>` là chậm nhất.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -72,8 +72,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Shape2D_property_custom_solver_bias:
 
@@ -86,9 +86,9 @@ Property Descriptions
 - |void| **set_custom_solver_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_custom_solver_bias**\ (\ )
 
-The shape's custom solver bias. Defines how much bodies react to enforce contact separation when this shape is involved.
+Độ lệch solver tùy chỉnh của shape. Xác định mức độ các body phản ứng để duy trì tách tiếp xúc khi shape này tham gia.
 
-When set to ``0``, the default value from :ref:`ProjectSettings.physics/2d/solver/default_contact_bias<class_ProjectSettings_property_physics/2d/solver/default_contact_bias>` is used.
+Khi được đặt thành ``0``, giá trị mặc định từ :ref:`ProjectSettings.physics/2d/solver/default_contact_bias <class_ProjectSettings_property_physics/2d/solver/default_contact_bias>` sẽ được sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -96,8 +96,8 @@ When set to ``0``, the default value from :ref:`ProjectSettings.physics/2d/solve
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Shape2D_method_collide:
 
@@ -105,9 +105,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **collide**\ (\ local_xform\: :ref:`Transform2D<class_Transform2D>`, with_shape\: :ref:`Shape2D<class_Shape2D>`, shape_xform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_Shape2D_method_collide>`
 
-Returns ``true`` if this shape is colliding with another.
+Trả về ``true`` nếu shape này đang va chạm với một shape khác.
 
-This method needs the transformation matrix for this shape (``local_xform``), the shape to check collisions with (``with_shape``), and the transformation matrix of that shape (``shape_xform``).
+Phương thức này cần ma trận biến đổi của shape này (``local_xform``), shape cần kiểm tra va chạm (``with_shape``) và ma trận biến đổi của shape đó (``shape_xform``).
 
 .. rst-class:: classref-item-separator
 
@@ -119,13 +119,13 @@ This method needs the transformation matrix for this shape (``local_xform``), th
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **collide_and_get_contacts**\ (\ local_xform\: :ref:`Transform2D<class_Transform2D>`, with_shape\: :ref:`Shape2D<class_Shape2D>`, shape_xform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_Shape2D_method_collide_and_get_contacts>`
 
-Returns a list of contact point pairs where this shape touches another.
+Trả về danh sách các cặp điểm tiếp xúc tại nơi shape này chạm vào một shape khác.
 
-If there are no collisions, the returned list is empty. Otherwise, the returned list contains contact points arranged in pairs, with entries alternating between points on the boundary of this shape and points on the boundary of ``with_shape``.
+Nếu không có va chạm, danh sách được trả về sẽ trống. Nếu không, danh sách được trả về chứa các điểm tiếp xúc được sắp xếp thành từng cặp, với các phần tử luân phiên là các điểm trên biên của shape này và các điểm trên biên của ``with_shape``.
 
-A collision pair A, B can be used to calculate the collision normal with ``(B - A).normalized()``, and the collision depth with ``(B - A).length()``. This information is typically used to separate shapes, particularly in collision solvers.
+Một cặp va chạm A, B có thể được dùng để tính pháp tuyến va chạm bằng ``(B - A).normalized()`` và độ sâu va chạm bằng ``(B - A).length()``. Thông tin này thường được dùng để tách các shape, đặc biệt là trong các solver va chạm.
 
-This method needs the transformation matrix for this shape (``local_xform``), the shape to check collisions with (``with_shape``), and the transformation matrix of that shape (``shape_xform``).
+Phương thức này cần ma trận biến đổi của shape này (``local_xform``), shape cần kiểm tra va chạm (``with_shape``) và ma trận biến đổi của shape đó (``shape_xform``).
 
 .. rst-class:: classref-item-separator
 
@@ -137,9 +137,9 @@ This method needs the transformation matrix for this shape (``local_xform``), th
 
 :ref:`bool<class_bool>` **collide_with_motion**\ (\ local_xform\: :ref:`Transform2D<class_Transform2D>`, local_motion\: :ref:`Vector2<class_Vector2>`, with_shape\: :ref:`Shape2D<class_Shape2D>`, shape_xform\: :ref:`Transform2D<class_Transform2D>`, shape_motion\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Shape2D_method_collide_with_motion>`
 
-Returns whether this shape would collide with another, if a given movement was applied.
+Trả về liệu shape này có va chạm với một shape khác nếu áp dụng một chuyển động nhất định hay không.
 
-This method needs the transformation matrix for this shape (``local_xform``), the movement to test on this shape (``local_motion``), the shape to check collisions with (``with_shape``), the transformation matrix of that shape (``shape_xform``), and the movement to test onto the other object (``shape_motion``).
+Phương thức này cần ma trận biến đổi của shape này (``local_xform``), chuyển động cần kiểm tra trên shape này (``local_motion``), shape cần kiểm tra va chạm (``with_shape``), ma trận biến đổi của shape đó (``shape_xform``) và chuyển động cần kiểm tra lên đối tượng còn lại (``shape_motion``).
 
 .. rst-class:: classref-item-separator
 
@@ -151,13 +151,13 @@ This method needs the transformation matrix for this shape (``local_xform``), th
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **collide_with_motion_and_get_contacts**\ (\ local_xform\: :ref:`Transform2D<class_Transform2D>`, local_motion\: :ref:`Vector2<class_Vector2>`, with_shape\: :ref:`Shape2D<class_Shape2D>`, shape_xform\: :ref:`Transform2D<class_Transform2D>`, shape_motion\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Shape2D_method_collide_with_motion_and_get_contacts>`
 
-Returns a list of contact point pairs where this shape would touch another, if a given movement was applied.
+Trả về danh sách các cặp điểm tiếp xúc tại nơi shape này sẽ chạm vào một shape khác nếu áp dụng một chuyển động nhất định.
 
-If there would be no collisions, the returned list is empty. Otherwise, the returned list contains contact points arranged in pairs, with entries alternating between points on the boundary of this shape and points on the boundary of ``with_shape``.
+Nếu sẽ không có va chạm, danh sách được trả về sẽ trống. Nếu không, danh sách được trả về chứa các điểm tiếp xúc được sắp xếp thành từng cặp, với các phần tử luân phiên là các điểm trên biên của shape này và các điểm trên biên của ``with_shape``.
 
-A collision pair A, B can be used to calculate the collision normal with ``(B - A).normalized()``, and the collision depth with ``(B - A).length()``. This information is typically used to separate shapes, particularly in collision solvers.
+Một cặp va chạm A, B có thể được dùng để tính pháp tuyến va chạm bằng ``(B - A).normalized()`` và độ sâu va chạm bằng ``(B - A).length()``. Thông tin này thường được dùng để tách các shape, đặc biệt là trong các solver va chạm.
 
-This method needs the transformation matrix for this shape (``local_xform``), the movement to test on this shape (``local_motion``), the shape to check collisions with (``with_shape``), the transformation matrix of that shape (``shape_xform``), and the movement to test onto the other object (``shape_motion``).
+Phương thức này cần ma trận biến đổi của shape này (``local_xform``), chuyển động cần kiểm tra trên shape này (``local_motion``), shape cần kiểm tra va chạm (``with_shape``), ma trận biến đổi của shape đó (``shape_xform``) và chuyển động cần kiểm tra lên đối tượng còn lại (``shape_motion``).
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ This method needs the transformation matrix for this shape (``local_xform``), th
 
 |void| **draw**\ (\ canvas_item\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_Shape2D_method_draw>`
 
-Draws a solid shape onto a :ref:`CanvasItem<class_CanvasItem>` with the :ref:`RenderingServer<class_RenderingServer>` API filled with the specified ``color``. The exact drawing method is specific for each shape and cannot be configured.
+Vẽ một shape đặc lên :ref:`CanvasItem<class_CanvasItem>` bằng API :ref:`RenderingServer<class_RenderingServer>` với ``color`` được tô đầy. Phương pháp vẽ chính xác là riêng cho từng shape và không thể cấu hình.
 
 .. rst-class:: classref-item-separator
 
@@ -181,14 +181,14 @@ Draws a solid shape onto a :ref:`CanvasItem<class_CanvasItem>` with the :ref:`Re
 
 :ref:`Rect2<class_Rect2>` **get_rect**\ (\ ) |const| :ref:`🔗<class_Shape2D_method_get_rect>`
 
-Returns a :ref:`Rect2<class_Rect2>` representing the shapes boundary.
+Trả về một :ref:`Rect2<class_Rect2>` biểu diễn đường biên của shape.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

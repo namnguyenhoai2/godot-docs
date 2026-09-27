@@ -10,16 +10,16 @@
 ScriptCreateDialog
 ==================
 
-**Inherits:** :ref:`ConfirmationDialog<class_ConfirmationDialog>` **<** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ConfirmationDialog<class_ConfirmationDialog>` **<** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Godot editor's popup dialog for creating new :ref:`Script<class_Script>` files.
+Hộp thoại popup của trình chỉnh sửa Godot để tạo các tệp :ref:`Script<class_Script>` mới.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **ScriptCreateDialog** creates script files according to a given template for a given scripting language. The standard use is to configure its fields prior to calling one of the :ref:`Window.popup()<class_Window_method_popup>` methods.
+**ScriptCreateDialog** tạo các tệp script theo một template nhất định cho một ngôn ngữ lập trình nhất định. Cách sử dụng thông thường là cấu hình các trường của nó trước khi gọi một trong các phương thức :ref:`Window.popup()<class_Window_method_popup>`.
 
 
 .. tabs::
@@ -28,8 +28,8 @@ The **ScriptCreateDialog** creates script files according to a given template fo
 
     func _ready():
         var dialog = ScriptCreateDialog.new();
-        dialog.config("Node", "res://new_node.gd") # For in-engine types.
-        dialog.config("\"res://base_node.gd\"", "res://derived_node.gd") # For script types.
+        dialog.config("Node", "res://new_node.gd") # Đối với các kiểu tích hợp trong engine.
+        dialog.config("\"res://base_node.gd\"", "res://derived_node.gd") # Đối với các kiểu script.
         dialog.popup_centered()
 
  .. code-tab:: csharp
@@ -37,8 +37,8 @@ The **ScriptCreateDialog** creates script files according to a given template fo
     public override void _Ready()
     {
         var dialog = new ScriptCreateDialog();
-        dialog.Config("Node", "res://NewNode.cs"); // For in-engine types.
-        dialog.Config("\"res://BaseNode.cs\"", "res://DerivedNode.cs"); // For script types.
+        dialog.Config("Node", "res://NewNode.cs"); // Đối với các kiểu tích hợp trong engine.
+        dialog.Config("\"res://BaseNode.cs\"", "res://DerivedNode.cs"); // Đối với các kiểu script.
         dialog.PopupCentered();
     }
 
@@ -46,24 +46,24 @@ The **ScriptCreateDialog** creates script files according to a given template fo
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------+-------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | dialog_hide_on_ok | ``false`` (overrides :ref:`AcceptDialog<class_AcceptDialog_property_dialog_hide_on_ok>`) |
-   +-----------------------------+-------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | ok_button_text    | ``"Create"`` (overrides :ref:`AcceptDialog<class_AcceptDialog_property_ok_button_text>`) |
-   +-----------------------------+-------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | title             | ``"Attach Node Script"`` (overrides :ref:`Window<class_Window_property_title>`)          |
-   +-----------------------------+-------------------+------------------------------------------------------------------------------------------+
+   +-----------------------------+-------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | dialog_hide_on_ok | ``false`` (ghi đè :ref:`AcceptDialog<class_AcceptDialog_property_dialog_hide_on_ok>`) |
+   +-----------------------------+-------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | ok_button_text    | ``"Create"`` (ghi đè :ref:`AcceptDialog<class_AcceptDialog_property_ok_button_text>`) |
+   +-----------------------------+-------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | title             | ``"Attach Node Script"`` (ghi đè :ref:`Window<class_Window_property_title>`)          |
+   +-----------------------------+-------------------+---------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -78,8 +78,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_ScriptCreateDialog_signal_script_created:
 
@@ -87,7 +87,7 @@ Signals
 
 **script_created**\ (\ script\: :ref:`Script<class_Script>`\ ) :ref:`🔗<class_ScriptCreateDialog_signal_script_created>`
 
-Emitted when the user clicks the OK button.
+Được phát ra khi người dùng nhấp vào nút OK.
 
 .. rst-class:: classref-section-separator
 
@@ -95,8 +95,8 @@ Emitted when the user clicks the OK button.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ScriptCreateDialog_method_config:
 
@@ -104,14 +104,14 @@ Method Descriptions
 
 |void| **config**\ (\ inherits\: :ref:`String<class_String>`, path\: :ref:`String<class_String>`, built_in_enabled\: :ref:`bool<class_bool>` = true, load_enabled\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ScriptCreateDialog_method_config>`
 
-Prefills required fields to configure the ScriptCreateDialog for use.
+Điền trước các trường bắt buộc để cấu hình ScriptCreateDialog sử dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

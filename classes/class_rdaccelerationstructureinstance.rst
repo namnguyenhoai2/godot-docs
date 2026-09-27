@@ -10,40 +10,40 @@
 RDAccelerationStructureInstance
 ===============================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Acceleration structure instance (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Instance của cấu trúc tăng tốc (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**RDAccelerationStructureInstance** describes an instance of a Bottom-Level Acceleration Structure (BLAS) used in the :ref:`RenderingDevice.tlas_build()<class_RenderingDevice_method_tlas_build>` method.
+**RDAccelerationStructureInstance** mô tả một instance của Bottom-Level Acceleration Structure (BLAS) được sử dụng trong phương thức :ref:`RenderingDevice.tlas_build()<class_RenderingDevice_method_tlas_build>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`RID<class_RID>`                                                                                                  | :ref:`blas<class_RDAccelerationStructureInstance_property_blas>`                   | ``RID()``                                           |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
-   | |bitfield|\[:ref:`AccelerationStructureInstanceFlagBits<enum_RenderingDevice_AccelerationStructureInstanceFlagBits>`\] | :ref:`flags<class_RDAccelerationStructureInstance_property_flags>`                 | ``0``                                               |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`hit_sbt_range<class_RDAccelerationStructureInstance_property_hit_sbt_range>` | ``0``                                               |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`id<class_RDAccelerationStructureInstance_property_id>`                       | ``0``                                               |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`mask<class_RDAccelerationStructureInstance_property_mask>`                   | ``255``                                             |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`                                                                                  | :ref:`transform<class_RDAccelerationStructureInstance_property_transform>`         | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`RID<class_RID>`                                                                                                   | :ref:`blas<class_RDAccelerationStructureInstance_property_blas>`                   | ``RID()``                                           |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
+   | |bitfield|\[:ref:`AccelerationStructureInstanceFlagBits <enum_RenderingDevice_AccelerationStructureInstanceFlagBits>`\] | :ref:`flags<class_RDAccelerationStructureInstance_property_flags>`                 | ``0``                                               |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`hit_sbt_range<class_RDAccelerationStructureInstance_property_hit_sbt_range>` | ``0``                                               |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`id<class_RDAccelerationStructureInstance_property_id>`                       | ``0``                                               |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`mask<class_RDAccelerationStructureInstance_property_mask>`                   | ``255``                                             |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`                                                                                   | :ref:`transform<class_RDAccelerationStructureInstance_property_transform>`         | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -51,8 +51,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDAccelerationStructureInstance_property_blas:
 
@@ -65,7 +65,7 @@ Property Descriptions
 - |void| **set_blas**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_blas**\ (\ )
 
-The BLAS referenced by this instance. If ``null``, the instance is treated as a placeholder but still contributes to ``gl_InstanceIndex`` in GLSL.
+BLAS được instance này tham chiếu. Nếu ``null``, instance được xem như một placeholder nhưng vẫn đóng góp vào ``gl_InstanceIndex`` trong GLSL.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ The BLAS referenced by this instance. If ``null``, the instance is treated as a 
 - |void| **set_flags**\ (\ value\: |bitfield|\[:ref:`AccelerationStructureInstanceFlagBits<enum_RenderingDevice_AccelerationStructureInstanceFlagBits>`\]\ )
 - |bitfield|\[:ref:`AccelerationStructureInstanceFlagBits<enum_RenderingDevice_AccelerationStructureInstanceFlagBits>`\] **get_flags**\ (\ )
 
-Flags for the instance.
+Các cờ cho instance.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ Flags for the instance.
 - |void| **set_hit_sbt_range**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_hit_sbt_range**\ (\ )
 
-Hit shader binding table range used for this instance, allocated using the :ref:`RenderingDevice.hit_sbt_range_alloc()<class_RenderingDevice_method_hit_sbt_range_alloc>` method.
+Phạm vi hit shader binding table được sử dụng cho instance này, được cấp phát bằng phương thức :ref:`RenderingDevice.hit_sbt_range_alloc()<class_RenderingDevice_method_hit_sbt_range_alloc>`.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Hit shader binding table range used for this instance, allocated using the :ref:
 - |void| **set_id**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_id**\ (\ )
 
-Custom instance ID that can be accessed in GLSL using ``gl_InstanceCustomIndexEXT``.
+ID instance tùy chỉnh có thể được truy cập trong GLSL bằng ``gl_InstanceCustomIndexEXT``.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ Custom instance ID that can be accessed in GLSL using ``gl_InstanceCustomIndexEX
 - |void| **set_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_mask**\ (\ )
 
-Visibility mask used to control which rays can intersect this instance.
+Mặt nạ khả năng hiển thị được sử dụng để kiểm soát các tia nào có thể giao với instance này.
 
 .. rst-class:: classref-item-separator
 
@@ -150,14 +150,14 @@ Visibility mask used to control which rays can intersect this instance.
 - |void| **set_transform**\ (\ value\: :ref:`Transform3D<class_Transform3D>`\ )
 - :ref:`Transform3D<class_Transform3D>` **get_transform**\ (\ )
 
-Transform applied to the referenced BLAS for this instance.
+Phép biến đổi được áp dụng cho BLAS được tham chiếu của instance này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

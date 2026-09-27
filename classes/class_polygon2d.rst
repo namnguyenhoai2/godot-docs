@@ -10,20 +10,20 @@
 Polygon2D
 =========
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A 2D polygon.
+Một đa giác 2D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A Polygon2D is defined by a set of points. Each point is connected to the next, with the final point being connected to the first, resulting in a closed polygon. Polygon2Ds can be filled with color (solid or gradient) or filled with a given texture.
+Polygon2D được xác định bởi một tập hợp các điểm. Mỗi điểm được nối với điểm tiếp theo, trong đó điểm cuối cùng được nối với điểm đầu tiên, tạo thành một đa giác khép kín. Polygon2D có thể được tô màu (màu đơn hoặc chuyển màu) hoặc tô bằng một texture được chỉ định.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -63,29 +63,29 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`add_bone<class_Polygon2D_method_add_bone>`\ (\ path\: :ref:`NodePath<class_NodePath>`, weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )        |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`clear_bones<class_Polygon2D_method_clear_bones>`\ (\ )                                                                                                         |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`erase_bone<class_Polygon2D_method_erase_bone>`\ (\ index\: :ref:`int<class_int>`\ )                                                                            |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`get_bone_count<class_Polygon2D_method_get_bone_count>`\ (\ ) |const|                                                                                           |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                     | :ref:`get_bone_path<class_Polygon2D_method_get_bone_path>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                              |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`get_bone_weights<class_Polygon2D_method_get_bone_weights>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                        |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`set_bone_path<class_Polygon2D_method_set_bone_path>`\ (\ index\: :ref:`int<class_int>`, path\: :ref:`NodePath<class_NodePath>`\ )                              |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`set_bone_weights<class_Polygon2D_method_set_bone_weights>`\ (\ index\: :ref:`int<class_int>`, weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) |
-   +-----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`add_bone<class_Polygon2D_method_add_bone>`\ (\ path\: :ref:`NodePath<class_NodePath>`, weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )         |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`clear_bones<class_Polygon2D_method_clear_bones>`\ (\ )                                                                                                          |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`erase_bone<class_Polygon2D_method_erase_bone>`\ (\ index\: :ref:`int<class_int>`\ )                                                                             |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                               | :ref:`get_bone_count<class_Polygon2D_method_get_bone_count>`\ (\ ) |const|                                                                                            |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                     | :ref:`get_bone_path<class_Polygon2D_method_get_bone_path>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                               |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`get_bone_weights<class_Polygon2D_method_get_bone_weights>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                         |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`set_bone_path<class_Polygon2D_method_set_bone_path>`\ (\ index\: :ref:`int<class_int>`, path\: :ref:`NodePath<class_NodePath>`\ )"                              |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                              | :ref:`set_bone_weights<class_Polygon2D_method_set_bone_weights>`\ (\ index\: :ref:`int<class_int>`, weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )" |
+   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -93,8 +93,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Polygon2D_property_antialiased:
 
@@ -107,7 +107,7 @@ Property Descriptions
 - |void| **set_antialiased**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_antialiased**\ (\ )
 
-If ``true``, polygon edges will be anti-aliased.
+Nếu ``true``, các cạnh polygon sẽ được khử răng cưa.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ If ``true``, polygon edges will be anti-aliased.
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The polygon's fill color. If :ref:`texture<class_Polygon2D_property_texture>` is set, it will be multiplied by this color. It will also be the default color for vertices not set in :ref:`vertex_colors<class_Polygon2D_property_vertex_colors>`.
+Màu tô của polygon. Nếu :ref:`texture<class_Polygon2D_property_texture>` được thiết lập, giá trị này sẽ được nhân với màu này. Đây cũng sẽ là màu mặc định cho các đỉnh chưa được thiết lập trong :ref:`vertex_colors<class_Polygon2D_property_vertex_colors>`.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ The polygon's fill color. If :ref:`texture<class_Polygon2D_property_texture>` is
 - |void| **set_internal_vertex_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_internal_vertex_count**\ (\ )
 
-Number of internal vertices, used for UV mapping.
+Số lượng đỉnh bên trong, được sử dụng để ánh xạ UV.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Number of internal vertices, used for UV mapping.
 - |void| **set_invert_border**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_invert_border**\ (\ )
 
-Added padding applied to the bounding box when :ref:`invert_enabled<class_Polygon2D_property_invert_enabled>` is set to ``true``. Setting this value too small may result in a "Bad Polygon" error.
+Phần đệm bổ sung được áp dụng cho bounding box khi :ref:`invert_enabled<class_Polygon2D_property_invert_enabled>` được đặt thành ``true``. Việc đặt giá trị này quá nhỏ có thể dẫn đến lỗi "Bad Polygon".
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Added padding applied to the bounding box when :ref:`invert_enabled<class_Polygo
 - |void| **set_invert_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_invert_enabled**\ (\ )
 
-If ``true``, the polygon will be inverted, containing the area outside the defined points and extending to the :ref:`invert_border<class_Polygon2D_property_invert_border>`.
+Nếu ``true``, polygon sẽ bị đảo ngược, chứa vùng bên ngoài các điểm đã xác định và mở rộng đến :ref:`invert_border<class_Polygon2D_property_invert_border>`.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ If ``true``, the polygon will be inverted, containing the area outside the defin
 - |void| **set_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset**\ (\ )
 
-The offset applied to each vertex.
+Độ lệch được áp dụng cho mỗi đỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -209,9 +209,9 @@ The offset applied to each vertex.
 - |void| **set_polygon**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_polygon**\ (\ )
 
-The polygon's list of vertices. The final point will be connected to the first.
+Danh sách các đỉnh của polygon. Điểm cuối cùng sẽ được nối với điểm đầu tiên.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ The polygon's list of vertices. The final point will be connected to the first.
 - |void| **set_polygons**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_polygons**\ (\ )
 
-The list of polygons, in case more than one is being represented. Every individual polygon is stored as a :ref:`PackedInt32Array<class_PackedInt32Array>` where each :ref:`int<class_int>` is an index to a point in :ref:`polygon<class_Polygon2D_property_polygon>`. If empty, this property will be ignored, and the resulting single polygon will be composed of all points in :ref:`polygon<class_Polygon2D_property_polygon>`, using the order they are stored in.
+Danh sách các đa giác, trong trường hợp biểu diễn nhiều hơn một đa giác. Mỗi đa giác riêng lẻ được lưu trữ dưới dạng một :ref:`PackedInt32Array<class_PackedInt32Array>`, trong đó mỗi :ref:`int<class_int>` là một chỉ mục đến một điểm trong :ref:`polygon<class_Polygon2D_property_polygon>`. Nếu để trống, thuộc tính này sẽ bị bỏ qua và đa giác duy nhất kết quả sẽ được tạo từ tất cả các điểm trong :ref:`polygon<class_Polygon2D_property_polygon>`, theo thứ tự chúng được lưu trữ.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ The list of polygons, in case more than one is being represented. Every individu
 - |void| **set_skeleton**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_skeleton**\ (\ )
 
-Path to a :ref:`Skeleton2D<class_Skeleton2D>` node used for skeleton-based deformations of this polygon. If empty or invalid, skeletal deformations will not be used.
+Đường dẫn đến một node :ref:`Skeleton2D<class_Skeleton2D>` được sử dụng cho các biến dạng dựa trên skeleton của đa giác này. Nếu để trống hoặc không hợp lệ, các biến dạng skeletal sẽ không được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -255,14 +255,14 @@ Path to a :ref:`Skeleton2D<class_Skeleton2D>` node used for skeleton-based defor
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_Polygon2D_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_Polygon2D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-The polygon's fill texture. Use :ref:`uv<class_Polygon2D_property_uv>` to set texture coordinates.
+texture tô của đa giác. Sử dụng :ref:`uv<class_Polygon2D_property_uv>` để thiết lập tọa độ texture.
 
 .. rst-class:: classref-item-separator
 
@@ -279,7 +279,7 @@ The polygon's fill texture. Use :ref:`uv<class_Polygon2D_property_uv>` to set te
 - |void| **set_texture_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_texture_offset**\ (\ )
 
-Amount to offset the polygon's :ref:`texture<class_Polygon2D_property_texture>`. If set to ``Vector2(0, 0)``, the texture's origin (its top-left corner) will be placed at the polygon's position.
+Mức độ dịch chuyển :ref:`texture<class_Polygon2D_property_texture>` của đa giác. Nếu đặt thành ``Vector2(0, 0)``, gốc của texture (góc trên bên trái) sẽ được đặt tại vị trí của đa giác.
 
 .. rst-class:: classref-item-separator
 
@@ -296,7 +296,7 @@ Amount to offset the polygon's :ref:`texture<class_Polygon2D_property_texture>`.
 - |void| **set_texture_rotation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_texture_rotation**\ (\ )
 
-The texture's rotation in radians.
+Góc xoay của texture, tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -313,7 +313,7 @@ The texture's rotation in radians.
 - |void| **set_texture_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_texture_scale**\ (\ )
 
-Amount to multiply the :ref:`uv<class_Polygon2D_property_uv>` coordinates when using :ref:`texture<class_Polygon2D_property_texture>`. Larger values make the texture smaller, and vice versa.
+Giá trị dùng để nhân các tọa độ :ref:`uv<class_Polygon2D_property_uv>` khi sử dụng :ref:`texture<class_Polygon2D_property_texture>`. Giá trị lớn hơn làm texture nhỏ hơn và ngược lại.
 
 .. rst-class:: classref-item-separator
 
@@ -330,9 +330,9 @@ Amount to multiply the :ref:`uv<class_Polygon2D_property_uv>` coordinates when u
 - |void| **set_uv**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_uv**\ (\ )
 
-Texture coordinates for each vertex of the polygon. There should be one UV value per polygon vertex. If there are fewer, undefined vertices will use ``Vector2(0, 0)``.
+Tọa độ texture cho mỗi đỉnh của polygon. Mỗi đỉnh polygon cần có một giá trị UV. Nếu số lượng ít hơn, các đỉnh chưa xác định sẽ sử dụng ``Vector2(0, 0)``.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -349,9 +349,9 @@ Texture coordinates for each vertex of the polygon. There should be one UV value
 - |void| **set_vertex_colors**\ (\ value\: :ref:`PackedColorArray<class_PackedColorArray>`\ )
 - :ref:`PackedColorArray<class_PackedColorArray>` **get_vertex_colors**\ (\ )
 
-Color for each vertex. Colors are interpolated between vertices, resulting in smooth gradients. There should be one per polygon vertex. If there are fewer, undefined vertices will use :ref:`color<class_Polygon2D_property_color>`.
+Màu cho mỗi đỉnh. Màu được nội suy giữa các đỉnh, tạo ra các dải chuyển màu mượt mà. Mỗi đỉnh polygon cần có một màu. Nếu số lượng ít hơn, các đỉnh chưa xác định sẽ sử dụng :ref:`color<class_Polygon2D_property_color>`.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedColorArray<class_PackedColorArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedColorArray<class_PackedColorArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -359,8 +359,8 @@ Color for each vertex. Colors are interpolated between vertices, resulting in sm
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Polygon2D_method_add_bone:
 
@@ -368,7 +368,7 @@ Method Descriptions
 
 |void| **add_bone**\ (\ path\: :ref:`NodePath<class_NodePath>`, weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) :ref:`🔗<class_Polygon2D_method_add_bone>`
 
-Adds a bone with the specified ``path`` and ``weights``.
+Thêm một bone với ``path`` và ``weights`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -380,7 +380,7 @@ Adds a bone with the specified ``path`` and ``weights``.
 
 |void| **clear_bones**\ (\ ) :ref:`🔗<class_Polygon2D_method_clear_bones>`
 
-Removes all bones from this **Polygon2D**.
+Xóa tất cả bone khỏi **Polygon2D** này.
 
 .. rst-class:: classref-item-separator
 
@@ -392,7 +392,7 @@ Removes all bones from this **Polygon2D**.
 
 |void| **erase_bone**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Polygon2D_method_erase_bone>`
 
-Removes the specified bone from this **Polygon2D**.
+Xóa xương được chỉ định khỏi **Polygon2D** này.
 
 .. rst-class:: classref-item-separator
 
@@ -404,7 +404,7 @@ Removes the specified bone from this **Polygon2D**.
 
 :ref:`int<class_int>` **get_bone_count**\ (\ ) |const| :ref:`🔗<class_Polygon2D_method_get_bone_count>`
 
-Returns the number of bones in this **Polygon2D**.
+Trả về số lượng xương trong **Polygon2D** này.
 
 .. rst-class:: classref-item-separator
 
@@ -416,7 +416,7 @@ Returns the number of bones in this **Polygon2D**.
 
 :ref:`NodePath<class_NodePath>` **get_bone_path**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Polygon2D_method_get_bone_path>`
 
-Returns the path to the node associated with the specified bone.
+Trả về đường dẫn đến nút được liên kết với xương được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -428,7 +428,7 @@ Returns the path to the node associated with the specified bone.
 
 :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_bone_weights**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Polygon2D_method_get_bone_weights>`
 
-Returns the weight values of the specified bone.
+Trả về các giá trị trọng số của xương được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -440,7 +440,7 @@ Returns the weight values of the specified bone.
 
 |void| **set_bone_path**\ (\ index\: :ref:`int<class_int>`, path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_Polygon2D_method_set_bone_path>`
 
-Sets the path to the node associated with the specified bone.
+Đặt đường dẫn đến nút được liên kết với xương được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -452,14 +452,14 @@ Sets the path to the node associated with the specified bone.
 
 |void| **set_bone_weights**\ (\ index\: :ref:`int<class_int>`, weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) :ref:`🔗<class_Polygon2D_method_set_bone_weights>`
 
-Sets the weight values for the specified bone.
+Đặt các giá trị trọng số cho xương được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một đối tượng để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

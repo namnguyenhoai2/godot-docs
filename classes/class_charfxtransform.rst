@@ -10,27 +10,27 @@
 CharFXTransform
 ===============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Controls how an individual character will be displayed in a :ref:`RichTextEffect<class_RichTextEffect>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-By setting various properties on this object, you can control how individual characters will be displayed in a :ref:`RichTextEffect<class_RichTextEffect>`.
+Điều khiển cách một ký tự riêng lẻ được hiển thị trong một :ref:`RichTextEffect<class_RichTextEffect>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Bằng cách thiết lập nhiều thuộc tính khác nhau trên đối tượng này, bạn có thể kiểm soát cách các ký tự riêng lẻ được hiển thị trong một :ref:`RichTextEffect<class_RichTextEffect>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`BBCode in RichTextLabel <../tutorials/ui/bbcode_in_richtextlabel>`
+- :doc:`BBCode trong RichTextLabel <../tutorials/ui/bbcode_in_richtextlabel>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -70,8 +70,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CharFXTransform_property_color:
 
@@ -84,7 +84,7 @@ Property Descriptions
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The color the character will be drawn with.
+Màu dùng để vẽ nhân vật.
 
 .. rst-class:: classref-item-separator
 
@@ -101,9 +101,9 @@ The color the character will be drawn with.
 - |void| **set_elapsed_time**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_elapsed_time**\ (\ )
 
-The time elapsed since the :ref:`RichTextLabel<class_RichTextLabel>` was added to the scene tree (in seconds). Time stops when the :ref:`RichTextLabel<class_RichTextLabel>` is paused (see :ref:`Node.process_mode<class_Node_property_process_mode>`). Resets when the text in the :ref:`RichTextLabel<class_RichTextLabel>` is changed.
+Thời gian đã trôi qua kể từ khi :ref:`RichTextLabel<class_RichTextLabel>` được thêm vào scene tree (tính bằng giây). Thời gian dừng lại khi :ref:`RichTextLabel<class_RichTextLabel>` được tạm dừng (xem :ref:`Node.process_mode<class_Node_property_process_mode>`). Đặt lại khi văn bản trong :ref:`RichTextLabel<class_RichTextLabel>` được thay đổi.
 
-\ **Note:** Time still passes while the :ref:`RichTextLabel<class_RichTextLabel>` is hidden.
+\ **Lưu ý:** Thời gian vẫn trôi qua trong khi :ref:`RichTextLabel<class_RichTextLabel>` bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -120,9 +120,9 @@ The time elapsed since the :ref:`RichTextLabel<class_RichTextLabel>` was added t
 - |void| **set_environment**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_environment**\ (\ )
 
-Contains the arguments passed in the opening BBCode tag. By default, arguments are strings; if their contents match a type such as :ref:`bool<class_bool>`, :ref:`int<class_int>` or :ref:`float<class_float>`, they will be converted automatically. Color codes in the form ``#rrggbb`` or ``#rgb`` will be converted to an opaque :ref:`Color<class_Color>`. String arguments may not contain spaces, even if they're quoted. If present, quotes will also be present in the final string.
+Chứa các đối số được truyền trong thẻ BBCode mở. Theo mặc định, các đối số là chuỗi; nếu nội dung của chúng khớp với một kiểu như :ref:`bool<class_bool>`, :ref:`int<class_int>` hoặc :ref:`float<class_float>`, chúng sẽ được tự động chuyển đổi. Các mã màu ở dạng ``#rrggbb`` hoặc ``#rgb`` sẽ được chuyển đổi thành một :ref:`Color<class_Color>` không trong suốt. Các đối số chuỗi không được chứa khoảng trắng, ngay cả khi chúng được đặt trong dấu ngoặc kép. Nếu có dấu ngoặc kép, chúng cũng sẽ xuất hiện trong chuỗi cuối cùng.
 
-For example, the opening BBCode tag ``[example foo=hello bar=true baz=42 color=#ffffff]`` will map to the following :ref:`Dictionary<class_Dictionary>`:
+Ví dụ: thẻ BBCode mở ``[example foo=hello bar=true baz=42 color=#ffffff]`` sẽ ánh xạ thành :ref:`Dictionary<class_Dictionary>` sau đây:
 
 ::
 
@@ -143,9 +143,9 @@ For example, the opening BBCode tag ``[example foo=hello bar=true baz=42 color=#
 - |void| **set_font**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_font**\ (\ )
 
-:ref:`TextServer<class_TextServer>` RID of the font used to render glyph, this value can be used with ``TextServer.font_*`` methods to retrieve font information.
+:ref:`TextServer<class_TextServer>` RID của font được dùng để kết xuất glyph; giá trị này có thể được dùng với các phương thức ``TextServer.font_*`` để lấy thông tin về font.
 
-\ **Note:** Read-only. Setting this property won't affect drawing.
+\ **Lưu ý:** Chỉ đọc. Việc đặt thuộc tính này sẽ không ảnh hưởng đến thao tác vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -162,9 +162,9 @@ For example, the opening BBCode tag ``[example foo=hello bar=true baz=42 color=#
 - |void| **set_glyph_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_glyph_count**\ (\ )
 
-Number of glyphs in the grapheme cluster. This value is set in the first glyph of a cluster.
+Số glyph trong cụm grapheme. Giá trị này được đặt trong glyph đầu tiên của một cụm.
 
-\ **Note:** Read-only. Setting this property won't affect drawing.
+\ **Lưu ý:** Chỉ đọc. Việc đặt thuộc tính này sẽ không ảnh hưởng đến thao tác vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -181,9 +181,9 @@ Number of glyphs in the grapheme cluster. This value is set in the first glyph o
 - |void| **set_glyph_flags**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_glyph_flags**\ (\ )
 
-Glyph flags. See :ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>` for more info.
+Các cờ của glyph. Xem :ref:`GraphemeFlag <enum_TextServer_GraphemeFlag>` để biết thêm thông tin.
 
-\ **Note:** Read-only. Setting this property won't affect drawing.
+\ **Lưu ý:** Chỉ đọc. Việc đặt thuộc tính này sẽ không ảnh hưởng đến thao tác vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ Glyph flags. See :ref:`GraphemeFlag<enum_TextServer_GraphemeFlag>` for more info
 - |void| **set_glyph_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_glyph_index**\ (\ )
 
-Glyph index specific to the :ref:`font<class_CharFXTransform_property_font>`. If you want to replace this glyph, use :ref:`TextServer.font_get_glyph_index()<class_TextServer_method_font_get_glyph_index>` with :ref:`font<class_CharFXTransform_property_font>` to get a new glyph index for a single character.
+Chỉ mục glyph dành riêng cho :ref:`font<class_CharFXTransform_property_font>`. Nếu muốn thay thế glyph này, hãy sử dụng :ref:`TextServer.font_get_glyph_index()<class_TextServer_method_font_get_glyph_index>` với :ref:`font<class_CharFXTransform_property_font>` để lấy chỉ mục glyph mới cho một ký tự.
 
 .. rst-class:: classref-item-separator
 
@@ -217,7 +217,7 @@ Glyph index specific to the :ref:`font<class_CharFXTransform_property_font>`. If
 - |void| **set_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset**\ (\ )
 
-The position offset the character will be drawn with (in pixels).
+Độ lệch vị trí mà ký tự sẽ được vẽ (tính bằng pixel).
 
 .. rst-class:: classref-item-separator
 
@@ -234,9 +234,9 @@ The position offset the character will be drawn with (in pixels).
 - |void| **set_outline**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_outline**\ (\ )
 
-If ``true``, FX transform is called for outline drawing.
+Nếu ``true``, FX transform được gọi để vẽ đường viền.
 
-\ **Note:** Read-only. Setting this property won't affect drawing.
+\ **Lưu ý:** Chỉ đọc. Việc đặt thuộc tính này sẽ không ảnh hưởng đến thao tác vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -253,9 +253,9 @@ If ``true``, FX transform is called for outline drawing.
 - |void| **set_range**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_range**\ (\ )
 
-Absolute character range in the string, corresponding to the glyph.
+Phạm vi ký tự tuyệt đối trong chuỗi, tương ứng với glyph.
 
-\ **Note:** Read-only. Setting this property won't affect drawing.
+\ **Lưu ý:** Chỉ đọc. Việc đặt thuộc tính này sẽ không ảnh hưởng đến thao tác vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -272,9 +272,9 @@ Absolute character range in the string, corresponding to the glyph.
 - |void| **set_relative_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_relative_index**\ (\ )
 
-The character offset of the glyph, relative to the current :ref:`RichTextEffect<class_RichTextEffect>` custom block.
+Độ lệch ký tự của glyph, tương đối với custom block :ref:`RichTextEffect<class_RichTextEffect>` hiện tại.
 
-\ **Note:** Read-only. Setting this property won't affect drawing.
+\ **Lưu ý:** Chỉ đọc. Việc đặt thuộc tính này sẽ không ảnh hưởng đến thao tác vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -291,7 +291,7 @@ The character offset of the glyph, relative to the current :ref:`RichTextEffect<
 - |void| **set_transform**\ (\ value\: :ref:`Transform2D<class_Transform2D>`\ )
 - :ref:`Transform2D<class_Transform2D>` **get_transform**\ (\ )
 
-The current transform of the current glyph. It can be overridden (for example, by driving the position and rotation from a curve). You can also alter the existing value to apply transforms on top of other effects.
+Transform hiện tại của glyph hiện tại. Bạn có thể ghi đè giá trị này (ví dụ: điều khiển vị trí và góc xoay từ một đường cong). Bạn cũng có thể thay đổi giá trị hiện có để áp dụng các transform bổ sung lên trên những hiệu ứng khác.
 
 .. rst-class:: classref-item-separator
 
@@ -308,14 +308,14 @@ The current transform of the current glyph. It can be overridden (for example, b
 - |void| **set_visibility**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_visible**\ (\ )
 
-If ``true``, the character will be drawn. If ``false``, the character will be hidden. Characters around hidden characters will reflow to take the space of hidden characters. If this is not desired, set their :ref:`color<class_CharFXTransform_property_color>` to ``Color(1, 1, 1, 0)`` instead.
+Nếu ``true``, ký tự sẽ được vẽ. Nếu ``false``, ký tự sẽ bị ẩn. Các ký tự xung quanh ký tự bị ẩn sẽ dồn lại để chiếm khoảng trống của ký tự bị ẩn. Nếu không mong muốn điều này, hãy đặt :ref:`color<class_CharFXTransform_property_color>` của chúng thành ``Color(1, 1, 1, 0)`` thay thế.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

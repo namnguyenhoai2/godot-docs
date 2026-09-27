@@ -10,20 +10,20 @@
 RDPipelineColorBlendState
 =========================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Pipeline color blend state (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Trạng thái blend màu của pipeline (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được :ref:`RenderingDevice<class_RenderingDevice>` sử dụng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -36,7 +36,7 @@ Properties
    +--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
    | :ref:`bool<class_bool>`                                                                                            | :ref:`enable_logic_op<class_RDPipelineColorBlendState_property_enable_logic_op>` | ``false``             |
    +--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`LogicOperation<enum_RenderingDevice_LogicOperation>`                                                         | :ref:`logic_op<class_RDPipelineColorBlendState_property_logic_op>`               | ``0``                 |
+   | :ref:`LogicOperation <enum_RenderingDevice_LogicOperation>`                                                        | :ref:`logic_op<class_RDPipelineColorBlendState_property_logic_op>`               | ``0``                 |
    +--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-section-separator
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDPipelineColorBlendState_property_attachments:
 
@@ -59,7 +59,7 @@ Property Descriptions
 - |void| **set_attachments**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RDPipelineColorBlendStateAttachment<class_RDPipelineColorBlendStateAttachment>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RDPipelineColorBlendStateAttachment<class_RDPipelineColorBlendStateAttachment>`\] **get_attachments**\ (\ )
 
-The attachments that are blended together.
+Các attachment được blend với nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -76,7 +76,7 @@ The attachments that are blended together.
 - |void| **set_blend_constant**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_blend_constant**\ (\ )
 
-The constant color to blend with. See also :ref:`RenderingDevice.draw_list_set_blend_constants()<class_RenderingDevice_method_draw_list_set_blend_constants>`.
+Màu hằng số để blend cùng. Xem thêm :ref:`RenderingDevice.draw_list_set_blend_constants()<class_RenderingDevice_method_draw_list_set_blend_constants>`.
 
 .. rst-class:: classref-item-separator
 
@@ -93,7 +93,7 @@ The constant color to blend with. See also :ref:`RenderingDevice.draw_list_set_b
 - |void| **set_enable_logic_op**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_logic_op**\ (\ )
 
-If ``true``, performs the logic operation defined in :ref:`logic_op<class_RDPipelineColorBlendState_property_logic_op>`.
+Nếu ``true``, thực hiện phép toán logic được định nghĩa trong :ref:`logic_op<class_RDPipelineColorBlendState_property_logic_op>`.
 
 .. rst-class:: classref-item-separator
 
@@ -110,14 +110,14 @@ If ``true``, performs the logic operation defined in :ref:`logic_op<class_RDPipe
 - |void| **set_logic_op**\ (\ value\: :ref:`LogicOperation<enum_RenderingDevice_LogicOperation>`\ )
 - :ref:`LogicOperation<enum_RenderingDevice_LogicOperation>` **get_logic_op**\ (\ )
 
-The logic operation to perform for blending. Only effective if :ref:`enable_logic_op<class_RDPipelineColorBlendState_property_enable_logic_op>` is ``true``.
+Phép toán logic cần thực hiện để blending. Chỉ có hiệu lực nếu :ref:`enable_logic_op<class_RDPipelineColorBlendState_property_enable_logic_op>` là ``true``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override method này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

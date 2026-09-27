@@ -10,23 +10,23 @@
 FileSystemDock
 ==============
 
-**Inherits:** :ref:`EditorDock<class_EditorDock>` **<** :ref:`MarginContainer<class_MarginContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorDock<class_EditorDock>` **<** :ref:`MarginContainer<class_MarginContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Godot editor's dock for managing files in the project.
+Dock của trình chỉnh sửa Godot để quản lý các tệp trong dự án.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class is available only in :ref:`EditorPlugin<class_EditorPlugin>`\ s and can't be instantiated. You can access it using :ref:`EditorInterface.get_file_system_dock()<class_EditorInterface_method_get_file_system_dock>`.
+Lớp này chỉ khả dụng trong :ref:`EditorPlugin<class_EditorPlugin>`\ s và không thể được khởi tạo. Bạn có thể truy cập lớp này bằng :ref:`EditorInterface.get_file_system_dock()<class_EditorInterface_method_get_file_system_dock>`.
 
-While **FileSystemDock** doesn't expose any methods for file manipulation, it can listen for various file-related signals.
+Mặc dù **FileSystemDock** không cung cấp phương thức nào để thao tác với tệp, lớp này có thể lắng nghe nhiều signal liên quan đến tệp.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_FileSystemDock_signal_display_mode_changed:
 
@@ -54,7 +54,7 @@ Signals
 
 **display_mode_changed**\ (\ ) :ref:`🔗<class_FileSystemDock_signal_display_mode_changed>`
 
-Emitted when the user switches file display mode or split mode.
+Được phát ra khi người dùng chuyển chế độ hiển thị tệp hoặc chế độ chia tách.
 
 .. rst-class:: classref-item-separator
 
@@ -66,7 +66,7 @@ Emitted when the user switches file display mode or split mode.
 
 **file_removed**\ (\ file\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileSystemDock_signal_file_removed>`
 
-Emitted when the given ``file`` was removed.
+Được phát ra khi ``file`` đã bị xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ Emitted when the given ``file`` was removed.
 
 **files_moved**\ (\ old_file\: :ref:`String<class_String>`, new_file\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileSystemDock_signal_files_moved>`
 
-Emitted when a file is moved from ``old_file`` path to ``new_file`` path.
+Được phát ra khi một tệp được di chuyển từ đường dẫn ``old_file`` sang đường dẫn ``new_file``.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ Emitted when a file is moved from ``old_file`` path to ``new_file`` path.
 
 **folder_color_changed**\ (\ ) :ref:`🔗<class_FileSystemDock_signal_folder_color_changed>`
 
-Emitted when folders change color.
+Được phát ra khi màu của các thư mục thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ Emitted when folders change color.
 
 **folder_moved**\ (\ old_folder\: :ref:`String<class_String>`, new_folder\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileSystemDock_signal_folder_moved>`
 
-Emitted when a folder is moved from ``old_folder`` path to ``new_folder`` path.
+Được phát ra khi một thư mục được chuyển từ đường dẫn ``old_folder`` sang đường dẫn ``new_folder``.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ Emitted when a folder is moved from ``old_folder`` path to ``new_folder`` path.
 
 **folder_removed**\ (\ folder\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileSystemDock_signal_folder_removed>`
 
-Emitted when the given ``folder`` was removed.
+Được phát ra khi ``folder`` đã cho bị xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ Emitted when the given ``folder`` was removed.
 
 **inherit**\ (\ file\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileSystemDock_signal_inherit>`
 
-Emitted when a new scene is created that inherits the scene at ``file`` path.
+Được phát ra khi một scene mới được tạo và kế thừa scene tại đường dẫn ``file``.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Emitted when a new scene is created that inherits the scene at ``file`` path.
 
 **instantiate**\ (\ files\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_FileSystemDock_signal_instantiate>`
 
-Emitted when the given scenes are being instantiated in the editor.
+Được phát ra khi các scene đã cho đang được khởi tạo trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Emitted when the given scenes are being instantiated in the editor.
 
 **resource_removed**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_FileSystemDock_signal_resource_removed>`
 
-Emitted when an external ``resource`` had its file removed.
+Được phát ra khi tệp của một ``resource`` bên ngoài bị xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Emitted when an external ``resource`` had its file removed.
 
 **selection_changed**\ (\ ) :ref:`🔗<class_FileSystemDock_signal_selection_changed>`
 
-Emitted when the selection changes. Use :ref:`EditorInterface.get_selected_paths()<class_EditorInterface_method_get_selected_paths>` in the connected method to get the selected paths.
+Được phát ra khi lựa chọn thay đổi. Sử dụng :ref:`EditorInterface.get_selected_paths()<class_EditorInterface_method_get_selected_paths>` trong method được kết nối để lấy các đường dẫn đã chọn.
 
 .. rst-class:: classref-section-separator
 
@@ -170,8 +170,8 @@ Emitted when the selection changes. Use :ref:`EditorInterface.get_selected_paths
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các method
+----------------
 
 .. _class_FileSystemDock_method_add_resource_tooltip_plugin:
 
@@ -179,7 +179,7 @@ Method Descriptions
 
 |void| **add_resource_tooltip_plugin**\ (\ plugin\: :ref:`EditorResourceTooltipPlugin<class_EditorResourceTooltipPlugin>`\ ) :ref:`🔗<class_FileSystemDock_method_add_resource_tooltip_plugin>`
 
-Registers a new :ref:`EditorResourceTooltipPlugin<class_EditorResourceTooltipPlugin>`.
+Đăng ký một :ref:`EditorResourceTooltipPlugin<class_EditorResourceTooltipPlugin>` mới.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Registers a new :ref:`EditorResourceTooltipPlugin<class_EditorResourceTooltipPlu
 
 |void| **navigate_to_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileSystemDock_method_navigate_to_path>`
 
-Sets the given ``path`` as currently selected, ensuring that the selected file/directory is visible.
+Đặt ``path`` được cung cấp làm mục hiện được chọn, đảm bảo rằng tệp/thư mục đã chọn hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -203,14 +203,14 @@ Sets the given ``path`` as currently selected, ensuring that the selected file/d
 
 |void| **remove_resource_tooltip_plugin**\ (\ plugin\: :ref:`EditorResourceTooltipPlugin<class_EditorResourceTooltipPlugin>`\ ) :ref:`🔗<class_FileSystemDock_method_remove_resource_tooltip_plugin>`
 
-Removes an :ref:`EditorResourceTooltipPlugin<class_EditorResourceTooltipPlugin>`. Fails if the plugin wasn't previously added.
+Xóa một :ref:`EditorResourceTooltipPlugin<class_EditorResourceTooltipPlugin>`. Thao tác sẽ thất bại nếu plugin chưa được thêm trước đó.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

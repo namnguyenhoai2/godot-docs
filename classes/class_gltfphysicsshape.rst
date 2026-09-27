@@ -10,31 +10,31 @@
 GLTFPhysicsShape
 ================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a glTF physics shape.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Represents a physics shape as defined by the ``OMI_physics_shape`` or ``OMI_collider`` glTF extensions. This class is an intermediary between the glTF data and Godot's nodes, and it's abstracted in a way that allows adding support for different glTF physics extensions in the future.
+Đại diện cho một physics shape trong glTF.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đại diện cho một physics shape như được định nghĩa bởi các phần mở rộng glTF ``OMI_physics_shape`` hoặc ``OMI_collider``. Lớp này là lớp trung gian giữa dữ liệu glTF và các node của Godot, đồng thời được trừu tượng hóa để cho phép bổ sung hỗ trợ cho các phần mở rộng physics glTF khác trong tương lai.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `OMI_physics_shape glTF extension <https://github.com/omigroup/gltf-extensions/tree/main/extensions/2.0/OMI_physics_shape>`__
+- `Phần mở rộng glTF OMI_physics_shape <https://github.com/omigroup/gltf-extensions/tree/main/extensions/2.0/OMI_physics_shape>`__
 
-- `OMI_collider glTF extension <https://github.com/omigroup/gltf-extensions/tree/main/extensions/2.0/Archived/OMI_collider>`__
+- `Phần mở rộng glTF OMI_collider <https://github.com/omigroup/gltf-extensions/tree/main/extensions/2.0/Archived/OMI_collider>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,8 +58,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -84,8 +84,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFPhysicsShape_property_height:
 
@@ -98,7 +98,7 @@ Property Descriptions
 - |void| **set_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height**\ (\ )
 
-The height of the shape, in meters. This is only used when the shape type is ``"capsule"`` or ``"cylinder"``. This value should not be negative, and for ``"capsule"`` it should be at least twice the radius.
+Chiều cao của hình dạng, tính bằng mét. Giá trị này chỉ được sử dụng khi loại hình dạng là ``"capsule"`` hoặc ``"cylinder"``. Giá trị này không được âm và đối với ``"capsule"``, giá trị phải ít nhất gấp đôi bán kính.
 
 .. rst-class:: classref-item-separator
 
@@ -108,14 +108,14 @@ The height of the shape, in meters. This is only used when the shape type is ``"
 
 .. rst-class:: classref-property
 
-:ref:`ImporterMesh<class_ImporterMesh>` **importer_mesh** :ref:`🔗<class_GLTFPhysicsShape_property_importer_mesh>`
+:ref:`ImporterMesh<class_ImporterMesh>` **importer_mesh** :ref:`🔗 <class_GLTFPhysicsShape_property_importer_mesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_importer_mesh**\ (\ value\: :ref:`ImporterMesh<class_ImporterMesh>`\ )
 - :ref:`ImporterMesh<class_ImporterMesh>` **get_importer_mesh**\ (\ )
 
-The :ref:`ImporterMesh<class_ImporterMesh>` resource of the shape. This is only used when the shape type is ``"hull"`` (convex hull) or ``"trimesh"`` (concave trimesh).
+Tài nguyên :ref:`ImporterMesh<class_ImporterMesh>` của hình dạng. Tài nguyên này chỉ được sử dụng khi loại hình dạng là ``"hull"`` (convex hull) hoặc ``"trimesh"`` (concave trimesh).
 
 .. rst-class:: classref-item-separator
 
@@ -132,9 +132,9 @@ The :ref:`ImporterMesh<class_ImporterMesh>` resource of the shape. This is only 
 - |void| **set_is_trigger**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_is_trigger**\ (\ )
 
-If ``true``, indicates that this shape is a trigger. For Godot, this means that the shape should be a child of an :ref:`Area3D<class_Area3D>` node.
+Nếu ``true``, cho biết hình dạng này là một trigger. Đối với Godot, điều này có nghĩa là hình dạng phải là node con của một node :ref:`Area3D<class_Area3D>`.
 
-This is the only variable not used in the :ref:`to_node()<class_GLTFPhysicsShape_method_to_node>` method, it's intended to be used alongside when deciding where to add the generated node as a child.
+Đây là biến duy nhất không được sử dụng trong phương thức :ref:`to_node()<class_GLTFPhysicsShape_method_to_node>`; biến này được dùng cùng với nó khi quyết định nơi thêm node được tạo vào làm node con.
 
 .. rst-class:: classref-item-separator
 
@@ -151,7 +151,7 @@ This is the only variable not used in the :ref:`to_node()<class_GLTFPhysicsShape
 - |void| **set_mesh_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_mesh_index**\ (\ )
 
-The index of the shape's mesh in the glTF file. This is only used when the shape type is ``"hull"`` (convex hull) or ``"trimesh"`` (concave trimesh).
+Chỉ số lưới của hình dạng trong tệp glTF. Giá trị này chỉ được sử dụng khi kiểu hình dạng là ``"hull"`` (convex hull) hoặc ``"trimesh"`` (concave trimesh).
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ The index of the shape's mesh in the glTF file. This is only used when the shape
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The radius of the shape, in meters. This is only used when the shape type is ``"capsule"``, ``"cylinder"``, or ``"sphere"``. This value should not be negative.
+Bán kính của hình dạng, tính bằng mét. Giá trị này chỉ được sử dụng khi kiểu hình dạng là ``"capsule"``, ``"cylinder"`` hoặc ``"sphere"``. Giá trị này không được âm.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ The radius of the shape, in meters. This is only used when the shape type is ``"
 - |void| **set_shape_type**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_shape_type**\ (\ )
 
-The type of shape this shape represents. Valid values are ``"box"``, ``"capsule"``, ``"cylinder"``, ``"sphere"``, ``"hull"``, and ``"trimesh"``.
+Kiểu hình dạng mà hình dạng này đại diện. Các giá trị hợp lệ là ``"box"``, ``"capsule"``, ``"cylinder"``, ``"sphere"``, ``"hull"`` và ``"trimesh"``.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ The type of shape this shape represents. Valid values are ``"box"``, ``"capsule"
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-The size of the shape, in meters. This is only used when the shape type is ``"box"``, and it represents the ``"diameter"`` of the box. This value should not be negative.
+Kích thước của hình dạng, tính bằng mét. Giá trị này chỉ được sử dụng khi kiểu hình dạng là ``"box"`` và biểu thị ``"diameter"`` của hình hộp. Giá trị này không được âm.
 
 .. rst-class:: classref-section-separator
 
@@ -210,8 +210,8 @@ The size of the shape, in meters. This is only used when the shape type is ``"bo
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFPhysicsShape_method_from_dictionary:
 
@@ -219,7 +219,7 @@ Method Descriptions
 
 :ref:`GLTFPhysicsShape<class_GLTFPhysicsShape>` **from_dictionary**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |static| :ref:`🔗<class_GLTFPhysicsShape_method_from_dictionary>`
 
-Creates a new GLTFPhysicsShape instance by parsing the given :ref:`Dictionary<class_Dictionary>`.
+Tạo một instance GLTFPhysicsShape mới bằng cách phân tích cú pháp :ref:`Dictionary<class_Dictionary>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Creates a new GLTFPhysicsShape instance by parsing the given :ref:`Dictionary<cl
 
 :ref:`GLTFPhysicsShape<class_GLTFPhysicsShape>` **from_node**\ (\ shape_node\: :ref:`CollisionShape3D<class_CollisionShape3D>`\ ) |static| :ref:`🔗<class_GLTFPhysicsShape_method_from_node>`
 
-Creates a new GLTFPhysicsShape instance from the given Godot :ref:`CollisionShape3D<class_CollisionShape3D>` node.
+Tạo một instance GLTFPhysicsShape mới từ node Godot :ref:`CollisionShape3D<class_CollisionShape3D>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Creates a new GLTFPhysicsShape instance from the given Godot :ref:`CollisionShap
 
 :ref:`GLTFPhysicsShape<class_GLTFPhysicsShape>` **from_resource**\ (\ shape_resource\: :ref:`Shape3D<class_Shape3D>`\ ) |static| :ref:`🔗<class_GLTFPhysicsShape_method_from_resource>`
 
-Creates a new GLTFPhysicsShape instance from the given Godot :ref:`Shape3D<class_Shape3D>` resource.
+Tạo một instance GLTFPhysicsShape mới từ tài nguyên Godot :ref:`Shape3D<class_Shape3D>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -255,7 +255,7 @@ Creates a new GLTFPhysicsShape instance from the given Godot :ref:`Shape3D<class
 
 :ref:`Dictionary<class_Dictionary>` **to_dictionary**\ (\ ) |const| :ref:`🔗<class_GLTFPhysicsShape_method_to_dictionary>`
 
-Serializes this GLTFPhysicsShape instance into a :ref:`Dictionary<class_Dictionary>` in the format defined by ``OMI_physics_shape``.
+Tuần tự hóa instance GLTFPhysicsShape này thành một :ref:`Dictionary<class_Dictionary>` theo định dạng được xác định bởi ``OMI_physics_shape``.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Serializes this GLTFPhysicsShape instance into a :ref:`Dictionary<class_Dictiona
 
 :ref:`CollisionShape3D<class_CollisionShape3D>` **to_node**\ (\ cache_shapes\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_GLTFPhysicsShape_method_to_node>`
 
-Converts this GLTFPhysicsShape instance into a Godot :ref:`CollisionShape3D<class_CollisionShape3D>` node.
+Chuyển đổi instance GLTFPhysicsShape này thành một node Godot :ref:`CollisionShape3D<class_CollisionShape3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -279,14 +279,14 @@ Converts this GLTFPhysicsShape instance into a Godot :ref:`CollisionShape3D<clas
 
 :ref:`Shape3D<class_Shape3D>` **to_resource**\ (\ cache_shapes\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_GLTFPhysicsShape_method_to_resource>`
 
-Converts this GLTFPhysicsShape instance into a Godot :ref:`Shape3D<class_Shape3D>` resource.
+Chuyển đổi instance GLTFPhysicsShape này thành một tài nguyên Godot :ref:`Shape3D<class_Shape3D>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

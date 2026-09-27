@@ -10,20 +10,20 @@
 EditorImportPlugin
 ==================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Registers a custom resource importer in the editor. Use the class to parse any file and import it as a new resource type.
+Đăng ký một resource importer tùy chỉnh trong editor. Sử dụng class này để phân tích bất kỳ tệp nào và import tệp đó thành một loại resource mới.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EditorImportPlugin**\ s provide a way to extend the editor's resource import functionality. Use them to import resources from custom files or to provide alternatives to the editor's existing importers.
+**EditorImportPlugin**\  cung cấp một cách để mở rộng chức năng import resource của editor. Sử dụng chúng để import resource từ các tệp tùy chỉnh hoặc cung cấp các lựa chọn thay thế cho những importer hiện có của editor.
 
-EditorImportPlugins work by associating with specific file extensions and a resource type. See :ref:`_get_recognized_extensions()<class_EditorImportPlugin_private_method__get_recognized_extensions>` and :ref:`_get_resource_type()<class_EditorImportPlugin_private_method__get_resource_type>`. They may optionally specify some import presets that affect the import process. EditorImportPlugins are responsible for creating the resources and saving them in the ``.godot/imported`` directory (see :ref:`ProjectSettings.application/config/use_hidden_project_data_directory<class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
+EditorImportPlugins hoạt động bằng cách liên kết với các phần mở rộng tệp cụ thể và một loại resource. Xem :ref:`_get_recognized_extensions()<class_EditorImportPlugin_private_method__get_recognized_extensions>` và :ref:`_get_resource_type()<class_EditorImportPlugin_private_method__get_resource_type>`. Chúng có thể tùy chọn chỉ định một số import preset có ảnh hưởng đến quá trình import. EditorImportPlugins chịu trách nhiệm tạo resource và lưu chúng trong thư mục ``.godot/imported`` (xem :ref:`ProjectSettings.application/config/use_hidden_project_data_directory <class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
 
-Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` from a file with the extension ".special" or ".spec":
+Dưới đây là một ví dụ về EditorImportPlugin import một :ref:`Mesh<class_Mesh>` từ tệp có phần mở rộng ".special" hoặc ".spec":
 
 
 .. tabs::
@@ -62,7 +62,7 @@ Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` fr
         if file == null:
             return FAILED
         var mesh = ArrayMesh.new()
-        # Fill the Mesh with data read in "file", left as an exercise to the reader.
+        # Điền Mesh bằng dữ liệu đọc từ "file", phần còn lại dành cho người đọc tự thực hiện.
 
         var filename = save_path + "." + _get_save_extension()
         return ResourceSaver.save(mesh, filename)
@@ -129,7 +129,7 @@ Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` fr
             }
 
             var mesh = new ArrayMesh();
-            // Fill the Mesh with data read in "file", left as an exercise to the reader.
+            // Điền Mesh bằng dữ liệu đọc từ "file", để người đọc tự thực hiện.
             string filename = $"{savePath}.{_GetSaveExtension()}";
             return ResourceSaver.Save(mesh, filename);
         }
@@ -137,19 +137,19 @@ Below is an example EditorImportPlugin that imports a :ref:`Mesh<class_Mesh>` fr
 
 
 
-To use **EditorImportPlugin**, register it using the :ref:`EditorPlugin.add_import_plugin()<class_EditorPlugin_method_add_import_plugin>` method first.
+Để sử dụng **EditorImportPlugin**, trước tiên hãy đăng ký nó bằng phương thức :ref:`EditorPlugin.add_import_plugin()<class_EditorPlugin_method_add_import_plugin>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Import plugins <../tutorials/plugins/editor/import_plugins>`
+- :doc:`Nhập plugin <../tutorials/plugins/editor/import_plugins>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -181,9 +181,9 @@ Methods
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                                      | :ref:`_get_visible_name<class_EditorImportPlugin_private_method__get_visible_name>`\ (\ ) |virtual| |required| |const|                                                                                                                                                                                                                                                                    |
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`_import<class_EditorImportPlugin_private_method__import>`\ (\ source_file\: :ref:`String<class_String>`, save_path\: :ref:`String<class_String>`, options\: :ref:`Dictionary<class_Dictionary>`, platform_variants\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\], gen_files\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\]\ ) |virtual| |required| |const| |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`_import<class_EditorImportPlugin_private_method__import>`\ (\ source_file\: :ref:`String<class_String>`, save_path\: :ref:`String<class_String>`, options\: :ref:`Dictionary<class_Dictionary>`, platform_variants\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\], gen_files\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\]\ ) |virtual| |required| |const| |
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`append_import_external_resource<class_EditorImportPlugin_method_append_import_external_resource>`\ (\ path\: :ref:`String<class_String>`, custom_options\: :ref:`Dictionary<class_Dictionary>` = {}, custom_importer\: :ref:`String<class_String>` = "", generator_parameters\: :ref:`Variant<class_Variant>` = null\ )                                                             |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`append_import_external_resource<class_EditorImportPlugin_method_append_import_external_resource>`\ (\ path\: :ref:`String<class_String>`, custom_options\: :ref:`Dictionary<class_Dictionary>` = {}, custom_importer\: :ref:`String<class_String>` = "", generator_parameters\: :ref:`Variant<class_Variant>` = null\ )                                                             |
    +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -192,8 +192,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorImportPlugin_private_method__can_import_threaded:
 
@@ -201,11 +201,11 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_can_import_threaded**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__can_import_threaded>`
 
-Tells whether this importer can be run in parallel on threads, or, on the contrary, it's only safe for the editor to call it from the main thread, for one file at a time.
+Cho biết importer này có thể chạy song song trên các thread hay không; nếu không, editor chỉ an toàn khi gọi nó từ main thread, mỗi lần xử lý một tệp.
 
-If this importer's implementation is thread-safe and can be run in parallel, override this with ``true`` to optimize for concurrency.
+Nếu implementation của importer này an toàn với thread và có thể chạy song song, hãy ghi đè giá trị này bằng ``true`` để tối ưu concurrency.
 
-If not overridden, returns ``false``.
+Nếu không được ghi đè, giá trị trả về là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -217,9 +217,9 @@ If not overridden, returns ``false``.
 
 :ref:`int<class_int>` **_get_format_version**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_format_version>`
 
-Gets the format version of this importer. Increment this version when making incompatible changes to the format of the imported resources.
+Lấy phiên bản format của importer này. Hãy tăng phiên bản này khi thực hiện các thay đổi không tương thích với format của các resource được import.
 
-If not overridden, the format version is ``0``.
+Nếu không được ghi đè, phiên bản format là ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ If not overridden, the format version is ``0``.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_import_options**\ (\ path\: :ref:`String<class_String>`, preset_index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_import_options>`
 
-Gets the options and default values for the preset at this index. Returns an Array of Dictionaries with the following keys: ``name``, ``default_value``, ``property_hint`` (optional), ``hint_string`` (optional), ``usage`` (optional).
+Lấy các tùy chọn và giá trị mặc định cho preset tại chỉ mục này. Trả về một Array gồm các Dictionary với những key sau: ``name``, ``default_value``, ``property_hint`` (tùy chọn), ``hint_string`` (tùy chọn), ``usage`` (tùy chọn).
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Gets the options and default values for the preset at this index. Returns an Arr
 
 :ref:`int<class_int>` **_get_import_order**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_import_order>`
 
-Gets the order of this importer to be run when importing resources. Importers with *lower* import orders will be called first, and higher values will be called later. Use this to ensure the importer runs after the dependencies are already imported. The default import order is ``0`` unless overridden by a specific importer. See :ref:`ImportOrder<enum_ResourceImporter_ImportOrder>` for some predefined values.
+Lấy thứ tự chạy của importer này khi import các resource. Các importer có thứ tự import *lower* sẽ được gọi trước, còn các giá trị cao hơn sẽ được gọi sau. Hãy sử dụng tùy chọn này để đảm bảo importer chạy sau khi các dependency đã được import. Thứ tự import mặc định là ``0``, trừ khi được một importer cụ thể ghi đè. Xem :ref:`ImportOrder <enum_ResourceImporter_ImportOrder>` để biết một số giá trị được định nghĩa sẵn.
 
 .. rst-class:: classref-item-separator
 
@@ -255,7 +255,7 @@ Gets the order of this importer to be run when importing resources. Importers wi
 
 :ref:`String<class_String>` **_get_importer_name**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_importer_name>`
 
-Gets the unique name of the importer.
+Lấy tên duy nhất của importer.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Gets the unique name of the importer.
 
 :ref:`bool<class_bool>` **_get_option_visibility**\ (\ path\: :ref:`String<class_String>`, option_name\: :ref:`StringName<class_StringName>`, options\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_option_visibility>`
 
-Gets whether the import option specified by ``option_name`` should be visible in the Import dock. The default implementation always returns ``true``, making all options visible. This is mainly useful for hiding options that depend on others if one of them is disabled.
+Xác định liệu tùy chọn import được chỉ định bởi ``option_name`` có hiển thị trong dock Import hay không. Cách triển khai mặc định luôn trả về ``true``, khiến tất cả tùy chọn đều hiển thị. Điều này chủ yếu hữu ích để ẩn các tùy chọn phụ thuộc vào những tùy chọn khác khi một trong số chúng bị vô hiệu hóa.
 
 
 .. tabs::
@@ -275,9 +275,9 @@ Gets whether the import option specified by ``option_name`` should be visible in
  .. code-tab:: gdscript
 
     func _get_option_visibility(path, option_name, options):
-        # Only show the lossy quality setting if the compression mode is set to "Lossy".
+        # Chỉ hiển thị thiết lập chất lượng mất dữ liệu nếu chế độ nén được đặt thành "Lossy".
         if option_name == "compress/lossy_quality" and options.has("compress/mode"):
-            return int(options["compress/mode"]) == COMPRESS_LOSSY # This is a constant that you set
+            return int(options["compress/mode"]) == COMPRESS_LOSSY # Đây là một hằng số do bạn thiết lập
 
         return true
 
@@ -285,10 +285,10 @@ Gets whether the import option specified by ``option_name`` should be visible in
 
     public override bool _GetOptionVisibility(string path, StringName optionName, Godot.Collections.Dictionary options)
     {
-        // Only show the lossy quality setting if the compression mode is set to "Lossy".
+        // Chỉ hiển thị thiết lập chất lượng mất dữ liệu nếu chế độ nén được đặt thành "Lossy".
         if (optionName == "compress/lossy_quality" && options.ContainsKey("compress/mode"))
         {
-            return (int)options["compress/mode"] == CompressLossy; // This is a constant you set
+            return (int)options["compress/mode"] == CompressLossy; // Đây là một hằng số do bạn thiết lập
         }
 
         return true;
@@ -306,9 +306,9 @@ Gets whether the import option specified by ``option_name`` should be visible in
 
 :ref:`int<class_int>` **_get_preset_count**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_preset_count>`
 
-Gets the number of initial presets defined by the plugin. Use :ref:`_get_import_options()<class_EditorImportPlugin_private_method__get_import_options>` to get the default options for the preset and :ref:`_get_preset_name()<class_EditorImportPlugin_private_method__get_preset_name>` to get the name of the preset.
+Lấy số lượng preset ban đầu do plugin định nghĩa. Sử dụng :ref:`_get_import_options()<class_EditorImportPlugin_private_method__get_import_options>` để lấy các tùy chọn mặc định cho preset và :ref:`_get_preset_name()<class_EditorImportPlugin_private_method__get_preset_name>` để lấy tên của preset.
 
-By default, there are no presets.
+Theo mặc định, không có preset nào.
 
 .. rst-class:: classref-item-separator
 
@@ -320,7 +320,7 @@ By default, there are no presets.
 
 :ref:`String<class_String>` **_get_preset_name**\ (\ preset_index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_preset_name>`
 
-Gets the name of the options preset at this index.
+Lấy tên của preset tùy chọn tại chỉ mục này.
 
 .. rst-class:: classref-item-separator
 
@@ -332,7 +332,7 @@ Gets the name of the options preset at this index.
 
 :ref:`float<class_float>` **_get_priority**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_priority>`
 
-Gets the priority of this plugin for the recognized extension. Higher priority plugins will be preferred. The default priority is ``1.0``.
+Lấy mức độ ưu tiên của plugin này đối với phần mở rộng được nhận diện. Các plugin có mức độ ưu tiên cao hơn sẽ được ưu tiên. Mức độ ưu tiên mặc định là ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -344,7 +344,7 @@ Gets the priority of this plugin for the recognized extension. Higher priority p
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_recognized_extensions**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_recognized_extensions>`
 
-Gets the list of file extensions to associate with this loader (case-insensitive). e.g. ``["obj"]``.
+Lấy danh sách các phần mở rộng tệp được liên kết với loader này (không phân biệt chữ hoa chữ thường). Ví dụ: ``["obj"]``.
 
 .. rst-class:: classref-item-separator
 
@@ -356,7 +356,7 @@ Gets the list of file extensions to associate with this loader (case-insensitive
 
 :ref:`String<class_String>` **_get_resource_type**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_resource_type>`
 
-Gets the Godot resource type associated with this loader. e.g. ``"Mesh"`` or ``"Animation"``.
+Lấy loại tài nguyên Godot được liên kết với loader này. Ví dụ: ``"Mesh"`` hoặc ``"Animation"``.
 
 .. rst-class:: classref-item-separator
 
@@ -368,7 +368,7 @@ Gets the Godot resource type associated with this loader. e.g. ``"Mesh"`` or ``"
 
 :ref:`String<class_String>` **_get_save_extension**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_save_extension>`
 
-Gets the extension used to save this resource in the ``.godot/imported`` directory (see :ref:`ProjectSettings.application/config/use_hidden_project_data_directory<class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
+Lấy phần mở rộng được dùng để lưu tài nguyên này trong thư mục ``.godot/imported`` (xem :ref:`ProjectSettings.application/config/use_hidden_project_data_directory <class_ProjectSettings_property_application/config/use_hidden_project_data_directory>`).
 
 .. rst-class:: classref-item-separator
 
@@ -380,7 +380,7 @@ Gets the extension used to save this resource in the ``.godot/imported`` directo
 
 :ref:`String<class_String>` **_get_visible_name**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__get_visible_name>`
 
-Gets the name to display in the import window. You should choose this name as a continuation to "Import as", e.g. "Import as Special Mesh".
+Lấy tên sẽ hiển thị trong cửa sổ import. Bạn nên chọn tên này như phần tiếp nối của "Import as", ví dụ: "Import as Special Mesh".
 
 .. rst-class:: classref-item-separator
 
@@ -392,13 +392,13 @@ Gets the name to display in the import window. You should choose this name as a 
 
 :ref:`Error<enum_@GlobalScope_Error>` **_import**\ (\ source_file\: :ref:`String<class_String>`, save_path\: :ref:`String<class_String>`, options\: :ref:`Dictionary<class_Dictionary>`, platform_variants\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\], gen_files\: :ref:`Array<class_Array>`\[:ref:`String<class_String>`\]\ ) |virtual| |required| |const| :ref:`🔗<class_EditorImportPlugin_private_method__import>`
 
-Imports ``source_file`` with the import ``options`` specified. Should return :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the import is successful, other values indicate failure.
+Import ``source_file`` với ``options`` import được chỉ định. Nên trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu quá trình import thành công; các giá trị khác cho biết đã xảy ra lỗi.
 
-The imported resource is expected to be saved to ``save_path + "." + _get_save_extension()``. If a different variant is preferred for a :doc:`feature tag <../tutorials/export/feature_tags>`, save the variant to ``save_path + "." + tag + "." + _get_save_extension()`` and add the feature tag to ``platform_variants``.
+Tài nguyên đã nhập dự kiến được lưu vào ``save_path + "." + _get_save_extension()``. Nếu muốn dùng một biến thể khác cho :doc:`thẻ feature <../tutorials/export/feature_tags>`, hãy lưu biến thể đó vào ``save_path + "." + tag + "." + _get_save_extension()`` và thêm thẻ feature vào ``platform_variants``.
 
-If additional resource files are generated in the resource filesystem (``res://``), add their full path to ``gen_files`` so that the editor knows they depend on ``source_file``.
+Nếu có thêm các tệp tài nguyên được tạo trong resource filesystem (``res://``), hãy thêm đường dẫn đầy đủ của chúng vào ``gen_files`` để editor biết chúng phụ thuộc vào ``source_file``.
 
-This method must be overridden to do the actual importing work. See this class' description for an example of overriding this method.
+Phải override method này để thực hiện công việc import thực tế. Xem phần mô tả của class này để biết ví dụ về cách override method.
 
 .. rst-class:: classref-item-separator
 
@@ -410,14 +410,14 @@ This method must be overridden to do the actual importing work. See this class' 
 
 :ref:`Error<enum_@GlobalScope_Error>` **append_import_external_resource**\ (\ path\: :ref:`String<class_String>`, custom_options\: :ref:`Dictionary<class_Dictionary>` = {}, custom_importer\: :ref:`String<class_String>` = "", generator_parameters\: :ref:`Variant<class_Variant>` = null\ ) :ref:`🔗<class_EditorImportPlugin_method_append_import_external_resource>`
 
-This function can only be called during the :ref:`_import()<class_EditorImportPlugin_private_method__import>` callback and it allows manually importing resources from it. This is useful when the imported file generates external resources that require importing (as example, images). Custom parameters for the ".import" file can be passed via the ``custom_options``. Additionally, in cases where multiple importers can handle a file, the ``custom_importer`` can be specified to force a specific one. This function performs a resource import and returns immediately with a success or error code. ``generator_parameters`` defines optional extra metadata which will be stored as ``generator_parameters`` in the ``remap`` section of the ``.import`` file, for example to store a md5 hash of the source data.
+Chỉ có thể gọi function này trong callback :ref:`_import()<class_EditorImportPlugin_private_method__import>` và function cho phép import tài nguyên thủ công từ callback đó. Điều này hữu ích khi tệp được import tạo ra các tài nguyên bên ngoài cần được import (ví dụ như hình ảnh). Có thể truyền các tham số tùy chỉnh cho tệp ".import" thông qua ``custom_options``. Ngoài ra, trong trường hợp có nhiều importer có thể xử lý một tệp, có thể chỉ định ``custom_importer`` để buộc sử dụng một importer cụ thể. Function này thực hiện việc import tài nguyên rồi trả về ngay mã thành công hoặc lỗi. ``generator_parameters`` xác định siêu dữ liệu bổ sung tùy chọn, được lưu trữ dưới dạng ``generator_parameters`` trong phần ``remap`` của tệp ``.import``, chẳng hạn để lưu trữ mã băm md5 của dữ liệu nguồn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để method có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có tác dụng phụ. Method không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

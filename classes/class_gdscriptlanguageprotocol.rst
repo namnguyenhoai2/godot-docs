@@ -10,25 +10,25 @@
 GDScriptLanguageProtocol
 ========================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`JSONRPC<class_JSONRPC>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`JSONRPC<class_JSONRPC>` **<** :ref:`Object<class_Object>`
 
-GDScript language server.
+Máy chủ ngôn ngữ GDScript.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Provides access to certain features that are implemented in the language server.
+Cung cấp quyền truy cập vào một số tính năng được triển khai trong máy chủ ngôn ngữ.
 
-\ **Note:** This class is not a language server client that can be used to access LSP functionality. It only provides access to a limited set of features that is implemented using the same technical foundation as the language server.
+\ **Lưu ý:** Lớp này không phải là một language server client có thể được sử dụng để truy cập chức năng LSP. Lớp này chỉ cung cấp quyền truy cập vào một tập hợp giới hạn các tính năng được triển khai bằng cùng một nền tảng kỹ thuật như máy chủ ngôn ngữ.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -48,7 +48,7 @@ Methods
    +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                  | :ref:`notify_client<class_GDScriptLanguageProtocol_method_notify_client>`\ (\ method\: :ref:`String<class_String>`, params\: :ref:`Variant<class_Variant>` = null, client_id\: :ref:`int<class_int>` = -1\ ) |
    +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                   | :ref:`on_client_connected<class_GDScriptLanguageProtocol_method_on_client_connected>`\ (\ )                                                                                                                  |
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                    | :ref:`on_client_connected<class_GDScriptLanguageProtocol_method_on_client_connected>`\ (\ )                                                                                                                  |
    +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                  | :ref:`on_client_disconnected<class_GDScriptLanguageProtocol_method_on_client_disconnected>`\ (\ client_id\: :ref:`int<class_int>`\ )                                                                         |
    +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -59,8 +59,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GDScriptLanguageProtocol_method_get_text_document:
 
@@ -68,9 +68,9 @@ Method Descriptions
 
 :ref:`GDScriptTextDocument<class_GDScriptTextDocument>` **get_text_document**\ (\ ) :ref:`🔗<class_GDScriptLanguageProtocol_method_get_text_document>`
 
-**Deprecated:** :ref:`GDScriptTextDocument<class_GDScriptTextDocument>` is deprecated.
+**Đã lỗi thời:** :ref:`GDScriptTextDocument<class_GDScriptTextDocument>` đã lỗi thời.
 
-Returns the language server's :ref:`GDScriptTextDocument<class_GDScriptTextDocument>` instance.
+Trả về đối tượng :ref:`GDScriptTextDocument<class_GDScriptTextDocument>` của language server.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ Returns the language server's :ref:`GDScriptTextDocument<class_GDScriptTextDocum
 
 :ref:`GDScriptWorkspace<class_GDScriptWorkspace>` **get_workspace**\ (\ ) :ref:`🔗<class_GDScriptLanguageProtocol_method_get_workspace>`
 
-Returns the language server's :ref:`GDScriptWorkspace<class_GDScriptWorkspace>` instance.
+Trả về đối tượng :ref:`GDScriptWorkspace<class_GDScriptWorkspace>` của language server.
 
 .. rst-class:: classref-item-separator
 
@@ -94,7 +94,7 @@ Returns the language server's :ref:`GDScriptWorkspace<class_GDScriptWorkspace>` 
 
 :ref:`Variant<class_Variant>` **initialize**\ (\ params\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_GDScriptLanguageProtocol_method_initialize>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến các tác dụng phụ không mong muốn. Hãy kết nối với server qua TCP như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ Returns the language server's :ref:`GDScriptWorkspace<class_GDScriptWorkspace>` 
 
 |void| **initialized**\ (\ params\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GDScriptLanguageProtocol_method_initialized>`
 
-**Deprecated:** Accessing LSP endpoints directly might lead to unwanted side effects. Connect to the server via TCP, like a regular language server client.
+**Đã lỗi thời:** Việc truy cập trực tiếp vào các endpoint LSP có thể dẫn đến các tác dụng phụ không mong muốn. Hãy kết nối với server qua TCP như một language server client thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -118,7 +118,7 @@ Returns the language server's :ref:`GDScriptWorkspace<class_GDScriptWorkspace>` 
 
 :ref:`bool<class_bool>` **is_initialized**\ (\ ) |const| :ref:`🔗<class_GDScriptLanguageProtocol_method_is_initialized>`
 
-Returns ``true`` if the language server was initialized by a language server client, ``false`` otherwise.
+Trả về ``true`` nếu language server được khởi tạo bởi một language server client, và ``false`` nếu không.
 
 .. rst-class:: classref-item-separator
 
@@ -130,7 +130,7 @@ Returns ``true`` if the language server was initialized by a language server cli
 
 :ref:`bool<class_bool>` **is_smart_resolve_enabled**\ (\ ) |const| :ref:`🔗<class_GDScriptLanguageProtocol_method_is_smart_resolve_enabled>`
 
-Returns ``true`` if the language server is providing the smart resolve feature, ``false`` otherwise. The feature can be configured through the editor settings.
+Trả về ``true`` nếu language server cung cấp tính năng smart resolve, và ``false`` nếu không. Bạn có thể cấu hình tính năng này thông qua cài đặt của trình soạn thảo.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ Returns ``true`` if the language server is providing the smart resolve feature, 
 
 |void| **notify_client**\ (\ method\: :ref:`String<class_String>`, params\: :ref:`Variant<class_Variant>` = null, client_id\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_GDScriptLanguageProtocol_method_notify_client>`
 
-**Deprecated:** Might result in unwanted side effects for connected clients.
+**Đã lỗi thời:** Có thể dẫn đến các tác dụng phụ không mong muốn đối với những client đã kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Returns ``true`` if the language server is providing the smart resolve feature, 
 
 :ref:`Error<enum_@GlobalScope_Error>` **on_client_connected**\ (\ ) :ref:`🔗<class_GDScriptLanguageProtocol_method_on_client_connected>`
 
-**Deprecated:** Might result in unwanted side effects for connected clients.
+**Đã lỗi thời:** Có thể dẫn đến các tác dụng phụ không mong muốn đối với những client đã kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -166,14 +166,14 @@ Returns ``true`` if the language server is providing the smart resolve feature, 
 
 |void| **on_client_disconnected**\ (\ client_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GDScriptLanguageProtocol_method_on_client_disconnected>`
 
-**Deprecated:** Might result in unwanted side effects for connected clients.
+**Đã lỗi thời:** Có thể dẫn đến các tác dụng phụ không mong muốn đối với những client đã kết nối.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

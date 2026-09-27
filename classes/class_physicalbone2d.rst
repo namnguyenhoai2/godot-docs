@@ -13,24 +13,24 @@
 PhysicalBone2D
 ==============
 
-**Inherits:** :ref:`RigidBody2D<class_RigidBody2D>` **<** :ref:`PhysicsBody2D<class_PhysicsBody2D>` **<** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RigidBody2D<class_RigidBody2D>` **<** :ref:`PhysicsBody2D<class_PhysicsBody2D>` **<** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A :ref:`RigidBody2D<class_RigidBody2D>`-derived node used to make :ref:`Bone2D<class_Bone2D>`\ s in a :ref:`Skeleton2D<class_Skeleton2D>` react to physics.
+Một nút bắt nguồn từ :ref:`RigidBody2D<class_RigidBody2D>` được dùng để khiến các :ref:`Bone2D<class_Bone2D>`\  trong :ref:`Skeleton2D<class_Skeleton2D>` phản ứng với vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **PhysicalBone2D** node is a :ref:`RigidBody2D<class_RigidBody2D>`-based node that can be used to make :ref:`Bone2D<class_Bone2D>`\ s in a :ref:`Skeleton2D<class_Skeleton2D>` react to physics.
+Nút **PhysicalBone2D** là một nút dựa trên :ref:`RigidBody2D<class_RigidBody2D>`, có thể được dùng để khiến các :ref:`Bone2D<class_Bone2D>`\  trong :ref:`Skeleton2D<class_Skeleton2D>` phản ứng với vật lý.
 
-\ **Note:** To make the :ref:`Bone2D<class_Bone2D>`\ s visually follow the **PhysicalBone2D** node, use a :ref:`SkeletonModification2DPhysicalBones<class_SkeletonModification2DPhysicalBones>` modification on the :ref:`Skeleton2D<class_Skeleton2D>` parent.
+\ **Lưu ý:** Để các :ref:`Bone2D<class_Bone2D>`\  bám theo về mặt hình ảnh nút **PhysicalBone2D**, hãy sử dụng một sửa đổi :ref:`SkeletonModification2DPhysicalBones<class_SkeletonModification2DPhysicalBones>` trên nút cha :ref:`Skeleton2D<class_Skeleton2D>`.
 
-\ **Note:** The **PhysicalBone2D** node does not automatically create a :ref:`Joint2D<class_Joint2D>` node to keep **PhysicalBone2D** nodes together. They must be created manually. For most cases, you want to use a :ref:`PinJoint2D<class_PinJoint2D>` node. The **PhysicalBone2D** node will automatically configure the :ref:`Joint2D<class_Joint2D>` node once it's been added as a child node.
+\ **Lưu ý:** Nút **PhysicalBone2D** không tự động tạo một nút :ref:`Joint2D<class_Joint2D>` để giữ các nút **PhysicalBone2D** lại với nhau. Bạn phải tự tạo chúng. Trong hầu hết các trường hợp, bạn nên sử dụng một nút :ref:`PinJoint2D<class_PinJoint2D>`. Nút **PhysicalBone2D** sẽ tự động cấu hình nút :ref:`Joint2D<class_Joint2D>` sau khi nút này được thêm làm nút con.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,8 +50,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -68,8 +68,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicalBone2D_property_auto_configure_joint:
 
@@ -82,7 +82,7 @@ Property Descriptions
 - |void| **set_auto_configure_joint**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_auto_configure_joint**\ (\ )
 
-If ``true``, the **PhysicalBone2D** will automatically configure the first :ref:`Joint2D<class_Joint2D>` child node. The automatic configuration is limited to setting up the node properties and positioning the :ref:`Joint2D<class_Joint2D>`.
+Nếu ``true``, **PhysicalBone2D** sẽ tự động cấu hình nút con :ref:`Joint2D<class_Joint2D>` đầu tiên. Việc cấu hình tự động chỉ giới hạn ở việc thiết lập các thuộc tính của nút và định vị :ref:`Joint2D<class_Joint2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ If ``true``, the **PhysicalBone2D** will automatically configure the first :ref:
 - |void| **set_bone2d_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bone2d_index**\ (\ )
 
-The index of the :ref:`Bone2D<class_Bone2D>` that this **PhysicalBone2D** should simulate.
+Chỉ mục của :ref:`Bone2D<class_Bone2D>` mà **PhysicalBone2D** này sẽ mô phỏng.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ The index of the :ref:`Bone2D<class_Bone2D>` that this **PhysicalBone2D** should
 - |void| **set_bone2d_nodepath**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_bone2d_nodepath**\ (\ )
 
-The :ref:`NodePath<class_NodePath>` to the :ref:`Bone2D<class_Bone2D>` that this **PhysicalBone2D** should simulate.
+:ref:`NodePath<class_NodePath>` của :ref:`Bone2D<class_Bone2D>` mà **PhysicalBone2D** này sẽ mô phỏng.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ The :ref:`NodePath<class_NodePath>` to the :ref:`Bone2D<class_Bone2D>` that this
 - |void| **set_follow_bone_when_simulating**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_follow_bone_when_simulating**\ (\ )
 
-If ``true``, the **PhysicalBone2D** will keep the transform of the bone it is bound to when simulating physics.
+Nếu ``true``, **PhysicalBone2D** sẽ giữ nguyên phép biến đổi của bone mà nó được liên kết khi mô phỏng vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -150,9 +150,9 @@ If ``true``, the **PhysicalBone2D** will keep the transform of the bone it is bo
 - |void| **set_simulate_physics**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_simulate_physics**\ (\ )
 
-If ``true``, the **PhysicalBone2D** will start simulating using physics. If ``false``, the **PhysicalBone2D** will follow the transform of the :ref:`Bone2D<class_Bone2D>` node.
+Nếu ``true``, **PhysicalBone2D** sẽ bắt đầu mô phỏng bằng physics. Nếu ``false``, **PhysicalBone2D** sẽ tuân theo transform của node :ref:`Bone2D<class_Bone2D>`.
 
-\ **Note:** To have the :ref:`Bone2D<class_Bone2D>`\ s visually follow the **PhysicalBone2D**, use a :ref:`SkeletonModification2DPhysicalBones<class_SkeletonModification2DPhysicalBones>` modification on the :ref:`Skeleton2D<class_Skeleton2D>` node with the :ref:`Bone2D<class_Bone2D>` nodes.
+\ **Lưu ý:** Để :ref:`Bone2D<class_Bone2D>`\ s hiển thị tuân theo **PhysicalBone2D**, hãy sử dụng một sửa đổi :ref:`SkeletonModification2DPhysicalBones<class_SkeletonModification2DPhysicalBones>` trên node :ref:`Skeleton2D<class_Skeleton2D>` cùng với các node :ref:`Bone2D<class_Bone2D>`.
 
 .. rst-class:: classref-section-separator
 
@@ -160,8 +160,8 @@ If ``true``, the **PhysicalBone2D** will start simulating using physics. If ``fa
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicalBone2D_method_get_joint:
 
@@ -169,7 +169,7 @@ Method Descriptions
 
 :ref:`Joint2D<class_Joint2D>` **get_joint**\ (\ ) |const| :ref:`🔗<class_PhysicalBone2D_method_get_joint>`
 
-Returns the first :ref:`Joint2D<class_Joint2D>` child node, if one exists. This is mainly a helper function to make it easier to get the :ref:`Joint2D<class_Joint2D>` that the **PhysicalBone2D** is autoconfiguring.
+Trả về node con :ref:`Joint2D<class_Joint2D>` đầu tiên, nếu có. Đây chủ yếu là một hàm trợ giúp giúp dễ lấy :ref:`Joint2D<class_Joint2D>` mà **PhysicalBone2D** đang tự động cấu hình.
 
 .. rst-class:: classref-item-separator
 
@@ -181,14 +181,14 @@ Returns the first :ref:`Joint2D<class_Joint2D>` child node, if one exists. This 
 
 :ref:`bool<class_bool>` **is_simulating_physics**\ (\ ) |const| :ref:`🔗<class_PhysicalBone2D_method_is_simulating_physics>`
 
-Returns a boolean that indicates whether the **PhysicalBone2D** is running and simulating using the Godot 2D physics engine. When ``true``, the PhysicalBone2D node is using physics.
+Trả về một giá trị boolean cho biết liệu **PhysicalBone2D** có đang chạy và mô phỏng bằng engine physics 2D của Godot hay không. Khi ``true``, node PhysicalBone2D đang sử dụng physics.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

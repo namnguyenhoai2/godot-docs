@@ -10,46 +10,46 @@
 PinJoint3D
 ==========
 
-**Inherits:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics joint that attaches two 3D physics bodies at a single point, allowing them to freely rotate.
+Một khớp vật lý gắn hai thân vật lý 3D tại một điểm duy nhất, cho phép chúng tự do xoay.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A physics joint that attaches two 3D physics bodies at a single point, allowing them to freely rotate. For example, a :ref:`RigidBody3D<class_RigidBody3D>` can be attached to a :ref:`StaticBody3D<class_StaticBody3D>` to create a pendulum or a seesaw.
+Một khớp vật lý gắn hai thân vật lý 3D tại một điểm duy nhất, cho phép chúng tự do xoay. Ví dụ, một :ref:`RigidBody3D<class_RigidBody3D>` có thể được gắn vào một :ref:`StaticBody3D<class_StaticBody3D>` để tạo ra con lắc hoặc bập bênh.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+-----------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>` | :ref:`params/bias<class_PinJoint3D_property_params/bias>`                   | ``0.3`` |
-   +---------------------------+-----------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>` | :ref:`params/damping<class_PinJoint3D_property_params/damping>`             | ``1.0`` |
-   +---------------------------+-----------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>` | :ref:`params/impulse_clamp<class_PinJoint3D_property_params/impulse_clamp>` | ``0.0`` |
-   +---------------------------+-----------------------------------------------------------------------------+---------+
+   +---------------------------+------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>` | :ref:`params/bias <class_PinJoint3D_property_params/bias>`                   | ``0.3`` |
+   +---------------------------+------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>` | :ref:`params/damping <class_PinJoint3D_property_params/damping>`             | ``1.0`` |
+   +---------------------------+------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>` | :ref:`params/impulse_clamp <class_PinJoint3D_property_params/impulse_clamp>` | ``0.0`` |
+   +---------------------------+------------------------------------------------------------------------------+---------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`get_param<class_PinJoint3D_method_get_param>`\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`\ ) |const|                            |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_param<class_PinJoint3D_method_set_param>`\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`get_param<class_PinJoint3D_method_get_param>`\ (\ param\: :ref:`Param <enum_PinJoint3D_Param>`\ ) |const|                            |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_param<class_PinJoint3D_method_set_param>`\ (\ param\: :ref:`Param <enum_PinJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -57,14 +57,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_PinJoint3D_Param:
 
 .. rst-class:: classref-enumeration
 
-enum **Param**: :ref:`🔗<enum_PinJoint3D_Param>`
+enum **Param**: :ref:`🔗 <enum_PinJoint3D_Param>`
 
 .. _class_PinJoint3D_constant_PARAM_BIAS:
 
@@ -72,7 +72,7 @@ enum **Param**: :ref:`🔗<enum_PinJoint3D_Param>`
 
 :ref:`Param<enum_PinJoint3D_Param>` **PARAM_BIAS** = ``0``
 
-The force with which the pinned objects stay in positional relation to each other. The higher, the stronger.
+Lực giữ các vật thể được ghim ở vị trí tương quan với nhau. Lực càng lớn thì mức độ giữ càng mạnh.
 
 .. _class_PinJoint3D_constant_PARAM_DAMPING:
 
@@ -80,7 +80,7 @@ The force with which the pinned objects stay in positional relation to each othe
 
 :ref:`Param<enum_PinJoint3D_Param>` **PARAM_DAMPING** = ``1``
 
-The force with which the pinned objects stay in velocity relation to each other. The higher, the stronger.
+Lực giữ cho các đối tượng được ghim duy trì mối quan hệ về vận tốc với nhau. Giá trị càng cao thì lực càng mạnh.
 
 .. _class_PinJoint3D_constant_PARAM_IMPULSE_CLAMP:
 
@@ -88,7 +88,7 @@ The force with which the pinned objects stay in velocity relation to each other.
 
 :ref:`Param<enum_PinJoint3D_Param>` **PARAM_IMPULSE_CLAMP** = ``2``
 
-If above 0, this value is the maximum value for an impulse that this Joint3D produces.
+Nếu lớn hơn 0, giá trị này là giá trị tối đa của một xung lực mà Joint3D tạo ra.
 
 .. rst-class:: classref-section-separator
 
@@ -96,21 +96,21 @@ If above 0, this value is the maximum value for an impulse that this Joint3D pro
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PinJoint3D_property_params/bias:
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **params/bias** = ``0.3`` :ref:`🔗<class_PinJoint3D_property_params/bias>`
+:ref:`float<class_float>` **params/bias** = ``0.3`` :ref:`🔗 <class_PinJoint3D_property_params/bias>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`\ ) |const|
 
-The force with which the pinned objects stay in positional relation to each other. The higher, the stronger.
+Lực giữ cho các đối tượng được ghim duy trì mối quan hệ về vị trí với nhau. Giá trị càng cao thì lực càng mạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -120,14 +120,14 @@ The force with which the pinned objects stay in positional relation to each othe
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **params/damping** = ``1.0`` :ref:`🔗<class_PinJoint3D_property_params/damping>`
+:ref:`float<class_float>` **params/damping** = ``1.0`` :ref:`🔗 <class_PinJoint3D_property_params/damping>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`\ ) |const|
 
-The force with which the pinned objects stay in velocity relation to each other. The higher, the stronger.
+Lực giữ cho các đối tượng được ghim duy trì mối quan hệ về vận tốc với nhau. Giá trị càng cao thì lực càng mạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -137,14 +137,14 @@ The force with which the pinned objects stay in velocity relation to each other.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **params/impulse_clamp** = ``0.0`` :ref:`🔗<class_PinJoint3D_property_params/impulse_clamp>`
+:ref:`float<class_float>` **params/impulse_clamp** = ``0.0`` :ref:`🔗 <class_PinJoint3D_property_params/impulse_clamp>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`\ ) |const|
 
-If above 0, this value is the maximum value for an impulse that this Joint3D produces.
+Nếu lớn hơn 0, giá trị này là giá trị tối đa của một xung mà Joint3D này tạo ra.
 
 .. rst-class:: classref-section-separator
 
@@ -152,8 +152,8 @@ If above 0, this value is the maximum value for an impulse that this Joint3D pro
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PinJoint3D_method_get_param:
 
@@ -161,7 +161,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`\ ) |const| :ref:`🔗<class_PinJoint3D_method_get_param>`
 
-Returns the value of the specified parameter.
+Trả về giá trị của tham số được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -173,14 +173,14 @@ Returns the value of the specified parameter.
 
 |void| **set_param**\ (\ param\: :ref:`Param<enum_PinJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PinJoint3D_method_set_param>`
 
-Sets the value of the specified parameter.
+Đặt giá trị cho tham số được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,35 +10,35 @@
 AudioEffectReverb
 =================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a reverberation audio effect to an audio bus.
+Thêm hiệu ứng âm thanh vang dội vào một bus âm thanh.
 
-Emulates an echo by playing a blurred version of the input audio.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "reverb" effect plays the input audio back continuously, decaying over a period of time. It simulates sounds in different kinds of spaces, ranging from small rooms, to big caverns.
-
-See also :ref:`AudioEffectDelay<class_AudioEffectDelay>` for a non-blurry type of echo.
+Mô phỏng tiếng vọng bằng cách phát một phiên bản mờ của âm thanh đầu vào.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Hiệu ứng "reverb" phát liên tục âm thanh đầu vào, với âm lượng giảm dần theo thời gian. Hiệu ứng này mô phỏng âm thanh trong nhiều loại không gian khác nhau, từ những căn phòng nhỏ đến các hang động lớn.
+
+Xem thêm :ref:`AudioEffectDelay<class_AudioEffectDelay>` để biết về một loại tiếng vọng không bị làm mờ.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo Third Person Shooter (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -68,8 +68,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectReverb_property_damping:
 
@@ -82,7 +82,7 @@ Property Descriptions
 - |void| **set_damping**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_damping**\ (\ )
 
-Defines how reflective the imaginary room's walls are. The more reflective, the more high frequency content the reverb has. Value can range from 0 to 1.
+Xác định mức độ phản xạ của các bức tường trong phòng giả lập. Độ phản xạ càng cao thì reverb càng có nhiều thành phần tần số cao. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ Defines how reflective the imaginary room's walls are. The more reflective, the 
 - |void| **set_dry**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_dry**\ (\ )
 
-The volume ratio of the original audio. At 0, only the modified audio is outputted. Value can range from 0 to 1.
+Tỷ lệ âm lượng của âm thanh gốc. Ở mức 0, đầu ra chỉ có âm thanh đã xử lý. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ The volume ratio of the original audio. At 0, only the modified audio is outputt
 - |void| **set_hpf**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_hpf**\ (\ )
 
-High-pass filter allows frequencies higher than a certain cutoff threshold and attenuates frequencies lower than the cutoff threshold. Value can range from 0 to 1.
+Bộ lọc thông cao cho phép các tần số cao hơn ngưỡng cắt nhất định đi qua và làm suy giảm các tần số thấp hơn ngưỡng cắt. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ High-pass filter allows frequencies higher than a certain cutoff threshold and a
 - |void| **set_predelay_feedback**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_predelay_feedback**\ (\ )
 
-Gain of early reflection copies. At higher values, early reflection copies are louder and ring out for longer. Value can range from 0 to 1.
+Mức khuếch đại của các bản sao phản xạ sớm. Ở các giá trị cao hơn, các bản sao phản xạ sớm sẽ lớn hơn và ngân vang lâu hơn. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Gain of early reflection copies. At higher values, early reflection copies are l
 - |void| **set_predelay_msec**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_predelay_msec**\ (\ )
 
-Time between the original audio and the early reflections of the reverb signal, in milliseconds. Value can range from 20 to 500.
+Khoảng thời gian giữa âm thanh gốc và các phản xạ sớm của tín hiệu reverb, tính bằng mili giây. Giá trị có thể nằm trong khoảng từ 20 đến 500.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Time between the original audio and the early reflections of the reverb signal, 
 - |void| **set_room_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_room_size**\ (\ )
 
-Dimensions of simulated room. Bigger means more echoes. Value can range from 0 to 1.
+Kích thước của căn phòng mô phỏng. Kích thước càng lớn thì càng có nhiều tiếng vọng. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -184,7 +184,7 @@ Dimensions of simulated room. Bigger means more echoes. Value can range from 0 t
 - |void| **set_spread**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_spread**\ (\ )
 
-Widens or narrows the stereo image of the reverb tail. At 1, it fully widens. Value can range from 0 to 1.
+Mở rộng hoặc thu hẹp trường âm stereo của đuôi reverb. Ở giá trị 1, trường âm được mở rộng hoàn toàn. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -201,14 +201,14 @@ Widens or narrows the stereo image of the reverb tail. At 1, it fully widens. Va
 - |void| **set_wet**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_wet**\ (\ )
 
-The volume ratio of the modified audio. At 0, only the original audio is outputted. Value can range from 0 to 1.
+Tỷ lệ âm lượng của âm thanh đã chỉnh sửa. Ở giá trị 0, chỉ có âm thanh gốc được xuất ra. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

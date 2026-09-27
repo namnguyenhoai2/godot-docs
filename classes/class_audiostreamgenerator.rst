@@ -10,27 +10,27 @@
 AudioStreamGenerator
 ====================
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An audio stream with utilities for procedural sound generation.
+Một audio stream kèm các tiện ích để tạo âm thanh theo quy trình.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**AudioStreamGenerator** is a type of audio stream that does not play back sounds on its own; instead, it expects a script to generate audio data for it. See also :ref:`AudioStreamGeneratorPlayback<class_AudioStreamGeneratorPlayback>`.
+**AudioStreamGenerator** là một loại audio stream không tự phát âm thanh; thay vào đó, nó yêu cầu một script tạo dữ liệu âm thanh cho nó. Xem thêm :ref:`AudioStreamGeneratorPlayback<class_AudioStreamGeneratorPlayback>`.
 
-Here's a sample on how to use it to generate a sine wave:
+Dưới đây là ví dụ về cách sử dụng nó để tạo sóng sin:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var playback # Will hold the AudioStreamGeneratorPlayback.
+    var playback # Dùng để lưu AudioStreamGeneratorPlayback.
     @onready var sample_hz = $AudioStreamPlayer.stream.mix_rate
-    var pulse_hz = 440.0 # The frequency of the sound wave.
+    var pulse_hz = 440.0 # Tần số của sóng âm thanh.
     var phase = 0.0
 
     func _ready():
@@ -50,14 +50,14 @@ Here's a sample on how to use it to generate a sine wave:
 
     [Export] public AudioStreamPlayer Player { get; set; }
 
-    private AudioStreamGeneratorPlayback _playback; // Will hold the AudioStreamGeneratorPlayback.
+    private AudioStreamGeneratorPlayback _playback; // Dùng để lưu AudioStreamGeneratorPlayback.
     private float _sampleHz;
-    private float _pulseHz = 440.0f; // The frequency of the sound wave.
+    private float _pulseHz = 440.0f; // Tần số của sóng âm.
     private double phase = 0.0;
 
     public override void _Ready()
     {
-        if (Player.Stream is AudioStreamGenerator generator) // Type as a generator to access MixRate.
+        if (Player.Stream is AudioStreamGenerator generator) // Định kiểu thành generator để truy cập MixRate.
         {
             _sampleHz = generator.MixRate;
             Player.Play();
@@ -80,36 +80,36 @@ Here's a sample on how to use it to generate a sine wave:
 
 
 
-In the example above, the "AudioStreamPlayer" node must use an **AudioStreamGenerator** as its stream. The ``fill_buffer`` function provides audio data for approximating a sine wave.
+Trong ví dụ trên, node "AudioStreamPlayer" phải sử dụng một **AudioStreamGenerator** làm stream. Hàm ``fill_buffer`` cung cấp dữ liệu âm thanh để xấp xỉ sóng sin.
 
-See also :ref:`AudioEffectSpectrumAnalyzer<class_AudioEffectSpectrumAnalyzer>` for performing real-time audio spectrum analysis.
+Xem thêm :ref:`AudioEffectSpectrumAnalyzer<class_AudioEffectSpectrumAnalyzer>` để thực hiện phân tích phổ âm thanh theo thời gian thực.
 
-\ **Note:** Due to performance constraints, this class is best used from C# or from a compiled language via GDExtension. If you still want to use this class from GDScript, consider using a lower :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>` such as 11,025 Hz or 22,050 Hz.
+\ **Lưu ý:** Do các giới hạn về hiệu năng, class này phù hợp nhất khi được sử dụng từ C# hoặc từ một ngôn ngữ đã biên dịch thông qua GDExtension. Nếu bạn vẫn muốn sử dụng class này từ GDScript, hãy cân nhắc sử dụng một :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>` thấp hơn, chẳng hạn như 11,025 Hz hoặc 22,050 Hz.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Các luồng âm thanh <../tutorials/audio/audio_streams>`
 
-- `Audio Generator Demo <https://godotengine.org/asset-library/asset/2759>`__
+- `Bản minh họa Audio Generator <https://godotengine.org/asset-library/asset/2759>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                                                                 | :ref:`buffer_length<class_AudioStreamGenerator_property_buffer_length>` | ``0.5``     |
-   +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                                                                 | :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>`           | ``44100.0`` |
-   +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
-   | :ref:`AudioStreamGeneratorMixRate<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>` | :ref:`mix_rate_mode<class_AudioStreamGenerator_property_mix_rate_mode>` | ``2``       |
-   +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
+   +--------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                                                                  | :ref:`buffer_length<class_AudioStreamGenerator_property_buffer_length>` | ``0.5``     |
+   +--------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                                                                  | :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>`           | ``44100.0`` |
+   +--------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
+   | :ref:`AudioStreamGeneratorMixRate <enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>` | :ref:`mix_rate_mode<class_AudioStreamGenerator_property_mix_rate_mode>` | ``2``       |
+   +--------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+-------------+
 
 .. rst-class:: classref-section-separator
 
@@ -117,14 +117,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AudioStreamGenerator_AudioStreamGeneratorMixRate:
 
 .. rst-class:: classref-enumeration
 
-enum **AudioStreamGeneratorMixRate**: :ref:`🔗<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>`
+enum **AudioStreamGeneratorMixRate**: :ref:`🔗 <enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>`
 
 .. _class_AudioStreamGenerator_constant_MIX_RATE_OUTPUT:
 
@@ -132,7 +132,7 @@ enum **AudioStreamGeneratorMixRate**: :ref:`🔗<enum_AudioStreamGenerator_Audio
 
 :ref:`AudioStreamGeneratorMixRate<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>` **MIX_RATE_OUTPUT** = ``0``
 
-Current :ref:`AudioServer<class_AudioServer>` output mixing rate.
+Tần số trộn đầu ra :ref:`AudioServer<class_AudioServer>` hiện tại.
 
 .. _class_AudioStreamGenerator_constant_MIX_RATE_INPUT:
 
@@ -140,7 +140,7 @@ Current :ref:`AudioServer<class_AudioServer>` output mixing rate.
 
 :ref:`AudioStreamGeneratorMixRate<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>` **MIX_RATE_INPUT** = ``1``
 
-Current :ref:`AudioServer<class_AudioServer>` input mixing rate.
+Tốc độ trộn đầu vào :ref:`AudioServer<class_AudioServer>` hiện tại.
 
 .. _class_AudioStreamGenerator_constant_MIX_RATE_CUSTOM:
 
@@ -148,7 +148,7 @@ Current :ref:`AudioServer<class_AudioServer>` input mixing rate.
 
 :ref:`AudioStreamGeneratorMixRate<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>` **MIX_RATE_CUSTOM** = ``2``
 
-Custom mixing rate, specified by :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>`.
+Tốc độ trộn tùy chỉnh, được chỉ định bởi :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>`.
 
 .. _class_AudioStreamGenerator_constant_MIX_RATE_MAX:
 
@@ -156,7 +156,7 @@ Custom mixing rate, specified by :ref:`mix_rate<class_AudioStreamGenerator_prope
 
 :ref:`AudioStreamGeneratorMixRate<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>` **MIX_RATE_MAX** = ``3``
 
-Maximum value for the mixing rate mode enum.
+Giá trị tối đa cho enum chế độ tốc độ trộn.
 
 .. rst-class:: classref-section-separator
 
@@ -164,8 +164,8 @@ Maximum value for the mixing rate mode enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioStreamGenerator_property_buffer_length:
 
@@ -178,7 +178,7 @@ Property Descriptions
 - |void| **set_buffer_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_buffer_length**\ (\ )
 
-The length of the buffer to generate (in seconds). Lower values result in less latency, but require the script to generate audio data faster, resulting in increased CPU usage and more risk for audio cracking if the CPU can't keep up.
+Độ dài của buffer cần tạo (tính bằng giây). Giá trị thấp hơn giúp giảm độ trễ, nhưng yêu cầu script tạo dữ liệu âm thanh nhanh hơn, dẫn đến mức sử dụng CPU cao hơn và nguy cơ âm thanh bị rè cao hơn nếu CPU không theo kịp.
 
 .. rst-class:: classref-item-separator
 
@@ -195,15 +195,15 @@ The length of the buffer to generate (in seconds). Lower values result in less l
 - |void| **set_mix_rate**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mix_rate**\ (\ )
 
-The sample rate to use (in Hz). Higher values are more demanding for the CPU to generate, but result in better quality.
+Sample rate cần sử dụng (tính bằng Hz). Giá trị cao hơn yêu cầu CPU tạo dữ liệu nhiều hơn, nhưng cho chất lượng tốt hơn.
 
-In games, common sample rates in use are ``11025``, ``16000``, ``22050``, ``32000``, ``44100``, and ``48000``.
+Trong trò chơi, các sample rate phổ biến được sử dụng là ``11025``, ``16000``, ``22050``, ``32000``, ``44100`` và ``48000``.
 
-According to the `Nyquist-Shannon sampling theorem <https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem>`__, there is no quality difference to human hearing when going past 40,000 Hz (since most humans can only hear up to ~20,000 Hz, often less). If you are generating lower-pitched sounds such as voices, lower sample rates such as ``32000`` or ``22050`` may be usable with no loss in quality.
+Theo `định lý lấy mẫu Nyquist-Shannon <https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem>`__, chất lượng đối với tai người không có sự khác biệt khi vượt quá 40.000 Hz (vì hầu hết mọi người chỉ có thể nghe đến khoảng 20.000 Hz, thường là thấp hơn). Nếu bạn đang tạo các âm thanh có cao độ thấp hơn, chẳng hạn như giọng nói, các sample rate thấp hơn như ``32000`` hoặc ``22050`` có thể được sử dụng mà không làm giảm chất lượng.
 
-\ **Note:** **AudioStreamGenerator** is not automatically resampling input data, to produce expected result :ref:`mix_rate_mode<class_AudioStreamGenerator_property_mix_rate_mode>` should match the sampling rate of input data.
+\ **Lưu ý:** **AudioStreamGenerator** không tự động resampling dữ liệu đầu vào, để tạo ra kết quả mong đợi, :ref:`mix_rate_mode<class_AudioStreamGenerator_property_mix_rate_mode>` phải khớp với sample rate của dữ liệu đầu vào.
 
-\ **Note:** If you are using :ref:`AudioEffectCapture<class_AudioEffectCapture>` as the source of your data, set :ref:`mix_rate_mode<class_AudioStreamGenerator_property_mix_rate_mode>` to :ref:`MIX_RATE_INPUT<class_AudioStreamGenerator_constant_MIX_RATE_INPUT>` or :ref:`MIX_RATE_OUTPUT<class_AudioStreamGenerator_constant_MIX_RATE_OUTPUT>` to automatically match current :ref:`AudioServer<class_AudioServer>` mixing rate.
+\ **Lưu ý:** Nếu bạn đang sử dụng :ref:`AudioEffectCapture<class_AudioEffectCapture>` làm nguồn dữ liệu, hãy đặt :ref:`mix_rate_mode<class_AudioStreamGenerator_property_mix_rate_mode>` thành :ref:`MIX_RATE_INPUT<class_AudioStreamGenerator_constant_MIX_RATE_INPUT>` hoặc :ref:`MIX_RATE_OUTPUT<class_AudioStreamGenerator_constant_MIX_RATE_OUTPUT>` để tự động khớp với mixing rate hiện tại của :ref:`AudioServer<class_AudioServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -220,14 +220,14 @@ According to the `Nyquist-Shannon sampling theorem <https://en.wikipedia.org/wik
 - |void| **set_mix_rate_mode**\ (\ value\: :ref:`AudioStreamGeneratorMixRate<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>`\ )
 - :ref:`AudioStreamGeneratorMixRate<enum_AudioStreamGenerator_AudioStreamGeneratorMixRate>` **get_mix_rate_mode**\ (\ )
 
-Mixing rate mode. If set to :ref:`MIX_RATE_CUSTOM<class_AudioStreamGenerator_constant_MIX_RATE_CUSTOM>`, :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>` is used, otherwise current :ref:`AudioServer<class_AudioServer>` mixing rate is used.
+Chế độ mixing rate. Nếu được đặt thành :ref:`MIX_RATE_CUSTOM<class_AudioStreamGenerator_constant_MIX_RATE_CUSTOM>`, :ref:`mix_rate<class_AudioStreamGenerator_property_mix_rate>` sẽ được sử dụng; nếu không, mixing rate hiện tại của :ref:`AudioServer<class_AudioServer>` sẽ được sử dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

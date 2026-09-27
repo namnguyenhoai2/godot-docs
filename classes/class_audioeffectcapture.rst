@@ -10,31 +10,31 @@
 AudioEffectCapture
 ==================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exposes audio samples from an audio bus in real-time, such that it can be accessed as data.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Copies all audio frames, also known as "samples" or "audio samples", from the attached audio bus into its internal ring buffer. This effect does not alter the audio. Can be used for storing real-time audio data for playback, and for creating real-time audio visualizations, like an oscilloscope.
-
-Application code should consume these audio frames from this ring buffer using :ref:`get_buffer()<class_AudioEffectCapture_method_get_buffer>` and process it as needed, for example to capture data from an :ref:`AudioStreamMicrophone<class_AudioStreamMicrophone>`, implement application-defined effects, or to transmit audio over the network. When capturing audio data from a microphone, the format of the samples will be stereo 32-bit floating-point PCM.
-
-Unlike :ref:`AudioEffectRecord<class_AudioEffectRecord>`, this effect only returns the raw audio samples instead of encoding them into an :ref:`AudioStream<class_AudioStream>`.
+Cung cấp các mẫu âm thanh từ một bus âm thanh theo thời gian thực để có thể truy cập chúng dưới dạng dữ liệu.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Sao chép tất cả khung âm thanh, còn được gọi là "mẫu" hoặc "mẫu âm thanh", từ bus âm thanh được gắn vào bộ đệm vòng nội bộ. Hiệu ứng này không thay đổi âm thanh. Có thể dùng để lưu trữ dữ liệu âm thanh theo thời gian thực để phát lại và tạo các hình ảnh hóa âm thanh theo thời gian thực, chẳng hạn như máy hiện sóng.
+
+Mã ứng dụng nên lấy các khung âm thanh này từ bộ đệm vòng bằng :ref:`get_buffer()<class_AudioEffectCapture_method_get_buffer>` và xử lý theo nhu cầu, chẳng hạn như để thu thập dữ liệu từ một :ref:`AudioStreamMicrophone<class_AudioStreamMicrophone>`, triển khai các hiệu ứng do ứng dụng định nghĩa hoặc truyền âm thanh qua mạng. Khi thu thập dữ liệu âm thanh từ micrô, định dạng của các mẫu sẽ là PCM dấu phẩy động 32-bit stereo.
+
+Không giống :ref:`AudioEffectRecord<class_AudioEffectRecord>`, hiệu ứng này chỉ trả về các mẫu âm thanh thô thay vì mã hóa chúng thành một :ref:`AudioStream<class_AudioStream>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Các bus âm thanh <../tutorials/audio/audio_buses>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -74,8 +74,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectCapture_property_buffer_length:
 
@@ -88,9 +88,9 @@ Property Descriptions
 - |void| **set_buffer_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_buffer_length**\ (\ )
 
-Length of the internal ring buffer, in seconds. Higher values keep data around for longer, but require more memory. Value can range from 0.01 to 10.
+Độ dài của ring buffer nội bộ, tính bằng giây. Giá trị cao hơn sẽ giữ dữ liệu lâu hơn, nhưng cần nhiều bộ nhớ hơn. Giá trị có thể nằm trong khoảng từ 0.01 đến 10.
 
-\ **Note:** Setting the buffer length will have no effect if already initialized.
+\ **Lưu ý:** Việc thiết lập độ dài bộ đệm sẽ không có tác dụng nếu bộ đệm đã được khởi tạo.
 
 .. rst-class:: classref-section-separator
 
@@ -98,8 +98,8 @@ Length of the internal ring buffer, in seconds. Higher values keep data around f
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioEffectCapture_method_can_get_buffer:
 
@@ -107,7 +107,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **can_get_buffer**\ (\ frames\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioEffectCapture_method_can_get_buffer>`
 
-Returns ``true`` if at least ``frames`` samples are available to read in the internal ring buffer.
+Trả về ``true`` nếu có ít nhất ``frames`` mẫu để đọc trong ring buffer nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -119,9 +119,9 @@ Returns ``true`` if at least ``frames`` samples are available to read in the int
 
 |void| **clear_buffer**\ (\ ) :ref:`🔗<class_AudioEffectCapture_method_clear_buffer>`
 
-Clears the internal ring buffer.
+Xóa ring buffer nội bộ.
 
-\ **Note:** Calling this during a capture can cause the loss of samples which causes popping in the playback.
+\ **Lưu ý:** Việc gọi phương thức này trong khi đang capture có thể làm mất các mẫu, gây ra tiếng lách tách khi phát lại.
 
 .. rst-class:: classref-item-separator
 
@@ -133,11 +133,11 @@ Clears the internal ring buffer.
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **get_buffer**\ (\ frames\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AudioEffectCapture_method_get_buffer>`
 
-Gets the next ``frames`` samples from the internal ring buffer.
+Lấy ``frames`` mẫu tiếp theo từ ring buffer nội bộ.
 
-Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` containing exactly ``frames`` samples if available, or an empty :ref:`PackedVector2Array<class_PackedVector2Array>` if insufficient data was available.
+Trả về một :ref:`PackedVector2Array<class_PackedVector2Array>` chứa chính xác ``frames`` mẫu nếu có, hoặc một :ref:`PackedVector2Array<class_PackedVector2Array>` rỗng nếu không có đủ dữ liệu.
 
-The samples are signed floating-point PCM between ``-1`` and ``1``. You will have to scale them if you want to use them as 8 or 16-bit integer samples. (``v = 0x7fff * samples[0].x``)
+Các mẫu là PCM dấu phẩy động có dấu trong khoảng từ ``-1`` đến ``1``. Bạn sẽ phải scale chúng nếu muốn sử dụng chúng dưới dạng mẫu số nguyên 8 hoặc 16 bit. (``v = 0x7fff * samples[0].x``)
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ The samples are signed floating-point PCM between ``-1`` and ``1``. You will hav
 
 :ref:`int<class_int>` **get_buffer_length_frames**\ (\ ) |const| :ref:`🔗<class_AudioEffectCapture_method_get_buffer_length_frames>`
 
-Returns the total size of the internal ring buffer in number of samples.
+Trả về tổng kích thước của ring buffer nội bộ theo số lượng mẫu.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ Returns the total size of the internal ring buffer in number of samples.
 
 :ref:`int<class_int>` **get_discarded_frames**\ (\ ) |const| :ref:`🔗<class_AudioEffectCapture_method_get_discarded_frames>`
 
-Returns the number of samples discarded from the audio bus due to full buffer.
+Trả về số lượng mẫu bị loại bỏ khỏi audio bus vì bộ đệm đã đầy.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Returns the number of samples discarded from the audio bus due to full buffer.
 
 :ref:`int<class_int>` **get_frames_available**\ (\ ) |const| :ref:`🔗<class_AudioEffectCapture_method_get_frames_available>`
 
-Returns the number of samples available to read using :ref:`get_buffer()<class_AudioEffectCapture_method_get_buffer>`.
+Trả về số lượng mẫu có sẵn để đọc bằng :ref:`get_buffer()<class_AudioEffectCapture_method_get_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -185,14 +185,14 @@ Returns the number of samples available to read using :ref:`get_buffer()<class_A
 
 :ref:`int<class_int>` **get_pushed_frames**\ (\ ) |const| :ref:`🔗<class_AudioEffectCapture_method_get_pushed_frames>`
 
-Returns the number of samples inserted from the audio bus.
+Trả về số lượng mẫu được đưa vào từ audio bus.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

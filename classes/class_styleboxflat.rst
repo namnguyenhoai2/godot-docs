@@ -10,18 +10,18 @@
 StyleBoxFlat
 ============
 
-**Inherits:** :ref:`StyleBox<class_StyleBox>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`StyleBox<class_StyleBox>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A customizable :ref:`StyleBox<class_StyleBox>` that doesn't use a texture.
+Một :ref:`StyleBox<class_StyleBox>` có thể tùy chỉnh nhưng không sử dụng texture.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-By configuring various properties of this style box, you can achieve many common looks without the need of a texture. This includes optionally rounded borders, antialiasing, shadows, and skew.
+Bằng cách cấu hình nhiều thuộc tính khác nhau của style box này, bạn có thể tạo ra nhiều giao diện phổ biến mà không cần texture. Các tùy chọn này bao gồm đường viền bo tròn, khử răng cưa, bóng đổ và độ nghiêng.
 
-Setting corner radius to high values is allowed. As soon as corners overlap, the stylebox will switch to a relative system:
+Bạn có thể đặt bán kính góc ở các giá trị lớn. Ngay khi các góc chồng lên nhau, stylebox sẽ chuyển sang hệ thống tương đối:
 
 .. code:: text
 
@@ -29,7 +29,7 @@ Setting corner radius to high values is allowed. As soon as corners overlap, the
     corner_radius_top_left = 50
     corner_radius_bottom_left = 100
 
-The relative system now would take the 1:2 ratio of the two left corners to calculate the actual corner width. Both corners added will **never** be more than the height. Result:
+Hệ thống tương đối lúc này sẽ lấy tỷ lệ 1:2 của hai góc bên trái để tính chiều rộng góc thực tế. Tổng hai góc sẽ **không bao giờ** lớn hơn chiều cao. Kết quả:
 
 .. code:: text
 
@@ -38,7 +38,7 @@ The relative system now would take the 1:2 ratio of the two left corners to calc
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -94,33 +94,33 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`     | :ref:`get_border_width<class_StyleBoxFlat_method_get_border_width>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                               |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`     | :ref:`get_border_width_min<class_StyleBoxFlat_method_get_border_width_min>`\ (\ ) |const|                                                                     |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`     | :ref:`get_corner_radius<class_StyleBoxFlat_method_get_corner_radius>`\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`\ ) |const|                         |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`get_expand_margin<class_StyleBoxFlat_method_get_expand_margin>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                             |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_border_width<class_StyleBoxFlat_method_set_border_width>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, width\: :ref:`int<class_int>`\ )        |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_border_width_all<class_StyleBoxFlat_method_set_border_width_all>`\ (\ width\: :ref:`int<class_int>`\ )                                              |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_corner_radius<class_StyleBoxFlat_method_set_corner_radius>`\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`, radius\: :ref:`int<class_int>`\ ) |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_corner_radius_all<class_StyleBoxFlat_method_set_corner_radius_all>`\ (\ radius\: :ref:`int<class_int>`\ )                                           |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_expand_margin<class_StyleBoxFlat_method_set_expand_margin>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, size\: :ref:`float<class_float>`\ )   |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_expand_margin_all<class_StyleBoxFlat_method_set_expand_margin_all>`\ (\ size\: :ref:`float<class_float>`\ )                                         |
-   +---------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`get_border_width<class_StyleBoxFlat_method_get_border_width>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                               |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`get_border_width_min<class_StyleBoxFlat_method_get_border_width_min>`\ (\ ) |const|                                                                      |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`     | :ref:`get_corner_radius<class_StyleBoxFlat_method_get_corner_radius>`\ (\ corner\: :ref:`Corner <enum_@GlobalScope_Corner>`\ ) |const|                         |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`get_expand_margin<class_StyleBoxFlat_method_get_expand_margin>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                             |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_border_width<class_StyleBoxFlat_method_set_border_width>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`, width\: :ref:`int<class_int>`\ )        |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_border_width_all<class_StyleBoxFlat_method_set_border_width_all>`\ (\ width\: :ref:`int<class_int>`\ )                                               |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_corner_radius<class_StyleBoxFlat_method_set_corner_radius>`\ (\ corner\: :ref:`Corner <enum_@GlobalScope_Corner>`, radius\: :ref:`int<class_int>`\ ) |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_corner_radius_all<class_StyleBoxFlat_method_set_corner_radius_all>`\ (\ radius\: :ref:`int<class_int>`\ )                                            |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_expand_margin<class_StyleBoxFlat_method_set_expand_margin>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`, size\: :ref:`float<class_float>`\ )   |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_expand_margin_all<class_StyleBoxFlat_method_set_expand_margin_all>`\ (\ size\: :ref:`float<class_float>`\ )                                          |
+   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -128,8 +128,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StyleBoxFlat_property_anti_aliasing:
 
@@ -142,9 +142,9 @@ Property Descriptions
 - |void| **set_anti_aliased**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_anti_aliased**\ (\ )
 
-Antialiasing draws a small ring around the edges, which fades to transparency. As a result, edges look much smoother. This is only noticeable when using rounded corners or :ref:`skew<class_StyleBoxFlat_property_skew>`.
+Khử răng cưa tạo một vòng nhỏ xung quanh các cạnh và mờ dần về độ trong suốt. Nhờ đó, các cạnh trông mượt hơn nhiều. Điều này chỉ dễ nhận thấy khi sử dụng các góc bo tròn hoặc :ref:`skew<class_StyleBoxFlat_property_skew>`.
 
-\ **Note:** When using beveled corners with 45-degree angles (:ref:`corner_detail<class_StyleBoxFlat_property_corner_detail>` = 1), it is recommended to set :ref:`anti_aliasing<class_StyleBoxFlat_property_anti_aliasing>` to ``false`` to ensure crisp visuals and avoid possible visual glitches.
+\ **Lưu ý:** Khi sử dụng các góc vát với góc 45 độ (:ref:`corner_detail<class_StyleBoxFlat_property_corner_detail>` = 1), bạn nên đặt :ref:`anti_aliasing<class_StyleBoxFlat_property_anti_aliasing>` thành ``false`` để đảm bảo hình ảnh sắc nét và tránh các lỗi hiển thị có thể xảy ra.
 
 .. rst-class:: classref-item-separator
 
@@ -161,9 +161,9 @@ Antialiasing draws a small ring around the edges, which fades to transparency. A
 - |void| **set_aa_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_aa_size**\ (\ )
 
-This changes the size of the antialiasing effect. ``1.0`` is recommended for an optimal result at 100% scale, identical to how rounded rectangles are rendered in web browsers and most vector drawing software.
+Điều này thay đổi kích thước của hiệu ứng khử răng cưa. Nên sử dụng ``1.0`` để đạt kết quả tối ưu ở tỷ lệ 100%, tương tự cách các hình chữ nhật bo tròn được hiển thị trong trình duyệt web và hầu hết phần mềm vẽ vector.
 
-\ **Note:** Higher values may produce a blur effect but can also create undesired artifacts on small boxes with large-radius corners.
+\ **Lưu ý:** Các giá trị cao hơn có thể tạo hiệu ứng mờ nhưng cũng có thể tạo ra các hiện tượng không mong muốn trên những box nhỏ có các góc bán kính lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ This changes the size of the antialiasing effect. ``1.0`` is recommended for an 
 - |void| **set_bg_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_bg_color**\ (\ )
 
-The background color of the stylebox.
+Màu nền của stylebox.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ The background color of the stylebox.
 - |void| **set_border_blend**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_border_blend**\ (\ )
 
-If ``true``, the border will fade into the background color.
+Nếu ``true``, đường viền sẽ hòa dần vào màu nền.
 
 .. rst-class:: classref-item-separator
 
@@ -214,7 +214,7 @@ If ``true``, the border will fade into the background color.
 - |void| **set_border_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_border_color**\ (\ )
 
-Sets the color of the border.
+Đặt màu của đường viền.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Sets the color of the border.
 - |void| **set_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, width\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Border width for the bottom border.
+Độ rộng đường viền dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ Border width for the bottom border.
 - |void| **set_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, width\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Border width for the left border.
+Độ rộng đường viền trái.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ Border width for the left border.
 - |void| **set_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, width\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Border width for the right border.
+Độ rộng đường viền phải.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Border width for the right border.
 - |void| **set_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, width\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Border width for the top border.
+Độ rộng đường viền trên.
 
 .. rst-class:: classref-item-separator
 
@@ -299,11 +299,11 @@ Border width for the top border.
 - |void| **set_corner_detail**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_corner_detail**\ (\ )
 
-This sets the number of vertices used for each corner. Higher values result in rounder corners but take more processing power to compute. When choosing a value, you should take the corner radius (:ref:`set_corner_radius_all()<class_StyleBoxFlat_method_set_corner_radius_all>`) into account.
+Thuộc tính này đặt số lượng đỉnh được sử dụng cho mỗi góc. Giá trị cao hơn tạo ra các góc tròn hơn nhưng cần nhiều năng lực xử lý hơn để tính toán. Khi chọn một giá trị, bạn nên tính đến bán kính góc (:ref:`set_corner_radius_all()<class_StyleBoxFlat_method_set_corner_radius_all>`).
 
-For corner radii less than 10, ``4`` or ``5`` should be enough. For corner radii less than 30, values between ``8`` and ``12`` should be enough.
+Với bán kính góc nhỏ hơn 10, ``4`` hoặc ``5`` là đủ. Với bán kính góc nhỏ hơn 30, các giá trị từ ``8`` đến ``12`` là đủ.
 
-A corner detail of ``1`` will result in chamfered corners instead of rounded corners, which is useful for some artistic effects.
+Chi tiết góc bằng ``1`` sẽ tạo ra các góc vát thay vì góc bo tròn, hữu ích cho một số hiệu ứng nghệ thuật.
 
 .. rst-class:: classref-item-separator
 
@@ -320,7 +320,7 @@ A corner detail of ``1`` will result in chamfered corners instead of rounded cor
 - |void| **set_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`, radius\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`\ ) |const|
 
-The bottom-left corner's radius. If ``0``, the corner is not rounded.
+Bán kính góc dưới bên trái. Nếu ``0``, góc sẽ không được bo tròn.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ The bottom-left corner's radius. If ``0``, the corner is not rounded.
 - |void| **set_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`, radius\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`\ ) |const|
 
-The bottom-right corner's radius. If ``0``, the corner is not rounded.
+Bán kính góc dưới bên phải. Nếu ``0``, góc sẽ không được bo tròn.
 
 .. rst-class:: classref-item-separator
 
@@ -354,7 +354,7 @@ The bottom-right corner's radius. If ``0``, the corner is not rounded.
 - |void| **set_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`, radius\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`\ ) |const|
 
-The top-left corner's radius. If ``0``, the corner is not rounded.
+Bán kính góc trên bên trái. Nếu ``0``, góc sẽ không được bo tròn.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ The top-left corner's radius. If ``0``, the corner is not rounded.
 - |void| **set_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`, radius\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`\ ) |const|
 
-The top-right corner's radius. If ``0``, the corner is not rounded.
+Bán kính góc trên bên phải. Nếu ``0``, góc sẽ không được bo tròn.
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ The top-right corner's radius. If ``0``, the corner is not rounded.
 - |void| **set_draw_center**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_draw_center_enabled**\ (\ )
 
-Toggles drawing of the inner part of the stylebox.
+Bật hoặc tắt việc vẽ phần bên trong của stylebox.
 
 .. rst-class:: classref-item-separator
 
@@ -405,9 +405,9 @@ Toggles drawing of the inner part of the stylebox.
 - |void| **set_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, size\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Expands the stylebox outside of the control rect on the bottom edge. Useful in combination with :ref:`border_width_bottom<class_StyleBoxFlat_property_border_width_bottom>` to draw a border outside the control rect.
+Mở rộng stylebox ra ngoài hình chữ nhật điều khiển ở cạnh dưới. Hữu ích khi kết hợp với :ref:`border_width_bottom<class_StyleBoxFlat_property_border_width_bottom>` để vẽ đường viền bên ngoài hình chữ nhật điều khiển.
 
-\ **Note:** Unlike :ref:`StyleBox.content_margin_bottom<class_StyleBox_property_content_margin_bottom>`, :ref:`expand_margin_bottom<class_StyleBoxFlat_property_expand_margin_bottom>` does *not* affect the size of the clickable area for :ref:`Control<class_Control>`\ s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.
+\ **Lưu ý:** Không giống như :ref:`StyleBox.content_margin_bottom<class_StyleBox_property_content_margin_bottom>`, :ref:`expand_margin_bottom<class_StyleBoxFlat_property_expand_margin_bottom>` *không* ảnh hưởng đến kích thước vùng có thể nhấp עבור :ref:`Control<class_Control>`\ s. Điều này có thể ảnh hưởng tiêu cực đến khả năng sử dụng nếu dùng không đúng cách, vì người dùng có thể cố nhấp vào một vùng của StyleBox nhưng vùng đó thực tế không thể nhận thao tác nhấp.
 
 .. rst-class:: classref-item-separator
 
@@ -424,9 +424,9 @@ Expands the stylebox outside of the control rect on the bottom edge. Useful in c
 - |void| **set_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, size\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Expands the stylebox outside of the control rect on the left edge. Useful in combination with :ref:`border_width_left<class_StyleBoxFlat_property_border_width_left>` to draw a border outside the control rect.
+Mở rộng stylebox ra ngoài hình chữ nhật điều khiển ở cạnh trái. Hữu ích khi kết hợp với :ref:`border_width_left<class_StyleBoxFlat_property_border_width_left>` để vẽ đường viền bên ngoài hình chữ nhật điều khiển.
 
-\ **Note:** Unlike :ref:`StyleBox.content_margin_left<class_StyleBox_property_content_margin_left>`, :ref:`expand_margin_left<class_StyleBoxFlat_property_expand_margin_left>` does *not* affect the size of the clickable area for :ref:`Control<class_Control>`\ s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.
+\ **Lưu ý:** Không giống như :ref:`StyleBox.content_margin_left<class_StyleBox_property_content_margin_left>`, :ref:`expand_margin_left<class_StyleBoxFlat_property_expand_margin_left>` *không* ảnh hưởng đến kích thước vùng có thể nhấp עבור :ref:`Control<class_Control>`\ s. Điều này có thể ảnh hưởng tiêu cực đến khả năng sử dụng nếu dùng không đúng cách, vì người dùng có thể cố nhấp vào một vùng của StyleBox nhưng vùng đó thực tế không thể nhận thao tác nhấp.
 
 .. rst-class:: classref-item-separator
 
@@ -443,9 +443,9 @@ Expands the stylebox outside of the control rect on the left edge. Useful in com
 - |void| **set_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, size\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Expands the stylebox outside of the control rect on the right edge. Useful in combination with :ref:`border_width_right<class_StyleBoxFlat_property_border_width_right>` to draw a border outside the control rect.
+Mở rộng stylebox ra ngoài rect của control ở cạnh phải. Hữu ích khi kết hợp với :ref:`border_width_right<class_StyleBoxFlat_property_border_width_right>` để vẽ đường viền bên ngoài rect của control.
 
-\ **Note:** Unlike :ref:`StyleBox.content_margin_right<class_StyleBox_property_content_margin_right>`, :ref:`expand_margin_right<class_StyleBoxFlat_property_expand_margin_right>` does *not* affect the size of the clickable area for :ref:`Control<class_Control>`\ s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.
+\ **Lưu ý:** Không giống như :ref:`StyleBox.content_margin_right<class_StyleBox_property_content_margin_right>`, :ref:`expand_margin_right<class_StyleBoxFlat_property_expand_margin_right>` không *ảnh hưởng* đến kích thước vùng có thể nhấp cho :ref:`Control<class_Control>`\ s. Điều này có thể ảnh hưởng tiêu cực đến khả năng sử dụng nếu dùng không đúng cách, vì người dùng có thể cố nhấp vào một vùng của StyleBox nhưng vùng đó thực tế không thể nhận thao tác nhấp.
 
 .. rst-class:: classref-item-separator
 
@@ -462,9 +462,9 @@ Expands the stylebox outside of the control rect on the right edge. Useful in co
 - |void| **set_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, size\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Expands the stylebox outside of the control rect on the top edge. Useful in combination with :ref:`border_width_top<class_StyleBoxFlat_property_border_width_top>` to draw a border outside the control rect.
+Mở rộng stylebox ra ngoài rect của control ở cạnh trên. Hữu ích khi kết hợp với :ref:`border_width_top<class_StyleBoxFlat_property_border_width_top>` để vẽ đường viền bên ngoài rect của control.
 
-\ **Note:** Unlike :ref:`StyleBox.content_margin_top<class_StyleBox_property_content_margin_top>`, :ref:`expand_margin_top<class_StyleBoxFlat_property_expand_margin_top>` does *not* affect the size of the clickable area for :ref:`Control<class_Control>`\ s. This can negatively impact usability if used wrong, as the user may try to click an area of the StyleBox that cannot actually receive clicks.
+\ **Lưu ý:** Không giống như :ref:`StyleBox.content_margin_top<class_StyleBox_property_content_margin_top>`, :ref:`expand_margin_top<class_StyleBoxFlat_property_expand_margin_top>` không *ảnh hưởng* đến kích thước vùng có thể nhấp cho :ref:`Control<class_Control>`\ s. Điều này có thể ảnh hưởng tiêu cực đến khả năng sử dụng nếu dùng không đúng cách, vì người dùng có thể cố nhấp vào một vùng của StyleBox nhưng vùng đó thực tế không thể nhận thao tác nhấp.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ Expands the stylebox outside of the control rect on the top edge. Useful in comb
 - |void| **set_shadow_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_shadow_color**\ (\ )
 
-The color of the shadow. This has no effect if :ref:`shadow_size<class_StyleBoxFlat_property_shadow_size>` is lower than 1.
+Màu của bóng. Giá trị này không có tác dụng nếu :ref:`shadow_size<class_StyleBoxFlat_property_shadow_size>` nhỏ hơn 1.
 
 .. rst-class:: classref-item-separator
 
@@ -498,7 +498,7 @@ The color of the shadow. This has no effect if :ref:`shadow_size<class_StyleBoxF
 - |void| **set_shadow_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_shadow_offset**\ (\ )
 
-The shadow offset in pixels. Adjusts the position of the shadow relatively to the stylebox.
+Độ lệch của bóng tính bằng pixel. Điều chỉnh vị trí của bóng tương đối so với stylebox.
 
 .. rst-class:: classref-item-separator
 
@@ -515,7 +515,7 @@ The shadow offset in pixels. Adjusts the position of the shadow relatively to th
 - |void| **set_shadow_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_shadow_size**\ (\ )
 
-The shadow size in pixels.
+Kích thước của bóng tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -532,9 +532,9 @@ The shadow size in pixels.
 - |void| **set_skew**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_skew**\ (\ )
 
-If set to a non-zero value on either axis, :ref:`skew<class_StyleBoxFlat_property_skew>` distorts the StyleBox horizontally and/or vertically. This can be used for "futuristic"-style UIs. Positive values skew the StyleBox towards the right (X axis) and upwards (Y axis), while negative values skew the StyleBox towards the left (X axis) and downwards (Y axis).
+Nếu được đặt thành giá trị khác 0 trên một trong hai trục, :ref:`skew<class_StyleBoxFlat_property_skew>` sẽ làm biến dạng StyleBox theo chiều ngang và/hoặc chiều dọc. Có thể dùng giá trị này cho các UI mang phong cách "futuristic". Các giá trị dương làm nghiêng StyleBox về bên phải (trục X) và lên trên (trục Y), còn các giá trị âm làm nghiêng StyleBox về bên trái (trục X) và xuống dưới (trục Y).
 
-\ **Note:** To ensure text does not touch the StyleBox's edges, consider increasing the :ref:`StyleBox<class_StyleBox>`'s content margin (see :ref:`StyleBox.content_margin_bottom<class_StyleBox_property_content_margin_bottom>`). It is preferable to increase the content margin instead of the expand margin (see :ref:`expand_margin_bottom<class_StyleBoxFlat_property_expand_margin_bottom>`), as increasing the expand margin does not increase the size of the clickable area for :ref:`Control<class_Control>`\ s.
+\ **Lưu ý:** Để đảm bảo văn bản không chạm vào các cạnh của StyleBox, hãy cân nhắc tăng lề nội dung của :ref:`StyleBox<class_StyleBox>` (xem :ref:`StyleBox.content_margin_bottom<class_StyleBox_property_content_margin_bottom>`). Nên tăng lề nội dung thay vì lề mở rộng (xem :ref:`expand_margin_bottom<class_StyleBoxFlat_property_expand_margin_bottom>`), vì việc tăng lề mở rộng không làm tăng kích thước vùng có thể nhấp của :ref:`Control<class_Control>`\ s.
 
 .. rst-class:: classref-section-separator
 
@@ -542,8 +542,8 @@ If set to a non-zero value on either axis, :ref:`skew<class_StyleBoxFlat_propert
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StyleBoxFlat_method_get_border_width:
 
@@ -551,7 +551,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_StyleBoxFlat_method_get_border_width>`
 
-Returns the specified :ref:`Side<enum_@GlobalScope_Side>`'s border width.
+Trả về độ rộng đường viền của :ref:`Side <enum_@GlobalScope_Side>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -563,7 +563,7 @@ Returns the specified :ref:`Side<enum_@GlobalScope_Side>`'s border width.
 
 :ref:`int<class_int>` **get_border_width_min**\ (\ ) |const| :ref:`🔗<class_StyleBoxFlat_method_get_border_width_min>`
 
-Returns the smallest border width out of all four borders.
+Trả về độ rộng đường viền nhỏ nhất trong cả bốn đường viền.
 
 .. rst-class:: classref-item-separator
 
@@ -575,7 +575,7 @@ Returns the smallest border width out of all four borders.
 
 :ref:`int<class_int>` **get_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`\ ) |const| :ref:`🔗<class_StyleBoxFlat_method_get_corner_radius>`
 
-Returns the given ``corner``'s radius.
+Trả về bán kính của ``corner`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -587,7 +587,7 @@ Returns the given ``corner``'s radius.
 
 :ref:`float<class_float>` **get_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_StyleBoxFlat_method_get_expand_margin>`
 
-Returns the size of the specified :ref:`Side<enum_@GlobalScope_Side>`'s expand margin.
+Trả về kích thước lề mở rộng của :ref:`Side <enum_@GlobalScope_Side>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -599,7 +599,7 @@ Returns the size of the specified :ref:`Side<enum_@GlobalScope_Side>`'s expand m
 
 |void| **set_border_width**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, width\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StyleBoxFlat_method_set_border_width>`
 
-Sets the specified :ref:`Side<enum_@GlobalScope_Side>`'s border width to ``width`` pixels.
+Đặt độ rộng đường viền của :ref:`Side <enum_@GlobalScope_Side>` được chỉ định thành ``width`` pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -611,7 +611,7 @@ Sets the specified :ref:`Side<enum_@GlobalScope_Side>`'s border width to ``width
 
 |void| **set_border_width_all**\ (\ width\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StyleBoxFlat_method_set_border_width_all>`
 
-Sets the border width to ``width`` pixels for all sides.
+Đặt độ rộng đường viền thành ``width`` pixel cho tất cả các cạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -623,7 +623,7 @@ Sets the border width to ``width`` pixels for all sides.
 
 |void| **set_corner_radius**\ (\ corner\: :ref:`Corner<enum_@GlobalScope_Corner>`, radius\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StyleBoxFlat_method_set_corner_radius>`
 
-Sets the corner radius to ``radius`` pixels for the given ``corner``.
+Đặt bán kính góc thành ``radius`` pixel cho ``corner`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -635,7 +635,7 @@ Sets the corner radius to ``radius`` pixels for the given ``corner``.
 
 |void| **set_corner_radius_all**\ (\ radius\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StyleBoxFlat_method_set_corner_radius_all>`
 
-Sets the corner radius to ``radius`` pixels for all corners.
+Đặt bán kính góc thành ``radius`` pixel cho tất cả các góc.
 
 .. rst-class:: classref-item-separator
 
@@ -647,7 +647,7 @@ Sets the corner radius to ``radius`` pixels for all corners.
 
 |void| **set_expand_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, size\: :ref:`float<class_float>`\ ) :ref:`🔗<class_StyleBoxFlat_method_set_expand_margin>`
 
-Sets the expand margin to ``size`` pixels for the specified :ref:`Side<enum_@GlobalScope_Side>`.
+Đặt lề mở rộng thành ``size`` pixel cho :ref:`Side <enum_@GlobalScope_Side>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -659,14 +659,14 @@ Sets the expand margin to ``size`` pixels for the specified :ref:`Side<enum_@Glo
 
 |void| **set_expand_margin_all**\ (\ size\: :ref:`float<class_float>`\ ) :ref:`🔗<class_StyleBoxFlat_method_set_expand_margin_all>`
 
-Sets the expand margin to ``size`` pixels for all sides.
+Đặt lề mở rộng thành ``size`` pixel cho tất cả các cạnh.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng phải ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

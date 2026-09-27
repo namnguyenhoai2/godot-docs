@@ -10,18 +10,18 @@
 JavaClassWrapper
 ================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Provides access to the Java Native Interface.
+Cung cấp quyền truy cập vào Java Native Interface.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The JavaClassWrapper singleton provides a way for the Godot application to send and receive data through the `Java Native Interface <https://developer.android.com/training/articles/perf-jni>`__ (JNI).
+Singleton JavaClassWrapper cung cấp một cách để ứng dụng Godot gửi và nhận dữ liệu thông qua `Java Native Interface <https://developer.android.com/training/articles/perf-jni>`__ (JNI).
 
-\ **Note:** This singleton is only available in Android builds.
+\ **Lưu ý:** Singleton này chỉ khả dụng trong các bản build Android.
 
 ::
 
@@ -33,19 +33,19 @@ The JavaClassWrapper singleton provides a way for the Godot application to send 
 
     print(datetime.format(formatter))
 
-\ **Warning:** When calling Java methods, be sure to check :ref:`get_exception()<class_JavaClassWrapper_method_get_exception>` to check if the method threw an exception.
+\ **Cảnh báo:** Khi gọi các phương thức Java, hãy nhớ kiểm tra :ref:`get_exception()<class_JavaClassWrapper_method_get_exception>` để kiểm tra xem phương thức có phát sinh ngoại lệ hay không.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Integrating with Android APIs <../tutorials/platform/android/javaclasswrapper_and_androidruntimeplugin>`
+- :doc:`Tích hợp với các API Android <../tutorials/platform/android/javaclasswrapper_and_androidruntimeplugin>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -66,8 +66,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_JavaClassWrapper_method_create_proxy:
 
@@ -75,9 +75,9 @@ Method Descriptions
 
 :ref:`JavaObject<class_JavaObject>` **create_proxy**\ (\ object\: :ref:`Object<class_Object>`, interfaces\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_JavaClassWrapper_method_create_proxy>`
 
-Creates a :ref:`JavaObject<class_JavaObject>` implementing the given Java interfaces using the given :ref:`Object<class_Object>` as the implementation.
+Tạo một :ref:`JavaObject<class_JavaObject>` triển khai các interface Java đã cho, sử dụng :ref:`Object<class_Object>` đã cho làm phần triển khai.
 
-The ``object`` must contain methods signatures matching the methods signatures from the passed Java ``interfaces``. Invoking methods from the Java ``interfaces`` will route to the matching ``object`` method.
+``object`` phải chứa các chữ ký phương thức khớp với chữ ký của các phương thức trong ``interfaces`` Java được truyền vào. Việc gọi các phương thức từ ``interfaces`` Java sẽ được chuyển đến phương thức ``object`` tương ứng.
 
 ::
 
@@ -89,7 +89,7 @@ The ``object`` must contain methods signatures matching the methods signatures f
     var printer_object = JavaClassWrapper.create_proxy(print_proxy, ["android.util.Printer"])
     printer_object.println("Hello Godot World!")
 
-\ **Note:** This method only works on Android. On every other platform, this method will always return ``null``.
+\ **Lưu ý:** Phương thức này chỉ hoạt động trên Android. Trên mọi nền tảng khác, phương thức này sẽ luôn trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -101,11 +101,11 @@ The ``object`` must contain methods signatures matching the methods signatures f
 
 :ref:`JavaObject<class_JavaObject>` **create_sam_callback**\ (\ sam_interface\: :ref:`String<class_String>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_JavaClassWrapper_method_create_sam_callback>`
 
-Creates a :ref:`JavaObject<class_JavaObject>` implementing the Java Single Abstract Method (SAM) interface using the Godot :ref:`Callable<class_Callable>` as the implementation.
+Tạo một :ref:`JavaObject<class_JavaObject>` triển khai interface Single Abstract Method (SAM) của Java bằng cách sử dụng :ref:`Callable<class_Callable>` của Godot làm phần triển khai.
 
-The ``sam_interface`` **must be** a Java SAM interface, meaning it must only have a single abstract method to implement.
+``sam_interface`` **phải là** một interface SAM của Java, nghĩa là nó chỉ được có một phương thức trừu tượng duy nhất để triển khai.
 
-The ``callable`` must be able to handle the same parameter types as the SAM interface method, and must provide the same return type. The ``callable`` will be invoked as a callback, passing the arguments from the Java SAM interface method.
+``callable`` phải có khả năng xử lý cùng các kiểu tham số như phương thức của interface SAM và phải cung cấp cùng kiểu trả về. ``callable`` sẽ được gọi dưới dạng callback, với các đối số được truyền từ phương thức của interface SAM.
 
 ::
 
@@ -114,7 +114,7 @@ The ``callable`` must be able to handle the same parameter types as the SAM inte
     var callback = JavaClassWrapper.create_sam_callback("android.util.Printer", cb)
     callback.println("Hello Godot World!")
 
-\ **Note:** This method only works on Android. On every other platform, this method will always return ``null``.
+\ **Lưu ý:** Phương thức này chỉ hoạt động trên Android. Trên mọi nền tảng khác, phương thức này sẽ luôn trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -126,9 +126,9 @@ The ``callable`` must be able to handle the same parameter types as the SAM inte
 
 :ref:`JavaObject<class_JavaObject>` **get_exception**\ (\ ) :ref:`🔗<class_JavaClassWrapper_method_get_exception>`
 
-Returns the Java exception from the last call into a Java class. If there was no exception, it will return ``null``.
+Trả về ngoại lệ Java từ lần gọi gần nhất đến một lớp Java. Nếu không có ngoại lệ, phương thức sẽ trả về ``null``.
 
-\ **Note:** This method only works on Android. On every other platform, this method will always return ``null``.
+\ **Lưu ý:** Phương thức này chỉ hoạt động trên Android. Trên mọi nền tảng khác, phương thức này sẽ luôn trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -140,25 +140,25 @@ Returns the Java exception from the last call into a Java class. If there was no
 
 :ref:`JavaClass<class_JavaClass>` **wrap**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JavaClassWrapper_method_wrap>`
 
-Wraps a class defined in Java, and returns it as a :ref:`JavaClass<class_JavaClass>` :ref:`Object<class_Object>` type that Godot can interact with.
+Bao bọc một class được định nghĩa trong Java và trả về class đó dưới dạng kiểu :ref:`JavaClass<class_JavaClass>` :ref:`Object<class_Object>` mà Godot có thể tương tác.
 
-When wrapping inner (nested) classes, use ``$`` instead of ``.`` to separate them. For example, ``JavaClassWrapper.wrap("android.view.WindowManager$LayoutParams")`` wraps the **WindowManager.LayoutParams** class.
+Khi bao bọc các class bên trong (lồng nhau), hãy dùng ``$`` thay vì ``.`` để phân tách chúng. Ví dụ: ``JavaClassWrapper.wrap("android.view.WindowManager$LayoutParams")`` bao bọc class **WindowManager.LayoutParams**.
 
-\ **Note:** To invoke a constructor, call a method with the same name as the class. For example:
+\ **Lưu ý:** Để gọi một constructor, hãy gọi một method có cùng tên với class. Ví dụ:
 
 ::
 
     var Intent = JavaClassWrapper.wrap("android.content.Intent")
     var intent = Intent.Intent()
 
-\ **Note:** This method only works on Android. On every other platform, this method does nothing and returns an empty :ref:`JavaClass<class_JavaClass>`.
+\ **Lưu ý:** Method này chỉ hoạt động trên Android. Trên mọi nền tảng khác, method này không làm gì và trả về một :ref:`JavaClass<class_JavaClass>` rỗng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

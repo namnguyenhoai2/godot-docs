@@ -10,28 +10,28 @@
 VisualShaderNodeIntFunc
 =======================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A scalar integer function to be used within the visual shader graph.
+Một hàm số nguyên vô hướng được sử dụng trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Accept an integer scalar (``x``) to the input port and transform it according to :ref:`function<class_VisualShaderNodeIntFunc_property_function>`.
+Chấp nhận một số nguyên vô hướng (``x``) tại cổng đầu vào và biến đổi nó theo :ref:`function<class_VisualShaderNodeIntFunc_property_function>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------+------------------------------------------------------------------+-------+
-   | :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` | :ref:`function<class_VisualShaderNodeIntFunc_property_function>` | ``2`` |
-   +--------------------------------------------------------+------------------------------------------------------------------+-------+
+   +---------------------------------------------------------+------------------------------------------------------------------+-------+
+   | :ref:`Function <enum_VisualShaderNodeIntFunc_Function>` | :ref:`function<class_VisualShaderNodeIntFunc_property_function>` | ``2`` |
+   +---------------------------------------------------------+------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeIntFunc_Function:
 
 .. rst-class:: classref-enumeration
 
-enum **Function**: :ref:`🔗<enum_VisualShaderNodeIntFunc_Function>`
+enum **Function**: :ref:`🔗 <enum_VisualShaderNodeIntFunc_Function>`
 
 .. _class_VisualShaderNodeIntFunc_constant_FUNC_ABS:
 
@@ -54,7 +54,7 @@ enum **Function**: :ref:`🔗<enum_VisualShaderNodeIntFunc_Function>`
 
 :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` **FUNC_ABS** = ``0``
 
-Returns the absolute value of the parameter. Translates to ``abs(x)`` in the Godot Shader Language.
+Trả về giá trị tuyệt đối của tham số. Tương ứng với ``abs(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeIntFunc_constant_FUNC_NEGATE:
 
@@ -62,7 +62,7 @@ Returns the absolute value of the parameter. Translates to ``abs(x)`` in the God
 
 :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` **FUNC_NEGATE** = ``1``
 
-Negates the ``x`` using ``-(x)``.
+Phủ định ``x`` bằng ``-(x)``.
 
 .. _class_VisualShaderNodeIntFunc_constant_FUNC_SIGN:
 
@@ -70,7 +70,7 @@ Negates the ``x`` using ``-(x)``.
 
 :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` **FUNC_SIGN** = ``2``
 
-Extracts the sign of the parameter. Translates to ``sign(x)`` in the Godot Shader Language.
+Trích xuất dấu của tham số. Tương ứng với ``sign(x)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeIntFunc_constant_FUNC_BITWISE_NOT:
 
@@ -78,7 +78,7 @@ Extracts the sign of the parameter. Translates to ``sign(x)`` in the Godot Shade
 
 :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` **FUNC_BITWISE_NOT** = ``3``
 
-Returns the result of bitwise ``NOT`` operation on the integer. Translates to ``~a`` in the Godot Shader Language.
+Trả về kết quả của phép toán ``NOT`` theo bit trên số nguyên. Tương ứng với ``~a`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeIntFunc_constant_FUNC_MAX:
 
@@ -86,7 +86,7 @@ Returns the result of bitwise ``NOT`` operation on the integer. Translates to ``
 
 :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` **FUNC_MAX** = ``4``
 
-Represents the size of the :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` enum.
+Biểu thị kích thước của enum :ref:`Function <enum_VisualShaderNodeIntFunc_Function>`.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ Represents the size of the :ref:`Function<enum_VisualShaderNodeIntFunc_Function>
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeIntFunc_property_function:
 
@@ -108,14 +108,14 @@ Property Descriptions
 - |void| **set_function**\ (\ value\: :ref:`Function<enum_VisualShaderNodeIntFunc_Function>`\ )
 - :ref:`Function<enum_VisualShaderNodeIntFunc_Function>` **get_function**\ (\ )
 
-A function to be applied to the scalar.
+Một hàm được áp dụng cho giá trị vô hướng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

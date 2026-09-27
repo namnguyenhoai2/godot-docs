@@ -10,28 +10,28 @@
 VisualShaderNodeParticleRandomness
 ==================================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Visual shader node for randomizing particle values.
+Nút visual shader dùng để tạo giá trị ngẫu nhiên cho các particle.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Randomness node will output pseudo-random values of the given type based on the specified minimum and maximum values.
+Nút Randomness sẽ xuất ra các giá trị giả ngẫu nhiên thuộc kiểu đã cho, dựa trên các giá trị tối thiểu và tối đa được chỉ định.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` | :ref:`op_type<class_VisualShaderNodeParticleRandomness_property_op_type>` | ``0`` |
-   +---------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   +----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`OpType <enum_VisualShaderNodeParticleRandomness_OpType>` | :ref:`op_type<class_VisualShaderNodeParticleRandomness_property_op_type>` | ``0`` |
+   +----------------------------------------------------------------+---------------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeParticleRandomness_OpType:
 
 .. rst-class:: classref-enumeration
 
-enum **OpType**: :ref:`🔗<enum_VisualShaderNodeParticleRandomness_OpType>`
+enum **OpType**: :ref:`🔗 <enum_VisualShaderNodeParticleRandomness_OpType>`
 
 .. _class_VisualShaderNodeParticleRandomness_constant_OP_TYPE_SCALAR:
 
@@ -54,7 +54,7 @@ enum **OpType**: :ref:`🔗<enum_VisualShaderNodeParticleRandomness_OpType>`
 
 :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` **OP_TYPE_SCALAR** = ``0``
 
-A floating-point scalar.
+Một scalar dấu phẩy động.
 
 .. _class_VisualShaderNodeParticleRandomness_constant_OP_TYPE_VECTOR_2D:
 
@@ -62,7 +62,7 @@ A floating-point scalar.
 
 :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` **OP_TYPE_VECTOR_2D** = ``1``
 
-A 2D vector type.
+Một kiểu vector 2D.
 
 .. _class_VisualShaderNodeParticleRandomness_constant_OP_TYPE_VECTOR_3D:
 
@@ -70,7 +70,7 @@ A 2D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` **OP_TYPE_VECTOR_3D** = ``2``
 
-A 3D vector type.
+Một kiểu vector 3D.
 
 .. _class_VisualShaderNodeParticleRandomness_constant_OP_TYPE_VECTOR_4D:
 
@@ -78,7 +78,7 @@ A 3D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` **OP_TYPE_VECTOR_4D** = ``3``
 
-A 4D vector type.
+Một kiểu vector 4D.
 
 .. _class_VisualShaderNodeParticleRandomness_constant_OP_TYPE_MAX:
 
@@ -86,7 +86,7 @@ A 4D vector type.
 
 :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` **OP_TYPE_MAX** = ``4``
 
-Represents the size of the :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` enum.
+Biểu thị kích thước của enum :ref:`OpType <enum_VisualShaderNodeParticleRandomness_OpType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ Represents the size of the :ref:`OpType<enum_VisualShaderNodeParticleRandomness_
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeParticleRandomness_property_op_type:
 
@@ -108,14 +108,14 @@ Property Descriptions
 - |void| **set_op_type**\ (\ value\: :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>`\ )
 - :ref:`OpType<enum_VisualShaderNodeParticleRandomness_OpType>` **get_op_type**\ (\ )
 
-A type of operands and returned value.
+Kiểu của các toán hạng và giá trị được trả về.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

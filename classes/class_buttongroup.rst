@@ -13,37 +13,37 @@
 ButtonGroup
 ===========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A group of buttons that doesn't allow more than one button to be pressed at a time.
+Một nhóm các nút không cho phép nhấn nhiều hơn một nút cùng lúc.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A group of :ref:`BaseButton<class_BaseButton>`-derived buttons. The buttons in a **ButtonGroup** are treated like radio buttons: No more than one button can be pressed at a time. Some types of buttons (such as :ref:`CheckBox<class_CheckBox>`) may have a special appearance in this state.
+Một nhóm các nút dẫn xuất từ :ref:`BaseButton<class_BaseButton>`. Các nút trong **ButtonGroup** hoạt động như các nút radio: Không thể nhấn nhiều hơn một nút cùng lúc. Một số loại nút (chẳng hạn như :ref:`CheckBox<class_CheckBox>`) có thể có giao diện đặc biệt ở trạng thái này.
 
-Every member of a **ButtonGroup** should have :ref:`BaseButton.toggle_mode<class_BaseButton_property_toggle_mode>` set to ``true``.
+Mỗi thành viên của **ButtonGroup** phải có :ref:`BaseButton.toggle_mode<class_BaseButton_property_toggle_mode>` được đặt thành ``true``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------+----------------------------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`allow_unpress<class_ButtonGroup_property_allow_unpress>` | ``false``                                                                             |
-   +-------------------------+----------------------------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | resource_local_to_scene                                        | ``true`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-------------------------+----------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`allow_unpress<class_ButtonGroup_property_allow_unpress>` | ``false``                                                                              |
+   +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | resource_local_to_scene                                        | ``true`` (ghi đè lên :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-------------------------+----------------------------------------------------------------+----------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -69,7 +69,7 @@ Signals
 
 **pressed**\ (\ button\: :ref:`BaseButton<class_BaseButton>`\ ) :ref:`🔗<class_ButtonGroup_signal_pressed>`
 
-Emitted when one of the buttons of the group is pressed.
+Được phát ra khi một trong các nút của nhóm được nhấn.
 
 .. rst-class:: classref-section-separator
 
@@ -77,8 +77,8 @@ Emitted when one of the buttons of the group is pressed.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ButtonGroup_property_allow_unpress:
 
@@ -91,7 +91,7 @@ Property Descriptions
 - |void| **set_allow_unpress**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_allow_unpress**\ (\ )
 
-If ``true``, it is possible to unpress all buttons in this **ButtonGroup**.
+Nếu ``true``, có thể bỏ chọn tất cả các nút trong **ButtonGroup** này.
 
 .. rst-class:: classref-section-separator
 
@@ -99,8 +99,8 @@ If ``true``, it is possible to unpress all buttons in this **ButtonGroup**.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ButtonGroup_method_get_buttons:
 
@@ -120,14 +120,14 @@ Returns an :ref:`Array<class_Array>` of :ref:`Button<class_Button>`\ s who have 
 
 :ref:`BaseButton<class_BaseButton>` **get_pressed_button**\ (\ ) :ref:`🔗<class_ButtonGroup_method_get_pressed_button>`
 
-Returns the current pressed button.
+Trả về nút hiện đang được nhấn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

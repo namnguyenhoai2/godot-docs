@@ -10,14 +10,14 @@
 Array
 =====
 
-A built-in data structure that holds a sequence of elements.
+Một cấu trúc dữ liệu tích hợp sẵn chứa một chuỗi các phần tử.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An array data structure that can contain a sequence of elements of any :ref:`Variant<class_Variant>` type by default. Values can optionally be constrained to a specific type by creating a *typed array*. Elements are accessed by a numerical index starting at ``0``. Negative indices are used to count from the back (``-1`` is the last element, ``-2`` is the second to last, etc.).
+Một cấu trúc dữ liệu array theo mặc định có thể chứa một chuỗi các phần tử thuộc bất kỳ :ref:`Variant<class_Variant>` kiểu nào. Các giá trị có thể được giới hạn tùy chọn ở một kiểu cụ thể bằng cách tạo một *typed array*. Các phần tử được truy cập bằng chỉ mục số bắt đầu từ ``0``. Các chỉ mục âm được dùng để đếm từ cuối (``-1`` là phần tử cuối cùng, ``-2`` là phần tử áp chót, v.v.).
 
 
 .. tabs::
@@ -25,42 +25,42 @@ An array data structure that can contain a sequence of elements of any :ref:`Var
  .. code-tab:: gdscript
 
     var array = ["First", 2, 3, "Last"]
-    print(array[0])  # Prints "First"
-    print(array[2])  # Prints 3
-    print(array[-1]) # Prints "Last"
+    print(array[0])  # In ra "First"
+    print(array[2])  # In ra 3
+    print(array[-1]) # In ra "Last"
 
     array[1] = "Second"
-    print(array[1])  # Prints "Second"
-    print(array[-3]) # Prints "Second"
+    print(array[1])  # In ra "Second"
+    print(array[-3]) # In ra "Second"
 
-    # This typed array can only contain integers.
-    # Attempting to add any other type will result in an error.
+    # Mảng đã định kiểu này chỉ có thể chứa các số nguyên.
+    # Việc cố gắng thêm bất kỳ kiểu nào khác sẽ gây ra lỗi.
     var typed_array: Array[int] = [1, 2, 3]
 
  .. code-tab:: csharp
 
     Godot.Collections.Array array = ["First", 2, 3, "Last"];
-    GD.Print(array[0]); // Prints "First"
-    GD.Print(array[2]); // Prints 3
-    GD.Print(array[^1]); // Prints "Last"
+    GD.Print(array[0]); // In ra "First"
+    GD.Print(array[2]); // In ra 3
+    GD.Print(array[^1]); // In ra "Last"
 
     array[1] = "Second";
-    GD.Print(array[1]); // Prints "Second"
-    GD.Print(array[^3]); // Prints "Second"
+    GD.Print(array[1]); // In ra "Second"
+    GD.Print(array[^3]); // In ra "Second"
 
-    // This typed array can only contain integers.
-    // Attempting to add any other type will result in an error.
+    // Mảng kiểu này chỉ có thể chứa số nguyên.
+    // Việc cố gắng thêm bất kỳ kiểu nào khác sẽ dẫn đến lỗi.
     Godot.Collections.Array<int> typedArray = [1, 2, 3];
 
 
 
-\ **Note:** Arrays are always passed by **reference**. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate()<class_Array_method_duplicate>`.
+\ **Lưu ý:** Mảng luôn được truyền theo **tham chiếu**. Để lấy một bản sao của mảng có thể được sửa đổi độc lập với mảng ban đầu, hãy sử dụng :ref:`duplicate()<class_Array_method_duplicate>`.
 
-\ **Note:** Erasing elements while iterating over arrays is **not** supported and will result in unpredictable behavior.
+\ **Lưu ý:** Việc xóa các phần tử trong khi duyệt qua mảng **không** được hỗ trợ và sẽ dẫn đến hành vi không thể đoán trước.
 
-\ **Note:** In a boolean context, an array will evaluate to ``false`` if it's empty (``[]``). Otherwise, an array will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một mảng sẽ được đánh giá là ``false`` nếu nó rỗng (``[]``). Nếu không, một mảng sẽ luôn được đánh giá là ``true``.
 
-\ **Differences between packed arrays, typed arrays, and untyped arrays:** Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. :ref:`PackedInt64Array<class_PackedInt64Array>` versus ``Array[int]``). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such as :ref:`map()<class_Array_method_map>`. Typed arrays are in turn faster to iterate on and modify than untyped arrays.
+\ **Sự khác biệt giữa packed arrays, typed arrays và untyped arrays:** Packed arrays thường nhanh hơn khi duyệt và sửa đổi so với typed array cùng kiểu (ví dụ: :ref:`PackedInt64Array<class_PackedInt64Array>` so với ``Array[int]``). Ngoài ra, packed arrays sử dụng ít bộ nhớ hơn. Nhược điểm là packed arrays kém linh hoạt hơn vì không cung cấp nhiều phương thức tiện ích như :ref:`map()<class_Array_method_map>`. Đổi lại, typed arrays nhanh hơn untyped arrays khi duyệt và sửa đổi.
 
 .. note::
 
@@ -68,7 +68,7 @@ An array data structure that can contain a sequence of elements of any :ref:`Var
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -104,8 +104,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -216,29 +216,29 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator !=<class_Array_operator_neq_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )  |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`     | :ref:`operator +<class_Array_operator_sum_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )   |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator \<<class_Array_operator_lt_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )   |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator \<=<class_Array_operator_lte_Array>`\ (\ right\: :ref:`Array<class_Array>`\ ) |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ==<class_Array_operator_eq_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )   |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ><class_Array_operator_gt_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )    |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator >=<class_Array_operator_gte_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )  |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>` | :ref:`operator []<class_Array_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )        |
-   +-------------------------------+----------------------------------------------------------------------------------------------+
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator != <class_Array_operator_neq_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )  |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`     | :ref:`operator + <class_Array_operator_sum_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )   |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator \< <class_Array_operator_lt_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )   |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator \<= <class_Array_operator_lte_Array>`\ (\ right\: :ref:`Array<class_Array>`\ ) |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator == <class_Array_operator_eq_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )   |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator > <class_Array_operator_gt_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )    |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator >= <class_Array_operator_gte_Array>`\ (\ right\: :ref:`Array<class_Array>`\ )  |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>` | :ref:`operator [] <class_Array_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )        |
+   +-------------------------------+-----------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -246,8 +246,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả Constructor
+-----------------
 
 .. _class_Array_constructor_Array:
 
@@ -255,7 +255,7 @@ Constructor Descriptions
 
 :ref:`Array<class_Array>` **Array**\ (\ ) :ref:`🔗<class_Array_constructor_Array>`
 
-Constructs an empty **Array**.
+Khởi tạo một **Array** trống.
 
 .. rst-class:: classref-item-separator
 
@@ -265,15 +265,15 @@ Constructs an empty **Array**.
 
 :ref:`Array<class_Array>` **Array**\ (\ base\: :ref:`Array<class_Array>`, type\: :ref:`int<class_int>`, class_name\: :ref:`StringName<class_StringName>`, script\: :ref:`Variant<class_Variant>`\ )
 
-Creates a typed array from the ``base`` array. A typed array can only contain elements of the given type, or that inherit from the given class, as described by this constructor's parameters:
+Tạo một mảng có kiểu từ mảng ``base``. Mảng có kiểu chỉ có thể chứa các phần tử thuộc kiểu đã cho hoặc kế thừa từ lớp đã cho, như được mô tả bởi các tham số của hàm dựng này:
 
-- ``type`` is the built-in :ref:`Variant<class_Variant>` type, as one the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constants.
+- ``type`` là kiểu :ref:`Variant<class_Variant>` dựng sẵn, dưới dạng một trong các hằng số :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`.
 
-- ``class_name`` is the built-in class name (see :ref:`Object.get_class()<class_Object_method_get_class>`).
+- ``class_name`` là tên lớp dựng sẵn (xem :ref:`Object.get_class()<class_Object_method_get_class>`).
 
-- ``script`` is the associated script. It must be a :ref:`Script<class_Script>` instance or ``null``.
+- ``script`` là script liên kết. Nó phải là một đối tượng :ref:`Script<class_Script>` hoặc ``null``.
 
-If ``type`` is not :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`, ``class_name`` must be an empty :ref:`StringName<class_StringName>` and ``script`` must be ``null``.
+Nếu ``type`` không phải là :ref:`@GlobalScope.TYPE_OBJECT <class_@GlobalScope_constant_TYPE_OBJECT>`, ``class_name`` phải là một :ref:`StringName<class_StringName>` trống và ``script`` phải là ``null``.
 
 ::
 
@@ -289,9 +289,9 @@ If ``type`` is not :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TY
         var c = Array([], TYPE_OBJECT, "Node", Sword)       # Array[Sword]
         var d = Array([], TYPE_OBJECT, "RefCounted", Stats) # Array[Stats]
 
-The ``base`` array's elements are converted when necessary. If this is not possible or ``base`` is already typed, this constructor fails and returns an empty **Array**.
+Các phần tử của mảng ``base`` được chuyển đổi khi cần. Nếu không thể thực hiện việc này hoặc ``base`` đã có kiểu, hàm dựng này sẽ thất bại và trả về một **Array** trống.
 
-In GDScript, this constructor is usually not necessary, as it is possible to create a typed array through static typing:
+Trong GDScript, hàm dựng này thường không cần thiết, vì có thể tạo một mảng có kiểu thông qua static typing:
 
 ::
 
@@ -309,7 +309,7 @@ In GDScript, this constructor is usually not necessary, as it is possible to cre
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`Array<class_Array>`\ )
 
-Returns the same array as ``from``. If you need a copy of the array, use :ref:`duplicate()<class_Array_method_duplicate>`.
+Trả về cùng một array như ``from``. Nếu cần một bản sao của array, hãy sử dụng :ref:`duplicate()<class_Array_method_duplicate>`.
 
 .. rst-class:: classref-item-separator
 
@@ -319,7 +319,7 @@ Returns the same array as ``from``. If you need a copy of the array, use :ref:`d
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedByteArray<class_PackedByteArray>`\ )
 
-Constructs an array from a :ref:`PackedByteArray<class_PackedByteArray>`.
+Tạo một array từ :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ Constructs an array from a :ref:`PackedByteArray<class_PackedByteArray>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedColorArray<class_PackedColorArray>`\ )
 
-Constructs an array from a :ref:`PackedColorArray<class_PackedColorArray>`.
+Tạo một array từ :ref:`PackedColorArray<class_PackedColorArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -339,7 +339,7 @@ Constructs an array from a :ref:`PackedColorArray<class_PackedColorArray>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )
 
-Constructs an array from a :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
+Tạo một array từ :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -349,7 +349,7 @@ Constructs an array from a :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedFloat64Array<class_PackedFloat64Array>`\ )
 
-Constructs an array from a :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
+Tạo một array từ :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ Constructs an array from a :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 
-Constructs an array from a :ref:`PackedInt32Array<class_PackedInt32Array>`.
+Tạo một array từ :ref:`PackedInt32Array<class_PackedInt32Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -369,7 +369,7 @@ Constructs an array from a :ref:`PackedInt32Array<class_PackedInt32Array>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedInt64Array<class_PackedInt64Array>`\ )
 
-Constructs an array from a :ref:`PackedInt64Array<class_PackedInt64Array>`.
+Tạo một array từ :ref:`PackedInt64Array<class_PackedInt64Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -379,7 +379,7 @@ Constructs an array from a :ref:`PackedInt64Array<class_PackedInt64Array>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 
-Constructs an array from a :ref:`PackedStringArray<class_PackedStringArray>`.
+Tạo một mảng từ một :ref:`PackedStringArray<class_PackedStringArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ Constructs an array from a :ref:`PackedStringArray<class_PackedStringArray>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 
-Constructs an array from a :ref:`PackedVector2Array<class_PackedVector2Array>`.
+Tạo một mảng từ một :ref:`PackedVector2Array<class_PackedVector2Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -399,7 +399,7 @@ Constructs an array from a :ref:`PackedVector2Array<class_PackedVector2Array>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ )
 
-Constructs an array from a :ref:`PackedVector3Array<class_PackedVector3Array>`.
+Tạo một mảng từ một :ref:`PackedVector3Array<class_PackedVector3Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ Constructs an array from a :ref:`PackedVector3Array<class_PackedVector3Array>`.
 
 :ref:`Array<class_Array>` **Array**\ (\ from\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )
 
-Constructs an array from a :ref:`PackedVector4Array<class_PackedVector4Array>`.
+Tạo một mảng từ một :ref:`PackedVector4Array<class_PackedVector4Array>`.
 
 .. rst-class:: classref-section-separator
 
@@ -417,8 +417,8 @@ Constructs an array from a :ref:`PackedVector4Array<class_PackedVector4Array>`.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Array_method_all:
 
@@ -426,9 +426,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **all**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_all>`
 
-Calls the given :ref:`Callable<class_Callable>` on each element in the array and returns ``true`` if the :ref:`Callable<class_Callable>` returns ``true`` for *all* elements in the array. If the :ref:`Callable<class_Callable>` returns ``false`` for one array element or more, this method returns ``false``.
+Gọi :ref:`Callable<class_Callable>` đã cho trên từng phần tử trong mảng và trả về ``true`` nếu :ref:`Callable<class_Callable>` trả về ``true`` cho *all* phần tử trong mảng. Nếu :ref:`Callable<class_Callable>` trả về ``false`` cho một hoặc nhiều phần tử trong mảng, phương thức này trả về ``false``.
 
-The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the current array element) and return a :ref:`bool<class_bool>`.
+``method`` phải nhận một tham số :ref:`Variant<class_Variant>` (phần tử hiện tại của mảng) và trả về một :ref:`bool<class_bool>`.
 
 
 .. tabs::
@@ -439,13 +439,13 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
         return number > 5
 
     func _ready():
-        print([6, 10, 6].all(greater_than_5)) # Prints true (3/3 elements evaluate to true).
-        print([4, 10, 4].all(greater_than_5)) # Prints false (1/3 elements evaluate to true).
-        print([4, 4, 4].all(greater_than_5))  # Prints false (0/3 elements evaluate to true).
-        print([].all(greater_than_5))         # Prints true (0/0 elements evaluate to true).
+        print([6, 10, 6].all(greater_than_5)) # In ra true (3/3 phần tử cho kết quả true).
+        print([4, 10, 4].all(greater_than_5)) # In ra false (1/3 phần tử cho kết quả true).
+        print([4, 4, 4].all(greater_than_5))  # In ra false (0/3 phần tử cho kết quả true).
+        print([].all(greater_than_5))         # In ra true (0/0 phần tử cho kết quả true).
 
-        # Same as the first line above, but using a lambda function.
-        print([6, 10, 6].all(func(element): return element > 5)) # Prints true
+        # Giống dòng đầu tiên ở trên, nhưng sử dụng một hàm lambda.
+        print([6, 10, 6].all(func(element): return element > 5)) # In ra true
 
  .. code-tab:: csharp
 
@@ -456,26 +456,26 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
 
     public override void _Ready()
     {
-        // Prints True (3/3 elements evaluate to true).
+        // In ra True (3/3 phần tử cho kết quả true).
         GD.Print(new Godot.Collections.Array<int> { 6, 10, 6 }.All(GreaterThan5));
-        // Prints False (1/3 elements evaluate to true).
+        // In ra False (1/3 phần tử được đánh giá là true).
         GD.Print(new Godot.Collections.Array<int> { 4, 10, 4 }.All(GreaterThan5));
-        // Prints False (0/3 elements evaluate to true).
+        // In ra False (0/3 phần tử được đánh giá là true).
         GD.Print(new Godot.Collections.Array<int> { 4, 4, 4 }.All(GreaterThan5));
-        // Prints True (0/0 elements evaluate to true).
+        // In ra True (0/0 phần tử được đánh giá là true).
         GD.Print(new Godot.Collections.Array<int> { }.All(GreaterThan5));
 
-        // Same as the first line above, but using a lambda function.
-        GD.Print(new Godot.Collections.Array<int> { 6, 10, 6 }.All(element => element > 5)); // Prints True
+        // Giống dòng đầu tiên ở trên, nhưng sử dụng hàm lambda.
+        GD.Print(new Godot.Collections.Array<int> { 6, 10, 6 }.All(element => element > 5)); // In ra True
     }
 
 
 
-See also :ref:`any()<class_Array_method_any>`, :ref:`filter()<class_Array_method_filter>`, :ref:`map()<class_Array_method_map>` and :ref:`reduce()<class_Array_method_reduce>`.
+Xem thêm :ref:`any()<class_Array_method_any>`, :ref:`filter()<class_Array_method_filter>`, :ref:`map()<class_Array_method_map>` và :ref:`reduce()<class_Array_method_reduce>`.
 
-\ **Note:** Unlike relying on the size of an array returned by :ref:`filter()<class_Array_method_filter>`, this method will return as early as possible to improve performance (especially with large arrays).
+\ **Lưu ý:** Không giống như việc dựa vào kích thước của mảng do :ref:`filter()<class_Array_method_filter>` trả về, phương thức này sẽ trả về sớm nhất có thể để cải thiện hiệu suất (đặc biệt với các mảng lớn).
 
-\ **Note:** For an empty array, this method `always <https://en.wikipedia.org/wiki/Vacuous_truth>`__ returns ``true``.
+\ **Lưu ý:** Với một mảng rỗng, phương thức này `luôn <https://en.wikipedia.org/wiki/Vacuous_truth>`__ trả về ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -487,9 +487,9 @@ See also :ref:`any()<class_Array_method_any>`, :ref:`filter()<class_Array_method
 
 :ref:`bool<class_bool>` **any**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_any>`
 
-Calls the given :ref:`Callable<class_Callable>` on each element in the array and returns ``true`` if the :ref:`Callable<class_Callable>` returns ``true`` for *one or more* elements in the array. If the :ref:`Callable<class_Callable>` returns ``false`` for all elements in the array, this method returns ``false``.
+Gọi :ref:`Callable<class_Callable>` đã cho trên mỗi phần tử trong mảng và trả về ``true`` nếu :ref:`Callable<class_Callable>` trả về ``true`` cho *một hoặc nhiều* phần tử trong mảng. Nếu :ref:`Callable<class_Callable>` trả về ``false`` cho mọi phần tử trong mảng, phương thức này trả về ``false``.
 
-The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the current array element) and return a :ref:`bool<class_bool>`.
+``method`` phải nhận một tham số :ref:`Variant<class_Variant>` (phần tử hiện tại của mảng) và trả về một :ref:`bool<class_bool>`.
 
 ::
 
@@ -505,11 +505,11 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
         # Same as the first line above, but using a lambda function.
         print([6, 10, 6].any(func(number): return number > 5)) # Prints true
 
-See also :ref:`all()<class_Array_method_all>`, :ref:`filter()<class_Array_method_filter>`, :ref:`map()<class_Array_method_map>` and :ref:`reduce()<class_Array_method_reduce>`.
+Xem thêm :ref:`all()<class_Array_method_all>`, :ref:`filter()<class_Array_method_filter>`, :ref:`map()<class_Array_method_map>` và :ref:`reduce()<class_Array_method_reduce>`.
 
-\ **Note:** Unlike relying on the size of an array returned by :ref:`filter()<class_Array_method_filter>`, this method will return as early as possible to improve performance (especially with large arrays).
+\ **Lưu ý:** Không giống như việc dựa vào kích thước của mảng do :ref:`filter()<class_Array_method_filter>` trả về, phương thức này sẽ trả về sớm nhất có thể để cải thiện hiệu suất (đặc biệt với các mảng lớn).
 
-\ **Note:** For an empty array, this method always returns ``false``.
+\ **Lưu ý:** Với một mảng rỗng, phương thức này luôn trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -521,7 +521,7 @@ See also :ref:`all()<class_Array_method_all>`, :ref:`filter()<class_Array_method
 
 |void| **append**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_append>`
 
-Appends ``value`` at the end of the array (alias of :ref:`push_back()<class_Array_method_push_back>`).
+Thêm ``value`` vào cuối mảng (bí danh của :ref:`push_back()<class_Array_method_push_back>`).
 
 .. rst-class:: classref-item-separator
 
@@ -533,7 +533,7 @@ Appends ``value`` at the end of the array (alias of :ref:`push_back()<class_Arra
 
 |void| **append_array**\ (\ array\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_method_append_array>`
 
-Appends another ``array`` at the end of this array.
+Nối thêm một ``array`` khác vào cuối mảng này.
 
 ::
 
@@ -552,7 +552,7 @@ Appends another ``array`` at the end of this array.
 
 |void| **assign**\ (\ array\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_method_assign>`
 
-Assigns elements of another ``array`` into the array. Resizes the array to match ``array``. Performs type conversions if the array is typed.
+Gán các phần tử của một ``array`` khác vào mảng. Thay đổi kích thước mảng để khớp với ``array``. Thực hiện chuyển đổi kiểu nếu mảng có kiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -564,9 +564,9 @@ Assigns elements of another ``array`` into the array. Resizes the array to match
 
 :ref:`Variant<class_Variant>` **back**\ (\ ) |const| :ref:`🔗<class_Array_method_back>`
 
-Returns the last element of the array. If the array is empty, fails and returns ``null``. See also :ref:`front()<class_Array_method_front>`.
+Trả về phần tử cuối cùng của mảng. Nếu mảng trống, thao tác sẽ thất bại và trả về ``null``. Xem thêm :ref:`front()<class_Array_method_front>`.
 
-\ **Note:** Unlike with the ``[]`` operator (``array[-1]``), an error is generated without stopping project execution.
+\ **Lưu ý:** Không giống như toán tử ``[]`` (``array[-1]``), một lỗi được tạo ra mà không dừng việc thực thi dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -578,9 +578,9 @@ Returns the last element of the array. If the array is empty, fails and returns 
 
 :ref:`int<class_int>` **bsearch**\ (\ value\: :ref:`Variant<class_Variant>`, before\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_Array_method_bsearch>`
 
-Returns the index of ``value`` in the sorted array. If it cannot be found, returns where ``value`` should be inserted to keep the array sorted. The algorithm used is `binary search <https://en.wikipedia.org/wiki/Binary_search_algorithm>`__.
+Trả về chỉ mục của ``value`` trong mảng đã sắp xếp. Nếu không tìm thấy, trả về vị trí mà ``value`` nên được chèn vào để duy trì thứ tự sắp xếp của mảng. Thuật toán được sử dụng là `tìm kiếm nhị phân <https://en.wikipedia.org/wiki/Binary_search_algorithm>`__.
 
-If ``before`` is ``true`` (as by default), the returned index comes before all existing elements equal to ``value`` in the array.
+Nếu ``before`` là ``true`` (như mặc định), chỉ mục được trả về sẽ đứng trước tất cả các phần tử hiện có trong mảng bằng ``value``.
 
 ::
 
@@ -594,7 +594,7 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
     print(fruits.bsearch("Lemon", true))  # Prints 1, points at the first "Lemon".
     print(fruits.bsearch("Lemon", false)) # Prints 3, points at "Orange".
 
-\ **Note:** Calling :ref:`bsearch()<class_Array_method_bsearch>` on an *unsorted* array will result in unexpected behavior. Use :ref:`sort()<class_Array_method_sort>` before calling this method.
+\ **Lưu ý:** Việc gọi :ref:`bsearch()<class_Array_method_bsearch>` trên một mảng *chưa được sắp xếp* sẽ dẫn đến hành vi không mong đợi. Hãy sử dụng :ref:`sort()<class_Array_method_sort>` trước khi gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -606,11 +606,11 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
 
 :ref:`int<class_int>` **bsearch_custom**\ (\ value\: :ref:`Variant<class_Variant>`, func\: :ref:`Callable<class_Callable>`, before\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_Array_method_bsearch_custom>`
 
-Returns the index of ``value`` in the sorted array. If it cannot be found, returns where ``value`` should be inserted to keep the array sorted (using ``func`` for the comparisons). The algorithm used is `binary search <https://en.wikipedia.org/wiki/Binary_search_algorithm>`__.
+Trả về chỉ mục của ``value`` trong mảng đã sắp xếp. Nếu không tìm thấy, trả về vị trí mà ``value`` nên được chèn vào để giữ cho mảng được sắp xếp (sử dụng ``func`` để thực hiện các phép so sánh). Thuật toán được sử dụng là `binary search <https://en.wikipedia.org/wiki/Binary_search_algorithm>`__.
 
-Similar to :ref:`sort_custom()<class_Array_method_sort_custom>`, ``func`` is called as many times as necessary, receiving one array element and ``value`` as arguments. The function should return ``true`` if the array element should be *behind* ``value``, otherwise it should return ``false``.
+Tương tự như :ref:`sort_custom()<class_Array_method_sort_custom>`, ``func`` được gọi nhiều lần nếu cần, với một phần tử mảng và ``value`` làm các đối số. Hàm này phải trả về ``true`` nếu phần tử mảng nên nằm *phía sau* ``value``, nếu không thì phải trả về ``false``.
 
-If ``before`` is ``true`` (as by default), the returned index comes before all existing elements equal to ``value`` in the array.
+Nếu ``before`` là ``true`` (như mặc định), chỉ mục được trả về sẽ đứng trước tất cả các phần tử hiện có trong mảng bằng ``value``.
 
 ::
 
@@ -633,7 +633,7 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
         # Prints [["Tomato", 2], ["Apple", 5], ["Kiwi", 5], ["Banana", 5], ["Rice", 9]]
         print(my_items)
 
-\ **Note:** Calling :ref:`bsearch_custom()<class_Array_method_bsearch_custom>` on an *unsorted* array will result in unexpected behavior. Use :ref:`sort_custom()<class_Array_method_sort_custom>` with ``func`` before calling this method.
+\ **Lưu ý:** Việc gọi :ref:`bsearch_custom()<class_Array_method_bsearch_custom>` trên một mảng *chưa được sắp xếp* sẽ dẫn đến hành vi không như mong đợi. Hãy sử dụng :ref:`sort_custom()<class_Array_method_sort_custom>` với ``func`` trước khi gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -645,7 +645,7 @@ If ``before`` is ``true`` (as by default), the returned index comes before all e
 
 |void| **clear**\ (\ ) :ref:`🔗<class_Array_method_clear>`
 
-Removes all elements from the array. This is equivalent to using :ref:`resize()<class_Array_method_resize>` with a size of ``0``.
+Xóa tất cả các phần tử khỏi mảng. Tương đương với việc sử dụng :ref:`resize()<class_Array_method_resize>` với kích thước là ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -657,9 +657,9 @@ Removes all elements from the array. This is equivalent to using :ref:`resize()<
 
 :ref:`int<class_int>` **count**\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const| :ref:`🔗<class_Array_method_count>`
 
-Returns the number of times an element is in the array.
+Trả về số lần một phần tử xuất hiện trong mảng.
 
-To count how many elements in an array satisfy a condition, see :ref:`reduce()<class_Array_method_reduce>`.
+Để đếm số phần tử trong một mảng thỏa mãn một điều kiện, hãy xem :ref:`reduce()<class_Array_method_reduce>`.
 
 .. rst-class:: classref-item-separator
 
@@ -671,11 +671,11 @@ To count how many elements in an array satisfy a condition, see :ref:`reduce()<c
 
 :ref:`Array<class_Array>` **duplicate**\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Array_method_duplicate>`
 
-Returns a new copy of the array.
+Trả về một bản sao mới của mảng.
 
-By default, a **shallow** copy is returned: all nested **Array**, :ref:`Dictionary<class_Dictionary>`, and :ref:`Resource<class_Resource>` elements are shared with the original array. Modifying any of those in one array will also affect them in the other.
+Theo mặc định, một bản sao **nông** được trả về: tất cả các phần tử **Array**, :ref:`Dictionary<class_Dictionary>` và :ref:`Resource<class_Resource>` lồng nhau đều được dùng chung với mảng ban đầu. Việc sửa đổi bất kỳ phần tử nào trong số đó ở một mảng cũng sẽ ảnh hưởng đến mảng còn lại.
 
-If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dictionaries are also duplicated (recursively). Any :ref:`Resource<class_Resource>` is still shared with the original array, though.
+Nếu ``deep`` là ``true``, một bản sao **sâu** được trả về: tất cả các mảng và từ điển lồng nhau cũng được sao chép (đệ quy). Tuy nhiên, mọi :ref:`Resource<class_Resource>` vẫn được dùng chung với mảng ban đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -687,9 +687,9 @@ If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dict
 
 :ref:`Array<class_Array>` **duplicate_deep**\ (\ deep_subresources_mode\: :ref:`int<class_int>` = 1\ ) |const| :ref:`🔗<class_Array_method_duplicate_deep>`
 
-Duplicates this array, deeply, like :ref:`duplicate()<class_Array_method_duplicate>` when passing ``true``, with extra control over how subresources are handled.
+Sao chép sâu mảng này, tương tự như :ref:`duplicate()<class_Array_method_duplicate>` khi truyền ``true``, với khả năng kiểm soát bổ sung cách xử lý các subresource.
 
-\ ``deep_subresources_mode`` must be one of the values from :ref:`DeepDuplicateMode<enum_Resource_DeepDuplicateMode>`. By default, only internal resources will be duplicated (recursively).
+\ ``deep_subresources_mode`` phải là một trong các giá trị của :ref:`DeepDuplicateMode <enum_Resource_DeepDuplicateMode>`. Theo mặc định, chỉ các resource nội bộ mới được sao chép (đệ quy).
 
 .. rst-class:: classref-item-separator
 
@@ -701,11 +701,11 @@ Duplicates this array, deeply, like :ref:`duplicate()<class_Array_method_duplica
 
 |void| **erase**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_erase>`
 
-Finds and removes the first occurrence of ``value`` from the array. If ``value`` does not exist in the array, nothing happens. To remove an element by index, use :ref:`remove_at()<class_Array_method_remove_at>` instead.
+Tìm và xóa lần xuất hiện đầu tiên của ``value`` khỏi mảng. Nếu ``value`` không tồn tại trong mảng thì không có gì xảy ra. Để xóa một phần tử theo chỉ mục, hãy sử dụng :ref:`remove_at()<class_Array_method_remove_at>` thay thế.
 
-\ **Note:** This method shifts every element's index after the removed ``value`` back, which may have a noticeable performance cost, especially on larger arrays.
+\ **Lưu ý:** Phương thức này dịch chỉ mục của mọi phần tử sau ``value`` đã bị xóa về trước một vị trí, điều này có thể gây ra chi phí hiệu năng đáng kể, đặc biệt là với các mảng lớn.
 
-\ **Note:** Erasing elements while iterating over arrays is **not** supported and will result in unpredictable behavior.
+\ **Lưu ý:** Việc xóa các phần tử trong khi lặp qua mảng **không** được hỗ trợ và sẽ dẫn đến hành vi không thể đoán trước.
 
 .. rst-class:: classref-item-separator
 
@@ -717,9 +717,9 @@ Finds and removes the first occurrence of ``value`` from the array. If ``value``
 
 |void| **fill**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_fill>`
 
-Assigns the given ``value`` to all elements in the array.
+Gán ``value`` đã cho cho tất cả các phần tử trong mảng.
 
-This method can often be combined with :ref:`resize()<class_Array_method_resize>` to create an array with a given size and initialized elements:
+Phương thức này thường có thể được kết hợp với :ref:`resize()<class_Array_method_resize>` để tạo một mảng có kích thước đã cho và các phần tử được khởi tạo:
 
 
 .. tabs::
@@ -729,18 +729,18 @@ This method can often be combined with :ref:`resize()<class_Array_method_resize>
     var array = []
     array.resize(5)
     array.fill(2)
-    print(array) # Prints [2, 2, 2, 2, 2]
+    print(array) # In ra [2, 2, 2, 2, 2]
 
  .. code-tab:: csharp
 
     Godot.Collections.Array array = [];
     array.Resize(5);
     array.Fill(2);
-    GD.Print(array); // Prints [2, 2, 2, 2, 2]
+    GD.Print(array); // In ra [2, 2, 2, 2, 2]
 
 
 
-\ **Note:** If ``value`` is a :ref:`Variant<class_Variant>` passed by reference (:ref:`Object<class_Object>`-derived, **Array**, :ref:`Dictionary<class_Dictionary>`, etc.), the array will be filled with references to the same ``value``, which are not duplicates.
+\ **Lưu ý:** Nếu ``value`` là một :ref:`Variant<class_Variant>` được truyền bằng tham chiếu (:ref:`Object<class_Object>`-derived, **Array**, :ref:`Dictionary<class_Dictionary>`, v.v.), mảng sẽ được điền bằng các tham chiếu đến cùng một ``value``, chứ không phải các bản sao.
 
 .. rst-class:: classref-item-separator
 
@@ -752,9 +752,9 @@ This method can often be combined with :ref:`resize()<class_Array_method_resize>
 
 :ref:`Array<class_Array>` **filter**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_filter>`
 
-Calls the given :ref:`Callable<class_Callable>` on each element in the array and returns a new, filtered **Array**.
+Gọi :ref:`Callable<class_Callable>` đã cho trên từng phần tử trong mảng và trả về một **Array** mới đã được lọc.
 
-The ``method`` receives one of the array elements as an argument, and should return ``true`` to add the element to the filtered array, or ``false`` to exclude it.
+``method`` nhận một trong các phần tử của mảng làm đối số và phải trả về ``true`` để thêm phần tử đó vào mảng đã lọc, hoặc ``false`` để loại trừ phần tử đó.
 
 ::
 
@@ -767,7 +767,7 @@ The ``method`` receives one of the array elements as an argument, and should ret
         # Same as above, but using a lambda function.
         print([1, 4, 5, 8].filter(func(number): return number % 2 == 0))
 
-See also :ref:`any()<class_Array_method_any>`, :ref:`all()<class_Array_method_all>`, :ref:`map()<class_Array_method_map>` and :ref:`reduce()<class_Array_method_reduce>`.
+Xem thêm :ref:`any()<class_Array_method_any>`, :ref:`all()<class_Array_method_all>`, :ref:`map()<class_Array_method_map>` và :ref:`reduce()<class_Array_method_reduce>`.
 
 .. rst-class:: classref-item-separator
 
@@ -779,11 +779,11 @@ See also :ref:`any()<class_Array_method_any>`, :ref:`all()<class_Array_method_al
 
 :ref:`int<class_int>` **find**\ (\ what\: :ref:`Variant<class_Variant>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_Array_method_find>`
 
-Returns the index of the **first** occurrence of ``what`` in this array, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the end of the array.
+Trả về chỉ mục của lần xuất hiện **đầu tiên** của ``what`` trong mảng này, hoặc ``-1`` nếu không có. Có thể chỉ định vị trí bắt đầu tìm kiếm bằng ``from``, rồi tiếp tục đến cuối mảng.
 
-\ **Note:** If you just want to know whether the array contains ``what``, use :ref:`has()<class_Array_method_has>` (``Contains`` in C#). In GDScript, you may also use the ``in`` operator.
+\ **Lưu ý:** Nếu bạn chỉ muốn biết mảng có chứa ``what`` hay không, hãy sử dụng :ref:`has()<class_Array_method_has>` (``Contains`` trong C#). Trong GDScript, bạn cũng có thể sử dụng toán tử ``in``.
 
-\ **Note:** For performance reasons, the search is affected by ``what``'s :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`. For example, ``7`` (:ref:`int<class_int>`) and ``7.0`` (:ref:`float<class_float>`) are not considered equal for this method.
+\ **Lưu ý:** Vì lý do hiệu năng, việc tìm kiếm chịu ảnh hưởng bởi ``what``'s :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`. Ví dụ, ``7`` (:ref:`int<class_int>`) và ``7.0`` (:ref:`float<class_float>`) không được xem là bằng nhau đối với phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -795,11 +795,11 @@ Returns the index of the **first** occurrence of ``what`` in this array, or ``-1
 
 :ref:`int<class_int>` **find_custom**\ (\ method\: :ref:`Callable<class_Callable>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_Array_method_find_custom>`
 
-Returns the index of the **first** element in the array that causes ``method`` to return ``true``, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the end of the array.
+Trả về chỉ mục của **phần tử đầu tiên** trong mảng khiến ``method`` trả về ``true``, hoặc ``-1`` nếu không có. Có thể chỉ định vị trí bắt đầu tìm kiếm bằng ``from``, rồi tiếp tục đến cuối mảng.
 
-\ ``method`` is a callable that takes an element of the array, and returns a :ref:`bool<class_bool>`.
+\ ``method`` là một callable nhận một phần tử của mảng và trả về một :ref:`bool<class_bool>`.
 
-\ **Note:** If you just want to know whether the array contains *anything* that satisfies ``method``, use :ref:`any()<class_Array_method_any>`.
+\ **Lưu ý:** Nếu bạn chỉ muốn biết liệu mảng có chứa *bất kỳ phần tử nào* thỏa mãn ``method`` hay không, hãy sử dụng :ref:`any()<class_Array_method_any>`.
 
 
 .. tabs::
@@ -810,14 +810,14 @@ Returns the index of the **first** element in the array that causes ``method`` t
         return number % 2 == 0
 
     func _ready():
-        print([1, 3, 4, 7].find_custom(is_even.bind())) # Prints 2
+        print([1, 3, 4, 7].find_custom(is_even.bind())) # In ra 2
 
-    # Another example using `bind()` to pass an additional parameter:
+    # Một ví dụ khác sử dụng `bind()` để truyền thêm một tham số:
     func is_specific_number(number, expected):
         return number == expected
 
     func _ready():
-        print([1, 3, 4, 7].find_custom(is_specific_number.bind(4))) # Prints 2
+        print([1, 3, 4, 7].find_custom(is_specific_number.bind(4))) # In ra 2
 
 
 
@@ -831,9 +831,9 @@ Returns the index of the **first** element in the array that causes ``method`` t
 
 :ref:`Variant<class_Variant>` **front**\ (\ ) |const| :ref:`🔗<class_Array_method_front>`
 
-Returns the first element of the array. If the array is empty, fails and returns ``null``. See also :ref:`back()<class_Array_method_back>`.
+Trả về phần tử đầu tiên của mảng. Nếu mảng trống, thao tác sẽ thất bại và trả về ``null``. Xem thêm :ref:`back()<class_Array_method_back>`.
 
-\ **Note:** Unlike with the ``[]`` operator (``array[0]``), an error is generated without stopping project execution.
+\ **Lưu ý:** Không giống như toán tử ``[]`` (``array[0]``), một lỗi sẽ được tạo ra mà không dừng quá trình thực thi dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -845,9 +845,9 @@ Returns the first element of the array. If the array is empty, fails and returns
 
 :ref:`Variant<class_Variant>` **get**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Array_method_get>`
 
-Returns the element at the given ``index`` in the array. If ``index`` is out-of-bounds or negative, this method fails and returns ``null``.
+Trả về phần tử tại ``index`` đã cho trong mảng. Nếu ``index`` nằm ngoài phạm vi hoặc là số âm, phương thức này sẽ thất bại và trả về ``null``.
 
-This method is similar (but not identical) to the ``[]`` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.
+Phương thức này tương tự (nhưng không hoàn toàn giống) toán tử ``[]``. Đáng chú ý nhất là khi phương thức này thất bại, nó không tạm dừng quá trình thực thi project nếu được chạy từ editor.
 
 .. rst-class:: classref-item-separator
 
@@ -859,7 +859,7 @@ This method is similar (but not identical) to the ``[]`` operator. Most notably,
 
 :ref:`int<class_int>` **get_typed_builtin**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_builtin>`
 
-Returns the built-in :ref:`Variant<class_Variant>` type of the typed array as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the array is not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed()<class_Array_method_is_typed>`.
+Trả về kiểu :ref:`Variant<class_Variant>` tích hợp sẵn của typed array dưới dạng hằng số :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`. Nếu array không có kiểu, trả về :ref:`@GlobalScope.TYPE_NIL <class_@GlobalScope_constant_TYPE_NIL>`. Xem thêm :ref:`is_typed()<class_Array_method_is_typed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -871,7 +871,7 @@ Returns the built-in :ref:`Variant<class_Variant>` type of the typed array as a 
 
 :ref:`StringName<class_StringName>` **get_typed_class_name**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_class_name>`
 
-Returns the **built-in** class name of the typed array, if the built-in :ref:`Variant<class_Variant>` type :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed()<class_Array_method_is_typed>` and :ref:`Object.get_class()<class_Object_method_get_class>`.
+Trả về tên class **tích hợp sẵn** của typed array nếu kiểu :ref:`Variant<class_Variant>` tích hợp sẵn là :ref:`@GlobalScope.TYPE_OBJECT <class_@GlobalScope_constant_TYPE_OBJECT>`. Nếu không, trả về một :ref:`StringName<class_StringName>` rỗng. Xem thêm :ref:`is_typed()<class_Array_method_is_typed>` và :ref:`Object.get_class()<class_Object_method_get_class>`.
 
 .. rst-class:: classref-item-separator
 
@@ -883,7 +883,7 @@ Returns the **built-in** class name of the typed array, if the built-in :ref:`Va
 
 :ref:`Variant<class_Variant>` **get_typed_script**\ (\ ) |const| :ref:`🔗<class_Array_method_get_typed_script>`
 
-Returns the :ref:`Script<class_Script>` instance associated with this typed array, or ``null`` if it does not exist. See also :ref:`is_typed()<class_Array_method_is_typed>`.
+Trả về instance :ref:`Script<class_Script>` được liên kết với typed array này hoặc ``null`` nếu instance đó không tồn tại. Xem thêm :ref:`is_typed()<class_Array_method_is_typed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -895,37 +895,37 @@ Returns the :ref:`Script<class_Script>` instance associated with this typed arra
 
 :ref:`bool<class_bool>` **has**\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const| :ref:`🔗<class_Array_method_has>`
 
-Returns ``true`` if the array contains the given ``value``.
+Trả về ``true`` nếu array chứa ``value`` đã cho.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print(["inside", 7].has("inside"))  # Prints true
-    print(["inside", 7].has("outside")) # Prints false
-    print(["inside", 7].has(7))         # Prints true
-    print(["inside", 7].has("7"))       # Prints false
+    print(["inside", 7].has("inside"))  # In ra true
+    print(["inside", 7].has("outside")) # In ra false
+    print(["inside", 7].has(7))         # In ra true
+    print(["inside", 7].has("7"))       # In ra false
 
  .. code-tab:: csharp
 
     Godot.Collections.Array arr = ["inside", 7];
-    // By C# convention, this method is renamed to `Contains`.
-    GD.Print(arr.Contains("inside"));  // Prints True
-    GD.Print(arr.Contains("outside")); // Prints False
-    GD.Print(arr.Contains(7));         // Prints True
-    GD.Print(arr.Contains("7"));       // Prints False
+    // Theo quy ước C#, phương thức này được đổi tên thành `Contains`.
+    GD.Print(arr.Contains("inside"));  // In ra True
+    GD.Print(arr.Contains("outside")); // In ra False
+    GD.Print(arr.Contains(7));         // In ra True
+    GD.Print(arr.Contains("7"));       // In ra False
 
 
 
-In GDScript, this is equivalent to the ``in`` operator:
+Trong GDScript, điều này tương đương với toán tử ``in``:
 
 ::
 
     if 4 in [2, 4, 6, 8]:
         print("4 is here!") # Will be printed.
 
-\ **Note:** For performance reasons, the search is affected by the ``value``'s :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`. For example, ``7`` (:ref:`int<class_int>`) and ``7.0`` (:ref:`float<class_float>`) are not considered equal for this method.
+\ **Lưu ý:** Vì lý do hiệu suất, việc tìm kiếm bị ảnh hưởng bởi ``value``'s :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`. Ví dụ, ``7`` (:ref:`int<class_int>`) và ``7.0`` (:ref:`float<class_float>`) không được xem là bằng nhau đối với phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -937,9 +937,9 @@ In GDScript, this is equivalent to the ``in`` operator:
 
 :ref:`int<class_int>` **hash**\ (\ ) |const| :ref:`🔗<class_Array_method_hash>`
 
-Returns a hashed 32-bit integer value representing the array and its contents.
+Trả về một giá trị số nguyên 32-bit đã băm, đại diện cho mảng và nội dung của mảng.
 
-\ **Note:** Arrays with equal hash values are *not* guaranteed to be the same, as a result of hash collisions. On the contrary, arrays with different hash values are guaranteed to be different.
+\ **Lưu ý:** Các mảng có giá trị băm bằng nhau *không* được đảm bảo là giống nhau do xảy ra xung đột băm. Ngược lại, các mảng có giá trị băm khác nhau được đảm bảo là khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -951,11 +951,11 @@ Returns a hashed 32-bit integer value representing the array and its contents.
 
 :ref:`int<class_int>` **insert**\ (\ position\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_insert>`
 
-Inserts a new element (``value``) at a given index (``position``) in the array. ``position`` should be between ``0`` and the array's :ref:`size()<class_Array_method_size>`. If negative, ``position`` is considered relative to the end of the array.
+Chèn một phần tử mới (``value``) tại một chỉ mục (``position``) cho trước trong mảng. ``position`` phải nằm giữa ``0`` và :ref:`size()<class_Array_method_size>` của mảng. Nếu là số âm, ``position`` được tính tương đối so với cuối mảng.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the other :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công hoặc một trong các hằng số :ref:`Error <enum_@GlobalScope_Error>` khác nếu phương thức này thất bại.
 
-\ **Note:** Every element's index after ``position`` needs to be shifted forward, which may have a noticeable performance cost, especially on larger arrays.
+\ **Lưu ý:** Chỉ mục của mọi phần tử sau ``position`` cần được dịch chuyển về phía trước, điều này có thể gây ra chi phí hiệu suất đáng kể, đặc biệt là với các mảng lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -967,7 +967,7 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or on
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_Array_method_is_empty>`
 
-Returns ``true`` if the array is empty (``[]``). See also :ref:`size()<class_Array_method_size>`.
+Trả về ``true`` nếu mảng trống (``[]``). Xem thêm :ref:`size()<class_Array_method_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -979,9 +979,9 @@ Returns ``true`` if the array is empty (``[]``). See also :ref:`size()<class_Arr
 
 :ref:`bool<class_bool>` **is_read_only**\ (\ ) |const| :ref:`🔗<class_Array_method_is_read_only>`
 
-Returns ``true`` if the array is read-only. See :ref:`make_read_only()<class_Array_method_make_read_only>`.
+Trả về ``true`` nếu mảng ở chế độ chỉ đọc. Xem :ref:`make_read_only()<class_Array_method_make_read_only>`.
 
-In GDScript, arrays are automatically read-only if declared with the ``const`` keyword.
+Trong GDScript, các mảng tự động ở chế độ chỉ đọc nếu được khai báo bằng từ khóa ``const``.
 
 .. rst-class:: classref-item-separator
 
@@ -993,7 +993,7 @@ In GDScript, arrays are automatically read-only if declared with the ``const`` k
 
 :ref:`bool<class_bool>` **is_same_typed**\ (\ array\: :ref:`Array<class_Array>`\ ) |const| :ref:`🔗<class_Array_method_is_same_typed>`
 
-Returns ``true`` if this array is typed the same as the given ``array``. See also :ref:`is_typed()<class_Array_method_is_typed>`.
+Trả về ``true`` nếu mảng này có cùng kiểu với ``array`` đã cho. Xem thêm :ref:`is_typed()<class_Array_method_is_typed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1005,9 +1005,9 @@ Returns ``true`` if this array is typed the same as the given ``array``. See als
 
 :ref:`bool<class_bool>` **is_typed**\ (\ ) |const| :ref:`🔗<class_Array_method_is_typed>`
 
-Returns ``true`` if the array is typed. Typed arrays can only contain elements of a specific type, as defined by the typed array constructor. The methods of a typed array are still expected to return a generic :ref:`Variant<class_Variant>`.
+Trả về ``true`` nếu mảng có kiểu. Mảng có kiểu chỉ có thể chứa các phần tử thuộc một kiểu cụ thể, được xác định bởi hàm khởi tạo mảng có kiểu. Các phương thức của mảng có kiểu vẫn được mong đợi trả về một :ref:`Variant<class_Variant>` tổng quát.
 
-In GDScript, it is possible to define a typed array with static typing:
+Trong GDScript, có thể định nghĩa mảng có kiểu bằng static typing:
 
 ::
 
@@ -1024,9 +1024,9 @@ In GDScript, it is possible to define a typed array with static typing:
 
 |void| **make_read_only**\ (\ ) :ref:`🔗<class_Array_method_make_read_only>`
 
-Makes the array read-only. The array's elements cannot be overridden with different values, and their order cannot change. Does not apply to nested elements, such as dictionaries.
+Đặt mảng ở chế độ chỉ đọc. Không thể ghi đè các phần tử của mảng bằng các giá trị khác và không thể thay đổi thứ tự của chúng. Không áp dụng cho các phần tử lồng nhau, chẳng hạn như dictionary.
 
-In GDScript, arrays are automatically read-only if declared with the ``const`` keyword.
+Trong GDScript, các mảng tự động ở chế độ chỉ đọc nếu được khai báo bằng từ khóa ``const``.
 
 .. rst-class:: classref-item-separator
 
@@ -1038,9 +1038,9 @@ In GDScript, arrays are automatically read-only if declared with the ``const`` k
 
 :ref:`Array<class_Array>` **map**\ (\ method\: :ref:`Callable<class_Callable>`\ ) |const| :ref:`🔗<class_Array_method_map>`
 
-Calls the given :ref:`Callable<class_Callable>` for each element in the array and returns a new array filled with values returned by the ``method``.
+Gọi :ref:`Callable<class_Callable>` đã cho với từng phần tử trong mảng và trả về một mảng mới chứa các giá trị do ``method`` trả về.
 
-The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the current array element) and can return any :ref:`Variant<class_Variant>`.
+``method`` phải nhận một tham số :ref:`Variant<class_Variant>` (phần tử hiện tại của mảng) và có thể trả về bất kỳ :ref:`Variant<class_Variant>` nào.
 
 ::
 
@@ -1053,7 +1053,7 @@ The ``method`` should take one :ref:`Variant<class_Variant>` parameter (the curr
         # Same as above, but using a lambda function.
         print([1, 2, 3].map(func(element): return element * 2))
 
-See also :ref:`filter()<class_Array_method_filter>`, :ref:`reduce()<class_Array_method_reduce>`, :ref:`any()<class_Array_method_any>` and :ref:`all()<class_Array_method_all>`.
+Xem thêm :ref:`filter()<class_Array_method_filter>`, :ref:`reduce()<class_Array_method_reduce>`, :ref:`any()<class_Array_method_any>` và :ref:`all()<class_Array_method_all>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1065,9 +1065,9 @@ See also :ref:`filter()<class_Array_method_filter>`, :ref:`reduce()<class_Array_
 
 :ref:`Variant<class_Variant>` **max**\ (\ ) |const| :ref:`🔗<class_Array_method_max>`
 
-Returns the maximum value contained in the array, if all elements can be compared. Otherwise, returns ``null``. See also :ref:`min()<class_Array_method_min>`.
+Trả về giá trị lớn nhất có trong mảng nếu có thể so sánh tất cả các phần tử. Nếu không, trả về ``null``. Xem thêm :ref:`min()<class_Array_method_min>`.
 
-To find the maximum value using a custom comparator, you can use :ref:`reduce()<class_Array_method_reduce>`.
+Để tìm giá trị lớn nhất bằng comparator tùy chỉnh, bạn có thể sử dụng :ref:`reduce()<class_Array_method_reduce>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1079,7 +1079,7 @@ To find the maximum value using a custom comparator, you can use :ref:`reduce()<
 
 :ref:`Variant<class_Variant>` **min**\ (\ ) |const| :ref:`🔗<class_Array_method_min>`
 
-Returns the minimum value contained in the array, if all elements can be compared. Otherwise, returns ``null``. See also :ref:`max()<class_Array_method_max>`.
+Trả về giá trị nhỏ nhất có trong mảng nếu có thể so sánh tất cả các phần tử. Nếu không, trả về ``null``. Xem thêm :ref:`max()<class_Array_method_max>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1091,24 +1091,24 @@ Returns the minimum value contained in the array, if all elements can be compare
 
 :ref:`Variant<class_Variant>` **pick_random**\ (\ ) |const| :ref:`🔗<class_Array_method_pick_random>`
 
-Returns a random element from the array. Generates an error and returns ``null`` if the array is empty.
+Trả về một phần tử ngẫu nhiên từ mảng. Tạo lỗi và trả về ``null`` nếu mảng trống.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # May print 1, 2, 3.25, or "Hi".
+    # Có thể in ra 1, 2, 3.25 hoặc "Hi".
     print([1, 2, 3.25, "Hi"].pick_random())
 
  .. code-tab:: csharp
 
     Godot.Collections.Array array = [1, 2, 3.25f, "Hi"];
-    GD.Print(array.PickRandom()); // May print 1, 2, 3.25, or "Hi".
+    GD.Print(array.PickRandom()); // Có thể in ra 1, 2, 3.25 hoặc "Hi".
 
 
 
-\ **Note:** Like many similar functions in the engine (such as :ref:`@GlobalScope.randi()<class_@GlobalScope_method_randi>` or :ref:`shuffle()<class_Array_method_shuffle>`), this method uses a common, global random seed. To get a predictable outcome from this method, see :ref:`@GlobalScope.seed()<class_@GlobalScope_method_seed>`.
+\ **Lưu ý:** Giống như nhiều hàm tương tự khác trong engine (chẳng hạn như :ref:`@GlobalScope.randi() <class_@GlobalScope_method_randi>` hoặc :ref:`shuffle()<class_Array_method_shuffle>`), phương thức này sử dụng một seed ngẫu nhiên toàn cục, dùng chung. Để nhận được kết quả có thể dự đoán từ phương thức này, hãy xem :ref:`@GlobalScope.seed() <class_@GlobalScope_method_seed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1120,9 +1120,9 @@ Returns a random element from the array. Generates an error and returns ``null``
 
 :ref:`Variant<class_Variant>` **pop_at**\ (\ position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_method_pop_at>`
 
-Removes and returns the element of the array at index ``position``. If negative, ``position`` is considered relative to the end of the array. Returns ``null`` if the array is empty. If ``position`` is out of bounds, an error message is also generated.
+Xóa và trả về phần tử của mảng tại chỉ mục ``position``. Nếu là số âm, ``position`` được tính tương đối từ cuối mảng. Trả về ``null`` nếu mảng trống. Nếu ``position`` nằm ngoài phạm vi, một thông báo lỗi cũng được tạo.
 
-\ **Note:** This method shifts every element's index after ``position`` back, which may have a noticeable performance cost, especially on larger arrays.
+\ **Lưu ý:** Phương thức này dịch chỉ mục của mọi phần tử sau ``position`` về trước, điều này có thể gây tốn hiệu năng đáng kể, đặc biệt là với các mảng lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -1134,7 +1134,7 @@ Removes and returns the element of the array at index ``position``. If negative,
 
 :ref:`Variant<class_Variant>` **pop_back**\ (\ ) :ref:`🔗<class_Array_method_pop_back>`
 
-Removes and returns the last element of the array. Returns ``null`` if the array is empty, without generating an error. See also :ref:`pop_front()<class_Array_method_pop_front>`.
+Xóa và trả về phần tử cuối cùng của mảng. Trả về ``null`` nếu mảng trống mà không tạo lỗi. Xem thêm :ref:`pop_front()<class_Array_method_pop_front>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1146,9 +1146,9 @@ Removes and returns the last element of the array. Returns ``null`` if the array
 
 :ref:`Variant<class_Variant>` **pop_front**\ (\ ) :ref:`🔗<class_Array_method_pop_front>`
 
-Removes and returns the first element of the array. Returns ``null`` if the array is empty, without generating an error. See also :ref:`pop_back()<class_Array_method_pop_back>`.
+Xóa và trả về phần tử đầu tiên của mảng. Trả về ``null`` nếu mảng trống mà không phát sinh lỗi. Xem thêm :ref:`pop_back()<class_Array_method_pop_back>`.
 
-\ **Note:** This method shifts every other element's index back, which may have a noticeable performance cost, especially on larger arrays.
+\ **Lưu ý:** Phương thức này dịch chỉ số của mọi phần tử còn lại lùi lại, điều này có thể gây ra chi phí hiệu năng đáng kể, đặc biệt là với các mảng lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -1160,7 +1160,7 @@ Removes and returns the first element of the array. Returns ``null`` if the arra
 
 |void| **push_back**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_push_back>`
 
-Appends an element at the end of the array. See also :ref:`push_front()<class_Array_method_push_front>`.
+Thêm một phần tử vào cuối mảng. Xem thêm :ref:`push_front()<class_Array_method_push_front>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1172,9 +1172,9 @@ Appends an element at the end of the array. See also :ref:`push_front()<class_Ar
 
 |void| **push_front**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_push_front>`
 
-Adds an element at the beginning of the array. See also :ref:`push_back()<class_Array_method_push_back>`.
+Thêm một phần tử vào đầu mảng. Xem thêm :ref:`push_back()<class_Array_method_push_back>`.
 
-\ **Note:** This method shifts every other element's index forward, which may have a noticeable performance cost, especially on larger arrays.
+\ **Lưu ý:** Phương thức này dịch chỉ số của mọi phần tử còn lại tiến lên, điều này có thể gây ra chi phí hiệu năng đáng kể, đặc biệt là với các mảng lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -1186,9 +1186,9 @@ Adds an element at the beginning of the array. See also :ref:`push_back()<class_
 
 :ref:`Variant<class_Variant>` **reduce**\ (\ method\: :ref:`Callable<class_Callable>`, accum\: :ref:`Variant<class_Variant>` = null\ ) |const| :ref:`🔗<class_Array_method_reduce>`
 
-Calls the given :ref:`Callable<class_Callable>` for each element in array, accumulates the result in ``accum``, then returns it.
+Gọi :ref:`Callable<class_Callable>` đã cho cho từng phần tử trong mảng, tích lũy kết quả vào ``accum``, sau đó trả về kết quả đó.
 
-The ``method`` takes two arguments: the current value of ``accum`` and the current array element. If ``accum`` is ``null`` (as by default), the iteration will start from the second element, with the first one used as initial value of ``accum``.
+``method`` nhận hai đối số: giá trị hiện tại của ``accum`` và phần tử hiện tại của mảng. Nếu ``accum`` là ``null`` (như mặc định), quá trình lặp sẽ bắt đầu từ phần tử thứ hai, với phần tử đầu tiên được dùng làm giá trị ban đầu của ``accum``.
 
 ::
 
@@ -1202,7 +1202,7 @@ The ``method`` takes two arguments: the current value of ``accum`` and the curre
         # Same as above, but using a lambda function.
         print([1, 2, 3].reduce(func(accum, number): return accum + number, 10))
 
-If :ref:`max()<class_Array_method_max>` is not desirable, this method may also be used to implement a custom comparator:
+Nếu :ref:`max()<class_Array_method_max>` không phù hợp, bạn cũng có thể dùng phương thức này để triển khai comparator tùy chỉnh:
 
 ::
 
@@ -1215,7 +1215,7 @@ If :ref:`max()<class_Array_method_max>` is not desirable, this method may also b
     func is_length_greater(a, b):
         return a.length() > b.length()
 
-This method can also be used to count how many elements in an array satisfy a certain condition, similar to :ref:`count()<class_Array_method_count>`:
+Phương thức này cũng có thể được dùng để đếm số phần tử trong một mảng thỏa mãn một điều kiện nhất định, tương tự như :ref:`count()<class_Array_method_count>`:
 
 ::
 
@@ -1228,7 +1228,7 @@ This method can also be used to count how many elements in an array satisfy a ce
         var even_count = arr.reduce(func(count, next): return count + 1 if is_even(next) else count, 0)
         print(even_count) # Prints 2
 
-See also :ref:`map()<class_Array_method_map>`, :ref:`filter()<class_Array_method_filter>`, :ref:`any()<class_Array_method_any>`, and :ref:`all()<class_Array_method_all>`.
+Xem thêm :ref:`map()<class_Array_method_map>`, :ref:`filter()<class_Array_method_filter>`, :ref:`any()<class_Array_method_any>` và :ref:`all()<class_Array_method_all>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1240,11 +1240,11 @@ See also :ref:`map()<class_Array_method_map>`, :ref:`filter()<class_Array_method
 
 |void| **remove_at**\ (\ position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_method_remove_at>`
 
-Removes the element from the array at the given index (``position``). If the index is out of bounds, this method fails. If the index is negative, ``position`` is considered relative to the end of the array.
+Xóa phần tử khỏi mảng tại chỉ mục đã cho (``position``). Nếu chỉ mục nằm ngoài phạm vi, phương thức này sẽ thất bại. Nếu chỉ mục là số âm, ``position`` được tính tương đối từ cuối mảng.
 
-If you need to return the removed element, use :ref:`pop_at()<class_Array_method_pop_at>`. To remove an element by value, use :ref:`erase()<class_Array_method_erase>` instead.
+Nếu cần trả về phần tử đã xóa, hãy dùng :ref:`pop_at()<class_Array_method_pop_at>`. Để xóa một phần tử theo giá trị, hãy dùng :ref:`erase()<class_Array_method_erase>`.
 
-\ **Note:** This method shifts every element's index after ``position`` back, which may have a noticeable performance cost, especially on larger arrays.
+\ **Lưu ý:** Phương thức này dịch chỉ mục của mọi phần tử sau ``position`` về trước, điều này có thể gây tốn hiệu năng đáng kể, đặc biệt là với các mảng lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -1256,11 +1256,11 @@ If you need to return the removed element, use :ref:`pop_at()<class_Array_method
 
 :ref:`int<class_int>` **resize**\ (\ size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_method_resize>`
 
-Sets the array's number of elements to ``size``. If ``size`` is smaller than the array's current size, the elements at the end are removed. If ``size`` is greater, new default elements (usually ``null``) are added, depending on the array's type.
+Đặt số lượng phần tử của mảng thành ``size``. Nếu ``size`` nhỏ hơn kích thước hiện tại của mảng, các phần tử ở cuối sẽ bị xóa. Nếu ``size`` lớn hơn, các phần tử mặc định mới (thường là ``null``) sẽ được thêm vào, tùy thuộc vào kiểu của mảng.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the following :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails: :ref:`@GlobalScope.ERR_LOCKED<class_@GlobalScope_constant_ERR_LOCKED>` if the array is read-only, :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the size is negative, or :ref:`@GlobalScope.ERR_OUT_OF_MEMORY<class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` if allocations fail. Use :ref:`size()<class_Array_method_size>` to find the actual size of the array after resize.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công hoặc một trong các hằng số :ref:`Error <enum_@GlobalScope_Error>` sau đây nếu phương thức này thất bại: :ref:`@GlobalScope.ERR_LOCKED <class_@GlobalScope_constant_ERR_LOCKED>` nếu mảng chỉ đọc, :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu kích thước là số âm hoặc :ref:`@GlobalScope.ERR_OUT_OF_MEMORY <class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` nếu việc cấp phát bộ nhớ thất bại. Sử dụng :ref:`size()<class_Array_method_size>` để tìm kích thước thực tế của mảng sau khi thay đổi kích thước.
 
-\ **Note:** Calling this method once and assigning the new values is faster than calling :ref:`append()<class_Array_method_append>` for every new element.
+\ **Lưu ý:** Gọi phương thức này một lần rồi gán các giá trị mới sẽ nhanh hơn gọi :ref:`append()<class_Array_method_append>` cho từng phần tử mới.
 
 .. rst-class:: classref-item-separator
 
@@ -1272,7 +1272,7 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or on
 
 |void| **reverse**\ (\ ) :ref:`🔗<class_Array_method_reverse>`
 
-Reverses the order of all elements in the array.
+Đảo ngược thứ tự của tất cả phần tử trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -1284,7 +1284,7 @@ Reverses the order of all elements in the array.
 
 :ref:`int<class_int>` **rfind**\ (\ what\: :ref:`Variant<class_Variant>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_Array_method_rfind>`
 
-Returns the index of the **last** occurrence of ``what`` in this array, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the beginning of the array. This method is the reverse of :ref:`find()<class_Array_method_find>`.
+Trả về chỉ mục của lần xuất hiện **cuối cùng** của ``what`` trong mảng này hoặc ``-1`` nếu không có. Có thể chỉ định điểm bắt đầu tìm kiếm bằng ``from``, tiếp tục đến đầu mảng. Phương thức này là phiên bản ngược của :ref:`find()<class_Array_method_find>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1296,7 +1296,7 @@ Returns the index of the **last** occurrence of ``what`` in this array, or ``-1`
 
 :ref:`int<class_int>` **rfind_custom**\ (\ method\: :ref:`Callable<class_Callable>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_Array_method_rfind_custom>`
 
-Returns the index of the **last** element of the array that causes ``method`` to return ``true``, or ``-1`` if there are none. The search's start can be specified with ``from``, continuing to the beginning of the array. This method is the reverse of :ref:`find_custom()<class_Array_method_find_custom>`.
+Trả về chỉ mục của phần tử **cuối cùng** trong mảng khiến ``method`` trả về ``true`` hoặc ``-1`` nếu không có. Có thể chỉ định điểm bắt đầu tìm kiếm bằng ``from``, tiếp tục đến đầu mảng. Phương thức này là phiên bản ngược của :ref:`find_custom()<class_Array_method_find_custom>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1308,7 +1308,7 @@ Returns the index of the **last** element of the array that causes ``method`` to
 
 |void| **set**\ (\ index\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Array_method_set>`
 
-Sets the value of the element at the given ``index`` to the given ``value``. This will not change the size of the array, it only changes the value at an index already in the array. This is the same as using the ``[]`` operator (``array[index] = value``).
+Đặt giá trị của phần tử tại ``index`` đã cho thành ``value`` đã cho. Thao tác này không thay đổi kích thước của mảng, mà chỉ thay đổi giá trị tại một chỉ mục đã tồn tại trong mảng. Tương tự như sử dụng toán tử ``[]`` (``array[index] = value``).
 
 .. rst-class:: classref-item-separator
 
@@ -1320,9 +1320,9 @@ Sets the value of the element at the given ``index`` to the given ``value``. Thi
 
 |void| **shuffle**\ (\ ) :ref:`🔗<class_Array_method_shuffle>`
 
-Shuffles all elements of the array in a random order.
+Xáo trộn tất cả phần tử của mảng theo thứ tự ngẫu nhiên.
 
-\ **Note:** Like many similar functions in the engine (such as :ref:`@GlobalScope.randi()<class_@GlobalScope_method_randi>` or :ref:`pick_random()<class_Array_method_pick_random>`), this method uses a common, global random seed. To get a predictable outcome from this method, see :ref:`@GlobalScope.seed()<class_@GlobalScope_method_seed>`.
+\ **Lưu ý:** Giống như nhiều hàm tương tự trong engine (chẳng hạn như :ref:`@GlobalScope.randi() <class_@GlobalScope_method_randi>` hoặc :ref:`pick_random()<class_Array_method_pick_random>`), phương thức này sử dụng một seed ngẫu nhiên toàn cục dùng chung. Để nhận được kết quả có thể dự đoán từ phương thức này, hãy xem :ref:`@GlobalScope.seed() <class_@GlobalScope_method_seed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1334,7 +1334,7 @@ Shuffles all elements of the array in a random order.
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_Array_method_size>`
 
-Returns the number of elements in the array. Empty arrays (``[]``) always return ``0``. See also :ref:`is_empty()<class_Array_method_is_empty>`.
+Trả về số phần tử trong mảng. Các mảng rỗng (``[]``) luôn trả về ``0``. Xem thêm :ref:`is_empty()<class_Array_method_is_empty>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1346,13 +1346,13 @@ Returns the number of elements in the array. Empty arrays (``[]``) always return
 
 :ref:`Array<class_Array>` **slice**\ (\ begin\: :ref:`int<class_int>`, end\: :ref:`int<class_int>` = 2147483647, step\: :ref:`int<class_int>` = 1, deep\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Array_method_slice>`
 
-Returns a new **Array** containing this array's elements, from index ``begin`` (inclusive) to ``end`` (exclusive), every ``step`` elements.
+Trả về một **Array** mới chứa các phần tử của mảng này, từ index ``begin`` (bao gồm) đến ``end`` (không bao gồm), với mỗi ``step`` phần tử.
 
-If either ``begin`` or ``end`` are negative, their value is relative to the end of the array.
+Nếu ``begin`` hoặc ``end`` là số âm, giá trị của chúng được tính tương đối so với cuối mảng.
 
-If ``step`` is negative, this method iterates through the array in reverse, returning a slice ordered backwards. For this to work, ``begin`` must be greater than ``end``.
+Nếu ``step`` là số âm, phương thức này duyệt qua mảng theo thứ tự ngược, trả về một slice được sắp xếp theo thứ tự ngược. Để hoạt động như vậy, ``begin`` phải lớn hơn ``end``.
 
-If ``deep`` is ``true``, all nested **Array** and :ref:`Dictionary<class_Dictionary>` elements in the slice are duplicated from the original, recursively. See also :ref:`duplicate()<class_Array_method_duplicate>`.
+Nếu ``deep`` là ``true``, tất cả các phần tử **Array** và :ref:`Dictionary<class_Dictionary>` lồng nhau trong slice sẽ được sao chép đệ quy từ phần tử gốc. Xem thêm :ref:`duplicate()<class_Array_method_duplicate>`.
 
 ::
 
@@ -1375,7 +1375,7 @@ If ``deep`` is ``true``, all nested **Array** and :ref:`Dictionary<class_Diction
 
 |void| **sort**\ (\ ) :ref:`🔗<class_Array_method_sort>`
 
-Sorts the array in ascending order. The final order is dependent on the "less than" (``<``) comparison between elements.
+Sắp xếp mảng theo thứ tự tăng dần. Thứ tự cuối cùng phụ thuộc vào phép so sánh "nhỏ hơn" (``<``) giữa các phần tử.
 
 
 .. tabs::
@@ -1384,17 +1384,17 @@ Sorts the array in ascending order. The final order is dependent on the "less th
 
     var numbers = [10, 5, 2.5, 8]
     numbers.sort()
-    print(numbers) # Prints [2.5, 5, 8, 10]
+    print(numbers) # In ra [2.5, 5, 8, 10]
 
  .. code-tab:: csharp
 
     Godot.Collections.Array numbers = [10, 5, 2.5, 8];
     numbers.Sort();
-    GD.Print(numbers); // Prints [2.5, 5, 8, 10]
+    GD.Print(numbers); // In ra [2.5, 5, 8, 10]
 
 
 
-\ **Note:** The sorting algorithm used is not `stable <https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`__. This means that equivalent elements (such as ``2`` and ``2.0``) may have their order changed when calling :ref:`sort()<class_Array_method_sort>`.
+\ **Lưu ý:** Thuật toán sắp xếp được sử dụng không `ổn định <https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`__. Điều này có nghĩa là thứ tự của các phần tử tương đương (chẳng hạn như ``2`` và ``2.0``) có thể bị thay đổi khi gọi :ref:`sort()<class_Array_method_sort>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1406,9 +1406,9 @@ Sorts the array in ascending order. The final order is dependent on the "less th
 
 |void| **sort_custom**\ (\ func\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_Array_method_sort_custom>`
 
-Sorts the array using a custom :ref:`Callable<class_Callable>`.
+Sắp xếp mảng bằng một :ref:`Callable<class_Callable>` tùy chỉnh.
 
-\ ``func`` is called as many times as necessary, receiving two array elements as arguments. The function should return ``true`` if the first element should be moved *before* the second one, otherwise it should return ``false``.
+\ ``func`` được gọi nhiều lần nếu cần, nhận hai phần tử mảng làm đối số. Hàm này phải trả về ``true`` nếu phần tử đầu tiên cần được di chuyển *trước* phần tử thứ hai; nếu không, hàm phải trả về ``false``.
 
 ::
 
@@ -1426,7 +1426,7 @@ Sorts the array using a custom :ref:`Callable<class_Callable>`.
         my_items.sort_custom(func(a, b): return a[1] > b[1])
         print(my_items) # Prints [["Apple", 9], ["Tomato", 5], ["Rice", 4]]
 
-It may also be necessary to use this method to sort strings by natural order, with :ref:`String.naturalnocasecmp_to()<class_String_method_naturalnocasecmp_to>`, as in the following example:
+Bạn cũng có thể cần sử dụng phương thức này để sắp xếp các chuỗi theo thứ tự tự nhiên, với :ref:`String.naturalnocasecmp_to()<class_String_method_naturalnocasecmp_to>`, như trong ví dụ sau:
 
 ::
 
@@ -1434,11 +1434,11 @@ It may also be necessary to use this method to sort strings by natural order, wi
     files.sort_custom(func(a, b): return a.naturalnocasecmp_to(b) < 0)
     print(files) # Prints ["newfile1", "newfile2", "newfile10", "newfile11"]
 
-\ **Note:** In C#, this method is not supported.
+\ **Lưu ý:** Trong C#, phương thức này không được hỗ trợ.
 
-\ **Note:** The sorting algorithm used is not `stable <https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`__. This means that values considered equal may have their order changed when calling this method.
+\ **Lưu ý:** Thuật toán sắp xếp được sử dụng không `ổn định <https://en.wikipedia.org/wiki/Sorting_algorithm#Stability>`__. Điều này có nghĩa là thứ tự của các giá trị được xem là bằng nhau có thể bị thay đổi khi gọi phương thức này.
 
-\ **Note:** You should not randomize the return value of ``func``, as the heapsort algorithm expects a consistent result. Randomizing the return value will result in unexpected behavior.
+\ **Lưu ý:** Bạn không nên ngẫu nhiên hóa giá trị trả về của ``func``, vì thuật toán heapsort yêu cầu một kết quả nhất quán. Việc ngẫu nhiên hóa giá trị trả về sẽ dẫn đến hành vi không mong muốn.
 
 .. rst-class:: classref-section-separator
 
@@ -1446,16 +1446,16 @@ It may also be necessary to use this method to sort strings by natural order, wi
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Array_operator_neq_Array:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_neq_Array>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗 <class_Array_operator_neq_Array>`
 
-Returns ``true`` if the array's size or its elements are different than ``right``'s.
+Trả về ``true`` nếu kích thước của mảng hoặc các phần tử của mảng khác với ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -1465,9 +1465,9 @@ Returns ``true`` if the array's size or its elements are different than ``right`
 
 .. rst-class:: classref-operator
 
-:ref:`Array<class_Array>` **operator +**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_sum_Array>`
+:ref:`Array<class_Array>` **operator +**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗 <class_Array_operator_sum_Array>`
 
-Appends the ``right`` array to the left operand, creating a new **Array**. This is also known as an array concatenation.
+Nối mảng ``right`` vào toán hạng bên trái, tạo một **Array** mới. Thao tác này còn được gọi là phép nối mảng.
 
 
 .. tabs::
@@ -1476,18 +1476,18 @@ Appends the ``right`` array to the left operand, creating a new **Array**. This 
 
     var array1 = ["One", 2]
     var array2 = [3, "Four"]
-    print(array1 + array2) # Prints ["One", 2, 3, "Four"]
+    print(array1 + array2) # In ra ["One", 2, 3, "Four"]
 
  .. code-tab:: csharp
 
-    // Note that concatenation is not possible with C#'s native Array type.
+    // Lưu ý rằng không thể nối với kiểu Array gốc của C#.
     Godot.Collections.Array array1 = ["One", 2];
     Godot.Collections.Array array2 = [3, "Four"];
-    GD.Print(array1 + array2); // Prints ["One", 2, 3, "Four"]
+    GD.Print(array1 + array2); // In ra ["One", 2, 3, "Four"]
 
 
 
-\ **Note:** For existing arrays, :ref:`append_array()<class_Array_method_append_array>` is much more efficient than concatenation and assignment with the ``+=`` operator.
+\ **Lưu ý:** Đối với các mảng hiện có, :ref:`append_array()<class_Array_method_append_array>` hiệu quả hơn nhiều so với việc nối và gán bằng toán tử ``+=``.
 
 .. rst-class:: classref-item-separator
 
@@ -1497,11 +1497,11 @@ Appends the ``right`` array to the left operand, creating a new **Array**. This 
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_lt_Array>`
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗 <class_Array_operator_lt_Array>`
 
-Compares the elements of both arrays in order, starting from index ``0`` and ending on the last index in common between both arrays. For each pair of elements, returns ``true`` if this array's element is less than ``right``'s, ``false`` if this element is greater. Otherwise, continues to the next pair.
+So sánh các phần tử của cả hai mảng theo thứ tự, bắt đầu từ chỉ mục ``0`` và kết thúc tại chỉ mục cuối cùng chung của cả hai mảng. Với mỗi cặp phần tử, trả về ``true`` nếu phần tử của mảng này nhỏ hơn phần tử của ``right``, ``false`` nếu phần tử này lớn hơn. Nếu không, tiếp tục với cặp tiếp theo.
 
-If all searched elements are equal, returns ``true`` if this array's size is less than ``right``'s, otherwise returns ``false``.
+Nếu tất cả các phần tử được tìm kiếm đều bằng nhau, trả về ``true`` nếu kích thước của mảng này nhỏ hơn kích thước của ``right``, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1511,11 +1511,11 @@ If all searched elements are equal, returns ``true`` if this array's size is les
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_lte_Array>`
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗 <class_Array_operator_lte_Array>`
 
-Compares the elements of both arrays in order, starting from index ``0`` and ending on the last index in common between both arrays. For each pair of elements, returns ``true`` if this array's element is less than ``right``'s, ``false`` if this element is greater. Otherwise, continues to the next pair.
+So sánh các phần tử của cả hai mảng theo thứ tự, bắt đầu từ chỉ mục ``0`` và kết thúc tại chỉ mục cuối cùng chung của cả hai mảng. Với mỗi cặp phần tử, trả về ``true`` nếu phần tử của mảng này nhỏ hơn phần tử của ``right``, ``false`` nếu phần tử này lớn hơn. Nếu không, tiếp tục với cặp tiếp theo.
 
-If all searched elements are equal, returns ``true`` if this array's size is less or equal to ``right``'s, otherwise returns ``false``.
+Nếu tất cả các phần tử được tìm kiếm đều bằng nhau, trả về ``true`` nếu kích thước của mảng này nhỏ hơn hoặc bằng kích thước của ``right``, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1525,9 +1525,9 @@ If all searched elements are equal, returns ``true`` if this array's size is les
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_eq_Array>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗 <class_Array_operator_eq_Array>`
 
-Compares the left operand **Array** against the ``right`` **Array**. Returns ``true`` if the sizes and contents of the arrays are equal, ``false`` otherwise.
+So sánh toán hạng bên trái **Array** với ``right`` **Array**. Trả về ``true`` nếu kích thước và nội dung của hai mảng bằng nhau, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1537,11 +1537,11 @@ Compares the left operand **Array** against the ``right`` **Array**. Returns ``t
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_gt_Array>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗 <class_Array_operator_gt_Array>`
 
-Compares the elements of both arrays in order, starting from index ``0`` and ending on the last index in common between both arrays. For each pair of elements, returns ``true`` if this array's element is greater than ``right``'s, ``false`` if this element is less. Otherwise, continues to the next pair.
+So sánh các phần tử của cả hai mảng theo thứ tự, bắt đầu từ chỉ mục ``0`` và kết thúc tại chỉ mục cuối cùng chung của cả hai mảng. Với mỗi cặp phần tử, trả về ``true`` nếu phần tử của mảng này lớn hơn phần tử của ``right``, ``false`` nếu phần tử này nhỏ hơn. Nếu không, tiếp tục với cặp phần tử tiếp theo.
 
-If all searched elements are equal, returns ``true`` if this array's size is greater than ``right``'s, otherwise returns ``false``.
+Nếu tất cả các phần tử được tìm kiếm đều bằng nhau, trả về ``true`` nếu kích thước của mảng này lớn hơn kích thước của ``right``, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1551,11 +1551,11 @@ If all searched elements are equal, returns ``true`` if this array's size is gre
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Array_operator_gte_Array>`
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`Array<class_Array>`\ ) :ref:`🔗 <class_Array_operator_gte_Array>`
 
-Compares the elements of both arrays in order, starting from index ``0`` and ending on the last index in common between both arrays. For each pair of elements, returns ``true`` if this array's element is greater than ``right``'s, ``false`` if this element is less. Otherwise, continues to the next pair.
+So sánh các phần tử của cả hai mảng theo thứ tự, bắt đầu từ chỉ mục ``0`` và kết thúc tại chỉ mục cuối cùng chung của cả hai mảng. Với mỗi cặp phần tử, trả về ``true`` nếu phần tử của mảng này lớn hơn phần tử của ``right``, ``false`` nếu phần tử này nhỏ hơn. Nếu không, tiếp tục với cặp phần tử tiếp theo.
 
-If all searched elements are equal, returns ``true`` if this array's size is greater or equal to ``right``'s, otherwise returns ``false``.
+Nếu tất cả các phần tử được tìm kiếm đều bằng nhau, trả về ``true`` nếu kích thước của mảng này lớn hơn hoặc bằng kích thước của ``right``, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1565,16 +1565,16 @@ If all searched elements are equal, returns ``true`` if this array's size is gre
 
 .. rst-class:: classref-operator
 
-:ref:`Variant<class_Variant>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Array_operator_idx_int>`
+:ref:`Variant<class_Variant>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Array_operator_idx_int>`
 
-Returns the :ref:`Variant<class_Variant>` element at the specified ``index``. Arrays start at index 0. If ``index`` is greater or equal to ``0``, the element is fetched starting from the beginning of the array. If ``index`` is a negative value, the element is fetched starting from the end. Accessing an array out-of-bounds will cause a run-time error, pausing the project execution if run from the editor.
+Trả về phần tử :ref:`Variant<class_Variant>` tại ``index`` được chỉ định. Các mảng bắt đầu từ index 0. Nếu ``index`` lớn hơn hoặc bằng ``0``, phần tử sẽ được lấy bắt đầu từ đầu mảng. Nếu ``index`` là một giá trị âm, phần tử sẽ được lấy bắt đầu từ cuối mảng. Việc truy cập mảng vượt quá giới hạn sẽ gây ra lỗi run-time, tạm dừng quá trình thực thi project nếu được chạy từ editor.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

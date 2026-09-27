@@ -10,73 +10,73 @@
 XRHandTracker
 =============
 
-**Inherits:** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A tracked hand in XR.
+Một bàn tay được theo dõi trong XR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A hand tracking system will create an instance of this object and add it to the :ref:`XRServer<class_XRServer>`. This tracking system will then obtain skeleton data, convert it to the Godot Humanoid hand skeleton and store this data on the **XRHandTracker** object.
+Một hệ thống theo dõi bàn tay sẽ tạo một instance của đối tượng này và thêm nó vào :ref:`XRServer<class_XRServer>`. Sau đó, hệ thống theo dõi này sẽ lấy dữ liệu skeleton, chuyển đổi dữ liệu này thành skeleton bàn tay Godot Humanoid và lưu trữ dữ liệu trên đối tượng **XRHandTracker**.
 
-Use :ref:`XRHandModifier3D<class_XRHandModifier3D>` to animate a hand mesh using hand tracking data.
+Sử dụng :ref:`XRHandModifier3D<class_XRHandModifier3D>` để tạo hiệu ứng chuyển động cho hand mesh bằng dữ liệu theo dõi bàn tay.
 
 .. rst-class:: classref-introduction-group
 
 Tutorials
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`TrackerHand<enum_XRPositionalTracker_TrackerHand>`         | hand                                                                           | ``1`` (overrides :ref:`XRPositionalTracker<class_XRPositionalTracker_property_hand>`) |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` | :ref:`hand_tracking_source<class_XRHandTracker_property_hand_tracking_source>` | ``0``                                                                                 |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`has_tracking_data<class_XRHandTracker_property_has_tracking_data>`       | ``false``                                                                             |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`TrackerType<enum_XRServer_TrackerType>`                    | type                                                                           | ``16`` (overrides :ref:`XRTracker<class_XRTracker_property_type>`)                    |
-   +------------------------------------------------------------------+--------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   +-------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+   | :ref:`TrackerHand <enum_XRPositionalTracker_TrackerHand>`         | tay                                                                            | ``1`` (ghi đè :ref:`XRPositionalTracker<class_XRPositionalTracker_property_hand>`) |
+   +-------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+   | :ref:`HandTrackingSource <enum_XRHandTracker_HandTrackingSource>` | :ref:`hand_tracking_source<class_XRHandTracker_property_hand_tracking_source>` | ``0``                                                                              |
+   +-------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`has_tracking_data<class_XRHandTracker_property_has_tracking_data>`       | ``false``                                                                          |
+   +-------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+   | :ref:`TrackerType <enum_XRServer_TrackerType>`                    | loại                                                                           | ``16`` (ghi đè :ref:`XRTracker<class_XRTracker_property_type>`)                    |
+   +-------------------------------------------------------------------+--------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                          | :ref:`get_hand_joint_angular_velocity<class_XRHandTracker_method_get_hand_joint_angular_velocity>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const|                                                   |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>`\] | :ref:`get_hand_joint_flags<class_XRHandTracker_method_get_hand_joint_flags>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const|                                                                         |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                          | :ref:`get_hand_joint_linear_velocity<class_XRHandTracker_method_get_hand_joint_linear_velocity>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const|                                                     |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                              | :ref:`get_hand_joint_radius<class_XRHandTracker_method_get_hand_joint_radius>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const|                                                                       |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`                                  | :ref:`get_hand_joint_transform<class_XRHandTracker_method_get_hand_joint_transform>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const|                                                                 |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                 | :ref:`set_hand_joint_angular_velocity<class_XRHandTracker_method_set_hand_joint_angular_velocity>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, angular_velocity\: :ref:`Vector3<class_Vector3>`\ )         |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                 | :ref:`set_hand_joint_flags<class_XRHandTracker_method_set_hand_joint_flags>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, flags\: |bitfield|\[:ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>`\]\ ) |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                 | :ref:`set_hand_joint_linear_velocity<class_XRHandTracker_method_set_hand_joint_linear_velocity>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, linear_velocity\: :ref:`Vector3<class_Vector3>`\ )            |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                 | :ref:`set_hand_joint_radius<class_XRHandTracker_method_set_hand_joint_radius>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, radius\: :ref:`float<class_float>`\ )                                           |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                 | :ref:`set_hand_joint_transform<class_XRHandTracker_method_set_hand_joint_transform>`\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, transform\: :ref:`Transform3D<class_Transform3D>`\ )                      |
-   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                           | :ref:`get_hand_joint_angular_velocity<class_XRHandTracker_method_get_hand_joint_angular_velocity>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`\ ) |const|                                                    |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`HandJointFlags <enum_XRHandTracker_HandJointFlags>`\] | :ref:`get_hand_joint_flags<class_XRHandTracker_method_get_hand_joint_flags>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`\ ) |const|                                                                          |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                           | :ref:`get_hand_joint_linear_velocity<class_XRHandTracker_method_get_hand_joint_linear_velocity>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`\ ) |const|                                                      |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                               | :ref:`get_hand_joint_radius<class_XRHandTracker_method_get_hand_joint_radius>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`\ ) |const|                                                                        |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`                                   | :ref:`get_hand_joint_transform<class_XRHandTracker_method_get_hand_joint_transform>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`\ ) |const|                                                                  |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`set_hand_joint_angular_velocity<class_XRHandTracker_method_set_hand_joint_angular_velocity>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`, angular_velocity\: :ref:`Vector3<class_Vector3>`\ )          |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`set_hand_joint_flags<class_XRHandTracker_method_set_hand_joint_flags>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`, flags\: |bitfield|\[:ref:`HandJointFlags <enum_XRHandTracker_HandJointFlags>`\]\ ) |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`set_hand_joint_linear_velocity<class_XRHandTracker_method_set_hand_joint_linear_velocity>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`, linear_velocity\: :ref:`Vector3<class_Vector3>`\ )             |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`set_hand_joint_radius<class_XRHandTracker_method_set_hand_joint_radius>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`, radius\: :ref:`float<class_float>`\ )                                            |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                  | :ref:`set_hand_joint_transform<class_XRHandTracker_method_set_hand_joint_transform>`\ (\ joint\: :ref:`HandJoint <enum_XRHandTracker_HandJoint>`, transform\: :ref:`Transform3D<class_Transform3D>`\ )                       |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -84,14 +84,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_XRHandTracker_HandTrackingSource:
 
 .. rst-class:: classref-enumeration
 
-enum **HandTrackingSource**: :ref:`🔗<enum_XRHandTracker_HandTrackingSource>`
+enum **HandTrackingSource**: :ref:`🔗 <enum_XRHandTracker_HandTrackingSource>`
 
 .. _class_XRHandTracker_constant_HAND_TRACKING_SOURCE_UNKNOWN:
 
@@ -99,7 +99,7 @@ enum **HandTrackingSource**: :ref:`🔗<enum_XRHandTracker_HandTrackingSource>`
 
 :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` **HAND_TRACKING_SOURCE_UNKNOWN** = ``0``
 
-The source of hand tracking data is unknown.
+Nguồn dữ liệu theo dõi bàn tay không xác định.
 
 .. _class_XRHandTracker_constant_HAND_TRACKING_SOURCE_UNOBSTRUCTED:
 
@@ -107,7 +107,7 @@ The source of hand tracking data is unknown.
 
 :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` **HAND_TRACKING_SOURCE_UNOBSTRUCTED** = ``1``
 
-The source of hand tracking data is unobstructed, meaning that an accurate method of hand tracking is used. These include optical hand tracking, data gloves, etc.
+Nguồn dữ liệu theo dõi bàn tay không bị che khuất, nghĩa là một phương pháp theo dõi bàn tay chính xác đang được sử dụng. Các phương pháp này bao gồm theo dõi bàn tay bằng quang học, găng tay dữ liệu, v.v.
 
 .. _class_XRHandTracker_constant_HAND_TRACKING_SOURCE_CONTROLLER:
 
@@ -115,7 +115,7 @@ The source of hand tracking data is unobstructed, meaning that an accurate metho
 
 :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` **HAND_TRACKING_SOURCE_CONTROLLER** = ``2``
 
-The source of hand tracking data is a controller, meaning that joint positions are inferred from controller inputs.
+Nguồn dữ liệu theo dõi bàn tay là bộ điều khiển, nghĩa là vị trí các khớp được suy ra từ đầu vào của bộ điều khiển.
 
 .. _class_XRHandTracker_constant_HAND_TRACKING_SOURCE_NOT_TRACKED:
 
@@ -123,7 +123,7 @@ The source of hand tracking data is a controller, meaning that joint positions a
 
 :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` **HAND_TRACKING_SOURCE_NOT_TRACKED** = ``3``
 
-No hand tracking data is tracked, this either means the hand is obscured, the controller is turned off, or tracking is not supported for the current input type.
+Không có dữ liệu theo dõi bàn tay nào được theo dõi; điều này có nghĩa là bàn tay bị che khuất, bộ điều khiển đã tắt hoặc tính năng theo dõi không được hỗ trợ cho loại đầu vào hiện tại.
 
 .. _class_XRHandTracker_constant_HAND_TRACKING_SOURCE_MAX:
 
@@ -131,7 +131,7 @@ No hand tracking data is tracked, this either means the hand is obscured, the co
 
 :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` **HAND_TRACKING_SOURCE_MAX** = ``4``
 
-Represents the size of the :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` enum.
+Biểu thị kích thước của enum :ref:`HandTrackingSource <enum_XRHandTracker_HandTrackingSource>`.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Represents the size of the :ref:`HandTrackingSource<enum_XRHandTracker_HandTrack
 
 .. rst-class:: classref-enumeration
 
-enum **HandJoint**: :ref:`🔗<enum_XRHandTracker_HandJoint>`
+enum **HandJoint**: :ref:`🔗 <enum_XRHandTracker_HandJoint>`
 
 .. _class_XRHandTracker_constant_HAND_JOINT_PALM:
 
@@ -149,7 +149,7 @@ enum **HandJoint**: :ref:`🔗<enum_XRHandTracker_HandJoint>`
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_PALM** = ``0``
 
-Palm joint.
+Khớp lòng bàn tay.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_WRIST:
 
@@ -157,7 +157,7 @@ Palm joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_WRIST** = ``1``
 
-Wrist joint.
+Khớp cổ tay.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_THUMB_METACARPAL:
 
@@ -165,7 +165,7 @@ Wrist joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_THUMB_METACARPAL** = ``2``
 
-Thumb metacarpal joint.
+Khớp xương bàn ngón cái.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_THUMB_PHALANX_PROXIMAL:
 
@@ -173,7 +173,7 @@ Thumb metacarpal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_THUMB_PHALANX_PROXIMAL** = ``3``
 
-Thumb phalanx proximal joint.
+Khớp gần của ngón cái.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_THUMB_PHALANX_DISTAL:
 
@@ -181,7 +181,7 @@ Thumb phalanx proximal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_THUMB_PHALANX_DISTAL** = ``4``
 
-Thumb phalanx distal joint.
+Khớp xa của ngón cái.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_THUMB_TIP:
 
@@ -189,7 +189,7 @@ Thumb phalanx distal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_THUMB_TIP** = ``5``
 
-Thumb tip joint.
+Khớp đầu ngón cái.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_INDEX_FINGER_METACARPAL:
 
@@ -197,7 +197,7 @@ Thumb tip joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_INDEX_FINGER_METACARPAL** = ``6``
 
-Index finger metacarpal joint.
+Khớp xương bàn ngón trỏ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_INDEX_FINGER_PHALANX_PROXIMAL:
 
@@ -205,7 +205,7 @@ Index finger metacarpal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_INDEX_FINGER_PHALANX_PROXIMAL** = ``7``
 
-Index finger phalanx proximal joint.
+Khớp đốt gần của ngón trỏ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_INDEX_FINGER_PHALANX_INTERMEDIATE:
 
@@ -213,7 +213,7 @@ Index finger phalanx proximal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_INDEX_FINGER_PHALANX_INTERMEDIATE** = ``8``
 
-Index finger phalanx intermediate joint.
+Khớp đốt giữa của ngón trỏ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_INDEX_FINGER_PHALANX_DISTAL:
 
@@ -221,7 +221,7 @@ Index finger phalanx intermediate joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_INDEX_FINGER_PHALANX_DISTAL** = ``9``
 
-Index finger phalanx distal joint.
+Khớp đốt xa của ngón trỏ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_INDEX_FINGER_TIP:
 
@@ -229,7 +229,7 @@ Index finger phalanx distal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_INDEX_FINGER_TIP** = ``10``
 
-Index finger tip joint.
+Khớp đầu ngón trỏ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_MIDDLE_FINGER_METACARPAL:
 
@@ -237,7 +237,7 @@ Index finger tip joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_MIDDLE_FINGER_METACARPAL** = ``11``
 
-Middle finger metacarpal joint.
+Khớp xương bàn của ngón giữa.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_MIDDLE_FINGER_PHALANX_PROXIMAL:
 
@@ -245,7 +245,7 @@ Middle finger metacarpal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_MIDDLE_FINGER_PHALANX_PROXIMAL** = ``12``
 
-Middle finger phalanx proximal joint.
+Khớp đốt gần của ngón giữa.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_MIDDLE_FINGER_PHALANX_INTERMEDIATE:
 
@@ -253,7 +253,7 @@ Middle finger phalanx proximal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_MIDDLE_FINGER_PHALANX_INTERMEDIATE** = ``13``
 
-Middle finger phalanx intermediate joint.
+Khớp đốt giữa của ngón giữa.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_MIDDLE_FINGER_PHALANX_DISTAL:
 
@@ -261,7 +261,7 @@ Middle finger phalanx intermediate joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_MIDDLE_FINGER_PHALANX_DISTAL** = ``14``
 
-Middle finger phalanx distal joint.
+Khớp đốt xa của ngón giữa.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_MIDDLE_FINGER_TIP:
 
@@ -269,7 +269,7 @@ Middle finger phalanx distal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_MIDDLE_FINGER_TIP** = ``15``
 
-Middle finger tip joint.
+Khớp đầu ngón giữa.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_RING_FINGER_METACARPAL:
 
@@ -277,7 +277,7 @@ Middle finger tip joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_RING_FINGER_METACARPAL** = ``16``
 
-Ring finger metacarpal joint.
+Khớp xương bàn tay của ngón áp út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_RING_FINGER_PHALANX_PROXIMAL:
 
@@ -285,7 +285,7 @@ Ring finger metacarpal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_RING_FINGER_PHALANX_PROXIMAL** = ``17``
 
-Ring finger phalanx proximal joint.
+Khớp đốt gần của ngón áp út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_RING_FINGER_PHALANX_INTERMEDIATE:
 
@@ -293,7 +293,7 @@ Ring finger phalanx proximal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_RING_FINGER_PHALANX_INTERMEDIATE** = ``18``
 
-Ring finger phalanx intermediate joint.
+Khớp đốt giữa của ngón áp út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_RING_FINGER_PHALANX_DISTAL:
 
@@ -301,7 +301,7 @@ Ring finger phalanx intermediate joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_RING_FINGER_PHALANX_DISTAL** = ``19``
 
-Ring finger phalanx distal joint.
+Khớp đốt xa của ngón áp út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_RING_FINGER_TIP:
 
@@ -309,7 +309,7 @@ Ring finger phalanx distal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_RING_FINGER_TIP** = ``20``
 
-Ring finger tip joint.
+Khớp đầu ngón áp út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_PINKY_FINGER_METACARPAL:
 
@@ -317,7 +317,7 @@ Ring finger tip joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_PINKY_FINGER_METACARPAL** = ``21``
 
-Pinky finger metacarpal joint.
+Khớp xương bàn của ngón út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_PINKY_FINGER_PHALANX_PROXIMAL:
 
@@ -325,7 +325,7 @@ Pinky finger metacarpal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_PINKY_FINGER_PHALANX_PROXIMAL** = ``22``
 
-Pinky finger phalanx proximal joint.
+Khớp đốt gần của ngón út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_PINKY_FINGER_PHALANX_INTERMEDIATE:
 
@@ -333,7 +333,7 @@ Pinky finger phalanx proximal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_PINKY_FINGER_PHALANX_INTERMEDIATE** = ``23``
 
-Pinky finger phalanx intermediate joint.
+Khớp đốt giữa của ngón út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_PINKY_FINGER_PHALANX_DISTAL:
 
@@ -341,7 +341,7 @@ Pinky finger phalanx intermediate joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_PINKY_FINGER_PHALANX_DISTAL** = ``24``
 
-Pinky finger phalanx distal joint.
+Khớp đốt xa của ngón út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_PINKY_FINGER_TIP:
 
@@ -349,7 +349,7 @@ Pinky finger phalanx distal joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_PINKY_FINGER_TIP** = ``25``
 
-Pinky finger tip joint.
+Khớp đầu ngón út.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_MAX:
 
@@ -357,7 +357,7 @@ Pinky finger tip joint.
 
 :ref:`HandJoint<enum_XRHandTracker_HandJoint>` **HAND_JOINT_MAX** = ``26``
 
-Represents the size of the :ref:`HandJoint<enum_XRHandTracker_HandJoint>` enum.
+Biểu thị kích thước của enum :ref:`HandJoint <enum_XRHandTracker_HandJoint>`.
 
 .. rst-class:: classref-item-separator
 
@@ -367,7 +367,7 @@ Represents the size of the :ref:`HandJoint<enum_XRHandTracker_HandJoint>` enum.
 
 .. rst-class:: classref-enumeration
 
-flags **HandJointFlags**: :ref:`🔗<enum_XRHandTracker_HandJointFlags>`
+flags **HandJointFlags**: :ref:`🔗 <enum_XRHandTracker_HandJointFlags>`
 
 .. _class_XRHandTracker_constant_HAND_JOINT_FLAG_ORIENTATION_VALID:
 
@@ -375,7 +375,7 @@ flags **HandJointFlags**: :ref:`🔗<enum_XRHandTracker_HandJointFlags>`
 
 :ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>` **HAND_JOINT_FLAG_ORIENTATION_VALID** = ``1``
 
-The hand joint's orientation data is valid.
+Dữ liệu định hướng của khớp bàn tay hợp lệ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_FLAG_ORIENTATION_TRACKED:
 
@@ -383,7 +383,7 @@ The hand joint's orientation data is valid.
 
 :ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>` **HAND_JOINT_FLAG_ORIENTATION_TRACKED** = ``2``
 
-The hand joint's orientation is actively tracked. May not be set if tracking has been temporarily lost.
+Định hướng của khớp bàn tay đang được theo dõi chủ động. Có thể không được thiết lập nếu việc theo dõi tạm thời bị mất.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_FLAG_POSITION_VALID:
 
@@ -391,7 +391,7 @@ The hand joint's orientation is actively tracked. May not be set if tracking has
 
 :ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>` **HAND_JOINT_FLAG_POSITION_VALID** = ``4``
 
-The hand joint's position data is valid.
+Dữ liệu vị trí của khớp bàn tay hợp lệ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_FLAG_POSITION_TRACKED:
 
@@ -399,7 +399,7 @@ The hand joint's position data is valid.
 
 :ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>` **HAND_JOINT_FLAG_POSITION_TRACKED** = ``8``
 
-The hand joint's position is actively tracked. May not be set if tracking has been temporarily lost.
+Vị trí của khớp bàn tay đang được theo dõi chủ động. Có thể không được thiết lập nếu việc theo dõi tạm thời bị mất.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_FLAG_LINEAR_VELOCITY_VALID:
 
@@ -407,7 +407,7 @@ The hand joint's position is actively tracked. May not be set if tracking has be
 
 :ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>` **HAND_JOINT_FLAG_LINEAR_VELOCITY_VALID** = ``16``
 
-The hand joint's linear velocity data is valid.
+Dữ liệu vận tốc tuyến tính của khớp bàn tay hợp lệ.
 
 .. _class_XRHandTracker_constant_HAND_JOINT_FLAG_ANGULAR_VELOCITY_VALID:
 
@@ -415,7 +415,7 @@ The hand joint's linear velocity data is valid.
 
 :ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>` **HAND_JOINT_FLAG_ANGULAR_VELOCITY_VALID** = ``32``
 
-The hand joint's angular velocity data is valid.
+Dữ liệu vận tốc góc của khớp bàn tay hợp lệ.
 
 .. rst-class:: classref-section-separator
 
@@ -423,8 +423,8 @@ The hand joint's angular velocity data is valid.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRHandTracker_property_hand_tracking_source:
 
@@ -437,7 +437,7 @@ Property Descriptions
 - |void| **set_hand_tracking_source**\ (\ value\: :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>`\ )
 - :ref:`HandTrackingSource<enum_XRHandTracker_HandTrackingSource>` **get_hand_tracking_source**\ (\ )
 
-The source of the hand tracking data.
+Nguồn của dữ liệu theo dõi bàn tay.
 
 .. rst-class:: classref-item-separator
 
@@ -454,7 +454,7 @@ The source of the hand tracking data.
 - |void| **set_has_tracking_data**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_has_tracking_data**\ (\ )
 
-If ``true``, the hand tracking data is valid.
+Nếu ``true``, dữ liệu theo dõi bàn tay hợp lệ.
 
 .. rst-class:: classref-section-separator
 
@@ -462,8 +462,8 @@ If ``true``, the hand tracking data is valid.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRHandTracker_method_get_hand_joint_angular_velocity:
 
@@ -471,7 +471,7 @@ Method Descriptions
 
 :ref:`Vector3<class_Vector3>` **get_hand_joint_angular_velocity**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const| :ref:`🔗<class_XRHandTracker_method_get_hand_joint_angular_velocity>`
 
-Returns the angular velocity for the given hand joint.
+Trả về vận tốc góc của khớp bàn tay đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -483,7 +483,7 @@ Returns the angular velocity for the given hand joint.
 
 |bitfield|\[:ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>`\] **get_hand_joint_flags**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const| :ref:`🔗<class_XRHandTracker_method_get_hand_joint_flags>`
 
-Returns flags about the validity of the tracking data for the given hand joint.
+Trả về các cờ cho biết tính hợp lệ của dữ liệu theo dõi đối với khớp bàn tay đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -495,7 +495,7 @@ Returns flags about the validity of the tracking data for the given hand joint.
 
 :ref:`Vector3<class_Vector3>` **get_hand_joint_linear_velocity**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const| :ref:`🔗<class_XRHandTracker_method_get_hand_joint_linear_velocity>`
 
-Returns the linear velocity for the given hand joint.
+Trả về vận tốc tuyến tính của khớp bàn tay đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -507,7 +507,7 @@ Returns the linear velocity for the given hand joint.
 
 :ref:`float<class_float>` **get_hand_joint_radius**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const| :ref:`🔗<class_XRHandTracker_method_get_hand_joint_radius>`
 
-Returns the radius of the given hand joint.
+Trả về bán kính của khớp bàn tay đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -519,7 +519,7 @@ Returns the radius of the given hand joint.
 
 :ref:`Transform3D<class_Transform3D>` **get_hand_joint_transform**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`\ ) |const| :ref:`🔗<class_XRHandTracker_method_get_hand_joint_transform>`
 
-Returns the transform for the given hand joint.
+Trả về transform của khớp bàn tay được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -531,7 +531,7 @@ Returns the transform for the given hand joint.
 
 |void| **set_hand_joint_angular_velocity**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, angular_velocity\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_XRHandTracker_method_set_hand_joint_angular_velocity>`
 
-Sets the angular velocity for the given hand joint.
+Thiết lập vận tốc góc cho khớp bàn tay được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -543,7 +543,7 @@ Sets the angular velocity for the given hand joint.
 
 |void| **set_hand_joint_flags**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, flags\: |bitfield|\[:ref:`HandJointFlags<enum_XRHandTracker_HandJointFlags>`\]\ ) :ref:`🔗<class_XRHandTracker_method_set_hand_joint_flags>`
 
-Sets flags about the validity of the tracking data for the given hand joint.
+Thiết lập các cờ về tính hợp lệ của dữ liệu tracking cho khớp bàn tay được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -555,7 +555,7 @@ Sets flags about the validity of the tracking data for the given hand joint.
 
 |void| **set_hand_joint_linear_velocity**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, linear_velocity\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_XRHandTracker_method_set_hand_joint_linear_velocity>`
 
-Sets the linear velocity for the given hand joint.
+Thiết lập vận tốc tuyến tính cho khớp bàn tay được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -567,7 +567,7 @@ Sets the linear velocity for the given hand joint.
 
 |void| **set_hand_joint_radius**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_XRHandTracker_method_set_hand_joint_radius>`
 
-Sets the radius of the given hand joint.
+Thiết lập bán kính của khớp bàn tay được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -579,14 +579,14 @@ Sets the radius of the given hand joint.
 
 |void| **set_hand_joint_transform**\ (\ joint\: :ref:`HandJoint<enum_XRHandTracker_HandJoint>`, transform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_XRHandTracker_method_set_hand_joint_transform>`
 
-Sets the transform for the given hand joint.
+Thiết lập transform cho khớp bàn tay được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

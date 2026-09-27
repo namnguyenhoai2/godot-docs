@@ -10,41 +10,41 @@
 GDExtension
 ===========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A native library for GDExtension.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The **GDExtension** resource type represents a `shared library <https://en.wikipedia.org/wiki/Shared_library>`__ which can expand the functionality of the engine. The :ref:`GDExtensionManager<class_GDExtensionManager>` singleton is responsible for loading, reloading, and unloading **GDExtension** resources.
-
-\ **Note:** GDExtension itself is not a scripting language and has no relation to :ref:`GDScript<class_GDScript>` resources.
+Một thư viện native dành cho GDExtension.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Loại tài nguyên **GDExtension** đại diện cho một `thư viện dùng chung <https://en.wikipedia.org/wiki/Shared_library>`__ có thể mở rộng chức năng của engine. Singleton :ref:`GDExtensionManager<class_GDExtensionManager>` chịu trách nhiệm tải, tải lại và dỡ tải các tài nguyên **GDExtension**.
+
+\ **Lưu ý:** Bản thân GDExtension không phải là ngôn ngữ scripting và không liên quan đến các tài nguyên :ref:`GDScript<class_GDScript>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`GDExtension overview <../engine_details/engine_api/gdextension/what_is_gdextension>`
+- :doc:`Tổng quan về GDExtension <../engine_details/engine_api/gdextension/what_is_gdextension>`
 
-- :doc:`GDExtension example in C++ <../tutorials/scripting/cpp/gdextension_cpp_example>`
+- :doc:`Ví dụ GDExtension bằng C++ <../tutorials/scripting/cpp/gdextension_cpp_example>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`InitializationLevel<enum_GDExtension_InitializationLevel>` | :ref:`get_minimum_library_initialization_level<class_GDExtension_method_get_minimum_library_initialization_level>`\ (\ ) |const| |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`is_library_open<class_GDExtension_method_is_library_open>`\ (\ ) |const|                                                   |
-   +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`InitializationLevel <enum_GDExtension_InitializationLevel>` | :ref:`get_minimum_library_initialization_level<class_GDExtension_method_get_minimum_library_initialization_level>`\ (\ ) |const| |
+   +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                           | :ref:`is_library_open<class_GDExtension_method_is_library_open>`\ (\ ) |const|                                                   |
+   +-------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -52,14 +52,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_GDExtension_InitializationLevel:
 
 .. rst-class:: classref-enumeration
 
-enum **InitializationLevel**: :ref:`🔗<enum_GDExtension_InitializationLevel>`
+enum **InitializationLevel**: :ref:`🔗 <enum_GDExtension_InitializationLevel>`
 
 .. _class_GDExtension_constant_INITIALIZATION_LEVEL_CORE:
 
@@ -67,7 +67,7 @@ enum **InitializationLevel**: :ref:`🔗<enum_GDExtension_InitializationLevel>`
 
 :ref:`InitializationLevel<enum_GDExtension_InitializationLevel>` **INITIALIZATION_LEVEL_CORE** = ``0``
 
-The library is initialized at the same time as the core features of the engine.
+Thư viện được khởi tạo đồng thời với các tính năng cốt lõi của engine.
 
 .. _class_GDExtension_constant_INITIALIZATION_LEVEL_SERVERS:
 
@@ -75,7 +75,7 @@ The library is initialized at the same time as the core features of the engine.
 
 :ref:`InitializationLevel<enum_GDExtension_InitializationLevel>` **INITIALIZATION_LEVEL_SERVERS** = ``1``
 
-The library is initialized at the same time as the engine's servers (such as :ref:`RenderingServer<class_RenderingServer>` or :ref:`PhysicsServer3D<class_PhysicsServer3D>`).
+Thư viện được khởi tạo đồng thời với các server của engine (chẳng hạn như :ref:`RenderingServer<class_RenderingServer>` hoặc :ref:`PhysicsServer3D<class_PhysicsServer3D>`).
 
 .. _class_GDExtension_constant_INITIALIZATION_LEVEL_SCENE:
 
@@ -83,7 +83,7 @@ The library is initialized at the same time as the engine's servers (such as :re
 
 :ref:`InitializationLevel<enum_GDExtension_InitializationLevel>` **INITIALIZATION_LEVEL_SCENE** = ``2``
 
-The library is initialized at the same time as the engine's scene-related classes.
+Thư viện được khởi tạo đồng thời với các lớp liên quan đến scene của engine.
 
 .. _class_GDExtension_constant_INITIALIZATION_LEVEL_EDITOR:
 
@@ -91,7 +91,7 @@ The library is initialized at the same time as the engine's scene-related classe
 
 :ref:`InitializationLevel<enum_GDExtension_InitializationLevel>` **INITIALIZATION_LEVEL_EDITOR** = ``3``
 
-The library is initialized at the same time as the engine's editor classes. Only happens when loading the GDExtension in the editor.
+Thư viện được khởi tạo đồng thời với các lớp editor của engine. Chỉ xảy ra khi tải GDExtension trong editor.
 
 .. rst-class:: classref-section-separator
 
@@ -99,8 +99,8 @@ The library is initialized at the same time as the engine's editor classes. Only
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GDExtension_method_get_minimum_library_initialization_level:
 
@@ -108,7 +108,7 @@ Method Descriptions
 
 :ref:`InitializationLevel<enum_GDExtension_InitializationLevel>` **get_minimum_library_initialization_level**\ (\ ) |const| :ref:`🔗<class_GDExtension_method_get_minimum_library_initialization_level>`
 
-Returns the lowest level required for this extension to be properly initialized (see the :ref:`InitializationLevel<enum_GDExtension_InitializationLevel>` enum).
+Trả về cấp độ thấp nhất cần thiết để extension này được khởi tạo đúng cách (xem enum :ref:`InitializationLevel <enum_GDExtension_InitializationLevel>`).
 
 .. rst-class:: classref-item-separator
 
@@ -120,14 +120,14 @@ Returns the lowest level required for this extension to be properly initialized 
 
 :ref:`bool<class_bool>` **is_library_open**\ (\ ) |const| :ref:`🔗<class_GDExtension_method_is_library_open>`
 
-Returns ``true`` if this extension's library has been opened.
+Trả về ``true`` nếu thư viện của extension này đã được mở.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

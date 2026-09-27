@@ -10,16 +10,16 @@
 AnimationNodeStateMachine
 =========================
 
-**Inherits:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A state machine with multiple :ref:`AnimationRootNode<class_AnimationRootNode>`\ s, used by :ref:`AnimationTree<class_AnimationTree>`.
+Một state machine với nhiều :ref:`AnimationRootNode<class_AnimationRootNode>`\ , được :ref:`AnimationTree<class_AnimationTree>` sử dụng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Contains multiple :ref:`AnimationRootNode<class_AnimationRootNode>`\ s representing animation states, connected in a graph. State transitions can be configured to happen automatically or via code, using a shortest-path algorithm. Retrieve the :ref:`AnimationNodeStateMachinePlayback<class_AnimationNodeStateMachinePlayback>` object from the :ref:`AnimationTree<class_AnimationTree>` node to control it programmatically.
+Chứa nhiều :ref:`AnimationRootNode<class_AnimationRootNode>`\  đại diện cho các trạng thái animation, được kết nối trong một graph. Có thể cấu hình để các chuyển đổi trạng thái diễn ra tự động hoặc thông qua code, bằng cách sử dụng thuật toán đường đi ngắn nhất. Lấy đối tượng :ref:`AnimationNodeStateMachinePlayback<class_AnimationNodeStateMachinePlayback>` từ node :ref:`AnimationTree<class_AnimationTree>` để điều khiển bằng code.
 
 
 .. tabs::
@@ -38,31 +38,31 @@ Contains multiple :ref:`AnimationRootNode<class_AnimationRootNode>`\ s represent
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`allow_transition_to_self<class_AnimationNodeStateMachine_property_allow_transition_to_self>` | ``false`` |
-   +--------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`reset_ends<class_AnimationNodeStateMachine_property_reset_ends>`                             | ``false`` |
-   +--------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`StateMachineType<enum_AnimationNodeStateMachine_StateMachineType>` | :ref:`state_machine_type<class_AnimationNodeStateMachine_property_state_machine_type>`             | ``0``     |
-   +--------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
+   +---------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`allow_transition_to_self<class_AnimationNodeStateMachine_property_allow_transition_to_self>` | ``false`` |
+   +---------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`reset_ends<class_AnimationNodeStateMachine_property_reset_ends>`                             | ``false`` |
+   +---------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`StateMachineType <enum_AnimationNodeStateMachine_StateMachineType>` | :ref:`state_machine_type<class_AnimationNodeStateMachine_property_state_machine_type>`             | ``0``     |
+   +---------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -115,14 +115,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AnimationNodeStateMachine_StateMachineType:
 
 .. rst-class:: classref-enumeration
 
-enum **StateMachineType**: :ref:`🔗<enum_AnimationNodeStateMachine_StateMachineType>`
+enum **StateMachineType**: :ref:`🔗 <enum_AnimationNodeStateMachine_StateMachineType>`
 
 .. _class_AnimationNodeStateMachine_constant_STATE_MACHINE_TYPE_ROOT:
 
@@ -130,7 +130,7 @@ enum **StateMachineType**: :ref:`🔗<enum_AnimationNodeStateMachine_StateMachin
 
 :ref:`StateMachineType<enum_AnimationNodeStateMachine_StateMachineType>` **STATE_MACHINE_TYPE_ROOT** = ``0``
 
-Seeking to the beginning is treated as playing from the start state. Transition to the end state is treated as exiting the state machine.
+Chuyển đến đầu được xem là phát từ trạng thái bắt đầu. Chuyển sang trạng thái kết thúc được xem là thoát khỏi state machine.
 
 .. _class_AnimationNodeStateMachine_constant_STATE_MACHINE_TYPE_NESTED:
 
@@ -138,7 +138,7 @@ Seeking to the beginning is treated as playing from the start state. Transition 
 
 :ref:`StateMachineType<enum_AnimationNodeStateMachine_StateMachineType>` **STATE_MACHINE_TYPE_NESTED** = ``1``
 
-Seeking to the beginning is treated as seeking to the beginning of the animation in the current state. Transition to the end state, or the absence of transitions in each state, is treated as exiting the state machine.
+Chuyển đến đầu được xem là chuyển đến đầu animation trong trạng thái hiện tại. Chuyển sang trạng thái kết thúc hoặc không có chuyển tiếp trong từng trạng thái được xem là thoát khỏi state machine.
 
 .. _class_AnimationNodeStateMachine_constant_STATE_MACHINE_TYPE_GROUPED:
 
@@ -146,7 +146,7 @@ Seeking to the beginning is treated as seeking to the beginning of the animation
 
 :ref:`StateMachineType<enum_AnimationNodeStateMachine_StateMachineType>` **STATE_MACHINE_TYPE_GROUPED** = ``2``
 
-This is a grouped state machine that can be controlled from a parent state machine. It does not work independently. There must be a state machine with :ref:`state_machine_type<class_AnimationNodeStateMachine_property_state_machine_type>` of :ref:`STATE_MACHINE_TYPE_ROOT<class_AnimationNodeStateMachine_constant_STATE_MACHINE_TYPE_ROOT>` or :ref:`STATE_MACHINE_TYPE_NESTED<class_AnimationNodeStateMachine_constant_STATE_MACHINE_TYPE_NESTED>` in the parent or ancestor.
+Đây là một state machine được nhóm, có thể được điều khiển từ một state machine cha. Nó không hoạt động độc lập. Phải có một state machine với :ref:`state_machine_type<class_AnimationNodeStateMachine_property_state_machine_type>` là :ref:`STATE_MACHINE_TYPE_ROOT<class_AnimationNodeStateMachine_constant_STATE_MACHINE_TYPE_ROOT>` hoặc :ref:`STATE_MACHINE_TYPE_NESTED<class_AnimationNodeStateMachine_constant_STATE_MACHINE_TYPE_NESTED>` trong state machine cha hoặc tổ tiên.
 
 .. rst-class:: classref-section-separator
 
@@ -154,8 +154,8 @@ This is a grouped state machine that can be controlled from a parent state machi
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationNodeStateMachine_property_allow_transition_to_self:
 
@@ -168,7 +168,7 @@ Property Descriptions
 - |void| **set_allow_transition_to_self**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_allow_transition_to_self**\ (\ )
 
-If ``true``, allows teleport to the self state with :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`. When the reset option is enabled in :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`, the animation is restarted. If ``false``, nothing happens on the teleportation to the self state.
+Nếu ``true``, cho phép teleport đến trạng thái self với :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`. Khi tùy chọn reset được bật trong :ref:`AnimationNodeStateMachinePlayback.travel()<class_AnimationNodeStateMachinePlayback_method_travel>`, animation sẽ được khởi động lại. Nếu ``false``, sẽ không có gì xảy ra khi teleport đến trạng thái self.
 
 .. rst-class:: classref-item-separator
 
@@ -185,9 +185,9 @@ If ``true``, allows teleport to the self state with :ref:`AnimationNodeStateMach
 - |void| **set_reset_ends**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_ends_reset**\ (\ )
 
-If ``true``, treat the cross-fade to the start and end nodes as a blend with the RESET animation.
+Nếu ``true``, coi cross-fade đến các node bắt đầu và kết thúc là một blend với animation RESET.
 
-In most cases, when additional cross-fades are performed in the parent :ref:`AnimationNode<class_AnimationNode>` of the state machine, setting this property to ``false`` and matching the cross-fade time of the parent :ref:`AnimationNode<class_AnimationNode>` and the state machine's start node and end node gives good results.
+Trong hầu hết trường hợp, khi thực hiện thêm các cross-fade trong :ref:`AnimationNode<class_AnimationNode>` cha của state machine, việc đặt thuộc tính này thành ``false`` và khớp thời gian cross-fade của :ref:`AnimationNode<class_AnimationNode>` cha với node bắt đầu và node kết thúc của state machine sẽ cho kết quả tốt.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ In most cases, when additional cross-fades are performed in the parent :ref:`Ani
 - |void| **set_state_machine_type**\ (\ value\: :ref:`StateMachineType<enum_AnimationNodeStateMachine_StateMachineType>`\ )
 - :ref:`StateMachineType<enum_AnimationNodeStateMachine_StateMachineType>` **get_state_machine_type**\ (\ )
 
-This property can define the process of transitions for different use cases. See also :ref:`StateMachineType<enum_AnimationNodeStateMachine_StateMachineType>`.
+Thuộc tính này có thể xác định quy trình chuyển tiếp cho các trường hợp sử dụng khác nhau. Xem thêm :ref:`StateMachineType <enum_AnimationNodeStateMachine_StateMachineType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -212,8 +212,8 @@ This property can define the process of transitions for different use cases. See
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationNodeStateMachine_method_add_node:
 
@@ -221,7 +221,7 @@ Method Descriptions
 
 |void| **add_node**\ (\ name\: :ref:`StringName<class_StringName>`, node\: :ref:`AnimationNode<class_AnimationNode>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_add_node>`
 
-Adds a new animation node to the graph. The ``position`` is used for display in the editor.
+Thêm một nút animation mới vào đồ thị. ``position`` được dùng để hiển thị trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ Adds a new animation node to the graph. The ``position`` is used for display in 
 
 |void| **add_transition**\ (\ from\: :ref:`StringName<class_StringName>`, to\: :ref:`StringName<class_StringName>`, transition\: :ref:`AnimationNodeStateMachineTransition<class_AnimationNodeStateMachineTransition>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_add_transition>`
 
-Adds a transition between the given animation nodes.
+Thêm một chuyển tiếp giữa các nút animation đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ Adds a transition between the given animation nodes.
 
 :ref:`Vector2<class_Vector2>` **get_graph_offset**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_graph_offset>`
 
-Returns the draw offset of the graph. Used for display in the editor.
+Trả về độ lệch khi vẽ của đồ thị. Được dùng để hiển thị trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -257,7 +257,7 @@ Returns the draw offset of the graph. Used for display in the editor.
 
 :ref:`AnimationNode<class_AnimationNode>` **get_node**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_node>`
 
-Returns the animation node with the given name.
+Trả về nút animation có tên đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Returns the animation node with the given name.
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_node_list**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_node_list>`
 
-Returns a list containing the names of all animation nodes in this state machine.
+Trả về danh sách chứa tên của tất cả các nút animation trong state machine này.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +281,7 @@ Returns a list containing the names of all animation nodes in this state machine
 
 :ref:`StringName<class_StringName>` **get_node_name**\ (\ node\: :ref:`AnimationNode<class_AnimationNode>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_node_name>`
 
-Returns the given animation node's name.
+Trả về tên của nút animation đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ Returns the given animation node's name.
 
 :ref:`Vector2<class_Vector2>` **get_node_position**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_node_position>`
 
-Returns the given animation node's coordinates. Used for display in the editor.
+Trả về tọa độ của nút animation đã cho. Được dùng để hiển thị trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ Returns the given animation node's coordinates. Used for display in the editor.
 
 :ref:`AnimationNodeStateMachineTransition<class_AnimationNodeStateMachineTransition>` **get_transition**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_transition>`
 
-Returns the given transition.
+Trả về transition đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ Returns the given transition.
 
 :ref:`int<class_int>` **get_transition_count**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_transition_count>`
 
-Returns the number of connections in the graph.
+Trả về số lượng kết nối trong graph.
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ Returns the number of connections in the graph.
 
 :ref:`StringName<class_StringName>` **get_transition_from**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_transition_from>`
 
-Returns the given transition's start node.
+Trả về nút bắt đầu của transition đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -341,7 +341,7 @@ Returns the given transition's start node.
 
 :ref:`StringName<class_StringName>` **get_transition_to**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_get_transition_to>`
 
-Returns the given transition's end node.
+Trả về nút kết thúc của transition đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ Returns the given transition's end node.
 
 :ref:`bool<class_bool>` **has_node**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_has_node>`
 
-Returns ``true`` if the graph contains the given animation node.
+Trả về ``true`` nếu graph chứa nút animation đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -365,7 +365,7 @@ Returns ``true`` if the graph contains the given animation node.
 
 :ref:`bool<class_bool>` **has_transition**\ (\ from\: :ref:`StringName<class_StringName>`, to\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeStateMachine_method_has_transition>`
 
-Returns ``true`` if there is a transition between the given animation nodes.
+Trả về ``true`` nếu có một transition giữa các animation node đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -377,7 +377,7 @@ Returns ``true`` if there is a transition between the given animation nodes.
 
 |void| **remove_node**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_remove_node>`
 
-Deletes the given animation node from the graph.
+Xóa animation node đã cho khỏi graph.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ Deletes the given animation node from the graph.
 
 |void| **remove_transition**\ (\ from\: :ref:`StringName<class_StringName>`, to\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_remove_transition>`
 
-Deletes the transition between the two specified animation nodes.
+Xóa transition giữa hai animation node được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -401,7 +401,7 @@ Deletes the transition between the two specified animation nodes.
 
 |void| **remove_transition_by_index**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_remove_transition_by_index>`
 
-Deletes the given transition by index.
+Xóa transition đã cho theo index.
 
 .. rst-class:: classref-item-separator
 
@@ -413,7 +413,7 @@ Deletes the given transition by index.
 
 |void| **rename_node**\ (\ name\: :ref:`StringName<class_StringName>`, new_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_rename_node>`
 
-Renames the given animation node.
+Đổi tên animation node đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -425,7 +425,7 @@ Renames the given animation node.
 
 |void| **replace_node**\ (\ name\: :ref:`StringName<class_StringName>`, node\: :ref:`AnimationNode<class_AnimationNode>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_replace_node>`
 
-Replaces the given animation node with a new animation node.
+Thay thế animation node đã cho bằng một animation node mới.
 
 .. rst-class:: classref-item-separator
 
@@ -437,7 +437,7 @@ Replaces the given animation node with a new animation node.
 
 |void| **set_graph_offset**\ (\ offset\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_set_graph_offset>`
 
-Sets the draw offset of the graph. Used for display in the editor.
+Thiết lập draw offset của graph. Được dùng để hiển thị trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -449,14 +449,14 @@ Sets the draw offset of the graph. Used for display in the editor.
 
 |void| **set_node_position**\ (\ name\: :ref:`StringName<class_StringName>`, position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_AnimationNodeStateMachine_method_set_node_position>`
 
-Sets the animation node's coordinates. Used for display in the editor.
+Thiết lập tọa độ của nút animation. Được dùng để hiển thị trong trình chỉnh sửa.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

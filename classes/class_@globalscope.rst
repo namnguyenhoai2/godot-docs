@@ -10,18 +10,18 @@
 @GlobalScope
 ============
 
-Global scope constants and functions.
+Các hằng số và hàm của phạm vi toàn cục.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A list of global scope enumerated constants and built-in functions. This is all that resides in the globals, constants regarding error codes, keycodes, property hints, etc.
+Danh sách các hằng số liệt kê và hàm dựng sẵn của phạm vi toàn cục. Đây là toàn bộ nội dung nằm trong phạm vi toàn cục, bao gồm các hằng số liên quan đến mã lỗi, mã phím, gợi ý thuộc tính, v.v.
 
-Singletons are also documented here, since they can be accessed from anywhere.
+Các Singleton cũng được ghi lại ở đây vì có thể được truy cập từ bất kỳ đâu.
 
-For the entries that can only be accessed from scripts written in GDScript, see :ref:`@GDScript<class_@GDScript>`.
+Đối với các mục chỉ có thể được truy cập từ những script viết bằng GDScript, hãy xem :ref:`@GDScript <class_@GDScript>`.
 
 .. note::
 
@@ -29,14 +29,14 @@ For the entries that can only be accessed from scripts written in GDScript, see 
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Random number generation <../tutorials/math/random_number_generation>`
+- :doc:`Tạo số ngẫu nhiên <../tutorials/math/random_number_generation>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -128,8 +128,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -327,9 +327,9 @@ Methods
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Variant<class_Variant>`                   | :ref:`snapped<class_@GlobalScope_method_snapped>`\ (\ x\: :ref:`Variant<class_Variant>`, step\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                                                                                                                          |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`snappedf<class_@GlobalScope_method_snappedf>`\ (\ x\: :ref:`float<class_float>`, step\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                |
+   | :ref:`float<class_float>`                       | :ref:`snappedf<class_@GlobalScope_method_snappedf>`\ (\ x\: :ref:`float<class_float>`, bước\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                           | :ref:`snappedi<class_@GlobalScope_method_snappedi>`\ (\ x\: :ref:`float<class_float>`, step\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                    |
+   | :ref:`int<class_int>`                           | :ref:`snappedi<class_@GlobalScope_method_snappedi>`\ (\ x\: :ref:`float<class_float>`, bước\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                    |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                       | :ref:`sqrt<class_@GlobalScope_method_sqrt>`\ (\ x\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                                                                                                          |
    +-------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -370,14 +370,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_@GlobalScope_Side:
 
 .. rst-class:: classref-enumeration
 
-enum **Side**: :ref:`🔗<enum_@GlobalScope_Side>`
+enum **Side**: :ref:`🔗 <enum_@GlobalScope_Side>`
 
 .. _class_@GlobalScope_constant_SIDE_LEFT:
 
@@ -385,7 +385,7 @@ enum **Side**: :ref:`🔗<enum_@GlobalScope_Side>`
 
 :ref:`Side<enum_@GlobalScope_Side>` **SIDE_LEFT** = ``0``
 
-Left side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<class_StyleBox>`-derived classes.
+Phía bên trái, thường được dùng cho :ref:`Control<class_Control>` hoặc các lớp bắt nguồn từ :ref:`StyleBox<class_StyleBox>`.
 
 .. _class_@GlobalScope_constant_SIDE_TOP:
 
@@ -393,7 +393,7 @@ Left side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<clas
 
 :ref:`Side<enum_@GlobalScope_Side>` **SIDE_TOP** = ``1``
 
-Top side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<class_StyleBox>`-derived classes.
+Phía trên, thường được dùng cho :ref:`Control<class_Control>` hoặc các lớp bắt nguồn từ :ref:`StyleBox<class_StyleBox>`.
 
 .. _class_@GlobalScope_constant_SIDE_RIGHT:
 
@@ -401,7 +401,7 @@ Top side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<class
 
 :ref:`Side<enum_@GlobalScope_Side>` **SIDE_RIGHT** = ``2``
 
-Right side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<class_StyleBox>`-derived classes.
+Phía bên phải, thường được dùng cho các lớp bắt nguồn từ :ref:`Control<class_Control>` hoặc :ref:`StyleBox<class_StyleBox>`.
 
 .. _class_@GlobalScope_constant_SIDE_BOTTOM:
 
@@ -409,7 +409,7 @@ Right side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<cla
 
 :ref:`Side<enum_@GlobalScope_Side>` **SIDE_BOTTOM** = ``3``
 
-Bottom side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<class_StyleBox>`-derived classes.
+Phía dưới, thường được dùng cho các lớp bắt nguồn từ :ref:`Control<class_Control>` hoặc :ref:`StyleBox<class_StyleBox>`.
 
 .. rst-class:: classref-item-separator
 
@@ -419,7 +419,7 @@ Bottom side, usually used for :ref:`Control<class_Control>` or :ref:`StyleBox<cl
 
 .. rst-class:: classref-enumeration
 
-enum **Corner**: :ref:`🔗<enum_@GlobalScope_Corner>`
+enum **Corner**: :ref:`🔗 <enum_@GlobalScope_Corner>`
 
 .. _class_@GlobalScope_constant_CORNER_TOP_LEFT:
 
@@ -427,7 +427,7 @@ enum **Corner**: :ref:`🔗<enum_@GlobalScope_Corner>`
 
 :ref:`Corner<enum_@GlobalScope_Corner>` **CORNER_TOP_LEFT** = ``0``
 
-Top-left corner.
+Góc trên bên trái.
 
 .. _class_@GlobalScope_constant_CORNER_TOP_RIGHT:
 
@@ -435,7 +435,7 @@ Top-left corner.
 
 :ref:`Corner<enum_@GlobalScope_Corner>` **CORNER_TOP_RIGHT** = ``1``
 
-Top-right corner.
+Góc trên bên phải.
 
 .. _class_@GlobalScope_constant_CORNER_BOTTOM_RIGHT:
 
@@ -443,7 +443,7 @@ Top-right corner.
 
 :ref:`Corner<enum_@GlobalScope_Corner>` **CORNER_BOTTOM_RIGHT** = ``2``
 
-Bottom-right corner.
+Góc dưới bên phải.
 
 .. _class_@GlobalScope_constant_CORNER_BOTTOM_LEFT:
 
@@ -451,7 +451,7 @@ Bottom-right corner.
 
 :ref:`Corner<enum_@GlobalScope_Corner>` **CORNER_BOTTOM_LEFT** = ``3``
 
-Bottom-left corner.
+Góc dưới bên trái.
 
 .. rst-class:: classref-item-separator
 
@@ -461,7 +461,7 @@ Bottom-left corner.
 
 .. rst-class:: classref-enumeration
 
-enum **Orientation**: :ref:`🔗<enum_@GlobalScope_Orientation>`
+enum **Orientation**: :ref:`🔗 <enum_@GlobalScope_Orientation>`
 
 .. _class_@GlobalScope_constant_VERTICAL:
 
@@ -469,7 +469,7 @@ enum **Orientation**: :ref:`🔗<enum_@GlobalScope_Orientation>`
 
 :ref:`Orientation<enum_@GlobalScope_Orientation>` **VERTICAL** = ``1``
 
-General vertical alignment, usually used for :ref:`Separator<class_Separator>`, :ref:`ScrollBar<class_ScrollBar>`, :ref:`Slider<class_Slider>`, etc.
+Căn chỉnh dọc tổng quát, thường được dùng cho :ref:`Separator<class_Separator>`, :ref:`ScrollBar<class_ScrollBar>`, :ref:`Slider<class_Slider>`, v.v.
 
 .. _class_@GlobalScope_constant_HORIZONTAL:
 
@@ -477,7 +477,7 @@ General vertical alignment, usually used for :ref:`Separator<class_Separator>`, 
 
 :ref:`Orientation<enum_@GlobalScope_Orientation>` **HORIZONTAL** = ``0``
 
-General horizontal alignment, usually used for :ref:`Separator<class_Separator>`, :ref:`ScrollBar<class_ScrollBar>`, :ref:`Slider<class_Slider>`, etc.
+Căn chỉnh ngang tổng quát, thường được dùng cho :ref:`Separator<class_Separator>`, :ref:`ScrollBar<class_ScrollBar>`, :ref:`Slider<class_Slider>`, v.v.
 
 .. rst-class:: classref-item-separator
 
@@ -487,7 +487,7 @@ General horizontal alignment, usually used for :ref:`Separator<class_Separator>`
 
 .. rst-class:: classref-enumeration
 
-enum **ClockDirection**: :ref:`🔗<enum_@GlobalScope_ClockDirection>`
+enum **ClockDirection**: :ref:`🔗 <enum_@GlobalScope_ClockDirection>`
 
 .. _class_@GlobalScope_constant_CLOCKWISE:
 
@@ -495,7 +495,7 @@ enum **ClockDirection**: :ref:`🔗<enum_@GlobalScope_ClockDirection>`
 
 :ref:`ClockDirection<enum_@GlobalScope_ClockDirection>` **CLOCKWISE** = ``0``
 
-Clockwise rotation. Used by some methods (e.g. :ref:`Image.rotate_90()<class_Image_method_rotate_90>`).
+Xoay theo chiều kim đồng hồ. Được một số phương thức sử dụng (ví dụ: :ref:`Image.rotate_90()<class_Image_method_rotate_90>`).
 
 .. _class_@GlobalScope_constant_COUNTERCLOCKWISE:
 
@@ -503,7 +503,7 @@ Clockwise rotation. Used by some methods (e.g. :ref:`Image.rotate_90()<class_Ima
 
 :ref:`ClockDirection<enum_@GlobalScope_ClockDirection>` **COUNTERCLOCKWISE** = ``1``
 
-Counter-clockwise rotation. Used by some methods (e.g. :ref:`Image.rotate_90()<class_Image_method_rotate_90>`).
+Xoay ngược chiều kim đồng hồ. Được một số phương thức sử dụng (ví dụ: :ref:`Image.rotate_90()<class_Image_method_rotate_90>`).
 
 .. rst-class:: classref-item-separator
 
@@ -513,7 +513,7 @@ Counter-clockwise rotation. Used by some methods (e.g. :ref:`Image.rotate_90()<c
 
 .. rst-class:: classref-enumeration
 
-enum **HorizontalAlignment**: :ref:`🔗<enum_@GlobalScope_HorizontalAlignment>`
+enum **HorizontalAlignment**: :ref:`🔗 <enum_@GlobalScope_HorizontalAlignment>`
 
 .. _class_@GlobalScope_constant_HORIZONTAL_ALIGNMENT_LEFT:
 
@@ -521,7 +521,7 @@ enum **HorizontalAlignment**: :ref:`🔗<enum_@GlobalScope_HorizontalAlignment>`
 
 :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **HORIZONTAL_ALIGNMENT_LEFT** = ``0``
 
-Horizontal left alignment, usually for text-derived classes.
+Căn chỉnh ngang sang trái, thường dùng cho các lớp dẫn xuất từ văn bản.
 
 .. _class_@GlobalScope_constant_HORIZONTAL_ALIGNMENT_CENTER:
 
@@ -529,7 +529,7 @@ Horizontal left alignment, usually for text-derived classes.
 
 :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **HORIZONTAL_ALIGNMENT_CENTER** = ``1``
 
-Horizontal center alignment, usually for text-derived classes.
+Căn chỉnh ngang vào giữa, thường dùng cho các lớp dẫn xuất từ văn bản.
 
 .. _class_@GlobalScope_constant_HORIZONTAL_ALIGNMENT_RIGHT:
 
@@ -537,7 +537,7 @@ Horizontal center alignment, usually for text-derived classes.
 
 :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **HORIZONTAL_ALIGNMENT_RIGHT** = ``2``
 
-Horizontal right alignment, usually for text-derived classes.
+Căn chỉnh ngang sang phải, thường dùng cho các lớp dẫn xuất từ văn bản.
 
 .. _class_@GlobalScope_constant_HORIZONTAL_ALIGNMENT_FILL:
 
@@ -545,7 +545,7 @@ Horizontal right alignment, usually for text-derived classes.
 
 :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **HORIZONTAL_ALIGNMENT_FILL** = ``3``
 
-Expand row to fit width, usually for text-derived classes.
+Mở rộng hàng để vừa với chiều rộng, thường dùng cho các lớp dẫn xuất từ văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -555,7 +555,7 @@ Expand row to fit width, usually for text-derived classes.
 
 .. rst-class:: classref-enumeration
 
-enum **VerticalAlignment**: :ref:`🔗<enum_@GlobalScope_VerticalAlignment>`
+enum **VerticalAlignment**: :ref:`🔗 <enum_@GlobalScope_VerticalAlignment>`
 
 .. _class_@GlobalScope_constant_VERTICAL_ALIGNMENT_TOP:
 
@@ -563,7 +563,7 @@ enum **VerticalAlignment**: :ref:`🔗<enum_@GlobalScope_VerticalAlignment>`
 
 :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **VERTICAL_ALIGNMENT_TOP** = ``0``
 
-Vertical top alignment, usually for text-derived classes.
+Căn chỉnh dọc lên trên, thường dùng cho các lớp dẫn xuất từ văn bản.
 
 .. _class_@GlobalScope_constant_VERTICAL_ALIGNMENT_CENTER:
 
@@ -571,7 +571,7 @@ Vertical top alignment, usually for text-derived classes.
 
 :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **VERTICAL_ALIGNMENT_CENTER** = ``1``
 
-Vertical center alignment, usually for text-derived classes.
+Căn chỉnh dọc vào giữa, thường dùng cho các lớp dẫn xuất từ văn bản.
 
 .. _class_@GlobalScope_constant_VERTICAL_ALIGNMENT_BOTTOM:
 
@@ -579,7 +579,7 @@ Vertical center alignment, usually for text-derived classes.
 
 :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **VERTICAL_ALIGNMENT_BOTTOM** = ``2``
 
-Vertical bottom alignment, usually for text-derived classes.
+Căn chỉnh dọc ở dưới cùng, thường dùng cho các lớp bắt nguồn từ văn bản.
 
 .. _class_@GlobalScope_constant_VERTICAL_ALIGNMENT_FILL:
 
@@ -587,7 +587,7 @@ Vertical bottom alignment, usually for text-derived classes.
 
 :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **VERTICAL_ALIGNMENT_FILL** = ``3``
 
-Expand rows to fit height, usually for text-derived classes.
+Mở rộng các hàng để vừa với chiều cao, thường dùng cho các lớp bắt nguồn từ văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -597,7 +597,7 @@ Expand rows to fit height, usually for text-derived classes.
 
 .. rst-class:: classref-enumeration
 
-enum **InlineAlignment**: :ref:`🔗<enum_@GlobalScope_InlineAlignment>`
+enum **InlineAlignment**: :ref:`🔗 <enum_@GlobalScope_InlineAlignment>`
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_TOP_TO:
 
@@ -605,7 +605,7 @@ enum **InlineAlignment**: :ref:`🔗<enum_@GlobalScope_InlineAlignment>`
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_TOP_TO** = ``0``
 
-Aligns the top of the inline object (e.g. image, table) to the position of the text specified by ``INLINE_ALIGNMENT_TO_*`` constant.
+Căn phần trên của đối tượng inline (ví dụ: hình ảnh, bảng) vào vị trí của văn bản được chỉ định bởi hằng số ``INLINE_ALIGNMENT_TO_*``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_CENTER_TO:
 
@@ -613,7 +613,7 @@ Aligns the top of the inline object (e.g. image, table) to the position of the t
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_CENTER_TO** = ``1``
 
-Aligns the center of the inline object (e.g. image, table) to the position of the text specified by ``INLINE_ALIGNMENT_TO_*`` constant.
+Căn phần giữa của đối tượng inline (ví dụ: hình ảnh, bảng) vào vị trí của văn bản được chỉ định bởi hằng số ``INLINE_ALIGNMENT_TO_*``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_BASELINE_TO:
 
@@ -621,7 +621,7 @@ Aligns the center of the inline object (e.g. image, table) to the position of th
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_BASELINE_TO** = ``3``
 
-Aligns the baseline (user defined) of the inline object (e.g. image, table) to the position of the text specified by ``INLINE_ALIGNMENT_TO_*`` constant.
+Căn đường cơ sở (do người dùng xác định) của đối tượng inline (ví dụ: hình ảnh, bảng) vào vị trí của văn bản được chỉ định bởi hằng số ``INLINE_ALIGNMENT_TO_*``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_BOTTOM_TO:
 
@@ -629,7 +629,7 @@ Aligns the baseline (user defined) of the inline object (e.g. image, table) to t
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_BOTTOM_TO** = ``2``
 
-Aligns the bottom of the inline object (e.g. image, table) to the position of the text specified by ``INLINE_ALIGNMENT_TO_*`` constant.
+Căn phần dưới của đối tượng inline (ví dụ: hình ảnh, bảng) vào vị trí của văn bản được chỉ định bởi hằng số ``INLINE_ALIGNMENT_TO_*``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_TO_TOP:
 
@@ -637,7 +637,7 @@ Aligns the bottom of the inline object (e.g. image, table) to the position of th
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_TO_TOP** = ``0``
 
-Aligns the position of the inline object (e.g. image, table) specified by ``INLINE_ALIGNMENT_*_TO`` constant to the top of the text.
+Căn chỉnh vị trí của đối tượng nội tuyến (ví dụ: hình ảnh, bảng) được chỉ định bởi hằng số ``INLINE_ALIGNMENT_*_TO`` lên đầu văn bản.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_TO_CENTER:
 
@@ -645,7 +645,7 @@ Aligns the position of the inline object (e.g. image, table) specified by ``INLI
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_TO_CENTER** = ``4``
 
-Aligns the position of the inline object (e.g. image, table) specified by ``INLINE_ALIGNMENT_*_TO`` constant to the center of the text.
+Căn chỉnh vị trí của đối tượng nội tuyến (ví dụ: hình ảnh, bảng) được chỉ định bởi hằng số ``INLINE_ALIGNMENT_*_TO`` vào giữa văn bản.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_TO_BASELINE:
 
@@ -653,7 +653,7 @@ Aligns the position of the inline object (e.g. image, table) specified by ``INLI
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_TO_BASELINE** = ``8``
 
-Aligns the position of the inline object (e.g. image, table) specified by ``INLINE_ALIGNMENT_*_TO`` constant to the baseline of the text.
+Căn chỉnh vị trí của đối tượng nội tuyến (ví dụ: hình ảnh, bảng) được chỉ định bởi hằng số ``INLINE_ALIGNMENT_*_TO`` theo đường cơ sở của văn bản.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_TO_BOTTOM:
 
@@ -661,7 +661,7 @@ Aligns the position of the inline object (e.g. image, table) specified by ``INLI
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_TO_BOTTOM** = ``12``
 
-Aligns inline object (e.g. image, table) to the bottom of the text.
+Căn chỉnh đối tượng nội tuyến (ví dụ: hình ảnh, bảng) xuống cuối văn bản.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_TOP:
 
@@ -669,7 +669,7 @@ Aligns inline object (e.g. image, table) to the bottom of the text.
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_TOP** = ``0``
 
-Aligns top of the inline object (e.g. image, table) to the top of the text. Equivalent to ``INLINE_ALIGNMENT_TOP_TO | INLINE_ALIGNMENT_TO_TOP``.
+Căn chỉnh phần đầu của đối tượng nội tuyến (ví dụ: hình ảnh, bảng) với đầu văn bản. Tương đương với ``INLINE_ALIGNMENT_TOP_TO | INLINE_ALIGNMENT_TO_TOP``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_CENTER:
 
@@ -677,7 +677,7 @@ Aligns top of the inline object (e.g. image, table) to the top of the text. Equi
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_CENTER** = ``5``
 
-Aligns center of the inline object (e.g. image, table) to the center of the text. Equivalent to ``INLINE_ALIGNMENT_CENTER_TO | INLINE_ALIGNMENT_TO_CENTER``.
+Căn chỉnh phần giữa của đối tượng nội tuyến (ví dụ: hình ảnh, bảng) với giữa văn bản. Tương đương với ``INLINE_ALIGNMENT_CENTER_TO | INLINE_ALIGNMENT_TO_CENTER``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_BOTTOM:
 
@@ -685,7 +685,7 @@ Aligns center of the inline object (e.g. image, table) to the center of the text
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_BOTTOM** = ``14``
 
-Aligns bottom of the inline object (e.g. image, table) to the bottom of the text. Equivalent to ``INLINE_ALIGNMENT_BOTTOM_TO | INLINE_ALIGNMENT_TO_BOTTOM``.
+Căn chỉnh phần cuối của đối tượng nội tuyến (ví dụ: hình ảnh, bảng) với cuối văn bản. Tương đương với ``INLINE_ALIGNMENT_BOTTOM_TO | INLINE_ALIGNMENT_TO_BOTTOM``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_IMAGE_MASK:
 
@@ -693,7 +693,7 @@ Aligns bottom of the inline object (e.g. image, table) to the bottom of the text
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_IMAGE_MASK** = ``3``
 
-A bit mask for ``INLINE_ALIGNMENT_*_TO`` alignment constants.
+Mặt nạ bit cho các hằng số căn chỉnh ``INLINE_ALIGNMENT_*_TO``.
 
 .. _class_@GlobalScope_constant_INLINE_ALIGNMENT_TEXT_MASK:
 
@@ -701,7 +701,7 @@ A bit mask for ``INLINE_ALIGNMENT_*_TO`` alignment constants.
 
 :ref:`InlineAlignment<enum_@GlobalScope_InlineAlignment>` **INLINE_ALIGNMENT_TEXT_MASK** = ``12``
 
-A bit mask for ``INLINE_ALIGNMENT_TO_*`` alignment constants.
+Mặt nạ bit cho các hằng số căn chỉnh ``INLINE_ALIGNMENT_TO_*``.
 
 .. rst-class:: classref-item-separator
 
@@ -711,7 +711,7 @@ A bit mask for ``INLINE_ALIGNMENT_TO_*`` alignment constants.
 
 .. rst-class:: classref-enumeration
 
-enum **EulerOrder**: :ref:`🔗<enum_@GlobalScope_EulerOrder>`
+enum **EulerOrder**: :ref:`🔗 <enum_@GlobalScope_EulerOrder>`
 
 .. _class_@GlobalScope_constant_EULER_ORDER_XYZ:
 
@@ -719,7 +719,7 @@ enum **EulerOrder**: :ref:`🔗<enum_@GlobalScope_EulerOrder>`
 
 :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` **EULER_ORDER_XYZ** = ``0``
 
-Specifies that Euler angles should be in intrinsic XYZ order. When composing, the rotations happen around the local X, Y, and Z axes, in that order. When decomposing, the order is reversed, first Z, then Y, and X last.
+Chỉ định rằng các góc Euler phải theo thứ tự XYZ nội tại. Khi kết hợp, các phép quay diễn ra quanh các trục X, Y và Z cục bộ, theo thứ tự đó. Khi phân rã, thứ tự được đảo ngược: trước tiên là Z, sau đó là Y, và cuối cùng là X.
 
 .. _class_@GlobalScope_constant_EULER_ORDER_XZY:
 
@@ -727,7 +727,7 @@ Specifies that Euler angles should be in intrinsic XYZ order. When composing, th
 
 :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` **EULER_ORDER_XZY** = ``1``
 
-Specifies that Euler angles should be in intrinsic XZY order. When composing, the rotations happen around the local X, Z, and Y axes, in that order. When decomposing, the order is reversed, first Y, then Z, and X last.
+Chỉ định rằng các góc Euler phải theo thứ tự XZY nội tại. Khi kết hợp, các phép quay diễn ra quanh các trục X, Z và Y cục bộ, theo thứ tự đó. Khi phân rã, thứ tự được đảo ngược: trước tiên là Y, sau đó là Z, và cuối cùng là X.
 
 .. _class_@GlobalScope_constant_EULER_ORDER_YXZ:
 
@@ -735,7 +735,7 @@ Specifies that Euler angles should be in intrinsic XZY order. When composing, th
 
 :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` **EULER_ORDER_YXZ** = ``2``
 
-Specifies that Euler angles should be in intrinsic YXZ order. When composing, the rotations happen around the local Y, X, and Z axes, in that order. When decomposing, the order is reversed, first Z, then X, and Y last.
+Chỉ định rằng các góc Euler phải theo thứ tự YXZ nội tại. Khi kết hợp, các phép quay diễn ra quanh các trục Y, X và Z cục bộ, theo thứ tự đó. Khi phân rã, thứ tự được đảo ngược: trước tiên là Z, sau đó là X, và cuối cùng là Y.
 
 .. _class_@GlobalScope_constant_EULER_ORDER_YZX:
 
@@ -743,7 +743,7 @@ Specifies that Euler angles should be in intrinsic YXZ order. When composing, th
 
 :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` **EULER_ORDER_YZX** = ``3``
 
-Specifies that Euler angles should be in intrinsic YZX order. When composing, the rotations happen around the local Y, Z, and X axes, in that order. When decomposing, the order is reversed, first X, then Z, and Y last.
+Chỉ định rằng các góc Euler phải theo thứ tự YZX nội tại. Khi kết hợp, các phép quay diễn ra quanh các trục Y, Z và X cục bộ, theo thứ tự đó. Khi phân rã, thứ tự được đảo ngược: trước tiên là X, sau đó là Z, và cuối cùng là Y.
 
 .. _class_@GlobalScope_constant_EULER_ORDER_ZXY:
 
@@ -751,7 +751,7 @@ Specifies that Euler angles should be in intrinsic YZX order. When composing, th
 
 :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` **EULER_ORDER_ZXY** = ``4``
 
-Specifies that Euler angles should be in intrinsic ZXY order. When composing, the rotations happen around the local Z, X, and Y axes, in that order. When decomposing, the order is reversed, first Y, then X, and Z last.
+Chỉ định rằng các góc Euler phải theo thứ tự ZXY nội tại. Khi hợp thành, các phép xoay diễn ra quanh các trục Z, X và Y cục bộ, theo thứ tự đó. Khi phân rã, thứ tự được đảo ngược: đầu tiên là Y, sau đó là X và cuối cùng là Z.
 
 .. _class_@GlobalScope_constant_EULER_ORDER_ZYX:
 
@@ -759,7 +759,7 @@ Specifies that Euler angles should be in intrinsic ZXY order. When composing, th
 
 :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` **EULER_ORDER_ZYX** = ``5``
 
-Specifies that Euler angles should be in intrinsic ZYX order. When composing, the rotations happen around the local Z, Y, and X axes, in that order. When decomposing, the order is reversed, first X, then Y, and Z last.
+Chỉ định rằng các góc Euler phải theo thứ tự ZYX nội tại. Khi hợp thành, các phép xoay diễn ra quanh các trục Z, Y và X cục bộ, theo thứ tự đó. Khi phân rã, thứ tự được đảo ngược: đầu tiên là X, sau đó là Y và cuối cùng là Z.
 
 .. rst-class:: classref-item-separator
 
@@ -769,7 +769,7 @@ Specifies that Euler angles should be in intrinsic ZYX order. When composing, th
 
 .. rst-class:: classref-enumeration
 
-enum **Key**: :ref:`🔗<enum_@GlobalScope_Key>`
+enum **Key**: :ref:`🔗 <enum_@GlobalScope_Key>`
 
 .. _class_@GlobalScope_constant_KEY_NONE:
 
@@ -777,7 +777,7 @@ enum **Key**: :ref:`🔗<enum_@GlobalScope_Key>`
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_NONE** = ``0``
 
-Enum value which doesn't correspond to any key. This is used to initialize :ref:`Key<enum_@GlobalScope_Key>` properties with a generic state.
+Giá trị enum không tương ứng với bất kỳ key nào. Giá trị này được dùng để khởi tạo các thuộc tính :ref:`Key <enum_@GlobalScope_Key>` với một trạng thái chung.
 
 .. _class_@GlobalScope_constant_KEY_SPECIAL:
 
@@ -785,7 +785,7 @@ Enum value which doesn't correspond to any key. This is used to initialize :ref:
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SPECIAL** = ``4194304``
 
-Keycodes with this bit applied are non-printable.
+Các keycode có áp dụng bit này là các ký tự không thể in.
 
 .. _class_@GlobalScope_constant_KEY_ESCAPE:
 
@@ -793,7 +793,7 @@ Keycodes with this bit applied are non-printable.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_ESCAPE** = ``4194305``
 
-Escape key.
+Phím Escape.
 
 .. _class_@GlobalScope_constant_KEY_TAB:
 
@@ -801,7 +801,7 @@ Escape key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_TAB** = ``4194306``
 
-Tab key.
+Phím Tab.
 
 .. _class_@GlobalScope_constant_KEY_BACKTAB:
 
@@ -809,7 +809,7 @@ Tab key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BACKTAB** = ``4194307``
 
-Shift + Tab key.
+Phím Shift + Tab.
 
 .. _class_@GlobalScope_constant_KEY_BACKSPACE:
 
@@ -817,7 +817,7 @@ Shift + Tab key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BACKSPACE** = ``4194308``
 
-Backspace key.
+Phím Backspace.
 
 .. _class_@GlobalScope_constant_KEY_ENTER:
 
@@ -825,7 +825,7 @@ Backspace key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_ENTER** = ``4194309``
 
-Return key (on the main keyboard).
+Phím Return (trên bàn phím chính).
 
 .. _class_@GlobalScope_constant_KEY_KP_ENTER:
 
@@ -833,7 +833,7 @@ Return key (on the main keyboard).
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_ENTER** = ``4194310``
 
-Enter key on the numeric keypad.
+Phím Enter trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_INSERT:
 
@@ -841,7 +841,7 @@ Enter key on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_INSERT** = ``4194311``
 
-Insert key.
+Phím Insert.
 
 .. _class_@GlobalScope_constant_KEY_DELETE:
 
@@ -849,7 +849,7 @@ Insert key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_DELETE** = ``4194312``
 
-Delete key.
+Phím Delete.
 
 .. _class_@GlobalScope_constant_KEY_PAUSE:
 
@@ -857,7 +857,7 @@ Delete key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PAUSE** = ``4194313``
 
-Pause key.
+Phím Pause.
 
 .. _class_@GlobalScope_constant_KEY_PRINT:
 
@@ -865,7 +865,7 @@ Pause key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PRINT** = ``4194314``
 
-Print Screen key.
+Phím Print Screen.
 
 .. _class_@GlobalScope_constant_KEY_SYSREQ:
 
@@ -873,7 +873,7 @@ Print Screen key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SYSREQ** = ``4194315``
 
-System Request key.
+Phím System Request.
 
 .. _class_@GlobalScope_constant_KEY_CLEAR:
 
@@ -881,7 +881,7 @@ System Request key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_CLEAR** = ``4194316``
 
-Clear key.
+Phím Clear.
 
 .. _class_@GlobalScope_constant_KEY_HOME:
 
@@ -889,7 +889,7 @@ Clear key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_HOME** = ``4194317``
 
-Home key.
+Phím Home.
 
 .. _class_@GlobalScope_constant_KEY_END:
 
@@ -897,7 +897,7 @@ Home key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_END** = ``4194318``
 
-End key.
+Phím End.
 
 .. _class_@GlobalScope_constant_KEY_LEFT:
 
@@ -905,7 +905,7 @@ End key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LEFT** = ``4194319``
 
-Left arrow key.
+Phím mũi tên trái.
 
 .. _class_@GlobalScope_constant_KEY_UP:
 
@@ -913,7 +913,7 @@ Left arrow key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_UP** = ``4194320``
 
-Up arrow key.
+Phím mũi tên lên.
 
 .. _class_@GlobalScope_constant_KEY_RIGHT:
 
@@ -921,7 +921,7 @@ Up arrow key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_RIGHT** = ``4194321``
 
-Right arrow key.
+Phím mũi tên phải.
 
 .. _class_@GlobalScope_constant_KEY_DOWN:
 
@@ -929,7 +929,7 @@ Right arrow key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_DOWN** = ``4194322``
 
-Down arrow key.
+Phím mũi tên xuống.
 
 .. _class_@GlobalScope_constant_KEY_PAGEUP:
 
@@ -937,7 +937,7 @@ Down arrow key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PAGEUP** = ``4194323``
 
-Page Up key.
+Phím Page Up.
 
 .. _class_@GlobalScope_constant_KEY_PAGEDOWN:
 
@@ -945,7 +945,7 @@ Page Up key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PAGEDOWN** = ``4194324``
 
-Page Down key.
+Phím Page Down.
 
 .. _class_@GlobalScope_constant_KEY_SHIFT:
 
@@ -953,7 +953,7 @@ Page Down key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SHIFT** = ``4194325``
 
-Shift key.
+Phím Shift.
 
 .. _class_@GlobalScope_constant_KEY_CTRL:
 
@@ -961,7 +961,7 @@ Shift key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_CTRL** = ``4194326``
 
-Control key.
+Phím Control.
 
 .. _class_@GlobalScope_constant_KEY_META:
 
@@ -969,7 +969,7 @@ Control key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_META** = ``4194327``
 
-Meta key.
+Phím Meta.
 
 .. _class_@GlobalScope_constant_KEY_ALT:
 
@@ -977,7 +977,7 @@ Meta key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_ALT** = ``4194328``
 
-Alt key.
+Phím Alt.
 
 .. _class_@GlobalScope_constant_KEY_CAPSLOCK:
 
@@ -985,7 +985,7 @@ Alt key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_CAPSLOCK** = ``4194329``
 
-Caps Lock key.
+Phím Caps Lock.
 
 .. _class_@GlobalScope_constant_KEY_NUMLOCK:
 
@@ -993,7 +993,7 @@ Caps Lock key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_NUMLOCK** = ``4194330``
 
-Num Lock key.
+Phím Num Lock.
 
 .. _class_@GlobalScope_constant_KEY_SCROLLLOCK:
 
@@ -1001,7 +1001,7 @@ Num Lock key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SCROLLLOCK** = ``4194331``
 
-Scroll Lock key.
+Phím Scroll Lock.
 
 .. _class_@GlobalScope_constant_KEY_F1:
 
@@ -1009,7 +1009,7 @@ Scroll Lock key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F1** = ``4194332``
 
-F1 key.
+Phím F1.
 
 .. _class_@GlobalScope_constant_KEY_F2:
 
@@ -1017,7 +1017,7 @@ F1 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F2** = ``4194333``
 
-F2 key.
+Phím F2.
 
 .. _class_@GlobalScope_constant_KEY_F3:
 
@@ -1025,7 +1025,7 @@ F2 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F3** = ``4194334``
 
-F3 key.
+Phím F3.
 
 .. _class_@GlobalScope_constant_KEY_F4:
 
@@ -1033,7 +1033,7 @@ F3 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F4** = ``4194335``
 
-F4 key.
+Phím F4.
 
 .. _class_@GlobalScope_constant_KEY_F5:
 
@@ -1041,7 +1041,7 @@ F4 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F5** = ``4194336``
 
-F5 key.
+Phím F5.
 
 .. _class_@GlobalScope_constant_KEY_F6:
 
@@ -1049,7 +1049,7 @@ F5 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F6** = ``4194337``
 
-F6 key.
+Phím F6.
 
 .. _class_@GlobalScope_constant_KEY_F7:
 
@@ -1057,7 +1057,7 @@ F6 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F7** = ``4194338``
 
-F7 key.
+Phím F7.
 
 .. _class_@GlobalScope_constant_KEY_F8:
 
@@ -1065,7 +1065,7 @@ F7 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F8** = ``4194339``
 
-F8 key.
+Phím F8.
 
 .. _class_@GlobalScope_constant_KEY_F9:
 
@@ -1073,7 +1073,7 @@ F8 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F9** = ``4194340``
 
-F9 key.
+Phím F9.
 
 .. _class_@GlobalScope_constant_KEY_F10:
 
@@ -1081,7 +1081,7 @@ F9 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F10** = ``4194341``
 
-F10 key.
+Phím F10.
 
 .. _class_@GlobalScope_constant_KEY_F11:
 
@@ -1089,7 +1089,7 @@ F10 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F11** = ``4194342``
 
-F11 key.
+Phím F11.
 
 .. _class_@GlobalScope_constant_KEY_F12:
 
@@ -1097,7 +1097,7 @@ F11 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F12** = ``4194343``
 
-F12 key.
+Phím F12.
 
 .. _class_@GlobalScope_constant_KEY_F13:
 
@@ -1105,7 +1105,7 @@ F12 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F13** = ``4194344``
 
-F13 key.
+Phím F13.
 
 .. _class_@GlobalScope_constant_KEY_F14:
 
@@ -1113,7 +1113,7 @@ F13 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F14** = ``4194345``
 
-F14 key.
+Phím F14.
 
 .. _class_@GlobalScope_constant_KEY_F15:
 
@@ -1121,7 +1121,7 @@ F14 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F15** = ``4194346``
 
-F15 key.
+Phím F15.
 
 .. _class_@GlobalScope_constant_KEY_F16:
 
@@ -1129,7 +1129,7 @@ F15 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F16** = ``4194347``
 
-F16 key.
+Phím F16.
 
 .. _class_@GlobalScope_constant_KEY_F17:
 
@@ -1137,7 +1137,7 @@ F16 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F17** = ``4194348``
 
-F17 key.
+Phím F17.
 
 .. _class_@GlobalScope_constant_KEY_F18:
 
@@ -1145,7 +1145,7 @@ F17 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F18** = ``4194349``
 
-F18 key.
+Phím F18.
 
 .. _class_@GlobalScope_constant_KEY_F19:
 
@@ -1153,7 +1153,7 @@ F18 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F19** = ``4194350``
 
-F19 key.
+Phím F19.
 
 .. _class_@GlobalScope_constant_KEY_F20:
 
@@ -1161,7 +1161,7 @@ F19 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F20** = ``4194351``
 
-F20 key.
+Phím F20.
 
 .. _class_@GlobalScope_constant_KEY_F21:
 
@@ -1169,7 +1169,7 @@ F20 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F21** = ``4194352``
 
-F21 key.
+Phím F21.
 
 .. _class_@GlobalScope_constant_KEY_F22:
 
@@ -1177,7 +1177,7 @@ F21 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F22** = ``4194353``
 
-F22 key.
+Phím F22.
 
 .. _class_@GlobalScope_constant_KEY_F23:
 
@@ -1185,7 +1185,7 @@ F22 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F23** = ``4194354``
 
-F23 key.
+Phím F23.
 
 .. _class_@GlobalScope_constant_KEY_F24:
 
@@ -1193,7 +1193,7 @@ F23 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F24** = ``4194355``
 
-F24 key.
+Phím F24.
 
 .. _class_@GlobalScope_constant_KEY_F25:
 
@@ -1201,7 +1201,7 @@ F24 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F25** = ``4194356``
 
-F25 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F25. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F26:
 
@@ -1209,7 +1209,7 @@ F25 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F26** = ``4194357``
 
-F26 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F26. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F27:
 
@@ -1217,7 +1217,7 @@ F26 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F27** = ``4194358``
 
-F27 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F27. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F28:
 
@@ -1225,7 +1225,7 @@ F27 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F28** = ``4194359``
 
-F28 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F28. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F29:
 
@@ -1233,7 +1233,7 @@ F28 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F29** = ``4194360``
 
-F29 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F29. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F30:
 
@@ -1241,7 +1241,7 @@ F29 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F30** = ``4194361``
 
-F30 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F30. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F31:
 
@@ -1249,7 +1249,7 @@ F30 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F31** = ``4194362``
 
-F31 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F31. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F32:
 
@@ -1257,7 +1257,7 @@ F31 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F32** = ``4194363``
 
-F32 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F32. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F33:
 
@@ -1265,7 +1265,7 @@ F32 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F33** = ``4194364``
 
-F33 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F33. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F34:
 
@@ -1273,7 +1273,7 @@ F33 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F34** = ``4194365``
 
-F34 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F34. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_F35:
 
@@ -1281,7 +1281,7 @@ F34 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F35** = ``4194366``
 
-F35 key. Only supported on macOS and Linux due to a Windows limitation.
+Phím F35. Chỉ được hỗ trợ trên macOS và Linux do một hạn chế của Windows.
 
 .. _class_@GlobalScope_constant_KEY_KP_MULTIPLY:
 
@@ -1289,7 +1289,7 @@ F35 key. Only supported on macOS and Linux due to a Windows limitation.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_MULTIPLY** = ``4194433``
 
-Multiply (\*) key on the numeric keypad.
+Phím Multiply (\*) trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_DIVIDE:
 
@@ -1297,7 +1297,7 @@ Multiply (\*) key on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_DIVIDE** = ``4194434``
 
-Divide (/) key on the numeric keypad.
+Phím Divide (/) trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_SUBTRACT:
 
@@ -1305,7 +1305,7 @@ Divide (/) key on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_SUBTRACT** = ``4194435``
 
-Subtract (-) key on the numeric keypad.
+Phím Subtract (-) trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_PERIOD:
 
@@ -1313,7 +1313,7 @@ Subtract (-) key on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_PERIOD** = ``4194436``
 
-Period (.) key on the numeric keypad.
+Phím dấu chấm (.) trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_ADD:
 
@@ -1321,7 +1321,7 @@ Period (.) key on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_ADD** = ``4194437``
 
-Add (+) key on the numeric keypad.
+Phím cộng (+) trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_0:
 
@@ -1329,7 +1329,7 @@ Add (+) key on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_0** = ``4194438``
 
-Number 0 on the numeric keypad.
+Số 0 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_1:
 
@@ -1337,7 +1337,7 @@ Number 0 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_1** = ``4194439``
 
-Number 1 on the numeric keypad.
+Số 1 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_2:
 
@@ -1345,7 +1345,7 @@ Number 1 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_2** = ``4194440``
 
-Number 2 on the numeric keypad.
+Số 2 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_3:
 
@@ -1353,7 +1353,7 @@ Number 2 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_3** = ``4194441``
 
-Number 3 on the numeric keypad.
+Số 3 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_4:
 
@@ -1361,7 +1361,7 @@ Number 3 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_4** = ``4194442``
 
-Number 4 on the numeric keypad.
+Số 4 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_5:
 
@@ -1369,7 +1369,7 @@ Number 4 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_5** = ``4194443``
 
-Number 5 on the numeric keypad.
+Số 5 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_6:
 
@@ -1377,7 +1377,7 @@ Number 5 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_6** = ``4194444``
 
-Number 6 on the numeric keypad.
+Số 6 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_7:
 
@@ -1385,7 +1385,7 @@ Number 6 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_7** = ``4194445``
 
-Number 7 on the numeric keypad.
+Số 7 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_8:
 
@@ -1393,7 +1393,7 @@ Number 7 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_8** = ``4194446``
 
-Number 8 on the numeric keypad.
+Số 8 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_KP_9:
 
@@ -1401,7 +1401,7 @@ Number 8 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KP_9** = ``4194447``
 
-Number 9 on the numeric keypad.
+Số 9 trên bàn phím số.
 
 .. _class_@GlobalScope_constant_KEY_MENU:
 
@@ -1409,7 +1409,7 @@ Number 9 on the numeric keypad.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_MENU** = ``4194370``
 
-Context menu key.
+Phím menu ngữ cảnh.
 
 .. _class_@GlobalScope_constant_KEY_HYPER:
 
@@ -1417,7 +1417,7 @@ Context menu key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_HYPER** = ``4194371``
 
-Hyper key. (On Linux/X11 only).
+Phím Hyper. (Chỉ trên Linux/X11).
 
 .. _class_@GlobalScope_constant_KEY_HELP:
 
@@ -1425,7 +1425,7 @@ Hyper key. (On Linux/X11 only).
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_HELP** = ``4194373``
 
-Help key.
+Phím Help.
 
 .. _class_@GlobalScope_constant_KEY_BACK:
 
@@ -1433,7 +1433,7 @@ Help key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BACK** = ``4194376``
 
-Back key.
+Phím Back.
 
 .. _class_@GlobalScope_constant_KEY_FORWARD:
 
@@ -1441,7 +1441,7 @@ Back key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_FORWARD** = ``4194377``
 
-Forward key.
+Phím Forward.
 
 .. _class_@GlobalScope_constant_KEY_STOP:
 
@@ -1449,7 +1449,7 @@ Forward key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_STOP** = ``4194378``
 
-Media stop key.
+Phím Media stop.
 
 .. _class_@GlobalScope_constant_KEY_REFRESH:
 
@@ -1457,7 +1457,7 @@ Media stop key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_REFRESH** = ``4194379``
 
-Refresh key.
+Phím Refresh.
 
 .. _class_@GlobalScope_constant_KEY_VOLUMEDOWN:
 
@@ -1465,7 +1465,7 @@ Refresh key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_VOLUMEDOWN** = ``4194380``
 
-Volume down key.
+Phím Volume down.
 
 .. _class_@GlobalScope_constant_KEY_VOLUMEMUTE:
 
@@ -1473,7 +1473,7 @@ Volume down key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_VOLUMEMUTE** = ``4194381``
 
-Mute volume key.
+Phím Mute volume.
 
 .. _class_@GlobalScope_constant_KEY_VOLUMEUP:
 
@@ -1481,7 +1481,7 @@ Mute volume key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_VOLUMEUP** = ``4194382``
 
-Volume up key.
+Phím tăng âm lượng.
 
 .. _class_@GlobalScope_constant_KEY_MEDIAPLAY:
 
@@ -1489,7 +1489,7 @@ Volume up key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_MEDIAPLAY** = ``4194388``
 
-Media play key.
+Phím phát nội dung đa phương tiện.
 
 .. _class_@GlobalScope_constant_KEY_MEDIASTOP:
 
@@ -1497,7 +1497,7 @@ Media play key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_MEDIASTOP** = ``4194389``
 
-Media stop key.
+Phím Media stop.
 
 .. _class_@GlobalScope_constant_KEY_MEDIAPREVIOUS:
 
@@ -1505,7 +1505,7 @@ Media stop key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_MEDIAPREVIOUS** = ``4194390``
 
-Previous song key.
+Phím bài hát trước.
 
 .. _class_@GlobalScope_constant_KEY_MEDIANEXT:
 
@@ -1513,7 +1513,7 @@ Previous song key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_MEDIANEXT** = ``4194391``
 
-Next song key.
+Phím bài hát tiếp theo.
 
 .. _class_@GlobalScope_constant_KEY_MEDIARECORD:
 
@@ -1521,7 +1521,7 @@ Next song key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_MEDIARECORD** = ``4194392``
 
-Media record key.
+Phím ghi nội dung đa phương tiện.
 
 .. _class_@GlobalScope_constant_KEY_HOMEPAGE:
 
@@ -1529,7 +1529,7 @@ Media record key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_HOMEPAGE** = ``4194393``
 
-Home page key.
+Phím trang chủ.
 
 .. _class_@GlobalScope_constant_KEY_FAVORITES:
 
@@ -1537,7 +1537,7 @@ Home page key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_FAVORITES** = ``4194394``
 
-Favorites key.
+Phím Favorites.
 
 .. _class_@GlobalScope_constant_KEY_SEARCH:
 
@@ -1545,7 +1545,7 @@ Favorites key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SEARCH** = ``4194395``
 
-Search key.
+Phím Search.
 
 .. _class_@GlobalScope_constant_KEY_STANDBY:
 
@@ -1553,7 +1553,7 @@ Search key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_STANDBY** = ``4194396``
 
-Standby key.
+Phím Standby.
 
 .. _class_@GlobalScope_constant_KEY_OPENURL:
 
@@ -1561,7 +1561,7 @@ Standby key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_OPENURL** = ``4194397``
 
-Open URL / Launch Browser key.
+Phím Open URL / Launch Browser.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHMAIL:
 
@@ -1569,7 +1569,7 @@ Open URL / Launch Browser key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHMAIL** = ``4194398``
 
-Launch Mail key.
+Phím Launch Mail.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHMEDIA:
 
@@ -1577,7 +1577,7 @@ Launch Mail key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHMEDIA** = ``4194399``
 
-Launch Media key.
+Phím Launch Media.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH0:
 
@@ -1585,7 +1585,7 @@ Launch Media key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH0** = ``4194400``
 
-Launch Shortcut 0 key.
+Phím Launch Shortcut 0.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH1:
 
@@ -1593,7 +1593,7 @@ Launch Shortcut 0 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH1** = ``4194401``
 
-Launch Shortcut 1 key.
+Phím Launch Shortcut 1.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH2:
 
@@ -1601,7 +1601,7 @@ Launch Shortcut 1 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH2** = ``4194402``
 
-Launch Shortcut 2 key.
+Phím Launch Shortcut 2.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH3:
 
@@ -1609,7 +1609,7 @@ Launch Shortcut 2 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH3** = ``4194403``
 
-Launch Shortcut 3 key.
+Phím Launch Shortcut 3.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH4:
 
@@ -1617,7 +1617,7 @@ Launch Shortcut 3 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH4** = ``4194404``
 
-Launch Shortcut 4 key.
+Phím Launch Shortcut 4.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH5:
 
@@ -1625,7 +1625,7 @@ Launch Shortcut 4 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH5** = ``4194405``
 
-Launch Shortcut 5 key.
+Phím Launch Shortcut 5.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH6:
 
@@ -1633,7 +1633,7 @@ Launch Shortcut 5 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH6** = ``4194406``
 
-Launch Shortcut 6 key.
+Phím Launch Shortcut 6.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH7:
 
@@ -1641,7 +1641,7 @@ Launch Shortcut 6 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH7** = ``4194407``
 
-Launch Shortcut 7 key.
+Phím Launch Shortcut 7.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH8:
 
@@ -1649,7 +1649,7 @@ Launch Shortcut 7 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH8** = ``4194408``
 
-Launch Shortcut 8 key.
+Phím Launch Shortcut 8.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCH9:
 
@@ -1657,7 +1657,7 @@ Launch Shortcut 8 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCH9** = ``4194409``
 
-Launch Shortcut 9 key.
+Phím Launch Shortcut 9.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHA:
 
@@ -1665,7 +1665,7 @@ Launch Shortcut 9 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHA** = ``4194410``
 
-Launch Shortcut A key.
+Phím Launch Shortcut A.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHB:
 
@@ -1673,7 +1673,7 @@ Launch Shortcut A key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHB** = ``4194411``
 
-Launch Shortcut B key.
+Phím Launch Shortcut B.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHC:
 
@@ -1681,7 +1681,7 @@ Launch Shortcut B key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHC** = ``4194412``
 
-Launch Shortcut C key.
+Phím Launch Shortcut C.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHD:
 
@@ -1689,7 +1689,7 @@ Launch Shortcut C key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHD** = ``4194413``
 
-Launch Shortcut D key.
+Phím Launch Shortcut D.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHE:
 
@@ -1697,7 +1697,7 @@ Launch Shortcut D key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHE** = ``4194414``
 
-Launch Shortcut E key.
+Phím Launch Shortcut E.
 
 .. _class_@GlobalScope_constant_KEY_LAUNCHF:
 
@@ -1705,7 +1705,7 @@ Launch Shortcut E key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LAUNCHF** = ``4194415``
 
-Launch Shortcut F key.
+Phím F của Launch Shortcut.
 
 .. _class_@GlobalScope_constant_KEY_GLOBE:
 
@@ -1713,7 +1713,7 @@ Launch Shortcut F key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_GLOBE** = ``4194416``
 
-"Globe" key on Mac / iPad keyboard.
+Phím "Globe" trên bàn phím Mac / iPad.
 
 .. _class_@GlobalScope_constant_KEY_KEYBOARD:
 
@@ -1721,7 +1721,7 @@ Launch Shortcut F key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_KEYBOARD** = ``4194417``
 
-"On-screen keyboard" key on iPad keyboard.
+Phím "On-screen keyboard" trên bàn phím iPad.
 
 .. _class_@GlobalScope_constant_KEY_JIS_EISU:
 
@@ -1729,7 +1729,7 @@ Launch Shortcut F key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_JIS_EISU** = ``4194418``
 
-英数 key on Mac keyboard.
+Phím 英数 trên bàn phím Mac.
 
 .. _class_@GlobalScope_constant_KEY_JIS_KANA:
 
@@ -1737,7 +1737,7 @@ Launch Shortcut F key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_JIS_KANA** = ``4194419``
 
-かな key on Mac keyboard.
+Phím かな trên bàn phím Mac.
 
 .. _class_@GlobalScope_constant_KEY_UNKNOWN:
 
@@ -1745,7 +1745,7 @@ Launch Shortcut F key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_UNKNOWN** = ``8388607``
 
-Unknown key.
+Phím không xác định.
 
 .. _class_@GlobalScope_constant_KEY_SPACE:
 
@@ -1753,7 +1753,7 @@ Unknown key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SPACE** = ``32``
 
-Space key.
+Phím Space.
 
 .. _class_@GlobalScope_constant_KEY_EXCLAM:
 
@@ -1761,7 +1761,7 @@ Space key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_EXCLAM** = ``33``
 
-Exclamation mark (``!``) key.
+Phím dấu chấm than (``!``).
 
 .. _class_@GlobalScope_constant_KEY_QUOTEDBL:
 
@@ -1769,7 +1769,7 @@ Exclamation mark (``!``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_QUOTEDBL** = ``34``
 
-Double quotation mark (``"``) key.
+Phím dấu ngoặc kép (``"``).
 
 .. _class_@GlobalScope_constant_KEY_NUMBERSIGN:
 
@@ -1777,7 +1777,7 @@ Double quotation mark (``"``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_NUMBERSIGN** = ``35``
 
-Number sign or *hash* (``#``) key.
+Phím dấu thăng hoặc *hash* (``#``).
 
 .. _class_@GlobalScope_constant_KEY_DOLLAR:
 
@@ -1785,7 +1785,7 @@ Number sign or *hash* (``#``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_DOLLAR** = ``36``
 
-Dollar sign (``$``) key.
+Phím dấu đô la (``$``).
 
 .. _class_@GlobalScope_constant_KEY_PERCENT:
 
@@ -1793,7 +1793,7 @@ Dollar sign (``$``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PERCENT** = ``37``
 
-Percent sign (``%``) key.
+Phím dấu phần trăm (``%``).
 
 .. _class_@GlobalScope_constant_KEY_AMPERSAND:
 
@@ -1801,7 +1801,7 @@ Percent sign (``%``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_AMPERSAND** = ``38``
 
-Ampersand (``&``) key.
+Phím dấu và (``&``).
 
 .. _class_@GlobalScope_constant_KEY_APOSTROPHE:
 
@@ -1809,7 +1809,7 @@ Ampersand (``&``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_APOSTROPHE** = ``39``
 
-Apostrophe (``'``) key.
+Phím dấu nháy đơn (``'``).
 
 .. _class_@GlobalScope_constant_KEY_PARENLEFT:
 
@@ -1817,7 +1817,7 @@ Apostrophe (``'``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PARENLEFT** = ``40``
 
-Left parenthesis (``(``) key.
+Phím dấu ngoặc đơn trái (``(``).
 
 .. _class_@GlobalScope_constant_KEY_PARENRIGHT:
 
@@ -1825,7 +1825,7 @@ Left parenthesis (``(``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PARENRIGHT** = ``41``
 
-Right parenthesis (``)``) key.
+Phím dấu ngoặc đơn phải (``)``).
 
 .. _class_@GlobalScope_constant_KEY_ASTERISK:
 
@@ -1833,7 +1833,7 @@ Right parenthesis (``)``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_ASTERISK** = ``42``
 
-Asterisk (``*``) key.
+Phím dấu hoa thị (``*``).
 
 .. _class_@GlobalScope_constant_KEY_PLUS:
 
@@ -1841,7 +1841,7 @@ Asterisk (``*``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PLUS** = ``43``
 
-Plus (``+``) key.
+Phím dấu cộng (``+``).
 
 .. _class_@GlobalScope_constant_KEY_COMMA:
 
@@ -1849,7 +1849,7 @@ Plus (``+``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_COMMA** = ``44``
 
-Comma (``,``) key.
+Phím dấu phẩy (``,``).
 
 .. _class_@GlobalScope_constant_KEY_MINUS:
 
@@ -1857,7 +1857,7 @@ Comma (``,``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_MINUS** = ``45``
 
-Minus (``-``) key.
+Phím dấu trừ (``-``).
 
 .. _class_@GlobalScope_constant_KEY_PERIOD:
 
@@ -1865,7 +1865,7 @@ Minus (``-``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_PERIOD** = ``46``
 
-Period (``.``) key.
+Phím dấu chấm (``.``).
 
 .. _class_@GlobalScope_constant_KEY_SLASH:
 
@@ -1873,7 +1873,7 @@ Period (``.``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SLASH** = ``47``
 
-Slash (``/``) key.
+Phím gạch chéo (``/``).
 
 .. _class_@GlobalScope_constant_KEY_0:
 
@@ -1881,7 +1881,7 @@ Slash (``/``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_0** = ``48``
 
-Number 0 key.
+Phím số 0.
 
 .. _class_@GlobalScope_constant_KEY_1:
 
@@ -1889,7 +1889,7 @@ Number 0 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_1** = ``49``
 
-Number 1 key.
+Phím số 1.
 
 .. _class_@GlobalScope_constant_KEY_2:
 
@@ -1897,7 +1897,7 @@ Number 1 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_2** = ``50``
 
-Number 2 key.
+Phím số 2.
 
 .. _class_@GlobalScope_constant_KEY_3:
 
@@ -1905,7 +1905,7 @@ Number 2 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_3** = ``51``
 
-Number 3 key.
+Phím số 3.
 
 .. _class_@GlobalScope_constant_KEY_4:
 
@@ -1913,7 +1913,7 @@ Number 3 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_4** = ``52``
 
-Number 4 key.
+Phím số 4.
 
 .. _class_@GlobalScope_constant_KEY_5:
 
@@ -1921,7 +1921,7 @@ Number 4 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_5** = ``53``
 
-Number 5 key.
+Phím số 5.
 
 .. _class_@GlobalScope_constant_KEY_6:
 
@@ -1929,7 +1929,7 @@ Number 5 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_6** = ``54``
 
-Number 6 key.
+Phím số 6.
 
 .. _class_@GlobalScope_constant_KEY_7:
 
@@ -1937,7 +1937,7 @@ Number 6 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_7** = ``55``
 
-Number 7 key.
+Phím số 7.
 
 .. _class_@GlobalScope_constant_KEY_8:
 
@@ -1945,7 +1945,7 @@ Number 7 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_8** = ``56``
 
-Number 8 key.
+Phím số 8.
 
 .. _class_@GlobalScope_constant_KEY_9:
 
@@ -1953,7 +1953,7 @@ Number 8 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_9** = ``57``
 
-Number 9 key.
+Phím số 9.
 
 .. _class_@GlobalScope_constant_KEY_COLON:
 
@@ -1961,7 +1961,7 @@ Number 9 key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_COLON** = ``58``
 
-Colon (``:``) key.
+Phím dấu hai chấm (``:``).
 
 .. _class_@GlobalScope_constant_KEY_SEMICOLON:
 
@@ -1969,7 +1969,7 @@ Colon (``:``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SEMICOLON** = ``59``
 
-Semicolon (``;``) key.
+Phím dấu chấm phẩy (``;``).
 
 .. _class_@GlobalScope_constant_KEY_LESS:
 
@@ -1977,7 +1977,7 @@ Semicolon (``;``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_LESS** = ``60``
 
-Less-than sign (``<``) key.
+Phím dấu nhỏ hơn (``<``).
 
 .. _class_@GlobalScope_constant_KEY_EQUAL:
 
@@ -1985,7 +1985,7 @@ Less-than sign (``<``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_EQUAL** = ``61``
 
-Equal sign (``=``) key.
+Phím dấu bằng (``=``).
 
 .. _class_@GlobalScope_constant_KEY_GREATER:
 
@@ -1993,7 +1993,7 @@ Equal sign (``=``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_GREATER** = ``62``
 
-Greater-than sign (``>``) key.
+Phím dấu lớn hơn (``>``).
 
 .. _class_@GlobalScope_constant_KEY_QUESTION:
 
@@ -2001,7 +2001,7 @@ Greater-than sign (``>``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_QUESTION** = ``63``
 
-Question mark (``?``) key.
+Phím dấu hỏi (``?``).
 
 .. _class_@GlobalScope_constant_KEY_AT:
 
@@ -2009,7 +2009,7 @@ Question mark (``?``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_AT** = ``64``
 
-At sign (``@``) key.
+Phím dấu @ (``@``).
 
 .. _class_@GlobalScope_constant_KEY_A:
 
@@ -2017,7 +2017,7 @@ At sign (``@``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_A** = ``65``
 
-A key.
+Phím A.
 
 .. _class_@GlobalScope_constant_KEY_B:
 
@@ -2025,7 +2025,7 @@ A key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_B** = ``66``
 
-B key.
+Phím B.
 
 .. _class_@GlobalScope_constant_KEY_C:
 
@@ -2033,7 +2033,7 @@ B key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_C** = ``67``
 
-C key.
+Phím C.
 
 .. _class_@GlobalScope_constant_KEY_D:
 
@@ -2041,7 +2041,7 @@ C key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_D** = ``68``
 
-D key.
+Phím D.
 
 .. _class_@GlobalScope_constant_KEY_E:
 
@@ -2049,7 +2049,7 @@ D key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_E** = ``69``
 
-E key.
+Phím E.
 
 .. _class_@GlobalScope_constant_KEY_F:
 
@@ -2057,7 +2057,7 @@ E key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_F** = ``70``
 
-F key.
+Phím F.
 
 .. _class_@GlobalScope_constant_KEY_G:
 
@@ -2065,7 +2065,7 @@ F key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_G** = ``71``
 
-G key.
+Phím G.
 
 .. _class_@GlobalScope_constant_KEY_H:
 
@@ -2073,7 +2073,7 @@ G key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_H** = ``72``
 
-H key.
+Phím H.
 
 .. _class_@GlobalScope_constant_KEY_I:
 
@@ -2081,7 +2081,7 @@ H key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_I** = ``73``
 
-I key.
+Phím I.
 
 .. _class_@GlobalScope_constant_KEY_J:
 
@@ -2089,7 +2089,7 @@ I key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_J** = ``74``
 
-J key.
+Phím J.
 
 .. _class_@GlobalScope_constant_KEY_K:
 
@@ -2097,7 +2097,7 @@ J key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_K** = ``75``
 
-K key.
+Phím K.
 
 .. _class_@GlobalScope_constant_KEY_L:
 
@@ -2105,7 +2105,7 @@ K key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_L** = ``76``
 
-L key.
+Phím L.
 
 .. _class_@GlobalScope_constant_KEY_M:
 
@@ -2113,7 +2113,7 @@ L key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_M** = ``77``
 
-M key.
+Phím M.
 
 .. _class_@GlobalScope_constant_KEY_N:
 
@@ -2121,7 +2121,7 @@ M key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_N** = ``78``
 
-N key.
+Phím N.
 
 .. _class_@GlobalScope_constant_KEY_O:
 
@@ -2129,7 +2129,7 @@ N key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_O** = ``79``
 
-O key.
+Phím O.
 
 .. _class_@GlobalScope_constant_KEY_P:
 
@@ -2137,7 +2137,7 @@ O key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_P** = ``80``
 
-P key.
+Phím P.
 
 .. _class_@GlobalScope_constant_KEY_Q:
 
@@ -2145,7 +2145,7 @@ P key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_Q** = ``81``
 
-Q key.
+Phím Q.
 
 .. _class_@GlobalScope_constant_KEY_R:
 
@@ -2153,7 +2153,7 @@ Q key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_R** = ``82``
 
-R key.
+Phím R.
 
 .. _class_@GlobalScope_constant_KEY_S:
 
@@ -2161,7 +2161,7 @@ R key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_S** = ``83``
 
-S key.
+Phím S.
 
 .. _class_@GlobalScope_constant_KEY_T:
 
@@ -2169,7 +2169,7 @@ S key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_T** = ``84``
 
-T key.
+Phím T.
 
 .. _class_@GlobalScope_constant_KEY_U:
 
@@ -2177,7 +2177,7 @@ T key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_U** = ``85``
 
-U key.
+Phím U.
 
 .. _class_@GlobalScope_constant_KEY_V:
 
@@ -2185,7 +2185,7 @@ U key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_V** = ``86``
 
-V key.
+Phím V.
 
 .. _class_@GlobalScope_constant_KEY_W:
 
@@ -2193,7 +2193,7 @@ V key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_W** = ``87``
 
-W key.
+Phím W.
 
 .. _class_@GlobalScope_constant_KEY_X:
 
@@ -2201,7 +2201,7 @@ W key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_X** = ``88``
 
-X key.
+Phím X.
 
 .. _class_@GlobalScope_constant_KEY_Y:
 
@@ -2209,7 +2209,7 @@ X key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_Y** = ``89``
 
-Y key.
+Phím Y.
 
 .. _class_@GlobalScope_constant_KEY_Z:
 
@@ -2217,7 +2217,7 @@ Y key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_Z** = ``90``
 
-Z key.
+Phím Z.
 
 .. _class_@GlobalScope_constant_KEY_BRACKETLEFT:
 
@@ -2225,7 +2225,7 @@ Z key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BRACKETLEFT** = ``91``
 
-Left bracket (``[lb]``) key.
+Phím ngoặc vuông trái (``[lb]``).
 
 .. _class_@GlobalScope_constant_KEY_BACKSLASH:
 
@@ -2233,7 +2233,7 @@ Left bracket (``[lb]``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BACKSLASH** = ``92``
 
-Backslash (``\``) key.
+Phím dấu gạch chéo ngược (``\``).
 
 .. _class_@GlobalScope_constant_KEY_BRACKETRIGHT:
 
@@ -2241,7 +2241,7 @@ Backslash (``\``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BRACKETRIGHT** = ``93``
 
-Right bracket (``[rb]``) key.
+Phím ngoặc vuông phải (``[rb]``).
 
 .. _class_@GlobalScope_constant_KEY_ASCIICIRCUM:
 
@@ -2249,7 +2249,7 @@ Right bracket (``[rb]``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_ASCIICIRCUM** = ``94``
 
-Caret (``^``) key.
+Phím dấu mũ (``^``).
 
 .. _class_@GlobalScope_constant_KEY_UNDERSCORE:
 
@@ -2257,7 +2257,7 @@ Caret (``^``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_UNDERSCORE** = ``95``
 
-Underscore (``_``) key.
+Phím dấu gạch dưới (``_``).
 
 .. _class_@GlobalScope_constant_KEY_QUOTELEFT:
 
@@ -2265,7 +2265,7 @@ Underscore (``_``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_QUOTELEFT** = ``96``
 
-Backtick (`````) key.
+Phím backtick (`````).
 
 .. _class_@GlobalScope_constant_KEY_BRACELEFT:
 
@@ -2273,7 +2273,7 @@ Backtick (`````) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BRACELEFT** = ``123``
 
-Left brace (``{``) key.
+Phím dấu ngoặc nhọn trái (``{``).
 
 .. _class_@GlobalScope_constant_KEY_BAR:
 
@@ -2281,7 +2281,7 @@ Left brace (``{``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BAR** = ``124``
 
-Vertical bar or *pipe* (``|``) key.
+Phím dấu gạch đứng hoặc *pipe* (``|``).
 
 .. _class_@GlobalScope_constant_KEY_BRACERIGHT:
 
@@ -2289,7 +2289,7 @@ Vertical bar or *pipe* (``|``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_BRACERIGHT** = ``125``
 
-Right brace (``}``) key.
+Phím dấu ngoặc nhọn phải (``}``).
 
 .. _class_@GlobalScope_constant_KEY_ASCIITILDE:
 
@@ -2297,7 +2297,7 @@ Right brace (``}``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_ASCIITILDE** = ``126``
 
-Tilde (``~``) key.
+Phím dấu ngã (``~``).
 
 .. _class_@GlobalScope_constant_KEY_YEN:
 
@@ -2305,7 +2305,7 @@ Tilde (``~``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_YEN** = ``165``
 
-Yen symbol (``¥``) key.
+Phím ký hiệu yên (``¥``).
 
 .. _class_@GlobalScope_constant_KEY_SECTION:
 
@@ -2313,7 +2313,7 @@ Yen symbol (``¥``) key.
 
 :ref:`Key<enum_@GlobalScope_Key>` **KEY_SECTION** = ``167``
 
-Section sign (``§``) key.
+Phím dấu mục (§) (``§``).
 
 .. rst-class:: classref-item-separator
 
@@ -2323,7 +2323,7 @@ Section sign (``§``) key.
 
 .. rst-class:: classref-enumeration
 
-flags **KeyModifierMask**: :ref:`🔗<enum_@GlobalScope_KeyModifierMask>`
+các cờ **KeyModifierMask**: :ref:`🔗 <enum_@GlobalScope_KeyModifierMask>`
 
 .. _class_@GlobalScope_constant_KEY_CODE_MASK:
 
@@ -2331,7 +2331,7 @@ flags **KeyModifierMask**: :ref:`🔗<enum_@GlobalScope_KeyModifierMask>`
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_CODE_MASK** = ``8388607``
 
-Bit mask with all bits enabled except for modifier keys. Apply it to remove modifiers.
+Bit mask bật tất cả các bit, ngoại trừ các phím modifier. Áp dụng nó để loại bỏ các modifier.
 
 ::
 
@@ -2345,7 +2345,7 @@ Bit mask with all bits enabled except for modifier keys. Apply it to remove modi
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MODIFIER_MASK** = ``2130706432``
 
-Bit mask with all modifier bits enabled. Apply it to isolate modifiers.
+Bit mask bật tất cả các bit modifier. Áp dụng nó để cô lập các modifier.
 
 ::
 
@@ -2359,7 +2359,7 @@ Bit mask with all modifier bits enabled. Apply it to isolate modifiers.
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MASK_CMD_OR_CTRL** = ``16777216``
 
-Automatically remapped to :ref:`KEY_META<class_@GlobalScope_constant_KEY_META>` on macOS and :ref:`KEY_CTRL<class_@GlobalScope_constant_KEY_CTRL>` on other platforms, this mask is never set in the actual events, and should be used for key mapping only.
+Được ánh xạ lại tự động thành :ref:`KEY_META<class_@GlobalScope_constant_KEY_META>` trên macOS và :ref:`KEY_CTRL<class_@GlobalScope_constant_KEY_CTRL>` trên các nền tảng khác, mask này không bao giờ được đặt trong các event thực tế và chỉ nên được dùng để ánh xạ phím.
 
 .. _class_@GlobalScope_constant_KEY_MASK_SHIFT:
 
@@ -2367,7 +2367,7 @@ Automatically remapped to :ref:`KEY_META<class_@GlobalScope_constant_KEY_META>` 
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MASK_SHIFT** = ``33554432``
 
-Shift key mask.
+Mask của phím Shift.
 
 .. _class_@GlobalScope_constant_KEY_MASK_ALT:
 
@@ -2375,7 +2375,7 @@ Shift key mask.
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MASK_ALT** = ``67108864``
 
-Alt or Option (on macOS) key mask.
+Mask của phím Alt hoặc Option (trên macOS).
 
 .. _class_@GlobalScope_constant_KEY_MASK_META:
 
@@ -2383,7 +2383,7 @@ Alt or Option (on macOS) key mask.
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MASK_META** = ``134217728``
 
-Command (on macOS) or Meta/Windows key mask.
+Mask của phím Command (trên macOS) hoặc Meta/Windows.
 
 .. _class_@GlobalScope_constant_KEY_MASK_CTRL:
 
@@ -2391,7 +2391,7 @@ Command (on macOS) or Meta/Windows key mask.
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MASK_CTRL** = ``268435456``
 
-Control key mask.
+Mặt nạ phím Control.
 
 .. _class_@GlobalScope_constant_KEY_MASK_KPAD:
 
@@ -2399,7 +2399,7 @@ Control key mask.
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MASK_KPAD** = ``536870912``
 
-Keypad key mask.
+Mặt nạ phím Keypad.
 
 .. _class_@GlobalScope_constant_KEY_MASK_GROUP_SWITCH:
 
@@ -2407,7 +2407,7 @@ Keypad key mask.
 
 :ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>` **KEY_MASK_GROUP_SWITCH** = ``1073741824``
 
-Group Switch key mask.
+Mặt nạ phím Group Switch.
 
 .. rst-class:: classref-item-separator
 
@@ -2417,7 +2417,7 @@ Group Switch key mask.
 
 .. rst-class:: classref-enumeration
 
-enum **KeyLocation**: :ref:`🔗<enum_@GlobalScope_KeyLocation>`
+enum **KeyLocation**: :ref:`🔗 <enum_@GlobalScope_KeyLocation>`
 
 .. _class_@GlobalScope_constant_KEY_LOCATION_UNSPECIFIED:
 
@@ -2425,9 +2425,9 @@ enum **KeyLocation**: :ref:`🔗<enum_@GlobalScope_KeyLocation>`
 
 :ref:`KeyLocation<enum_@GlobalScope_KeyLocation>` **KEY_LOCATION_UNSPECIFIED** = ``0``
 
-Used for keys which only appear once, or when a comparison doesn't need to differentiate the ``LEFT`` and ``RIGHT`` versions.
+Dùng cho các phím chỉ xuất hiện một lần hoặc khi phép so sánh không cần phân biệt các phiên bản ``LEFT`` và ``RIGHT``.
 
-For example, when using :ref:`InputEvent.is_match()<class_InputEvent_method_is_match>`, an event which has :ref:`KEY_LOCATION_UNSPECIFIED<class_@GlobalScope_constant_KEY_LOCATION_UNSPECIFIED>` will match any :ref:`KeyLocation<enum_@GlobalScope_KeyLocation>` on the passed event.
+Ví dụ, khi sử dụng :ref:`InputEvent.is_match()<class_InputEvent_method_is_match>`, một sự kiện có :ref:`KEY_LOCATION_UNSPECIFIED<class_@GlobalScope_constant_KEY_LOCATION_UNSPECIFIED>` sẽ khớp với mọi :ref:`KeyLocation <enum_@GlobalScope_KeyLocation>` trong sự kiện được truyền vào.
 
 .. _class_@GlobalScope_constant_KEY_LOCATION_LEFT:
 
@@ -2435,7 +2435,7 @@ For example, when using :ref:`InputEvent.is_match()<class_InputEvent_method_is_m
 
 :ref:`KeyLocation<enum_@GlobalScope_KeyLocation>` **KEY_LOCATION_LEFT** = ``1``
 
-A key which is to the left of its twin.
+Một phím nằm bên trái phím song sinh của nó.
 
 .. _class_@GlobalScope_constant_KEY_LOCATION_RIGHT:
 
@@ -2443,7 +2443,7 @@ A key which is to the left of its twin.
 
 :ref:`KeyLocation<enum_@GlobalScope_KeyLocation>` **KEY_LOCATION_RIGHT** = ``2``
 
-A key which is to the right of its twin.
+Một phím nằm bên phải phím tương ứng với nó.
 
 .. rst-class:: classref-item-separator
 
@@ -2453,7 +2453,7 @@ A key which is to the right of its twin.
 
 .. rst-class:: classref-enumeration
 
-enum **MouseButton**: :ref:`🔗<enum_@GlobalScope_MouseButton>`
+enum **MouseButton**: :ref:`🔗 <enum_@GlobalScope_MouseButton>`
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_NONE:
 
@@ -2461,7 +2461,7 @@ enum **MouseButton**: :ref:`🔗<enum_@GlobalScope_MouseButton>`
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_NONE** = ``0``
 
-Enum value which doesn't correspond to any mouse button. This is used to initialize :ref:`MouseButton<enum_@GlobalScope_MouseButton>` properties with a generic state.
+Giá trị enum không tương ứng với bất kỳ nút chuột nào. Giá trị này được dùng để khởi tạo các thuộc tính :ref:`MouseButton <enum_@GlobalScope_MouseButton>` với một trạng thái chung.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_LEFT:
 
@@ -2469,7 +2469,7 @@ Enum value which doesn't correspond to any mouse button. This is used to initial
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_LEFT** = ``1``
 
-Primary mouse button, usually assigned to the left button.
+Nút chuột chính, thường được gán cho nút bên trái.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_RIGHT:
 
@@ -2477,7 +2477,7 @@ Primary mouse button, usually assigned to the left button.
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_RIGHT** = ``2``
 
-Secondary mouse button, usually assigned to the right button.
+Nút chuột phụ, thường được gán cho nút bên phải.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_MIDDLE:
 
@@ -2485,7 +2485,7 @@ Secondary mouse button, usually assigned to the right button.
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_MIDDLE** = ``3``
 
-Middle mouse button.
+Nút chuột giữa.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_WHEEL_UP:
 
@@ -2493,7 +2493,7 @@ Middle mouse button.
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_WHEEL_UP** = ``4``
 
-Mouse wheel scrolling up.
+Cuộn con lăn chuột lên trên.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_WHEEL_DOWN:
 
@@ -2501,7 +2501,7 @@ Mouse wheel scrolling up.
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_WHEEL_DOWN** = ``5``
 
-Mouse wheel scrolling down.
+Cuộn bánh xe chuột xuống.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_WHEEL_LEFT:
 
@@ -2509,7 +2509,7 @@ Mouse wheel scrolling down.
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_WHEEL_LEFT** = ``6``
 
-Mouse wheel left button (only present on some mice).
+Nút trái của bánh xe chuột (chỉ có trên một số chuột).
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_WHEEL_RIGHT:
 
@@ -2517,7 +2517,7 @@ Mouse wheel left button (only present on some mice).
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_WHEEL_RIGHT** = ``7``
 
-Mouse wheel right button (only present on some mice).
+Nút phải của bánh xe chuột (chỉ có trên một số chuột).
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_XBUTTON1:
 
@@ -2525,7 +2525,7 @@ Mouse wheel right button (only present on some mice).
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_XBUTTON1** = ``8``
 
-Extra mouse button 1. This is sometimes present, usually to the sides of the mouse.
+Nút chuột bổ sung 1. Nút này đôi khi có mặt, thường nằm ở hai bên chuột.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_XBUTTON2:
 
@@ -2533,7 +2533,7 @@ Extra mouse button 1. This is sometimes present, usually to the sides of the mou
 
 :ref:`MouseButton<enum_@GlobalScope_MouseButton>` **MOUSE_BUTTON_XBUTTON2** = ``9``
 
-Extra mouse button 2. This is sometimes present, usually to the sides of the mouse.
+Nút chuột bổ sung 2. Nút này đôi khi có mặt, thường nằm ở hai bên chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -2543,7 +2543,7 @@ Extra mouse button 2. This is sometimes present, usually to the sides of the mou
 
 .. rst-class:: classref-enumeration
 
-flags **MouseButtonMask**: :ref:`🔗<enum_@GlobalScope_MouseButtonMask>`
+các cờ **MouseButtonMask**: :ref:`🔗 <enum_@GlobalScope_MouseButtonMask>`
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_MASK_LEFT:
 
@@ -2551,7 +2551,7 @@ flags **MouseButtonMask**: :ref:`🔗<enum_@GlobalScope_MouseButtonMask>`
 
 :ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>` **MOUSE_BUTTON_MASK_LEFT** = ``1``
 
-Primary mouse button mask, usually for the left button.
+Mặt nạ nút chuột chính, thường dành cho nút trái.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_MASK_RIGHT:
 
@@ -2559,7 +2559,7 @@ Primary mouse button mask, usually for the left button.
 
 :ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>` **MOUSE_BUTTON_MASK_RIGHT** = ``2``
 
-Secondary mouse button mask, usually for the right button.
+Mask nút chuột phụ, thường dùng cho nút bên phải.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_MASK_MIDDLE:
 
@@ -2567,7 +2567,7 @@ Secondary mouse button mask, usually for the right button.
 
 :ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>` **MOUSE_BUTTON_MASK_MIDDLE** = ``4``
 
-Middle mouse button mask.
+Mask nút chuột giữa.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_MASK_MB_XBUTTON1:
 
@@ -2575,7 +2575,7 @@ Middle mouse button mask.
 
 :ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>` **MOUSE_BUTTON_MASK_MB_XBUTTON1** = ``128``
 
-Extra mouse button 1 mask.
+Mask nút chuột bổ sung 1.
 
 .. _class_@GlobalScope_constant_MOUSE_BUTTON_MASK_MB_XBUTTON2:
 
@@ -2583,7 +2583,7 @@ Extra mouse button 1 mask.
 
 :ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>` **MOUSE_BUTTON_MASK_MB_XBUTTON2** = ``256``
 
-Extra mouse button 2 mask.
+Mask nút chuột bổ sung 2.
 
 .. rst-class:: classref-item-separator
 
@@ -2593,7 +2593,7 @@ Extra mouse button 2 mask.
 
 .. rst-class:: classref-enumeration
 
-enum **JoyButton**: :ref:`🔗<enum_@GlobalScope_JoyButton>`
+enum **JoyButton**: :ref:`🔗 <enum_@GlobalScope_JoyButton>`
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_INVALID:
 
@@ -2601,7 +2601,7 @@ enum **JoyButton**: :ref:`🔗<enum_@GlobalScope_JoyButton>`
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_INVALID** = ``-1``
 
-An invalid game controller button.
+Một nút bộ điều khiển trò chơi không hợp lệ.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_A:
 
@@ -2609,7 +2609,7 @@ An invalid game controller button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_A** = ``0``
 
-Game controller SDL button A. Corresponds to the bottom action button: Sony Cross, Xbox A, Nintendo B.
+Nút A của bộ điều khiển trò chơi SDL. Tương ứng với nút hành động phía dưới: Sony Cross, Xbox A, Nintendo B.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_B:
 
@@ -2617,7 +2617,7 @@ Game controller SDL button A. Corresponds to the bottom action button: Sony Cros
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_B** = ``1``
 
-Game controller SDL button B. Corresponds to the right action button: Sony Circle, Xbox B, Nintendo A.
+Nút B SDL của tay cầm chơi game. Tương ứng với nút hành động bên phải: Sony Circle, Xbox B, Nintendo A.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_X:
 
@@ -2625,7 +2625,7 @@ Game controller SDL button B. Corresponds to the right action button: Sony Circl
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_X** = ``2``
 
-Game controller SDL button X. Corresponds to the left action button: Sony Square, Xbox X, Nintendo Y.
+Nút X SDL của tay cầm chơi game. Tương ứng với nút hành động bên trái: Sony Square, Xbox X, Nintendo Y.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_Y:
 
@@ -2633,7 +2633,7 @@ Game controller SDL button X. Corresponds to the left action button: Sony Square
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_Y** = ``3``
 
-Game controller SDL button Y. Corresponds to the top action button: Sony Triangle, Xbox Y, Nintendo X.
+Nút Y SDL của tay cầm chơi game. Tương ứng với nút hành động phía trên: Sony Triangle, Xbox Y, Nintendo X.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_BACK:
 
@@ -2641,7 +2641,7 @@ Game controller SDL button Y. Corresponds to the top action button: Sony Triangl
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_BACK** = ``4``
 
-Game controller SDL back button. Corresponds to the Sony Select, Xbox Back, Nintendo - button.
+Nút quay lại SDL của tay cầm chơi game. Tương ứng với nút Sony Select, Xbox Back, Nintendo -.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_GUIDE:
 
@@ -2649,7 +2649,7 @@ Game controller SDL back button. Corresponds to the Sony Select, Xbox Back, Nint
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_GUIDE** = ``5``
 
-Game controller SDL guide button. Corresponds to the Sony PS, Xbox Home button.
+Nút hướng dẫn SDL của tay cầm chơi game. Tương ứng với nút Sony PS, Xbox Home.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_START:
 
@@ -2657,7 +2657,7 @@ Game controller SDL guide button. Corresponds to the Sony PS, Xbox Home button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_START** = ``6``
 
-Game controller SDL start button. Corresponds to the Sony Options, Xbox Menu, Nintendo + button.
+Nút bắt đầu SDL của tay cầm chơi game. Tương ứng với nút Sony Options, Xbox Menu, Nintendo +.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_LEFT_STICK:
 
@@ -2665,7 +2665,7 @@ Game controller SDL start button. Corresponds to the Sony Options, Xbox Menu, Ni
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_LEFT_STICK** = ``7``
 
-Game controller SDL left stick button. Corresponds to the Sony L3, Xbox L/LS button.
+Nút cần analog trái SDL của tay cầm chơi game. Tương ứng với nút Sony L3, Xbox L/LS.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_RIGHT_STICK:
 
@@ -2673,7 +2673,7 @@ Game controller SDL left stick button. Corresponds to the Sony L3, Xbox L/LS but
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_RIGHT_STICK** = ``8``
 
-Game controller SDL right stick button. Corresponds to the Sony R3, Xbox R/RS button.
+Nút cần analog phải SDL của tay cầm chơi game. Tương ứng với nút Sony R3, Xbox R/RS.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_LEFT_SHOULDER:
 
@@ -2681,7 +2681,7 @@ Game controller SDL right stick button. Corresponds to the Sony R3, Xbox R/RS bu
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_LEFT_SHOULDER** = ``9``
 
-Game controller SDL left shoulder button. Corresponds to the Sony L1, Xbox LB button.
+Nút vai trái SDL của tay cầm chơi game. Tương ứng với nút Sony L1, Xbox LB.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_RIGHT_SHOULDER:
 
@@ -2689,7 +2689,7 @@ Game controller SDL left shoulder button. Corresponds to the Sony L1, Xbox LB bu
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_RIGHT_SHOULDER** = ``10``
 
-Game controller SDL right shoulder button. Corresponds to the Sony R1, Xbox RB button.
+Nút vai phải SDL của tay cầm chơi game. Tương ứng với nút Sony R1, Xbox RB.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_DPAD_UP:
 
@@ -2697,7 +2697,7 @@ Game controller SDL right shoulder button. Corresponds to the Sony R1, Xbox RB b
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_DPAD_UP** = ``11``
 
-Game controller D-pad up button.
+Nút D-pad lên của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_DPAD_DOWN:
 
@@ -2705,7 +2705,7 @@ Game controller D-pad up button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_DPAD_DOWN** = ``12``
 
-Game controller D-pad down button.
+Nút D-pad xuống của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_DPAD_LEFT:
 
@@ -2713,7 +2713,7 @@ Game controller D-pad down button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_DPAD_LEFT** = ``13``
 
-Game controller D-pad left button.
+Nút D-pad trái của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_DPAD_RIGHT:
 
@@ -2721,7 +2721,7 @@ Game controller D-pad left button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_DPAD_RIGHT** = ``14``
 
-Game controller D-pad right button.
+Nút D-pad phải của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_MISC1:
 
@@ -2729,7 +2729,7 @@ Game controller D-pad right button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_MISC1** = ``15``
 
-Game controller SDL miscellaneous button. Corresponds to Xbox share button, PS5 microphone button, Nintendo Switch capture button.
+Nút miscellaneous SDL của tay cầm chơi game. Tương ứng với nút chia sẻ của Xbox, nút microphone của PS5 và nút chụp của Nintendo Switch.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_PADDLE1:
 
@@ -2737,7 +2737,7 @@ Game controller SDL miscellaneous button. Corresponds to Xbox share button, PS5 
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_PADDLE1** = ``16``
 
-Game controller SDL paddle 1 button.
+Nút paddle 1 SDL của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_PADDLE2:
 
@@ -2745,7 +2745,7 @@ Game controller SDL paddle 1 button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_PADDLE2** = ``17``
 
-Game controller SDL paddle 2 button.
+Nút paddle 2 SDL của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_PADDLE3:
 
@@ -2753,7 +2753,7 @@ Game controller SDL paddle 2 button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_PADDLE3** = ``18``
 
-Game controller SDL paddle 3 button.
+Nút paddle 3 SDL của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_PADDLE4:
 
@@ -2761,7 +2761,7 @@ Game controller SDL paddle 3 button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_PADDLE4** = ``19``
 
-Game controller SDL paddle 4 button.
+Nút paddle 4 SDL của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_TOUCHPAD:
 
@@ -2769,7 +2769,7 @@ Game controller SDL paddle 4 button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_TOUCHPAD** = ``20``
 
-Game controller SDL touchpad button.
+Nút touchpad SDL của tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_MISC2:
 
@@ -2777,7 +2777,7 @@ Game controller SDL touchpad button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_MISC2** = ``21``
 
-Game controller SDL miscellaneous button. Used by Nintendo Switch 2 Pro Controller and Horipad Steam controllers.
+Nút miscellaneous SDL của tay cầm chơi game. Được Nintendo Switch 2 Pro Controller và các tay cầm Horipad Steam sử dụng.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_MISC3:
 
@@ -2785,7 +2785,7 @@ Game controller SDL miscellaneous button. Used by Nintendo Switch 2 Pro Controll
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_MISC3** = ``22``
 
-Game controller SDL miscellaneous button.
+Nút miscellaneous của SDL cho tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_MISC4:
 
@@ -2793,7 +2793,7 @@ Game controller SDL miscellaneous button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_MISC4** = ``23``
 
-Game controller SDL miscellaneous button.
+Nút miscellaneous của SDL cho tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_MISC5:
 
@@ -2801,7 +2801,7 @@ Game controller SDL miscellaneous button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_MISC5** = ``24``
 
-Game controller SDL miscellaneous button.
+Nút miscellaneous của SDL cho tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_MISC6:
 
@@ -2809,7 +2809,7 @@ Game controller SDL miscellaneous button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_MISC6** = ``25``
 
-Game controller SDL miscellaneous button.
+Nút miscellaneous của SDL cho tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_SDL_MAX:
 
@@ -2817,7 +2817,7 @@ Game controller SDL miscellaneous button.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_SDL_MAX** = ``26``
 
-The number of SDL game controller buttons.
+Số lượng nút của tay cầm chơi game SDL.
 
 .. _class_@GlobalScope_constant_JOY_BUTTON_MAX:
 
@@ -2825,13 +2825,13 @@ The number of SDL game controller buttons.
 
 :ref:`JoyButton<enum_@GlobalScope_JoyButton>` **JOY_BUTTON_MAX** = ``128``
 
-The maximum number of game controller buttons supported by the engine. The actual limit may be lower on specific platforms:
+Số lượng nút tay cầm chơi game tối đa mà engine hỗ trợ. Giới hạn thực tế có thể thấp hơn trên một số nền tảng cụ thể:
 
-- **Android:** Up to 36 buttons.
+- **Android:** Tối đa 36 nút.
 
-- **Linux:** Up to 80 buttons.
+- **Linux:** Tối đa 80 nút.
 
-- **Windows** and **macOS:** Up to 128 buttons.
+- **Windows** và **macOS:** Tối đa 128 nút.
 
 .. rst-class:: classref-item-separator
 
@@ -2841,7 +2841,7 @@ The maximum number of game controller buttons supported by the engine. The actua
 
 .. rst-class:: classref-enumeration
 
-enum **JoyAxis**: :ref:`🔗<enum_@GlobalScope_JoyAxis>`
+enum **JoyAxis**: :ref:`🔗 <enum_@GlobalScope_JoyAxis>`
 
 .. _class_@GlobalScope_constant_JOY_AXIS_INVALID:
 
@@ -2849,7 +2849,7 @@ enum **JoyAxis**: :ref:`🔗<enum_@GlobalScope_JoyAxis>`
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_INVALID** = ``-1``
 
-An invalid game controller axis.
+Một trục của tay cầm chơi game không hợp lệ.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_LEFT_X:
 
@@ -2857,7 +2857,7 @@ An invalid game controller axis.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_LEFT_X** = ``0``
 
-Game controller left joystick x-axis.
+Trục x của cần analog bên trái trên tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_LEFT_Y:
 
@@ -2865,7 +2865,7 @@ Game controller left joystick x-axis.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_LEFT_Y** = ``1``
 
-Game controller left joystick y-axis.
+Trục y của cần analog bên trái trên tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_RIGHT_X:
 
@@ -2873,7 +2873,7 @@ Game controller left joystick y-axis.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_RIGHT_X** = ``2``
 
-Game controller right joystick x-axis.
+Trục x của cần analog bên phải trên tay cầm chơi game.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_RIGHT_Y:
 
@@ -2881,7 +2881,7 @@ Game controller right joystick x-axis.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_RIGHT_Y** = ``3``
 
-Game controller right joystick y-axis.
+Trục y của cần joystick bên phải của tay cầm game.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_TRIGGER_LEFT:
 
@@ -2889,7 +2889,7 @@ Game controller right joystick y-axis.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_TRIGGER_LEFT** = ``4``
 
-Game controller left trigger axis.
+Trục cò bên trái của tay cầm game.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_TRIGGER_RIGHT:
 
@@ -2897,7 +2897,7 @@ Game controller left trigger axis.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_TRIGGER_RIGHT** = ``5``
 
-Game controller right trigger axis.
+Trục cò bên phải của tay cầm game.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_SDL_MAX:
 
@@ -2905,7 +2905,7 @@ Game controller right trigger axis.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_SDL_MAX** = ``6``
 
-The number of SDL game controller axes.
+Số lượng trục của tay cầm game SDL.
 
 .. _class_@GlobalScope_constant_JOY_AXIS_MAX:
 
@@ -2913,7 +2913,7 @@ The number of SDL game controller axes.
 
 :ref:`JoyAxis<enum_@GlobalScope_JoyAxis>` **JOY_AXIS_MAX** = ``10``
 
-The maximum number of game controller axes: OpenVR supports up to 5 Joysticks making a total of 10 axes.
+Số lượng trục tay cầm game tối đa: OpenVR hỗ trợ tối đa 5 joystick, tạo thành tổng cộng 10 trục.
 
 .. rst-class:: classref-item-separator
 
@@ -2923,7 +2923,7 @@ The maximum number of game controller axes: OpenVR supports up to 5 Joysticks ma
 
 .. rst-class:: classref-enumeration
 
-enum **MIDIMessage**: :ref:`🔗<enum_@GlobalScope_MIDIMessage>`
+enum **MIDIMessage**: :ref:`🔗 <enum_@GlobalScope_MIDIMessage>`
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_NONE:
 
@@ -2931,7 +2931,7 @@ enum **MIDIMessage**: :ref:`🔗<enum_@GlobalScope_MIDIMessage>`
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_NONE** = ``0``
 
-Does not correspond to any MIDI message. This is the default value of :ref:`InputEventMIDI.message<class_InputEventMIDI_property_message>`.
+Không tương ứng với bất kỳ MIDI message nào. Đây là giá trị mặc định của :ref:`InputEventMIDI.message<class_InputEventMIDI_property_message>`.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_OFF:
 
@@ -2939,9 +2939,9 @@ Does not correspond to any MIDI message. This is the default value of :ref:`Inpu
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_NOTE_OFF** = ``8``
 
-MIDI message sent when a note is released.
+Thông điệp MIDI được gửi khi một nốt được nhả ra.
 
-\ **Note:** Not all MIDI devices send this message; some may send :ref:`MIDI_MESSAGE_NOTE_ON<class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_ON>` with :ref:`InputEventMIDI.velocity<class_InputEventMIDI_property_velocity>` set to ``0``.
+\ **Lưu ý:** Không phải tất cả thiết bị MIDI đều gửi thông điệp này; một số thiết bị có thể gửi :ref:`MIDI_MESSAGE_NOTE_ON<class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_ON>` với :ref:`InputEventMIDI.velocity<class_InputEventMIDI_property_velocity>` được đặt thành ``0``.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_ON:
 
@@ -2949,7 +2949,7 @@ MIDI message sent when a note is released.
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_NOTE_ON** = ``9``
 
-MIDI message sent when a note is pressed.
+Thông điệp MIDI được gửi khi một nốt được nhấn.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_AFTERTOUCH:
 
@@ -2957,7 +2957,7 @@ MIDI message sent when a note is pressed.
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_AFTERTOUCH** = ``10``
 
-MIDI message sent to indicate a change in pressure while a note is being pressed down, also called aftertouch.
+Thông điệp MIDI được gửi để cho biết sự thay đổi về áp lực trong khi một nốt đang được nhấn, còn gọi là aftertouch.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_CONTROL_CHANGE:
 
@@ -2965,7 +2965,7 @@ MIDI message sent to indicate a change in pressure while a note is being pressed
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_CONTROL_CHANGE** = ``11``
 
-MIDI message sent when a controller value changes. In a MIDI device, a controller is any input that doesn't play notes. These may include sliders for volume, balance, and panning, as well as switches and pedals. See the `General MIDI specification <https://en.wikipedia.org/wiki/General_MIDI#Controller_events>`__ for a small list.
+Thông điệp MIDI được gửi khi giá trị controller thay đổi. Trong một thiết bị MIDI, controller là bất kỳ đầu vào nào không phát nốt. Các đầu vào này có thể bao gồm các thanh trượt điều chỉnh âm lượng, cân bằng và panning, cũng như các công tắc và bàn đạp. Xem `đặc tả General MIDI <https://en.wikipedia.org/wiki/General_MIDI#Controller_events>`__ để biết một danh sách ngắn.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_PROGRAM_CHANGE:
 
@@ -2973,7 +2973,7 @@ MIDI message sent when a controller value changes. In a MIDI device, a controlle
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_PROGRAM_CHANGE** = ``12``
 
-MIDI message sent when the MIDI device changes its current instrument (also called *program* or *preset*).
+Thông điệp MIDI được gửi khi thiết bị MIDI thay đổi nhạc cụ hiện tại (còn gọi là *program* hoặc *preset*).
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_CHANNEL_PRESSURE:
 
@@ -2981,7 +2981,7 @@ MIDI message sent when the MIDI device changes its current instrument (also call
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_CHANNEL_PRESSURE** = ``13``
 
-MIDI message sent to indicate a change in pressure for the whole channel. Some MIDI devices may send this instead of :ref:`MIDI_MESSAGE_AFTERTOUCH<class_@GlobalScope_constant_MIDI_MESSAGE_AFTERTOUCH>`.
+Thông điệp MIDI được gửi để cho biết sự thay đổi về áp lực cho toàn bộ channel. Một số thiết bị MIDI có thể gửi thông điệp này thay vì :ref:`MIDI_MESSAGE_AFTERTOUCH<class_@GlobalScope_constant_MIDI_MESSAGE_AFTERTOUCH>`.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_PITCH_BEND:
 
@@ -2989,7 +2989,7 @@ MIDI message sent to indicate a change in pressure for the whole channel. Some M
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_PITCH_BEND** = ``14``
 
-MIDI message sent when the value of the pitch bender changes, usually a wheel on the MIDI device.
+Thông điệp MIDI được gửi khi giá trị của pitch bender thay đổi, thường là một bánh xe trên thiết bị MIDI.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_SYSTEM_EXCLUSIVE:
 
@@ -2997,9 +2997,9 @@ MIDI message sent when the value of the pitch bender changes, usually a wheel on
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_SYSTEM_EXCLUSIVE** = ``240``
 
-MIDI system exclusive (SysEx) message. This type of message is not standardized and it's highly dependent on the MIDI device sending it.
+Thông điệp MIDI system exclusive (SysEx). Loại thông điệp này không được chuẩn hóa và phụ thuộc rất nhiều vào thiết bị MIDI gửi nó.
 
-\ **Note:** Getting this message's data from :ref:`InputEventMIDI<class_InputEventMIDI>` is not implemented.
+\ **Lưu ý:** Việc lấy dữ liệu của thông điệp này từ :ref:`InputEventMIDI<class_InputEventMIDI>` chưa được triển khai.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_QUARTER_FRAME:
 
@@ -3007,9 +3007,9 @@ MIDI system exclusive (SysEx) message. This type of message is not standardized 
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_QUARTER_FRAME** = ``241``
 
-MIDI message sent every quarter frame to keep connected MIDI devices synchronized. Related to :ref:`MIDI_MESSAGE_TIMING_CLOCK<class_@GlobalScope_constant_MIDI_MESSAGE_TIMING_CLOCK>`.
+Thông điệp MIDI được gửi sau mỗi quarter frame để giữ cho các thiết bị MIDI được kết nối đồng bộ. Liên quan đến :ref:`MIDI_MESSAGE_TIMING_CLOCK<class_@GlobalScope_constant_MIDI_MESSAGE_TIMING_CLOCK>`.
 
-\ **Note:** Getting this message's data from :ref:`InputEventMIDI<class_InputEventMIDI>` is not implemented.
+\ **Lưu ý:** Việc lấy dữ liệu của thông điệp này từ :ref:`InputEventMIDI<class_InputEventMIDI>` chưa được triển khai.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_SONG_POSITION_POINTER:
 
@@ -3017,9 +3017,9 @@ MIDI message sent every quarter frame to keep connected MIDI devices synchronize
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_SONG_POSITION_POINTER** = ``242``
 
-MIDI message sent to jump onto a new position in the current sequence or song.
+Thông điệp MIDI được gửi để chuyển đến một vị trí mới trong sequence hoặc bài hát hiện tại.
 
-\ **Note:** Getting this message's data from :ref:`InputEventMIDI<class_InputEventMIDI>` is not implemented.
+\ **Lưu ý:** Việc lấy dữ liệu của thông điệp này từ :ref:`InputEventMIDI<class_InputEventMIDI>` chưa được triển khai.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_SONG_SELECT:
 
@@ -3027,9 +3027,9 @@ MIDI message sent to jump onto a new position in the current sequence or song.
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_SONG_SELECT** = ``243``
 
-MIDI message sent to select a sequence or song to play.
+Thông điệp MIDI được gửi để chọn một chuỗi hoặc bài hát cần phát.
 
-\ **Note:** Getting this message's data from :ref:`InputEventMIDI<class_InputEventMIDI>` is not implemented.
+\ **Lưu ý:** Việc lấy dữ liệu của thông điệp này từ :ref:`InputEventMIDI<class_InputEventMIDI>` chưa được triển khai.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_TUNE_REQUEST:
 
@@ -3037,7 +3037,7 @@ MIDI message sent to select a sequence or song to play.
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_TUNE_REQUEST** = ``246``
 
-MIDI message sent to request a tuning calibration. Used on analog synthesizers. Most modern MIDI devices do not need this message.
+Thông điệp MIDI được gửi để yêu cầu hiệu chỉnh cao độ. Được sử dụng trên các synthesizer analog. Hầu hết các thiết bị MIDI hiện đại không cần thông điệp này.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_TIMING_CLOCK:
 
@@ -3045,7 +3045,7 @@ MIDI message sent to request a tuning calibration. Used on analog synthesizers. 
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_TIMING_CLOCK** = ``248``
 
-MIDI message sent 24 times after :ref:`MIDI_MESSAGE_QUARTER_FRAME<class_@GlobalScope_constant_MIDI_MESSAGE_QUARTER_FRAME>`, to keep connected MIDI devices synchronized.
+Thông điệp MIDI được gửi 24 lần sau :ref:`MIDI_MESSAGE_QUARTER_FRAME<class_@GlobalScope_constant_MIDI_MESSAGE_QUARTER_FRAME>`, để giữ cho các thiết bị MIDI được kết nối đồng bộ.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_START:
 
@@ -3053,7 +3053,7 @@ MIDI message sent 24 times after :ref:`MIDI_MESSAGE_QUARTER_FRAME<class_@GlobalS
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_START** = ``250``
 
-MIDI message sent to start the current sequence or song from the beginning.
+Thông điệp MIDI được gửi để bắt đầu chuỗi hoặc bài hát hiện tại từ đầu.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_CONTINUE:
 
@@ -3061,7 +3061,7 @@ MIDI message sent to start the current sequence or song from the beginning.
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_CONTINUE** = ``251``
 
-MIDI message sent to resume from the point the current sequence or song was paused.
+Thông điệp MIDI được gửi để tiếp tục từ thời điểm chuỗi hoặc bài hát hiện tại bị tạm dừng.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_STOP:
 
@@ -3069,7 +3069,7 @@ MIDI message sent to resume from the point the current sequence or song was paus
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_STOP** = ``252``
 
-MIDI message sent to pause the current sequence or song.
+Thông điệp MIDI được gửi để tạm dừng chuỗi hoặc bài hát hiện tại.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_ACTIVE_SENSING:
 
@@ -3077,7 +3077,7 @@ MIDI message sent to pause the current sequence or song.
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_ACTIVE_SENSING** = ``254``
 
-MIDI message sent repeatedly while the MIDI device is idle, to tell the receiver that the connection is alive. Most MIDI devices do not send this message.
+Thông điệp MIDI được gửi lặp lại khi thiết bị MIDI không hoạt động, để báo cho bên nhận biết rằng kết nối vẫn còn hoạt động. Hầu hết thiết bị MIDI không gửi thông điệp này.
 
 .. _class_@GlobalScope_constant_MIDI_MESSAGE_SYSTEM_RESET:
 
@@ -3085,7 +3085,7 @@ MIDI message sent repeatedly while the MIDI device is idle, to tell the receiver
 
 :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **MIDI_MESSAGE_SYSTEM_RESET** = ``255``
 
-MIDI message sent to reset a MIDI device to its default state, as if it was just turned on. It should not be sent when the MIDI device is being turned on.
+Thông điệp MIDI được gửi để đặt thiết bị MIDI về trạng thái mặc định, như thể thiết bị vừa được bật. Không nên gửi thông điệp này khi thiết bị MIDI đang được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -3095,7 +3095,7 @@ MIDI message sent to reset a MIDI device to its default state, as if it was just
 
 .. rst-class:: classref-enumeration
 
-enum **Error**: :ref:`🔗<enum_@GlobalScope_Error>`
+enum **Error**: :ref:`🔗 <enum_@GlobalScope_Error>`
 
 .. _class_@GlobalScope_constant_OK:
 
@@ -3103,9 +3103,9 @@ enum **Error**: :ref:`🔗<enum_@GlobalScope_Error>`
 
 :ref:`Error<enum_@GlobalScope_Error>` **OK** = ``0``
 
-Methods that return :ref:`Error<enum_@GlobalScope_Error>` return :ref:`OK<class_@GlobalScope_constant_OK>` when no error occurred.
+Các phương thức trả về :ref:`Error <enum_@GlobalScope_Error>` sẽ trả về :ref:`OK<class_@GlobalScope_constant_OK>` khi không xảy ra lỗi.
 
-Since :ref:`OK<class_@GlobalScope_constant_OK>` has value ``0``, and all other error constants are positive integers, it can also be used in boolean checks.
+Vì :ref:`OK<class_@GlobalScope_constant_OK>` có giá trị ``0``, còn tất cả hằng số lỗi khác đều là số nguyên dương, nên nó cũng có thể được dùng trong các phép kiểm tra boolean.
 
 ::
 
@@ -3117,7 +3117,7 @@ Since :ref:`OK<class_@GlobalScope_constant_OK>` has value ``0``, and all other e
     if error:
         printerr("Still failing!")
 
-\ **Note:** Many functions do not return an error code, but will print error messages to standard output.
+\ **Lưu ý:** Nhiều hàm không trả về mã lỗi, nhưng sẽ in thông báo lỗi ra standard output.
 
 .. _class_@GlobalScope_constant_FAILED:
 
@@ -3125,7 +3125,7 @@ Since :ref:`OK<class_@GlobalScope_constant_OK>` has value ``0``, and all other e
 
 :ref:`Error<enum_@GlobalScope_Error>` **FAILED** = ``1``
 
-Generic error.
+Lỗi chung.
 
 .. _class_@GlobalScope_constant_ERR_UNAVAILABLE:
 
@@ -3133,7 +3133,7 @@ Generic error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_UNAVAILABLE** = ``2``
 
-Unavailable error.
+Lỗi không khả dụng.
 
 .. _class_@GlobalScope_constant_ERR_UNCONFIGURED:
 
@@ -3141,7 +3141,7 @@ Unavailable error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_UNCONFIGURED** = ``3``
 
-Unconfigured error.
+Lỗi chưa được cấu hình.
 
 .. _class_@GlobalScope_constant_ERR_UNAUTHORIZED:
 
@@ -3149,7 +3149,7 @@ Unconfigured error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_UNAUTHORIZED** = ``4``
 
-Unauthorized error.
+Lỗi không được cấp quyền.
 
 .. _class_@GlobalScope_constant_ERR_PARAMETER_RANGE_ERROR:
 
@@ -3157,7 +3157,7 @@ Unauthorized error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_PARAMETER_RANGE_ERROR** = ``5``
 
-Parameter range error.
+Lỗi phạm vi tham số.
 
 .. _class_@GlobalScope_constant_ERR_OUT_OF_MEMORY:
 
@@ -3165,7 +3165,7 @@ Parameter range error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_OUT_OF_MEMORY** = ``6``
 
-Out of memory (OOM) error.
+Lỗi hết bộ nhớ (OOM).
 
 .. _class_@GlobalScope_constant_ERR_FILE_NOT_FOUND:
 
@@ -3173,7 +3173,7 @@ Out of memory (OOM) error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_NOT_FOUND** = ``7``
 
-File: Not found error.
+Tệp: Lỗi không tìm thấy.
 
 .. _class_@GlobalScope_constant_ERR_FILE_BAD_DRIVE:
 
@@ -3181,7 +3181,7 @@ File: Not found error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_BAD_DRIVE** = ``8``
 
-File: Bad drive error.
+Tệp: Lỗi ổ đĩa không hợp lệ.
 
 .. _class_@GlobalScope_constant_ERR_FILE_BAD_PATH:
 
@@ -3189,7 +3189,7 @@ File: Bad drive error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_BAD_PATH** = ``9``
 
-File: Bad path error.
+Tệp: Lỗi đường dẫn không hợp lệ.
 
 .. _class_@GlobalScope_constant_ERR_FILE_NO_PERMISSION:
 
@@ -3197,7 +3197,7 @@ File: Bad path error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_NO_PERMISSION** = ``10``
 
-File: No permission error.
+Tệp: Lỗi không có quyền.
 
 .. _class_@GlobalScope_constant_ERR_FILE_ALREADY_IN_USE:
 
@@ -3205,7 +3205,7 @@ File: No permission error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_ALREADY_IN_USE** = ``11``
 
-File: Already in use error.
+Tệp: Lỗi đang được sử dụng.
 
 .. _class_@GlobalScope_constant_ERR_FILE_CANT_OPEN:
 
@@ -3213,7 +3213,7 @@ File: Already in use error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_CANT_OPEN** = ``12``
 
-File: Can't open error.
+Tệp: Lỗi không thể mở.
 
 .. _class_@GlobalScope_constant_ERR_FILE_CANT_WRITE:
 
@@ -3221,7 +3221,7 @@ File: Can't open error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_CANT_WRITE** = ``13``
 
-File: Can't write error.
+Tệp: Lỗi không thể ghi.
 
 .. _class_@GlobalScope_constant_ERR_FILE_CANT_READ:
 
@@ -3229,7 +3229,7 @@ File: Can't write error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_CANT_READ** = ``14``
 
-File: Can't read error.
+Tệp: Lỗi không thể đọc.
 
 .. _class_@GlobalScope_constant_ERR_FILE_UNRECOGNIZED:
 
@@ -3237,7 +3237,7 @@ File: Can't read error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_UNRECOGNIZED** = ``15``
 
-File: Unrecognized error.
+Tệp: Lỗi không nhận dạng được.
 
 .. _class_@GlobalScope_constant_ERR_FILE_CORRUPT:
 
@@ -3245,7 +3245,7 @@ File: Unrecognized error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_CORRUPT** = ``16``
 
-File: Corrupt error.
+Tệp: Lỗi tệp bị hỏng.
 
 .. _class_@GlobalScope_constant_ERR_FILE_MISSING_DEPENDENCIES:
 
@@ -3253,7 +3253,7 @@ File: Corrupt error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_MISSING_DEPENDENCIES** = ``17``
 
-File: Missing dependencies error.
+Tệp: Lỗi thiếu dependency.
 
 .. _class_@GlobalScope_constant_ERR_FILE_EOF:
 
@@ -3261,7 +3261,7 @@ File: Missing dependencies error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_FILE_EOF** = ``18``
 
-File: End of file (EOF) error.
+Tệp: Lỗi cuối tệp (EOF).
 
 .. _class_@GlobalScope_constant_ERR_CANT_OPEN:
 
@@ -3269,7 +3269,7 @@ File: End of file (EOF) error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CANT_OPEN** = ``19``
 
-Can't open error.
+Lỗi không thể mở.
 
 .. _class_@GlobalScope_constant_ERR_CANT_CREATE:
 
@@ -3277,7 +3277,7 @@ Can't open error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CANT_CREATE** = ``20``
 
-Can't create error.
+Lỗi không thể tạo.
 
 .. _class_@GlobalScope_constant_ERR_QUERY_FAILED:
 
@@ -3285,7 +3285,7 @@ Can't create error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_QUERY_FAILED** = ``21``
 
-Query failed error.
+Lỗi truy vấn không thành công.
 
 .. _class_@GlobalScope_constant_ERR_ALREADY_IN_USE:
 
@@ -3293,7 +3293,7 @@ Query failed error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_ALREADY_IN_USE** = ``22``
 
-Already in use error.
+Lỗi đã được sử dụng.
 
 .. _class_@GlobalScope_constant_ERR_LOCKED:
 
@@ -3301,7 +3301,7 @@ Already in use error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_LOCKED** = ``23``
 
-Locked error.
+Lỗi bị khóa.
 
 .. _class_@GlobalScope_constant_ERR_TIMEOUT:
 
@@ -3309,7 +3309,7 @@ Locked error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_TIMEOUT** = ``24``
 
-Timeout error.
+Lỗi hết thời gian chờ.
 
 .. _class_@GlobalScope_constant_ERR_CANT_CONNECT:
 
@@ -3317,7 +3317,7 @@ Timeout error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CANT_CONNECT** = ``25``
 
-Can't connect error.
+Lỗi không thể kết nối.
 
 .. _class_@GlobalScope_constant_ERR_CANT_RESOLVE:
 
@@ -3325,7 +3325,7 @@ Can't connect error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CANT_RESOLVE** = ``26``
 
-Can't resolve error.
+Lỗi không thể phân giải.
 
 .. _class_@GlobalScope_constant_ERR_CONNECTION_ERROR:
 
@@ -3333,7 +3333,7 @@ Can't resolve error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CONNECTION_ERROR** = ``27``
 
-Connection error.
+Lỗi kết nối.
 
 .. _class_@GlobalScope_constant_ERR_CANT_ACQUIRE_RESOURCE:
 
@@ -3341,7 +3341,7 @@ Connection error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CANT_ACQUIRE_RESOURCE** = ``28``
 
-Can't acquire resource error.
+Lỗi không thể giành được tài nguyên.
 
 .. _class_@GlobalScope_constant_ERR_CANT_FORK:
 
@@ -3349,7 +3349,7 @@ Can't acquire resource error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CANT_FORK** = ``29``
 
-Can't fork process error.
+Lỗi không thể fork tiến trình.
 
 .. _class_@GlobalScope_constant_ERR_INVALID_DATA:
 
@@ -3357,7 +3357,7 @@ Can't fork process error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_INVALID_DATA** = ``30``
 
-Invalid data error.
+Lỗi dữ liệu không hợp lệ.
 
 .. _class_@GlobalScope_constant_ERR_INVALID_PARAMETER:
 
@@ -3365,7 +3365,7 @@ Invalid data error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_INVALID_PARAMETER** = ``31``
 
-Invalid parameter error.
+Lỗi tham số không hợp lệ.
 
 .. _class_@GlobalScope_constant_ERR_ALREADY_EXISTS:
 
@@ -3373,7 +3373,7 @@ Invalid parameter error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_ALREADY_EXISTS** = ``32``
 
-Already exists error.
+Lỗi đã tồn tại.
 
 .. _class_@GlobalScope_constant_ERR_DOES_NOT_EXIST:
 
@@ -3381,7 +3381,7 @@ Already exists error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_DOES_NOT_EXIST** = ``33``
 
-Does not exist error.
+Lỗi không tồn tại.
 
 .. _class_@GlobalScope_constant_ERR_DATABASE_CANT_READ:
 
@@ -3389,7 +3389,7 @@ Does not exist error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_DATABASE_CANT_READ** = ``34``
 
-Database: Read error.
+Cơ sở dữ liệu: Lỗi đọc.
 
 .. _class_@GlobalScope_constant_ERR_DATABASE_CANT_WRITE:
 
@@ -3397,7 +3397,7 @@ Database: Read error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_DATABASE_CANT_WRITE** = ``35``
 
-Database: Write error.
+Cơ sở dữ liệu: Lỗi ghi.
 
 .. _class_@GlobalScope_constant_ERR_COMPILATION_FAILED:
 
@@ -3405,7 +3405,7 @@ Database: Write error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_COMPILATION_FAILED** = ``36``
 
-Compilation failed error.
+Lỗi biên dịch không thành công.
 
 .. _class_@GlobalScope_constant_ERR_METHOD_NOT_FOUND:
 
@@ -3413,7 +3413,7 @@ Compilation failed error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_METHOD_NOT_FOUND** = ``37``
 
-Method not found error.
+Lỗi không tìm thấy phương thức.
 
 .. _class_@GlobalScope_constant_ERR_LINK_FAILED:
 
@@ -3421,7 +3421,7 @@ Method not found error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_LINK_FAILED** = ``38``
 
-Linking failed error.
+Lỗi liên kết không thành công.
 
 .. _class_@GlobalScope_constant_ERR_SCRIPT_FAILED:
 
@@ -3429,7 +3429,7 @@ Linking failed error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_SCRIPT_FAILED** = ``39``
 
-Script failed error.
+Lỗi tập lệnh không thành công.
 
 .. _class_@GlobalScope_constant_ERR_CYCLIC_LINK:
 
@@ -3437,7 +3437,7 @@ Script failed error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_CYCLIC_LINK** = ``40``
 
-Cycling link (import cycle) error.
+Lỗi liên kết vòng (import cycle).
 
 .. _class_@GlobalScope_constant_ERR_INVALID_DECLARATION:
 
@@ -3445,7 +3445,7 @@ Cycling link (import cycle) error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_INVALID_DECLARATION** = ``41``
 
-Invalid declaration error.
+Lỗi khai báo không hợp lệ.
 
 .. _class_@GlobalScope_constant_ERR_DUPLICATE_SYMBOL:
 
@@ -3453,7 +3453,7 @@ Invalid declaration error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_DUPLICATE_SYMBOL** = ``42``
 
-Duplicate symbol error.
+Lỗi ký hiệu trùng lặp.
 
 .. _class_@GlobalScope_constant_ERR_PARSE_ERROR:
 
@@ -3461,7 +3461,7 @@ Duplicate symbol error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_PARSE_ERROR** = ``43``
 
-Parse error.
+Lỗi phân tích cú pháp.
 
 .. _class_@GlobalScope_constant_ERR_BUSY:
 
@@ -3469,7 +3469,7 @@ Parse error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_BUSY** = ``44``
 
-Busy error.
+Lỗi bận.
 
 .. _class_@GlobalScope_constant_ERR_SKIP:
 
@@ -3477,7 +3477,7 @@ Busy error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_SKIP** = ``45``
 
-Skip error.
+Lỗi bỏ qua.
 
 .. _class_@GlobalScope_constant_ERR_HELP:
 
@@ -3485,7 +3485,7 @@ Skip error.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_HELP** = ``46``
 
-Help error. Used internally when passing ``--version`` or ``--help`` as executable options.
+Lỗi trợ giúp. Được sử dụng nội bộ khi truyền ``--version`` hoặc ``--help`` dưới dạng tùy chọn thực thi.
 
 .. _class_@GlobalScope_constant_ERR_BUG:
 
@@ -3493,9 +3493,9 @@ Help error. Used internally when passing ``--version`` or ``--help`` as executab
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_BUG** = ``47``
 
-Bug error, caused by an implementation issue in the method.
+Lỗi do bug, gây ra bởi vấn đề trong quá trình triển khai phương thức.
 
-\ **Note:** If a built-in method returns this code, please open an issue on `the GitHub Issue Tracker <https://github.com/godotengine/godot/issues>`__.
+\ **Lưu ý:** Nếu một phương thức tích hợp sẵn trả về mã này, vui lòng mở một issue trên `the GitHub Issue Tracker <https://github.com/godotengine/godot/issues>`__.
 
 .. _class_@GlobalScope_constant_ERR_PRINTER_ON_FIRE:
 
@@ -3503,7 +3503,7 @@ Bug error, caused by an implementation issue in the method.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ERR_PRINTER_ON_FIRE** = ``48``
 
-Printer on fire error (this is an easter egg, no built-in methods return this error code).
+Lỗi máy in bốc cháy (đây là một easter egg, không có phương thức tích hợp sẵn nào trả về mã lỗi này).
 
 .. rst-class:: classref-item-separator
 
@@ -3513,7 +3513,7 @@ Printer on fire error (this is an easter egg, no built-in methods return this er
 
 .. rst-class:: classref-enumeration
 
-enum **PropertyHint**: :ref:`🔗<enum_@GlobalScope_PropertyHint>`
+enum **PropertyHint**: :ref:`🔗 <enum_@GlobalScope_PropertyHint>`
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_NONE:
 
@@ -3521,7 +3521,7 @@ enum **PropertyHint**: :ref:`🔗<enum_@GlobalScope_PropertyHint>`
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_NONE** = ``0``
 
-The property has no hint for the editor. However, the hint string is still read, which can be used to specify a suffix for a property that has no range limit (see :ref:`PROPERTY_HINT_RANGE<class_@GlobalScope_constant_PROPERTY_HINT_RANGE>`'s description).
+Thuộc tính này không có gợi ý cho editor. Tuy nhiên, chuỗi gợi ý vẫn được đọc, nên có thể dùng để chỉ định hậu tố cho một thuộc tính không có giới hạn phạm vi (xem phần mô tả của :ref:`PROPERTY_HINT_RANGE<class_@GlobalScope_constant_PROPERTY_HINT_RANGE>`).
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_RANGE:
 
@@ -3529,11 +3529,11 @@ The property has no hint for the editor. However, the hint string is still read,
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_RANGE** = ``1``
 
-Hints that an :ref:`int<class_int>`, :ref:`float<class_float>`, or packed/typed :ref:`Array<class_Array>` property containing :ref:`int<class_int>` or :ref:`float<class_float>` types should be within a range specified via the hint string ``"min,max"`` or ``"min,max,step"``. The hint string can optionally include ``"or_greater"`` and/or ``"or_less"`` to allow manual input going respectively above the max or below the min values.
+Gợi ý rằng thuộc tính :ref:`int<class_int>`, :ref:`float<class_float>` hoặc thuộc tính :ref:`Array<class_Array>` được packed/typed chứa các kiểu :ref:`int<class_int>` hoặc :ref:`float<class_float>` nên nằm trong phạm vi được chỉ định thông qua chuỗi gợi ý ``"min,max"`` hoặc ``"min,max,step"``. Chuỗi gợi ý có thể tùy chọn bao gồm ``"or_greater"`` và/hoặc ``"or_less"`` để cho phép nhập thủ công lần lượt vượt quá giá trị tối đa hoặc thấp hơn giá trị tối thiểu.
 
-\ **Example:** ``"-360,360,1,or_greater,or_less"``.
+\ **Ví dụ:** ``"-360,360,1,or_greater,or_less"``.
 
-Additionally, other keywords can be included: ``"exp"`` for exponential range editing, ``"radians_as_degrees"`` for editing radian angles in degrees (the range values are also in degrees), ``"degrees"`` to hint at an angle, ``"prefer_slider"`` to show the slider for integers, ``"hide_control"`` to hide the slider or up-down arrows, and ``"suffix:px/s"`` to display a suffix indicating the value's unit (e.g. ``px/s`` for pixels per second).
+Ngoài ra, có thể bao gồm các từ khóa khác: ``"exp"`` để chỉnh sửa phạm vi theo cấp số mũ, ``"radians_as_degrees"`` để chỉnh sửa các góc radian theo độ (các giá trị phạm vi cũng tính theo độ), ``"degrees"`` để gợi ý rằng đây là một góc, ``"prefer_slider"`` để hiển thị thanh trượt cho số nguyên, ``"hide_control"`` để ẩn thanh trượt hoặc các mũi tên tăng giảm, và ``"suffix:px/s"`` để hiển thị hậu tố cho biết đơn vị của giá trị (ví dụ: ``px/s`` cho pixel trên giây).
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_ENUM:
 
@@ -3541,9 +3541,9 @@ Additionally, other keywords can be included: ``"exp"`` for exponential range ed
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_ENUM** = ``2``
 
-Hints that an :ref:`int<class_int>`, :ref:`String<class_String>`, or :ref:`StringName<class_StringName>` property is an enumerated value to pick in a list specified via a hint string.
+Gợi ý rằng thuộc tính :ref:`int<class_int>`, :ref:`String<class_String>` hoặc :ref:`StringName<class_StringName>` là một giá trị enum để chọn trong danh sách được chỉ định thông qua chuỗi gợi ý.
 
-The hint string is a comma separated list of names such as ``"Hello,Something,Else"``. Whitespace is **not** removed from either end of a name. For integer properties, the first name in the list has value 0, the next 1, and so on. Explicit values can also be specified by appending ``:integer`` to the name, e.g. ``"Zero,One,Three:3,Four,Six:6"``.
+Chuỗi gợi ý là một danh sách tên được phân tách bằng dấu phẩy, chẳng hạn như ``"Hello,Something,Else"``. Khoảng trắng được **không** loại bỏ khỏi hai đầu của tên. Đối với các thuộc tính số nguyên, tên đầu tiên trong danh sách có giá trị 0, tên tiếp theo có giá trị 1, v.v. Cũng có thể chỉ định giá trị rõ ràng bằng cách thêm ``:integer`` vào tên, ví dụ: ``"Zero,One,Three:3,Four,Six:6"``.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_ENUM_SUGGESTION:
 
@@ -3551,9 +3551,9 @@ The hint string is a comma separated list of names such as ``"Hello,Something,El
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_ENUM_SUGGESTION** = ``3``
 
-Hints that a :ref:`String<class_String>` or :ref:`StringName<class_StringName>` property can be an enumerated value to pick in a list specified via a hint string such as ``"Hello,Something,Else"``. See :ref:`PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>` for details.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` hoặc :ref:`StringName<class_StringName>` có thể là một giá trị enum để chọn trong danh sách được chỉ định thông qua chuỗi gợi ý, chẳng hạn như ``"Hello,Something,Else"``. Xem :ref:`PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>` để biết chi tiết.
 
-Unlike :ref:`PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>`, a property with this hint still accepts arbitrary values and can be empty. The list of values serves to suggest possible values.
+Không giống :ref:`PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>`, một thuộc tính có gợi ý này vẫn chấp nhận các giá trị tùy ý và có thể để trống. Danh sách các giá trị được dùng để gợi ý những giá trị có thể sử dụng.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_EXP_EASING:
 
@@ -3561,7 +3561,7 @@ Unlike :ref:`PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>`
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_EXP_EASING** = ``4``
 
-Hints that a :ref:`float<class_float>` property should be edited using a curve editor showing an exponential easing function. The hint string can include ``"attenuation"`` to flip the curve horizontally and/or ``"positive_only"`` to exclude in/out easing and limit values to be greater than or equal to zero. This displays differently to a property that uses :ref:`PROPERTY_HINT_RANGE<class_@GlobalScope_constant_PROPERTY_HINT_RANGE>` with the ``"exp"`` keyword, as it's edited with a slider instead of a curve editor.
+Gợi ý rằng một thuộc tính :ref:`float<class_float>` nên được chỉnh sửa bằng trình chỉnh sửa đường cong hiển thị hàm easing (làm mượt) hàm mũ. Chuỗi gợi ý có thể bao gồm ``"attenuation"`` để lật đường cong theo chiều ngang và/hoặc ``"positive_only"`` để loại trừ easing vào/ra và giới hạn các giá trị ở mức lớn hơn hoặc bằng 0. Cách hiển thị này khác với thuộc tính sử dụng :ref:`PROPERTY_HINT_RANGE<class_@GlobalScope_constant_PROPERTY_HINT_RANGE>` cùng từ khóa ``"exp"``, vì thuộc tính đó được chỉnh sửa bằng thanh trượt thay vì trình chỉnh sửa đường cong.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LINK:
 
@@ -3569,7 +3569,7 @@ Hints that a :ref:`float<class_float>` property should be edited using a curve e
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LINK** = ``5``
 
-Hints that a vector property should allow its components to be linked. For example, this allows :ref:`Vector2.x<class_Vector2_property_x>` and :ref:`Vector2.y<class_Vector2_property_y>` to be edited together. This hint is supported on :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, and :ref:`Vector4i<class_Vector4i>`. The hint string can be used to specify a suffix indicating each value's unit with the ``"suffix:px/s"`` syntax.
+Gợi ý rằng các thành phần của một thuộc tính vector có thể được liên kết. Ví dụ, điều này cho phép chỉnh sửa :ref:`Vector2.x<class_Vector2_property_x>` và :ref:`Vector2.y<class_Vector2_property_y>` cùng nhau. Gợi ý này được hỗ trợ trên :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>` và :ref:`Vector4i<class_Vector4i>`. Chuỗi gợi ý có thể được dùng để chỉ định hậu tố cho biết đơn vị của từng giá trị bằng cú pháp ``"suffix:px/s"``.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_FLAGS:
 
@@ -3577,13 +3577,13 @@ Hints that a vector property should allow its components to be linked. For examp
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_FLAGS** = ``6``
 
-Hints that an :ref:`int<class_int>` property is a bitmask with named bit flags.
+Gợi ý rằng một thuộc tính :ref:`int<class_int>` là một bitmask có các cờ bit được đặt tên.
 
-The hint string is a comma separated list of names such as ``"Bit0,Bit1,Bit2,Bit3"``. Whitespace is **not** removed from either end of a name. The first name in the list has value 1, the next 2, then 4, 8, 16 and so on. Explicit values can also be specified by appending ``:integer`` to the name, e.g. ``"A:4,B:8,C:16"``. You can also combine several flags (``"A:4,B:8,AB:12,C:16"``).
+Chuỗi gợi ý là danh sách tên được phân tách bằng dấu phẩy, chẳng hạn như ``"Bit0,Bit1,Bit2,Bit3"``. Khoảng trắng **không** được loại bỏ ở hai đầu của tên. Tên đầu tiên trong danh sách có giá trị 1, tên tiếp theo có giá trị 2, rồi 4, 8, 16 và tiếp tục như vậy. Bạn cũng có thể chỉ định giá trị tường minh bằng cách thêm ``:integer`` vào tên, ví dụ ``"A:4,B:8,C:16"``. Bạn cũng có thể kết hợp một số cờ (``"A:4,B:8,AB:12,C:16"``).
 
-\ **Note:** A flag value must be at least ``1`` and at most ``2 ** 32 - 1``.
+\ **Lưu ý:** Giá trị cờ phải ít nhất là ``1`` và nhiều nhất là ``2 ** 32 - 1``.
 
-\ **Note:** Unlike :ref:`PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>`, the previous explicit value is not taken into account. For the hint ``"A:16,B,C"``, A is 16, B is 2, C is 4.
+\ **Lưu ý:** Không giống :ref:`PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>`, giá trị tường minh trước đó không được tính đến. Với gợi ý ``"A:16,B,C"``, A là 16, B là 2, C là 4.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_RENDER:
 
@@ -3591,7 +3591,7 @@ The hint string is a comma separated list of names such as ``"Bit0,Bit1,Bit2,Bit
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LAYERS_2D_RENDER** = ``7``
 
-Hints that an :ref:`int<class_int>` property is a bitmask using the optionally named 2D render layers.
+Cho biết thuộc tính :ref:`int<class_int>` là một bitmask sử dụng các lớp kết xuất 2D có thể được đặt tên tùy chọn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_PHYSICS:
 
@@ -3599,7 +3599,7 @@ Hints that an :ref:`int<class_int>` property is a bitmask using the optionally n
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LAYERS_2D_PHYSICS** = ``8``
 
-Hints that an :ref:`int<class_int>` property is a bitmask using the optionally named 2D physics layers.
+Cho biết thuộc tính :ref:`int<class_int>` là một bitmask sử dụng các lớp vật lý 2D có thể được đặt tên tùy chọn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_NAVIGATION:
 
@@ -3607,7 +3607,7 @@ Hints that an :ref:`int<class_int>` property is a bitmask using the optionally n
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LAYERS_2D_NAVIGATION** = ``9``
 
-Hints that an :ref:`int<class_int>` property is a bitmask using the optionally named 2D navigation layers.
+Cho biết thuộc tính :ref:`int<class_int>` là một bitmask sử dụng các lớp điều hướng 2D có thể được đặt tên tùy chọn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_RENDER:
 
@@ -3615,7 +3615,7 @@ Hints that an :ref:`int<class_int>` property is a bitmask using the optionally n
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LAYERS_3D_RENDER** = ``10``
 
-Hints that an :ref:`int<class_int>` property is a bitmask using the optionally named 3D render layers.
+Cho biết thuộc tính :ref:`int<class_int>` là một bitmask sử dụng các lớp kết xuất 3D có thể được đặt tên tùy chọn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_PHYSICS:
 
@@ -3623,7 +3623,7 @@ Hints that an :ref:`int<class_int>` property is a bitmask using the optionally n
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LAYERS_3D_PHYSICS** = ``11``
 
-Hints that an :ref:`int<class_int>` property is a bitmask using the optionally named 3D physics layers.
+Cho biết thuộc tính :ref:`int<class_int>` là một bitmask sử dụng các lớp vật lý 3D có thể được đặt tên tùy chọn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_NAVIGATION:
 
@@ -3631,7 +3631,7 @@ Hints that an :ref:`int<class_int>` property is a bitmask using the optionally n
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LAYERS_3D_NAVIGATION** = ``12``
 
-Hints that an :ref:`int<class_int>` property is a bitmask using the optionally named 3D navigation layers.
+Cho biết thuộc tính :ref:`int<class_int>` là một bitmask sử dụng các lớp điều hướng 3D có thể được đặt tên tùy chọn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_AVOIDANCE:
 
@@ -3639,7 +3639,7 @@ Hints that an :ref:`int<class_int>` property is a bitmask using the optionally n
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LAYERS_AVOIDANCE** = ``37``
 
-Hints that an integer property is a bitmask using the optionally named avoidance layers.
+Cho biết một thuộc tính số nguyên là một bitmask sử dụng các lớp tránh né có thể được đặt tên tùy chọn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_FILE:
 
@@ -3647,7 +3647,7 @@ Hints that an integer property is a bitmask using the optionally named avoidance
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_FILE** = ``13``
 
-Hints that a :ref:`String<class_String>` property is a path to a file. Editing it will show a file dialog for picking the path. The hint string can be a set of filters with wildcards like ``"*.png,*.jpg"``. By default the file will be stored as UID whenever available. You can use :ref:`ResourceUID<class_ResourceUID>` methods to convert it back to path. For storing a raw path, use :ref:`PROPERTY_HINT_FILE_PATH<class_@GlobalScope_constant_PROPERTY_HINT_FILE_PATH>`.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` là đường dẫn đến một tệp. Khi chỉnh sửa, một hộp thoại tệp sẽ hiển thị để chọn đường dẫn. Chuỗi gợi ý có thể là một tập hợp các bộ lọc với ký tự đại diện như ``"*.png,*.jpg"``. Theo mặc định, tệp sẽ được lưu dưới dạng UID nếu có thể. Bạn có thể sử dụng các phương thức :ref:`ResourceUID<class_ResourceUID>` để chuyển đổi nó trở lại thành đường dẫn. Để lưu đường dẫn thô, hãy sử dụng :ref:`PROPERTY_HINT_FILE_PATH<class_@GlobalScope_constant_PROPERTY_HINT_FILE_PATH>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_DIR:
 
@@ -3655,7 +3655,7 @@ Hints that a :ref:`String<class_String>` property is a path to a file. Editing i
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_DIR** = ``14``
 
-Hints that a :ref:`String<class_String>` property is a path to a directory. Editing it will show a file dialog for picking the path.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` là đường dẫn đến một thư mục. Khi chỉnh sửa, một hộp thoại tệp sẽ hiển thị để chọn đường dẫn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_GLOBAL_FILE:
 
@@ -3663,7 +3663,7 @@ Hints that a :ref:`String<class_String>` property is a path to a directory. Edit
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_GLOBAL_FILE** = ``15``
 
-Hints that a :ref:`String<class_String>` property is an absolute path to a file outside the project folder. Editing it will show a file dialog for picking the path. The hint string can be a set of filters with wildcards, like ``"*.png,*.jpg"``.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` là đường dẫn tuyệt đối đến một tệp bên ngoài thư mục dự án. Khi chỉnh sửa, một hộp thoại tệp sẽ hiển thị để chọn đường dẫn. Chuỗi gợi ý có thể là một tập hợp các bộ lọc với ký tự đại diện, chẳng hạn như ``"*.png,*.jpg"``.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_GLOBAL_DIR:
 
@@ -3671,7 +3671,7 @@ Hints that a :ref:`String<class_String>` property is an absolute path to a file 
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_GLOBAL_DIR** = ``16``
 
-Hints that a :ref:`String<class_String>` property is an absolute path to a directory outside the project folder. Editing it will show a file dialog for picking the path.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` là đường dẫn tuyệt đối đến một thư mục bên ngoài thư mục dự án. Khi chỉnh sửa, một hộp thoại tệp sẽ hiển thị để chọn đường dẫn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_RESOURCE_TYPE:
 
@@ -3679,7 +3679,7 @@ Hints that a :ref:`String<class_String>` property is an absolute path to a direc
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_RESOURCE_TYPE** = ``17``
 
-Hints that a property is an instance of a :ref:`Resource<class_Resource>`-derived type, optionally specified via the hint string (e.g. ``"Texture2D"``). Editing it will show a popup menu of valid resource types to instantiate.
+Gợi ý rằng một thuộc tính là một instance của kiểu dẫn xuất từ :ref:`Resource<class_Resource>`, có thể được chỉ định thông qua chuỗi gợi ý (ví dụ: ``"Texture2D"``). Khi chỉnh sửa, một menu bật lên sẽ hiển thị các kiểu tài nguyên hợp lệ để khởi tạo.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_MULTILINE_TEXT:
 
@@ -3687,11 +3687,11 @@ Hints that a property is an instance of a :ref:`Resource<class_Resource>`-derive
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_MULTILINE_TEXT** = ``18``
 
-Hints that a :ref:`String<class_String>` property is text with line breaks. Editing it will show a text input field where line breaks can be typed.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` là văn bản có ngắt dòng. Khi chỉnh sửa, một trường nhập văn bản sẽ hiển thị, cho phép nhập ngắt dòng.
 
-The hint string can be set to ``"monospace"`` to force the input field to use a monospaced font.
+Có thể đặt chuỗi gợi ý thành ``"monospace"`` để buộc trường nhập sử dụng phông chữ đơn cách.
 
-If the hint string ``"no_wrap"`` is set, the input field will not wrap lines at boundaries, instead resorting to making the area scrollable.
+Nếu chuỗi gợi ý ``"no_wrap"`` được thiết lập, trường nhập sẽ không tự động xuống dòng tại các ranh giới mà sẽ chuyển sang cho phép cuộn vùng này.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_EXPRESSION:
 
@@ -3699,7 +3699,7 @@ If the hint string ``"no_wrap"`` is set, the input field will not wrap lines at 
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_EXPRESSION** = ``19``
 
-Hints that a :ref:`String<class_String>` property is an :ref:`Expression<class_Expression>`.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` là một :ref:`Expression<class_Expression>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_PLACEHOLDER_TEXT:
 
@@ -3707,7 +3707,7 @@ Hints that a :ref:`String<class_String>` property is an :ref:`Expression<class_E
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_PLACEHOLDER_TEXT** = ``20``
 
-Hints that a :ref:`String<class_String>` property should show a placeholder text on its input field, if empty. The hint string is the placeholder text to use.
+Gợi ý rằng thuộc tính :ref:`String<class_String>` nên hiển thị văn bản giữ chỗ trong trường nhập nếu trường này trống. Chuỗi gợi ý là văn bản giữ chỗ cần sử dụng.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_COLOR_NO_ALPHA:
 
@@ -3715,7 +3715,7 @@ Hints that a :ref:`String<class_String>` property should show a placeholder text
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_COLOR_NO_ALPHA** = ``21``
 
-Hints that a :ref:`Color<class_Color>` property should be edited without affecting its transparency (:ref:`Color.a<class_Color_property_a>` is not editable).
+Gợi ý rằng thuộc tính :ref:`Color<class_Color>` nên được chỉnh sửa mà không ảnh hưởng đến độ trong suốt của nó (:ref:`Color.a<class_Color_property_a>` không thể chỉnh sửa).
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_OBJECT_ID:
 
@@ -3723,7 +3723,7 @@ Hints that a :ref:`Color<class_Color>` property should be edited without affecti
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_OBJECT_ID** = ``22``
 
-Hints that the property's value is an object encoded as object ID, with its type specified in the hint string. Used by the debugger.
+Gợi ý rằng giá trị của thuộc tính là một đối tượng được mã hóa dưới dạng ID đối tượng, với kiểu được chỉ định trong chuỗi gợi ý. Được trình gỡ lỗi sử dụng.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_TYPE_STRING:
 
@@ -3731,76 +3731,76 @@ Hints that the property's value is an object encoded as object ID, with its type
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_TYPE_STRING** = ``23``
 
-If a property is :ref:`String<class_String>`, hints that the property represents a particular type (class). This allows to select a type from the create dialog. The property will store the selected type as a string.
+Nếu một thuộc tính là :ref:`String<class_String>`, gợi ý rằng thuộc tính đó đại diện cho một kiểu (class) cụ thể. Điều này cho phép chọn một kiểu từ hộp thoại tạo. Thuộc tính sẽ lưu kiểu đã chọn dưới dạng chuỗi.
 
-If a property is :ref:`Array<class_Array>`, hints the editor how to show elements. The ``hint_string`` must encode nested types using ``":"`` and ``"/"``.
+Nếu một thuộc tính là :ref:`Array<class_Array>`, thuộc tính này gợi ý cho trình chỉnh sửa cách hiển thị các phần tử. ``hint_string`` phải mã hóa các kiểu lồng nhau bằng ``":"`` và ``"/"``.
 
-If a property is :ref:`Dictionary<class_Dictionary>`, hints the editor how to show elements. The ``hint_string`` is the same as :ref:`Array<class_Array>`, with a ``";"`` separating the key and value.
+Nếu một thuộc tính là :ref:`Dictionary<class_Dictionary>`, thuộc tính này gợi ý cho trình chỉnh sửa cách hiển thị các phần tử. ``hint_string`` giống với :ref:`Array<class_Array>`, với ``";"`` phân cách khóa và giá trị.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Array of elem_type.
+    # Mảng của elem_type.
     hint_string = "%d:" % [elem_type]
     hint_string = "%d/%d:%s" % [elem_type, elem_hint, elem_hint_string]
-    # Two-dimensional array of elem_type (array of arrays of elem_type).
+    # Mảng hai chiều của elem_type (mảng của các mảng elem_type).
     hint_string = "%d:%d:" % [TYPE_ARRAY, elem_type]
     hint_string = "%d:%d/%d:%s" % [TYPE_ARRAY, elem_type, elem_hint, elem_hint_string]
-    # Three-dimensional array of elem_type (array of arrays of arrays of elem_type).
+    # Mảng ba chiều của elem_type (mảng của các mảng của các mảng elem_type).
     hint_string = "%d:%d:%d:" % [TYPE_ARRAY, TYPE_ARRAY, elem_type]
     hint_string = "%d:%d:%d/%d:%s" % [TYPE_ARRAY, TYPE_ARRAY, elem_type, elem_hint, elem_hint_string]
 
  .. code-tab:: csharp
 
-    // Array of elemType.
+    // Mảng của elemType.
     hintString = $"{elemType:D}:";
     hintString = $"{elemType:D}/{elemHint:D}:{elemHintString}";
-    // Two-dimensional array of elemType (array of arrays of elemType).
+    // Mảng hai chiều của elemType (mảng của các mảng elemType).
     hintString = $"{Variant.Type.Array:D}:{elemType:D}:";
     hintString = $"{Variant.Type.Array:D}:{elemType:D}/{elemHint:D}:{elemHintString}";
-    // Three-dimensional array of elemType (array of arrays of arrays of elemType).
+    // Mảng ba chiều của elemType (mảng của các mảng của các mảng elemType).
     hintString = $"{Variant.Type.Array:D}:{Variant.Type.Array:D}:{elemType:D}:";
     hintString = $"{Variant.Type.Array:D}:{Variant.Type.Array:D}:{elemType:D}/{elemHint:D}:{elemHintString}";
 
 
 
-\ **Examples:**\ 
+\ **Ví dụ:**\
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    hint_string = "%d:" % [TYPE_INT] # Array of integers.
-    hint_string = "%d/%d:1,10,1" % [TYPE_INT, PROPERTY_HINT_RANGE] # Array of integers (in range from 1 to 10).
-    hint_string = "%d/%d:Zero,One,Two" % [TYPE_INT, PROPERTY_HINT_ENUM] # Array of integers (an enum).
-    hint_string = "%d/%d:Zero,One,Three:3,Six:6" % [TYPE_INT, PROPERTY_HINT_ENUM] # Array of integers (an enum).
-    hint_string = "%d/%d:*.png" % [TYPE_STRING, PROPERTY_HINT_FILE] # Array of strings (file paths).
-    hint_string = "%d/%d:Texture2D" % [TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE] # Array of textures.
+    hint_string = "%d:" % [TYPE_INT] # Mảng số nguyên.
+    hint_string = "%d/%d:1,10,1" % [TYPE_INT, PROPERTY_HINT_RANGE] # Mảng số nguyên (trong phạm vi từ 1 đến 10).
+    hint_string = "%d/%d:Zero,One,Two" % [TYPE_INT, PROPERTY_HINT_ENUM] # Mảng số nguyên (một enum).
+    hint_string = "%d/%d:Zero,One,Three:3,Six:6" % [TYPE_INT, PROPERTY_HINT_ENUM] # Mảng số nguyên (một enum).
+    hint_string = "%d/%d:*.png" % [TYPE_STRING, PROPERTY_HINT_FILE] # Mảng chuỗi (đường dẫn tệp).
+    hint_string = "%d/%d:Texture2D" % [TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE] # Mảng texture.
 
-    hint_string = "%d:%d:" % [TYPE_ARRAY, TYPE_FLOAT] # Two-dimensional array of floats.
-    hint_string = "%d:%d/%d:" % [TYPE_ARRAY, TYPE_STRING, PROPERTY_HINT_MULTILINE_TEXT] # Two-dimensional array of multiline strings.
-    hint_string = "%d:%d/%d:-1,1,0.1" % [TYPE_ARRAY, TYPE_FLOAT, PROPERTY_HINT_RANGE] # Two-dimensional array of floats (in range from -1 to 1).
-    hint_string = "%d:%d/%d:Texture2D" % [TYPE_ARRAY, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE] # Two-dimensional array of textures.
+    hint_string = "%d:%d:" % [TYPE_ARRAY, TYPE_FLOAT] # Mảng hai chiều các số thực.
+    hint_string = "%d:%d/%d:" % [TYPE_ARRAY, TYPE_STRING, PROPERTY_HINT_MULTILINE_TEXT] # Mảng hai chiều các chuỗi nhiều dòng.
+    hint_string = "%d:%d/%d:-1,1,0.1" % [TYPE_ARRAY, TYPE_FLOAT, PROPERTY_HINT_RANGE] # Mảng hai chiều các số thực (trong phạm vi từ -1 đến 1).
+    hint_string = "%d:%d/%d:Texture2D" % [TYPE_ARRAY, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE] # Mảng hai chiều các texture.
 
  .. code-tab:: csharp
 
-    hintString = $"{Variant.Type.Int:D}/{PropertyHint.Range:D}:1,10,1"; // Array of integers (in range from 1 to 10).
-    hintString = $"{Variant.Type.Int:D}/{PropertyHint.Enum:D}:Zero,One,Two"; // Array of integers (an enum).
-    hintString = $"{Variant.Type.Int:D}/{PropertyHint.Enum:D}:Zero,One,Three:3,Six:6"; // Array of integers (an enum).
-    hintString = $"{Variant.Type.String:D}/{PropertyHint.File:D}:*.png"; // Array of strings (file paths).
-    hintString = $"{Variant.Type.Object:D}/{PropertyHint.ResourceType:D}:Texture2D"; // Array of textures.
+    hintString = $"{Variant.Type.Int:D}/{PropertyHint.Range:D}:1,10,1"; // Mảng các số nguyên (trong phạm vi từ 1 đến 10).
+    hintString = $"{Variant.Type.Int:D}/{PropertyHint.Enum:D}:Zero,One,Two"; // Mảng các số nguyên (một enum).
+    hintString = $"{Variant.Type.Int:D}/{PropertyHint.Enum:D}:Zero,One,Three:3,Six:6"; // Mảng các số nguyên (một enum).
+    hintString = $"{Variant.Type.String:D}/{PropertyHint.File:D}:*.png"; // Mảng chuỗi (đường dẫn tệp).
+    hintString = $"{Variant.Type.Object:D}/{PropertyHint.ResourceType:D}:Texture2D"; // Mảng texture.
 
-    hintString = $"{Variant.Type.Array:D}:{Variant.Type.Float:D}:"; // Two-dimensional array of floats.
-    hintString = $"{Variant.Type.Array:D}:{Variant.Type.String:D}/{PropertyHint.MultilineText:D}:"; // Two-dimensional array of multiline strings.
-    hintString = $"{Variant.Type.Array:D}:{Variant.Type.Float:D}/{PropertyHint.Range:D}:-1,1,0.1"; // Two-dimensional array of floats (in range from -1 to 1).
-    hintString = $"{Variant.Type.Array:D}:{Variant.Type.Object:D}/{PropertyHint.ResourceType:D}:Texture2D"; // Two-dimensional array of textures.
+    hintString = $"{Variant.Type.Array:D}:{Variant.Type.Float:D}:"; // Mảng hai chiều gồm các số thực.
+    hintString = $"{Variant.Type.Array:D}:{Variant.Type.String:D}/{PropertyHint.MultilineText:D}:"; // Mảng hai chiều gồm các chuỗi nhiều dòng.
+    hintString = $"{Variant.Type.Array:D}:{Variant.Type.Float:D}/{PropertyHint.Range:D}:-1,1,0.1"; // Mảng hai chiều gồm các số thực (trong khoảng từ -1 đến 1).
+    hintString = $"{Variant.Type.Array:D}:{Variant.Type.Object:D}/{PropertyHint.ResourceType:D}:Texture2D"; // Mảng hai chiều gồm các texture.
 
 
 
-\ **Note:** The trailing colon is required for properly detecting built-in types.
+\ **Lưu ý:** Dấu hai chấm ở cuối là bắt buộc để phát hiện đúng các kiểu dựng sẵn.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE:
 
@@ -3808,7 +3808,7 @@ If a property is :ref:`Dictionary<class_Dictionary>`, hints the editor how to sh
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE** = ``24``
 
-**Deprecated:** This hint is not used by the engine.
+**Đã lỗi thời:** Gợi ý này không được engine sử dụng.
 
 
 
@@ -3818,7 +3818,7 @@ If a property is :ref:`Dictionary<class_Dictionary>`, hints the editor how to sh
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_OBJECT_TOO_BIG** = ``25``
 
-Hints that an object is too big to be sent via the debugger.
+Gợi ý rằng một object quá lớn để gửi qua debugger.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_NODE_PATH_VALID_TYPES:
 
@@ -3826,7 +3826,7 @@ Hints that an object is too big to be sent via the debugger.
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_NODE_PATH_VALID_TYPES** = ``26``
 
-Hints that the hint string specifies valid node types for property of type :ref:`NodePath<class_NodePath>`.
+Gợi ý rằng chuỗi gợi ý chỉ định các loại node hợp lệ cho property có kiểu :ref:`NodePath<class_NodePath>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_SAVE_FILE:
 
@@ -3834,7 +3834,7 @@ Hints that the hint string specifies valid node types for property of type :ref:
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_SAVE_FILE** = ``27``
 
-Hints that a :ref:`String<class_String>` property is a path to a file. Editing it will show a file dialog for picking the path for the file to be saved at. The dialog has access to the project's directory. The hint string can be a set of filters with wildcards like ``"*.png,*.jpg"``. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
+Gợi ý rằng một property :ref:`String<class_String>` là đường dẫn đến một tệp. Khi chỉnh sửa property này, một hộp thoại tệp sẽ hiện ra để chọn đường dẫn lưu tệp. Hộp thoại có quyền truy cập vào thư mục của project. Chuỗi gợi ý có thể là một tập hợp các bộ lọc với ký tự đại diện như ``"*.png,*.jpg"``. Xem thêm :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_GLOBAL_SAVE_FILE:
 
@@ -3842,7 +3842,7 @@ Hints that a :ref:`String<class_String>` property is a path to a file. Editing i
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_GLOBAL_SAVE_FILE** = ``28``
 
-Hints that a :ref:`String<class_String>` property is a path to a file. Editing it will show a file dialog for picking the path for the file to be saved at. The dialog has access to the entire filesystem. The hint string can be a set of filters with wildcards like ``"*.png,*.jpg"``. See also :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
+Gợi ý rằng một property :ref:`String<class_String>` là đường dẫn đến một tệp. Khi chỉnh sửa property này, một hộp thoại tệp sẽ hiện ra để chọn đường dẫn lưu tệp. Hộp thoại có quyền truy cập vào toàn bộ hệ thống tệp. Chuỗi gợi ý có thể là một tập hợp các bộ lọc với ký tự đại diện như ``"*.png,*.jpg"``. Xem thêm :ref:`FileDialog.filters<class_FileDialog_property_filters>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_INT_IS_OBJECTID:
 
@@ -3850,7 +3850,7 @@ Hints that a :ref:`String<class_String>` property is a path to a file. Editing i
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_INT_IS_OBJECTID** = ``29``
 
-**Deprecated:** This hint is not used by the engine.
+**Đã lỗi thời:** Gợi ý này không được engine sử dụng.
 
 
 
@@ -3860,7 +3860,7 @@ Hints that a :ref:`String<class_String>` property is a path to a file. Editing i
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_INT_IS_POINTER** = ``30``
 
-Hints that an :ref:`int<class_int>` property is a pointer. Used by GDExtension.
+Gợi ý rằng một property :ref:`int<class_int>` là một con trỏ. Được GDExtension sử dụng.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_ARRAY_TYPE:
 
@@ -3868,9 +3868,9 @@ Hints that an :ref:`int<class_int>` property is a pointer. Used by GDExtension.
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_ARRAY_TYPE** = ``31``
 
-Hints that a property is an :ref:`Array<class_Array>` with the stored type specified in the hint string. The hint string contains the type of the array (e.g. ``"String"``).
+Gợi ý rằng một thuộc tính là :ref:`Array<class_Array>` với kiểu được lưu trữ được chỉ định trong chuỗi gợi ý. Chuỗi gợi ý chứa kiểu của mảng (ví dụ: ``"String"``).
 
-Use the hint string format from :ref:`PROPERTY_HINT_TYPE_STRING<class_@GlobalScope_constant_PROPERTY_HINT_TYPE_STRING>` for more control over the stored type.
+Sử dụng định dạng chuỗi gợi ý từ :ref:`PROPERTY_HINT_TYPE_STRING<class_@GlobalScope_constant_PROPERTY_HINT_TYPE_STRING>` để kiểm soát tốt hơn kiểu được lưu trữ.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_DICTIONARY_TYPE:
 
@@ -3878,9 +3878,9 @@ Use the hint string format from :ref:`PROPERTY_HINT_TYPE_STRING<class_@GlobalSco
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_DICTIONARY_TYPE** = ``38``
 
-Hints that a property is a :ref:`Dictionary<class_Dictionary>` with the stored types specified in the hint string. The hint string contains the key and value types separated by a semicolon (e.g. ``"int;String"``).
+Gợi ý rằng một thuộc tính là :ref:`Dictionary<class_Dictionary>` với các kiểu được lưu trữ được chỉ định trong chuỗi gợi ý. Chuỗi gợi ý chứa kiểu khóa và kiểu giá trị được phân tách bằng dấu chấm phẩy (ví dụ: ``"int;String"``).
 
-Use the hint string format from :ref:`PROPERTY_HINT_TYPE_STRING<class_@GlobalScope_constant_PROPERTY_HINT_TYPE_STRING>` for more control over the stored types.
+Sử dụng định dạng chuỗi gợi ý từ :ref:`PROPERTY_HINT_TYPE_STRING<class_@GlobalScope_constant_PROPERTY_HINT_TYPE_STRING>` để kiểm soát tốt hơn các kiểu được lưu trữ.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LOCALE_ID:
 
@@ -3888,7 +3888,7 @@ Use the hint string format from :ref:`PROPERTY_HINT_TYPE_STRING<class_@GlobalSco
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LOCALE_ID** = ``32``
 
-Hints that a string property is a locale code. Editing it will show a locale dialog for picking language and country.
+Gợi ý rằng một thuộc tính chuỗi là mã locale. Khi chỉnh sửa, một hộp thoại locale sẽ hiển thị để chọn ngôn ngữ và quốc gia.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_LOCALIZABLE_STRING:
 
@@ -3896,7 +3896,7 @@ Hints that a string property is a locale code. Editing it will show a locale dia
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_LOCALIZABLE_STRING** = ``33``
 
-Hints that a dictionary property is string translation map. Dictionary keys are locale codes and, values are translated strings.
+Gợi ý rằng một thuộc tính dictionary là map bản dịch chuỗi. Các khóa của dictionary là mã locale, còn các giá trị là các chuỗi đã được dịch.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_NODE_TYPE:
 
@@ -3904,7 +3904,7 @@ Hints that a dictionary property is string translation map. Dictionary keys are 
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_NODE_TYPE** = ``34``
 
-Hints that a property is an instance of a :ref:`Node<class_Node>`-derived type, optionally specified via the hint string (e.g. ``"Node2D"``). Editing it will show a dialog for picking a node from the scene.
+Gợi ý rằng một thuộc tính là một thực thể của kiểu dẫn xuất từ :ref:`Node<class_Node>`, có thể được chỉ định tùy chọn thông qua chuỗi gợi ý (ví dụ: ``"Node2D"``). Khi chỉnh sửa, một hộp thoại sẽ hiển thị để chọn một node từ scene.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_HIDE_QUATERNION_EDIT:
 
@@ -3912,7 +3912,7 @@ Hints that a property is an instance of a :ref:`Node<class_Node>`-derived type, 
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_HIDE_QUATERNION_EDIT** = ``35``
 
-Hints that a quaternion property should disable the temporary euler editor.
+Gợi ý rằng một thuộc tính quaternion nên tắt trình chỉnh sửa euler tạm thời.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_PASSWORD:
 
@@ -3920,7 +3920,7 @@ Hints that a quaternion property should disable the temporary euler editor.
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_PASSWORD** = ``36``
 
-Hints that a string property is a password, and every character is replaced with the secret character.
+Gợi ý rằng một thuộc tính chuỗi là mật khẩu và mọi ký tự sẽ được thay thế bằng ký tự bí mật.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_TOOL_BUTTON:
 
@@ -3928,14 +3928,14 @@ Hints that a string property is a password, and every character is replaced with
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_TOOL_BUTTON** = ``39``
 
-Hints that a :ref:`Callable<class_Callable>` property should be displayed as a clickable button. When the button is pressed, the callable is called. The hint string specifies the button text and optionally an icon from the ``"EditorIcons"`` theme type.
+Gợi ý rằng một thuộc tính :ref:`Callable<class_Callable>` nên được hiển thị dưới dạng nút có thể nhấp. Khi nhấn nút, callable sẽ được gọi. Chuỗi gợi ý chỉ định văn bản của nút và tùy chọn một biểu tượng từ kiểu theme ``"EditorIcons"``.
 
 .. code:: text
 
     "Click me!" - A button with the text "Click me!" and the default "Callable" icon.
     "Click me!,ColorRect" - A button with the text "Click me!" and the "ColorRect" icon.
 
-\ **Note:** A :ref:`Callable<class_Callable>` cannot be properly serialized and stored in a file, so it is recommended to use :ref:`PROPERTY_USAGE_EDITOR<class_@GlobalScope_constant_PROPERTY_USAGE_EDITOR>` instead of :ref:`PROPERTY_USAGE_DEFAULT<class_@GlobalScope_constant_PROPERTY_USAGE_DEFAULT>`.
+\ **Lưu ý:** Một :ref:`Callable<class_Callable>` không thể được tuần tự hóa và lưu trữ đúng cách trong tệp, vì vậy bạn nên sử dụng :ref:`PROPERTY_USAGE_EDITOR<class_@GlobalScope_constant_PROPERTY_USAGE_EDITOR>` thay cho :ref:`PROPERTY_USAGE_DEFAULT<class_@GlobalScope_constant_PROPERTY_USAGE_DEFAULT>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_ONESHOT:
 
@@ -3943,7 +3943,7 @@ Hints that a :ref:`Callable<class_Callable>` property should be displayed as a c
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_ONESHOT** = ``40``
 
-Hints that a property will be changed on its own after setting, such as :ref:`AudioStreamPlayer.playing<class_AudioStreamPlayer_property_playing>` or :ref:`GPUParticles3D.emitting<class_GPUParticles3D_property_emitting>`.
+Gợi ý rằng một thuộc tính sẽ tự thay đổi sau khi được thiết lập, chẳng hạn như :ref:`AudioStreamPlayer.playing<class_AudioStreamPlayer_property_playing>` hoặc :ref:`GPUParticles3D.emitting<class_GPUParticles3D_property_emitting>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_GROUP_ENABLE:
 
@@ -3951,9 +3951,9 @@ Hints that a property will be changed on its own after setting, such as :ref:`Au
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_GROUP_ENABLE** = ``42``
 
-Hints that a boolean property will enable the feature associated with the group that it occurs in. The property will be displayed as a checkbox on the group header. Only works within a group or subgroup.
+Gợi ý rằng một thuộc tính boolean sẽ bật tính năng liên kết với nhóm chứa nó. Thuộc tính này sẽ được hiển thị dưới dạng hộp kiểm trên tiêu đề nhóm. Chỉ hoạt động trong một nhóm hoặc nhóm con.
 
-By default, disabling the property hides all properties in the group. Use the optional hint string ``"checkbox_only"`` to disable this behavior.
+Theo mặc định, việc tắt thuộc tính sẽ ẩn tất cả thuộc tính trong nhóm. Sử dụng chuỗi gợi ý tùy chọn ``"checkbox_only"`` để tắt hành vi này.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_INPUT_NAME:
 
@@ -3961,11 +3961,11 @@ By default, disabling the property hides all properties in the group. Use the op
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_INPUT_NAME** = ``43``
 
-Hints that a :ref:`String<class_String>` or :ref:`StringName<class_StringName>` property is the name of an input action. This allows the selection of any action name from the Input Map in the Project Settings. The hint string may contain two options separated by commas:
+Gợi ý rằng thuộc tính :ref:`String<class_String>` hoặc :ref:`StringName<class_StringName>` là tên của một hành động đầu vào. Điều này cho phép chọn bất kỳ tên hành động nào từ Input Map trong Project Settings. Chuỗi gợi ý có thể chứa hai tùy chọn được phân tách bằng dấu phẩy:
 
-- If it contains ``"show_builtin"``, built-in input actions are included in the selection.
+- Nếu chứa ``"show_builtin"``, các hành động đầu vào tích hợp sẵn sẽ được đưa vào danh sách lựa chọn.
 
-- If it contains ``"loose_mode"``, loose mode is enabled. This allows inserting any action name even if it's not present in the input map.
+- Nếu chứa ``"loose_mode"``, chế độ loose sẽ được bật. Điều này cho phép chèn bất kỳ tên hành động nào, ngay cả khi tên đó không có trong input map.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_FILE_PATH:
 
@@ -3973,7 +3973,7 @@ Hints that a :ref:`String<class_String>` or :ref:`StringName<class_StringName>` 
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_FILE_PATH** = ``44``
 
-Like :ref:`PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPERTY_HINT_FILE>`, but the property is stored as a raw path, not UID. That means the reference will be broken if you move the file. Consider using :ref:`PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPERTY_HINT_FILE>` when possible.
+Tương tự :ref:`PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPERTY_HINT_FILE>`, nhưng thuộc tính được lưu dưới dạng đường dẫn thô, không phải UID. Điều đó có nghĩa là tham chiếu sẽ bị hỏng nếu bạn di chuyển tệp. Khi có thể, hãy cân nhắc sử dụng :ref:`PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPERTY_HINT_FILE>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_HINT_MAX:
 
@@ -3981,7 +3981,7 @@ Like :ref:`PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPERTY_HINT_FILE>`, 
 
 :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` **PROPERTY_HINT_MAX** = ``45``
 
-Represents the size of the :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` enum.
+Biểu thị kích thước của enum :ref:`PropertyHint <enum_@GlobalScope_PropertyHint>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3991,7 +3991,7 @@ Represents the size of the :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` e
 
 .. rst-class:: classref-enumeration
 
-flags **PropertyUsageFlags**: :ref:`🔗<enum_@GlobalScope_PropertyUsageFlags>`
+Các cờ **PropertyUsageFlags**: :ref:`🔗 <enum_@GlobalScope_PropertyUsageFlags>`
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_NONE:
 
@@ -3999,7 +3999,7 @@ flags **PropertyUsageFlags**: :ref:`🔗<enum_@GlobalScope_PropertyUsageFlags>`
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_NONE** = ``0``
 
-The property is not stored, and does not display in the editor. This is the default for non-exported properties.
+Thuộc tính không được lưu trữ và không hiển thị trong trình chỉnh sửa. Đây là mặc định đối với các thuộc tính không được export.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE:
 
@@ -4007,7 +4007,7 @@ The property is not stored, and does not display in the editor. This is the defa
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_STORAGE** = ``2``
 
-The property is serialized and saved in the scene file (default for exported properties).
+Thuộc tính được tuần tự hóa và lưu trong tệp scene (mặc định đối với các thuộc tính được xuất).
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_EDITOR:
 
@@ -4015,7 +4015,7 @@ The property is serialized and saved in the scene file (default for exported pro
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_EDITOR** = ``4``
 
-The property is shown in the :ref:`EditorInspector<class_EditorInspector>` (default for exported properties).
+Thuộc tính được hiển thị trong :ref:`EditorInspector<class_EditorInspector>` (mặc định đối với các thuộc tính được xuất).
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_INTERNAL:
 
@@ -4023,7 +4023,7 @@ The property is shown in the :ref:`EditorInspector<class_EditorInspector>` (defa
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_INTERNAL** = ``8``
 
-The property is excluded from the class reference.
+Thuộc tính bị loại khỏi tài liệu tham chiếu lớp.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_CHECKABLE:
 
@@ -4031,7 +4031,7 @@ The property is excluded from the class reference.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_CHECKABLE** = ``16``
 
-The property can be checked in the :ref:`EditorInspector<class_EditorInspector>`.
+Có thể kiểm tra thuộc tính trong :ref:`EditorInspector<class_EditorInspector>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_CHECKED:
 
@@ -4039,7 +4039,7 @@ The property can be checked in the :ref:`EditorInspector<class_EditorInspector>`
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_CHECKED** = ``32``
 
-The property is checked in the :ref:`EditorInspector<class_EditorInspector>`.
+Thuộc tính được kiểm tra trong :ref:`EditorInspector<class_EditorInspector>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_GROUP:
 
@@ -4047,7 +4047,7 @@ The property is checked in the :ref:`EditorInspector<class_EditorInspector>`.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_GROUP** = ``64``
 
-Used to group properties together in the editor. See :ref:`EditorInspector<class_EditorInspector>`.
+Dùng để nhóm các thuộc tính trong editor. Xem :ref:`EditorInspector<class_EditorInspector>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_CATEGORY:
 
@@ -4055,7 +4055,7 @@ Used to group properties together in the editor. See :ref:`EditorInspector<class
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_CATEGORY** = ``128``
 
-Used to categorize properties together in the editor.
+Dùng để phân loại các thuộc tính trong editor.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_SUBGROUP:
 
@@ -4063,7 +4063,7 @@ Used to categorize properties together in the editor.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_SUBGROUP** = ``256``
 
-Used to group properties together in the editor in a subgroup (under a group). See :ref:`EditorInspector<class_EditorInspector>`.
+Dùng để nhóm các thuộc tính trong trình chỉnh sửa vào một nhóm con (bên dưới một nhóm). Xem :ref:`EditorInspector<class_EditorInspector>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_CLASS_IS_BITFIELD:
 
@@ -4071,7 +4071,7 @@ Used to group properties together in the editor in a subgroup (under a group). S
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_CLASS_IS_BITFIELD** = ``512``
 
-The property is a bitfield, i.e. it contains multiple flags represented as bits.
+Thuộc tính này là một bitfield, tức là chứa nhiều cờ được biểu diễn dưới dạng các bit.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_NO_INSTANCE_STATE:
 
@@ -4079,7 +4079,7 @@ The property is a bitfield, i.e. it contains multiple flags represented as bits.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_NO_INSTANCE_STATE** = ``1024``
 
-The property does not save its state in :ref:`PackedScene<class_PackedScene>`.
+Thuộc tính này không lưu trạng thái của nó trong :ref:`PackedScene<class_PackedScene>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_RESTART_IF_CHANGED:
 
@@ -4087,7 +4087,7 @@ The property does not save its state in :ref:`PackedScene<class_PackedScene>`.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_RESTART_IF_CHANGED** = ``2048``
 
-Editing the property prompts the user for restarting the editor.
+Việc chỉnh sửa thuộc tính này sẽ nhắc người dùng khởi động lại trình chỉnh sửa.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_VARIABLE:
 
@@ -4095,7 +4095,7 @@ Editing the property prompts the user for restarting the editor.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_SCRIPT_VARIABLE** = ``4096``
 
-The property is a script variable. :ref:`PROPERTY_USAGE_SCRIPT_VARIABLE<class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_VARIABLE>` can be used to distinguish between exported script variables from built-in variables (which don't have this usage flag). By default, :ref:`PROPERTY_USAGE_SCRIPT_VARIABLE<class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_VARIABLE>` is **not** applied to variables that are created by overriding :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>` in a script.
+Thuộc tính này là một biến script. Có thể dùng :ref:`PROPERTY_USAGE_SCRIPT_VARIABLE<class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_VARIABLE>` để phân biệt các biến script được export với các biến tích hợp sẵn (những biến này không có cờ sử dụng này). Theo mặc định, :ref:`PROPERTY_USAGE_SCRIPT_VARIABLE<class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_VARIABLE>` **không** được áp dụng cho các biến được tạo bằng cách ghi đè :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>` trong một script.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_STORE_IF_NULL:
 
@@ -4103,7 +4103,7 @@ The property is a script variable. :ref:`PROPERTY_USAGE_SCRIPT_VARIABLE<class_@G
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_STORE_IF_NULL** = ``8192``
 
-The property value of type :ref:`Object<class_Object>` will be stored even if its value is ``null``.
+Giá trị thuộc tính có kiểu :ref:`Object<class_Object>` sẽ được lưu ngay cả khi giá trị của nó là ``null``.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_UPDATE_ALL_IF_MODIFIED:
 
@@ -4111,7 +4111,7 @@ The property value of type :ref:`Object<class_Object>` will be stored even if it
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_UPDATE_ALL_IF_MODIFIED** = ``16384``
 
-If this property is modified, all inspector fields will be refreshed.
+Nếu thuộc tính này được sửa đổi, tất cả các trường inspector sẽ được làm mới.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_DEFAULT_VALUE:
 
@@ -4119,7 +4119,7 @@ If this property is modified, all inspector fields will be refreshed.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_SCRIPT_DEFAULT_VALUE** = ``32768``
 
-**Deprecated:** This flag is not used by the engine.
+**Đã lỗi thời:** Cờ này không được engine sử dụng.
 
 
 
@@ -4129,7 +4129,7 @@ If this property is modified, all inspector fields will be refreshed.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_CLASS_IS_ENUM** = ``65536``
 
-The property is a variable of enum type, i.e. it only takes named integer constants from its associated enumeration.
+Property này là một biến thuộc kiểu enum, tức là nó chỉ nhận các hằng số nguyên có tên từ enumeration tương ứng.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_NIL_IS_VARIANT:
 
@@ -4137,7 +4137,7 @@ The property is a variable of enum type, i.e. it only takes named integer consta
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_NIL_IS_VARIANT** = ``131072``
 
-If property has ``nil`` as default value, its type will be :ref:`Variant<class_Variant>`.
+Nếu property có ``nil`` làm giá trị mặc định, kiểu của nó sẽ là :ref:`Variant<class_Variant>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_ARRAY:
 
@@ -4145,23 +4145,23 @@ If property has ``nil`` as default value, its type will be :ref:`Variant<class_V
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_ARRAY** = ``262144``
 
-The property is the element count of a property array, i.e. a list of groups of related properties. Properties defined with this usage also need a specific ``class_name`` field in the form of ``label,prefix``. The field may also include additional comma-separated options:
+Property này là số lượng phần tử của một property array, tức là danh sách các nhóm property có liên quan. Các property được định nghĩa với cách sử dụng này cũng cần một trường ``class_name`` cụ thể ở dạng ``label,prefix``. Trường này cũng có thể bao gồm các tùy chọn bổ sung được phân tách bằng dấu phẩy:
 
-- ``page_size=N``: Overrides :ref:`EditorSettings.interface/inspector/max_array_dictionary_items_per_page<class_EditorSettings_property_interface/inspector/max_array_dictionary_items_per_page>` for this array.
+- ``page_size=N``: Ghi đè :ref:`EditorSettings.interface/inspector/max_array_dictionary_items_per_page <class_EditorSettings_property_interface/inspector/max_array_dictionary_items_per_page>` cho array này.
 
-- ``add_button_text=text``: The text displayed by the "Add Element" button.
+- ``add_button_text=text``: Văn bản được hiển thị bởi nút "Add Element".
 
-- ``static``: The elements can't be re-arranged.
+- ``static``: Không thể sắp xếp lại các phần tử.
 
-- ``const``: New elements can't be added.
+- ``const``: Không thể thêm phần tử mới.
 
-- ``numbered``: An index will appear next to each element.
+- ``numbered``: Một chỉ mục sẽ xuất hiện bên cạnh mỗi phần tử.
 
-- ``unfoldable``: The array can't be folded.
+- ``unfoldable``: Không thể thu gọn mảng.
 
-- ``swap_method=method_name``: The method that will be called when two elements switch places. The method should take 2 :ref:`int<class_int>` parameters, which will be indices of the elements being swapped.
+- ``swap_method=method_name``: Phương thức sẽ được gọi khi hai phần tử đổi chỗ cho nhau. Phương thức này phải nhận 2 :ref:`int<class_int>` tham số, là các chỉ mục của những phần tử được hoán đổi.
 
-Note that making a full-fledged property array requires boilerplate code involving :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>`.
+Lưu ý rằng để tạo một mảng thuộc tính hoàn chỉnh cần có mã boilerplate liên quan đến :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_ALWAYS_DUPLICATE:
 
@@ -4169,7 +4169,7 @@ Note that making a full-fledged property array requires boilerplate code involvi
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_ALWAYS_DUPLICATE** = ``524288``
 
-When duplicating a resource with :ref:`Resource.duplicate()<class_Resource_method_duplicate>`, and this flag is set on a property of that resource, the property should always be duplicated, regardless of the ``subresources`` bool parameter.
+Khi nhân bản một tài nguyên bằng :ref:`Resource.duplicate()<class_Resource_method_duplicate>`, nếu cờ này được đặt trên một thuộc tính của tài nguyên đó thì thuộc tính này luôn được nhân bản, bất kể tham số bool ``subresources``.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_NEVER_DUPLICATE:
 
@@ -4177,7 +4177,7 @@ When duplicating a resource with :ref:`Resource.duplicate()<class_Resource_metho
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_NEVER_DUPLICATE** = ``1048576``
 
-When duplicating a resource with :ref:`Resource.duplicate()<class_Resource_method_duplicate>`, and this flag is set on a property of that resource, the property should never be duplicated, regardless of the ``subresources`` bool parameter.
+Khi nhân bản một tài nguyên bằng :ref:`Resource.duplicate()<class_Resource_method_duplicate>`, nếu cờ này được đặt trên một thuộc tính của tài nguyên đó thì thuộc tính này không bao giờ được nhân bản, bất kể tham số bool ``subresources``.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_HIGH_END_GFX:
 
@@ -4185,7 +4185,7 @@ When duplicating a resource with :ref:`Resource.duplicate()<class_Resource_metho
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_HIGH_END_GFX** = ``2097152``
 
-The property is only shown in the editor if modern renderers are supported (the Compatibility rendering method is excluded).
+Thuộc tính này chỉ được hiển thị trong editor nếu các renderer hiện đại được hỗ trợ (phương thức kết xuất Compatibility bị loại trừ).
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT:
 
@@ -4193,7 +4193,7 @@ The property is only shown in the editor if modern renderers are supported (the 
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_NODE_PATH_FROM_SCENE_ROOT** = ``4194304``
 
-The :ref:`NodePath<class_NodePath>` property will always be relative to the scene's root. Mostly useful for local resources.
+Thuộc tính :ref:`NodePath<class_NodePath>` luôn có đường dẫn tương đối so với root của scene. Chủ yếu hữu ích cho các resource cục bộ.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_RESOURCE_NOT_PERSISTENT:
 
@@ -4201,7 +4201,7 @@ The :ref:`NodePath<class_NodePath>` property will always be relative to the scen
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_RESOURCE_NOT_PERSISTENT** = ``8388608``
 
-Use when a resource is created on the fly, i.e. the getter will always return a different instance. :ref:`ResourceSaver<class_ResourceSaver>` needs this information to properly save such resources.
+Sử dụng khi một resource được tạo ngay trong lúc chạy, tức là getter sẽ luôn trả về một instance khác. :ref:`ResourceSaver<class_ResourceSaver>` cần thông tin này để lưu các resource như vậy đúng cách.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_KEYING_INCREMENTS:
 
@@ -4209,7 +4209,7 @@ Use when a resource is created on the fly, i.e. the getter will always return a 
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_KEYING_INCREMENTS** = ``16777216``
 
-Inserting an animation key frame of this property will automatically increment the value, allowing to easily keyframe multiple values in a row.
+Việc chèn một key frame animation của thuộc tính này sẽ tự động tăng giá trị, cho phép dễ dàng tạo keyframe cho nhiều giá trị liên tiếp.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_DEFERRED_SET_RESOURCE:
 
@@ -4217,7 +4217,7 @@ Inserting an animation key frame of this property will automatically increment t
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_DEFERRED_SET_RESOURCE** = ``33554432``
 
-**Deprecated:** This flag is not used by the engine.
+**Đã lỗi thời:** Cờ này không được engine sử dụng.
 
 
 
@@ -4227,7 +4227,7 @@ Inserting an animation key frame of this property will automatically increment t
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT** = ``67108864``
 
-When this property is a :ref:`Resource<class_Resource>` and base object is a :ref:`Node<class_Node>`, a resource instance will be automatically created whenever the node is created in the editor.
+Khi thuộc tính này là một :ref:`Resource<class_Resource>` và đối tượng cơ sở là một :ref:`Node<class_Node>`, một instance resource sẽ được tự động tạo mỗi khi node được tạo trong editor.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_EDITOR_BASIC_SETTING:
 
@@ -4235,7 +4235,7 @@ When this property is a :ref:`Resource<class_Resource>` and base object is a :re
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_EDITOR_BASIC_SETTING** = ``134217728``
 
-The property is considered a basic setting and will appear even when advanced mode is disabled. Used for project settings.
+Thuộc tính này được xem là một thiết lập cơ bản và sẽ xuất hiện ngay cả khi chế độ nâng cao bị tắt. Được sử dụng cho các thiết lập project.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_READ_ONLY:
 
@@ -4243,7 +4243,7 @@ The property is considered a basic setting and will appear even when advanced mo
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_READ_ONLY** = ``268435456``
 
-The property is read-only in the :ref:`EditorInspector<class_EditorInspector>`.
+Thuộc tính này chỉ có thể đọc trong :ref:`EditorInspector<class_EditorInspector>`.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_SECRET:
 
@@ -4251,7 +4251,7 @@ The property is read-only in the :ref:`EditorInspector<class_EditorInspector>`.
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_SECRET** = ``536870912``
 
-An export preset property with this flag contains confidential information and is stored separately from the rest of the export preset configuration.
+Thuộc tính export preset có cờ này chứa thông tin bảo mật và được lưu riêng với phần còn lại của cấu hình export preset.
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_DEFAULT:
 
@@ -4259,7 +4259,7 @@ An export preset property with this flag contains confidential information and i
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_DEFAULT** = ``6``
 
-Default usage (storage and editor).
+Cách sử dụng mặc định (lưu trữ và trình chỉnh sửa).
 
 .. _class_@GlobalScope_constant_PROPERTY_USAGE_NO_EDITOR:
 
@@ -4267,7 +4267,7 @@ Default usage (storage and editor).
 
 :ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>` **PROPERTY_USAGE_NO_EDITOR** = ``2``
 
-Default usage but without showing the property in the editor (storage).
+Cách sử dụng mặc định nhưng không hiển thị thuộc tính trong trình chỉnh sửa (lưu trữ).
 
 .. rst-class:: classref-item-separator
 
@@ -4277,7 +4277,7 @@ Default usage but without showing the property in the editor (storage).
 
 .. rst-class:: classref-enumeration
 
-flags **MethodFlags**: :ref:`🔗<enum_@GlobalScope_MethodFlags>`
+các cờ **MethodFlags**: :ref:`🔗 <enum_@GlobalScope_MethodFlags>`
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_NORMAL:
 
@@ -4285,7 +4285,7 @@ flags **MethodFlags**: :ref:`🔗<enum_@GlobalScope_MethodFlags>`
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_NORMAL** = ``1``
 
-Flag for a normal method.
+Cờ dành cho một phương thức thông thường.
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_EDITOR:
 
@@ -4293,7 +4293,7 @@ Flag for a normal method.
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_EDITOR** = ``2``
 
-Flag for an editor method.
+Cờ dành cho một phương thức của trình chỉnh sửa.
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_CONST:
 
@@ -4301,7 +4301,7 @@ Flag for an editor method.
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_CONST** = ``4``
 
-Flag for a constant method.
+Cờ cho một phương thức hằng.
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_VIRTUAL:
 
@@ -4309,7 +4309,7 @@ Flag for a constant method.
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_VIRTUAL** = ``8``
 
-Flag for a virtual method.
+Cờ cho một phương thức ảo.
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_VARARG:
 
@@ -4317,7 +4317,7 @@ Flag for a virtual method.
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_VARARG** = ``16``
 
-Flag for a method with a variable number of arguments.
+Cờ cho một phương thức có số lượng đối số thay đổi.
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_STATIC:
 
@@ -4325,7 +4325,7 @@ Flag for a method with a variable number of arguments.
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_STATIC** = ``32``
 
-Flag for a static method.
+Cờ cho một phương thức tĩnh.
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_OBJECT_CORE:
 
@@ -4333,7 +4333,7 @@ Flag for a static method.
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_OBJECT_CORE** = ``64``
 
-Used internally. Allows to not dump core virtual methods (such as :ref:`Object._notification()<class_Object_private_method__notification>`) to the JSON API.
+Được sử dụng nội bộ. Cho phép không kết xuất các phương thức ảo cốt lõi (chẳng hạn như :ref:`Object._notification()<class_Object_private_method__notification>`) vào JSON API.
 
 .. _class_@GlobalScope_constant_METHOD_FLAG_VIRTUAL_REQUIRED:
 
@@ -4341,7 +4341,7 @@ Used internally. Allows to not dump core virtual methods (such as :ref:`Object._
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAG_VIRTUAL_REQUIRED** = ``128``
 
-Flag for a virtual method that is required. In GDScript, this flag is set for abstract functions.
+Cờ cho một phương thức ảo bắt buộc. Trong GDScript, cờ này được đặt cho các hàm abstract.
 
 .. _class_@GlobalScope_constant_METHOD_FLAGS_DEFAULT:
 
@@ -4349,7 +4349,7 @@ Flag for a virtual method that is required. In GDScript, this flag is set for ab
 
 :ref:`MethodFlags<enum_@GlobalScope_MethodFlags>` **METHOD_FLAGS_DEFAULT** = ``1``
 
-Default method flags (normal).
+Cờ phương thức mặc định (thông thường).
 
 .. rst-class:: classref-item-separator
 
@@ -4359,7 +4359,7 @@ Default method flags (normal).
 
 .. rst-class:: classref-enumeration
 
-enum **Variant.Type**: :ref:`🔗<enum_@GlobalScope_Variant.Type>`
+enum **Variant.Type**: :ref:`🔗 <enum_@GlobalScope_Variant.Type>`
 
 .. _class_@GlobalScope_constant_TYPE_NIL:
 
@@ -4367,7 +4367,7 @@ enum **Variant.Type**: :ref:`🔗<enum_@GlobalScope_Variant.Type>`
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_NIL** = ``0``
 
-Variable is ``null``.
+Biến là ``null``.
 
 .. _class_@GlobalScope_constant_TYPE_BOOL:
 
@@ -4375,7 +4375,7 @@ Variable is ``null``.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_BOOL** = ``1``
 
-Variable is of type :ref:`bool<class_bool>`.
+Biến có kiểu :ref:`bool<class_bool>`.
 
 .. _class_@GlobalScope_constant_TYPE_INT:
 
@@ -4383,7 +4383,7 @@ Variable is of type :ref:`bool<class_bool>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_INT** = ``2``
 
-Variable is of type :ref:`int<class_int>`.
+Biến có kiểu :ref:`int<class_int>`.
 
 .. _class_@GlobalScope_constant_TYPE_FLOAT:
 
@@ -4391,7 +4391,7 @@ Variable is of type :ref:`int<class_int>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_FLOAT** = ``3``
 
-Variable is of type :ref:`float<class_float>`.
+Biến có kiểu :ref:`float<class_float>`.
 
 .. _class_@GlobalScope_constant_TYPE_STRING:
 
@@ -4399,7 +4399,7 @@ Variable is of type :ref:`float<class_float>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_STRING** = ``4``
 
-Variable is of type :ref:`String<class_String>`.
+Biến có kiểu :ref:`String<class_String>`.
 
 .. _class_@GlobalScope_constant_TYPE_VECTOR2:
 
@@ -4407,7 +4407,7 @@ Variable is of type :ref:`String<class_String>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_VECTOR2** = ``5``
 
-Variable is of type :ref:`Vector2<class_Vector2>`.
+Biến có kiểu :ref:`Vector2<class_Vector2>`.
 
 .. _class_@GlobalScope_constant_TYPE_VECTOR2I:
 
@@ -4415,7 +4415,7 @@ Variable is of type :ref:`Vector2<class_Vector2>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_VECTOR2I** = ``6``
 
-Variable is of type :ref:`Vector2i<class_Vector2i>`.
+Biến thuộc kiểu :ref:`Vector2i<class_Vector2i>`.
 
 .. _class_@GlobalScope_constant_TYPE_RECT2:
 
@@ -4423,7 +4423,7 @@ Variable is of type :ref:`Vector2i<class_Vector2i>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_RECT2** = ``7``
 
-Variable is of type :ref:`Rect2<class_Rect2>`.
+Biến thuộc kiểu :ref:`Rect2<class_Rect2>`.
 
 .. _class_@GlobalScope_constant_TYPE_RECT2I:
 
@@ -4431,7 +4431,7 @@ Variable is of type :ref:`Rect2<class_Rect2>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_RECT2I** = ``8``
 
-Variable is of type :ref:`Rect2i<class_Rect2i>`.
+Biến thuộc kiểu :ref:`Rect2i<class_Rect2i>`.
 
 .. _class_@GlobalScope_constant_TYPE_VECTOR3:
 
@@ -4439,7 +4439,7 @@ Variable is of type :ref:`Rect2i<class_Rect2i>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_VECTOR3** = ``9``
 
-Variable is of type :ref:`Vector3<class_Vector3>`.
+Biến thuộc kiểu :ref:`Vector3<class_Vector3>`.
 
 .. _class_@GlobalScope_constant_TYPE_VECTOR3I:
 
@@ -4447,7 +4447,7 @@ Variable is of type :ref:`Vector3<class_Vector3>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_VECTOR3I** = ``10``
 
-Variable is of type :ref:`Vector3i<class_Vector3i>`.
+Biến thuộc kiểu :ref:`Vector3i<class_Vector3i>`.
 
 .. _class_@GlobalScope_constant_TYPE_TRANSFORM2D:
 
@@ -4455,7 +4455,7 @@ Variable is of type :ref:`Vector3i<class_Vector3i>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_TRANSFORM2D** = ``11``
 
-Variable is of type :ref:`Transform2D<class_Transform2D>`.
+Biến thuộc kiểu :ref:`Transform2D<class_Transform2D>`.
 
 .. _class_@GlobalScope_constant_TYPE_VECTOR4:
 
@@ -4463,7 +4463,7 @@ Variable is of type :ref:`Transform2D<class_Transform2D>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_VECTOR4** = ``12``
 
-Variable is of type :ref:`Vector4<class_Vector4>`.
+Biến thuộc kiểu :ref:`Vector4<class_Vector4>`.
 
 .. _class_@GlobalScope_constant_TYPE_VECTOR4I:
 
@@ -4471,7 +4471,7 @@ Variable is of type :ref:`Vector4<class_Vector4>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_VECTOR4I** = ``13``
 
-Variable is of type :ref:`Vector4i<class_Vector4i>`.
+Biến thuộc kiểu :ref:`Vector4i<class_Vector4i>`.
 
 .. _class_@GlobalScope_constant_TYPE_PLANE:
 
@@ -4479,7 +4479,7 @@ Variable is of type :ref:`Vector4i<class_Vector4i>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PLANE** = ``14``
 
-Variable is of type :ref:`Plane<class_Plane>`.
+Biến thuộc kiểu :ref:`Plane<class_Plane>`.
 
 .. _class_@GlobalScope_constant_TYPE_QUATERNION:
 
@@ -4487,7 +4487,7 @@ Variable is of type :ref:`Plane<class_Plane>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_QUATERNION** = ``15``
 
-Variable is of type :ref:`Quaternion<class_Quaternion>`.
+Biến thuộc kiểu :ref:`Quaternion<class_Quaternion>`.
 
 .. _class_@GlobalScope_constant_TYPE_AABB:
 
@@ -4495,7 +4495,7 @@ Variable is of type :ref:`Quaternion<class_Quaternion>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_AABB** = ``16``
 
-Variable is of type :ref:`AABB<class_AABB>`.
+Biến thuộc kiểu :ref:`AABB<class_AABB>`.
 
 .. _class_@GlobalScope_constant_TYPE_BASIS:
 
@@ -4503,7 +4503,7 @@ Variable is of type :ref:`AABB<class_AABB>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_BASIS** = ``17``
 
-Variable is of type :ref:`Basis<class_Basis>`.
+Biến thuộc kiểu :ref:`Basis<class_Basis>`.
 
 .. _class_@GlobalScope_constant_TYPE_TRANSFORM3D:
 
@@ -4511,7 +4511,7 @@ Variable is of type :ref:`Basis<class_Basis>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_TRANSFORM3D** = ``18``
 
-Variable is of type :ref:`Transform3D<class_Transform3D>`.
+Biến thuộc kiểu :ref:`Transform3D<class_Transform3D>`.
 
 .. _class_@GlobalScope_constant_TYPE_PROJECTION:
 
@@ -4519,7 +4519,7 @@ Variable is of type :ref:`Transform3D<class_Transform3D>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PROJECTION** = ``19``
 
-Variable is of type :ref:`Projection<class_Projection>`.
+Biến thuộc kiểu :ref:`Projection<class_Projection>`.
 
 .. _class_@GlobalScope_constant_TYPE_COLOR:
 
@@ -4527,7 +4527,7 @@ Variable is of type :ref:`Projection<class_Projection>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_COLOR** = ``20``
 
-Variable is of type :ref:`Color<class_Color>`.
+Biến thuộc kiểu :ref:`Color<class_Color>`.
 
 .. _class_@GlobalScope_constant_TYPE_STRING_NAME:
 
@@ -4535,7 +4535,7 @@ Variable is of type :ref:`Color<class_Color>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_STRING_NAME** = ``21``
 
-Variable is of type :ref:`StringName<class_StringName>`.
+Biến thuộc kiểu :ref:`StringName<class_StringName>`.
 
 .. _class_@GlobalScope_constant_TYPE_NODE_PATH:
 
@@ -4543,7 +4543,7 @@ Variable is of type :ref:`StringName<class_StringName>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_NODE_PATH** = ``22``
 
-Variable is of type :ref:`NodePath<class_NodePath>`.
+Biến thuộc kiểu :ref:`NodePath<class_NodePath>`.
 
 .. _class_@GlobalScope_constant_TYPE_RID:
 
@@ -4551,7 +4551,7 @@ Variable is of type :ref:`NodePath<class_NodePath>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_RID** = ``23``
 
-Variable is of type :ref:`RID<class_RID>`.
+Biến thuộc kiểu :ref:`RID<class_RID>`.
 
 .. _class_@GlobalScope_constant_TYPE_OBJECT:
 
@@ -4559,7 +4559,7 @@ Variable is of type :ref:`RID<class_RID>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_OBJECT** = ``24``
 
-Variable is of type :ref:`Object<class_Object>`.
+Biến thuộc kiểu :ref:`Object<class_Object>`.
 
 .. _class_@GlobalScope_constant_TYPE_CALLABLE:
 
@@ -4567,7 +4567,7 @@ Variable is of type :ref:`Object<class_Object>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_CALLABLE** = ``25``
 
-Variable is of type :ref:`Callable<class_Callable>`.
+Biến thuộc kiểu :ref:`Callable<class_Callable>`.
 
 .. _class_@GlobalScope_constant_TYPE_SIGNAL:
 
@@ -4575,7 +4575,7 @@ Variable is of type :ref:`Callable<class_Callable>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_SIGNAL** = ``26``
 
-Variable is of type :ref:`Signal<class_Signal>`.
+Biến thuộc kiểu :ref:`Signal<class_Signal>`.
 
 .. _class_@GlobalScope_constant_TYPE_DICTIONARY:
 
@@ -4583,7 +4583,7 @@ Variable is of type :ref:`Signal<class_Signal>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_DICTIONARY** = ``27``
 
-Variable is of type :ref:`Dictionary<class_Dictionary>`.
+Biến thuộc kiểu :ref:`Dictionary<class_Dictionary>`.
 
 .. _class_@GlobalScope_constant_TYPE_ARRAY:
 
@@ -4591,7 +4591,7 @@ Variable is of type :ref:`Dictionary<class_Dictionary>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_ARRAY** = ``28``
 
-Variable is of type :ref:`Array<class_Array>`.
+Biến thuộc kiểu :ref:`Array<class_Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_BYTE_ARRAY:
 
@@ -4599,7 +4599,7 @@ Variable is of type :ref:`Array<class_Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_BYTE_ARRAY** = ``29``
 
-Variable is of type :ref:`PackedByteArray<class_PackedByteArray>`.
+Biến thuộc kiểu :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_INT32_ARRAY:
 
@@ -4607,7 +4607,7 @@ Variable is of type :ref:`PackedByteArray<class_PackedByteArray>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_INT32_ARRAY** = ``30``
 
-Variable is of type :ref:`PackedInt32Array<class_PackedInt32Array>`.
+Biến thuộc kiểu :ref:`PackedInt32Array<class_PackedInt32Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_INT64_ARRAY:
 
@@ -4615,7 +4615,7 @@ Variable is of type :ref:`PackedInt32Array<class_PackedInt32Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_INT64_ARRAY** = ``31``
 
-Variable is of type :ref:`PackedInt64Array<class_PackedInt64Array>`.
+Biến thuộc kiểu :ref:`PackedInt64Array<class_PackedInt64Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_FLOAT32_ARRAY:
 
@@ -4623,7 +4623,7 @@ Variable is of type :ref:`PackedInt64Array<class_PackedInt64Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_FLOAT32_ARRAY** = ``32``
 
-Variable is of type :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
+Biến thuộc kiểu :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_FLOAT64_ARRAY:
 
@@ -4631,7 +4631,7 @@ Variable is of type :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_FLOAT64_ARRAY** = ``33``
 
-Variable is of type :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
+Biến thuộc kiểu :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_STRING_ARRAY:
 
@@ -4639,7 +4639,7 @@ Variable is of type :ref:`PackedFloat64Array<class_PackedFloat64Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_STRING_ARRAY** = ``34``
 
-Variable is of type :ref:`PackedStringArray<class_PackedStringArray>`.
+Biến có kiểu :ref:`PackedStringArray<class_PackedStringArray>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_VECTOR2_ARRAY:
 
@@ -4647,7 +4647,7 @@ Variable is of type :ref:`PackedStringArray<class_PackedStringArray>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_VECTOR2_ARRAY** = ``35``
 
-Variable is of type :ref:`PackedVector2Array<class_PackedVector2Array>`.
+Biến có kiểu :ref:`PackedVector2Array<class_PackedVector2Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_VECTOR3_ARRAY:
 
@@ -4655,7 +4655,7 @@ Variable is of type :ref:`PackedVector2Array<class_PackedVector2Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_VECTOR3_ARRAY** = ``36``
 
-Variable is of type :ref:`PackedVector3Array<class_PackedVector3Array>`.
+Biến có kiểu :ref:`PackedVector3Array<class_PackedVector3Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_COLOR_ARRAY:
 
@@ -4663,7 +4663,7 @@ Variable is of type :ref:`PackedVector3Array<class_PackedVector3Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_COLOR_ARRAY** = ``37``
 
-Variable is of type :ref:`PackedColorArray<class_PackedColorArray>`.
+Biến có kiểu :ref:`PackedColorArray<class_PackedColorArray>`.
 
 .. _class_@GlobalScope_constant_TYPE_PACKED_VECTOR4_ARRAY:
 
@@ -4671,7 +4671,7 @@ Variable is of type :ref:`PackedColorArray<class_PackedColorArray>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_PACKED_VECTOR4_ARRAY** = ``38``
 
-Variable is of type :ref:`PackedVector4Array<class_PackedVector4Array>`.
+Biến có kiểu :ref:`PackedVector4Array<class_PackedVector4Array>`.
 
 .. _class_@GlobalScope_constant_TYPE_MAX:
 
@@ -4679,7 +4679,7 @@ Variable is of type :ref:`PackedVector4Array<class_PackedVector4Array>`.
 
 :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **TYPE_MAX** = ``39``
 
-Represents the size of the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` enum.
+Biểu thị kích thước của enum :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4689,7 +4689,7 @@ Represents the size of the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` e
 
 .. rst-class:: classref-enumeration
 
-enum **Variant.Operator**: :ref:`🔗<enum_@GlobalScope_Variant.Operator>`
+enum **Variant.Operator**: :ref:`🔗 <enum_@GlobalScope_Variant.Operator>`
 
 .. _class_@GlobalScope_constant_OP_EQUAL:
 
@@ -4697,7 +4697,7 @@ enum **Variant.Operator**: :ref:`🔗<enum_@GlobalScope_Variant.Operator>`
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_EQUAL** = ``0``
 
-Equality operator (``==``).
+Toán tử bằng (``==``).
 
 .. _class_@GlobalScope_constant_OP_NOT_EQUAL:
 
@@ -4705,7 +4705,7 @@ Equality operator (``==``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_NOT_EQUAL** = ``1``
 
-Inequality operator (``!=``).
+Toán tử khác (``!=``).
 
 .. _class_@GlobalScope_constant_OP_LESS:
 
@@ -4713,7 +4713,7 @@ Inequality operator (``!=``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_LESS** = ``2``
 
-Less than operator (``<``).
+Toán tử nhỏ hơn (``<``).
 
 .. _class_@GlobalScope_constant_OP_LESS_EQUAL:
 
@@ -4721,7 +4721,7 @@ Less than operator (``<``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_LESS_EQUAL** = ``3``
 
-Less than or equal operator (``<=``).
+Toán tử nhỏ hơn hoặc bằng (``<=``).
 
 .. _class_@GlobalScope_constant_OP_GREATER:
 
@@ -4729,7 +4729,7 @@ Less than or equal operator (``<=``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_GREATER** = ``4``
 
-Greater than operator (``>``).
+Toán tử lớn hơn (``>``).
 
 .. _class_@GlobalScope_constant_OP_GREATER_EQUAL:
 
@@ -4737,7 +4737,7 @@ Greater than operator (``>``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_GREATER_EQUAL** = ``5``
 
-Greater than or equal operator (``>=``).
+Toán tử lớn hơn hoặc bằng (``>=``).
 
 .. _class_@GlobalScope_constant_OP_ADD:
 
@@ -4745,7 +4745,7 @@ Greater than or equal operator (``>=``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_ADD** = ``6``
 
-Addition operator (``+``).
+Toán tử cộng (``+``).
 
 .. _class_@GlobalScope_constant_OP_SUBTRACT:
 
@@ -4753,7 +4753,7 @@ Addition operator (``+``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_SUBTRACT** = ``7``
 
-Subtraction operator (``-``).
+Toán tử phép trừ (``-``).
 
 .. _class_@GlobalScope_constant_OP_MULTIPLY:
 
@@ -4761,7 +4761,7 @@ Subtraction operator (``-``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_MULTIPLY** = ``8``
 
-Multiplication operator (``*``).
+Toán tử phép nhân (``*``).
 
 .. _class_@GlobalScope_constant_OP_DIVIDE:
 
@@ -4769,7 +4769,7 @@ Multiplication operator (``*``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_DIVIDE** = ``9``
 
-Division operator (``/``).
+Toán tử phép chia (``/``).
 
 .. _class_@GlobalScope_constant_OP_NEGATE:
 
@@ -4777,7 +4777,7 @@ Division operator (``/``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_NEGATE** = ``10``
 
-Unary negation operator (``-``).
+Toán tử phủ định một ngôi (``-``).
 
 .. _class_@GlobalScope_constant_OP_POSITIVE:
 
@@ -4785,7 +4785,7 @@ Unary negation operator (``-``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_POSITIVE** = ``11``
 
-Unary plus operator (``+``).
+Toán tử dấu cộng một ngôi (``+``).
 
 .. _class_@GlobalScope_constant_OP_MODULE:
 
@@ -4793,7 +4793,7 @@ Unary plus operator (``+``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_MODULE** = ``12``
 
-Remainder/modulo operator (``%``).
+Toán tử phần dư modulo (``%``).
 
 .. _class_@GlobalScope_constant_OP_POWER:
 
@@ -4801,7 +4801,7 @@ Remainder/modulo operator (``%``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_POWER** = ``13``
 
-Power operator (``**``).
+Toán tử lũy thừa (``**``).
 
 .. _class_@GlobalScope_constant_OP_SHIFT_LEFT:
 
@@ -4809,7 +4809,7 @@ Power operator (``**``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_SHIFT_LEFT** = ``14``
 
-Left shift operator (``<<``).
+Toán tử dịch trái (``<<``).
 
 .. _class_@GlobalScope_constant_OP_SHIFT_RIGHT:
 
@@ -4817,7 +4817,7 @@ Left shift operator (``<<``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_SHIFT_RIGHT** = ``15``
 
-Right shift operator (``>>``).
+Toán tử dịch phải (``>>``).
 
 .. _class_@GlobalScope_constant_OP_BIT_AND:
 
@@ -4825,7 +4825,7 @@ Right shift operator (``>>``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_BIT_AND** = ``16``
 
-Bitwise AND operator (``&``).
+Toán tử AND theo bit (``&``).
 
 .. _class_@GlobalScope_constant_OP_BIT_OR:
 
@@ -4833,7 +4833,7 @@ Bitwise AND operator (``&``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_BIT_OR** = ``17``
 
-Bitwise OR operator (``|``).
+Toán tử OR theo bit (``|``).
 
 .. _class_@GlobalScope_constant_OP_BIT_XOR:
 
@@ -4841,7 +4841,7 @@ Bitwise OR operator (``|``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_BIT_XOR** = ``18``
 
-Bitwise XOR operator (``^``).
+Toán tử XOR theo bit (``^``).
 
 .. _class_@GlobalScope_constant_OP_BIT_NEGATE:
 
@@ -4849,7 +4849,7 @@ Bitwise XOR operator (``^``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_BIT_NEGATE** = ``19``
 
-Bitwise NOT operator (``~``).
+Toán tử NOT theo bit (``~``).
 
 .. _class_@GlobalScope_constant_OP_AND:
 
@@ -4857,7 +4857,7 @@ Bitwise NOT operator (``~``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_AND** = ``20``
 
-Logical AND operator (``and`` or ``&&``).
+Toán tử AND logic (``and`` hoặc ``&&``).
 
 .. _class_@GlobalScope_constant_OP_OR:
 
@@ -4865,7 +4865,7 @@ Logical AND operator (``and`` or ``&&``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_OR** = ``21``
 
-Logical OR operator (``or`` or ``||``).
+Toán tử OR logic (``or`` hoặc ``||``).
 
 .. _class_@GlobalScope_constant_OP_XOR:
 
@@ -4873,7 +4873,7 @@ Logical OR operator (``or`` or ``||``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_XOR** = ``22``
 
-Logical XOR operator (not implemented in GDScript).
+Toán tử XOR logic (chưa được triển khai trong GDScript).
 
 .. _class_@GlobalScope_constant_OP_NOT:
 
@@ -4881,7 +4881,7 @@ Logical XOR operator (not implemented in GDScript).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_NOT** = ``23``
 
-Logical NOT operator (``not`` or ``!``).
+Toán tử NOT logic (``not`` hoặc ``!``).
 
 .. _class_@GlobalScope_constant_OP_IN:
 
@@ -4889,7 +4889,7 @@ Logical NOT operator (``not`` or ``!``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_IN** = ``24``
 
-Logical IN operator (``in``).
+Toán tử IN logic (``in``).
 
 .. _class_@GlobalScope_constant_OP_MAX:
 
@@ -4897,7 +4897,7 @@ Logical IN operator (``in``).
 
 :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` **OP_MAX** = ``25``
 
-Represents the size of the :ref:`Variant.Operator<enum_@GlobalScope_Variant.Operator>` enum.
+Biểu thị kích thước của enum :ref:`Variant.Operator <enum_@GlobalScope_Variant.Operator>`.
 
 .. rst-class:: classref-section-separator
 
@@ -4905,8 +4905,8 @@ Represents the size of the :ref:`Variant.Operator<enum_@GlobalScope_Variant.Oper
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_@GlobalScope_constant_UINT8_MAX:
 
@@ -4914,7 +4914,7 @@ Constants
 
 **UINT8_MAX** = ``255`` :ref:`🔗<class_@GlobalScope_constant_UINT8_MAX>`
 
-Maximum value of an 8-bit unsigned integer.
+Giá trị tối đa của một số nguyên không dấu 8 bit.
 
 .. _class_@GlobalScope_constant_UINT16_MAX:
 
@@ -4922,7 +4922,7 @@ Maximum value of an 8-bit unsigned integer.
 
 **UINT16_MAX** = ``65535`` :ref:`🔗<class_@GlobalScope_constant_UINT16_MAX>`
 
-Maximum value of a 16-bit unsigned integer.
+Giá trị lớn nhất của số nguyên không dấu 16-bit.
 
 .. _class_@GlobalScope_constant_UINT32_MAX:
 
@@ -4930,7 +4930,7 @@ Maximum value of a 16-bit unsigned integer.
 
 **UINT32_MAX** = ``4294967295`` :ref:`🔗<class_@GlobalScope_constant_UINT32_MAX>`
 
-Maximum value of a 32-bit unsigned integer.
+Giá trị lớn nhất của số nguyên không dấu 32-bit.
 
 .. _class_@GlobalScope_constant_INT8_MIN:
 
@@ -4938,7 +4938,7 @@ Maximum value of a 32-bit unsigned integer.
 
 **INT8_MIN** = ``-128`` :ref:`🔗<class_@GlobalScope_constant_INT8_MIN>`
 
-Minimum value of an 8-bit signed integer.
+Giá trị nhỏ nhất của số nguyên có dấu 8-bit.
 
 .. _class_@GlobalScope_constant_INT8_MAX:
 
@@ -4946,7 +4946,7 @@ Minimum value of an 8-bit signed integer.
 
 **INT8_MAX** = ``127`` :ref:`🔗<class_@GlobalScope_constant_INT8_MAX>`
 
-Maximum value of an 8-bit signed integer.
+Giá trị lớn nhất của số nguyên có dấu 8-bit.
 
 .. _class_@GlobalScope_constant_INT16_MIN:
 
@@ -4954,7 +4954,7 @@ Maximum value of an 8-bit signed integer.
 
 **INT16_MIN** = ``-32768`` :ref:`🔗<class_@GlobalScope_constant_INT16_MIN>`
 
-Minimum value of a 16-bit signed integer.
+Giá trị nhỏ nhất của số nguyên có dấu 16-bit.
 
 .. _class_@GlobalScope_constant_INT16_MAX:
 
@@ -4962,7 +4962,7 @@ Minimum value of a 16-bit signed integer.
 
 **INT16_MAX** = ``32767`` :ref:`🔗<class_@GlobalScope_constant_INT16_MAX>`
 
-Maximum value of a 16-bit signed integer.
+Giá trị lớn nhất của số nguyên có dấu 16-bit.
 
 .. _class_@GlobalScope_constant_INT32_MIN:
 
@@ -4970,7 +4970,7 @@ Maximum value of a 16-bit signed integer.
 
 **INT32_MIN** = ``-2147483648`` :ref:`🔗<class_@GlobalScope_constant_INT32_MIN>`
 
-Minimum value of a 32-bit signed integer.
+Giá trị nhỏ nhất của số nguyên có dấu 32-bit.
 
 .. _class_@GlobalScope_constant_INT32_MAX:
 
@@ -4978,7 +4978,7 @@ Minimum value of a 32-bit signed integer.
 
 **INT32_MAX** = ``2147483647`` :ref:`🔗<class_@GlobalScope_constant_INT32_MAX>`
 
-Maximum value of a 32-bit signed integer.
+Giá trị lớn nhất của số nguyên có dấu 32 bit.
 
 .. _class_@GlobalScope_constant_INT64_MIN:
 
@@ -4986,7 +4986,7 @@ Maximum value of a 32-bit signed integer.
 
 **INT64_MIN** = ``-9223372036854775808`` :ref:`🔗<class_@GlobalScope_constant_INT64_MIN>`
 
-Minimum value of a 64-bit signed integer.
+Giá trị nhỏ nhất của số nguyên có dấu 64 bit.
 
 .. _class_@GlobalScope_constant_INT64_MAX:
 
@@ -4994,7 +4994,7 @@ Minimum value of a 64-bit signed integer.
 
 **INT64_MAX** = ``9223372036854775807`` :ref:`🔗<class_@GlobalScope_constant_INT64_MAX>`
 
-Maximum value of a 64-bit signed integer.
+Giá trị lớn nhất của số nguyên có dấu 64 bit.
 
 .. rst-class:: classref-section-separator
 
@@ -5002,8 +5002,8 @@ Maximum value of a 64-bit signed integer.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_@GlobalScope_property_AccessibilityServer:
 
@@ -5011,7 +5011,7 @@ Property Descriptions
 
 :ref:`AccessibilityServer<class_AccessibilityServer>` **AccessibilityServer** :ref:`🔗<class_@GlobalScope_property_AccessibilityServer>`
 
-The :ref:`AccessibilityServer<class_AccessibilityServer>` singleton.
+Singleton :ref:`AccessibilityServer<class_AccessibilityServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5023,7 +5023,7 @@ The :ref:`AccessibilityServer<class_AccessibilityServer>` singleton.
 
 :ref:`AudioServer<class_AudioServer>` **AudioServer** :ref:`🔗<class_@GlobalScope_property_AudioServer>`
 
-The :ref:`AudioServer<class_AudioServer>` singleton.
+Singleton :ref:`AudioServer<class_AudioServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5035,7 +5035,7 @@ The :ref:`AudioServer<class_AudioServer>` singleton.
 
 :ref:`CameraServer<class_CameraServer>` **CameraServer** :ref:`🔗<class_@GlobalScope_property_CameraServer>`
 
-The :ref:`CameraServer<class_CameraServer>` singleton.
+Singleton :ref:`CameraServer<class_CameraServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5047,7 +5047,7 @@ The :ref:`CameraServer<class_CameraServer>` singleton.
 
 :ref:`ClassDB<class_ClassDB>` **ClassDB** :ref:`🔗<class_@GlobalScope_property_ClassDB>`
 
-The :ref:`ClassDB<class_ClassDB>` singleton.
+Singleton :ref:`ClassDB<class_ClassDB>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5059,7 +5059,7 @@ The :ref:`ClassDB<class_ClassDB>` singleton.
 
 :ref:`DisplayServer<class_DisplayServer>` **DisplayServer** :ref:`🔗<class_@GlobalScope_property_DisplayServer>`
 
-The :ref:`DisplayServer<class_DisplayServer>` singleton.
+Singleton :ref:`DisplayServer<class_DisplayServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5071,9 +5071,9 @@ The :ref:`DisplayServer<class_DisplayServer>` singleton.
 
 :ref:`EditorInterface<class_EditorInterface>` **EditorInterface** :ref:`🔗<class_@GlobalScope_property_EditorInterface>`
 
-The :ref:`EditorInterface<class_EditorInterface>` singleton.
+Singleton :ref:`EditorInterface<class_EditorInterface>`.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. rst-class:: classref-item-separator
 
@@ -5085,7 +5085,7 @@ The :ref:`EditorInterface<class_EditorInterface>` singleton.
 
 :ref:`Engine<class_Engine>` **Engine** :ref:`🔗<class_@GlobalScope_property_Engine>`
 
-The :ref:`Engine<class_Engine>` singleton.
+Singleton :ref:`Engine<class_Engine>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5097,7 +5097,7 @@ The :ref:`Engine<class_Engine>` singleton.
 
 :ref:`EngineDebugger<class_EngineDebugger>` **EngineDebugger** :ref:`🔗<class_@GlobalScope_property_EngineDebugger>`
 
-The :ref:`EngineDebugger<class_EngineDebugger>` singleton.
+Singleton :ref:`EngineDebugger<class_EngineDebugger>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5109,7 +5109,7 @@ The :ref:`EngineDebugger<class_EngineDebugger>` singleton.
 
 :ref:`GDExtensionManager<class_GDExtensionManager>` **GDExtensionManager** :ref:`🔗<class_@GlobalScope_property_GDExtensionManager>`
 
-The :ref:`GDExtensionManager<class_GDExtensionManager>` singleton.
+Singleton :ref:`GDExtensionManager<class_GDExtensionManager>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5121,9 +5121,9 @@ The :ref:`GDExtensionManager<class_GDExtensionManager>` singleton.
 
 :ref:`GDScriptLanguageProtocol<class_GDScriptLanguageProtocol>` **GDScriptLanguageProtocol** :ref:`🔗<class_@GlobalScope_property_GDScriptLanguageProtocol>`
 
-The :ref:`GDScriptLanguageProtocol<class_GDScriptLanguageProtocol>` singleton.
+Singleton :ref:`GDScriptLanguageProtocol<class_GDScriptLanguageProtocol>`.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. rst-class:: classref-item-separator
 
@@ -5135,7 +5135,7 @@ The :ref:`GDScriptLanguageProtocol<class_GDScriptLanguageProtocol>` singleton.
 
 :ref:`Geometry2D<class_Geometry2D>` **Geometry2D** :ref:`🔗<class_@GlobalScope_property_Geometry2D>`
 
-The :ref:`Geometry2D<class_Geometry2D>` singleton.
+Singleton :ref:`Geometry2D<class_Geometry2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5147,7 +5147,7 @@ The :ref:`Geometry2D<class_Geometry2D>` singleton.
 
 :ref:`Geometry3D<class_Geometry3D>` **Geometry3D** :ref:`🔗<class_@GlobalScope_property_Geometry3D>`
 
-The :ref:`Geometry3D<class_Geometry3D>` singleton.
+Singleton :ref:`Geometry3D<class_Geometry3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5159,7 +5159,7 @@ The :ref:`Geometry3D<class_Geometry3D>` singleton.
 
 :ref:`IP<class_IP>` **IP** :ref:`🔗<class_@GlobalScope_property_IP>`
 
-The :ref:`IP<class_IP>` singleton.
+Singleton :ref:`IP<class_IP>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5171,7 +5171,7 @@ The :ref:`IP<class_IP>` singleton.
 
 :ref:`Input<class_Input>` **Input** :ref:`🔗<class_@GlobalScope_property_Input>`
 
-The :ref:`Input<class_Input>` singleton.
+Singleton :ref:`Input<class_Input>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5183,7 +5183,7 @@ The :ref:`Input<class_Input>` singleton.
 
 :ref:`InputMap<class_InputMap>` **InputMap** :ref:`🔗<class_@GlobalScope_property_InputMap>`
 
-The :ref:`InputMap<class_InputMap>` singleton.
+Singleton :ref:`InputMap<class_InputMap>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5195,9 +5195,9 @@ The :ref:`InputMap<class_InputMap>` singleton.
 
 :ref:`JavaClassWrapper<class_JavaClassWrapper>` **JavaClassWrapper** :ref:`🔗<class_@GlobalScope_property_JavaClassWrapper>`
 
-The :ref:`JavaClassWrapper<class_JavaClassWrapper>` singleton.
+Singleton :ref:`JavaClassWrapper<class_JavaClassWrapper>`.
 
-\ **Note:** Only implemented on Android.
+\ **Lưu ý:** Chỉ được triển khai trên Android.
 
 .. rst-class:: classref-item-separator
 
@@ -5209,9 +5209,9 @@ The :ref:`JavaClassWrapper<class_JavaClassWrapper>` singleton.
 
 :ref:`JavaScriptBridge<class_JavaScriptBridge>` **JavaScriptBridge** :ref:`🔗<class_@GlobalScope_property_JavaScriptBridge>`
 
-The :ref:`JavaScriptBridge<class_JavaScriptBridge>` singleton.
+Singleton :ref:`JavaScriptBridge<class_JavaScriptBridge>`.
 
-\ **Note:** Only implemented on the Web platform.
+\ **Lưu ý:** Chỉ được triển khai trên nền tảng Web.
 
 .. rst-class:: classref-item-separator
 
@@ -5223,7 +5223,7 @@ The :ref:`JavaScriptBridge<class_JavaScriptBridge>` singleton.
 
 :ref:`Marshalls<class_Marshalls>` **Marshalls** :ref:`🔗<class_@GlobalScope_property_Marshalls>`
 
-The :ref:`Marshalls<class_Marshalls>` singleton.
+Singleton :ref:`Marshalls<class_Marshalls>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5235,9 +5235,9 @@ The :ref:`Marshalls<class_Marshalls>` singleton.
 
 :ref:`NativeMenu<class_NativeMenu>` **NativeMenu** :ref:`🔗<class_@GlobalScope_property_NativeMenu>`
 
-The :ref:`NativeMenu<class_NativeMenu>` singleton.
+Singleton :ref:`NativeMenu<class_NativeMenu>`.
 
-\ **Note:** Only implemented on macOS.
+\ **Lưu ý:** Chỉ được triển khai trên macOS.
 
 .. rst-class:: classref-item-separator
 
@@ -5249,7 +5249,7 @@ The :ref:`NativeMenu<class_NativeMenu>` singleton.
 
 :ref:`NavigationMeshGenerator<class_NavigationMeshGenerator>` **NavigationMeshGenerator** :ref:`🔗<class_@GlobalScope_property_NavigationMeshGenerator>`
 
-The :ref:`NavigationMeshGenerator<class_NavigationMeshGenerator>` singleton.
+Singleton :ref:`NavigationMeshGenerator<class_NavigationMeshGenerator>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5261,7 +5261,7 @@ The :ref:`NavigationMeshGenerator<class_NavigationMeshGenerator>` singleton.
 
 :ref:`NavigationServer2D<class_NavigationServer2D>` **NavigationServer2D** :ref:`🔗<class_@GlobalScope_property_NavigationServer2D>`
 
-The :ref:`NavigationServer2D<class_NavigationServer2D>` singleton.
+Singleton :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5273,7 +5273,7 @@ The :ref:`NavigationServer2D<class_NavigationServer2D>` singleton.
 
 :ref:`NavigationServer2DManager<class_NavigationServer2DManager>` **NavigationServer2DManager** :ref:`🔗<class_@GlobalScope_property_NavigationServer2DManager>`
 
-The :ref:`NavigationServer2DManager<class_NavigationServer2DManager>` singleton.
+Singleton :ref:`NavigationServer2DManager<class_NavigationServer2DManager>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5285,7 +5285,7 @@ The :ref:`NavigationServer2DManager<class_NavigationServer2DManager>` singleton.
 
 :ref:`NavigationServer3D<class_NavigationServer3D>` **NavigationServer3D** :ref:`🔗<class_@GlobalScope_property_NavigationServer3D>`
 
-The :ref:`NavigationServer3D<class_NavigationServer3D>` singleton.
+Singleton :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5297,7 +5297,7 @@ The :ref:`NavigationServer3D<class_NavigationServer3D>` singleton.
 
 :ref:`NavigationServer3DManager<class_NavigationServer3DManager>` **NavigationServer3DManager** :ref:`🔗<class_@GlobalScope_property_NavigationServer3DManager>`
 
-The :ref:`NavigationServer3DManager<class_NavigationServer3DManager>` singleton.
+Singleton :ref:`NavigationServer3DManager<class_NavigationServer3DManager>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5309,7 +5309,7 @@ The :ref:`NavigationServer3DManager<class_NavigationServer3DManager>` singleton.
 
 :ref:`OS<class_OS>` **OS** :ref:`🔗<class_@GlobalScope_property_OS>`
 
-The :ref:`OS<class_OS>` singleton.
+Singleton :ref:`OS<class_OS>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5321,7 +5321,7 @@ The :ref:`OS<class_OS>` singleton.
 
 :ref:`Performance<class_Performance>` **Performance** :ref:`🔗<class_@GlobalScope_property_Performance>`
 
-The :ref:`Performance<class_Performance>` singleton.
+Singleton :ref:`Performance<class_Performance>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5333,7 +5333,7 @@ The :ref:`Performance<class_Performance>` singleton.
 
 :ref:`PhysicsServer2D<class_PhysicsServer2D>` **PhysicsServer2D** :ref:`🔗<class_@GlobalScope_property_PhysicsServer2D>`
 
-The :ref:`PhysicsServer2D<class_PhysicsServer2D>` singleton.
+Đối tượng singleton :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5345,7 +5345,7 @@ The :ref:`PhysicsServer2D<class_PhysicsServer2D>` singleton.
 
 :ref:`PhysicsServer2DManager<class_PhysicsServer2DManager>` **PhysicsServer2DManager** :ref:`🔗<class_@GlobalScope_property_PhysicsServer2DManager>`
 
-The :ref:`PhysicsServer2DManager<class_PhysicsServer2DManager>` singleton.
+Đối tượng singleton :ref:`PhysicsServer2DManager<class_PhysicsServer2DManager>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5357,7 +5357,7 @@ The :ref:`PhysicsServer2DManager<class_PhysicsServer2DManager>` singleton.
 
 :ref:`PhysicsServer3D<class_PhysicsServer3D>` **PhysicsServer3D** :ref:`🔗<class_@GlobalScope_property_PhysicsServer3D>`
 
-The :ref:`PhysicsServer3D<class_PhysicsServer3D>` singleton.
+Đối tượng singleton :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5369,7 +5369,7 @@ The :ref:`PhysicsServer3D<class_PhysicsServer3D>` singleton.
 
 :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>` **PhysicsServer3DManager** :ref:`🔗<class_@GlobalScope_property_PhysicsServer3DManager>`
 
-The :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>` singleton.
+Đối tượng singleton :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5381,7 +5381,7 @@ The :ref:`PhysicsServer3DManager<class_PhysicsServer3DManager>` singleton.
 
 :ref:`ProjectSettings<class_ProjectSettings>` **ProjectSettings** :ref:`🔗<class_@GlobalScope_property_ProjectSettings>`
 
-The :ref:`ProjectSettings<class_ProjectSettings>` singleton.
+Đối tượng singleton :ref:`ProjectSettings<class_ProjectSettings>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5393,7 +5393,7 @@ The :ref:`ProjectSettings<class_ProjectSettings>` singleton.
 
 :ref:`RenderingServer<class_RenderingServer>` **RenderingServer** :ref:`🔗<class_@GlobalScope_property_RenderingServer>`
 
-The :ref:`RenderingServer<class_RenderingServer>` singleton.
+Đối tượng singleton :ref:`RenderingServer<class_RenderingServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5405,7 +5405,7 @@ The :ref:`RenderingServer<class_RenderingServer>` singleton.
 
 :ref:`ResourceLoader<class_ResourceLoader>` **ResourceLoader** :ref:`🔗<class_@GlobalScope_property_ResourceLoader>`
 
-The :ref:`ResourceLoader<class_ResourceLoader>` singleton.
+Đối tượng singleton :ref:`ResourceLoader<class_ResourceLoader>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5417,7 +5417,7 @@ The :ref:`ResourceLoader<class_ResourceLoader>` singleton.
 
 :ref:`ResourceSaver<class_ResourceSaver>` **ResourceSaver** :ref:`🔗<class_@GlobalScope_property_ResourceSaver>`
 
-The :ref:`ResourceSaver<class_ResourceSaver>` singleton.
+Singleton :ref:`ResourceSaver<class_ResourceSaver>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5429,7 +5429,7 @@ The :ref:`ResourceSaver<class_ResourceSaver>` singleton.
 
 :ref:`ResourceUID<class_ResourceUID>` **ResourceUID** :ref:`🔗<class_@GlobalScope_property_ResourceUID>`
 
-The :ref:`ResourceUID<class_ResourceUID>` singleton.
+Singleton :ref:`ResourceUID<class_ResourceUID>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5441,7 +5441,7 @@ The :ref:`ResourceUID<class_ResourceUID>` singleton.
 
 :ref:`TextServerManager<class_TextServerManager>` **TextServerManager** :ref:`🔗<class_@GlobalScope_property_TextServerManager>`
 
-The :ref:`TextServerManager<class_TextServerManager>` singleton.
+Singleton :ref:`TextServerManager<class_TextServerManager>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5453,7 +5453,7 @@ The :ref:`TextServerManager<class_TextServerManager>` singleton.
 
 :ref:`ThemeDB<class_ThemeDB>` **ThemeDB** :ref:`🔗<class_@GlobalScope_property_ThemeDB>`
 
-The :ref:`ThemeDB<class_ThemeDB>` singleton.
+Singleton :ref:`ThemeDB<class_ThemeDB>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5465,7 +5465,7 @@ The :ref:`ThemeDB<class_ThemeDB>` singleton.
 
 :ref:`Time<class_Time>` **Time** :ref:`🔗<class_@GlobalScope_property_Time>`
 
-The :ref:`Time<class_Time>` singleton.
+Singleton :ref:`Time<class_Time>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5477,7 +5477,7 @@ The :ref:`Time<class_Time>` singleton.
 
 :ref:`TranslationServer<class_TranslationServer>` **TranslationServer** :ref:`🔗<class_@GlobalScope_property_TranslationServer>`
 
-The :ref:`TranslationServer<class_TranslationServer>` singleton.
+Singleton :ref:`TranslationServer<class_TranslationServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5489,7 +5489,7 @@ The :ref:`TranslationServer<class_TranslationServer>` singleton.
 
 :ref:`WorkerThreadPool<class_WorkerThreadPool>` **WorkerThreadPool** :ref:`🔗<class_@GlobalScope_property_WorkerThreadPool>`
 
-The :ref:`WorkerThreadPool<class_WorkerThreadPool>` singleton.
+Singleton :ref:`WorkerThreadPool<class_WorkerThreadPool>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5501,7 +5501,7 @@ The :ref:`WorkerThreadPool<class_WorkerThreadPool>` singleton.
 
 :ref:`XRServer<class_XRServer>` **XRServer** :ref:`🔗<class_@GlobalScope_property_XRServer>`
 
-The :ref:`XRServer<class_XRServer>` singleton.
+Singleton :ref:`XRServer<class_XRServer>`.
 
 .. rst-class:: classref-section-separator
 
@@ -5509,8 +5509,8 @@ The :ref:`XRServer<class_XRServer>` singleton.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_@GlobalScope_method_abs:
 
@@ -5518,7 +5518,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **abs**\ (\ x\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_abs>`
 
-Returns the absolute value of a :ref:`Variant<class_Variant>` parameter ``x`` (i.e. non-negative value). Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
+Trả về giá trị tuyệt đối của tham số :ref:`Variant<class_Variant>` thuộc kiểu ``x`` (tức là giá trị không âm). Các kiểu được hỗ trợ: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
 
 ::
 
@@ -5540,7 +5540,7 @@ Returns the absolute value of a :ref:`Variant<class_Variant>` parameter ``x`` (i
     var f = abs(Vector3i(-7, -8, -9))
     # f is (7, 8, 9)
 
-\ **Note:** For better type safety, use :ref:`absf()<class_@GlobalScope_method_absf>`, :ref:`absi()<class_@GlobalScope_method_absi>`, :ref:`Vector2.abs()<class_Vector2_method_abs>`, :ref:`Vector2i.abs()<class_Vector2i_method_abs>`, :ref:`Vector3.abs()<class_Vector3_method_abs>`, :ref:`Vector3i.abs()<class_Vector3i_method_abs>`, :ref:`Vector4.abs()<class_Vector4_method_abs>`, or :ref:`Vector4i.abs()<class_Vector4i_method_abs>`.
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`absf()<class_@GlobalScope_method_absf>`, :ref:`absi()<class_@GlobalScope_method_absi>`, :ref:`Vector2.abs()<class_Vector2_method_abs>`, :ref:`Vector2i.abs()<class_Vector2i_method_abs>`, :ref:`Vector3.abs()<class_Vector3_method_abs>`, :ref:`Vector3i.abs()<class_Vector3i_method_abs>`, :ref:`Vector4.abs()<class_Vector4_method_abs>` hoặc :ref:`Vector4i.abs()<class_Vector4i_method_abs>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5552,7 +5552,7 @@ Returns the absolute value of a :ref:`Variant<class_Variant>` parameter ``x`` (i
 
 :ref:`float<class_float>` **absf**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_absf>`
 
-Returns the absolute value of float parameter ``x`` (i.e. positive value).
+Trả về giá trị tuyệt đối của tham số float ``x`` (tức là giá trị dương).
 
 ::
 
@@ -5569,7 +5569,7 @@ Returns the absolute value of float parameter ``x`` (i.e. positive value).
 
 :ref:`int<class_int>` **absi**\ (\ x\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_absi>`
 
-Returns the absolute value of int parameter ``x`` (i.e. positive value).
+Trả về giá trị tuyệt đối của tham số int ``x`` (tức là giá trị dương).
 
 ::
 
@@ -5586,7 +5586,7 @@ Returns the absolute value of int parameter ``x`` (i.e. positive value).
 
 :ref:`float<class_float>` **acos**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_acos>`
 
-Returns the arc cosine of ``x`` in radians. Use to get the angle of cosine ``x``. ``x`` will be clamped between ``-1.0`` and ``1.0`` (inclusive), in order to prevent :ref:`acos()<class_@GlobalScope_method_acos>` from returning :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>`.
+Trả về arccos của ``x`` theo radian. Dùng để lấy góc có cos bằng ``x``. ``x`` sẽ được giới hạn trong khoảng từ ``-1.0`` đến ``1.0`` (bao gồm cả hai), nhằm ngăn :ref:`acos()<class_@GlobalScope_method_acos>` trả về :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>`.
 
 ::
 
@@ -5603,7 +5603,7 @@ Returns the arc cosine of ``x`` in radians. Use to get the angle of cosine ``x``
 
 :ref:`float<class_float>` **acosh**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_acosh>`
 
-Returns the hyperbolic arc (also called inverse) cosine of ``x``, returning a value in radians. Use it to get the angle from an angle's cosine in hyperbolic space if ``x`` is larger or equal to 1. For values of ``x`` lower than 1, it will return 0, in order to prevent :ref:`acosh()<class_@GlobalScope_method_acosh>` from returning :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>`.
+Trả về cosine hyperbolic arc (còn gọi là cosine nghịch đảo) của ``x``, với giá trị trả về tính bằng radian. Sử dụng hàm này để lấy góc từ cosine của một góc trong không gian hyperbolic nếu ``x`` lớn hơn hoặc bằng 1. Với các giá trị ``x`` nhỏ hơn 1, hàm sẽ trả về 0 để ngăn :ref:`acosh()<class_@GlobalScope_method_acosh>` trả về :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>`.
 
 ::
 
@@ -5622,7 +5622,7 @@ Returns the hyperbolic arc (also called inverse) cosine of ``x``, returning a va
 
 :ref:`float<class_float>` **angle_difference**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_angle_difference>`
 
-Returns the difference between the two angles (in radians), in the range of ``[-PI, +PI]``. When ``from`` and ``to`` are opposite, returns ``-PI`` if ``from`` is smaller than ``to``, or ``PI`` otherwise.
+Trả về hiệu giữa hai góc (tính bằng radian), trong phạm vi ``[-PI, +PI]``. Khi ``from`` và ``to`` đối nhau, hàm trả về ``-PI`` nếu ``from`` nhỏ hơn ``to``, hoặc ``PI`` trong các trường hợp khác.
 
 .. rst-class:: classref-item-separator
 
@@ -5634,7 +5634,7 @@ Returns the difference between the two angles (in radians), in the range of ``[-
 
 :ref:`float<class_float>` **asin**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_asin>`
 
-Returns the arc sine of ``x`` in radians. Use to get the angle of sine ``x``. ``x`` will be clamped between ``-1.0`` and ``1.0`` (inclusive), in order to prevent :ref:`asin()<class_@GlobalScope_method_asin>` from returning :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>`.
+Trả về arc sine của ``x`` tính bằng radian. Sử dụng hàm này để lấy góc có sine là ``x``. ``x`` sẽ được giới hạn trong khoảng từ ``-1.0`` đến ``1.0`` (bao gồm cả hai giá trị), để ngăn :ref:`asin()<class_@GlobalScope_method_asin>` trả về :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>`.
 
 ::
 
@@ -5651,7 +5651,7 @@ Returns the arc sine of ``x`` in radians. Use to get the angle of sine ``x``. ``
 
 :ref:`float<class_float>` **asinh**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_asinh>`
 
-Returns the hyperbolic arc (also called inverse) sine of ``x``, returning a value in radians. Use it to get the angle from an angle's sine in hyperbolic space.
+Trả về sine hyperbolic arc (còn gọi là sine nghịch đảo) của ``x``, với giá trị trả về tính bằng radian. Sử dụng hàm này để lấy góc từ sine của một góc trong không gian hyperbolic.
 
 ::
 
@@ -5668,15 +5668,15 @@ Returns the hyperbolic arc (also called inverse) sine of ``x``, returning a valu
 
 :ref:`float<class_float>` **atan**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_atan>`
 
-Returns the arc tangent of ``x`` in radians. Use it to get the angle from an angle's tangent in trigonometry.
+Trả về tangent arc của ``x`` tính bằng radian. Sử dụng hàm này để lấy góc từ tangent của một góc trong lượng giác.
 
-The method cannot know in which quadrant the angle should fall. See :ref:`atan2()<class_@GlobalScope_method_atan2>` if you have both ``y`` and ``x``.
+Phương thức này không thể biết góc sẽ thuộc góc phần tư nào. Xem :ref:`atan2()<class_@GlobalScope_method_atan2>` nếu bạn có cả ``y`` và ``x``.
 
 ::
 
     var a = atan(0.5) # a is 0.463648
 
-If ``x`` is between ``-PI / 2`` and ``PI / 2`` (inclusive), ``atan(tan(x))`` is equal to ``x``.
+Nếu ``x`` nằm giữa ``-PI / 2`` và ``PI / 2`` (bao gồm cả hai giá trị), thì ``atan(tan(x))`` bằng ``x``.
 
 .. rst-class:: classref-item-separator
 
@@ -5688,9 +5688,9 @@ If ``x`` is between ``-PI / 2`` and ``PI / 2`` (inclusive), ``atan(tan(x))`` is 
 
 :ref:`float<class_float>` **atan2**\ (\ y\: :ref:`float<class_float>`, x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_atan2>`
 
-Returns the arc tangent of ``y/x`` in radians. Use to get the angle of tangent ``y/x``. To compute the value, the method takes into account the sign of both arguments in order to determine the quadrant.
+Trả về arctan của ``y/x`` theo radian. Sử dụng để lấy góc của tangent ``y/x``. Để tính giá trị, phương thức này xét đến dấu của cả hai đối số nhằm xác định góc phần tư.
 
-Important note: The Y coordinate comes first, by convention.
+Lưu ý quan trọng: Theo quy ước, tọa độ Y được đặt trước.
 
 ::
 
@@ -5706,9 +5706,9 @@ Important note: The Y coordinate comes first, by convention.
 
 :ref:`float<class_float>` **atanh**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_atanh>`
 
-Returns the hyperbolic arc (also called inverse) tangent of ``x``, returning a value in radians. Use it to get the angle from an angle's tangent in hyperbolic space if ``x`` is between -1 and 1 (non-inclusive).
+Trả về arctan hyperbol (còn gọi là arctan nghịch đảo) của ``x``, với giá trị trả về theo radian. Sử dụng để lấy góc từ tangent của một góc trong không gian hyperbol nếu ``x`` nằm giữa -1 và 1 (không bao gồm hai đầu mút).
 
-In mathematics, the inverse hyperbolic tangent is only defined for -1 < ``x`` < 1 in the real set, so values equal or lower to -1 for ``x`` return negative :ref:`@GDScript.INF<class_@GDScript_constant_INF>` and values equal or higher than 1 return positive :ref:`@GDScript.INF<class_@GDScript_constant_INF>` in order to prevent :ref:`atanh()<class_@GlobalScope_method_atanh>` from returning :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>`.
+Trong toán học, arctan hyperbol nghịch đảo chỉ được xác định với -1 < ``x`` < 1 trong tập số thực, vì vậy các giá trị bằng hoặc nhỏ hơn -1 của ``x`` trả về :ref:`@GDScript.INF <class_@GDScript_constant_INF>` âm và các giá trị bằng hoặc lớn hơn 1 trả về :ref:`@GDScript.INF <class_@GDScript_constant_INF>` dương để ngăn :ref:`atanh()<class_@GlobalScope_method_atanh>` trả về :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>`.
 
 ::
 
@@ -5728,7 +5728,7 @@ In mathematics, the inverse hyperbolic tangent is only defined for -1 < ``x`` < 
 
 :ref:`float<class_float>` **bezier_derivative**\ (\ start\: :ref:`float<class_float>`, control_1\: :ref:`float<class_float>`, control_2\: :ref:`float<class_float>`, end\: :ref:`float<class_float>`, t\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_bezier_derivative>`
 
-Returns the derivative at the given ``t`` on a one-dimensional `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ defined by the given ``control_1``, ``control_2``, and ``end`` points.
+Trả về đạo hàm tại ``t`` đã cho trên một đường cong `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ một chiều được xác định bởi các điểm ``control_1``, ``control_2`` và ``end`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -5740,7 +5740,7 @@ Returns the derivative at the given ``t`` on a one-dimensional `Bézier curve <h
 
 :ref:`float<class_float>` **bezier_interpolate**\ (\ start\: :ref:`float<class_float>`, control_1\: :ref:`float<class_float>`, control_2\: :ref:`float<class_float>`, end\: :ref:`float<class_float>`, t\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_bezier_interpolate>`
 
-Returns the point at the given ``t`` on a one-dimensional `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ defined by the given ``control_1``, ``control_2``, and ``end`` points.
+Trả về điểm tại ``t`` đã cho trên một đường cong `Bézier curve <https://en.wikipedia.org/wiki/B%C3%A9zier_curve>`__ một chiều được xác định bởi các điểm ``control_1``, ``control_2`` và ``end`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -5752,9 +5752,9 @@ Returns the point at the given ``t`` on a one-dimensional `Bézier curve <https:
 
 :ref:`Variant<class_Variant>` **bytes_to_var**\ (\ bytes\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_@GlobalScope_method_bytes_to_var>`
 
-Decodes a byte array back to a :ref:`Variant<class_Variant>` value, without decoding objects.
+Giải mã một mảng byte trở lại thành một giá trị :ref:`Variant<class_Variant>`, mà không giải mã các đối tượng.
 
-\ **Note:** If you need object deserialization, see :ref:`bytes_to_var_with_objects()<class_@GlobalScope_method_bytes_to_var_with_objects>`.
+\ **Lưu ý:** Nếu bạn cần giải tuần tự hóa đối tượng, hãy xem :ref:`bytes_to_var_with_objects()<class_@GlobalScope_method_bytes_to_var_with_objects>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5766,9 +5766,9 @@ Decodes a byte array back to a :ref:`Variant<class_Variant>` value, without deco
 
 :ref:`Variant<class_Variant>` **bytes_to_var_with_objects**\ (\ bytes\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_@GlobalScope_method_bytes_to_var_with_objects>`
 
-Decodes a byte array back to a :ref:`Variant<class_Variant>` value. Decoding objects is allowed.
+Giải mã một mảng byte trở lại giá trị :ref:`Variant<class_Variant>`. Cho phép giải mã các đối tượng.
 
-\ **Warning:** Deserialized object can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats (remote code execution).
+\ **Cảnh báo:** Đối tượng đã được giải tuần tự hóa có thể chứa mã được thực thi. Không sử dụng tùy chọn này nếu đối tượng đã được tuần tự hóa đến từ các nguồn không đáng tin cậy để tránh các mối đe dọa bảo mật tiềm ẩn (thực thi mã từ xa).
 
 .. rst-class:: classref-item-separator
 
@@ -5780,16 +5780,16 @@ Decodes a byte array back to a :ref:`Variant<class_Variant>` value. Decoding obj
 
 :ref:`Variant<class_Variant>` **ceil**\ (\ x\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_ceil>`
 
-Rounds ``x`` upward (towards positive infinity), returning the smallest whole number that is not less than ``x``. Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
+Làm tròn ``x`` lên (về phía dương vô cùng), trả về số nguyên nhỏ nhất không nhỏ hơn ``x``. Các kiểu được hỗ trợ: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
 
 ::
 
     var i = ceil(1.45) # i is 2.0
     i = ceil(1.001)    # i is 2.0
 
-See also :ref:`floor()<class_@GlobalScope_method_floor>`, :ref:`round()<class_@GlobalScope_method_round>`, and :ref:`snapped()<class_@GlobalScope_method_snapped>`.
+Xem thêm :ref:`floor()<class_@GlobalScope_method_floor>`, :ref:`round()<class_@GlobalScope_method_round>` và :ref:`snapped()<class_@GlobalScope_method_snapped>`.
 
-\ **Note:** For better type safety, use :ref:`ceilf()<class_@GlobalScope_method_ceilf>`, :ref:`ceili()<class_@GlobalScope_method_ceili>`, :ref:`Vector2.ceil()<class_Vector2_method_ceil>`, :ref:`Vector3.ceil()<class_Vector3_method_ceil>`, or :ref:`Vector4.ceil()<class_Vector4_method_ceil>`.
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`ceilf()<class_@GlobalScope_method_ceilf>`, :ref:`ceili()<class_@GlobalScope_method_ceili>`, :ref:`Vector2.ceil()<class_Vector2_method_ceil>`, :ref:`Vector3.ceil()<class_Vector3_method_ceil>` hoặc :ref:`Vector4.ceil()<class_Vector4_method_ceil>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5801,9 +5801,9 @@ See also :ref:`floor()<class_@GlobalScope_method_floor>`, :ref:`round()<class_@G
 
 :ref:`float<class_float>` **ceilf**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_ceilf>`
 
-Rounds ``x`` upward (towards positive infinity), returning the smallest whole number that is not less than ``x``.
+Làm tròn ``x`` lên (về phía dương vô cùng), trả về số nguyên nhỏ nhất không nhỏ hơn ``x``.
 
-A type-safe version of :ref:`ceil()<class_@GlobalScope_method_ceil>`, returning a :ref:`float<class_float>`.
+Một phiên bản an toàn kiểu của :ref:`ceil()<class_@GlobalScope_method_ceil>`, trả về một :ref:`float<class_float>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5815,9 +5815,9 @@ A type-safe version of :ref:`ceil()<class_@GlobalScope_method_ceil>`, returning 
 
 :ref:`int<class_int>` **ceili**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_ceili>`
 
-Rounds ``x`` upward (towards positive infinity), returning the smallest whole number that is not less than ``x``.
+Làm tròn ``x`` lên (về phía dương vô cùng), trả về số nguyên nhỏ nhất không nhỏ hơn ``x``.
 
-A type-safe version of :ref:`ceil()<class_@GlobalScope_method_ceil>`, returning an :ref:`int<class_int>`.
+Một phiên bản an toàn kiểu của :ref:`ceil()<class_@GlobalScope_method_ceil>`, trả về một :ref:`int<class_int>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5829,7 +5829,7 @@ A type-safe version of :ref:`ceil()<class_@GlobalScope_method_ceil>`, returning 
 
 :ref:`Variant<class_Variant>` **clamp**\ (\ value\: :ref:`Variant<class_Variant>`, min\: :ref:`Variant<class_Variant>`, max\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_clamp>`
 
-Clamps the ``value``, returning a :ref:`Variant<class_Variant>` not less than ``min`` and not more than ``max``. Any values that can be compared with the less than and greater than operators will work.
+Giới hạn ``value``, trả về một :ref:`Variant<class_Variant>` không nhỏ hơn ``min`` và không lớn hơn ``max``. Mọi giá trị có thể được so sánh bằng toán tử nhỏ hơn và lớn hơn đều hoạt động.
 
 ::
 
@@ -5839,9 +5839,9 @@ Clamps the ``value``, returning a :ref:`Variant<class_Variant>` not less than ``
     var b = clamp(8.1, 0.9, 5.5)
     # b is 5.5
 
-\ **Note:** For better type safety, use :ref:`clampf()<class_@GlobalScope_method_clampf>`, :ref:`clampi()<class_@GlobalScope_method_clampi>`, :ref:`Vector2.clamp()<class_Vector2_method_clamp>`, :ref:`Vector2i.clamp()<class_Vector2i_method_clamp>`, :ref:`Vector3.clamp()<class_Vector3_method_clamp>`, :ref:`Vector3i.clamp()<class_Vector3i_method_clamp>`, :ref:`Vector4.clamp()<class_Vector4_method_clamp>`, :ref:`Vector4i.clamp()<class_Vector4i_method_clamp>`, or :ref:`Color.clamp()<class_Color_method_clamp>` (not currently supported by this method).
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`clampf()<class_@GlobalScope_method_clampf>`, :ref:`clampi()<class_@GlobalScope_method_clampi>`, :ref:`Vector2.clamp()<class_Vector2_method_clamp>`, :ref:`Vector2i.clamp()<class_Vector2i_method_clamp>`, :ref:`Vector3.clamp()<class_Vector3_method_clamp>`, :ref:`Vector3i.clamp()<class_Vector3i_method_clamp>`, :ref:`Vector4.clamp()<class_Vector4_method_clamp>`, :ref:`Vector4i.clamp()<class_Vector4i_method_clamp>` hoặc :ref:`Color.clamp()<class_Color_method_clamp>` (hiện phương thức này chưa hỗ trợ).
 
-\ **Note:** When using this on vectors it will *not* perform component-wise clamping, and will pick ``min`` if ``value < min`` or ``max`` if ``value > max``. To perform component-wise clamping use the methods listed above.
+\ **Lưu ý:** Khi sử dụng trên các vector, phương thức này sẽ *không* thực hiện việc giới hạn theo từng thành phần, mà sẽ chọn ``min`` nếu ``value < min`` hoặc ``max`` nếu ``value > max``. Để giới hạn theo từng thành phần, hãy sử dụng các phương thức được liệt kê ở trên.
 
 .. rst-class:: classref-item-separator
 
@@ -5853,7 +5853,7 @@ Clamps the ``value``, returning a :ref:`Variant<class_Variant>` not less than ``
 
 :ref:`float<class_float>` **clampf**\ (\ value\: :ref:`float<class_float>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_clampf>`
 
-Clamps the ``value``, returning a :ref:`float<class_float>` not less than ``min`` and not more than ``max``.
+Giới hạn ``value``, trả về một :ref:`float<class_float>` không nhỏ hơn ``min`` và không lớn hơn ``max``.
 
 ::
 
@@ -5873,7 +5873,7 @@ Clamps the ``value``, returning a :ref:`float<class_float>` not less than ``min`
 
 :ref:`int<class_int>` **clampi**\ (\ value\: :ref:`int<class_int>`, min\: :ref:`int<class_int>`, max\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_clampi>`
 
-Clamps the ``value``, returning an :ref:`int<class_int>` not less than ``min`` and not more than ``max``.
+Giới hạn ``value``, trả về một :ref:`int<class_int>` không nhỏ hơn ``min`` và không lớn hơn ``max``.
 
 ::
 
@@ -5893,7 +5893,7 @@ Clamps the ``value``, returning an :ref:`int<class_int>` not less than ``min`` a
 
 :ref:`float<class_float>` **cos**\ (\ angle_rad\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_cos>`
 
-Returns the cosine of angle ``angle_rad`` in radians.
+Trả về cosin của góc ``angle_rad`` tính bằng radian.
 
 ::
 
@@ -5911,7 +5911,7 @@ Returns the cosine of angle ``angle_rad`` in radians.
 
 :ref:`float<class_float>` **cosh**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_cosh>`
 
-Returns the hyperbolic cosine of ``x`` in radians.
+Trả về cosin hyperbolic của ``x`` tính bằng radian.
 
 ::
 
@@ -5927,7 +5927,7 @@ Returns the hyperbolic cosine of ``x`` in radians.
 
 :ref:`float<class_float>` **cubic_interpolate**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, pre\: :ref:`float<class_float>`, post\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_cubic_interpolate>`
 
-Cubic interpolates between two values by the factor defined in ``weight`` with ``pre`` and ``post`` values.
+Nội suy bậc ba giữa hai giá trị theo hệ số được xác định trong ``weight``, với các giá trị ``pre`` và ``post``.
 
 .. rst-class:: classref-item-separator
 
@@ -5939,7 +5939,7 @@ Cubic interpolates between two values by the factor defined in ``weight`` with `
 
 :ref:`float<class_float>` **cubic_interpolate_angle**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, pre\: :ref:`float<class_float>`, post\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_cubic_interpolate_angle>`
 
-Cubic interpolates between two rotation values with shortest path by the factor defined in ``weight`` with ``pre`` and ``post`` values. See also :ref:`lerp_angle()<class_@GlobalScope_method_lerp_angle>`.
+Nội suy bậc ba giữa hai giá trị xoay theo đường đi ngắn nhất, với hệ số được xác định trong ``weight`` và các giá trị ``pre`` và ``post``. Xem thêm :ref:`lerp_angle()<class_@GlobalScope_method_lerp_angle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -5951,9 +5951,9 @@ Cubic interpolates between two rotation values with shortest path by the factor 
 
 :ref:`float<class_float>` **cubic_interpolate_angle_in_time**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, pre\: :ref:`float<class_float>`, post\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`, to_t\: :ref:`float<class_float>`, pre_t\: :ref:`float<class_float>`, post_t\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_cubic_interpolate_angle_in_time>`
 
-Cubic interpolates between two rotation values with shortest path by the factor defined in ``weight`` with ``pre`` and ``post`` values. See also :ref:`lerp_angle()<class_@GlobalScope_method_lerp_angle>`.
+Nội suy bậc ba giữa hai giá trị xoay theo đường đi ngắn nhất, với hệ số được xác định trong ``weight`` và các giá trị ``pre`` và ``post``. Xem thêm :ref:`lerp_angle()<class_@GlobalScope_method_lerp_angle>`.
 
-It can perform smoother interpolation than :ref:`cubic_interpolate()<class_@GlobalScope_method_cubic_interpolate>` by the time values.
+Có thể thực hiện nội suy mượt hơn :ref:`cubic_interpolate()<class_@GlobalScope_method_cubic_interpolate>` dựa trên các giá trị thời gian.
 
 .. rst-class:: classref-item-separator
 
@@ -5965,9 +5965,9 @@ It can perform smoother interpolation than :ref:`cubic_interpolate()<class_@Glob
 
 :ref:`float<class_float>` **cubic_interpolate_in_time**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, pre\: :ref:`float<class_float>`, post\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`, to_t\: :ref:`float<class_float>`, pre_t\: :ref:`float<class_float>`, post_t\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_cubic_interpolate_in_time>`
 
-Cubic interpolates between two values by the factor defined in ``weight`` with ``pre`` and ``post`` values.
+Nội suy bậc ba giữa hai giá trị theo hệ số được xác định trong ``weight``, với các giá trị ``pre`` và ``post``.
 
-It can perform smoother interpolation than :ref:`cubic_interpolate()<class_@GlobalScope_method_cubic_interpolate>` by the time values.
+Có thể thực hiện nội suy mượt hơn :ref:`cubic_interpolate()<class_@GlobalScope_method_cubic_interpolate>` dựa trên các giá trị thời gian.
 
 .. rst-class:: classref-item-separator
 
@@ -5979,7 +5979,7 @@ It can perform smoother interpolation than :ref:`cubic_interpolate()<class_@Glob
 
 :ref:`float<class_float>` **db_to_linear**\ (\ db\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_db_to_linear>`
 
-Converts from decibels to linear energy (audio).
+Chuyển đổi từ decibel sang năng lượng tuyến tính (âm thanh).
 
 .. rst-class:: classref-item-separator
 
@@ -5991,7 +5991,7 @@ Converts from decibels to linear energy (audio).
 
 :ref:`float<class_float>` **deg_to_rad**\ (\ deg\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_deg_to_rad>`
 
-Converts an angle expressed in degrees to radians.
+Chuyển đổi một góc được biểu diễn bằng độ sang radian.
 
 ::
 
@@ -6007,7 +6007,7 @@ Converts an angle expressed in degrees to radians.
 
 :ref:`float<class_float>` **ease**\ (\ x\: :ref:`float<class_float>`, curve\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_ease>`
 
-Returns an "eased" value of ``x`` based on an easing function defined with ``curve``. This easing function is based on an exponent. The ``curve`` can be any floating-point number, with specific values leading to the following behaviors:
+Trả về giá trị "eased" của ``x`` dựa trên một hàm easing được định nghĩa bằng ``curve``. Hàm easing này dựa trên một số mũ. ``curve`` có thể là bất kỳ số dấu phẩy động nào, với các giá trị cụ thể dẫn đến những hành vi sau:
 
 .. code:: text
 
@@ -6019,9 +6019,9 @@ Returns an "eased" value of ``x`` based on an easing function defined with ``cur
     - 1.0: Linear
     - Greater than 1.0 (exclusive): Ease in
 
-\ `ease() curve values cheatsheet <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/ease_cheatsheet.png>`__\ 
+\ `bảng tra các giá trị đường cong ease() <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/ease_cheatsheet.png>`__
 
-See also :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`. If you need to perform more advanced transitions, use :ref:`Tween.interpolate_value()<class_Tween_method_interpolate_value>`.
+Xem thêm :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`. Nếu cần thực hiện các transition nâng cao hơn, hãy sử dụng :ref:`Tween.interpolate_value()<class_Tween_method_interpolate_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6033,7 +6033,7 @@ See also :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`. If you need 
 
 :ref:`String<class_String>` **error_string**\ (\ error\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_error_string>`
 
-Returns a human-readable name for the given :ref:`Error<enum_@GlobalScope_Error>` code.
+Trả về tên dễ đọc cho mã :ref:`Error <enum_@GlobalScope_Error>` đã cho.
 
 ::
 
@@ -6052,11 +6052,11 @@ Returns a human-readable name for the given :ref:`Error<enum_@GlobalScope_Error>
 
 :ref:`float<class_float>` **exp**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_exp>`
 
-The natural exponential function. It raises the mathematical constant *e* to the power of ``x`` and returns it.
+Hàm mũ tự nhiên. Hàm này nâng hằng số toán học *e* lên lũy thừa ``x`` và trả về kết quả.
 
-\ *e* has an approximate value of 2.71828, and can be obtained with ``exp(1)``.
+\ *e* có giá trị xấp xỉ 2.71828 và có thể lấy được bằng ``exp(1)``.
 
-For exponents to other bases use the method :ref:`pow()<class_@GlobalScope_method_pow>`.
+Để tính lũy thừa với các cơ số khác, hãy sử dụng phương thức :ref:`pow()<class_@GlobalScope_method_pow>`.
 
 ::
 
@@ -6072,16 +6072,16 @@ For exponents to other bases use the method :ref:`pow()<class_@GlobalScope_metho
 
 :ref:`Variant<class_Variant>` **floor**\ (\ x\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_floor>`
 
-Rounds ``x`` downward (towards negative infinity), returning the largest whole number that is not more than ``x``. Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
+Làm tròn ``x`` xuống (về phía âm vô cùng), trả về số nguyên lớn nhất không lớn hơn ``x``. Các kiểu được hỗ trợ: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
 
 ::
 
     var a = floor(2.99) # a is 2.0
     a = floor(-2.99)    # a is -3.0
 
-See also :ref:`ceil()<class_@GlobalScope_method_ceil>`, :ref:`round()<class_@GlobalScope_method_round>`, and :ref:`snapped()<class_@GlobalScope_method_snapped>`.
+Xem thêm :ref:`ceil()<class_@GlobalScope_method_ceil>`, :ref:`round()<class_@GlobalScope_method_round>` và :ref:`snapped()<class_@GlobalScope_method_snapped>`.
 
-\ **Note:** For better type safety, use :ref:`floorf()<class_@GlobalScope_method_floorf>`, :ref:`floori()<class_@GlobalScope_method_floori>`, :ref:`Vector2.floor()<class_Vector2_method_floor>`, :ref:`Vector3.floor()<class_Vector3_method_floor>`, or :ref:`Vector4.floor()<class_Vector4_method_floor>`.
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`floorf()<class_@GlobalScope_method_floorf>`, :ref:`floori()<class_@GlobalScope_method_floori>`, :ref:`Vector2.floor()<class_Vector2_method_floor>`, :ref:`Vector3.floor()<class_Vector3_method_floor>` hoặc :ref:`Vector4.floor()<class_Vector4_method_floor>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6093,9 +6093,9 @@ See also :ref:`ceil()<class_@GlobalScope_method_ceil>`, :ref:`round()<class_@Glo
 
 :ref:`float<class_float>` **floorf**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_floorf>`
 
-Rounds ``x`` downward (towards negative infinity), returning the largest whole number that is not more than ``x``.
+Làm tròn ``x`` xuống (về âm vô cực), trả về số nguyên lớn nhất không lớn hơn ``x``.
 
-A type-safe version of :ref:`floor()<class_@GlobalScope_method_floor>`, returning a :ref:`float<class_float>`.
+Phiên bản an toàn về kiểu của :ref:`floor()<class_@GlobalScope_method_floor>`, trả về một :ref:`float<class_float>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6107,11 +6107,11 @@ A type-safe version of :ref:`floor()<class_@GlobalScope_method_floor>`, returnin
 
 :ref:`int<class_int>` **floori**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_floori>`
 
-Rounds ``x`` downward (towards negative infinity), returning the largest whole number that is not more than ``x``.
+Làm tròn ``x`` xuống (về âm vô cực), trả về số nguyên lớn nhất không lớn hơn ``x``.
 
-A type-safe version of :ref:`floor()<class_@GlobalScope_method_floor>`, returning an :ref:`int<class_int>`.
+Phiên bản an toàn về kiểu của :ref:`floor()<class_@GlobalScope_method_floor>`, trả về một :ref:`int<class_int>`.
 
-\ **Note:** This function is *not* the same as ``int(x)``, which rounds towards 0.
+\ **Lưu ý:** Hàm này *không* giống với ``int(x)``, hàm làm tròn về 0.
 
 .. rst-class:: classref-item-separator
 
@@ -6123,13 +6123,13 @@ A type-safe version of :ref:`floor()<class_@GlobalScope_method_floor>`, returnin
 
 :ref:`float<class_float>` **fmod**\ (\ x\: :ref:`float<class_float>`, y\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_fmod>`
 
-Returns the floating-point remainder of ``x`` divided by ``y``, keeping the sign of ``x``.
+Trả về phần dư dấu phẩy động của phép chia ``x`` cho ``y``, giữ nguyên dấu của ``x``.
 
 ::
 
     var remainder = fmod(7, 5.5) # remainder is 1.5
 
-For the integer remainder operation, use the ``%`` operator.
+Đối với phép toán lấy phần dư số nguyên, hãy sử dụng toán tử ``%``.
 
 .. rst-class:: classref-item-separator
 
@@ -6141,7 +6141,7 @@ For the integer remainder operation, use the ``%`` operator.
 
 :ref:`float<class_float>` **fposmod**\ (\ x\: :ref:`float<class_float>`, y\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_fposmod>`
 
-Returns the floating-point modulus of ``x`` divided by ``y``, wrapping equally in positive and negative.
+Trả về phép modulo số thực của ``x`` chia cho ``y``, với kết quả bao quanh đồng đều theo cả chiều dương và chiều âm.
 
 ::
 
@@ -6150,7 +6150,7 @@ Returns the floating-point modulus of ``x`` divided by ``y``, wrapping equally i
         var x = i * 0.5 - 1.5
         print("%4.1f           %4.1f  | %4.1f" % [x, fmod(x, 1.5), fposmod(x, 1.5)])
 
-Prints:
+In:
 
 .. code:: text
 
@@ -6173,18 +6173,18 @@ Prints:
 
 :ref:`int<class_int>` **hash**\ (\ variable\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_hash>`
 
-Returns the integer hash of the passed ``variable``.
+Trả về mã băm số nguyên của ``variable`` được truyền vào.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print(hash("a")) # Prints 177670
+    print(hash("a")) # In 177670
 
  .. code-tab:: csharp
 
-    GD.Print(GD.Hash("a")); // Prints 177670
+    GD.Print(GD.Hash("a")); // In 177670
 
 
 
@@ -6198,7 +6198,7 @@ Returns the integer hash of the passed ``variable``.
 
 :ref:`Object<class_Object>` **instance_from_id**\ (\ instance_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_instance_from_id>`
 
-Returns the :ref:`Object<class_Object>` that corresponds to ``instance_id``. All Objects have a unique instance ID. See also :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
+Trả về :ref:`Object<class_Object>` tương ứng với ``instance_id``. Tất cả Object đều có một ID instance duy nhất. Xem thêm :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
 
 
 .. tabs::
@@ -6210,7 +6210,7 @@ Returns the :ref:`Object<class_Object>` that corresponds to ``instance_id``. All
     func _ready():
         var id = get_instance_id()
         var instance = instance_from_id(id)
-        print(instance.drink) # Prints "water"
+        print(instance.drink) # In "water"
 
  .. code-tab:: csharp
 
@@ -6222,7 +6222,7 @@ Returns the :ref:`Object<class_Object>` that corresponds to ``instance_id``. All
         {
             ulong id = GetInstanceId();
             var instance = (MyNode)InstanceFromId(Id);
-            GD.Print(instance.Drink); // Prints "water"
+            GD.Print(instance.Drink); // In "water"
         }
     }
 
@@ -6238,7 +6238,7 @@ Returns the :ref:`Object<class_Object>` that corresponds to ``instance_id``. All
 
 :ref:`float<class_float>` **inverse_lerp**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_inverse_lerp>`
 
-Returns an interpolation or extrapolation factor considering the range specified in ``from`` and ``to``, and the interpolated value specified in ``weight``. The returned value will be between ``0.0`` and ``1.0`` if ``weight`` is between ``from`` and ``to`` (inclusive). If ``weight`` is located outside this range, then an extrapolation factor will be returned (return value lower than ``0.0`` or greater than ``1.0``). Use :ref:`clamp()<class_@GlobalScope_method_clamp>` on the result of :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>` if this is not desired.
+Trả về hệ số nội suy hoặc ngoại suy dựa trên phạm vi được chỉ định trong ``from`` và ``to``, cùng giá trị nội suy được chỉ định trong ``weight``. Giá trị trả về sẽ nằm giữa ``0.0`` và ``1.0`` nếu ``weight`` nằm giữa ``from`` và ``to`` (bao gồm cả hai giá trị). Nếu ``weight`` nằm ngoài phạm vi này, một hệ số ngoại suy sẽ được trả về (giá trị trả về nhỏ hơn ``0.0`` hoặc lớn hơn ``1.0``). Hãy dùng :ref:`clamp()<class_@GlobalScope_method_clamp>` cho kết quả của :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>` nếu bạn không muốn điều này.
 
 ::
 
@@ -6250,7 +6250,7 @@ Returns an interpolation or extrapolation factor considering the range specified
     var ratio = inverse_lerp(20, 30, 27.5)
     # ratio is now 0.75.
 
-See also :ref:`lerp()<class_@GlobalScope_method_lerp>`, which performs the reverse of this operation, and :ref:`remap()<class_@GlobalScope_method_remap>` to map a continuous series of values to another.
+Xem thêm :ref:`lerp()<class_@GlobalScope_method_lerp>`, thực hiện thao tác ngược lại, và :ref:`remap()<class_@GlobalScope_method_remap>` để ánh xạ một chuỗi giá trị liên tục sang một chuỗi khác.
 
 .. rst-class:: classref-item-separator
 
@@ -6262,11 +6262,11 @@ See also :ref:`lerp()<class_@GlobalScope_method_lerp>`, which performs the rever
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ a\: :ref:`float<class_float>`, b\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_is_equal_approx>`
 
-Returns ``true`` if ``a`` and ``b`` are approximately equal to each other.
+Trả về ``true`` nếu ``a`` và ``b`` xấp xỉ bằng nhau.
 
-Here, "approximately equal" means that ``a`` and ``b`` are within a small internal epsilon of each other, which scales with the magnitude of the numbers.
+Ở đây, "xấp xỉ bằng nhau" nghĩa là ``a`` và ``b`` nằm trong một epsilon nội bộ nhỏ của nhau; epsilon này thay đổi theo độ lớn của các số.
 
-Infinity values of the same sign are considered equal.
+Các giá trị vô cực có cùng dấu được xem là bằng nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -6278,7 +6278,7 @@ Infinity values of the same sign are considered equal.
 
 :ref:`bool<class_bool>` **is_finite**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_is_finite>`
 
-Returns whether ``x`` is a finite value, i.e. it is not :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>`, positive infinity, or negative infinity. See also :ref:`is_inf()<class_@GlobalScope_method_is_inf>` and :ref:`is_nan()<class_@GlobalScope_method_is_nan>`.
+Trả về liệu ``x`` có phải là một giá trị hữu hạn hay không, tức là không phải :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>`, vô cực dương hoặc vô cực âm. Xem thêm :ref:`is_inf()<class_@GlobalScope_method_is_inf>` và :ref:`is_nan()<class_@GlobalScope_method_is_nan>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6290,7 +6290,7 @@ Returns whether ``x`` is a finite value, i.e. it is not :ref:`@GDScript.NAN<clas
 
 :ref:`bool<class_bool>` **is_inf**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_is_inf>`
 
-Returns ``true`` if ``x`` is either positive infinity or negative infinity. See also :ref:`is_finite()<class_@GlobalScope_method_is_finite>` and :ref:`is_nan()<class_@GlobalScope_method_is_nan>`.
+Trả về ``true`` nếu ``x`` là dương vô cực hoặc âm vô cực. Xem thêm :ref:`is_finite()<class_@GlobalScope_method_is_finite>` và :ref:`is_nan()<class_@GlobalScope_method_is_nan>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6302,7 +6302,7 @@ Returns ``true`` if ``x`` is either positive infinity or negative infinity. See 
 
 :ref:`bool<class_bool>` **is_instance_id_valid**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_is_instance_id_valid>`
 
-Returns ``true`` if the Object that corresponds to ``id`` is a valid object (e.g. has not been deleted from memory). All Objects have a unique instance ID.
+Trả về ``true`` nếu Object tương ứng với ``id`` là một đối tượng hợp lệ (ví dụ: chưa bị xóa khỏi bộ nhớ). Mọi Object đều có một ID thực thể duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -6314,7 +6314,7 @@ Returns ``true`` if the Object that corresponds to ``id`` is a valid object (e.g
 
 :ref:`bool<class_bool>` **is_instance_valid**\ (\ instance\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_is_instance_valid>`
 
-Returns ``true`` if ``instance`` is a valid Object (e.g. has not been deleted from memory).
+Trả về ``true`` nếu ``instance`` là một Object hợp lệ (ví dụ: chưa bị xóa khỏi bộ nhớ).
 
 .. rst-class:: classref-item-separator
 
@@ -6326,7 +6326,7 @@ Returns ``true`` if ``instance`` is a valid Object (e.g. has not been deleted fr
 
 :ref:`bool<class_bool>` **is_nan**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_is_nan>`
 
-Returns ``true`` if ``x`` is a NaN ("Not a Number" or invalid) value. This method is needed as :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` is not equal to itself, which means ``x == NAN`` can't be used to check whether a value is a NaN.
+Trả về ``true`` nếu ``x`` là giá trị NaN ("Not a Number" hoặc không hợp lệ). Cần có phương thức này vì :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không bằng chính nó, nghĩa là không thể dùng ``x == NAN`` để kiểm tra xem một giá trị có phải là NaN hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -6338,7 +6338,7 @@ Returns ``true`` if ``x`` is a NaN ("Not a Number" or invalid) value. This metho
 
 :ref:`bool<class_bool>` **is_same**\ (\ a\: :ref:`Variant<class_Variant>`, b\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_is_same>`
 
-Returns ``true``, for value types, if ``a`` and ``b`` share the same value. Returns ``true``, for reference types, if the references of ``a`` and ``b`` are the same.
+Đối với các kiểu giá trị, trả về ``true`` nếu ``a`` và ``b`` có cùng giá trị. Đối với các kiểu tham chiếu, trả về ``true`` nếu các tham chiếu của ``a`` và ``b`` giống nhau.
 
 ::
 
@@ -6356,9 +6356,9 @@ Returns ``true``, for value types, if ``a`` and ``b`` share the same value. Retu
     is_same(arr_a, arr_a)  # true
     is_same(arr_a, arr_b)  # false
 
-These are :ref:`Variant<class_Variant>` value types: ``null``, :ref:`bool<class_bool>`, :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`String<class_String>`, :ref:`StringName<class_StringName>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`, :ref:`Rect2<class_Rect2>`, :ref:`Rect2i<class_Rect2i>`, :ref:`Transform2D<class_Transform2D>`, :ref:`Transform3D<class_Transform3D>`, :ref:`Plane<class_Plane>`, :ref:`Quaternion<class_Quaternion>`, :ref:`AABB<class_AABB>`, :ref:`Basis<class_Basis>`, :ref:`Projection<class_Projection>`, :ref:`Color<class_Color>`, :ref:`NodePath<class_NodePath>`, :ref:`RID<class_RID>`, :ref:`Callable<class_Callable>` and :ref:`Signal<class_Signal>`.
+Sau đây là các kiểu giá trị :ref:`Variant<class_Variant>`: ``null``, :ref:`bool<class_bool>`, :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`String<class_String>`, :ref:`StringName<class_StringName>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`, :ref:`Rect2<class_Rect2>`, :ref:`Rect2i<class_Rect2i>`, :ref:`Transform2D<class_Transform2D>`, :ref:`Transform3D<class_Transform3D>`, :ref:`Plane<class_Plane>`, :ref:`Quaternion<class_Quaternion>`, :ref:`AABB<class_AABB>`, :ref:`Basis<class_Basis>`, :ref:`Projection<class_Projection>`, :ref:`Color<class_Color>`, :ref:`NodePath<class_NodePath>`, :ref:`RID<class_RID>`, :ref:`Callable<class_Callable>` và :ref:`Signal<class_Signal>`.
 
-These are :ref:`Variant<class_Variant>` reference types: :ref:`Object<class_Object>`, :ref:`Dictionary<class_Dictionary>`, :ref:`Array<class_Array>`, :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>`, :ref:`PackedInt64Array<class_PackedInt64Array>`, :ref:`PackedFloat32Array<class_PackedFloat32Array>`, :ref:`PackedFloat64Array<class_PackedFloat64Array>`, :ref:`PackedStringArray<class_PackedStringArray>`, :ref:`PackedVector2Array<class_PackedVector2Array>`, :ref:`PackedVector3Array<class_PackedVector3Array>`, :ref:`PackedVector4Array<class_PackedVector4Array>`, and :ref:`PackedColorArray<class_PackedColorArray>`.
+Sau đây là các kiểu tham chiếu :ref:`Variant<class_Variant>`: :ref:`Object<class_Object>`, :ref:`Dictionary<class_Dictionary>`, :ref:`Array<class_Array>`, :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>`, :ref:`PackedInt64Array<class_PackedInt64Array>`, :ref:`PackedFloat32Array<class_PackedFloat32Array>`, :ref:`PackedFloat64Array<class_PackedFloat64Array>`, :ref:`PackedStringArray<class_PackedStringArray>`, :ref:`PackedVector2Array<class_PackedVector2Array>`, :ref:`PackedVector3Array<class_PackedVector3Array>`, :ref:`PackedVector4Array<class_PackedVector4Array>` và :ref:`PackedColorArray<class_PackedColorArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6370,9 +6370,9 @@ These are :ref:`Variant<class_Variant>` reference types: :ref:`Object<class_Obje
 
 :ref:`bool<class_bool>` **is_zero_approx**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_is_zero_approx>`
 
-Returns ``true`` if ``x`` is zero or almost zero. The comparison is done using a tolerance calculation with a small internal epsilon.
+Trả về ``true`` nếu ``x`` bằng không hoặc gần bằng không. Phép so sánh được thực hiện bằng phép tính dung sai với một epsilon nội bộ nhỏ.
 
-This function is faster than using :ref:`is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` with one value as zero.
+Hàm này nhanh hơn so với việc sử dụng :ref:`is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` với một giá trị bằng không.
 
 .. rst-class:: classref-item-separator
 
@@ -6384,17 +6384,17 @@ This function is faster than using :ref:`is_equal_approx()<class_@GlobalScope_me
 
 :ref:`Variant<class_Variant>` **lerp**\ (\ from\: :ref:`Variant<class_Variant>`, to\: :ref:`Variant<class_Variant>`, weight\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_lerp>`
 
-Linearly interpolates between two values by the factor defined in ``weight``. To perform interpolation, ``weight`` should be between ``0.0`` and ``1.0`` (inclusive). However, values outside this range are allowed and can be used to perform *extrapolation*. If this is not desired, use :ref:`clampf()<class_@GlobalScope_method_clampf>` to limit ``weight``.
+Nội suy tuyến tính giữa hai giá trị theo hệ số được xác định trong ``weight``. Để thực hiện nội suy, ``weight`` phải nằm giữa ``0.0`` và ``1.0`` (bao gồm cả hai giá trị). Tuy nhiên, các giá trị nằm ngoài phạm vi này vẫn được phép và có thể được sử dụng để thực hiện *ngoại suy*. Nếu không mong muốn điều này, hãy sử dụng :ref:`clampf()<class_@GlobalScope_method_clampf>` để giới hạn ``weight``.
 
-Both ``from`` and ``to`` must be the same type. Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector4<class_Vector4>`, :ref:`Color<class_Color>`, :ref:`Quaternion<class_Quaternion>`, :ref:`Basis<class_Basis>`, :ref:`Transform2D<class_Transform2D>`, :ref:`Transform3D<class_Transform3D>`.
+Cả ``from`` và ``to`` phải cùng kiểu. Các kiểu được hỗ trợ: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector4<class_Vector4>`, :ref:`Color<class_Color>`, :ref:`Quaternion<class_Quaternion>`, :ref:`Basis<class_Basis>`, :ref:`Transform2D<class_Transform2D>`, :ref:`Transform3D<class_Transform3D>`.
 
 ::
 
     lerp(0, 4, 0.75) # Returns 3.0
 
-See also :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>` which performs the reverse of this operation. To perform eased interpolation with :ref:`lerp()<class_@GlobalScope_method_lerp>`, combine it with :ref:`ease()<class_@GlobalScope_method_ease>` or :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`. See also :ref:`remap()<class_@GlobalScope_method_remap>` to map a continuous series of values to another.
+Xem thêm :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>`, hàm thực hiện thao tác ngược lại. Để thực hiện nội suy có làm mượt với :ref:`lerp()<class_@GlobalScope_method_lerp>`, hãy kết hợp nó với :ref:`ease()<class_@GlobalScope_method_ease>` hoặc :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`. Xem thêm :ref:`remap()<class_@GlobalScope_method_remap>` để ánh xạ một chuỗi giá trị liên tục sang một chuỗi khác.
 
-\ **Note:** For better type safety, use :ref:`lerpf()<class_@GlobalScope_method_lerpf>`, :ref:`Vector2.lerp()<class_Vector2_method_lerp>`, :ref:`Vector3.lerp()<class_Vector3_method_lerp>`, :ref:`Vector4.lerp()<class_Vector4_method_lerp>`, :ref:`Color.lerp()<class_Color_method_lerp>`, :ref:`Quaternion.slerp()<class_Quaternion_method_slerp>`, :ref:`Basis.slerp()<class_Basis_method_slerp>`, :ref:`Transform2D.interpolate_with()<class_Transform2D_method_interpolate_with>`, or :ref:`Transform3D.interpolate_with()<class_Transform3D_method_interpolate_with>`.
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`lerpf()<class_@GlobalScope_method_lerpf>`, :ref:`Vector2.lerp()<class_Vector2_method_lerp>`, :ref:`Vector3.lerp()<class_Vector3_method_lerp>`, :ref:`Vector4.lerp()<class_Vector4_method_lerp>`, :ref:`Color.lerp()<class_Color_method_lerp>`, :ref:`Quaternion.slerp()<class_Quaternion_method_slerp>`, :ref:`Basis.slerp()<class_Basis_method_slerp>`, :ref:`Transform2D.interpolate_with()<class_Transform2D_method_interpolate_with>` hoặc :ref:`Transform3D.interpolate_with()<class_Transform3D_method_interpolate_with>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6406,9 +6406,9 @@ See also :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>` which per
 
 :ref:`float<class_float>` **lerp_angle**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_lerp_angle>`
 
-Linearly interpolates between two angles (in radians) by a ``weight`` value between 0.0 and 1.0.
+Nội suy tuyến tính giữa hai góc (tính bằng radian) theo một giá trị ``weight`` nằm trong khoảng từ 0.0 đến 1.0.
 
-Similar to :ref:`lerp()<class_@GlobalScope_method_lerp>`, but interpolates correctly when the angles wrap around :ref:`@GDScript.TAU<class_@GDScript_constant_TAU>`. To perform eased interpolation with :ref:`lerp_angle()<class_@GlobalScope_method_lerp_angle>`, combine it with :ref:`ease()<class_@GlobalScope_method_ease>` or :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`.
+Tương tự :ref:`lerp()<class_@GlobalScope_method_lerp>`, nhưng nội suy chính xác khi các góc quay vòng quanh :ref:`@GDScript.TAU <class_@GDScript_constant_TAU>`. Để thực hiện nội suy có easing với :ref:`lerp_angle()<class_@GlobalScope_method_lerp_angle>`, hãy kết hợp nó với :ref:`ease()<class_@GlobalScope_method_ease>` hoặc :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`.
 
 ::
 
@@ -6420,7 +6420,7 @@ Similar to :ref:`lerp()<class_@GlobalScope_method_lerp>`, but interpolates corre
         rotation = lerp_angle(min_angle, max_angle, elapsed)
         elapsed += delta
 
-\ **Note:** This function lerps through the shortest path between ``from`` and ``to``. However, when these two angles are approximately ``PI + k * TAU`` apart for any integer ``k``, it's not obvious which way they lerp due to floating-point precision errors. For example, ``lerp_angle(0, PI, weight)`` lerps counter-clockwise, while ``lerp_angle(0, PI + 5 * TAU, weight)`` lerps clockwise.
+\ **Lưu ý:** Hàm này lerp theo đường đi ngắn nhất giữa ``from`` và ``to``. Tuy nhiên, khi hai góc này cách nhau xấp xỉ ``PI + k * TAU`` với bất kỳ số nguyên ``k`` nào, hướng lerp không rõ ràng do lỗi độ chính xác số thực. Ví dụ, ``lerp_angle(0, PI, weight)`` lerp ngược chiều kim đồng hồ, trong khi ``lerp_angle(0, PI + 5 * TAU, weight)`` lerp theo chiều kim đồng hồ.
 
 .. rst-class:: classref-item-separator
 
@@ -6432,13 +6432,13 @@ Similar to :ref:`lerp()<class_@GlobalScope_method_lerp>`, but interpolates corre
 
 :ref:`float<class_float>` **lerpf**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_lerpf>`
 
-Linearly interpolates between two values by the factor defined in ``weight``. To perform interpolation, ``weight`` should be between ``0.0`` and ``1.0`` (inclusive). However, values outside this range are allowed and can be used to perform *extrapolation*. If this is not desired, use :ref:`clampf()<class_@GlobalScope_method_clampf>` on the result of this function.
+Nội suy tuyến tính giữa hai giá trị theo hệ số được xác định trong ``weight``. Để thực hiện nội suy, ``weight`` phải nằm giữa ``0.0`` và ``1.0`` (bao gồm cả hai giá trị). Tuy nhiên, các giá trị nằm ngoài khoảng này vẫn được cho phép và có thể dùng để thực hiện *ngoại suy*. Nếu không mong muốn điều này, hãy dùng :ref:`clampf()<class_@GlobalScope_method_clampf>` trên kết quả của hàm này.
 
 ::
 
     lerpf(0, 4, 0.75) # Returns 3.0
 
-See also :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>` which performs the reverse of this operation. To perform eased interpolation with :ref:`lerp()<class_@GlobalScope_method_lerp>`, combine it with :ref:`ease()<class_@GlobalScope_method_ease>` or :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`.
+Xem thêm :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>`, hàm thực hiện thao tác ngược lại. Để thực hiện nội suy có easing với :ref:`lerp()<class_@GlobalScope_method_lerp>`, hãy kết hợp nó với :ref:`ease()<class_@GlobalScope_method_ease>` hoặc :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6450,9 +6450,9 @@ See also :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>` which per
 
 :ref:`float<class_float>` **linear_to_db**\ (\ lin\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_linear_to_db>`
 
-Converts from linear energy to decibels (audio). Since volume is not normally linear, this can be used to implement volume sliders that behave as expected.
+Chuyển đổi từ năng lượng tuyến tính sang decibel (âm thanh). Vì âm lượng thường không có tính tuyến tính, hàm này có thể được dùng để triển khai các thanh trượt âm lượng hoạt động như mong đợi.
 
-\ **Example:** Change the Master bus's volume through a :ref:`Slider<class_Slider>` node, which ranges from ``0.0`` to ``1.0``:
+\ **Ví dụ:** Thay đổi âm lượng của bus Master thông qua một node :ref:`Slider<class_Slider>`, có phạm vi từ ``0.0`` đến ``1.0``:
 
 ::
 
@@ -6468,15 +6468,15 @@ Converts from linear energy to decibels (audio). Since volume is not normally li
 
 :ref:`float<class_float>` **log**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_log>`
 
-Returns the `natural logarithm <https://en.wikipedia.org/wiki/Natural_logarithm>`__ of ``x`` (base `e <https://en.wikipedia.org/wiki/E_(mathematical_constant)>`__, with *e* being approximately 2.71828). This is the amount of time needed to reach a certain level of continuous growth.
+Trả về `logarit tự nhiên <https://en.wikipedia.org/wiki/Natural_logarithm>`__ của ``x`` (cơ số `e <https://en.wikipedia.org/wiki/E_(mathematical_constant)>`__, trong đó *e* xấp xỉ bằng 2.71828). Đây là khoảng thời gian cần thiết để đạt đến một mức tăng trưởng liên tục nhất định.
 
-\ **Note:** This is not the same as the "log" function on most calculators, which uses a base 10 logarithm. To use base 10 logarithm, use ``log(x) / log(10)``.
+\ **Lưu ý:** Đây không giống hàm "log" trên hầu hết máy tính, vốn sử dụng logarithm cơ số 10. Để sử dụng logarithm cơ số 10, hãy dùng ``log(x) / log(10)``.
 
 ::
 
     log(10) # Returns 2.302585
 
-\ **Note:** The logarithm of ``0`` returns ``-inf``, while negative values return ``-nan``.
+\ **Lưu ý:** Logarithm của ``0`` trả về ``-inf``, trong khi các giá trị âm trả về ``-nan``.
 
 .. rst-class:: classref-item-separator
 
@@ -6488,13 +6488,13 @@ Returns the `natural logarithm <https://en.wikipedia.org/wiki/Natural_logarithm>
 
 :ref:`Variant<class_Variant>` **max**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_max>`
 
-Returns the maximum of the given numeric values. This function can take any number of arguments.
+Trả về giá trị lớn nhất trong các giá trị số đã cho. Hàm này có thể nhận bất kỳ số lượng đối số nào.
 
 ::
 
     max(1, 7, 3, -6, 5) # Returns 7
 
-\ **Note:** When using this on vectors it will *not* perform component-wise maximum, and will pick the largest value when compared using ``x < y``. To perform component-wise maximum, use :ref:`Vector2.max()<class_Vector2_method_max>`, :ref:`Vector2i.max()<class_Vector2i_method_max>`, :ref:`Vector3.max()<class_Vector3_method_max>`, :ref:`Vector3i.max()<class_Vector3i_method_max>`, :ref:`Vector4.max()<class_Vector4_method_max>`, and :ref:`Vector4i.max()<class_Vector4i_method_max>`.
+\ **Lưu ý:** Khi sử dụng hàm này trên các vector, hàm sẽ *không* thực hiện phép lấy giá trị lớn nhất theo từng thành phần mà sẽ chọn giá trị lớn nhất khi so sánh bằng ``x < y``. Để thực hiện phép lấy giá trị lớn nhất theo từng thành phần, hãy sử dụng :ref:`Vector2.max()<class_Vector2_method_max>`, :ref:`Vector2i.max()<class_Vector2i_method_max>`, :ref:`Vector3.max()<class_Vector3_method_max>`, :ref:`Vector3i.max()<class_Vector3i_method_max>`, :ref:`Vector4.max()<class_Vector4_method_max>` và :ref:`Vector4i.max()<class_Vector4i_method_max>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6506,7 +6506,7 @@ Returns the maximum of the given numeric values. This function can take any numb
 
 :ref:`float<class_float>` **maxf**\ (\ a\: :ref:`float<class_float>`, b\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_maxf>`
 
-Returns the maximum of two :ref:`float<class_float>` values.
+Trả về giá trị lớn nhất trong hai giá trị :ref:`float<class_float>`.
 
 ::
 
@@ -6523,7 +6523,7 @@ Returns the maximum of two :ref:`float<class_float>` values.
 
 :ref:`int<class_int>` **maxi**\ (\ a\: :ref:`int<class_int>`, b\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_maxi>`
 
-Returns the maximum of two :ref:`int<class_int>` values.
+Trả về giá trị lớn nhất trong hai giá trị :ref:`int<class_int>`.
 
 ::
 
@@ -6540,13 +6540,13 @@ Returns the maximum of two :ref:`int<class_int>` values.
 
 :ref:`Variant<class_Variant>` **min**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_min>`
 
-Returns the minimum of the given numeric values. This function can take any number of arguments.
+Trả về giá trị nhỏ nhất trong các giá trị số đã cho. Hàm này có thể nhận bất kỳ số lượng đối số nào.
 
 ::
 
     min(1, 7, 3, -6, 5) # Returns -6
 
-\ **Note:** When using this on vectors it will *not* perform component-wise minimum, and will pick the smallest value when compared using ``x < y``. To perform component-wise minimum, use :ref:`Vector2.min()<class_Vector2_method_min>`, :ref:`Vector2i.min()<class_Vector2i_method_min>`, :ref:`Vector3.min()<class_Vector3_method_min>`, :ref:`Vector3i.min()<class_Vector3i_method_min>`, :ref:`Vector4.min()<class_Vector4_method_min>`, and :ref:`Vector4i.min()<class_Vector4i_method_min>`.
+\ **Lưu ý:** Khi sử dụng điều này trên các vector, nó sẽ *không* thực hiện phép lấy giá trị nhỏ nhất theo từng component, mà sẽ chọn giá trị nhỏ nhất khi so sánh bằng ``x < y``. Để thực hiện phép lấy giá trị nhỏ nhất theo từng component, hãy sử dụng :ref:`Vector2.min()<class_Vector2_method_min>`, :ref:`Vector2i.min()<class_Vector2i_method_min>`, :ref:`Vector3.min()<class_Vector3_method_min>`, :ref:`Vector3i.min()<class_Vector3i_method_min>`, :ref:`Vector4.min()<class_Vector4_method_min>` và :ref:`Vector4i.min()<class_Vector4i_method_min>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6558,7 +6558,7 @@ Returns the minimum of the given numeric values. This function can take any numb
 
 :ref:`float<class_float>` **minf**\ (\ a\: :ref:`float<class_float>`, b\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_minf>`
 
-Returns the minimum of two :ref:`float<class_float>` values.
+Trả về giá trị nhỏ nhất trong hai giá trị :ref:`float<class_float>`.
 
 ::
 
@@ -6575,7 +6575,7 @@ Returns the minimum of two :ref:`float<class_float>` values.
 
 :ref:`int<class_int>` **mini**\ (\ a\: :ref:`int<class_int>`, b\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_mini>`
 
-Returns the minimum of two :ref:`int<class_int>` values.
+Trả về giá trị nhỏ nhất trong hai giá trị :ref:`int<class_int>`.
 
 ::
 
@@ -6592,9 +6592,9 @@ Returns the minimum of two :ref:`int<class_int>` values.
 
 :ref:`float<class_float>` **move_toward**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, delta\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_move_toward>`
 
-Moves ``from`` toward ``to`` by the ``delta`` amount. Will not go past ``to``.
+Di chuyển ``from`` về phía ``to`` theo lượng ``delta``. Sẽ không vượt quá ``to``.
 
-Use a negative ``delta`` value to move away.
+Sử dụng giá trị ``delta`` âm để di chuyển ra xa.
 
 ::
 
@@ -6613,7 +6613,7 @@ Use a negative ``delta`` value to move away.
 
 :ref:`int<class_int>` **nearest_po2**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_nearest_po2>`
 
-Returns the smallest integer power of 2 that is greater than or equal to ``value``.
+Trả về lũy thừa nguyên nhỏ nhất của 2 lớn hơn hoặc bằng ``value``.
 
 ::
 
@@ -6624,7 +6624,7 @@ Returns the smallest integer power of 2 that is greater than or equal to ``value
     nearest_po2(0)  # Returns 0 (this may not be expected)
     nearest_po2(-1) # Returns 0 (this may not be expected)
 
-\ **Warning:** Due to its implementation, this method returns ``0`` rather than ``1`` for values less than or equal to ``0``, with an exception for ``value`` being the smallest negative 64-bit integer (``-9223372036854775808``) in which case the ``value`` is returned unchanged.
+\ **Cảnh báo:** Do cách triển khai, phương thức này trả về ``0`` thay vì ``1`` đối với các giá trị nhỏ hơn hoặc bằng ``0``, ngoại trừ trường hợp ``value`` là số nguyên 64-bit âm nhỏ nhất (``-9223372036854775808``), khi đó ``value`` được trả về không thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -6636,7 +6636,7 @@ Returns the smallest integer power of 2 that is greater than or equal to ``value
 
 :ref:`float<class_float>` **pingpong**\ (\ value\: :ref:`float<class_float>`, length\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_pingpong>`
 
-Wraps ``value`` between ``0`` and the ``length``. If the limit is reached, the next value the function returns is decreased to the ``0`` side or increased to the ``length`` side (like a triangle wave). If ``length`` is less than zero, it becomes positive.
+Cuộn ``value`` giữa ``0`` và ``length``. Nếu đạt đến giới hạn, giá trị tiếp theo mà hàm trả về sẽ giảm về phía ``0`` hoặc tăng về phía ``length`` (giống như sóng tam giác). Nếu ``length`` nhỏ hơn 0, nó sẽ trở thành số dương.
 
 ::
 
@@ -6661,7 +6661,7 @@ Wraps ``value`` between ``0`` and the ``length``. If the limit is reached, the n
 
 :ref:`int<class_int>` **posmod**\ (\ x\: :ref:`int<class_int>`, y\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_posmod>`
 
-Returns the integer modulus of ``x`` divided by ``y`` that wraps equally in positive and negative.
+Trả về modulo số nguyên của phép chia ``x`` cho ``y``, được cuộn đều theo cả chiều dương và chiều âm.
 
 ::
 
@@ -6669,7 +6669,7 @@ Returns the integer modulus of ``x`` divided by ``y`` that wraps equally in posi
     for i in range(-3, 4):
         print("%2d       %2d  | %2d" % [i, i % 3, posmod(i, 3)])
 
-Prints:
+In:
 
 .. code:: text
 
@@ -6692,9 +6692,9 @@ Prints:
 
 :ref:`float<class_float>` **pow**\ (\ base\: :ref:`float<class_float>`, exp\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_pow>`
 
-Returns the result of ``base`` raised to the power of ``exp``.
+Trả về kết quả của ``base`` lũy thừa ``exp``.
 
-In GDScript, this is the equivalent of the ``**`` operator.
+Trong GDScript, đây là tương đương với toán tử ``**``.
 
 ::
 
@@ -6711,7 +6711,7 @@ In GDScript, this is the equivalent of the ``**`` operator.
 
 |void| **print**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_print>`
 
-Converts one or more arguments of any type to string in the best way possible and prints them to the console.
+Chuyển đổi một hoặc nhiều đối số thuộc bất kỳ kiểu nào thành chuỗi theo cách phù hợp nhất có thể và in chúng ra console.
 
 
 .. tabs::
@@ -6719,16 +6719,16 @@ Converts one or more arguments of any type to string in the best way possible an
  .. code-tab:: gdscript
 
     var a = [1, 2, 3]
-    print("a", "b", a) # Prints "ab[1, 2, 3]"
+    print("a", "b", a) # In "ab[1, 2, 3]"
 
  .. code-tab:: csharp
 
     Godot.Collections.Array a = [1, 2, 3];
-    GD.Print("a", "b", a); // Prints "ab[1, 2, 3]"
+    GD.Print("a", "b", a); // In "ab[1, 2, 3]"
 
 
 
-\ **Note:** Consider using :ref:`push_error()<class_@GlobalScope_method_push_error>` and :ref:`push_warning()<class_@GlobalScope_method_push_warning>` to print error and warning messages instead of :ref:`print()<class_@GlobalScope_method_print>` or :ref:`print_rich()<class_@GlobalScope_method_print_rich>`. This distinguishes them from print messages used for debugging purposes, while also displaying a stack trace when an error or warning is printed. See also :ref:`Engine.print_to_stdout<class_Engine_property_print_to_stdout>` and :ref:`ProjectSettings.application/run/disable_stdout<class_ProjectSettings_property_application/run/disable_stdout>`.
+\ **Lưu ý:** Hãy cân nhắc sử dụng :ref:`push_error()<class_@GlobalScope_method_push_error>` và :ref:`push_warning()<class_@GlobalScope_method_push_warning>` để in các thông báo lỗi và cảnh báo thay vì :ref:`print()<class_@GlobalScope_method_print>` hoặc :ref:`print_rich()<class_@GlobalScope_method_print_rich>`. Điều này giúp phân biệt chúng với các thông báo in dùng cho mục đích gỡ lỗi, đồng thời hiển thị stack trace khi in lỗi hoặc cảnh báo. Xem thêm :ref:`Engine.print_to_stdout<class_Engine_property_print_to_stdout>` và :ref:`ProjectSettings.application/run/disable_stdout <class_ProjectSettings_property_application/run/disable_stdout>`.
 
 .. rst-class:: classref-item-separator
 
@@ -6740,30 +6740,30 @@ Converts one or more arguments of any type to string in the best way possible an
 
 |void| **print_rich**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_print_rich>`
 
-Converts one or more arguments of any type to string in the best way possible and prints them to the console.
+Chuyển đổi một hoặc nhiều đối số thuộc bất kỳ kiểu nào thành chuỗi theo cách phù hợp nhất có thể và in chúng ra console.
 
-The following BBCode tags are supported: ``b``, ``i``, ``u``, ``s``, ``indent``, ``code``, ``url``, ``center``, ``right``, ``color``, ``bgcolor``, ``fgcolor``.
+Các thẻ BBCode sau được hỗ trợ: ``b``, ``i``, ``u``, ``s``, ``indent``, ``code``, ``url``, ``center``, ``right``, ``color``, ``bgcolor``, ``fgcolor``.
 
-URL tags only support URLs wrapped by a URL tag, not URLs with a different title.
+Các thẻ URL chỉ hỗ trợ những URL được bao quanh bởi một thẻ URL, không hỗ trợ URL có tiêu đề khác.
 
-When printing to standard output, the supported subset of BBCode is converted to ANSI escape codes for the terminal emulator to display. Support for ANSI escape codes varies across terminal emulators, especially for italic and strikethrough. In standard output, ``code`` is represented with faint text but without any font change. Unsupported tags are left as-is in standard output.
+Khi in ra standard output, tập hợp con BBCode được hỗ trợ sẽ được chuyển đổi thành mã escape ANSI để trình mô phỏng terminal hiển thị. Mức độ hỗ trợ mã escape ANSI khác nhau tùy trình mô phỏng terminal, đặc biệt là đối với chữ nghiêng và chữ gạch ngang. Trong standard output, ``code`` được biểu diễn bằng văn bản mờ nhưng không thay đổi phông chữ. Các thẻ không được hỗ trợ được giữ nguyên trong standard output.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print_rich("[color=green][b]Hello world![/b][/color]") # Prints "Hello world!", in green with a bold font.
+    print_rich("[color=green][b]Hello world![/b][/color]") # In "Hello world!" bằng màu xanh lá với phông chữ đậm.
 
  .. code-tab:: csharp
 
-    GD.PrintRich("[color=green][b]Hello world![/b][/color]"); // Prints "Hello world!", in green with a bold font.
+    GD.PrintRich("[color=green][b]Hello world![/b][/color]"); // In "Hello world!" bằng màu xanh lá với phông chữ in đậm.
 
 
 
-\ **Note:** Consider using :ref:`push_error()<class_@GlobalScope_method_push_error>` and :ref:`push_warning()<class_@GlobalScope_method_push_warning>` to print error and warning messages instead of :ref:`print()<class_@GlobalScope_method_print>` or :ref:`print_rich()<class_@GlobalScope_method_print_rich>`. This distinguishes them from print messages used for debugging purposes, while also displaying a stack trace when an error or warning is printed.
+\ **Lưu ý:** Hãy cân nhắc sử dụng :ref:`push_error()<class_@GlobalScope_method_push_error>` và :ref:`push_warning()<class_@GlobalScope_method_push_warning>` để in các thông báo lỗi và cảnh báo thay vì :ref:`print()<class_@GlobalScope_method_print>` hoặc :ref:`print_rich()<class_@GlobalScope_method_print_rich>`. Điều này giúp phân biệt chúng với các thông báo in dùng cho mục đích debug, đồng thời hiển thị stack trace khi in lỗi hoặc cảnh báo.
 
-\ **Note:** Output displayed in the editor supports clickable ``[url=address]text[/url]`` tags. The ``[url]`` tag's ``address`` value is handled by :ref:`OS.shell_open()<class_OS_method_shell_open>` when clicked.
+\ **Lưu ý:** Output hiển thị trong editor hỗ trợ các thẻ ``[url=address]text[/url]`` có thể nhấp vào. Giá trị ``address`` của thẻ ``[url]`` được :ref:`OS.shell_open()<class_OS_method_shell_open>` xử lý khi được nhấp vào.
 
 .. rst-class:: classref-item-separator
 
@@ -6775,7 +6775,7 @@ When printing to standard output, the supported subset of BBCode is converted to
 
 |void| **print_verbose**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_print_verbose>`
 
-If verbose mode is enabled (:ref:`OS.is_stdout_verbose()<class_OS_method_is_stdout_verbose>` returning ``true``), converts one or more arguments of any type to string in the best way possible and prints them to the console.
+Nếu chế độ verbose được bật (:ref:`OS.is_stdout_verbose()<class_OS_method_is_stdout_verbose>` trả về ``true``), chuyển đổi một hoặc nhiều đối số thuộc bất kỳ kiểu nào thành chuỗi theo cách tốt nhất có thể và in chúng ra console.
 
 .. rst-class:: classref-item-separator
 
@@ -6787,7 +6787,7 @@ If verbose mode is enabled (:ref:`OS.is_stdout_verbose()<class_OS_method_is_stdo
 
 |void| **printerr**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_printerr>`
 
-Prints one or more arguments to strings in the best way possible to standard error line.
+In một hoặc nhiều đối số thành chuỗi theo cách tốt nhất có thể vào dòng lỗi chuẩn.
 
 
 .. tabs::
@@ -6812,23 +6812,23 @@ Prints one or more arguments to strings in the best way possible to standard err
 
 |void| **printraw**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_printraw>`
 
-Prints one or more arguments to strings in the best way possible to the OS terminal. Unlike :ref:`print()<class_@GlobalScope_method_print>`, no newline is automatically added at the end.
+In một hoặc nhiều đối số thành chuỗi theo cách tốt nhất có thể vào terminal của OS. Không giống :ref:`print()<class_@GlobalScope_method_print>`, không tự động thêm dòng mới ở cuối.
 
-\ **Note:** The OS terminal is *not* the same as the editor's Output dock. The output sent to the OS terminal can be seen when running Godot from a terminal. On Windows, this requires using the ``console.exe`` executable.
+\ **Lưu ý:** Terminal của OS *không* giống với dock Output của editor. Bạn có thể xem output được gửi đến terminal của OS khi chạy Godot từ một terminal. Trên Windows, việc này yêu cầu sử dụng executable ``console.exe``.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Prints "ABC" to terminal.
+    # In "ABC" ra terminal.
     printraw("A")
     printraw("B")
     printraw("C")
 
  .. code-tab:: csharp
 
-    // Prints "ABC" to terminal.
+    // In "ABC" ra terminal.
     GD.PrintRaw("A");
     GD.PrintRaw("B");
     GD.PrintRaw("C");
@@ -6845,18 +6845,18 @@ Prints one or more arguments to strings in the best way possible to the OS termi
 
 |void| **prints**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_prints>`
 
-Prints one or more arguments to the console with a space between each argument.
+In một hoặc nhiều đối số ra console, với một dấu cách giữa mỗi đối số.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    prints("A", "B", "C") # Prints "A B C"
+    prints("A", "B", "C") # In "A B C"
 
  .. code-tab:: csharp
 
-    GD.PrintS("A", "B", "C"); // Prints "A B C"
+    GD.PrintS("A", "B", "C"); // In "A B C"
 
 
 
@@ -6870,18 +6870,18 @@ Prints one or more arguments to the console with a space between each argument.
 
 |void| **printt**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_printt>`
 
-Prints one or more arguments to the console with a tab between each argument.
+In một hoặc nhiều đối số ra console, với một tab giữa mỗi đối số.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    printt("A", "B", "C") # Prints "A       B       C"
+    printt("A", "B", "C") # In "A       B       C"
 
  .. code-tab:: csharp
 
-    GD.PrintT("A", "B", "C"); // Prints "A       B       C"
+    GD.PrintT("A", "B", "C"); // In "A       B       C"
 
 
 
@@ -6895,22 +6895,22 @@ Prints one or more arguments to the console with a tab between each argument.
 
 |void| **push_error**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_push_error>`
 
-Pushes an error message to Godot's built-in debugger and to the OS terminal.
+Đẩy một thông báo lỗi vào trình gỡ lỗi tích hợp của Godot và terminal của hệ điều hành.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    push_error("test error") # Prints "test error" to debugger and terminal as an error.
+    push_error("test error") # In "test error" vào trình gỡ lỗi và terminal dưới dạng lỗi.
 
  .. code-tab:: csharp
 
-    GD.PushError("test error"); // Prints "test error" to debugger and terminal as an error.
+    GD.PushError("test error"); // In "test error" vào trình gỡ lỗi và terminal dưới dạng lỗi.
 
 
 
-\ **Note:** This function does not pause project execution. To print an error message and pause project execution in debug builds, use ``assert(false, "test error")`` instead.
+\ **Lưu ý:** Hàm này không tạm dừng quá trình thực thi project. Để in thông báo lỗi và tạm dừng quá trình thực thi project trong các bản build debug, hãy sử dụng ``assert(false, "test error")``.
 
 .. rst-class:: classref-item-separator
 
@@ -6922,18 +6922,18 @@ Pushes an error message to Godot's built-in debugger and to the OS terminal.
 
 |void| **push_warning**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_push_warning>`
 
-Pushes a warning message to Godot's built-in debugger and to the OS terminal.
+Đẩy một thông báo cảnh báo vào trình gỡ lỗi tích hợp của Godot và terminal của hệ điều hành.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    push_warning("test warning") # Prints "test warning" to debugger and terminal as a warning.
+    push_warning("test warning") # In "test warning" vào trình gỡ lỗi và terminal dưới dạng cảnh báo.
 
  .. code-tab:: csharp
 
-    GD.PushWarning("test warning"); // Prints "test warning" to debugger and terminal as a warning.
+    GD.PushWarning("test warning"); // Ghi "test warning" vào trình gỡ lỗi và terminal dưới dạng cảnh báo.
 
 
 
@@ -6947,7 +6947,7 @@ Pushes a warning message to Godot's built-in debugger and to the OS terminal.
 
 :ref:`float<class_float>` **rad_to_deg**\ (\ rad\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_rad_to_deg>`
 
-Converts an angle expressed in radians to degrees.
+Chuyển đổi một góc được biểu diễn bằng radian sang độ.
 
 ::
 
@@ -6965,9 +6965,9 @@ Converts an angle expressed in radians to degrees.
 
 :ref:`PackedInt64Array<class_PackedInt64Array>` **rand_from_seed**\ (\ seed\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_rand_from_seed>`
 
-Given a ``seed``, returns a :ref:`PackedInt64Array<class_PackedInt64Array>` of size ``2``, where its first element is the randomized :ref:`int<class_int>` value, and the second element is the same as ``seed``. Passing the same ``seed`` consistently returns the same array.
+Với một ``seed``, trả về một :ref:`PackedInt64Array<class_PackedInt64Array>` có kích thước ``2``, trong đó phần tử đầu tiên là giá trị :ref:`int<class_int>` được chọn ngẫu nhiên và phần tử thứ hai giống với ``seed``. Việc truyền cùng một ``seed`` luôn trả về cùng một mảng.
 
-\ **Note:** "Seed" here refers to the internal state of the pseudo random number generator, currently implemented as a 64 bit integer.
+\ **Lưu ý:** "Seed" ở đây đề cập đến trạng thái nội bộ của bộ sinh số giả ngẫu nhiên, hiện được triển khai dưới dạng một số nguyên 64 bit.
 
 ::
 
@@ -6986,18 +6986,18 @@ Given a ``seed``, returns a :ref:`PackedInt64Array<class_PackedInt64Array>` of s
 
 :ref:`float<class_float>` **randf**\ (\ ) :ref:`🔗<class_@GlobalScope_method_randf>`
 
-Returns a random floating-point value between ``0.0`` and ``1.0`` (inclusive).
+Trả về một giá trị dấu phẩy động ngẫu nhiên nằm giữa ``0.0`` và ``1.0`` (bao gồm cả hai giá trị).
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    randf() # Returns e.g. 0.375671
+    randf() # Trả về, ví dụ: 0.375671
 
  .. code-tab:: csharp
 
-    GD.Randf(); // Returns e.g. 0.375671
+    GD.Randf(); // Trả về, ví dụ: 0.375671
 
 
 
@@ -7011,20 +7011,20 @@ Returns a random floating-point value between ``0.0`` and ``1.0`` (inclusive).
 
 :ref:`float<class_float>` **randf_range**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_randf_range>`
 
-Returns a random floating-point value between ``from`` and ``to`` (inclusive).
+Trả về một giá trị dấu phẩy động ngẫu nhiên nằm giữa ``from`` và ``to`` (bao gồm cả hai đầu).
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    randf_range(0, 20.5) # Returns e.g. 7.45315
-    randf_range(-10, 10) # Returns e.g. -3.844535
+    randf_range(0, 20.5) # Trả về, ví dụ: 7.45315
+    randf_range(-10, 10) # Trả về, ví dụ: -3.844535
 
  .. code-tab:: csharp
 
-    GD.RandRange(0.0, 20.5);   // Returns e.g. 7.45315
-    GD.RandRange(-10.0, 10.0); // Returns e.g. -3.844535
+    GD.RandRange(0.0, 20.5);   // Trả về, ví dụ: 7.45315
+    GD.RandRange(-10.0, 10.0); // Trả về, ví dụ: -3.844535
 
 
 
@@ -7038,9 +7038,9 @@ Returns a random floating-point value between ``from`` and ``to`` (inclusive).
 
 :ref:`float<class_float>` **randfn**\ (\ mean\: :ref:`float<class_float>`, deviation\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_randfn>`
 
-Returns a `normally-distributed <https://en.wikipedia.org/wiki/Normal_distribution>`__, pseudo-random floating-point value from the specified ``mean`` and a standard ``deviation``. This is also known as a Gaussian distribution.
+Trả về một giá trị dấu phẩy động giả ngẫu nhiên `có phân phối chuẩn <https://en.wikipedia.org/wiki/Normal_distribution>`__, từ ``mean`` được chỉ định và một ``deviation`` chuẩn. Phân phối này còn được gọi là phân phối Gaussian.
 
-\ **Note:** This method uses the `Box-Muller transform <https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform>`__ algorithm.
+\ **Lưu ý:** Phương thức này sử dụng thuật toán `biến đổi Box-Muller <https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -7052,24 +7052,24 @@ Returns a `normally-distributed <https://en.wikipedia.org/wiki/Normal_distributi
 
 :ref:`int<class_int>` **randi**\ (\ ) :ref:`🔗<class_@GlobalScope_method_randi>`
 
-Returns a random unsigned 32-bit integer. Use remainder to obtain a random value in the interval ``[0, N - 1]`` (where N is smaller than 2^32).
+Trả về một số nguyên không dấu 32 bit ngẫu nhiên. Sử dụng phép lấy phần dư để nhận một giá trị ngẫu nhiên trong khoảng ``[0, N - 1]`` (trong đó N nhỏ hơn 2^32).
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    randi()           # Returns random integer between 0 and 2^32 - 1
-    randi() % 20      # Returns random integer between 0 and 19
-    randi() % 100     # Returns random integer between 0 and 99
-    randi() % 100 + 1 # Returns random integer between 1 and 100
+    randi()           # Trả về số nguyên ngẫu nhiên từ 0 đến 2^32 - 1
+    randi() % 20      # Trả về số nguyên ngẫu nhiên từ 0 đến 19
+    randi() % 100     # Trả về số nguyên ngẫu nhiên từ 0 đến 99
+    randi() % 100 + 1 # Trả về số nguyên ngẫu nhiên từ 1 đến 100
 
  .. code-tab:: csharp
 
-    GD.Randi();           // Returns random integer between 0 and 2^32 - 1
-    GD.Randi() % 20;      // Returns random integer between 0 and 19
-    GD.Randi() % 100;     // Returns random integer between 0 and 99
-    GD.Randi() % 100 + 1; // Returns random integer between 1 and 100
+    GD.Randi();           // Trả về số nguyên ngẫu nhiên từ 0 đến 2^32 - 1
+    GD.Randi() % 20;      // Trả về số nguyên ngẫu nhiên từ 0 đến 19
+    GD.Randi() % 100;     // Trả về số nguyên ngẫu nhiên từ 0 đến 99
+    GD.Randi() % 100 + 1; // Trả về số nguyên ngẫu nhiên từ 1 đến 100
 
 
 
@@ -7083,20 +7083,20 @@ Returns a random unsigned 32-bit integer. Use remainder to obtain a random value
 
 :ref:`int<class_int>` **randi_range**\ (\ from\: :ref:`int<class_int>`, to\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_randi_range>`
 
-Returns a random signed 32-bit integer between ``from`` and ``to`` (inclusive). If ``to`` is lesser than ``from``, they are swapped.
+Trả về một số nguyên có dấu 32 bit ngẫu nhiên trong khoảng từ ``from`` đến ``to`` (bao gồm cả hai giá trị). Nếu ``to`` nhỏ hơn ``from``, chúng sẽ được hoán đổi.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    randi_range(0, 1)      # Returns either 0 or 1
-    randi_range(-10, 1000) # Returns random integer between -10 and 1000
+    randi_range(0, 1)      # Trả về 0 hoặc 1
+    randi_range(-10, 1000) # Trả về số nguyên ngẫu nhiên từ -10 đến 1000
 
  .. code-tab:: csharp
 
-    GD.RandRange(0, 1);      // Returns either 0 or 1
-    GD.RandRange(-10, 1000); // Returns random integer between -10 and 1000
+    GD.RandRange(0, 1);      // Trả về 0 hoặc 1
+    GD.RandRange(-10, 1000); // Trả về số nguyên ngẫu nhiên từ -10 đến 1000
 
 
 
@@ -7110,9 +7110,9 @@ Returns a random signed 32-bit integer between ``from`` and ``to`` (inclusive). 
 
 |void| **randomize**\ (\ ) :ref:`🔗<class_@GlobalScope_method_randomize>`
 
-Randomizes the seed (or the internal state) of the random number generator. The current implementation uses a number based on the device's time.
+Ngẫu nhiên hóa seed (hoặc trạng thái nội bộ) của bộ tạo số ngẫu nhiên. Phần triển khai hiện tại sử dụng một số dựa trên thời gian của thiết bị.
 
-\ **Note:** This function is called automatically when the project is run. If you need to fix the seed to have consistent, reproducible results, use :ref:`seed()<class_@GlobalScope_method_seed>` to initialize the random number generator.
+\ **Lưu ý:** Hàm này được tự động gọi khi project được chạy. Nếu bạn cần cố định seed để có được các kết quả nhất quán và có thể tái tạo, hãy sử dụng :ref:`seed()<class_@GlobalScope_method_seed>` để khởi tạo bộ tạo số ngẫu nhiên.
 
 .. rst-class:: classref-item-separator
 
@@ -7124,15 +7124,15 @@ Randomizes the seed (or the internal state) of the random number generator. The 
 
 :ref:`float<class_float>` **remap**\ (\ value\: :ref:`float<class_float>`, istart\: :ref:`float<class_float>`, istop\: :ref:`float<class_float>`, ostart\: :ref:`float<class_float>`, ostop\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_remap>`
 
-Maps a ``value`` from range ``[istart, istop]`` to ``[ostart, ostop]``. See also :ref:`lerp()<class_@GlobalScope_method_lerp>` and :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>`. If ``value`` is outside ``[istart, istop]``, then the resulting value will also be outside ``[ostart, ostop]``. If this is not desired, use :ref:`clamp()<class_@GlobalScope_method_clamp>` on the result of this function.
+Ánh xạ một ``value`` từ phạm vi ``[istart, istop]`` sang ``[ostart, ostop]``. Xem thêm :ref:`lerp()<class_@GlobalScope_method_lerp>` và :ref:`inverse_lerp()<class_@GlobalScope_method_inverse_lerp>`. Nếu ``value`` nằm ngoài ``[istart, istop]``, thì giá trị kết quả cũng sẽ nằm ngoài ``[ostart, ostop]``. Nếu không mong muốn điều này, hãy sử dụng :ref:`clamp()<class_@GlobalScope_method_clamp>` trên kết quả của hàm này.
 
 ::
 
     remap(75, 0, 100, -1, 1) # Returns 0.5
 
-For complex use cases where multiple ranges are needed, consider using :ref:`Curve<class_Curve>` or :ref:`Gradient<class_Gradient>` instead.
+Đối với các trường hợp sử dụng phức tạp cần nhiều phạm vi, hãy cân nhắc sử dụng :ref:`Curve<class_Curve>` hoặc :ref:`Gradient<class_Gradient>` thay thế.
 
-\ **Note:** If ``istart == istop``, the return value is undefined (most likely NaN, INF, or -INF).
+\ **Lưu ý:** Nếu ``istart == istop``, giá trị trả về là không xác định (nhiều khả năng là NaN, INF hoặc -INF).
 
 .. rst-class:: classref-item-separator
 
@@ -7144,7 +7144,7 @@ For complex use cases where multiple ranges are needed, consider using :ref:`Cur
 
 :ref:`int<class_int>` **rid_allocate_id**\ (\ ) :ref:`🔗<class_@GlobalScope_method_rid_allocate_id>`
 
-Allocates a unique ID which can be used by the implementation to construct an RID. This is used mainly from native extensions to implement servers.
+Cấp phát một ID duy nhất mà phần triển khai có thể sử dụng để tạo RID. Tính năng này chủ yếu được sử dụng từ các native extension để triển khai server.
 
 .. rst-class:: classref-item-separator
 
@@ -7156,7 +7156,7 @@ Allocates a unique ID which can be used by the implementation to construct an RI
 
 :ref:`RID<class_RID>` **rid_from_int64**\ (\ base\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_rid_from_int64>`
 
-Creates an RID from a ``base``. This is used mainly from native extensions to build servers.
+Tạo một RID từ ``base``. Tính năng này chủ yếu được sử dụng từ các native extension để xây dựng server.
 
 .. rst-class:: classref-item-separator
 
@@ -7168,11 +7168,11 @@ Creates an RID from a ``base``. This is used mainly from native extensions to bu
 
 :ref:`float<class_float>` **rotate_toward**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, delta\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_rotate_toward>`
 
-Rotates ``from`` toward ``to`` by the ``delta`` amount. Will not go past ``to``.
+Xoay ``from`` về phía ``to`` theo lượng ``delta``. Sẽ không vượt quá ``to``.
 
-Similar to :ref:`move_toward()<class_@GlobalScope_method_move_toward>`, but interpolates correctly when the angles wrap around :ref:`@GDScript.TAU<class_@GDScript_constant_TAU>`.
+Tương tự :ref:`move_toward()<class_@GlobalScope_method_move_toward>`, nhưng nội suy chính xác khi các góc vòng qua :ref:`@GDScript.TAU <class_@GDScript_constant_TAU>`.
 
-If ``delta`` is negative, this function will rotate away from ``to``, toward the opposite angle, and will not go past the opposite angle.
+Nếu ``delta`` là số âm, hàm này sẽ xoay ra xa ``to``, về phía góc đối diện, và sẽ không vượt quá góc đối diện.
 
 .. rst-class:: classref-item-separator
 
@@ -7184,7 +7184,7 @@ If ``delta`` is negative, this function will rotate away from ``to``, toward the
 
 :ref:`Variant<class_Variant>` **round**\ (\ x\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_round>`
 
-Rounds ``x`` to the nearest whole number, with halfway cases rounded away from 0. Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
+Làm tròn ``x`` đến số nguyên gần nhất; trong trường hợp nằm chính giữa, làm tròn ra xa 0. Các kiểu được hỗ trợ: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
 
 ::
 
@@ -7192,9 +7192,9 @@ Rounds ``x`` to the nearest whole number, with halfway cases rounded away from 0
     round(2.5) # Returns 3
     round(2.6) # Returns 3
 
-See also :ref:`floor()<class_@GlobalScope_method_floor>`, :ref:`ceil()<class_@GlobalScope_method_ceil>`, and :ref:`snapped()<class_@GlobalScope_method_snapped>`.
+Xem thêm :ref:`floor()<class_@GlobalScope_method_floor>`, :ref:`ceil()<class_@GlobalScope_method_ceil>` và :ref:`snapped()<class_@GlobalScope_method_snapped>`.
 
-\ **Note:** For better type safety, use :ref:`roundf()<class_@GlobalScope_method_roundf>`, :ref:`roundi()<class_@GlobalScope_method_roundi>`, :ref:`Vector2.round()<class_Vector2_method_round>`, :ref:`Vector3.round()<class_Vector3_method_round>`, or :ref:`Vector4.round()<class_Vector4_method_round>`.
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`roundf()<class_@GlobalScope_method_roundf>`, :ref:`roundi()<class_@GlobalScope_method_roundi>`, :ref:`Vector2.round()<class_Vector2_method_round>`, :ref:`Vector3.round()<class_Vector3_method_round>` hoặc :ref:`Vector4.round()<class_Vector4_method_round>`.
 
 .. rst-class:: classref-item-separator
 
@@ -7206,9 +7206,9 @@ See also :ref:`floor()<class_@GlobalScope_method_floor>`, :ref:`ceil()<class_@Gl
 
 :ref:`float<class_float>` **roundf**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_roundf>`
 
-Rounds ``x`` to the nearest whole number, with halfway cases rounded away from 0.
+Làm tròn ``x`` đến số nguyên gần nhất; trong trường hợp nằm chính giữa, làm tròn ra xa 0.
 
-A type-safe version of :ref:`round()<class_@GlobalScope_method_round>`, returning a :ref:`float<class_float>`.
+Một phiên bản type-safe của :ref:`round()<class_@GlobalScope_method_round>`, trả về một :ref:`float<class_float>`.
 
 .. rst-class:: classref-item-separator
 
@@ -7220,9 +7220,9 @@ A type-safe version of :ref:`round()<class_@GlobalScope_method_round>`, returnin
 
 :ref:`int<class_int>` **roundi**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_roundi>`
 
-Rounds ``x`` to the nearest whole number, with halfway cases rounded away from 0.
+Làm tròn ``x`` đến số nguyên gần nhất; trong trường hợp nằm chính giữa, làm tròn ra xa 0.
 
-A type-safe version of :ref:`round()<class_@GlobalScope_method_round>`, returning an :ref:`int<class_int>`.
+Một phiên bản type-safe của :ref:`round()<class_@GlobalScope_method_round>`, trả về một :ref:`int<class_int>`.
 
 .. rst-class:: classref-item-separator
 
@@ -7234,7 +7234,7 @@ A type-safe version of :ref:`round()<class_@GlobalScope_method_round>`, returnin
 
 |void| **seed**\ (\ base\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_seed>`
 
-Sets the seed for the random number generator to ``base``. Setting the seed manually can ensure consistent, repeatable results for most random functions.
+Đặt seed cho bộ tạo số ngẫu nhiên thành ``base``. Việc tự đặt seed có thể đảm bảo kết quả nhất quán và có thể lặp lại cho hầu hết các hàm ngẫu nhiên.
 
 
 .. tabs::
@@ -7246,7 +7246,7 @@ Sets the seed for the random number generator to ``base``. Setting the seed manu
     var a = randf() + randi()
     seed(my_seed)
     var b = randf() + randi()
-    # a and b are now identical
+    # a và b hiện giống hệt nhau
 
  .. code-tab:: csharp
 
@@ -7255,7 +7255,7 @@ Sets the seed for the random number generator to ``base``. Setting the seed manu
     var a = GD.Randf() + GD.Randi();
     GD.Seed(mySeed);
     var b = GD.Randf() + GD.Randi();
-    // a and b are now identical
+    // a và b hiện giống hệt nhau
 
 
 
@@ -7269,9 +7269,9 @@ Sets the seed for the random number generator to ``base``. Setting the seed manu
 
 :ref:`Variant<class_Variant>` **sign**\ (\ x\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_sign>`
 
-Returns the same type of :ref:`Variant<class_Variant>` as ``x``, with ``-1`` for negative values, ``1`` for positive values, and ``0`` for zeros. For ``nan`` values it returns 0.
+Trả về cùng kiểu :ref:`Variant<class_Variant>` như ``x``, với ``-1`` cho các giá trị âm, ``1`` cho các giá trị dương và ``0`` cho các số 0. Với các giá trị ``nan``, hàm trả về 0.
 
-Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
+Các kiểu được hỗ trợ: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
 
 ::
 
@@ -7282,7 +7282,7 @@ Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2
 
     sign(Vector3(-6.0, 0.0, 6.0)) # Returns (-1, 0, 1)
 
-\ **Note:** For better type safety, use :ref:`signf()<class_@GlobalScope_method_signf>`, :ref:`signi()<class_@GlobalScope_method_signi>`, :ref:`Vector2.sign()<class_Vector2_method_sign>`, :ref:`Vector2i.sign()<class_Vector2i_method_sign>`, :ref:`Vector3.sign()<class_Vector3_method_sign>`, :ref:`Vector3i.sign()<class_Vector3i_method_sign>`, :ref:`Vector4.sign()<class_Vector4_method_sign>`, or :ref:`Vector4i.sign()<class_Vector4i_method_sign>`.
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`signf()<class_@GlobalScope_method_signf>`, :ref:`signi()<class_@GlobalScope_method_signi>`, :ref:`Vector2.sign()<class_Vector2_method_sign>`, :ref:`Vector2i.sign()<class_Vector2i_method_sign>`, :ref:`Vector3.sign()<class_Vector3_method_sign>`, :ref:`Vector3i.sign()<class_Vector3i_method_sign>`, :ref:`Vector4.sign()<class_Vector4_method_sign>` hoặc :ref:`Vector4i.sign()<class_Vector4i_method_sign>`.
 
 .. rst-class:: classref-item-separator
 
@@ -7294,7 +7294,7 @@ Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2
 
 :ref:`float<class_float>` **signf**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_signf>`
 
-Returns ``-1.0`` if ``x`` is negative, ``1.0`` if ``x`` is positive, and ``0.0`` if ``x`` is zero. For ``nan`` values of ``x`` it returns 0.0.
+Trả về ``-1.0`` nếu ``x`` là số âm, ``1.0`` nếu ``x`` là số dương và ``0.0`` nếu ``x`` bằng không. Với các giá trị ``nan`` của ``x``, hàm trả về 0.0.
 
 ::
 
@@ -7313,7 +7313,7 @@ Returns ``-1.0`` if ``x`` is negative, ``1.0`` if ``x`` is positive, and ``0.0``
 
 :ref:`int<class_int>` **signi**\ (\ x\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_signi>`
 
-Returns ``-1`` if ``x`` is negative, ``1`` if ``x`` is positive, and ``0`` if ``x`` is zero.
+Trả về ``-1`` nếu ``x`` là số âm, ``1`` nếu ``x`` là số dương và ``0`` nếu ``x`` bằng không.
 
 ::
 
@@ -7331,7 +7331,7 @@ Returns ``-1`` if ``x`` is negative, ``1`` if ``x`` is positive, and ``0`` if ``
 
 :ref:`float<class_float>` **sin**\ (\ angle_rad\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_sin>`
 
-Returns the sine of angle ``angle_rad`` in radians.
+Trả về sin của góc ``angle_rad`` tính bằng radian.
 
 ::
 
@@ -7348,7 +7348,7 @@ Returns the sine of angle ``angle_rad`` in radians.
 
 :ref:`float<class_float>` **sinh**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_sinh>`
 
-Returns the hyperbolic sine of ``x``.
+Trả về sin hyperbolic của ``x``.
 
 ::
 
@@ -7365,13 +7365,13 @@ Returns the hyperbolic sine of ``x``.
 
 :ref:`float<class_float>` **smoothstep**\ (\ from\: :ref:`float<class_float>`, to\: :ref:`float<class_float>`, x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_smoothstep>`
 
-Returns a smooth cubic Hermite interpolation between ``0`` and ``1``.
+Trả về phép nội suy Hermite bậc ba trơn giữa ``0`` và ``1``.
 
-For positive ranges (when ``from <= to``) the return value is ``0`` when ``x <= from``, and ``1`` when ``x >= to``. If ``x`` lies between ``from`` and ``to``, the return value follows an S-shaped curve that smoothly transitions from ``0`` to ``1``.
+Đối với các khoảng dương (khi ``from <= to``), giá trị trả về là ``0`` khi ``x <= from``, và là ``1`` khi ``x >= to``. Nếu ``x`` nằm giữa ``from`` và ``to``, giá trị trả về tuân theo một đường cong hình chữ S chuyển tiếp mượt mà từ ``0`` đến ``1``.
 
-For negative ranges (when ``from > to``) the function is mirrored and returns ``1`` when ``x <= to`` and ``0`` when ``x >= from``.
+Đối với các khoảng âm (khi ``from > to``), hàm được phản chiếu và trả về ``1`` khi ``x <= to``, và ``0`` khi ``x >= from``.
 
-This S-shaped curve is the cubic Hermite interpolator, given by ``f(y) = 3*y^2 - 2*y^3`` where ``y = (x-from) / (to-from)``.
+Đường cong hình chữ S này là bộ nội suy Hermite bậc ba, được xác định bởi ``f(y) = 3*y^2 - 2*y^3`` trong đó ``y = (x-from) / (to-from)``.
 
 ::
 
@@ -7380,11 +7380,11 @@ This S-shaped curve is the cubic Hermite interpolator, given by ``f(y) = 3*y^2 -
     smoothstep(0, 2, 1.0) # Returns 0.5
     smoothstep(0, 2, 2.0) # Returns 1.0
 
-Compared to :ref:`ease()<class_@GlobalScope_method_ease>` with a curve value of ``-1.6521``, :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>` returns the smoothest possible curve with no sudden changes in the derivative. If you need to perform more advanced transitions, use :ref:`Tween<class_Tween>` or :ref:`AnimationPlayer<class_AnimationPlayer>`.
+So với :ref:`ease()<class_@GlobalScope_method_ease>` có giá trị đường cong là ``-1.6521``, :ref:`smoothstep()<class_@GlobalScope_method_smoothstep>` trả về đường cong mượt mà nhất có thể mà không có thay đổi đột ngột trong đạo hàm. Nếu cần thực hiện các chuyển tiếp nâng cao hơn, hãy sử dụng :ref:`Tween<class_Tween>` hoặc :ref:`AnimationPlayer<class_AnimationPlayer>`.
 
-\ `Comparison between smoothstep() and ease(x, -1.6521) return values <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/smoothstep_ease_comparison.png>`__\ 
+\ `So sánh các giá trị trả về của smoothstep() và ease(x, -1.6521) <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/smoothstep_ease_comparison.png>`__\
 
-\ `Smoothstep() return values with positive, zero, and negative ranges <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/smoothstep_range.webp>`__
+\ `Các giá trị trả về của Smoothstep() với các khoảng dương, bằng không và âm <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/smoothstep_range.webp>`__
 
 .. rst-class:: classref-item-separator
 
@@ -7396,9 +7396,9 @@ Compared to :ref:`ease()<class_@GlobalScope_method_ease>` with a curve value of 
 
 :ref:`Variant<class_Variant>` **snapped**\ (\ x\: :ref:`Variant<class_Variant>`, step\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_snapped>`
 
-Returns the multiple of ``step`` that is the closest to ``x``. This can also be used to round a floating-point number to an arbitrary number of decimals.
+Trả về bội số của ``step`` gần ``x`` nhất. Bạn cũng có thể dùng hàm này để làm tròn một số dấu phẩy động đến số chữ số thập phân tùy ý.
 
-The returned value is the same type of :ref:`Variant<class_Variant>` as ``step``. Supported types: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
+Giá trị trả về có cùng kiểu với :ref:`Variant<class_Variant>` như ``step``. Các kiểu được hỗ trợ: :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Vector2<class_Vector2>`, :ref:`Vector2i<class_Vector2i>`, :ref:`Vector3<class_Vector3>`, :ref:`Vector3i<class_Vector3i>`, :ref:`Vector4<class_Vector4>`, :ref:`Vector4i<class_Vector4i>`.
 
 ::
 
@@ -7407,9 +7407,9 @@ The returned value is the same type of :ref:`Variant<class_Variant>` as ``step``
 
     snapped(Vector2(34, 70), Vector2(8, 8))  # Returns (32, 72)
 
-See also :ref:`ceil()<class_@GlobalScope_method_ceil>`, :ref:`floor()<class_@GlobalScope_method_floor>`, and :ref:`round()<class_@GlobalScope_method_round>`.
+Xem thêm :ref:`ceil()<class_@GlobalScope_method_ceil>`, :ref:`floor()<class_@GlobalScope_method_floor>` và :ref:`round()<class_@GlobalScope_method_round>`.
 
-\ **Note:** For better type safety, use :ref:`snappedf()<class_@GlobalScope_method_snappedf>`, :ref:`snappedi()<class_@GlobalScope_method_snappedi>`, :ref:`Vector2.snapped()<class_Vector2_method_snapped>`, :ref:`Vector2i.snapped()<class_Vector2i_method_snapped>`, :ref:`Vector3.snapped()<class_Vector3_method_snapped>`, :ref:`Vector3i.snapped()<class_Vector3i_method_snapped>`, :ref:`Vector4.snapped()<class_Vector4_method_snapped>`, or :ref:`Vector4i.snapped()<class_Vector4i_method_snapped>`.
+\ **Lưu ý:** Để đảm bảo an toàn kiểu tốt hơn, hãy sử dụng :ref:`snappedf()<class_@GlobalScope_method_snappedf>`, :ref:`snappedi()<class_@GlobalScope_method_snappedi>`, :ref:`Vector2.snapped()<class_Vector2_method_snapped>`, :ref:`Vector2i.snapped()<class_Vector2i_method_snapped>`, :ref:`Vector3.snapped()<class_Vector3_method_snapped>`, :ref:`Vector3i.snapped()<class_Vector3i_method_snapped>`, :ref:`Vector4.snapped()<class_Vector4_method_snapped>` hoặc :ref:`Vector4i.snapped()<class_Vector4i_method_snapped>`.
 
 .. rst-class:: classref-item-separator
 
@@ -7421,9 +7421,9 @@ See also :ref:`ceil()<class_@GlobalScope_method_ceil>`, :ref:`floor()<class_@Glo
 
 :ref:`float<class_float>` **snappedf**\ (\ x\: :ref:`float<class_float>`, step\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_snappedf>`
 
-Returns the multiple of ``step`` that is the closest to ``x``. This can also be used to round a floating-point number to an arbitrary number of decimals.
+Trả về bội số của ``step`` gần ``x`` nhất. Bạn cũng có thể dùng hàm này để làm tròn một số dấu phẩy động đến số chữ số thập phân tùy ý.
 
-A type-safe version of :ref:`snapped()<class_@GlobalScope_method_snapped>`, returning a :ref:`float<class_float>`.
+Một phiên bản type-safe của :ref:`snapped()<class_@GlobalScope_method_snapped>`, trả về một :ref:`float<class_float>`.
 
 ::
 
@@ -7440,9 +7440,9 @@ A type-safe version of :ref:`snapped()<class_@GlobalScope_method_snapped>`, retu
 
 :ref:`int<class_int>` **snappedi**\ (\ x\: :ref:`float<class_float>`, step\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_snappedi>`
 
-Returns the multiple of ``step`` that is the closest to ``x``.
+Trả về bội số của ``step`` gần ``x`` nhất.
 
-A type-safe version of :ref:`snapped()<class_@GlobalScope_method_snapped>`, returning an :ref:`int<class_int>`.
+Một phiên bản type-safe của :ref:`snapped()<class_@GlobalScope_method_snapped>`, trả về một :ref:`int<class_int>`.
 
 ::
 
@@ -7459,7 +7459,7 @@ A type-safe version of :ref:`snapped()<class_@GlobalScope_method_snapped>`, retu
 
 :ref:`float<class_float>` **sqrt**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_sqrt>`
 
-Returns the square root of ``x``, where ``x`` is a non-negative number.
+Trả về căn bậc hai của ``x``, trong đó ``x`` là một số không âm.
 
 ::
 
@@ -7467,7 +7467,7 @@ Returns the square root of ``x``, where ``x`` is a non-negative number.
     sqrt(10.24) # Returns 3.2
     sqrt(-1)    # Returns NaN
 
-\ **Note:** Negative values of ``x`` return NaN ("Not a Number"). In C#, if you need negative inputs, use ``System.Numerics.Complex``.
+\ **Lưu ý:** Các giá trị âm của ``x`` trả về NaN ("Not a Number"). Trong C#, nếu bạn cần các đầu vào âm, hãy sử dụng ``System.Numerics.Complex``.
 
 .. rst-class:: classref-item-separator
 
@@ -7479,7 +7479,7 @@ Returns the square root of ``x``, where ``x`` is a non-negative number.
 
 :ref:`int<class_int>` **step_decimals**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_step_decimals>`
 
-Returns the position of the first non-zero digit, after the decimal point. Note that the maximum return value is 10, which is a design decision in the implementation.
+Trả về vị trí của chữ số khác 0 đầu tiên sau dấu thập phân. Lưu ý rằng giá trị trả về tối đa là 10, đây là một quyết định thiết kế trong quá trình triển khai.
 
 ::
 
@@ -7497,7 +7497,7 @@ Returns the position of the first non-zero digit, after the decimal point. Note 
 
 :ref:`String<class_String>` **str**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GlobalScope_method_str>`
 
-Converts one or more arguments of any :ref:`Variant<class_Variant>` type to a :ref:`String<class_String>` in the best way possible.
+Chuyển đổi một hoặc nhiều đối số thuộc bất kỳ kiểu :ref:`Variant<class_Variant>` nào thành một :ref:`String<class_String>` theo cách tốt nhất có thể.
 
 ::
 
@@ -7516,22 +7516,22 @@ Converts one or more arguments of any :ref:`Variant<class_Variant>` type to a :r
 
 :ref:`Variant<class_Variant>` **str_to_var**\ (\ string\: :ref:`String<class_String>`\ ) :ref:`🔗<class_@GlobalScope_method_str_to_var>`
 
-Converts a formatted ``string`` that was returned by :ref:`var_to_str()<class_@GlobalScope_method_var_to_str>` to the original :ref:`Variant<class_Variant>`.
+Chuyển đổi một ``string`` đã được định dạng do :ref:`var_to_str()<class_@GlobalScope_method_var_to_str>` trả về về :ref:`Variant<class_Variant>` ban đầu.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var data = '{ "a": 1, "b": 2 }' # data is a String
-    var dict = str_to_var(data)     # dict is a Dictionary
-    print(dict["a"])                # Prints 1
+    var data = '{ "a": 1, "b": 2 }' # data là một String
+    var dict = str_to_var(data)     # dict là một Dictionary
+    print(dict["a"])                # In ra 1
 
  .. code-tab:: csharp
 
-    string data = "{ \"a\": 1, \"b\": 2 }";           // data is a string
-    var dict = GD.StrToVar(data).AsGodotDictionary(); // dict is a Dictionary
-    GD.Print(dict["a"]);                              // Prints 1
+    string data = "{ \"a\": 1, \"b\": 2 }";           // data là một chuỗi
+    var dict = GD.StrToVar(data).AsGodotDictionary(); // dict là một Dictionary
+    GD.Print(dict["a"]);                              // In ra 1
 
 
 
@@ -7545,7 +7545,7 @@ Converts a formatted ``string`` that was returned by :ref:`var_to_str()<class_@G
 
 :ref:`float<class_float>` **tan**\ (\ angle_rad\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_tan>`
 
-Returns the tangent of angle ``angle_rad`` in radians.
+Trả về tan của góc ``angle_rad`` tính bằng radian.
 
 ::
 
@@ -7561,7 +7561,7 @@ Returns the tangent of angle ``angle_rad`` in radians.
 
 :ref:`float<class_float>` **tanh**\ (\ x\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_tanh>`
 
-Returns the hyperbolic tangent of ``x``.
+Trả về tan hyperbolic của ``x``.
 
 ::
 
@@ -7578,11 +7578,11 @@ Returns the hyperbolic tangent of ``x``.
 
 :ref:`Variant<class_Variant>` **type_convert**\ (\ variant\: :ref:`Variant<class_Variant>`, type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_type_convert>`
 
-Converts the given ``variant`` to the given ``type``, using the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` values. This method is generous with how it handles types, it can automatically convert between array types, convert numeric :ref:`String<class_String>`\ s to :ref:`int<class_int>`, and converting most things to :ref:`String<class_String>`.
+Chuyển đổi ``variant`` đã cho thành ``type`` đã cho, bằng cách sử dụng các giá trị :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`. Phương thức này linh hoạt trong cách xử lý các kiểu dữ liệu; nó có thể tự động chuyển đổi giữa các kiểu mảng, chuyển đổi các :ref:`String<class_String>`\ s số thành :ref:`int<class_int>`, và chuyển đổi hầu hết mọi thứ thành :ref:`String<class_String>`.
 
-If the type conversion cannot be done, this method will return the default value for that type, for example converting :ref:`Rect2<class_Rect2>` to :ref:`Vector2<class_Vector2>` will always return :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`. This method will never show error messages as long as ``type`` is a valid Variant type.
+Nếu không thể thực hiện chuyển đổi kiểu, phương thức này sẽ trả về giá trị mặc định của kiểu đó; ví dụ, việc chuyển đổi :ref:`Rect2<class_Rect2>` thành :ref:`Vector2<class_Vector2>` sẽ luôn trả về :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`. Phương thức này sẽ không bao giờ hiển thị thông báo lỗi, miễn là ``type`` là một kiểu Variant hợp lệ.
 
-The returned value is a :ref:`Variant<class_Variant>`, but the data inside and its type will be the same as the requested type.
+Giá trị được trả về là một :ref:`Variant<class_Variant>`, nhưng dữ liệu bên trong và kiểu của nó sẽ giống với kiểu được yêu cầu.
 
 ::
 
@@ -7602,7 +7602,7 @@ The returned value is a :ref:`Variant<class_Variant>`, but the data inside and i
 
 :ref:`String<class_String>` **type_string**\ (\ type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_type_string>`
 
-Returns a human-readable name of the given ``type``, using the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` values.
+Trả về tên dễ đọc của ``type`` đã cho, sử dụng các giá trị :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`.
 
 ::
 
@@ -7610,7 +7610,7 @@ Returns a human-readable name of the given ``type``, using the :ref:`Variant.Typ
     print(type_string(TYPE_INT)) # Prints "int"
     print(type_string(TYPE_STRING)) # Prints "String"
 
-See also :ref:`typeof()<class_@GlobalScope_method_typeof>`.
+Xem thêm :ref:`typeof()<class_@GlobalScope_method_typeof>`.
 
 .. rst-class:: classref-item-separator
 
@@ -7622,7 +7622,7 @@ See also :ref:`typeof()<class_@GlobalScope_method_typeof>`.
 
 :ref:`int<class_int>` **typeof**\ (\ variable\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_typeof>`
 
-Returns the internal type of the given ``variable``, using the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` values.
+Trả về kiểu nội bộ của ``variable`` đã cho, sử dụng các giá trị :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`.
 
 ::
 
@@ -7634,7 +7634,7 @@ Returns the internal type of the given ``variable``, using the :ref:`Variant.Typ
     else:
         print("Unexpected result!")
 
-See also :ref:`type_string()<class_@GlobalScope_method_type_string>`.
+Xem thêm :ref:`type_string()<class_@GlobalScope_method_type_string>`.
 
 .. rst-class:: classref-item-separator
 
@@ -7646,11 +7646,11 @@ See also :ref:`type_string()<class_@GlobalScope_method_type_string>`.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **var_to_bytes**\ (\ variable\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_var_to_bytes>`
 
-Encodes a :ref:`Variant<class_Variant>` value to a byte array, without encoding objects. Deserialization can be done with :ref:`bytes_to_var()<class_@GlobalScope_method_bytes_to_var>`.
+Mã hóa một giá trị :ref:`Variant<class_Variant>` thành một mảng byte mà không mã hóa các đối tượng. Có thể giải tuần tự hóa bằng :ref:`bytes_to_var()<class_@GlobalScope_method_bytes_to_var>`.
 
-\ **Note:** If you need object serialization, see :ref:`var_to_bytes_with_objects()<class_@GlobalScope_method_var_to_bytes_with_objects>`.
+\ **Lưu ý:** Nếu bạn cần tuần tự hóa đối tượng, hãy xem :ref:`var_to_bytes_with_objects()<class_@GlobalScope_method_var_to_bytes_with_objects>`.
 
-\ **Note:** Encoding :ref:`Callable<class_Callable>` is not supported and will result in an empty value, regardless of the data.
+\ **Lưu ý:** Việc mã hóa :ref:`Callable<class_Callable>` không được hỗ trợ và sẽ cho kết quả là một giá trị rỗng, bất kể dữ liệu.
 
 .. rst-class:: classref-item-separator
 
@@ -7662,9 +7662,9 @@ Encodes a :ref:`Variant<class_Variant>` value to a byte array, without encoding 
 
 :ref:`PackedByteArray<class_PackedByteArray>` **var_to_bytes_with_objects**\ (\ variable\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_var_to_bytes_with_objects>`
 
-Encodes a :ref:`Variant<class_Variant>` value to a byte array. Encoding objects is allowed (and can potentially include executable code). Deserialization can be done with :ref:`bytes_to_var_with_objects()<class_@GlobalScope_method_bytes_to_var_with_objects>`.
+Mã hóa một giá trị :ref:`Variant<class_Variant>` thành một mảng byte. Cho phép mã hóa các đối tượng (và có thể bao gồm mã thực thi). Có thể thực hiện giải tuần tự hóa bằng :ref:`bytes_to_var_with_objects()<class_@GlobalScope_method_bytes_to_var_with_objects>`.
 
-\ **Note:** Encoding :ref:`Callable<class_Callable>` is not supported and will result in an empty value, regardless of the data.
+\ **Lưu ý:** Việc mã hóa :ref:`Callable<class_Callable>` không được hỗ trợ và sẽ cho kết quả là một giá trị rỗng, bất kể dữ liệu.
 
 .. rst-class:: classref-item-separator
 
@@ -7676,7 +7676,7 @@ Encodes a :ref:`Variant<class_Variant>` value to a byte array. Encoding objects 
 
 :ref:`String<class_String>` **var_to_str**\ (\ variable\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_var_to_str>`
 
-Converts a :ref:`Variant<class_Variant>` ``variable`` to a formatted :ref:`String<class_String>` that can then be parsed using :ref:`str_to_var()<class_@GlobalScope_method_str_to_var>`.
+Chuyển đổi một :ref:`Variant<class_Variant>` ``variable`` thành một :ref:`String<class_String>` được định dạng, sau đó có thể phân tích cú pháp bằng :ref:`str_to_var()<class_@GlobalScope_method_str_to_var>`.
 
 
 .. tabs::
@@ -7693,7 +7693,7 @@ Converts a :ref:`Variant<class_Variant>` ``variable`` to a formatted :ref:`Strin
 
 
 
-Prints:
+In:
 
 .. code:: text
 
@@ -7702,7 +7702,7 @@ Prints:
         "b": 2
     }
 
-\ **Note:** Converting :ref:`Signal<class_Signal>` or :ref:`Callable<class_Callable>` is not supported and will result in an empty value for these types, regardless of their data.
+\ **Lưu ý:** Việc chuyển đổi :ref:`Signal<class_Signal>` hoặc :ref:`Callable<class_Callable>` không được hỗ trợ và sẽ cho kết quả là một giá trị rỗng đối với các kiểu này, bất kể dữ liệu của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -7714,9 +7714,9 @@ Prints:
 
 :ref:`Variant<class_Variant>` **weakref**\ (\ obj\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_weakref>`
 
-Returns a :ref:`WeakRef<class_WeakRef>` instance holding a weak reference to ``obj``. Returns an empty :ref:`WeakRef<class_WeakRef>` instance if ``obj`` is ``null``. Prints an error and returns ``null`` if ``obj`` is neither :ref:`Object<class_Object>`-derived nor ``null``.
+Trả về một thực thể :ref:`WeakRef<class_WeakRef>` chứa tham chiếu yếu đến ``obj``. Trả về một thực thể :ref:`WeakRef<class_WeakRef>` rỗng nếu ``obj`` là ``null``. In lỗi và trả về ``null`` nếu ``obj`` không được dẫn xuất từ :ref:`Object<class_Object>` hoặc ``null``.
 
-A weak reference to an object is not enough to keep the object alive: when the only remaining references to a referent are weak references, garbage collection is free to destroy the referent and reuse its memory for something else. However, until the object is actually destroyed the weak reference may return the object even if there are no strong references to it.
+Một tham chiếu yếu đến một đối tượng không đủ để giữ đối tượng đó tồn tại: khi các tham chiếu duy nhất còn lại đến đối tượng được tham chiếu là các tham chiếu yếu, bộ thu gom rác có thể tự do hủy đối tượng được tham chiếu và sử dụng lại vùng nhớ của nó cho một mục đích khác. Tuy nhiên, cho đến khi đối tượng thực sự bị hủy, tham chiếu yếu vẫn có thể trả về đối tượng đó ngay cả khi không còn tham chiếu mạnh nào.
 
 .. rst-class:: classref-item-separator
 
@@ -7728,9 +7728,9 @@ A weak reference to an object is not enough to keep the object alive: when the o
 
 :ref:`Variant<class_Variant>` **wrap**\ (\ value\: :ref:`Variant<class_Variant>`, min\: :ref:`Variant<class_Variant>`, max\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GlobalScope_method_wrap>`
 
-Wraps the :ref:`Variant<class_Variant>` ``value`` between ``min`` and ``max``. ``min`` is *inclusive* while ``max`` is *exclusive*. This can be used for creating loop-like behavior or infinite surfaces.
+Bao bọc :ref:`Variant<class_Variant>` ``value`` giữa ``min`` và ``max``. ``min`` là *inclusive*, còn ``max`` là *exclusive*. Có thể dùng cách này để tạo hành vi giống vòng lặp hoặc các bề mặt vô hạn.
 
-Variant types :ref:`int<class_int>` and :ref:`float<class_float>` are supported. If any of the arguments is :ref:`float<class_float>`, this function returns a :ref:`float<class_float>`, otherwise it returns an :ref:`int<class_int>`.
+Các kiểu Variant :ref:`int<class_int>` và :ref:`float<class_float>` được hỗ trợ. Nếu bất kỳ đối số nào là :ref:`float<class_float>`, hàm này trả về một :ref:`float<class_float>`; nếu không, hàm trả về một :ref:`int<class_int>`.
 
 ::
 
@@ -7753,7 +7753,7 @@ Variant types :ref:`int<class_int>` and :ref:`float<class_float>` are supported.
 
 :ref:`float<class_float>` **wrapf**\ (\ value\: :ref:`float<class_float>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_@GlobalScope_method_wrapf>`
 
-Wraps the float ``value`` between ``min`` and ``max``. ``min`` is *inclusive* while ``max`` is *exclusive*. This can be used for creating loop-like behavior or infinite surfaces.
+Bao bọc số thực ``value`` giữa ``min`` và ``max``. ``min`` là *inclusive*, còn ``max`` là *exclusive*. Có thể dùng cách này để tạo hành vi giống vòng lặp hoặc các bề mặt vô hạn.
 
 ::
 
@@ -7770,7 +7770,7 @@ Wraps the float ``value`` between ``min`` and ``max``. ``min`` is *inclusive* wh
     # Infinite rotation (in radians)
     angle = wrapf(angle + 0.1, -PI, PI)
 
-\ **Note:** If ``min`` is ``0``, this is equivalent to :ref:`fposmod()<class_@GlobalScope_method_fposmod>`, so prefer using that instead. :ref:`wrapf()<class_@GlobalScope_method_wrapf>` is more flexible than using the :ref:`fposmod()<class_@GlobalScope_method_fposmod>` approach by giving the user control over the minimum value.
+\ **Lưu ý:** Nếu ``min`` là ``0``, cách này tương đương với :ref:`fposmod()<class_@GlobalScope_method_fposmod>`, vì vậy nên dùng cách đó thay thế. :ref:`wrapf()<class_@GlobalScope_method_wrapf>` linh hoạt hơn cách tiếp cận :ref:`fposmod()<class_@GlobalScope_method_fposmod>` vì cho phép người dùng kiểm soát giá trị tối thiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -7782,7 +7782,7 @@ Wraps the float ``value`` between ``min`` and ``max``. ``min`` is *inclusive* wh
 
 :ref:`int<class_int>` **wrapi**\ (\ value\: :ref:`int<class_int>`, min\: :ref:`int<class_int>`, max\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GlobalScope_method_wrapi>`
 
-Wraps the integer ``value`` between ``min`` and ``max``. ``min`` is *inclusive* while ``max`` is *exclusive*. This can be used for creating loop-like behavior or infinite surfaces.
+Bao bọc số nguyên ``value`` giữa ``min`` và ``max``. ``min`` là *inclusive*, còn ``max`` là *exclusive*. Có thể dùng cách này để tạo hành vi giống vòng lặp hoặc các bề mặt vô hạn.
 
 ::
 
@@ -7794,12 +7794,12 @@ Wraps the integer ``value`` between ``min`` and ``max``. ``min`` is *inclusive* 
     # result is -2
     var result = wrapi(-6, -5, -1)
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit (bitmask) của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

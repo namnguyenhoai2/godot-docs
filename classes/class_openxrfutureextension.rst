@@ -10,21 +10,21 @@
 OpenXRFutureExtension
 =====================
 
-**Inherits:** :ref:`OpenXRExtensionWrapper<class_OpenXRExtensionWrapper>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRExtensionWrapper<class_OpenXRExtensionWrapper>` **<** :ref:`Object<class_Object>`
 
-The OpenXR Future extension allows for asynchronous APIs to be used.
+Extension OpenXR Future cho phép sử dụng các API bất đồng bộ.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This is a support extension in OpenXR that allows other OpenXR extensions to start asynchronous functions and get a callback after this function finishes. It is not intended for consumption within GDScript but can be accessed from GDExtension.
+Đây là một extension hỗ trợ trong OpenXR, cho phép các extension OpenXR khác khởi chạy các hàm bất đồng bộ và nhận callback sau khi hàm này hoàn tất. Extension này không предназначено để sử dụng trong GDScript nhưng có thể được truy cập từ GDExtension.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRFutureExtension_method_cancel_future:
 
@@ -52,7 +52,7 @@ Method Descriptions
 
 |void| **cancel_future**\ (\ future\: :ref:`int<class_int>`\ ) :ref:`🔗<class_OpenXRFutureExtension_method_cancel_future>`
 
-Cancels an in-progress future. ``future`` must be an ``XrFutureEXT`` value previously returned by an API that started an asynchronous function.
+Hủy một future đang được xử lý. ``future`` phải là một giá trị ``XrFutureEXT`` được một API khởi chạy hàm bất đồng bộ trả về trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -64,7 +64,7 @@ Cancels an in-progress future. ``future`` must be an ``XrFutureEXT`` value previ
 
 :ref:`bool<class_bool>` **is_active**\ (\ ) |const| :ref:`🔗<class_OpenXRFutureExtension_method_is_active>`
 
-Returns ``true`` if futures are available in the OpenXR runtime used. This function will only return a usable result after OpenXR has been initialized.
+Trả về ``true`` nếu các future khả dụng trong OpenXR runtime đang được sử dụng. Hàm này chỉ trả về kết quả có thể sử dụng sau khi OpenXR đã được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -76,11 +76,11 @@ Returns ``true`` if futures are available in the OpenXR runtime used. This funct
 
 :ref:`OpenXRFutureResult<class_OpenXRFutureResult>` **register_future**\ (\ future\: :ref:`int<class_int>`, on_success\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_OpenXRFutureExtension_method_register_future>`
 
-Register an OpenXR Future object so we monitor for completion. ``future`` must be an ``XrFutureEXT`` value previously returned by an API that started an asynchronous function.
+Đăng ký một đối tượng OpenXR Future để chúng ta theo dõi việc hoàn tất. ``future`` phải là một giá trị ``XrFutureEXT`` được một API khởi chạy hàm bất đồng bộ trả về trước đó.
 
-You can optionally specify ``on_success``, it will be invoked on successful completion of the future.
+Bạn có thể tùy chọn chỉ định ``on_success``; đối tượng này sẽ được gọi khi future hoàn tất thành công.
 
-Or you can use the returned :ref:`OpenXRFutureResult<class_OpenXRFutureResult>` object to ``await`` its :ref:`OpenXRFutureResult.completed<class_OpenXRFutureResult_signal_completed>` signal.
+Hoặc bạn có thể sử dụng đối tượng :ref:`OpenXRFutureResult<class_OpenXRFutureResult>` được trả về để ``await`` tín hiệu :ref:`OpenXRFutureResult.completed<class_OpenXRFutureResult_signal_completed>` của đối tượng đó.
 
 ::
 
@@ -90,12 +90,12 @@ Or you can use the returned :ref:`OpenXRFutureResult<class_OpenXRFutureResult>` 
         # Handle your success
         pass
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một đối tượng để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

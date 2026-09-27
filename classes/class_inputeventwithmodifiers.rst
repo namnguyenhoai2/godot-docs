@@ -10,63 +10,63 @@
 InputEventWithModifiers
 =======================
 
-**Inherits:** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`InputEventGesture<class_InputEventGesture>`, :ref:`InputEventKey<class_InputEventKey>`, :ref:`InputEventMouse<class_InputEventMouse>`
+**Được kế thừa bởi:** :ref:`InputEventGesture<class_InputEventGesture>`, :ref:`InputEventKey<class_InputEventKey>`, :ref:`InputEventMouse<class_InputEventMouse>`
 
-Abstract base class for input events affected by modifier keys like :kbd:`Shift` and :kbd:`Alt`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Stores information about mouse, keyboard, and touch gesture input events. This includes information about which modifier keys are pressed, such as :kbd:`Shift` or :kbd:`Alt`. See :ref:`Node._input()<class_Node_private_method__input>`.
-
-\ **Note:** Modifier keys are considered modifiers only when used in combination with another key. As a result, their corresponding member variables, such as :ref:`ctrl_pressed<class_InputEventWithModifiers_property_ctrl_pressed>`, will return ``false`` if the key is pressed on its own.
+Lớp cơ sở trừu tượng dành cho các sự kiện đầu vào bị ảnh hưởng bởi các phím bổ trợ như :kbd:`Shift` và :kbd:`Alt`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lưu trữ thông tin về các sự kiện đầu vào từ chuột, bàn phím và thao tác cảm ứng. Thông tin này bao gồm các phím bổ trợ nào đang được nhấn, chẳng hạn như :kbd:`Shift` hoặc :kbd:`Alt`. Xem :ref:`Node._input()<class_Node_private_method__input>`.
+
+\ **Lưu ý:** Các phím bổ trợ chỉ được xem là phím bổ trợ khi được sử dụng kết hợp với một phím khác. Do đó, các biến thành viên tương ứng của chúng, chẳng hạn như :ref:`ctrl_pressed<class_InputEventWithModifiers_property_ctrl_pressed>`, sẽ trả về ``false`` nếu phím được nhấn riêng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using InputEvent <../tutorials/inputs/inputevent>`
+- :doc:`Sử dụng InputEvent <../tutorials/inputs/inputevent>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`alt_pressed<class_InputEventWithModifiers_property_alt_pressed>`                                   | ``false``                                                              |
-   +-------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`command_or_control_autoremap<class_InputEventWithModifiers_property_command_or_control_autoremap>` | ``false``                                                              |
-   +-------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`ctrl_pressed<class_InputEventWithModifiers_property_ctrl_pressed>`                                 | ``false``                                                              |
-   +-------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`int<class_int>`   | device                                                                                                   | ``16`` (overrides :ref:`InputEvent<class_InputEvent_property_device>`) |
-   +-------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`meta_pressed<class_InputEventWithModifiers_property_meta_pressed>`                                 | ``false``                                                              |
-   +-------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`shift_pressed<class_InputEventWithModifiers_property_shift_pressed>`                               | ``false``                                                              |
-   +-------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   +-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`alt_pressed<class_InputEventWithModifiers_property_alt_pressed>`                                   | ``false``                                                           |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`command_or_control_autoremap<class_InputEventWithModifiers_property_command_or_control_autoremap>` | ``false``                                                           |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`ctrl_pressed<class_InputEventWithModifiers_property_ctrl_pressed>`                                 | ``false``                                                           |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`int<class_int>`   | device                                                                                                   | ``16`` (ghi đè :ref:`InputEvent<class_InputEvent_property_device>`) |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`meta_pressed<class_InputEventWithModifiers_property_meta_pressed>`                                 | ``false``                                                           |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`shift_pressed<class_InputEventWithModifiers_property_shift_pressed>`                               | ``false``                                                           |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>`\] | :ref:`get_modifiers_mask<class_InputEventWithModifiers_method_get_modifiers_mask>`\ (\ ) |const|                       |
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                 | :ref:`is_command_or_control_pressed<class_InputEventWithModifiers_method_is_command_or_control_pressed>`\ (\ ) |const| |
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`KeyModifierMask <enum_@GlobalScope_KeyModifierMask>`\] | :ref:`get_modifiers_mask<class_InputEventWithModifiers_method_get_modifiers_mask>`\ (\ ) |const|                       |
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                  | :ref:`is_command_or_control_pressed<class_InputEventWithModifiers_method_is_command_or_control_pressed>`\ (\ ) |const| |
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -74,8 +74,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEventWithModifiers_property_alt_pressed:
 
@@ -88,7 +88,7 @@ Property Descriptions
 - |void| **set_alt_pressed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_alt_pressed**\ (\ )
 
-State of the :kbd:`Alt` modifier.
+Trạng thái của modifier :kbd:`Alt`.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ State of the :kbd:`Alt` modifier.
 - |void| **set_command_or_control_autoremap**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_command_or_control_autoremap**\ (\ )
 
-Automatically use :kbd:`Meta` (:kbd:`Cmd`) on macOS and :kbd:`Ctrl` on other platforms. If ``true``, :ref:`ctrl_pressed<class_InputEventWithModifiers_property_ctrl_pressed>` and :ref:`meta_pressed<class_InputEventWithModifiers_property_meta_pressed>` cannot be set.
+Tự động sử dụng :kbd:`Meta` (:kbd:`Cmd`) trên macOS và :kbd:`Ctrl` trên các nền tảng khác. Nếu ``true``, không thể thiết lập :ref:`ctrl_pressed<class_InputEventWithModifiers_property_ctrl_pressed>` và :ref:`meta_pressed<class_InputEventWithModifiers_property_meta_pressed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Automatically use :kbd:`Meta` (:kbd:`Cmd`) on macOS and :kbd:`Ctrl` on other pla
 - |void| **set_ctrl_pressed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_ctrl_pressed**\ (\ )
 
-State of the :kbd:`Ctrl` modifier.
+Trạng thái của modifier :kbd:`Ctrl`.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ State of the :kbd:`Ctrl` modifier.
 - |void| **set_meta_pressed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_meta_pressed**\ (\ )
 
-State of the :kbd:`Meta` modifier. On Windows and Linux, this represents the Windows key (sometimes called "meta" or "super" on Linux). On macOS, this represents the Command key.
+Trạng thái của modifier :kbd:`Meta`. Trên Windows và Linux, modifier này đại diện cho phím Windows (đôi khi được gọi là "meta" hoặc "super" trên Linux). Trên macOS, modifier này đại diện cho phím Command.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ State of the :kbd:`Meta` modifier. On Windows and Linux, this represents the Win
 - |void| **set_shift_pressed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_shift_pressed**\ (\ )
 
-State of the :kbd:`Shift` modifier.
+Trạng thái của modifier :kbd:`Shift`.
 
 .. rst-class:: classref-section-separator
 
@@ -164,8 +164,8 @@ State of the :kbd:`Shift` modifier.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_InputEventWithModifiers_method_get_modifiers_mask:
 
@@ -173,7 +173,7 @@ Method Descriptions
 
 |bitfield|\[:ref:`KeyModifierMask<enum_@GlobalScope_KeyModifierMask>`\] **get_modifiers_mask**\ (\ ) |const| :ref:`🔗<class_InputEventWithModifiers_method_get_modifiers_mask>`
 
-Returns the keycode combination of modifier keys.
+Trả về tổ hợp keycode của các phím modifier.
 
 .. rst-class:: classref-item-separator
 
@@ -185,16 +185,16 @@ Returns the keycode combination of modifier keys.
 
 :ref:`bool<class_bool>` **is_command_or_control_pressed**\ (\ ) |const| :ref:`🔗<class_InputEventWithModifiers_method_is_command_or_control_pressed>`
 
-On macOS, returns ``true`` if :kbd:`Meta` (:kbd:`Cmd`) is pressed.
+Trên macOS, trả về ``true`` nếu nhấn :kbd:`Meta` (:kbd:`Cmd`).
 
-On other platforms, returns ``true`` if :kbd:`Ctrl` is pressed.
+Trên các nền tảng khác, trả về ``true`` nếu nhấn :kbd:`Ctrl`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

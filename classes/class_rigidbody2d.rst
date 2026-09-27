@@ -10,102 +10,102 @@
 RigidBody2D
 ===========
 
-**Inherits:** :ref:`PhysicsBody2D<class_PhysicsBody2D>` **<** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PhysicsBody2D<class_PhysicsBody2D>` **<** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`PhysicalBone2D<class_PhysicalBone2D>`
+**Được kế thừa bởi:** :ref:`PhysicalBone2D<class_PhysicalBone2D>`
 
-A 2D physics body that is moved by a physics simulation.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**RigidBody2D** implements full 2D physics. It cannot be controlled directly, instead, you must apply forces to it (gravity, impulses, etc.), and the physics simulation will calculate the resulting movement, rotation, react to collisions, and affect other physics bodies in its path.
-
-The body's behavior can be adjusted via :ref:`lock_rotation<class_RigidBody2D_property_lock_rotation>`, :ref:`freeze<class_RigidBody2D_property_freeze>`, and :ref:`freeze_mode<class_RigidBody2D_property_freeze_mode>`. By changing various properties of the object, such as :ref:`mass<class_RigidBody2D_property_mass>`, you can control how the physics simulation acts on it.
-
-A rigid body will always maintain its shape and size, even when forces are applied to it. It is useful for objects that can be interacted with in an environment, such as a tree that can be knocked over or a stack of crates that can be pushed around.
-
-If you need to directly affect the body, prefer :ref:`_integrate_forces()<class_RigidBody2D_private_method__integrate_forces>` as it allows you to directly access the physics state.
-
-If you need to override the default physics behavior, you can write a custom force integration function. See :ref:`custom_integrator<class_RigidBody2D_property_custom_integrator>`.
-
-\ **Note:** Changing the 2D transform or :ref:`linear_velocity<class_RigidBody2D_property_linear_velocity>` of a **RigidBody2D** very often may lead to some unpredictable behaviors. This also happens when a **RigidBody2D** is the descendant of a constantly moving node, like another **RigidBody2D**, as that will cause its global transform to be set whenever its ancestor moves.
+Một physics body 2D được di chuyển bởi mô phỏng vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**RigidBody2D** triển khai physics 2D đầy đủ. Nó không thể được điều khiển trực tiếp; thay vào đó, bạn phải áp dụng các lực lên nó (trọng lực, impulse, v.v.), rồi mô phỏng vật lý sẽ tính toán chuyển động và phép xoay tạo ra, phản ứng với các va chạm và tác động đến các physics body khác trên đường đi của nó.
+
+Hành vi của body có thể được điều chỉnh thông qua :ref:`lock_rotation<class_RigidBody2D_property_lock_rotation>`, :ref:`freeze<class_RigidBody2D_property_freeze>` và :ref:`freeze_mode<class_RigidBody2D_property_freeze_mode>`. Bằng cách thay đổi nhiều thuộc tính khác nhau của đối tượng, chẳng hạn như :ref:`mass<class_RigidBody2D_property_mass>`, bạn có thể kiểm soát cách mô phỏng vật lý tác động lên nó.
+
+Rigid body sẽ luôn giữ nguyên hình dạng và kích thước, ngay cả khi các lực được áp dụng lên nó. Nó hữu ích cho những đối tượng có thể tương tác trong một môi trường, chẳng hạn như một cái cây có thể bị đổ hoặc một chồng thùng có thể bị đẩy đi.
+
+Nếu cần tác động trực tiếp đến body, hãy ưu tiên :ref:`_integrate_forces()<class_RigidBody2D_private_method__integrate_forces>` vì nó cho phép bạn truy cập trực tiếp vào physics state.
+
+Nếu cần ghi đè hành vi vật lý mặc định, bạn có thể viết một hàm force integration tùy chỉnh. Xem :ref:`custom_integrator<class_RigidBody2D_property_custom_integrator>`.
+
+\ **Lưu ý:** Việc thay đổi 2D transform hoặc :ref:`linear_velocity<class_RigidBody2D_property_linear_velocity>` của một **RigidBody2D** quá thường xuyên có thể dẫn đến một số hành vi không thể đoán trước. Điều này cũng xảy ra khi một **RigidBody2D** là hậu duệ của một node chuyển động liên tục, chẳng hạn như một **RigidBody2D**, vì điều đó sẽ khiến global transform của nó được thiết lập mỗi khi ancestor của nó di chuyển.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
-- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+- :doc:`Khắc phục sự cố vật lý <../tutorials/physics/troubleshooting_physics_issues>`
 
-- `2D Physics Platformer Demo <https://godotengine.org/asset-library/asset/2725>`__
+- `Bản demo platformer vật lý 2D <https://godotengine.org/asset-library/asset/2725>`__
 
-- `Instancing Demo <https://godotengine.org/asset-library/asset/2716>`__
+- `Bản demo Instancing <https://godotengine.org/asset-library/asset/2716>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                  | :ref:`angular_damp<class_RigidBody2D_property_angular_damp>`                           | ``0.0``           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`DampMode<enum_RigidBody2D_DampMode>`                 | :ref:`angular_damp_mode<class_RigidBody2D_property_angular_damp_mode>`                 | ``0``             |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                  | :ref:`angular_velocity<class_RigidBody2D_property_angular_velocity>`                   | ``0.0``           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`can_sleep<class_RigidBody2D_property_can_sleep>`                                 | ``true``          |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>`                              | :ref:`center_of_mass<class_RigidBody2D_property_center_of_mass>`                       | ``Vector2(0, 0)`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`CenterOfMassMode<enum_RigidBody2D_CenterOfMassMode>` | :ref:`center_of_mass_mode<class_RigidBody2D_property_center_of_mass_mode>`             | ``0``             |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>`                              | :ref:`constant_force<class_RigidBody2D_property_constant_force>`                       | ``Vector2(0, 0)`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                  | :ref:`constant_torque<class_RigidBody2D_property_constant_torque>`                     | ``0.0``           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>`                     | ``false``         |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`CCDMode<enum_RigidBody2D_CCDMode>`                   | :ref:`continuous_cd<class_RigidBody2D_property_continuous_cd>`                         | ``0``             |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`custom_integrator<class_RigidBody2D_property_custom_integrator>`                 | ``false``         |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`freeze<class_RigidBody2D_property_freeze>`                                       | ``false``         |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`FreezeMode<enum_RigidBody2D_FreezeMode>`             | :ref:`freeze_mode<class_RigidBody2D_property_freeze_mode>`                             | ``0``             |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                  | :ref:`gravity_scale<class_RigidBody2D_property_gravity_scale>`                         | ``1.0``           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                  | :ref:`inertia<class_RigidBody2D_property_inertia>`                                     | ``0.0``           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                  | :ref:`linear_damp<class_RigidBody2D_property_linear_damp>`                             | ``0.0``           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`DampMode<enum_RigidBody2D_DampMode>`                 | :ref:`linear_damp_mode<class_RigidBody2D_property_linear_damp_mode>`                   | ``0``             |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>`                              | :ref:`linear_velocity<class_RigidBody2D_property_linear_velocity>`                     | ``Vector2(0, 0)`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`lock_rotation<class_RigidBody2D_property_lock_rotation>`                         | ``false``         |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                                  | :ref:`mass<class_RigidBody2D_property_mass>`                                           | ``1.0``           |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`int<class_int>`                                      | :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>`         | ``0``             |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`PhysicsMaterial<class_PhysicsMaterial>`              | :ref:`physics_material_override<class_RigidBody2D_property_physics_material_override>` |                   |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`sleeping<class_RigidBody2D_property_sleeping>`                                   | ``false``         |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                   | :ref:`angular_damp<class_RigidBody2D_property_angular_damp>`                           | ``0.0``           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`DampMode <enum_RigidBody2D_DampMode>`                 | :ref:`angular_damp_mode<class_RigidBody2D_property_angular_damp_mode>`                 | ``0``             |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                   | :ref:`angular_velocity<class_RigidBody2D_property_angular_velocity>`                   | ``0.0``           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`can_sleep<class_RigidBody2D_property_can_sleep>`                                 | ``true``          |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>`                               | :ref:`center_of_mass<class_RigidBody2D_property_center_of_mass>`                       | ``Vector2(0, 0)`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`CenterOfMassMode <enum_RigidBody2D_CenterOfMassMode>` | :ref:`center_of_mass_mode<class_RigidBody2D_property_center_of_mass_mode>`             | ``0``             |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>`                               | :ref:`constant_force<class_RigidBody2D_property_constant_force>`                       | ``Vector2(0, 0)`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                   | :ref:`constant_torque<class_RigidBody2D_property_constant_torque>`                     | ``0.0``           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>`                     | ``false``         |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`CCDMode <enum_RigidBody2D_CCDMode>`                   | :ref:`continuous_cd<class_RigidBody2D_property_continuous_cd>`                         | ``0``             |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`custom_integrator<class_RigidBody2D_property_custom_integrator>`                 | ``false``         |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`freeze<class_RigidBody2D_property_freeze>`                                       | ``false``         |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`FreezeMode <enum_RigidBody2D_FreezeMode>`             | :ref:`freeze_mode<class_RigidBody2D_property_freeze_mode>`                             | ``0``             |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                   | :ref:`gravity_scale<class_RigidBody2D_property_gravity_scale>`                         | ``1.0``           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                   | :ref:`inertia<class_RigidBody2D_property_inertia>`                                     | ``0.0``           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                   | :ref:`linear_damp<class_RigidBody2D_property_linear_damp>`                             | ``0.0``           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`DampMode <enum_RigidBody2D_DampMode>`                 | :ref:`linear_damp_mode<class_RigidBody2D_property_linear_damp_mode>`                   | ``0``             |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>`                               | :ref:`linear_velocity<class_RigidBody2D_property_linear_velocity>`                     | ``Vector2(0, 0)`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`lock_rotation<class_RigidBody2D_property_lock_rotation>`                         | ``false``         |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                                   | :ref:`mass<class_RigidBody2D_property_mass>`                                           | ``1.0``           |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`int<class_int>`                                       | :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>`         | ``0``             |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`PhysicsMaterial<class_PhysicsMaterial>`               | :ref:`physics_material_override<class_RigidBody2D_property_physics_material_override>` |                   |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`sleeping<class_RigidBody2D_property_sleeping>`                                   | ``false``         |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------+-------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -144,8 +144,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Signal
+------
 
 .. _class_RigidBody2D_signal_body_entered:
 
@@ -153,9 +153,9 @@ Signals
 
 **body_entered**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_RigidBody2D_signal_body_entered>`
 
-Emitted when a collision with another :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>` occurs. Requires :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` to be set to ``true`` and :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` to be set high enough to detect all the collisions. :ref:`TileMap<class_TileMap>`\ s are detected if the :ref:`TileSet<class_TileSet>` has Collision :ref:`Shape2D<class_Shape2D>`\ s.
+Được phát ra khi xảy ra va chạm với một :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>`. Yêu cầu :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` được đặt thành ``true`` và :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` được đặt đủ cao để phát hiện tất cả va chạm. :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` có Collision :ref:`Shape2D<class_Shape2D>`\ s.
 
-\ ``body`` the :ref:`Node<class_Node>`, if it exists in the tree, of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>`.
+\ ``body`` :ref:`Node<class_Node>`, nếu tồn tại trong scene tree, của :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>` còn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -167,9 +167,9 @@ Emitted when a collision with another :ref:`PhysicsBody2D<class_PhysicsBody2D>` 
 
 **body_exited**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_RigidBody2D_signal_body_exited>`
 
-Emitted when the collision with another :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>` ends. Requires :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` to be set to ``true`` and :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` to be set high enough to detect all the collisions. :ref:`TileMap<class_TileMap>`\ s are detected if the :ref:`TileSet<class_TileSet>` has Collision :ref:`Shape2D<class_Shape2D>`\ s.
+Được phát ra khi va chạm với một :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>` khác kết thúc. Yêu cầu :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` được đặt thành ``true`` và :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` được đặt đủ cao để phát hiện tất cả va chạm. :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` có Collision :ref:`Shape2D<class_Shape2D>`\ s.
 
-\ ``body`` the :ref:`Node<class_Node>`, if it exists in the tree, of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>`.
+\ ``body`` :ref:`Node<class_Node>`, nếu tồn tại trong scene tree, của :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>` còn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -181,15 +181,15 @@ Emitted when the collision with another :ref:`PhysicsBody2D<class_PhysicsBody2D>
 
 **body_shape_entered**\ (\ body_rid\: :ref:`RID<class_RID>`, body\: :ref:`Node<class_Node>`, body_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_RigidBody2D_signal_body_shape_entered>`
 
-Emitted when one of this RigidBody2D's :ref:`Shape2D<class_Shape2D>`\ s collides with another :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>`'s :ref:`Shape2D<class_Shape2D>`\ s. Requires :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` to be set to ``true`` and :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` to be set high enough to detect all the collisions. :ref:`TileMap<class_TileMap>`\ s are detected if the :ref:`TileSet<class_TileSet>` has Collision :ref:`Shape2D<class_Shape2D>`\ s.
+Được phát ra khi một trong các :ref:`Shape2D<class_Shape2D>`\ s của RigidBody2D này va chạm với :ref:`PhysicsBody2D<class_PhysicsBody2D>` khác hoặc các :ref:`Shape2D<class_Shape2D>`\ s của :ref:`TileMap<class_TileMap>`. Yêu cầu :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` được đặt thành ``true`` và :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` được đặt đủ cao để phát hiện tất cả va chạm. :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` có Collision :ref:`Shape2D<class_Shape2D>`\ s.
 
-\ ``body_rid`` the :ref:`RID<class_RID>` of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileSet<class_TileSet>`'s :ref:`CollisionObject2D<class_CollisionObject2D>` used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
+\ ``body_rid`` :ref:`RID<class_RID>` của :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`CollisionObject2D<class_CollisionObject2D>` khác của :ref:`TileSet<class_TileSet>` được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng.
 
-\ ``body`` the :ref:`Node<class_Node>`, if it exists in the tree, of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>`.
+\ ``body`` :ref:`Node<class_Node>`, nếu tồn tại trong scene tree, của :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>` còn lại.
 
-\ ``body_shape_index`` the index of the :ref:`Shape2D<class_Shape2D>` of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>` used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>`. Get the :ref:`CollisionShape2D<class_CollisionShape2D>` node with ``body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))``.
+\ ``body_shape_index`` chỉ mục của :ref:`Shape2D<class_Shape2D>` thuộc :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>` khác được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng. Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` bằng ``body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))``.
 
-\ ``local_shape_index`` the index of the :ref:`Shape2D<class_Shape2D>` of this RigidBody2D used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>`. Get the :ref:`CollisionShape2D<class_CollisionShape2D>` node with ``self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))``.
+\ ``local_shape_index`` chỉ mục của :ref:`Shape2D<class_Shape2D>` thuộc RigidBody2D này được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng. Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` bằng ``self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))``.
 
 .. rst-class:: classref-item-separator
 
@@ -201,15 +201,15 @@ Emitted when one of this RigidBody2D's :ref:`Shape2D<class_Shape2D>`\ s collides
 
 **body_shape_exited**\ (\ body_rid\: :ref:`RID<class_RID>`, body\: :ref:`Node<class_Node>`, body_shape_index\: :ref:`int<class_int>`, local_shape_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_RigidBody2D_signal_body_shape_exited>`
 
-Emitted when the collision between one of this RigidBody2D's :ref:`Shape2D<class_Shape2D>`\ s and another :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>`'s :ref:`Shape2D<class_Shape2D>`\ s ends. Requires :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` to be set to ``true`` and :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` to be set high enough to detect all the collisions. :ref:`TileMap<class_TileMap>`\ s are detected if the :ref:`TileSet<class_TileSet>` has Collision :ref:`Shape2D<class_Shape2D>`\ s.
+Được phát ra khi va chạm giữa một trong các :ref:`Shape2D<class_Shape2D>`\ s của RigidBody2D này và các :ref:`Shape2D<class_Shape2D>`\ s của :ref:`PhysicsBody2D<class_PhysicsBody2D>` khác hoặc :ref:`TileMap<class_TileMap>` kết thúc. Yêu cầu :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` được đặt thành ``true`` và :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` được đặt đủ cao để phát hiện tất cả va chạm. :ref:`TileMap<class_TileMap>`\ s được phát hiện nếu :ref:`TileSet<class_TileSet>` có Collision :ref:`Shape2D<class_Shape2D>`\ s.
 
-\ ``body_rid`` the :ref:`RID<class_RID>` of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileSet<class_TileSet>`'s :ref:`CollisionObject2D<class_CollisionObject2D>` used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
+\ ``body_rid`` :ref:`RID<class_RID>` của :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`CollisionObject2D<class_CollisionObject2D>` khác của :ref:`TileSet<class_TileSet>` được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng.
 
-\ ``body`` the :ref:`Node<class_Node>`, if it exists in the tree, of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>`.
+\ ``body`` :ref:`Node<class_Node>`, nếu tồn tại trong scene tree, của :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>` còn lại.
 
-\ ``body_shape_index`` the index of the :ref:`Shape2D<class_Shape2D>` of the other :ref:`PhysicsBody2D<class_PhysicsBody2D>` or :ref:`TileMap<class_TileMap>` used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>`. Get the :ref:`CollisionShape2D<class_CollisionShape2D>` node with ``body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))``.
+\ ``body_shape_index`` chỉ mục của :ref:`Shape2D<class_Shape2D>` thuộc :ref:`PhysicsBody2D<class_PhysicsBody2D>` hoặc :ref:`TileMap<class_TileMap>` khác được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng. Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` bằng ``body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))``.
 
-\ ``local_shape_index`` the index of the :ref:`Shape2D<class_Shape2D>` of this RigidBody2D used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>`. Get the :ref:`CollisionShape2D<class_CollisionShape2D>` node with ``self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))``.
+\ ``local_shape_index`` chỉ mục của :ref:`Shape2D<class_Shape2D>` thuộc RigidBody2D này được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng. Lấy node :ref:`CollisionShape2D<class_CollisionShape2D>` bằng ``self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))``.
 
 .. rst-class:: classref-item-separator
 
@@ -221,9 +221,9 @@ Emitted when the collision between one of this RigidBody2D's :ref:`Shape2D<class
 
 **sleeping_state_changed**\ (\ ) :ref:`🔗<class_RigidBody2D_signal_sleeping_state_changed>`
 
-Emitted when the physics engine changes the body's sleeping state.
+Được phát ra khi physics engine thay đổi trạng thái ngủ của body.
 
-\ **Note:** Changing the value :ref:`sleeping<class_RigidBody2D_property_sleeping>` will not trigger this signal. It is only emitted if the sleeping state is changed by the physics engine or ``emit_signal("sleeping_state_changed")`` is used.
+\ **Lưu ý:** Thay đổi giá trị :ref:`sleeping<class_RigidBody2D_property_sleeping>` sẽ không kích hoạt signal này. Signal chỉ được phát ra nếu trạng thái ngủ được physics engine thay đổi hoặc ``emit_signal("sleeping_state_changed")`` được sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -231,14 +231,14 @@ Emitted when the physics engine changes the body's sleeping state.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enumeration
+---------------
 
 .. _enum_RigidBody2D_FreezeMode:
 
 .. rst-class:: classref-enumeration
 
-enum **FreezeMode**: :ref:`🔗<enum_RigidBody2D_FreezeMode>`
+enum **FreezeMode**: :ref:`🔗 <enum_RigidBody2D_FreezeMode>`
 
 .. _class_RigidBody2D_constant_FREEZE_MODE_STATIC:
 
@@ -246,7 +246,7 @@ enum **FreezeMode**: :ref:`🔗<enum_RigidBody2D_FreezeMode>`
 
 :ref:`FreezeMode<enum_RigidBody2D_FreezeMode>` **FREEZE_MODE_STATIC** = ``0``
 
-Static body freeze mode (default). The body is not affected by gravity and forces. It can be only moved by user code and doesn't collide with other bodies along its path.
+Chế độ đóng băng của static body (mặc định). Body không bị ảnh hưởng bởi trọng lực và lực. Body chỉ có thể được di chuyển bằng code của người dùng và không va chạm với các body khác trên đường đi.
 
 .. _class_RigidBody2D_constant_FREEZE_MODE_KINEMATIC:
 
@@ -254,7 +254,7 @@ Static body freeze mode (default). The body is not affected by gravity and force
 
 :ref:`FreezeMode<enum_RigidBody2D_FreezeMode>` **FREEZE_MODE_KINEMATIC** = ``1``
 
-Kinematic body freeze mode. Similar to :ref:`FREEZE_MODE_STATIC<class_RigidBody2D_constant_FREEZE_MODE_STATIC>`, but collides with other bodies along its path when moved. Useful for a frozen body that needs to be animated.
+Chế độ đóng băng của kinematic body. Tương tự :ref:`FREEZE_MODE_STATIC<class_RigidBody2D_constant_FREEZE_MODE_STATIC>`, nhưng sẽ va chạm với các body khác trên đường đi khi được di chuyển. Hữu ích cho body bị đóng băng nhưng cần được animate.
 
 .. rst-class:: classref-item-separator
 
@@ -264,7 +264,7 @@ Kinematic body freeze mode. Similar to :ref:`FREEZE_MODE_STATIC<class_RigidBody2
 
 .. rst-class:: classref-enumeration
 
-enum **CenterOfMassMode**: :ref:`🔗<enum_RigidBody2D_CenterOfMassMode>`
+enum **CenterOfMassMode**: :ref:`🔗 <enum_RigidBody2D_CenterOfMassMode>`
 
 .. _class_RigidBody2D_constant_CENTER_OF_MASS_MODE_AUTO:
 
@@ -272,7 +272,7 @@ enum **CenterOfMassMode**: :ref:`🔗<enum_RigidBody2D_CenterOfMassMode>`
 
 :ref:`CenterOfMassMode<enum_RigidBody2D_CenterOfMassMode>` **CENTER_OF_MASS_MODE_AUTO** = ``0``
 
-In this mode, the body's center of mass is calculated automatically based on its shapes. This assumes that the shapes' origins are also their center of mass.
+Ở chế độ này, tâm khối lượng của body được tự động tính toán dựa trên các shape của nó. Điều này giả định rằng các origin của shape cũng là tâm khối lượng của chúng.
 
 .. _class_RigidBody2D_constant_CENTER_OF_MASS_MODE_CUSTOM:
 
@@ -280,7 +280,7 @@ In this mode, the body's center of mass is calculated automatically based on its
 
 :ref:`CenterOfMassMode<enum_RigidBody2D_CenterOfMassMode>` **CENTER_OF_MASS_MODE_CUSTOM** = ``1``
 
-In this mode, the body's center of mass is set through :ref:`center_of_mass<class_RigidBody2D_property_center_of_mass>`. Defaults to the body's origin position.
+Ở chế độ này, tâm khối lượng của body được thiết lập thông qua :ref:`center_of_mass<class_RigidBody2D_property_center_of_mass>`. Mặc định là vị trí origin của body.
 
 .. rst-class:: classref-item-separator
 
@@ -290,7 +290,7 @@ In this mode, the body's center of mass is set through :ref:`center_of_mass<clas
 
 .. rst-class:: classref-enumeration
 
-enum **DampMode**: :ref:`🔗<enum_RigidBody2D_DampMode>`
+enum **DampMode**: :ref:`🔗 <enum_RigidBody2D_DampMode>`
 
 .. _class_RigidBody2D_constant_DAMP_MODE_COMBINE:
 
@@ -298,7 +298,7 @@ enum **DampMode**: :ref:`🔗<enum_RigidBody2D_DampMode>`
 
 :ref:`DampMode<enum_RigidBody2D_DampMode>` **DAMP_MODE_COMBINE** = ``0``
 
-In this mode, the body's damping value is added to any value set in areas or the default value.
+Ở chế độ này, giá trị damping của body được cộng vào mọi giá trị được đặt trong area hoặc giá trị mặc định.
 
 .. _class_RigidBody2D_constant_DAMP_MODE_REPLACE:
 
@@ -306,7 +306,7 @@ In this mode, the body's damping value is added to any value set in areas or the
 
 :ref:`DampMode<enum_RigidBody2D_DampMode>` **DAMP_MODE_REPLACE** = ``1``
 
-In this mode, the body's damping value replaces any value set in areas or the default value.
+Ở chế độ này, giá trị damping của body thay thế mọi giá trị được đặt trong area hoặc giá trị mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -316,7 +316,7 @@ In this mode, the body's damping value replaces any value set in areas or the de
 
 .. rst-class:: classref-enumeration
 
-enum **CCDMode**: :ref:`🔗<enum_RigidBody2D_CCDMode>`
+enum **CCDMode**: :ref:`🔗 <enum_RigidBody2D_CCDMode>`
 
 .. _class_RigidBody2D_constant_CCD_MODE_DISABLED:
 
@@ -324,7 +324,7 @@ enum **CCDMode**: :ref:`🔗<enum_RigidBody2D_CCDMode>`
 
 :ref:`CCDMode<enum_RigidBody2D_CCDMode>` **CCD_MODE_DISABLED** = ``0``
 
-Continuous collision detection disabled. This is the fastest way to detect body collisions, but can miss small, fast-moving objects.
+Đã tắt continuous collision detection. Đây là cách nhanh nhất để phát hiện va chạm của body, nhưng có thể bỏ sót các đối tượng nhỏ di chuyển nhanh.
 
 .. _class_RigidBody2D_constant_CCD_MODE_CAST_RAY:
 
@@ -332,7 +332,7 @@ Continuous collision detection disabled. This is the fastest way to detect body 
 
 :ref:`CCDMode<enum_RigidBody2D_CCDMode>` **CCD_MODE_CAST_RAY** = ``1``
 
-Continuous collision detection enabled using raycasting. This is faster than shapecasting but less precise.
+Đã bật continuous collision detection bằng raycasting. Cách này nhanh hơn shapecasting nhưng kém chính xác hơn.
 
 .. _class_RigidBody2D_constant_CCD_MODE_CAST_SHAPE:
 
@@ -340,7 +340,7 @@ Continuous collision detection enabled using raycasting. This is faster than sha
 
 :ref:`CCDMode<enum_RigidBody2D_CCDMode>` **CCD_MODE_CAST_SHAPE** = ``2``
 
-Continuous collision detection enabled using shapecasting. This is the slowest CCD method and the most precise.
+Đã bật continuous collision detection bằng shapecasting. Đây là phương pháp CCD chậm nhất và chính xác nhất.
 
 .. rst-class:: classref-section-separator
 
@@ -348,8 +348,8 @@ Continuous collision detection enabled using shapecasting. This is the slowest C
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RigidBody2D_property_angular_damp:
 
@@ -362,9 +362,9 @@ Property Descriptions
 - |void| **set_angular_damp**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_angular_damp**\ (\ )
 
-Damps the body's rotation. By default, the body will use the :ref:`ProjectSettings.physics/2d/default_angular_damp<class_ProjectSettings_property_physics/2d/default_angular_damp>` setting or any value override set by an :ref:`Area2D<class_Area2D>` the body is in. Depending on :ref:`angular_damp_mode<class_RigidBody2D_property_angular_damp_mode>`, you can set :ref:`angular_damp<class_RigidBody2D_property_angular_damp>` to be added to or to replace the body's damping value.
+Làm giảm chuyển động quay của body. Theo mặc định, body sẽ sử dụng thiết lập :ref:`ProjectSettings.physics/2d/default_angular_damp <class_ProjectSettings_property_physics/2d/default_angular_damp>` hoặc bất kỳ giá trị ghi đè nào được đặt bởi một :ref:`Area2D<class_Area2D>` mà body đang ở trong đó. Tùy thuộc vào :ref:`angular_damp_mode<class_RigidBody2D_property_angular_damp_mode>`, bạn có thể đặt :ref:`angular_damp<class_RigidBody2D_property_angular_damp>` để cộng vào hoặc thay thế giá trị damping của body.
 
-See :ref:`ProjectSettings.physics/2d/default_angular_damp<class_ProjectSettings_property_physics/2d/default_angular_damp>` for more details about damping.
+Xem :ref:`ProjectSettings.physics/2d/default_angular_damp <class_ProjectSettings_property_physics/2d/default_angular_damp>` để biết thêm chi tiết về damping.
 
 .. rst-class:: classref-item-separator
 
@@ -381,7 +381,7 @@ See :ref:`ProjectSettings.physics/2d/default_angular_damp<class_ProjectSettings_
 - |void| **set_angular_damp_mode**\ (\ value\: :ref:`DampMode<enum_RigidBody2D_DampMode>`\ )
 - :ref:`DampMode<enum_RigidBody2D_DampMode>` **get_angular_damp_mode**\ (\ )
 
-Defines how :ref:`angular_damp<class_RigidBody2D_property_angular_damp>` is applied.
+Xác định cách áp dụng :ref:`angular_damp<class_RigidBody2D_property_angular_damp>`.
 
 .. rst-class:: classref-item-separator
 
@@ -398,7 +398,7 @@ Defines how :ref:`angular_damp<class_RigidBody2D_property_angular_damp>` is appl
 - |void| **set_angular_velocity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_angular_velocity**\ (\ )
 
-The body's rotational velocity in *radians* per second.
+Vận tốc quay của body tính bằng *radians* mỗi giây.
 
 .. rst-class:: classref-item-separator
 
@@ -415,7 +415,7 @@ The body's rotational velocity in *radians* per second.
 - |void| **set_can_sleep**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_able_to_sleep**\ (\ )
 
-If ``true``, the body can enter sleep mode when there is no movement. See :ref:`sleeping<class_RigidBody2D_property_sleeping>`.
+Nếu ``true``, body có thể chuyển sang chế độ ngủ khi không có chuyển động. Xem :ref:`sleeping<class_RigidBody2D_property_sleeping>`.
 
 .. rst-class:: classref-item-separator
 
@@ -432,9 +432,9 @@ If ``true``, the body can enter sleep mode when there is no movement. See :ref:`
 - |void| **set_center_of_mass**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_center_of_mass**\ (\ )
 
-The body's custom center of mass, relative to the body's origin position, when :ref:`center_of_mass_mode<class_RigidBody2D_property_center_of_mass_mode>` is set to :ref:`CENTER_OF_MASS_MODE_CUSTOM<class_RigidBody2D_constant_CENTER_OF_MASS_MODE_CUSTOM>`. This is the balanced point of the body, where applied forces only cause linear acceleration. Applying forces outside of the center of mass causes angular acceleration.
+Tâm khối lượng tùy chỉnh của body, tương đối so với vị trí origin của body, khi :ref:`center_of_mass_mode<class_RigidBody2D_property_center_of_mass_mode>` được đặt thành :ref:`CENTER_OF_MASS_MODE_CUSTOM<class_RigidBody2D_constant_CENTER_OF_MASS_MODE_CUSTOM>`. Đây là điểm cân bằng của body, tại đó các lực tác dụng chỉ gây ra gia tốc tuyến tính. Tác dụng lực bên ngoài tâm khối lượng sẽ gây ra gia tốc góc.
 
-When :ref:`center_of_mass_mode<class_RigidBody2D_property_center_of_mass_mode>` is set to :ref:`CENTER_OF_MASS_MODE_AUTO<class_RigidBody2D_constant_CENTER_OF_MASS_MODE_AUTO>` (default value), the center of mass is automatically determined, but this does not update the value of :ref:`center_of_mass<class_RigidBody2D_property_center_of_mass>`.
+Khi :ref:`center_of_mass_mode<class_RigidBody2D_property_center_of_mass_mode>` được đặt thành :ref:`CENTER_OF_MASS_MODE_AUTO<class_RigidBody2D_constant_CENTER_OF_MASS_MODE_AUTO>` (giá trị mặc định), tâm khối lượng được tự động xác định, nhưng điều này không cập nhật giá trị của :ref:`center_of_mass<class_RigidBody2D_property_center_of_mass>`.
 
 .. rst-class:: classref-item-separator
 
@@ -451,7 +451,7 @@ When :ref:`center_of_mass_mode<class_RigidBody2D_property_center_of_mass_mode>` 
 - |void| **set_center_of_mass_mode**\ (\ value\: :ref:`CenterOfMassMode<enum_RigidBody2D_CenterOfMassMode>`\ )
 - :ref:`CenterOfMassMode<enum_RigidBody2D_CenterOfMassMode>` **get_center_of_mass_mode**\ (\ )
 
-Defines the way the body's center of mass is set.
+Xác định cách thiết lập tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -468,9 +468,9 @@ Defines the way the body's center of mass is set.
 - |void| **set_constant_force**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_constant_force**\ (\ )
 
-The body's total constant positional forces applied during each physics update.
+Tổng các lực vị trí không đổi của body được áp dụng trong mỗi lần cập nhật physics.
 
-See :ref:`add_constant_force()<class_RigidBody2D_method_add_constant_force>` and :ref:`add_constant_central_force()<class_RigidBody2D_method_add_constant_central_force>`.
+Xem :ref:`add_constant_force()<class_RigidBody2D_method_add_constant_force>` và :ref:`add_constant_central_force()<class_RigidBody2D_method_add_constant_central_force>`.
 
 .. rst-class:: classref-item-separator
 
@@ -487,9 +487,9 @@ See :ref:`add_constant_force()<class_RigidBody2D_method_add_constant_force>` and
 - |void| **set_constant_torque**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_constant_torque**\ (\ )
 
-The body's total constant rotational forces applied during each physics update.
+Tổng các lực quay không đổi của body được áp dụng trong mỗi lần cập nhật physics.
 
-See :ref:`add_constant_torque()<class_RigidBody2D_method_add_constant_torque>`.
+Xem :ref:`add_constant_torque()<class_RigidBody2D_method_add_constant_torque>`.
 
 .. rst-class:: classref-item-separator
 
@@ -506,9 +506,9 @@ See :ref:`add_constant_torque()<class_RigidBody2D_method_add_constant_torque>`.
 - |void| **set_contact_monitor**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_contact_monitor_enabled**\ (\ )
 
-If ``true``, the RigidBody2D will emit signals when it collides with another body.
+Nếu ``true``, RigidBody2D sẽ phát ra các signal khi va chạm với body khác.
 
-\ **Note:** By default the maximum contacts reported is set to 0, meaning nothing will be recorded, see :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>`.
+\ **Lưu ý:** Theo mặc định, số contact tối đa được báo cáo được đặt thành 0, nghĩa là không có gì được ghi lại; xem :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -525,9 +525,9 @@ If ``true``, the RigidBody2D will emit signals when it collides with another bod
 - |void| **set_continuous_collision_detection_mode**\ (\ value\: :ref:`CCDMode<enum_RigidBody2D_CCDMode>`\ )
 - :ref:`CCDMode<enum_RigidBody2D_CCDMode>` **get_continuous_collision_detection_mode**\ (\ )
 
-Continuous collision detection mode.
+Chế độ continuous collision detection.
 
-Continuous collision detection tries to predict where a moving body will collide instead of moving it and correcting its movement after collision. Continuous collision detection is slower, but more precise and misses fewer collisions with small, fast-moving objects. Raycasting and shapecasting methods are available.
+Continuous collision detection cố gắng dự đoán vị trí body đang di chuyển sẽ va chạm thay vì di chuyển body rồi điều chỉnh chuyển động sau khi va chạm. Continuous collision detection chậm hơn nhưng chính xác hơn và bỏ sót ít va chạm hơn với các đối tượng nhỏ, di chuyển nhanh. Có các phương pháp raycasting và shapecasting.
 
 .. rst-class:: classref-item-separator
 
@@ -544,9 +544,9 @@ Continuous collision detection tries to predict where a moving body will collide
 - |void| **set_use_custom_integrator**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_custom_integrator**\ (\ )
 
-If ``true``, the standard force integration (like gravity or damping) will be disabled for this body. Other than collision response, the body will only move as determined by the :ref:`_integrate_forces()<class_RigidBody2D_private_method__integrate_forces>` method, if that virtual method is overridden.
+Nếu ``true``, việc tích hợp lực tiêu chuẩn (chẳng hạn như trọng lực hoặc damping) sẽ bị tắt đối với body này. Ngoài phản hồi va chạm, body sẽ chỉ di chuyển theo quyết định của phương thức :ref:`_integrate_forces()<class_RigidBody2D_private_method__integrate_forces>`, nếu phương thức ảo đó được override.
 
-Setting this property will call the method :ref:`PhysicsServer2D.body_set_omit_force_integration()<class_PhysicsServer2D_method_body_set_omit_force_integration>` internally.
+Thiết lập thuộc tính này sẽ gọi nội bộ phương thức :ref:`PhysicsServer2D.body_set_omit_force_integration()<class_PhysicsServer2D_method_body_set_omit_force_integration>`.
 
 .. rst-class:: classref-item-separator
 
@@ -563,11 +563,11 @@ Setting this property will call the method :ref:`PhysicsServer2D.body_set_omit_f
 - |void| **set_freeze_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_freeze_enabled**\ (\ )
 
-If ``true``, the body is frozen. Gravity and forces are not applied anymore.
+Nếu ``true``, body bị đóng băng. Trọng lực và lực sẽ không còn được áp dụng.
 
-See :ref:`freeze_mode<class_RigidBody2D_property_freeze_mode>` to set the body's behavior when frozen.
+Xem :ref:`freeze_mode<class_RigidBody2D_property_freeze_mode>` để thiết lập hành vi của body khi bị đóng băng.
 
-\ **Note:** For a body that is always frozen, use :ref:`StaticBody2D<class_StaticBody2D>` or :ref:`AnimatableBody2D<class_AnimatableBody2D>` instead.
+\ **Lưu ý:** Đối với một body luôn bị đóng băng, hãy sử dụng :ref:`StaticBody2D<class_StaticBody2D>` hoặc :ref:`AnimatableBody2D<class_AnimatableBody2D>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -584,9 +584,9 @@ See :ref:`freeze_mode<class_RigidBody2D_property_freeze_mode>` to set the body's
 - |void| **set_freeze_mode**\ (\ value\: :ref:`FreezeMode<enum_RigidBody2D_FreezeMode>`\ )
 - :ref:`FreezeMode<enum_RigidBody2D_FreezeMode>` **get_freeze_mode**\ (\ )
 
-The body's freeze mode. Determines the body's behavior when :ref:`freeze<class_RigidBody2D_property_freeze>` is ``true``.
+Chế độ đóng băng của body. Xác định hành vi của body khi :ref:`freeze<class_RigidBody2D_property_freeze>` là ``true``.
 
-\ **Note:** For a body that is always frozen, use :ref:`StaticBody2D<class_StaticBody2D>` or :ref:`AnimatableBody2D<class_AnimatableBody2D>` instead.
+\ **Lưu ý:** Đối với một body luôn bị đóng băng, hãy sử dụng :ref:`StaticBody2D<class_StaticBody2D>` hoặc :ref:`AnimatableBody2D<class_AnimatableBody2D>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -603,7 +603,7 @@ The body's freeze mode. Determines the body's behavior when :ref:`freeze<class_R
 - |void| **set_gravity_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_gravity_scale**\ (\ )
 
-Multiplies the gravity applied to the body. The body's gravity is calculated from the :ref:`ProjectSettings.physics/2d/default_gravity<class_ProjectSettings_property_physics/2d/default_gravity>` project setting and/or any additional gravity vector applied by :ref:`Area2D<class_Area2D>`\ s.
+Nhân lực hấp dẫn tác dụng lên body. Lực hấp dẫn của body được tính từ thiết lập dự án :ref:`ProjectSettings.physics/2d/default_gravity <class_ProjectSettings_property_physics/2d/default_gravity>` và/hoặc bất kỳ vector lực hấp dẫn bổ sung nào được áp dụng bởi :ref:`Area2D<class_Area2D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -620,11 +620,11 @@ Multiplies the gravity applied to the body. The body's gravity is calculated fro
 - |void| **set_inertia**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_inertia**\ (\ )
 
-The body's moment of inertia. This is like mass, but for rotation: it determines how much torque it takes to rotate the body. The moment of inertia is usually computed automatically from the mass and the shapes, but this property allows you to set a custom value.
+Mômen quán tính của body. Giá trị này tương tự khối lượng, nhưng dành cho chuyển động quay: nó xác định lượng mômen xoắn cần thiết để xoay body. Mômen quán tính thường được tự động tính toán từ khối lượng và các shape, nhưng thuộc tính này cho phép bạn đặt một giá trị tùy chỉnh.
 
-If set to ``0``, inertia is automatically computed (default value).
+Nếu được đặt thành ``0``, mômen quán tính sẽ được tự động tính toán (giá trị mặc định).
 
-\ **Note:** This value does not change when inertia is automatically computed. Use :ref:`PhysicsServer2D<class_PhysicsServer2D>` to get the computed inertia.
+\ **Lưu ý:** Giá trị này không thay đổi khi mômen quán tính được tự động tính toán. Sử dụng :ref:`PhysicsServer2D<class_PhysicsServer2D>` để lấy mômen quán tính đã tính toán.
 
 
 .. tabs::
@@ -667,9 +667,9 @@ If set to ``0``, inertia is automatically computed (default value).
 - |void| **set_linear_damp**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_linear_damp**\ (\ )
 
-Damps the body's movement. By default, the body will use the :ref:`ProjectSettings.physics/2d/default_linear_damp<class_ProjectSettings_property_physics/2d/default_linear_damp>` setting or any value override set by an :ref:`Area2D<class_Area2D>` the body is in. Depending on :ref:`linear_damp_mode<class_RigidBody2D_property_linear_damp_mode>`, you can set :ref:`linear_damp<class_RigidBody2D_property_linear_damp>` to be added to or to replace the body's damping value.
+Làm giảm chuyển động của body. Theo mặc định, body sẽ sử dụng thiết lập :ref:`ProjectSettings.physics/2d/default_linear_damp <class_ProjectSettings_property_physics/2d/default_linear_damp>` hoặc bất kỳ giá trị ghi đè nào được đặt bởi một :ref:`Area2D<class_Area2D>` mà body đang ở trong đó. Tùy thuộc vào :ref:`linear_damp_mode<class_RigidBody2D_property_linear_damp_mode>`, bạn có thể đặt :ref:`linear_damp<class_RigidBody2D_property_linear_damp>` để được cộng vào hoặc thay thế giá trị giảm chấn của body.
 
-See :ref:`ProjectSettings.physics/2d/default_linear_damp<class_ProjectSettings_property_physics/2d/default_linear_damp>` for more details about damping.
+Xem :ref:`ProjectSettings.physics/2d/default_linear_damp <class_ProjectSettings_property_physics/2d/default_linear_damp>` để biết thêm chi tiết về giảm chấn.
 
 .. rst-class:: classref-item-separator
 
@@ -686,7 +686,7 @@ See :ref:`ProjectSettings.physics/2d/default_linear_damp<class_ProjectSettings_p
 - |void| **set_linear_damp_mode**\ (\ value\: :ref:`DampMode<enum_RigidBody2D_DampMode>`\ )
 - :ref:`DampMode<enum_RigidBody2D_DampMode>` **get_linear_damp_mode**\ (\ )
 
-Defines how :ref:`linear_damp<class_RigidBody2D_property_linear_damp>` is applied.
+Xác định cách :ref:`linear_damp<class_RigidBody2D_property_linear_damp>` được áp dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -703,7 +703,7 @@ Defines how :ref:`linear_damp<class_RigidBody2D_property_linear_damp>` is applie
 - |void| **set_linear_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_linear_velocity**\ (\ )
 
-The body's linear velocity in pixels per second. Can be used sporadically, but **don't set this every frame**, because physics may run in another thread and runs at a different granularity. Use :ref:`_integrate_forces()<class_RigidBody2D_private_method__integrate_forces>` as your process loop for precise control of the body state.
+Vận tốc tuyến tính của body tính bằng pixel trên giây. Có thể được sử dụng không thường xuyên, nhưng **đừng đặt giá trị này ở mỗi frame**, vì physics có thể chạy trong một thread khác và chạy với độ chi tiết khác. Sử dụng :ref:`_integrate_forces()<class_RigidBody2D_private_method__integrate_forces>` làm vòng lặp process để kiểm soát chính xác trạng thái của body.
 
 .. rst-class:: classref-item-separator
 
@@ -720,7 +720,7 @@ The body's linear velocity in pixels per second. Can be used sporadically, but *
 - |void| **set_lock_rotation_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_lock_rotation_enabled**\ (\ )
 
-If ``true``, the body cannot rotate. Gravity and forces only apply linear movement.
+Nếu ``true``, body không thể xoay. Lực hấp dẫn và các lực chỉ tác dụng lên chuyển động tuyến tính.
 
 .. rst-class:: classref-item-separator
 
@@ -737,7 +737,7 @@ If ``true``, the body cannot rotate. Gravity and forces only apply linear moveme
 - |void| **set_mass**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mass**\ (\ )
 
-The body's mass.
+Khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -754,9 +754,9 @@ The body's mass.
 - |void| **set_max_contacts_reported**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_contacts_reported**\ (\ )
 
-The maximum number of contacts that will be recorded. Requires a value greater than 0 and :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` to be set to ``true`` to start to register contacts. Use :ref:`get_contact_count()<class_RigidBody2D_method_get_contact_count>` to retrieve the count or :ref:`get_colliding_bodies()<class_RigidBody2D_method_get_colliding_bodies>` to retrieve bodies that have been collided with.
+Số lượng contact tối đa sẽ được ghi lại. Yêu cầu giá trị lớn hơn 0 và :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` được đặt thành ``true`` để bắt đầu ghi nhận contact. Sử dụng :ref:`get_contact_count()<class_RigidBody2D_method_get_contact_count>` để lấy số lượng hoặc :ref:`get_colliding_bodies()<class_RigidBody2D_method_get_colliding_bodies>` để lấy các body đã va chạm.
 
-\ **Note:** The number of contacts is different from the number of collisions. Collisions between parallel edges will result in two contacts (one at each end), and collisions between parallel faces will result in four contacts (one at each corner).
+\ **Lưu ý:** Số lượng contact khác với số lượng va chạm. Va chạm giữa các cạnh song song sẽ tạo ra hai contact (một ở mỗi đầu), còn va chạm giữa các mặt song song sẽ tạo ra bốn contact (một ở mỗi góc).
 
 .. rst-class:: classref-item-separator
 
@@ -766,16 +766,16 @@ The maximum number of contacts that will be recorded. Requires a value greater t
 
 .. rst-class:: classref-property
 
-:ref:`PhysicsMaterial<class_PhysicsMaterial>` **physics_material_override** :ref:`🔗<class_RigidBody2D_property_physics_material_override>`
+:ref:`PhysicsMaterial<class_PhysicsMaterial>` **physics_material_override** :ref:`🔗 <class_RigidBody2D_property_physics_material_override>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_physics_material_override**\ (\ value\: :ref:`PhysicsMaterial<class_PhysicsMaterial>`\ )
 - :ref:`PhysicsMaterial<class_PhysicsMaterial>` **get_physics_material_override**\ (\ )
 
-The physics material override for the body.
+Physics material ghi đè cho body.
 
-If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.
+Nếu một material được gán cho thuộc tính này, nó sẽ được sử dụng thay cho bất kỳ physics material nào khác, chẳng hạn như material được kế thừa.
 
 .. rst-class:: classref-item-separator
 
@@ -792,7 +792,7 @@ If a material is assigned to this property, it will be used instead of any other
 - |void| **set_sleeping**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_sleeping**\ (\ )
 
-If ``true``, the body will not move and will not calculate forces until woken up by another body through, for example, a collision, or by using the :ref:`apply_impulse()<class_RigidBody2D_method_apply_impulse>` or :ref:`apply_force()<class_RigidBody2D_method_apply_force>` methods.
+Nếu ``true``, body sẽ không di chuyển và không tính toán lực cho đến khi được đánh thức bởi một body khác, chẳng hạn thông qua va chạm, hoặc bằng cách sử dụng các phương thức :ref:`apply_impulse()<class_RigidBody2D_method_apply_impulse>` hoặc :ref:`apply_force()<class_RigidBody2D_method_apply_force>`.
 
 .. rst-class:: classref-section-separator
 
@@ -800,8 +800,8 @@ If ``true``, the body will not move and will not calculate forces until woken up
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RigidBody2D_private_method__integrate_forces:
 
@@ -809,7 +809,7 @@ Method Descriptions
 
 |void| **_integrate_forces**\ (\ state\: :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>`\ ) |virtual| :ref:`🔗<class_RigidBody2D_private_method__integrate_forces>`
 
-Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but the :ref:`custom_integrator<class_RigidBody2D_property_custom_integrator>` property allows you to disable the standard force integration and do fully custom force integration for a body.
+Được gọi trong quá trình xử lý physics, cho phép bạn đọc và sửa đổi an toàn trạng thái mô phỏng của đối tượng. Theo mặc định, phương thức này được gọi trước khi tích hợp lực tiêu chuẩn, nhưng thuộc tính :ref:`custom_integrator<class_RigidBody2D_property_custom_integrator>` cho phép bạn tắt tích hợp lực tiêu chuẩn và thực hiện tích hợp lực hoàn toàn tùy chỉnh cho một body.
 
 .. rst-class:: classref-item-separator
 
@@ -821,9 +821,9 @@ Called during physics processing, allowing you to read and safely modify the sim
 
 |void| **add_constant_central_force**\ (\ force\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_RigidBody2D_method_add_constant_central_force>`
 
-Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with ``constant_force = Vector2(0, 0)``.
+Thêm một lực định hướng không ảnh hưởng đến chuyển động quay, lực này tiếp tục được áp dụng theo thời gian cho đến khi được xóa bằng ``constant_force = Vector2(0, 0)``.
 
-This is equivalent to using :ref:`add_constant_force()<class_RigidBody2D_method_add_constant_force>` at the body's center of mass.
+Điều này tương đương với việc sử dụng :ref:`add_constant_force()<class_RigidBody2D_method_add_constant_force>` tại tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -835,9 +835,9 @@ This is equivalent to using :ref:`add_constant_force()<class_RigidBody2D_method_
 
 |void| **add_constant_force**\ (\ force\: :ref:`Vector2<class_Vector2>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_RigidBody2D_method_add_constant_force>`
 
-Adds a constant positioned force to the body that keeps being applied over time until cleared with ``constant_force = Vector2(0, 0)``.
+Thêm một lực tại vị trí cố định vào body, lực này tiếp tục được áp dụng theo thời gian cho đến khi được xóa bằng ``constant_force = Vector2(0, 0)``.
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của body trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -849,7 +849,7 @@ Adds a constant positioned force to the body that keeps being applied over time 
 
 |void| **add_constant_torque**\ (\ torque\: :ref:`float<class_float>`\ ) :ref:`🔗<class_RigidBody2D_method_add_constant_torque>`
 
-Adds a constant rotational force without affecting position that keeps being applied over time until cleared with ``constant_torque = 0``.
+Thêm một lực quay cố định không ảnh hưởng đến vị trí, lực này tiếp tục được áp dụng theo thời gian cho đến khi được xóa bằng ``constant_torque = 0``.
 
 .. rst-class:: classref-item-separator
 
@@ -861,9 +861,9 @@ Adds a constant rotational force without affecting position that keeps being app
 
 |void| **apply_central_force**\ (\ force\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_RigidBody2D_method_apply_central_force>`
 
-Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực định hướng không ảnh hưởng đến chuyển động quay. Lực phụ thuộc vào thời gian và được thiết kế để áp dụng trong mỗi lần cập nhật physics.
 
-This is equivalent to using :ref:`apply_force()<class_RigidBody2D_method_apply_force>` at the body's center of mass.
+Điều này tương đương với việc sử dụng :ref:`apply_force()<class_RigidBody2D_method_apply_force>` tại tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -875,11 +875,11 @@ This is equivalent to using :ref:`apply_force()<class_RigidBody2D_method_apply_f
 
 |void| **apply_central_impulse**\ (\ impulse\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_RigidBody2D_method_apply_central_impulse>`
 
-Applies a directional impulse without affecting rotation.
+Áp dụng một xung định hướng không ảnh hưởng đến chuyển động quay.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung không phụ thuộc vào thời gian! Việc áp dụng một xung trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, chỉ nên sử dụng xung khi mô phỏng các tác động xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
-This is equivalent to using :ref:`apply_impulse()<class_RigidBody2D_method_apply_impulse>` at the body's center of mass.
+Điều này tương đương với việc sử dụng :ref:`apply_impulse()<class_RigidBody2D_method_apply_impulse>` tại tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -891,9 +891,9 @@ This is equivalent to using :ref:`apply_impulse()<class_RigidBody2D_method_apply
 
 |void| **apply_force**\ (\ force\: :ref:`Vector2<class_Vector2>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_RigidBody2D_method_apply_force>`
 
-Applies a positioned force to the body. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực tại vị trí cho body. Lực phụ thuộc vào thời gian và được thiết kế để áp dụng trong mỗi lần cập nhật physics.
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của body trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -905,11 +905,11 @@ Applies a positioned force to the body. A force is time dependent and meant to b
 
 |void| **apply_impulse**\ (\ impulse\: :ref:`Vector2<class_Vector2>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_RigidBody2D_method_apply_impulse>`
 
-Applies a positioned impulse to the body.
+Áp dụng một xung tại vị trí cho body.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung không phụ thuộc vào thời gian! Việc áp dụng một xung trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, chỉ nên sử dụng xung khi mô phỏng các tác động xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của body trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -921,9 +921,9 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 |void| **apply_torque**\ (\ torque\: :ref:`float<class_float>`\ ) :ref:`🔗<class_RigidBody2D_method_apply_torque>`
 
-Applies a rotational force without affecting position. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực quay không ảnh hưởng đến vị trí. Lực phụ thuộc vào thời gian và được thiết kế để áp dụng trong mỗi lần cập nhật physics.
 
-\ **Note:** :ref:`inertia<class_RigidBody2D_property_inertia>` is required for this to work. To have :ref:`inertia<class_RigidBody2D_property_inertia>`, an active :ref:`CollisionShape2D<class_CollisionShape2D>` must be a child of the node, or you can manually set :ref:`inertia<class_RigidBody2D_property_inertia>`.
+\ **Lưu ý:** :ref:`inertia<class_RigidBody2D_property_inertia>` là bắt buộc để tính năng này hoạt động. Để có :ref:`inertia<class_RigidBody2D_property_inertia>`, một :ref:`CollisionShape2D<class_CollisionShape2D>` đang hoạt động phải là node con của node, hoặc bạn có thể đặt :ref:`inertia<class_RigidBody2D_property_inertia>` theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -935,11 +935,11 @@ Applies a rotational force without affecting position. A force is time dependent
 
 |void| **apply_torque_impulse**\ (\ torque\: :ref:`float<class_float>`\ ) :ref:`🔗<class_RigidBody2D_method_apply_torque_impulse>`
 
-Applies a rotational impulse to the body without affecting the position.
+Áp dụng một xung quay cho body mà không ảnh hưởng đến vị trí.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung không phụ thuộc vào thời gian! Việc áp dụng một xung trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, chỉ nên sử dụng xung khi mô phỏng các tác động xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
-\ **Note:** :ref:`inertia<class_RigidBody2D_property_inertia>` is required for this to work. To have :ref:`inertia<class_RigidBody2D_property_inertia>`, an active :ref:`CollisionShape2D<class_CollisionShape2D>` must be a child of the node, or you can manually set :ref:`inertia<class_RigidBody2D_property_inertia>`.
+\ **Lưu ý:** :ref:`inertia<class_RigidBody2D_property_inertia>` là bắt buộc để tính năng này hoạt động. Để có :ref:`inertia<class_RigidBody2D_property_inertia>`, một :ref:`CollisionShape2D<class_CollisionShape2D>` đang hoạt động phải là node con của node, hoặc bạn có thể đặt :ref:`inertia<class_RigidBody2D_property_inertia>` theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -951,9 +951,9 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 :ref:`Array<class_Array>`\[:ref:`Node2D<class_Node2D>`\] **get_colliding_bodies**\ (\ ) |const| :ref:`🔗<class_RigidBody2D_method_get_colliding_bodies>`
 
-Returns a list of the bodies colliding with this one. Requires :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` to be set to ``true`` and :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` to be set high enough to detect all the collisions.
+Trả về danh sách các body đang va chạm với body này. Yêu cầu :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>` được đặt thành ``true`` và :ref:`max_contacts_reported<class_RigidBody2D_property_max_contacts_reported>` được đặt đủ cao để phát hiện tất cả va chạm.
 
-\ **Note:** The result of this test is not immediate after moving objects. For performance, list of collisions is updated once per frame and before the physics step. Consider using signals instead.
+\ **Lưu ý:** Kết quả của kiểm tra này không có ngay sau khi di chuyển các đối tượng. Để đảm bảo hiệu năng, danh sách va chạm được cập nhật một lần trong mỗi frame và trước bước physics. Hãy cân nhắc sử dụng signals thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -965,9 +965,9 @@ Returns a list of the bodies colliding with this one. Requires :ref:`contact_mon
 
 :ref:`int<class_int>` **get_contact_count**\ (\ ) |const| :ref:`🔗<class_RigidBody2D_method_get_contact_count>`
 
-Returns the number of contacts this body has with other bodies. By default, this returns 0 unless bodies are configured to monitor contacts (see :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>`).
+Trả về số lượng tiếp xúc mà body này có với các body khác. Theo mặc định, giá trị trả về là 0 trừ khi các body được cấu hình để theo dõi tiếp xúc (xem :ref:`contact_monitor<class_RigidBody2D_property_contact_monitor>`).
 
-\ **Note:** To retrieve the colliding bodies, use :ref:`get_colliding_bodies()<class_RigidBody2D_method_get_colliding_bodies>`.
+\ **Lưu ý:** Để lấy các body va chạm, hãy sử dụng :ref:`get_colliding_bodies()<class_RigidBody2D_method_get_colliding_bodies>`.
 
 .. rst-class:: classref-item-separator
 
@@ -979,14 +979,14 @@ Returns the number of contacts this body has with other bodies. By default, this
 
 |void| **set_axis_velocity**\ (\ axis_velocity\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_RigidBody2D_method_set_axis_velocity>`
 
-Sets the body's velocity on the given axis. The velocity in the given vector axis will be set as the given vector length. This is useful for jumping behavior.
+Đặt vận tốc của body trên trục đã cho. Vận tốc trên trục vector đã cho sẽ được đặt bằng độ dài của vector đã cho. Điều này hữu ích cho hành vi nhảy.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

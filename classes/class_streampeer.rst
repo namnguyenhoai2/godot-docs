@@ -10,25 +10,25 @@
 StreamPeer
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`StreamPeerBuffer<class_StreamPeerBuffer>`, :ref:`StreamPeerExtension<class_StreamPeerExtension>`, :ref:`StreamPeerGZIP<class_StreamPeerGZIP>`, :ref:`StreamPeerSocket<class_StreamPeerSocket>`, :ref:`StreamPeerTLS<class_StreamPeerTLS>`
+**Được kế thừa bởi:** :ref:`StreamPeerBuffer<class_StreamPeerBuffer>`, :ref:`StreamPeerExtension<class_StreamPeerExtension>`, :ref:`StreamPeerGZIP<class_StreamPeerGZIP>`, :ref:`StreamPeerSocket<class_StreamPeerSocket>`, :ref:`StreamPeerTLS<class_StreamPeerTLS>`
 
-Abstract base class for interacting with streams.
+Lớp cơ sở trừu tượng để tương tác với các stream.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-StreamPeer is an abstract base class mostly used for stream-based protocols (such as TCP). It provides an API for sending and receiving data through streams as raw data or strings.
+StreamPeer là một lớp cơ sở trừu tượng chủ yếu được dùng cho các giao thức dựa trên stream (chẳng hạn như TCP). Lớp này cung cấp API để gửi và nhận dữ liệu qua các stream dưới dạng dữ liệu thô hoặc chuỗi.
 
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+\ **Lưu ý:** Khi xuất sang Android, hãy đảm bảo bật quyền ``INTERNET`` trong preset xuất Android trước khi xuất project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -39,79 +39,79 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_8<class_StreamPeer_method_get_8>`\ (\ )                                                                                            |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_16<class_StreamPeer_method_get_16>`\ (\ )                                                                                          |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_32<class_StreamPeer_method_get_32>`\ (\ )                                                                                          |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_64<class_StreamPeer_method_get_64>`\ (\ )                                                                                          |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_available_bytes<class_StreamPeer_method_get_available_bytes>`\ (\ ) |const|                                                        |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`             | :ref:`get_data<class_StreamPeer_method_get_data>`\ (\ bytes\: :ref:`int<class_int>`\ )                                                       |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`             | :ref:`get_double<class_StreamPeer_method_get_double>`\ (\ )                                                                                  |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`             | :ref:`get_float<class_StreamPeer_method_get_float>`\ (\ )                                                                                    |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`             | :ref:`get_half<class_StreamPeer_method_get_half>`\ (\ )                                                                                      |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`             | :ref:`get_partial_data<class_StreamPeer_method_get_partial_data>`\ (\ bytes\: :ref:`int<class_int>`\ )                                       |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_string<class_StreamPeer_method_get_string>`\ (\ bytes\: :ref:`int<class_int>` = -1\ )                                              |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_u8<class_StreamPeer_method_get_u8>`\ (\ )                                                                                          |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_u16<class_StreamPeer_method_get_u16>`\ (\ )                                                                                        |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_u32<class_StreamPeer_method_get_u32>`\ (\ )                                                                                        |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_u64<class_StreamPeer_method_get_u64>`\ (\ )                                                                                        |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_utf8_string<class_StreamPeer_method_get_utf8_string>`\ (\ bytes\: :ref:`int<class_int>` = -1\ )                                    |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`         | :ref:`get_var<class_StreamPeer_method_get_var>`\ (\ allow_objects\: :ref:`bool<class_bool>` = false\ )                                       |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_8<class_StreamPeer_method_put_8>`\ (\ value\: :ref:`int<class_int>`\ )                                                             |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_16<class_StreamPeer_method_put_16>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_32<class_StreamPeer_method_put_32>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_64<class_StreamPeer_method_put_64>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`put_data<class_StreamPeer_method_put_data>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_double<class_StreamPeer_method_put_double>`\ (\ value\: :ref:`float<class_float>`\ )                                               |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_float<class_StreamPeer_method_put_float>`\ (\ value\: :ref:`float<class_float>`\ )                                                 |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_half<class_StreamPeer_method_put_half>`\ (\ value\: :ref:`float<class_float>`\ )                                                   |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`             | :ref:`put_partial_data<class_StreamPeer_method_put_partial_data>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_string<class_StreamPeer_method_put_string>`\ (\ value\: :ref:`String<class_String>`\ )                                             |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_u8<class_StreamPeer_method_put_u8>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_u16<class_StreamPeer_method_put_u16>`\ (\ value\: :ref:`int<class_int>`\ )                                                         |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_u32<class_StreamPeer_method_put_u32>`\ (\ value\: :ref:`int<class_int>`\ )                                                         |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_u64<class_StreamPeer_method_put_u64>`\ (\ value\: :ref:`int<class_int>`\ )                                                         |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_utf8_string<class_StreamPeer_method_put_utf8_string>`\ (\ value\: :ref:`String<class_String>`\ )                                   |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`put_var<class_StreamPeer_method_put_var>`\ (\ value\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_8<class_StreamPeer_method_get_8>`\ (\ )                                                                                            |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_16<class_StreamPeer_method_get_16>`\ (\ )                                                                                          |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_32<class_StreamPeer_method_get_32>`\ (\ )                                                                                          |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_64<class_StreamPeer_method_get_64>`\ (\ )                                                                                          |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_available_bytes<class_StreamPeer_method_get_available_bytes>`\ (\ ) |const|                                                        |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`            | :ref:`get_data<class_StreamPeer_method_get_data>`\ (\ bytes\: :ref:`int<class_int>`\ )                                                       |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`            | :ref:`get_double<class_StreamPeer_method_get_double>`\ (\ )                                                                                  |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`            | :ref:`get_float<class_StreamPeer_method_get_float>`\ (\ )                                                                                    |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`            | :ref:`get_half<class_StreamPeer_method_get_half>`\ (\ )                                                                                      |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`            | :ref:`get_partial_data<class_StreamPeer_method_get_partial_data>`\ (\ bytes\: :ref:`int<class_int>`\ )                                       |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`          | :ref:`get_string<class_StreamPeer_method_get_string>`\ (\ bytes\: :ref:`int<class_int>` = -1\ )                                              |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_u8<class_StreamPeer_method_get_u8>`\ (\ )                                                                                          |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_u16<class_StreamPeer_method_get_u16>`\ (\ )                                                                                        |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_u32<class_StreamPeer_method_get_u32>`\ (\ )                                                                                        |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                | :ref:`get_u64<class_StreamPeer_method_get_u64>`\ (\ )                                                                                        |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`          | :ref:`get_utf8_string<class_StreamPeer_method_get_utf8_string>`\ (\ bytes\: :ref:`int<class_int>` = -1\ )                                    |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`        | :ref:`get_var<class_StreamPeer_method_get_var>`\ (\ allow_objects\: :ref:`bool<class_bool>` = false\ )                                       |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_8<class_StreamPeer_method_put_8>`\ (\ value\: :ref:`int<class_int>`\ )                                                             |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_16<class_StreamPeer_method_put_16>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_32<class_StreamPeer_method_put_32>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_64<class_StreamPeer_method_put_64>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>` | :ref:`put_data<class_StreamPeer_method_put_data>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_double<class_StreamPeer_method_put_double>`\ (\ value\: :ref:`float<class_float>`\ )                                               |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_float<class_StreamPeer_method_put_float>`\ (\ value\: :ref:`float<class_float>`\ )                                                 |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_half<class_StreamPeer_method_put_half>`\ (\ value\: :ref:`float<class_float>`\ )                                                   |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`            | :ref:`put_partial_data<class_StreamPeer_method_put_partial_data>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_string<class_StreamPeer_method_put_string>`\ (\ value\: :ref:`String<class_String>`\ )                                             |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_u8<class_StreamPeer_method_put_u8>`\ (\ value\: :ref:`int<class_int>`\ )                                                           |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_u16<class_StreamPeer_method_put_u16>`\ (\ value\: :ref:`int<class_int>`\ )                                                         |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_u32<class_StreamPeer_method_put_u32>`\ (\ value\: :ref:`int<class_int>`\ )                                                         |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_u64<class_StreamPeer_method_put_u64>`\ (\ value\: :ref:`int<class_int>`\ )                                                         |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_utf8_string<class_StreamPeer_method_put_utf8_string>`\ (\ value\: :ref:`String<class_String>`\ )                                   |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`put_var<class_StreamPeer_method_put_var>`\ (\ value\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -119,8 +119,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StreamPeer_property_big_endian:
 
@@ -133,7 +133,7 @@ Property Descriptions
 - |void| **set_big_endian**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_big_endian_enabled**\ (\ )
 
-If ``true``, this **StreamPeer** will using big-endian format for encoding and decoding.
+Nếu ``true``, **StreamPeer** này sẽ sử dụng định dạng big-endian để mã hóa và giải mã.
 
 .. rst-class:: classref-section-separator
 
@@ -141,8 +141,8 @@ If ``true``, this **StreamPeer** will using big-endian format for encoding and d
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StreamPeer_method_get_8:
 
@@ -150,7 +150,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_8**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_8>`
 
-Gets a signed byte from the stream.
+Lấy một byte có dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Gets a signed byte from the stream.
 
 :ref:`int<class_int>` **get_16**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_16>`
 
-Gets a signed 16-bit value from the stream.
+Lấy một giá trị 16 bit có dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ Gets a signed 16-bit value from the stream.
 
 :ref:`int<class_int>` **get_32**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_32>`
 
-Gets a signed 32-bit value from the stream.
+Lấy một giá trị 32 bit có dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ Gets a signed 32-bit value from the stream.
 
 :ref:`int<class_int>` **get_64**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_64>`
 
-Gets a signed 64-bit value from the stream.
+Lấy một giá trị 64 bit có dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Gets a signed 64-bit value from the stream.
 
 :ref:`int<class_int>` **get_available_bytes**\ (\ ) |const| :ref:`🔗<class_StreamPeer_method_get_available_bytes>`
 
-Returns the number of bytes this **StreamPeer** has available.
+Trả về số byte mà **StreamPeer** hiện có sẵn.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Returns the number of bytes this **StreamPeer** has available.
 
 :ref:`Array<class_Array>` **get_data**\ (\ bytes\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_get_data>`
 
-Returns a chunk data with the received bytes, as an :ref:`Array<class_Array>` containing two elements: an :ref:`Error<enum_@GlobalScope_Error>` constant and a :ref:`PackedByteArray<class_PackedByteArray>`. ``bytes`` is the number of bytes to be received. If not enough bytes are available, the function will block until the desired amount is received.
+Trả về một đoạn dữ liệu chứa các byte đã nhận, dưới dạng một :ref:`Array<class_Array>` gồm hai phần tử: một hằng số :ref:`Error <enum_@GlobalScope_Error>` và một :ref:`PackedByteArray<class_PackedByteArray>`. ``bytes`` là số byte cần nhận. Nếu không có đủ byte, hàm sẽ chặn cho đến khi nhận đủ số lượng mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ Returns a chunk data with the received bytes, as an :ref:`Array<class_Array>` co
 
 :ref:`float<class_float>` **get_double**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_double>`
 
-Gets a double-precision float from the stream.
+Lấy một số thực độ chính xác kép từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -234,7 +234,7 @@ Gets a double-precision float from the stream.
 
 :ref:`float<class_float>` **get_float**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_float>`
 
-Gets a single-precision float from the stream.
+Lấy một số thực độ chính xác đơn từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ Gets a single-precision float from the stream.
 
 :ref:`float<class_float>` **get_half**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_half>`
 
-Gets a half-precision float from the stream.
+Lấy một số thực độ chính xác nửa từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -258,7 +258,7 @@ Gets a half-precision float from the stream.
 
 :ref:`Array<class_Array>` **get_partial_data**\ (\ bytes\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_get_partial_data>`
 
-Returns a chunk data with the received bytes, as an :ref:`Array<class_Array>` containing two elements: an :ref:`Error<enum_@GlobalScope_Error>` constant and a :ref:`PackedByteArray<class_PackedByteArray>`. ``bytes`` is the number of bytes to be received. If not enough bytes are available, the function will return how many were actually received.
+Trả về một đoạn dữ liệu chứa các byte đã nhận, dưới dạng một :ref:`Array<class_Array>` gồm hai phần tử: một hằng số :ref:`Error <enum_@GlobalScope_Error>` và một :ref:`PackedByteArray<class_PackedByteArray>`. ``bytes`` là số byte cần nhận. Nếu không có đủ byte, hàm sẽ trả về số byte thực tế đã nhận.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ Returns a chunk data with the received bytes, as an :ref:`Array<class_Array>` co
 
 :ref:`String<class_String>` **get_string**\ (\ bytes\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_StreamPeer_method_get_string>`
 
-Gets an ASCII string with byte-length ``bytes`` from the stream. If ``bytes`` is negative (default) the length will be read from the stream using the reverse process of :ref:`put_string()<class_StreamPeer_method_put_string>`.
+Lấy một chuỗi ASCII có độ dài byte ``bytes`` từ stream. Nếu ``bytes`` là số âm (mặc định), độ dài sẽ được đọc từ stream bằng quy trình ngược với :ref:`put_string()<class_StreamPeer_method_put_string>`.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Gets an ASCII string with byte-length ``bytes`` from the stream. If ``bytes`` is
 
 :ref:`int<class_int>` **get_u8**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_u8>`
 
-Gets an unsigned byte from the stream.
+Lấy một byte không dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -294,7 +294,7 @@ Gets an unsigned byte from the stream.
 
 :ref:`int<class_int>` **get_u16**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_u16>`
 
-Gets an unsigned 16-bit value from the stream.
+Lấy một giá trị 16 bit không dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -306,7 +306,7 @@ Gets an unsigned 16-bit value from the stream.
 
 :ref:`int<class_int>` **get_u32**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_u32>`
 
-Gets an unsigned 32-bit value from the stream.
+Lấy một giá trị 32 bit không dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -318,7 +318,7 @@ Gets an unsigned 32-bit value from the stream.
 
 :ref:`int<class_int>` **get_u64**\ (\ ) :ref:`🔗<class_StreamPeer_method_get_u64>`
 
-Gets an unsigned 64-bit value from the stream.
+Lấy một giá trị 64 bit không dấu từ stream.
 
 .. rst-class:: classref-item-separator
 
@@ -330,7 +330,7 @@ Gets an unsigned 64-bit value from the stream.
 
 :ref:`String<class_String>` **get_utf8_string**\ (\ bytes\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_StreamPeer_method_get_utf8_string>`
 
-Gets a UTF-8 string with byte-length ``bytes`` from the stream (this decodes the string sent as UTF-8). If ``bytes`` is negative (default) the length will be read from the stream using the reverse process of :ref:`put_utf8_string()<class_StreamPeer_method_put_utf8_string>`.
+Lấy một chuỗi UTF-8 có độ dài theo byte là ``bytes`` từ stream (thao tác này giải mã chuỗi được gửi dưới dạng UTF-8). Nếu ``bytes`` là số âm (mặc định), độ dài sẽ được đọc từ stream bằng quy trình ngược của :ref:`put_utf8_string()<class_StreamPeer_method_put_utf8_string>`.
 
 .. rst-class:: classref-item-separator
 
@@ -342,11 +342,11 @@ Gets a UTF-8 string with byte-length ``bytes`` from the stream (this decodes the
 
 :ref:`Variant<class_Variant>` **get_var**\ (\ allow_objects\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_StreamPeer_method_get_var>`
 
-Gets a Variant from the stream. If ``allow_objects`` is ``true``, decoding objects is allowed.
+Lấy một Variant từ stream. Nếu ``allow_objects`` là ``true``, việc giải mã các object được cho phép.
 
-Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.bytes_to_var()<class_@GlobalScope_method_bytes_to_var>` method.
+Về mặt nội bộ, thao tác này sử dụng cùng cơ chế giải mã như phương thức :ref:`@GlobalScope.bytes_to_var() <class_@GlobalScope_method_bytes_to_var>`.
 
-\ **Warning:** Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats such as remote code execution.
+\ **Cảnh báo:** Các object được deserialize có thể chứa code được thực thi. Không sử dụng tùy chọn này nếu object được serialize đến từ các nguồn không đáng tin cậy để tránh những mối đe dọa bảo mật tiềm ẩn như thực thi code từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -358,7 +358,7 @@ Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.byte
 
 |void| **put_8**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_8>`
 
-Puts a signed byte into the stream.
+Đưa một byte có dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +370,7 @@ Puts a signed byte into the stream.
 
 |void| **put_16**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_16>`
 
-Puts a signed 16-bit value into the stream.
+Đưa một giá trị 16 bit có dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -382,7 +382,7 @@ Puts a signed 16-bit value into the stream.
 
 |void| **put_32**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_32>`
 
-Puts a signed 32-bit value into the stream.
+Đưa một giá trị 32 bit có dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -394,7 +394,7 @@ Puts a signed 32-bit value into the stream.
 
 |void| **put_64**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_64>`
 
-Puts a signed 64-bit value into the stream.
+Đưa một giá trị 64 bit có dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -406,7 +406,7 @@ Puts a signed 64-bit value into the stream.
 
 :ref:`Error<enum_@GlobalScope_Error>` **put_data**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_StreamPeer_method_put_data>`
 
-Sends a chunk of data through the connection, blocking if necessary until the data is done sending. This function returns an :ref:`Error<enum_@GlobalScope_Error>` code.
+Gửi một khối dữ liệu qua connection, chặn nếu cần cho đến khi dữ liệu được gửi xong. Hàm này trả về một mã :ref:`Error <enum_@GlobalScope_Error>`.
 
 .. rst-class:: classref-item-separator
 
@@ -418,7 +418,7 @@ Sends a chunk of data through the connection, blocking if necessary until the da
 
 |void| **put_double**\ (\ value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_StreamPeer_method_put_double>`
 
-Puts a double-precision float into the stream.
+Đưa một số thực độ chính xác kép vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -430,7 +430,7 @@ Puts a double-precision float into the stream.
 
 |void| **put_float**\ (\ value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_StreamPeer_method_put_float>`
 
-Puts a single-precision float into the stream.
+Đưa một số thực độ chính xác đơn vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -442,7 +442,7 @@ Puts a single-precision float into the stream.
 
 |void| **put_half**\ (\ value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_StreamPeer_method_put_half>`
 
-Puts a half-precision float into the stream.
+Đưa một số thực độ chính xác nửa vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -454,7 +454,7 @@ Puts a half-precision float into the stream.
 
 :ref:`Array<class_Array>` **put_partial_data**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_StreamPeer_method_put_partial_data>`
 
-Sends a chunk of data through the connection. If all the data could not be sent at once, only part of it will. This function returns two values, an :ref:`Error<enum_@GlobalScope_Error>` code and an integer, describing how much data was actually sent.
+Gửi một khối dữ liệu qua connection. Nếu không thể gửi toàn bộ dữ liệu trong một lần, chỉ một phần dữ liệu sẽ được gửi. Hàm này trả về hai giá trị: một mã :ref:`Error <enum_@GlobalScope_Error>` và một số nguyên cho biết lượng dữ liệu thực tế đã được gửi.
 
 .. rst-class:: classref-item-separator
 
@@ -466,9 +466,9 @@ Sends a chunk of data through the connection. If all the data could not be sent 
 
 |void| **put_string**\ (\ value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StreamPeer_method_put_string>`
 
-Puts a zero-terminated ASCII string into the stream prepended by a 32-bit unsigned integer representing its size.
+Đưa một chuỗi ASCII kết thúc bằng số 0 vào stream, đứng trước là một số nguyên 32 bit không dấu biểu thị kích thước của chuỗi.
 
-\ **Note:** To put an ASCII string without prepending its size, you can use :ref:`put_data()<class_StreamPeer_method_put_data>`:
+\ **Lưu ý:** Để đưa một chuỗi ASCII vào stream mà không thêm kích thước ở đầu, bạn có thể sử dụng :ref:`put_data()<class_StreamPeer_method_put_data>`:
 
 
 .. tabs::
@@ -493,7 +493,7 @@ Puts a zero-terminated ASCII string into the stream prepended by a 32-bit unsign
 
 |void| **put_u8**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_u8>`
 
-Puts an unsigned byte into the stream.
+Đưa một byte không dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Puts an unsigned byte into the stream.
 
 |void| **put_u16**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_u16>`
 
-Puts an unsigned 16-bit value into the stream.
+Đưa một giá trị 16 bit không dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -517,7 +517,7 @@ Puts an unsigned 16-bit value into the stream.
 
 |void| **put_u32**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_u32>`
 
-Puts an unsigned 32-bit value into the stream.
+Đưa một giá trị 32 bit không dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -529,7 +529,7 @@ Puts an unsigned 32-bit value into the stream.
 
 |void| **put_u64**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_StreamPeer_method_put_u64>`
 
-Puts an unsigned 64-bit value into the stream.
+Đưa một giá trị 64 bit không dấu vào stream.
 
 .. rst-class:: classref-item-separator
 
@@ -541,9 +541,9 @@ Puts an unsigned 64-bit value into the stream.
 
 |void| **put_utf8_string**\ (\ value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_StreamPeer_method_put_utf8_string>`
 
-Puts a zero-terminated UTF-8 string into the stream prepended by a 32 bits unsigned integer representing its size.
+Đưa một chuỗi UTF-8 kết thúc bằng số 0 vào stream, đứng trước là một số nguyên 32 bit không dấu biểu thị kích thước của chuỗi.
 
-\ **Note:** To put a UTF-8 string without prepending its size, you can use :ref:`put_data()<class_StreamPeer_method_put_data>`:
+\ **Lưu ý:** Để đưa một chuỗi UTF-8 vào stream mà không thêm kích thước ở đầu, bạn có thể sử dụng :ref:`put_data()<class_StreamPeer_method_put_data>`:
 
 
 .. tabs::
@@ -568,16 +568,16 @@ Puts a zero-terminated UTF-8 string into the stream prepended by a 32 bits unsig
 
 |void| **put_var**\ (\ value\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_StreamPeer_method_put_var>`
 
-Puts a Variant into the stream. If ``full_objects`` is ``true`` encoding objects is allowed (and can potentially include code).
+Đưa một Variant vào stream. Nếu ``full_objects`` là ``true``, việc mã hóa các object được cho phép (và có thể bao gồm code).
 
-Internally, this uses the same encoding mechanism as the :ref:`@GlobalScope.var_to_bytes()<class_@GlobalScope_method_var_to_bytes>` method.
+Về mặt nội bộ, thao tác này sử dụng cùng cơ chế mã hóa như phương thức :ref:`@GlobalScope.var_to_bytes() <class_@GlobalScope_method_var_to_bytes>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng override để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

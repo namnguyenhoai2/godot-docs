@@ -10,61 +10,61 @@
 AnimationTree
 =============
 
-**Inherits:** :ref:`AnimationMixer<class_AnimationMixer>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationMixer<class_AnimationMixer>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node used for advanced animation transitions in an :ref:`AnimationPlayer<class_AnimationPlayer>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A node used for advanced animation transitions in an :ref:`AnimationPlayer<class_AnimationPlayer>`.
-
-\ **Note:** When linked with an :ref:`AnimationPlayer<class_AnimationPlayer>`, several properties and methods of the corresponding :ref:`AnimationPlayer<class_AnimationPlayer>` will not function as expected. Playback and transitions should be handled using only the **AnimationTree** and its constituent :ref:`AnimationNode<class_AnimationNode>`\ (s). The :ref:`AnimationPlayer<class_AnimationPlayer>` node should be used solely for adding, deleting, and editing animations.
+Một node được sử dụng cho các chuyển tiếp animation nâng cao trong một :ref:`AnimationPlayer<class_AnimationPlayer>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một node được sử dụng cho các chuyển tiếp animation nâng cao trong một :ref:`AnimationPlayer<class_AnimationPlayer>`.
+
+\ **Lưu ý:** Khi được liên kết với một :ref:`AnimationPlayer<class_AnimationPlayer>`, một số thuộc tính và phương thức của :ref:`AnimationPlayer<class_AnimationPlayer>` tương ứng sẽ không hoạt động như mong đợi. Chỉ nên xử lý việc phát và chuyển tiếp bằng **AnimationTree** và các :ref:`AnimationNode<class_AnimationNode>`\ (s) cấu thành nó. Chỉ nên sử dụng node :ref:`AnimationPlayer<class_AnimationPlayer>` để thêm, xóa và chỉnh sửa animation.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo Third Person Shooter (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                                         | :ref:`advance_expression_base_node<class_AnimationTree_property_advance_expression_base_node>` | ``NodePath(".")``                                                                             |
-   +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                                         | :ref:`anim_player<class_AnimationTree_property_anim_player>`                                   | ``NodePath("")``                                                                              |
-   +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
-   | :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>` | callback_mode_discrete                                                                         | ``2`` (overrides :ref:`AnimationMixer<class_AnimationMixer_property_callback_mode_discrete>`) |
-   +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                                 | deterministic                                                                                  | ``true`` (overrides :ref:`AnimationMixer<class_AnimationMixer_property_deterministic>`)       |
-   +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
-   | :ref:`AnimationRootNode<class_AnimationRootNode>`                                       | :ref:`tree_root<class_AnimationTree_property_tree_root>`                                       |                                                                                               |
-   +-----------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+   +------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                                          | :ref:`advance_expression_base_node<class_AnimationTree_property_advance_expression_base_node>` | ``NodePath(".")``                                                                              |
+   +------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                                          | :ref:`anim_player<class_AnimationTree_property_anim_player>`                                   | ``NodePath("")``                                                                               |
+   +------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+   | :ref:`AnimationCallbackModeDiscrete <enum_AnimationMixer_AnimationCallbackModeDiscrete>` | callback_mode_discrete                                                                         | ``2`` (ghi đè lên :ref:`AnimationMixer<class_AnimationMixer_property_callback_mode_discrete>`) |
+   +------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                                  | deterministic                                                                                  | ``true`` (ghi đè lên :ref:`AnimationMixer<class_AnimationMixer_property_deterministic>`)       |
+   +------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+   | :ref:`AnimationRootNode<class_AnimationRootNode>`                                        | :ref:`tree_root<class_AnimationTree_property_tree_root>`                                       |                                                                                                |
+   +------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` | :ref:`get_process_callback<class_AnimationTree_method_get_process_callback>`\ (\ ) |const|                                                                              |
-   +------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                       | :ref:`set_process_callback<class_AnimationTree_method_set_process_callback>`\ (\ mode\: :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>`\ ) |
-   +------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AnimationProcessCallback <enum_AnimationTree_AnimationProcessCallback>` | :ref:`get_process_callback<class_AnimationTree_method_get_process_callback>`\ (\ ) |const|                                                                               |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                        | :ref:`set_process_callback<class_AnimationTree_method_set_process_callback>`\ (\ mode\: :ref:`AnimationProcessCallback <enum_AnimationTree_AnimationProcessCallback>`\ ) |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -72,8 +72,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_AnimationTree_signal_animation_player_changed:
 
@@ -81,7 +81,7 @@ Signals
 
 **animation_player_changed**\ (\ ) :ref:`🔗<class_AnimationTree_signal_animation_player_changed>`
 
-Emitted when the :ref:`anim_player<class_AnimationTree_property_anim_player>` is changed.
+Được phát ra khi :ref:`anim_player<class_AnimationTree_property_anim_player>` được thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -89,14 +89,14 @@ Emitted when the :ref:`anim_player<class_AnimationTree_property_anim_player>` is
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AnimationTree_AnimationProcessCallback:
 
 .. rst-class:: classref-enumeration
 
-enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProcessCallback>`
+enum **AnimationProcessCallback**: :ref:`🔗 <enum_AnimationTree_AnimationProcessCallback>`
 
 .. _class_AnimationTree_constant_ANIMATION_PROCESS_PHYSICS:
 
@@ -104,7 +104,7 @@ enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProces
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **ANIMATION_PROCESS_PHYSICS** = ``0``
 
-**Deprecated:** See :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`.
+**Không còn được dùng:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`.
 
 
 
@@ -114,7 +114,7 @@ enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProces
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **ANIMATION_PROCESS_IDLE** = ``1``
 
-**Deprecated:** See :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_IDLE<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_IDLE>`.
+**Không còn được dùng:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_IDLE<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_IDLE>`.
 
 
 
@@ -124,7 +124,7 @@ enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProces
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **ANIMATION_PROCESS_MANUAL** = ``2``
 
-**Deprecated:** See :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL>`.
+**Không còn được dùng:** Xem :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL>`.
 
 
 
@@ -134,8 +134,8 @@ enum **AnimationProcessCallback**: :ref:`🔗<enum_AnimationTree_AnimationProces
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationTree_property_advance_expression_base_node:
 
@@ -148,7 +148,7 @@ Property Descriptions
 - |void| **set_advance_expression_base_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_advance_expression_base_node**\ (\ )
 
-The path to the :ref:`Node<class_Node>` used to evaluate the :ref:`AnimationNode<class_AnimationNode>` :ref:`Expression<class_Expression>` if one is not explicitly specified internally.
+Đường dẫn đến :ref:`Node<class_Node>` được sử dụng để đánh giá :ref:`AnimationNode<class_AnimationNode>` :ref:`Expression<class_Expression>` nếu không được chỉ định rõ ràng trong nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ The path to the :ref:`Node<class_Node>` used to evaluate the :ref:`AnimationNode
 - |void| **set_animation_player**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_animation_player**\ (\ )
 
-The path to the :ref:`AnimationPlayer<class_AnimationPlayer>` used for animating.
+Đường dẫn đến :ref:`AnimationPlayer<class_AnimationPlayer>` được sử dụng để tạo hoạt ảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -175,14 +175,14 @@ The path to the :ref:`AnimationPlayer<class_AnimationPlayer>` used for animating
 
 .. rst-class:: classref-property
 
-:ref:`AnimationRootNode<class_AnimationRootNode>` **tree_root** :ref:`🔗<class_AnimationTree_property_tree_root>`
+:ref:`AnimationRootNode<class_AnimationRootNode>` **tree_root** :ref:`🔗 <class_AnimationTree_property_tree_root>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_tree_root**\ (\ value\: :ref:`AnimationRootNode<class_AnimationRootNode>`\ )
 - :ref:`AnimationRootNode<class_AnimationRootNode>` **get_tree_root**\ (\ )
 
-The root animation node of this **AnimationTree**. See :ref:`AnimationRootNode<class_AnimationRootNode>`.
+Nút animation gốc của **AnimationTree** này. Xem :ref:`AnimationRootNode<class_AnimationRootNode>`.
 
 .. rst-class:: classref-section-separator
 
@@ -190,8 +190,8 @@ The root animation node of this **AnimationTree**. See :ref:`AnimationRootNode<c
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationTree_method_get_process_callback:
 
@@ -199,9 +199,9 @@ Method Descriptions
 
 :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>` **get_process_callback**\ (\ ) |const| :ref:`🔗<class_AnimationTree_method_get_process_callback>`
 
-**Deprecated:** Use :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` instead.
+**Không dùng nữa:** Thay vào đó, hãy sử dụng :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>`.
 
-Returns the process notification in which to update animations.
+Trả về thông báo xử lý dùng để cập nhật các animation.
 
 .. rst-class:: classref-item-separator
 
@@ -213,16 +213,16 @@ Returns the process notification in which to update animations.
 
 |void| **set_process_callback**\ (\ mode\: :ref:`AnimationProcessCallback<enum_AnimationTree_AnimationProcessCallback>`\ ) :ref:`🔗<class_AnimationTree_method_set_process_callback>`
 
-**Deprecated:** Use :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` instead.
+**Không dùng nữa:** Thay vào đó, hãy sử dụng :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>`.
 
-Sets the process notification in which to update animations.
+Thiết lập thông báo xử lý dùng để cập nhật các animation.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

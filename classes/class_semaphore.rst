@@ -10,38 +10,38 @@
 Semaphore
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A synchronization mechanism used to control access to a shared resource by :ref:`Thread<class_Thread>`\ s.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A synchronization semaphore that can be used to synchronize multiple :ref:`Thread<class_Thread>`\ s. Initialized to zero on creation. For a binary version, see :ref:`Mutex<class_Mutex>`.
-
-\ **Warning:** Semaphores must be used carefully to avoid deadlocks.
-
-\ **Warning:** To guarantee that the operating system is able to perform proper cleanup (no crashes, no deadlocks), these conditions must be met:
-
-- When a **Semaphore**'s reference count reaches zero and it is therefore destroyed, no threads must be waiting on it.
-
-- When a :ref:`Thread<class_Thread>`'s reference count reaches zero and it is therefore destroyed, it must not be waiting on any semaphore.
+Cơ chế đồng bộ hóa được dùng để kiểm soát quyền truy cập vào tài nguyên dùng chung bởi các :ref:`Thread<class_Thread>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Semaphore đồng bộ hóa có thể được dùng để đồng bộ hóa nhiều :ref:`Thread<class_Thread>`\ . Được khởi tạo bằng 0 khi tạo. Để xem phiên bản nhị phân, hãy xem :ref:`Mutex<class_Mutex>`.
+
+\ **Cảnh báo:** Phải sử dụng semaphore cẩn thận để tránh deadlock.
+
+\ **Cảnh báo:** Để đảm bảo hệ điều hành có thể thực hiện việc dọn dẹp đúng cách (không bị crash, không bị deadlock), phải đáp ứng các điều kiện sau:
+
+- Khi số lượng tham chiếu của một **Semaphore** về 0 và do đó nó bị hủy, không luồng nào được chờ trên nó.
+
+- Khi số lượng tham chiếu của một :ref:`Thread<class_Thread>` về 0 và do đó nó bị hủy, nó không được chờ trên bất kỳ semaphore nào.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using multiple threads <../tutorials/performance/using_multiple_threads>`
+- :doc:`Sử dụng nhiều luồng <../tutorials/performance/using_multiple_threads>`
 
-- :doc:`Thread-safe APIs <../tutorials/performance/thread_safe_apis>`
+- :doc:`API an toàn với luồng <../tutorials/performance/thread_safe_apis>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -60,8 +60,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Semaphore_method_post:
 
@@ -69,7 +69,7 @@ Method Descriptions
 
 |void| **post**\ (\ count\: :ref:`int<class_int>` = 1\ ) :ref:`🔗<class_Semaphore_method_post>`
 
-Lowers the **Semaphore**, allowing one thread in, or more if ``count`` is specified.
+Giảm **Semaphore**, cho phép một luồng đi vào, hoặc nhiều luồng hơn nếu chỉ định ``count``.
 
 .. rst-class:: classref-item-separator
 
@@ -81,7 +81,7 @@ Lowers the **Semaphore**, allowing one thread in, or more if ``count`` is specif
 
 :ref:`bool<class_bool>` **try_wait**\ (\ ) :ref:`🔗<class_Semaphore_method_try_wait>`
 
-Like :ref:`wait()<class_Semaphore_method_wait>`, but won't block, so if the value is zero, fails immediately and returns ``false``. If non-zero, it returns ``true`` to report success.
+Tương tự :ref:`wait()<class_Semaphore_method_wait>`, nhưng sẽ không block, vì vậy nếu giá trị bằng 0 thì phương thức thất bại ngay lập tức và trả về ``false``. Nếu khác 0, phương thức trả về ``true`` để báo hiệu thành công.
 
 .. rst-class:: classref-item-separator
 
@@ -93,14 +93,14 @@ Like :ref:`wait()<class_Semaphore_method_wait>`, but won't block, so if the valu
 
 |void| **wait**\ (\ ) :ref:`🔗<class_Semaphore_method_wait>`
 
-Waits for the **Semaphore**, if its value is zero, blocks until non-zero.
+Chờ **Semaphore**; nếu giá trị của nó bằng 0 thì block cho đến khi khác 0.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để dùng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,16 +10,16 @@
 ImageTexture
 ============
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A :ref:`Texture2D<class_Texture2D>` based on an :ref:`Image<class_Image>`.
+Một :ref:`Texture2D<class_Texture2D>` dựa trên một :ref:`Image<class_Image>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A :ref:`Texture2D<class_Texture2D>` based on an :ref:`Image<class_Image>`. For an image to be displayed, an **ImageTexture** has to be created from it using the :ref:`create_from_image()<class_ImageTexture_method_create_from_image>` method:
+Một :ref:`Texture2D<class_Texture2D>` dựa trên một :ref:`Image<class_Image>`. Để hiển thị hình ảnh, cần tạo một **ImageTexture** từ hình ảnh đó bằng phương thức :ref:`create_from_image()<class_ImageTexture_method_create_from_image>`:
 
 ::
 
@@ -27,51 +27,51 @@ A :ref:`Texture2D<class_Texture2D>` based on an :ref:`Image<class_Image>`. For a
     var texture = ImageTexture.create_from_image(image)
     $Sprite2D.texture = texture
 
-This way, textures can be created at run-time by loading images both from within the editor and externally.
+Bằng cách này, có thể tạo texture trong thời gian chạy bằng cách tải hình ảnh từ cả trong editor lẫn bên ngoài.
 
-\ **Warning:** Prefer to load imported textures with :ref:`@GDScript.load()<class_@GDScript_method_load>` over loading them from within the filesystem dynamically with :ref:`Image.load()<class_Image_method_load>`, as it may not work in exported projects:
+\ **Cảnh báo:** Nên tải các texture đã import bằng :ref:`@GDScript.load() <class_@GDScript_method_load>` thay vì tải chúng động từ filesystem bằng :ref:`Image.load()<class_Image_method_load>`, vì cách này có thể không hoạt động trong các project đã export:
 
 ::
 
     var texture = load("res://icon.svg")
     $Sprite2D.texture = texture
 
-This is because images have to be imported as a :ref:`CompressedTexture2D<class_CompressedTexture2D>` first to be loaded with :ref:`@GDScript.load()<class_@GDScript_method_load>`. If you'd still like to load an image file just like any other :ref:`Resource<class_Resource>`, import it as an :ref:`Image<class_Image>` resource instead, and then load it normally using the :ref:`@GDScript.load()<class_@GDScript_method_load>` method.
+Lý do là hình ảnh phải được import trước dưới dạng :ref:`CompressedTexture2D<class_CompressedTexture2D>` thì mới có thể tải bằng :ref:`@GDScript.load() <class_@GDScript_method_load>`. Nếu bạn vẫn muốn tải một tệp hình ảnh giống như bất kỳ :ref:`Resource<class_Resource>` nào khác, hãy import tệp đó dưới dạng resource :ref:`Image<class_Image>`, sau đó tải bình thường bằng phương thức :ref:`@GDScript.load() <class_@GDScript_method_load>`.
 
-\ **Note:** The image can be retrieved from an imported texture using the :ref:`Texture2D.get_image()<class_Texture2D_method_get_image>` method, which returns a copy of the image:
+\ **Lưu ý:** Có thể lấy hình ảnh từ một texture đã import bằng phương thức :ref:`Texture2D.get_image()<class_Texture2D_method_get_image>`, phương thức này trả về một bản sao của hình ảnh:
 
 ::
 
     var texture = load("res://icon.svg")
     var image = texture.get_image()
 
-An **ImageTexture** is not meant to be operated from within the editor interface directly, and is mostly useful for rendering images on screen dynamically via code. If you need to generate images procedurally from within the editor, consider saving and importing images as custom texture resources implementing a new :ref:`EditorImportPlugin<class_EditorImportPlugin>`.
+Một **ImageTexture** không được thiết kế để thao tác trực tiếp từ giao diện trình chỉnh sửa và chủ yếu hữu ích cho việc hiển thị hình ảnh động trên màn hình thông qua code. Nếu bạn cần tạo hình ảnh theo quy trình từ trong trình chỉnh sửa, hãy cân nhắc lưu và import hình ảnh dưới dạng các tài nguyên texture tùy chỉnh triển khai một :ref:`EditorImportPlugin<class_EditorImportPlugin>` mới.
 
-\ **Note:** The maximum texture size is 16384×16384 pixels due to graphics hardware limitations.
+\ **Lưu ý:** Kích thước texture tối đa là 16384×16384 pixel do các giới hạn của phần cứng đồ họa.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Importing images <../tutorials/assets_pipeline/importing_images>`
+- :doc:`Import hình ảnh <../tutorials/assets_pipeline/importing_images>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | resource_local_to_scene | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-------------------------+-------------------------+----------------------------------------------------------------------------------------+
+   +-------------------------+-------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | resource_local_to_scene | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-------------------------+-------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -92,8 +92,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ImageTexture_method_create_from_image:
 
@@ -101,7 +101,7 @@ Method Descriptions
 
 :ref:`ImageTexture<class_ImageTexture>` **create_from_image**\ (\ image\: :ref:`Image<class_Image>`\ ) |static| :ref:`🔗<class_ImageTexture_method_create_from_image>`
 
-Creates a new **ImageTexture** and initializes it by allocating and setting the data from an :ref:`Image<class_Image>`.
+Tạo một **ImageTexture** mới và khởi tạo nó bằng cách cấp phát và thiết lập dữ liệu từ một :ref:`Image<class_Image>`.
 
 .. rst-class:: classref-item-separator
 
@@ -113,9 +113,9 @@ Creates a new **ImageTexture** and initializes it by allocating and setting the 
 
 |void| **set_image**\ (\ image\: :ref:`Image<class_Image>`\ ) :ref:`🔗<class_ImageTexture_method_set_image>`
 
-Replaces the texture's data with a new :ref:`Image<class_Image>`. This will re-allocate new memory for the texture.
+Thay thế dữ liệu của texture bằng một :ref:`Image<class_Image>` mới. Thao tác này sẽ cấp phát lại bộ nhớ mới cho texture.
 
-If you want to update the image, but don't need to change its parameters (format, size), use :ref:`update()<class_ImageTexture_method_update>` instead for better performance.
+Nếu bạn muốn cập nhật hình ảnh nhưng không cần thay đổi các tham số của nó (định dạng, kích thước), hãy sử dụng :ref:`update()<class_ImageTexture_method_update>` thay thế để đạt hiệu suất tốt hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -127,7 +127,7 @@ If you want to update the image, but don't need to change its parameters (format
 
 |void| **set_size_override**\ (\ size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_ImageTexture_method_set_size_override>`
 
-Resizes the texture to the specified dimensions.
+Thay đổi kích thước texture thành các kích thước được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -139,18 +139,18 @@ Resizes the texture to the specified dimensions.
 
 |void| **update**\ (\ image\: :ref:`Image<class_Image>`\ ) :ref:`🔗<class_ImageTexture_method_update>`
 
-Replaces the texture's data with a new :ref:`Image<class_Image>`.
+Thay thế dữ liệu của texture bằng một :ref:`Image<class_Image>` mới.
 
-\ **Note:** The texture has to be created using :ref:`create_from_image()<class_ImageTexture_method_create_from_image>` or initialized first with the :ref:`set_image()<class_ImageTexture_method_set_image>` method before it can be updated. The new image dimensions, format, and mipmaps configuration should match the existing texture's image configuration.
+\ **Lưu ý:** Texture phải được tạo bằng :ref:`create_from_image()<class_ImageTexture_method_create_from_image>` hoặc được khởi tạo trước bằng phương thức :ref:`set_image()<class_ImageTexture_method_set_image>` thì mới có thể được cập nhật. Kích thước hình ảnh, định dạng và cấu hình mipmap của hình ảnh mới phải khớp với cấu hình hình ảnh của texture hiện có.
 
-Use this method over :ref:`set_image()<class_ImageTexture_method_set_image>` if you need to update the texture frequently, which is faster than allocating additional memory for a new texture each time.
+Sử dụng phương thức này thay cho :ref:`set_image()<class_ImageTexture_method_set_image>` nếu bạn cần cập nhật texture thường xuyên, vì cách này nhanh hơn so với việc cấp phát thêm bộ nhớ cho một texture mới mỗi lần.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

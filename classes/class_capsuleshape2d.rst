@@ -10,23 +10,23 @@
 CapsuleShape2D
 ==============
 
-**Inherits:** :ref:`Shape2D<class_Shape2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Shape2D<class_Shape2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 2D capsule shape used for physics collision.
+Một shape capsule 2D được sử dụng để xử lý va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 2D capsule shape, intended for use in physics. Usually used to provide a shape for a :ref:`CollisionShape2D<class_CollisionShape2D>`.
+Một shape capsule 2D, được thiết kế để sử dụng trong vật lý. Thường được dùng để cung cấp một shape cho một :ref:`CollisionShape2D<class_CollisionShape2D>`.
 
-\ **Performance:** **CapsuleShape2D** is fast to check collisions against, but it is slower than :ref:`RectangleShape2D<class_RectangleShape2D>` and :ref:`CircleShape2D<class_CircleShape2D>`.
+\ **Hiệu năng:** **CapsuleShape2D** kiểm tra va chạm rất nhanh, nhưng chậm hơn :ref:`RectangleShape2D<class_RectangleShape2D>` và :ref:`CircleShape2D<class_CircleShape2D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CapsuleShape2D_property_height:
 
@@ -59,9 +59,9 @@ Property Descriptions
 - |void| **set_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height**\ (\ )
 
-The capsule's full height, including the semicircles.
+Chiều cao đầy đủ của capsule, bao gồm cả hai nửa hình tròn.
 
-\ **Note:** The :ref:`height<class_CapsuleShape2D_property_height>` of a capsule must be at least twice its :ref:`radius<class_CapsuleShape2D_property_radius>`. Otherwise, the capsule becomes a circle. If the :ref:`height<class_CapsuleShape2D_property_height>` is less than twice the :ref:`radius<class_CapsuleShape2D_property_radius>`, the properties adjust to a valid value.
+\ **Lưu ý:** :ref:`height<class_CapsuleShape2D_property_height>` của capsule phải ít nhất gấp đôi :ref:`radius<class_CapsuleShape2D_property_radius>`. Nếu không, capsule sẽ trở thành hình tròn. Nếu :ref:`height<class_CapsuleShape2D_property_height>` nhỏ hơn hai lần :ref:`radius<class_CapsuleShape2D_property_radius>`, các thuộc tính sẽ được điều chỉnh thành một giá trị hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -71,14 +71,14 @@ The capsule's full height, including the semicircles.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **mid_height** :ref:`🔗<class_CapsuleShape2D_property_mid_height>`
+:ref:`float<class_float>` **mid_height** :ref:`🔗 <class_CapsuleShape2D_property_mid_height>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_mid_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mid_height**\ (\ )
 
-The capsule's height, excluding the semicircles. This is the height of the central rectangular part in the middle of the capsule, and is the distance between the centers of the two semicircles. This is a wrapper for :ref:`height<class_CapsuleShape2D_property_height>`.
+Chiều cao của capsule, không bao gồm hai nửa hình tròn. Đây là chiều cao của phần hình chữ nhật trung tâm ở giữa capsule và là khoảng cách giữa tâm của hai nửa hình tròn. Đây là một wrapper cho :ref:`height<class_CapsuleShape2D_property_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -95,16 +95,16 @@ The capsule's height, excluding the semicircles. This is the height of the centr
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The capsule's radius.
+Bán kính của capsule.
 
-\ **Note:** The :ref:`radius<class_CapsuleShape2D_property_radius>` of a capsule cannot be greater than half of its :ref:`height<class_CapsuleShape2D_property_height>`. Otherwise, the capsule becomes a circle. If the :ref:`radius<class_CapsuleShape2D_property_radius>` is greater than half of the :ref:`height<class_CapsuleShape2D_property_height>`, the properties adjust to a valid value.
+\ **Lưu ý:** :ref:`radius<class_CapsuleShape2D_property_radius>` của capsule không thể lớn hơn một nửa :ref:`height<class_CapsuleShape2D_property_height>`. Nếu không, capsule sẽ trở thành hình tròn. Nếu :ref:`radius<class_CapsuleShape2D_property_radius>` lớn hơn một nửa :ref:`height<class_CapsuleShape2D_property_height>`, các thuộc tính sẽ được điều chỉnh thành một giá trị hợp lệ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

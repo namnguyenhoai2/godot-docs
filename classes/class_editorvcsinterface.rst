@@ -10,28 +10,28 @@
 EditorVCSInterface
 ==================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Version Control System (VCS) interface, which reads and writes to the local VCS in use.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Defines the API that the editor uses to extract information from the underlying VCS. The implementation of this API is included in VCS plugins, which are GDExtension plugins that inherit **EditorVCSInterface** and are attached (on demand) to the singleton instance of **EditorVCSInterface**. Instead of performing the task themselves, all the virtual functions listed below are calling the internally overridden functions in the VCS plugins to provide a plug-n-play experience. A custom VCS plugin is supposed to inherit from **EditorVCSInterface** and override each of these virtual functions.
+Giao diện Hệ thống kiểm soát phiên bản (VCS), đọc và ghi vào VCS cục bộ đang được sử dụng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Định nghĩa API mà trình biên tập sử dụng để trích xuất thông tin từ VCS bên dưới. Phần triển khai API này được tích hợp trong các plugin VCS, là các plugin GDExtension kế thừa **EditorVCSInterface** và được đính kèm (khi cần) vào thực thể singleton của **EditorVCSInterface**. Thay vì tự thực hiện tác vụ, tất cả các hàm ảo được liệt kê bên dưới đều gọi các hàm đã được ghi đè nội bộ trong các plugin VCS để cung cấp trải nghiệm plug-n-play. Một plugin VCS tùy chỉnh phải kế thừa từ **EditorVCSInterface** và ghi đè từng hàm ảo này.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Version control systems <../tutorials/best_practices/version_control_systems>`
+- :doc:`Hệ thống kiểm soát phiên bản <../tutorials/best_practices/version_control_systems>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -97,7 +97,7 @@ Methods
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`                              | :ref:`create_diff_line<class_EditorVCSInterface_method_create_diff_line>`\ (\ new_line_no\: :ref:`int<class_int>`, old_line_no\: :ref:`int<class_int>`, content\: :ref:`String<class_String>`, status\: :ref:`String<class_String>`\ )                                                                                                            |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                              | :ref:`create_status_file<class_EditorVCSInterface_method_create_status_file>`\ (\ file_path\: :ref:`String<class_String>`, change_type\: :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>`, area\: :ref:`TreeArea<enum_EditorVCSInterface_TreeArea>`\ )                                                                                       |
+   | :ref:`Dictionary<class_Dictionary>`                              | :ref:`create_status_file<class_EditorVCSInterface_method_create_status_file>`\ (\ file_path\: :ref:`String<class_String>`, change_type\: :ref:`ChangeType <enum_EditorVCSInterface_ChangeType>`, area\: :ref:`TreeArea <enum_EditorVCSInterface_TreeArea>`\ )                                                                                     |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`popup_error<class_EditorVCSInterface_method_popup_error>`\ (\ msg\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                          |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -108,14 +108,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorVCSInterface_ChangeType:
 
 .. rst-class:: classref-enumeration
 
-enum **ChangeType**: :ref:`🔗<enum_EditorVCSInterface_ChangeType>`
+enum **ChangeType**: :ref:`🔗 <enum_EditorVCSInterface_ChangeType>`
 
 .. _class_EditorVCSInterface_constant_CHANGE_TYPE_NEW:
 
@@ -123,7 +123,7 @@ enum **ChangeType**: :ref:`🔗<enum_EditorVCSInterface_ChangeType>`
 
 :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>` **CHANGE_TYPE_NEW** = ``0``
 
-A new file has been added.
+Một tệp mới đã được thêm vào.
 
 .. _class_EditorVCSInterface_constant_CHANGE_TYPE_MODIFIED:
 
@@ -131,7 +131,7 @@ A new file has been added.
 
 :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>` **CHANGE_TYPE_MODIFIED** = ``1``
 
-An earlier added file has been modified.
+Một tệp đã được thêm trước đó đã bị sửa đổi.
 
 .. _class_EditorVCSInterface_constant_CHANGE_TYPE_RENAMED:
 
@@ -139,7 +139,7 @@ An earlier added file has been modified.
 
 :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>` **CHANGE_TYPE_RENAMED** = ``2``
 
-An earlier added file has been renamed.
+Một tệp đã được thêm trước đó đã được đổi tên.
 
 .. _class_EditorVCSInterface_constant_CHANGE_TYPE_DELETED:
 
@@ -147,7 +147,7 @@ An earlier added file has been renamed.
 
 :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>` **CHANGE_TYPE_DELETED** = ``3``
 
-An earlier added file has been deleted.
+Một tệp đã được thêm trước đó đã bị xóa.
 
 .. _class_EditorVCSInterface_constant_CHANGE_TYPE_TYPECHANGE:
 
@@ -155,7 +155,7 @@ An earlier added file has been deleted.
 
 :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>` **CHANGE_TYPE_TYPECHANGE** = ``4``
 
-An earlier added file has been typechanged.
+Một tệp đã được thêm trước đó đã bị thay đổi kiểu.
 
 .. _class_EditorVCSInterface_constant_CHANGE_TYPE_UNMERGED:
 
@@ -163,7 +163,7 @@ An earlier added file has been typechanged.
 
 :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>` **CHANGE_TYPE_UNMERGED** = ``5``
 
-A file is left unmerged.
+Một tệp vẫn chưa được hợp nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ A file is left unmerged.
 
 .. rst-class:: classref-enumeration
 
-enum **TreeArea**: :ref:`🔗<enum_EditorVCSInterface_TreeArea>`
+enum **TreeArea**: :ref:`🔗 <enum_EditorVCSInterface_TreeArea>`
 
 .. _class_EditorVCSInterface_constant_TREE_AREA_COMMIT:
 
@@ -181,7 +181,7 @@ enum **TreeArea**: :ref:`🔗<enum_EditorVCSInterface_TreeArea>`
 
 :ref:`TreeArea<enum_EditorVCSInterface_TreeArea>` **TREE_AREA_COMMIT** = ``0``
 
-A commit is encountered from the commit area.
+Đã gặp một commit từ khu vực commit.
 
 .. _class_EditorVCSInterface_constant_TREE_AREA_STAGED:
 
@@ -189,7 +189,7 @@ A commit is encountered from the commit area.
 
 :ref:`TreeArea<enum_EditorVCSInterface_TreeArea>` **TREE_AREA_STAGED** = ``1``
 
-A file is encountered from the staged area.
+Gặp một tệp từ khu vực đã stage.
 
 .. _class_EditorVCSInterface_constant_TREE_AREA_UNSTAGED:
 
@@ -197,7 +197,7 @@ A file is encountered from the staged area.
 
 :ref:`TreeArea<enum_EditorVCSInterface_TreeArea>` **TREE_AREA_UNSTAGED** = ``2``
 
-A file is encountered from the unstaged area.
+Gặp một tệp từ khu vực chưa stage.
 
 .. rst-class:: classref-section-separator
 
@@ -205,8 +205,8 @@ A file is encountered from the unstaged area.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorVCSInterface_private_method__allow_amends:
 
@@ -214,7 +214,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_allow_amends**\ (\ ) |virtual| :ref:`🔗<class_EditorVCSInterface_private_method__allow_amends>`
 
-Returns whether or not the plugin allows commit amends.
+Trả về việc plugin có cho phép amend commit hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ Returns whether or not the plugin allows commit amends.
 
 :ref:`bool<class_bool>` **_checkout_branch**\ (\ branch_name\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__checkout_branch>`
 
-Checks out a ``branch_name`` in the VCS.
+Checkout một ``branch_name`` trong VCS.
 
 .. rst-class:: classref-item-separator
 
@@ -238,7 +238,7 @@ Checks out a ``branch_name`` in the VCS.
 
 |void| **_commit**\ (\ msg\: :ref:`String<class_String>`, amend\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_EditorVCSInterface_private_method__commit>`
 
-Commits the currently staged changes and applies the commit ``msg`` to the resulting commit. If ``amend`` is ``true`` the commit will modify the most recent commit instead.
+Commit các thay đổi hiện đang được stage và áp dụng ``msg`` của commit vào commit kết quả. Nếu ``amend`` là ``true``, commit sẽ sửa đổi commit gần đây nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -250,7 +250,7 @@ Commits the currently staged changes and applies the commit ``msg`` to the resul
 
 |void| **_create_branch**\ (\ branch_name\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__create_branch>`
 
-Creates a new branch named ``branch_name`` in the VCS.
+Tạo một branch mới có tên ``branch_name`` trong VCS.
 
 .. rst-class:: classref-item-separator
 
@@ -262,7 +262,7 @@ Creates a new branch named ``branch_name`` in the VCS.
 
 |void| **_create_remote**\ (\ remote_name\: :ref:`String<class_String>`, remote_url\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__create_remote>`
 
-Creates a new remote destination with name ``remote_name`` and points it to ``remote_url``. This can be an HTTPS remote or an SSH remote.
+Tạo một đích từ xa mới có tên ``remote_name`` và trỏ đến ``remote_url``. Đây có thể là remote HTTPS hoặc remote SSH.
 
 .. rst-class:: classref-item-separator
 
@@ -274,7 +274,7 @@ Creates a new remote destination with name ``remote_name`` and points it to ``re
 
 |void| **_discard_file**\ (\ file_path\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__discard_file>`
 
-Discards the changes made in a file present at ``file_path``.
+Loại bỏ các thay đổi đã thực hiện trong tệp có tại ``file_path``.
 
 .. rst-class:: classref-item-separator
 
@@ -286,7 +286,7 @@ Discards the changes made in a file present at ``file_path``.
 
 |void| **_fetch**\ (\ remote\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__fetch>`
 
-Fetches new changes from the ``remote``, but doesn't write changes to the current working directory. Equivalent to ``git fetch``.
+Tải các thay đổi mới từ ``remote``, nhưng không ghi các thay đổi vào thư mục làm việc hiện tại. Tương đương với ``git fetch``.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ Fetches new changes from the ``remote``, but doesn't write changes to the curren
 
 :ref:`Array<class_Array>`\[:ref:`String<class_String>`\] **_get_branch_list**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_branch_list>`
 
-Gets an instance of an :ref:`Array<class_Array>` of :ref:`String<class_String>`\ s containing available branch names in the VCS.
+Lấy một thực thể :ref:`Array<class_Array>` của :ref:`String<class_String>`\ s chứa các tên branch hiện có trong VCS.
 
 .. rst-class:: classref-item-separator
 
@@ -310,7 +310,7 @@ Gets an instance of an :ref:`Array<class_Array>` of :ref:`String<class_String>`\
 
 :ref:`String<class_String>` **_get_current_branch_name**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_current_branch_name>`
 
-Gets the current branch name defined in the VCS.
+Lấy tên branch hiện tại được xác định trong VCS.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +322,7 @@ Gets the current branch name defined in the VCS.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_diff**\ (\ identifier\: :ref:`String<class_String>`, area\: :ref:`int<class_int>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_diff>`
 
-Returns an array of :ref:`Dictionary<class_Dictionary>` items (see :ref:`create_diff_file()<class_EditorVCSInterface_method_create_diff_file>`, :ref:`create_diff_hunk()<class_EditorVCSInterface_method_create_diff_hunk>`, :ref:`create_diff_line()<class_EditorVCSInterface_method_create_diff_line>`, :ref:`add_line_diffs_into_diff_hunk()<class_EditorVCSInterface_method_add_line_diffs_into_diff_hunk>` and :ref:`add_diff_hunks_into_diff_file()<class_EditorVCSInterface_method_add_diff_hunks_into_diff_file>`), each containing information about a diff. If ``identifier`` is a file path, returns a file diff, and if it is a commit identifier, then returns a commit diff.
+Trả về một mảng các mục :ref:`Dictionary<class_Dictionary>` (xem :ref:`create_diff_file()<class_EditorVCSInterface_method_create_diff_file>`, :ref:`create_diff_hunk()<class_EditorVCSInterface_method_create_diff_hunk>`, :ref:`create_diff_line()<class_EditorVCSInterface_method_create_diff_line>`, :ref:`add_line_diffs_into_diff_hunk()<class_EditorVCSInterface_method_add_line_diffs_into_diff_hunk>` và :ref:`add_diff_hunks_into_diff_file()<class_EditorVCSInterface_method_add_diff_hunks_into_diff_file>`), mỗi mục chứa thông tin về một diff. Nếu ``identifier`` là đường dẫn tệp, trả về diff của tệp; còn nếu đó là mã định danh commit, thì trả về diff của commit.
 
 .. rst-class:: classref-item-separator
 
@@ -334,7 +334,7 @@ Returns an array of :ref:`Dictionary<class_Dictionary>` items (see :ref:`create_
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_line_diff**\ (\ file_path\: :ref:`String<class_String>`, text\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_line_diff>`
 
-Returns an :ref:`Array<class_Array>` of :ref:`Dictionary<class_Dictionary>` items (see :ref:`create_diff_hunk()<class_EditorVCSInterface_method_create_diff_hunk>`), each containing a line diff between a file at ``file_path`` and the ``text`` which is passed in.
+Trả về một :ref:`Array<class_Array>` gồm các mục :ref:`Dictionary<class_Dictionary>` (xem :ref:`create_diff_hunk()<class_EditorVCSInterface_method_create_diff_hunk>`), mỗi mục chứa một diff theo dòng giữa một tệp tại ``file_path`` và ``text`` được truyền vào.
 
 .. rst-class:: classref-item-separator
 
@@ -346,7 +346,7 @@ Returns an :ref:`Array<class_Array>` of :ref:`Dictionary<class_Dictionary>` item
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_modified_files_data**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_modified_files_data>`
 
-Returns an :ref:`Array<class_Array>` of :ref:`Dictionary<class_Dictionary>` items (see :ref:`create_status_file()<class_EditorVCSInterface_method_create_status_file>`), each containing the status data of every modified file in the project folder.
+Trả về một :ref:`Array<class_Array>` gồm :ref:`Dictionary<class_Dictionary>` mục (xem :ref:`create_status_file()<class_EditorVCSInterface_method_create_status_file>`), mỗi mục chứa dữ liệu trạng thái của mọi tệp đã sửa trong thư mục dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -358,7 +358,7 @@ Returns an :ref:`Array<class_Array>` of :ref:`Dictionary<class_Dictionary>` item
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_previous_commits**\ (\ max_commits\: :ref:`int<class_int>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_previous_commits>`
 
-Returns an :ref:`Array<class_Array>` of :ref:`Dictionary<class_Dictionary>` items (see :ref:`create_commit()<class_EditorVCSInterface_method_create_commit>`), each containing the data for a past commit.
+Trả về một :ref:`Array<class_Array>` gồm :ref:`Dictionary<class_Dictionary>` mục (xem :ref:`create_commit()<class_EditorVCSInterface_method_create_commit>`), mỗi mục chứa dữ liệu của một commit trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +370,7 @@ Returns an :ref:`Array<class_Array>` of :ref:`Dictionary<class_Dictionary>` item
 
 :ref:`Array<class_Array>`\[:ref:`String<class_String>`\] **_get_remotes**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_remotes>`
 
-Returns an :ref:`Array<class_Array>` of :ref:`String<class_String>`\ s, each containing the name of a remote configured in the VCS.
+Trả về một :ref:`Array<class_Array>` gồm :ref:`String<class_String>`\ s, mỗi mục chứa tên của một remote được cấu hình trong VCS.
 
 .. rst-class:: classref-item-separator
 
@@ -382,7 +382,7 @@ Returns an :ref:`Array<class_Array>` of :ref:`String<class_String>`\ s, each con
 
 :ref:`String<class_String>` **_get_vcs_name**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__get_vcs_name>`
 
-Returns the name of the underlying VCS provider.
+Trả về tên của nhà cung cấp VCS bên dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -394,7 +394,7 @@ Returns the name of the underlying VCS provider.
 
 :ref:`bool<class_bool>` **_initialize**\ (\ project_path\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__initialize>`
 
-Initializes the VCS plugin when called from the editor. Returns whether or not the plugin was successfully initialized. A VCS project is initialized at ``project_path``.
+Khởi tạo plugin VCS khi được gọi từ editor. Trả về việc plugin có được khởi tạo thành công hay không. Một dự án VCS được khởi tạo tại ``project_path``.
 
 .. rst-class:: classref-item-separator
 
@@ -406,7 +406,7 @@ Initializes the VCS plugin when called from the editor. Returns whether or not t
 
 |void| **_pull**\ (\ remote\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__pull>`
 
-Pulls changes from the remote. This can give rise to merge conflicts.
+Pull các thay đổi từ remote. Điều này có thể gây ra xung đột merge.
 
 .. rst-class:: classref-item-separator
 
@@ -418,7 +418,7 @@ Pulls changes from the remote. This can give rise to merge conflicts.
 
 |void| **_push**\ (\ remote\: :ref:`String<class_String>`, force\: :ref:`bool<class_bool>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__push>`
 
-Pushes changes to the ``remote``. If ``force`` is ``true``, a force push will override the change history already present on the remote.
+Push các thay đổi lên ``remote``. Nếu ``force`` là ``true``, một force push sẽ ghi đè lịch sử thay đổi đã có trên remote.
 
 .. rst-class:: classref-item-separator
 
@@ -430,7 +430,7 @@ Pushes changes to the ``remote``. If ``force`` is ``true``, a force push will ov
 
 |void| **_remove_branch**\ (\ branch_name\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__remove_branch>`
 
-Remove a branch from the local VCS.
+Xóa một branch khỏi VCS cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -442,7 +442,7 @@ Remove a branch from the local VCS.
 
 |void| **_remove_remote**\ (\ remote_name\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__remove_remote>`
 
-Remove a remote from the local VCS.
+Xóa một remote khỏi VCS cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -454,7 +454,7 @@ Remove a remote from the local VCS.
 
 |void| **_set_credentials**\ (\ username\: :ref:`String<class_String>`, password\: :ref:`String<class_String>`, ssh_public_key_path\: :ref:`String<class_String>`, ssh_private_key_path\: :ref:`String<class_String>`, ssh_passphrase\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__set_credentials>`
 
-Set user credentials in the underlying VCS. ``username`` and ``password`` are used only during HTTPS authentication unless not already mentioned in the remote URL. ``ssh_public_key_path``, ``ssh_private_key_path``, and ``ssh_passphrase`` are only used during SSH authentication.
+Thiết lập thông tin xác thực của người dùng trong VCS nền tảng. ``username`` và ``password`` chỉ được sử dụng trong quá trình xác thực HTTPS, trừ khi chúng đã được nêu trong URL remote. ``ssh_public_key_path``, ``ssh_private_key_path`` và ``ssh_passphrase`` chỉ được sử dụng trong quá trình xác thực SSH.
 
 .. rst-class:: classref-item-separator
 
@@ -466,7 +466,7 @@ Set user credentials in the underlying VCS. ``username`` and ``password`` are us
 
 :ref:`bool<class_bool>` **_shut_down**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__shut_down>`
 
-Shuts down VCS plugin instance. Called when the user either closes the editor or shuts down the VCS plugin through the editor UI.
+Tắt instance của plugin VCS. Được gọi khi người dùng đóng editor hoặc tắt plugin VCS thông qua UI của editor.
 
 .. rst-class:: classref-item-separator
 
@@ -478,7 +478,7 @@ Shuts down VCS plugin instance. Called when the user either closes the editor or
 
 |void| **_stage_file**\ (\ file_path\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__stage_file>`
 
-Stages the file present at ``file_path`` to the staged area.
+Đưa tệp có tại ``file_path`` vào staged area.
 
 .. rst-class:: classref-item-separator
 
@@ -490,7 +490,7 @@ Stages the file present at ``file_path`` to the staged area.
 
 |void| **_unstage_file**\ (\ file_path\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorVCSInterface_private_method__unstage_file>`
 
-Unstages the file present at ``file_path`` from the staged area to the unstaged area.
+Đưa tệp có tại ``file_path`` từ staged area về unstaged area.
 
 .. rst-class:: classref-item-separator
 
@@ -502,7 +502,7 @@ Unstages the file present at ``file_path`` from the staged area to the unstaged 
 
 :ref:`Dictionary<class_Dictionary>` **add_diff_hunks_into_diff_file**\ (\ diff_file\: :ref:`Dictionary<class_Dictionary>`, diff_hunks\: :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\]\ ) :ref:`🔗<class_EditorVCSInterface_method_add_diff_hunks_into_diff_file>`
 
-Helper function to add an array of ``diff_hunks`` into a ``diff_file``.
+Hàm trợ giúp để thêm một mảng ``diff_hunks`` vào một ``diff_file``.
 
 .. rst-class:: classref-item-separator
 
@@ -514,7 +514,7 @@ Helper function to add an array of ``diff_hunks`` into a ``diff_file``.
 
 :ref:`Dictionary<class_Dictionary>` **add_line_diffs_into_diff_hunk**\ (\ diff_hunk\: :ref:`Dictionary<class_Dictionary>`, line_diffs\: :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\]\ ) :ref:`🔗<class_EditorVCSInterface_method_add_line_diffs_into_diff_hunk>`
 
-Helper function to add an array of ``line_diffs`` into a ``diff_hunk``.
+Hàm trợ giúp để thêm một mảng ``line_diffs`` vào một ``diff_hunk``.
 
 .. rst-class:: classref-item-separator
 
@@ -526,7 +526,7 @@ Helper function to add an array of ``line_diffs`` into a ``diff_hunk``.
 
 :ref:`Dictionary<class_Dictionary>` **create_commit**\ (\ msg\: :ref:`String<class_String>`, author\: :ref:`String<class_String>`, id\: :ref:`String<class_String>`, unix_timestamp\: :ref:`int<class_int>`, offset_minutes\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorVCSInterface_method_create_commit>`
 
-Helper function to create a commit :ref:`Dictionary<class_Dictionary>` item. ``msg`` is the commit message of the commit. ``author`` is a single human-readable string containing all the author's details, e.g. the email and name configured in the VCS. ``id`` is the identifier of the commit, in whichever format your VCS may provide an identifier to commits. ``unix_timestamp`` is the UTC Unix timestamp of when the commit was created. ``offset_minutes`` is the timezone offset in minutes, recorded from the system timezone where the commit was created.
+Hàm trợ giúp để tạo một mục :ref:`Dictionary<class_Dictionary>` commit. ``msg`` là thông điệp commit. ``author`` là một chuỗi duy nhất, có thể đọc được đối với con người, chứa tất cả thông tin chi tiết của tác giả, chẳng hạn như email và tên được cấu hình trong VCS. ``id`` là mã định danh của commit, ở bất kỳ định dạng nào mà VCS của bạn có thể cung cấp cho mã định danh của các commit. ``unix_timestamp`` là dấu thời gian Unix UTC ghi thời điểm commit được tạo. ``offset_minutes`` là độ lệch múi giờ tính bằng phút, được ghi nhận từ múi giờ hệ thống tại nơi commit được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -538,7 +538,7 @@ Helper function to create a commit :ref:`Dictionary<class_Dictionary>` item. ``m
 
 :ref:`Dictionary<class_Dictionary>` **create_diff_file**\ (\ new_file\: :ref:`String<class_String>`, old_file\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorVCSInterface_method_create_diff_file>`
 
-Helper function to create a :ref:`Dictionary<class_Dictionary>` for storing old and new diff file paths.
+Hàm trợ giúp để tạo một :ref:`Dictionary<class_Dictionary>` dùng để lưu trữ các đường dẫn tệp diff cũ và mới.
 
 .. rst-class:: classref-item-separator
 
@@ -550,7 +550,7 @@ Helper function to create a :ref:`Dictionary<class_Dictionary>` for storing old 
 
 :ref:`Dictionary<class_Dictionary>` **create_diff_hunk**\ (\ old_start\: :ref:`int<class_int>`, new_start\: :ref:`int<class_int>`, old_lines\: :ref:`int<class_int>`, new_lines\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorVCSInterface_method_create_diff_hunk>`
 
-Helper function to create a :ref:`Dictionary<class_Dictionary>` for storing diff hunk data. ``old_start`` is the starting line number in old file. ``new_start`` is the starting line number in new file. ``old_lines`` is the number of lines in the old file. ``new_lines`` is the number of lines in the new file.
+Hàm trợ giúp để tạo một :ref:`Dictionary<class_Dictionary>` dùng để lưu trữ dữ liệu hunk của diff. ``old_start`` là số dòng bắt đầu trong tệp cũ. ``new_start`` là số dòng bắt đầu trong tệp mới. ``old_lines`` là số dòng trong tệp cũ. ``new_lines`` là số dòng trong tệp mới.
 
 .. rst-class:: classref-item-separator
 
@@ -562,7 +562,7 @@ Helper function to create a :ref:`Dictionary<class_Dictionary>` for storing diff
 
 :ref:`Dictionary<class_Dictionary>` **create_diff_line**\ (\ new_line_no\: :ref:`int<class_int>`, old_line_no\: :ref:`int<class_int>`, content\: :ref:`String<class_String>`, status\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorVCSInterface_method_create_diff_line>`
 
-Helper function to create a :ref:`Dictionary<class_Dictionary>` for storing a line diff. ``new_line_no`` is the line number in the new file (can be ``-1`` if the line is deleted). ``old_line_no`` is the line number in the old file (can be ``-1`` if the line is added). ``content`` is the diff text. ``status`` is a single character string which stores the line origin.
+Hàm trợ giúp để tạo một :ref:`Dictionary<class_Dictionary>` dùng để lưu trữ một dòng diff. ``new_line_no`` là số dòng trong tệp mới (có thể là ``-1`` nếu dòng đó bị xóa). ``old_line_no`` là số dòng trong tệp cũ (có thể là ``-1`` nếu dòng đó được thêm vào). ``content`` là văn bản diff. ``status`` là một chuỗi ký tự đơn dùng để lưu nguồn gốc của dòng.
 
 .. rst-class:: classref-item-separator
 
@@ -574,7 +574,7 @@ Helper function to create a :ref:`Dictionary<class_Dictionary>` for storing a li
 
 :ref:`Dictionary<class_Dictionary>` **create_status_file**\ (\ file_path\: :ref:`String<class_String>`, change_type\: :ref:`ChangeType<enum_EditorVCSInterface_ChangeType>`, area\: :ref:`TreeArea<enum_EditorVCSInterface_TreeArea>`\ ) :ref:`🔗<class_EditorVCSInterface_method_create_status_file>`
 
-Helper function to create a :ref:`Dictionary<class_Dictionary>` used by editor to read the status of a file.
+Hàm trợ giúp để tạo một :ref:`Dictionary<class_Dictionary>` được editor sử dụng để đọc trạng thái của một tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -586,14 +586,14 @@ Helper function to create a :ref:`Dictionary<class_Dictionary>` used by editor t
 
 |void| **popup_error**\ (\ msg\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorVCSInterface_method_popup_error>`
 
-Pops up an error message in the editor which is shown as coming from the underlying VCS. Use this to show VCS specific error messages.
+Hiển thị một thông báo lỗi trong editor, cho biết lỗi bắt nguồn từ VCS bên dưới. Sử dụng hàm này để hiển thị các thông báo lỗi riêng của VCS.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

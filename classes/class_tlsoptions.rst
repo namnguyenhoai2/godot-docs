@@ -10,29 +10,29 @@
 TLSOptions
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-TLS configuration for clients and servers.
+Cấu hình TLS cho client và server.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-TLSOptions abstracts the configuration options for the :ref:`StreamPeerTLS<class_StreamPeerTLS>` and :ref:`PacketPeerDTLS<class_PacketPeerDTLS>` classes.
+TLSOptions trừu tượng hóa các tùy chọn cấu hình cho các lớp :ref:`StreamPeerTLS<class_StreamPeerTLS>` và :ref:`PacketPeerDTLS<class_PacketPeerDTLS>`.
 
-Objects of this class cannot be instantiated directly, and one of the static methods :ref:`client()<class_TLSOptions_method_client>`, :ref:`client_unsafe()<class_TLSOptions_method_client_unsafe>`, or :ref:`server()<class_TLSOptions_method_server>` should be used instead.
+Không thể khởi tạo trực tiếp các đối tượng của lớp này; thay vào đó, nên sử dụng một trong các phương thức static :ref:`client()<class_TLSOptions_method_client>`, :ref:`client_unsafe()<class_TLSOptions_method_client_unsafe>` hoặc :ref:`server()<class_TLSOptions_method_server>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Create a TLS client configuration which uses our custom trusted CA chain.
+    # Tạo cấu hình TLS client sử dụng chuỗi CA đáng tin cậy tùy chỉnh của chúng ta.
     var client_trusted_cas = load("res://my_trusted_cas.crt")
     var client_tls_options = TLSOptions.client(client_trusted_cas)
 
-    # Create a TLS server configuration.
+    # Tạo cấu hình TLS server.
     var server_certs = load("res://my_server_cas.crt")
     var server_key = load("res://my_server_key.key")
     var server_tls_options = TLSOptions.server(server_key, server_certs)
@@ -41,8 +41,8 @@ Objects of this class cannot be instantiated directly, and one of the static met
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -73,8 +73,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_TLSOptions_method_client:
 
@@ -82,11 +82,11 @@ Method Descriptions
 
 :ref:`TLSOptions<class_TLSOptions>` **client**\ (\ trusted_chain\: :ref:`X509Certificate<class_X509Certificate>` = null, common_name_override\: :ref:`String<class_String>` = ""\ ) |static| :ref:`🔗<class_TLSOptions_method_client>`
 
-Creates a TLS client configuration which validates certificates and their common names (fully qualified domain names).
+Tạo cấu hình TLS client để xác thực certificate và common name của chúng (tên miền đủ điều kiện).
 
-You can specify a custom ``trusted_chain`` of certification authorities (the default CA list will be used if ``null``), and optionally provide a ``common_name_override`` if you expect the certificate to have a common name other than the server FQDN.
+Bạn có thể chỉ định ``trusted_chain`` tùy chỉnh của các cơ quan cấp certificate (danh sách CA mặc định sẽ được sử dụng nếu ``null``), đồng thời tùy chọn cung cấp ``common_name_override`` nếu bạn dự kiến certificate có common name khác với FQDN của server.
 
-\ **Note:** On the Web platform, TLS verification is always enforced against the CA list of the web browser. This is considered a security feature.
+\ **Lưu ý:** Trên nền tảng Web, việc xác minh TLS luôn được thực thi dựa trên danh sách CA của trình duyệt web. Đây được xem là một tính năng bảo mật.
 
 .. rst-class:: classref-item-separator
 
@@ -98,9 +98,9 @@ You can specify a custom ``trusted_chain`` of certification authorities (the def
 
 :ref:`TLSOptions<class_TLSOptions>` **client_unsafe**\ (\ trusted_chain\: :ref:`X509Certificate<class_X509Certificate>` = null\ ) |static| :ref:`🔗<class_TLSOptions_method_client_unsafe>`
 
-Creates an **unsafe** TLS client configuration where certificate validation is optional. You can optionally provide a valid ``trusted_chain``, but the common name of the certificates will never be checked. Using this configuration for purposes other than testing **is not recommended**.
+Tạo cấu hình TLS client **không an toàn**, trong đó việc xác thực certificate là tùy chọn. Bạn có thể tùy chọn cung cấp ``trusted_chain`` hợp lệ, nhưng common name của certificate sẽ không bao giờ được kiểm tra. **Không khuyến nghị sử dụng cấu hình này cho mục đích khác ngoài việc kiểm thử**.
 
-\ **Note:** On the Web platform, TLS verification is always enforced against the CA list of the web browser. This is considered a security feature.
+\ **Lưu ý:** Trên nền tảng Web, việc xác minh TLS luôn được thực thi dựa trên danh sách CA của trình duyệt web. Đây được xem là một tính năng bảo mật.
 
 .. rst-class:: classref-item-separator
 
@@ -112,7 +112,7 @@ Creates an **unsafe** TLS client configuration where certificate validation is o
 
 :ref:`String<class_String>` **get_common_name_override**\ (\ ) |const| :ref:`🔗<class_TLSOptions_method_get_common_name_override>`
 
-Returns the common name (domain name) override specified when creating with :ref:`client()<class_TLSOptions_method_client>`.
+Trả về common name (tên miền) override được chỉ định khi tạo bằng :ref:`client()<class_TLSOptions_method_client>`.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ Returns the common name (domain name) override specified when creating with :ref
 
 :ref:`X509Certificate<class_X509Certificate>` **get_own_certificate**\ (\ ) |const| :ref:`🔗<class_TLSOptions_method_get_own_certificate>`
 
-Returns the :ref:`X509Certificate<class_X509Certificate>` specified when creating with :ref:`server()<class_TLSOptions_method_server>`.
+Trả về :ref:`X509Certificate<class_X509Certificate>` được chỉ định khi tạo bằng :ref:`server()<class_TLSOptions_method_server>`.
 
 .. rst-class:: classref-item-separator
 
@@ -136,7 +136,7 @@ Returns the :ref:`X509Certificate<class_X509Certificate>` specified when creatin
 
 :ref:`CryptoKey<class_CryptoKey>` **get_private_key**\ (\ ) |const| :ref:`🔗<class_TLSOptions_method_get_private_key>`
 
-Returns the :ref:`CryptoKey<class_CryptoKey>` specified when creating with :ref:`server()<class_TLSOptions_method_server>`.
+Trả về :ref:`CryptoKey<class_CryptoKey>` được chỉ định khi tạo bằng :ref:`server()<class_TLSOptions_method_server>`.
 
 .. rst-class:: classref-item-separator
 
@@ -148,7 +148,7 @@ Returns the :ref:`CryptoKey<class_CryptoKey>` specified when creating with :ref:
 
 :ref:`X509Certificate<class_X509Certificate>` **get_trusted_ca_chain**\ (\ ) |const| :ref:`🔗<class_TLSOptions_method_get_trusted_ca_chain>`
 
-Returns the CA :ref:`X509Certificate<class_X509Certificate>` chain specified when creating with :ref:`client()<class_TLSOptions_method_client>` or :ref:`client_unsafe()<class_TLSOptions_method_client_unsafe>`.
+Trả về chuỗi CA :ref:`X509Certificate<class_X509Certificate>` được chỉ định khi tạo bằng :ref:`client()<class_TLSOptions_method_client>` hoặc :ref:`client_unsafe()<class_TLSOptions_method_client_unsafe>`.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +160,7 @@ Returns the CA :ref:`X509Certificate<class_X509Certificate>` chain specified whe
 
 :ref:`bool<class_bool>` **is_server**\ (\ ) |const| :ref:`🔗<class_TLSOptions_method_is_server>`
 
-Returns ``true`` if created with :ref:`server()<class_TLSOptions_method_server>`, ``false`` otherwise.
+Trả về ``true`` nếu được tạo bằng :ref:`server()<class_TLSOptions_method_server>`, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -172,7 +172,7 @@ Returns ``true`` if created with :ref:`server()<class_TLSOptions_method_server>`
 
 :ref:`bool<class_bool>` **is_unsafe_client**\ (\ ) |const| :ref:`🔗<class_TLSOptions_method_is_unsafe_client>`
 
-Returns ``true`` if created with :ref:`client_unsafe()<class_TLSOptions_method_client_unsafe>`, ``false`` otherwise.
+Trả về ``true`` nếu được tạo bằng :ref:`client_unsafe()<class_TLSOptions_method_client_unsafe>`, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -184,16 +184,16 @@ Returns ``true`` if created with :ref:`client_unsafe()<class_TLSOptions_method_c
 
 :ref:`TLSOptions<class_TLSOptions>` **server**\ (\ key\: :ref:`CryptoKey<class_CryptoKey>`, certificate\: :ref:`X509Certificate<class_X509Certificate>`\ ) |static| :ref:`🔗<class_TLSOptions_method_server>`
 
-Creates a TLS server configuration using the provided ``key`` and ``certificate``.
+Tạo cấu hình TLS server bằng ``key`` và ``certificate`` được cung cấp.
 
-\ **Note:** The ``certificate`` should include the full certificate chain up to the signing CA (certificates file can be concatenated using a general purpose text editor).
+\ **Lưu ý:** ``certificate`` phải bao gồm toàn bộ chuỗi certificate cho đến CA ký (có thể nối các tệp certificate bằng một trình soạn thảo văn bản đa dụng).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có hiệu ứng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

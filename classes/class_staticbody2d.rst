@@ -10,35 +10,35 @@
 StaticBody2D
 ============
 
-**Inherits:** :ref:`PhysicsBody2D<class_PhysicsBody2D>` **<** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PhysicsBody2D<class_PhysicsBody2D>` **<** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AnimatableBody2D<class_AnimatableBody2D>`
+**Được kế thừa bởi:** :ref:`AnimatableBody2D<class_AnimatableBody2D>`
 
-A 2D physics body that can't be moved by external forces. When moved manually, it doesn't affect other bodies in its path.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A static 2D physics body. It can't be moved by external forces or contacts, but can be moved manually by other means such as code, :ref:`AnimationMixer<class_AnimationMixer>`\ s (with :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` set to :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`), and :ref:`RemoteTransform2D<class_RemoteTransform2D>`.
-
-When **StaticBody2D** is moved, it is teleported to its new position without affecting other physics bodies in its path. If this is not desired, use :ref:`AnimatableBody2D<class_AnimatableBody2D>` instead.
-
-\ **StaticBody2D** is useful for completely static objects like floors and walls, as well as moving surfaces like conveyor belts and circular revolving platforms (by using :ref:`constant_linear_velocity<class_StaticBody2D_property_constant_linear_velocity>` and :ref:`constant_angular_velocity<class_StaticBody2D_property_constant_angular_velocity>`).
+Một physics body 2D không thể bị di chuyển bởi các lực bên ngoài. Khi được di chuyển thủ công, nó không ảnh hưởng đến các body khác trên đường đi.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+Một physics body 2D tĩnh. Nó không thể bị di chuyển bởi các lực bên ngoài hoặc va chạm, nhưng có thể được di chuyển thủ công bằng các phương thức khác như code, :ref:`AnimationMixer<class_AnimationMixer>`\ s (với :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` được đặt thành :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`), và :ref:`RemoteTransform2D<class_RemoteTransform2D>`.
 
-- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+Khi **StaticBody2D** được di chuyển, nó được dịch chuyển tức thời đến vị trí mới mà không ảnh hưởng đến các physics body khác trên đường đi. Nếu đây không phải là điều bạn muốn, hãy sử dụng :ref:`AnimatableBody2D<class_AnimatableBody2D>` thay thế.
+
+\ **StaticBody2D** hữu ích cho các đối tượng hoàn toàn tĩnh như sàn và tường, cũng như các bề mặt chuyển động như băng chuyền và nền tảng quay tròn (bằng cách sử dụng :ref:`constant_linear_velocity<class_StaticBody2D_property_constant_linear_velocity>` và :ref:`constant_angular_velocity<class_StaticBody2D_property_constant_angular_velocity>`).
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Giới thiệu về physics <../tutorials/physics/physics_introduction>`
+
+- :doc:`Khắc phục sự cố physics <../tutorials/physics/troubleshooting_physics_issues>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,8 +58,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StaticBody2D_property_constant_angular_velocity:
 
@@ -72,7 +72,7 @@ Property Descriptions
 - |void| **set_constant_angular_velocity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_constant_angular_velocity**\ (\ )
 
-The body's constant angular velocity. This does not rotate the body, but affects touching bodies, as if it were rotating.
+Vận tốc góc không đổi của body. Điều này không làm body xoay, nhưng ảnh hưởng đến các body đang tiếp xúc như thể nó đang xoay.
 
 .. rst-class:: classref-item-separator
 
@@ -89,7 +89,7 @@ The body's constant angular velocity. This does not rotate the body, but affects
 - |void| **set_constant_linear_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_constant_linear_velocity**\ (\ )
 
-The body's constant linear velocity. This does not move the body, but affects touching bodies, as if it were moving.
+Vận tốc tuyến tính không đổi của body. Điều này không di chuyển body, nhưng ảnh hưởng đến các body đang tiếp xúc như thể nó đang di chuyển.
 
 .. rst-class:: classref-item-separator
 
@@ -99,23 +99,23 @@ The body's constant linear velocity. This does not move the body, but affects to
 
 .. rst-class:: classref-property
 
-:ref:`PhysicsMaterial<class_PhysicsMaterial>` **physics_material_override** :ref:`🔗<class_StaticBody2D_property_physics_material_override>`
+:ref:`PhysicsMaterial<class_PhysicsMaterial>` **physics_material_override** :ref:`🔗 <class_StaticBody2D_property_physics_material_override>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_physics_material_override**\ (\ value\: :ref:`PhysicsMaterial<class_PhysicsMaterial>`\ )
 - :ref:`PhysicsMaterial<class_PhysicsMaterial>` **get_physics_material_override**\ (\ )
 
-The physics material override for the body.
+Physics material ghi đè cho body.
 
-If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.
+Nếu một material được gán cho thuộc tính này, nó sẽ được sử dụng thay cho mọi physics material khác, chẳng hạn như material được kế thừa.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

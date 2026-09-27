@@ -10,45 +10,45 @@
 CollisionObject2D
 =================
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`Area2D<class_Area2D>`, :ref:`PhysicsBody2D<class_PhysicsBody2D>`
+**Được kế thừa bởi:** :ref:`Area2D<class_Area2D>`, :ref:`PhysicsBody2D<class_PhysicsBody2D>`
 
-Abstract base class for 2D physics objects.
+Lớp cơ sở trừu tượng cho các đối tượng vật lý 2D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Abstract base class for 2D physics objects. **CollisionObject2D** can hold any number of :ref:`Shape2D<class_Shape2D>`\ s for collision. Each shape must be assigned to a *shape owner*. Shape owners are not nodes and do not appear in the editor, but are accessible through code using the ``shape_owner_*`` methods.
+Lớp cơ sở trừu tượng cho các đối tượng vật lý 2D. **CollisionObject2D** có thể chứa bất kỳ số lượng :ref:`Shape2D<class_Shape2D>`\ s nào để xử lý va chạm. Mỗi shape phải được gán cho một *chủ sở hữu shape*. Chủ sở hữu shape không phải là node và không xuất hiện trong trình chỉnh sửa, nhưng có thể được truy cập thông qua mã bằng các phương thức ``shape_owner_*``.
 
-\ **Note:** Only collisions between objects within the same canvas (:ref:`Viewport<class_Viewport>` canvas or :ref:`CanvasLayer<class_CanvasLayer>`) are supported. The behavior of collisions between objects in different canvases is undefined.
+\ **Lưu ý:** Chỉ hỗ trợ va chạm giữa các đối tượng trong cùng một canvas (:ref:`Viewport<class_Viewport>` canvas hoặc :ref:`CanvasLayer<class_CanvasLayer>`). Hành vi của va chạm giữa các đối tượng trong các canvas khác nhau là không xác định.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------+--------------------------------------------------------------------------------+----------+
-   | :ref:`int<class_int>`                                  | :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`       | ``1``    |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------+----------+
-   | :ref:`int<class_int>`                                  | :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>`         | ``1``    |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------+----------+
-   | :ref:`float<class_float>`                              | :ref:`collision_priority<class_CollisionObject2D_property_collision_priority>` | ``1.0``  |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------+----------+
-   | :ref:`DisableMode<enum_CollisionObject2D_DisableMode>` | :ref:`disable_mode<class_CollisionObject2D_property_disable_mode>`             | ``0``    |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------+----------+
-   | :ref:`bool<class_bool>`                                | :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>`         | ``true`` |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------+----------+
+   +---------------------------------------------------------+--------------------------------------------------------------------------------+----------+
+   | :ref:`int<class_int>`                                   | :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`       | ``1``    |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------+----------+
+   | :ref:`int<class_int>`                                   | :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>`         | ``1``    |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------+----------+
+   | :ref:`float<class_float>`                               | :ref:`collision_priority<class_CollisionObject2D_property_collision_priority>` | ``1.0``  |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------+----------+
+   | :ref:`DisableMode <enum_CollisionObject2D_DisableMode>` | :ref:`disable_mode<class_CollisionObject2D_property_disable_mode>`             | ``0``    |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------+----------+
+   | :ref:`bool<class_bool>`                                 | :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>`         | ``true`` |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------+----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -123,8 +123,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_CollisionObject2D_signal_input_event:
 
@@ -132,7 +132,7 @@ Signals
 
 **input_event**\ (\ viewport\: :ref:`Node<class_Node>`, event\: :ref:`InputEvent<class_InputEvent>`, shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CollisionObject2D_signal_input_event>`
 
-Emitted when an input event occurs. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set. See :ref:`_input_event()<class_CollisionObject2D_private_method__input_event>` for details.
+Được phát ra khi xảy ra sự kiện đầu vào. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` là ``true`` và phải đặt ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`. Xem :ref:`_input_event()<class_CollisionObject2D_private_method__input_event>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -144,9 +144,9 @@ Emitted when an input event occurs. Requires :ref:`input_pickable<class_Collisio
 
 **mouse_entered**\ (\ ) :ref:`🔗<class_CollisionObject2D_signal_mouse_entered>`
 
-Emitted when the mouse pointer enters any of this object's shapes. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set. Note that moving between different shapes within a single **CollisionObject2D** won't cause this signal to be emitted.
+Được phát ra khi con trỏ chuột đi vào bất kỳ hình dạng nào của đối tượng này. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` là ``true`` và phải đặt ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`. Lưu ý rằng việc di chuyển giữa các hình dạng khác nhau trong cùng một **CollisionObject2D** sẽ không khiến tín hiệu này được phát ra.
 
-\ **Note:** Due to the lack of continuous collision detection, this signal may not be emitted in the expected order if the mouse moves fast enough and the **CollisionObject2D**'s area is small. This signal may also not be emitted if another **CollisionObject2D** is overlapping the **CollisionObject2D** in question.
+\ **Lưu ý:** Do không có tính năng phát hiện va chạm liên tục, tín hiệu này có thể không được phát ra theo thứ tự dự kiến nếu chuột di chuyển đủ nhanh và vùng của **CollisionObject2D** nhỏ. Tín hiệu này cũng có thể không được phát ra nếu một **CollisionObject2D** khác đang chồng lấn lên **CollisionObject2D** đang xét.
 
 .. rst-class:: classref-item-separator
 
@@ -158,9 +158,9 @@ Emitted when the mouse pointer enters any of this object's shapes. Requires :ref
 
 **mouse_exited**\ (\ ) :ref:`🔗<class_CollisionObject2D_signal_mouse_exited>`
 
-Emitted when the mouse pointer exits all this object's shapes. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set. Note that moving between different shapes within a single **CollisionObject2D** won't cause this signal to be emitted.
+Được phát ra khi con trỏ chuột rời khỏi tất cả các hình dạng của đối tượng này. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` là ``true`` và phải đặt ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`. Lưu ý rằng việc di chuyển giữa các hình dạng khác nhau trong cùng một **CollisionObject2D** sẽ không khiến tín hiệu này được phát ra.
 
-\ **Note:** Due to the lack of continuous collision detection, this signal may not be emitted in the expected order if the mouse moves fast enough and the **CollisionObject2D**'s area is small. This signal may also not be emitted if another **CollisionObject2D** is overlapping the **CollisionObject2D** in question.
+\ **Lưu ý:** Do không có tính năng phát hiện va chạm liên tục, tín hiệu này có thể không được phát ra theo thứ tự dự kiến nếu chuột di chuyển đủ nhanh và vùng của **CollisionObject2D** nhỏ. Tín hiệu này cũng có thể không được phát ra nếu một **CollisionObject2D** khác đang chồng lấn lên **CollisionObject2D** đang xét.
 
 .. rst-class:: classref-item-separator
 
@@ -172,7 +172,7 @@ Emitted when the mouse pointer exits all this object's shapes. Requires :ref:`in
 
 **mouse_shape_entered**\ (\ shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CollisionObject2D_signal_mouse_shape_entered>`
 
-Emitted when the mouse pointer enters any of this object's shapes or moves from one shape to another. ``shape_idx`` is the child index of the newly entered :ref:`Shape2D<class_Shape2D>`. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set.
+Được phát ra khi con trỏ chuột đi vào bất kỳ hình nào của đối tượng này hoặc di chuyển từ hình này sang hình khác. ``shape_idx`` là chỉ mục con của :ref:`Shape2D<class_Shape2D>` mới được đi vào. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` được đặt thành ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` được đặt.
 
 .. rst-class:: classref-item-separator
 
@@ -184,7 +184,7 @@ Emitted when the mouse pointer enters any of this object's shapes or moves from 
 
 **mouse_shape_exited**\ (\ shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CollisionObject2D_signal_mouse_shape_exited>`
 
-Emitted when the mouse pointer exits any of this object's shapes. ``shape_idx`` is the child index of the exited :ref:`Shape2D<class_Shape2D>`. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set.
+Được phát ra khi con trỏ chuột rời khỏi bất kỳ hình nào của đối tượng này. ``shape_idx`` là chỉ mục con của :ref:`Shape2D<class_Shape2D>` đã rời khỏi. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` được đặt thành ``true`` và ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` được đặt.
 
 .. rst-class:: classref-section-separator
 
@@ -192,14 +192,14 @@ Emitted when the mouse pointer exits any of this object's shapes. ``shape_idx`` 
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CollisionObject2D_DisableMode:
 
 .. rst-class:: classref-enumeration
 
-enum **DisableMode**: :ref:`🔗<enum_CollisionObject2D_DisableMode>`
+enum **DisableMode**: :ref:`🔗 <enum_CollisionObject2D_DisableMode>`
 
 .. _class_CollisionObject2D_constant_DISABLE_MODE_REMOVE:
 
@@ -207,9 +207,9 @@ enum **DisableMode**: :ref:`🔗<enum_CollisionObject2D_DisableMode>`
 
 :ref:`DisableMode<enum_CollisionObject2D_DisableMode>` **DISABLE_MODE_REMOVE** = ``0``
 
-When :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, remove from the physics simulation to stop all physics interactions with this **CollisionObject2D**.
+Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, xóa khỏi mô phỏng vật lý để dừng mọi tương tác vật lý với **CollisionObject2D** này.
 
-Automatically re-added to the physics simulation when the :ref:`Node<class_Node>` is processed again.
+Tự động được thêm lại vào mô phỏng vật lý khi :ref:`Node<class_Node>` được xử lý lại.
 
 .. _class_CollisionObject2D_constant_DISABLE_MODE_MAKE_STATIC:
 
@@ -217,9 +217,9 @@ Automatically re-added to the physics simulation when the :ref:`Node<class_Node>
 
 :ref:`DisableMode<enum_CollisionObject2D_DisableMode>` **DISABLE_MODE_MAKE_STATIC** = ``1``
 
-When :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, make the body static. Doesn't affect :ref:`Area2D<class_Area2D>`. :ref:`PhysicsBody2D<class_PhysicsBody2D>` can't be affected by forces or other bodies while static.
+Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, chuyển body sang trạng thái tĩnh. Không ảnh hưởng đến :ref:`Area2D<class_Area2D>`. :ref:`PhysicsBody2D<class_PhysicsBody2D>` không thể bị tác động bởi lực hoặc các body khác khi đang ở trạng thái tĩnh.
 
-Automatically set :ref:`PhysicsBody2D<class_PhysicsBody2D>` back to its original mode when the :ref:`Node<class_Node>` is processed again.
+Tự động đưa :ref:`PhysicsBody2D<class_PhysicsBody2D>` trở lại chế độ ban đầu khi :ref:`Node<class_Node>` được xử lý lại.
 
 .. _class_CollisionObject2D_constant_DISABLE_MODE_KEEP_ACTIVE:
 
@@ -227,7 +227,7 @@ Automatically set :ref:`PhysicsBody2D<class_PhysicsBody2D>` back to its original
 
 :ref:`DisableMode<enum_CollisionObject2D_DisableMode>` **DISABLE_MODE_KEEP_ACTIVE** = ``2``
 
-When :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, do not affect the physics simulation.
+Khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, không ảnh hưởng đến mô phỏng vật lý.
 
 .. rst-class:: classref-section-separator
 
@@ -235,8 +235,8 @@ When :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CollisionObject2D_property_collision_layer:
 
@@ -249,9 +249,9 @@ Property Descriptions
 - |void| **set_collision_layer**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_layer**\ (\ )
 
-The physics layers this CollisionObject2D is in. Collision objects can exist in one or more of 32 different layers. See also :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>`.
+Các lớp vật lý mà CollisionObject2D này thuộc về. Các đối tượng va chạm có thể tồn tại trong một hoặc nhiều trong số 32 lớp khác nhau. Xem thêm :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>`.
 
-\ **Note:** Object A can detect a contact with object B only if object B is in any of the layers that object A scans. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+\ **Lưu ý:** Đối tượng A chỉ có thể phát hiện tiếp xúc với đối tượng B nếu đối tượng B nằm trong bất kỳ lớp nào mà đối tượng A quét. Xem `Các lớp và mask va chạm <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -268,9 +268,9 @@ The physics layers this CollisionObject2D is in. Collision objects can exist in 
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The physics layers this CollisionObject2D scans. Collision objects can scan one or more of 32 different layers. See also :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`.
+Các lớp vật lý mà CollisionObject2D này quét. Các đối tượng va chạm có thể quét một hoặc nhiều trong số 32 lớp khác nhau. Xem thêm :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`.
 
-\ **Note:** Object A can detect a contact with object B only if object B is in any of the layers that object A scans. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+\ **Lưu ý:** Đối tượng A chỉ có thể phát hiện tiếp xúc với đối tượng B nếu đối tượng B nằm trong bất kỳ lớp nào mà đối tượng A quét. Xem `Các lớp và mask va chạm <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -287,7 +287,7 @@ The physics layers this CollisionObject2D scans. Collision objects can scan one 
 - |void| **set_collision_priority**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_collision_priority**\ (\ )
 
-The priority used to solve colliding when occurring penetration. The higher the priority is, the lower the penetration into the object will be. This can for example be used to prevent the player from breaking through the boundaries of a level.
+Mức độ ưu tiên được sử dụng để giải quyết các va chạm khi xảy ra hiện tượng xuyên thấu. Mức độ ưu tiên càng cao thì độ xuyên vào đối tượng càng thấp. Ví dụ, bạn có thể dùng thuộc tính này để ngăn người chơi xuyên qua ranh giới của một màn chơi.
 
 .. rst-class:: classref-item-separator
 
@@ -304,7 +304,7 @@ The priority used to solve colliding when occurring penetration. The higher the 
 - |void| **set_disable_mode**\ (\ value\: :ref:`DisableMode<enum_CollisionObject2D_DisableMode>`\ )
 - :ref:`DisableMode<enum_CollisionObject2D_DisableMode>` **get_disable_mode**\ (\ )
 
-Defines the behavior in physics when :ref:`Node.process_mode<class_Node_property_process_mode>` is set to :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
+Xác định hành vi trong vật lý khi :ref:`Node.process_mode<class_Node_property_process_mode>` được đặt thành :ref:`Node.PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ Defines the behavior in physics when :ref:`Node.process_mode<class_Node_property
 - |void| **set_pickable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pickable**\ (\ )
 
-If ``true``, this object is pickable. A pickable object can detect the mouse pointer entering/leaving, and if the mouse is inside it, report input events. Requires at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set.
+Nếu ``true``, đối tượng này có thể được chọn. Một đối tượng có thể được chọn sẽ phát hiện khi con trỏ chuột đi vào/rời khỏi nó, và nếu con trỏ chuột nằm bên trong đối tượng, đối tượng sẽ báo cáo các sự kiện đầu vào. Yêu cầu phải đặt ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`.
 
 .. rst-class:: classref-section-separator
 
@@ -329,8 +329,8 @@ If ``true``, this object is pickable. A pickable object can detect the mouse poi
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CollisionObject2D_private_method__input_event:
 
@@ -338,9 +338,9 @@ Method Descriptions
 
 |void| **_input_event**\ (\ viewport\: :ref:`Viewport<class_Viewport>`, event\: :ref:`InputEvent<class_InputEvent>`, shape_idx\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_CollisionObject2D_private_method__input_event>`
 
-Accepts unhandled :ref:`InputEvent<class_InputEvent>`\ s. ``shape_idx`` is the child index of the clicked :ref:`Shape2D<class_Shape2D>`. Connect to :ref:`input_event<class_CollisionObject2D_signal_input_event>` to easily pick up these events.
+Chấp nhận các :ref:`InputEvent<class_InputEvent>`\ s chưa được xử lý. ``shape_idx`` là chỉ mục của nút con thuộc :ref:`Shape2D<class_Shape2D>` được nhấp. Kết nối với :ref:`input_event<class_CollisionObject2D_signal_input_event>` để dễ dàng nhận các sự kiện này.
 
-\ **Note:** :ref:`_input_event()<class_CollisionObject2D_private_method__input_event>` requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set.
+\ **Lưu ý:** :ref:`_input_event()<class_CollisionObject2D_private_method__input_event>` yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` phải là ``true`` và phải đặt ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -352,7 +352,7 @@ Accepts unhandled :ref:`InputEvent<class_InputEvent>`\ s. ``shape_idx`` is the c
 
 |void| **_mouse_enter**\ (\ ) |virtual| :ref:`🔗<class_CollisionObject2D_private_method__mouse_enter>`
 
-Called when the mouse pointer enters any of this object's shapes. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set. Note that moving between different shapes within a single **CollisionObject2D** won't cause this function to be called.
+Được gọi khi con trỏ chuột đi vào bất kỳ hình dạng nào của đối tượng này. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` phải là ``true`` và phải đặt ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`. Lưu ý rằng việc di chuyển giữa các hình dạng khác nhau trong cùng một **CollisionObject2D** sẽ không khiến hàm này được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -364,7 +364,7 @@ Called when the mouse pointer enters any of this object's shapes. Requires :ref:
 
 |void| **_mouse_exit**\ (\ ) |virtual| :ref:`🔗<class_CollisionObject2D_private_method__mouse_exit>`
 
-Called when the mouse pointer exits all this object's shapes. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be set. Note that moving between different shapes within a single **CollisionObject2D** won't cause this function to be called.
+Được gọi khi con trỏ chuột thoát khỏi tất cả các shape của đối tượng này. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` ở trạng thái ``true`` và có ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` được thiết lập. Lưu ý rằng việc di chuyển giữa các shape khác nhau trong cùng một **CollisionObject2D** sẽ không khiến hàm này được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -376,7 +376,7 @@ Called when the mouse pointer exits all this object's shapes. Requires :ref:`inp
 
 |void| **_mouse_shape_enter**\ (\ shape_idx\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_CollisionObject2D_private_method__mouse_shape_enter>`
 
-Called when the mouse pointer enters any of this object's shapes or moves from one shape to another. ``shape_idx`` is the child index of the newly entered :ref:`Shape2D<class_Shape2D>`. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be called.
+Được gọi khi con trỏ chuột đi vào bất kỳ shape nào của đối tượng này hoặc di chuyển từ shape này sang shape khác. ``shape_idx`` là chỉ số con của :ref:`Shape2D<class_Shape2D>` mới được đi vào. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` ở trạng thái ``true`` và có ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` để được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ Called when the mouse pointer enters any of this object's shapes or moves from o
 
 |void| **_mouse_shape_exit**\ (\ shape_idx\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_CollisionObject2D_private_method__mouse_shape_exit>`
 
-Called when the mouse pointer exits any of this object's shapes. ``shape_idx`` is the child index of the exited :ref:`Shape2D<class_Shape2D>`. Requires :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` to be ``true`` and at least one :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` bit to be called.
+Được gọi khi con trỏ chuột thoát khỏi bất kỳ shape nào của đối tượng này. ``shape_idx`` là chỉ số con của :ref:`Shape2D<class_Shape2D>` đã thoát khỏi. Yêu cầu :ref:`input_pickable<class_CollisionObject2D_property_input_pickable>` ở trạng thái ``true`` và có ít nhất một bit :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` để được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -400,7 +400,7 @@ Called when the mouse pointer exits any of this object's shapes. ``shape_idx`` i
 
 :ref:`int<class_int>` **create_shape_owner**\ (\ owner\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_CollisionObject2D_method_create_shape_owner>`
 
-Creates a new shape owner for the given object. Returns ``owner_id`` of the new owner for future reference.
+Tạo một shape owner mới cho đối tượng đã cho. Trả về ``owner_id`` của owner mới để tham chiếu về sau.
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ Creates a new shape owner for the given object. Returns ``owner_id`` of the new 
 
 :ref:`bool<class_bool>` **get_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_get_collision_layer_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc lớp được chỉ định của :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -424,7 +424,7 @@ Returns whether or not the specified layer of the :ref:`collision_layer<class_Co
 
 :ref:`bool<class_bool>` **get_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_get_collision_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc lớp được chỉ định của :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -436,7 +436,7 @@ Returns whether or not the specified layer of the :ref:`collision_mask<class_Col
 
 :ref:`RID<class_RID>` **get_rid**\ (\ ) |const| :ref:`🔗<class_CollisionObject2D_method_get_rid>`
 
-Returns the object's :ref:`RID<class_RID>`.
+Trả về :ref:`RID<class_RID>` của đối tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -448,7 +448,7 @@ Returns the object's :ref:`RID<class_RID>`.
 
 :ref:`Vector2<class_Vector2>` **get_shape_owner_one_way_collision_direction**\ (\ owner_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_get_shape_owner_one_way_collision_direction>`
 
-Returns the ``one_way_collision_direction`` of the shape owner identified by the given ``owner_id``.
+Trả về ``one_way_collision_direction`` của shape owner được xác định bằng ``owner_id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -460,7 +460,7 @@ Returns the ``one_way_collision_direction`` of the shape owner identified by the
 
 :ref:`float<class_float>` **get_shape_owner_one_way_collision_margin**\ (\ owner_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_get_shape_owner_one_way_collision_margin>`
 
-Returns the ``one_way_collision_margin`` of the shape owner identified by given ``owner_id``.
+Trả về ``one_way_collision_margin`` của shape owner được xác định bằng ``owner_id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -472,7 +472,7 @@ Returns the ``one_way_collision_margin`` of the shape owner identified by given 
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_shape_owners**\ (\ ) :ref:`🔗<class_CollisionObject2D_method_get_shape_owners>`
 
-Returns an :ref:`Array<class_Array>` of ``owner_id`` identifiers. You can use these ids in other methods that take ``owner_id`` as an argument.
+Trả về một :ref:`Array<class_Array>` gồm các mã định danh ``owner_id``. Bạn có thể sử dụng các mã này trong những method khác nhận ``owner_id`` làm đối số.
 
 .. rst-class:: classref-item-separator
 
@@ -484,7 +484,7 @@ Returns an :ref:`Array<class_Array>` of ``owner_id`` identifiers. You can use th
 
 :ref:`bool<class_bool>` **is_shape_owner_disabled**\ (\ owner_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_is_shape_owner_disabled>`
 
-If ``true``, the shape owner and its shapes are disabled.
+Nếu ``true``, shape owner và các shape của nó sẽ bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -496,7 +496,7 @@ If ``true``, the shape owner and its shapes are disabled.
 
 :ref:`bool<class_bool>` **is_shape_owner_one_way_collision_enabled**\ (\ owner_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_is_shape_owner_one_way_collision_enabled>`
 
-Returns ``true`` if collisions for the shape owner originating from this **CollisionObject2D** will not be reported to collided with **CollisionObject2D**\ s.
+Trả về ``true`` nếu các va chạm của shape owner bắt nguồn từ **CollisionObject2D** này sẽ không được báo cáo là va chạm với các **CollisionObject2D**\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -508,7 +508,7 @@ Returns ``true`` if collisions for the shape owner originating from this **Colli
 
 |void| **remove_shape_owner**\ (\ owner_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CollisionObject2D_method_remove_shape_owner>`
 
-Removes the given shape owner.
+Xóa shape owner đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -520,7 +520,7 @@ Removes the given shape owner.
 
 |void| **set_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CollisionObject2D_method_set_collision_layer_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_layer<class_CollisionObject2D_property_collision_layer>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -532,7 +532,7 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 
 |void| **set_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CollisionObject2D_method_set_collision_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_mask<class_CollisionObject2D_property_collision_mask>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -544,7 +544,7 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 
 :ref:`int<class_int>` **shape_find_owner**\ (\ shape_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_shape_find_owner>`
 
-Returns the ``owner_id`` of the given shape.
+Trả về ``owner_id`` của shape đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -556,7 +556,7 @@ Returns the ``owner_id`` of the given shape.
 
 |void| **shape_owner_add_shape**\ (\ owner_id\: :ref:`int<class_int>`, shape\: :ref:`Shape2D<class_Shape2D>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_add_shape>`
 
-Adds a :ref:`Shape2D<class_Shape2D>` to the shape owner.
+Thêm một :ref:`Shape2D<class_Shape2D>` vào đối tượng sở hữu shape.
 
 .. rst-class:: classref-item-separator
 
@@ -568,7 +568,7 @@ Adds a :ref:`Shape2D<class_Shape2D>` to the shape owner.
 
 |void| **shape_owner_clear_shapes**\ (\ owner_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_clear_shapes>`
 
-Removes all shapes from the shape owner.
+Xóa tất cả shape khỏi đối tượng sở hữu shape.
 
 .. rst-class:: classref-item-separator
 
@@ -580,7 +580,7 @@ Removes all shapes from the shape owner.
 
 :ref:`Object<class_Object>` **shape_owner_get_owner**\ (\ owner_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_shape_owner_get_owner>`
 
-Returns the parent object of the given shape owner.
+Trả về đối tượng cha của đối tượng sở hữu shape đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -592,7 +592,7 @@ Returns the parent object of the given shape owner.
 
 :ref:`Shape2D<class_Shape2D>` **shape_owner_get_shape**\ (\ owner_id\: :ref:`int<class_int>`, shape_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_shape_owner_get_shape>`
 
-Returns the :ref:`Shape2D<class_Shape2D>` with the given ID from the given shape owner.
+Trả về :ref:`Shape2D<class_Shape2D>` có ID đã cho từ đối tượng sở hữu shape đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -604,7 +604,7 @@ Returns the :ref:`Shape2D<class_Shape2D>` with the given ID from the given shape
 
 :ref:`int<class_int>` **shape_owner_get_shape_count**\ (\ owner_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_shape_owner_get_shape_count>`
 
-Returns the number of shapes the given shape owner contains.
+Trả về số lượng shape mà đối tượng sở hữu shape đã cho chứa.
 
 .. rst-class:: classref-item-separator
 
@@ -616,7 +616,7 @@ Returns the number of shapes the given shape owner contains.
 
 :ref:`int<class_int>` **shape_owner_get_shape_index**\ (\ owner_id\: :ref:`int<class_int>`, shape_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_shape_owner_get_shape_index>`
 
-Returns the child index of the :ref:`Shape2D<class_Shape2D>` with the given ID from the given shape owner.
+Trả về chỉ mục của nút con :ref:`Shape2D<class_Shape2D>` có ID đã cho từ shape owner đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -628,7 +628,7 @@ Returns the child index of the :ref:`Shape2D<class_Shape2D>` with the given ID f
 
 :ref:`Transform2D<class_Transform2D>` **shape_owner_get_transform**\ (\ owner_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CollisionObject2D_method_shape_owner_get_transform>`
 
-Returns the shape owner's :ref:`Transform2D<class_Transform2D>`.
+Trả về :ref:`Transform2D<class_Transform2D>` của shape owner.
 
 .. rst-class:: classref-item-separator
 
@@ -640,7 +640,7 @@ Returns the shape owner's :ref:`Transform2D<class_Transform2D>`.
 
 |void| **shape_owner_remove_shape**\ (\ owner_id\: :ref:`int<class_int>`, shape_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_remove_shape>`
 
-Removes a shape from the given shape owner.
+Xóa một shape khỏi shape owner đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -652,7 +652,7 @@ Removes a shape from the given shape owner.
 
 |void| **shape_owner_set_disabled**\ (\ owner_id\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_set_disabled>`
 
-If ``true``, disables the given shape owner.
+Nếu ``true``, vô hiệu hóa shape owner đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -664,7 +664,7 @@ If ``true``, disables the given shape owner.
 
 |void| **shape_owner_set_one_way_collision**\ (\ owner_id\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_set_one_way_collision>`
 
-If ``enable`` is ``true``, collisions for the shape owner originating from this **CollisionObject2D** will not be reported to collided with **CollisionObject2D**\ s.
+Nếu ``enable`` là ``true``, các va chạm của shape owner bắt nguồn từ **CollisionObject2D** này sẽ không được báo cáo là đã va chạm với **CollisionObject2D**\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -676,7 +676,7 @@ If ``enable`` is ``true``, collisions for the shape owner originating from this 
 
 |void| **shape_owner_set_one_way_collision_direction**\ (\ owner_id\: :ref:`int<class_int>`, direction\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_set_one_way_collision_direction>`
 
-Sets the ``one_way_collision_direction`` of the shape owner identified by the given ``owner_id`` to ``direction``.
+Đặt ``one_way_collision_direction`` của shape owner được xác định bằng ``owner_id`` đã cho thành ``direction``.
 
 .. rst-class:: classref-item-separator
 
@@ -688,7 +688,7 @@ Sets the ``one_way_collision_direction`` of the shape owner identified by the gi
 
 |void| **shape_owner_set_one_way_collision_margin**\ (\ owner_id\: :ref:`int<class_int>`, margin\: :ref:`float<class_float>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_set_one_way_collision_margin>`
 
-Sets the ``one_way_collision_margin`` of the shape owner identified by given ``owner_id`` to ``margin`` pixels.
+Đặt ``one_way_collision_margin`` của shape owner được xác định bằng ``owner_id`` đã cho thành ``margin`` pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -700,14 +700,14 @@ Sets the ``one_way_collision_margin`` of the shape owner identified by given ``o
 
 |void| **shape_owner_set_transform**\ (\ owner_id\: :ref:`int<class_int>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_CollisionObject2D_method_shape_owner_set_transform>`
 
-Sets the :ref:`Transform2D<class_Transform2D>` of the given shape owner.
+Đặt :ref:`Transform2D<class_Transform2D>` của chủ sở hữu shape đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

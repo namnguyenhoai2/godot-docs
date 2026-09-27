@@ -10,20 +10,20 @@
 XMLParser
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides a low-level interface for creating parsers for XML files.
+Cung cấp một giao diện cấp thấp để tạo các parser cho các tệp XML.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Provides a low-level interface for creating parsers for `XML <https://en.wikipedia.org/wiki/XML>`__ files. This class can serve as base to make custom XML parsers.
+Cung cấp một giao diện cấp thấp để tạo các parser cho các tệp `XML <https://en.wikipedia.org/wiki/XML>`__. Lớp này có thể được dùng làm lớp cơ sở để tạo các parser XML tùy chỉnh.
 
-To parse XML, you must open a file with the :ref:`open()<class_XMLParser_method_open>` method or a buffer with the :ref:`open_buffer()<class_XMLParser_method_open_buffer>` method. Then, the :ref:`read()<class_XMLParser_method_read>` method must be called to parse the next nodes. Most of the methods take into consideration the currently parsed node.
+Để phân tích cú pháp XML, bạn phải mở một tệp bằng phương thức :ref:`open()<class_XMLParser_method_open>` hoặc một buffer bằng phương thức :ref:`open_buffer()<class_XMLParser_method_open_buffer>`. Sau đó, phải gọi phương thức :ref:`read()<class_XMLParser_method_read>` để phân tích các node tiếp theo. Hầu hết các phương thức đều tính đến node hiện đang được phân tích.
 
-Here is an example of using **XMLParser** to parse an SVG file (which is based on XML), printing each element and its attributes as a dictionary:
+Dưới đây là ví dụ sử dụng **XMLParser** để phân tích một tệp SVG (dựa trên XML), in từng phần tử cùng các thuộc tính của phần tử đó dưới dạng một dictionary:
 
 
 .. tabs::
@@ -62,47 +62,47 @@ Here is an example of using **XMLParser** to parse an SVG file (which is based o
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                    | :ref:`get_attribute_count<class_XMLParser_method_get_attribute_count>`\ (\ ) |const|                                                           |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`              | :ref:`get_attribute_name<class_XMLParser_method_get_attribute_name>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`              | :ref:`get_attribute_value<class_XMLParser_method_get_attribute_value>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                              |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                    | :ref:`get_current_line<class_XMLParser_method_get_current_line>`\ (\ ) |const|                                                                 |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`              | :ref:`get_named_attribute_value<class_XMLParser_method_get_named_attribute_value>`\ (\ name\: :ref:`String<class_String>`\ ) |const|           |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`              | :ref:`get_named_attribute_value_safe<class_XMLParser_method_get_named_attribute_value_safe>`\ (\ name\: :ref:`String<class_String>`\ ) |const| |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`              | :ref:`get_node_data<class_XMLParser_method_get_node_data>`\ (\ ) |const|                                                                       |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`              | :ref:`get_node_name<class_XMLParser_method_get_node_name>`\ (\ ) |const|                                                                       |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                    | :ref:`get_node_offset<class_XMLParser_method_get_node_offset>`\ (\ ) |const|                                                                   |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodeType<enum_XMLParser_NodeType>` | :ref:`get_node_type<class_XMLParser_method_get_node_type>`\ (\ )                                                                               |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`has_attribute<class_XMLParser_method_has_attribute>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                   |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`is_empty<class_XMLParser_method_is_empty>`\ (\ ) |const|                                                                                 |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`    | :ref:`open<class_XMLParser_method_open>`\ (\ file\: :ref:`String<class_String>`\ )                                                             |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`    | :ref:`open_buffer<class_XMLParser_method_open_buffer>`\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                           |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`    | :ref:`read<class_XMLParser_method_read>`\ (\ )                                                                                                 |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`    | :ref:`seek<class_XMLParser_method_seek>`\ (\ position\: :ref:`int<class_int>`\ )                                                               |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                   | :ref:`skip_section<class_XMLParser_method_skip_section>`\ (\ )                                                                                 |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                     | :ref:`get_attribute_count<class_XMLParser_method_get_attribute_count>`\ (\ ) |const|                                                           |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`               | :ref:`get_attribute_name<class_XMLParser_method_get_attribute_name>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`               | :ref:`get_attribute_value<class_XMLParser_method_get_attribute_value>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                              |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                     | :ref:`get_current_line<class_XMLParser_method_get_current_line>`\ (\ ) |const|                                                                 |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`               | :ref:`get_named_attribute_value<class_XMLParser_method_get_named_attribute_value>`\ (\ name\: :ref:`String<class_String>`\ ) |const|           |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`               | :ref:`get_named_attribute_value_safe<class_XMLParser_method_get_named_attribute_value_safe>`\ (\ name\: :ref:`String<class_String>`\ ) |const| |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`               | :ref:`get_node_data<class_XMLParser_method_get_node_data>`\ (\ ) |const|                                                                       |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`               | :ref:`get_node_name<class_XMLParser_method_get_node_name>`\ (\ ) |const|                                                                       |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                     | :ref:`get_node_offset<class_XMLParser_method_get_node_offset>`\ (\ ) |const|                                                                   |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodeType <enum_XMLParser_NodeType>` | :ref:`get_node_type<class_XMLParser_method_get_node_type>`\ (\ )                                                                               |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`has_attribute<class_XMLParser_method_has_attribute>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                   |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`is_empty<class_XMLParser_method_is_empty>`\ (\ ) |const|                                                                                 |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`open<class_XMLParser_method_open>`\ (\ file\: :ref:`String<class_String>`\ )                                                             |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`open_buffer<class_XMLParser_method_open_buffer>`\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                           |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`read<class_XMLParser_method_read>`\ (\ )                                                                                                 |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`seek<class_XMLParser_method_seek>`\ (\ position\: :ref:`int<class_int>`\ )                                                               |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                    | :ref:`skip_section<class_XMLParser_method_skip_section>`\ (\ )                                                                                 |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -110,14 +110,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_XMLParser_NodeType:
 
 .. rst-class:: classref-enumeration
 
-enum **NodeType**: :ref:`🔗<enum_XMLParser_NodeType>`
+enum **NodeType**: :ref:`🔗 <enum_XMLParser_NodeType>`
 
 .. _class_XMLParser_constant_NODE_NONE:
 
@@ -125,7 +125,7 @@ enum **NodeType**: :ref:`🔗<enum_XMLParser_NodeType>`
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **NODE_NONE** = ``0``
 
-There's no node (no file or buffer opened).
+Không có node nào (chưa mở file hoặc buffer nào).
 
 .. _class_XMLParser_constant_NODE_ELEMENT:
 
@@ -133,7 +133,7 @@ There's no node (no file or buffer opened).
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **NODE_ELEMENT** = ``1``
 
-An element node type, also known as a tag, e.g. ``<title>``.
+Một node kiểu element, còn được gọi là tag, ví dụ ``<title>``.
 
 .. _class_XMLParser_constant_NODE_ELEMENT_END:
 
@@ -141,7 +141,7 @@ An element node type, also known as a tag, e.g. ``<title>``.
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **NODE_ELEMENT_END** = ``2``
 
-An end of element node type, e.g. ``</title>``.
+Một node kiểu kết thúc element, ví dụ ``</title>``.
 
 .. _class_XMLParser_constant_NODE_TEXT:
 
@@ -149,7 +149,7 @@ An end of element node type, e.g. ``</title>``.
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **NODE_TEXT** = ``3``
 
-A text node type, i.e. text that is not inside an element. This includes whitespace.
+Một node kiểu text, tức là văn bản không nằm bên trong element. Bao gồm cả khoảng trắng.
 
 .. _class_XMLParser_constant_NODE_COMMENT:
 
@@ -157,7 +157,7 @@ A text node type, i.e. text that is not inside an element. This includes whitesp
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **NODE_COMMENT** = ``4``
 
-A comment node type, e.g. ``<!--A comment-->``.
+Một node kiểu comment, ví dụ ``<!--A comment-->``.
 
 .. _class_XMLParser_constant_NODE_CDATA:
 
@@ -165,7 +165,7 @@ A comment node type, e.g. ``<!--A comment-->``.
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **NODE_CDATA** = ``5``
 
-A node type for CDATA (Character Data) sections, e.g. ``<![CDATA[CDATA section]]>``.
+Một node kiểu dành cho các phần CDATA (Character Data), ví dụ ``<![CDATA[CDATA section]]>``.
 
 .. _class_XMLParser_constant_NODE_UNKNOWN:
 
@@ -173,7 +173,7 @@ A node type for CDATA (Character Data) sections, e.g. ``<![CDATA[CDATA section]]
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **NODE_UNKNOWN** = ``6``
 
-An unknown node type.
+Một kiểu node không xác định.
 
 .. rst-class:: classref-section-separator
 
@@ -181,8 +181,8 @@ An unknown node type.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XMLParser_method_get_attribute_count:
 
@@ -190,9 +190,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_attribute_count**\ (\ ) |const| :ref:`🔗<class_XMLParser_method_get_attribute_count>`
 
-Returns the number of attributes in the currently parsed element.
+Trả về số lượng thuộc tính trong phần tử hiện đang được phân tích cú pháp.
 
-\ **Note:** If this method is used while the currently parsed node is not :ref:`NODE_ELEMENT<class_XMLParser_constant_NODE_ELEMENT>` or :ref:`NODE_ELEMENT_END<class_XMLParser_constant_NODE_ELEMENT_END>`, this count will not be updated and will still reflect the last element.
+\ **Lưu ý:** Nếu phương thức này được sử dụng khi node hiện đang được phân tích cú pháp không phải là :ref:`NODE_ELEMENT<class_XMLParser_constant_NODE_ELEMENT>` hoặc :ref:`NODE_ELEMENT_END<class_XMLParser_constant_NODE_ELEMENT_END>`, số lượng này sẽ không được cập nhật và vẫn phản ánh phần tử trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Returns the number of attributes in the currently parsed element.
 
 :ref:`String<class_String>` **get_attribute_name**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_XMLParser_method_get_attribute_name>`
 
-Returns the name of an attribute of the currently parsed element, specified by the ``idx`` index.
+Trả về tên của một thuộc tính trong phần tử hiện đang được phân tích cú pháp, được xác định bởi chỉ mục ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Returns the name of an attribute of the currently parsed element, specified by t
 
 :ref:`String<class_String>` **get_attribute_value**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_XMLParser_method_get_attribute_value>`
 
-Returns the value of an attribute of the currently parsed element, specified by the ``idx`` index.
+Trả về giá trị của một thuộc tính trong phần tử hiện đang được phân tích cú pháp, được xác định bởi chỉ mục ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ Returns the value of an attribute of the currently parsed element, specified by 
 
 :ref:`int<class_int>` **get_current_line**\ (\ ) |const| :ref:`🔗<class_XMLParser_method_get_current_line>`
 
-Returns the current line in the parsed file, counting from 0.
+Trả về dòng hiện tại trong tệp đang được phân tích cú pháp, bắt đầu đếm từ 0.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ Returns the current line in the parsed file, counting from 0.
 
 :ref:`String<class_String>` **get_named_attribute_value**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_XMLParser_method_get_named_attribute_value>`
 
-Returns the value of an attribute of the currently parsed element, specified by its ``name``. This method will raise an error if the element has no such attribute.
+Trả về giá trị của một thuộc tính của phần tử đang được phân tích cú pháp, được chỉ định bởi ``name``. Phương thức này sẽ báo lỗi nếu phần tử không có thuộc tính đó.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Returns the value of an attribute of the currently parsed element, specified by 
 
 :ref:`String<class_String>` **get_named_attribute_value_safe**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_XMLParser_method_get_named_attribute_value_safe>`
 
-Returns the value of an attribute of the currently parsed element, specified by its ``name``. This method will return an empty string if the element has no such attribute.
+Trả về giá trị của một thuộc tính của phần tử đang được phân tích cú pháp, được chỉ định bởi ``name``. Phương thức này sẽ trả về một chuỗi rỗng nếu phần tử không có thuộc tính đó.
 
 .. rst-class:: classref-item-separator
 
@@ -264,7 +264,7 @@ Returns the value of an attribute of the currently parsed element, specified by 
 
 :ref:`String<class_String>` **get_node_data**\ (\ ) |const| :ref:`🔗<class_XMLParser_method_get_node_data>`
 
-Returns the contents of a text node. This method will raise an error if the current parsed node is of any other type.
+Trả về nội dung của một nút văn bản. Phương thức này sẽ báo lỗi nếu nút hiện tại đang được phân tích cú pháp thuộc bất kỳ loại nào khác.
 
 .. rst-class:: classref-item-separator
 
@@ -276,9 +276,9 @@ Returns the contents of a text node. This method will raise an error if the curr
 
 :ref:`String<class_String>` **get_node_name**\ (\ ) |const| :ref:`🔗<class_XMLParser_method_get_node_name>`
 
-Returns the name of a node. This method will raise an error if the currently parsed node is a text node.
+Trả về tên của một nút. Phương thức này sẽ báo lỗi nếu nút hiện đang được phân tích cú pháp là một nút văn bản.
 
-\ **Note:** The content of a :ref:`NODE_CDATA<class_XMLParser_constant_NODE_CDATA>` node and the comment string of a :ref:`NODE_COMMENT<class_XMLParser_constant_NODE_COMMENT>` node are also considered names.
+\ **Lưu ý:** Nội dung của một nút :ref:`NODE_CDATA<class_XMLParser_constant_NODE_CDATA>` và chuỗi chú thích của một nút :ref:`NODE_COMMENT<class_XMLParser_constant_NODE_COMMENT>` cũng được xem là tên.
 
 .. rst-class:: classref-item-separator
 
@@ -290,7 +290,7 @@ Returns the name of a node. This method will raise an error if the currently par
 
 :ref:`int<class_int>` **get_node_offset**\ (\ ) |const| :ref:`🔗<class_XMLParser_method_get_node_offset>`
 
-Returns the byte offset of the currently parsed node since the beginning of the file or buffer. This is usually equivalent to the number of characters before the read position.
+Trả về độ lệch byte của nút hiện đang được phân tích cú pháp kể từ đầu tệp hoặc bộ đệm. Giá trị này thường tương đương với số ký tự trước vị trí đọc.
 
 .. rst-class:: classref-item-separator
 
@@ -302,7 +302,7 @@ Returns the byte offset of the currently parsed node since the beginning of the 
 
 :ref:`NodeType<enum_XMLParser_NodeType>` **get_node_type**\ (\ ) :ref:`🔗<class_XMLParser_method_get_node_type>`
 
-Returns the type of the current node. Compare with :ref:`NodeType<enum_XMLParser_NodeType>` constants.
+Trả về loại của nút hiện tại. So sánh với các hằng số :ref:`NodeType <enum_XMLParser_NodeType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ Returns the type of the current node. Compare with :ref:`NodeType<enum_XMLParser
 
 :ref:`bool<class_bool>` **has_attribute**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_XMLParser_method_has_attribute>`
 
-Returns ``true`` if the currently parsed element has an attribute with the ``name``.
+Trả về ``true`` nếu phần tử hiện đang được phân tích cú pháp có một thuộc tính với ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -326,7 +326,7 @@ Returns ``true`` if the currently parsed element has an attribute with the ``nam
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_XMLParser_method_is_empty>`
 
-Returns ``true`` if the currently parsed element is empty, e.g. ``<element />``.
+Trả về ``true`` nếu phần tử hiện đang được phân tích cú pháp trống, ví dụ: ``<element />``.
 
 .. rst-class:: classref-item-separator
 
@@ -338,7 +338,7 @@ Returns ``true`` if the currently parsed element is empty, e.g. ``<element />``.
 
 :ref:`Error<enum_@GlobalScope_Error>` **open**\ (\ file\: :ref:`String<class_String>`\ ) :ref:`🔗<class_XMLParser_method_open>`
 
-Opens an XML ``file`` for parsing. This method returns an error code.
+Mở một ``file`` XML để phân tích cú pháp. Phương thức này trả về một mã lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -350,7 +350,7 @@ Opens an XML ``file`` for parsing. This method returns an error code.
 
 :ref:`Error<enum_@GlobalScope_Error>` **open_buffer**\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_XMLParser_method_open_buffer>`
 
-Opens an XML raw ``buffer`` for parsing. This method returns an error code.
+Mở một ``buffer`` XML thô để phân tích cú pháp. Phương thức này trả về một mã lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -362,7 +362,7 @@ Opens an XML raw ``buffer`` for parsing. This method returns an error code.
 
 :ref:`Error<enum_@GlobalScope_Error>` **read**\ (\ ) :ref:`🔗<class_XMLParser_method_read>`
 
-Parses the next node in the file. This method returns an error code.
+Phân tích cú pháp node tiếp theo trong tệp. Phương thức này trả về một mã lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -374,7 +374,7 @@ Parses the next node in the file. This method returns an error code.
 
 :ref:`Error<enum_@GlobalScope_Error>` **seek**\ (\ position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_XMLParser_method_seek>`
 
-Moves the buffer cursor to a certain offset (since the beginning) and reads the next node there. This method returns an error code.
+Di chuyển con trỏ bộ đệm đến một offset nhất định (tính từ đầu) và đọc node tiếp theo tại đó. Phương thức này trả về một mã lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -386,14 +386,14 @@ Moves the buffer cursor to a certain offset (since the beginning) and reads the 
 
 |void| **skip_section**\ (\ ) :ref:`🔗<class_XMLParser_method_skip_section>`
 
-Skips the current section. If the currently parsed node contains more inner nodes, they will be ignored and the cursor will go to the closing of the current element.
+Bỏ qua phần hiện tại. Nếu node hiện đang được phân tích cú pháp chứa nhiều node bên trong hơn, chúng sẽ bị bỏ qua và con trỏ sẽ chuyển đến thẻ đóng của phần tử hiện tại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

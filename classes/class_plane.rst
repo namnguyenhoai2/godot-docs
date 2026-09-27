@@ -10,27 +10,27 @@
 Plane
 =====
 
-A plane in Hessian normal form.
+Một mặt phẳng ở dạng chuẩn Hessian.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Represents a normalized plane equation. :ref:`normal<class_Plane_property_normal>` is the normal of the plane (a, b, c normalized), and :ref:`d<class_Plane_property_d>` is the distance from the origin to the plane (in the direction of "normal"). "Over" or "Above" the plane is considered the side of the plane towards where the normal is pointing.
+Biểu diễn phương trình mặt phẳng đã chuẩn hóa. :ref:`normal<class_Plane_property_normal>` là pháp tuyến của mặt phẳng (a, b, c đã chuẩn hóa), còn :ref:`d<class_Plane_property_d>` là khoảng cách từ gốc tọa độ đến mặt phẳng (theo hướng của "normal"). "Over" hoặc "Above" mặt phẳng được xem là phía của mặt phẳng theo hướng mà pháp tuyến đang chỉ đến.
 
-\ **Note:** In a boolean context, a plane will evaluate to ``false`` if all its components equal ``0``. Otherwise, a plane will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một mặt phẳng sẽ được đánh giá là ``false`` nếu tất cả các thành phần của nó bằng ``0``. Nếu không, mặt phẳng sẽ luôn được đánh giá là ``true``.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Math documentation index <../tutorials/math/index>`
+- :doc:`Chỉ mục tài liệu Math <../tutorials/math/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,7 +50,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -74,8 +74,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -106,23 +106,23 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +---------------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`   | :ref:`operator !=<class_Plane_operator_neq_Plane>`\ (\ right\: :ref:`Plane<class_Plane>`\ )                  |
-   +---------------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`Plane<class_Plane>` | :ref:`operator *<class_Plane_operator_mul_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) |
-   +---------------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`   | :ref:`operator ==<class_Plane_operator_eq_Plane>`\ (\ right\: :ref:`Plane<class_Plane>`\ )                   |
-   +---------------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`Plane<class_Plane>` | :ref:`operator unary+<class_Plane_operator_unplus>`\ (\ )                                                    |
-   +---------------------------+--------------------------------------------------------------------------------------------------------------+
-   | :ref:`Plane<class_Plane>` | :ref:`operator unary-<class_Plane_operator_unminus>`\ (\ )                                                   |
-   +---------------------------+--------------------------------------------------------------------------------------------------------------+
+   +---------------------------+---------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`operator != <class_Plane_operator_neq_Plane>`\ (\ right\: :ref:`Plane<class_Plane>`\ )                  |
+   +---------------------------+---------------------------------------------------------------------------------------------------------------+
+   | :ref:`Plane<class_Plane>` | :ref:`operator * <class_Plane_operator_mul_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) |
+   +---------------------------+---------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`operator == <class_Plane_operator_eq_Plane>`\ (\ right\: :ref:`Plane<class_Plane>`\ )                   |
+   +---------------------------+---------------------------------------------------------------------------------------------------------------+
+   | :ref:`Plane<class_Plane>` | :ref:`operator unary+ <class_Plane_operator_unplus>`\ (\ )                                                    |
+   +---------------------------+---------------------------------------------------------------------------------------------------------------+
+   | :ref:`Plane<class_Plane>` | :ref:`operator unary- <class_Plane_operator_unminus>`\ (\ )                                                   |
+   +---------------------------+---------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -130,8 +130,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Plane_constant_PLANE_YZ:
 
@@ -139,7 +139,7 @@ Constants
 
 **PLANE_YZ** = ``Plane(1, 0, 0, 0)`` :ref:`🔗<class_Plane_constant_PLANE_YZ>`
 
-A plane that extends in the Y and Z axes (normal vector points +X).
+Một mặt phẳng mở rộng theo các trục Y và Z (vectơ pháp tuyến hướng theo +X).
 
 .. _class_Plane_constant_PLANE_XZ:
 
@@ -147,7 +147,7 @@ A plane that extends in the Y and Z axes (normal vector points +X).
 
 **PLANE_XZ** = ``Plane(0, 1, 0, 0)`` :ref:`🔗<class_Plane_constant_PLANE_XZ>`
 
-A plane that extends in the X and Z axes (normal vector points +Y).
+Một mặt phẳng mở rộng theo các trục X và Z (vectơ pháp tuyến hướng theo +Y).
 
 .. _class_Plane_constant_PLANE_XY:
 
@@ -155,7 +155,7 @@ A plane that extends in the X and Z axes (normal vector points +Y).
 
 **PLANE_XY** = ``Plane(0, 0, 1, 0)`` :ref:`🔗<class_Plane_constant_PLANE_XY>`
 
-A plane that extends in the X and Y axes (normal vector points +Z).
+Một mặt phẳng mở rộng theo các trục X và Y (vectơ pháp tuyến hướng theo +Z).
 
 .. rst-class:: classref-section-separator
 
@@ -163,8 +163,8 @@ A plane that extends in the X and Y axes (normal vector points +Z).
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Plane_property_d:
 
@@ -172,9 +172,9 @@ Property Descriptions
 
 :ref:`float<class_float>` **d** = ``0.0`` :ref:`🔗<class_Plane_property_d>`
 
-The distance from the origin to the plane, expressed in terms of :ref:`normal<class_Plane_property_normal>` (according to its direction and magnitude). Actual absolute distance from the origin to the plane can be calculated as ``abs(d) / normal.length()`` (if :ref:`normal<class_Plane_property_normal>` has zero length then this **Plane** does not represent a valid plane).
+Khoảng cách từ gốc tọa độ đến mặt phẳng, được biểu diễn theo :ref:`normal<class_Plane_property_normal>` (tùy theo hướng và độ lớn của nó). Khoảng cách tuyệt đối thực tế từ gốc tọa độ đến mặt phẳng có thể được tính bằng ``abs(d) / normal.length()`` (nếu :ref:`normal<class_Plane_property_normal>` có độ dài bằng không thì **Plane** này không biểu diễn một mặt phẳng hợp lệ).
 
-In the scalar equation of the plane ``ax + by + cz = d``, this is ``d``, while the ``(a, b, c)`` coordinates are represented by the :ref:`normal<class_Plane_property_normal>` property.
+Trong phương trình vô hướng của mặt phẳng ``ax + by + cz = d``, đây là ``d``, còn các tọa độ ``(a, b, c)`` được biểu diễn bằng thuộc tính :ref:`normal<class_Plane_property_normal>`.
 
 .. rst-class:: classref-item-separator
 
@@ -186,9 +186,9 @@ In the scalar equation of the plane ``ax + by + cz = d``, this is ``d``, while t
 
 :ref:`Vector3<class_Vector3>` **normal** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_Plane_property_normal>`
 
-The normal of the plane, typically a unit vector. Shouldn't be a zero vector as **Plane** with such :ref:`normal<class_Plane_property_normal>` does not represent a valid plane.
+Pháp tuyến của mặt phẳng, thường là một vector đơn vị. Không nên là vector không, vì **Plane** với :ref:`normal<class_Plane_property_normal>` như vậy không biểu diễn một mặt phẳng hợp lệ.
 
-In the scalar equation of the plane ``ax + by + cz = d``, this is the vector ``(a, b, c)``, where ``d`` is the :ref:`d<class_Plane_property_d>` property.
+Trong phương trình vô hướng của mặt phẳng ``ax + by + cz = d``, đây là vector ``(a, b, c)``, trong đó ``d`` là thuộc tính :ref:`d<class_Plane_property_d>`.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ In the scalar equation of the plane ``ax + by + cz = d``, this is the vector ``(
 
 :ref:`float<class_float>` **x** = ``0.0`` :ref:`🔗<class_Plane_property_x>`
 
-The X component of the plane's :ref:`normal<class_Plane_property_normal>` vector.
+Thành phần X của vector :ref:`normal<class_Plane_property_normal>` của mặt phẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ The X component of the plane's :ref:`normal<class_Plane_property_normal>` vector
 
 :ref:`float<class_float>` **y** = ``0.0`` :ref:`🔗<class_Plane_property_y>`
 
-The Y component of the plane's :ref:`normal<class_Plane_property_normal>` vector.
+Thành phần Y của vector :ref:`normal<class_Plane_property_normal>` của mặt phẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -224,7 +224,7 @@ The Y component of the plane's :ref:`normal<class_Plane_property_normal>` vector
 
 :ref:`float<class_float>` **z** = ``0.0`` :ref:`🔗<class_Plane_property_z>`
 
-The Z component of the plane's :ref:`normal<class_Plane_property_normal>` vector.
+Thành phần Z của vector :ref:`normal<class_Plane_property_normal>` của mặt phẳng.
 
 .. rst-class:: classref-section-separator
 
@@ -232,8 +232,8 @@ The Z component of the plane's :ref:`normal<class_Plane_property_normal>` vector
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả Constructor
+-----------------
 
 .. _class_Plane_constructor_Plane:
 
@@ -241,7 +241,7 @@ Constructor Descriptions
 
 :ref:`Plane<class_Plane>` **Plane**\ (\ ) :ref:`🔗<class_Plane_constructor_Plane>`
 
-Constructs a default-initialized **Plane** with all components set to ``0``.
+Tạo một **Plane** được khởi tạo mặc định với tất cả các thành phần được đặt thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -251,7 +251,7 @@ Constructs a default-initialized **Plane** with all components set to ``0``.
 
 :ref:`Plane<class_Plane>` **Plane**\ (\ from\: :ref:`Plane<class_Plane>`\ )
 
-Constructs a **Plane** as a copy of the given **Plane**.
+Tạo một **Plane** dưới dạng bản sao của **Plane** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -261,7 +261,7 @@ Constructs a **Plane** as a copy of the given **Plane**.
 
 :ref:`Plane<class_Plane>` **Plane**\ (\ a\: :ref:`float<class_float>`, b\: :ref:`float<class_float>`, c\: :ref:`float<class_float>`, d\: :ref:`float<class_float>`\ )
 
-Creates a plane from the four parameters. The three components of the resulting plane's :ref:`normal<class_Plane_property_normal>` are ``a``, ``b`` and ``c``, and the plane has a distance of ``d`` from the origin.
+Tạo một mặt phẳng từ bốn tham số. Ba thành phần của :ref:`normal<class_Plane_property_normal>` của mặt phẳng kết quả lần lượt là ``a``, ``b`` và ``c``, và mặt phẳng cách gốc tọa độ một khoảng ``d``.
 
 .. rst-class:: classref-item-separator
 
@@ -271,9 +271,9 @@ Creates a plane from the four parameters. The three components of the resulting 
 
 :ref:`Plane<class_Plane>` **Plane**\ (\ normal\: :ref:`Vector3<class_Vector3>`\ )
 
-Creates a plane from the normal vector. The plane will intersect the origin.
+Tạo một mặt phẳng từ vector pháp tuyến. Mặt phẳng sẽ giao với gốc tọa độ.
 
-The ``normal`` of the plane must be a unit vector.
+``normal`` của mặt phẳng phải là một vector đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -283,9 +283,9 @@ The ``normal`` of the plane must be a unit vector.
 
 :ref:`Plane<class_Plane>` **Plane**\ (\ normal\: :ref:`Vector3<class_Vector3>`, d\: :ref:`float<class_float>`\ )
 
-Creates a plane from the normal vector and the plane's distance from the origin.
+Tạo một mặt phẳng từ vector pháp tuyến và khoảng cách từ mặt phẳng đến gốc tọa độ.
 
-The ``normal`` of the plane must be a unit vector.
+``normal`` của mặt phẳng phải là một vector đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -295,9 +295,9 @@ The ``normal`` of the plane must be a unit vector.
 
 :ref:`Plane<class_Plane>` **Plane**\ (\ normal\: :ref:`Vector3<class_Vector3>`, point\: :ref:`Vector3<class_Vector3>`\ )
 
-Creates a plane from the normal vector and a point on the plane.
+Tạo một mặt phẳng từ vector pháp tuyến và một điểm trên mặt phẳng.
 
-The ``normal`` of the plane must be a unit vector.
+``normal`` của mặt phẳng phải là một vector đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -307,7 +307,7 @@ The ``normal`` of the plane must be a unit vector.
 
 :ref:`Plane<class_Plane>` **Plane**\ (\ point1\: :ref:`Vector3<class_Vector3>`, point2\: :ref:`Vector3<class_Vector3>`, point3\: :ref:`Vector3<class_Vector3>`\ )
 
-Creates a plane from the three points, given in clockwise order.
+Tạo một mặt phẳng từ ba điểm được cung cấp theo thứ tự chiều kim đồng hồ.
 
 .. rst-class:: classref-section-separator
 
@@ -315,8 +315,8 @@ Creates a plane from the three points, given in clockwise order.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Plane_method_distance_to:
 
@@ -324,7 +324,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **distance_to**\ (\ point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Plane_method_distance_to>`
 
-Returns the shortest distance from the plane to the position ``point``. If the point is above the plane, the distance will be positive. If below, the distance will be negative.
+Trả về khoảng cách ngắn nhất từ mặt phẳng đến vị trí ``point``. Nếu điểm nằm phía trên mặt phẳng, khoảng cách sẽ là số dương. Nếu nằm phía dưới, khoảng cách sẽ là số âm.
 
 .. rst-class:: classref-item-separator
 
@@ -336,7 +336,7 @@ Returns the shortest distance from the plane to the position ``point``. If the p
 
 :ref:`Vector3<class_Vector3>` **get_center**\ (\ ) |const| :ref:`🔗<class_Plane_method_get_center>`
 
-Returns the center of the plane.
+Trả về tâm của mặt phẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -348,7 +348,7 @@ Returns the center of the plane.
 
 :ref:`bool<class_bool>` **has_point**\ (\ point\: :ref:`Vector3<class_Vector3>`, tolerance\: :ref:`float<class_float>` = 1e-05\ ) |const| :ref:`🔗<class_Plane_method_has_point>`
 
-Returns ``true`` if ``point`` is inside the plane. Comparison uses a custom minimum ``tolerance`` threshold.
+Trả về ``true`` nếu ``point`` nằm bên trong mặt phẳng. Phép so sánh sử dụng ngưỡng ``tolerance`` tối thiểu tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -360,7 +360,7 @@ Returns ``true`` if ``point`` is inside the plane. Comparison uses a custom mini
 
 :ref:`Variant<class_Variant>` **intersect_3**\ (\ b\: :ref:`Plane<class_Plane>`, c\: :ref:`Plane<class_Plane>`\ ) |const| :ref:`🔗<class_Plane_method_intersect_3>`
 
-Returns the intersection point of the three planes ``b``, ``c`` and this plane. If no intersection is found, ``null`` is returned.
+Trả về điểm giao của ba mặt phẳng ``b``, ``c`` và mặt phẳng này. Nếu không tìm thấy giao điểm, ``null`` được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -372,7 +372,7 @@ Returns the intersection point of the three planes ``b``, ``c`` and this plane. 
 
 :ref:`Variant<class_Variant>` **intersects_ray**\ (\ from\: :ref:`Vector3<class_Vector3>`, dir\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Plane_method_intersects_ray>`
 
-Returns the intersection point of a ray consisting of the position ``from`` and the direction normal ``dir`` with this plane. If no intersection is found, ``null`` is returned.
+Trả về điểm giao của một tia gồm vị trí ``from`` và pháp tuyến hướng ``dir`` với mặt phẳng này. Nếu không tìm thấy giao điểm, ``null`` được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -384,7 +384,7 @@ Returns the intersection point of a ray consisting of the position ``from`` and 
 
 :ref:`Variant<class_Variant>` **intersects_segment**\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Plane_method_intersects_segment>`
 
-Returns the intersection point of a segment from position ``from`` to position ``to`` with this plane. If no intersection is found, ``null`` is returned.
+Trả về điểm giao của một đoạn từ vị trí ``from`` đến vị trí ``to`` với mặt phẳng này. Nếu không tìm thấy giao điểm, ``null`` được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -396,7 +396,7 @@ Returns the intersection point of a segment from position ``from`` to position `
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ to_plane\: :ref:`Plane<class_Plane>`\ ) |const| :ref:`🔗<class_Plane_method_is_equal_approx>`
 
-Returns ``true`` if this plane and ``to_plane`` are approximately equal, by running :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on each component.
+Trả về ``true`` nếu mặt phẳng này và ``to_plane`` xấp xỉ bằng nhau, bằng cách chạy :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -408,7 +408,7 @@ Returns ``true`` if this plane and ``to_plane`` are approximately equal, by runn
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Plane_method_is_finite>`
 
-Returns ``true`` if this plane is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on each component.
+Trả về ``true`` nếu mặt phẳng này hữu hạn, bằng cách gọi :ref:`@GlobalScope.is_finite() <class_@GlobalScope_method_is_finite>` trên từng thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -420,7 +420,7 @@ Returns ``true`` if this plane is finite, by calling :ref:`@GlobalScope.is_finit
 
 :ref:`bool<class_bool>` **is_point_over**\ (\ point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Plane_method_is_point_over>`
 
-Returns ``true`` if ``point`` is located above the plane.
+Trả về ``true`` nếu ``point`` nằm phía trên mặt phẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -432,7 +432,7 @@ Returns ``true`` if ``point`` is located above the plane.
 
 :ref:`Plane<class_Plane>` **normalized**\ (\ ) |const| :ref:`🔗<class_Plane_method_normalized>`
 
-Returns a copy of the plane, with normalized :ref:`normal<class_Plane_property_normal>` (so it's a unit vector). Returns ``Plane(0, 0, 0, 0)`` if :ref:`normal<class_Plane_property_normal>` can't be normalized (it has zero length).
+Trả về một bản sao của mặt phẳng với :ref:`normal<class_Plane_property_normal>` đã được chuẩn hóa (do đó đây là một vector đơn vị). Trả về ``Plane(0, 0, 0, 0)`` nếu không thể chuẩn hóa :ref:`normal<class_Plane_property_normal>` (vì nó có độ dài bằng không).
 
 .. rst-class:: classref-item-separator
 
@@ -444,7 +444,7 @@ Returns a copy of the plane, with normalized :ref:`normal<class_Plane_property_n
 
 :ref:`Vector3<class_Vector3>` **project**\ (\ point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Plane_method_project>`
 
-Returns the orthogonal projection of ``point`` into a point in the plane.
+Trả về phép chiếu vuông góc của ``point`` lên một điểm trong mặt phẳng.
 
 .. rst-class:: classref-section-separator
 
@@ -452,18 +452,18 @@ Returns the orthogonal projection of ``point`` into a point in the plane.
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Plane_operator_neq_Plane:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗<class_Plane_operator_neq_Plane>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗 <class_Plane_operator_neq_Plane>`
 
-Returns ``true`` if the planes are not equal.
+Trả về ``true`` nếu các mặt phẳng không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Plane_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác của số thực dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Plane_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -473,11 +473,11 @@ Returns ``true`` if the planes are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Plane<class_Plane>` **operator ***\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_Plane_operator_mul_Transform3D>`
+:ref:`Plane<class_Plane>` **operator ***\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗 <class_Plane_operator_mul_Transform3D>`
 
-Inversely transforms (multiplies) the **Plane** by the given :ref:`Transform3D<class_Transform3D>` transformation matrix.
+Biến đổi ngược (nhân) **Plane** bằng ma trận biến đổi :ref:`Transform3D<class_Transform3D>` đã cho.
 
-\ ``plane * transform`` is equivalent to ``transform.affine_inverse() * plane``. See :ref:`Transform3D.affine_inverse()<class_Transform3D_method_affine_inverse>`.
+\ ``plane * transform`` tương đương với ``transform.affine_inverse() * plane``. Xem :ref:`Transform3D.affine_inverse()<class_Transform3D_method_affine_inverse>`.
 
 .. rst-class:: classref-item-separator
 
@@ -487,11 +487,11 @@ Inversely transforms (multiplies) the **Plane** by the given :ref:`Transform3D<c
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗<class_Plane_operator_eq_Plane>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗 <class_Plane_operator_eq_Plane>`
 
-Returns ``true`` if the planes are exactly equal.
+Trả về ``true`` nếu các plane hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Plane_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác của số thực dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Plane_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -501,9 +501,9 @@ Returns ``true`` if the planes are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Plane<class_Plane>` **operator unary+**\ (\ ) :ref:`🔗<class_Plane_operator_unplus>`
+:ref:`Plane<class_Plane>` **operator unary+**\ (\ ) :ref:`🔗 <class_Plane_operator_unplus>`
 
-Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, but sometimes it can make your code more readable.
+Trả về cùng giá trị như khi ``+`` không tồn tại. Unary ``+`` không thực hiện thao tác gì, nhưng đôi khi có thể giúp mã của bạn dễ đọc hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -513,16 +513,16 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 
 .. rst-class:: classref-operator
 
-:ref:`Plane<class_Plane>` **operator unary-**\ (\ ) :ref:`🔗<class_Plane_operator_unminus>`
+:ref:`Plane<class_Plane>` **operator unary-**\ (\ ) :ref:`🔗 <class_Plane_operator_unminus>`
 
-Returns the negative value of the **Plane**. This is the same as writing ``Plane(-p.normal, -p.d)``. This operation flips the direction of the normal vector and also flips the distance value, resulting in a Plane that is in the same place, but facing the opposite direction.
+Trả về giá trị âm của **Plane**. Điều này tương đương với việc viết ``Plane(-p.normal, -p.d)``. Thao tác này đảo hướng của vector pháp tuyến và cũng đảo giá trị khoảng cách, tạo ra một Plane ở cùng vị trí nhưng hướng theo hướng ngược lại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

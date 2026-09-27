@@ -10,31 +10,31 @@
 Shape3D
 =======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`BoxShape3D<class_BoxShape3D>`, :ref:`CapsuleShape3D<class_CapsuleShape3D>`, :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>`, :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`, :ref:`CylinderShape3D<class_CylinderShape3D>`, :ref:`HeightMapShape3D<class_HeightMapShape3D>`, :ref:`SeparationRayShape3D<class_SeparationRayShape3D>`, :ref:`SphereShape3D<class_SphereShape3D>`, :ref:`WorldBoundaryShape3D<class_WorldBoundaryShape3D>`
+**Được kế thừa bởi:** :ref:`BoxShape3D<class_BoxShape3D>`, :ref:`CapsuleShape3D<class_CapsuleShape3D>`, :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>`, :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`, :ref:`CylinderShape3D<class_CylinderShape3D>`, :ref:`HeightMapShape3D<class_HeightMapShape3D>`, :ref:`SeparationRayShape3D<class_SeparationRayShape3D>`, :ref:`SphereShape3D<class_SphereShape3D>`, :ref:`WorldBoundaryShape3D<class_WorldBoundaryShape3D>`
 
-Abstract base class for 3D shapes used for physics collision.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Abstract base class for all 3D shapes, intended for use in physics.
-
-\ **Performance:** Primitive shapes, especially :ref:`SphereShape3D<class_SphereShape3D>`, are fast to check collisions against. :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` and :ref:`HeightMapShape3D<class_HeightMapShape3D>` are slower, and :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` is the slowest.
+Lớp cơ sở trừu tượng cho các hình dạng 3D được dùng để va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở trừu tượng cho tất cả hình dạng 3D, dành cho việc sử dụng trong vật lý.
+
+\ **Hiệu năng:** Các hình dạng nguyên thủy, đặc biệt là :ref:`SphereShape3D<class_SphereShape3D>`, được kiểm tra va chạm rất nhanh. :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` và :ref:`HeightMapShape3D<class_HeightMapShape3D>` chậm hơn, còn :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` là chậm nhất.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -48,8 +48,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -64,8 +64,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Shape3D_property_custom_solver_bias:
 
@@ -78,11 +78,11 @@ Property Descriptions
 - |void| **set_custom_solver_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_custom_solver_bias**\ (\ )
 
-The shape's custom solver bias. Defines how much bodies react to enforce contact separation when this shape is involved.
+Độ ưu tiên solver tùy chỉnh của hình dạng. Xác định mức độ các body phản ứng để đảm bảo tách rời tiếp xúc khi hình dạng này tham gia.
 
-When set to ``0``, the default value from :ref:`ProjectSettings.physics/3d/solver/default_contact_bias<class_ProjectSettings_property_physics/3d/solver/default_contact_bias>` is used.
+Khi được đặt thành ``0``, giá trị mặc định từ :ref:`ProjectSettings.physics/3d/solver/default_contact_bias <class_ProjectSettings_property_physics/3d/solver/default_contact_bias>` sẽ được sử dụng.
 
-\ **Note:** :ref:`custom_solver_bias<class_Shape3D_property_custom_solver_bias>` is only effective when using GodotPhysics3D. It has no effect when using Jolt Physics.
+\ **Lưu ý:** :ref:`custom_solver_bias<class_Shape3D_property_custom_solver_bias>` chỉ có hiệu lực khi sử dụng GodotPhysics3D. Nó không có tác dụng khi sử dụng Jolt Physics.
 
 .. rst-class:: classref-item-separator
 
@@ -99,9 +99,9 @@ When set to ``0``, the default value from :ref:`ProjectSettings.physics/3d/solve
 - |void| **set_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_margin**\ (\ )
 
-The collision margin for the shape. This is not used in Godot Physics.
+Margin va chạm của hình dạng. Giá trị này không được sử dụng trong Godot Physics.
 
-Collision margins allow collision detection to be more efficient by adding an extra shell around shapes. Collision algorithms are more expensive when objects overlap by more than their margin, so a higher value for margins is better for performance, at the cost of accuracy around edges as it makes them less sharp.
+Margin va chạm giúp việc phát hiện va chạm hiệu quả hơn bằng cách thêm một lớp vỏ bổ sung xung quanh các hình dạng. Các thuật toán va chạm tốn nhiều chi phí hơn khi các đối tượng chồng lấn quá mức margin của chúng, vì vậy giá trị margin cao hơn sẽ tốt hơn cho hiệu năng, đổi lại độ chính xác quanh các cạnh giảm do chúng kém sắc nét hơn.
 
 .. rst-class:: classref-section-separator
 
@@ -109,8 +109,8 @@ Collision margins allow collision detection to be more efficient by adding an ex
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Shape3D_method_get_debug_mesh:
 
@@ -118,14 +118,14 @@ Method Descriptions
 
 :ref:`ArrayMesh<class_ArrayMesh>` **get_debug_mesh**\ (\ ) :ref:`🔗<class_Shape3D_method_get_debug_mesh>`
 
-Returns the :ref:`ArrayMesh<class_ArrayMesh>` used to draw the debug collision for this **Shape3D**.
+Trả về :ref:`ArrayMesh<class_ArrayMesh>` được dùng để vẽ va chạm gỡ lỗi cho **Shape3D** này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,25 +10,25 @@
 ResourceFormatLoader
 ====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Loads a specific resource type from a file.
+Tải một loại resource cụ thể từ một tệp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Godot loads resources in the editor or in exported games using ResourceFormatLoaders. They are queried automatically via the :ref:`ResourceLoader<class_ResourceLoader>` singleton, or when a resource with internal dependencies is loaded. Each file type may load as a different resource type, so multiple ResourceFormatLoaders are registered in the engine.
+Godot tải các resource trong editor hoặc trong các game đã export bằng ResourceFormatLoader. Chúng được tự động truy vấn thông qua singleton :ref:`ResourceLoader<class_ResourceLoader>`, hoặc khi một resource có các dependency nội bộ được tải. Mỗi loại tệp có thể được tải thành một loại resource khác nhau, vì vậy engine đăng ký nhiều ResourceFormatLoader.
 
-Extending this class allows you to define your own loader. Be sure to respect the documented return types and values. You should give it a global class name with ``class_name`` for it to be registered. Like built-in ResourceFormatLoaders, it will be called automatically when loading resources of its handled type(s). You may also implement a :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
+Mở rộng class này cho phép bạn định nghĩa loader của riêng mình. Hãy đảm bảo tuân thủ các kiểu và giá trị trả về được ghi trong tài liệu. Bạn nên đặt cho nó một global class name bằng ``class_name`` để nó được đăng ký. Giống như các ResourceFormatLoader tích hợp sẵn, nó sẽ được tự động gọi khi tải các resource thuộc loại mà nó xử lý. Bạn cũng có thể triển khai một :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
 
-\ **Note:** You can also extend :ref:`EditorImportPlugin<class_EditorImportPlugin>` if the resource type you need exists but Godot is unable to load its format. Choosing one way over another depends on if the format is suitable or not for the final exported game. For example, it's better to import ``.png`` textures as ``.ctex`` (:ref:`CompressedTexture2D<class_CompressedTexture2D>`) first, so they can be loaded with better efficiency on the graphics card.
+\ **Lưu ý:** Bạn cũng có thể mở rộng :ref:`EditorImportPlugin<class_EditorImportPlugin>` nếu loại resource bạn cần tồn tại nhưng Godot không thể tải format của nó. Việc chọn cách nào phụ thuộc vào việc format đó có phù hợp với game được export cuối cùng hay không. Ví dụ, tốt hơn nên import texture ``.png`` dưới dạng ``.ctex`` (:ref:`CompressedTexture2D<class_CompressedTexture2D>`) trước, để chúng có thể được tải hiệu quả hơn trên card đồ họa.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -54,7 +54,7 @@ Methods
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`_recognize_path<class_ResourceFormatLoader_private_method__recognize_path>`\ (\ path\: :ref:`String<class_String>`, type\: :ref:`StringName<class_StringName>`\ ) |virtual| |const|                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`_rename_dependencies<class_ResourceFormatLoader_private_method__rename_dependencies>`\ (\ path\: :ref:`String<class_String>`, renames\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |const|                                                           |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`_rename_dependencies<class_ResourceFormatLoader_private_method__rename_dependencies>`\ (\ path\: :ref:`String<class_String>`, renames\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |const|                                                           |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -63,14 +63,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enumeration
+---------------
 
 .. _enum_ResourceFormatLoader_CacheMode:
 
 .. rst-class:: classref-enumeration
 
-enum **CacheMode**: :ref:`🔗<enum_ResourceFormatLoader_CacheMode>`
+enum **CacheMode**: :ref:`🔗 <enum_ResourceFormatLoader_CacheMode>`
 
 .. _class_ResourceFormatLoader_constant_CACHE_MODE_IGNORE:
 
@@ -78,7 +78,7 @@ enum **CacheMode**: :ref:`🔗<enum_ResourceFormatLoader_CacheMode>`
 
 :ref:`CacheMode<enum_ResourceFormatLoader_CacheMode>` **CACHE_MODE_IGNORE** = ``0``
 
-Neither the main resource (the one requested to be loaded) nor any of its subresources are retrieved from cache nor stored into it. Dependencies (external resources) are loaded with :ref:`CACHE_MODE_REUSE<class_ResourceFormatLoader_constant_CACHE_MODE_REUSE>`.
+Cả resource chính (resource được yêu cầu tải) lẫn các subresource của nó đều không được lấy từ cache hoặc lưu vào cache. Các dependency (resource bên ngoài) được tải bằng :ref:`CACHE_MODE_REUSE<class_ResourceFormatLoader_constant_CACHE_MODE_REUSE>`.
 
 .. _class_ResourceFormatLoader_constant_CACHE_MODE_REUSE:
 
@@ -86,7 +86,7 @@ Neither the main resource (the one requested to be loaded) nor any of its subres
 
 :ref:`CacheMode<enum_ResourceFormatLoader_CacheMode>` **CACHE_MODE_REUSE** = ``1``
 
-The main resource (the one requested to be loaded), its subresources, and its dependencies (external resources) are retrieved from cache if present, instead of loaded. Those not cached are loaded and then stored into the cache. The same rules are propagated recursively down the tree of dependencies (external resources).
+Resource chính (resource được yêu cầu tải), các subresource và các dependency (resource bên ngoài) của nó được lấy từ cache nếu có, thay vì được tải. Những resource chưa được cache sẽ được tải rồi lưu vào cache. Các quy tắc tương tự được áp dụng đệ quy xuống toàn bộ cây dependency (resource bên ngoài).
 
 .. _class_ResourceFormatLoader_constant_CACHE_MODE_REPLACE:
 
@@ -94,7 +94,7 @@ The main resource (the one requested to be loaded), its subresources, and its de
 
 :ref:`CacheMode<enum_ResourceFormatLoader_CacheMode>` **CACHE_MODE_REPLACE** = ``2``
 
-Like :ref:`CACHE_MODE_REUSE<class_ResourceFormatLoader_constant_CACHE_MODE_REUSE>`, but the cache is checked for the main resource (the one requested to be loaded) as well as for each of its subresources. Those already in the cache, as long as the loaded and cached types match, have their data refreshed from storage into the already existing instances. Otherwise, they are recreated as completely new objects.
+Giống :ref:`CACHE_MODE_REUSE<class_ResourceFormatLoader_constant_CACHE_MODE_REUSE>`, nhưng cache được kiểm tra cho resource chính (resource được yêu cầu tải) cũng như từng subresource của nó. Những resource đã có trong cache, miễn là kiểu đã tải và kiểu được cache khớp nhau, sẽ được làm mới dữ liệu từ nơi lưu trữ vào các instance đã tồn tại. Nếu không, chúng sẽ được tạo lại thành các object hoàn toàn mới.
 
 .. _class_ResourceFormatLoader_constant_CACHE_MODE_IGNORE_DEEP:
 
@@ -102,7 +102,7 @@ Like :ref:`CACHE_MODE_REUSE<class_ResourceFormatLoader_constant_CACHE_MODE_REUSE
 
 :ref:`CacheMode<enum_ResourceFormatLoader_CacheMode>` **CACHE_MODE_IGNORE_DEEP** = ``3``
 
-Like :ref:`CACHE_MODE_IGNORE<class_ResourceFormatLoader_constant_CACHE_MODE_IGNORE>`, but propagated recursively down the tree of dependencies (external resources).
+Giống :ref:`CACHE_MODE_IGNORE<class_ResourceFormatLoader_constant_CACHE_MODE_IGNORE>`, nhưng được áp dụng đệ quy xuống toàn bộ cây dependency (resource bên ngoài).
 
 .. _class_ResourceFormatLoader_constant_CACHE_MODE_REPLACE_DEEP:
 
@@ -110,7 +110,7 @@ Like :ref:`CACHE_MODE_IGNORE<class_ResourceFormatLoader_constant_CACHE_MODE_IGNO
 
 :ref:`CacheMode<enum_ResourceFormatLoader_CacheMode>` **CACHE_MODE_REPLACE_DEEP** = ``4``
 
-Like :ref:`CACHE_MODE_REPLACE<class_ResourceFormatLoader_constant_CACHE_MODE_REPLACE>`, but propagated recursively down the tree of dependencies (external resources).
+Giống :ref:`CACHE_MODE_REPLACE<class_ResourceFormatLoader_constant_CACHE_MODE_REPLACE>`, nhưng được áp dụng đệ quy xuống toàn bộ cây dependency (resource bên ngoài).
 
 .. rst-class:: classref-section-separator
 
@@ -118,8 +118,8 @@ Like :ref:`CACHE_MODE_REPLACE<class_ResourceFormatLoader_constant_CACHE_MODE_REP
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ResourceFormatLoader_private_method__exists:
 
@@ -155,13 +155,13 @@ Method Descriptions
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_dependencies**\ (\ path\: :ref:`String<class_String>`, add_types\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__get_dependencies>`
 
-Should return the dependencies for the resource at the given ``path``. Each dependency is a string composed of one to three sections separated by ``::``, with trailing empty sections omitted:
+Phải trả về các dependency của resource tại ``path`` đã cho. Mỗi dependency là một chuỗi gồm từ một đến ba phần được phân tách bằng ``::``, trong đó các phần rỗng ở cuối được loại bỏ:
 
-- The first section should contain the UID if the resource has one. Otherwise, it should contain the file path.
+- Phần đầu tiên phải chứa UID nếu resource có UID. Nếu không, phần này phải chứa đường dẫn tệp.
 
-- The second section should contain the class name of the dependency if ``add_types`` is ``true``. Otherwise, it should be empty.
+- Phần thứ hai phải chứa tên class của dependency nếu ``add_types`` là ``true``. Nếu không, phần này phải để trống.
 
-- The third section should contain the fallback path if the resource has a UID. Otherwise, it should be empty.
+- Phần thứ ba phải chứa đường dẫn dự phòng nếu resource có UID. Nếu không, phần này phải để trống.
 
 ::
 
@@ -173,7 +173,7 @@ Should return the dependencies for the resource at the given ``path``. Each depe
             "res://script.gd",
         ]
 
-\ **Note:** Custom resource types defined by scripts aren't known by the :ref:`ClassDB<class_ClassDB>`, so ``"Resource"`` can be used for the class name.
+\ **Lưu ý:** Các loại resource tùy chỉnh được định nghĩa bằng script không được :ref:`ClassDB<class_ClassDB>` nhận biết, vì vậy có thể sử dụng ``"Resource"`` cho tên class.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ Should return the dependencies for the resource at the given ``path``. Each depe
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_recognized_extensions**\ (\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__get_recognized_extensions>`
 
-Gets the list of extensions for files this loader is able to read.
+Lấy danh sách phần mở rộng của các tệp mà loader này có thể đọc.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Gets the list of extensions for files this loader is able to read.
 
 :ref:`String<class_String>` **_get_resource_script_class**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__get_resource_script_class>`
 
-Returns the script class name associated with the :ref:`Resource<class_Resource>` under the given ``path``. If the resource has no script or the script isn't a named class, it should return ``""``.
+Trả về tên class script liên kết với :ref:`Resource<class_Resource>` dưới ``path`` đã cho. Nếu resource không có script hoặc script không phải là named class, nó phải trả về ``""``.
 
 .. rst-class:: classref-item-separator
 
@@ -209,9 +209,9 @@ Returns the script class name associated with the :ref:`Resource<class_Resource>
 
 :ref:`String<class_String>` **_get_resource_type**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__get_resource_type>`
 
-Gets the class name of the resource associated with the given path. If the loader cannot handle it, it should return ``""``.
+Lấy tên class của resource liên kết với path đã cho. Nếu loader không thể xử lý path đó, nó phải trả về ``""``.
 
-\ **Note:** Custom resource types defined by scripts aren't known by the :ref:`ClassDB<class_ClassDB>`, so you might just return ``"Resource"`` for them.
+\ **Lưu ý:** Các loại resource tùy chỉnh được định nghĩa bằng script không được :ref:`ClassDB<class_ClassDB>` nhận biết, vì vậy bạn có thể chỉ cần trả về ``"Resource"`` cho chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -223,7 +223,7 @@ Gets the class name of the resource associated with the given path. If the loade
 
 :ref:`int<class_int>` **_get_resource_uid**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__get_resource_uid>`
 
-Should return the unique ID for the resource associated with the given path. If this method is not overridden, a ``.uid`` file is generated along with the resource file, containing the unique ID.
+Phải trả về ID duy nhất của tài nguyên được liên kết với đường dẫn đã cho. Nếu phương thức này không được ghi đè, một tệp ``.uid`` sẽ được tạo cùng với tệp tài nguyên, chứa ID duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -235,9 +235,9 @@ Should return the unique ID for the resource associated with the given path. If 
 
 :ref:`bool<class_bool>` **_handles_type**\ (\ type\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__handles_type>`
 
-Tells which resource class this loader can load.
+Cho biết loader này có thể tải lớp tài nguyên nào.
 
-\ **Note:** Custom resource types defined by scripts aren't known by the :ref:`ClassDB<class_ClassDB>`, so you might just handle ``"Resource"`` for them.
+\ **Lưu ý:** Các loại tài nguyên tùy chỉnh được định nghĩa bằng script không được :ref:`ClassDB<class_ClassDB>` biết đến, vì vậy bạn có thể chỉ cần xử lý ``"Resource"`` cho chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -249,9 +249,9 @@ Tells which resource class this loader can load.
 
 :ref:`Variant<class_Variant>` **_load**\ (\ path\: :ref:`String<class_String>`, original_path\: :ref:`String<class_String>`, use_sub_threads\: :ref:`bool<class_bool>`, cache_mode\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__load>`
 
-Loads a resource when the engine finds this loader to be compatible. If the loaded resource is the result of an import, ``original_path`` will target the source file. Returns a :ref:`Resource<class_Resource>` object on success, or an :ref:`Error<enum_@GlobalScope_Error>` constant in case of failure.
+Tải một tài nguyên khi engine xác định loader này tương thích. Nếu tài nguyên được tải là kết quả của một thao tác import, ``original_path`` sẽ trỏ đến tệp nguồn. Trả về đối tượng :ref:`Resource<class_Resource>` nếu thành công hoặc hằng số :ref:`Error <enum_@GlobalScope_Error>` nếu xảy ra lỗi.
 
-The ``cache_mode`` property defines whether and how the cache should be used or updated when loading the resource. See :ref:`CacheMode<enum_ResourceFormatLoader_CacheMode>` for details.
+Thuộc tính ``cache_mode`` xác định liệu cache có được sử dụng hoặc cập nhật khi tải tài nguyên hay không và được sử dụng như thế nào. Xem :ref:`CacheMode <enum_ResourceFormatLoader_CacheMode>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -263,9 +263,9 @@ The ``cache_mode`` property defines whether and how the cache should be used or 
 
 :ref:`bool<class_bool>` **_recognize_path**\ (\ path\: :ref:`String<class_String>`, type\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__recognize_path>`
 
-Tells whether or not this loader should load a resource from its resource path for a given type.
+Cho biết loader này có nên tải một tài nguyên từ đường dẫn tài nguyên của nó cho một loại nhất định hay không.
 
-If it is not implemented, the default behavior returns whether the path's extension is within the ones provided by :ref:`_get_recognized_extensions()<class_ResourceFormatLoader_private_method__get_recognized_extensions>`, and if the type is within the ones provided by :ref:`_get_resource_type()<class_ResourceFormatLoader_private_method__get_resource_type>`.
+Nếu không được triển khai, hành vi mặc định sẽ trả về liệu phần mở rộng của đường dẫn có nằm trong các phần mở rộng được cung cấp bởi :ref:`_get_recognized_extensions()<class_ResourceFormatLoader_private_method__get_recognized_extensions>` hay không, và liệu loại đó có nằm trong các loại được cung cấp bởi :ref:`_get_resource_type()<class_ResourceFormatLoader_private_method__get_resource_type>` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -277,16 +277,16 @@ If it is not implemented, the default behavior returns whether the path's extens
 
 :ref:`Error<enum_@GlobalScope_Error>` **_rename_dependencies**\ (\ path\: :ref:`String<class_String>`, renames\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatLoader_private_method__rename_dependencies>`
 
-If implemented, renames dependencies within the given resource and saves it. ``renames`` is a dictionary ``{ String => String }`` mapping old dependency paths to new paths.
+Nếu được triển khai, đổi tên các dependency trong tài nguyên đã cho rồi lưu tài nguyên đó. ``renames`` là một dictionary ``{ String => String }`` ánh xạ các đường dẫn dependency cũ sang các đường dẫn mới.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or an :ref:`Error<enum_@GlobalScope_Error>` constant in case of failure.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công hoặc hằng số :ref:`Error <enum_@GlobalScope_Error>` nếu xảy ra lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,83 +10,83 @@
 EditorExportPlatformWeb
 =======================
 
-**Inherits:** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exporter for the Web.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The Web exporter customizes how a web build is handled. In the editor's "Export" window, it is created when adding a new "Web" preset.
-
-\ **Note:** Godot on Web is rendered inside a ``<canvas>`` tag. Normally, the canvas cannot be positioned or resized manually, but otherwise acts as the main :ref:`Window<class_Window>` of the application.
+Trình xuất cho Web.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Trình xuất Web tùy chỉnh cách xử lý bản build cho web. Trong cửa sổ "Export" của editor, trình xuất này được tạo khi thêm một preset "Web" mới.
+
+\ **Lưu ý:** Godot trên Web được hiển thị bên trong một ``<canvas>`` thẻ. Thông thường, canvas không thể được định vị hoặc thay đổi kích thước thủ công, nhưng nếu không thì nó hoạt động như :ref:`Window<class_Window>` chính của ứng dụng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Exporting for the Web <../tutorials/export/exporting_for_web>`
+- :doc:`Xuất cho Web <../tutorials/export/exporting_for_web>`
 
-- :doc:`Web documentation index <../tutorials/platform/web/index>`
+- :doc:`Chỉ mục tài liệu Web <../tutorials/platform/web/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`custom_template/debug<class_EditorExportPlatformWeb_property_custom_template/debug>`                                                                         |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`custom_template/release<class_EditorExportPlatformWeb_property_custom_template/release>`                                                                     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`       | :ref:`html/canvas_resize_policy<class_EditorExportPlatformWeb_property_html/canvas_resize_policy>`                                                                 |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`html/custom_html_shell<class_EditorExportPlatformWeb_property_html/custom_html_shell>`                                                                       |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`html/experimental_virtual_keyboard<class_EditorExportPlatformWeb_property_html/experimental_virtual_keyboard>`                                               |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`html/export_icon<class_EditorExportPlatformWeb_property_html/export_icon>`                                                                                   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`html/focus_canvas_on_start<class_EditorExportPlatformWeb_property_html/focus_canvas_on_start>`                                                               |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`html/head_include<class_EditorExportPlatformWeb_property_html/head_include>`                                                                                 |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`   | :ref:`progressive_web_app/background_color<class_EditorExportPlatformWeb_property_progressive_web_app/background_color>`                                           |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`       | :ref:`progressive_web_app/display<class_EditorExportPlatformWeb_property_progressive_web_app/display>`                                                             |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`progressive_web_app/enabled<class_EditorExportPlatformWeb_property_progressive_web_app/enabled>`                                                             |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`progressive_web_app/ensure_cross_origin_isolation_headers<class_EditorExportPlatformWeb_property_progressive_web_app/ensure_cross_origin_isolation_headers>` |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`progressive_web_app/icon_144x144<class_EditorExportPlatformWeb_property_progressive_web_app/icon_144x144>`                                                   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`progressive_web_app/icon_180x180<class_EditorExportPlatformWeb_property_progressive_web_app/icon_180x180>`                                                   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`progressive_web_app/icon_512x512<class_EditorExportPlatformWeb_property_progressive_web_app/icon_512x512>`                                                   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`progressive_web_app/offline_page<class_EditorExportPlatformWeb_property_progressive_web_app/offline_page>`                                                   |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`       | :ref:`progressive_web_app/orientation<class_EditorExportPlatformWeb_property_progressive_web_app/orientation>`                                                     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`       | :ref:`threads/emscripten_pool_size<class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>`                                                           |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`       | :ref:`threads/godot_pool_size<class_EditorExportPlatformWeb_property_threads/godot_pool_size>`                                                                     |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`variant/extensions_support<class_EditorExportPlatformWeb_property_variant/extensions_support>`                                                               |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`variant/thread_support<class_EditorExportPlatformWeb_property_variant/thread_support>`                                                                       |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`vram_texture_compression/for_desktop<class_EditorExportPlatformWeb_property_vram_texture_compression/for_desktop>`                                           |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`vram_texture_compression/for_mobile<class_EditorExportPlatformWeb_property_vram_texture_compression/for_mobile>`                                             |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`custom_template/debug <class_EditorExportPlatformWeb_property_custom_template/debug>`                                                                         |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`custom_template/release <class_EditorExportPlatformWeb_property_custom_template/release>`                                                                     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`       | :ref:`html/canvas_resize_policy <class_EditorExportPlatformWeb_property_html/canvas_resize_policy>`                                                                 |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`html/custom_html_shell <class_EditorExportPlatformWeb_property_html/custom_html_shell>`                                                                       |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`html/experimental_virtual_keyboard <class_EditorExportPlatformWeb_property_html/experimental_virtual_keyboard>`                                               |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`html/export_icon <class_EditorExportPlatformWeb_property_html/export_icon>`                                                                                   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`html/focus_canvas_on_start <class_EditorExportPlatformWeb_property_html/focus_canvas_on_start>`                                                               |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`html/head_include <class_EditorExportPlatformWeb_property_html/head_include>`                                                                                 |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`   | :ref:`progressive_web_app/background_color <class_EditorExportPlatformWeb_property_progressive_web_app/background_color>`                                           |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`       | :ref:`progressive_web_app/display <class_EditorExportPlatformWeb_property_progressive_web_app/display>`                                                             |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`progressive_web_app/enabled <class_EditorExportPlatformWeb_property_progressive_web_app/enabled>`                                                             |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`progressive_web_app/ensure_cross_origin_isolation_headers <class_EditorExportPlatformWeb_property_progressive_web_app/ensure_cross_origin_isolation_headers>` |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`progressive_web_app/icon_144x144 <class_EditorExportPlatformWeb_property_progressive_web_app/icon_144x144>`                                                   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`progressive_web_app/icon_180x180 <class_EditorExportPlatformWeb_property_progressive_web_app/icon_180x180>`                                                   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`progressive_web_app/icon_512x512 <class_EditorExportPlatformWeb_property_progressive_web_app/icon_512x512>`                                                   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`progressive_web_app/offline_page <class_EditorExportPlatformWeb_property_progressive_web_app/offline_page>`                                                   |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`       | :ref:`progressive_web_app/orientation <class_EditorExportPlatformWeb_property_progressive_web_app/orientation>`                                                     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`       | :ref:`threads/emscripten_pool_size <class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>`                                                           |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`       | :ref:`threads/godot_pool_size <class_EditorExportPlatformWeb_property_threads/godot_pool_size>`                                                                     |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`variant/extensions_support <class_EditorExportPlatformWeb_property_variant/extensions_support>`                                                               |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`variant/thread_support <class_EditorExportPlatformWeb_property_variant/thread_support>`                                                                       |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`vram_texture_compression/for_desktop <class_EditorExportPlatformWeb_property_vram_texture_compression/for_desktop>`                                           |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`vram_texture_compression/for_mobile <class_EditorExportPlatformWeb_property_vram_texture_compression/for_mobile>`                                             |
+   +-----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -94,16 +94,16 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorExportPlatformWeb_property_custom_template/debug:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/debug** :ref:`🔗<class_EditorExportPlatformWeb_property_custom_template/debug>`
+:ref:`String<class_String>` **custom_template/debug** :ref:`🔗 <class_EditorExportPlatformWeb_property_custom_template/debug>`
 
-File path to the custom export template used for debug builds. If left empty, the default template is used.
+Đường dẫn tệp đến template export tùy chỉnh được sử dụng cho các bản build debug. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -113,9 +113,9 @@ File path to the custom export template used for debug builds. If left empty, th
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/release** :ref:`🔗<class_EditorExportPlatformWeb_property_custom_template/release>`
+:ref:`String<class_String>` **custom_template/release** :ref:`🔗 <class_EditorExportPlatformWeb_property_custom_template/release>`
 
-File path to the custom export template used for release builds. If left empty, the default template is used.
+Đường dẫn tệp đến template export tùy chỉnh được sử dụng cho các bản build release. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -125,15 +125,15 @@ File path to the custom export template used for release builds. If left empty, 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **html/canvas_resize_policy** :ref:`🔗<class_EditorExportPlatformWeb_property_html/canvas_resize_policy>`
+:ref:`int<class_int>` **html/canvas_resize_policy** :ref:`🔗 <class_EditorExportPlatformWeb_property_html/canvas_resize_policy>`
 
-Determines how the canvas should be resized by Godot.
+Xác định cách canvas sẽ được Godot thay đổi kích thước.
 
-- **None:** The canvas is not automatically resized.
+- **None:** Canvas không được tự động thay đổi kích thước.
 
-- **Project:** The size of the canvas is dependent on the :ref:`ProjectSettings<class_ProjectSettings>`.
+- **Project:** Kích thước của canvas phụ thuộc vào :ref:`ProjectSettings<class_ProjectSettings>`.
 
-- **Adaptive:** The canvas is automatically resized to fit as much of the web page as possible.
+- **Adaptive:** Canvas được tự động thay đổi kích thước để vừa với phần lớn trang web nhất có thể.
 
 .. rst-class:: classref-item-separator
 
@@ -143,11 +143,11 @@ Determines how the canvas should be resized by Godot.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **html/custom_html_shell** :ref:`🔗<class_EditorExportPlatformWeb_property_html/custom_html_shell>`
+:ref:`String<class_String>` **html/custom_html_shell** :ref:`🔗 <class_EditorExportPlatformWeb_property_html/custom_html_shell>`
 
-The custom HTML page that wraps the exported web build. If left empty, the default HTML shell is used.
+Trang HTML tùy chỉnh bao bọc bản build web đã xuất. Nếu để trống, shell HTML mặc định sẽ được sử dụng.
 
-For more information, see the :doc:`Customizing HTML5 Shell <../tutorials/platform/web/customizing_html5_shell>` tutorial.
+Để biết thêm thông tin, hãy xem tutorial :doc:`Tùy chỉnh HTML5 Shell <../tutorials/platform/web/customizing_html5_shell>`.
 
 .. rst-class:: classref-item-separator
 
@@ -157,11 +157,11 @@ For more information, see the :doc:`Customizing HTML5 Shell <../tutorials/platfo
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **html/experimental_virtual_keyboard** :ref:`🔗<class_EditorExportPlatformWeb_property_html/experimental_virtual_keyboard>`
+:ref:`bool<class_bool>` **html/experimental_virtual_keyboard** :ref:`🔗 <class_EditorExportPlatformWeb_property_html/experimental_virtual_keyboard>`
 
-**Experimental:** This property may be changed or removed in future versions.
+**Thử nghiệm:** Thuộc tính này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-If ``true``, embeds support for a virtual keyboard into the web page, which is shown when necessary on touchscreen devices.
+Nếu ``true``, nhúng hỗ trợ bàn phím ảo vào trang web, bàn phím này sẽ hiển thị khi cần trên các thiết bị màn hình cảm ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -171,9 +171,9 @@ If ``true``, embeds support for a virtual keyboard into the web page, which is s
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **html/export_icon** :ref:`🔗<class_EditorExportPlatformWeb_property_html/export_icon>`
+:ref:`bool<class_bool>` **html/export_icon** :ref:`🔗 <class_EditorExportPlatformWeb_property_html/export_icon>`
 
-If ``true``, the project icon will be used as the favicon for this application's web page.
+Nếu ``true``, biểu tượng dự án sẽ được dùng làm favicon cho trang web của ứng dụng này.
 
 .. rst-class:: classref-item-separator
 
@@ -183,9 +183,9 @@ If ``true``, the project icon will be used as the favicon for this application's
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **html/focus_canvas_on_start** :ref:`🔗<class_EditorExportPlatformWeb_property_html/focus_canvas_on_start>`
+:ref:`bool<class_bool>` **html/focus_canvas_on_start** :ref:`🔗 <class_EditorExportPlatformWeb_property_html/focus_canvas_on_start>`
 
-If ``true``, the canvas will be focused as soon as the application is loaded, if the browser window is already in focus.
+Nếu ``true``, canvas sẽ được focus ngay khi ứng dụng được tải, nếu cửa sổ trình duyệt đã được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -195,11 +195,11 @@ If ``true``, the canvas will be focused as soon as the application is loaded, if
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **html/head_include** :ref:`🔗<class_EditorExportPlatformWeb_property_html/head_include>`
+:ref:`String<class_String>` **html/head_include** :ref:`🔗 <class_EditorExportPlatformWeb_property_html/head_include>`
 
-Additional HTML tags to include inside the ``<head>``, such as ``<meta>`` tags.
+Các thẻ HTML bổ sung cần đưa vào bên trong ``<head>``, chẳng hạn như các thẻ ``<meta>``.
 
-\ **Note:** You do not need to add a ``<title>`` tag, as it is automatically included based on the project's name.
+\ **Lưu ý:** Bạn không cần thêm thẻ ``<title>``, vì thẻ này sẽ được tự động thêm dựa trên tên của dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -209,9 +209,9 @@ Additional HTML tags to include inside the ``<head>``, such as ``<meta>`` tags.
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **progressive_web_app/background_color** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/background_color>`
+:ref:`Color<class_Color>` **progressive_web_app/background_color** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/background_color>`
 
-The background color used behind the web application.
+Màu nền được sử dụng phía sau ứng dụng web.
 
 .. rst-class:: classref-item-separator
 
@@ -221,17 +221,17 @@ The background color used behind the web application.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **progressive_web_app/display** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/display>`
+:ref:`int<class_int>` **progressive_web_app/display** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/display>`
 
-The `display mode <https://developer.mozilla.org/en-US/docs/Web/Manifest/display/>`__ to use for this progressive web application. Different browsers and platforms may not behave the same.
+`chế độ display <https://developer.mozilla.org/en-US/docs/Web/Manifest/display/>`__ được sử dụng cho progressive web application này. Các trình duyệt và nền tảng khác nhau có thể không hoạt động giống nhau.
 
-- **Fullscreen:** Displays the app in fullscreen and hides all of the browser's UI elements.
+- **Fullscreen:** Hiển thị ứng dụng ở chế độ toàn màn hình và ẩn tất cả các thành phần UI của trình duyệt.
 
-- **Standalone:** Displays the app in a separate window and hides all of the browser's UI elements.
+- **Standalone:** Hiển thị ứng dụng trong một cửa sổ riêng và ẩn tất cả các thành phần UI của trình duyệt.
 
-- **Minimal UI:** Displays the app in a separate window and only shows the browser's UI elements for navigation.
+- **Minimal UI:** Hiển thị ứng dụng trong một cửa sổ riêng và chỉ hiển thị các thành phần UI của trình duyệt dùng để điều hướng.
 
-- **Browser:** Displays the app as a normal web page.
+- **Browser:** Hiển thị ứng dụng như một trang web thông thường.
 
 .. rst-class:: classref-item-separator
 
@@ -241,9 +241,9 @@ The `display mode <https://developer.mozilla.org/en-US/docs/Web/Manifest/display
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **progressive_web_app/enabled** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/enabled>`
+:ref:`bool<class_bool>` **progressive_web_app/enabled** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/enabled>`
 
-If ``true``, turns this web build into a `progressive web application <https://en.wikipedia.org/wiki/Progressive_web_app>`__ (PWA).
+Nếu ``true``, biến bản build web này thành một `progressive web application <https://en.wikipedia.org/wiki/Progressive_web_app>`__ (PWA).
 
 .. rst-class:: classref-item-separator
 
@@ -253,11 +253,11 @@ If ``true``, turns this web build into a `progressive web application <https://e
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **progressive_web_app/ensure_cross_origin_isolation_headers** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/ensure_cross_origin_isolation_headers>`
+:ref:`bool<class_bool>` **progressive_web_app/ensure_cross_origin_isolation_headers** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/ensure_cross_origin_isolation_headers>`
 
-When enabled, the progressive web app will make sure that each request has cross-origin isolation headers (COEP/COOP).
+Khi được bật, ứng dụng web tiến bộ sẽ đảm bảo mỗi yêu cầu có các header cô lập cross-origin (COEP/COOP).
 
-This can simplify the setup to serve the exported game.
+Điều này có thể đơn giản hóa việc thiết lập để phục vụ game đã xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -267,11 +267,11 @@ This can simplify the setup to serve the exported game.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **progressive_web_app/icon_144x144** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/icon_144x144>`
+:ref:`String<class_String>` **progressive_web_app/icon_144x144** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/icon_144x144>`
 
-File path to the smallest icon for this web application. If not defined, defaults to the project icon.
+Đường dẫn tệp đến biểu tượng nhỏ nhất cho ứng dụng web này. Nếu không được xác định, mặc định sẽ dùng biểu tượng của dự án.
 
-\ **Note:** If the icon is not 144×144, it will be automatically resized for the final build.
+\ **Lưu ý:** Nếu biểu tượng không có kích thước 144×144, biểu tượng sẽ được tự động thay đổi kích thước cho bản build cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -281,11 +281,11 @@ File path to the smallest icon for this web application. If not defined, default
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **progressive_web_app/icon_180x180** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/icon_180x180>`
+:ref:`String<class_String>` **progressive_web_app/icon_180x180** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/icon_180x180>`
 
-File path to the small icon for this web application. If not defined, defaults to the project icon.
+Đường dẫn tệp đến biểu tượng nhỏ cho ứng dụng web này. Nếu không được định nghĩa, mặc định sẽ dùng biểu tượng của dự án.
 
-\ **Note:** If the icon is not 180×180, it will be automatically resized for the final build.
+\ **Lưu ý:** Nếu biểu tượng không có kích thước 180×180, biểu tượng sẽ được tự động thay đổi kích thước cho bản build cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -295,11 +295,11 @@ File path to the small icon for this web application. If not defined, defaults t
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **progressive_web_app/icon_512x512** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/icon_512x512>`
+:ref:`String<class_String>` **progressive_web_app/icon_512x512** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/icon_512x512>`
 
-File path to the largest icon for this web application. If not defined, defaults to the project icon.
+Đường dẫn tệp đến biểu tượng lớn nhất cho ứng dụng web này. Nếu không được định nghĩa, mặc định sẽ dùng biểu tượng của dự án.
 
-\ **Note:** If the icon is not 512×512, it will be automatically resized for the final build.
+\ **Lưu ý:** Nếu biểu tượng không có kích thước 512×512, biểu tượng sẽ được tự động thay đổi kích thước cho bản build cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -309,9 +309,9 @@ File path to the largest icon for this web application. If not defined, defaults
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **progressive_web_app/offline_page** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/offline_page>`
+:ref:`String<class_String>` **progressive_web_app/offline_page** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/offline_page>`
 
-The page to display, should the server hosting the page not be available. This page is saved in the client's machine.
+Trang sẽ hiển thị nếu máy chủ lưu trữ trang không khả dụng. Trang này được lưu trên máy của client.
 
 .. rst-class:: classref-item-separator
 
@@ -321,15 +321,15 @@ The page to display, should the server hosting the page not be available. This p
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **progressive_web_app/orientation** :ref:`🔗<class_EditorExportPlatformWeb_property_progressive_web_app/orientation>`
+:ref:`int<class_int>` **progressive_web_app/orientation** :ref:`🔗 <class_EditorExportPlatformWeb_property_progressive_web_app/orientation>`
 
-The orientation to use when the web application is run through a mobile device.
+Hướng hiển thị sẽ sử dụng khi chạy ứng dụng web trên thiết bị di động.
 
-- **Any:** No orientation is forced.
+- **Any:** Không ép buộc hướng hiển thị.
 
-- **Landscape:** Forces a horizontal layout (wider than it is taller).
+- **Landscape:** Ép buộc bố cục ngang (rộng hơn chiều cao).
 
-- **Portrait:** Forces a vertical layout (taller than it is wider).
+- **Portrait:** Ép buộc bố cục dọc (cao hơn chiều rộng).
 
 .. rst-class:: classref-item-separator
 
@@ -339,11 +339,11 @@ The orientation to use when the web application is run through a mobile device.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **threads/emscripten_pool_size** :ref:`🔗<class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>`
+:ref:`int<class_int>` **threads/emscripten_pool_size** :ref:`🔗 <class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>`
 
-The number of threads that emscripten will allocate at startup. A smaller value will allocate fewer threads and consume fewer system resources, but you may run the risk of running out of threads in the pool and needing to allocate more threads at run time which may cause a deadlock.
+Số lượng thread mà emscripten sẽ cấp phát khi khởi động. Giá trị nhỏ hơn sẽ cấp phát ít thread hơn và tiêu thụ ít tài nguyên hệ thống hơn, nhưng bạn có thể gặp rủi ro cạn thread trong pool và cần cấp phát thêm thread trong thời gian chạy, điều này có thể gây deadlock.
 
-\ **Note:** Some browsers have a hard cap on the number of threads that can be allocated, so it is best to be cautious and keep this number low.
+\ **Lưu ý:** Một số trình duyệt giới hạn cứng số lượng thread có thể được cấp phát, vì vậy tốt nhất là thận trọng và giữ số lượng này ở mức thấp.
 
 .. rst-class:: classref-item-separator
 
@@ -353,11 +353,11 @@ The number of threads that emscripten will allocate at startup. A smaller value 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **threads/godot_pool_size** :ref:`🔗<class_EditorExportPlatformWeb_property_threads/godot_pool_size>`
+:ref:`int<class_int>` **threads/godot_pool_size** :ref:`🔗 <class_EditorExportPlatformWeb_property_threads/godot_pool_size>`
 
-Override for the default size of the :ref:`WorkerThreadPool<class_WorkerThreadPool>`. This setting is used when :ref:`ProjectSettings.threading/worker_pool/max_threads<class_ProjectSettings_property_threading/worker_pool/max_threads>` size is set to ``-1`` (which it is by default). This size must be smaller than :ref:`threads/emscripten_pool_size<class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>` otherwise deadlocks may occur.
+Ghi đè kích thước mặc định của :ref:`WorkerThreadPool<class_WorkerThreadPool>`. Thiết lập này được sử dụng khi kích thước :ref:`ProjectSettings.threading/worker_pool/max_threads <class_ProjectSettings_property_threading/worker_pool/max_threads>` được đặt thành ``-1`` (đây là giá trị mặc định). Kích thước này phải nhỏ hơn :ref:`threads/emscripten_pool_size <class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>`, nếu không có thể xảy ra deadlock.
 
-When using threads, this size needs to be large enough to accommodate features that rely on having a dedicated thread like :ref:`ProjectSettings.physics/2d/run_on_separate_thread<class_ProjectSettings_property_physics/2d/run_on_separate_thread>` or :ref:`ProjectSettings.rendering/driver/threads/thread_model<class_ProjectSettings_property_rendering/driver/threads/thread_model>`. In general, it is best to ensure that this is at least ``4`` and is at least ``2`` or ``3`` less than :ref:`threads/emscripten_pool_size<class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>`.
+Khi sử dụng thread, kích thước này cần đủ lớn để đáp ứng các tính năng phụ thuộc vào một thread riêng, như :ref:`ProjectSettings.physics/2d/run_on_separate_thread <class_ProjectSettings_property_physics/2d/run_on_separate_thread>` hoặc :ref:`ProjectSettings.rendering/driver/threads/thread_model <class_ProjectSettings_property_rendering/driver/threads/thread_model>`. Nhìn chung, tốt nhất là đảm bảo giá trị này ít nhất bằng ``4`` và nhỏ hơn :ref:`threads/emscripten_pool_size <class_EditorExportPlatformWeb_property_threads/emscripten_pool_size>` ít nhất ``2`` hoặc ``3``.
 
 .. rst-class:: classref-item-separator
 
@@ -367,9 +367,9 @@ When using threads, this size needs to be large enough to accommodate features t
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **variant/extensions_support** :ref:`🔗<class_EditorExportPlatformWeb_property_variant/extensions_support>`
+:ref:`bool<class_bool>` **variant/extensions_support** :ref:`🔗 <class_EditorExportPlatformWeb_property_variant/extensions_support>`
 
-If ``true`` enables :ref:`GDExtension<class_GDExtension>` support for this web build.
+Nếu ``true`` bật hỗ trợ :ref:`GDExtension<class_GDExtension>` cho bản build web này.
 
 .. rst-class:: classref-item-separator
 
@@ -379,11 +379,11 @@ If ``true`` enables :ref:`GDExtension<class_GDExtension>` support for this web b
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **variant/thread_support** :ref:`🔗<class_EditorExportPlatformWeb_property_variant/thread_support>`
+:ref:`bool<class_bool>` **variant/thread_support** :ref:`🔗 <class_EditorExportPlatformWeb_property_variant/thread_support>`
 
-If ``true``, the exported game will support threads. It requires `a "cross-origin isolated" website <https://web.dev/articles/coop-coep>`__, which may be difficult to set up and is limited for security reasons (such as not being able to communicate with third-party websites).
+Nếu ``true``, game đã xuất sẽ hỗ trợ threads. Tính năng này yêu cầu `một website "cross-origin isolated" <https://web.dev/articles/coop-coep>`__, có thể khó thiết lập và bị giới hạn vì lý do bảo mật (chẳng hạn như không thể giao tiếp với các website bên thứ ba).
 
-If ``false``, the exported game will not support threads. As a result, it is more prone to performance and audio issues, but will only require to be run on an HTTPS website.
+Nếu ``false``, game đã xuất sẽ không hỗ trợ threads. Do đó, game dễ gặp các vấn đề về hiệu năng và âm thanh hơn, nhưng chỉ cần chạy trên một website HTTPS.
 
 .. rst-class:: classref-item-separator
 
@@ -393,9 +393,9 @@ If ``false``, the exported game will not support threads. As a result, it is mor
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **vram_texture_compression/for_desktop** :ref:`🔗<class_EditorExportPlatformWeb_property_vram_texture_compression/for_desktop>`
+:ref:`bool<class_bool>` **vram_texture_compression/for_desktop** :ref:`🔗 <class_EditorExportPlatformWeb_property_vram_texture_compression/for_desktop>`
 
-If ``true``, allows textures to be optimized for desktop through the S3TC/BPTC algorithm.
+Nếu ``true``, cho phép tối ưu hóa texture cho máy tính để bàn bằng thuật toán S3TC/BPTC.
 
 .. rst-class:: classref-item-separator
 
@@ -405,16 +405,16 @@ If ``true``, allows textures to be optimized for desktop through the S3TC/BPTC a
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **vram_texture_compression/for_mobile** :ref:`🔗<class_EditorExportPlatformWeb_property_vram_texture_compression/for_mobile>`
+:ref:`bool<class_bool>` **vram_texture_compression/for_mobile** :ref:`🔗 <class_EditorExportPlatformWeb_property_vram_texture_compression/for_mobile>`
 
-If ``true`` allows textures to be optimized for mobile through the ETC2/ASTC algorithm.
+Nếu ``true`` cho phép tối ưu hóa texture cho thiết bị di động thông qua thuật toán ETC2/ASTC.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

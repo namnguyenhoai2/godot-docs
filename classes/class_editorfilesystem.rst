@@ -10,23 +10,23 @@
 EditorFileSystem
 ================
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Resource filesystem, as the editor sees it.
+Hệ thống tệp tài nguyên theo cách trình soạn thảo hiển thị.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object holds information of all resources in the filesystem, their types, etc.
+Đối tượng này chứa thông tin về tất cả tài nguyên trong hệ thống tệp, loại của chúng, v.v.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_resource_filesystem()<class_EditorInterface_method_get_resource_filesystem>`.
+\ **Lưu ý:** Không nên khởi tạo trực tiếp lớp này. Thay vào đó, hãy truy cập singleton bằng :ref:`EditorInterface.get_resource_filesystem()<class_EditorInterface_method_get_resource_filesystem>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -59,8 +59,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorFileSystem_signal_filesystem_changed:
 
@@ -68,7 +68,7 @@ Signals
 
 **filesystem_changed**\ (\ ) :ref:`🔗<class_EditorFileSystem_signal_filesystem_changed>`
 
-Emitted if the filesystem changed.
+Được phát ra nếu hệ thống tệp đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -80,7 +80,7 @@ Emitted if the filesystem changed.
 
 **resources_reimported**\ (\ resources\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_EditorFileSystem_signal_resources_reimported>`
 
-Emitted if a resource is reimported.
+Được phát ra nếu một tài nguyên được nhập lại.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Emitted if a resource is reimported.
 
 **resources_reimporting**\ (\ resources\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_EditorFileSystem_signal_resources_reimporting>`
 
-Emitted before a resource is reimported.
+Được phát ra trước khi một tài nguyên được nhập lại.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Emitted before a resource is reimported.
 
 **resources_reload**\ (\ resources\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_EditorFileSystem_signal_resources_reload>`
 
-Emitted if at least one resource is reloaded when the filesystem is scanned.
+Được phát ra nếu có ít nhất một tài nguyên được tải lại khi hệ thống tệp được quét.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Emitted if at least one resource is reloaded when the filesystem is scanned.
 
 **script_classes_updated**\ (\ ) :ref:`🔗<class_EditorFileSystem_signal_script_classes_updated>`
 
-Emitted when the list of global script classes gets updated.
+Được phát ra khi danh sách các lớp script toàn cục được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -128,7 +128,7 @@ Emitted when the list of global script classes gets updated.
 
 **sources_changed**\ (\ exist\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorFileSystem_signal_sources_changed>`
 
-Emitted if the source of any imported file changed.
+Được phát ra nếu nguồn của bất kỳ tệp nào được import thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -136,8 +136,8 @@ Emitted if the source of any imported file changed.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorFileSystem_method_get_file_type:
 
@@ -145,7 +145,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_file_type**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_EditorFileSystem_method_get_file_type>`
 
-Returns the resource type of the file, given the full path. This returns a string such as ``"Resource"`` or ``"GDScript"``, *not* a file extension such as ``".gd"``.
+Trả về loại tài nguyên của tệp dựa trên đường dẫn đầy đủ. Phương thức này trả về một chuỗi chẳng hạn như ``"Resource"`` hoặc ``"GDScript"``, *không phải* phần mở rộng tệp chẳng hạn như ``".gd"``.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ Returns the resource type of the file, given the full path. This returns a strin
 
 :ref:`EditorFileSystemDirectory<class_EditorFileSystemDirectory>` **get_filesystem**\ (\ ) :ref:`🔗<class_EditorFileSystem_method_get_filesystem>`
 
-Gets the root directory object.
+Lấy đối tượng thư mục gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ Gets the root directory object.
 
 :ref:`EditorFileSystemDirectory<class_EditorFileSystemDirectory>` **get_filesystem_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorFileSystem_method_get_filesystem_path>`
 
-Returns a view into the filesystem at ``path``.
+Trả về một chế độ xem hệ thống tệp tại ``path``.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ Returns a view into the filesystem at ``path``.
 
 :ref:`float<class_float>` **get_scanning_progress**\ (\ ) |const| :ref:`🔗<class_EditorFileSystem_method_get_scanning_progress>`
 
-Returns the scan progress for 0 to 1 if the FS is being scanned.
+Trả về tiến độ quét từ 0 đến 1 nếu FS đang được quét.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ Returns the scan progress for 0 to 1 if the FS is being scanned.
 
 :ref:`bool<class_bool>` **is_importing**\ (\ ) |const| :ref:`🔗<class_EditorFileSystem_method_is_importing>`
 
-Returns ``true`` if resources are currently being imported.
+Trả về ``true`` nếu các tài nguyên hiện đang được import.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Returns ``true`` if resources are currently being imported.
 
 :ref:`bool<class_bool>` **is_scanning**\ (\ ) |const| :ref:`🔗<class_EditorFileSystem_method_is_scanning>`
 
-Returns ``true`` if the filesystem is being scanned.
+Trả về ``true`` nếu filesystem đang được quét.
 
 .. rst-class:: classref-item-separator
 
@@ -217,11 +217,11 @@ Returns ``true`` if the filesystem is being scanned.
 
 |void| **reimport_files**\ (\ files\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_EditorFileSystem_method_reimport_files>`
 
-Reimports a set of files. Call this if these files or their ``.import`` files were directly edited by script or an external program.
+Import lại một tập hợp tệp. Gọi hàm này nếu các tệp đó hoặc các tệp ``.import`` của chúng đã được chỉnh sửa trực tiếp bằng script hoặc một chương trình bên ngoài.
 
-If the file type changed or the file was newly created, use :ref:`update_file()<class_EditorFileSystem_method_update_file>` or :ref:`scan()<class_EditorFileSystem_method_scan>`.
+Nếu kiểu tệp đã thay đổi hoặc tệp mới được tạo, hãy sử dụng :ref:`update_file()<class_EditorFileSystem_method_update_file>` hoặc :ref:`scan()<class_EditorFileSystem_method_scan>`.
 
-\ **Note:** This function blocks until the import is finished. However, the main loop iteration, including timers and :ref:`Node._process()<class_Node_private_method__process>`, will occur during the import process due to progress bar updates. Avoid calls to :ref:`reimport_files()<class_EditorFileSystem_method_reimport_files>` or :ref:`scan()<class_EditorFileSystem_method_scan>` while an import is in progress.
+\ **Lưu ý:** Hàm này sẽ chặn cho đến khi quá trình import hoàn tất. Tuy nhiên, một lần lặp của main loop, bao gồm timer và :ref:`Node._process()<class_Node_private_method__process>`, sẽ diễn ra trong quá trình import do các cập nhật của thanh tiến độ. Tránh gọi :ref:`reimport_files()<class_EditorFileSystem_method_reimport_files>` hoặc :ref:`scan()<class_EditorFileSystem_method_scan>` khi quá trình import đang diễn ra.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ If the file type changed or the file was newly created, use :ref:`update_file()<
 
 |void| **scan**\ (\ ) :ref:`🔗<class_EditorFileSystem_method_scan>`
 
-Scan the filesystem for changes.
+Quét filesystem để tìm các thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ Scan the filesystem for changes.
 
 |void| **scan_sources**\ (\ ) :ref:`🔗<class_EditorFileSystem_method_scan_sources>`
 
-Check if the source of any imported resource changed.
+Kiểm tra xem nguồn của bất kỳ tài nguyên nào đã nhập có thay đổi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -257,16 +257,16 @@ Check if the source of any imported resource changed.
 
 |void| **update_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorFileSystem_method_update_file>`
 
-Add a file in an existing directory, or schedule file information to be updated on editor restart. Can be used to update text files saved by an external program.
+Thêm một tệp vào thư mục hiện có hoặc lên lịch cập nhật thông tin tệp khi khởi động lại trình soạn thảo. Có thể dùng để cập nhật các tệp văn bản được lưu bởi một chương trình bên ngoài.
 
-This will not import the file. To reimport, call :ref:`reimport_files()<class_EditorFileSystem_method_reimport_files>` or :ref:`scan()<class_EditorFileSystem_method_scan>` methods.
+Thao tác này sẽ không nhập tệp. Để nhập lại, hãy gọi các phương thức :ref:`reimport_files()<class_EditorFileSystem_method_reimport_files>` hoặc :ref:`scan()<class_EditorFileSystem_method_scan>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

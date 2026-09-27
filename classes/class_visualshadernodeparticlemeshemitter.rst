@@ -10,21 +10,21 @@
 VisualShaderNodeParticleMeshEmitter
 ===================================
 
-**Inherits:** :ref:`VisualShaderNodeParticleEmitter<class_VisualShaderNodeParticleEmitter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNodeParticleEmitter<class_VisualShaderNodeParticleEmitter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A visual shader node that makes particles emitted in a shape defined by a :ref:`Mesh<class_Mesh>`.
+Một node shader trực quan tạo ra các hạt được phát ra theo hình dạng do một :ref:`Mesh<class_Mesh>` xác định.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-:ref:`VisualShaderNodeParticleEmitter<class_VisualShaderNodeParticleEmitter>` that makes the particles emitted in a shape of the assigned :ref:`mesh<class_VisualShaderNodeParticleMeshEmitter_property_mesh>`. It will emit from the mesh's surfaces, either all or only the specified one.
+:ref:`VisualShaderNodeParticleEmitter<class_VisualShaderNodeParticleEmitter>` tạo ra các hạt được phát ra theo hình dạng của :ref:`mesh<class_VisualShaderNodeParticleMeshEmitter_property_mesh>` được chỉ định. Nó sẽ phát ra từ các bề mặt của mesh, hoặc tất cả hoặc chỉ bề mặt được chỉ định.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -43,21 +43,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeParticleMeshEmitter_property_mesh:
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗<class_VisualShaderNodeParticleMeshEmitter_property_mesh>`
+:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗 <class_VisualShaderNodeParticleMeshEmitter_property_mesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_mesh**\ (\ value\: :ref:`Mesh<class_Mesh>`\ )
 - :ref:`Mesh<class_Mesh>` **get_mesh**\ (\ )
 
-The :ref:`Mesh<class_Mesh>` that defines emission shape.
+:ref:`Mesh<class_Mesh>` xác định hình dạng phát hạt.
 
 .. rst-class:: classref-item-separator
 
@@ -74,7 +74,7 @@ The :ref:`Mesh<class_Mesh>` that defines emission shape.
 - |void| **set_surface_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_surface_index**\ (\ )
 
-Index of the surface that emits particles. :ref:`use_all_surfaces<class_VisualShaderNodeParticleMeshEmitter_property_use_all_surfaces>` must be ``false`` for this to take effect.
+Chỉ mục của bề mặt phát các hạt. :ref:`use_all_surfaces<class_VisualShaderNodeParticleMeshEmitter_property_use_all_surfaces>` phải là ``false`` thì thiết lập này mới có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -91,14 +91,14 @@ Index of the surface that emits particles. :ref:`use_all_surfaces<class_VisualSh
 - |void| **set_use_all_surfaces**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_use_all_surfaces**\ (\ )
 
-If ``true``, the particles will emit from all surfaces of the mesh.
+Nếu ``true``, các hạt sẽ được phát ra từ tất cả các bề mặt của mesh.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

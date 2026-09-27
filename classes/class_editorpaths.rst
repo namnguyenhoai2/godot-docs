@@ -10,32 +10,32 @@
 EditorPaths
 ===========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Editor-only singleton that returns paths to various OS-specific data folders and files.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This editor-only singleton returns OS-specific paths to various data folders and files. It can be used in editor plugins to ensure files are saved in the correct location on each operating system.
-
-\ **Note:** This singleton is not accessible in exported projects. Attempting to access it in an exported project will result in a script error as the singleton won't be declared. To prevent script errors in exported projects, use :ref:`Engine.has_singleton()<class_Engine_method_has_singleton>` to check whether the singleton is available before using it.
-
-\ **Note:** On the Linux/BSD platform, Godot complies with the `XDG Base Directory Specification <https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html>`__. You can override environment variables following the specification to change the editor and project data paths.
+Singleton chỉ dành cho Editor, trả về các đường dẫn đến nhiều thư mục và tệp dữ liệu dành riêng cho từng hệ điều hành.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Singleton chỉ dành cho Editor này trả về các đường dẫn dành riêng cho từng hệ điều hành đến nhiều thư mục và tệp dữ liệu. Bạn có thể sử dụng nó trong các plugin của Editor để đảm bảo tệp được lưu ở đúng vị trí trên mỗi hệ điều hành.
+
+\ **Lưu ý:** Singleton này không thể truy cập trong các project đã export. Việc cố gắng truy cập nó trong một project đã export sẽ gây ra lỗi script vì singleton này sẽ không được khai báo. Để ngăn lỗi script trong các project đã export, hãy sử dụng :ref:`Engine.has_singleton()<class_Engine_method_has_singleton>` để kiểm tra singleton có khả dụng hay không trước khi sử dụng.
+
+\ **Lưu ý:** Trên nền tảng Linux/BSD, Godot tuân thủ `XDG Base Directory Specification <https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html>`__. Bạn có thể ghi đè các biến môi trường theo đặc tả này để thay đổi đường dẫn dữ liệu của Editor và project.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`File paths in Godot projects <../tutorials/io/data_paths>`
+- :doc:`Đường dẫn tệp trong các dự án Godot <../tutorials/io/data_paths>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -60,8 +60,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorPaths_method_get_cache_dir:
 
@@ -69,9 +69,9 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_cache_dir**\ (\ ) |const| :ref:`🔗<class_EditorPaths_method_get_cache_dir>`
 
-Returns the absolute path to the user's cache folder. This folder should be used for temporary data that can be removed safely whenever the editor is closed (such as generated resource thumbnails).
+Trả về đường dẫn tuyệt đối đến thư mục bộ nhớ đệm của người dùng. Thư mục này nên được dùng cho dữ liệu tạm thời có thể xóa an toàn bất cứ khi nào trình chỉnh sửa được đóng (chẳng hạn như hình thu nhỏ tài nguyên được tạo).
 
-\ **Default paths per platform:**\ 
+\ **Đường dẫn mặc định trên mỗi nền tảng:**\
 
 .. code:: text
 
@@ -89,9 +89,9 @@ Returns the absolute path to the user's cache folder. This folder should be used
 
 :ref:`String<class_String>` **get_config_dir**\ (\ ) |const| :ref:`🔗<class_EditorPaths_method_get_config_dir>`
 
-Returns the absolute path to the user's configuration folder. This folder should be used for *persistent* user configuration files.
+Trả về đường dẫn tuyệt đối đến thư mục cấu hình của người dùng. Thư mục này nên được dùng cho các tệp cấu hình người dùng *persistent*.
 
-\ **Default paths per platform:**\ 
+\ **Đường dẫn mặc định trên mỗi nền tảng:**\
 
 .. code:: text
 
@@ -109,9 +109,9 @@ Returns the absolute path to the user's configuration folder. This folder should
 
 :ref:`String<class_String>` **get_data_dir**\ (\ ) |const| :ref:`🔗<class_EditorPaths_method_get_data_dir>`
 
-Returns the absolute path to the user's data folder. This folder should be used for *persistent* user data files such as installed export templates.
+Trả về đường dẫn tuyệt đối đến thư mục dữ liệu của người dùng. Thư mục này nên được dùng cho các tệp dữ liệu người dùng *lâu dài* như các export template đã cài đặt.
 
-\ **Default paths per platform:**\ 
+\ **Đường dẫn mặc định trên mỗi nền tảng:**\
 
 .. code:: text
 
@@ -129,7 +129,7 @@ Returns the absolute path to the user's data folder. This folder should be used 
 
 :ref:`String<class_String>` **get_project_settings_dir**\ (\ ) |const| :ref:`🔗<class_EditorPaths_method_get_project_settings_dir>`
 
-Returns the relative path to the editor settings for this project. This is usually ``"res://.godot/editor"``. Projects all have a unique subdirectory inside the settings path where project-specific editor settings are saved.
+Trả về đường dẫn tương đối đến các thiết lập editor của project này. Thường là ``"res://.godot/editor"``. Tất cả project đều có một thư mục con duy nhất bên trong đường dẫn thiết lập, nơi lưu các thiết lập editor dành riêng cho project.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Returns the relative path to the editor settings for this project. This is usual
 
 :ref:`String<class_String>` **get_self_contained_file**\ (\ ) |const| :ref:`🔗<class_EditorPaths_method_get_self_contained_file>`
 
-Returns the absolute path to the self-contained file that makes the current Godot editor instance be considered as self-contained. Returns an empty string if the current Godot editor instance isn't self-contained. See also :ref:`is_self_contained()<class_EditorPaths_method_is_self_contained>`.
+Trả về đường dẫn tuyệt đối đến tệp độc lập khiến instance Godot editor hiện tại được xem là self-contained. Trả về chuỗi rỗng nếu instance Godot editor hiện tại không ở chế độ self-contained. Xem thêm :ref:`is_self_contained()<class_EditorPaths_method_is_self_contained>`.
 
 .. rst-class:: classref-item-separator
 
@@ -153,22 +153,22 @@ Returns the absolute path to the self-contained file that makes the current Godo
 
 :ref:`bool<class_bool>` **is_self_contained**\ (\ ) |const| :ref:`🔗<class_EditorPaths_method_is_self_contained>`
 
-Returns ``true`` if the editor is marked as self-contained, ``false`` otherwise. When self-contained mode is enabled, user configuration, data and cache files are saved in an ``editor_data/`` folder next to the editor binary. This makes portable usage easier and ensures the Godot editor minimizes file writes outside its own folder. Self-contained mode is not available for exported projects.
+Trả về ``true`` nếu editor được đánh dấu là self-contained, nếu không thì trả về ``false``. Khi bật chế độ self-contained, các tệp cấu hình, dữ liệu và bộ nhớ đệm của người dùng được lưu trong thư mục ``editor_data/`` bên cạnh binary của editor. Điều này giúp việc sử dụng portable dễ dàng hơn và đảm bảo Godot editor giảm thiểu việc ghi tệp bên ngoài thư mục của chính nó. Chế độ self-contained không khả dụng cho các project đã export.
 
-Self-contained mode can be enabled by creating a file named ``._sc_`` or ``_sc_`` in the same folder as the editor binary or macOS .app bundle while the editor is not running. See also :ref:`get_self_contained_file()<class_EditorPaths_method_get_self_contained_file>`.
+Có thể bật chế độ self-contained bằng cách tạo một tệp có tên ``._sc_`` hoặc ``_sc_`` trong cùng thư mục với binary của editor hoặc macOS .app bundle khi editor không đang chạy. Xem thêm :ref:`get_self_contained_file()<class_EditorPaths_method_get_self_contained_file>`.
 
-\ **Note:** On macOS, quarantine flag should be manually removed before using self-contained mode, see `Running on macOS <https://docs.godotengine.org/en/stable/tutorials/export/running_on_macos.html>`__.
+\ **Lưu ý:** Trên macOS, cần gỡ cờ quarantine theo cách thủ công trước khi sử dụng chế độ self-contained, xem `Chạy trên macOS <https://docs.godotengine.org/en/stable/tutorials/export/running_on_macos.html>`__.
 
-\ **Note:** On macOS, placing ``_sc_`` or any other file inside .app bundle will break digital signature and make it non-portable, consider placing it in the same folder as the .app bundle instead.
+\ **Lưu ý:** Trên macOS, việc đặt ``_sc_`` hoặc bất kỳ tệp nào khác bên trong gói .app sẽ làm hỏng chữ ký số và khiến gói không thể di chuyển, vì vậy hãy cân nhắc đặt tệp đó trong cùng thư mục với gói .app.
 
-\ **Note:** The Steam release of Godot uses self-contained mode by default.
+\ **Lưu ý:** Bản phát hành Godot trên Steam mặc định sử dụng chế độ tự chứa.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

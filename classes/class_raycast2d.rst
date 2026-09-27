@@ -10,33 +10,33 @@
 RayCast2D
 =========
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A ray in 2D space, used to find the first collision object it intersects.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A raycast represents a ray from its origin to its :ref:`target_position<class_RayCast2D_property_target_position>` that finds the closest object along its path, if it intersects any.
-
-\ **RayCast2D** can ignore some objects by adding them to an exception list, by making its detection reporting ignore :ref:`Area2D<class_Area2D>`\ s (:ref:`collide_with_areas<class_RayCast2D_property_collide_with_areas>`) or :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s (:ref:`collide_with_bodies<class_RayCast2D_property_collide_with_bodies>`), or by configuring physics layers.
-
-\ **RayCast2D** calculates intersection every physics frame, and it holds the result until the next physics frame. For an immediate raycast, or if you want to configure a **RayCast2D** multiple times within the same physics frame, use :ref:`force_raycast_update()<class_RayCast2D_method_force_raycast_update>`.
-
-To sweep over a region of 2D space, you can approximate the region with multiple **RayCast2D**\ s or use :ref:`ShapeCast2D<class_ShapeCast2D>`.
+Một tia trong không gian 2D, được dùng để tìm đối tượng va chạm đầu tiên mà nó giao nhau.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Raycast biểu diễn một tia từ điểm gốc đến :ref:`target_position<class_RayCast2D_property_target_position>`, tìm đối tượng gần nhất trên đường đi của nó nếu nó giao nhau với bất kỳ đối tượng nào.
+
+\ **RayCast2D** có thể bỏ qua một số đối tượng bằng cách thêm chúng vào danh sách ngoại lệ, khiến việc báo cáo phát hiện bỏ qua :ref:`Area2D<class_Area2D>`\  (:ref:`collide_with_areas<class_RayCast2D_property_collide_with_areas>`) hoặc :ref:`PhysicsBody2D<class_PhysicsBody2D>`\  (:ref:`collide_with_bodies<class_RayCast2D_property_collide_with_bodies>`), hoặc bằng cách cấu hình các physics layer.
+
+\ **RayCast2D** tính toán giao điểm trong mỗi physics frame và giữ kết quả cho đến physics frame tiếp theo. Để thực hiện raycast ngay lập tức hoặc nếu bạn muốn cấu hình **RayCast2D** nhiều lần trong cùng một physics frame, hãy sử dụng :ref:`force_raycast_update()<class_RayCast2D_method_force_raycast_update>`.
+
+Để quét qua một vùng trong không gian 2D, bạn có thể xấp xỉ vùng đó bằng nhiều **RayCast2D**\  hoặc sử dụng :ref:`ShapeCast2D<class_ShapeCast2D>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Ray-casting <../tutorials/physics/ray-casting>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -60,8 +60,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -102,8 +102,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RayCast2D_property_collide_with_areas:
 
@@ -116,7 +116,7 @@ Property Descriptions
 - |void| **set_collide_with_areas**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_areas_enabled**\ (\ )
 
-If ``true``, collisions with :ref:`Area2D<class_Area2D>`\ s will be reported.
+Nếu ``true``, các va chạm với :ref:`Area2D<class_Area2D>`\  sẽ được báo cáo.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ If ``true``, collisions with :ref:`Area2D<class_Area2D>`\ s will be reported.
 - |void| **set_collide_with_bodies**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_bodies_enabled**\ (\ )
 
-If ``true``, collisions with :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s will be reported.
+Nếu ``true``, các va chạm với :ref:`PhysicsBody2D<class_PhysicsBody2D>`\  sẽ được báo cáo.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ If ``true``, collisions with :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s will b
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The ray's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+Mặt nạ va chạm của tia. Chỉ những đối tượng nằm trong ít nhất một collision layer được bật trong mặt nạ mới được phát hiện. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ The ray's collision mask. Only objects in at least one collision layer enabled i
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-If ``true``, collisions will be reported.
+Nếu ``true``, các va chạm sẽ được báo cáo.
 
 .. rst-class:: classref-item-separator
 
@@ -184,7 +184,7 @@ If ``true``, collisions will be reported.
 - |void| **set_exclude_parent_body**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_exclude_parent_body**\ (\ )
 
-If ``true``, this raycast will not report collisions with its parent node. This property only has an effect if the parent node is a :ref:`CollisionObject2D<class_CollisionObject2D>`. See also :ref:`Node.get_parent()<class_Node_method_get_parent>` and :ref:`add_exception()<class_RayCast2D_method_add_exception>`.
+Nếu ``true``, raycast này sẽ không báo cáo các va chạm với node cha của nó. Thuộc tính này chỉ có hiệu lực nếu node cha là một :ref:`CollisionObject2D<class_CollisionObject2D>`. Xem thêm :ref:`Node.get_parent()<class_Node_method_get_parent>` và :ref:`add_exception()<class_RayCast2D_method_add_exception>`.
 
 .. rst-class:: classref-item-separator
 
@@ -201,7 +201,7 @@ If ``true``, this raycast will not report collisions with its parent node. This 
 - |void| **set_hit_from_inside**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_hit_from_inside_enabled**\ (\ )
 
-If ``true``, the ray will detect a hit when starting inside shapes. In this case the collision normal will be ``Vector2(0, 0)``. Does not affect concave polygon shapes.
+Nếu ``true``, tia sẽ phát hiện va chạm khi bắt đầu bên trong các shape. Trong trường hợp này, pháp tuyến va chạm sẽ là ``Vector2(0, 0)``. Không ảnh hưởng đến các shape đa giác lõm.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ If ``true``, the ray will detect a hit when starting inside shapes. In this case
 - |void| **set_target_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_target_position**\ (\ )
 
-The ray's destination point, relative to this raycast's :ref:`Node2D.position<class_Node2D_property_position>`.
+Điểm đích của tia, tương đối so với :ref:`Node2D.position<class_Node2D_property_position>` của raycast này.
 
 .. rst-class:: classref-section-separator
 
@@ -226,8 +226,8 @@ The ray's destination point, relative to this raycast's :ref:`Node2D.position<cl
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RayCast2D_method_add_exception:
 
@@ -235,7 +235,7 @@ Method Descriptions
 
 |void| **add_exception**\ (\ node\: :ref:`CollisionObject2D<class_CollisionObject2D>`\ ) :ref:`🔗<class_RayCast2D_method_add_exception>`
 
-Adds a collision exception so the ray does not report collisions with the specified ``node``.
+Thêm một ngoại lệ va chạm để tia không báo cáo các va chạm với ``node`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ Adds a collision exception so the ray does not report collisions with the specif
 
 |void| **add_exception_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RayCast2D_method_add_exception_rid>`
 
-Adds a collision exception so the ray does not report collisions with the specified :ref:`RID<class_RID>`.
+Thêm một ngoại lệ va chạm để tia không báo cáo các va chạm với :ref:`RID<class_RID>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Adds a collision exception so the ray does not report collisions with the specif
 
 |void| **clear_exceptions**\ (\ ) :ref:`🔗<class_RayCast2D_method_clear_exceptions>`
 
-Removes all collision exceptions for this ray.
+Xóa tất cả ngoại lệ va chạm của tia này.
 
 .. rst-class:: classref-item-separator
 
@@ -271,9 +271,9 @@ Removes all collision exceptions for this ray.
 
 |void| **force_raycast_update**\ (\ ) :ref:`🔗<class_RayCast2D_method_force_raycast_update>`
 
-Updates the collision information for the ray immediately, without waiting for the next ``_physics_process`` call. Use this method, for example, when the ray or its parent has changed state.
+Cập nhật ngay thông tin va chạm của tia mà không cần chờ lần gọi ``_physics_process`` tiếp theo. Sử dụng phương thức này, chẳng hạn, khi tia hoặc node cha của nó đã thay đổi trạng thái.
 
-\ **Note:** :ref:`enabled<class_RayCast2D_property_enabled>` does not need to be ``true`` for this to work.
+\ **Lưu ý:** :ref:`enabled<class_RayCast2D_property_enabled>` không cần phải là ``true`` thì thao tác này mới hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -285,9 +285,9 @@ Updates the collision information for the ray immediately, without waiting for t
 
 :ref:`Object<class_Object>` **get_collider**\ (\ ) |const| :ref:`🔗<class_RayCast2D_method_get_collider>`
 
-Returns the first object that the ray intersects, or ``null`` if no object is intersecting the ray (i.e. :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` returns ``false``).
+Trả về đối tượng đầu tiên mà tia giao nhau hoặc ``null`` nếu không có đối tượng nào đang giao nhau với tia (tức là :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` trả về ``false``).
 
-\ **Note:** This object is not guaranteed to be a :ref:`CollisionObject2D<class_CollisionObject2D>`. For example, if the ray intersects a :ref:`TileMapLayer<class_TileMapLayer>`, the method will return a :ref:`TileMapLayer<class_TileMapLayer>` instance.
+\ **Lưu ý:** Đối tượng này không đảm bảo là một :ref:`CollisionObject2D<class_CollisionObject2D>`. Ví dụ: nếu tia giao nhau với một :ref:`TileMapLayer<class_TileMapLayer>`, phương thức sẽ trả về một instance :ref:`TileMapLayer<class_TileMapLayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ Returns the first object that the ray intersects, or ``null`` if no object is in
 
 :ref:`RID<class_RID>` **get_collider_rid**\ (\ ) |const| :ref:`🔗<class_RayCast2D_method_get_collider_rid>`
 
-Returns the :ref:`RID<class_RID>` of the first object that the ray intersects, or an empty :ref:`RID<class_RID>` if no object is intersecting the ray (i.e. :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` returns ``false``).
+Trả về :ref:`RID<class_RID>` của đối tượng đầu tiên mà tia giao nhau hoặc một :ref:`RID<class_RID>` rỗng nếu không có đối tượng nào đang giao nhau với tia (tức là :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` trả về ``false``).
 
 .. rst-class:: classref-item-separator
 
@@ -311,25 +311,25 @@ Returns the :ref:`RID<class_RID>` of the first object that the ray intersects, o
 
 :ref:`int<class_int>` **get_collider_shape**\ (\ ) |const| :ref:`🔗<class_RayCast2D_method_get_collider_shape>`
 
-Returns the shape ID of the first object that the ray intersects, or ``0`` if no object is intersecting the ray (i.e. :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` returns ``false``).
+Trả về ID shape của đối tượng đầu tiên mà tia giao nhau hoặc ``0`` nếu không có đối tượng nào đang giao nhau với tia (tức là :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` trả về ``false``).
 
-To get the intersected shape node, for a :ref:`CollisionObject2D<class_CollisionObject2D>` target, use:
+Để lấy node shape đã giao nhau, với một đích :ref:`CollisionObject2D<class_CollisionObject2D>`, hãy sử dụng:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var target = get_collider() # A CollisionObject2D.
-    var shape_id = get_collider_shape() # The shape index in the collider.
-    var owner_id = target.shape_find_owner(shape_id) # The owner ID in the collider.
+    var target = get_collider() # Một CollisionObject2D.
+    var shape_id = get_collider_shape() # Chỉ mục shape trong collider.
+    var owner_id = target.shape_find_owner(shape_id) # ID owner trong collider.
     var shape = target.shape_owner_get_owner(owner_id)
 
  .. code-tab:: csharp
 
-    var target = (CollisionObject2D)GetCollider(); // A CollisionObject2D.
-    var shapeId = GetColliderShape(); // The shape index in the collider.
-    var ownerId = target.ShapeFindOwner(shapeId); // The owner ID in the collider.
+    var target = (CollisionObject2D)GetCollider(); // Một CollisionObject2D.
+    var shapeId = GetColliderShape(); // Chỉ mục shape trong collider.
+    var ownerId = target.ShapeFindOwner(shapeId); // ID owner trong collider.
     var shape = target.ShapeOwnerGetOwner(ownerId);
 
 
@@ -344,7 +344,7 @@ To get the intersected shape node, for a :ref:`CollisionObject2D<class_Collision
 
 :ref:`bool<class_bool>` **get_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_RayCast2D_method_get_collision_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_mask<class_RayCast2D_property_collision_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về liệu layer được chỉ định của :ref:`collision_mask<class_RayCast2D_property_collision_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -356,9 +356,9 @@ Returns whether or not the specified layer of the :ref:`collision_mask<class_Ray
 
 :ref:`Vector2<class_Vector2>` **get_collision_normal**\ (\ ) |const| :ref:`🔗<class_RayCast2D_method_get_collision_normal>`
 
-Returns the normal of the intersecting object's shape at the collision point, or ``Vector2(0, 0)`` if the ray starts inside the shape and :ref:`hit_from_inside<class_RayCast2D_property_hit_from_inside>` is ``true``.
+Trả về pháp tuyến của shape thuộc đối tượng giao nhau tại điểm va chạm hoặc ``Vector2(0, 0)`` nếu tia bắt đầu bên trong shape và :ref:`hit_from_inside<class_RayCast2D_property_hit_from_inside>` là ``true``.
 
-\ **Note:** Check that :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` returns ``true`` before calling this method to ensure the returned normal is valid and up-to-date.
+\ **Lưu ý:** Kiểm tra rằng :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` trả về ``true`` trước khi gọi phương thức này để đảm bảo pháp tuyến trả về hợp lệ và được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -370,9 +370,9 @@ Returns the normal of the intersecting object's shape at the collision point, or
 
 :ref:`Vector2<class_Vector2>` **get_collision_point**\ (\ ) |const| :ref:`🔗<class_RayCast2D_method_get_collision_point>`
 
-Returns the collision point at which the ray intersects the closest object, in the global coordinate system. If :ref:`hit_from_inside<class_RayCast2D_property_hit_from_inside>` is ``true`` and the ray starts inside of a collision shape, this function will return the origin point of the ray.
+Trả về điểm va chạm tại đó tia giao nhau với đối tượng gần nhất, trong hệ tọa độ toàn cục. Nếu :ref:`hit_from_inside<class_RayCast2D_property_hit_from_inside>` là ``true`` và tia bắt đầu bên trong một shape va chạm, hàm này sẽ trả về điểm gốc của tia.
 
-\ **Note:** Check that :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` returns ``true`` before calling this method to ensure the returned point is valid and up-to-date.
+\ **Lưu ý:** Hãy kiểm tra rằng :ref:`is_colliding()<class_RayCast2D_method_is_colliding>` trả về ``true`` trước khi gọi phương thức này để đảm bảo điểm được trả về hợp lệ và cập nhật mới nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -384,7 +384,7 @@ Returns the collision point at which the ray intersects the closest object, in t
 
 :ref:`bool<class_bool>` **is_colliding**\ (\ ) |const| :ref:`🔗<class_RayCast2D_method_is_colliding>`
 
-Returns whether any object is intersecting with the ray's vector (considering the vector length).
+Trả về việc có đối tượng nào đang giao với vector của tia hay không (có xét đến độ dài của vector).
 
 .. rst-class:: classref-item-separator
 
@@ -396,7 +396,7 @@ Returns whether any object is intersecting with the ray's vector (considering th
 
 |void| **remove_exception**\ (\ node\: :ref:`CollisionObject2D<class_CollisionObject2D>`\ ) :ref:`🔗<class_RayCast2D_method_remove_exception>`
 
-Removes a collision exception so the ray can report collisions with the specified ``node``.
+Xóa một ngoại lệ va chạm để tia có thể báo cáo các va chạm với ``node`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -408,7 +408,7 @@ Removes a collision exception so the ray can report collisions with the specifie
 
 |void| **remove_exception_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RayCast2D_method_remove_exception_rid>`
 
-Removes a collision exception so the ray can report collisions with the specified :ref:`RID<class_RID>`.
+Xóa một ngoại lệ va chạm để tia có thể báo cáo các va chạm với :ref:`RID<class_RID>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -420,14 +420,14 @@ Removes a collision exception so the ray can report collisions with the specifie
 
 |void| **set_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_RayCast2D_method_set_collision_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_mask<class_RayCast2D_property_collision_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_mask<class_RayCast2D_property_collision_mask>`, với một ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

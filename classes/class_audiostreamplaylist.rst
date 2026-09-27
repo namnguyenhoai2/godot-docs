@@ -10,27 +10,27 @@
 AudioStreamPlaylist
 ===================
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-:ref:`AudioStream<class_AudioStream>` that includes sub-streams and plays them back like a playlist.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-An audio stream that can play back sub-streams in sequence. Streams can be added to the Playlist with :ref:`set_list_stream()<class_AudioStreamPlaylist_method_set_list_stream>`, and shuffled with :ref:`shuffle<class_AudioStreamPlaylist_property_shuffle>`.
+:ref:`AudioStream<class_AudioStream>` bao gồm các sub-stream và phát lại chúng như một playlist.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một audio stream có thể phát lại các sub-stream theo trình tự. Có thể thêm các stream vào Playlist bằng :ref:`set_list_stream()<class_AudioStreamPlaylist_method_set_list_stream>`, và xáo trộn chúng bằng :ref:`shuffle<class_AudioStreamPlaylist_property_shuffle>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -48,8 +48,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -68,8 +68,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_AudioStreamPlaylist_constant_MAX_STREAMS:
 
@@ -77,7 +77,7 @@ Constants
 
 **MAX_STREAMS** = ``64`` :ref:`🔗<class_AudioStreamPlaylist_constant_MAX_STREAMS>`
 
-Maximum amount of streams supported in the playlist.
+Số lượng stream tối đa được hỗ trợ trong playlist.
 
 .. rst-class:: classref-section-separator
 
@@ -85,8 +85,8 @@ Maximum amount of streams supported in the playlist.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioStreamPlaylist_property_fade_time:
 
@@ -99,7 +99,7 @@ Property Descriptions
 - |void| **set_fade_time**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fade_time**\ (\ )
 
-Fade time used when a stream ends, when going to the next one. Streams are expected to have an extra bit of audio after the end to help with fading.
+Thời gian fade được sử dụng khi một stream kết thúc và chuyển sang stream tiếp theo. Các stream được dự kiến có thêm một đoạn âm thanh ngắn sau phần kết thúc để hỗ trợ việc fade.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Fade time used when a stream ends, when going to the next one. Streams are expec
 - |void| **set_loop**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_loop**\ (\ )
 
-If ``true``, the playlist will loop, otherwise the playlist will end when the last stream is finished.
+Nếu ``true``, playlist sẽ lặp lại; nếu không, playlist sẽ kết thúc khi stream cuối cùng phát xong.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ If ``true``, the playlist will loop, otherwise the playlist will end when the la
 - |void| **set_shuffle**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_shuffle**\ (\ )
 
-If ``true``, the playlist will shuffle each time playback starts and each time it loops.
+Nếu ``true``, playlist sẽ xáo trộn thứ tự mỗi lần bắt đầu phát và mỗi lần lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ If ``true``, the playlist will shuffle each time playback starts and each time i
 - |void| **set_stream_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_stream_count**\ (\ )
 
-Amount of streams in the playlist.
+Số lượng stream trong playlist.
 
 .. rst-class:: classref-section-separator
 
@@ -158,8 +158,8 @@ Amount of streams in the playlist.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioStreamPlaylist_method_get_bpm:
 
@@ -167,7 +167,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_bpm**\ (\ ) |const| :ref:`🔗<class_AudioStreamPlaylist_method_get_bpm>`
 
-Returns the BPM of the playlist, which can vary depending on the clip being played.
+Trả về BPM của playlist, giá trị này có thể thay đổi tùy thuộc vào clip đang được phát.
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Returns the BPM of the playlist, which can vary depending on the clip being play
 
 :ref:`AudioStream<class_AudioStream>` **get_list_stream**\ (\ stream_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioStreamPlaylist_method_get_list_stream>`
 
-Returns the stream at playback position index.
+Trả về stream tại vị trí phát index.
 
 .. rst-class:: classref-item-separator
 
@@ -191,14 +191,14 @@ Returns the stream at playback position index.
 
 |void| **set_list_stream**\ (\ stream_index\: :ref:`int<class_int>`, audio_stream\: :ref:`AudioStream<class_AudioStream>`\ ) :ref:`🔗<class_AudioStreamPlaylist_method_set_list_stream>`
 
-Sets the stream at playback position index.
+Đặt stream tại vị trí phát index.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ ngoài các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

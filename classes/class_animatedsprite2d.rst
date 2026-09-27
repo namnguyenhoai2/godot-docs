@@ -10,29 +10,29 @@
 AnimatedSprite2D
 ================
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Sprite node that contains multiple textures as frames to play for animation.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**AnimatedSprite2D** is similar to the :ref:`Sprite2D<class_Sprite2D>` node, except it carries multiple textures as animation frames. Animations are created using a :ref:`SpriteFrames<class_SpriteFrames>` resource, which allows you to import image files (or a folder containing said files) to provide the animation frames for the sprite. The :ref:`SpriteFrames<class_SpriteFrames>` resource can be configured in the editor via the SpriteFrames bottom panel.
+Nút Sprite chứa nhiều texture làm các khung hình để phát hoạt ảnh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**AnimatedSprite2D** tương tự nút :ref:`Sprite2D<class_Sprite2D>`, nhưng chứa nhiều texture làm các khung hình hoạt ảnh. Hoạt ảnh được tạo bằng tài nguyên :ref:`SpriteFrames<class_SpriteFrames>`, cho phép bạn import các tệp hình ảnh (hoặc một thư mục chứa các tệp đó) để cung cấp các khung hình hoạt ảnh cho sprite. Tài nguyên :ref:`SpriteFrames<class_SpriteFrames>` có thể được cấu hình trong editor thông qua panel SpriteFrames ở phía dưới.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`2D Sprite animation <../tutorials/2d/2d_sprite_animation>`
+- :doc:`Hoạt ảnh Sprite 2D <../tutorials/2d/2d_sprite_animation>`
 
-- `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
+- `Bản demo 2D Dodge The Creeps <https://godotengine.org/asset-library/asset/2712>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -62,8 +62,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -77,9 +77,9 @@ Methods
    +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                    | :ref:`play<class_AnimatedSprite2D_method_play>`\ (\ name\: :ref:`StringName<class_StringName>` = &"", custom_speed\: :ref:`float<class_float>` = 1.0, from_end\: :ref:`bool<class_bool>` = false\ ) |
    +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`play_backwards<class_AnimatedSprite2D_method_play_backwards>`\ (\ name\: :ref:`StringName<class_StringName>` = &""\ )                                                                         |
+   | |void|                    | :ref:`play_backwards<class_AnimatedSprite2D_method_play_backwards>`\ (\ name\: :ref:`StringName<class_StringName>` = &""\ )）                                                                       |
    +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_frame_and_progress<class_AnimatedSprite2D_method_set_frame_and_progress>`\ (\ frame\: :ref:`int<class_int>`, progress\: :ref:`float<class_float>`\ )                                      |
+   | |void|                    | :ref:`set_frame_and_progress<class_AnimatedSprite2D_method_set_frame_and_progress>`\ (\ frame\: :ref:`int<class_int>`, progress\: :ref:`float<class_float>`\ )）                                    |
    +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                    | :ref:`stop<class_AnimatedSprite2D_method_stop>`\ (\ )                                                                                                                                               |
    +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -90,8 +90,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_AnimatedSprite2D_signal_animation_changed:
 
@@ -99,7 +99,7 @@ Signals
 
 **animation_changed**\ (\ ) :ref:`🔗<class_AnimatedSprite2D_signal_animation_changed>`
 
-Emitted when :ref:`animation<class_AnimatedSprite2D_property_animation>` changes.
+Được phát ra khi :ref:`animation<class_AnimatedSprite2D_property_animation>` thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -111,9 +111,9 @@ Emitted when :ref:`animation<class_AnimatedSprite2D_property_animation>` changes
 
 **animation_finished**\ (\ ) :ref:`🔗<class_AnimatedSprite2D_signal_animation_finished>`
 
-Emitted when the animation reaches the end, or the start if it is played in reverse. When the animation finishes, it pauses the playback.
+Được phát ra khi animation đến cuối, hoặc đến đầu nếu được phát ngược. Khi animation kết thúc, quá trình phát sẽ tạm dừng.
 
-\ **Note:** This signal is not emitted if an animation is looping.
+\ **Lưu ý:** Signal này không được phát nếu animation đang lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -125,7 +125,7 @@ Emitted when the animation reaches the end, or the start if it is played in reve
 
 **animation_looped**\ (\ ) :ref:`🔗<class_AnimatedSprite2D_signal_animation_looped>`
 
-Emitted when the animation loops.
+Được phát ra khi animation lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Emitted when the animation loops.
 
 **frame_changed**\ (\ ) :ref:`🔗<class_AnimatedSprite2D_signal_frame_changed>`
 
-Emitted when :ref:`frame<class_AnimatedSprite2D_property_frame>` changes.
+Được phát ra khi :ref:`frame<class_AnimatedSprite2D_property_frame>` thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ Emitted when :ref:`frame<class_AnimatedSprite2D_property_frame>` changes.
 
 **sprite_frames_changed**\ (\ ) :ref:`🔗<class_AnimatedSprite2D_signal_sprite_frames_changed>`
 
-Emitted when :ref:`sprite_frames<class_AnimatedSprite2D_property_sprite_frames>` changes.
+Được phát ra khi :ref:`sprite_frames<class_AnimatedSprite2D_property_sprite_frames>` thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -157,8 +157,8 @@ Emitted when :ref:`sprite_frames<class_AnimatedSprite2D_property_sprite_frames>`
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimatedSprite2D_property_animation:
 
@@ -171,7 +171,7 @@ Property Descriptions
 - |void| **set_animation**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_animation**\ (\ )
 
-The current animation from the :ref:`sprite_frames<class_AnimatedSprite2D_property_sprite_frames>` resource. If this value is changed, the :ref:`frame<class_AnimatedSprite2D_property_frame>` counter and the :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` are reset.
+Animation hiện tại từ resource :ref:`sprite_frames<class_AnimatedSprite2D_property_sprite_frames>`. Nếu giá trị này thay đổi, bộ đếm :ref:`frame<class_AnimatedSprite2D_property_frame>` và :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` sẽ được đặt lại.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ The current animation from the :ref:`sprite_frames<class_AnimatedSprite2D_proper
 - |void| **set_autoplay**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_autoplay**\ (\ )
 
-The key of the animation to play when the scene loads.
+Khóa của animation sẽ phát khi scene tải.
 
 .. rst-class:: classref-item-separator
 
@@ -205,9 +205,9 @@ The key of the animation to play when the scene loads.
 - |void| **set_centered**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_centered**\ (\ )
 
-If ``true``, texture will be centered.
+Nếu ``true``, texture sẽ được căn giữa.
 
-\ **Note:** For games with a pixel art aesthetic, textures may appear deformed when centered. This is caused by their position being between pixels. To prevent this, set this property to ``false``, or consider enabling :ref:`ProjectSettings.rendering/2d/snap/snap_2d_vertices_to_pixel<class_ProjectSettings_property_rendering/2d/snap/snap_2d_vertices_to_pixel>` and :ref:`ProjectSettings.rendering/2d/snap/snap_2d_transforms_to_pixel<class_ProjectSettings_property_rendering/2d/snap/snap_2d_transforms_to_pixel>`.
+\ **Lưu ý:** Đối với các game có phong cách pixel art, texture có thể bị biến dạng khi được căn giữa. Nguyên nhân là vị trí của chúng nằm giữa các pixel. Để tránh điều này, hãy đặt thuộc tính này thành ``false``, hoặc cân nhắc bật :ref:`ProjectSettings.rendering/2d/snap/snap_2d_vertices_to_pixel <class_ProjectSettings_property_rendering/2d/snap/snap_2d_vertices_to_pixel>` và :ref:`ProjectSettings.rendering/2d/snap/snap_2d_transforms_to_pixel <class_ProjectSettings_property_rendering/2d/snap/snap_2d_transforms_to_pixel>`.
 
 .. rst-class:: classref-item-separator
 
@@ -224,7 +224,7 @@ If ``true``, texture will be centered.
 - |void| **set_flip_h**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_h**\ (\ )
 
-If ``true``, texture is flipped horizontally.
+Nếu ``true``, texture sẽ được lật theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -241,7 +241,7 @@ If ``true``, texture is flipped horizontally.
 - |void| **set_flip_v**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flipped_v**\ (\ )
 
-If ``true``, texture is flipped vertically.
+Nếu ``true``, texture sẽ được lật theo chiều dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -258,7 +258,7 @@ If ``true``, texture is flipped vertically.
 - |void| **set_frame**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_frame**\ (\ )
 
-The displayed animation frame's index. Setting this property also resets :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>`. If this is not desired, use :ref:`set_frame_and_progress()<class_AnimatedSprite2D_method_set_frame_and_progress>`.
+Chỉ số của frame animation đang được hiển thị. Việc đặt thuộc tính này cũng đặt lại :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>`. Nếu không mong muốn điều này, hãy sử dụng :ref:`set_frame_and_progress()<class_AnimatedSprite2D_method_set_frame_and_progress>`.
 
 .. rst-class:: classref-item-separator
 
@@ -275,7 +275,7 @@ The displayed animation frame's index. Setting this property also resets :ref:`f
 - |void| **set_frame_progress**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_frame_progress**\ (\ )
 
-The progress value between ``0.0`` and ``1.0`` until the current frame transitions to the next frame. If the animation is playing backwards, the value transitions from ``1.0`` to ``0.0``.
+Giá trị tiến trình nằm giữa ``0.0`` và ``1.0`` cho đến khi frame hiện tại chuyển sang frame tiếp theo. Nếu animation đang phát ngược, giá trị sẽ chuyển từ ``1.0`` đến ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -292,7 +292,7 @@ The progress value between ``0.0`` and ``1.0`` until the current frame transitio
 - |void| **set_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset**\ (\ )
 
-The texture's drawing offset.
+Độ lệch khi vẽ texture.
 
 .. rst-class:: classref-item-separator
 
@@ -309,9 +309,9 @@ The texture's drawing offset.
 - |void| **set_speed_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_speed_scale**\ (\ )
 
-The speed scaling ratio. For example, if this value is ``1``, then the animation plays at normal speed. If it's ``0.5``, then it plays at half speed. If it's ``2``, then it plays at double speed.
+Tỷ lệ điều chỉnh tốc độ. Ví dụ, nếu giá trị này là ``1``, animation sẽ phát ở tốc độ bình thường. Nếu là ``0.5``, animation sẽ phát ở một nửa tốc độ. Nếu là ``2``, animation sẽ phát ở tốc độ gấp đôi.
 
-If set to a negative value, the animation is played in reverse. If set to ``0``, the animation will not advance.
+Nếu được đặt thành giá trị âm, animation sẽ phát ngược. Nếu được đặt thành ``0``, animation sẽ không tiến triển.
 
 .. rst-class:: classref-item-separator
 
@@ -321,14 +321,14 @@ If set to a negative value, the animation is played in reverse. If set to ``0``,
 
 .. rst-class:: classref-property
 
-:ref:`SpriteFrames<class_SpriteFrames>` **sprite_frames** :ref:`🔗<class_AnimatedSprite2D_property_sprite_frames>`
+:ref:`SpriteFrames<class_SpriteFrames>` **sprite_frames** :ref:`🔗 <class_AnimatedSprite2D_property_sprite_frames>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_sprite_frames**\ (\ value\: :ref:`SpriteFrames<class_SpriteFrames>`\ )
 - :ref:`SpriteFrames<class_SpriteFrames>` **get_sprite_frames**\ (\ )
 
-The :ref:`SpriteFrames<class_SpriteFrames>` resource containing the animation(s). Allows you the option to load, edit, clear, make unique and save the states of the :ref:`SpriteFrames<class_SpriteFrames>` resource.
+Tài nguyên :ref:`SpriteFrames<class_SpriteFrames>` chứa các animation. Cho phép bạn tải, chỉnh sửa, xóa, tạo bản độc lập và lưu trạng thái của tài nguyên :ref:`SpriteFrames<class_SpriteFrames>`.
 
 .. rst-class:: classref-section-separator
 
@@ -336,8 +336,8 @@ The :ref:`SpriteFrames<class_SpriteFrames>` resource containing the animation(s)
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimatedSprite2D_method_get_playing_speed:
 
@@ -345,9 +345,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_playing_speed**\ (\ ) |const| :ref:`🔗<class_AnimatedSprite2D_method_get_playing_speed>`
 
-Returns the actual playing speed of current animation or ``0`` if not playing. This speed is the :ref:`speed_scale<class_AnimatedSprite2D_property_speed_scale>` property multiplied by ``custom_speed`` argument specified when calling the :ref:`play()<class_AnimatedSprite2D_method_play>` method.
+Trả về tốc độ phát thực tế của animation hiện tại hoặc ``0`` nếu không phát. Tốc độ này là thuộc tính :ref:`speed_scale<class_AnimatedSprite2D_property_speed_scale>` nhân với đối số ``custom_speed`` được chỉ định khi gọi phương thức :ref:`play()<class_AnimatedSprite2D_method_play>`.
 
-Returns a negative value if the current animation is playing backwards.
+Trả về một giá trị âm nếu animation hiện tại đang phát ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ Returns a negative value if the current animation is playing backwards.
 
 :ref:`bool<class_bool>` **is_playing**\ (\ ) |const| :ref:`🔗<class_AnimatedSprite2D_method_is_playing>`
 
-Returns ``true`` if an animation is currently playing (even if :ref:`speed_scale<class_AnimatedSprite2D_property_speed_scale>` and/or ``custom_speed`` are ``0``).
+Trả về ``true`` nếu một animation hiện đang phát (ngay cả khi :ref:`speed_scale<class_AnimatedSprite2D_property_speed_scale>` và/hoặc ``custom_speed`` là ``0``).
 
 .. rst-class:: classref-item-separator
 
@@ -371,9 +371,9 @@ Returns ``true`` if an animation is currently playing (even if :ref:`speed_scale
 
 |void| **pause**\ (\ ) :ref:`🔗<class_AnimatedSprite2D_method_pause>`
 
-Pauses the currently playing animation. The :ref:`frame<class_AnimatedSprite2D_property_frame>` and :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` will be kept and calling :ref:`play()<class_AnimatedSprite2D_method_play>` or :ref:`play_backwards()<class_AnimatedSprite2D_method_play_backwards>` without arguments will resume the animation from the current playback position.
+Tạm dừng animation hiện đang phát. :ref:`frame<class_AnimatedSprite2D_property_frame>` và :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` sẽ được giữ lại, và việc gọi :ref:`play()<class_AnimatedSprite2D_method_play>` hoặc :ref:`play_backwards()<class_AnimatedSprite2D_method_play_backwards>` không có đối số sẽ tiếp tục animation từ vị trí phát hiện tại.
 
-See also :ref:`stop()<class_AnimatedSprite2D_method_stop>`.
+Xem thêm :ref:`stop()<class_AnimatedSprite2D_method_stop>`.
 
 .. rst-class:: classref-item-separator
 
@@ -385,9 +385,9 @@ See also :ref:`stop()<class_AnimatedSprite2D_method_stop>`.
 
 |void| **play**\ (\ name\: :ref:`StringName<class_StringName>` = &"", custom_speed\: :ref:`float<class_float>` = 1.0, from_end\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AnimatedSprite2D_method_play>`
 
-Plays the animation with key ``name``. If ``custom_speed`` is negative and ``from_end`` is ``true``, the animation will play backwards (which is equivalent to calling :ref:`play_backwards()<class_AnimatedSprite2D_method_play_backwards>`).
+Phát animation có khóa ``name``. Nếu ``custom_speed`` là số âm và ``from_end`` là ``true``, animation sẽ phát ngược (tương đương với việc gọi :ref:`play_backwards()<class_AnimatedSprite2D_method_play_backwards>`).
 
-If this method is called with that same animation ``name``, or with no ``name`` parameter, the assigned animation will resume playing if it was paused.
+Nếu gọi phương thức này với cùng animation ``name`` đó hoặc không có tham số ``name``, animation được gán sẽ tiếp tục phát nếu trước đó đã bị tạm dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -399,9 +399,9 @@ If this method is called with that same animation ``name``, or with no ``name`` 
 
 |void| **play_backwards**\ (\ name\: :ref:`StringName<class_StringName>` = &""\ ) :ref:`🔗<class_AnimatedSprite2D_method_play_backwards>`
 
-Plays the animation with key ``name`` in reverse.
+Phát ngược animation có khóa ``name``.
 
-This method is a shorthand for :ref:`play()<class_AnimatedSprite2D_method_play>` with ``custom_speed = -1.0`` and ``from_end = true``, so see its description for more information.
+Phương thức này là cách viết tắt cho :ref:`play()<class_AnimatedSprite2D_method_play>` với ``custom_speed = -1.0`` và ``from_end = true``, vì vậy hãy xem phần mô tả của nó để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -413,9 +413,9 @@ This method is a shorthand for :ref:`play()<class_AnimatedSprite2D_method_play>`
 
 |void| **set_frame_and_progress**\ (\ frame\: :ref:`int<class_int>`, progress\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AnimatedSprite2D_method_set_frame_and_progress>`
 
-Sets :ref:`frame<class_AnimatedSprite2D_property_frame>` and :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` to the given values. Unlike setting :ref:`frame<class_AnimatedSprite2D_property_frame>`, this method does not reset the :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` to ``0.0`` implicitly.
+Đặt :ref:`frame<class_AnimatedSprite2D_property_frame>` và :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` thành các giá trị đã cho. Không giống như khi đặt :ref:`frame<class_AnimatedSprite2D_property_frame>`, phương thức này không ngầm đặt lại :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>` thành ``0.0``.
 
-\ **Example:** Change the animation while keeping the same :ref:`frame<class_AnimatedSprite2D_property_frame>` and :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>`:
+\ **Ví dụ:** Thay đổi animation trong khi vẫn giữ nguyên :ref:`frame<class_AnimatedSprite2D_property_frame>` và :ref:`frame_progress<class_AnimatedSprite2D_property_frame_progress>`:
 
 
 .. tabs::
@@ -439,14 +439,14 @@ Sets :ref:`frame<class_AnimatedSprite2D_property_frame>` and :ref:`frame_progres
 
 |void| **stop**\ (\ ) :ref:`🔗<class_AnimatedSprite2D_method_stop>`
 
-Stops the currently playing animation. The animation position is reset to ``0`` and the ``custom_speed`` is reset to ``1.0``. See also :ref:`pause()<class_AnimatedSprite2D_method_pause>`.
+Dừng animation hiện đang phát. Vị trí animation được đặt lại thành ``0`` và ``custom_speed`` được đặt lại thành ``1.0``. Xem thêm :ref:`pause()<class_AnimatedSprite2D_method_pause>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

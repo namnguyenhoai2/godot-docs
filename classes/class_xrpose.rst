@@ -10,52 +10,52 @@
 XRPose
 ======
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-This object contains all data related to a pose on a tracked object.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-XR runtimes often identify multiple locations on devices such as controllers that are spatially tracked.
-
-Orientation, location, linear velocity and angular velocity are all provided for each pose by the XR runtime. This object contains this state of a pose.
+Đối tượng này chứa tất cả dữ liệu liên quan đến một pose trên một đối tượng được theo dõi.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Các XR runtime thường xác định nhiều vị trí trên những thiết bị như controller được theo dõi trong không gian.
+
+XR runtime cung cấp orientation, location, linear velocity và angular velocity cho từng pose. Đối tượng này chứa trạng thái của một pose.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                             | :ref:`angular_velocity<class_XRPose_property_angular_velocity>`       | ``Vector3(0, 0, 0)``                                |
-   +-----------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`bool<class_bool>`                                   | :ref:`has_tracking_data<class_XRPose_property_has_tracking_data>`     | ``false``                                           |
-   +-----------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                             | :ref:`linear_velocity<class_XRPose_property_linear_velocity>`         | ``Vector3(0, 0, 0)``                                |
-   +-----------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                       | :ref:`name<class_XRPose_property_name>`                               | ``&""``                                             |
-   +-----------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`TrackingConfidence<enum_XRPose_TrackingConfidence>` | :ref:`tracking_confidence<class_XRPose_property_tracking_confidence>` | ``0``                                               |
-   +-----------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`                     | :ref:`transform<class_XRPose_property_transform>`                     | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
-   +-----------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
+   +------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                              | :ref:`angular_velocity<class_XRPose_property_angular_velocity>`       | ``Vector3(0, 0, 0)``                                |
+   +------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`bool<class_bool>`                                    | :ref:`has_tracking_data<class_XRPose_property_has_tracking_data>`     | ``false``                                           |
+   +------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                              | :ref:`linear_velocity<class_XRPose_property_linear_velocity>`         | ``Vector3(0, 0, 0)``                                |
+   +------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                        | :ref:`name<class_XRPose_property_name>`                               | ``&""``                                             |
+   +------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`TrackingConfidence <enum_XRPose_TrackingConfidence>` | :ref:`tracking_confidence<class_XRPose_property_tracking_confidence>` | ``0``                                               |
+   +------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`                      | :ref:`transform<class_XRPose_property_transform>`                     | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
+   +------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -70,14 +70,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_XRPose_TrackingConfidence:
 
 .. rst-class:: classref-enumeration
 
-enum **TrackingConfidence**: :ref:`🔗<enum_XRPose_TrackingConfidence>`
+enum **TrackingConfidence**: :ref:`🔗 <enum_XRPose_TrackingConfidence>`
 
 .. _class_XRPose_constant_XR_TRACKING_CONFIDENCE_NONE:
 
@@ -85,7 +85,7 @@ enum **TrackingConfidence**: :ref:`🔗<enum_XRPose_TrackingConfidence>`
 
 :ref:`TrackingConfidence<enum_XRPose_TrackingConfidence>` **XR_TRACKING_CONFIDENCE_NONE** = ``0``
 
-No tracking information is available for this pose.
+Không có thông tin tracking cho tư thế này.
 
 .. _class_XRPose_constant_XR_TRACKING_CONFIDENCE_LOW:
 
@@ -93,7 +93,7 @@ No tracking information is available for this pose.
 
 :ref:`TrackingConfidence<enum_XRPose_TrackingConfidence>` **XR_TRACKING_CONFIDENCE_LOW** = ``1``
 
-Tracking information may be inaccurate or estimated. For example, with inside out tracking this would indicate a controller may be (partially) obscured.
+Thông tin tracking có thể không chính xác hoặc là thông tin ước tính. Ví dụ: với tracking inside out, điều này cho biết một controller có thể đang bị che khuất (một phần).
 
 .. _class_XRPose_constant_XR_TRACKING_CONFIDENCE_HIGH:
 
@@ -101,7 +101,7 @@ Tracking information may be inaccurate or estimated. For example, with inside ou
 
 :ref:`TrackingConfidence<enum_XRPose_TrackingConfidence>` **XR_TRACKING_CONFIDENCE_HIGH** = ``2``
 
-Tracking information is considered accurate and up to date.
+Thông tin theo dõi được xem là chính xác và luôn được cập nhật.
 
 .. rst-class:: classref-section-separator
 
@@ -109,8 +109,8 @@ Tracking information is considered accurate and up to date.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRPose_property_angular_velocity:
 
@@ -123,7 +123,7 @@ Property Descriptions
 - |void| **set_angular_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_angular_velocity**\ (\ )
 
-The angular velocity for this pose.
+Vận tốc góc của tư thế này.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ The angular velocity for this pose.
 - |void| **set_has_tracking_data**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_has_tracking_data**\ (\ )
 
-If ``true`` our tracking data is up to date. If ``false`` we're no longer receiving new tracking data and our state is whatever that last valid state was.
+Nếu ``true`` thì dữ liệu theo dõi của chúng ta luôn được cập nhật. Nếu ``false`` thì chúng ta không còn nhận được dữ liệu theo dõi mới và trạng thái của chúng ta là trạng thái hợp lệ gần nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ If ``true`` our tracking data is up to date. If ``false`` we're no longer receiv
 - |void| **set_linear_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_linear_velocity**\ (\ )
 
-The linear velocity of this pose.
+Vận tốc tuyến tính của tư thế này.
 
 .. rst-class:: classref-item-separator
 
@@ -174,15 +174,15 @@ The linear velocity of this pose.
 - |void| **set_name**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_name**\ (\ )
 
-The name of this pose. Usually, this name is derived from an action map set up by the user. Godot also suggests some pose names that :ref:`XRInterface<class_XRInterface>` objects are expected to implement:
+Tên của tư thế này. Thông thường, tên này được lấy từ action map do người dùng thiết lập. Godot cũng gợi ý một số tên tư thế mà các đối tượng :ref:`XRInterface<class_XRInterface>` được kỳ vọng triển khai:
 
-- ``root`` is the root location, often used for tracked objects that do not have further nodes.
+- ``root`` là vị trí gốc, thường được sử dụng cho các đối tượng được theo dõi không có thêm node nào.
 
-- ``aim`` is the tip of a controller with its orientation pointing outwards, often used for raycasts.
+- ``aim`` là đầu của controller với hướng của nó hướng ra ngoài, thường được dùng cho raycast.
 
-- ``grip`` is the location where the user grips the controller.
+- ``grip`` là vị trí nơi người dùng cầm controller.
 
-- ``skeleton`` is the root location for a hand mesh, when using hand tracking and an animated skeleton is supplied by the XR runtime.
+- ``skeleton`` là vị trí gốc của mesh bàn tay khi sử dụng hand tracking và một skeleton động được XR runtime cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -199,7 +199,7 @@ The name of this pose. Usually, this name is derived from an action map set up b
 - |void| **set_tracking_confidence**\ (\ value\: :ref:`TrackingConfidence<enum_XRPose_TrackingConfidence>`\ )
 - :ref:`TrackingConfidence<enum_XRPose_TrackingConfidence>` **get_tracking_confidence**\ (\ )
 
-The tracking confidence for this pose, provides insight on how accurate the spatial positioning of this record is.
+Độ tin cậy theo dõi của pose này cho biết mức độ chính xác của việc định vị không gian của bản ghi này.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ The tracking confidence for this pose, provides insight on how accurate the spat
 - |void| **set_transform**\ (\ value\: :ref:`Transform3D<class_Transform3D>`\ )
 - :ref:`Transform3D<class_Transform3D>` **get_transform**\ (\ )
 
-The transform containing the original and transform as reported by the XR runtime.
+Phép biến đổi chứa vị trí gốc và phép biến đổi do XR runtime báo cáo.
 
 .. rst-class:: classref-section-separator
 
@@ -224,8 +224,8 @@ The transform containing the original and transform as reported by the XR runtim
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRPose_method_get_adjusted_transform:
 
@@ -233,14 +233,14 @@ Method Descriptions
 
 :ref:`Transform3D<class_Transform3D>` **get_adjusted_transform**\ (\ ) |const| :ref:`🔗<class_XRPose_method_get_adjusted_transform>`
 
-Returns the :ref:`transform<class_XRPose_property_transform>` with world scale and our reference frame applied. This is the transform used to position :ref:`XRNode3D<class_XRNode3D>` objects.
+Trả về :ref:`transform<class_XRPose_property_transform>` với tỷ lệ thế giới và hệ quy chiếu của chúng ta được áp dụng. Đây là phép biến đổi được sử dụng để định vị các đối tượng :ref:`XRNode3D<class_XRNode3D>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

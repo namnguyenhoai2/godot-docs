@@ -10,29 +10,29 @@
 GPUParticlesAttractor3D
 =======================
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`GPUParticlesAttractorBox3D<class_GPUParticlesAttractorBox3D>`, :ref:`GPUParticlesAttractorSphere3D<class_GPUParticlesAttractorSphere3D>`, :ref:`GPUParticlesAttractorVectorField3D<class_GPUParticlesAttractorVectorField3D>`
+**Được kế thừa bởi:** :ref:`GPUParticlesAttractorBox3D<class_GPUParticlesAttractorBox3D>`, :ref:`GPUParticlesAttractorSphere3D<class_GPUParticlesAttractorSphere3D>`, :ref:`GPUParticlesAttractorVectorField3D<class_GPUParticlesAttractorVectorField3D>`
 
-Abstract base class for 3D particle attractors.
+Lớp cơ sở trừu tượng cho các particle attractor 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Particle attractors can be used to attract particles towards the attractor's origin, or to push them away from the attractor's origin.
+Particle attractor có thể được dùng để hút các hạt về phía gốc của attractor hoặc đẩy chúng ra xa gốc của attractor.
 
-Particle attractors work in real-time and can be moved, rotated and scaled during gameplay. Unlike collision shapes, non-uniform scaling of attractors is also supported.
+Particle attractor hoạt động theo thời gian thực và có thể được di chuyển, xoay và thay đổi tỷ lệ trong khi chơi. Không giống như các hình dạng va chạm, attractor cũng hỗ trợ thay đổi tỷ lệ không đồng nhất.
 
-Attractors can be temporarily disabled by hiding them, or by setting their :ref:`strength<class_GPUParticlesAttractor3D_property_strength>` to ``0.0``.
+Attractor có thể được tạm thời vô hiệu hóa bằng cách ẩn chúng hoặc đặt :ref:`strength<class_GPUParticlesAttractor3D_property_strength>` thành ``0.0``.
 
-\ **Note:** Particle attractors only affect :ref:`GPUParticles3D<class_GPUParticles3D>`, not :ref:`CPUParticles3D<class_CPUParticles3D>`.
+\ **Lưu ý:** Các particle attractor chỉ ảnh hưởng đến :ref:`GPUParticles3D<class_GPUParticles3D>`, không ảnh hưởng đến :ref:`CPUParticles3D<class_CPUParticles3D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -53,8 +53,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GPUParticlesAttractor3D_property_attenuation:
 
@@ -67,7 +67,7 @@ Property Descriptions
 - |void| **set_attenuation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_attenuation**\ (\ )
 
-The particle attractor's attenuation. Higher values result in more gradual pushing of particles as they come closer to the attractor's origin. Zero or negative values will cause particles to be pushed very fast as soon as the touch the attractor's edges.
+Độ suy giảm của particle attractor. Giá trị cao hơn khiến các hạt bị đẩy dần dần hơn khi chúng đến gần gốc của attractor. Giá trị bằng không hoặc âm sẽ khiến các hạt bị đẩy đi rất nhanh ngay khi chúng chạm vào các cạnh của attractor.
 
 .. rst-class:: classref-item-separator
 
@@ -84,11 +84,11 @@ The particle attractor's attenuation. Higher values result in more gradual pushi
 - |void| **set_cull_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_cull_mask**\ (\ )
 
-The particle rendering layers (:ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>`) that will be affected by the attractor. By default, all particles are affected by an attractor.
+Các lớp rendering của hạt (:ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>`) sẽ chịu ảnh hưởng của attractor. Theo mặc định, tất cả các hạt đều chịu ảnh hưởng của attractor.
 
-After configuring particle nodes accordingly, specific layers can be unchecked to prevent certain particles from being affected by attractors. For example, this can be used if you're using an attractor as part of a spell effect but don't want the attractor to affect unrelated weather particles at the same position.
+Sau khi cấu hình các node hạt tương ứng, bạn có thể bỏ chọn các lớp cụ thể để ngăn một số hạt chịu ảnh hưởng của attractor. Ví dụ, bạn có thể dùng cách này nếu đang sử dụng attractor như một phần của hiệu ứng phép thuật nhưng không muốn attractor ảnh hưởng đến các hạt thời tiết không liên quan ở cùng vị trí.
 
-Particle attraction can also be disabled on a per-process material basis by setting :ref:`ParticleProcessMaterial.attractor_interaction_enabled<class_ParticleProcessMaterial_property_attractor_interaction_enabled>` on the :ref:`GPUParticles3D<class_GPUParticles3D>` node.
+Cũng có thể tắt lực hút hạt trên cơ sở từng process material bằng cách đặt :ref:`ParticleProcessMaterial.attractor_interaction_enabled<class_ParticleProcessMaterial_property_attractor_interaction_enabled>` trên node :ref:`GPUParticles3D<class_GPUParticles3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -105,9 +105,9 @@ Particle attraction can also be disabled on a per-process material basis by sett
 - |void| **set_directionality**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_directionality**\ (\ )
 
-Adjusts how directional the attractor is. At ``0.0``, the attractor is not directional at all: it will attract particles towards its center. At ``1.0``, the attractor is fully directional: particles will always be pushed towards local -Z (or +Z if :ref:`strength<class_GPUParticlesAttractor3D_property_strength>` is negative).
+Điều chỉnh mức độ định hướng của attractor. Ở ``0.0``, attractor hoàn toàn không có tính định hướng: nó sẽ hút các hạt về phía tâm của nó. Ở ``1.0``, attractor có tính định hướng hoàn toàn: các hạt sẽ luôn bị đẩy về phía -Z cục bộ (hoặc +Z nếu :ref:`strength<class_GPUParticlesAttractor3D_property_strength>` là số âm).
 
-\ **Note:** If :ref:`directionality<class_GPUParticlesAttractor3D_property_directionality>` is greater than ``0.0``, the direction in which particles are pushed can be changed by rotating the **GPUParticlesAttractor3D** node.
+\ **Lưu ý:** Nếu :ref:`directionality<class_GPUParticlesAttractor3D_property_directionality>` lớn hơn ``0.0``, hướng đẩy các hạt có thể được thay đổi bằng cách xoay node **GPUParticlesAttractor3D**.
 
 .. rst-class:: classref-item-separator
 
@@ -124,14 +124,14 @@ Adjusts how directional the attractor is. At ``0.0``, the attractor is not direc
 - |void| **set_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_strength**\ (\ )
 
-Adjusts the strength of the attractor. If :ref:`strength<class_GPUParticlesAttractor3D_property_strength>` is negative, particles will be pushed in the opposite direction. Particles will be pushed *away* from the attractor's origin if :ref:`directionality<class_GPUParticlesAttractor3D_property_directionality>` is ``0.0``, or towards local +Z if :ref:`directionality<class_GPUParticlesAttractor3D_property_directionality>` is greater than ``0.0``.
+Điều chỉnh độ mạnh của attractor. Nếu :ref:`strength<class_GPUParticlesAttractor3D_property_strength>` là số âm, các hạt sẽ bị đẩy theo hướng ngược lại. Các hạt sẽ bị đẩy *ra xa* gốc của attractor nếu :ref:`directionality<class_GPUParticlesAttractor3D_property_directionality>` là ``0.0``, hoặc về phía +Z cục bộ nếu :ref:`directionality<class_GPUParticlesAttractor3D_property_directionality>` lớn hơn ``0.0``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

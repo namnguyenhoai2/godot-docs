@@ -10,20 +10,20 @@
 JSON
 ====
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Helper class for creating and parsing JSON data.
+Lớp trợ giúp để tạo và phân tích dữ liệu JSON.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **JSON** class enables all data types to be converted to and from a JSON string. This is useful for serializing data, e.g. to save to a file or send over the network.
+Lớp **JSON** cho phép chuyển đổi tất cả các kiểu dữ liệu thành chuỗi JSON và ngược lại. Điều này hữu ích khi tuần tự hóa dữ liệu, chẳng hạn như để lưu vào tệp hoặc gửi qua mạng.
 
-\ :ref:`stringify()<class_JSON_method_stringify>` is used to convert any data type into a JSON string.
+\ :ref:`stringify()<class_JSON_method_stringify>` được dùng để chuyển đổi bất kỳ kiểu dữ liệu nào thành chuỗi JSON.
 
-\ :ref:`parse()<class_JSON_method_parse>` is used to convert any existing JSON data into a :ref:`Variant<class_Variant>` that can be used within Godot. If successfully parsed, use :ref:`data<class_JSON_property_data>` to retrieve the :ref:`Variant<class_Variant>`, and use :ref:`@GlobalScope.typeof()<class_@GlobalScope_method_typeof>` to check if the Variant's type is what you expect. JSON Objects are converted into a :ref:`Dictionary<class_Dictionary>`, but JSON data can be used to store :ref:`Array<class_Array>`\ s, numbers, :ref:`String<class_String>`\ s and even just a boolean.
+\ :ref:`parse()<class_JSON_method_parse>` được dùng để chuyển đổi dữ liệu JSON hiện có thành một :ref:`Variant<class_Variant>` có thể sử dụng trong Godot. Nếu phân tích cú pháp thành công, hãy dùng :ref:`data<class_JSON_property_data>` để lấy :ref:`Variant<class_Variant>`, và dùng :ref:`@GlobalScope.typeof() <class_@GlobalScope_method_typeof>` để kiểm tra xem kiểu của Variant có đúng như bạn mong đợi hay không. Các đối tượng JSON được chuyển đổi thành một :ref:`Dictionary<class_Dictionary>`, nhưng dữ liệu JSON có thể được dùng để lưu trữ :ref:`Array<class_Array>`\ s, số, :ref:`String<class_String>`\ s và thậm chí chỉ một giá trị boolean.
 
 ::
 
@@ -43,25 +43,25 @@ The **JSON** class enables all data types to be converted to and from a JSON str
     else:
         print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 
-Alternatively, you can parse strings using the static :ref:`parse_string()<class_JSON_method_parse_string>` method, but it doesn't handle errors.
+Ngoài ra, bạn có thể phân tích chuỗi bằng phương thức static :ref:`parse_string()<class_JSON_method_parse_string>`, nhưng phương thức này không xử lý lỗi.
 
 ::
 
     var data = JSON.parse_string(json_string) # Returns null if parsing failed.
 
-\ **Note:** Both parse methods do not fully comply with the JSON specification:
+\ **Lưu ý:** Cả hai phương thức phân tích cú pháp đều không hoàn toàn tuân thủ đặc tả JSON:
 
-- Trailing commas in arrays or objects are ignored, instead of causing a parser error.
+- Dấu phẩy ở cuối trong mảng hoặc đối tượng bị bỏ qua thay vì gây ra lỗi parser.
 
-- New line and tab characters are accepted in string literals, and are treated like their corresponding escape sequences ``\n`` and ``\t``.
+- Các ký tự xuống dòng và tab được chấp nhận trong các literal chuỗi và được xử lý như các escape sequence tương ứng ``\n`` và ``\t``.
 
-- Numbers are parsed using :ref:`String.to_float()<class_String_method_to_float>` which is generally more lax than the JSON specification.
+- Các số được phân tích bằng :ref:`String.to_float()<class_String_method_to_float>`, phương thức này thường ít nghiêm ngặt hơn đặc tả JSON.
 
-- Certain errors, such as invalid Unicode sequences, do not cause a parser error. Instead, the string is cleaned up and an error is logged to the console.
+- Một số lỗi nhất định, chẳng hạn như các chuỗi Unicode không hợp lệ, không gây ra lỗi parser. Thay vào đó, chuỗi được làm sạch và một lỗi được ghi vào console.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -73,29 +73,29 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`         | :ref:`from_native<class_JSON_method_from_native>`\ (\ variant\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) |static|                                                                                   |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_error_line<class_JSON_method_get_error_line>`\ (\ ) |const|                                                                                                                                                                       |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_error_message<class_JSON_method_get_error_message>`\ (\ ) |const|                                                                                                                                                                 |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_parsed_text<class_JSON_method_get_parsed_text>`\ (\ ) |const|                                                                                                                                                                     |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`parse<class_JSON_method_parse>`\ (\ json_text\: :ref:`String<class_String>`, keep_text\: :ref:`bool<class_bool>` = false\ )                                                                                                           |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`         | :ref:`parse_string<class_JSON_method_parse_string>`\ (\ json_string\: :ref:`String<class_String>`\ ) |static|                                                                                                                               |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`stringify<class_JSON_method_stringify>`\ (\ data\: :ref:`Variant<class_Variant>`, indent\: :ref:`String<class_String>` = "", sort_keys\: :ref:`bool<class_bool>` = true, full_precision\: :ref:`bool<class_bool>` = false\ ) |static| |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`         | :ref:`to_native<class_JSON_method_to_native>`\ (\ json\: :ref:`Variant<class_Variant>`, allow_objects\: :ref:`bool<class_bool>` = false\ ) |static|                                                                                         |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`          | :ref:`from_native<class_JSON_method_from_native>`\ (\ variant\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) |static|                                                                                   |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`get_error_line<class_JSON_method_get_error_line>`\ (\ ) |const|                                                                                                                                                                       |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`            | :ref:`get_error_message<class_JSON_method_get_error_message>`\ (\ ) |const|                                                                                                                                                                 |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`            | :ref:`get_parsed_text<class_JSON_method_get_parsed_text>`\ (\ ) |const|                                                                                                                                                                     |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`parse<class_JSON_method_parse>`\ (\ json_text\: :ref:`String<class_String>`, keep_text\: :ref:`bool<class_bool>` = false\ )                                                                                                           |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`          | :ref:`parse_string<class_JSON_method_parse_string>`\ (\ json_string\: :ref:`String<class_String>`\ ) |static|                                                                                                                               |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`            | :ref:`stringify<class_JSON_method_stringify>`\ (\ data\: :ref:`Variant<class_Variant>`, indent\: :ref:`String<class_String>` = "", sort_keys\: :ref:`bool<class_bool>` = true, full_precision\: :ref:`bool<class_bool>` = false\ ) |static| |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`          | :ref:`to_native<class_JSON_method_to_native>`\ (\ json\: :ref:`Variant<class_Variant>`, allow_objects\: :ref:`bool<class_bool>` = false\ ) |static|                                                                                         |
+   +----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -103,8 +103,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_JSON_property_data:
 
@@ -117,7 +117,7 @@ Property Descriptions
 - |void| **set_data**\ (\ value\: :ref:`Variant<class_Variant>`\ )
 - :ref:`Variant<class_Variant>` **get_data**\ (\ )
 
-Contains the parsed JSON data in :ref:`Variant<class_Variant>` form.
+Chứa dữ liệu JSON đã phân tích cú pháp ở dạng :ref:`Variant<class_Variant>`.
 
 .. rst-class:: classref-section-separator
 
@@ -125,8 +125,8 @@ Contains the parsed JSON data in :ref:`Variant<class_Variant>` form.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_JSON_method_from_native:
 
@@ -134,11 +134,11 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **from_native**\ (\ variant\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_JSON_method_from_native>`
 
-Converts a native engine type to a JSON-compliant value.
+Chuyển đổi một kiểu dữ liệu gốc của engine thành một giá trị tuân thủ JSON.
 
-By default, objects are ignored for security reasons, unless ``full_objects`` is ``true``.
+Theo mặc định, các đối tượng sẽ bị bỏ qua vì lý do bảo mật, trừ khi ``full_objects`` là ``true``.
 
-You can convert a native value to a JSON string like this:
+Bạn có thể chuyển đổi một giá trị gốc thành chuỗi JSON như sau:
 
 ::
 
@@ -155,7 +155,7 @@ You can convert a native value to a JSON string like this:
 
 :ref:`int<class_int>` **get_error_line**\ (\ ) |const| :ref:`🔗<class_JSON_method_get_error_line>`
 
-Returns ``0`` if the last call to :ref:`parse()<class_JSON_method_parse>` was successful, or the line number where the parse failed.
+Trả về ``0`` nếu lần gọi :ref:`parse()<class_JSON_method_parse>` gần nhất thành công hoặc trả về số dòng xảy ra lỗi phân tích cú pháp.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Returns ``0`` if the last call to :ref:`parse()<class_JSON_method_parse>` was su
 
 :ref:`String<class_String>` **get_error_message**\ (\ ) |const| :ref:`🔗<class_JSON_method_get_error_message>`
 
-Returns an empty string if the last call to :ref:`parse()<class_JSON_method_parse>` was successful, or the error message if it failed.
+Trả về một chuỗi rỗng nếu lần gọi :ref:`parse()<class_JSON_method_parse>` gần nhất thành công hoặc trả về thông báo lỗi nếu lần gọi đó thất bại.
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Returns an empty string if the last call to :ref:`parse()<class_JSON_method_pars
 
 :ref:`String<class_String>` **get_parsed_text**\ (\ ) |const| :ref:`🔗<class_JSON_method_get_parsed_text>`
 
-Return the text parsed by :ref:`parse()<class_JSON_method_parse>` (requires passing ``keep_text`` to :ref:`parse()<class_JSON_method_parse>`).
+Trả về văn bản được phân tích cú pháp bởi :ref:`parse()<class_JSON_method_parse>` (yêu cầu truyền ``keep_text`` vào :ref:`parse()<class_JSON_method_parse>`).
 
 .. rst-class:: classref-item-separator
 
@@ -191,13 +191,13 @@ Return the text parsed by :ref:`parse()<class_JSON_method_parse>` (requires pass
 
 :ref:`Error<enum_@GlobalScope_Error>` **parse**\ (\ json_text\: :ref:`String<class_String>`, keep_text\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_JSON_method_parse>`
 
-Attempts to parse the ``json_text`` provided.
+Cố gắng phân tích cú pháp ``json_text`` được cung cấp.
 
-Returns an :ref:`Error<enum_@GlobalScope_Error>`. If the parse was successful, it returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` and the result can be retrieved using :ref:`data<class_JSON_property_data>`. If unsuccessful, use :ref:`get_error_line()<class_JSON_method_get_error_line>` and :ref:`get_error_message()<class_JSON_method_get_error_message>` to identify the source of the failure.
+Trả về một :ref:`Error <enum_@GlobalScope_Error>`. Nếu phân tích cú pháp thành công, hàm trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` và có thể truy xuất kết quả bằng :ref:`data<class_JSON_property_data>`. Nếu không thành công, hãy sử dụng :ref:`get_error_line()<class_JSON_method_get_error_line>` và :ref:`get_error_message()<class_JSON_method_get_error_message>` để xác định nguồn gốc lỗi.
 
-Non-static variant of :ref:`parse_string()<class_JSON_method_parse_string>`, if you want custom error handling.
+Phiên bản không static của :ref:`parse_string()<class_JSON_method_parse_string>`, nếu bạn muốn xử lý lỗi tùy chỉnh.
 
-The optional ``keep_text`` argument instructs the parser to keep a copy of the original text. This text can be obtained later by using the :ref:`get_parsed_text()<class_JSON_method_get_parsed_text>` function and is used when saving the resource (instead of generating new text from :ref:`data<class_JSON_property_data>`).
+Đối số ``keep_text`` tùy chọn chỉ dẫn cho parser giữ lại một bản sao của văn bản gốc. Sau đó, có thể lấy văn bản này bằng hàm :ref:`get_parsed_text()<class_JSON_method_get_parsed_text>` và văn bản được dùng khi lưu resource (thay vì tạo văn bản mới từ :ref:`data<class_JSON_property_data>`).
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ The optional ``keep_text`` argument instructs the parser to keep a copy of the o
 
 :ref:`Variant<class_Variant>` **parse_string**\ (\ json_string\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_JSON_method_parse_string>`
 
-Attempts to parse the ``json_string`` provided and returns the parsed data. Returns ``null`` if parse failed.
+Cố gắng phân tích cú pháp ``json_string`` được cung cấp và trả về dữ liệu đã được phân tích cú pháp. Trả về ``null`` nếu phân tích cú pháp không thành công.
 
 .. rst-class:: classref-item-separator
 
@@ -221,17 +221,17 @@ Attempts to parse the ``json_string`` provided and returns the parsed data. Retu
 
 :ref:`String<class_String>` **stringify**\ (\ data\: :ref:`Variant<class_Variant>`, indent\: :ref:`String<class_String>` = "", sort_keys\: :ref:`bool<class_bool>` = true, full_precision\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_JSON_method_stringify>`
 
-Converts a :ref:`Variant<class_Variant>` var to JSON text and returns the result. Useful for serializing data to store or send over the network.
+Chuyển đổi một biến :ref:`Variant<class_Variant>` sang văn bản JSON và trả về kết quả. Hữu ích khi tuần tự hóa dữ liệu để lưu trữ hoặc gửi qua mạng.
 
-\ **Note:** The JSON specification does not define integer or float types, but only a *number* type. Therefore, converting a Variant to JSON text will convert all numerical values to :ref:`float<class_float>` types.
+\ **Lưu ý:** Đặc tả JSON không định nghĩa các kiểu số nguyên hoặc số thực, mà chỉ định nghĩa một kiểu *number*. Do đó, việc chuyển đổi một Variant thành văn bản JSON sẽ chuyển đổi tất cả các giá trị số thành các kiểu :ref:`float<class_float>`.
 
-\ **Note:** If ``full_precision`` is ``true``, when stringifying floats, the unreliable digits are stringified in addition to the reliable digits to guarantee exact decoding.
+\ **Lưu ý:** Nếu ``full_precision`` là ``true``, khi chuyển đổi số thực thành chuỗi, các chữ số không đáng tin cậy sẽ được chuyển đổi thành chuỗi cùng với các chữ số đáng tin cậy để đảm bảo giải mã chính xác.
 
-The ``indent`` parameter controls if and how something is indented; its contents will be used where there should be an indent in the output. Even spaces like ``"   "`` will work. ``\t`` and ``\n`` can also be used for a tab indent, or to make a newline for each indent respectively.
+Tham số ``indent`` kiểm soát việc có thụt lề hay không và thụt lề như thế nào; nội dung của tham số sẽ được sử dụng tại vị trí cần thụt lề trong đầu ra. Ngay cả các khoảng trắng như ``"   "`` cũng hoạt động. ``\t`` và ``\n`` cũng có thể được dùng để thụt lề bằng tab hoặc tạo một dòng mới cho mỗi mức thụt lề tương ứng.
 
-\ **Warning:** Non-finite numbers are not supported in JSON. Any occurrences of :ref:`@GDScript.INF<class_@GDScript_constant_INF>` will be replaced with ``1e99999``, and negative :ref:`@GDScript.INF<class_@GDScript_constant_INF>` will be replaced with ``-1e99999``, but they will be interpreted correctly as infinity by most JSON parsers. :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` will be replaced with ``null``, and it will not be interpreted as NaN in JSON parsers. If you expect non-finite numbers, consider passing your data through :ref:`from_native()<class_JSON_method_from_native>` first.
+\ **Cảnh báo:** Các số không hữu hạn không được hỗ trợ trong JSON. Mọi trường hợp xuất hiện :ref:`@GDScript.INF <class_@GDScript_constant_INF>` sẽ được thay thế bằng ``1e99999``, và giá trị :ref:`@GDScript.INF <class_@GDScript_constant_INF>` âm sẽ được thay thế bằng ``-1e99999``, nhưng hầu hết các trình phân tích cú pháp JSON sẽ diễn giải chúng chính xác là vô cực. :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` sẽ được thay thế bằng ``null``, và các trình phân tích cú pháp JSON sẽ không diễn giải giá trị này là NaN. Nếu dự kiến có các số không hữu hạn, hãy cân nhắc chuyển dữ liệu qua :ref:`from_native()<class_JSON_method_from_native>` trước.
 
-\ **Example output:**\ 
+\ **Ví dụ đầu ra:**\
 
 ::
 
@@ -280,23 +280,23 @@ The ``indent`` parameter controls if and how something is indented; its contents
 
 :ref:`Variant<class_Variant>` **to_native**\ (\ json\: :ref:`Variant<class_Variant>`, allow_objects\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_JSON_method_to_native>`
 
-Converts a JSON-compliant value that was created with :ref:`from_native()<class_JSON_method_from_native>` back to native engine types.
+Chuyển đổi một giá trị tuân thủ JSON được tạo bằng :ref:`from_native()<class_JSON_method_from_native>` trở lại thành các kiểu gốc của engine.
 
-By default, objects are ignored for security reasons, unless ``allow_objects`` is ``true``.
+Theo mặc định, các đối tượng sẽ bị bỏ qua vì lý do bảo mật, trừ khi ``allow_objects`` là ``true``.
 
-You can convert a JSON string back to a native value like this:
+Bạn có thể chuyển một chuỗi JSON trở lại giá trị gốc như sau:
 
 ::
 
     func decode_data(string, allow_objects = false):
         return JSON.to_native(JSON.parse_string(string), allow_objects)
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

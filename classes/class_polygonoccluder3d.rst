@@ -10,30 +10,30 @@
 PolygonOccluder3D
 =================
 
-**Inherits:** :ref:`Occluder3D<class_Occluder3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Occluder3D<class_Occluder3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Flat 2D polygon shape for use with occlusion culling in :ref:`OccluderInstance3D<class_OccluderInstance3D>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**PolygonOccluder3D** stores a polygon shape that can be used by the engine's occlusion culling system. When an :ref:`OccluderInstance3D<class_OccluderInstance3D>` with a **PolygonOccluder3D** is selected in the editor, an editor will appear at the top of the 3D viewport so you can add/remove points. All points must be placed on the same 2D plane, which means it is not possible to create arbitrary 3D shapes with a single **PolygonOccluder3D**. To use arbitrary 3D shapes as occluders, use :ref:`ArrayOccluder3D<class_ArrayOccluder3D>` or :ref:`OccluderInstance3D<class_OccluderInstance3D>`'s baking feature instead.
-
-See :ref:`OccluderInstance3D<class_OccluderInstance3D>`'s documentation for instructions on setting up occlusion culling.
+Hình đa giác 2D phẳng để sử dụng với tính năng loại bỏ che khuất trong :ref:`OccluderInstance3D<class_OccluderInstance3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**PolygonOccluder3D** lưu trữ một hình đa giác có thể được engine sử dụng bởi hệ thống loại bỏ che khuất. Khi một :ref:`OccluderInstance3D<class_OccluderInstance3D>` có **PolygonOccluder3D** được chọn trong editor, một trình chỉnh sửa sẽ xuất hiện ở đầu viewport 3D để bạn có thể thêm/xóa các điểm. Tất cả các điểm phải được đặt trên cùng một mặt phẳng 2D, nghĩa là không thể tạo các hình dạng 3D tùy ý bằng một **PolygonOccluder3D** duy nhất. Để sử dụng các hình dạng 3D tùy ý làm vật thể loại bỏ che khuất, hãy sử dụng :ref:`ArrayOccluder3D<class_ArrayOccluder3D>` hoặc tính năng baking của :ref:`OccluderInstance3D<class_OccluderInstance3D>`.
+
+Xem tài liệu của :ref:`OccluderInstance3D<class_OccluderInstance3D>` để biết hướng dẫn thiết lập tính năng loại bỏ che khuất.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Occlusion culling <../tutorials/3d/occlusion_culling>`
+- :doc:`Loại bỏ che khuất <../tutorials/3d/occlusion_culling>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -48,8 +48,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PolygonOccluder3D_property_polygon:
 
@@ -62,18 +62,18 @@ Property Descriptions
 - |void| **set_polygon**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_polygon**\ (\ )
 
-The polygon to use for occlusion culling. The polygon can be convex or concave, but it should have as few points as possible to maximize performance.
+Đa giác được sử dụng để loại bỏ các đối tượng bị che khuất. Đa giác có thể lồi hoặc lõm, nhưng nên có càng ít điểm càng tốt để tối ưu hiệu năng.
 
-The polygon must *not* have intersecting lines. Otherwise, triangulation will fail (with an error message printed).
+Đa giác không được *có* các đường thẳng giao nhau. Nếu không, quá trình tam giác hóa sẽ thất bại (kèm theo thông báo lỗi được in ra).
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

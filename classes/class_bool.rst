@@ -10,16 +10,16 @@
 bool
 ====
 
-A built-in boolean type.
+Một kiểu boolean tích hợp sẵn.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **bool** is a built-in :ref:`Variant<class_Variant>` type that may only store one of two values: ``true`` or ``false``. You can imagine it as a switch that can be either turned on or off, or as a binary digit that can either be 1 or 0.
+**bool** là một kiểu :ref:`Variant<class_Variant>` tích hợp sẵn, chỉ có thể lưu trữ một trong hai giá trị: ``true`` hoặc ``false``. Bạn có thể hình dung nó như một công tắc chỉ có thể bật hoặc tắt, hoặc như một chữ số nhị phân chỉ có thể là 1 hoặc 0.
 
-Booleans can be directly used in ``if``, and other conditional statements:
+Boolean có thể được sử dụng trực tiếp trong ``if`` và các câu lệnh điều kiện khác:
 
 
 .. tabs::
@@ -40,9 +40,9 @@ Booleans can be directly used in ``if``, and other conditional statements:
 
 
 
-All comparison operators return booleans (``==``, ``>``, ``<=``, etc.). As such, it is not necessary to compare booleans themselves. You do not need to add ``== true`` or ``== false``.
+Tất cả các toán tử so sánh đều trả về giá trị boolean (``==``, ``>``, ``<=``, v.v.). Vì vậy, không cần so sánh các giá trị boolean với nhau. Bạn không cần thêm ``== true`` hoặc ``== false``.
 
-Booleans can be combined with the logical operators ``and``, ``or``, ``not`` to create complex conditions:
+Có thể kết hợp các giá trị boolean bằng các toán tử logic ``and``, ``or``, ``not`` để tạo các điều kiện phức tạp:
 
 
 .. tabs::
@@ -69,13 +69,13 @@ Booleans can be combined with the logical operators ``and``, ``or``, ``not`` to 
 
 
 
-\ **Note:** In modern programming languages, logical operators are evaluated in order. All remaining conditions are skipped if their result would have no effect on the final value. This concept is known as `short-circuit evaluation <https://en.wikipedia.org/wiki/Short-circuit_evaluation>`__ and can be useful to avoid evaluating expensive conditions in some performance-critical cases.
+\ **Lưu ý:** Trong các ngôn ngữ lập trình hiện đại, các toán tử logic được đánh giá theo thứ tự. Tất cả các điều kiện còn lại sẽ được bỏ qua nếu kết quả của chúng không ảnh hưởng đến giá trị cuối cùng. Khái niệm này được gọi là `đánh giá short-circuit <https://en.wikipedia.org/wiki/Short-circuit_evaluation>`__ và có thể hữu ích để tránh đánh giá các điều kiện tốn nhiều tài nguyên trong một số trường hợp yêu cầu hiệu năng cao.
 
-\ **Note:** By convention, built-in methods and properties that return booleans are usually defined as yes-no questions, single adjectives, or similar (:ref:`String.is_empty()<class_String_method_is_empty>`, :ref:`Node.can_process()<class_Node_method_can_process>`, :ref:`Camera2D.enabled<class_Camera2D_property_enabled>`, etc.).
+\ **Lưu ý:** Theo quy ước, các phương thức và thuộc tính tích hợp sẵn trả về giá trị boolean thường được đặt tên dưới dạng câu hỏi có-không, tính từ đơn hoặc dạng tương tự (:ref:`String.is_empty()<class_String_method_is_empty>`, :ref:`Node.can_process()<class_Node_method_can_process>`, :ref:`Camera2D.enabled<class_Camera2D_property_enabled>`, v.v.).
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -93,21 +93,21 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator !=<class_bool_operator_neq_bool>`\ (\ right\: :ref:`bool<class_bool>`\ ) |
-   +-------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator \<<class_bool_operator_lt_bool>`\ (\ right\: :ref:`bool<class_bool>`\ )  |
-   +-------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ==<class_bool_operator_eq_bool>`\ (\ right\: :ref:`bool<class_bool>`\ )  |
-   +-------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ><class_bool_operator_gt_bool>`\ (\ right\: :ref:`bool<class_bool>`\ )   |
-   +-------------------------+-----------------------------------------------------------------------------------------+
+   +-------------------------+------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator != <class_bool_operator_neq_bool>`\ (\ right\: :ref:`bool<class_bool>`\ ) |
+   +-------------------------+------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator \< <class_bool_operator_lt_bool>`\ (\ right\: :ref:`bool<class_bool>`\ )  |
+   +-------------------------+------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator == <class_bool_operator_eq_bool>`\ (\ right\: :ref:`bool<class_bool>`\ )  |
+   +-------------------------+------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator > <class_bool_operator_gt_bool>`\ (\ right\: :ref:`bool<class_bool>`\ )   |
+   +-------------------------+------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -115,8 +115,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_bool_constructor_bool:
 
@@ -124,7 +124,7 @@ Constructor Descriptions
 
 :ref:`bool<class_bool>` **bool**\ (\ ) :ref:`🔗<class_bool_constructor_bool>`
 
-Constructs a **bool** set to ``false``.
+Khởi tạo một **bool** được đặt thành ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Constructs a **bool** set to ``false``.
 
 :ref:`bool<class_bool>` **bool**\ (\ from\: :ref:`bool<class_bool>`\ )
 
-Constructs a **bool** as a copy of the given **bool**.
+Khởi tạo một **bool** dưới dạng bản sao của **bool** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Constructs a **bool** as a copy of the given **bool**.
 
 :ref:`bool<class_bool>` **bool**\ (\ from\: :ref:`float<class_float>`\ )
 
-Casts a :ref:`float<class_float>` value to a **bool**. Returns ``false`` if ``from`` is equal to ``0.0`` (including ``-0.0``), and ``true`` for all other values (including :ref:`@GDScript.INF<class_@GDScript_constant_INF>` and :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>`).
+Ép một :ref:`float<class_float>` value thành một **bool**. Trả về ``false`` nếu ``from`` bằng ``0.0`` (bao gồm cả ``-0.0``), và ``true`` cho mọi giá trị khác (bao gồm :ref:`@GDScript.INF <class_@GDScript_constant_INF>` và :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>`).
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Casts a :ref:`float<class_float>` value to a **bool**. Returns ``false`` if ``fr
 
 :ref:`bool<class_bool>` **bool**\ (\ from\: :ref:`int<class_int>`\ )
 
-Casts an :ref:`int<class_int>` value to a **bool**. Returns ``false`` if ``from`` is equal to ``0``, and ``true`` for all other values.
+Chuyển đổi một giá trị :ref:`int<class_int>` thành **bool**. Trả về ``false`` nếu ``from`` bằng ``0``, và ``true`` cho mọi giá trị khác.
 
 .. rst-class:: classref-section-separator
 
@@ -162,16 +162,16 @@ Casts an :ref:`int<class_int>` value to a **bool**. Returns ``false`` if ``from`
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_bool_operator_neq_bool:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_bool_operator_neq_bool>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗 <class_bool_operator_neq_bool>`
 
-Returns ``true`` if one **bool** is ``true`` and the other **bool** is ``false``. Equivalent to logical XOR (NEQ).
+Trả về ``true`` nếu một **bool** là ``true`` và **bool** còn lại là ``false``. Tương đương với XOR logic (NEQ).
 
 .. rst-class:: classref-item-separator
 
@@ -181,9 +181,9 @@ Returns ``true`` if one **bool** is ``true`` and the other **bool** is ``false``
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_bool_operator_lt_bool>`
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗 <class_bool_operator_lt_bool>`
 
-Returns ``true`` if the left **bool** is ``false`` and ``right`` is ``true``.
+Trả về ``true`` nếu **bool** bên trái là ``false`` và ``right`` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -193,9 +193,9 @@ Returns ``true`` if the left **bool** is ``false`` and ``right`` is ``true``.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_bool_operator_eq_bool>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗 <class_bool_operator_eq_bool>`
 
-Returns ``true`` if both **bool**\ s are ``true``, or if both **bool**\ s are ``false``. Equivalent to logical XNOR (EQ).
+Trả về ``true`` nếu cả hai **bool**\ s đều ``true``, hoặc nếu cả hai **bool**\ s đều ``false``. Tương đương với XNOR logic (EQ).
 
 .. rst-class:: classref-item-separator
 
@@ -205,16 +205,16 @@ Returns ``true`` if both **bool**\ s are ``true``, or if both **bool**\ s are ``
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_bool_operator_gt_bool>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`bool<class_bool>`\ ) :ref:`🔗 <class_bool_operator_gt_bool>`
 
-Returns ``true`` if the left **bool** is ``true`` and ``right`` is ``false``.
+Trả về ``true`` nếu **bool** bên trái là ``true`` và ``right`` là ``false``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

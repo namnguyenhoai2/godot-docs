@@ -10,23 +10,23 @@
 NavigationServer2DManager
 =========================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton for managing :ref:`NavigationServer2D<class_NavigationServer2D>` implementations.
+Một singleton dùng để quản lý các triển khai :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**NavigationServer2DManager** is the API for registering :ref:`NavigationServer2D<class_NavigationServer2D>` implementations and setting the default implementation.
+**NavigationServer2DManager** là API để đăng ký các triển khai :ref:`NavigationServer2D<class_NavigationServer2D>` và đặt triển khai mặc định.
 
-\ **Note:** It is not possible to switch servers at runtime. This class is only used on startup at the server initialization level.
+\ **Lưu ý:** Không thể chuyển đổi server trong runtime. Class này chỉ được sử dụng khi khởi động, ở cấp độ khởi tạo server.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationServer2DManager_method_register_server:
 
@@ -52,7 +52,7 @@ Method Descriptions
 
 |void| **register_server**\ (\ name\: :ref:`String<class_String>`, create_callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_NavigationServer2DManager_method_register_server>`
 
-Registers a :ref:`NavigationServer2D<class_NavigationServer2D>` implementation by passing a ``name`` and a :ref:`Callable<class_Callable>` that returns a :ref:`NavigationServer2D<class_NavigationServer2D>` object.
+Đăng ký một triển khai :ref:`NavigationServer2D<class_NavigationServer2D>` bằng cách truyền một ``name`` và một :ref:`Callable<class_Callable>` trả về một đối tượng :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -64,14 +64,14 @@ Registers a :ref:`NavigationServer2D<class_NavigationServer2D>` implementation b
 
 |void| **set_default_server**\ (\ name\: :ref:`String<class_String>`, priority\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2DManager_method_set_default_server>`
 
-Sets the default :ref:`NavigationServer2D<class_NavigationServer2D>` implementation to the one identified by ``name``, if ``priority`` is greater than the priority of the current default implementation.
+Đặt triển khai :ref:`NavigationServer2D<class_NavigationServer2D>` mặc định thành triển khai được xác định bởi ``name``, nếu ``priority`` lớn hơn priority của triển khai mặc định hiện tại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

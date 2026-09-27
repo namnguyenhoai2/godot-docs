@@ -10,25 +10,25 @@
 Dictionary
 ==========
 
-A built-in data structure that holds key-value pairs.
+Một cấu trúc dữ liệu tích hợp sẵn dùng để lưu các cặp khóa-giá trị.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Dictionaries are associative containers that contain values referenced by unique keys. Dictionaries will preserve the insertion order when adding new entries. In other programming languages, this data structure is often referred to as a hash map or an associative array.
+Dictionary là các vùng chứa liên kết, chứa những giá trị được tham chiếu bằng các khóa duy nhất. Dictionary sẽ giữ nguyên thứ tự chèn khi thêm các mục mới. Trong các ngôn ngữ lập trình khác, cấu trúc dữ liệu này thường được gọi là hash map hoặc associative array.
 
-You can define a dictionary by placing a comma-separated list of ``key: value`` pairs inside curly braces ``{}``.
+Bạn có thể định nghĩa một dictionary bằng cách đặt một danh sách các cặp ``key: value`` được phân tách bằng dấu phẩy bên trong dấu ngoặc nhọn ``{}``.
 
-Creating a dictionary:
+Tạo một dictionary:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var my_dict = {} # Creates an empty dictionary.
+    var my_dict = {} # Tạo một dictionary trống.
 
     var dict_variable_key = "Another key name"
     var dict_variable_value = "value2"
@@ -39,17 +39,17 @@ Creating a dictionary:
 
     var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
 
-    # Alternative Lua-style syntax.
-    # Doesn't require quotes around keys, but only string constants can be used as key names.
-    # Additionally, key names must start with a letter or an underscore.
-    # Here, `some_key` is a string literal, not a variable!
+    # Cú pháp thay thế theo kiểu Lua.
+    # Không yêu cầu đặt dấu ngoặc kép quanh các khóa, nhưng chỉ các hằng chuỗi mới có thể được dùng làm tên khóa.
+    # Ngoài ra, tên khóa phải bắt đầu bằng một chữ cái hoặc dấu gạch dưới.
+    # Ở đây, `some_key` là một literal chuỗi, không phải một biến!
     another_dict = {
         some_key = 42,
     }
 
  .. code-tab:: csharp
 
-    var myDict = new Godot.Collections.Dictionary(); // Creates an empty dictionary.
+    var myDict = new Godot.Collections.Dictionary(); // Tạo một dictionary trống.
     var pointsDict = new Godot.Collections.Dictionary
     {
         { "White", 50 },
@@ -59,7 +59,7 @@ Creating a dictionary:
 
 
 
-You can access a dictionary's value by referencing its corresponding key. In the above example, ``points_dict["White"]`` will return ``50``. You can also write ``points_dict.White``, which is equivalent. However, you'll have to use the bracket syntax if the key you're accessing the dictionary with isn't a fixed string (such as a number or variable).
+Bạn có thể truy cập giá trị của một dictionary bằng cách tham chiếu đến khóa tương ứng. Trong ví dụ trên, ``points_dict["White"]`` sẽ trả về ``50``. Bạn cũng có thể viết ``points_dict.White``, tương đương với cách trên. Tuy nhiên, bạn sẽ phải sử dụng cú pháp ngoặc vuông nếu khóa dùng để truy cập dictionary không phải là một chuỗi cố định (chẳng hạn như một số hoặc biến).
 
 
 .. tabs::
@@ -69,7 +69,7 @@ You can access a dictionary's value by referencing its corresponding key. In the
     @export_enum("White", "Yellow", "Orange") var my_color: String
     var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
     func _ready():
-        # We can't use dot syntax here as `my_color` is a variable.
+        # Ở đây, chúng ta không thể sử dụng cú pháp dấu chấm vì `my_color` là một biến.
         var points = points_dict[my_color]
 
  .. code-tab:: csharp
@@ -90,9 +90,9 @@ You can access a dictionary's value by referencing its corresponding key. In the
 
 
 
-In the above code, ``points`` will be assigned the value that is paired with the appropriate color selected in ``my_color``.
+Trong đoạn mã trên, ``points`` sẽ được gán giá trị đi kèm với màu thích hợp được chọn trong ``my_color``.
 
-Dictionaries can contain more complex data:
+Dictionary có thể chứa dữ liệu phức tạp hơn:
 
 
 .. tabs::
@@ -100,7 +100,7 @@ Dictionaries can contain more complex data:
  .. code-tab:: gdscript
 
     var my_dict = {
-        "First Array": [1, 2, 3, 4] # Assigns an Array to a String key.
+        "First Array": [1, 2, 3, 4] # Gán một Array cho một khóa String.
     }
 
  .. code-tab:: csharp
@@ -112,7 +112,7 @@ Dictionaries can contain more complex data:
 
 
 
-To add a key to an existing dictionary, access it like an existing key and assign to it:
+Để thêm một khóa vào dictionary hiện có, hãy truy cập khóa đó như một khóa hiện có và gán giá trị cho nó:
 
 
 .. tabs::
@@ -120,7 +120,7 @@ To add a key to an existing dictionary, access it like an existing key and assig
  .. code-tab:: gdscript
 
     var points_dict = { "White": 50, "Yellow": 75, "Orange": 100 }
-    points_dict["Blue"] = 150 # Add "Blue" as a key and assign 150 as its value.
+    points_dict["Blue"] = 150 # Thêm "Blue" làm khóa và gán 150 làm giá trị của khóa đó.
 
  .. code-tab:: csharp
 
@@ -130,20 +130,20 @@ To add a key to an existing dictionary, access it like an existing key and assig
         { "Yellow", 75 },
         { "Orange", 100 },
     };
-    pointsDict["Blue"] = 150; // Add "Blue" as a key and assign 150 as its value.
+    pointsDict["Blue"] = 150; // Thêm "Blue" làm khóa và gán 150 làm giá trị của khóa đó.
 
 
 
-Finally, untyped dictionaries can contain different types of keys and values in the same dictionary:
+Cuối cùng, dictionary không định kiểu có thể chứa các kiểu khóa và giá trị khác nhau trong cùng một dictionary:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # This is a valid dictionary.
-    # To access the string "Nested value" below, use `my_dict.sub_dict.sub_key` or `my_dict["sub_dict"]["sub_key"]`.
-    # Indexing styles can be mixed and matched depending on your needs.
+    # Đây là một dictionary hợp lệ.
+    # Để truy cập chuỗi "Nested value" bên dưới, hãy sử dụng `my_dict.sub_dict.sub_key` hoặc `my_dict["sub_dict"]["sub_key"]`.
+    # Bạn có thể kết hợp các kiểu lập chỉ mục tùy theo nhu cầu.
     var my_dict = {
         "String Key": 5,
         4: [1, 2, 3],
@@ -153,8 +153,8 @@ Finally, untyped dictionaries can contain different types of keys and values in 
 
  .. code-tab:: csharp
 
-    // This is a valid dictionary.
-    // To access the string "Nested value" below, use `((Godot.Collections.Dictionary)myDict["sub_dict"])["sub_key"]`.
+    // Đây là một từ điển hợp lệ.
+    // Để truy cập chuỗi "Nested value" bên dưới, hãy sử dụng `((Godot.Collections.Dictionary)myDict["sub_dict"])["sub_key"]`.
     var myDict = new Godot.Collections.Dictionary {
         { "String Key", 5 },
         { 4, new Godot.Collections.Array { 1, 2, 3 } },
@@ -164,7 +164,7 @@ Finally, untyped dictionaries can contain different types of keys and values in 
 
 
 
-The keys of a dictionary can be iterated with the ``for`` keyword:
+Có thể lặp qua các khóa của một từ điển bằng từ khóa ``for``:
 
 
 .. tabs::
@@ -180,27 +180,27 @@ The keys of a dictionary can be iterated with the ``for`` keyword:
     var groceries = new Godot.Collections.Dictionary { { "Orange", 20 }, { "Apple", 2 }, { "Banana", 4 } };
     foreach (var (fruit, amount) in groceries)
     {
-        // `fruit` is the key, `amount` is the value.
+        // `fruit` là khóa, `amount` là giá trị.
     }
 
 
 
-To enforce a certain type for keys and values, you can create a *typed dictionary*. Typed dictionaries can only contain keys and values of the given types, or that inherit from the given classes:
+Để áp dụng một kiểu nhất định cho các khóa và giá trị, bạn có thể tạo một *từ điển có kiểu*. Từ điển có kiểu chỉ có thể chứa các khóa và giá trị thuộc những kiểu đã cho hoặc kế thừa từ các lớp đã cho:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Creates a typed dictionary with String keys and int values.
-    # Attempting to use any other type for keys or values will result in an error.
+    # Tạo một dictionary có kiểu với các khóa String và giá trị int.
+    # Việc cố sử dụng bất kỳ kiểu nào khác cho khóa hoặc giá trị sẽ gây ra lỗi.
     var typed_dict: Dictionary[String, int] = {
         "some_key": 1,
         "some_other_key": 2,
     }
 
-    # Creates a typed dictionary with String keys and values of any type.
-    # Attempting to use any other type for keys will result in an error.
+    # Tạo một dictionary có kiểu với các khóa String và giá trị thuộc bất kỳ kiểu nào.
+    # Việc cố sử dụng bất kỳ kiểu nào khác cho khóa sẽ gây ra lỗi.
     var typed_dict_key_only: Dictionary[String, Variant] = {
         "some_key": 12.34,
         "some_other_key": "string",
@@ -208,15 +208,15 @@ To enforce a certain type for keys and values, you can create a *typed dictionar
 
  .. code-tab:: csharp
 
-    // Creates a typed dictionary with String keys and int values.
-    // Attempting to use any other type for keys or values will result in an error.
+    // Tạo một dictionary có kiểu với các khóa String và giá trị int.
+    // Việc cố sử dụng bất kỳ kiểu nào khác cho khóa hoặc giá trị sẽ gây ra lỗi.
     var typedDict = new Godot.Collections.Dictionary<String, int> {
         {"some_key", 1},
         {"some_other_key", 2},
     };
 
-    // Creates a typed dictionary with String keys and values of any type.
-    // Attempting to use any other type for keys will result in an error.
+    // Tạo một dictionary có kiểu với các khóa String và giá trị thuộc bất kỳ kiểu nào.
+    // Việc cố gắng sử dụng bất kỳ kiểu nào khác làm khóa sẽ gây ra lỗi.
     var typedDictKeyOnly = new Godot.Collections.Dictionary<String, Variant> {
         {"some_key", 12.34},
         {"some_other_key", "string"},
@@ -224,11 +224,11 @@ To enforce a certain type for keys and values, you can create a *typed dictionar
 
 
 
-\ **Note:** Dictionaries are always passed by reference. To get a copy of a dictionary which can be modified independently of the original dictionary, use :ref:`duplicate()<class_Dictionary_method_duplicate>`.
+\ **Lưu ý:** Dictionary luôn được truyền theo tham chiếu. Để lấy một bản sao của dictionary có thể được sửa đổi độc lập với dictionary gốc, hãy sử dụng :ref:`duplicate()<class_Dictionary_method_duplicate>`.
 
-\ **Note:** Erasing elements while iterating over dictionaries is **not** supported and will result in unpredictable behavior.
+\ **Lưu ý:** Việc xóa các phần tử trong khi lặp qua dictionary **không được** hỗ trợ và sẽ dẫn đến hành vi không thể đoán trước.
 
-\ **Note:** In a boolean context, a dictionary will evaluate to ``false`` if it's empty (``{}``). Otherwise, a dictionary will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, dictionary sẽ được đánh giá là ``false`` nếu nó rỗng (``{}``). Nếu không, dictionary sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -236,18 +236,18 @@ To enforce a certain type for keys and values, you can create a *typed dictionar
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `GDScript basics: Dictionary <../tutorials/scripting/gdscript/gdscript_basics.html#dictionary>`__
+- `Kiến thức cơ bản về GDScript: Dictionary <../tutorials/scripting/gdscript/gdscript_basics.html#dictionary>`__
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản demo Voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
-- `Operating System Testing Demo <https://godotengine.org/asset-library/asset/2789>`__
+- `Bản minh họa kiểm thử hệ điều hành <https://godotengine.org/asset-library/asset/2789>`__
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -263,8 +263,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -341,19 +341,19 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Các toán tử
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator !=<class_Dictionary_operator_neq_Dictionary>`\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ ) |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ==<class_Dictionary_operator_eq_Dictionary>`\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ )  |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>` | :ref:`operator []<class_Dictionary_operator_idx_Variant>`\ (\ key\: :ref:`Variant<class_Variant>`\ )            |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator != <class_Dictionary_operator_neq_Dictionary>`\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ ) |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator == <class_Dictionary_operator_eq_Dictionary>`\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ )  |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>` | :ref:`operator [] <class_Dictionary_operator_idx_Variant>`\ (\ key\: :ref:`Variant<class_Variant>`\ )            |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -361,8 +361,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Dictionary_constructor_Dictionary:
 
@@ -370,7 +370,7 @@ Constructor Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **Dictionary**\ (\ ) :ref:`🔗<class_Dictionary_constructor_Dictionary>`
 
-Constructs an empty **Dictionary**.
+Tạo một **Dictionary** trống.
 
 .. rst-class:: classref-item-separator
 
@@ -380,7 +380,7 @@ Constructs an empty **Dictionary**.
 
 :ref:`Dictionary<class_Dictionary>` **Dictionary**\ (\ base\: :ref:`Dictionary<class_Dictionary>`, key_type\: :ref:`int<class_int>`, key_class_name\: :ref:`StringName<class_StringName>`, key_script\: :ref:`Variant<class_Variant>`, value_type\: :ref:`int<class_int>`, value_class_name\: :ref:`StringName<class_StringName>`, value_script\: :ref:`Variant<class_Variant>`\ )
 
-Creates a typed dictionary from the ``base`` dictionary. A typed dictionary can only contain keys and values of the given types, or that inherit from the given classes, as described by this constructor's parameters.
+Tạo một dictionary có kiểu từ dictionary ``base``. Dictionary có kiểu chỉ có thể chứa các key và value thuộc những kiểu đã cho hoặc kế thừa từ các class đã cho, như được mô tả bởi các tham số của hàm khởi tạo này.
 
 .. rst-class:: classref-item-separator
 
@@ -390,7 +390,7 @@ Creates a typed dictionary from the ``base`` dictionary. A typed dictionary can 
 
 :ref:`Dictionary<class_Dictionary>` **Dictionary**\ (\ from\: :ref:`Dictionary<class_Dictionary>`\ )
 
-Returns the same dictionary as ``from``. If you need a copy of the dictionary, use :ref:`duplicate()<class_Dictionary_method_duplicate>`.
+Trả về cùng từ điển với ``from``. Nếu cần một bản sao của từ điển, hãy sử dụng :ref:`duplicate()<class_Dictionary_method_duplicate>`.
 
 .. rst-class:: classref-section-separator
 
@@ -398,8 +398,8 @@ Returns the same dictionary as ``from``. If you need a copy of the dictionary, u
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Dictionary_method_assign:
 
@@ -407,7 +407,7 @@ Method Descriptions
 
 |void| **assign**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_Dictionary_method_assign>`
 
-Assigns elements of another ``dictionary`` into the dictionary. Resizes the dictionary to match ``dictionary``. Performs type conversions if the dictionary is typed.
+Gán các phần tử của một ``dictionary`` khác vào từ điển. Thay đổi kích thước từ điển để khớp với ``dictionary``. Thực hiện chuyển đổi kiểu nếu từ điển có kiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -419,7 +419,7 @@ Assigns elements of another ``dictionary`` into the dictionary. Resizes the dict
 
 |void| **clear**\ (\ ) :ref:`🔗<class_Dictionary_method_clear>`
 
-Clears the dictionary, removing all entries from it.
+Xóa từ điển, loại bỏ tất cả các mục khỏi từ điển.
 
 .. rst-class:: classref-item-separator
 
@@ -431,11 +431,11 @@ Clears the dictionary, removing all entries from it.
 
 :ref:`Dictionary<class_Dictionary>` **duplicate**\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Dictionary_method_duplicate>`
 
-Returns a new copy of the dictionary.
+Trả về một bản sao mới của từ điển.
 
-By default, a **shallow** copy is returned: all nested :ref:`Array<class_Array>`, **Dictionary**, and :ref:`Resource<class_Resource>` keys and values are shared with the original dictionary. Modifying any of those in one dictionary will also affect them in the other.
+Theo mặc định, một bản sao **shallow** được trả về: tất cả các :ref:`Array<class_Array>`, khóa và giá trị **Dictionary**, :ref:`Resource<class_Resource>` lồng nhau đều được chia sẻ với từ điển gốc. Việc sửa đổi bất kỳ thành phần nào trong số đó ở một từ điển cũng sẽ ảnh hưởng đến thành phần tương ứng ở từ điển kia.
 
-If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dictionaries are also duplicated (recursively). Any :ref:`Resource<class_Resource>` is still shared with the original dictionary, though.
+Nếu ``deep`` là ``true``, một bản sao **deep** được trả về: tất cả các mảng và từ điển lồng nhau cũng được sao chép (một cách đệ quy). Tuy nhiên, mọi :ref:`Resource<class_Resource>` vẫn được chia sẻ với từ điển gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -447,9 +447,9 @@ If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays and dict
 
 :ref:`Dictionary<class_Dictionary>` **duplicate_deep**\ (\ deep_subresources_mode\: :ref:`int<class_int>` = 1\ ) |const| :ref:`🔗<class_Dictionary_method_duplicate_deep>`
 
-Duplicates this dictionary, deeply, like :ref:`duplicate()<class_Dictionary_method_duplicate>` when passing ``true``, with extra control over how subresources are handled.
+Sao chép sâu dictionary này, tương tự như :ref:`duplicate()<class_Dictionary_method_duplicate>` khi truyền ``true``, đồng thời cho phép kiểm soát bổ sung cách xử lý các subresource.
 
-\ ``deep_subresources_mode`` must be one of the values from :ref:`DeepDuplicateMode<enum_Resource_DeepDuplicateMode>`. By default, only internal resources will be duplicated (recursively).
+\ ``deep_subresources_mode`` phải là một trong các giá trị của :ref:`DeepDuplicateMode <enum_Resource_DeepDuplicateMode>`. Theo mặc định, chỉ các resource nội bộ mới được sao chép (đệ quy).
 
 .. rst-class:: classref-item-separator
 
@@ -461,9 +461,9 @@ Duplicates this dictionary, deeply, like :ref:`duplicate()<class_Dictionary_meth
 
 :ref:`bool<class_bool>` **erase**\ (\ key\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Dictionary_method_erase>`
 
-Removes the dictionary entry by key, if it exists. Returns ``true`` if the given ``key`` existed in the dictionary, otherwise ``false``.
+Xóa mục trong dictionary theo key nếu mục đó tồn tại. Trả về ``true`` nếu ``key`` đã cho tồn tại trong dictionary, nếu không thì trả về ``false``.
 
-\ **Note:** Do not erase entries while iterating over the dictionary. You can iterate over the :ref:`keys()<class_Dictionary_method_keys>` array instead.
+\ **Lưu ý:** Không xóa các mục trong khi đang duyệt dictionary. Thay vào đó, bạn có thể duyệt mảng :ref:`keys()<class_Dictionary_method_keys>`.
 
 .. rst-class:: classref-item-separator
 
@@ -475,9 +475,9 @@ Removes the dictionary entry by key, if it exists. Returns ``true`` if the given
 
 :ref:`Variant<class_Variant>` **find_key**\ (\ value\: :ref:`Variant<class_Variant>`\ ) |const| :ref:`🔗<class_Dictionary_method_find_key>`
 
-Finds and returns the first key whose associated value is equal to ``value``, or ``null`` if it is not found.
+Tìm và trả về key đầu tiên có giá trị tương ứng bằng ``value``, hoặc ``null`` nếu không tìm thấy.
 
-\ **Note:** ``null`` is also a valid key. If inside the dictionary, :ref:`find_key()<class_Dictionary_method_find_key>` may give misleading results.
+\ **Lưu ý:** ``null`` cũng là một key hợp lệ. Nếu có trong dictionary, :ref:`find_key()<class_Dictionary_method_find_key>` có thể cho kết quả gây hiểu lầm.
 
 .. rst-class:: classref-item-separator
 
@@ -489,9 +489,9 @@ Finds and returns the first key whose associated value is equal to ``value``, or
 
 :ref:`Variant<class_Variant>` **get**\ (\ key\: :ref:`Variant<class_Variant>`, default\: :ref:`Variant<class_Variant>` = null\ ) |const| :ref:`🔗<class_Dictionary_method_get>`
 
-Returns the corresponding value for the given ``key`` in the dictionary. If the ``key`` does not exist, returns ``default``, or ``null`` if the parameter is omitted.
+Trả về giá trị tương ứng với ``key`` đã cho trong dictionary. Nếu ``key`` không tồn tại, trả về ``default``, hoặc ``null`` nếu bỏ qua tham số.
 
-\ **Note:** If the ``default`` argument is computationally expensive or has unwanted side effects, consider using the :ref:`has()<class_Dictionary_method_has>` method instead:
+\ **Lưu ý:** Nếu đối số ``default`` yêu cầu nhiều tài nguyên tính toán hoặc có tác dụng phụ không mong muốn, hãy cân nhắc sử dụng phương thức :ref:`has()<class_Dictionary_method_has>` thay thế:
 
 ::
 
@@ -510,7 +510,7 @@ Returns the corresponding value for the given ``key`` in the dictionary. If the 
 
 :ref:`Variant<class_Variant>` **get_or_add**\ (\ key\: :ref:`Variant<class_Variant>`, default\: :ref:`Variant<class_Variant>` = null\ ) :ref:`🔗<class_Dictionary_method_get_or_add>`
 
-Gets a value and ensures the key is set. If the ``key`` exists in the dictionary, this behaves like :ref:`get()<class_Dictionary_method_get>`. Otherwise, the ``default`` value is inserted into the dictionary and returned.
+Lấy một giá trị và đảm bảo khóa đã được thiết lập. Nếu ``key`` tồn tại trong dictionary, phương thức này hoạt động như :ref:`get()<class_Dictionary_method_get>`. Nếu không, giá trị ``default`` được chèn vào dictionary và trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -522,7 +522,7 @@ Gets a value and ensures the key is set. If the ``key`` exists in the dictionary
 
 :ref:`int<class_int>` **get_typed_key_builtin**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_key_builtin>`
 
-Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary's keys as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the keys are not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>`.
+Trả về kiểu :ref:`Variant<class_Variant>` dựng sẵn của các khóa trong typed dictionary dưới dạng hằng số :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`. Nếu các khóa không được định kiểu, trả về :ref:`@GlobalScope.TYPE_NIL <class_@GlobalScope_constant_TYPE_NIL>`. Xem thêm :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>`.
 
 .. rst-class:: classref-item-separator
 
@@ -534,7 +534,7 @@ Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary'
 
 :ref:`StringName<class_StringName>` **get_typed_key_class_name**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_key_class_name>`
 
-Returns the **built-in** class name of the typed dictionary's keys, if the built-in :ref:`Variant<class_Variant>` type is :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>` and :ref:`Object.get_class()<class_Object_method_get_class>`.
+Trả về tên lớp **dựng sẵn** của các khóa trong typed dictionary, nếu kiểu :ref:`Variant<class_Variant>` dựng sẵn là :ref:`@GlobalScope.TYPE_OBJECT <class_@GlobalScope_constant_TYPE_OBJECT>`. Nếu không, trả về một :ref:`StringName<class_StringName>` rỗng. Xem thêm :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>` và :ref:`Object.get_class()<class_Object_method_get_class>`.
 
 .. rst-class:: classref-item-separator
 
@@ -546,7 +546,7 @@ Returns the **built-in** class name of the typed dictionary's keys, if the built
 
 :ref:`Variant<class_Variant>` **get_typed_key_script**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_key_script>`
 
-Returns the :ref:`Script<class_Script>` instance associated with this typed dictionary's keys, or ``null`` if it does not exist. See also :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>`.
+Trả về :ref:`Script<class_Script>` instance được liên kết với các khóa của typed dictionary này, hoặc ``null`` nếu instance đó không tồn tại. Xem thêm :ref:`is_typed_key()<class_Dictionary_method_is_typed_key>`.
 
 .. rst-class:: classref-item-separator
 
@@ -558,7 +558,7 @@ Returns the :ref:`Script<class_Script>` instance associated with this typed dict
 
 :ref:`int<class_int>` **get_typed_value_builtin**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_value_builtin>`
 
-Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary's values as a :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` constant. If the values are not typed, returns :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`. See also :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>`.
+Trả về kiểu :ref:`Variant<class_Variant>` dựng sẵn của các giá trị trong typed dictionary dưới dạng hằng số :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`. Nếu các giá trị không được định kiểu, trả về :ref:`@GlobalScope.TYPE_NIL <class_@GlobalScope_constant_TYPE_NIL>`. Xem thêm :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -570,7 +570,7 @@ Returns the built-in :ref:`Variant<class_Variant>` type of the typed dictionary'
 
 :ref:`StringName<class_StringName>` **get_typed_value_class_name**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_value_class_name>`
 
-Returns the **built-in** class name of the typed dictionary's values, if the built-in :ref:`Variant<class_Variant>` type is :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`. Otherwise, returns an empty :ref:`StringName<class_StringName>`. See also :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>` and :ref:`Object.get_class()<class_Object_method_get_class>`.
+Trả về tên lớp **dựng sẵn** của các giá trị trong typed dictionary, nếu kiểu :ref:`Variant<class_Variant>` dựng sẵn là :ref:`@GlobalScope.TYPE_OBJECT <class_@GlobalScope_constant_TYPE_OBJECT>`. Nếu không, trả về một :ref:`StringName<class_StringName>` rỗng. Xem thêm :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>` và :ref:`Object.get_class()<class_Object_method_get_class>`.
 
 .. rst-class:: classref-item-separator
 
@@ -582,7 +582,7 @@ Returns the **built-in** class name of the typed dictionary's values, if the bui
 
 :ref:`Variant<class_Variant>` **get_typed_value_script**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_get_typed_value_script>`
 
-Returns the :ref:`Script<class_Script>` instance associated with this typed dictionary's values, or ``null`` if it does not exist. See also :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>`.
+Trả về instance :ref:`Script<class_Script>` được liên kết với các giá trị của dictionary đã định kiểu này hoặc ``null`` nếu instance đó không tồn tại. Xem thêm :ref:`is_typed_value()<class_Dictionary_method_is_typed_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -594,7 +594,7 @@ Returns the :ref:`Script<class_Script>` instance associated with this typed dict
 
 :ref:`bool<class_bool>` **has**\ (\ key\: :ref:`Variant<class_Variant>`\ ) |const| :ref:`🔗<class_Dictionary_method_has>`
 
-Returns ``true`` if the dictionary contains an entry with the given ``key``.
+Trả về ``true`` nếu dictionary chứa một mục nhập với ``key`` đã cho.
 
 
 .. tabs::
@@ -606,9 +606,9 @@ Returns ``true`` if the dictionary contains an entry with the given ``key``.
         210 : null,
     }
 
-    print(my_dict.has("Godot")) # Prints true
-    print(my_dict.has(210))     # Prints true
-    print(my_dict.has(4))       # Prints false
+    print(my_dict.has("Godot")) # In ra true
+    print(my_dict.has(210))     # In ra true
+    print(my_dict.has(4))       # In ra false
 
  .. code-tab:: csharp
 
@@ -618,20 +618,20 @@ Returns ``true`` if the dictionary contains an entry with the given ``key``.
         { 210, default },
     };
 
-    GD.Print(myDict.ContainsKey("Godot")); // Prints True
-    GD.Print(myDict.ContainsKey(210));     // Prints True
-    GD.Print(myDict.ContainsKey(4));       // Prints False
+    GD.Print(myDict.ContainsKey("Godot")); // In ra True
+    GD.Print(myDict.ContainsKey(210));     // In ra True
+    GD.Print(myDict.ContainsKey(4));       // In ra False
 
 
 
-In GDScript, this is equivalent to the ``in`` operator:
+Trong GDScript, điều này tương đương với toán tử ``in``:
 
 ::
 
     if "Godot" in { "Godot": 4 }:
         print("The key is here!") # Will be printed.
 
-\ **Note:** This method returns ``true`` as long as the ``key`` exists, even if its corresponding value is ``null``.
+\ **Lưu ý:** Phương thức này trả về ``true`` miễn là ``key`` tồn tại, ngay cả khi giá trị tương ứng của nó là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -643,7 +643,7 @@ In GDScript, this is equivalent to the ``in`` operator:
 
 :ref:`bool<class_bool>` **has_all**\ (\ keys\: :ref:`Array<class_Array>`\ ) |const| :ref:`🔗<class_Dictionary_method_has_all>`
 
-Returns ``true`` if the dictionary contains all keys in the given ``keys`` array.
+Trả về ``true`` nếu từ điển chứa tất cả các khóa trong mảng ``keys`` đã cho.
 
 ::
 
@@ -660,7 +660,7 @@ Returns ``true`` if the dictionary contains all keys in the given ``keys`` array
 
 :ref:`int<class_int>` **hash**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_hash>`
 
-Returns a hashed 32-bit integer value representing the dictionary contents.
+Trả về giá trị số nguyên 32 bit được băm, đại diện cho nội dung của từ điển.
 
 
 .. tabs::
@@ -670,21 +670,21 @@ Returns a hashed 32-bit integer value representing the dictionary contents.
     var dict1 = { "A": 10, "B": 2 }
     var dict2 = { "A": 10, "B": 2 }
 
-    print(dict1.hash() == dict2.hash()) # Prints true
+    print(dict1.hash() == dict2.hash()) # In ra true
 
  .. code-tab:: csharp
 
     var dict1 = new Godot.Collections.Dictionary { { "A", 10 }, { "B", 2 } };
     var dict2 = new Godot.Collections.Dictionary { { "A", 10 }, { "B", 2 } };
 
-    // Godot.Collections.Dictionary has no Hash() method. Use GD.Hash() instead.
-    GD.Print(GD.Hash(dict1) == GD.Hash(dict2)); // Prints True
+    // Godot.Collections.Dictionary không có phương thức Hash(). Hãy sử dụng GD.Hash() thay thế.
+    GD.Print(GD.Hash(dict1) == GD.Hash(dict2)); // In ra True
 
 
 
-\ **Note:** Dictionaries with the same entries but in a different order will not have the same hash.
+\ **Lưu ý:** Các dictionary có cùng các phần tử nhưng theo thứ tự khác nhau sẽ không có cùng giá trị hash.
 
-\ **Note:** Dictionaries with equal hash values are *not* guaranteed to be the same, because of hash collisions. On the contrary, dictionaries with different hash values are guaranteed to be different.
+\ **Lưu ý:** Các dictionary có giá trị hash bằng nhau *không* được đảm bảo là giống nhau, do xảy ra xung đột hash. Ngược lại, các dictionary có giá trị hash khác nhau được đảm bảo là khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -696,7 +696,7 @@ Returns a hashed 32-bit integer value representing the dictionary contents.
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_is_empty>`
 
-Returns ``true`` if the dictionary is empty (its size is ``0``). See also :ref:`size()<class_Dictionary_method_size>`.
+Trả về ``true`` nếu dictionary trống (kích thước của nó là ``0``). Xem thêm :ref:`size()<class_Dictionary_method_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -708,7 +708,7 @@ Returns ``true`` if the dictionary is empty (its size is ``0``). See also :ref:`
 
 :ref:`bool<class_bool>` **is_read_only**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_is_read_only>`
 
-Returns ``true`` if the dictionary is read-only. See :ref:`make_read_only()<class_Dictionary_method_make_read_only>`. Dictionaries are automatically read-only if declared with ``const`` keyword.
+Trả về ``true`` nếu dictionary chỉ đọc. Xem :ref:`make_read_only()<class_Dictionary_method_make_read_only>`. Các dictionary tự động ở chế độ chỉ đọc nếu được khai báo bằng từ khóa ``const``.
 
 .. rst-class:: classref-item-separator
 
@@ -720,7 +720,7 @@ Returns ``true`` if the dictionary is read-only. See :ref:`make_read_only()<clas
 
 :ref:`bool<class_bool>` **is_same_typed**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |const| :ref:`🔗<class_Dictionary_method_is_same_typed>`
 
-Returns ``true`` if the dictionary is typed the same as ``dictionary``.
+Trả về ``true`` nếu dictionary có kiểu giống với ``dictionary``.
 
 .. rst-class:: classref-item-separator
 
@@ -732,7 +732,7 @@ Returns ``true`` if the dictionary is typed the same as ``dictionary``.
 
 :ref:`bool<class_bool>` **is_same_typed_key**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |const| :ref:`🔗<class_Dictionary_method_is_same_typed_key>`
 
-Returns ``true`` if the dictionary's keys are typed the same as ``dictionary``'s keys.
+Trả về ``true`` nếu các khóa của dictionary có kiểu giống với các khóa của ``dictionary``.
 
 .. rst-class:: classref-item-separator
 
@@ -744,7 +744,7 @@ Returns ``true`` if the dictionary's keys are typed the same as ``dictionary``'s
 
 :ref:`bool<class_bool>` **is_same_typed_value**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |const| :ref:`🔗<class_Dictionary_method_is_same_typed_value>`
 
-Returns ``true`` if the dictionary's values are typed the same as ``dictionary``'s values.
+Trả về ``true`` nếu các giá trị của từ điển có cùng kiểu với các giá trị của ``dictionary``.
 
 .. rst-class:: classref-item-separator
 
@@ -756,7 +756,7 @@ Returns ``true`` if the dictionary's values are typed the same as ``dictionary``
 
 :ref:`bool<class_bool>` **is_typed**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_is_typed>`
 
-Returns ``true`` if the dictionary is typed. Typed dictionaries can only store keys/values of their associated type and provide type safety for the ``[]`` operator. Methods of typed dictionary still return :ref:`Variant<class_Variant>`.
+Trả về ``true`` nếu từ điển được định kiểu. Từ điển được định kiểu chỉ có thể lưu trữ các khóa/giá trị thuộc kiểu tương ứng và cung cấp tính an toàn kiểu cho toán tử ``[]``. Các phương thức của từ điển được định kiểu vẫn trả về :ref:`Variant<class_Variant>`.
 
 .. rst-class:: classref-item-separator
 
@@ -768,7 +768,7 @@ Returns ``true`` if the dictionary is typed. Typed dictionaries can only store k
 
 :ref:`bool<class_bool>` **is_typed_key**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_is_typed_key>`
 
-Returns ``true`` if the dictionary's keys are typed.
+Trả về ``true`` nếu các khóa của từ điển được định kiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -780,7 +780,7 @@ Returns ``true`` if the dictionary's keys are typed.
 
 :ref:`bool<class_bool>` **is_typed_value**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_is_typed_value>`
 
-Returns ``true`` if the dictionary's values are typed.
+Trả về ``true`` nếu các giá trị của từ điển được định kiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -792,7 +792,7 @@ Returns ``true`` if the dictionary's values are typed.
 
 :ref:`Array<class_Array>` **keys**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_keys>`
 
-Returns the list of keys in the dictionary.
+Trả về danh sách các khóa trong từ điển.
 
 .. rst-class:: classref-item-separator
 
@@ -804,7 +804,7 @@ Returns the list of keys in the dictionary.
 
 |void| **make_read_only**\ (\ ) :ref:`🔗<class_Dictionary_method_make_read_only>`
 
-Makes the dictionary read-only, i.e. disables modification of the dictionary's contents. Does not apply to nested content, e.g. content of nested dictionaries.
+Đặt từ điển ở chế độ chỉ đọc, tức là vô hiệu hóa việc sửa đổi nội dung của từ điển. Không áp dụng cho nội dung lồng nhau, ví dụ như nội dung của các từ điển lồng nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -816,7 +816,7 @@ Makes the dictionary read-only, i.e. disables modification of the dictionary's c
 
 |void| **merge**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`, overwrite\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Dictionary_method_merge>`
 
-Adds entries from ``dictionary`` to this dictionary. By default, duplicate keys are not copied over, unless ``overwrite`` is ``true``.
+Thêm các mục từ ``dictionary`` vào từ điển này. Theo mặc định, các khóa trùng lặp sẽ không được sao chép, trừ khi ``overwrite`` là ``true``.
 
 
 .. tabs::
@@ -826,11 +826,11 @@ Adds entries from ``dictionary`` to this dictionary. By default, duplicate keys 
     var dict = { "item": "sword", "quantity": 2 }
     var other_dict = { "quantity": 15, "color": "silver" }
 
-    # Overwriting of existing keys is disabled by default.
+    # Theo mặc định, tính năng ghi đè các key hiện có bị tắt.
     dict.merge(other_dict)
     print(dict)  # { "item": "sword", "quantity": 2, "color": "silver" }
 
-    # With overwriting of existing keys enabled.
+    # Khi bật tính năng ghi đè các key hiện có.
     dict.merge(other_dict, true)
     print(dict)  # { "item": "sword", "quantity": 15, "color": "silver" }
 
@@ -848,17 +848,17 @@ Adds entries from ``dictionary`` to this dictionary. By default, duplicate keys 
         ["color"] = "silver",
     };
 
-    // Overwriting of existing keys is disabled by default.
+    // Theo mặc định, tính năng ghi đè các key hiện có bị tắt.
     dict.Merge(otherDict);
     GD.Print(dict); // { "item": "sword", "quantity": 2, "color": "silver" }
 
-    // With overwriting of existing keys enabled.
+    // Khi bật tính năng ghi đè các key hiện có.
     dict.Merge(otherDict, true);
     GD.Print(dict); // { "item": "sword", "quantity": 15, "color": "silver" }
 
 
 
-\ **Note:** :ref:`merge()<class_Dictionary_method_merge>` is *not* recursive. Nested dictionaries are considered as keys that can be overwritten or not depending on the value of ``overwrite``, but they will never be merged together.
+\ **Lưu ý:** :ref:`merge()<class_Dictionary_method_merge>` không *đệ quy*. Các dictionary lồng nhau được xem là các khóa có thể bị ghi đè hoặc không, tùy thuộc vào giá trị của ``overwrite``, nhưng chúng sẽ không bao giờ được hợp nhất với nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -870,9 +870,9 @@ Adds entries from ``dictionary`` to this dictionary. By default, duplicate keys 
 
 :ref:`Dictionary<class_Dictionary>` **merged**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`, overwrite\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Dictionary_method_merged>`
 
-Returns a copy of this dictionary merged with the other ``dictionary``. By default, duplicate keys are not copied over, unless ``overwrite`` is ``true``. See also :ref:`merge()<class_Dictionary_method_merge>`.
+Trả về một bản sao của dictionary này được hợp nhất với ``dictionary`` khác. Theo mặc định, các khóa trùng lặp sẽ không được sao chép, trừ khi ``overwrite`` là ``true``. Xem thêm :ref:`merge()<class_Dictionary_method_merge>`.
 
-This method is useful for quickly making dictionaries with default values:
+Phương thức này hữu ích để nhanh chóng tạo các dictionary với giá trị mặc định:
 
 ::
 
@@ -893,7 +893,7 @@ This method is useful for quickly making dictionaries with default values:
 
 :ref:`bool<class_bool>` **recursive_equal**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`, recursion_count\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Dictionary_method_recursive_equal>`
 
-Returns ``true`` if the two dictionaries contain the same keys and values, inner **Dictionary** and :ref:`Array<class_Array>` keys and values are compared recursively.
+Trả về ``true`` nếu hai dictionary chứa các khóa và giá trị giống nhau; các khóa và giá trị **Dictionary** và :ref:`Array<class_Array>` bên trong được so sánh đệ quy.
 
 .. rst-class:: classref-item-separator
 
@@ -905,7 +905,7 @@ Returns ``true`` if the two dictionaries contain the same keys and values, inner
 
 :ref:`bool<class_bool>` **set**\ (\ key\: :ref:`Variant<class_Variant>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Dictionary_method_set>`
 
-Sets the value of the element at the given ``key`` to the given ``value``. Returns ``true`` if the value is set successfully. Fails and returns ``false`` if the dictionary is read-only, or if ``key`` and ``value`` don't match the dictionary's types. This is the same as using the ``[]`` operator (``dict[key] = value``).
+Đặt giá trị của phần tử tại ``key`` đã cho thành ``value`` đã cho. Trả về ``true`` nếu đặt giá trị thành công. Không thành công và trả về ``false`` nếu dictionary là chỉ đọc hoặc nếu ``key`` và ``value`` không khớp với các kiểu của dictionary. Đây là thao tác tương tự như sử dụng toán tử ``[]`` (``dict[key] = value``).
 
 .. rst-class:: classref-item-separator
 
@@ -917,7 +917,7 @@ Sets the value of the element at the given ``key`` to the given ``value``. Retur
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_size>`
 
-Returns the number of entries in the dictionary. Empty dictionaries (``{ }``) always return ``0``. See also :ref:`is_empty()<class_Dictionary_method_is_empty>`.
+Trả về số lượng mục trong dictionary. Các dictionary rỗng (``{ }``) luôn trả về ``0``. Xem thêm :ref:`is_empty()<class_Dictionary_method_is_empty>`.
 
 .. rst-class:: classref-item-separator
 
@@ -929,7 +929,7 @@ Returns the number of entries in the dictionary. Empty dictionaries (``{ }``) al
 
 |void| **sort**\ (\ ) :ref:`🔗<class_Dictionary_method_sort>`
 
-Sorts the dictionary in ascending order, by key. The final order is dependent on the "less than" (``<``) comparison between keys.
+Sắp xếp dictionary theo thứ tự tăng dần dựa trên key. Thứ tự cuối cùng phụ thuộc vào phép so sánh "nhỏ hơn" (``<``) giữa các key.
 
 
 .. tabs::
@@ -938,11 +938,11 @@ Sorts the dictionary in ascending order, by key. The final order is dependent on
 
     var numbers = { "c": 2, "a": 0, "b": 1 }
     numbers.sort()
-    print(numbers) # Prints { "a": 0, "b": 1, "c": 2 }
+    print(numbers) # In ra { "a": 0, "b": 1, "c": 2 }
 
 
 
-This method ensures that the dictionary's entries are ordered consistently when :ref:`keys()<class_Dictionary_method_keys>` or :ref:`values()<class_Dictionary_method_values>` are called, or when the dictionary needs to be converted to a string through :ref:`@GlobalScope.str()<class_@GlobalScope_method_str>` or :ref:`JSON.stringify()<class_JSON_method_stringify>`.
+Phương thức này đảm bảo các mục trong dictionary được sắp xếp nhất quán khi :ref:`keys()<class_Dictionary_method_keys>` hoặc :ref:`values()<class_Dictionary_method_values>` được gọi, hoặc khi dictionary cần được chuyển đổi thành chuỗi thông qua :ref:`@GlobalScope.str() <class_@GlobalScope_method_str>` hoặc :ref:`JSON.stringify()<class_JSON_method_stringify>`.
 
 .. rst-class:: classref-item-separator
 
@@ -954,7 +954,7 @@ This method ensures that the dictionary's entries are ordered consistently when 
 
 :ref:`Array<class_Array>` **values**\ (\ ) |const| :ref:`🔗<class_Dictionary_method_values>`
 
-Returns the list of values in this dictionary.
+Trả về danh sách các value trong dictionary này.
 
 .. rst-class:: classref-section-separator
 
@@ -962,16 +962,16 @@ Returns the list of values in this dictionary.
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Dictionary_operator_neq_Dictionary:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_Dictionary_operator_neq_Dictionary>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗 <class_Dictionary_operator_neq_Dictionary>`
 
-Returns ``true`` if the two dictionaries do not contain the same keys and values.
+Trả về ``true`` nếu hai dictionary không chứa cùng các key và value.
 
 .. rst-class:: classref-item-separator
 
@@ -981,11 +981,11 @@ Returns ``true`` if the two dictionaries do not contain the same keys and values
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_Dictionary_operator_eq_Dictionary>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗 <class_Dictionary_operator_eq_Dictionary>`
 
-Returns ``true`` if the two dictionaries contain the same keys and values. The order of the entries does not matter.
+Trả về ``true`` nếu hai dictionary chứa cùng các khóa và giá trị. Thứ tự của các mục không quan trọng.
 
-\ **Note:** In C#, by convention, this operator compares by **reference**. If you need to compare by value, iterate over both dictionaries.
+\ **Lưu ý:** Trong C#, theo quy ước, toán tử này so sánh theo **reference**. Nếu cần so sánh theo giá trị, hãy lặp qua cả hai dictionary.
 
 .. rst-class:: classref-item-separator
 
@@ -995,16 +995,16 @@ Returns ``true`` if the two dictionaries contain the same keys and values. The o
 
 .. rst-class:: classref-operator
 
-:ref:`Variant<class_Variant>` **operator []**\ (\ key\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Dictionary_operator_idx_Variant>`
+:ref:`Variant<class_Variant>` **operator []**\ (\ key\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗 <class_Dictionary_operator_idx_Variant>`
 
-Returns the corresponding value for the given ``key`` in the dictionary. If the entry does not exist, fails and returns ``null``. For safe access, use :ref:`get()<class_Dictionary_method_get>` or :ref:`has()<class_Dictionary_method_has>`.
+Trả về giá trị tương ứng với ``key`` đã cho trong dictionary. Nếu mục nhập không tồn tại, thao tác sẽ thất bại và trả về ``null``. Để truy cập an toàn, hãy sử dụng :ref:`get()<class_Dictionary_method_get>` hoặc :ref:`has()<class_Dictionary_method_has>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số tùy ý sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,16 +10,16 @@
 ZIPPacker
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Allows the creation of ZIP files.
+Cho phép tạo các tệp ZIP.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class implements a writer that allows storing the multiple blobs in a ZIP archive. See also :ref:`ZIPReader<class_ZIPReader>` and :ref:`PCKPacker<class_PCKPacker>`.
+Lớp này triển khai một writer cho phép lưu trữ nhiều blob trong một kho lưu trữ ZIP. Xem thêm :ref:`ZIPReader<class_ZIPReader>` và :ref:`PCKPacker<class_PCKPacker>`.
 
 ::
 
@@ -38,7 +38,7 @@ This class implements a writer that allows storing the multiple blobs in a ZIP a
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,25 +50,25 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`add_directory<class_ZIPPacker_method_add_directory>`\ (\ path\: :ref:`String<class_String>`, permissions\: |bitfield|\[:ref:`UnixPermissionFlags<enum_FileAccess_UnixPermissionFlags>`\] = 493, modified_time\: :ref:`int<class_int>` = 0\ ) |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`close<class_ZIPPacker_method_close>`\ (\ )                                                                                                                                                                                                   |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`close_file<class_ZIPPacker_method_close_file>`\ (\ )                                                                                                                                                                                         |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`open<class_ZIPPacker_method_open>`\ (\ path\: :ref:`String<class_String>`, append\: :ref:`ZipAppend<enum_ZIPPacker_ZipAppend>` = 0\ )                                                                                                        |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`start_file<class_ZIPPacker_method_start_file>`\ (\ path\: :ref:`String<class_String>`, permissions\: |bitfield|\[:ref:`UnixPermissionFlags<enum_FileAccess_UnixPermissionFlags>`\] = 420, modified_time\: :ref:`int<class_int>` = 0\ )       |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`write_file<class_ZIPPacker_method_write_file>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                                   |
-   +---------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`   | :ref:`add_directory<class_ZIPPacker_method_add_directory>`\ (\ path\: :ref:`String<class_String>`, permissions\: |bitfield|\[:ref:`UnixPermissionFlags <enum_FileAccess_UnixPermissionFlags>`\] = 493, modified_time\: :ref:`int<class_int>` = 0\ ) |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`close<class_ZIPPacker_method_close>`\ (\ )                                                                                                                                                                                                    |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`close_file<class_ZIPPacker_method_close_file>`\ (\ )                                                                                                                                                                                          |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`open<class_ZIPPacker_method_open>`\ (\ path\: :ref:`String<class_String>`, append\: :ref:`ZipAppend <enum_ZIPPacker_ZipAppend>` = 0\ )                                                                                                        |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`start_file<class_ZIPPacker_method_start_file>`\ (\ path\: :ref:`String<class_String>`, permissions\: |bitfield|\[:ref:`UnixPermissionFlags <enum_FileAccess_UnixPermissionFlags>`\] = 420, modified_time\: :ref:`int<class_int>` = 0\ )       |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`write_file<class_ZIPPacker_method_write_file>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                                    |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -76,14 +76,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ZIPPacker_ZipAppend:
 
 .. rst-class:: classref-enumeration
 
-enum **ZipAppend**: :ref:`🔗<enum_ZIPPacker_ZipAppend>`
+enum **ZipAppend**: :ref:`🔗 <enum_ZIPPacker_ZipAppend>`
 
 .. _class_ZIPPacker_constant_APPEND_CREATE:
 
@@ -91,7 +91,7 @@ enum **ZipAppend**: :ref:`🔗<enum_ZIPPacker_ZipAppend>`
 
 :ref:`ZipAppend<enum_ZIPPacker_ZipAppend>` **APPEND_CREATE** = ``0``
 
-Create a new zip archive at the given path.
+Tạo một kho lưu trữ zip mới tại đường dẫn đã cho.
 
 .. _class_ZIPPacker_constant_APPEND_CREATEAFTER:
 
@@ -99,7 +99,7 @@ Create a new zip archive at the given path.
 
 :ref:`ZipAppend<enum_ZIPPacker_ZipAppend>` **APPEND_CREATEAFTER** = ``1``
 
-Append a new zip archive to the end of the already existing file at the given path.
+Nối một kho lưu trữ zip mới vào cuối tệp hiện có tại đường dẫn đã cho.
 
 .. _class_ZIPPacker_constant_APPEND_ADDINZIP:
 
@@ -107,7 +107,7 @@ Append a new zip archive to the end of the already existing file at the given pa
 
 :ref:`ZipAppend<enum_ZIPPacker_ZipAppend>` **APPEND_ADDINZIP** = ``2``
 
-Add new files to the existing zip archive at the given path.
+Thêm các tệp mới vào kho lưu trữ zip hiện có tại đường dẫn đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Add new files to the existing zip archive at the given path.
 
 .. rst-class:: classref-enumeration
 
-enum **CompressionLevel**: :ref:`🔗<enum_ZIPPacker_CompressionLevel>`
+enum **CompressionLevel**: :ref:`🔗 <enum_ZIPPacker_CompressionLevel>`
 
 .. _class_ZIPPacker_constant_COMPRESSION_DEFAULT:
 
@@ -125,7 +125,7 @@ enum **CompressionLevel**: :ref:`🔗<enum_ZIPPacker_CompressionLevel>`
 
 :ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_DEFAULT** = ``-1``
 
-Start a file with the default Deflate compression level (``6``). This is a good compromise between speed and file size.
+Bắt đầu một tệp với mức nén Deflate mặc định (``6``). Đây là sự cân bằng hợp lý giữa tốc độ và kích thước tệp.
 
 .. _class_ZIPPacker_constant_COMPRESSION_NONE:
 
@@ -133,7 +133,7 @@ Start a file with the default Deflate compression level (``6``). This is a good 
 
 :ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_NONE** = ``0``
 
-Start a file with no compression. This is also known as the "Store" compression mode and is the fastest method of packing files inside a ZIP archive. Consider using this mode for files that are already compressed (such as JPEG, PNG, MP3, or Ogg Vorbis files).
+Bắt đầu một tệp mà không nén. Chế độ này còn được gọi là chế độ nén "Store" và là phương pháp đóng gói tệp bên trong kho lưu trữ ZIP nhanh nhất. Hãy cân nhắc sử dụng chế độ này cho các tệp vốn đã được nén (chẳng hạn như tệp JPEG, PNG, MP3 hoặc Ogg Vorbis).
 
 .. _class_ZIPPacker_constant_COMPRESSION_FAST:
 
@@ -141,7 +141,7 @@ Start a file with no compression. This is also known as the "Store" compression 
 
 :ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_FAST** = ``1``
 
-Start a file with the fastest Deflate compression level (``1``). This is fast to compress, but results in larger file sizes than :ref:`COMPRESSION_DEFAULT<class_ZIPPacker_constant_COMPRESSION_DEFAULT>`. Decompression speed is generally unaffected by the chosen compression level.
+Bắt đầu một tệp với mức nén Deflate nhanh nhất (``1``). Việc nén diễn ra nhanh, nhưng kích thước tệp lớn hơn so với :ref:`COMPRESSION_DEFAULT<class_ZIPPacker_constant_COMPRESSION_DEFAULT>`. Tốc độ giải nén nhìn chung không bị ảnh hưởng bởi mức nén đã chọn.
 
 .. _class_ZIPPacker_constant_COMPRESSION_BEST:
 
@@ -149,7 +149,7 @@ Start a file with the fastest Deflate compression level (``1``). This is fast to
 
 :ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` **COMPRESSION_BEST** = ``9``
 
-Start a file with the best Deflate compression level (``9``). This is slow to compress, but results in smaller file sizes than :ref:`COMPRESSION_DEFAULT<class_ZIPPacker_constant_COMPRESSION_DEFAULT>`. Decompression speed is generally unaffected by the chosen compression level.
+Bắt đầu một tệp với mức nén Deflate tốt nhất (``9``). Việc nén diễn ra chậm, nhưng kích thước tệp nhỏ hơn so với :ref:`COMPRESSION_DEFAULT<class_ZIPPacker_constant_COMPRESSION_DEFAULT>`. Tốc độ giải nén nhìn chung không bị ảnh hưởng bởi mức nén đã chọn.
 
 .. rst-class:: classref-section-separator
 
@@ -157,8 +157,8 @@ Start a file with the best Deflate compression level (``9``). This is slow to co
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ZIPPacker_property_compression_level:
 
@@ -171,7 +171,7 @@ Property Descriptions
 - |void| **set_compression_level**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_compression_level**\ (\ )
 
-The compression level used when :ref:`start_file()<class_ZIPPacker_method_start_file>` is called. Use :ref:`CompressionLevel<enum_ZIPPacker_CompressionLevel>` as a reference.
+Mức nén được sử dụng khi gọi :ref:`start_file()<class_ZIPPacker_method_start_file>`. Hãy tham khảo :ref:`CompressionLevel <enum_ZIPPacker_CompressionLevel>`.
 
 .. rst-class:: classref-section-separator
 
@@ -179,8 +179,8 @@ The compression level used when :ref:`start_file()<class_ZIPPacker_method_start_
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ZIPPacker_method_add_directory:
 
@@ -188,9 +188,9 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **add_directory**\ (\ path\: :ref:`String<class_String>`, permissions\: |bitfield|\[:ref:`UnixPermissionFlags<enum_FileAccess_UnixPermissionFlags>`\] = 493, modified_time\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ZIPPacker_method_add_directory>`
 
-Adds directory to the archive. If ``modified_time`` is set to ``0``, current system time is used.
+Thêm thư mục vào tệp lưu trữ. Nếu ``modified_time`` được đặt thành ``0``, thời gian hệ thống hiện tại sẽ được sử dụng.
 
-\ **Note:** Directories are automatically created when :ref:`start_file()<class_ZIPPacker_method_start_file>` is called, use this function before adding files to create directories with custom permissions and modification time.
+\ **Lưu ý:** Các thư mục được tự động tạo khi :ref:`start_file()<class_ZIPPacker_method_start_file>` được gọi; hãy sử dụng hàm này trước khi thêm tệp để tạo các thư mục với quyền tùy chỉnh và thời gian sửa đổi tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ Adds directory to the archive. If ``modified_time`` is set to ``0``, current sys
 
 :ref:`Error<enum_@GlobalScope_Error>` **close**\ (\ ) :ref:`🔗<class_ZIPPacker_method_close>`
 
-Closes the underlying resources used by this instance.
+Đóng các tài nguyên bên dưới được thực thể này sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -214,9 +214,9 @@ Closes the underlying resources used by this instance.
 
 :ref:`Error<enum_@GlobalScope_Error>` **close_file**\ (\ ) :ref:`🔗<class_ZIPPacker_method_close_file>`
 
-Stops writing to a file within the archive.
+Dừng ghi vào một tệp trong tệp lưu trữ.
 
-It will fail if there is no open file.
+Thao tác sẽ thất bại nếu không có tệp nào đang mở.
 
 .. rst-class:: classref-item-separator
 
@@ -228,9 +228,9 @@ It will fail if there is no open file.
 
 :ref:`Error<enum_@GlobalScope_Error>` **open**\ (\ path\: :ref:`String<class_String>`, append\: :ref:`ZipAppend<enum_ZIPPacker_ZipAppend>` = 0\ ) :ref:`🔗<class_ZIPPacker_method_open>`
 
-Opens a zip file for writing at the given path using the specified write mode.
+Mở một tệp zip để ghi tại đường dẫn đã cho bằng chế độ ghi được chỉ định.
 
-This must be called before everything else.
+Phải gọi phương thức này trước mọi thứ khác.
 
 .. rst-class:: classref-item-separator
 
@@ -242,9 +242,9 @@ This must be called before everything else.
 
 :ref:`Error<enum_@GlobalScope_Error>` **start_file**\ (\ path\: :ref:`String<class_String>`, permissions\: |bitfield|\[:ref:`UnixPermissionFlags<enum_FileAccess_UnixPermissionFlags>`\] = 420, modified_time\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ZIPPacker_method_start_file>`
 
-Starts writing to a file within the archive. Only one file can be written at the same time. If ``modified_time`` is set to ``0``, current system time is used.
+Bắt đầu ghi vào một tệp trong kho lưu trữ. Chỉ có thể ghi một tệp tại một thời điểm. Nếu ``modified_time`` được đặt thành ``0``, thời gian hệ thống hiện tại sẽ được sử dụng.
 
-Must be called after :ref:`open()<class_ZIPPacker_method_open>`.
+Phải được gọi sau :ref:`open()<class_ZIPPacker_method_open>`.
 
 .. rst-class:: classref-item-separator
 
@@ -256,16 +256,16 @@ Must be called after :ref:`open()<class_ZIPPacker_method_open>`.
 
 :ref:`Error<enum_@GlobalScope_Error>` **write_file**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_ZIPPacker_method_write_file>`
 
-Write the given ``data`` to the file.
+Ghi ``data`` đã cho vào tệp.
 
-Needs to be called after :ref:`start_file()<class_ZIPPacker_method_start_file>`.
+Cần được gọi sau :ref:`start_file()<class_ZIPPacker_method_start_file>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào ngoài các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

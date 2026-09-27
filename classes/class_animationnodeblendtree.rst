@@ -10,29 +10,29 @@
 AnimationNodeBlendTree
 ======================
 
-**Inherits:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A sub-tree of many type :ref:`AnimationNode<class_AnimationNode>`\ s used for complex animations. Used by :ref:`AnimationTree<class_AnimationTree>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This animation node may contain a sub-tree of any other type animation nodes, such as :ref:`AnimationNodeTransition<class_AnimationNodeTransition>`, :ref:`AnimationNodeBlend2<class_AnimationNodeBlend2>`, :ref:`AnimationNodeBlend3<class_AnimationNodeBlend3>`, :ref:`AnimationNodeOneShot<class_AnimationNodeOneShot>`, etc. This is one of the most commonly used animation node roots.
-
-An :ref:`AnimationNodeOutput<class_AnimationNodeOutput>` node named ``output`` is created by default.
+Một cây con gồm nhiều loại :ref:`AnimationNode<class_AnimationNode>`\ s được sử dụng cho các animation phức tạp. Được :ref:`AnimationTree<class_AnimationTree>` sử dụng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Nút animation này có thể chứa một cây con gồm các nút animation thuộc bất kỳ loại nào khác, chẳng hạn như :ref:`AnimationNodeTransition<class_AnimationNodeTransition>`, :ref:`AnimationNodeBlend2<class_AnimationNodeBlend2>`, :ref:`AnimationNodeBlend3<class_AnimationNodeBlend3>`, :ref:`AnimationNodeOneShot<class_AnimationNodeOneShot>`, v.v. Đây là một trong những nút gốc animation được sử dụng phổ biến nhất.
+
+Một nút :ref:`AnimationNodeOutput<class_AnimationNodeOutput>` có tên ``output`` được tạo theo mặc định.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -44,8 +44,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -78,8 +78,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_AnimationNodeBlendTree_signal_node_changed:
 
@@ -87,7 +87,7 @@ Signals
 
 **node_changed**\ (\ node_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeBlendTree_signal_node_changed>`
 
-Emitted when the input port information is changed.
+Được phát ra khi thông tin cổng đầu vào thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -95,8 +95,8 @@ Emitted when the input port information is changed.
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_AnimationNodeBlendTree_constant_CONNECTION_OK:
 
@@ -104,7 +104,7 @@ Constants
 
 **CONNECTION_OK** = ``0`` :ref:`🔗<class_AnimationNodeBlendTree_constant_CONNECTION_OK>`
 
-The connection was successful.
+Kết nối đã thành công.
 
 .. _class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_NO_INPUT:
 
@@ -112,7 +112,7 @@ The connection was successful.
 
 **CONNECTION_ERROR_NO_INPUT** = ``1`` :ref:`🔗<class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_NO_INPUT>`
 
-The input node is ``null``.
+Nút đầu vào là ``null``.
 
 .. _class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_NO_INPUT_INDEX:
 
@@ -120,7 +120,7 @@ The input node is ``null``.
 
 **CONNECTION_ERROR_NO_INPUT_INDEX** = ``2`` :ref:`🔗<class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_NO_INPUT_INDEX>`
 
-The specified input port is out of range.
+Cổng đầu vào được chỉ định nằm ngoài phạm vi.
 
 .. _class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_NO_OUTPUT:
 
@@ -128,7 +128,7 @@ The specified input port is out of range.
 
 **CONNECTION_ERROR_NO_OUTPUT** = ``3`` :ref:`🔗<class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_NO_OUTPUT>`
 
-The output node is ``null``.
+Nút đầu ra là ``null``.
 
 .. _class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_SAME_NODE:
 
@@ -136,7 +136,7 @@ The output node is ``null``.
 
 **CONNECTION_ERROR_SAME_NODE** = ``4`` :ref:`🔗<class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_SAME_NODE>`
 
-Input and output nodes are the same.
+Nút đầu vào và nút đầu ra giống nhau.
 
 .. _class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_CONNECTION_EXISTS:
 
@@ -144,7 +144,7 @@ Input and output nodes are the same.
 
 **CONNECTION_ERROR_CONNECTION_EXISTS** = ``5`` :ref:`🔗<class_AnimationNodeBlendTree_constant_CONNECTION_ERROR_CONNECTION_EXISTS>`
 
-The specified connection already exists.
+Kết nối được chỉ định đã tồn tại.
 
 .. rst-class:: classref-section-separator
 
@@ -152,8 +152,8 @@ The specified connection already exists.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationNodeBlendTree_property_graph_offset:
 
@@ -166,7 +166,7 @@ Property Descriptions
 - |void| **set_graph_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_graph_offset**\ (\ )
 
-The global offset of all sub animation nodes.
+Độ lệch global của tất cả các sub animation node.
 
 .. rst-class:: classref-section-separator
 
@@ -174,8 +174,8 @@ The global offset of all sub animation nodes.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationNodeBlendTree_method_add_node:
 
@@ -183,7 +183,7 @@ Method Descriptions
 
 |void| **add_node**\ (\ name\: :ref:`StringName<class_StringName>`, node\: :ref:`AnimationNode<class_AnimationNode>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_AnimationNodeBlendTree_method_add_node>`
 
-Adds an :ref:`AnimationNode<class_AnimationNode>` at the given ``position``. The ``name`` is used to identify the created sub animation node later.
+Thêm một :ref:`AnimationNode<class_AnimationNode>` tại ``position`` đã cho. ``name`` được dùng để xác định sub animation node được tạo sau này.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Adds an :ref:`AnimationNode<class_AnimationNode>` at the given ``position``. The
 
 |void| **connect_node**\ (\ input_node\: :ref:`StringName<class_StringName>`, input_index\: :ref:`int<class_int>`, output_node\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeBlendTree_method_connect_node>`
 
-Connects the output of an :ref:`AnimationNode<class_AnimationNode>` as input for another :ref:`AnimationNode<class_AnimationNode>`, at the input port specified by ``input_index``.
+Kết nối đầu ra của một :ref:`AnimationNode<class_AnimationNode>` làm đầu vào cho một :ref:`AnimationNode<class_AnimationNode>` khác, tại cổng đầu vào được chỉ định bởi ``input_index``.
 
 .. rst-class:: classref-item-separator
 
@@ -207,7 +207,7 @@ Connects the output of an :ref:`AnimationNode<class_AnimationNode>` as input for
 
 |void| **disconnect_node**\ (\ input_node\: :ref:`StringName<class_StringName>`, input_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AnimationNodeBlendTree_method_disconnect_node>`
 
-Disconnects the animation node connected to the specified input.
+Ngắt kết nối animation node được kết nối với đầu vào đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ Disconnects the animation node connected to the specified input.
 
 :ref:`AnimationNode<class_AnimationNode>` **get_node**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeBlendTree_method_get_node>`
 
-Returns the sub animation node with the specified ``name``.
+Trả về sub animation node có ``name`` đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Returns the sub animation node with the specified ``name``.
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_node_list**\ (\ ) |const| :ref:`🔗<class_AnimationNodeBlendTree_method_get_node_list>`
 
-Returns a list containing the names of all sub animation nodes in this blend tree.
+Trả về danh sách chứa tên của tất cả sub animation node trong blend tree này.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Returns a list containing the names of all sub animation nodes in this blend tre
 
 :ref:`Vector2<class_Vector2>` **get_node_position**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeBlendTree_method_get_node_position>`
 
-Returns the position of the sub animation node with the specified ``name``.
+Trả về vị trí của nút hoạt ảnh con có ``name`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -255,7 +255,7 @@ Returns the position of the sub animation node with the specified ``name``.
 
 :ref:`bool<class_bool>` **has_node**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeBlendTree_method_has_node>`
 
-Returns ``true`` if a sub animation node with specified ``name`` exists.
+Trả về ``true`` nếu tồn tại nút hoạt ảnh con có ``name`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Returns ``true`` if a sub animation node with specified ``name`` exists.
 
 |void| **remove_node**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeBlendTree_method_remove_node>`
 
-Removes a sub animation node.
+Xóa một nút hoạt ảnh con.
 
 .. rst-class:: classref-item-separator
 
@@ -279,7 +279,7 @@ Removes a sub animation node.
 
 |void| **rename_node**\ (\ name\: :ref:`StringName<class_StringName>`, new_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeBlendTree_method_rename_node>`
 
-Changes the name of a sub animation node.
+Thay đổi tên của một nút hoạt ảnh con.
 
 .. rst-class:: classref-item-separator
 
@@ -291,14 +291,14 @@ Changes the name of a sub animation node.
 
 |void| **set_node_position**\ (\ name\: :ref:`StringName<class_StringName>`, position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_AnimationNodeBlendTree_method_set_node_position>`
 
-Modifies the position of a sub animation node.
+Thay đổi vị trí của một nút hoạt ảnh con.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

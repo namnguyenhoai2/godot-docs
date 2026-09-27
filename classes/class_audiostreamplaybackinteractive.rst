@@ -10,21 +10,21 @@
 AudioStreamPlaybackInteractive
 ==============================
 
-**Inherits:** :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStreamPlayback<class_AudioStreamPlayback>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Playback component of :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`.
+Thành phần playback của :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Playback component of :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`. Contains functions to change the currently played clip.
+Thành phần playback của :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`. Chứa các hàm để thay đổi clip hiện đang được phát.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioStreamPlaybackInteractive_method_get_current_clip_index:
 
@@ -52,9 +52,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_current_clip_index**\ (\ ) |const| :ref:`🔗<class_AudioStreamPlaybackInteractive_method_get_current_clip_index>`
 
-Return the index of the currently playing clip. You can use this to get the name of the currently playing clip with :ref:`AudioStreamInteractive.get_clip_name()<class_AudioStreamInteractive_method_get_clip_name>`.
+Trả về chỉ mục của clip hiện đang phát. Bạn có thể dùng chỉ mục này để lấy tên của clip hiện đang phát bằng :ref:`AudioStreamInteractive.get_clip_name()<class_AudioStreamInteractive_method_get_clip_name>`.
 
-\ **Example:** Get the currently playing clip name from inside an :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` node.
+\ **Ví dụ:** Lấy tên clip hiện đang phát từ bên trong một node :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`.
 
 
 .. tabs::
@@ -75,7 +75,7 @@ Return the index of the currently playing clip. You can use this to get the name
 
 |void| **switch_to_clip**\ (\ clip_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AudioStreamPlaybackInteractive_method_switch_to_clip>`
 
-Switch to a clip (by index).
+Chuyển sang một clip (theo chỉ mục).
 
 .. rst-class:: classref-item-separator
 
@@ -87,14 +87,14 @@ Switch to a clip (by index).
 
 |void| **switch_to_clip_by_name**\ (\ clip_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AudioStreamPlaybackInteractive_method_switch_to_clip_by_name>`
 
-Switch to a clip (by name).
+Chuyển sang một clip (theo tên).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

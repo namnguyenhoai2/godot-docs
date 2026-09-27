@@ -10,18 +10,18 @@
 FontVariation
 =============
 
-**Inherits:** :ref:`Font<class_Font>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Font<class_Font>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A variation of a font with additional settings.
+Một biến thể của phông chữ với các thiết lập bổ sung.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Provides OpenType variations, simulated bold / slant, and additional font settings like OpenType features and extra spacing.
+Cung cấp các biến thể OpenType, kiểu đậm/nghiêng mô phỏng và các thiết lập phông chữ bổ sung như các tính năng OpenType và khoảng cách bổ sung.
 
-To use simulated bold font variant:
+Để sử dụng biến thể phông chữ đậm mô phỏng:
 
 
 .. tabs::
@@ -44,7 +44,7 @@ To use simulated bold font variant:
 
 
 
-To set the coordinate of multiple variation axes:
+Để đặt tọa độ cho nhiều trục biến thể:
 
 ::
 
@@ -55,7 +55,7 @@ To set the coordinate of multiple variation axes:
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -91,15 +91,15 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`set_spacing<class_FontVariation_method_set_spacing>`\ (\ spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ ) |
-   +--------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`set_spacing<class_FontVariation_method_set_spacing>`\ (\ spacing\: :ref:`SpacingType <enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ ) |
+   +--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -107,21 +107,21 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_FontVariation_property_base_font:
 
 .. rst-class:: classref-property
 
-:ref:`Font<class_Font>` **base_font** :ref:`🔗<class_FontVariation_property_base_font>`
+:ref:`Font<class_Font>` **base_font** :ref:`🔗 <class_FontVariation_property_base_font>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_base_font**\ (\ value\: :ref:`Font<class_Font>`\ )
 - :ref:`Font<class_Font>` **get_base_font**\ (\ )
 
-Base font used to create a variation. If not set, default :ref:`Theme<class_Theme>` font is used.
+Phông chữ cơ sở được dùng để tạo variation. Nếu không được đặt, phông chữ :ref:`Theme<class_Theme>` mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Base font used to create a variation. If not set, default :ref:`Theme<class_Them
 - |void| **set_baseline_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_baseline_offset**\ (\ )
 
-Extra baseline offset (as a fraction of font height).
+Độ lệch đường cơ sở bổ sung (tính theo phần chiều cao phông chữ).
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ Extra baseline offset (as a fraction of font height).
 - |void| **set_opentype_features**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_opentype_features**\ (\ )
 
-A set of OpenType feature tags. More info: `OpenType feature tags <https://docs.microsoft.com/en-us/typography/opentype/spec/featuretags>`__.
+Tập hợp các thẻ tính năng OpenType. Thông tin thêm: `thẻ tính năng OpenType <https://docs.microsoft.com/en-us/typography/opentype/spec/featuretags>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -172,9 +172,9 @@ A set of OpenType feature tags. More info: `OpenType feature tags <https://docs.
 - |void| **set_palette_custom_colors**\ (\ value\: :ref:`PackedColorArray<class_PackedColorArray>`\ )
 - :ref:`PackedColorArray<class_PackedColorArray>` **get_palette_custom_colors**\ (\ )
 
-An array of colors to override predefined palette. Use ``Color(0, 0, 0, 0)``, to keep predefined palette color at specific position.
+Một mảng màu dùng để ghi đè bảng màu được định nghĩa sẵn. Sử dụng ``Color(0, 0, 0, 0)``, để giữ lại màu của bảng màu được định nghĩa sẵn tại vị trí cụ thể.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedColorArray<class_PackedColorArray>` for more details.
+**Lưu ý:** Mảng được trả về sẽ được *sao chép* và mọi thay đổi đối với mảng đó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedColorArray<class_PackedColorArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ An array of colors to override predefined palette. Use ``Color(0, 0, 0, 0)``, to
 - |void| **set_palette_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_palette_index**\ (\ )
 
-A palette index.
+Một chỉ mục trong bảng màu.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ A palette index.
 - |void| **set_spacing**\ (\ spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_spacing**\ (\ )
 
-Extra spacing at the bottom of the line in pixels.
+Khoảng cách bổ sung ở cuối dòng, tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Extra spacing at the bottom of the line in pixels.
 - |void| **set_spacing**\ (\ spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_spacing**\ (\ )
 
-Extra spacing between graphical glyphs.
+Khoảng cách bổ sung giữa các glyph đồ họa.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ Extra spacing between graphical glyphs.
 - |void| **set_spacing**\ (\ spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_spacing**\ (\ )
 
-Extra width of the space glyphs.
+Độ rộng bổ sung của các glyph khoảng trắng.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Extra width of the space glyphs.
 - |void| **set_spacing**\ (\ spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_spacing**\ (\ )
 
-Extra spacing at the top of the line in pixels.
+Khoảng cách bổ sung ở đầu dòng, tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -276,9 +276,9 @@ Extra spacing at the top of the line in pixels.
 - |void| **set_variation_embolden**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_variation_embolden**\ (\ )
 
-If is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness.
+Nếu khác không, làm đậm các đường viền của phông chữ. Các giá trị âm làm giảm độ dày của đường viền.
 
-\ **Note:** Emboldened fonts might have self-intersecting outlines, which will prevent MSDF fonts and :ref:`TextMesh<class_TextMesh>` from working correctly.
+\ **Lưu ý:** Phông chữ được làm đậm có thể có các đường viền tự giao nhau, khiến phông chữ MSDF và :ref:`TextMesh<class_TextMesh>` không hoạt động chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ If is not equal to zero, emboldens the font outlines. Negative values reduce the
 - |void| **set_variation_face_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_variation_face_index**\ (\ )
 
-Active face index in the TrueType / OpenType collection file.
+Chỉ số face đang hoạt động trong tệp bộ sưu tập TrueType / OpenType.
 
 .. rst-class:: classref-item-separator
 
@@ -312,11 +312,11 @@ Active face index in the TrueType / OpenType collection file.
 - |void| **set_variation_opentype**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_variation_opentype**\ (\ )
 
-Font OpenType variation coordinates. More info: `OpenType variation tags <https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg>`__.
+Tọa độ biến thể OpenType của phông chữ. Thông tin thêm: `thẻ biến thể OpenType <https://docs.microsoft.com/en-us/typography/opentype/spec/dvaraxisreg>`__.
 
-\ **Note:** This :ref:`Dictionary<class_Dictionary>` uses OpenType tags as keys. Variation axes can be identified both by tags (:ref:`int<class_int>`, e.g. ``0x77678674``) and names (:ref:`String<class_String>`, e.g. ``wght``). Some axes might be accessible by multiple names. For example, ``wght`` refers to the same axis as ``weight``. Tags on the other hand are unique. To convert between names and tags, use :ref:`TextServer.name_to_tag()<class_TextServer_method_name_to_tag>` and :ref:`TextServer.tag_to_name()<class_TextServer_method_tag_to_name>`.
+\ **Lưu ý:** :ref:`Dictionary<class_Dictionary>` này sử dụng các thẻ OpenType làm khóa. Các trục biến thể có thể được xác định bằng cả thẻ (:ref:`int<class_int>`, ví dụ ``0x77678674``) và tên (:ref:`String<class_String>`, ví dụ ``wght``). Một số trục có thể được truy cập bằng nhiều tên. Ví dụ, ``wght`` tham chiếu đến cùng một trục với ``weight``. Mặt khác, các thẻ là duy nhất. Để chuyển đổi giữa tên và thẻ, hãy sử dụng :ref:`TextServer.name_to_tag()<class_TextServer_method_name_to_tag>` và :ref:`TextServer.tag_to_name()<class_TextServer_method_tag_to_name>`.
 
-\ **Note:** To get available variation axes of a font, use :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>`.
+\ **Lưu ý:** Để lấy các trục biến thể có sẵn của một phông chữ, hãy sử dụng :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>`.
 
 .. rst-class:: classref-item-separator
 
@@ -333,9 +333,9 @@ Font OpenType variation coordinates. More info: `OpenType variation tags <https:
 - |void| **set_variation_transform**\ (\ value\: :ref:`Transform2D<class_Transform2D>`\ )
 - :ref:`Transform2D<class_Transform2D>` **get_variation_transform**\ (\ )
 
-2D transform, applied to the font outlines, can be used for slanting, flipping and rotating glyphs.
+Phép biến đổi 2D được áp dụng cho các đường viền của phông chữ, có thể được dùng để làm nghiêng, lật và xoay glyph.
 
-For example, to simulate italic typeface by slanting, apply the following transform ``Transform2D(1.0, slant, 0.0, 1.0, 0.0, 0.0)``.
+Ví dụ, để mô phỏng kiểu chữ in nghiêng bằng cách làm xiên, hãy áp dụng phép biến đổi sau ``Transform2D(1.0, slant, 0.0, 1.0, 0.0, 0.0)``.
 
 .. rst-class:: classref-section-separator
 
@@ -343,8 +343,8 @@ For example, to simulate italic typeface by slanting, apply the following transf
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_FontVariation_method_set_spacing:
 
@@ -352,14 +352,14 @@ Method Descriptions
 
 |void| **set_spacing**\ (\ spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontVariation_method_set_spacing>`
 
-Sets the spacing for ``spacing`` to ``value`` in pixels (not relative to the font size).
+Đặt khoảng cách cho ``spacing`` thành ``value`` pixel (không tính tương đối theo cỡ chữ).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

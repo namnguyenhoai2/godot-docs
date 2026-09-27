@@ -10,29 +10,29 @@
 CameraAttributes
 ================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CameraAttributesPhysical<class_CameraAttributesPhysical>`, :ref:`CameraAttributesPractical<class_CameraAttributesPractical>`
+**Được kế thừa bởi:** :ref:`CameraAttributesPhysical<class_CameraAttributesPhysical>`, :ref:`CameraAttributesPractical<class_CameraAttributesPractical>`
 
-Parent class for camera settings.
+Lớp cha cho các thiết lập camera.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Controls camera-specific attributes such as depth of field and exposure override.
+Điều khiển các thuộc tính dành riêng cho camera, chẳng hạn như độ sâu trường ảnh và ghi đè phơi sáng.
 
-When used in a :ref:`WorldEnvironment<class_WorldEnvironment>` it provides default settings for exposure, auto-exposure, and depth of field that will be used by all cameras without their own **CameraAttributes**, including the editor camera. When used in a :ref:`Camera3D<class_Camera3D>` it will override any **CameraAttributes** set in the :ref:`WorldEnvironment<class_WorldEnvironment>`. When used in :ref:`VoxelGI<class_VoxelGI>` or :ref:`LightmapGI<class_LightmapGI>`, only the exposure settings will be used.
+Khi được sử dụng trong một :ref:`WorldEnvironment<class_WorldEnvironment>`, nó cung cấp các thiết lập mặc định cho phơi sáng, tự động phơi sáng và độ sâu trường ảnh, được sử dụng bởi tất cả camera không có **CameraAttributes** riêng, bao gồm cả camera của trình chỉnh sửa. Khi được sử dụng trong một :ref:`Camera3D<class_Camera3D>`, nó sẽ ghi đè mọi **CameraAttributes** được thiết lập trong :ref:`WorldEnvironment<class_WorldEnvironment>`. Khi được sử dụng trong :ref:`VoxelGI<class_VoxelGI>` hoặc :ref:`LightmapGI<class_LightmapGI>`, chỉ các thiết lập phơi sáng được sử dụng.
 
-See also :ref:`Environment<class_Environment>` for general 3D environment settings.
+Xem thêm :ref:`Environment<class_Environment>` để biết các thiết lập môi trường 3D chung.
 
-This is a pure virtual class that is inherited by :ref:`CameraAttributesPhysical<class_CameraAttributesPhysical>` and :ref:`CameraAttributesPractical<class_CameraAttributesPractical>`.
+Đây là một lớp ảo thuần túy được kế thừa bởi :ref:`CameraAttributesPhysical<class_CameraAttributesPhysical>` và :ref:`CameraAttributesPractical<class_CameraAttributesPractical>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CameraAttributes_property_auto_exposure_enabled:
 
@@ -69,9 +69,9 @@ Property Descriptions
 - |void| **set_auto_exposure_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_auto_exposure_enabled**\ (\ )
 
-If ``true``, enables the tonemapping auto exposure mode of the scene renderer. If ``true``, the renderer will automatically determine the exposure setting to adapt to the scene's illumination and the observed light.
+Nếu ``true``, bật chế độ phơi sáng tự động tonemapping của trình kết xuất cảnh. Nếu ``true``, trình kết xuất sẽ tự động xác định thiết lập phơi sáng để thích ứng với độ chiếu sáng của cảnh và ánh sáng quan sát được.
 
-\ **Note:** Auto-exposure is only supported in the Forward+ rendering method, not Mobile or Compatibility.
+\ **Lưu ý:** Chức năng phơi sáng tự động chỉ được hỗ trợ trong phương thức kết xuất Forward+, không được hỗ trợ trong Mobile hoặc Compatibility.
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ If ``true``, enables the tonemapping auto exposure mode of the scene renderer. I
 - |void| **set_auto_exposure_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_auto_exposure_scale**\ (\ )
 
-The scale of the auto exposure effect. Affects the intensity of auto exposure.
+Mức độ của hiệu ứng phơi sáng tự động. Ảnh hưởng đến cường độ phơi sáng tự động.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ The scale of the auto exposure effect. Affects the intensity of auto exposure.
 - |void| **set_auto_exposure_speed**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_auto_exposure_speed**\ (\ )
 
-The speed of the auto exposure effect. Affects the time needed for the camera to perform auto exposure.
+Tốc độ của hiệu ứng phơi sáng tự động. Ảnh hưởng đến thời gian cần thiết để camera thực hiện phơi sáng tự động.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ The speed of the auto exposure effect. Affects the time needed for the camera to
 - |void| **set_exposure_multiplier**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_exposure_multiplier**\ (\ )
 
-Multiplier for the exposure amount. A higher value results in a brighter image.
+Hệ số nhân cho mức phơi sáng. Giá trị cao hơn sẽ tạo ra hình ảnh sáng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -139,18 +139,18 @@ Multiplier for the exposure amount. A higher value results in a brighter image.
 - |void| **set_exposure_sensitivity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_exposure_sensitivity**\ (\ )
 
-Sensitivity of camera sensors, measured in ISO. A higher sensitivity results in a brighter image.
+Độ nhạy của cảm biến máy ảnh, được đo bằng ISO. Độ nhạy cao hơn sẽ tạo ra hình ảnh sáng hơn.
 
-If :ref:`auto_exposure_enabled<class_CameraAttributes_property_auto_exposure_enabled>` is ``true``, this can be used as a method of exposure compensation, doubling the value will increase the exposure value (measured in EV100) by 1 stop.
+Nếu :ref:`auto_exposure_enabled<class_CameraAttributes_property_auto_exposure_enabled>` là ``true``, giá trị này có thể được dùng làm phương pháp bù phơi sáng; tăng gấp đôi giá trị sẽ tăng giá trị phơi sáng (đo bằng EV100) thêm 1 stop.
 
-\ **Note:** Only available when :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units<class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` is enabled.
+\ **Lưu ý:** Chỉ khả dụng khi :ref:`ProjectSettings.rendering/lights_and_shadows/use_physical_light_units <class_ProjectSettings_property_rendering/lights_and_shadows/use_physical_light_units>` được bật.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,24 +10,24 @@
 LimitAngularVelocityModifier3D
 ==============================
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Limit bone rotation angular velocity.
+Giới hạn vận tốc góc xoay của xương.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This modifier limits bone rotation angular velocity by comparing poses between previous and current frame.
+Modifier này giới hạn vận tốc góc xoay của xương bằng cách so sánh các pose giữa frame trước và frame hiện tại.
 
-You can add bone chains by specifying their root and end bones, then add the bones between them to a list. Modifier processes either that list or the bones excluding those in the list depending on the option :ref:`exclude<class_LimitAngularVelocityModifier3D_property_exclude>`.
+Bạn có thể thêm các chuỗi xương bằng cách chỉ định xương gốc và xương cuối, sau đó thêm các xương nằm giữa chúng vào một danh sách. Modifier sẽ xử lý danh sách đó hoặc các xương không nằm trong danh sách, tùy thuộc vào tùy chọn :ref:`exclude<class_LimitAngularVelocityModifier3D_property_exclude>`.
 
-\ **Note:** Most methods in this class take an ``index`` parameter. This parameter specifies which setting list entry to return if the IK has multiple entries (e.g. ``settings/<index>/root_bone_name``).
+\ **Lưu ý:** Hầu hết các phương thức trong class này nhận một tham số ``index``. Tham số này chỉ định mục nào trong danh sách cài đặt sẽ được trả về nếu IK có nhiều mục (ví dụ: ``settings/<index>/root_bone_name``).
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -79,8 +79,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_LimitAngularVelocityModifier3D_property_chain_count:
 
@@ -93,7 +93,7 @@ Property Descriptions
 - |void| **set_chain_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_chain_count**\ (\ )
 
-The number of chains.
+Số lượng chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -110,9 +110,9 @@ The number of chains.
 - |void| **set_exclude**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_exclude**\ (\ )
 
-If ``true``, the modifier processes bones not included in the bone list.
+Nếu ``true``, modifier sẽ xử lý các xương không có trong danh sách xương.
 
-If ``false``, the bones processed by the modifier are equal to the bone list.
+Nếu ``false``, các xương được modifier xử lý sẽ trùng với danh sách xương.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ If ``false``, the bones processed by the modifier are equal to the bone list.
 
 :ref:`int<class_int>` **joint_count** = ``0`` :ref:`🔗<class_LimitAngularVelocityModifier3D_property_joint_count>`
 
-The number of joints in the list which created by chains dynamically.
+Số lượng khớp trong danh sách được tạo động bởi các chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ The number of joints in the list which created by chains dynamically.
 - |void| **set_max_angular_velocity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max_angular_velocity**\ (\ )
 
-The maximum angular velocity per second.
+Vận tốc góc tối đa mỗi giây.
 
 .. rst-class:: classref-section-separator
 
@@ -149,8 +149,8 @@ The maximum angular velocity per second.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_LimitAngularVelocityModifier3D_method_clear_chains:
 
@@ -158,7 +158,7 @@ Method Descriptions
 
 |void| **clear_chains**\ (\ ) :ref:`🔗<class_LimitAngularVelocityModifier3D_method_clear_chains>`
 
-Clear all chains.
+Xóa tất cả các chuỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Clear all chains.
 
 :ref:`int<class_int>` **get_end_bone**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_LimitAngularVelocityModifier3D_method_get_end_bone>`
 
-Returns the end bone index of the bone chain.
+Trả về chỉ mục xương cuối của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Returns the end bone index of the bone chain.
 
 :ref:`String<class_String>` **get_end_bone_name**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_LimitAngularVelocityModifier3D_method_get_end_bone_name>`
 
-Returns the end bone name of the bone chain.
+Trả về tên xương cuối của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ Returns the end bone name of the bone chain.
 
 :ref:`int<class_int>` **get_root_bone**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_LimitAngularVelocityModifier3D_method_get_root_bone>`
 
-Returns the root bone index of the bone chain.
+Trả về chỉ mục xương gốc của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Returns the root bone index of the bone chain.
 
 :ref:`String<class_String>` **get_root_bone_name**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_LimitAngularVelocityModifier3D_method_get_root_bone_name>`
 
-Returns the root bone name of the bone chain.
+Trả về tên xương gốc của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ Returns the root bone name of the bone chain.
 
 |void| **reset**\ (\ ) :ref:`🔗<class_LimitAngularVelocityModifier3D_method_reset>`
 
-Sets the reference pose for angle comparison to the current pose with the influence of constraints removed. This function is automatically triggered when joints change or upon activation.
+Đặt tư thế tham chiếu để so sánh góc thành tư thế hiện tại, với ảnh hưởng của các ràng buộc đã được loại bỏ. Hàm này được tự động kích hoạt khi các khớp thay đổi hoặc khi được kích hoạt.
 
 .. rst-class:: classref-item-separator
 
@@ -230,7 +230,7 @@ Sets the reference pose for angle comparison to the current pose with the influe
 
 |void| **set_end_bone**\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ ) :ref:`🔗<class_LimitAngularVelocityModifier3D_method_set_end_bone>`
 
-Sets the end bone index of the bone chain.
+Đặt chỉ mục xương cuối của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -242,9 +242,9 @@ Sets the end bone index of the bone chain.
 
 |void| **set_end_bone_name**\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_LimitAngularVelocityModifier3D_method_set_end_bone_name>`
 
-Sets the end bone name of the bone chain.
+Đặt tên xương cuối của chuỗi xương.
 
-\ **Note:** End bone must be the root bone or a child of the root bone.
+\ **Lưu ý:** Xương cuối phải là xương gốc hoặc là xương con của xương gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -256,7 +256,7 @@ Sets the end bone name of the bone chain.
 
 |void| **set_root_bone**\ (\ index\: :ref:`int<class_int>`, bone\: :ref:`int<class_int>`\ ) :ref:`🔗<class_LimitAngularVelocityModifier3D_method_set_root_bone>`
 
-Sets the root bone index of the bone chain.
+Đặt chỉ mục xương gốc của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -268,14 +268,14 @@ Sets the root bone index of the bone chain.
 
 |void| **set_root_bone_name**\ (\ index\: :ref:`int<class_int>`, bone_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_LimitAngularVelocityModifier3D_method_set_root_bone_name>`
 
-Sets the root bone name of the bone chain.
+Đặt tên xương gốc của chuỗi xương.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,22 +10,22 @@
 CollisionPolygon3D
 ==================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node that provides a thickened polygon shape (a prism) to a :ref:`CollisionObject3D<class_CollisionObject3D>` parent.
+Một node cung cấp hình đa giác được làm dày (lăng trụ) cho một :ref:`CollisionObject3D<class_CollisionObject3D>` nút cha.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A node that provides a thickened polygon shape (a prism) to a :ref:`CollisionObject3D<class_CollisionObject3D>` parent and allows it to be edited. The polygon can be concave or convex. This can give a detection shape to an :ref:`Area3D<class_Area3D>` or turn a :ref:`PhysicsBody3D<class_PhysicsBody3D>` into a solid object.
+Một node cung cấp hình đa giác được làm dày (lăng trụ) cho một :ref:`CollisionObject3D<class_CollisionObject3D>` nút cha và cho phép chỉnh sửa nó. Đa giác có thể lõm hoặc lồi. Điều này có thể cung cấp hình dạng phát hiện cho một :ref:`Area3D<class_Area3D>` hoặc biến một :ref:`PhysicsBody3D<class_PhysicsBody3D>` thành một đối tượng rắn.
 
-\ **Warning:** A non-uniformly scaled :ref:`CollisionShape3D<class_CollisionShape3D>` will likely not behave as expected. Make sure to keep its scale the same on all axes and adjust its shape resource instead.
+\ **Cảnh báo:** Một :ref:`CollisionShape3D<class_CollisionShape3D>` được scale không đồng đều có thể sẽ không hoạt động như mong đợi. Hãy đảm bảo giữ scale của nó giống nhau trên mọi trục và thay vào đó điều chỉnh shape resource của nó.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -51,8 +51,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CollisionPolygon3D_property_debug_color:
 
@@ -65,9 +65,9 @@ Property Descriptions
 - |void| **set_debug_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_debug_color**\ (\ )
 
-The collision shape color that is displayed in the editor, or in the running project if **Debug > Visible Collision Shapes** is checked at the top of the editor.
+Màu của hình dạng va chạm được hiển thị trong editor hoặc trong project đang chạy nếu **Debug > Visible Collision Shapes** được bật ở đầu editor.
 
-\ **Note:** The default value is :ref:`ProjectSettings.debug/shapes/collision/shape_color<class_ProjectSettings_property_debug/shapes/collision/shape_color>`. The ``Color(0, 0, 0, 0)`` value documented here is a placeholder, and not the actual default debug color.
+\ **Lưu ý:** Giá trị mặc định là :ref:`ProjectSettings.debug/shapes/collision/shape_color <class_ProjectSettings_property_debug/shapes/collision/shape_color>`. Giá trị ``Color(0, 0, 0, 0)`` được ghi lại ở đây chỉ là giá trị giữ chỗ, không phải màu debug mặc định thực tế.
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ The collision shape color that is displayed in the editor, or in the running pro
 - |void| **set_enable_debug_fill**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_debug_fill**\ (\ )
 
-If ``true``, when the shape is displayed, it will show a solid fill color in addition to its wireframe.
+Nếu ``true``, khi hình dạng được hiển thị, nó sẽ hiển thị màu tô đặc bên cạnh wireframe.
 
 .. rst-class:: classref-item-separator
 
@@ -101,7 +101,7 @@ If ``true``, when the shape is displayed, it will show a solid fill color in add
 - |void| **set_depth**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth**\ (\ )
 
-Length that the resulting collision extends in either direction perpendicular to its 2D polygon.
+Độ dài mà va chạm tạo ra mở rộng theo mỗi hướng vuông góc với polygon 2D của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -118,7 +118,7 @@ Length that the resulting collision extends in either direction perpendicular to
 - |void| **set_disabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_disabled**\ (\ )
 
-If ``true``, no collision will be produced. This property should be changed with :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
+Nếu ``true``, sẽ không tạo ra va chạm nào. Nên thay đổi thuộc tính này bằng :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
 
 .. rst-class:: classref-item-separator
 
@@ -135,7 +135,7 @@ If ``true``, no collision will be produced. This property should be changed with
 - |void| **set_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_margin**\ (\ )
 
-The collision margin for the generated :ref:`Shape3D<class_Shape3D>`. See :ref:`Shape3D.margin<class_Shape3D_property_margin>` for more details.
+Margin va chạm cho :ref:`Shape3D<class_Shape3D>` được tạo ra. Xem :ref:`Shape3D.margin<class_Shape3D_property_margin>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -152,16 +152,16 @@ The collision margin for the generated :ref:`Shape3D<class_Shape3D>`. See :ref:`
 - |void| **set_polygon**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_polygon**\ (\ )
 
-Array of vertices which define the 2D polygon in the local XY plane.
+Mảng các đỉnh xác định polygon 2D trong mặt phẳng XY cục bộ.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

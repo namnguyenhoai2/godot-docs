@@ -10,24 +10,24 @@
 OpenXRDpadBindingModifier
 =========================
 
-**Inherits:** :ref:`OpenXRIPBindingModifier<class_OpenXRIPBindingModifier>` **<** :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRIPBindingModifier<class_OpenXRIPBindingModifier>` **<** :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-The DPad binding modifier converts an axis input to a dpad output.
+Bộ sửa đổi liên kết DPad chuyển đổi đầu vào trục thành đầu ra dpad.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The DPad binding modifier converts an axis input to a dpad output, emulating a DPad. New input paths for each dpad direction will be added to the interaction profile. When bound to actions the DPad emulation will be activated. You should **not** combine dpad inputs with normal inputs in the same action set for the same control, this will result in an error being returned when suggested bindings are submitted to OpenXR.
+Bộ sửa đổi liên kết DPad chuyển đổi đầu vào trục thành đầu ra dpad, mô phỏng một DPad. Các đường dẫn đầu vào mới cho từng hướng dpad sẽ được thêm vào interaction profile. Khi được liên kết với các action, tính năng mô phỏng DPad sẽ được kích hoạt. Bạn **không nên** kết hợp đầu vào dpad với đầu vào thông thường trong cùng action set cho cùng một điều khiển, vì điều này sẽ khiến lỗi được trả về khi các liên kết được đề xuất được gửi đến OpenXR.
 
-See `XR_EXT_dpad_binding <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_dpad_binding>`__ for in-depth details.
+Xem `XR_EXT_dpad_binding <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_EXT_dpad_binding>`__ để biết thông tin chi tiết.
 
-\ **Note:** If the DPad binding modifier extension is enabled, all dpad binding paths will be available in the action map. Adding the modifier to an interaction profile allows you to further customize the behavior.
+\ **Lưu ý:** Nếu extension sửa đổi liên kết DPad được bật, tất cả các đường dẫn liên kết dpad sẽ khả dụng trong action map. Việc thêm bộ sửa đổi vào interaction profile cho phép bạn tùy chỉnh thêm hành vi.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -59,21 +59,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRDpadBindingModifier_property_action_set:
 
 .. rst-class:: classref-property
 
-:ref:`OpenXRActionSet<class_OpenXRActionSet>` **action_set** :ref:`🔗<class_OpenXRDpadBindingModifier_property_action_set>`
+:ref:`OpenXRActionSet<class_OpenXRActionSet>` **action_set** :ref:`🔗 <class_OpenXRDpadBindingModifier_property_action_set>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_action_set**\ (\ value\: :ref:`OpenXRActionSet<class_OpenXRActionSet>`\ )
 - :ref:`OpenXRActionSet<class_OpenXRActionSet>` **get_action_set**\ (\ )
 
-Action set for which this dpad binding modifier is active.
+Bộ hành động mà modifier liên kết dpad này đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ Action set for which this dpad binding modifier is active.
 - |void| **set_center_region**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_center_region**\ (\ )
 
-Center region in which our center position of our dpad return ``true``.
+Vùng trung tâm trong đó vị trí trung tâm của dpad trả về ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ Center region in which our center position of our dpad return ``true``.
 - |void| **set_input_path**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_input_path**\ (\ )
 
-Input path for this dpad binding modifier.
+Đường dẫn input cho modifier liên kết dpad này.
 
 .. rst-class:: classref-item-separator
 
@@ -124,9 +124,9 @@ Input path for this dpad binding modifier.
 - |void| **set_is_sticky**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_is_sticky**\ (\ )
 
-If ``false``, when the joystick enters a new dpad zone this becomes ``true``.
+Nếu ``false``, khi cần điều khiển đi vào một vùng dpad mới, giá trị này trở thành ``true``.
 
-If ``true``, when the joystick remains in active dpad zone, this remains ``true`` even if we overlap with another zone.
+Nếu ``true``, khi cần điều khiển vẫn ở trong vùng dpad đang hoạt động, giá trị này vẫn là ``true`` ngay cả khi chồng lấn với một vùng khác.
 
 .. rst-class:: classref-item-separator
 
@@ -136,14 +136,14 @@ If ``true``, when the joystick remains in active dpad zone, this remains ``true`
 
 .. rst-class:: classref-property
 
-:ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **off_haptic** :ref:`🔗<class_OpenXRDpadBindingModifier_property_off_haptic>`
+:ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **off_haptic** :ref:`🔗 <class_OpenXRDpadBindingModifier_property_off_haptic>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_off_haptic**\ (\ value\: :ref:`OpenXRHapticBase<class_OpenXRHapticBase>`\ )
 - :ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **get_off_haptic**\ (\ )
 
-Haptic pulse to emit when the user releases the input.
+Xung haptic sẽ phát ra khi người dùng thả input.
 
 .. rst-class:: classref-item-separator
 
@@ -153,14 +153,14 @@ Haptic pulse to emit when the user releases the input.
 
 .. rst-class:: classref-property
 
-:ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **on_haptic** :ref:`🔗<class_OpenXRDpadBindingModifier_property_on_haptic>`
+:ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **on_haptic** :ref:`🔗 <class_OpenXRDpadBindingModifier_property_on_haptic>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_on_haptic**\ (\ value\: :ref:`OpenXRHapticBase<class_OpenXRHapticBase>`\ )
 - :ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **get_on_haptic**\ (\ )
 
-Haptic pulse to emit when the user presses the input.
+Xung haptic sẽ phát ra khi người dùng nhấn input.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ Haptic pulse to emit when the user presses the input.
 - |void| **set_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_threshold**\ (\ )
 
-When our input value is equal or larger than this value, our dpad in that direction becomes ``true``. It stays ``true`` until it falls under the :ref:`threshold_released<class_OpenXRDpadBindingModifier_property_threshold_released>` value.
+Khi giá trị input của chúng ta bằng hoặc lớn hơn giá trị này, dpad theo hướng đó sẽ trở thành ``true``. Nó sẽ giữ ``true`` cho đến khi giảm xuống dưới giá trị :ref:`threshold_released<class_OpenXRDpadBindingModifier_property_threshold_released>`.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ When our input value is equal or larger than this value, our dpad in that direct
 - |void| **set_threshold_released**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_threshold_released**\ (\ )
 
-When our input value falls below this, our output becomes ``false``.
+Khi giá trị input giảm xuống dưới giá trị này, output của chúng ta sẽ trở thành ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -211,14 +211,14 @@ When our input value falls below this, our output becomes ``false``.
 - |void| **set_wedge_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_wedge_angle**\ (\ )
 
-The angle of each wedge that identifies the 4 directions of the emulated dpad.
+Góc của mỗi hình quạt xác định 4 hướng của dpad được mô phỏng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

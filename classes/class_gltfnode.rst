@@ -10,31 +10,31 @@
 GLTFNode
 ========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-glTF node class.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Represents a glTF node. glTF nodes may have names, transforms, children (other glTF nodes), and more specialized properties (represented by their own classes).
-
-glTF nodes generally exist inside of :ref:`GLTFState<class_GLTFState>` which represents all data of a glTF file. Most of GLTFNode's properties are indices of other data in the glTF file. You can extend a glTF node with additional properties by using :ref:`get_additional_data()<class_GLTFNode_method_get_additional_data>` and :ref:`set_additional_data()<class_GLTFNode_method_set_additional_data>`.
+Lớp node glTF.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Biểu diễn một node glTF. Các node glTF có thể có tên, các phép biến đổi, các node con (các node glTF khác) và nhiều thuộc tính chuyên biệt hơn (được biểu diễn bằng các lớp riêng).
+
+Các node glTF thường tồn tại bên trong :ref:`GLTFState<class_GLTFState>`, đối tượng này biểu diễn toàn bộ dữ liệu của một tệp glTF. Hầu hết các thuộc tính của GLTFNode là chỉ mục của dữ liệu khác trong tệp glTF. Bạn có thể mở rộng một node glTF bằng các thuộc tính bổ sung thông qua :ref:`get_additional_data()<class_GLTFNode_method_get_additional_data>` và :ref:`set_additional_data()<class_GLTFNode_method_set_additional_data>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `glTF scene and node spec <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_004_ScenesNodes.md">`__
+- `Đặc tả scene và node glTF <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_004_ScenesNodes.md">`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -72,8 +72,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -94,8 +94,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFNode_property_camera:
 
@@ -108,7 +108,7 @@ Property Descriptions
 - |void| **set_camera**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_camera**\ (\ )
 
-If this glTF node is a camera, the index of the :ref:`GLTFCamera<class_GLTFCamera>` in the :ref:`GLTFState<class_GLTFState>` that describes the camera's properties. If ``-1``, this node is not a camera.
+Nếu node glTF này là một camera, chỉ mục của :ref:`GLTFCamera<class_GLTFCamera>` trong :ref:`GLTFState<class_GLTFState>` mô tả các thuộc tính của camera. Nếu ``-1``, node này không phải là camera.
 
 .. rst-class:: classref-item-separator
 
@@ -125,9 +125,9 @@ If this glTF node is a camera, the index of the :ref:`GLTFCamera<class_GLTFCamer
 - |void| **set_children**\ (\ value\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_children**\ (\ )
 
-The indices of the child nodes in the :ref:`GLTFState<class_GLTFState>`. If this glTF node has no children, this will be an empty array.
+Các chỉ mục của những node con trong :ref:`GLTFState<class_GLTFState>`. Nếu node glTF này không có node con, đây sẽ là một mảng rỗng.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt32Array<class_PackedInt32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ The indices of the child nodes in the :ref:`GLTFState<class_GLTFState>`. If this
 - |void| **set_height**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_height**\ (\ )
 
-How deep into the node hierarchy this node is. A root node will have a height of 0, its children will have a height of 1, and so on. If -1, the height has not been calculated.
+Độ sâu của node này trong hệ thống phân cấp node. Node gốc có độ cao là 0, các node con có độ cao là 1, v.v. Nếu là -1, độ cao chưa được tính.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ How deep into the node hierarchy this node is. A root node will have a height of
 - |void| **set_light**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_light**\ (\ )
 
-If this glTF node is a light, the index of the :ref:`GLTFLight<class_GLTFLight>` in the :ref:`GLTFState<class_GLTFState>` that describes the light's properties. If -1, this node is not a light.
+Nếu node glTF này là một light, chỉ mục của :ref:`GLTFLight<class_GLTFLight>` trong :ref:`GLTFState<class_GLTFState>` mô tả các thuộc tính của light. Nếu là -1, node này không phải là light.
 
 .. rst-class:: classref-item-separator
 
@@ -178,7 +178,7 @@ If this glTF node is a light, the index of the :ref:`GLTFLight<class_GLTFLight>`
 - |void| **set_mesh**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_mesh**\ (\ )
 
-If this glTF node is a mesh, the index of the :ref:`GLTFMesh<class_GLTFMesh>` in the :ref:`GLTFState<class_GLTFState>` that describes the mesh's properties. If -1, this node is not a mesh.
+Nếu node glTF này là một mesh, chỉ mục của :ref:`GLTFMesh<class_GLTFMesh>` trong :ref:`GLTFState<class_GLTFState>` mô tả các thuộc tính của mesh. Nếu là -1, node này không phải là mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ If this glTF node is a mesh, the index of the :ref:`GLTFMesh<class_GLTFMesh>` in
 - |void| **set_original_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_original_name**\ (\ )
 
-The original name of the node.
+Tên ban đầu của nút.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ The original name of the node.
 - |void| **set_parent**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_parent**\ (\ )
 
-The index of the parent node in the :ref:`GLTFState<class_GLTFState>`. If -1, this node is a root node.
+Chỉ mục của nút cha trong :ref:`GLTFState<class_GLTFState>`. Nếu là -1, nút này là nút gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -229,7 +229,7 @@ The index of the parent node in the :ref:`GLTFState<class_GLTFState>`. If -1, th
 - |void| **set_position**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_position**\ (\ )
 
-The position of the glTF node relative to its parent.
+Vị trí của nút glTF so với nút cha.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ The position of the glTF node relative to its parent.
 - |void| **set_rotation**\ (\ value\: :ref:`Quaternion<class_Quaternion>`\ )
 - :ref:`Quaternion<class_Quaternion>` **get_rotation**\ (\ )
 
-The rotation of the glTF node relative to its parent.
+Phép xoay của nút glTF so với nút cha.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ The rotation of the glTF node relative to its parent.
 - |void| **set_scale**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_scale**\ (\ )
 
-The scale of the glTF node relative to its parent.
+Tỷ lệ của nút glTF so với nút cha.
 
 .. rst-class:: classref-item-separator
 
@@ -280,7 +280,7 @@ The scale of the glTF node relative to its parent.
 - |void| **set_skeleton**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_skeleton**\ (\ )
 
-If this glTF node has a skeleton, the index of the :ref:`GLTFSkeleton<class_GLTFSkeleton>` in the :ref:`GLTFState<class_GLTFState>` that describes the skeleton's properties. If -1, this node does not have a skeleton.
+Nếu nút glTF này có skeleton, chỉ mục của :ref:`GLTFSkeleton<class_GLTFSkeleton>` trong :ref:`GLTFState<class_GLTFState>` mô tả các thuộc tính của skeleton. Nếu là -1, nút này không có skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ If this glTF node has a skeleton, the index of the :ref:`GLTFSkeleton<class_GLTF
 - |void| **set_skin**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_skin**\ (\ )
 
-If this glTF node has a skin, the index of the :ref:`GLTFSkin<class_GLTFSkin>` in the :ref:`GLTFState<class_GLTFState>` that describes the skin's properties. If -1, this node does not have a skin.
+Nếu nút glTF này có skin, chỉ mục của :ref:`GLTFSkin<class_GLTFSkin>` trong :ref:`GLTFState<class_GLTFState>` mô tả các thuộc tính của skin. Nếu là -1, nút này không có skin.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ If this glTF node has a skin, the index of the :ref:`GLTFSkin<class_GLTFSkin>` i
 - |void| **set_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_visible**\ (\ )
 
-If ``true``, the GLTF node is visible. If ``false``, the GLTF node is not visible. This is converted to the :ref:`Node3D.visible<class_Node3D_property_visible>` property in the Godot scene, and is exported to ``KHR_node_visibility`` when ``false``.
+Nếu ``true``, node GLTF sẽ hiển thị. Nếu ``false``, node GLTF sẽ không hiển thị. Giá trị này được chuyển đổi thành thuộc tính :ref:`Node3D.visible<class_Node3D_property_visible>` trong scene Godot và được xuất sang ``KHR_node_visibility`` khi ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +331,7 @@ If ``true``, the GLTF node is visible. If ``false``, the GLTF node is not visibl
 - |void| **set_xform**\ (\ value\: :ref:`Transform3D<class_Transform3D>`\ )
 - :ref:`Transform3D<class_Transform3D>` **get_xform**\ (\ )
 
-The transform of the glTF node relative to its parent. This property is usually unused since the position, rotation, and scale properties are preferred.
+Biến đổi của node glTF so với node cha. Thuộc tính này thường không được sử dụng vì các thuộc tính vị trí, xoay và tỷ lệ được ưu tiên hơn.
 
 .. rst-class:: classref-section-separator
 
@@ -339,8 +339,8 @@ The transform of the glTF node relative to its parent. This property is usually 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFNode_method_append_child_index:
 
@@ -348,7 +348,7 @@ Method Descriptions
 
 |void| **append_child_index**\ (\ child_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GLTFNode_method_append_child_index>`
 
-Appends the given child node index to the :ref:`children<class_GLTFNode_property_children>` array.
+Thêm chỉ mục node con đã cho vào mảng :ref:`children<class_GLTFNode_property_children>`.
 
 .. rst-class:: classref-item-separator
 
@@ -360,9 +360,9 @@ Appends the given child node index to the :ref:`children<class_GLTFNode_property
 
 :ref:`Variant<class_Variant>` **get_additional_data**\ (\ extension_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GLTFNode_method_get_additional_data>`
 
-Gets additional arbitrary data in this **GLTFNode** instance. This can be used to keep per-node state data in :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes, which is important because they are stateless.
+Lấy dữ liệu tùy ý bổ sung trong thực thể **GLTFNode** này. Có thể sử dụng dữ liệu này để lưu trạng thái theo từng node trong các lớp :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>`, điều này rất quan trọng vì chúng không có trạng thái.
 
-The argument should be the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` name (does not have to match the extension name in the glTF file), and the return value can be anything you set. If nothing was set, the return value is ``null``.
+Đối số phải là tên :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` (không nhất thiết phải khớp với tên phần mở rộng trong tệp glTF), còn giá trị trả về có thể là bất kỳ giá trị nào bạn đặt. Nếu không đặt gì, giá trị trả về là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -374,9 +374,9 @@ The argument should be the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtensi
 
 :ref:`NodePath<class_NodePath>` **get_scene_node_path**\ (\ gltf_state\: :ref:`GLTFState<class_GLTFState>`, handle_skeletons\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_GLTFNode_method_get_scene_node_path>`
 
-Returns the :ref:`NodePath<class_NodePath>` that this GLTF node will have in the Godot scene tree after being imported. This is useful when importing glTF object model pointers with :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>`, for handling extensions such as ``KHR_animation_pointer`` or ``KHR_interactivity``.
+Trả về :ref:`NodePath<class_NodePath>` mà node GLTF này sẽ có trong cây scene Godot sau khi được import. Điều này hữu ích khi import các con trỏ mô hình đối tượng glTF bằng :ref:`GLTFObjectModelProperty<class_GLTFObjectModelProperty>`, để xử lý các phần mở rộng như ``KHR_animation_pointer`` hoặc ``KHR_interactivity``.
 
-If ``handle_skeletons`` is ``true``, paths to skeleton bone glTF nodes will be resolved properly. For example, a path that would be ``^"A/B/C/Bone1/Bone2/Bone3"`` if ``false`` will become ``^"A/B/C/Skeleton3D:Bone3"``.
+Nếu ``handle_skeletons`` là ``true``, các đường dẫn đến những glTF node của xương skeleton sẽ được phân giải chính xác. Ví dụ, một đường dẫn sẽ là ``^"A/B/C/Bone1/Bone2/Bone3"`` nếu ``false``, sẽ trở thành ``^"A/B/C/Skeleton3D:Bone3"``.
 
 .. rst-class:: classref-item-separator
 
@@ -388,16 +388,16 @@ If ``handle_skeletons`` is ``true``, paths to skeleton bone glTF nodes will be r
 
 |void| **set_additional_data**\ (\ extension_name\: :ref:`StringName<class_StringName>`, additional_data\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GLTFNode_method_set_additional_data>`
 
-Sets additional arbitrary data in this **GLTFNode** instance. This can be used to keep per-node state data in :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes, which is important because they are stateless.
+Đặt dữ liệu bổ sung tùy ý trong instance **GLTFNode** này. Bạn có thể dùng dữ liệu này để lưu trạng thái riêng cho từng node trong các class :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>`, điều này rất quan trọng vì chúng không lưu trạng thái.
 
-The first argument should be the :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` name (does not have to match the extension name in the glTF file), and the second argument can be anything you want.
+Đối số đầu tiên phải là tên :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` (không nhất thiết phải khớp với tên extension trong tệp glTF), còn đối số thứ hai có thể là bất kỳ giá trị nào bạn muốn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

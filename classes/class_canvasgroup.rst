@@ -10,18 +10,18 @@
 CanvasGroup
 ===========
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Merges several 2D nodes into a single draw operation.
+Hợp nhất nhiều node 2D thành một thao tác vẽ duy nhất.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Child :ref:`CanvasItem<class_CanvasItem>` nodes of a **CanvasGroup** are drawn as a single object. It allows to e.g. draw overlapping translucent 2D nodes without causing the overlapping sections to be more opaque than intended (set the :ref:`CanvasItem.self_modulate<class_CanvasItem_property_self_modulate>` property on the **CanvasGroup** to achieve this effect).
+Các node :ref:`CanvasItem<class_CanvasItem>` con của một **CanvasGroup** được vẽ như một đối tượng duy nhất. Điều này cho phép, chẳng hạn, vẽ các node 2D trong mờ chồng lấp mà không khiến các phần chồng lấp trở nên đục hơn dự kiến (đặt thuộc tính :ref:`CanvasItem.self_modulate<class_CanvasItem_property_self_modulate>` trên **CanvasGroup** để đạt được hiệu ứng này).
 
-\ **Note:** The **CanvasGroup** uses a custom shader to read from the backbuffer to draw its children. Assigning a :ref:`Material<class_Material>` to the **CanvasGroup** overrides the built-in shader. To duplicate the behavior of the built-in shader in a custom :ref:`Shader<class_Shader>`, use the following:
+\ **Lưu ý:** **CanvasGroup** sử dụng shader tùy chỉnh để đọc từ backbuffer nhằm vẽ các node con. Việc gán :ref:`Material<class_Material>` cho **CanvasGroup** sẽ ghi đè shader tích hợp sẵn. Để sao chép hành vi của shader tích hợp sẵn trong :ref:`Shader<class_Shader>` tùy chỉnh, hãy sử dụng đoạn sau:
 
 ::
 
@@ -40,11 +40,11 @@ Child :ref:`CanvasItem<class_CanvasItem>` nodes of a **CanvasGroup** are drawn a
         COLOR *= c;
     }
 
-\ **Note:** Since **CanvasGroup** and :ref:`CanvasItem.clip_children<class_CanvasItem_property_clip_children>` both utilize the backbuffer, children of a **CanvasGroup** who have their :ref:`CanvasItem.clip_children<class_CanvasItem_property_clip_children>` set to anything other than :ref:`CanvasItem.CLIP_CHILDREN_DISABLED<class_CanvasItem_constant_CLIP_CHILDREN_DISABLED>` will not function correctly.
+\ **Lưu ý:** Vì **CanvasGroup** và :ref:`CanvasItem.clip_children<class_CanvasItem_property_clip_children>` đều sử dụng backbuffer, các node con của **CanvasGroup** có :ref:`CanvasItem.clip_children<class_CanvasItem_property_clip_children>` được đặt thành giá trị khác :ref:`CanvasItem.CLIP_CHILDREN_DISABLED<class_CanvasItem_constant_CLIP_CHILDREN_DISABLED>` sẽ không hoạt động chính xác.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -64,8 +64,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CanvasGroup_property_clear_margin:
 
@@ -78,7 +78,7 @@ Property Descriptions
 - |void| **set_clear_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_clear_margin**\ (\ )
 
-Sets the size of the margin used to expand the clearing rect of this **CanvasGroup**. This expands the area of the backbuffer that will be used by the **CanvasGroup**. A smaller margin will reduce the area of the backbuffer used which can increase performance, however if :ref:`use_mipmaps<class_CanvasGroup_property_use_mipmaps>` is enabled, a small margin may result in mipmap errors at the edge of the **CanvasGroup**. Accordingly, this should be left as small as possible, but should be increased if artifacts appear along the edges of the canvas group.
+Thiết lập kích thước của lề được dùng để mở rộng clearing rect của **CanvasGroup**. Thao tác này mở rộng vùng backbuffer sẽ được **CanvasGroup** sử dụng. Lề nhỏ hơn sẽ làm giảm vùng backbuffer được sử dụng, từ đó có thể cải thiện hiệu năng; tuy nhiên, nếu bật :ref:`use_mipmaps<class_CanvasGroup_property_use_mipmaps>`, lề quá nhỏ có thể gây ra lỗi mipmap ở cạnh của **CanvasGroup**. Vì vậy, nên để giá trị này nhỏ nhất có thể, nhưng cần tăng lên nếu xuất hiện các hiện tượng bất thường dọc theo các cạnh của canvas group.
 
 .. rst-class:: classref-item-separator
 
@@ -95,7 +95,7 @@ Sets the size of the margin used to expand the clearing rect of this **CanvasGro
 - |void| **set_fit_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fit_margin**\ (\ )
 
-Sets the size of a margin used to expand the drawable rect of this **CanvasGroup**. The size of the **CanvasGroup** is determined by fitting a rect around its children then expanding that rect by :ref:`fit_margin<class_CanvasGroup_property_fit_margin>`. This increases both the backbuffer area used and the area covered by the **CanvasGroup** both of which can reduce performance. This should be kept as small as possible and should only be expanded when an increased size is needed (e.g. for custom shader effects).
+Thiết lập kích thước của lề được dùng để mở rộng drawable rect của **CanvasGroup**. Kích thước của **CanvasGroup** được xác định bằng cách đặt một rect bao quanh các phần tử con, sau đó mở rộng rect đó thêm :ref:`fit_margin<class_CanvasGroup_property_fit_margin>`. Điều này làm tăng cả diện tích backbuffer được sử dụng và diện tích được **CanvasGroup** bao phủ, cả hai đều có thể làm giảm hiệu năng. Nên giữ giá trị này nhỏ nhất có thể và chỉ mở rộng khi cần kích thước lớn hơn (ví dụ: cho các hiệu ứng shader tùy chỉnh).
 
 .. rst-class:: classref-item-separator
 
@@ -112,14 +112,14 @@ Sets the size of a margin used to expand the drawable rect of this **CanvasGroup
 - |void| **set_use_mipmaps**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_mipmaps**\ (\ )
 
-If ``true``, calculates mipmaps for the backbuffer before drawing the **CanvasGroup** so that mipmaps can be used in a custom :ref:`ShaderMaterial<class_ShaderMaterial>` attached to the **CanvasGroup**. Generating mipmaps has a performance cost so this should not be enabled unless required.
+Nếu ``true``, tính toán mipmap cho backbuffer trước khi vẽ **CanvasGroup** để có thể sử dụng mipmap trong :ref:`ShaderMaterial<class_ShaderMaterial>` tùy chỉnh được gắn vào **CanvasGroup**. Việc tạo mipmap ảnh hưởng đến hiệu năng, vì vậy không nên bật tùy chọn này trừ khi cần thiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

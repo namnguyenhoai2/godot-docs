@@ -10,58 +10,58 @@
 AnimationNodeBlendSpace1D
 =========================
 
-**Inherits:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A set of :ref:`AnimationRootNode<class_AnimationRootNode>`\ s placed on a virtual axis, crossfading between the two adjacent ones. Used by :ref:`AnimationTree<class_AnimationTree>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A resource used by :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
-
-\ **AnimationNodeBlendSpace1D** represents a virtual axis on which any type of :ref:`AnimationRootNode<class_AnimationRootNode>`\ s can be added using :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`. Outputs the linear blend of the two :ref:`AnimationRootNode<class_AnimationRootNode>`\ s adjacent to the current value.
-
-You can set the extents of the axis with :ref:`min_space<class_AnimationNodeBlendSpace1D_property_min_space>` and :ref:`max_space<class_AnimationNodeBlendSpace1D_property_max_space>`.
+Một tập hợp các :ref:`AnimationRootNode<class_AnimationRootNode>`\  được đặt trên một trục ảo, chuyển đổi mượt giữa hai node liền kề. Được :ref:`AnimationTree<class_AnimationTree>` sử dụng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một resource được :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>` sử dụng.
+
+\ **AnimationNodeBlendSpace1D** biểu diễn một trục ảo, trên đó có thể thêm bất kỳ loại :ref:`AnimationRootNode<class_AnimationRootNode>`\  nào bằng :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`. Xuất ra phép blend tuyến tính của hai :ref:`AnimationRootNode<class_AnimationRootNode>`\  liền kề với giá trị hiện tại.
+
+Bạn có thể thiết lập phạm vi của trục bằng :ref:`min_space<class_AnimationNodeBlendSpace1D_property_min_space>` và :ref:`max_space<class_AnimationNodeBlendSpace1D_property_max_space>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>` | :ref:`blend_mode<class_AnimationNodeBlendSpace1D_property_blend_mode>`       | ``0``       |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                                  | :ref:`cyclic_length<class_AnimationNodeBlendSpace1D_property_cyclic_length>` | ``0.0``     |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                                  | :ref:`max_space<class_AnimationNodeBlendSpace1D_property_max_space>`         | ``1.0``     |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                                  | :ref:`min_space<class_AnimationNodeBlendSpace1D_property_min_space>`         | ``-1.0``    |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                                  | :ref:`snap<class_AnimationNodeBlendSpace1D_property_snap>`                   | ``0.1``     |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`sync<class_AnimationNodeBlendSpace1D_property_sync>`                   |             |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>`   | :ref:`sync_mode<class_AnimationNodeBlendSpace1D_property_sync_mode>`         | ``0``       |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
-   | :ref:`String<class_String>`                                | :ref:`value_label<class_AnimationNodeBlendSpace1D_property_value_label>`     | ``"value"`` |
-   +------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`BlendMode <enum_AnimationNodeBlendSpace1D_BlendMode>` | :ref:`blend_mode<class_AnimationNodeBlendSpace1D_property_blend_mode>`       | ``0``       |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                                   | :ref:`cyclic_length<class_AnimationNodeBlendSpace1D_property_cyclic_length>` | ``0.0``     |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                                   | :ref:`max_space<class_AnimationNodeBlendSpace1D_property_max_space>`         | ``1.0``     |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                                   | :ref:`min_space<class_AnimationNodeBlendSpace1D_property_min_space>`         | ``-1.0``    |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                                   | :ref:`snap<class_AnimationNodeBlendSpace1D_property_snap>`                   | ``0.1``     |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`sync<class_AnimationNodeBlendSpace1D_property_sync>`                   |             |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`SyncMode <enum_AnimationNodeBlendSpace1D_SyncMode>`   | :ref:`sync_mode<class_AnimationNodeBlendSpace1D_property_sync_mode>`         | ``0``       |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
+   | :ref:`String<class_String>`                                 | :ref:`value_label<class_AnimationNodeBlendSpace1D_property_value_label>`     | ``"value"`` |
+   +-------------------------------------------------------------+------------------------------------------------------------------------------+-------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -96,14 +96,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AnimationNodeBlendSpace1D_BlendMode:
 
 .. rst-class:: classref-enumeration
 
-enum **BlendMode**: :ref:`🔗<enum_AnimationNodeBlendSpace1D_BlendMode>`
+enum **BlendMode**: :ref:`🔗 <enum_AnimationNodeBlendSpace1D_BlendMode>`
 
 .. _class_AnimationNodeBlendSpace1D_constant_BLEND_MODE_INTERPOLATED:
 
@@ -111,7 +111,7 @@ enum **BlendMode**: :ref:`🔗<enum_AnimationNodeBlendSpace1D_BlendMode>`
 
 :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>` **BLEND_MODE_INTERPOLATED** = ``0``
 
-The interpolation between animations is linear.
+Phép nội suy giữa các animation là tuyến tính.
 
 .. _class_AnimationNodeBlendSpace1D_constant_BLEND_MODE_DISCRETE:
 
@@ -119,7 +119,7 @@ The interpolation between animations is linear.
 
 :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>` **BLEND_MODE_DISCRETE** = ``1``
 
-The blend space plays the animation of the animation node which blending position is closest to. Useful for frame-by-frame 2D animations.
+Blend space phát animation của animation node có vị trí blending gần nhất. Hữu ích cho các animation 2D theo từng khung hình.
 
 .. _class_AnimationNodeBlendSpace1D_constant_BLEND_MODE_DISCRETE_CARRY:
 
@@ -127,7 +127,7 @@ The blend space plays the animation of the animation node which blending positio
 
 :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>` **BLEND_MODE_DISCRETE_CARRY** = ``2``
 
-Similar to :ref:`BLEND_MODE_DISCRETE<class_AnimationNodeBlendSpace1D_constant_BLEND_MODE_DISCRETE>`, but starts the new animation at the last animation's playback position.
+Tương tự như :ref:`BLEND_MODE_DISCRETE<class_AnimationNodeBlendSpace1D_constant_BLEND_MODE_DISCRETE>`, nhưng bắt đầu animation mới tại vị trí phát của animation trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Similar to :ref:`BLEND_MODE_DISCRETE<class_AnimationNodeBlendSpace1D_constant_BL
 
 .. rst-class:: classref-enumeration
 
-enum **SyncMode**: :ref:`🔗<enum_AnimationNodeBlendSpace1D_SyncMode>`
+enum **SyncMode**: :ref:`🔗 <enum_AnimationNodeBlendSpace1D_SyncMode>`
 
 .. _class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_NONE:
 
@@ -145,7 +145,7 @@ enum **SyncMode**: :ref:`🔗<enum_AnimationNodeBlendSpace1D_SyncMode>`
 
 :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>` **SYNC_MODE_NONE** = ``0``
 
-Inactive animations are frozen and do not advance.
+Các animation không hoạt động bị đóng băng và không tiến triển.
 
 .. _class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_INDEPENDENT:
 
@@ -153,7 +153,7 @@ Inactive animations are frozen and do not advance.
 
 :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>` **SYNC_MODE_INDEPENDENT** = ``1``
 
-Inactive animations advance with a weight of ``0``. This is equivalent to the previous ``sync = true`` behavior.
+Các animation không hoạt động tiến triển với trọng số ``0``. Điều này tương đương với hành vi ``sync = true`` trước đây.
 
 .. _class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_CYCLIC_MUTABLE:
 
@@ -161,9 +161,9 @@ Inactive animations advance with a weight of ``0``. This is equivalent to the pr
 
 :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>` **SYNC_MODE_CYCLIC_MUTABLE** = ``2``
 
-All animations are time-scaled so they stay in sync, with the cycle length dynamically computed from active blend weights. This is self-normalizing: a solo animation plays at normal speed.
+Tất cả animation đều được điều chỉnh theo thời gian để duy trì đồng bộ, với độ dài chu kỳ được tính toán động từ các trọng số blend đang hoạt động. Cơ chế này tự chuẩn hóa: một animation đơn lẻ sẽ phát ở tốc độ bình thường.
 
-\ **Note:** If you apply :ref:`AnimationNodeTimeSeek<class_AnimationNodeTimeSeek>` to the result when handling animations of different lengths, synchronization will be broken. In such cases, it is recommended to use :ref:`AnimationNodeAnimation.use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` to align the animation lengths.
+\ **Lưu ý:** Nếu bạn áp dụng :ref:`AnimationNodeTimeSeek<class_AnimationNodeTimeSeek>` cho kết quả khi xử lý các animation có độ dài khác nhau, việc đồng bộ sẽ bị phá vỡ. Trong những trường hợp này, bạn nên sử dụng :ref:`AnimationNodeAnimation.use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` để căn chỉnh độ dài các animation.
 
 .. _class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_CYCLIC_CONSTANT:
 
@@ -171,9 +171,9 @@ All animations are time-scaled so they stay in sync, with the cycle length dynam
 
 :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>` **SYNC_MODE_CYCLIC_CONSTANT** = ``3``
 
-All animations are time-scaled so they complete one cycle in :ref:`cyclic_length<class_AnimationNodeBlendSpace1D_property_cyclic_length>` seconds, keeping them in sync regardless of their individual lengths.
+Tất cả animation đều được điều chỉnh theo thời gian để hoàn thành một chu kỳ trong :ref:`cyclic_length<class_AnimationNodeBlendSpace1D_property_cyclic_length>` giây, giúp chúng duy trì đồng bộ bất kể độ dài riêng của từng animation.
 
-\ **Note:** If you apply :ref:`AnimationNodeTimeSeek<class_AnimationNodeTimeSeek>` to the result when handling animations of different lengths, synchronization will be broken. In such cases, it is recommended to use :ref:`AnimationNodeAnimation.use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` to align the animation lengths.
+\ **Lưu ý:** Nếu bạn áp dụng :ref:`AnimationNodeTimeSeek<class_AnimationNodeTimeSeek>` cho kết quả khi xử lý các animation có độ dài khác nhau, việc đồng bộ sẽ bị phá vỡ. Trong những trường hợp này, bạn nên sử dụng :ref:`AnimationNodeAnimation.use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` để căn chỉnh độ dài các animation.
 
 .. rst-class:: classref-section-separator
 
@@ -181,8 +181,8 @@ All animations are time-scaled so they complete one cycle in :ref:`cyclic_length
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationNodeBlendSpace1D_property_blend_mode:
 
@@ -195,7 +195,7 @@ Property Descriptions
 - |void| **set_blend_mode**\ (\ value\: :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>`\ )
 - :ref:`BlendMode<enum_AnimationNodeBlendSpace1D_BlendMode>` **get_blend_mode**\ (\ )
 
-Controls the interpolation between animations.
+Điều khiển quá trình nội suy giữa các animation.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ Controls the interpolation between animations.
 - |void| **set_cyclic_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_cyclic_length**\ (\ )
 
-The cycle length in seconds used by :ref:`SYNC_MODE_CYCLIC_CONSTANT<class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_CYCLIC_CONSTANT>`. All animations are time-scaled so they complete one full cycle in this duration. Must be greater than ``0`` for cyclic sync to take effect.
+Độ dài chu kỳ tính bằng giây được :ref:`SYNC_MODE_CYCLIC_CONSTANT<class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_CYCLIC_CONSTANT>` sử dụng. Tất cả animation được điều chỉnh theo thời gian để hoàn thành một chu kỳ đầy đủ trong khoảng thời gian này. Phải lớn hơn ``0`` để đồng bộ theo chu kỳ có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -229,7 +229,7 @@ The cycle length in seconds used by :ref:`SYNC_MODE_CYCLIC_CONSTANT<class_Animat
 - |void| **set_max_space**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max_space**\ (\ )
 
-The blend space's axis's upper limit for the points' position. See :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
+Giới hạn trên của trục blend space đối với vị trí của các điểm. Xem :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ The blend space's axis's upper limit for the points' position. See :ref:`add_ble
 - |void| **set_min_space**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_min_space**\ (\ )
 
-The blend space's axis's lower limit for the points' position. See :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
+Giới hạn dưới của trục blend space đối với vị trí của các điểm. Xem :ref:`add_blend_point()<class_AnimationNodeBlendSpace1D_method_add_blend_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ The blend space's axis's lower limit for the points' position. See :ref:`add_ble
 - |void| **set_snap**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_snap**\ (\ )
 
-Position increment to snap to when moving a point on the axis.
+Mức tăng vị trí cần snap tới khi di chuyển một điểm trên trục.
 
 .. rst-class:: classref-item-separator
 
@@ -273,16 +273,16 @@ Position increment to snap to when moving a point on the axis.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **sync** :ref:`🔗<class_AnimationNodeBlendSpace1D_property_sync>`
+:ref:`bool<class_bool>` **đồng bộ** :ref:`🔗 <class_AnimationNodeBlendSpace1D_property_sync>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_use_sync**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_sync**\ (\ )
 
-**Deprecated:** Use :ref:`sync_mode<class_AnimationNodeBlendSpace1D_property_sync_mode>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`sync_mode<class_AnimationNodeBlendSpace1D_property_sync_mode>`.
 
-If ``true``, sync mode is enabled (equivalent to :ref:`SYNC_MODE_INDEPENDENT<class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_INDEPENDENT>`). This property is kept for backward compatibility.
+Nếu ``true``, chế độ đồng bộ được bật (tương đương với :ref:`SYNC_MODE_INDEPENDENT<class_AnimationNodeBlendSpace1D_constant_SYNC_MODE_INDEPENDENT>`). Thuộc tính này được giữ lại để đảm bảo khả năng tương thích ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ If ``true``, sync mode is enabled (equivalent to :ref:`SYNC_MODE_INDEPENDENT<cla
 - |void| **set_sync_mode**\ (\ value\: :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>`\ )
 - :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>` **get_sync_mode**\ (\ )
 
-Controls how animations are synced when blended. See :ref:`SyncMode<enum_AnimationNodeBlendSpace1D_SyncMode>` for available options.
+Kiểm soát cách đồng bộ các animation khi được blend. Xem :ref:`SyncMode <enum_AnimationNodeBlendSpace1D_SyncMode>` để biết các tùy chọn hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -316,7 +316,7 @@ Controls how animations are synced when blended. See :ref:`SyncMode<enum_Animati
 - |void| **set_value_label**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_value_label**\ (\ )
 
-Label of the virtual axis of the blend space.
+Nhãn của trục ảo trong blend space.
 
 .. rst-class:: classref-section-separator
 
@@ -324,8 +324,8 @@ Label of the virtual axis of the blend space.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationNodeBlendSpace1D_method_add_blend_point:
 
@@ -333,9 +333,9 @@ Method Descriptions
 
 |void| **add_blend_point**\ (\ node\: :ref:`AnimationRootNode<class_AnimationRootNode>`, pos\: :ref:`float<class_float>`, at_index\: :ref:`int<class_int>` = -1, name\: :ref:`StringName<class_StringName>` = &""\ ) :ref:`🔗<class_AnimationNodeBlendSpace1D_method_add_blend_point>`
 
-Adds a new point with ``name`` that represents a ``node`` on the virtual axis at a given position set by ``pos``. You can insert it at a specific index using the ``at_index`` argument. If you use the default value for ``at_index``, the point is inserted at the end of the blend points array.
+Thêm một điểm mới với ``name``, biểu diễn một ``node`` trên trục ảo tại vị trí được thiết lập bởi ``pos``. Bạn có thể chèn điểm này tại một index cụ thể bằng đối số ``at_index``. Nếu sử dụng giá trị mặc định cho ``at_index``, điểm sẽ được chèn vào cuối mảng các điểm blend.
 
-\ **Note:** If no name is provided, safe index is used as reference. In the future, empty names will be deprecated, so explicitly passing a name is recommended.
+\ **Lưu ý:** Nếu không cung cấp tên, safe index sẽ được dùng làm tham chiếu. Trong tương lai, tên rỗng sẽ không còn được hỗ trợ, vì vậy bạn nên truyền tên một cách rõ ràng.
 
 .. rst-class:: classref-item-separator
 
@@ -347,7 +347,7 @@ Adds a new point with ``name`` that represents a ``node`` on the virtual axis at
 
 :ref:`int<class_int>` **find_blend_point_by_name**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationNodeBlendSpace1D_method_find_blend_point_by_name>`
 
-Returns the index of the blend point with the given ``name``. Returns ``-1`` if no blend point with that name is found.
+Trả về index của điểm blend có ``name`` đã cho. Trả về ``-1`` nếu không tìm thấy điểm blend nào có tên đó.
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ Returns the index of the blend point with the given ``name``. Returns ``-1`` if 
 
 :ref:`int<class_int>` **get_blend_point_count**\ (\ ) |const| :ref:`🔗<class_AnimationNodeBlendSpace1D_method_get_blend_point_count>`
 
-Returns the number of points on the blend axis.
+Trả về số lượng điểm trên trục blend.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ Returns the number of points on the blend axis.
 
 :ref:`StringName<class_StringName>` **get_blend_point_name**\ (\ point\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeBlendSpace1D_method_get_blend_point_name>`
 
-Returns the name of the blend point at index ``point``.
+Trả về tên của điểm blend tại chỉ mục ``point``.
 
 .. rst-class:: classref-item-separator
 
@@ -383,7 +383,7 @@ Returns the name of the blend point at index ``point``.
 
 :ref:`AnimationRootNode<class_AnimationRootNode>` **get_blend_point_node**\ (\ point\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeBlendSpace1D_method_get_blend_point_node>`
 
-Returns the :ref:`AnimationNode<class_AnimationNode>` referenced by the point at index ``point``.
+Trả về :ref:`AnimationNode<class_AnimationNode>` được tham chiếu bởi điểm tại chỉ mục ``point``.
 
 .. rst-class:: classref-item-separator
 
@@ -395,7 +395,7 @@ Returns the :ref:`AnimationNode<class_AnimationNode>` referenced by the point at
 
 :ref:`float<class_float>` **get_blend_point_position**\ (\ point\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeBlendSpace1D_method_get_blend_point_position>`
 
-Returns the position of the point at index ``point``.
+Trả về vị trí của điểm tại chỉ mục ``point``.
 
 .. rst-class:: classref-item-separator
 
@@ -407,7 +407,7 @@ Returns the position of the point at index ``point``.
 
 |void| **remove_blend_point**\ (\ point\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AnimationNodeBlendSpace1D_method_remove_blend_point>`
 
-Removes the point at index ``point`` from the blend axis.
+Xóa điểm tại chỉ mục ``point`` khỏi trục blend.
 
 .. rst-class:: classref-item-separator
 
@@ -419,7 +419,7 @@ Removes the point at index ``point`` from the blend axis.
 
 |void| **reorder_blend_point**\ (\ from_index\: :ref:`int<class_int>`, to_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AnimationNodeBlendSpace1D_method_reorder_blend_point>`
 
-Swaps the blend points at indices ``from_index`` and ``to_index``, exchanging their positions and properties.
+Hoán đổi các điểm blend tại các chỉ mục ``from_index`` và ``to_index``, hoán đổi vị trí và thuộc tính của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -431,7 +431,7 @@ Swaps the blend points at indices ``from_index`` and ``to_index``, exchanging th
 
 |void| **set_blend_point_name**\ (\ point\: :ref:`int<class_int>`, name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeBlendSpace1D_method_set_blend_point_name>`
 
-Sets the name of the blend point at index ``point``. If the name conflicts with an existing point, a unique name will be generated automatically.
+Đặt tên cho điểm blend tại chỉ mục ``point``. Nếu tên này trùng với một điểm hiện có, một tên duy nhất sẽ được tự động tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +443,7 @@ Sets the name of the blend point at index ``point``. If the name conflicts with 
 
 |void| **set_blend_point_node**\ (\ point\: :ref:`int<class_int>`, node\: :ref:`AnimationRootNode<class_AnimationRootNode>`\ ) :ref:`🔗<class_AnimationNodeBlendSpace1D_method_set_blend_point_node>`
 
-Changes the :ref:`AnimationNode<class_AnimationNode>` referenced by the point at index ``point``.
+Thay đổi :ref:`AnimationNode<class_AnimationNode>` được điểm tại chỉ mục ``point`` tham chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -455,14 +455,14 @@ Changes the :ref:`AnimationNode<class_AnimationNode>` referenced by the point at
 
 |void| **set_blend_point_position**\ (\ point\: :ref:`int<class_int>`, pos\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AnimationNodeBlendSpace1D_method_set_blend_point_position>`
 
-Updates the position of the point at index ``point`` on the blend axis.
+Cập nhật vị trí của điểm tại chỉ mục ``point`` trên trục blend.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,39 +10,39 @@
 CompressedTexture2DArray
 ========================
 
-**Inherits:** :ref:`CompressedTextureLayered<class_CompressedTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CompressedTextureLayered<class_CompressedTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Array of 2-dimensional textures, optionally compressed.
+Mảng các texture 2 chiều, có thể được nén.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A texture array that is loaded from a ``.ctexarray`` file. This file format is internal to Godot; it is created by importing other image formats with the import system. **CompressedTexture2DArray** can use one of 4 compression methods:
+Một mảng texture được tải từ tệp ``.ctexarray``. Định dạng tệp này là định dạng nội bộ của Godot; tệp được tạo bằng cách import các định dạng hình ảnh khác với hệ thống import. **CompressedTexture2DArray** có thể sử dụng một trong 4 phương pháp nén:
 
-- Lossless (WebP or PNG, uncompressed on the GPU)
+- Không mất dữ liệu (WebP hoặc PNG, không nén trên GPU)
 
-- Lossy (WebP, uncompressed on the GPU)
+- Có mất dữ liệu (WebP, không nén trên GPU)
 
-- VRAM Compressed (compressed on the GPU)
+- Nén VRAM (nén trên GPU)
 
-- VRAM Uncompressed (uncompressed on the GPU)
+- VRAM Uncompressed (không nén trên GPU)
 
-- Basis Universal (compressed on the GPU. Lower file sizes than VRAM Compressed, but slower to compress and lower quality than VRAM Compressed)
+- Basis Universal (nén trên GPU. Kích thước tệp nhỏ hơn VRAM Compressed, nhưng tốc độ nén chậm hơn và chất lượng thấp hơn VRAM Compressed)
 
-Only **VRAM Compressed** actually reduces the memory usage on the GPU. The **Lossless** and **Lossy** compression methods will reduce the required storage on disk, but they will not reduce memory usage on the GPU as the texture is sent to the GPU uncompressed.
+Chỉ **VRAM Compressed** mới thực sự giảm mức sử dụng bộ nhớ trên GPU. Các phương thức nén **Lossless** và **Lossy** sẽ giảm dung lượng lưu trữ cần thiết trên ổ đĩa, nhưng không giảm mức sử dụng bộ nhớ trên GPU vì texture được gửi đến GPU ở dạng không nén.
 
-Using **VRAM Compressed** also improves loading times, as VRAM-compressed textures are faster to load compared to textures using lossless or lossy compression. VRAM compression can exhibit noticeable artifacts and is intended to be used for 3D rendering, not 2D.
+Việc sử dụng **VRAM Compressed** cũng cải thiện thời gian tải, vì texture được nén VRAM tải nhanh hơn so với texture sử dụng phương thức nén lossless hoặc lossy. Nén VRAM có thể tạo ra các hiện tượng thấy rõ và được dùng cho kết xuất 3D, không phải 2D.
 
-See :ref:`Texture2DArray<class_Texture2DArray>` for a general description of texture arrays.
+Xem :ref:`Texture2DArray<class_Texture2DArray>` để biết mô tả chung về các mảng texture.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,44 +10,44 @@
 BoxContainer
 ============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`HBoxContainer<class_HBoxContainer>`, :ref:`VBoxContainer<class_VBoxContainer>`
+**Được kế thừa bởi:** :ref:`HBoxContainer<class_HBoxContainer>`, :ref:`VBoxContainer<class_VBoxContainer>`
 
-A container that arranges its child controls horizontally or vertically.
+Một container sắp xếp các control con theo chiều ngang hoặc chiều dọc.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A container that arranges its child controls horizontally or vertically, rearranging them automatically when their minimum size changes.
+Một container sắp xếp các control con theo chiều ngang hoặc chiều dọc, tự động sắp xếp lại chúng khi kích thước tối thiểu của chúng thay đổi.
 
 .. rst-class:: classref-introduction-group
 
 Tutorials
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng các container <../tutorials/ui/gui_containers>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+---------------------------------------------------------+-----------+
-   | :ref:`AlignmentMode<enum_BoxContainer_AlignmentMode>` | :ref:`alignment<class_BoxContainer_property_alignment>` | ``0``     |
-   +-------------------------------------------------------+---------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                               | :ref:`vertical<class_BoxContainer_property_vertical>`   | ``false`` |
-   +-------------------------------------------------------+---------------------------------------------------------+-----------+
+   +--------------------------------------------------------+---------------------------------------------------------+-----------+
+   | :ref:`AlignmentMode <enum_BoxContainer_AlignmentMode>` | :ref:`alignment<class_BoxContainer_property_alignment>` | ``0``     |
+   +--------------------------------------------------------+---------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                | :ref:`vertical<class_BoxContainer_property_vertical>`   | ``false`` |
+   +--------------------------------------------------------+---------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -58,8 +58,8 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính chủ đề
+-----------------
 
 .. table::
    :widths: auto
@@ -74,14 +74,14 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_BoxContainer_AlignmentMode:
 
 .. rst-class:: classref-enumeration
 
-enum **AlignmentMode**: :ref:`🔗<enum_BoxContainer_AlignmentMode>`
+enum **AlignmentMode**: :ref:`🔗 <enum_BoxContainer_AlignmentMode>`
 
 .. _class_BoxContainer_constant_ALIGNMENT_BEGIN:
 
@@ -89,7 +89,7 @@ enum **AlignmentMode**: :ref:`🔗<enum_BoxContainer_AlignmentMode>`
 
 :ref:`AlignmentMode<enum_BoxContainer_AlignmentMode>` **ALIGNMENT_BEGIN** = ``0``
 
-The child controls will be arranged at the beginning of the container, i.e. top if orientation is vertical, left if orientation is horizontal (right for RTL layout).
+Các control con sẽ được sắp xếp ở đầu container, tức là trên cùng nếu orientation là dọc, bên trái nếu orientation là ngang (bên phải đối với bố cục RTL).
 
 .. _class_BoxContainer_constant_ALIGNMENT_CENTER:
 
@@ -97,7 +97,7 @@ The child controls will be arranged at the beginning of the container, i.e. top 
 
 :ref:`AlignmentMode<enum_BoxContainer_AlignmentMode>` **ALIGNMENT_CENTER** = ``1``
 
-The child controls will be centered in the container.
+Các control con sẽ được căn giữa trong container.
 
 .. _class_BoxContainer_constant_ALIGNMENT_END:
 
@@ -105,7 +105,7 @@ The child controls will be centered in the container.
 
 :ref:`AlignmentMode<enum_BoxContainer_AlignmentMode>` **ALIGNMENT_END** = ``2``
 
-The child controls will be arranged at the end of the container, i.e. bottom if orientation is vertical, right if orientation is horizontal (left for RTL layout).
+Các control con sẽ được sắp xếp ở cuối container, tức là dưới cùng nếu orientation là dọc, bên phải nếu orientation là ngang (bên trái đối với bố cục RTL).
 
 .. rst-class:: classref-section-separator
 
@@ -113,8 +113,8 @@ The child controls will be arranged at the end of the container, i.e. bottom if 
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_BoxContainer_property_alignment:
 
@@ -127,7 +127,7 @@ Property Descriptions
 - |void| **set_alignment**\ (\ value\: :ref:`AlignmentMode<enum_BoxContainer_AlignmentMode>`\ )
 - :ref:`AlignmentMode<enum_BoxContainer_AlignmentMode>` **get_alignment**\ (\ )
 
-The alignment of the container's children (must be one of :ref:`ALIGNMENT_BEGIN<class_BoxContainer_constant_ALIGNMENT_BEGIN>`, :ref:`ALIGNMENT_CENTER<class_BoxContainer_constant_ALIGNMENT_CENTER>`, or :ref:`ALIGNMENT_END<class_BoxContainer_constant_ALIGNMENT_END>`).
+Căn chỉnh các phần tử con của container (phải là một trong :ref:`ALIGNMENT_BEGIN<class_BoxContainer_constant_ALIGNMENT_BEGIN>`, :ref:`ALIGNMENT_CENTER<class_BoxContainer_constant_ALIGNMENT_CENTER>` hoặc :ref:`ALIGNMENT_END<class_BoxContainer_constant_ALIGNMENT_END>`).
 
 .. rst-class:: classref-item-separator
 
@@ -144,9 +144,9 @@ The alignment of the container's children (must be one of :ref:`ALIGNMENT_BEGIN<
 - |void| **set_vertical**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_vertical**\ (\ )
 
-If ``true``, the **BoxContainer** will arrange its children vertically, rather than horizontally.
+Nếu là ``true``, **BoxContainer** sẽ sắp xếp các phần tử con theo chiều dọc thay vì chiều ngang.
 
-Can't be changed when using :ref:`HBoxContainer<class_HBoxContainer>` and :ref:`VBoxContainer<class_VBoxContainer>`.
+Không thể thay đổi khi sử dụng :ref:`HBoxContainer<class_HBoxContainer>` và :ref:`VBoxContainer<class_VBoxContainer>`.
 
 .. rst-class:: classref-section-separator
 
@@ -154,8 +154,8 @@ Can't be changed when using :ref:`HBoxContainer<class_HBoxContainer>` and :ref:`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_BoxContainer_method_add_spacer:
 
@@ -163,7 +163,7 @@ Method Descriptions
 
 :ref:`Control<class_Control>` **add_spacer**\ (\ begin\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_BoxContainer_method_add_spacer>`
 
-Adds a :ref:`Control<class_Control>` node to the box as a spacer. If ``begin`` is ``true``, it will insert the :ref:`Control<class_Control>` node in front of all other children.
+Thêm một node :ref:`Control<class_Control>` vào box làm khoảng đệm. Nếu ``begin`` là ``true``, node :ref:`Control<class_Control>` sẽ được chèn trước tất cả các node con khác.
 
 .. rst-class:: classref-section-separator
 
@@ -171,8 +171,8 @@ Adds a :ref:`Control<class_Control>` node to the box as a spacer. If ``begin`` i
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_BoxContainer_theme_constant_separation:
 
@@ -180,14 +180,14 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **separation** = ``4`` :ref:`🔗<class_BoxContainer_theme_constant_separation>`
 
-The space between the **BoxContainer**'s elements, in pixels.
+Khoảng cách giữa các phần tử của **BoxContainer**, tính bằng pixel.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,68 +10,68 @@
 SystemFont
 ==========
 
-**Inherits:** :ref:`Font<class_Font>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Font<class_Font>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A font loaded from a system font. Falls back to a default theme font if not implemented on the host OS.
+Một font được tải từ font hệ thống. Sử dụng font mặc định của theme nếu hệ điều hành máy chủ không triển khai font này.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**SystemFont** loads a font from a system font with the first matching name from :ref:`font_names<class_SystemFont_property_font_names>`.
+**SystemFont** tải một font từ font hệ thống với tên đầu tiên khớp trong :ref:`font_names<class_SystemFont_property_font_names>`.
 
-It will attempt to match font style, but it's not guaranteed.
+Font sẽ cố gắng khớp với kiểu chữ, nhưng không được đảm bảo.
 
-The returned font might be part of a font collection or be a variable font with OpenType "weight", "width" and/or "italic" features set.
+Font được trả về có thể là một phần của bộ sưu tập font hoặc là một variable font với các tính năng OpenType "weight", "width" và/hoặc "italic" được thiết lập.
 
-You can create :ref:`FontVariation<class_FontVariation>` of the system font for precise control over its features.
+Bạn có thể tạo :ref:`FontVariation<class_FontVariation>` từ font hệ thống để kiểm soát chính xác các tính năng của font.
 
-\ **Note:** This class is implemented on iOS, Linux, macOS and Windows, on other platforms it will fallback to default theme font.
+\ **Lưu ý:** Lớp này được triển khai trên iOS, Linux, macOS và Windows; trên các nền tảng khác, lớp này sẽ fallback về font mặc định của theme.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`allow_system_fallback<class_SystemFont_property_allow_system_fallback>`                           | ``true``                |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>`       | :ref:`antialiasing<class_SystemFont_property_antialiasing>`                                             | ``1``                   |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`disable_embedded_bitmaps<class_SystemFont_property_disable_embedded_bitmaps>`                     | ``true``                |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`font_italic<class_SystemFont_property_font_italic>`                                               | ``false``               |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`               | :ref:`font_names<class_SystemFont_property_font_names>`                                                 | ``PackedStringArray()`` |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                                           | :ref:`font_stretch<class_SystemFont_property_font_stretch>`                                             | ``100``                 |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                                           | :ref:`font_weight<class_SystemFont_property_font_weight>`                                               | ``400``                 |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`force_autohinter<class_SystemFont_property_force_autohinter>`                                     | ``false``               |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`generate_mipmaps<class_SystemFont_property_generate_mipmaps>`                                     | ``false``               |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`Hinting<enum_TextServer_Hinting>`                         | :ref:`hinting<class_SystemFont_property_hinting>`                                                       | ``1``                   |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`keep_rounding_remainders<class_SystemFont_property_keep_rounding_remainders>`                     | ``true``                |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`modulate_color_glyphs<class_SystemFont_property_modulate_color_glyphs>`                           | ``false``               |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                                           | :ref:`msdf_pixel_range<class_SystemFont_property_msdf_pixel_range>`                                     | ``16``                  |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                                           | :ref:`msdf_size<class_SystemFont_property_msdf_size>`                                                   | ``48``                  |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`multichannel_signed_distance_field<class_SystemFont_property_multichannel_signed_distance_field>` | ``false``               |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`float<class_float>`                                       | :ref:`oversampling<class_SystemFont_property_oversampling>`                                             | ``0.0``                 |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>` | :ref:`subpixel_positioning<class_SystemFont_property_subpixel_positioning>`                             | ``1``                   |
-   +-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`allow_system_fallback<class_SystemFont_property_allow_system_fallback>`                           | ``true``                |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`FontAntialiasing <enum_TextServer_FontAntialiasing>`       | :ref:`antialiasing<class_SystemFont_property_antialiasing>`                                             | ``1``                   |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`disable_embedded_bitmaps<class_SystemFont_property_disable_embedded_bitmaps>`                     | ``true``                |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`font_italic<class_SystemFont_property_font_italic>`                                               | ``false``               |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`                | :ref:`font_names<class_SystemFont_property_font_names>`                                                 | ``PackedStringArray()`` |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`font_stretch<class_SystemFont_property_font_stretch>`                                             | ``100``                 |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`font_weight<class_SystemFont_property_font_weight>`                                               | ``400``                 |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`force_autohinter<class_SystemFont_property_force_autohinter>`                                     | ``false``               |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`generate_mipmaps<class_SystemFont_property_generate_mipmaps>`                                     | ``false``               |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Hinting <enum_TextServer_Hinting>`                         | :ref:`hinting<class_SystemFont_property_hinting>`                                                       | ``1``                   |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`keep_rounding_remainders<class_SystemFont_property_keep_rounding_remainders>`                     | ``true``                |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`modulate_color_glyphs<class_SystemFont_property_modulate_color_glyphs>`                           | ``false``               |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`msdf_pixel_range<class_SystemFont_property_msdf_pixel_range>`                                     | ``16``                  |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`msdf_size<class_SystemFont_property_msdf_size>`                                                   | ``48``                  |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`multichannel_signed_distance_field<class_SystemFont_property_multichannel_signed_distance_field>` | ``false``               |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`oversampling<class_SystemFont_property_oversampling>`                                             | ``0.0``                 |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`SubpixelPositioning <enum_TextServer_SubpixelPositioning>` | :ref:`subpixel_positioning<class_SystemFont_property_subpixel_positioning>`                             | ``1``                   |
+   +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -79,8 +79,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SystemFont_property_allow_system_fallback:
 
@@ -93,7 +93,7 @@ Property Descriptions
 - |void| **set_allow_system_fallback**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_allow_system_fallback**\ (\ )
 
-If set to ``true``, system fonts can be automatically used as fallbacks.
+Nếu được đặt thành ``true``, font hệ thống có thể được tự động sử dụng làm fallback.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ If set to ``true``, system fonts can be automatically used as fallbacks.
 - |void| **set_antialiasing**\ (\ value\: :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>`\ )
 - :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>` **get_antialiasing**\ (\ )
 
-Font anti-aliasing mode.
+Chế độ khử răng cưa của font.
 
 .. rst-class:: classref-item-separator
 
@@ -127,7 +127,7 @@ Font anti-aliasing mode.
 - |void| **set_disable_embedded_bitmaps**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_disable_embedded_bitmaps**\ (\ )
 
-If set to ``true``, embedded font bitmap loading is disabled (bitmap-only and color fonts ignore this property).
+Nếu được đặt thành ``true``, việc tải bitmap của font được nhúng sẽ bị vô hiệu hóa (font chỉ có bitmap và font màu sẽ bỏ qua thuộc tính này).
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ If set to ``true``, embedded font bitmap loading is disabled (bitmap-only and co
 - |void| **set_font_italic**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_font_italic**\ (\ )
 
-If set to ``true``, italic or oblique font is preferred.
+Nếu được đặt thành ``true``, font italic hoặc oblique sẽ được ưu tiên.
 
 .. rst-class:: classref-item-separator
 
@@ -161,9 +161,9 @@ If set to ``true``, italic or oblique font is preferred.
 - |void| **set_font_names**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_font_names**\ (\ )
 
-Array of font family names to search, first matching font found is used.
+Mảng các tên họ font cần tìm; font đầu tiên được tìm thấy sẽ được sử dụng.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng sẽ không cập nhật giá trị thuộc tính gốc. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ Array of font family names to search, first matching font found is used.
 - |void| **set_font_stretch**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_font_stretch**\ (\ )
 
-Preferred font stretch amount, compared to a normal width. A percentage value between ``50%`` and ``200%``.
+Độ giãn font được ưu tiên, so với chiều rộng bình thường. Giá trị phần trăm nằm giữa ``50%`` và ``200%``.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Preferred font stretch amount, compared to a normal width. A percentage value be
 - |void| **set_font_weight**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_font_weight**\ (\ )
 
-Preferred weight (boldness) of the font. A value in the ``100...999`` range, normal font weight is ``400``, bold font weight is ``700``.
+Độ đậm (boldness) được ưu tiên của font. Giá trị nằm trong phạm vi ``100...999``; độ đậm bình thường của font là ``400``, còn độ đậm của font in đậm là ``700``.
 
 .. rst-class:: classref-item-separator
 
@@ -214,7 +214,7 @@ Preferred weight (boldness) of the font. A value in the ``100...999`` range, nor
 - |void| **set_force_autohinter**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_force_autohinter**\ (\ )
 
-If set to ``true``, auto-hinting is supported and preferred over font built-in hinting.
+Nếu được đặt thành ``true``, auto-hinting được hỗ trợ và được ưu tiên hơn hinting tích hợp sẵn của font.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ If set to ``true``, auto-hinting is supported and preferred over font built-in h
 - |void| **set_generate_mipmaps**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_generate_mipmaps**\ (\ )
 
-If set to ``true``, generate mipmaps for the font textures.
+Nếu được đặt thành ``true``, tạo mipmap cho các texture của font.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ If set to ``true``, generate mipmaps for the font textures.
 - |void| **set_hinting**\ (\ value\: :ref:`Hinting<enum_TextServer_Hinting>`\ )
 - :ref:`Hinting<enum_TextServer_Hinting>` **get_hinting**\ (\ )
 
-Font hinting mode.
+Chế độ hinting của font.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ Font hinting mode.
 - |void| **set_keep_rounding_remainders**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_keep_rounding_remainders**\ (\ )
 
-If set to ``true``, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled.
+Nếu được đặt thành ``true``, khi căn glyph theo các ranh giới pixel, các phần dư do làm tròn sẽ được tích lũy để đảm bảo phân bố glyph đồng đều hơn. Thiết lập này không có tác dụng nếu subpixel positioning được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ If set to ``true``, when aligning glyphs to the pixel boundaries rounding remain
 - |void| **set_modulate_color_glyphs**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_modulate_color_glyphs**\ (\ )
 
-If set to ``true``, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only.
+Nếu được đặt thành ``true``, việc điều chỉnh màu được áp dụng khi vẽ các glyph màu; nếu không, việc này chỉ được áp dụng cho các glyph đơn sắc.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ If set to ``true``, color modulation is applied when drawing colored glyphs, oth
 - |void| **set_msdf_pixel_range**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_msdf_pixel_range**\ (\ )
 
-The width of the range around the shape between the minimum and maximum representable signed distance. If using font outlines, :ref:`msdf_pixel_range<class_SystemFont_property_msdf_pixel_range>` must be set to at least *twice* the size of the largest font outline. The default :ref:`msdf_pixel_range<class_SystemFont_property_msdf_pixel_range>` value of ``16`` allows outline sizes up to ``8`` to look correct.
+Độ rộng của phạm vi xung quanh shape giữa khoảng cách có dấu nhỏ nhất và lớn nhất có thể biểu diễn. Nếu sử dụng outline của font, :ref:`msdf_pixel_range<class_SystemFont_property_msdf_pixel_range>` phải được đặt ít nhất bằng *hai lần* kích thước của outline font lớn nhất. Giá trị :ref:`msdf_pixel_range<class_SystemFont_property_msdf_pixel_range>` mặc định là ``16`` cho phép các outline có kích thước lên đến ``8`` hiển thị chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -316,7 +316,7 @@ The width of the range around the shape between the minimum and maximum represen
 - |void| **set_msdf_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_msdf_size**\ (\ )
 
-Source font size used to generate MSDF textures. Higher values allow for more precision, but are slower to render and require more memory. Only increase this value if you notice a visible lack of precision in glyph rendering.
+Kích thước font nguồn được sử dụng để tạo texture MSDF. Giá trị cao hơn cho độ chính xác cao hơn, nhưng render chậm hơn và cần nhiều bộ nhớ hơn. Chỉ tăng giá trị này nếu bạn nhận thấy glyph được render thiếu độ chính xác rõ rệt.
 
 .. rst-class:: classref-item-separator
 
@@ -333,7 +333,7 @@ Source font size used to generate MSDF textures. Higher values allow for more pr
 - |void| **set_multichannel_signed_distance_field**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_multichannel_signed_distance_field**\ (\ )
 
-If set to ``true``, glyphs of all sizes are rendered using single multichannel signed distance field generated from the dynamic font vector data.
+Nếu được đặt thành ``true``, glyph ở mọi kích thước sẽ được render bằng một signed distance field đa kênh duy nhất được tạo từ dữ liệu vector của dynamic font.
 
 .. rst-class:: classref-item-separator
 
@@ -350,7 +350,7 @@ If set to ``true``, glyphs of all sizes are rendered using single multichannel s
 - |void| **set_oversampling**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_oversampling**\ (\ )
 
-If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See :ref:`Viewport.oversampling<class_Viewport_property_oversampling>`. This value doesn't override the ``oversampling`` parameter of ``draw_*`` methods.
+Nếu được đặt thành một giá trị dương, ghi đè hệ số oversampling của viewport mà font này được sử dụng trong đó. Xem :ref:`Viewport.oversampling<class_Viewport_property_oversampling>`. Giá trị này không ghi đè tham số ``oversampling`` của các phương thức ``draw_*``.
 
 .. rst-class:: classref-item-separator
 
@@ -367,14 +367,14 @@ If set to a positive value, overrides the oversampling factor of the viewport th
 - |void| **set_subpixel_positioning**\ (\ value\: :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>`\ )
 - :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>` **get_subpixel_positioning**\ (\ )
 
-Font glyph subpixel positioning mode. Subpixel positioning provides shaper text and better kerning for smaller font sizes, at the cost of memory usage and font rasterization speed. Use :ref:`TextServer.SUBPIXEL_POSITIONING_AUTO<class_TextServer_constant_SUBPIXEL_POSITIONING_AUTO>` to automatically enable it based on the font size.
+Chế độ subpixel positioning của glyph font. Subpixel positioning giúp shaper text tốt hơn và kerning tốt hơn ở các cỡ font nhỏ, nhưng làm tăng mức sử dụng bộ nhớ và giảm tốc độ rasterization của font. Sử dụng :ref:`TextServer.SUBPIXEL_POSITIONING_AUTO<class_TextServer_constant_SUBPIXEL_POSITIONING_AUTO>` để tự động bật tính năng này dựa trên cỡ font.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -13,70 +13,70 @@
 TileMap
 =======
 
-**Deprecated:** Use multiple :ref:`TileMapLayer<class_TileMapLayer>` nodes instead. To convert a TileMap to a set of TileMapLayer nodes, open the TileMap bottom panel with the node selected, click the toolbox icon in the top-right corner and choose 'Extract TileMap layers as individual TileMapLayer nodes'.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng nhiều node :ref:`TileMapLayer<class_TileMapLayer>`. Để chuyển đổi một TileMap thành một tập hợp các node TileMapLayer, mở bảng điều khiển phía dưới TileMap khi node được chọn, nhấp vào biểu tượng hộp công cụ ở góc trên bên phải và chọn 'Extract TileMap layers as individual TileMapLayer nodes'.
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Node for 2D tile-based maps.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Node for 2D tile-based maps. Tilemaps use a :ref:`TileSet<class_TileSet>` which contain a list of tiles which are used to create grid-based maps. A TileMap may have several layers, layouting tiles on top of each other.
-
-For performance reasons, all TileMap updates are batched at the end of a frame. Notably, this means that scene tiles from a :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>` may be initialized after their parent. This is only queued when inside the scene tree.
-
-To force an update earlier on, call :ref:`update_internals()<class_TileMap_method_update_internals>`.
-
-\ **Note:** For performance and compatibility reasons, the coordinates serialized by **TileMap** are limited to 16-bit signed integers, i.e. the range for X and Y coordinates is from ``-32768`` to ``32767``. When saving tile data, tiles outside this range are wrapped.
+Node cho các bản đồ 2D dựa trên ô.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node cho các bản đồ 2D dựa trên ô. Tilemap sử dụng một :ref:`TileSet<class_TileSet>` chứa danh sách các ô được dùng để tạo bản đồ dạng lưới. Một TileMap có thể có nhiều lớp, sắp xếp các ô chồng lên nhau.
+
+Vì lý do hiệu năng, mọi cập nhật TileMap đều được xử lý theo lô vào cuối một frame. Đáng chú ý, điều này có nghĩa là các ô cảnh từ một :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>` có thể được khởi tạo sau node cha của chúng. Việc này chỉ được xếp hàng khi ở bên trong scene tree.
+
+Để buộc cập nhật sớm hơn, hãy gọi :ref:`update_internals()<class_TileMap_method_update_internals>`.
+
+\ **Lưu ý:** Vì lý do hiệu năng và khả năng tương thích, các tọa độ được tuần tự hóa bởi **TileMap** bị giới hạn ở số nguyên có dấu 16 bit, tức là phạm vi của tọa độ X và Y nằm trong khoảng từ ``-32768`` đến ``32767``. Khi lưu dữ liệu tile, các tile nằm ngoài phạm vi này sẽ được cuộn vòng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Tilemaps <../tutorials/2d/using_tilemaps>`
+- :doc:`Sử dụng Tilemaps <../tutorials/2d/using_tilemaps>`
 
-- `2D Platformer Demo <https://godotengine.org/asset-library/asset/2727>`__
+- `Bản minh họa nền tảng 2D <https://godotengine.org/asset-library/asset/2727>`__
 
-- `2D Isometric Demo <https://godotengine.org/asset-library/asset/2718>`__
+- `Bản minh họa đẳng cự 2D <https://godotengine.org/asset-library/asset/2718>`__
 
-- `2D Hexagonal Demo <https://godotengine.org/asset-library/asset/2717>`__
+- `Bản minh họa lục giác 2D <https://godotengine.org/asset-library/asset/2717>`__
 
-- `2D Grid-based Navigation with AStarGrid2D Demo <https://godotengine.org/asset-library/asset/2723>`__
+- `Bản demo điều hướng dựa trên lưới 2D với AStarGrid2D <https://godotengine.org/asset-library/asset/2723>`__
 
-- `2D Role Playing Game (RPG) Demo <https://godotengine.org/asset-library/asset/2729>`__
+- `Bản demo trò chơi nhập vai (RPG) 2D <https://godotengine.org/asset-library/asset/2729>`__
 
-- `2D Kinematic Character Demo <https://godotengine.org/asset-library/asset/2719>`__
+- `Bản demo nhân vật động học 2D <https://godotengine.org/asset-library/asset/2719>`__
 
-- `2D Dynamic TileMap Layers Demo <https://godotengine.org/asset-library/asset/2713>`__
+- `Bản demo các lớp TileMap động 2D <https://godotengine.org/asset-library/asset/2713>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                            | :ref:`collision_animatable<class_TileMap_property_collision_animatable>`             | ``false`` |
-   +----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
-   | :ref:`VisibilityMode<enum_TileMap_VisibilityMode>` | :ref:`collision_visibility_mode<class_TileMap_property_collision_visibility_mode>`   | ``0``     |
-   +----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
-   | :ref:`VisibilityMode<enum_TileMap_VisibilityMode>` | :ref:`navigation_visibility_mode<class_TileMap_property_navigation_visibility_mode>` | ``0``     |
-   +----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                              | :ref:`rendering_quadrant_size<class_TileMap_property_rendering_quadrant_size>`       | ``16``    |
-   +----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
-   | :ref:`TileSet<class_TileSet>`                      | :ref:`tile_set<class_TileMap_property_tile_set>`                                     |           |
-   +----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                             | :ref:`collision_animatable<class_TileMap_property_collision_animatable>`             | ``false`` |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
+   | :ref:`VisibilityMode <enum_TileMap_VisibilityMode>` | :ref:`collision_visibility_mode<class_TileMap_property_collision_visibility_mode>`   | ``0``     |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
+   | :ref:`VisibilityMode <enum_TileMap_VisibilityMode>` | :ref:`navigation_visibility_mode<class_TileMap_property_navigation_visibility_mode>` | ``0``     |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                               | :ref:`rendering_quadrant_size<class_TileMap_property_rendering_quadrant_size>`       | ``16``    |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
+   | :ref:`TileSet<class_TileSet>`                       | :ref:`tile_set<class_TileMap_property_tile_set>`                                     |           |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -124,7 +124,7 @@ Methods
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                        | :ref:`get_navigation_map<class_TileMap_method_get_navigation_map>`\ (\ layer\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                           |
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                              | :ref:`get_neighbor_cell<class_TileMap_method_get_neighbor_cell>`\ (\ coords\: :ref:`Vector2i<class_Vector2i>`, neighbor\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const|                                                                                                                                       |
+   | :ref:`Vector2i<class_Vector2i>`                              | :ref:`get_neighbor_cell<class_TileMap_method_get_neighbor_cell>`\ (\ coords\: :ref:`Vector2i<class_Vector2i>`, neighbor\: :ref:`CellNeighbor <enum_TileSet_CellNeighbor>`\ ) |const|                                                                                                                                      |
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`TileMapPattern<class_TileMapPattern>`                  | :ref:`get_pattern<class_TileMap_method_get_pattern>`\ (\ layer\: :ref:`int<class_int>`, coords_array\: :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\]\ )                                                                                                                                                    |
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -184,7 +184,7 @@ Methods
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                       | :ref:`set_navigation_map<class_TileMap_method_set_navigation_map>`\ (\ layer\: :ref:`int<class_int>`, map\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                      |
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_pattern<class_TileMap_method_set_pattern>`\ (\ layer\: :ref:`int<class_int>`, position\: :ref:`Vector2i<class_Vector2i>`, pattern\: :ref:`TileMapPattern<class_TileMapPattern>`\ )                                                                                                                              |
+   | |void|                                                       | :ref:`set_pattern<class_TileMap_method_set_pattern>`\ (\ layer\: :ref:`int<class_int>`, position\: :ref:`Vector2i<class_Vector2i>`, pattern\: :ref:`TileMapPattern<class_TileMapPattern>`\ )“                                                                                                                             |
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                       | :ref:`update_internals<class_TileMap_method_update_internals>`\ (\ )                                                                                                                                                                                                                                                      |
    +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -195,8 +195,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_TileMap_signal_changed:
 
@@ -204,7 +204,7 @@ Signals
 
 **changed**\ (\ ) :ref:`🔗<class_TileMap_signal_changed>`
 
-Emitted when the :ref:`TileSet<class_TileSet>` of this TileMap changes.
+Được phát ra khi :ref:`TileSet<class_TileSet>` của TileMap thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -212,14 +212,14 @@ Emitted when the :ref:`TileSet<class_TileSet>` of this TileMap changes.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_TileMap_VisibilityMode:
 
 .. rst-class:: classref-enumeration
 
-enum **VisibilityMode**: :ref:`🔗<enum_TileMap_VisibilityMode>`
+enum **VisibilityMode**: :ref:`🔗 <enum_TileMap_VisibilityMode>`
 
 .. _class_TileMap_constant_VISIBILITY_MODE_DEFAULT:
 
@@ -227,7 +227,7 @@ enum **VisibilityMode**: :ref:`🔗<enum_TileMap_VisibilityMode>`
 
 :ref:`VisibilityMode<enum_TileMap_VisibilityMode>` **VISIBILITY_MODE_DEFAULT** = ``0``
 
-Use the debug settings to determine visibility.
+Sử dụng các cài đặt gỡ lỗi để xác định khả năng hiển thị.
 
 .. _class_TileMap_constant_VISIBILITY_MODE_FORCE_HIDE:
 
@@ -235,7 +235,7 @@ Use the debug settings to determine visibility.
 
 :ref:`VisibilityMode<enum_TileMap_VisibilityMode>` **VISIBILITY_MODE_FORCE_HIDE** = ``2``
 
-Always hide.
+Luôn ẩn.
 
 .. _class_TileMap_constant_VISIBILITY_MODE_FORCE_SHOW:
 
@@ -243,7 +243,7 @@ Always hide.
 
 :ref:`VisibilityMode<enum_TileMap_VisibilityMode>` **VISIBILITY_MODE_FORCE_SHOW** = ``1``
 
-Always show.
+Luôn hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -251,8 +251,8 @@ Always show.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TileMap_property_collision_animatable:
 
@@ -265,9 +265,9 @@ Property Descriptions
 - |void| **set_collision_animatable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collision_animatable**\ (\ )
 
-If enabled, the TileMap will see its collisions synced to the physics tick and change its collision type from static to kinematic. This is required to create TileMap-based moving platform.
+Nếu được bật, TileMap sẽ đồng bộ các va chạm của nó với nhịp vật lý và thay đổi loại va chạm từ static thành kinematic. Điều này là bắt buộc để tạo nền tảng di chuyển dựa trên TileMap.
 
-\ **Note:** Enabling :ref:`collision_animatable<class_TileMap_property_collision_animatable>` may have a small performance impact, only do it if the TileMap is moving and has colliding tiles.
+\ **Lưu ý:** Việc bật :ref:`collision_animatable<class_TileMap_property_collision_animatable>` có thể ảnh hưởng nhỏ đến hiệu suất; chỉ thực hiện nếu TileMap đang di chuyển và có các tile gây va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ If enabled, the TileMap will see its collisions synced to the physics tick and c
 - |void| **set_collision_visibility_mode**\ (\ value\: :ref:`VisibilityMode<enum_TileMap_VisibilityMode>`\ )
 - :ref:`VisibilityMode<enum_TileMap_VisibilityMode>` **get_collision_visibility_mode**\ (\ )
 
-Show or hide the TileMap's collision shapes. If set to :ref:`VISIBILITY_MODE_DEFAULT<class_TileMap_constant_VISIBILITY_MODE_DEFAULT>`, this depends on the show collision debug settings.
+Hiển thị hoặc ẩn các hình dạng va chạm của TileMap. Nếu được đặt thành :ref:`VISIBILITY_MODE_DEFAULT<class_TileMap_constant_VISIBILITY_MODE_DEFAULT>`, điều này phụ thuộc vào các cài đặt gỡ lỗi hiển thị va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ Show or hide the TileMap's collision shapes. If set to :ref:`VISIBILITY_MODE_DEF
 - |void| **set_navigation_visibility_mode**\ (\ value\: :ref:`VisibilityMode<enum_TileMap_VisibilityMode>`\ )
 - :ref:`VisibilityMode<enum_TileMap_VisibilityMode>` **get_navigation_visibility_mode**\ (\ )
 
-Show or hide the TileMap's navigation meshes. If set to :ref:`VISIBILITY_MODE_DEFAULT<class_TileMap_constant_VISIBILITY_MODE_DEFAULT>`, this depends on the show navigation debug settings.
+Hiển thị hoặc ẩn các navigation mesh của TileMap. Nếu được đặt thành :ref:`VISIBILITY_MODE_DEFAULT<class_TileMap_constant_VISIBILITY_MODE_DEFAULT>`, điều này phụ thuộc vào các cài đặt gỡ lỗi hiển thị navigation.
 
 .. rst-class:: classref-item-separator
 
@@ -318,11 +318,11 @@ Show or hide the TileMap's navigation meshes. If set to :ref:`VISIBILITY_MODE_DE
 - |void| **set_rendering_quadrant_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_rendering_quadrant_size**\ (\ )
 
-The TileMap's quadrant size. A quadrant is a group of tiles to be drawn together on a single canvas item, for optimization purposes. :ref:`rendering_quadrant_size<class_TileMap_property_rendering_quadrant_size>` defines the length of a square's side, in the map's coordinate system, that forms the quadrant. Thus, the default quadrant size groups together ``16 * 16 = 256`` tiles.
+Kích thước quadrant của TileMap. Quadrant là một nhóm các tile được vẽ cùng nhau trên một canvas item duy nhất nhằm mục đích tối ưu hóa. :ref:`rendering_quadrant_size<class_TileMap_property_rendering_quadrant_size>` xác định độ dài cạnh của hình vuông, trong hệ tọa độ của map, tạo thành quadrant. Do đó, kích thước quadrant mặc định nhóm ``16 * 16 = 256`` tile lại với nhau.
 
-The quadrant size does not apply on Y-sorted layers, as tiles are grouped by Y position instead in that case.
+Kích thước quadrant không áp dụng cho các layer được sắp xếp theo Y, vì trong trường hợp đó, các tile được nhóm theo vị trí Y.
 
-\ **Note:** As quadrants are created according to the map's coordinate system, the quadrant's "square shape" might not look like square in the TileMap's local coordinate system.
+\ **Lưu ý:** Vì các quadrant được tạo theo hệ tọa độ của map, "hình dạng vuông" của quadrant có thể không trông giống hình vuông trong hệ tọa độ cục bộ của TileMap.
 
 .. rst-class:: classref-item-separator
 
@@ -332,14 +332,14 @@ The quadrant size does not apply on Y-sorted layers, as tiles are grouped by Y p
 
 .. rst-class:: classref-property
 
-:ref:`TileSet<class_TileSet>` **tile_set** :ref:`🔗<class_TileMap_property_tile_set>`
+:ref:`TileSet<class_TileSet>` **tile_set** :ref:`🔗 <class_TileMap_property_tile_set>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_tileset**\ (\ value\: :ref:`TileSet<class_TileSet>`\ )
 - :ref:`TileSet<class_TileSet>` **get_tileset**\ (\ )
 
-The :ref:`TileSet<class_TileSet>` used by this **TileMap**. The textures, collisions, and additional behavior of all available tiles are stored here.
+:ref:`TileSet<class_TileSet>` được **TileMap** này sử dụng. Texture, thông tin va chạm và hành vi bổ sung của tất cả các tile hiện có được lưu trữ tại đây.
 
 .. rst-class:: classref-section-separator
 
@@ -347,8 +347,8 @@ The :ref:`TileSet<class_TileSet>` used by this **TileMap**. The textures, collis
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TileMap_private_method__tile_data_runtime_update:
 
@@ -356,13 +356,13 @@ Method Descriptions
 
 |void| **_tile_data_runtime_update**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, tile_data\: :ref:`TileData<class_TileData>`\ ) |virtual| :ref:`🔗<class_TileMap_private_method__tile_data_runtime_update>`
 
-Called with a TileData object about to be used internally by the TileMap, allowing its modification at runtime.
+Được gọi với một đối tượng TileData chuẩn bị được TileMap sử dụng nội bộ, cho phép sửa đổi đối tượng này trong runtime.
 
-This method is only called if :ref:`_use_tile_data_runtime_update()<class_TileMap_private_method__use_tile_data_runtime_update>` is implemented and returns ``true`` for the given tile ``coords`` and ``layer``.
+Phương thức này chỉ được gọi nếu :ref:`_use_tile_data_runtime_update()<class_TileMap_private_method__use_tile_data_runtime_update>` được triển khai và trả về ``true`` cho ô ``coords`` và ``layer`` đã cho.
 
-\ **Warning:** The ``tile_data`` object's sub-resources are the same as the one in the TileSet. Modifying them might impact the whole TileSet. Instead, make sure to duplicate those resources.
+\ **Cảnh báo:** Các tài nguyên con của đối tượng ``tile_data`` giống với các tài nguyên con trong TileSet. Việc sửa đổi chúng có thể ảnh hưởng đến toàn bộ TileSet. Thay vào đó, hãy đảm bảo bạn sao chép các tài nguyên đó.
 
-\ **Note:** If the properties of ``tile_data`` object should change over time, use :ref:`notify_runtime_tile_data_update()<class_TileMap_method_notify_runtime_tile_data_update>` to notify the TileMap it needs an update.
+\ **Lưu ý:** Nếu các thuộc tính của đối tượng ``tile_data`` cần thay đổi theo thời gian, hãy sử dụng :ref:`notify_runtime_tile_data_update()<class_TileMap_method_notify_runtime_tile_data_update>` để thông báo cho TileMap rằng nó cần được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -374,11 +374,11 @@ This method is only called if :ref:`_use_tile_data_runtime_update()<class_TileMa
 
 :ref:`bool<class_bool>` **_use_tile_data_runtime_update**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual| :ref:`🔗<class_TileMap_private_method__use_tile_data_runtime_update>`
 
-Should return ``true`` if the tile at coordinates ``coords`` on layer ``layer`` requires a runtime update.
+Nên trả về ``true`` nếu ô tại tọa độ ``coords`` trên layer ``layer`` cần được cập nhật trong runtime.
 
-\ **Warning:** Make sure this function only return ``true`` when needed. Any tile processed at runtime without a need for it will imply a significant performance penalty.
+\ **Cảnh báo:** Hãy đảm bảo hàm này chỉ trả về ``true`` khi cần thiết. Bất kỳ ô nào được xử lý trong runtime khi không cần thiết đều gây ra sự sụt giảm hiệu năng đáng kể.
 
-\ **Note:** If the result of this function should changed, use :ref:`notify_runtime_tile_data_update()<class_TileMap_method_notify_runtime_tile_data_update>` to notify the TileMap it needs an update.
+\ **Lưu ý:** Nếu kết quả của hàm này cần thay đổi, hãy sử dụng :ref:`notify_runtime_tile_data_update()<class_TileMap_method_notify_runtime_tile_data_update>` để thông báo cho TileMap rằng nó cần được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -390,7 +390,7 @@ Should return ``true`` if the tile at coordinates ``coords`` on layer ``layer`` 
 
 |void| **add_layer**\ (\ to_position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileMap_method_add_layer>`
 
-Adds a layer at the given position ``to_position`` in the array. If ``to_position`` is negative, the position is counted from the end, with ``-1`` adding the layer at the end of the array.
+Thêm một layer tại vị trí ``to_position`` đã cho trong mảng. Nếu ``to_position`` là số âm, vị trí được tính từ cuối mảng, trong đó ``-1`` sẽ thêm layer vào cuối mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -402,7 +402,7 @@ Adds a layer at the given position ``to_position`` in the array. If ``to_positio
 
 |void| **clear**\ (\ ) :ref:`🔗<class_TileMap_method_clear>`
 
-Clears all cells.
+Xóa tất cả các ô.
 
 .. rst-class:: classref-item-separator
 
@@ -414,9 +414,9 @@ Clears all cells.
 
 |void| **clear_layer**\ (\ layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileMap_method_clear_layer>`
 
-Clears all cells on the given layer.
+Xóa tất cả các ô trên lớp đã cho.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -428,9 +428,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **erase_cell**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_TileMap_method_erase_cell>`
 
-Erases the cell on layer ``layer`` at coordinates ``coords``.
+Xóa ô trên lớp ``layer`` tại tọa độ ``coords``.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -442,7 +442,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **fix_invalid_tiles**\ (\ ) :ref:`🔗<class_TileMap_method_fix_invalid_tiles>`
 
-Clears cells that do not exist in the tileset.
+Xóa các ô không tồn tại trong tileset.
 
 .. rst-class:: classref-item-separator
 
@@ -454,9 +454,9 @@ Clears cells that do not exist in the tileset.
 
 |void| **force_update**\ (\ layer\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_TileMap_method_force_update>`
 
-**Deprecated:** Use :ref:`notify_runtime_tile_data_update()<class_TileMap_method_notify_runtime_tile_data_update>` and/or :ref:`update_internals()<class_TileMap_method_update_internals>` instead.
+**Không còn được dùng:** Hãy sử dụng :ref:`notify_runtime_tile_data_update()<class_TileMap_method_notify_runtime_tile_data_update>` và/hoặc :ref:`update_internals()<class_TileMap_method_update_internals>` thay thế.
 
-Forces the TileMap and the layer ``layer`` to update.
+Buộc TileMap và lớp ``layer`` cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -468,11 +468,11 @@ Forces the TileMap and the layer ``layer`` to update.
 
 :ref:`int<class_int>` **get_cell_alternative_tile**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, use_proxies\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileMap_method_get_cell_alternative_tile>`
 
-Returns the tile alternative ID of the cell on layer ``layer`` at ``coords``.
+Trả về ID biến thể tile của ô trên layer ``layer`` tại ``coords``.
 
-If ``use_proxies`` is ``false``, ignores the :ref:`TileSet<class_TileSet>`'s tile proxies, returning the raw alternative identifier. See :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
+Nếu ``use_proxies`` là ``false``, bỏ qua các tile proxy của :ref:`TileSet<class_TileSet>`, trả về mã định danh biến thể thô. Xem :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -484,11 +484,11 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`Vector2i<class_Vector2i>` **get_cell_atlas_coords**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, use_proxies\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileMap_method_get_cell_atlas_coords>`
 
-Returns the tile atlas coordinates ID of the cell on layer ``layer`` at coordinates ``coords``. Returns ``Vector2i(-1, -1)`` if the cell does not exist.
+Trả về ID tọa độ atlas của tile thuộc ô trên layer ``layer`` tại tọa độ ``coords``. Trả về ``Vector2i(-1, -1)`` nếu ô không tồn tại.
 
-If ``use_proxies`` is ``false``, ignores the :ref:`TileSet<class_TileSet>`'s tile proxies, returning the raw atlas coordinate identifier. See :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
+Nếu ``use_proxies`` là ``false``, bỏ qua các tile proxy của :ref:`TileSet<class_TileSet>`, trả về mã định danh tọa độ atlas thô. Xem :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -500,11 +500,11 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`int<class_int>` **get_cell_source_id**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, use_proxies\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileMap_method_get_cell_source_id>`
 
-Returns the tile source ID of the cell on layer ``layer`` at coordinates ``coords``. Returns ``-1`` if the cell does not exist.
+Trả về ID nguồn tile của ô trên layer ``layer`` tại tọa độ ``coords``. Trả về ``-1`` nếu ô không tồn tại.
 
-If ``use_proxies`` is ``false``, ignores the :ref:`TileSet<class_TileSet>`'s tile proxies, returning the raw source identifier. See :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
+Nếu ``use_proxies`` là ``false``, bỏ qua các tile proxy của :ref:`TileSet<class_TileSet>`, trả về mã định danh nguồn thô. Xem :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -516,9 +516,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`TileData<class_TileData>` **get_cell_tile_data**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, use_proxies\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileMap_method_get_cell_tile_data>`
 
-Returns the :ref:`TileData<class_TileData>` object associated with the given cell, or ``null`` if the cell does not exist or is not a :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`.
+Trả về đối tượng :ref:`TileData<class_TileData>` được liên kết với ô đã cho, hoặc ``null`` nếu ô không tồn tại hoặc không phải là một :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 ::
 
@@ -530,7 +530,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
         else:
             return 0
 
-If ``use_proxies`` is ``false``, ignores the :ref:`TileSet<class_TileSet>`'s tile proxies. See :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
+Nếu ``use_proxies`` là ``false``, sẽ bỏ qua các tile proxy của :ref:`TileSet<class_TileSet>`. Xem :ref:`TileSet.map_tile_proxy()<class_TileSet_method_map_tile_proxy>`.
 
 .. rst-class:: classref-item-separator
 
@@ -542,7 +542,7 @@ If ``use_proxies`` is ``false``, ignores the :ref:`TileSet<class_TileSet>`'s til
 
 :ref:`Vector2i<class_Vector2i>` **get_coords_for_body_rid**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_TileMap_method_get_coords_for_body_rid>`
 
-Returns the coordinates of the tile for given physics body RID. Such RID can be retrieved from :ref:`KinematicCollision2D.get_collider_rid()<class_KinematicCollision2D_method_get_collider_rid>`, when colliding with a tile.
+Trả về tọa độ của tile tương ứng với RID của physics body đã cho. Có thể lấy RID này từ :ref:`KinematicCollision2D.get_collider_rid()<class_KinematicCollision2D_method_get_collider_rid>` khi va chạm với một tile.
 
 .. rst-class:: classref-item-separator
 
@@ -554,7 +554,7 @@ Returns the coordinates of the tile for given physics body RID. Such RID can be 
 
 :ref:`int<class_int>` **get_layer_for_body_rid**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_TileMap_method_get_layer_for_body_rid>`
 
-Returns the tilemap layer of the tile for given physics body RID. Such RID can be retrieved from :ref:`KinematicCollision2D.get_collider_rid()<class_KinematicCollision2D_method_get_collider_rid>`, when colliding with a tile.
+Trả về lớp TileMap của tile tương ứng với RID của physics body đã cho. Có thể lấy RID này từ :ref:`KinematicCollision2D.get_collider_rid()<class_KinematicCollision2D_method_get_collider_rid>` khi va chạm với một tile.
 
 .. rst-class:: classref-item-separator
 
@@ -566,9 +566,9 @@ Returns the tilemap layer of the tile for given physics body RID. Such RID can b
 
 :ref:`Color<class_Color>` **get_layer_modulate**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_get_layer_modulate>`
 
-Returns a TileMap layer's modulate.
+Trả về modulate của một lớp TileMap.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -580,9 +580,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`String<class_String>` **get_layer_name**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_get_layer_name>`
 
-Returns a TileMap layer's name.
+Trả về tên của một lớp TileMap.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -594,13 +594,13 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`RID<class_RID>` **get_layer_navigation_map**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_get_layer_navigation_map>`
 
-Returns the :ref:`RID<class_RID>` of the :ref:`NavigationServer2D<class_NavigationServer2D>` navigation map assigned to the specified TileMap layer ``layer``.
+Trả về :ref:`RID<class_RID>` của bản đồ điều hướng :ref:`NavigationServer2D<class_NavigationServer2D>` được gán cho lớp TileMap ``layer`` đã chỉ định.
 
-By default the TileMap uses the default :ref:`World2D<class_World2D>` navigation map for the first TileMap layer. For each additional TileMap layer a new navigation map is created for the additional layer.
+Theo mặc định, TileMap sử dụng bản đồ điều hướng :ref:`World2D<class_World2D>` mặc định cho lớp TileMap đầu tiên. Với mỗi lớp TileMap bổ sung, một bản đồ điều hướng mới sẽ được tạo cho lớp đó.
 
-In order to make :ref:`NavigationAgent2D<class_NavigationAgent2D>` switch between TileMap layer navigation maps use :ref:`NavigationAgent2D.set_navigation_map()<class_NavigationAgent2D_method_set_navigation_map>` with the navigation map received from :ref:`get_layer_navigation_map()<class_TileMap_method_get_layer_navigation_map>`.
+Để khiến :ref:`NavigationAgent2D<class_NavigationAgent2D>` chuyển đổi giữa các bản đồ điều hướng của các layer TileMap, hãy sử dụng :ref:`NavigationAgent2D.set_navigation_map()<class_NavigationAgent2D_method_set_navigation_map>` cùng với bản đồ điều hướng nhận được từ :ref:`get_layer_navigation_map()<class_TileMap_method_get_layer_navigation_map>`.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -612,9 +612,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`int<class_int>` **get_layer_y_sort_origin**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_get_layer_y_sort_origin>`
 
-Returns a TileMap layer's Y sort origin.
+Trả về gốc sắp xếp theo Y của một layer TileMap.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -626,9 +626,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`int<class_int>` **get_layer_z_index**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_get_layer_z_index>`
 
-Returns a TileMap layer's Z-index value.
+Trả về giá trị Z-index của một layer TileMap.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -640,7 +640,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`int<class_int>` **get_layers_count**\ (\ ) |const| :ref:`🔗<class_TileMap_method_get_layers_count>`
 
-Returns the number of layers in the TileMap.
+Trả về số lượng layer trong TileMap.
 
 .. rst-class:: classref-item-separator
 
@@ -652,9 +652,9 @@ Returns the number of layers in the TileMap.
 
 :ref:`RID<class_RID>` **get_navigation_map**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_get_navigation_map>`
 
-**Deprecated:** Use :ref:`get_layer_navigation_map()<class_TileMap_method_get_layer_navigation_map>` instead.
+**Deprecated:** Thay vào đó, hãy sử dụng :ref:`get_layer_navigation_map()<class_TileMap_method_get_layer_navigation_map>`.
 
-Returns the :ref:`RID<class_RID>` of the :ref:`NavigationServer2D<class_NavigationServer2D>` navigation map assigned to the specified TileMap layer ``layer``.
+Trả về :ref:`RID<class_RID>` của bản đồ điều hướng :ref:`NavigationServer2D<class_NavigationServer2D>` được gán cho layer TileMap được chỉ định ``layer``.
 
 .. rst-class:: classref-item-separator
 
@@ -666,7 +666,7 @@ Returns the :ref:`RID<class_RID>` of the :ref:`NavigationServer2D<class_Navigati
 
 :ref:`Vector2i<class_Vector2i>` **get_neighbor_cell**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`, neighbor\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const| :ref:`🔗<class_TileMap_method_get_neighbor_cell>`
 
-Returns the neighboring cell to the one at coordinates ``coords``, identified by the ``neighbor`` direction. This method takes into account the different layouts a TileMap can take.
+Trả về ô lân cận của ô tại tọa độ ``coords``, được xác định bởi hướng ``neighbor``. Phương thức này tính đến các bố cục khác nhau mà TileMap có thể sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -678,9 +678,9 @@ Returns the neighboring cell to the one at coordinates ``coords``, identified by
 
 :ref:`TileMapPattern<class_TileMapPattern>` **get_pattern**\ (\ layer\: :ref:`int<class_int>`, coords_array\: :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\]\ ) :ref:`🔗<class_TileMap_method_get_pattern>`
 
-Creates a new :ref:`TileMapPattern<class_TileMapPattern>` from the given layer and set of cells.
+Tạo một :ref:`TileMapPattern<class_TileMapPattern>` mới từ layer và tập hợp các ô đã cho.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -692,7 +692,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **get_surrounding_cells**\ (\ coords\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_TileMap_method_get_surrounding_cells>`
 
-Returns the list of all neighbourings cells to the one at ``coords``.
+Trả về danh sách tất cả các ô lân cận của ô tại ``coords``.
 
 .. rst-class:: classref-item-separator
 
@@ -704,9 +704,9 @@ Returns the list of all neighbourings cells to the one at ``coords``.
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **get_used_cells**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_get_used_cells>`
 
-Returns a :ref:`Vector2i<class_Vector2i>` array with the positions of all cells containing a tile in the given layer. A cell is considered empty if its source identifier equals -1, its atlas coordinates identifiers is ``Vector2(-1, -1)`` and its alternative identifier is -1.
+Trả về một mảng :ref:`Vector2i<class_Vector2i>` chứa vị trí của tất cả các ô có tile trong layer đã cho. Một ô được xem là rỗng nếu mã định danh source của nó bằng -1, mã định danh tọa độ atlas của nó là ``Vector2(-1, -1)`` và mã định danh alternative của nó bằng -1.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -718,13 +718,13 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **get_used_cells_by_id**\ (\ layer\: :ref:`int<class_int>`, source_id\: :ref:`int<class_int>` = -1, atlas_coords\: :ref:`Vector2i<class_Vector2i>` = Vector2i(-1, -1), alternative_tile\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_TileMap_method_get_used_cells_by_id>`
 
-Returns a :ref:`Vector2i<class_Vector2i>` array with the positions of all cells containing a tile in the given layer. Tiles may be filtered according to their source (``source_id``), their atlas coordinates (``atlas_coords``) or alternative id (``alternative_tile``).
+Trả về một mảng :ref:`Vector2i<class_Vector2i>` chứa vị trí của tất cả các ô có tile trong layer đã cho. Có thể lọc các tile theo source của chúng (``source_id``), tọa độ atlas của chúng (``atlas_coords``) hoặc alternative id (``alternative_tile``).
 
-If a parameter has its value set to the default one, this parameter is not used to filter a cell. Thus, if all parameters have their respective default value, this method returns the same result as :ref:`get_used_cells()<class_TileMap_method_get_used_cells>`.
+Nếu một tham số được đặt thành giá trị mặc định, tham số đó sẽ không được dùng để lọc ô. Do đó, nếu tất cả tham số đều có giá trị mặc định tương ứng, phương thức này trả về kết quả giống với :ref:`get_used_cells()<class_TileMap_method_get_used_cells>`.
 
-A cell is considered empty if its source identifier equals -1, its atlas coordinates identifiers is ``Vector2(-1, -1)`` and its alternative identifier is -1.
+Một ô được xem là rỗng nếu mã định danh source của nó bằng -1, mã định danh tọa độ atlas của nó là ``Vector2(-1, -1)`` và mã định danh alternative của nó bằng -1.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -736,7 +736,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`Rect2i<class_Rect2i>` **get_used_rect**\ (\ ) |const| :ref:`🔗<class_TileMap_method_get_used_rect>`
 
-Returns a rectangle enclosing the used (non-empty) tiles of the map, including all layers.
+Trả về một hình chữ nhật bao quanh các tile đã sử dụng (không rỗng) của bản đồ, bao gồm tất cả các layer.
 
 .. rst-class:: classref-item-separator
 
@@ -748,7 +748,7 @@ Returns a rectangle enclosing the used (non-empty) tiles of the map, including a
 
 :ref:`bool<class_bool>` **is_cell_flipped_h**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, use_proxies\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileMap_method_is_cell_flipped_h>`
 
-Returns ``true`` if the cell on layer ``layer`` at coordinates ``coords`` is flipped horizontally. The result is valid only for atlas sources.
+Trả về ``true`` nếu ô trên layer ``layer`` tại tọa độ ``coords`` được lật theo chiều ngang. Kết quả chỉ hợp lệ đối với các nguồn atlas.
 
 .. rst-class:: classref-item-separator
 
@@ -760,7 +760,7 @@ Returns ``true`` if the cell on layer ``layer`` at coordinates ``coords`` is fli
 
 :ref:`bool<class_bool>` **is_cell_flipped_v**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, use_proxies\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileMap_method_is_cell_flipped_v>`
 
-Returns ``true`` if the cell on layer ``layer`` at coordinates ``coords`` is flipped vertically. The result is valid only for atlas sources.
+Trả về ``true`` nếu ô trên layer ``layer`` tại tọa độ ``coords`` được lật theo chiều dọc. Kết quả chỉ hợp lệ đối với các nguồn atlas.
 
 .. rst-class:: classref-item-separator
 
@@ -772,7 +772,7 @@ Returns ``true`` if the cell on layer ``layer`` at coordinates ``coords`` is fli
 
 :ref:`bool<class_bool>` **is_cell_transposed**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, use_proxies\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileMap_method_is_cell_transposed>`
 
-Returns ``true`` if the cell on layer ``layer`` at coordinates ``coords`` is transposed. The result is valid only for atlas sources.
+Trả về ``true`` nếu ô trên layer ``layer`` tại tọa độ ``coords`` được chuyển vị. Kết quả chỉ hợp lệ đối với các nguồn atlas.
 
 .. rst-class:: classref-item-separator
 
@@ -784,9 +784,9 @@ Returns ``true`` if the cell on layer ``layer`` at coordinates ``coords`` is tra
 
 :ref:`bool<class_bool>` **is_layer_enabled**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_is_layer_enabled>`
 
-Returns if a layer is enabled.
+Trả về liệu một layer có được bật hay không.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -798,7 +798,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`bool<class_bool>` **is_layer_navigation_enabled**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_is_layer_navigation_enabled>`
 
-Returns if a layer's built-in navigation regions generation is enabled.
+Trả về liệu tính năng tạo các vùng điều hướng tích hợp của một layer có được bật hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -810,9 +810,9 @@ Returns if a layer's built-in navigation regions generation is enabled.
 
 :ref:`bool<class_bool>` **is_layer_y_sort_enabled**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileMap_method_is_layer_y_sort_enabled>`
 
-Returns if a layer Y-sorts its tiles.
+Trả về liệu một layer có Y-sort các tile của nó hay không.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -824,7 +824,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 :ref:`Vector2i<class_Vector2i>` **local_to_map**\ (\ local_position\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_TileMap_method_local_to_map>`
 
-Returns the map coordinates of the cell containing the given ``local_position``. If ``local_position`` is in global coordinates, consider using :ref:`Node2D.to_local()<class_Node2D_method_to_local>` before passing it to this method. See also :ref:`map_to_local()<class_TileMap_method_map_to_local>`.
+Trả về tọa độ bản đồ của ô chứa ``local_position`` đã cho. Nếu ``local_position`` ở tọa độ toàn cục, hãy cân nhắc sử dụng :ref:`Node2D.to_local()<class_Node2D_method_to_local>` trước khi truyền nó vào method này. Xem thêm :ref:`map_to_local()<class_TileMap_method_map_to_local>`.
 
 .. rst-class:: classref-item-separator
 
@@ -836,7 +836,7 @@ Returns the map coordinates of the cell containing the given ``local_position``.
 
 :ref:`Vector2i<class_Vector2i>` **map_pattern**\ (\ position_in_tilemap\: :ref:`Vector2i<class_Vector2i>`, coords_in_pattern\: :ref:`Vector2i<class_Vector2i>`, pattern\: :ref:`TileMapPattern<class_TileMapPattern>`\ ) :ref:`🔗<class_TileMap_method_map_pattern>`
 
-Returns for the given coordinate ``coords_in_pattern`` in a :ref:`TileMapPattern<class_TileMapPattern>` the corresponding cell coordinates if the pattern was pasted at the ``position_in_tilemap`` coordinates (see :ref:`set_pattern()<class_TileMap_method_set_pattern>`). This mapping is required as in half-offset tile shapes, the mapping might not work by calculating ``position_in_tile_map + coords_in_pattern``.
+Trả về, đối với tọa độ đã cho ``coords_in_pattern`` trong một :ref:`TileMapPattern<class_TileMapPattern>`, tọa độ ô tương ứng nếu mẫu được dán tại tọa độ ``position_in_tilemap`` (xem :ref:`set_pattern()<class_TileMap_method_set_pattern>`). Ánh xạ này là cần thiết vì với các hình dạng tile half-offset, ánh xạ có thể không hoạt động nếu tính toán ``position_in_tile_map + coords_in_pattern``.
 
 .. rst-class:: classref-item-separator
 
@@ -848,9 +848,9 @@ Returns for the given coordinate ``coords_in_pattern`` in a :ref:`TileMapPattern
 
 :ref:`Vector2<class_Vector2>` **map_to_local**\ (\ map_position\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_TileMap_method_map_to_local>`
 
-Returns the centered position of a cell in the TileMap's local coordinate space. To convert the returned value into global coordinates, use :ref:`Node2D.to_global()<class_Node2D_method_to_global>`. See also :ref:`local_to_map()<class_TileMap_method_local_to_map>`.
+Trả về vị trí trung tâm của một ô trong không gian tọa độ cục bộ của TileMap. Để chuyển giá trị được trả về sang tọa độ toàn cục, hãy sử dụng :ref:`Node2D.to_global()<class_Node2D_method_to_global>`. Xem thêm :ref:`local_to_map()<class_TileMap_method_local_to_map>`.
 
-\ **Note:** This may not correspond to the visual position of the tile, i.e. it ignores the :ref:`TileData.texture_origin<class_TileData_property_texture_origin>` property of individual tiles.
+\ **Lưu ý:** Vị trí này có thể không tương ứng với vị trí hiển thị của tile, tức là bỏ qua thuộc tính :ref:`TileData.texture_origin<class_TileData_property_texture_origin>` của từng tile.
 
 .. rst-class:: classref-item-separator
 
@@ -862,7 +862,7 @@ Returns the centered position of a cell in the TileMap's local coordinate space.
 
 |void| **move_layer**\ (\ layer\: :ref:`int<class_int>`, to_position\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileMap_method_move_layer>`
 
-Moves the layer at index ``layer`` to the given position ``to_position`` in the array.
+Di chuyển layer ở chỉ mục ``layer`` đến vị trí đã cho ``to_position`` trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -874,13 +874,13 @@ Moves the layer at index ``layer`` to the given position ``to_position`` in the 
 
 |void| **notify_runtime_tile_data_update**\ (\ layer\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_TileMap_method_notify_runtime_tile_data_update>`
 
-Notifies the TileMap node that calls to :ref:`_use_tile_data_runtime_update()<class_TileMap_private_method__use_tile_data_runtime_update>` or :ref:`_tile_data_runtime_update()<class_TileMap_private_method__tile_data_runtime_update>` will lead to different results. This will thus trigger a TileMap update.
+Thông báo cho node TileMap rằng các lần gọi :ref:`_use_tile_data_runtime_update()<class_TileMap_private_method__use_tile_data_runtime_update>` hoặc :ref:`_tile_data_runtime_update()<class_TileMap_private_method__tile_data_runtime_update>` sẽ cho kết quả khác. Do đó, thao tác này sẽ kích hoạt việc cập nhật TileMap.
 
-If ``layer`` is provided, only notifies changes for the given layer. Providing the ``layer`` argument (when applicable) is usually preferred for performance reasons.
+Nếu cung cấp ``layer``, chỉ thông báo các thay đổi cho layer đã cho. Khi có thể, thường nên cung cấp đối số ``layer`` vì lý do hiệu năng.
 
-\ **Warning:** Updating the TileMap is computationally expensive and may impact performance. Try to limit the number of calls to this function to avoid unnecessary update.
+\ **Cảnh báo:** Việc cập nhật TileMap tiêu tốn nhiều tài nguyên tính toán và có thể ảnh hưởng đến hiệu năng. Hãy cố gắng hạn chế số lần gọi hàm này để tránh các lần cập nhật không cần thiết.
 
-\ **Note:** This does not trigger a direct update of the TileMap, the update will be done at the end of the frame as usual (unless you call :ref:`update_internals()<class_TileMap_method_update_internals>`).
+\ **Lưu ý:** Thao tác này không trực tiếp cập nhật TileMap; việc cập nhật sẽ được thực hiện ở cuối frame như thường lệ (trừ khi bạn gọi :ref:`update_internals()<class_TileMap_method_update_internals>`).
 
 .. rst-class:: classref-item-separator
 
@@ -892,7 +892,7 @@ If ``layer`` is provided, only notifies changes for the given layer. Providing t
 
 |void| **remove_layer**\ (\ layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileMap_method_remove_layer>`
 
-Removes the layer at index ``layer``.
+Xóa layer tại chỉ mục ``layer``.
 
 .. rst-class:: classref-item-separator
 
@@ -904,17 +904,17 @@ Removes the layer at index ``layer``.
 
 |void| **set_cell**\ (\ layer\: :ref:`int<class_int>`, coords\: :ref:`Vector2i<class_Vector2i>`, source_id\: :ref:`int<class_int>` = -1, atlas_coords\: :ref:`Vector2i<class_Vector2i>` = Vector2i(-1, -1), alternative_tile\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_TileMap_method_set_cell>`
 
-Sets the tile identifiers for the cell on layer ``layer`` at coordinates ``coords``. Each tile of the :ref:`TileSet<class_TileSet>` is identified using three parts:
+Đặt các mã định danh tile cho ô trên layer ``layer`` tại tọa độ ``coords``. Mỗi tile của :ref:`TileSet<class_TileSet>` được xác định bằng ba phần:
 
-- The source identifier ``source_id`` identifies a :ref:`TileSetSource<class_TileSetSource>` identifier. See :ref:`TileSet.set_source_id()<class_TileSet_method_set_source_id>`,
+- Mã định danh nguồn ``source_id`` xác định một mã định danh :ref:`TileSetSource<class_TileSetSource>`. Xem :ref:`TileSet.set_source_id()<class_TileSet_method_set_source_id>`,
 
-- The atlas coordinates identifier ``atlas_coords`` identifies a tile coordinates in the atlas (if the source is a :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`). For :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>` it should always be ``Vector2i(0, 0)``),
+- Mã định danh tọa độ atlas ``atlas_coords`` xác định tọa độ của một tile trong atlas (nếu nguồn là một :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`). Đối với :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>`, giá trị này luôn phải là ``Vector2i(0, 0)``),
 
-- The alternative tile identifier ``alternative_tile`` identifies a tile alternative in the atlas (if the source is a :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`), and the scene for a :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>`.
+- Mã định danh tile thay thế ``alternative_tile`` xác định một tile thay thế trong atlas (nếu nguồn là một :ref:`TileSetAtlasSource<class_TileSetAtlasSource>`), và scene cho một :ref:`TileSetScenesCollectionSource<class_TileSetScenesCollectionSource>`.
 
-If ``source_id`` is set to ``-1``, ``atlas_coords`` to ``Vector2i(-1, -1)`` or ``alternative_tile`` to ``-1``, the cell will be erased. An erased cell gets **all** its identifiers automatically set to their respective invalid values, namely ``-1``, ``Vector2i(-1, -1)`` and ``-1``.
+Nếu ``source_id`` được đặt thành ``-1``, ``atlas_coords`` thành ``Vector2i(-1, -1)`` hoặc ``alternative_tile`` thành ``-1``, ô sẽ bị xóa. Một ô đã bị xóa sẽ tự động đặt **tất cả** các mã định danh của nó thành những giá trị không hợp lệ tương ứng, cụ thể là ``-1``, ``Vector2i(-1, -1)`` và ``-1``.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -926,13 +926,13 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_cells_terrain_connect**\ (\ layer\: :ref:`int<class_int>`, cells\: :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\], terrain_set\: :ref:`int<class_int>`, terrain\: :ref:`int<class_int>`, ignore_empty_terrains\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_TileMap_method_set_cells_terrain_connect>`
 
-Update all the cells in the ``cells`` coordinates array so that they use the given ``terrain`` for the given ``terrain_set``. If an updated cell has the same terrain as one of its neighboring cells, this function tries to join the two. This function might update neighboring tiles if needed to create correct terrain transitions.
+Cập nhật tất cả các ô trong mảng tọa độ ``cells`` để chúng sử dụng ``terrain`` đã cho cho ``terrain_set`` đã cho. Nếu một ô được cập nhật có cùng terrain với một trong các ô lân cận, hàm này sẽ cố gắng nối chúng lại. Hàm này có thể cập nhật các tile lân cận nếu cần để tạo ra các chuyển tiếp terrain chính xác.
 
-If ``ignore_empty_terrains`` is ``true``, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.
+Nếu ``ignore_empty_terrains`` là ``true``, các terrain trống sẽ bị bỏ qua khi cố gắng tìm tile phù hợp nhất với các ràng buộc terrain đã cho.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
-\ **Note:** To work correctly, this method requires the TileMap's TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.
+\ **Lưu ý:** Để hoạt động chính xác, phương thức này yêu cầu TileSet của TileMap phải được thiết lập terrain với tất cả các tổ hợp terrain cần thiết. Nếu không, phương thức có thể tạo ra kết quả ngoài dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -944,13 +944,13 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_cells_terrain_path**\ (\ layer\: :ref:`int<class_int>`, path\: :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\], terrain_set\: :ref:`int<class_int>`, terrain\: :ref:`int<class_int>`, ignore_empty_terrains\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_TileMap_method_set_cells_terrain_path>`
 
-Update all the cells in the ``path`` coordinates array so that they use the given ``terrain`` for the given ``terrain_set``. The function will also connect two successive cell in the path with the same terrain. This function might update neighboring tiles if needed to create correct terrain transitions.
+Cập nhật tất cả các ô trong mảng tọa độ ``path`` để chúng sử dụng ``terrain`` đã cho cho ``terrain_set``. Hàm này cũng sẽ kết nối hai ô liên tiếp trong đường đi bằng cùng một terrain. Hàm này có thể cập nhật các tile lân cận nếu cần để tạo ra các chuyển tiếp terrain chính xác.
 
-If ``ignore_empty_terrains`` is ``true``, empty terrains will be ignored when trying to find the best fitting tile for the given terrain constraints.
+Nếu ``ignore_empty_terrains`` là ``true``, các terrain trống sẽ bị bỏ qua khi cố gắng tìm tile phù hợp nhất với các ràng buộc terrain đã cho.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
-\ **Note:** To work correctly, this method requires the TileMap's TileSet to have terrains set up with all required terrain combinations. Otherwise, it may produce unexpected results.
+\ **Lưu ý:** Để hoạt động chính xác, phương thức này yêu cầu TileSet của TileMap phải được thiết lập terrain với tất cả các tổ hợp terrain cần thiết. Nếu không, phương thức có thể tạo ra kết quả ngoài dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -962,9 +962,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_layer_enabled**\ (\ layer\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TileMap_method_set_layer_enabled>`
 
-Enables or disables the layer ``layer``. A disabled layer is not processed at all (no rendering, no physics, etc.).
+Bật hoặc tắt layer ``layer``. Một layer bị tắt sẽ hoàn toàn không được xử lý (không render, không có physics, v.v.).
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -976,9 +976,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_layer_modulate**\ (\ layer\: :ref:`int<class_int>`, modulate\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_TileMap_method_set_layer_modulate>`
 
-Sets a layer's color. It will be multiplied by tile's color and TileMap's modulate.
+Đặt màu của layer. Màu này sẽ được nhân với màu của tile và modulate của TileMap.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -990,9 +990,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_layer_name**\ (\ layer\: :ref:`int<class_int>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_TileMap_method_set_layer_name>`
 
-Sets a layer's name. This is mostly useful in the editor.
+Đặt tên cho một layer. Tính năng này chủ yếu hữu ích trong editor.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1004,7 +1004,7 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_layer_navigation_enabled**\ (\ layer\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TileMap_method_set_layer_navigation_enabled>`
 
-Enables or disables a layer's built-in navigation regions generation. Disable this if you need to bake navigation regions from a TileMap using a :ref:`NavigationRegion2D<class_NavigationRegion2D>` node.
+Bật hoặc tắt việc tạo các vùng điều hướng tích hợp sẵn của một layer. Tắt tính năng này nếu bạn cần bake các vùng điều hướng từ một TileMap bằng một node :ref:`NavigationRegion2D<class_NavigationRegion2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1016,13 +1016,13 @@ Enables or disables a layer's built-in navigation regions generation. Disable th
 
 |void| **set_layer_navigation_map**\ (\ layer\: :ref:`int<class_int>`, map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_TileMap_method_set_layer_navigation_map>`
 
-Assigns ``map`` as a :ref:`NavigationServer2D<class_NavigationServer2D>` navigation map for the specified TileMap layer ``layer``.
+Gán ``map`` làm navigation map :ref:`NavigationServer2D<class_NavigationServer2D>` cho layer TileMap được chỉ định ``layer``.
 
-By default the TileMap uses the default :ref:`World2D<class_World2D>` navigation map for the first TileMap layer. For each additional TileMap layer a new navigation map is created for the additional layer.
+Theo mặc định, TileMap sử dụng bản đồ điều hướng :ref:`World2D<class_World2D>` mặc định cho lớp TileMap đầu tiên. Với mỗi lớp TileMap bổ sung, một bản đồ điều hướng mới sẽ được tạo cho lớp đó.
 
-In order to make :ref:`NavigationAgent2D<class_NavigationAgent2D>` switch between TileMap layer navigation maps use :ref:`NavigationAgent2D.set_navigation_map()<class_NavigationAgent2D_method_set_navigation_map>` with the navigation map received from :ref:`get_layer_navigation_map()<class_TileMap_method_get_layer_navigation_map>`.
+Để khiến :ref:`NavigationAgent2D<class_NavigationAgent2D>` chuyển đổi giữa các bản đồ điều hướng của các layer TileMap, hãy sử dụng :ref:`NavigationAgent2D.set_navigation_map()<class_NavigationAgent2D_method_set_navigation_map>` cùng với bản đồ điều hướng nhận được từ :ref:`get_layer_navigation_map()<class_TileMap_method_get_layer_navigation_map>`.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1034,11 +1034,11 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_layer_y_sort_enabled**\ (\ layer\: :ref:`int<class_int>`, y_sort_enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TileMap_method_set_layer_y_sort_enabled>`
 
-Enables or disables a layer's Y-sorting. If a layer is Y-sorted, the layer will behave as a CanvasItem node where each of its tile gets Y-sorted.
+Bật hoặc tắt tính năng Y-sorting của một layer. Nếu một layer được Y-sort, layer đó sẽ hoạt động như một node CanvasItem, trong đó mỗi tile của nó sẽ được Y-sort.
 
-Y-sorted layers should usually be on different Z-index values than not Y-sorted layers, otherwise, each of those layer will be Y-sorted as whole with the Y-sorted one. This is usually an undesired behavior.
+Các layer được Y-sort thường nên có giá trị Z-index khác với các layer không được Y-sort; nếu không, mỗi layer đó sẽ được Y-sort toàn bộ cùng với layer được Y-sort. Đây thường là hành vi không mong muốn.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1050,11 +1050,11 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_layer_y_sort_origin**\ (\ layer\: :ref:`int<class_int>`, y_sort_origin\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileMap_method_set_layer_y_sort_origin>`
 
-Sets a layer's Y-sort origin value. This Y-sort origin value is added to each tile's Y-sort origin value.
+Đặt giá trị gốc Y-sort của một layer. Giá trị gốc Y-sort này được cộng vào giá trị gốc Y-sort của mỗi tile.
 
-This allows, for example, to fake a different height level on each layer. This can be useful for top-down view games.
+Ví dụ, điều này cho phép mô phỏng một độ cao khác nhau trên mỗi layer. Tính năng này có thể hữu ích cho các game có góc nhìn từ trên xuống.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1066,9 +1066,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_layer_z_index**\ (\ layer\: :ref:`int<class_int>`, z_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileMap_method_set_layer_z_index>`
 
-Sets a layers Z-index value. This Z-index is added to each tile's Z-index value.
+Thiết lập giá trị Z-index của một layer. Z-index này được cộng vào giá trị Z-index của mỗi tile.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1080,9 +1080,9 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **set_navigation_map**\ (\ layer\: :ref:`int<class_int>`, map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_TileMap_method_set_navigation_map>`
 
-**Deprecated:** Use :ref:`set_layer_navigation_map()<class_TileMap_method_set_layer_navigation_map>` instead.
+**Đã ngừng sử dụng:** Hãy sử dụng :ref:`set_layer_navigation_map()<class_TileMap_method_set_layer_navigation_map>` thay vào đó.
 
-Assigns ``map`` as a :ref:`NavigationServer2D<class_NavigationServer2D>` navigation map for the specified TileMap layer ``layer``.
+Gán ``map`` làm bản đồ điều hướng :ref:`NavigationServer2D<class_NavigationServer2D>` cho layer TileMap được chỉ định ``layer``.
 
 .. rst-class:: classref-item-separator
 
@@ -1094,9 +1094,9 @@ Assigns ``map`` as a :ref:`NavigationServer2D<class_NavigationServer2D>` navigat
 
 |void| **set_pattern**\ (\ layer\: :ref:`int<class_int>`, position\: :ref:`Vector2i<class_Vector2i>`, pattern\: :ref:`TileMapPattern<class_TileMapPattern>`\ ) :ref:`🔗<class_TileMap_method_set_pattern>`
 
-Paste the given :ref:`TileMapPattern<class_TileMapPattern>` at the given ``position`` and ``layer`` in the tile map.
+Dán :ref:`TileMapPattern<class_TileMapPattern>` đã cho tại ``position`` và ``layer`` trong tile map.
 
-If ``layer`` is negative, the layers are accessed from the last one.
+Nếu ``layer`` là số âm, các lớp sẽ được truy cập từ lớp cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1108,18 +1108,18 @@ If ``layer`` is negative, the layers are accessed from the last one.
 
 |void| **update_internals**\ (\ ) :ref:`🔗<class_TileMap_method_update_internals>`
 
-Triggers a direct update of the TileMap. Usually, calling this function is not needed, as TileMap node updates automatically when one of its properties or cells is modified.
+Kích hoạt việc cập nhật trực tiếp TileMap. Thông thường, không cần gọi hàm này, vì node TileMap tự động cập nhật khi một trong các thuộc tính hoặc ô của nó được sửa đổi.
 
-However, for performance reasons, those updates are batched and delayed to the end of the frame. Calling this function will force the TileMap to update right away instead.
+Tuy nhiên, vì lý do hiệu năng, các bản cập nhật này được gom nhóm và trì hoãn đến cuối frame. Thay vào đó, việc gọi hàm này sẽ buộc TileMap cập nhật ngay lập tức.
 
-\ **Warning:** Updating the TileMap is computationally expensive and may impact performance. Try to limit the number of updates and how many tiles they impact.
+\ **Cảnh báo:** Việc cập nhật TileMap tiêu tốn nhiều tài nguyên tính toán và có thể ảnh hưởng đến hiệu năng. Hãy cố gắng hạn chế số lần cập nhật cũng như số lượng tile mà chúng tác động đến.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

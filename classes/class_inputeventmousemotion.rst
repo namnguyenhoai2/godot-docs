@@ -10,36 +10,36 @@
 InputEventMouseMotion
 =====================
 
-**Inherits:** :ref:`InputEventMouse<class_InputEventMouse>` **<** :ref:`InputEventWithModifiers<class_InputEventWithModifiers>` **<** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`InputEventMouse<class_InputEventMouse>` **<** :ref:`InputEventWithModifiers<class_InputEventWithModifiers>` **<** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a mouse or a pen movement.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Stores information about a mouse or a pen motion. This includes relative position, absolute position, and velocity. See :ref:`Node._input()<class_Node_private_method__input>`.
-
-\ **Note:** By default, this event is only emitted once per frame rendered at most. If you need more precise input reporting, set :ref:`Input.use_accumulated_input<class_Input_property_use_accumulated_input>` to ``false`` to make events emitted as often as possible. If you use InputEventMouseMotion to draw lines, consider using :ref:`Geometry2D.bresenham_line()<class_Geometry2D_method_bresenham_line>` as well to avoid visible gaps in lines if the user is moving the mouse quickly.
-
-\ **Note:** This event may be emitted even when the mouse hasn't moved, either by the operating system or by Godot itself. If you really need to know if the mouse has moved (e.g. to suppress displaying a tooltip), you should check that ``relative.is_zero_approx()`` is ``false``.
+Biểu thị chuyển động của chuột hoặc bút.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lưu trữ thông tin về chuyển động của chuột hoặc bút. Thông tin này bao gồm vị trí tương đối, vị trí tuyệt đối và vận tốc. Xem :ref:`Node._input()<class_Node_private_method__input>`.
+
+\ **Lưu ý:** Theo mặc định, sự kiện này nhiều nhất chỉ được phát ra một lần cho mỗi khung hình được kết xuất. Nếu cần báo cáo dữ liệu đầu vào chính xác hơn, hãy đặt :ref:`Input.use_accumulated_input<class_Input_property_use_accumulated_input>` thành ``false`` để các sự kiện được phát ra thường xuyên nhất có thể. Nếu sử dụng InputEventMouseMotion để vẽ các đường, hãy cân nhắc sử dụng cả :ref:`Geometry2D.bresenham_line()<class_Geometry2D_method_bresenham_line>` để tránh các khoảng trống dễ thấy trong đường vẽ khi người dùng di chuyển chuột nhanh.
+
+\ **Lưu ý:** Sự kiện này có thể được phát ra ngay cả khi chuột không di chuyển, do hệ điều hành hoặc chính Godot phát ra. Nếu thực sự cần biết chuột có di chuyển hay không (ví dụ: để ngăn hiển thị chú giải công cụ), bạn nên kiểm tra rằng ``relative.is_zero_approx()`` là ``false``.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using InputEvent <../tutorials/inputs/inputevent>`
+- :doc:`Sử dụng InputEvent <../tutorials/inputs/inputevent>`
 
-- :doc:`Mouse and input coordinates <../tutorials/inputs/mouse_and_input_coordinates>`
+- :doc:`Tọa độ chuột và tọa độ đầu vào <../tutorials/inputs/mouse_and_input_coordinates>`
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản trình diễn voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -66,8 +66,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEventMouseMotion_property_pen_inverted:
 
@@ -80,9 +80,9 @@ Property Descriptions
 - |void| **set_pen_inverted**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_pen_inverted**\ (\ )
 
-Returns ``true`` when using the eraser end of a stylus pen.
+Trả về ``true`` khi sử dụng đầu tẩy của bút stylus.
 
-\ **Note:** This property is implemented on Linux, macOS and Windows.
+\ **Lưu ý:** Thuộc tính này được triển khai trên Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ Returns ``true`` when using the eraser end of a stylus pen.
 - |void| **set_pressure**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pressure**\ (\ )
 
-Represents the pressure the user puts on the pen. Ranges from ``0.0`` to ``1.0``.
+Biểu thị áp lực người dùng tác động lên bút. Giá trị nằm trong khoảng từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -116,11 +116,11 @@ Represents the pressure the user puts on the pen. Ranges from ``0.0`` to ``1.0``
 - |void| **set_relative**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_relative**\ (\ )
 
-The mouse position relative to the previous position (position at the last frame).
+Vị trí chuột tương đối so với vị trí trước đó (vị trí ở khung hình trước).
 
-\ **Note:** Since **InputEventMouseMotion** may only be emitted when the mouse moves, it is not possible to reliably detect when the mouse has stopped moving by checking this property. A separate, short timer may be necessary.
+\ **Lưu ý:** Vì **InputEventMouseMotion** có thể chỉ được phát ra khi chuột di chuyển, nên không thể phát hiện một cách đáng tin cậy thời điểm chuột ngừng di chuyển bằng cách kiểm tra thuộc tính này. Có thể cần một bộ hẹn giờ riêng với khoảng thời gian ngắn.
 
-\ **Note:** :ref:`relative<class_InputEventMouseMotion_property_relative>` is automatically scaled according to the content scale factor, which is defined by the project's stretch mode settings. This means mouse sensitivity will appear different depending on resolution when using :ref:`relative<class_InputEventMouseMotion_property_relative>` in a script that handles mouse aiming with the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode. To avoid this, use :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` instead.
+\ **Lưu ý:** :ref:`relative<class_InputEventMouseMotion_property_relative>` được tự động điều chỉnh theo hệ số tỷ lệ nội dung, được xác định bởi các thiết lập stretch mode của dự án. Điều này có nghĩa là độ nhạy của chuột sẽ có vẻ khác nhau tùy theo độ phân giải khi sử dụng :ref:`relative<class_InputEventMouseMotion_property_relative>` trong một script xử lý việc ngắm bằng chuột với mouse mode :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>`. Để tránh điều này, hãy sử dụng :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -137,11 +137,11 @@ The mouse position relative to the previous position (position at the last frame
 - |void| **set_screen_relative**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_screen_relative**\ (\ )
 
-The unscaled mouse position relative to the previous position in the coordinate system of the screen (position at the last frame).
+Vị trí chuột chưa được điều chỉnh tỷ lệ tương đối so với vị trí trước đó trong hệ tọa độ của màn hình (vị trí ở khung hình trước).
 
-\ **Note:** Since **InputEventMouseMotion** may only be emitted when the mouse moves, it is not possible to reliably detect when the mouse has stopped moving by checking this property. A separate, short timer may be necessary.
+\ **Lưu ý:** Vì **InputEventMouseMotion** có thể chỉ được phát ra khi chuột di chuyển, nên không thể phát hiện một cách đáng tin cậy thời điểm chuột ngừng di chuyển bằng cách kiểm tra thuộc tính này. Có thể cần một bộ hẹn giờ riêng với khoảng thời gian ngắn.
 
-\ **Note:** This coordinate is *not* scaled according to the content scale factor or calls to :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`. This should be preferred over :ref:`relative<class_InputEventMouseMotion_property_relative>` for mouse aiming when using the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode, regardless of the project's stretch mode.
+\ **Lưu ý:** Tọa độ này *không* được điều chỉnh theo hệ số tỷ lệ nội dung hoặc các lệnh gọi đến :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`. Nên ưu tiên tọa độ này hơn :ref:`relative<class_InputEventMouseMotion_property_relative>` để ngắm bằng chuột khi sử dụng mouse mode :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>`, bất kể stretch mode của dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -158,9 +158,9 @@ The unscaled mouse position relative to the previous position in the coordinate 
 - |void| **set_screen_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_screen_velocity**\ (\ )
 
-The unscaled mouse velocity in pixels per second in screen coordinates. This velocity is *not* scaled according to the content scale factor or calls to :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`.
+Vận tốc chuột chưa được scale tính bằng pixel trên giây trong hệ tọa độ màn hình. Vận tốc này *không* được scale theo hệ số scale nội dung hoặc các lệnh gọi đến :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`.
 
-\ **Note:** In :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mode, :ref:`screen_velocity<class_InputEventMouseMotion_property_screen_velocity>` returns ``(0, 0)`` because the mouse cursor is hidden and locked. Use :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` for mouse aiming using the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode.
+\ **Lưu ý:** Ở chế độ :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>`, :ref:`screen_velocity<class_InputEventMouseMotion_property_screen_velocity>` trả về ``(0, 0)`` vì con trỏ chuột bị ẩn và khóa. Hãy sử dụng :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` để ngắm bằng chuột khi dùng chế độ chuột :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ The unscaled mouse velocity in pixels per second in screen coordinates. This vel
 - |void| **set_tilt**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_tilt**\ (\ )
 
-Represents the angles of tilt of the pen. Positive X-coordinate value indicates a tilt to the right. Positive Y-coordinate value indicates a tilt toward the user. Ranges from ``-1.0`` to ``1.0`` for both axes.
+Biểu thị các góc nghiêng của bút. Giá trị tọa độ X dương cho biết bút nghiêng sang phải. Giá trị tọa độ Y dương cho biết bút nghiêng về phía người dùng. Phạm vi của cả hai trục là từ ``-1.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -194,18 +194,18 @@ Represents the angles of tilt of the pen. Positive X-coordinate value indicates 
 - |void| **set_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_velocity**\ (\ )
 
-The mouse velocity in pixels per second.
+Vận tốc chuột tính bằng pixel trên giây.
 
-\ **Note:** :ref:`velocity<class_InputEventMouseMotion_property_velocity>` is automatically scaled according to the content scale factor, which is defined by the project's stretch mode settings. That means mouse sensitivity may appear different depending on resolution.
+\ **Lưu ý:** :ref:`velocity<class_InputEventMouseMotion_property_velocity>` được tự động scale theo hệ số scale nội dung, được xác định bởi các thiết lập stretch mode của dự án. Điều đó có nghĩa là độ nhạy của chuột có thể khác nhau tùy theo độ phân giải.
 
-\ **Note:** In :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mode, :ref:`velocity<class_InputEventMouseMotion_property_velocity>` returns ``(0, 0)`` because the mouse cursor is hidden and locked. Use :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` for mouse aiming using the :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>` mouse mode.
+\ **Lưu ý:** Ở chế độ :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>`, :ref:`velocity<class_InputEventMouseMotion_property_velocity>` trả về ``(0, 0)`` vì con trỏ chuột bị ẩn và khóa. Hãy sử dụng :ref:`screen_relative<class_InputEventMouseMotion_property_screen_relative>` để ngắm bằng chuột khi dùng chế độ chuột :ref:`Input.MOUSE_MODE_CAPTURED<class_Input_constant_MOUSE_MODE_CAPTURED>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

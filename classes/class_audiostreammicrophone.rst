@@ -10,36 +10,36 @@
 AudioStreamMicrophone
 =====================
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Plays real-time audio input data.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-When used directly in an :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` node, **AudioStreamMicrophone** plays back microphone input in real-time. This can be used in conjunction with :ref:`AudioEffectCapture<class_AudioEffectCapture>` to process the data or save it.
-
-\ **Note:** :ref:`ProjectSettings.audio/driver/enable_input<class_ProjectSettings_property_audio/driver/enable_input>` must be ``true`` for audio input to work. See also that setting's description for caveats related to permissions and operating system privacy settings.
+Phát dữ liệu đầu vào âm thanh theo thời gian thực.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Khi được sử dụng trực tiếp trong một :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` node, **AudioStreamMicrophone** phát lại đầu vào từ microphone theo thời gian thực. Có thể dùng kết hợp với :ref:`AudioEffectCapture<class_AudioEffectCapture>` để xử lý hoặc lưu dữ liệu này.
+
+\ **Lưu ý:** :ref:`ProjectSettings.audio/driver/enable_input <class_ProjectSettings_property_audio/driver/enable_input>` phải là ``true`` để đầu vào âm thanh hoạt động. Xem thêm phần mô tả của cài đặt đó để biết các lưu ý liên quan đến quyền và cài đặt quyền riêng tư của hệ điều hành.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
-- :doc:`Recording with microphone <../tutorials/audio/recording_with_microphone>`
+- :doc:`Ghi âm bằng microphone <../tutorials/audio/recording_with_microphone>`
 
-- `Audio Mic Record Demo <https://github.com/godotengine/godot-demo-projects/tree/master/audio/mic_record>`__
+- `Bản minh họa ghi âm bằng microphone <https://github.com/godotengine/godot-demo-projects/tree/master/audio/mic_record>`__
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

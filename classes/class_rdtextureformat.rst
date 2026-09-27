@@ -10,62 +10,62 @@
 RDTextureFormat
 ===============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Texture format (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Định dạng texture (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được :ref:`RenderingDevice<class_RenderingDevice>` sử dụng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                        | :ref:`array_layers<class_RDTextureFormat_property_array_layers>`           | ``1``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                        | :ref:`depth<class_RDTextureFormat_property_depth>`                         | ``1``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`DataFormat<enum_RenderingDevice_DataFormat>`                           | :ref:`format<class_RDTextureFormat_property_format>`                       | ``8``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                        | :ref:`height<class_RDTextureFormat_property_height>`                       | ``1``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`is_discardable<class_RDTextureFormat_property_is_discardable>`       | ``false`` |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`is_resolve_buffer<class_RDTextureFormat_property_is_resolve_buffer>` | ``false`` |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                        | :ref:`mipmaps<class_RDTextureFormat_property_mipmaps>`                     | ``1``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>`                   | :ref:`samples<class_RDTextureFormat_property_samples>`                     | ``0``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`TextureType<enum_RenderingDevice_TextureType>`                         | :ref:`texture_type<class_RDTextureFormat_property_texture_type>`           | ``1``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | |bitfield|\[:ref:`TextureUsageBits<enum_RenderingDevice_TextureUsageBits>`\] | :ref:`usage_bits<class_RDTextureFormat_property_usage_bits>`               | ``0``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                        | :ref:`width<class_RDTextureFormat_property_width>`                         | ``1``     |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                         | :ref:`array_layers<class_RDTextureFormat_property_array_layers>`           | ``1``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                         | :ref:`depth<class_RDTextureFormat_property_depth>`                         | ``1``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`DataFormat <enum_RenderingDevice_DataFormat>`                           | :ref:`format<class_RDTextureFormat_property_format>`                       | ``8``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                         | :ref:`height<class_RDTextureFormat_property_height>`                       | ``1``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`is_discardable<class_RDTextureFormat_property_is_discardable>`       | ``false`` |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`is_resolve_buffer<class_RDTextureFormat_property_is_resolve_buffer>` | ``false`` |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                         | :ref:`mipmaps<class_RDTextureFormat_property_mipmaps>`                     | ``1``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`TextureSamples <enum_RenderingDevice_TextureSamples>`                   | :ref:`samples<class_RDTextureFormat_property_samples>`                     | ``0``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`TextureType <enum_RenderingDevice_TextureType>`                         | :ref:`texture_type<class_RDTextureFormat_property_texture_type>`           | ``1``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | |bitfield|\[:ref:`TextureUsageBits <enum_RenderingDevice_TextureUsageBits>`\] | :ref:`usage_bits<class_RDTextureFormat_property_usage_bits>`               | ``0``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                         | :ref:`width<class_RDTextureFormat_property_width>`                         | ``1``     |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +--------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`add_shareable_format<class_RDTextureFormat_method_add_shareable_format>`\ (\ format\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ )       |
-   +--------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`remove_shareable_format<class_RDTextureFormat_method_remove_shareable_format>`\ (\ format\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ ) |
-   +--------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`add_shareable_format<class_RDTextureFormat_method_add_shareable_format>`\ (\ format\: :ref:`DataFormat <enum_RenderingDevice_DataFormat>`\ )        |
+   +--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`remove_shareable_format<class_RDTextureFormat_method_remove_shareable_format>`\ (\ format\: :ref:`DataFormat <enum_RenderingDevice_DataFormat>`\ )ি |
+   +--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -73,8 +73,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDTextureFormat_property_array_layers:
 
@@ -87,7 +87,7 @@ Property Descriptions
 - |void| **set_array_layers**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_array_layers**\ (\ )
 
-The number of layers in the texture. Only relevant for 2D texture arrays.
+Số lớp trong texture. Chỉ áp dụng cho các mảng texture 2D.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ The number of layers in the texture. Only relevant for 2D texture arrays.
 - |void| **set_depth**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_depth**\ (\ )
 
-The texture's depth (in pixels). This is always ``1`` for 2D textures.
+Độ sâu của texture (tính bằng pixel). Giá trị này luôn là ``1`` đối với texture 2D.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ The texture's depth (in pixels). This is always ``1`` for 2D textures.
 - |void| **set_format**\ (\ value\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ )
 - :ref:`DataFormat<enum_RenderingDevice_DataFormat>` **get_format**\ (\ )
 
-The texture's pixel data format.
+Định dạng dữ liệu pixel của texture.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ The texture's pixel data format.
 - |void| **set_height**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_height**\ (\ )
 
-The texture's height (in pixels).
+Chiều cao của texture (tính bằng pixel).
 
 .. rst-class:: classref-item-separator
 
@@ -155,9 +155,9 @@ The texture's height (in pixels).
 - |void| **set_is_discardable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_is_discardable**\ (\ )
 
-If a texture is discardable, its contents do not need to be preserved between frames. This flag is only relevant when the texture is used as target in a draw list.
+Nếu một texture có thể bị loại bỏ, nội dung của nó không cần được bảo toàn giữa các frame. Cờ này chỉ có ý nghĩa khi texture được sử dụng làm đích trong một draw list.
 
-This information is used by :ref:`RenderingDevice<class_RenderingDevice>` to figure out if a texture's contents can be discarded, eliminating unnecessary writes to memory and boosting performance.
+:ref:`RenderingDevice<class_RenderingDevice>` sử dụng thông tin này để xác định liệu nội dung của texture có thể bị loại bỏ hay không, từ đó loại bỏ các thao tác ghi không cần thiết vào bộ nhớ và cải thiện hiệu năng.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ This information is used by :ref:`RenderingDevice<class_RenderingDevice>` to fig
 - |void| **set_is_resolve_buffer**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_is_resolve_buffer**\ (\ )
 
-The texture will be used as the destination of a resolve operation.
+Texture sẽ được sử dụng làm đích của một thao tác resolve.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ The texture will be used as the destination of a resolve operation.
 - |void| **set_mipmaps**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_mipmaps**\ (\ )
 
-The number of mipmaps available in the texture.
+Số mipmap có trong texture.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ The number of mipmaps available in the texture.
 - |void| **set_samples**\ (\ value\: :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>`\ )
 - :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>` **get_samples**\ (\ )
 
-The number of samples used when sampling the texture.
+Số mẫu được sử dụng khi sampling texture.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ The number of samples used when sampling the texture.
 - |void| **set_texture_type**\ (\ value\: :ref:`TextureType<enum_RenderingDevice_TextureType>`\ )
 - :ref:`TextureType<enum_RenderingDevice_TextureType>` **get_texture_type**\ (\ )
 
-The texture type.
+Loại texture.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ The texture type.
 - |void| **set_usage_bits**\ (\ value\: |bitfield|\[:ref:`TextureUsageBits<enum_RenderingDevice_TextureUsageBits>`\]\ )
 - |bitfield|\[:ref:`TextureUsageBits<enum_RenderingDevice_TextureUsageBits>`\] **get_usage_bits**\ (\ )
 
-The texture's usage bits, which determine what can be done using the texture.
+Các bit sử dụng của texture, xác định những thao tác có thể thực hiện trên texture.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ The texture's usage bits, which determine what can be done using the texture.
 - |void| **set_width**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_width**\ (\ )
 
-The texture's width (in pixels).
+Chiều rộng của texture (tính bằng pixel).
 
 .. rst-class:: classref-section-separator
 
@@ -267,8 +267,8 @@ The texture's width (in pixels).
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RDTextureFormat_method_add_shareable_format:
 
@@ -276,7 +276,7 @@ Method Descriptions
 
 |void| **add_shareable_format**\ (\ format\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ ) :ref:`🔗<class_RDTextureFormat_method_add_shareable_format>`
 
-Adds ``format`` as a valid format for the corresponding :ref:`RDTextureView<class_RDTextureView>`'s :ref:`RDTextureView.format_override<class_RDTextureView_property_format_override>` property. If any format is added as shareable, then the main :ref:`format<class_RDTextureFormat_property_format>` must also be added.
+Thêm ``format`` làm định dạng hợp lệ cho thuộc tính :ref:`RDTextureView.format_override<class_RDTextureView_property_format_override>` của :ref:`RDTextureView<class_RDTextureView>` tương ứng. Nếu bất kỳ định dạng nào được thêm làm định dạng có thể chia sẻ, thì cũng phải thêm :ref:`format<class_RDTextureFormat_property_format>` chính.
 
 .. rst-class:: classref-item-separator
 
@@ -288,14 +288,14 @@ Adds ``format`` as a valid format for the corresponding :ref:`RDTextureView<clas
 
 |void| **remove_shareable_format**\ (\ format\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ ) :ref:`🔗<class_RDTextureFormat_method_remove_shareable_format>`
 
-Removes ``format`` from the list of valid formats that the corresponding :ref:`RDTextureView<class_RDTextureView>`'s :ref:`RDTextureView.format_override<class_RDTextureView_property_format_override>` property can be set to.
+Xóa ``format`` khỏi danh sách các định dạng hợp lệ mà thuộc tính :ref:`RDTextureView.format_override<class_RDTextureView_property_format_override>` của :ref:`RDTextureView<class_RDTextureView>` tương ứng có thể được đặt thành.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

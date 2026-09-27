@@ -10,89 +10,89 @@
 PackedScene
 ===========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An abstraction of a serialized scene.
+Một abstraction của một scene đã được serialize.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A simplified interface to a scene file. Provides access to operations and checks that can be performed on the scene resource itself.
+Một interface đơn giản hóa cho tệp scene. Cung cấp quyền truy cập vào các thao tác và kiểm tra có thể thực hiện trên chính resource scene.
 
-Can be used to save a node to a file. When saving, the node as well as all the nodes it owns get saved (see :ref:`Node.owner<class_Node_property_owner>` property).
+Có thể được dùng để lưu một node vào tệp. Khi lưu, node đó cùng tất cả các node mà nó sở hữu sẽ được lưu (xem thuộc tính :ref:`Node.owner<class_Node_property_owner>`).
 
-\ **Note:** The node doesn't need to own itself.
+\ **Lưu ý:** Node không cần phải sở hữu chính nó.
 
-\ **Example:** Load a saved scene:
+\ **Ví dụ:** Tải một scene đã lưu:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Use load() instead of preload() if the path isn't known at compile-time.
+    # Dùng load() thay cho preload() nếu đường dẫn chưa được biết tại thời điểm biên dịch.
     var scene = preload("res://scene.tscn").instantiate()
-    # Add the node as a child of the node the script is attached to.
+    # Thêm node này làm node con của node mà script được gắn vào.
     add_child(scene)
 
  .. code-tab:: csharp
 
-    // C# has no preload, so you have to always use ResourceLoader.Load<PackedScene>().
+    // C# không có preload, vì vậy bạn luôn phải dùng ResourceLoader.Load<PackedScene>().
     var scene = ResourceLoader.Load<PackedScene>("res://scene.tscn").Instantiate();
-    // Add the node as a child of the node the script is attached to.
+    // Thêm node này làm node con của node mà script được gắn vào.
     AddChild(scene);
 
 
 
-\ **Example:** Save a node with different owners. The following example creates 3 objects: :ref:`Node2D<class_Node2D>` (``node``), :ref:`RigidBody2D<class_RigidBody2D>` (``body``) and :ref:`CollisionObject2D<class_CollisionObject2D>` (``collision``). ``collision`` is a child of ``body`` which is a child of ``node``. Only ``body`` is owned by ``node`` and :ref:`pack()<class_PackedScene_method_pack>` will therefore only save those two nodes, but not ``collision``.
+\ **Ví dụ:** Lưu một node có các owner khác nhau. Ví dụ sau tạo 3 đối tượng: :ref:`Node2D<class_Node2D>` (``node``), :ref:`RigidBody2D<class_RigidBody2D>` (``body``) và :ref:`CollisionObject2D<class_CollisionObject2D>` (``collision``). ``collision`` là node con của ``body``, còn ``body`` là node con của ``node``. Chỉ ``body`` được sở hữu bởi ``node``, do đó :ref:`pack()<class_PackedScene_method_pack>` sẽ chỉ lưu hai node đó, nhưng không lưu ``collision``.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Create the objects.
+    # Tạo các đối tượng.
     var node = Node2D.new()
     var body = RigidBody2D.new()
     var collision = CollisionShape2D.new()
 
-    # Create the object hierarchy.
+    # Tạo hệ thống phân cấp đối tượng.
     body.add_child(collision)
     node.add_child(body)
 
-    # Change owner of `body`, but not of `collision`.
+    # Thay đổi chủ sở hữu của `body`, nhưng không thay đổi chủ sở hữu của `collision`.
     body.owner = node
     var scene = PackedScene.new()
 
-    # Only `node` and `body` are now packed.
+    # Bây giờ chỉ `node` và `body` được đóng gói.
     var result = scene.pack(node)
     if result == OK:
-        var error = ResourceSaver.save(scene, "res://path/name.tscn")  # Or "user://..."
+        var error = ResourceSaver.save(scene, "res://path/name.tscn")  # Hoặc "user://..."
         if error != OK:
             push_error("An error occurred while saving the scene to disk.")
 
  .. code-tab:: csharp
 
-    // Create the objects.
+    // Tạo các đối tượng.
     var node = new Node2D();
     var body = new RigidBody2D();
     var collision = new CollisionShape2D();
 
-    // Create the object hierarchy.
+    // Tạo hệ phân cấp đối tượng.
     body.AddChild(collision);
     node.AddChild(body);
 
-    // Change owner of `body`, but not of `collision`.
+    // Thay đổi chủ sở hữu của `body`, nhưng không thay đổi chủ sở hữu của `collision`.
     body.Owner = node;
     var scene = new PackedScene();
 
-    // Only `node` and `body` are now packed.
+    // Bây giờ chỉ `node` và `body` được đóng gói.
     Error result = scene.Pack(node);
     if (result == Error.Ok)
     {
-        Error error = ResourceSaver.Save(scene, "res://path/name.tscn"); // Or "user://..."
+        Error error = ResourceSaver.Save(scene, "res://path/name.tscn"); // Hoặc "user://..."
         if (error != Error.Ok)
         {
             GD.PushError("An error occurred while saving the scene to disk.");
@@ -103,28 +103,28 @@ Can be used to save a node to a file. When saving, the node as well as all the n
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `2D Role Playing Game (RPG) Demo <https://godotengine.org/asset-library/asset/2729>`__
+- `Bản minh họa game nhập vai 2D (RPG) <https://godotengine.org/asset-library/asset/2729>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`can_instantiate<class_PackedScene_method_can_instantiate>`\ (\ ) |const|                                                              |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`SceneState<class_SceneState>`   | :ref:`get_state<class_PackedScene_method_get_state>`\ (\ ) |const|                                                                          |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Node<class_Node>`               | :ref:`instantiate<class_PackedScene_method_instantiate>`\ (\ edit_state\: :ref:`GenEditState<enum_PackedScene_GenEditState>` = 0\ ) |const| |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`pack<class_PackedScene_method_pack>`\ (\ path\: :ref:`Node<class_Node>`\ )                                                            |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`              | :ref:`can_instantiate<class_PackedScene_method_can_instantiate>`\ (\ ) |const|                                                               |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`SceneState<class_SceneState>`  | :ref:`get_state<class_PackedScene_method_get_state>`\ (\ ) |const|                                                                           |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Node<class_Node>`              | :ref:`instantiate<class_PackedScene_method_instantiate>`\ (\ edit_state\: :ref:`GenEditState <enum_PackedScene_GenEditState>` = 0\ ) |const| |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>` | :ref:`pack<class_PackedScene_method_pack>`\ (\ path\: :ref:`Node<class_Node>`\ )                                                             |
+   +--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -132,14 +132,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_PackedScene_GenEditState:
 
 .. rst-class:: classref-enumeration
 
-enum **GenEditState**: :ref:`🔗<enum_PackedScene_GenEditState>`
+enum **GenEditState**: :ref:`🔗 <enum_PackedScene_GenEditState>`
 
 .. _class_PackedScene_constant_GEN_EDIT_STATE_DISABLED:
 
@@ -147,7 +147,7 @@ enum **GenEditState**: :ref:`🔗<enum_PackedScene_GenEditState>`
 
 :ref:`GenEditState<enum_PackedScene_GenEditState>` **GEN_EDIT_STATE_DISABLED** = ``0``
 
-If passed to :ref:`instantiate()<class_PackedScene_method_instantiate>`, blocks edits to the scene state.
+Nếu được truyền vào :ref:`instantiate()<class_PackedScene_method_instantiate>`, sẽ chặn việc chỉnh sửa trạng thái scene.
 
 .. _class_PackedScene_constant_GEN_EDIT_STATE_INSTANCE:
 
@@ -155,9 +155,9 @@ If passed to :ref:`instantiate()<class_PackedScene_method_instantiate>`, blocks 
 
 :ref:`GenEditState<enum_PackedScene_GenEditState>` **GEN_EDIT_STATE_INSTANCE** = ``1``
 
-If passed to :ref:`instantiate()<class_PackedScene_method_instantiate>`, provides local scene resources to the local scene.
+Nếu được truyền vào :ref:`instantiate()<class_PackedScene_method_instantiate>`, sẽ cung cấp các tài nguyên scene cục bộ cho scene cục bộ.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. _class_PackedScene_constant_GEN_EDIT_STATE_MAIN:
 
@@ -165,9 +165,9 @@ If passed to :ref:`instantiate()<class_PackedScene_method_instantiate>`, provide
 
 :ref:`GenEditState<enum_PackedScene_GenEditState>` **GEN_EDIT_STATE_MAIN** = ``2``
 
-If passed to :ref:`instantiate()<class_PackedScene_method_instantiate>`, provides local scene resources to the local scene. Only the main scene should receive the main edit state.
+Nếu được truyền vào :ref:`instantiate()<class_PackedScene_method_instantiate>`, sẽ cung cấp các tài nguyên scene cục bộ cho scene cục bộ. Chỉ scene chính mới nên nhận trạng thái chỉnh sửa chính.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. _class_PackedScene_constant_GEN_EDIT_STATE_MAIN_INHERITED:
 
@@ -175,9 +175,9 @@ If passed to :ref:`instantiate()<class_PackedScene_method_instantiate>`, provide
 
 :ref:`GenEditState<enum_PackedScene_GenEditState>` **GEN_EDIT_STATE_MAIN_INHERITED** = ``3``
 
-It's similar to :ref:`GEN_EDIT_STATE_MAIN<class_PackedScene_constant_GEN_EDIT_STATE_MAIN>`, but for the case where the scene is being instantiated to be the base of another one.
+Tương tự như :ref:`GEN_EDIT_STATE_MAIN<class_PackedScene_constant_GEN_EDIT_STATE_MAIN>`, nhưng dùng trong trường hợp scene được khởi tạo để làm cơ sở cho một scene khác.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. rst-class:: classref-section-separator
 
@@ -185,8 +185,8 @@ It's similar to :ref:`GEN_EDIT_STATE_MAIN<class_PackedScene_constant_GEN_EDIT_ST
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PackedScene_method_can_instantiate:
 
@@ -194,7 +194,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **can_instantiate**\ (\ ) |const| :ref:`🔗<class_PackedScene_method_can_instantiate>`
 
-Returns ``true`` if the scene file has nodes.
+Trả về ``true`` nếu tệp scene có các node.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Returns ``true`` if the scene file has nodes.
 
 :ref:`SceneState<class_SceneState>` **get_state**\ (\ ) |const| :ref:`🔗<class_PackedScene_method_get_state>`
 
-Returns the :ref:`SceneState<class_SceneState>` representing the scene file contents.
+Trả về :ref:`SceneState<class_SceneState>` đại diện cho nội dung tệp scene.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ Returns the :ref:`SceneState<class_SceneState>` representing the scene file cont
 
 :ref:`Node<class_Node>` **instantiate**\ (\ edit_state\: :ref:`GenEditState<enum_PackedScene_GenEditState>` = 0\ ) |const| :ref:`🔗<class_PackedScene_method_instantiate>`
 
-Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). Triggers a :ref:`Node.NOTIFICATION_SCENE_INSTANTIATED<class_Node_constant_NOTIFICATION_SCENE_INSTANTIATED>` notification on the root node.
+Khởi tạo hệ phân cấp node của scene. Kích hoạt (các) lần khởi tạo scene con. Kích hoạt thông báo :ref:`Node.NOTIFICATION_SCENE_INSTANTIATED<class_Node_constant_NOTIFICATION_SCENE_INSTANTIATED>` trên node gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -230,14 +230,14 @@ Instantiates the scene's node hierarchy. Triggers child scene instantiation(s). 
 
 :ref:`Error<enum_@GlobalScope_Error>` **pack**\ (\ path\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_PackedScene_method_pack>`
 
-Packs the ``path`` node, and all owned sub-nodes, into this **PackedScene**. Any existing data will be cleared. See :ref:`Node.owner<class_Node_property_owner>`.
+Đóng gói node ``path`` và tất cả node con do node đó sở hữu vào **PackedScene** này. Mọi dữ liệu hiện có sẽ bị xóa. Xem :ref:`Node.owner<class_Node_property_owner>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được cấu thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

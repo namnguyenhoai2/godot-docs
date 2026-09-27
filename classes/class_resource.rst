@@ -10,38 +10,38 @@
 Resource
 ========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`Animation<class_Animation>`, :ref:`AnimationLibrary<class_AnimationLibrary>`, :ref:`AnimationNode<class_AnimationNode>`, :ref:`AnimationNodeStateMachinePlayback<class_AnimationNodeStateMachinePlayback>`, :ref:`AnimationNodeStateMachineTransition<class_AnimationNodeStateMachineTransition>`, :ref:`AudioBusLayout<class_AudioBusLayout>`, :ref:`AudioEffect<class_AudioEffect>`, :ref:`AudioStream<class_AudioStream>`, :ref:`BitMap<class_BitMap>`, :ref:`BoneMap<class_BoneMap>`, :ref:`ButtonGroup<class_ButtonGroup>`, :ref:`CameraAttributes<class_CameraAttributes>`, :ref:`ColorPalette<class_ColorPalette>`, :ref:`Compositor<class_Compositor>`, :ref:`CompositorEffect<class_CompositorEffect>`, :ref:`CryptoKey<class_CryptoKey>`, :ref:`Curve<class_Curve>`, :ref:`Curve2D<class_Curve2D>`, :ref:`Curve3D<class_Curve3D>`, :ref:`EditorNode3DGizmoPlugin<class_EditorNode3DGizmoPlugin>`, :ref:`EditorSettings<class_EditorSettings>`, :ref:`Environment<class_Environment>`, :ref:`FoldableGroup<class_FoldableGroup>`, :ref:`Font<class_Font>`, :ref:`GDExtension<class_GDExtension>`, :ref:`GLTFAccessor<class_GLTFAccessor>`, :ref:`GLTFAnimation<class_GLTFAnimation>`, :ref:`GLTFBufferView<class_GLTFBufferView>`, :ref:`GLTFCamera<class_GLTFCamera>`, :ref:`GLTFDocument<class_GLTFDocument>`, :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>`, :ref:`GLTFLight<class_GLTFLight>`, :ref:`GLTFMesh<class_GLTFMesh>`, :ref:`GLTFNode<class_GLTFNode>`, :ref:`GLTFPhysicsBody<class_GLTFPhysicsBody>`, :ref:`GLTFPhysicsShape<class_GLTFPhysicsShape>`, :ref:`GLTFSkeleton<class_GLTFSkeleton>`, :ref:`GLTFSkin<class_GLTFSkin>`, :ref:`GLTFSpecGloss<class_GLTFSpecGloss>`, :ref:`GLTFState<class_GLTFState>`, :ref:`GLTFTexture<class_GLTFTexture>`, :ref:`GLTFTextureSampler<class_GLTFTextureSampler>`, :ref:`Gradient<class_Gradient>`, :ref:`Image<class_Image>`, :ref:`ImporterMesh<class_ImporterMesh>`, :ref:`InputEvent<class_InputEvent>`, :ref:`JointLimitation3D<class_JointLimitation3D>`, :ref:`JSON<class_JSON>`, :ref:`LabelSettings<class_LabelSettings>`, :ref:`LightmapGIData<class_LightmapGIData>`, :ref:`Material<class_Material>`, :ref:`Mesh<class_Mesh>`, :ref:`MeshLibrary<class_MeshLibrary>`, :ref:`MissingResource<class_MissingResource>`, :ref:`MultiMesh<class_MultiMesh>`, :ref:`NavigationMesh<class_NavigationMesh>`, :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`, :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`, :ref:`NavigationPolygon<class_NavigationPolygon>`, :ref:`Noise<class_Noise>`, :ref:`Occluder3D<class_Occluder3D>`, :ref:`OccluderPolygon2D<class_OccluderPolygon2D>`, :ref:`OggPacketSequence<class_OggPacketSequence>`, :ref:`OpenXRAction<class_OpenXRAction>`, :ref:`OpenXRActionMap<class_OpenXRActionMap>`, :ref:`OpenXRActionSet<class_OpenXRActionSet>`, :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>`, :ref:`OpenXRHapticBase<class_OpenXRHapticBase>`, :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>`, :ref:`OpenXRIPBinding<class_OpenXRIPBinding>`, :ref:`PackedDataContainer<class_PackedDataContainer>`, :ref:`PackedScene<class_PackedScene>`, :ref:`PhysicsMaterial<class_PhysicsMaterial>`, :ref:`PolygonPathFinder<class_PolygonPathFinder>`, :ref:`RDShaderFile<class_RDShaderFile>`, :ref:`RDShaderSPIRV<class_RDShaderSPIRV>`, :ref:`RichTextEffect<class_RichTextEffect>`, :ref:`SceneReplicationConfig<class_SceneReplicationConfig>`, :ref:`Script<class_Script>`, :ref:`Shader<class_Shader>`, :ref:`ShaderInclude<class_ShaderInclude>`, :ref:`Shape2D<class_Shape2D>`, :ref:`Shape3D<class_Shape3D>`, :ref:`Shortcut<class_Shortcut>`, :ref:`SkeletonModification2D<class_SkeletonModification2D>`, :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`, :ref:`SkeletonProfile<class_SkeletonProfile>`, :ref:`Skin<class_Skin>`, :ref:`Sky<class_Sky>`, :ref:`SpriteFrames<class_SpriteFrames>`, :ref:`StyleBox<class_StyleBox>`, :ref:`SyntaxHighlighter<class_SyntaxHighlighter>`, :ref:`Texture<class_Texture>`, :ref:`Theme<class_Theme>`, :ref:`TileMapPattern<class_TileMapPattern>`, :ref:`TileSet<class_TileSet>`, :ref:`TileSetSource<class_TileSetSource>`, :ref:`Translation<class_Translation>`, :ref:`VideoStream<class_VideoStream>`, :ref:`VideoStreamPlayback<class_VideoStreamPlayback>`, :ref:`VisualShaderNode<class_VisualShaderNode>`, :ref:`VoxelGIData<class_VoxelGIData>`, :ref:`World2D<class_World2D>`, :ref:`World3D<class_World3D>`, :ref:`X509Certificate<class_X509Certificate>`
+**Được kế thừa bởi:** :ref:`Animation<class_Animation>`, :ref:`AnimationLibrary<class_AnimationLibrary>`, :ref:`AnimationNode<class_AnimationNode>`, :ref:`AnimationNodeStateMachinePlayback<class_AnimationNodeStateMachinePlayback>`, :ref:`AnimationNodeStateMachineTransition<class_AnimationNodeStateMachineTransition>`, :ref:`AudioBusLayout<class_AudioBusLayout>`, :ref:`AudioEffect<class_AudioEffect>`, :ref:`AudioStream<class_AudioStream>`, :ref:`BitMap<class_BitMap>`, :ref:`BoneMap<class_BoneMap>`, :ref:`ButtonGroup<class_ButtonGroup>`, :ref:`CameraAttributes<class_CameraAttributes>`, :ref:`ColorPalette<class_ColorPalette>`, :ref:`Compositor<class_Compositor>`, :ref:`CompositorEffect<class_CompositorEffect>`, :ref:`CryptoKey<class_CryptoKey>`, :ref:`Curve<class_Curve>`, :ref:`Curve2D<class_Curve2D>`, :ref:`Curve3D<class_Curve3D>`, :ref:`EditorNode3DGizmoPlugin<class_EditorNode3DGizmoPlugin>`, :ref:`EditorSettings<class_EditorSettings>`, :ref:`Environment<class_Environment>`, :ref:`FoldableGroup<class_FoldableGroup>`, :ref:`Font<class_Font>`, :ref:`GDExtension<class_GDExtension>`, :ref:`GLTFAccessor<class_GLTFAccessor>`, :ref:`GLTFAnimation<class_GLTFAnimation>`, :ref:`GLTFBufferView<class_GLTFBufferView>`, :ref:`GLTFCamera<class_GLTFCamera>`, :ref:`GLTFDocument<class_GLTFDocument>`, :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>`, :ref:`GLTFLight<class_GLTFLight>`, :ref:`GLTFMesh<class_GLTFMesh>`, :ref:`GLTFNode<class_GLTFNode>`, :ref:`GLTFPhysicsBody<class_GLTFPhysicsBody>`, :ref:`GLTFPhysicsShape<class_GLTFPhysicsShape>`, :ref:`GLTFSkeleton<class_GLTFSkeleton>`, :ref:`GLTFSkin<class_GLTFSkin>`, :ref:`GLTFSpecGloss<class_GLTFSpecGloss>`, :ref:`GLTFState<class_GLTFState>`, :ref:`GLTFTexture<class_GLTFTexture>`, :ref:`GLTFTextureSampler<class_GLTFTextureSampler>`, :ref:`Gradient<class_Gradient>`, :ref:`Image<class_Image>`, :ref:`ImporterMesh<class_ImporterMesh>`, :ref:`InputEvent<class_InputEvent>`, :ref:`JointLimitation3D<class_JointLimitation3D>`, :ref:`JSON<class_JSON>`, :ref:`LabelSettings<class_LabelSettings>`, :ref:`LightmapGIData<class_LightmapGIData>`, :ref:`Material<class_Material>`, :ref:`Mesh<class_Mesh>`, :ref:`MeshLibrary<class_MeshLibrary>`, :ref:`MissingResource<class_MissingResource>`, :ref:`MultiMesh<class_MultiMesh>`, :ref:`NavigationMesh<class_NavigationMesh>`, :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`, :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`, :ref:`NavigationPolygon<class_NavigationPolygon>`, :ref:`Noise<class_Noise>`, :ref:`Occluder3D<class_Occluder3D>`, :ref:`OccluderPolygon2D<class_OccluderPolygon2D>`, :ref:`OggPacketSequence<class_OggPacketSequence>`, :ref:`OpenXRAction<class_OpenXRAction>`, :ref:`OpenXRActionMap<class_OpenXRActionMap>`, :ref:`OpenXRActionSet<class_OpenXRActionSet>`, :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>`, :ref:`OpenXRHapticBase<class_OpenXRHapticBase>`, :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>`, :ref:`OpenXRIPBinding<class_OpenXRIPBinding>`, :ref:`PackedDataContainer<class_PackedDataContainer>`, :ref:`PackedScene<class_PackedScene>`, :ref:`PhysicsMaterial<class_PhysicsMaterial>`, :ref:`PolygonPathFinder<class_PolygonPathFinder>`, :ref:`RDShaderFile<class_RDShaderFile>`, :ref:`RDShaderSPIRV<class_RDShaderSPIRV>`, :ref:`RichTextEffect<class_RichTextEffect>`, :ref:`SceneReplicationConfig<class_SceneReplicationConfig>`, :ref:`Script<class_Script>`, :ref:`Shader<class_Shader>`, :ref:`ShaderInclude<class_ShaderInclude>`, :ref:`Shape2D<class_Shape2D>`, :ref:`Shape3D<class_Shape3D>`, :ref:`Shortcut<class_Shortcut>`, :ref:`SkeletonModification2D<class_SkeletonModification2D>`, :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`, :ref:`SkeletonProfile<class_SkeletonProfile>`, :ref:`Skin<class_Skin>`, :ref:`Sky<class_Sky>`, :ref:`SpriteFrames<class_SpriteFrames>`, :ref:`StyleBox<class_StyleBox>`, :ref:`SyntaxHighlighter<class_SyntaxHighlighter>`, :ref:`Texture<class_Texture>`, :ref:`Theme<class_Theme>`, :ref:`TileMapPattern<class_TileMapPattern>`, :ref:`TileSet<class_TileSet>`, :ref:`TileSetSource<class_TileSetSource>`, :ref:`Translation<class_Translation>`, :ref:`VideoStream<class_VideoStream>`, :ref:`VideoStreamPlayback<class_VideoStreamPlayback>`, :ref:`VisualShaderNode<class_VisualShaderNode>`, :ref:`VoxelGIData<class_VoxelGIData>`, :ref:`World2D<class_World2D>`, :ref:`World3D<class_World3D>`, :ref:`X509Certificate<class_X509Certificate>`
 
-Base class for serializable objects.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Resource is the base class for all Godot-specific resource types, serving primarily as data containers. Since they inherit from :ref:`RefCounted<class_RefCounted>`, resources are reference-counted and freed when no longer in use. They can also be nested within other resources, and saved on disk. :ref:`PackedScene<class_PackedScene>`, one of the most common :ref:`Object<class_Object>`\ s in a Godot project, is also a resource, uniquely capable of storing and instantiating the :ref:`Node<class_Node>`\ s it contains as many times as desired.
-
-In GDScript, resources can loaded from disk by their :ref:`resource_path<class_Resource_property_resource_path>` using :ref:`@GDScript.load()<class_@GDScript_method_load>` or :ref:`@GDScript.preload()<class_@GDScript_method_preload>`.
-
-The engine keeps a global cache of all loaded resources, referenced by paths (see :ref:`ResourceLoader.has_cached()<class_ResourceLoader_method_has_cached>`). A resource will be cached when loaded for the first time and removed from cache once all references are released. When a resource is cached, subsequent loads using its path will return the cached reference.
-
-\ **Note:** In C#, resources will not be freed instantly after they are no longer in use. Instead, garbage collection will run periodically and will free resources that are no longer in use. This means that unused resources will remain in memory for a while before being removed.
+Lớp cơ sở cho các đối tượng có thể tuần tự hóa.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Resource là lớp cơ sở cho tất cả các loại resource dành riêng cho Godot, chủ yếu đóng vai trò là các vùng chứa dữ liệu. Vì kế thừa từ :ref:`RefCounted<class_RefCounted>`, resource được đếm tham chiếu và sẽ được giải phóng khi không còn được sử dụng. Chúng cũng có thể được lồng trong các resource khác và được lưu trên đĩa. :ref:`PackedScene<class_PackedScene>`, một trong những :ref:`Object<class_Object>`\ s phổ biến nhất trong một dự án Godot, cũng là một resource có khả năng lưu trữ và khởi tạo các :ref:`Node<class_Node>`\ s mà nó chứa bao nhiêu lần tùy ý.
+
+Trong GDScript, resource có thể được tải từ đĩa theo :ref:`resource_path<class_Resource_property_resource_path>` của chúng bằng :ref:`@GDScript.load() <class_@GDScript_method_load>` hoặc :ref:`@GDScript.preload() <class_@GDScript_method_preload>`.
+
+Engine duy trì một bộ nhớ đệm toàn cục chứa tất cả resource đã tải, được tham chiếu bằng các đường dẫn (xem :ref:`ResourceLoader.has_cached()<class_ResourceLoader_method_has_cached>`). Resource sẽ được lưu vào bộ nhớ đệm khi được tải lần đầu và bị xóa khỏi bộ nhớ đệm sau khi tất cả các tham chiếu được giải phóng. Khi một resource được lưu trong bộ nhớ đệm, các lần tải tiếp theo bằng đường dẫn của nó sẽ trả về tham chiếu đã được lưu trong bộ nhớ đệm.
+
+\ **Lưu ý:** Trong C#, resource sẽ không được giải phóng ngay sau khi không còn được sử dụng. Thay vào đó, garbage collection sẽ chạy định kỳ và giải phóng các resource không còn được sử dụng. Điều này có nghĩa là các resource không được sử dụng sẽ vẫn nằm trong bộ nhớ một thời gian trước khi bị xóa.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Resources <../tutorials/scripting/resources>`
+- :doc:`Resource <../tutorials/scripting/resources>`
 
-- :doc:`When and how to avoid using nodes for everything <../tutorials/best_practices/node_alternatives>`
+- :doc:`Khi nào và làm thế nào để tránh sử dụng node cho mọi thứ <../tutorials/best_practices/node_alternatives>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -58,49 +58,49 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`                 | :ref:`_get_rid<class_Resource_private_method__get_rid>`\ (\ ) |virtual| |const|                                                                                   |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`_reset_state<class_Resource_private_method__reset_state>`\ (\ ) |virtual|                                                                                   |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`_set_path_cache<class_Resource_private_method__set_path_cache>`\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |const|                                 |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>`\ (\ ) |virtual|                                                                 |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`copy_from_resource<class_Resource_method_copy_from_resource>`\ (\ resource\: :ref:`Resource<class_Resource>`\ )                                             |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Resource<class_Resource>`       | :ref:`duplicate<class_Resource_method_duplicate>`\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const|                                                           |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Resource<class_Resource>`       | :ref:`duplicate_deep<class_Resource_method_duplicate_deep>`\ (\ deep_subresources_mode\: :ref:`DeepDuplicateMode<enum_Resource_DeepDuplicateMode>` = 1\ ) |const| |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`emit_changed<class_Resource_method_emit_changed>`\ (\ )                                                                                                     |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`generate_scene_unique_id<class_Resource_method_generate_scene_unique_id>`\ (\ ) |static|                                                                    |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_id_for_path<class_Resource_method_get_id_for_path>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                   |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Node<class_Node>`               | :ref:`get_local_scene<class_Resource_method_get_local_scene>`\ (\ ) |const|                                                                                       |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`                 | :ref:`get_rid<class_Resource_method_get_rid>`\ (\ ) |const|                                                                                                       |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_built_in<class_Resource_method_is_built_in>`\ (\ ) |const|                                                                                               |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`reset_state<class_Resource_method_reset_state>`\ (\ )                                                                                                       |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_id_for_path<class_Resource_method_set_id_for_path>`\ (\ path\: :ref:`String<class_String>`, id\: :ref:`String<class_String>`\ )                         |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_path_cache<class_Resource_method_set_path_cache>`\ (\ path\: :ref:`String<class_String>`\ )                                                             |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`setup_local_to_scene<class_Resource_method_setup_local_to_scene>`\ (\ )                                                                                     |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`take_over_path<class_Resource_method_take_over_path>`\ (\ path\: :ref:`String<class_String>`\ )                                                             |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`                | :ref:`_get_rid<class_Resource_private_method__get_rid>`\ (\ ) |virtual| |const|                                                                                    |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`_reset_state<class_Resource_private_method__reset_state>`\ (\ ) |virtual|                                                                                    |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`_set_path_cache<class_Resource_private_method__set_path_cache>`\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |const|                                  |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`_setup_local_to_scene<class_Resource_private_method__setup_local_to_scene>`\ (\ ) |virtual|                                                                  |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>` | :ref:`copy_from_resource<class_Resource_method_copy_from_resource>`\ (\ resource\: :ref:`Resource<class_Resource>`\ )                                              |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Resource<class_Resource>`      | :ref:`duplicate<class_Resource_method_duplicate>`\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const|                                                            |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Resource<class_Resource>`      | :ref:`duplicate_deep<class_Resource_method_duplicate_deep>`\ (\ deep_subresources_mode\: :ref:`DeepDuplicateMode <enum_Resource_DeepDuplicateMode>` = 1\ ) |const| |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`emit_changed<class_Resource_method_emit_changed>`\ (\ )                                                                                                      |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`          | :ref:`generate_scene_unique_id<class_Resource_method_generate_scene_unique_id>`\ (\ ) |static|                                                                     |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`          | :ref:`get_id_for_path<class_Resource_method_get_id_for_path>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                    |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Node<class_Node>`              | :ref:`get_local_scene<class_Resource_method_get_local_scene>`\ (\ ) |const|                                                                                        |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`                | :ref:`get_rid<class_Resource_method_get_rid>`\ (\ ) |const|                                                                                                        |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`              | :ref:`is_built_in<class_Resource_method_is_built_in>`\ (\ ) |const|                                                                                                |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`reset_state<class_Resource_method_reset_state>`\ (\ )                                                                                                        |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`set_id_for_path<class_Resource_method_set_id_for_path>`\ (\ path\: :ref:`String<class_String>`, id\: :ref:`String<class_String>`\ )                          |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`set_path_cache<class_Resource_method_set_path_cache>`\ (\ path\: :ref:`String<class_String>`\ )                                                              |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`setup_local_to_scene<class_Resource_method_setup_local_to_scene>`\ (\ )                                                                                      |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                               | :ref:`take_over_path<class_Resource_method_take_over_path>`\ (\ path\: :ref:`String<class_String>`\ )                                                              |
+   +--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -108,8 +108,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Resource_signal_changed:
 
@@ -117,9 +117,9 @@ Signals
 
 **changed**\ (\ ) :ref:`🔗<class_Resource_signal_changed>`
 
-Emitted when the resource changes, usually when one of its properties is modified. See also :ref:`emit_changed()<class_Resource_method_emit_changed>`.
+Được phát ra khi resource thay đổi, thường là khi một trong các thuộc tính của nó được sửa đổi. Xem thêm :ref:`emit_changed()<class_Resource_method_emit_changed>`.
 
-\ **Note:** This signal is not emitted automatically for properties of custom resources. If necessary, a setter needs to be created to emit the signal.
+\ **Lưu ý:** Tín hiệu này không được tự động phát ra đối với các thuộc tính của resource tùy chỉnh. Nếu cần, phải tạo một setter để phát ra tín hiệu.
 
 .. rst-class:: classref-item-separator
 
@@ -131,9 +131,9 @@ Emitted when the resource changes, usually when one of its properties is modifie
 
 **setup_local_to_scene_requested**\ (\ ) :ref:`🔗<class_Resource_signal_setup_local_to_scene_requested>`
 
-**Deprecated:** This signal is only emitted when the resource is created. Override :ref:`_setup_local_to_scene()<class_Resource_private_method__setup_local_to_scene>` instead.
+**Đã lỗi thời:** Tín hiệu này chỉ được phát ra khi resource được tạo. Thay vào đó, hãy ghi đè :ref:`_setup_local_to_scene()<class_Resource_private_method__setup_local_to_scene>`.
 
-Emitted by a newly duplicated resource with :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` set to ``true``.
+Được phát ra bởi một resource mới được nhân bản với :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` được đặt thành ``true``.
 
 .. rst-class:: classref-section-separator
 
@@ -141,14 +141,14 @@ Emitted by a newly duplicated resource with :ref:`resource_local_to_scene<class_
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Resource_DeepDuplicateMode:
 
 .. rst-class:: classref-enumeration
 
-enum **DeepDuplicateMode**: :ref:`🔗<enum_Resource_DeepDuplicateMode>`
+enum **DeepDuplicateMode**: :ref:`🔗 <enum_Resource_DeepDuplicateMode>`
 
 .. _class_Resource_constant_DEEP_DUPLICATE_NONE:
 
@@ -156,7 +156,7 @@ enum **DeepDuplicateMode**: :ref:`🔗<enum_Resource_DeepDuplicateMode>`
 
 :ref:`DeepDuplicateMode<enum_Resource_DeepDuplicateMode>` **DEEP_DUPLICATE_NONE** = ``0``
 
-No subresources at all are duplicated. This is useful even in a deep duplication to have all the arrays and dictionaries duplicated but still pointing to the original resources.
+Hoàn toàn không có subresource nào được nhân bản. Điều này hữu ích ngay cả khi nhân bản sâu, để tất cả các mảng và dictionary được nhân bản nhưng vẫn trỏ đến các resource ban đầu.
 
 .. _class_Resource_constant_DEEP_DUPLICATE_INTERNAL:
 
@@ -164,7 +164,7 @@ No subresources at all are duplicated. This is useful even in a deep duplication
 
 :ref:`DeepDuplicateMode<enum_Resource_DeepDuplicateMode>` **DEEP_DUPLICATE_INTERNAL** = ``1``
 
-Only subresources without a path or with a scene-local path will be duplicated.
+Chỉ các subresource không có đường dẫn hoặc có đường dẫn cục bộ của scene mới được nhân bản.
 
 .. _class_Resource_constant_DEEP_DUPLICATE_ALL:
 
@@ -172,7 +172,7 @@ Only subresources without a path or with a scene-local path will be duplicated.
 
 :ref:`DeepDuplicateMode<enum_Resource_DeepDuplicateMode>` **DEEP_DUPLICATE_ALL** = ``2``
 
-Every subresource found will be duplicated, even if it has a non-local path. In other words, even potentially big resources stored separately will be duplicated.
+Mọi subresource được tìm thấy đều sẽ được nhân bản, ngay cả khi nó có đường dẫn không cục bộ. Nói cách khác, ngay cả các resource có khả năng lớn được lưu riêng cũng sẽ được nhân bản.
 
 .. rst-class:: classref-section-separator
 
@@ -180,8 +180,8 @@ Every subresource found will be duplicated, even if it has a non-local path. In 
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Resource_property_resource_local_to_scene:
 
@@ -194,9 +194,9 @@ Property Descriptions
 - |void| **set_local_to_scene**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_local_to_scene**\ (\ )
 
-If ``true``, the resource is duplicated for each instance of all scenes using it. At run-time, the resource can be modified in one scene without affecting other instances (see :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`).
+Nếu ``true``, resource sẽ được nhân bản cho mỗi instance của tất cả các scene sử dụng nó. Trong thời gian chạy, resource có thể được sửa đổi trong một scene mà không ảnh hưởng đến các instance khác (xem :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`).
 
-\ **Note:** Changing this property at run-time has no effect on already created duplicate resources.
+\ **Lưu ý:** Việc thay đổi thuộc tính này trong thời gian chạy không ảnh hưởng đến các resource nhân bản đã được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -213,9 +213,9 @@ If ``true``, the resource is duplicated for each instance of all scenes using it
 - |void| **set_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_name**\ (\ )
 
-An optional name for this resource. When defined, its value is displayed to represent the resource in the Inspector dock. For built-in scripts, the name is displayed as part of the tab name in the script editor.
+Tên tùy chọn cho resource này. Khi được xác định, giá trị của nó sẽ được hiển thị để đại diện cho resource trong dock Inspector. Đối với các script tích hợp sẵn, tên được hiển thị như một phần của tên tab trong trình soạn thảo script.
 
-\ **Note:** Some resource formats do not support resource names. You can still set the name in the editor or via code, but it will be lost when the resource is reloaded. For example, only built-in scripts can have a resource name, while scripts stored in separate files cannot.
+\ **Lưu ý:** Một số định dạng resource không hỗ trợ tên resource. Bạn vẫn có thể đặt tên trong editor hoặc qua code, nhưng tên này sẽ bị mất khi resource được tải lại. Ví dụ: chỉ các script dựng sẵn mới có thể có tên resource, còn các script được lưu trong tệp riêng thì không.
 
 .. rst-class:: classref-item-separator
 
@@ -232,9 +232,9 @@ An optional name for this resource. When defined, its value is displayed to repr
 - |void| **set_path**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_path**\ (\ )
 
-The unique path to this resource. If it has been saved to disk, the value will be its filepath. If the resource is exclusively contained within a scene, the value will be the :ref:`PackedScene<class_PackedScene>`'s filepath, followed by a unique identifier.
+Đường dẫn duy nhất đến resource này. Nếu resource đã được lưu vào đĩa, giá trị sẽ là filepath của nó. Nếu resource chỉ nằm trong một scene, giá trị sẽ là filepath của :ref:`PackedScene<class_PackedScene>`, theo sau là một mã định danh duy nhất.
 
-\ **Note:** Setting this property manually may fail if a resource with the same path has already been previously loaded. If necessary, use :ref:`take_over_path()<class_Resource_method_take_over_path>`.
+\ **Lưu ý:** Việc đặt thuộc tính này theo cách thủ công có thể không thành công nếu một resource có cùng đường dẫn đã được tải trước đó. Nếu cần, hãy sử dụng :ref:`take_over_path()<class_Resource_method_take_over_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -244,20 +244,20 @@ The unique path to this resource. If it has been saved to disk, the value will b
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **resource_scene_unique_id** :ref:`🔗<class_Resource_property_resource_scene_unique_id>`
+:ref:`String<class_String>` **resource_scene_unique_id** :ref:`🔗 <class_Resource_property_resource_scene_unique_id>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_scene_unique_id**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_scene_unique_id**\ (\ )
 
-A unique identifier relative to this resource's scene. If left empty, the ID is automatically generated when this resource is saved inside a :ref:`PackedScene<class_PackedScene>`. If the resource is not inside a scene, this property is empty by default.
+Mã định danh duy nhất tương đối với scene của resource này. Nếu để trống, ID sẽ được tự động tạo khi resource này được lưu bên trong một :ref:`PackedScene<class_PackedScene>`. Nếu resource không nằm trong scene, thuộc tính này mặc định để trống.
 
-\ **Note:** When the :ref:`PackedScene<class_PackedScene>` is saved, if multiple resources in the same scene use the same ID, only the earliest resource in the scene hierarchy keeps the original ID. The other resources are assigned new IDs from :ref:`generate_scene_unique_id()<class_Resource_method_generate_scene_unique_id>`.
+\ **Lưu ý:** Khi :ref:`PackedScene<class_PackedScene>` được lưu, nếu nhiều resource trong cùng một scene sử dụng cùng ID, chỉ resource xuất hiện sớm nhất trong hệ thống phân cấp scene giữ lại ID ban đầu. Các resource khác được gán ID mới từ :ref:`generate_scene_unique_id()<class_Resource_method_generate_scene_unique_id>`.
 
-\ **Note:** Setting this property does not emit the :ref:`changed<class_Resource_signal_changed>` signal.
+\ **Lưu ý:** Việc đặt thuộc tính này không phát tín hiệu :ref:`changed<class_Resource_signal_changed>`.
 
-\ **Warning:** When setting, the ID must only consist of letters, numbers, and underscores. Otherwise, it will fail and default to a randomly generated ID.
+\ **Cảnh báo:** Khi đặt giá trị, ID chỉ được gồm chữ cái, chữ số và dấu gạch dưới. Nếu không, thao tác sẽ thất bại và ID mặc định sẽ được tạo ngẫu nhiên.
 
 .. rst-class:: classref-section-separator
 
@@ -265,8 +265,8 @@ A unique identifier relative to this resource's scene. If left empty, the ID is 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Resource_private_method__get_rid:
 
@@ -274,7 +274,7 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **_get_rid**\ (\ ) |virtual| |const| :ref:`🔗<class_Resource_private_method__get_rid>`
 
-Override this method to return a custom :ref:`RID<class_RID>` when :ref:`get_rid()<class_Resource_method_get_rid>` is called.
+Ghi đè phương thức này để trả về một :ref:`RID<class_RID>` tùy chỉnh khi gọi :ref:`get_rid()<class_Resource_method_get_rid>`.
 
 .. rst-class:: classref-item-separator
 
@@ -286,7 +286,7 @@ Override this method to return a custom :ref:`RID<class_RID>` when :ref:`get_rid
 
 |void| **_reset_state**\ (\ ) |virtual| :ref:`🔗<class_Resource_private_method__reset_state>`
 
-For resources that store state in non-exported properties, such as via :ref:`Object._validate_property()<class_Object_private_method__validate_property>` or :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>`, this method must be implemented to clear them.
+Đối với các resource lưu trạng thái trong những thuộc tính không được export, chẳng hạn thông qua :ref:`Object._validate_property()<class_Object_private_method__validate_property>` hoặc :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>`, phương thức này phải được triển khai để xóa chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ For resources that store state in non-exported properties, such as via :ref:`Obj
 
 |void| **_set_path_cache**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_Resource_private_method__set_path_cache>`
 
-Override this method to execute additional logic after :ref:`set_path_cache()<class_Resource_method_set_path_cache>` is called on this object.
+Ghi đè phương thức này để thực thi logic bổ sung sau khi :ref:`set_path_cache()<class_Resource_method_set_path_cache>` được gọi trên object này.
 
 .. rst-class:: classref-item-separator
 
@@ -310,9 +310,9 @@ Override this method to execute additional logic after :ref:`set_path_cache()<cl
 
 |void| **_setup_local_to_scene**\ (\ ) |virtual| :ref:`🔗<class_Resource_private_method__setup_local_to_scene>`
 
-Override this method to customize the newly duplicated resource created from :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, if the original's :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` is set to ``true``.
+Ghi đè phương thức này để tùy chỉnh resource mới được nhân bản từ :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, nếu :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` của resource gốc được đặt thành ``true``.
 
-\ **Example:** Set a random ``damage`` value to every local resource from an instantiated scene:
+\ **Ví dụ:** Đặt giá trị ``damage`` ngẫu nhiên cho mọi resource cục bộ từ một scene được instantiate:
 
 ::
 
@@ -333,7 +333,7 @@ Override this method to customize the newly duplicated resource created from :re
 
 :ref:`Error<enum_@GlobalScope_Error>` **copy_from_resource**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_Resource_method_copy_from_resource>`
 
-Copies the data from ``resource`` into this resource. Both resources must share the same class.
+Sao chép dữ liệu từ ``resource`` vào resource này. Cả hai resource phải dùng chung một class.
 
 .. rst-class:: classref-item-separator
 
@@ -345,21 +345,21 @@ Copies the data from ``resource`` into this resource. Both resources must share 
 
 :ref:`Resource<class_Resource>` **duplicate**\ (\ deep\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Resource_method_duplicate>`
 
-Duplicates this resource, returning a new resource with its ``export``\ ed or :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` properties copied from the original.
+Nhân bản resource này, trả về một resource mới với các thuộc tính ``export``\ ed hoặc :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE <class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` được sao chép từ resource gốc.
 
-If ``deep`` is ``false``, a **shallow** copy is returned: nested :ref:`Array<class_Array>`, :ref:`Dictionary<class_Dictionary>`, and **Resource** properties are not duplicated and are shared with the original resource.
+Nếu ``deep`` là ``false``, một bản sao **shallow** được trả về: các thuộc tính :ref:`Array<class_Array>`, :ref:`Dictionary<class_Dictionary>` và **Resource** lồng nhau không được nhân bản mà được dùng chung với resource gốc.
 
-If ``deep`` is ``true``, a **deep** copy is returned: all nested arrays, dictionaries, and packed arrays are also duplicated (recursively). Any **Resource** found inside will only be duplicated if it's local, like :ref:`DEEP_DUPLICATE_INTERNAL<class_Resource_constant_DEEP_DUPLICATE_INTERNAL>` used with :ref:`duplicate_deep()<class_Resource_method_duplicate_deep>`.
+Nếu ``deep`` là ``true``, một bản sao **deep** được trả về: tất cả array, dictionary và packed array lồng nhau cũng được nhân bản (đệ quy). Mọi **Resource** được tìm thấy bên trong chỉ được nhân bản nếu là cục bộ, chẳng hạn như :ref:`DEEP_DUPLICATE_INTERNAL<class_Resource_constant_DEEP_DUPLICATE_INTERNAL>` được dùng với :ref:`duplicate_deep()<class_Resource_method_duplicate_deep>`.
 
-The following exceptions apply:
+Các ngoại lệ sau được áp dụng:
 
-- Subresource properties with the :ref:`@GlobalScope.PROPERTY_USAGE_ALWAYS_DUPLICATE<class_@GlobalScope_constant_PROPERTY_USAGE_ALWAYS_DUPLICATE>` flag are always duplicated (recursively or not, depending on ``deep``).
+- Các thuộc tính subresource có cờ :ref:`@GlobalScope.PROPERTY_USAGE_ALWAYS_DUPLICATE <class_@GlobalScope_constant_PROPERTY_USAGE_ALWAYS_DUPLICATE>` luôn được nhân bản (đệ quy hoặc không, tùy thuộc vào ``deep``).
 
-- Subresource properties with the :ref:`@GlobalScope.PROPERTY_USAGE_NEVER_DUPLICATE<class_@GlobalScope_constant_PROPERTY_USAGE_NEVER_DUPLICATE>` flag are never duplicated.
+- Các thuộc tính subresource có cờ :ref:`@GlobalScope.PROPERTY_USAGE_NEVER_DUPLICATE <class_@GlobalScope_constant_PROPERTY_USAGE_NEVER_DUPLICATE>` không bao giờ được nhân bản.
 
-\ **Note:** For custom resources, this method will fail if :ref:`Object._init()<class_Object_private_method__init>` has been defined with required parameters.
+\ **Lưu ý:** Đối với custom resource, phương thức này sẽ thất bại nếu :ref:`Object._init()<class_Object_private_method__init>` được định nghĩa với các tham số bắt buộc.
 
-\ **Note:** When duplicating with ``deep`` set to ``true``, each resource found, including the one on which this method is called, will be only duplicated once and referenced as many times as needed in the duplicate. For instance, if you are duplicating resource A that happens to have resource B referenced twice, you'll get a new resource A' referencing a new resource B' twice.
+\ **Lưu ý:** Khi nhân bản với ``deep`` được đặt thành ``true``, mỗi resource được tìm thấy, bao gồm cả resource mà phương thức này được gọi trên đó, sẽ chỉ được nhân bản một lần và được tham chiếu bao nhiêu lần tùy nhu cầu trong bản sao. Ví dụ, nếu bạn đang nhân bản resource A vốn tham chiếu resource B hai lần, bạn sẽ nhận được resource A' mới tham chiếu resource B' mới hai lần.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ The following exceptions apply:
 
 :ref:`Resource<class_Resource>` **duplicate_deep**\ (\ deep_subresources_mode\: :ref:`DeepDuplicateMode<enum_Resource_DeepDuplicateMode>` = 1\ ) |const| :ref:`🔗<class_Resource_method_duplicate_deep>`
 
-Duplicates this resource, deeply, like :ref:`duplicate()<class_Resource_method_duplicate>` when passing ``true``, with extra control over how subresources are handled.
+Nhân bản sâu resource này, tương tự :ref:`duplicate()<class_Resource_method_duplicate>` khi truyền ``true``, với quyền kiểm soát bổ sung đối với cách xử lý subresource.
 
 .. rst-class:: classref-item-separator
 
@@ -383,9 +383,9 @@ Duplicates this resource, deeply, like :ref:`duplicate()<class_Resource_method_d
 
 |void| **emit_changed**\ (\ ) :ref:`🔗<class_Resource_method_emit_changed>`
 
-Emits the :ref:`changed<class_Resource_signal_changed>` signal. This method is called automatically for some built-in resources.
+Phát tín hiệu :ref:`changed<class_Resource_signal_changed>`. Phương thức này được tự động gọi cho một số resource dựng sẵn.
 
-\ **Note:** For custom resources, it's recommended to call this method whenever a meaningful change occurs, such as a modified property. This ensures that custom :ref:`Object<class_Object>`\ s depending on the resource are properly updated.
+\ **Lưu ý:** Đối với custom resource, bạn nên gọi phương thức này mỗi khi xảy ra thay đổi có ý nghĩa, chẳng hạn như một thuộc tính bị sửa đổi. Điều này đảm bảo các :ref:`Object<class_Object>`\ s tùy chỉnh phụ thuộc vào resource được cập nhật đúng cách.
 
 ::
 
@@ -405,7 +405,7 @@ Emits the :ref:`changed<class_Resource_signal_changed>` signal. This method is c
 
 :ref:`String<class_String>` **generate_scene_unique_id**\ (\ ) |static| :ref:`🔗<class_Resource_method_generate_scene_unique_id>`
 
-Generates a unique identifier for a resource to be contained inside a :ref:`PackedScene<class_PackedScene>`, based on the current date, time, and a random value. The returned string is only composed of letters (``a`` to ``y``) and numbers (``0`` to ``8``). See also :ref:`resource_scene_unique_id<class_Resource_property_resource_scene_unique_id>`.
+Tạo mã định danh duy nhất cho một resource được chứa bên trong :ref:`PackedScene<class_PackedScene>`, dựa trên ngày, giờ hiện tại và một giá trị ngẫu nhiên. Chuỗi được trả về chỉ gồm các chữ cái (từ ``a`` đến ``y``) và chữ số (từ ``0`` đến ``8``). Xem thêm :ref:`resource_scene_unique_id<class_Resource_property_resource_scene_unique_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -417,9 +417,9 @@ Generates a unique identifier for a resource to be contained inside a :ref:`Pack
 
 :ref:`String<class_String>` **get_id_for_path**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Resource_method_get_id_for_path>`
 
-From the internal cache for scene-unique IDs, returns the ID of this resource for the scene at ``path``. If there is no entry, an empty string is returned. Useful to keep scene-unique IDs the same when implementing a VCS-friendly custom resource format by extending :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` and :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
+Từ bộ nhớ đệm nội bộ dành cho các ID duy nhất theo scene, trả về ID của resource này đối với scene tại ``path``. Nếu không có mục tương ứng, một chuỗi trống được trả về. Hữu ích để giữ nguyên các ID duy nhất theo scene khi triển khai định dạng custom resource thân thiện với VCS bằng cách mở rộng :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` và :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
 
-\ **Note:** This method is only implemented when running in an editor context. At runtime, it returns an empty string.
+\ **Lưu ý:** Phương thức này chỉ được triển khai khi chạy trong ngữ cảnh editor. Khi chạy runtime, phương thức trả về một chuỗi trống.
 
 .. rst-class:: classref-item-separator
 
@@ -431,7 +431,7 @@ From the internal cache for scene-unique IDs, returns the ID of this resource fo
 
 :ref:`Node<class_Node>` **get_local_scene**\ (\ ) |const| :ref:`🔗<class_Resource_method_get_local_scene>`
 
-If :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` is set to ``true`` and the resource has been loaded from a :ref:`PackedScene<class_PackedScene>` instantiation, returns the root :ref:`Node<class_Node>` of the scene where this resource is used. Otherwise, returns ``null``.
+Nếu :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` được đặt thành ``true`` và resource đã được tải từ một lần instantiate :ref:`PackedScene<class_PackedScene>`, trả về :ref:`Node<class_Node>` gốc của scene nơi resource này được sử dụng. Nếu không, trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +443,7 @@ If :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene
 
 :ref:`RID<class_RID>` **get_rid**\ (\ ) |const| :ref:`🔗<class_Resource_method_get_rid>`
 
-Returns the :ref:`RID<class_RID>` of this resource (or an empty RID). Many resources (such as :ref:`Texture2D<class_Texture2D>`, :ref:`Mesh<class_Mesh>`, and so on) are high-level abstractions of resources stored in a specialized server (:ref:`DisplayServer<class_DisplayServer>`, :ref:`RenderingServer<class_RenderingServer>`, etc.), so this function will return the original :ref:`RID<class_RID>`.
+Trả về :ref:`RID<class_RID>` của resource này (hoặc một RID trống). Nhiều resource (chẳng hạn như :ref:`Texture2D<class_Texture2D>`, :ref:`Mesh<class_Mesh>`, v.v.) là các abstraction cấp cao của những resource được lưu trong một server chuyên dụng (:ref:`DisplayServer<class_DisplayServer>`, :ref:`RenderingServer<class_RenderingServer>`, v.v.), vì vậy hàm này sẽ trả về :ref:`RID<class_RID>` ban đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -455,7 +455,7 @@ Returns the :ref:`RID<class_RID>` of this resource (or an empty RID). Many resou
 
 :ref:`bool<class_bool>` **is_built_in**\ (\ ) |const| :ref:`🔗<class_Resource_method_is_built_in>`
 
-Returns ``true`` if the resource is saved on disk as a part of another resource's file.
+Trả về ``true`` nếu resource được lưu trên đĩa như một phần của tệp thuộc resource khác.
 
 .. rst-class:: classref-item-separator
 
@@ -467,7 +467,7 @@ Returns ``true`` if the resource is saved on disk as a part of another resource'
 
 |void| **reset_state**\ (\ ) :ref:`🔗<class_Resource_method_reset_state>`
 
-Makes the resource clear its non-exported properties. See also :ref:`_reset_state()<class_Resource_private_method__reset_state>`. Useful when implementing a custom resource format by extending :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` and :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
+Khiến resource xóa các thuộc tính không được export. Xem thêm :ref:`_reset_state()<class_Resource_private_method__reset_state>`. Hữu ích khi triển khai định dạng custom resource bằng cách mở rộng :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` và :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
 
 .. rst-class:: classref-item-separator
 
@@ -479,9 +479,9 @@ Makes the resource clear its non-exported properties. See also :ref:`_reset_stat
 
 |void| **set_id_for_path**\ (\ path\: :ref:`String<class_String>`, id\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Resource_method_set_id_for_path>`
 
-In the internal cache for scene-unique IDs, sets the ID of this resource to ``id`` for the scene at ``path``. If ``id`` is empty, the cache entry for ``path`` is cleared. Useful to keep scene-unique IDs the same when implementing a VCS-friendly custom resource format by extending :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` and :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
+Trong bộ nhớ đệm nội bộ dành cho các ID duy nhất theo scene, đặt ID của resource này thành ``id`` đối với scene tại ``path``. Nếu ``id`` trống, mục bộ nhớ đệm của ``path`` sẽ bị xóa. Hữu ích để giữ nguyên các ID duy nhất theo scene khi triển khai định dạng custom resource thân thiện với VCS bằng cách mở rộng :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` và :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
 
-\ **Note:** This method is only implemented when running in an editor context.
+\ **Lưu ý:** Phương thức này chỉ được triển khai khi chạy trong ngữ cảnh editor.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ In the internal cache for scene-unique IDs, sets the ID of this resource to ``id
 
 |void| **set_path_cache**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Resource_method_set_path_cache>`
 
-Sets the resource's path to ``path`` without involving the resource cache. Useful for handling :ref:`CacheMode<enum_ResourceFormatLoader_CacheMode>` values when implementing a custom resource format by extending :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` and :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
+Đặt đường dẫn của resource thành ``path`` mà không liên quan đến resource cache. Hữu ích để xử lý các giá trị :ref:`CacheMode <enum_ResourceFormatLoader_CacheMode>` khi triển khai định dạng custom resource bằng cách mở rộng :ref:`ResourceFormatLoader<class_ResourceFormatLoader>` và :ref:`ResourceFormatSaver<class_ResourceFormatSaver>`.
 
 .. rst-class:: classref-item-separator
 
@@ -505,9 +505,9 @@ Sets the resource's path to ``path`` without involving the resource cache. Usefu
 
 |void| **setup_local_to_scene**\ (\ ) :ref:`🔗<class_Resource_method_setup_local_to_scene>`
 
-**Deprecated:** This method should only be called internally.
+**Đã lỗi thời:** Phương thức này chỉ nên được gọi nội bộ.
 
-Calls :ref:`_setup_local_to_scene()<class_Resource_private_method__setup_local_to_scene>`. If :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` is set to ``true``, this method is automatically called from :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>` by the newly duplicated resource within the scene instance.
+Gọi :ref:`_setup_local_to_scene()<class_Resource_private_method__setup_local_to_scene>`. Nếu :ref:`resource_local_to_scene<class_Resource_property_resource_local_to_scene>` được đặt thành ``true``, phương thức này sẽ tự động được gọi từ :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>` bởi resource mới được nhân bản trong scene instance.
 
 .. rst-class:: classref-item-separator
 
@@ -519,14 +519,14 @@ Calls :ref:`_setup_local_to_scene()<class_Resource_private_method__setup_local_t
 
 |void| **take_over_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Resource_method_take_over_path>`
 
-Sets the :ref:`resource_path<class_Resource_property_resource_path>` to ``path``, potentially overriding an existing cache entry for this path. Further attempts to load an overridden resource by path will instead return this resource.
+Đặt :ref:`resource_path<class_Resource_property_resource_path>` thành ``path``, có thể ghi đè một mục cache hiện có cho đường dẫn này. Các lần thử tiếp theo để tải resource bị ghi đè theo đường dẫn sẽ trả về resource này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

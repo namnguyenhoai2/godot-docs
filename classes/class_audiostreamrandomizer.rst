@@ -10,52 +10,52 @@
 AudioStreamRandomizer
 =====================
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Wraps a pool of audio streams with pitch and volume shifting.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Picks a random AudioStream from the pool, depending on the playback mode, and applies random pitch shifting and volume shifting during playback.
+Bọc một pool các audio stream với tính năng thay đổi cao độ và âm lượng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Chọn ngẫu nhiên một AudioStream từ pool, tùy thuộc vào playback mode, rồi áp dụng việc thay đổi ngẫu nhiên cao độ và âm lượng trong khi phát.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Các audio stream <../tutorials/audio/audio_streams>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
-   | :ref:`PlaybackMode<enum_AudioStreamRandomizer_PlaybackMode>` | :ref:`playback_mode<class_AudioStreamRandomizer_property_playback_mode>`                     | ``0``   |
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>`                                    | :ref:`random_pitch<class_AudioStreamRandomizer_property_random_pitch>`                       | ``1.0`` |
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>`                                    | :ref:`random_pitch_semitones<class_AudioStreamRandomizer_property_random_pitch_semitones>`   | ``0.0`` |
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>`                                    | :ref:`random_volume_offset_db<class_AudioStreamRandomizer_property_random_volume_offset_db>` | ``0.0`` |
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
-   | :ref:`AudioStream<class_AudioStream>`                        | :ref:`stream_{index}/stream<class_AudioStreamRandomizer_property_stream_{index}/stream>`     |         |
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>`                                    | :ref:`stream_{index}/weight<class_AudioStreamRandomizer_property_stream_{index}/weight>`     | ``1.0`` |
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`                                        | :ref:`streams_count<class_AudioStreamRandomizer_property_streams_count>`                     | ``0``   |
-   +--------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   | :ref:`PlaybackMode <enum_AudioStreamRandomizer_PlaybackMode>` | :ref:`playback_mode<class_AudioStreamRandomizer_property_playback_mode>`                     | ``0``   |
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>`                                     | :ref:`random_pitch<class_AudioStreamRandomizer_property_random_pitch>`                       | ``1.0`` |
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>`                                     | :ref:`random_pitch_semitones<class_AudioStreamRandomizer_property_random_pitch_semitones>`   | ``0.0`` |
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>`                                     | :ref:`random_volume_offset_db<class_AudioStreamRandomizer_property_random_volume_offset_db>` | ``0.0`` |
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   | :ref:`AudioStream<class_AudioStream>`                         | :ref:`stream_{index}/stream <class_AudioStreamRandomizer_property_stream_{index}/stream>`    |         |
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>`                                     | :ref:`stream_{index}/weight <class_AudioStreamRandomizer_property_stream_{index}/weight>`    | ``1.0`` |
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
+   | :ref:`int<class_int>`                                         | :ref:`streams_count<class_AudioStreamRandomizer_property_streams_count>`                     | ``0``   |
+   +---------------------------------------------------------------+----------------------------------------------------------------------------------------------+---------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -82,14 +82,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AudioStreamRandomizer_PlaybackMode:
 
 .. rst-class:: classref-enumeration
 
-enum **PlaybackMode**: :ref:`🔗<enum_AudioStreamRandomizer_PlaybackMode>`
+enum **PlaybackMode**: :ref:`🔗 <enum_AudioStreamRandomizer_PlaybackMode>`
 
 .. _class_AudioStreamRandomizer_constant_PLAYBACK_RANDOM_NO_REPEATS:
 
@@ -97,7 +97,7 @@ enum **PlaybackMode**: :ref:`🔗<enum_AudioStreamRandomizer_PlaybackMode>`
 
 :ref:`PlaybackMode<enum_AudioStreamRandomizer_PlaybackMode>` **PLAYBACK_RANDOM_NO_REPEATS** = ``0``
 
-Pick a stream at random according to the probability weights chosen for each stream, but avoid playing the same stream twice in a row whenever possible. If only 1 sound is present in the pool, the same sound will always play, effectively allowing repeats to occur.
+Chọn ngẫu nhiên một stream theo trọng số xác suất được chỉ định cho từng stream, nhưng tránh phát cùng một stream hai lần liên tiếp bất cứ khi nào có thể. Nếu pool chỉ có 1 âm thanh, âm thanh đó sẽ luôn được phát, về cơ bản cho phép phát lặp lại.
 
 .. _class_AudioStreamRandomizer_constant_PLAYBACK_RANDOM:
 
@@ -105,7 +105,7 @@ Pick a stream at random according to the probability weights chosen for each str
 
 :ref:`PlaybackMode<enum_AudioStreamRandomizer_PlaybackMode>` **PLAYBACK_RANDOM** = ``1``
 
-Pick a stream at random according to the probability weights chosen for each stream. If only 1 sound is present in the pool, the same sound will always play.
+Chọn ngẫu nhiên một stream theo các trọng số xác suất được chọn cho từng stream. Nếu pool chỉ có 1 sound, sound đó sẽ luôn được phát.
 
 .. _class_AudioStreamRandomizer_constant_PLAYBACK_SEQUENTIAL:
 
@@ -113,7 +113,7 @@ Pick a stream at random according to the probability weights chosen for each str
 
 :ref:`PlaybackMode<enum_AudioStreamRandomizer_PlaybackMode>` **PLAYBACK_SEQUENTIAL** = ``2``
 
-Play streams in the order they appear in the stream pool. If only 1 sound is present in the pool, the same sound will always play.
+Phát các stream theo thứ tự xuất hiện trong stream pool. Nếu pool chỉ có 1 sound, sound đó sẽ luôn được phát.
 
 .. rst-class:: classref-section-separator
 
@@ -121,8 +121,8 @@ Play streams in the order they appear in the stream pool. If only 1 sound is pre
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioStreamRandomizer_property_playback_mode:
 
@@ -135,7 +135,7 @@ Property Descriptions
 - |void| **set_playback_mode**\ (\ value\: :ref:`PlaybackMode<enum_AudioStreamRandomizer_PlaybackMode>`\ )
 - :ref:`PlaybackMode<enum_AudioStreamRandomizer_PlaybackMode>` **get_playback_mode**\ (\ )
 
-Controls how this AudioStreamRandomizer picks which AudioStream to play next.
+Kiểm soát cách AudioStreamRandomizer này chọn AudioStream để phát tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -152,9 +152,9 @@ Controls how this AudioStreamRandomizer picks which AudioStream to play next.
 - |void| **set_random_pitch**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_random_pitch**\ (\ )
 
-The largest possible frequency multiplier of the random pitch variation. Pitch will be randomly chosen within a range of ``1.0 / random_pitch`` and ``random_pitch``. A value of ``1.0`` means no variation. A value of ``2.0`` means pitch will be randomized between double and half.
+Hệ số tần số lớn nhất có thể có của biến thiên cao độ ngẫu nhiên. Cao độ sẽ được chọn ngẫu nhiên trong khoảng từ ``1.0 / random_pitch`` đến ``random_pitch``. Giá trị ``1.0`` nghĩa là không có biến thiên. Giá trị ``2.0`` nghĩa là cao độ sẽ được chọn ngẫu nhiên trong khoảng từ gấp đôi đến một nửa.
 
-\ **Note:** Setting this property also sets :ref:`random_pitch_semitones<class_AudioStreamRandomizer_property_random_pitch_semitones>`.
+\ **Lưu ý:** Việc thiết lập thuộc tính này cũng thiết lập :ref:`random_pitch_semitones<class_AudioStreamRandomizer_property_random_pitch_semitones>`.
 
 .. rst-class:: classref-item-separator
 
@@ -171,9 +171,9 @@ The largest possible frequency multiplier of the random pitch variation. Pitch w
 - |void| **set_random_pitch_semitones**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_random_pitch_semitones**\ (\ )
 
-The largest possible distance, in semitones, of the random pitch variation. A value of ``0.0`` means no variation.
+Khoảng cách lớn nhất có thể có, tính bằng semitone, của biến thiên cao độ ngẫu nhiên. Giá trị ``0.0`` nghĩa là không có biến thiên.
 
-\ **Note:** Setting this property also sets :ref:`random_pitch<class_AudioStreamRandomizer_property_random_pitch>`.
+\ **Lưu ý:** Việc thiết lập thuộc tính này cũng thiết lập :ref:`random_pitch<class_AudioStreamRandomizer_property_random_pitch>`.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ The largest possible distance, in semitones, of the random pitch variation. A va
 - |void| **set_random_volume_offset_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_random_volume_offset_db**\ (\ )
 
-The intensity of random volume variation. Volume will be increased or decreased by a random value up to ``random_volume_offset_db``. A value of ``0.0`` means no variation. A value of ``3.0`` means volume will be randomized between ``-3.0 dB`` and ``+3.0 dB``.
+Mức độ biến thiên âm lượng ngẫu nhiên. Âm lượng sẽ được tăng hoặc giảm một giá trị ngẫu nhiên lên đến ``random_volume_offset_db``. Giá trị ``0.0`` nghĩa là không có biến thiên. Giá trị ``3.0`` nghĩa là âm lượng sẽ được ngẫu nhiên hóa trong khoảng từ ``-3.0 dB`` đến ``+3.0 dB``.
 
 .. rst-class:: classref-item-separator
 
@@ -200,11 +200,11 @@ The intensity of random volume variation. Volume will be increased or decreased 
 
 .. rst-class:: classref-property
 
-:ref:`AudioStream<class_AudioStream>` **stream_{index}/stream** :ref:`🔗<class_AudioStreamRandomizer_property_stream_{index}/stream>`
+:ref:`AudioStream<class_AudioStream>` **stream_{index}/stream** :ref:`🔗 <class_AudioStreamRandomizer_property_stream_{index}/stream>`
 
-The :ref:`AudioStream<class_AudioStream>` at ``index``.
+:ref:`AudioStream<class_AudioStream>` tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. streams_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. streams_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -214,11 +214,11 @@ The :ref:`AudioStream<class_AudioStream>` at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **stream_{index}/weight** = ``1.0`` :ref:`🔗<class_AudioStreamRandomizer_property_stream_{index}/weight>`
+:ref:`float<class_float>` **stream_{index}/weight** = ``1.0`` :ref:`🔗 <class_AudioStreamRandomizer_property_stream_{index}/weight>`
 
-The probability weight of the :ref:`AudioStream<class_AudioStream>` at ``index``.
+Trọng số xác suất của :ref:`AudioStream<class_AudioStream>` tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. streams_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. streams_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ The probability weight of the :ref:`AudioStream<class_AudioStream>` at ``index``
 - |void| **set_streams_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_streams_count**\ (\ )
 
-The number of streams in the stream pool.
+Số lượng stream trong stream pool.
 
 .. rst-class:: classref-section-separator
 
@@ -243,8 +243,8 @@ The number of streams in the stream pool.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioStreamRandomizer_method_add_stream:
 
@@ -252,7 +252,7 @@ Method Descriptions
 
 |void| **add_stream**\ (\ index\: :ref:`int<class_int>`, stream\: :ref:`AudioStream<class_AudioStream>`, weight\: :ref:`float<class_float>` = 1.0\ ) :ref:`🔗<class_AudioStreamRandomizer_method_add_stream>`
 
-Insert a stream at the specified index. If the index is less than zero, the insertion occurs at the end of the underlying pool.
+Chèn một stream tại index được chỉ định. Nếu index nhỏ hơn 0, stream sẽ được chèn vào cuối pool underlying.
 
 .. rst-class:: classref-item-separator
 
@@ -264,7 +264,7 @@ Insert a stream at the specified index. If the index is less than zero, the inse
 
 :ref:`AudioStream<class_AudioStream>` **get_stream**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioStreamRandomizer_method_get_stream>`
 
-Returns the stream at the specified index.
+Trả về stream tại index được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -276,7 +276,7 @@ Returns the stream at the specified index.
 
 :ref:`float<class_float>` **get_stream_probability_weight**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioStreamRandomizer_method_get_stream_probability_weight>`
 
-Returns the probability weight associated with the stream at the given index.
+Trả về trọng số xác suất được liên kết với stream tại index đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ Returns the probability weight associated with the stream at the given index.
 
 |void| **move_stream**\ (\ index_from\: :ref:`int<class_int>`, index_to\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AudioStreamRandomizer_method_move_stream>`
 
-Move a stream from one index to another.
+Di chuyển một stream từ index này sang index khác.
 
 .. rst-class:: classref-item-separator
 
@@ -300,7 +300,7 @@ Move a stream from one index to another.
 
 |void| **remove_stream**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AudioStreamRandomizer_method_remove_stream>`
 
-Remove the stream at the specified index.
+Xóa luồng tại chỉ mục được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -312,7 +312,7 @@ Remove the stream at the specified index.
 
 |void| **set_stream**\ (\ index\: :ref:`int<class_int>`, stream\: :ref:`AudioStream<class_AudioStream>`\ ) :ref:`🔗<class_AudioStreamRandomizer_method_set_stream>`
 
-Set the AudioStream at the specified index.
+Thiết lập AudioStream tại chỉ mục được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -324,14 +324,14 @@ Set the AudioStream at the specified index.
 
 |void| **set_stream_probability_weight**\ (\ index\: :ref:`int<class_int>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AudioStreamRandomizer_method_set_stream_probability_weight>`
 
-Set the probability weight of the stream at the specified index. The higher this value, the more likely that the randomizer will choose this stream during random playback modes.
+Thiết lập trọng số xác suất của luồng tại chỉ mục được chỉ định. Giá trị này càng cao thì randomizer càng có khả năng chọn luồng này trong các chế độ phát ngẫu nhiên.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

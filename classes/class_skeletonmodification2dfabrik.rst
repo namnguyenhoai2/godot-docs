@@ -10,31 +10,31 @@
 SkeletonModification2DFABRIK
 ============================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A modification that uses FABRIK to manipulate a series of :ref:`Bone2D<class_Bone2D>` nodes to reach a target.
+Một modification sử dụng FABRIK để điều khiển một chuỗi các :ref:`Bone2D<class_Bone2D>` node nhằm đạt tới một target.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`SkeletonModification2D<class_SkeletonModification2D>` uses an algorithm called Forward And Backward Reaching Inverse Kinematics, or FABRIK, to rotate a bone chain so that it reaches a target.
+:ref:`SkeletonModification2D<class_SkeletonModification2D>` này sử dụng một thuật toán có tên Forward And Backward Reaching Inverse Kinematics, gọi tắt là FABRIK, để xoay một chuỗi bone sao cho chuỗi đó đạt tới một target.
 
-FABRIK works by knowing the positions and lengths of a series of bones, typically called a "bone chain". It first starts by running a forward pass, which places the final bone at the target's position. Then all other bones are moved towards the tip bone, so they stay at the defined bone length away. Then a backwards pass is performed, where the root/first bone in the FABRIK chain is placed back at the origin. Then all other bones are moved so they stay at the defined bone length away. This positions the bone chain so that it reaches the target when possible, but all of the bones stay the correct length away from each other.
+FABRIK hoạt động bằng cách biết vị trí và độ dài của một chuỗi bone, thường được gọi là "bone chain". Trước tiên, thuật toán thực hiện một lượt duyệt xuôi, đặt bone cuối cùng tại vị trí của target. Sau đó, tất cả các bone khác được di chuyển về phía bone ở đầu mút, sao cho chúng duy trì khoảng cách bằng độ dài bone đã xác định. Tiếp theo, một lượt duyệt ngược được thực hiện, trong đó bone gốc/đầu tiên trong chuỗi FABRIK được đặt trở lại origin. Sau đó, tất cả các bone khác được di chuyển sao cho chúng duy trì khoảng cách bằng độ dài bone đã xác định. Nhờ đó, bone chain được định vị để đạt tới target khi có thể, đồng thời tất cả các bone vẫn duy trì đúng khoảng cách độ dài với nhau.
 
-Because of how FABRIK works, it often gives more natural results than those seen in :ref:`SkeletonModification2DCCDIK<class_SkeletonModification2DCCDIK>`.
+Do cách FABRIK hoạt động, thuật toán này thường cho kết quả tự nhiên hơn so với kết quả trong :ref:`SkeletonModification2DCCDIK<class_SkeletonModification2DCCDIK>`.
 
-\ **Note:** The FABRIK modifier has ``fabrik_joints``, which are the data objects that hold the data for each joint in the FABRIK chain. This is different from :ref:`Bone2D<class_Bone2D>` nodes! FABRIK joints hold the data needed for each :ref:`Bone2D<class_Bone2D>` in the bone chain used by FABRIK.
+\ **Lưu ý:** FABRIK modifier có ``fabrik_joints``, là các đối tượng dữ liệu chứa dữ liệu cho từng joint trong FABRIK chain. Điều này khác với các :ref:`Bone2D<class_Bone2D>` node! FABRIK joint chứa dữ liệu cần thiết cho từng :ref:`Bone2D<class_Bone2D>` trong bone chain được FABRIK sử dụng.
 
-To help control how the FABRIK joints move, a magnet vector can be passed, which can nudge the bones in a certain direction prior to solving, giving a level of control over the final result.
+Để giúp kiểm soát cách các FABRIK joint di chuyển, có thể truyền vào một vector nam châm, vector này có thể đẩy các bone theo một hướng nhất định trước khi giải, giúp kiểm soát mức độ nhất định đối với kết quả cuối cùng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -77,8 +77,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModification2DFABRIK_property_fabrik_data_chain_length:
 
@@ -91,7 +91,7 @@ Property Descriptions
 - |void| **set_fabrik_data_chain_length**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_fabrik_data_chain_length**\ (\ )
 
-The number of FABRIK joints in the FABRIK modification.
+Số lượng FABRIK joint trong FABRIK modification.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ The number of FABRIK joints in the FABRIK modification.
 - |void| **set_target_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_target_node**\ (\ )
 
-The NodePath to the node that is the target for the FABRIK modification. This node is what the FABRIK chain will attempt to rotate the bone chain to.
+NodePath trỏ đến node là target cho FABRIK modification. Đây là node mà FABRIK chain sẽ cố gắng xoay bone chain hướng tới.
 
 .. rst-class:: classref-section-separator
 
@@ -116,8 +116,8 @@ The NodePath to the node that is the target for the FABRIK modification. This no
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModification2DFABRIK_method_get_fabrik_joint_bone2d_node:
 
@@ -125,7 +125,7 @@ Method Descriptions
 
 :ref:`NodePath<class_NodePath>` **get_fabrik_joint_bone2d_node**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DFABRIK_method_get_fabrik_joint_bone2d_node>`
 
-Returns the :ref:`Bone2D<class_Bone2D>` node assigned to the FABRIK joint at ``joint_idx``.
+Trả về node :ref:`Bone2D<class_Bone2D>` được gán cho FABRIK joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Returns the :ref:`Bone2D<class_Bone2D>` node assigned to the FABRIK joint at ``j
 
 :ref:`int<class_int>` **get_fabrik_joint_bone_index**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DFABRIK_method_get_fabrik_joint_bone_index>`
 
-Returns the index of the :ref:`Bone2D<class_Bone2D>` node assigned to the FABRIK joint at ``joint_idx``.
+Trả về chỉ mục của node :ref:`Bone2D<class_Bone2D>` được gán cho FABRIK joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ Returns the index of the :ref:`Bone2D<class_Bone2D>` node assigned to the FABRIK
 
 :ref:`Vector2<class_Vector2>` **get_fabrik_joint_magnet_position**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DFABRIK_method_get_fabrik_joint_magnet_position>`
 
-Returns the magnet position vector for the joint at ``joint_idx``.
+Trả về vector vị trí nam châm cho joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ Returns the magnet position vector for the joint at ``joint_idx``.
 
 :ref:`bool<class_bool>` **get_fabrik_joint_use_target_rotation**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DFABRIK_method_get_fabrik_joint_use_target_rotation>`
 
-Returns whether the joint is using the target's rotation rather than allowing FABRIK to rotate the joint. This option only applies to the tip/final joint in the chain.
+Trả về việc joint có đang sử dụng rotation của target thay vì cho phép FABRIK xoay joint hay không. Tùy chọn này chỉ áp dụng cho joint ở đầu mút/cuối cùng trong chain.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Returns whether the joint is using the target's rotation rather than allowing FA
 
 |void| **set_fabrik_joint_bone2d_node**\ (\ joint_idx\: :ref:`int<class_int>`, bone2d_nodepath\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SkeletonModification2DFABRIK_method_set_fabrik_joint_bone2d_node>`
 
-Sets the :ref:`Bone2D<class_Bone2D>` node assigned to the FABRIK joint at ``joint_idx``.
+Đặt node :ref:`Bone2D<class_Bone2D>` được gán cho FABRIK joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ Sets the :ref:`Bone2D<class_Bone2D>` node assigned to the FABRIK joint at ``join
 
 |void| **set_fabrik_joint_bone_index**\ (\ joint_idx\: :ref:`int<class_int>`, bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModification2DFABRIK_method_set_fabrik_joint_bone_index>`
 
-Sets the bone index, ``bone_idx``, of the FABRIK joint at ``joint_idx``. When possible, this will also update the ``bone2d_node`` of the FABRIK joint based on data provided by the linked skeleton.
+Đặt chỉ mục bone, ``bone_idx``, của FABRIK joint tại ``joint_idx``. Khi có thể, thao tác này cũng sẽ cập nhật ``bone2d_node`` của FABRIK joint dựa trên dữ liệu do skeleton được liên kết cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Sets the bone index, ``bone_idx``, of the FABRIK joint at ``joint_idx``. When po
 
 |void| **set_fabrik_joint_magnet_position**\ (\ joint_idx\: :ref:`int<class_int>`, magnet_position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_SkeletonModification2DFABRIK_method_set_fabrik_joint_magnet_position>`
 
-Sets the magnet position vector for the joint at ``joint_idx``.
+Đặt vector vị trí nam châm cho joint tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -209,16 +209,16 @@ Sets the magnet position vector for the joint at ``joint_idx``.
 
 |void| **set_fabrik_joint_use_target_rotation**\ (\ joint_idx\: :ref:`int<class_int>`, use_target_rotation\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DFABRIK_method_set_fabrik_joint_use_target_rotation>`
 
-Sets whether the joint at ``joint_idx`` will use the target node's rotation rather than letting FABRIK rotate the node.
+Đặt việc joint tại ``joint_idx`` có sử dụng rotation của target node thay vì để FABRIK xoay node hay không.
 
-\ **Note:** This option only works for the tip/final joint in the chain. For all other nodes, this option will be ignored.
+\ **Lưu ý:** Tùy chọn này chỉ hoạt động với joint ở đầu mút/cuối cùng trong chain. Với tất cả node khác, tùy chọn này sẽ bị bỏ qua.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể dùng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

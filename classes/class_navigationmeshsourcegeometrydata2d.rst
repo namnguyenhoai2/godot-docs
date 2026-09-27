@@ -10,23 +10,23 @@
 NavigationMeshSourceGeometryData2D
 ==================================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Container for parsed source geometry data used in navigation mesh baking.
+Bộ chứa dữ liệu hình học nguồn đã được phân tích cú pháp, dùng để tạo navigation mesh.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Container for parsed source geometry data used in navigation mesh baking.
+Bộ chứa dữ liệu hình học nguồn đã được phân tích cú pháp, dùng để tạo navigation mesh.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationMeshSourceGeometryData2D_method_add_obstruction_outline:
 
@@ -80,7 +80,7 @@ Method Descriptions
 
 |void| **add_obstruction_outline**\ (\ shape_outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_add_obstruction_outline>`
 
-Adds the outline points of a shape as obstructed area.
+Thêm các điểm đường viền của một hình dạng dưới dạng khu vực bị cản trở.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Adds the outline points of a shape as obstructed area.
 
 |void| **add_projected_obstruction**\ (\ vertices\: :ref:`PackedVector2Array<class_PackedVector2Array>`, carve\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_add_projected_obstruction>`
 
-Adds a projected obstruction shape to the source geometry. If ``carve`` is ``true`` the carved shape will not be affected by additional offsets (e.g. agent radius) of the navigation mesh baking process.
+Thêm một hình dạng chướng ngại vật được chiếu vào hình học nguồn. Nếu ``carve`` là ``true``, hình dạng được khoét sẽ không bị ảnh hưởng bởi các độ lệch bổ sung (ví dụ: bán kính tác nhân) trong quá trình baking navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Adds a projected obstruction shape to the source geometry. If ``carve`` is ``tru
 
 |void| **add_traversable_outline**\ (\ shape_outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_add_traversable_outline>`
 
-Adds the outline points of a shape as traversable area.
+Thêm các điểm đường viền của một hình dạng dưới dạng khu vực có thể đi qua.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Adds the outline points of a shape as traversable area.
 
 |void| **append_obstruction_outlines**\ (\ obstruction_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_append_obstruction_outlines>`
 
-Appends another array of ``obstruction_outlines`` at the end of the existing obstruction outlines array.
+Nối thêm một mảng ``obstruction_outlines`` vào cuối mảng các đường viền chướng ngại vật hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -128,7 +128,7 @@ Appends another array of ``obstruction_outlines`` at the end of the existing obs
 
 |void| **append_traversable_outlines**\ (\ traversable_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_append_traversable_outlines>`
 
-Appends another array of ``traversable_outlines`` at the end of the existing traversable outlines array.
+Nối thêm một mảng ``traversable_outlines`` vào cuối mảng các đường viền có thể đi qua hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ Appends another array of ``traversable_outlines`` at the end of the existing tra
 
 |void| **clear**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_clear>`
 
-Clears the internal data.
+Xóa dữ liệu nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -152,7 +152,7 @@ Clears the internal data.
 
 |void| **clear_projected_obstructions**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_clear_projected_obstructions>`
 
-Clears all projected obstructions.
+Xóa tất cả các chướng ngại vật được chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ Clears all projected obstructions.
 
 :ref:`Rect2<class_Rect2>` **get_bounds**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_get_bounds>`
 
-Returns an axis-aligned bounding box that covers all the stored geometry data. The bounds are calculated when calling this function with the result cached until further geometry changes are made.
+Trả về một hộp giới hạn thẳng theo trục bao phủ toàn bộ dữ liệu hình học đã lưu trữ. Các giới hạn được tính khi gọi hàm này, và kết quả được lưu vào bộ nhớ đệm cho đến khi có thay đổi hình học tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ Returns an axis-aligned bounding box that covers all the stored geometry data. T
 
 :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\] **get_obstruction_outlines**\ (\ ) |const| :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_get_obstruction_outlines>`
 
-Returns all the obstructed area outlines arrays.
+Trả về tất cả các mảng đường viền của những khu vực bị cản trở.
 
 .. rst-class:: classref-item-separator
 
@@ -188,11 +188,11 @@ Returns all the obstructed area outlines arrays.
 
 :ref:`Array<class_Array>` **get_projected_obstructions**\ (\ ) |const| :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_get_projected_obstructions>`
 
-Returns the projected obstructions as an :ref:`Array<class_Array>` of dictionaries. Each :ref:`Dictionary<class_Dictionary>` contains the following entries:
+Trả về các chướng ngại vật được chiếu dưới dạng :ref:`Array<class_Array>` gồm các từ điển. Mỗi :ref:`Dictionary<class_Dictionary>` chứa các mục sau:
 
-- ``vertices`` - A :ref:`PackedFloat32Array<class_PackedFloat32Array>` that defines the outline points of the projected shape.
+- ``vertices`` - Một :ref:`PackedFloat32Array<class_PackedFloat32Array>` xác định các điểm đường viền của hình dạng được chiếu.
 
-- ``carve`` - A :ref:`bool<class_bool>` that defines how the projected shape affects the navigation mesh baking. If ``true`` the projected shape will not be affected by addition offsets, e.g. agent radius.
+- ``carve`` - Một :ref:`bool<class_bool>` xác định cách hình dạng được chiếu ảnh hưởng đến quá trình baking của navigation mesh. Nếu ``true``, hình dạng được chiếu sẽ không bị ảnh hưởng bởi các offset bổ sung, chẳng hạn như bán kính agent.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Returns the projected obstructions as an :ref:`Array<class_Array>` of dictionari
 
 :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\] **get_traversable_outlines**\ (\ ) |const| :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_get_traversable_outlines>`
 
-Returns all the traversable area outlines arrays.
+Trả về tất cả các mảng đường bao của khu vực có thể đi qua.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Returns all the traversable area outlines arrays.
 
 :ref:`bool<class_bool>` **has_data**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_has_data>`
 
-Returns ``true`` when parsed source geometry data exists.
+Trả về ``true`` khi tồn tại dữ liệu hình học nguồn đã được phân tích cú pháp.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ Returns ``true`` when parsed source geometry data exists.
 
 |void| **merge**\ (\ other_geometry\: :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_merge>`
 
-Adds the geometry data of another **NavigationMeshSourceGeometryData2D** to the navigation mesh baking data.
+Thêm dữ liệu hình học của một **NavigationMeshSourceGeometryData2D** khác vào dữ liệu tạo lưới điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ Adds the geometry data of another **NavigationMeshSourceGeometryData2D** to the 
 
 |void| **set_obstruction_outlines**\ (\ obstruction_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_set_obstruction_outlines>`
 
-Sets all the obstructed area outlines arrays.
+Thiết lập tất cả các mảng đường bao của khu vực bị cản trở.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Sets all the obstructed area outlines arrays.
 
 |void| **set_projected_obstructions**\ (\ projected_obstructions\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_set_projected_obstructions>`
 
-Sets the projected obstructions with an Array of Dictionaries with the following key value pairs:
+Thiết lập các vật cản được chiếu bằng một Array gồm các Dictionary với những cặp khóa-giá trị sau:
 
 
 .. tabs::
@@ -274,14 +274,14 @@ Sets the projected obstructions with an Array of Dictionaries with the following
 
 |void| **set_traversable_outlines**\ (\ traversable_outlines\: :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\]\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData2D_method_set_traversable_outlines>`
 
-Sets all the traversable area outlines arrays.
+Thiết lập tất cả các mảng đường bao của khu vực có thể đi qua.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

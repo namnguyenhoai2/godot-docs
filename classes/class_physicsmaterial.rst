@@ -10,20 +10,20 @@
 PhysicsMaterial
 ===============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Holds physics-related properties of a surface, namely its roughness and bounciness.
+Lưu giữ các thuộc tính liên quan đến vật lý của một bề mặt, cụ thể là độ nhám và độ nảy của bề mặt đó.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Holds physics-related properties of a surface, namely its roughness and bounciness. This class is used to apply these properties to a physics body.
+Lưu giữ các thuộc tính liên quan đến vật lý của một bề mặt, cụ thể là độ nhám và độ nảy của bề mặt đó. Lớp này được dùng để áp dụng các thuộc tính này cho một đối tượng vật lý.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicsMaterial_property_absorbent:
 
@@ -59,7 +59,7 @@ Property Descriptions
 - |void| **set_absorbent**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_absorbent**\ (\ )
 
-If ``true``, subtracts the bounciness from the colliding object's bounciness instead of adding it.
+Nếu ``true``, trừ độ nảy của đối tượng va chạm thay vì cộng nó.
 
 .. rst-class:: classref-item-separator
 
@@ -76,7 +76,7 @@ If ``true``, subtracts the bounciness from the colliding object's bounciness ins
 - |void| **set_bounce**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_bounce**\ (\ )
 
-The body's bounciness. Values range from ``0`` (no bounce) to ``1`` (full bounciness).
+Độ nảy của vật thể. Các giá trị nằm trong khoảng từ ``0`` (không nảy) đến ``1`` (độ nảy tối đa).
 
 \ **Note:** Even with :ref:`bounce<class_PhysicsMaterial_property_bounce>` set to ``1.0``, some energy will be lost over time due to linear and angular damping. To have a physics body that preserves all its energy over time, set :ref:`bounce<class_PhysicsMaterial_property_bounce>` to ``1.0``, the body's linear damp mode to **Replace** (if applicable), its linear damp to ``0.0``, its angular damp mode to **Replace** (if applicable), and its angular damp to ``0.0``.
 
@@ -95,7 +95,7 @@ The body's bounciness. Values range from ``0`` (no bounce) to ``1`` (full bounci
 - |void| **set_friction**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_friction**\ (\ )
 
-The body's friction. Values range from ``0`` (frictionless) to ``1`` (maximum friction).
+Độ ma sát của vật thể. Các giá trị nằm trong khoảng từ ``0`` (không ma sát) đến ``1`` (độ ma sát tối đa).
 
 .. rst-class:: classref-item-separator
 
@@ -112,14 +112,14 @@ The body's friction. Values range from ``0`` (frictionless) to ``1`` (maximum fr
 - |void| **set_rough**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_rough**\ (\ )
 
-If ``true``, the physics engine will use the friction of the object marked as "rough" when two objects collide. If ``false``, the physics engine will use the lowest friction of all colliding objects instead. If ``true`` for both colliding objects, the physics engine will use the highest friction.
+Nếu ``true``, physics engine sẽ sử dụng độ ma sát của vật thể được đánh dấu là "rough" khi hai vật thể va chạm. Nếu ``false``, physics engine sẽ sử dụng độ ma sát thấp nhất của tất cả các vật thể va chạm. Nếu ``true`` đối với cả hai vật thể va chạm, physics engine sẽ sử dụng độ ma sát cao nhất.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

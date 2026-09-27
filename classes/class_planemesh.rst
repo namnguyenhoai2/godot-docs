@@ -10,40 +10,40 @@
 PlaneMesh
 =========
 
-**Inherits:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`QuadMesh<class_QuadMesh>`
+**Được kế thừa bởi:** :ref:`QuadMesh<class_QuadMesh>`
 
-Class representing a planar :ref:`PrimitiveMesh<class_PrimitiveMesh>`.
+Lớp đại diện cho một :ref:`PrimitiveMesh<class_PrimitiveMesh>` phẳng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Class representing a planar :ref:`PrimitiveMesh<class_PrimitiveMesh>`. This flat mesh does not have a thickness. By default, this mesh is aligned on the X and Z axes; this default rotation isn't suited for use with billboarded materials. For billboarded materials, change :ref:`orientation<class_PlaneMesh_property_orientation>` to :ref:`FACE_Z<class_PlaneMesh_constant_FACE_Z>`.
+Lớp đại diện cho một :ref:`PrimitiveMesh<class_PrimitiveMesh>` phẳng. Mesh này không có độ dày. Theo mặc định, mesh này được căn chỉnh theo các trục X và Z; góc xoay mặc định này không phù hợp để sử dụng với các vật liệu billboard. Đối với vật liệu billboard, hãy thay đổi :ref:`orientation<class_PlaneMesh_property_orientation>` thành :ref:`FACE_Z<class_PlaneMesh_constant_FACE_Z>`.
 
 \ **Note:** When using a large textured **PlaneMesh** (e.g. as a floor), you may stumble upon UV jittering issues depending on the camera angle. To solve this, increase :ref:`subdivide_depth<class_PlaneMesh_property_subdivide_depth>` and :ref:`subdivide_width<class_PlaneMesh_property_subdivide_width>` until you no longer notice UV jittering.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------+------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>`                  | :ref:`center_offset<class_PlaneMesh_property_center_offset>`     | ``Vector3(0, 0, 0)`` |
-   +------------------------------------------------+------------------------------------------------------------------+----------------------+
-   | :ref:`Orientation<enum_PlaneMesh_Orientation>` | :ref:`orientation<class_PlaneMesh_property_orientation>`         | ``1``                |
-   +------------------------------------------------+------------------------------------------------------------------+----------------------+
-   | :ref:`Vector2<class_Vector2>`                  | :ref:`size<class_PlaneMesh_property_size>`                       | ``Vector2(2, 2)``    |
-   +------------------------------------------------+------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                          | :ref:`subdivide_depth<class_PlaneMesh_property_subdivide_depth>` | ``0``                |
-   +------------------------------------------------+------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                          | :ref:`subdivide_width<class_PlaneMesh_property_subdivide_width>` | ``0``                |
-   +------------------------------------------------+------------------------------------------------------------------+----------------------+
+   +-------------------------------------------------+------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>`                   | :ref:`center_offset<class_PlaneMesh_property_center_offset>`     | ``Vector3(0, 0, 0)`` |
+   +-------------------------------------------------+------------------------------------------------------------------+----------------------+
+   | :ref:`Orientation <enum_PlaneMesh_Orientation>` | :ref:`orientation<class_PlaneMesh_property_orientation>`         | ``1``                |
+   +-------------------------------------------------+------------------------------------------------------------------+----------------------+
+   | :ref:`Vector2<class_Vector2>`                   | :ref:`size<class_PlaneMesh_property_size>`                       | ``Vector2(2, 2)``    |
+   +-------------------------------------------------+------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                           | :ref:`subdivide_depth<class_PlaneMesh_property_subdivide_depth>` | ``0``                |
+   +-------------------------------------------------+------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                           | :ref:`subdivide_width<class_PlaneMesh_property_subdivide_width>` | ``0``                |
+   +-------------------------------------------------+------------------------------------------------------------------+----------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -51,14 +51,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_PlaneMesh_Orientation:
 
 .. rst-class:: classref-enumeration
 
-enum **Orientation**: :ref:`🔗<enum_PlaneMesh_Orientation>`
+enum **Orientation**: :ref:`🔗 <enum_PlaneMesh_Orientation>`
 
 .. _class_PlaneMesh_constant_FACE_X:
 
@@ -66,7 +66,7 @@ enum **Orientation**: :ref:`🔗<enum_PlaneMesh_Orientation>`
 
 :ref:`Orientation<enum_PlaneMesh_Orientation>` **FACE_X** = ``0``
 
-**PlaneMesh** will face the positive X-axis.
+**PlaneMesh** sẽ hướng về trục X dương.
 
 .. _class_PlaneMesh_constant_FACE_Y:
 
@@ -74,7 +74,7 @@ enum **Orientation**: :ref:`🔗<enum_PlaneMesh_Orientation>`
 
 :ref:`Orientation<enum_PlaneMesh_Orientation>` **FACE_Y** = ``1``
 
-**PlaneMesh** will face the positive Y-axis. This matches the behavior of the **PlaneMesh** in Godot 3.x.
+**PlaneMesh** sẽ hướng về trục Y dương. Điều này phù hợp với hành vi của **PlaneMesh** trong Godot 3.x.
 
 .. _class_PlaneMesh_constant_FACE_Z:
 
@@ -82,7 +82,7 @@ enum **Orientation**: :ref:`🔗<enum_PlaneMesh_Orientation>`
 
 :ref:`Orientation<enum_PlaneMesh_Orientation>` **FACE_Z** = ``2``
 
-**PlaneMesh** will face the positive Z-axis. This matches the behavior of the QuadMesh in Godot 3.x.
+**PlaneMesh** sẽ hướng về trục Z dương. Điều này phù hợp với hành vi của QuadMesh trong Godot 3.x.
 
 .. rst-class:: classref-section-separator
 
@@ -90,8 +90,8 @@ enum **Orientation**: :ref:`🔗<enum_PlaneMesh_Orientation>`
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PlaneMesh_property_center_offset:
 
@@ -104,7 +104,7 @@ Property Descriptions
 - |void| **set_center_offset**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_center_offset**\ (\ )
 
-Offset of the generated plane. Useful for particles.
+Độ lệch của mặt phẳng được tạo. Hữu ích cho các hạt.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ Offset of the generated plane. Useful for particles.
 - |void| **set_orientation**\ (\ value\: :ref:`Orientation<enum_PlaneMesh_Orientation>`\ )
 - :ref:`Orientation<enum_PlaneMesh_Orientation>` **get_orientation**\ (\ )
 
-Direction that the **PlaneMesh** is facing.
+Hướng mà **PlaneMesh** đang hướng tới.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Direction that the **PlaneMesh** is facing.
 - |void| **set_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_size**\ (\ )
 
-Size of the generated plane.
+Kích thước của mặt phẳng được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ Size of the generated plane.
 - |void| **set_subdivide_depth**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_subdivide_depth**\ (\ )
 
-Number of subdivision along the Z axis.
+Số lượng subdivisions dọc theo trục Z.
 
 .. rst-class:: classref-item-separator
 
@@ -172,14 +172,14 @@ Number of subdivision along the Z axis.
 - |void| **set_subdivide_width**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_subdivide_width**\ (\ )
 
-Number of subdivision along the X axis.
+Số lượng subdivisions dọc theo trục X.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

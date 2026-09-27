@@ -10,52 +10,52 @@
 ColorPickerButton
 =================
 
-**Inherits:** :ref:`Button<class_Button>` **<** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Button<class_Button>` **<** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A button that brings up a :ref:`ColorPicker<class_ColorPicker>` when pressed.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Encapsulates a :ref:`ColorPicker<class_ColorPicker>`, making it accessible by pressing a button. Pressing the button will toggle the :ref:`ColorPicker<class_ColorPicker>`'s visibility.
-
-See also :ref:`BaseButton<class_BaseButton>` which contains common properties and methods associated with this node.
-
-\ **Note:** By default, the button may not be wide enough for the color preview swatch to be visible. Make sure to set :ref:`Control.custom_minimum_size<class_Control_property_custom_minimum_size>` to a big enough value to give the button enough space.
+Một nút hiển thị :ref:`ColorPicker<class_ColorPicker>` khi được nhấn.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- `2D GD Paint Demo <https://godotengine.org/asset-library/asset/2768>`__
+Đóng gói :ref:`ColorPicker<class_ColorPicker>`, cho phép truy cập thông qua việc nhấn một nút. Nhấn nút sẽ chuyển đổi trạng thái hiển thị của :ref:`ColorPicker<class_ColorPicker>`.
 
-- `GUI Drag And Drop Demo <https://godotengine.org/asset-library/asset/2767>`__
+Xem thêm :ref:`BaseButton<class_BaseButton>`, chứa các thuộc tính và phương thức phổ biến liên quan đến node này.
+
+\ **Lưu ý:** Theo mặc định, nút có thể không đủ rộng để hiển thị ô xem trước màu. Hãy đảm bảo đặt :ref:`Control.custom_minimum_size<class_Control_property_custom_minimum_size>` thành một giá trị đủ lớn để cung cấp đủ không gian cho nút.
+
+.. rst-class:: classref-introduction-group
+
+Các hướng dẫn
+-------------
+
+- `Bản demo vẽ GD 2D <https://godotengine.org/asset-library/asset/2768>`__
+
+- `Bản demo kéo và thả GUI <https://godotengine.org/asset-library/asset/2767>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>` | :ref:`color<class_ColorPickerButton_property_color>`                   | ``Color(0, 0, 0, 1)``                                                         |
-   +---------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`   | :ref:`edit_alpha<class_ColorPickerButton_property_edit_alpha>`         | ``true``                                                                      |
-   +---------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`   | :ref:`edit_intensity<class_ColorPickerButton_property_edit_intensity>` | ``true``                                                                      |
-   +---------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`   | toggle_mode                                                            | ``true`` (overrides :ref:`BaseButton<class_BaseButton_property_toggle_mode>`) |
-   +---------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +---------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>` | :ref:`color<class_ColorPickerButton_property_color>`                   | ``Color(0, 0, 0, 1)``                                                      |
+   +---------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`edit_alpha<class_ColorPickerButton_property_edit_alpha>`         | ``true``                                                                   |
+   +---------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`edit_intensity<class_ColorPickerButton_property_edit_intensity>` | ``true``                                                                   |
+   +---------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | toggle_mode                                                            | ``true`` (ghi đè :ref:`BaseButton<class_BaseButton_property_toggle_mode>`) |
+   +---------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -68,8 +68,8 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính giao diện
+--------------------
 
 .. table::
    :widths: auto
@@ -84,8 +84,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_ColorPickerButton_signal_color_changed:
 
@@ -93,7 +93,7 @@ Signals
 
 **color_changed**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPickerButton_signal_color_changed>`
 
-Emitted when the color changes.
+Được phát ra khi màu thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Emitted when the color changes.
 
 **picker_created**\ (\ ) :ref:`🔗<class_ColorPickerButton_signal_picker_created>`
 
-Emitted when the :ref:`ColorPicker<class_ColorPicker>` is created (the button is pressed for the first time).
+Được phát ra khi :ref:`ColorPicker<class_ColorPicker>` được tạo (nút được nhấn lần đầu tiên).
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Emitted when the :ref:`ColorPicker<class_ColorPicker>` is created (the button is
 
 **popup_closed**\ (\ ) :ref:`🔗<class_ColorPickerButton_signal_popup_closed>`
 
-Emitted when the :ref:`ColorPicker<class_ColorPicker>` is closed.
+Được phát ra khi :ref:`ColorPicker<class_ColorPicker>` được đóng.
 
 .. rst-class:: classref-section-separator
 
@@ -125,8 +125,8 @@ Emitted when the :ref:`ColorPicker<class_ColorPicker>` is closed.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ColorPickerButton_property_color:
 
@@ -139,7 +139,7 @@ Property Descriptions
 - |void| **set_pick_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_pick_color**\ (\ )
 
-The currently selected color.
+Màu hiện đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ The currently selected color.
 - |void| **set_edit_alpha**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editing_alpha**\ (\ )
 
-If ``true``, the alpha channel in the displayed :ref:`ColorPicker<class_ColorPicker>` will be visible.
+Nếu ``true``, kênh alpha trong :ref:`ColorPicker<class_ColorPicker>` được hiển thị sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ If ``true``, the alpha channel in the displayed :ref:`ColorPicker<class_ColorPic
 - |void| **set_edit_intensity**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editing_intensity**\ (\ )
 
-If ``true``, the intensity slider in the displayed :ref:`ColorPicker<class_ColorPicker>` will be visible.
+Nếu ``true``, thanh trượt cường độ trong :ref:`ColorPicker<class_ColorPicker>` đang hiển thị sẽ hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -181,8 +181,8 @@ If ``true``, the intensity slider in the displayed :ref:`ColorPicker<class_Color
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ColorPickerButton_method_get_picker:
 
@@ -190,9 +190,9 @@ Method Descriptions
 
 :ref:`ColorPicker<class_ColorPicker>` **get_picker**\ (\ ) :ref:`🔗<class_ColorPickerButton_method_get_picker>`
 
-Returns the :ref:`ColorPicker<class_ColorPicker>` that this node toggles.
+Trả về :ref:`ColorPicker<class_ColorPicker>` mà node này bật hoặc tắt.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -204,9 +204,9 @@ Returns the :ref:`ColorPicker<class_ColorPicker>` that this node toggles.
 
 :ref:`PopupPanel<class_PopupPanel>` **get_popup**\ (\ ) :ref:`🔗<class_ColorPickerButton_method_get_popup>`
 
-Returns the control's :ref:`PopupPanel<class_PopupPanel>` which allows you to connect to popup signals. This allows you to handle events when the ColorPicker is shown or hidden.
+Trả về :ref:`PopupPanel<class_PopupPanel>` của control, cho phép bạn kết nối với các signal popup. Nhờ đó, bạn có thể xử lý các sự kiện khi ColorPicker được hiển thị hoặc ẩn đi.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`Window.visible<class_Window_property_visible>` property.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`Window.visible<class_Window_property_visible>` của chúng.
 
 .. rst-class:: classref-section-separator
 
@@ -214,23 +214,23 @@ Returns the control's :ref:`PopupPanel<class_PopupPanel>` which allows you to co
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_ColorPickerButton_theme_icon_bg:
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **bg** :ref:`🔗<class_ColorPickerButton_theme_icon_bg>`
+:ref:`Texture2D<class_Texture2D>` **bg** :ref:`🔗 <class_ColorPickerButton_theme_icon_bg>`
 
-The background of the color preview rect on the button.
+Nền của hình chữ nhật xem trước màu trên nút.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Khi mở rộng lớp cơ sở của phương thức này, bắt buộc phải ghi đè phương thức.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

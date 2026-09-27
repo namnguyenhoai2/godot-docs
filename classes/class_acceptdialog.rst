@@ -10,61 +10,61 @@
 AcceptDialog
 ============
 
-**Inherits:** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`ConfirmationDialog<class_ConfirmationDialog>`
+**Được kế thừa bởi:** :ref:`ConfirmationDialog<class_ConfirmationDialog>`
 
-A base dialog used for user notification.
+Một dialog cơ sở được dùng để thông báo cho người dùng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The default use of **AcceptDialog** is to allow it to only be accepted or closed, with the same result. However, the :ref:`confirmed<class_AcceptDialog_signal_confirmed>` and :ref:`canceled<class_AcceptDialog_signal_canceled>` signals allow to make the two actions different, and the :ref:`add_button()<class_AcceptDialog_method_add_button>` method allows to add custom buttons and actions.
+Cách sử dụng mặc định của **AcceptDialog** là chỉ cho phép chấp nhận hoặc đóng dialog, với cùng một kết quả. Tuy nhiên, các signal :ref:`confirmed<class_AcceptDialog_signal_confirmed>` và :ref:`canceled<class_AcceptDialog_signal_canceled>` cho phép phân biệt hai hành động này, còn phương thức :ref:`add_button()<class_AcceptDialog_method_add_button>` cho phép thêm các nút và hành động tùy chỉnh.
 
-\ **Note:** **AcceptDialog** is invisible by default. To make it visible, call one of the ``popup_*`` methods from :ref:`Window<class_Window>` on the node, such as :ref:`Window.popup_centered_clamped()<class_Window_method_popup_centered_clamped>`.
+\ **Lưu ý:** **AcceptDialog** mặc định bị ẩn. Để hiển thị nó, hãy gọi một trong các phương thức ``popup_*`` của :ref:`Window<class_Window>` trên node, chẳng hạn như :ref:`Window.popup_centered_clamped()<class_Window_method_popup_centered_clamped>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`dialog_autowrap<class_AcceptDialog_property_dialog_autowrap>`               | ``false``                                                                    |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`dialog_close_on_escape<class_AcceptDialog_property_dialog_close_on_escape>` | ``true``                                                                     |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`dialog_hide_on_ok<class_AcceptDialog_property_dialog_hide_on_ok>`           | ``true``                                                                     |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`dialog_text<class_AcceptDialog_property_dialog_text>`                       | ``""``                                                                       |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | exclusive                                                                         | ``true`` (overrides :ref:`Window<class_Window_property_exclusive>`)          |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | keep_title_visible                                                                | ``true`` (overrides :ref:`Window<class_Window_property_keep_title_visible>`) |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | maximize_disabled                                                                 | ``true`` (overrides :ref:`Window<class_Window_property_maximize_disabled>`)  |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | minimize_disabled                                                                 | ``true`` (overrides :ref:`Window<class_Window_property_minimize_disabled>`)  |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`ok_button_text<class_AcceptDialog_property_ok_button_text>`                 | ``""``                                                                       |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | title                                                                             | ``"Alert!"`` (overrides :ref:`Window<class_Window_property_title>`)          |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | transient                                                                         | ``true`` (overrides :ref:`Window<class_Window_property_transient>`)          |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | visible                                                                           | ``false`` (overrides :ref:`Window<class_Window_property_visible>`)           |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | wrap_controls                                                                     | ``true`` (overrides :ref:`Window<class_Window_property_wrap_controls>`)      |
-   +-----------------------------+-----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`dialog_autowrap<class_AcceptDialog_property_dialog_autowrap>`               | ``false``                                                                 |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`dialog_close_on_escape<class_AcceptDialog_property_dialog_close_on_escape>` | ``true``                                                                  |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`dialog_hide_on_ok<class_AcceptDialog_property_dialog_hide_on_ok>`           | ``true``                                                                  |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`dialog_text<class_AcceptDialog_property_dialog_text>`                       | ``""``                                                                    |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | độc quyền                                                                         | ``true`` (ghi đè :ref:`Window<class_Window_property_exclusive>`)          |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | keep_title_visible                                                                | ``true`` (ghi đè :ref:`Window<class_Window_property_keep_title_visible>`) |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | maximize_disabled                                                                 | ``true`` (ghi đè :ref:`Window<class_Window_property_maximize_disabled>`)  |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | minimize_disabled                                                                 | ``true`` (ghi đè :ref:`Window<class_Window_property_minimize_disabled>`)  |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`ok_button_text<class_AcceptDialog_property_ok_button_text>`                 | ``""``                                                                    |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | title                                                                             | ``"Alert!"`` (ghi đè :ref:`Window<class_Window_property_title>`)          |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | transient                                                                         | ``true`` (ghi đè :ref:`Window<class_Window_property_transient>`)          |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | visible                                                                           | ``false`` (ghi đè :ref:`Window<class_Window_property_visible>`)           |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | wrap_controls                                                                     | ``true`` (ghi đè :ref:`Window<class_Window_property_wrap_controls>`)      |
+   +-----------------------------+-----------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -85,7 +85,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -116,7 +116,7 @@ Signals
 
 **canceled**\ (\ ) :ref:`🔗<class_AcceptDialog_signal_canceled>`
 
-Emitted when the dialog is closed or the button created with :ref:`add_cancel_button()<class_AcceptDialog_method_add_cancel_button>` is pressed.
+Được phát ra khi hộp thoại đóng hoặc khi nhấn nút được tạo bằng :ref:`add_cancel_button()<class_AcceptDialog_method_add_cancel_button>`.
 
 .. rst-class:: classref-item-separator
 
@@ -128,7 +128,7 @@ Emitted when the dialog is closed or the button created with :ref:`add_cancel_bu
 
 **confirmed**\ (\ ) :ref:`🔗<class_AcceptDialog_signal_confirmed>`
 
-Emitted when the dialog is accepted, i.e. the OK button is pressed.
+Được phát ra khi chấp nhận hộp thoại, tức là khi nhấn nút OK.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ Emitted when the dialog is accepted, i.e. the OK button is pressed.
 
 **custom_action**\ (\ action\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AcceptDialog_signal_custom_action>`
 
-Emitted when a custom button with an action is pressed. See :ref:`add_button()<class_AcceptDialog_method_add_button>`.
+Được phát ra khi nhấn một nút tùy chỉnh có action. Xem :ref:`add_button()<class_AcceptDialog_method_add_button>`.
 
 .. rst-class:: classref-section-separator
 
@@ -148,8 +148,8 @@ Emitted when a custom button with an action is pressed. See :ref:`add_button()<c
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AcceptDialog_property_dialog_autowrap:
 
@@ -162,7 +162,7 @@ Property Descriptions
 - |void| **set_autowrap**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_autowrap**\ (\ )
 
-Sets autowrapping for the text in the dialog.
+Thiết lập tự động ngắt dòng cho văn bản trong hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Sets autowrapping for the text in the dialog.
 - |void| **set_close_on_escape**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_close_on_escape**\ (\ )
 
-If ``true``, the dialog will be hidden when the ``ui_close_dialog`` action is pressed (by default, this action is bound to :kbd:`Escape`, or :kbd:`Cmd + W` on macOS).
+Nếu ``true``, hộp thoại sẽ bị ẩn khi nhấn hành động ``ui_close_dialog`` (theo mặc định, hành động này được gán cho :kbd:`Escape`, hoặc :kbd:`Cmd + W` trên macOS).
 
 .. rst-class:: classref-item-separator
 
@@ -196,9 +196,9 @@ If ``true``, the dialog will be hidden when the ``ui_close_dialog`` action is pr
 - |void| **set_hide_on_ok**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_hide_on_ok**\ (\ )
 
-If ``true``, the dialog is hidden when the OK button is pressed. You can set it to ``false`` if you want to do e.g. input validation when receiving the :ref:`confirmed<class_AcceptDialog_signal_confirmed>` signal, and handle hiding the dialog in your own logic.
+Nếu ``true``, hộp thoại sẽ bị ẩn khi nhấn nút OK. Bạn có thể đặt giá trị này thành ``false`` nếu muốn thực hiện, chẳng hạn như kiểm tra dữ liệu đầu vào khi nhận tín hiệu :ref:`confirmed<class_AcceptDialog_signal_confirmed>`, và tự xử lý việc ẩn hộp thoại trong logic của mình.
 
-\ **Note:** Some nodes derived from this class can have a different default value, and potentially their own built-in logic overriding this setting. For example :ref:`FileDialog<class_FileDialog>` defaults to ``false``, and has its own input validation code that is called when you press OK, which eventually hides the dialog if the input is valid. As such, this property can't be used in :ref:`FileDialog<class_FileDialog>` to disable hiding the dialog when pressing OK.
+\ **Lưu ý:** Một số node bắt nguồn từ lớp này có thể có giá trị mặc định khác và có thể có logic tích hợp riêng ghi đè thiết lập này. Ví dụ, :ref:`FileDialog<class_FileDialog>` mặc định là ``false`` và có mã kiểm tra dữ liệu đầu vào riêng được gọi khi bạn nhấn OK; mã này cuối cùng sẽ ẩn hộp thoại nếu dữ liệu đầu vào hợp lệ. Do đó, không thể sử dụng thuộc tính này trong :ref:`FileDialog<class_FileDialog>` để tắt việc ẩn hộp thoại khi nhấn OK.
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ If ``true``, the dialog is hidden when the OK button is pressed. You can set it 
 - |void| **set_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_text**\ (\ )
 
-The text displayed by the dialog.
+Văn bản được hiển thị trong hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -232,7 +232,7 @@ The text displayed by the dialog.
 - |void| **set_ok_button_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_ok_button_text**\ (\ )
 
-The text displayed by the OK button (see :ref:`get_ok_button()<class_AcceptDialog_method_get_ok_button>`). If empty, a default text will be used.
+Văn bản được hiển thị trên nút OK (xem :ref:`get_ok_button()<class_AcceptDialog_method_get_ok_button>`). Nếu để trống, văn bản mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -240,8 +240,8 @@ The text displayed by the OK button (see :ref:`get_ok_button()<class_AcceptDialo
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AcceptDialog_method_add_button:
 
@@ -249,13 +249,13 @@ Method Descriptions
 
 :ref:`Button<class_Button>` **add_button**\ (\ text\: :ref:`String<class_String>`, right\: :ref:`bool<class_bool>` = false, action\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_AcceptDialog_method_add_button>`
 
-Adds a button with label ``text`` and a custom ``action`` to the dialog and returns the created button.
+Thêm một nút có nhãn ``text`` và một ``action`` tùy chỉnh vào hộp thoại, rồi trả về nút đã tạo.
 
-If ``action`` is not empty, pressing the button will emit the :ref:`custom_action<class_AcceptDialog_signal_custom_action>` signal with the specified action string.
+Nếu ``action`` không rỗng, việc nhấn nút sẽ phát tín hiệu :ref:`custom_action<class_AcceptDialog_signal_custom_action>` với chuỗi hành động đã chỉ định.
 
-If ``true``, ``right`` will place the button to the right of any sibling buttons.
+Nếu ``true``, ``right`` sẽ đặt nút ở bên phải của mọi nút cùng cấp.
 
-You can use :ref:`remove_button()<class_AcceptDialog_method_remove_button>` method to remove a button created with this method from the dialog.
+Bạn có thể sử dụng phương thức :ref:`remove_button()<class_AcceptDialog_method_remove_button>` để xóa nút được tạo bằng phương thức này khỏi hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -267,9 +267,9 @@ You can use :ref:`remove_button()<class_AcceptDialog_method_remove_button>` meth
 
 :ref:`Button<class_Button>` **add_cancel_button**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AcceptDialog_method_add_cancel_button>`
 
-Adds a button with label ``name`` and a cancel action to the dialog and returns the created button.
+Thêm một nút có nhãn ``name`` và hành động hủy vào hộp thoại, rồi trả về nút đã tạo.
 
-You can use :ref:`remove_button()<class_AcceptDialog_method_remove_button>` method to remove a button created with this method from the dialog.
+Bạn có thể sử dụng phương thức :ref:`remove_button()<class_AcceptDialog_method_remove_button>` để xóa nút được tạo bằng phương thức này khỏi hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -281,9 +281,9 @@ You can use :ref:`remove_button()<class_AcceptDialog_method_remove_button>` meth
 
 :ref:`Label<class_Label>` **get_label**\ (\ ) :ref:`🔗<class_AcceptDialog_method_get_label>`
 
-Returns the label used for built-in text.
+Trả về nhãn được sử dụng cho văn bản tích hợp sẵn.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là một node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây ra lỗi crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -295,9 +295,9 @@ Returns the label used for built-in text.
 
 :ref:`Button<class_Button>` **get_ok_button**\ (\ ) :ref:`🔗<class_AcceptDialog_method_get_ok_button>`
 
-Returns the OK :ref:`Button<class_Button>` instance.
+Trả về instance OK :ref:`Button<class_Button>`.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là một node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây ra lỗi crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ Returns the OK :ref:`Button<class_Button>` instance.
 
 |void| **register_text_enter**\ (\ line_edit\: :ref:`LineEdit<class_LineEdit>`\ ) :ref:`🔗<class_AcceptDialog_method_register_text_enter>`
 
-Registers a :ref:`LineEdit<class_LineEdit>` in the dialog. When the enter key is pressed, the dialog will be accepted.
+Đăng ký một :ref:`LineEdit<class_LineEdit>` trong dialog. Khi nhấn phím Enter, dialog sẽ được chấp nhận.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ Registers a :ref:`LineEdit<class_LineEdit>` in the dialog. When the enter key is
 
 |void| **remove_button**\ (\ button\: :ref:`Button<class_Button>`\ ) :ref:`🔗<class_AcceptDialog_method_remove_button>`
 
-Removes the ``button`` from the dialog. Does NOT free the ``button``. The ``button`` must be a :ref:`Button<class_Button>` added with :ref:`add_button()<class_AcceptDialog_method_add_button>` or :ref:`add_cancel_button()<class_AcceptDialog_method_add_cancel_button>` method. After removal, pressing the ``button`` will no longer emit this dialog's :ref:`custom_action<class_AcceptDialog_signal_custom_action>` or :ref:`canceled<class_AcceptDialog_signal_canceled>` signals.
+Xóa ``button`` khỏi dialog. KHÔNG giải phóng ``button``. ``button`` phải là một :ref:`Button<class_Button>` được thêm bằng phương thức :ref:`add_button()<class_AcceptDialog_method_add_button>` hoặc :ref:`add_cancel_button()<class_AcceptDialog_method_add_cancel_button>`. Sau khi xóa, việc nhấn ``button`` sẽ không còn phát tín hiệu :ref:`custom_action<class_AcceptDialog_signal_custom_action>` hoặc :ref:`canceled<class_AcceptDialog_signal_canceled>` của dialog này.
 
 .. rst-class:: classref-section-separator
 
@@ -329,8 +329,8 @@ Removes the ``button`` from the dialog. Does NOT free the ``button``. The ``butt
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_AcceptDialog_theme_constant_buttons_min_height:
 
@@ -338,7 +338,7 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **buttons_min_height** = ``0`` :ref:`🔗<class_AcceptDialog_theme_constant_buttons_min_height>`
 
-The minimum height of each button in the bottom row (such as OK/Cancel) in pixels. This can be increased to make buttons with short texts easier to click/tap.
+Chiều cao tối thiểu tính bằng pixel của mỗi nút ở hàng dưới cùng (chẳng hạn như OK/Cancel). Có thể tăng giá trị này để các nút có nội dung ngắn dễ nhấp hoặc chạm hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -350,7 +350,7 @@ The minimum height of each button in the bottom row (such as OK/Cancel) in pixel
 
 :ref:`int<class_int>` **buttons_min_width** = ``0`` :ref:`🔗<class_AcceptDialog_theme_constant_buttons_min_width>`
 
-The minimum width of each button in the bottom row (such as OK/Cancel) in pixels. This can be increased to make buttons with short texts easier to click/tap.
+Chiều rộng tối thiểu tính bằng pixel của mỗi nút ở hàng dưới cùng (chẳng hạn như OK/Cancel). Có thể tăng giá trị này để các nút có nội dung ngắn dễ nhấp hoặc chạm hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -362,7 +362,7 @@ The minimum width of each button in the bottom row (such as OK/Cancel) in pixels
 
 :ref:`int<class_int>` **buttons_separation** = ``10`` :ref:`🔗<class_AcceptDialog_theme_constant_buttons_separation>`
 
-The size of the vertical space between the dialog's content and the button row.
+Kích thước của khoảng không gian theo chiều dọc giữa nội dung của hộp thoại và hàng nút.
 
 .. rst-class:: classref-item-separator
 
@@ -372,16 +372,16 @@ The size of the vertical space between the dialog's content and the button row.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_AcceptDialog_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_AcceptDialog_theme_style_panel>`
 
-The panel that fills the background of the window.
+Bảng điều khiển lấp đầy nền của cửa sổ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này ở vị trí toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

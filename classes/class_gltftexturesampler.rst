@@ -10,27 +10,27 @@
 GLTFTextureSampler
 ==================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a glTF texture sampler
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Represents a texture sampler as defined by the base glTF spec. Texture samplers in glTF specify how to sample data from the texture's base image, when rendering the texture on an object.
+Đại diện cho một texture sampler glTF
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đại diện cho một texture sampler như được định nghĩa trong đặc tả glTF cơ sở. Texture sampler trong glTF chỉ định cách lấy mẫu dữ liệu từ ảnh cơ sở của texture khi kết xuất texture trên một đối tượng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -52,8 +52,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFTextureSampler_property_mag_filter:
 
@@ -66,7 +66,7 @@ Property Descriptions
 - |void| **set_mag_filter**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_mag_filter**\ (\ )
 
-Texture's magnification filter, used when texture appears larger on screen than the source image.
+Bộ lọc phóng đại của texture, được sử dụng khi texture hiển thị trên màn hình lớn hơn ảnh nguồn.
 
 .. rst-class:: classref-item-separator
 
@@ -83,7 +83,7 @@ Texture's magnification filter, used when texture appears larger on screen than 
 - |void| **set_min_filter**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_min_filter**\ (\ )
 
-Texture's minification filter, used when the texture appears smaller on screen than the source image.
+Bộ lọc thu nhỏ của texture, được sử dụng khi texture hiển thị trên màn hình nhỏ hơn ảnh nguồn.
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ Texture's minification filter, used when the texture appears smaller on screen t
 - |void| **set_wrap_s**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_wrap_s**\ (\ )
 
-Wrapping mode to use for S-axis (horizontal) texture coordinates.
+Chế độ wrapping được sử dụng cho tọa độ texture trên trục S (ngang).
 
 .. rst-class:: classref-item-separator
 
@@ -117,14 +117,14 @@ Wrapping mode to use for S-axis (horizontal) texture coordinates.
 - |void| **set_wrap_t**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_wrap_t**\ (\ )
 
-Wrapping mode to use for T-axis (vertical) texture coordinates.
+Chế độ wrapping được sử dụng cho tọa độ texture trên trục T (dọc).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

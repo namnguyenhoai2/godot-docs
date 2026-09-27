@@ -10,54 +10,54 @@
 CompositorEffect
 ================
 
-**Experimental:** The implementation may change as more of the rendering internals are exposed over time.
+**Thử nghiệm:** Việc triển khai có thể thay đổi khi ngày càng nhiều thành phần nội bộ của quá trình kết xuất được công khai theo thời gian.
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-This resource allows for creating a custom rendering effect.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This resource defines a custom rendering effect that can be applied to :ref:`Viewport<class_Viewport>`\ s through the viewports' :ref:`Environment<class_Environment>`. You can implement a callback that is called during rendering at a given stage of the rendering pipeline and allows you to insert additional passes. Note that this callback happens on the rendering thread. CompositorEffect is an abstract base class and must be extended to implement specific rendering logic.
+Tài nguyên này cho phép tạo một hiệu ứng kết xuất tùy chỉnh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Tài nguyên này định nghĩa một hiệu ứng kết xuất tùy chỉnh có thể được áp dụng cho :ref:`Viewport<class_Viewport>`\ s thông qua :ref:`Environment<class_Environment>` của các viewport. Bạn có thể triển khai một callback được gọi trong quá trình kết xuất tại một giai đoạn cụ thể của pipeline kết xuất và cho phép bạn chèn thêm các pass. Lưu ý rằng callback này được thực thi trên rendering thread. CompositorEffect là một lớp cơ sở trừu tượng và phải được mở rộng để triển khai logic kết xuất cụ thể.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`The Compositor <../tutorials/rendering/compositor>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`access_resolved_color<class_CompositorEffect_property_access_resolved_color>`     |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`access_resolved_depth<class_CompositorEffect_property_access_resolved_depth>`     |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` | :ref:`effect_callback_type<class_CompositorEffect_property_effect_callback_type>`       |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`enabled<class_CompositorEffect_property_enabled>`                                 |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`needs_motion_vectors<class_CompositorEffect_property_needs_motion_vectors>`       |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`needs_normal_roughness<class_CompositorEffect_property_needs_normal_roughness>`   |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`needs_separate_specular<class_CompositorEffect_property_needs_separate_specular>` |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`access_resolved_color<class_CompositorEffect_property_access_resolved_color>`     |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`access_resolved_depth<class_CompositorEffect_property_access_resolved_depth>`     |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   | :ref:`EffectCallbackType <enum_CompositorEffect_EffectCallbackType>` | :ref:`effect_callback_type<class_CompositorEffect_property_effect_callback_type>`       |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`enabled<class_CompositorEffect_property_enabled>`                                 |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`needs_motion_vectors<class_CompositorEffect_property_needs_motion_vectors>`       |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`needs_normal_roughness<class_CompositorEffect_property_needs_normal_roughness>`   |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`needs_separate_specular<class_CompositorEffect_property_needs_separate_specular>` |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -72,14 +72,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CompositorEffect_EffectCallbackType:
 
 .. rst-class:: classref-enumeration
 
-enum **EffectCallbackType**: :ref:`🔗<enum_CompositorEffect_EffectCallbackType>`
+enum **EffectCallbackType**: :ref:`🔗 <enum_CompositorEffect_EffectCallbackType>`
 
 .. _class_CompositorEffect_constant_EFFECT_CALLBACK_TYPE_PRE_OPAQUE:
 
@@ -87,7 +87,7 @@ enum **EffectCallbackType**: :ref:`🔗<enum_CompositorEffect_EffectCallbackType
 
 :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **EFFECT_CALLBACK_TYPE_PRE_OPAQUE** = ``0``
 
-The callback is called before our opaque rendering pass, but after depth prepass (if applicable).
+callback được gọi trước opaque rendering pass của chúng ta, nhưng sau depth prepass (nếu có).
 
 .. _class_CompositorEffect_constant_EFFECT_CALLBACK_TYPE_POST_OPAQUE:
 
@@ -95,7 +95,7 @@ The callback is called before our opaque rendering pass, but after depth prepass
 
 :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **EFFECT_CALLBACK_TYPE_POST_OPAQUE** = ``1``
 
-The callback is called after our opaque rendering pass, but before our sky is rendered.
+Callback được gọi sau lượt render opaque của chúng ta nhưng trước khi sky được render.
 
 .. _class_CompositorEffect_constant_EFFECT_CALLBACK_TYPE_POST_SKY:
 
@@ -103,7 +103,7 @@ The callback is called after our opaque rendering pass, but before our sky is re
 
 :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **EFFECT_CALLBACK_TYPE_POST_SKY** = ``2``
 
-The callback is called after our sky is rendered, but before our back buffers are created (and if enabled, before subsurface scattering and/or screen space reflections).
+Callback được gọi sau khi sky được render nhưng trước khi các back buffer của chúng ta được tạo (và nếu được bật, trước subsurface scattering và/hoặc screen space reflections).
 
 .. _class_CompositorEffect_constant_EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT:
 
@@ -111,7 +111,7 @@ The callback is called after our sky is rendered, but before our back buffers ar
 
 :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT** = ``3``
 
-The callback is called before our transparent rendering pass, but after our sky is rendered and we've created our back buffers.
+Callback được gọi trước lượt render transparent của chúng ta nhưng sau khi sky được render và chúng ta đã tạo các back buffer.
 
 .. _class_CompositorEffect_constant_EFFECT_CALLBACK_TYPE_POST_TRANSPARENT:
 
@@ -119,7 +119,7 @@ The callback is called before our transparent rendering pass, but after our sky 
 
 :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **EFFECT_CALLBACK_TYPE_POST_TRANSPARENT** = ``4``
 
-The callback is called after our transparent rendering pass, but before any built-in post-processing effects and output to our render target.
+Callback được gọi sau lượt render transparent của chúng ta nhưng trước mọi hiệu ứng post-processing tích hợp và việc xuất ra render target của chúng ta.
 
 .. _class_CompositorEffect_constant_EFFECT_CALLBACK_TYPE_MAX:
 
@@ -127,7 +127,7 @@ The callback is called after our transparent rendering pass, but before any buil
 
 :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **EFFECT_CALLBACK_TYPE_MAX** = ``5``
 
-Represents the size of the :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` enum.
+Biểu thị kích thước của enum :ref:`EffectCallbackType <enum_CompositorEffect_EffectCallbackType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -135,23 +135,23 @@ Represents the size of the :ref:`EffectCallbackType<enum_CompositorEffect_Effect
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CompositorEffect_property_access_resolved_color:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **access_resolved_color** :ref:`🔗<class_CompositorEffect_property_access_resolved_color>`
+:ref:`bool<class_bool>` **access_resolved_color** :ref:`🔗 <class_CompositorEffect_property_access_resolved_color>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_access_resolved_color**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_access_resolved_color**\ (\ )
 
-If ``true`` and MSAA is enabled, this will trigger a color buffer resolve before the effect is run.
+Nếu ``true`` và MSAA được bật, thao tác này sẽ kích hoạt việc resolve color buffer trước khi effect được chạy.
 
-\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the resolved buffer use:
+\ **Lưu ý:** Trong :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, để truy cập resolved buffer, hãy sử dụng:
 
 ::
 
@@ -166,16 +166,16 @@ If ``true`` and MSAA is enabled, this will trigger a color buffer resolve before
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **access_resolved_depth** :ref:`🔗<class_CompositorEffect_property_access_resolved_depth>`
+:ref:`bool<class_bool>` **access_resolved_depth** :ref:`🔗 <class_CompositorEffect_property_access_resolved_depth>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_access_resolved_depth**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_access_resolved_depth**\ (\ )
 
-If ``true`` and MSAA is enabled, this will trigger a depth buffer resolve before the effect is run.
+Nếu ``true`` và MSAA được bật, thao tác này sẽ kích hoạt việc resolve depth buffer trước khi effect được chạy.
 
-\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the resolved buffer use:
+\ **Lưu ý:** Trong :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, để truy cập resolved buffer, hãy sử dụng:
 
 ::
 
@@ -190,14 +190,14 @@ If ``true`` and MSAA is enabled, this will trigger a depth buffer resolve before
 
 .. rst-class:: classref-property
 
-:ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **effect_callback_type** :ref:`🔗<class_CompositorEffect_property_effect_callback_type>`
+:ref:`EffectCallbackType <enum_CompositorEffect_EffectCallbackType>` **effect_callback_type** :ref:`🔗 <class_CompositorEffect_property_effect_callback_type>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_effect_callback_type**\ (\ value\: :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>`\ )
 - :ref:`EffectCallbackType<enum_CompositorEffect_EffectCallbackType>` **get_effect_callback_type**\ (\ )
 
-The type of effect that is implemented, determines at what stage of rendering the callback is called.
+Loại effect được triển khai sẽ xác định callback được gọi ở giai đoạn nào của quá trình rendering.
 
 .. rst-class:: classref-item-separator
 
@@ -207,14 +207,14 @@ The type of effect that is implemented, determines at what stage of rendering th
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **enabled** :ref:`🔗<class_CompositorEffect_property_enabled>`
+:ref:`bool<class_bool>` **enabled** :ref:`🔗 <class_CompositorEffect_property_enabled>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enabled**\ (\ )
 
-If ``true`` this rendering effect is applied to any viewport it is added to.
+Nếu ``true`` hiệu ứng kết xuất này được áp dụng cho bất kỳ viewport nào thì nó sẽ được thêm vào viewport đó.
 
 .. rst-class:: classref-item-separator
 
@@ -224,16 +224,16 @@ If ``true`` this rendering effect is applied to any viewport it is added to.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **needs_motion_vectors** :ref:`🔗<class_CompositorEffect_property_needs_motion_vectors>`
+:ref:`bool<class_bool>` **needs_motion_vectors** :ref:`🔗 <class_CompositorEffect_property_needs_motion_vectors>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_needs_motion_vectors**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_needs_motion_vectors**\ (\ )
 
-If ``true`` this triggers motion vectors being calculated during the opaque render state.
+Nếu ``true`` tùy chọn này sẽ kích hoạt việc tính toán motion vector trong opaque render state.
 
-\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the motion vector buffer use:
+\ **Lưu ý:** Trong :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, để truy cập bộ đệm motion vector, hãy sử dụng:
 
 ::
 
@@ -248,23 +248,23 @@ If ``true`` this triggers motion vectors being calculated during the opaque rend
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **needs_normal_roughness** :ref:`🔗<class_CompositorEffect_property_needs_normal_roughness>`
+:ref:`bool<class_bool>` **needs_normal_roughness** :ref:`🔗 <class_CompositorEffect_property_needs_normal_roughness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_needs_normal_roughness**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_needs_normal_roughness**\ (\ )
 
-If ``true`` this triggers normal and roughness data to be output during our depth pre-pass, only applicable for the Forward+ renderer.
+Nếu ``true`` tùy chọn này sẽ khiến dữ liệu normal và roughness được xuất trong depth pre-pass, chỉ áp dụng cho renderer Forward+.
 
-\ **Note:** In :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, to access the roughness buffer use:
+\ **Lưu ý:** Trong :ref:`_render_callback()<class_CompositorEffect_private_method__render_callback>`, để truy cập bộ đệm roughness, hãy sử dụng:
 
 ::
 
     var render_scene_buffers = render_data.get_render_scene_buffers()
     var roughness_buffer = render_scene_buffers.get_texture("forward_clustered", "normal_roughness")
 
-The raw normal and roughness buffer is stored in an optimized format, different than the one available in Spatial shaders. When sampling the buffer, a conversion function must be applied. Use this function, copied from `here <https://github.com/godotengine/godot/blob/da5f39889f155658cef7f7ec3cc1abb94e17d815/servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered_inc.glsl#L334-L341>`__:
+Bộ đệm normal và roughness thô được lưu trữ ở định dạng đã tối ưu hóa, khác với định dạng có sẵn trong Spatial shaders. Khi lấy mẫu bộ đệm, cần áp dụng một hàm chuyển đổi. Hãy sử dụng hàm này, được sao chép từ `đây <https://github.com/godotengine/godot/blob/da5f39889f155658cef7f7ec3cc1abb94e17d815/servers/rendering/renderer_rd/shaders/forward_clustered/scene_forward_clustered_inc.glsl#L334-L341>`__:
 
 ::
 
@@ -285,14 +285,14 @@ The raw normal and roughness buffer is stored in an optimized format, different 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **needs_separate_specular** :ref:`🔗<class_CompositorEffect_property_needs_separate_specular>`
+:ref:`bool<class_bool>` **needs_separate_specular** :ref:`🔗 <class_CompositorEffect_property_needs_separate_specular>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_needs_separate_specular**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_needs_separate_specular**\ (\ )
 
-If ``true`` this triggers specular data being rendered to a separate buffer and combined after effects have been applied, only applicable for the Forward+ renderer.
+Nếu ``true`` tùy chọn này sẽ khiến dữ liệu specular được kết xuất vào một bộ đệm riêng và được kết hợp sau khi áp dụng các hiệu ứng; chỉ áp dụng cho trình kết xuất Forward+.
 
 .. rst-class:: classref-section-separator
 
@@ -300,8 +300,8 @@ If ``true`` this triggers specular data being rendered to a separate buffer and 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CompositorEffect_private_method__render_callback:
 
@@ -309,14 +309,14 @@ Method Descriptions
 
 |void| **_render_callback**\ (\ effect_callback_type\: :ref:`int<class_int>`, render_data\: :ref:`RenderData<class_RenderData>`\ ) |virtual| :ref:`🔗<class_CompositorEffect_private_method__render_callback>`
 
-Implement this function with your custom rendering code. ``effect_callback_type`` should always match the effect callback type you've specified in :ref:`effect_callback_type<class_CompositorEffect_property_effect_callback_type>`. ``render_data`` provides access to the rendering state, it is only valid during rendering and should not be stored.
+Triển khai hàm này bằng mã kết xuất tùy chỉnh của bạn. ``effect_callback_type`` luôn phải khớp với kiểu effect callback mà bạn đã chỉ định trong :ref:`effect_callback_type<class_CompositorEffect_property_effect_callback_type>`. ``render_data`` cung cấp quyền truy cập vào trạng thái kết xuất; trạng thái này chỉ hợp lệ trong khi kết xuất và không nên được lưu trữ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để tạo ra bất kỳ hiệu ứng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

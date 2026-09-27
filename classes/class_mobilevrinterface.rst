@@ -10,20 +10,20 @@
 MobileVRInterface
 =================
 
-**Inherits:** :ref:`XRInterface<class_XRInterface>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRInterface<class_XRInterface>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Generic mobile VR implementation.
+Triển khai VR mobile tổng quát.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This is a generic mobile VR implementation where you need to provide details about the phone and HMD used. It does not rely on any existing framework. This is the most basic interface we have. For the best effect, you need a mobile phone with a gyroscope and accelerometer.
+Đây là một triển khai VR mobile tổng quát, trong đó bạn cần cung cấp thông tin chi tiết về điện thoại và HMD được sử dụng. Triển khai này không phụ thuộc vào bất kỳ framework hiện có nào. Đây là interface cơ bản nhất mà chúng tôi cung cấp. Để đạt hiệu quả tốt nhất, bạn cần một điện thoại có con quay hồi chuyển và gia tốc kế.
 
-Note that even though there is no positional tracking, the camera will assume the headset is at a height of 1.85 meters. You can change this by setting :ref:`eye_height<class_MobileVRInterface_property_eye_height>`.
+Lưu ý rằng mặc dù không có tính năng theo dõi vị trí, camera sẽ giả định headset ở độ cao 1,85 mét. Bạn có thể thay đổi giá trị này bằng cách đặt :ref:`eye_height<class_MobileVRInterface_property_eye_height>`.
 
-You can initialize this interface as follows:
+Bạn có thể khởi tạo interface này như sau:
 
 ::
 
@@ -31,39 +31,39 @@ You can initialize this interface as follows:
     if interface and interface.initialize():
         get_viewport().use_xr = true
 
-\ **Note:** For Android, :ref:`ProjectSettings.input_devices/sensors/enable_accelerometer<class_ProjectSettings_property_input_devices/sensors/enable_accelerometer>`, :ref:`ProjectSettings.input_devices/sensors/enable_gravity<class_ProjectSettings_property_input_devices/sensors/enable_gravity>`, :ref:`ProjectSettings.input_devices/sensors/enable_gyroscope<class_ProjectSettings_property_input_devices/sensors/enable_gyroscope>` and :ref:`ProjectSettings.input_devices/sensors/enable_magnetometer<class_ProjectSettings_property_input_devices/sensors/enable_magnetometer>` must be enabled.
+\ **Lưu ý:** Đối với Android, :ref:`ProjectSettings.input_devices/sensors/enable_accelerometer <class_ProjectSettings_property_input_devices/sensors/enable_accelerometer>`, :ref:`ProjectSettings.input_devices/sensors/enable_gravity <class_ProjectSettings_property_input_devices/sensors/enable_gravity>`, :ref:`ProjectSettings.input_devices/sensors/enable_gyroscope <class_ProjectSettings_property_input_devices/sensors/enable_gyroscope>` và :ref:`ProjectSettings.input_devices/sensors/enable_magnetometer <class_ProjectSettings_property_input_devices/sensors/enable_magnetometer>` phải được bật.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`display_to_lens<class_MobileVRInterface_property_display_to_lens>` | ``4.0``                                                                            |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`display_width<class_MobileVRInterface_property_display_width>`     | ``14.5``                                                                           |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`eye_height<class_MobileVRInterface_property_eye_height>`           | ``1.85``                                                                           |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`iod<class_MobileVRInterface_property_iod>`                         | ``6.0``                                                                            |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`k1<class_MobileVRInterface_property_k1>`                           | ``0.215``                                                                          |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`k2<class_MobileVRInterface_property_k2>`                           | ``0.215``                                                                          |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                          | :ref:`offset_rect<class_MobileVRInterface_property_offset_rect>`         | ``Rect2(0, 0, 1, 1)``                                                              |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`oversample<class_MobileVRInterface_property_oversample>`           | ``1.5``                                                                            |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`vrs_min_radius<class_MobileVRInterface_property_vrs_min_radius>`   | ``20.0``                                                                           |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                          | :ref:`vrs_strength<class_MobileVRInterface_property_vrs_strength>`       | ``1.0``                                                                            |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`PlayAreaMode<enum_XRInterface_PlayAreaMode>` | xr_play_area_mode                                                        | ``1`` (overrides :ref:`XRInterface<class_XRInterface_property_xr_play_area_mode>`) |
-   +----------------------------------------------------+--------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`display_to_lens<class_MobileVRInterface_property_display_to_lens>` | ``4.0``                                                                         |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`display_width<class_MobileVRInterface_property_display_width>`     | ``14.5``                                                                        |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`eye_height<class_MobileVRInterface_property_eye_height>`           | ``1.85``                                                                        |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`iod<class_MobileVRInterface_property_iod>`                         | ``6.0``                                                                         |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`k1<class_MobileVRInterface_property_k1>`                           | ``0.215``                                                                       |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`k2<class_MobileVRInterface_property_k2>`                           | ``0.215``                                                                       |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                               | :ref:`offset_rect<class_MobileVRInterface_property_offset_rect>`         | ``Rect2(0, 0, 1, 1)``                                                           |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`oversample<class_MobileVRInterface_property_oversample>`           | ``1.5``                                                                         |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`vrs_min_radius<class_MobileVRInterface_property_vrs_min_radius>`   | ``20.0``                                                                        |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                               | :ref:`vrs_strength<class_MobileVRInterface_property_vrs_strength>`       | ``1.0``                                                                         |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`Chế độ vùng chơi <enum_XRInterface_PlayAreaMode>` | xr_play_area_mode                                                        | ``1`` (ghi đè :ref:`XRInterface<class_XRInterface_property_xr_play_area_mode>`) |
+   +---------------------------------------------------------+--------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -71,8 +71,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MobileVRInterface_property_display_to_lens:
 
@@ -85,7 +85,7 @@ Property Descriptions
 - |void| **set_display_to_lens**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_display_to_lens**\ (\ )
 
-The distance between the display and the lenses inside of the device in centimeters.
+Khoảng cách giữa màn hình và các thấu kính bên trong thiết bị, tính bằng centimet.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ The distance between the display and the lenses inside of the device in centimet
 - |void| **set_display_width**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_display_width**\ (\ )
 
-The width of the display in centimeters.
+Chiều rộng của màn hình, tính bằng centimet.
 
 .. rst-class:: classref-item-separator
 
@@ -119,7 +119,7 @@ The width of the display in centimeters.
 - |void| **set_eye_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_eye_height**\ (\ )
 
-The height at which the camera is placed in relation to the ground (i.e. :ref:`XROrigin3D<class_XROrigin3D>` node).
+Độ cao đặt camera so với mặt đất (tức là node :ref:`XROrigin3D<class_XROrigin3D>`).
 
 .. rst-class:: classref-item-separator
 
@@ -136,7 +136,7 @@ The height at which the camera is placed in relation to the ground (i.e. :ref:`X
 - |void| **set_iod**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_iod**\ (\ )
 
-The interocular distance, also known as the interpupillary distance. The distance between the pupils of the left and right eye.
+Khoảng cách giữa hai mắt, còn được gọi là khoảng cách giữa hai đồng tử. Khoảng cách giữa đồng tử của mắt trái và mắt phải.
 
 .. rst-class:: classref-item-separator
 
@@ -153,7 +153,7 @@ The interocular distance, also known as the interpupillary distance. The distanc
 - |void| **set_k1**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_k1**\ (\ )
 
-The k1 lens factor is one of the two constants that define the strength of the lens used and directly influences the lens distortion effect.
+Hệ số thấu kính k1 là một trong hai hằng số xác định độ mạnh của thấu kính được sử dụng và ảnh hưởng trực tiếp đến hiệu ứng biến dạng thấu kính.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ The k1 lens factor is one of the two constants that define the strength of the l
 - |void| **set_k2**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_k2**\ (\ )
 
-The k2 lens factor, see k1.
+Hệ số thấu kính k2, xem k1.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ The k2 lens factor, see k1.
 - |void| **set_offset_rect**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_offset_rect**\ (\ )
 
-Set the offset rect relative to the area being rendered. A length of 1 represents the whole rendering area on that axis.
+Đặt offset rect tương đối so với vùng đang được render. Độ dài bằng 1 biểu thị toàn bộ vùng render trên trục đó.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Set the offset rect relative to the area being rendered. A length of 1 represent
 - |void| **set_oversample**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_oversample**\ (\ )
 
-The oversample setting. Because of the lens distortion we have to render our buffers at a higher resolution then the screen can natively handle. A value between 1.5 and 2.0 often provides good results but at the cost of performance.
+Thiết lập oversample. Do hiện tượng biến dạng thấu kính, chúng ta phải render các buffer ở độ phân giải cao hơn mức màn hình có thể xử lý tự nhiên. Giá trị từ 1.5 đến 2.0 thường cho kết quả tốt, nhưng phải đánh đổi bằng hiệu năng.
 
 .. rst-class:: classref-item-separator
 
@@ -221,9 +221,9 @@ The oversample setting. Because of the lens distortion we have to render our buf
 - |void| **set_vrs_min_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vrs_min_radius**\ (\ )
 
-The minimum radius around the focal point where full quality is guaranteed if VRS is used as a percentage of screen size.
+Bán kính tối thiểu xung quanh tiêu điểm mà tại đó chất lượng đầy đủ được đảm bảo khi sử dụng VRS, tính theo phần trăm kích thước màn hình.
 
-\ **Note:** Mobile and Forward+ renderers only. Requires :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` to be set to :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
+\ **Lưu ý:** Chỉ dành cho các renderer Mobile và Forward+. Yêu cầu :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` được đặt thành :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
 
 .. rst-class:: classref-item-separator
 
@@ -240,16 +240,16 @@ The minimum radius around the focal point where full quality is guaranteed if VR
 - |void| **set_vrs_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vrs_strength**\ (\ )
 
-The strength used to calculate the VRS density map. The greater this value, the more noticeable VRS is. This improves performance at the cost of quality.
+Giá trị cường độ được sử dụng để tính toán bản đồ mật độ VRS. Giá trị này càng lớn thì VRS càng dễ nhận thấy. Điều này cải thiện hiệu suất nhưng làm giảm chất lượng.
 
-\ **Note:** Mobile and Forward+ renderers only. Requires :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` to be set to :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
+\ **Lưu ý:** Chỉ dành cho các renderer Mobile và Forward+. Yêu cầu :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` được đặt thành :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

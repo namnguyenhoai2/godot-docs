@@ -10,20 +10,20 @@
 PackedInt32Array
 ================
 
-A packed array of 32-bit integers.
+Một mảng đóng gói gồm các số nguyên 32-bit.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An array specifically designed to hold 32-bit integer values. Packs data tightly, so it saves memory for large array sizes.
+Một mảng được thiết kế riêng để chứa các giá trị số nguyên 32-bit. Dữ liệu được đóng gói chặt chẽ, vì vậy tiết kiệm bộ nhớ khi kích thước mảng lớn.
 
-\ **Note:** This type stores signed 32-bit integers, which means it can take values in the interval ``[-2^31, 2^31 - 1]``, i.e. ``[-2147483648, 2147483647]``. Exceeding those bounds will wrap around. In comparison, :ref:`int<class_int>` uses signed 64-bit integers which can hold much larger values. If you need to pack 64-bit integers tightly, see :ref:`PackedInt64Array<class_PackedInt64Array>`.
+\ **Lưu ý:** Kiểu này lưu trữ các số nguyên 32-bit có dấu, nghĩa là có thể nhận các giá trị trong khoảng ``[-2^31, 2^31 - 1]``, tức là ``[-2147483648, 2147483647]``. Việc vượt quá các giới hạn này sẽ khiến giá trị quay vòng. Để so sánh, :ref:`int<class_int>` sử dụng các số nguyên 64-bit có dấu, có thể chứa các giá trị lớn hơn nhiều. Nếu bạn cần đóng gói chặt chẽ các số nguyên 64-bit, hãy xem :ref:`PackedInt64Array<class_PackedInt64Array>`.
 
-\ **Note:** Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate()<class_PackedInt32Array_method_duplicate>`. This is *not* the case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it will *not* affect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.
+\ **Lưu ý:** Các mảng đóng gói luôn được truyền theo tham chiếu. Để lấy một bản sao của mảng có thể được sửa đổi độc lập với mảng ban đầu, hãy sử dụng :ref:`duplicate()<class_PackedInt32Array_method_duplicate>`. Điều này *không* đúng với các thuộc tính và phương thức tích hợp sẵn. Trong những trường hợp này, mảng đóng gói được trả về là một bản sao, và việc thay đổi nó sẽ *không* ảnh hưởng đến giá trị ban đầu. Để cập nhật một thuộc tính tích hợp sẵn thuộc kiểu này, hãy sửa đổi mảng được trả về rồi gán lại mảng đó cho thuộc tính.
 
-\ **Note:** In a boolean context, a packed array will evaluate to ``false`` if it's empty. Otherwise, a packed array will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một mảng đóng gói sẽ được đánh giá là ``false`` nếu nó rỗng. Nếu không, một mảng đóng gói sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -31,7 +31,7 @@ An array specifically designed to hold 32-bit integer values. Packs data tightly
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -47,8 +47,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -103,21 +103,21 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`operator !=<class_PackedInt32Array_operator_neq_PackedInt32Array>`\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>` | :ref:`operator +<class_PackedInt32Array_operator_sum_PackedInt32Array>`\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )  |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`operator ==<class_PackedInt32Array_operator_eq_PackedInt32Array>`\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )  |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                           | :ref:`operator []<class_PackedInt32Array_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                        |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                         | :ref:`operator != <class_PackedInt32Array_operator_neq_PackedInt32Array>`\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) |
+   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedInt32Array<class_PackedInt32Array>` | :ref:`operator + <class_PackedInt32Array_operator_sum_PackedInt32Array>`\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )  |
+   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                         | :ref:`operator == <class_PackedInt32Array_operator_eq_PackedInt32Array>`\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )  |
+   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                           | :ref:`operator [] <class_PackedInt32Array_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                        |
+   +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -125,8 +125,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_PackedInt32Array_constructor_PackedInt32Array:
 
@@ -134,7 +134,7 @@ Constructor Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **PackedInt32Array**\ (\ ) :ref:`🔗<class_PackedInt32Array_constructor_PackedInt32Array>`
 
-Constructs an empty **PackedInt32Array**.
+Tạo một **PackedInt32Array** rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Constructs an empty **PackedInt32Array**.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **PackedInt32Array**\ (\ from\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 
-Constructs a **PackedInt32Array** as a copy of the given **PackedInt32Array**.
+Tạo một **PackedInt32Array** dưới dạng bản sao của **PackedInt32Array** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Constructs a **PackedInt32Array** as a copy of the given **PackedInt32Array**.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **PackedInt32Array**\ (\ from\: :ref:`Array<class_Array>`\ )
 
-Constructs a new **PackedInt32Array**. Optionally, you can pass in a generic :ref:`Array<class_Array>` that will be converted.
+Tạo một **PackedInt32Array** mới. Bạn có thể truyền vào một :ref:`Array<class_Array>` generic tùy chọn để chuyển đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -162,8 +162,8 @@ Constructs a new **PackedInt32Array**. Optionally, you can pass in a generic :re
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PackedInt32Array_method_append:
 
@@ -171,7 +171,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **append**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_append>`
 
-Appends an element at the end of the array (alias of :ref:`push_back()<class_PackedInt32Array_method_push_back>`).
+Nối thêm một phần tử vào cuối mảng (bí danh của :ref:`push_back()<class_PackedInt32Array_method_push_back>`).
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Appends an element at the end of the array (alias of :ref:`push_back()<class_Pac
 
 |void| **append_array**\ (\ array\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_PackedInt32Array_method_append_array>`
 
-Appends a **PackedInt32Array** at the end of this array.
+Nối thêm một **PackedInt32Array** vào cuối mảng này.
 
 .. rst-class:: classref-item-separator
 
@@ -195,9 +195,9 @@ Appends a **PackedInt32Array** at the end of this array.
 
 :ref:`int<class_int>` **bsearch**\ (\ value\: :ref:`int<class_int>`, before\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_PackedInt32Array_method_bsearch>`
 
-Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a ``before`` specifier can be passed. If ``false``, the returned index comes after all existing entries of the value in the array.
+Tìm chỉ mục của một giá trị hiện có (hoặc chỉ mục chèn để duy trì thứ tự sắp xếp nếu giá trị đó chưa có trong mảng) bằng tìm kiếm nhị phân. Có thể truyền tùy chọn chỉ định ``before``. Nếu ``false``, chỉ mục được trả về sẽ nằm sau tất cả các mục hiện có chứa giá trị đó trong mảng.
 
-\ **Note:** Calling :ref:`bsearch()<class_PackedInt32Array_method_bsearch>` on an unsorted array results in unexpected behavior.
+\ **Lưu ý:** Việc gọi :ref:`bsearch()<class_PackedInt32Array_method_bsearch>` trên một mảng chưa được sắp xếp sẽ dẫn đến hành vi không mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Finds the index of an existing value (or the insertion index that maintains sort
 
 |void| **clear**\ (\ ) :ref:`🔗<class_PackedInt32Array_method_clear>`
 
-Clears the array. This is equivalent to using :ref:`resize()<class_PackedInt32Array_method_resize>` with a size of ``0``.
+Xóa mảng. Tương đương với việc sử dụng :ref:`resize()<class_PackedInt32Array_method_resize>` với kích thước ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ Clears the array. This is equivalent to using :ref:`resize()<class_PackedInt32Ar
 
 :ref:`int<class_int>` **count**\ (\ value\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PackedInt32Array_method_count>`
 
-Returns the number of times an element is in the array.
+Trả về số lần một phần tử xuất hiện trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ Returns the number of times an element is in the array.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **duplicate**\ (\ ) |const| :ref:`🔗<class_PackedInt32Array_method_duplicate>`
 
-Creates a copy of the array, and returns it.
+Tạo một bản sao của mảng và trả về bản sao đó.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ Creates a copy of the array, and returns it.
 
 :ref:`bool<class_bool>` **erase**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_erase>`
 
-Removes the first occurrence of a value from the array and returns ``true``. If the value does not exist in the array, nothing happens and ``false`` is returned. To remove an element by index, use :ref:`remove_at()<class_PackedInt32Array_method_remove_at>` instead.
+Xóa lần xuất hiện đầu tiên của một giá trị khỏi mảng và trả về ``true``. Nếu giá trị không tồn tại trong mảng, không có gì xảy ra và ``false`` được trả về. Để xóa một phần tử theo chỉ mục, hãy sử dụng :ref:`remove_at()<class_PackedInt32Array_method_remove_at>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -257,7 +257,7 @@ Removes the first occurrence of a value from the array and returns ``true``. If 
 
 |void| **fill**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_fill>`
 
-Assigns the given value to all elements in the array. This can typically be used together with :ref:`resize()<class_PackedInt32Array_method_resize>` to create an array with a given size and initialized elements.
+Gán giá trị đã cho cho tất cả các phần tử trong mảng. Thông thường, bạn có thể sử dụng phương thức này cùng với :ref:`resize()<class_PackedInt32Array_method_resize>` để tạo một mảng có kích thước nhất định và các phần tử đã được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Assigns the given value to all elements in the array. This can typically be used
 
 :ref:`int<class_int>` **find**\ (\ value\: :ref:`int<class_int>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_PackedInt32Array_method_find>`
 
-Searches the array for a value and returns its index or ``-1`` if not found. Optionally, the initial search index can be passed.
+Tìm kiếm một giá trị trong mảng và trả về chỉ mục của giá trị đó hoặc ``-1`` nếu không tìm thấy. Bạn có thể truyền chỉ mục bắt đầu tìm kiếm tùy chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -281,9 +281,9 @@ Searches the array for a value and returns its index or ``-1`` if not found. Opt
 
 :ref:`int<class_int>` **get**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PackedInt32Array_method_get>`
 
-Returns the 32-bit integer at the given ``index`` in the array. If ``index`` is out-of-bounds or negative, this method fails and returns ``0``.
+Trả về số nguyên 32-bit tại ``index`` đã cho trong mảng. Nếu ``index`` nằm ngoài phạm vi hoặc là số âm, phương thức này sẽ thất bại và trả về ``0``.
 
-This method is similar (but not identical) to the ``[]`` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.
+Phương thức này tương tự (nhưng không giống hệt) toán tử ``[]``. Đáng chú ý nhất là khi phương thức này thất bại, nó không tạm dừng quá trình thực thi dự án nếu được chạy từ trình soạn thảo.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ This method is similar (but not identical) to the ``[]`` operator. Most notably,
 
 :ref:`bool<class_bool>` **has**\ (\ value\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PackedInt32Array_method_has>`
 
-Returns ``true`` if the array contains ``value``.
+Trả về ``true`` nếu mảng chứa ``value``.
 
 .. rst-class:: classref-item-separator
 
@@ -307,7 +307,7 @@ Returns ``true`` if the array contains ``value``.
 
 :ref:`int<class_int>` **insert**\ (\ at_index\: :ref:`int<class_int>`, value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_insert>`
 
-Inserts a new integer at a given position in the array. The position must be valid, or at the end of the array (``idx == size()``).
+Chèn một số nguyên mới vào vị trí đã cho trong mảng. Vị trí phải hợp lệ hoặc là vị trí cuối mảng (``idx == size()``).
 
 .. rst-class:: classref-item-separator
 
@@ -319,7 +319,7 @@ Inserts a new integer at a given position in the array. The position must be val
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_PackedInt32Array_method_is_empty>`
 
-Returns ``true`` if the array is empty.
+Trả về ``true`` nếu mảng trống.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +331,7 @@ Returns ``true`` if the array is empty.
 
 :ref:`bool<class_bool>` **push_back**\ (\ value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_push_back>`
 
-Appends a value to the array.
+Thêm một giá trị vào cuối mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -343,7 +343,7 @@ Appends a value to the array.
 
 |void| **remove_at**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_remove_at>`
 
-Removes an element from the array by index.
+Xóa một phần tử khỏi mảng theo chỉ mục.
 
 .. rst-class:: classref-item-separator
 
@@ -355,9 +355,9 @@ Removes an element from the array by index.
 
 :ref:`int<class_int>` **resize**\ (\ new_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_resize>`
 
-Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling :ref:`resize()<class_PackedInt32Array_method_resize>` once and assigning the new values is faster than adding new elements one by one.
+Đặt kích thước của mảng. Nếu mảng được tăng kích thước, các phần tử sẽ được dành chỗ ở cuối mảng. Nếu mảng được giảm kích thước, mảng sẽ được cắt ngắn về kích thước mới. Gọi :ref:`resize()<class_PackedInt32Array_method_resize>` một lần rồi gán các giá trị mới sẽ nhanh hơn so với việc thêm từng phần tử mới.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the following :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails: :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the size is negative, or :ref:`@GlobalScope.ERR_OUT_OF_MEMORY<class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` if allocations fail. Use :ref:`size()<class_PackedInt32Array_method_size>` to find the actual size of the array after resize.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công hoặc một trong các hằng số :ref:`Error <enum_@GlobalScope_Error>` sau đây nếu phương thức này thất bại: :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu kích thước là số âm hoặc :ref:`@GlobalScope.ERR_OUT_OF_MEMORY <class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` nếu việc cấp phát thất bại. Sử dụng :ref:`size()<class_PackedInt32Array_method_size>` để tìm kích thước thực tế của mảng sau khi thay đổi kích thước.
 
 .. rst-class:: classref-item-separator
 
@@ -369,7 +369,7 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or on
 
 |void| **reverse**\ (\ ) :ref:`🔗<class_PackedInt32Array_method_reverse>`
 
-Reverses the order of the elements in the array.
+Đảo ngược thứ tự các phần tử trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -381,7 +381,7 @@ Reverses the order of the elements in the array.
 
 :ref:`int<class_int>` **rfind**\ (\ value\: :ref:`int<class_int>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_PackedInt32Array_method_rfind>`
 
-Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.
+Tìm kiếm mảng theo thứ tự ngược lại. Có thể tùy chọn truyền vào chỉ mục bắt đầu tìm kiếm. Nếu là số âm, chỉ mục bắt đầu được tính từ cuối mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -393,7 +393,7 @@ Searches the array in reverse order. Optionally, a start search index can be pas
 
 |void| **set**\ (\ index\: :ref:`int<class_int>`, value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_method_set>`
 
-Changes the integer at the given index.
+Thay đổi số nguyên tại chỉ mục đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ Changes the integer at the given index.
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_PackedInt32Array_method_size>`
 
-Returns the number of elements in the array.
+Trả về số phần tử trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -417,11 +417,11 @@ Returns the number of elements in the array.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **slice**\ (\ begin\: :ref:`int<class_int>`, end\: :ref:`int<class_int>` = 2147483647\ ) |const| :ref:`🔗<class_PackedInt32Array_method_slice>`
 
-Returns the slice of the **PackedInt32Array**, from ``begin`` (inclusive) to ``end`` (exclusive), as a new **PackedInt32Array**.
+Trả về lát cắt của **PackedInt32Array**, từ ``begin`` (bao gồm) đến ``end`` (không bao gồm), dưới dạng một **PackedInt32Array** mới.
 
-The absolute value of ``begin`` and ``end`` will be clamped to the array size, so the default value for ``end`` makes it slice to the size of the array by default (i.e. ``arr.slice(1)`` is a shorthand for ``arr.slice(1, arr.size())``).
+Giá trị tuyệt đối của ``begin`` và ``end`` sẽ được giới hạn ở kích thước mảng, vì vậy giá trị mặc định cho ``end`` khiến lát cắt mặc định kéo dài đến kích thước mảng (tức là ``arr.slice(1)`` là cách viết tắt của ``arr.slice(1, arr.size())``).
 
-If either ``begin`` or ``end`` are negative, they will be relative to the end of the array (i.e. ``arr.slice(0, -2)`` is a shorthand for ``arr.slice(0, arr.size() - 2)``).
+Nếu ``begin`` hoặc ``end`` là số âm, chúng sẽ được tính từ cuối mảng (tức là ``arr.slice(0, -2)`` là cách viết tắt của ``arr.slice(0, arr.size() - 2)``).
 
 .. rst-class:: classref-item-separator
 
@@ -433,7 +433,7 @@ If either ``begin`` or ``end`` are negative, they will be relative to the end of
 
 |void| **sort**\ (\ ) :ref:`🔗<class_PackedInt32Array_method_sort>`
 
-Sorts the elements of the array in ascending order.
+Sắp xếp các phần tử của mảng theo thứ tự tăng dần.
 
 .. rst-class:: classref-item-separator
 
@@ -445,9 +445,9 @@ Sorts the elements of the array in ascending order.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_byte_array**\ (\ ) |const| :ref:`🔗<class_PackedInt32Array_method_to_byte_array>`
 
-Returns a copy of the data converted to a :ref:`PackedByteArray<class_PackedByteArray>`, where each element has been encoded as 4 bytes.
+Trả về một bản sao của dữ liệu được chuyển đổi thành :ref:`PackedByteArray<class_PackedByteArray>`, trong đó mỗi phần tử được mã hóa bằng 4 byte.
 
-The size of the new array will be ``int32_array.size() * 4``.
+Kích thước của mảng mới sẽ là ``int32_array.size() * 4``.
 
 .. rst-class:: classref-section-separator
 
@@ -455,16 +455,16 @@ The size of the new array will be ``int32_array.size() * 4``.
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_PackedInt32Array_operator_neq_PackedInt32Array:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_PackedInt32Array_operator_neq_PackedInt32Array>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗 <class_PackedInt32Array_operator_neq_PackedInt32Array>`
 
-Returns ``true`` if contents of the arrays differ.
+Trả về ``true`` nếu nội dung của các mảng khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -474,9 +474,9 @@ Returns ``true`` if contents of the arrays differ.
 
 .. rst-class:: classref-operator
 
-:ref:`PackedInt32Array<class_PackedInt32Array>` **operator +**\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_PackedInt32Array_operator_sum_PackedInt32Array>`
+:ref:`PackedInt32Array<class_PackedInt32Array>` **operator +**\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗 <class_PackedInt32Array_operator_sum_PackedInt32Array>`
 
-Returns a new **PackedInt32Array** with contents of ``right`` added at the end of this array. For better performance, consider using :ref:`append_array()<class_PackedInt32Array_method_append_array>` instead.
+Trả về một **PackedInt32Array** mới với nội dung của ``right`` được thêm vào cuối mảng này. Để có hiệu suất tốt hơn, hãy cân nhắc sử dụng :ref:`append_array()<class_PackedInt32Array_method_append_array>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -486,9 +486,9 @@ Returns a new **PackedInt32Array** with contents of ``right`` added at the end o
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_PackedInt32Array_operator_eq_PackedInt32Array>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗 <class_PackedInt32Array_operator_eq_PackedInt32Array>`
 
-Returns ``true`` if contents of both arrays are the same, i.e. they have all equal ints at the corresponding indices.
+Trả về ``true`` nếu nội dung của cả hai array giống nhau, tức là chúng có tất cả các int bằng nhau tại các chỉ mục tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -498,18 +498,18 @@ Returns ``true`` if contents of both arrays are the same, i.e. they have all equ
 
 .. rst-class:: classref-operator
 
-:ref:`int<class_int>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedInt32Array_operator_idx_int>`
+:ref:`int<class_int>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_PackedInt32Array_operator_idx_int>`
 
-Returns the :ref:`int<class_int>` at index ``index``. Negative indices can be used to access the elements starting from the end. Using index out of array's bounds will result in an error.
+Trả về :ref:`int<class_int>` tại chỉ mục ``index``. Có thể sử dụng chỉ mục âm để truy cập các phần tử bắt đầu từ cuối. Việc sử dụng chỉ mục nằm ngoài giới hạn của array sẽ gây ra lỗi.
 
-Note that :ref:`int<class_int>` type is 64-bit, unlike the values stored in the array.
+Lưu ý rằng kiểu của :ref:`int<class_int>` là 64-bit, không giống các giá trị được lưu trong array.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

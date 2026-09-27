@@ -10,29 +10,29 @@
 OS
 ==
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Provides access to common operating system functionalities.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The **OS** class wraps the most common functionalities for communicating with the host operating system, such as the video driver, delays, environment variables, execution of binaries, command line, etc.
-
-\ **Note:** In Godot 4, **OS** functions related to window management, clipboard, and TTS were moved to the :ref:`DisplayServer<class_DisplayServer>` singleton (and the :ref:`Window<class_Window>` class). Functions related to time were removed and are only available in the :ref:`Time<class_Time>` class.
+Cung cấp quyền truy cập vào các chức năng phổ biến của hệ điều hành.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp **OS** bao bọc các chức năng phổ biến nhất để giao tiếp với hệ điều hành máy chủ, chẳng hạn như driver video, độ trễ, biến môi trường, thực thi binary, dòng lệnh, v.v.
+
+\ **Lưu ý:** Trong Godot 4, các hàm **OS** liên quan đến việc quản lý cửa sổ, clipboard và TTS đã được chuyển sang singleton :ref:`DisplayServer<class_DisplayServer>` (và lớp :ref:`Window<class_Window>`). Các hàm liên quan đến thời gian đã bị xóa và chỉ có trong lớp :ref:`Time<class_Time>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Operating System Testing Demo <https://godotengine.org/asset-library/asset/2789>`__
+- `Bản trình diễn kiểm thử hệ điều hành <https://godotengine.org/asset-library/asset/2789>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -48,8 +48,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -75,7 +75,7 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`               | :ref:`execute_with_pipe<class_OS_method_execute_with_pipe>`\ (\ path\: :ref:`String<class_String>`, arguments\: :ref:`PackedStringArray<class_PackedStringArray>`, blocking\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                             |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Key<enum_@GlobalScope_Key>`                 | :ref:`find_keycode_from_string<class_OS_method_find_keycode_from_string>`\ (\ string\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                                               |
+   | :ref:`Key <enum_@GlobalScope_Key>`                | :ref:`find_keycode_from_string<class_OS_method_find_keycode_from_string>`\ (\ string\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                                               |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`get_cache_dir<class_OS_method_get_cache_dir>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                           |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -99,7 +99,7 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`get_granted_permissions<class_OS_method_get_granted_permissions>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                       |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`get_keycode_string<class_OS_method_get_keycode_string>`\ (\ code\: :ref:`Key<enum_@GlobalScope_Key>`\ ) |const|                                                                                                                                                                                                                                                                       |
+   | :ref:`String<class_String>`                       | :ref:`get_keycode_string<class_OS_method_get_keycode_string>`\ (\ code\: :ref:`Key <enum_@GlobalScope_Key>`\ ) |const|                                                                                                                                                                                                                                                                      |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`get_locale<class_OS_method_get_locale>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                 |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -127,15 +127,15 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`get_static_memory_usage<class_OS_method_get_static_memory_usage>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                       |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StdHandleType<enum_OS_StdHandleType>`       | :ref:`get_stderr_type<class_OS_method_get_stderr_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                       |
+   | :ref:`StdHandleType <enum_OS_StdHandleType>`      | :ref:`get_stderr_type<class_OS_method_get_stderr_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                       |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StdHandleType<enum_OS_StdHandleType>`       | :ref:`get_stdin_type<class_OS_method_get_stdin_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                         |
+   | :ref:`StdHandleType <enum_OS_StdHandleType>`      | :ref:`get_stdin_type<class_OS_method_get_stdin_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                         |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StdHandleType<enum_OS_StdHandleType>`       | :ref:`get_stdout_type<class_OS_method_get_stdout_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                       |
+   | :ref:`StdHandleType <enum_OS_StdHandleType>`      | :ref:`get_stdout_type<class_OS_method_get_stdout_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                       |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`get_system_ca_certificates<class_OS_method_get_system_ca_certificates>`\ (\ )                                                                                                                                                                                                                                                                                                         |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`get_system_dir<class_OS_method_get_system_dir>`\ (\ dir\: :ref:`SystemDir<enum_OS_SystemDir>`, shared_storage\: :ref:`bool<class_bool>` = true\ ) |const|                                                                                                                                                                                                                             |
+   | :ref:`String<class_String>`                       | :ref:`get_system_dir<class_OS_method_get_system_dir>`\ (\ dir\: :ref:`SystemDir <enum_OS_SystemDir>`, shared_storage\: :ref:`bool<class_bool>` = true\ ) |const|                                                                                                                                                                                                                            |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`get_system_font_path<class_OS_method_get_system_font_path>`\ (\ font_name\: :ref:`String<class_String>`, weight\: :ref:`int<class_int>` = 400, stretch\: :ref:`int<class_int>` = 100, italic\: :ref:`bool<class_bool>` = false\ ) |const|                                                                                                                                             |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -175,13 +175,13 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`is_userfs_persistent<class_OS_method_is_userfs_persistent>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                             |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`kill<class_OS_method_kill>`\ (\ pid\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                        |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`kill<class_OS_method_kill>`\ (\ pid\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                                                                                                        |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`move_to_trash<class_OS_method_move_to_trash>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                                                                       |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`move_to_trash<class_OS_method_move_to_trash>`\ (\ path\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                                                                       |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`open_midi_inputs<class_OS_method_open_midi_inputs>`\ (\ )                                                                                                                                                                                                                                                                                                                             |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`open_with_program<class_OS_method_open_with_program>`\ (\ program_path\: :ref:`String<class_String>`, paths\: :ref:`PackedStringArray<class_PackedStringArray>`\ )                                                                                                                                                                                                                    |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`open_with_program<class_OS_method_open_with_program>`\ (\ program_path\: :ref:`String<class_String>`, paths\: :ref:`PackedStringArray<class_PackedStringArray>`\ )                                                                                                                                                                                                                    |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedByteArray<class_PackedByteArray>`     | :ref:`read_buffer_from_stdin<class_OS_method_read_buffer_from_stdin>`\ (\ buffer_size\: :ref:`int<class_int>` = 1024\ )                                                                                                                                                                                                                                                                     |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -199,13 +199,13 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`set_restart_on_exit<class_OS_method_set_restart_on_exit>`\ (\ restart\: :ref:`bool<class_bool>`, arguments\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray()\ )                                                                                                                                                                                               |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`set_thread_name<class_OS_method_set_thread_name>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                                                                           |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`set_thread_name<class_OS_method_set_thread_name>`\ (\ name\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                                                                           |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`set_use_file_access_save_and_swap<class_OS_method_set_use_file_access_save_and_swap>`\ (\ enabled\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                                                        |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`shell_open<class_OS_method_shell_open>`\ (\ uri\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                                                                                      |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`shell_open<class_OS_method_shell_open>`\ (\ uri\: :ref:`String<class_String>`\ )                                                                                                                                                                                                                                                                                                      |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`shell_show_in_file_manager<class_OS_method_shell_show_in_file_manager>`\ (\ file_or_dir_path\: :ref:`String<class_String>`, open_folder\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                                                           |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`shell_show_in_file_manager<class_OS_method_shell_show_in_file_manager>`\ (\ file_or_dir_path\: :ref:`String<class_String>`, open_folder\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                                                           |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`unset_environment<class_OS_method_unset_environment>`\ (\ variable\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                                                           |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -216,14 +216,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OS_RenderingDriver:
 
 .. rst-class:: classref-enumeration
 
-enum **RenderingDriver**: :ref:`🔗<enum_OS_RenderingDriver>`
+enum **RenderingDriver**: :ref:`🔗 <enum_OS_RenderingDriver>`
 
 .. _class_OS_constant_RENDERING_DRIVER_VULKAN:
 
@@ -231,7 +231,7 @@ enum **RenderingDriver**: :ref:`🔗<enum_OS_RenderingDriver>`
 
 :ref:`RenderingDriver<enum_OS_RenderingDriver>` **RENDERING_DRIVER_VULKAN** = ``0``
 
-The Vulkan rendering driver. It requires Vulkan 1.0 support and automatically uses features from Vulkan 1.1, 1.2, and 1.3 if available.
+Trình điều khiển kết xuất Vulkan. Trình điều khiển này yêu cầu hỗ trợ Vulkan 1.0 và tự động sử dụng các tính năng của Vulkan 1.1, 1.2 và 1.3 nếu có.
 
 .. _class_OS_constant_RENDERING_DRIVER_OPENGL3:
 
@@ -239,7 +239,7 @@ The Vulkan rendering driver. It requires Vulkan 1.0 support and automatically us
 
 :ref:`RenderingDriver<enum_OS_RenderingDriver>` **RENDERING_DRIVER_OPENGL3** = ``1``
 
-The OpenGL 3 rendering driver. It uses OpenGL 3.3 Core Profile on desktop platforms, OpenGL ES 3.0 on mobile devices, and WebGL 2.0 on Web.
+Trình điều khiển kết xuất OpenGL 3. Trình điều khiển này sử dụng OpenGL 3.3 Core Profile trên các nền tảng máy tính để bàn, OpenGL ES 3.0 trên thiết bị di động và WebGL 2.0 trên Web.
 
 .. _class_OS_constant_RENDERING_DRIVER_D3D12:
 
@@ -247,7 +247,7 @@ The OpenGL 3 rendering driver. It uses OpenGL 3.3 Core Profile on desktop platfo
 
 :ref:`RenderingDriver<enum_OS_RenderingDriver>` **RENDERING_DRIVER_D3D12** = ``2``
 
-The Direct3D 12 rendering driver. It requires the 12_0 feature level and Shader Model 6.0 support.
+Trình điều khiển kết xuất Direct3D 12. Trình điều khiển này yêu cầu feature level 12_0 và hỗ trợ Shader Model 6.0.
 
 .. _class_OS_constant_RENDERING_DRIVER_METAL:
 
@@ -255,7 +255,7 @@ The Direct3D 12 rendering driver. It requires the 12_0 feature level and Shader 
 
 :ref:`RenderingDriver<enum_OS_RenderingDriver>` **RENDERING_DRIVER_METAL** = ``3``
 
-The Metal rendering driver.
+Trình điều khiển kết xuất Metal.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ The Metal rendering driver.
 
 .. rst-class:: classref-enumeration
 
-enum **SystemDir**: :ref:`🔗<enum_OS_SystemDir>`
+enum **SystemDir**: :ref:`🔗 <enum_OS_SystemDir>`
 
 .. _class_OS_constant_SYSTEM_DIR_DESKTOP:
 
@@ -273,7 +273,7 @@ enum **SystemDir**: :ref:`🔗<enum_OS_SystemDir>`
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_DESKTOP** = ``0``
 
-Refers to the Desktop directory path.
+Đề cập đến đường dẫn thư mục Desktop.
 
 .. _class_OS_constant_SYSTEM_DIR_DCIM:
 
@@ -281,7 +281,7 @@ Refers to the Desktop directory path.
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_DCIM** = ``1``
 
-Refers to the DCIM (Digital Camera Images) directory path.
+Đề cập đến đường dẫn thư mục DCIM (Digital Camera Images).
 
 .. _class_OS_constant_SYSTEM_DIR_DOCUMENTS:
 
@@ -289,7 +289,7 @@ Refers to the DCIM (Digital Camera Images) directory path.
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_DOCUMENTS** = ``2``
 
-Refers to the Documents directory path.
+Đề cập đến đường dẫn thư mục Documents.
 
 .. _class_OS_constant_SYSTEM_DIR_DOWNLOADS:
 
@@ -297,7 +297,7 @@ Refers to the Documents directory path.
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_DOWNLOADS** = ``3``
 
-Refers to the Downloads directory path.
+Đề cập đến đường dẫn thư mục Downloads.
 
 .. _class_OS_constant_SYSTEM_DIR_MOVIES:
 
@@ -305,7 +305,7 @@ Refers to the Downloads directory path.
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_MOVIES** = ``4``
 
-Refers to the Movies (or Videos) directory path.
+Đề cập đến đường dẫn thư mục Movies (hoặc Videos).
 
 .. _class_OS_constant_SYSTEM_DIR_MUSIC:
 
@@ -313,7 +313,7 @@ Refers to the Movies (or Videos) directory path.
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_MUSIC** = ``5``
 
-Refers to the Music directory path.
+Đề cập đến đường dẫn thư mục Music.
 
 .. _class_OS_constant_SYSTEM_DIR_PICTURES:
 
@@ -321,7 +321,7 @@ Refers to the Music directory path.
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_PICTURES** = ``6``
 
-Refers to the Pictures directory path.
+Đề cập đến đường dẫn thư mục Pictures.
 
 .. _class_OS_constant_SYSTEM_DIR_RINGTONES:
 
@@ -329,7 +329,7 @@ Refers to the Pictures directory path.
 
 :ref:`SystemDir<enum_OS_SystemDir>` **SYSTEM_DIR_RINGTONES** = ``7``
 
-Refers to the Ringtones directory path.
+Đề cập đến đường dẫn thư mục Ringtones.
 
 .. rst-class:: classref-item-separator
 
@@ -339,7 +339,7 @@ Refers to the Ringtones directory path.
 
 .. rst-class:: classref-enumeration
 
-enum **StdHandleType**: :ref:`🔗<enum_OS_StdHandleType>`
+enum **StdHandleType**: :ref:`🔗 <enum_OS_StdHandleType>`
 
 .. _class_OS_constant_STD_HANDLE_INVALID:
 
@@ -347,7 +347,7 @@ enum **StdHandleType**: :ref:`🔗<enum_OS_StdHandleType>`
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **STD_HANDLE_INVALID** = ``0``
 
-Standard I/O device is invalid. No data can be received from or sent to these standard I/O devices.
+Thiết bị I/O chuẩn không hợp lệ. Không thể nhận hoặc gửi dữ liệu đến các thiết bị I/O chuẩn này.
 
 .. _class_OS_constant_STD_HANDLE_CONSOLE:
 
@@ -355,7 +355,7 @@ Standard I/O device is invalid. No data can be received from or sent to these st
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **STD_HANDLE_CONSOLE** = ``1``
 
-Standard I/O device is a console. This typically occurs when Godot is run from a terminal with no redirection. This is also used for all standard I/O devices when running Godot from the editor, at least on desktop platforms.
+Thiết bị I/O chuẩn là console. Điều này thường xảy ra khi Godot được chạy từ terminal mà không chuyển hướng. Thiết bị này cũng được dùng cho tất cả thiết bị I/O chuẩn khi chạy Godot từ editor, ít nhất là trên các nền tảng máy tính để bàn.
 
 .. _class_OS_constant_STD_HANDLE_FILE:
 
@@ -363,7 +363,7 @@ Standard I/O device is a console. This typically occurs when Godot is run from a
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **STD_HANDLE_FILE** = ``2``
 
-Standard I/O device is a regular file. This typically occurs with redirection from a terminal, e.g. ``godot > stdout.txt``, ``godot < stdin.txt`` or ``godot > stdout_stderr.txt 2>&1``.
+Thiết bị I/O chuẩn là một tệp thông thường. Điều này thường xảy ra khi chuyển hướng từ terminal, ví dụ ``godot > stdout.txt``, ``godot < stdin.txt`` hoặc ``godot > stdout_stderr.txt 2>&1``.
 
 .. _class_OS_constant_STD_HANDLE_PIPE:
 
@@ -371,7 +371,7 @@ Standard I/O device is a regular file. This typically occurs with redirection fr
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **STD_HANDLE_PIPE** = ``3``
 
-Standard I/O device is a FIFO/pipe. This typically occurs with pipe usage from a terminal, e.g. ``echo "Hello" | godot``.
+Thiết bị I/O chuẩn là FIFO/pipe. Điều này thường xảy ra khi sử dụng pipe từ terminal, ví dụ ``echo "Hello" | godot``.
 
 .. _class_OS_constant_STD_HANDLE_UNKNOWN:
 
@@ -379,7 +379,7 @@ Standard I/O device is a FIFO/pipe. This typically occurs with pipe usage from a
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **STD_HANDLE_UNKNOWN** = ``4``
 
-Standard I/O device type is unknown.
+Loại thiết bị I/O chuẩn không xác định.
 
 .. rst-class:: classref-section-separator
 
@@ -387,8 +387,8 @@ Standard I/O device type is unknown.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OS_property_delta_smoothing:
 
@@ -401,9 +401,9 @@ Property Descriptions
 - |void| **set_delta_smoothing**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_delta_smoothing_enabled**\ (\ )
 
-If ``true``, the engine filters the time delta measured between each frame, and attempts to compensate for random variation. This only works on systems where V-Sync is active.
+Nếu ``true``, engine sẽ lọc delta thời gian được đo giữa mỗi frame và cố gắng bù cho biến thiên ngẫu nhiên. Điều này chỉ hoạt động trên các hệ thống đang bật V-Sync.
 
-\ **Note:** On start-up, this is the same as :ref:`ProjectSettings.application/run/delta_smoothing<class_ProjectSettings_property_application/run/delta_smoothing>`.
+\ **Lưu ý:** Khi khởi động, giá trị này giống với :ref:`ProjectSettings.application/run/delta_smoothing <class_ProjectSettings_property_application/run/delta_smoothing>`.
 
 .. rst-class:: classref-item-separator
 
@@ -420,9 +420,9 @@ If ``true``, the engine filters the time delta measured between each frame, and 
 - |void| **set_low_processor_usage_mode**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_in_low_processor_usage_mode**\ (\ )
 
-If ``true``, the engine optimizes for low processor usage by only refreshing the screen if needed. Can improve battery consumption on mobile.
+Nếu ``true``, engine sẽ tối ưu để sử dụng ít bộ xử lý bằng cách chỉ làm mới màn hình khi cần. Có thể cải thiện mức tiêu thụ pin trên thiết bị di động.
 
-\ **Note:** On start-up, this is the same as :ref:`ProjectSettings.application/run/low_processor_mode<class_ProjectSettings_property_application/run/low_processor_mode>`.
+\ **Lưu ý:** Khi khởi động, giá trị này giống với :ref:`ProjectSettings.application/run/low_processor_mode <class_ProjectSettings_property_application/run/low_processor_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -439,9 +439,9 @@ If ``true``, the engine optimizes for low processor usage by only refreshing the
 - |void| **set_low_processor_usage_mode_sleep_usec**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_low_processor_usage_mode_sleep_usec**\ (\ )
 
-The amount of sleeping between frames when the low-processor usage mode is enabled, in microseconds. Higher values will result in lower CPU usage. See also :ref:`low_processor_usage_mode<class_OS_property_low_processor_usage_mode>`.
+Khoảng thời gian nghỉ giữa các khung hình khi chế độ sử dụng ít bộ xử lý được bật, tính bằng microgiây. Giá trị cao hơn sẽ giúp giảm mức sử dụng CPU. Xem thêm :ref:`low_processor_usage_mode<class_OS_property_low_processor_usage_mode>`.
 
-\ **Note:** On start-up, this is the same as :ref:`ProjectSettings.application/run/low_processor_mode_sleep_usec<class_ProjectSettings_property_application/run/low_processor_mode_sleep_usec>`.
+\ **Lưu ý:** Khi khởi động, giá trị này giống với :ref:`ProjectSettings.application/run/low_processor_mode_sleep_usec <class_ProjectSettings_property_application/run/low_processor_mode_sleep_usec>`.
 
 .. rst-class:: classref-section-separator
 
@@ -449,8 +449,8 @@ The amount of sleeping between frames when the low-processor usage mode is enabl
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OS_method_add_logger:
 
@@ -458,7 +458,7 @@ Method Descriptions
 
 |void| **add_logger**\ (\ logger\: :ref:`Logger<class_Logger>`\ ) :ref:`🔗<class_OS_method_add_logger>`
 
-Add a custom logger to intercept the internal message stream.
+Thêm logger tùy chỉnh để chặn luồng thông báo nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -470,7 +470,7 @@ Add a custom logger to intercept the internal message stream.
 
 |void| **alert**\ (\ text\: :ref:`String<class_String>`, title\: :ref:`String<class_String>` = "Alert!"\ ) :ref:`🔗<class_OS_method_alert>`
 
-Displays a modal dialog box using the host platform's implementation. The engine execution is blocked until the dialog is closed.
+Hiển thị hộp thoại modal bằng implementation của nền tảng host. Việc thực thi engine sẽ bị chặn cho đến khi hộp thoại được đóng.
 
 .. rst-class:: classref-item-separator
 
@@ -482,9 +482,9 @@ Displays a modal dialog box using the host platform's implementation. The engine
 
 |void| **close_midi_inputs**\ (\ ) :ref:`🔗<class_OS_method_close_midi_inputs>`
 
-Shuts down the system MIDI driver. Godot will no longer receive :ref:`InputEventMIDI<class_InputEventMIDI>`. See also :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>` and :ref:`get_connected_midi_inputs()<class_OS_method_get_connected_midi_inputs>`.
+Tắt driver MIDI của hệ thống. Godot sẽ không còn nhận :ref:`InputEventMIDI<class_InputEventMIDI>`. Xem thêm :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>` và :ref:`get_connected_midi_inputs()<class_OS_method_get_connected_midi_inputs>`.
 
-\ **Note:** This method is implemented on Linux, macOS, Windows, and Web.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS, Windows và Web.
 
 .. rst-class:: classref-item-separator
 
@@ -496,9 +496,9 @@ Shuts down the system MIDI driver. Godot will no longer receive :ref:`InputEvent
 
 |void| **crash**\ (\ message\: :ref:`String<class_String>`\ ) :ref:`🔗<class_OS_method_crash>`
 
-Crashes the engine (or the editor if called within a ``@tool`` script). See also :ref:`kill()<class_OS_method_kill>`.
+Làm engine bị crash (hoặc làm editor bị crash nếu được gọi trong một script ``@tool``). Xem thêm :ref:`kill()<class_OS_method_kill>`.
 
-\ **Note:** This method should *only* be used for testing the system's crash handler, not for any other purpose. For general error reporting, use (in order of preference) :ref:`@GDScript.assert()<class_@GDScript_method_assert>`, :ref:`@GlobalScope.push_error()<class_@GlobalScope_method_push_error>`, or :ref:`alert()<class_OS_method_alert>`.
+\ **Lưu ý:** Phương thức này nên *chỉ* được sử dụng để kiểm thử crash handler của hệ thống, không dùng cho bất kỳ mục đích nào khác. Để báo cáo lỗi nói chung, hãy sử dụng (theo thứ tự ưu tiên) :ref:`@GDScript.assert() <class_@GDScript_method_assert>`, :ref:`@GlobalScope.push_error() <class_@GlobalScope_method_push_error>` hoặc :ref:`alert()<class_OS_method_alert>`.
 
 .. rst-class:: classref-item-separator
 
@@ -510,13 +510,13 @@ Crashes the engine (or the editor if called within a ``@tool`` script). See also
 
 :ref:`int<class_int>` **create_instance**\ (\ arguments\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_OS_method_create_instance>`
 
-Creates a new instance of Godot that runs independently. The ``arguments`` are used in the given order and separated by a space.
+Tạo một instance mới của Godot chạy độc lập. Các ``arguments`` được sử dụng theo thứ tự đã cho và ngăn cách bằng dấu cách.
 
-If the process is successfully created, this method returns the new process' ID, which you can use to monitor the process (and potentially terminate it with :ref:`kill()<class_OS_method_kill>`). If the process cannot be created, this method returns ``-1``.
+Nếu tiến trình được tạo thành công, phương thức này trả về ID của tiến trình mới, bạn có thể dùng ID đó để theo dõi tiến trình (và có thể chấm dứt tiến trình bằng :ref:`kill()<class_OS_method_kill>`). Nếu không thể tạo tiến trình, phương thức này trả về ``-1``.
 
-See :ref:`create_process()<class_OS_method_create_process>` if you wish to run a different process.
+Xem :ref:`create_process()<class_OS_method_create_process>` nếu bạn muốn chạy một process khác.
 
-\ **Note:** This method is implemented on Android, Linux, macOS and Windows.
+\ **Lưu ý:** Method này được triển khai trên Android, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -528,13 +528,13 @@ See :ref:`create_process()<class_OS_method_create_process>` if you wish to run a
 
 :ref:`int<class_int>` **create_process**\ (\ path\: :ref:`String<class_String>`, arguments\: :ref:`PackedStringArray<class_PackedStringArray>`, open_console\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_OS_method_create_process>`
 
-Creates a new process that runs independently of Godot. It will not terminate when Godot terminates. The path specified in ``path`` must exist and be an executable file or macOS ``.app`` bundle. The path is resolved based on the current platform. The ``arguments`` are used in the given order and separated by a space.
+Tạo một process mới chạy độc lập với Godot. Process này sẽ không kết thúc khi Godot kết thúc. Đường dẫn được chỉ định trong ``path`` phải tồn tại và là một tệp thực thi hoặc bundle ``.app`` của macOS. Đường dẫn được phân giải dựa trên nền tảng hiện tại. ``arguments`` được sử dụng theo thứ tự đã cho và phân tách bằng dấu cách.
 
-On Windows, if ``open_console`` is ``true`` and the process is a console app, a new terminal window will be opened.
+Trên Windows, nếu ``open_console`` là ``true`` và process là một console app, một cửa sổ terminal mới sẽ được mở.
 
-If the process is successfully created, this method returns its process ID, which you can use to monitor the process (and potentially terminate it with :ref:`kill()<class_OS_method_kill>`). Otherwise, this method returns ``-1``.
+Nếu process được tạo thành công, method này trả về process ID của nó, bạn có thể dùng ID này để theo dõi process (và có thể kết thúc process bằng :ref:`kill()<class_OS_method_kill>`). Nếu không, method này trả về ``-1``.
 
-\ **Example:** Run another instance of the project:
+\ **Ví dụ:** Chạy một instance khác của project:
 
 
 .. tabs::
@@ -549,11 +549,11 @@ If the process is successfully created, this method returns its process ID, whic
 
 
 
-See :ref:`execute()<class_OS_method_execute>` if you wish to run an external command and retrieve the results.
+Xem :ref:`execute()<class_OS_method_execute>` nếu bạn muốn chạy một lệnh bên ngoài và truy xuất kết quả.
 
-\ **Note:** This method is implemented on Android, Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, Linux, macOS và Windows.
 
-\ **Note:** On macOS, sandboxed applications are limited to run only embedded helper executables, specified during export or system .app bundle, system .app bundles will ignore arguments.
+\ **Lưu ý:** Trên macOS, các ứng dụng sandbox chỉ được phép chạy các executable trợ giúp được nhúng, được chỉ định trong quá trình export hoặc system .app bundle; system .app bundles sẽ bỏ qua các đối số.
 
 .. rst-class:: classref-item-separator
 
@@ -565,11 +565,11 @@ See :ref:`execute()<class_OS_method_execute>` if you wish to run an external com
 
 |void| **delay_msec**\ (\ msec\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OS_method_delay_msec>`
 
-Delays execution of the current thread by ``msec`` milliseconds. ``msec`` must be greater than or equal to ``0``. Otherwise, :ref:`delay_msec()<class_OS_method_delay_msec>` does nothing and prints an error message.
+Trì hoãn việc thực thi của thread hiện tại trong ``msec`` mili giây. ``msec`` phải lớn hơn hoặc bằng ``0``. Nếu không, :ref:`delay_msec()<class_OS_method_delay_msec>` không thực hiện gì và in một thông báo lỗi.
 
-\ **Note:** :ref:`delay_msec()<class_OS_method_delay_msec>` is a *blocking* way to delay code execution. To delay code execution in a non-blocking way, you may use :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`. Awaiting with :ref:`SceneTreeTimer<class_SceneTreeTimer>` delays the execution of code placed below the ``await`` without affecting the rest of the project (or editor, for :ref:`EditorPlugin<class_EditorPlugin>`\ s and :ref:`EditorScript<class_EditorScript>`\ s).
+\ **Lưu ý:** :ref:`delay_msec()<class_OS_method_delay_msec>` là một cách *chặn* việc thực thi code. Để trì hoãn việc thực thi code theo cách không chặn, bạn có thể sử dụng :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`. Việc await bằng :ref:`SceneTreeTimer<class_SceneTreeTimer>` sẽ trì hoãn quá trình thực thi code được đặt bên dưới ``await`` mà không ảnh hưởng đến phần còn lại của project (hoặc editor, đối với :ref:`EditorPlugin<class_EditorPlugin>`\ s và :ref:`EditorScript<class_EditorScript>`\ s).
 
-\ **Note:** When :ref:`delay_msec()<class_OS_method_delay_msec>` is called on the main thread, it will freeze the project and will prevent it from redrawing and registering input until the delay has passed. When using :ref:`delay_msec()<class_OS_method_delay_msec>` as part of an :ref:`EditorPlugin<class_EditorPlugin>` or :ref:`EditorScript<class_EditorScript>`, it will freeze the editor but won't freeze the project if it is currently running (since the project is an independent child process).
+\ **Lưu ý:** Khi :ref:`delay_msec()<class_OS_method_delay_msec>` được gọi trên main thread, nó sẽ đóng băng project và ngăn project vẽ lại cũng như tiếp nhận input cho đến khi thời gian trì hoãn kết thúc. Khi sử dụng :ref:`delay_msec()<class_OS_method_delay_msec>` như một phần của :ref:`EditorPlugin<class_EditorPlugin>` hoặc :ref:`EditorScript<class_EditorScript>`, nó sẽ đóng băng editor nhưng không đóng băng project nếu project hiện đang chạy (vì project là một tiến trình con độc lập).
 
 .. rst-class:: classref-item-separator
 
@@ -581,11 +581,11 @@ Delays execution of the current thread by ``msec`` milliseconds. ``msec`` must b
 
 |void| **delay_usec**\ (\ usec\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OS_method_delay_usec>`
 
-Delays execution of the current thread by ``usec`` microseconds. ``usec`` must be greater than or equal to ``0``. Otherwise, :ref:`delay_usec()<class_OS_method_delay_usec>` does nothing and prints an error message.
+Trì hoãn việc thực thi của thread hiện tại trong ``usec`` microsecond. ``usec`` phải lớn hơn hoặc bằng ``0``. Nếu không, :ref:`delay_usec()<class_OS_method_delay_usec>` không thực hiện gì và in một thông báo lỗi.
 
-\ **Note:** :ref:`delay_usec()<class_OS_method_delay_usec>` is a *blocking* way to delay code execution. To delay code execution in a non-blocking way, you may use :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`. Awaiting with a :ref:`SceneTreeTimer<class_SceneTreeTimer>` delays the execution of code placed below the ``await`` without affecting the rest of the project (or editor, for :ref:`EditorPlugin<class_EditorPlugin>`\ s and :ref:`EditorScript<class_EditorScript>`\ s).
+\ **Lưu ý:** :ref:`delay_usec()<class_OS_method_delay_usec>` là một cách *chặn* việc thực thi code. Để trì hoãn việc thực thi code theo cách không chặn, bạn có thể sử dụng :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`. Việc await bằng một :ref:`SceneTreeTimer<class_SceneTreeTimer>` sẽ trì hoãn quá trình thực thi code được đặt bên dưới ``await`` mà không ảnh hưởng đến phần còn lại của project (hoặc editor, đối với :ref:`EditorPlugin<class_EditorPlugin>`\ s và :ref:`EditorScript<class_EditorScript>`\ s).
 
-\ **Note:** When :ref:`delay_usec()<class_OS_method_delay_usec>` is called on the main thread, it will freeze the project and will prevent it from redrawing and registering input until the delay has passed. When using :ref:`delay_usec()<class_OS_method_delay_usec>` as part of an :ref:`EditorPlugin<class_EditorPlugin>` or :ref:`EditorScript<class_EditorScript>`, it will freeze the editor but won't freeze the project if it is currently running (since the project is an independent child process).
+\ **Lưu ý:** Khi :ref:`delay_usec()<class_OS_method_delay_usec>` được gọi trên luồng chính, nó sẽ làm đóng băng project và ngăn project vẽ lại cũng như tiếp nhận input cho đến khi hết thời gian trì hoãn. Khi sử dụng :ref:`delay_usec()<class_OS_method_delay_usec>` trong một :ref:`EditorPlugin<class_EditorPlugin>` hoặc :ref:`EditorScript<class_EditorScript>`, nó sẽ làm đóng băng editor nhưng không làm đóng băng project nếu project hiện đang chạy (vì project là một tiến trình con độc lập).
 
 .. rst-class:: classref-item-separator
 
@@ -597,17 +597,17 @@ Delays execution of the current thread by ``usec`` microseconds. ``usec`` must b
 
 :ref:`int<class_int>` **execute**\ (\ path\: :ref:`String<class_String>`, arguments\: :ref:`PackedStringArray<class_PackedStringArray>`, output\: :ref:`Array<class_Array>` = [], read_stderr\: :ref:`bool<class_bool>` = false, open_console\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_OS_method_execute>`
 
-Executes the given process in a *blocking* way. The file specified in ``path`` must exist and be executable. The system path resolution will be used. The ``arguments`` are used in the given order, separated by spaces, and wrapped in quotes.
+Thực thi process đã cho theo cách *blocking*. Tệp được chỉ định trong ``path`` phải tồn tại và có thể thực thi. Cơ chế phân giải system path sẽ được sử dụng. ``arguments`` được sử dụng theo thứ tự đã cho, cách nhau bằng dấu cách và được đặt trong dấu ngoặc kép.
 
-If an ``output`` array is provided, the complete shell output of the process is appended to ``output`` as a single :ref:`String<class_String>` element. If ``read_stderr`` is ``true``, the output to the standard error stream is also appended to the array.
+Nếu cung cấp một ``output`` array, toàn bộ shell output của process sẽ được nối vào ``output`` dưới dạng một phần tử :ref:`String<class_String>` duy nhất. Nếu ``read_stderr`` là ``true``, output gửi đến standard error stream cũng được nối vào array.
 
-On Windows, if ``open_console`` is ``true`` and the process is a console app, a new terminal window is opened.
+Trên Windows, nếu ``open_console`` là ``true`` và process là một console app, một cửa sổ terminal mới sẽ được mở.
 
-This method returns the exit code of the command, or ``-1`` if the process fails to execute.
+Phương thức này trả về exit code của command hoặc ``-1`` nếu process không thể thực thi.
 
-\ **Note:** The main thread will be blocked until the executed command terminates. Use :ref:`Thread<class_Thread>` to create a separate thread that will not block the main thread, or use :ref:`create_process()<class_OS_method_create_process>` to create a completely independent process.
+\ **Lưu ý:** Luồng chính sẽ bị chặn cho đến khi command được thực thi kết thúc. Sử dụng :ref:`Thread<class_Thread>` để tạo một thread riêng không chặn luồng chính hoặc sử dụng :ref:`create_process()<class_OS_method_create_process>` để tạo một process hoàn toàn độc lập.
 
-For example, to retrieve a list of the working directory's contents:
+Ví dụ, để lấy danh sách nội dung của working directory:
 
 
 .. tabs::
@@ -624,7 +624,7 @@ For example, to retrieve a list of the working directory's contents:
 
 
 
-If you wish to access a shell built-in or execute a composite command, a platform-specific shell can be invoked. For example:
+Nếu bạn muốn truy cập một lệnh tích hợp sẵn của shell hoặc thực thi một lệnh kết hợp, bạn có thể gọi shell dành riêng cho nền tảng. Ví dụ:
 
 
 .. tabs::
@@ -641,17 +641,17 @@ If you wish to access a shell built-in or execute a composite command, a platfor
 
 
 
-\ **Note:** This method is implemented on Android, Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, Linux, macOS và Windows.
 
-\ **Note:** To execute a Windows command interpreter built-in command, specify ``cmd.exe`` in ``path``, ``/c`` as the first argument, and the desired command as the second argument.
+\ **Lưu ý:** Để thực thi một lệnh tích hợp sẵn của trình thông dịch lệnh Windows, hãy chỉ định ``cmd.exe`` trong ``path``, ``/c`` làm đối số đầu tiên và lệnh mong muốn làm đối số thứ hai.
 
-\ **Note:** To execute a PowerShell built-in command, specify ``powershell.exe`` in ``path``, ``-Command`` as the first argument, and the desired command as the second argument.
+\ **Lưu ý:** Để thực thi một lệnh tích hợp sẵn của PowerShell, hãy chỉ định ``powershell.exe`` trong ``path``, ``-Command`` làm đối số đầu tiên và lệnh mong muốn làm đối số thứ hai.
 
-\ **Note:** To execute a Unix shell built-in command, specify shell executable name in ``path``, ``-c`` as the first argument, and the desired command as the second argument.
+\ **Lưu ý:** Để thực thi một lệnh tích hợp sẵn của Unix shell, hãy chỉ định tên tệp thực thi của shell trong ``path``, ``-c`` làm đối số đầu tiên và lệnh mong muốn làm đối số thứ hai.
 
-\ **Note:** On macOS, sandboxed applications are limited to run only embedded helper executables, specified during export.
+\ **Lưu ý:** Trên macOS, các ứng dụng được sandbox chỉ được phép chạy các tệp thực thi trợ giúp được nhúng, được chỉ định trong quá trình xuất.
 
-\ **Note:** On Android, system commands such as ``dumpsys`` can only be run on a rooted device.
+\ **Lưu ý:** Trên Android, các lệnh hệ thống như ``dumpsys`` chỉ có thể được chạy trên thiết bị đã root.
 
 .. rst-class:: classref-item-separator
 
@@ -663,27 +663,27 @@ If you wish to access a shell built-in or execute a composite command, a platfor
 
 :ref:`Dictionary<class_Dictionary>` **execute_with_pipe**\ (\ path\: :ref:`String<class_String>`, arguments\: :ref:`PackedStringArray<class_PackedStringArray>`, blocking\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_OS_method_execute_with_pipe>`
 
-Creates a new process that runs independently of Godot with redirected IO. It will not terminate when Godot terminates. The path specified in ``path`` must exist and be an executable file or macOS ``.app`` bundle. The path is resolved based on the current platform. The ``arguments`` are used in the given order and separated by a space.
+Tạo một process mới chạy độc lập với Godot và có IO được chuyển hướng. Process này sẽ không kết thúc khi Godot kết thúc. Đường dẫn được chỉ định trong ``path`` phải tồn tại và là một tệp thực thi hoặc bundle ``.app`` trên macOS. Đường dẫn được phân giải dựa trên nền tảng hiện tại. ``arguments`` được sử dụng theo thứ tự đã cho và cách nhau bằng một khoảng trắng.
 
-If ``blocking`` is ``false``, created pipes work in non-blocking mode, i.e. read and write operations will return immediately. Use :ref:`FileAccess.get_error()<class_FileAccess_method_get_error>` to check if the last read/write operation was successful.
+Nếu ``blocking`` là ``false``, các pipe được tạo sẽ hoạt động ở chế độ không chặn (non-blocking), tức là các thao tác đọc và ghi sẽ trả về ngay lập tức. Sử dụng :ref:`FileAccess.get_error()<class_FileAccess_method_get_error>` để kiểm tra xem thao tác đọc/ghi gần nhất có thành công hay không.
 
-If the process cannot be created, this method returns an empty :ref:`Dictionary<class_Dictionary>`. Otherwise, this method returns a :ref:`Dictionary<class_Dictionary>` with the following keys:
+Nếu không thể tạo process, phương thức này trả về một :ref:`Dictionary<class_Dictionary>` rỗng. Nếu không, phương thức này trả về một :ref:`Dictionary<class_Dictionary>` có các khóa sau:
 
-- ``"stdio"`` - :ref:`FileAccess<class_FileAccess>` to access the process stdin and stdout pipes (read/write).
+- ``"stdio"`` - :ref:`FileAccess<class_FileAccess>` để truy cập các pipe stdin và stdout của process (đọc/ghi).
 
-- ``"stderr"`` - :ref:`FileAccess<class_FileAccess>` to access the process stderr pipe (read only).
+- ``"stderr"`` - :ref:`FileAccess<class_FileAccess>` để truy cập pipe stderr của process (chỉ đọc).
 
-- ``"pid"`` - Process ID as an :ref:`int<class_int>`, which you can use to monitor the process (and potentially terminate it with :ref:`kill()<class_OS_method_kill>`).
+- ``"pid"`` - ID process dưới dạng :ref:`int<class_int>`, bạn có thể dùng để theo dõi process (và có thể kết thúc process bằng :ref:`kill()<class_OS_method_kill>`).
 
-\ **Note:** This method is implemented on Android, Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, Linux, macOS và Windows.
 
-\ **Note:** To execute a Windows command interpreter built-in command, specify ``cmd.exe`` in ``path``, ``/c`` as the first argument, and the desired command as the second argument.
+\ **Lưu ý:** Để thực thi một lệnh tích hợp sẵn của trình thông dịch lệnh Windows, hãy chỉ định ``cmd.exe`` trong ``path``, ``/c`` làm đối số đầu tiên và lệnh mong muốn làm đối số thứ hai.
 
-\ **Note:** To execute a PowerShell built-in command, specify ``powershell.exe`` in ``path``, ``-Command`` as the first argument, and the desired command as the second argument.
+\ **Lưu ý:** Để thực thi một lệnh tích hợp sẵn của PowerShell, hãy chỉ định ``powershell.exe`` trong ``path``, ``-Command`` làm đối số đầu tiên và lệnh mong muốn làm đối số thứ hai.
 
-\ **Note:** To execute a Unix shell built-in command, specify shell executable name in ``path``, ``-c`` as the first argument, and the desired command as the second argument.
+\ **Lưu ý:** Để thực thi một lệnh tích hợp sẵn của Unix shell, hãy chỉ định tên tệp thực thi của shell trong ``path``, ``-c`` làm đối số đầu tiên và lệnh mong muốn làm đối số thứ hai.
 
-\ **Note:** On macOS, sandboxed applications are limited to run only embedded helper executables, specified during export or system .app bundle, system .app bundles will ignore arguments.
+\ **Lưu ý:** Trên macOS, các ứng dụng sandbox chỉ được phép chạy các executable trợ giúp được nhúng, được chỉ định trong quá trình export hoặc system .app bundle; system .app bundles sẽ bỏ qua các đối số.
 
 .. rst-class:: classref-item-separator
 
@@ -695,28 +695,28 @@ If the process cannot be created, this method returns an empty :ref:`Dictionary<
 
 :ref:`Key<enum_@GlobalScope_Key>` **find_keycode_from_string**\ (\ string\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_find_keycode_from_string>`
 
-Finds the keycode for the given string. The returned values are equivalent to the :ref:`Key<enum_@GlobalScope_Key>` constants.
+Tìm mã phím của chuỗi đã cho. Các giá trị được trả về tương đương với các hằng số :ref:`Key <enum_@GlobalScope_Key>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print(OS.find_keycode_from_string("C"))         # Prints 67 (KEY_C)
-    print(OS.find_keycode_from_string("Escape"))    # Prints 4194305 (KEY_ESCAPE)
-    print(OS.find_keycode_from_string("Shift+Tab")) # Prints 37748738 (KEY_MASK_SHIFT | KEY_TAB)
-    print(OS.find_keycode_from_string("Unknown"))   # Prints 0 (KEY_NONE)
+    print(OS.find_keycode_from_string("C"))         # In ra 67 (KEY_C)
+    print(OS.find_keycode_from_string("Escape"))    # In ra 4194305 (KEY_ESCAPE)
+    print(OS.find_keycode_from_string("Shift+Tab")) # In ra 37748738 (KEY_MASK_SHIFT | KEY_TAB)
+    print(OS.find_keycode_from_string("Unknown"))   # In ra 0 (KEY_NONE)
 
  .. code-tab:: csharp
 
-    GD.Print(OS.FindKeycodeFromString("C"));         // Prints C (Key.C)
-    GD.Print(OS.FindKeycodeFromString("Escape"));    // Prints Escape (Key.Escape)
-    GD.Print(OS.FindKeycodeFromString("Shift+Tab")); // Prints 37748738 (KeyModifierMask.MaskShift | Key.Tab)
-    GD.Print(OS.FindKeycodeFromString("Unknown"));   // Prints None (Key.None)
+    GD.Print(OS.FindKeycodeFromString("C"));         // In ra C (Key.C)
+    GD.Print(OS.FindKeycodeFromString("Escape"));    // In ra Escape (Key.Escape)
+    GD.Print(OS.FindKeycodeFromString("Shift+Tab")); // In ra 37748738 (KeyModifierMask.MaskShift | Key.Tab)
+    GD.Print(OS.FindKeycodeFromString("Unknown"));   // In ra None (Key.None)
 
 
 
-See also :ref:`get_keycode_string()<class_OS_method_get_keycode_string>`.
+Xem thêm :ref:`get_keycode_string()<class_OS_method_get_keycode_string>`.
 
 .. rst-class:: classref-item-separator
 
@@ -728,11 +728,11 @@ See also :ref:`get_keycode_string()<class_OS_method_get_keycode_string>`.
 
 :ref:`String<class_String>` **get_cache_dir**\ (\ ) |const| :ref:`🔗<class_OS_method_get_cache_dir>`
 
-Returns the *global* cache data directory according to the operating system's standards.
+Trả về thư mục dữ liệu bộ nhớ đệm *toàn cục* theo các tiêu chuẩn của hệ điều hành.
 
-On the Linux/BSD platform, this path can be overridden by setting the ``XDG_CACHE_HOME`` environment variable before starting the project. See :doc:`File paths in Godot projects <../tutorials/io/data_paths>` in the documentation for more information. See also :ref:`get_config_dir()<class_OS_method_get_config_dir>` and :ref:`get_data_dir()<class_OS_method_get_data_dir>`.
+Trên nền tảng Linux/BSD, bạn có thể ghi đè đường dẫn này bằng cách thiết lập biến môi trường ``XDG_CACHE_HOME`` trước khi khởi động dự án. Xem :doc:`Đường dẫn tệp trong các dự án Godot <../tutorials/io/data_paths>` trong tài liệu để biết thêm thông tin. Xem thêm :ref:`get_config_dir()<class_OS_method_get_config_dir>` và :ref:`get_data_dir()<class_OS_method_get_data_dir>`.
 
-Not to be confused with :ref:`get_user_data_dir()<class_OS_method_get_user_data_dir>`, which returns the *project-specific* user data path.
+Không nên nhầm lẫn với :ref:`get_user_data_dir()<class_OS_method_get_user_data_dir>`, phương thức trả về đường dẫn dữ liệu người dùng *cụ thể theo dự án*.
 
 .. rst-class:: classref-item-separator
 
@@ -744,7 +744,7 @@ Not to be confused with :ref:`get_user_data_dir()<class_OS_method_get_user_data_
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_cmdline_args**\ (\ ) :ref:`🔗<class_OS_method_get_cmdline_args>`
 
-Returns the command-line arguments passed to the engine, excluding arguments processed by the engine, such as ``--headless`` and ``--fullscreen``.
+Trả về các đối số dòng lệnh được truyền cho engine, không bao gồm các đối số được engine xử lý, chẳng hạn như ``--headless`` và ``--fullscreen``.
 
 ::
 
@@ -752,13 +752,13 @@ Returns the command-line arguments passed to the engine, excluding arguments pro
     # godot --headless --verbose --scene my_scene.tscn --custom
     OS.get_cmdline_args() # Returns ["--scene", "my_scene.tscn", "--custom"]
 
-Command-line arguments can be written in any form, including both ``--key value`` and ``--key=value`` forms so they can be properly parsed, as long as custom command-line arguments do not conflict with engine arguments.
+Các đối số dòng lệnh có thể được viết dưới bất kỳ dạng nào, bao gồm cả dạng ``--key value`` và ``--key=value`` để có thể được phân tích cú pháp đúng cách, miễn là các đối số dòng lệnh tùy chỉnh không xung đột với các đối số của engine.
 
-You can also incorporate environment variables using the :ref:`get_environment()<class_OS_method_get_environment>` method.
+Bạn cũng có thể sử dụng các biến môi trường bằng phương thức :ref:`get_environment()<class_OS_method_get_environment>`.
 
-You can set :ref:`ProjectSettings.editor/run/main_run_args<class_ProjectSettings_property_editor/run/main_run_args>` to define command-line arguments to be passed by the editor when running the project.
+Bạn có thể đặt :ref:`ProjectSettings.editor/run/main_run_args <class_ProjectSettings_property_editor/run/main_run_args>` để xác định các đối số dòng lệnh mà editor sẽ truyền khi chạy dự án.
 
-\ **Example:** Parse command-line arguments into a :ref:`Dictionary<class_Dictionary>` using the ``--key=value`` form for arguments:
+\ **Ví dụ:** Phân tích các đối số trên dòng lệnh thành một :ref:`Dictionary<class_Dictionary>` bằng cách sử dụng dạng ``--key=value`` cho các đối số:
 
 
 .. tabs::
@@ -771,8 +771,8 @@ You can set :ref:`ProjectSettings.editor/run/main_run_args<class_ProjectSettings
             var key_value = argument.split("=")
             arguments[key_value[0].trim_prefix("--")] = key_value[1]
         else:
-            # Options without an argument will be present in the dictionary,
-            # with the value set to an empty string.
+            # Các tùy chọn không có đối số sẽ xuất hiện trong dictionary,
+            # với giá trị được đặt thành một chuỗi rỗng.
             arguments[argument.trim_prefix("--")] = ""
 
  .. code-tab:: csharp
@@ -787,15 +787,15 @@ You can set :ref:`ProjectSettings.editor/run/main_run_args<class_ProjectSettings
         }
         else
         {
-            // Options without an argument will be present in the dictionary,
-            // with the value set to an empty string.
+            // Các tùy chọn không có đối số sẽ xuất hiện trong dictionary,
+            // với giá trị được đặt thành một chuỗi rỗng.
             arguments[argument.TrimPrefix("--")] = "";
         }
     }
 
 
 
-\ **Note:** Passing custom user arguments directly is not recommended, as the engine may discard or modify them. Instead, pass the standard UNIX double dash (``--``) and then the custom arguments, which the engine will ignore by design. These can be read via :ref:`get_cmdline_user_args()<class_OS_method_get_cmdline_user_args>`.
+\ **Lưu ý:** Không nên truyền trực tiếp các đối số tùy chỉnh của người dùng, vì engine có thể loại bỏ hoặc sửa đổi chúng. Thay vào đó, hãy truyền dấu gạch ngang kép UNIX tiêu chuẩn (``--``) rồi đến các đối số tùy chỉnh; engine sẽ bỏ qua chúng theo thiết kế. Bạn có thể đọc các đối số này thông qua :ref:`get_cmdline_user_args()<class_OS_method_get_cmdline_user_args>`.
 
 .. rst-class:: classref-item-separator
 
@@ -807,7 +807,7 @@ You can set :ref:`ProjectSettings.editor/run/main_run_args<class_ProjectSettings
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_cmdline_user_args**\ (\ ) :ref:`🔗<class_OS_method_get_cmdline_user_args>`
 
-Returns the command-line user arguments passed to the engine. User arguments are ignored by the engine and reserved for the user. They are passed after the double dash ``--`` argument. ``++`` may be used when ``--`` is intercepted by another program (such as ``startx``).
+Trả về các đối số người dùng trên dòng lệnh được truyền cho engine. Engine bỏ qua các đối số người dùng và dành riêng chúng cho người dùng. Chúng được truyền sau đối số dấu gạch ngang kép ``--``. Có thể sử dụng ``++`` khi ``--`` bị một chương trình khác (chẳng hạn như ``startx``) chặn.
 
 ::
 
@@ -817,7 +817,7 @@ Returns the command-line user arguments passed to the engine. User arguments are
     OS.get_cmdline_args()      # Returns ["--custom"]
     OS.get_cmdline_user_args() # Returns ["--level=2", "--hardcore"]
 
-To get arguments passed before ``--`` or ``++``, use :ref:`get_cmdline_args()<class_OS_method_get_cmdline_args>`.
+Để lấy các đối số được truyền trước ``--`` hoặc ``++``, hãy sử dụng :ref:`get_cmdline_args()<class_OS_method_get_cmdline_args>`.
 
 .. rst-class:: classref-item-separator
 
@@ -829,11 +829,11 @@ To get arguments passed before ``--`` or ``++``, use :ref:`get_cmdline_args()<cl
 
 :ref:`String<class_String>` **get_config_dir**\ (\ ) |const| :ref:`🔗<class_OS_method_get_config_dir>`
 
-Returns the *global* user configuration directory according to the operating system's standards.
+Trả về thư mục cấu hình người dùng *toàn cục* theo các tiêu chuẩn của hệ điều hành.
 
-On the Linux/BSD platform, this path can be overridden by setting the ``XDG_CONFIG_HOME`` environment variable before starting the project. See :doc:`File paths in Godot projects <../tutorials/io/data_paths>` in the documentation for more information. See also :ref:`get_cache_dir()<class_OS_method_get_cache_dir>` and :ref:`get_data_dir()<class_OS_method_get_data_dir>`.
+Trên nền tảng Linux/BSD, có thể ghi đè đường dẫn này bằng cách đặt biến môi trường ``XDG_CONFIG_HOME`` trước khi khởi động dự án. Xem :doc:`Đường dẫn tệp trong các dự án Godot <../tutorials/io/data_paths>` trong tài liệu để biết thêm thông tin. Xem thêm :ref:`get_cache_dir()<class_OS_method_get_cache_dir>` và :ref:`get_data_dir()<class_OS_method_get_data_dir>`.
 
-Not to be confused with :ref:`get_user_data_dir()<class_OS_method_get_user_data_dir>`, which returns the *project-specific* user data path.
+Không nên nhầm lẫn với :ref:`get_user_data_dir()<class_OS_method_get_user_data_dir>`, phương thức trả về đường dẫn dữ liệu người dùng *cụ thể theo dự án*.
 
 .. rst-class:: classref-item-separator
 
@@ -845,13 +845,13 @@ Not to be confused with :ref:`get_user_data_dir()<class_OS_method_get_user_data_
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_connected_midi_inputs**\ (\ ) :ref:`🔗<class_OS_method_get_connected_midi_inputs>`
 
-Returns an array of connected MIDI device names, if they exist. Returns an empty array if the system MIDI driver has not previously been initialized with :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>`. See also :ref:`close_midi_inputs()<class_OS_method_close_midi_inputs>`.
+Trả về một mảng chứa tên các thiết bị MIDI đã kết nối, nếu có. Trả về một mảng rỗng nếu driver MIDI của hệ thống chưa được khởi tạo trước đó bằng :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>`. Xem thêm :ref:`close_midi_inputs()<class_OS_method_close_midi_inputs>`.
 
-\ **Note:** This method is implemented on Linux, macOS, Windows, and Web.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS, Windows và Web.
 
-\ **Note:** On the Web platform, Web MIDI needs to be supported by the browser. `For the time being <https://caniuse.com/midi>`__, it is currently supported by all major browsers, except Safari.
+\ **Lưu ý:** Trên nền tảng Web, Web MIDI cần được trình duyệt hỗ trợ. `Hiện tại <https://caniuse.com/midi>`__, tính năng này được tất cả các trình duyệt chính hỗ trợ, ngoại trừ Safari.
 
-\ **Note:** On the Web platform, using MIDI input requires a browser permission to be granted first. This permission request is performed when calling :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>`. The browser will refrain from processing MIDI input until the user accepts the permission request.
+\ **Lưu ý:** Trên nền tảng Web, để sử dụng MIDI input, trước tiên trình duyệt phải được cấp quyền. Yêu cầu cấp quyền này được thực hiện khi gọi :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>`. Trình duyệt sẽ không xử lý MIDI input cho đến khi người dùng chấp nhận yêu cầu cấp quyền.
 
 .. rst-class:: classref-item-separator
 
@@ -863,11 +863,11 @@ Returns an array of connected MIDI device names, if they exist. Returns an empty
 
 :ref:`String<class_String>` **get_data_dir**\ (\ ) |const| :ref:`🔗<class_OS_method_get_data_dir>`
 
-Returns the *global* user data directory according to the operating system's standards.
+Trả về thư mục dữ liệu người dùng *toàn cục* theo tiêu chuẩn của hệ điều hành.
 
-On the Linux/BSD platform, this path can be overridden by setting the ``XDG_DATA_HOME`` environment variable before starting the project. See :doc:`File paths in Godot projects <../tutorials/io/data_paths>` in the documentation for more information. See also :ref:`get_cache_dir()<class_OS_method_get_cache_dir>` and :ref:`get_config_dir()<class_OS_method_get_config_dir>`.
+Trên nền tảng Linux/BSD, có thể ghi đè đường dẫn này bằng cách đặt biến môi trường ``XDG_DATA_HOME`` trước khi khởi động project. Xem :doc:`Đường dẫn tệp trong các project Godot <../tutorials/io/data_paths>` trong tài liệu để biết thêm thông tin. Xem thêm :ref:`get_cache_dir()<class_OS_method_get_cache_dir>` và :ref:`get_config_dir()<class_OS_method_get_config_dir>`.
 
-Not to be confused with :ref:`get_user_data_dir()<class_OS_method_get_user_data_dir>`, which returns the *project-specific* user data path.
+Không nên nhầm lẫn với :ref:`get_user_data_dir()<class_OS_method_get_user_data_dir>`, phương thức trả về đường dẫn dữ liệu người dùng *cụ thể theo dự án*.
 
 .. rst-class:: classref-item-separator
 
@@ -879,13 +879,13 @@ Not to be confused with :ref:`get_user_data_dir()<class_OS_method_get_user_data_
 
 :ref:`String<class_String>` **get_distribution_name**\ (\ ) |const| :ref:`🔗<class_OS_method_get_distribution_name>`
 
-Returns the name of the distribution for Linux and BSD platforms (e.g. "Ubuntu", "Manjaro", "OpenBSD", etc.).
+Trả về tên của bản phân phối trên các nền tảng Linux và BSD (ví dụ: "Ubuntu", "Manjaro", "OpenBSD", v.v.).
 
-Returns the same value as :ref:`get_name()<class_OS_method_get_name>` for stock Android ROMs, but attempts to return the custom ROM name for popular Android derivatives such as "LineageOS".
+Trả về cùng giá trị như :ref:`get_name()<class_OS_method_get_name>` đối với các ROM Android gốc, nhưng cố gắng trả về tên ROM tùy chỉnh cho các biến thể Android phổ biến như "LineageOS".
 
-Returns the same value as :ref:`get_name()<class_OS_method_get_name>` for other platforms.
+Trả về cùng giá trị như :ref:`get_name()<class_OS_method_get_name>` đối với các nền tảng khác.
 
-\ **Note:** This method is not supported on the Web platform. It returns an empty string.
+\ **Lưu ý:** Phương thức này không được hỗ trợ trên nền tảng Web. Phương thức trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -897,9 +897,9 @@ Returns the same value as :ref:`get_name()<class_OS_method_get_name>` for other 
 
 :ref:`PackedByteArray<class_PackedByteArray>` **get_entropy**\ (\ size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_OS_method_get_entropy>`
 
-Generates a :ref:`PackedByteArray<class_PackedByteArray>` of cryptographically secure random bytes with given ``size``.
+Tạo một :ref:`PackedByteArray<class_PackedByteArray>` gồm các byte ngẫu nhiên an toàn về mặt mật mã với ``size`` đã cho.
 
-\ **Note:** Generating large quantities of bytes using this method can result in locking and entropy of lower quality on most platforms. Using :ref:`Crypto.generate_random_bytes()<class_Crypto_method_generate_random_bytes>` is preferred in most cases.
+\ **Lưu ý:** Việc tạo lượng lớn byte bằng phương thức này có thể dẫn đến tình trạng khóa và entropy có chất lượng thấp hơn trên hầu hết các nền tảng. Trong hầu hết trường hợp, nên sử dụng :ref:`Crypto.generate_random_bytes()<class_Crypto_method_generate_random_bytes>`.
 
 .. rst-class:: classref-item-separator
 
@@ -911,11 +911,11 @@ Generates a :ref:`PackedByteArray<class_PackedByteArray>` of cryptographically s
 
 :ref:`String<class_String>` **get_environment**\ (\ variable\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_get_environment>`
 
-Returns the value of the given environment variable, or an empty string if ``variable`` doesn't exist.
+Trả về giá trị của biến môi trường đã cho hoặc một chuỗi rỗng nếu ``variable`` không tồn tại.
 
-\ **Note:** Double-check the casing of ``variable``. Environment variable names are case-sensitive on all platforms except Windows.
+\ **Lưu ý:** Hãy kiểm tra kỹ kiểu chữ của ``variable``. Tên biến môi trường phân biệt chữ hoa chữ thường trên tất cả các nền tảng ngoại trừ Windows.
 
-\ **Note:** On macOS, applications do not have access to shell environment variables.
+\ **Lưu ý:** Trên macOS, các ứng dụng không có quyền truy cập vào các biến môi trường của shell.
 
 .. rst-class:: classref-item-separator
 
@@ -927,9 +927,9 @@ Returns the value of the given environment variable, or an empty string if ``var
 
 :ref:`String<class_String>` **get_executable_path**\ (\ ) |const| :ref:`🔗<class_OS_method_get_executable_path>`
 
-Returns the file path to the current engine executable.
+Trả về đường dẫn tệp đến tệp thực thi engine hiện tại.
 
-\ **Note:** On macOS, if you want to launch another instance of Godot, always use :ref:`create_instance()<class_OS_method_create_instance>` instead of relying on the executable path.
+\ **Lưu ý:** Trên macOS, nếu bạn muốn khởi chạy một phiên bản Godot khác, luôn sử dụng :ref:`create_instance()<class_OS_method_create_instance>` thay vì dựa vào đường dẫn đến tệp thực thi.
 
 .. rst-class:: classref-item-separator
 
@@ -941,11 +941,11 @@ Returns the file path to the current engine executable.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_granted_permissions**\ (\ ) |const| :ref:`🔗<class_OS_method_get_granted_permissions>`
 
-On Android devices: Returns the list of dangerous permissions that have been granted.
+Trên các thiết bị Android: Trả về danh sách các quyền nguy hiểm đã được cấp.
 
-On macOS: Returns the list of granted permissions and user selected folders accessible to the application (sandboxed applications only). Use the native file dialog to request folder access permission.
+Trên macOS: Trả về danh sách các quyền đã được cấp và các thư mục do người dùng chọn mà ứng dụng có thể truy cập (chỉ dành cho ứng dụng sandbox). Sử dụng hộp thoại tệp gốc để yêu cầu quyền truy cập thư mục.
 
-On iOS, visionOS: Returns the list of granted permissions.
+Trên iOS, visionOS: Trả về danh sách các quyền đã được cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -957,26 +957,26 @@ On iOS, visionOS: Returns the list of granted permissions.
 
 :ref:`String<class_String>` **get_keycode_string**\ (\ code\: :ref:`Key<enum_@GlobalScope_Key>`\ ) |const| :ref:`🔗<class_OS_method_get_keycode_string>`
 
-Returns the given keycode as a :ref:`String<class_String>`.
+Trả về mã phím đã cho dưới dạng :ref:`String<class_String>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print(OS.get_keycode_string(KEY_C))                    # Prints "C"
-    print(OS.get_keycode_string(KEY_ESCAPE))               # Prints "Escape"
-    print(OS.get_keycode_string(KEY_MASK_SHIFT | KEY_TAB)) # Prints "Shift+Tab"
+    print(OS.get_keycode_string(KEY_C))                    # In "C"
+    print(OS.get_keycode_string(KEY_ESCAPE))               # In "Escape"
+    print(OS.get_keycode_string(KEY_MASK_SHIFT | KEY_TAB)) # In ra "Shift+Tab"
 
  .. code-tab:: csharp
 
-    GD.Print(OS.GetKeycodeString(Key.C));                                    // Prints "C"
-    GD.Print(OS.GetKeycodeString(Key.Escape));                               // Prints "Escape"
-    GD.Print(OS.GetKeycodeString((Key)KeyModifierMask.MaskShift | Key.Tab)); // Prints "Shift+Tab"
+    GD.Print(OS.GetKeycodeString(Key.C));                                    // In ra "C"
+    GD.Print(OS.GetKeycodeString(Key.Escape));                               // In ra "Escape"
+    GD.Print(OS.GetKeycodeString((Key)KeyModifierMask.MaskShift | Key.Tab)); // In ra "Shift+Tab"
 
 
 
-See also :ref:`find_keycode_from_string()<class_OS_method_find_keycode_from_string>`, :ref:`InputEventKey.keycode<class_InputEventKey_property_keycode>`, and :ref:`InputEventKey.get_keycode_with_modifiers()<class_InputEventKey_method_get_keycode_with_modifiers>`.
+Xem thêm :ref:`find_keycode_from_string()<class_OS_method_find_keycode_from_string>`, :ref:`InputEventKey.keycode<class_InputEventKey_property_keycode>` và :ref:`InputEventKey.get_keycode_with_modifiers()<class_InputEventKey_method_get_keycode_with_modifiers>`.
 
 .. rst-class:: classref-item-separator
 
@@ -988,19 +988,19 @@ See also :ref:`find_keycode_from_string()<class_OS_method_find_keycode_from_stri
 
 :ref:`String<class_String>` **get_locale**\ (\ ) |const| :ref:`🔗<class_OS_method_get_locale>`
 
-Returns the host OS locale as a :ref:`String<class_String>` of the form ``language_Script_COUNTRY_VARIANT@extra``. Every substring after ``language`` is optional and may not exist.
+Trả về locale của hệ điều hành máy chủ dưới dạng :ref:`String<class_String>` theo định dạng ``language_Script_COUNTRY_VARIANT@extra``. Mọi chuỗi con sau ``language`` đều là tùy chọn và có thể không tồn tại.
 
-- ``language`` - 2 or 3-letter `language code <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`__, in lower case.
+- ``language`` - `mã ngôn ngữ gồm 2 hoặc 3 chữ cái <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`__, viết thường.
 
-- ``Script`` - 4-letter `script code <https://en.wikipedia.org/wiki/ISO_15924>`__, in title case.
+- ``Script`` - mã `script gồm 4 chữ cái <https://en.wikipedia.org/wiki/ISO_15924>`__, viết hoa chữ cái đầu.
 
-- ``COUNTRY`` - 2 or 3-letter `country code <https://en.wikipedia.org/wiki/ISO_3166-1>`__, in upper case.
+- ``COUNTRY`` - mã `quốc gia gồm 2 hoặc 3 chữ cái <https://en.wikipedia.org/wiki/ISO_3166-1>`__, viết hoa.
 
-- ``VARIANT`` - language variant, region and sort order. The variant can have any number of underscored keywords.
+- ``VARIANT`` - biến thể ngôn ngữ, khu vực và thứ tự sắp xếp. Biến thể có thể chứa bất kỳ số lượng từ khóa nào được phân tách bằng dấu gạch dưới.
 
-- ``extra`` - semicolon separated list of additional key words. This may include currency, calendar, sort order and numbering system information.
+- ``extra`` - danh sách các từ khóa bổ sung được phân tách bằng dấu chấm phẩy. Danh sách này có thể bao gồm thông tin về tiền tệ, lịch, thứ tự sắp xếp và hệ thống đánh số.
 
-If you want only the language code and not the fully specified locale from the OS, you can use :ref:`get_locale_language()<class_OS_method_get_locale_language>`.
+Nếu bạn chỉ muốn mã ngôn ngữ mà không muốn locale được chỉ định đầy đủ từ OS, bạn có thể sử dụng :ref:`get_locale_language()<class_OS_method_get_locale_language>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1012,9 +1012,9 @@ If you want only the language code and not the fully specified locale from the O
 
 :ref:`String<class_String>` **get_locale_language**\ (\ ) |const| :ref:`🔗<class_OS_method_get_locale_language>`
 
-Returns the host OS locale's 2 or 3-letter `language code <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`__ as a string which should be consistent on all platforms. This is equivalent to extracting the ``language`` part of the :ref:`get_locale()<class_OS_method_get_locale>` string.
+Trả về `mã ngôn ngữ gồm 2 hoặc 3 chữ cái <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`__ của locale của OS máy chủ dưới dạng chuỗi, chuỗi này phải nhất quán trên mọi nền tảng. Điều này tương đương với việc trích xuất phần ``language`` của chuỗi :ref:`get_locale()<class_OS_method_get_locale>`.
 
-This can be used to narrow down fully specified locale strings to only the "common" language code, when you don't need the additional information about country code or variants. For example, for a French Canadian user with ``fr_CA`` locale, this would return ``fr``.
+Có thể dùng cách này để thu gọn các chuỗi locale được chỉ định đầy đủ thành chỉ mã ngôn ngữ "chung", khi bạn không cần thông tin bổ sung về mã quốc gia hoặc các biến thể. Ví dụ: với người dùng Canada nói tiếng Pháp có locale ``fr_CA``, kết quả sẽ là ``fr``.
 
 .. rst-class:: classref-item-separator
 
@@ -1026,9 +1026,9 @@ This can be used to narrow down fully specified locale strings to only the "comm
 
 :ref:`int<class_int>` **get_main_thread_id**\ (\ ) |const| :ref:`🔗<class_OS_method_get_main_thread_id>`
 
-Returns the ID of the main thread. See :ref:`get_thread_caller_id()<class_OS_method_get_thread_caller_id>`.
+Trả về ID của main thread. Xem :ref:`get_thread_caller_id()<class_OS_method_get_thread_caller_id>`.
 
-\ **Note:** Thread IDs are not deterministic and may be reused across application restarts.
+\ **Lưu ý:** ID của thread không mang tính xác định và có thể được sử dụng lại sau khi ứng dụng khởi động lại.
 
 .. rst-class:: classref-item-separator
 
@@ -1040,17 +1040,17 @@ Returns the ID of the main thread. See :ref:`get_thread_caller_id()<class_OS_met
 
 :ref:`Dictionary<class_Dictionary>` **get_memory_info**\ (\ ) |const| :ref:`🔗<class_OS_method_get_memory_info>`
 
-Returns a :ref:`Dictionary<class_Dictionary>` containing information about the current memory with the following entries:
+Trả về một :ref:`Dictionary<class_Dictionary>` chứa thông tin về bộ nhớ hiện tại với các mục sau:
 
-- ``"physical"`` - total amount of usable physical memory in bytes. This value can be slightly less than the actual physical memory amount, since it does not include memory reserved by the kernel and devices.
+- ``"physical"`` - tổng dung lượng bộ nhớ vật lý có thể sử dụng, tính bằng byte. Giá trị này có thể nhỏ hơn một chút so với dung lượng bộ nhớ vật lý thực tế, vì không bao gồm phần bộ nhớ dành riêng cho kernel và thiết bị.
 
-- ``"free"`` - amount of physical memory, that can be immediately allocated without disk access or other costly operations, in bytes. The process might be able to allocate more physical memory, but this action will require moving inactive pages to disk, which can be expensive.
+- ``"free"`` - dung lượng bộ nhớ vật lý có thể được cấp phát ngay lập tức mà không cần truy cập đĩa hoặc thực hiện các thao tác tốn kém khác, tính bằng byte. Process có thể cấp phát thêm bộ nhớ vật lý, nhưng thao tác này sẽ yêu cầu chuyển các page không hoạt động sang đĩa, có thể gây tốn kém.
 
-- ``"available"`` - amount of memory that can be allocated without extending the swap file(s), in bytes. This value includes both physical memory and swap.
+- ``"available"`` - dung lượng bộ nhớ có thể được cấp phát mà không cần mở rộng swap file, tính bằng byte. Giá trị này bao gồm cả bộ nhớ vật lý và swap.
 
-- ``"stack"`` - size of the current thread stack in bytes.
+- ``"stack"`` - kích thước stack của thread hiện tại, tính bằng byte.
 
-\ **Note:** Each entry's value may be ``-1`` if it is unknown.
+\ **Lưu ý:** Giá trị của mỗi mục có thể là ``-1`` nếu chưa xác định.
 
 .. rst-class:: classref-item-separator
 
@@ -1062,9 +1062,9 @@ Returns a :ref:`Dictionary<class_Dictionary>` containing information about the c
 
 :ref:`String<class_String>` **get_model_name**\ (\ ) |const| :ref:`🔗<class_OS_method_get_model_name>`
 
-Returns the model name of the current device.
+Trả về tên model của thiết bị hiện tại.
 
-\ **Note:** This method is implemented on Android, iOS, macOS, and Windows. Returns ``"GenericDevice"`` on unsupported platforms.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, iOS, macOS và Windows. Trả về ``"GenericDevice"`` trên các nền tảng không được hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -1076,23 +1076,23 @@ Returns the model name of the current device.
 
 :ref:`String<class_String>` **get_name**\ (\ ) |const| :ref:`🔗<class_OS_method_get_name>`
 
-Returns the name of the host platform.
+Trả về tên của nền tảng máy chủ.
 
-- On Windows, this is ``"Windows"``.
+- Trên Windows, đây là ``"Windows"``.
 
-- On macOS, this is ``"macOS"``.
+- Trên macOS, đây là ``"macOS"``.
 
-- On Linux-based operating systems, this is ``"Linux"``.
+- Trên các hệ điều hành dựa trên Linux, đây là ``"Linux"``.
 
-- On BSD-based operating systems, this is ``"FreeBSD"``, ``"NetBSD"``, ``"OpenBSD"``, or ``"BSD"`` as a fallback.
+- Trên các hệ điều hành dựa trên BSD, đây là ``"FreeBSD"``, ``"NetBSD"``, ``"OpenBSD"`` hoặc ``"BSD"`` để làm phương án dự phòng.
 
-- On Android, this is ``"Android"``.
+- Trên Android, đây là ``"Android"``.
 
-- On iOS, this is ``"iOS"``.
+- Trên iOS, đây là ``"iOS"``.
 
-- On Web, this is ``"Web"``.
+- Trên Web, đây là ``"Web"``.
 
-\ **Note:** Custom builds of the engine may support additional platforms, such as consoles, possibly returning other names.
+\ **Lưu ý:** Các bản dựng tùy chỉnh của engine có thể hỗ trợ thêm các nền tảng như console và có thể trả về những tên khác.
 
 
 .. tabs::
@@ -1143,7 +1143,7 @@ Returns the name of the host platform.
 
 
 
-\ **Note:** On Web platforms, it is still possible to determine the host platform's OS with feature tags. See :ref:`has_feature()<class_OS_method_has_feature>`.
+\ **Lưu ý:** Trên các nền tảng Web, bạn vẫn có thể xác định hệ điều hành của nền tảng máy chủ bằng các thẻ tính năng. Xem :ref:`has_feature()<class_OS_method_has_feature>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1155,13 +1155,13 @@ Returns the name of the host platform.
 
 :ref:`int<class_int>` **get_process_exit_code**\ (\ pid\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OS_method_get_process_exit_code>`
 
-Returns the exit code of a spawned process once it has finished running (see :ref:`is_process_running()<class_OS_method_is_process_running>`).
+Trả về exit code của một tiến trình đã tạo sau khi tiến trình đó chạy xong (xem :ref:`is_process_running()<class_OS_method_is_process_running>`).
 
-Returns ``-1`` if the ``pid`` is not a PID of a spawned child process, the process is still running, or the method is not implemented for the current platform.
+Trả về ``-1`` nếu ``pid`` không phải là PID của một tiến trình con đã được tạo, tiến trình vẫn đang chạy hoặc phương thức này chưa được triển khai cho nền tảng hiện tại.
 
-\ **Note:** Returns ``-1`` if the ``pid`` is a macOS bundled app process.
+\ **Lưu ý:** Trả về ``-1`` nếu ``pid`` là một tiến trình ứng dụng macOS dạng bundle.
 
-\ **Note:** This method is implemented on Android, Linux, macOS and Windows.
+\ **Lưu ý:** Method này được triển khai trên Android, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1173,9 +1173,9 @@ Returns ``-1`` if the ``pid`` is not a PID of a spawned child process, the proce
 
 :ref:`int<class_int>` **get_process_id**\ (\ ) |const| :ref:`🔗<class_OS_method_get_process_id>`
 
-Returns the number used by the host machine to uniquely identify this application.
+Trả về số được máy chủ sử dụng để nhận dạng duy nhất ứng dụng này.
 
-\ **Note:** On Web, this method always returns ``0``.
+\ **Lưu ý:** Trên Web, phương thức này luôn trả về ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -1187,7 +1187,7 @@ Returns the number used by the host machine to uniquely identify this applicatio
 
 :ref:`int<class_int>` **get_processor_count**\ (\ ) |const| :ref:`🔗<class_OS_method_get_processor_count>`
 
-Returns the number of *logical* CPU cores available on the host machine. On CPUs with HyperThreading enabled, this number will be greater than the number of *physical* CPU cores.
+Trả về số lõi CPU *logic* khả dụng trên máy chủ. Trên các CPU đã bật HyperThreading, số này sẽ lớn hơn số lõi CPU *vật lý*.
 
 .. rst-class:: classref-item-separator
 
@@ -1199,9 +1199,9 @@ Returns the number of *logical* CPU cores available on the host machine. On CPUs
 
 :ref:`String<class_String>` **get_processor_name**\ (\ ) |const| :ref:`🔗<class_OS_method_get_processor_name>`
 
-Returns the full name of the CPU model on the host machine (e.g. ``"Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz"``).
+Trả về tên đầy đủ của model CPU trên máy chủ (ví dụ: ``"Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz"``).
 
-\ **Note:** This method is only implemented on Windows, macOS, Linux and iOS. On Android and Web, :ref:`get_processor_name()<class_OS_method_get_processor_name>` returns an empty string.
+\ **Lưu ý:** Phương thức này chỉ được triển khai trên Windows, macOS, Linux và iOS. Trên Android và Web, :ref:`get_processor_name()<class_OS_method_get_processor_name>` trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -1213,7 +1213,7 @@ Returns the full name of the CPU model on the host machine (e.g. ``"Intel(R) Cor
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_restart_on_exit_arguments**\ (\ ) |const| :ref:`🔗<class_OS_method_get_restart_on_exit_arguments>`
 
-Returns the list of command line arguments that will be used when the project automatically restarts using :ref:`set_restart_on_exit()<class_OS_method_set_restart_on_exit>`. See also :ref:`is_restart_on_exit_set()<class_OS_method_is_restart_on_exit_set>`.
+Trả về danh sách các đối số dòng lệnh sẽ được sử dụng khi project tự động khởi động lại bằng :ref:`set_restart_on_exit()<class_OS_method_set_restart_on_exit>`. Xem thêm :ref:`is_restart_on_exit_set()<class_OS_method_is_restart_on_exit_set>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1225,7 +1225,7 @@ Returns the list of command line arguments that will be used when the project au
 
 :ref:`int<class_int>` **get_static_memory_peak_usage**\ (\ ) |const| :ref:`🔗<class_OS_method_get_static_memory_peak_usage>`
 
-Returns the maximum amount of static memory used. Only works in debug builds.
+Trả về lượng bộ nhớ tĩnh tối đa đã sử dụng. Chỉ hoạt động trong các bản build debug.
 
 .. rst-class:: classref-item-separator
 
@@ -1237,7 +1237,7 @@ Returns the maximum amount of static memory used. Only works in debug builds.
 
 :ref:`int<class_int>` **get_static_memory_usage**\ (\ ) |const| :ref:`🔗<class_OS_method_get_static_memory_usage>`
 
-Returns the amount of static memory being used by the program in bytes. Only works in debug builds.
+Trả về lượng bộ nhớ tĩnh mà chương trình đang sử dụng, tính bằng byte. Chỉ hoạt động trong các bản build debug.
 
 .. rst-class:: classref-item-separator
 
@@ -1249,9 +1249,9 @@ Returns the amount of static memory being used by the program in bytes. Only wor
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **get_stderr_type**\ (\ ) |const| :ref:`🔗<class_OS_method_get_stderr_type>`
 
-Returns the type of the standard error device.
+Trả về kiểu của thiết bị standard error.
 
-\ **Note:** This method is implemented on Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1263,11 +1263,11 @@ Returns the type of the standard error device.
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **get_stdin_type**\ (\ ) |const| :ref:`🔗<class_OS_method_get_stdin_type>`
 
-Returns the type of the standard input device.
+Trả về kiểu của thiết bị standard input.
 
-\ **Note:** This method is implemented on Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS và Windows.
 
-\ **Note:** On exported Windows builds, run the console wrapper executable to access the standard input. If you need a single executable with full console support, use a custom build compiled with the ``windows_subsystem=console`` flag.
+\ **Lưu ý:** Trong các bản build Windows đã xuất, hãy chạy tệp thực thi console wrapper để truy cập standard input. Nếu cần một tệp thực thi duy nhất có đầy đủ hỗ trợ console, hãy sử dụng bản build tùy chỉnh được biên dịch với cờ ``windows_subsystem=console``.
 
 .. rst-class:: classref-item-separator
 
@@ -1279,9 +1279,9 @@ Returns the type of the standard input device.
 
 :ref:`StdHandleType<enum_OS_StdHandleType>` **get_stdout_type**\ (\ ) |const| :ref:`🔗<class_OS_method_get_stdout_type>`
 
-Returns the type of the standard output device.
+Trả về loại thiết bị standard output.
 
-\ **Note:** This method is implemented on Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1293,7 +1293,7 @@ Returns the type of the standard output device.
 
 :ref:`String<class_String>` **get_system_ca_certificates**\ (\ ) :ref:`🔗<class_OS_method_get_system_ca_certificates>`
 
-Returns the list of certification authorities trusted by the operating system as a string of concatenated certificates in PEM format.
+Trả về danh sách các cơ quan chứng thực được hệ điều hành tin cậy dưới dạng một chuỗi gồm các chứng chỉ được nối với nhau theo định dạng PEM.
 
 .. rst-class:: classref-item-separator
 
@@ -1305,11 +1305,11 @@ Returns the list of certification authorities trusted by the operating system as
 
 :ref:`String<class_String>` **get_system_dir**\ (\ dir\: :ref:`SystemDir<enum_OS_SystemDir>`, shared_storage\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_OS_method_get_system_dir>`
 
-Returns the path to commonly used folders across different platforms, as defined by ``dir``. See the :ref:`SystemDir<enum_OS_SystemDir>` constants for available locations.
+Trả về đường dẫn đến các thư mục thường dùng trên nhiều nền tảng khác nhau, như được định nghĩa bởi ``dir``. Xem các hằng số :ref:`SystemDir <enum_OS_SystemDir>` để biết các vị trí hiện có.
 
-\ **Note:** This method is implemented on Android, Linux, macOS and Windows.
+\ **Lưu ý:** Method này được triển khai trên Android, Linux, macOS và Windows.
 
-\ **Note:** Shared storage is implemented on Android and allows to differentiate between app specific and shared directories, if ``shared_storage`` is ``true``. Shared directories have additional restrictions on Android.
+\ **Lưu ý:** Bộ nhớ dùng chung được triển khai trên Android và cho phép phân biệt giữa các thư mục dành riêng cho ứng dụng và các thư mục dùng chung, nếu ``shared_storage`` là ``true``. Các thư mục dùng chung có thêm các hạn chế trên Android.
 
 .. rst-class:: classref-item-separator
 
@@ -1321,13 +1321,13 @@ Returns the path to commonly used folders across different platforms, as defined
 
 :ref:`String<class_String>` **get_system_font_path**\ (\ font_name\: :ref:`String<class_String>`, weight\: :ref:`int<class_int>` = 400, stretch\: :ref:`int<class_int>` = 100, italic\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_OS_method_get_system_font_path>`
 
-Returns the path to the system font file with ``font_name`` and style. Returns an empty string if no matching fonts found.
+Trả về đường dẫn đến tệp phông chữ hệ thống với ``font_name`` và kiểu. Trả về chuỗi trống nếu không tìm thấy phông chữ phù hợp.
 
-The following aliases can be used to request default fonts: "sans-serif", "serif", "monospace", "cursive", and "fantasy".
+Có thể sử dụng các bí danh sau để yêu cầu phông chữ mặc định: "sans-serif", "serif", "monospace", "cursive" và "fantasy".
 
-\ **Note:** Returned font might have different style if the requested style is not available.
+\ **Lưu ý:** Phông chữ được trả về có thể có kiểu khác nếu kiểu được yêu cầu không khả dụng.
 
-\ **Note:** This method is implemented on Android, iOS, Linux, macOS and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, iOS, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1339,15 +1339,15 @@ The following aliases can be used to request default fonts: "sans-serif", "serif
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_system_font_path_for_text**\ (\ font_name\: :ref:`String<class_String>`, text\: :ref:`String<class_String>`, locale\: :ref:`String<class_String>` = "", script\: :ref:`String<class_String>` = "", weight\: :ref:`int<class_int>` = 400, stretch\: :ref:`int<class_int>` = 100, italic\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_OS_method_get_system_font_path_for_text>`
 
-Returns an array of the system substitute font file paths, which are similar to the font with ``font_name`` and style for the specified text, locale, and script. Returns an empty array if no matching fonts found.
+Trả về một mảng các đường dẫn tệp phông chữ thay thế của hệ thống, tương tự như phông chữ với ``font_name`` và kiểu cho văn bản, locale và script được chỉ định. Trả về một mảng trống nếu không tìm thấy phông chữ phù hợp.
 
-The following aliases can be used to request default fonts: "sans-serif", "serif", "monospace", "cursive", and "fantasy".
+Có thể sử dụng các bí danh sau để yêu cầu phông chữ mặc định: "sans-serif", "serif", "monospace", "cursive" và "fantasy".
 
-\ **Note:** Depending on OS, it's not guaranteed that any of the returned fonts will be suitable for rendering specified text. Fonts should be loaded and checked in the order they are returned, and the first suitable one used.
+\ **Lưu ý:** Tùy thuộc vào hệ điều hành, không đảm bảo rằng bất kỳ font nào được trả về cũng phù hợp để hiển thị văn bản được chỉ định. Các font cần được tải và kiểm tra theo thứ tự chúng được trả về, sau đó sử dụng font phù hợp đầu tiên.
 
-\ **Note:** Returned fonts might have different style if the requested style is not available or belong to a different font family.
+\ **Lưu ý:** Các font được trả về có thể có kiểu khác nếu kiểu được yêu cầu không khả dụng hoặc chúng thuộc một họ font khác.
 
-\ **Note:** This method is implemented on Android, iOS, Linux, macOS and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, iOS, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1359,9 +1359,9 @@ The following aliases can be used to request default fonts: "sans-serif", "serif
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_system_fonts**\ (\ ) |const| :ref:`🔗<class_OS_method_get_system_fonts>`
 
-Returns the list of font family names available.
+Trả về danh sách tên các họ font hiện có.
 
-\ **Note:** This method is implemented on Android, iOS, Linux, macOS and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, iOS, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1373,7 +1373,7 @@ Returns the list of font family names available.
 
 :ref:`String<class_String>` **get_temp_dir**\ (\ ) |const| :ref:`🔗<class_OS_method_get_temp_dir>`
 
-Returns the *global* temporary data directory according to the operating system's standards.
+Trả về thư mục dữ liệu tạm thời *global* theo tiêu chuẩn của hệ điều hành.
 
 .. rst-class:: classref-item-separator
 
@@ -1385,9 +1385,9 @@ Returns the *global* temporary data directory according to the operating system'
 
 :ref:`int<class_int>` **get_thread_caller_id**\ (\ ) |const| :ref:`🔗<class_OS_method_get_thread_caller_id>`
 
-Returns the ID of the current thread. This can be used in logs to ease debugging of multi-threaded applications.
+Trả về ID của thread hiện tại. Có thể sử dụng ID này trong log để hỗ trợ gỡ lỗi các ứng dụng đa thread.
 
-\ **Note:** Thread IDs are not deterministic and may be reused across application restarts.
+\ **Lưu ý:** ID của thread không mang tính xác định và có thể được sử dụng lại sau khi ứng dụng khởi động lại.
 
 .. rst-class:: classref-item-separator
 
@@ -1399,11 +1399,11 @@ Returns the ID of the current thread. This can be used in logs to ease debugging
 
 :ref:`String<class_String>` **get_unique_id**\ (\ ) |const| :ref:`🔗<class_OS_method_get_unique_id>`
 
-Returns a string that is unique to the device.
+Trả về một chuỗi duy nhất cho thiết bị.
 
-\ **Note:** This string may change without notice if the user reinstalls their operating system, upgrades it, or modifies their hardware. This means it should generally not be used to encrypt persistent data, as the data saved before an unexpected ID change would become inaccessible. The returned string may also be falsified using external programs, so do not rely on the string returned by this method for security purposes.
+\ **Lưu ý:** Chuỗi này có thể thay đổi mà không được thông báo nếu người dùng cài đặt lại hệ điều hành, nâng cấp hệ điều hành hoặc thay đổi phần cứng. Điều này có nghĩa là nhìn chung không nên dùng chuỗi này để mã hóa dữ liệu persistent, vì dữ liệu được lưu trước khi ID thay đổi bất ngờ sẽ không thể truy cập được. Chuỗi được trả về cũng có thể bị làm giả bằng các chương trình bên ngoài, vì vậy không được dựa vào chuỗi do phương thức này trả về cho các mục đích bảo mật.
 
-\ **Note:** On Web, returns an empty string and generates an error, as this method cannot be implemented for security reasons.
+\ **Lưu ý:** Trên Web, phương thức này trả về một chuỗi rỗng và phát sinh lỗi vì không thể triển khai phương thức này do các lý do bảo mật.
 
 .. rst-class:: classref-item-separator
 
@@ -1415,21 +1415,21 @@ Returns a string that is unique to the device.
 
 :ref:`String<class_String>` **get_user_data_dir**\ (\ ) |const| :ref:`🔗<class_OS_method_get_user_data_dir>`
 
-Returns the absolute directory path where user data is written (the ``user://`` directory in Godot). The path depends on the project name and :ref:`ProjectSettings.application/config/use_custom_user_dir<class_ProjectSettings_property_application/config/use_custom_user_dir>`.
+Trả về đường dẫn tuyệt đối đến thư mục nơi dữ liệu người dùng được ghi (thư mục ``user://`` trong Godot). Đường dẫn này phụ thuộc vào tên dự án và :ref:`ProjectSettings.application/config/use_custom_user_dir <class_ProjectSettings_property_application/config/use_custom_user_dir>`.
 
-- On Windows, this is ``%AppData%\Godot\app_userdata\[project_name]``, or ``%AppData%\[custom_name]`` if ``use_custom_user_dir`` is set. ``%AppData%`` expands to ``%UserProfile%\AppData\Roaming``.
+- Trên Windows, đây là ``%AppData%\Godot\app_userdata\[project_name]``, hoặc ``%AppData%\[custom_name]`` nếu ``use_custom_user_dir`` được thiết lập. ``%AppData%`` mở rộng thành ``%UserProfile%\AppData\Roaming``.
 
-- On macOS, this is ``~/Library/Application Support/Godot/app_userdata/[project_name]``, or ``~/Library/Application Support/[custom_name]`` if ``use_custom_user_dir`` is set.
+- Trên macOS, đây là ``~/Library/Application Support/Godot/app_userdata/[project_name]``, hoặc ``~/Library/Application Support/[custom_name]`` nếu ``use_custom_user_dir`` được thiết lập.
 
-- On Linux and BSD, this is ``~/.local/share/godot/app_userdata/[project_name]``, or ``~/.local/share/[custom_name]`` if ``use_custom_user_dir`` is set.
+- Trên Linux và BSD, đây là ``~/.local/share/godot/app_userdata/[project_name]``, hoặc ``~/.local/share/[custom_name]`` nếu ``use_custom_user_dir`` được thiết lập.
 
-- On Android and iOS, this is a sandboxed directory in either internal or external storage, depending on the user's configuration.
+- Trên Android và iOS, đây là một thư mục sandbox trong bộ nhớ trong hoặc bộ nhớ ngoài, tùy thuộc vào cấu hình của người dùng.
 
-- On Web, this is a virtual directory managed by the browser.
+- Trên Web, đây là một thư mục ảo do trình duyệt quản lý.
 
-If the project name is empty, ``[project_name]`` falls back to ``[unnamed project]``.
+Nếu tên project trống, ``[project_name]`` sẽ chuyển sang sử dụng ``[unnamed project]``.
 
-Not to be confused with :ref:`get_data_dir()<class_OS_method_get_data_dir>`, which returns the *global* (non-project-specific) user home directory.
+Không nên nhầm lẫn với :ref:`get_data_dir()<class_OS_method_get_data_dir>`, vốn trả về thư mục chính của người dùng *global* (không dành riêng cho project).
 
 .. rst-class:: classref-item-separator
 
@@ -1441,17 +1441,17 @@ Not to be confused with :ref:`get_data_dir()<class_OS_method_get_data_dir>`, whi
 
 :ref:`String<class_String>` **get_version**\ (\ ) |const| :ref:`🔗<class_OS_method_get_version>`
 
-Returns the exact production and build version of the operating system. This is different from the branded version used in marketing. This helps to distinguish between different releases of operating systems, including minor versions, and insider and custom builds.
+Trả về phiên bản production và build chính xác của hệ điều hành. Phiên bản này khác với phiên bản có thương hiệu được sử dụng trong hoạt động marketing. Thông tin này giúp phân biệt các bản phát hành khác nhau của hệ điều hành, bao gồm cả các phiên bản phụ, cũng như các bản build dành cho insider và bản build tùy chỉnh.
 
-- For Windows, the major and minor version are returned, as well as the build number. For example, the returned string may look like ``10.0.9926`` for a build of Windows 10.
+- Đối với Windows, phiên bản major và minor được trả về cùng với số build. Ví dụ: chuỗi được trả về có thể có dạng ``10.0.9926`` đối với một bản build của Windows 10.
 
-- For rolling distributions, such as Arch Linux, an empty string is returned.
+- Đối với các bản phân phối cập nhật liên tục, chẳng hạn như Arch Linux, một chuỗi rỗng được trả về.
 
-- For macOS and iOS, the major and minor version are returned, as well as the patch number.
+- Đối với macOS và iOS, phiên bản chính và phiên bản phụ được trả về cùng với số bản vá.
 
-- For Android, the SDK version and the incremental build number are returned. If it's a custom ROM, it attempts to return its version instead.
+- Đối với Android, phiên bản SDK và số bản dựng tăng dần được trả về. Nếu đó là một custom ROM, phương thức này sẽ cố gắng trả về phiên bản của custom ROM đó.
 
-\ **Note:** This method is not supported on the Web platform. It returns an empty string.
+\ **Lưu ý:** Phương thức này không được hỗ trợ trên nền tảng Web. Phương thức trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -1463,11 +1463,11 @@ Returns the exact production and build version of the operating system. This is 
 
 :ref:`String<class_String>` **get_version_alias**\ (\ ) |const| :ref:`🔗<class_OS_method_get_version_alias>`
 
-Returns the branded version used in marketing, followed by the build number (on Windows), the version number (on macOS), or the SDK version and incremental build number (on Android). Examples include ``11 (build 22000)``, ``Sequoia (15.0.0)``, and ``15 (SDK 35 build abc528-11988f)``.
+Trả về phiên bản có thương hiệu được sử dụng trong hoạt động marketing, theo sau là số bản dựng (trên Windows), số phiên bản (trên macOS) hoặc phiên bản SDK và số bản dựng tăng dần (trên Android). Ví dụ bao gồm ``11 (build 22000)``, ``Sequoia (15.0.0)`` và ``15 (SDK 35 build abc528-11988f)``.
 
-This value can then be appended to :ref:`get_name()<class_OS_method_get_name>` to get a full, human-readable operating system name and version combination for the operating system. Windows feature updates such as 24H2 are not contained in the resulting string, but Windows Server is recognized as such (e.g. ``2025 (build 26100)`` for Windows Server 2025).
+Sau đó, có thể nối giá trị này vào :ref:`get_name()<class_OS_method_get_name>` để nhận được tên và phiên bản hệ điều hành đầy đủ, dễ đọc dành cho hệ điều hành đó. Các bản cập nhật tính năng của Windows như 24H2 không được chứa trong chuỗi kết quả, nhưng Windows Server được nhận diện đúng là Windows Server (ví dụ: ``2025 (build 26100)`` đối với Windows Server 2025).
 
-\ **Note:** This method is only supported on Windows, macOS, and Android. On other operating systems, it returns the same value as :ref:`get_version()<class_OS_method_get_version>`.
+\ **Lưu ý:** Phương thức này chỉ được hỗ trợ trên Windows, macOS và Android. Trên các hệ điều hành khác, phương thức này trả về cùng giá trị với :ref:`get_version()<class_OS_method_get_version>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1479,15 +1479,15 @@ This value can then be appended to :ref:`get_name()<class_OS_method_get_name>` t
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_video_adapter_driver_info**\ (\ ) |const| :ref:`🔗<class_OS_method_get_video_adapter_driver_info>`
 
-Returns the video adapter driver name and version for the user's currently active graphics card, as a :ref:`PackedStringArray<class_PackedStringArray>`. See also :ref:`RenderingServer.get_video_adapter_api_version()<class_RenderingServer_method_get_video_adapter_api_version>`.
+Trả về tên và phiên bản driver của bộ điều hợp video cho card đồ họa hiện đang hoạt động của người dùng dưới dạng :ref:`PackedStringArray<class_PackedStringArray>`. Xem thêm :ref:`RenderingServer.get_video_adapter_api_version()<class_RenderingServer_method_get_video_adapter_api_version>`.
 
-The first element holds the driver name, such as ``nvidia``, ``amdgpu``, etc.
+Phần tử đầu tiên chứa tên driver, chẳng hạn như ``nvidia``, ``amdgpu``, v.v.
 
-The second element holds the driver version. For example, on the ``nvidia`` driver on a Linux/BSD platform, the version is in the format ``510.85.02``. For Windows, the driver's format is ``31.0.15.1659``.
+Phần tử thứ hai chứa phiên bản driver. Ví dụ: với driver ``nvidia`` trên nền tảng Linux/BSD, phiên bản có định dạng ``510.85.02``. Trên Windows, định dạng của driver là ``31.0.15.1659``.
 
-\ **Note:** This method is only supported on Linux/BSD and Windows when not running in headless mode. On other platforms, it returns an empty array.
+\ **Lưu ý:** Phương thức này chỉ được hỗ trợ trên Linux/BSD và Windows khi không chạy ở chế độ headless. Trên các nền tảng khác, phương thức này trả về một mảng rỗng.
 
-\ **Note:** This method will run slowly the first time it is called in a session; it can take several seconds depending on the operating system and hardware. It is blocking if called on the main thread, so it's recommended to call it on a separate thread using :ref:`Thread<class_Thread>`. This allows the engine to keep running while the information is being retrieved. However, :ref:`get_video_adapter_driver_info()<class_OS_method_get_video_adapter_driver_info>` is *not* thread-safe, so it should not be called from multiple threads at the same time.
+\ **Lưu ý:** Phương thức này sẽ chạy chậm trong lần đầu tiên được gọi trong một session; thời gian có thể mất vài giây tùy thuộc vào hệ điều hành và phần cứng. Nếu được gọi trên main thread, phương thức này sẽ chặn, vì vậy bạn nên gọi nó trên một thread riêng bằng cách sử dụng :ref:`Thread<class_Thread>`. Điều này cho phép engine tiếp tục chạy trong khi thông tin được truy xuất. Tuy nhiên, :ref:`get_video_adapter_driver_info()<class_OS_method_get_video_adapter_driver_info>` không *an toàn cho thread*, vì vậy không nên gọi phương thức này đồng thời từ nhiều thread.
 
 
 .. tabs::
@@ -1521,9 +1521,9 @@ The second element holds the driver version. For example, on the ``nvidia`` driv
 
 :ref:`bool<class_bool>` **has_environment**\ (\ variable\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_has_environment>`
 
-Returns ``true`` if the environment variable with the name ``variable`` exists.
+Trả về ``true`` nếu biến môi trường có tên ``variable`` tồn tại.
 
-\ **Note:** Double-check the casing of ``variable``. Environment variable names are case-sensitive on all platforms except Windows.
+\ **Lưu ý:** Hãy kiểm tra kỹ kiểu chữ của ``variable``. Tên biến môi trường phân biệt chữ hoa chữ thường trên tất cả các nền tảng ngoại trừ Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1535,11 +1535,11 @@ Returns ``true`` if the environment variable with the name ``variable`` exists.
 
 :ref:`bool<class_bool>` **has_feature**\ (\ tag_name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_has_feature>`
 
-Returns ``true`` if the feature for the given feature tag is supported in the currently running instance, depending on the platform, build, etc. Can be used to check whether you're currently running a debug build, on a certain platform or arch, etc. Refer to the :doc:`Feature Tags <../tutorials/export/feature_tags>` documentation for more details.
+Trả về ``true`` nếu tính năng tương ứng với thẻ tính năng đã cho được hỗ trợ trong instance hiện đang chạy, tùy thuộc vào nền tảng, bản build, v.v. Có thể dùng để kiểm tra xem bạn hiện đang chạy bản build debug, trên một nền tảng hoặc kiến trúc cụ thể hay không. Tham khảo tài liệu :doc:`Feature Tags <../tutorials/export/feature_tags>` để biết thêm chi tiết.
 
-\ **Note:** Tag names are case-sensitive.
+\ **Lưu ý:** Tên thẻ có phân biệt chữ hoa chữ thường.
 
-\ **Note:** On the Web platform, one of the following additional tags is defined to indicate the host platform: ``web_android``, ``web_ios``, ``web_linuxbsd``, ``web_macos``, or ``web_windows``.
+\ **Lưu ý:** Trên nền tảng Web, một trong các thẻ bổ sung sau được định nghĩa để chỉ nền tảng máy chủ: ``web_android``, ``web_ios``, ``web_linuxbsd``, ``web_macos`` hoặc ``web_windows``.
 
 .. rst-class:: classref-item-separator
 
@@ -1551,11 +1551,11 @@ Returns ``true`` if the feature for the given feature tag is supported in the cu
 
 :ref:`bool<class_bool>` **is_debug_build**\ (\ ) |const| :ref:`🔗<class_OS_method_is_debug_build>`
 
-Returns ``true`` if the Godot binary used to run the project is a *debug* export template, or when running in the editor.
+Trả về ``true`` nếu binary Godot được dùng để chạy project là mẫu export *debug* hoặc khi chạy trong editor.
 
-Returns ``false`` if the Godot binary used to run the project is a *release* export template.
+Trả về ``false`` nếu binary Godot được dùng để chạy project là mẫu export *release*.
 
-\ **Note:** To check whether the Godot binary used to run the project is an export template (debug or release), use ``OS.has_feature("template")`` instead.
+\ **Lưu ý:** Để kiểm tra xem binary Godot được dùng để chạy project có phải là mẫu export (debug hoặc release) hay không, hãy sử dụng ``OS.has_feature("template")``.
 
 .. rst-class:: classref-item-separator
 
@@ -1567,24 +1567,24 @@ Returns ``false`` if the Godot binary used to run the project is a *release* exp
 
 :ref:`bool<class_bool>` **is_keycode_unicode**\ (\ code\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OS_method_is_keycode_unicode>`
 
-Returns ``true`` if the input keycode corresponds to a Unicode character. For a list of codes, see the :ref:`Key<enum_@GlobalScope_Key>` constants.
+Trả về ``true`` nếu keycode đầu vào tương ứng với một ký tự Unicode. Để xem danh sách mã, hãy tham khảo các hằng số :ref:`Key <enum_@GlobalScope_Key>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print(OS.is_keycode_unicode(KEY_G))      # Prints true
-    print(OS.is_keycode_unicode(KEY_KP_4))   # Prints true
-    print(OS.is_keycode_unicode(KEY_TAB))    # Prints false
-    print(OS.is_keycode_unicode(KEY_ESCAPE)) # Prints false
+    print(OS.is_keycode_unicode(KEY_G))      # In ra true
+    print(OS.is_keycode_unicode(KEY_KP_4))   # In ra true
+    print(OS.is_keycode_unicode(KEY_TAB))    # In ra false
+    print(OS.is_keycode_unicode(KEY_ESCAPE)) # In ra false
 
  .. code-tab:: csharp
 
-    GD.Print(OS.IsKeycodeUnicode((long)Key.G));      // Prints True
-    GD.Print(OS.IsKeycodeUnicode((long)Key.Kp4));    // Prints True
-    GD.Print(OS.IsKeycodeUnicode((long)Key.Tab));    // Prints False
-    GD.Print(OS.IsKeycodeUnicode((long)Key.Escape)); // Prints False
+    GD.Print(OS.IsKeycodeUnicode((long)Key.G));      // In ra True
+    GD.Print(OS.IsKeycodeUnicode((long)Key.Kp4));    // In ra True
+    GD.Print(OS.IsKeycodeUnicode((long)Key.Tab));    // In ra False
+    GD.Print(OS.IsKeycodeUnicode((long)Key.Escape)); // In ra False
 
 
 
@@ -1598,9 +1598,9 @@ Returns ``true`` if the input keycode corresponds to a Unicode character. For a 
 
 :ref:`bool<class_bool>` **is_process_running**\ (\ pid\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OS_method_is_process_running>`
 
-Returns ``true`` if the child process ID (``pid``) is still running or ``false`` if it has terminated. ``pid`` must be a valid ID generated from :ref:`create_process()<class_OS_method_create_process>`.
+Trả về ``true`` nếu ID tiến trình con (``pid``) vẫn đang chạy hoặc ``false`` nếu tiến trình đã kết thúc. ``pid`` phải là một ID hợp lệ được tạo từ :ref:`create_process()<class_OS_method_create_process>`.
 
-\ **Note:** This method is implemented on Android, iOS, Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, iOS, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1612,7 +1612,7 @@ Returns ``true`` if the child process ID (``pid``) is still running or ``false``
 
 :ref:`bool<class_bool>` **is_restart_on_exit_set**\ (\ ) |const| :ref:`🔗<class_OS_method_is_restart_on_exit_set>`
 
-Returns ``true`` if the project will automatically restart when it exits for any reason, ``false`` otherwise. See also :ref:`set_restart_on_exit()<class_OS_method_set_restart_on_exit>` and :ref:`get_restart_on_exit_arguments()<class_OS_method_get_restart_on_exit_arguments>`.
+Trả về ``true`` nếu dự án sẽ tự động khởi động lại khi thoát vì bất kỳ lý do nào, nếu không thì trả về ``false``. Xem thêm :ref:`set_restart_on_exit()<class_OS_method_set_restart_on_exit>` và :ref:`get_restart_on_exit_arguments()<class_OS_method_get_restart_on_exit_arguments>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1624,9 +1624,9 @@ Returns ``true`` if the project will automatically restart when it exits for any
 
 :ref:`bool<class_bool>` **is_sandboxed**\ (\ ) |const| :ref:`🔗<class_OS_method_is_sandboxed>`
 
-Returns ``true`` if the application is running in the sandbox.
+Trả về ``true`` nếu ứng dụng đang chạy trong sandbox.
 
-\ **Note:** This method is only implemented on macOS and Linux.
+\ **Lưu ý:** Phương thức này chỉ được triển khai trên macOS và Linux.
 
 .. rst-class:: classref-item-separator
 
@@ -1638,7 +1638,7 @@ Returns ``true`` if the application is running in the sandbox.
 
 :ref:`bool<class_bool>` **is_stdout_verbose**\ (\ ) |const| :ref:`🔗<class_OS_method_is_stdout_verbose>`
 
-Returns ``true`` if the engine was executed with the ``--verbose`` or ``-v`` command line argument, or if :ref:`ProjectSettings.debug/settings/stdout/verbose_stdout<class_ProjectSettings_property_debug/settings/stdout/verbose_stdout>` is ``true``. See also :ref:`@GlobalScope.print_verbose()<class_@GlobalScope_method_print_verbose>`.
+Trả về ``true`` nếu engine được thực thi với đối số dòng lệnh ``--verbose`` hoặc ``-v``, hoặc nếu :ref:`ProjectSettings.debug/settings/stdout/verbose_stdout <class_ProjectSettings_property_debug/settings/stdout/verbose_stdout>` là ``true``. Xem thêm :ref:`@GlobalScope.print_verbose() <class_@GlobalScope_method_print_verbose>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1650,7 +1650,7 @@ Returns ``true`` if the engine was executed with the ``--verbose`` or ``-v`` com
 
 :ref:`bool<class_bool>` **is_userfs_persistent**\ (\ ) |const| :ref:`🔗<class_OS_method_is_userfs_persistent>`
 
-Returns ``true`` if the ``user://`` file system is persistent, that is, its state is the same after a player quits and starts the game again. Relevant to the Web platform, where this persistence may be unavailable.
+Trả về ``true`` nếu hệ thống tệp ``user://`` là persistent, nghĩa là trạng thái của nó vẫn giống nhau sau khi người chơi thoát và khởi động lại trò chơi. Liên quan đến nền tảng Web, nơi tính persistent này có thể không khả dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1662,11 +1662,11 @@ Returns ``true`` if the ``user://`` file system is persistent, that is, its stat
 
 :ref:`Error<enum_@GlobalScope_Error>` **kill**\ (\ pid\: :ref:`int<class_int>`\ ) :ref:`🔗<class_OS_method_kill>`
 
-Kill (terminate) the process identified by the given process ID (``pid``), such as the ID returned by :ref:`execute()<class_OS_method_execute>` in non-blocking mode. See also :ref:`crash()<class_OS_method_crash>`.
+Hủy (terminate) process được xác định bởi process ID đã cho (``pid``), chẳng hạn ID được :ref:`execute()<class_OS_method_execute>` trả về ở chế độ non-blocking. Xem thêm :ref:`crash()<class_OS_method_crash>`.
 
-\ **Note:** This method can also be used to kill processes that were not spawned by the engine.
+\ **Lưu ý:** Phương thức này cũng có thể được dùng để hủy các process không được engine tạo ra.
 
-\ **Note:** This method is implemented on Android, iOS, Linux, macOS and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, iOS, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1678,11 +1678,11 @@ Kill (terminate) the process identified by the given process ID (``pid``), such 
 
 :ref:`Error<enum_@GlobalScope_Error>` **move_to_trash**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_move_to_trash>`
 
-Moves the file or directory at the given ``path`` to the system's recycle bin. See also :ref:`DirAccess.remove()<class_DirAccess_method_remove>`.
+Di chuyển tệp hoặc thư mục tại ``path`` đã cho vào thùng rác của hệ thống. Xem thêm :ref:`DirAccess.remove()<class_DirAccess_method_remove>`.
 
-The method takes only global paths, so you may need to use :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globalize_path>`. Do not use it for files in ``res://`` as it will not work in exported projects.
+Phương thức này chỉ nhận các đường dẫn global, vì vậy bạn có thể cần sử dụng :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globalize_path>`. Không sử dụng phương thức này cho các tệp trong ``res://`` vì nó sẽ không hoạt động trong các project đã export.
 
-Returns :ref:`@GlobalScope.FAILED<class_@GlobalScope_constant_FAILED>` if the file or directory cannot be found, or the system does not support this method.
+Trả về :ref:`@GlobalScope.FAILED <class_@GlobalScope_constant_FAILED>` nếu không tìm thấy tệp hoặc thư mục, hoặc hệ thống không hỗ trợ phương thức này.
 
 
 .. tabs::
@@ -1699,9 +1699,9 @@ Returns :ref:`@GlobalScope.FAILED<class_@GlobalScope_constant_FAILED>` if the fi
 
 
 
-\ **Note:** This method is implemented on Android, Linux, macOS and Windows.
+\ **Lưu ý:** Method này được triển khai trên Android, Linux, macOS và Windows.
 
-\ **Note:** If the user has disabled the recycle bin on their system, the file will be permanently deleted instead.
+\ **Lưu ý:** Nếu người dùng đã tắt thùng rác trên hệ thống của họ, tệp sẽ bị xóa vĩnh viễn thay vì được chuyển vào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -1713,13 +1713,13 @@ Returns :ref:`@GlobalScope.FAILED<class_@GlobalScope_constant_FAILED>` if the fi
 
 |void| **open_midi_inputs**\ (\ ) :ref:`🔗<class_OS_method_open_midi_inputs>`
 
-Initializes the singleton for the system MIDI driver, allowing Godot to receive :ref:`InputEventMIDI<class_InputEventMIDI>`. See also :ref:`get_connected_midi_inputs()<class_OS_method_get_connected_midi_inputs>` and :ref:`close_midi_inputs()<class_OS_method_close_midi_inputs>`.
+Khởi tạo singleton cho trình điều khiển MIDI của hệ thống, cho phép Godot nhận :ref:`InputEventMIDI<class_InputEventMIDI>`. Xem thêm :ref:`get_connected_midi_inputs()<class_OS_method_get_connected_midi_inputs>` và :ref:`close_midi_inputs()<class_OS_method_close_midi_inputs>`.
 
-\ **Note:** This method is implemented on Linux, macOS, Windows, and Web.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS, Windows và Web.
 
-\ **Note:** On the Web platform, Web MIDI needs to be supported by the browser. `For the time being <https://caniuse.com/midi>`__, it is currently supported by all major browsers, except Safari.
+\ **Lưu ý:** Trên nền tảng Web, Web MIDI cần được trình duyệt hỗ trợ. `Hiện tại <https://caniuse.com/midi>`__, tính năng này được tất cả các trình duyệt chính hỗ trợ, ngoại trừ Safari.
 
-\ **Note:** On the Web platform, using MIDI input requires a browser permission to be granted first. This permission request is performed when calling :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>`. The browser will refrain from processing MIDI input until the user accepts the permission request.
+\ **Lưu ý:** Trên nền tảng Web, để sử dụng MIDI input, trước tiên trình duyệt phải được cấp quyền. Yêu cầu cấp quyền này được thực hiện khi gọi :ref:`open_midi_inputs()<class_OS_method_open_midi_inputs>`. Trình duyệt sẽ không xử lý MIDI input cho đến khi người dùng chấp nhận yêu cầu cấp quyền.
 
 .. rst-class:: classref-item-separator
 
@@ -1731,11 +1731,11 @@ Initializes the singleton for the system MIDI driver, allowing Godot to receive 
 
 :ref:`Error<enum_@GlobalScope_Error>` **open_with_program**\ (\ program_path\: :ref:`String<class_String>`, paths\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_OS_method_open_with_program>`
 
-Opens one or more files/directories with the specified application. The ``program_path`` specifies the path to the application to use for opening the files, and ``paths`` contains an array of file/directory paths to open.
+Mở một hoặc nhiều tệp/thư mục bằng ứng dụng được chỉ định. ``program_path`` chỉ định đường dẫn đến ứng dụng dùng để mở các tệp, còn ``paths`` chứa một mảng các đường dẫn tệp/thư mục cần mở.
 
-\ **Note:** This method is mostly only relevant for macOS, where opening files using :ref:`create_process()<class_OS_method_create_process>` might fail. On other platforms, this falls back to using :ref:`create_process()<class_OS_method_create_process>`.
+\ **Lưu ý:** Phương thức này hầu như chỉ liên quan đến macOS, nơi việc mở tệp bằng :ref:`create_process()<class_OS_method_create_process>` có thể không thành công. Trên các nền tảng khác, phương thức này sẽ chuyển sang sử dụng :ref:`create_process()<class_OS_method_create_process>`.
 
-\ **Note:** On macOS, ``program_path`` should ideally be the path to a ``.app`` bundle.
+\ **Lưu ý:** Trên macOS, ``program_path`` lý tưởng nhất nên là đường dẫn đến một bundle ``.app``.
 
 .. rst-class:: classref-item-separator
 
@@ -1747,17 +1747,17 @@ Opens one or more files/directories with the specified application. The ``progra
 
 :ref:`PackedByteArray<class_PackedByteArray>` **read_buffer_from_stdin**\ (\ buffer_size\: :ref:`int<class_int>` = 1024\ ) :ref:`🔗<class_OS_method_read_buffer_from_stdin>`
 
-Reads a user input as raw data from the standard input. This operation can be *blocking*, which causes the window to freeze if :ref:`read_buffer_from_stdin()<class_OS_method_read_buffer_from_stdin>` is called on the main thread.
+Đọc dữ liệu đầu vào của người dùng dưới dạng dữ liệu thô từ standard input. Thao tác này có thể *chặn*, khiến cửa sổ bị treo nếu :ref:`read_buffer_from_stdin()<class_OS_method_read_buffer_from_stdin>` được gọi trên main thread.
 
-- If standard input is console, this method will block until the program receives a line break in standard input (usually by the user pressing :kbd:`Enter`).
+- Nếu standard input là console, phương thức này sẽ chặn cho đến khi chương trình nhận được một dấu ngắt dòng trong standard input (thường là khi người dùng nhấn :kbd:`Enter`).
 
-- If standard input is pipe, this method will block until a specific amount of data is read or pipe is closed.
+- Nếu standard input là pipe, phương thức này sẽ chặn cho đến khi đọc được một lượng dữ liệu cụ thể hoặc pipe bị đóng.
 
-- If standard input is a file, this method will read a specific amount of data (or less if end-of-file is reached) and return immediately.
+- Nếu standard input là một tệp, phương thức này sẽ đọc một lượng dữ liệu cụ thể (hoặc ít hơn nếu gặp end-of-file) rồi trả về ngay lập tức.
 
-\ **Note:** This method is implemented on Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS và Windows.
 
-\ **Note:** On exported Windows builds, run the console wrapper executable to access the terminal. If standard input is console, calling this method without console wrapped will freeze permanently. If standard input is pipe or file, it can be used without console wrapper. If you need a single executable with full console support, use a custom build compiled with the ``windows_subsystem=console`` flag.
+\ **Lưu ý:** Trên các bản build Windows được export, hãy chạy tệp thực thi console wrapper để truy cập terminal. Nếu standard input là console, việc gọi phương thức này mà không bọc bằng console sẽ khiến chương trình bị treo vĩnh viễn. Nếu standard input là pipe hoặc file, có thể sử dụng phương thức này mà không cần console wrapper. Nếu cần một tệp thực thi duy nhất có đầy đủ hỗ trợ console, hãy sử dụng bản build tùy chỉnh được biên dịch với cờ ``windows_subsystem=console``.
 
 .. rst-class:: classref-item-separator
 
@@ -1769,19 +1769,19 @@ Reads a user input as raw data from the standard input. This operation can be *b
 
 :ref:`String<class_String>` **read_string_from_stdin**\ (\ buffer_size\: :ref:`int<class_int>` = 1024\ ) :ref:`🔗<class_OS_method_read_string_from_stdin>`
 
-Reads a user input as a UTF-8 encoded string from the standard input. This operation can be *blocking*, which causes the window to freeze if :ref:`read_string_from_stdin()<class_OS_method_read_string_from_stdin>` is called on the main thread.
+Đọc dữ liệu đầu vào của người dùng dưới dạng chuỗi được mã hóa UTF-8 từ standard input. Thao tác này có thể *chặn*, khiến cửa sổ bị treo nếu :ref:`read_string_from_stdin()<class_OS_method_read_string_from_stdin>` được gọi trên main thread.
 
-- If standard input is console, this method will block until the program receives a line break in standard input (usually by the user pressing :kbd:`Enter`).
+- Nếu standard input là console, phương thức này sẽ chặn cho đến khi chương trình nhận được một dấu ngắt dòng trong standard input (thường là khi người dùng nhấn :kbd:`Enter`).
 
-- If standard input is pipe, this method will block until a specific amount of data is read or pipe is closed.
+- Nếu standard input là pipe, phương thức này sẽ chặn cho đến khi đọc được một lượng dữ liệu cụ thể hoặc pipe bị đóng.
 
-- If standard input is a file, this method will read a specific amount of data (or less if end-of-file is reached) and return immediately.
+- Nếu standard input là một tệp, phương thức này sẽ đọc một lượng dữ liệu cụ thể (hoặc ít hơn nếu gặp end-of-file) rồi trả về ngay lập tức.
 
-\ **Note:** This method automatically replaces ``\r\n`` line breaks with ``\n`` and removes them from the end of the string. Use :ref:`read_buffer_from_stdin()<class_OS_method_read_buffer_from_stdin>` to read the unprocessed data.
+\ **Lưu ý:** Phương thức này tự động thay thế các ký tự xuống dòng ``\r\n`` bằng ``\n`` và xóa chúng khỏi cuối chuỗi. Sử dụng :ref:`read_buffer_from_stdin()<class_OS_method_read_buffer_from_stdin>` để đọc dữ liệu chưa qua xử lý.
 
-\ **Note:** This method is implemented on Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS và Windows.
 
-\ **Note:** On exported Windows builds, run the console wrapper executable to access the terminal. If standard input is console, calling this method without console wrapped will freeze permanently. If standard input is pipe or file, it can be used without console wrapper. If you need a single executable with full console support, use a custom build compiled with the ``windows_subsystem=console`` flag.
+\ **Lưu ý:** Trên các bản build Windows được export, hãy chạy tệp thực thi console wrapper để truy cập terminal. Nếu standard input là console, việc gọi phương thức này mà không bọc bằng console sẽ khiến chương trình bị treo vĩnh viễn. Nếu standard input là pipe hoặc file, có thể sử dụng phương thức này mà không cần console wrapper. Nếu cần một tệp thực thi duy nhất có đầy đủ hỗ trợ console, hãy sử dụng bản build tùy chỉnh được biên dịch với cờ ``windows_subsystem=console``.
 
 .. rst-class:: classref-item-separator
 
@@ -1793,7 +1793,7 @@ Reads a user input as a UTF-8 encoded string from the standard input. This opera
 
 |void| **remove_logger**\ (\ logger\: :ref:`Logger<class_Logger>`\ ) :ref:`🔗<class_OS_method_remove_logger>`
 
-Remove a custom logger added by :ref:`add_logger()<class_OS_method_add_logger>`.
+Xóa logger tùy chỉnh được thêm bởi :ref:`add_logger()<class_OS_method_add_logger>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1805,9 +1805,9 @@ Remove a custom logger added by :ref:`add_logger()<class_OS_method_add_logger>`.
 
 :ref:`bool<class_bool>` **request_permission**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_OS_method_request_permission>`
 
-Requests permission from the OS for the given ``name``. Returns ``true`` if the permission has already been granted. See also :ref:`MainLoop.on_request_permissions_result<class_MainLoop_signal_on_request_permissions_result>`.
+Yêu cầu hệ điều hành cấp quyền cho ``name``. Trả về ``true`` nếu quyền đã được cấp. Xem thêm :ref:`MainLoop.on_request_permissions_result<class_MainLoop_signal_on_request_permissions_result>`.
 
-The ``name`` must be the full permission name. For example:
+``name`` phải là tên quyền đầy đủ. Ví dụ:
 
 - ``OS.request_permission("android.permission.READ_EXTERNAL_STORAGE")``\ 
 
@@ -1817,9 +1817,9 @@ The ``name`` must be the full permission name. For example:
 
 - ``OS.request_permission("appleembedded.permission.AUDIO_RECORD")``\ 
 
-\ **Note:** On Android, permission must be checked during export.
+\ **Lưu ý:** Trên Android, phải kiểm tra quyền trong quá trình export.
 
-\ **Note:** This method is implemented on Android, macOS, and visionOS platforms.
+\ **Lưu ý:** Phương thức này được triển khai trên các nền tảng Android, macOS và visionOS.
 
 .. rst-class:: classref-item-separator
 
@@ -1831,11 +1831,11 @@ The ``name`` must be the full permission name. For example:
 
 :ref:`bool<class_bool>` **request_permissions**\ (\ ) :ref:`🔗<class_OS_method_request_permissions>`
 
-Requests *dangerous* permissions from the OS. Returns ``true`` if permissions have already been granted. See also :ref:`MainLoop.on_request_permissions_result<class_MainLoop_signal_on_request_permissions_result>`.
+Yêu cầu hệ điều hành cấp các quyền *dangerous*. Trả về ``true`` nếu các quyền đã được cấp. Xem thêm :ref:`MainLoop.on_request_permissions_result<class_MainLoop_signal_on_request_permissions_result>`.
 
-\ **Note:** Permissions must be checked during export.
+\ **Lưu ý:** Quyền phải được kiểm tra trong quá trình export.
 
-\ **Note:** This method is only implemented on Android. Normal permissions are automatically granted at install time in Android applications.
+\ **Lưu ý:** Phương thức này chỉ được triển khai trên Android. Các quyền thông thường sẽ tự động được cấp tại thời điểm cài đặt trong các ứng dụng Android.
 
 .. rst-class:: classref-item-separator
 
@@ -1847,7 +1847,7 @@ Requests *dangerous* permissions from the OS. Returns ``true`` if permissions ha
 
 |void| **revoke_granted_permissions**\ (\ ) :ref:`🔗<class_OS_method_revoke_granted_permissions>`
 
-On macOS (sandboxed applications only), this function clears list of user selected folders accessible to the application.
+Trên macOS (chỉ các ứng dụng chạy trong sandbox), hàm này xóa danh sách các thư mục do người dùng chọn mà ứng dụng có thể truy cập.
 
 .. rst-class:: classref-item-separator
 
@@ -1859,9 +1859,9 @@ On macOS (sandboxed applications only), this function clears list of user select
 
 |void| **set_environment**\ (\ variable\: :ref:`String<class_String>`, value\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_set_environment>`
 
-Sets the value of the environment variable ``variable`` to ``value``. The environment variable will be set for the Godot process and any process executed with :ref:`execute()<class_OS_method_execute>` after running :ref:`set_environment()<class_OS_method_set_environment>`. The environment variable will *not* persist to processes run after the Godot process was terminated.
+Đặt giá trị của biến môi trường ``variable`` thành ``value``. Biến môi trường sẽ được đặt cho tiến trình Godot và mọi tiến trình được thực thi bằng :ref:`execute()<class_OS_method_execute>` sau khi chạy :ref:`set_environment()<class_OS_method_set_environment>`. Biến môi trường sẽ *không* được duy trì trong các tiến trình chạy sau khi tiến trình Godot đã kết thúc.
 
-\ **Note:** Environment variable names are case-sensitive on all platforms except Windows. The ``variable`` name cannot be empty or include the ``=`` character. On Windows, there is a 32767 characters limit for the combined length of ``variable``, ``value``, and the ``=`` and null terminator characters that will be registered in the environment block.
+\ **Lưu ý:** Tên biến môi trường có phân biệt chữ hoa chữ thường trên tất cả các nền tảng ngoại trừ Windows. Tên ``variable`` không được để trống hoặc chứa ký tự ``=``. Trên Windows, có giới hạn 32767 ký tự cho tổng độ dài của ``variable``, ``value``, và các ký tự ``=`` cùng ký tự kết thúc null được đăng ký trong khối môi trường.
 
 .. rst-class:: classref-item-separator
 
@@ -1873,13 +1873,13 @@ Sets the value of the environment variable ``variable`` to ``value``. The enviro
 
 |void| **set_restart_on_exit**\ (\ restart\: :ref:`bool<class_bool>`, arguments\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray()\ ) :ref:`🔗<class_OS_method_set_restart_on_exit>`
 
-If ``restart`` is ``true``, restarts the project automatically when it is exited with :ref:`SceneTree.quit()<class_SceneTree_method_quit>` or :ref:`Node.NOTIFICATION_WM_CLOSE_REQUEST<class_Node_constant_NOTIFICATION_WM_CLOSE_REQUEST>`. Command-line ``arguments`` can be supplied. To restart the project with the same command line arguments as originally used to run the project, pass :ref:`get_cmdline_args()<class_OS_method_get_cmdline_args>` as the value for ``arguments``.
+Nếu ``restart`` là ``true``, dự án sẽ tự động khởi động lại khi thoát với :ref:`SceneTree.quit()<class_SceneTree_method_quit>` hoặc :ref:`Node.NOTIFICATION_WM_CLOSE_REQUEST<class_Node_constant_NOTIFICATION_WM_CLOSE_REQUEST>`. Có thể cung cấp ``arguments`` dòng lệnh. Để khởi động lại dự án với cùng các đối số dòng lệnh như khi chạy dự án ban đầu, hãy truyền :ref:`get_cmdline_args()<class_OS_method_get_cmdline_args>` làm giá trị cho ``arguments``.
 
-This method can be used to apply setting changes that require a restart. See also :ref:`is_restart_on_exit_set()<class_OS_method_is_restart_on_exit_set>` and :ref:`get_restart_on_exit_arguments()<class_OS_method_get_restart_on_exit_arguments>`.
+Có thể sử dụng phương thức này để áp dụng các thay đổi cài đặt yêu cầu khởi động lại. Xem thêm :ref:`is_restart_on_exit_set()<class_OS_method_is_restart_on_exit_set>` và :ref:`get_restart_on_exit_arguments()<class_OS_method_get_restart_on_exit_arguments>`.
 
-\ **Note:** This method is only effective on desktop platforms, and only when the project isn't started from the editor. It will have no effect on mobile and Web platforms, or when the project is started from the editor.
+\ **Lưu ý:** Phương thức này chỉ có hiệu lực trên các nền tảng desktop và chỉ khi project không được khởi chạy từ editor. Phương thức sẽ không có tác dụng trên các nền tảng mobile và Web hoặc khi project được khởi chạy từ editor.
 
-\ **Note:** If the project process crashes or is *killed* by the user (by sending ``SIGKILL`` instead of the usual ``SIGTERM``), the project won't restart automatically.
+\ **Lưu ý:** Nếu process của project bị crash hoặc bị *kết thúc* bởi người dùng (bằng cách gửi ``SIGKILL`` thay vì ``SIGTERM`` thông thường), project sẽ không tự động khởi động lại.
 
 .. rst-class:: classref-item-separator
 
@@ -1891,7 +1891,7 @@ This method can be used to apply setting changes that require a restart. See als
 
 :ref:`Error<enum_@GlobalScope_Error>` **set_thread_name**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_OS_method_set_thread_name>`
 
-Assigns the given name to the current thread. Returns :ref:`@GlobalScope.ERR_UNAVAILABLE<class_@GlobalScope_constant_ERR_UNAVAILABLE>` if unavailable on the current platform.
+Gán tên đã cho cho thread hiện tại. Trả về :ref:`@GlobalScope.ERR_UNAVAILABLE <class_@GlobalScope_constant_ERR_UNAVAILABLE>` nếu không khả dụng trên nền tảng hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1903,9 +1903,9 @@ Assigns the given name to the current thread. Returns :ref:`@GlobalScope.ERR_UNA
 
 |void| **set_use_file_access_save_and_swap**\ (\ enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_OS_method_set_use_file_access_save_and_swap>`
 
-If ``enabled`` is ``true``, when opening a file for writing, a temporary file is used in its place. When closed, it is automatically applied to the target file.
+Nếu ``enabled`` là ``true``, khi mở một file để ghi, một file tạm thời sẽ được sử dụng thay thế. Khi file được đóng, file tạm thời sẽ tự động được áp dụng cho file đích.
 
-This can useful when files may be opened by other applications, such as antiviruses, text editors, or even the Godot editor itself.
+Điều này có thể hữu ích khi các file có thể được ứng dụng khác mở, chẳng hạn như phần mềm diệt virus, trình soạn thảo văn bản hoặc thậm chí chính Godot editor.
 
 .. rst-class:: classref-item-separator
 
@@ -1917,21 +1917,21 @@ This can useful when files may be opened by other applications, such as antiviru
 
 :ref:`Error<enum_@GlobalScope_Error>` **shell_open**\ (\ uri\: :ref:`String<class_String>`\ ) :ref:`🔗<class_OS_method_shell_open>`
 
-Requests the OS to open a resource identified by ``uri`` with the most appropriate program. For example:
+Yêu cầu OS mở resource được xác định bởi ``uri`` bằng chương trình phù hợp nhất. Ví dụ:
 
-- ``OS.shell_open("C:\\Users\\name\\Downloads")`` on Windows opens the file explorer at the user's Downloads folder.
+- ``OS.shell_open("C:\\Users\\name\\Downloads")`` trên Windows sẽ mở trình khám phá file tại thư mục Downloads của người dùng.
 
-- ``OS.shell_open("C:/Users/name/Downloads")`` also works on Windows and opens the file explorer at the user's Downloads folder.
+- ``OS.shell_open("C:/Users/name/Downloads")`` cũng hoạt động trên Windows và mở trình khám phá tệp tại thư mục Downloads của người dùng.
 
-- ``OS.shell_open("https://godotengine.org")`` opens the default web browser on the official Godot website.
+- ``OS.shell_open("https://godotengine.org")`` mở trình duyệt web mặc định tại trang web chính thức của Godot.
 
-- ``OS.shell_open("mailto:example@example.com")`` opens the default email client with the "To" field set to ``example@example.com``. See `RFC 2368 - The mailto URL scheme <https://datatracker.ietf.org/doc/html/rfc2368>`__ for a list of fields that can be added.
+- ``OS.shell_open("mailto:example@example.com")`` mở ứng dụng email mặc định với trường "To" được đặt thành ``example@example.com``. Xem `RFC 2368 - The mailto URL scheme <https://datatracker.ietf.org/doc/html/rfc2368>`__ để biết danh sách các trường có thể thêm vào.
 
-Use :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globalize_path>` to convert a ``res://`` or ``user://`` project path into a system path for use with this method.
+Sử dụng :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globalize_path>` để chuyển đổi đường dẫn dự án ``res://`` hoặc ``user://`` thành đường dẫn hệ thống dùng cho phương thức này.
 
-\ **Note:** Use :ref:`String.uri_encode()<class_String_method_uri_encode>` to encode characters within URLs in a URL-safe, portable way. This is especially required for line breaks. Otherwise, :ref:`shell_open()<class_OS_method_shell_open>` may not work correctly in a project exported to the Web platform.
+\ **Lưu ý:** Sử dụng :ref:`String.uri_encode()<class_String_method_uri_encode>` để mã hóa các ký tự trong URL theo cách an toàn cho URL và có tính di động. Điều này đặc biệt cần thiết đối với các ngắt dòng. Nếu không, :ref:`shell_open()<class_OS_method_shell_open>` có thể không hoạt động chính xác trong dự án được xuất sang nền tảng Web.
 
-\ **Note:** This method is implemented on Android, iOS, Web, Linux, macOS and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Android, iOS, Web, Linux, macOS và Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -1943,13 +1943,13 @@ Use :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globaliz
 
 :ref:`Error<enum_@GlobalScope_Error>` **shell_show_in_file_manager**\ (\ file_or_dir_path\: :ref:`String<class_String>`, open_folder\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_OS_method_shell_show_in_file_manager>`
 
-Requests the OS to open the file manager, navigate to the given ``file_or_dir_path`` and select the target file or folder.
+Yêu cầu hệ điều hành mở trình quản lý tệp, điều hướng đến ``file_or_dir_path`` đã cho và chọn tệp hoặc thư mục đích.
 
-If ``open_folder`` is ``true`` and ``file_or_dir_path`` is a valid directory path, the OS will open the file manager and navigate to the target folder without selecting anything.
+Nếu ``open_folder`` là ``true`` và ``file_or_dir_path`` là một đường dẫn thư mục hợp lệ, hệ điều hành sẽ mở trình quản lý tệp và điều hướng đến thư mục đích mà không chọn bất kỳ mục nào.
 
-Use :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globalize_path>` to convert a ``res://`` or ``user://`` project path into a system path to use with this method.
+Sử dụng :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globalize_path>` để chuyển đổi đường dẫn dự án ``res://`` hoặc ``user://`` thành đường dẫn hệ thống để sử dụng với phương thức này.
 
-\ **Note:** This method is currently only implemented on Windows and macOS. On other platforms, it will fallback to :ref:`shell_open()<class_OS_method_shell_open>` with a directory path of ``file_or_dir_path`` prefixed with ``file://``.
+\ **Lưu ý:** Hiện tại, phương thức này chỉ được triển khai trên Windows và macOS. Trên các nền tảng khác, phương thức này sẽ chuyển sang :ref:`shell_open()<class_OS_method_shell_open>` với đường dẫn thư mục có ``file://`` đứng trước ``file_or_dir_path``.
 
 .. rst-class:: classref-item-separator
 
@@ -1961,16 +1961,16 @@ Use :ref:`ProjectSettings.globalize_path()<class_ProjectSettings_method_globaliz
 
 |void| **unset_environment**\ (\ variable\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OS_method_unset_environment>`
 
-Removes the given environment variable from the current environment, if it exists. The ``variable`` name cannot be empty or include the ``=`` character. The environment variable will be removed for the Godot process and any process executed with :ref:`execute()<class_OS_method_execute>` after running :ref:`unset_environment()<class_OS_method_unset_environment>`. The removal of the environment variable will *not* persist to processes run after the Godot process was terminated.
+Xóa biến môi trường đã cho khỏi môi trường hiện tại, nếu biến đó tồn tại. Tên ``variable`` không được để trống hoặc chứa ký tự ``=``. Biến môi trường sẽ bị xóa đối với tiến trình Godot và mọi tiến trình được thực thi bằng :ref:`execute()<class_OS_method_execute>` sau khi chạy :ref:`unset_environment()<class_OS_method_unset_environment>`. Việc xóa biến môi trường sẽ *không* được duy trì đối với các tiến trình chạy sau khi tiến trình Godot đã kết thúc.
 
-\ **Note:** Environment variable names are case-sensitive on all platforms except Windows.
+\ **Lưu ý:** Tên biến môi trường có phân biệt chữ hoa chữ thường trên tất cả các nền tảng ngoại trừ Windows.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

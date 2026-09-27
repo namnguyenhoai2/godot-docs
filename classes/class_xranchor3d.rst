@@ -10,32 +10,32 @@
 XRAnchor3D
 ==========
 
-**Inherits:** :ref:`XRNode3D<class_XRNode3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRNode3D<class_XRNode3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-An anchor point in AR space.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The **XRAnchor3D** point is an :ref:`XRNode3D<class_XRNode3D>` that maps a real world location identified by the AR platform to a position within the game world. For example, as long as plane detection in ARKit is on, ARKit will identify and update the position of planes (tables, floors, etc.) and create anchors for them.
-
-This node is mapped to one of the anchors through its unique ID. When you receive a signal that a new anchor is available, you should add this node to your scene for that anchor. You can predefine nodes and set the ID; the nodes will simply remain on ``(0, 0, 0)`` until a plane is recognized.
-
-Keep in mind that, as long as plane detection is enabled, the size, placing and orientation of an anchor will be updated as the detection logic learns more about the real world out there especially if only part of the surface is in view.
+Một điểm neo trong không gian AR.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Điểm **XRAnchor3D** là một :ref:`XRNode3D<class_XRNode3D>` ánh xạ một vị trí trong thế giới thực, được nền tảng AR xác định, tới một vị trí trong thế giới trò chơi. Ví dụ: miễn là tính năng phát hiện mặt phẳng trong ARKit được bật, ARKit sẽ xác định và cập nhật vị trí của các mặt phẳng (bàn, sàn, v.v.) và tạo các điểm neo cho chúng.
+
+Node này được ánh xạ tới một trong các điểm neo thông qua ID duy nhất của nó. Khi nhận được tín hiệu cho biết một điểm neo mới khả dụng, bạn nên thêm node này vào scene cho điểm neo đó. Bạn có thể định nghĩa trước các node và đặt ID; các node sẽ chỉ nằm trên ``(0, 0, 0)`` cho đến khi một mặt phẳng được nhận diện.
+
+Hãy nhớ rằng, miễn là tính năng phát hiện mặt phẳng được bật, kích thước, vị trí và hướng của điểm neo sẽ được cập nhật khi logic phát hiện tìm hiểu thêm về thế giới thực xung quanh, đặc biệt là khi chỉ một phần bề mặt nằm trong tầm nhìn.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -52,8 +52,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRAnchor3D_method_get_plane:
 
@@ -61,7 +61,7 @@ Method Descriptions
 
 :ref:`Plane<class_Plane>` **get_plane**\ (\ ) |const| :ref:`🔗<class_XRAnchor3D_method_get_plane>`
 
-Returns a plane aligned with our anchor; handy for intersection testing.
+Trả về một mặt phẳng được căn chỉnh với anchor của chúng ta; hữu ích để kiểm tra giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -73,14 +73,14 @@ Returns a plane aligned with our anchor; handy for intersection testing.
 
 :ref:`Vector3<class_Vector3>` **get_size**\ (\ ) |const| :ref:`🔗<class_XRAnchor3D_method_get_size>`
 
-Returns the estimated size of the plane that was detected. Say when the anchor relates to a table in the real world, this is the estimated size of the surface of that table.
+Trả về kích thước ước tính của mặt phẳng đã được phát hiện. Chẳng hạn, khi anchor liên quan đến một chiếc bàn trong thế giới thực, đây là kích thước ước tính của bề mặt chiếc bàn đó.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,38 +10,38 @@
 CheckBox
 ========
 
-**Inherits:** :ref:`Button<class_Button>` **<** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Button<class_Button>` **<** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A button that represents a binary choice.
+Một nút biểu thị lựa chọn nhị phân.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**CheckBox** allows the user to choose one of only two possible options. It's similar to :ref:`CheckButton<class_CheckButton>` in functionality, but it has a different appearance. To follow established UX patterns, it's recommended to use **CheckBox** when toggling it has **no** immediate effect on something. For example, it could be used when toggling it will only do something once a confirmation button is pressed.
+**CheckBox** cho phép người dùng chọn một trong hai tùy chọn có thể có. Về chức năng, nó tương tự :ref:`CheckButton<class_CheckButton>`, nhưng có giao diện khác. Để tuân theo các mẫu UX đã được thiết lập, bạn nên sử dụng **CheckBox** khi việc chuyển đổi nó **không** có hiệu lực ngay lập tức lên một thành phần nào đó. Ví dụ: bạn có thể sử dụng nó khi việc chuyển đổi chỉ thực hiện một tác vụ sau khi nhấn nút xác nhận.
 
-See also :ref:`BaseButton<class_BaseButton>` which contains common properties and methods associated with this node.
+Xem thêm :ref:`BaseButton<class_BaseButton>`, trong đó có các thuộc tính và phương thức phổ biến liên quan đến node này.
 
-When :ref:`BaseButton.button_group<class_BaseButton_property_button_group>` specifies a :ref:`ButtonGroup<class_ButtonGroup>`, **CheckBox** changes its appearance to that of a radio button and uses the various ``radio_*`` theme properties.
+Khi :ref:`BaseButton.button_group<class_BaseButton_property_button_group>` chỉ định một :ref:`ButtonGroup<class_ButtonGroup>`, **CheckBox** sẽ thay đổi giao diện thành radio button và sử dụng các thuộc tính theme ``radio_*`` khác nhau.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+-------------+-------------------------------------------------------------------------------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` | alignment   | ``0`` (overrides :ref:`Button<class_Button_property_alignment>`)              |
-   +-------------------------------------------------------------------+-------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | toggle_mode | ``true`` (overrides :ref:`BaseButton<class_BaseButton_property_toggle_mode>`) |
-   +-------------------------------------------------------------------+-------------+-------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------+-------------+----------------------------------------------------------------------------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` | alignment   | ``0`` (ghi đè :ref:`Button<class_Button_property_alignment>`)              |
+   +--------------------------------------------------------------------+-------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | toggle_mode | ``true`` (ghi đè :ref:`BaseButton<class_BaseButton_property_toggle_mode>`) |
+   +--------------------------------------------------------------------+-------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -77,8 +77,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_CheckBox_theme_color_checkbox_checked_color:
 
@@ -86,7 +86,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **checkbox_checked_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_CheckBox_theme_color_checkbox_checked_color>`
 
-The color of the checked icon when the checkbox is pressed.
+Màu của biểu tượng dấu kiểm khi checkbox được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ The color of the checked icon when the checkbox is pressed.
 
 :ref:`Color<class_Color>` **checkbox_unchecked_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_CheckBox_theme_color_checkbox_unchecked_color>`
 
-The color of the unchecked icon when the checkbox is not pressed.
+Màu của biểu tượng không có dấu kiểm khi checkbox không được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ The color of the unchecked icon when the checkbox is not pressed.
 
 :ref:`int<class_int>` **check_v_offset** = ``0`` :ref:`🔗<class_CheckBox_theme_constant_check_v_offset>`
 
-The vertical offset used when rendering the check icons (in pixels).
+Độ lệch dọc được sử dụng khi hiển thị các biểu tượng dấu kiểm (tính bằng pixel).
 
 .. rst-class:: classref-item-separator
 
@@ -120,9 +120,9 @@ The vertical offset used when rendering the check icons (in pixels).
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked** :ref:`🔗<class_CheckBox_theme_icon_checked>`
+:ref:`Texture2D<class_Texture2D>` **checked** :ref:`🔗 <class_CheckBox_theme_icon_checked>`
 
-The check icon to display when the **CheckBox** is checked.
+Biểu tượng dấu kiểm hiển thị khi **CheckBox** được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -132,9 +132,9 @@ The check icon to display when the **CheckBox** is checked.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked_disabled** :ref:`🔗<class_CheckBox_theme_icon_checked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **checked_disabled** :ref:`🔗 <class_CheckBox_theme_icon_checked_disabled>`
 
-The check icon to display when the **CheckBox** is checked and is disabled.
+Biểu tượng dấu kiểm hiển thị khi **CheckBox** được chọn và bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -144,9 +144,9 @@ The check icon to display when the **CheckBox** is checked and is disabled.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **radio_checked** :ref:`🔗<class_CheckBox_theme_icon_radio_checked>`
+:ref:`Texture2D<class_Texture2D>` **radio_checked** :ref:`🔗 <class_CheckBox_theme_icon_radio_checked>`
 
-The check icon to display when the **CheckBox** is configured as a radio button and is checked.
+Biểu tượng dấu kiểm hiển thị khi **CheckBox** được cấu hình thành nút radio và được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -156,9 +156,9 @@ The check icon to display when the **CheckBox** is configured as a radio button 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **radio_checked_disabled** :ref:`🔗<class_CheckBox_theme_icon_radio_checked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **radio_checked_disabled** :ref:`🔗 <class_CheckBox_theme_icon_radio_checked_disabled>`
 
-The check icon to display when the **CheckBox** is configured as a radio button, is disabled, and is unchecked.
+Biểu tượng dấu kiểm hiển thị khi **CheckBox** được cấu hình thành nút radio, bị vô hiệu hóa và không được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -168,9 +168,9 @@ The check icon to display when the **CheckBox** is configured as a radio button,
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **radio_unchecked** :ref:`🔗<class_CheckBox_theme_icon_radio_unchecked>`
+:ref:`Texture2D<class_Texture2D>` **radio_unchecked** :ref:`🔗 <class_CheckBox_theme_icon_radio_unchecked>`
 
-The check icon to display when the **CheckBox** is configured as a radio button and is unchecked.
+Biểu tượng dấu kiểm hiển thị khi **CheckBox** được cấu hình thành nút radio và không được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -180,9 +180,9 @@ The check icon to display when the **CheckBox** is configured as a radio button 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **radio_unchecked_disabled** :ref:`🔗<class_CheckBox_theme_icon_radio_unchecked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **radio_unchecked_disabled** :ref:`🔗 <class_CheckBox_theme_icon_radio_unchecked_disabled>`
 
-The check icon to display when the **CheckBox** is configured as a radio button, is disabled, and is unchecked.
+Biểu tượng dấu kiểm hiển thị khi **CheckBox** được cấu hình thành nút radio, bị vô hiệu hóa và không được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -192,9 +192,9 @@ The check icon to display when the **CheckBox** is configured as a radio button,
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked** :ref:`🔗<class_CheckBox_theme_icon_unchecked>`
+:ref:`Texture2D<class_Texture2D>` **unchecked** :ref:`🔗 <class_CheckBox_theme_icon_unchecked>`
 
-The check icon to display when the **CheckBox** is unchecked.
+Biểu tượng dấu kiểm sẽ hiển thị khi **CheckBox** ở trạng thái bỏ chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -204,16 +204,16 @@ The check icon to display when the **CheckBox** is unchecked.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked_disabled** :ref:`🔗<class_CheckBox_theme_icon_unchecked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **unchecked_disabled** :ref:`🔗 <class_CheckBox_theme_icon_unchecked_disabled>`
 
-The check icon to display when the **CheckBox** is unchecked and is disabled.
+Biểu tượng dấu kiểm sẽ hiển thị khi **CheckBox** ở trạng thái bỏ chọn và bị vô hiệu hóa.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

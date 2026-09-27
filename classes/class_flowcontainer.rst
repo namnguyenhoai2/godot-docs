@@ -10,48 +10,48 @@
 FlowContainer
 =============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`HFlowContainer<class_HFlowContainer>`, :ref:`VFlowContainer<class_VFlowContainer>`
+**Được kế thừa bởi:** :ref:`HFlowContainer<class_HFlowContainer>`, :ref:`VFlowContainer<class_VFlowContainer>`
 
-A container that arranges its child controls horizontally or vertically and wraps them around at the borders.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A container that arranges its child controls horizontally or vertically and wraps them around at the borders. This is similar to how text in a book wraps around when no more words can fit on a line.
+Một container sắp xếp các control con theo chiều ngang hoặc dọc và tự động chuyển chúng xuống dòng khi chạm đến các cạnh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một container sắp xếp các control con theo chiều ngang hoặc dọc và tự động chuyển chúng xuống dòng khi chạm đến các cạnh. Điều này tương tự cách văn bản trong một cuốn sách tự động xuống dòng khi không thể chứa thêm từ nào trên một dòng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng Container <../tutorials/ui/gui_containers>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`AlignmentMode<enum_FlowContainer_AlignmentMode>`                 | :ref:`alignment<class_FlowContainer_property_alignment>`                     | ``0``     |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`LastWrapAlignmentMode<enum_FlowContainer_LastWrapAlignmentMode>` | :ref:`last_wrap_alignment<class_FlowContainer_property_last_wrap_alignment>` | ``0``     |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                | :ref:`reverse_fill<class_FlowContainer_property_reverse_fill>`               | ``false`` |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                | :ref:`vertical<class_FlowContainer_property_vertical>`                       | ``false`` |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`AlignmentMode <enum_FlowContainer_AlignmentMode>`                 | :ref:`alignment<class_FlowContainer_property_alignment>`                     | ``0``     |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`LastWrapAlignmentMode <enum_FlowContainer_LastWrapAlignmentMode>` | :ref:`last_wrap_alignment<class_FlowContainer_property_last_wrap_alignment>` | ``0``     |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                 | :ref:`reverse_fill<class_FlowContainer_property_reverse_fill>`               | ``false`` |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                 | :ref:`vertical<class_FlowContainer_property_vertical>`                       | ``false`` |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -62,7 +62,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -80,14 +80,14 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_FlowContainer_AlignmentMode:
 
 .. rst-class:: classref-enumeration
 
-enum **AlignmentMode**: :ref:`🔗<enum_FlowContainer_AlignmentMode>`
+enum **AlignmentMode**: :ref:`🔗 <enum_FlowContainer_AlignmentMode>`
 
 .. _class_FlowContainer_constant_ALIGNMENT_BEGIN:
 
@@ -95,7 +95,7 @@ enum **AlignmentMode**: :ref:`🔗<enum_FlowContainer_AlignmentMode>`
 
 :ref:`AlignmentMode<enum_FlowContainer_AlignmentMode>` **ALIGNMENT_BEGIN** = ``0``
 
-The child controls will be arranged at the beginning of the container, i.e. top if orientation is vertical, left if orientation is horizontal (right for RTL layout).
+Các control con sẽ được sắp xếp ở đầu container, tức là phía trên nếu orientation là dọc, phía trái nếu orientation là ngang (phía phải đối với bố cục RTL).
 
 .. _class_FlowContainer_constant_ALIGNMENT_CENTER:
 
@@ -103,7 +103,7 @@ The child controls will be arranged at the beginning of the container, i.e. top 
 
 :ref:`AlignmentMode<enum_FlowContainer_AlignmentMode>` **ALIGNMENT_CENTER** = ``1``
 
-The child controls will be centered in the container.
+Các control con sẽ được căn giữa trong container.
 
 .. _class_FlowContainer_constant_ALIGNMENT_END:
 
@@ -111,7 +111,7 @@ The child controls will be centered in the container.
 
 :ref:`AlignmentMode<enum_FlowContainer_AlignmentMode>` **ALIGNMENT_END** = ``2``
 
-The child controls will be arranged at the end of the container, i.e. bottom if orientation is vertical, right if orientation is horizontal (left for RTL layout).
+Các control con sẽ được sắp xếp ở cuối container, tức là phía dưới nếu orientation là dọc, phía phải nếu orientation là ngang (phía trái đối với bố cục RTL).
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ The child controls will be arranged at the end of the container, i.e. bottom if 
 
 .. rst-class:: classref-enumeration
 
-enum **LastWrapAlignmentMode**: :ref:`🔗<enum_FlowContainer_LastWrapAlignmentMode>`
+enum **LastWrapAlignmentMode**: :ref:`🔗 <enum_FlowContainer_LastWrapAlignmentMode>`
 
 .. _class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_INHERIT:
 
@@ -129,7 +129,7 @@ enum **LastWrapAlignmentMode**: :ref:`🔗<enum_FlowContainer_LastWrapAlignmentM
 
 :ref:`LastWrapAlignmentMode<enum_FlowContainer_LastWrapAlignmentMode>` **LAST_WRAP_ALIGNMENT_INHERIT** = ``0``
 
-The last partially filled row or column will wrap aligned to the previous row or column in accordance with :ref:`alignment<class_FlowContainer_property_alignment>`.
+Hàng hoặc cột cuối cùng chưa được lấp đầy sẽ được xuống dòng và căn theo hàng hoặc cột trước đó, tuân theo :ref:`alignment<class_FlowContainer_property_alignment>`.
 
 .. _class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_BEGIN:
 
@@ -137,7 +137,7 @@ The last partially filled row or column will wrap aligned to the previous row or
 
 :ref:`LastWrapAlignmentMode<enum_FlowContainer_LastWrapAlignmentMode>` **LAST_WRAP_ALIGNMENT_BEGIN** = ``1``
 
-The last partially filled row or column will wrap aligned to the beginning of the previous row or column.
+Hàng hoặc cột cuối cùng chưa được lấp đầy sẽ được xuống dòng và căn theo đầu của hàng hoặc cột trước đó.
 
 .. _class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_CENTER:
 
@@ -145,7 +145,7 @@ The last partially filled row or column will wrap aligned to the beginning of th
 
 :ref:`LastWrapAlignmentMode<enum_FlowContainer_LastWrapAlignmentMode>` **LAST_WRAP_ALIGNMENT_CENTER** = ``2``
 
-The last partially filled row or column will wrap aligned to the center of the previous row or column.
+Hàng hoặc cột cuối cùng chưa được lấp đầy sẽ được xuống dòng và căn giữa theo hàng hoặc cột trước đó.
 
 .. _class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_END:
 
@@ -153,7 +153,7 @@ The last partially filled row or column will wrap aligned to the center of the p
 
 :ref:`LastWrapAlignmentMode<enum_FlowContainer_LastWrapAlignmentMode>` **LAST_WRAP_ALIGNMENT_END** = ``3``
 
-The last partially filled row or column will wrap aligned to the end of the previous row or column.
+Hàng hoặc cột chưa được điền đầy cuối cùng sẽ xuống dòng và căn theo cuối của hàng hoặc cột trước đó.
 
 .. rst-class:: classref-section-separator
 
@@ -161,8 +161,8 @@ The last partially filled row or column will wrap aligned to the end of the prev
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_FlowContainer_property_alignment:
 
@@ -175,7 +175,7 @@ Property Descriptions
 - |void| **set_alignment**\ (\ value\: :ref:`AlignmentMode<enum_FlowContainer_AlignmentMode>`\ )
 - :ref:`AlignmentMode<enum_FlowContainer_AlignmentMode>` **get_alignment**\ (\ )
 
-The alignment of the container's children (must be one of :ref:`ALIGNMENT_BEGIN<class_FlowContainer_constant_ALIGNMENT_BEGIN>`, :ref:`ALIGNMENT_CENTER<class_FlowContainer_constant_ALIGNMENT_CENTER>`, or :ref:`ALIGNMENT_END<class_FlowContainer_constant_ALIGNMENT_END>`).
+Căn chỉnh các phần tử con của container (phải là một trong :ref:`ALIGNMENT_BEGIN<class_FlowContainer_constant_ALIGNMENT_BEGIN>`, :ref:`ALIGNMENT_CENTER<class_FlowContainer_constant_ALIGNMENT_CENTER>` hoặc :ref:`ALIGNMENT_END<class_FlowContainer_constant_ALIGNMENT_END>`).
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ The alignment of the container's children (must be one of :ref:`ALIGNMENT_BEGIN<
 - |void| **set_last_wrap_alignment**\ (\ value\: :ref:`LastWrapAlignmentMode<enum_FlowContainer_LastWrapAlignmentMode>`\ )
 - :ref:`LastWrapAlignmentMode<enum_FlowContainer_LastWrapAlignmentMode>` **get_last_wrap_alignment**\ (\ )
 
-The wrap behavior of the last, partially filled row or column (must be one of :ref:`LAST_WRAP_ALIGNMENT_INHERIT<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_INHERIT>`, :ref:`LAST_WRAP_ALIGNMENT_BEGIN<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_BEGIN>`, :ref:`LAST_WRAP_ALIGNMENT_CENTER<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_CENTER>`, or :ref:`LAST_WRAP_ALIGNMENT_END<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_END>`).
+Cách xử lý khi xuống dòng của hàng hoặc cột cuối cùng chưa được điền đầy (phải là một trong :ref:`LAST_WRAP_ALIGNMENT_INHERIT<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_INHERIT>`, :ref:`LAST_WRAP_ALIGNMENT_BEGIN<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_BEGIN>`, :ref:`LAST_WRAP_ALIGNMENT_CENTER<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_CENTER>` hoặc :ref:`LAST_WRAP_ALIGNMENT_END<class_FlowContainer_constant_LAST_WRAP_ALIGNMENT_END>`).
 
 .. rst-class:: classref-item-separator
 
@@ -209,9 +209,9 @@ The wrap behavior of the last, partially filled row or column (must be one of :r
 - |void| **set_reverse_fill**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_reverse_fill**\ (\ )
 
-If ``true``, reverses fill direction. Horizontal **FlowContainer**\ s will fill rows bottom to top, vertical **FlowContainer**\ s will fill columns right to left.
+Nếu là ``true``, đảo ngược hướng điền. **FlowContainer**\ s theo chiều ngang sẽ điền các hàng từ dưới lên trên, còn **FlowContainer**\ s theo chiều dọc sẽ điền các cột từ phải sang trái.
 
-When using a vertical **FlowContainer** with a right to left :ref:`Control.layout_direction<class_Control_property_layout_direction>`, columns will fill left to right instead.
+Khi sử dụng **FlowContainer** theo chiều dọc với :ref:`Control.layout_direction<class_Control_property_layout_direction>` từ phải sang trái, các cột sẽ được điền từ trái sang phải.
 
 .. rst-class:: classref-item-separator
 
@@ -228,9 +228,9 @@ When using a vertical **FlowContainer** with a right to left :ref:`Control.layou
 - |void| **set_vertical**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_vertical**\ (\ )
 
-If ``true``, the **FlowContainer** will arrange its children vertically, rather than horizontally.
+Nếu là ``true``, **FlowContainer** sẽ sắp xếp các phần tử con theo chiều dọc thay vì chiều ngang.
 
-Can't be changed when using :ref:`HFlowContainer<class_HFlowContainer>` and :ref:`VFlowContainer<class_VFlowContainer>`.
+Không thể thay đổi khi sử dụng :ref:`HFlowContainer<class_HFlowContainer>` và :ref:`VFlowContainer<class_VFlowContainer>`.
 
 .. rst-class:: classref-section-separator
 
@@ -238,8 +238,8 @@ Can't be changed when using :ref:`HFlowContainer<class_HFlowContainer>` and :ref
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_FlowContainer_method_get_line_count:
 
@@ -247,7 +247,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_line_count**\ (\ ) |const| :ref:`🔗<class_FlowContainer_method_get_line_count>`
 
-Returns the current line count.
+Trả về số dòng hiện tại.
 
 .. rst-class:: classref-section-separator
 
@@ -255,8 +255,8 @@ Returns the current line count.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_FlowContainer_theme_constant_h_separation:
 
@@ -264,7 +264,7 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **h_separation** = ``4`` :ref:`🔗<class_FlowContainer_theme_constant_h_separation>`
 
-The horizontal separation of child nodes.
+Khoảng cách theo chiều ngang giữa các node con.
 
 .. rst-class:: classref-item-separator
 
@@ -276,14 +276,14 @@ The horizontal separation of child nodes.
 
 :ref:`int<class_int>` **v_separation** = ``4`` :ref:`🔗<class_FlowContainer_theme_constant_v_separation>`
 
-The vertical separation of child nodes.
+Khoảng cách theo chiều dọc giữa các node con.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

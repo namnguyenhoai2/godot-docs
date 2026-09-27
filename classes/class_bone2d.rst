@@ -10,26 +10,26 @@
 Bone2D
 ======
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A joint used with :ref:`Skeleton2D<class_Skeleton2D>` to control and animate other nodes.
+Một khớp được sử dụng với :ref:`Skeleton2D<class_Skeleton2D>` để điều khiển và tạo hoạt ảnh cho các node khác.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A hierarchy of **Bone2D**\ s can be bound to a :ref:`Skeleton2D<class_Skeleton2D>` to control and animate other :ref:`Node2D<class_Node2D>` nodes.
+Một hệ phân cấp gồm các **Bone2D**\ s có thể được liên kết với một :ref:`Skeleton2D<class_Skeleton2D>` để điều khiển và tạo hoạt ảnh cho các node :ref:`Node2D<class_Node2D>` khác.
 
-You can use **Bone2D** and :ref:`Skeleton2D<class_Skeleton2D>` nodes to animate 2D meshes created with the :ref:`Polygon2D<class_Polygon2D>` UV editor.
+Bạn có thể sử dụng các node **Bone2D** và :ref:`Skeleton2D<class_Skeleton2D>` để tạo hoạt ảnh cho các mesh 2D được tạo bằng trình chỉnh sửa UV của :ref:`Polygon2D<class_Polygon2D>`.
 
-Each bone has a :ref:`rest<class_Bone2D_property_rest>` transform that you can reset to with :ref:`apply_rest()<class_Bone2D_method_apply_rest>`. These rest poses are relative to the bone's parent.
+Mỗi bone có một phép biến đổi :ref:`rest<class_Bone2D_property_rest>` mà bạn có thể đặt lại bằng :ref:`apply_rest()<class_Bone2D_method_apply_rest>`. Các tư thế nghỉ này là tương đối so với bone cha.
 
-If in the editor, you can set the rest pose of an entire skeleton using a menu option, from the code, you need to iterate over the bones to set their individual rest poses.
+Trong editor, bạn có thể đặt tư thế nghỉ của toàn bộ skeleton bằng một tùy chọn trong menu; còn trong code, bạn cần lặp qua các bone để đặt tư thế nghỉ riêng cho từng bone.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -73,8 +73,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Bone2D_property_rest:
 
@@ -87,7 +87,7 @@ Property Descriptions
 - |void| **set_rest**\ (\ value\: :ref:`Transform2D<class_Transform2D>`\ )
 - :ref:`Transform2D<class_Transform2D>` **get_rest**\ (\ )
 
-Rest transform of the bone. You can reset the node's transforms to this value using :ref:`apply_rest()<class_Bone2D_method_apply_rest>`.
+Biến đổi rest của bone. Bạn có thể đặt lại các biến đổi của node về giá trị này bằng :ref:`apply_rest()<class_Bone2D_method_apply_rest>`.
 
 .. rst-class:: classref-section-separator
 
@@ -95,8 +95,8 @@ Rest transform of the bone. You can reset the node's transforms to this value us
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Bone2D_method_apply_rest:
 
@@ -104,7 +104,7 @@ Method Descriptions
 
 |void| **apply_rest**\ (\ ) :ref:`🔗<class_Bone2D_method_apply_rest>`
 
-Resets the bone to the rest pose. This is equivalent to setting :ref:`Node2D.transform<class_Node2D_property_transform>` to :ref:`rest<class_Bone2D_property_rest>`.
+Đặt lại xương về tư thế nghỉ. Điều này tương đương với việc đặt :ref:`Node2D.transform<class_Node2D_property_transform>` thành :ref:`rest<class_Bone2D_property_rest>`.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Resets the bone to the rest pose. This is equivalent to setting :ref:`Node2D.tra
 
 :ref:`bool<class_bool>` **get_autocalculate_length_and_angle**\ (\ ) |const| :ref:`🔗<class_Bone2D_method_get_autocalculate_length_and_angle>`
 
-Returns whether this **Bone2D** is going to autocalculate its length and bone angle using its first **Bone2D** child node, if one exists. If there are no **Bone2D** children, then it cannot autocalculate these values and will print a warning.
+Trả về liệu **Bone2D** này có tự động tính toán chiều dài và góc xương bằng nút con **Bone2D** đầu tiên của nó hay không, nếu có. Nếu không có nút con **Bone2D**, nó không thể tự động tính các giá trị này và sẽ in ra cảnh báo.
 
 .. rst-class:: classref-item-separator
 
@@ -128,9 +128,9 @@ Returns whether this **Bone2D** is going to autocalculate its length and bone an
 
 :ref:`float<class_float>` **get_bone_angle**\ (\ ) |const| :ref:`🔗<class_Bone2D_method_get_bone_angle>`
 
-Returns the angle of the bone in the **Bone2D**.
+Trả về góc của xương trong **Bone2D**.
 
-\ **Note:** This is different from the **Bone2D**'s rotation. The bone's angle is the rotation of the bone shown by the gizmo, which is unaffected by the **Bone2D**'s :ref:`Node2D.transform<class_Node2D_property_transform>`.
+\ **Lưu ý:** Điều này khác với phép xoay của **Bone2D**. Góc của xương là phép xoay của xương được gizmo hiển thị, không bị ảnh hưởng bởi **Bone2D** :ref:`Node2D.transform<class_Node2D_property_transform>`.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ Returns the angle of the bone in the **Bone2D**.
 
 :ref:`int<class_int>` **get_index_in_skeleton**\ (\ ) |const| :ref:`🔗<class_Bone2D_method_get_index_in_skeleton>`
 
-Returns the node's index as part of the entire skeleton. See :ref:`Skeleton2D<class_Skeleton2D>`.
+Trả về chỉ mục của nút trong toàn bộ skeleton. Xem :ref:`Skeleton2D<class_Skeleton2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Returns the node's index as part of the entire skeleton. See :ref:`Skeleton2D<cl
 
 :ref:`float<class_float>` **get_length**\ (\ ) |const| :ref:`🔗<class_Bone2D_method_get_length>`
 
-Returns the length of the bone in the **Bone2D** node.
+Trả về chiều dài của xương trong nút **Bone2D**.
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ Returns the length of the bone in the **Bone2D** node.
 
 :ref:`Transform2D<class_Transform2D>` **get_skeleton_rest**\ (\ ) |const| :ref:`🔗<class_Bone2D_method_get_skeleton_rest>`
 
-Returns the node's :ref:`rest<class_Bone2D_property_rest>` :ref:`Transform2D<class_Transform2D>` if it doesn't have a parent, or its rest pose relative to its parent.
+Trả về :ref:`rest<class_Bone2D_property_rest>` :ref:`Transform2D<class_Transform2D>` của node nếu node không có node cha, hoặc tư thế nghỉ của node tương đối so với node cha.
 
 .. rst-class:: classref-item-separator
 
@@ -178,7 +178,7 @@ Returns the node's :ref:`rest<class_Bone2D_property_rest>` :ref:`Transform2D<cla
 
 |void| **set_autocalculate_length_and_angle**\ (\ auto_calculate\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Bone2D_method_set_autocalculate_length_and_angle>`
 
-When set to ``true``, the **Bone2D** node will attempt to automatically calculate the bone angle and length using the first child **Bone2D** node, if one exists. If none exist, the **Bone2D** cannot automatically calculate these values and will print a warning.
+Khi được đặt thành ``true``, node **Bone2D** sẽ cố gắng tự động tính toán góc và độ dài của xương bằng node **Bone2D** con đầu tiên, nếu có. Nếu không có node con nào, **Bone2D** không thể tự động tính toán các giá trị này và sẽ in ra cảnh báo.
 
 .. rst-class:: classref-item-separator
 
@@ -190,9 +190,9 @@ When set to ``true``, the **Bone2D** node will attempt to automatically calculat
 
 |void| **set_bone_angle**\ (\ angle\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Bone2D_method_set_bone_angle>`
 
-Sets the bone angle for the **Bone2D**. This is typically set to the rotation from the **Bone2D** to a child **Bone2D** node.
+Đặt góc xương cho **Bone2D**. Thông thường, giá trị này được đặt thành góc xoay từ **Bone2D** đến node **Bone2D** con.
 
-\ **Note:** This is different from the **Bone2D**'s rotation. The bone's angle is the rotation of the bone shown by the gizmo, which is unaffected by the **Bone2D**'s :ref:`Node2D.transform<class_Node2D_property_transform>`.
+\ **Lưu ý:** Điều này khác với phép xoay của **Bone2D**. Góc của xương là phép xoay của xương được gizmo hiển thị, không bị ảnh hưởng bởi **Bone2D** :ref:`Node2D.transform<class_Node2D_property_transform>`.
 
 .. rst-class:: classref-item-separator
 
@@ -204,14 +204,14 @@ Sets the bone angle for the **Bone2D**. This is typically set to the rotation fr
 
 |void| **set_length**\ (\ length\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Bone2D_method_set_length>`
 
-Sets the length of the bone in the **Bone2D**.
+Đặt độ dài của xương trong **Bone2D**.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -13,28 +13,28 @@
 MultiplayerAPI
 ==============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>`, :ref:`SceneMultiplayer<class_SceneMultiplayer>`
+**Được kế thừa bởi:** :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>`, :ref:`SceneMultiplayer<class_SceneMultiplayer>`
 
-High-level multiplayer API interface.
+Giao diện API multiplayer cấp cao.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base class for high-level multiplayer API implementations. See also :ref:`MultiplayerPeer<class_MultiplayerPeer>`.
+Lớp cơ sở cho các triển khai API multiplayer cấp cao. Xem thêm :ref:`MultiplayerPeer<class_MultiplayerPeer>`.
 
-By default, :ref:`SceneTree<class_SceneTree>` has a reference to an implementation of this class and uses it to provide multiplayer capabilities (i.e. RPCs) across the whole scene.
+Theo mặc định, :ref:`SceneTree<class_SceneTree>` tham chiếu đến một triển khai của lớp này và sử dụng nó để cung cấp các khả năng multiplayer (tức là RPC) trên toàn bộ scene.
 
-It is possible to override the MultiplayerAPI instance used by specific tree branches by calling the :ref:`SceneTree.set_multiplayer()<class_SceneTree_method_set_multiplayer>` method, effectively allowing to run both client and server in the same scene.
+Có thể ghi đè instance MultiplayerAPI được sử dụng bởi các nhánh cây cụ thể bằng cách gọi phương thức :ref:`SceneTree.set_multiplayer()<class_SceneTree_method_set_multiplayer>`, qua đó cho phép chạy cả client và server trong cùng một scene.
 
-It is also possible to extend or replace the default implementation via scripting or native extensions. See :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>` for details about extensions, :ref:`SceneMultiplayer<class_SceneMultiplayer>` for the details about the default implementation.
+Cũng có thể mở rộng hoặc thay thế triển khai mặc định bằng scripting hoặc native extensions. Xem :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>` để biết chi tiết về các extension, và :ref:`SceneMultiplayer<class_SceneMultiplayer>` để biết chi tiết về triển khai mặc định.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -67,13 +67,13 @@ Methods
    +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                         | :ref:`is_server<class_MultiplayerAPI_method_is_server>`\ (\ )                                                                                                                                                   |
    +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`object_configuration_add<class_MultiplayerAPI_method_object_configuration_add>`\ (\ object\: :ref:`Object<class_Object>`, configuration\: :ref:`Variant<class_Variant>`\ )                                |
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`object_configuration_add<class_MultiplayerAPI_method_object_configuration_add>`\ (\ object\: :ref:`Object<class_Object>`, configuration\: :ref:`Variant<class_Variant>`\ )                                |
    +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`object_configuration_remove<class_MultiplayerAPI_method_object_configuration_remove>`\ (\ object\: :ref:`Object<class_Object>`, configuration\: :ref:`Variant<class_Variant>`\ )                          |
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`object_configuration_remove<class_MultiplayerAPI_method_object_configuration_remove>`\ (\ object\: :ref:`Object<class_Object>`, configuration\: :ref:`Variant<class_Variant>`\ )                          |
    +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`poll<class_MultiplayerAPI_method_poll>`\ (\ )                                                                                                                                                             |
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`poll<class_MultiplayerAPI_method_poll>`\ (\ )                                                                                                                                                             |
    +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`rpc<class_MultiplayerAPI_method_rpc>`\ (\ peer\: :ref:`int<class_int>`, object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, arguments\: :ref:`Array<class_Array>` = []\ ) |
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`rpc<class_MultiplayerAPI_method_rpc>`\ (\ peer\: :ref:`int<class_int>`, object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, arguments\: :ref:`Array<class_Array>` = []\ ) |
    +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                          | :ref:`set_default_interface<class_MultiplayerAPI_method_set_default_interface>`\ (\ interface_name\: :ref:`StringName<class_StringName>`\ ) |static|                                                            |
    +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -84,8 +84,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_MultiplayerAPI_signal_connected_to_server:
 
@@ -93,7 +93,7 @@ Signals
 
 **connected_to_server**\ (\ ) :ref:`🔗<class_MultiplayerAPI_signal_connected_to_server>`
 
-Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` successfully connected to a server. Only emitted on clients.
+Được phát ra khi :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này kết nối thành công với máy chủ. Chỉ được phát ra trên các client.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_p
 
 **connection_failed**\ (\ ) :ref:`🔗<class_MultiplayerAPI_signal_connection_failed>`
 
-Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` fails to establish a connection to a server. Only emitted on clients.
+Được phát ra khi :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này không thể thiết lập kết nối với máy chủ. Chỉ được phát ra trên các client.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_p
 
 **peer_connected**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_MultiplayerAPI_signal_peer_connected>`
 
-Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` connects with a new peer. ID is the peer ID of the new peer. Clients get notified when other clients connect to the same server. Upon connecting to a server, a client also receives this signal for the server (with ID being 1).
+Được phát ra khi :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này kết nối với một peer mới. ID là peer ID của peer mới. Các client được thông báo khi những client khác kết nối với cùng một máy chủ. Khi kết nối với một máy chủ, client cũng nhận được signal này cho máy chủ (với ID là 1).
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_p
 
 **peer_disconnected**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_MultiplayerAPI_signal_peer_disconnected>`
 
-Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` disconnects from a peer. Clients get notified when other clients disconnect from the same server.
+Được phát ra khi :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này ngắt kết nối khỏi một peer. Các client được thông báo khi những client khác ngắt kết nối khỏi cùng một máy chủ.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_p
 
 **server_disconnected**\ (\ ) :ref:`🔗<class_MultiplayerAPI_signal_server_disconnected>`
 
-Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` disconnects from server. Only emitted on clients.
+Được phát ra khi :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này ngắt kết nối khỏi máy chủ. Chỉ được phát ra trên các client.
 
 .. rst-class:: classref-section-separator
 
@@ -149,14 +149,14 @@ Emitted when this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_p
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_MultiplayerAPI_RPCMode:
 
 .. rst-class:: classref-enumeration
 
-enum **RPCMode**: :ref:`🔗<enum_MultiplayerAPI_RPCMode>`
+enum **RPCMode**: :ref:`🔗 <enum_MultiplayerAPI_RPCMode>`
 
 .. _class_MultiplayerAPI_constant_RPC_MODE_DISABLED:
 
@@ -164,7 +164,7 @@ enum **RPCMode**: :ref:`🔗<enum_MultiplayerAPI_RPCMode>`
 
 :ref:`RPCMode<enum_MultiplayerAPI_RPCMode>` **RPC_MODE_DISABLED** = ``0``
 
-Used with :ref:`Node.rpc_config()<class_Node_method_rpc_config>` to disable a method or property for all RPC calls, making it unavailable. Default for all methods.
+Được sử dụng với :ref:`Node.rpc_config()<class_Node_method_rpc_config>` để vô hiệu hóa một phương thức hoặc thuộc tính trong tất cả các RPC call, khiến nó không khả dụng. Đây là mặc định cho tất cả các phương thức.
 
 .. _class_MultiplayerAPI_constant_RPC_MODE_ANY_PEER:
 
@@ -172,7 +172,7 @@ Used with :ref:`Node.rpc_config()<class_Node_method_rpc_config>` to disable a me
 
 :ref:`RPCMode<enum_MultiplayerAPI_RPCMode>` **RPC_MODE_ANY_PEER** = ``1``
 
-Used with :ref:`Node.rpc_config()<class_Node_method_rpc_config>` to set a method to be callable remotely by any peer. Analogous to the ``@rpc("any_peer")`` annotation. Calls are accepted from all remote peers, no matter if they are node's authority or not.
+Được sử dụng cùng với :ref:`Node.rpc_config()<class_Node_method_rpc_config>` để thiết lập một method có thể được gọi từ xa bởi bất kỳ peer nào. Tương tự như annotation ``@rpc("any_peer")``. Các lệnh gọi được chấp nhận từ tất cả peer từ xa, bất kể chúng có phải là authority của node hay không.
 
 .. _class_MultiplayerAPI_constant_RPC_MODE_AUTHORITY:
 
@@ -180,7 +180,7 @@ Used with :ref:`Node.rpc_config()<class_Node_method_rpc_config>` to set a method
 
 :ref:`RPCMode<enum_MultiplayerAPI_RPCMode>` **RPC_MODE_AUTHORITY** = ``2``
 
-Used with :ref:`Node.rpc_config()<class_Node_method_rpc_config>` to set a method to be callable remotely only by the current multiplayer authority (which is the server by default). Analogous to the ``@rpc("authority")`` annotation. See :ref:`Node.set_multiplayer_authority()<class_Node_method_set_multiplayer_authority>`.
+Được sử dụng cùng với :ref:`Node.rpc_config()<class_Node_method_rpc_config>` để thiết lập một method chỉ có thể được gọi từ xa bởi authority multiplayer hiện tại (theo mặc định là server). Tương tự như annotation ``@rpc("authority")``. Xem :ref:`Node.set_multiplayer_authority()<class_Node_method_set_multiplayer_authority>`.
 
 .. rst-class:: classref-section-separator
 
@@ -188,21 +188,21 @@ Used with :ref:`Node.rpc_config()<class_Node_method_rpc_config>` to set a method
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MultiplayerAPI_property_multiplayer_peer:
 
 .. rst-class:: classref-property
 
-:ref:`MultiplayerPeer<class_MultiplayerPeer>` **multiplayer_peer** :ref:`🔗<class_MultiplayerAPI_property_multiplayer_peer>`
+:ref:`MultiplayerPeer<class_MultiplayerPeer>` **multiplayer_peer** :ref:`🔗 <class_MultiplayerAPI_property_multiplayer_peer>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_multiplayer_peer**\ (\ value\: :ref:`MultiplayerPeer<class_MultiplayerPeer>`\ )
 - :ref:`MultiplayerPeer<class_MultiplayerPeer>` **get_multiplayer_peer**\ (\ )
 
-The peer object to handle the RPC system (effectively enabling networking when set). Depending on the peer itself, the MultiplayerAPI will become a network server (check with :ref:`is_server()<class_MultiplayerAPI_method_is_server>`) and will set root node's network mode to authority, or it will become a regular client peer. All child nodes are set to inherit the network mode by default. Handling of networking-related events (connection, disconnection, new clients) is done by connecting to MultiplayerAPI's signals.
+Đối tượng peer dùng để xử lý hệ thống RPC (về cơ bản sẽ bật networking khi được thiết lập). Tùy thuộc vào bản thân peer, MultiplayerAPI sẽ trở thành một network server (kiểm tra bằng :ref:`is_server()<class_MultiplayerAPI_method_is_server>`) và đặt chế độ mạng của node gốc thành authority, hoặc sẽ trở thành một client peer thông thường. Theo mặc định, tất cả node con được thiết lập để kế thừa chế độ mạng. Việc xử lý các sự kiện liên quan đến networking (kết nối, ngắt kết nối, client mới) được thực hiện bằng cách kết nối với các signal của MultiplayerAPI.
 
 .. rst-class:: classref-section-separator
 
@@ -210,8 +210,8 @@ The peer object to handle the RPC system (effectively enabling networking when s
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả method
+------------
 
 .. _class_MultiplayerAPI_method_create_default_interface:
 
@@ -219,7 +219,7 @@ Method Descriptions
 
 :ref:`MultiplayerAPI<class_MultiplayerAPI>` **create_default_interface**\ (\ ) |static| :ref:`🔗<class_MultiplayerAPI_method_create_default_interface>`
 
-Returns a new instance of the default MultiplayerAPI.
+Trả về một instance mới của MultiplayerAPI mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Returns a new instance of the default MultiplayerAPI.
 
 :ref:`StringName<class_StringName>` **get_default_interface**\ (\ ) |static| :ref:`🔗<class_MultiplayerAPI_method_get_default_interface>`
 
-Returns the default MultiplayerAPI implementation class name. This is usually ``"SceneMultiplayer"`` when :ref:`SceneMultiplayer<class_SceneMultiplayer>` is available. See :ref:`set_default_interface()<class_MultiplayerAPI_method_set_default_interface>`.
+Trả về tên lớp triển khai MultiplayerAPI mặc định. Thông thường, đó là ``"SceneMultiplayer"`` khi :ref:`SceneMultiplayer<class_SceneMultiplayer>` khả dụng. Xem :ref:`set_default_interface()<class_MultiplayerAPI_method_set_default_interface>`.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Returns the default MultiplayerAPI implementation class name. This is usually ``
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_peers**\ (\ ) :ref:`🔗<class_MultiplayerAPI_method_get_peers>`
 
-Returns the peer IDs of all connected peers of this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>`.
+Trả về ID peer của tất cả peer đã kết nối với :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này.
 
 .. rst-class:: classref-item-separator
 
@@ -255,9 +255,9 @@ Returns the peer IDs of all connected peers of this MultiplayerAPI's :ref:`multi
 
 :ref:`int<class_int>` **get_remote_sender_id**\ (\ ) :ref:`🔗<class_MultiplayerAPI_method_get_remote_sender_id>`
 
-Returns the sender's peer ID for the RPC currently being executed.
+Trả về ID peer của bên gửi đối với RPC hiện đang được thực thi.
 
-\ **Note:** This method returns ``0`` when called outside of an RPC. As such, the original peer ID may be lost when code execution is delayed (such as with GDScript's ``await`` keyword).
+\ **Lưu ý:** Phương thức này trả về ``0`` khi được gọi bên ngoài một RPC. Do đó, ID peer ban đầu có thể bị mất khi quá trình thực thi mã bị trì hoãn (chẳng hạn như với từ khóa ``await`` của GDScript).
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Returns the sender's peer ID for the RPC currently being executed.
 
 :ref:`int<class_int>` **get_unique_id**\ (\ ) :ref:`🔗<class_MultiplayerAPI_method_get_unique_id>`
 
-Returns the unique peer ID of this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>`.
+Trả về ID peer duy nhất của :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +281,7 @@ Returns the unique peer ID of this MultiplayerAPI's :ref:`multiplayer_peer<class
 
 :ref:`bool<class_bool>` **has_multiplayer_peer**\ (\ ) :ref:`🔗<class_MultiplayerAPI_method_has_multiplayer_peer>`
 
-Returns ``true`` if there is a :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` set.
+Trả về ``true`` nếu đã thiết lập :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ Returns ``true`` if there is a :ref:`multiplayer_peer<class_MultiplayerAPI_prope
 
 :ref:`bool<class_bool>` **is_server**\ (\ ) :ref:`🔗<class_MultiplayerAPI_method_is_server>`
 
-Returns ``true`` if this MultiplayerAPI's :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` is valid and in server mode (listening for connections).
+Trả về ``true`` nếu :ref:`multiplayer_peer<class_MultiplayerAPI_property_multiplayer_peer>` của MultiplayerAPI này hợp lệ và đang ở chế độ server (lắng nghe các kết nối).
 
 .. rst-class:: classref-item-separator
 
@@ -305,9 +305,9 @@ Returns ``true`` if this MultiplayerAPI's :ref:`multiplayer_peer<class_Multiplay
 
 :ref:`Error<enum_@GlobalScope_Error>` **object_configuration_add**\ (\ object\: :ref:`Object<class_Object>`, configuration\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_MultiplayerAPI_method_object_configuration_add>`
 
-Notifies the MultiplayerAPI of a new ``configuration`` for the given ``object``. This method is used internally by :ref:`SceneTree<class_SceneTree>` to configure the root path for this MultiplayerAPI (passing ``null`` and a valid :ref:`NodePath<class_NodePath>` as ``configuration``). This method can be further used by MultiplayerAPI implementations to provide additional features, refer to specific implementation (e.g. :ref:`SceneMultiplayer<class_SceneMultiplayer>`) for details on how they use it.
+Thông báo cho MultiplayerAPI về một ``configuration`` mới đối với ``object`` đã cho. Phương thức này được :ref:`SceneTree<class_SceneTree>` sử dụng nội bộ để cấu hình đường dẫn gốc cho MultiplayerAPI này (truyền ``null`` và một :ref:`NodePath<class_NodePath>` hợp lệ dưới dạng ``configuration``). Các triển khai MultiplayerAPI cũng có thể sử dụng thêm phương thức này để cung cấp các tính năng bổ sung; hãy tham khảo triển khai cụ thể (ví dụ: :ref:`SceneMultiplayer<class_SceneMultiplayer>`) để biết chi tiết về cách chúng sử dụng phương thức này.
 
-\ **Note:** This method is mostly relevant when extending or overriding the MultiplayerAPI behavior via :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>`.
+\ **Lưu ý:** Phương thức này chủ yếu liên quan khi mở rộng hoặc ghi đè hành vi của MultiplayerAPI thông qua :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>`.
 
 .. rst-class:: classref-item-separator
 
@@ -319,9 +319,9 @@ Notifies the MultiplayerAPI of a new ``configuration`` for the given ``object``.
 
 :ref:`Error<enum_@GlobalScope_Error>` **object_configuration_remove**\ (\ object\: :ref:`Object<class_Object>`, configuration\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_MultiplayerAPI_method_object_configuration_remove>`
 
-Notifies the MultiplayerAPI to remove a ``configuration`` for the given ``object``. This method is used internally by :ref:`SceneTree<class_SceneTree>` to configure the root path for this MultiplayerAPI (passing ``null`` and an empty :ref:`NodePath<class_NodePath>` as ``configuration``). This method can be further used by MultiplayerAPI implementations to provide additional features, refer to specific implementation (e.g. :ref:`SceneMultiplayer<class_SceneMultiplayer>`) for details on how they use it.
+Thông báo cho MultiplayerAPI xóa một ``configuration`` đối với ``object`` đã cho. Phương thức này được :ref:`SceneTree<class_SceneTree>` sử dụng nội bộ để cấu hình đường dẫn gốc cho MultiplayerAPI này (truyền ``null`` và một :ref:`NodePath<class_NodePath>` trống dưới dạng ``configuration``). Các triển khai MultiplayerAPI cũng có thể sử dụng thêm phương thức này để cung cấp các tính năng bổ sung; hãy tham khảo triển khai cụ thể (ví dụ: :ref:`SceneMultiplayer<class_SceneMultiplayer>`) để biết chi tiết về cách chúng sử dụng phương thức này.
 
-\ **Note:** This method is mostly relevant when extending or overriding the MultiplayerAPI behavior via :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>`.
+\ **Lưu ý:** Phương thức này chủ yếu liên quan khi mở rộng hoặc ghi đè hành vi của MultiplayerAPI thông qua :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>`.
 
 .. rst-class:: classref-item-separator
 
@@ -333,9 +333,9 @@ Notifies the MultiplayerAPI to remove a ``configuration`` for the given ``object
 
 :ref:`Error<enum_@GlobalScope_Error>` **poll**\ (\ ) :ref:`🔗<class_MultiplayerAPI_method_poll>`
 
-Method used for polling the MultiplayerAPI. You only need to worry about this if you set :ref:`SceneTree.multiplayer_poll<class_SceneTree_property_multiplayer_poll>` to ``false``. By default, :ref:`SceneTree<class_SceneTree>` will poll its MultiplayerAPI(s) for you.
+Phương thức dùng để polling MultiplayerAPI. Bạn chỉ cần quan tâm đến phương thức này nếu đặt :ref:`SceneTree.multiplayer_poll<class_SceneTree_property_multiplayer_poll>` thành ``false``. Theo mặc định, :ref:`SceneTree<class_SceneTree>` sẽ polling các MultiplayerAPI của nó thay bạn.
 
-\ **Note:** This method results in RPCs being called, so they will be executed in the same context of this function (e.g. ``_process``, ``physics``, :ref:`Thread<class_Thread>`).
+\ **Lưu ý:** Phương thức này khiến các RPC được gọi, vì vậy chúng sẽ được thực thi trong cùng context với hàm này (ví dụ: ``_process``, ``physics``, :ref:`Thread<class_Thread>`).
 
 .. rst-class:: classref-item-separator
 
@@ -347,9 +347,9 @@ Method used for polling the MultiplayerAPI. You only need to worry about this if
 
 :ref:`Error<enum_@GlobalScope_Error>` **rpc**\ (\ peer\: :ref:`int<class_int>`, object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, arguments\: :ref:`Array<class_Array>` = []\ ) :ref:`🔗<class_MultiplayerAPI_method_rpc>`
 
-Sends an RPC to the target ``peer``. The given ``method`` will be called on the remote ``object`` with the provided ``arguments``. The RPC may also be called locally depending on the implementation and RPC configuration. See :ref:`Node.rpc()<class_Node_method_rpc>` and :ref:`Node.rpc_config()<class_Node_method_rpc_config>`.
+Gửi một RPC đến ``peer`` đích. ``method`` đã cho sẽ được gọi trên ``object`` từ xa với ``arguments`` được cung cấp. RPC cũng có thể được gọi cục bộ tùy thuộc vào triển khai và cấu hình RPC. Hãy xem :ref:`Node.rpc()<class_Node_method_rpc>` và :ref:`Node.rpc_config()<class_Node_method_rpc_config>`.
 
-\ **Note:** Prefer using :ref:`Node.rpc()<class_Node_method_rpc>`, :ref:`Node.rpc_id()<class_Node_method_rpc_id>`, or ``my_method.rpc(peer, arg1, arg2, ...)`` (in GDScript), since they are faster. This method is mostly useful in conjunction with :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>` when extending or replacing the multiplayer capabilities.
+\ **Lưu ý:** Nên ưu tiên sử dụng :ref:`Node.rpc()<class_Node_method_rpc>`, :ref:`Node.rpc_id()<class_Node_method_rpc_id>` hoặc ``my_method.rpc(peer, arg1, arg2, ...)`` (trong GDScript), vì chúng nhanh hơn. Phương thức này chủ yếu hữu ích khi kết hợp với :ref:`MultiplayerAPIExtension<class_MultiplayerAPIExtension>` để mở rộng hoặc thay thế các khả năng multiplayer.
 
 .. rst-class:: classref-item-separator
 
@@ -361,14 +361,14 @@ Sends an RPC to the target ``peer``. The given ``method`` will be called on the 
 
 |void| **set_default_interface**\ (\ interface_name\: :ref:`StringName<class_StringName>`\ ) |static| :ref:`🔗<class_MultiplayerAPI_method_set_default_interface>`
 
-Sets the default MultiplayerAPI implementation class. This method can be used by modules and extensions to configure which implementation will be used by :ref:`SceneTree<class_SceneTree>` when the engine starts.
+Thiết lập lớp triển khai MultiplayerAPI mặc định. Các module và extension có thể sử dụng phương thức này để cấu hình triển khai nào sẽ được :ref:`SceneTree<class_SceneTree>` sử dụng khi engine khởi động.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

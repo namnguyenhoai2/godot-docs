@@ -10,66 +10,66 @@
 EditorUndoRedoManager
 =====================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Manages undo history of scenes opened in the editor.
+Quản lý lịch sử hoàn tác của các scene được mở trong editor.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EditorUndoRedoManager** is a manager for :ref:`UndoRedo<class_UndoRedo>` objects associated with edited scenes. Each scene has its own undo history and **EditorUndoRedoManager** ensures that each action performed in the editor gets associated with a proper scene. For actions not related to scenes (:ref:`ProjectSettings<class_ProjectSettings>` edits, external resources, etc.), a separate global history is used.
+**EditorUndoRedoManager** là trình quản lý các đối tượng :ref:`UndoRedo<class_UndoRedo>` liên kết với các scene đang chỉnh sửa. Mỗi scene có lịch sử hoàn tác riêng và **EditorUndoRedoManager** đảm bảo rằng mỗi thao tác được thực hiện trong editor đều được liên kết với scene tương ứng. Đối với các thao tác không liên quan đến scene (chỉnh sửa :ref:`ProjectSettings<class_ProjectSettings>`, tài nguyên bên ngoài, v.v.), một lịch sử toàn cục riêng biệt sẽ được sử dụng.
 
-The usage is mostly the same as :ref:`UndoRedo<class_UndoRedo>`. You create and commit actions and the manager automatically decides under-the-hood what scenes it belongs to. The scene is deduced based on the first operation in an action, using the object from the operation. The rules are as follows:
+Cách sử dụng hầu như giống với :ref:`UndoRedo<class_UndoRedo>`. Bạn tạo và commit các hành động, còn trình quản lý sẽ tự động xác định ở bên dưới hành động đó thuộc về scene nào. Scene được suy ra dựa trên thao tác đầu tiên trong một hành động, bằng cách sử dụng đối tượng từ thao tác đó. Các quy tắc như sau:
 
-- If the object is a :ref:`Node<class_Node>`, use the currently edited scene;
+- Nếu đối tượng là một :ref:`Node<class_Node>`, hãy sử dụng scene đang được chỉnh sửa;
 
-- If the object is a built-in resource, use the scene from its path;
+- Nếu đối tượng là một tài nguyên tích hợp sẵn, hãy sử dụng scene từ đường dẫn của tài nguyên đó;
 
-- If the object is external resource or anything else, use global history.
+- Nếu đối tượng là tài nguyên bên ngoài hoặc bất kỳ thứ gì khác, hãy sử dụng lịch sử toàn cục.
 
-This guessing can sometimes yield false results, so you can provide a custom context object when creating an action.
+Cách phỏng đoán này đôi khi có thể cho kết quả sai, vì vậy bạn có thể cung cấp một đối tượng ngữ cảnh tùy chỉnh khi tạo một action.
 
-\ **EditorUndoRedoManager** is intended to be used by Godot editor plugins. You can obtain it using :ref:`EditorPlugin.get_undo_redo()<class_EditorPlugin_method_get_undo_redo>`. For non-editor uses or plugins that don't need to integrate with the editor's undo history, use :ref:`UndoRedo<class_UndoRedo>` instead.
+\ **EditorUndoRedoManager** được dùng cho các plugin của trình chỉnh sửa Godot. Bạn có thể lấy nó bằng :ref:`EditorPlugin.get_undo_redo()<class_EditorPlugin_method_get_undo_redo>`. Đối với các trường hợp sử dụng không thuộc trình chỉnh sửa hoặc các plugin không cần tích hợp với lịch sử hoàn tác của trình chỉnh sửa, hãy sử dụng :ref:`UndoRedo<class_UndoRedo>` thay thế.
 
-The manager's API is mostly the same as in :ref:`UndoRedo<class_UndoRedo>`, so you can refer to its documentation for more examples. The main difference is that **EditorUndoRedoManager** uses object + method name for actions, instead of :ref:`Callable<class_Callable>`.
+API của manager hầu như giống với trong :ref:`UndoRedo<class_UndoRedo>`, vì vậy bạn có thể tham khảo tài liệu của nó để xem thêm ví dụ. Điểm khác biệt chính là **EditorUndoRedoManager** sử dụng đối tượng + tên phương thức cho các action, thay vì :ref:`Callable<class_Callable>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`add_do_method<class_EditorUndoRedoManager_method_add_do_method>`\ (\ object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                                                                                        |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`add_do_property<class_EditorUndoRedoManager_method_add_do_property>`\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                         |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`add_do_reference<class_EditorUndoRedoManager_method_add_do_reference>`\ (\ object\: :ref:`Object<class_Object>`\ )                                                                                                                                                                                                              |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`add_undo_method<class_EditorUndoRedoManager_method_add_undo_method>`\ (\ object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                                                                                    |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`add_undo_property<class_EditorUndoRedoManager_method_add_undo_property>`\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                     |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`add_undo_reference<class_EditorUndoRedoManager_method_add_undo_reference>`\ (\ object\: :ref:`Object<class_Object>`\ )                                                                                                                                                                                                          |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`clear_history<class_EditorUndoRedoManager_method_clear_history>`\ (\ id\: :ref:`int<class_int>` = -99, increase_version\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                     |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`commit_action<class_EditorUndoRedoManager_method_commit_action>`\ (\ execute\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                                                                |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`create_action<class_EditorUndoRedoManager_method_create_action>`\ (\ name\: :ref:`String<class_String>`, merge_mode\: :ref:`MergeMode<enum_UndoRedo_MergeMode>` = 0, custom_context\: :ref:`Object<class_Object>` = null, backward_undo_ops\: :ref:`bool<class_bool>` = false, mark_unsaved\: :ref:`bool<class_bool>` = true\ ) |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                          | :ref:`force_fixed_history<class_EditorUndoRedoManager_method_force_fixed_history>`\ (\ )                                                                                                                                                                                                                                              |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`UndoRedo<class_UndoRedo>` | :ref:`get_history_undo_redo<class_EditorUndoRedoManager_method_get_history_undo_redo>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                      |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`           | :ref:`get_object_history_id<class_EditorUndoRedoManager_method_get_object_history_id>`\ (\ object\: :ref:`Object<class_Object>`\ ) |const|                                                                                                                                                                                            |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`         | :ref:`is_committing_action<class_EditorUndoRedoManager_method_is_committing_action>`\ (\ ) |const|                                                                                                                                                                                                                                    |
-   +---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`add_do_method<class_EditorUndoRedoManager_method_add_do_method>`\ (\ object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                                                                                         |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`add_do_property<class_EditorUndoRedoManager_method_add_do_property>`\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                          |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`add_do_reference<class_EditorUndoRedoManager_method_add_do_reference>`\ (\ object\: :ref:`Object<class_Object>`\ )                                                                                                                                                                                                               |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`add_undo_method<class_EditorUndoRedoManager_method_add_undo_method>`\ (\ object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                                                                                     |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`add_undo_property<class_EditorUndoRedoManager_method_add_undo_property>`\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                      |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`add_undo_reference<class_EditorUndoRedoManager_method_add_undo_reference>`\ (\ object\: :ref:`Object<class_Object>`\ )                                                                                                                                                                                                           |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`clear_history<class_EditorUndoRedoManager_method_clear_history>`\ (\ id\: :ref:`int<class_int>` = -99, increase_version\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                      |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`commit_action<class_EditorUndoRedoManager_method_commit_action>`\ (\ execute\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                                                                 |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`create_action<class_EditorUndoRedoManager_method_create_action>`\ (\ name\: :ref:`String<class_String>`, merge_mode\: :ref:`MergeMode <enum_UndoRedo_MergeMode>` = 0, custom_context\: :ref:`Object<class_Object>` = null, backward_undo_ops\: :ref:`bool<class_bool>` = false, mark_unsaved\: :ref:`bool<class_bool>` = true\ ) |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                          | :ref:`force_fixed_history<class_EditorUndoRedoManager_method_force_fixed_history>`\ (\ )                                                                                                                                                                                                                                               |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`UndoRedo<class_UndoRedo>` | :ref:`get_history_undo_redo<class_EditorUndoRedoManager_method_get_history_undo_redo>`\ (\ id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                       |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`           | :ref:`get_object_history_id<class_EditorUndoRedoManager_method_get_object_history_id>`\ (\ object\: :ref:`Object<class_Object>`\ ) |const|                                                                                                                                                                                             |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`         | :ref:`is_committing_action<class_EditorUndoRedoManager_method_is_committing_action>`\ (\ ) |const|                                                                                                                                                                                                                                     |
+   +---------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -77,8 +77,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorUndoRedoManager_signal_history_changed:
 
@@ -86,7 +86,7 @@ Signals
 
 **history_changed**\ (\ ) :ref:`🔗<class_EditorUndoRedoManager_signal_history_changed>`
 
-Emitted when the list of actions in any history has changed, either when an action is committed or a history is cleared.
+Được phát ra khi danh sách các hành động trong bất kỳ lịch sử nào thay đổi, dù là khi một hành động được commit hoặc một lịch sử bị xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ Emitted when the list of actions in any history has changed, either when an acti
 
 **version_changed**\ (\ ) :ref:`🔗<class_EditorUndoRedoManager_signal_version_changed>`
 
-Emitted when the version of any history has changed as a result of undo or redo call.
+Được phát ra khi phiên bản của bất kỳ lịch sử nào thay đổi do lệnh undo hoặc redo.
 
 .. rst-class:: classref-section-separator
 
@@ -106,14 +106,14 @@ Emitted when the version of any history has changed as a result of undo or redo 
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorUndoRedoManager_SpecialHistory:
 
 .. rst-class:: classref-enumeration
 
-enum **SpecialHistory**: :ref:`🔗<enum_EditorUndoRedoManager_SpecialHistory>`
+enum **SpecialHistory**: :ref:`🔗 <enum_EditorUndoRedoManager_SpecialHistory>`
 
 .. _class_EditorUndoRedoManager_constant_GLOBAL_HISTORY:
 
@@ -121,7 +121,7 @@ enum **SpecialHistory**: :ref:`🔗<enum_EditorUndoRedoManager_SpecialHistory>`
 
 :ref:`SpecialHistory<enum_EditorUndoRedoManager_SpecialHistory>` **GLOBAL_HISTORY** = ``0``
 
-Global history not associated with any scene, but with external resources etc.
+Lịch sử toàn cục không liên kết với bất kỳ scene nào mà với các tài nguyên bên ngoài, v.v.
 
 .. _class_EditorUndoRedoManager_constant_REMOTE_HISTORY:
 
@@ -129,7 +129,7 @@ Global history not associated with any scene, but with external resources etc.
 
 :ref:`SpecialHistory<enum_EditorUndoRedoManager_SpecialHistory>` **REMOTE_HISTORY** = ``-9``
 
-History associated with remote inspector. Used when live editing a running project.
+Lịch sử liên kết với remote inspector. Được sử dụng khi chỉnh sửa trực tiếp một project đang chạy.
 
 .. _class_EditorUndoRedoManager_constant_INVALID_HISTORY:
 
@@ -137,7 +137,7 @@ History associated with remote inspector. Used when live editing a running proje
 
 :ref:`SpecialHistory<enum_EditorUndoRedoManager_SpecialHistory>` **INVALID_HISTORY** = ``-99``
 
-Invalid "null" history. It's a special value, not associated with any object.
+Lịch sử "null" không hợp lệ. Đây là một giá trị đặc biệt, không liên kết với bất kỳ đối tượng nào.
 
 .. rst-class:: classref-section-separator
 
@@ -145,8 +145,8 @@ Invalid "null" history. It's a special value, not associated with any object.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorUndoRedoManager_method_add_do_method:
 
@@ -154,9 +154,9 @@ Method Descriptions
 
 |void| **add_do_method**\ (\ object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_EditorUndoRedoManager_method_add_do_method>`
 
-Register a method that will be called when the action is committed (i.e. the "do" action).
+Đăng ký một phương thức sẽ được gọi khi action được commit (tức là action "do").
 
-If this is the first operation, the ``object`` will be used to deduce target undo history.
+Nếu đây là thao tác đầu tiên, ``object`` sẽ được sử dụng để suy ra lịch sử undo đích.
 
 .. rst-class:: classref-item-separator
 
@@ -168,9 +168,9 @@ If this is the first operation, the ``object`` will be used to deduce target und
 
 |void| **add_do_property**\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_EditorUndoRedoManager_method_add_do_property>`
 
-Register a property value change for "do".
+Đăng ký thay đổi giá trị thuộc tính cho "do".
 
-If this is the first operation, the ``object`` will be used to deduce target undo history.
+Nếu đây là thao tác đầu tiên, ``object`` sẽ được sử dụng để suy ra lịch sử undo đích.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ If this is the first operation, the ``object`` will be used to deduce target und
 
 |void| **add_do_reference**\ (\ object\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_EditorUndoRedoManager_method_add_do_reference>`
 
-Register a reference for "do" that will be erased if the "do" history is lost. This is useful mostly for new nodes created for the "do" call. Do not use for resources.
+Đăng ký một tham chiếu cho "do"; tham chiếu này sẽ bị xóa nếu lịch sử "do" bị mất. Điều này chủ yếu hữu ích cho các node mới được tạo bởi lệnh gọi "do". Không sử dụng cho resource.
 
 .. rst-class:: classref-item-separator
 
@@ -194,9 +194,9 @@ Register a reference for "do" that will be erased if the "do" history is lost. T
 
 |void| **add_undo_method**\ (\ object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_EditorUndoRedoManager_method_add_undo_method>`
 
-Register a method that will be called when the action is undone (i.e. the "undo" action).
+Đăng ký một method sẽ được gọi khi action được hoàn tác (tức là action "undo").
 
-If this is the first operation, the ``object`` will be used to deduce target undo history.
+Nếu đây là thao tác đầu tiên, ``object`` sẽ được sử dụng để suy ra lịch sử undo đích.
 
 .. rst-class:: classref-item-separator
 
@@ -208,9 +208,9 @@ If this is the first operation, the ``object`` will be used to deduce target und
 
 |void| **add_undo_property**\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_EditorUndoRedoManager_method_add_undo_property>`
 
-Register a property value change for "undo".
+Đăng ký một thay đổi giá trị thuộc tính cho "undo".
 
-If this is the first operation, the ``object`` will be used to deduce target undo history.
+Nếu đây là thao tác đầu tiên, ``object`` sẽ được sử dụng để suy ra lịch sử undo đích.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ If this is the first operation, the ``object`` will be used to deduce target und
 
 |void| **add_undo_reference**\ (\ object\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_EditorUndoRedoManager_method_add_undo_reference>`
 
-Register a reference for "undo" that will be erased if the "undo" history is lost. This is useful mostly for nodes removed with the "do" call (not the "undo" call!).
+Đăng ký một tham chiếu cho "undo"; tham chiếu này sẽ bị xóa nếu lịch sử "undo" bị mất. Điều này chủ yếu hữu ích cho các node bị xóa bằng lệnh gọi "do" (không phải lệnh gọi "undo"!).
 
 .. rst-class:: classref-item-separator
 
@@ -234,9 +234,9 @@ Register a reference for "undo" that will be erased if the "undo" history is los
 
 |void| **clear_history**\ (\ id\: :ref:`int<class_int>` = -99, increase_version\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_EditorUndoRedoManager_method_clear_history>`
 
-Clears the given undo history. You can clear history for a specific scene, global history, or for all histories at once (except :ref:`REMOTE_HISTORY<class_EditorUndoRedoManager_constant_REMOTE_HISTORY>`) if ``id`` is :ref:`INVALID_HISTORY<class_EditorUndoRedoManager_constant_INVALID_HISTORY>`.
+Xóa lịch sử undo đã cho. Bạn có thể xóa lịch sử cho một scene cụ thể, lịch sử toàn cục hoặc tất cả lịch sử cùng lúc (ngoại trừ :ref:`REMOTE_HISTORY<class_EditorUndoRedoManager_constant_REMOTE_HISTORY>`) nếu ``id`` là :ref:`INVALID_HISTORY<class_EditorUndoRedoManager_constant_INVALID_HISTORY>`.
 
-If ``increase_version`` is ``true``, the undo history version will be increased, marking it as unsaved. Useful for operations that modify the scene, but don't support undo.
+Nếu ``increase_version`` là ``true``, phiên bản lịch sử undo sẽ được tăng lên, đánh dấu lịch sử là chưa lưu. Hữu ích cho các thao tác sửa đổi scene nhưng không hỗ trợ undo.
 
 ::
 
@@ -244,7 +244,7 @@ If ``increase_version`` is ``true``, the undo history version will be increased,
     var undo_redo = EditorInterface.get_editor_undo_redo()
     undo_redo.clear_history(undo_redo.get_object_history_id(scene_root))
 
-\ **Note:** If you want to mark an edited scene as unsaved without clearing its history, use :ref:`EditorInterface.mark_scene_as_unsaved()<class_EditorInterface_method_mark_scene_as_unsaved>` instead.
+\ **Lưu ý:** Nếu bạn muốn đánh dấu một scene đã chỉnh sửa là chưa lưu mà không xóa lịch sử của scene đó, hãy sử dụng :ref:`EditorInterface.mark_scene_as_unsaved()<class_EditorInterface_method_mark_scene_as_unsaved>`.
 
 .. rst-class:: classref-item-separator
 
@@ -256,7 +256,7 @@ If ``increase_version`` is ``true``, the undo history version will be increased,
 
 |void| **commit_action**\ (\ execute\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_EditorUndoRedoManager_method_commit_action>`
 
-Commits the action. If ``execute`` is ``true`` (default), all "do" methods/properties are called/set when this function is called.
+Commit action. Nếu ``execute`` là ``true`` (mặc định), tất cả các phương thức/thuộc tính "do" sẽ được gọi/thiết lập khi hàm này được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -268,15 +268,15 @@ Commits the action. If ``execute`` is ``true`` (default), all "do" methods/prope
 
 |void| **create_action**\ (\ name\: :ref:`String<class_String>`, merge_mode\: :ref:`MergeMode<enum_UndoRedo_MergeMode>` = 0, custom_context\: :ref:`Object<class_Object>` = null, backward_undo_ops\: :ref:`bool<class_bool>` = false, mark_unsaved\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_EditorUndoRedoManager_method_create_action>`
 
-Create a new action. After this is called, do all your calls to :ref:`add_do_method()<class_EditorUndoRedoManager_method_add_do_method>`, :ref:`add_undo_method()<class_EditorUndoRedoManager_method_add_undo_method>`, :ref:`add_do_property()<class_EditorUndoRedoManager_method_add_do_property>`, and :ref:`add_undo_property()<class_EditorUndoRedoManager_method_add_undo_property>`, then commit the action with :ref:`commit_action()<class_EditorUndoRedoManager_method_commit_action>`.
+Tạo một action mới. Sau khi gọi hàm này, hãy thực hiện tất cả các lệnh gọi đến :ref:`add_do_method()<class_EditorUndoRedoManager_method_add_do_method>`, :ref:`add_undo_method()<class_EditorUndoRedoManager_method_add_undo_method>`, :ref:`add_do_property()<class_EditorUndoRedoManager_method_add_do_property>` và :ref:`add_undo_property()<class_EditorUndoRedoManager_method_add_undo_property>`, sau đó commit action bằng :ref:`commit_action()<class_EditorUndoRedoManager_method_commit_action>`.
 
-The way actions are merged is dictated by the ``merge_mode`` argument.
+Cách các action được hợp nhất được xác định bởi đối số ``merge_mode``.
 
-If ``custom_context`` object is provided, it will be used for deducing target history (instead of using the first operation).
+Nếu đối tượng ``custom_context`` được cung cấp, đối tượng đó sẽ được dùng để suy ra lịch sử đích (thay vì sử dụng thao tác đầu tiên).
 
-The way undo operation are ordered in actions is dictated by ``backward_undo_ops``. When ``backward_undo_ops`` is ``false`` undo option are ordered in the same order they were added. Which means the first operation to be added will be the first to be undone.
+Cách sắp xếp các thao tác hoàn tác trong các action được quy định bởi ``backward_undo_ops``. Khi ``backward_undo_ops`` là ``false``, các tùy chọn hoàn tác được sắp xếp theo đúng thứ tự chúng được thêm vào. Điều đó có nghĩa là thao tác được thêm đầu tiên sẽ được hoàn tác đầu tiên.
 
-If ``mark_unsaved`` is ``false``, the action will not mark the history as unsaved. This is useful for example for actions that change a selection, or a setting that will be saved automatically. Otherwise, this should be left to ``true`` if the action requires saving by the user or if it can cause data loss when left unsaved.
+Nếu ``mark_unsaved`` là ``false``, action sẽ không đánh dấu lịch sử là chưa lưu. Điều này hữu ích, chẳng hạn, đối với các action thay đổi vùng chọn hoặc một cài đặt sẽ được tự động lưu. Nếu không, nên để giá trị này là ``true`` nếu action yêu cầu người dùng lưu hoặc có thể gây mất dữ liệu khi không được lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -288,9 +288,9 @@ If ``mark_unsaved`` is ``false``, the action will not mark the history as unsave
 
 |void| **force_fixed_history**\ (\ ) :ref:`🔗<class_EditorUndoRedoManager_method_force_fixed_history>`
 
-Forces the next operation (e.g. :ref:`add_do_method()<class_EditorUndoRedoManager_method_add_do_method>`) to use the action's history rather than guessing it from the object. This is sometimes needed when a history can't be correctly determined, like for a nested resource that doesn't have a path yet.
+Buộc thao tác tiếp theo (ví dụ: :ref:`add_do_method()<class_EditorUndoRedoManager_method_add_do_method>`) sử dụng lịch sử của action thay vì suy đoán lịch sử từ object. Điều này đôi khi cần thiết khi không thể xác định chính xác lịch sử, chẳng hạn như đối với một resource lồng nhau chưa có path.
 
-This method should only be used when absolutely necessary, otherwise it might cause invalid history state. For most of complex cases, the ``custom_context`` parameter of :ref:`create_action()<class_EditorUndoRedoManager_method_create_action>` is sufficient.
+Chỉ nên sử dụng method này khi thực sự cần thiết, nếu không, nó có thể gây ra trạng thái lịch sử không hợp lệ. Đối với hầu hết các trường hợp phức tạp, tham số ``custom_context`` của :ref:`create_action()<class_EditorUndoRedoManager_method_create_action>` là đủ.
 
 .. rst-class:: classref-item-separator
 
@@ -302,11 +302,11 @@ This method should only be used when absolutely necessary, otherwise it might ca
 
 :ref:`UndoRedo<class_UndoRedo>` **get_history_undo_redo**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorUndoRedoManager_method_get_history_undo_redo>`
 
-Returns the :ref:`UndoRedo<class_UndoRedo>` object associated with the given history ``id``.
+Trả về object :ref:`UndoRedo<class_UndoRedo>` được liên kết với ``id`` lịch sử đã cho.
 
-\ ``id`` above ``0`` are mapped to the opened scene tabs (but it doesn't match their order). ``id`` of ``0`` or lower have special meaning (see :ref:`SpecialHistory<enum_EditorUndoRedoManager_SpecialHistory>`).
+\ ``id`` ở trên ``0`` được ánh xạ tới các tab scene đang mở (nhưng không khớp với thứ tự của chúng). ``id`` của ``0`` trở xuống có ý nghĩa đặc biệt (xem :ref:`SpecialHistory <enum_EditorUndoRedoManager_SpecialHistory>`).
 
-Best used with :ref:`get_object_history_id()<class_EditorUndoRedoManager_method_get_object_history_id>`. This method is only provided in case you need some more advanced methods of :ref:`UndoRedo<class_UndoRedo>` (but keep in mind that directly operating on the :ref:`UndoRedo<class_UndoRedo>` object might affect editor's stability).
+Nên dùng với :ref:`get_object_history_id()<class_EditorUndoRedoManager_method_get_object_history_id>`. Method này chỉ được cung cấp trong trường hợp bạn cần một số method nâng cao hơn của :ref:`UndoRedo<class_UndoRedo>` (nhưng hãy lưu ý rằng việc thao tác trực tiếp trên object :ref:`UndoRedo<class_UndoRedo>` có thể ảnh hưởng đến tính ổn định của editor).
 
 .. rst-class:: classref-item-separator
 
@@ -318,7 +318,7 @@ Best used with :ref:`get_object_history_id()<class_EditorUndoRedoManager_method_
 
 :ref:`int<class_int>` **get_object_history_id**\ (\ object\: :ref:`Object<class_Object>`\ ) |const| :ref:`🔗<class_EditorUndoRedoManager_method_get_object_history_id>`
 
-Returns the history ID deduced from the given ``object``. It can be used with :ref:`get_history_undo_redo()<class_EditorUndoRedoManager_method_get_history_undo_redo>`.
+Trả về ID lịch sử được suy ra từ ``object`` đã cho. Có thể sử dụng nó với :ref:`get_history_undo_redo()<class_EditorUndoRedoManager_method_get_history_undo_redo>`.
 
 .. rst-class:: classref-item-separator
 
@@ -330,14 +330,14 @@ Returns the history ID deduced from the given ``object``. It can be used with :r
 
 :ref:`bool<class_bool>` **is_committing_action**\ (\ ) |const| :ref:`🔗<class_EditorUndoRedoManager_method_is_committing_action>`
 
-Returns ``true`` if the **EditorUndoRedoManager** is currently committing the action, i.e. running its "do" method or property change (see :ref:`commit_action()<class_EditorUndoRedoManager_method_commit_action>`).
+Trả về ``true`` nếu **EditorUndoRedoManager** hiện đang thực hiện action, tức là đang chạy phương thức "do" hoặc thay đổi thuộc tính của nó (xem :ref:`commit_action()<class_EditorUndoRedoManager_method_commit_action>`).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,24 +10,24 @@
 WebXRInterface
 ==============
 
-**Inherits:** :ref:`XRInterface<class_XRInterface>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRInterface<class_XRInterface>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-XR interface using WebXR.
+Interface XR sử dụng WebXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-WebXR is an open standard that allows creating VR and AR applications that run in the web browser.
+WebXR là một tiêu chuẩn mở cho phép tạo các ứng dụng VR và AR chạy trong trình duyệt web.
 
-As such, this interface is only available when running in Web exports.
+Vì vậy, interface này chỉ khả dụng khi chạy trong các bản export Web.
 
-WebXR supports a wide range of devices, from the very capable (like Valve Index, HTC Vive, Oculus Rift and Quest) down to the much less capable (like Google Cardboard, Oculus Go, GearVR, or plain smartphones).
+WebXR hỗ trợ nhiều loại thiết bị, từ những thiết bị rất mạnh (như Valve Index, HTC Vive, Oculus Rift và Quest) đến những thiết bị kém mạnh hơn nhiều (như Google Cardboard, Oculus Go, GearVR hoặc điện thoại thông minh thông thường).
 
-Since WebXR is based on JavaScript, it makes extensive use of callbacks, which means that **WebXRInterface** is forced to use signals, where other XR interfaces would instead use functions that return a result immediately. This makes **WebXRInterface** quite a bit more complicated to initialize than other XR interfaces.
+Vì WebXR dựa trên JavaScript nên nó sử dụng callback rất nhiều, điều đó có nghĩa là **WebXRInterface** buộc phải sử dụng signal, trong khi các interface XR khác sẽ sử dụng các hàm trả về kết quả ngay lập tức. Điều này khiến việc khởi tạo **WebXRInterface** phức tạp hơn khá nhiều so với các interface XR khác.
 
-Here's the minimum code required to start an immersive VR session:
+Đây là đoạn mã tối thiểu cần thiết để bắt đầu một phiên VR nhập vai:
 
 ::
 
@@ -109,24 +109,24 @@ Here's the minimum code required to start an immersive VR session:
     func _webxr_session_failed(message):
         OS.alert("Failed to initialize: " + message)
 
-There are a couple ways to handle "controller" input:
+Có một vài cách để xử lý dữ liệu đầu vào từ "controller":
 
-- Using :ref:`XRController3D<class_XRController3D>` nodes and their :ref:`XRController3D.button_pressed<class_XRController3D_signal_button_pressed>` and :ref:`XRController3D.button_released<class_XRController3D_signal_button_released>` signals. This is how controllers are typically handled in XR apps in Godot, however, this will only work with advanced VR controllers like the Oculus Touch or Index controllers, for example.
+- Sử dụng các node :ref:`XRController3D<class_XRController3D>` và các signal :ref:`XRController3D.button_pressed<class_XRController3D_signal_button_pressed>` và :ref:`XRController3D.button_released<class_XRController3D_signal_button_released>` của chúng. Đây là cách các controller thường được xử lý trong những ứng dụng XR trên Godot; tuy nhiên, cách này chỉ hoạt động với các controller VR nâng cao như Oculus Touch hoặc Index, chẳng hạn.
 
-- Using the :ref:`select<class_WebXRInterface_signal_select>`, :ref:`squeeze<class_WebXRInterface_signal_squeeze>` and related signals. This method will work for both advanced VR controllers, and non-traditional input sources like a tap on the screen, a spoken voice command or a button press on the device itself.
+- Sử dụng :ref:`select<class_WebXRInterface_signal_select>`, :ref:`squeeze<class_WebXRInterface_signal_squeeze>` và các signal liên quan. Phương pháp này hoạt động với cả controller VR nâng cao và các nguồn đầu vào không truyền thống như thao tác chạm trên màn hình, lệnh thoại hoặc thao tác nhấn nút ngay trên thiết bị.
 
-You can use both methods to allow your game or app to support a wider or narrower set of devices and input methods, or to allow more advanced interactions with more advanced devices.
+Bạn có thể sử dụng cả hai phương pháp để cho phép game hoặc ứng dụng của mình hỗ trợ nhiều hoặc ít loại thiết bị và phương thức nhập liệu hơn, hoặc cho phép các tương tác nâng cao hơn với những thiết bị tiên tiến hơn.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `How to make a VR game for WebXR with Godot 4 <https://www.snopekgames.com/tutorial/2023/how-make-vr-game-webxr-godot-4>`__
+- `Cách tạo game VR cho WebXR bằng Godot 4 <https://www.snopekgames.com/tutorial/2023/how-make-vr-game-webxr-godot-4>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -150,27 +150,27 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                               | :ref:`get_available_display_refresh_rates<class_WebXRInterface_method_get_available_display_refresh_rates>`\ (\ ) |const|                                    |
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                               | :ref:`get_display_refresh_rate<class_WebXRInterface_method_get_display_refresh_rate>`\ (\ ) |const|                                                          |
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TargetRayMode<enum_WebXRInterface_TargetRayMode>` | :ref:`get_input_source_target_ray_mode<class_WebXRInterface_method_get_input_source_target_ray_mode>`\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const| |
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`XRControllerTracker<class_XRControllerTracker>`   | :ref:`get_input_source_tracker<class_WebXRInterface_method_get_input_source_tracker>`\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const|                 |
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`is_input_source_active<class_WebXRInterface_method_is_input_source_active>`\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const|                     |
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                  | :ref:`is_session_supported<class_WebXRInterface_method_is_session_supported>`\ (\ session_mode\: :ref:`String<class_String>`\ )                              |
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                  | :ref:`set_display_refresh_rate<class_WebXRInterface_method_set_display_refresh_rate>`\ (\ refresh_rate\: :ref:`float<class_float>`\ )                        |
-   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                | :ref:`get_available_display_refresh_rates<class_WebXRInterface_method_get_available_display_refresh_rates>`\ (\ ) |const|                                    |
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                | :ref:`get_display_refresh_rate<class_WebXRInterface_method_get_display_refresh_rate>`\ (\ ) |const|                                                          |
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TargetRayMode <enum_WebXRInterface_TargetRayMode>` | :ref:`get_input_source_target_ray_mode<class_WebXRInterface_method_get_input_source_target_ray_mode>`\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const| |
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`XRControllerTracker<class_XRControllerTracker>`    | :ref:`get_input_source_tracker<class_WebXRInterface_method_get_input_source_tracker>`\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const|                 |
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`is_input_source_active<class_WebXRInterface_method_is_input_source_active>`\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const|                     |
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                   | :ref:`is_session_supported<class_WebXRInterface_method_is_session_supported>`\ (\ session_mode\: :ref:`String<class_String>`\ )                              |
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                   | :ref:`set_display_refresh_rate<class_WebXRInterface_method_set_display_refresh_rate>`\ (\ refresh_rate\: :ref:`float<class_float>`\ )                        |
+   +----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -178,8 +178,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_WebXRInterface_signal_display_refresh_rate_changed:
 
@@ -187,7 +187,7 @@ Signals
 
 **display_refresh_rate_changed**\ (\ ) :ref:`🔗<class_WebXRInterface_signal_display_refresh_rate_changed>`
 
-Emitted after the display's refresh rate has changed.
+Được phát ra sau khi tần số làm mới của màn hình đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -199,11 +199,11 @@ Emitted after the display's refresh rate has changed.
 
 **reference_space_reset**\ (\ ) :ref:`🔗<class_WebXRInterface_signal_reference_space_reset>`
 
-Emitted to indicate that the reference space has been reset or reconfigured.
+Được phát ra để cho biết không gian tham chiếu đã được đặt lại hoặc cấu hình lại.
 
-When (or whether) this is emitted depends on the user's browser or device, but may include when the user has changed the dimensions of their play space (which you may be able to access via :ref:`XRInterface.get_play_area()<class_XRInterface_method_get_play_area>`) or pressed/held a button to recenter their position.
+Việc này có được phát ra hay không và phát ra khi nào phụ thuộc vào trình duyệt hoặc thiết bị của người dùng, nhưng có thể bao gồm thời điểm người dùng thay đổi kích thước không gian chơi của họ (mà bạn có thể truy cập thông qua :ref:`XRInterface.get_play_area()<class_XRInterface_method_get_play_area>`) hoặc nhấn/giữ một nút để căn giữa lại vị trí của họ.
 
-See `WebXR's XRReferenceSpace reset event <https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/reset_event>`__ for more information.
+Xem `sự kiện reset XRReferenceSpace của WebXR <https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpace/reset_event>`__ để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -215,9 +215,9 @@ See `WebXR's XRReferenceSpace reset event <https://developer.mozilla.org/en-US/d
 
 **select**\ (\ input_source_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebXRInterface_signal_select>`
 
-Emitted after one of the input sources has finished its "primary action".
+Được phát ra sau khi một trong các nguồn đầu vào hoàn tất "hành động chính" của nó.
 
-Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` and :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` to get more information about the input source.
+Sử dụng :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` và :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` để biết thêm thông tin về nguồn đầu vào.
 
 .. rst-class:: classref-item-separator
 
@@ -229,9 +229,9 @@ Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_sourc
 
 **selectend**\ (\ input_source_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebXRInterface_signal_selectend>`
 
-Emitted when one of the input sources has finished its "primary action".
+Được phát ra khi một trong các nguồn đầu vào hoàn tất "primary action" của mình.
 
-Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` and :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` to get more information about the input source.
+Sử dụng :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` và :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` để biết thêm thông tin về nguồn đầu vào.
 
 .. rst-class:: classref-item-separator
 
@@ -243,9 +243,9 @@ Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_sourc
 
 **selectstart**\ (\ input_source_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebXRInterface_signal_selectstart>`
 
-Emitted when one of the input source has started its "primary action".
+Được phát ra khi một trong các nguồn đầu vào bắt đầu "primary action" của mình.
 
-Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` and :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` to get more information about the input source.
+Sử dụng :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` và :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` để biết thêm thông tin về nguồn đầu vào.
 
 .. rst-class:: classref-item-separator
 
@@ -257,9 +257,9 @@ Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_sourc
 
 **session_ended**\ (\ ) :ref:`🔗<class_WebXRInterface_signal_session_ended>`
 
-Emitted when the user ends the WebXR session (which can be done using UI from the browser or device).
+Được phát ra khi người dùng kết thúc WebXR session (có thể thực hiện bằng UI của trình duyệt hoặc thiết bị).
 
-At this point, you should do ``get_viewport().use_xr = false`` to instruct Godot to resume rendering to the screen.
+Tại thời điểm này, bạn nên thực hiện ``get_viewport().use_xr = false`` để yêu cầu Godot tiếp tục render lên màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -271,9 +271,9 @@ At this point, you should do ``get_viewport().use_xr = false`` to instruct Godot
 
 **session_failed**\ (\ message\: :ref:`String<class_String>`\ ) :ref:`🔗<class_WebXRInterface_signal_session_failed>`
 
-Emitted by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` if the session fails to start.
+Được phát ra bởi :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` nếu phiên không thể khởi động.
 
-\ ``message`` may optionally contain an error message from WebXR, or an empty string if no message is available.
+\ ``message`` có thể tùy chọn chứa thông báo lỗi từ WebXR hoặc một chuỗi rỗng nếu không có thông báo nào.
 
 .. rst-class:: classref-item-separator
 
@@ -285,9 +285,9 @@ Emitted by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` 
 
 **session_started**\ (\ ) :ref:`🔗<class_WebXRInterface_signal_session_started>`
 
-Emitted by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` if the session is successfully started.
+Được phát ra bởi :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` nếu phiên được khởi động thành công.
 
-At this point, it's safe to do ``get_viewport().use_xr = true`` to instruct Godot to start rendering to the XR device.
+Lúc này, bạn có thể an toàn thực hiện ``get_viewport().use_xr = true`` để hướng dẫn Godot bắt đầu render đến thiết bị XR.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ At this point, it's safe to do ``get_viewport().use_xr = true`` to instruct Godo
 
 **session_supported**\ (\ session_mode\: :ref:`String<class_String>`, supported\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_WebXRInterface_signal_session_supported>`
 
-Emitted by :ref:`is_session_supported()<class_WebXRInterface_method_is_session_supported>` to indicate if the given ``session_mode`` is supported or not.
+Được phát ra bởi :ref:`is_session_supported()<class_WebXRInterface_method_is_session_supported>` để cho biết ``session_mode`` đã cho có được hỗ trợ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -311,9 +311,9 @@ Emitted by :ref:`is_session_supported()<class_WebXRInterface_method_is_session_s
 
 **squeeze**\ (\ input_source_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebXRInterface_signal_squeeze>`
 
-Emitted after one of the input sources has finished its "primary squeeze action".
+Được phát ra sau khi một trong các nguồn đầu vào hoàn tất "primary squeeze action".
 
-Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` and :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` to get more information about the input source.
+Sử dụng :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` và :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` để biết thêm thông tin về nguồn đầu vào.
 
 .. rst-class:: classref-item-separator
 
@@ -325,9 +325,9 @@ Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_sourc
 
 **squeezeend**\ (\ input_source_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebXRInterface_signal_squeezeend>`
 
-Emitted when one of the input sources has finished its "primary squeeze action".
+Được phát ra khi một trong các nguồn đầu vào hoàn tất "primary squeeze action" của nó.
 
-Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` and :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` to get more information about the input source.
+Sử dụng :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` và :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` để biết thêm thông tin về nguồn đầu vào.
 
 .. rst-class:: classref-item-separator
 
@@ -339,9 +339,9 @@ Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_sourc
 
 **squeezestart**\ (\ input_source_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_WebXRInterface_signal_squeezestart>`
 
-Emitted when one of the input sources has started its "primary squeeze action".
+Được phát ra khi một trong các nguồn đầu vào bắt đầu "primary squeeze action" của nó.
 
-Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` and :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` to get more information about the input source.
+Sử dụng :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_source_tracker>` và :ref:`get_input_source_target_ray_mode()<class_WebXRInterface_method_get_input_source_target_ray_mode>` để biết thêm thông tin về nguồn đầu vào.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ Use :ref:`get_input_source_tracker()<class_WebXRInterface_method_get_input_sourc
 
 **visibility_state_changed**\ (\ ) :ref:`🔗<class_WebXRInterface_signal_visibility_state_changed>`
 
-Emitted when :ref:`visibility_state<class_WebXRInterface_property_visibility_state>` has changed.
+Được phát ra khi :ref:`visibility_state<class_WebXRInterface_property_visibility_state>` đã thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -361,14 +361,14 @@ Emitted when :ref:`visibility_state<class_WebXRInterface_property_visibility_sta
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_WebXRInterface_TargetRayMode:
 
 .. rst-class:: classref-enumeration
 
-enum **TargetRayMode**: :ref:`🔗<enum_WebXRInterface_TargetRayMode>`
+enum **TargetRayMode**: :ref:`🔗 <enum_WebXRInterface_TargetRayMode>`
 
 .. _class_WebXRInterface_constant_TARGET_RAY_MODE_UNKNOWN:
 
@@ -376,7 +376,7 @@ enum **TargetRayMode**: :ref:`🔗<enum_WebXRInterface_TargetRayMode>`
 
 :ref:`TargetRayMode<enum_WebXRInterface_TargetRayMode>` **TARGET_RAY_MODE_UNKNOWN** = ``0``
 
-We don't know the target ray mode.
+Chúng tôi không biết chế độ tia đích.
 
 .. _class_WebXRInterface_constant_TARGET_RAY_MODE_GAZE:
 
@@ -384,7 +384,7 @@ We don't know the target ray mode.
 
 :ref:`TargetRayMode<enum_WebXRInterface_TargetRayMode>` **TARGET_RAY_MODE_GAZE** = ``1``
 
-Target ray originates at the viewer's eyes and points in the direction they are looking.
+Tia đích bắt nguồn từ mắt của người dùng và hướng theo hướng họ đang nhìn.
 
 .. _class_WebXRInterface_constant_TARGET_RAY_MODE_TRACKED_POINTER:
 
@@ -392,7 +392,7 @@ Target ray originates at the viewer's eyes and points in the direction they are 
 
 :ref:`TargetRayMode<enum_WebXRInterface_TargetRayMode>` **TARGET_RAY_MODE_TRACKED_POINTER** = ``2``
 
-Target ray from a handheld pointer, most likely a VR touch controller.
+Tia đích từ một con trỏ cầm tay, nhiều khả năng là bộ điều khiển cảm ứng VR.
 
 .. _class_WebXRInterface_constant_TARGET_RAY_MODE_SCREEN:
 
@@ -400,7 +400,7 @@ Target ray from a handheld pointer, most likely a VR touch controller.
 
 :ref:`TargetRayMode<enum_WebXRInterface_TargetRayMode>` **TARGET_RAY_MODE_SCREEN** = ``3``
 
-Target ray from touch screen, mouse or other tactile input device.
+Tia đích từ màn hình cảm ứng, chuột hoặc thiết bị nhập liệu xúc giác khác.
 
 .. rst-class:: classref-section-separator
 
@@ -408,24 +408,24 @@ Target ray from touch screen, mouse or other tactile input device.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_WebXRInterface_property_enabled_features:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **enabled_features** :ref:`🔗<class_WebXRInterface_property_enabled_features>`
+:ref:`String<class_String>` **enabled_features** :ref:`🔗 <class_WebXRInterface_property_enabled_features>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`String<class_String>` **get_enabled_features**\ (\ )
 
-A comma-separated list of features that were successfully enabled by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` when setting up the WebXR session.
+Danh sách các tính năng được phân tách bằng dấu phẩy đã được :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` bật thành công khi thiết lập WebXR session.
 
-This may include features requested by setting :ref:`required_features<class_WebXRInterface_property_required_features>` and :ref:`optional_features<class_WebXRInterface_property_optional_features>`, and will only be available after :ref:`session_started<class_WebXRInterface_signal_session_started>` has been emitted.
+Điều này có thể bao gồm các tính năng được yêu cầu bằng cách đặt :ref:`required_features<class_WebXRInterface_property_required_features>` và :ref:`optional_features<class_WebXRInterface_property_optional_features>`, và sẽ chỉ khả dụng sau khi :ref:`session_started<class_WebXRInterface_signal_session_started>` được phát ra.
 
-\ **Note:** This may not be support by all web browsers, in which case it will be an empty string.
+\ **Lưu ý:** Điều này có thể không được tất cả trình duyệt web hỗ trợ, trong trường hợp đó nó sẽ là một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -435,20 +435,20 @@ This may include features requested by setting :ref:`required_features<class_Web
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **optional_features** :ref:`🔗<class_WebXRInterface_property_optional_features>`
+:ref:`String<class_String>` **optional_features** :ref:`🔗 <class_WebXRInterface_property_optional_features>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_optional_features**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_optional_features**\ (\ )
 
-A comma-seperated list of optional features used by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` when setting up the WebXR session.
+Danh sách các tính năng tùy chọn được phân tách bằng dấu phẩy mà :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` sử dụng khi thiết lập phiên WebXR.
 
-If a user's browser or device doesn't support one of the given features, initialization will continue, but you won't be able to use the requested feature.
+Nếu trình duyệt hoặc thiết bị của người dùng không hỗ trợ một trong các tính năng đã cho, quá trình khởi tạo vẫn tiếp tục, nhưng bạn sẽ không thể sử dụng tính năng được yêu cầu.
 
-This doesn't have any effect on the interface when already initialized.
+Điều này không ảnh hưởng đến interface khi đã được khởi tạo.
 
-See the MDN documentation on `WebXR's session features <https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features>`__ for a list of possible values.
+Xem tài liệu MDN về `WebXR's session features <https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features>`__ để biết danh sách các giá trị có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -458,15 +458,15 @@ See the MDN documentation on `WebXR's session features <https://developer.mozill
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **reference_space_type** :ref:`🔗<class_WebXRInterface_property_reference_space_type>`
+:ref:`String<class_String>` **reference_space_type** :ref:`🔗 <class_WebXRInterface_property_reference_space_type>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`String<class_String>` **get_reference_space_type**\ (\ )
 
-The reference space type (from the list of requested types set in the :ref:`requested_reference_space_types<class_WebXRInterface_property_requested_reference_space_types>` property), that was ultimately used by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` when setting up the WebXR session.
+Loại không gian tham chiếu (từ danh sách các loại được yêu cầu được thiết lập trong thuộc tính :ref:`requested_reference_space_types<class_WebXRInterface_property_requested_reference_space_types>`), mà cuối cùng :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` đã sử dụng khi thiết lập phiên WebXR.
 
-Possible values come from `WebXR's XRReferenceSpaceType <https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType>`__. If you want to use a particular reference space type, it must be listed in either :ref:`required_features<class_WebXRInterface_property_required_features>` or :ref:`optional_features<class_WebXRInterface_property_optional_features>`.
+Các giá trị có thể có được lấy từ `XRReferenceSpaceType của WebXR <https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType>`__. Nếu bạn muốn sử dụng một loại không gian tham chiếu cụ thể, loại đó phải được liệt kê trong :ref:`required_features<class_WebXRInterface_property_required_features>` hoặc :ref:`optional_features<class_WebXRInterface_property_optional_features>`.
 
 .. rst-class:: classref-item-separator
 
@@ -476,20 +476,20 @@ Possible values come from `WebXR's XRReferenceSpaceType <https://developer.mozil
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **requested_reference_space_types** :ref:`🔗<class_WebXRInterface_property_requested_reference_space_types>`
+:ref:`String<class_String>` **requested_reference_space_types** :ref:`🔗 <class_WebXRInterface_property_requested_reference_space_types>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_requested_reference_space_types**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_requested_reference_space_types**\ (\ )
 
-A comma-seperated list of reference space types used by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` when setting up the WebXR session.
+Danh sách các loại không gian tham chiếu được phân tách bằng dấu phẩy, được :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` sử dụng khi thiết lập phiên WebXR.
 
-The reference space types are requested in order, and the first one supported by the user's device or browser will be used. The :ref:`reference_space_type<class_WebXRInterface_property_reference_space_type>` property contains the reference space type that was ultimately selected.
+Các loại không gian tham chiếu được yêu cầu theo thứ tự và loại đầu tiên được thiết bị hoặc trình duyệt của người dùng hỗ trợ sẽ được sử dụng. Thuộc tính :ref:`reference_space_type<class_WebXRInterface_property_reference_space_type>` chứa loại không gian tham chiếu cuối cùng được chọn.
 
-This doesn't have any effect on the interface when already initialized.
+Điều này không ảnh hưởng đến interface khi đã được khởi tạo.
 
-Possible values come from `WebXR's XRReferenceSpaceType <https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType>`__. If you want to use a particular reference space type, it must be listed in either :ref:`required_features<class_WebXRInterface_property_required_features>` or :ref:`optional_features<class_WebXRInterface_property_optional_features>`.
+Các giá trị có thể có được lấy từ `XRReferenceSpaceType của WebXR <https://developer.mozilla.org/en-US/docs/Web/API/XRReferenceSpaceType>`__. Nếu bạn muốn sử dụng một loại không gian tham chiếu cụ thể, loại đó phải được liệt kê trong :ref:`required_features<class_WebXRInterface_property_required_features>` hoặc :ref:`optional_features<class_WebXRInterface_property_optional_features>`.
 
 .. rst-class:: classref-item-separator
 
@@ -499,20 +499,20 @@ Possible values come from `WebXR's XRReferenceSpaceType <https://developer.mozil
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **required_features** :ref:`🔗<class_WebXRInterface_property_required_features>`
+:ref:`String<class_String>` **required_features** :ref:`🔗 <class_WebXRInterface_property_required_features>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_required_features**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_required_features**\ (\ )
 
-A comma-seperated list of required features used by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` when setting up the WebXR session.
+Danh sách các feature bắt buộc được phân tách bằng dấu phẩy, được :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` sử dụng khi thiết lập WebXR session.
 
-If a user's browser or device doesn't support one of the given features, initialization will fail and :ref:`session_failed<class_WebXRInterface_signal_session_failed>` will be emitted.
+Nếu trình duyệt hoặc thiết bị của người dùng không hỗ trợ một trong các feature đã cho, quá trình khởi tạo sẽ thất bại và :ref:`session_failed<class_WebXRInterface_signal_session_failed>` sẽ được phát ra.
 
-This doesn't have any effect on the interface when already initialized.
+Điều này không ảnh hưởng đến interface khi đã được khởi tạo.
 
-See the MDN documentation on `WebXR's session features <https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features>`__ for a list of possible values.
+Xem tài liệu MDN về `WebXR's session features <https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#session_features>`__ để biết danh sách các giá trị có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -522,18 +522,18 @@ See the MDN documentation on `WebXR's session features <https://developer.mozill
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **session_mode** :ref:`🔗<class_WebXRInterface_property_session_mode>`
+:ref:`String<class_String>` **session_mode** :ref:`🔗 <class_WebXRInterface_property_session_mode>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_session_mode**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_session_mode**\ (\ )
 
-The session mode used by :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` when setting up the WebXR session.
+Chế độ phiên được :ref:`XRInterface.initialize()<class_XRInterface_method_initialize>` sử dụng khi thiết lập phiên WebXR.
 
-This doesn't have any effect on the interface when already initialized.
+Điều này không ảnh hưởng đến interface khi đã được khởi tạo.
 
-Possible values come from `WebXR's XRSessionMode <https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode>`__, including: ``"immersive-vr"``, ``"immersive-ar"``, and ``"inline"``.
+Các giá trị có thể có được lấy từ `WebXR's XRSessionMode <https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode>`__, bao gồm: ``"immersive-vr"``, ``"immersive-ar"`` và ``"inline"``.
 
 .. rst-class:: classref-item-separator
 
@@ -543,15 +543,15 @@ Possible values come from `WebXR's XRSessionMode <https://developer.mozilla.org/
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **visibility_state** :ref:`🔗<class_WebXRInterface_property_visibility_state>`
+:ref:`String<class_String>` **visibility_state** :ref:`🔗 <class_WebXRInterface_property_visibility_state>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`String<class_String>` **get_visibility_state**\ (\ )
 
-Indicates if the WebXR session's imagery is visible to the user.
+Cho biết hình ảnh của phiên WebXR có hiển thị với người dùng hay không.
 
-Possible values come from `WebXR's XRVisibilityState <https://developer.mozilla.org/en-US/docs/Web/API/XRVisibilityState>`__, including ``"hidden"``, ``"visible"``, and ``"visible-blurred"``.
+Các giá trị có thể có được lấy từ `WebXR's XRVisibilityState <https://developer.mozilla.org/en-US/docs/Web/API/XRVisibilityState>`__, bao gồm ``"hidden"``, ``"visible"`` và ``"visible-blurred"``.
 
 .. rst-class:: classref-section-separator
 
@@ -559,8 +559,8 @@ Possible values come from `WebXR's XRVisibilityState <https://developer.mozilla.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_WebXRInterface_method_get_available_display_refresh_rates:
 
@@ -568,7 +568,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **get_available_display_refresh_rates**\ (\ ) |const| :ref:`🔗<class_WebXRInterface_method_get_available_display_refresh_rates>`
 
-Returns display refresh rates supported by the current HMD. Only returned if this feature is supported by the web browser and after the interface has been initialized.
+Trả về các tần số làm mới màn hình được HMD hiện tại hỗ trợ. Chỉ được trả về nếu trình duyệt web hỗ trợ tính năng này và sau khi giao diện đã được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -580,7 +580,7 @@ Returns display refresh rates supported by the current HMD. Only returned if thi
 
 :ref:`float<class_float>` **get_display_refresh_rate**\ (\ ) |const| :ref:`🔗<class_WebXRInterface_method_get_display_refresh_rate>`
 
-Returns the display refresh rate for the current HMD. Not supported on all HMDs and browsers. It may not report an accurate value until after using :ref:`set_display_refresh_rate()<class_WebXRInterface_method_set_display_refresh_rate>`.
+Trả về tần số làm mới màn hình của HMD hiện tại. Không được tất cả HMD và trình duyệt hỗ trợ. Giá trị được báo cáo có thể chưa chính xác cho đến khi sử dụng :ref:`set_display_refresh_rate()<class_WebXRInterface_method_set_display_refresh_rate>`.
 
 .. rst-class:: classref-item-separator
 
@@ -592,9 +592,9 @@ Returns the display refresh rate for the current HMD. Not supported on all HMDs 
 
 :ref:`TargetRayMode<enum_WebXRInterface_TargetRayMode>` **get_input_source_target_ray_mode**\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WebXRInterface_method_get_input_source_target_ray_mode>`
 
-Returns the target ray mode for the given ``input_source_id``.
+Trả về chế độ tia đích cho ``input_source_id`` đã cho.
 
-This can help interpret the input coming from that input source. See `XRInputSource.targetRayMode <https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/targetRayMode>`__ for more information.
+Điều này có thể giúp diễn giải dữ liệu đầu vào đến từ nguồn đầu vào đó. Xem `XRInputSource.targetRayMode <https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/targetRayMode>`__ để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -606,11 +606,11 @@ This can help interpret the input coming from that input source. See `XRInputSou
 
 :ref:`XRControllerTracker<class_XRControllerTracker>` **get_input_source_tracker**\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WebXRInterface_method_get_input_source_tracker>`
 
-Gets an :ref:`XRControllerTracker<class_XRControllerTracker>` for the given ``input_source_id``.
+Lấy một :ref:`XRControllerTracker<class_XRControllerTracker>` cho ``input_source_id`` đã cho.
 
-In the context of WebXR, an input source can be an advanced VR controller like the Oculus Touch or Index controllers, or even a tap on the screen, a spoken voice command or a button press on the device itself. When a non-traditional input source is used, interpret the position and orientation of the :ref:`XRPositionalTracker<class_XRPositionalTracker>` as a ray pointing at the object the user wishes to interact with.
+Trong ngữ cảnh của WebXR, một nguồn đầu vào có thể là bộ điều khiển VR nâng cao như bộ điều khiển Oculus Touch hoặc Index, hoặc thậm chí là thao tác chạm trên màn hình, lệnh thoại hoặc thao tác nhấn nút trên chính thiết bị. Khi sử dụng một nguồn đầu vào không truyền thống, hãy diễn giải vị trí và hướng của :ref:`XRPositionalTracker<class_XRPositionalTracker>` như một tia hướng đến đối tượng mà người dùng muốn tương tác.
 
-Use this method to get information about the input source that triggered one of these signals:
+Sử dụng phương thức này để lấy thông tin về nguồn đầu vào đã kích hoạt một trong các tín hiệu sau:
 
 - :ref:`selectstart<class_WebXRInterface_signal_selectstart>`\ 
 
@@ -634,7 +634,7 @@ Use this method to get information about the input source that triggered one of 
 
 :ref:`bool<class_bool>` **is_input_source_active**\ (\ input_source_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_WebXRInterface_method_is_input_source_active>`
 
-Returns ``true`` if there is an active input source with the given ``input_source_id``.
+Trả về ``true`` nếu có một nguồn đầu vào đang hoạt động với ``input_source_id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -646,11 +646,11 @@ Returns ``true`` if there is an active input source with the given ``input_sourc
 
 |void| **is_session_supported**\ (\ session_mode\: :ref:`String<class_String>`\ ) :ref:`🔗<class_WebXRInterface_method_is_session_supported>`
 
-Checks if the given ``session_mode`` is supported by the user's browser.
+Kiểm tra xem ``session_mode`` đã cho có được trình duyệt của người dùng hỗ trợ hay không.
 
-Possible values come from `WebXR's XRSessionMode <https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode>`__, including: ``"immersive-vr"``, ``"immersive-ar"``, and ``"inline"``.
+Các giá trị có thể có được lấy từ `XRSessionMode của WebXR <https://developer.mozilla.org/en-US/docs/Web/API/XRSessionMode>`__, bao gồm: ``"immersive-vr"``, ``"immersive-ar"`` và ``"inline"``.
 
-This method returns nothing, instead it emits the :ref:`session_supported<class_WebXRInterface_signal_session_supported>` signal with the result.
+Phương thức này không trả về gì mà thay vào đó phát tín hiệu :ref:`session_supported<class_WebXRInterface_signal_session_supported>` cùng với kết quả.
 
 .. rst-class:: classref-item-separator
 
@@ -662,14 +662,14 @@ This method returns nothing, instead it emits the :ref:`session_supported<class_
 
 |void| **set_display_refresh_rate**\ (\ refresh_rate\: :ref:`float<class_float>`\ ) :ref:`🔗<class_WebXRInterface_method_set_display_refresh_rate>`
 
-Sets the display refresh rate for the current HMD. Not supported on all HMDs and browsers. It won't take effect right away until after :ref:`display_refresh_rate_changed<class_WebXRInterface_signal_display_refresh_rate_changed>` is emitted.
+Thiết lập tốc độ làm mới màn hình cho HMD hiện tại. Không phải tất cả HMD và trình duyệt đều hỗ trợ. Thiết lập này sẽ chưa có hiệu lực ngay mà chỉ có hiệu lực sau khi :ref:`display_refresh_rate_changed<class_WebXRInterface_signal_display_refresh_rate_changed>` được phát.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

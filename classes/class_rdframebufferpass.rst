@@ -10,25 +10,25 @@
 RDFramebufferPass
 =================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Framebuffer pass attachment description (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Mô tả attachment của framebuffer pass (được :ref:`RenderingDevice<class_RenderingDevice>` sử dụng).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class contains the list of attachment descriptions for a framebuffer pass. Each points with an index to a previously supplied list of texture attachments.
+Lớp này chứa danh sách mô tả attachment cho một framebuffer pass. Mỗi mô tả trỏ bằng một chỉ mục đến danh sách attachment texture đã được cung cấp trước đó.
 
-Multipass framebuffers can optimize some configurations in mobile. On desktop, they provide little to no advantage.
+Framebuffer multipass có thể tối ưu một số cấu hình trên thiết bị di động. Trên máy tính để bàn, chúng mang lại rất ít hoặc không mang lại lợi ích nào.
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được :ref:`RenderingDevice<class_RenderingDevice>` sử dụng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -51,8 +51,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_RDFramebufferPass_constant_ATTACHMENT_UNUSED:
 
@@ -60,7 +60,7 @@ Constants
 
 **ATTACHMENT_UNUSED** = ``-1`` :ref:`🔗<class_RDFramebufferPass_constant_ATTACHMENT_UNUSED>`
 
-Attachment is unused.
+Attachment không được sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -68,8 +68,8 @@ Attachment is unused.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDFramebufferPass_property_color_attachments:
 
@@ -82,9 +82,9 @@ Property Descriptions
 - |void| **set_color_attachments**\ (\ value\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_color_attachments**\ (\ )
 
-Color attachments in order starting from 0. If this attachment is not used by the shader, pass ATTACHMENT_UNUSED to skip.
+Các color attachment theo thứ tự bắt đầu từ 0. Nếu shader không sử dụng attachment này, hãy truyền ATTACHMENT_UNUSED để bỏ qua.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt32Array<class_PackedInt32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -101,7 +101,7 @@ Color attachments in order starting from 0. If this attachment is not used by th
 - |void| **set_depth_attachment**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_depth_attachment**\ (\ )
 
-Depth attachment. ATTACHMENT_UNUSED should be used if no depth buffer is required for this pass.
+Depth attachment. Nên sử dụng ATTACHMENT_UNUSED nếu pass này không yêu cầu depth buffer.
 
 .. rst-class:: classref-item-separator
 
@@ -118,9 +118,9 @@ Depth attachment. ATTACHMENT_UNUSED should be used if no depth buffer is require
 - |void| **set_input_attachments**\ (\ value\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_input_attachments**\ (\ )
 
-Used for multipass framebuffers (more than one render pass). Converts an attachment to an input. Make sure to also supply it properly in the :ref:`RDUniform<class_RDUniform>` for the uniform set.
+Được sử dụng cho framebuffer multipass (nhiều hơn một render pass). Chuyển một attachment thành input. Đồng thời, hãy đảm bảo cung cấp attachment đó đúng cách trong :ref:`RDUniform<class_RDUniform>` cho uniform set.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt32Array<class_PackedInt32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -137,9 +137,9 @@ Used for multipass framebuffers (more than one render pass). Converts an attachm
 - |void| **set_preserve_attachments**\ (\ value\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_preserve_attachments**\ (\ )
 
-Attachments to preserve in this pass (otherwise they are erased).
+Các attachment cần được giữ lại trong pass này (nếu không, chúng sẽ bị xóa).
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt32Array<class_PackedInt32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -156,16 +156,16 @@ Attachments to preserve in this pass (otherwise they are erased).
 - |void| **set_resolve_attachments**\ (\ value\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_resolve_attachments**\ (\ )
 
-If the color attachments are multisampled, non-multisampled resolve attachments can be provided.
+Nếu các color attachment được multisample, có thể cung cấp các resolve attachment không multisample.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt32Array<class_PackedInt32Array>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,502 +10,502 @@
 EditorExportPlatformMacOS
 =========================
 
-**Inherits:** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exporter for macOS.
+Trình xuất cho macOS.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Exporting for macOS <../tutorials/export/exporting_for_macos>`
+- :doc:`Xuất cho macOS <../tutorials/export/exporting_for_macos>`
 
-- :doc:`Running Godot apps on macOS <../tutorials//export/running_on_macos>`
+- :doc:`Chạy ứng dụng Godot trên macOS <../tutorials//export/running_on_macos>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/additional_plist_content<class_EditorExportPlatformMacOS_property_application/additional_plist_content>`                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/app_category<class_EditorExportPlatformMacOS_property_application/app_category>`                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/bundle_identifier<class_EditorExportPlatformMacOS_property_application/bundle_identifier>`                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/copyright<class_EditorExportPlatformMacOS_property_application/copyright>`                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`application/copyright_localized<class_EditorExportPlatformMacOS_property_application/copyright_localized>`                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/export_angle<class_EditorExportPlatformMacOS_property_application/export_angle>`                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/icon<class_EditorExportPlatformMacOS_property_application/icon>`                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/icon_interpolation<class_EditorExportPlatformMacOS_property_application/icon_interpolation>`                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/liquid_glass_icon<class_EditorExportPlatformMacOS_property_application/liquid_glass_icon>`                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/min_macos_version_arm64<class_EditorExportPlatformMacOS_property_application/min_macos_version_arm64>`                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/min_macos_version_x86_64<class_EditorExportPlatformMacOS_property_application/min_macos_version_x86_64>`                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/short_version<class_EditorExportPlatformMacOS_property_application/short_version>`                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/signature<class_EditorExportPlatformMacOS_property_application/signature>`                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/version<class_EditorExportPlatformMacOS_property_application/version>`                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`binary_format/architecture<class_EditorExportPlatformMacOS_property_binary_format/architecture>`                                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/apple_team_id<class_EditorExportPlatformMacOS_property_codesign/apple_team_id>`                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/certificate_file<class_EditorExportPlatformMacOS_property_codesign/certificate_file>`                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/certificate_password<class_EditorExportPlatformMacOS_property_codesign/certificate_password>`                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/codesign<class_EditorExportPlatformMacOS_property_codesign/codesign>`                                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`codesign/custom_options<class_EditorExportPlatformMacOS_property_codesign/custom_options>`                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/entitlements/additional<class_EditorExportPlatformMacOS_property_codesign/entitlements/additional>`                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/address_book<class_EditorExportPlatformMacOS_property_codesign/entitlements/address_book>`                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/allow_dyld_environment_variables<class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_dyld_environment_variables>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/allow_jit_code_execution<class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_jit_code_execution>`                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/allow_unsigned_executable_memory<class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_unsigned_executable_memory>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/device_bluetooth<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_bluetooth>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/device_usb<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_usb>`                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/enabled<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/enabled>`                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_downloads<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_downloads>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_movies<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_movies>`                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_music<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_music>`                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_pictures<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_pictures>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_user_selected<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_user_selected>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                         | :ref:`codesign/entitlements/app_sandbox/helper_executables<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/helper_executables>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/network_client<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_client>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/network_server<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_server>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/apple_events<class_EditorExportPlatformMacOS_property_codesign/entitlements/apple_events>`                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/audio_input<class_EditorExportPlatformMacOS_property_codesign/entitlements/audio_input>`                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/calendars<class_EditorExportPlatformMacOS_property_codesign/entitlements/calendars>`                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/camera<class_EditorExportPlatformMacOS_property_codesign/entitlements/camera>`                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/entitlements/custom_file<class_EditorExportPlatformMacOS_property_codesign/entitlements/custom_file>`                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/debugging<class_EditorExportPlatformMacOS_property_codesign/entitlements/debugging>`                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/disable_library_validation<class_EditorExportPlatformMacOS_property_codesign/entitlements/disable_library_validation>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/location<class_EditorExportPlatformMacOS_property_codesign/entitlements/location>`                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/photos_library<class_EditorExportPlatformMacOS_property_codesign/entitlements/photos_library>`                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/identity<class_EditorExportPlatformMacOS_property_codesign/identity>`                                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/installer_identity<class_EditorExportPlatformMacOS_property_codesign/installer_identity>`                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/provisioning_profile<class_EditorExportPlatformMacOS_property_codesign/provisioning_profile>`                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/debug<class_EditorExportPlatformMacOS_property_custom_template/debug>`                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/release<class_EditorExportPlatformMacOS_property_custom_template/release>`                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`debug/export_console_wrapper<class_EditorExportPlatformMacOS_property_debug/export_console_wrapper>`                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`display/high_res<class_EditorExportPlatformMacOS_property_display/high_res>`                                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`export/distribution_type<class_EditorExportPlatformMacOS_property_export/distribution_type>`                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`notarization/api_key<class_EditorExportPlatformMacOS_property_notarization/api_key>`                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`notarization/api_key_id<class_EditorExportPlatformMacOS_property_notarization/api_key_id>`                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`notarization/api_uuid<class_EditorExportPlatformMacOS_property_notarization/api_uuid>`                                                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`notarization/apple_id_name<class_EditorExportPlatformMacOS_property_notarization/apple_id_name>`                                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`notarization/apple_id_password<class_EditorExportPlatformMacOS_property_notarization/apple_id_password>`                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`notarization/notarization<class_EditorExportPlatformMacOS_property_notarization/notarization>`                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/address_book_usage_description<class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description>`                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/address_book_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description_localized>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/calendar_usage_description<class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description>`                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/calendar_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description_localized>`                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/camera_usage_description<class_EditorExportPlatformMacOS_property_privacy/camera_usage_description>`                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/camera_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/camera_usage_description_localized>`                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/advertising_data/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collected>`                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/audio_data/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collection_purposes>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/linked_to_user>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/used_for_tracking>`                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/browsing_history/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collected>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/coarse_location/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collection_purposes>`                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/linked_to_user>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/used_for_tracking>`                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collected>`                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/contacts/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collection_purposes>`                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/linked_to_user>`                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/used_for_tracking>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collected>`                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/crash_data/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collection_purposes>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/linked_to_user>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/used_for_tracking>`                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collected>`                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/credit_info/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collection_purposes>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/linked_to_user>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/used_for_tracking>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/customer_support/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collected>`                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/device_id/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collection_purposes>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/linked_to_user>`                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/used_for_tracking>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collected>`                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/email_address/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collection_purposes>`                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/linked_to_user>`                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/used_for_tracking>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collected>`                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/emails_or_text_messages/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>` |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collected>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/environment_scanning/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collection_purposes>`       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/linked_to_user>`                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collected>`                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/fitness/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collection_purposes>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/linked_to_user>`                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/used_for_tracking>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/gameplay_content/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collected>`                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/hands/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collection_purposes>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/linked_to_user>`                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/used_for_tracking>`                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collected>`                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/head/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collection_purposes>`                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/linked_to_user>`                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/used_for_tracking>`                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collected>`                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/health/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collection_purposes>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/linked_to_user>`                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/used_for_tracking>`                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collected>`                                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/name/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collection_purposes>`                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/linked_to_user>`                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/used_for_tracking>`                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collected>`                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_contact_info/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collection_purposes>`           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/linked_to_user>`                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_data_types/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collected>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_diagnostic_data/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collected>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_financial_info/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collection_purposes>`       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/linked_to_user>`                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_usage_data/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collected>`                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_user_content/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collection_purposes>`           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/linked_to_user>`                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/used_for_tracking>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collected>`                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/payment_info/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collection_purposes>`                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/linked_to_user>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/used_for_tracking>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/performance_data/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collected>`                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/phone_number/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collection_purposes>`                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/linked_to_user>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/used_for_tracking>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/photos_or_videos/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/physical_address/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/precise_location/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collected>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/product_interaction/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collection_purposes>`         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/linked_to_user>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/used_for_tracking>`             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collected>`                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/purchase_history/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collection_purposes>`               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/linked_to_user>`                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/used_for_tracking>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collected>`                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/search_history/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collection_purposes>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/linked_to_user>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/used_for_tracking>`                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collected>`                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/sensitive_info/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collection_purposes>`                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/linked_to_user>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/collected<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collected>`                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/user_id/collection_purposes<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collection_purposes>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/linked_to_user<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/linked_to_user>`                                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/used_for_tracking<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/used_for_tracking>`                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/desktop_folder_usage_description<class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description>`                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/desktop_folder_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description_localized>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/documents_folder_usage_description<class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description>`                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/documents_folder_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description_localized>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/downloads_folder_usage_description<class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description>`                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/downloads_folder_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description_localized>`                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/location_usage_description<class_EditorExportPlatformMacOS_property_privacy/location_usage_description>`                                                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/location_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/location_usage_description_localized>`                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/microphone_usage_description<class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description>`                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/microphone_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description_localized>`                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/network_volumes_usage_description<class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description>`                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/network_volumes_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description_localized>`                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/photos_library_usage_description<class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description>`                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/photos_library_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description_localized>`                                 |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/removable_volumes_usage_description<class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description>`                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/removable_volumes_usage_description_localized<class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description_localized>`                           |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`privacy/tracking_domains<class_EditorExportPlatformMacOS_property_privacy/tracking_domains>`                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/tracking_enabled<class_EditorExportPlatformMacOS_property_privacy/tracking_enabled>`                                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled<class_EditorExportPlatformMacOS_property_shader_baker/enabled>`                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/cleanup_script<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/cleanup_script>`                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`ssh_remote_deploy/enabled<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/enabled>`                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_scp<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_scp>`                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_ssh<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_ssh>`                                                                     |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/host<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/host>`                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/port<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/port>`                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/run_script<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/run_script>`                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`xcode/platform_build<class_EditorExportPlatformMacOS_property_xcode/platform_build>`                                                                                             |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`xcode/sdk_build<class_EditorExportPlatformMacOS_property_xcode/sdk_build>`                                                                                                       |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`xcode/sdk_name<class_EditorExportPlatformMacOS_property_xcode/sdk_name>`                                                                                                         |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`xcode/sdk_version<class_EditorExportPlatformMacOS_property_xcode/sdk_version>`                                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`xcode/xcode_build<class_EditorExportPlatformMacOS_property_xcode/xcode_build>`                                                                                                   |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`xcode/xcode_version<class_EditorExportPlatformMacOS_property_xcode/xcode_version>`                                                                                               |
-   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/additional_plist_content <class_EditorExportPlatformMacOS_property_application/additional_plist_content>`                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/app_category <class_EditorExportPlatformMacOS_property_application/app_category>`                                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/bundle_identifier <class_EditorExportPlatformMacOS_property_application/bundle_identifier>`                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/copyright <class_EditorExportPlatformMacOS_property_application/copyright>`                                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`application/copyright_localized <class_EditorExportPlatformMacOS_property_application/copyright_localized>`                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/export_angle <class_EditorExportPlatformMacOS_property_application/export_angle>`                                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/icon <class_EditorExportPlatformMacOS_property_application/icon>`                                                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/icon_interpolation <class_EditorExportPlatformMacOS_property_application/icon_interpolation>`                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/liquid_glass_icon <class_EditorExportPlatformMacOS_property_application/liquid_glass_icon>`                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/min_macos_version_arm64 <class_EditorExportPlatformMacOS_property_application/min_macos_version_arm64>`                                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/min_macos_version_x86_64 <class_EditorExportPlatformMacOS_property_application/min_macos_version_x86_64>`                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/short_version <class_EditorExportPlatformMacOS_property_application/short_version>`                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/signature <class_EditorExportPlatformMacOS_property_application/signature>`                                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/version <class_EditorExportPlatformMacOS_property_application/version>`                                                                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`binary_format/architecture <class_EditorExportPlatformMacOS_property_binary_format/architecture>`                                                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/apple_team_id <class_EditorExportPlatformMacOS_property_codesign/apple_team_id>`                                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/certificate_file <class_EditorExportPlatformMacOS_property_codesign/certificate_file>`                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/certificate_password <class_EditorExportPlatformMacOS_property_codesign/certificate_password>`                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/codesign <class_EditorExportPlatformMacOS_property_codesign/codesign>`                                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`codesign/custom_options <class_EditorExportPlatformMacOS_property_codesign/custom_options>`                                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/entitlements/additional <class_EditorExportPlatformMacOS_property_codesign/entitlements/additional>`                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/address_book <class_EditorExportPlatformMacOS_property_codesign/entitlements/address_book>`                                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/allow_dyld_environment_variables <class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_dyld_environment_variables>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/allow_jit_code_execution <class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_jit_code_execution>`                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/allow_unsigned_executable_memory <class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_unsigned_executable_memory>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/device_bluetooth <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_bluetooth>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/device_usb <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_usb>`                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/enabled <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/enabled>`                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_downloads <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_downloads>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_movies <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_movies>`                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_music <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_music>`                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_pictures <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_pictures>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/entitlements/app_sandbox/files_user_selected <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_user_selected>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                         | :ref:`codesign/entitlements/app_sandbox/helper_executables <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/helper_executables>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/network_client <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_client>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/app_sandbox/network_server <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_server>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/apple_events <class_EditorExportPlatformMacOS_property_codesign/entitlements/apple_events>`                                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/audio_input <class_EditorExportPlatformMacOS_property_codesign/entitlements/audio_input>`                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/calendars <class_EditorExportPlatformMacOS_property_codesign/entitlements/calendars>`                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/camera <class_EditorExportPlatformMacOS_property_codesign/entitlements/camera>`                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/entitlements/custom_file <class_EditorExportPlatformMacOS_property_codesign/entitlements/custom_file>`                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/debugging <class_EditorExportPlatformMacOS_property_codesign/entitlements/debugging>`                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/disable_library_validation <class_EditorExportPlatformMacOS_property_codesign/entitlements/disable_library_validation>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/location <class_EditorExportPlatformMacOS_property_codesign/entitlements/location>`                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/entitlements/photos_library <class_EditorExportPlatformMacOS_property_codesign/entitlements/photos_library>`                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/identity <class_EditorExportPlatformMacOS_property_codesign/identity>`                                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/installer_identity <class_EditorExportPlatformMacOS_property_codesign/installer_identity>`                                                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/provisioning_profile <class_EditorExportPlatformMacOS_property_codesign/provisioning_profile>`                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/debug <class_EditorExportPlatformMacOS_property_custom_template/debug>`                                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/release <class_EditorExportPlatformMacOS_property_custom_template/release>`                                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`debug/export_console_wrapper <class_EditorExportPlatformMacOS_property_debug/export_console_wrapper>`                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`display/high_res <class_EditorExportPlatformMacOS_property_display/high_res>`                                                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`export/distribution_type <class_EditorExportPlatformMacOS_property_export/distribution_type>`                                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`notarization/api_key <class_EditorExportPlatformMacOS_property_notarization/api_key>`                                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`notarization/api_key_id <class_EditorExportPlatformMacOS_property_notarization/api_key_id>`                                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`notarization/api_uuid <class_EditorExportPlatformMacOS_property_notarization/api_uuid>`                                                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`notarization/apple_id_name <class_EditorExportPlatformMacOS_property_notarization/apple_id_name>`                                                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`notarization/apple_id_password <class_EditorExportPlatformMacOS_property_notarization/apple_id_password>`                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`notarization/notarization <class_EditorExportPlatformMacOS_property_notarization/notarization>`                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/address_book_usage_description <class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description>`                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/address_book_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description_localized>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/calendar_usage_description <class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description>`                                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/calendar_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description_localized>`                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/camera_usage_description <class_EditorExportPlatformMacOS_property_privacy/camera_usage_description>`                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/camera_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/camera_usage_description_localized>`                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/advertising_data/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collected>`                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/audio_data/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collection_purposes>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/linked_to_user>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/used_for_tracking>`                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/browsing_history/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collected>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/coarse_location/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collection_purposes>`                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/linked_to_user>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/used_for_tracking>`                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collected>`                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/contacts/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collection_purposes>`                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/linked_to_user>`                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/used_for_tracking>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collected>`                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/crash_data/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collection_purposes>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/linked_to_user>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/used_for_tracking>`                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collected>`                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/credit_info/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collection_purposes>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/linked_to_user>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/used_for_tracking>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/customer_support/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collected>`                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/device_id/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collection_purposes>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/linked_to_user>`                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/used_for_tracking>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collected>`                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/email_address/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collection_purposes>`                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/linked_to_user>`                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/used_for_tracking>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collected>`                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/emails_or_text_messages/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>` |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collected>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/environment_scanning/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collection_purposes>`       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/linked_to_user>`                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collected>`                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/fitness/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collection_purposes>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/linked_to_user>`                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/used_for_tracking>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/gameplay_content/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collected>`                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/hands/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collection_purposes>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/linked_to_user>`                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/used_for_tracking>`                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collected>`                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/head/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collection_purposes>`                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/linked_to_user>`                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/used_for_tracking>`                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collected>`                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/health/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collection_purposes>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/linked_to_user>`                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/used_for_tracking>`                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collected>`                                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/name/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collection_purposes>`                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/linked_to_user>`                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/used_for_tracking>`                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collected>`                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_contact_info/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collection_purposes>`           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/linked_to_user>`                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_data_types/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collected>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_diagnostic_data/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collected>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_financial_info/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collection_purposes>`       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/linked_to_user>`                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_usage_data/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collected>`                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_user_content/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collection_purposes>`           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/linked_to_user>`                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/used_for_tracking>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collected>`                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/payment_info/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collection_purposes>`                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/linked_to_user>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/used_for_tracking>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/performance_data/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collected>`                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/phone_number/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collection_purposes>`                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/linked_to_user>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/used_for_tracking>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/photos_or_videos/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/physical_address/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/precise_location/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collected>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/product_interaction/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collection_purposes>`         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/linked_to_user>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/used_for_tracking>`             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collected>`                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/purchase_history/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collection_purposes>`               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/linked_to_user>`                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/used_for_tracking>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collected>`                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/search_history/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collection_purposes>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/linked_to_user>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/used_for_tracking>`                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collected>`                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/sensitive_info/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collection_purposes>`                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/linked_to_user>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/collected <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collected>`                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/user_id/collection_purposes <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collection_purposes>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/linked_to_user <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/linked_to_user>`                                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/used_for_tracking <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/used_for_tracking>`                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/desktop_folder_usage_description <class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description>`                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/desktop_folder_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description_localized>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/documents_folder_usage_description <class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description>`                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/documents_folder_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description_localized>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/downloads_folder_usage_description <class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description>`                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/downloads_folder_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description_localized>`                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/location_usage_description <class_EditorExportPlatformMacOS_property_privacy/location_usage_description>`                                                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/location_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/location_usage_description_localized>`                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/microphone_usage_description <class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description>`                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/microphone_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description_localized>`                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/network_volumes_usage_description <class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description>`                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/network_volumes_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description_localized>`                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/photos_library_usage_description <class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description>`                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/photos_library_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description_localized>`                                 |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/removable_volumes_usage_description <class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description>`                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/removable_volumes_usage_description_localized <class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description_localized>`                           |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`privacy/tracking_domains <class_EditorExportPlatformMacOS_property_privacy/tracking_domains>`                                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/tracking_enabled <class_EditorExportPlatformMacOS_property_privacy/tracking_enabled>`                                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled <class_EditorExportPlatformMacOS_property_shader_baker/enabled>`                                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/cleanup_script <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/cleanup_script>`                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`ssh_remote_deploy/enabled <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/enabled>`                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_scp <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_scp>`                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_ssh <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_ssh>`                                                                     |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/host <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/host>`                                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/port <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/port>`                                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/run_script <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/run_script>`                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`xcode/platform_build <class_EditorExportPlatformMacOS_property_xcode/platform_build>`                                                                                             |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`xcode/sdk_build <class_EditorExportPlatformMacOS_property_xcode/sdk_build>`                                                                                                       |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`xcode/sdk_name <class_EditorExportPlatformMacOS_property_xcode/sdk_name>`                                                                                                         |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`xcode/sdk_version <class_EditorExportPlatformMacOS_property_xcode/sdk_version>`                                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`xcode/xcode_build <class_EditorExportPlatformMacOS_property_xcode/xcode_build>`                                                                                                   |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`xcode/xcode_version <class_EditorExportPlatformMacOS_property_xcode/xcode_version>`                                                                                               |
+   +---------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -513,16 +513,16 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorExportPlatformMacOS_property_application/additional_plist_content:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/additional_plist_content** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/additional_plist_content>`
+:ref:`String<class_String>` **application/additional_plist_content** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/additional_plist_content>`
 
-Additional data added to the root ``<dict>`` section of the `Info.plist <https://developer.apple.com/documentation/bundleresources/information_property_list>`__ file. The value should be an XML section with pairs of key-value elements, e.g.:
+Dữ liệu bổ sung được thêm vào phần ``<dict>`` gốc của tệp `Info.plist <https://developer.apple.com/documentation/bundleresources/information_property_list>`__. Giá trị phải là một phần XML gồm các cặp phần tử khóa-giá trị, ví dụ:
 
 .. code:: text
 
@@ -537,9 +537,9 @@ Additional data added to the root ``<dict>`` section of the `Info.plist <https:/
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/app_category** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/app_category>`
+:ref:`String<class_String>` **application/app_category** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/app_category>`
 
-Application category for the App Store.
+Danh mục ứng dụng trên App Store.
 
 .. rst-class:: classref-item-separator
 
@@ -549,9 +549,9 @@ Application category for the App Store.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/bundle_identifier** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/bundle_identifier>`
+:ref:`String<class_String>` **application/bundle_identifier** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/bundle_identifier>`
 
-Unique application identifier in a reverse-DNS format, can only contain alphanumeric characters (``A-Z``, ``a-z``, and ``0-9``), hyphens (``-``), and periods (``.``).
+Mã định danh ứng dụng duy nhất ở định dạng reverse-DNS, chỉ có thể chứa các ký tự chữ và số (``A-Z``, ``a-z`` và ``0-9``), dấu gạch nối (``-``) và dấu chấm (``.``).
 
 .. rst-class:: classref-item-separator
 
@@ -561,9 +561,9 @@ Unique application identifier in a reverse-DNS format, can only contain alphanum
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/copyright** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/copyright>`
+:ref:`String<class_String>` **application/copyright** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/copyright>`
 
-Copyright notice for the bundle visible to the user (in English).
+Thông báo bản quyền của bundle hiển thị cho người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -573,9 +573,9 @@ Copyright notice for the bundle visible to the user (in English).
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **application/copyright_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/copyright_localized>`
+:ref:`Dictionary<class_Dictionary>` **application/copyright_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/copyright_localized>`
 
-Copyright notice for the bundle visible to the user (localized).
+Thông báo bản quyền của bundle hiển thị cho người dùng (đã bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -585,9 +585,9 @@ Copyright notice for the bundle visible to the user (localized).
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/export_angle** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/export_angle>`
+:ref:`int<class_int>` **application/export_angle** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/export_angle>`
 
-If set to ``1``, ANGLE libraries are exported with the exported application. If set to ``0``, ANGLE libraries are exported only if :ref:`ProjectSettings.rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>` is set to ``"opengl3_angle"``.
+Nếu được đặt thành ``1``, các thư viện ANGLE sẽ được export cùng với ứng dụng đã export. Nếu được đặt thành ``0``, các thư viện ANGLE chỉ được export khi :ref:`ProjectSettings.rendering/gl_compatibility/driver <class_ProjectSettings_property_rendering/gl_compatibility/driver>` được đặt thành ``"opengl3_angle"``.
 
 .. rst-class:: classref-item-separator
 
@@ -597,9 +597,9 @@ If set to ``1``, ANGLE libraries are exported with the exported application. If 
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/icon** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/icon>`
+:ref:`String<class_String>` **application/icon** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/icon>`
 
-Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.application/config/macos_native_icon<class_ProjectSettings_property_application/config/macos_native_icon>`, and then to :ref:`ProjectSettings.application/config/icon<class_ProjectSettings_property_application/config/icon>`.
+Tệp biểu tượng của ứng dụng. Nếu để trống, giá trị này sẽ fallback về :ref:`ProjectSettings.application/config/macos_native_icon <class_ProjectSettings_property_application/config/macos_native_icon>`, sau đó đến :ref:`ProjectSettings.application/config/icon <class_ProjectSettings_property_application/config/icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -609,9 +609,9 @@ Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/icon_interpolation** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/icon_interpolation>`
+:ref:`int<class_int>` **application/icon_interpolation** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/icon_interpolation>`
 
-Interpolation method used to resize application icon.
+Phương pháp nội suy được sử dụng để thay đổi kích thước biểu tượng ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -621,13 +621,13 @@ Interpolation method used to resize application icon.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/liquid_glass_icon** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/liquid_glass_icon>`
+:ref:`String<class_String>` **application/liquid_glass_icon** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/liquid_glass_icon>`
 
-macOS 26 Liquid Glass icon source file. Use `Icon Composer <https://developer.apple.com/icon-composer/>`__ to create Liquid Glass icons.
+Tệp nguồn biểu tượng Liquid Glass của macOS 26. Sử dụng `Icon Composer <https://developer.apple.com/icon-composer/>`__ để tạo biểu tượng Liquid Glass.
 
-\ **Note:** Supported when exporting from macOS only, Xcode 26+ required.
+\ **Lưu ý:** Chỉ được hỗ trợ khi xuất từ macOS, yêu cầu Xcode 26 trở lên.
 
-\ **Note:** Liquid Glass icons are supported on macOS 26 only, use :ref:`application/icon<class_EditorExportPlatformMacOS_property_application/icon>` to set the icon for older macOS versions.
+\ **Lưu ý:** Biểu tượng Liquid Glass chỉ được hỗ trợ trên macOS 26; hãy sử dụng :ref:`application/icon <class_EditorExportPlatformMacOS_property_application/icon>` để đặt biểu tượng cho các phiên bản macOS cũ hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -637,9 +637,9 @@ macOS 26 Liquid Glass icon source file. Use `Icon Composer <https://developer.ap
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/min_macos_version_arm64** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/min_macos_version_arm64>`
+:ref:`String<class_String>` **application/min_macos_version_arm64** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/min_macos_version_arm64>`
 
-Minimum version of macOS required for this application to run on Apple Silicon Macs, in the ``major.minor.patch`` or ``major.minor`` format, can only contain numeric characters (``0-9``) and periods (``.``).
+Phiên bản macOS tối thiểu cần thiết để ứng dụng này chạy trên máy Mac Apple Silicon, ở định dạng ``major.minor.patch`` hoặc ``major.minor``, chỉ có thể chứa các ký tự số (``0-9``) và dấu chấm (``.``).
 
 .. rst-class:: classref-item-separator
 
@@ -649,9 +649,9 @@ Minimum version of macOS required for this application to run on Apple Silicon M
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/min_macos_version_x86_64** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/min_macos_version_x86_64>`
+:ref:`String<class_String>` **application/min_macos_version_x86_64** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/min_macos_version_x86_64>`
 
-Minimum version of macOS required for this application to run on Intel Macs, in the ``major.minor.patch`` or ``major.minor`` format, can only contain numeric characters (``0-9``) and periods (``.``).
+Phiên bản macOS tối thiểu cần thiết để ứng dụng chạy trên máy Mac Intel, theo định dạng ``major.minor.patch`` hoặc ``major.minor``, chỉ được chứa các ký tự số (``0-9``) và dấu chấm (``.``).
 
 .. rst-class:: classref-item-separator
 
@@ -661,11 +661,11 @@ Minimum version of macOS required for this application to run on Intel Macs, in 
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/short_version** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/short_version>`
+:ref:`String<class_String>` **application/short_version** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/short_version>`
 
-Application version visible to the user. Can only contain numeric characters (``0-9``) and periods (``.``). Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty.
+Phiên bản ứng dụng hiển thị cho người dùng. Chỉ được chứa các ký tự số (``0-9``) và dấu chấm (``.``). Nếu để trống, giá trị sẽ lấy từ :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>`.
 
-\ **Note:** This value is used for the *Identity > Version* value in the generated Xcode project.
+\ **Lưu ý:** Giá trị này được sử dụng làm giá trị *Identity > Version* trong dự án Xcode được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -675,9 +675,9 @@ Application version visible to the user. Can only contain numeric characters (``
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/signature** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/signature>`
+:ref:`String<class_String>` **application/signature** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/signature>`
 
-A four-character creator code that is specific to the bundle. Optional.
+Mã creator gồm bốn ký tự, dành riêng cho bundle. Không bắt buộc.
 
 .. rst-class:: classref-item-separator
 
@@ -687,11 +687,11 @@ A four-character creator code that is specific to the bundle. Optional.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/version** :ref:`🔗<class_EditorExportPlatformMacOS_property_application/version>`
+:ref:`String<class_String>` **application/version** :ref:`🔗 <class_EditorExportPlatformMacOS_property_application/version>`
 
-Machine-readable application version in the ``major.minor.patch`` format. Can only contain numeric characters (``0-9``) and periods (``.``). This must be incremented with every new release pushed to the App Store. Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty.
+Phiên bản ứng dụng mà máy có thể đọc được ở định dạng ``major.minor.patch``. Chỉ có thể chứa các ký tự số (``0-9``) và dấu chấm (``.``). Giá trị này phải được tăng lên sau mỗi bản phát hành mới được đẩy lên App Store. Nếu để trống, giá trị sẽ sử dụng :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>`.
 
-\ **Note:** This value is used for the *Identity > Build* value in the generated Xcode project.
+\ **Lưu ý:** Giá trị này được dùng cho giá trị *Identity > Build* trong dự án Xcode được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -701,13 +701,13 @@ Machine-readable application version in the ``major.minor.patch`` format. Can on
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **binary_format/architecture** :ref:`🔗<class_EditorExportPlatformMacOS_property_binary_format/architecture>`
+:ref:`String<class_String>` **binary_format/architecture** :ref:`🔗 <class_EditorExportPlatformMacOS_property_binary_format/architecture>`
 
-Application executable architecture.
+Kiến trúc của tệp thực thi ứng dụng.
 
-Supported architectures: ``x86_64``, ``arm64``, and ``universal`` (``x86_64 + arm64``).
+Các kiến trúc được hỗ trợ: ``x86_64``, ``arm64`` và ``universal`` (``x86_64 + arm64``).
 
-Official export templates include ``universal`` binaries only.
+Các template export chính thức chỉ bao gồm các tệp nhị phân ``universal``.
 
 .. rst-class:: classref-item-separator
 
@@ -717,9 +717,9 @@ Official export templates include ``universal`` binaries only.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/apple_team_id** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/apple_team_id>`
+:ref:`String<class_String>` **codesign/apple_team_id** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/apple_team_id>`
 
-Apple Team ID, unique 10-character string. To locate your Team ID check "Membership details" section in your Apple developer account dashboard, or "Organizational Unit" of your code signing certificate. See `Locate your Team ID <https://developer.apple.com/help/account/manage-your-team/locate-your-team-id>`__.
+Apple Team ID, chuỗi duy nhất gồm 10 ký tự. Để tìm Team ID của bạn, hãy kiểm tra phần "Membership details" trong bảng điều khiển tài khoản Apple developer hoặc "Organizational Unit" của chứng chỉ code signing. Xem `Tìm Team ID của bạn <https://developer.apple.com/help/account/manage-your-team/locate-your-team-id>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -729,11 +729,11 @@ Apple Team ID, unique 10-character string. To locate your Team ID check "Members
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/certificate_file** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/certificate_file>`
+:ref:`String<class_String>` **codesign/certificate_file** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/certificate_file>`
 
-PKCS #12 certificate file used to sign ``.app`` bundle.
+Tệp chứng chỉ PKCS #12 dùng để ký ``.app`` bundle.
 
-Can be overridden with the environment variable ``GODOT_MACOS_CODESIGN_CERTIFICATE_FILE``.
+Có thể ghi đè bằng biến môi trường ``GODOT_MACOS_CODESIGN_CERTIFICATE_FILE``.
 
 .. rst-class:: classref-item-separator
 
@@ -743,11 +743,11 @@ Can be overridden with the environment variable ``GODOT_MACOS_CODESIGN_CERTIFICA
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/certificate_password** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/certificate_password>`
+:ref:`String<class_String>` **codesign/certificate_password** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/certificate_password>`
 
-Password for the certificate file used to sign ``.app`` bundle.
+Mật khẩu của tệp chứng chỉ dùng để ký ``.app`` bundle.
 
-Can be overridden with the environment variable ``GODOT_MACOS_CODESIGN_CERTIFICATE_PASSWORD``.
+Có thể được ghi đè bằng biến môi trường ``GODOT_MACOS_CODESIGN_CERTIFICATE_PASSWORD``.
 
 .. rst-class:: classref-item-separator
 
@@ -757,9 +757,9 @@ Can be overridden with the environment variable ``GODOT_MACOS_CODESIGN_CERTIFICA
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/codesign** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/codesign>`
+:ref:`int<class_int>` **codesign/codesign** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/codesign>`
 
-Tool to use for code signing.
+Công cụ dùng để ký mã.
 
 .. rst-class:: classref-item-separator
 
@@ -769,11 +769,11 @@ Tool to use for code signing.
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **codesign/custom_options** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/custom_options>`
+:ref:`PackedStringArray<class_PackedStringArray>` **codesign/custom_options** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/custom_options>`
 
-Array of the additional command line arguments passed to the code signing tool.
+Mảng các đối số dòng lệnh bổ sung được truyền cho công cụ ký mã.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về *sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -783,9 +783,9 @@ Array of the additional command line arguments passed to the code signing tool.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/entitlements/additional** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/additional>`
+:ref:`String<class_String>` **codesign/entitlements/additional** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/additional>`
 
-Additional data added to the root ``<dict>`` section of the `.entitlements <https://developer.apple.com/documentation/bundleresources/entitlements>`__ file. The value should be an XML section with pairs of key-value elements, for example:
+Dữ liệu bổ sung được thêm vào phần ``<dict>`` gốc của tệp `.entitlements <https://developer.apple.com/documentation/bundleresources/entitlements>`__. Giá trị phải là một phần XML gồm các cặp phần tử khóa-giá trị, ví dụ:
 
 .. code:: text
 
@@ -800,9 +800,9 @@ Additional data added to the root ``<dict>`` section of the `.entitlements <http
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/address_book** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/address_book>`
+:ref:`bool<class_bool>` **codesign/entitlements/address_book** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/address_book>`
 
-Enable to allow access to contacts in the user's address book, if it's enabled you should also provide usage message in the :ref:`privacy/address_book_usage_description<class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description>` option. See `com.apple.security.personal-information.addressbook <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_addressbook>`__.
+Bật tùy chọn này để cho phép truy cập vào danh bạ của người dùng; nếu bật tùy chọn này, bạn cũng nên cung cấp thông báo mục đích sử dụng trong tùy chọn :ref:`privacy/address_book_usage_description <class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description>`. Xem `com.apple.security.personal-information.addressbook <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_addressbook>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -812,9 +812,9 @@ Enable to allow access to contacts in the user's address book, if it's enabled y
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/allow_dyld_environment_variables** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_dyld_environment_variables>`
+:ref:`bool<class_bool>` **codesign/entitlements/allow_dyld_environment_variables** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_dyld_environment_variables>`
 
-Allows app to use dynamic linker environment variables to inject code. If you are using add-ons with dynamic or self-modifying native code, enable them according to the add-on documentation. See `com.apple.security.cs.allow-dyld-environment-variables <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-dyld-environment-variables>`__.
+Cho phép ứng dụng sử dụng các biến môi trường của dynamic linker để chèn mã. Nếu bạn sử dụng add-on có mã native động hoặc tự sửa đổi, hãy bật tùy chọn này theo tài liệu của add-on. Xem `com.apple.security.cs.allow-dyld-environment-variables <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-dyld-environment-variables>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -824,9 +824,9 @@ Allows app to use dynamic linker environment variables to inject code. If you ar
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/allow_jit_code_execution** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_jit_code_execution>`
+:ref:`bool<class_bool>` **codesign/entitlements/allow_jit_code_execution** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_jit_code_execution>`
 
-Allows creating writable and executable memory for JIT code. If you are using add-ons with dynamic or self-modifying native code, enable them according to the add-on documentation. See `com.apple.security.cs.allow-jit <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-jit>`__.
+Cho phép tạo vùng nhớ có thể ghi và thực thi cho mã JIT. Nếu bạn sử dụng add-on có mã native động hoặc tự sửa đổi, hãy bật tùy chọn này theo tài liệu của add-on. Xem `com.apple.security.cs.allow-jit <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-jit>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -836,9 +836,9 @@ Allows creating writable and executable memory for JIT code. If you are using ad
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/allow_unsigned_executable_memory** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_unsigned_executable_memory>`
+:ref:`bool<class_bool>` **codesign/entitlements/allow_unsigned_executable_memory** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/allow_unsigned_executable_memory>`
 
-Allows creating writable and executable memory without JIT restrictions. If you are using add-ons with dynamic or self-modifying native code, enable them according to the add-on documentation. See `com.apple.security.cs.allow-unsigned-executable-memory <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-unsigned-executable-memory>`__.
+Cho phép tạo bộ nhớ có thể ghi và thực thi mà không bị giới hạn JIT. Nếu bạn sử dụng các add-on có mã native động hoặc tự sửa đổi, hãy bật chúng theo tài liệu của add-on. Xem `com.apple.security.cs.allow-unsigned-executable-memory <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_allow-unsigned-executable-memory>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -848,9 +848,9 @@ Allows creating writable and executable memory without JIT restrictions. If you 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/device_bluetooth** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_bluetooth>`
+:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/device_bluetooth** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_bluetooth>`
 
-Enable to allow app to interact with Bluetooth devices. This entitlement is required to use wireless controllers. See `com.apple.security.device.bluetooth <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_bluetooth>`__.
+Bật để cho phép ứng dụng tương tác với các thiết bị Bluetooth. Entitlement này là bắt buộc để sử dụng bộ điều khiển không dây. Xem `com.apple.security.device.bluetooth <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_bluetooth>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -860,9 +860,9 @@ Enable to allow app to interact with Bluetooth devices. This entitlement is requ
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/device_usb** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_usb>`
+:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/device_usb** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/device_usb>`
 
-Enable to allow app to interact with USB devices. This entitlement is required to use wired controllers. See `com.apple.security.device.usb <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_usb>`__.
+Bật để cho phép ứng dụng tương tác với các thiết bị USB. Entitlement này là bắt buộc để sử dụng bộ điều khiển có dây. Xem `com.apple.security.device.usb <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_usb>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -872,11 +872,11 @@ Enable to allow app to interact with USB devices. This entitlement is required t
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/enabled** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/enabled>`
+:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/enabled** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/enabled>`
 
-Enables App Sandbox. The App Sandbox restricts access to user data, networking, and devices. Sandboxed apps can't access most of the file system, can't use custom file dialogs and execute binaries outside the .app bundle. See `App Sandbox <https://developer.apple.com/documentation/security/app_sandbox>`__.
+Bật App Sandbox. App Sandbox hạn chế quyền truy cập vào dữ liệu người dùng, mạng và thiết bị. Các ứng dụng được sandbox không thể truy cập hầu hết hệ thống tệp, không thể sử dụng các hộp thoại tệp tùy chỉnh và thực thi các tệp nhị phân bên ngoài gói .app. Xem `App Sandbox <https://developer.apple.com/documentation/security/app_sandbox>`__.
 
-\ **Note:** To distribute an app through the App Store, you must enable the App Sandbox.
+\ **Lưu ý:** Để phân phối ứng dụng thông qua App Store, bạn phải bật App Sandbox.
 
 .. rst-class:: classref-item-separator
 
@@ -886,9 +886,9 @@ Enables App Sandbox. The App Sandbox restricts access to user data, networking, 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_downloads** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_downloads>`
+:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_downloads** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_downloads>`
 
-Allows read or write access to the user's "Downloads" folder. See `com.apple.security.files.downloads.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_files_downloads_read-write>`__.
+Cho phép quyền đọc hoặc ghi vào thư mục "Downloads" của người dùng. Xem `com.apple.security.files.downloads.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_files_downloads_read-write>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -898,9 +898,9 @@ Allows read or write access to the user's "Downloads" folder. See `com.apple.sec
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_movies** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_movies>`
+:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_movies** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_movies>`
 
-Allows read or write access to the user's "Movies" folder. See `com.apple.security.files.movies.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_assets_movies_read-write>`__.
+Cho phép quyền đọc hoặc ghi vào thư mục "Movies" của người dùng. Xem `com.apple.security.files.movies.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_assets_movies_read-write>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -910,9 +910,9 @@ Allows read or write access to the user's "Movies" folder. See `com.apple.securi
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_music** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_music>`
+:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_music** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_music>`
 
-Allows read or write access to the user's "Music" folder. See `com.apple.security.files.music.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_assets_music_read-write>`__.
+Cho phép đọc hoặc ghi vào thư mục "Music" của người dùng. Xem `com.apple.security.files.music.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_assets_music_read-write>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -922,9 +922,9 @@ Allows read or write access to the user's "Music" folder. See `com.apple.securit
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_pictures** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_pictures>`
+:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_pictures** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_pictures>`
 
-Allows read or write access to the user's "Pictures" folder. See `com.apple.security.files.pictures.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_assets_pictures_read-write>`__.
+Cho phép đọc hoặc ghi vào thư mục "Pictures" của người dùng. Xem `com.apple.security.files.pictures.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_assets_pictures_read-write>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -934,9 +934,9 @@ Allows read or write access to the user's "Pictures" folder. See `com.apple.secu
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_user_selected** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_user_selected>`
+:ref:`int<class_int>` **codesign/entitlements/app_sandbox/files_user_selected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/files_user_selected>`
 
-Allows read or write access to the locations the user has selected using a native file dialog. See `com.apple.security.files.user-selected.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_files_user-selected_read-write>`__.
+Cho phép đọc hoặc ghi vào các vị trí mà người dùng đã chọn bằng hộp thoại tệp gốc. Xem `com.apple.security.files.user-selected.read-write <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_files_user-selected_read-write>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -946,9 +946,9 @@ Allows read or write access to the locations the user has selected using a nativ
 
 .. rst-class:: classref-property
 
-:ref:`Array<class_Array>` **codesign/entitlements/app_sandbox/helper_executables** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/helper_executables>`
+:ref:`Array<class_Array>` **codesign/entitlements/app_sandbox/helper_executables** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/helper_executables>`
 
-List of helper executables to embedded to the app bundle. Sandboxed app are limited to execute only these executable. See `Embedding a command-line tool in a sandboxed app <https://developer.apple.com/documentation/xcode/embedding-a-helper-tool-in-a-sandboxed-app>`__.
+Danh sách các chương trình thực thi trợ giúp được nhúng vào app bundle. App được sandbox chỉ có thể thực thi các chương trình này. Xem `Nhúng một công cụ dòng lệnh vào app được sandbox <https://developer.apple.com/documentation/xcode/embedding-a-helper-tool-in-a-sandboxed-app>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -958,9 +958,9 @@ List of helper executables to embedded to the app bundle. Sandboxed app are limi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/network_client** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_client>`
+:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/network_client** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_client>`
 
-Enable to allow app to establish outgoing network connections. See `com.apple.security.network.client <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_client>`__.
+Bật để cho phép ứng dụng thiết lập các kết nối mạng đi. Xem `com.apple.security.network.client <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_client>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -970,9 +970,9 @@ Enable to allow app to establish outgoing network connections. See `com.apple.se
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/network_server** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_server>`
+:ref:`bool<class_bool>` **codesign/entitlements/app_sandbox/network_server** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/app_sandbox/network_server>`
 
-Enable to allow app to listen for incoming network connections. See `com.apple.security.network.server <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_server>`__.
+Bật để cho phép ứng dụng lắng nghe các kết nối mạng đến. Xem `com.apple.security.network.server <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_server>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -982,9 +982,9 @@ Enable to allow app to listen for incoming network connections. See `com.apple.s
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/apple_events** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/apple_events>`
+:ref:`bool<class_bool>` **codesign/entitlements/apple_events** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/apple_events>`
 
-Enable to allow app to send Apple events to other apps. See `com.apple.security.automation.apple-events <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_automation_apple-events>`__.
+Bật để cho phép ứng dụng gửi Apple events đến các ứng dụng khác. Xem `com.apple.security.automation.apple-events <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_automation_apple-events>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -994,9 +994,9 @@ Enable to allow app to send Apple events to other apps. See `com.apple.security.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/audio_input** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/audio_input>`
+:ref:`bool<class_bool>` **codesign/entitlements/audio_input** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/audio_input>`
 
-Enable if you need to use the microphone or other audio input sources, if it's enabled you should also provide usage message in the :ref:`privacy/microphone_usage_description<class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description>` option. See `com.apple.security.device.audio-input <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_audio-input>`__.
+Bật nếu bạn cần sử dụng micrô hoặc các nguồn đầu vào âm thanh khác; nếu bật tùy chọn này, bạn cũng phải cung cấp thông báo sử dụng trong tùy chọn :ref:`privacy/microphone_usage_description <class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description>`. Xem `com.apple.security.device.audio-input <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_audio-input>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1006,9 +1006,9 @@ Enable if you need to use the microphone or other audio input sources, if it's e
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/calendars** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/calendars>`
+:ref:`bool<class_bool>` **codesign/entitlements/calendars** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/calendars>`
 
-Enable to allow access to the user's calendar, if it's enabled you should also provide usage message in the :ref:`privacy/calendar_usage_description<class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description>` option. See `com.apple.security.personal-information.calendars <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_calendars>`__.
+Bật để cho phép truy cập vào lịch của người dùng; nếu bật tùy chọn này, bạn cũng phải cung cấp thông báo sử dụng trong tùy chọn :ref:`privacy/calendar_usage_description <class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description>`. Xem `com.apple.security.personal-information.calendars <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_calendars>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1018,9 +1018,9 @@ Enable to allow access to the user's calendar, if it's enabled you should also p
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/camera** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/camera>`
+:ref:`bool<class_bool>` **codesign/entitlements/camera** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/camera>`
 
-Enable if you need to use the camera, if it's enabled you should also provide usage message in the :ref:`privacy/camera_usage_description<class_EditorExportPlatformMacOS_property_privacy/camera_usage_description>` option. See `com.apple.security.device.camera <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_camera>`__.
+Bật nếu bạn cần sử dụng camera; nếu bật tùy chọn này, bạn cũng phải cung cấp thông báo sử dụng trong tùy chọn :ref:`privacy/camera_usage_description <class_EditorExportPlatformMacOS_property_privacy/camera_usage_description>`. Xem `com.apple.security.device.camera <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_camera>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1030,9 +1030,9 @@ Enable if you need to use the camera, if it's enabled you should also provide us
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/entitlements/custom_file** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/custom_file>`
+:ref:`String<class_String>` **codesign/entitlements/custom_file** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/custom_file>`
 
-Custom entitlements ``.plist`` file, if specified the rest of entitlements in the export config are ignored.
+Tệp entitlements tùy chỉnh ``.plist``, nếu được chỉ định thì các entitlements còn lại trong cấu hình export sẽ bị bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -1042,9 +1042,9 @@ Custom entitlements ``.plist`` file, if specified the rest of entitlements in th
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/debugging** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/debugging>`
+:ref:`bool<class_bool>` **codesign/entitlements/debugging** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/debugging>`
 
-You can temporarily enable this entitlement to use native debugger (GDB, LLDB) with the exported app. This entitlement should be disabled for production export. See `Embedding a command-line tool in a sandboxed app <https://developer.apple.com/documentation/xcode/embedding-a-helper-tool-in-a-sandboxed-app>`__.
+Bạn có thể tạm thời bật entitlement này để sử dụng trình gỡ lỗi gốc (GDB, LLDB) với ứng dụng đã export. Entitlement này nên được tắt khi export bản production. Xem `Embedding a command-line tool in a sandboxed app <https://developer.apple.com/documentation/xcode/embedding-a-helper-tool-in-a-sandboxed-app>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1054,9 +1054,9 @@ You can temporarily enable this entitlement to use native debugger (GDB, LLDB) w
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/disable_library_validation** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/disable_library_validation>`
+:ref:`bool<class_bool>` **codesign/entitlements/disable_library_validation** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/disable_library_validation>`
 
-Allows app to load arbitrary libraries and frameworks (not signed with the same Team ID as the main executable or by Apple). Enable it if you are using GDExtension add-ons or ad-hoc signing, or want to support user-provided external add-ons. See `com.apple.security.cs.disable-library-validation <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_disable-library-validation>`__.
+Cho phép ứng dụng tải các library và framework tùy ý (không được ký bằng cùng Team ID với executable chính hoặc bởi Apple). Hãy bật tùy chọn này nếu bạn sử dụng các add-on GDExtension hoặc ad-hoc signing, hoặc muốn hỗ trợ các add-on bên ngoài do người dùng cung cấp. Xem `com.apple.security.cs.disable-library-validation <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_cs_disable-library-validation>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1066,9 +1066,9 @@ Allows app to load arbitrary libraries and frameworks (not signed with the same 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/location** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/location>`
+:ref:`bool<class_bool>` **codesign/entitlements/location** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/location>`
 
-Enable if you need to use location information from Location Services, if it's enabled you should also provide usage message in the :ref:`privacy/location_usage_description<class_EditorExportPlatformMacOS_property_privacy/location_usage_description>` option. See `com.apple.security.personal-information.location <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_location>`__.
+Bật tùy chọn này nếu bạn cần sử dụng thông tin vị trí từ Location Services; nếu được bật, bạn cũng nên cung cấp thông báo mục đích sử dụng trong tùy chọn :ref:`privacy/location_usage_description <class_EditorExportPlatformMacOS_property_privacy/location_usage_description>`. Xem `com.apple.security.personal-information.location <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_location>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1078,9 +1078,9 @@ Enable if you need to use location information from Location Services, if it's e
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/entitlements/photos_library** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/entitlements/photos_library>`
+:ref:`bool<class_bool>` **codesign/entitlements/photos_library** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/entitlements/photos_library>`
 
-Enable to allow access to the user's Photos library, if it's enabled you should also provide usage message in the :ref:`privacy/photos_library_usage_description<class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description>` option. See `com.apple.security.personal-information.photos-library <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_photos-library>`__.
+Bật để cho phép truy cập vào thư viện Photos của người dùng; nếu bật tùy chọn này, bạn cũng nên cung cấp thông báo sử dụng trong tùy chọn :ref:`privacy/photos_library_usage_description <class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description>`. Xem `com.apple.security.personal-information.photos-library <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_personal-information_photos-library>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1090,9 +1090,9 @@ Enable to allow access to the user's Photos library, if it's enabled you should 
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/identity** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/identity>`
+:ref:`String<class_String>` **codesign/identity** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/identity>`
 
-The "Full Name", "Common Name" or SHA-1 hash of the signing identity used to sign ``.app`` bundle.
+"Full Name", "Common Name" hoặc mã băm SHA-1 của signing identity được dùng để ký ``.app`` bundle.
 
 .. rst-class:: classref-item-separator
 
@@ -1102,9 +1102,9 @@ The "Full Name", "Common Name" or SHA-1 hash of the signing identity used to sig
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/installer_identity** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/installer_identity>`
+:ref:`String<class_String>` **codesign/installer_identity** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/installer_identity>`
 
-The "Full Name", "Common Name" or SHA-1 hash of the signing identity used to sign ``.pkg`` installer package for App Store distribution, use ``3rd Party Mac Developer Installer: Name.`` identity.
+"Full Name", "Common Name" hoặc mã băm SHA-1 của signing identity được dùng để ký gói installer ``.pkg`` để phân phối trên App Store; sử dụng identity ``3rd Party Mac Developer Installer: Name.``.
 
 .. rst-class:: classref-item-separator
 
@@ -1114,11 +1114,11 @@ The "Full Name", "Common Name" or SHA-1 hash of the signing identity used to sig
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/provisioning_profile** :ref:`🔗<class_EditorExportPlatformMacOS_property_codesign/provisioning_profile>`
+:ref:`String<class_String>` **codesign/provisioning_profile** :ref:`🔗 <class_EditorExportPlatformMacOS_property_codesign/provisioning_profile>`
 
-Provisioning profile file downloaded from Apple developer account dashboard. See `Edit, download, or delete provisioning profiles <https://developer.apple.com/help/account/manage-profiles/edit-download-or-delete-profiles>`__.
+Tệp provisioning profile được tải xuống từ trang tổng quan tài khoản Apple developer. Xem `Edit, download, or delete provisioning profiles <https://developer.apple.com/help/account/manage-profiles/edit-download-or-delete-profiles>`__.
 
-Can be overridden with the environment variable ``GODOT_MACOS_CODESIGN_PROVISIONING_PROFILE``.
+Có thể được ghi đè bằng biến môi trường ``GODOT_MACOS_CODESIGN_PROVISIONING_PROFILE``.
 
 .. rst-class:: classref-item-separator
 
@@ -1128,9 +1128,9 @@ Can be overridden with the environment variable ``GODOT_MACOS_CODESIGN_PROVISION
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/debug** :ref:`🔗<class_EditorExportPlatformMacOS_property_custom_template/debug>`
+:ref:`String<class_String>` **custom_template/debug** :ref:`🔗 <class_EditorExportPlatformMacOS_property_custom_template/debug>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến template export tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1140,9 +1140,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/release** :ref:`🔗<class_EditorExportPlatformMacOS_property_custom_template/release>`
+:ref:`String<class_String>` **custom_template/release** :ref:`🔗 <class_EditorExportPlatformMacOS_property_custom_template/release>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến template export tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1152,9 +1152,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **debug/export_console_wrapper** :ref:`🔗<class_EditorExportPlatformMacOS_property_debug/export_console_wrapper>`
+:ref:`int<class_int>` **debug/export_console_wrapper** :ref:`🔗 <class_EditorExportPlatformMacOS_property_debug/export_console_wrapper>`
 
-If enabled, a wrapper that can be used to run the application with console output is created alongside the exported application.
+Nếu được bật, một wrapper có thể dùng để chạy ứng dụng với đầu ra console sẽ được tạo cùng với ứng dụng đã export.
 
 .. rst-class:: classref-item-separator
 
@@ -1164,9 +1164,9 @@ If enabled, a wrapper that can be used to run the application with console outpu
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **display/high_res** :ref:`🔗<class_EditorExportPlatformMacOS_property_display/high_res>`
+:ref:`bool<class_bool>` **display/high_res** :ref:`🔗 <class_EditorExportPlatformMacOS_property_display/high_res>`
 
-If ``true``, the application is rendered at native display resolution, otherwise it is always rendered at loDPI resolution and upscaled by OS when required.
+Nếu ``true``, ứng dụng được hiển thị ở độ phân giải gốc của màn hình; nếu không, ứng dụng luôn được hiển thị ở độ phân giải loDPI và được OS nâng cấp khi cần.
 
 .. rst-class:: classref-item-separator
 
@@ -1176,9 +1176,9 @@ If ``true``, the application is rendered at native display resolution, otherwise
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **export/distribution_type** :ref:`🔗<class_EditorExportPlatformMacOS_property_export/distribution_type>`
+:ref:`int<class_int>` **export/distribution_type** :ref:`🔗 <class_EditorExportPlatformMacOS_property_export/distribution_type>`
 
-Application distribution target.
+Đích phân phối ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1188,11 +1188,11 @@ Application distribution target.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **notarization/api_key** :ref:`🔗<class_EditorExportPlatformMacOS_property_notarization/api_key>`
+:ref:`String<class_String>` **notarization/api_key** :ref:`🔗 <class_EditorExportPlatformMacOS_property_notarization/api_key>`
 
-Apple App Store Connect API issuer key file.
+Tệp khóa issuer API của Apple App Store Connect.
 
-Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_API_KEY``.
+Có thể ghi đè bằng biến môi trường ``GODOT_MACOS_NOTARIZATION_API_KEY``.
 
 .. rst-class:: classref-item-separator
 
@@ -1202,11 +1202,11 @@ Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_API_K
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **notarization/api_key_id** :ref:`🔗<class_EditorExportPlatformMacOS_property_notarization/api_key_id>`
+:ref:`String<class_String>` **notarization/api_key_id** :ref:`🔗 <class_EditorExportPlatformMacOS_property_notarization/api_key_id>`
 
-Apple App Store Connect API issuer key ID.
+ID khóa issuer của Apple App Store Connect API.
 
-Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_API_KEY_ID``.
+Có thể ghi đè bằng biến môi trường ``GODOT_MACOS_NOTARIZATION_API_KEY_ID``.
 
 .. rst-class:: classref-item-separator
 
@@ -1216,11 +1216,11 @@ Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_API_K
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **notarization/api_uuid** :ref:`🔗<class_EditorExportPlatformMacOS_property_notarization/api_uuid>`
+:ref:`String<class_String>` **notarization/api_uuid** :ref:`🔗 <class_EditorExportPlatformMacOS_property_notarization/api_uuid>`
 
-Apple App Store Connect API issuer UUID.
+UUID issuer của Apple App Store Connect API.
 
-Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_API_UUID``.
+Có thể ghi đè bằng biến môi trường ``GODOT_MACOS_NOTARIZATION_API_UUID``.
 
 .. rst-class:: classref-item-separator
 
@@ -1230,11 +1230,11 @@ Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_API_U
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **notarization/apple_id_name** :ref:`🔗<class_EditorExportPlatformMacOS_property_notarization/apple_id_name>`
+:ref:`String<class_String>` **notarization/apple_id_name** :ref:`🔗 <class_EditorExportPlatformMacOS_property_notarization/apple_id_name>`
 
-Apple ID account name (email address).
+Tên tài khoản Apple ID (địa chỉ email).
 
-Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_APPLE_ID_NAME``.
+Có thể ghi đè bằng biến môi trường ``GODOT_MACOS_NOTARIZATION_APPLE_ID_NAME``.
 
 .. rst-class:: classref-item-separator
 
@@ -1244,11 +1244,11 @@ Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_APPLE
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **notarization/apple_id_password** :ref:`🔗<class_EditorExportPlatformMacOS_property_notarization/apple_id_password>`
+:ref:`String<class_String>` **notarization/apple_id_password** :ref:`🔗 <class_EditorExportPlatformMacOS_property_notarization/apple_id_password>`
 
-Apple ID app-specific password.
+Mật khẩu dành riêng cho ứng dụng của Apple ID.
 
-Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_APPLE_ID_PASSWORD``.
+Có thể ghi đè bằng biến môi trường ``GODOT_MACOS_NOTARIZATION_APPLE_ID_PASSWORD``.
 
 .. rst-class:: classref-item-separator
 
@@ -1258,9 +1258,9 @@ Can be overridden with the environment variable ``GODOT_MACOS_NOTARIZATION_APPLE
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **notarization/notarization** :ref:`🔗<class_EditorExportPlatformMacOS_property_notarization/notarization>`
+:ref:`int<class_int>` **notarization/notarization** :ref:`🔗 <class_EditorExportPlatformMacOS_property_notarization/notarization>`
 
-Tool to use for notarization.
+Công cụ dùng cho notarization.
 
 .. rst-class:: classref-item-separator
 
@@ -1270,9 +1270,9 @@ Tool to use for notarization.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/address_book_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description>`
+:ref:`String<class_String>` **privacy/address_book_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description>`
 
-A message displayed when requesting access to the user's contacts (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào danh bạ của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -1282,9 +1282,9 @@ A message displayed when requesting access to the user's contacts (in English).
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/address_book_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/address_book_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/address_book_usage_description_localized>`
 
-A message displayed when requesting access to the user's contacts (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào danh bạ của người dùng (đã bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -1294,9 +1294,9 @@ A message displayed when requesting access to the user's contacts (localized).
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/calendar_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description>`
+:ref:`String<class_String>` **privacy/calendar_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description>`
 
-A message displayed when requesting access to the user's calendar data (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào dữ liệu lịch của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -1306,9 +1306,9 @@ A message displayed when requesting access to the user's calendar data (in Engli
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/calendar_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/calendar_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/calendar_usage_description_localized>`
 
-A message displayed when requesting access to the user's calendar data (localized).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào dữ liệu lịch của người dùng (đã bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -1318,9 +1318,9 @@ A message displayed when requesting access to the user's calendar data (localize
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/camera_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/camera_usage_description>`
+:ref:`String<class_String>` **privacy/camera_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/camera_usage_description>`
 
-A message displayed when requesting access to the device's camera (in English).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào camera của thiết bị (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -1330,9 +1330,9 @@ A message displayed when requesting access to the device's camera (in English).
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/camera_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/camera_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/camera_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/camera_usage_description_localized>`
 
-A message displayed when requesting access to the device's camera (localized).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào camera của thiết bị (đã bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -1342,9 +1342,9 @@ A message displayed when requesting access to the device's camera (localized).
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collected>`
 
-Indicates whether your app collects advertising data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu quảng cáo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1354,9 +1354,9 @@ Indicates whether your app collects advertising data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/advertising_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/advertising_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/collection_purposes>`
 
-The reasons your app collects advertising data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu quảng cáo. Xem `Mô tả cách sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1366,9 +1366,9 @@ The reasons your app collects advertising data. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/linked_to_user>`
 
-Indicates whether your app links advertising data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu quảng cáo với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1378,9 +1378,9 @@ Indicates whether your app links advertising data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/advertising_data/used_for_tracking>`
 
-Indicates whether your app uses advertising data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu quảng cáo để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1390,9 +1390,9 @@ Indicates whether your app uses advertising data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/audio_data/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/audio_data/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collected>`
 
-Indicates whether your app collects audio data.
+Cho biết liệu ứng dụng của bạn có thu thập dữ liệu âm thanh hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1402,9 +1402,9 @@ Indicates whether your app collects audio data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/audio_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/audio_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/collection_purposes>`
 
-The reasons your app collects audio data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu âm thanh. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1414,9 +1414,9 @@ The reasons your app collects audio data. See `Describing data use in privacy ma
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/audio_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/audio_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/linked_to_user>`
 
-Indicates whether your app links audio data to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết dữ liệu âm thanh với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1426,9 +1426,9 @@ Indicates whether your app links audio data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/audio_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/audio_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/audio_data/used_for_tracking>`
 
-Indicates whether your app uses audio data for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng dữ liệu âm thanh để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1438,9 +1438,9 @@ Indicates whether your app uses audio data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collected>`
 
-Indicates whether your app collects browsing history.
+Cho biết ứng dụng của bạn có thu thập lịch sử duyệt web hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1450,9 +1450,9 @@ Indicates whether your app collects browsing history.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/browsing_history/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/browsing_history/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/collection_purposes>`
 
-The reasons your app collects browsing history. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập lịch sử duyệt web. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1462,9 +1462,9 @@ The reasons your app collects browsing history. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/linked_to_user>`
 
-Indicates whether your app links browsing history to the user's identity.
+Cho biết ứng dụng của bạn có liên kết lịch sử duyệt web với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1474,9 +1474,9 @@ Indicates whether your app links browsing history to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/browsing_history/used_for_tracking>`
 
-Indicates whether your app uses browsing history for tracking.
+Cho biết ứng dụng của bạn có sử dụng lịch sử duyệt web để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1486,9 +1486,9 @@ Indicates whether your app uses browsing history for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collected>`
 
-Indicates whether your app collects coarse location data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu vị trí gần đúng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1498,9 +1498,9 @@ Indicates whether your app collects coarse location data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/coarse_location/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/coarse_location/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/collection_purposes>`
 
-The reasons your app collects coarse location data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu vị trí gần đúng. Hãy xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1510,9 +1510,9 @@ The reasons your app collects coarse location data. See `Describing data use in 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/linked_to_user>`
 
-Indicates whether your app links coarse location data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu vị trí gần đúng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1522,9 +1522,9 @@ Indicates whether your app links coarse location data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/coarse_location/used_for_tracking>`
 
-Indicates whether your app uses coarse location data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu vị trí gần đúng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1534,9 +1534,9 @@ Indicates whether your app uses coarse location data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/contacts/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/contacts/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collected>`
 
-Indicates whether your app collects contacts.
+Cho biết ứng dụng của bạn có thu thập danh bạ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1546,9 +1546,9 @@ Indicates whether your app collects contacts.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/contacts/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/contacts/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/collection_purposes>`
 
-The reasons your app collects contacts. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập danh bạ. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1558,9 +1558,9 @@ The reasons your app collects contacts. See `Describing data use in privacy mani
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/contacts/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/contacts/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/linked_to_user>`
 
-Indicates whether your app links contacts to the user's identity.
+Cho biết ứng dụng của bạn có liên kết danh bạ với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1570,9 +1570,9 @@ Indicates whether your app links contacts to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/contacts/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/contacts/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/contacts/used_for_tracking>`
 
-Indicates whether your app uses contacts for tracking.
+Cho biết ứng dụng của bạn có sử dụng danh bạ để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1582,9 +1582,9 @@ Indicates whether your app uses contacts for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/crash_data/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/crash_data/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collected>`
 
-Indicates whether your app collects crash data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu sự cố hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1594,9 +1594,9 @@ Indicates whether your app collects crash data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/crash_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/crash_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/collection_purposes>`
 
-The reasons your app collects crash data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu sự cố. Xem `Mô tả việc sử dụng dữ liệu trong các bản kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1606,9 +1606,9 @@ The reasons your app collects crash data. See `Describing data use in privacy ma
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/crash_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/crash_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/linked_to_user>`
 
-Indicates whether your app links crash data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu sự cố với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1618,9 +1618,9 @@ Indicates whether your app links crash data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/crash_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/crash_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/crash_data/used_for_tracking>`
 
-Indicates whether your app uses crash data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu sự cố để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1630,9 +1630,9 @@ Indicates whether your app uses crash data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/credit_info/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/credit_info/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collected>`
 
-Indicates whether your app collects credit information.
+Cho biết ứng dụng của bạn có thu thập thông tin tín dụng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1642,9 +1642,9 @@ Indicates whether your app collects credit information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/credit_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/credit_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/collection_purposes>`
 
-The reasons your app collects credit information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập thông tin tín dụng. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1654,9 +1654,9 @@ The reasons your app collects credit information. See `Describing data use in pr
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/credit_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/credit_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/linked_to_user>`
 
-Indicates whether your app links credit information to the user's identity.
+Cho biết ứng dụng của bạn có liên kết thông tin tín dụng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1666,9 +1666,9 @@ Indicates whether your app links credit information to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/credit_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/credit_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/credit_info/used_for_tracking>`
 
-Indicates whether your app uses credit information for tracking.
+Cho biết ứng dụng của bạn có sử dụng thông tin tín dụng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1678,9 +1678,9 @@ Indicates whether your app uses credit information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/customer_support/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/customer_support/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collected>`
 
-Indicates whether your app collects customer support data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu hỗ trợ khách hàng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1690,9 +1690,9 @@ Indicates whether your app collects customer support data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/customer_support/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/customer_support/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/collection_purposes>`
 
-The reasons your app collects customer support data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu hỗ trợ khách hàng. Xem `Mô tả việc sử dụng dữ liệu trong các privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1702,9 +1702,9 @@ The reasons your app collects customer support data. See `Describing data use in
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/customer_support/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/customer_support/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/linked_to_user>`
 
-Indicates whether your app links customer support data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu hỗ trợ khách hàng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1714,9 +1714,9 @@ Indicates whether your app links customer support data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/customer_support/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/customer_support/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/customer_support/used_for_tracking>`
 
-Indicates whether your app uses customer support data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu hỗ trợ khách hàng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1726,9 +1726,9 @@ Indicates whether your app uses customer support data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/device_id/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/device_id/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collected>`
 
-Indicates whether your app collects device IDs.
+Cho biết ứng dụng của bạn có thu thập ID thiết bị hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1738,9 +1738,9 @@ Indicates whether your app collects device IDs.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/device_id/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/device_id/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/collection_purposes>`
 
-The reasons your app collects device IDs. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập ID thiết bị. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1750,9 +1750,9 @@ The reasons your app collects device IDs. See `Describing data use in privacy ma
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/device_id/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/device_id/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/linked_to_user>`
 
-Indicates whether your app links device IDs to the user's identity.
+Cho biết ứng dụng của bạn có liên kết ID thiết bị với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1762,9 +1762,9 @@ Indicates whether your app links device IDs to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/device_id/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/device_id/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/device_id/used_for_tracking>`
 
-Indicates whether your app uses device IDs for tracking.
+Cho biết ứng dụng của bạn có sử dụng ID thiết bị để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1774,9 +1774,9 @@ Indicates whether your app uses device IDs for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/email_address/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/email_address/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collected>`
 
-Indicates whether your app collects email address.
+Cho biết liệu ứng dụng của bạn có thu thập địa chỉ email hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1786,9 +1786,9 @@ Indicates whether your app collects email address.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/email_address/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/email_address/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/collection_purposes>`
 
-The reasons your app collects email address. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập địa chỉ email. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1798,9 +1798,9 @@ The reasons your app collects email address. See `Describing data use in privacy
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/email_address/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/email_address/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/linked_to_user>`
 
-Indicates whether your app links email address to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết địa chỉ email với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1810,9 +1810,9 @@ Indicates whether your app links email address to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/email_address/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/email_address/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/email_address/used_for_tracking>`
 
-Indicates whether your app uses email address for tracking.
+Cho biết ứng dụng của bạn có sử dụng địa chỉ email để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1822,9 +1822,9 @@ Indicates whether your app uses email address for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collected>`
 
-Indicates whether your app collects emails or text messages.
+Cho biết ứng dụng của bạn có thu thập email hoặc tin nhắn văn bản hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1834,9 +1834,9 @@ Indicates whether your app collects emails or text messages.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/emails_or_text_messages/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/emails_or_text_messages/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>`
 
-The reasons your app collects emails or text messages. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập email hoặc tin nhắn văn bản. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1846,9 +1846,9 @@ The reasons your app collects emails or text messages. See `Describing data use 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`
 
-Indicates whether your app links emails or text messages to the user's identity.
+Cho biết ứng dụng của bạn có liên kết email hoặc tin nhắn văn bản với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1858,9 +1858,9 @@ Indicates whether your app links emails or text messages to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`
 
-Indicates whether your app uses emails or text messages for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng email hoặc tin nhắn văn bản để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1870,9 +1870,9 @@ Indicates whether your app uses emails or text messages for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collected>`
 
-Indicates whether your app collects environment scanning data.
+Cho biết liệu ứng dụng của bạn có thu thập dữ liệu quét môi trường hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1882,9 +1882,9 @@ Indicates whether your app collects environment scanning data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/environment_scanning/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/environment_scanning/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/collection_purposes>`
 
-The reasons your app collects environment scanning data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu quét môi trường. Xem `Mô tả cách sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1894,9 +1894,9 @@ The reasons your app collects environment scanning data. See `Describing data us
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/linked_to_user>`
 
-Indicates whether your app links environment scanning data to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết dữ liệu quét môi trường với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1906,9 +1906,9 @@ Indicates whether your app links environment scanning data to the user's identit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`
 
-Indicates whether your app uses environment scanning data for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng dữ liệu quét môi trường để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1918,9 +1918,9 @@ Indicates whether your app uses environment scanning data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/fitness/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/fitness/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collected>`
 
-Indicates whether your app collects fitness and exercise data.
+Cho biết liệu ứng dụng của bạn có thu thập dữ liệu về thể chất và việc tập luyện hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1930,9 +1930,9 @@ Indicates whether your app collects fitness and exercise data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/fitness/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/fitness/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/collection_purposes>`
 
-The reasons your app collects fitness and exercise data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu về thể chất và việc tập luyện. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1942,9 +1942,9 @@ The reasons your app collects fitness and exercise data. See `Describing data us
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/fitness/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/fitness/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/linked_to_user>`
 
-Indicates whether your app links fitness and exercise data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu về thể chất và tập luyện với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1954,9 +1954,9 @@ Indicates whether your app links fitness and exercise data to the user's identit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/fitness/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/fitness/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/fitness/used_for_tracking>`
 
-Indicates whether your app uses fitness and exercise data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu về thể chất và tập luyện để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1966,9 +1966,9 @@ Indicates whether your app uses fitness and exercise data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collected>`
 
-Indicates whether your app collects gameplay content.
+Cho biết ứng dụng của bạn có thu thập nội dung chơi game hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1978,9 +1978,9 @@ Indicates whether your app collects gameplay content.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/gameplay_content/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/gameplay_content/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/collection_purposes>`
 
-The reasons your app collects gameplay content. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập nội dung trò chơi. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1990,9 +1990,9 @@ The reasons your app collects gameplay content. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/linked_to_user>`
 
-Indicates whether your app links gameplay content to the user's identity.
+Cho biết ứng dụng của bạn có liên kết nội dung trò chơi với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2002,9 +2002,9 @@ Indicates whether your app links gameplay content to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`
 
-Indicates whether your app uses gameplay content for tracking.
+Cho biết ứng dụng của bạn có sử dụng nội dung trò chơi để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2014,9 +2014,9 @@ Indicates whether your app uses gameplay content for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/hands/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/hands/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collected>`
 
-Indicates whether your app collects user's hand structure and hand movements.
+Cho biết ứng dụng của bạn có thu thập cấu trúc bàn tay và chuyển động tay của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2026,9 +2026,9 @@ Indicates whether your app collects user's hand structure and hand movements.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/hands/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/hands/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/collection_purposes>`
 
-The reasons your app collects user's hand structure and hand movements. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập cấu trúc bàn tay và chuyển động bàn tay của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2038,9 +2038,9 @@ The reasons your app collects user's hand structure and hand movements. See `Des
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/hands/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/hands/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/linked_to_user>`
 
-Indicates whether your app links user's hand structure and hand movements to the user's identity.
+Cho biết ứng dụng của bạn có liên kết cấu trúc bàn tay và chuyển động bàn tay của người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2050,9 +2050,9 @@ Indicates whether your app links user's hand structure and hand movements to the
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/hands/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/hands/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/hands/used_for_tracking>`
 
-Indicates whether your app uses user's hand structure and hand movements for tracking.
+Cho biết ứng dụng của bạn có sử dụng cấu trúc bàn tay và chuyển động bàn tay của người dùng để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2062,9 +2062,9 @@ Indicates whether your app uses user's hand structure and hand movements for tra
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/head/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/head/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collected>`
 
-Indicates whether your app collects user's head movement.
+Cho biết liệu ứng dụng của bạn có thu thập chuyển động đầu của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2074,9 +2074,9 @@ Indicates whether your app collects user's head movement.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/head/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/head/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/collection_purposes>`
 
-The reasons your app collects user's head movement. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập chuyển động đầu của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2086,9 +2086,9 @@ The reasons your app collects user's head movement. See `Describing data use in 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/head/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/head/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/linked_to_user>`
 
-Indicates whether your app links user's head movement to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết chuyển động đầu của người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2098,9 +2098,9 @@ Indicates whether your app links user's head movement to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/head/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/head/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/head/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/head/used_for_tracking>`
 
-Indicates whether your app uses user's head movement for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng chuyển động đầu của người dùng để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2110,9 +2110,9 @@ Indicates whether your app uses user's head movement for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/health/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/health/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collected>`
 
-Indicates whether your app collects health and medical data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu sức khỏe và y tế hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2122,9 +2122,9 @@ Indicates whether your app collects health and medical data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/health/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/health/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/collection_purposes>`
 
-The reasons your app collects health and medical data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu sức khỏe và y tế. Xem `Mô tả cách sử dụng dữ liệu trong các manifest về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2134,9 +2134,9 @@ The reasons your app collects health and medical data. See `Describing data use 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/health/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/health/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/linked_to_user>`
 
-Indicates whether your app links health and medical data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu sức khỏe và y tế với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2146,9 +2146,9 @@ Indicates whether your app links health and medical data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/health/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/health/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/health/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/health/used_for_tracking>`
 
-Indicates whether your app uses health and medical data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu sức khỏe và y tế để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2158,9 +2158,9 @@ Indicates whether your app uses health and medical data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/name/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/name/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collected>`
 
-Indicates whether your app collects user's name.
+Cho biết ứng dụng của bạn có thu thập tên của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2170,9 +2170,9 @@ Indicates whether your app collects user's name.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/name/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/name/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/collection_purposes>`
 
-The reasons your app collects user's name. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập tên của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2182,9 +2182,9 @@ The reasons your app collects user's name. See `Describing data use in privacy m
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/name/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/name/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/linked_to_user>`
 
-Indicates whether your app links user's name to the user's identity.
+Cho biết ứng dụng của bạn có liên kết tên của người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2194,9 +2194,9 @@ Indicates whether your app links user's name to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/name/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/name/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/name/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/name/used_for_tracking>`
 
-Indicates whether your app uses user's name for tracking.
+Cho biết ứng dụng của bạn có sử dụng tên của người dùng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2206,9 +2206,9 @@ Indicates whether your app uses user's name for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collected>`
 
-Indicates whether your app collects any other contact information.
+Cho biết ứng dụng của bạn có thu thập bất kỳ thông tin liên hệ nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2218,9 +2218,9 @@ Indicates whether your app collects any other contact information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_contact_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_contact_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/collection_purposes>`
 
-The reasons your app collects any other contact information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập bất kỳ thông tin liên hệ nào khác. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2230,9 +2230,9 @@ The reasons your app collects any other contact information. See `Describing dat
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/linked_to_user>`
 
-Indicates whether your app links any other contact information to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết bất kỳ thông tin liên hệ nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2242,9 +2242,9 @@ Indicates whether your app links any other contact information to the user's ide
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`
 
-Indicates whether your app uses any other contact information for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng bất kỳ thông tin liên hệ nào khác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2254,9 +2254,9 @@ Indicates whether your app uses any other contact information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collected>`
 
-Indicates whether your app collects any other data.
+Cho biết liệu ứng dụng của bạn có thu thập bất kỳ dữ liệu nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2266,9 +2266,9 @@ Indicates whether your app collects any other data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_data_types/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_data_types/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/collection_purposes>`
 
-The reasons your app collects any other data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ dữ liệu nào khác. Xem `Mô tả cách sử dụng dữ liệu trong các tệp kê khai về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2278,9 +2278,9 @@ The reasons your app collects any other data. See `Describing data use in privac
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/linked_to_user>`
 
-Indicates whether your app links any other data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết bất kỳ dữ liệu nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2290,9 +2290,9 @@ Indicates whether your app links any other data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_data_types/used_for_tracking>`
 
-Indicates whether your app uses any other data for tracking.
+Cho biết ứng dụng của bạn có sử dụng bất kỳ dữ liệu nào khác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2302,9 +2302,9 @@ Indicates whether your app uses any other data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collected>`
 
-Indicates whether your app collects any other diagnostic data.
+Cho biết ứng dụng của bạn có thu thập bất kỳ dữ liệu chẩn đoán nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2314,9 +2314,9 @@ Indicates whether your app collects any other diagnostic data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_diagnostic_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_diagnostic_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`
 
-The reasons your app collects any other diagnostic data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ dữ liệu chẩn đoán nào khác. Xem `Mô tả việc sử dụng dữ liệu trong manifest quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2326,9 +2326,9 @@ The reasons your app collects any other diagnostic data. See `Describing data us
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`
 
-Indicates whether your app links any other diagnostic data to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết bất kỳ dữ liệu chẩn đoán nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2338,9 +2338,9 @@ Indicates whether your app links any other diagnostic data to the user's identit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`
 
-Indicates whether your app uses any other diagnostic data for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng bất kỳ dữ liệu chẩn đoán nào khác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2350,9 +2350,9 @@ Indicates whether your app uses any other diagnostic data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collected>`
 
-Indicates whether your app collects any other financial information.
+Cho biết liệu ứng dụng của bạn có thu thập bất kỳ thông tin tài chính nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2362,9 +2362,9 @@ Indicates whether your app collects any other financial information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_financial_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_financial_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/collection_purposes>`
 
-The reasons your app collects any other financial information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập bất kỳ thông tin tài chính nào khác. Xem `Mô tả việc sử dụng dữ liệu trong các bản kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2374,9 +2374,9 @@ The reasons your app collects any other financial information. See `Describing d
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/linked_to_user>`
 
-Indicates whether your app links any other financial information to the user's identity.
+Cho biết ứng dụng của bạn có liên kết bất kỳ thông tin tài chính nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2386,9 +2386,9 @@ Indicates whether your app links any other financial information to the user's i
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`
 
-Indicates whether your app uses any other financial information for tracking.
+Cho biết ứng dụng của bạn có sử dụng bất kỳ thông tin tài chính nào khác cho việc tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2398,9 +2398,9 @@ Indicates whether your app uses any other financial information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collected>`
 
-Indicates whether your app collects any other usage data.
+Cho biết ứng dụng của bạn có thu thập bất kỳ dữ liệu sử dụng nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2410,9 +2410,9 @@ Indicates whether your app collects any other usage data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_usage_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_usage_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/collection_purposes>`
 
-The reasons your app collects any other usage data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ dữ liệu sử dụng nào khác. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2422,9 +2422,9 @@ The reasons your app collects any other usage data. See `Describing data use in 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/linked_to_user>`
 
-Indicates whether your app links any other usage data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết bất kỳ dữ liệu sử dụng nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2434,9 +2434,9 @@ Indicates whether your app links any other usage data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`
 
-Indicates whether your app uses any other usage data for tracking.
+Cho biết ứng dụng của bạn có sử dụng bất kỳ dữ liệu sử dụng nào khác để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2446,9 +2446,9 @@ Indicates whether your app uses any other usage data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collected>`
 
-Indicates whether your app collects any other user generated content.
+Cho biết ứng dụng của bạn có thu thập bất kỳ nội dung nào khác do người dùng tạo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2458,9 +2458,9 @@ Indicates whether your app collects any other user generated content.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_user_content/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_user_content/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/collection_purposes>`
 
-The reasons your app collects any other user generated content. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ nội dung nào khác do người dùng tạo. Xem `Mô tả cách sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2470,9 +2470,9 @@ The reasons your app collects any other user generated content. See `Describing 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/linked_to_user>`
 
-Indicates whether your app links any other user generated content to the user's identity.
+Cho biết ứng dụng của bạn có liên kết bất kỳ nội dung nào khác do người dùng tạo với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2482,9 +2482,9 @@ Indicates whether your app links any other user generated content to the user's 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/other_user_content/used_for_tracking>`
 
-Indicates whether your app uses any other user generated content for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng bất kỳ nội dung nào khác do người dùng tạo để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2494,9 +2494,9 @@ Indicates whether your app uses any other user generated content for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/payment_info/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/payment_info/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collected>`
 
-Indicates whether your app collects payment information.
+Cho biết liệu ứng dụng của bạn có thu thập thông tin thanh toán hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2506,9 +2506,9 @@ Indicates whether your app collects payment information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/payment_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/payment_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/collection_purposes>`
 
-The reasons your app collects payment information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập thông tin thanh toán. Xem `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2518,9 +2518,9 @@ The reasons your app collects payment information. See `Describing data use in p
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/payment_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/payment_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/linked_to_user>`
 
-Indicates whether your app links payment information to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết thông tin thanh toán với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2530,9 +2530,9 @@ Indicates whether your app links payment information to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/payment_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/payment_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/payment_info/used_for_tracking>`
 
-Indicates whether your app uses payment information for tracking.
+Cho biết ứng dụng của bạn có sử dụng thông tin thanh toán để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2542,9 +2542,9 @@ Indicates whether your app uses payment information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/performance_data/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/performance_data/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collected>`
 
-Indicates whether your app collects performance data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu hiệu suất hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2554,9 +2554,9 @@ Indicates whether your app collects performance data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/performance_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/performance_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/collection_purposes>`
 
-The reasons your app collects performance data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu hiệu suất. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2566,9 +2566,9 @@ The reasons your app collects performance data. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/performance_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/performance_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/linked_to_user>`
 
-Indicates whether your app links performance data to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết dữ liệu hiệu suất với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2578,9 +2578,9 @@ Indicates whether your app links performance data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/performance_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/performance_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/performance_data/used_for_tracking>`
 
-Indicates whether your app uses performance data for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng dữ liệu hiệu suất để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2590,9 +2590,9 @@ Indicates whether your app uses performance data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/phone_number/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/phone_number/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collected>`
 
-Indicates whether your app collects phone number.
+Cho biết liệu ứng dụng của bạn có thu thập số điện thoại hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2602,9 +2602,9 @@ Indicates whether your app collects phone number.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/phone_number/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/phone_number/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/collection_purposes>`
 
-The reasons your app collects phone number. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập số điện thoại. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2614,9 +2614,9 @@ The reasons your app collects phone number. See `Describing data use in privacy 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/phone_number/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/phone_number/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/linked_to_user>`
 
-Indicates whether your app links phone number to the user's identity.
+Cho biết ứng dụng của bạn có liên kết số điện thoại với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2626,9 +2626,9 @@ Indicates whether your app links phone number to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/phone_number/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/phone_number/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/phone_number/used_for_tracking>`
 
-Indicates whether your app uses phone number for tracking.
+Cho biết ứng dụng của bạn có sử dụng số điện thoại để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2638,9 +2638,9 @@ Indicates whether your app uses phone number for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collected>`
 
-Indicates whether your app collects photos or videos.
+Cho biết ứng dụng của bạn có thu thập ảnh hoặc video hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2650,9 +2650,9 @@ Indicates whether your app collects photos or videos.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/photos_or_videos/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/photos_or_videos/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`
 
-The reasons your app collects photos or videos. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập ảnh hoặc video. Xem `Mô tả việc sử dụng dữ liệu trong bản kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2662,9 +2662,9 @@ The reasons your app collects photos or videos. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`
 
-Indicates whether your app links photos or videos to the user's identity.
+Cho biết ứng dụng của bạn có liên kết ảnh hoặc video với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2674,9 +2674,9 @@ Indicates whether your app links photos or videos to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`
 
-Indicates whether your app uses photos or videos for tracking.
+Cho biết ứng dụng của bạn có sử dụng ảnh hoặc video để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2686,9 +2686,9 @@ Indicates whether your app uses photos or videos for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/physical_address/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/physical_address/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collected>`
 
-Indicates whether your app collects physical address.
+Cho biết ứng dụng của bạn có thu thập địa chỉ thực hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2698,9 +2698,9 @@ Indicates whether your app collects physical address.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/physical_address/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/physical_address/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/collection_purposes>`
 
-The reasons your app collects physical address. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập địa chỉ thực. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2710,9 +2710,9 @@ The reasons your app collects physical address. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/physical_address/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/physical_address/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/linked_to_user>`
 
-Indicates whether your app links physical address to the user's identity.
+Cho biết ứng dụng của bạn có liên kết địa chỉ thực với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2722,9 +2722,9 @@ Indicates whether your app links physical address to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/physical_address/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/physical_address/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/physical_address/used_for_tracking>`
 
-Indicates whether your app uses physical address for tracking.
+Cho biết ứng dụng của bạn có sử dụng địa chỉ thực để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2734,9 +2734,9 @@ Indicates whether your app uses physical address for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/precise_location/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/precise_location/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collected>`
 
-Indicates whether your app collects precise location data.
+Cho biết liệu ứng dụng của bạn có thu thập dữ liệu vị trí chính xác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2746,9 +2746,9 @@ Indicates whether your app collects precise location data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/precise_location/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/precise_location/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/collection_purposes>`
 
-The reasons your app collects precise location data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu vị trí chính xác. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2758,9 +2758,9 @@ The reasons your app collects precise location data. See `Describing data use in
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/precise_location/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/precise_location/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/linked_to_user>`
 
-Indicates whether your app links precise location data to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết dữ liệu vị trí chính xác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2770,9 +2770,9 @@ Indicates whether your app links precise location data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/precise_location/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/precise_location/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/precise_location/used_for_tracking>`
 
-Indicates whether your app uses precise location data for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng dữ liệu vị trí chính xác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2782,9 +2782,9 @@ Indicates whether your app uses precise location data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collected>`
 
-Indicates whether your app collects product interaction data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu tương tác với sản phẩm hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2794,9 +2794,9 @@ Indicates whether your app collects product interaction data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/product_interaction/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/product_interaction/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/collection_purposes>`
 
-The reasons your app collects product interaction data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu tương tác với sản phẩm. Xem `Mô tả cách sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2806,9 +2806,9 @@ The reasons your app collects product interaction data. See `Describing data use
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/linked_to_user>`
 
-Indicates whether your app links product interaction data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu tương tác với sản phẩm với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2818,9 +2818,9 @@ Indicates whether your app links product interaction data to the user's identity
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/product_interaction/used_for_tracking>`
 
-Indicates whether your app uses product interaction data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu về tương tác với sản phẩm để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2830,9 +2830,9 @@ Indicates whether your app uses product interaction data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collected>`
 
-Indicates whether your app collects purchase history.
+Cho biết ứng dụng của bạn có thu thập lịch sử mua hàng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2842,9 +2842,9 @@ Indicates whether your app collects purchase history.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/purchase_history/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/purchase_history/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/collection_purposes>`
 
-The reasons your app collects purchase history. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập lịch sử mua hàng. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2854,9 +2854,9 @@ The reasons your app collects purchase history. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/linked_to_user>`
 
-Indicates whether your app links purchase history to the user's identity.
+Cho biết ứng dụng của bạn có liên kết lịch sử mua hàng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2866,9 +2866,9 @@ Indicates whether your app links purchase history to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/purchase_history/used_for_tracking>`
 
-Indicates whether your app uses purchase history for tracking.
+Cho biết ứng dụng của bạn có sử dụng lịch sử mua hàng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2878,9 +2878,9 @@ Indicates whether your app uses purchase history for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/search_history/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/search_history/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collected>`
 
-Indicates whether your app collects search history.
+Cho biết ứng dụng của bạn có thu thập lịch sử tìm kiếm hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2890,9 +2890,9 @@ Indicates whether your app collects search history.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/search_history/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/search_history/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/collection_purposes>`
 
-The reasons your app collects search history. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập lịch sử tìm kiếm. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2902,9 +2902,9 @@ The reasons your app collects search history. See `Describing data use in privac
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/search_history/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/search_history/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/linked_to_user>`
 
-Indicates whether your app links search history to the user's identity.
+Cho biết ứng dụng của bạn có liên kết lịch sử tìm kiếm với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2914,9 +2914,9 @@ Indicates whether your app links search history to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/search_history/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/search_history/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/search_history/used_for_tracking>`
 
-Indicates whether your app uses search history for tracking.
+Cho biết ứng dụng của bạn có sử dụng lịch sử tìm kiếm để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2926,9 +2926,9 @@ Indicates whether your app uses search history for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collected>`
 
-Indicates whether your app collects sensitive user information.
+Cho biết ứng dụng của bạn có thu thập thông tin nhạy cảm của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2938,9 +2938,9 @@ Indicates whether your app collects sensitive user information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/sensitive_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/sensitive_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/collection_purposes>`
 
-The reasons your app collects sensitive user information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập thông tin nhạy cảm của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2950,9 +2950,9 @@ The reasons your app collects sensitive user information. See `Describing data u
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/linked_to_user>`
 
-Indicates whether your app links sensitive user information to the user's identity.
+Cho biết ứng dụng của bạn có liên kết thông tin nhạy cảm của người dùng với danh tính của họ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2962,9 +2962,9 @@ Indicates whether your app links sensitive user information to the user's identi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`
 
-Indicates whether your app uses sensitive user information for tracking.
+Cho biết ứng dụng của bạn có sử dụng thông tin nhạy cảm của người dùng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2974,9 +2974,9 @@ Indicates whether your app uses sensitive user information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/user_id/collected** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/user_id/collected** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collected>`
 
-Indicates whether your app collects user IDs.
+Cho biết ứng dụng của bạn có thu thập user ID hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2986,9 +2986,9 @@ Indicates whether your app collects user IDs.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/user_id/collection_purposes** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/user_id/collection_purposes** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/collection_purposes>`
 
-The reasons your app collects user IDs. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập ID người dùng. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2998,9 +2998,9 @@ The reasons your app collects user IDs. See `Describing data use in privacy mani
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/user_id/linked_to_user** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/user_id/linked_to_user** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/linked_to_user>`
 
-Indicates whether your app links user IDs to the user's identity.
+Cho biết ứng dụng của bạn có liên kết ID người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -3010,9 +3010,9 @@ Indicates whether your app links user IDs to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/user_id/used_for_tracking** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/user_id/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/collected_data/user_id/used_for_tracking>`
 
-Indicates whether your app uses user IDs for tracking.
+Cho biết ứng dụng của bạn có sử dụng ID người dùng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -3022,9 +3022,9 @@ Indicates whether your app uses user IDs for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/desktop_folder_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description>`
+:ref:`String<class_String>` **privacy/desktop_folder_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description>`
 
-A message displayed when requesting access to the user's "Desktop" folder (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư mục "Desktop" của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3034,9 +3034,9 @@ A message displayed when requesting access to the user's "Desktop" folder (in En
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/desktop_folder_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/desktop_folder_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/desktop_folder_usage_description_localized>`
 
-A message displayed when requesting access to the user's "Desktop" folder (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư mục "Desktop" của người dùng (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3046,9 +3046,9 @@ A message displayed when requesting access to the user's "Desktop" folder (local
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/documents_folder_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description>`
+:ref:`String<class_String>` **privacy/documents_folder_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description>`
 
-A message displayed when requesting access to the user's "Documents" folder (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư mục "Documents" của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3058,9 +3058,9 @@ A message displayed when requesting access to the user's "Documents" folder (in 
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/documents_folder_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/documents_folder_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/documents_folder_usage_description_localized>`
 
-A message displayed when requesting access to the user's "Documents" folder (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư mục "Documents" của người dùng (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3070,9 +3070,9 @@ A message displayed when requesting access to the user's "Documents" folder (loc
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/downloads_folder_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description>`
+:ref:`String<class_String>` **privacy/downloads_folder_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description>`
 
-A message displayed when requesting access to the user's "Downloads" folder (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư mục "Downloads" của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3082,9 +3082,9 @@ A message displayed when requesting access to the user's "Downloads" folder (in 
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/downloads_folder_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/downloads_folder_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/downloads_folder_usage_description_localized>`
 
-A message displayed when requesting access to the user's "Downloads" folder (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư mục "Downloads" của người dùng (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3094,9 +3094,9 @@ A message displayed when requesting access to the user's "Downloads" folder (loc
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/location_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/location_usage_description>`
+:ref:`String<class_String>` **privacy/location_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/location_usage_description>`
 
-A message displayed when requesting access to the user's location information (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thông tin vị trí của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3106,9 +3106,9 @@ A message displayed when requesting access to the user's location information (i
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/location_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/location_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/location_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/location_usage_description_localized>`
 
-A message displayed when requesting access to the user's location information (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thông tin vị trí của người dùng (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3118,9 +3118,9 @@ A message displayed when requesting access to the user's location information (l
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/microphone_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description>`
+:ref:`String<class_String>` **privacy/microphone_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description>`
 
-A message displayed when requesting access to the device's microphone (in English).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào microphone của thiết bị (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3130,9 +3130,9 @@ A message displayed when requesting access to the device's microphone (in Englis
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/microphone_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/microphone_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/microphone_usage_description_localized>`
 
-A message displayed when requesting access to the device's microphone (localized).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào microphone của thiết bị (đã bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3142,9 +3142,9 @@ A message displayed when requesting access to the device's microphone (localized
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/network_volumes_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description>`
+:ref:`String<class_String>` **privacy/network_volumes_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description>`
 
-A message displayed when requesting access to the user's network drives (in English).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào các ổ đĩa mạng của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3154,9 +3154,9 @@ A message displayed when requesting access to the user's network drives (in Engl
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/network_volumes_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/network_volumes_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/network_volumes_usage_description_localized>`
 
-A message displayed when requesting access to the user's network drives (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào các ổ đĩa mạng của người dùng (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3166,9 +3166,9 @@ A message displayed when requesting access to the user's network drives (localiz
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/photos_library_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description>`
+:ref:`String<class_String>` **privacy/photos_library_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description>`
 
-A message displayed when requesting access to the user's photo library (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư viện ảnh của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3178,9 +3178,9 @@ A message displayed when requesting access to the user's photo library (in Engli
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/photos_library_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/photos_library_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/photos_library_usage_description_localized>`
 
-A message displayed when requesting access to the user's photo library (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư viện ảnh của người dùng (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3190,9 +3190,9 @@ A message displayed when requesting access to the user's photo library (localize
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/removable_volumes_usage_description** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description>`
+:ref:`String<class_String>` **privacy/removable_volumes_usage_description** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description>`
 
-A message displayed when requesting access to the user's removable drives (in English).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào các ổ đĩa di động của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -3202,9 +3202,9 @@ A message displayed when requesting access to the user's removable drives (in En
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/removable_volumes_usage_description_localized** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/removable_volumes_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/removable_volumes_usage_description_localized>`
 
-A message displayed when requesting access to the user's removable drives (localized).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào các ổ đĩa di động của người dùng (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -3214,11 +3214,11 @@ A message displayed when requesting access to the user's removable drives (local
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **privacy/tracking_domains** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/tracking_domains>`
+:ref:`PackedStringArray<class_PackedStringArray>` **privacy/tracking_domains** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/tracking_domains>`
 
-The list of internet domains your app connects to that engage in tracking. See `Privacy manifest files <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
+Danh sách các miền internet mà ứng dụng của bạn kết nối đến và có hoạt động tracking. Xem `Tệp manifest về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về *sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3228,9 +3228,9 @@ The list of internet domains your app connects to that engage in tracking. See `
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/tracking_enabled** :ref:`🔗<class_EditorExportPlatformMacOS_property_privacy/tracking_enabled>`
+:ref:`bool<class_bool>` **privacy/tracking_enabled** :ref:`🔗 <class_EditorExportPlatformMacOS_property_privacy/tracking_enabled>`
 
-Indicates whether your app uses data for tracking. See `Privacy manifest files <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu cho mục đích tracking hay không. Xem `Tệp manifest về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -3240,11 +3240,11 @@ Indicates whether your app uses data for tracking. See `Privacy manifest files <
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗<class_EditorExportPlatformMacOS_property_shader_baker/enabled>`
+:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗 <class_EditorExportPlatformMacOS_property_shader_baker/enabled>`
 
-If ``true``, shaders will be compiled and embedded in the application. This option is only supported when using the Forward+ or Mobile renderers.
+Nếu ``true``, shader sẽ được biên dịch và nhúng vào ứng dụng. Tùy chọn này chỉ được hỗ trợ khi sử dụng Forward+ hoặc Mobile renderer.
 
-\ **Note:** When exporting as a dedicated server, the shader baker is always disabled since no rendering is performed.
+\ **Lưu ý:** Khi xuất dưới dạng dedicated server, shader baker luôn bị tắt vì không thực hiện việc render.
 
 .. rst-class:: classref-item-separator
 
@@ -3254,19 +3254,19 @@ If ``true``, shaders will be compiled and embedded in the application. This opti
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/cleanup_script** :ref:`🔗<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/cleanup_script>`
+:ref:`String<class_String>` **ssh_remote_deploy/cleanup_script** :ref:`🔗 <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/cleanup_script>`
 
-Script code to execute on the remote host when app is finished.
+Mã script sẽ được thực thi trên máy chủ từ xa khi ứng dụng kết thúc.
 
-The following variables can be used in the script:
+Có thể sử dụng các biến sau trong script:
 
-- ``{temp_dir}`` - Path of temporary folder on the remote, used to upload app and scripts to.
+- ``{temp_dir}`` - Đường dẫn đến thư mục tạm thời trên máy chủ từ xa, nơi dùng để tải ứng dụng và các script lên.
 
-- ``{archive_name}`` - Name of the ZIP containing uploaded application.
+- ``{archive_name}`` - Tên của tệp ZIP chứa ứng dụng đã tải lên.
 
-- ``{exe_name}`` - Name of application executable.
+- ``{exe_name}`` - Tên của tệp thực thi ứng dụng.
 
-- ``{cmd_args}`` - Array of the command line argument for the application.
+- ``{cmd_args}`` - Mảng các đối số dòng lệnh cho ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -3276,9 +3276,9 @@ The following variables can be used in the script:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **ssh_remote_deploy/enabled** :ref:`🔗<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/enabled>`
+:ref:`bool<class_bool>` **ssh_remote_deploy/enabled** :ref:`🔗 <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/enabled>`
 
-Enables remote deploy using SSH/SCP.
+Cho phép deploy từ xa bằng SSH/SCP.
 
 .. rst-class:: classref-item-separator
 
@@ -3288,9 +3288,9 @@ Enables remote deploy using SSH/SCP.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/extra_args_scp** :ref:`🔗<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_scp>`
+:ref:`String<class_String>` **ssh_remote_deploy/extra_args_scp** :ref:`🔗 <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_scp>`
 
-Array of the additional command line arguments passed to the SCP.
+Mảng các đối số dòng lệnh bổ sung được truyền cho SCP.
 
 .. rst-class:: classref-item-separator
 
@@ -3300,9 +3300,9 @@ Array of the additional command line arguments passed to the SCP.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/extra_args_ssh** :ref:`🔗<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_ssh>`
+:ref:`String<class_String>` **ssh_remote_deploy/extra_args_ssh** :ref:`🔗 <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/extra_args_ssh>`
 
-Array of the additional command line arguments passed to the SSH.
+Mảng các đối số dòng lệnh bổ sung được truyền cho SSH.
 
 .. rst-class:: classref-item-separator
 
@@ -3312,9 +3312,9 @@ Array of the additional command line arguments passed to the SSH.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/host** :ref:`🔗<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/host>`
+:ref:`String<class_String>` **ssh_remote_deploy/host** :ref:`🔗 <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/host>`
 
-Remote host SSH user name and address, in ``user@address`` format.
+Tên người dùng và địa chỉ SSH của máy chủ từ xa, theo định dạng ``user@address``.
 
 .. rst-class:: classref-item-separator
 
@@ -3324,9 +3324,9 @@ Remote host SSH user name and address, in ``user@address`` format.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/port** :ref:`🔗<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/port>`
+:ref:`String<class_String>` **ssh_remote_deploy/port** :ref:`🔗 <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/port>`
 
-Remote host SSH port number.
+Số cổng SSH của máy chủ từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -3336,19 +3336,19 @@ Remote host SSH port number.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/run_script** :ref:`🔗<class_EditorExportPlatformMacOS_property_ssh_remote_deploy/run_script>`
+:ref:`String<class_String>` **ssh_remote_deploy/run_script** :ref:`🔗 <class_EditorExportPlatformMacOS_property_ssh_remote_deploy/run_script>`
 
-Script code to execute on the remote host when running the app.
+Mã script cần thực thi trên máy chủ từ xa khi chạy ứng dụng.
 
-The following variables can be used in the script:
+Có thể sử dụng các biến sau trong script:
 
-- ``{temp_dir}`` - Path of temporary folder on the remote, used to upload app and scripts to.
+- ``{temp_dir}`` - Đường dẫn đến thư mục tạm thời trên máy chủ từ xa, nơi dùng để tải ứng dụng và các script lên.
 
-- ``{archive_name}`` - Name of the ZIP containing uploaded application.
+- ``{archive_name}`` - Tên của tệp ZIP chứa ứng dụng đã tải lên.
 
-- ``{exe_name}`` - Name of application executable.
+- ``{exe_name}`` - Tên của tệp thực thi ứng dụng.
 
-- ``{cmd_args}`` - Array of the command line argument for the application.
+- ``{cmd_args}`` - Mảng các đối số dòng lệnh cho ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -3358,9 +3358,9 @@ The following variables can be used in the script:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **xcode/platform_build** :ref:`🔗<class_EditorExportPlatformMacOS_property_xcode/platform_build>`
+:ref:`String<class_String>` **xcode/platform_build** :ref:`🔗 <class_EditorExportPlatformMacOS_property_xcode/platform_build>`
 
-macOS build number used to build application executable.
+Số bản dựng macOS được sử dụng để xây dựng tệp thực thi của ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -3370,9 +3370,9 @@ macOS build number used to build application executable.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **xcode/sdk_build** :ref:`🔗<class_EditorExportPlatformMacOS_property_xcode/sdk_build>`
+:ref:`String<class_String>` **xcode/sdk_build** :ref:`🔗 <class_EditorExportPlatformMacOS_property_xcode/sdk_build>`
 
-macOS SDK build number used to build application executable.
+Số bản dựng macOS SDK được sử dụng để xây dựng tệp thực thi của ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -3382,9 +3382,9 @@ macOS SDK build number used to build application executable.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **xcode/sdk_name** :ref:`🔗<class_EditorExportPlatformMacOS_property_xcode/sdk_name>`
+:ref:`String<class_String>` **xcode/sdk_name** :ref:`🔗 <class_EditorExportPlatformMacOS_property_xcode/sdk_name>`
 
-macOS SDK name used to build application executable.
+Tên macOS SDK được sử dụng để xây dựng tệp thực thi của ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -3394,9 +3394,9 @@ macOS SDK name used to build application executable.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **xcode/sdk_version** :ref:`🔗<class_EditorExportPlatformMacOS_property_xcode/sdk_version>`
+:ref:`String<class_String>` **xcode/sdk_version** :ref:`🔗 <class_EditorExportPlatformMacOS_property_xcode/sdk_version>`
 
-macOS SDK version used to build application executable in the ``major.minor`` format.
+Phiên bản macOS SDK được sử dụng để xây dựng tệp thực thi của ứng dụng theo định dạng ``major.minor``.
 
 .. rst-class:: classref-item-separator
 
@@ -3406,9 +3406,9 @@ macOS SDK version used to build application executable in the ``major.minor`` fo
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **xcode/xcode_build** :ref:`🔗<class_EditorExportPlatformMacOS_property_xcode/xcode_build>`
+:ref:`String<class_String>` **xcode/xcode_build** :ref:`🔗 <class_EditorExportPlatformMacOS_property_xcode/xcode_build>`
 
-Xcode build number used to build application executable.
+Số bản build Xcode được sử dụng để build tệp thực thi của ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -3418,16 +3418,16 @@ Xcode build number used to build application executable.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **xcode/xcode_version** :ref:`🔗<class_EditorExportPlatformMacOS_property_xcode/xcode_version>`
+:ref:`String<class_String>` **xcode/xcode_version** :ref:`🔗 <class_EditorExportPlatformMacOS_property_xcode/xcode_version>`
 
-Xcode version used to build application executable.
+Phiên bản Xcode được sử dụng để build tệp thực thi của ứng dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

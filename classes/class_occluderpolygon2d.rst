@@ -10,20 +10,20 @@
 OccluderPolygon2D
 =================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Defines a 2D polygon for LightOccluder2D.
+Định nghĩa một đa giác 2D cho LightOccluder2D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Editor facility that helps you draw a 2D polygon used as resource for :ref:`LightOccluder2D<class_LightOccluder2D>`.
+Công cụ trong trình chỉnh sửa giúp bạn vẽ một đa giác 2D được dùng làm tài nguyên cho :ref:`LightOccluder2D<class_LightOccluder2D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -32,7 +32,7 @@ Properties
    +-----------------------------------------------------+--------------------------------------------------------------+--------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`closed<class_OccluderPolygon2D_property_closed>`       | ``true``                 |
    +-----------------------------------------------------+--------------------------------------------------------------+--------------------------+
-   | :ref:`CullMode<enum_OccluderPolygon2D_CullMode>`    | :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>` | ``0``                    |
+   | :ref:`CullMode <enum_OccluderPolygon2D_CullMode>`   | :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>` | ``0``                    |
    +-----------------------------------------------------+--------------------------------------------------------------+--------------------------+
    | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`polygon<class_OccluderPolygon2D_property_polygon>`     | ``PackedVector2Array()`` |
    +-----------------------------------------------------+--------------------------------------------------------------+--------------------------+
@@ -43,14 +43,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OccluderPolygon2D_CullMode:
 
 .. rst-class:: classref-enumeration
 
-enum **CullMode**: :ref:`🔗<enum_OccluderPolygon2D_CullMode>`
+enum **CullMode**: :ref:`🔗 <enum_OccluderPolygon2D_CullMode>`
 
 .. _class_OccluderPolygon2D_constant_CULL_DISABLED:
 
@@ -58,7 +58,7 @@ enum **CullMode**: :ref:`🔗<enum_OccluderPolygon2D_CullMode>`
 
 :ref:`CullMode<enum_OccluderPolygon2D_CullMode>` **CULL_DISABLED** = ``0``
 
-Culling is disabled. See :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>`.
+Tắt tính năng culling. Xem :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>`.
 
 .. _class_OccluderPolygon2D_constant_CULL_CLOCKWISE:
 
@@ -66,7 +66,7 @@ Culling is disabled. See :ref:`cull_mode<class_OccluderPolygon2D_property_cull_m
 
 :ref:`CullMode<enum_OccluderPolygon2D_CullMode>` **CULL_CLOCKWISE** = ``1``
 
-Culling is performed in the clockwise direction. See :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>`.
+Thực hiện culling theo chiều kim đồng hồ. Xem :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>`.
 
 .. _class_OccluderPolygon2D_constant_CULL_COUNTER_CLOCKWISE:
 
@@ -74,7 +74,7 @@ Culling is performed in the clockwise direction. See :ref:`cull_mode<class_Occlu
 
 :ref:`CullMode<enum_OccluderPolygon2D_CullMode>` **CULL_COUNTER_CLOCKWISE** = ``2``
 
-Culling is performed in the counterclockwise direction. See :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>`.
+Thực hiện culling ngược chiều kim đồng hồ. Xem :ref:`cull_mode<class_OccluderPolygon2D_property_cull_mode>`.
 
 .. rst-class:: classref-section-separator
 
@@ -82,8 +82,8 @@ Culling is performed in the counterclockwise direction. See :ref:`cull_mode<clas
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OccluderPolygon2D_property_closed:
 
@@ -96,7 +96,7 @@ Property Descriptions
 - |void| **set_closed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_closed**\ (\ )
 
-If ``true``, closes the polygon. A closed OccluderPolygon2D occludes the light coming from any direction. An opened OccluderPolygon2D occludes the light only at its outline's direction.
+Nếu ``true``, đa giác sẽ được đóng. OccluderPolygon2D đã đóng sẽ che khuất ánh sáng đến từ mọi hướng. OccluderPolygon2D đã mở chỉ che khuất ánh sáng theo hướng đường viền của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -113,7 +113,7 @@ If ``true``, closes the polygon. A closed OccluderPolygon2D occludes the light c
 - |void| **set_cull_mode**\ (\ value\: :ref:`CullMode<enum_OccluderPolygon2D_CullMode>`\ )
 - :ref:`CullMode<enum_OccluderPolygon2D_CullMode>` **get_cull_mode**\ (\ )
 
-The culling mode to use.
+Chế độ culling cần sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -130,16 +130,16 @@ The culling mode to use.
 - |void| **set_polygon**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_polygon**\ (\ )
 
-A :ref:`Vector2<class_Vector2>` array with the index for polygon's vertices positions.
+Một mảng :ref:`Vector2<class_Vector2>` chứa chỉ mục cho vị trí các đỉnh của đa giác.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với nó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

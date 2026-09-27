@@ -10,20 +10,20 @@
 TileData
 ========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Settings for a single tile in a :ref:`TileSet<class_TileSet>`.
+Các thiết lập cho một ô đơn trong :ref:`TileSet<class_TileSet>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**TileData** object represents a single tile in a :ref:`TileSet<class_TileSet>`. It is usually edited using the tileset editor, but it can be modified at runtime using :ref:`TileMapLayer._tile_data_runtime_update()<class_TileMapLayer_private_method__tile_data_runtime_update>`.
+Đối tượng **TileData** đại diện cho một ô đơn trong :ref:`TileSet<class_TileSet>`. Đối tượng này thường được chỉnh sửa bằng trình chỉnh sửa tileset, nhưng có thể được sửa đổi trong runtime bằng :ref:`TileMapLayer._tile_data_runtime_update()<class_TileMapLayer_private_method__tile_data_runtime_update>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -55,8 +55,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -88,13 +88,13 @@ Methods
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`get_occluder_polygons_count<class_TileData_method_get_occluder_polygons_count>`\ (\ layer_id\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                           |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`get_terrain_peering_bit<class_TileData_method_get_terrain_peering_bit>`\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const|                                                                                                                                       |
+   | :ref:`int<class_int>`                               | :ref:`get_terrain_peering_bit<class_TileData_method_get_terrain_peering_bit>`\ (\ peering_bit\: :ref:`CellNeighbor <enum_TileSet_CellNeighbor>`\ ) |const|                                                                                                                                      |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`has_custom_data<class_TileData_method_has_custom_data>`\ (\ layer_name\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                           |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`is_collision_polygon_one_way<class_TileData_method_is_collision_polygon_one_way>`\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ ) |const|                                                                                                                  |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`is_valid_terrain_peering_bit<class_TileData_method_is_valid_terrain_peering_bit>`\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const|                                                                                                                             |
+   | :ref:`bool<class_bool>`                             | :ref:`is_valid_terrain_peering_bit<class_TileData_method_is_valid_terrain_peering_bit>`\ (\ peering_bit\: :ref:`CellNeighbor <enum_TileSet_CellNeighbor>`\ ) |const|                                                                                                                            |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`remove_collision_polygon<class_TileData_method_remove_collision_polygon>`\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ )                                                                                                                                  |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -124,7 +124,7 @@ Methods
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`set_occluder_polygons_count<class_TileData_method_set_occluder_polygons_count>`\ (\ layer_id\: :ref:`int<class_int>`, polygons_count\: :ref:`int<class_int>`\ )                                                                                                                           |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`set_terrain_peering_bit<class_TileData_method_set_terrain_peering_bit>`\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`, terrain\: :ref:`int<class_int>`\ )                                                                                                              |
+   | |void|                                              | :ref:`set_terrain_peering_bit<class_TileData_method_set_terrain_peering_bit>`\ (\ peering_bit\: :ref:`CellNeighbor <enum_TileSet_CellNeighbor>`, terrain\: :ref:`int<class_int>`\ )                                                                                                             |
    +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -133,8 +133,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_TileData_signal_changed:
 
@@ -142,7 +142,7 @@ Signals
 
 **changed**\ (\ ) :ref:`🔗<class_TileData_signal_changed>`
 
-Emitted when any of the properties are changed.
+Được phát khi bất kỳ thuộc tính nào thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -150,8 +150,8 @@ Emitted when any of the properties are changed.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TileData_property_flip_h:
 
@@ -164,7 +164,7 @@ Property Descriptions
 - |void| **set_flip_h**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_flip_h**\ (\ )
 
-If ``true``, the tile will have its texture flipped horizontally.
+Nếu ``true``, kết cấu của ô sẽ được lật theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ If ``true``, the tile will have its texture flipped horizontally.
 - |void| **set_flip_v**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_flip_v**\ (\ )
 
-If ``true``, the tile will have its texture flipped vertically.
+Nếu ``true``, kết cấu của ô sẽ được lật theo chiều dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -191,14 +191,14 @@ If ``true``, the tile will have its texture flipped vertically.
 
 .. rst-class:: classref-property
 
-:ref:`Material<class_Material>` **material** :ref:`🔗<class_TileData_property_material>`
+:ref:`Material<class_Material>` **material** :ref:`🔗 <class_TileData_property_material>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_material**\ (\ value\: :ref:`Material<class_Material>`\ )
 - :ref:`Material<class_Material>` **get_material**\ (\ )
 
-The :ref:`Material<class_Material>` to use for this **TileData**. This can be a :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` to use the default shader, or a :ref:`ShaderMaterial<class_ShaderMaterial>` to use a custom shader.
+:ref:`Material<class_Material>` sẽ được sử dụng cho **TileData** này. Đây có thể là :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` để sử dụng shader mặc định hoặc :ref:`ShaderMaterial<class_ShaderMaterial>` để sử dụng shader tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ The :ref:`Material<class_Material>` to use for this **TileData**. This can be a 
 - |void| **set_modulate**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_modulate**\ (\ )
 
-Color modulation of the tile.
+Điều chỉnh màu của ô.
 
 .. rst-class:: classref-item-separator
 
@@ -232,7 +232,7 @@ Color modulation of the tile.
 - |void| **set_probability**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_probability**\ (\ )
 
-Relative probability of this tile being selected when drawing a pattern of random tiles.
+Xác suất tương đối để ô này được chọn khi vẽ một pattern gồm các ô ngẫu nhiên.
 
 .. rst-class:: classref-item-separator
 
@@ -249,7 +249,7 @@ Relative probability of this tile being selected when drawing a pattern of rando
 - |void| **set_terrain**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_terrain**\ (\ )
 
-ID of the terrain from the terrain set that the tile uses.
+ID của terrain trong terrain set mà ô sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -266,7 +266,7 @@ ID of the terrain from the terrain set that the tile uses.
 - |void| **set_terrain_set**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_terrain_set**\ (\ )
 
-ID of the terrain set that the tile uses.
+ID của terrain set mà ô sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -283,7 +283,7 @@ ID of the terrain set that the tile uses.
 - |void| **set_texture_origin**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_texture_origin**\ (\ )
 
-Offsets the position of where the tile is drawn.
+Dịch chuyển vị trí mà ô được vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -300,7 +300,7 @@ Offsets the position of where the tile is drawn.
 - |void| **set_transpose**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_transpose**\ (\ )
 
-If ``true``, the tile will display transposed, i.e. with horizontal and vertical texture UVs swapped.
+Nếu ``true``, ô sẽ được hiển thị theo dạng chuyển vị, tức là UV kết cấu theo chiều ngang và chiều dọc được hoán đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ If ``true``, the tile will display transposed, i.e. with horizontal and vertical
 - |void| **set_y_sort_origin**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_y_sort_origin**\ (\ )
 
-Vertical point of the tile used for determining y-sorted order.
+Điểm theo chiều dọc của ô được dùng để xác định thứ tự sắp xếp theo y.
 
 .. rst-class:: classref-item-separator
 
@@ -334,7 +334,7 @@ Vertical point of the tile used for determining y-sorted order.
 - |void| **set_z_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_z_index**\ (\ )
 
-Ordering index of this tile, relative to :ref:`TileMapLayer<class_TileMapLayer>`.
+Chỉ mục sắp xếp của ô này, tương đối với :ref:`TileMapLayer<class_TileMapLayer>`.
 
 .. rst-class:: classref-section-separator
 
@@ -342,8 +342,8 @@ Ordering index of this tile, relative to :ref:`TileMapLayer<class_TileMapLayer>`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TileData_method_add_collision_polygon:
 
@@ -351,7 +351,7 @@ Method Descriptions
 
 |void| **add_collision_polygon**\ (\ layer_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_add_collision_polygon>`
 
-Adds a collision polygon to the tile on the given TileSet physics layer.
+Thêm một đa giác va chạm vào ô trên physics layer đã cho của TileSet.
 
 .. rst-class:: classref-item-separator
 
@@ -363,7 +363,7 @@ Adds a collision polygon to the tile on the given TileSet physics layer.
 
 |void| **add_occluder_polygon**\ (\ layer_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_add_occluder_polygon>`
 
-Adds an occlusion polygon to the tile on the TileSet occlusion layer with index ``layer_id``.
+Thêm một đa giác che khuất vào occlusion layer của TileSet với chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -375,7 +375,7 @@ Adds an occlusion polygon to the tile on the TileSet occlusion layer with index 
 
 :ref:`float<class_float>` **get_collision_polygon_one_way_margin**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_get_collision_polygon_one_way_margin>`
 
-Returns the one-way margin (for one-way platforms) of the polygon at index ``polygon_index`` for TileSet physics layer with index ``layer_id``.
+Trả về lề một chiều (dành cho nền tảng một chiều) của đa giác tại chỉ mục ``polygon_index`` trên physics layer của TileSet với chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -387,7 +387,7 @@ Returns the one-way margin (for one-way platforms) of the polygon at index ``pol
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **get_collision_polygon_points**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_get_collision_polygon_points>`
 
-Returns the points of the polygon at index ``polygon_index`` for TileSet physics layer with index ``layer_id``.
+Trả về các điểm của đa giác tại chỉ mục ``polygon_index`` trên physics layer của TileSet với chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -399,7 +399,7 @@ Returns the points of the polygon at index ``polygon_index`` for TileSet physics
 
 :ref:`int<class_int>` **get_collision_polygons_count**\ (\ layer_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_get_collision_polygons_count>`
 
-Returns how many polygons the tile has for TileSet physics layer with index ``layer_id``.
+Trả về số lượng đa giác mà ô có trên physics layer của TileSet với chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -411,7 +411,7 @@ Returns how many polygons the tile has for TileSet physics layer with index ``la
 
 :ref:`float<class_float>` **get_constant_angular_velocity**\ (\ layer_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_get_constant_angular_velocity>`
 
-Returns the constant angular velocity applied to objects colliding with this tile.
+Trả về vận tốc góc không đổi được áp dụng cho các đối tượng va chạm với ô này.
 
 .. rst-class:: classref-item-separator
 
@@ -423,7 +423,7 @@ Returns the constant angular velocity applied to objects colliding with this til
 
 :ref:`Vector2<class_Vector2>` **get_constant_linear_velocity**\ (\ layer_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_get_constant_linear_velocity>`
 
-Returns the constant linear velocity applied to objects colliding with this tile.
+Trả về vận tốc tuyến tính không đổi được áp dụng cho các đối tượng va chạm với ô này.
 
 .. rst-class:: classref-item-separator
 
@@ -435,7 +435,7 @@ Returns the constant linear velocity applied to objects colliding with this tile
 
 :ref:`Variant<class_Variant>` **get_custom_data**\ (\ layer_name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TileData_method_get_custom_data>`
 
-Returns the custom data value for custom data layer named ``layer_name``. To check if a custom data layer exists, use :ref:`has_custom_data()<class_TileData_method_has_custom_data>`.
+Trả về giá trị dữ liệu tùy chỉnh cho lớp dữ liệu tùy chỉnh có tên ``layer_name``. Để kiểm tra xem lớp dữ liệu tùy chỉnh có tồn tại hay không, hãy sử dụng :ref:`has_custom_data()<class_TileData_method_has_custom_data>`.
 
 .. rst-class:: classref-item-separator
 
@@ -447,7 +447,7 @@ Returns the custom data value for custom data layer named ``layer_name``. To che
 
 :ref:`Variant<class_Variant>` **get_custom_data_by_layer_id**\ (\ layer_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_get_custom_data_by_layer_id>`
 
-Returns the custom data value for custom data layer with index ``layer_id``.
+Trả về giá trị dữ liệu tùy chỉnh cho lớp dữ liệu tùy chỉnh với chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -459,9 +459,9 @@ Returns the custom data value for custom data layer with index ``layer_id``.
 
 :ref:`NavigationPolygon<class_NavigationPolygon>` **get_navigation_polygon**\ (\ layer_id\: :ref:`int<class_int>`, flip_h\: :ref:`bool<class_bool>` = false, flip_v\: :ref:`bool<class_bool>` = false, transpose\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileData_method_get_navigation_polygon>`
 
-Returns the navigation polygon of the tile for the TileSet navigation layer with index ``layer_id``.
+Trả về đa giác điều hướng của ô trên navigation layer của TileSet với chỉ mục ``layer_id``.
 
-\ ``flip_h``, ``flip_v``, and ``transpose`` allow transforming the returned polygon.
+\ ``flip_h``, ``flip_v`` và ``transpose`` cho phép biến đổi đa giác được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -473,11 +473,11 @@ Returns the navigation polygon of the tile for the TileSet navigation layer with
 
 :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` **get_occluder**\ (\ layer_id\: :ref:`int<class_int>`, flip_h\: :ref:`bool<class_bool>` = false, flip_v\: :ref:`bool<class_bool>` = false, transpose\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileData_method_get_occluder>`
 
-**Deprecated:** Use :ref:`get_occluder_polygon()<class_TileData_method_get_occluder_polygon>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`get_occluder_polygon()<class_TileData_method_get_occluder_polygon>`.
 
-Returns the occluder polygon of the tile for the TileSet occlusion layer with index ``layer_id``.
+Trả về đa giác che khuất của ô trên occlusion layer của TileSet với chỉ mục ``layer_id``.
 
-\ ``flip_h``, ``flip_v``, and ``transpose`` allow transforming the returned polygon.
+\ ``flip_h``, ``flip_v`` và ``transpose`` cho phép biến đổi đa giác được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -489,9 +489,9 @@ Returns the occluder polygon of the tile for the TileSet occlusion layer with in
 
 :ref:`OccluderPolygon2D<class_OccluderPolygon2D>` **get_occluder_polygon**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`, flip_h\: :ref:`bool<class_bool>` = false, flip_v\: :ref:`bool<class_bool>` = false, transpose\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_TileData_method_get_occluder_polygon>`
 
-Returns the occluder polygon at index ``polygon_index`` from the TileSet occlusion layer with index ``layer_id``.
+Trả về đa giác che khuất tại chỉ mục ``polygon_index`` từ occlusion layer của TileSet với chỉ mục ``layer_id``.
 
-The ``flip_h``, ``flip_v``, and ``transpose`` parameters can be ``true`` to transform the returned polygon.
+Các tham số ``flip_h``, ``flip_v`` và ``transpose`` có thể được ``true`` để biến đổi đa giác được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -503,7 +503,7 @@ The ``flip_h``, ``flip_v``, and ``transpose`` parameters can be ``true`` to tran
 
 :ref:`int<class_int>` **get_occluder_polygons_count**\ (\ layer_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_get_occluder_polygons_count>`
 
-Returns the number of occluder polygons of the tile in the TileSet occlusion layer with index ``layer_id``.
+Trả về số lượng đa giác che khuất của ô trong occlusion layer của TileSet với chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -515,7 +515,7 @@ Returns the number of occluder polygons of the tile in the TileSet occlusion lay
 
 :ref:`int<class_int>` **get_terrain_peering_bit**\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const| :ref:`🔗<class_TileData_method_get_terrain_peering_bit>`
 
-Returns the tile's terrain bit for the given ``peering_bit`` direction. To check that a direction is valid, use :ref:`is_valid_terrain_peering_bit()<class_TileData_method_is_valid_terrain_peering_bit>`.
+Trả về bit terrain của ô cho hướng ``peering_bit`` đã cho. Để kiểm tra xem hướng đó có hợp lệ hay không, hãy sử dụng :ref:`is_valid_terrain_peering_bit()<class_TileData_method_is_valid_terrain_peering_bit>`.
 
 .. rst-class:: classref-item-separator
 
@@ -527,7 +527,7 @@ Returns the tile's terrain bit for the given ``peering_bit`` direction. To check
 
 :ref:`bool<class_bool>` **has_custom_data**\ (\ layer_name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TileData_method_has_custom_data>`
 
-Returns whether there exists a custom data layer named ``layer_name``.
+Trả về liệu có tồn tại lớp dữ liệu tùy chỉnh có tên ``layer_name`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -539,7 +539,7 @@ Returns whether there exists a custom data layer named ``layer_name``.
 
 :ref:`bool<class_bool>` **is_collision_polygon_one_way**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileData_method_is_collision_polygon_one_way>`
 
-Returns whether one-way collisions are enabled for the polygon at index ``polygon_index`` for TileSet physics layer with index ``layer_id``.
+Trả về liệu va chạm một chiều có được bật cho đa giác tại chỉ mục ``polygon_index`` trên physics layer của TileSet với chỉ mục ``layer_id`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -551,7 +551,7 @@ Returns whether one-way collisions are enabled for the polygon at index ``polygo
 
 :ref:`bool<class_bool>` **is_valid_terrain_peering_bit**\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`\ ) |const| :ref:`🔗<class_TileData_method_is_valid_terrain_peering_bit>`
 
-Returns whether the given ``peering_bit`` direction is valid for this tile.
+Trả về liệu hướng ``peering_bit`` đã cho có hợp lệ đối với ô này hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -563,7 +563,7 @@ Returns whether the given ``peering_bit`` direction is valid for this tile.
 
 |void| **remove_collision_polygon**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_remove_collision_polygon>`
 
-Removes the polygon at index ``polygon_index`` for TileSet physics layer with index ``layer_id``.
+Xóa đa giác tại chỉ mục ``polygon_index`` trên physics layer của TileSet với chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -575,7 +575,7 @@ Removes the polygon at index ``polygon_index`` for TileSet physics layer with in
 
 |void| **remove_occluder_polygon**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_remove_occluder_polygon>`
 
-Removes the polygon at index ``polygon_index`` for TileSet occlusion layer with index ``layer_id``.
+Xóa polygon tại chỉ mục ``polygon_index`` của lớp occlusion TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -587,7 +587,7 @@ Removes the polygon at index ``polygon_index`` for TileSet occlusion layer with 
 
 |void| **set_collision_polygon_one_way**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`, one_way\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TileData_method_set_collision_polygon_one_way>`
 
-Enables/disables one-way collisions on the polygon at index ``polygon_index`` for TileSet physics layer with index ``layer_id``.
+Bật/tắt va chạm một chiều trên polygon tại chỉ mục ``polygon_index`` của lớp physics TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -599,7 +599,7 @@ Enables/disables one-way collisions on the polygon at index ``polygon_index`` fo
 
 |void| **set_collision_polygon_one_way_margin**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`, one_way_margin\: :ref:`float<class_float>`\ ) :ref:`🔗<class_TileData_method_set_collision_polygon_one_way_margin>`
 
-Sets the one-way margin (for one-way platforms) of the polygon at index ``polygon_index`` for TileSet physics layer with index ``layer_id``.
+Đặt lề một chiều (cho các nền tảng một chiều) của polygon tại chỉ mục ``polygon_index`` của lớp physics TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -611,7 +611,7 @@ Sets the one-way margin (for one-way platforms) of the polygon at index ``polygo
 
 |void| **set_collision_polygon_points**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`, polygon\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_TileData_method_set_collision_polygon_points>`
 
-Sets the points of the polygon at index ``polygon_index`` for TileSet physics layer with index ``layer_id``.
+Đặt các điểm của polygon tại chỉ mục ``polygon_index`` của lớp physics TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -623,7 +623,7 @@ Sets the points of the polygon at index ``polygon_index`` for TileSet physics la
 
 |void| **set_collision_polygons_count**\ (\ layer_id\: :ref:`int<class_int>`, polygons_count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_set_collision_polygons_count>`
 
-Sets the polygons count for TileSet physics layer with index ``layer_id``.
+Đặt số lượng polygon cho lớp physics TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -635,7 +635,7 @@ Sets the polygons count for TileSet physics layer with index ``layer_id``.
 
 |void| **set_constant_angular_velocity**\ (\ layer_id\: :ref:`int<class_int>`, velocity\: :ref:`float<class_float>`\ ) :ref:`🔗<class_TileData_method_set_constant_angular_velocity>`
 
-Sets the constant angular velocity. This does not rotate the tile. This angular velocity is applied to objects colliding with this tile.
+Đặt vận tốc góc không đổi. Thao tác này không xoay tile. Vận tốc góc này được áp dụng cho các đối tượng va chạm với tile này.
 
 .. rst-class:: classref-item-separator
 
@@ -647,7 +647,7 @@ Sets the constant angular velocity. This does not rotate the tile. This angular 
 
 |void| **set_constant_linear_velocity**\ (\ layer_id\: :ref:`int<class_int>`, velocity\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_TileData_method_set_constant_linear_velocity>`
 
-Sets the constant linear velocity. This does not move the tile. This linear velocity is applied to objects colliding with this tile. This is useful to create conveyor belts.
+Đặt vận tốc tuyến tính không đổi. Thao tác này không di chuyển tile. Vận tốc tuyến tính này được áp dụng cho các đối tượng va chạm với tile này. Điều này hữu ích để tạo băng chuyền.
 
 .. rst-class:: classref-item-separator
 
@@ -659,7 +659,7 @@ Sets the constant linear velocity. This does not move the tile. This linear velo
 
 |void| **set_custom_data**\ (\ layer_name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_TileData_method_set_custom_data>`
 
-Sets the tile's custom data value for the TileSet custom data layer with name ``layer_name``.
+Đặt giá trị dữ liệu tùy chỉnh của tile cho lớp dữ liệu tùy chỉnh TileSet có tên ``layer_name``.
 
 .. rst-class:: classref-item-separator
 
@@ -671,7 +671,7 @@ Sets the tile's custom data value for the TileSet custom data layer with name ``
 
 |void| **set_custom_data_by_layer_id**\ (\ layer_id\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_TileData_method_set_custom_data_by_layer_id>`
 
-Sets the tile's custom data value for the TileSet custom data layer with index ``layer_id``.
+Đặt giá trị dữ liệu tùy chỉnh của tile cho lớp dữ liệu tùy chỉnh TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -683,7 +683,7 @@ Sets the tile's custom data value for the TileSet custom data layer with index `
 
 |void| **set_navigation_polygon**\ (\ layer_id\: :ref:`int<class_int>`, navigation_polygon\: :ref:`NavigationPolygon<class_NavigationPolygon>`\ ) :ref:`🔗<class_TileData_method_set_navigation_polygon>`
 
-Sets the navigation polygon for the TileSet navigation layer with index ``layer_id``.
+Đặt polygon điều hướng cho lớp navigation TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -695,9 +695,9 @@ Sets the navigation polygon for the TileSet navigation layer with index ``layer_
 
 |void| **set_occluder**\ (\ layer_id\: :ref:`int<class_int>`, occluder_polygon\: :ref:`OccluderPolygon2D<class_OccluderPolygon2D>`\ ) :ref:`🔗<class_TileData_method_set_occluder>`
 
-**Deprecated:** Use :ref:`set_occluder_polygon()<class_TileData_method_set_occluder_polygon>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`set_occluder_polygon()<class_TileData_method_set_occluder_polygon>`.
 
-Sets the occluder for the TileSet occlusion layer with index ``layer_id``.
+Đặt occluder cho lớp occlusion TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -709,7 +709,7 @@ Sets the occluder for the TileSet occlusion layer with index ``layer_id``.
 
 |void| **set_occluder_polygon**\ (\ layer_id\: :ref:`int<class_int>`, polygon_index\: :ref:`int<class_int>`, polygon\: :ref:`OccluderPolygon2D<class_OccluderPolygon2D>`\ ) :ref:`🔗<class_TileData_method_set_occluder_polygon>`
 
-Sets the occluder for polygon with index ``polygon_index`` in the TileSet occlusion layer with index ``layer_id``.
+Đặt occluder cho polygon có chỉ mục ``polygon_index`` trong lớp occlusion TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -721,7 +721,7 @@ Sets the occluder for polygon with index ``polygon_index`` in the TileSet occlus
 
 |void| **set_occluder_polygons_count**\ (\ layer_id\: :ref:`int<class_int>`, polygons_count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_set_occluder_polygons_count>`
 
-Sets the occluder polygon count in the TileSet occlusion layer with index ``layer_id``.
+Đặt số lượng polygon occluder trong lớp occlusion TileSet có chỉ mục ``layer_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -733,14 +733,14 @@ Sets the occluder polygon count in the TileSet occlusion layer with index ``laye
 
 |void| **set_terrain_peering_bit**\ (\ peering_bit\: :ref:`CellNeighbor<enum_TileSet_CellNeighbor>`, terrain\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileData_method_set_terrain_peering_bit>`
 
-Sets the tile's terrain bit for the given ``peering_bit`` direction. To check that a direction is valid, use :ref:`is_valid_terrain_peering_bit()<class_TileData_method_is_valid_terrain_peering_bit>`.
+Đặt bit địa hình của tile cho hướng ``peering_bit`` đã cho. Để kiểm tra một hướng có hợp lệ hay không, hãy sử dụng :ref:`is_valid_terrain_peering_bit()<class_TileData_method_is_valid_terrain_peering_bit>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

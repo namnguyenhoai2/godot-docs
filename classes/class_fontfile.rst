@@ -10,34 +10,34 @@
 FontFile
 ========
 
-**Inherits:** :ref:`Font<class_Font>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Font<class_Font>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Holds font source data and prerendered glyph cache, imported from a dynamic or a bitmap font.
+Lưu trữ dữ liệu nguồn của font và bộ nhớ đệm glyph được render trước, được nhập từ font động hoặc font bitmap.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**FontFile** contains a set of glyphs to represent Unicode characters imported from a font file, as well as a cache of rasterized glyphs, and a set of fallback :ref:`Font<class_Font>`\ s to use.
+**FontFile** chứa một tập hợp glyph để biểu diễn các ký tự Unicode được nhập từ tệp font, cùng với bộ nhớ đệm các glyph đã rasterize và một tập hợp :ref:`Font<class_Font>`\ s dự phòng để sử dụng.
 
-Use :ref:`FontVariation<class_FontVariation>` to access specific OpenType variation of the font, create simulated bold / slanted version, and draw lines of text.
+Sử dụng :ref:`FontVariation<class_FontVariation>` để truy cập biến thể OpenType cụ thể của font, tạo phiên bản đậm / nghiêng mô phỏng và vẽ các dòng văn bản.
 
-For more complex text processing, use :ref:`FontVariation<class_FontVariation>` in conjunction with :ref:`TextLine<class_TextLine>` or :ref:`TextParagraph<class_TextParagraph>`.
+Để xử lý văn bản phức tạp hơn, hãy sử dụng :ref:`FontVariation<class_FontVariation>` cùng với :ref:`TextLine<class_TextLine>` hoặc :ref:`TextParagraph<class_TextParagraph>`.
 
-Supported font formats:
+Các định dạng font được hỗ trợ:
 
-- Dynamic font importer: TrueType (.ttf), TrueType collection (.ttc), OpenType (.otf), OpenType collection (.otc), WOFF (.woff), WOFF2 (.woff2), Type 1 (.pfb, .pfm).
+- Trình nhập font động: TrueType (.ttf), bộ sưu tập TrueType (.ttc), OpenType (.otf), bộ sưu tập OpenType (.otc), WOFF (.woff), WOFF2 (.woff2), Type 1 (.pfb, .pfm).
 
-- Bitmap font importer: AngelCode BMFont (.fnt, .font), text and binary (version 3) format variants.
+- Trình nhập font bitmap: AngelCode BMFont (.fnt, .font), các biến thể định dạng văn bản và nhị phân (phiên bản 3).
 
-- Monospace image font importer: All supported image formats.
+- Trình nhập font hình ảnh đơn cách: Tất cả các định dạng hình ảnh được hỗ trợ.
 
-\ **Note:** A character is a symbol that represents an item (letter, digit etc.) in an abstract way.
+\ **Lưu ý:** Một ký tự là một ký hiệu biểu diễn một mục (chữ cái, chữ số, v.v.) theo cách trừu tượng.
 
-\ **Note:** A glyph is a bitmap or a shape used to draw one or more characters in a context-dependent manner. Glyph indices are bound to the specific font data source.
+\ **Lưu ý:** Một glyph là bitmap hoặc hình dạng được dùng để vẽ một hoặc nhiều ký tự theo cách phụ thuộc vào ngữ cảnh. Chỉ số glyph được liên kết với nguồn dữ liệu font cụ thể.
 
-\ **Note:** If none of the font data sources contain glyphs for a character used in a string, the character in question will be replaced with a box displaying its hexadecimal code.
+\ **Lưu ý:** Nếu không có nguồn dữ liệu font nào chứa glyph cho một ký tự được sử dụng trong chuỗi, ký tự đó sẽ được thay thế bằng một ô hiển thị mã thập lục phân của nó.
 
 
 .. tabs::
@@ -58,69 +58,69 @@ Supported font formats:
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`allow_system_fallback<class_FontFile_property_allow_system_fallback>`                           | ``true``              |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>`       | :ref:`antialiasing<class_FontFile_property_antialiasing>`                                             | ``1``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>`                   | :ref:`data<class_FontFile_property_data>`                                                             | ``PackedByteArray()`` |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`disable_embedded_bitmaps<class_FontFile_property_disable_embedded_bitmaps>`                     | ``true``              |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                                           | :ref:`fixed_size<class_FontFile_property_fixed_size>`                                                 | ``0``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`FixedSizeScaleMode<enum_TextServer_FixedSizeScaleMode>`   | :ref:`fixed_size_scale_mode<class_FontFile_property_fixed_size_scale_mode>`                           | ``0``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`String<class_String>`                                     | :ref:`font_name<class_FontFile_property_font_name>`                                                   | ``""``                |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                                           | :ref:`font_stretch<class_FontFile_property_font_stretch>`                                             | ``100``               |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | |bitfield|\[:ref:`FontStyle<enum_TextServer_FontStyle>`\]       | :ref:`font_style<class_FontFile_property_font_style>`                                                 | ``0``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                                           | :ref:`font_weight<class_FontFile_property_font_weight>`                                               | ``400``               |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`force_autohinter<class_FontFile_property_force_autohinter>`                                     | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`generate_mipmaps<class_FontFile_property_generate_mipmaps>`                                     | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Hinting<enum_TextServer_Hinting>`                         | :ref:`hinting<class_FontFile_property_hinting>`                                                       | ``1``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`keep_rounding_remainders<class_FontFile_property_keep_rounding_remainders>`                     | ``true``              |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`modulate_color_glyphs<class_FontFile_property_modulate_color_glyphs>`                           | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                                           | :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>`                                     | ``16``                |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                                           | :ref:`msdf_size<class_FontFile_property_msdf_size>`                                                   | ``48``                |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                         | :ref:`multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` | ``false``             |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Dictionary<class_Dictionary>`                             | :ref:`opentype_feature_overrides<class_FontFile_property_opentype_feature_overrides>`                 | ``{}``                |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                       | :ref:`oversampling<class_FontFile_property_oversampling>`                                             | ``0.0``               |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`String<class_String>`                                     | :ref:`style_name<class_FontFile_property_style_name>`                                                 | ``""``                |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
-   | :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>` | :ref:`subpixel_positioning<class_FontFile_property_subpixel_positioning>`                             | ``1``                 |
-   +-----------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`allow_system_fallback<class_FontFile_property_allow_system_fallback>`                           | ``true``              |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`FontAntialiasing <enum_TextServer_FontAntialiasing>`       | :ref:`antialiasing<class_FontFile_property_antialiasing>`                                             | ``1``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`PackedByteArray<class_PackedByteArray>`                    | :ref:`data<class_FontFile_property_data>`                                                             | ``PackedByteArray()`` |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`disable_embedded_bitmaps<class_FontFile_property_disable_embedded_bitmaps>`                     | ``true``              |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                                            | :ref:`fixed_size<class_FontFile_property_fixed_size>`                                                 | ``0``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`FixedSizeScaleMode <enum_TextServer_FixedSizeScaleMode>`   | :ref:`fixed_size_scale_mode<class_FontFile_property_fixed_size_scale_mode>`                           | ``0``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`String<class_String>`                                      | :ref:`font_name<class_FontFile_property_font_name>`                                                   | ``""``                |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                                            | :ref:`font_stretch<class_FontFile_property_font_stretch>`                                             | ``100``               |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | |bitfield|\[:ref:`FontStyle <enum_TextServer_FontStyle>`\]       | :ref:`font_style<class_FontFile_property_font_style>`                                                 | ``0``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                                            | :ref:`font_weight<class_FontFile_property_font_weight>`                                               | ``400``               |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`force_autohinter<class_FontFile_property_force_autohinter>`                                     | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`generate_mipmaps<class_FontFile_property_generate_mipmaps>`                                     | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Hinting <enum_TextServer_Hinting>`                         | :ref:`hinting<class_FontFile_property_hinting>`                                                       | ``1``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`keep_rounding_remainders<class_FontFile_property_keep_rounding_remainders>`                     | ``true``              |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`modulate_color_glyphs<class_FontFile_property_modulate_color_glyphs>`                           | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                                            | :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>`                                     | ``16``                |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                                            | :ref:`msdf_size<class_FontFile_property_msdf_size>`                                                   | ``48``                |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` | ``false``             |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Dictionary<class_Dictionary>`                              | :ref:`opentype_feature_overrides<class_FontFile_property_opentype_feature_overrides>`                 | ``{}``                |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                        | :ref:`oversampling<class_FontFile_property_oversampling>`                                             | ``0.0``               |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`String<class_String>`                                      | :ref:`style_name<class_FontFile_property_style_name>`                                                 | ``""``                |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
+   | :ref:`SubpixelPositioning <enum_TextServer_SubpixelPositioning>` | :ref:`subpixel_positioning<class_FontFile_property_subpixel_positioning>`                             | ``1``                 |
+   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -154,7 +154,7 @@ Methods
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                    | :ref:`get_extra_baseline_offset<class_FontFile_method_get_extra_baseline_offset>`\ (\ cache_index\: :ref:`int<class_int>`\ ) |const|                                                                                                                      |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                        | :ref:`get_extra_spacing<class_FontFile_method_get_extra_spacing>`\ (\ cache_index\: :ref:`int<class_int>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`\ ) |const|                                                                           |
+   | :ref:`int<class_int>`                                        | :ref:`get_extra_spacing<class_FontFile_method_get_extra_spacing>`\ (\ cache_index\: :ref:`int<class_int>`, spacing\: :ref:`SpacingType <enum_TextServer_SpacingType>`\ ) |const|                                                                          |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                        | :ref:`get_face_index<class_FontFile_method_get_face_index>`\ (\ cache_index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                            |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -196,9 +196,9 @@ Methods
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Dictionary<class_Dictionary>`                          | :ref:`get_variation_coordinates<class_FontFile_method_get_variation_coordinates>`\ (\ cache_index\: :ref:`int<class_int>`\ ) |const|                                                                                                                      |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                        | :ref:`load_bitmap_font<class_FontFile_method_load_bitmap_font>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                                                 |
+   | :ref:`Error <enum_@GlobalScope_Error>`                       | :ref:`load_bitmap_font<class_FontFile_method_load_bitmap_font>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                                                 |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                        | :ref:`load_dynamic_font<class_FontFile_method_load_dynamic_font>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                                               |
+   | :ref:`Error <enum_@GlobalScope_Error>`                       | :ref:`load_dynamic_font<class_FontFile_method_load_dynamic_font>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                                               |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                       | :ref:`remove_cache<class_FontFile_method_remove_cache>`\ (\ cache_index\: :ref:`int<class_int>`\ )                                                                                                                                                        |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -232,7 +232,7 @@ Methods
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                       | :ref:`set_extra_baseline_offset<class_FontFile_method_set_extra_baseline_offset>`\ (\ cache_index\: :ref:`int<class_int>`, baseline_offset\: :ref:`float<class_float>`\ )                                                                                 |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_extra_spacing<class_FontFile_method_set_extra_spacing>`\ (\ cache_index\: :ref:`int<class_int>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ )                                                    |
+   | |void|                                                       | :ref:`set_extra_spacing<class_FontFile_method_set_extra_spacing>`\ (\ cache_index\: :ref:`int<class_int>`, spacing\: :ref:`SpacingType <enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ )                                                   |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                       | :ref:`set_face_index<class_FontFile_method_set_face_index>`\ (\ cache_index\: :ref:`int<class_int>`, face_index\: :ref:`int<class_int>`\ )                                                                                                                |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -256,7 +256,7 @@ Methods
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                       | :ref:`set_texture_offsets<class_FontFile_method_set_texture_offsets>`\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`, offset\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_transform<class_FontFile_method_set_transform>`\ (\ cache_index\: :ref:`int<class_int>`, transform\: :ref:`Transform2D<class_Transform2D>`\ )                                                                                                   |
+   | |void|                                                       | :ref:`set_transform<class_FontFile_method_set_transform>`\ (\ cache_index\: :ref:`int<class_int>`, transform\: :ref:`Transform2D<class_Transform2D>`\ )อบ                                                                                                 |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                       | :ref:`set_variation_coordinates<class_FontFile_method_set_variation_coordinates>`\ (\ cache_index\: :ref:`int<class_int>`, variation_coordinates\: :ref:`Dictionary<class_Dictionary>`\ )                                                                 |
    +--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -267,8 +267,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_FontFile_property_allow_system_fallback:
 
@@ -281,7 +281,7 @@ Property Descriptions
 - |void| **set_allow_system_fallback**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_allow_system_fallback**\ (\ )
 
-If set to ``true``, system fonts can be automatically used as fallbacks.
+Nếu được đặt thành ``true``, các font hệ thống có thể được tự động sử dụng làm phương án dự phòng.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ If set to ``true``, system fonts can be automatically used as fallbacks.
 - |void| **set_antialiasing**\ (\ value\: :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>`\ )
 - :ref:`FontAntialiasing<enum_TextServer_FontAntialiasing>` **get_antialiasing**\ (\ )
 
-Font anti-aliasing mode.
+Chế độ khử răng cưa của font.
 
 .. rst-class:: classref-item-separator
 
@@ -315,9 +315,9 @@ Font anti-aliasing mode.
 - |void| **set_data**\ (\ value\: :ref:`PackedByteArray<class_PackedByteArray>`\ )
 - :ref:`PackedByteArray<class_PackedByteArray>` **get_data**\ (\ )
 
-Contents of the dynamic font source file.
+Nội dung của tệp nguồn font động.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedByteArray<class_PackedByteArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedByteArray<class_PackedByteArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -334,7 +334,7 @@ Contents of the dynamic font source file.
 - |void| **set_disable_embedded_bitmaps**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_disable_embedded_bitmaps**\ (\ )
 
-If set to ``true``, embedded font bitmap loading is disabled (bitmap-only and color fonts ignore this property).
+Nếu được đặt thành ``true``, việc tải bitmap của font được nhúng sẽ bị vô hiệu hóa (bitmap-only và color font sẽ bỏ qua thuộc tính này).
 
 .. rst-class:: classref-item-separator
 
@@ -351,7 +351,7 @@ If set to ``true``, embedded font bitmap loading is disabled (bitmap-only and co
 - |void| **set_fixed_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_fixed_size**\ (\ )
 
-Font size, used only for the bitmap fonts.
+Kích thước font, chỉ được dùng cho bitmap font.
 
 .. rst-class:: classref-item-separator
 
@@ -368,7 +368,7 @@ Font size, used only for the bitmap fonts.
 - |void| **set_fixed_size_scale_mode**\ (\ value\: :ref:`FixedSizeScaleMode<enum_TextServer_FixedSizeScaleMode>`\ )
 - :ref:`FixedSizeScaleMode<enum_TextServer_FixedSizeScaleMode>` **get_fixed_size_scale_mode**\ (\ )
 
-Scaling mode, used only for the bitmap fonts with :ref:`fixed_size<class_FontFile_property_fixed_size>` greater than zero.
+Chế độ scaling, chỉ được dùng cho bitmap font có :ref:`fixed_size<class_FontFile_property_fixed_size>` lớn hơn 0.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ Scaling mode, used only for the bitmap fonts with :ref:`fixed_size<class_FontFil
 - |void| **set_font_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_font_name**\ (\ )
 
-Font family name.
+Tên family của font.
 
 .. rst-class:: classref-item-separator
 
@@ -402,7 +402,7 @@ Font family name.
 - |void| **set_font_stretch**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_font_stretch**\ (\ )
 
-Font stretch amount, compared to a normal width. A percentage value between ``50%`` and ``200%``.
+Mức độ kéo giãn của font, so với độ rộng bình thường. Giá trị phần trăm nằm giữa ``50%`` và ``200%``.
 
 .. rst-class:: classref-item-separator
 
@@ -419,7 +419,7 @@ Font stretch amount, compared to a normal width. A percentage value between ``50
 - |void| **set_font_style**\ (\ value\: |bitfield|\[:ref:`FontStyle<enum_TextServer_FontStyle>`\]\ )
 - |bitfield|\[:ref:`FontStyle<enum_TextServer_FontStyle>`\] **get_font_style**\ (\ )
 
-Font style flags.
+Các cờ kiểu font.
 
 .. rst-class:: classref-item-separator
 
@@ -436,7 +436,7 @@ Font style flags.
 - |void| **set_font_weight**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_font_weight**\ (\ )
 
-Weight (boldness) of the font. A value in the ``100...999`` range, normal font weight is ``400``, bold font weight is ``700``.
+Độ đậm (weight) của font. Với giá trị trong phạm vi ``100...999``, độ đậm font bình thường là ``400``, còn độ đậm font in đậm là ``700``.
 
 .. rst-class:: classref-item-separator
 
@@ -453,7 +453,7 @@ Weight (boldness) of the font. A value in the ``100...999`` range, normal font w
 - |void| **set_force_autohinter**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_force_autohinter**\ (\ )
 
-If set to ``true``, auto-hinting is supported and preferred over font built-in hinting. Used by dynamic fonts only (MSDF fonts don't support hinting).
+Nếu được đặt thành ``true``, auto-hinting được hỗ trợ và được ưu tiên hơn hinting tích hợp sẵn của font. Chỉ được sử dụng cho dynamic font (font MSDF không hỗ trợ hinting).
 
 .. rst-class:: classref-item-separator
 
@@ -470,7 +470,7 @@ If set to ``true``, auto-hinting is supported and preferred over font built-in h
 - |void| **set_generate_mipmaps**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_generate_mipmaps**\ (\ )
 
-If set to ``true``, generate mipmaps for the font textures.
+Nếu được đặt thành ``true``, tạo mipmap cho các texture của font.
 
 .. rst-class:: classref-item-separator
 
@@ -487,7 +487,7 @@ If set to ``true``, generate mipmaps for the font textures.
 - |void| **set_hinting**\ (\ value\: :ref:`Hinting<enum_TextServer_Hinting>`\ )
 - :ref:`Hinting<enum_TextServer_Hinting>` **get_hinting**\ (\ )
 
-Font hinting mode. Used by dynamic fonts only.
+Chế độ hinting của font. Chỉ được sử dụng cho dynamic font.
 
 .. rst-class:: classref-item-separator
 
@@ -504,7 +504,7 @@ Font hinting mode. Used by dynamic fonts only.
 - |void| **set_keep_rounding_remainders**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_keep_rounding_remainders**\ (\ )
 
-If set to ``true``, when aligning glyphs to the pixel boundaries rounding remainders are accumulated to ensure more uniform glyph distribution. This setting has no effect if subpixel positioning is enabled.
+Nếu được đặt thành ``true``, khi căn glyph theo ranh giới pixel, các phần dư do làm tròn sẽ được tích lũy để đảm bảo phân bố glyph đồng đều hơn. Thiết lập này không có tác dụng nếu bật định vị subpixel.
 
 .. rst-class:: classref-item-separator
 
@@ -521,7 +521,7 @@ If set to ``true``, when aligning glyphs to the pixel boundaries rounding remain
 - |void| **set_modulate_color_glyphs**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_modulate_color_glyphs**\ (\ )
 
-If set to ``true``, color modulation is applied when drawing colored glyphs, otherwise it's applied to the monochrome glyphs only.
+Nếu được đặt thành ``true``, điều chế màu được áp dụng khi vẽ các glyph có màu; nếu không, nó chỉ được áp dụng cho các glyph đơn sắc.
 
 .. rst-class:: classref-item-separator
 
@@ -538,7 +538,7 @@ If set to ``true``, color modulation is applied when drawing colored glyphs, oth
 - |void| **set_msdf_pixel_range**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_msdf_pixel_range**\ (\ )
 
-The width of the range around the shape between the minimum and maximum representable signed distance. If using font outlines, :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the size of the largest font outline. The default :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` value of ``16`` allows outline sizes up to ``8`` to look correct.
+Độ rộng của phạm vi xung quanh hình dạng, nằm giữa khoảng cách có dấu nhỏ nhất và lớn nhất có thể biểu diễn. Nếu sử dụng đường viền font, :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` phải được đặt ít nhất *gấp đôi* kích thước của đường viền font lớn nhất. Giá trị :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` mặc định là ``16`` cho phép các kích thước đường viền lên đến ``8`` hiển thị chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -555,7 +555,7 @@ The width of the range around the shape between the minimum and maximum represen
 - |void| **set_msdf_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_msdf_size**\ (\ )
 
-Source font size used to generate MSDF textures. Higher values allow for more precision, but are slower to render and require more memory. Only increase this value if you notice a visible lack of precision in glyph rendering.
+Kích thước font nguồn được dùng để tạo texture MSDF. Giá trị cao hơn cho phép độ chính xác cao hơn, nhưng kết xuất chậm hơn và cần nhiều bộ nhớ hơn. Chỉ tăng giá trị này nếu bạn nhận thấy glyph được kết xuất thiếu độ chính xác rõ rệt.
 
 .. rst-class:: classref-item-separator
 
@@ -572,11 +572,11 @@ Source font size used to generate MSDF textures. Higher values allow for more pr
 - |void| **set_multichannel_signed_distance_field**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_multichannel_signed_distance_field**\ (\ )
 
-If set to ``true``, glyphs of all sizes are rendered using single multichannel signed distance field (MSDF) generated from the dynamic font vector data. Since this approach does not rely on rasterizing the font every time its size changes, this allows for resizing the font in real-time without any performance penalty. Text will also not look grainy for :ref:`Control<class_Control>`\ s that are scaled down (or for :ref:`Label3D<class_Label3D>`\ s viewed from a long distance). As a downside, font hinting is not available with MSDF. The lack of font hinting may result in less crisp and less readable fonts at small sizes.
+Nếu được đặt thành ``true``, glyph ở mọi kích thước sẽ được kết xuất bằng một signed distance field đa kênh (MSDF) duy nhất được tạo từ dữ liệu vector font động. Vì phương pháp này không phụ thuộc vào việc rasterize font mỗi khi kích thước thay đổi, bạn có thể thay đổi kích thước font theo thời gian thực mà không bị giảm hiệu năng. Văn bản cũng sẽ không bị nhiễu hạt đối với :ref:`Control<class_Control>`\ s được thu nhỏ (hoặc đối với :ref:`Label3D<class_Label3D>`\ s được nhìn từ khoảng cách xa). Nhược điểm là MSDF không hỗ trợ font hinting. Việc thiếu font hinting có thể khiến font ở kích thước nhỏ kém sắc nét và khó đọc hơn.
 
-\ **Note:** If using font outlines, :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the size of the largest font outline.
+\ **Lưu ý:** Nếu sử dụng đường viền font, :ref:`msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` phải được đặt ít nhất bằng *hai lần* kích thước của đường viền font lớn nhất.
 
-\ **Note:** MSDF font rendering does not render glyphs with overlapping shapes correctly. Overlapping shapes are not valid per the OpenType standard, but are still commonly found in many font files, especially those converted by Google Fonts. To avoid issues with overlapping glyphs, consider downloading the font file directly from the type foundry instead of relying on Google Fonts.
+\ **Lưu ý:** Kết xuất font MSDF không kết xuất chính xác các glyph có các hình dạng chồng lấp. Các hình dạng chồng lấp không hợp lệ theo tiêu chuẩn OpenType, nhưng vẫn thường xuất hiện trong nhiều tệp font, đặc biệt là những tệp được chuyển đổi bởi Google Fonts. Để tránh các vấn đề với glyph chồng lấp, hãy cân nhắc tải tệp font trực tiếp từ foundry kiểu chữ thay vì phụ thuộc vào Google Fonts.
 
 .. rst-class:: classref-item-separator
 
@@ -593,7 +593,7 @@ If set to ``true``, glyphs of all sizes are rendered using single multichannel s
 - |void| **set_opentype_feature_overrides**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_opentype_feature_overrides**\ (\ )
 
-Font OpenType feature set override.
+Bộ tính năng OpenType của font dùng để ghi đè.
 
 .. rst-class:: classref-item-separator
 
@@ -610,7 +610,7 @@ Font OpenType feature set override.
 - |void| **set_oversampling**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_oversampling**\ (\ )
 
-If set to a positive value, overrides the oversampling factor of the viewport this font is used in. See :ref:`Viewport.oversampling<class_Viewport_property_oversampling>`. This value doesn't override the ``oversampling`` parameter of ``draw_*`` methods.
+Nếu được đặt thành giá trị dương, giá trị này sẽ ghi đè hệ số oversampling của viewport mà font này được sử dụng trong đó. Xem :ref:`Viewport.oversampling<class_Viewport_property_oversampling>`. Giá trị này không ghi đè tham số ``oversampling`` của các phương thức ``draw_*``.
 
 .. rst-class:: classref-item-separator
 
@@ -627,7 +627,7 @@ If set to a positive value, overrides the oversampling factor of the viewport th
 - |void| **set_font_style_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_font_style_name**\ (\ )
 
-Font style name.
+Tên kiểu của font.
 
 .. rst-class:: classref-item-separator
 
@@ -644,7 +644,7 @@ Font style name.
 - |void| **set_subpixel_positioning**\ (\ value\: :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>`\ )
 - :ref:`SubpixelPositioning<enum_TextServer_SubpixelPositioning>` **get_subpixel_positioning**\ (\ )
 
-Font glyph subpixel positioning mode. Subpixel positioning provides shaper text and better kerning for smaller font sizes, at the cost of higher memory usage and lower font rasterization speed. Use :ref:`TextServer.SUBPIXEL_POSITIONING_AUTO<class_TextServer_constant_SUBPIXEL_POSITIONING_AUTO>` to automatically enable it based on the font size.
+Chế độ định vị subpixel của glyph phông chữ. Định vị subpixel cung cấp văn bản sắc nét hơn và kerning tốt hơn cho các cỡ phông chữ nhỏ, nhưng phải đánh đổi bằng mức sử dụng bộ nhớ cao hơn và tốc độ rasterization phông chữ thấp hơn. Sử dụng :ref:`TextServer.SUBPIXEL_POSITIONING_AUTO<class_TextServer_constant_SUBPIXEL_POSITIONING_AUTO>` để tự động bật chế độ này dựa trên cỡ phông chữ.
 
 .. rst-class:: classref-section-separator
 
@@ -652,8 +652,8 @@ Font glyph subpixel positioning mode. Subpixel positioning provides shaper text 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_FontFile_method_clear_cache:
 
@@ -661,7 +661,7 @@ Method Descriptions
 
 |void| **clear_cache**\ (\ ) :ref:`🔗<class_FontFile_method_clear_cache>`
 
-Removes all font cache entries.
+Xóa tất cả các mục trong bộ nhớ đệm phông chữ.
 
 .. rst-class:: classref-item-separator
 
@@ -673,9 +673,9 @@ Removes all font cache entries.
 
 |void| **clear_glyphs**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_FontFile_method_clear_glyphs>`
 
-Removes all rendered glyph information from the cache entry.
+Xóa tất cả thông tin glyph đã được render khỏi mục trong bộ nhớ đệm.
 
-\ **Note:** This function will not remove textures associated with the glyphs, use :ref:`remove_texture()<class_FontFile_method_remove_texture>` to remove them manually.
+\ **Lưu ý:** Hàm này sẽ không xóa các texture liên kết với glyph; hãy sử dụng :ref:`remove_texture()<class_FontFile_method_remove_texture>` để xóa chúng theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -687,7 +687,7 @@ Removes all rendered glyph information from the cache entry.
 
 |void| **clear_kerning_map**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_clear_kerning_map>`
 
-Removes all kerning overrides.
+Xóa tất cả các ghi đè kerning.
 
 .. rst-class:: classref-item-separator
 
@@ -699,7 +699,7 @@ Removes all kerning overrides.
 
 |void| **clear_size_cache**\ (\ cache_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_clear_size_cache>`
 
-Removes all font sizes from the cache entry.
+Xóa tất cả cỡ phông chữ khỏi mục trong bộ nhớ đệm.
 
 .. rst-class:: classref-item-separator
 
@@ -711,9 +711,9 @@ Removes all font sizes from the cache entry.
 
 |void| **clear_textures**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_FontFile_method_clear_textures>`
 
-Removes all textures from font cache entry.
+Xóa tất cả texture khỏi mục bộ nhớ đệm font.
 
-\ **Note:** This function will not remove glyphs associated with the texture, use :ref:`remove_glyph()<class_FontFile_method_remove_glyph>` to remove them manually.
+\ **Lưu ý:** Hàm này sẽ không xóa các glyph liên kết với texture; hãy sử dụng :ref:`remove_glyph()<class_FontFile_method_remove_glyph>` để xóa chúng theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -725,7 +725,7 @@ Removes all textures from font cache entry.
 
 :ref:`float<class_float>` **get_cache_ascent**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_cache_ascent>`
 
-Returns the font ascent (number of pixels above the baseline).
+Trả về ascent của font (số pixel phía trên đường cơ sở).
 
 .. rst-class:: classref-item-separator
 
@@ -737,7 +737,7 @@ Returns the font ascent (number of pixels above the baseline).
 
 :ref:`int<class_int>` **get_cache_count**\ (\ ) |const| :ref:`🔗<class_FontFile_method_get_cache_count>`
 
-Returns number of the font cache entries.
+Trả về số lượng mục trong bộ nhớ đệm font.
 
 .. rst-class:: classref-item-separator
 
@@ -749,7 +749,7 @@ Returns number of the font cache entries.
 
 :ref:`float<class_float>` **get_cache_descent**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_cache_descent>`
 
-Returns the font descent (number of pixels below the baseline).
+Trả về descent của font (số pixel phía dưới đường cơ sở).
 
 .. rst-class:: classref-item-separator
 
@@ -761,7 +761,7 @@ Returns the font descent (number of pixels below the baseline).
 
 :ref:`float<class_float>` **get_cache_scale**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_cache_scale>`
 
-Returns scaling factor of the color bitmap font.
+Trả về hệ số tỷ lệ của font bitmap màu.
 
 .. rst-class:: classref-item-separator
 
@@ -773,7 +773,7 @@ Returns scaling factor of the color bitmap font.
 
 :ref:`float<class_float>` **get_cache_underline_position**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_cache_underline_position>`
 
-Returns pixel offset of the underline below the baseline.
+Trả về độ lệch pixel của gạch chân bên dưới đường cơ sở.
 
 .. rst-class:: classref-item-separator
 
@@ -785,7 +785,7 @@ Returns pixel offset of the underline below the baseline.
 
 :ref:`float<class_float>` **get_cache_underline_thickness**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_cache_underline_thickness>`
 
-Returns thickness of the underline in pixels.
+Trả về độ dày của gạch chân tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -797,7 +797,7 @@ Returns thickness of the underline in pixels.
 
 :ref:`int<class_int>` **get_char_from_glyph_index**\ (\ size\: :ref:`int<class_int>`, glyph_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_char_from_glyph_index>`
 
-Returns character code associated with ``glyph_index``, or ``0`` if ``glyph_index`` is invalid. See :ref:`get_glyph_index()<class_FontFile_method_get_glyph_index>`.
+Trả về mã ký tự liên kết với ``glyph_index``, hoặc ``0`` nếu ``glyph_index`` không hợp lệ. Xem :ref:`get_glyph_index()<class_FontFile_method_get_glyph_index>`.
 
 .. rst-class:: classref-item-separator
 
@@ -809,7 +809,7 @@ Returns character code associated with ``glyph_index``, or ``0`` if ``glyph_inde
 
 :ref:`float<class_float>` **get_embolden**\ (\ cache_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_embolden>`
 
-Returns embolden strength, if is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness.
+Trả về độ mạnh làm đậm; nếu khác không, giá trị này sẽ làm đậm các đường viền của font. Các giá trị âm làm giảm độ dày đường viền.
 
 .. rst-class:: classref-item-separator
 
@@ -821,7 +821,7 @@ Returns embolden strength, if is not equal to zero, emboldens the font outlines.
 
 :ref:`float<class_float>` **get_extra_baseline_offset**\ (\ cache_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_extra_baseline_offset>`
 
-Returns extra baseline offset (as a fraction of font height).
+Trả về độ lệch đường cơ sở bổ sung (tính theo phần chiều cao của font).
 
 .. rst-class:: classref-item-separator
 
@@ -833,7 +833,7 @@ Returns extra baseline offset (as a fraction of font height).
 
 :ref:`int<class_int>` **get_extra_spacing**\ (\ cache_index\: :ref:`int<class_int>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`\ ) |const| :ref:`🔗<class_FontFile_method_get_extra_spacing>`
 
-Returns spacing for ``spacing`` in pixels (not relative to the font size).
+Trả về khoảng cách cho ``spacing`` tính bằng pixel (không tính tương đối theo kích thước font).
 
 .. rst-class:: classref-item-separator
 
@@ -845,7 +845,7 @@ Returns spacing for ``spacing`` in pixels (not relative to the font size).
 
 :ref:`int<class_int>` **get_face_index**\ (\ cache_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_face_index>`
 
-Returns an active face index in the TrueType / OpenType collection.
+Trả về chỉ mục face đang hoạt động trong bộ sưu tập TrueType / OpenType.
 
 .. rst-class:: classref-item-separator
 
@@ -857,9 +857,9 @@ Returns an active face index in the TrueType / OpenType collection.
 
 :ref:`Vector2<class_Vector2>` **get_glyph_advance**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, glyph\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_glyph_advance>`
 
-Returns glyph advance (offset of the next glyph).
+Trả về độ tiến của glyph (độ lệch của glyph tiếp theo).
 
-\ **Note:** Advance for glyphs outlines is the same as the base glyph advance and is not saved.
+\ **Lưu ý:** Advance đối với đường viền glyph giống với advance của glyph cơ sở và không được lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -871,7 +871,7 @@ Returns glyph advance (offset of the next glyph).
 
 :ref:`int<class_int>` **get_glyph_index**\ (\ size\: :ref:`int<class_int>`, char\: :ref:`int<class_int>`, variation_selector\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_glyph_index>`
 
-Returns the glyph index of a ``char``, optionally modified by the ``variation_selector``.
+Trả về chỉ mục glyph của một ``char``, có thể được sửa đổi bởi ``variation_selector``.
 
 .. rst-class:: classref-item-separator
 
@@ -883,7 +883,7 @@ Returns the glyph index of a ``char``, optionally modified by the ``variation_se
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_glyph_list**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_FontFile_method_get_glyph_list>`
 
-Returns list of rendered glyphs in the cache entry.
+Trả về danh sách các glyph đã được render trong mục nhập cache.
 
 .. rst-class:: classref-item-separator
 
@@ -895,7 +895,7 @@ Returns list of rendered glyphs in the cache entry.
 
 :ref:`Vector2<class_Vector2>` **get_glyph_offset**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_glyph_offset>`
 
-Returns glyph offset from the baseline.
+Trả về độ lệch của glyph so với baseline.
 
 .. rst-class:: classref-item-separator
 
@@ -907,7 +907,7 @@ Returns glyph offset from the baseline.
 
 :ref:`Vector2<class_Vector2>` **get_glyph_size**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_glyph_size>`
 
-Returns glyph size.
+Trả về kích thước glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -919,7 +919,7 @@ Returns glyph size.
 
 :ref:`int<class_int>` **get_glyph_texture_idx**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_glyph_texture_idx>`
 
-Returns index of the cache texture containing the glyph.
+Trả về chỉ mục của texture cache chứa glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -931,7 +931,7 @@ Returns index of the cache texture containing the glyph.
 
 :ref:`Rect2<class_Rect2>` **get_glyph_uv_rect**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_glyph_uv_rect>`
 
-Returns rectangle in the cache texture containing the glyph.
+Trả về hình chữ nhật trong texture cache chứa glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -943,7 +943,7 @@ Returns rectangle in the cache texture containing the glyph.
 
 :ref:`Vector2<class_Vector2>` **get_kerning**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, glyph_pair\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_FontFile_method_get_kerning>`
 
-Returns kerning for the pair of glyphs.
+Trả về kerning cho cặp glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -955,7 +955,7 @@ Returns kerning for the pair of glyphs.
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **get_kerning_list**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_kerning_list>`
 
-Returns list of the kerning overrides.
+Trả về danh sách các ghi đè kerning.
 
 .. rst-class:: classref-item-separator
 
@@ -967,7 +967,7 @@ Returns list of the kerning overrides.
 
 :ref:`bool<class_bool>` **get_language_support_override**\ (\ language\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_FontFile_method_get_language_support_override>`
 
-Returns ``true`` if support override is enabled for the ``language``.
+Trả về ``true`` nếu tính năng ghi đè hỗ trợ được bật cho ``language``.
 
 .. rst-class:: classref-item-separator
 
@@ -979,7 +979,7 @@ Returns ``true`` if support override is enabled for the ``language``.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_language_support_overrides**\ (\ ) |const| :ref:`🔗<class_FontFile_method_get_language_support_overrides>`
 
-Returns list of language support overrides.
+Trả về danh sách các ghi đè hỗ trợ ngôn ngữ.
 
 .. rst-class:: classref-item-separator
 
@@ -991,7 +991,7 @@ Returns list of language support overrides.
 
 :ref:`bool<class_bool>` **get_script_support_override**\ (\ script\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_FontFile_method_get_script_support_override>`
 
-Returns ``true`` if support override is enabled for the ``script``.
+Trả về ``true`` nếu tính năng ghi đè hỗ trợ được bật cho ``script``.
 
 .. rst-class:: classref-item-separator
 
@@ -1003,7 +1003,7 @@ Returns ``true`` if support override is enabled for the ``script``.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_script_support_overrides**\ (\ ) |const| :ref:`🔗<class_FontFile_method_get_script_support_overrides>`
 
-Returns list of script support overrides.
+Trả về danh sách các ghi đè hỗ trợ tập lệnh.
 
 .. rst-class:: classref-item-separator
 
@@ -1015,7 +1015,7 @@ Returns list of script support overrides.
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **get_size_cache_list**\ (\ cache_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_size_cache_list>`
 
-Returns list of the font sizes in the cache. Each size is :ref:`Vector2i<class_Vector2i>` with font size and outline size.
+Trả về danh sách các kích thước phông chữ trong bộ nhớ đệm. Mỗi kích thước là :ref:`Vector2i<class_Vector2i>` với kích thước phông chữ và kích thước đường viền.
 
 .. rst-class:: classref-item-separator
 
@@ -1027,7 +1027,7 @@ Returns list of the font sizes in the cache. Each size is :ref:`Vector2i<class_V
 
 :ref:`int<class_int>` **get_texture_count**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_FontFile_method_get_texture_count>`
 
-Returns number of textures used by font cache entry.
+Trả về số lượng texture được font cache entry sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1039,7 +1039,7 @@ Returns number of textures used by font cache entry.
 
 :ref:`Image<class_Image>` **get_texture_image**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_texture_image>`
 
-Returns a copy of the font cache texture image.
+Trả về một bản sao của hình ảnh texture của font cache.
 
 .. rst-class:: classref-item-separator
 
@@ -1051,7 +1051,7 @@ Returns a copy of the font cache texture image.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_texture_offsets**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_texture_offsets>`
 
-Returns a copy of the array containing glyph packing data.
+Trả về một bản sao của mảng chứa dữ liệu đóng gói glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1063,7 +1063,7 @@ Returns a copy of the array containing glyph packing data.
 
 :ref:`Transform2D<class_Transform2D>` **get_transform**\ (\ cache_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_transform>`
 
-Returns 2D transform, applied to the font outlines, can be used for slanting, flipping and rotating glyphs.
+Trả về phép biến đổi 2D được áp dụng cho các đường bao phông chữ, có thể dùng để làm nghiêng, lật và xoay glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1075,7 +1075,7 @@ Returns 2D transform, applied to the font outlines, can be used for slanting, fl
 
 :ref:`Dictionary<class_Dictionary>` **get_variation_coordinates**\ (\ cache_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FontFile_method_get_variation_coordinates>`
 
-Returns variation coordinates for the specified font cache entry. See :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>` for more info.
+Trả về các tọa độ biến thiên cho font cache entry được chỉ định. Xem :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -1087,9 +1087,9 @@ Returns variation coordinates for the specified font cache entry. See :ref:`Font
 
 :ref:`Error<enum_@GlobalScope_Error>` **load_bitmap_font**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FontFile_method_load_bitmap_font>`
 
-Loads an AngelCode BMFont (.fnt, .font) bitmap font from file ``path``.
+Tải bitmap font AngelCode BMFont (.fnt, .font) từ tệp ``path``.
 
-\ **Warning:** This method should only be used in the editor or in cases when you need to load external fonts at run-time, such as fonts located at the ``user://`` directory.
+\ **Cảnh báo:** Chỉ nên sử dụng phương thức này trong editor hoặc trong các trường hợp bạn cần tải phông chữ bên ngoài tại run-time, chẳng hạn như các phông chữ nằm trong thư mục ``user://``.
 
 .. rst-class:: classref-item-separator
 
@@ -1101,9 +1101,9 @@ Loads an AngelCode BMFont (.fnt, .font) bitmap font from file ``path``.
 
 :ref:`Error<enum_@GlobalScope_Error>` **load_dynamic_font**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FontFile_method_load_dynamic_font>`
 
-Loads a TrueType (.ttf), OpenType (.otf), WOFF (.woff), WOFF2 (.woff2) or Type 1 (.pfb, .pfm) dynamic font from file ``path``.
+Tải phông chữ động TrueType (.ttf), OpenType (.otf), WOFF (.woff), WOFF2 (.woff2) hoặc Type 1 (.pfb, .pfm) từ tệp ``path``.
 
-\ **Warning:** This method should only be used in the editor or in cases when you need to load external fonts at run-time, such as fonts located at the ``user://`` directory.
+\ **Cảnh báo:** Chỉ nên sử dụng phương thức này trong editor hoặc trong các trường hợp bạn cần tải phông chữ bên ngoài tại run-time, chẳng hạn như các phông chữ nằm trong thư mục ``user://``.
 
 .. rst-class:: classref-item-separator
 
@@ -1115,7 +1115,7 @@ Loads a TrueType (.ttf), OpenType (.otf), WOFF (.woff), WOFF2 (.woff2) or Type 1
 
 |void| **remove_cache**\ (\ cache_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_remove_cache>`
 
-Removes specified font cache entry.
+Xóa mục nhập bộ nhớ đệm phông chữ được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1127,9 +1127,9 @@ Removes specified font cache entry.
 
 |void| **remove_glyph**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_remove_glyph>`
 
-Removes specified rendered glyph information from the cache entry.
+Xóa thông tin glyph đã kết xuất được chỉ định khỏi mục nhập bộ nhớ đệm.
 
-\ **Note:** This function will not remove textures associated with the glyphs, use :ref:`remove_texture()<class_FontFile_method_remove_texture>` to remove them manually.
+\ **Lưu ý:** Hàm này sẽ không xóa các texture liên kết với glyph; hãy sử dụng :ref:`remove_texture()<class_FontFile_method_remove_texture>` để xóa chúng theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -1141,7 +1141,7 @@ Removes specified rendered glyph information from the cache entry.
 
 |void| **remove_kerning**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, glyph_pair\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_FontFile_method_remove_kerning>`
 
-Removes kerning override for the pair of glyphs.
+Xóa ghi đè kerning cho cặp glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1153,7 +1153,7 @@ Removes kerning override for the pair of glyphs.
 
 |void| **remove_language_support_override**\ (\ language\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FontFile_method_remove_language_support_override>`
 
-Remove language support override.
+Xóa ghi đè hỗ trợ ngôn ngữ.
 
 .. rst-class:: classref-item-separator
 
@@ -1165,7 +1165,7 @@ Remove language support override.
 
 |void| **remove_script_support_override**\ (\ script\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FontFile_method_remove_script_support_override>`
 
-Removes script support override.
+Xóa ghi đè hỗ trợ script.
 
 .. rst-class:: classref-item-separator
 
@@ -1177,7 +1177,7 @@ Removes script support override.
 
 |void| **remove_size_cache**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_FontFile_method_remove_size_cache>`
 
-Removes specified font size from the cache entry.
+Xóa kích thước phông chữ được chỉ định khỏi mục bộ nhớ đệm.
 
 .. rst-class:: classref-item-separator
 
@@ -1189,9 +1189,9 @@ Removes specified font size from the cache entry.
 
 |void| **remove_texture**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_remove_texture>`
 
-Removes specified texture from the cache entry.
+Xóa texture được chỉ định khỏi mục bộ nhớ đệm.
 
-\ **Note:** This function will not remove glyphs associated with the texture. Remove them manually using :ref:`remove_glyph()<class_FontFile_method_remove_glyph>`.
+\ **Lưu ý:** Hàm này sẽ không xóa các glyph liên kết với texture. Hãy xóa chúng theo cách thủ công bằng :ref:`remove_glyph()<class_FontFile_method_remove_glyph>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1203,7 +1203,7 @@ Removes specified texture from the cache entry.
 
 |void| **render_glyph**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_render_glyph>`
 
-Renders specified glyph to the font cache texture.
+Render glyph được chỉ định vào texture bộ nhớ đệm phông chữ.
 
 .. rst-class:: classref-item-separator
 
@@ -1215,7 +1215,7 @@ Renders specified glyph to the font cache texture.
 
 |void| **render_range**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, start\: :ref:`int<class_int>`, end\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_render_range>`
 
-Renders the range of characters to the font cache texture.
+Render phạm vi ký tự vào texture bộ nhớ đệm phông chữ.
 
 .. rst-class:: classref-item-separator
 
@@ -1227,7 +1227,7 @@ Renders the range of characters to the font cache texture.
 
 |void| **set_cache_ascent**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, ascent\: :ref:`float<class_float>`\ ) :ref:`🔗<class_FontFile_method_set_cache_ascent>`
 
-Sets the font ascent (number of pixels above the baseline).
+Thiết lập font ascent (số pixel nằm phía trên đường cơ sở).
 
 .. rst-class:: classref-item-separator
 
@@ -1239,7 +1239,7 @@ Sets the font ascent (number of pixels above the baseline).
 
 |void| **set_cache_descent**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, descent\: :ref:`float<class_float>`\ ) :ref:`🔗<class_FontFile_method_set_cache_descent>`
 
-Sets the font descent (number of pixels below the baseline).
+Thiết lập độ hạ của font (số pixel bên dưới đường cơ sở).
 
 .. rst-class:: classref-item-separator
 
@@ -1251,7 +1251,7 @@ Sets the font descent (number of pixels below the baseline).
 
 |void| **set_cache_scale**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, scale\: :ref:`float<class_float>`\ ) :ref:`🔗<class_FontFile_method_set_cache_scale>`
 
-Sets scaling factor of the color bitmap font.
+Thiết lập hệ số tỷ lệ của font bitmap màu.
 
 .. rst-class:: classref-item-separator
 
@@ -1263,7 +1263,7 @@ Sets scaling factor of the color bitmap font.
 
 |void| **set_cache_underline_position**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, underline_position\: :ref:`float<class_float>`\ ) :ref:`🔗<class_FontFile_method_set_cache_underline_position>`
 
-Sets pixel offset of the underline below the baseline.
+Thiết lập độ lệch pixel của đường gạch chân bên dưới đường cơ sở.
 
 .. rst-class:: classref-item-separator
 
@@ -1275,7 +1275,7 @@ Sets pixel offset of the underline below the baseline.
 
 |void| **set_cache_underline_thickness**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, underline_thickness\: :ref:`float<class_float>`\ ) :ref:`🔗<class_FontFile_method_set_cache_underline_thickness>`
 
-Sets thickness of the underline in pixels.
+Thiết lập độ dày của đường gạch chân theo pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -1287,7 +1287,7 @@ Sets thickness of the underline in pixels.
 
 |void| **set_embolden**\ (\ cache_index\: :ref:`int<class_int>`, strength\: :ref:`float<class_float>`\ ) :ref:`🔗<class_FontFile_method_set_embolden>`
 
-Sets embolden strength, if is not equal to zero, emboldens the font outlines. Negative values reduce the outline thickness.
+Thiết lập độ mạnh làm đậm; nếu khác 0, giá trị này sẽ làm đậm các đường viền của font. Các giá trị âm làm giảm độ dày của đường viền.
 
 .. rst-class:: classref-item-separator
 
@@ -1299,7 +1299,7 @@ Sets embolden strength, if is not equal to zero, emboldens the font outlines. Ne
 
 |void| **set_extra_baseline_offset**\ (\ cache_index\: :ref:`int<class_int>`, baseline_offset\: :ref:`float<class_float>`\ ) :ref:`🔗<class_FontFile_method_set_extra_baseline_offset>`
 
-Sets extra baseline offset (as a fraction of font height).
+Thiết lập độ lệch bổ sung của đường cơ sở (theo tỷ lệ chiều cao của font).
 
 .. rst-class:: classref-item-separator
 
@@ -1311,7 +1311,7 @@ Sets extra baseline offset (as a fraction of font height).
 
 |void| **set_extra_spacing**\ (\ cache_index\: :ref:`int<class_int>`, spacing\: :ref:`SpacingType<enum_TextServer_SpacingType>`, value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_set_extra_spacing>`
 
-Sets the spacing for ``spacing`` to ``value`` in pixels (not relative to the font size).
+Thiết lập khoảng cách từ ``spacing`` đến ``value`` theo pixel (không tương đối với kích thước font).
 
 .. rst-class:: classref-item-separator
 
@@ -1323,7 +1323,7 @@ Sets the spacing for ``spacing`` to ``value`` in pixels (not relative to the fon
 
 |void| **set_face_index**\ (\ cache_index\: :ref:`int<class_int>`, face_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_set_face_index>`
 
-Sets an active face index in the TrueType / OpenType collection.
+Đặt chỉ số face đang hoạt động trong bộ sưu tập TrueType / OpenType.
 
 .. rst-class:: classref-item-separator
 
@@ -1335,9 +1335,9 @@ Sets an active face index in the TrueType / OpenType collection.
 
 |void| **set_glyph_advance**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, glyph\: :ref:`int<class_int>`, advance\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_FontFile_method_set_glyph_advance>`
 
-Sets glyph advance (offset of the next glyph).
+Đặt độ tiến glyph (độ lệch của glyph tiếp theo).
 
-\ **Note:** Advance for glyphs outlines is the same as the base glyph advance and is not saved.
+\ **Lưu ý:** Advance đối với đường viền glyph giống với advance của glyph cơ sở và không được lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -1349,7 +1349,7 @@ Sets glyph advance (offset of the next glyph).
 
 |void| **set_glyph_offset**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, offset\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_FontFile_method_set_glyph_offset>`
 
-Sets glyph offset from the baseline.
+Đặt độ lệch của glyph so với đường cơ sở.
 
 .. rst-class:: classref-item-separator
 
@@ -1361,7 +1361,7 @@ Sets glyph offset from the baseline.
 
 |void| **set_glyph_size**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, gl_size\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_FontFile_method_set_glyph_size>`
 
-Sets glyph size.
+Đặt kích thước glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1373,7 +1373,7 @@ Sets glyph size.
 
 |void| **set_glyph_texture_idx**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, texture_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FontFile_method_set_glyph_texture_idx>`
 
-Sets index of the cache texture containing the glyph.
+Đặt chỉ số của texture bộ nhớ đệm chứa glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1385,7 +1385,7 @@ Sets index of the cache texture containing the glyph.
 
 |void| **set_glyph_uv_rect**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, glyph\: :ref:`int<class_int>`, uv_rect\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_FontFile_method_set_glyph_uv_rect>`
 
-Sets rectangle in the cache texture containing the glyph.
+Đặt hình chữ nhật trong texture bộ nhớ đệm chứa glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1397,7 +1397,7 @@ Sets rectangle in the cache texture containing the glyph.
 
 |void| **set_kerning**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`int<class_int>`, glyph_pair\: :ref:`Vector2i<class_Vector2i>`, kerning\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_FontFile_method_set_kerning>`
 
-Sets kerning for the pair of glyphs.
+Thiết lập kerning cho cặp glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1409,7 +1409,7 @@ Sets kerning for the pair of glyphs.
 
 |void| **set_language_support_override**\ (\ language\: :ref:`String<class_String>`, supported\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_FontFile_method_set_language_support_override>`
 
-Adds override for :ref:`Font.is_language_supported()<class_Font_method_is_language_supported>`.
+Thêm ghi đè cho :ref:`Font.is_language_supported()<class_Font_method_is_language_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1421,7 +1421,7 @@ Adds override for :ref:`Font.is_language_supported()<class_Font_method_is_langua
 
 |void| **set_script_support_override**\ (\ script\: :ref:`String<class_String>`, supported\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_FontFile_method_set_script_support_override>`
 
-Adds override for :ref:`Font.is_script_supported()<class_Font_method_is_script_supported>`.
+Thêm ghi đè cho :ref:`Font.is_script_supported()<class_Font_method_is_script_supported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1433,7 +1433,7 @@ Adds override for :ref:`Font.is_script_supported()<class_Font_method_is_script_s
 
 |void| **set_texture_image**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`, image\: :ref:`Image<class_Image>`\ ) :ref:`🔗<class_FontFile_method_set_texture_image>`
 
-Sets font cache texture image.
+Thiết lập ảnh texture của bộ nhớ đệm font.
 
 .. rst-class:: classref-item-separator
 
@@ -1445,7 +1445,7 @@ Sets font cache texture image.
 
 |void| **set_texture_offsets**\ (\ cache_index\: :ref:`int<class_int>`, size\: :ref:`Vector2i<class_Vector2i>`, texture_index\: :ref:`int<class_int>`, offset\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_FontFile_method_set_texture_offsets>`
 
-Sets array containing glyph packing data.
+Thiết lập mảng chứa dữ liệu đóng gói glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1457,7 +1457,7 @@ Sets array containing glyph packing data.
 
 |void| **set_transform**\ (\ cache_index\: :ref:`int<class_int>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_FontFile_method_set_transform>`
 
-Sets 2D transform, applied to the font outlines, can be used for slanting, flipping, and rotating glyphs.
+Thiết lập phép biến đổi 2D, được áp dụng cho đường viền font và có thể dùng để làm nghiêng, lật và xoay glyph.
 
 .. rst-class:: classref-item-separator
 
@@ -1469,14 +1469,14 @@ Sets 2D transform, applied to the font outlines, can be used for slanting, flipp
 
 |void| **set_variation_coordinates**\ (\ cache_index\: :ref:`int<class_int>`, variation_coordinates\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_FontFile_method_set_variation_coordinates>`
 
-Sets variation coordinates for the specified font cache entry. See :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>` for more info.
+Thiết lập tọa độ biến thể cho mục bộ nhớ đệm font được chỉ định. Xem :ref:`Font.get_supported_variation_list()<class_Font_method_get_supported_variation_list>` để biết thêm thông tin.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

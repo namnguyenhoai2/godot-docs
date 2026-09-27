@@ -10,24 +10,24 @@
 CameraServer
 ============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Server keeping track of different cameras accessible in Godot.
+Máy chủ theo dõi các camera khác nhau có thể truy cập trong Godot.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **CameraServer** keeps track of different cameras accessible in Godot. These are external cameras such as webcams or the cameras on your phone.
+**CameraServer** theo dõi các camera khác nhau có thể truy cập trong Godot. Đây là các camera bên ngoài, chẳng hạn như webcam hoặc camera trên điện thoại của bạn.
 
-It is notably used to provide AR modules with a video feed from the camera.
+Đặc biệt, nó được dùng để cung cấp cho các mô-đun AR luồng video từ camera.
 
-\ **Note:** This class is currently only implemented on Linux, Android, macOS, and iOS. On other platforms no :ref:`CameraFeed<class_CameraFeed>`\ s will be available. To get a :ref:`CameraFeed<class_CameraFeed>` on iOS, enable :ref:`EditorExportPlatformIOS.modules/camera<class_EditorExportPlatformIOS_property_modules/camera>`.
+\ **Lưu ý:** Lớp này hiện chỉ được triển khai trên Linux, Android, macOS và iOS. Trên các nền tảng khác, sẽ không có :ref:`CameraFeed<class_CameraFeed>`\ s nào khả dụng. Để có một :ref:`CameraFeed<class_CameraFeed>` trên iOS, hãy bật :ref:`EditorExportPlatformIOS.modules/camera <class_EditorExportPlatformIOS_property_modules/camera>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -63,8 +63,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_CameraServer_signal_camera_feed_added:
 
@@ -72,7 +72,7 @@ Signals
 
 **camera_feed_added**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CameraServer_signal_camera_feed_added>`
 
-Emitted when a :ref:`CameraFeed<class_CameraFeed>` is added (e.g. a webcam is plugged in).
+Được phát ra khi một :ref:`CameraFeed<class_CameraFeed>` được thêm (ví dụ: khi cắm webcam).
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ Emitted when a :ref:`CameraFeed<class_CameraFeed>` is added (e.g. a webcam is pl
 
 **camera_feed_removed**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CameraServer_signal_camera_feed_removed>`
 
-Emitted when a :ref:`CameraFeed<class_CameraFeed>` is removed (e.g. a webcam is unplugged).
+Được phát ra khi một :ref:`CameraFeed<class_CameraFeed>` bị xóa (ví dụ: khi rút webcam).
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Emitted when a :ref:`CameraFeed<class_CameraFeed>` is removed (e.g. a webcam is 
 
 **camera_feeds_updated**\ (\ ) :ref:`🔗<class_CameraServer_signal_camera_feeds_updated>`
 
-Emitted when camera feeds are updated.
+Được phát ra khi các luồng camera được cập nhật.
 
 .. rst-class:: classref-section-separator
 
@@ -104,14 +104,14 @@ Emitted when camera feeds are updated.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CameraServer_FeedImage:
 
 .. rst-class:: classref-enumeration
 
-enum **FeedImage**: :ref:`🔗<enum_CameraServer_FeedImage>`
+enum **FeedImage**: :ref:`🔗 <enum_CameraServer_FeedImage>`
 
 .. _class_CameraServer_constant_FEED_RGBA_IMAGE:
 
@@ -119,7 +119,7 @@ enum **FeedImage**: :ref:`🔗<enum_CameraServer_FeedImage>`
 
 :ref:`FeedImage<enum_CameraServer_FeedImage>` **FEED_RGBA_IMAGE** = ``0``
 
-The RGBA camera image.
+Hình ảnh camera RGBA.
 
 .. _class_CameraServer_constant_FEED_YCBCR_IMAGE:
 
@@ -127,7 +127,7 @@ The RGBA camera image.
 
 :ref:`FeedImage<enum_CameraServer_FeedImage>` **FEED_YCBCR_IMAGE** = ``0``
 
-The `YCbCr <https://en.wikipedia.org/wiki/YCbCr>`__ camera image.
+Hình ảnh camera `YCbCr <https://en.wikipedia.org/wiki/YCbCr>`__.
 
 .. _class_CameraServer_constant_FEED_Y_IMAGE:
 
@@ -135,7 +135,7 @@ The `YCbCr <https://en.wikipedia.org/wiki/YCbCr>`__ camera image.
 
 :ref:`FeedImage<enum_CameraServer_FeedImage>` **FEED_Y_IMAGE** = ``0``
 
-The Y component camera image.
+Hình ảnh camera thành phần Y.
 
 .. _class_CameraServer_constant_FEED_CBCR_IMAGE:
 
@@ -143,7 +143,7 @@ The Y component camera image.
 
 :ref:`FeedImage<enum_CameraServer_FeedImage>` **FEED_CBCR_IMAGE** = ``1``
 
-The CbCr component camera image.
+Hình ảnh camera thành phần CbCr.
 
 .. rst-class:: classref-section-separator
 
@@ -151,8 +151,8 @@ The CbCr component camera image.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CameraServer_property_monitoring_feeds:
 
@@ -165,11 +165,11 @@ Property Descriptions
 - |void| **set_monitoring_feeds**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_monitoring_feeds**\ (\ )
 
-If ``true``, the server is actively monitoring available camera feeds.
+Nếu ``true``, máy chủ đang chủ động theo dõi các luồng camera hiện có.
 
-This has a performance cost, so only set it to ``true`` when you're actively accessing the camera.
+Điều này làm giảm hiệu năng, vì vậy chỉ đặt thành ``true`` khi bạn đang chủ động truy cập camera.
 
-\ **Note:** After setting it to ``true``, you can receive updated camera feeds through the :ref:`camera_feeds_updated<class_CameraServer_signal_camera_feeds_updated>` signal.
+\ **Lưu ý:** Sau khi đặt thành ``true``, bạn có thể nhận các luồng camera được cập nhật thông qua signal :ref:`camera_feeds_updated<class_CameraServer_signal_camera_feeds_updated>`.
 
 
 .. tabs::
@@ -204,8 +204,8 @@ This has a performance cost, so only set it to ``true`` when you're actively acc
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CameraServer_method_add_feed:
 
@@ -213,7 +213,7 @@ Method Descriptions
 
 |void| **add_feed**\ (\ feed\: :ref:`CameraFeed<class_CameraFeed>`\ ) :ref:`🔗<class_CameraServer_method_add_feed>`
 
-Adds the camera ``feed`` to the camera server.
+Thêm camera ``feed`` vào camera server.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Adds the camera ``feed`` to the camera server.
 
 :ref:`Array<class_Array>`\[:ref:`CameraFeed<class_CameraFeed>`\] **feeds**\ (\ ) :ref:`🔗<class_CameraServer_method_feeds>`
 
-Returns an array of :ref:`CameraFeed<class_CameraFeed>`\ s.
+Trả về một mảng các :ref:`CameraFeed<class_CameraFeed>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Returns an array of :ref:`CameraFeed<class_CameraFeed>`\ s.
 
 :ref:`CameraFeed<class_CameraFeed>` **get_feed**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CameraServer_method_get_feed>`
 
-Returns the :ref:`CameraFeed<class_CameraFeed>` corresponding to the camera with the given ``index``.
+Trả về :ref:`CameraFeed<class_CameraFeed>` tương ứng với camera có ``index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -249,7 +249,7 @@ Returns the :ref:`CameraFeed<class_CameraFeed>` corresponding to the camera with
 
 :ref:`int<class_int>` **get_feed_count**\ (\ ) :ref:`🔗<class_CameraServer_method_get_feed_count>`
 
-Returns the number of :ref:`CameraFeed<class_CameraFeed>`\ s registered.
+Trả về số lượng :ref:`CameraFeed<class_CameraFeed>`\  đã đăng ký.
 
 .. rst-class:: classref-item-separator
 
@@ -261,14 +261,14 @@ Returns the number of :ref:`CameraFeed<class_CameraFeed>`\ s registered.
 
 |void| **remove_feed**\ (\ feed\: :ref:`CameraFeed<class_CameraFeed>`\ ) :ref:`🔗<class_CameraServer_method_remove_feed>`
 
-Removes the specified camera ``feed``.
+Xóa camera ``feed`` được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Để có tác dụng, phương thức này thường cần được người dùng ghi đè.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,47 +10,47 @@
 GraphNode
 =========
 
-**Inherits:** :ref:`GraphElement<class_GraphElement>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`GraphElement<class_GraphElement>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A container with connection ports, representing a node in a :ref:`GraphEdit<class_GraphEdit>`.
+Một container có các cổng kết nối, biểu thị một node trong một :ref:`GraphEdit<class_GraphEdit>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**GraphNode** allows to create nodes for a :ref:`GraphEdit<class_GraphEdit>` graph with customizable content based on its child controls. **GraphNode** is derived from :ref:`Container<class_Container>` and it is responsible for placing its children on screen. This works similar to :ref:`VBoxContainer<class_VBoxContainer>`. Children, in turn, provide **GraphNode** with so-called slots, each of which can have a connection port on either side.
+**GraphNode** cho phép tạo các node cho một graph :ref:`GraphEdit<class_GraphEdit>` với nội dung có thể tùy chỉnh dựa trên các control con của nó. **GraphNode** được dẫn xuất từ :ref:`Container<class_Container>` và chịu trách nhiệm đặt các node con lên màn hình. Cách này tương tự như :ref:`VBoxContainer<class_VBoxContainer>`. Đổi lại, các node con cung cấp cho **GraphNode** những slot, mỗi slot có thể có một cổng kết nối ở một trong hai bên.
 
-Each **GraphNode** slot is defined by its index and can provide the node with up to two ports: one on the left, and one on the right. By convention the left port is also referred to as the **input port** and the right port is referred to as the **output port**. Each port can be enabled and configured individually, using different type and color. The type is an arbitrary value that you can define using your own considerations. The parent :ref:`GraphEdit<class_GraphEdit>` will receive this information on each connect and disconnect request.
+Mỗi slot của **GraphNode** được xác định bằng chỉ mục của nó và có thể cung cấp cho node tối đa hai cổng: một ở bên trái và một ở bên phải. Theo quy ước, cổng bên trái cũng được gọi là cổng **input**, còn cổng bên phải được gọi là cổng **output**. Mỗi cổng có thể được bật và cấu hình riêng, bằng cách sử dụng type và color khác nhau. Type là một giá trị tùy ý mà bạn có thể xác định theo nhu cầu của mình. :ref:`GraphEdit<class_GraphEdit>` cha sẽ nhận thông tin này trong mỗi yêu cầu connect và disconnect.
 
-Slots can be configured in the Inspector dock once you add at least one child :ref:`Control<class_Control>`. The properties are grouped by each slot's index in the "Slot" section.
+Bạn có thể cấu hình các slot trong dock Inspector sau khi thêm ít nhất một :ref:`Control<class_Control>` con. Các thuộc tính được nhóm theo chỉ mục của từng slot trong phần "Slot".
 
-\ **Note:** While GraphNode is set up using slots and slot indices, connections are made between the ports which are enabled. Because of that :ref:`GraphEdit<class_GraphEdit>` uses the port's index and not the slot's index. You can use :ref:`get_input_port_slot()<class_GraphNode_method_get_input_port_slot>` and :ref:`get_output_port_slot()<class_GraphNode_method_get_output_port_slot>` to get the slot index from the port index.
+\ **Lưu ý:** Mặc dù GraphNode được thiết lập bằng các slot và chỉ mục slot, các kết nối được tạo giữa những cổng đã được bật. Vì vậy, :ref:`GraphEdit<class_GraphEdit>` sử dụng chỉ mục của cổng chứ không phải chỉ mục của slot. Bạn có thể sử dụng :ref:`get_input_port_slot()<class_GraphNode_method_get_input_port_slot>` và :ref:`get_output_port_slot()<class_GraphNode_method_get_output_port_slot>` để lấy chỉ mục slot từ chỉ mục cổng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`     | focus_mode                                                                                     | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`)   |
-   +----------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                      | :ref:`ignore_invalid_connection_type<class_GraphNode_property_ignore_invalid_connection_type>` | ``false``                                                             |
-   +----------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>` | mouse_filter                                                                                   | ``0`` (overrides :ref:`Control<class_Control_property_mouse_filter>`) |
-   +----------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`     | :ref:`slots_focus_mode<class_GraphNode_property_slots_focus_mode>`                             | ``3``                                                                 |
-   +----------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`String<class_String>`                  | :ref:`title<class_GraphNode_property_title>`                                                   | ``""``                                                                |
-   +----------------------------------------------+------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`     | focus_mode                                                                                     | ``3`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)   |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                       | :ref:`ignore_invalid_connection_type<class_GraphNode_property_ignore_invalid_connection_type>` | ``false``                                                          |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>` | mouse_filter                                                                                   | ``0`` (ghi đè :ref:`Control<class_Control_property_mouse_filter>`) |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`     | :ref:`slots_focus_mode<class_GraphNode_property_slots_focus_mode>`                             | ``3``                                                              |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`String<class_String>`                   | :ref:`title<class_GraphNode_property_title>`                                                   | ``""``                                                             |
+   +-----------------------------------------------+------------------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -133,7 +133,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -178,7 +178,7 @@ Signals
 
 **slot_sizes_changed**\ (\ ) :ref:`🔗<class_GraphNode_signal_slot_sizes_changed>`
 
-Emitted when any slot's size might have changed.
+Được phát ra khi kích thước của bất kỳ slot nào có thể đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ Emitted when any slot's size might have changed.
 
 **slot_updated**\ (\ slot_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_signal_slot_updated>`
 
-Emitted when any GraphNode's slot is updated.
+Được phát ra khi slot của bất kỳ GraphNode nào được cập nhật.
 
 .. rst-class:: classref-section-separator
 
@@ -198,8 +198,8 @@ Emitted when any GraphNode's slot is updated.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GraphNode_property_ignore_invalid_connection_type:
 
@@ -212,7 +212,7 @@ Property Descriptions
 - |void| **set_ignore_invalid_connection_type**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_ignoring_valid_connection_type**\ (\ )
 
-If ``true``, you can connect ports with different types, even if the connection was not explicitly allowed in the parent :ref:`GraphEdit<class_GraphEdit>`.
+Nếu ``true``, bạn có thể kết nối các cổng có kiểu khác nhau, ngay cả khi kết nối đó không được cho phép rõ ràng trong :ref:`GraphEdit<class_GraphEdit>` cha.
 
 .. rst-class:: classref-item-separator
 
@@ -229,13 +229,13 @@ If ``true``, you can connect ports with different types, even if the connection 
 - |void| **set_slots_focus_mode**\ (\ value\: :ref:`FocusMode<enum_Control_FocusMode>`\ )
 - :ref:`FocusMode<enum_Control_FocusMode>` **get_slots_focus_mode**\ (\ )
 
-Determines how connection slots can be focused.
+Xác định cách các slot kết nối có thể được focus.
 
-- If set to :ref:`Control.FOCUS_CLICK<class_Control_constant_FOCUS_CLICK>`, connections can only be made with the mouse.
+- Nếu được đặt thành :ref:`Control.FOCUS_CLICK<class_Control_constant_FOCUS_CLICK>`, chỉ có thể tạo kết nối bằng chuột.
 
-- If set to :ref:`Control.FOCUS_ALL<class_Control_constant_FOCUS_ALL>`, slots can also be focused using the :ref:`ProjectSettings.input/ui_up<class_ProjectSettings_property_input/ui_up>` and :ref:`ProjectSettings.input/ui_down<class_ProjectSettings_property_input/ui_down>` and connected using :ref:`ProjectSettings.input/ui_left<class_ProjectSettings_property_input/ui_left>` and :ref:`ProjectSettings.input/ui_right<class_ProjectSettings_property_input/ui_right>` input actions.
+- Nếu được đặt thành :ref:`Control.FOCUS_ALL<class_Control_constant_FOCUS_ALL>`, bạn cũng có thể dùng :ref:`ProjectSettings.input/ui_up <class_ProjectSettings_property_input/ui_up>` và :ref:`ProjectSettings.input/ui_down <class_ProjectSettings_property_input/ui_down>` để lấy tiêu điểm cho các slot, và dùng các hành động input :ref:`ProjectSettings.input/ui_left <class_ProjectSettings_property_input/ui_left>` và :ref:`ProjectSettings.input/ui_right <class_ProjectSettings_property_input/ui_right>` để kết nối.
 
-- If set to :ref:`Control.FOCUS_ACCESSIBILITY<class_Control_constant_FOCUS_ACCESSIBILITY>`, slot input actions are only enabled when the screen reader is active.
+- Nếu được đặt thành :ref:`Control.FOCUS_ACCESSIBILITY<class_Control_constant_FOCUS_ACCESSIBILITY>`, các hành động input của slot chỉ được bật khi trình đọc màn hình đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Determines how connection slots can be focused.
 - |void| **set_title**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_title**\ (\ )
 
-The text displayed in the GraphNode's title bar.
+Văn bản được hiển thị trên thanh tiêu đề của GraphNode.
 
 .. rst-class:: classref-section-separator
 
@@ -260,8 +260,8 @@ The text displayed in the GraphNode's title bar.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GraphNode_private_method__draw_port:
 
@@ -283,7 +283,7 @@ Method Descriptions
 
 |void| **clear_all_slots**\ (\ ) :ref:`🔗<class_GraphNode_method_clear_all_slots>`
 
-Disables all slots of the GraphNode. This will remove all input/output ports from the GraphNode.
+Tắt tất cả các slot của GraphNode. Thao tác này sẽ xóa tất cả các cổng input/output khỏi GraphNode.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ Disables all slots of the GraphNode. This will remove all input/output ports fro
 
 |void| **clear_slot**\ (\ slot_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_clear_slot>`
 
-Disables the slot with the given ``slot_index``. This will remove the corresponding input and output port from the GraphNode.
+Tắt slot có ``slot_index`` được chỉ định. Thao tác này sẽ xóa cổng input và output tương ứng khỏi GraphNode.
 
 .. rst-class:: classref-item-separator
 
@@ -307,7 +307,7 @@ Disables the slot with the given ``slot_index``. This will remove the correspond
 
 :ref:`Color<class_Color>` **get_input_port_color**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_input_port_color>`
 
-Returns the :ref:`Color<class_Color>` of the input port with the given ``port_idx``.
+Trả về :ref:`Color<class_Color>` của cổng đầu vào có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -319,7 +319,7 @@ Returns the :ref:`Color<class_Color>` of the input port with the given ``port_id
 
 :ref:`int<class_int>` **get_input_port_count**\ (\ ) :ref:`🔗<class_GraphNode_method_get_input_port_count>`
 
-Returns the number of slots with an enabled input port.
+Trả về số lượng slot có cổng đầu vào được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +331,7 @@ Returns the number of slots with an enabled input port.
 
 :ref:`Vector2<class_Vector2>` **get_input_port_position**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_input_port_position>`
 
-Returns the position of the input port with the given ``port_idx``.
+Trả về vị trí của cổng đầu vào có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -343,7 +343,7 @@ Returns the position of the input port with the given ``port_idx``.
 
 :ref:`int<class_int>` **get_input_port_slot**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_input_port_slot>`
 
-Returns the corresponding slot index of the input port with the given ``port_idx``.
+Trả về chỉ mục slot tương ứng của cổng đầu vào có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -355,7 +355,7 @@ Returns the corresponding slot index of the input port with the given ``port_idx
 
 :ref:`int<class_int>` **get_input_port_type**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_input_port_type>`
 
-Returns the type of the input port with the given ``port_idx``.
+Trả về kiểu của cổng đầu vào có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -367,7 +367,7 @@ Returns the type of the input port with the given ``port_idx``.
 
 :ref:`Color<class_Color>` **get_output_port_color**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_output_port_color>`
 
-Returns the :ref:`Color<class_Color>` of the output port with the given ``port_idx``.
+Trả về :ref:`Color<class_Color>` của cổng đầu ra có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -379,7 +379,7 @@ Returns the :ref:`Color<class_Color>` of the output port with the given ``port_i
 
 :ref:`int<class_int>` **get_output_port_count**\ (\ ) :ref:`🔗<class_GraphNode_method_get_output_port_count>`
 
-Returns the number of slots with an enabled output port.
+Trả về số lượng slot có cổng đầu ra được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -391,7 +391,7 @@ Returns the number of slots with an enabled output port.
 
 :ref:`Vector2<class_Vector2>` **get_output_port_position**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_output_port_position>`
 
-Returns the position of the output port with the given ``port_idx``.
+Trả về vị trí của cổng đầu ra có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -403,7 +403,7 @@ Returns the position of the output port with the given ``port_idx``.
 
 :ref:`int<class_int>` **get_output_port_slot**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_output_port_slot>`
 
-Returns the corresponding slot index of the output port with the given ``port_idx``.
+Trả về chỉ mục slot tương ứng của cổng đầu ra có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -415,7 +415,7 @@ Returns the corresponding slot index of the output port with the given ``port_id
 
 :ref:`int<class_int>` **get_output_port_type**\ (\ port_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_get_output_port_type>`
 
-Returns the type of the output port with the given ``port_idx``.
+Trả về kiểu của cổng đầu ra có ``port_idx`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -427,7 +427,7 @@ Returns the type of the output port with the given ``port_idx``.
 
 :ref:`Color<class_Color>` **get_slot_color_left**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_color_left>`
 
-Returns the left (input) :ref:`Color<class_Color>` of the slot with the given ``slot_index``.
+Trả về :ref:`Color<class_Color>` bên trái (đầu vào) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -439,7 +439,7 @@ Returns the left (input) :ref:`Color<class_Color>` of the slot with the given ``
 
 :ref:`Color<class_Color>` **get_slot_color_right**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_color_right>`
 
-Returns the right (output) :ref:`Color<class_Color>` of the slot with the given ``slot_index``.
+Trả về :ref:`Color<class_Color>` bên phải (đầu ra) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -451,7 +451,7 @@ Returns the right (output) :ref:`Color<class_Color>` of the slot with the given 
 
 :ref:`Texture2D<class_Texture2D>` **get_slot_custom_icon_left**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_custom_icon_left>`
 
-Returns the left (input) custom :ref:`Texture2D<class_Texture2D>` of the slot with the given ``slot_index``.
+Trả về :ref:`Texture2D<class_Texture2D>` tùy chỉnh bên trái (đầu vào) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -463,7 +463,7 @@ Returns the left (input) custom :ref:`Texture2D<class_Texture2D>` of the slot wi
 
 :ref:`Texture2D<class_Texture2D>` **get_slot_custom_icon_right**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_custom_icon_right>`
 
-Returns the right (output) custom :ref:`Texture2D<class_Texture2D>` of the slot with the given ``slot_index``.
+Trả về :ref:`Texture2D<class_Texture2D>` tùy chỉnh bên phải (đầu ra) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -475,7 +475,7 @@ Returns the right (output) custom :ref:`Texture2D<class_Texture2D>` of the slot 
 
 :ref:`Variant<class_Variant>` **get_slot_metadata_left**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_metadata_left>`
 
-Returns the left (input) metadata of the slot with the given ``slot_index``.
+Trả về siêu dữ liệu bên trái (đầu vào) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -487,7 +487,7 @@ Returns the left (input) metadata of the slot with the given ``slot_index``.
 
 :ref:`Variant<class_Variant>` **get_slot_metadata_right**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_metadata_right>`
 
-Returns the right (output) metadata of the slot with the given ``slot_index``.
+Trả về siêu dữ liệu bên phải (đầu ra) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -499,7 +499,7 @@ Returns the right (output) metadata of the slot with the given ``slot_index``.
 
 :ref:`int<class_int>` **get_slot_type_left**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_type_left>`
 
-Returns the left (input) type of the slot with the given ``slot_index``.
+Trả về kiểu bên trái (đầu vào) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -511,7 +511,7 @@ Returns the left (input) type of the slot with the given ``slot_index``.
 
 :ref:`int<class_int>` **get_slot_type_right**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_get_slot_type_right>`
 
-Returns the right (output) type of the slot with the given ``slot_index``.
+Trả về kiểu bên phải (đầu ra) của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -523,7 +523,7 @@ Returns the right (output) type of the slot with the given ``slot_index``.
 
 :ref:`HBoxContainer<class_HBoxContainer>` **get_titlebar_hbox**\ (\ ) :ref:`🔗<class_GraphNode_method_get_titlebar_hbox>`
 
-Returns the :ref:`HBoxContainer<class_HBoxContainer>` used for the title bar, only containing a :ref:`Label<class_Label>` for displaying the title by default. This can be used to add custom controls to the title bar such as option or close buttons.
+Trả về :ref:`HBoxContainer<class_HBoxContainer>` được dùng cho thanh tiêu đề, theo mặc định chỉ chứa một :ref:`Label<class_Label>` để hiển thị tiêu đề. Có thể dùng nó để thêm các điều khiển tùy chỉnh vào thanh tiêu đề, chẳng hạn như các nút tùy chọn hoặc đóng.
 
 .. rst-class:: classref-item-separator
 
@@ -535,7 +535,7 @@ Returns the :ref:`HBoxContainer<class_HBoxContainer>` used for the title bar, on
 
 :ref:`bool<class_bool>` **is_slot_draw_stylebox**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_is_slot_draw_stylebox>`
 
-Returns ``true`` if the background :ref:`StyleBox<class_StyleBox>` of the slot with the given ``slot_index`` is drawn.
+Trả về ``true`` nếu :ref:`StyleBox<class_StyleBox>` nền của slot có ``slot_index`` đã cho được vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -547,7 +547,7 @@ Returns ``true`` if the background :ref:`StyleBox<class_StyleBox>` of the slot w
 
 :ref:`bool<class_bool>` **is_slot_enabled_left**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_is_slot_enabled_left>`
 
-Returns ``true`` if left (input) side of the slot with the given ``slot_index`` is enabled.
+Trả về ``true`` nếu phía bên trái (đầu vào) của slot có ``slot_index`` đã cho được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -559,7 +559,7 @@ Returns ``true`` if left (input) side of the slot with the given ``slot_index`` 
 
 :ref:`bool<class_bool>` **is_slot_enabled_right**\ (\ slot_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GraphNode_method_is_slot_enabled_right>`
 
-Returns ``true`` if right (output) side of the slot with the given ``slot_index`` is enabled.
+Trả về ``true`` nếu phía bên phải (đầu ra) của slot có ``slot_index`` đã cho được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -571,19 +571,19 @@ Returns ``true`` if right (output) side of the slot with the given ``slot_index`
 
 |void| **set_slot**\ (\ slot_index\: :ref:`int<class_int>`, enable_left_port\: :ref:`bool<class_bool>`, type_left\: :ref:`int<class_int>`, color_left\: :ref:`Color<class_Color>`, enable_right_port\: :ref:`bool<class_bool>`, type_right\: :ref:`int<class_int>`, color_right\: :ref:`Color<class_Color>`, custom_icon_left\: :ref:`Texture2D<class_Texture2D>` = null, custom_icon_right\: :ref:`Texture2D<class_Texture2D>` = null, draw_stylebox\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_GraphNode_method_set_slot>`
 
-Sets properties of the slot with the given ``slot_index``.
+Đặt các thuộc tính của slot có ``slot_index`` đã cho.
 
-If ``enable_left_port``/``enable_right_port`` is ``true``, a port will appear and the slot will be able to be connected from this side.
+Nếu ``enable_left_port``/``enable_right_port`` là ``true``, một cổng sẽ xuất hiện và slot sẽ có thể được kết nối từ phía này.
 
-With ``type_left``/``type_right`` an arbitrary type can be assigned to each port. Two ports can be connected if they share the same type, or if the connection between their types is allowed in the parent :ref:`GraphEdit<class_GraphEdit>` (see :ref:`GraphEdit.add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>`). Keep in mind that the :ref:`GraphEdit<class_GraphEdit>` has the final say in accepting the connection. Type compatibility simply allows the :ref:`GraphEdit.connection_request<class_GraphEdit_signal_connection_request>` signal to be emitted.
+Với ``type_left``/``type_right``, có thể gán một kiểu tùy ý cho mỗi cổng. Hai cổng có thể được kết nối nếu chúng có cùng kiểu hoặc nếu kết nối giữa các kiểu của chúng được cho phép trong :ref:`GraphEdit<class_GraphEdit>` cha (xem :ref:`GraphEdit.add_valid_connection_type()<class_GraphEdit_method_add_valid_connection_type>`). Lưu ý rằng :ref:`GraphEdit<class_GraphEdit>` là thành phần có quyết định cuối cùng về việc chấp nhận kết nối. Tính tương thích của kiểu chỉ cho phép phát tín hiệu :ref:`GraphEdit.connection_request<class_GraphEdit_signal_connection_request>`.
 
-Ports can be further customized using ``color_left``/``color_right`` and ``custom_icon_left``/``custom_icon_right``. The color parameter adds a tint to the icon. The custom icon can be used to override the default port dot.
+Có thể tùy chỉnh thêm các cổng bằng ``color_left``/``color_right`` và ``custom_icon_left``/``custom_icon_right``. Tham số màu sẽ thêm sắc màu cho biểu tượng. Có thể dùng biểu tượng tùy chỉnh để ghi đè chấm cổng mặc định.
 
-Additionally, ``draw_stylebox`` can be used to enable or disable drawing of the background stylebox for each slot. See :ref:`slot<class_GraphNode_theme_style_slot>`.
+Ngoài ra, có thể dùng ``draw_stylebox`` để bật hoặc tắt việc vẽ stylebox nền cho từng slot. Xem :ref:`slot<class_GraphNode_theme_style_slot>`.
 
-Individual properties can also be set using one of the ``set_slot_*`` methods.
+Các thuộc tính riêng lẻ cũng có thể được đặt bằng một trong các phương thức ``set_slot_*``.
 
-\ **Note:** This method only sets properties of the slot. To create the slot itself, add a :ref:`Control<class_Control>`-derived child to the GraphNode.
+\ **Lưu ý:** Phương thức này chỉ đặt các thuộc tính của slot. Để tạo chính slot đó, hãy thêm một node con có nguồn gốc từ :ref:`Control<class_Control>` vào GraphNode.
 
 .. rst-class:: classref-item-separator
 
@@ -595,7 +595,7 @@ Individual properties can also be set using one of the ``set_slot_*`` methods.
 
 |void| **set_slot_color_left**\ (\ slot_index\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_color_left>`
 
-Sets the :ref:`Color<class_Color>` of the left (input) side of the slot with the given ``slot_index`` to ``color``.
+Đặt :ref:`Color<class_Color>` của phía bên trái (đầu vào) của slot có ``slot_index`` đã cho thành ``color``.
 
 .. rst-class:: classref-item-separator
 
@@ -607,7 +607,7 @@ Sets the :ref:`Color<class_Color>` of the left (input) side of the slot with the
 
 |void| **set_slot_color_right**\ (\ slot_index\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_color_right>`
 
-Sets the :ref:`Color<class_Color>` of the right (output) side of the slot with the given ``slot_index`` to ``color``.
+Đặt :ref:`Color<class_Color>` của phía bên phải (đầu ra) của slot có ``slot_index`` đã cho thành ``color``.
 
 .. rst-class:: classref-item-separator
 
@@ -619,7 +619,7 @@ Sets the :ref:`Color<class_Color>` of the right (output) side of the slot with t
 
 |void| **set_slot_custom_icon_left**\ (\ slot_index\: :ref:`int<class_int>`, custom_icon\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_custom_icon_left>`
 
-Sets the custom :ref:`Texture2D<class_Texture2D>` of the left (input) side of the slot with the given ``slot_index`` to ``custom_icon``.
+Đặt :ref:`Texture2D<class_Texture2D>` tùy chỉnh của phía bên trái (đầu vào) của slot có ``slot_index`` đã cho thành ``custom_icon``.
 
 .. rst-class:: classref-item-separator
 
@@ -631,7 +631,7 @@ Sets the custom :ref:`Texture2D<class_Texture2D>` of the left (input) side of th
 
 |void| **set_slot_custom_icon_right**\ (\ slot_index\: :ref:`int<class_int>`, custom_icon\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_custom_icon_right>`
 
-Sets the custom :ref:`Texture2D<class_Texture2D>` of the right (output) side of the slot with the given ``slot_index`` to ``custom_icon``.
+Đặt :ref:`Texture2D<class_Texture2D>` tùy chỉnh của phía bên phải (đầu ra) của slot có ``slot_index`` đã cho thành ``custom_icon``.
 
 .. rst-class:: classref-item-separator
 
@@ -643,7 +643,7 @@ Sets the custom :ref:`Texture2D<class_Texture2D>` of the right (output) side of 
 
 |void| **set_slot_draw_stylebox**\ (\ slot_index\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_draw_stylebox>`
 
-Toggles the background :ref:`StyleBox<class_StyleBox>` of the slot with the given ``slot_index``.
+Bật/tắt :ref:`StyleBox<class_StyleBox>` nền của slot có ``slot_index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -655,7 +655,7 @@ Toggles the background :ref:`StyleBox<class_StyleBox>` of the slot with the give
 
 |void| **set_slot_enabled_left**\ (\ slot_index\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_enabled_left>`
 
-Toggles the left (input) side of the slot with the given ``slot_index``. If ``enable`` is ``true``, a port will appear on the left side and the slot will be able to be connected from this side.
+Bật/tắt phía bên trái (đầu vào) của slot có ``slot_index`` đã cho. Nếu ``enable`` là ``true``, một cổng sẽ xuất hiện ở phía bên trái và slot sẽ có thể được kết nối từ phía này.
 
 .. rst-class:: classref-item-separator
 
@@ -667,7 +667,7 @@ Toggles the left (input) side of the slot with the given ``slot_index``. If ``en
 
 |void| **set_slot_enabled_right**\ (\ slot_index\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_enabled_right>`
 
-Toggles the right (output) side of the slot with the given ``slot_index``. If ``enable`` is ``true``, a port will appear on the right side and the slot will be able to be connected from this side.
+Bật hoặc tắt phía bên phải (đầu ra) của slot có ``slot_index`` đã cho. Nếu ``enable`` là ``true``, một cổng sẽ xuất hiện ở phía bên phải và slot có thể được kết nối từ phía này.
 
 .. rst-class:: classref-item-separator
 
@@ -679,7 +679,7 @@ Toggles the right (output) side of the slot with the given ``slot_index``. If ``
 
 |void| **set_slot_metadata_left**\ (\ slot_index\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_metadata_left>`
 
-Sets the custom metadata for the left (input) side of the slot with the given ``slot_index`` to ``value``.
+Đặt metadata tùy chỉnh cho phía bên trái (đầu vào) của slot có ``slot_index`` đã cho thành ``value``.
 
 .. rst-class:: classref-item-separator
 
@@ -691,7 +691,7 @@ Sets the custom metadata for the left (input) side of the slot with the given ``
 
 |void| **set_slot_metadata_right**\ (\ slot_index\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_metadata_right>`
 
-Sets the custom metadata for the right (output) side of the slot with the given ``slot_index`` to ``value``.
+Đặt metadata tùy chỉnh cho phía bên phải (đầu ra) của slot có ``slot_index`` đã cho thành ``value``.
 
 .. rst-class:: classref-item-separator
 
@@ -703,7 +703,7 @@ Sets the custom metadata for the right (output) side of the slot with the given 
 
 |void| **set_slot_type_left**\ (\ slot_index\: :ref:`int<class_int>`, type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_type_left>`
 
-Sets the left (input) type of the slot with the given ``slot_index`` to ``type``. If the value is negative, all connections will be disallowed to be created via user inputs.
+Đặt kiểu bên trái (đầu vào) của slot có ``slot_index`` đã cho thành ``type``. Nếu giá trị là số âm, người dùng sẽ không thể tạo bất kỳ kết nối nào thông qua các đầu vào.
 
 .. rst-class:: classref-item-separator
 
@@ -715,7 +715,7 @@ Sets the left (input) type of the slot with the given ``slot_index`` to ``type``
 
 |void| **set_slot_type_right**\ (\ slot_index\: :ref:`int<class_int>`, type\: :ref:`int<class_int>`\ ) :ref:`🔗<class_GraphNode_method_set_slot_type_right>`
 
-Sets the right (output) type of the slot with the given ``slot_index`` to ``type``. If the value is negative, all connections will be disallowed to be created via user inputs.
+Đặt kiểu bên phải (đầu ra) của slot có ``slot_index`` đã cho thành ``type``. Nếu giá trị là số âm, người dùng sẽ không thể tạo bất kỳ kết nối nào thông qua các đầu vào.
 
 .. rst-class:: classref-section-separator
 
@@ -723,8 +723,8 @@ Sets the right (output) type of the slot with the given ``slot_index`` to ``type
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_GraphNode_theme_color_resizer_color:
 
@@ -732,7 +732,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **resizer_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_GraphNode_theme_color_resizer_color>`
 
-The color modulation applied to the resizer icon.
+Điều chỉnh màu được áp dụng cho biểu tượng thay đổi kích thước.
 
 .. rst-class:: classref-item-separator
 
@@ -744,7 +744,7 @@ The color modulation applied to the resizer icon.
 
 :ref:`int<class_int>` **port_h_offset** = ``0`` :ref:`🔗<class_GraphNode_theme_constant_port_h_offset>`
 
-Horizontal offset for the ports.
+Độ lệch ngang của các port.
 
 .. rst-class:: classref-item-separator
 
@@ -756,7 +756,7 @@ Horizontal offset for the ports.
 
 :ref:`int<class_int>` **separation** = ``2`` :ref:`🔗<class_GraphNode_theme_constant_separation>`
 
-The vertical distance between ports.
+Khoảng cách theo chiều dọc giữa các port.
 
 .. rst-class:: classref-item-separator
 
@@ -766,9 +766,9 @@ The vertical distance between ports.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **port** :ref:`🔗<class_GraphNode_theme_icon_port>`
+:ref:`Texture2D<class_Texture2D>` **port** :ref:`🔗 <class_GraphNode_theme_icon_port>`
 
-The icon used for representing ports.
+Biểu tượng dùng để biểu thị các port.
 
 .. rst-class:: classref-item-separator
 
@@ -778,9 +778,9 @@ The icon used for representing ports.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_GraphNode_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_GraphNode_theme_style_panel>`
 
-The default background for the slot area of the **GraphNode**.
+Nền mặc định cho vùng slot của **GraphNode**.
 
 .. rst-class:: classref-item-separator
 
@@ -790,9 +790,9 @@ The default background for the slot area of the **GraphNode**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel_focus** :ref:`🔗<class_GraphNode_theme_style_panel_focus>`
+:ref:`StyleBox<class_StyleBox>` **panel_focus** :ref:`🔗 <class_GraphNode_theme_style_panel_focus>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **GraphNode** is focused (when used with assistive apps).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **GraphNode** được đặt tiêu điểm (khi được sử dụng với các ứng dụng hỗ trợ).
 
 .. rst-class:: classref-item-separator
 
@@ -802,9 +802,9 @@ The default background for the slot area of the **GraphNode**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel_selected** :ref:`🔗<class_GraphNode_theme_style_panel_selected>`
+:ref:`StyleBox<class_StyleBox>` **panel_selected** :ref:`🔗 <class_GraphNode_theme_style_panel_selected>`
 
-The :ref:`StyleBox<class_StyleBox>` used for the slot area when selected.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho vùng slot khi được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -814,9 +814,9 @@ The :ref:`StyleBox<class_StyleBox>` used for the slot area when selected.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **slot** :ref:`🔗<class_GraphNode_theme_style_slot>`
+:ref:`StyleBox<class_StyleBox>` **slot** :ref:`🔗 <class_GraphNode_theme_style_slot>`
 
-The :ref:`StyleBox<class_StyleBox>` used for each slot of the **GraphNode**.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho mỗi slot của **GraphNode**.
 
 .. rst-class:: classref-item-separator
 
@@ -826,9 +826,9 @@ The :ref:`StyleBox<class_StyleBox>` used for each slot of the **GraphNode**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **slot_selected** :ref:`🔗<class_GraphNode_theme_style_slot_selected>`
+:ref:`StyleBox<class_StyleBox>` **slot_selected** :ref:`🔗 <class_GraphNode_theme_style_slot_selected>`
 
-:ref:`StyleBox<class_StyleBox>` used when the slot is focused (when used with assistive apps).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi slot được đặt tiêu điểm (khi được sử dụng với các ứng dụng hỗ trợ).
 
 .. rst-class:: classref-item-separator
 
@@ -838,9 +838,9 @@ The :ref:`StyleBox<class_StyleBox>` used for each slot of the **GraphNode**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **titlebar** :ref:`🔗<class_GraphNode_theme_style_titlebar>`
+:ref:`StyleBox<class_StyleBox>` **titlebar** :ref:`🔗 <class_GraphNode_theme_style_titlebar>`
 
-The :ref:`StyleBox<class_StyleBox>` used for the title bar of the **GraphNode**.
+:ref:`StyleBox<class_StyleBox>` được dùng cho thanh tiêu đề của **GraphNode**.
 
 .. rst-class:: classref-item-separator
 
@@ -850,16 +850,16 @@ The :ref:`StyleBox<class_StyleBox>` used for the title bar of the **GraphNode**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **titlebar_selected** :ref:`🔗<class_GraphNode_theme_style_titlebar_selected>`
+:ref:`StyleBox<class_StyleBox>` **titlebar_selected** :ref:`🔗 <class_GraphNode_theme_style_titlebar_selected>`
 
-The :ref:`StyleBox<class_StyleBox>` used for the title bar of the **GraphNode** when it is selected.
+:ref:`StyleBox<class_StyleBox>` được dùng cho thanh tiêu đề của **GraphNode** khi nó được chọn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

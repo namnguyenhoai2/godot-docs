@@ -10,60 +10,60 @@
 NinePatchRect
 =============
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A control that displays a texture by keeping its corners intact, but tiling its edges and center.
+Một control hiển thị texture bằng cách giữ nguyên các góc, nhưng lặp các cạnh và phần trung tâm.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Also known as 9-slice panels, **NinePatchRect** produces clean panels of any size based on a small texture. To do so, it splits the texture in a 3×3 grid. When you scale the node, it tiles the texture's edges horizontally or vertically, tiles the center on both axes, and leaves the corners unchanged.
+Còn được gọi là các panel 9-slice, **NinePatchRect** tạo ra các panel gọn gàng với mọi kích thước dựa trên một texture nhỏ. Để làm vậy, nó chia texture thành một lưới 3×3. Khi bạn scale node, nó lặp texture ở các cạnh theo chiều ngang hoặc dọc, lặp phần trung tâm trên cả hai trục và giữ nguyên các góc.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>` | :ref:`axis_stretch_horizontal<class_NinePatchRect_property_axis_stretch_horizontal>` | ``0``                                                                 |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>` | :ref:`axis_stretch_vertical<class_NinePatchRect_property_axis_stretch_vertical>`     | ``0``                                                                 |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                    | :ref:`draw_center<class_NinePatchRect_property_draw_center>`                         | ``true``                                                              |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>`               | mouse_filter                                                                         | ``2`` (overrides :ref:`Control<class_Control_property_mouse_filter>`) |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                      | :ref:`patch_margin_bottom<class_NinePatchRect_property_patch_margin_bottom>`         | ``0``                                                                 |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                      | :ref:`patch_margin_left<class_NinePatchRect_property_patch_margin_left>`             | ``0``                                                                 |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                      | :ref:`patch_margin_right<class_NinePatchRect_property_patch_margin_right>`           | ``0``                                                                 |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                      | :ref:`patch_margin_top<class_NinePatchRect_property_patch_margin_top>`               | ``0``                                                                 |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                                  | :ref:`region_rect<class_NinePatchRect_property_region_rect>`                         | ``Rect2(0, 0, 0, 0)``                                                 |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                          | :ref:`texture<class_NinePatchRect_property_texture>`                                 |                                                                       |
-   +------------------------------------------------------------+--------------------------------------------------------------------------------------+-----------------------------------------------------------------------+
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`AxisStretchMode <enum_NinePatchRect_AxisStretchMode>` | :ref:`axis_stretch_horizontal<class_NinePatchRect_property_axis_stretch_horizontal>` | ``0``                                                              |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`AxisStretchMode <enum_NinePatchRect_AxisStretchMode>` | :ref:`axis_stretch_vertical<class_NinePatchRect_property_axis_stretch_vertical>`     | ``0``                                                              |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                     | :ref:`draw_center<class_NinePatchRect_property_draw_center>`                         | ``true``                                                           |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>`               | mouse_filter                                                                         | ``2`` (ghi đè :ref:`Control<class_Control_property_mouse_filter>`) |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                       | :ref:`patch_margin_bottom<class_NinePatchRect_property_patch_margin_bottom>`         | ``0``                                                              |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                       | :ref:`patch_margin_left<class_NinePatchRect_property_patch_margin_left>`             | ``0``                                                              |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                       | :ref:`patch_margin_right<class_NinePatchRect_property_patch_margin_right>`           | ``0``                                                              |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                       | :ref:`patch_margin_top<class_NinePatchRect_property_patch_margin_top>`               | ``0``                                                              |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                   | :ref:`region_rect<class_NinePatchRect_property_region_rect>`                         | ``Rect2(0, 0, 0, 0)``                                              |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                           | :ref:`texture<class_NinePatchRect_property_texture>`                                 |                                                                    |
+   +-------------------------------------------------------------+--------------------------------------------------------------------------------------+--------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>` | :ref:`get_patch_margin<class_NinePatchRect_method_get_patch_margin>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                        |
-   +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                | :ref:`set_patch_margin<class_NinePatchRect_method_set_patch_margin>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, value\: :ref:`int<class_int>`\ ) |
-   +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>` | :ref:`get_patch_margin<class_NinePatchRect_method_get_patch_margin>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                        |
+   +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                | :ref:`set_patch_margin<class_NinePatchRect_method_set_patch_margin>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`, value\: :ref:`int<class_int>`\ ) |
+   +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_NinePatchRect_signal_texture_changed:
 
@@ -80,7 +80,7 @@ Signals
 
 **texture_changed**\ (\ ) :ref:`🔗<class_NinePatchRect_signal_texture_changed>`
 
-Emitted when the node's texture changes.
+Được phát ra khi texture của node thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -88,14 +88,14 @@ Emitted when the node's texture changes.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_NinePatchRect_AxisStretchMode:
 
 .. rst-class:: classref-enumeration
 
-enum **AxisStretchMode**: :ref:`🔗<enum_NinePatchRect_AxisStretchMode>`
+enum **AxisStretchMode**: :ref:`🔗 <enum_NinePatchRect_AxisStretchMode>`
 
 .. _class_NinePatchRect_constant_AXIS_STRETCH_MODE_STRETCH:
 
@@ -103,7 +103,7 @@ enum **AxisStretchMode**: :ref:`🔗<enum_NinePatchRect_AxisStretchMode>`
 
 :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>` **AXIS_STRETCH_MODE_STRETCH** = ``0``
 
-Stretches the center texture across the NinePatchRect. This may cause the texture to be distorted.
+Kéo giãn texture trung tâm trên toàn bộ NinePatchRect. Điều này có thể khiến texture bị biến dạng.
 
 .. _class_NinePatchRect_constant_AXIS_STRETCH_MODE_TILE:
 
@@ -111,7 +111,7 @@ Stretches the center texture across the NinePatchRect. This may cause the textur
 
 :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>` **AXIS_STRETCH_MODE_TILE** = ``1``
 
-Repeats the center texture across the NinePatchRect. This won't cause any visible distortion. The texture must be seamless for this to work without displaying artifacts between edges.
+Lặp lại texture trung tâm trên toàn bộ NinePatchRect. Điều này sẽ không gây ra biến dạng nhìn thấy được. Texture phải liền mạch để hoạt động mà không hiển thị các lỗi giữa các cạnh.
 
 .. _class_NinePatchRect_constant_AXIS_STRETCH_MODE_TILE_FIT:
 
@@ -119,7 +119,7 @@ Repeats the center texture across the NinePatchRect. This won't cause any visibl
 
 :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>` **AXIS_STRETCH_MODE_TILE_FIT** = ``2``
 
-Repeats the center texture across the NinePatchRect, but will also stretch the texture to make sure each tile is visible in full. This may cause the texture to be distorted, but less than :ref:`AXIS_STRETCH_MODE_STRETCH<class_NinePatchRect_constant_AXIS_STRETCH_MODE_STRETCH>`. The texture must be seamless for this to work without displaying artifacts between edges.
+Lặp lại texture trung tâm trên toàn bộ NinePatchRect, nhưng cũng sẽ kéo giãn texture để đảm bảo mỗi ô đều hiển thị đầy đủ. Điều này có thể khiến texture bị biến dạng, nhưng ít hơn :ref:`AXIS_STRETCH_MODE_STRETCH<class_NinePatchRect_constant_AXIS_STRETCH_MODE_STRETCH>`. Texture phải liền mạch để hoạt động mà không hiển thị các lỗi giữa các cạnh.
 
 .. rst-class:: classref-section-separator
 
@@ -127,8 +127,8 @@ Repeats the center texture across the NinePatchRect, but will also stretch the t
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_NinePatchRect_property_axis_stretch_horizontal:
 
@@ -141,7 +141,7 @@ Property Descriptions
 - |void| **set_h_axis_stretch_mode**\ (\ value\: :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>`\ )
 - :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>` **get_h_axis_stretch_mode**\ (\ )
 
-The stretch mode to use for horizontal stretching/tiling.
+Chế độ co giãn được sử dụng để co giãn/lát theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ The stretch mode to use for horizontal stretching/tiling.
 - |void| **set_v_axis_stretch_mode**\ (\ value\: :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>`\ )
 - :ref:`AxisStretchMode<enum_NinePatchRect_AxisStretchMode>` **get_v_axis_stretch_mode**\ (\ )
 
-The stretch mode to use for vertical stretching/tiling.
+Chế độ co giãn được sử dụng để co giãn/lát theo chiều dọc.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ The stretch mode to use for vertical stretching/tiling.
 - |void| **set_draw_center**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_draw_center_enabled**\ (\ )
 
-If ``true``, draw the panel's center. Else, only draw the 9-slice's borders.
+Nếu ``true``, vẽ phần trung tâm của panel. Nếu không, chỉ vẽ các đường viền của 9-slice.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ If ``true``, draw the panel's center. Else, only draw the 9-slice's borders.
 - |void| **set_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The height of the 9-slice's bottom row. A margin of 16 means the 9-slice's bottom corners and side will have a height of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders.
+Chiều cao của hàng dưới cùng của 9-slice. Margin bằng 16 nghĩa là các góc và cạnh dưới của 9-slice sẽ có chiều cao 16 pixel. Bạn có thể đặt riêng từng giá trị trong 4 margin để tạo các panel có đường viền không đồng đều.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ The height of the 9-slice's bottom row. A margin of 16 means the 9-slice's botto
 - |void| **set_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The width of the 9-slice's left column. A margin of 16 means the 9-slice's left corners and side will have a width of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders.
+Chiều rộng của cột bên trái của 9-slice. Margin bằng 16 nghĩa là các góc và cạnh bên trái của 9-slice sẽ có chiều rộng 16 pixel. Bạn có thể đặt riêng từng giá trị trong 4 margin để tạo các panel có đường viền không đồng đều.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ The width of the 9-slice's left column. A margin of 16 means the 9-slice's left 
 - |void| **set_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The width of the 9-slice's right column. A margin of 16 means the 9-slice's right corners and side will have a width of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders.
+Chiều rộng của cột bên phải của 9-slice. Margin bằng 16 nghĩa là các góc và cạnh bên phải của 9-slice sẽ có chiều rộng 16 pixel. Bạn có thể đặt riêng từng giá trị trong 4 margin để tạo các panel có đường viền không đồng đều.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ The width of the 9-slice's right column. A margin of 16 means the 9-slice's righ
 - |void| **set_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The height of the 9-slice's top row. A margin of 16 means the 9-slice's top corners and side will have a height of 16 pixels. You can set all 4 margin values individually to create panels with non-uniform borders.
+Chiều cao của hàng trên cùng của 9-slice. Margin bằng 16 nghĩa là các góc và cạnh trên của 9-slice sẽ có chiều cao 16 pixel. Bạn có thể đặt riêng từng giá trị trong 4 margin để tạo các panel có đường viền không đồng đều.
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +260,7 @@ The height of the 9-slice's top row. A margin of 16 means the 9-slice's top corn
 - |void| **set_region_rect**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_region_rect**\ (\ )
 
-Rectangular region of the texture to sample from. If you're working with an atlas, use this property to define the area the 9-slice should use. All other properties are relative to this one. If the rect is empty, NinePatchRect will use the whole texture.
+Vùng hình chữ nhật của texture cần lấy mẫu. Nếu bạn đang làm việc với atlas, hãy sử dụng thuộc tính này để xác định khu vực mà 9-slice sẽ sử dụng. Tất cả các thuộc tính khác đều được tính tương đối so với thuộc tính này. Nếu rect trống, NinePatchRect sẽ sử dụng toàn bộ texture.
 
 .. rst-class:: classref-item-separator
 
@@ -270,14 +270,14 @@ Rectangular region of the texture to sample from. If you're working with an atla
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_NinePatchRect_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_NinePatchRect_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-The node's texture resource.
+Tài nguyên texture của node.
 
 .. rst-class:: classref-section-separator
 
@@ -285,8 +285,8 @@ The node's texture resource.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NinePatchRect_method_get_patch_margin:
 
@@ -294,7 +294,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_NinePatchRect_method_get_patch_margin>`
 
-Returns the size of the margin on the specified :ref:`Side<enum_@GlobalScope_Side>`.
+Trả về kích thước của margin trên :ref:`Side <enum_@GlobalScope_Side>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -306,14 +306,14 @@ Returns the size of the margin on the specified :ref:`Side<enum_@GlobalScope_Sid
 
 |void| **set_patch_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, value\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NinePatchRect_method_set_patch_margin>`
 
-Sets the size of the margin on the specified :ref:`Side<enum_@GlobalScope_Side>` to ``value`` pixels.
+Đặt kích thước của margin trên :ref:`Side <enum_@GlobalScope_Side>` được chỉ định thành ``value`` pixel.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

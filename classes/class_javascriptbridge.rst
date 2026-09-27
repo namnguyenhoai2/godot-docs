@@ -10,30 +10,30 @@
 JavaScriptBridge
 ================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Singleton that connects the engine with the browser's JavaScript context in Web export.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The JavaScriptBridge singleton is implemented only in the Web export. It's used to access the browser's JavaScript context. This allows interaction with embedding pages or calling third-party JavaScript APIs.
-
-\ **Note:** This singleton can be disabled at build-time to improve security. By default, the JavaScriptBridge singleton is enabled. Official export templates also have the JavaScriptBridge singleton enabled. See :doc:`Compiling for the Web <../engine_details/development/compiling/compiling_for_web>` in the documentation for more information.
+Singleton kết nối engine với context JavaScript của trình duyệt trong bản export Web.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Singleton JavaScriptBridge chỉ được triển khai trong bản export Web. Singleton này được dùng để truy cập context JavaScript của trình duyệt. Điều này cho phép tương tác với các trang nhúng hoặc gọi các API JavaScript của bên thứ ba.
+
+\ **Lưu ý:** Singleton này có thể bị vô hiệu hóa trong thời điểm build để tăng cường bảo mật. Theo mặc định, singleton JavaScriptBridge được bật. Các export template chính thức cũng bật singleton JavaScriptBridge. Xem :doc:`Biên dịch cho Web <../engine_details/development/compiling/compiling_for_web>` trong tài liệu để biết thêm thông tin.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`The JavaScriptBridge singleton <../tutorials/platform/web/javascript_bridge>`
+- :doc:`Singleton JavaScriptBridge <../tutorials/platform/web/javascript_bridge>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -57,7 +57,7 @@ Methods
    +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                         | :ref:`pwa_needs_update<class_JavaScriptBridge_method_pwa_needs_update>`\ (\ ) |const|                                                                                                                                                    |
    +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`pwa_update<class_JavaScriptBridge_method_pwa_update>`\ (\ )                                                                                                                                                                        |
+   | :ref:`Error <enum_@GlobalScope_Error>`          | :ref:`pwa_update<class_JavaScriptBridge_method_pwa_update>`\ (\ )                                                                                                                                                                        |
    +-------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -66,8 +66,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_JavaScriptBridge_signal_pwa_update_available:
 
@@ -75,7 +75,7 @@ Signals
 
 **pwa_update_available**\ (\ ) :ref:`🔗<class_JavaScriptBridge_signal_pwa_update_available>`
 
-Emitted when an update for this progressive web app has been detected but is waiting to be activated because a previous version is active. See :ref:`pwa_update()<class_JavaScriptBridge_method_pwa_update>` to force the update to take place immediately.
+Được phát ra khi phát hiện một bản cập nhật cho progressive web app này nhưng đang chờ được kích hoạt vì một phiên bản trước đó đang hoạt động. Xem :ref:`pwa_update()<class_JavaScriptBridge_method_pwa_update>` để buộc bản cập nhật diễn ra ngay lập tức.
 
 .. rst-class:: classref-section-separator
 
@@ -83,8 +83,8 @@ Emitted when an update for this progressive web app has been detected but is wai
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_JavaScriptBridge_method_create_callback:
 
@@ -92,9 +92,9 @@ Method Descriptions
 
 :ref:`JavaScriptObject<class_JavaScriptObject>` **create_callback**\ (\ callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_JavaScriptBridge_method_create_callback>`
 
-Creates a reference to a :ref:`Callable<class_Callable>` that can be used as a callback by JavaScript. The reference must be kept until the callback happens, or it won't be called at all. See :ref:`JavaScriptObject<class_JavaScriptObject>` for usage.
+Tạo một tham chiếu đến :ref:`Callable<class_Callable>` có thể được JavaScript sử dụng làm callback. Phải giữ tham chiếu này cho đến khi callback xảy ra, nếu không callback sẽ hoàn toàn không được gọi. Xem :ref:`JavaScriptObject<class_JavaScriptObject>` để biết cách sử dụng.
 
-\ **Note:** The callback function must take exactly one :ref:`Array<class_Array>` argument, which is going to be the JavaScript `arguments object <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments>`__ converted to an array.
+\ **Lưu ý:** Hàm callback phải nhận chính xác một đối số :ref:`Array<class_Array>`, đối số này sẽ là `arguments object <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments>`__ của JavaScript được chuyển đổi thành một mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ Creates a reference to a :ref:`Callable<class_Callable>` that can be used as a c
 
 :ref:`Variant<class_Variant>` **create_object**\ (\ object\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗<class_JavaScriptBridge_method_create_object>`
 
-Creates a new JavaScript object using the ``new`` constructor. The ``object`` must a valid property of the JavaScript ``window``. See :ref:`JavaScriptObject<class_JavaScriptObject>` for usage.
+Tạo một đối tượng JavaScript mới bằng constructor ``new``. ``object`` phải là một thuộc tính hợp lệ của ``window`` trong JavaScript. Xem :ref:`JavaScriptObject<class_JavaScriptObject>` để biết cách sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -118,13 +118,13 @@ Creates a new JavaScript object using the ``new`` constructor. The ``object`` mu
 
 |void| **download_buffer**\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`, name\: :ref:`String<class_String>`, mime\: :ref:`String<class_String>` = "application/octet-stream"\ ) :ref:`🔗<class_JavaScriptBridge_method_download_buffer>`
 
-Prompts the user to download a file containing the specified ``buffer``. The file will have the given ``name`` and ``mime`` type.
+Nhắc người dùng tải xuống một tệp chứa ``buffer`` được chỉ định. Tệp sẽ có ``name`` và kiểu ``mime`` đã cho.
 
-\ **Note:** The browser may override the `MIME type <https://en.wikipedia.org/wiki/Media_type>`__ provided based on the file ``name``'s extension.
+\ **Lưu ý:** Trình duyệt có thể ghi đè `kiểu MIME <https://en.wikipedia.org/wiki/Media_type>`__ được cung cấp dựa trên phần mở rộng của tệp ``name``.
 
-\ **Note:** Browsers might block the download if :ref:`download_buffer()<class_JavaScriptBridge_method_download_buffer>` is not being called from a user interaction (e.g. button click).
+\ **Lưu ý:** Trình duyệt có thể chặn lượt tải xuống nếu :ref:`download_buffer()<class_JavaScriptBridge_method_download_buffer>` không được gọi từ một tương tác của người dùng (ví dụ: nhấp vào nút).
 
-\ **Note:** Browsers might ask the user for permission or block the download if multiple download requests are made in a quick succession.
+\ **Lưu ý:** Trình duyệt có thể yêu cầu người dùng cấp quyền hoặc chặn lượt tải xuống nếu có nhiều yêu cầu tải xuống được thực hiện liên tiếp trong thời gian ngắn.
 
 .. rst-class:: classref-item-separator
 
@@ -136,9 +136,9 @@ Prompts the user to download a file containing the specified ``buffer``. The fil
 
 :ref:`Variant<class_Variant>` **eval**\ (\ code\: :ref:`String<class_String>`, use_global_execution_context\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_JavaScriptBridge_method_eval>`
 
-Execute the string ``code`` as JavaScript code within the browser window. This is a call to the actual global JavaScript function ``eval()``.
+Thực thi chuỗi ``code`` dưới dạng mã JavaScript trong cửa sổ trình duyệt. Đây là lệnh gọi đến hàm JavaScript toàn cục thực tế ``eval()``.
 
-If ``use_global_execution_context`` is ``true``, the code will be evaluated in the global execution context. Otherwise, it is evaluated in the execution context of a function within the engine's runtime environment.
+Nếu ``use_global_execution_context`` là ``true``, mã sẽ được đánh giá trong ngữ cảnh thực thi toàn cục. Nếu không, mã sẽ được đánh giá trong ngữ cảnh thực thi của một hàm bên trong môi trường runtime của engine.
 
 .. rst-class:: classref-item-separator
 
@@ -150,9 +150,9 @@ If ``use_global_execution_context`` is ``true``, the code will be evaluated in t
 
 |void| **force_fs_sync**\ (\ ) :ref:`🔗<class_JavaScriptBridge_method_force_fs_sync>`
 
-Force synchronization of the persistent file system (when enabled).
+Buộc đồng bộ hóa hệ thống tệp bền vững (khi được bật).
 
-\ **Note:** This is only useful for modules or extensions that can't use :ref:`FileAccess<class_FileAccess>` to write files.
+\ **Lưu ý:** Điều này chỉ hữu ích cho các module hoặc extension không thể sử dụng :ref:`FileAccess<class_FileAccess>` để ghi tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ Force synchronization of the persistent file system (when enabled).
 
 :ref:`JavaScriptObject<class_JavaScriptObject>` **get_interface**\ (\ interface\: :ref:`String<class_String>`\ ) :ref:`🔗<class_JavaScriptBridge_method_get_interface>`
 
-Returns an interface to a JavaScript object that can be used by scripts. The ``interface`` must be a valid property of the JavaScript ``window``. The callback must accept a single :ref:`Array<class_Array>` argument, which will contain the JavaScript ``arguments``. See :ref:`JavaScriptObject<class_JavaScriptObject>` for usage.
+Trả về một interface cho một đối tượng JavaScript mà các script có thể sử dụng. ``interface`` phải là một property hợp lệ của ``window`` JavaScript. callback phải chấp nhận một đối số :ref:`Array<class_Array>` duy nhất, chứa ``arguments`` JavaScript. Xem :ref:`JavaScriptObject<class_JavaScriptObject>` để biết cách sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ Returns an interface to a JavaScript object that can be used by scripts. The ``i
 
 :ref:`bool<class_bool>` **is_js_buffer**\ (\ javascript_object\: :ref:`JavaScriptObject<class_JavaScriptObject>`\ ) :ref:`🔗<class_JavaScriptBridge_method_is_js_buffer>`
 
-Returns ``true`` if the given ``javascript_object`` is of type `ArrayBuffer <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer>`__, `DataView <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView>`__, or one of the many `typed array objects <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray>`__.
+Trả về ``true`` nếu ``javascript_object`` đã cho thuộc kiểu `ArrayBuffer <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer>`__, `DataView <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView>`__, hoặc một trong nhiều `typed array objects <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ Returns ``true`` if the given ``javascript_object`` is of type `ArrayBuffer <htt
 
 :ref:`PackedByteArray<class_PackedByteArray>` **js_buffer_to_packed_byte_array**\ (\ javascript_buffer\: :ref:`JavaScriptObject<class_JavaScriptObject>`\ ) :ref:`🔗<class_JavaScriptBridge_method_js_buffer_to_packed_byte_array>`
 
-Returns a copy of ``javascript_buffer``'s contents as a :ref:`PackedByteArray<class_PackedByteArray>`. See also :ref:`is_js_buffer()<class_JavaScriptBridge_method_is_js_buffer>`.
+Trả về một bản sao nội dung của ``javascript_buffer`` dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`. Xem thêm :ref:`is_js_buffer()<class_JavaScriptBridge_method_is_js_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -200,9 +200,9 @@ Returns a copy of ``javascript_buffer``'s contents as a :ref:`PackedByteArray<cl
 
 :ref:`bool<class_bool>` **pwa_needs_update**\ (\ ) |const| :ref:`🔗<class_JavaScriptBridge_method_pwa_needs_update>`
 
-Returns ``true`` if a new version of the progressive web app is waiting to be activated.
+Trả về ``true`` nếu một phiên bản mới của progressive web app đang chờ được kích hoạt.
 
-\ **Note:** Only relevant when exported as a Progressive Web App.
+\ **Lưu ý:** Chỉ liên quan khi được export dưới dạng Progressive Web App.
 
 .. rst-class:: classref-item-separator
 
@@ -214,18 +214,18 @@ Returns ``true`` if a new version of the progressive web app is waiting to be ac
 
 :ref:`Error<enum_@GlobalScope_Error>` **pwa_update**\ (\ ) :ref:`🔗<class_JavaScriptBridge_method_pwa_update>`
 
-Performs the live update of the progressive web app. Forcing the new version to be installed and the page to be reloaded.
+Thực hiện cập nhật trực tiếp cho progressive web app. Buộc cài đặt phiên bản mới và tải lại trang.
 
-\ **Note:** Your application will be **reloaded in all browser tabs**.
+\ **Lưu ý:** Ứng dụng của bạn sẽ được **tải lại trong tất cả các thẻ trình duyệt**.
 
-\ **Note:** Only relevant when exported as a Progressive Web App and :ref:`pwa_needs_update()<class_JavaScriptBridge_method_pwa_needs_update>` returns ``true``.
+\ **Lưu ý:** Chỉ áp dụng khi được xuất dưới dạng Progressive Web App và :ref:`pwa_needs_update()<class_JavaScriptBridge_method_pwa_needs_update>` trả về ``true``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

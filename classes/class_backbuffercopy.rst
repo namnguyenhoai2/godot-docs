@@ -10,39 +10,39 @@
 BackBufferCopy
 ==============
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node that copies a region of the screen to a buffer for access in shader code.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Node for back-buffering the currently-displayed screen. The region defined in the **BackBufferCopy** node is buffered with the content of the screen it covers, or the entire screen according to the :ref:`copy_mode<class_BackBufferCopy_property_copy_mode>`. It can be accessed in shader scripts using the screen texture (i.e. a uniform sampler with ``hint_screen_texture``).
-
-\ **Note:** Since this node inherits from :ref:`Node2D<class_Node2D>` (and not :ref:`Control<class_Control>`), anchors and margins won't apply to child :ref:`Control<class_Control>`-derived nodes. This can be problematic when resizing the window. To avoid this, add :ref:`Control<class_Control>`-derived nodes as *siblings* to the **BackBufferCopy** node instead of adding them as children.
+Một node sao chép một vùng trên màn hình vào buffer để có thể truy cập trong mã shader.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node dùng để lưu vào back-buffer màn hình hiện đang được hiển thị. Vùng được xác định trong node **BackBufferCopy** sẽ được lưu đệm cùng với nội dung của phần màn hình mà nó bao phủ, hoặc toàn bộ màn hình tùy theo :ref:`copy_mode<class_BackBufferCopy_property_copy_mode>`. Vùng này có thể được truy cập trong các script shader bằng screen texture (tức là một uniform sampler với ``hint_screen_texture``).
+
+\ **Lưu ý:** Vì node này kế thừa từ :ref:`Node2D<class_Node2D>` (chứ không phải :ref:`Control<class_Control>`), anchors và margins sẽ không áp dụng cho các node dẫn xuất từ :ref:`Control<class_Control>`-derived. Điều này có thể gây vấn đề khi thay đổi kích thước cửa sổ. Để tránh điều này, hãy thêm các node dẫn xuất từ :ref:`Control<class_Control>`-derived làm *node anh em* của node **BackBufferCopy** thay vì thêm chúng làm node con.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Screen-reading shaders <../tutorials/shaders/screen-reading_shaders>`
+- :doc:`Shader đọc màn hình <../tutorials/shaders/screen-reading_shaders>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+-----------------------------------------------------------+---------------------------------+
-   | :ref:`CopyMode<enum_BackBufferCopy_CopyMode>` | :ref:`copy_mode<class_BackBufferCopy_property_copy_mode>` | ``1``                           |
-   +-----------------------------------------------+-----------------------------------------------------------+---------------------------------+
-   | :ref:`Rect2<class_Rect2>`                     | :ref:`rect<class_BackBufferCopy_property_rect>`           | ``Rect2(-100, -100, 200, 200)`` |
-   +-----------------------------------------------+-----------------------------------------------------------+---------------------------------+
+   +------------------------------------------------+-----------------------------------------------------------+---------------------------------+
+   | :ref:`CopyMode <enum_BackBufferCopy_CopyMode>` | :ref:`copy_mode<class_BackBufferCopy_property_copy_mode>` | ``1``                           |
+   +------------------------------------------------+-----------------------------------------------------------+---------------------------------+
+   | :ref:`Rect2<class_Rect2>`                      | :ref:`rect<class_BackBufferCopy_property_rect>`           | ``Rect2(-100, -100, 200, 200)`` |
+   +------------------------------------------------+-----------------------------------------------------------+---------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -50,14 +50,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_BackBufferCopy_CopyMode:
 
 .. rst-class:: classref-enumeration
 
-enum **CopyMode**: :ref:`🔗<enum_BackBufferCopy_CopyMode>`
+enum **CopyMode**: :ref:`🔗 <enum_BackBufferCopy_CopyMode>`
 
 .. _class_BackBufferCopy_constant_COPY_MODE_DISABLED:
 
@@ -65,7 +65,7 @@ enum **CopyMode**: :ref:`🔗<enum_BackBufferCopy_CopyMode>`
 
 :ref:`CopyMode<enum_BackBufferCopy_CopyMode>` **COPY_MODE_DISABLED** = ``0``
 
-Disables the buffering mode. This means the **BackBufferCopy** node will directly use the portion of screen it covers.
+Tắt chế độ buffering. Điều này có nghĩa là node **BackBufferCopy** sẽ trực tiếp sử dụng phần màn hình mà nó bao phủ.
 
 .. _class_BackBufferCopy_constant_COPY_MODE_RECT:
 
@@ -73,7 +73,7 @@ Disables the buffering mode. This means the **BackBufferCopy** node will directl
 
 :ref:`CopyMode<enum_BackBufferCopy_CopyMode>` **COPY_MODE_RECT** = ``1``
 
-**BackBufferCopy** buffers a rectangular region.
+**BackBufferCopy** đệm một vùng hình chữ nhật.
 
 .. _class_BackBufferCopy_constant_COPY_MODE_VIEWPORT:
 
@@ -81,7 +81,7 @@ Disables the buffering mode. This means the **BackBufferCopy** node will directl
 
 :ref:`CopyMode<enum_BackBufferCopy_CopyMode>` **COPY_MODE_VIEWPORT** = ``2``
 
-**BackBufferCopy** buffers the entire screen.
+**BackBufferCopy** đệm toàn bộ màn hình.
 
 .. rst-class:: classref-section-separator
 
@@ -89,8 +89,8 @@ Disables the buffering mode. This means the **BackBufferCopy** node will directl
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_BackBufferCopy_property_copy_mode:
 
@@ -103,7 +103,7 @@ Property Descriptions
 - |void| **set_copy_mode**\ (\ value\: :ref:`CopyMode<enum_BackBufferCopy_CopyMode>`\ )
 - :ref:`CopyMode<enum_BackBufferCopy_CopyMode>` **get_copy_mode**\ (\ )
 
-Buffer mode.
+Chế độ buffer.
 
 .. rst-class:: classref-item-separator
 
@@ -120,14 +120,14 @@ Buffer mode.
 - |void| **set_rect**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_rect**\ (\ )
 
-The area covered by the **BackBufferCopy**. Only used if :ref:`copy_mode<class_BackBufferCopy_property_copy_mode>` is :ref:`COPY_MODE_RECT<class_BackBufferCopy_constant_COPY_MODE_RECT>`.
+Khu vực được bao phủ bởi **BackBufferCopy**. Chỉ được sử dụng nếu :ref:`copy_mode<class_BackBufferCopy_property_copy_mode>` là :ref:`COPY_MODE_RECT<class_BackBufferCopy_constant_COPY_MODE_RECT>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

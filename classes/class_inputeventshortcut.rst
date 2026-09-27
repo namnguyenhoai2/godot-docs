@@ -10,20 +10,20 @@
 InputEventShortcut
 ==================
 
-**Inherits:** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a triggered keyboard :ref:`Shortcut<class_Shortcut>`.
+Đại diện cho một :ref:`Shortcut<class_Shortcut>` bàn phím đã được kích hoạt.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-InputEventShortcut is a special event that can be received in :ref:`Node._input()<class_Node_private_method__input>`, :ref:`Node._shortcut_input()<class_Node_private_method__shortcut_input>`, and :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`. It is typically sent by the editor's Command Palette to trigger actions, but can also be sent manually using :ref:`Viewport.push_input()<class_Viewport_method_push_input>`.
+InputEventShortcut là một sự kiện đặc biệt có thể được nhận trong :ref:`Node._input()<class_Node_private_method__input>`, :ref:`Node._shortcut_input()<class_Node_private_method__shortcut_input>` và :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`. Sự kiện này thường được Command Palette của trình chỉnh sửa gửi để kích hoạt các hành động, nhưng cũng có thể được gửi thủ công bằng :ref:`Viewport.push_input()<class_Viewport_method_push_input>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,28 +39,28 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEventShortcut_property_shortcut:
 
 .. rst-class:: classref-property
 
-:ref:`Shortcut<class_Shortcut>` **shortcut** :ref:`🔗<class_InputEventShortcut_property_shortcut>`
+:ref:`Shortcut<class_Shortcut>` **shortcut** :ref:`🔗 <class_InputEventShortcut_property_shortcut>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shortcut**\ (\ value\: :ref:`Shortcut<class_Shortcut>`\ )
 - :ref:`Shortcut<class_Shortcut>` **get_shortcut**\ (\ )
 
-The :ref:`Shortcut<class_Shortcut>` represented by this event. Its :ref:`Shortcut.matches_event()<class_Shortcut_method_matches_event>` method will always return ``true`` for this event.
+:ref:`Shortcut<class_Shortcut>` được biểu thị bởi sự kiện này. Phương thức :ref:`Shortcut.matches_event()<class_Shortcut_method_matches_event>` của nó sẽ luôn trả về ``true`` cho sự kiện này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng argument sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Không cần có instance để gọi phương thức này, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

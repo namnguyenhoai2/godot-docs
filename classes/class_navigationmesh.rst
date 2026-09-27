@@ -10,90 +10,90 @@
 NavigationMesh
 ==============
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A navigation mesh that defines traversable areas and obstacles.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A navigation mesh is a collection of polygons that define which areas of an environment are traversable to aid agents in pathfinding through complicated spaces.
+Một navigation mesh xác định các khu vực có thể đi qua và chướng ngại vật.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Using NavigationMeshes <../tutorials/navigation/navigation_using_navigationmeshes>`
+Navigation mesh là một tập hợp các polygon xác định những khu vực trong môi trường mà các agent có thể đi qua, hỗ trợ chúng tìm đường qua những không gian phức tạp.
 
-- `3D Navigation Demo <https://godotengine.org/asset-library/asset/2743>`__
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Sử dụng NavigationMeshes <../tutorials/navigation/navigation_using_navigationmeshes>`
+
+- `Bản trình diễn Điều hướng 3D <https://godotengine.org/asset-library/asset/2743>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`agent_height<class_NavigationMesh_property_agent_height>`                                         | ``1.5``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`agent_max_climb<class_NavigationMesh_property_agent_max_climb>`                                   | ``0.25``                            |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`agent_max_slope<class_NavigationMesh_property_agent_max_slope>`                                   | ``45.0``                            |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`agent_radius<class_NavigationMesh_property_agent_radius>`                                         | ``0.5``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`border_size<class_NavigationMesh_property_border_size>`                                           | ``0.0``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`cell_height<class_NavigationMesh_property_cell_height>`                                           | ``0.25``                            |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`cell_size<class_NavigationMesh_property_cell_size>`                                               | ``0.25``                            |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`detail_sample_distance<class_NavigationMesh_property_detail_sample_distance>`                     | ``6.0``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`detail_sample_max_error<class_NavigationMesh_property_detail_sample_max_error>`                   | ``1.0``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`edge_max_error<class_NavigationMesh_property_edge_max_error>`                                     | ``1.3``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`edge_max_length<class_NavigationMesh_property_edge_max_length>`                                   | ``0.0``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`AABB<class_AABB>`                                             | :ref:`filter_baking_aabb<class_NavigationMesh_property_filter_baking_aabb>`                             | ``AABB(0, 0, 0, 0, 0, 0)``          |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                       | :ref:`filter_baking_aabb_offset<class_NavigationMesh_property_filter_baking_aabb_offset>`               | ``Vector3(0, 0, 0)``                |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`filter_ledge_spans<class_NavigationMesh_property_filter_ledge_spans>`                             | ``false``                           |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`filter_low_hanging_obstacles<class_NavigationMesh_property_filter_low_hanging_obstacles>`         | ``false``                           |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`filter_walkable_low_height_spans<class_NavigationMesh_property_filter_walkable_low_height_spans>` | ``false``                           |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`int<class_int>`                                               | :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>`                   | ``4294967295``                      |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>`   | :ref:`geometry_parsed_geometry_type<class_NavigationMesh_property_geometry_parsed_geometry_type>`       | ``2``                               |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>`   | :ref:`geometry_source_geometry_mode<class_NavigationMesh_property_geometry_source_geometry_mode>`       | ``0``                               |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`StringName<class_StringName>`                                 | :ref:`geometry_source_group_name<class_NavigationMesh_property_geometry_source_group_name>`             | ``&"navigation_mesh_source_group"`` |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`region_merge_size<class_NavigationMesh_property_region_merge_size>`                               | ``20.0``                            |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`region_min_size<class_NavigationMesh_property_region_min_size>`                                   | ``2.0``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>` | :ref:`sample_partition_type<class_NavigationMesh_property_sample_partition_type>`                       | ``0``                               |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
-   | :ref:`float<class_float>`                                           | :ref:`vertices_per_polygon<class_NavigationMesh_property_vertices_per_polygon>`                         | ``6.0``                             |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`agent_height<class_NavigationMesh_property_agent_height>`                                         | ``1.5``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`agent_max_climb<class_NavigationMesh_property_agent_max_climb>`                                   | ``0.25``                            |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`agent_max_slope<class_NavigationMesh_property_agent_max_slope>`                                   | ``45.0``                            |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`agent_radius<class_NavigationMesh_property_agent_radius>`                                         | ``0.5``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`border_size<class_NavigationMesh_property_border_size>`                                           | ``0.0``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`cell_height<class_NavigationMesh_property_cell_height>`                                           | ``0.25``                            |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`cell_size<class_NavigationMesh_property_cell_size>`                                               | ``0.25``                            |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`detail_sample_distance<class_NavigationMesh_property_detail_sample_distance>`                     | ``6.0``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`detail_sample_max_error<class_NavigationMesh_property_detail_sample_max_error>`                   | ``1.0``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`edge_max_error<class_NavigationMesh_property_edge_max_error>`                                     | ``1.3``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`edge_max_length<class_NavigationMesh_property_edge_max_length>`                                   | ``0.0``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`AABB<class_AABB>`                                              | :ref:`filter_baking_aabb<class_NavigationMesh_property_filter_baking_aabb>`                             | ``AABB(0, 0, 0, 0, 0, 0)``          |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                        | :ref:`filter_baking_aabb_offset<class_NavigationMesh_property_filter_baking_aabb_offset>`               | ``Vector3(0, 0, 0)``                |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`filter_ledge_spans<class_NavigationMesh_property_filter_ledge_spans>`                             | ``false``                           |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`filter_low_hanging_obstacles<class_NavigationMesh_property_filter_low_hanging_obstacles>`         | ``false``                           |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`filter_walkable_low_height_spans<class_NavigationMesh_property_filter_walkable_low_height_spans>` | ``false``                           |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`int<class_int>`                                                | :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>`                   | ``4294967295``                      |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`ParsedGeometryType <enum_NavigationMesh_ParsedGeometryType>`   | :ref:`geometry_parsed_geometry_type<class_NavigationMesh_property_geometry_parsed_geometry_type>`       | ``2``                               |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`SourceGeometryMode <enum_NavigationMesh_SourceGeometryMode>`   | :ref:`geometry_source_geometry_mode<class_NavigationMesh_property_geometry_source_geometry_mode>`       | ``0``                               |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`StringName<class_StringName>`                                  | :ref:`geometry_source_group_name<class_NavigationMesh_property_geometry_source_group_name>`             | ``&"navigation_mesh_source_group"`` |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`region_merge_size<class_NavigationMesh_property_region_merge_size>`                               | ``20.0``                            |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`region_min_size<class_NavigationMesh_property_region_min_size>`                                   | ``2.0``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`SamplePartitionType <enum_NavigationMesh_SamplePartitionType>` | :ref:`sample_partition_type<class_NavigationMesh_property_sample_partition_type>`                       | ``0``                               |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
+   | :ref:`float<class_float>`                                            | :ref:`vertices_per_polygon<class_NavigationMesh_property_vertices_per_polygon>`                         | ``6.0``                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------+-------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -126,14 +126,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_NavigationMesh_SamplePartitionType:
 
 .. rst-class:: classref-enumeration
 
-enum **SamplePartitionType**: :ref:`🔗<enum_NavigationMesh_SamplePartitionType>`
+enum **SamplePartitionType**: :ref:`🔗 <enum_NavigationMesh_SamplePartitionType>`
 
 .. _class_NavigationMesh_constant_SAMPLE_PARTITION_WATERSHED:
 
@@ -141,7 +141,7 @@ enum **SamplePartitionType**: :ref:`🔗<enum_NavigationMesh_SamplePartitionType
 
 :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>` **SAMPLE_PARTITION_WATERSHED** = ``0``
 
-Watershed partitioning. Generally the best choice if you precompute the navigation mesh, use this if you have large open areas.
+Phân vùng Watershed. Nhìn chung, đây là lựa chọn tốt nhất nếu bạn tính toán trước navigation mesh; hãy sử dụng lựa chọn này nếu bạn có các khu vực mở rộng lớn.
 
 .. _class_NavigationMesh_constant_SAMPLE_PARTITION_MONOTONE:
 
@@ -149,7 +149,7 @@ Watershed partitioning. Generally the best choice if you precompute the navigati
 
 :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>` **SAMPLE_PARTITION_MONOTONE** = ``1``
 
-Monotone partitioning. Use this if you want fast navigation mesh generation.
+Phân vùng Monotone. Sử dụng lựa chọn này nếu bạn muốn tạo navigation mesh nhanh.
 
 .. _class_NavigationMesh_constant_SAMPLE_PARTITION_LAYERS:
 
@@ -157,7 +157,7 @@ Monotone partitioning. Use this if you want fast navigation mesh generation.
 
 :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>` **SAMPLE_PARTITION_LAYERS** = ``2``
 
-Layer partitioning. Good choice to use for tiled navigation mesh with medium and small sized tiles.
+Phân vùng Layer. Đây là lựa chọn phù hợp để sử dụng cho navigation mesh dạng tile với các tile có kích thước vừa và nhỏ.
 
 .. _class_NavigationMesh_constant_SAMPLE_PARTITION_MAX:
 
@@ -165,7 +165,7 @@ Layer partitioning. Good choice to use for tiled navigation mesh with medium and
 
 :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>` **SAMPLE_PARTITION_MAX** = ``3``
 
-Represents the size of the :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>` enum.
+Biểu thị kích thước của enum :ref:`SamplePartitionType <enum_NavigationMesh_SamplePartitionType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Represents the size of the :ref:`SamplePartitionType<enum_NavigationMesh_SampleP
 
 .. rst-class:: classref-enumeration
 
-enum **ParsedGeometryType**: :ref:`🔗<enum_NavigationMesh_ParsedGeometryType>`
+enum **ParsedGeometryType**: :ref:`🔗 <enum_NavigationMesh_ParsedGeometryType>`
 
 .. _class_NavigationMesh_constant_PARSED_GEOMETRY_MESH_INSTANCES:
 
@@ -183,7 +183,7 @@ enum **ParsedGeometryType**: :ref:`🔗<enum_NavigationMesh_ParsedGeometryType>`
 
 :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>` **PARSED_GEOMETRY_MESH_INSTANCES** = ``0``
 
-Parses mesh instances as geometry. This includes :ref:`MeshInstance3D<class_MeshInstance3D>`, :ref:`CSGShape3D<class_CSGShape3D>`, and :ref:`GridMap<class_GridMap>` nodes.
+Phân tích các mesh instance dưới dạng hình học. Điều này bao gồm các node :ref:`MeshInstance3D<class_MeshInstance3D>`, :ref:`CSGShape3D<class_CSGShape3D>` và :ref:`GridMap<class_GridMap>`.
 
 .. _class_NavigationMesh_constant_PARSED_GEOMETRY_STATIC_COLLIDERS:
 
@@ -191,7 +191,7 @@ Parses mesh instances as geometry. This includes :ref:`MeshInstance3D<class_Mesh
 
 :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>` **PARSED_GEOMETRY_STATIC_COLLIDERS** = ``1``
 
-Parses :ref:`StaticBody3D<class_StaticBody3D>` colliders as geometry. The collider should be in any of the layers specified by :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>`.
+Phân tích các collider :ref:`StaticBody3D<class_StaticBody3D>` dưới dạng hình học. Collider phải nằm trong một trong các layer được chỉ định bởi :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>`.
 
 .. _class_NavigationMesh_constant_PARSED_GEOMETRY_BOTH:
 
@@ -199,7 +199,7 @@ Parses :ref:`StaticBody3D<class_StaticBody3D>` colliders as geometry. The collid
 
 :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>` **PARSED_GEOMETRY_BOTH** = ``2``
 
-Both :ref:`PARSED_GEOMETRY_MESH_INSTANCES<class_NavigationMesh_constant_PARSED_GEOMETRY_MESH_INSTANCES>` and :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationMesh_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>`.
+Cả :ref:`PARSED_GEOMETRY_MESH_INSTANCES<class_NavigationMesh_constant_PARSED_GEOMETRY_MESH_INSTANCES>` và :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationMesh_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>`.
 
 .. _class_NavigationMesh_constant_PARSED_GEOMETRY_MAX:
 
@@ -207,7 +207,7 @@ Both :ref:`PARSED_GEOMETRY_MESH_INSTANCES<class_NavigationMesh_constant_PARSED_G
 
 :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>` **PARSED_GEOMETRY_MAX** = ``3``
 
-Represents the size of the :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>` enum.
+Biểu thị kích thước của enum :ref:`ParsedGeometryType <enum_NavigationMesh_ParsedGeometryType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -217,7 +217,7 @@ Represents the size of the :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGe
 
 .. rst-class:: classref-enumeration
 
-enum **SourceGeometryMode**: :ref:`🔗<enum_NavigationMesh_SourceGeometryMode>`
+enum **SourceGeometryMode**: :ref:`🔗 <enum_NavigationMesh_SourceGeometryMode>`
 
 .. _class_NavigationMesh_constant_SOURCE_GEOMETRY_ROOT_NODE_CHILDREN:
 
@@ -225,7 +225,7 @@ enum **SourceGeometryMode**: :ref:`🔗<enum_NavigationMesh_SourceGeometryMode>`
 
 :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>` **SOURCE_GEOMETRY_ROOT_NODE_CHILDREN** = ``0``
 
-Scans the child nodes of the root node recursively for geometry.
+Quét đệ quy các nút con của nút gốc để tìm geometry.
 
 .. _class_NavigationMesh_constant_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN:
 
@@ -233,7 +233,7 @@ Scans the child nodes of the root node recursively for geometry.
 
 :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>` **SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN** = ``1``
 
-Scans nodes in a group and their child nodes recursively for geometry. The group is specified by :ref:`geometry_source_group_name<class_NavigationMesh_property_geometry_source_group_name>`.
+Quét đệ quy các nút trong một group và các nút con của chúng để tìm geometry. Group được chỉ định bởi :ref:`geometry_source_group_name<class_NavigationMesh_property_geometry_source_group_name>`.
 
 .. _class_NavigationMesh_constant_SOURCE_GEOMETRY_GROUPS_EXPLICIT:
 
@@ -241,7 +241,7 @@ Scans nodes in a group and their child nodes recursively for geometry. The group
 
 :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>` **SOURCE_GEOMETRY_GROUPS_EXPLICIT** = ``2``
 
-Uses nodes in a group for geometry. The group is specified by :ref:`geometry_source_group_name<class_NavigationMesh_property_geometry_source_group_name>`.
+Sử dụng các nút trong một group cho geometry. Group được chỉ định bởi :ref:`geometry_source_group_name<class_NavigationMesh_property_geometry_source_group_name>`.
 
 .. _class_NavigationMesh_constant_SOURCE_GEOMETRY_MAX:
 
@@ -249,7 +249,7 @@ Uses nodes in a group for geometry. The group is specified by :ref:`geometry_sou
 
 :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>` **SOURCE_GEOMETRY_MAX** = ``3``
 
-Represents the size of the :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>` enum.
+Biểu thị kích thước của enum :ref:`SourceGeometryMode <enum_NavigationMesh_SourceGeometryMode>`.
 
 .. rst-class:: classref-section-separator
 
@@ -257,8 +257,8 @@ Represents the size of the :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGe
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_NavigationMesh_property_agent_height:
 
@@ -271,9 +271,9 @@ Property Descriptions
 - |void| **set_agent_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_agent_height**\ (\ )
 
-The minimum floor to ceiling height that will still allow the floor area to be considered walkable.
+Chiều cao tối thiểu từ sàn đến trần để diện tích sàn vẫn được xem là có thể đi lại.
 
-\ **Note:** While baking, this value will be rounded up to the nearest multiple of :ref:`cell_height<class_NavigationMesh_property_cell_height>`.
+\ **Lưu ý:** Trong quá trình baking, giá trị này sẽ được làm tròn lên đến bội số gần nhất của :ref:`cell_height<class_NavigationMesh_property_cell_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -290,9 +290,9 @@ The minimum floor to ceiling height that will still allow the floor area to be c
 - |void| **set_agent_max_climb**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_agent_max_climb**\ (\ )
 
-The minimum ledge height that is considered to still be traversable.
+Chiều cao gờ tối thiểu vẫn được xem là có thể đi qua.
 
-\ **Note:** While baking, this value will be rounded down to the nearest multiple of :ref:`cell_height<class_NavigationMesh_property_cell_height>`.
+\ **Lưu ý:** Trong quá trình baking, giá trị này sẽ được làm tròn xuống đến bội số gần nhất của :ref:`cell_height<class_NavigationMesh_property_cell_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ The minimum ledge height that is considered to still be traversable.
 - |void| **set_agent_max_slope**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_agent_max_slope**\ (\ )
 
-The maximum slope that is considered walkable, in degrees.
+Độ dốc tối đa được xem là có thể đi lại, tính theo độ.
 
 .. rst-class:: classref-item-separator
 
@@ -326,11 +326,11 @@ The maximum slope that is considered walkable, in degrees.
 - |void| **set_agent_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_agent_radius**\ (\ )
 
-The distance to erode/shrink the walkable area of the heightfield away from obstructions.
+Khoảng cách dùng để bào mòn/thu nhỏ khu vực có thể đi lại của heightfield tính từ các vật cản.
 
-\ **Note:** While baking, this value will be rounded up to the nearest multiple of :ref:`cell_size<class_NavigationMesh_property_cell_size>`.
+\ **Lưu ý:** Trong quá trình bake, giá trị này sẽ được làm tròn lên bội số gần nhất của :ref:`cell_size<class_NavigationMesh_property_cell_size>`.
 
-\ **Note:** The radius must be equal or higher than ``0.0``. If the radius is ``0.0``, it won't be possible to fix invalid outline overlaps and other precision errors during the baking process. As a result, some obstacles may be excluded incorrectly from the final navigation mesh, or may delete the navigation mesh's polygons.
+\ **Lưu ý:** Bán kính phải bằng hoặc lớn hơn ``0.0``. Nếu bán kính là ``0.0``, sẽ không thể khắc phục các phần outline chồng lấn không hợp lệ và các lỗi về độ chính xác khác trong quá trình bake. Do đó, một số chướng ngại vật có thể bị loại trừ không chính xác khỏi navigation mesh cuối cùng hoặc có thể xóa các polygon của navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -347,11 +347,11 @@ The distance to erode/shrink the walkable area of the heightfield away from obst
 - |void| **set_border_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_border_size**\ (\ )
 
-The size of the non-navigable border around the bake bounding area.
+Kích thước của đường viền không thể điều hướng quanh vùng giới hạn bake.
 
-In conjunction with the :ref:`filter_baking_aabb<class_NavigationMesh_property_filter_baking_aabb>` and a :ref:`edge_max_error<class_NavigationMesh_property_edge_max_error>` value at ``1.0`` or below the border size can be used to bake tile aligned navigation meshes without the tile edges being shrunk by :ref:`agent_radius<class_NavigationMesh_property_agent_radius>`.
+Kết hợp với :ref:`filter_baking_aabb<class_NavigationMesh_property_filter_baking_aabb>` và giá trị :ref:`edge_max_error<class_NavigationMesh_property_edge_max_error>` ở mức ``1.0`` hoặc thấp hơn, kích thước đường viền có thể được dùng để bake các navigation mesh căn chỉnh theo tile mà không làm các cạnh tile bị thu nhỏ bởi :ref:`agent_radius<class_NavigationMesh_property_agent_radius>`.
 
-\ **Note:** If this value is not ``0.0``, it will be rounded up to the nearest multiple of :ref:`cell_size<class_NavigationMesh_property_cell_size>` during baking.
+\ **Lưu ý:** Nếu giá trị này không phải là ``0.0``, giá trị sẽ được làm tròn lên bội số gần nhất của :ref:`cell_size<class_NavigationMesh_property_cell_size>` trong quá trình bake.
 
 .. rst-class:: classref-item-separator
 
@@ -368,7 +368,7 @@ In conjunction with the :ref:`filter_baking_aabb<class_NavigationMesh_property_f
 - |void| **set_cell_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_cell_height**\ (\ )
 
-The cell height used to rasterize the navigation mesh vertices on the Y axis. Must match with the cell height on the navigation map.
+Chiều cao cell được dùng để rasterize các đỉnh của navigation mesh trên trục Y. Phải khớp với chiều cao cell trên navigation map.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ The cell height used to rasterize the navigation mesh vertices on the Y axis. Mu
 - |void| **set_cell_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_cell_size**\ (\ )
 
-The cell size used to rasterize the navigation mesh vertices on the XZ plane. Must match with the cell size on the navigation map.
+Kích thước cell được dùng để rasterize các đỉnh của navigation mesh trên mặt phẳng XZ. Phải khớp với kích thước cell trên navigation map.
 
 .. rst-class:: classref-item-separator
 
@@ -402,7 +402,7 @@ The cell size used to rasterize the navigation mesh vertices on the XZ plane. Mu
 - |void| **set_detail_sample_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_detail_sample_distance**\ (\ )
 
-The sampling distance to use when generating the detail mesh, in cell unit.
+Khoảng cách lấy mẫu được sử dụng khi tạo mesh chi tiết, tính theo đơn vị ô.
 
 .. rst-class:: classref-item-separator
 
@@ -419,7 +419,7 @@ The sampling distance to use when generating the detail mesh, in cell unit.
 - |void| **set_detail_sample_max_error**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_detail_sample_max_error**\ (\ )
 
-The maximum distance the detail mesh surface should deviate from heightfield, in cell unit.
+Khoảng cách tối đa mà bề mặt mesh chi tiết được phép lệch so với trường độ cao, tính theo đơn vị ô.
 
 .. rst-class:: classref-item-separator
 
@@ -436,7 +436,7 @@ The maximum distance the detail mesh surface should deviate from heightfield, in
 - |void| **set_edge_max_error**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_edge_max_error**\ (\ )
 
-The maximum distance a simplified contour's border edges should deviate the original raw contour.
+Khoảng cách tối đa mà các cạnh biên của đường bao đã giản lược được phép lệch so với đường bao thô ban đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -453,9 +453,9 @@ The maximum distance a simplified contour's border edges should deviate the orig
 - |void| **set_edge_max_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_edge_max_length**\ (\ )
 
-The maximum allowed length for contour edges along the border of the mesh. A value of ``0.0`` disables this feature.
+Độ dài tối đa cho phép của các cạnh đường bao dọc theo biên của mesh. Giá trị ``0.0`` sẽ tắt tính năng này.
 
-\ **Note:** While baking, this value will be rounded up to the nearest multiple of :ref:`cell_size<class_NavigationMesh_property_cell_size>`.
+\ **Lưu ý:** Trong quá trình bake, giá trị này sẽ được làm tròn lên bội số gần nhất của :ref:`cell_size<class_NavigationMesh_property_cell_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -472,7 +472,7 @@ The maximum allowed length for contour edges along the border of the mesh. A val
 - |void| **set_filter_baking_aabb**\ (\ value\: :ref:`AABB<class_AABB>`\ )
 - :ref:`AABB<class_AABB>` **get_filter_baking_aabb**\ (\ )
 
-If the baking :ref:`AABB<class_AABB>` has a volume the navigation mesh baking will be restricted to its enclosing area.
+Nếu :ref:`AABB<class_AABB>` dùng để bake có một vùng thể tích, việc bake navigation mesh sẽ bị giới hạn trong khu vực bao quanh vùng đó.
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +489,7 @@ If the baking :ref:`AABB<class_AABB>` has a volume the navigation mesh baking wi
 - |void| **set_filter_baking_aabb_offset**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_filter_baking_aabb_offset**\ (\ )
 
-The position offset applied to the :ref:`filter_baking_aabb<class_NavigationMesh_property_filter_baking_aabb>` :ref:`AABB<class_AABB>`.
+Độ lệch vị trí được áp dụng cho :ref:`filter_baking_aabb<class_NavigationMesh_property_filter_baking_aabb>` :ref:`AABB<class_AABB>`.
 
 .. rst-class:: classref-item-separator
 
@@ -506,7 +506,7 @@ The position offset applied to the :ref:`filter_baking_aabb<class_NavigationMesh
 - |void| **set_filter_ledge_spans**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_filter_ledge_spans**\ (\ )
 
-If ``true``, marks spans that are ledges as non-walkable.
+Nếu ``true``, đánh dấu các span là gờ và không thể đi được.
 
 .. rst-class:: classref-item-separator
 
@@ -523,7 +523,7 @@ If ``true``, marks spans that are ledges as non-walkable.
 - |void| **set_filter_low_hanging_obstacles**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_filter_low_hanging_obstacles**\ (\ )
 
-If ``true``, marks non-walkable spans as walkable if their maximum is within :ref:`agent_max_climb<class_NavigationMesh_property_agent_max_climb>` of a walkable neighbor.
+Nếu ``true``, đánh dấu các span không thể đi được là có thể đi được nếu độ cao tối đa của chúng nằm trong phạm vi :ref:`agent_max_climb<class_NavigationMesh_property_agent_max_climb>` so với một span lân cận có thể đi được.
 
 .. rst-class:: classref-item-separator
 
@@ -540,7 +540,7 @@ If ``true``, marks non-walkable spans as walkable if their maximum is within :re
 - |void| **set_filter_walkable_low_height_spans**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_filter_walkable_low_height_spans**\ (\ )
 
-If ``true``, marks walkable spans as not walkable if the clearance above the span is less than :ref:`agent_height<class_NavigationMesh_property_agent_height>`.
+Nếu ``true``, đánh dấu các span có thể đi được là không thể đi được nếu khoảng thông thoáng phía trên span nhỏ hơn :ref:`agent_height<class_NavigationMesh_property_agent_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -557,9 +557,9 @@ If ``true``, marks walkable spans as not walkable if the clearance above the spa
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The physics layers to scan for static colliders.
+Các physics layer cần quét để tìm static collider.
 
-Only used when :ref:`geometry_parsed_geometry_type<class_NavigationMesh_property_geometry_parsed_geometry_type>` is :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationMesh_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>` or :ref:`PARSED_GEOMETRY_BOTH<class_NavigationMesh_constant_PARSED_GEOMETRY_BOTH>`.
+Chỉ được sử dụng khi :ref:`geometry_parsed_geometry_type<class_NavigationMesh_property_geometry_parsed_geometry_type>` là :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationMesh_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>` hoặc :ref:`PARSED_GEOMETRY_BOTH<class_NavigationMesh_constant_PARSED_GEOMETRY_BOTH>`.
 
 .. rst-class:: classref-item-separator
 
@@ -576,7 +576,7 @@ Only used when :ref:`geometry_parsed_geometry_type<class_NavigationMesh_property
 - |void| **set_parsed_geometry_type**\ (\ value\: :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>`\ )
 - :ref:`ParsedGeometryType<enum_NavigationMesh_ParsedGeometryType>` **get_parsed_geometry_type**\ (\ )
 
-Determines which type of nodes will be parsed as geometry.
+Xác định loại node nào sẽ được phân tích cú pháp thành hình học.
 
 .. rst-class:: classref-item-separator
 
@@ -593,7 +593,7 @@ Determines which type of nodes will be parsed as geometry.
 - |void| **set_source_geometry_mode**\ (\ value\: :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>`\ )
 - :ref:`SourceGeometryMode<enum_NavigationMesh_SourceGeometryMode>` **get_source_geometry_mode**\ (\ )
 
-The source of the geometry used when baking.
+Nguồn hình học được sử dụng khi baking.
 
 .. rst-class:: classref-item-separator
 
@@ -610,9 +610,9 @@ The source of the geometry used when baking.
 - |void| **set_source_group_name**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_source_group_name**\ (\ )
 
-The name of the group to scan for geometry.
+Tên của group cần quét để tìm geometry.
 
-Only used when :ref:`geometry_source_geometry_mode<class_NavigationMesh_property_geometry_source_geometry_mode>` is :ref:`SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN<class_NavigationMesh_constant_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN>` or :ref:`SOURCE_GEOMETRY_GROUPS_EXPLICIT<class_NavigationMesh_constant_SOURCE_GEOMETRY_GROUPS_EXPLICIT>`.
+Chỉ được sử dụng khi :ref:`geometry_source_geometry_mode<class_NavigationMesh_property_geometry_source_geometry_mode>` là :ref:`SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN<class_NavigationMesh_constant_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN>` hoặc :ref:`SOURCE_GEOMETRY_GROUPS_EXPLICIT<class_NavigationMesh_constant_SOURCE_GEOMETRY_GROUPS_EXPLICIT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -629,9 +629,9 @@ Only used when :ref:`geometry_source_geometry_mode<class_NavigationMesh_property
 - |void| **set_region_merge_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_region_merge_size**\ (\ )
 
-Any regions with a size smaller than this will be merged with larger regions if possible.
+Mọi region có kích thước nhỏ hơn giá trị này sẽ được gộp với các region lớn hơn nếu có thể.
 
-\ **Note:** This value will be squared to calculate the number of cells. For example, a value of 20 will set the number of cells to 400.
+\ **Lưu ý:** Giá trị này sẽ được bình phương để tính số lượng cell. Ví dụ: giá trị 20 sẽ đặt số lượng cell là 400.
 
 .. rst-class:: classref-item-separator
 
@@ -648,9 +648,9 @@ Any regions with a size smaller than this will be merged with larger regions if 
 - |void| **set_region_min_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_region_min_size**\ (\ )
 
-The minimum size of a region for it to be created.
+Kích thước tối thiểu của một region để region đó được tạo.
 
-\ **Note:** This value will be squared to calculate the minimum number of cells allowed to form isolated island areas. For example, a value of 8 will set the number of cells to 64.
+\ **Lưu ý:** Giá trị này sẽ được bình phương để tính số lượng cell tối thiểu được phép dùng để tạo thành các khu vực đảo biệt lập. Ví dụ: giá trị 8 sẽ đặt số lượng cell là 64.
 
 .. rst-class:: classref-item-separator
 
@@ -667,7 +667,7 @@ The minimum size of a region for it to be created.
 - |void| **set_sample_partition_type**\ (\ value\: :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>`\ )
 - :ref:`SamplePartitionType<enum_NavigationMesh_SamplePartitionType>` **get_sample_partition_type**\ (\ )
 
-Partitioning algorithm for creating the navigation mesh polys.
+Thuật toán phân vùng để tạo các polygon của navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -684,7 +684,7 @@ Partitioning algorithm for creating the navigation mesh polys.
 - |void| **set_vertices_per_polygon**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vertices_per_polygon**\ (\ )
 
-The maximum number of vertices allowed for polygons generated during the contour to polygon conversion process.
+Số đỉnh tối đa được phép đối với các đa giác được tạo trong quá trình chuyển đổi từ đường bao sang đa giác.
 
 .. rst-class:: classref-section-separator
 
@@ -692,8 +692,8 @@ The maximum number of vertices allowed for polygons generated during the contour
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationMesh_method_add_polygon:
 
@@ -701,7 +701,7 @@ Method Descriptions
 
 |void| **add_polygon**\ (\ polygon\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_NavigationMesh_method_add_polygon>`
 
-Adds a polygon using the indices of the vertices you get when calling :ref:`get_vertices()<class_NavigationMesh_method_get_vertices>`.
+Thêm một đa giác bằng các chỉ số của các đỉnh nhận được khi gọi :ref:`get_vertices()<class_NavigationMesh_method_get_vertices>`.
 
 .. rst-class:: classref-item-separator
 
@@ -713,7 +713,7 @@ Adds a polygon using the indices of the vertices you get when calling :ref:`get_
 
 |void| **clear**\ (\ ) :ref:`🔗<class_NavigationMesh_method_clear>`
 
-Clears the internal arrays for vertices and polygon indices.
+Xóa các mảng nội bộ chứa các đỉnh và chỉ số đa giác.
 
 .. rst-class:: classref-item-separator
 
@@ -725,7 +725,7 @@ Clears the internal arrays for vertices and polygon indices.
 
 |void| **clear_polygons**\ (\ ) :ref:`🔗<class_NavigationMesh_method_clear_polygons>`
 
-Clears the array of polygons, but it doesn't clear the array of vertices.
+Xóa mảng các đa giác, nhưng không xóa mảng các đỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -737,9 +737,9 @@ Clears the array of polygons, but it doesn't clear the array of vertices.
 
 |void| **create_from_mesh**\ (\ mesh\: :ref:`Mesh<class_Mesh>`\ ) :ref:`🔗<class_NavigationMesh_method_create_from_mesh>`
 
-Initializes the navigation mesh by setting the vertices and indices according to a :ref:`Mesh<class_Mesh>`.
+Khởi tạo lưới điều hướng bằng cách thiết lập các đỉnh và chỉ số theo một :ref:`Mesh<class_Mesh>`.
 
-\ **Note:** The given ``mesh`` must be of type :ref:`Mesh.PRIMITIVE_TRIANGLES<class_Mesh_constant_PRIMITIVE_TRIANGLES>` and have an index array.
+\ **Lưu ý:** ``mesh`` được cung cấp phải có kiểu :ref:`Mesh.PRIMITIVE_TRIANGLES<class_Mesh_constant_PRIMITIVE_TRIANGLES>` và có một mảng chỉ số.
 
 .. rst-class:: classref-item-separator
 
@@ -751,7 +751,7 @@ Initializes the navigation mesh by setting the vertices and indices according to
 
 :ref:`bool<class_bool>` **get_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationMesh_method_get_collision_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc lớp được chỉ định của :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>` có được bật hay không, với ``layer_number`` trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -763,7 +763,7 @@ Returns whether or not the specified layer of the :ref:`geometry_collision_mask<
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_polygon**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationMesh_method_get_polygon>`
 
-Returns a :ref:`PackedInt32Array<class_PackedInt32Array>` containing the indices of the vertices of a created polygon.
+Trả về một :ref:`PackedInt32Array<class_PackedInt32Array>` chứa các chỉ số của các đỉnh của một đa giác đã tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -775,7 +775,7 @@ Returns a :ref:`PackedInt32Array<class_PackedInt32Array>` containing the indices
 
 :ref:`int<class_int>` **get_polygon_count**\ (\ ) |const| :ref:`🔗<class_NavigationMesh_method_get_polygon_count>`
 
-Returns the number of polygons in the navigation mesh.
+Trả về số lượng đa giác trong navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -787,7 +787,7 @@ Returns the number of polygons in the navigation mesh.
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_vertices**\ (\ ) |const| :ref:`🔗<class_NavigationMesh_method_get_vertices>`
 
-Returns a :ref:`PackedVector3Array<class_PackedVector3Array>` containing all the vertices being used to create the polygons.
+Trả về một :ref:`PackedVector3Array<class_PackedVector3Array>` chứa tất cả các đỉnh đang được sử dụng để tạo các đa giác.
 
 .. rst-class:: classref-item-separator
 
@@ -799,7 +799,7 @@ Returns a :ref:`PackedVector3Array<class_PackedVector3Array>` containing all the
 
 |void| **set_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationMesh_method_set_collision_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt lớp được chỉ định trong :ref:`geometry_collision_mask<class_NavigationMesh_property_geometry_collision_mask>`, với ``layer_number`` trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -811,14 +811,14 @@ Based on ``value``, enables or disables the specified layer in the :ref:`geometr
 
 |void| **set_vertices**\ (\ vertices\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) :ref:`🔗<class_NavigationMesh_method_set_vertices>`
 
-Sets the vertices that can be then indexed to create polygons with the :ref:`add_polygon()<class_NavigationMesh_method_add_polygon>` method.
+Thiết lập các đỉnh mà sau đó có thể được lập chỉ mục để tạo các đa giác bằng phương thức :ref:`add_polygon()<class_NavigationMesh_method_add_polygon>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

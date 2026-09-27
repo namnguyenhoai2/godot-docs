@@ -10,25 +10,25 @@
 JavaClass
 =========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a class from the Java Native Interface.
+Đại diện cho một lớp từ Java Native Interface.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Represents a class from the Java Native Interface. It is returned from :ref:`JavaClassWrapper.wrap()<class_JavaClassWrapper_method_wrap>`.
+Đại diện cho một lớp từ Java Native Interface. Lớp này được trả về từ :ref:`JavaClassWrapper.wrap()<class_JavaClassWrapper_method_wrap>`.
 
-\ **Note:** This class only works on Android. On any other platform, this class does nothing.
+\ **Lưu ý:** Lớp này chỉ hoạt động trên Android. Trên mọi nền tảng khác, lớp này không thực hiện chức năng gì.
 
-\ **Note:** This class is not to be confused with :ref:`JavaScriptObject<class_JavaScriptObject>`.
+\ **Lưu ý:** Không nên nhầm lẫn lớp này với :ref:`JavaScriptObject<class_JavaScriptObject>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -49,8 +49,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_JavaClass_method_get_java_class_name:
 
@@ -58,7 +58,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_java_class_name**\ (\ ) |const| :ref:`🔗<class_JavaClass_method_get_java_class_name>`
 
-Returns the Java class name.
+Trả về tên lớp Java.
 
 .. rst-class:: classref-item-separator
 
@@ -70,7 +70,7 @@ Returns the Java class name.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_java_method_list**\ (\ ) |const| :ref:`🔗<class_JavaClass_method_get_java_method_list>`
 
-Returns the object's Java methods and their signatures as an :ref:`Array<class_Array>` of dictionaries, in the same format as :ref:`Object.get_method_list()<class_Object_method_get_method_list>`.
+Trả về một :ref:`Array<class_Array>` gồm các từ điển chứa các phương thức Java và chữ ký của chúng, theo cùng định dạng với :ref:`Object.get_method_list()<class_Object_method_get_method_list>`.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ Returns the object's Java methods and their signatures as an :ref:`Array<class_A
 
 :ref:`JavaClass<class_JavaClass>` **get_java_parent_class**\ (\ ) |const| :ref:`🔗<class_JavaClass_method_get_java_parent_class>`
 
-Returns a **JavaClass** representing the Java parent class of this class.
+Trả về một **JavaClass** đại diện cho lớp Java cha của lớp này.
 
 .. rst-class:: classref-item-separator
 
@@ -94,14 +94,14 @@ Returns a **JavaClass** representing the Java parent class of this class.
 
 :ref:`bool<class_bool>` **has_java_method**\ (\ method\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_JavaClass_method_has_java_method>`
 
-Returns ``true`` if the given ``method`` name exists in the object's Java methods.
+Trả về ``true`` nếu tên ``method`` đã cho tồn tại trong các phương thức Java của đối tượng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,78 +10,78 @@
 AudioEffectEQ21
 ===============
 
-**Inherits:** :ref:`AudioEffectEQ<class_AudioEffectEQ>` **<** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffectEQ<class_AudioEffectEQ>` **<** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a 21-band equalizer audio effect to an audio bus.
+Thêm hiệu ứng âm thanh equalizer 21 băng tần vào một bus âm thanh.
 
-Gives you control over frequencies from 22 Hz to 22000 Hz. Each frequency can be modulated between -60/+24 dB.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Frequency bands:
-
-Band 1: 22 Hz
-
-Band 2: 32 Hz
-
-Band 3: 44 Hz
-
-Band 4: 63 Hz
-
-Band 5: 90 Hz
-
-Band 6: 125 Hz
-
-Band 7: 175 Hz
-
-Band 8: 250 Hz
-
-Band 9: 350 Hz
-
-Band 10: 500 Hz
-
-Band 11: 700 Hz
-
-Band 12: 1000 Hz
-
-Band 13: 1400 Hz
-
-Band 14: 2000 Hz
-
-Band 15: 2800 Hz
-
-Band 16: 4000 Hz
-
-Band 17: 5600 Hz
-
-Band 18: 8000 Hz
-
-Band 19: 11000 Hz
-
-Band 20: 16000 Hz
-
-Band 21: 22000 Hz
-
-See also :ref:`AudioEffectEQ<class_AudioEffectEQ>`, :ref:`AudioEffectEQ6<class_AudioEffectEQ6>`, :ref:`AudioEffectEQ10<class_AudioEffectEQ10>`.
+Cho phép bạn kiểm soát các tần số từ 22 Hz đến 22000 Hz. Có thể điều chế từng tần số trong khoảng -60/+24 dB.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Các dải tần:
+
+Dải 1: 22 Hz
+
+Dải 2: 32 Hz
+
+Dải 3: 44 Hz
+
+Dải 4: 63 Hz
+
+Dải 5: 90 Hz
+
+Dải 6: 125 Hz
+
+Dải 7: 175 Hz
+
+Dải 8: 250 Hz
+
+Dải 9: 350 Hz
+
+Dải tần 10: 500 Hz
+
+Dải tần 11: 700 Hz
+
+Dải tần 12: 1000 Hz
+
+Dải tần 13: 1400 Hz
+
+Dải tần 14: 2000 Hz
+
+Dải tần 15: 2800 Hz
+
+Dải tần 16: 4000 Hz
+
+Dải 17: 5600 Hz
+
+Dải 18: 8000 Hz
+
+Dải 19: 11000 Hz
+
+Dải 20: 16000 Hz
+
+Dải 21: 22000 Hz
+
+Xem thêm :ref:`AudioEffectEQ<class_AudioEffectEQ>`, :ref:`AudioEffectEQ6<class_AudioEffectEQ6>`, :ref:`AudioEffectEQ10<class_AudioEffectEQ10>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,38 +10,38 @@
 NavigationMeshGenerator
 =======================
 
-**Deprecated:** This class may be changed or removed in future versions.
+**Đã lỗi thời:** Lớp này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Helper class for creating and clearing navigation meshes.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This class is responsible for creating and clearing 3D navigation meshes used as :ref:`NavigationMesh<class_NavigationMesh>` resources inside :ref:`NavigationRegion3D<class_NavigationRegion3D>`. The **NavigationMeshGenerator** has very limited to no use for 2D as the navigation mesh baking process expects 3D node types and 3D source geometry to parse.
-
-The entire navigation mesh baking is best done in a separate thread as the voxelization, collision tests and mesh optimization steps involved are very slow and performance-intensive operations.
-
-Navigation mesh baking happens in multiple steps and the result depends on 3D source geometry and properties of the :ref:`NavigationMesh<class_NavigationMesh>` resource. In the first step, starting from a root node and depending on :ref:`NavigationMesh<class_NavigationMesh>` properties all valid 3D source geometry nodes are collected from the :ref:`SceneTree<class_SceneTree>`. Second, all collected nodes are parsed for their relevant 3D geometry data and a combined 3D mesh is build. Due to the many different types of parsable objects, from normal :ref:`MeshInstance3D<class_MeshInstance3D>`\ s to :ref:`CSGShape3D<class_CSGShape3D>`\ s or various :ref:`CollisionObject3D<class_CollisionObject3D>`\ s, some operations to collect geometry data can trigger :ref:`RenderingServer<class_RenderingServer>` and :ref:`PhysicsServer3D<class_PhysicsServer3D>` synchronizations. Server synchronization can have a negative effect on baking time or framerate as it often involves :ref:`Mutex<class_Mutex>` locking for thread security. Many parsable objects and the continuous synchronization with other threaded Servers can increase the baking time significantly. On the other hand only a few but very large and complex objects will take some time to prepare for the Servers which can noticeably stall the next frame render. As a general rule the total number of parsable objects and their individual size and complexity should be balanced to avoid framerate issues or very long baking times. The combined mesh is then passed to the Recast Navigation Object to test the source geometry for walkable terrain suitable to :ref:`NavigationMesh<class_NavigationMesh>` agent properties by creating a voxel world around the meshes bounding area.
-
-The finalized navigation mesh is then returned and stored inside the :ref:`NavigationMesh<class_NavigationMesh>` for use as a resource inside :ref:`NavigationRegion3D<class_NavigationRegion3D>` nodes.
-
-\ **Note:** Using meshes to not only define walkable surfaces but also obstruct navigation baking does not always work. The navigation baking has no concept of what is a geometry "inside" when dealing with mesh source geometry and this is intentional. Depending on current baking parameters, as soon as the obstructing mesh is large enough to fit a navigation mesh area inside, the baking will generate navigation mesh areas that are inside the obstructing source geometry mesh.
+Lớp trợ giúp để tạo và xóa navigation mesh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp này chịu trách nhiệm tạo và xóa các navigation mesh 3D được sử dụng làm tài nguyên :ref:`NavigationMesh<class_NavigationMesh>` bên trong :ref:`NavigationRegion3D<class_NavigationRegion3D>`. **NavigationMeshGenerator** có rất ít hoặc không có tác dụng đối với 2D vì quy trình baking navigation mesh yêu cầu các loại node 3D và hình học nguồn 3D để phân tích.
+
+Toàn bộ quy trình baking navigation mesh nên được thực hiện trong một thread riêng vì các bước voxelization, kiểm tra va chạm và tối ưu hóa mesh liên quan đều rất chậm và tiêu tốn nhiều hiệu năng.
+
+Quy trình baking navigation mesh diễn ra qua nhiều bước và kết quả phụ thuộc vào hình học nguồn 3D cùng các thuộc tính của tài nguyên :ref:`NavigationMesh<class_NavigationMesh>`. Ở bước đầu tiên, bắt đầu từ một node gốc và tùy thuộc vào các thuộc tính :ref:`NavigationMesh<class_NavigationMesh>`, tất cả node hình học nguồn 3D hợp lệ sẽ được thu thập từ :ref:`SceneTree<class_SceneTree>`. Tiếp theo, tất cả node đã thu thập sẽ được phân tích để lấy dữ liệu hình học 3D liên quan và một mesh 3D kết hợp sẽ được tạo. Do có nhiều loại đối tượng khác nhau có thể phân tích, từ các :ref:`MeshInstance3D<class_MeshInstance3D>`\ s thông thường đến các :ref:`CSGShape3D<class_CSGShape3D>`\ s hoặc nhiều :ref:`CollisionObject3D<class_CollisionObject3D>`\ s khác nhau, một số thao tác thu thập dữ liệu hình học có thể kích hoạt việc đồng bộ hóa :ref:`RenderingServer<class_RenderingServer>` và :ref:`PhysicsServer3D<class_PhysicsServer3D>`. Việc đồng bộ hóa Server có thể ảnh hưởng tiêu cực đến thời gian baking hoặc framerate vì thường liên quan đến việc khóa :ref:`Mutex<class_Mutex>` để đảm bảo an toàn cho thread. Nhiều đối tượng có thể phân tích và việc liên tục đồng bộ hóa với các Server khác đang chạy trong thread có thể làm tăng đáng kể thời gian baking. Mặt khác, chỉ một vài đối tượng nhưng rất lớn và phức tạp sẽ mất một khoảng thời gian để chuẩn bị cho các Server, từ đó có thể làm đình trệ rõ rệt quá trình render frame tiếp theo. Theo nguyên tắc chung, nên cân bằng tổng số đối tượng có thể phân tích với kích thước và độ phức tạp riêng của chúng để tránh các vấn đề về framerate hoặc thời gian baking quá dài. Sau đó, mesh kết hợp được chuyển đến Recast Navigation Object để kiểm tra hình học nguồn nhằm xác định địa hình có thể đi bộ, phù hợp với các thuộc tính của agent :ref:`NavigationMesh<class_NavigationMesh>`, bằng cách tạo một thế giới voxel xung quanh khu vực bao quanh mesh.
+
+Lưới điều hướng đã hoàn thiện sau đó được trả về và lưu trữ bên trong :ref:`NavigationMesh<class_NavigationMesh>` để sử dụng làm tài nguyên bên trong các nút :ref:`NavigationRegion3D<class_NavigationRegion3D>`.
+
+\ **Lưu ý:** Việc sử dụng các mesh không chỉ để xác định các bề mặt có thể đi lại mà còn để cản trở quá trình baking điều hướng không phải lúc nào cũng hoạt động. Quá trình baking điều hướng không có khái niệm về việc hình học nào nằm "bên trong" khi xử lý hình học nguồn dạng mesh và đây là điều có chủ ý. Tùy thuộc vào các tham số baking hiện tại, ngay khi mesh cản trở đủ lớn để chứa một vùng lưới điều hướng bên trong, quá trình baking sẽ tạo ra các vùng lưới điều hướng nằm bên trong mesh hình học nguồn cản trở.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using NavigationMeshes <../tutorials/navigation/navigation_using_navigationmeshes>`
+- :doc:`Sử dụng NavigationMeshes <../tutorials/navigation/navigation_using_navigationmeshes>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -62,8 +62,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationMeshGenerator_method_bake:
 
@@ -71,9 +71,9 @@ Method Descriptions
 
 |void| **bake**\ (\ navigation_mesh\: :ref:`NavigationMesh<class_NavigationMesh>`, root_node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_NavigationMeshGenerator_method_bake>`
 
-**Deprecated:** This method is deprecated due to core threading changes. To upgrade existing code, first create a :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>` resource. Use this resource with :ref:`parse_source_geometry_data()<class_NavigationMeshGenerator_method_parse_source_geometry_data>` to parse the :ref:`SceneTree<class_SceneTree>` for nodes that should contribute to the navigation mesh baking. The :ref:`SceneTree<class_SceneTree>` parsing needs to happen on the main thread. After the parsing is finished use the resource with :ref:`bake_from_source_geometry_data()<class_NavigationMeshGenerator_method_bake_from_source_geometry_data>` to bake a navigation mesh.
+**Đã lỗi thời:** Phương thức này đã lỗi thời do những thay đổi trong threading của core. Để nâng cấp code hiện có, trước tiên hãy tạo một tài nguyên :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`. Sử dụng tài nguyên này với :ref:`parse_source_geometry_data()<class_NavigationMeshGenerator_method_parse_source_geometry_data>` để phân tích cú pháp :ref:`SceneTree<class_SceneTree>` cho các node cần đóng góp vào quá trình dựng navigation mesh. Việc phân tích cú pháp :ref:`SceneTree<class_SceneTree>` cần được thực hiện trên main thread. Sau khi phân tích cú pháp hoàn tất, hãy sử dụng tài nguyên này với :ref:`bake_from_source_geometry_data()<class_NavigationMeshGenerator_method_bake_from_source_geometry_data>` để dựng navigation mesh.
 
-Bakes the ``navigation_mesh`` with source geometry collected starting from the ``root_node``.
+Dựng ``navigation_mesh`` bằng hình học nguồn được thu thập bắt đầu từ ``root_node``.
 
 .. rst-class:: classref-item-separator
 
@@ -85,7 +85,7 @@ Bakes the ``navigation_mesh`` with source geometry collected starting from the `
 
 |void| **bake_from_source_geometry_data**\ (\ navigation_mesh\: :ref:`NavigationMesh<class_NavigationMesh>`, source_geometry_data\: :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`, callback\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_NavigationMeshGenerator_method_bake_from_source_geometry_data>`
 
-Bakes the provided ``navigation_mesh`` with the data from the provided ``source_geometry_data``. After the process is finished the optional ``callback`` will be called.
+Dựng ``navigation_mesh`` được cung cấp bằng dữ liệu từ ``source_geometry_data`` được cung cấp. Sau khi quá trình hoàn tất, ``callback`` tùy chọn sẽ được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -97,7 +97,7 @@ Bakes the provided ``navigation_mesh`` with the data from the provided ``source_
 
 |void| **clear**\ (\ navigation_mesh\: :ref:`NavigationMesh<class_NavigationMesh>`\ ) :ref:`🔗<class_NavigationMeshGenerator_method_clear>`
 
-Removes all polygons and vertices from the provided ``navigation_mesh`` resource.
+Xóa tất cả polygon và vertex khỏi tài nguyên ``navigation_mesh`` được cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -109,18 +109,18 @@ Removes all polygons and vertices from the provided ``navigation_mesh`` resource
 
 |void| **parse_source_geometry_data**\ (\ navigation_mesh\: :ref:`NavigationMesh<class_NavigationMesh>`, source_geometry_data\: :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`, root_node\: :ref:`Node<class_Node>`, callback\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_NavigationMeshGenerator_method_parse_source_geometry_data>`
 
-Parses the :ref:`SceneTree<class_SceneTree>` for source geometry according to the properties of ``navigation_mesh``. Updates the provided ``source_geometry_data`` resource with the resulting data. The resource can then be used to bake a navigation mesh with :ref:`bake_from_source_geometry_data()<class_NavigationMeshGenerator_method_bake_from_source_geometry_data>`. After the process is finished the optional ``callback`` will be called.
+Phân tích :ref:`SceneTree<class_SceneTree>` để lấy hình học nguồn theo các thuộc tính của ``navigation_mesh``. Cập nhật tài nguyên ``source_geometry_data`` được cung cấp bằng dữ liệu thu được. Sau đó, tài nguyên này có thể được dùng để tạo navigation mesh bằng :ref:`bake_from_source_geometry_data()<class_NavigationMeshGenerator_method_bake_from_source_geometry_data>`. Khi quá trình hoàn tất, ``callback`` tùy chọn sẽ được gọi.
 
-\ **Note:** This function needs to run on the main thread or with a deferred call as the SceneTree is not thread-safe.
+\ **Lưu ý:** Hàm này cần chạy trên luồng chính hoặc bằng một deferred call vì SceneTree không an toàn khi truy cập từ nhiều luồng.
 
-\ **Performance:** While convenient, reading data arrays from :ref:`Mesh<class_Mesh>` resources can affect the frame rate negatively. The data needs to be received from the GPU, stalling the :ref:`RenderingServer<class_RenderingServer>` in the process. For performance prefer the use of e.g. collision shapes or creating the data arrays entirely in code.
+\ **Hiệu năng:** Mặc dù tiện lợi, việc đọc các mảng dữ liệu từ tài nguyên :ref:`Mesh<class_Mesh>` có thể ảnh hưởng tiêu cực đến tốc độ khung hình. Trong quá trình này, dữ liệu cần được nhận từ GPU, khiến :ref:`RenderingServer<class_RenderingServer>` phải chờ. Để có hiệu năng tốt hơn, hãy ưu tiên sử dụng, chẳng hạn, collision shapes hoặc tạo hoàn toàn các mảng dữ liệu trong code.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

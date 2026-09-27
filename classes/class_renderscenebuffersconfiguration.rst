@@ -10,46 +10,46 @@
 RenderSceneBuffersConfiguration
 ===============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Configuration object used to setup a :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` object.
+Đối tượng cấu hình dùng để thiết lập đối tượng :ref:`RenderSceneBuffers<class_RenderSceneBuffers>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This configuration object is created and populated by the render engine on a viewport change and used to (re)configure a :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` object.
+Đối tượng cấu hình này được render engine tạo và điền dữ liệu khi viewport thay đổi, rồi được dùng để (tái) cấu hình đối tượng :ref:`RenderSceneBuffers<class_RenderSceneBuffers>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`ViewportAnisotropicFiltering<enum_RenderingServer_ViewportAnisotropicFiltering>` | :ref:`anisotropic_filtering_level<class_RenderSceneBuffersConfiguration_property_anisotropic_filtering_level>` | ``2``              |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`float<class_float>`                                                              | :ref:`fsr_sharpness<class_RenderSceneBuffersConfiguration_property_fsr_sharpness>`                             | ``0.0``            |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`Vector2i<class_Vector2i>`                                                        | :ref:`internal_size<class_RenderSceneBuffersConfiguration_property_internal_size>`                             | ``Vector2i(0, 0)`` |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`ViewportMSAA<enum_RenderingServer_ViewportMSAA>`                                 | :ref:`msaa_3d<class_RenderSceneBuffersConfiguration_property_msaa_3d>`                                         | ``0``              |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`RID<class_RID>`                                                                  | :ref:`render_target<class_RenderSceneBuffersConfiguration_property_render_target>`                             | ``RID()``          |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>`               | :ref:`scaling_3d_mode<class_RenderSceneBuffersConfiguration_property_scaling_3d_mode>`                         | ``255``            |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`ViewportScreenSpaceAA<enum_RenderingServer_ViewportScreenSpaceAA>`               | :ref:`screen_space_aa<class_RenderSceneBuffersConfiguration_property_screen_space_aa>`                         | ``0``              |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`Vector2i<class_Vector2i>`                                                        | :ref:`target_size<class_RenderSceneBuffersConfiguration_property_target_size>`                                 | ``Vector2i(0, 0)`` |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`float<class_float>`                                                              | :ref:`texture_mipmap_bias<class_RenderSceneBuffersConfiguration_property_texture_mipmap_bias>`                 | ``0.0``            |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`int<class_int>`                                                                  | :ref:`view_count<class_RenderSceneBuffersConfiguration_property_view_count>`                                   | ``1``              |
-   +----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`ViewportAnisotropicFiltering <enum_RenderingServer_ViewportAnisotropicFiltering>` | :ref:`anisotropic_filtering_level<class_RenderSceneBuffersConfiguration_property_anisotropic_filtering_level>` | ``2``              |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`float<class_float>`                                                               | :ref:`fsr_sharpness<class_RenderSceneBuffersConfiguration_property_fsr_sharpness>`                             | ``0.0``            |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`Vector2i<class_Vector2i>`                                                         | :ref:`internal_size<class_RenderSceneBuffersConfiguration_property_internal_size>`                             | ``Vector2i(0, 0)`` |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`ViewportMSAA <enum_RenderingServer_ViewportMSAA>`                                 | :ref:`msaa_3d<class_RenderSceneBuffersConfiguration_property_msaa_3d>`                                         | ``0``              |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`RID<class_RID>`                                                                   | :ref:`render_target<class_RenderSceneBuffersConfiguration_property_render_target>`                             | ``RID()``          |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`ViewportScaling3DMode <enum_RenderingServer_ViewportScaling3DMode>`               | :ref:`scaling_3d_mode<class_RenderSceneBuffersConfiguration_property_scaling_3d_mode>`                         | ``255``            |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`ViewportScreenSpaceAA <enum_RenderingServer_ViewportScreenSpaceAA>`               | :ref:`screen_space_aa<class_RenderSceneBuffersConfiguration_property_screen_space_aa>`                         | ``0``              |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`Vector2i<class_Vector2i>`                                                         | :ref:`target_size<class_RenderSceneBuffersConfiguration_property_target_size>`                                 | ``Vector2i(0, 0)`` |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`float<class_float>`                                                               | :ref:`texture_mipmap_bias<class_RenderSceneBuffersConfiguration_property_texture_mipmap_bias>`                 | ``0.0``            |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`int<class_int>`                                                                   | :ref:`view_count<class_RenderSceneBuffersConfiguration_property_view_count>`                                   | ``1``              |
+   +-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------+--------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -57,8 +57,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RenderSceneBuffersConfiguration_property_anisotropic_filtering_level:
 
@@ -71,7 +71,7 @@ Property Descriptions
 - |void| **set_anisotropic_filtering_level**\ (\ value\: :ref:`ViewportAnisotropicFiltering<enum_RenderingServer_ViewportAnisotropicFiltering>`\ )
 - :ref:`ViewportAnisotropicFiltering<enum_RenderingServer_ViewportAnisotropicFiltering>` **get_anisotropic_filtering_level**\ (\ )
 
-Level of the anisotropic filter.
+Mức độ của bộ lọc anisotropic.
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ Level of the anisotropic filter.
 - |void| **set_fsr_sharpness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fsr_sharpness**\ (\ )
 
-FSR Sharpness applicable if FSR upscaling is used.
+Độ sắc nét FSR được áp dụng nếu sử dụng upscaling FSR.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ FSR Sharpness applicable if FSR upscaling is used.
 - |void| **set_internal_size**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_internal_size**\ (\ )
 
-The size of the 3D render buffer used for rendering.
+Kích thước của render buffer 3D được dùng để render.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ The size of the 3D render buffer used for rendering.
 - |void| **set_msaa_3d**\ (\ value\: :ref:`ViewportMSAA<enum_RenderingServer_ViewportMSAA>`\ )
 - :ref:`ViewportMSAA<enum_RenderingServer_ViewportMSAA>` **get_msaa_3d**\ (\ )
 
-The MSAA mode we're using for 3D rendering.
+Chế độ MSAA đang được sử dụng để render 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ The MSAA mode we're using for 3D rendering.
 - |void| **set_render_target**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_render_target**\ (\ )
 
-The render target associated with these buffer.
+Render target được liên kết với các buffer này.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ The render target associated with these buffer.
 - |void| **set_scaling_3d_mode**\ (\ value\: :ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>`\ )
 - :ref:`ViewportScaling3DMode<enum_RenderingServer_ViewportScaling3DMode>` **get_scaling_3d_mode**\ (\ )
 
-The requested scaling mode with which we upscale/downscale if :ref:`internal_size<class_RenderSceneBuffersConfiguration_property_internal_size>` and :ref:`target_size<class_RenderSceneBuffersConfiguration_property_target_size>` are not equal.
+Chế độ scaling được yêu cầu để upscale/downscale nếu :ref:`internal_size<class_RenderSceneBuffersConfiguration_property_internal_size>` và :ref:`target_size<class_RenderSceneBuffersConfiguration_property_target_size>` không bằng nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ The requested scaling mode with which we upscale/downscale if :ref:`internal_siz
 - |void| **set_screen_space_aa**\ (\ value\: :ref:`ViewportScreenSpaceAA<enum_RenderingServer_ViewportScreenSpaceAA>`\ )
 - :ref:`ViewportScreenSpaceAA<enum_RenderingServer_ViewportScreenSpaceAA>` **get_screen_space_aa**\ (\ )
 
-The requested screen space AA applied in post processing.
+Chế độ khử răng cưa trong không gian màn hình được yêu cầu, áp dụng trong bước hậu xử lý.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ The requested screen space AA applied in post processing.
 - |void| **set_target_size**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_target_size**\ (\ )
 
-The target (upscale) size if scaling is used.
+Kích thước đích (upscale) nếu sử dụng scaling.
 
 .. rst-class:: classref-item-separator
 
@@ -207,9 +207,9 @@ The target (upscale) size if scaling is used.
 - |void| **set_texture_mipmap_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_texture_mipmap_bias**\ (\ )
 
-Bias applied to mipmaps.
+Độ lệch được áp dụng cho mipmap.
 
-\ **Note:** This property is only supported in the Forward+ and Mobile renderers, not Compatibility. In Compatibility, this property is always treated as if it was set to ``0.0``.
+\ **Lưu ý:** Thuộc tính này chỉ được hỗ trợ trong các renderer Forward+ và Mobile, không được hỗ trợ trong Compatibility. Trong Compatibility, thuộc tính này luôn được xử lý như thể được đặt thành ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -226,14 +226,14 @@ Bias applied to mipmaps.
 - |void| **set_view_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_view_count**\ (\ )
 
-The number of views we're rendering.
+Số lượng view đang được render.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

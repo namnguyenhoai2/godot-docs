@@ -10,22 +10,22 @@
 RemoteTransform2D
 =================
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-RemoteTransform2D pushes its own :ref:`Transform2D<class_Transform2D>` to another :ref:`Node2D<class_Node2D>` derived node in the scene.
+RemoteTransform2D truyền :ref:`Transform2D<class_Transform2D>` của chính nó đến một node khác kế thừa từ :ref:`Node2D<class_Node2D>` trong scene.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-RemoteTransform2D pushes its own :ref:`Transform2D<class_Transform2D>` to another :ref:`Node2D<class_Node2D>` derived node (called the remote node) in the scene.
+RemoteTransform2D truyền :ref:`Transform2D<class_Transform2D>` của chính nó đến một node khác kế thừa từ :ref:`Node2D<class_Node2D>` (gọi là remote node) trong scene.
 
-It can be set to update another node's position, rotation and/or scale. It can use either global or local coordinates.
+Có thể thiết lập để cập nhật vị trí, góc xoay và/hoặc tỉ lệ của một node khác. Có thể sử dụng tọa độ global hoặc local.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -61,8 +61,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RemoteTransform2D_property_remote_path:
 
@@ -75,7 +75,7 @@ Property Descriptions
 - |void| **set_remote_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_remote_node**\ (\ )
 
-The :ref:`NodePath<class_NodePath>` to the remote node, relative to the RemoteTransform2D's position in the scene.
+:ref:`NodePath<class_NodePath>` đến remote node, tương đối so với vị trí của RemoteTransform2D trong scene.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ The :ref:`NodePath<class_NodePath>` to the remote node, relative to the RemoteTr
 - |void| **set_update_position**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_update_position**\ (\ )
 
-If ``true``, the remote node's position is updated.
+Nếu ``true``, vị trí của remote node sẽ được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -109,7 +109,7 @@ If ``true``, the remote node's position is updated.
 - |void| **set_update_rotation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_update_rotation**\ (\ )
 
-If ``true``, the remote node's rotation is updated.
+Nếu ``true``, góc xoay của remote node sẽ được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ If ``true``, the remote node's rotation is updated.
 - |void| **set_update_scale**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_update_scale**\ (\ )
 
-If ``true``, the remote node's scale is updated.
+Nếu ``true``, tỉ lệ của remote node sẽ được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -143,7 +143,7 @@ If ``true``, the remote node's scale is updated.
 - |void| **set_use_global_coordinates**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_global_coordinates**\ (\ )
 
-If ``true``, global coordinates are used. If ``false``, local coordinates are used.
+Nếu ``true``, tọa độ global sẽ được sử dụng. Nếu ``false``, tọa độ local sẽ được sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -151,8 +151,8 @@ If ``true``, global coordinates are used. If ``false``, local coordinates are us
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RemoteTransform2D_method_force_update_cache:
 
@@ -160,14 +160,14 @@ Method Descriptions
 
 |void| **force_update_cache**\ (\ ) :ref:`🔗<class_RemoteTransform2D_method_force_update_cache>`
 
-**RemoteTransform2D** caches the remote node. It may not notice if the remote node disappears; :ref:`force_update_cache()<class_RemoteTransform2D_method_force_update_cache>` forces it to update the cache again.
+**RemoteTransform2D** lưu remote node vào bộ nhớ đệm. Có thể nó sẽ không nhận biết khi remote node biến mất; :ref:`force_update_cache()<class_RemoteTransform2D_method_force_update_cache>` buộc nó cập nhật lại bộ nhớ đệm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

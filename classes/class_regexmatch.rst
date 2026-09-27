@@ -10,21 +10,21 @@
 RegExMatch
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Contains the results of a :ref:`RegEx<class_RegEx>` search.
+Chứa kết quả của một phép tìm kiếm :ref:`RegEx<class_RegEx>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Contains the results of a single :ref:`RegEx<class_RegEx>` match returned by :ref:`RegEx.search()<class_RegEx_method_search>` and :ref:`RegEx.search_all()<class_RegEx_method_search_all>`. It can be used to find the position and range of the match and its capturing groups, and it can extract its substring for you.
+Chứa kết quả của một lần khớp :ref:`RegEx<class_RegEx>` duy nhất được :ref:`RegEx.search()<class_RegEx_method_search>` và :ref:`RegEx.search_all()<class_RegEx_method_search_all>` trả về. Có thể dùng nó để tìm vị trí và phạm vi của kết quả khớp cùng các nhóm capturing, đồng thời trích xuất chuỗi con của kết quả khớp.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -61,8 +61,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RegExMatch_property_names:
 
@@ -74,7 +74,7 @@ Property Descriptions
 
 - :ref:`Dictionary<class_Dictionary>` **get_names**\ (\ )
 
-A dictionary of named groups and its corresponding group number. Only groups that were matched are included. If multiple groups have the same name, that name would refer to the first matching one.
+Một dictionary gồm các nhóm có tên và số nhóm tương ứng. Chỉ những nhóm đã khớp mới được đưa vào. Nếu nhiều nhóm có cùng tên, tên đó sẽ tham chiếu đến nhóm đầu tiên khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -90,9 +90,9 @@ A dictionary of named groups and its corresponding group number. Only groups tha
 
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_strings**\ (\ )
 
-An :ref:`Array<class_Array>` of the match and its capturing groups.
+Một :ref:`Array<class_Array>` của kết quả khớp và các nhóm capturing của nó.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng đó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ An :ref:`Array<class_Array>` of the match and its capturing groups.
 
 - :ref:`String<class_String>` **get_subject**\ (\ )
 
-The source string used with the search pattern to find this matching result.
+Chuỗi nguồn được sử dụng với mẫu tìm kiếm để tìm kết quả khớp này.
 
 .. rst-class:: classref-section-separator
 
@@ -116,8 +116,8 @@ The source string used with the search pattern to find this matching result.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RegExMatch_method_get_end:
 
@@ -125,9 +125,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_end**\ (\ name\: :ref:`Variant<class_Variant>` = 0\ ) |const| :ref:`🔗<class_RegExMatch_method_get_end>`
 
-Returns the end position of the match within the source string. The end position of capturing groups can be retrieved by providing its group number as an integer or its string name (if it's a named group). The default value of 0 refers to the whole pattern.
+Trả về vị trí kết thúc của kết quả khớp trong chuỗi nguồn. Có thể lấy vị trí kết thúc của các nhóm capturing bằng cách cung cấp số nhóm dưới dạng số nguyên hoặc tên chuỗi của nhóm (nếu đó là nhóm có tên). Giá trị mặc định 0 tham chiếu đến toàn bộ mẫu.
 
-Returns -1 if the group did not match or doesn't exist.
+Trả về -1 nếu nhóm không khớp hoặc không tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ Returns -1 if the group did not match or doesn't exist.
 
 :ref:`int<class_int>` **get_group_count**\ (\ ) |const| :ref:`🔗<class_RegExMatch_method_get_group_count>`
 
-Returns the number of capturing groups.
+Trả về số lượng nhóm capturing.
 
 .. rst-class:: classref-item-separator
 
@@ -151,9 +151,9 @@ Returns the number of capturing groups.
 
 :ref:`int<class_int>` **get_start**\ (\ name\: :ref:`Variant<class_Variant>` = 0\ ) |const| :ref:`🔗<class_RegExMatch_method_get_start>`
 
-Returns the starting position of the match within the source string. The starting position of capturing groups can be retrieved by providing its group number as an integer or its string name (if it's a named group). The default value of 0 refers to the whole pattern.
+Trả về vị trí bắt đầu của kết quả khớp trong chuỗi nguồn. Có thể lấy vị trí bắt đầu của các nhóm capturing bằng cách cung cấp số nhóm dưới dạng số nguyên hoặc tên chuỗi của nhóm (nếu đó là nhóm có tên). Giá trị mặc định 0 tham chiếu đến toàn bộ mẫu.
 
-Returns -1 if the group did not match or doesn't exist.
+Trả về -1 nếu nhóm không khớp hoặc không tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -165,16 +165,16 @@ Returns -1 if the group did not match or doesn't exist.
 
 :ref:`String<class_String>` **get_string**\ (\ name\: :ref:`Variant<class_Variant>` = 0\ ) |const| :ref:`🔗<class_RegExMatch_method_get_string>`
 
-Returns the substring of the match from the source string. Capturing groups can be retrieved by providing its group number as an integer or its string name (if it's a named group). The default value of 0 refers to the whole pattern.
+Trả về chuỗi con của kết quả khớp từ chuỗi nguồn. Có thể lấy các nhóm capturing bằng cách cung cấp số nhóm dưới dạng số nguyên hoặc tên chuỗi của nhóm (nếu đó là nhóm có tên). Giá trị mặc định 0 tham chiếu đến toàn bộ mẫu.
 
-Returns an empty string if the group did not match or doesn't exist.
+Trả về một chuỗi rỗng nếu nhóm không khớp hoặc không tồn tại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

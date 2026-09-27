@@ -10,31 +10,31 @@
 GridContainer
 =============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A container that arranges its child controls in a grid layout.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**GridContainer** arranges its child controls in a grid layout. The number of columns is specified by the :ref:`columns<class_GridContainer_property_columns>` property, whereas the number of rows depends on how many are needed for the child controls. The number of rows and columns is preserved for every size of the container.
-
-\ **Note:** **GridContainer** only works with child nodes inheriting from :ref:`Control<class_Control>`. It won't rearrange child nodes inheriting from :ref:`Node2D<class_Node2D>`.
+Một container sắp xếp các control con của nó theo bố cục dạng lưới.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**GridContainer** sắp xếp các control con của nó theo bố cục dạng lưới. Số cột được chỉ định bởi thuộc tính :ref:`columns<class_GridContainer_property_columns>`, trong khi số hàng phụ thuộc vào số hàng cần thiết cho các control con. Số hàng và số cột được giữ nguyên với mọi kích thước của container.
+
+\ **Lưu ý:** **GridContainer** chỉ hoạt động với các node con kế thừa từ :ref:`Control<class_Control>`. Nó sẽ không sắp xếp lại các node con kế thừa từ :ref:`Node2D<class_Node2D>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng Container <../tutorials/ui/gui_containers>`
 
-- `Operating System Testing Demo <https://godotengine.org/asset-library/asset/2789>`__
+- `Bản trình diễn kiểm thử hệ điều hành <https://godotengine.org/asset-library/asset/2789>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,7 +46,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -64,8 +64,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GridContainer_property_columns:
 
@@ -78,7 +78,7 @@ Property Descriptions
 - |void| **set_columns**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_columns**\ (\ )
 
-The number of columns in the **GridContainer**. If modified, **GridContainer** reorders its Control-derived children to accommodate the new layout.
+Số cột trong **GridContainer**. Nếu được sửa đổi, **GridContainer** sẽ sắp xếp lại các nút con kế thừa từ Control để phù hợp với bố cục mới.
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ The number of columns in the **GridContainer**. If modified, **GridContainer** r
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_GridContainer_theme_constant_h_separation:
 
@@ -95,7 +95,7 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **h_separation** = ``4`` :ref:`🔗<class_GridContainer_theme_constant_h_separation>`
 
-The horizontal separation of child nodes.
+Khoảng cách theo chiều ngang giữa các nút con.
 
 .. rst-class:: classref-item-separator
 
@@ -107,14 +107,14 @@ The horizontal separation of child nodes.
 
 :ref:`int<class_int>` **v_separation** = ``4`` :ref:`🔗<class_GridContainer_theme_constant_v_separation>`
 
-The vertical separation of child nodes.
+Khoảng cách theo chiều dọc giữa các node con.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

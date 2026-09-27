@@ -10,30 +10,30 @@
 AudioStreamPlayback
 ===================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AudioStreamPlaybackInteractive<class_AudioStreamPlaybackInteractive>`, :ref:`AudioStreamPlaybackPlaylist<class_AudioStreamPlaybackPlaylist>`, :ref:`AudioStreamPlaybackPolyphonic<class_AudioStreamPlaybackPolyphonic>`, :ref:`AudioStreamPlaybackResampled<class_AudioStreamPlaybackResampled>`, :ref:`AudioStreamPlaybackSynchronized<class_AudioStreamPlaybackSynchronized>`
+**Được kế thừa bởi:** :ref:`AudioStreamPlaybackInteractive<class_AudioStreamPlaybackInteractive>`, :ref:`AudioStreamPlaybackPlaylist<class_AudioStreamPlaybackPlaylist>`, :ref:`AudioStreamPlaybackPolyphonic<class_AudioStreamPlaybackPolyphonic>`, :ref:`AudioStreamPlaybackResampled<class_AudioStreamPlaybackResampled>`, :ref:`AudioStreamPlaybackSynchronized<class_AudioStreamPlaybackSynchronized>`
 
-Meta class for playing back audio.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Can play, loop, pause a scroll through audio. See :ref:`AudioStream<class_AudioStream>` and :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` for usage.
+Lớp meta để phát audio.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Có thể phát, lặp và tạm dừng việc cuộn qua audio. Xem :ref:`AudioStream<class_AudioStream>` và :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` để biết cách sử dụng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - `Audio Generator Demo <https://godotengine.org/asset-library/asset/2759>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -84,8 +84,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioStreamPlayback_private_method__get_loop_count:
 
@@ -93,7 +93,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **_get_loop_count**\ (\ ) |virtual| |const| :ref:`🔗<class_AudioStreamPlayback_private_method__get_loop_count>`
 
-Overridable method. Should return how many times this audio stream has looped. Most built-in playbacks always return ``0``.
+Phương thức có thể ghi đè. Phương thức này nên trả về số lần audio stream này đã lặp. Hầu hết các playback tích hợp luôn trả về ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Overridable method. Should return how many times this audio stream has looped. M
 
 :ref:`Variant<class_Variant>` **_get_parameter**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |virtual| |const| :ref:`🔗<class_AudioStreamPlayback_private_method__get_parameter>`
 
-Return the current value of a playback parameter by name (see :ref:`AudioStream._get_parameter_list()<class_AudioStream_private_method__get_parameter_list>`).
+Trả về giá trị hiện tại của một tham số playback theo tên (xem :ref:`AudioStream._get_parameter_list()<class_AudioStream_private_method__get_parameter_list>`).
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Return the current value of a playback parameter by name (see :ref:`AudioStream.
 
 :ref:`float<class_float>` **_get_playback_position**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_AudioStreamPlayback_private_method__get_playback_position>`
 
-Overridable method. Should return the current progress along the audio stream, in seconds.
+Phương thức có thể ghi đè. Phương thức này nên trả về tiến trình hiện tại của audio stream, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Overridable method. Should return the current progress along the audio stream, i
 
 :ref:`bool<class_bool>` **_is_playing**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_AudioStreamPlayback_private_method__is_playing>`
 
-Overridable method. Should return ``true`` if this playback is active and playing its audio stream.
+Phương thức có thể ghi đè. Nên trả về ``true`` nếu playback này đang hoạt động và phát luồng âm thanh của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -141,9 +141,9 @@ Overridable method. Should return ``true`` if this playback is active and playin
 
 :ref:`int<class_int>` **_mix**\ (\ buffer\: ``AudioFrame*``, rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ ) |virtual| |required| :ref:`🔗<class_AudioStreamPlayback_private_method__mix>`
 
-Override this method to customize how the audio stream is mixed. This method is called even if the playback is not active.
+Ghi đè phương thức này để tùy chỉnh cách trộn luồng âm thanh. Phương thức này được gọi ngay cả khi playback không hoạt động.
 
-\ **Note:** It is not useful to override this method in GDScript or C#. Only GDExtension can take advantage of it.
+\ **Lưu ý:** Không hữu ích khi ghi đè phương thức này trong GDScript hoặc C#. Chỉ GDExtension mới có thể tận dụng phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ Override this method to customize how the audio stream is mixed. This method is 
 
 |void| **_seek**\ (\ position\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__seek>`
 
-Override this method to customize what happens when seeking this audio stream at the given ``position``, such as by calling :ref:`AudioStreamPlayer.seek()<class_AudioStreamPlayer_method_seek>`.
+Ghi đè phương thức này để tùy chỉnh điều xảy ra khi tìm đến ``position`` đã cho trong luồng âm thanh này, chẳng hạn bằng cách gọi :ref:`AudioStreamPlayer.seek()<class_AudioStreamPlayer_method_seek>`.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Override this method to customize what happens when seeking this audio stream at
 
 |void| **_set_parameter**\ (\ name\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__set_parameter>`
 
-Set the current value of a playback parameter by name (see :ref:`AudioStream._get_parameter_list()<class_AudioStream_private_method__get_parameter_list>`).
+Đặt giá trị hiện tại của tham số playback theo tên (xem :ref:`AudioStream._get_parameter_list()<class_AudioStream_private_method__get_parameter_list>`).
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Set the current value of a playback parameter by name (see :ref:`AudioStream._ge
 
 |void| **_start**\ (\ from_pos\: :ref:`float<class_float>`\ ) |virtual| |required| :ref:`🔗<class_AudioStreamPlayback_private_method__start>`
 
-Override this method to customize what happens when the playback starts at the given position, such as by calling :ref:`AudioStreamPlayer.play()<class_AudioStreamPlayer_method_play>`.
+Ghi đè phương thức này để tùy chỉnh điều xảy ra khi playback bắt đầu tại vị trí đã cho, chẳng hạn bằng cách gọi :ref:`AudioStreamPlayer.play()<class_AudioStreamPlayer_method_play>`.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Override this method to customize what happens when the playback starts at the g
 
 |void| **_stop**\ (\ ) |virtual| |required| :ref:`🔗<class_AudioStreamPlayback_private_method__stop>`
 
-Override this method to customize what happens when the playback is stopped, such as by calling :ref:`AudioStreamPlayer.stop()<class_AudioStreamPlayer_method_stop>`.
+Ghi đè phương thức này để tùy chỉnh điều xảy ra khi playback dừng, chẳng hạn bằng cách gọi :ref:`AudioStreamPlayer.stop()<class_AudioStreamPlayer_method_stop>`.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Override this method to customize what happens when the playback is stopped, suc
 
 |void| **_tag_used_streams**\ (\ ) |virtual| :ref:`🔗<class_AudioStreamPlayback_private_method__tag_used_streams>`
 
-Overridable method. Called whenever the audio stream is mixed if the playback is active and :ref:`AudioServer.set_enable_tagging_used_audio_streams()<class_AudioServer_method_set_enable_tagging_used_audio_streams>` has been set to ``true``. Editor plugins may use this method to "tag" the current position along the audio stream and display it in a preview.
+Phương thức có thể ghi đè. Được gọi bất cứ khi nào luồng âm thanh được trộn nếu đang phát và :ref:`AudioServer.set_enable_tagging_used_audio_streams()<class_AudioServer_method_set_enable_tagging_used_audio_streams>` đã được đặt thành ``true``. Các plugin editor có thể sử dụng phương thức này để "gắn thẻ" vị trí hiện tại trong luồng âm thanh và hiển thị vị trí đó trong bản xem trước.
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ Overridable method. Called whenever the audio stream is mixed if the playback is
 
 :ref:`int<class_int>` **get_loop_count**\ (\ ) |const| :ref:`🔗<class_AudioStreamPlayback_method_get_loop_count>`
 
-Returns the number of times the stream has looped.
+Trả về số lần luồng đã lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -227,7 +227,7 @@ Returns the number of times the stream has looped.
 
 :ref:`float<class_float>` **get_playback_position**\ (\ ) |const| :ref:`🔗<class_AudioStreamPlayback_method_get_playback_position>`
 
-Returns the current position in the stream, in seconds.
+Trả về vị trí hiện tại trong luồng, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 
@@ -239,9 +239,9 @@ Returns the current position in the stream, in seconds.
 
 :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` **get_sample_playback**\ (\ ) |const| :ref:`🔗<class_AudioStreamPlayback_method_get_sample_playback>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể bị thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Returns the :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` associated with this **AudioStreamPlayback** for playing back the audio sample of this stream.
+Trả về :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` được liên kết với **AudioStreamPlayback** này để phát lại mẫu âm thanh của luồng này.
 
 .. rst-class:: classref-item-separator
 
@@ -253,7 +253,7 @@ Returns the :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` associated wit
 
 :ref:`bool<class_bool>` **is_playing**\ (\ ) |const| :ref:`🔗<class_AudioStreamPlayback_method_is_playing>`
 
-Returns ``true`` if the stream is playing.
+Trả về ``true`` nếu luồng đang phát.
 
 .. rst-class:: classref-item-separator
 
@@ -265,11 +265,11 @@ Returns ``true`` if the stream is playing.
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **mix_audio**\ (\ rate_scale\: :ref:`float<class_float>`, frames\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AudioStreamPlayback_method_mix_audio>`
 
-Mixes up to ``frames`` of audio from the stream from the current position, at a rate of ``rate_scale``, advancing the stream.
+Trộn tối đa ``frames`` âm thanh từ luồng, bắt đầu từ vị trí hiện tại, với tốc độ ``rate_scale``, đồng thời tiến luồng về phía trước.
 
-Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` where each element holds the left and right channel volume levels of each frame.
+Trả về một :ref:`PackedVector2Array<class_PackedVector2Array>` trong đó mỗi phần tử chứa mức âm lượng của kênh trái và phải trong từng frame.
 
-\ **Note:** Can return fewer frames than requested, make sure to use the size of the return value.
+\ **Lưu ý:** Có thể trả về ít frame hơn số lượng được yêu cầu, hãy đảm bảo sử dụng kích thước của giá trị trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +281,7 @@ Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` where each element
 
 |void| **seek**\ (\ time\: :ref:`float<class_float>` = 0.0\ ) :ref:`🔗<class_AudioStreamPlayback_method_seek>`
 
-Seeks the stream at the given ``time``, in seconds.
+Tua đến vị trí ``time`` đã cho trong stream, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 
@@ -293,9 +293,9 @@ Seeks the stream at the given ``time``, in seconds.
 
 |void| **set_sample_playback**\ (\ playback_sample\: :ref:`AudioSamplePlayback<class_AudioSamplePlayback>`\ ) :ref:`🔗<class_AudioStreamPlayback_method_set_sample_playback>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể bị thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Associates :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` to this **AudioStreamPlayback** for playing back the audio sample of this stream.
+Liên kết :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` với **AudioStreamPlayback** này để phát lại mẫu âm thanh của stream này.
 
 .. rst-class:: classref-item-separator
 
@@ -307,7 +307,7 @@ Associates :ref:`AudioSamplePlayback<class_AudioSamplePlayback>` to this **Audio
 
 |void| **start**\ (\ from_pos\: :ref:`float<class_float>` = 0.0\ ) :ref:`🔗<class_AudioStreamPlayback_method_start>`
 
-Starts the stream from the given ``from_pos``, in seconds.
+Bắt đầu stream từ vị trí ``from_pos`` đã cho, tính bằng giây.
 
 .. rst-class:: classref-item-separator
 
@@ -319,14 +319,14 @@ Starts the stream from the given ``from_pos``, in seconds.
 
 |void| **stop**\ (\ ) :ref:`🔗<class_AudioStreamPlayback_method_stop>`
 
-Stops the stream.
+Dừng stream.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

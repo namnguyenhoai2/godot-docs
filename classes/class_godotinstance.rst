@@ -10,21 +10,21 @@
 GodotInstance
 =============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Provides access to an embedded Godot instance.
+Cung cấp quyền truy cập vào một instance Godot được nhúng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-GodotInstance represents a running Godot instance that is controlled from an outside codebase, without a perpetual main loop. It is created by the C API ``libgodot_create_godot_instance``. Only one may be created per process.
+GodotInstance đại diện cho một instance Godot đang chạy được điều khiển từ một codebase bên ngoài mà không có main loop chạy liên tục. Nó được tạo bằng C API ``libgodot_create_godot_instance``. Mỗi process chỉ có thể tạo một instance.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -51,8 +51,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GodotInstance_method_focus_in:
 
@@ -60,7 +60,7 @@ Method Descriptions
 
 |void| **focus_in**\ (\ ) :ref:`🔗<class_GodotInstance_method_focus_in>`
 
-Notifies the instance that it is now in focus.
+Thông báo cho instance rằng nó hiện đang được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -72,7 +72,7 @@ Notifies the instance that it is now in focus.
 
 |void| **focus_out**\ (\ ) :ref:`🔗<class_GodotInstance_method_focus_out>`
 
-Notifies the instance that it is now not in focus.
+Thông báo cho instance rằng hiện tại instance không còn được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ Notifies the instance that it is now not in focus.
 
 :ref:`bool<class_bool>` **is_started**\ (\ ) :ref:`🔗<class_GodotInstance_method_is_started>`
 
-Returns ``true`` if this instance has been fully started.
+Trả về ``true`` nếu instance này đã được khởi động hoàn toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Returns ``true`` if this instance has been fully started.
 
 :ref:`bool<class_bool>` **iteration**\ (\ ) :ref:`🔗<class_GodotInstance_method_iteration>`
 
-Runs a single iteration of the main loop. Returns ``true`` if the engine is attempting to quit.
+Chạy một vòng lặp của main loop. Trả về ``true`` nếu engine đang cố gắng thoát.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Runs a single iteration of the main loop. Returns ``true`` if the engine is atte
 
 |void| **pause**\ (\ ) :ref:`🔗<class_GodotInstance_method_pause>`
 
-Notifies the instance that it is going to be paused.
+Thông báo cho instance rằng instance sắp bị tạm dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Notifies the instance that it is going to be paused.
 
 |void| **resume**\ (\ ) :ref:`🔗<class_GodotInstance_method_resume>`
 
-Notifies the instance that it is being resumed.
+Thông báo cho instance rằng instance đang được tiếp tục.
 
 .. rst-class:: classref-item-separator
 
@@ -132,14 +132,14 @@ Notifies the instance that it is being resumed.
 
 :ref:`bool<class_bool>` **start**\ (\ ) :ref:`🔗<class_GodotInstance_method_start>`
 
-Finishes this instance's startup sequence. Returns ``true`` on success.
+Hoàn tất trình tự khởi động của instance này. Trả về ``true`` khi thành công.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

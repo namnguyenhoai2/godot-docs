@@ -10,24 +10,24 @@
 StyleBox
 ========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`, :ref:`StyleBoxFlat<class_StyleBoxFlat>`, :ref:`StyleBoxLine<class_StyleBoxLine>`, :ref:`StyleBoxTexture<class_StyleBoxTexture>`
+**Được kế thừa bởi:** :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`, :ref:`StyleBoxFlat<class_StyleBoxFlat>`, :ref:`StyleBoxLine<class_StyleBoxLine>`, :ref:`StyleBoxTexture<class_StyleBoxTexture>`
 
-Abstract base class for defining stylized boxes for UI elements.
+Lớp cơ sở trừu tượng dùng để định nghĩa các hộp cách điệu cho các phần tử UI.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**StyleBox** is an abstract base class for drawing stylized boxes for UI elements. It is used for panels, buttons, :ref:`LineEdit<class_LineEdit>` backgrounds, :ref:`Tree<class_Tree>` backgrounds, etc. and also for testing a transparency mask for pointer signals. If mask test fails on a **StyleBox** assigned as mask to a control, clicks and motion signals will go through it to the one below.
+**StyleBox** là một lớp cơ sở trừu tượng để vẽ các hộp cách điệu cho các phần tử UI. Lớp này được dùng cho các panel, button, nền :ref:`LineEdit<class_LineEdit>`, nền :ref:`Tree<class_Tree>`, v.v. và cũng dùng để kiểm tra mặt nạ trong suốt cho các tín hiệu con trỏ. Nếu kiểm tra mặt nạ không thành công trên một **StyleBox** được gán làm mặt nạ cho một control, các tín hiệu nhấp chuột và chuyển động sẽ đi xuyên qua nó đến phần tử bên dưới.
 
-\ **Note:** For control nodes that have *Theme Properties*, the ``focus`` **StyleBox** is displayed over the ``normal``, ``hover`` or ``pressed`` **StyleBox**. This makes the ``focus`` **StyleBox** more reusable across different nodes.
+\ **Lưu ý:** Đối với các control node có *Theme Properties*, ``focus`` **StyleBox** được hiển thị trên ``normal``, ``hover`` hoặc ``pressed`` **StyleBox**. Điều này giúp ``focus`` **StyleBox** có thể tái sử dụng nhiều hơn giữa các node khác nhau.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -62,17 +62,17 @@ Methods
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`draw<class_StyleBox_method_draw>`\ (\ canvas_item\: :ref:`RID<class_RID>`, rect\: :ref:`Rect2<class_Rect2>`\ ) |const|                                   |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`get_content_margin<class_StyleBox_method_get_content_margin>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                                |
+   | :ref:`float<class_float>`           | :ref:`get_content_margin<class_StyleBox_method_get_content_margin>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                               |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`CanvasItem<class_CanvasItem>` | :ref:`get_current_item_drawn<class_StyleBox_method_get_current_item_drawn>`\ (\ ) |const|                                                                      |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`get_margin<class_StyleBox_method_get_margin>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                                                |
+   | :ref:`float<class_float>`           | :ref:`get_margin<class_StyleBox_method_get_margin>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                                               |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`       | :ref:`get_minimum_size<class_StyleBox_method_get_minimum_size>`\ (\ ) |const|                                                                                  |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector2<class_Vector2>`       | :ref:`get_offset<class_StyleBox_method_get_offset>`\ (\ ) |const|                                                                                              |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                              | :ref:`set_content_margin<class_StyleBox_method_set_content_margin>`\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )    |
+   | |void|                              | :ref:`set_content_margin<class_StyleBox_method_set_content_margin>`\ (\ margin\: :ref:`Side <enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )   |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                              | :ref:`set_content_margin_all<class_StyleBox_method_set_content_margin_all>`\ (\ offset\: :ref:`float<class_float>`\ )                                          |
    +-------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -85,8 +85,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StyleBox_property_content_margin_bottom:
 
@@ -99,13 +99,13 @@ Property Descriptions
 - |void| **set_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The bottom margin for the contents of this style box. Increasing this value reduces the space available to the contents from the bottom.
+Lề dưới cho nội dung của style box này. Việc tăng giá trị này sẽ làm giảm không gian dành cho nội dung từ phía dưới.
 
-If this value is negative, it is ignored and a child-specific margin is used instead. For example, for :ref:`StyleBoxFlat<class_StyleBoxFlat>`, the border thickness (if any) is used instead.
+Nếu giá trị này là số âm, nó sẽ bị bỏ qua và lề dành riêng cho node con sẽ được sử dụng thay thế. Ví dụ, đối với :ref:`StyleBoxFlat<class_StyleBoxFlat>`, độ dày đường viền (nếu có) sẽ được sử dụng thay thế.
 
-It is up to the code using this style box to decide what these contents are: for example, a :ref:`Button<class_Button>` respects this content margin for the textual contents of the button.
+Code sử dụng style box này sẽ quyết định nội dung đó là gì: ví dụ, một :ref:`Button<class_Button>` sẽ áp dụng lề nội dung này cho phần nội dung văn bản của button.
 
-\ :ref:`get_margin()<class_StyleBox_method_get_margin>` should be used to fetch this value as consumer instead of reading these properties directly. This is because it correctly respects negative values and the fallback mentioned above.
+\ :ref:`get_margin()<class_StyleBox_method_get_margin>` nên được dùng để lấy giá trị này dưới dạng consumer thay vì đọc trực tiếp các thuộc tính này. Đó là vì nó xử lý đúng các giá trị âm và giá trị dự phòng được đề cập ở trên.
 
 .. rst-class:: classref-item-separator
 
@@ -122,9 +122,9 @@ It is up to the code using this style box to decide what these contents are: for
 - |void| **set_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The left margin for the contents of this style box. Increasing this value reduces the space available to the contents from the left.
+Lề trái cho nội dung của style box này. Việc tăng giá trị này sẽ làm giảm không gian dành cho nội dung từ phía trái.
 
-Refer to :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bottom>` for extra considerations.
+Tham khảo :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bottom>` để biết thêm các lưu ý.
 
 .. rst-class:: classref-item-separator
 
@@ -141,9 +141,9 @@ Refer to :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bott
 - |void| **set_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The right margin for the contents of this style box. Increasing this value reduces the space available to the contents from the right.
+Lề phải cho nội dung của style box này. Việc tăng giá trị này sẽ làm giảm không gian dành cho nội dung từ phía phải.
 
-Refer to :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bottom>` for extra considerations.
+Tham khảo :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bottom>` để biết thêm các lưu ý.
 
 .. rst-class:: classref-item-separator
 
@@ -160,9 +160,9 @@ Refer to :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bott
 - |void| **set_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-The top margin for the contents of this style box. Increasing this value reduces the space available to the contents from the top.
+Lề trên cho nội dung của style box này. Việc tăng giá trị này sẽ làm giảm không gian dành cho nội dung từ phía trên.
 
-Refer to :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bottom>` for extra considerations.
+Tham khảo :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bottom>` để biết thêm các lưu ý.
 
 .. rst-class:: classref-section-separator
 
@@ -170,8 +170,8 @@ Refer to :ref:`content_margin_bottom<class_StyleBox_property_content_margin_bott
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StyleBox_private_method__draw:
 
@@ -207,7 +207,7 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **_get_minimum_size**\ (\ ) |virtual| |const| :ref:`🔗<class_StyleBox_private_method__get_minimum_size>`
 
-Virtual method to be implemented by the user. Returns a custom minimum size that the stylebox must respect when drawing. By default :ref:`get_minimum_size()<class_StyleBox_method_get_minimum_size>` only takes content margins into account. This method can be overridden to add another size restriction. A combination of the default behavior and the output of this method will be used, to account for both sizes.
+Phương thức ảo do người dùng triển khai. Trả về kích thước tối thiểu tùy chỉnh mà stylebox phải tôn trọng khi vẽ. Theo mặc định, :ref:`get_minimum_size()<class_StyleBox_method_get_minimum_size>` chỉ tính đến các lề nội dung. Có thể ghi đè phương thức này để thêm một giới hạn kích thước khác. Hành vi mặc định và kết quả của phương thức này sẽ được kết hợp để tính đến cả hai kích thước.
 
 .. rst-class:: classref-item-separator
 
@@ -233,9 +233,9 @@ Virtual method to be implemented by the user. Returns a custom minimum size that
 
 |void| **draw**\ (\ canvas_item\: :ref:`RID<class_RID>`, rect\: :ref:`Rect2<class_Rect2>`\ ) |const| :ref:`🔗<class_StyleBox_method_draw>`
 
-Draws this stylebox using a canvas item identified by the given :ref:`RID<class_RID>`.
+Vẽ stylebox này bằng canvas item được xác định bởi :ref:`RID<class_RID>` đã cho.
 
-The :ref:`RID<class_RID>` value can either be the result of :ref:`CanvasItem.get_canvas_item()<class_CanvasItem_method_get_canvas_item>` called on an existing :ref:`CanvasItem<class_CanvasItem>`-derived node, or directly from creating a canvas item in the :ref:`RenderingServer<class_RenderingServer>` with :ref:`RenderingServer.canvas_item_create()<class_RenderingServer_method_canvas_item_create>`.
+Giá trị :ref:`RID<class_RID>` có thể là kết quả của việc gọi :ref:`CanvasItem.get_canvas_item()<class_CanvasItem_method_get_canvas_item>` trên một node dẫn xuất từ :ref:`CanvasItem<class_CanvasItem>` hiện có, hoặc được tạo trực tiếp từ một canvas item trong :ref:`RenderingServer<class_RenderingServer>` bằng :ref:`RenderingServer.canvas_item_create()<class_RenderingServer_method_canvas_item_create>`.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ The :ref:`RID<class_RID>` value can either be the result of :ref:`CanvasItem.get
 
 :ref:`float<class_float>` **get_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_StyleBox_method_get_content_margin>`
 
-Returns the default margin of the specified :ref:`Side<enum_@GlobalScope_Side>`.
+Trả về lề mặc định của :ref:`Side <enum_@GlobalScope_Side>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Returns the default margin of the specified :ref:`Side<enum_@GlobalScope_Side>`.
 
 :ref:`CanvasItem<class_CanvasItem>` **get_current_item_drawn**\ (\ ) |const| :ref:`🔗<class_StyleBox_method_get_current_item_drawn>`
 
-Returns the :ref:`CanvasItem<class_CanvasItem>` that handles its :ref:`CanvasItem.NOTIFICATION_DRAW<class_CanvasItem_constant_NOTIFICATION_DRAW>` or :ref:`CanvasItem._draw()<class_CanvasItem_private_method__draw>` callback at this moment.
+Trả về :ref:`CanvasItem<class_CanvasItem>` đang xử lý callback :ref:`CanvasItem.NOTIFICATION_DRAW<class_CanvasItem_constant_NOTIFICATION_DRAW>` hoặc :ref:`CanvasItem._draw()<class_CanvasItem_private_method__draw>` của nó tại thời điểm này.
 
 .. rst-class:: classref-item-separator
 
@@ -271,9 +271,9 @@ Returns the :ref:`CanvasItem<class_CanvasItem>` that handles its :ref:`CanvasIte
 
 :ref:`float<class_float>` **get_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_StyleBox_method_get_margin>`
 
-Returns the content margin offset for the specified :ref:`Side<enum_@GlobalScope_Side>`.
+Trả về độ lệch lề nội dung của :ref:`Side <enum_@GlobalScope_Side>` được chỉ định.
 
-Positive values reduce size inwards, unlike :ref:`Control<class_Control>`'s margin values.
+Các giá trị dương làm giảm kích thước vào phía trong, trái ngược với các giá trị lề của :ref:`Control<class_Control>`.
 
 .. rst-class:: classref-item-separator
 
@@ -285,7 +285,7 @@ Positive values reduce size inwards, unlike :ref:`Control<class_Control>`'s marg
 
 :ref:`Vector2<class_Vector2>` **get_minimum_size**\ (\ ) |const| :ref:`🔗<class_StyleBox_method_get_minimum_size>`
 
-Returns the minimum size that this stylebox can be shrunk to.
+Trả về kích thước tối thiểu mà stylebox này có thể thu nhỏ xuống.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ Returns the minimum size that this stylebox can be shrunk to.
 
 :ref:`Vector2<class_Vector2>` **get_offset**\ (\ ) |const| :ref:`🔗<class_StyleBox_method_get_offset>`
 
-Returns the "offset" of a stylebox. This helper function returns a value equivalent to ``Vector2(style.get_margin(MARGIN_LEFT), style.get_margin(MARGIN_TOP))``.
+Trả về "offset" của một stylebox. Hàm trợ giúp này trả về giá trị tương đương với ``Vector2(style.get_margin(MARGIN_LEFT), style.get_margin(MARGIN_TOP))``.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ Returns the "offset" of a stylebox. This helper function returns a value equival
 
 |void| **set_content_margin**\ (\ margin\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ ) :ref:`🔗<class_StyleBox_method_set_content_margin>`
 
-Sets the default value of the specified :ref:`Side<enum_@GlobalScope_Side>` to ``offset`` pixels.
+Đặt giá trị mặc định của :ref:`Side <enum_@GlobalScope_Side>` được chỉ định thành ``offset`` pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ Sets the default value of the specified :ref:`Side<enum_@GlobalScope_Side>` to `
 
 |void| **set_content_margin_all**\ (\ offset\: :ref:`float<class_float>`\ ) :ref:`🔗<class_StyleBox_method_set_content_margin_all>`
 
-Sets the default margin to ``offset`` pixels for all sides.
+Đặt lề mặc định thành ``offset`` pixel cho tất cả các cạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -333,14 +333,14 @@ Sets the default margin to ``offset`` pixels for all sides.
 
 :ref:`bool<class_bool>` **test_mask**\ (\ point\: :ref:`Vector2<class_Vector2>`, rect\: :ref:`Rect2<class_Rect2>`\ ) |const| :ref:`🔗<class_StyleBox_method_test_mask>`
 
-Test a position in a rectangle, return whether it passes the mask test.
+Kiểm tra một vị trí trong hình chữ nhật và trả về liệu vị trí đó có vượt qua kiểm tra mặt nạ hay không.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

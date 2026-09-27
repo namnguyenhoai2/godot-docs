@@ -10,69 +10,69 @@
 CSGPolygon3D
 ============
 
-**Inherits:** :ref:`CSGPrimitive3D<class_CSGPrimitive3D>` **<** :ref:`CSGShape3D<class_CSGShape3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CSGPrimitive3D<class_CSGPrimitive3D>` **<** :ref:`CSGShape3D<class_CSGShape3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Extrudes a 2D polygon shape to create a 3D mesh.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-An array of 2D points is extruded to quickly and easily create a variety of 3D meshes. See also :ref:`CSGMesh3D<class_CSGMesh3D>` for using 3D meshes as CSG nodes.
-
-\ **Note:** CSG nodes are intended to be used for level prototyping. Creating CSG nodes has a significant CPU cost compared to creating a :ref:`MeshInstance3D<class_MeshInstance3D>` with a :ref:`PrimitiveMesh<class_PrimitiveMesh>`. Moving a CSG node within another CSG node also has a significant CPU cost, so it should be avoided during gameplay.
+Đùn một hình đa giác 2D để tạo mesh 3D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Prototyping levels with CSG <../tutorials/3d/csg_tools>`
+Một mảng các điểm 2D được đùn để nhanh chóng và dễ dàng tạo nhiều loại mesh 3D. Xem thêm :ref:`CSGMesh3D<class_CSGMesh3D>` để sử dụng mesh 3D làm các node CSG.
+
+\ **Lưu ý:** Các node CSG được thiết kế để dùng cho việc tạo nguyên mẫu level. Việc tạo node CSG có chi phí CPU đáng kể so với việc tạo một :ref:`MeshInstance3D<class_MeshInstance3D>` cùng với một :ref:`PrimitiveMesh<class_PrimitiveMesh>`. Việc di chuyển một node CSG bên trong một node CSG khác cũng có chi phí CPU đáng kể, vì vậy nên tránh thực hiện việc này trong gameplay.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Tạo nguyên mẫu level với CSG <../tutorials/3d/csg_tools>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`depth<class_CSGPolygon3D_property_depth>`                                   | ``1.0``                                        |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`Material<class_Material>`                             | :ref:`material<class_CSGPolygon3D_property_material>`                             |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`Mode<enum_CSGPolygon3D_Mode>`                         | :ref:`mode<class_CSGPolygon3D_property_mode>`                                     | ``0``                                          |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`path_continuous_u<class_CSGPolygon3D_property_path_continuous_u>`           |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`path_interval<class_CSGPolygon3D_property_path_interval>`                   |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`PathIntervalType<enum_CSGPolygon3D_PathIntervalType>` | :ref:`path_interval_type<class_CSGPolygon3D_property_path_interval_type>`         |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`path_joined<class_CSGPolygon3D_property_path_joined>`                       |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`path_local<class_CSGPolygon3D_property_path_local>`                         |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                             | :ref:`path_node<class_CSGPolygon3D_property_path_node>`                           |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`PathRotation<enum_CSGPolygon3D_PathRotation>`         | :ref:`path_rotation<class_CSGPolygon3D_property_path_rotation>`                   |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`path_rotation_accurate<class_CSGPolygon3D_property_path_rotation_accurate>` |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`path_simplify_angle<class_CSGPolygon3D_property_path_simplify_angle>`       |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`path_u_distance<class_CSGPolygon3D_property_path_u_distance>`               |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`PackedVector2Array<class_PackedVector2Array>`         | :ref:`polygon<class_CSGPolygon3D_property_polygon>`                               | ``PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)`` |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`smooth_faces<class_CSGPolygon3D_property_smooth_faces>`                     | ``false``                                      |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`float<class_float>`                                   | :ref:`spin_degrees<class_CSGPolygon3D_property_spin_degrees>`                     |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
-   | :ref:`int<class_int>`                                       | :ref:`spin_sides<class_CSGPolygon3D_property_spin_sides>`                         |                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`depth<class_CSGPolygon3D_property_depth>`                                   | ``1.0``                                        |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`Material<class_Material>`                              | :ref:`material<class_CSGPolygon3D_property_material>`                             |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`Mode <enum_CSGPolygon3D_Mode>`                         | :ref:`mode<class_CSGPolygon3D_property_mode>`                                     | ``0``                                          |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`path_continuous_u<class_CSGPolygon3D_property_path_continuous_u>`           |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`path_interval<class_CSGPolygon3D_property_path_interval>`                   |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`PathIntervalType <enum_CSGPolygon3D_PathIntervalType>` | :ref:`path_interval_type<class_CSGPolygon3D_property_path_interval_type>`         |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`path_joined<class_CSGPolygon3D_property_path_joined>`                       |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`path_local<class_CSGPolygon3D_property_path_local>`                         |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                              | :ref:`path_node<class_CSGPolygon3D_property_path_node>`                           |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`PathRotation <enum_CSGPolygon3D_PathRotation>`         | :ref:`path_rotation<class_CSGPolygon3D_property_path_rotation>`                   |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`path_rotation_accurate<class_CSGPolygon3D_property_path_rotation_accurate>` |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`path_simplify_angle<class_CSGPolygon3D_property_path_simplify_angle>`       |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`path_u_distance<class_CSGPolygon3D_property_path_u_distance>`               |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>`          | :ref:`polygon<class_CSGPolygon3D_property_polygon>`                               | ``PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)`` |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`smooth_faces<class_CSGPolygon3D_property_smooth_faces>`                     | ``false``                                      |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`spin_degrees<class_CSGPolygon3D_property_spin_degrees>`                     |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`spin_sides<class_CSGPolygon3D_property_spin_sides>`                         |                                                |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------------------+------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -80,14 +80,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CSGPolygon3D_Mode:
 
 .. rst-class:: classref-enumeration
 
-enum **Mode**: :ref:`🔗<enum_CSGPolygon3D_Mode>`
+enum **Mode**: :ref:`🔗 <enum_CSGPolygon3D_Mode>`
 
 .. _class_CSGPolygon3D_constant_MODE_DEPTH:
 
@@ -95,7 +95,7 @@ enum **Mode**: :ref:`🔗<enum_CSGPolygon3D_Mode>`
 
 :ref:`Mode<enum_CSGPolygon3D_Mode>` **MODE_DEPTH** = ``0``
 
-The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is extruded along the negative Z axis.
+Hình dạng :ref:`polygon<class_CSGPolygon3D_property_polygon>` được đùn dọc theo trục Z âm.
 
 .. _class_CSGPolygon3D_constant_MODE_SPIN:
 
@@ -103,7 +103,7 @@ The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is extruded along 
 
 :ref:`Mode<enum_CSGPolygon3D_Mode>` **MODE_SPIN** = ``1``
 
-The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is extruded by rotating it around the Y axis.
+Hình dạng :ref:`polygon<class_CSGPolygon3D_property_polygon>` được đùn bằng cách xoay nó quanh trục Y.
 
 .. _class_CSGPolygon3D_constant_MODE_PATH:
 
@@ -111,7 +111,7 @@ The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is extruded by rot
 
 :ref:`Mode<enum_CSGPolygon3D_Mode>` **MODE_PATH** = ``2``
 
-The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is extruded along the :ref:`Path3D<class_Path3D>` specified in :ref:`path_node<class_CSGPolygon3D_property_path_node>`.
+Hình dạng :ref:`polygon<class_CSGPolygon3D_property_polygon>` được đùn dọc theo :ref:`Path3D<class_Path3D>` được chỉ định trong :ref:`path_node<class_CSGPolygon3D_property_path_node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is extruded along 
 
 .. rst-class:: classref-enumeration
 
-enum **PathRotation**: :ref:`🔗<enum_CSGPolygon3D_PathRotation>`
+enum **PathRotation**: :ref:`🔗 <enum_CSGPolygon3D_PathRotation>`
 
 .. _class_CSGPolygon3D_constant_PATH_ROTATION_POLYGON:
 
@@ -129,9 +129,9 @@ enum **PathRotation**: :ref:`🔗<enum_CSGPolygon3D_PathRotation>`
 
 :ref:`PathRotation<enum_CSGPolygon3D_PathRotation>` **PATH_ROTATION_POLYGON** = ``0``
 
-The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is not rotated.
+Hình dạng :ref:`polygon<class_CSGPolygon3D_property_polygon>` không được xoay.
 
-\ **Note:** Requires the path Z coordinates to continually decrease to ensure viable shapes.
+\ **Lưu ý:** Yêu cầu các tọa độ Z của đường dẫn liên tục giảm để đảm bảo tạo được các hình dạng khả thi.
 
 .. _class_CSGPolygon3D_constant_PATH_ROTATION_PATH:
 
@@ -139,9 +139,9 @@ The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is not rotated.
 
 :ref:`PathRotation<enum_CSGPolygon3D_PathRotation>` **PATH_ROTATION_PATH** = ``1``
 
-The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is rotated along the path, but it is not rotated around the path axis.
+Hình dạng :ref:`polygon<class_CSGPolygon3D_property_polygon>` được xoay dọc theo đường dẫn, nhưng không được xoay quanh trục của đường dẫn.
 
-\ **Note:** Requires the path Z coordinates to continually decrease to ensure viable shapes.
+\ **Lưu ý:** Yêu cầu các tọa độ Z của đường dẫn liên tục giảm để đảm bảo tạo được các hình dạng khả thi.
 
 .. _class_CSGPolygon3D_constant_PATH_ROTATION_PATH_FOLLOW:
 
@@ -149,7 +149,7 @@ The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape is rotated along t
 
 :ref:`PathRotation<enum_CSGPolygon3D_PathRotation>` **PATH_ROTATION_PATH_FOLLOW** = ``2``
 
-The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape follows the path and its rotations around the path axis.
+Hình dạng :ref:`polygon<class_CSGPolygon3D_property_polygon>` bám theo đường dẫn và các phép xoay của nó quanh trục đường dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ The :ref:`polygon<class_CSGPolygon3D_property_polygon>` shape follows the path a
 
 .. rst-class:: classref-enumeration
 
-enum **PathIntervalType**: :ref:`🔗<enum_CSGPolygon3D_PathIntervalType>`
+enum **PathIntervalType**: :ref:`🔗 <enum_CSGPolygon3D_PathIntervalType>`
 
 .. _class_CSGPolygon3D_constant_PATH_INTERVAL_DISTANCE:
 
@@ -167,7 +167,7 @@ enum **PathIntervalType**: :ref:`🔗<enum_CSGPolygon3D_PathIntervalType>`
 
 :ref:`PathIntervalType<enum_CSGPolygon3D_PathIntervalType>` **PATH_INTERVAL_DISTANCE** = ``0``
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is set to :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, :ref:`path_interval<class_CSGPolygon3D_property_path_interval>` will determine the distance, in meters, each interval of the path will extrude.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` được đặt thành :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, :ref:`path_interval<class_CSGPolygon3D_property_path_interval>` sẽ xác định khoảng cách, tính bằng mét, mà mỗi khoảng của đường dẫn sẽ đùn ra.
 
 .. _class_CSGPolygon3D_constant_PATH_INTERVAL_SUBDIVIDE:
 
@@ -175,7 +175,7 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is set to :ref:`MODE_PATH<cla
 
 :ref:`PathIntervalType<enum_CSGPolygon3D_PathIntervalType>` **PATH_INTERVAL_SUBDIVIDE** = ``1``
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is set to :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, :ref:`path_interval<class_CSGPolygon3D_property_path_interval>` will subdivide the polygons along the path.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` được đặt thành :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, :ref:`path_interval<class_CSGPolygon3D_property_path_interval>` sẽ chia nhỏ các đa giác dọc theo đường dẫn.
 
 .. rst-class:: classref-section-separator
 
@@ -183,8 +183,8 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is set to :ref:`MODE_PATH<cla
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CSGPolygon3D_property_depth:
 
@@ -197,7 +197,7 @@ Property Descriptions
 - |void| **set_depth**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_DEPTH<class_CSGPolygon3D_constant_MODE_DEPTH>`, the depth of the extrusion.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_DEPTH<class_CSGPolygon3D_constant_MODE_DEPTH>`, độ sâu của phần đùn.
 
 .. rst-class:: classref-item-separator
 
@@ -207,14 +207,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_DEPTH<class_CSG
 
 .. rst-class:: classref-property
 
-:ref:`Material<class_Material>` **material** :ref:`🔗<class_CSGPolygon3D_property_material>`
+:ref:`Material<class_Material>` **material** :ref:`🔗 <class_CSGPolygon3D_property_material>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_material**\ (\ value\: :ref:`Material<class_Material>`\ )
 - :ref:`Material<class_Material>` **get_material**\ (\ )
 
-Material to use for the resulting mesh. The UV maps the top half of the material to the extruded shape (U along the length of the extrusions and V around the outline of the :ref:`polygon<class_CSGPolygon3D_property_polygon>`), the bottom-left quarter to the front end face, and the bottom-right quarter to the back end face.
+Material được sử dụng cho mesh kết quả. UV ánh xạ nửa trên của material vào hình dạng được đùn (U dọc theo chiều dài của các phần đùn và V quanh đường viền của :ref:`polygon<class_CSGPolygon3D_property_polygon>`), phần tư dưới bên trái vào mặt đầu phía trước và phần tư dưới bên phải vào mặt đầu phía sau.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Material to use for the resulting mesh. The UV maps the top half of the material
 - |void| **set_mode**\ (\ value\: :ref:`Mode<enum_CSGPolygon3D_Mode>`\ )
 - :ref:`Mode<enum_CSGPolygon3D_Mode>` **get_mode**\ (\ )
 
-The :ref:`mode<class_CSGPolygon3D_property_mode>` used to extrude the :ref:`polygon<class_CSGPolygon3D_property_polygon>`.
+:ref:`mode<class_CSGPolygon3D_property_mode>` được dùng để đùn :ref:`polygon<class_CSGPolygon3D_property_polygon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -241,14 +241,14 @@ The :ref:`mode<class_CSGPolygon3D_property_mode>` used to extrude the :ref:`poly
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **path_continuous_u** :ref:`🔗<class_CSGPolygon3D_property_path_continuous_u>`
+:ref:`bool<class_bool>` **path_continuous_u** :ref:`🔗 <class_CSGPolygon3D_property_path_continuous_u>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_continuous_u**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_path_continuous_u**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, by default, the top half of the :ref:`material<class_CSGPolygon3D_property_material>` is stretched along the entire length of the extruded shape. If ``false`` the top half of the material is repeated every step of the extrusion.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, theo mặc định, nửa trên của :ref:`material<class_CSGPolygon3D_property_material>` được kéo giãn dọc theo toàn bộ chiều dài của hình dạng được đùn. Nếu ``false`` nửa trên của material được lặp lại ở mỗi bước đùn.
 
 .. rst-class:: classref-item-separator
 
@@ -258,14 +258,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **path_interval** :ref:`🔗<class_CSGPolygon3D_property_path_interval>`
+:ref:`float<class_float>` **path_interval** :ref:`🔗 <class_CSGPolygon3D_property_path_interval>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_interval**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_path_interval**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, the path interval or ratio of path points to extrusions.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, khoảng cách trên path hoặc tỷ lệ giữa các điểm trên path và các phần đùn.
 
 .. rst-class:: classref-item-separator
 
@@ -275,14 +275,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`PathIntervalType<enum_CSGPolygon3D_PathIntervalType>` **path_interval_type** :ref:`🔗<class_CSGPolygon3D_property_path_interval_type>`
+:ref:`PathIntervalType <enum_CSGPolygon3D_PathIntervalType>` **path_interval_type** :ref:`🔗 <class_CSGPolygon3D_property_path_interval_type>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_interval_type**\ (\ value\: :ref:`PathIntervalType<enum_CSGPolygon3D_PathIntervalType>`\ )
 - :ref:`PathIntervalType<enum_CSGPolygon3D_PathIntervalType>` **get_path_interval_type**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, this will determine if the interval should be by distance (:ref:`PATH_INTERVAL_DISTANCE<class_CSGPolygon3D_constant_PATH_INTERVAL_DISTANCE>`) or subdivision fractions (:ref:`PATH_INTERVAL_SUBDIVIDE<class_CSGPolygon3D_constant_PATH_INTERVAL_SUBDIVIDE>`).
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, điều này sẽ xác định xem khoảng được tính theo khoảng cách (:ref:`PATH_INTERVAL_DISTANCE<class_CSGPolygon3D_constant_PATH_INTERVAL_DISTANCE>`) hay theo các phân số subdivision (:ref:`PATH_INTERVAL_SUBDIVIDE<class_CSGPolygon3D_constant_PATH_INTERVAL_SUBDIVIDE>`).
 
 .. rst-class:: classref-item-separator
 
@@ -292,14 +292,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **path_joined** :ref:`🔗<class_CSGPolygon3D_property_path_joined>`
+:ref:`bool<class_bool>` **path_joined** :ref:`🔗 <class_CSGPolygon3D_property_path_joined>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_joined**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_path_joined**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, if ``true`` the ends of the path are joined, by adding an extrusion between the last and first points of the path.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, nếu ``true`` các đầu của path được nối với nhau bằng cách thêm một extrusion giữa điểm cuối và điểm đầu của path.
 
 .. rst-class:: classref-item-separator
 
@@ -309,14 +309,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **path_local** :ref:`🔗<class_CSGPolygon3D_property_path_local>`
+:ref:`bool<class_bool>` **path_local** :ref:`🔗 <class_CSGPolygon3D_property_path_local>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_local**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_path_local**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, if ``true`` the :ref:`Transform3D<class_Transform3D>` of the **CSGPolygon3D** is used as the starting point for the extrusions, not the :ref:`Transform3D<class_Transform3D>` of the :ref:`path_node<class_CSGPolygon3D_property_path_node>`.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, nếu ``true`` :ref:`Transform3D<class_Transform3D>` của **CSGPolygon3D** được dùng làm điểm bắt đầu cho các extrusion, thay vì :ref:`Transform3D<class_Transform3D>` của :ref:`path_node<class_CSGPolygon3D_property_path_node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -326,14 +326,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`NodePath<class_NodePath>` **path_node** :ref:`🔗<class_CSGPolygon3D_property_path_node>`
+:ref:`NodePath<class_NodePath>` **path_node** :ref:`🔗 <class_CSGPolygon3D_property_path_node>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_path_node**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, the location of the :ref:`Path3D<class_Path3D>` object used to extrude the :ref:`polygon<class_CSGPolygon3D_property_polygon>`.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, vị trí của đối tượng :ref:`Path3D<class_Path3D>` được dùng để extrude :ref:`polygon<class_CSGPolygon3D_property_polygon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -343,14 +343,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`PathRotation<enum_CSGPolygon3D_PathRotation>` **path_rotation** :ref:`🔗<class_CSGPolygon3D_property_path_rotation>`
+:ref:`PathRotation <enum_CSGPolygon3D_PathRotation>` **path_rotation** :ref:`🔗 <class_CSGPolygon3D_property_path_rotation>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_rotation**\ (\ value\: :ref:`PathRotation<enum_CSGPolygon3D_PathRotation>`\ )
 - :ref:`PathRotation<enum_CSGPolygon3D_PathRotation>` **get_path_rotation**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, the path rotation method used to rotate the :ref:`polygon<class_CSGPolygon3D_property_polygon>` as it is extruded.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, phương pháp xoay đường dẫn được sử dụng để xoay :ref:`polygon<class_CSGPolygon3D_property_polygon>` khi nó được đùn.
 
 .. rst-class:: classref-item-separator
 
@@ -360,14 +360,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **path_rotation_accurate** :ref:`🔗<class_CSGPolygon3D_property_path_rotation_accurate>`
+:ref:`bool<class_bool>` **path_rotation_accurate** :ref:`🔗 <class_CSGPolygon3D_property_path_rotation_accurate>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_rotation_accurate**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_path_rotation_accurate**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, if ``true`` the polygon will be rotated according to the proper tangent of the path at the sampled points. If ``false`` an approximation is used, which decreases in accuracy as the number of subdivisions decreases.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, nếu ``true``, đa giác sẽ được xoay theo tiếp tuyến thích hợp của đường dẫn tại các điểm được lấy mẫu. Nếu ``false``, một phép xấp xỉ sẽ được sử dụng, độ chính xác sẽ giảm khi số lượng phép chia nhỏ giảm.
 
 .. rst-class:: classref-item-separator
 
@@ -377,14 +377,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **path_simplify_angle** :ref:`🔗<class_CSGPolygon3D_property_path_simplify_angle>`
+:ref:`float<class_float>` **path_simplify_angle** :ref:`🔗 <class_CSGPolygon3D_property_path_simplify_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_simplify_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_path_simplify_angle**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, extrusions that are less than this angle, will be merged together to reduce polygon count.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, các phần đùn nhỏ hơn góc này sẽ được hợp nhất để giảm số lượng đa giác.
 
 .. rst-class:: classref-item-separator
 
@@ -394,14 +394,14 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **path_u_distance** :ref:`🔗<class_CSGPolygon3D_property_path_u_distance>`
+:ref:`float<class_float>` **path_u_distance** :ref:`🔗 <class_CSGPolygon3D_property_path_u_distance>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_path_u_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_path_u_distance**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, this is the distance along the path, in meters, the texture coordinates will tile. When set to 0, texture coordinates will match geometry exactly with no tiling.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_PATH<class_CSGPolygon3D_constant_MODE_PATH>`, đây là khoảng cách dọc theo đường dẫn, tính bằng mét, mà các tọa độ texture sẽ lặp lại. Khi được đặt thành 0, các tọa độ texture sẽ khớp chính xác với hình học mà không lặp lại.
 
 .. rst-class:: classref-item-separator
 
@@ -418,11 +418,11 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_PATH<class_CSGP
 - |void| **set_polygon**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_polygon**\ (\ )
 
-The point array that defines the 2D polygon that is extruded. This can be a convex or concave polygon with 3 or more points. The polygon must *not* have any intersecting edges. Otherwise, triangulation will fail and no mesh will be generated.
+Mảng điểm xác định polygon 2D được đùn. Đây có thể là polygon lồi hoặc lõm với 3 điểm trở lên. Polygon *không* được có bất kỳ cạnh nào giao nhau. Nếu không, quá trình triangulation sẽ thất bại và không có mesh nào được tạo.
 
-\ **Note:** If only 1 or 2 points are defined in :ref:`polygon<class_CSGPolygon3D_property_polygon>`, no mesh will be generated.
+\ **Lưu ý:** Nếu chỉ có 1 hoặc 2 điểm được xác định trong :ref:`polygon<class_CSGPolygon3D_property_polygon>`, sẽ không có mesh nào được tạo.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với nó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -439,7 +439,7 @@ The point array that defines the 2D polygon that is extruded. This can be a conv
 - |void| **set_smooth_faces**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_smooth_faces**\ (\ )
 
-If ``true``, applies smooth shading to the extrusions.
+Nếu ``true``, áp dụng smooth shading cho các phần đùn.
 
 .. rst-class:: classref-item-separator
 
@@ -449,14 +449,14 @@ If ``true``, applies smooth shading to the extrusions.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **spin_degrees** :ref:`🔗<class_CSGPolygon3D_property_spin_degrees>`
+:ref:`float<class_float>` **spin_degrees** :ref:`🔗 <class_CSGPolygon3D_property_spin_degrees>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_spin_degrees**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_spin_degrees**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_SPIN<class_CSGPolygon3D_constant_MODE_SPIN>`, the total number of degrees the :ref:`polygon<class_CSGPolygon3D_property_polygon>` is rotated when extruding.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_SPIN<class_CSGPolygon3D_constant_MODE_SPIN>`, tổng số độ mà :ref:`polygon<class_CSGPolygon3D_property_polygon>` được xoay khi đùn.
 
 .. rst-class:: classref-item-separator
 
@@ -466,21 +466,21 @@ When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_SPIN<class_CSGP
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **spin_sides** :ref:`🔗<class_CSGPolygon3D_property_spin_sides>`
+:ref:`int<class_int>` **spin_sides** :ref:`🔗 <class_CSGPolygon3D_property_spin_sides>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_spin_sides**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_spin_sides**\ (\ )
 
-When :ref:`mode<class_CSGPolygon3D_property_mode>` is :ref:`MODE_SPIN<class_CSGPolygon3D_constant_MODE_SPIN>`, the number of extrusions made.
+Khi :ref:`mode<class_CSGPolygon3D_property_mode>` là :ref:`MODE_SPIN<class_CSGPolygon3D_constant_MODE_SPIN>`, số lượng lần đùn được thực hiện.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ có thể sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

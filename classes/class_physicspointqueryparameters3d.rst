@@ -10,21 +10,21 @@
 PhysicsPointQueryParameters3D
 =============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides parameters for :ref:`PhysicsDirectSpaceState3D.intersect_point()<class_PhysicsDirectSpaceState3D_method_intersect_point>`.
+Cung cấp các tham số cho :ref:`PhysicsDirectSpaceState3D.intersect_point()<class_PhysicsDirectSpaceState3D_method_intersect_point>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-By changing various properties of this object, such as the point position, you can configure the parameters for :ref:`PhysicsDirectSpaceState3D.intersect_point()<class_PhysicsDirectSpaceState3D_method_intersect_point>`.
+Bằng cách thay đổi các thuộc tính khác nhau của đối tượng này, chẳng hạn như vị trí của điểm, bạn có thể cấu hình các tham số cho :ref:`PhysicsDirectSpaceState3D.intersect_point()<class_PhysicsDirectSpaceState3D_method_intersect_point>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicsPointQueryParameters3D_property_collide_with_areas:
 
@@ -61,7 +61,7 @@ Property Descriptions
 - |void| **set_collide_with_areas**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_areas_enabled**\ (\ )
 
-If ``true``, the query will take :ref:`Area3D<class_Area3D>`\ s into account.
+Nếu ``true``, truy vấn sẽ tính đến :ref:`Area3D<class_Area3D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ If ``true``, the query will take :ref:`Area3D<class_Area3D>`\ s into account.
 - |void| **set_collide_with_bodies**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_bodies_enabled**\ (\ )
 
-If ``true``, the query will take :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s into account.
+Nếu ``true``, truy vấn sẽ tính đến :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -95,7 +95,7 @@ If ``true``, the query will take :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s in
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The physics layers the query will detect (as a bitmask). By default, all collision layers are detected. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+Các lớp vật lý mà truy vấn sẽ phát hiện (dưới dạng bitmask). Theo mặc định, tất cả các lớp va chạm đều được phát hiện. Xem `Các lớp va chạm và mask <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -112,9 +112,9 @@ The physics layers the query will detect (as a bitmask). By default, all collisi
 - |void| **set_exclude**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_exclude**\ (\ )
 
-The list of object :ref:`RID<class_RID>`\ s that will be excluded from collisions. Use :ref:`CollisionObject3D.get_rid()<class_CollisionObject3D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject3D<class_CollisionObject3D>`-derived node.
+Danh sách các :ref:`RID<class_RID>`\ s của đối tượng sẽ được loại trừ khỏi các va chạm. Sử dụng :ref:`CollisionObject3D.get_rid()<class_CollisionObject3D_method_get_rid>` để lấy :ref:`RID<class_RID>` liên kết với một node bắt nguồn từ :ref:`CollisionObject3D<class_CollisionObject3D>`.
 
-\ **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.
+\ **Lưu ý:** Mảng được trả về là một bản sao và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Để cập nhật giá trị, bạn cần sửa đổi mảng được trả về rồi gán lại mảng đó cho thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -131,14 +131,14 @@ The list of object :ref:`RID<class_RID>`\ s that will be excluded from collision
 - |void| **set_position**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_position**\ (\ )
 
-The position being queried for, in global coordinates.
+Vị trí đang được truy vấn, theo tọa độ toàn cục.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,29 +10,29 @@
 NavigationPathQueryResult2D
 ===========================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents the result of a 2D pathfinding query.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This class stores the result of a 2D navigation path query from the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Biểu diễn kết quả của một truy vấn tìm đường 2D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp này lưu trữ kết quả của một truy vấn đường đi điều hướng 2D từ :ref:`NavigationServer2D<class_NavigationServer2D>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using NavigationPathQueryObjects <../tutorials/navigation/navigation_using_navigationpathqueryobjects>`
+- :doc:`Sử dụng NavigationPathQueryObjects <../tutorials/navigation/navigation_using_navigationpathqueryobjects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -52,8 +52,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -68,14 +68,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_NavigationPathQueryResult2D_PathSegmentType:
 
 .. rst-class:: classref-enumeration
 
-enum **PathSegmentType**: :ref:`🔗<enum_NavigationPathQueryResult2D_PathSegmentType>`
+enum **PathSegmentType**: :ref:`🔗 <enum_NavigationPathQueryResult2D_PathSegmentType>`
 
 .. _class_NavigationPathQueryResult2D_constant_PATH_SEGMENT_TYPE_REGION:
 
@@ -83,7 +83,7 @@ enum **PathSegmentType**: :ref:`🔗<enum_NavigationPathQueryResult2D_PathSegmen
 
 :ref:`PathSegmentType<enum_NavigationPathQueryResult2D_PathSegmentType>` **PATH_SEGMENT_TYPE_REGION** = ``0``
 
-This segment of the path goes through a region.
+Đoạn đường dẫn này đi qua một vùng.
 
 .. _class_NavigationPathQueryResult2D_constant_PATH_SEGMENT_TYPE_LINK:
 
@@ -91,7 +91,7 @@ This segment of the path goes through a region.
 
 :ref:`PathSegmentType<enum_NavigationPathQueryResult2D_PathSegmentType>` **PATH_SEGMENT_TYPE_LINK** = ``1``
 
-This segment of the path goes through a link.
+Đoạn đường dẫn này đi qua một liên kết.
 
 .. rst-class:: classref-section-separator
 
@@ -99,8 +99,8 @@ This segment of the path goes through a link.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_NavigationPathQueryResult2D_property_path:
 
@@ -113,9 +113,9 @@ Property Descriptions
 - |void| **set_path**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_path**\ (\ )
 
-The resulting path array from the navigation query. All path array positions are in global coordinates. Without customized query parameters this is the same path as returned by :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>`.
+Mảng path kết quả từ truy vấn navigation. Tất cả các vị trí trong mảng path đều sử dụng tọa độ toàn cục. Nếu không tùy chỉnh các tham số truy vấn, đây chính là path được trả về bởi :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>`.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ The resulting path array from the navigation query. All path array positions are
 - |void| **set_path_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_path_length**\ (\ )
 
-Returns the length of the path.
+Trả về độ dài của path.
 
 .. rst-class:: classref-item-separator
 
@@ -149,9 +149,9 @@ Returns the length of the path.
 - |void| **set_path_owner_ids**\ (\ value\: :ref:`PackedInt64Array<class_PackedInt64Array>`\ )
 - :ref:`PackedInt64Array<class_PackedInt64Array>` **get_path_owner_ids**\ (\ )
 
-The ``ObjectID``\ s of the :ref:`Object<class_Object>`\ s which manage the regions and links each point of the path goes through.
+Các ``ObjectID``\  của :ref:`Object<class_Object>`\  quản lý các region và link mà mỗi điểm của path đi qua.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt64Array<class_PackedInt64Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt64Array<class_PackedInt64Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ The ``ObjectID``\ s of the :ref:`Object<class_Object>`\ s which manage the regio
 - |void| **set_path_rids**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_path_rids**\ (\ )
 
-The :ref:`RID<class_RID>`\ s of the regions and links that each point of the path goes through.
+Các :ref:`RID<class_RID>`\  của các region và link mà mỗi điểm của path đi qua.
 
 .. rst-class:: classref-item-separator
 
@@ -185,9 +185,9 @@ The :ref:`RID<class_RID>`\ s of the regions and links that each point of the pat
 - |void| **set_path_types**\ (\ value\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_path_types**\ (\ )
 
-The type of navigation primitive (region or link) that each point of the path goes through.
+Loại navigation primitive (region hoặc link) mà mỗi điểm của path đi qua.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt32Array<class_PackedInt32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -195,8 +195,8 @@ The type of navigation primitive (region or link) that each point of the path go
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationPathQueryResult2D_method_reset:
 
@@ -204,14 +204,14 @@ Method Descriptions
 
 |void| **reset**\ (\ ) :ref:`🔗<class_NavigationPathQueryResult2D_method_reset>`
 
-Reset the result object to its initial state. This is useful to reuse the object across multiple queries.
+Đặt lại đối tượng kết quả về trạng thái ban đầu. Điều này hữu ích khi bạn muốn sử dụng lại đối tượng cho nhiều truy vấn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

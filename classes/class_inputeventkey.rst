@@ -10,75 +10,75 @@
 InputEventKey
 =============
 
-**Inherits:** :ref:`InputEventWithModifiers<class_InputEventWithModifiers>` **<** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`InputEventWithModifiers<class_InputEventWithModifiers>` **<** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a key on a keyboard being pressed or released.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-An input event for keys on a keyboard. Supports key presses, key releases and :ref:`echo<class_InputEventKey_property_echo>` events. It can also be received in :ref:`Node._unhandled_key_input()<class_Node_private_method__unhandled_key_input>`.
-
-\ **Note:** Events received from the keyboard usually have all properties set. Event mappings should have only one of the :ref:`keycode<class_InputEventKey_property_keycode>`, :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` or :ref:`unicode<class_InputEventKey_property_unicode>` set.
-
-When events are compared, properties are checked in the following priority - :ref:`keycode<class_InputEventKey_property_keycode>`, :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` and :ref:`unicode<class_InputEventKey_property_unicode>`. Events with the first matching value will be considered equal.
+Đại diện cho việc nhấn hoặc nhả một phím trên bàn phím.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Using InputEvent <../tutorials/inputs/inputevent>`
+Một input event dành cho các phím trên bàn phím. Hỗ trợ thao tác nhấn phím, nhả phím và các sự kiện :ref:`echo<class_InputEventKey_property_echo>`. Nó cũng có thể được nhận trong :ref:`Node._unhandled_key_input()<class_Node_private_method__unhandled_key_input>`.
+
+\ **Lưu ý:** Các event nhận từ bàn phím thường có tất cả thuộc tính được thiết lập. Event mapping chỉ nên thiết lập một trong :ref:`keycode<class_InputEventKey_property_keycode>`, :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` hoặc :ref:`unicode<class_InputEventKey_property_unicode>`.
+
+Khi các event được so sánh, các thuộc tính sẽ được kiểm tra theo thứ tự ưu tiên sau - :ref:`keycode<class_InputEventKey_property_keycode>`, :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` và :ref:`unicode<class_InputEventKey_property_unicode>`. Các event có giá trị khớp đầu tiên sẽ được xem là bằng nhau.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Sử dụng InputEvent <../tutorials/inputs/inputevent>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`echo<class_InputEventKey_property_echo>`                         | ``false`` |
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
-   | :ref:`Key<enum_@GlobalScope_Key>`                 | :ref:`key_label<class_InputEventKey_property_key_label>`               | ``0``     |
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
-   | :ref:`Key<enum_@GlobalScope_Key>`                 | :ref:`keycode<class_InputEventKey_property_keycode>`                   | ``0``     |
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
-   | :ref:`KeyLocation<enum_@GlobalScope_KeyLocation>` | :ref:`location<class_InputEventKey_property_location>`                 | ``0``     |
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
-   | :ref:`Key<enum_@GlobalScope_Key>`                 | :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` | ``0``     |
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                           | :ref:`pressed<class_InputEventKey_property_pressed>`                   | ``false`` |
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                             | :ref:`unicode<class_InputEventKey_property_unicode>`                   | ``0``     |
-   +---------------------------------------------------+------------------------------------------------------------------------+-----------+
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`echo<class_InputEventKey_property_echo>`                         | ``false`` |
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
+   | :ref:`Key <enum_@GlobalScope_Key>`                 | :ref:`key_label<class_InputEventKey_property_key_label>`               | ``0``     |
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
+   | :ref:`Key <enum_@GlobalScope_Key>`                 | :ref:`keycode<class_InputEventKey_property_keycode>`                   | ``0``     |
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
+   | :ref:`KeyLocation <enum_@GlobalScope_KeyLocation>` | :ref:`location<class_InputEventKey_property_location>`                 | ``0``     |
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
+   | :ref:`Key <enum_@GlobalScope_Key>`                 | :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` | ``0``     |
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                            | :ref:`pressed<class_InputEventKey_property_pressed>`                   | ``false`` |
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                              | :ref:`unicode<class_InputEventKey_property_unicode>`                   | ``0``     |
+   +----------------------------------------------------+------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`       | :ref:`as_text_key_label<class_InputEventKey_method_as_text_key_label>`\ (\ ) |const|                                     |
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`       | :ref:`as_text_keycode<class_InputEventKey_method_as_text_keycode>`\ (\ ) |const|                                         |
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`       | :ref:`as_text_location<class_InputEventKey_method_as_text_location>`\ (\ ) |const|                                       |
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`       | :ref:`as_text_physical_keycode<class_InputEventKey_method_as_text_physical_keycode>`\ (\ ) |const|                       |
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Key<enum_@GlobalScope_Key>` | :ref:`get_key_label_with_modifiers<class_InputEventKey_method_get_key_label_with_modifiers>`\ (\ ) |const|               |
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Key<enum_@GlobalScope_Key>` | :ref:`get_keycode_with_modifiers<class_InputEventKey_method_get_keycode_with_modifiers>`\ (\ ) |const|                   |
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Key<enum_@GlobalScope_Key>` | :ref:`get_physical_keycode_with_modifiers<class_InputEventKey_method_get_physical_keycode_with_modifiers>`\ (\ ) |const| |
-   +-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`        | :ref:`as_text_key_label<class_InputEventKey_method_as_text_key_label>`\ (\ ) |const|                                     |
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`        | :ref:`as_text_keycode<class_InputEventKey_method_as_text_keycode>`\ (\ ) |const|                                         |
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`        | :ref:`as_text_location<class_InputEventKey_method_as_text_location>`\ (\ ) |const|                                       |
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`        | :ref:`as_text_physical_keycode<class_InputEventKey_method_as_text_physical_keycode>`\ (\ ) |const|                       |
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Key <enum_@GlobalScope_Key>` | :ref:`get_key_label_with_modifiers<class_InputEventKey_method_get_key_label_with_modifiers>`\ (\ ) |const|               |
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Key <enum_@GlobalScope_Key>` | :ref:`get_keycode_with_modifiers<class_InputEventKey_method_get_keycode_with_modifiers>`\ (\ ) |const|                   |
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Key <enum_@GlobalScope_Key>` | :ref:`get_physical_keycode_with_modifiers<class_InputEventKey_method_get_physical_keycode_with_modifiers>`\ (\ ) |const| |
+   +------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEventKey_property_echo:
 
@@ -100,9 +100,9 @@ Property Descriptions
 - |void| **set_echo**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_echo**\ (\ )
 
-If ``true``, the key was already pressed before this event. An echo event is a repeated key event sent when the user is holding down the key.
+Nếu ``true``, phím đã được nhấn trước sự kiện này. Sự kiện echo là một sự kiện phím lặp lại được gửi khi người dùng đang giữ phím.
 
-\ **Note:** The rate at which echo events are sent is typically around 20 events per second (after holding down the key for roughly half a second). However, the key repeat delay/speed can be changed by the user or disabled entirely in the operating system settings. To ensure your project works correctly on all configurations, do not assume the user has a specific key repeat configuration in your project's behavior.
+\ **Lưu ý:** Tần suất gửi các sự kiện echo thường vào khoảng 20 sự kiện mỗi giây (sau khi giữ phím khoảng nửa giây). Tuy nhiên, người dùng có thể thay đổi độ trễ/tốc độ lặp phím hoặc tắt hoàn toàn tính năng này trong phần cài đặt hệ điều hành. Để đảm bảo dự án của bạn hoạt động chính xác trên mọi cấu hình, đừng giả định người dùng có một cấu hình lặp phím cụ thể trong hành vi của dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -119,11 +119,11 @@ If ``true``, the key was already pressed before this event. An echo event is a r
 - |void| **set_key_label**\ (\ value\: :ref:`Key<enum_@GlobalScope_Key>`\ )
 - :ref:`Key<enum_@GlobalScope_Key>` **get_key_label**\ (\ )
 
-Represents the localized label printed on the key in the current keyboard layout, which corresponds to one of the :ref:`Key<enum_@GlobalScope_Key>` constants or any valid Unicode character. Key labels are meant for key prompts.
+Biểu thị nhãn bản địa hóa được in trên phím trong bố cục bàn phím hiện tại, tương ứng với một trong các hằng số :ref:`Key <enum_@GlobalScope_Key>` hoặc bất kỳ ký tự Unicode hợp lệ nào. Nhãn phím được dùng cho các lời nhắc về phím.
 
-For keyboard layouts with a single label on the key, it is equivalent to :ref:`keycode<class_InputEventKey_property_keycode>`.
+Đối với các bố cục bàn phím có một nhãn duy nhất trên phím, nó tương đương với :ref:`keycode<class_InputEventKey_property_keycode>`.
 
-To get a human-readable representation of the **InputEventKey**, use ``OS.get_keycode_string(event.key_label)`` where ``event`` is the **InputEventKey**.
+Để lấy biểu diễn dễ đọc đối với **InputEventKey**, hãy sử dụng ``OS.get_keycode_string(event.key_label)``, trong đó ``event`` là **InputEventKey**.
 
 .. code:: text
 
@@ -147,9 +147,9 @@ To get a human-readable representation of the **InputEventKey**, use ``OS.get_ke
 - |void| **set_keycode**\ (\ value\: :ref:`Key<enum_@GlobalScope_Key>`\ )
 - :ref:`Key<enum_@GlobalScope_Key>` **get_keycode**\ (\ )
 
-Latin label printed on the key in the current keyboard layout, which corresponds to one of the :ref:`Key<enum_@GlobalScope_Key>` constants. Key codes are meant for shortcuts expressed with a standard Latin keyboard, such as :kbd:`Ctrl + S` for a "Save" shortcut.
+Nhãn Latin được in trên phím trong bố cục bàn phím hiện tại, tương ứng với một trong các hằng số :ref:`Key <enum_@GlobalScope_Key>`. Mã phím được dùng cho các phím tắt được biểu diễn bằng bàn phím Latin tiêu chuẩn, chẳng hạn như :kbd:`Ctrl + S` cho phím tắt "Save".
 
-To get a human-readable representation of the **InputEventKey**, use ``OS.get_keycode_string(event.keycode)`` where ``event`` is the **InputEventKey**.
+Để lấy biểu diễn dễ đọc đối với **InputEventKey**, hãy sử dụng ``OS.get_keycode_string(event.keycode)``, trong đó ``event`` là **InputEventKey**.
 
 .. code:: text
 
@@ -173,7 +173,7 @@ To get a human-readable representation of the **InputEventKey**, use ``OS.get_ke
 - |void| **set_location**\ (\ value\: :ref:`KeyLocation<enum_@GlobalScope_KeyLocation>`\ )
 - :ref:`KeyLocation<enum_@GlobalScope_KeyLocation>` **get_location**\ (\ )
 
-Represents the location of a key which has both left and right versions, such as :kbd:`Shift` or :kbd:`Alt`.
+Biểu thị vị trí của một phím có cả phiên bản bên trái và bên phải, chẳng hạn như :kbd:`Shift` hoặc :kbd:`Alt`.
 
 .. rst-class:: classref-item-separator
 
@@ -190,9 +190,9 @@ Represents the location of a key which has both left and right versions, such as
 - |void| **set_physical_keycode**\ (\ value\: :ref:`Key<enum_@GlobalScope_Key>`\ )
 - :ref:`Key<enum_@GlobalScope_Key>` **get_physical_keycode**\ (\ )
 
-Represents the physical location of a key on the 101/102-key US QWERTY keyboard, which corresponds to one of the :ref:`Key<enum_@GlobalScope_Key>` constants. Physical key codes meant for game input, such as WASD movement, where only the location of the keys is important.
+Biểu thị vị trí vật lý của một phím trên bàn phím US QWERTY 101/102 phím, tương ứng với một trong các hằng số :ref:`Key <enum_@GlobalScope_Key>`. Mã phím vật lý được dùng cho đầu vào trò chơi, chẳng hạn như chuyển động WASD, trong đó chỉ vị trí của các phím là quan trọng.
 
-To get a human-readable representation of the **InputEventKey**, use :ref:`OS.get_keycode_string()<class_OS_method_get_keycode_string>` in combination with :ref:`DisplayServer.keyboard_get_keycode_from_physical()<class_DisplayServer_method_keyboard_get_keycode_from_physical>` or :ref:`DisplayServer.keyboard_get_label_from_physical()<class_DisplayServer_method_keyboard_get_label_from_physical>`:
+Để lấy biểu diễn dễ đọc đối với **InputEventKey**, hãy sử dụng :ref:`OS.get_keycode_string()<class_OS_method_get_keycode_string>` kết hợp với :ref:`DisplayServer.keyboard_get_keycode_from_physical()<class_DisplayServer_method_keyboard_get_keycode_from_physical>` hoặc :ref:`DisplayServer.keyboard_get_label_from_physical()<class_DisplayServer_method_keyboard_get_label_from_physical>`:
 
 
 .. tabs::
@@ -236,7 +236,7 @@ To get a human-readable representation of the **InputEventKey**, use :ref:`OS.ge
 - |void| **set_pressed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_pressed**\ (\ )
 
-If ``true``, the key's state is pressed. If ``false``, the key's state is released.
+Nếu ``true``, trạng thái của phím là được nhấn. Nếu ``false``, trạng thái của phím là được thả.
 
 .. rst-class:: classref-item-separator
 
@@ -253,9 +253,9 @@ If ``true``, the key's state is pressed. If ``false``, the key's state is releas
 - |void| **set_unicode**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_unicode**\ (\ )
 
-The key Unicode character code (when relevant), shifted by modifier keys. Unicode character codes for composite characters and complex scripts may not be available unless IME input mode is active. See :ref:`Window.set_ime_active()<class_Window_method_set_ime_active>` for more information. Unicode character codes are meant for text input.
+Mã ký tự Unicode của phím (khi có liên quan), được thay đổi bởi các phím bổ trợ. Mã ký tự Unicode cho các ký tự tổng hợp và các tập lệnh phức tạp có thể không khả dụng trừ khi chế độ nhập IME đang hoạt động. Xem :ref:`Window.set_ime_active()<class_Window_method_set_ime_active>` để biết thêm thông tin. Mã ký tự Unicode được dùng cho việc nhập văn bản.
 
-\ **Note:** This property is set by the engine only for a pressed event. If the event is sent by an IME or a virtual keyboard, no corresponding key released event is sent.
+\ **Lưu ý:** Thuộc tính này chỉ được engine thiết lập cho một sự kiện nhấn. Nếu sự kiện được gửi bởi IME hoặc bàn phím ảo, sẽ không có sự kiện thả phím tương ứng nào được gửi.
 
 .. rst-class:: classref-section-separator
 
@@ -263,8 +263,8 @@ The key Unicode character code (when relevant), shifted by modifier keys. Unicod
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_InputEventKey_method_as_text_key_label:
 
@@ -272,7 +272,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **as_text_key_label**\ (\ ) |const| :ref:`🔗<class_InputEventKey_method_as_text_key_label>`
 
-Returns a :ref:`String<class_String>` representation of the event's :ref:`key_label<class_InputEventKey_property_key_label>` and modifiers.
+Trả về biểu diễn :ref:`String<class_String>` của :ref:`key_label<class_InputEventKey_property_key_label>` và các phím bổ trợ của sự kiện.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ Returns a :ref:`String<class_String>` representation of the event's :ref:`key_la
 
 :ref:`String<class_String>` **as_text_keycode**\ (\ ) |const| :ref:`🔗<class_InputEventKey_method_as_text_keycode>`
 
-Returns a :ref:`String<class_String>` representation of the event's :ref:`keycode<class_InputEventKey_property_keycode>` and modifiers.
+Trả về biểu diễn :ref:`String<class_String>` của :ref:`keycode<class_InputEventKey_property_keycode>` và các phím bổ trợ của sự kiện.
 
 .. rst-class:: classref-item-separator
 
@@ -296,7 +296,7 @@ Returns a :ref:`String<class_String>` representation of the event's :ref:`keycod
 
 :ref:`String<class_String>` **as_text_location**\ (\ ) |const| :ref:`🔗<class_InputEventKey_method_as_text_location>`
 
-Returns a :ref:`String<class_String>` representation of the event's :ref:`location<class_InputEventKey_property_location>`. This will be a blank string if the event is not specific to a location.
+Trả về biểu diễn :ref:`String<class_String>` của :ref:`location<class_InputEventKey_property_location>` của sự kiện. Đây sẽ là một chuỗi trống nếu sự kiện không gắn với một vị trí cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -308,7 +308,7 @@ Returns a :ref:`String<class_String>` representation of the event's :ref:`locati
 
 :ref:`String<class_String>` **as_text_physical_keycode**\ (\ ) |const| :ref:`🔗<class_InputEventKey_method_as_text_physical_keycode>`
 
-Returns a :ref:`String<class_String>` representation of the event's :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` and modifiers.
+Trả về biểu diễn :ref:`String<class_String>` của :ref:`physical_keycode<class_InputEventKey_property_physical_keycode>` và các phím bổ trợ của sự kiện.
 
 .. rst-class:: classref-item-separator
 
@@ -320,9 +320,9 @@ Returns a :ref:`String<class_String>` representation of the event's :ref:`physic
 
 :ref:`Key<enum_@GlobalScope_Key>` **get_key_label_with_modifiers**\ (\ ) |const| :ref:`🔗<class_InputEventKey_method_get_key_label_with_modifiers>`
 
-Returns the localized key label combined with modifier keys such as :kbd:`Shift` or :kbd:`Alt`. See also :ref:`InputEventWithModifiers<class_InputEventWithModifiers>`.
+Trả về nhãn phím đã bản địa hóa kết hợp với các phím bổ trợ như :kbd:`Shift` hoặc :kbd:`Alt`. Xem thêm :ref:`InputEventWithModifiers<class_InputEventWithModifiers>`.
 
-To get a human-readable representation of the **InputEventKey** with modifiers, use ``OS.get_keycode_string(event.get_key_label_with_modifiers())`` where ``event`` is the **InputEventKey**.
+Để lấy biểu diễn dễ đọc của **InputEventKey** cùng các phím bổ trợ, hãy sử dụng ``OS.get_keycode_string(event.get_key_label_with_modifiers())``, trong đó ``event`` là **InputEventKey**.
 
 .. rst-class:: classref-item-separator
 
@@ -334,9 +334,9 @@ To get a human-readable representation of the **InputEventKey** with modifiers, 
 
 :ref:`Key<enum_@GlobalScope_Key>` **get_keycode_with_modifiers**\ (\ ) |const| :ref:`🔗<class_InputEventKey_method_get_keycode_with_modifiers>`
 
-Returns the Latin keycode combined with modifier keys such as :kbd:`Shift` or :kbd:`Alt`. See also :ref:`InputEventWithModifiers<class_InputEventWithModifiers>`.
+Trả về keycode Latin kết hợp với các phím bổ trợ như :kbd:`Shift` hoặc :kbd:`Alt`. Xem thêm :ref:`InputEventWithModifiers<class_InputEventWithModifiers>`.
 
-To get a human-readable representation of the **InputEventKey** with modifiers, use ``OS.get_keycode_string(event.get_keycode_with_modifiers())`` where ``event`` is the **InputEventKey**.
+Để lấy biểu diễn dễ đọc của **InputEventKey** cùng các phím bổ trợ, hãy sử dụng ``OS.get_keycode_string(event.get_keycode_with_modifiers())``, trong đó ``event`` là **InputEventKey**.
 
 .. rst-class:: classref-item-separator
 
@@ -348,16 +348,16 @@ To get a human-readable representation of the **InputEventKey** with modifiers, 
 
 :ref:`Key<enum_@GlobalScope_Key>` **get_physical_keycode_with_modifiers**\ (\ ) |const| :ref:`🔗<class_InputEventKey_method_get_physical_keycode_with_modifiers>`
 
-Returns the physical keycode combined with modifier keys such as :kbd:`Shift` or :kbd:`Alt`. See also :ref:`InputEventWithModifiers<class_InputEventWithModifiers>`.
+Trả về keycode vật lý kết hợp với các phím bổ trợ như :kbd:`Shift` hoặc :kbd:`Alt`. Xem thêm :ref:`InputEventWithModifiers<class_InputEventWithModifiers>`.
 
-To get a human-readable representation of the **InputEventKey** with modifiers, use ``OS.get_keycode_string(event.get_physical_keycode_with_modifiers())`` where ``event`` is the **InputEventKey**.
+Để lấy biểu diễn dễ đọc của **InputEventKey** cùng các phím bổ trợ, hãy sử dụng ``OS.get_keycode_string(event.get_physical_keycode_with_modifiers())``, trong đó ``event`` là **InputEventKey**.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

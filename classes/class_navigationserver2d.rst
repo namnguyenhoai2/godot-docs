@@ -10,46 +10,46 @@
 NavigationServer2D
 ==================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A server interface for low-level 2D navigation access.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-NavigationServer2D is the server that handles navigation maps, regions and agents. It does not handle A\* navigation from :ref:`AStar2D<class_AStar2D>` or :ref:`AStarGrid2D<class_AStarGrid2D>`.
-
-Maps are divided into regions, which are composed of navigation polygons. Together, they define the traversable areas in the 2D world.
-
-\ **Note:** Most **NavigationServer2D** changes take effect after the next physics frame and not immediately. This includes all changes made to maps, regions or agents by navigation-related nodes in the scene tree or made through scripts.
-
-For two regions to be connected to each other, they must share a similar edge. An edge is considered connected to another if both of its two vertices are at a distance less than ``edge_connection_margin`` to the respective other edge's vertex.
-
-You may assign navigation layers to regions with :ref:`region_set_navigation_layers()<class_NavigationServer2D_method_region_set_navigation_layers>`, which then can be checked upon when requesting a path with :ref:`map_get_path()<class_NavigationServer2D_method_map_get_path>`. This can be used to allow or deny certain areas for some objects.
-
-To use the collision avoidance system, you may use agents. You can set an agent's target velocity, then the servers will emit a callback with a modified velocity.
-
-\ **Note:** The collision avoidance system ignores regions. Using the modified velocity directly may move an agent outside of the traversable area. This is a limitation of the collision avoidance system, any more complex situation may require the use of the physics engine.
-
-This server keeps tracks of any call and executes them during the sync phase. This means that you can request any change to the map, using any thread, without worrying.
+Một giao diện server để truy cập navigation 2D cấp thấp.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+NavigationServer2D là server xử lý các bản đồ navigation, region và agent. Nó không xử lý navigation A\* từ :ref:`AStar2D<class_AStar2D>` hoặc :ref:`AStarGrid2D<class_AStarGrid2D>`.
+
+Các bản đồ được chia thành các region, vốn được cấu thành từ các polygon navigation. Kết hợp lại, chúng xác định những khu vực có thể di chuyển trong thế giới 2D.
+
+\ **Lưu ý:** Hầu hết các thay đổi **NavigationServer2D** chỉ có hiệu lực sau frame vật lý tiếp theo chứ không diễn ra ngay lập tức. Điều này bao gồm mọi thay đổi đối với bản đồ, region hoặc agent do các node liên quan đến navigation trong scene tree thực hiện hoặc được thực hiện thông qua script.
+
+Để hai vùng được kết nối với nhau, chúng phải có một cạnh tương tự nhau. Một cạnh được xem là kết nối với một cạnh khác nếu cả hai đỉnh của nó đều cách đỉnh tương ứng của cạnh kia một khoảng nhỏ hơn ``edge_connection_margin``.
+
+Bạn có thể gán các lớp điều hướng cho các vùng bằng :ref:`region_set_navigation_layers()<class_NavigationServer2D_method_region_set_navigation_layers>`, sau đó kiểm tra chúng khi yêu cầu một đường đi bằng :ref:`map_get_path()<class_NavigationServer2D_method_map_get_path>`. Bạn có thể dùng cách này để cho phép hoặc từ chối một số khu vực đối với một số đối tượng.
+
+Để sử dụng hệ thống tránh va chạm, bạn có thể dùng các agent. Bạn có thể đặt vận tốc mục tiêu cho một agent, sau đó các server sẽ phát một callback với vận tốc đã được sửa đổi.
+
+\ **Lưu ý:** Hệ thống tránh va chạm bỏ qua các vùng. Việc sử dụng trực tiếp vận tốc đã được sửa đổi có thể khiến một agent di chuyển ra ngoài khu vực có thể đi qua. Đây là một hạn chế của hệ thống tránh va chạm; các tình huống phức tạp hơn có thể yêu cầu sử dụng physics engine.
+
+Server này theo dõi mọi lệnh gọi và thực thi chúng trong giai đoạn đồng bộ. Điều này có nghĩa là bạn có thể yêu cầu bất kỳ thay đổi nào đối với bản đồ bằng bất kỳ thread nào mà không cần lo lắng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using NavigationServer <../tutorials/navigation/navigation_using_navigationservers>`
+- :doc:`Sử dụng NavigationServer <../tutorials/navigation/navigation_using_navigationservers>`
 
-- `Navigation Polygon 2D Demo <https://godotengine.org/asset-library/asset/2722>`__
+- `Bản demo Navigation Polygon 2D <https://godotengine.org/asset-library/asset/2722>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -131,7 +131,7 @@ Methods
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]  | :ref:`get_maps<class_NavigationServer2D_method_get_maps>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                               |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`get_process_info<class_NavigationServer2D_method_get_process_info>`\ (\ process_info\: :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>`\ ) |const|                                                                                                                                                                                                                       |
+   | :ref:`int<class_int>`                               | :ref:`get_process_info<class_NavigationServer2D_method_get_process_info>`\ (\ process_info\: :ref:`ProcessInfo <enum_NavigationServer2D_ProcessInfo>`\ ) |const|                                                                                                                                                                                                                      |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                             | :ref:`is_baking_navigation_polygon<class_NavigationServer2D_method_is_baking_navigation_polygon>`\ (\ navigation_polygon\: :ref:`NavigationPolygon<class_NavigationPolygon>`\ ) |const|                                                                                                                                                                                               |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -143,21 +143,21 @@ Methods
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                           | :ref:`link_get_enter_cost<class_NavigationServer2D_method_link_get_enter_cost>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                           |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`link_get_iteration_id<class_NavigationServer2D_method_link_get_iteration_id>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                       |
+   | :ref:`int<class_int>`                               | :ref:`link_get_iteration_id<class_NavigationServer2D_method_link_get_iteration_id>`\ (\ liên kết\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                   |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`                               | :ref:`link_get_map<class_NavigationServer2D_method_link_get_map>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                         |
+   | :ref:`RID<class_RID>`                               | :ref:`link_get_map<class_NavigationServer2D_method_link_get_map>`\ (\ liên kết\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                     |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`link_get_navigation_layers<class_NavigationServer2D_method_link_get_navigation_layers>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                             |
+   | :ref:`int<class_int>`                               | :ref:`link_get_navigation_layers<class_NavigationServer2D_method_link_get_navigation_layers>`\ (\ liên kết\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                         |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`link_get_owner_id<class_NavigationServer2D_method_link_get_owner_id>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                               |
+   | :ref:`int<class_int>`                               | :ref:`link_get_owner_id<class_NavigationServer2D_method_link_get_owner_id>`\ (\ liên kết\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                           |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                       | :ref:`link_get_start_position<class_NavigationServer2D_method_link_get_start_position>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                   |
+   | :ref:`Vector2<class_Vector2>`                       | :ref:`link_get_start_position<class_NavigationServer2D_method_link_get_start_position>`\ (\ liên kết\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                               |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                           | :ref:`link_get_travel_cost<class_NavigationServer2D_method_link_get_travel_cost>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                         |
+   | :ref:`float<class_float>`                           | :ref:`link_get_travel_cost<class_NavigationServer2D_method_link_get_travel_cost>`\ (\ liên kết\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                     |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`link_is_bidirectional<class_NavigationServer2D_method_link_is_bidirectional>`\ (\ link\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                       |
+   | :ref:`bool<class_bool>`                             | :ref:`link_is_bidirectional<class_NavigationServer2D_method_link_is_bidirectional>`\ (\ liên kết\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                   |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`link_set_bidirectional<class_NavigationServer2D_method_link_set_bidirectional>`\ (\ link\: :ref:`RID<class_RID>`, bidirectional\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                    |
+   | |void|                                              | :ref:`link_set_bidirectional<class_NavigationServer2D_method_link_set_bidirectional>`\ (\ link\: :ref:`RID<class_RID>`, hai chiều\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                        |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`link_set_enabled<class_NavigationServer2D_method_link_set_enabled>`\ (\ link\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                                      |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -201,7 +201,7 @@ Methods
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`map_get_path<class_NavigationServer2D_method_map_get_path>`\ (\ map\: :ref:`RID<class_RID>`, origin\: :ref:`Vector2<class_Vector2>`, destination\: :ref:`Vector2<class_Vector2>`, optimize\: :ref:`bool<class_bool>`, navigation_layers\: :ref:`int<class_int>` = 1\ )                                                                                                          |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                       | :ref:`map_get_random_point<class_NavigationServer2D_method_map_get_random_point>`\ (\ map\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`, uniformly\: :ref:`bool<class_bool>`\ ) |const|                                                                                                                                                                          |
+   | :ref:`Vector2<class_Vector2>`                       | :ref:`map_get_random_point<class_NavigationServer2D_method_map_get_random_point>`\ (\ map\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`, đồng đều\: :ref:`bool<class_bool>`\ ) |const|                                                                                                                                                                           |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]  | :ref:`map_get_regions<class_NavigationServer2D_method_map_get_regions>`\ (\ map\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                                                                    |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -336,8 +336,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_NavigationServer2D_signal_avoidance_debug_changed:
 
@@ -345,7 +345,7 @@ Signals
 
 **avoidance_debug_changed**\ (\ ) :ref:`🔗<class_NavigationServer2D_signal_avoidance_debug_changed>`
 
-Emitted when avoidance debug settings are changed. Only available in debug builds.
+Được phát ra khi các thiết lập gỡ lỗi tránh va chạm thay đổi. Chỉ khả dụng trong các bản build debug.
 
 .. rst-class:: classref-item-separator
 
@@ -357,7 +357,7 @@ Emitted when avoidance debug settings are changed. Only available in debug build
 
 **map_changed**\ (\ map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationServer2D_signal_map_changed>`
 
-Emitted when a navigation map is updated, when a region moves or is modified.
+Được phát ra khi bản đồ điều hướng được cập nhật, khi một vùng di chuyển hoặc được sửa đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -369,7 +369,7 @@ Emitted when a navigation map is updated, when a region moves or is modified.
 
 **navigation_debug_changed**\ (\ ) :ref:`🔗<class_NavigationServer2D_signal_navigation_debug_changed>`
 
-Emitted when navigation debug settings are changed. Only available in debug builds.
+Được phát ra khi các cài đặt gỡ lỗi điều hướng thay đổi. Chỉ khả dụng trong các bản dựng debug.
 
 .. rst-class:: classref-section-separator
 
@@ -377,14 +377,14 @@ Emitted when navigation debug settings are changed. Only available in debug buil
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_NavigationServer2D_ProcessInfo:
 
 .. rst-class:: classref-enumeration
 
-enum **ProcessInfo**: :ref:`🔗<enum_NavigationServer2D_ProcessInfo>`
+enum **ProcessInfo**: :ref:`🔗 <enum_NavigationServer2D_ProcessInfo>`
 
 .. _class_NavigationServer2D_constant_INFO_ACTIVE_MAPS:
 
@@ -392,7 +392,7 @@ enum **ProcessInfo**: :ref:`🔗<enum_NavigationServer2D_ProcessInfo>`
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_ACTIVE_MAPS** = ``0``
 
-Constant to get the number of active navigation maps.
+Hằng số để lấy số lượng bản đồ điều hướng đang hoạt động.
 
 .. _class_NavigationServer2D_constant_INFO_REGION_COUNT:
 
@@ -400,7 +400,7 @@ Constant to get the number of active navigation maps.
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_REGION_COUNT** = ``1``
 
-Constant to get the number of active navigation regions.
+Hằng số để lấy số lượng vùng điều hướng đang hoạt động.
 
 .. _class_NavigationServer2D_constant_INFO_AGENT_COUNT:
 
@@ -408,7 +408,7 @@ Constant to get the number of active navigation regions.
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_AGENT_COUNT** = ``2``
 
-Constant to get the number of active navigation agents processing avoidance.
+Hằng số để lấy số lượng tác tử điều hướng đang hoạt động xử lý việc tránh.
 
 .. _class_NavigationServer2D_constant_INFO_LINK_COUNT:
 
@@ -416,7 +416,7 @@ Constant to get the number of active navigation agents processing avoidance.
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_LINK_COUNT** = ``3``
 
-Constant to get the number of active navigation links.
+Hằng số để lấy số lượng liên kết điều hướng đang hoạt động.
 
 .. _class_NavigationServer2D_constant_INFO_POLYGON_COUNT:
 
@@ -424,7 +424,7 @@ Constant to get the number of active navigation links.
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_POLYGON_COUNT** = ``4``
 
-Constant to get the number of navigation mesh polygons.
+Hằng số để lấy số lượng đa giác của navigation mesh.
 
 .. _class_NavigationServer2D_constant_INFO_EDGE_COUNT:
 
@@ -432,7 +432,7 @@ Constant to get the number of navigation mesh polygons.
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_EDGE_COUNT** = ``5``
 
-Constant to get the number of navigation mesh polygon edges.
+Hằng số để lấy số lượng cạnh của các đa giác trong navigation mesh.
 
 .. _class_NavigationServer2D_constant_INFO_EDGE_MERGE_COUNT:
 
@@ -440,7 +440,7 @@ Constant to get the number of navigation mesh polygon edges.
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_EDGE_MERGE_COUNT** = ``6``
 
-Constant to get the number of navigation mesh polygon edges that were merged due to edge key overlap.
+Hằng số để lấy số lượng cạnh của các đa giác trong navigation mesh đã được hợp nhất do khóa cạnh bị chồng lấp.
 
 .. _class_NavigationServer2D_constant_INFO_EDGE_CONNECTION_COUNT:
 
@@ -448,7 +448,7 @@ Constant to get the number of navigation mesh polygon edges that were merged due
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_EDGE_CONNECTION_COUNT** = ``7``
 
-Constant to get the number of navigation mesh polygon edges that are considered connected by edge proximity.
+Hằng số để lấy số lượng cạnh của các đa giác trong navigation mesh được xem là kết nối với nhau do độ gần của cạnh.
 
 .. _class_NavigationServer2D_constant_INFO_EDGE_FREE_COUNT:
 
@@ -456,7 +456,7 @@ Constant to get the number of navigation mesh polygon edges that are considered 
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_EDGE_FREE_COUNT** = ``8``
 
-Constant to get the number of navigation mesh polygon edges that could not be merged but may be still connected by edge proximity or with links.
+Hằng số để lấy số lượng cạnh của các đa giác trong navigation mesh không thể hợp nhất nhưng vẫn có thể được kết nối với nhau do độ gần của cạnh hoặc bằng các liên kết.
 
 .. _class_NavigationServer2D_constant_INFO_OBSTACLE_COUNT:
 
@@ -464,7 +464,7 @@ Constant to get the number of navigation mesh polygon edges that could not be me
 
 :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>` **INFO_OBSTACLE_COUNT** = ``9``
 
-Constant to get the number of active navigation obstacles.
+Hằng số để lấy số lượng chướng ngại vật điều hướng đang hoạt động.
 
 .. rst-class:: classref-section-separator
 
@@ -472,8 +472,8 @@ Constant to get the number of active navigation obstacles.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationServer2D_method_agent_create:
 
@@ -481,7 +481,7 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **agent_create**\ (\ ) :ref:`🔗<class_NavigationServer2D_method_agent_create>`
 
-Creates the agent.
+Tạo agent.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ Creates the agent.
 
 :ref:`bool<class_bool>` **agent_get_avoidance_enabled**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_avoidance_enabled>`
 
-Return ``true`` if the specified ``agent`` uses avoidance.
+Trả về ``true`` nếu ``agent`` được chỉ định sử dụng tính năng tránh né.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Return ``true`` if the specified ``agent`` uses avoidance.
 
 :ref:`int<class_int>` **agent_get_avoidance_layers**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_avoidance_layers>`
 
-Returns the ``avoidance_layers`` bitmask of the specified ``agent``.
+Trả về mặt nạ bit ``avoidance_layers`` của ``agent`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -517,7 +517,7 @@ Returns the ``avoidance_layers`` bitmask of the specified ``agent``.
 
 :ref:`int<class_int>` **agent_get_avoidance_mask**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_avoidance_mask>`
 
-Returns the ``avoidance_mask`` bitmask of the specified ``agent``.
+Trả về mặt nạ bit ``avoidance_mask`` của ``agent`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -529,7 +529,7 @@ Returns the ``avoidance_mask`` bitmask of the specified ``agent``.
 
 :ref:`float<class_float>` **agent_get_avoidance_priority**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_avoidance_priority>`
 
-Returns the ``avoidance_priority`` of the specified ``agent``.
+Trả về ``avoidance_priority`` của ``agent`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -541,7 +541,7 @@ Returns the ``avoidance_priority`` of the specified ``agent``.
 
 :ref:`RID<class_RID>` **agent_get_map**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_map>`
 
-Returns the navigation map :ref:`RID<class_RID>` the requested ``agent`` is currently assigned to.
+Trả về bản đồ điều hướng mà ``agent`` được yêu cầu hiện đang được gán cho :ref:`RID<class_RID>`.
 
 .. rst-class:: classref-item-separator
 
@@ -553,7 +553,7 @@ Returns the navigation map :ref:`RID<class_RID>` the requested ``agent`` is curr
 
 :ref:`int<class_int>` **agent_get_max_neighbors**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_max_neighbors>`
 
-Returns the maximum number of other agents the specified ``agent`` takes into account in the navigation.
+Trả về số lượng tối đa các tác tử khác mà ``agent`` được chỉ định tính đến khi điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -565,7 +565,7 @@ Returns the maximum number of other agents the specified ``agent`` takes into ac
 
 :ref:`float<class_float>` **agent_get_max_speed**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_max_speed>`
 
-Returns the maximum speed of the specified ``agent``.
+Trả về tốc độ tối đa của ``agent`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -577,7 +577,7 @@ Returns the maximum speed of the specified ``agent``.
 
 :ref:`float<class_float>` **agent_get_neighbor_distance**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_neighbor_distance>`
 
-Returns the maximum distance to other agents the specified ``agent`` takes into account in the navigation.
+Trả về khoảng cách tối đa đến các tác tử khác mà ``agent`` được chỉ định tính đến khi điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -589,7 +589,7 @@ Returns the maximum distance to other agents the specified ``agent`` takes into 
 
 :ref:`bool<class_bool>` **agent_get_paused**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_paused>`
 
-Returns ``true`` if the specified ``agent`` is paused.
+Trả về ``true`` nếu ``agent`` được chỉ định đang tạm dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -601,7 +601,7 @@ Returns ``true`` if the specified ``agent`` is paused.
 
 :ref:`Vector2<class_Vector2>` **agent_get_position**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_position>`
 
-Returns the position of the specified ``agent`` in world space.
+Trả về vị trí của ``agent`` được chỉ định trong không gian thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -613,7 +613,7 @@ Returns the position of the specified ``agent`` in world space.
 
 :ref:`float<class_float>` **agent_get_radius**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_radius>`
 
-Returns the radius of the specified ``agent``.
+Trả về bán kính của ``agent`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -625,7 +625,7 @@ Returns the radius of the specified ``agent``.
 
 :ref:`float<class_float>` **agent_get_time_horizon_agents**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_time_horizon_agents>`
 
-Returns the minimal amount of time for which the specified ``agent``'s velocities that are computed by the simulation are safe with respect to other agents.
+Trả về khoảng thời gian tối thiểu mà các vận tốc của ``agent`` được chỉ định, được mô phỏng tính toán, vẫn an toàn đối với các tác tử khác.
 
 .. rst-class:: classref-item-separator
 
@@ -637,7 +637,7 @@ Returns the minimal amount of time for which the specified ``agent``'s velocitie
 
 :ref:`float<class_float>` **agent_get_time_horizon_obstacles**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_time_horizon_obstacles>`
 
-Returns the minimal amount of time for which the specified ``agent``'s velocities that are computed by the simulation are safe with respect to static avoidance obstacles.
+Trả về khoảng thời gian tối thiểu mà các vận tốc của ``agent`` được chỉ định, do mô phỏng tính toán, vẫn an toàn đối với các chướng ngại vật tránh tĩnh.
 
 .. rst-class:: classref-item-separator
 
@@ -649,7 +649,7 @@ Returns the minimal amount of time for which the specified ``agent``'s velocitie
 
 :ref:`Vector2<class_Vector2>` **agent_get_velocity**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_get_velocity>`
 
-Returns the velocity of the specified ``agent``.
+Trả về vận tốc của ``agent`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -661,7 +661,7 @@ Returns the velocity of the specified ``agent``.
 
 :ref:`bool<class_bool>` **agent_has_avoidance_callback**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_has_avoidance_callback>`
 
-Return ``true`` if the specified ``agent`` has an avoidance callback.
+Trả về ``true`` nếu ``agent`` được chỉ định có callback tránh.
 
 .. rst-class:: classref-item-separator
 
@@ -673,7 +673,7 @@ Return ``true`` if the specified ``agent`` has an avoidance callback.
 
 :ref:`bool<class_bool>` **agent_is_map_changed**\ (\ agent\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_agent_is_map_changed>`
 
-Returns ``true`` if the map got changed the previous frame.
+Trả về ``true`` nếu bản đồ đã thay đổi ở khung hình trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -685,9 +685,9 @@ Returns ``true`` if the map got changed the previous frame.
 
 |void| **agent_set_avoidance_callback**\ (\ agent\: :ref:`RID<class_RID>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_avoidance_callback>`
 
-Sets the callback :ref:`Callable<class_Callable>` that gets called after each avoidance processing step for the ``agent``. The calculated ``safe_velocity`` will be dispatched with a signal to the object just before the physics calculations.
+Thiết lập callback :ref:`Callable<class_Callable>`, được gọi sau mỗi bước xử lý tránh cho ``agent``. ``safe_velocity`` được tính toán sẽ được gửi bằng một signal đến đối tượng ngay trước khi thực hiện các phép tính vật lý.
 
-\ **Note:** Created callbacks are always processed independently of the SceneTree state as long as the agent is on a navigation map and not freed. To disable the dispatch of a callback from an agent use :ref:`agent_set_avoidance_callback()<class_NavigationServer2D_method_agent_set_avoidance_callback>` again with an empty :ref:`Callable<class_Callable>`.
+\ **Lưu ý:** Các callback đã tạo luôn được xử lý độc lập với trạng thái SceneTree, miễn là agent nằm trên navigation map và chưa được giải phóng. Để tắt việc gửi callback từ một agent, hãy dùng lại :ref:`agent_set_avoidance_callback()<class_NavigationServer2D_method_agent_set_avoidance_callback>` với một :ref:`Callable<class_Callable>` trống.
 
 .. rst-class:: classref-item-separator
 
@@ -699,7 +699,7 @@ Sets the callback :ref:`Callable<class_Callable>` that gets called after each av
 
 |void| **agent_set_avoidance_enabled**\ (\ agent\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_avoidance_enabled>`
 
-If ``enabled`` is ``true``, the specified ``agent`` uses avoidance.
+Nếu ``enabled`` là ``true``, ``agent`` được chỉ định sẽ sử dụng tính năng tránh.
 
 .. rst-class:: classref-item-separator
 
@@ -711,7 +711,7 @@ If ``enabled`` is ``true``, the specified ``agent`` uses avoidance.
 
 |void| **agent_set_avoidance_layers**\ (\ agent\: :ref:`RID<class_RID>`, layers\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_avoidance_layers>`
 
-Set the agent's ``avoidance_layers`` bitmask.
+Đặt bitmask ``avoidance_layers`` của agent.
 
 .. rst-class:: classref-item-separator
 
@@ -723,7 +723,7 @@ Set the agent's ``avoidance_layers`` bitmask.
 
 |void| **agent_set_avoidance_mask**\ (\ agent\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_avoidance_mask>`
 
-Set the agent's ``avoidance_mask`` bitmask.
+Đặt bitmask ``avoidance_mask`` của agent.
 
 .. rst-class:: classref-item-separator
 
@@ -735,9 +735,9 @@ Set the agent's ``avoidance_mask`` bitmask.
 
 |void| **agent_set_avoidance_priority**\ (\ agent\: :ref:`RID<class_RID>`, priority\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_avoidance_priority>`
 
-Set the agent's ``avoidance_priority`` with a ``priority`` between 0.0 (lowest priority) to 1.0 (highest priority).
+Đặt ``avoidance_priority`` của agent với một ``priority`` trong khoảng từ 0.0 (ưu tiên thấp nhất) đến 1.0 (ưu tiên cao nhất).
 
-The specified ``agent`` does not adjust the velocity for other agents that would match the ``avoidance_mask`` but have a lower ``avoidance_priority``. This in turn makes the other agents with lower priority adjust their velocities even more to avoid collision with this agent.
+``agent`` được chỉ định không điều chỉnh vận tốc cho các agent khác khớp với ``avoidance_mask`` nhưng có ``avoidance_priority`` thấp hơn. Do đó, các agent khác có mức ưu tiên thấp hơn sẽ phải điều chỉnh vận tốc của chúng nhiều hơn để tránh va chạm với agent này.
 
 .. rst-class:: classref-item-separator
 
@@ -749,7 +749,7 @@ The specified ``agent`` does not adjust the velocity for other agents that would
 
 |void| **agent_set_map**\ (\ agent\: :ref:`RID<class_RID>`, map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_map>`
 
-Puts the agent in the map.
+Đưa agent vào bản đồ.
 
 .. rst-class:: classref-item-separator
 
@@ -761,7 +761,7 @@ Puts the agent in the map.
 
 |void| **agent_set_max_neighbors**\ (\ agent\: :ref:`RID<class_RID>`, count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_max_neighbors>`
 
-Sets the maximum number of other agents the agent takes into account in the navigation. The larger this number, the longer the running time of the simulation. If the number is too low, the simulation will not be safe.
+Đặt số lượng tối đa các agent khác mà agent xem xét trong quá trình điều hướng. Con số này càng lớn thì thời gian chạy mô phỏng càng lâu. Nếu con số này quá thấp, mô phỏng sẽ không an toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -773,7 +773,7 @@ Sets the maximum number of other agents the agent takes into account in the navi
 
 |void| **agent_set_max_speed**\ (\ agent\: :ref:`RID<class_RID>`, max_speed\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_max_speed>`
 
-Sets the maximum speed of the agent. Must be positive.
+Đặt tốc độ tối đa của agent. Giá trị này phải là số dương.
 
 .. rst-class:: classref-item-separator
 
@@ -785,7 +785,7 @@ Sets the maximum speed of the agent. Must be positive.
 
 |void| **agent_set_neighbor_distance**\ (\ agent\: :ref:`RID<class_RID>`, distance\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_neighbor_distance>`
 
-Sets the maximum distance to other agents this agent takes into account in the navigation. The larger this number, the longer the running time of the simulation. If the number is too low, the simulation will not be safe.
+Đặt khoảng cách tối đa đến các tác tử khác mà tác tử này xem xét khi điều hướng. Con số này càng lớn thì thời gian chạy mô phỏng càng lâu. Nếu con số này quá thấp, mô phỏng sẽ không an toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -797,7 +797,7 @@ Sets the maximum distance to other agents this agent takes into account in the n
 
 |void| **agent_set_paused**\ (\ agent\: :ref:`RID<class_RID>`, paused\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_paused>`
 
-If ``paused`` is ``true`` the specified ``agent`` will not be processed. For example, it will not calculate avoidance velocities or receive avoidance callbacks.
+Nếu ``paused`` là ``true`` thì ``agent`` được chỉ định sẽ không được xử lý. Ví dụ: nó sẽ không tính toán vận tốc tránh né hoặc nhận các callback tránh né.
 
 .. rst-class:: classref-item-separator
 
@@ -809,7 +809,7 @@ If ``paused`` is ``true`` the specified ``agent`` will not be processed. For exa
 
 |void| **agent_set_position**\ (\ agent\: :ref:`RID<class_RID>`, position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_position>`
 
-Sets the position of the agent in world space.
+Đặt vị trí của tác tử trong không gian thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -821,7 +821,7 @@ Sets the position of the agent in world space.
 
 |void| **agent_set_radius**\ (\ agent\: :ref:`RID<class_RID>`, radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_radius>`
 
-Sets the radius of the agent.
+Đặt bán kính của tác tử.
 
 .. rst-class:: classref-item-separator
 
@@ -833,7 +833,7 @@ Sets the radius of the agent.
 
 |void| **agent_set_time_horizon_agents**\ (\ agent\: :ref:`RID<class_RID>`, time_horizon\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_time_horizon_agents>`
 
-The minimal amount of time for which the agent's velocities that are computed by the simulation are safe with respect to other agents. The larger this number, the sooner this agent will respond to the presence of other agents, but the less freedom this agent has in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive.
+Khoảng thời gian tối thiểu mà trong đó vận tốc của tác tử do mô phỏng tính toán được an toàn đối với các tác tử khác. Con số này càng lớn thì tác tử này càng sớm phản ứng với sự hiện diện của các tác tử khác, nhưng tác tử này càng ít tự do hơn trong việc chọn vận tốc. Giá trị quá cao sẽ làm chuyển động của các tác tử chậm đi đáng kể. Phải là số dương.
 
 .. rst-class:: classref-item-separator
 
@@ -845,7 +845,7 @@ The minimal amount of time for which the agent's velocities that are computed by
 
 |void| **agent_set_time_horizon_obstacles**\ (\ agent\: :ref:`RID<class_RID>`, time_horizon\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_time_horizon_obstacles>`
 
-The minimal amount of time for which the agent's velocities that are computed by the simulation are safe with respect to static avoidance obstacles. The larger this number, the sooner this agent will respond to the presence of static avoidance obstacles, but the less freedom this agent has in choosing its velocities. A too high value will slow down agents movement considerably. Must be positive.
+Khoảng thời gian tối thiểu mà trong đó vận tốc của tác tử do mô phỏng tính toán được an toàn đối với các chướng ngại vật tránh né tĩnh. Con số này càng lớn thì tác tử này càng sớm phản ứng với sự hiện diện của các chướng ngại vật tránh né tĩnh, nhưng tác tử này càng ít tự do hơn trong việc chọn vận tốc. Giá trị quá cao sẽ làm chuyển động của các tác tử chậm đi đáng kể. Phải là số dương.
 
 .. rst-class:: classref-item-separator
 
@@ -857,7 +857,7 @@ The minimal amount of time for which the agent's velocities that are computed by
 
 |void| **agent_set_velocity**\ (\ agent\: :ref:`RID<class_RID>`, velocity\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_velocity>`
 
-Sets ``velocity`` as the new wanted velocity for the specified ``agent``. The avoidance simulation will try to fulfill this velocity if possible but will modify it to avoid collision with other agent's and obstacles. When an agent is teleported to a new position far away use :ref:`agent_set_velocity_forced()<class_NavigationServer2D_method_agent_set_velocity_forced>` instead to reset the internal velocity state.
+Đặt ``velocity`` làm vận tốc mong muốn mới cho ``agent`` được chỉ định. Mô phỏng tránh né sẽ cố gắng đáp ứng vận tốc này nếu có thể, nhưng sẽ điều chỉnh nó để tránh va chạm với các tác tử và chướng ngại vật khác. Khi một tác tử được dịch chuyển tức thời đến một vị trí mới ở xa, hãy sử dụng :ref:`agent_set_velocity_forced()<class_NavigationServer2D_method_agent_set_velocity_forced>` thay thế để đặt lại trạng thái vận tốc nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -869,7 +869,7 @@ Sets ``velocity`` as the new wanted velocity for the specified ``agent``. The av
 
 |void| **agent_set_velocity_forced**\ (\ agent\: :ref:`RID<class_RID>`, velocity\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationServer2D_method_agent_set_velocity_forced>`
 
-Replaces the internal velocity in the collision avoidance simulation with ``velocity`` for the specified ``agent``. When an agent is teleported to a new position far away this function should be used in the same frame. If called frequently this function can get agents stuck.
+Thay thế vận tốc nội bộ trong mô phỏng tránh va chạm bằng ``velocity`` cho ``agent`` được chỉ định. Khi một agent được dịch chuyển tức thời đến một vị trí mới ở xa, nên sử dụng hàm này trong cùng frame. Nếu được gọi thường xuyên, hàm này có thể khiến các agent bị mắc kẹt.
 
 .. rst-class:: classref-item-separator
 
@@ -881,7 +881,7 @@ Replaces the internal velocity in the collision avoidance simulation with ``velo
 
 |void| **bake_from_source_geometry_data**\ (\ navigation_polygon\: :ref:`NavigationPolygon<class_NavigationPolygon>`, source_geometry_data\: :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`, callback\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_NavigationServer2D_method_bake_from_source_geometry_data>`
 
-Bakes the provided ``navigation_polygon`` with the data from the provided ``source_geometry_data``. After the process is finished the optional ``callback`` will be called.
+Bake ``navigation_polygon`` được cung cấp bằng dữ liệu từ ``source_geometry_data`` được cung cấp. Sau khi quá trình hoàn tất, ``callback`` tùy chọn sẽ được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -893,7 +893,7 @@ Bakes the provided ``navigation_polygon`` with the data from the provided ``sour
 
 |void| **bake_from_source_geometry_data_async**\ (\ navigation_polygon\: :ref:`NavigationPolygon<class_NavigationPolygon>`, source_geometry_data\: :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`, callback\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_NavigationServer2D_method_bake_from_source_geometry_data_async>`
 
-Bakes the provided ``navigation_polygon`` with the data from the provided ``source_geometry_data`` as an async task running on a background thread. After the process is finished the optional ``callback`` will be called.
+Bake ``navigation_polygon`` được cung cấp bằng dữ liệu từ ``source_geometry_data`` được cung cấp dưới dạng một async task chạy trên background thread. Sau khi quá trình hoàn tất, ``callback`` tùy chọn sẽ được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -905,7 +905,7 @@ Bakes the provided ``navigation_polygon`` with the data from the provided ``sour
 
 |void| **free_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationServer2D_method_free_rid>`
 
-Destroys the given RID.
+Hủy RID đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -917,7 +917,7 @@ Destroys the given RID.
 
 :ref:`bool<class_bool>` **get_debug_enabled**\ (\ ) |const| :ref:`🔗<class_NavigationServer2D_method_get_debug_enabled>`
 
-Returns ``true`` when the NavigationServer has debug enabled.
+Trả về ``true`` khi NavigationServer bật chế độ debug.
 
 .. rst-class:: classref-item-separator
 
@@ -929,7 +929,7 @@ Returns ``true`` when the NavigationServer has debug enabled.
 
 :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_maps**\ (\ ) |const| :ref:`🔗<class_NavigationServer2D_method_get_maps>`
 
-Returns all created navigation map :ref:`RID<class_RID>`\ s on the NavigationServer. This returns both 2D and 3D created navigation maps as there is technically no distinction between them.
+Trả về tất cả :ref:`RID<class_RID>`\ s map điều hướng đã được tạo trên NavigationServer. Kết quả này bao gồm cả các map điều hướng 2D và 3D đã được tạo vì về mặt kỹ thuật không có sự phân biệt giữa chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -941,7 +941,7 @@ Returns all created navigation map :ref:`RID<class_RID>`\ s on the NavigationSer
 
 :ref:`int<class_int>` **get_process_info**\ (\ process_info\: :ref:`ProcessInfo<enum_NavigationServer2D_ProcessInfo>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_get_process_info>`
 
-Returns information about the current state of the NavigationServer.
+Trả về thông tin về trạng thái hiện tại của NavigationServer.
 
 .. rst-class:: classref-item-separator
 
@@ -953,7 +953,7 @@ Returns information about the current state of the NavigationServer.
 
 :ref:`bool<class_bool>` **is_baking_navigation_polygon**\ (\ navigation_polygon\: :ref:`NavigationPolygon<class_NavigationPolygon>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_is_baking_navigation_polygon>`
 
-Returns ``true`` when the provided navigation polygon is being baked on a background thread.
+Trả về ``true`` khi polygon điều hướng được bake trên một background thread.
 
 .. rst-class:: classref-item-separator
 
@@ -965,7 +965,7 @@ Returns ``true`` when the provided navigation polygon is being baked on a backgr
 
 :ref:`RID<class_RID>` **link_create**\ (\ ) :ref:`🔗<class_NavigationServer2D_method_link_create>`
 
-Create a new link between two positions on a map.
+Tạo một link mới giữa hai vị trí trên bản đồ.
 
 .. rst-class:: classref-item-separator
 
@@ -977,7 +977,7 @@ Create a new link between two positions on a map.
 
 :ref:`bool<class_bool>` **link_get_enabled**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_enabled>`
 
-Returns ``true`` if the specified ``link`` is enabled.
+Trả về ``true`` nếu ``link`` được chỉ định đã được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -989,7 +989,7 @@ Returns ``true`` if the specified ``link`` is enabled.
 
 :ref:`Vector2<class_Vector2>` **link_get_end_position**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_end_position>`
 
-Returns the ending position of this ``link``.
+Trả về vị trí kết thúc của ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1001,7 +1001,7 @@ Returns the ending position of this ``link``.
 
 :ref:`float<class_float>` **link_get_enter_cost**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_enter_cost>`
 
-Returns the enter cost of this ``link``.
+Trả về chi phí đi vào của ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1013,9 +1013,9 @@ Returns the enter cost of this ``link``.
 
 :ref:`int<class_int>` **link_get_iteration_id**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_iteration_id>`
 
-Returns the current iteration ID of the navigation link. Every time the navigation link changes and synchronizes, the iteration ID increases. An iteration ID of ``0`` means the navigation link has never synchronized.
+Trả về ID lần lặp hiện tại của navigation link. Mỗi khi navigation link thay đổi và đồng bộ hóa, ID lần lặp sẽ tăng. ID lần lặp bằng ``0`` có nghĩa là navigation link chưa bao giờ được đồng bộ hóa.
 
-\ **Note:** The iteration ID will wrap around to ``1`` after reaching its range limit.
+\ **Lưu ý:** ID lần lặp sẽ quay vòng về ``1`` sau khi đạt giới hạn phạm vi.
 
 .. rst-class:: classref-item-separator
 
@@ -1027,7 +1027,7 @@ Returns the current iteration ID of the navigation link. Every time the navigati
 
 :ref:`RID<class_RID>` **link_get_map**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_map>`
 
-Returns the navigation map :ref:`RID<class_RID>` the requested ``link`` is currently assigned to.
+Trả về bản đồ điều hướng :ref:`RID<class_RID>` mà ``link`` được chỉ định hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1039,7 +1039,7 @@ Returns the navigation map :ref:`RID<class_RID>` the requested ``link`` is curre
 
 :ref:`int<class_int>` **link_get_navigation_layers**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_navigation_layers>`
 
-Returns the navigation layers for this ``link``.
+Trả về các lớp điều hướng của ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1051,7 +1051,7 @@ Returns the navigation layers for this ``link``.
 
 :ref:`int<class_int>` **link_get_owner_id**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_owner_id>`
 
-Returns the ``ObjectID`` of the object which manages this link.
+Trả về ``ObjectID`` của đối tượng quản lý liên kết này.
 
 .. rst-class:: classref-item-separator
 
@@ -1063,7 +1063,7 @@ Returns the ``ObjectID`` of the object which manages this link.
 
 :ref:`Vector2<class_Vector2>` **link_get_start_position**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_start_position>`
 
-Returns the starting position of this ``link``.
+Trả về vị trí bắt đầu của ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1075,7 +1075,7 @@ Returns the starting position of this ``link``.
 
 :ref:`float<class_float>` **link_get_travel_cost**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_get_travel_cost>`
 
-Returns the travel cost of this ``link``.
+Trả về chi phí di chuyển của ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1087,7 +1087,7 @@ Returns the travel cost of this ``link``.
 
 :ref:`bool<class_bool>` **link_is_bidirectional**\ (\ link\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_link_is_bidirectional>`
 
-Returns whether this ``link`` can be travelled in both directions.
+Trả về liệu ``link`` này có thể được di chuyển theo cả hai hướng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1099,7 +1099,7 @@ Returns whether this ``link`` can be travelled in both directions.
 
 |void| **link_set_bidirectional**\ (\ link\: :ref:`RID<class_RID>`, bidirectional\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_bidirectional>`
 
-Sets whether this ``link`` can be travelled in both directions.
+Đặt việc ``link`` này có thể được di chuyển theo cả hai hướng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1111,7 +1111,7 @@ Sets whether this ``link`` can be travelled in both directions.
 
 |void| **link_set_enabled**\ (\ link\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_enabled>`
 
-If ``enabled`` is ``true``, the specified ``link`` will contribute to its current navigation map.
+Nếu ``enabled`` là ``true``, ``link`` được chỉ định sẽ đóng góp vào bản đồ điều hướng hiện tại của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1123,7 +1123,7 @@ If ``enabled`` is ``true``, the specified ``link`` will contribute to its curren
 
 |void| **link_set_end_position**\ (\ link\: :ref:`RID<class_RID>`, position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_end_position>`
 
-Sets the exit position for the ``link``.
+Đặt vị trí thoát cho ``link``.
 
 .. rst-class:: classref-item-separator
 
@@ -1135,7 +1135,7 @@ Sets the exit position for the ``link``.
 
 |void| **link_set_enter_cost**\ (\ link\: :ref:`RID<class_RID>`, enter_cost\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_enter_cost>`
 
-Sets the ``enter_cost`` for this ``link``.
+Đặt ``enter_cost`` cho ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1147,7 +1147,7 @@ Sets the ``enter_cost`` for this ``link``.
 
 |void| **link_set_map**\ (\ link\: :ref:`RID<class_RID>`, map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_map>`
 
-Sets the navigation map :ref:`RID<class_RID>` for the link.
+Đặt :ref:`RID<class_RID>` của bản đồ điều hướng cho liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -1159,7 +1159,7 @@ Sets the navigation map :ref:`RID<class_RID>` for the link.
 
 |void| **link_set_navigation_layers**\ (\ link\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_navigation_layers>`
 
-Set the links's navigation layers. This allows selecting links from a path request (when using :ref:`map_get_path()<class_NavigationServer2D_method_map_get_path>`).
+Đặt các lớp điều hướng của liên kết. Điều này cho phép chọn các liên kết từ một yêu cầu đường đi (khi sử dụng :ref:`map_get_path()<class_NavigationServer2D_method_map_get_path>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1171,7 +1171,7 @@ Set the links's navigation layers. This allows selecting links from a path reque
 
 |void| **link_set_owner_id**\ (\ link\: :ref:`RID<class_RID>`, owner_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_owner_id>`
 
-Set the ``ObjectID`` of the object which manages this link.
+Đặt ``ObjectID`` của đối tượng quản lý liên kết này.
 
 .. rst-class:: classref-item-separator
 
@@ -1183,7 +1183,7 @@ Set the ``ObjectID`` of the object which manages this link.
 
 |void| **link_set_start_position**\ (\ link\: :ref:`RID<class_RID>`, position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_start_position>`
 
-Sets the entry position for this ``link``.
+Đặt vị trí đầu vào cho ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1195,7 +1195,7 @@ Sets the entry position for this ``link``.
 
 |void| **link_set_travel_cost**\ (\ link\: :ref:`RID<class_RID>`, travel_cost\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_link_set_travel_cost>`
 
-Sets the ``travel_cost`` for this ``link``.
+Thiết lập ``travel_cost`` cho ``link`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1207,7 +1207,7 @@ Sets the ``travel_cost`` for this ``link``.
 
 :ref:`RID<class_RID>` **map_create**\ (\ ) :ref:`🔗<class_NavigationServer2D_method_map_create>`
 
-Create a new map.
+Tạo một map mới.
 
 .. rst-class:: classref-item-separator
 
@@ -1219,15 +1219,15 @@ Create a new map.
 
 |void| **map_force_update**\ (\ map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_force_update>`
 
-**Deprecated:** This method is no longer supported, as it is incompatible with asynchronous updates. It can only be used in a single-threaded context, at your own risk.
+**Đã lỗi thời:** Phương thức này không còn được hỗ trợ vì không tương thích với các bản cập nhật bất đồng bộ. Bạn chỉ có thể sử dụng phương thức này trong ngữ cảnh đơn luồng và tự chịu rủi ro.
 
-This function immediately forces synchronization of the specified navigation ``map`` :ref:`RID<class_RID>`. By default navigation maps are only synchronized at the end of each physics frame. This function can be used to immediately (re)calculate all the navigation meshes and region connections of the navigation map. This makes it possible to query a navigation path for a changed map immediately and in the same frame (multiple times if needed).
+Hàm này ngay lập tức buộc đồng bộ hóa ``map`` :ref:`RID<class_RID>` điều hướng được chỉ định. Theo mặc định, các map điều hướng chỉ được đồng bộ hóa vào cuối mỗi khung vật lý. Có thể sử dụng hàm này để ngay lập tức tính toán lại tất cả navigation mesh và kết nối vùng của map điều hướng. Nhờ đó, bạn có thể truy vấn đường đi điều hướng cho một map đã thay đổi ngay lập tức và trong cùng một khung hình, kể cả nhiều lần nếu cần.
 
-Due to technical restrictions the current NavigationServer command queue will be flushed. This means all already queued update commands for this physics frame will be executed, even those intended for other maps, regions and agents not part of the specified map. The expensive computation of the navigation meshes and region connections of a map will only be done for the specified map. Other maps will receive the normal synchronization at the end of the physics frame. Should the specified map receive changes after the forced update it will update again as well when the other maps receive their update.
+Do các hạn chế kỹ thuật, hàng đợi lệnh NavigationServer hiện tại sẽ được xả. Điều này có nghĩa là tất cả lệnh cập nhật đã xếp hàng cho khung vật lý này sẽ được thực thi, kể cả những lệnh dành cho các map, vùng và agent khác không thuộc map được chỉ định. Phép tính tốn kém để tạo navigation mesh và kết nối vùng của một map chỉ được thực hiện cho map được chỉ định. Các map khác sẽ nhận được hoạt động đồng bộ hóa bình thường vào cuối khung vật lý. Nếu map được chỉ định nhận thay đổi sau khi cập nhật bắt buộc, map đó cũng sẽ được cập nhật lại khi các map khác nhận cập nhật của chúng.
 
-Avoidance processing and dispatch of the ``safe_velocity`` signals is unaffected by this function and continues to happen for all maps and agents at the end of the physics frame.
+Quá trình xử lý tránh né và gửi các tín hiệu ``safe_velocity`` không bị ảnh hưởng bởi hàm này và vẫn tiếp tục diễn ra cho tất cả map và agent vào cuối khung vật lý.
 
-\ **Note:** With great power comes great responsibility. This function should only be used by users that really know what they are doing and have a good reason for it. Forcing an immediate update of a navigation map requires locking the NavigationServer and flushing the entire NavigationServer command queue. Not only can this severely impact the performance of a game but it can also introduce bugs if used inappropriately without much foresight.
+\ **Lưu ý:** Quyền năng lớn đi kèm trách nhiệm lớn. Chỉ những người dùng thực sự hiểu rõ mình đang làm gì và có lý do chính đáng mới nên sử dụng hàm này. Việc buộc cập nhật ngay lập tức một map điều hướng yêu cầu khóa NavigationServer và xả toàn bộ hàng đợi lệnh của NavigationServer. Điều này không chỉ có thể ảnh hưởng nghiêm trọng đến hiệu năng của trò chơi mà còn có thể gây ra lỗi nếu được sử dụng không phù hợp và thiếu cân nhắc.
 
 .. rst-class:: classref-item-separator
 
@@ -1239,7 +1239,7 @@ Avoidance processing and dispatch of the ``safe_velocity`` signals is unaffected
 
 :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **map_get_agents**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_agents>`
 
-Returns all navigation agents :ref:`RID<class_RID>`\ s that are currently assigned to the requested navigation ``map``.
+Trả về tất cả các tác nhân điều hướng :ref:`RID<class_RID>`\ s hiện được gán cho ``map`` điều hướng được yêu cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -1251,7 +1251,7 @@ Returns all navigation agents :ref:`RID<class_RID>`\ s that are currently assign
 
 :ref:`float<class_float>` **map_get_cell_size**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_cell_size>`
 
-Returns the map cell size used to rasterize the navigation mesh vertices.
+Trả về kích thước ô bản đồ được sử dụng để raster hóa các đỉnh của navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -1263,7 +1263,7 @@ Returns the map cell size used to rasterize the navigation mesh vertices.
 
 :ref:`Vector2<class_Vector2>` **map_get_closest_point**\ (\ map\: :ref:`RID<class_RID>`, to_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_closest_point>`
 
-Returns the navigation mesh surface point closest to the provided ``to_point`` on the navigation ``map``.
+Trả về điểm bề mặt của navigation mesh gần ``to_point`` được cung cấp nhất trên ``map`` điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -1275,7 +1275,7 @@ Returns the navigation mesh surface point closest to the provided ``to_point`` o
 
 :ref:`RID<class_RID>` **map_get_closest_point_owner**\ (\ map\: :ref:`RID<class_RID>`, to_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_closest_point_owner>`
 
-Returns the owner region RID for the navigation mesh surface point closest to the provided ``to_point`` on the navigation ``map``.
+Trả về RID của vùng sở hữu điểm bề mặt của navigation mesh gần ``to_point`` được cung cấp nhất trên ``map`` điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -1287,7 +1287,7 @@ Returns the owner region RID for the navigation mesh surface point closest to th
 
 :ref:`float<class_float>` **map_get_edge_connection_margin**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_edge_connection_margin>`
 
-Returns the edge connection margin of the map. The edge connection margin is a distance used to connect two regions.
+Trả về khoảng đệm kết nối cạnh của bản đồ. Khoảng đệm kết nối cạnh là khoảng cách được sử dụng để kết nối hai vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1299,9 +1299,9 @@ Returns the edge connection margin of the map. The edge connection margin is a d
 
 :ref:`int<class_int>` **map_get_iteration_id**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_iteration_id>`
 
-Returns the current iteration id of the navigation map. Every time the navigation map changes and synchronizes the iteration id increases. An iteration id of 0 means the navigation map has never synchronized.
+Trả về id lần lặp hiện tại của bản đồ điều hướng. Mỗi khi bản đồ điều hướng thay đổi và đồng bộ hóa, id lần lặp sẽ tăng. Id lần lặp bằng 0 nghĩa là bản đồ điều hướng chưa từng được đồng bộ hóa.
 
-\ **Note:** The iteration id will wrap back to 1 after reaching its range limit.
+\ **Lưu ý:** Id lần lặp sẽ quay lại 1 sau khi đạt đến giới hạn phạm vi.
 
 .. rst-class:: classref-item-separator
 
@@ -1313,7 +1313,7 @@ Returns the current iteration id of the navigation map. Every time the navigatio
 
 :ref:`float<class_float>` **map_get_link_connection_radius**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_link_connection_radius>`
 
-Returns the link connection radius of the map. This distance is the maximum range any link will search for navigation mesh polygons to connect to.
+Trả về bán kính kết nối liên kết của bản đồ. Khoảng cách này là phạm vi tối đa mà bất kỳ liên kết nào cũng sẽ tìm kiếm các đa giác navigation mesh để kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -1325,7 +1325,7 @@ Returns the link connection radius of the map. This distance is the maximum rang
 
 :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **map_get_links**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_links>`
 
-Returns all navigation link :ref:`RID<class_RID>`\ s that are currently assigned to the requested navigation ``map``.
+Trả về tất cả các liên kết navigation :ref:`RID<class_RID>`\ s hiện được gán cho ``map`` navigation được yêu cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -1337,7 +1337,7 @@ Returns all navigation link :ref:`RID<class_RID>`\ s that are currently assigned
 
 :ref:`float<class_float>` **map_get_merge_rasterizer_cell_scale**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_merge_rasterizer_cell_scale>`
 
-Returns map's internal merge rasterizer cell scale.
+Trả về tỷ lệ ô rasterizer hợp nhất nội bộ của bản đồ.
 
 .. rst-class:: classref-item-separator
 
@@ -1349,7 +1349,7 @@ Returns map's internal merge rasterizer cell scale.
 
 :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **map_get_obstacles**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_obstacles>`
 
-Returns all navigation obstacle :ref:`RID<class_RID>`\ s that are currently assigned to the requested navigation ``map``.
+Trả về tất cả các chướng ngại vật navigation :ref:`RID<class_RID>`\ s hiện được gán cho ``map`` navigation được yêu cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -1361,7 +1361,7 @@ Returns all navigation obstacle :ref:`RID<class_RID>`\ s that are currently assi
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **map_get_path**\ (\ map\: :ref:`RID<class_RID>`, origin\: :ref:`Vector2<class_Vector2>`, destination\: :ref:`Vector2<class_Vector2>`, optimize\: :ref:`bool<class_bool>`, navigation_layers\: :ref:`int<class_int>` = 1\ ) :ref:`🔗<class_NavigationServer2D_method_map_get_path>`
 
-Returns the navigation path to reach the destination from the origin. ``navigation_layers`` is a bitmask of all region navigation layers that are allowed to be in the path.
+Trả về đường dẫn navigation để đi từ điểm gốc đến đích. ``navigation_layers`` là bitmask của tất cả các lớp navigation của region được phép xuất hiện trong đường dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -1373,11 +1373,11 @@ Returns the navigation path to reach the destination from the origin. ``navigati
 
 :ref:`Vector2<class_Vector2>` **map_get_random_point**\ (\ map\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`, uniformly\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_random_point>`
 
-Returns a random position picked from all map region polygons with matching ``navigation_layers``.
+Trả về một vị trí ngẫu nhiên được chọn từ tất cả các đa giác region của bản đồ có ``navigation_layers`` tương ứng.
 
-If ``uniformly`` is ``true``, all map regions, polygons, and faces are weighted by their surface area (slower).
+Nếu ``uniformly`` là ``true``, tất cả các region, đa giác và mặt của bản đồ sẽ được tính trọng số theo diện tích bề mặt của chúng (chậm hơn).
 
-If ``uniformly`` is ``false``, just a random region and a random polygon are picked (faster).
+Nếu ``uniformly`` là ``false``, chỉ một vùng ngẫu nhiên và một polygon ngẫu nhiên được chọn (nhanh hơn).
 
 .. rst-class:: classref-item-separator
 
@@ -1389,7 +1389,7 @@ If ``uniformly`` is ``false``, just a random region and a random polygon are pic
 
 :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **map_get_regions**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_regions>`
 
-Returns all navigation regions :ref:`RID<class_RID>`\ s that are currently assigned to the requested navigation ``map``.
+Trả về tất cả các vùng điều hướng :ref:`RID<class_RID>`\ s hiện được gán cho ``map`` điều hướng được yêu cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -1401,7 +1401,7 @@ Returns all navigation regions :ref:`RID<class_RID>`\ s that are currently assig
 
 :ref:`bool<class_bool>` **map_get_use_async_iterations**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_use_async_iterations>`
 
-Returns ``true`` if the ``map`` synchronization uses an async process that runs on a background thread.
+Trả về ``true`` nếu quá trình đồng bộ hóa ``map`` sử dụng một tiến trình async chạy trên background thread.
 
 .. rst-class:: classref-item-separator
 
@@ -1413,7 +1413,7 @@ Returns ``true`` if the ``map`` synchronization uses an async process that runs 
 
 :ref:`bool<class_bool>` **map_get_use_edge_connections**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_get_use_edge_connections>`
 
-Returns whether the navigation ``map`` allows navigation regions to use edge connections to connect with other navigation regions within proximity of the navigation map edge connection margin.
+Trả về việc ``map`` điều hướng có cho phép các vùng điều hướng sử dụng edge connection để kết nối với các vùng điều hướng khác trong phạm vi khoảng cách của lề kết nối edge của navigation map hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1425,7 +1425,7 @@ Returns whether the navigation ``map`` allows navigation regions to use edge con
 
 :ref:`bool<class_bool>` **map_is_active**\ (\ map\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_map_is_active>`
 
-Returns ``true`` if the map is active.
+Trả về ``true`` nếu bản đồ đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -1437,7 +1437,7 @@ Returns ``true`` if the map is active.
 
 |void| **map_set_active**\ (\ map\: :ref:`RID<class_RID>`, active\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_set_active>`
 
-Sets the map active.
+Đặt bản đồ ở trạng thái hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -1449,7 +1449,7 @@ Sets the map active.
 
 |void| **map_set_cell_size**\ (\ map\: :ref:`RID<class_RID>`, cell_size\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_set_cell_size>`
 
-Sets the map cell size used to rasterize the navigation mesh vertices. Must match with the cell size of the used navigation meshes.
+Thiết lập kích thước ô của bản đồ được dùng để raster hóa các đỉnh của navigation mesh. Phải khớp với kích thước ô của các navigation mesh được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1461,7 +1461,7 @@ Sets the map cell size used to rasterize the navigation mesh vertices. Must matc
 
 |void| **map_set_edge_connection_margin**\ (\ map\: :ref:`RID<class_RID>`, margin\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_set_edge_connection_margin>`
 
-Set the map edge connection margin used to weld the compatible region edges.
+Thiết lập khoảng biên kết nối cạnh bản đồ được sử dụng để hàn các cạnh vùng tương thích.
 
 .. rst-class:: classref-item-separator
 
@@ -1473,7 +1473,7 @@ Set the map edge connection margin used to weld the compatible region edges.
 
 |void| **map_set_link_connection_radius**\ (\ map\: :ref:`RID<class_RID>`, radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_set_link_connection_radius>`
 
-Set the map's link connection radius used to connect links to navigation polygons.
+Thiết lập bán kính kết nối liên kết của bản đồ, được sử dụng để kết nối các liên kết với các đa giác điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -1485,7 +1485,7 @@ Set the map's link connection radius used to connect links to navigation polygon
 
 |void| **map_set_merge_rasterizer_cell_scale**\ (\ map\: :ref:`RID<class_RID>`, scale\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_set_merge_rasterizer_cell_scale>`
 
-Set the map's internal merge rasterizer cell scale used to control merging sensitivity.
+Thiết lập tỷ lệ ô rasterizer hợp nhất nội bộ của bản đồ, được sử dụng để kiểm soát độ nhạy hợp nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -1497,7 +1497,7 @@ Set the map's internal merge rasterizer cell scale used to control merging sensi
 
 |void| **map_set_use_async_iterations**\ (\ map\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_set_use_async_iterations>`
 
-If ``enabled`` is ``true`` the ``map`` synchronization uses an async process that runs on a background thread.
+Nếu ``enabled`` là ``true``, quá trình đồng bộ hóa ``map`` sẽ sử dụng một tiến trình async chạy trên thread nền.
 
 .. rst-class:: classref-item-separator
 
@@ -1509,7 +1509,7 @@ If ``enabled`` is ``true`` the ``map`` synchronization uses an async process tha
 
 |void| **map_set_use_edge_connections**\ (\ map\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_map_set_use_edge_connections>`
 
-Set the navigation ``map`` edge connection use. If ``enabled`` is ``true``, the navigation map allows navigation regions to use edge connections to connect with other navigation regions within proximity of the navigation map edge connection margin.
+Thiết lập việc sử dụng kết nối cạnh ``map`` điều hướng. Nếu ``enabled`` là ``true``, bản đồ điều hướng cho phép các vùng điều hướng sử dụng kết nối cạnh để kết nối với các vùng điều hướng khác nằm trong phạm vi của khoảng biên kết nối cạnh bản đồ điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -1521,7 +1521,7 @@ Set the navigation ``map`` edge connection use. If ``enabled`` is ``true``, the 
 
 :ref:`RID<class_RID>` **obstacle_create**\ (\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_create>`
 
-Creates a new navigation obstacle.
+Tạo một chướng ngại vật điều hướng mới.
 
 .. rst-class:: classref-item-separator
 
@@ -1533,7 +1533,7 @@ Creates a new navigation obstacle.
 
 :ref:`bool<class_bool>` **obstacle_get_avoidance_enabled**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_avoidance_enabled>`
 
-Returns ``true`` if the provided ``obstacle`` has avoidance enabled.
+Trả về ``true`` nếu ``obstacle`` được cung cấp đã bật tính năng tránh.
 
 .. rst-class:: classref-item-separator
 
@@ -1545,7 +1545,7 @@ Returns ``true`` if the provided ``obstacle`` has avoidance enabled.
 
 :ref:`int<class_int>` **obstacle_get_avoidance_layers**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_avoidance_layers>`
 
-Returns the ``avoidance_layers`` bitmask of the specified ``obstacle``.
+Trả về bitmask ``avoidance_layers`` của ``obstacle`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1557,7 +1557,7 @@ Returns the ``avoidance_layers`` bitmask of the specified ``obstacle``.
 
 :ref:`RID<class_RID>` **obstacle_get_map**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_map>`
 
-Returns the navigation map :ref:`RID<class_RID>` the requested ``obstacle`` is currently assigned to.
+Trả về bản đồ điều hướng :ref:`RID<class_RID>` mà ``obstacle`` được yêu cầu hiện được gán.
 
 .. rst-class:: classref-item-separator
 
@@ -1569,7 +1569,7 @@ Returns the navigation map :ref:`RID<class_RID>` the requested ``obstacle`` is c
 
 :ref:`bool<class_bool>` **obstacle_get_paused**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_paused>`
 
-Returns ``true`` if the specified ``obstacle`` is paused.
+Trả về ``true`` nếu ``obstacle`` được chỉ định đang tạm dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -1581,7 +1581,7 @@ Returns ``true`` if the specified ``obstacle`` is paused.
 
 :ref:`Vector2<class_Vector2>` **obstacle_get_position**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_position>`
 
-Returns the position of the specified ``obstacle`` in world space.
+Trả về vị trí của ``obstacle`` được chỉ định trong không gian thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -1593,7 +1593,7 @@ Returns the position of the specified ``obstacle`` in world space.
 
 :ref:`float<class_float>` **obstacle_get_radius**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_radius>`
 
-Returns the radius of the specified dynamic ``obstacle``.
+Trả về bán kính của ``obstacle`` động được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1605,7 +1605,7 @@ Returns the radius of the specified dynamic ``obstacle``.
 
 :ref:`Vector2<class_Vector2>` **obstacle_get_velocity**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_velocity>`
 
-Returns the velocity of the specified dynamic ``obstacle``.
+Trả về vận tốc của ``obstacle`` động được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1617,7 +1617,7 @@ Returns the velocity of the specified dynamic ``obstacle``.
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **obstacle_get_vertices**\ (\ obstacle\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_obstacle_get_vertices>`
 
-Returns the outline vertices for the specified ``obstacle``.
+Trả về các đỉnh đường viền của ``obstacle`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1629,7 +1629,7 @@ Returns the outline vertices for the specified ``obstacle``.
 
 |void| **obstacle_set_avoidance_enabled**\ (\ obstacle\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_avoidance_enabled>`
 
-If ``enabled`` is ``true``, the provided ``obstacle`` affects avoidance using agents.
+Nếu ``enabled`` là ``true``, ``obstacle`` được cung cấp sẽ ảnh hưởng đến việc tránh né bằng các agent.
 
 .. rst-class:: classref-item-separator
 
@@ -1641,7 +1641,7 @@ If ``enabled`` is ``true``, the provided ``obstacle`` affects avoidance using ag
 
 |void| **obstacle_set_avoidance_layers**\ (\ obstacle\: :ref:`RID<class_RID>`, layers\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_avoidance_layers>`
 
-Set the obstacles's ``avoidance_layers`` bitmask.
+Thiết lập bitmask ``avoidance_layers`` của chướng ngại vật.
 
 .. rst-class:: classref-item-separator
 
@@ -1653,7 +1653,7 @@ Set the obstacles's ``avoidance_layers`` bitmask.
 
 |void| **obstacle_set_map**\ (\ obstacle\: :ref:`RID<class_RID>`, map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_map>`
 
-Sets the navigation map :ref:`RID<class_RID>` for the obstacle.
+Thiết lập :ref:`RID<class_RID>` của bản đồ điều hướng cho chướng ngại vật.
 
 .. rst-class:: classref-item-separator
 
@@ -1665,7 +1665,7 @@ Sets the navigation map :ref:`RID<class_RID>` for the obstacle.
 
 |void| **obstacle_set_paused**\ (\ obstacle\: :ref:`RID<class_RID>`, paused\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_paused>`
 
-If ``paused`` is ``true`` the specified ``obstacle`` will not be processed. For example, it will no longer affect avoidance velocities.
+Nếu ``paused`` là ``true``, ``obstacle`` được chỉ định sẽ không được xử lý. Ví dụ: nó sẽ không còn ảnh hưởng đến các velocity tránh né.
 
 .. rst-class:: classref-item-separator
 
@@ -1677,7 +1677,7 @@ If ``paused`` is ``true`` the specified ``obstacle`` will not be processed. For 
 
 |void| **obstacle_set_position**\ (\ obstacle\: :ref:`RID<class_RID>`, position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_position>`
 
-Sets the position of the obstacle in world space.
+Thiết lập vị trí của chướng ngại vật trong không gian thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -1689,7 +1689,7 @@ Sets the position of the obstacle in world space.
 
 |void| **obstacle_set_radius**\ (\ obstacle\: :ref:`RID<class_RID>`, radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_radius>`
 
-Sets the radius of the dynamic obstacle.
+Thiết lập bán kính của chướng ngại vật động.
 
 .. rst-class:: classref-item-separator
 
@@ -1701,7 +1701,7 @@ Sets the radius of the dynamic obstacle.
 
 |void| **obstacle_set_velocity**\ (\ obstacle\: :ref:`RID<class_RID>`, velocity\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_velocity>`
 
-Sets ``velocity`` of the dynamic ``obstacle``. Allows other agents to better predict the movement of the dynamic obstacle. Only works in combination with the radius of the obstacle.
+Thiết lập ``velocity`` của ``obstacle`` động. Cho phép các agent khác dự đoán tốt hơn chuyển động của chướng ngại vật động. Chỉ hoạt động khi kết hợp với bán kính của chướng ngại vật.
 
 .. rst-class:: classref-item-separator
 
@@ -1713,7 +1713,7 @@ Sets ``velocity`` of the dynamic ``obstacle``. Allows other agents to better pre
 
 |void| **obstacle_set_vertices**\ (\ obstacle\: :ref:`RID<class_RID>`, vertices\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationServer2D_method_obstacle_set_vertices>`
 
-Sets the outline vertices for the obstacle. If the vertices are winded in clockwise order agents will be pushed in by the obstacle, else they will be pushed out.
+Thiết lập các đỉnh đường viền cho vật cản. Nếu các đỉnh được sắp xếp theo chiều kim đồng hồ, các agent sẽ bị vật cản đẩy vào trong; nếu không, chúng sẽ bị đẩy ra ngoài.
 
 .. rst-class:: classref-item-separator
 
@@ -1725,11 +1725,11 @@ Sets the outline vertices for the obstacle. If the vertices are winded in clockw
 
 |void| **parse_source_geometry_data**\ (\ navigation_polygon\: :ref:`NavigationPolygon<class_NavigationPolygon>`, source_geometry_data\: :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`, root_node\: :ref:`Node<class_Node>`, callback\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_NavigationServer2D_method_parse_source_geometry_data>`
 
-Parses the :ref:`SceneTree<class_SceneTree>` for source geometry according to the properties of ``navigation_polygon``. Updates the provided ``source_geometry_data`` resource with the resulting data. The resource can then be used to bake a navigation mesh with :ref:`bake_from_source_geometry_data()<class_NavigationServer2D_method_bake_from_source_geometry_data>`. After the process is finished the optional ``callback`` will be called.
+Phân tích :ref:`SceneTree<class_SceneTree>` để lấy hình học nguồn theo các thuộc tính của ``navigation_polygon``. Cập nhật tài nguyên ``source_geometry_data`` được cung cấp bằng dữ liệu thu được. Sau đó, tài nguyên này có thể được dùng để bake navigation mesh bằng :ref:`bake_from_source_geometry_data()<class_NavigationServer2D_method_bake_from_source_geometry_data>`. Khi quá trình hoàn tất, ``callback`` tùy chọn sẽ được gọi.
 
-\ **Note:** This function needs to run on the main thread or with a deferred call as the SceneTree is not thread-safe.
+\ **Lưu ý:** Hàm này cần được chạy trên main thread hoặc bằng một deferred call vì SceneTree không an toàn khi chạy đa luồng.
 
-\ **Performance:** While convenient, reading data arrays from :ref:`Mesh<class_Mesh>` resources can affect the frame rate negatively. The data needs to be received from the GPU, stalling the :ref:`RenderingServer<class_RenderingServer>` in the process. For performance prefer the use of e.g. collision shapes or creating the data arrays entirely in code.
+\ **Hiệu năng:** Mặc dù thuận tiện, việc đọc các mảng dữ liệu từ tài nguyên :ref:`Mesh<class_Mesh>` có thể ảnh hưởng tiêu cực đến tốc độ khung hình. Dữ liệu cần được nhận từ GPU, khiến :ref:`RenderingServer<class_RenderingServer>` bị đình trệ trong quá trình này. Để đạt hiệu năng tốt hơn, hãy ưu tiên sử dụng các collision shape hoặc tạo toàn bộ mảng dữ liệu bằng code.
 
 .. rst-class:: classref-item-separator
 
@@ -1741,7 +1741,7 @@ Parses the :ref:`SceneTree<class_SceneTree>` for source geometry according to th
 
 |void| **query_path**\ (\ parameters\: :ref:`NavigationPathQueryParameters2D<class_NavigationPathQueryParameters2D>`, result\: :ref:`NavigationPathQueryResult2D<class_NavigationPathQueryResult2D>`, callback\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_NavigationServer2D_method_query_path>`
 
-Queries a path in a given navigation map. Start and target position and other parameters are defined through :ref:`NavigationPathQueryParameters2D<class_NavigationPathQueryParameters2D>`. Updates the provided :ref:`NavigationPathQueryResult2D<class_NavigationPathQueryResult2D>` result object with the path among other results requested by the query. After the process is finished the optional ``callback`` will be called.
+Truy vấn một path trên navigation map đã cho. Vị trí bắt đầu, vị trí đích và các tham số khác được xác định thông qua :ref:`NavigationPathQueryParameters2D<class_NavigationPathQueryParameters2D>`. Cập nhật đối tượng kết quả :ref:`NavigationPathQueryResult2D<class_NavigationPathQueryResult2D>` được cung cấp bằng path cùng với các kết quả khác được yêu cầu bởi truy vấn. Khi quá trình hoàn tất, ``callback`` tùy chọn sẽ được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -1753,7 +1753,7 @@ Queries a path in a given navigation map. Start and target position and other pa
 
 :ref:`RID<class_RID>` **region_create**\ (\ ) :ref:`🔗<class_NavigationServer2D_method_region_create>`
 
-Creates a new region.
+Tạo một region mới.
 
 .. rst-class:: classref-item-separator
 
@@ -1765,7 +1765,7 @@ Creates a new region.
 
 :ref:`Rect2<class_Rect2>` **region_get_bounds**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_bounds>`
 
-Returns the axis-aligned rectangle for the ``region``'s transformed navigation mesh.
+Trả về hình chữ nhật căn chỉnh theo trục cho navigation mesh đã biến đổi của ``region``.
 
 .. rst-class:: classref-item-separator
 
@@ -1777,7 +1777,7 @@ Returns the axis-aligned rectangle for the ``region``'s transformed navigation m
 
 :ref:`Vector2<class_Vector2>` **region_get_closest_point**\ (\ region\: :ref:`RID<class_RID>`, to_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_closest_point>`
 
-Returns the navigation mesh surface point closest to the provided ``to_point`` on the navigation ``region``.
+Trả về điểm trên bề mặt navigation mesh gần với ``to_point`` được cung cấp nhất trên navigation ``region``.
 
 .. rst-class:: classref-item-separator
 
@@ -1789,7 +1789,7 @@ Returns the navigation mesh surface point closest to the provided ``to_point`` o
 
 :ref:`Vector2<class_Vector2>` **region_get_connection_pathway_end**\ (\ region\: :ref:`RID<class_RID>`, connection\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_connection_pathway_end>`
 
-Returns the ending point of a connection door. ``connection`` is an index between 0 and the return value of :ref:`region_get_connections_count()<class_NavigationServer2D_method_region_get_connections_count>`.
+Trả về điểm kết thúc của một cửa kết nối. ``connection`` là một chỉ mục nằm giữa 0 và giá trị trả về của :ref:`region_get_connections_count()<class_NavigationServer2D_method_region_get_connections_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1801,7 +1801,7 @@ Returns the ending point of a connection door. ``connection`` is an index betwee
 
 :ref:`Vector2<class_Vector2>` **region_get_connection_pathway_start**\ (\ region\: :ref:`RID<class_RID>`, connection\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_connection_pathway_start>`
 
-Returns the starting point of a connection door. ``connection`` is an index between 0 and the return value of :ref:`region_get_connections_count()<class_NavigationServer2D_method_region_get_connections_count>`.
+Trả về điểm bắt đầu của một cửa kết nối. ``connection`` là một chỉ mục nằm giữa 0 và giá trị trả về của :ref:`region_get_connections_count()<class_NavigationServer2D_method_region_get_connections_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1813,7 +1813,7 @@ Returns the starting point of a connection door. ``connection`` is an index betw
 
 :ref:`int<class_int>` **region_get_connections_count**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_connections_count>`
 
-Returns how many connections this ``region`` has with other regions in the map.
+Trả về số lượng kết nối mà ``region`` này có với các vùng khác trên bản đồ.
 
 .. rst-class:: classref-item-separator
 
@@ -1825,7 +1825,7 @@ Returns how many connections this ``region`` has with other regions in the map.
 
 :ref:`bool<class_bool>` **region_get_enabled**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_enabled>`
 
-Returns ``true`` if the specified ``region`` is enabled.
+Trả về ``true`` nếu ``region`` được chỉ định đang bật.
 
 .. rst-class:: classref-item-separator
 
@@ -1837,7 +1837,7 @@ Returns ``true`` if the specified ``region`` is enabled.
 
 :ref:`float<class_float>` **region_get_enter_cost**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_enter_cost>`
 
-Returns the enter cost of this ``region``.
+Trả về chi phí đi vào của ``region`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -1849,9 +1849,9 @@ Returns the enter cost of this ``region``.
 
 :ref:`int<class_int>` **region_get_iteration_id**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_iteration_id>`
 
-Returns the current iteration ID of the navigation region. Every time the navigation region changes and synchronizes, the iteration ID increases. An iteration ID of ``0`` means the navigation region has never synchronized.
+Trả về ID lần lặp hiện tại của vùng navigation. Mỗi khi vùng navigation thay đổi và đồng bộ hóa, ID lần lặp sẽ tăng. ID lần lặp bằng ``0`` có nghĩa là vùng navigation chưa từng được đồng bộ hóa.
 
-\ **Note:** The iteration ID will wrap around to ``1`` after reaching its range limit.
+\ **Lưu ý:** ID lần lặp sẽ quay vòng về ``1`` sau khi đạt giới hạn phạm vi.
 
 .. rst-class:: classref-item-separator
 
@@ -1863,7 +1863,7 @@ Returns the current iteration ID of the navigation region. Every time the naviga
 
 :ref:`RID<class_RID>` **region_get_map**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_map>`
 
-Returns the navigation map :ref:`RID<class_RID>` the requested ``region`` is currently assigned to.
+Trả về bản đồ điều hướng :ref:`RID<class_RID>` mà ``region`` được yêu cầu hiện đang được gán vào.
 
 .. rst-class:: classref-item-separator
 
@@ -1875,7 +1875,7 @@ Returns the navigation map :ref:`RID<class_RID>` the requested ``region`` is cur
 
 :ref:`int<class_int>` **region_get_navigation_layers**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_navigation_layers>`
 
-Returns the region's navigation layers.
+Trả về các lớp điều hướng của region.
 
 .. rst-class:: classref-item-separator
 
@@ -1887,7 +1887,7 @@ Returns the region's navigation layers.
 
 :ref:`int<class_int>` **region_get_owner_id**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_owner_id>`
 
-Returns the ``ObjectID`` of the object which manages this region.
+Trả về ``ObjectID`` của đối tượng quản lý region này.
 
 .. rst-class:: classref-item-separator
 
@@ -1899,11 +1899,11 @@ Returns the ``ObjectID`` of the object which manages this region.
 
 :ref:`Vector2<class_Vector2>` **region_get_random_point**\ (\ region\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`, uniformly\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_random_point>`
 
-Returns a random position picked from all region polygons with matching ``navigation_layers``.
+Trả về một vị trí ngẫu nhiên được chọn từ tất cả các polygon của region có ``navigation_layers`` tương ứng.
 
-If ``uniformly`` is ``true``, all region polygons and faces are weighted by their surface area (slower).
+Nếu ``uniformly`` là ``true``, tất cả các polygon và face của region sẽ được tính trọng số theo diện tích bề mặt (chậm hơn).
 
-If ``uniformly`` is ``false``, just a random polygon and face is picked (faster).
+Nếu ``uniformly`` là ``false``, chỉ một polygon và face ngẫu nhiên được chọn (nhanh hơn).
 
 .. rst-class:: classref-item-separator
 
@@ -1915,7 +1915,7 @@ If ``uniformly`` is ``false``, just a random polygon and face is picked (faster)
 
 :ref:`Transform2D<class_Transform2D>` **region_get_transform**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_transform>`
 
-Returns the global transformation of this ``region``.
+Trả về phép biến đổi toàn cục của ``region``.
 
 .. rst-class:: classref-item-separator
 
@@ -1927,7 +1927,7 @@ Returns the global transformation of this ``region``.
 
 :ref:`float<class_float>` **region_get_travel_cost**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_travel_cost>`
 
-Returns the travel cost of this ``region``.
+Trả về chi phí di chuyển của ``region``.
 
 .. rst-class:: classref-item-separator
 
@@ -1939,7 +1939,7 @@ Returns the travel cost of this ``region``.
 
 :ref:`bool<class_bool>` **region_get_use_async_iterations**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_use_async_iterations>`
 
-Returns ``true`` if the ``region`` uses an async synchronization process that runs on a background thread.
+Trả về ``true`` nếu ``region`` sử dụng quy trình đồng bộ hóa async chạy trên một background thread.
 
 .. rst-class:: classref-item-separator
 
@@ -1951,7 +1951,7 @@ Returns ``true`` if the ``region`` uses an async synchronization process that ru
 
 :ref:`bool<class_bool>` **region_get_use_edge_connections**\ (\ region\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_get_use_edge_connections>`
 
-Returns whether the navigation ``region`` is set to use edge connections to connect with other navigation regions within proximity of the navigation map edge connection margin.
+Trả về liệu navigation ``region`` có được thiết lập để sử dụng các kết nối biên nhằm kết nối với các navigation region khác nằm trong phạm vi margin kết nối biên của navigation map hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1963,11 +1963,11 @@ Returns whether the navigation ``region`` is set to use edge connections to conn
 
 :ref:`bool<class_bool>` **region_owns_point**\ (\ region\: :ref:`RID<class_RID>`, point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_NavigationServer2D_method_region_owns_point>`
 
-Returns ``true`` if the provided ``point`` in world space is currently owned by the provided navigation ``region``. Owned in this context means that one of the region's navigation mesh polygon faces has a possible position at the closest distance to this point compared to all other navigation meshes from other navigation regions that are also registered on the navigation map of the provided region.
+Trả về ``true`` nếu ``point`` được cung cấp trong world space hiện thuộc quyền sở hữu của navigation ``region`` được cung cấp. Trong ngữ cảnh này, thuộc quyền sở hữu có nghĩa là một trong các mặt polygon của navigation mesh thuộc region có vị trí khả dĩ ở khoảng cách gần nhất với điểm này khi so sánh với tất cả navigation mesh khác từ các navigation region khác cũng đã được đăng ký trên navigation map của region được cung cấp.
 
-If multiple navigation meshes have positions at equal distance the navigation region whose polygons are processed first wins the ownership. Polygons are processed in the same order that navigation regions were registered on the NavigationServer.
+Nếu nhiều navigation mesh có các vị trí cách đều nhau, navigation region có các polygon được xử lý trước sẽ giành quyền sở hữu. Các polygon được xử lý theo cùng thứ tự mà các navigation region được đăng ký trên NavigationServer.
 
-\ **Note:** If navigation meshes from different navigation regions overlap (which should be avoided in general) the result might not be what is expected.
+\ **Lưu ý:** Nếu các navigation mesh từ những navigation region khác nhau chồng lấn lên nhau (điều này nói chung nên tránh), kết quả có thể không như mong đợi.
 
 .. rst-class:: classref-item-separator
 
@@ -1979,7 +1979,7 @@ If multiple navigation meshes have positions at equal distance the navigation re
 
 |void| **region_set_enabled**\ (\ region\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_enabled>`
 
-If ``enabled`` is ``true`` the specified ``region`` will contribute to its current navigation map.
+Nếu ``enabled`` là ``true``, ``region`` được chỉ định sẽ đóng góp vào bản đồ điều hướng hiện tại của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1991,7 +1991,7 @@ If ``enabled`` is ``true`` the specified ``region`` will contribute to its curre
 
 |void| **region_set_enter_cost**\ (\ region\: :ref:`RID<class_RID>`, enter_cost\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_enter_cost>`
 
-Sets the ``enter_cost`` for this ``region``.
+Đặt ``enter_cost`` cho ``region`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -2003,7 +2003,7 @@ Sets the ``enter_cost`` for this ``region``.
 
 |void| **region_set_map**\ (\ region\: :ref:`RID<class_RID>`, map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_map>`
 
-Sets the map for the region.
+Đặt bản đồ cho vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2015,7 +2015,7 @@ Sets the map for the region.
 
 |void| **region_set_navigation_layers**\ (\ region\: :ref:`RID<class_RID>`, navigation_layers\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_navigation_layers>`
 
-Set the region's navigation layers. This allows selecting regions from a path request (when using :ref:`map_get_path()<class_NavigationServer2D_method_map_get_path>`).
+Đặt các lớp điều hướng của vùng. Điều này cho phép chọn các vùng từ một yêu cầu đường dẫn (khi sử dụng :ref:`map_get_path()<class_NavigationServer2D_method_map_get_path>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2027,7 +2027,7 @@ Set the region's navigation layers. This allows selecting regions from a path re
 
 |void| **region_set_navigation_polygon**\ (\ region\: :ref:`RID<class_RID>`, navigation_polygon\: :ref:`NavigationPolygon<class_NavigationPolygon>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_navigation_polygon>`
 
-Sets the ``navigation_polygon`` for the region.
+Đặt ``navigation_polygon`` cho vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2039,7 +2039,7 @@ Sets the ``navigation_polygon`` for the region.
 
 |void| **region_set_owner_id**\ (\ region\: :ref:`RID<class_RID>`, owner_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_owner_id>`
 
-Set the ``ObjectID`` of the object which manages this region.
+Đặt ``ObjectID`` của đối tượng quản lý vùng này.
 
 .. rst-class:: classref-item-separator
 
@@ -2051,7 +2051,7 @@ Set the ``ObjectID`` of the object which manages this region.
 
 |void| **region_set_transform**\ (\ region\: :ref:`RID<class_RID>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_transform>`
 
-Sets the global transformation for the region.
+Đặt phép biến đổi toàn cục cho vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2063,7 +2063,7 @@ Sets the global transformation for the region.
 
 |void| **region_set_travel_cost**\ (\ region\: :ref:`RID<class_RID>`, travel_cost\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_travel_cost>`
 
-Sets the ``travel_cost`` for this ``region``.
+Đặt ``travel_cost`` cho ``region`` này.
 
 .. rst-class:: classref-item-separator
 
@@ -2075,7 +2075,7 @@ Sets the ``travel_cost`` for this ``region``.
 
 |void| **region_set_use_async_iterations**\ (\ region\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_use_async_iterations>`
 
-If ``enabled`` is ``true`` the ``region`` uses an async synchronization process that runs on a background thread.
+Nếu ``enabled`` là ``true``, ``region`` sẽ sử dụng quy trình đồng bộ hóa async chạy trên một background thread.
 
 .. rst-class:: classref-item-separator
 
@@ -2087,7 +2087,7 @@ If ``enabled`` is ``true`` the ``region`` uses an async synchronization process 
 
 |void| **region_set_use_edge_connections**\ (\ region\: :ref:`RID<class_RID>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_region_set_use_edge_connections>`
 
-If ``enabled`` is ``true``, the navigation ``region`` will use edge connections to connect with other navigation regions within proximity of the navigation map edge connection margin.
+Nếu ``enabled`` là ``true``, ``region`` điều hướng sẽ sử dụng các kết nối biên để kết nối với những vùng điều hướng khác nằm trong phạm vi lề kết nối biên của bản đồ điều hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -2099,7 +2099,7 @@ If ``enabled`` is ``true``, the navigation ``region`` will use edge connections 
 
 |void| **set_active**\ (\ active\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_set_active>`
 
-Control activation of this server.
+Điều khiển việc kích hoạt server này.
 
 .. rst-class:: classref-item-separator
 
@@ -2111,7 +2111,7 @@ Control activation of this server.
 
 |void| **set_debug_enabled**\ (\ enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationServer2D_method_set_debug_enabled>`
 
-If ``true`` enables debug mode on the NavigationServer.
+Nếu ``true`` bật chế độ debug trên NavigationServer.
 
 .. rst-class:: classref-item-separator
 
@@ -2123,9 +2123,9 @@ If ``true`` enables debug mode on the NavigationServer.
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **simplify_path**\ (\ path\: :ref:`PackedVector2Array<class_PackedVector2Array>`, epsilon\: :ref:`float<class_float>`\ ) :ref:`🔗<class_NavigationServer2D_method_simplify_path>`
 
-Returns a simplified version of ``path`` with less critical path points removed. The simplification amount is in worlds units and controlled by ``epsilon``. The simplification uses a variant of Ramer-Douglas-Peucker algorithm for curve point decimation.
+Trả về phiên bản đơn giản hóa của ``path``, trong đó các điểm không nằm trên đường đi quan trọng đã bị loại bỏ. Mức độ đơn giản hóa được tính bằng đơn vị thế giới và được điều khiển bởi ``epsilon``. Việc đơn giản hóa sử dụng một biến thể của thuật toán Ramer-Douglas-Peucker để giảm số điểm trên đường cong.
 
-Path simplification can be helpful to mitigate various path following issues that can arise with certain agent types and script behaviors. E.g. "steering" agents or avoidance in "open fields".
+Việc đơn giản hóa đường đi có thể giúp giảm thiểu nhiều vấn đề khi bám theo đường đi, vốn có thể phát sinh với một số loại agent và hành vi script nhất định. Ví dụ: các agent "steering" hoặc cơ chế tránh vật cản trong "open fields".
 
 .. rst-class:: classref-item-separator
 
@@ -2137,7 +2137,7 @@ Path simplification can be helpful to mitigate various path following issues tha
 
 :ref:`RID<class_RID>` **source_geometry_parser_create**\ (\ ) :ref:`🔗<class_NavigationServer2D_method_source_geometry_parser_create>`
 
-Creates a new source geometry parser. If a :ref:`Callable<class_Callable>` is set for the parser with :ref:`source_geometry_parser_set_callback()<class_NavigationServer2D_method_source_geometry_parser_set_callback>` the callback will be called for every single node that gets parsed whenever :ref:`parse_source_geometry_data()<class_NavigationServer2D_method_parse_source_geometry_data>` is used.
+Tạo một trình phân tích cú pháp hình học nguồn mới. Nếu một :ref:`Callable<class_Callable>` được thiết lập cho trình phân tích cú pháp bằng :ref:`source_geometry_parser_set_callback()<class_NavigationServer2D_method_source_geometry_parser_set_callback>`, callback sẽ được gọi cho từng node được phân tích cú pháp bất cứ khi nào :ref:`parse_source_geometry_data()<class_NavigationServer2D_method_parse_source_geometry_data>` được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -2149,20 +2149,20 @@ Creates a new source geometry parser. If a :ref:`Callable<class_Callable>` is se
 
 |void| **source_geometry_parser_set_callback**\ (\ parser\: :ref:`RID<class_RID>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_NavigationServer2D_method_source_geometry_parser_set_callback>`
 
-Sets the ``callback`` :ref:`Callable<class_Callable>` for the specific source geometry ``parser``. The :ref:`Callable<class_Callable>` will receive a call with the following parameters:
+Thiết lập ``callback`` :ref:`Callable<class_Callable>` cho ``parser`` hình học nguồn cụ thể. :ref:`Callable<class_Callable>` sẽ nhận một lệnh gọi với các tham số sau:
 
-- ``navigation_mesh`` - The :ref:`NavigationPolygon<class_NavigationPolygon>` reference used to define the parse settings. Do NOT edit or add directly to the navigation mesh.
+- ``navigation_mesh`` - Tham chiếu :ref:`NavigationPolygon<class_NavigationPolygon>` được dùng để xác định các cài đặt phân tích cú pháp. KHÔNG chỉnh sửa hoặc thêm trực tiếp vào navigation mesh.
 
-- ``source_geometry_data`` - The :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>` reference. Add custom source geometry for navigation mesh baking to this object.
+- ``source_geometry_data`` - Tham chiếu :ref:`NavigationMeshSourceGeometryData2D<class_NavigationMeshSourceGeometryData2D>`. Thêm hình học nguồn tùy chỉnh để baking navigation mesh vào đối tượng này.
 
-- ``node`` - The :ref:`Node<class_Node>` that is parsed.
+- ``node`` - :ref:`Node<class_Node>` được phân tích cú pháp.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

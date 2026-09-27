@@ -10,22 +10,22 @@
 TileSetScenesCollectionSource
 =============================
 
-**Inherits:** :ref:`TileSetSource<class_TileSetSource>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`TileSetSource<class_TileSetSource>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exposes a set of scenes as tiles for a :ref:`TileSet<class_TileSet>` resource.
+Cung cấp một tập hợp các scene dưới dạng tile cho tài nguyên :ref:`TileSet<class_TileSet>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-When placed on a :ref:`TileMapLayer<class_TileMapLayer>`, tiles from **TileSetScenesCollectionSource** will automatically instantiate an associated scene at the cell's position in the TileMapLayer.
+Khi được đặt trên một :ref:`TileMapLayer<class_TileMapLayer>`, các tile từ **TileSetScenesCollectionSource** sẽ tự động khởi tạo scene tương ứng tại vị trí của ô trong TileMapLayer.
 
-Scenes are instantiated as children of the :ref:`TileMapLayer<class_TileMapLayer>` after it enters the tree, at the end of the frame (their creation is deferred). If you add/remove a scene tile in the :ref:`TileMapLayer<class_TileMapLayer>` that is already inside the tree, the :ref:`TileMapLayer<class_TileMapLayer>` will automatically instantiate/free the scene accordingly.
+Các scene được khởi tạo làm node con của :ref:`TileMapLayer<class_TileMapLayer>` sau khi node này được thêm vào scene tree, vào cuối frame (việc tạo được trì hoãn). Nếu bạn thêm/xóa một scene tile trong :ref:`TileMapLayer<class_TileMapLayer>` vốn đã nằm trong scene tree, :ref:`TileMapLayer<class_TileMapLayer>` sẽ tự động khởi tạo/giải phóng scene tương ứng.
 
-\ **Note:** Scene tiles all occupy one tile slot and instead use alternate tile ID to identify scene index. :ref:`TileSetSource.get_tiles_count()<class_TileSetSource_method_get_tiles_count>` will always return ``1``. Use :ref:`get_scene_tiles_count()<class_TileSetScenesCollectionSource_method_get_scene_tiles_count>` to get a number of scenes in a **TileSetScenesCollectionSource**.
+\ **Lưu ý:** Các scene tile đều chiếm một ô tile và thay vào đó sử dụng alternate tile ID để xác định chỉ mục scene. :ref:`TileSetSource.get_tiles_count()<class_TileSetSource_method_get_tiles_count>` sẽ luôn trả về ``1``. Sử dụng :ref:`get_scene_tiles_count()<class_TileSetScenesCollectionSource_method_get_scene_tiles_count>` để lấy số lượng scene trong một **TileSetScenesCollectionSource**.
 
-Use this code if you want to find the scene path at a given tile in :ref:`TileMapLayer<class_TileMapLayer>`:
+Sử dụng đoạn mã này nếu bạn muốn tìm đường dẫn scene tại một tile cụ thể trong :ref:`TileMapLayer<class_TileMapLayer>`:
 
 
 .. tabs::
@@ -37,7 +37,7 @@ Use this code if you want to find the scene path at a given tile in :ref:`TileMa
         var scene_source = tile_map_layer.tile_set.get_source(source_id)
         if scene_source is TileSetScenesCollectionSource:
             var alt_id = tile_map_layer.get_cell_alternative_tile(Vector2i(x, y))
-            # The assigned PackedScene.
+            # PackedScene được gán.
             var scene = scene_source.get_scene_tile_scene(alt_id)
 
  .. code-tab:: csharp
@@ -49,7 +49,7 @@ Use this code if you want to find the scene path at a given tile in :ref:`TileMa
         if (source is TileSetScenesCollectionSource sceneSource)
         {
             int altId = tileMapLayer.GetCellAlternativeTile(new Vector2I(x, y));
-            // The assigned PackedScene.
+            // PackedScene được gán.
             PackedScene scene = sceneSource.GetSceneTileScene(altId);
         }
     }
@@ -58,8 +58,8 @@ Use this code if you want to find the scene path at a given tile in :ref:`TileMa
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -94,8 +94,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_TileSetScenesCollectionSource_method_create_scene_tile:
 
@@ -103,9 +103,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **create_scene_tile**\ (\ packed_scene\: :ref:`PackedScene<class_PackedScene>`, id_override\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_create_scene_tile>`
 
-Creates a scene-based tile out of the given scene.
+Tạo một tile dựa trên scene từ scene đã cho.
 
-Returns a newly generated unique ID.
+Trả về một ID duy nhất mới được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Returns a newly generated unique ID.
 
 :ref:`int<class_int>` **get_next_scene_tile_id**\ (\ ) |const| :ref:`🔗<class_TileSetScenesCollectionSource_method_get_next_scene_tile_id>`
 
-Returns the scene ID a following call to :ref:`create_scene_tile()<class_TileSetScenesCollectionSource_method_create_scene_tile>` would return.
+Trả về ID scene mà lần gọi :ref:`create_scene_tile()<class_TileSetScenesCollectionSource_method_create_scene_tile>` tiếp theo sẽ trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Returns the scene ID a following call to :ref:`create_scene_tile()<class_TileSet
 
 :ref:`bool<class_bool>` **get_scene_tile_display_placeholder**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileSetScenesCollectionSource_method_get_scene_tile_display_placeholder>`
 
-Returns whether the scene tile with ``id`` displays a placeholder in the editor.
+Trả về việc scene tile có ``id`` có hiển thị placeholder trong editor hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Returns whether the scene tile with ``id`` displays a placeholder in the editor.
 
 :ref:`int<class_int>` **get_scene_tile_id**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_get_scene_tile_id>`
 
-Returns the scene tile ID of the scene tile at ``index``.
+Trả về ID scene tile của scene tile tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -153,7 +153,7 @@ Returns the scene tile ID of the scene tile at ``index``.
 
 :ref:`PackedScene<class_PackedScene>` **get_scene_tile_scene**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TileSetScenesCollectionSource_method_get_scene_tile_scene>`
 
-Returns the :ref:`PackedScene<class_PackedScene>` resource of scene tile with ``id``.
+Trả về tài nguyên :ref:`PackedScene<class_PackedScene>` của scene tile có ``id``.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Returns the :ref:`PackedScene<class_PackedScene>` resource of scene tile with ``
 
 :ref:`int<class_int>` **get_scene_tiles_count**\ (\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_get_scene_tiles_count>`
 
-Returns the number or scene tiles this TileSet source has.
+Trả về số lượng scene tile mà TileSet source này có.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ Returns the number or scene tiles this TileSet source has.
 
 :ref:`bool<class_bool>` **has_scene_tile_id**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_has_scene_tile_id>`
 
-Returns whether this TileSet source has a scene tile with ``id``.
+Trả về việc TileSet source này có scene tile với ``id`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -189,7 +189,7 @@ Returns whether this TileSet source has a scene tile with ``id``.
 
 |void| **remove_scene_tile**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_remove_scene_tile>`
 
-Remove the scene tile with ``id``.
+Xóa scene tile có ``id``.
 
 .. rst-class:: classref-item-separator
 
@@ -201,7 +201,7 @@ Remove the scene tile with ``id``.
 
 |void| **set_scene_tile_display_placeholder**\ (\ id\: :ref:`int<class_int>`, display_placeholder\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_set_scene_tile_display_placeholder>`
 
-Sets whether or not the scene tile with ``id`` should display a placeholder in the editor. This might be useful for scenes that are not visible.
+Đặt việc scene tile có ``id`` có hiển thị placeholder trong editor hay không. Điều này có thể hữu ích cho các scene không hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -213,7 +213,7 @@ Sets whether or not the scene tile with ``id`` should display a placeholder in t
 
 |void| **set_scene_tile_id**\ (\ id\: :ref:`int<class_int>`, new_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_set_scene_tile_id>`
 
-Changes a scene tile's ID from ``id`` to ``new_id``. This will fail if there is already a tile with an ID equal to ``new_id``.
+Thay đổi ID của scene tile từ ``id`` thành ``new_id``. Thao tác này sẽ thất bại nếu đã có tile với ID bằng ``new_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -225,14 +225,14 @@ Changes a scene tile's ID from ``id`` to ``new_id``. This will fail if there is 
 
 |void| **set_scene_tile_scene**\ (\ id\: :ref:`int<class_int>`, packed_scene\: :ref:`PackedScene<class_PackedScene>`\ ) :ref:`🔗<class_TileSetScenesCollectionSource_method_set_scene_tile_scene>`
 
-Assigns a :ref:`PackedScene<class_PackedScene>` resource to the scene tile with ``id``. This will fail if the scene does not extend :ref:`CanvasItem<class_CanvasItem>`, as positioning properties are needed to place the scene on the :ref:`TileMapLayer<class_TileMapLayer>`.
+Gán tài nguyên :ref:`PackedScene<class_PackedScene>` cho scene tile có ``id``. Thao tác này sẽ thất bại nếu scene không mở rộng :ref:`CanvasItem<class_CanvasItem>`, vì cần các thuộc tính định vị để đặt scene trên :ref:`TileMapLayer<class_TileMapLayer>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

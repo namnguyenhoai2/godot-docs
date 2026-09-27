@@ -10,20 +10,20 @@
 RDPipelineColorBlendStateAttachment
 ===================================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Pipeline color blend state attachment (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Attachment trạng thái blend màu của pipeline (được sử dụng bởi :ref:`RenderingDevice<class_RenderingDevice>`).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Controls how blending between source and destination fragments is performed when using :ref:`RenderingDevice<class_RenderingDevice>`.
+Kiểm soát cách thực hiện blending giữa các fragment nguồn và đích khi sử dụng :ref:`RenderingDevice<class_RenderingDevice>`.
 
-For reference, this is how common user-facing blend modes are implemented in Godot's 2D renderer:
+Để tham khảo, sau đây là cách triển khai các blend mode phổ biến hướng đến người dùng trong renderer 2D của Godot:
 
-\ **Mix:**\ 
+\ **Trộn:**\
 
 ::
 
@@ -36,7 +36,7 @@ For reference, this is how common user-facing blend modes are implemented in God
     attachment.src_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_ONE
     attachment.dst_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA
 
-\ **Add:**\ 
+\ **Cộng:**\
 
 ::
 
@@ -49,7 +49,7 @@ For reference, this is how common user-facing blend modes are implemented in God
     attachment.src_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_SRC_ALPHA
     attachment.dst_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_ONE
 
-\ **Subtract:**\ 
+\ **Trừ:**\
 
 ::
 
@@ -62,7 +62,7 @@ For reference, this is how common user-facing blend modes are implemented in God
     attachment.src_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_SRC_ALPHA
     attachment.dst_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_ONE
 
-\ **Multiply:**\ 
+\ **Nhân:**\
 
 ::
 
@@ -75,7 +75,7 @@ For reference, this is how common user-facing blend modes are implemented in God
     attachment.src_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_DST_ALPHA
     attachment.dst_alpha_blend_factor = RenderingDevice.BLEND_FACTOR_ZERO
 
-\ **Pre-multiplied alpha:**\ 
+\ **Alpha được nhân trước:**\
 
 ::
 
@@ -90,40 +90,40 @@ For reference, this is how common user-facing blend modes are implemented in God
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`BlendOperation<enum_RenderingDevice_BlendOperation>` | :ref:`alpha_blend_op<class_RDPipelineColorBlendStateAttachment_property_alpha_blend_op>`                 | ``0``     |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`BlendOperation<enum_RenderingDevice_BlendOperation>` | :ref:`color_blend_op<class_RDPipelineColorBlendStateAttachment_property_color_blend_op>`                 | ``0``     |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`       | :ref:`dst_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_alpha_blend_factor>` | ``0``     |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`       | :ref:`dst_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_color_blend_factor>` | ``0``     |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`enable_blend<class_RDPipelineColorBlendStateAttachment_property_enable_blend>`                     | ``false`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`       | :ref:`src_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_alpha_blend_factor>` | ``0``     |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`       | :ref:`src_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_color_blend_factor>` | ``0``     |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`write_a<class_RDPipelineColorBlendStateAttachment_property_write_a>`                               | ``true``  |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`write_b<class_RDPipelineColorBlendStateAttachment_property_write_b>`                               | ``true``  |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`write_g<class_RDPipelineColorBlendStateAttachment_property_write_g>`                               | ``true``  |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                    | :ref:`write_r<class_RDPipelineColorBlendStateAttachment_property_write_r>`                               | ``true``  |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`BlendOperation <enum_RenderingDevice_BlendOperation>` | :ref:`alpha_blend_op<class_RDPipelineColorBlendStateAttachment_property_alpha_blend_op>`                 | ``0``     |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`BlendOperation <enum_RenderingDevice_BlendOperation>` | :ref:`color_blend_op<class_RDPipelineColorBlendStateAttachment_property_color_blend_op>`                 | ``0``     |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`BlendFactor <enum_RenderingDevice_BlendFactor>`       | :ref:`dst_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_alpha_blend_factor>` | ``0``     |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`BlendFactor <enum_RenderingDevice_BlendFactor>`       | :ref:`dst_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_color_blend_factor>` | ``0``     |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`enable_blend<class_RDPipelineColorBlendStateAttachment_property_enable_blend>`                     | ``false`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`BlendFactor <enum_RenderingDevice_BlendFactor>`       | :ref:`src_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_alpha_blend_factor>` | ``0``     |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`BlendFactor <enum_RenderingDevice_BlendFactor>`       | :ref:`src_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_color_blend_factor>` | ``0``     |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`write_a<class_RDPipelineColorBlendStateAttachment_property_write_a>`                               | ``true``  |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`write_b<class_RDPipelineColorBlendStateAttachment_property_write_b>`                               | ``true``  |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`write_g<class_RDPipelineColorBlendStateAttachment_property_write_g>`                               | ``true``  |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                     | :ref:`write_r<class_RDPipelineColorBlendStateAttachment_property_write_r>`                               | ``true``  |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -138,8 +138,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDPipelineColorBlendStateAttachment_property_alpha_blend_op:
 
@@ -152,7 +152,7 @@ Property Descriptions
 - |void| **set_alpha_blend_op**\ (\ value\: :ref:`BlendOperation<enum_RenderingDevice_BlendOperation>`\ )
 - :ref:`BlendOperation<enum_RenderingDevice_BlendOperation>` **get_alpha_blend_op**\ (\ )
 
-The blend mode to use for the alpha channel.
+Blend mode được sử dụng cho kênh alpha.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ The blend mode to use for the alpha channel.
 - |void| **set_color_blend_op**\ (\ value\: :ref:`BlendOperation<enum_RenderingDevice_BlendOperation>`\ )
 - :ref:`BlendOperation<enum_RenderingDevice_BlendOperation>` **get_color_blend_op**\ (\ )
 
-The blend mode to use for the red/green/blue color channels.
+Blend mode được sử dụng cho các kênh màu đỏ/lục lam/dương.
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ The blend mode to use for the red/green/blue color channels.
 - |void| **set_dst_alpha_blend_factor**\ (\ value\: :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`\ )
 - :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>` **get_dst_alpha_blend_factor**\ (\ )
 
-Controls how the blend factor for the alpha channel is determined based on the destination's fragments.
+Kiểm soát cách xác định blend factor cho kênh alpha dựa trên các fragment đích.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Controls how the blend factor for the alpha channel is determined based on the d
 - |void| **set_dst_color_blend_factor**\ (\ value\: :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`\ )
 - :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>` **get_dst_color_blend_factor**\ (\ )
 
-Controls how the blend factor for the color channels is determined based on the destination's fragments.
+Kiểm soát cách xác định blend factor cho các kênh màu dựa trên các fragment đích.
 
 .. rst-class:: classref-item-separator
 
@@ -220,7 +220,7 @@ Controls how the blend factor for the color channels is determined based on the 
 - |void| **set_enable_blend**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_blend**\ (\ )
 
-If ``true``, performs blending between the source and destination according to the factors defined in :ref:`src_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_color_blend_factor>`, :ref:`dst_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_color_blend_factor>`, :ref:`src_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_alpha_blend_factor>` and :ref:`dst_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_alpha_blend_factor>`. The blend modes :ref:`color_blend_op<class_RDPipelineColorBlendStateAttachment_property_color_blend_op>` and :ref:`alpha_blend_op<class_RDPipelineColorBlendStateAttachment_property_alpha_blend_op>` are also taken into account, with :ref:`write_r<class_RDPipelineColorBlendStateAttachment_property_write_r>`, :ref:`write_g<class_RDPipelineColorBlendStateAttachment_property_write_g>`, :ref:`write_b<class_RDPipelineColorBlendStateAttachment_property_write_b>` and :ref:`write_a<class_RDPipelineColorBlendStateAttachment_property_write_a>` controlling the output.
+Nếu ``true``, thực hiện blending giữa nguồn và đích theo các factor được định nghĩa trong :ref:`src_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_color_blend_factor>`, :ref:`dst_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_color_blend_factor>`, :ref:`src_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_alpha_blend_factor>` và :ref:`dst_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_alpha_blend_factor>`. Các blend mode :ref:`color_blend_op<class_RDPipelineColorBlendStateAttachment_property_color_blend_op>` và :ref:`alpha_blend_op<class_RDPipelineColorBlendStateAttachment_property_alpha_blend_op>` cũng được tính đến, trong đó :ref:`write_r<class_RDPipelineColorBlendStateAttachment_property_write_r>`, :ref:`write_g<class_RDPipelineColorBlendStateAttachment_property_write_g>`, :ref:`write_b<class_RDPipelineColorBlendStateAttachment_property_write_b>` và :ref:`write_a<class_RDPipelineColorBlendStateAttachment_property_write_a>` kiểm soát đầu ra.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ If ``true``, performs blending between the source and destination according to t
 - |void| **set_src_alpha_blend_factor**\ (\ value\: :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`\ )
 - :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>` **get_src_alpha_blend_factor**\ (\ )
 
-Controls how the blend factor for the alpha channel is determined based on the source's fragments.
+Kiểm soát cách xác định blend factor cho kênh alpha dựa trên các fragment nguồn.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ Controls how the blend factor for the alpha channel is determined based on the s
 - |void| **set_src_color_blend_factor**\ (\ value\: :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>`\ )
 - :ref:`BlendFactor<enum_RenderingDevice_BlendFactor>` **get_src_color_blend_factor**\ (\ )
 
-Controls how the blend factor for the color channels is determined based on the source's fragments.
+Kiểm soát cách xác định blend factor cho các kênh màu dựa trên các fragment nguồn.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ Controls how the blend factor for the color channels is determined based on the 
 - |void| **set_write_a**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_write_a**\ (\ )
 
-If ``true``, writes the new alpha channel to the final result.
+Nếu ``true``, ghi kênh alpha mới vào kết quả cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ If ``true``, writes the new alpha channel to the final result.
 - |void| **set_write_b**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_write_b**\ (\ )
 
-If ``true``, writes the new blue color channel to the final result.
+Nếu ``true``, ghi kênh màu xanh dương mới vào kết quả cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ If ``true``, writes the new blue color channel to the final result.
 - |void| **set_write_g**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_write_g**\ (\ )
 
-If ``true``, writes the new green color channel to the final result.
+Nếu ``true``, ghi kênh màu xanh lá mới vào kết quả cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +322,7 @@ If ``true``, writes the new green color channel to the final result.
 - |void| **set_write_r**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_write_r**\ (\ )
 
-If ``true``, writes the new red color channel to the final result.
+Nếu ``true``, ghi kênh màu đỏ mới vào kết quả cuối cùng.
 
 .. rst-class:: classref-section-separator
 
@@ -330,8 +330,8 @@ If ``true``, writes the new red color channel to the final result.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RDPipelineColorBlendStateAttachment_method_set_as_mix:
 
@@ -339,14 +339,14 @@ Method Descriptions
 
 |void| **set_as_mix**\ (\ ) :ref:`🔗<class_RDPipelineColorBlendStateAttachment_method_set_as_mix>`
 
-Convenience method to perform standard mix blending with straight (non-premultiplied) alpha. This sets :ref:`enable_blend<class_RDPipelineColorBlendStateAttachment_property_enable_blend>` to ``true``, :ref:`src_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_color_blend_factor>` to :ref:`RenderingDevice.BLEND_FACTOR_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_SRC_ALPHA>`, :ref:`dst_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_color_blend_factor>` to :ref:`RenderingDevice.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA>`, :ref:`src_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_alpha_blend_factor>` to :ref:`RenderingDevice.BLEND_FACTOR_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_SRC_ALPHA>` and :ref:`dst_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_alpha_blend_factor>` to :ref:`RenderingDevice.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA>`.
+Phương thức tiện ích để thực hiện blending kiểu mix tiêu chuẩn với alpha thẳng (không premultiplied). Phương thức này đặt :ref:`enable_blend<class_RDPipelineColorBlendStateAttachment_property_enable_blend>` thành ``true``, :ref:`src_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_color_blend_factor>` thành :ref:`RenderingDevice.BLEND_FACTOR_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_SRC_ALPHA>`, :ref:`dst_color_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_color_blend_factor>` thành :ref:`RenderingDevice.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA>`, :ref:`src_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_src_alpha_blend_factor>` thành :ref:`RenderingDevice.BLEND_FACTOR_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_SRC_ALPHA>` và :ref:`dst_alpha_blend_factor<class_RDPipelineColorBlendStateAttachment_property_dst_alpha_blend_factor>` thành :ref:`RenderingDevice.BLEND_FACTOR_ONE_MINUS_SRC_ALPHA<class_RenderingDevice_constant_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

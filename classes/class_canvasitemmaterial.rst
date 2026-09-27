@@ -10,38 +10,38 @@
 CanvasItemMaterial
 ==================
 
-**Inherits:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A material for :ref:`CanvasItem<class_CanvasItem>`\ s.
+Một material dành cho các :ref:`CanvasItem<class_CanvasItem>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**CanvasItemMaterial**\ s provide a means of modifying the textures associated with a CanvasItem. They specialize in describing blend and lighting behaviors for textures. Use a :ref:`ShaderMaterial<class_ShaderMaterial>` to more fully customize a material's interactions with a :ref:`CanvasItem<class_CanvasItem>`.
+Các **CanvasItemMaterial**\  cung cấp phương thức để sửa đổi các texture liên kết với một CanvasItem. Chúng chuyên dùng để mô tả các hành vi blend và lighting cho texture. Sử dụng một :ref:`ShaderMaterial<class_ShaderMaterial>` để tùy chỉnh đầy đủ hơn cách material tương tác với một :ref:`CanvasItem<class_CanvasItem>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
-   | :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>` | :ref:`blend_mode<class_CanvasItemMaterial_property_blend_mode>`                           | ``0``     |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
-   | :ref:`LightMode<enum_CanvasItemMaterial_LightMode>` | :ref:`light_mode<class_CanvasItemMaterial_property_light_mode>`                           | ``0``     |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                               | :ref:`particles_anim_h_frames<class_CanvasItemMaterial_property_particles_anim_h_frames>` |           |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                             | :ref:`particles_anim_loop<class_CanvasItemMaterial_property_particles_anim_loop>`         |           |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                               | :ref:`particles_anim_v_frames<class_CanvasItemMaterial_property_particles_anim_v_frames>` |           |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                             | :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>`         | ``false`` |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
+   | :ref:`BlendMode <enum_CanvasItemMaterial_BlendMode>` | :ref:`blend_mode<class_CanvasItemMaterial_property_blend_mode>`                           | ``0``     |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
+   | :ref:`LightMode <enum_CanvasItemMaterial_LightMode>` | :ref:`light_mode<class_CanvasItemMaterial_property_light_mode>`                           | ``0``     |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                | :ref:`particles_anim_h_frames<class_CanvasItemMaterial_property_particles_anim_h_frames>` |           |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                              | :ref:`particles_anim_loop<class_CanvasItemMaterial_property_particles_anim_loop>`         |           |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                | :ref:`particles_anim_v_frames<class_CanvasItemMaterial_property_particles_anim_v_frames>` |           |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                              | :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>`         | ``false`` |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -49,14 +49,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CanvasItemMaterial_BlendMode:
 
 .. rst-class:: classref-enumeration
 
-enum **BlendMode**: :ref:`🔗<enum_CanvasItemMaterial_BlendMode>`
+enum **BlendMode**: :ref:`🔗 <enum_CanvasItemMaterial_BlendMode>`
 
 .. _class_CanvasItemMaterial_constant_BLEND_MODE_MIX:
 
@@ -64,7 +64,7 @@ enum **BlendMode**: :ref:`🔗<enum_CanvasItemMaterial_BlendMode>`
 
 :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>` **BLEND_MODE_MIX** = ``0``
 
-Mix blending mode. Colors are assumed to be independent of the alpha (opacity) value.
+Chế độ hòa trộn kết hợp. Màu được giả định là độc lập với giá trị alpha (độ trong suốt).
 
 .. _class_CanvasItemMaterial_constant_BLEND_MODE_ADD:
 
@@ -72,7 +72,7 @@ Mix blending mode. Colors are assumed to be independent of the alpha (opacity) v
 
 :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>` **BLEND_MODE_ADD** = ``1``
 
-Additive blending mode.
+Chế độ hòa trộn cộng.
 
 .. _class_CanvasItemMaterial_constant_BLEND_MODE_SUB:
 
@@ -80,7 +80,7 @@ Additive blending mode.
 
 :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>` **BLEND_MODE_SUB** = ``2``
 
-Subtractive blending mode.
+Chế độ hòa trộn trừ.
 
 .. _class_CanvasItemMaterial_constant_BLEND_MODE_MUL:
 
@@ -88,7 +88,7 @@ Subtractive blending mode.
 
 :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>` **BLEND_MODE_MUL** = ``3``
 
-Multiplicative blending mode.
+Chế độ hòa trộn nhân.
 
 .. _class_CanvasItemMaterial_constant_BLEND_MODE_PREMULT_ALPHA:
 
@@ -96,7 +96,7 @@ Multiplicative blending mode.
 
 :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>` **BLEND_MODE_PREMULT_ALPHA** = ``4``
 
-Mix blending mode. Colors are assumed to be premultiplied by the alpha (opacity) value.
+Chế độ hòa trộn kết hợp. Màu được giả định đã được nhân trước với giá trị alpha (độ trong suốt).
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ Mix blending mode. Colors are assumed to be premultiplied by the alpha (opacity)
 
 .. rst-class:: classref-enumeration
 
-enum **LightMode**: :ref:`🔗<enum_CanvasItemMaterial_LightMode>`
+enum **LightMode**: :ref:`🔗 <enum_CanvasItemMaterial_LightMode>`
 
 .. _class_CanvasItemMaterial_constant_LIGHT_MODE_NORMAL:
 
@@ -114,7 +114,7 @@ enum **LightMode**: :ref:`🔗<enum_CanvasItemMaterial_LightMode>`
 
 :ref:`LightMode<enum_CanvasItemMaterial_LightMode>` **LIGHT_MODE_NORMAL** = ``0``
 
-Render the material using both light and non-light sensitive material properties.
+Kết xuất material bằng cả các thuộc tính material nhạy sáng và không nhạy sáng.
 
 .. _class_CanvasItemMaterial_constant_LIGHT_MODE_UNSHADED:
 
@@ -122,7 +122,7 @@ Render the material using both light and non-light sensitive material properties
 
 :ref:`LightMode<enum_CanvasItemMaterial_LightMode>` **LIGHT_MODE_UNSHADED** = ``1``
 
-Render the material as if there were no light.
+Kết xuất material như thể không có ánh sáng.
 
 .. _class_CanvasItemMaterial_constant_LIGHT_MODE_LIGHT_ONLY:
 
@@ -130,7 +130,7 @@ Render the material as if there were no light.
 
 :ref:`LightMode<enum_CanvasItemMaterial_LightMode>` **LIGHT_MODE_LIGHT_ONLY** = ``2``
 
-Render the material as if there were only light.
+Kết xuất material như thể chỉ có ánh sáng.
 
 .. rst-class:: classref-section-separator
 
@@ -138,8 +138,8 @@ Render the material as if there were only light.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CanvasItemMaterial_property_blend_mode:
 
@@ -152,7 +152,7 @@ Property Descriptions
 - |void| **set_blend_mode**\ (\ value\: :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>`\ )
 - :ref:`BlendMode<enum_CanvasItemMaterial_BlendMode>` **get_blend_mode**\ (\ )
 
-The manner in which a material's rendering is applied to underlying textures.
+Cách áp dụng việc kết xuất material lên các texture bên dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ The manner in which a material's rendering is applied to underlying textures.
 - |void| **set_light_mode**\ (\ value\: :ref:`LightMode<enum_CanvasItemMaterial_LightMode>`\ )
 - :ref:`LightMode<enum_CanvasItemMaterial_LightMode>` **get_light_mode**\ (\ )
 
-The manner in which material reacts to lighting.
+Cách material phản ứng với ánh sáng.
 
 .. rst-class:: classref-item-separator
 
@@ -179,16 +179,16 @@ The manner in which material reacts to lighting.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **particles_anim_h_frames** :ref:`🔗<class_CanvasItemMaterial_property_particles_anim_h_frames>`
+:ref:`int<class_int>` **particles_anim_h_frames** :ref:`🔗 <class_CanvasItemMaterial_property_particles_anim_h_frames>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_particles_anim_h_frames**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_particles_anim_h_frames**\ (\ )
 
-The number of columns in the spritesheet assigned as :ref:`Texture2D<class_Texture2D>` for a :ref:`GPUParticles2D<class_GPUParticles2D>` or :ref:`CPUParticles2D<class_CPUParticles2D>`.
+Số cột trong spritesheet được gán cho :ref:`Texture2D<class_Texture2D>` của một :ref:`GPUParticles2D<class_GPUParticles2D>` hoặc :ref:`CPUParticles2D<class_CPUParticles2D>`.
 
-\ **Note:** This property is only used and visible in the editor if :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>` is ``true``.
+\ **Lưu ý:** Thuộc tính này chỉ được sử dụng và hiển thị trong trình chỉnh sửa nếu :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -198,16 +198,16 @@ The number of columns in the spritesheet assigned as :ref:`Texture2D<class_Textu
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **particles_anim_loop** :ref:`🔗<class_CanvasItemMaterial_property_particles_anim_loop>`
+:ref:`bool<class_bool>` **particles_anim_loop** :ref:`🔗 <class_CanvasItemMaterial_property_particles_anim_loop>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_particles_anim_loop**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_particles_anim_loop**\ (\ )
 
-If ``true``, the particles animation will loop.
+Nếu ``true``, hoạt ảnh hạt sẽ lặp lại.
 
-\ **Note:** This property is only used and visible in the editor if :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>` is ``true``.
+\ **Lưu ý:** Thuộc tính này chỉ được sử dụng và hiển thị trong trình chỉnh sửa nếu :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -217,16 +217,16 @@ If ``true``, the particles animation will loop.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **particles_anim_v_frames** :ref:`🔗<class_CanvasItemMaterial_property_particles_anim_v_frames>`
+:ref:`int<class_int>` **particles_anim_v_frames** :ref:`🔗 <class_CanvasItemMaterial_property_particles_anim_v_frames>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_particles_anim_v_frames**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_particles_anim_v_frames**\ (\ )
 
-The number of rows in the spritesheet assigned as :ref:`Texture2D<class_Texture2D>` for a :ref:`GPUParticles2D<class_GPUParticles2D>` or :ref:`CPUParticles2D<class_CPUParticles2D>`.
+Số hàng trong spritesheet được gán làm :ref:`Texture2D<class_Texture2D>` cho một :ref:`GPUParticles2D<class_GPUParticles2D>` hoặc :ref:`CPUParticles2D<class_CPUParticles2D>`.
 
-\ **Note:** This property is only used and visible in the editor if :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>` is ``true``.
+\ **Lưu ý:** Thuộc tính này chỉ được sử dụng và hiển thị trong trình chỉnh sửa nếu :ref:`particles_animation<class_CanvasItemMaterial_property_particles_animation>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -243,16 +243,16 @@ The number of rows in the spritesheet assigned as :ref:`Texture2D<class_Texture2
 - |void| **set_particles_animation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_particles_animation**\ (\ )
 
-If ``true``, enable spritesheet-based animation features when assigned to :ref:`GPUParticles2D<class_GPUParticles2D>` and :ref:`CPUParticles2D<class_CPUParticles2D>` nodes. The :ref:`ParticleProcessMaterial.anim_speed_max<class_ParticleProcessMaterial_property_anim_speed_max>` or :ref:`CPUParticles2D.anim_speed_max<class_CPUParticles2D_property_anim_speed_max>` should also be set to a positive value for the animation to play.
+Nếu ``true``, hãy bật các tính năng animation dựa trên spritesheet khi được gán cho các node :ref:`GPUParticles2D<class_GPUParticles2D>` và :ref:`CPUParticles2D<class_CPUParticles2D>`. :ref:`ParticleProcessMaterial.anim_speed_max<class_ParticleProcessMaterial_property_anim_speed_max>` hoặc :ref:`CPUParticles2D.anim_speed_max<class_CPUParticles2D_property_anim_speed_max>` cũng phải được đặt thành một giá trị dương để animation phát.
 
-This property (and other ``particles_anim_*`` properties that depend on it) has no effect on other types of nodes.
+Thuộc tính này (và các thuộc tính ``particles_anim_*`` khác phụ thuộc vào nó) không có tác dụng đối với các loại node khác.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

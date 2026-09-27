@@ -10,23 +10,23 @@
 EncodedObjectAsID
 =================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Holds a reference to an :ref:`Object<class_Object>`'s instance ID.
+Giữ tham chiếu đến ID phiên bản của một :ref:`Object<class_Object>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Utility class which holds a reference to the internal identifier of an :ref:`Object<class_Object>` instance, as given by :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`. This ID can then be used to retrieve the object instance with :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>`.
+Lớp tiện ích lưu giữ tham chiếu đến mã định danh nội bộ của một phiên bản :ref:`Object<class_Object>`, do :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` cung cấp. Sau đó, có thể sử dụng ID này để truy xuất phiên bản đối tượng bằng :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>`.
 
-This class is used internally by the editor inspector and script debugger, but can also be used in plugins to pass and display objects as their IDs.
+Lớp này được trình kiểm tra của editor và trình gỡ lỗi script sử dụng nội bộ, nhưng cũng có thể được sử dụng trong các plugin để truyền và hiển thị đối tượng dưới dạng ID của chúng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EncodedObjectAsID_property_object_id:
 
@@ -55,14 +55,14 @@ Property Descriptions
 - |void| **set_object_id**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_object_id**\ (\ )
 
-The :ref:`Object<class_Object>` identifier stored in this **EncodedObjectAsID** instance. The object instance can be retrieved with :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>`.
+Mã định danh :ref:`Object<class_Object>` được lưu trữ trong thực thể **EncodedObjectAsID** này. Có thể truy xuất thực thể đối tượng bằng :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

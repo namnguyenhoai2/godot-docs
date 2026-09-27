@@ -10,51 +10,51 @@
 CanvasTexture
 =============
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Texture with optional normal and specular maps for use in 2D rendering.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**CanvasTexture** is an alternative to :ref:`ImageTexture<class_ImageTexture>` for 2D rendering. It allows using normal maps and specular maps in any node that inherits from :ref:`CanvasItem<class_CanvasItem>`. **CanvasTexture** also allows overriding the texture's filter and repeat mode independently of the node's properties (or the project settings).
-
-\ **Note:** **CanvasTexture** cannot be used in 3D. It will not display correctly when applied to any :ref:`VisualInstance3D<class_VisualInstance3D>`, such as :ref:`Sprite3D<class_Sprite3D>` or :ref:`Decal<class_Decal>`. For physically-based materials in 3D, use :ref:`BaseMaterial3D<class_BaseMaterial3D>` instead.
+Texture có các normal map và specular map tùy chọn để sử dụng trong kết xuất 2D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**CanvasTexture** là một lựa chọn thay thế cho :ref:`ImageTexture<class_ImageTexture>` trong kết xuất 2D. Nó cho phép sử dụng normal map và specular map trong bất kỳ node nào kế thừa từ :ref:`CanvasItem<class_CanvasItem>`. **CanvasTexture** cũng cho phép ghi đè độc lập chế độ lọc và chế độ lặp của texture, không phụ thuộc vào các thuộc tính của node (hoặc cài đặt dự án).
+
+\ **Lưu ý:** **CanvasTexture** không thể được sử dụng trong 3D. Nó sẽ không hiển thị chính xác khi được áp dụng cho bất kỳ :ref:`VisualInstance3D<class_VisualInstance3D>` nào, chẳng hạn như :ref:`Sprite3D<class_Sprite3D>` hoặc :ref:`Decal<class_Decal>`. Đối với các material dựa trên cơ chế vật lý trong 3D, hãy sử dụng :ref:`BaseMaterial3D<class_BaseMaterial3D>` thay thế.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`2D Lights and Shadows <../tutorials/2d/2d_lights_and_shadows>`
+- :doc:`Đèn và bóng đổ 2D <../tutorials/2d/2d_lights_and_shadows>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`diffuse_texture<class_CanvasTexture_property_diffuse_texture>`       |                                                                                        |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`normal_texture<class_CanvasTexture_property_normal_texture>`         |                                                                                        |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | resource_local_to_scene                                                    | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                           | :ref:`specular_color<class_CanvasTexture_property_specular_color>`         | ``Color(1, 1, 1, 1)``                                                                  |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                           | :ref:`specular_shininess<class_CanvasTexture_property_specular_shininess>` | ``1.0``                                                                                |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                   | :ref:`specular_texture<class_CanvasTexture_property_specular_texture>`     |                                                                                        |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`TextureFilter<enum_CanvasItem_TextureFilter>` | :ref:`texture_filter<class_CanvasTexture_property_texture_filter>`         | ``0``                                                                                  |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`TextureRepeat<enum_CanvasItem_TextureRepeat>` | :ref:`texture_repeat<class_CanvasTexture_property_texture_repeat>`         | ``0``                                                                                  |
-   +-----------------------------------------------------+----------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                    | :ref:`diffuse_texture<class_CanvasTexture_property_diffuse_texture>`       |                                                                                     |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                    | :ref:`normal_texture<class_CanvasTexture_property_normal_texture>`         |                                                                                     |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                              | resource_local_to_scene                                                    | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                            | :ref:`specular_color<class_CanvasTexture_property_specular_color>`         | ``Color(1, 1, 1, 1)``                                                               |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                            | :ref:`specular_shininess<class_CanvasTexture_property_specular_shininess>` | ``1.0``                                                                             |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                    | :ref:`specular_texture<class_CanvasTexture_property_specular_texture>`     |                                                                                     |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`TextureFilter <enum_CanvasItem_TextureFilter>` | :ref:`texture_filter<class_CanvasTexture_property_texture_filter>`         | ``0``                                                                               |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`TextureRepeat <enum_CanvasItem_TextureRepeat>` | :ref:`texture_repeat<class_CanvasTexture_property_texture_repeat>`         | ``0``                                                                               |
+   +------------------------------------------------------+----------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -62,21 +62,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CanvasTexture_property_diffuse_texture:
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **diffuse_texture** :ref:`🔗<class_CanvasTexture_property_diffuse_texture>`
+:ref:`Texture2D<class_Texture2D>` **diffuse_texture** :ref:`🔗 <class_CanvasTexture_property_diffuse_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_diffuse_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_diffuse_texture**\ (\ )
 
-The diffuse (color) texture to use. This is the main texture you want to set in most cases.
+Texture diffuse (màu sắc) cần sử dụng. Trong hầu hết các trường hợp, đây là texture chính bạn muốn thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -86,16 +86,16 @@ The diffuse (color) texture to use. This is the main texture you want to set in 
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **normal_texture** :ref:`🔗<class_CanvasTexture_property_normal_texture>`
+:ref:`Texture2D<class_Texture2D>` **normal_texture** :ref:`🔗 <class_CanvasTexture_property_normal_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_normal_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_normal_texture**\ (\ )
 
-The normal map texture to use. Only has a visible effect if :ref:`Light2D<class_Light2D>`\ s are affecting this **CanvasTexture**.
+Texture normal map cần sử dụng. Chỉ có hiệu ứng hiển thị nếu :ref:`Light2D<class_Light2D>`\ s đang tác động đến **CanvasTexture**.
 
-\ **Note:** Godot expects the normal map to use X+, Y+, and Z+ coordinates. See `this page <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates>`__ for a comparison of normal map coordinates expected by popular engines.
+\ **Lưu ý:** Godot yêu cầu normal map sử dụng các tọa độ X+, Y+ và Z+. Xem `trang này <http://wiki.polycount.com/wiki/Normal_Map_Technical_Details#Common_Swizzle_Coordinates>`__ để so sánh các tọa độ normal map được những engine phổ biến sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -112,7 +112,7 @@ The normal map texture to use. Only has a visible effect if :ref:`Light2D<class_
 - |void| **set_specular_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_specular_color**\ (\ )
 
-The multiplier for specular reflection colors. The :ref:`Light2D<class_Light2D>`'s color is also taken into account when determining the reflection color. Only has a visible effect if :ref:`Light2D<class_Light2D>`\ s are affecting this **CanvasTexture**.
+Hệ số nhân cho màu của phản xạ specular. Màu của :ref:`Light2D<class_Light2D>` cũng được tính đến khi xác định màu phản xạ. Chỉ có hiệu ứng hiển thị nếu :ref:`Light2D<class_Light2D>`\ s đang tác động đến **CanvasTexture**.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ The multiplier for specular reflection colors. The :ref:`Light2D<class_Light2D>`
 - |void| **set_specular_shininess**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_specular_shininess**\ (\ )
 
-The specular exponent for :ref:`Light2D<class_Light2D>` specular reflections. Higher values result in a more glossy/"wet" look, with reflections becoming more localized and less visible overall. The default value of ``1.0`` disables specular reflections entirely. Only has a visible effect if :ref:`Light2D<class_Light2D>`\ s are affecting this **CanvasTexture**.
+Số mũ specular cho các phản xạ specular của :ref:`Light2D<class_Light2D>`. Giá trị cao hơn tạo ra vẻ bóng hơn/"ướt" hơn, với các phản xạ trở nên tập trung hơn và nhìn chung khó thấy hơn. Giá trị mặc định là ``1.0``, sẽ tắt hoàn toàn các phản xạ specular. Chỉ có hiệu ứng hiển thị nếu :ref:`Light2D<class_Light2D>`\ s đang tác động đến **CanvasTexture**.
 
 .. rst-class:: classref-item-separator
 
@@ -139,14 +139,14 @@ The specular exponent for :ref:`Light2D<class_Light2D>` specular reflections. Hi
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **specular_texture** :ref:`🔗<class_CanvasTexture_property_specular_texture>`
+:ref:`Texture2D<class_Texture2D>` **specular_texture** :ref:`🔗 <class_CanvasTexture_property_specular_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_specular_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_specular_texture**\ (\ )
 
-The specular map to use for :ref:`Light2D<class_Light2D>` specular reflections. This should be a grayscale or colored texture, with brighter areas resulting in a higher :ref:`specular_shininess<class_CanvasTexture_property_specular_shininess>` value. Using a colored :ref:`specular_texture<class_CanvasTexture_property_specular_texture>` allows controlling specular shininess on a per-channel basis. Only has a visible effect if :ref:`Light2D<class_Light2D>`\ s are affecting this **CanvasTexture**.
+Bản đồ specular được sử dụng cho các phản xạ specular của :ref:`Light2D<class_Light2D>`. Đây phải là một texture thang độ xám hoặc có màu, trong đó các vùng sáng hơn sẽ tạo ra giá trị :ref:`specular_shininess<class_CanvasTexture_property_specular_shininess>` cao hơn. Sử dụng :ref:`specular_texture<class_CanvasTexture_property_specular_texture>` có màu cho phép điều khiển độ bóng specular theo từng kênh. Chỉ có hiệu ứng hiển thị nếu :ref:`Light2D<class_Light2D>`\ s đang ảnh hưởng đến **CanvasTexture** này.
 
 .. rst-class:: classref-item-separator
 
@@ -163,7 +163,7 @@ The specular map to use for :ref:`Light2D<class_Light2D>` specular reflections. 
 - |void| **set_texture_filter**\ (\ value\: :ref:`TextureFilter<enum_CanvasItem_TextureFilter>`\ )
 - :ref:`TextureFilter<enum_CanvasItem_TextureFilter>` **get_texture_filter**\ (\ )
 
-The texture filtering mode to use when drawing this **CanvasTexture**.
+Chế độ lọc texture được sử dụng khi vẽ **CanvasTexture** này.
 
 .. rst-class:: classref-item-separator
 
@@ -180,14 +180,14 @@ The texture filtering mode to use when drawing this **CanvasTexture**.
 - |void| **set_texture_repeat**\ (\ value\: :ref:`TextureRepeat<enum_CanvasItem_TextureRepeat>`\ )
 - :ref:`TextureRepeat<enum_CanvasItem_TextureRepeat>` **get_texture_repeat**\ (\ )
 
-The texture repeat mode to use when drawing this **CanvasTexture**.
+Chế độ lặp texture được sử dụng khi vẽ **CanvasTexture** này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

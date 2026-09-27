@@ -10,31 +10,31 @@
 ResourceImporterMP3
 ===================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports an MP3 audio file for playback.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-MP3 is a lossy audio format, with worse audio quality compared to :ref:`ResourceImporterOggVorbis<class_ResourceImporterOggVorbis>` at a given bitrate.
-
-In most cases, it's recommended to use Ogg Vorbis over MP3. However, if you're using an MP3 sound source with no higher quality source available, then it's recommended to use the MP3 file directly to avoid double lossy compression.
-
-MP3 requires more CPU to decode than :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`. If you need to play a lot of simultaneous sounds, it's recommended to use WAV for those sounds instead, especially if targeting low-end devices.
+Nhập tệp âm thanh MP3 để phát.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+MP3 là một định dạng âm thanh nén mất dữ liệu, có chất lượng âm thanh thấp hơn so với :ref:`ResourceImporterOggVorbis<class_ResourceImporterOggVorbis>` ở cùng bitrate.
+
+Trong hầu hết trường hợp, bạn nên sử dụng Ogg Vorbis thay cho MP3. Tuy nhiên, nếu bạn đang sử dụng nguồn âm thanh MP3 và không có nguồn nào chất lượng cao hơn, bạn nên sử dụng trực tiếp tệp MP3 để tránh việc nén mất dữ liệu hai lần.
+
+MP3 cần nhiều CPU hơn để giải mã so với :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`. Nếu cần phát nhiều âm thanh đồng thời, bạn nên sử dụng WAV cho những âm thanh đó, đặc biệt nếu nhắm đến các thiết bị cấp thấp.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing audio samples <../tutorials/assets_pipeline/importing_audio_samples>`
+- :doc:`Nhập các mẫu âm thanh <../tutorials/assets_pipeline/importing_audio_samples>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,8 +58,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterMP3_property_bar_beats:
 
@@ -67,9 +67,9 @@ Property Descriptions
 
 :ref:`int<class_int>` **bar_beats** = ``4`` :ref:`🔗<class_ResourceImporterMP3_property_bar_beats>`
 
-The number of beats within a single bar in the audio track. This is only relevant for music that wishes to make use of interactive music functionality, not sound effects.
+Số nhịp trong một ô nhịp của track âm thanh. Điều này chỉ liên quan đến nhạc muốn sử dụng chức năng nhạc tương tác, không áp dụng cho hiệu ứng âm thanh.
 
-A more convenient editor for :ref:`bar_beats<class_ResourceImporterMP3_property_bar_beats>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`bar_beats<class_ResourceImporterMP3_property_bar_beats>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -81,9 +81,9 @@ A more convenient editor for :ref:`bar_beats<class_ResourceImporterMP3_property_
 
 :ref:`int<class_int>` **beat_count** = ``0`` :ref:`🔗<class_ResourceImporterMP3_property_beat_count>`
 
-The length of the audio track, in beats. The actual duration of the audio file might be longer than what is indicated by this property. This is only relevant for music that wishes to make use of interactive music functionality, not sound effects.
+Độ dài của track âm thanh, tính theo nhịp. Thời lượng thực tế của tệp âm thanh có thể dài hơn giá trị được chỉ định bởi thuộc tính này. Điều này chỉ liên quan đến nhạc muốn sử dụng chức năng nhạc tương tác, không áp dụng cho hiệu ứng âm thanh.
 
-A more convenient editor for :ref:`beat_count<class_ResourceImporterMP3_property_beat_count>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`beat_count<class_ResourceImporterMP3_property_beat_count>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -95,9 +95,9 @@ A more convenient editor for :ref:`beat_count<class_ResourceImporterMP3_property
 
 :ref:`float<class_float>` **bpm** = ``0`` :ref:`🔗<class_ResourceImporterMP3_property_bpm>`
 
-The tempo of the audio track, measured in beats per minute. This should match the BPM measure that was used to compose the track. This is only relevant for music that wishes to make use of interactive music functionality, not sound effects.
+Tempo của track âm thanh, tính theo nhịp mỗi phút. Giá trị này phải khớp với số đo BPM được sử dụng để soạn track. Điều này chỉ liên quan đến nhạc muốn sử dụng chức năng nhạc tương tác, không áp dụng cho hiệu ứng âm thanh.
 
-A more convenient editor for :ref:`bpm<class_ResourceImporterMP3_property_bpm>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`bpm<class_ResourceImporterMP3_property_bpm>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -109,9 +109,9 @@ A more convenient editor for :ref:`bpm<class_ResourceImporterMP3_property_bpm>` 
 
 :ref:`bool<class_bool>` **loop** = ``false`` :ref:`🔗<class_ResourceImporterMP3_property_loop>`
 
-If enabled, the audio will begin playing either from the beginning or from :ref:`loop_offset<class_ResourceImporterMP3_property_loop_offset>`, after playback ends by either reaching the end of the audio or reaching the end of the last beat according to the amount specified in :ref:`beat_count<class_ResourceImporterMP3_property_beat_count>`.
+Nếu được bật, âm thanh sẽ bắt đầu phát từ đầu hoặc từ :ref:`loop_offset<class_ResourceImporterMP3_property_loop_offset>` sau khi quá trình phát kết thúc do đã đến cuối âm thanh hoặc đến cuối nhịp cuối cùng theo số lượng được chỉ định trong :ref:`beat_count<class_ResourceImporterMP3_property_beat_count>`.
 
-\ **Note:** In :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, the :ref:`AudioStreamPlayer.finished<class_AudioStreamPlayer_signal_finished>` signal won't be emitted for looping audio when it reaches the end of the audio file, as the audio will keep playing indefinitely.
+\ **Lưu ý:** Trong :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, tín hiệu :ref:`AudioStreamPlayer.finished<class_AudioStreamPlayer_signal_finished>` sẽ không được phát ra đối với âm thanh lặp khi âm thanh đến cuối tệp, vì âm thanh sẽ tiếp tục phát vô thời hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -123,18 +123,18 @@ If enabled, the audio will begin playing either from the beginning or from :ref:
 
 :ref:`float<class_float>` **loop_offset** = ``0`` :ref:`🔗<class_ResourceImporterMP3_property_loop_offset>`
 
-Determines where audio will start to loop after playback reaches the end of the audio. This can be used to only loop a part of the audio file, which is useful for some ambient sounds or music. The value is determined in seconds relative to the beginning of the audio. A value of ``0.0`` will loop the entire audio file.
+Xác định vị trí âm thanh sẽ bắt đầu lặp lại sau khi quá trình phát đến cuối âm thanh. Có thể sử dụng thuộc tính này để chỉ lặp một phần của tệp âm thanh, hữu ích cho một số âm thanh môi trường hoặc nhạc. Giá trị được xác định theo giây, tính từ đầu âm thanh. Giá trị ``0.0`` sẽ lặp toàn bộ tệp âm thanh.
 
-Only has an effect if :ref:`loop<class_ResourceImporterMP3_property_loop>` is ``true``.
+Chỉ có tác dụng nếu :ref:`loop<class_ResourceImporterMP3_property_loop>` là ``true``.
 
-A more convenient editor for :ref:`loop_offset<class_ResourceImporterMP3_property_loop_offset>` is provided in the **Advanced Import Settings** dialog, as it lets you preview your changes without having to reimport the audio.
+Một trình chỉnh sửa thuận tiện hơn cho :ref:`loop_offset<class_ResourceImporterMP3_property_loop_offset>` được cung cấp trong hộp thoại **Advanced Import Settings**, cho phép bạn xem trước các thay đổi mà không cần nhập lại âm thanh.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

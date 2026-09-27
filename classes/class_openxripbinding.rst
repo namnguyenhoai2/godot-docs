@@ -10,20 +10,20 @@
 OpenXRIPBinding
 ===============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Defines a binding between an :ref:`OpenXRAction<class_OpenXRAction>` and an XR input or output.
+Xác định một liên kết giữa một :ref:`OpenXRAction<class_OpenXRAction>` và một đầu vào hoặc đầu ra XR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This binding resource binds an :ref:`OpenXRAction<class_OpenXRAction>` to an input or output. As most controllers have left hand and right versions that are handled by the same interaction profile we can specify multiple bindings. For instance an action "Fire" could be bound to both "/user/hand/left/input/trigger" and "/user/hand/right/input/trigger". This would require two binding entries.
+Tài nguyên binding này liên kết một :ref:`OpenXRAction<class_OpenXRAction>` với một đầu vào hoặc đầu ra. Vì hầu hết controller đều có phiên bản tay trái và tay phải được xử lý bởi cùng một interaction profile, chúng ta có thể chỉ định nhiều binding. Ví dụ: một action "Fire" có thể được liên kết với cả "/user/hand/left/input/trigger" và "/user/hand/right/input/trigger". Điều này sẽ yêu cầu hai mục binding.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -67,21 +67,21 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRIPBinding_property_action:
 
 .. rst-class:: classref-property
 
-:ref:`OpenXRAction<class_OpenXRAction>` **action** :ref:`🔗<class_OpenXRIPBinding_property_action>`
+:ref:`OpenXRAction<class_OpenXRAction>` **action** :ref:`🔗 <class_OpenXRIPBinding_property_action>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_action**\ (\ value\: :ref:`OpenXRAction<class_OpenXRAction>`\ )
 - :ref:`OpenXRAction<class_OpenXRAction>` **get_action**\ (\ )
 
-:ref:`OpenXRAction<class_OpenXRAction>` that is bound to :ref:`binding_path<class_OpenXRIPBinding_property_binding_path>`.
+:ref:`OpenXRAction<class_OpenXRAction>` được liên kết với :ref:`binding_path<class_OpenXRIPBinding_property_binding_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ Property Descriptions
 - |void| **set_binding_modifiers**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_binding_modifiers**\ (\ )
 
-Binding modifiers for this binding.
+Các modifier binding cho binding này.
 
 .. rst-class:: classref-item-separator
 
@@ -115,9 +115,9 @@ Binding modifiers for this binding.
 - |void| **set_binding_path**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_binding_path**\ (\ )
 
-Binding path that defines the input or output bound to :ref:`action<class_OpenXRIPBinding_property_action>`.
+Đường dẫn binding xác định đầu vào hoặc đầu ra được liên kết với :ref:`action<class_OpenXRIPBinding_property_action>`.
 
-\ **Note:** Binding paths are suggestions, an XR runtime may choose to bind the action to a different input or output emulating this input or output.
+\ **Lưu ý:** Các đường dẫn binding chỉ là gợi ý; runtime XR có thể chọn liên kết action với một đầu vào hoặc đầu ra khác mô phỏng đầu vào hoặc đầu ra này.
 
 .. rst-class:: classref-item-separator
 
@@ -127,18 +127,18 @@ Binding path that defines the input or output bound to :ref:`action<class_OpenXR
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **paths** :ref:`🔗<class_OpenXRIPBinding_property_paths>`
+:ref:`PackedStringArray<class_PackedStringArray>` **đường dẫn** :ref:`🔗 <class_OpenXRIPBinding_property_paths>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_paths**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_paths**\ (\ )
 
-**Deprecated:** Use :ref:`binding_path<class_OpenXRIPBinding_property_binding_path>` instead.
+**Đã lỗi thời:** Sử dụng :ref:`binding_path<class_OpenXRIPBinding_property_binding_path>` thay thế.
 
-Paths that define the inputs or outputs bound on the device.
+Các đường dẫn xác định những đầu vào hoặc đầu ra được liên kết trên thiết bị.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -146,8 +146,8 @@ Paths that define the inputs or outputs bound on the device.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRIPBinding_method_add_path:
 
@@ -155,9 +155,9 @@ Method Descriptions
 
 |void| **add_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_OpenXRIPBinding_method_add_path>`
 
-**Deprecated:** Binding is for a single path.
+**Deprecated:** Binding dành cho một đường dẫn duy nhất.
 
-Add an input/output path to this binding.
+Thêm một đường dẫn đầu vào/đầu ra vào liên kết này.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ Add an input/output path to this binding.
 
 :ref:`OpenXRActionBindingModifier<class_OpenXRActionBindingModifier>` **get_binding_modifier**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OpenXRIPBinding_method_get_binding_modifier>`
 
-Get the :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` at this index.
+Lấy :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` tại chỉ mục này.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ Get the :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` at this index.
 
 :ref:`int<class_int>` **get_binding_modifier_count**\ (\ ) |const| :ref:`🔗<class_OpenXRIPBinding_method_get_binding_modifier_count>`
 
-Get the number of binding modifiers for this binding.
+Lấy số lượng bộ bổ nghĩa của liên kết này.
 
 .. rst-class:: classref-item-separator
 
@@ -193,9 +193,9 @@ Get the number of binding modifiers for this binding.
 
 :ref:`int<class_int>` **get_path_count**\ (\ ) |const| :ref:`🔗<class_OpenXRIPBinding_method_get_path_count>`
 
-**Deprecated:** Binding is for a single path.
+**Deprecated:** Binding dành cho một đường dẫn duy nhất.
 
-Get the number of input/output paths in this binding.
+Lấy số lượng đường dẫn đầu vào/đầu ra trong liên kết này.
 
 .. rst-class:: classref-item-separator
 
@@ -207,9 +207,9 @@ Get the number of input/output paths in this binding.
 
 :ref:`bool<class_bool>` **has_path**\ (\ path\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OpenXRIPBinding_method_has_path>`
 
-**Deprecated:** Binding is for a single path.
+**Deprecated:** Binding dành cho một đường dẫn duy nhất.
 
-Returns ``true`` if this input/output path is part of this binding.
+Trả về ``true`` nếu đường dẫn input/output này là một phần của binding này.
 
 .. rst-class:: classref-item-separator
 
@@ -221,16 +221,16 @@ Returns ``true`` if this input/output path is part of this binding.
 
 |void| **remove_path**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_OpenXRIPBinding_method_remove_path>`
 
-**Deprecated:** Binding is for a single path.
+**Deprecated:** Binding dành cho một đường dẫn duy nhất.
 
-Removes this input/output path from this binding.
+Xóa đường dẫn input/output này khỏi binding.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

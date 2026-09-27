@@ -10,20 +10,20 @@
 CodeHighlighter
 ===============
 
-**Inherits:** :ref:`SyntaxHighlighter<class_SyntaxHighlighter>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SyntaxHighlighter<class_SyntaxHighlighter>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A syntax highlighter intended for code.
+Trình tô sáng cú pháp dành cho mã nguồn.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-By adjusting various properties of this resource, you can change the colors of strings, comments, numbers, and other text patterns inside a :ref:`TextEdit<class_TextEdit>` control.
+Bằng cách điều chỉnh nhiều thuộc tính khác nhau của resource này, bạn có thể thay đổi màu của chuỗi, chú thích, số và các mẫu văn bản khác bên trong một control :ref:`TextEdit<class_TextEdit>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -89,8 +89,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CodeHighlighter_property_color_regions:
 
@@ -103,7 +103,7 @@ Property Descriptions
 - |void| **set_color_regions**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_color_regions**\ (\ )
 
-Sets the color regions. All existing regions will be removed. The :ref:`Dictionary<class_Dictionary>` key is the region start and end key, separated by a space. The value is the region color.
+Thiết lập các vùng màu. Tất cả các vùng hiện có sẽ bị xóa. Khóa :ref:`Dictionary<class_Dictionary>` là khóa bắt đầu và kết thúc vùng, được phân tách bằng dấu cách. Giá trị là màu của vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Sets the color regions. All existing regions will be removed. The :ref:`Dictiona
 - |void| **set_function_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_function_color**\ (\ )
 
-Sets color for functions. A function is a non-keyword string followed by a '('.
+Thiết lập màu cho các hàm. Hàm là một chuỗi không phải keyword theo sau bởi '('.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Sets color for functions. A function is a non-keyword string followed by a '('.
 - |void| **set_keyword_colors**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_keyword_colors**\ (\ )
 
-Sets the keyword colors. All existing keywords will be removed. The :ref:`Dictionary<class_Dictionary>` key is the keyword. The value is the keyword color.
+Thiết lập màu cho các keyword. Tất cả keyword hiện có sẽ bị xóa. Khóa :ref:`Dictionary<class_Dictionary>` là keyword. Giá trị là màu của keyword.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Sets the keyword colors. All existing keywords will be removed. The :ref:`Dictio
 - |void| **set_member_keyword_colors**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_member_keyword_colors**\ (\ )
 
-Sets the member keyword colors. All existing member keyword will be removed. The :ref:`Dictionary<class_Dictionary>` key is the member keyword. The value is the member keyword color.
+Thiết lập màu cho các từ khóa thành viên. Tất cả từ khóa thành viên hiện có sẽ bị xóa. Khóa :ref:`Dictionary<class_Dictionary>` là từ khóa thành viên. Giá trị là màu của từ khóa thành viên.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ Sets the member keyword colors. All existing member keyword will be removed. The
 - |void| **set_member_variable_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_member_variable_color**\ (\ )
 
-Sets color for member variables. A member variable is non-keyword, non-function string proceeded with a '.'.
+Thiết lập màu cho các biến thành viên. Biến thành viên là chuỗi không phải từ khóa và không phải hàm, đứng sau dấu '.'.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ Sets color for member variables. A member variable is non-keyword, non-function 
 - |void| **set_number_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_number_color**\ (\ )
 
-Sets the color for numbers.
+Thiết lập màu cho các số.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Sets the color for numbers.
 - |void| **set_symbol_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_symbol_color**\ (\ )
 
-Sets the color for symbols.
+Thiết lập màu cho các ký hiệu.
 
 .. rst-class:: classref-section-separator
 
@@ -213,8 +213,8 @@ Sets the color for symbols.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CodeHighlighter_method_add_color_region:
 
@@ -222,9 +222,9 @@ Method Descriptions
 
 |void| **add_color_region**\ (\ start_key\: :ref:`String<class_String>`, end_key\: :ref:`String<class_String>`, color\: :ref:`Color<class_Color>`, line_only\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_CodeHighlighter_method_add_color_region>`
 
-Adds a color region (such as for comments or strings) from ``start_key`` to ``end_key``. Both keys should be symbols, and ``start_key`` must not be shared with other delimiters.
+Thêm một vùng màu (chẳng hạn như cho chú thích hoặc chuỗi) từ ``start_key`` đến ``end_key``. Cả hai khóa phải là ký hiệu và ``start_key`` không được dùng chung với các dấu phân cách khác.
 
-If ``line_only`` is ``true`` or ``end_key`` is an empty :ref:`String<class_String>`, the region does not carry over to the next line.
+Nếu ``line_only`` là ``true`` hoặc ``end_key`` là một :ref:`String<class_String>` trống, vùng này sẽ không được tiếp tục sang dòng kế tiếp.
 
 .. rst-class:: classref-item-separator
 
@@ -236,9 +236,9 @@ If ``line_only`` is ``true`` or ``end_key`` is an empty :ref:`String<class_Strin
 
 |void| **add_keyword_color**\ (\ keyword\: :ref:`String<class_String>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_CodeHighlighter_method_add_keyword_color>`
 
-Sets the color for a keyword.
+Đặt màu cho một từ khóa.
 
-The keyword cannot contain any symbols except '\_'.
+Từ khóa không được chứa bất kỳ ký hiệu nào ngoài '\_'.
 
 .. rst-class:: classref-item-separator
 
@@ -250,11 +250,11 @@ The keyword cannot contain any symbols except '\_'.
 
 |void| **add_member_keyword_color**\ (\ member_keyword\: :ref:`String<class_String>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_CodeHighlighter_method_add_member_keyword_color>`
 
-Sets the color for a member keyword.
+Đặt màu cho một từ khóa thành viên.
 
-The member keyword cannot contain any symbols except '\_'.
+Từ khóa thành viên không được chứa bất kỳ ký hiệu nào ngoài '\_'.
 
-It will not be highlighted if preceded by a '.'.
+Từ khóa sẽ không được tô sáng nếu đứng trước một dấu '.'.
 
 .. rst-class:: classref-item-separator
 
@@ -266,7 +266,7 @@ It will not be highlighted if preceded by a '.'.
 
 |void| **clear_color_regions**\ (\ ) :ref:`🔗<class_CodeHighlighter_method_clear_color_regions>`
 
-Removes all color regions.
+Xóa tất cả các vùng màu.
 
 .. rst-class:: classref-item-separator
 
@@ -278,7 +278,7 @@ Removes all color regions.
 
 |void| **clear_keyword_colors**\ (\ ) :ref:`🔗<class_CodeHighlighter_method_clear_keyword_colors>`
 
-Removes all keywords.
+Xóa tất cả các từ khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -290,7 +290,7 @@ Removes all keywords.
 
 |void| **clear_member_keyword_colors**\ (\ ) :ref:`🔗<class_CodeHighlighter_method_clear_member_keyword_colors>`
 
-Removes all member keywords.
+Xóa tất cả các từ khóa thành viên.
 
 .. rst-class:: classref-item-separator
 
@@ -302,7 +302,7 @@ Removes all member keywords.
 
 :ref:`Color<class_Color>` **get_keyword_color**\ (\ keyword\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_CodeHighlighter_method_get_keyword_color>`
 
-Returns the color for a keyword.
+Trả về màu của một từ khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ Returns the color for a keyword.
 
 :ref:`Color<class_Color>` **get_member_keyword_color**\ (\ member_keyword\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_CodeHighlighter_method_get_member_keyword_color>`
 
-Returns the color for a member keyword.
+Trả về màu của một từ khóa thành viên.
 
 .. rst-class:: classref-item-separator
 
@@ -326,7 +326,7 @@ Returns the color for a member keyword.
 
 :ref:`bool<class_bool>` **has_color_region**\ (\ start_key\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_CodeHighlighter_method_has_color_region>`
 
-Returns ``true`` if the start key exists, else ``false``.
+Trả về ``true`` nếu khóa bắt đầu tồn tại, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -338,7 +338,7 @@ Returns ``true`` if the start key exists, else ``false``.
 
 :ref:`bool<class_bool>` **has_keyword_color**\ (\ keyword\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_CodeHighlighter_method_has_keyword_color>`
 
-Returns ``true`` if the keyword exists, else ``false``.
+Trả về ``true`` nếu từ khóa tồn tại, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -350,7 +350,7 @@ Returns ``true`` if the keyword exists, else ``false``.
 
 :ref:`bool<class_bool>` **has_member_keyword_color**\ (\ member_keyword\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_CodeHighlighter_method_has_member_keyword_color>`
 
-Returns ``true`` if the member keyword exists, else ``false``.
+Trả về ``true`` nếu từ khóa thành viên tồn tại, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -362,7 +362,7 @@ Returns ``true`` if the member keyword exists, else ``false``.
 
 |void| **remove_color_region**\ (\ start_key\: :ref:`String<class_String>`\ ) :ref:`🔗<class_CodeHighlighter_method_remove_color_region>`
 
-Removes the color region that uses that start key.
+Xóa vùng màu sử dụng khóa bắt đầu đó.
 
 .. rst-class:: classref-item-separator
 
@@ -374,7 +374,7 @@ Removes the color region that uses that start key.
 
 |void| **remove_keyword_color**\ (\ keyword\: :ref:`String<class_String>`\ ) :ref:`🔗<class_CodeHighlighter_method_remove_keyword_color>`
 
-Removes the keyword.
+Xóa từ khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -386,14 +386,14 @@ Removes the keyword.
 
 |void| **remove_member_keyword_color**\ (\ member_keyword\: :ref:`String<class_String>`\ ) :ref:`🔗<class_CodeHighlighter_method_remove_member_keyword_color>`
 
-Removes the member keyword.
+Xóa từ khóa thành viên.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,45 +10,45 @@
 DPITexture
 ==========
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An automatically scalable :ref:`Texture2D<class_Texture2D>` based on an SVG image.
+Một :ref:`Texture2D<class_Texture2D>` có khả năng tự động mở rộng, dựa trên hình ảnh SVG.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An automatically scalable :ref:`Texture2D<class_Texture2D>` based on an SVG image. **DPITexture**\ s are used to automatically re-rasterize icons and other texture based UI theme elements to match viewport scale and font oversampling. See also :ref:`ProjectSettings.display/window/stretch/mode<class_ProjectSettings_property_display/window/stretch/mode>` ("canvas_items" mode) and :ref:`Viewport.oversampling_override<class_Viewport_property_oversampling_override>`.
+Một :ref:`Texture2D<class_Texture2D>` có khả năng tự động mở rộng, dựa trên hình ảnh SVG. **DPITexture**\ s được dùng để tự động rasterize lại các biểu tượng và những thành phần giao diện người dùng khác của theme dựa trên texture, nhằm phù hợp với tỷ lệ viewport và font oversampling. Xem thêm :ref:`ProjectSettings.display/window/stretch/mode <class_ProjectSettings_property_display/window/stretch/mode>` (chế độ "canvas_items") và :ref:`Viewport.oversampling_override<class_Viewport_property_oversampling_override>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`base_scale<class_DPITexture_property_base_scale>`             | ``1.0``                                                                                |
-   +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>` | :ref:`color_map<class_DPITexture_property_color_map>`               | ``{}``                                                                                 |
-   +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`fix_alpha_border<class_DPITexture_property_fix_alpha_border>` | ``false``                                                                              |
-   +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`premult_alpha<class_DPITexture_property_premult_alpha>`       | ``false``                                                                              |
-   +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | resource_local_to_scene                                             | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`saturation<class_DPITexture_property_saturation>`             | ``1.0``                                                                                |
-   +-------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   +-------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`base_scale<class_DPITexture_property_base_scale>`             | ``1.0``                                                                             |
+   +-------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>` | :ref:`color_map<class_DPITexture_property_color_map>`               | ``{}``                                                                              |
+   +-------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`fix_alpha_border<class_DPITexture_property_fix_alpha_border>` | ``false``                                                                           |
+   +-------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`premult_alpha<class_DPITexture_property_premult_alpha>`       | ``false``                                                                           |
+   +-------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | resource_local_to_scene                                             | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`saturation<class_DPITexture_property_saturation>`             | ``1.0``                                                                             |
+   +-------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_DPITexture_property_base_scale:
 
@@ -85,7 +85,7 @@ Property Descriptions
 - |void| **set_base_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_base_scale**\ (\ )
 
-Texture scale. ``1.0`` is the original SVG size. Higher values result in a larger image.
+Tỷ lệ texture. ``1.0`` là kích thước SVG ban đầu. Giá trị cao hơn sẽ tạo ra hình ảnh lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ Texture scale. ``1.0`` is the original SVG size. Higher values result in a large
 - |void| **set_color_map**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_color_map**\ (\ )
 
-If set, remaps texture colors according to :ref:`Color<class_Color>`-:ref:`Color<class_Color>` map.
+Nếu được thiết lập, ánh xạ lại màu của texture theo map :ref:`Color<class_Color>`-:ref:`Color<class_Color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -119,7 +119,7 @@ If set, remaps texture colors according to :ref:`Color<class_Color>`-:ref:`Color
 - |void| **set_fix_alpha_border**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_fix_alpha_border**\ (\ )
 
-If ``true``, puts pixels of the same surrounding color in transition from transparent to opaque areas. For textures displayed with bilinear filtering, this helps to reduce the outline effect when exporting images from an image editor.
+Nếu ``true``, đặt các pixel có cùng màu với vùng xung quanh vào trạng thái chuyển tiếp từ vùng trong suốt sang vùng không trong suốt. Đối với các texture được hiển thị bằng bộ lọc bilinear, điều này giúp giảm hiệu ứng đường viền khi xuất hình ảnh từ trình chỉnh sửa hình ảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -136,11 +136,11 @@ If ``true``, puts pixels of the same surrounding color in transition from transp
 - |void| **set_premult_alpha**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_premult_alpha**\ (\ )
 
-An alternative to fixing darkened borders with :ref:`fix_alpha_border<class_DPITexture_property_fix_alpha_border>` is to use premultiplied alpha. By enabling this option, the texture will be converted to this format. A premultiplied alpha texture requires specific materials to be displayed correctly:
+Một phương án thay thế cho việc sửa các đường viền bị tối bằng :ref:`fix_alpha_border<class_DPITexture_property_fix_alpha_border>` là sử dụng alpha premultiplied. Khi bật tùy chọn này, texture sẽ được chuyển đổi sang định dạng này. Texture alpha premultiplied yêu cầu các material cụ thể để được hiển thị chính xác:
 
-- In 2D, a :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` will need to be created and configured to use the :ref:`CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA<class_CanvasItemMaterial_constant_BLEND_MODE_PREMULT_ALPHA>` blend mode on :ref:`CanvasItem<class_CanvasItem>`\ s that use this texture. In custom ``canvas_item`` shaders, ``render_mode blend_premul_alpha;`` should be used.
+- Trong 2D, cần tạo và cấu hình một :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` để sử dụng blend mode :ref:`CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA<class_CanvasItemMaterial_constant_BLEND_MODE_PREMULT_ALPHA>` trên :ref:`CanvasItem<class_CanvasItem>`\ s sử dụng texture này. Trong các shader ``canvas_item`` tùy chỉnh, nên sử dụng ``render_mode blend_premul_alpha;``.
 
-- In 3D, a :ref:`BaseMaterial3D<class_BaseMaterial3D>` will need to be created and configured to use the :ref:`BaseMaterial3D.BLEND_MODE_PREMULT_ALPHA<class_BaseMaterial3D_constant_BLEND_MODE_PREMULT_ALPHA>` blend mode on materials that use this texture. In custom ``spatial`` shaders, ``render_mode blend_premul_alpha;`` should be used.
+- Trong 3D, cần tạo và cấu hình một :ref:`BaseMaterial3D<class_BaseMaterial3D>` để sử dụng blend mode :ref:`BaseMaterial3D.BLEND_MODE_PREMULT_ALPHA<class_BaseMaterial3D_constant_BLEND_MODE_PREMULT_ALPHA>` trên các material sử dụng texture này. Trong các shader ``spatial`` tùy chỉnh, nên sử dụng ``render_mode blend_premul_alpha;``.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ An alternative to fixing darkened borders with :ref:`fix_alpha_border<class_DPIT
 - |void| **set_saturation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_saturation**\ (\ )
 
-Overrides texture saturation.
+Ghi đè độ bão hòa của texture.
 
 .. rst-class:: classref-section-separator
 
@@ -165,8 +165,8 @@ Overrides texture saturation.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_DPITexture_method_create_from_string:
 
@@ -174,7 +174,7 @@ Method Descriptions
 
 :ref:`DPITexture<class_DPITexture>` **create_from_string**\ (\ source\: :ref:`String<class_String>`, scale\: :ref:`float<class_float>` = 1.0, saturation\: :ref:`float<class_float>` = 1.0, color_map\: :ref:`Dictionary<class_Dictionary>` = {}\ ) |static| :ref:`🔗<class_DPITexture_method_create_from_string>`
 
-Creates a new **DPITexture** and initializes it by allocating and setting the SVG data to ``source``.
+Tạo một **DPITexture** mới và khởi tạo nó bằng cách cấp phát và đặt dữ liệu SVG thành ``source``.
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ Creates a new **DPITexture** and initializes it by allocating and setting the SV
 
 :ref:`RID<class_RID>` **get_scaled_rid**\ (\ ) |const| :ref:`🔗<class_DPITexture_method_get_scaled_rid>`
 
-Returns the :ref:`RID<class_RID>` of the texture rasterized to match the oversampling of the currently drawn canvas item.
+Trả về :ref:`RID<class_RID>` của texture được raster hóa để khớp với mức oversampling của canvas item hiện đang được vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Returns the :ref:`RID<class_RID>` of the texture rasterized to match the oversam
 
 :ref:`String<class_String>` **get_source**\ (\ ) |const| :ref:`🔗<class_DPITexture_method_get_source>`
 
-Returns this SVG texture's source code.
+Trả về mã nguồn của texture SVG này.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Returns this SVG texture's source code.
 
 |void| **set_size_override**\ (\ size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_DPITexture_method_set_size_override>`
 
-Resizes the texture to the specified dimensions.
+Thay đổi kích thước texture thành các kích thước được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -222,14 +222,14 @@ Resizes the texture to the specified dimensions.
 
 |void| **set_source**\ (\ source\: :ref:`String<class_String>`\ ) :ref:`🔗<class_DPITexture_method_set_source>`
 
-Sets this SVG texture's source code.
+Đặt mã nguồn của texture SVG này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,50 +10,50 @@
 EditorFeatureProfile
 ====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An editor feature profile which can be used to disable specific features.
+Một editor feature profile có thể được dùng để tắt các tính năng cụ thể.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An editor feature profile can be used to disable specific features of the Godot editor. When disabled, the features won't appear in the editor, which makes the editor less cluttered. This is useful in education settings to reduce confusion or when working in a team. For example, artists and level designers could use a feature profile that disables the script editor to avoid accidentally making changes to files they aren't supposed to edit.
+Editor feature profile có thể được dùng để tắt các tính năng cụ thể của trình chỉnh sửa Godot. Khi bị tắt, các tính năng sẽ không xuất hiện trong trình chỉnh sửa, giúp giao diện bớt lộn xộn. Điều này hữu ích trong môi trường giáo dục để giảm sự nhầm lẫn hoặc khi làm việc theo nhóm. Ví dụ: nghệ sĩ và nhà thiết kế cấp độ có thể sử dụng feature profile để tắt script editor, nhằm tránh vô tình thực hiện các thay đổi đối với những tệp mà họ không được phép chỉnh sửa.
 
-To manage editor feature profiles visually, use **Editor > Manage Feature Profiles...** at the top of the editor window.
+Để quản lý editor feature profile bằng giao diện trực quan, hãy sử dụng **Editor > Manage Feature Profiles...** ở đầu cửa sổ trình chỉnh sửa.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_feature_name<class_EditorFeatureProfile_method_get_feature_name>`\ (\ feature\: :ref:`Feature<enum_EditorFeatureProfile_Feature>`\ )                                                                                             |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_class_disabled<class_EditorFeatureProfile_method_is_class_disabled>`\ (\ class_name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                              |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_class_editor_disabled<class_EditorFeatureProfile_method_is_class_editor_disabled>`\ (\ class_name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_class_property_disabled<class_EditorFeatureProfile_method_is_class_property_disabled>`\ (\ class_name\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`\ ) |const|                            |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_feature_disabled<class_EditorFeatureProfile_method_is_feature_disabled>`\ (\ feature\: :ref:`Feature<enum_EditorFeatureProfile_Feature>`\ ) |const|                                                                               |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`load_from_file<class_EditorFeatureProfile_method_load_from_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                          |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`save_to_file<class_EditorFeatureProfile_method_save_to_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                              |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_disable_class<class_EditorFeatureProfile_method_set_disable_class>`\ (\ class_name\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ )                                                                   |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_disable_class_editor<class_EditorFeatureProfile_method_set_disable_class_editor>`\ (\ class_name\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ )                                                     |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_disable_class_property<class_EditorFeatureProfile_method_set_disable_class_property>`\ (\ class_name\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ ) |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_disable_feature<class_EditorFeatureProfile_method_set_disable_feature>`\ (\ feature\: :ref:`Feature<enum_EditorFeatureProfile_Feature>`, disable\: :ref:`bool<class_bool>`\ )                                                    |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`            | :ref:`get_feature_name<class_EditorFeatureProfile_method_get_feature_name>`\ (\ feature\: :ref:`Feature <enum_EditorFeatureProfile_Feature>`\ )                                                                                            |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_class_disabled<class_EditorFeatureProfile_method_is_class_disabled>`\ (\ class_name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                              |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_class_editor_disabled<class_EditorFeatureProfile_method_is_class_editor_disabled>`\ (\ class_name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_class_property_disabled<class_EditorFeatureProfile_method_is_class_property_disabled>`\ (\ class_name\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`\ ) |const|                            |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_feature_disabled<class_EditorFeatureProfile_method_is_feature_disabled>`\ (\ feature\: :ref:`Feature <enum_EditorFeatureProfile_Feature>`\ ) |const|                                                                              |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`load_from_file<class_EditorFeatureProfile_method_load_from_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                          |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`save_to_file<class_EditorFeatureProfile_method_save_to_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                                              |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_disable_class<class_EditorFeatureProfile_method_set_disable_class>`\ (\ class_name\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ )                                                                   |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_disable_class_editor<class_EditorFeatureProfile_method_set_disable_class_editor>`\ (\ class_name\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ )                                                     |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_disable_class_property<class_EditorFeatureProfile_method_set_disable_class_property>`\ (\ class_name\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ ) |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_disable_feature<class_EditorFeatureProfile_method_set_disable_feature>`\ (\ feature\: :ref:`Feature <enum_EditorFeatureProfile_Feature>`, disable\: :ref:`bool<class_bool>`\ )                                                   |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -61,14 +61,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorFeatureProfile_Feature:
 
 .. rst-class:: classref-enumeration
 
-enum **Feature**: :ref:`🔗<enum_EditorFeatureProfile_Feature>`
+enum **Feature**: :ref:`🔗 <enum_EditorFeatureProfile_Feature>`
 
 .. _class_EditorFeatureProfile_constant_FEATURE_3D:
 
@@ -76,7 +76,7 @@ enum **Feature**: :ref:`🔗<enum_EditorFeatureProfile_Feature>`
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_3D** = ``0``
 
-The 3D editor. If this feature is disabled, the 3D editor won't display but 3D nodes will still display in the Create New Node dialog.
+Trình chỉnh sửa 3D. Nếu tính năng này bị tắt, trình chỉnh sửa 3D sẽ không hiển thị, nhưng các node 3D vẫn sẽ hiển thị trong hộp thoại Create New Node.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_SCRIPT:
 
@@ -84,7 +84,7 @@ The 3D editor. If this feature is disabled, the 3D editor won't display but 3D n
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_SCRIPT** = ``1``
 
-The Script tab, which contains the script editor and class reference browser. If this feature is disabled, the Script tab won't display.
+Tab Script, chứa trình chỉnh sửa script và trình duyệt tham chiếu class. Nếu tính năng này bị tắt, tab Script sẽ không hiển thị.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_ASSET_LIB:
 
@@ -92,7 +92,7 @@ The Script tab, which contains the script editor and class reference browser. If
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_ASSET_LIB** = ``2``
 
-The Asset Store tab. If this feature is disabled, the Asset Store tab won't display.
+Tab Asset Store. Nếu tính năng này bị tắt, tab Asset Store sẽ không hiển thị.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_SCENE_TREE:
 
@@ -100,7 +100,7 @@ The Asset Store tab. If this feature is disabled, the Asset Store tab won't disp
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_SCENE_TREE** = ``3``
 
-Scene tree editing. If this feature is disabled, the Scene tree dock will still be visible but will be read-only.
+Chỉnh sửa cây Scene. Nếu tính năng này bị tắt, dock Scene tree vẫn hiển thị nhưng sẽ ở chế độ chỉ đọc.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_NODE_DOCK:
 
@@ -108,9 +108,9 @@ Scene tree editing. If this feature is disabled, the Scene tree dock will still 
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_NODE_DOCK** = ``4``
 
-**Deprecated:** Replaced by the Signals and Groups docks.
+**Đã lỗi thời:** Được thay thế bằng các dock Signals và Groups.
 
-The Node dock. If this feature is disabled, signals and groups won't be visible and modifiable from the editor.
+Dock Node. Nếu tính năng này bị tắt, các signal và group sẽ không hiển thị và không thể sửa đổi từ trình chỉnh sửa.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_FILESYSTEM_DOCK:
 
@@ -118,7 +118,7 @@ The Node dock. If this feature is disabled, signals and groups won't be visible 
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_FILESYSTEM_DOCK** = ``5``
 
-The FileSystem dock. If this feature is disabled, the FileSystem dock won't be visible.
+Dock FileSystem. Nếu tính năng này bị tắt, dock FileSystem sẽ không hiển thị.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_IMPORT_DOCK:
 
@@ -126,7 +126,7 @@ The FileSystem dock. If this feature is disabled, the FileSystem dock won't be v
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_IMPORT_DOCK** = ``6``
 
-The Import dock. If this feature is disabled, the Import dock won't be visible.
+Import dock. Nếu tính năng này bị tắt, Import dock sẽ không hiển thị.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_HISTORY_DOCK:
 
@@ -134,7 +134,7 @@ The Import dock. If this feature is disabled, the Import dock won't be visible.
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_HISTORY_DOCK** = ``7``
 
-The History dock. If this feature is disabled, the History dock won't be visible.
+History dock. Nếu tính năng này bị tắt, History dock sẽ không hiển thị.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_GAME:
 
@@ -142,7 +142,7 @@ The History dock. If this feature is disabled, the History dock won't be visible
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_GAME** = ``8``
 
-The Game tab, which allows embedding the game window and selecting nodes by clicking inside of it. If this feature is disabled, the Game tab won't display.
+Game tab, cho phép nhúng cửa sổ game và chọn các node bằng cách nhấp vào bên trong cửa sổ. Nếu tính năng này bị tắt, Game tab sẽ không hiển thị.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_SIGNALS_DOCK:
 
@@ -150,7 +150,7 @@ The Game tab, which allows embedding the game window and selecting nodes by clic
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_SIGNALS_DOCK** = ``9``
 
-The Signals dock. If this feature is disabled, signals won't be visible and modifiable from the editor.
+Signals dock. Nếu tính năng này bị tắt, các signal sẽ không hiển thị và không thể chỉnh sửa từ editor.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_GROUPS_DOCK:
 
@@ -158,7 +158,7 @@ The Signals dock. If this feature is disabled, signals won't be visible and modi
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_GROUPS_DOCK** = ``10``
 
-The Groups dock. If this feature is disabled, groups won't be visible and modifiable from the editor.
+Groups dock. Nếu tính năng này bị tắt, các group sẽ không hiển thị và không thể chỉnh sửa từ editor.
 
 .. _class_EditorFeatureProfile_constant_FEATURE_MAX:
 
@@ -166,7 +166,7 @@ The Groups dock. If this feature is disabled, groups won't be visible and modifi
 
 :ref:`Feature<enum_EditorFeatureProfile_Feature>` **FEATURE_MAX** = ``11``
 
-Represents the size of the :ref:`Feature<enum_EditorFeatureProfile_Feature>` enum.
+Biểu diễn kích thước của enum :ref:`Feature <enum_EditorFeatureProfile_Feature>`.
 
 .. rst-class:: classref-section-separator
 
@@ -174,8 +174,8 @@ Represents the size of the :ref:`Feature<enum_EditorFeatureProfile_Feature>` enu
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorFeatureProfile_method_get_feature_name:
 
@@ -183,7 +183,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_feature_name**\ (\ feature\: :ref:`Feature<enum_EditorFeatureProfile_Feature>`\ ) :ref:`🔗<class_EditorFeatureProfile_method_get_feature_name>`
 
-Returns the specified ``feature``'s human-readable name.
+Trả về tên dễ đọc của ``feature``.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Returns the specified ``feature``'s human-readable name.
 
 :ref:`bool<class_bool>` **is_class_disabled**\ (\ class_name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_EditorFeatureProfile_method_is_class_disabled>`
 
-Returns ``true`` if the class specified by ``class_name`` is disabled. When disabled, the class won't appear in the Create New Node dialog.
+Trả về ``true`` nếu class được chỉ định bởi ``class_name`` bị vô hiệu hóa. Khi bị vô hiệu hóa, class sẽ không xuất hiện trong hộp thoại Create New Node.
 
 .. rst-class:: classref-item-separator
 
@@ -207,7 +207,7 @@ Returns ``true`` if the class specified by ``class_name`` is disabled. When disa
 
 :ref:`bool<class_bool>` **is_class_editor_disabled**\ (\ class_name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_EditorFeatureProfile_method_is_class_editor_disabled>`
 
-Returns ``true`` if editing for the class specified by ``class_name`` is disabled. When disabled, the class will still appear in the Create New Node dialog but the Inspector will be read-only when selecting a node that extends the class.
+Trả về ``true`` nếu chức năng chỉnh sửa cho class được chỉ định bởi ``class_name`` bị vô hiệu hóa. Khi bị vô hiệu hóa, class vẫn xuất hiện trong hộp thoại Create New Node, nhưng Inspector sẽ ở chế độ chỉ đọc khi chọn một node kế thừa class đó.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ Returns ``true`` if editing for the class specified by ``class_name`` is disable
 
 :ref:`bool<class_bool>` **is_class_property_disabled**\ (\ class_name\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_EditorFeatureProfile_method_is_class_property_disabled>`
 
-Returns ``true`` if ``property`` is disabled in the class specified by ``class_name``. When a property is disabled, it won't appear in the Inspector when selecting a node that extends the class specified by ``class_name``.
+Trả về ``true`` nếu ``property`` bị vô hiệu hóa trong class được chỉ định bởi ``class_name``. Khi một property bị vô hiệu hóa, nó sẽ không xuất hiện trong Inspector khi chọn một node kế thừa class được chỉ định bởi ``class_name``.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Returns ``true`` if ``property`` is disabled in the class specified by ``class_n
 
 :ref:`bool<class_bool>` **is_feature_disabled**\ (\ feature\: :ref:`Feature<enum_EditorFeatureProfile_Feature>`\ ) |const| :ref:`🔗<class_EditorFeatureProfile_method_is_feature_disabled>`
 
-Returns ``true`` if the ``feature`` is disabled. When a feature is disabled, it will disappear from the editor entirely.
+Trả về ``true`` nếu ``feature`` bị vô hiệu hóa. Khi một tính năng bị vô hiệu hóa, nó sẽ biến mất hoàn toàn khỏi editor.
 
 .. rst-class:: classref-item-separator
 
@@ -243,9 +243,9 @@ Returns ``true`` if the ``feature`` is disabled. When a feature is disabled, it 
 
 :ref:`Error<enum_@GlobalScope_Error>` **load_from_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorFeatureProfile_method_load_from_file>`
 
-Loads an editor feature profile from a file. The file must follow the JSON format obtained by using the feature profile manager's **Export** button or the :ref:`save_to_file()<class_EditorFeatureProfile_method_save_to_file>` method.
+Tải hồ sơ tính năng của editor từ một tệp. Tệp phải tuân theo định dạng JSON thu được bằng cách sử dụng nút **Export** của trình quản lý hồ sơ tính năng hoặc phương thức :ref:`save_to_file()<class_EditorFeatureProfile_method_save_to_file>`.
 
-\ **Note:** Feature profiles created via the user interface are loaded from the ``feature_profiles`` directory, as a file with the ``.profile`` extension. The editor configuration folder can be found by using :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
+\ **Lưu ý:** Các hồ sơ tính năng được tạo thông qua giao diện người dùng sẽ được tải từ thư mục ``feature_profiles``, dưới dạng tệp có phần mở rộng ``.profile``. Có thể tìm thấy thư mục cấu hình của editor bằng cách sử dụng :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
 
 .. rst-class:: classref-item-separator
 
@@ -257,9 +257,9 @@ Loads an editor feature profile from a file. The file must follow the JSON forma
 
 :ref:`Error<enum_@GlobalScope_Error>` **save_to_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorFeatureProfile_method_save_to_file>`
 
-Saves the editor feature profile to a file in JSON format. It can then be imported using the feature profile manager's **Import** button or the :ref:`load_from_file()<class_EditorFeatureProfile_method_load_from_file>` method.
+Lưu hồ sơ tính năng của editor vào một tệp ở định dạng JSON. Sau đó, hồ sơ này có thể được nhập bằng nút **Import** của feature profile manager hoặc phương thức :ref:`load_from_file()<class_EditorFeatureProfile_method_load_from_file>`.
 
-\ **Note:** Feature profiles created via the user interface are saved in the ``feature_profiles`` directory, as a file with the ``.profile`` extension. The editor configuration folder can be found by using :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
+\ **Lưu ý:** Các hồ sơ tính năng được tạo thông qua giao diện người dùng sẽ được lưu trong thư mục ``feature_profiles``, dưới dạng tệp có phần mở rộng ``.profile``. Có thể tìm thư mục cấu hình của editor bằng cách sử dụng :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ Saves the editor feature profile to a file in JSON format. It can then be import
 
 |void| **set_disable_class**\ (\ class_name\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorFeatureProfile_method_set_disable_class>`
 
-If ``disable`` is ``true``, disables the class specified by ``class_name``. When disabled, the class won't appear in the Create New Node dialog.
+Nếu ``disable`` là ``true``, lớp được chỉ định bởi ``class_name`` sẽ bị vô hiệu hóa. Khi bị vô hiệu hóa, lớp này sẽ không xuất hiện trong hộp thoại Create New Node.
 
 .. rst-class:: classref-item-separator
 
@@ -283,7 +283,7 @@ If ``disable`` is ``true``, disables the class specified by ``class_name``. When
 
 |void| **set_disable_class_editor**\ (\ class_name\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorFeatureProfile_method_set_disable_class_editor>`
 
-If ``disable`` is ``true``, disables editing for the class specified by ``class_name``. When disabled, the class will still appear in the Create New Node dialog but the Inspector will be read-only when selecting a node that extends the class.
+Nếu ``disable`` là ``true``, việc chỉnh sửa lớp được chỉ định bởi ``class_name`` sẽ bị vô hiệu hóa. Khi bị vô hiệu hóa, lớp này vẫn xuất hiện trong hộp thoại Create New Node, nhưng Inspector sẽ ở chế độ chỉ đọc khi chọn một node mở rộng lớp đó.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ If ``disable`` is ``true``, disables editing for the class specified by ``class_
 
 |void| **set_disable_class_property**\ (\ class_name\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`, disable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorFeatureProfile_method_set_disable_class_property>`
 
-If ``disable`` is ``true``, disables editing for ``property`` in the class specified by ``class_name``. When a property is disabled, it won't appear in the Inspector when selecting a node that extends the class specified by ``class_name``.
+Nếu ``disable`` là ``true``, việc chỉnh sửa ``property`` trong lớp được chỉ định bởi ``class_name`` sẽ bị vô hiệu hóa. Khi một thuộc tính bị vô hiệu hóa, thuộc tính đó sẽ không xuất hiện trong Inspector khi chọn một node mở rộng lớp được chỉ định bởi ``class_name``.
 
 .. rst-class:: classref-item-separator
 
@@ -307,14 +307,14 @@ If ``disable`` is ``true``, disables editing for ``property`` in the class speci
 
 |void| **set_disable_feature**\ (\ feature\: :ref:`Feature<enum_EditorFeatureProfile_Feature>`, disable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorFeatureProfile_method_set_disable_feature>`
 
-If ``disable`` is ``true``, disables the editor feature specified in ``feature``. When a feature is disabled, it will disappear from the editor entirely.
+Nếu ``disable`` là ``true``, tính năng editor được chỉ định trong ``feature`` sẽ bị vô hiệu hóa. Khi một tính năng bị vô hiệu hóa, tính năng đó sẽ biến mất hoàn toàn khỏi editor.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

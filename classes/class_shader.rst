@@ -10,31 +10,31 @@
 Shader
 ======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`VisualShader<class_VisualShader>`
+**Được kế thừa bởi:** :ref:`VisualShader<class_VisualShader>`
 
-A shader implemented in the Godot shading language.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A custom shader program implemented in the Godot shading language, saved with the ``.gdshader`` extension.
-
-This class is used by a :ref:`ShaderMaterial<class_ShaderMaterial>` and allows you to write your own custom behavior for rendering visual items or updating particle information. For a detailed explanation and usage, please see the tutorials linked below.
+Một shader được triển khai bằng ngôn ngữ shading của Godot.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Shaders documentation index <../tutorials/shaders/index>`
+Một chương trình shader tùy chỉnh được triển khai bằng ngôn ngữ shading của Godot, được lưu với phần mở rộng ``.gdshader``.
+
+Lớp này được :ref:`ShaderMaterial<class_ShaderMaterial>` sử dụng và cho phép bạn viết hành vi tùy chỉnh của riêng mình để kết xuất các mục trực quan hoặc cập nhật thông tin particle. Để biết giải thích chi tiết và cách sử dụng, hãy xem các tutorial được liên kết bên dưới.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Chỉ mục tài liệu Shaders <../tutorials/shaders/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -46,23 +46,23 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Texture<class_Texture>` | :ref:`get_default_texture_parameter<class_Shader_method_get_default_texture_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`, index\: :ref:`int<class_int>` = 0\ ) |const|                                  |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Mode<enum_Shader_Mode>` | :ref:`get_mode<class_Shader_method_get_mode>`\ (\ ) |const|                                                                                                                                                           |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`     | :ref:`get_shader_uniform_list<class_Shader_method_get_shader_uniform_list>`\ (\ get_groups\: :ref:`bool<class_bool>` = false\ )                                                                                       |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`inspect_native_shader_code<class_Shader_method_inspect_native_shader_code>`\ (\ )                                                                                                                               |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`set_default_texture_parameter<class_Shader_method_set_default_texture_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture<class_Texture>`, index\: :ref:`int<class_int>` = 0\ ) |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Texture<class_Texture>`  | :ref:`get_default_texture_parameter<class_Shader_method_get_default_texture_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`, index\: :ref:`int<class_int>` = 0\ ) |const|                                  |
+   +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Mode <enum_Shader_Mode>` | :ref:`get_mode<class_Shader_method_get_mode>`\ (\ ) |const|                                                                                                                                                           |
+   +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`      | :ref:`get_shader_uniform_list<class_Shader_method_get_shader_uniform_list>`\ (\ get_groups\: :ref:`bool<class_bool>` = false\ )                                                                                       |
+   +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                         | :ref:`inspect_native_shader_code<class_Shader_method_inspect_native_shader_code>`\ (\ )                                                                                                                               |
+   +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                         | :ref:`set_default_texture_parameter<class_Shader_method_set_default_texture_parameter>`\ (\ name\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture<class_Texture>`, index\: :ref:`int<class_int>` = 0\ ) |
+   +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -70,14 +70,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Shader_Mode:
 
 .. rst-class:: classref-enumeration
 
-enum **Mode**: :ref:`🔗<enum_Shader_Mode>`
+enum **Mode**: :ref:`🔗 <enum_Shader_Mode>`
 
 .. _class_Shader_constant_MODE_SPATIAL:
 
@@ -85,7 +85,7 @@ enum **Mode**: :ref:`🔗<enum_Shader_Mode>`
 
 :ref:`Mode<enum_Shader_Mode>` **MODE_SPATIAL** = ``0``
 
-Mode used to draw all 3D objects.
+Mode được sử dụng để vẽ tất cả các đối tượng 3D.
 
 .. _class_Shader_constant_MODE_CANVAS_ITEM:
 
@@ -93,7 +93,7 @@ Mode used to draw all 3D objects.
 
 :ref:`Mode<enum_Shader_Mode>` **MODE_CANVAS_ITEM** = ``1``
 
-Mode used to draw all 2D objects.
+Mode được sử dụng để vẽ tất cả các đối tượng 2D.
 
 .. _class_Shader_constant_MODE_PARTICLES:
 
@@ -101,7 +101,7 @@ Mode used to draw all 2D objects.
 
 :ref:`Mode<enum_Shader_Mode>` **MODE_PARTICLES** = ``2``
 
-Mode used to calculate particle information on a per-particle basis. Not used for drawing.
+Mode được sử dụng để tính toán thông tin particle cho từng particle. Không được sử dụng để vẽ.
 
 .. _class_Shader_constant_MODE_SKY:
 
@@ -109,7 +109,7 @@ Mode used to calculate particle information on a per-particle basis. Not used fo
 
 :ref:`Mode<enum_Shader_Mode>` **MODE_SKY** = ``3``
 
-Mode used for drawing skies. Only works with shaders attached to :ref:`Sky<class_Sky>` objects.
+Mode được sử dụng để vẽ sky. Chỉ hoạt động với các shader được gắn vào các đối tượng :ref:`Sky<class_Sky>`.
 
 .. _class_Shader_constant_MODE_FOG:
 
@@ -117,7 +117,7 @@ Mode used for drawing skies. Only works with shaders attached to :ref:`Sky<class
 
 :ref:`Mode<enum_Shader_Mode>` **MODE_FOG** = ``4``
 
-Mode used for setting the color and density of volumetric fog effect.
+Mode được sử dụng để thiết lập màu và mật độ của hiệu ứng sương mù thể tích.
 
 .. _class_Shader_constant_MODE_TEXTURE_BLIT:
 
@@ -125,7 +125,7 @@ Mode used for setting the color and density of volumetric fog effect.
 
 :ref:`Mode<enum_Shader_Mode>` **MODE_TEXTURE_BLIT** = ``5``
 
-Mode used for drawing to DrawableTexture resources via blit calls.
+Mode được sử dụng để vẽ vào các tài nguyên DrawableTexture thông qua các lệnh gọi blit.
 
 .. rst-class:: classref-section-separator
 
@@ -133,8 +133,8 @@ Mode used for drawing to DrawableTexture resources via blit calls.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Shader_property_code:
 
@@ -147,7 +147,7 @@ Property Descriptions
 - |void| **set_code**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_code**\ (\ )
 
-Returns the shader's code as the user has written it, not the full generated code used internally.
+Trả về mã của shader theo đúng cách người dùng đã viết, không phải toàn bộ mã được tạo và sử dụng nội bộ.
 
 .. rst-class:: classref-section-separator
 
@@ -155,8 +155,8 @@ Returns the shader's code as the user has written it, not the full generated cod
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Shader_method_get_default_texture_parameter:
 
@@ -164,11 +164,11 @@ Method Descriptions
 
 :ref:`Texture<class_Texture>` **get_default_texture_parameter**\ (\ name\: :ref:`StringName<class_StringName>`, index\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_Shader_method_get_default_texture_parameter>`
 
-Returns the texture that is set as default for the specified parameter.
+Trả về texture được đặt làm mặc định cho parameter được chỉ định.
 
-\ **Note:** ``name`` must match the name of the uniform in the code exactly.
+\ **Lưu ý:** ``name`` phải khớp chính xác với tên của uniform trong mã.
 
-\ **Note:** If the sampler array is used use ``index`` to access the specified texture.
+\ **Lưu ý:** Nếu sử dụng sampler array, hãy dùng ``index`` để truy cập texture được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ Returns the texture that is set as default for the specified parameter.
 
 :ref:`Mode<enum_Shader_Mode>` **get_mode**\ (\ ) |const| :ref:`🔗<class_Shader_method_get_mode>`
 
-Returns the shader mode for the shader.
+Trả về shader mode của shader.
 
 .. rst-class:: classref-item-separator
 
@@ -192,9 +192,9 @@ Returns the shader mode for the shader.
 
 :ref:`Array<class_Array>` **get_shader_uniform_list**\ (\ get_groups\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Shader_method_get_shader_uniform_list>`
 
-Returns the list of shader uniforms that can be assigned to a :ref:`ShaderMaterial<class_ShaderMaterial>`, for use with :ref:`ShaderMaterial.set_shader_parameter()<class_ShaderMaterial_method_set_shader_parameter>` and :ref:`ShaderMaterial.get_shader_parameter()<class_ShaderMaterial_method_get_shader_parameter>`. The parameters returned are contained in dictionaries in a similar format to the ones returned by :ref:`Object.get_property_list()<class_Object_method_get_property_list>`.
+Trả về danh sách các shader uniform có thể được gán cho một :ref:`ShaderMaterial<class_ShaderMaterial>`, để sử dụng với :ref:`ShaderMaterial.set_shader_parameter()<class_ShaderMaterial_method_set_shader_parameter>` và :ref:`ShaderMaterial.get_shader_parameter()<class_ShaderMaterial_method_get_shader_parameter>`. Các parameter được trả về nằm trong các dictionary có định dạng tương tự những dictionary được :ref:`Object.get_property_list()<class_Object_method_get_property_list>` trả về.
 
-If argument ``get_groups`` is ``true``, parameter grouping hints are also included in the list.
+Nếu đối số ``get_groups`` là ``true``, các gợi ý nhóm parameter cũng được đưa vào danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ If argument ``get_groups`` is ``true``, parameter grouping hints are also includ
 
 |void| **inspect_native_shader_code**\ (\ ) :ref:`🔗<class_Shader_method_inspect_native_shader_code>`
 
-Only available when running in the editor. Opens a popup that visualizes the generated shader code, including all variants and internal shader code. See also :ref:`Material.inspect_native_shader_code()<class_Material_method_inspect_native_shader_code>`.
+Chỉ khả dụng khi chạy trong editor. Mở một popup hiển thị trực quan mã shader được tạo, bao gồm tất cả variant và mã shader nội bộ. Xem thêm :ref:`Material.inspect_native_shader_code()<class_Material_method_inspect_native_shader_code>`.
 
 .. rst-class:: classref-item-separator
 
@@ -218,18 +218,18 @@ Only available when running in the editor. Opens a popup that visualizes the gen
 
 |void| **set_default_texture_parameter**\ (\ name\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture<class_Texture>`, index\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_Shader_method_set_default_texture_parameter>`
 
-Sets the default texture to be used with a texture uniform. The default is used if a texture is not set in the :ref:`ShaderMaterial<class_ShaderMaterial>`.
+Đặt texture mặc định được sử dụng với một texture uniform. Texture mặc định được sử dụng nếu texture chưa được đặt trong :ref:`ShaderMaterial<class_ShaderMaterial>`.
 
-\ **Note:** ``name`` must match the name of the uniform in the code exactly.
+\ **Lưu ý:** ``name`` phải khớp chính xác với tên của uniform trong mã.
 
-\ **Note:** If the sampler array is used use ``index`` to access the specified texture.
+\ **Lưu ý:** Nếu sử dụng sampler array, hãy dùng ``index`` để truy cập texture được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường phải override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức này không thay đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

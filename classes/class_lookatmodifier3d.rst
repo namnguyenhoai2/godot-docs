@@ -10,93 +10,93 @@
 LookAtModifier3D
 ================
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-The **LookAtModifier3D** rotates a bone to look at a target.
+**LookAtModifier3D** xoay một xương để hướng về một mục tiêu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` rotates a bone to look at a target. This is helpful for moving a character's head to look at the player, rotating a turret to look at a target, or any other case where you want to make a bone rotate towards something quickly and easily.
+:ref:`SkeletonModifier3D<class_SkeletonModifier3D>` này xoay một xương để hướng về một mục tiêu. Điều này hữu ích khi di chuyển đầu của nhân vật để nhìn về phía người chơi, xoay một tháp pháo để hướng về mục tiêu hoặc trong bất kỳ trường hợp nào khác khi bạn muốn làm cho một xương xoay về phía một đối tượng một cách nhanh chóng và dễ dàng.
 
-When applying multiple **LookAtModifier3D**\ s, the **LookAtModifier3D** assigned to the parent bone must be put above the **LookAtModifier3D** assigned to the child bone in the list in order for the child bone results to be correct.
+Khi áp dụng nhiều **LookAtModifier3D**\ s, **LookAtModifier3D** được gán cho xương cha phải được đặt phía trên **LookAtModifier3D** được gán cho xương con trong danh sách để kết quả của xương con được chính xác.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                               | :ref:`bone<class_LookAtModifier3D_property_bone>`                                                           | ``-1``               |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`String<class_String>`                         | :ref:`bone_name<class_LookAtModifier3D_property_bone_name>`                                                 | ``""``               |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`duration<class_LookAtModifier3D_property_duration>`                                                   | ``0.0``              |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`EaseType<enum_Tween_EaseType>`                | :ref:`ease_type<class_LookAtModifier3D_property_ease_type>`                                                 | ``0``                |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>`   | :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>`                                           | ``4``                |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                               | :ref:`origin_bone<class_LookAtModifier3D_property_origin_bone>`                                             |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`String<class_String>`                         | :ref:`origin_bone_name<class_LookAtModifier3D_property_origin_bone_name>`                                   |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`NodePath<class_NodePath>`                     | :ref:`origin_external_node<class_LookAtModifier3D_property_origin_external_node>`                           |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`OriginFrom<enum_LookAtModifier3D_OriginFrom>` | :ref:`origin_from<class_LookAtModifier3D_property_origin_from>`                                             | ``0``                |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>`                       | :ref:`origin_offset<class_LookAtModifier3D_property_origin_offset>`                                         | ``Vector3(0, 0, 0)`` |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`origin_safe_margin<class_LookAtModifier3D_property_origin_safe_margin>`                               | ``0.1``              |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`primary_damp_threshold<class_LookAtModifier3D_property_primary_damp_threshold>`                       |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`primary_limit_angle<class_LookAtModifier3D_property_primary_limit_angle>`                             |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`primary_negative_damp_threshold<class_LookAtModifier3D_property_primary_negative_damp_threshold>`     |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`primary_negative_limit_angle<class_LookAtModifier3D_property_primary_negative_limit_angle>`           |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`primary_positive_damp_threshold<class_LookAtModifier3D_property_primary_positive_damp_threshold>`     |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`primary_positive_limit_angle<class_LookAtModifier3D_property_primary_positive_limit_angle>`           |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`Axis<enum_Vector3_Axis>`                      | :ref:`primary_rotation_axis<class_LookAtModifier3D_property_primary_rotation_axis>`                         | ``1``                |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`relative<class_LookAtModifier3D_property_relative>`                                                   | ``false``            |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`secondary_damp_threshold<class_LookAtModifier3D_property_secondary_damp_threshold>`                   |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`secondary_limit_angle<class_LookAtModifier3D_property_secondary_limit_angle>`                         |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`secondary_negative_damp_threshold<class_LookAtModifier3D_property_secondary_negative_damp_threshold>` |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`secondary_negative_limit_angle<class_LookAtModifier3D_property_secondary_negative_limit_angle>`       |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`secondary_positive_damp_threshold<class_LookAtModifier3D_property_secondary_positive_damp_threshold>` |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                           | :ref:`secondary_positive_limit_angle<class_LookAtModifier3D_property_secondary_positive_limit_angle>`       |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>`                             |                      |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`NodePath<class_NodePath>`                     | :ref:`target_node<class_LookAtModifier3D_property_target_node>`                                             | ``NodePath("")``     |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`TransitionType<enum_Tween_TransitionType>`    | :ref:`transition_type<class_LookAtModifier3D_property_transition_type>`                                     | ``0``                |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`use_angle_limitation<class_LookAtModifier3D_property_use_angle_limitation>`                           | ``false``            |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`use_secondary_rotation<class_LookAtModifier3D_property_use_secondary_rotation>`                       | ``true``             |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                                | :ref:`bone<class_LookAtModifier3D_property_bone>`                                                           | ``-1``               |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`String<class_String>`                          | :ref:`bone_name<class_LookAtModifier3D_property_bone_name>`                                                 | ``""``               |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`duration<class_LookAtModifier3D_property_duration>`                                                   | ``0.0``              |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`EaseType <enum_Tween_EaseType>`                | :ref:`ease_type<class_LookAtModifier3D_property_ease_type>`                                                 | ``0``                |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`BoneAxis <enum_SkeletonModifier3D_BoneAxis>`   | :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>`                                           | ``4``                |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                                | :ref:`origin_bone<class_LookAtModifier3D_property_origin_bone>`                                             |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`String<class_String>`                          | :ref:`origin_bone_name<class_LookAtModifier3D_property_origin_bone_name>`                                   |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`NodePath<class_NodePath>`                      | :ref:`origin_external_node<class_LookAtModifier3D_property_origin_external_node>`                           |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`OriginFrom <enum_LookAtModifier3D_OriginFrom>` | :ref:`origin_from<class_LookAtModifier3D_property_origin_from>`                                             | ``0``                |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>`                        | :ref:`origin_offset<class_LookAtModifier3D_property_origin_offset>`                                         | ``Vector3(0, 0, 0)`` |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`origin_safe_margin<class_LookAtModifier3D_property_origin_safe_margin>`                               | ``0.1``              |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`primary_damp_threshold<class_LookAtModifier3D_property_primary_damp_threshold>`                       |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`primary_limit_angle<class_LookAtModifier3D_property_primary_limit_angle>`                             |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`primary_negative_damp_threshold<class_LookAtModifier3D_property_primary_negative_damp_threshold>`     |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`primary_negative_limit_angle<class_LookAtModifier3D_property_primary_negative_limit_angle>`           |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`primary_positive_damp_threshold<class_LookAtModifier3D_property_primary_positive_damp_threshold>`     |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`primary_positive_limit_angle<class_LookAtModifier3D_property_primary_positive_limit_angle>`           |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`Axis <enum_Vector3_Axis>`                      | :ref:`primary_rotation_axis<class_LookAtModifier3D_property_primary_rotation_axis>`                         | ``1``                |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`relative<class_LookAtModifier3D_property_relative>`                                                   | ``false``            |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`secondary_damp_threshold<class_LookAtModifier3D_property_secondary_damp_threshold>`                   |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`secondary_limit_angle<class_LookAtModifier3D_property_secondary_limit_angle>`                         |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`secondary_negative_damp_threshold<class_LookAtModifier3D_property_secondary_negative_damp_threshold>` |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`secondary_negative_limit_angle<class_LookAtModifier3D_property_secondary_negative_limit_angle>`       |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`secondary_positive_damp_threshold<class_LookAtModifier3D_property_secondary_positive_damp_threshold>` |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                            | :ref:`secondary_positive_limit_angle<class_LookAtModifier3D_property_secondary_positive_limit_angle>`       |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>`                             |                      |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`NodePath<class_NodePath>`                      | :ref:`target_node<class_LookAtModifier3D_property_target_node>`                                             | ``NodePath("")``     |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`TransitionType <enum_Tween_TransitionType>`    | :ref:`transition_type<class_LookAtModifier3D_property_transition_type>`                                     | ``0``                |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`use_angle_limitation<class_LookAtModifier3D_property_use_angle_limitation>`                           | ``false``            |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`use_secondary_rotation<class_LookAtModifier3D_property_use_secondary_rotation>`                       | ``true``             |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------------------+----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -115,14 +115,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_LookAtModifier3D_OriginFrom:
 
 .. rst-class:: classref-enumeration
 
-enum **OriginFrom**: :ref:`🔗<enum_LookAtModifier3D_OriginFrom>`
+enum **OriginFrom**: :ref:`🔗 <enum_LookAtModifier3D_OriginFrom>`
 
 .. _class_LookAtModifier3D_constant_ORIGIN_FROM_SELF:
 
@@ -130,7 +130,7 @@ enum **OriginFrom**: :ref:`🔗<enum_LookAtModifier3D_OriginFrom>`
 
 :ref:`OriginFrom<enum_LookAtModifier3D_OriginFrom>` **ORIGIN_FROM_SELF** = ``0``
 
-The bone rest position of the bone specified in :ref:`bone<class_LookAtModifier3D_property_bone>` is used as origin.
+Vị trí nghỉ của xương được chỉ định trong :ref:`bone<class_LookAtModifier3D_property_bone>` được sử dụng làm gốc.
 
 .. _class_LookAtModifier3D_constant_ORIGIN_FROM_SPECIFIC_BONE:
 
@@ -138,9 +138,9 @@ The bone rest position of the bone specified in :ref:`bone<class_LookAtModifier3
 
 :ref:`OriginFrom<enum_LookAtModifier3D_OriginFrom>` **ORIGIN_FROM_SPECIFIC_BONE** = ``1``
 
-The bone global pose position of the bone specified in :ref:`origin_bone<class_LookAtModifier3D_property_origin_bone>` is used as origin.
+Vị trí tư thế toàn cục của xương được chỉ định trong :ref:`origin_bone<class_LookAtModifier3D_property_origin_bone>` được sử dụng làm gốc.
 
-\ **Note:** It is recommended that you select only the parent bone unless you are familiar with the bone processing process. The specified bone pose at the time the **LookAtModifier3D** is processed is used as a reference. In other words, if you specify a child bone and the **LookAtModifier3D** causes the child bone to move, the rendered result and direction will not match.
+\ **Lưu ý:** Bạn chỉ nên chọn xương cha, trừ khi đã quen thuộc với quy trình xử lý xương. Tư thế của xương được chỉ định tại thời điểm **LookAtModifier3D** được xử lý sẽ được sử dụng làm tham chiếu. Nói cách khác, nếu bạn chỉ định một xương con và **LookAtModifier3D** khiến xương con di chuyển, kết quả kết xuất và hướng sẽ không khớp.
 
 .. _class_LookAtModifier3D_constant_ORIGIN_FROM_EXTERNAL_NODE:
 
@@ -148,9 +148,9 @@ The bone global pose position of the bone specified in :ref:`origin_bone<class_L
 
 :ref:`OriginFrom<enum_LookAtModifier3D_OriginFrom>` **ORIGIN_FROM_EXTERNAL_NODE** = ``2``
 
-The global position of the :ref:`Node3D<class_Node3D>` specified in :ref:`origin_external_node<class_LookAtModifier3D_property_origin_external_node>` is used as origin.
+Vị trí toàn cục của :ref:`Node3D<class_Node3D>` được chỉ định trong :ref:`origin_external_node<class_LookAtModifier3D_property_origin_external_node>` được sử dụng làm gốc.
 
-\ **Note:** Same as :ref:`ORIGIN_FROM_SPECIFIC_BONE<class_LookAtModifier3D_constant_ORIGIN_FROM_SPECIFIC_BONE>`, when specifying a :ref:`BoneAttachment3D<class_BoneAttachment3D>` with a child bone assigned, the rendered result and direction will not match.
+\ **Lưu ý:** Tương tự như :ref:`ORIGIN_FROM_SPECIFIC_BONE<class_LookAtModifier3D_constant_ORIGIN_FROM_SPECIFIC_BONE>`, khi chỉ định :ref:`BoneAttachment3D<class_BoneAttachment3D>` có gán một xương con, kết quả kết xuất và hướng sẽ không khớp.
 
 .. rst-class:: classref-section-separator
 
@@ -158,8 +158,8 @@ The global position of the :ref:`Node3D<class_Node3D>` specified in :ref:`origin
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_LookAtModifier3D_property_bone:
 
@@ -172,7 +172,7 @@ Property Descriptions
 - |void| **set_bone**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bone**\ (\ )
 
-Index of the :ref:`bone_name<class_LookAtModifier3D_property_bone_name>` in the parent :ref:`Skeleton3D<class_Skeleton3D>`.
+Chỉ mục của :ref:`bone_name<class_LookAtModifier3D_property_bone_name>` trong :ref:`Skeleton3D<class_Skeleton3D>` cha.
 
 .. rst-class:: classref-item-separator
 
@@ -189,7 +189,7 @@ Index of the :ref:`bone_name<class_LookAtModifier3D_property_bone_name>` in the 
 - |void| **set_bone_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_bone_name**\ (\ )
 
-The bone name of the :ref:`Skeleton3D<class_Skeleton3D>` that the modification will operate on.
+Tên xương của :ref:`Skeleton3D<class_Skeleton3D>` mà phép sửa đổi sẽ tác động lên.
 
 .. rst-class:: classref-item-separator
 
@@ -206,13 +206,13 @@ The bone name of the :ref:`Skeleton3D<class_Skeleton3D>` that the modification w
 - |void| **set_duration**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_duration**\ (\ )
 
-The duration of the time-based interpolation. Interpolation is triggered at the following cases:
+Thời lượng của phép nội suy dựa trên thời gian. Phép nội suy được kích hoạt trong các trường hợp sau:
 
-- When the target node is changed
+- Khi node đích thay đổi
 
-- When an axis is flipped due to angle limitation
+- Khi một trục bị lật do giới hạn góc
 
-\ **Note:** The flipping occurs when the target is outside the angle limitation and the internally computed secondary rotation axis of the forward vector is flipped. Visually, it occurs when the target is outside the angle limitation and crosses the plane of the :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>` and :ref:`primary_rotation_axis<class_LookAtModifier3D_property_primary_rotation_axis>`.
+\ **Lưu ý:** Việc lật xảy ra khi target nằm ngoài giới hạn góc và trục quay phụ được tính toán nội bộ của vector hướng tiến bị lật. Về mặt trực quan, việc này xảy ra khi target nằm ngoài giới hạn góc và đi qua mặt phẳng của :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>` và :ref:`primary_rotation_axis<class_LookAtModifier3D_property_primary_rotation_axis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -229,7 +229,7 @@ The duration of the time-based interpolation. Interpolation is triggered at the 
 - |void| **set_ease_type**\ (\ value\: :ref:`EaseType<enum_Tween_EaseType>`\ )
 - :ref:`EaseType<enum_Tween_EaseType>` **get_ease_type**\ (\ )
 
-The ease type of the time-based interpolation. See also :ref:`EaseType<enum_Tween_EaseType>`.
+Kiểu ease của phép nội suy dựa trên thời gian. Xem thêm :ref:`EaseType <enum_Tween_EaseType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ The ease type of the time-based interpolation. See also :ref:`EaseType<enum_Twee
 - |void| **set_forward_axis**\ (\ value\: :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>`\ )
 - :ref:`BoneAxis<enum_SkeletonModifier3D_BoneAxis>` **get_forward_axis**\ (\ )
 
-The forward axis of the bone. This :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` modifies the bone so that this axis points toward the :ref:`target_node<class_LookAtModifier3D_property_target_node>`.
+Trục hướng tiến của xương. Thuộc tính này :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` sửa đổi xương để trục này hướng về :ref:`target_node<class_LookAtModifier3D_property_target_node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -256,14 +256,14 @@ The forward axis of the bone. This :ref:`SkeletonModifier3D<class_SkeletonModifi
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **origin_bone** :ref:`🔗<class_LookAtModifier3D_property_origin_bone>`
+:ref:`int<class_int>` **origin_bone** :ref:`🔗 <class_LookAtModifier3D_property_origin_bone>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_origin_bone**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_origin_bone**\ (\ )
 
-Index of the :ref:`origin_bone_name<class_LookAtModifier3D_property_origin_bone_name>` in the parent :ref:`Skeleton3D<class_Skeleton3D>`.
+Chỉ mục của :ref:`origin_bone_name<class_LookAtModifier3D_property_origin_bone_name>` trong :ref:`Skeleton3D<class_Skeleton3D>` cha.
 
 .. rst-class:: classref-item-separator
 
@@ -273,14 +273,14 @@ Index of the :ref:`origin_bone_name<class_LookAtModifier3D_property_origin_bone_
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **origin_bone_name** :ref:`🔗<class_LookAtModifier3D_property_origin_bone_name>`
+:ref:`String<class_String>` **origin_bone_name** :ref:`🔗 <class_LookAtModifier3D_property_origin_bone_name>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_origin_bone_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_origin_bone_name**\ (\ )
 
-If :ref:`origin_from<class_LookAtModifier3D_property_origin_from>` is :ref:`ORIGIN_FROM_SPECIFIC_BONE<class_LookAtModifier3D_constant_ORIGIN_FROM_SPECIFIC_BONE>`, the bone global pose position specified for this is used as origin.
+Nếu :ref:`origin_from<class_LookAtModifier3D_property_origin_from>` là :ref:`ORIGIN_FROM_SPECIFIC_BONE<class_LookAtModifier3D_constant_ORIGIN_FROM_SPECIFIC_BONE>`, vị trí tư thế toàn cục của xương được chỉ định cho thuộc tính này sẽ được dùng làm gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -290,14 +290,14 @@ If :ref:`origin_from<class_LookAtModifier3D_property_origin_from>` is :ref:`ORIG
 
 .. rst-class:: classref-property
 
-:ref:`NodePath<class_NodePath>` **origin_external_node** :ref:`🔗<class_LookAtModifier3D_property_origin_external_node>`
+:ref:`NodePath<class_NodePath>` **origin_external_node** :ref:`🔗 <class_LookAtModifier3D_property_origin_external_node>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_origin_external_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_origin_external_node**\ (\ )
 
-If :ref:`origin_from<class_LookAtModifier3D_property_origin_from>` is :ref:`ORIGIN_FROM_EXTERNAL_NODE<class_LookAtModifier3D_constant_ORIGIN_FROM_EXTERNAL_NODE>`, the global position of the :ref:`Node3D<class_Node3D>` specified for this is used as origin.
+Nếu :ref:`origin_from<class_LookAtModifier3D_property_origin_from>` là :ref:`ORIGIN_FROM_EXTERNAL_NODE<class_LookAtModifier3D_constant_ORIGIN_FROM_EXTERNAL_NODE>`, vị trí toàn cục của :ref:`Node3D<class_Node3D>` được chỉ định cho thuộc tính này sẽ được dùng làm gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ If :ref:`origin_from<class_LookAtModifier3D_property_origin_from>` is :ref:`ORIG
 - |void| **set_origin_from**\ (\ value\: :ref:`OriginFrom<enum_LookAtModifier3D_OriginFrom>`\ )
 - :ref:`OriginFrom<enum_LookAtModifier3D_OriginFrom>` **get_origin_from**\ (\ )
 
-This value determines from what origin is retrieved for use in the calculation of the forward vector.
+Giá trị này xác định gốc nào được truy xuất để sử dụng trong phép tính vector hướng tiến.
 
 .. rst-class:: classref-item-separator
 
@@ -331,9 +331,9 @@ This value determines from what origin is retrieved for use in the calculation o
 - |void| **set_origin_offset**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_origin_offset**\ (\ )
 
-The offset of the bone pose origin. Matching the origins by offset is useful for cases where multiple bones must always face the same direction, such as the eyes.
+Độ lệch của gốc tư thế xương. Việc khớp các gốc theo độ lệch hữu ích trong những trường hợp nhiều xương phải luôn hướng theo cùng một hướng, chẳng hạn như mắt.
 
-\ **Note:** This value indicates the local position of the object set in :ref:`origin_from<class_LookAtModifier3D_property_origin_from>`.
+\ **Lưu ý:** Giá trị này cho biết vị trí cục bộ của đối tượng được đặt trong :ref:`origin_from<class_LookAtModifier3D_property_origin_from>`.
 
 .. rst-class:: classref-item-separator
 
@@ -350,7 +350,7 @@ The offset of the bone pose origin. Matching the origins by offset is useful for
 - |void| **set_origin_safe_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_origin_safe_margin**\ (\ )
 
-If the target passes through too close to the origin than this value, time-based interpolation is used even if the target is within the angular limitations, to prevent the angular velocity from becoming too high.
+Nếu mục tiêu đi qua vị trí quá gần gốc so với giá trị này, phép nội suy dựa trên thời gian sẽ được sử dụng ngay cả khi mục tiêu nằm trong các giới hạn góc, nhằm ngăn vận tốc góc trở nên quá cao.
 
 .. rst-class:: classref-item-separator
 
@@ -360,16 +360,16 @@ If the target passes through too close to the origin than this value, time-based
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **primary_damp_threshold** :ref:`🔗<class_LookAtModifier3D_property_primary_damp_threshold>`
+:ref:`float<class_float>` **primary_damp_threshold** :ref:`🔗 <class_LookAtModifier3D_property_primary_damp_threshold>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_primary_damp_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_primary_damp_threshold**\ (\ )
 
-The threshold to start damping for :ref:`primary_limit_angle<class_LookAtModifier3D_property_primary_limit_angle>`. It provides non-linear (b-spline) interpolation, let it feel more resistance the more it rotate to the edge limit. This is useful for simulating the limits of human motion.
+Ngưỡng bắt đầu giảm chấn cho :ref:`primary_limit_angle<class_LookAtModifier3D_property_primary_limit_angle>`. Ngưỡng này cung cấp phép nội suy phi tuyến (b-spline), tạo cảm giác lực cản lớn hơn khi nó xoay gần đến giới hạn biên. Điều này hữu ích khi mô phỏng các giới hạn chuyển động của con người.
 
-If ``1.0``, no damping is performed. If ``0.0``, damping is always performed.
+Nếu ``1.0``, không thực hiện giảm chấn. Nếu ``0.0``, luôn thực hiện giảm chấn.
 
 .. rst-class:: classref-item-separator
 
@@ -379,14 +379,14 @@ If ``1.0``, no damping is performed. If ``0.0``, damping is always performed.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **primary_limit_angle** :ref:`🔗<class_LookAtModifier3D_property_primary_limit_angle>`
+:ref:`float<class_float>` **primary_limit_angle** :ref:`🔗 <class_LookAtModifier3D_property_primary_limit_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_primary_limit_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_primary_limit_angle**\ (\ )
 
-The limit angle of the primary rotation when :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` is ``true``, in radians.
+Góc giới hạn của phép xoay chính khi :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` là ``true``, tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -396,14 +396,14 @@ The limit angle of the primary rotation when :ref:`symmetry_limitation<class_Loo
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **primary_negative_damp_threshold** :ref:`🔗<class_LookAtModifier3D_property_primary_negative_damp_threshold>`
+:ref:`float<class_float>` **primary_negative_damp_threshold** :ref:`🔗 <class_LookAtModifier3D_property_primary_negative_damp_threshold>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_primary_negative_damp_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_primary_negative_damp_threshold**\ (\ )
 
-The threshold to start damping for :ref:`primary_negative_limit_angle<class_LookAtModifier3D_property_primary_negative_limit_angle>`.
+Ngưỡng bắt đầu giảm chấn cho :ref:`primary_negative_limit_angle<class_LookAtModifier3D_property_primary_negative_limit_angle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -413,14 +413,14 @@ The threshold to start damping for :ref:`primary_negative_limit_angle<class_Look
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **primary_negative_limit_angle** :ref:`🔗<class_LookAtModifier3D_property_primary_negative_limit_angle>`
+:ref:`float<class_float>` **primary_negative_limit_angle** :ref:`🔗 <class_LookAtModifier3D_property_primary_negative_limit_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_primary_negative_limit_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_primary_negative_limit_angle**\ (\ )
 
-The limit angle of negative side of the primary rotation when :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` is ``false``, in radians.
+Góc giới hạn ở phía âm của phép xoay chính khi :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` là ``false``, tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -430,14 +430,14 @@ The limit angle of negative side of the primary rotation when :ref:`symmetry_lim
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **primary_positive_damp_threshold** :ref:`🔗<class_LookAtModifier3D_property_primary_positive_damp_threshold>`
+:ref:`float<class_float>` **primary_positive_damp_threshold** :ref:`🔗 <class_LookAtModifier3D_property_primary_positive_damp_threshold>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_primary_positive_damp_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_primary_positive_damp_threshold**\ (\ )
 
-The threshold to start damping for :ref:`primary_positive_limit_angle<class_LookAtModifier3D_property_primary_positive_limit_angle>`.
+Ngưỡng bắt đầu giảm chấn cho :ref:`primary_positive_limit_angle<class_LookAtModifier3D_property_primary_positive_limit_angle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -447,14 +447,14 @@ The threshold to start damping for :ref:`primary_positive_limit_angle<class_Look
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **primary_positive_limit_angle** :ref:`🔗<class_LookAtModifier3D_property_primary_positive_limit_angle>`
+:ref:`float<class_float>` **primary_positive_limit_angle** :ref:`🔗 <class_LookAtModifier3D_property_primary_positive_limit_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_primary_positive_limit_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_primary_positive_limit_angle**\ (\ )
 
-The limit angle of positive side of the primary rotation when :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` is ``false``, in radians.
+Góc giới hạn của phía dương của phép xoay chính khi :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` là ``false``, tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -471,7 +471,7 @@ The limit angle of positive side of the primary rotation when :ref:`symmetry_lim
 - |void| **set_primary_rotation_axis**\ (\ value\: :ref:`Axis<enum_Vector3_Axis>`\ )
 - :ref:`Axis<enum_Vector3_Axis>` **get_primary_rotation_axis**\ (\ )
 
-The axis of the first rotation. This :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` works by compositing the rotation by Euler angles to prevent to rotate the :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>`.
+Trục của phép xoay đầu tiên. :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` này hoạt động bằng cách kết hợp phép xoay theo các góc Euler để ngăn không cho :ref:`forward_axis<class_LookAtModifier3D_property_forward_axis>` xoay.
 
 .. rst-class:: classref-item-separator
 
@@ -488,9 +488,9 @@ The axis of the first rotation. This :ref:`SkeletonModifier3D<class_SkeletonModi
 - |void| **set_relative**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_relative**\ (\ )
 
-The relative option. If ``true``, the rotation is applied relative to the pose. If ``false``, the rotation is applied relative to the rest. It means to replace the current pose with the **LookAtModifier3D**'s result.
+Tùy chọn tương đối. Nếu ``true``, phép xoay được áp dụng tương đối so với pose. Nếu ``false``, phép xoay được áp dụng tương đối so với trạng thái nghỉ. Điều đó có nghĩa là thay thế pose hiện tại bằng kết quả của **LookAtModifier3D**.
 
-\ **Note:** This option affects the base angle for :ref:`use_angle_limitation<class_LookAtModifier3D_property_use_angle_limitation>`. Since the **LookAtModifier3D** relies strongly on Euler rotation, the axis that determines the limitation and the actual rotation are strongly tied together.
+\ **Lưu ý:** Tùy chọn này ảnh hưởng đến góc cơ sở của :ref:`use_angle_limitation<class_LookAtModifier3D_property_use_angle_limitation>`. Vì **LookAtModifier3D** phụ thuộc nhiều vào phép xoay Euler, trục xác định giới hạn và phép xoay thực tế có mối liên hệ chặt chẽ với nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -500,14 +500,14 @@ The relative option. If ``true``, the rotation is applied relative to the pose. 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **secondary_damp_threshold** :ref:`🔗<class_LookAtModifier3D_property_secondary_damp_threshold>`
+:ref:`float<class_float>` **secondary_damp_threshold** :ref:`🔗 <class_LookAtModifier3D_property_secondary_damp_threshold>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_secondary_damp_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_secondary_damp_threshold**\ (\ )
 
-The threshold to start damping for :ref:`secondary_limit_angle<class_LookAtModifier3D_property_secondary_limit_angle>`.
+Ngưỡng để bắt đầu damping cho :ref:`secondary_limit_angle<class_LookAtModifier3D_property_secondary_limit_angle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -517,14 +517,14 @@ The threshold to start damping for :ref:`secondary_limit_angle<class_LookAtModif
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **secondary_limit_angle** :ref:`🔗<class_LookAtModifier3D_property_secondary_limit_angle>`
+:ref:`float<class_float>` **secondary_limit_angle** :ref:`🔗 <class_LookAtModifier3D_property_secondary_limit_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_secondary_limit_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_secondary_limit_angle**\ (\ )
 
-The limit angle of the secondary rotation when :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` is ``true``, in radians.
+Góc giới hạn của chuyển động quay thứ cấp khi :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` là ``true``, tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -534,14 +534,14 @@ The limit angle of the secondary rotation when :ref:`symmetry_limitation<class_L
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **secondary_negative_damp_threshold** :ref:`🔗<class_LookAtModifier3D_property_secondary_negative_damp_threshold>`
+:ref:`float<class_float>` **secondary_negative_damp_threshold** :ref:`🔗 <class_LookAtModifier3D_property_secondary_negative_damp_threshold>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_secondary_negative_damp_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_secondary_negative_damp_threshold**\ (\ )
 
-The threshold to start damping for :ref:`secondary_negative_limit_angle<class_LookAtModifier3D_property_secondary_negative_limit_angle>`.
+Ngưỡng bắt đầu giảm chấn cho :ref:`secondary_negative_limit_angle<class_LookAtModifier3D_property_secondary_negative_limit_angle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -551,14 +551,14 @@ The threshold to start damping for :ref:`secondary_negative_limit_angle<class_Lo
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **secondary_negative_limit_angle** :ref:`🔗<class_LookAtModifier3D_property_secondary_negative_limit_angle>`
+:ref:`float<class_float>` **secondary_negative_limit_angle** :ref:`🔗 <class_LookAtModifier3D_property_secondary_negative_limit_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_secondary_negative_limit_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_secondary_negative_limit_angle**\ (\ )
 
-The limit angle of negative side of the secondary rotation when :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` is ``false``, in radians.
+Góc giới hạn ở phía âm của chuyển động quay thứ cấp khi :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` là ``false``, tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -568,14 +568,14 @@ The limit angle of negative side of the secondary rotation when :ref:`symmetry_l
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **secondary_positive_damp_threshold** :ref:`🔗<class_LookAtModifier3D_property_secondary_positive_damp_threshold>`
+:ref:`float<class_float>` **secondary_positive_damp_threshold** :ref:`🔗 <class_LookAtModifier3D_property_secondary_positive_damp_threshold>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_secondary_positive_damp_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_secondary_positive_damp_threshold**\ (\ )
 
-The threshold to start damping for :ref:`secondary_positive_limit_angle<class_LookAtModifier3D_property_secondary_positive_limit_angle>`.
+Ngưỡng bắt đầu giảm chấn cho :ref:`secondary_positive_limit_angle<class_LookAtModifier3D_property_secondary_positive_limit_angle>`.
 
 .. rst-class:: classref-item-separator
 
@@ -585,14 +585,14 @@ The threshold to start damping for :ref:`secondary_positive_limit_angle<class_Lo
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **secondary_positive_limit_angle** :ref:`🔗<class_LookAtModifier3D_property_secondary_positive_limit_angle>`
+:ref:`float<class_float>` **secondary_positive_limit_angle** :ref:`🔗 <class_LookAtModifier3D_property_secondary_positive_limit_angle>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_secondary_positive_limit_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_secondary_positive_limit_angle**\ (\ )
 
-The limit angle of positive side of the secondary rotation when :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` is ``false``, in radians.
+Góc giới hạn ở phía dương của chuyển động quay thứ cấp khi :ref:`symmetry_limitation<class_LookAtModifier3D_property_symmetry_limitation>` là ``false``, tính bằng radian.
 
 .. rst-class:: classref-item-separator
 
@@ -602,16 +602,16 @@ The limit angle of positive side of the secondary rotation when :ref:`symmetry_l
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **symmetry_limitation** :ref:`🔗<class_LookAtModifier3D_property_symmetry_limitation>`
+:ref:`bool<class_bool>` **symmetry_limitation** :ref:`🔗 <class_LookAtModifier3D_property_symmetry_limitation>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_symmetry_limitation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_limitation_symmetry**\ (\ )
 
-If ``true``, the limitations are spread from the bone symmetrically.
+Nếu ``true``, các giới hạn được phân bổ đối xứng từ xương.
 
-If ``false``, the limitation can be specified separately for each side of the bone rest.
+Nếu ``false``, có thể chỉ định giới hạn riêng cho từng phía của xương ở trạng thái nghỉ.
 
 .. rst-class:: classref-item-separator
 
@@ -628,7 +628,7 @@ If ``false``, the limitation can be specified separately for each side of the bo
 - |void| **set_target_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_target_node**\ (\ )
 
-The :ref:`NodePath<class_NodePath>` to the node that is the target for the look at modification. This node is what the modification will rotate the bone to.
+Đường dẫn :ref:`NodePath<class_NodePath>` đến node là đích của sửa đổi look at. Node này là đối tượng mà sửa đổi sẽ xoay xương hướng tới.
 
 .. rst-class:: classref-item-separator
 
@@ -645,7 +645,7 @@ The :ref:`NodePath<class_NodePath>` to the node that is the target for the look 
 - |void| **set_transition_type**\ (\ value\: :ref:`TransitionType<enum_Tween_TransitionType>`\ )
 - :ref:`TransitionType<enum_Tween_TransitionType>` **get_transition_type**\ (\ )
 
-The transition type of the time-based interpolation. See also :ref:`TransitionType<enum_Tween_TransitionType>`.
+Kiểu chuyển tiếp của phép nội suy dựa trên thời gian. Xem thêm :ref:`TransitionType <enum_Tween_TransitionType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -662,11 +662,11 @@ The transition type of the time-based interpolation. See also :ref:`TransitionTy
 - |void| **set_use_angle_limitation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_angle_limitation**\ (\ )
 
-If ``true``, limits the amount of rotation. For example, this helps to prevent a character's neck from rotating 360 degrees.
+Nếu ``true``, giới hạn mức độ xoay. Ví dụ, điều này giúp ngăn cổ của nhân vật xoay 360 độ.
 
-\ **Note:** As with :ref:`AnimationTree<class_AnimationTree>` blending, interpolation is provided that favors :ref:`Skeleton3D.get_bone_rest()<class_Skeleton3D_method_get_bone_rest>` or :ref:`Skeleton3D.get_bone_pose()<class_Skeleton3D_method_get_bone_pose>` depends on the :ref:`relative<class_LookAtModifier3D_property_relative>` option. This means that interpolation does not select the shortest path in some cases.
+\ **Lưu ý:** Tương tự như khi :ref:`AnimationTree<class_AnimationTree>` blending, phép nội suy được cung cấp theo hướng ưu tiên :ref:`Skeleton3D.get_bone_rest()<class_Skeleton3D_method_get_bone_rest>` hoặc :ref:`Skeleton3D.get_bone_pose()<class_Skeleton3D_method_get_bone_pose>` tùy thuộc vào tùy chọn :ref:`relative<class_LookAtModifier3D_property_relative>`. Điều này có nghĩa là trong một số trường hợp, phép nội suy không chọn đường đi ngắn nhất.
 
-\ **Note:** Some values for :ref:`transition_type<class_LookAtModifier3D_property_transition_type>` (such as :ref:`Tween.TRANS_BACK<class_Tween_constant_TRANS_BACK>`, :ref:`Tween.TRANS_ELASTIC<class_Tween_constant_TRANS_ELASTIC>`, and :ref:`Tween.TRANS_SPRING<class_Tween_constant_TRANS_SPRING>`) may exceed the limitations. If interpolation occurs while overshooting the limitations, the result might not respect the bone rest.
+\ **Lưu ý:** Một số giá trị của :ref:`transition_type<class_LookAtModifier3D_property_transition_type>` (chẳng hạn như :ref:`Tween.TRANS_BACK<class_Tween_constant_TRANS_BACK>`, :ref:`Tween.TRANS_ELASTIC<class_Tween_constant_TRANS_ELASTIC>` và :ref:`Tween.TRANS_SPRING<class_Tween_constant_TRANS_SPRING>`) có thể vượt quá các giới hạn. Nếu phép nội suy xảy ra trong khi vượt quá các giới hạn, kết quả có thể không tôn trọng trạng thái nghỉ của xương.
 
 .. rst-class:: classref-item-separator
 
@@ -683,7 +683,7 @@ If ``true``, limits the amount of rotation. For example, this helps to prevent a
 - |void| **set_use_secondary_rotation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_secondary_rotation**\ (\ )
 
-If ``true``, provides rotation by two axes.
+Nếu ``true``, cung cấp phép xoay theo hai trục.
 
 .. rst-class:: classref-section-separator
 
@@ -691,8 +691,8 @@ If ``true``, provides rotation by two axes.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_LookAtModifier3D_method_get_interpolation_remaining:
 
@@ -700,7 +700,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_interpolation_remaining**\ (\ ) |const| :ref:`🔗<class_LookAtModifier3D_method_get_interpolation_remaining>`
 
-Returns the remaining seconds of the time-based interpolation.
+Trả về số giây còn lại của phép nội suy dựa trên thời gian.
 
 .. rst-class:: classref-item-separator
 
@@ -712,9 +712,9 @@ Returns the remaining seconds of the time-based interpolation.
 
 :ref:`bool<class_bool>` **is_interpolating**\ (\ ) |const| :ref:`🔗<class_LookAtModifier3D_method_is_interpolating>`
 
-Returns ``true`` if time-based interpolation is running. If ``true``, it is equivalent to :ref:`get_interpolation_remaining()<class_LookAtModifier3D_method_get_interpolation_remaining>` returning ``0.0``.
+Trả về ``true`` nếu phép nội suy dựa trên thời gian đang chạy. Nếu ``true``, nó tương đương với việc :ref:`get_interpolation_remaining()<class_LookAtModifier3D_method_get_interpolation_remaining>` trả về ``0.0``.
 
-This is useful to determine whether a **LookAtModifier3D** can be removed safely.
+Điều này hữu ích để xác định xem có thể xóa **LookAtModifier3D** một cách an toàn hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -726,16 +726,16 @@ This is useful to determine whether a **LookAtModifier3D** can be removed safely
 
 :ref:`bool<class_bool>` **is_target_within_limitation**\ (\ ) |const| :ref:`🔗<class_LookAtModifier3D_method_is_target_within_limitation>`
 
-Returns whether the target is within the angle limitations. It is useful for unsetting the :ref:`target_node<class_LookAtModifier3D_property_target_node>` when the target is outside of the angle limitations.
+Trả về việc target có nằm trong các giới hạn góc hay không. Điều này hữu ích để hủy thiết lập :ref:`target_node<class_LookAtModifier3D_property_target_node>` khi target nằm ngoài các giới hạn góc.
 
-\ **Note:** The value is updated after :ref:`SkeletonModifier3D._process_modification()<class_SkeletonModifier3D_private_method__process_modification>`. To retrieve this value correctly, we recommend using the signal :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
+\ **Lưu ý:** Giá trị được cập nhật sau :ref:`SkeletonModifier3D._process_modification()<class_SkeletonModifier3D_private_method__process_modification>`. Để truy xuất chính xác giá trị này, chúng tôi khuyên bạn nên sử dụng signal :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

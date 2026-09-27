@@ -10,59 +10,59 @@
 Thread
 ======
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A unit of execution in a process.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A unit of execution in a process. Can run methods on :ref:`Object<class_Object>`\ s simultaneously. The use of synchronization via :ref:`Mutex<class_Mutex>` or :ref:`Semaphore<class_Semaphore>` is advised if working with shared objects.
-
-\ **Warning:** To ensure proper cleanup without crashes or deadlocks, when a **Thread**'s reference count reaches zero and it is therefore destroyed, the following conditions must be met:
-
-- It must not have any :ref:`Mutex<class_Mutex>` objects locked.
-
-- It must not be waiting on any :ref:`Semaphore<class_Semaphore>` objects.
-
-- :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>` should have been called on it.
+Một đơn vị thực thi trong một process.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một đơn vị thực thi trong một process. Có thể chạy đồng thời các phương thức trên :ref:`Object<class_Object>`\ s. Bạn nên sử dụng cơ chế đồng bộ hóa thông qua :ref:`Mutex<class_Mutex>` hoặc :ref:`Semaphore<class_Semaphore>` khi làm việc với các shared object.
+
+\ **Cảnh báo:** Để đảm bảo việc dọn dẹp diễn ra đúng cách mà không gây crash hoặc deadlock, khi reference count của **Thread**'s đạt đến 0 và do đó nó bị hủy, phải đáp ứng các điều kiện sau:
+
+- Nó không được khóa bất kỳ object :ref:`Mutex<class_Mutex>` nào.
+
+- Nó không được chờ bất kỳ object :ref:`Semaphore<class_Semaphore>` nào.
+
+- Phải gọi :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>` trên nó.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using multiple threads <../tutorials/performance/using_multiple_threads>`
+- :doc:`Sử dụng nhiều thread <../tutorials/performance/using_multiple_threads>`
 
-- :doc:`Thread-safe APIs <../tutorials/performance/thread_safe_apis>`
+- :doc:`API an toàn với thread <../tutorials/performance/thread_safe_apis>`
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản trình diễn voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_id<class_Thread_method_get_id>`\ (\ ) |const|                                                                                         |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_alive<class_Thread_method_is_alive>`\ (\ ) |const|                                                                                     |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_main_thread<class_Thread_method_is_main_thread>`\ (\ ) |static|                                                                        |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`is_started<class_Thread_method_is_started>`\ (\ ) |const|                                                                                 |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_thread_safety_checks_enabled<class_Thread_method_set_thread_safety_checks_enabled>`\ (\ enabled\: :ref:`bool<class_bool>`\ ) |static| |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`start<class_Thread_method_start>`\ (\ callable\: :ref:`Callable<class_Callable>`, priority\: :ref:`Priority<enum_Thread_Priority>` = 1\ ) |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`         | :ref:`wait_to_finish<class_Thread_method_wait_to_finish>`\ (\ )                                                                                 |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`            | :ref:`get_id<class_Thread_method_get_id>`\ (\ ) |const|                                                                                          |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_alive<class_Thread_method_is_alive>`\ (\ ) |const|                                                                                      |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_main_thread<class_Thread_method_is_main_thread>`\ (\ ) |static|                                                                         |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`is_started<class_Thread_method_is_started>`\ (\ ) |const|                                                                                  |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_thread_safety_checks_enabled<class_Thread_method_set_thread_safety_checks_enabled>`\ (\ enabled\: :ref:`bool<class_bool>`\ ) |static|  |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`start<class_Thread_method_start>`\ (\ callable\: :ref:`Callable<class_Callable>`, priority\: :ref:`Priority <enum_Thread_Priority>` = 1\ ) |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`          | :ref:`wait_to_finish<class_Thread_method_wait_to_finish>`\ (\ )                                                                                  |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -70,14 +70,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enum
+--------
 
 .. _enum_Thread_Priority:
 
 .. rst-class:: classref-enumeration
 
-enum **Priority**: :ref:`🔗<enum_Thread_Priority>`
+enum **Priority**: :ref:`🔗 <enum_Thread_Priority>`
 
 .. _class_Thread_constant_PRIORITY_LOW:
 
@@ -85,7 +85,7 @@ enum **Priority**: :ref:`🔗<enum_Thread_Priority>`
 
 :ref:`Priority<enum_Thread_Priority>` **PRIORITY_LOW** = ``0``
 
-A thread running with lower priority than normally.
+Một thread chạy với priority thấp hơn bình thường.
 
 .. _class_Thread_constant_PRIORITY_NORMAL:
 
@@ -93,7 +93,7 @@ A thread running with lower priority than normally.
 
 :ref:`Priority<enum_Thread_Priority>` **PRIORITY_NORMAL** = ``1``
 
-A thread with a standard priority.
+Một thread có priority tiêu chuẩn.
 
 .. _class_Thread_constant_PRIORITY_HIGH:
 
@@ -101,7 +101,7 @@ A thread with a standard priority.
 
 :ref:`Priority<enum_Thread_Priority>` **PRIORITY_HIGH** = ``2``
 
-A thread running with higher priority than normally.
+Một thread chạy với priority cao hơn bình thường.
 
 .. rst-class:: classref-section-separator
 
@@ -109,8 +109,8 @@ A thread running with higher priority than normally.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Thread_method_get_id:
 
@@ -118,7 +118,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_id**\ (\ ) |const| :ref:`🔗<class_Thread_method_get_id>`
 
-Returns the current **Thread**'s ID, uniquely identifying it among all threads. If the **Thread** has not started running or if :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>` has been called, this returns an empty string.
+Trả về ID của **Thread** hiện tại, dùng để nhận dạng duy nhất nó trong tất cả các thread. Nếu **Thread** chưa bắt đầu chạy hoặc :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>` đã được gọi, phương thức này trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -130,9 +130,9 @@ Returns the current **Thread**'s ID, uniquely identifying it among all threads. 
 
 :ref:`bool<class_bool>` **is_alive**\ (\ ) |const| :ref:`🔗<class_Thread_method_is_alive>`
 
-Returns ``true`` if this **Thread** is currently running the provided function. This is useful for determining if :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>` can be called without blocking the calling thread.
+Trả về ``true`` nếu **Thread** này hiện đang chạy function được cung cấp. Điều này hữu ích để xác định liệu có thể gọi :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>` mà không chặn thread đang gọi hay không.
 
-To check if a **Thread** is joinable, use :ref:`is_started()<class_Thread_method_is_started>`.
+Để kiểm tra xem một **Thread** có thể join hay không, hãy sử dụng :ref:`is_started()<class_Thread_method_is_started>`.
 
 .. rst-class:: classref-item-separator
 
@@ -144,9 +144,9 @@ To check if a **Thread** is joinable, use :ref:`is_started()<class_Thread_method
 
 :ref:`bool<class_bool>` **is_main_thread**\ (\ ) |static| :ref:`🔗<class_Thread_method_is_main_thread>`
 
-Returns ``true`` if the thread this method was called from is the main thread.
+Trả về ``true`` nếu thread mà từ đó phương thức này được gọi là main thread.
 
-\ **Note:** This is a static method and isn't associated with a specific **Thread** object.
+\ **Lưu ý:** Đây là một static method và không liên kết với một object **Thread** cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Returns ``true`` if the thread this method was called from is the main thread.
 
 :ref:`bool<class_bool>` **is_started**\ (\ ) |const| :ref:`🔗<class_Thread_method_is_started>`
 
-Returns ``true`` if this **Thread** has been started. Once started, this will return ``true`` until it is joined using :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>`. For checking if a **Thread** is still executing its task, use :ref:`is_alive()<class_Thread_method_is_alive>`.
+Trả về ``true`` nếu **Thread** này đã được khởi động. Sau khi khởi động, phương thức này sẽ trả về ``true`` cho đến khi nó được join bằng :ref:`wait_to_finish()<class_Thread_method_wait_to_finish>`. Để kiểm tra xem một **Thread** vẫn đang thực thi task của nó hay không, hãy sử dụng :ref:`is_alive()<class_Thread_method_is_alive>`.
 
 .. rst-class:: classref-item-separator
 
@@ -170,19 +170,19 @@ Returns ``true`` if this **Thread** has been started. Once started, this will re
 
 |void| **set_thread_safety_checks_enabled**\ (\ enabled\: :ref:`bool<class_bool>`\ ) |static| :ref:`🔗<class_Thread_method_set_thread_safety_checks_enabled>`
 
-Sets whether the thread safety checks the engine normally performs in methods of certain classes (e.g., :ref:`Node<class_Node>`) should happen **on the current thread**.
+Thiết lập xem các thread safety check mà engine thường thực hiện trong các method của một số class nhất định (ví dụ: :ref:`Node<class_Node>`) có nên diễn ra **trên thread hiện tại** hay không.
 
-The default, for every thread, is that they are enabled (as if called with ``enabled`` being ``true``).
+Mặc định, các thread đều được bật tính năng này (như thể được gọi với ``enabled`` là ``true``).
 
-Those checks are conservative. That means that they will only succeed in considering a call thread-safe (and therefore allow it to happen) if the engine can guarantee such safety.
+Các kiểm tra đó mang tính thận trọng. Điều đó có nghĩa là chúng chỉ xác nhận một lời gọi là thread-safe (và do đó cho phép lời gọi đó thực hiện) nếu engine có thể đảm bảo tính an toàn đó.
 
-Because of that, there may be cases where the user may want to disable them (``enabled`` being ``false``) to make certain operations allowed again. By doing so, it becomes the user's responsibility to ensure thread safety (e.g., by using :ref:`Mutex<class_Mutex>`) for those objects that are otherwise protected by the engine.
+Vì vậy, có thể có những trường hợp người dùng muốn tắt chúng (``enabled`` là ``false``) để cho phép lại một số operation nhất định. Khi làm vậy, người dùng có trách nhiệm đảm bảo thread safety (ví dụ: bằng cách sử dụng :ref:`Mutex<class_Mutex>`) cho những object vốn được engine bảo vệ.
 
-\ **Note:** This is an advanced usage of the engine. You are advised to use it only if you know what you are doing and there is no safer way.
+\ **Lưu ý:** Đây là cách sử dụng engine nâng cao. Bạn chỉ nên sử dụng khi biết rõ mình đang làm gì và không có cách nào an toàn hơn.
 
-\ **Note:** This is useful for scripts running on either arbitrary **Thread** objects or tasks submitted to the :ref:`WorkerThreadPool<class_WorkerThreadPool>`. It doesn't apply to code running during :ref:`Node<class_Node>` group processing, where the checks will be always performed.
+\ **Lưu ý:** Điều này hữu ích cho các script chạy trên những object **Thread** bất kỳ hoặc các task được gửi đến :ref:`WorkerThreadPool<class_WorkerThreadPool>`. Điều này không áp dụng cho code chạy trong quá trình xử lý group :ref:`Node<class_Node>`, nơi các kiểm tra sẽ luôn được thực hiện.
 
-\ **Note:** Even in the case of having disabled the checks in a :ref:`WorkerThreadPool<class_WorkerThreadPool>` task, there's no need to re-enable them at the end. The engine will do so.
+\ **Lưu ý:** Ngay cả khi đã tắt các kiểm tra trong một task :ref:`WorkerThreadPool<class_WorkerThreadPool>`, bạn không cần bật lại chúng khi kết thúc. Engine sẽ thực hiện việc đó.
 
 .. rst-class:: classref-item-separator
 
@@ -194,13 +194,13 @@ Because of that, there may be cases where the user may want to disable them (``e
 
 :ref:`Error<enum_@GlobalScope_Error>` **start**\ (\ callable\: :ref:`Callable<class_Callable>`, priority\: :ref:`Priority<enum_Thread_Priority>` = 1\ ) :ref:`🔗<class_Thread_method_start>`
 
-Starts a new **Thread** that calls ``callable``.
+Khởi động một **Thread** mới để gọi ``callable``.
 
-If the method takes some arguments, you can pass them using :ref:`Callable.bind()<class_Callable_method_bind>`.
+Nếu method nhận một số argument, bạn có thể truyền chúng bằng :ref:`Callable.bind()<class_Callable_method_bind>`.
 
-The ``priority`` of the **Thread** can be changed by passing a value from the :ref:`Priority<enum_Thread_Priority>` enum.
+``priority`` của **Thread** có thể được thay đổi bằng cách truyền một giá trị từ enum :ref:`Priority <enum_Thread_Priority>`.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or :ref:`@GlobalScope.ERR_CANT_CREATE<class_@GlobalScope_constant_ERR_CANT_CREATE>` on failure.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công hoặc :ref:`@GlobalScope.ERR_CANT_CREATE <class_@GlobalScope_constant_ERR_CANT_CREATE>` khi thất bại.
 
 .. rst-class:: classref-item-separator
 
@@ -212,18 +212,18 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or :r
 
 :ref:`Variant<class_Variant>` **wait_to_finish**\ (\ ) :ref:`🔗<class_Thread_method_wait_to_finish>`
 
-Joins the **Thread** and waits for it to finish. Returns the output of the :ref:`Callable<class_Callable>` passed to :ref:`start()<class_Thread_method_start>`.
+Join **Thread** và chờ nó hoàn tất. Trả về output của :ref:`Callable<class_Callable>` được truyền vào :ref:`start()<class_Thread_method_start>`.
 
-Should either be used when you want to retrieve the value returned from the method called by the **Thread** or before freeing the instance that contains the **Thread**.
+Nên sử dụng khi bạn muốn lấy giá trị do method được **Thread** gọi trả về hoặc trước khi giải phóng instance chứa **Thread**.
 
-To determine if this can be called without blocking the calling thread, check if :ref:`is_alive()<class_Thread_method_is_alive>` is ``false``.
+Để xác định liệu có thể gọi phương thức này mà không chặn thread đang gọi hay không, hãy kiểm tra xem :ref:`is_alive()<class_Thread_method_is_alive>` có phải là ``false`` hay không.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận số lượng argument bất kỳ sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

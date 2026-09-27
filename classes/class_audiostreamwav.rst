@@ -10,27 +10,27 @@
 AudioStreamWAV
 ==============
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Stores audio data loaded from WAV files.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-AudioStreamWAV stores sound samples loaded from WAV files. To play the stored sound, use an :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` (for non-positional audio) or :ref:`AudioStreamPlayer2D<class_AudioStreamPlayer2D>`/:ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>` (for positional audio). The sound can be looped.
-
-This class can also be used to store dynamically-generated PCM audio data. See also :ref:`AudioStreamGenerator<class_AudioStreamGenerator>` for procedural audio generation.
+Lưu trữ dữ liệu âm thanh được tải từ các tệp WAV.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+AudioStreamWAV lưu trữ các mẫu âm thanh được tải từ các tệp WAV. Để phát âm thanh đã lưu, hãy sử dụng :ref:`AudioStreamPlayer<class_AudioStreamPlayer>` (đối với âm thanh không định vị) hoặc :ref:`AudioStreamPlayer2D<class_AudioStreamPlayer2D>`/:ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>` (đối với âm thanh định vị). Âm thanh có thể được phát lặp lại.
+
+Lớp này cũng có thể được dùng để lưu trữ dữ liệu âm thanh PCM được tạo động. Xem thêm :ref:`AudioStreamGenerator<class_AudioStreamGenerator>` để biết cách tạo âm thanh theo thủ tục.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
@@ -40,23 +40,23 @@ Properties
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`data<class_AudioStreamWAV_property_data>`             | ``PackedByteArray()`` |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`Format<enum_AudioStreamWAV_Format>`     | :ref:`format<class_AudioStreamWAV_property_format>`         | ``0``                 |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                         | :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` | ``0``                 |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                         | :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`     | ``0``                 |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`LoopMode<enum_AudioStreamWAV_LoopMode>` | :ref:`loop_mode<class_AudioStreamWAV_property_loop_mode>`   | ``0``                 |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                         | :ref:`mix_rate<class_AudioStreamWAV_property_mix_rate>`     | ``44100``             |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                       | :ref:`stereo<class_AudioStreamWAV_property_stereo>`         | ``false``             |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
-   | :ref:`Dictionary<class_Dictionary>`           | :ref:`tags<class_AudioStreamWAV_property_tags>`             | ``{}``                |
-   +-----------------------------------------------+-------------------------------------------------------------+-----------------------+
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`PackedByteArray<class_PackedByteArray>`  | :ref:`data<class_AudioStreamWAV_property_data>`             | ``PackedByteArray()`` |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`Format <enum_AudioStreamWAV_Format>`     | :ref:`format<class_AudioStreamWAV_property_format>`         | ``0``                 |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                          | :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` | ``0``                 |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                          | :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`     | ``0``                 |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`LoopMode <enum_AudioStreamWAV_LoopMode>` | :ref:`loop_mode<class_AudioStreamWAV_property_loop_mode>`   | ``0``                 |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                          | :ref:`mix_rate<class_AudioStreamWAV_property_mix_rate>`     | ``44100``             |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                        | :ref:`stereo<class_AudioStreamWAV_property_stereo>`         | ``false``             |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
+   | :ref:`Dictionary<class_Dictionary>`            | :ref:`tags<class_AudioStreamWAV_property_tags>`             | ``{}``                |
+   +------------------------------------------------+-------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-reftable-group
 
@@ -71,7 +71,7 @@ Methods
    +---------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`AudioStreamWAV<class_AudioStreamWAV>` | :ref:`load_from_file<class_AudioStreamWAV_method_load_from_file>`\ (\ path\: :ref:`String<class_String>`, options\: :ref:`Dictionary<class_Dictionary>` = {}\ ) |static|                              |
    +---------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`       | :ref:`save_to_wav<class_AudioStreamWAV_method_save_to_wav>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                 |
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`        | :ref:`save_to_wav<class_AudioStreamWAV_method_save_to_wav>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                 |
    +---------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -80,14 +80,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AudioStreamWAV_Format:
 
 .. rst-class:: classref-enumeration
 
-enum **Format**: :ref:`🔗<enum_AudioStreamWAV_Format>`
+enum **Format**: :ref:`🔗 <enum_AudioStreamWAV_Format>`
 
 .. _class_AudioStreamWAV_constant_FORMAT_8_BITS:
 
@@ -95,7 +95,7 @@ enum **Format**: :ref:`🔗<enum_AudioStreamWAV_Format>`
 
 :ref:`Format<enum_AudioStreamWAV_Format>` **FORMAT_8_BITS** = ``0``
 
-8-bit PCM audio codec.
+Codec âm thanh PCM 8-bit.
 
 .. _class_AudioStreamWAV_constant_FORMAT_16_BITS:
 
@@ -103,7 +103,7 @@ enum **Format**: :ref:`🔗<enum_AudioStreamWAV_Format>`
 
 :ref:`Format<enum_AudioStreamWAV_Format>` **FORMAT_16_BITS** = ``1``
 
-16-bit PCM audio codec.
+Codec âm thanh PCM 16-bit.
 
 .. _class_AudioStreamWAV_constant_FORMAT_IMA_ADPCM:
 
@@ -111,7 +111,7 @@ enum **Format**: :ref:`🔗<enum_AudioStreamWAV_Format>`
 
 :ref:`Format<enum_AudioStreamWAV_Format>` **FORMAT_IMA_ADPCM** = ``2``
 
-Audio is lossily compressed as IMA ADPCM.
+Âm thanh được nén có mất dữ liệu bằng IMA ADPCM.
 
 .. _class_AudioStreamWAV_constant_FORMAT_QOA:
 
@@ -119,7 +119,7 @@ Audio is lossily compressed as IMA ADPCM.
 
 :ref:`Format<enum_AudioStreamWAV_Format>` **FORMAT_QOA** = ``3``
 
-Audio is lossily compressed as `Quite OK Audio <https://qoaformat.org/>`__.
+Âm thanh được nén có hao hụt dưới dạng `Quite OK Audio <https://qoaformat.org/>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Audio is lossily compressed as `Quite OK Audio <https://qoaformat.org/>`__.
 
 .. rst-class:: classref-enumeration
 
-enum **LoopMode**: :ref:`🔗<enum_AudioStreamWAV_LoopMode>`
+enum **LoopMode**: :ref:`🔗 <enum_AudioStreamWAV_LoopMode>`
 
 .. _class_AudioStreamWAV_constant_LOOP_DISABLED:
 
@@ -137,7 +137,7 @@ enum **LoopMode**: :ref:`🔗<enum_AudioStreamWAV_LoopMode>`
 
 :ref:`LoopMode<enum_AudioStreamWAV_LoopMode>` **LOOP_DISABLED** = ``0``
 
-Audio does not loop.
+Âm thanh không lặp lại.
 
 .. _class_AudioStreamWAV_constant_LOOP_FORWARD:
 
@@ -145,7 +145,7 @@ Audio does not loop.
 
 :ref:`LoopMode<enum_AudioStreamWAV_LoopMode>` **LOOP_FORWARD** = ``1``
 
-Audio loops the data between :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` and :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`, playing forward only.
+Âm thanh lặp lại dữ liệu giữa :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` và :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`, chỉ phát theo chiều tiến.
 
 .. _class_AudioStreamWAV_constant_LOOP_PINGPONG:
 
@@ -153,7 +153,7 @@ Audio loops the data between :ref:`loop_begin<class_AudioStreamWAV_property_loop
 
 :ref:`LoopMode<enum_AudioStreamWAV_LoopMode>` **LOOP_PINGPONG** = ``2``
 
-Audio loops the data between :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` and :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`, playing back and forth.
+Âm thanh lặp lại dữ liệu giữa :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` và :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`, phát qua lại.
 
 .. _class_AudioStreamWAV_constant_LOOP_BACKWARD:
 
@@ -161,7 +161,7 @@ Audio loops the data between :ref:`loop_begin<class_AudioStreamWAV_property_loop
 
 :ref:`LoopMode<enum_AudioStreamWAV_LoopMode>` **LOOP_BACKWARD** = ``3``
 
-Audio loops the data between :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` and :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`, playing backward only.
+Âm thanh lặp lại dữ liệu giữa :ref:`loop_begin<class_AudioStreamWAV_property_loop_begin>` và :ref:`loop_end<class_AudioStreamWAV_property_loop_end>`, chỉ phát theo chiều lùi.
 
 .. rst-class:: classref-section-separator
 
@@ -169,8 +169,8 @@ Audio loops the data between :ref:`loop_begin<class_AudioStreamWAV_property_loop
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioStreamWAV_property_data:
 
@@ -183,13 +183,13 @@ Property Descriptions
 - |void| **set_data**\ (\ value\: :ref:`PackedByteArray<class_PackedByteArray>`\ )
 - :ref:`PackedByteArray<class_PackedByteArray>` **get_data**\ (\ )
 
-Contains the audio data in bytes.
+Chứa dữ liệu âm thanh dưới dạng byte.
 
-\ **Note:** If :ref:`format<class_AudioStreamWAV_property_format>` is set to :ref:`FORMAT_8_BITS<class_AudioStreamWAV_constant_FORMAT_8_BITS>`, this property expects signed 8-bit PCM data. To convert from unsigned 8-bit PCM, subtract 128 from each byte.
+\ **Lưu ý:** Nếu :ref:`format<class_AudioStreamWAV_property_format>` được đặt thành :ref:`FORMAT_8_BITS<class_AudioStreamWAV_constant_FORMAT_8_BITS>`, thuộc tính này yêu cầu dữ liệu PCM 8-bit có dấu. Để chuyển đổi từ PCM 8-bit không dấu, hãy trừ 128 khỏi mỗi byte.
 
-\ **Note:** If :ref:`format<class_AudioStreamWAV_property_format>` is set to :ref:`FORMAT_QOA<class_AudioStreamWAV_constant_FORMAT_QOA>`, this property expects data from a full QOA file.
+\ **Lưu ý:** Nếu :ref:`format<class_AudioStreamWAV_property_format>` được đặt thành :ref:`FORMAT_QOA<class_AudioStreamWAV_constant_FORMAT_QOA>`, thuộc tính này yêu cầu dữ liệu từ một tệp QOA đầy đủ.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedByteArray<class_PackedByteArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính gốc. Xem :ref:`PackedByteArray<class_PackedByteArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Contains the audio data in bytes.
 - |void| **set_format**\ (\ value\: :ref:`Format<enum_AudioStreamWAV_Format>`\ )
 - :ref:`Format<enum_AudioStreamWAV_Format>` **get_format**\ (\ )
 
-Audio format.
+Định dạng âm thanh.
 
 .. rst-class:: classref-item-separator
 
@@ -223,7 +223,7 @@ Audio format.
 - |void| **set_loop_begin**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_loop_begin**\ (\ )
 
-The loop start point (in number of samples, relative to the beginning of the stream).
+Điểm bắt đầu vòng lặp (tính theo số lượng mẫu, tương đối so với đầu stream).
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ The loop start point (in number of samples, relative to the beginning of the str
 - |void| **set_loop_end**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_loop_end**\ (\ )
 
-The loop end point (in number of samples, relative to the beginning of the stream).
+Điểm kết thúc vòng lặp (tính theo số lượng mẫu, tương đối so với đầu stream).
 
 .. rst-class:: classref-item-separator
 
@@ -257,7 +257,7 @@ The loop end point (in number of samples, relative to the beginning of the strea
 - |void| **set_loop_mode**\ (\ value\: :ref:`LoopMode<enum_AudioStreamWAV_LoopMode>`\ )
 - :ref:`LoopMode<enum_AudioStreamWAV_LoopMode>` **get_loop_mode**\ (\ )
 
-The loop mode.
+Chế độ lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -274,11 +274,11 @@ The loop mode.
 - |void| **set_mix_rate**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_mix_rate**\ (\ )
 
-The sample rate for mixing this audio. Higher values require more storage space, but result in better quality.
+Tần số lấy mẫu dùng để trộn âm thanh này. Giá trị cao hơn yêu cầu nhiều không gian lưu trữ hơn nhưng cho chất lượng tốt hơn.
 
-In games, common sample rates in use are ``11025``, ``16000``, ``22050``, ``32000``, ``44100``, and ``48000``.
+Trong game, các tần số lấy mẫu thường được sử dụng là ``11025``, ``16000``, ``22050``, ``32000``, ``44100`` và ``48000``.
 
-According to the `Nyquist-Shannon sampling theorem <https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem>`__, there is no quality difference to human hearing when going past 40,000 Hz (since most humans can only hear up to ~20,000 Hz, often less). If you are using lower-pitched sounds such as voices, lower sample rates such as ``32000`` or ``22050`` may be usable with no loss in quality.
+Theo `định lý lấy mẫu Nyquist-Shannon <https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem>`__, chất lượng mà tai người nghe được không có sự khác biệt khi vượt quá 40.000 Hz (vì hầu hết mọi người chỉ có thể nghe đến khoảng 20.000 Hz, thường là thấp hơn). Nếu bạn sử dụng các âm thanh có cao độ thấp hơn như giọng nói, các tần số lấy mẫu thấp hơn như ``32000`` hoặc ``22050`` có thể được sử dụng mà không làm giảm chất lượng.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ According to the `Nyquist-Shannon sampling theorem <https://en.wikipedia.org/wik
 - |void| **set_stereo**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_stereo**\ (\ )
 
-If ``true``, audio is stereo.
+Nếu ``true``, âm thanh là stereo.
 
 .. rst-class:: classref-item-separator
 
@@ -312,13 +312,13 @@ If ``true``, audio is stereo.
 - |void| **set_tags**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_tags**\ (\ )
 
-Contains user-defined tags if found in the WAV data.
+Chứa các thẻ do người dùng định nghĩa nếu tìm thấy trong dữ liệu WAV.
 
-Commonly used tags include ``title``, ``artist``, ``album``, ``tracknumber``, and ``date`` (``date`` does not have a standard date format).
+Các thẻ thường được sử dụng bao gồm ``title``, ``artist``, ``album``, ``tracknumber`` và ``date`` (``date`` không có định dạng ngày tiêu chuẩn).
 
-\ **Note:** No tag is *guaranteed* to be present in every file, so make sure to account for the keys not always existing.
+\ **Lưu ý:** Không có thẻ nào *được đảm bảo* sẽ xuất hiện trong mọi tệp, vì vậy hãy đảm bảo bạn xử lý trường hợp các khóa không phải lúc nào cũng tồn tại.
 
-\ **Note:** Only WAV files using a ``LIST`` chunk with an identifier of ``INFO`` to encode the tags are currently supported.
+\ **Lưu ý:** Hiện tại chỉ hỗ trợ các tệp WAV sử dụng một chunk ``LIST`` có mã định danh là ``INFO`` để mã hóa các thẻ.
 
 .. rst-class:: classref-section-separator
 
@@ -326,8 +326,8 @@ Commonly used tags include ``title``, ``artist``, ``album``, ``tracknumber``, an
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioStreamWAV_method_load_from_buffer:
 
@@ -335,9 +335,9 @@ Method Descriptions
 
 :ref:`AudioStreamWAV<class_AudioStreamWAV>` **load_from_buffer**\ (\ stream_data\: :ref:`PackedByteArray<class_PackedByteArray>`, options\: :ref:`Dictionary<class_Dictionary>` = {}\ ) |static| :ref:`🔗<class_AudioStreamWAV_method_load_from_buffer>`
 
-Creates a new **AudioStreamWAV** instance from the given buffer. The buffer must contain WAV data.
+Tạo một instance **AudioStreamWAV** mới từ buffer đã cho. Buffer phải chứa dữ liệu WAV.
 
-The keys and values of ``options`` match the properties of :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`. The usage of ``options`` is identical to :ref:`load_from_file()<class_AudioStreamWAV_method_load_from_file>`.
+Các khóa và giá trị của ``options`` tương ứng với các thuộc tính của :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`. Cách sử dụng ``options`` giống hệt :ref:`load_from_file()<class_AudioStreamWAV_method_load_from_file>`.
 
 .. rst-class:: classref-item-separator
 
@@ -349,11 +349,11 @@ The keys and values of ``options`` match the properties of :ref:`ResourceImporte
 
 :ref:`AudioStreamWAV<class_AudioStreamWAV>` **load_from_file**\ (\ path\: :ref:`String<class_String>`, options\: :ref:`Dictionary<class_Dictionary>` = {}\ ) |static| :ref:`🔗<class_AudioStreamWAV_method_load_from_file>`
 
-Creates a new **AudioStreamWAV** instance from the given file path. The file must be in WAV format.
+Tạo một instance **AudioStreamWAV** mới từ đường dẫn tệp đã cho. Tệp phải ở định dạng WAV.
 
-The keys and values of ``options`` match the properties of :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`.
+Các khóa và giá trị của ``options`` tương ứng với các thuộc tính của :ref:`ResourceImporterWAV<class_ResourceImporterWAV>`.
 
-\ **Example:** Load the first file dropped as a WAV and play it:
+\ **Ví dụ:** Tải tệp đầu tiên được thả vào dưới dạng WAV và phát tệp đó:
 
 ::
 
@@ -380,16 +380,16 @@ The keys and values of ``options`` match the properties of :ref:`ResourceImporte
 
 :ref:`Error<enum_@GlobalScope_Error>` **save_to_wav**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AudioStreamWAV_method_save_to_wav>`
 
-Saves the AudioStreamWAV as a WAV file to ``path``. Samples with IMA ADPCM or Quite OK Audio formats can't be saved.
+Lưu AudioStreamWAV dưới dạng tệp WAV vào ``path``. Không thể lưu các mẫu ở định dạng IMA ADPCM hoặc Quite OK Audio.
 
-\ **Note:** A ``.wav`` extension is automatically appended to ``path`` if it is missing.
+\ **Lưu ý:** Phần mở rộng ``.wav`` sẽ được tự động thêm vào ``path`` nếu bị thiếu.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -12,18 +12,18 @@ GrooveJoint2D
 
 **Inherits:** :ref:`Joint2D<class_Joint2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics joint that restricts the movement of two 2D physics bodies to a fixed axis.
+Một khớp vật lý giới hạn chuyển động của hai vật thể vật lý 2D trên một trục cố định.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A physics joint that restricts the movement of two 2D physics bodies to a fixed axis. For example, a :ref:`StaticBody2D<class_StaticBody2D>` representing a piston base can be attached to a :ref:`RigidBody2D<class_RigidBody2D>` representing the piston head, moving up and down.
+Một khớp vật lý giới hạn chuyển động của hai vật thể vật lý 2D trên một trục cố định. Ví dụ: một :ref:`StaticBody2D<class_StaticBody2D>` đại diện cho đế pít-tông có thể được gắn vào một :ref:`RigidBody2D<class_RigidBody2D>` đại diện cho đầu pít-tông để chuyển động lên xuống.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GrooveJoint2D_property_initial_offset:
 
@@ -55,7 +55,7 @@ Property Descriptions
 - |void| **set_initial_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_initial_offset**\ (\ )
 
-The body B's initial anchor position defined by the joint's origin and a local offset :ref:`initial_offset<class_GrooveJoint2D_property_initial_offset>` along the joint's Y axis (along the groove).
+Vị trí neo ban đầu của vật thể B, được xác định bởi gốc của khớp và một độ lệch cục bộ :ref:`initial_offset<class_GrooveJoint2D_property_initial_offset>` dọc theo trục Y của khớp (dọc theo rãnh).
 
 .. rst-class:: classref-item-separator
 
@@ -72,14 +72,14 @@ The body B's initial anchor position defined by the joint's origin and a local o
 - |void| **set_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_length**\ (\ )
 
-The groove's length. The groove is from the joint's origin towards :ref:`length<class_GrooveJoint2D_property_length>` along the joint's local Y axis.
+Chiều dài của rãnh. Rãnh kéo dài từ gốc của khớp nối về phía :ref:`length<class_GrooveJoint2D_property_length>` dọc theo trục Y cục bộ của khớp nối.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

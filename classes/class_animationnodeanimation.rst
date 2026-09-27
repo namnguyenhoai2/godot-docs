@@ -10,53 +10,53 @@
 AnimationNodeAnimation
 ======================
 
-**Inherits:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationRootNode<class_AnimationRootNode>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An input animation for an :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A resource to add to an :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`. Only has one output port using the :ref:`animation<class_AnimationNodeAnimation_property_animation>` property. Used as an input for :ref:`AnimationNode<class_AnimationNode>`\ s that blend animations together.
+Một animation đầu vào cho :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một resource để thêm vào :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`. Chỉ có một cổng đầu ra sử dụng thuộc tính :ref:`animation<class_AnimationNodeAnimation_property_animation>`. Được dùng làm đầu vào cho :ref:`AnimationNode<class_AnimationNode>`\  để blend các animation với nhau.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
-- `3D Platformer Demo <https://godotengine.org/asset-library/asset/2748>`__
+- `Bản demo Platformer 3D <https://godotengine.org/asset-library/asset/2748>`__
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn người thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                               | :ref:`advance_on_start<class_AnimationNodeAnimation_property_advance_on_start>`       | ``false`` |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`StringName<class_StringName>`                   | :ref:`animation<class_AnimationNodeAnimation_property_animation>`                     | ``&""``   |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`LoopMode<enum_Animation_LoopMode>`              | :ref:`loop_mode<class_AnimationNodeAnimation_property_loop_mode>`                     |           |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`PlayMode<enum_AnimationNodeAnimation_PlayMode>` | :ref:`play_mode<class_AnimationNodeAnimation_property_play_mode>`                     | ``0``     |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                             | :ref:`start_offset<class_AnimationNodeAnimation_property_start_offset>`               |           |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                               | :ref:`stretch_time_scale<class_AnimationNodeAnimation_property_stretch_time_scale>`   |           |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                             | :ref:`timeline_length<class_AnimationNodeAnimation_property_timeline_length>`         |           |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                               | :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` | ``false`` |
-   +-------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                | :ref:`advance_on_start<class_AnimationNodeAnimation_property_advance_on_start>`       | ``false`` |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`StringName<class_StringName>`                    | :ref:`animation<class_AnimationNodeAnimation_property_animation>`                     | ``&""``   |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`LoopMode <enum_Animation_LoopMode>`              | :ref:`loop_mode<class_AnimationNodeAnimation_property_loop_mode>`                     |           |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`PlayMode <enum_AnimationNodeAnimation_PlayMode>` | :ref:`play_mode<class_AnimationNodeAnimation_property_play_mode>`                     | ``0``     |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                              | :ref:`start_offset<class_AnimationNodeAnimation_property_start_offset>`               |           |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                | :ref:`stretch_time_scale<class_AnimationNodeAnimation_property_stretch_time_scale>`   |           |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                              | :ref:`timeline_length<class_AnimationNodeAnimation_property_timeline_length>`         |           |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                | :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` | ``false`` |
+   +--------------------------------------------------------+---------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -64,14 +64,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các giá trị liệt kê
+-------------------
 
 .. _enum_AnimationNodeAnimation_PlayMode:
 
 .. rst-class:: classref-enumeration
 
-enum **PlayMode**: :ref:`🔗<enum_AnimationNodeAnimation_PlayMode>`
+enum **PlayMode**: :ref:`🔗 <enum_AnimationNodeAnimation_PlayMode>`
 
 .. _class_AnimationNodeAnimation_constant_PLAY_MODE_FORWARD:
 
@@ -79,7 +79,7 @@ enum **PlayMode**: :ref:`🔗<enum_AnimationNodeAnimation_PlayMode>`
 
 :ref:`PlayMode<enum_AnimationNodeAnimation_PlayMode>` **PLAY_MODE_FORWARD** = ``0``
 
-Plays animation in forward direction.
+Phát animation theo hướng tiến.
 
 .. _class_AnimationNodeAnimation_constant_PLAY_MODE_BACKWARD:
 
@@ -87,7 +87,7 @@ Plays animation in forward direction.
 
 :ref:`PlayMode<enum_AnimationNodeAnimation_PlayMode>` **PLAY_MODE_BACKWARD** = ``1``
 
-Plays animation in backward direction.
+Phát animation theo hướng ngược lại.
 
 .. rst-class:: classref-section-separator
 
@@ -95,8 +95,8 @@ Plays animation in backward direction.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationNodeAnimation_property_advance_on_start:
 
@@ -109,9 +109,9 @@ Property Descriptions
 - |void| **set_advance_on_start**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_advance_on_start**\ (\ )
 
-If ``true``, on receiving a request to play an animation from the start, the first frame is not drawn, but only processed, and playback starts from the next frame.
+Nếu ``true``, khi nhận được yêu cầu phát animation từ đầu, frame đầu tiên sẽ không được vẽ mà chỉ được xử lý, và quá trình phát sẽ bắt đầu từ frame tiếp theo.
 
-See also the notes of :ref:`AnimationPlayer.play()<class_AnimationPlayer_method_play>`.
+Xem thêm các ghi chú của :ref:`AnimationPlayer.play()<class_AnimationPlayer_method_play>`.
 
 .. rst-class:: classref-item-separator
 
@@ -128,7 +128,7 @@ See also the notes of :ref:`AnimationPlayer.play()<class_AnimationPlayer_method_
 - |void| **set_animation**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_animation**\ (\ )
 
-Animation to use as an output. It is one of the animations provided by :ref:`AnimationTree.anim_player<class_AnimationTree_property_anim_player>`.
+Animation được sử dụng làm đầu ra. Đây là một trong các animation do :ref:`AnimationTree.anim_player<class_AnimationTree_property_anim_player>` cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -138,16 +138,16 @@ Animation to use as an output. It is one of the animations provided by :ref:`Ani
 
 .. rst-class:: classref-property
 
-:ref:`LoopMode<enum_Animation_LoopMode>` **loop_mode** :ref:`🔗<class_AnimationNodeAnimation_property_loop_mode>`
+:ref:`LoopMode <enum_Animation_LoopMode>` **loop_mode** :ref:`🔗 <class_AnimationNodeAnimation_property_loop_mode>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_loop_mode**\ (\ value\: :ref:`LoopMode<enum_Animation_LoopMode>`\ )
 - :ref:`LoopMode<enum_Animation_LoopMode>` **get_loop_mode**\ (\ )
 
-If :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` is ``true``, override the loop settings of the original :ref:`Animation<class_Animation>` resource with the value.
+Nếu :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` là ``true``, hãy ghi đè các thiết lập lặp của resource :ref:`Animation<class_Animation>` gốc bằng giá trị này.
 
-\ **Note:** If the :ref:`Animation.loop_mode<class_Animation_property_loop_mode>` isn't set to looping, the :ref:`Animation.track_set_interpolation_loop_wrap()<class_Animation_method_track_set_interpolation_loop_wrap>` option will not be respected. If you cannot get the expected behavior, consider duplicating the :ref:`Animation<class_Animation>` resource and changing the loop settings.
+\ **Lưu ý:** Nếu :ref:`Animation.loop_mode<class_Animation_property_loop_mode>` không được đặt ở chế độ lặp, tùy chọn :ref:`Animation.track_set_interpolation_loop_wrap()<class_Animation_method_track_set_interpolation_loop_wrap>` sẽ không được áp dụng. Nếu không nhận được hành vi như mong đợi, hãy cân nhắc sao chép tài nguyên :ref:`Animation<class_Animation>` và thay đổi các thiết lập lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ If :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_ti
 - |void| **set_play_mode**\ (\ value\: :ref:`PlayMode<enum_AnimationNodeAnimation_PlayMode>`\ )
 - :ref:`PlayMode<enum_AnimationNodeAnimation_PlayMode>` **get_play_mode**\ (\ )
 
-Determines the playback direction of the animation.
+Xác định hướng phát của animation.
 
 .. rst-class:: classref-item-separator
 
@@ -174,16 +174,16 @@ Determines the playback direction of the animation.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **start_offset** :ref:`🔗<class_AnimationNodeAnimation_property_start_offset>`
+:ref:`float<class_float>` **start_offset** :ref:`🔗 <class_AnimationNodeAnimation_property_start_offset>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_start_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_start_offset**\ (\ )
 
-If :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` is ``true``, offset the start position of the animation.
+Nếu :ref:`use_custom_timeline<class_AnimationNodeAnimation_property_use_custom_timeline>` là ``true``, hãy dịch vị trí bắt đầu của animation.
 
-This is useful for adjusting which foot steps first in 3D walking animations.
+Điều này hữu ích để điều chỉnh chân nào bước trước trong các animation đi bộ 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -193,18 +193,18 @@ This is useful for adjusting which foot steps first in 3D walking animations.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **stretch_time_scale** :ref:`🔗<class_AnimationNodeAnimation_property_stretch_time_scale>`
+:ref:`bool<class_bool>` **stretch_time_scale** :ref:`🔗 <class_AnimationNodeAnimation_property_stretch_time_scale>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_stretch_time_scale**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_stretching_time_scale**\ (\ )
 
-If ``true``, scales the time so that the length specified in :ref:`timeline_length<class_AnimationNodeAnimation_property_timeline_length>` is one cycle.
+Nếu ``true``, điều chỉnh thời gian để độ dài được chỉ định trong :ref:`timeline_length<class_AnimationNodeAnimation_property_timeline_length>` tương ứng với một chu kỳ.
 
-This is useful for matching the periods of walking and running animations.
+Điều này hữu ích để khớp thời lượng của các animation đi bộ và chạy.
 
-If ``false``, the original animation length is respected. If you set the loop to :ref:`loop_mode<class_AnimationNodeAnimation_property_loop_mode>`, the animation will loop in :ref:`timeline_length<class_AnimationNodeAnimation_property_timeline_length>`.
+Nếu ``false``, thời lượng animation ban đầu sẽ được giữ nguyên. Nếu đặt vòng lặp thành :ref:`loop_mode<class_AnimationNodeAnimation_property_loop_mode>`, animation sẽ lặp lại trong :ref:`timeline_length<class_AnimationNodeAnimation_property_timeline_length>`.
 
 .. rst-class:: classref-item-separator
 
@@ -214,16 +214,16 @@ If ``false``, the original animation length is respected. If you set the loop to
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **timeline_length** :ref:`🔗<class_AnimationNodeAnimation_property_timeline_length>`
+:ref:`float<class_float>` **timeline_length** :ref:`🔗 <class_AnimationNodeAnimation_property_timeline_length>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_timeline_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_timeline_length**\ (\ )
 
-The length of the custom timeline.
+Độ dài của timeline tùy chỉnh.
 
-If :ref:`stretch_time_scale<class_AnimationNodeAnimation_property_stretch_time_scale>` is ``true``, scales the animation to this length.
+Nếu :ref:`stretch_time_scale<class_AnimationNodeAnimation_property_stretch_time_scale>` là ``true``, animation sẽ được điều chỉnh theo độ dài này.
 
 .. rst-class:: classref-item-separator
 
@@ -240,14 +240,14 @@ If :ref:`stretch_time_scale<class_AnimationNodeAnimation_property_stretch_time_s
 - |void| **set_use_custom_timeline**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_custom_timeline**\ (\ )
 
-If ``true``, :ref:`AnimationNode<class_AnimationNode>` provides an animation based on the :ref:`Animation<class_Animation>` resource with some parameters adjusted.
+Nếu ``true``, :ref:`AnimationNode<class_AnimationNode>` cung cấp một animation dựa trên resource :ref:`Animation<class_Animation>` với một số tham số đã được điều chỉnh.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,23 +10,23 @@
 JSONRPC
 =======
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`GDScriptLanguageProtocol<class_GDScriptLanguageProtocol>`
+**Được kế thừa bởi:** :ref:`GDScriptLanguageProtocol<class_GDScriptLanguageProtocol>`
 
-A helper to handle dictionaries which look like JSONRPC documents.
+Một helper để xử lý các dictionary có dạng tài liệu JSONRPC.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-`JSON-RPC <https://www.jsonrpc.org/>`__ is a standard which wraps a method call in a :ref:`JSON<class_JSON>` object. The object has a particular structure and identifies which method is called, the parameters to that function, and carries an ID to keep track of responses. This class implements that standard on top of :ref:`Dictionary<class_Dictionary>`; you will have to convert between a :ref:`Dictionary<class_Dictionary>` and :ref:`JSON<class_JSON>` with other functions.
+`JSON-RPC <https://www.jsonrpc.org/>`__ là một tiêu chuẩn bao bọc một lời gọi phương thức trong một đối tượng :ref:`JSON<class_JSON>`. Đối tượng này có cấu trúc cụ thể, xác định phương thức được gọi, các tham số truyền cho hàm đó và chứa một ID để theo dõi các phản hồi. Lớp này triển khai tiêu chuẩn đó trên :ref:`Dictionary<class_Dictionary>`; bạn sẽ phải chuyển đổi giữa một :ref:`Dictionary<class_Dictionary>` và :ref:`JSON<class_JSON>` bằng các hàm khác.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -53,14 +53,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_JSONRPC_ErrorCode:
 
 .. rst-class:: classref-enumeration
 
-enum **ErrorCode**: :ref:`🔗<enum_JSONRPC_ErrorCode>`
+enum **ErrorCode**: :ref:`🔗 <enum_JSONRPC_ErrorCode>`
 
 .. _class_JSONRPC_constant_PARSE_ERROR:
 
@@ -68,7 +68,7 @@ enum **ErrorCode**: :ref:`🔗<enum_JSONRPC_ErrorCode>`
 
 :ref:`ErrorCode<enum_JSONRPC_ErrorCode>` **PARSE_ERROR** = ``-32700``
 
-The request could not be parsed as it was not valid by JSON standard (:ref:`JSON.parse()<class_JSON_method_parse>` failed).
+Không thể phân tích cú pháp yêu cầu vì yêu cầu không hợp lệ theo tiêu chuẩn JSON (:ref:`JSON.parse()<class_JSON_method_parse>` không thành công).
 
 .. _class_JSONRPC_constant_INVALID_REQUEST:
 
@@ -76,7 +76,7 @@ The request could not be parsed as it was not valid by JSON standard (:ref:`JSON
 
 :ref:`ErrorCode<enum_JSONRPC_ErrorCode>` **INVALID_REQUEST** = ``-32600``
 
-A method call was requested but the request's format is not valid.
+Đã yêu cầu gọi một method nhưng định dạng của yêu cầu không hợp lệ.
 
 .. _class_JSONRPC_constant_METHOD_NOT_FOUND:
 
@@ -84,7 +84,7 @@ A method call was requested but the request's format is not valid.
 
 :ref:`ErrorCode<enum_JSONRPC_ErrorCode>` **METHOD_NOT_FOUND** = ``-32601``
 
-A method call was requested but no function of that name existed in the JSONRPC subclass.
+Đã yêu cầu gọi một method nhưng không tồn tại function nào có tên đó trong lớp con JSONRPC.
 
 .. _class_JSONRPC_constant_INVALID_PARAMS:
 
@@ -92,7 +92,7 @@ A method call was requested but no function of that name existed in the JSONRPC 
 
 :ref:`ErrorCode<enum_JSONRPC_ErrorCode>` **INVALID_PARAMS** = ``-32602``
 
-A method call was requested but the given method parameters are not valid. Not used by the built-in JSONRPC.
+Đã yêu cầu gọi một method nhưng các tham số method đã cho không hợp lệ. Không được JSONRPC tích hợp sẵn sử dụng.
 
 .. _class_JSONRPC_constant_INTERNAL_ERROR:
 
@@ -100,7 +100,7 @@ A method call was requested but the given method parameters are not valid. Not u
 
 :ref:`ErrorCode<enum_JSONRPC_ErrorCode>` **INTERNAL_ERROR** = ``-32603``
 
-An internal error occurred while processing the request. Not used by the built-in JSONRPC.
+Đã xảy ra lỗi nội bộ trong khi xử lý yêu cầu. Không được JSONRPC tích hợp sẵn sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -108,8 +108,8 @@ An internal error occurred while processing the request. Not used by the built-i
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các method
+----------------
 
 .. _class_JSONRPC_method_make_notification:
 
@@ -117,11 +117,11 @@ Method Descriptions
 
 :ref:`Dictionary<class_Dictionary>` **make_notification**\ (\ method\: :ref:`String<class_String>`, params\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_JSONRPC_method_make_notification>`
 
-Returns a dictionary in the form of a JSON-RPC notification. Notifications are one-shot messages which do not expect a response.
+Trả về một từ điển dưới dạng thông báo JSON-RPC. Thông báo là các tin nhắn một lần, không chờ phản hồi.
 
-- ``method``: Name of the method being called.
+- ``method``: Tên của phương thức đang được gọi.
 
-- ``params``: An array or dictionary of parameters being passed to the method.
+- ``params``: Một mảng hoặc từ điển các tham số được truyền vào phương thức.
 
 .. rst-class:: classref-item-separator
 
@@ -133,13 +133,13 @@ Returns a dictionary in the form of a JSON-RPC notification. Notifications are o
 
 :ref:`Dictionary<class_Dictionary>` **make_request**\ (\ method\: :ref:`String<class_String>`, params\: :ref:`Variant<class_Variant>`, id\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_JSONRPC_method_make_request>`
 
-Returns a dictionary in the form of a JSON-RPC request. Requests are sent to a server with the expectation of a response. The ID field is used for the server to specify which exact request it is responding to.
+Trả về một từ điển dưới dạng yêu cầu JSON-RPC. Các yêu cầu được gửi đến máy chủ với kỳ vọng nhận được phản hồi. Trường ID được máy chủ sử dụng để chỉ rõ yêu cầu chính xác mà máy chủ đang phản hồi.
 
-- ``method``: Name of the method being called.
+- ``method``: Tên của phương thức đang được gọi.
 
-- ``params``: An array or dictionary of parameters being passed to the method.
+- ``params``: Một mảng hoặc từ điển các tham số được truyền vào phương thức.
 
-- ``id``: Uniquely identifies this request. The server is expected to send a response with the same ID.
+- ``id``: Xác định duy nhất yêu cầu này. Máy chủ được kỳ vọng sẽ gửi phản hồi với cùng ID.
 
 .. rst-class:: classref-item-separator
 
@@ -151,11 +151,11 @@ Returns a dictionary in the form of a JSON-RPC request. Requests are sent to a s
 
 :ref:`Dictionary<class_Dictionary>` **make_response**\ (\ result\: :ref:`Variant<class_Variant>`, id\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_JSONRPC_method_make_response>`
 
-When a server has received and processed a request, it is expected to send a response. If you did not want a response then you need to have sent a Notification instead.
+Khi một server đã nhận và xử lý một request, server đó được kỳ vọng sẽ gửi một response. Nếu bạn không muốn nhận response, bạn cần gửi một Notification thay thế.
 
-- ``result``: The return value of the function which was called.
+- ``result``: Giá trị trả về của hàm đã được gọi.
 
-- ``id``: The ID of the request this response is targeted to.
+- ``id``: ID của request mà response này hướng đến.
 
 .. rst-class:: classref-item-separator
 
@@ -167,13 +167,13 @@ When a server has received and processed a request, it is expected to send a res
 
 :ref:`Dictionary<class_Dictionary>` **make_response_error**\ (\ code\: :ref:`int<class_int>`, message\: :ref:`String<class_String>`, id\: :ref:`Variant<class_Variant>` = null\ ) |const| :ref:`🔗<class_JSONRPC_method_make_response_error>`
 
-Creates a response which indicates a previous reply has failed in some way.
+Tạo một response cho biết reply trước đó đã bị lỗi theo một cách nào đó.
 
-- ``code``: The error code corresponding to what kind of error this is. See the :ref:`ErrorCode<enum_JSONRPC_ErrorCode>` constants.
+- ``code``: Mã lỗi tương ứng với loại lỗi này. Xem các hằng số :ref:`ErrorCode <enum_JSONRPC_ErrorCode>`.
 
-- ``message``: A custom message about this error.
+- ``message``: Thông báo tùy chỉnh về lỗi này.
 
-- ``id``: The request this error is a response to.
+- ``id``: Request mà lỗi này là response.
 
 .. rst-class:: classref-item-separator
 
@@ -185,11 +185,11 @@ Creates a response which indicates a previous reply has failed in some way.
 
 :ref:`Variant<class_Variant>` **process_action**\ (\ action\: :ref:`Variant<class_Variant>`, recurse\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_JSONRPC_method_process_action>`
 
-Given a Dictionary which takes the form of a JSON-RPC request: unpack the request and run it. Methods are resolved by looking at the field called "method" and looking for an equivalently named function in the JSONRPC object. If one is found that method is called.
+Với một Dictionary có dạng yêu cầu JSON-RPC: giải nén yêu cầu và chạy yêu cầu đó. Các method được phân giải bằng cách tìm trường có tên "method" và tìm một hàm có tên tương ứng trong đối tượng JSONRPC. Nếu tìm thấy, method đó sẽ được gọi.
 
-To add new supported methods extend the JSONRPC class and call :ref:`process_action()<class_JSONRPC_method_process_action>` on your subclass.
+Để thêm các method được hỗ trợ, hãy mở rộng lớp JSONRPC và gọi :ref:`process_action()<class_JSONRPC_method_process_action>` trên lớp con của bạn.
 
-\ ``action``: The action to be run, as a Dictionary in the form of a JSON-RPC request or notification.
+\ ``action``: Hành động cần chạy, dưới dạng một Dictionary theo dạng yêu cầu hoặc thông báo JSON-RPC.
 
 .. rst-class:: classref-item-separator
 
@@ -215,18 +215,18 @@ To add new supported methods extend the JSONRPC class and call :ref:`process_act
 
 |void| **set_method**\ (\ name\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_JSONRPC_method_set_method>`
 
-Registers a callback for the given method name.
+Đăng ký một callback cho tên method đã cho.
 
-- ``name``: The name that clients can use to access the callback.
+- ``name``: Tên mà các client có thể dùng để truy cập callback.
 
-- ``callback``: The callback which will handle the specified method.
+- ``callback``: Callback sẽ xử lý method được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

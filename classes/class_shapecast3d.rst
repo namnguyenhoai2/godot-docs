@@ -10,24 +10,24 @@
 ShapeCast3D
 ===========
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A 3D shape that sweeps a region of space to detect :ref:`CollisionObject3D<class_CollisionObject3D>`\ s.
+Một shape 3D quét một vùng không gian để phát hiện các :ref:`CollisionObject3D<class_CollisionObject3D>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Shape casting allows to detect collision objects by sweeping its :ref:`shape<class_ShapeCast3D_property_shape>` along the cast direction determined by :ref:`target_position<class_ShapeCast3D_property_target_position>`. This is similar to :ref:`RayCast3D<class_RayCast3D>`, but it allows for sweeping a region of space, rather than just a straight line. **ShapeCast3D** can detect multiple collision objects. It is useful for things like wide laser beams or snapping a simple shape to a floor.
+Shape casting cho phép phát hiện các đối tượng va chạm bằng cách quét :ref:`shape<class_ShapeCast3D_property_shape>` theo hướng cast được xác định bởi :ref:`target_position<class_ShapeCast3D_property_target_position>`. Điều này tương tự :ref:`RayCast3D<class_RayCast3D>`, nhưng cho phép quét một vùng không gian thay vì chỉ một đường thẳng. **ShapeCast3D** có thể phát hiện nhiều đối tượng va chạm. Tính năng này hữu ích cho những việc như tạo các tia laser rộng hoặc gắn một shape đơn giản vào sàn.
 
-Immediate collision overlaps can be done with the :ref:`target_position<class_ShapeCast3D_property_target_position>` set to ``Vector3(0, 0, 0)`` and by calling :ref:`force_shapecast_update()<class_ShapeCast3D_method_force_shapecast_update>` within the same physics frame. This helps to overcome some limitations of :ref:`Area3D<class_Area3D>` when used as an instantaneous detection area, as collision information isn't immediately available to it.
+Có thể kiểm tra các va chạm tức thời bằng cách đặt :ref:`target_position<class_ShapeCast3D_property_target_position>` thành ``Vector3(0, 0, 0)`` và gọi :ref:`force_shapecast_update()<class_ShapeCast3D_method_force_shapecast_update>` trong cùng một khung hình vật lý. Điều này giúp khắc phục một số hạn chế của :ref:`Area3D<class_Area3D>` khi được dùng làm vùng phát hiện tức thời, vì thông tin va chạm không có sẵn ngay lập tức cho nó.
 
-\ **Note:** Shape casting is more computationally expensive than ray casting.
+\ **Lưu ý:** Shape casting tốn nhiều tài nguyên tính toán hơn ray casting.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -59,49 +59,49 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`add_exception<class_ShapeCast3D_method_add_exception>`\ (\ node\: :ref:`CollisionObject3D<class_CollisionObject3D>`\ )                                    |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`add_exception_rid<class_ShapeCast3D_method_add_exception_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ )                                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`clear_exceptions<class_ShapeCast3D_method_clear_exceptions>`\ (\ )                                                                                        |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`force_shapecast_update<class_ShapeCast3D_method_force_shapecast_update>`\ (\ )                                                                            |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`     | :ref:`get_closest_collision_safe_fraction<class_ShapeCast3D_method_get_closest_collision_safe_fraction>`\ (\ ) |const|                                          |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`     | :ref:`get_closest_collision_unsafe_fraction<class_ShapeCast3D_method_get_closest_collision_unsafe_fraction>`\ (\ ) |const|                                      |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Object<class_Object>`   | :ref:`get_collider<class_ShapeCast3D_method_get_collider>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`         | :ref:`get_collider_rid<class_ShapeCast3D_method_get_collider_rid>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                 |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`         | :ref:`get_collider_shape<class_ShapeCast3D_method_get_collider_shape>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                             |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`         | :ref:`get_collision_count<class_ShapeCast3D_method_get_collision_count>`\ (\ ) |const|                                                                          |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`get_collision_mask_value<class_ShapeCast3D_method_get_collision_mask_value>`\ (\ layer_number\: :ref:`int<class_int>`\ ) |const|                          |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>` | :ref:`get_collision_normal<class_ShapeCast3D_method_get_collision_normal>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                         |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>` | :ref:`get_collision_point<class_ShapeCast3D_method_get_collision_point>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                           |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`is_colliding<class_ShapeCast3D_method_is_colliding>`\ (\ ) |const|                                                                                        |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`remove_exception<class_ShapeCast3D_method_remove_exception>`\ (\ node\: :ref:`CollisionObject3D<class_CollisionObject3D>`\ )                              |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`remove_exception_rid<class_ShapeCast3D_method_remove_exception_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ )                                                   |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`resource_changed<class_ShapeCast3D_method_resource_changed>`\ (\ resource\: :ref:`Resource<class_Resource>`\ )                                            |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`set_collision_mask_value<class_ShapeCast3D_method_set_collision_mask_value>`\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) |
-   +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`add_exception<class_ShapeCast3D_method_add_exception>`\ (\ node\: :ref:`CollisionObject3D<class_CollisionObject3D>`\ )_                                    |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`add_exception_rid<class_ShapeCast3D_method_add_exception_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ )_                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`clear_exceptions<class_ShapeCast3D_method_clear_exceptions>`\ (\ )                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`force_shapecast_update<class_ShapeCast3D_method_force_shapecast_update>`\ (\ )                                                                             |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`     | :ref:`get_closest_collision_safe_fraction<class_ShapeCast3D_method_get_closest_collision_safe_fraction>`\ (\ ) |const|                                           |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`     | :ref:`get_closest_collision_unsafe_fraction<class_ShapeCast3D_method_get_closest_collision_unsafe_fraction>`\ (\ ) |const|                                       |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Object<class_Object>`   | :ref:`get_collider<class_ShapeCast3D_method_get_collider>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                          |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RID<class_RID>`         | :ref:`get_collider_rid<class_ShapeCast3D_method_get_collider_rid>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                  |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`         | :ref:`get_collider_shape<class_ShapeCast3D_method_get_collider_shape>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                              |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`         | :ref:`get_collision_count<class_ShapeCast3D_method_get_collision_count>`\ (\ ) |const|                                                                           |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`get_collision_mask_value<class_ShapeCast3D_method_get_collision_mask_value>`\ (\ layer_number\: :ref:`int<class_int>`\ ) |const|                           |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`get_collision_normal<class_ShapeCast3D_method_get_collision_normal>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                          |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`get_collision_point<class_ShapeCast3D_method_get_collision_point>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                            |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`is_colliding<class_ShapeCast3D_method_is_colliding>`\ (\ ) |const|                                                                                         |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`remove_exception<class_ShapeCast3D_method_remove_exception>`\ (\ node\: :ref:`CollisionObject3D<class_CollisionObject3D>`\ )_                              |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`remove_exception_rid<class_ShapeCast3D_method_remove_exception_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ )_                                                   |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`resource_changed<class_ShapeCast3D_method_resource_changed>`\ (\ resource\: :ref:`Resource<class_Resource>`\ )_                                            |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                        | :ref:`set_collision_mask_value<class_ShapeCast3D_method_set_collision_mask_value>`\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ )_ |
+   +-------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -109,8 +109,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ShapeCast3D_property_collide_with_areas:
 
@@ -123,7 +123,7 @@ Property Descriptions
 - |void| **set_collide_with_areas**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_areas_enabled**\ (\ )
 
-If ``true``, collisions with :ref:`Area3D<class_Area3D>`\ s will be reported.
+Nếu ``true``, các va chạm với :ref:`Area3D<class_Area3D>`\  sẽ được báo cáo.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ If ``true``, collisions with :ref:`Area3D<class_Area3D>`\ s will be reported.
 - |void| **set_collide_with_bodies**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_bodies_enabled**\ (\ )
 
-If ``true``, collisions with :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s will be reported.
+Nếu ``true``, các va chạm với :ref:`PhysicsBody3D<class_PhysicsBody3D>`\  sẽ được báo cáo.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ If ``true``, collisions with :ref:`PhysicsBody3D<class_PhysicsBody3D>`\ s will b
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The shape's collision mask. Only objects in at least one collision layer enabled in the mask will be detected. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+Mặt nạ va chạm của shape. Chỉ các đối tượng nằm trên ít nhất một collision layer được bật trong mặt nạ mới được phát hiện. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ The shape's collision mask. Only objects in at least one collision layer enabled
 
 - :ref:`Array<class_Array>` **get_collision_result**\ (\ )
 
-Returns the complete collision information from the collision sweep. The data returned is the same as in the :ref:`PhysicsDirectSpaceState3D.get_rest_info()<class_PhysicsDirectSpaceState3D_method_get_rest_info>` method.
+Trả về thông tin va chạm đầy đủ từ quá trình quét va chạm. Dữ liệu được trả về giống như trong phương thức :ref:`PhysicsDirectSpaceState3D.get_rest_info()<class_PhysicsDirectSpaceState3D_method_get_rest_info>`.
 
 .. rst-class:: classref-item-separator
 
@@ -190,9 +190,9 @@ Returns the complete collision information from the collision sweep. The data re
 - |void| **set_debug_shape_custom_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_debug_shape_custom_color**\ (\ )
 
-The custom color to use to draw the shape in the editor and at run-time if **Visible Collision Shapes** is enabled in the **Debug** menu. This color will be highlighted at run-time if the **ShapeCast3D** is colliding with something.
+Màu tùy chỉnh dùng để vẽ shape trong trình chỉnh sửa và lúc chạy nếu **Visible Collision Shapes** được bật trong menu **Debug**. Màu này sẽ được làm nổi bật lúc chạy nếu **ShapeCast3D** đang va chạm với vật gì đó.
 
-If set to ``Color(0.0, 0.0, 0.0)`` (by default), the color set in :ref:`ProjectSettings.debug/shapes/collision/shape_color<class_ProjectSettings_property_debug/shapes/collision/shape_color>` is used.
+Nếu được đặt thành ``Color(0.0, 0.0, 0.0)`` (mặc định), màu được thiết lập trong :ref:`ProjectSettings.debug/shapes/collision/shape_color <class_ProjectSettings_property_debug/shapes/collision/shape_color>` sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ If set to ``Color(0.0, 0.0, 0.0)`` (by default), the color set in :ref:`ProjectS
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-If ``true``, collisions will be reported.
+Nếu ``true``, các va chạm sẽ được báo cáo.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ If ``true``, collisions will be reported.
 - |void| **set_exclude_parent_body**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_exclude_parent_body**\ (\ )
 
-If ``true``, the parent node will be excluded from collision detection.
+Nếu ``true``, node cha sẽ bị loại khỏi việc phát hiện va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ If ``true``, the parent node will be excluded from collision detection.
 - |void| **set_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_margin**\ (\ )
 
-The collision margin for the shape. A larger margin helps detecting collisions more consistently, at the cost of precision.
+Biên va chạm của shape. Biên lớn hơn giúp phát hiện va chạm ổn định hơn, nhưng làm giảm độ chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +260,7 @@ The collision margin for the shape. A larger margin helps detecting collisions m
 - |void| **set_max_results**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_results**\ (\ )
 
-The number of intersections can be limited with this parameter, to reduce the processing time.
+Có thể giới hạn số giao điểm bằng tham số này để giảm thời gian xử lý.
 
 .. rst-class:: classref-item-separator
 
@@ -270,14 +270,14 @@ The number of intersections can be limited with this parameter, to reduce the pr
 
 .. rst-class:: classref-property
 
-:ref:`Shape3D<class_Shape3D>` **shape** :ref:`🔗<class_ShapeCast3D_property_shape>`
+:ref:`Shape3D<class_Shape3D>` **shape** :ref:`🔗 <class_ShapeCast3D_property_shape>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shape**\ (\ value\: :ref:`Shape3D<class_Shape3D>`\ )
 - :ref:`Shape3D<class_Shape3D>` **get_shape**\ (\ )
 
-The shape to be used for collision queries.
+Shape được sử dụng cho các truy vấn va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -294,7 +294,7 @@ The shape to be used for collision queries.
 - |void| **set_target_position**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_target_position**\ (\ )
 
-The shape's destination point, relative to this node's :ref:`Node3D.position<class_Node3D_property_position>`.
+Điểm đích của shape, tính tương đối so với :ref:`Node3D.position<class_Node3D_property_position>` của node này.
 
 .. rst-class:: classref-section-separator
 
@@ -302,8 +302,8 @@ The shape's destination point, relative to this node's :ref:`Node3D.position<cla
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ShapeCast3D_method_add_exception:
 
@@ -311,7 +311,7 @@ Method Descriptions
 
 |void| **add_exception**\ (\ node\: :ref:`CollisionObject3D<class_CollisionObject3D>`\ ) :ref:`🔗<class_ShapeCast3D_method_add_exception>`
 
-Adds a collision exception so the shape does not report collisions with the specified node.
+Thêm một ngoại lệ va chạm để shape không báo cáo va chạm với node được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -323,7 +323,7 @@ Adds a collision exception so the shape does not report collisions with the spec
 
 |void| **add_exception_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_ShapeCast3D_method_add_exception_rid>`
 
-Adds a collision exception so the shape does not report collisions with the specified :ref:`RID<class_RID>`.
+Thêm một ngoại lệ va chạm để shape không báo cáo va chạm với :ref:`RID<class_RID>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -335,7 +335,7 @@ Adds a collision exception so the shape does not report collisions with the spec
 
 |void| **clear_exceptions**\ (\ ) :ref:`🔗<class_ShapeCast3D_method_clear_exceptions>`
 
-Removes all collision exceptions for this shape.
+Xóa tất cả ngoại lệ va chạm của shape này.
 
 .. rst-class:: classref-item-separator
 
@@ -347,9 +347,9 @@ Removes all collision exceptions for this shape.
 
 |void| **force_shapecast_update**\ (\ ) :ref:`🔗<class_ShapeCast3D_method_force_shapecast_update>`
 
-Updates the collision information for the shape immediately, without waiting for the next ``_physics_process`` call. Use this method, for example, when the shape or its parent has changed state.
+Cập nhật ngay lập tức thông tin va chạm của shape mà không chờ lần gọi ``_physics_process`` tiếp theo. Ví dụ, hãy sử dụng phương thức này khi shape hoặc node cha của nó đã thay đổi trạng thái.
 
-\ **Note:** Setting :ref:`enabled<class_ShapeCast3D_property_enabled>` to ``true`` is not required for this to work.
+\ **Lưu ý:** Không cần đặt :ref:`enabled<class_ShapeCast3D_property_enabled>` thành ``true`` để tính năng này hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -361,7 +361,7 @@ Updates the collision information for the shape immediately, without waiting for
 
 :ref:`float<class_float>` **get_closest_collision_safe_fraction**\ (\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_closest_collision_safe_fraction>`
 
-Returns the fraction from this cast's origin to its :ref:`target_position<class_ShapeCast3D_property_target_position>` of how far the shape can move without triggering a collision, as a value between ``0.0`` and ``1.0``.
+Trả về phân số từ điểm gốc của phép cast đến :ref:`target_position<class_ShapeCast3D_property_target_position>` của nó, cho biết hình dạng có thể di chuyển bao xa mà không kích hoạt va chạm, dưới dạng một giá trị từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -373,9 +373,9 @@ Returns the fraction from this cast's origin to its :ref:`target_position<class_
 
 :ref:`float<class_float>` **get_closest_collision_unsafe_fraction**\ (\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_closest_collision_unsafe_fraction>`
 
-Returns the fraction from this cast's origin to its :ref:`target_position<class_ShapeCast3D_property_target_position>` of how far the shape must move to trigger a collision, as a value between ``0.0`` and ``1.0``.
+Trả về phân số từ điểm gốc của phép cast đến :ref:`target_position<class_ShapeCast3D_property_target_position>` của nó, cho biết hình dạng phải di chuyển bao xa để kích hoạt va chạm, dưới dạng một giá trị từ ``0.0`` đến ``1.0``.
 
-In ideal conditions this would be the same as :ref:`get_closest_collision_safe_fraction()<class_ShapeCast3D_method_get_closest_collision_safe_fraction>`, however shape casting is calculated in discrete steps, so the precise point of collision can occur between two calculated positions.
+Trong điều kiện lý tưởng, giá trị này sẽ giống với :ref:`get_closest_collision_safe_fraction()<class_ShapeCast3D_method_get_closest_collision_safe_fraction>`, tuy nhiên việc cast hình dạng được tính theo các bước rời rạc, nên điểm va chạm chính xác có thể nằm giữa hai vị trí đã tính.
 
 .. rst-class:: classref-item-separator
 
@@ -387,7 +387,7 @@ In ideal conditions this would be the same as :ref:`get_closest_collision_safe_f
 
 :ref:`Object<class_Object>` **get_collider**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_collider>`
 
-Returns the collided :ref:`Object<class_Object>` of one of the multiple collisions at ``index``, or ``null`` if no object is intersecting the shape (i.e. :ref:`is_colliding()<class_ShapeCast3D_method_is_colliding>` returns ``false``).
+Trả về :ref:`Object<class_Object>` bị va chạm của một trong nhiều va chạm tại ``index``, hoặc ``null`` nếu không có đối tượng nào giao với hình dạng (tức là :ref:`is_colliding()<class_ShapeCast3D_method_is_colliding>` trả về ``false``).
 
 .. rst-class:: classref-item-separator
 
@@ -399,7 +399,7 @@ Returns the collided :ref:`Object<class_Object>` of one of the multiple collisio
 
 :ref:`RID<class_RID>` **get_collider_rid**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_collider_rid>`
 
-Returns the :ref:`RID<class_RID>` of the collided object of one of the multiple collisions at ``index``.
+Trả về :ref:`RID<class_RID>` của đối tượng bị va chạm trong một trong nhiều va chạm tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -411,7 +411,7 @@ Returns the :ref:`RID<class_RID>` of the collided object of one of the multiple 
 
 :ref:`int<class_int>` **get_collider_shape**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_collider_shape>`
 
-Returns the shape ID of the colliding shape of one of the multiple collisions at ``index``, or ``0`` if no object is intersecting the shape (i.e. :ref:`is_colliding()<class_ShapeCast3D_method_is_colliding>` returns ``false``).
+Trả về ID hình dạng của hình dạng va chạm trong một trong nhiều va chạm tại ``index``, hoặc ``0`` nếu không có đối tượng nào giao với hình dạng (tức là :ref:`is_colliding()<class_ShapeCast3D_method_is_colliding>` trả về ``false``).
 
 .. rst-class:: classref-item-separator
 
@@ -423,7 +423,7 @@ Returns the shape ID of the colliding shape of one of the multiple collisions at
 
 :ref:`int<class_int>` **get_collision_count**\ (\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_collision_count>`
 
-The number of collisions detected at the point of impact. Use this to iterate over multiple collisions as provided by :ref:`get_collider()<class_ShapeCast3D_method_get_collider>`, :ref:`get_collider_shape()<class_ShapeCast3D_method_get_collider_shape>`, :ref:`get_collision_point()<class_ShapeCast3D_method_get_collision_point>`, and :ref:`get_collision_normal()<class_ShapeCast3D_method_get_collision_normal>` methods.
+Số lượng va chạm được phát hiện tại điểm tác động. Sử dụng giá trị này để lặp qua nhiều va chạm do các phương thức :ref:`get_collider()<class_ShapeCast3D_method_get_collider>`, :ref:`get_collider_shape()<class_ShapeCast3D_method_get_collider_shape>`, :ref:`get_collision_point()<class_ShapeCast3D_method_get_collision_point>` và :ref:`get_collision_normal()<class_ShapeCast3D_method_get_collision_normal>` cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -435,7 +435,7 @@ The number of collisions detected at the point of impact. Use this to iterate ov
 
 :ref:`bool<class_bool>` **get_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_collision_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_mask<class_ShapeCast3D_property_collision_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc lớp được chỉ định của :ref:`collision_mask<class_ShapeCast3D_property_collision_mask>` có được bật hay không, với một ``layer_number`` từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -447,7 +447,7 @@ Returns whether or not the specified layer of the :ref:`collision_mask<class_Sha
 
 :ref:`Vector3<class_Vector3>` **get_collision_normal**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_collision_normal>`
 
-Returns the normal of one of the multiple collisions at ``index`` of the intersecting object.
+Trả về pháp tuyến của một trong nhiều va chạm tại ``index`` của đối tượng giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -459,9 +459,9 @@ Returns the normal of one of the multiple collisions at ``index`` of the interse
 
 :ref:`Vector3<class_Vector3>` **get_collision_point**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ShapeCast3D_method_get_collision_point>`
 
-Returns the collision point of one of the multiple collisions at ``index`` where the shape intersects the colliding object.
+Trả về điểm va chạm của một trong nhiều va chạm tại ``index``, nơi hình dạng giao với đối tượng va chạm.
 
-\ **Note:** This point is in the **global** coordinate system.
+\ **Lưu ý:** Điểm này nằm trong hệ tọa độ **global**.
 
 .. rst-class:: classref-item-separator
 
@@ -473,7 +473,7 @@ Returns the collision point of one of the multiple collisions at ``index`` where
 
 :ref:`bool<class_bool>` **is_colliding**\ (\ ) |const| :ref:`🔗<class_ShapeCast3D_method_is_colliding>`
 
-Returns whether any object is intersecting with the shape's vector (considering the vector length).
+Trả về việc có đối tượng nào đang giao với vector của hình dạng hay không (có xét đến độ dài vector).
 
 .. rst-class:: classref-item-separator
 
@@ -485,7 +485,7 @@ Returns whether any object is intersecting with the shape's vector (considering 
 
 |void| **remove_exception**\ (\ node\: :ref:`CollisionObject3D<class_CollisionObject3D>`\ ) :ref:`🔗<class_ShapeCast3D_method_remove_exception>`
 
-Removes a collision exception so the shape does report collisions with the specified node.
+Xóa một ngoại lệ va chạm để hình dạng báo cáo va chạm với node được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -497,7 +497,7 @@ Removes a collision exception so the shape does report collisions with the speci
 
 |void| **remove_exception_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_ShapeCast3D_method_remove_exception_rid>`
 
-Removes a collision exception so the shape does report collisions with the specified :ref:`RID<class_RID>`.
+Xóa một ngoại lệ va chạm để hình dạng báo cáo va chạm với :ref:`RID<class_RID>` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -509,9 +509,9 @@ Removes a collision exception so the shape does report collisions with the speci
 
 |void| **resource_changed**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_ShapeCast3D_method_resource_changed>`
 
-**Deprecated:** Use :ref:`Resource.changed<class_Resource_signal_changed>` instead.
+**Không còn được dùng:** Hãy sử dụng :ref:`Resource.changed<class_Resource_signal_changed>` thay thế.
 
-This method does nothing.
+Phương thức này không thực hiện thao tác nào.
 
 .. rst-class:: classref-item-separator
 
@@ -523,14 +523,14 @@ This method does nothing.
 
 |void| **set_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_ShapeCast3D_method_set_collision_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_mask<class_ShapeCast3D_property_collision_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt lớp được chỉ định trong :ref:`collision_mask<class_ShapeCast3D_property_collision_mask>`, với một ``layer_number`` từ 1 đến 32.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

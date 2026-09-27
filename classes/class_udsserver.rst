@@ -10,29 +10,29 @@
 UDSServer
 =========
 
-**Inherits:** :ref:`SocketServer<class_SocketServer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SocketServer<class_SocketServer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A Unix Domain Socket (UDS) server.
+Một server Unix Domain Socket (UDS).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A Unix Domain Socket (UDS) server. Listens to connections on a socket path and returns a :ref:`StreamPeerUDS<class_StreamPeerUDS>` when it gets an incoming connection. Unix Domain Sockets provide inter-process communication on the same machine using the filesystem namespace.
+Một server Unix Domain Socket (UDS). Lắng nghe các kết nối trên đường dẫn socket và trả về một :ref:`StreamPeerUDS<class_StreamPeerUDS>` khi nhận được kết nối đến. Unix Domain Socket cung cấp cơ chế giao tiếp giữa các tiến trình trên cùng một máy bằng cách sử dụng namespace của hệ thống tệp.
 
-\ **Note:** Unix Domain Sockets are only available on Unix-like systems (Linux, macOS, etc.) and are not supported on Windows.
+\ **Lưu ý:** Unix Domain Socket chỉ khả dụng trên các hệ thống tương tự Unix (Linux, macOS, v.v.) và không được hỗ trợ trên Windows.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
    +-------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`     | :ref:`listen<class_UDSServer_method_listen>`\ (\ path\: :ref:`String<class_String>`\ ) |
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`listen<class_UDSServer_method_listen>`\ (\ path\: :ref:`String<class_String>`\ ) |
    +-------------------------------------------+----------------------------------------------------------------------------------------+
    | :ref:`StreamPeerUDS<class_StreamPeerUDS>` | :ref:`take_connection<class_UDSServer_method_take_connection>`\ (\ )                   |
    +-------------------------------------------+----------------------------------------------------------------------------------------+
@@ -43,8 +43,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_UDSServer_method_listen:
 
@@ -52,9 +52,9 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **listen**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_UDSServer_method_listen>`
 
-Listens on the socket at ``path``. The socket file will be created at the specified path.
+Lắng nghe trên socket tại ``path``. Tệp socket sẽ được tạo tại đường dẫn đã chỉ định.
 
-\ **Note:** The socket file must not already exist at the specified path. You may need to remove any existing socket file before calling this method.
+\ **Lưu ý:** Tệp socket không được tồn tại ở đường dẫn đã chỉ định. Bạn có thể cần xóa mọi tệp socket hiện có trước khi gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -66,14 +66,14 @@ Listens on the socket at ``path``. The socket file will be created at the specif
 
 :ref:`StreamPeerUDS<class_StreamPeerUDS>` **take_connection**\ (\ ) :ref:`🔗<class_UDSServer_method_take_connection>`
 
-If a connection is available, returns a StreamPeerUDS with the connection.
+Nếu có kết nối, trả về một StreamPeerUDS cùng với kết nối đó.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

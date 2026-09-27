@@ -10,397 +10,397 @@
 Control
 =======
 
-**Inherits:** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`BaseButton<class_BaseButton>`, :ref:`ColorRect<class_ColorRect>`, :ref:`Container<class_Container>`, :ref:`GraphEdit<class_GraphEdit>`, :ref:`ItemList<class_ItemList>`, :ref:`Label<class_Label>`, :ref:`LineEdit<class_LineEdit>`, :ref:`MenuBar<class_MenuBar>`, :ref:`NinePatchRect<class_NinePatchRect>`, :ref:`Panel<class_Panel>`, :ref:`Range<class_Range>`, :ref:`ReferenceRect<class_ReferenceRect>`, :ref:`RichTextLabel<class_RichTextLabel>`, :ref:`Separator<class_Separator>`, :ref:`TabBar<class_TabBar>`, :ref:`TextEdit<class_TextEdit>`, :ref:`TextureRect<class_TextureRect>`, :ref:`Tree<class_Tree>`, :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`, :ref:`VirtualJoystick<class_VirtualJoystick>`
+**Được kế thừa bởi:** :ref:`BaseButton<class_BaseButton>`, :ref:`ColorRect<class_ColorRect>`, :ref:`Container<class_Container>`, :ref:`GraphEdit<class_GraphEdit>`, :ref:`ItemList<class_ItemList>`, :ref:`Label<class_Label>`, :ref:`LineEdit<class_LineEdit>`, :ref:`MenuBar<class_MenuBar>`, :ref:`NinePatchRect<class_NinePatchRect>`, :ref:`Panel<class_Panel>`, :ref:`Range<class_Range>`, :ref:`ReferenceRect<class_ReferenceRect>`, :ref:`RichTextLabel<class_RichTextLabel>`, :ref:`Separator<class_Separator>`, :ref:`TabBar<class_TabBar>`, :ref:`TextEdit<class_TextEdit>`, :ref:`TextureRect<class_TextureRect>`, :ref:`Tree<class_Tree>`, :ref:`VideoStreamPlayer<class_VideoStreamPlayer>`, :ref:`VirtualJoystick<class_VirtualJoystick>`
 
-Base class for all GUI controls. Adapts its position and size based on its parent control.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Base class for all UI-related nodes. **Control** features a bounding rectangle that defines its extents, an anchor position relative to its parent control or the current viewport, and offsets relative to the anchor. The offsets update automatically when the node, any of its parents, or the screen size change.
-
-For more information on Godot's UI system, anchors, offsets, and containers, see the related tutorials in the manual. To build flexible UIs, you'll need a mix of UI elements that inherit from **Control** and :ref:`Container<class_Container>` nodes.
-
-\ **Note:** Since both :ref:`Node2D<class_Node2D>` and **Control** inherit from :ref:`CanvasItem<class_CanvasItem>`, they share several concepts from the class such as the :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` and :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` properties.
-
-\ **User Interface nodes and input**\ 
-
-Godot propagates input events via viewports. Each :ref:`Viewport<class_Viewport>` is responsible for propagating :ref:`InputEvent<class_InputEvent>`\ s to their child nodes. As the :ref:`SceneTree.root<class_SceneTree_property_root>` is a :ref:`Window<class_Window>`, this already happens automatically for all UI elements in your game.
-
-Input events are propagated through the :ref:`SceneTree<class_SceneTree>` from the root node to all child nodes by calling :ref:`Node._input()<class_Node_private_method__input>`. For UI elements specifically, it makes more sense to override the virtual method :ref:`_gui_input()<class_Control_private_method__gui_input>`, which filters out unrelated input events, such as by checking z-order, :ref:`mouse_filter<class_Control_property_mouse_filter>`, focus, or if the event was inside of the control's bounding box.
-
-Call :ref:`accept_event()<class_Control_method_accept_event>` so no other node receives the event. Once you accept an input, it becomes handled so :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>` will not process it.
-
-Only one **Control** node can be in focus. Only the node in focus will receive events. To get the focus, call :ref:`grab_focus()<class_Control_method_grab_focus>`. **Control** nodes lose focus when another node grabs it, or if you hide the node in focus. Focus will not be represented visually if gained via mouse/touch input, only appearing with keyboard/gamepad input (for accessibility), or via :ref:`grab_focus()<class_Control_method_grab_focus>`.
-
-Set :ref:`mouse_filter<class_Control_property_mouse_filter>` to :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>` to tell a **Control** node to ignore mouse or touch events. You'll need it if you place an icon on top of a button.
-
-\ :ref:`Theme<class_Theme>` resources change the control's appearance. The :ref:`theme<class_Control_property_theme>` of a **Control** node affects all of its direct and indirect children (as long as a chain of controls is uninterrupted). To override some of the theme items, call one of the ``add_theme_*_override`` methods, like :ref:`add_theme_font_override()<class_Control_method_add_theme_font_override>`. You can also override theme items in the Inspector.
-
-\ **Note:** Theme items are *not* :ref:`Object<class_Object>` properties. This means you can't access their values using :ref:`Object.get()<class_Object_method_get>` and :ref:`Object.set()<class_Object_method_set>`. Instead, use the ``get_theme_*`` and ``add_theme_*_override`` methods provided by this class.
+Lớp cơ sở cho tất cả các control GUI. Điều chỉnh vị trí và kích thước dựa trên control cha.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở cho tất cả các node liên quan đến UI. **Control** có một hình chữ nhật bao quanh xác định phạm vi của nó, một vị trí neo tương đối so với control cha hoặc viewport hiện tại, cùng các độ lệch tương đối so với điểm neo. Các độ lệch tự động cập nhật khi node, bất kỳ node cha nào của nó hoặc kích thước màn hình thay đổi.
+
+Để biết thêm thông tin về hệ thống UI, anchor, offset và container của Godot, hãy xem các hướng dẫn liên quan trong tài liệu hướng dẫn. Để xây dựng UI linh hoạt, bạn sẽ cần kết hợp các phần tử UI kế thừa từ **Control** và các node :ref:`Container<class_Container>`.
+
+\ **Lưu ý:** Vì cả :ref:`Node2D<class_Node2D>` và **Control** đều kế thừa từ :ref:`CanvasItem<class_CanvasItem>`, chúng chia sẻ một số khái niệm của lớp này, chẳng hạn như các thuộc tính :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` và :ref:`CanvasItem.visible<class_CanvasItem_property_visible>`.
+
+\ **Các node Giao diện người dùng và input**\
+
+Godot truyền các sự kiện input thông qua viewport. Mỗi :ref:`Viewport<class_Viewport>` chịu trách nhiệm truyền :ref:`InputEvent<class_InputEvent>`\ s đến các node con của chúng. Vì :ref:`SceneTree.root<class_SceneTree_property_root>` là một :ref:`Window<class_Window>`, việc này đã tự động xảy ra đối với tất cả phần tử UI trong game của bạn.
+
+Các sự kiện input được truyền qua :ref:`SceneTree<class_SceneTree>` từ node gốc đến tất cả node con bằng cách gọi :ref:`Node._input()<class_Node_private_method__input>`. Riêng với các phần tử UI, việc ghi đè phương thức ảo :ref:`_gui_input()<class_Control_private_method__gui_input>` sẽ hợp lý hơn; phương thức này lọc các sự kiện input không liên quan, chẳng hạn bằng cách kiểm tra z-order, :ref:`mouse_filter<class_Control_property_mouse_filter>`, focus hoặc xem sự kiện có nằm trong bounding box của control hay không.
+
+Gọi :ref:`accept_event()<class_Control_method_accept_event>` để không có node nào khác nhận sự kiện. Khi bạn chấp nhận một input, input đó được đánh dấu là đã xử lý nên :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>` sẽ không xử lý nó.
+
+Chỉ một node **Control** có thể được focus. Chỉ node đang focus mới nhận được các sự kiện. Để lấy focus, hãy gọi :ref:`grab_focus()<class_Control_method_grab_focus>`. Các node **Control** mất focus khi một node khác lấy focus, hoặc khi bạn ẩn node đang focus. Focus sẽ không được hiển thị trực quan nếu nhận được thông qua input từ chuột/cảm ứng; nó chỉ xuất hiện khi dùng bàn phím/gamepad (để hỗ trợ khả năng tiếp cận), hoặc thông qua :ref:`grab_focus()<class_Control_method_grab_focus>`.
+
+Đặt :ref:`mouse_filter<class_Control_property_mouse_filter>` thành :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>` để yêu cầu node **Control** bỏ qua các sự kiện chuột hoặc cảm ứng. Bạn sẽ cần thiết lập này nếu đặt một biểu tượng lên trên một nút.
+
+Các tài nguyên \ :ref:`Theme<class_Theme>` thay đổi giao diện của control. :ref:`theme<class_Control_property_theme>` của node **Control** ảnh hưởng đến tất cả các node con trực tiếp và gián tiếp của nó (miễn là chuỗi các control không bị gián đoạn). Để ghi đè một số theme item, hãy gọi một trong các phương thức ``add_theme_*_override``, chẳng hạn như :ref:`add_theme_font_override()<class_Control_method_add_theme_font_override>`. Bạn cũng có thể ghi đè các theme item trong Inspector.
+
+\ **Lưu ý:** Các mục Theme *không phải là* :ref:`Object<class_Object>` thuộc tính. Điều này có nghĩa là bạn không thể truy cập các giá trị của chúng bằng :ref:`Object.get()<class_Object_method_get>` và :ref:`Object.set()<class_Object_method_set>`. Thay vào đó, hãy sử dụng các phương thức ``get_theme_*`` và ``add_theme_*_override`` do class này cung cấp.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`GUI documentation index <../tutorials/ui/index>`
+- :doc:`Mục lục tài liệu GUI <../tutorials/ui/index>`
 
-- :doc:`Custom drawing in 2D <../tutorials/2d/custom_drawing_in_2d>`
+- :doc:`Vẽ tùy chỉnh trong 2D <../tutorials/2d/custom_drawing_in_2d>`
 
-- :doc:`Control node gallery <../tutorials/ui/control_node_gallery>`
+- :doc:`Bộ sưu tập node Control <../tutorials/ui/control_node_gallery>`
 
-- :doc:`Multiple resolutions <../tutorials/rendering/multiple_resolutions>`
+- :doc:`Nhiều độ phân giải <../tutorials/rendering/multiple_resolutions>`
 
-- `All GUI Demos <https://github.com/godotengine/godot-demo-projects/tree/master/gui>`__
+- `Tất cả bản trình diễn GUI <https://github.com/godotengine/godot-demo-projects/tree/master/gui>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                 | :ref:`accessibility_controls_nodes<class_Control_property_accessibility_controls_nodes>`         | ``[]``                                                                        |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                 | :ref:`accessibility_described_by_nodes<class_Control_property_accessibility_described_by_nodes>` | ``[]``                                                                        |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                                  | :ref:`accessibility_description<class_Control_property_accessibility_description>`               | ``""``                                                                        |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                 | :ref:`accessibility_flow_to_nodes<class_Control_property_accessibility_flow_to_nodes>`           | ``[]``                                                                        |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                 | :ref:`accessibility_labeled_by_nodes<class_Control_property_accessibility_labeled_by_nodes>`     | ``[]``                                                                        |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>` | :ref:`accessibility_live<class_Control_property_accessibility_live>`                             | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                                  | :ref:`accessibility_name<class_Control_property_accessibility_name>`                             | ``""``                                                                        |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`anchor_bottom<class_Control_property_anchor_bottom>`                                       | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`anchor_left<class_Control_property_anchor_left>`                                           | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`anchor_right<class_Control_property_anchor_right>`                                         | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`anchor_top<class_Control_property_anchor_top>`                                             | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`auto_translate<class_Control_property_auto_translate>`                                     |                                                                               |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`clip_contents<class_Control_property_clip_contents>`                                       | ``false``                                                                     |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>`                           | ``Vector2(-1, -1)``                                                           |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>`                           | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`FocusBehaviorRecursive<enum_Control_FocusBehaviorRecursive>`           | :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>`                 | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                                     | :ref:`focus_mode<class_Control_property_focus_mode>`                                             | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                              | :ref:`focus_neighbor_bottom<class_Control_property_focus_neighbor_bottom>`                       | ``NodePath("")``                                                              |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                              | :ref:`focus_neighbor_left<class_Control_property_focus_neighbor_left>`                           | ``NodePath("")``                                                              |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                              | :ref:`focus_neighbor_right<class_Control_property_focus_neighbor_right>`                         | ``NodePath("")``                                                              |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                              | :ref:`focus_neighbor_top<class_Control_property_focus_neighbor_top>`                             | ``NodePath("")``                                                              |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                              | :ref:`focus_next<class_Control_property_focus_next>`                                             | ``NodePath("")``                                                              |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                              | :ref:`focus_previous<class_Control_property_focus_previous>`                                     | ``NodePath("")``                                                              |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`global_position<class_Control_property_global_position>`                                   |                                                                               |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`GrowDirection<enum_Control_GrowDirection>`                             | :ref:`grow_horizontal<class_Control_property_grow_horizontal>`                                   | ``1``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`GrowDirection<enum_Control_GrowDirection>`                             | :ref:`grow_vertical<class_Control_property_grow_vertical>`                                       | ``1``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`LayoutDirection<enum_Control_LayoutDirection>`                         | :ref:`layout_direction<class_Control_property_layout_direction>`                                 | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`localize_numeral_system<class_Control_property_localize_numeral_system>`                   | ``true``                                                                      |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`MouseBehaviorRecursive<enum_Control_MouseBehaviorRecursive>`           | :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>`                 | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`CursorShape<enum_Control_CursorShape>`                                 | :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`             | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>`                                 | :ref:`mouse_filter<class_Control_property_mouse_filter>`                                         | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`mouse_force_pass_scroll_events<class_Control_property_mouse_force_pass_scroll_events>`     | ``true``                                                                      |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`offset_bottom<class_Control_property_offset_bottom>`                                       | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`offset_left<class_Control_property_offset_left>`                                           | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`offset_right<class_Control_property_offset_right>`                                         | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`offset_top<class_Control_property_offset_top>`                                             | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>`                 | ``false``                                                                     |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>`                     | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`         | ``Vector2(0.5, 0.5)``                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`offset_transform_position<class_Control_property_offset_transform_position>`               | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`offset_transform_position_ratio<class_Control_property_offset_transform_position_ratio>`   | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`offset_transform_rotation<class_Control_property_offset_transform_rotation>`               | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`offset_transform_scale<class_Control_property_offset_transform_scale>`                     | ``Vector2(1, 1)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`offset_transform_visual_only<class_Control_property_offset_transform_visual_only>`         | ``true``                                                                      |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>`          | physics_interpolation_mode                                                                       | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`pivot_offset<class_Control_property_pivot_offset>`                                         | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`pivot_offset_ratio<class_Control_property_pivot_offset_ratio>`                             | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`position<class_Control_property_position>`                                                 | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`propagate_maximum_size<class_Control_property_propagate_maximum_size>`                     | ``false``                                                                     |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`rotation<class_Control_property_rotation>`                                                 | ``0.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`rotation_degrees<class_Control_property_rotation_degrees>`                                 |                                                                               |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`scale<class_Control_property_scale>`                                                       | ``Vector2(1, 1)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Node<class_Node>`                                                      | :ref:`shortcut_context<class_Control_property_shortcut_context>`                                 |                                                                               |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                                | :ref:`size<class_Control_property_size>`                                                         | ``Vector2(0, 0)``                                                             |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\]                       | :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>`                       | ``1``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>`                 | ``1.0``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\]                       | :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`                           | ``1``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Theme<class_Theme>`                                                    | :ref:`theme<class_Control_property_theme>`                                                       |                                                                               |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                                          | :ref:`theme_type_variation<class_Control_property_theme_type_variation>`                         | ``&""``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>`                        | :ref:`tooltip_auto_translate_mode<class_Control_property_tooltip_auto_translate_mode>`           | ``0``                                                                         |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                                  | :ref:`tooltip_text<class_Control_property_tooltip_text>`                                         | ``""``                                                                        |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                                          | :ref:`translation_context<class_Control_property_translation_context>`                           | ``&""``                                                                       |
-   +------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                  | :ref:`accessibility_controls_nodes<class_Control_property_accessibility_controls_nodes>`         | ``[]``                                                                     |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                  | :ref:`accessibility_described_by_nodes<class_Control_property_accessibility_described_by_nodes>` | ``[]``                                                                     |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                   | :ref:`accessibility_description<class_Control_property_accessibility_description>`               | ``""``                                                                     |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                  | :ref:`accessibility_flow_to_nodes<class_Control_property_accessibility_flow_to_nodes>`           | ``[]``                                                                     |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                  | :ref:`accessibility_labeled_by_nodes<class_Control_property_accessibility_labeled_by_nodes>`     | ``[]``                                                                     |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`AccessibilityLiveMode <enum_AccessibilityServer_AccessibilityLiveMode>` | :ref:`accessibility_live<class_Control_property_accessibility_live>`                             | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                   | :ref:`accessibility_name<class_Control_property_accessibility_name>`                             | ``""``                                                                     |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`anchor_bottom<class_Control_property_anchor_bottom>`                                       | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`anchor_left<class_Control_property_anchor_left>`                                           | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`anchor_right<class_Control_property_anchor_right>`                                         | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`anchor_top<class_Control_property_anchor_top>`                                             | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`auto_translate<class_Control_property_auto_translate>`                                     |                                                                            |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`clip_contents<class_Control_property_clip_contents>`                                       | ``false``                                                                  |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>`                           | ``Vector2(-1, -1)``                                                        |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>`                           | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`FocusBehaviorRecursive <enum_Control_FocusBehaviorRecursive>`           | :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>`                 | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`                                     | :ref:`focus_mode<class_Control_property_focus_mode>`                                             | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                               | :ref:`focus_neighbor_bottom<class_Control_property_focus_neighbor_bottom>`                       | ``NodePath("")``                                                           |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                               | :ref:`focus_neighbor_left<class_Control_property_focus_neighbor_left>`                           | ``NodePath("")``                                                           |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                               | :ref:`focus_neighbor_right<class_Control_property_focus_neighbor_right>`                         | ``NodePath("")``                                                           |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                               | :ref:`focus_neighbor_top<class_Control_property_focus_neighbor_top>`                             | ``NodePath("")``                                                           |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                               | :ref:`focus_next<class_Control_property_focus_next>`                                             | ``NodePath("")``                                                           |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                               | :ref:`focus_previous<class_Control_property_focus_previous>`                                     | ``NodePath("")``                                                           |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`global_position<class_Control_property_global_position>`                                   |                                                                            |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`GrowDirection <enum_Control_GrowDirection>`                             | :ref:`grow_horizontal<class_Control_property_grow_horizontal>`                                   | ``1``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`GrowDirection <enum_Control_GrowDirection>`                             | :ref:`grow_vertical<class_Control_property_grow_vertical>`                                       | ``1``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`LayoutDirection <enum_Control_LayoutDirection>`                         | :ref:`layout_direction<class_Control_property_layout_direction>`                                 | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`localize_numeral_system<class_Control_property_localize_numeral_system>`                   | ``true``                                                                   |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`MouseBehaviorRecursive <enum_Control_MouseBehaviorRecursive>`           | :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>`                 | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`CursorShape <enum_Control_CursorShape>`                                 | :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`             | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>`                                 | :ref:`mouse_filter<class_Control_property_mouse_filter>`                                         | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`mouse_force_pass_scroll_events<class_Control_property_mouse_force_pass_scroll_events>`     | ``true``                                                                   |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`offset_bottom<class_Control_property_offset_bottom>`                                       | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`offset_left<class_Control_property_offset_left>`                                           | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`offset_right<class_Control_property_offset_right>`                                         | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`offset_top<class_Control_property_offset_top>`                                             | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>`                 | ``false``                                                                  |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>`                     | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`         | ``Vector2(0.5, 0.5)``                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`offset_transform_position<class_Control_property_offset_transform_position>`               | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`offset_transform_position_ratio<class_Control_property_offset_transform_position_ratio>`   | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`offset_transform_rotation<class_Control_property_offset_transform_rotation>`               | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`offset_transform_scale<class_Control_property_offset_transform_scale>`                     | ``Vector2(1, 1)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`offset_transform_visual_only<class_Control_property_offset_transform_visual_only>`         | ``true``                                                                   |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`PhysicsInterpolationMode <enum_Node_PhysicsInterpolationMode>`          | physics_interpolation_mode                                                                       | ``2`` (ghi đè :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`pivot_offset<class_Control_property_pivot_offset>`                                         | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`pivot_offset_ratio<class_Control_property_pivot_offset_ratio>`                             | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`position<class_Control_property_position>`                                                 | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`propagate_maximum_size<class_Control_property_propagate_maximum_size>`                     | ``false``                                                                  |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`rotation<class_Control_property_rotation>`                                                 | ``0.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`rotation_degrees<class_Control_property_rotation_degrees>`                                 |                                                                            |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`scale<class_Control_property_scale>`                                                       | ``Vector2(1, 1)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Node<class_Node>`                                                       | :ref:`shortcut_context<class_Control_property_shortcut_context>`                                 |                                                                            |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                                 | :ref:`size<class_Control_property_size>`                                                         | ``Vector2(0, 0)``                                                          |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`SizeFlags <enum_Control_SizeFlags>`\]                       | :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>`                       | ``1``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>`                 | ``1.0``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`SizeFlags <enum_Control_SizeFlags>`\]                       | :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`                           | ``1``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Theme<class_Theme>`                                                     | :ref:`theme<class_Control_property_theme>`                                                       |                                                                            |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                                           | :ref:`theme_type_variation<class_Control_property_theme_type_variation>`                         | ``&""``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`AutoTranslateMode <enum_Node_AutoTranslateMode>`                        | :ref:`tooltip_auto_translate_mode<class_Control_property_tooltip_auto_translate_mode>`           | ``0``                                                                      |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                   | :ref:`tooltip_text<class_Control_property_tooltip_text>`                                         | ``""``                                                                     |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                                           | :ref:`translation_context<class_Control_property_translation_context>`                           | ``&""``                                                                    |
+   +-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                  | :ref:`_accessibility_get_contextual_info<class_Control_private_method__accessibility_get_contextual_info>`\ (\ ) |virtual| |const|                                                                                                                                      |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`_can_drop_data<class_Control_private_method__can_drop_data>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`, data\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|                                                                                           |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`_drop_data<class_Control_private_method__drop_data>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`, data\: :ref:`Variant<class_Variant>`\ ) |virtual|                                                                                                           |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                  | :ref:`_get_accessibility_container_name<class_Control_private_method__get_accessibility_container_name>`\ (\ node\: :ref:`Node<class_Node>`\ ) |virtual| |const|                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                        | :ref:`_get_cursor_shape<class_Control_private_method__get_cursor_shape>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                                                           |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                | :ref:`_get_drag_data<class_Control_private_method__get_drag_data>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual|                                                                                                                                         |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`_get_maximum_size<class_Control_private_method__get_maximum_size>`\ (\ ) |virtual| |const|                                                                                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`_get_minimum_size<class_Control_private_method__get_minimum_size>`\ (\ ) |virtual| |const|                                                                                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                  | :ref:`_get_tooltip<class_Control_private_method__get_tooltip>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                                                                     |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>`        | :ref:`_get_tooltip_auto_translate_mode_at<class_Control_private_method__get_tooltip_auto_translate_mode_at>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                       |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`_gui_input<class_Control_private_method__gui_input>`\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual|                                                                                                                                                 |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`_has_point<class_Control_private_method__has_point>`\ (\ point\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                                                                               |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Object<class_Object>`                                  | :ref:`_make_custom_tooltip<class_Control_private_method__make_custom_tooltip>`\ (\ for_text\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`Vector3i<class_Vector3i>`\] | :ref:`_structured_text_parser<class_Control_private_method__structured_text_parser>`\ (\ args\: :ref:`Array<class_Array>`, text\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                      |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`accept_event<class_Control_method_accept_event>`\ (\ )                                                                                                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`accessibility_drag<class_Control_method_accessibility_drag>`\ (\ )                                                                                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`accessibility_drop<class_Control_method_accessibility_drop>`\ (\ )                                                                                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`add_theme_color_override<class_Control_method_add_theme_color_override>`\ (\ name\: :ref:`StringName<class_StringName>`, color\: :ref:`Color<class_Color>`\ )                                                                                                     |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`add_theme_constant_override<class_Control_method_add_theme_constant_override>`\ (\ name\: :ref:`StringName<class_StringName>`, constant\: :ref:`int<class_int>`\ )                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`add_theme_font_override<class_Control_method_add_theme_font_override>`\ (\ name\: :ref:`StringName<class_StringName>`, font\: :ref:`Font<class_Font>`\ )                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`add_theme_font_size_override<class_Control_method_add_theme_font_size_override>`\ (\ name\: :ref:`StringName<class_StringName>`, font_size\: :ref:`int<class_int>`\ )                                                                                             |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`add_theme_icon_override<class_Control_method_add_theme_icon_override>`\ (\ name\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )                                                                                             |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`add_theme_stylebox_override<class_Control_method_add_theme_stylebox_override>`\ (\ name\: :ref:`StringName<class_StringName>`, stylebox\: :ref:`StyleBox<class_StyleBox>`\ )                                                                                      |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`begin_bulk_theme_override<class_Control_method_begin_bulk_theme_override>`\ (\ )                                                                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`end_bulk_theme_override<class_Control_method_end_bulk_theme_override>`\ (\ )                                                                                                                                                                                      |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Control<class_Control>`                                | :ref:`find_next_valid_focus<class_Control_method_find_next_valid_focus>`\ (\ ) |const|                                                                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Control<class_Control>`                                | :ref:`find_prev_valid_focus<class_Control_method_find_prev_valid_focus>`\ (\ ) |const|                                                                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Control<class_Control>`                                | :ref:`find_valid_focus_neighbor<class_Control_method_find_valid_focus_neighbor>`\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                                                                                                                              |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`force_drag<class_Control_method_force_drag>`\ (\ data\: :ref:`Variant<class_Variant>`, preview\: :ref:`Control<class_Control>`\ )                                                                                                                                 |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                    | :ref:`get_anchor<class_Control_method_get_anchor>`\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                                                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_begin<class_Control_method_get_begin>`\ (\ ) |const|                                                                                                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_bound_minimum_size<class_Control_method_get_bound_minimum_size>`\ (\ ) |const|                                                                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_combined_maximum_size<class_Control_method_get_combined_maximum_size>`\ (\ ) |const|                                                                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_combined_minimum_size<class_Control_method_get_combined_minimum_size>`\ (\ ) |const|                                                                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_combined_pivot_offset<class_Control_method_get_combined_pivot_offset>`\ (\ ) |const|                                                                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`CursorShape<enum_Control_CursorShape>`                 | :ref:`get_cursor_shape<class_Control_method_get_cursor_shape>`\ (\ at_position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const|                                                                                                                               |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_end<class_Control_method_get_end>`\ (\ ) |const|                                                                                                                                                                                                              |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                     | :ref:`get_focus_mode_with_override<class_Control_method_get_focus_mode_with_override>`\ (\ ) |const|                                                                                                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                              | :ref:`get_focus_neighbor<class_Control_method_get_focus_neighbor>`\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                                    | :ref:`get_global_rect<class_Control_method_get_global_rect>`\ (\ ) |const|                                                                                                                                                                                              |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_maximum_size<class_Control_method_get_maximum_size>`\ (\ ) |const|                                                                                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_minimum_size<class_Control_method_get_minimum_size>`\ (\ ) |const|                                                                                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>`                 | :ref:`get_mouse_filter_with_override<class_Control_method_get_mouse_filter_with_override>`\ (\ ) |const|                                                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                    | :ref:`get_offset<class_Control_method_get_offset>`\ (\ offset\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|                                                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_parent_area_size<class_Control_method_get_parent_area_size>`\ (\ ) |const|                                                                                                                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Control<class_Control>`                                | :ref:`get_parent_control<class_Control_method_get_parent_control>`\ (\ ) |const|                                                                                                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                                    | :ref:`get_rect<class_Control_method_get_rect>`\ (\ ) |const|                                                                                                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_screen_position<class_Control_method_get_screen_position>`\ (\ ) |const|                                                                                                                                                                                      |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                                    | :ref:`get_theme_color<class_Control_method_get_theme_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                        | :ref:`get_theme_constant<class_Control_method_get_theme_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                    | :ref:`get_theme_default_base_scale<class_Control_method_get_theme_default_base_scale>`\ (\ ) |const|                                                                                                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Font<class_Font>`                                      | :ref:`get_theme_default_font<class_Control_method_get_theme_default_font>`\ (\ ) |const|                                                                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                        | :ref:`get_theme_default_font_size<class_Control_method_get_theme_default_font_size>`\ (\ ) |const|                                                                                                                                                                      |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Font<class_Font>`                                      | :ref:`get_theme_font<class_Control_method_get_theme_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                        | :ref:`get_theme_font_size<class_Control_method_get_theme_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                            | :ref:`get_theme_icon<class_Control_method_get_theme_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StyleBox<class_StyleBox>`                              | :ref:`get_theme_stylebox<class_Control_method_get_theme_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                  | :ref:`get_tooltip<class_Control_method_get_tooltip>`\ (\ at_position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const|                                                                                                                                         |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`grab_click_focus<class_Control_method_grab_click_focus>`\ (\ )                                                                                                                                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`grab_focus<class_Control_method_grab_focus>`\ (\ hide_focus\: :ref:`bool<class_bool>` = false\ )                                                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_focus<class_Control_method_has_focus>`\ (\ ignore_hidden_focus\: :ref:`bool<class_bool>` = false\ ) |const|                                                                                                                                                   |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_color<class_Control_method_has_theme_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_color_override<class_Control_method_has_theme_color_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_constant<class_Control_method_has_theme_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_constant_override<class_Control_method_has_theme_constant_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font<class_Control_method_has_theme_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font_override<class_Control_method_has_theme_font_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font_size<class_Control_method_has_theme_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font_size_override<class_Control_method_has_theme_font_size_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_icon<class_Control_method_has_theme_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_icon_override<class_Control_method_has_theme_icon_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_stylebox<class_Control_method_has_theme_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_stylebox_override<class_Control_method_has_theme_stylebox_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`is_drag_successful<class_Control_method_is_drag_successful>`\ (\ ) |const|                                                                                                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                      | :ref:`is_layout_rtl<class_Control_method_is_layout_rtl>`\ (\ ) |const|                                                                                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`release_focus<class_Control_method_release_focus>`\ (\ )                                                                                                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`remove_theme_color_override<class_Control_method_remove_theme_color_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`remove_theme_constant_override<class_Control_method_remove_theme_constant_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`remove_theme_font_override<class_Control_method_remove_theme_font_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`remove_theme_font_size_override<class_Control_method_remove_theme_font_size_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`remove_theme_icon_override<class_Control_method_remove_theme_icon_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`remove_theme_stylebox_override<class_Control_method_remove_theme_stylebox_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`reset_size<class_Control_method_reset_size>`\ (\ )                                                                                                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_anchor<class_Control_method_set_anchor>`\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, anchor\: :ref:`float<class_float>`, keep_offset\: :ref:`bool<class_bool>` = false, push_opposite_anchor\: :ref:`bool<class_bool>` = true\ )                          |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_anchor_and_offset<class_Control_method_set_anchor_and_offset>`\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, anchor\: :ref:`float<class_float>`, offset\: :ref:`float<class_float>`, push_opposite_anchor\: :ref:`bool<class_bool>` = false\ )              |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_anchors_and_offsets_preset<class_Control_method_set_anchors_and_offsets_preset>`\ (\ preset\: :ref:`LayoutPreset<enum_Control_LayoutPreset>`, resize_mode\: :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` = 0, margin\: :ref:`int<class_int>` = 0\ ) |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_anchors_preset<class_Control_method_set_anchors_preset>`\ (\ preset\: :ref:`LayoutPreset<enum_Control_LayoutPreset>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                       |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_begin<class_Control_method_set_begin>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ )                                                                                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_drag_forwarding<class_Control_method_set_drag_forwarding>`\ (\ drag_func\: :ref:`Callable<class_Callable>`, can_drop_func\: :ref:`Callable<class_Callable>`, drop_func\: :ref:`Callable<class_Callable>`\ )                                                   |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_drag_preview<class_Control_method_set_drag_preview>`\ (\ control\: :ref:`Control<class_Control>`\ )                                                                                                                                                           |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_end<class_Control_method_set_end>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ )                                                                                                                                                                            |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_focus_neighbor<class_Control_method_set_focus_neighbor>`\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, neighbor\: :ref:`NodePath<class_NodePath>`\ )                                                                                                        |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_global_position<class_Control_method_set_global_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                                    |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_offset<class_Control_method_set_offset>`\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )                                                                                                                                |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_offsets_preset<class_Control_method_set_offsets_preset>`\ (\ preset\: :ref:`LayoutPreset<enum_Control_LayoutPreset>`, resize_mode\: :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` = 0, margin\: :ref:`int<class_int>` = 0\ )                         |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_position<class_Control_method_set_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                                                  |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`set_size<class_Control_method_set_size>`\ (\ size\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                                                              |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`update_maximum_size<class_Control_method_update_maximum_size>`\ (\ )                                                                                                                                                                                              |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`update_minimum_size<class_Control_method_update_minimum_size>`\ (\ )                                                                                                                                                                                              |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                       | :ref:`warp_mouse<class_Control_method_warp_mouse>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ )                                                                                                                                                                      |
-   +--------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`_accessibility_get_contextual_info<class_Control_private_method__accessibility_get_contextual_info>`\ (\ ) |virtual| |const|                                                                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`_can_drop_data<class_Control_private_method__can_drop_data>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`, data\: :ref:`Variant<class_Variant>`\ ) |virtual| |const|                                                                                             |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`_drop_data<class_Control_private_method__drop_data>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`, data\: :ref:`Variant<class_Variant>`\ ) |virtual|                                                                                                             |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`_get_accessibility_container_name<class_Control_private_method__get_accessibility_container_name>`\ (\ node\: :ref:`Node<class_Node>`\ ) |virtual| |const|                                                                                                          |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`_get_cursor_shape<class_Control_private_method__get_cursor_shape>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                                                             |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                | :ref:`_get_drag_data<class_Control_private_method__get_drag_data>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual|                                                                                                                                           |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`_get_maximum_size<class_Control_private_method__get_maximum_size>`\ (\ ) |virtual| |const|                                                                                                                                                                          |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`_get_minimum_size<class_Control_private_method__get_minimum_size>`\ (\ ) |virtual| |const|                                                                                                                                                                          |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`_get_tooltip<class_Control_private_method__get_tooltip>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                                                                       |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AutoTranslateMode <enum_Node_AutoTranslateMode>`       | :ref:`_get_tooltip_auto_translate_mode_at<class_Control_private_method__get_tooltip_auto_translate_mode_at>`\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                         |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`_gui_input<class_Control_private_method__gui_input>`\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual|                                                                                                                                                   |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`_has_point<class_Control_private_method__has_point>`\ (\ point\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const|                                                                                                                                                 |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Object<class_Object>`                                  | :ref:`_make_custom_tooltip<class_Control_private_method__make_custom_tooltip>`\ (\ for_text\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`Vector3i<class_Vector3i>`\] | :ref:`_structured_text_parser<class_Control_private_method__structured_text_parser>`\ (\ args\: :ref:`Array<class_Array>`, text\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`accept_event<class_Control_method_accept_event>`\ (\ )                                                                                                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`accessibility_drag<class_Control_method_accessibility_drag>`\ (\ )                                                                                                                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`accessibility_drop<class_Control_method_accessibility_drop>`\ (\ )                                                                                                                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`add_theme_color_override<class_Control_method_add_theme_color_override>`\ (\ name\: :ref:`StringName<class_StringName>`, color\: :ref:`Color<class_Color>`\ )                                                                                                       |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`add_theme_constant_override<class_Control_method_add_theme_constant_override>`\ (\ name\: :ref:`StringName<class_StringName>`, constant\: :ref:`int<class_int>`\ )                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`add_theme_font_override<class_Control_method_add_theme_font_override>`\ (\ name\: :ref:`StringName<class_StringName>`, font\: :ref:`Font<class_Font>`\ )                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`add_theme_font_size_override<class_Control_method_add_theme_font_size_override>`\ (\ name\: :ref:`StringName<class_StringName>`, font_size\: :ref:`int<class_int>`\ )                                                                                               |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`add_theme_icon_override<class_Control_method_add_theme_icon_override>`\ (\ name\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture2D<class_Texture2D>`\ )                                                                                               |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`add_theme_stylebox_override<class_Control_method_add_theme_stylebox_override>`\ (\ name\: :ref:`StringName<class_StringName>`, stylebox\: :ref:`StyleBox<class_StyleBox>`\ )                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`begin_bulk_theme_override<class_Control_method_begin_bulk_theme_override>`\ (\ )                                                                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`end_bulk_theme_override<class_Control_method_end_bulk_theme_override>`\ (\ )                                                                                                                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Control<class_Control>`                                | :ref:`find_next_valid_focus<class_Control_method_find_next_valid_focus>`\ (\ ) |const|                                                                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Control<class_Control>`                                | :ref:`find_prev_valid_focus<class_Control_method_find_prev_valid_focus>`\ (\ ) |const|                                                                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Control<class_Control>`                                | :ref:`find_valid_focus_neighbor<class_Control_method_find_valid_focus_neighbor>`\ (\ side\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                                                                                                                               |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`force_drag<class_Control_method_force_drag>`\ (\ data\: :ref:`Variant<class_Variant>`, preview\: :ref:`Control<class_Control>`\ )                                                                                                                                   |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_anchor<class_Control_method_get_anchor>`\ (\ side\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                                                                                                                                                             |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_begin<class_Control_method_get_begin>`\ (\ ) |const|                                                                                                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_bound_minimum_size<class_Control_method_get_bound_minimum_size>`\ (\ ) |const|                                                                                                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_combined_maximum_size<class_Control_method_get_combined_maximum_size>`\ (\ ) |const|                                                                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_combined_minimum_size<class_Control_method_get_combined_minimum_size>`\ (\ ) |const|                                                                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_combined_pivot_offset<class_Control_method_get_combined_pivot_offset>`\ (\ ) |const|                                                                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`CursorShape <enum_Control_CursorShape>`                | :ref:`get_cursor_shape<class_Control_method_get_cursor_shape>`\ (\ at_position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const|                                                                                                                                 |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_end<class_Control_method_get_end>`\ (\ ) |const|                                                                                                                                                                                                                |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`                    | :ref:`get_focus_mode_with_override<class_Control_method_get_focus_mode_with_override>`\ (\ ) |const|                                                                                                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                              | :ref:`get_focus_neighbor<class_Control_method_get_focus_neighbor>`\ (\ side\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                                                                                                                                             |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                    | :ref:`get_global_rect<class_Control_method_get_global_rect>`\ (\ ) |const|                                                                                                                                                                                                |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_maximum_size<class_Control_method_get_maximum_size>`\ (\ ) |const|                                                                                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_minimum_size<class_Control_method_get_minimum_size>`\ (\ ) |const|                                                                                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>`                | :ref:`get_mouse_filter_with_override<class_Control_method_get_mouse_filter_with_override>`\ (\ ) |const|                                                                                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_offset<class_Control_method_get_offset>`\ (\ offset\: :ref:`Side <enum_@GlobalScope_Side>`\ ) |const|                                                                                                                                                           |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_parent_area_size<class_Control_method_get_parent_area_size>`\ (\ ) |const|                                                                                                                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Control<class_Control>`                                | :ref:`get_parent_control<class_Control_method_get_parent_control>`\ (\ ) |const|                                                                                                                                                                                          |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                    | :ref:`get_rect<class_Control_method_get_rect>`\ (\ ) |const|                                                                                                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                | :ref:`get_screen_position<class_Control_method_get_screen_position>`\ (\ ) |const|                                                                                                                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                                    | :ref:`get_theme_color<class_Control_method_get_theme_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_theme_constant<class_Control_method_get_theme_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                    | :ref:`get_theme_default_base_scale<class_Control_method_get_theme_default_base_scale>`\ (\ ) |const|                                                                                                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Font<class_Font>`                                      | :ref:`get_theme_default_font<class_Control_method_get_theme_default_font>`\ (\ ) |const|                                                                                                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_theme_default_font_size<class_Control_method_get_theme_default_font_size>`\ (\ ) |const|                                                                                                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Font<class_Font>`                                      | :ref:`get_theme_font<class_Control_method_get_theme_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                        | :ref:`get_theme_font_size<class_Control_method_get_theme_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                            | :ref:`get_theme_icon<class_Control_method_get_theme_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StyleBox<class_StyleBox>`                              | :ref:`get_theme_stylebox<class_Control_method_get_theme_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`get_tooltip<class_Control_method_get_tooltip>`\ (\ at_position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const|                                                                                                                                           |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`grab_click_focus<class_Control_method_grab_click_focus>`\ (\ )                                                                                                                                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`grab_focus<class_Control_method_grab_focus>`\ (\ hide_focus\: :ref:`bool<class_bool>` = false\ )                                                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_focus<class_Control_method_has_focus>`\ (\ ignore_hidden_focus\: :ref:`bool<class_bool>` = false\ ) |const|                                                                                                                                                     |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_color<class_Control_method_has_theme_color>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_color_override<class_Control_method_has_theme_color_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_constant<class_Control_method_has_theme_constant>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_constant_override<class_Control_method_has_theme_constant_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font<class_Control_method_has_theme_font>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font_override<class_Control_method_has_theme_font_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font_size<class_Control_method_has_theme_font_size>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_font_size_override<class_Control_method_has_theme_font_size_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                          |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_icon<class_Control_method_has_theme_icon>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_icon_override<class_Control_method_has_theme_icon_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_stylebox<class_Control_method_has_theme_stylebox>`\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const|                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_theme_stylebox_override<class_Control_method_has_theme_stylebox_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`is_drag_successful<class_Control_method_is_drag_successful>`\ (\ ) |const|                                                                                                                                                                                          |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`is_layout_rtl<class_Control_method_is_layout_rtl>`\ (\ ) |const|                                                                                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`release_focus<class_Control_method_release_focus>`\ (\ )                                                                                                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`remove_theme_color_override<class_Control_method_remove_theme_color_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`remove_theme_constant_override<class_Control_method_remove_theme_constant_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`remove_theme_font_override<class_Control_method_remove_theme_font_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`remove_theme_font_size_override<class_Control_method_remove_theme_font_size_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`remove_theme_icon_override<class_Control_method_remove_theme_icon_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`remove_theme_stylebox_override<class_Control_method_remove_theme_stylebox_override>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`reset_size<class_Control_method_reset_size>`\ (\ )                                                                                                                                                                                                                  |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_anchor<class_Control_method_set_anchor>`\ (\ side\: :ref:`Side <enum_@GlobalScope_Side>`, anchor\: :ref:`float<class_float>`, keep_offset\: :ref:`bool<class_bool>` = false, push_opposite_anchor\: :ref:`bool<class_bool>` = true\ )                           |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_anchor_and_offset<class_Control_method_set_anchor_and_offset>`\ (\ side\: :ref:`Side <enum_@GlobalScope_Side>`, anchor\: :ref:`float<class_float>`, offset\: :ref:`float<class_float>`, push_opposite_anchor\: :ref:`bool<class_bool>` = false\ )               |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_anchors_and_offsets_preset<class_Control_method_set_anchors_and_offsets_preset>`\ (\ preset\: :ref:`LayoutPreset <enum_Control_LayoutPreset>`, resize_mode\: :ref:`LayoutPresetMode <enum_Control_LayoutPresetMode>` = 0, margin\: :ref:`int<class_int>` = 0\ ) |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_anchors_preset<class_Control_method_set_anchors_preset>`\ (\ preset\: :ref:`LayoutPreset <enum_Control_LayoutPreset>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_begin<class_Control_method_set_begin>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ )                                                                                                                                                                          |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_drag_forwarding<class_Control_method_set_drag_forwarding>`\ (\ drag_func\: :ref:`Callable<class_Callable>`, can_drop_func\: :ref:`Callable<class_Callable>`, drop_func\: :ref:`Callable<class_Callable>`\ )                                                     |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_drag_preview<class_Control_method_set_drag_preview>`\ (\ control\: :ref:`Control<class_Control>`\ )                                                                                                                                                             |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_end<class_Control_method_set_end>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ )                                                                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_focus_neighbor<class_Control_method_set_focus_neighbor>`\ (\ side\: :ref:`Side <enum_@GlobalScope_Side>`, neighbor\: :ref:`NodePath<class_NodePath>`\ )                                                                                                         |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_global_position<class_Control_method_set_global_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                                      |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_offset<class_Control_method_set_offset>`\ (\ side\: :ref:`Side <enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )                                                                                                                                 |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_offsets_preset<class_Control_method_set_offsets_preset>`\ (\ preset\: :ref:`LayoutPreset <enum_Control_LayoutPreset>`, resize_mode\: :ref:`LayoutPresetMode <enum_Control_LayoutPresetMode>` = 0, margin\: :ref:`int<class_int>` = 0\ )                         |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_position<class_Control_method_set_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_size<class_Control_method_set_size>`\ (\ size\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ )                                                                                                                                |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`update_maximum_size<class_Control_method_update_maximum_size>`\ (\ )                                                                                                                                                                                                |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`update_minimum_size<class_Control_method_update_minimum_size>`\ (\ )                                                                                                                                                                                                |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`warp_mouse<class_Control_method_warp_mouse>`\ (\ position\: :ref:`Vector2<class_Vector2>`\ )                                                                                                                                                                        |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -408,8 +408,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Control_signal_focus_entered:
 
@@ -417,7 +417,7 @@ Signals
 
 **focus_entered**\ (\ ) :ref:`🔗<class_Control_signal_focus_entered>`
 
-Emitted when the node gains focus.
+Được phát ra khi node nhận focus.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ Emitted when the node gains focus.
 
 **focus_exited**\ (\ ) :ref:`🔗<class_Control_signal_focus_exited>`
 
-Emitted when the node loses focus.
+Được phát ra khi node mất focus.
 
 .. rst-class:: classref-item-separator
 
@@ -441,7 +441,7 @@ Emitted when the node loses focus.
 
 **gui_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) :ref:`🔗<class_Control_signal_gui_input>`
 
-Emitted when the node receives an :ref:`InputEvent<class_InputEvent>`.
+Được phát ra khi node nhận :ref:`InputEvent<class_InputEvent>`.
 
 .. rst-class:: classref-item-separator
 
@@ -453,7 +453,7 @@ Emitted when the node receives an :ref:`InputEvent<class_InputEvent>`.
 
 **maximum_size_changed**\ (\ ) :ref:`🔗<class_Control_signal_maximum_size_changed>`
 
-Emitted when the node's maximum size changes.
+Được phát ra khi kích thước tối đa của node thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -465,7 +465,7 @@ Emitted when the node's maximum size changes.
 
 **minimum_size_changed**\ (\ ) :ref:`🔗<class_Control_signal_minimum_size_changed>`
 
-Emitted when the node's minimum size changes.
+Được phát ra khi kích thước tối thiểu của node thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -477,9 +477,9 @@ Emitted when the node's minimum size changes.
 
 **mouse_entered**\ (\ ) :ref:`🔗<class_Control_signal_mouse_entered>`
 
-Emitted when the mouse cursor enters the control's (or any child control's) visible area, that is not occluded behind other Controls or Windows, provided its :ref:`mouse_filter<class_Control_property_mouse_filter>` lets the event reach it and regardless if it's currently focused or not.
+Được phát ra khi con trỏ chuột đi vào vùng hiển thị của control (hoặc bất kỳ control con nào), không bị che khuất phía sau các Control hoặc Windows khác, với điều kiện :ref:`mouse_filter<class_Control_property_mouse_filter>` cho phép sự kiện đến được nó, bất kể hiện tại nó có đang được focus hay không.
 
-\ **Note:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` doesn't affect, which Control receives the signal.
+\ **Lưu ý:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` không ảnh hưởng đến việc Control nào nhận signal.
 
 .. rst-class:: classref-item-separator
 
@@ -491,11 +491,11 @@ Emitted when the mouse cursor enters the control's (or any child control's) visi
 
 **mouse_exited**\ (\ ) :ref:`🔗<class_Control_signal_mouse_exited>`
 
-Emitted when the mouse cursor leaves the control's (and all child control's) visible area, that is not occluded behind other Controls or Windows, provided its :ref:`mouse_filter<class_Control_property_mouse_filter>` lets the event reach it and regardless if it's currently focused or not.
+Được phát ra khi con trỏ chuột rời khỏi vùng hiển thị của control (và tất cả control con), không bị che khuất phía sau các Control hoặc Windows khác, với điều kiện :ref:`mouse_filter<class_Control_property_mouse_filter>` cho phép sự kiện đến được nó, bất kể hiện tại nó có đang được focus hay không.
 
-\ **Note:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` doesn't affect, which Control receives the signal.
+\ **Lưu ý:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` không ảnh hưởng đến việc Control nào nhận signal.
 
-\ **Note:** If you want to check whether the mouse truly left the area, ignoring any top nodes, you can use code like this:
+\ **Lưu ý:** Nếu bạn muốn kiểm tra xem chuột có thực sự rời khỏi khu vực đó hay không, bỏ qua mọi node ở trên, bạn có thể sử dụng đoạn code như sau:
 
 ::
 
@@ -513,7 +513,7 @@ Emitted when the mouse cursor leaves the control's (and all child control's) vis
 
 **resized**\ (\ ) :ref:`🔗<class_Control_signal_resized>`
 
-Emitted when the control changes size.
+Được phát ra khi kích thước của control thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -525,7 +525,7 @@ Emitted when the control changes size.
 
 **size_flags_changed**\ (\ ) :ref:`🔗<class_Control_signal_size_flags_changed>`
 
-Emitted when one of the size flags changes. See :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` and :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
+Được phát ra khi một trong các cờ kích thước thay đổi. Xem :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` và :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
 
 .. rst-class:: classref-item-separator
 
@@ -537,7 +537,7 @@ Emitted when one of the size flags changes. See :ref:`size_flags_horizontal<clas
 
 **theme_changed**\ (\ ) :ref:`🔗<class_Control_signal_theme_changed>`
 
-Emitted when the :ref:`NOTIFICATION_THEME_CHANGED<class_Control_constant_NOTIFICATION_THEME_CHANGED>` notification is sent.
+Được phát ra khi thông báo :ref:`NOTIFICATION_THEME_CHANGED<class_Control_constant_NOTIFICATION_THEME_CHANGED>` được gửi.
 
 .. rst-class:: classref-section-separator
 
@@ -545,14 +545,14 @@ Emitted when the :ref:`NOTIFICATION_THEME_CHANGED<class_Control_constant_NOTIFIC
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Control_FocusMode:
 
 .. rst-class:: classref-enumeration
 
-enum **FocusMode**: :ref:`🔗<enum_Control_FocusMode>`
+enum **FocusMode**: :ref:`🔗 <enum_Control_FocusMode>`
 
 .. _class_Control_constant_FOCUS_NONE:
 
@@ -560,7 +560,7 @@ enum **FocusMode**: :ref:`🔗<enum_Control_FocusMode>`
 
 :ref:`FocusMode<enum_Control_FocusMode>` **FOCUS_NONE** = ``0``
 
-The node cannot grab focus. Use with :ref:`focus_mode<class_Control_property_focus_mode>`.
+Node không thể nhận focus. Dùng với :ref:`focus_mode<class_Control_property_focus_mode>`.
 
 .. _class_Control_constant_FOCUS_CLICK:
 
@@ -568,7 +568,7 @@ The node cannot grab focus. Use with :ref:`focus_mode<class_Control_property_foc
 
 :ref:`FocusMode<enum_Control_FocusMode>` **FOCUS_CLICK** = ``1``
 
-The node can only grab focus on mouse clicks. Use with :ref:`focus_mode<class_Control_property_focus_mode>`.
+Node chỉ có thể nhận focus khi nhấp chuột. Dùng với :ref:`focus_mode<class_Control_property_focus_mode>`.
 
 .. _class_Control_constant_FOCUS_ALL:
 
@@ -576,7 +576,7 @@ The node can only grab focus on mouse clicks. Use with :ref:`focus_mode<class_Co
 
 :ref:`FocusMode<enum_Control_FocusMode>` **FOCUS_ALL** = ``2``
 
-The node can grab focus on mouse click, using the arrows and the Tab keys on the keyboard, or using the D-pad buttons on a gamepad. Use with :ref:`focus_mode<class_Control_property_focus_mode>`.
+Node có thể nhận focus khi nhấp chuột, sử dụng các phím mũi tên và phím Tab trên bàn phím hoặc sử dụng các nút D-pad trên gamepad. Dùng với :ref:`focus_mode<class_Control_property_focus_mode>`.
 
 .. _class_Control_constant_FOCUS_ACCESSIBILITY:
 
@@ -584,7 +584,7 @@ The node can grab focus on mouse click, using the arrows and the Tab keys on the
 
 :ref:`FocusMode<enum_Control_FocusMode>` **FOCUS_ACCESSIBILITY** = ``3``
 
-The node can grab focus only when screen reader is active. Use with :ref:`focus_mode<class_Control_property_focus_mode>`.
+Nút chỉ có thể nhận focus khi trình đọc màn hình đang hoạt động. Sử dụng với :ref:`focus_mode<class_Control_property_focus_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -594,7 +594,7 @@ The node can grab focus only when screen reader is active. Use with :ref:`focus_
 
 .. rst-class:: classref-enumeration
 
-enum **FocusBehaviorRecursive**: :ref:`🔗<enum_Control_FocusBehaviorRecursive>`
+enum **FocusBehaviorRecursive**: :ref:`🔗 <enum_Control_FocusBehaviorRecursive>`
 
 .. _class_Control_constant_FOCUS_BEHAVIOR_INHERITED:
 
@@ -602,7 +602,7 @@ enum **FocusBehaviorRecursive**: :ref:`🔗<enum_Control_FocusBehaviorRecursive>
 
 :ref:`FocusBehaviorRecursive<enum_Control_FocusBehaviorRecursive>` **FOCUS_BEHAVIOR_INHERITED** = ``0``
 
-Inherits the :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` from the parent control. If there is no parent control, this is the same as :ref:`FOCUS_BEHAVIOR_ENABLED<class_Control_constant_FOCUS_BEHAVIOR_ENABLED>`.
+Kế thừa :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` từ control cha. Nếu không có control cha, giá trị này giống :ref:`FOCUS_BEHAVIOR_ENABLED<class_Control_constant_FOCUS_BEHAVIOR_ENABLED>`.
 
 .. _class_Control_constant_FOCUS_BEHAVIOR_DISABLED:
 
@@ -610,7 +610,7 @@ Inherits the :ref:`focus_behavior_recursive<class_Control_property_focus_behavio
 
 :ref:`FocusBehaviorRecursive<enum_Control_FocusBehaviorRecursive>` **FOCUS_BEHAVIOR_DISABLED** = ``1``
 
-Prevents the control from getting focused. :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>` will return :ref:`FOCUS_NONE<class_Control_constant_FOCUS_NONE>`.
+Ngăn control nhận focus. :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>` sẽ trả về :ref:`FOCUS_NONE<class_Control_constant_FOCUS_NONE>`.
 
 .. _class_Control_constant_FOCUS_BEHAVIOR_ENABLED:
 
@@ -618,7 +618,7 @@ Prevents the control from getting focused. :ref:`get_focus_mode_with_override()<
 
 :ref:`FocusBehaviorRecursive<enum_Control_FocusBehaviorRecursive>` **FOCUS_BEHAVIOR_ENABLED** = ``2``
 
-Allows the control to be focused, depending on the :ref:`focus_mode<class_Control_property_focus_mode>`. This can be used to ignore the parent's :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>`. :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>` will return the :ref:`focus_mode<class_Control_property_focus_mode>`.
+Cho phép control nhận focus, tùy thuộc vào :ref:`focus_mode<class_Control_property_focus_mode>`. Có thể dùng tùy chọn này để bỏ qua :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` của control cha. :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>` sẽ trả về :ref:`focus_mode<class_Control_property_focus_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -628,7 +628,7 @@ Allows the control to be focused, depending on the :ref:`focus_mode<class_Contro
 
 .. rst-class:: classref-enumeration
 
-enum **MouseBehaviorRecursive**: :ref:`🔗<enum_Control_MouseBehaviorRecursive>`
+enum **MouseBehaviorRecursive**: :ref:`🔗 <enum_Control_MouseBehaviorRecursive>`
 
 .. _class_Control_constant_MOUSE_BEHAVIOR_INHERITED:
 
@@ -636,7 +636,7 @@ enum **MouseBehaviorRecursive**: :ref:`🔗<enum_Control_MouseBehaviorRecursive>
 
 :ref:`MouseBehaviorRecursive<enum_Control_MouseBehaviorRecursive>` **MOUSE_BEHAVIOR_INHERITED** = ``0``
 
-Inherits the :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` from the parent control. If there is no parent control, this is the same as :ref:`MOUSE_BEHAVIOR_ENABLED<class_Control_constant_MOUSE_BEHAVIOR_ENABLED>`.
+Kế thừa :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` từ control cha. Nếu không có control cha, giá trị này giống :ref:`MOUSE_BEHAVIOR_ENABLED<class_Control_constant_MOUSE_BEHAVIOR_ENABLED>`.
 
 .. _class_Control_constant_MOUSE_BEHAVIOR_DISABLED:
 
@@ -644,7 +644,7 @@ Inherits the :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavio
 
 :ref:`MouseBehaviorRecursive<enum_Control_MouseBehaviorRecursive>` **MOUSE_BEHAVIOR_DISABLED** = ``1``
 
-Prevents the control from receiving mouse input. :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>` will return :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`.
+Ngăn control nhận input chuột. :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>` sẽ trả về :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`.
 
 .. _class_Control_constant_MOUSE_BEHAVIOR_ENABLED:
 
@@ -652,7 +652,7 @@ Prevents the control from receiving mouse input. :ref:`get_mouse_filter_with_ove
 
 :ref:`MouseBehaviorRecursive<enum_Control_MouseBehaviorRecursive>` **MOUSE_BEHAVIOR_ENABLED** = ``2``
 
-Allows the control to receive mouse input, depending on the :ref:`mouse_filter<class_Control_property_mouse_filter>`. This can be used to ignore the parent's :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>`. :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>` will return the :ref:`mouse_filter<class_Control_property_mouse_filter>`.
+Cho phép control nhận input chuột, tùy thuộc vào :ref:`mouse_filter<class_Control_property_mouse_filter>`. Có thể dùng tùy chọn này để bỏ qua :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` của control cha. :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>` sẽ trả về :ref:`mouse_filter<class_Control_property_mouse_filter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -662,7 +662,7 @@ Allows the control to receive mouse input, depending on the :ref:`mouse_filter<c
 
 .. rst-class:: classref-enumeration
 
-enum **CursorShape**: :ref:`🔗<enum_Control_CursorShape>`
+enum **CursorShape**: :ref:`🔗 <enum_Control_CursorShape>`
 
 .. _class_Control_constant_CURSOR_ARROW:
 
@@ -670,7 +670,7 @@ enum **CursorShape**: :ref:`🔗<enum_Control_CursorShape>`
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_ARROW** = ``0``
 
-Show the system's arrow mouse cursor when the user hovers the node. Use with :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`.
+Hiển thị con trỏ chuột mũi tên của hệ thống khi người dùng di chuột qua node. Dùng với :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`.
 
 .. _class_Control_constant_CURSOR_IBEAM:
 
@@ -678,7 +678,7 @@ Show the system's arrow mouse cursor when the user hovers the node. Use with :re
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_IBEAM** = ``1``
 
-Show the system's I-beam mouse cursor when the user hovers the node. The I-beam pointer has a shape similar to "I". It tells the user they can highlight or insert text.
+Hiển thị con trỏ chuột dạng chữ I của hệ thống khi người dùng di chuột qua node. Con trỏ dạng chữ I có hình dạng tương tự "I". Con trỏ này cho người dùng biết họ có thể chọn hoặc chèn văn bản.
 
 .. _class_Control_constant_CURSOR_POINTING_HAND:
 
@@ -686,7 +686,7 @@ Show the system's I-beam mouse cursor when the user hovers the node. The I-beam 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_POINTING_HAND** = ``2``
 
-Show the system's pointing hand mouse cursor when the user hovers the node.
+Hiển thị con trỏ chuột hình bàn tay trỏ của hệ thống khi người dùng di chuột qua node.
 
 .. _class_Control_constant_CURSOR_CROSS:
 
@@ -694,7 +694,7 @@ Show the system's pointing hand mouse cursor when the user hovers the node.
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_CROSS** = ``3``
 
-Show the system's cross mouse cursor when the user hovers the node.
+Hiển thị con trỏ chuột hình chữ thập của hệ thống khi người dùng di chuột qua node.
 
 .. _class_Control_constant_CURSOR_WAIT:
 
@@ -702,7 +702,7 @@ Show the system's cross mouse cursor when the user hovers the node.
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_WAIT** = ``4``
 
-Show the system's wait mouse cursor when the user hovers the node. Often an hourglass.
+Hiển thị con trỏ chuột đang chờ của hệ thống khi người dùng di chuột qua node. Thường có dạng đồng hồ cát.
 
 .. _class_Control_constant_CURSOR_BUSY:
 
@@ -710,7 +710,7 @@ Show the system's wait mouse cursor when the user hovers the node. Often an hour
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_BUSY** = ``5``
 
-Show the system's busy mouse cursor when the user hovers the node. Often an arrow with a small hourglass.
+Hiển thị con trỏ chuột bận của hệ thống khi người dùng di chuột qua node. Thường có dạng mũi tên kèm một đồng hồ cát nhỏ.
 
 .. _class_Control_constant_CURSOR_DRAG:
 
@@ -718,7 +718,7 @@ Show the system's busy mouse cursor when the user hovers the node. Often an arro
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_DRAG** = ``6``
 
-Show the system's drag mouse cursor, often a closed fist or a cross symbol, when the user hovers the node. It tells the user they're currently dragging an item, like a node in the Scene dock.
+Hiển thị con trỏ chuột kéo của hệ thống, thường có dạng nắm tay khép hoặc ký hiệu dấu thập, khi người dùng di chuột qua node. Con trỏ này cho người dùng biết họ đang kéo một mục, chẳng hạn như một node trong dock Scene.
 
 .. _class_Control_constant_CURSOR_CAN_DROP:
 
@@ -726,7 +726,7 @@ Show the system's drag mouse cursor, often a closed fist or a cross symbol, when
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_CAN_DROP** = ``7``
 
-Show the system's drop mouse cursor when the user hovers the node. It can be an open hand. It tells the user they can drop an item they're currently grabbing, like a node in the Scene dock.
+Hiển thị con trỏ chuột thả của hệ thống khi người dùng di chuột qua node. Con trỏ này có thể có dạng bàn tay mở. Nó cho người dùng biết họ có thể thả mục đang giữ, chẳng hạn như một node trong dock Scene.
 
 .. _class_Control_constant_CURSOR_FORBIDDEN:
 
@@ -734,7 +734,7 @@ Show the system's drop mouse cursor when the user hovers the node. It can be an 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_FORBIDDEN** = ``8``
 
-Show the system's forbidden mouse cursor when the user hovers the node. Often a crossed circle.
+Hiển thị con trỏ chuột bị cấm của hệ thống khi người dùng di chuột qua node. Thường có dạng vòng tròn gạch chéo.
 
 .. _class_Control_constant_CURSOR_VSIZE:
 
@@ -742,7 +742,7 @@ Show the system's forbidden mouse cursor when the user hovers the node. Often a 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_VSIZE** = ``9``
 
-Show the system's vertical resize mouse cursor when the user hovers the node. A double-headed vertical arrow. It tells the user they can resize the window or the panel vertically.
+Hiển thị con trỏ chuột đổi kích thước theo chiều dọc của hệ thống khi người dùng di chuột qua node. Đây là mũi tên dọc hai đầu. Con trỏ này cho người dùng biết họ có thể đổi kích thước cửa sổ hoặc panel theo chiều dọc.
 
 .. _class_Control_constant_CURSOR_HSIZE:
 
@@ -750,7 +750,7 @@ Show the system's vertical resize mouse cursor when the user hovers the node. A 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_HSIZE** = ``10``
 
-Show the system's horizontal resize mouse cursor when the user hovers the node. A double-headed horizontal arrow. It tells the user they can resize the window or the panel horizontally.
+Hiển thị con trỏ chuột đổi kích thước theo chiều ngang của hệ thống khi người dùng di chuột qua node. Đây là mũi tên ngang hai đầu. Con trỏ này cho người dùng biết họ có thể đổi kích thước cửa sổ hoặc panel theo chiều ngang.
 
 .. _class_Control_constant_CURSOR_BDIAGSIZE:
 
@@ -758,7 +758,7 @@ Show the system's horizontal resize mouse cursor when the user hovers the node. 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_BDIAGSIZE** = ``11``
 
-Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the bottom left to the top right. It tells the user they can resize the window or the panel both horizontally and vertically.
+Hiển thị con trỏ chuột thay đổi kích thước cửa sổ của hệ thống khi người dùng di chuột qua node. Con trỏ là một mũi tên hai đầu đi từ dưới cùng bên trái lên trên cùng bên phải. Con trỏ cho người dùng biết họ có thể thay đổi kích thước cửa sổ hoặc panel theo cả chiều ngang và chiều dọc.
 
 .. _class_Control_constant_CURSOR_FDIAGSIZE:
 
@@ -766,7 +766,7 @@ Show the system's window resize mouse cursor when the user hovers the node. The 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_FDIAGSIZE** = ``12``
 
-Show the system's window resize mouse cursor when the user hovers the node. The cursor is a double-headed arrow that goes from the top left to the bottom right, the opposite of :ref:`CURSOR_BDIAGSIZE<class_Control_constant_CURSOR_BDIAGSIZE>`. It tells the user they can resize the window or the panel both horizontally and vertically.
+Hiển thị con trỏ chuột thay đổi kích thước cửa sổ của hệ thống khi người dùng di chuột qua node. Con trỏ là một mũi tên hai đầu đi từ trên cùng bên trái xuống dưới cùng bên phải, ngược với :ref:`CURSOR_BDIAGSIZE<class_Control_constant_CURSOR_BDIAGSIZE>`. Con trỏ cho người dùng biết họ có thể thay đổi kích thước cửa sổ hoặc panel theo cả chiều ngang và chiều dọc.
 
 .. _class_Control_constant_CURSOR_MOVE:
 
@@ -774,7 +774,7 @@ Show the system's window resize mouse cursor when the user hovers the node. The 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_MOVE** = ``13``
 
-Show the system's move mouse cursor when the user hovers the node. It shows 2 double-headed arrows at a 90 degree angle. It tells the user they can move a UI element freely.
+Hiển thị con trỏ chuột di chuyển của hệ thống khi người dùng di chuột qua node. Con trỏ hiển thị 2 mũi tên hai đầu tạo thành góc 90 độ. Con trỏ cho người dùng biết họ có thể tự do di chuyển một phần tử UI.
 
 .. _class_Control_constant_CURSOR_VSPLIT:
 
@@ -782,7 +782,7 @@ Show the system's move mouse cursor when the user hovers the node. It shows 2 do
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_VSPLIT** = ``14``
 
-Show the system's vertical split mouse cursor when the user hovers the node. On Windows, it's the same as :ref:`CURSOR_VSIZE<class_Control_constant_CURSOR_VSIZE>`.
+Hiển thị con trỏ chuột chia dọc của hệ thống khi người dùng di chuột qua node. Trên Windows, con trỏ này giống với :ref:`CURSOR_VSIZE<class_Control_constant_CURSOR_VSIZE>`.
 
 .. _class_Control_constant_CURSOR_HSPLIT:
 
@@ -790,7 +790,7 @@ Show the system's vertical split mouse cursor when the user hovers the node. On 
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_HSPLIT** = ``15``
 
-Show the system's horizontal split mouse cursor when the user hovers the node. On Windows, it's the same as :ref:`CURSOR_HSIZE<class_Control_constant_CURSOR_HSIZE>`.
+Hiển thị con trỏ chuột chia ngang của hệ thống khi người dùng di chuột qua node. Trên Windows, con trỏ này giống với :ref:`CURSOR_HSIZE<class_Control_constant_CURSOR_HSIZE>`.
 
 .. _class_Control_constant_CURSOR_HELP:
 
@@ -798,7 +798,7 @@ Show the system's horizontal split mouse cursor when the user hovers the node. O
 
 :ref:`CursorShape<enum_Control_CursorShape>` **CURSOR_HELP** = ``16``
 
-Show the system's help mouse cursor when the user hovers the node, a question mark.
+Hiển thị con trỏ chuột trợ giúp của hệ thống khi người dùng di chuột qua node, có dạng dấu chấm hỏi.
 
 .. rst-class:: classref-item-separator
 
@@ -808,7 +808,7 @@ Show the system's help mouse cursor when the user hovers the node, a question ma
 
 .. rst-class:: classref-enumeration
 
-enum **LayoutPreset**: :ref:`🔗<enum_Control_LayoutPreset>`
+enum **LayoutPreset**: :ref:`🔗 <enum_Control_LayoutPreset>`
 
 .. _class_Control_constant_PRESET_TOP_LEFT:
 
@@ -816,7 +816,7 @@ enum **LayoutPreset**: :ref:`🔗<enum_Control_LayoutPreset>`
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_TOP_LEFT** = ``0``
 
-Snap all 4 anchors to the top-left of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Căn cả 4 anchor vào góc trên bên trái của bounds của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_TOP_RIGHT:
 
@@ -824,7 +824,7 @@ Snap all 4 anchors to the top-left of the parent control's bounds. Use with :ref
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_TOP_RIGHT** = ``1``
 
-Snap all 4 anchors to the top-right of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Căn cả 4 anchor vào góc trên bên phải của bounds của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_BOTTOM_LEFT:
 
@@ -832,7 +832,7 @@ Snap all 4 anchors to the top-right of the parent control's bounds. Use with :re
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_BOTTOM_LEFT** = ``2``
 
-Snap all 4 anchors to the bottom-left of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Căn cả 4 anchor vào góc dưới bên trái của bounds của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_BOTTOM_RIGHT:
 
@@ -840,7 +840,7 @@ Snap all 4 anchors to the bottom-left of the parent control's bounds. Use with :
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_BOTTOM_RIGHT** = ``3``
 
-Snap all 4 anchors to the bottom-right of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Căn cả 4 anchor vào góc dưới bên phải của bounds của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_CENTER_LEFT:
 
@@ -848,7 +848,7 @@ Snap all 4 anchors to the bottom-right of the parent control's bounds. Use with 
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_CENTER_LEFT** = ``4``
 
-Snap all 4 anchors to the center of the left edge of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Căn cả 4 anchor vào giữa cạnh trái của bounds của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_CENTER_TOP:
 
@@ -856,7 +856,7 @@ Snap all 4 anchors to the center of the left edge of the parent control's bounds
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_CENTER_TOP** = ``5``
 
-Snap all 4 anchors to the center of the top edge of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Căn cả 4 anchor vào giữa cạnh trên của bounds của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_CENTER_RIGHT:
 
@@ -864,7 +864,7 @@ Snap all 4 anchors to the center of the top edge of the parent control's bounds.
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_CENTER_RIGHT** = ``6``
 
-Snap all 4 anchors to the center of the right edge of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Căn cả 4 anchor vào giữa cạnh phải của bounds của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_CENTER_BOTTOM:
 
@@ -872,7 +872,7 @@ Snap all 4 anchors to the center of the right edge of the parent control's bound
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_CENTER_BOTTOM** = ``7``
 
-Snap all 4 anchors to the center of the bottom edge of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 anchor vào tâm của cạnh dưới trong phạm vi của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_CENTER:
 
@@ -880,7 +880,7 @@ Snap all 4 anchors to the center of the bottom edge of the parent control's boun
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_CENTER** = ``8``
 
-Snap all 4 anchors to the center of the parent control's bounds. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 anchor vào tâm trong phạm vi của control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_LEFT_WIDE:
 
@@ -888,7 +888,7 @@ Snap all 4 anchors to the center of the parent control's bounds. Use with :ref:`
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_LEFT_WIDE** = ``9``
 
-Snap all 4 anchors to the left edge of the parent control. The left offset becomes relative to the left edge and the top offset relative to the top left corner of the node's parent. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 anchor vào cạnh trái của control cha. Offset trái trở thành tương đối với cạnh trái, còn offset trên tương đối với góc trên bên trái của node cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_TOP_WIDE:
 
@@ -896,7 +896,7 @@ Snap all 4 anchors to the left edge of the parent control. The left offset becom
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_TOP_WIDE** = ``10``
 
-Snap all 4 anchors to the top edge of the parent control. The left offset becomes relative to the top left corner, the top offset relative to the top edge, and the right offset relative to the top right corner of the node's parent. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 anchor vào cạnh trên của control cha. Offset trái trở thành tương đối với góc trên bên trái, offset trên tương đối với cạnh trên, còn offset phải tương đối với góc trên bên phải của node cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_RIGHT_WIDE:
 
@@ -904,7 +904,7 @@ Snap all 4 anchors to the top edge of the parent control. The left offset become
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_RIGHT_WIDE** = ``11``
 
-Snap all 4 anchors to the right edge of the parent control. The right offset becomes relative to the right edge and the top offset relative to the top right corner of the node's parent. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 anchor vào cạnh phải của control cha. Offset phải trở thành tương đối với cạnh phải, còn offset trên tương đối với góc trên bên phải của node cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_BOTTOM_WIDE:
 
@@ -912,7 +912,7 @@ Snap all 4 anchors to the right edge of the parent control. The right offset bec
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_BOTTOM_WIDE** = ``12``
 
-Snap all 4 anchors to the bottom edge of the parent control. The left offset becomes relative to the bottom left corner, the bottom offset relative to the bottom edge, and the right offset relative to the bottom right corner of the node's parent. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 anchor vào cạnh dưới của control cha. Offset trái trở thành tương đối với góc dưới bên trái, offset dưới tương đối với cạnh dưới, còn offset phải tương đối với góc dưới bên phải của node cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_VCENTER_WIDE:
 
@@ -920,7 +920,7 @@ Snap all 4 anchors to the bottom edge of the parent control. The left offset bec
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_VCENTER_WIDE** = ``13``
 
-Snap all 4 anchors to a vertical line that cuts the parent control in half. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 anchor vào một đường dọc chia đôi control cha. Dùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_HCENTER_WIDE:
 
@@ -928,7 +928,7 @@ Snap all 4 anchors to a vertical line that cuts the parent control in half. Use 
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_HCENTER_WIDE** = ``14``
 
-Snap all 4 anchors to a horizontal line that cuts the parent control in half. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 điểm neo vào một đường ngang chia đôi control cha. Sử dụng cùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_PRESET_FULL_RECT:
 
@@ -936,7 +936,7 @@ Snap all 4 anchors to a horizontal line that cuts the parent control in half. Us
 
 :ref:`LayoutPreset<enum_Control_LayoutPreset>` **PRESET_FULL_RECT** = ``15``
 
-Snap all 4 anchors to the respective corners of the parent control. Set all 4 offsets to 0 after you applied this preset and the **Control** will fit its parent control. Use with :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn cả 4 điểm neo vào các góc tương ứng của control cha. Đặt cả 4 độ lệch về 0 sau khi áp dụng preset này, và **Control** sẽ vừa với control cha. Sử dụng cùng với :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. rst-class:: classref-item-separator
 
@@ -946,7 +946,7 @@ Snap all 4 anchors to the respective corners of the parent control. Set all 4 of
 
 .. rst-class:: classref-enumeration
 
-enum **LayoutPresetMode**: :ref:`🔗<enum_Control_LayoutPresetMode>`
+enum **LayoutPresetMode**: :ref:`🔗 <enum_Control_LayoutPresetMode>`
 
 .. _class_Control_constant_PRESET_MODE_MINSIZE:
 
@@ -954,7 +954,7 @@ enum **LayoutPresetMode**: :ref:`🔗<enum_Control_LayoutPresetMode>`
 
 :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` **PRESET_MODE_MINSIZE** = ``0``
 
-The control will be resized to its minimum size.
+Control sẽ được thay đổi kích thước về kích thước tối thiểu.
 
 .. _class_Control_constant_PRESET_MODE_KEEP_WIDTH:
 
@@ -962,7 +962,7 @@ The control will be resized to its minimum size.
 
 :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` **PRESET_MODE_KEEP_WIDTH** = ``1``
 
-The control's width will not change.
+Chiều rộng của control sẽ không thay đổi.
 
 .. _class_Control_constant_PRESET_MODE_KEEP_HEIGHT:
 
@@ -970,7 +970,7 @@ The control's width will not change.
 
 :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` **PRESET_MODE_KEEP_HEIGHT** = ``2``
 
-The control's height will not change.
+Chiều cao của control sẽ không thay đổi.
 
 .. _class_Control_constant_PRESET_MODE_KEEP_SIZE:
 
@@ -978,7 +978,7 @@ The control's height will not change.
 
 :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` **PRESET_MODE_KEEP_SIZE** = ``3``
 
-The control's size will not change.
+Kích thước của control sẽ không thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -988,7 +988,7 @@ The control's size will not change.
 
 .. rst-class:: classref-enumeration
 
-flags **SizeFlags**: :ref:`🔗<enum_Control_SizeFlags>`
+các cờ **SizeFlags**: :ref:`🔗 <enum_Control_SizeFlags>`
 
 .. _class_Control_constant_SIZE_SHRINK_BEGIN:
 
@@ -996,9 +996,9 @@ flags **SizeFlags**: :ref:`🔗<enum_Control_SizeFlags>`
 
 :ref:`SizeFlags<enum_Control_SizeFlags>` **SIZE_SHRINK_BEGIN** = ``0``
 
-Tells the parent :ref:`Container<class_Container>` to align the node with its start, either the top or the left edge. It is mutually exclusive with :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` and other shrink size flags, but can be used with :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` in some containers. Use with :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` and :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
+Cho parent :ref:`Container<class_Container>` biết cần căn chỉnh node theo điểm bắt đầu của nó, tức là cạnh trên hoặc cạnh trái. Cờ này loại trừ lẫn nhau với :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` và các cờ kích thước shrink khác, nhưng có thể được dùng với :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` trong một số container. Dùng với :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` và :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
 
-\ **Note:** Setting this flag is equal to not having any size flags.
+\ **Lưu ý:** Việc thiết lập cờ này tương đương với việc không có cờ kích thước nào.
 
 .. _class_Control_constant_SIZE_FILL:
 
@@ -1006,7 +1006,7 @@ Tells the parent :ref:`Container<class_Container>` to align the node with its st
 
 :ref:`SizeFlags<enum_Control_SizeFlags>` **SIZE_FILL** = ``1``
 
-Tells the parent :ref:`Container<class_Container>` to expand the bounds of this node to fill all the available space without pushing any other node. It is mutually exclusive with shrink size flags. Use with :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` and :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
+Cho parent :ref:`Container<class_Container>` biết cần mở rộng phạm vi của node này để lấp đầy toàn bộ không gian khả dụng mà không đẩy bất kỳ node nào khác. Cờ này loại trừ lẫn nhau với các cờ kích thước shrink. Dùng với :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` và :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
 
 .. _class_Control_constant_SIZE_EXPAND:
 
@@ -1014,7 +1014,7 @@ Tells the parent :ref:`Container<class_Container>` to expand the bounds of this 
 
 :ref:`SizeFlags<enum_Control_SizeFlags>` **SIZE_EXPAND** = ``2``
 
-Tells the parent :ref:`Container<class_Container>` to let this node take all the available space on the axis you flag. If multiple neighboring nodes are set to expand, they'll share the space based on their stretch ratio. See :ref:`size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>`. Use with :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` and :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
+Cho parent :ref:`Container<class_Container>` biết cần cho node này sử dụng toàn bộ không gian khả dụng trên trục mà bạn gắn cờ. Nếu nhiều node liền kề được đặt ở chế độ expand, chúng sẽ chia sẻ không gian dựa trên tỷ lệ stretch của mình. Xem :ref:`size_flags_stretch_ratio<class_Control_property_size_flags_stretch_ratio>`. Dùng với :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` và :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
 
 .. _class_Control_constant_SIZE_EXPAND_FILL:
 
@@ -1022,7 +1022,7 @@ Tells the parent :ref:`Container<class_Container>` to let this node take all the
 
 :ref:`SizeFlags<enum_Control_SizeFlags>` **SIZE_EXPAND_FILL** = ``3``
 
-Sets the node's size flags to both fill and expand. See :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` and :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` for more information.
+Đặt các cờ kích thước của node thành cả fill và expand. Xem :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` và :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` để biết thêm thông tin.
 
 .. _class_Control_constant_SIZE_SHRINK_CENTER:
 
@@ -1030,7 +1030,7 @@ Sets the node's size flags to both fill and expand. See :ref:`SIZE_FILL<class_Co
 
 :ref:`SizeFlags<enum_Control_SizeFlags>` **SIZE_SHRINK_CENTER** = ``4``
 
-Tells the parent :ref:`Container<class_Container>` to center the node in the available space. It is mutually exclusive with :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` and other shrink size flags, but can be used with :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` in some containers. Use with :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` and :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
+Cho parent :ref:`Container<class_Container>` biết cần căn giữa node trong không gian khả dụng. Cờ này loại trừ lẫn nhau với :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` và các cờ kích thước shrink khác, nhưng có thể được dùng với :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` trong một số container. Dùng với :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` và :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
 
 .. _class_Control_constant_SIZE_SHRINK_END:
 
@@ -1038,7 +1038,7 @@ Tells the parent :ref:`Container<class_Container>` to center the node in the ava
 
 :ref:`SizeFlags<enum_Control_SizeFlags>` **SIZE_SHRINK_END** = ``8``
 
-Tells the parent :ref:`Container<class_Container>` to align the node with its end, either the bottom or the right edge. It is mutually exclusive with :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` and other shrink size flags, but can be used with :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` in some containers. Use with :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` and :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
+Cho parent :ref:`Container<class_Container>` biết phải căn node về phía cuối của nó, tức là cạnh dưới hoặc cạnh phải. Tùy chọn này loại trừ lẫn nhau với :ref:`SIZE_FILL<class_Control_constant_SIZE_FILL>` và các cờ thu nhỏ kích thước khác, nhưng có thể được sử dụng cùng :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` trong một số container. Sử dụng cùng :ref:`size_flags_horizontal<class_Control_property_size_flags_horizontal>` và :ref:`size_flags_vertical<class_Control_property_size_flags_vertical>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1048,7 +1048,7 @@ Tells the parent :ref:`Container<class_Container>` to align the node with its en
 
 .. rst-class:: classref-enumeration
 
-enum **MouseFilter**: :ref:`🔗<enum_Control_MouseFilter>`
+enum **MouseFilter**: :ref:`🔗 <enum_Control_MouseFilter>`
 
 .. _class_Control_constant_MOUSE_FILTER_STOP:
 
@@ -1056,7 +1056,7 @@ enum **MouseFilter**: :ref:`🔗<enum_Control_MouseFilter>`
 
 :ref:`MouseFilter<enum_Control_MouseFilter>` **MOUSE_FILTER_STOP** = ``0``
 
-The control will receive mouse movement input events and mouse button input events if clicked on through :ref:`_gui_input()<class_Control_private_method__gui_input>`. The control will also receive the :ref:`mouse_entered<class_Control_signal_mouse_entered>` and :ref:`mouse_exited<class_Control_signal_mouse_exited>` signals. These events are automatically marked as handled, and they will not propagate further to other controls. This also results in blocking signals in other controls.
+Control sẽ nhận các sự kiện input về chuyển động chuột và các sự kiện input về nút chuột nếu được nhấp qua :ref:`_gui_input()<class_Control_private_method__gui_input>`. Control cũng sẽ nhận các signal :ref:`mouse_entered<class_Control_signal_mouse_entered>` và :ref:`mouse_exited<class_Control_signal_mouse_exited>`. Các sự kiện này sẽ tự động được đánh dấu là đã xử lý và sẽ không tiếp tục truyền đến các control khác. Điều này cũng khiến các signal ở những control khác bị chặn.
 
 .. _class_Control_constant_MOUSE_FILTER_PASS:
 
@@ -1064,9 +1064,9 @@ The control will receive mouse movement input events and mouse button input even
 
 :ref:`MouseFilter<enum_Control_MouseFilter>` **MOUSE_FILTER_PASS** = ``1``
 
-The control will receive mouse movement input events and mouse button input events if clicked on through :ref:`_gui_input()<class_Control_private_method__gui_input>`. The control will also receive the :ref:`mouse_entered<class_Control_signal_mouse_entered>` and :ref:`mouse_exited<class_Control_signal_mouse_exited>` signals.
+Control sẽ nhận các sự kiện input về chuyển động chuột và các sự kiện input về nút chuột nếu được nhấp qua :ref:`_gui_input()<class_Control_private_method__gui_input>`. Control cũng sẽ nhận các signal :ref:`mouse_entered<class_Control_signal_mouse_entered>` và :ref:`mouse_exited<class_Control_signal_mouse_exited>`.
 
-If this control does not handle the event, the event will propagate up to its parent control if it has one. The event is bubbled up the node hierarchy until it reaches a non-:ref:`CanvasItem<class_CanvasItem>`, a control with :ref:`MOUSE_FILTER_STOP<class_Control_constant_MOUSE_FILTER_STOP>`, or a :ref:`CanvasItem<class_CanvasItem>` with :ref:`CanvasItem.top_level<class_CanvasItem_property_top_level>` enabled. This will allow signals to fire in all controls it reaches. If no control handled it, the event will be passed to :ref:`Node._shortcut_input()<class_Node_private_method__shortcut_input>` for further processing.
+Nếu control này không xử lý sự kiện, sự kiện sẽ truyền lên control cha của nó nếu có. Sự kiện được truyền ngược lên hệ thống phân cấp node cho đến khi gặp một node không phải :ref:`CanvasItem<class_CanvasItem>`, một control có :ref:`MOUSE_FILTER_STOP<class_Control_constant_MOUSE_FILTER_STOP>`, hoặc một :ref:`CanvasItem<class_CanvasItem>` đã bật :ref:`CanvasItem.top_level<class_CanvasItem_property_top_level>`. Điều này cho phép các signal được kích hoạt ở tất cả control mà sự kiện đi qua. Nếu không có control nào xử lý sự kiện, sự kiện sẽ được chuyển đến :ref:`Node._shortcut_input()<class_Node_private_method__shortcut_input>` để xử lý tiếp.
 
 .. _class_Control_constant_MOUSE_FILTER_IGNORE:
 
@@ -1074,9 +1074,9 @@ If this control does not handle the event, the event will propagate up to its pa
 
 :ref:`MouseFilter<enum_Control_MouseFilter>` **MOUSE_FILTER_IGNORE** = ``2``
 
-The control will not receive any mouse movement input events nor mouse button input events through :ref:`_gui_input()<class_Control_private_method__gui_input>`. The control will also not receive the :ref:`mouse_entered<class_Control_signal_mouse_entered>` nor :ref:`mouse_exited<class_Control_signal_mouse_exited>` signals. This will not block other controls from receiving these events or firing the signals. Ignored events will not be handled automatically. If a child has :ref:`MOUSE_FILTER_PASS<class_Control_constant_MOUSE_FILTER_PASS>` and an event was passed to this control, the event will further propagate up to the control's parent.
+Control sẽ không nhận bất kỳ sự kiện input nào về chuyển động chuột hoặc sự kiện input nào về nút chuột thông qua :ref:`_gui_input()<class_Control_private_method__gui_input>`. Control cũng sẽ không nhận các signal :ref:`mouse_entered<class_Control_signal_mouse_entered>` hoặc :ref:`mouse_exited<class_Control_signal_mouse_exited>`. Điều này không ngăn các control khác nhận những sự kiện này hoặc kích hoạt các signal tương ứng. Các sự kiện bị bỏ qua sẽ không tự động được xử lý. Nếu một node con có :ref:`MOUSE_FILTER_PASS<class_Control_constant_MOUSE_FILTER_PASS>` và một sự kiện được truyền đến control này, sự kiện sẽ tiếp tục truyền lên control cha của control.
 
-\ **Note:** If the control has received :ref:`mouse_entered<class_Control_signal_mouse_entered>` but not :ref:`mouse_exited<class_Control_signal_mouse_exited>`, changing the :ref:`mouse_filter<class_Control_property_mouse_filter>` to :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>` will cause :ref:`mouse_exited<class_Control_signal_mouse_exited>` to be emitted.
+\ **Lưu ý:** Nếu control đã nhận :ref:`mouse_entered<class_Control_signal_mouse_entered>` nhưng chưa nhận :ref:`mouse_exited<class_Control_signal_mouse_exited>`, việc thay đổi :ref:`mouse_filter<class_Control_property_mouse_filter>` thành :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>` sẽ khiến :ref:`mouse_exited<class_Control_signal_mouse_exited>` được phát ra.
 
 .. rst-class:: classref-item-separator
 
@@ -1086,7 +1086,7 @@ The control will not receive any mouse movement input events nor mouse button in
 
 .. rst-class:: classref-enumeration
 
-enum **GrowDirection**: :ref:`🔗<enum_Control_GrowDirection>`
+enum **GrowDirection**: :ref:`🔗 <enum_Control_GrowDirection>`
 
 .. _class_Control_constant_GROW_DIRECTION_BEGIN:
 
@@ -1094,7 +1094,7 @@ enum **GrowDirection**: :ref:`🔗<enum_Control_GrowDirection>`
 
 :ref:`GrowDirection<enum_Control_GrowDirection>` **GROW_DIRECTION_BEGIN** = ``0``
 
-The control will grow to the left or top to make up if its minimum size is changed to be greater than its current size on the respective axis.
+Control sẽ mở rộng sang trái hoặc lên trên để bù lại nếu kích thước tối thiểu của nó được thay đổi thành lớn hơn kích thước hiện tại trên trục tương ứng.
 
 .. _class_Control_constant_GROW_DIRECTION_END:
 
@@ -1102,7 +1102,7 @@ The control will grow to the left or top to make up if its minimum size is chang
 
 :ref:`GrowDirection<enum_Control_GrowDirection>` **GROW_DIRECTION_END** = ``1``
 
-The control will grow to the right or bottom to make up if its minimum size is changed to be greater than its current size on the respective axis.
+Control sẽ mở rộng sang phải hoặc xuống dưới để bù lại nếu kích thước tối thiểu của nó được thay đổi thành lớn hơn kích thước hiện tại trên trục tương ứng.
 
 .. _class_Control_constant_GROW_DIRECTION_BOTH:
 
@@ -1110,7 +1110,7 @@ The control will grow to the right or bottom to make up if its minimum size is c
 
 :ref:`GrowDirection<enum_Control_GrowDirection>` **GROW_DIRECTION_BOTH** = ``2``
 
-The control will grow in both directions equally to make up if its minimum size is changed to be greater than its current size.
+Control sẽ mở rộng đều theo cả hai hướng để bù lại nếu kích thước tối thiểu của nó được thay đổi thành lớn hơn kích thước hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1120,7 +1120,7 @@ The control will grow in both directions equally to make up if its minimum size 
 
 .. rst-class:: classref-enumeration
 
-enum **Anchor**: :ref:`🔗<enum_Control_Anchor>`
+enum **Anchor**: :ref:`🔗 <enum_Control_Anchor>`
 
 .. _class_Control_constant_ANCHOR_BEGIN:
 
@@ -1128,7 +1128,7 @@ enum **Anchor**: :ref:`🔗<enum_Control_Anchor>`
 
 :ref:`Anchor<enum_Control_Anchor>` **ANCHOR_BEGIN** = ``0``
 
-Snaps one of the 4 anchor's sides to the origin of the node's ``Rect``, in the top left. Use it with one of the ``anchor_*`` member variables, like :ref:`anchor_left<class_Control_property_anchor_left>`. To change all 4 anchors at once, use :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn một trong 4 cạnh anchor vào gốc của ``Rect`` của node, ở góc trên bên trái. Sử dụng nó với một trong các biến thành viên ``anchor_*``, chẳng hạn như :ref:`anchor_left<class_Control_property_anchor_left>`. Để thay đổi cả 4 anchor cùng lúc, sử dụng :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. _class_Control_constant_ANCHOR_END:
 
@@ -1136,7 +1136,7 @@ Snaps one of the 4 anchor's sides to the origin of the node's ``Rect``, in the t
 
 :ref:`Anchor<enum_Control_Anchor>` **ANCHOR_END** = ``1``
 
-Snaps one of the 4 anchor's sides to the end of the node's ``Rect``, in the bottom right. Use it with one of the ``anchor_*`` member variables, like :ref:`anchor_left<class_Control_property_anchor_left>`. To change all 4 anchors at once, use :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
+Gắn một trong 4 cạnh anchor vào điểm cuối của ``Rect`` của node, ở góc dưới bên phải. Sử dụng nó với một trong các biến thành viên ``anchor_*``, chẳng hạn như :ref:`anchor_left<class_Control_property_anchor_left>`. Để thay đổi cả 4 anchor cùng lúc, sử dụng :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1146,7 +1146,7 @@ Snaps one of the 4 anchor's sides to the end of the node's ``Rect``, in the bott
 
 .. rst-class:: classref-enumeration
 
-enum **LayoutDirection**: :ref:`🔗<enum_Control_LayoutDirection>`
+enum **LayoutDirection**: :ref:`🔗 <enum_Control_LayoutDirection>`
 
 .. _class_Control_constant_LAYOUT_DIRECTION_INHERITED:
 
@@ -1154,7 +1154,7 @@ enum **LayoutDirection**: :ref:`🔗<enum_Control_LayoutDirection>`
 
 :ref:`LayoutDirection<enum_Control_LayoutDirection>` **LAYOUT_DIRECTION_INHERITED** = ``0``
 
-Automatic layout direction, determined from the parent control layout direction.
+Hướng bố cục tự động, được xác định từ hướng bố cục của control cha.
 
 .. _class_Control_constant_LAYOUT_DIRECTION_APPLICATION_LOCALE:
 
@@ -1162,7 +1162,7 @@ Automatic layout direction, determined from the parent control layout direction.
 
 :ref:`LayoutDirection<enum_Control_LayoutDirection>` **LAYOUT_DIRECTION_APPLICATION_LOCALE** = ``1``
 
-Automatic layout direction, determined from the current locale. Right-to-left layout direction is automatically used for languages that require it such as Arabic and Hebrew, but only if a valid translation file is loaded for the given language (unless said language is configured as a fallback in :ref:`ProjectSettings.internationalization/locale/fallback<class_ProjectSettings_property_internationalization/locale/fallback>`). For all other languages (or if no valid translation file is found by Godot), left-to-right layout direction is used. If using :ref:`TextServerFallback<class_TextServerFallback>` (:ref:`ProjectSettings.internationalization/rendering/text_driver<class_ProjectSettings_property_internationalization/rendering/text_driver>`), left-to-right layout direction is always used regardless of the language. Right-to-left layout direction can also be forced using :ref:`ProjectSettings.internationalization/rendering/force_right_to_left_layout_direction<class_ProjectSettings_property_internationalization/rendering/force_right_to_left_layout_direction>`.
+Hướng bố cục tự động, được xác định từ locale hiện tại. Hướng bố cục từ phải sang trái được tự động sử dụng cho các ngôn ngữ yêu cầu hướng này như tiếng Ả Rập và tiếng Do Thái, nhưng chỉ khi tệp bản dịch hợp lệ được tải cho ngôn ngữ tương ứng (trừ khi ngôn ngữ đó được cấu hình làm fallback trong :ref:`ProjectSettings.internationalization/locale/fallback <class_ProjectSettings_property_internationalization/locale/fallback>`). Với tất cả các ngôn ngữ khác (hoặc nếu Godot không tìm thấy tệp bản dịch hợp lệ), hướng bố cục từ trái sang phải sẽ được sử dụng. Nếu sử dụng :ref:`TextServerFallback<class_TextServerFallback>` (:ref:`ProjectSettings.internationalization/rendering/text_driver <class_ProjectSettings_property_internationalization/rendering/text_driver>`), hướng bố cục từ trái sang phải luôn được sử dụng bất kể ngôn ngữ nào. Cũng có thể buộc sử dụng hướng bố cục từ phải sang trái bằng :ref:`ProjectSettings.internationalization/rendering/force_right_to_left_layout_direction <class_ProjectSettings_property_internationalization/rendering/force_right_to_left_layout_direction>`.
 
 .. _class_Control_constant_LAYOUT_DIRECTION_LTR:
 
@@ -1170,7 +1170,7 @@ Automatic layout direction, determined from the current locale. Right-to-left la
 
 :ref:`LayoutDirection<enum_Control_LayoutDirection>` **LAYOUT_DIRECTION_LTR** = ``2``
 
-Left-to-right layout direction.
+Hướng bố cục từ trái sang phải.
 
 .. _class_Control_constant_LAYOUT_DIRECTION_RTL:
 
@@ -1178,7 +1178,7 @@ Left-to-right layout direction.
 
 :ref:`LayoutDirection<enum_Control_LayoutDirection>` **LAYOUT_DIRECTION_RTL** = ``3``
 
-Right-to-left layout direction.
+Hướng bố cục từ phải sang trái.
 
 .. _class_Control_constant_LAYOUT_DIRECTION_SYSTEM_LOCALE:
 
@@ -1186,7 +1186,7 @@ Right-to-left layout direction.
 
 :ref:`LayoutDirection<enum_Control_LayoutDirection>` **LAYOUT_DIRECTION_SYSTEM_LOCALE** = ``4``
 
-Automatic layout direction, determined from the system locale. Right-to-left layout direction is automatically used for languages that require it such as Arabic and Hebrew, but only if a valid translation file is loaded for the given language. For all other languages (or if no valid translation file is found by Godot), left-to-right layout direction is used. If using :ref:`TextServerFallback<class_TextServerFallback>` (:ref:`ProjectSettings.internationalization/rendering/text_driver<class_ProjectSettings_property_internationalization/rendering/text_driver>`), left-to-right layout direction is always used regardless of the language.
+Hướng bố cục tự động, được xác định từ locale hệ thống. Hướng bố cục từ phải sang trái được tự động sử dụng cho các ngôn ngữ yêu cầu hướng này như tiếng Ả Rập và tiếng Do Thái, nhưng chỉ khi tệp bản dịch hợp lệ được tải cho ngôn ngữ tương ứng. Với tất cả các ngôn ngữ khác (hoặc nếu Godot không tìm thấy tệp bản dịch hợp lệ), hướng bố cục từ trái sang phải sẽ được sử dụng. Nếu sử dụng :ref:`TextServerFallback<class_TextServerFallback>` (:ref:`ProjectSettings.internationalization/rendering/text_driver <class_ProjectSettings_property_internationalization/rendering/text_driver>`), hướng bố cục từ trái sang phải luôn được sử dụng bất kể ngôn ngữ nào.
 
 .. _class_Control_constant_LAYOUT_DIRECTION_MAX:
 
@@ -1194,7 +1194,7 @@ Automatic layout direction, determined from the system locale. Right-to-left lay
 
 :ref:`LayoutDirection<enum_Control_LayoutDirection>` **LAYOUT_DIRECTION_MAX** = ``5``
 
-Represents the size of the :ref:`LayoutDirection<enum_Control_LayoutDirection>` enum.
+Biểu thị kích thước của enum :ref:`LayoutDirection <enum_Control_LayoutDirection>`.
 
 .. _class_Control_constant_LAYOUT_DIRECTION_LOCALE:
 
@@ -1202,7 +1202,7 @@ Represents the size of the :ref:`LayoutDirection<enum_Control_LayoutDirection>` 
 
 :ref:`LayoutDirection<enum_Control_LayoutDirection>` **LAYOUT_DIRECTION_LOCALE** = ``1``
 
-**Deprecated:** Use :ref:`LAYOUT_DIRECTION_APPLICATION_LOCALE<class_Control_constant_LAYOUT_DIRECTION_APPLICATION_LOCALE>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`LAYOUT_DIRECTION_APPLICATION_LOCALE<class_Control_constant_LAYOUT_DIRECTION_APPLICATION_LOCALE>` thay thế.
 
 
 
@@ -1214,7 +1214,7 @@ Represents the size of the :ref:`LayoutDirection<enum_Control_LayoutDirection>` 
 
 .. rst-class:: classref-enumeration
 
-enum **TextDirection**: :ref:`🔗<enum_Control_TextDirection>`
+enum **TextDirection**: :ref:`🔗 <enum_Control_TextDirection>`
 
 .. _class_Control_constant_TEXT_DIRECTION_INHERITED:
 
@@ -1222,7 +1222,7 @@ enum **TextDirection**: :ref:`🔗<enum_Control_TextDirection>`
 
 :ref:`TextDirection<enum_Control_TextDirection>` **TEXT_DIRECTION_INHERITED** = ``3``
 
-Text writing direction is the same as layout direction.
+Hướng viết văn bản giống với hướng bố cục.
 
 .. _class_Control_constant_TEXT_DIRECTION_AUTO:
 
@@ -1230,7 +1230,7 @@ Text writing direction is the same as layout direction.
 
 :ref:`TextDirection<enum_Control_TextDirection>` **TEXT_DIRECTION_AUTO** = ``0``
 
-Automatic text writing direction, determined from the current locale and text content.
+Hướng viết văn bản tự động, được xác định từ locale hiện tại và nội dung văn bản.
 
 .. _class_Control_constant_TEXT_DIRECTION_LTR:
 
@@ -1238,7 +1238,7 @@ Automatic text writing direction, determined from the current locale and text co
 
 :ref:`TextDirection<enum_Control_TextDirection>` **TEXT_DIRECTION_LTR** = ``1``
 
-Left-to-right text writing direction.
+Hướng viết văn bản từ trái sang phải.
 
 .. _class_Control_constant_TEXT_DIRECTION_RTL:
 
@@ -1246,7 +1246,7 @@ Left-to-right text writing direction.
 
 :ref:`TextDirection<enum_Control_TextDirection>` **TEXT_DIRECTION_RTL** = ``2``
 
-Right-to-left text writing direction.
+Hướng viết văn bản từ phải sang trái.
 
 .. rst-class:: classref-section-separator
 
@@ -1254,8 +1254,8 @@ Right-to-left text writing direction.
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Control_constant_NOTIFICATION_RESIZED:
 
@@ -1263,7 +1263,7 @@ Constants
 
 **NOTIFICATION_RESIZED** = ``40`` :ref:`🔗<class_Control_constant_NOTIFICATION_RESIZED>`
 
-Sent when the node changes size. Use :ref:`size<class_Control_property_size>` to get the new size.
+Được gửi khi node thay đổi kích thước. Dùng :ref:`size<class_Control_property_size>` để lấy kích thước mới.
 
 .. _class_Control_constant_NOTIFICATION_MOUSE_ENTER:
 
@@ -1271,11 +1271,11 @@ Sent when the node changes size. Use :ref:`size<class_Control_property_size>` to
 
 **NOTIFICATION_MOUSE_ENTER** = ``41`` :ref:`🔗<class_Control_constant_NOTIFICATION_MOUSE_ENTER>`
 
-Sent when the mouse cursor enters the control's (or any child control's) visible area, that is not occluded behind other Controls or Windows, provided its :ref:`mouse_filter<class_Control_property_mouse_filter>` lets the event reach it and regardless if it's currently focused or not.
+Được gửi khi con trỏ chuột đi vào vùng hiển thị của control (hoặc bất kỳ control con nào), không bị che khuất bởi các Control hoặc Window khác, với điều kiện :ref:`mouse_filter<class_Control_property_mouse_filter>` của nó cho phép sự kiện đến được nó, bất kể nó hiện có đang được focus hay không.
 
-\ **Note:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` doesn't affect which Control receives the notification.
+\ **Lưu ý:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` không ảnh hưởng đến việc Control nào nhận thông báo.
 
-See also :ref:`NOTIFICATION_MOUSE_ENTER_SELF<class_Control_constant_NOTIFICATION_MOUSE_ENTER_SELF>`.
+Xem thêm :ref:`NOTIFICATION_MOUSE_ENTER_SELF<class_Control_constant_NOTIFICATION_MOUSE_ENTER_SELF>`.
 
 .. _class_Control_constant_NOTIFICATION_MOUSE_EXIT:
 
@@ -1283,11 +1283,11 @@ See also :ref:`NOTIFICATION_MOUSE_ENTER_SELF<class_Control_constant_NOTIFICATION
 
 **NOTIFICATION_MOUSE_EXIT** = ``42`` :ref:`🔗<class_Control_constant_NOTIFICATION_MOUSE_EXIT>`
 
-Sent when the mouse cursor leaves the control's (and all child control's) visible area, that is not occluded behind other Controls or Windows, provided its :ref:`mouse_filter<class_Control_property_mouse_filter>` lets the event reach it and regardless if it's currently focused or not.
+Được gửi khi con trỏ chuột rời khỏi vùng hiển thị của control (và tất cả control con), không bị che khuất bởi các Control hoặc Window khác, với điều kiện :ref:`mouse_filter<class_Control_property_mouse_filter>` của nó cho phép sự kiện đến được nó, bất kể nó hiện có đang được focus hay không.
 
-\ **Note:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` doesn't affect which Control receives the notification.
+\ **Lưu ý:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` không ảnh hưởng đến việc Control nào nhận thông báo.
 
-See also :ref:`NOTIFICATION_MOUSE_EXIT_SELF<class_Control_constant_NOTIFICATION_MOUSE_EXIT_SELF>`.
+Xem thêm :ref:`NOTIFICATION_MOUSE_EXIT_SELF<class_Control_constant_NOTIFICATION_MOUSE_EXIT_SELF>`.
 
 .. _class_Control_constant_NOTIFICATION_MOUSE_ENTER_SELF:
 
@@ -1295,13 +1295,13 @@ See also :ref:`NOTIFICATION_MOUSE_EXIT_SELF<class_Control_constant_NOTIFICATION_
 
 **NOTIFICATION_MOUSE_ENTER_SELF** = ``60`` :ref:`🔗<class_Control_constant_NOTIFICATION_MOUSE_ENTER_SELF>`
 
-**Experimental:** The reason this notification is sent may change in the future.
+**Thử nghiệm:** Lý do gửi thông báo này có thể thay đổi trong tương lai.
 
-Sent when the mouse cursor enters the control's visible area, that is not occluded behind other Controls or Windows, provided its :ref:`mouse_filter<class_Control_property_mouse_filter>` lets the event reach it and regardless if it's currently focused or not.
+Được gửi khi con trỏ chuột đi vào vùng hiển thị của control, tức là vùng không bị các Control hoặc Window khác che khuất, với điều kiện :ref:`mouse_filter<class_Control_property_mouse_filter>` của nó cho phép sự kiện tiếp cận nó và bất kể hiện tại nó có được focus hay không.
 
-\ **Note:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` doesn't affect which Control receives the notification.
+\ **Lưu ý:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` không ảnh hưởng đến việc Control nào nhận thông báo.
 
-See also :ref:`NOTIFICATION_MOUSE_ENTER<class_Control_constant_NOTIFICATION_MOUSE_ENTER>`.
+Xem thêm :ref:`NOTIFICATION_MOUSE_ENTER<class_Control_constant_NOTIFICATION_MOUSE_ENTER>`.
 
 .. _class_Control_constant_NOTIFICATION_MOUSE_EXIT_SELF:
 
@@ -1309,13 +1309,13 @@ See also :ref:`NOTIFICATION_MOUSE_ENTER<class_Control_constant_NOTIFICATION_MOUS
 
 **NOTIFICATION_MOUSE_EXIT_SELF** = ``61`` :ref:`🔗<class_Control_constant_NOTIFICATION_MOUSE_EXIT_SELF>`
 
-**Experimental:** The reason this notification is sent may change in the future.
+**Thử nghiệm:** Lý do gửi thông báo này có thể thay đổi trong tương lai.
 
-Sent when the mouse cursor leaves the control's visible area, that is not occluded behind other Controls or Windows, provided its :ref:`mouse_filter<class_Control_property_mouse_filter>` lets the event reach it and regardless if it's currently focused or not.
+Được gửi khi con trỏ chuột rời khỏi vùng hiển thị của control, tức là vùng không bị các Control hoặc Window khác che khuất, với điều kiện :ref:`mouse_filter<class_Control_property_mouse_filter>` của nó cho phép sự kiện tiếp cận nó và bất kể hiện tại nó có được focus hay không.
 
-\ **Note:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` doesn't affect which Control receives the notification.
+\ **Lưu ý:** :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` không ảnh hưởng đến việc Control nào nhận thông báo.
 
-See also :ref:`NOTIFICATION_MOUSE_EXIT<class_Control_constant_NOTIFICATION_MOUSE_EXIT>`.
+Xem thêm :ref:`NOTIFICATION_MOUSE_EXIT<class_Control_constant_NOTIFICATION_MOUSE_EXIT>`.
 
 .. _class_Control_constant_NOTIFICATION_FOCUS_ENTER:
 
@@ -1323,7 +1323,7 @@ See also :ref:`NOTIFICATION_MOUSE_EXIT<class_Control_constant_NOTIFICATION_MOUSE
 
 **NOTIFICATION_FOCUS_ENTER** = ``43`` :ref:`🔗<class_Control_constant_NOTIFICATION_FOCUS_ENTER>`
 
-Sent when the node grabs focus.
+Được gửi khi node nhận focus.
 
 .. _class_Control_constant_NOTIFICATION_FOCUS_EXIT:
 
@@ -1331,9 +1331,9 @@ Sent when the node grabs focus.
 
 **NOTIFICATION_FOCUS_EXIT** = ``44`` :ref:`🔗<class_Control_constant_NOTIFICATION_FOCUS_EXIT>`
 
-Sent when the node loses focus.
+Được gửi khi node mất focus.
 
-This notification is sent in reversed order.
+Thông báo này được gửi theo thứ tự ngược.
 
 .. _class_Control_constant_NOTIFICATION_THEME_CHANGED:
 
@@ -1341,19 +1341,19 @@ This notification is sent in reversed order.
 
 **NOTIFICATION_THEME_CHANGED** = ``45`` :ref:`🔗<class_Control_constant_NOTIFICATION_THEME_CHANGED>`
 
-Sent when the node needs to refresh its theme items. This happens in one of the following cases:
+Được gửi khi node cần làm mới các mục theme. Điều này xảy ra trong một trong các trường hợp sau:
 
-- The :ref:`theme<class_Control_property_theme>` property is changed on this node or any of its ancestors.
+- Thuộc tính :ref:`theme<class_Control_property_theme>` được thay đổi trên node này hoặc bất kỳ node cha nào của nó.
 
-- The :ref:`theme_type_variation<class_Control_property_theme_type_variation>` property is changed on this node.
+- Thuộc tính :ref:`theme_type_variation<class_Control_property_theme_type_variation>` được thay đổi trên node này.
 
-- One of the node's theme property overrides is changed.
+- Một trong các giá trị ghi đè thuộc tính theme của node đã được thay đổi.
 
-- The node enters the scene tree.
+- Node đi vào scene tree.
 
-\ **Note:** As an optimization, this notification won't be sent from changes that occur while this node is outside of the scene tree. Instead, all of the theme item updates can be applied at once when the node enters the scene tree.
+\ **Lưu ý:** Để tối ưu hóa, thông báo này sẽ không được gửi đối với các thay đổi xảy ra khi node này nằm ngoài scene tree. Thay vào đó, tất cả các cập nhật mục theme có thể được áp dụng cùng lúc khi node đi vào scene tree.
 
-\ **Note:** This notification is received alongside :ref:`Node.NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>`, so if you are instantiating a scene, the child nodes will not be initialized yet. You can use it to setup theming for this node, child nodes created from script, or if you want to access child nodes added in the editor, make sure the node is ready using :ref:`Node.is_node_ready()<class_Node_method_is_node_ready>`.
+\ **Lưu ý:** Thông báo này được nhận cùng với :ref:`Node.NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>`, vì vậy nếu bạn đang khởi tạo một scene, các node con sẽ chưa được khởi tạo. Bạn có thể dùng thông báo này để thiết lập theme cho node này hoặc các node con được tạo từ script; hoặc nếu muốn truy cập các node con được thêm trong editor, hãy đảm bảo node đã sẵn sàng bằng cách sử dụng :ref:`Node.is_node_ready()<class_Node_method_is_node_ready>`.
 
 ::
 
@@ -1369,9 +1369,9 @@ Sent when the node needs to refresh its theme items. This happens in one of the 
 
 **NOTIFICATION_SCROLL_BEGIN** = ``47`` :ref:`🔗<class_Control_constant_NOTIFICATION_SCROLL_BEGIN>`
 
-Sent when this node is inside a :ref:`ScrollContainer<class_ScrollContainer>` which has begun being scrolled when dragging the scrollable area *with a touch event*. This notification is *not* sent when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.
+Được gửi khi node này nằm trong một :ref:`ScrollContainer<class_ScrollContainer>` đã bắt đầu được cuộn khi kéo vùng có thể cuộn *bằng một sự kiện chạm*. Thông báo này *không* được gửi khi cuộn bằng cách kéo thanh cuộn, cuộn bằng con lăn chuột hoặc cuộn bằng các sự kiện bàn phím/tay cầm chơi game.
 
-\ **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse<class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` is enabled.
+\ **Lưu ý:** Tín hiệu này chỉ được phát trên Android hoặc iOS, hoặc trên các nền tảng desktop/web khi :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse <class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` được bật.
 
 .. _class_Control_constant_NOTIFICATION_SCROLL_END:
 
@@ -1379,9 +1379,9 @@ Sent when this node is inside a :ref:`ScrollContainer<class_ScrollContainer>` wh
 
 **NOTIFICATION_SCROLL_END** = ``48`` :ref:`🔗<class_Control_constant_NOTIFICATION_SCROLL_END>`
 
-Sent when this node is inside a :ref:`ScrollContainer<class_ScrollContainer>` which has stopped being scrolled when dragging the scrollable area *with a touch event*. This notification is *not* sent when scrolling by dragging the scrollbar, scrolling with the mouse wheel or scrolling with keyboard/gamepad events.
+Được gửi khi node này nằm trong một :ref:`ScrollContainer<class_ScrollContainer>` đã dừng được cuộn khi kéo vùng có thể cuộn *bằng một sự kiện chạm*. Thông báo này *không* được gửi khi cuộn bằng cách kéo thanh cuộn, cuộn bằng con lăn chuột hoặc cuộn bằng các sự kiện bàn phím/tay cầm chơi game.
 
-\ **Note:** This signal is only emitted on Android or iOS, or on desktop/web platforms when :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse<class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` is enabled.
+\ **Lưu ý:** Tín hiệu này chỉ được phát trên Android hoặc iOS, hoặc trên các nền tảng desktop/web khi :ref:`ProjectSettings.input_devices/pointing/emulate_touch_from_mouse <class_ProjectSettings_property_input_devices/pointing/emulate_touch_from_mouse>` được bật.
 
 .. _class_Control_constant_NOTIFICATION_LAYOUT_DIRECTION_CHANGED:
 
@@ -1389,7 +1389,7 @@ Sent when this node is inside a :ref:`ScrollContainer<class_ScrollContainer>` wh
 
 **NOTIFICATION_LAYOUT_DIRECTION_CHANGED** = ``49`` :ref:`🔗<class_Control_constant_NOTIFICATION_LAYOUT_DIRECTION_CHANGED>`
 
-Sent when the control layout direction is changed from LTR or RTL or vice versa. This notification is propagated to child Control nodes as result of a change to :ref:`layout_direction<class_Control_property_layout_direction>`.
+Được gửi khi hướng bố cục của control được thay đổi từ LTR sang RTL hoặc ngược lại. Thông báo này được truyền đến các nút Control con do thay đổi :ref:`layout_direction<class_Control_property_layout_direction>`.
 
 .. rst-class:: classref-section-separator
 
@@ -1397,8 +1397,8 @@ Sent when the control layout direction is changed from LTR or RTL or vice versa.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Control_property_accessibility_controls_nodes:
 
@@ -1411,7 +1411,7 @@ Property Descriptions
 - |void| **set_accessibility_controls_nodes**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\] **get_accessibility_controls_nodes**\ (\ )
 
-The paths to the nodes which are controlled by this node.
+Các đường dẫn đến những nút được nút này điều khiển.
 
 .. rst-class:: classref-item-separator
 
@@ -1428,7 +1428,7 @@ The paths to the nodes which are controlled by this node.
 - |void| **set_accessibility_described_by_nodes**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\] **get_accessibility_described_by_nodes**\ (\ )
 
-The paths to the nodes which are describing this node.
+Các đường dẫn đến những nút mô tả nút này.
 
 .. rst-class:: classref-item-separator
 
@@ -1445,7 +1445,7 @@ The paths to the nodes which are describing this node.
 - |void| **set_accessibility_description**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_accessibility_description**\ (\ )
 
-The human-readable node description that is reported to assistive apps.
+Mô tả nút ở dạng con người có thể đọc được, được cung cấp cho các ứng dụng hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -1462,7 +1462,7 @@ The human-readable node description that is reported to assistive apps.
 - |void| **set_accessibility_flow_to_nodes**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\] **get_accessibility_flow_to_nodes**\ (\ )
 
-The paths to the nodes which this node flows into.
+Các đường dẫn đến những nút mà dữ liệu từ nút này được truyền vào.
 
 .. rst-class:: classref-item-separator
 
@@ -1479,7 +1479,7 @@ The paths to the nodes which this node flows into.
 - |void| **set_accessibility_labeled_by_nodes**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\] **get_accessibility_labeled_by_nodes**\ (\ )
 
-The paths to the nodes which label this node.
+Các đường dẫn đến những node gắn nhãn cho node này.
 
 .. rst-class:: classref-item-separator
 
@@ -1496,7 +1496,7 @@ The paths to the nodes which label this node.
 - |void| **set_accessibility_live**\ (\ value\: :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>`\ )
 - :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>` **get_accessibility_live**\ (\ )
 
-The mode with which a live region updates. A live region is a :ref:`Node<class_Node>` that is updated as a result of an external event when the user's focus may be elsewhere.
+Chế độ mà một live region được cập nhật. Live region là một :ref:`Node<class_Node>` được cập nhật do một sự kiện bên ngoài khi tiêu điểm của người dùng có thể đang ở nơi khác.
 
 .. rst-class:: classref-item-separator
 
@@ -1513,7 +1513,7 @@ The mode with which a live region updates. A live region is a :ref:`Node<class_N
 - |void| **set_accessibility_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_accessibility_name**\ (\ )
 
-The human-readable node name that is reported to assistive apps.
+Tên node dễ đọc được báo cáo cho các ứng dụng hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -1529,7 +1529,7 @@ The human-readable node name that is reported to assistive apps.
 
 - :ref:`float<class_float>` **get_anchor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Anchors the bottom edge of the node to the origin, the center, or the end of its parent control. It changes how the bottom offset updates when the node moves or changes size. You can use one of the :ref:`Anchor<enum_Control_Anchor>` constants for convenience.
+Neo cạnh dưới của node vào gốc tọa độ, tâm hoặc cuối control cha. Điều này thay đổi cách offset dưới được cập nhật khi node di chuyển hoặc thay đổi kích thước. Bạn có thể sử dụng một trong các hằng số :ref:`Anchor <enum_Control_Anchor>` để thuận tiện hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1545,7 +1545,7 @@ Anchors the bottom edge of the node to the origin, the center, or the end of its
 
 - :ref:`float<class_float>` **get_anchor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Anchors the left edge of the node to the origin, the center or the end of its parent control. It changes how the left offset updates when the node moves or changes size. You can use one of the :ref:`Anchor<enum_Control_Anchor>` constants for convenience.
+Neo cạnh trái của node vào gốc tọa độ, tâm hoặc cuối control cha. Điều này thay đổi cách offset trái được cập nhật khi node di chuyển hoặc thay đổi kích thước. Bạn có thể sử dụng một trong các hằng số :ref:`Anchor <enum_Control_Anchor>` để thuận tiện hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1561,7 +1561,7 @@ Anchors the left edge of the node to the origin, the center or the end of its pa
 
 - :ref:`float<class_float>` **get_anchor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Anchors the right edge of the node to the origin, the center or the end of its parent control. It changes how the right offset updates when the node moves or changes size. You can use one of the :ref:`Anchor<enum_Control_Anchor>` constants for convenience.
+Neo cạnh phải của node vào gốc tọa độ, tâm hoặc cuối control cha. Điều này thay đổi cách offset phải được cập nhật khi node di chuyển hoặc thay đổi kích thước. Bạn có thể sử dụng một trong các hằng số :ref:`Anchor <enum_Control_Anchor>` để thuận tiện hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1577,7 +1577,7 @@ Anchors the right edge of the node to the origin, the center or the end of its p
 
 - :ref:`float<class_float>` **get_anchor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Anchors the top edge of the node to the origin, the center or the end of its parent control. It changes how the top offset updates when the node moves or changes size. You can use one of the :ref:`Anchor<enum_Control_Anchor>` constants for convenience.
+Neo cạnh trên của node vào gốc tọa độ, tâm hoặc cuối control cha. Điều này thay đổi cách offset trên được cập nhật khi node di chuyển hoặc thay đổi kích thước. Bạn có thể sử dụng một trong các hằng số :ref:`Anchor <enum_Control_Anchor>` để thuận tiện hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1587,16 +1587,16 @@ Anchors the top edge of the node to the origin, the center or the end of its par
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **auto_translate** :ref:`🔗<class_Control_property_auto_translate>`
+:ref:`bool<class_bool>` **auto_translate** :ref:`🔗 <class_Control_property_auto_translate>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_auto_translate**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_auto_translating**\ (\ )
 
-**Deprecated:** Use :ref:`Node.auto_translate_mode<class_Node_property_auto_translate_mode>` and :ref:`Node.can_auto_translate()<class_Node_method_can_auto_translate>` instead.
+**Không còn được dùng:** Thay vào đó, hãy sử dụng :ref:`Node.auto_translate_mode<class_Node_property_auto_translate_mode>` và :ref:`Node.can_auto_translate()<class_Node_method_can_auto_translate>`.
 
-Toggles if any text should automatically change to its translated version depending on the current locale.
+Bật hoặc tắt việc tự động thay đổi văn bản thành phiên bản đã dịch tùy theo locale hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1613,7 +1613,7 @@ Toggles if any text should automatically change to its translated version depend
 - |void| **set_clip_contents**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_clipping_contents**\ (\ )
 
-Enables whether rendering of :ref:`CanvasItem<class_CanvasItem>` based children should be clipped to this control's rectangle. If ``true``, parts of a child which would be visibly outside of this control's rectangle will not be rendered and won't receive input.
+Cho phép cắt các nút con dựa trên :ref:`CanvasItem<class_CanvasItem>` theo hình chữ nhật của control này khi render. Nếu ``true``, các phần của nút con nằm bên ngoài hình chữ nhật của control này sẽ không được render và sẽ không nhận input.
 
 .. rst-class:: classref-item-separator
 
@@ -1630,15 +1630,15 @@ Enables whether rendering of :ref:`CanvasItem<class_CanvasItem>` based children 
 - |void| **set_custom_maximum_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_custom_maximum_size**\ (\ )
 
-The maximum size of this Control's bounding rectangle. If set to a value greater than or equal to ``(0, 0)``, the node's bounding rectangle will never exceed this size. A value below ``(0, 0)`` means there is no maximum size.
+Kích thước tối đa của hình chữ nhật bao quanh Control này. Nếu được đặt thành giá trị lớn hơn hoặc bằng ``(0, 0)``, hình chữ nhật bao quanh node sẽ không bao giờ vượt quá kích thước này. Giá trị nhỏ hơn ``(0, 0)`` có nghĩa là không có kích thước tối đa.
 
-\ **Note:** The final effective maximum size may be subject to parent Container sizing and propagated maximum sizes. See also: :ref:`get_combined_maximum_size()<class_Control_method_get_combined_maximum_size>`.
+\ **Lưu ý:** Kích thước tối đa hiệu dụng cuối cùng có thể phụ thuộc vào việc định kích thước của Container cha và các kích thước tối đa được truyền xuống. Xem thêm: :ref:`get_combined_maximum_size()<class_Control_method_get_combined_maximum_size>`.
 
-\ **Note:** Not all **Control** subtypes handle a custom maximum size gracefully, which may lead to unexpected behavior if the control's contents exceed this size.
+\ **Lưu ý:** Không phải tất cả các subtype của **Control** đều xử lý tốt kích thước tối đa tùy chỉnh, điều này có thể dẫn đến hành vi không mong muốn nếu nội dung của control vượt quá kích thước này.
 
-\ **Note:** This value has priority over :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>`. For example, if you set :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` to ``(100, 100)`` and :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` to ``(200, 200)``, the resulting size will be ``(100, 100)``.
+\ **Lưu ý:** Giá trị này được ưu tiên hơn :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>`. Ví dụ, nếu bạn đặt :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` thành ``(100, 100)`` và :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` thành ``(200, 200)``, kích thước kết quả sẽ là ``(100, 100)``.
 
-\ **Note:** It is recommended to use :ref:`get_bound_minimum_size()<class_Control_method_get_bound_minimum_size>` instead of :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>` when using this property, as the former respects maximum size limits when calculating the minimum size, while the latter does not.
+\ **Lưu ý:** Bạn nên sử dụng :ref:`get_bound_minimum_size()<class_Control_method_get_bound_minimum_size>` thay vì :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>` khi sử dụng thuộc tính này, vì thuộc tính trước sẽ tôn trọng các giới hạn kích thước tối đa khi tính kích thước tối thiểu, còn thuộc tính sau thì không.
 
 .. rst-class:: classref-item-separator
 
@@ -1655,9 +1655,9 @@ The maximum size of this Control's bounding rectangle. If set to a value greater
 - |void| **set_custom_minimum_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_custom_minimum_size**\ (\ )
 
-The minimum size of the node's bounding rectangle. If you set it to a value greater than ``(0, 0)``, the node's bounding rectangle will always have at least this size. Note that **Control** nodes have their internal minimum size returned by :ref:`get_minimum_size()<class_Control_method_get_minimum_size>`. It depends on the control's contents, like text, textures, or style boxes. The actual minimum size is the maximum value of this property and the internal minimum size (see :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>`).
+Kích thước tối thiểu của hình chữ nhật bao quanh node. Nếu bạn đặt giá trị này lớn hơn ``(0, 0)``, hình chữ nhật bao quanh node sẽ luôn có ít nhất kích thước này. Lưu ý rằng các node **Control** sẽ trả về kích thước tối thiểu nội bộ của chúng bằng :ref:`get_minimum_size()<class_Control_method_get_minimum_size>`. Kích thước này phụ thuộc vào nội dung của control, chẳng hạn như văn bản, texture hoặc các hộp kiểu. Kích thước tối thiểu thực tế là giá trị lớn hơn giữa thuộc tính này và kích thước tối thiểu nội bộ (xem :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>`).
 
-\ **Note:** :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` has priority over this property. For example, if you set :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` to ``(200, 200)`` and :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` to ``(100, 100)``, the resulting size will be ``(100, 100)``.
+\ **Lưu ý:** :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` được ưu tiên hơn thuộc tính này. Ví dụ, nếu bạn đặt :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` thành ``(200, 200)`` và :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` thành ``(100, 100)``, kích thước kết quả sẽ là ``(100, 100)``.
 
 .. rst-class:: classref-item-separator
 
@@ -1674,7 +1674,7 @@ The minimum size of the node's bounding rectangle. If you set it to a value grea
 - |void| **set_focus_behavior_recursive**\ (\ value\: :ref:`FocusBehaviorRecursive<enum_Control_FocusBehaviorRecursive>`\ )
 - :ref:`FocusBehaviorRecursive<enum_Control_FocusBehaviorRecursive>` **get_focus_behavior_recursive**\ (\ )
 
-Determines which controls can be focused together with :ref:`focus_mode<class_Control_property_focus_mode>`. See :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>`. Since the default behavior is :ref:`FOCUS_BEHAVIOR_INHERITED<class_Control_constant_FOCUS_BEHAVIOR_INHERITED>`, this can be used to prevent all children controls from getting focused.
+Xác định những control nào có thể được focus cùng với :ref:`focus_mode<class_Control_property_focus_mode>`. Xem :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>`. Vì hành vi mặc định là :ref:`FOCUS_BEHAVIOR_INHERITED<class_Control_constant_FOCUS_BEHAVIOR_INHERITED>`, bạn có thể dùng thuộc tính này để ngăn tất cả control con được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1691,7 +1691,7 @@ Determines which controls can be focused together with :ref:`focus_mode<class_Co
 - |void| **set_focus_mode**\ (\ value\: :ref:`FocusMode<enum_Control_FocusMode>`\ )
 - :ref:`FocusMode<enum_Control_FocusMode>` **get_focus_mode**\ (\ )
 
-Determines which controls can be focused. Only one control can be focused at a time, and the focused control will receive keyboard, gamepad, and mouse events in :ref:`_gui_input()<class_Control_private_method__gui_input>`. Use :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>` to determine if a control can grab focus, since :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` also affects it. See also :ref:`grab_focus()<class_Control_method_grab_focus>`.
+Xác định những control nào có thể được focus. Mỗi thời điểm chỉ có thể focus một control, và control được focus sẽ nhận các sự kiện bàn phím, gamepad và chuột trong :ref:`_gui_input()<class_Control_private_method__gui_input>`. Sử dụng :ref:`get_focus_mode_with_override()<class_Control_method_get_focus_mode_with_override>` để xác định liệu một control có thể nhận focus hay không, vì :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` cũng ảnh hưởng đến điều đó. Xem thêm :ref:`grab_focus()<class_Control_method_grab_focus>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1708,7 +1708,7 @@ Determines which controls can be focused. Only one control can be focused at a t
 - |void| **set_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, neighbor\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Tells Godot which node it should give focus to if the user presses the down arrow on the keyboard or down on a gamepad by default. You can change the key by editing the :ref:`ProjectSettings.input/ui_down<class_ProjectSettings_property_input/ui_down>` input action. The node must be a **Control**. If this property is not set, Godot will give focus to the closest **Control** to the bottom of this one.
+Cho Godot biết node nào cần được focus nếu theo mặc định người dùng nhấn phím mũi tên xuống trên bàn phím hoặc nhấn xuống trên gamepad. Bạn có thể thay đổi phím bằng cách chỉnh sửa action đầu vào :ref:`ProjectSettings.input/ui_down <class_ProjectSettings_property_input/ui_down>`. Node đó phải là một **Control**. Nếu thuộc tính này chưa được đặt, Godot sẽ focus vào **Control** gần phía dưới node này nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -1725,7 +1725,7 @@ Tells Godot which node it should give focus to if the user presses the down arro
 - |void| **set_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, neighbor\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Tells Godot which node it should give focus to if the user presses the left arrow on the keyboard or left on a gamepad by default. You can change the key by editing the :ref:`ProjectSettings.input/ui_left<class_ProjectSettings_property_input/ui_left>` input action. The node must be a **Control**. If this property is not set, Godot will give focus to the closest **Control** to the left of this one.
+Cho Godot biết node nào cần được cấp focus nếu theo mặc định người dùng nhấn phím mũi tên trái trên bàn phím hoặc hướng trái trên gamepad. Bạn có thể thay đổi phím bằng cách chỉnh sửa input action :ref:`ProjectSettings.input/ui_left <class_ProjectSettings_property_input/ui_left>`. Node này phải là một **Control**. Nếu thuộc tính này chưa được thiết lập, Godot sẽ cấp focus cho **Control** gần nhất ở bên trái node này.
 
 .. rst-class:: classref-item-separator
 
@@ -1742,7 +1742,7 @@ Tells Godot which node it should give focus to if the user presses the left arro
 - |void| **set_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, neighbor\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Tells Godot which node it should give focus to if the user presses the right arrow on the keyboard or right on a gamepad by default. You can change the key by editing the :ref:`ProjectSettings.input/ui_right<class_ProjectSettings_property_input/ui_right>` input action. The node must be a **Control**. If this property is not set, Godot will give focus to the closest **Control** to the right of this one.
+Cho Godot biết node nào cần được cấp focus nếu theo mặc định người dùng nhấn phím mũi tên phải trên bàn phím hoặc hướng phải trên gamepad. Bạn có thể thay đổi phím bằng cách chỉnh sửa input action :ref:`ProjectSettings.input/ui_right <class_ProjectSettings_property_input/ui_right>`. Node này phải là một **Control**. Nếu thuộc tính này chưa được thiết lập, Godot sẽ cấp focus cho **Control** gần nhất ở bên phải node này.
 
 .. rst-class:: classref-item-separator
 
@@ -1759,7 +1759,7 @@ Tells Godot which node it should give focus to if the user presses the right arr
 - |void| **set_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, neighbor\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Tells Godot which node it should give focus to if the user presses the top arrow on the keyboard or top on a gamepad by default. You can change the key by editing the :ref:`ProjectSettings.input/ui_up<class_ProjectSettings_property_input/ui_up>` input action. The node must be a **Control**. If this property is not set, Godot will give focus to the closest **Control** to the top of this one.
+Cho Godot biết node nào cần được cấp focus nếu theo mặc định người dùng nhấn phím mũi tên lên trên bàn phím hoặc hướng lên trên gamepad. Bạn có thể thay đổi phím bằng cách chỉnh sửa input action :ref:`ProjectSettings.input/ui_up <class_ProjectSettings_property_input/ui_up>`. Node này phải là một **Control**. Nếu thuộc tính này chưa được thiết lập, Godot sẽ cấp focus cho **Control** gần nhất ở phía trên node này.
 
 .. rst-class:: classref-item-separator
 
@@ -1776,9 +1776,9 @@ Tells Godot which node it should give focus to if the user presses the top arrow
 - |void| **set_focus_next**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_focus_next**\ (\ )
 
-Tells Godot which node it should give focus to if the user presses :kbd:`Tab` on a keyboard by default. You can change the key by editing the :ref:`ProjectSettings.input/ui_focus_next<class_ProjectSettings_property_input/ui_focus_next>` input action.
+Cho Godot biết node nào cần được cấp focus nếu theo mặc định người dùng nhấn :kbd:`Tab` trên bàn phím. Bạn có thể thay đổi phím bằng cách chỉnh sửa input action :ref:`ProjectSettings.input/ui_focus_next <class_ProjectSettings_property_input/ui_focus_next>`.
 
-If this property is not set, Godot will select a "best guess" based on surrounding nodes in the scene tree.
+Nếu thuộc tính này chưa được thiết lập, Godot sẽ chọn một giá trị “phỏng đoán tốt nhất” dựa trên các node xung quanh trong scene tree.
 
 .. rst-class:: classref-item-separator
 
@@ -1795,9 +1795,9 @@ If this property is not set, Godot will select a "best guess" based on surroundi
 - |void| **set_focus_previous**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_focus_previous**\ (\ )
 
-Tells Godot which node it should give focus to if the user presses :kbd:`Shift + Tab` on a keyboard by default. You can change the key by editing the :ref:`ProjectSettings.input/ui_focus_prev<class_ProjectSettings_property_input/ui_focus_prev>` input action.
+Cho Godot biết node nào cần được cấp focus nếu theo mặc định người dùng nhấn :kbd:`Shift + Tab` trên bàn phím. Bạn có thể thay đổi phím bằng cách chỉnh sửa input action :ref:`ProjectSettings.input/ui_focus_prev <class_ProjectSettings_property_input/ui_focus_prev>`.
 
-If this property is not set, Godot will select a "best guess" based on surrounding nodes in the scene tree.
+Nếu thuộc tính này chưa được thiết lập, Godot sẽ chọn một giá trị “phỏng đoán tốt nhất” dựa trên các node xung quanh trong scene tree.
 
 .. rst-class:: classref-item-separator
 
@@ -1807,13 +1807,13 @@ If this property is not set, Godot will select a "best guess" based on surroundi
 
 .. rst-class:: classref-property
 
-:ref:`Vector2<class_Vector2>` **global_position** :ref:`🔗<class_Control_property_global_position>`
+:ref:`Vector2<class_Vector2>` **global_position** :ref:`🔗 <class_Control_property_global_position>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`Vector2<class_Vector2>` **get_global_position**\ (\ )
 
-The node's global position, relative to the world (usually to the :ref:`CanvasLayer<class_CanvasLayer>`).
+Vị trí toàn cục của node, tương đối với thế giới (thường là :ref:`CanvasLayer<class_CanvasLayer>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1830,7 +1830,7 @@ The node's global position, relative to the world (usually to the :ref:`CanvasLa
 - |void| **set_h_grow_direction**\ (\ value\: :ref:`GrowDirection<enum_Control_GrowDirection>`\ )
 - :ref:`GrowDirection<enum_Control_GrowDirection>` **get_h_grow_direction**\ (\ )
 
-Controls the direction on the horizontal axis in which the control should grow if its horizontal minimum size is changed to be greater than its current size, as the control always has to be at least the minimum size.
+Kiểm soát hướng trên trục ngang mà control sẽ mở rộng nếu kích thước tối thiểu theo chiều ngang của nó được thay đổi để lớn hơn kích thước hiện tại, vì control luôn phải có ít nhất kích thước tối thiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -1847,7 +1847,7 @@ Controls the direction on the horizontal axis in which the control should grow i
 - |void| **set_v_grow_direction**\ (\ value\: :ref:`GrowDirection<enum_Control_GrowDirection>`\ )
 - :ref:`GrowDirection<enum_Control_GrowDirection>` **get_v_grow_direction**\ (\ )
 
-Controls the direction on the vertical axis in which the control should grow if its vertical minimum size is changed to be greater than its current size, as the control always has to be at least the minimum size.
+Kiểm soát hướng trên trục dọc mà control sẽ mở rộng nếu kích thước tối thiểu theo chiều dọc của nó được thay đổi để lớn hơn kích thước hiện tại, vì control luôn phải có ít nhất kích thước tối thiểu.
 
 .. rst-class:: classref-item-separator
 
@@ -1864,7 +1864,7 @@ Controls the direction on the vertical axis in which the control should grow if 
 - |void| **set_layout_direction**\ (\ value\: :ref:`LayoutDirection<enum_Control_LayoutDirection>`\ )
 - :ref:`LayoutDirection<enum_Control_LayoutDirection>` **get_layout_direction**\ (\ )
 
-Controls layout direction and text writing direction. Right-to-left layouts are necessary for certain languages (e.g. Arabic and Hebrew). See also :ref:`is_layout_rtl()<class_Control_method_is_layout_rtl>`.
+Kiểm soát hướng bố cục và hướng viết văn bản. Bố cục từ phải sang trái là cần thiết cho một số ngôn ngữ (ví dụ: tiếng Ả Rập và tiếng Do Thái). Xem thêm :ref:`is_layout_rtl()<class_Control_method_is_layout_rtl>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1881,9 +1881,9 @@ Controls layout direction and text writing direction. Right-to-left layouts are 
 - |void| **set_localize_numeral_system**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_localizing_numeral_system**\ (\ )
 
-If ``true``, automatically converts code line numbers, list indices, :ref:`SpinBox<class_SpinBox>` and :ref:`ProgressBar<class_ProgressBar>` values from the Western Arabic (0..9) to the numeral systems used in current locale.
+Nếu ``true``, tự động chuyển đổi số dòng của code, chỉ mục danh sách, :ref:`SpinBox<class_SpinBox>` và các giá trị :ref:`ProgressBar<class_ProgressBar>` từ hệ chữ số Ả Rập phương Tây (0..9) sang các hệ chữ số được sử dụng trong locale hiện tại.
 
-\ **Note:** Numbers within the text are not automatically converted, it can be done manually, using :ref:`TextServer.format_number()<class_TextServer_method_format_number>`.
+\ **Lưu ý:** Các số trong văn bản không được tự động chuyển đổi; có thể thực hiện thủ công bằng cách sử dụng :ref:`TextServer.format_number()<class_TextServer_method_format_number>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1900,7 +1900,7 @@ If ``true``, automatically converts code line numbers, list indices, :ref:`SpinB
 - |void| **set_mouse_behavior_recursive**\ (\ value\: :ref:`MouseBehaviorRecursive<enum_Control_MouseBehaviorRecursive>`\ )
 - :ref:`MouseBehaviorRecursive<enum_Control_MouseBehaviorRecursive>` **get_mouse_behavior_recursive**\ (\ )
 
-Determines which controls can receive mouse input together with :ref:`mouse_filter<class_Control_property_mouse_filter>`. See :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>`. Since the default behavior is :ref:`MOUSE_BEHAVIOR_INHERITED<class_Control_constant_MOUSE_BEHAVIOR_INHERITED>`, this can be used to prevent all children controls from receiving mouse input.
+Xác định những control nào có thể nhận input chuột cùng với :ref:`mouse_filter<class_Control_property_mouse_filter>`. Xem :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>`. Vì hành vi mặc định là :ref:`MOUSE_BEHAVIOR_INHERITED<class_Control_constant_MOUSE_BEHAVIOR_INHERITED>`, bạn có thể sử dụng thuộc tính này để ngăn tất cả control con nhận input chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -1917,9 +1917,9 @@ Determines which controls can receive mouse input together with :ref:`mouse_filt
 - |void| **set_default_cursor_shape**\ (\ value\: :ref:`CursorShape<enum_Control_CursorShape>`\ )
 - :ref:`CursorShape<enum_Control_CursorShape>` **get_default_cursor_shape**\ (\ )
 
-The default cursor shape for this control. Useful for Godot plugins and applications or games that use the system's mouse cursors.
+Hình dạng con trỏ mặc định cho control này. Hữu ích cho các plugin Godot và những ứng dụng hoặc trò chơi sử dụng con trỏ chuột của hệ thống.
 
-\ **Note:** On Linux, shapes may vary depending on the cursor theme of the system.
+\ **Lưu ý:** Trên Linux, hình dạng có thể khác nhau tùy thuộc vào theme con trỏ của hệ thống.
 
 .. rst-class:: classref-item-separator
 
@@ -1936,7 +1936,7 @@ The default cursor shape for this control. Useful for Godot plugins and applicat
 - |void| **set_mouse_filter**\ (\ value\: :ref:`MouseFilter<enum_Control_MouseFilter>`\ )
 - :ref:`MouseFilter<enum_Control_MouseFilter>` **get_mouse_filter**\ (\ )
 
-Determines which controls will be able to receive mouse button input events through :ref:`_gui_input()<class_Control_private_method__gui_input>` and the :ref:`mouse_entered<class_Control_signal_mouse_entered>`, and :ref:`mouse_exited<class_Control_signal_mouse_exited>` signals. Also determines how these events should be propagated. See the constants to learn what each does. Use :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>` to determine if a control can receive mouse input, since :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` also affects it.
+Xác định những control nào có thể nhận các sự kiện input nút chuột thông qua :ref:`_gui_input()<class_Control_private_method__gui_input>` và các signal :ref:`mouse_entered<class_Control_signal_mouse_entered>`, :ref:`mouse_exited<class_Control_signal_mouse_exited>`. Đồng thời xác định cách các sự kiện này được truyền đi. Xem các hằng số để biết chức năng của từng hằng số. Sử dụng :ref:`get_mouse_filter_with_override()<class_Control_method_get_mouse_filter_with_override>` để xác định một control có thể nhận input chuột hay không, vì :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` cũng ảnh hưởng đến điều này.
 
 .. rst-class:: classref-item-separator
 
@@ -1953,11 +1953,11 @@ Determines which controls will be able to receive mouse button input events thro
 - |void| **set_force_pass_scroll_events**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_force_pass_scroll_events**\ (\ )
 
-When enabled, scroll wheel events processed by :ref:`_gui_input()<class_Control_private_method__gui_input>` will be passed to the parent control even if :ref:`mouse_filter<class_Control_property_mouse_filter>` is set to :ref:`MOUSE_FILTER_STOP<class_Control_constant_MOUSE_FILTER_STOP>`.
+Khi được bật, các sự kiện con lăn chuột được xử lý bởi :ref:`_gui_input()<class_Control_private_method__gui_input>` sẽ được chuyển đến control cha ngay cả khi :ref:`mouse_filter<class_Control_property_mouse_filter>` được đặt thành :ref:`MOUSE_FILTER_STOP<class_Control_constant_MOUSE_FILTER_STOP>`.
 
-You should disable it on the root of your UI if you do not want scroll events to go to the :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>` processing.
+Bạn nên tắt thuộc tính này ở nút gốc của UI nếu không muốn các sự kiện cuộn được chuyển đến phần xử lý :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`.
 
-\ **Note:** Because this property defaults to ``true``, this allows nested scrollable containers to work out of the box.
+\ **Lưu ý:** Vì thuộc tính này mặc định là ``true``, các container có thể cuộn lồng nhau sẽ hoạt động ngay mà không cần cấu hình thêm.
 
 .. rst-class:: classref-item-separator
 
@@ -1974,9 +1974,9 @@ You should disable it on the root of your UI if you do not want scroll events to
 - |void| **set_offset**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_offset**\ (\ offset\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Distance between the node's bottom edge and its parent control, based on :ref:`anchor_bottom<class_Control_property_anchor_bottom>`.
+Khoảng cách giữa cạnh dưới của node và control cha của nó, dựa trên :ref:`anchor_bottom<class_Control_property_anchor_bottom>`.
 
-Offsets are often controlled by one or multiple parent :ref:`Container<class_Container>` nodes, so you should not modify them manually if your node is a direct child of a :ref:`Container<class_Container>`. Offsets update automatically when you move or resize the node.
+Các offset thường được điều khiển bởi một hoặc nhiều node :ref:`Container<class_Container>` cha, vì vậy bạn không nên tự sửa chúng nếu node của bạn là con trực tiếp của một :ref:`Container<class_Container>`. Các offset sẽ tự động cập nhật khi bạn di chuyển hoặc thay đổi kích thước node.
 
 .. rst-class:: classref-item-separator
 
@@ -1993,9 +1993,9 @@ Offsets are often controlled by one or multiple parent :ref:`Container<class_Con
 - |void| **set_offset**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_offset**\ (\ offset\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Distance between the node's left edge and its parent control, based on :ref:`anchor_left<class_Control_property_anchor_left>`.
+Khoảng cách giữa cạnh trái của node và control cha của nó, dựa trên :ref:`anchor_left<class_Control_property_anchor_left>`.
 
-Offsets are often controlled by one or multiple parent :ref:`Container<class_Container>` nodes, so you should not modify them manually if your node is a direct child of a :ref:`Container<class_Container>`. Offsets update automatically when you move or resize the node.
+Các offset thường được điều khiển bởi một hoặc nhiều node :ref:`Container<class_Container>` cha, vì vậy bạn không nên tự sửa chúng nếu node của bạn là con trực tiếp của một :ref:`Container<class_Container>`. Các offset sẽ tự động cập nhật khi bạn di chuyển hoặc thay đổi kích thước node.
 
 .. rst-class:: classref-item-separator
 
@@ -2012,9 +2012,9 @@ Offsets are often controlled by one or multiple parent :ref:`Container<class_Con
 - |void| **set_offset**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_offset**\ (\ offset\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Distance between the node's right edge and its parent control, based on :ref:`anchor_right<class_Control_property_anchor_right>`.
+Khoảng cách giữa cạnh phải của node và control cha của nó, dựa trên :ref:`anchor_right<class_Control_property_anchor_right>`.
 
-Offsets are often controlled by one or multiple parent :ref:`Container<class_Container>` nodes, so you should not modify them manually if your node is a direct child of a :ref:`Container<class_Container>`. Offsets update automatically when you move or resize the node.
+Các offset thường được điều khiển bởi một hoặc nhiều node :ref:`Container<class_Container>` cha, vì vậy bạn không nên tự sửa chúng nếu node của bạn là con trực tiếp của một :ref:`Container<class_Container>`. Các offset sẽ tự động cập nhật khi bạn di chuyển hoặc thay đổi kích thước node.
 
 .. rst-class:: classref-item-separator
 
@@ -2031,9 +2031,9 @@ Offsets are often controlled by one or multiple parent :ref:`Container<class_Con
 - |void| **set_offset**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_offset**\ (\ offset\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const|
 
-Distance between the node's top edge and its parent control, based on :ref:`anchor_top<class_Control_property_anchor_top>`.
+Khoảng cách giữa cạnh trên của node và control cha của nó, dựa trên :ref:`anchor_top<class_Control_property_anchor_top>`.
 
-Offsets are often controlled by one or multiple parent :ref:`Container<class_Container>` nodes, so you should not modify them manually if your node is a direct child of a :ref:`Container<class_Container>`. Offsets update automatically when you move or resize the node.
+Các offset thường được điều khiển bởi một hoặc nhiều node :ref:`Container<class_Container>` cha, vì vậy bạn không nên tự sửa chúng nếu node của bạn là con trực tiếp của một :ref:`Container<class_Container>`. Các offset sẽ tự động cập nhật khi bạn di chuyển hoặc thay đổi kích thước node.
 
 .. rst-class:: classref-item-separator
 
@@ -2050,7 +2050,7 @@ Offsets are often controlled by one or multiple parent :ref:`Container<class_Con
 - |void| **set_offset_transform_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_offset_transform_enabled**\ (\ )
 
-If ``true``, applies all offset transform properties. Otherwise, no offset transform is applied and the properties have no effect.
+Nếu ``true``, áp dụng tất cả các thuộc tính biến đổi offset. Nếu không, không áp dụng biến đổi offset nào và các thuộc tính này không có tác dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -2067,11 +2067,11 @@ If ``true``, applies all offset transform properties. Otherwise, no offset trans
 - |void| **set_offset_transform_pivot**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset_transform_pivot**\ (\ )
 
-Pivot used by :ref:`offset_transform_rotation<class_Control_property_offset_transform_rotation>` and :ref:`offset_transform_scale<class_Control_property_offset_transform_scale>` in absolute units.
+Pivot được :ref:`offset_transform_rotation<class_Control_property_offset_transform_rotation>` và :ref:`offset_transform_scale<class_Control_property_offset_transform_scale>` sử dụng theo đơn vị tuyệt đối.
 
-The final pivot position is the combined value of this property and :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`.
+Vị trí pivot cuối cùng là giá trị kết hợp của thuộc tính này và :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`.
 
-Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` is ``true``.
+Không có tác dụng trừ khi :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -2088,11 +2088,11 @@ Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offse
 - |void| **set_offset_transform_pivot_ratio**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset_transform_pivot_ratio**\ (\ )
 
-Same as :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>` but expressed in units relative to the **Control** :ref:`size<class_Control_property_size>` where ``Vector2(0, 0)`` is the top-left corner of this control, and ``Vector2(1, 1)`` is its bottom-right corner.
+Giống như :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>` nhưng được biểu diễn theo các đơn vị tương đối so với **Control** :ref:`size<class_Control_property_size>`, trong đó ``Vector2(0, 0)`` là góc trên bên trái của control này và ``Vector2(1, 1)`` là góc dưới bên phải của nó.
 
-The final pivot position is the combined value of this property and :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>`.
+Vị trí pivot cuối cùng là giá trị kết hợp của thuộc tính này và :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>`.
 
-Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` is ``true``.
+Không có tác dụng trừ khi :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -2109,9 +2109,9 @@ Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offse
 - |void| **set_offset_transform_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset_transform_position**\ (\ )
 
-Position offset in absolute units. The final offset is the combined value of this property and :ref:`offset_transform_position_ratio<class_Control_property_offset_transform_position_ratio>`.
+Độ lệch vị trí theo đơn vị tuyệt đối. Độ lệch cuối cùng là giá trị kết hợp của thuộc tính này và :ref:`offset_transform_position_ratio<class_Control_property_offset_transform_position_ratio>`.
 
-Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` is ``true``.
+Không có tác dụng trừ khi :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -2128,11 +2128,11 @@ Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offse
 - |void| **set_offset_transform_position_ratio**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset_transform_position_ratio**\ (\ )
 
-Same as :ref:`offset_transform_position<class_Control_property_offset_transform_position>` but expressed in units relative to the **Control** :ref:`size<class_Control_property_size>` where ``Vector2(0, 0)`` is the top-left corner of this control, and ``Vector2(1, 1)`` is its bottom-right corner.
+Giống như :ref:`offset_transform_position<class_Control_property_offset_transform_position>` nhưng được biểu diễn theo các đơn vị tương đối với **Control** :ref:`size<class_Control_property_size>`, trong đó ``Vector2(0, 0)`` là góc trên bên trái của control này và ``Vector2(1, 1)`` là góc dưới bên phải của nó.
 
-The final offset is the combined value of this property and :ref:`offset_transform_position<class_Control_property_offset_transform_position>`.
+Độ lệch cuối cùng là giá trị kết hợp của thuộc tính này và :ref:`offset_transform_position<class_Control_property_offset_transform_position>`.
 
-Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` is ``true``.
+Không có tác dụng trừ khi :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -2149,9 +2149,9 @@ Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offse
 - |void| **set_offset_transform_rotation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_offset_transform_rotation**\ (\ )
 
-Rotation offset. The rotation pivot is defined by :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>` and :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`.
+Độ lệch xoay. Tâm xoay được xác định bởi :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>` và :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`.
 
-Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` is ``true``.
+Không có tác dụng trừ khi :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -2168,9 +2168,9 @@ Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offse
 - |void| **set_offset_transform_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset_transform_scale**\ (\ )
 
-Scale offset. The scale pivot is defined by :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>` and :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`.
+Độ lệch tỷ lệ. Điểm xoay tỷ lệ được xác định bởi :ref:`offset_transform_pivot<class_Control_property_offset_transform_pivot>` và :ref:`offset_transform_pivot_ratio<class_Control_property_offset_transform_pivot_ratio>`.
 
-Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` is ``true``.
+Không có tác dụng trừ khi :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -2187,11 +2187,11 @@ Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offse
 - |void| **set_offset_transform_visual_only**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_offset_transform_visual_only**\ (\ )
 
-If ``true``, the offset transforms is only applied visually and does not affect input. In other words, this Control will still receive input events at its original location before the offset transform is applied.
+Nếu ``true``, phép biến đổi độ lệch chỉ được áp dụng về mặt hiển thị và không ảnh hưởng đến dữ liệu đầu vào. Nói cách khác, Control này vẫn sẽ nhận các sự kiện đầu vào tại vị trí ban đầu trước khi áp dụng phép biến đổi độ lệch.
 
-If ``false``, the entire transform of this Control is affected and input events will register where the Control is visually.
+Nếu ``false``, toàn bộ phép biến đổi của Control này sẽ bị ảnh hưởng và các sự kiện đầu vào sẽ được ghi nhận tại vị trí hiển thị của Control.
 
-Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` is ``true``.
+Không có tác dụng trừ khi :ref:`offset_transform_enabled<class_Control_property_offset_transform_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -2208,9 +2208,9 @@ Has no effect unless :ref:`offset_transform_enabled<class_Control_property_offse
 - |void| **set_pivot_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_pivot_offset**\ (\ )
 
-By default, the node's pivot is its top-left corner. When you change its :ref:`rotation<class_Control_property_rotation>` or :ref:`scale<class_Control_property_scale>`, it will rotate or scale around this pivot.
+Theo mặc định, điểm xoay của node là góc trên bên trái. Khi bạn thay đổi :ref:`rotation<class_Control_property_rotation>` hoặc :ref:`scale<class_Control_property_scale>` của nó, node sẽ xoay hoặc thay đổi tỷ lệ quanh điểm xoay này.
 
-The actual offset is the combined value of this property and :ref:`pivot_offset_ratio<class_Control_property_pivot_offset_ratio>`.
+Độ lệch thực tế là giá trị kết hợp của thuộc tính này và :ref:`pivot_offset_ratio<class_Control_property_pivot_offset_ratio>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2227,9 +2227,9 @@ The actual offset is the combined value of this property and :ref:`pivot_offset_
 - |void| **set_pivot_offset_ratio**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_pivot_offset_ratio**\ (\ )
 
-Same as :ref:`pivot_offset<class_Control_property_pivot_offset>`, but expressed as uniform vector, where ``Vector2(0, 0)`` is the top-left corner of this control, and ``Vector2(1, 1)`` is its bottom-right corner. Set this property to ``Vector2(0.5, 0.5)`` to pivot around this control's center.
+Tương tự như :ref:`pivot_offset<class_Control_property_pivot_offset>`, nhưng được biểu diễn dưới dạng vector đồng nhất, trong đó ``Vector2(0, 0)`` là góc trên bên trái của control này, còn ``Vector2(1, 1)`` là góc dưới bên phải của nó. Đặt thuộc tính này thành ``Vector2(0.5, 0.5)`` để xoay quanh tâm của control này.
 
-The actual offset is the combined value of this property and :ref:`pivot_offset<class_Control_property_pivot_offset>`.
+Độ lệch thực tế là giá trị kết hợp của thuộc tính này và :ref:`pivot_offset<class_Control_property_pivot_offset>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2245,7 +2245,7 @@ The actual offset is the combined value of this property and :ref:`pivot_offset<
 
 - :ref:`Vector2<class_Vector2>` **get_position**\ (\ )
 
-The node's position, relative to its containing node. It corresponds to the rectangle's top-left corner. The property is not affected by :ref:`pivot_offset<class_Control_property_pivot_offset>`.
+Vị trí của node, tương đối với node chứa nó. Vị trí này tương ứng với góc trên bên trái của hình chữ nhật. Thuộc tính này không bị ảnh hưởng bởi :ref:`pivot_offset<class_Control_property_pivot_offset>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2262,7 +2262,7 @@ The node's position, relative to its containing node. It corresponds to the rect
 - |void| **set_propagate_maximum_size**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_propagating_maximum_size**\ (\ )
 
-If ``true``, this Control's children will use the value returned by :ref:`get_combined_maximum_size()<class_Control_method_get_combined_maximum_size>` in their own size calculations.
+Nếu ``true``, các node con của Control này sẽ sử dụng giá trị do :ref:`get_combined_maximum_size()<class_Control_method_get_combined_maximum_size>` trả về trong các phép tính kích thước của chính chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -2279,9 +2279,9 @@ If ``true``, this Control's children will use the value returned by :ref:`get_co
 - |void| **set_rotation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_rotation**\ (\ )
 
-The node's rotation around its pivot, in radians. See :ref:`pivot_offset<class_Control_property_pivot_offset>` to change the pivot's position.
+Góc xoay của node quanh điểm pivot, tính bằng radian. Xem :ref:`pivot_offset<class_Control_property_pivot_offset>` để thay đổi vị trí của điểm pivot.
 
-\ **Note:** This property is edited in the inspector in degrees. If you want to use degrees in a script, use :ref:`rotation_degrees<class_Control_property_rotation_degrees>`.
+\ **Lưu ý:** Thuộc tính này được chỉnh sửa trong inspector theo đơn vị độ. Nếu bạn muốn sử dụng độ trong script, hãy dùng :ref:`rotation_degrees<class_Control_property_rotation_degrees>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2291,14 +2291,14 @@ The node's rotation around its pivot, in radians. See :ref:`pivot_offset<class_C
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **rotation_degrees** :ref:`🔗<class_Control_property_rotation_degrees>`
+:ref:`float<class_float>` **rotation_degrees** :ref:`🔗 <class_Control_property_rotation_degrees>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_rotation_degrees**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_rotation_degrees**\ (\ )
 
-Helper property to access :ref:`rotation<class_Control_property_rotation>` in degrees instead of radians.
+Thuộc tính tiện ích để truy cập :ref:`rotation<class_Control_property_rotation>` theo đơn vị độ thay vì radian.
 
 .. rst-class:: classref-item-separator
 
@@ -2315,13 +2315,13 @@ Helper property to access :ref:`rotation<class_Control_property_rotation>` in de
 - |void| **set_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scale**\ (\ )
 
-The node's scale, relative to its :ref:`size<class_Control_property_size>`. Change this property to scale the node around its :ref:`pivot_offset<class_Control_property_pivot_offset>`. The Control's tooltip will also scale according to this value.
+Tỷ lệ của node so với :ref:`size<class_Control_property_size>`. Thay đổi thuộc tính này để thay đổi tỷ lệ của node quanh :ref:`pivot_offset<class_Control_property_pivot_offset>`. Chú giải công cụ của Control cũng sẽ được thay đổi tỷ lệ theo giá trị này.
 
-\ **Note:** This property is mainly intended to be used for animation purposes. To support multiple resolutions in your project, use an appropriate viewport stretch mode as described in the :doc:`documentation <../tutorials/rendering/multiple_resolutions>` instead of scaling Controls individually.
+\ **Lưu ý:** Thuộc tính này chủ yếu nhằm phục vụ mục đích animation. Để hỗ trợ nhiều độ phân giải trong project, hãy sử dụng chế độ viewport stretch phù hợp như được mô tả trong :doc:`tài liệu <../tutorials/rendering/multiple_resolutions>` thay vì thay đổi tỷ lệ từng Control riêng lẻ.
 
-\ **Note:** :ref:`FontFile.oversampling<class_FontFile_property_oversampling>` does *not* take **Control** :ref:`scale<class_Control_property_scale>` into account. This means that scaling up/down will cause bitmap fonts and rasterized (non-MSDF) dynamic fonts to appear blurry or pixelated. To ensure text remains crisp regardless of scale, you can enable MSDF font rendering by enabling :ref:`ProjectSettings.gui/theme/default_font_multichannel_signed_distance_field<class_ProjectSettings_property_gui/theme/default_font_multichannel_signed_distance_field>` (applies to the default project font only), or enabling **Multichannel Signed Distance Field** in the import options of a DynamicFont for custom fonts. On system fonts, :ref:`SystemFont.multichannel_signed_distance_field<class_SystemFont_property_multichannel_signed_distance_field>` can be enabled in the inspector.
+\ **Lưu ý:** :ref:`FontFile.oversampling<class_FontFile_property_oversampling>` không *tính* đến **Control** :ref:`scale<class_Control_property_scale>` khi xem xét. Điều này có nghĩa là việc tăng/giảm tỷ lệ sẽ khiến bitmap font và dynamic font đã rasterize (không phải MSDF) hiển thị bị mờ hoặc vỡ hình. Để đảm bảo văn bản luôn sắc nét bất kể tỷ lệ, bạn có thể bật tính năng kết xuất font MSDF bằng cách bật :ref:`ProjectSettings.gui/theme/default_font_multichannel_signed_distance_field <class_ProjectSettings_property_gui/theme/default_font_multichannel_signed_distance_field>` (chỉ áp dụng cho font mặc định của project), hoặc bật **Multichannel Signed Distance Field** trong các tùy chọn import của DynamicFont đối với font tùy chỉnh. Với system font, có thể bật :ref:`SystemFont.multichannel_signed_distance_field<class_SystemFont_property_multichannel_signed_distance_field>` trong inspector.
 
-\ **Note:** If the Control node is a child of a :ref:`Container<class_Container>` node, the scale will be reset to ``Vector2(1, 1)`` when the scene is instantiated. To set the Control's scale when it's instantiated, wait for one frame using ``await get_tree().process_frame`` then set its :ref:`scale<class_Control_property_scale>` property.
+\ **Lưu ý:** Nếu node Control là node con của node :ref:`Container<class_Container>`, tỷ lệ sẽ được đặt lại thành ``Vector2(1, 1)`` khi scene được khởi tạo. Để đặt tỷ lệ của Control khi khởi tạo, hãy chờ một frame bằng ``await get_tree().process_frame`` rồi đặt thuộc tính :ref:`scale<class_Control_property_scale>` của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -2331,14 +2331,14 @@ The node's scale, relative to its :ref:`size<class_Control_property_size>`. Chan
 
 .. rst-class:: classref-property
 
-:ref:`Node<class_Node>` **shortcut_context** :ref:`🔗<class_Control_property_shortcut_context>`
+:ref:`Node<class_Node>` **shortcut_context** :ref:`🔗 <class_Control_property_shortcut_context>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shortcut_context**\ (\ value\: :ref:`Node<class_Node>`\ )
 - :ref:`Node<class_Node>` **get_shortcut_context**\ (\ )
 
-The :ref:`Node<class_Node>` which must be a parent of the focused **Control** for the shortcut to be activated. If ``null``, the shortcut can be activated when any control is focused (a global shortcut). This allows shortcuts to be accepted only when the user has a certain area of the GUI focused.
+:ref:`Node<class_Node>` phải là nút cha của **Control** đang được focus để shortcut được kích hoạt. Nếu ``null``, shortcut có thể được kích hoạt khi bất kỳ control nào được focus (shortcut toàn cục). Điều này cho phép chỉ chấp nhận shortcut khi người dùng đang focus vào một khu vực nhất định của GUI.
 
 .. rst-class:: classref-item-separator
 
@@ -2354,7 +2354,7 @@ The :ref:`Node<class_Node>` which must be a parent of the focused **Control** fo
 
 - :ref:`Vector2<class_Vector2>` **get_size**\ (\ )
 
-The size of the node's bounding rectangle, in the node's coordinate system. :ref:`Container<class_Container>` nodes update this property automatically.
+Kích thước của hình chữ nhật bao quanh node, trong hệ tọa độ của node. Các node :ref:`Container<class_Container>` tự động cập nhật thuộc tính này.
 
 .. rst-class:: classref-item-separator
 
@@ -2371,7 +2371,7 @@ The size of the node's bounding rectangle, in the node's coordinate system. :ref
 - |void| **set_h_size_flags**\ (\ value\: |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\]\ )
 - |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\] **get_h_size_flags**\ (\ )
 
-Tells the parent :ref:`Container<class_Container>` nodes how they should resize and place the node on the X axis. Use a combination of the :ref:`SizeFlags<enum_Control_SizeFlags>` constants to change the flags. See the constants to learn what each does.
+Cho các node :ref:`Container<class_Container>` cha biết cách thay đổi kích thước và đặt node trên trục X. Sử dụng kết hợp các hằng số :ref:`SizeFlags <enum_Control_SizeFlags>` để thay đổi các cờ. Xem các hằng số để biết chức năng của từng cờ.
 
 .. rst-class:: classref-item-separator
 
@@ -2388,7 +2388,7 @@ Tells the parent :ref:`Container<class_Container>` nodes how they should resize 
 - |void| **set_stretch_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_stretch_ratio**\ (\ )
 
-If the node and at least one of its neighbors uses the :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>` size flag, the parent :ref:`Container<class_Container>` will let it take more or less space depending on this property. If this node has a stretch ratio of 2 and its neighbor a ratio of 1, this node will take two thirds of the available space.
+Nếu node và ít nhất một node lân cận sử dụng cờ kích thước :ref:`SIZE_EXPAND<class_Control_constant_SIZE_EXPAND>`, :ref:`Container<class_Container>` cha sẽ cho node chiếm nhiều hoặc ít không gian hơn tùy thuộc vào thuộc tính này. Nếu node này có stretch ratio là 2 và node lân cận có ratio là 1, node này sẽ chiếm hai phần ba không gian khả dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -2405,7 +2405,7 @@ If the node and at least one of its neighbors uses the :ref:`SIZE_EXPAND<class_C
 - |void| **set_v_size_flags**\ (\ value\: |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\]\ )
 - |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\] **get_v_size_flags**\ (\ )
 
-Tells the parent :ref:`Container<class_Container>` nodes how they should resize and place the node on the Y axis. Use a combination of the :ref:`SizeFlags<enum_Control_SizeFlags>` constants to change the flags. See the constants to learn what each does.
+Cho các node :ref:`Container<class_Container>` cha biết cách thay đổi kích thước và đặt node trên trục Y. Sử dụng kết hợp các hằng số :ref:`SizeFlags <enum_Control_SizeFlags>` để thay đổi các cờ. Xem các hằng số để biết chức năng của từng cờ.
 
 .. rst-class:: classref-item-separator
 
@@ -2415,16 +2415,16 @@ Tells the parent :ref:`Container<class_Container>` nodes how they should resize 
 
 .. rst-class:: classref-property
 
-:ref:`Theme<class_Theme>` **theme** :ref:`🔗<class_Control_property_theme>`
+:ref:`Theme<class_Theme>` **theme** :ref:`🔗 <class_Control_property_theme>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_theme**\ (\ value\: :ref:`Theme<class_Theme>`\ )
 - :ref:`Theme<class_Theme>` **get_theme**\ (\ )
 
-The :ref:`Theme<class_Theme>` resource this node and all its **Control** and :ref:`Window<class_Window>` children use. If a child node has its own :ref:`Theme<class_Theme>` resource set, theme items are merged with child's definitions having higher priority.
+Tài nguyên :ref:`Theme<class_Theme>` mà node này cùng tất cả các node con **Control** và :ref:`Window<class_Window>` của nó sử dụng. Nếu một node con có tài nguyên :ref:`Theme<class_Theme>` riêng được thiết lập, các mục theme sẽ được hợp nhất, trong đó các định nghĩa của node con có mức ưu tiên cao hơn.
 
-\ **Note:** :ref:`Window<class_Window>` styles will have no effect unless the window is embedded.
+\ **Lưu ý:** Các style :ref:`Window<class_Window>` sẽ không có tác dụng trừ khi cửa sổ được nhúng.
 
 .. rst-class:: classref-item-separator
 
@@ -2441,13 +2441,13 @@ The :ref:`Theme<class_Theme>` resource this node and all its **Control** and :re
 - |void| **set_theme_type_variation**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_theme_type_variation**\ (\ )
 
-The name of a theme type variation used by this **Control** to look up its own theme items. When empty, the class name of the node is used (e.g. ``Button`` for the :ref:`Button<class_Button>` control), as well as the class names of all parent classes (in order of inheritance).
+Tên của một biến thể kiểu theme được **Control** này sử dụng để tra cứu các theme item của chính nó. Khi để trống, tên lớp của node sẽ được sử dụng (ví dụ: ``Button`` cho control :ref:`Button<class_Button>`), cũng như tên lớp của tất cả các lớp cha (theo thứ tự kế thừa).
 
-When set, this property gives the highest priority to the type of the specified name. This type can in turn extend another type, forming a dependency chain. See :ref:`Theme.set_type_variation()<class_Theme_method_set_type_variation>`. If the theme item cannot be found using this type or its base types, lookup falls back on the class names.
+Khi được thiết lập, thuộc tính này sẽ đặt độ ưu tiên cao nhất cho kiểu có tên được chỉ định. Kiểu này có thể lần lượt mở rộng một kiểu khác, tạo thành một chuỗi phụ thuộc. Xem :ref:`Theme.set_type_variation()<class_Theme_method_set_type_variation>`. Nếu không thể tìm thấy theme item bằng kiểu này hoặc các kiểu cơ sở của nó, việc tra cứu sẽ chuyển sang sử dụng tên lớp.
 
-\ **Note:** To look up **Control**'s own items use various ``get_theme_*`` methods without specifying ``theme_type``.
+\ **Lưu ý:** Để tra cứu các item riêng của **Control**, hãy sử dụng các phương thức ``get_theme_*`` khác nhau mà không chỉ định ``theme_type``.
 
-\ **Note:** Theme items are looked for in the tree order, from branch to root, where each **Control** node is checked for its :ref:`theme<class_Control_property_theme>` property. The earliest match against any type/class name is returned. The project-level Theme and the default Theme are checked last.
+\ **Lưu ý:** Các theme item được tìm kiếm theo thứ tự cây, từ nhánh đến gốc, trong đó mỗi node **Control** được kiểm tra thuộc tính :ref:`theme<class_Control_property_theme>` của nó. Kết quả khớp sớm nhất với bất kỳ tên kiểu/lớp nào sẽ được trả về. Theme cấp dự án và Theme mặc định được kiểm tra sau cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2464,9 +2464,9 @@ When set, this property gives the highest priority to the type of the specified 
 - |void| **set_tooltip_auto_translate_mode**\ (\ value\: :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>`\ )
 - :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` **get_tooltip_auto_translate_mode**\ (\ )
 
-Defines if tooltip text should automatically change to its translated version depending on the current locale. Uses the same auto translate mode as this control when set to :ref:`Node.AUTO_TRANSLATE_MODE_INHERIT<class_Node_constant_AUTO_TRANSLATE_MODE_INHERIT>`.
+Xác định xem văn bản tooltip có tự động thay đổi thành bản dịch tương ứng tùy theo locale hiện tại hay không. Khi được đặt thành :ref:`Node.AUTO_TRANSLATE_MODE_INHERIT<class_Node_constant_AUTO_TRANSLATE_MODE_INHERIT>`, thuộc tính này sử dụng cùng chế độ tự động dịch như control này.
 
-\ **Note:** Tooltips customized using :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` do not use this auto translate mode automatically.
+\ **Lưu ý:** Các tooltip được tùy chỉnh bằng :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` không tự động sử dụng chế độ tự động dịch này.
 
 .. rst-class:: classref-item-separator
 
@@ -2483,11 +2483,11 @@ Defines if tooltip text should automatically change to its translated version de
 - |void| **set_tooltip_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_tooltip_text**\ (\ )
 
-The default tooltip text. The tooltip appears when the user's mouse cursor stays idle over this control for a few moments, provided that the :ref:`mouse_filter<class_Control_property_mouse_filter>` property is not :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`. The time required for the tooltip to appear can be changed with the :ref:`ProjectSettings.gui/timers/tooltip_delay_sec<class_ProjectSettings_property_gui/timers/tooltip_delay_sec>` setting.
+Văn bản chú giải công cụ mặc định. Chú giải công cụ xuất hiện khi con trỏ chuột của người dùng đứng yên trên điều khiển này trong vài giây, với điều kiện thuộc tính :ref:`mouse_filter<class_Control_property_mouse_filter>` không phải là :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`. Có thể thay đổi thời gian cần để chú giải công cụ xuất hiện bằng thiết lập :ref:`ProjectSettings.gui/timers/tooltip_delay_sec <class_ProjectSettings_property_gui/timers/tooltip_delay_sec>`.
 
-This string is the default return value of :ref:`get_tooltip()<class_Control_method_get_tooltip>`. Override :ref:`_get_tooltip()<class_Control_private_method__get_tooltip>` to generate tooltip text dynamically. Override :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` to customize the tooltip interface and behavior.
+Chuỗi này là giá trị trả về mặc định của :ref:`get_tooltip()<class_Control_method_get_tooltip>`. Ghi đè :ref:`_get_tooltip()<class_Control_private_method__get_tooltip>` để tạo văn bản chú giải công cụ một cách linh động. Ghi đè :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` để tùy chỉnh giao diện và hành vi của chú giải công cụ.
 
-The tooltip popup will use either a default implementation, or a custom one that you can provide by overriding :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>`. The default tooltip includes a :ref:`PopupPanel<class_PopupPanel>` and :ref:`Label<class_Label>` whose theme properties can be customized using :ref:`Theme<class_Theme>` methods with the ``"TooltipPanel"`` and ``"TooltipLabel"`` respectively. For example:
+Cửa sổ bật lên của chú giải công cụ sẽ sử dụng triển khai mặc định hoặc một triển khai tùy chỉnh mà bạn có thể cung cấp bằng cách ghi đè :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>`. Chú giải công cụ mặc định bao gồm một :ref:`PopupPanel<class_PopupPanel>` và :ref:`Label<class_Label>`, các thuộc tính theme của chúng có thể được tùy chỉnh bằng các phương thức :ref:`Theme<class_Theme>` với lần lượt là ``"TooltipPanel"`` và ``"TooltipLabel"``. Ví dụ:
 
 
 .. tabs::
@@ -2497,7 +2497,7 @@ The tooltip popup will use either a default implementation, or a custom one that
     var style_box = StyleBoxFlat.new()
     style_box.set_bg_color(Color(1, 1, 0))
     style_box.set_border_width_all(2)
-    # We assume here that the `theme` property has been assigned a custom Theme beforehand.
+    # Ở đây, chúng ta giả định rằng thuộc tính `theme` đã được gán một Theme tùy chỉnh từ trước.
     theme.set_stylebox("panel", "TooltipPanel", style_box)
     theme.set_color("font_color", "TooltipLabel", Color(0, 1, 1))
 
@@ -2506,7 +2506,7 @@ The tooltip popup will use either a default implementation, or a custom one that
     var styleBox = new StyleBoxFlat();
     styleBox.SetBgColor(new Color(1, 1, 0));
     styleBox.SetBorderWidthAll(2);
-    // We assume here that the `Theme` property has been assigned a custom Theme beforehand.
+    // Ở đây, chúng ta giả định rằng thuộc tính `Theme` đã được gán một Theme tùy chỉnh từ trước.
     Theme.SetStyleBox("panel", "TooltipPanel", styleBox);
     Theme.SetColor("font_color", "TooltipLabel", new Color(0, 1, 1));
 
@@ -2527,7 +2527,7 @@ The tooltip popup will use either a default implementation, or a custom one that
 - |void| **set_translation_context**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_translation_context**\ (\ )
 
-The translation context used when translating this control's displayed text, if it has any. Also used when generating translation templates.
+Ngữ cảnh dịch được sử dụng khi dịch văn bản hiển thị của điều khiển này, nếu có. Cũng được sử dụng khi tạo các template bản dịch.
 
 .. rst-class:: classref-section-separator
 
@@ -2535,8 +2535,8 @@ The translation context used when translating this control's displayed text, if 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Control_private_method__accessibility_get_contextual_info:
 
@@ -2544,7 +2544,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **_accessibility_get_contextual_info**\ (\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__accessibility_get_contextual_info>`
 
-Return the description of the keyboard shortcuts and other contextual help for this control.
+Trả về mô tả về các phím tắt và trợ giúp theo ngữ cảnh khác cho control này.
 
 .. rst-class:: classref-item-separator
 
@@ -2556,11 +2556,11 @@ Return the description of the keyboard shortcuts and other contextual help for t
 
 :ref:`bool<class_bool>` **_can_drop_data**\ (\ at_position\: :ref:`Vector2<class_Vector2>`, data\: :ref:`Variant<class_Variant>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__can_drop_data>`
 
-Godot calls this method to test if ``data`` from a control's :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` can be dropped at ``at_position``. ``at_position`` is local to this control.
+Godot gọi phương thức này để kiểm tra xem ``data`` từ :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` của một control có thể được thả tại ``at_position`` hay không. ``at_position`` là cục bộ đối với control này.
 
-This method should only be used to test the data. Process the data in :ref:`_drop_data()<class_Control_private_method__drop_data>`.
+Chỉ nên sử dụng phương thức này để kiểm tra dữ liệu. Xử lý dữ liệu trong :ref:`_drop_data()<class_Control_private_method__drop_data>`.
 
-\ **Note:** If the drag was initiated by a keyboard shortcut or :ref:`accessibility_drag()<class_Control_method_accessibility_drag>`, ``at_position`` is set to :ref:`Vector2.INF<class_Vector2_constant_INF>`, and the currently selected item/text position should be used as the drop position.
+\ **Lưu ý:** Nếu thao tác kéo được bắt đầu bằng phím tắt hoặc :ref:`accessibility_drag()<class_Control_method_accessibility_drag>`, ``at_position`` được đặt thành :ref:`Vector2.INF<class_Vector2_constant_INF>`, và nên sử dụng vị trí mục/văn bản hiện được chọn làm vị trí thả.
 
 
 .. tabs::
@@ -2568,16 +2568,16 @@ This method should only be used to test the data. Process the data in :ref:`_dro
  .. code-tab:: gdscript
 
     func _can_drop_data(position, data):
-        # Check position if it is relevant to you
-        # Otherwise, just check data
+        # Kiểm tra vị trí nếu bạn cần
+        # Nếu không, chỉ cần kiểm tra dữ liệu
         return typeof(data) == TYPE_DICTIONARY and data.has("expected")
 
  .. code-tab:: csharp
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
-        // Check position if it is relevant to you
-        // Otherwise, just check data
+        // Kiểm tra vị trí nếu bạn cần
+        // Nếu không, chỉ cần kiểm tra dữ liệu
         return data.VariantType == Variant.Type.Dictionary && data.AsGodotDictionary().ContainsKey("expected");
     }
 
@@ -2593,9 +2593,9 @@ This method should only be used to test the data. Process the data in :ref:`_dro
 
 |void| **_drop_data**\ (\ at_position\: :ref:`Vector2<class_Vector2>`, data\: :ref:`Variant<class_Variant>`\ ) |virtual| :ref:`🔗<class_Control_private_method__drop_data>`
 
-Godot calls this method to pass you the ``data`` from a control's :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` result. Godot first calls :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` to test if ``data`` is allowed to drop at ``at_position`` where ``at_position`` is local to this control.
+Godot gọi method này để truyền ``data`` từ kết quả :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` của một control. Trước tiên, Godot gọi :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` để kiểm tra xem ``data`` có được phép thả tại ``at_position`` hay không, trong đó ``at_position`` là cục bộ đối với control này.
 
-\ **Note:** If the drag was initiated by a keyboard shortcut or :ref:`accessibility_drag()<class_Control_method_accessibility_drag>`, ``at_position`` is set to :ref:`Vector2.INF<class_Vector2_constant_INF>`, and the currently selected item/text position should be used as the drop position.
+\ **Lưu ý:** Nếu thao tác kéo được bắt đầu bằng phím tắt hoặc :ref:`accessibility_drag()<class_Control_method_accessibility_drag>`, ``at_position`` được đặt thành :ref:`Vector2.INF<class_Vector2_constant_INF>`, và nên sử dụng vị trí mục/văn bản hiện được chọn làm vị trí thả.
 
 
 .. tabs::
@@ -2632,7 +2632,7 @@ Godot calls this method to pass you the ``data`` from a control's :ref:`_get_dra
 
 :ref:`String<class_String>` **_get_accessibility_container_name**\ (\ node\: :ref:`Node<class_Node>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__get_accessibility_container_name>`
 
-Override this method to return a human-readable description of the position of the child ``node`` in the custom container, added to the :ref:`accessibility_name<class_Control_property_accessibility_name>`.
+Ghi đè method này để trả về mô tả dễ đọc về vị trí của child ``node`` trong custom container, được thêm vào :ref:`accessibility_name<class_Control_property_accessibility_name>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2644,9 +2644,9 @@ Override this method to return a human-readable description of the position of t
 
 :ref:`int<class_int>` **_get_cursor_shape**\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__get_cursor_shape>`
 
-Virtual method to be implemented by the user. Returns the cursor shape for the position ``at_position`` in the control's local coordinates, which will typically be used while hovering over this control. See :ref:`get_cursor_shape()<class_Control_method_get_cursor_shape>`.
+Method ảo do người dùng triển khai. Trả về hình dạng con trỏ cho vị trí ``at_position`` trong tọa độ cục bộ của control, thường được sử dụng khi di chuột qua control này. Xem :ref:`get_cursor_shape()<class_Control_method_get_cursor_shape>`.
 
-If not overridden, defaults to :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`.
+Nếu không được ghi đè, mặc định là :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2658,11 +2658,11 @@ If not overridden, defaults to :ref:`mouse_default_cursor_shape<class_Control_pr
 
 :ref:`Variant<class_Variant>` **_get_drag_data**\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| :ref:`🔗<class_Control_private_method__get_drag_data>`
 
-Godot calls this method to get data that can be dragged and dropped onto controls that expect drop data. Returns ``null`` if there is no data to drag. Controls that want to receive drop data should implement :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` and :ref:`_drop_data()<class_Control_private_method__drop_data>`. ``at_position`` is local to this control. Drag may be forced with :ref:`force_drag()<class_Control_method_force_drag>`.
+Godot gọi method này để lấy dữ liệu có thể được kéo và thả vào các control mong đợi dữ liệu thả. Trả về ``null`` nếu không có dữ liệu để kéo. Các control muốn nhận dữ liệu thả phải triển khai :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` và :ref:`_drop_data()<class_Control_private_method__drop_data>`. ``at_position`` là cục bộ đối với control này. Có thể buộc thao tác kéo bằng :ref:`force_drag()<class_Control_method_force_drag>`.
 
-A preview that will follow the mouse that should represent the data can be set with :ref:`set_drag_preview()<class_Control_method_set_drag_preview>`. A good time to set the preview is in this method.
+Có thể thiết lập bản xem trước sẽ đi theo chuột và đại diện cho dữ liệu bằng :ref:`set_drag_preview()<class_Control_method_set_drag_preview>`. Phương thức này là thời điểm thích hợp để thiết lập bản xem trước.
 
-\ **Note:** If the drag was initiated by a keyboard shortcut or :ref:`accessibility_drag()<class_Control_method_accessibility_drag>`, ``at_position`` is set to :ref:`Vector2.INF<class_Vector2_constant_INF>`, and the currently selected item/text position should be used as the drag position.
+\ **Lưu ý:** Nếu thao tác kéo được khởi tạo bằng phím tắt hoặc :ref:`accessibility_drag()<class_Control_method_accessibility_drag>`, ``at_position`` được đặt thành :ref:`Vector2.INF<class_Vector2_constant_INF>`, và mục/vị trí văn bản hiện được chọn sẽ được sử dụng làm vị trí kéo.
 
 
 .. tabs::
@@ -2670,16 +2670,16 @@ A preview that will follow the mouse that should represent the data can be set w
  .. code-tab:: gdscript
 
     func _get_drag_data(position):
-        var mydata = make_data() # This is your custom method generating the drag data.
-        set_drag_preview(make_preview(mydata)) # This is your custom method generating the preview of the drag data.
+        var mydata = make_data() # Đây là phương thức tùy chỉnh của bạn để tạo dữ liệu kéo.
+        set_drag_preview(make_preview(mydata)) # Đây là phương thức tùy chỉnh của bạn để tạo bản xem trước của dữ liệu kéo.
         return mydata
 
  .. code-tab:: csharp
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
-        var myData = MakeData(); // This is your custom method generating the drag data.
-        SetDragPreview(MakePreview(myData)); // This is your custom method generating the preview of the drag data.
+        var myData = MakeData(); // Đây là phương thức tùy chỉnh của bạn để tạo dữ liệu kéo.
+        SetDragPreview(MakePreview(myData)); // Đây là phương thức tùy chỉnh của bạn để tạo bản xem trước của dữ liệu kéo.
         return myData;
     }
 
@@ -2695,13 +2695,13 @@ A preview that will follow the mouse that should represent the data can be set w
 
 :ref:`Vector2<class_Vector2>` **_get_maximum_size**\ (\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__get_maximum_size>`
 
-Virtual method to be implemented by the user. Returns the maximum size for this control. Alternative to :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` for controlling maximum size via code. The actual maximum size will be the max value of these two (in each axis separately).
+Phương thức ảo do người dùng triển khai. Trả về kích thước tối đa của control này. Đây là lựa chọn thay thế cho :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` để kiểm soát kích thước tối đa bằng code. Kích thước tối đa thực tế sẽ là giá trị lớn hơn trong hai giá trị này (riêng theo từng trục).
 
-If not overridden, defaults to :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
+Nếu không được ghi đè, mặc định là :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
 
-\ **Note:** This method will not be called when the script is attached to a **Control** node that already overrides its maximum size (e.g. :ref:`ScrollContainer<class_ScrollContainer>`).
+\ **Lưu ý:** Phương thức này sẽ không được gọi khi script được gắn vào một node **Control** đã ghi đè kích thước tối đa của nó (ví dụ: :ref:`ScrollContainer<class_ScrollContainer>`).
 
-\ **Note:** It is recommended to use :ref:`get_bound_minimum_size()<class_Control_method_get_bound_minimum_size>` instead of :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>` when implementing this method, as the former respects maximum size limits when calculating the minimum size, while the latter does not.
+\ **Lưu ý:** Bạn nên sử dụng :ref:`get_bound_minimum_size()<class_Control_method_get_bound_minimum_size>` thay vì :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>` khi triển khai phương thức này, vì phương thức trước tôn trọng các giới hạn kích thước tối đa khi tính kích thước tối thiểu, còn phương thức sau thì không.
 
 .. rst-class:: classref-item-separator
 
@@ -2713,11 +2713,11 @@ If not overridden, defaults to :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
 
 :ref:`Vector2<class_Vector2>` **_get_minimum_size**\ (\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__get_minimum_size>`
 
-Virtual method to be implemented by the user. Returns the minimum size for this control. Alternative to :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` for controlling minimum size via code. The actual minimum size will be the max value of these two (in each axis separately).
+Phương thức ảo do người dùng triển khai. Trả về kích thước tối thiểu cho control này. Đây là lựa chọn thay thế cho :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` để điều khiển kích thước tối thiểu thông qua code. Kích thước tối thiểu thực tế sẽ là giá trị max của hai giá trị này (riêng biệt trên từng trục).
 
-If not overridden, defaults to :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
+Nếu không được ghi đè, mặc định là :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
 
-\ **Note:** This method will not be called when the script is attached to a **Control** node that already overrides its minimum size (e.g. :ref:`Label<class_Label>`, :ref:`Button<class_Button>`, :ref:`PanelContainer<class_PanelContainer>` etc.). It can only be used with most basic GUI nodes, like **Control**, :ref:`Container<class_Container>`, :ref:`Panel<class_Panel>` etc.
+\ **Lưu ý:** Phương thức này sẽ không được gọi khi script được gắn vào một node **Control** đã ghi đè kích thước tối thiểu của nó (ví dụ: :ref:`Label<class_Label>`, :ref:`Button<class_Button>`, :ref:`PanelContainer<class_PanelContainer>` v.v.). Phương thức này chỉ có thể được sử dụng với hầu hết các GUI node cơ bản, như **Control**, :ref:`Container<class_Container>`, :ref:`Panel<class_Panel>` v.v.
 
 .. rst-class:: classref-item-separator
 
@@ -2729,9 +2729,9 @@ If not overridden, defaults to :ref:`Vector2.ZERO<class_Vector2_constant_ZERO>`.
 
 :ref:`String<class_String>` **_get_tooltip**\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__get_tooltip>`
 
-Virtual method to be implemented by the user. Returns the tooltip text for the position ``at_position`` in the control's local coordinates, which will typically appear when the cursor is resting over this control. See :ref:`get_tooltip()<class_Control_method_get_tooltip>`.
+Phương thức ảo do người dùng triển khai. Trả về văn bản tooltip cho vị trí ``at_position`` trong tọa độ cục bộ của control, thường sẽ xuất hiện khi con trỏ dừng trên control này. Xem :ref:`get_tooltip()<class_Control_method_get_tooltip>`.
 
-\ **Note:** If this method returns an empty :ref:`String<class_String>` and :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` is not overridden, no tooltip is displayed.
+\ **Lưu ý:** Nếu phương thức này trả về một :ref:`String<class_String>` rỗng và :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` không được ghi đè, chú giải công cụ sẽ không được hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -2743,7 +2743,7 @@ Virtual method to be implemented by the user. Returns the tooltip text for the p
 
 :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` **_get_tooltip_auto_translate_mode_at**\ (\ at_position\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__get_tooltip_auto_translate_mode_at>`
 
-Return the auto-translation mode at the given ``at_position``. If not implemented, the :ref:`tooltip_auto_translate_mode<class_Control_property_tooltip_auto_translate_mode>` property will be used instead.
+Trả về chế độ tự động dịch tại ``at_position`` đã cho. Nếu chưa được triển khai, thuộc tính :ref:`tooltip_auto_translate_mode<class_Control_property_tooltip_auto_translate_mode>` sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -2755,9 +2755,9 @@ Return the auto-translation mode at the given ``at_position``. If not implemente
 
 |void| **_gui_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_Control_private_method__gui_input>`
 
-Virtual method to be implemented by the user. Override this method to handle and accept inputs on UI elements. See also :ref:`accept_event()<class_Control_method_accept_event>`.
+Phương thức ảo để người dùng triển khai. Ghi đè phương thức này để xử lý và chấp nhận đầu vào trên các phần tử UI. Xem thêm :ref:`accept_event()<class_Control_method_accept_event>`.
 
-\ **Example:** Click on the control to print a message:
+\ **Ví dụ:** Nhấp vào control để in một thông báo:
 
 
 .. tabs::
@@ -2784,19 +2784,19 @@ Virtual method to be implemented by the user. Override this method to handle and
 
 
 
-If the ``event`` inherits :ref:`InputEventMouse<class_InputEventMouse>`, this method will **not** be called when:
+Nếu ``event`` kế thừa :ref:`InputEventMouse<class_InputEventMouse>`, phương thức này sẽ **không** được gọi khi:
 
-- the control's :ref:`mouse_filter<class_Control_property_mouse_filter>` is set to :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`;
+- :ref:`mouse_filter<class_Control_property_mouse_filter>` của control được đặt thành :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`;​
 
-- the control is obstructed by another control on top, that doesn't have :ref:`mouse_filter<class_Control_property_mouse_filter>` set to :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`;
+- control bị một control khác ở phía trên che khuất và control đó không có :ref:`mouse_filter<class_Control_property_mouse_filter>` được đặt thành :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`;
 
-- the control's parent has :ref:`mouse_filter<class_Control_property_mouse_filter>` set to :ref:`MOUSE_FILTER_STOP<class_Control_constant_MOUSE_FILTER_STOP>` or has accepted the event;
+- parent của control có :ref:`mouse_filter<class_Control_property_mouse_filter>` được đặt thành :ref:`MOUSE_FILTER_STOP<class_Control_constant_MOUSE_FILTER_STOP>` hoặc đã chấp nhận sự kiện;
 
-- the control's parent has :ref:`clip_contents<class_Control_property_clip_contents>` enabled and the ``event``'s position is outside the parent's rectangle;
+- parent của control đã bật :ref:`clip_contents<class_Control_property_clip_contents>` và vị trí của ``event`` nằm ngoài hình chữ nhật của parent;
 
-- the ``event``'s position is outside the control (see :ref:`_has_point()<class_Control_private_method__has_point>`).
+- vị trí của ``event`` nằm ngoài control (xem :ref:`_has_point()<class_Control_private_method__has_point>`).
 
-\ **Note:** The ``event``'s position is relative to this control's origin.
+\ **Lưu ý:** Vị trí của ``event`` là tương đối so với gốc của control này.
 
 .. rst-class:: classref-item-separator
 
@@ -2808,11 +2808,11 @@ If the ``event`` inherits :ref:`InputEventMouse<class_InputEventMouse>`, this me
 
 :ref:`bool<class_bool>` **_has_point**\ (\ point\: :ref:`Vector2<class_Vector2>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__has_point>`
 
-Virtual method to be implemented by the user. Returns whether the given ``point`` is inside this control.
+Phương thức ảo do người dùng triển khai. Trả về việc ``point`` đã cho có nằm bên trong control này hay không.
 
-If not overridden, default behavior is checking if the point is within the control's Rect.
+Nếu không được ghi đè, hành vi mặc định là kiểm tra xem điểm đó có nằm trong Rect của control hay không.
 
-\ **Note:** If you want to check if a point is inside the control, you can use ``Rect2(Vector2.ZERO, size).has_point(point)``.
+\ **Lưu ý:** Nếu bạn muốn kiểm tra xem một điểm có nằm bên trong control hay không, bạn có thể sử dụng ``Rect2(Vector2.ZERO, size).has_point(point)``.
 
 .. rst-class:: classref-item-separator
 
@@ -2824,19 +2824,19 @@ If not overridden, default behavior is checking if the point is within the contr
 
 :ref:`Object<class_Object>` **_make_custom_tooltip**\ (\ for_text\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__make_custom_tooltip>`
 
-Virtual method to be implemented by the user. Returns a **Control** node that should be used as a tooltip instead of the default one. ``for_text`` is the return value of :ref:`get_tooltip()<class_Control_method_get_tooltip>`.
+Phương thức ảo để người dùng triển khai. Trả về một nút **Control** được dùng làm chú giải công cụ thay cho chú giải mặc định. ``for_text`` là giá trị trả về của :ref:`get_tooltip()<class_Control_method_get_tooltip>`.
 
-The returned node must be of type **Control** or Control-derived. It can have child nodes of any type. It is freed when the tooltip disappears, so make sure you always provide a new instance (if you want to use a pre-existing node from your scene tree, you can duplicate it and pass the duplicated instance). When ``null`` or a non-Control node is returned, the default tooltip will be used instead.
+Nút được trả về phải có kiểu **Control** hoặc kế thừa từ Control. Nút này có thể có các nút con thuộc bất kỳ kiểu nào. Nút sẽ được giải phóng khi chú giải công cụ biến mất, vì vậy hãy luôn cung cấp một thực thể mới (nếu muốn sử dụng một nút có sẵn trong cây cảnh, bạn có thể sao chép nó rồi truyền thực thể đã sao chép). Khi trả về ``null`` hoặc một nút không phải Control, chú giải công cụ mặc định sẽ được sử dụng.
 
-The returned node will be added as child to a :ref:`PopupPanel<class_PopupPanel>`, so you should only provide the contents of that panel. That :ref:`PopupPanel<class_PopupPanel>` can be themed using :ref:`Theme.set_stylebox()<class_Theme_method_set_stylebox>` for the type ``"TooltipPanel"`` (see :ref:`tooltip_text<class_Control_property_tooltip_text>` for an example).
+Nút được trả về sẽ được thêm làm nút con của một :ref:`PopupPanel<class_PopupPanel>`, vì vậy bạn chỉ nên cung cấp nội dung của panel đó. :ref:`PopupPanel<class_PopupPanel>` có thể được áp dụng theme bằng :ref:`Theme.set_stylebox()<class_Theme_method_set_stylebox>` cho kiểu ``"TooltipPanel"`` (xem :ref:`tooltip_text<class_Control_property_tooltip_text>` để biết ví dụ).
 
-\ **Note:** The tooltip is shrunk to minimal size. If you want to ensure it's fully visible, you might want to set its :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` to some non-zero value.
+\ **Lưu ý:** Chú giải công cụ được thu nhỏ về kích thước tối thiểu. Nếu muốn đảm bảo chú giải hiển thị đầy đủ, bạn có thể đặt :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` của nó thành một giá trị khác không.
 
-\ **Note:** The node (and any relevant children) should have their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` set to ``true`` when returned, otherwise, the viewport that instantiates it will not be able to calculate its minimum size reliably.
+\ **Lưu ý:** Khi được trả về, nút (và mọi nút con liên quan) phải có :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` được đặt thành ``true``, nếu không viewport khởi tạo nút đó sẽ không thể tính toán kích thước tối thiểu một cách đáng tin cậy.
 
-\ **Note:** If overridden, this method is called even if :ref:`get_tooltip()<class_Control_method_get_tooltip>` returns an empty string. When this happens with the default tooltip, it is not displayed. To copy this behavior, return ``null`` in this method when ``for_text`` is empty.
+\ **Lưu ý:** Nếu được ghi đè, phương thức này vẫn được gọi ngay cả khi :ref:`get_tooltip()<class_Control_method_get_tooltip>` trả về một chuỗi rỗng. Khi điều này xảy ra với chú giải công cụ mặc định, chú giải sẽ không được hiển thị. Để sao chép hành vi này, hãy trả về ``null`` trong phương thức này khi ``for_text`` rỗng.
 
-\ **Example:** Use a constructed node as a tooltip:
+\ **Ví dụ:** Sử dụng một nút được tạo làm chú giải công cụ:
 
 
 .. tabs::
@@ -2859,7 +2859,7 @@ The returned node will be added as child to a :ref:`PopupPanel<class_PopupPanel>
 
 
 
-\ **Example:** Use a scene instance as a tooltip:
+\ **Ví dụ:** Sử dụng một scene instance làm tooltip:
 
 
 .. tabs::
@@ -2892,9 +2892,9 @@ The returned node will be added as child to a :ref:`PopupPanel<class_PopupPanel>
 
 :ref:`Array<class_Array>`\[:ref:`Vector3i<class_Vector3i>`\] **_structured_text_parser**\ (\ args\: :ref:`Array<class_Array>`, text\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_Control_private_method__structured_text_parser>`
 
-User defined BiDi algorithm override function.
+Hàm override thuật toán BiDi do người dùng định nghĩa.
 
-Returns an :ref:`Array<class_Array>` of :ref:`Vector3i<class_Vector3i>` text ranges and text base directions, in the left-to-right order. Ranges should cover full source ``text`` without overlaps. BiDi algorithm will be used on each range separately.
+Trả về một :ref:`Array<class_Array>` gồm các khoảng văn bản :ref:`Vector3i<class_Vector3i>` và hướng cơ sở của văn bản, theo thứ tự từ trái sang phải. Các khoảng phải bao phủ toàn bộ văn bản nguồn ``text`` mà không chồng lấn. Thuật toán BiDi sẽ được áp dụng riêng cho từng khoảng.
 
 .. rst-class:: classref-item-separator
 
@@ -2906,9 +2906,9 @@ Returns an :ref:`Array<class_Array>` of :ref:`Vector3i<class_Vector3i>` text ran
 
 |void| **accept_event**\ (\ ) :ref:`🔗<class_Control_method_accept_event>`
 
-Marks an input event as handled. Once you accept an input event, it stops propagating, even to nodes listening to :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>` or :ref:`Node._unhandled_key_input()<class_Node_private_method__unhandled_key_input>`.
+Đánh dấu một input event là đã được xử lý. Sau khi bạn chấp nhận một input event, sự kiện đó sẽ ngừng lan truyền, kể cả đến các node đang lắng nghe :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>` hoặc :ref:`Node._unhandled_key_input()<class_Node_private_method__unhandled_key_input>`.
 
-\ **Note:** This does not affect the methods in :ref:`Input<class_Input>`, only the way events are propagated.
+\ **Lưu ý:** Điều này không ảnh hưởng đến các phương thức trong :ref:`Input<class_Input>`, chỉ ảnh hưởng đến cách các sự kiện được lan truyền.
 
 .. rst-class:: classref-item-separator
 
@@ -2920,7 +2920,7 @@ Marks an input event as handled. Once you accept an input event, it stops propag
 
 |void| **accessibility_drag**\ (\ ) :ref:`🔗<class_Control_method_accessibility_drag>`
 
-Starts drag-and-drop operation without using a mouse.
+Bắt đầu thao tác kéo và thả mà không sử dụng chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -2932,7 +2932,7 @@ Starts drag-and-drop operation without using a mouse.
 
 |void| **accessibility_drop**\ (\ ) :ref:`🔗<class_Control_method_accessibility_drop>`
 
-Ends drag-and-drop operation without using a mouse.
+Kết thúc thao tác kéo và thả mà không sử dụng chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -2944,31 +2944,31 @@ Ends drag-and-drop operation without using a mouse.
 
 |void| **add_theme_color_override**\ (\ name\: :ref:`StringName<class_StringName>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_Control_method_add_theme_color_override>`
 
-Creates a local override for a theme :ref:`Color<class_Color>` with the specified ``name``. Local overrides always take precedence when fetching theme items for the control. An override can be removed with :ref:`remove_theme_color_override()<class_Control_method_remove_theme_color_override>`.
+Tạo một ghi đè cục bộ cho thuộc tính theme :ref:`Color<class_Color>` bằng ``name`` đã chỉ định. Các ghi đè cục bộ luôn được ưu tiên khi lấy các mục theme cho control. Có thể xóa ghi đè bằng :ref:`remove_theme_color_override()<class_Control_method_remove_theme_color_override>`.
 
-See also :ref:`get_theme_color()<class_Control_method_get_theme_color>`.
+Xem thêm :ref:`get_theme_color()<class_Control_method_get_theme_color>`.
 
-\ **Example:** Override a :ref:`Label<class_Label>`'s color and reset it later:
+\ **Ví dụ:** Ghi đè màu của :ref:`Label<class_Label>` rồi đặt lại sau:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Given the child Label node "MyLabel", override its font color with a custom value.
+    # Với node Label con "MyLabel", ghi đè màu phông chữ bằng một giá trị tùy chỉnh.
     $MyLabel.add_theme_color_override("font_color", Color(1, 0.5, 0))
-    # Reset the font color of the child label.
+    # Đặt lại màu phông chữ của label con.
     $MyLabel.remove_theme_color_override("font_color")
-    # Alternatively it can be overridden with the default value from the Label type.
+    # Ngoài ra, có thể ghi đè bằng giá trị mặc định từ kiểu Label.
     $MyLabel.add_theme_color_override("font_color", get_theme_color("font_color", "Label"))
 
  .. code-tab:: csharp
 
-    // Given the child Label node "MyLabel", override its font color with a custom value.
+    // Với node Label con "MyLabel", ghi đè màu phông chữ bằng một giá trị tùy chỉnh.
     GetNode<Label>("MyLabel").AddThemeColorOverride("font_color", new Color(1, 0.5f, 0));
-    // Reset the font color of the child label.
+    // Đặt lại màu phông chữ của nhãn con.
     GetNode<Label>("MyLabel").RemoveThemeColorOverride("font_color");
-    // Alternatively it can be overridden with the default value from the Label type.
+    // Ngoài ra, có thể ghi đè bằng giá trị mặc định từ kiểu Label.
     GetNode<Label>("MyLabel").AddThemeColorOverride("font_color", GetThemeColor("font_color", "Label"));
 
 
@@ -2983,9 +2983,9 @@ See also :ref:`get_theme_color()<class_Control_method_get_theme_color>`.
 
 |void| **add_theme_constant_override**\ (\ name\: :ref:`StringName<class_StringName>`, constant\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Control_method_add_theme_constant_override>`
 
-Creates a local override for a theme constant with the specified ``name``. Local overrides always take precedence when fetching theme items for the control. An override can be removed with :ref:`remove_theme_constant_override()<class_Control_method_remove_theme_constant_override>`.
+Tạo một giá trị ghi đè cục bộ cho hằng số theme với ``name`` được chỉ định. Các giá trị ghi đè cục bộ luôn được ưu tiên khi lấy các mục theme cho control. Có thể xóa giá trị ghi đè bằng :ref:`remove_theme_constant_override()<class_Control_method_remove_theme_constant_override>`.
 
-See also :ref:`get_theme_constant()<class_Control_method_get_theme_constant>`.
+Xem thêm :ref:`get_theme_constant()<class_Control_method_get_theme_constant>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2997,9 +2997,9 @@ See also :ref:`get_theme_constant()<class_Control_method_get_theme_constant>`.
 
 |void| **add_theme_font_override**\ (\ name\: :ref:`StringName<class_StringName>`, font\: :ref:`Font<class_Font>`\ ) :ref:`🔗<class_Control_method_add_theme_font_override>`
 
-Creates a local override for a theme :ref:`Font<class_Font>` with the specified ``name``. Local overrides always take precedence when fetching theme items for the control. An override can be removed with :ref:`remove_theme_font_override()<class_Control_method_remove_theme_font_override>`.
+Tạo một giá trị ghi đè cục bộ cho :ref:`Font<class_Font>` của theme với ``name`` được chỉ định. Các giá trị ghi đè cục bộ luôn được ưu tiên khi lấy các mục theme cho control. Có thể xóa giá trị ghi đè bằng :ref:`remove_theme_font_override()<class_Control_method_remove_theme_font_override>`.
 
-See also :ref:`get_theme_font()<class_Control_method_get_theme_font>`.
+Xem thêm :ref:`get_theme_font()<class_Control_method_get_theme_font>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3011,9 +3011,9 @@ See also :ref:`get_theme_font()<class_Control_method_get_theme_font>`.
 
 |void| **add_theme_font_size_override**\ (\ name\: :ref:`StringName<class_StringName>`, font_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Control_method_add_theme_font_size_override>`
 
-Creates a local override for a theme font size with the specified ``name``. Local overrides always take precedence when fetching theme items for the control. An override can be removed with :ref:`remove_theme_font_size_override()<class_Control_method_remove_theme_font_size_override>`.
+Tạo một giá trị ghi đè cục bộ cho cỡ phông chữ của theme với ``name`` được chỉ định. Các giá trị ghi đè cục bộ luôn được ưu tiên khi lấy các mục theme cho control. Có thể xóa giá trị ghi đè bằng :ref:`remove_theme_font_size_override()<class_Control_method_remove_theme_font_size_override>`.
 
-See also :ref:`get_theme_font_size()<class_Control_method_get_theme_font_size>`.
+Xem thêm :ref:`get_theme_font_size()<class_Control_method_get_theme_font_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3025,9 +3025,9 @@ See also :ref:`get_theme_font_size()<class_Control_method_get_theme_font_size>`.
 
 |void| **add_theme_icon_override**\ (\ name\: :ref:`StringName<class_StringName>`, texture\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_Control_method_add_theme_icon_override>`
 
-Creates a local override for a theme icon with the specified ``name``. Local overrides always take precedence when fetching theme items for the control. An override can be removed with :ref:`remove_theme_icon_override()<class_Control_method_remove_theme_icon_override>`.
+Tạo một ghi đè cục bộ cho biểu tượng theme với ``name`` được chỉ định. Các ghi đè cục bộ luôn được ưu tiên khi tìm nạp các mục theme cho control. Có thể xóa một ghi đè bằng :ref:`remove_theme_icon_override()<class_Control_method_remove_theme_icon_override>`.
 
-See also :ref:`get_theme_icon()<class_Control_method_get_theme_icon>`.
+Xem thêm :ref:`get_theme_icon()<class_Control_method_get_theme_icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3039,37 +3039,37 @@ See also :ref:`get_theme_icon()<class_Control_method_get_theme_icon>`.
 
 |void| **add_theme_stylebox_override**\ (\ name\: :ref:`StringName<class_StringName>`, stylebox\: :ref:`StyleBox<class_StyleBox>`\ ) :ref:`🔗<class_Control_method_add_theme_stylebox_override>`
 
-Creates a local override for a theme :ref:`StyleBox<class_StyleBox>` with the specified ``name``. Local overrides always take precedence when fetching theme items for the control. An override can be removed with :ref:`remove_theme_stylebox_override()<class_Control_method_remove_theme_stylebox_override>`.
+Tạo một ghi đè cục bộ cho :ref:`StyleBox<class_StyleBox>` của theme với ``name`` được chỉ định. Các ghi đè cục bộ luôn được ưu tiên khi tìm nạp các mục theme cho control. Có thể xóa một ghi đè bằng :ref:`remove_theme_stylebox_override()<class_Control_method_remove_theme_stylebox_override>`.
 
-See also :ref:`get_theme_stylebox()<class_Control_method_get_theme_stylebox>`.
+Xem thêm :ref:`get_theme_stylebox()<class_Control_method_get_theme_stylebox>`.
 
-\ **Example:** Modify a property in a :ref:`StyleBox<class_StyleBox>` by duplicating it:
+\ **Ví dụ:** Sửa đổi một thuộc tính trong :ref:`StyleBox<class_StyleBox>` bằng cách nhân bản nó:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # The snippet below assumes the child node "MyButton" has a StyleBoxFlat assigned.
-    # Resources are shared across instances, so we need to duplicate it
-    # to avoid modifying the appearance of all other buttons.
+    # Đoạn mã dưới đây giả định rằng node con "MyButton" đã được gán một StyleBoxFlat.
+    # Tài nguyên được chia sẻ giữa các instance, vì vậy chúng ta cần nhân bản nó
+    # để tránh sửa đổi giao diện của tất cả các nút khác.
     var new_stylebox_normal = $MyButton.get_theme_stylebox("normal").duplicate()
     new_stylebox_normal.border_width_top = 3
     new_stylebox_normal.border_color = Color(0, 1, 0.5)
     $MyButton.add_theme_stylebox_override("normal", new_stylebox_normal)
-    # Remove the stylebox override.
+    # Xóa ghi đè stylebox.
     $MyButton.remove_theme_stylebox_override("normal")
 
  .. code-tab:: csharp
 
-    // The snippet below assumes the child node "MyButton" has a StyleBoxFlat assigned.
-    // Resources are shared across instances, so we need to duplicate it
-    // to avoid modifying the appearance of all other buttons.
+    // Đoạn mã bên dưới giả định rằng node con "MyButton" đã được gán một StyleBoxFlat.
+    // Tài nguyên được chia sẻ giữa các instance, vì vậy chúng ta cần nhân bản nó
+    // để tránh sửa đổi giao diện của tất cả các nút khác.
     StyleBoxFlat newStyleboxNormal = GetNode<Button>("MyButton").GetThemeStylebox("normal").Duplicate() as StyleBoxFlat;
     newStyleboxNormal.BorderWidthTop = 3;
     newStyleboxNormal.BorderColor = new Color(0, 1, 0.5f);
     GetNode<Button>("MyButton").AddThemeStyleboxOverride("normal", newStyleboxNormal);
-    // Remove the stylebox override.
+    // Xóa ghi đè stylebox.
     GetNode<Button>("MyButton").RemoveThemeStyleboxOverride("normal");
 
 
@@ -3084,7 +3084,7 @@ See also :ref:`get_theme_stylebox()<class_Control_method_get_theme_stylebox>`.
 
 |void| **begin_bulk_theme_override**\ (\ ) :ref:`🔗<class_Control_method_begin_bulk_theme_override>`
 
-Prevents ``*_theme_*_override`` methods from emitting :ref:`NOTIFICATION_THEME_CHANGED<class_Control_constant_NOTIFICATION_THEME_CHANGED>` until :ref:`end_bulk_theme_override()<class_Control_method_end_bulk_theme_override>` is called.
+Ngăn các phương thức ``*_theme_*_override`` phát ra :ref:`NOTIFICATION_THEME_CHANGED<class_Control_constant_NOTIFICATION_THEME_CHANGED>` cho đến khi :ref:`end_bulk_theme_override()<class_Control_method_end_bulk_theme_override>` được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -3096,7 +3096,7 @@ Prevents ``*_theme_*_override`` methods from emitting :ref:`NOTIFICATION_THEME_C
 
 |void| **end_bulk_theme_override**\ (\ ) :ref:`🔗<class_Control_method_end_bulk_theme_override>`
 
-Ends a bulk theme override update. See :ref:`begin_bulk_theme_override()<class_Control_method_begin_bulk_theme_override>`.
+Kết thúc việc cập nhật ghi đè theme hàng loạt. Xem :ref:`begin_bulk_theme_override()<class_Control_method_begin_bulk_theme_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3108,7 +3108,7 @@ Ends a bulk theme override update. See :ref:`begin_bulk_theme_override()<class_C
 
 :ref:`Control<class_Control>` **find_next_valid_focus**\ (\ ) |const| :ref:`🔗<class_Control_method_find_next_valid_focus>`
 
-Finds the next (below in the tree) **Control** that can receive the focus.
+Tìm **Control** tiếp theo (bên dưới trong cây) có thể nhận focus.
 
 .. rst-class:: classref-item-separator
 
@@ -3120,7 +3120,7 @@ Finds the next (below in the tree) **Control** that can receive the focus.
 
 :ref:`Control<class_Control>` **find_prev_valid_focus**\ (\ ) |const| :ref:`🔗<class_Control_method_find_prev_valid_focus>`
 
-Finds the previous (above in the tree) **Control** that can receive the focus.
+Tìm **Control** trước đó (bên trên trong cây) có thể nhận focus.
 
 .. rst-class:: classref-item-separator
 
@@ -3132,9 +3132,9 @@ Finds the previous (above in the tree) **Control** that can receive the focus.
 
 :ref:`Control<class_Control>` **find_valid_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_Control_method_find_valid_focus_neighbor>`
 
-Finds the next **Control** that can receive the focus on the specified :ref:`Side<enum_@GlobalScope_Side>`.
+Tìm **Control** tiếp theo có thể nhận focus ở :ref:`Side <enum_@GlobalScope_Side>` được chỉ định.
 
-\ **Note:** This is different from :ref:`get_focus_neighbor()<class_Control_method_get_focus_neighbor>`, which returns the path of a specified focus neighbor.
+\ **Lưu ý:** Điều này khác với :ref:`get_focus_neighbor()<class_Control_method_get_focus_neighbor>`, vốn trả về đường dẫn của focus neighbor được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -3146,9 +3146,9 @@ Finds the next **Control** that can receive the focus on the specified :ref:`Sid
 
 |void| **force_drag**\ (\ data\: :ref:`Variant<class_Variant>`, preview\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_Control_method_force_drag>`
 
-Forces drag and bypasses :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` and :ref:`set_drag_preview()<class_Control_method_set_drag_preview>` by passing ``data`` and ``preview``. Drag will start even if the mouse is neither over nor pressed on this control.
+Buộc thao tác kéo và bỏ qua :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` cùng :ref:`set_drag_preview()<class_Control_method_set_drag_preview>` bằng cách truyền ``data`` và ``preview``. Thao tác kéo sẽ bắt đầu ngay cả khi chuột không ở trên hoặc không được nhấn trên control này.
 
-The methods :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` and :ref:`_drop_data()<class_Control_private_method__drop_data>` must be implemented on controls that want to receive drop data.
+Các phương thức :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` và :ref:`_drop_data()<class_Control_private_method__drop_data>` phải được triển khai trên các control muốn nhận dữ liệu drop.
 
 .. rst-class:: classref-item-separator
 
@@ -3160,7 +3160,7 @@ The methods :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>`
 
 :ref:`float<class_float>` **get_anchor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_Control_method_get_anchor>`
 
-Returns the anchor for the specified :ref:`Side<enum_@GlobalScope_Side>`. A getter method for :ref:`anchor_bottom<class_Control_property_anchor_bottom>`, :ref:`anchor_left<class_Control_property_anchor_left>`, :ref:`anchor_right<class_Control_property_anchor_right>` and :ref:`anchor_top<class_Control_property_anchor_top>`.
+Trả về anchor cho :ref:`Side <enum_@GlobalScope_Side>` được chỉ định. Một phương thức getter cho :ref:`anchor_bottom<class_Control_property_anchor_bottom>`, :ref:`anchor_left<class_Control_property_anchor_left>`, :ref:`anchor_right<class_Control_property_anchor_right>` và :ref:`anchor_top<class_Control_property_anchor_top>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3172,7 +3172,7 @@ Returns the anchor for the specified :ref:`Side<enum_@GlobalScope_Side>`. A gett
 
 :ref:`Vector2<class_Vector2>` **get_begin**\ (\ ) |const| :ref:`🔗<class_Control_method_get_begin>`
 
-Returns :ref:`offset_left<class_Control_property_offset_left>` and :ref:`offset_top<class_Control_property_offset_top>`. See also :ref:`position<class_Control_property_position>`.
+Trả về :ref:`offset_left<class_Control_property_offset_left>` và :ref:`offset_top<class_Control_property_offset_top>`. Xem thêm :ref:`position<class_Control_property_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3184,11 +3184,11 @@ Returns :ref:`offset_left<class_Control_property_offset_left>` and :ref:`offset_
 
 :ref:`Vector2<class_Vector2>` **get_bound_minimum_size**\ (\ ) |const| :ref:`🔗<class_Control_method_get_bound_minimum_size>`
 
-Returns the bound value of :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>` by :ref:`get_combined_maximum_size()<class_Control_method_get_combined_maximum_size>`.
+Trả về giá trị bound của :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>` theo :ref:`get_combined_maximum_size()<class_Control_method_get_combined_maximum_size>`.
 
-This value is the true minimum size of the container, as the maximum size has priority over the minimum size.
+Giá trị này là kích thước tối thiểu thực sự của container, vì kích thước tối đa được ưu tiên hơn kích thước tối thiểu.
 
-For example, if the combined minimum size is (100, 100) and the combined maximum size is (50, 150), the bound minimum size will be (50, 100).
+Ví dụ: nếu kích thước tối thiểu kết hợp là (100, 100) và kích thước tối đa kết hợp là (50, 150), thì kích thước tối thiểu bound sẽ là (50, 100).
 
 .. rst-class:: classref-item-separator
 
@@ -3200,7 +3200,7 @@ For example, if the combined minimum size is (100, 100) and the combined maximum
 
 :ref:`Vector2<class_Vector2>` **get_combined_maximum_size**\ (\ ) |const| :ref:`🔗<class_Control_method_get_combined_maximum_size>`
 
-Returns the combined maximum size from :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` and :ref:`get_maximum_size()<class_Control_method_get_maximum_size>`, as well as the :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` of this node's parent if it is a Control node with :ref:`propagate_maximum_size<class_Control_property_propagate_maximum_size>` set to ``true``.
+Trả về kích thước tối đa kết hợp từ :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` và :ref:`get_maximum_size()<class_Control_method_get_maximum_size>`, cũng như :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` của node cha của node này nếu đó là một node Control có :ref:`propagate_maximum_size<class_Control_property_propagate_maximum_size>` được đặt thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -3212,7 +3212,7 @@ Returns the combined maximum size from :ref:`custom_maximum_size<class_Control_p
 
 :ref:`Vector2<class_Vector2>` **get_combined_minimum_size**\ (\ ) |const| :ref:`🔗<class_Control_method_get_combined_minimum_size>`
 
-Returns the combined minimum size from :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` and :ref:`get_minimum_size()<class_Control_method_get_minimum_size>`.
+Trả về kích thước tối thiểu kết hợp từ :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` và :ref:`get_minimum_size()<class_Control_method_get_minimum_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3224,7 +3224,7 @@ Returns the combined minimum size from :ref:`custom_minimum_size<class_Control_p
 
 :ref:`Vector2<class_Vector2>` **get_combined_pivot_offset**\ (\ ) |const| :ref:`🔗<class_Control_method_get_combined_pivot_offset>`
 
-Returns the combined value of :ref:`pivot_offset<class_Control_property_pivot_offset>` and :ref:`pivot_offset_ratio<class_Control_property_pivot_offset_ratio>`, in pixels. The ratio is multiplied by the control's size.
+Trả về giá trị kết hợp của :ref:`pivot_offset<class_Control_property_pivot_offset>` và :ref:`pivot_offset_ratio<class_Control_property_pivot_offset_ratio>`, tính bằng pixel. Tỷ lệ này được nhân với kích thước của control.
 
 .. rst-class:: classref-item-separator
 
@@ -3236,9 +3236,9 @@ Returns the combined value of :ref:`pivot_offset<class_Control_property_pivot_of
 
 :ref:`CursorShape<enum_Control_CursorShape>` **get_cursor_shape**\ (\ at_position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const| :ref:`🔗<class_Control_method_get_cursor_shape>`
 
-Returns the mouse cursor shape for this control when hovered over ``at_position`` in local coordinates. For most controls, this is the same as :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`, but some built-in controls implement more complex logic.
+Trả về hình dạng con trỏ chuột của control này khi di chuyển qua ``at_position`` trong các tọa độ cục bộ. Đối với hầu hết control, giá trị này giống với :ref:`mouse_default_cursor_shape<class_Control_property_mouse_default_cursor_shape>`, nhưng một số control tích hợp triển khai logic phức tạp hơn.
 
-You can override :ref:`_get_cursor_shape()<class_Control_private_method__get_cursor_shape>` to implement custom behavior for this method.
+Bạn có thể ghi đè :ref:`_get_cursor_shape()<class_Control_private_method__get_cursor_shape>` để triển khai hành vi tùy chỉnh cho phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -3250,7 +3250,7 @@ You can override :ref:`_get_cursor_shape()<class_Control_private_method__get_cur
 
 :ref:`Vector2<class_Vector2>` **get_end**\ (\ ) |const| :ref:`🔗<class_Control_method_get_end>`
 
-Returns :ref:`offset_right<class_Control_property_offset_right>` and :ref:`offset_bottom<class_Control_property_offset_bottom>`.
+Trả về :ref:`offset_right<class_Control_property_offset_right>` và :ref:`offset_bottom<class_Control_property_offset_bottom>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3262,7 +3262,7 @@ Returns :ref:`offset_right<class_Control_property_offset_right>` and :ref:`offse
 
 :ref:`FocusMode<enum_Control_FocusMode>` **get_focus_mode_with_override**\ (\ ) |const| :ref:`🔗<class_Control_method_get_focus_mode_with_override>`
 
-Returns the :ref:`focus_mode<class_Control_property_focus_mode>`, but takes the :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` into account. If :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` is set to :ref:`FOCUS_BEHAVIOR_DISABLED<class_Control_constant_FOCUS_BEHAVIOR_DISABLED>`, or it is set to :ref:`FOCUS_BEHAVIOR_INHERITED<class_Control_constant_FOCUS_BEHAVIOR_INHERITED>` and its ancestor is set to :ref:`FOCUS_BEHAVIOR_DISABLED<class_Control_constant_FOCUS_BEHAVIOR_DISABLED>`, then this returns :ref:`FOCUS_NONE<class_Control_constant_FOCUS_NONE>`.
+Trả về :ref:`focus_mode<class_Control_property_focus_mode>`, nhưng có tính đến :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>`. Nếu :ref:`focus_behavior_recursive<class_Control_property_focus_behavior_recursive>` được đặt thành :ref:`FOCUS_BEHAVIOR_DISABLED<class_Control_constant_FOCUS_BEHAVIOR_DISABLED>`, hoặc được đặt thành :ref:`FOCUS_BEHAVIOR_INHERITED<class_Control_constant_FOCUS_BEHAVIOR_INHERITED>` và ancestor của nó được đặt thành :ref:`FOCUS_BEHAVIOR_DISABLED<class_Control_constant_FOCUS_BEHAVIOR_DISABLED>`, thì phương thức này trả về :ref:`FOCUS_NONE<class_Control_constant_FOCUS_NONE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3274,9 +3274,9 @@ Returns the :ref:`focus_mode<class_Control_property_focus_mode>`, but takes the 
 
 :ref:`NodePath<class_NodePath>` **get_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_Control_method_get_focus_neighbor>`
 
-Returns the focus neighbor for the specified :ref:`Side<enum_@GlobalScope_Side>`. A getter method for :ref:`focus_neighbor_bottom<class_Control_property_focus_neighbor_bottom>`, :ref:`focus_neighbor_left<class_Control_property_focus_neighbor_left>`, :ref:`focus_neighbor_right<class_Control_property_focus_neighbor_right>` and :ref:`focus_neighbor_top<class_Control_property_focus_neighbor_top>`.
+Trả về focus neighbor cho :ref:`Side <enum_@GlobalScope_Side>` được chỉ định. Đây là phương thức getter cho :ref:`focus_neighbor_bottom<class_Control_property_focus_neighbor_bottom>`, :ref:`focus_neighbor_left<class_Control_property_focus_neighbor_left>`, :ref:`focus_neighbor_right<class_Control_property_focus_neighbor_right>` và :ref:`focus_neighbor_top<class_Control_property_focus_neighbor_top>`.
 
-\ **Note:** To find the next **Control** on the specific :ref:`Side<enum_@GlobalScope_Side>`, even if a neighbor is not assigned, use :ref:`find_valid_focus_neighbor()<class_Control_method_find_valid_focus_neighbor>`.
+\ **Lưu ý:** Để tìm **Control** tiếp theo ở :ref:`Side <enum_@GlobalScope_Side>` cụ thể, ngay cả khi một nút lân cận chưa được gán, hãy sử dụng :ref:`find_valid_focus_neighbor()<class_Control_method_find_valid_focus_neighbor>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3288,11 +3288,11 @@ Returns the focus neighbor for the specified :ref:`Side<enum_@GlobalScope_Side>`
 
 :ref:`Rect2<class_Rect2>` **get_global_rect**\ (\ ) |const| :ref:`🔗<class_Control_method_get_global_rect>`
 
-Returns the position and size of the control relative to the containing canvas. See :ref:`global_position<class_Control_property_global_position>` and :ref:`size<class_Control_property_size>`.
+Trả về vị trí và kích thước của control so với canvas chứa nó. Xem :ref:`global_position<class_Control_property_global_position>` và :ref:`size<class_Control_property_size>`.
 
-\ **Note:** If the node itself or any parent :ref:`CanvasItem<class_CanvasItem>` between the node and the canvas have a non default rotation or skew, the resulting size is likely not meaningful.
+\ **Lưu ý:** Nếu bản thân node hoặc bất kỳ :ref:`CanvasItem<class_CanvasItem>` cha nào nằm giữa node và canvas có phép xoay hoặc biến dạng xiên khác mặc định, kích thước nhận được có thể không có ý nghĩa.
 
-\ **Note:** Setting :ref:`Viewport.gui_snap_controls_to_pixels<class_Viewport_property_gui_snap_controls_to_pixels>` to ``true`` can lead to rounding inaccuracies between the displayed control and the returned :ref:`Rect2<class_Rect2>`.
+\ **Lưu ý:** Việc đặt :ref:`Viewport.gui_snap_controls_to_pixels<class_Viewport_property_gui_snap_controls_to_pixels>` thành ``true`` có thể dẫn đến sai số làm tròn giữa control được hiển thị và :ref:`Rect2<class_Rect2>` được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -3304,7 +3304,7 @@ Returns the position and size of the control relative to the containing canvas. 
 
 :ref:`Vector2<class_Vector2>` **get_maximum_size**\ (\ ) |const| :ref:`🔗<class_Control_method_get_maximum_size>`
 
-Returns the maximum size for this control. See :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>`.
+Trả về kích thước tối đa của control này. Xem :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3316,7 +3316,7 @@ Returns the maximum size for this control. See :ref:`custom_maximum_size<class_C
 
 :ref:`Vector2<class_Vector2>` **get_minimum_size**\ (\ ) |const| :ref:`🔗<class_Control_method_get_minimum_size>`
 
-Returns the minimum size for this control. See :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>`.
+Trả về kích thước tối thiểu của control này. Xem :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3328,7 +3328,7 @@ Returns the minimum size for this control. See :ref:`custom_minimum_size<class_C
 
 :ref:`MouseFilter<enum_Control_MouseFilter>` **get_mouse_filter_with_override**\ (\ ) |const| :ref:`🔗<class_Control_method_get_mouse_filter_with_override>`
 
-Returns the :ref:`mouse_filter<class_Control_property_mouse_filter>`, but takes the :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` into account. If :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` is set to :ref:`MOUSE_BEHAVIOR_DISABLED<class_Control_constant_MOUSE_BEHAVIOR_DISABLED>`, or it is set to :ref:`MOUSE_BEHAVIOR_INHERITED<class_Control_constant_MOUSE_BEHAVIOR_INHERITED>` and its ancestor is set to :ref:`MOUSE_BEHAVIOR_DISABLED<class_Control_constant_MOUSE_BEHAVIOR_DISABLED>`, then this returns :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`.
+Trả về :ref:`mouse_filter<class_Control_property_mouse_filter>`, nhưng có tính đến :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>`. Nếu :ref:`mouse_behavior_recursive<class_Control_property_mouse_behavior_recursive>` được đặt thành :ref:`MOUSE_BEHAVIOR_DISABLED<class_Control_constant_MOUSE_BEHAVIOR_DISABLED>`, hoặc được đặt thành :ref:`MOUSE_BEHAVIOR_INHERITED<class_Control_constant_MOUSE_BEHAVIOR_INHERITED>` và ancestor của nó được đặt thành :ref:`MOUSE_BEHAVIOR_DISABLED<class_Control_constant_MOUSE_BEHAVIOR_DISABLED>`, thì giá trị trả về là :ref:`MOUSE_FILTER_IGNORE<class_Control_constant_MOUSE_FILTER_IGNORE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3340,7 +3340,7 @@ Returns the :ref:`mouse_filter<class_Control_property_mouse_filter>`, but takes 
 
 :ref:`float<class_float>` **get_offset**\ (\ offset\: :ref:`Side<enum_@GlobalScope_Side>`\ ) |const| :ref:`🔗<class_Control_method_get_offset>`
 
-Returns the offset for the specified :ref:`Side<enum_@GlobalScope_Side>`. A getter method for :ref:`offset_bottom<class_Control_property_offset_bottom>`, :ref:`offset_left<class_Control_property_offset_left>`, :ref:`offset_right<class_Control_property_offset_right>` and :ref:`offset_top<class_Control_property_offset_top>`.
+Trả về offset cho :ref:`Side <enum_@GlobalScope_Side>` được chỉ định. Đây là phương thức getter cho :ref:`offset_bottom<class_Control_property_offset_bottom>`, :ref:`offset_left<class_Control_property_offset_left>`, :ref:`offset_right<class_Control_property_offset_right>` và :ref:`offset_top<class_Control_property_offset_top>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3352,7 +3352,7 @@ Returns the offset for the specified :ref:`Side<enum_@GlobalScope_Side>`. A gett
 
 :ref:`Vector2<class_Vector2>` **get_parent_area_size**\ (\ ) |const| :ref:`🔗<class_Control_method_get_parent_area_size>`
 
-Returns the width/height occupied in the parent control.
+Trả về chiều rộng/chiều cao mà control cha chiếm.
 
 .. rst-class:: classref-item-separator
 
@@ -3364,7 +3364,7 @@ Returns the width/height occupied in the parent control.
 
 :ref:`Control<class_Control>` **get_parent_control**\ (\ ) |const| :ref:`🔗<class_Control_method_get_parent_control>`
 
-Returns the parent control node.
+Trả về node control cha.
 
 .. rst-class:: classref-item-separator
 
@@ -3376,11 +3376,11 @@ Returns the parent control node.
 
 :ref:`Rect2<class_Rect2>` **get_rect**\ (\ ) |const| :ref:`🔗<class_Control_method_get_rect>`
 
-Returns the position and size of the control in the coordinate system of the containing node. See :ref:`position<class_Control_property_position>`, :ref:`scale<class_Control_property_scale>` and :ref:`size<class_Control_property_size>`.
+Trả về vị trí và kích thước của control trong hệ tọa độ của node chứa nó. Xem :ref:`position<class_Control_property_position>`, :ref:`scale<class_Control_property_scale>` và :ref:`size<class_Control_property_size>`.
 
-\ **Note:** If :ref:`rotation<class_Control_property_rotation>` is not the default rotation, the resulting size is not meaningful.
+\ **Lưu ý:** Nếu :ref:`rotation<class_Control_property_rotation>` không phải là rotation mặc định, kích thước thu được sẽ không có ý nghĩa.
 
-\ **Note:** Setting :ref:`Viewport.gui_snap_controls_to_pixels<class_Viewport_property_gui_snap_controls_to_pixels>` to ``true`` can lead to rounding inaccuracies between the displayed control and the returned :ref:`Rect2<class_Rect2>`.
+\ **Lưu ý:** Việc đặt :ref:`Viewport.gui_snap_controls_to_pixels<class_Viewport_property_gui_snap_controls_to_pixels>` thành ``true`` có thể dẫn đến sai số làm tròn giữa control được hiển thị và :ref:`Rect2<class_Rect2>` được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -3392,11 +3392,11 @@ Returns the position and size of the control in the coordinate system of the con
 
 :ref:`Vector2<class_Vector2>` **get_screen_position**\ (\ ) |const| :ref:`🔗<class_Control_method_get_screen_position>`
 
-Returns the position of this **Control** in global screen coordinates (i.e. taking window position into account). Mostly useful for editor plugins.
+Trả về vị trí của **Control** này trong tọa độ màn hình toàn cục (tức là có tính đến vị trí cửa sổ). Chủ yếu hữu ích cho các editor plugin.
 
-Equivalent to ``get_screen_transform().origin`` (see :ref:`CanvasItem.get_screen_transform()<class_CanvasItem_method_get_screen_transform>`).
+Tương đương với ``get_screen_transform().origin`` (xem :ref:`CanvasItem.get_screen_transform()<class_CanvasItem_method_get_screen_transform>`).
 
-\ **Example:** Show a popup at the mouse position:
+\ **Ví dụ:** Hiển thị một popup tại vị trí con trỏ chuột:
 
 ::
 
@@ -3418,9 +3418,9 @@ Equivalent to ``get_screen_transform().origin`` (see :ref:`CanvasItem.get_screen
 
 :ref:`Color<class_Color>` **get_theme_color**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_get_theme_color>`
 
-Returns a :ref:`Color<class_Color>` from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a color item with the specified ``name`` and ``theme_type``. If ``theme_type`` is omitted the class name of the current control is used as the type, or :ref:`theme_type_variation<class_Control_property_theme_type_variation>` if it is defined. If the type is a class name its parent classes are also checked, in order of inheritance. If the type is a variation its base types are checked, in order of dependency, then the control's class name and its parent classes are checked.
+Trả về một :ref:`Color<class_Color>` từ :ref:`Theme<class_Theme>` khớp đầu tiên trong cây nếu :ref:`Theme<class_Theme>` đó có một mục màu với ``name`` và ``theme_type`` được chỉ định. Nếu bỏ qua ``theme_type``, tên lớp của control hiện tại được dùng làm kiểu, hoặc :ref:`theme_type_variation<class_Control_property_theme_type_variation>` nếu nó được định nghĩa. Nếu kiểu là tên lớp, các lớp cha của nó cũng được kiểm tra theo thứ tự kế thừa. Nếu kiểu là một variation, các kiểu cơ sở của nó được kiểm tra theo thứ tự phụ thuộc, sau đó tên lớp của control và các lớp cha của nó được kiểm tra.
 
-For the current control its local overrides are considered first (see :ref:`add_theme_color_override()<class_Control_method_add_theme_color_override>`), then its assigned :ref:`theme<class_Control_property_theme>`. After the current control, each parent control and its assigned :ref:`theme<class_Control_property_theme>` are considered; controls without a :ref:`theme<class_Control_property_theme>` assigned are skipped. If no matching :ref:`Theme<class_Theme>` is found in the tree, the custom project :ref:`Theme<class_Theme>` (see :ref:`ProjectSettings.gui/theme/custom<class_ProjectSettings_property_gui/theme/custom>`) and the default :ref:`Theme<class_Theme>` are used (see :ref:`ThemeDB<class_ThemeDB>`).
+Đối với control hiện tại, các ghi đè cục bộ của nó được xét trước (xem :ref:`add_theme_color_override()<class_Control_method_add_theme_color_override>`), sau đó là :ref:`theme<class_Control_property_theme>` được gán cho nó. Sau control hiện tại, từng control cha và :ref:`theme<class_Control_property_theme>` được gán cho nó sẽ được xét; các control không được gán :ref:`theme<class_Control_property_theme>` sẽ bị bỏ qua. Nếu không tìm thấy :ref:`Theme<class_Theme>` khớp nào trong cây, :ref:`Theme<class_Theme>` tùy chỉnh của dự án (xem :ref:`ProjectSettings.gui/theme/custom <class_ProjectSettings_property_gui/theme/custom>`) và :ref:`Theme<class_Theme>` mặc định sẽ được sử dụng (xem :ref:`ThemeDB<class_ThemeDB>`).
 
 
 .. tabs::
@@ -3428,18 +3428,18 @@ For the current control its local overrides are considered first (see :ref:`add_
  .. code-tab:: gdscript
 
     func _ready():
-        # Get the font color defined for the current Control's class, if it exists.
+        # # Lấy màu phông chữ được định nghĩa cho lớp của Control hiện tại, nếu có.
         modulate = get_theme_color("font_color")
-        # Get the font color defined for the Button class.
+        # # Lấy màu phông chữ được định nghĩa cho lớp Button.
         modulate = get_theme_color("font_color", "Button")
 
  .. code-tab:: csharp
 
     public override void _Ready()
     {
-        // Get the font color defined for the current Control's class, if it exists.
+        // // Lấy màu phông chữ được định nghĩa cho lớp Control hiện tại, nếu có.
         Modulate = GetThemeColor("font_color");
-        // Get the font color defined for the Button class.
+        // Lấy màu phông chữ được định nghĩa cho lớp Button.
         Modulate = GetThemeColor("font_color", "Button");
     }
 
@@ -3455,9 +3455,9 @@ For the current control its local overrides are considered first (see :ref:`add_
 
 :ref:`int<class_int>` **get_theme_constant**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_get_theme_constant>`
 
-Returns a constant from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a constant item with the specified ``name`` and ``theme_type``.
+Trả về một hằng số từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có một mục hằng số với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3469,9 +3469,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`float<class_float>` **get_theme_default_base_scale**\ (\ ) |const| :ref:`🔗<class_Control_method_get_theme_default_base_scale>`
 
-Returns the default base scale value from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a valid :ref:`Theme.default_base_scale<class_Theme_property_default_base_scale>` value.
+Trả về giá trị tỷ lệ cơ sở mặc định từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có giá trị :ref:`Theme.default_base_scale<class_Theme_property_default_base_scale>` hợp lệ.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3483,9 +3483,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`Font<class_Font>` **get_theme_default_font**\ (\ ) |const| :ref:`🔗<class_Control_method_get_theme_default_font>`
 
-Returns the default font from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a valid :ref:`Theme.default_font<class_Theme_property_default_font>` value.
+Trả về phông chữ mặc định từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có giá trị :ref:`Theme.default_font<class_Theme_property_default_font>` hợp lệ.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3497,9 +3497,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`int<class_int>` **get_theme_default_font_size**\ (\ ) |const| :ref:`🔗<class_Control_method_get_theme_default_font_size>`
 
-Returns the default font size value from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a valid :ref:`Theme.default_font_size<class_Theme_property_default_font_size>` value.
+Trả về giá trị cỡ phông mặc định từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có giá trị :ref:`Theme.default_font_size<class_Theme_property_default_font_size>` hợp lệ.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3511,9 +3511,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`Font<class_Font>` **get_theme_font**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_get_theme_font>`
 
-Returns a :ref:`Font<class_Font>` from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a font item with the specified ``name`` and ``theme_type``.
+Trả về một :ref:`Font<class_Font>` từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có mục phông với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3525,9 +3525,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`int<class_int>` **get_theme_font_size**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_get_theme_font_size>`
 
-Returns a font size from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a font size item with the specified ``name`` and ``theme_type``.
+Trả về một cỡ phông từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có mục cỡ phông với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3539,9 +3539,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`Texture2D<class_Texture2D>` **get_theme_icon**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_get_theme_icon>`
 
-Returns an icon from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has an icon item with the specified ``name`` and ``theme_type``.
+Trả về một biểu tượng từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có mục biểu tượng với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3553,9 +3553,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`StyleBox<class_StyleBox>` **get_theme_stylebox**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_get_theme_stylebox>`
 
-Returns a :ref:`StyleBox<class_StyleBox>` from the first matching :ref:`Theme<class_Theme>` in the tree if that :ref:`Theme<class_Theme>` has a stylebox item with the specified ``name`` and ``theme_type``.
+Trả về một :ref:`StyleBox<class_StyleBox>` từ :ref:`Theme<class_Theme>` đầu tiên khớp trong cây nếu :ref:`Theme<class_Theme>` đó có một mục stylebox với ``name`` và ``theme_type`` đã chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3567,11 +3567,11 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`String<class_String>` **get_tooltip**\ (\ at_position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const| :ref:`🔗<class_Control_method_get_tooltip>`
 
-Returns the tooltip text for the position ``at_position`` in the control's local coordinates, which will typically appear when the cursor is resting over this control. By default, it returns :ref:`tooltip_text<class_Control_property_tooltip_text>`.
+Trả về văn bản chú giải công cụ cho vị trí ``at_position`` trong tọa độ cục bộ của control, thường sẽ xuất hiện khi con trỏ dừng trên control này. Theo mặc định, nó trả về :ref:`tooltip_text<class_Control_property_tooltip_text>`.
 
-You can override :ref:`_get_tooltip()<class_Control_private_method__get_tooltip>` to implement custom behavior for this method.
+Bạn có thể ghi đè :ref:`_get_tooltip()<class_Control_private_method__get_tooltip>` để triển khai hành vi tùy chỉnh cho phương thức này.
 
-\ **Note:** If this method returns an empty :ref:`String<class_String>` and :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` is not overridden, no tooltip is displayed.
+\ **Lưu ý:** Nếu phương thức này trả về một :ref:`String<class_String>` rỗng và :ref:`_make_custom_tooltip()<class_Control_private_method__make_custom_tooltip>` không được ghi đè, chú giải công cụ sẽ không được hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -3583,7 +3583,7 @@ You can override :ref:`_get_tooltip()<class_Control_private_method__get_tooltip>
 
 |void| **grab_click_focus**\ (\ ) :ref:`🔗<class_Control_method_grab_click_focus>`
 
-Creates an :ref:`InputEventMouseButton<class_InputEventMouseButton>` that attempts to click the control. If the event is received, the control gains focus.
+Tạo một :ref:`InputEventMouseButton<class_InputEventMouseButton>` cố gắng nhấp vào control. Nếu sự kiện được nhận, control sẽ nhận focus.
 
 
 .. tabs::
@@ -3591,13 +3591,13 @@ Creates an :ref:`InputEventMouseButton<class_InputEventMouseButton>` that attemp
  .. code-tab:: gdscript
 
     func _process(delta):
-        grab_click_focus() # When clicking another Control node, this node will be clicked instead.
+        grab_click_focus() # Khi nhấp vào một node Control khác, thay vào đó node này sẽ được nhấp.
 
  .. code-tab:: csharp
 
     public override void _Process(double delta)
     {
-        GrabClickFocus(); // When clicking another Control node, this node will be clicked instead.
+        GrabClickFocus(); // Khi nhấp vào một node Control khác, thay vào đó node này sẽ được nhấp.
     }
 
 
@@ -3612,11 +3612,11 @@ Creates an :ref:`InputEventMouseButton<class_InputEventMouseButton>` that attemp
 
 |void| **grab_focus**\ (\ hide_focus\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Control_method_grab_focus>`
 
-Steal the focus from another control and become the focused control (see :ref:`focus_mode<class_Control_property_focus_mode>`).
+Giành focus từ một control khác và trở thành control được focus (xem :ref:`focus_mode<class_Control_property_focus_mode>`).
 
-If ``hide_focus`` is ``true``, the control will not visually show its focused state. Has no effect for :ref:`LineEdit<class_LineEdit>` and :ref:`TextEdit<class_TextEdit>` when :ref:`ProjectSettings.gui/common/show_focus_state_on_pointer_event<class_ProjectSettings_property_gui/common/show_focus_state_on_pointer_event>` is set to ``Text Input Controls``, or for any control when it is set to ``Always``.
+Nếu ``hide_focus`` là ``true``, control sẽ không hiển thị trạng thái được focus về mặt trực quan. Không có tác dụng đối với :ref:`LineEdit<class_LineEdit>` và :ref:`TextEdit<class_TextEdit>` khi :ref:`ProjectSettings.gui/common/show_focus_state_on_pointer_event <class_ProjectSettings_property_gui/common/show_focus_state_on_pointer_event>` được đặt thành ``Text Input Controls``, hoặc đối với bất kỳ control nào khi được đặt thành ``Always``.
 
-\ **Note:** Using this method together with :ref:`Callable.call_deferred()<class_Callable_method_call_deferred>` makes it more reliable, especially when called inside :ref:`Node._ready()<class_Node_private_method__ready>`.
+\ **Lưu ý:** Việc sử dụng phương thức này cùng với :ref:`Callable.call_deferred()<class_Callable_method_call_deferred>` giúp phương thức đáng tin cậy hơn, đặc biệt khi được gọi bên trong :ref:`Node._ready()<class_Node_private_method__ready>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3628,9 +3628,9 @@ If ``hide_focus`` is ``true``, the control will not visually show its focused st
 
 :ref:`bool<class_bool>` **has_focus**\ (\ ignore_hidden_focus\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Control_method_has_focus>`
 
-Returns ``true`` if this is the current focused control. See :ref:`focus_mode<class_Control_property_focus_mode>`.
+Trả về ``true`` nếu đây là control hiện đang được focus. Xem :ref:`focus_mode<class_Control_property_focus_mode>`.
 
-If ``ignore_hidden_focus`` is ``true``, controls that have their focus hidden will always return ``false``. Hidden focus happens automatically when controls gain focus via mouse input, or manually using :ref:`grab_focus()<class_Control_method_grab_focus>` with ``hide_focus`` set to ``true``.
+Nếu ``ignore_hidden_focus`` là ``true``, các control bị ẩn focus sẽ luôn trả về ``false``. Focus bị ẩn sẽ tự động xảy ra khi các control nhận focus thông qua thao tác chuột, hoặc theo cách thủ công bằng :ref:`grab_focus()<class_Control_method_grab_focus>` với ``hide_focus`` được đặt thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -3642,9 +3642,9 @@ If ``ignore_hidden_focus`` is ``true``, controls that have their focus hidden wi
 
 :ref:`bool<class_bool>` **has_theme_color**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_has_theme_color>`
 
-Returns ``true`` if there is a matching :ref:`Theme<class_Theme>` in the tree that has a color item with the specified ``name`` and ``theme_type``.
+Trả về ``true`` nếu có một :ref:`Theme<class_Theme>` tương ứng trong cây có mục màu với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3656,9 +3656,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`bool<class_bool>` **has_theme_color_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Control_method_has_theme_color_override>`
 
-Returns ``true`` if there is a local override for a theme :ref:`Color<class_Color>` with the specified ``name`` in this **Control** node.
+Trả về ``true`` nếu có một giá trị ghi đè cục bộ cho :ref:`Color<class_Color>` của theme với ``name`` được chỉ định trong node **Control** này.
 
-See :ref:`add_theme_color_override()<class_Control_method_add_theme_color_override>`.
+Xem :ref:`add_theme_color_override()<class_Control_method_add_theme_color_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3670,9 +3670,9 @@ See :ref:`add_theme_color_override()<class_Control_method_add_theme_color_overri
 
 :ref:`bool<class_bool>` **has_theme_constant**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_has_theme_constant>`
 
-Returns ``true`` if there is a matching :ref:`Theme<class_Theme>` in the tree that has a constant item with the specified ``name`` and ``theme_type``.
+Trả về ``true`` nếu có một :ref:`Theme<class_Theme>` tương ứng trong cây có mục hằng số với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3684,9 +3684,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`bool<class_bool>` **has_theme_constant_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Control_method_has_theme_constant_override>`
 
-Returns ``true`` if there is a local override for a theme constant with the specified ``name`` in this **Control** node.
+Trả về ``true`` nếu có một giá trị ghi đè cục bộ cho hằng số của theme với ``name`` được chỉ định trong node **Control** này.
 
-See :ref:`add_theme_constant_override()<class_Control_method_add_theme_constant_override>`.
+Xem :ref:`add_theme_constant_override()<class_Control_method_add_theme_constant_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3698,9 +3698,9 @@ See :ref:`add_theme_constant_override()<class_Control_method_add_theme_constant_
 
 :ref:`bool<class_bool>` **has_theme_font**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_has_theme_font>`
 
-Returns ``true`` if there is a matching :ref:`Theme<class_Theme>` in the tree that has a font item with the specified ``name`` and ``theme_type``.
+Trả về ``true`` nếu có :ref:`Theme<class_Theme>` khớp trong cây, chứa một mục phông chữ với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3712,9 +3712,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`bool<class_bool>` **has_theme_font_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Control_method_has_theme_font_override>`
 
-Returns ``true`` if there is a local override for a theme :ref:`Font<class_Font>` with the specified ``name`` in this **Control** node.
+Trả về ``true`` nếu có ghi đè cục bộ cho :ref:`Font<class_Font>` của theme với ``name`` được chỉ định trong node **Control** này.
 
-See :ref:`add_theme_font_override()<class_Control_method_add_theme_font_override>`.
+Xem :ref:`add_theme_font_override()<class_Control_method_add_theme_font_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3726,9 +3726,9 @@ See :ref:`add_theme_font_override()<class_Control_method_add_theme_font_override
 
 :ref:`bool<class_bool>` **has_theme_font_size**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_has_theme_font_size>`
 
-Returns ``true`` if there is a matching :ref:`Theme<class_Theme>` in the tree that has a font size item with the specified ``name`` and ``theme_type``.
+Trả về ``true`` nếu có :ref:`Theme<class_Theme>` khớp trong cây, chứa một mục kích thước phông chữ với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3740,9 +3740,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`bool<class_bool>` **has_theme_font_size_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Control_method_has_theme_font_size_override>`
 
-Returns ``true`` if there is a local override for a theme font size with the specified ``name`` in this **Control** node.
+Trả về ``true`` nếu có ghi đè cục bộ cho kích thước phông chữ của theme với ``name`` được chỉ định trong node **Control** này.
 
-See :ref:`add_theme_font_size_override()<class_Control_method_add_theme_font_size_override>`.
+Xem :ref:`add_theme_font_size_override()<class_Control_method_add_theme_font_size_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3754,9 +3754,9 @@ See :ref:`add_theme_font_size_override()<class_Control_method_add_theme_font_siz
 
 :ref:`bool<class_bool>` **has_theme_icon**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_has_theme_icon>`
 
-Returns ``true`` if there is a matching :ref:`Theme<class_Theme>` in the tree that has an icon item with the specified ``name`` and ``theme_type``.
+Trả về ``true`` nếu có :ref:`Theme<class_Theme>` khớp trong cây, chứa một mục biểu tượng với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3768,9 +3768,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`bool<class_bool>` **has_theme_icon_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Control_method_has_theme_icon_override>`
 
-Returns ``true`` if there is a local override for a theme icon with the specified ``name`` in this **Control** node.
+Trả về ``true`` nếu có ghi đè cục bộ cho biểu tượng của theme với ``name`` được chỉ định trong node **Control** này.
 
-See :ref:`add_theme_icon_override()<class_Control_method_add_theme_icon_override>`.
+Xem :ref:`add_theme_icon_override()<class_Control_method_add_theme_icon_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3782,9 +3782,9 @@ See :ref:`add_theme_icon_override()<class_Control_method_add_theme_icon_override
 
 :ref:`bool<class_bool>` **has_theme_stylebox**\ (\ name\: :ref:`StringName<class_StringName>`, theme_type\: :ref:`StringName<class_StringName>` = &""\ ) |const| :ref:`🔗<class_Control_method_has_theme_stylebox>`
 
-Returns ``true`` if there is a matching :ref:`Theme<class_Theme>` in the tree that has a stylebox item with the specified ``name`` and ``theme_type``.
+Trả về ``true`` nếu có :ref:`Theme<class_Theme>` khớp trong cây, chứa một mục stylebox với ``name`` và ``theme_type`` được chỉ định.
 
-See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
+Xem :ref:`get_theme_color()<class_Control_method_get_theme_color>` để biết chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -3796,9 +3796,9 @@ See :ref:`get_theme_color()<class_Control_method_get_theme_color>` for details.
 
 :ref:`bool<class_bool>` **has_theme_stylebox_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Control_method_has_theme_stylebox_override>`
 
-Returns ``true`` if there is a local override for a theme :ref:`StyleBox<class_StyleBox>` with the specified ``name`` in this **Control** node.
+Trả về ``true`` nếu có override cục bộ cho một theme :ref:`StyleBox<class_StyleBox>` với ``name`` được chỉ định trong node **Control** này.
 
-See :ref:`add_theme_stylebox_override()<class_Control_method_add_theme_stylebox_override>`.
+Xem :ref:`add_theme_stylebox_override()<class_Control_method_add_theme_stylebox_override>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3810,9 +3810,9 @@ See :ref:`add_theme_stylebox_override()<class_Control_method_add_theme_stylebox_
 
 :ref:`bool<class_bool>` **is_drag_successful**\ (\ ) |const| :ref:`🔗<class_Control_method_is_drag_successful>`
 
-Returns ``true`` if a drag operation is successful. Alternative to :ref:`Viewport.gui_is_drag_successful()<class_Viewport_method_gui_is_drag_successful>`.
+Trả về ``true`` nếu thao tác kéo thành công. Thay thế cho :ref:`Viewport.gui_is_drag_successful()<class_Viewport_method_gui_is_drag_successful>`.
 
-Best used with :ref:`Node.NOTIFICATION_DRAG_END<class_Node_constant_NOTIFICATION_DRAG_END>`.
+Tốt nhất nên dùng với :ref:`Node.NOTIFICATION_DRAG_END<class_Node_constant_NOTIFICATION_DRAG_END>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3824,7 +3824,7 @@ Best used with :ref:`Node.NOTIFICATION_DRAG_END<class_Node_constant_NOTIFICATION
 
 :ref:`bool<class_bool>` **is_layout_rtl**\ (\ ) |const| :ref:`🔗<class_Control_method_is_layout_rtl>`
 
-Returns ``true`` if the layout is right-to-left. See also :ref:`layout_direction<class_Control_property_layout_direction>`.
+Trả về ``true`` nếu layout là phải sang trái. Xem thêm :ref:`layout_direction<class_Control_property_layout_direction>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3836,7 +3836,7 @@ Returns ``true`` if the layout is right-to-left. See also :ref:`layout_direction
 
 |void| **release_focus**\ (\ ) :ref:`🔗<class_Control_method_release_focus>`
 
-Give up the focus. No other control will be able to receive input.
+Từ bỏ focus. Không control nào khác có thể nhận input.
 
 .. rst-class:: classref-item-separator
 
@@ -3848,7 +3848,7 @@ Give up the focus. No other control will be able to receive input.
 
 |void| **remove_theme_color_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Control_method_remove_theme_color_override>`
 
-Removes a local override for a theme :ref:`Color<class_Color>` with the specified ``name`` previously added by :ref:`add_theme_color_override()<class_Control_method_add_theme_color_override>` or via the Inspector dock.
+Xóa ghi đè cục bộ cho :ref:`Color<class_Color>` của theme với ``name`` được chỉ định, trước đó được thêm bằng :ref:`add_theme_color_override()<class_Control_method_add_theme_color_override>` hoặc qua dock Inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -3860,7 +3860,7 @@ Removes a local override for a theme :ref:`Color<class_Color>` with the specifie
 
 |void| **remove_theme_constant_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Control_method_remove_theme_constant_override>`
 
-Removes a local override for a theme constant with the specified ``name`` previously added by :ref:`add_theme_constant_override()<class_Control_method_add_theme_constant_override>` or via the Inspector dock.
+Xóa ghi đè cục bộ cho hằng số của theme với ``name`` được chỉ định, trước đó được thêm bằng :ref:`add_theme_constant_override()<class_Control_method_add_theme_constant_override>` hoặc qua dock Inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -3872,7 +3872,7 @@ Removes a local override for a theme constant with the specified ``name`` previo
 
 |void| **remove_theme_font_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Control_method_remove_theme_font_override>`
 
-Removes a local override for a theme :ref:`Font<class_Font>` with the specified ``name`` previously added by :ref:`add_theme_font_override()<class_Control_method_add_theme_font_override>` or via the Inspector dock.
+Xóa ghi đè cục bộ cho :ref:`Font<class_Font>` của theme với ``name`` được chỉ định, trước đó được thêm bằng :ref:`add_theme_font_override()<class_Control_method_add_theme_font_override>` hoặc qua dock Inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -3884,7 +3884,7 @@ Removes a local override for a theme :ref:`Font<class_Font>` with the specified 
 
 |void| **remove_theme_font_size_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Control_method_remove_theme_font_size_override>`
 
-Removes a local override for a theme font size with the specified ``name`` previously added by :ref:`add_theme_font_size_override()<class_Control_method_add_theme_font_size_override>` or via the Inspector dock.
+Xóa ghi đè cục bộ cho kích thước phông chữ của theme với ``name`` được chỉ định, trước đó được thêm bằng :ref:`add_theme_font_size_override()<class_Control_method_add_theme_font_size_override>` hoặc qua dock Inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -3896,7 +3896,7 @@ Removes a local override for a theme font size with the specified ``name`` previ
 
 |void| **remove_theme_icon_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Control_method_remove_theme_icon_override>`
 
-Removes a local override for a theme icon with the specified ``name`` previously added by :ref:`add_theme_icon_override()<class_Control_method_add_theme_icon_override>` or via the Inspector dock.
+Xóa ghi đè cục bộ cho biểu tượng của theme với ``name`` được chỉ định, trước đó được thêm bằng :ref:`add_theme_icon_override()<class_Control_method_add_theme_icon_override>` hoặc qua dock Inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -3908,7 +3908,7 @@ Removes a local override for a theme icon with the specified ``name`` previously
 
 |void| **remove_theme_stylebox_override**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Control_method_remove_theme_stylebox_override>`
 
-Removes a local override for a theme :ref:`StyleBox<class_StyleBox>` with the specified ``name`` previously added by :ref:`add_theme_stylebox_override()<class_Control_method_add_theme_stylebox_override>` or via the Inspector dock.
+Xóa ghi đè cục bộ cho :ref:`StyleBox<class_StyleBox>` của theme với ``name`` được chỉ định, trước đó được thêm bằng :ref:`add_theme_stylebox_override()<class_Control_method_add_theme_stylebox_override>` hoặc qua dock Inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -3920,7 +3920,7 @@ Removes a local override for a theme :ref:`StyleBox<class_StyleBox>` with the sp
 
 |void| **reset_size**\ (\ ) :ref:`🔗<class_Control_method_reset_size>`
 
-Resets the size to :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>`. This is equivalent to calling ``set_size(Vector2())`` (or any size below the minimum).
+Đặt lại kích thước thành :ref:`get_combined_minimum_size()<class_Control_method_get_combined_minimum_size>`. Tương đương với việc gọi ``set_size(Vector2())`` (hoặc bất kỳ kích thước nào nhỏ hơn mức tối thiểu).
 
 .. rst-class:: classref-item-separator
 
@@ -3932,11 +3932,11 @@ Resets the size to :ref:`get_combined_minimum_size()<class_Control_method_get_co
 
 |void| **set_anchor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, anchor\: :ref:`float<class_float>`, keep_offset\: :ref:`bool<class_bool>` = false, push_opposite_anchor\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_Control_method_set_anchor>`
 
-Sets the anchor for the specified :ref:`Side<enum_@GlobalScope_Side>` to ``anchor``. A setter method for :ref:`anchor_bottom<class_Control_property_anchor_bottom>`, :ref:`anchor_left<class_Control_property_anchor_left>`, :ref:`anchor_right<class_Control_property_anchor_right>` and :ref:`anchor_top<class_Control_property_anchor_top>`.
+Đặt anchor cho :ref:`Side <enum_@GlobalScope_Side>` được chỉ định thành ``anchor``. Một phương thức setter cho :ref:`anchor_bottom<class_Control_property_anchor_bottom>`, :ref:`anchor_left<class_Control_property_anchor_left>`, :ref:`anchor_right<class_Control_property_anchor_right>` và :ref:`anchor_top<class_Control_property_anchor_top>`.
 
-If ``keep_offset`` is ``true``, offsets aren't updated after this operation.
+Nếu ``keep_offset`` là ``true``, các offset sẽ không được cập nhật sau thao tác này.
 
-If ``push_opposite_anchor`` is ``true`` and the opposite anchor overlaps this anchor, the opposite one will have its value overridden. For example, when setting left anchor to 1 and the right anchor has value of 0.5, the right anchor will also get value of 1. If ``push_opposite_anchor`` was ``false``, the left anchor would get value 0.5.
+Nếu ``push_opposite_anchor`` là ``true`` và anchor đối diện chồng lên anchor này, giá trị của anchor đối diện sẽ bị ghi đè. Ví dụ, khi đặt anchor trái thành 1 và anchor phải có giá trị là 0.5, anchor phải cũng sẽ nhận giá trị 1. Nếu ``push_opposite_anchor`` là ``false``, anchor trái sẽ nhận giá trị 0.5.
 
 .. rst-class:: classref-item-separator
 
@@ -3948,7 +3948,7 @@ If ``push_opposite_anchor`` is ``true`` and the opposite anchor overlaps this an
 
 |void| **set_anchor_and_offset**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, anchor\: :ref:`float<class_float>`, offset\: :ref:`float<class_float>`, push_opposite_anchor\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Control_method_set_anchor_and_offset>`
 
-Works the same as :ref:`set_anchor()<class_Control_method_set_anchor>`, but instead of ``keep_offset`` argument and automatic update of offset, it allows to set the offset yourself (see :ref:`set_offset()<class_Control_method_set_offset>`).
+Hoạt động giống như :ref:`set_anchor()<class_Control_method_set_anchor>`, nhưng thay vì đối số ``keep_offset`` và tự động cập nhật offset, nó cho phép bạn tự đặt offset (xem :ref:`set_offset()<class_Control_method_set_offset>`).
 
 .. rst-class:: classref-item-separator
 
@@ -3960,7 +3960,7 @@ Works the same as :ref:`set_anchor()<class_Control_method_set_anchor>`, but inst
 
 |void| **set_anchors_and_offsets_preset**\ (\ preset\: :ref:`LayoutPreset<enum_Control_LayoutPreset>`, resize_mode\: :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` = 0, margin\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_Control_method_set_anchors_and_offsets_preset>`
 
-Sets both anchor preset and offset preset. See :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>` and :ref:`set_offsets_preset()<class_Control_method_set_offsets_preset>`.
+Đặt cả preset anchor và preset offset. Xem :ref:`set_anchors_preset()<class_Control_method_set_anchors_preset>` và :ref:`set_offsets_preset()<class_Control_method_set_offsets_preset>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3972,9 +3972,9 @@ Sets both anchor preset and offset preset. See :ref:`set_anchors_preset()<class_
 
 |void| **set_anchors_preset**\ (\ preset\: :ref:`LayoutPreset<enum_Control_LayoutPreset>`, keep_offsets\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Control_method_set_anchors_preset>`
 
-Sets the anchors to a ``preset`` from :ref:`LayoutPreset<enum_Control_LayoutPreset>` enum. This is the code equivalent to using the Layout menu in the 2D editor.
+Đặt các anchor thành một ``preset`` từ enum :ref:`LayoutPreset <enum_Control_LayoutPreset>`. Đây là cách tương đương trong code với việc sử dụng menu Layout trong trình chỉnh sửa 2D.
 
-If ``keep_offsets`` is ``true``, control's position will also be updated.
+Nếu ``keep_offsets`` là ``true``, vị trí của control cũng sẽ được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -3986,7 +3986,7 @@ If ``keep_offsets`` is ``true``, control's position will also be updated.
 
 |void| **set_begin**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Control_method_set_begin>`
 
-Sets :ref:`offset_left<class_Control_property_offset_left>` and :ref:`offset_top<class_Control_property_offset_top>` at the same time. Equivalent of changing :ref:`position<class_Control_property_position>`.
+Thiết lập :ref:`offset_left<class_Control_property_offset_left>` và :ref:`offset_top<class_Control_property_offset_top>` đồng thời. Tương đương với việc thay đổi :ref:`position<class_Control_property_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3998,15 +3998,15 @@ Sets :ref:`offset_left<class_Control_property_offset_left>` and :ref:`offset_top
 
 |void| **set_drag_forwarding**\ (\ drag_func\: :ref:`Callable<class_Callable>`, can_drop_func\: :ref:`Callable<class_Callable>`, drop_func\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_Control_method_set_drag_forwarding>`
 
-Sets the given callables to be used instead of the control's own drag-and-drop virtual methods. If a callable is empty, its respective virtual method is used as normal.
+Thiết lập các callable đã cho để sử dụng thay cho các virtual method drag-and-drop của control. Nếu một callable rỗng, virtual method tương ứng sẽ được sử dụng như bình thường.
 
-The arguments for each callable should be exactly the same as their respective virtual methods, which would be:
+Các đối số của mỗi callable phải hoàn toàn giống với các virtual method tương ứng, cụ thể là:
 
-- ``drag_func`` corresponds to :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` and requires a :ref:`Vector2<class_Vector2>`;
+- ``drag_func`` tương ứng với :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>` và yêu cầu một :ref:`Vector2<class_Vector2>`;
 
-- ``can_drop_func`` corresponds to :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` and requires both a :ref:`Vector2<class_Vector2>` and a :ref:`Variant<class_Variant>`;
+- ``can_drop_func`` tương ứng với :ref:`_can_drop_data()<class_Control_private_method__can_drop_data>` và yêu cầu cả :ref:`Vector2<class_Vector2>` lẫn :ref:`Variant<class_Variant>`;
 
-- ``drop_func`` corresponds to :ref:`_drop_data()<class_Control_private_method__drop_data>` and requires both a :ref:`Vector2<class_Vector2>` and a :ref:`Variant<class_Variant>`.
+- ``drop_func`` tương ứng với :ref:`_drop_data()<class_Control_private_method__drop_data>` và yêu cầu cả :ref:`Vector2<class_Vector2>` lẫn :ref:`Variant<class_Variant>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4018,7 +4018,7 @@ The arguments for each callable should be exactly the same as their respective v
 
 |void| **set_drag_preview**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_Control_method_set_drag_preview>`
 
-Shows the given control at the mouse pointer. A good time to call this method is in :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>`. The control must not be in the scene tree. You should not free the control, and you should not keep a reference to the control beyond the duration of the drag. It will be deleted automatically after the drag has ended.
+Hiển thị control đã cho tại vị trí con trỏ chuột. Một thời điểm thích hợp để gọi phương thức này là trong :ref:`_get_drag_data()<class_Control_private_method__get_drag_data>`. Control không được nằm trong scene tree. Bạn không nên giải phóng control và cũng không nên giữ tham chiếu đến control quá thời gian kéo. Control sẽ tự động bị xóa sau khi thao tác kéo kết thúc.
 
 
 .. tabs::
@@ -4028,7 +4028,7 @@ Shows the given control at the mouse pointer. A good time to call this method is
     @export var color = Color(1, 0, 0, 1)
 
     func _get_drag_data(position):
-        # Use a control that is not in the tree
+        # Sử dụng một control không nằm trong cây
         var cpb = ColorPickerButton.new()
         cpb.color = color
         cpb.size = Vector2(50, 50)
@@ -4042,7 +4042,7 @@ Shows the given control at the mouse pointer. A good time to call this method is
 
     public override Variant _GetDragData(Vector2 atPosition)
     {
-        // Use a control that is not in the tree
+        // Sử dụng một control không nằm trong cây
         var cpb = new ColorPickerButton();
         cpb.Color = _color;
         cpb.Size = new Vector2(50, 50);
@@ -4062,7 +4062,7 @@ Shows the given control at the mouse pointer. A good time to call this method is
 
 |void| **set_end**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Control_method_set_end>`
 
-Sets :ref:`offset_right<class_Control_property_offset_right>` and :ref:`offset_bottom<class_Control_property_offset_bottom>` at the same time.
+Đồng thời thiết lập :ref:`offset_right<class_Control_property_offset_right>` và :ref:`offset_bottom<class_Control_property_offset_bottom>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4074,7 +4074,7 @@ Sets :ref:`offset_right<class_Control_property_offset_right>` and :ref:`offset_b
 
 |void| **set_focus_neighbor**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, neighbor\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_Control_method_set_focus_neighbor>`
 
-Sets the focus neighbor for the specified :ref:`Side<enum_@GlobalScope_Side>` to the **Control** at ``neighbor`` node path. A setter method for :ref:`focus_neighbor_bottom<class_Control_property_focus_neighbor_bottom>`, :ref:`focus_neighbor_left<class_Control_property_focus_neighbor_left>`, :ref:`focus_neighbor_right<class_Control_property_focus_neighbor_right>` and :ref:`focus_neighbor_top<class_Control_property_focus_neighbor_top>`.
+Thiết lập phần tử lân cận nhận focus cho :ref:`Side <enum_@GlobalScope_Side>` đã chỉ định thành **Control** tại đường dẫn nút ``neighbor``. Một phương thức setter cho :ref:`focus_neighbor_bottom<class_Control_property_focus_neighbor_bottom>`, :ref:`focus_neighbor_left<class_Control_property_focus_neighbor_left>`, :ref:`focus_neighbor_right<class_Control_property_focus_neighbor_right>` và :ref:`focus_neighbor_top<class_Control_property_focus_neighbor_top>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4086,9 +4086,9 @@ Sets the focus neighbor for the specified :ref:`Side<enum_@GlobalScope_Side>` to
 
 |void| **set_global_position**\ (\ position\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Control_method_set_global_position>`
 
-Sets the :ref:`global_position<class_Control_property_global_position>` to given ``position``.
+Đặt :ref:`global_position<class_Control_property_global_position>` thành ``position`` đã cho.
 
-If ``keep_offsets`` is ``true``, control's anchors will be updated instead of offsets.
+Nếu ``keep_offsets`` là ``true``, các anchor của control sẽ được cập nhật thay vì các offset.
 
 .. rst-class:: classref-item-separator
 
@@ -4100,7 +4100,7 @@ If ``keep_offsets`` is ``true``, control's anchors will be updated instead of of
 
 |void| **set_offset**\ (\ side\: :ref:`Side<enum_@GlobalScope_Side>`, offset\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Control_method_set_offset>`
 
-Sets the offset for the specified :ref:`Side<enum_@GlobalScope_Side>` to ``offset``. A setter method for :ref:`offset_bottom<class_Control_property_offset_bottom>`, :ref:`offset_left<class_Control_property_offset_left>`, :ref:`offset_right<class_Control_property_offset_right>` and :ref:`offset_top<class_Control_property_offset_top>`.
+Thiết lập offset cho :ref:`Side <enum_@GlobalScope_Side>` đã chỉ định thành ``offset``. Một phương thức setter cho :ref:`offset_bottom<class_Control_property_offset_bottom>`, :ref:`offset_left<class_Control_property_offset_left>`, :ref:`offset_right<class_Control_property_offset_right>` và :ref:`offset_top<class_Control_property_offset_top>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4112,11 +4112,11 @@ Sets the offset for the specified :ref:`Side<enum_@GlobalScope_Side>` to ``offse
 
 |void| **set_offsets_preset**\ (\ preset\: :ref:`LayoutPreset<enum_Control_LayoutPreset>`, resize_mode\: :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` = 0, margin\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_Control_method_set_offsets_preset>`
 
-Sets the offsets to a ``preset`` from :ref:`LayoutPreset<enum_Control_LayoutPreset>` enum. This is the code equivalent to using the Layout menu in the 2D editor.
+Đặt các offset thành một ``preset`` từ enum :ref:`LayoutPreset <enum_Control_LayoutPreset>`. Đây là cách tương đương trong code với việc sử dụng menu Layout trong trình chỉnh sửa 2D.
 
-Use parameter ``resize_mode`` with constants from :ref:`LayoutPresetMode<enum_Control_LayoutPresetMode>` to better determine the resulting size of the **Control**. Constant size will be ignored if used with presets that change size, e.g. :ref:`PRESET_LEFT_WIDE<class_Control_constant_PRESET_LEFT_WIDE>`.
+Sử dụng tham số ``resize_mode`` với các hằng số từ :ref:`LayoutPresetMode <enum_Control_LayoutPresetMode>` để xác định chính xác hơn kích thước kết quả của **Control**. Kích thước cố định sẽ bị bỏ qua nếu được sử dụng với các preset làm thay đổi kích thước, ví dụ :ref:`PRESET_LEFT_WIDE<class_Control_constant_PRESET_LEFT_WIDE>`.
 
-Use parameter ``margin`` to determine the gap between the **Control** and the edges.
+Sử dụng tham số ``margin`` để xác định khoảng cách giữa **Control** và các cạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -4128,9 +4128,9 @@ Use parameter ``margin`` to determine the gap between the **Control** and the ed
 
 |void| **set_position**\ (\ position\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Control_method_set_position>`
 
-Sets the :ref:`position<class_Control_property_position>` to given ``position``.
+Đặt :ref:`position<class_Control_property_position>` thành ``position`` đã cho.
 
-If ``keep_offsets`` is ``true``, control's anchors will be updated instead of offsets.
+Nếu ``keep_offsets`` là ``true``, các anchor của control sẽ được cập nhật thay vì các offset.
 
 .. rst-class:: classref-item-separator
 
@@ -4142,9 +4142,9 @@ If ``keep_offsets`` is ``true``, control's anchors will be updated instead of of
 
 |void| **set_size**\ (\ size\: :ref:`Vector2<class_Vector2>`, keep_offsets\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Control_method_set_size>`
 
-Sets the size (see :ref:`size<class_Control_property_size>`).
+Đặt kích thước (xem :ref:`size<class_Control_property_size>`).
 
-If ``keep_offsets`` is ``true``, control's anchors will be updated instead of offsets.
+Nếu ``keep_offsets`` là ``true``, các anchor của control sẽ được cập nhật thay vì các offset.
 
 .. rst-class:: classref-item-separator
 
@@ -4156,9 +4156,9 @@ If ``keep_offsets`` is ``true``, control's anchors will be updated instead of of
 
 |void| **update_maximum_size**\ (\ ) :ref:`🔗<class_Control_method_update_maximum_size>`
 
-Invalidates the maximum size cache in this node and in parent nodes up to top level. Intended to be used with :ref:`get_maximum_size()<class_Control_method_get_maximum_size>` when the return value is changed. Setting :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` directly calls this method automatically.
+Vô hiệu hóa bộ nhớ đệm kích thước tối đa trong node này và các node cha cho đến cấp cao nhất. Được dùng cùng với :ref:`get_maximum_size()<class_Control_method_get_maximum_size>` khi giá trị trả về thay đổi. Việc thiết lập trực tiếp :ref:`custom_maximum_size<class_Control_property_custom_maximum_size>` sẽ tự động gọi phương thức này.
 
-\ **Note:** Calling this method also calls :ref:`update_minimum_size()<class_Control_method_update_minimum_size>` since the combined minimum size may be affected by the maximum size change.
+\ **Ghi chú:** Việc gọi phương thức này cũng gọi :ref:`update_minimum_size()<class_Control_method_update_minimum_size>` vì kích thước tối thiểu kết hợp có thể bị ảnh hưởng bởi thay đổi kích thước tối đa.
 
 .. rst-class:: classref-item-separator
 
@@ -4170,7 +4170,7 @@ Invalidates the maximum size cache in this node and in parent nodes up to top le
 
 |void| **update_minimum_size**\ (\ ) :ref:`🔗<class_Control_method_update_minimum_size>`
 
-Invalidates the minimum size cache in this node and in parent nodes up to top level. Intended to be used with :ref:`get_minimum_size()<class_Control_method_get_minimum_size>` when the return value is changed. Setting :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` directly calls this method automatically.
+Vô hiệu hóa bộ nhớ đệm kích thước tối thiểu trong node này và các node cha cho đến cấp cao nhất. Được dùng cùng với :ref:`get_minimum_size()<class_Control_method_get_minimum_size>` khi giá trị trả về thay đổi. Việc thiết lập trực tiếp :ref:`custom_minimum_size<class_Control_property_custom_minimum_size>` sẽ tự động gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -4182,16 +4182,16 @@ Invalidates the minimum size cache in this node and in parent nodes up to top le
 
 |void| **warp_mouse**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Control_method_warp_mouse>`
 
-Moves the mouse cursor to ``position``, relative to :ref:`position<class_Control_property_position>` of this **Control**.
+Di chuyển con trỏ chuột đến ``position``, tương đối so với :ref:`position<class_Control_property_position>` của **Control** này.
 
-\ **Note:** :ref:`warp_mouse()<class_Control_method_warp_mouse>` is only supported on Windows, macOS and Linux. It has no effect on Android, iOS and Web.
+\ **Ghi chú:** :ref:`warp_mouse()<class_Control_method_warp_mouse>` chỉ được hỗ trợ trên Windows, macOS và Linux. Nó không có tác dụng trên Android, iOS và Web.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

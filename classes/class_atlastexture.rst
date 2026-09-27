@@ -10,40 +10,40 @@
 AtlasTexture
 ============
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A texture that crops out part of another Texture2D.
+Một texture cắt ra một phần của Texture2D khác.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-:ref:`Texture2D<class_Texture2D>` resource that draws only part of its :ref:`atlas<class_AtlasTexture_property_atlas>` texture, as defined by the :ref:`region<class_AtlasTexture_property_region>`. An additional :ref:`margin<class_AtlasTexture_property_margin>` can also be set, which is useful for small adjustments.
+:ref:`Texture2D<class_Texture2D>` resource chỉ vẽ một phần texture :ref:`atlas<class_AtlasTexture_property_atlas>` của nó, như được xác định bởi :ref:`region<class_AtlasTexture_property_region>`. Bạn cũng có thể thiết lập thêm :ref:`margin<class_AtlasTexture_property_margin>`, hữu ích cho những điều chỉnh nhỏ.
 
-Multiple **AtlasTexture** resources can be cropped from the same :ref:`atlas<class_AtlasTexture_property_atlas>`. Packing many smaller textures into a singular large texture helps to optimize video memory costs and render calls.
+Có thể cắt nhiều resource **AtlasTexture** từ cùng một :ref:`atlas<class_AtlasTexture_property_atlas>`. Việc đóng gói nhiều texture nhỏ vào một texture lớn duy nhất giúp tối ưu chi phí bộ nhớ video và số lần gọi render.
 
-\ **Note:** **AtlasTexture** cannot be used in an :ref:`AnimatedTexture<class_AnimatedTexture>`, and will not tile properly in nodes such as :ref:`TextureRect<class_TextureRect>` or :ref:`Sprite2D<class_Sprite2D>`. To tile an **AtlasTexture**, modify its :ref:`region<class_AtlasTexture_property_region>` instead.
+\ **Lưu ý:** **AtlasTexture** không thể được sử dụng trong một :ref:`AnimatedTexture<class_AnimatedTexture>`, và sẽ không lát đúng cách trong các node như :ref:`TextureRect<class_TextureRect>` hoặc :ref:`Sprite2D<class_Sprite2D>`. Để lát một **AtlasTexture**, hãy sửa đổi :ref:`region<class_AtlasTexture_property_region>` của nó.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------+-------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>` | :ref:`atlas<class_AtlasTexture_property_atlas>`             |                                                                                        |
-   +-----------------------------------+-------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`           | :ref:`filter_clip<class_AtlasTexture_property_filter_clip>` | ``false``                                                                              |
-   +-----------------------------------+-------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`         | :ref:`margin<class_AtlasTexture_property_margin>`           | ``Rect2(0, 0, 0, 0)``                                                                  |
-   +-----------------------------------+-------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`         | :ref:`region<class_AtlasTexture_property_region>`           | ``Rect2(0, 0, 0, 0)``                                                                  |
-   +-----------------------------------+-------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`           | resource_local_to_scene                                     | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-----------------------------------+-------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   +-----------------------------------+-------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>` | :ref:`atlas<class_AtlasTexture_property_atlas>`             |                                                                                     |
+   +-----------------------------------+-------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`           | :ref:`filter_clip<class_AtlasTexture_property_filter_clip>` | ``false``                                                                           |
+   +-----------------------------------+-------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`         | :ref:`margin<class_AtlasTexture_property_margin>`           | ``Rect2(0, 0, 0, 0)``                                                               |
+   +-----------------------------------+-------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`         | :ref:`region<class_AtlasTexture_property_region>`           | ``Rect2(0, 0, 0, 0)``                                                               |
+   +-----------------------------------+-------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`           | resource_local_to_scene                                     | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-----------------------------------+-------------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -51,21 +51,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AtlasTexture_property_atlas:
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **atlas** :ref:`🔗<class_AtlasTexture_property_atlas>`
+:ref:`Texture2D<class_Texture2D>` **atlas** :ref:`🔗 <class_AtlasTexture_property_atlas>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_atlas**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_atlas**\ (\ )
 
-The texture that contains the atlas. Can be any type inheriting from :ref:`Texture2D<class_Texture2D>`, including another **AtlasTexture**.
+Texture chứa atlas. Có thể là bất kỳ kiểu nào kế thừa từ :ref:`Texture2D<class_Texture2D>`, bao gồm cả một **AtlasTexture** khác.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ The texture that contains the atlas. Can be any type inheriting from :ref:`Textu
 - |void| **set_filter_clip**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_filter_clip**\ (\ )
 
-If ``true``, the area outside of the :ref:`region<class_AtlasTexture_property_region>` is clipped to avoid bleeding of the surrounding texture pixels.
+Nếu ``true``, vùng bên ngoài :ref:`region<class_AtlasTexture_property_region>` sẽ được cắt để tránh hiện tượng lem của các pixel texture xung quanh.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ If ``true``, the area outside of the :ref:`region<class_AtlasTexture_property_re
 - |void| **set_margin**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_margin**\ (\ )
 
-The margin around the :ref:`region<class_AtlasTexture_property_region>`. Useful for small adjustments. If the :ref:`Rect2.size<class_Rect2_property_size>` of this property ("w" and "h" in the editor) is set, the drawn texture is resized to fit within the margin.
+Lề xung quanh :ref:`region<class_AtlasTexture_property_region>`. Hữu ích cho những điều chỉnh nhỏ. Nếu :ref:`Rect2.size<class_Rect2_property_size>` của thuộc tính này ("w" và "h" trong trình chỉnh sửa) được đặt, texture được vẽ sẽ được thay đổi kích thước để nằm gọn trong lề.
 
 .. rst-class:: classref-item-separator
 
@@ -116,16 +116,16 @@ The margin around the :ref:`region<class_AtlasTexture_property_region>`. Useful 
 - |void| **set_region**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_region**\ (\ )
 
-The region used to draw the :ref:`atlas<class_AtlasTexture_property_atlas>`. If either dimension of the region's size is ``0``, the value from :ref:`atlas<class_AtlasTexture_property_atlas>` size will be used for that axis instead.
+Vùng được dùng để vẽ :ref:`atlas<class_AtlasTexture_property_atlas>`. Nếu một trong hai chiều của kích thước vùng là ``0``, thì giá trị từ kích thước :ref:`atlas<class_AtlasTexture_property_atlas>` sẽ được dùng thay thế cho trục đó.
 
-\ **Note:** The image size is always an integer, so the actual region size is rounded down.
+\ **Lưu ý:** Kích thước hình ảnh luôn là một số nguyên, vì vậy kích thước vùng thực tế sẽ được làm tròn xuống.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, nên có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

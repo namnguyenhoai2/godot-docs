@@ -10,20 +10,20 @@
 RID
 ===
 
-A handle for a :ref:`Resource<class_Resource>`'s unique identifier.
+Một handle cho mã định danh duy nhất của :ref:`Resource<class_Resource>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The RID :ref:`Variant<class_Variant>` type is used to access a low-level resource by its unique ID. RIDs are opaque, which means they do not grant access to the resource by themselves. They are used by the low-level server classes, such as :ref:`DisplayServer<class_DisplayServer>`, :ref:`RenderingServer<class_RenderingServer>`, :ref:`TextServer<class_TextServer>`, etc.
+Kiểu :ref:`Variant<class_Variant>` RID được dùng để truy cập một resource cấp thấp bằng ID duy nhất của nó. RID là các giá trị opaque, nghĩa là bản thân chúng không cấp quyền truy cập vào resource. Chúng được các lớp server cấp thấp sử dụng, chẳng hạn như :ref:`DisplayServer<class_DisplayServer>`, :ref:`RenderingServer<class_RenderingServer>`, :ref:`TextServer<class_TextServer>`, v.v.
 
-A low-level resource may correspond to a high-level :ref:`Resource<class_Resource>`, such as :ref:`Texture<class_Texture>` or :ref:`Mesh<class_Mesh>`.
+Một resource cấp thấp có thể tương ứng với một :ref:`Resource<class_Resource>` cấp cao, chẳng hạn như :ref:`Texture<class_Texture>` hoặc :ref:`Mesh<class_Mesh>`.
 
-\ **Note:** RIDs are only useful during the current session. It won't correspond to a similar resource if sent over a network, or loaded from a file at a later time.
+\ **Lưu ý:** RID chỉ hữu ích trong phiên hiện tại. Nó sẽ không tương ứng với một resource tương tự nếu được gửi qua mạng hoặc được tải từ một file vào thời điểm khác.
 
-\ **Note:** In a boolean context, an RID will evaluate to ``false`` if it has the invalid ID ``0``. Otherwise, an RID will always evaluate to ``true``. This is equivalent to calling :ref:`is_valid()<class_RID_method_is_valid>`.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một RID sẽ được đánh giá là ``false`` nếu nó có ID không hợp lệ ``0``. Nếu không, một RID sẽ luôn được đánh giá là ``true``. Điều này tương đương với việc gọi :ref:`is_valid()<class_RID_method_is_valid>`.
 
 .. note::
 
@@ -31,8 +31,8 @@ A low-level resource may correspond to a high-level :ref:`Resource<class_Resourc
 
 .. rst-class:: classref-reftable-group
 
-Constructors
-------------
+Các hàm khởi tạo
+----------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -59,25 +59,25 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Các toán tử
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator !=<class_RID_operator_neq_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )  |
-   +-------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator \<<class_RID_operator_lt_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )   |
-   +-------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator \<=<class_RID_operator_lte_RID>`\ (\ right\: :ref:`RID<class_RID>`\ ) |
-   +-------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ==<class_RID_operator_eq_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )   |
-   +-------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ><class_RID_operator_gt_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )    |
-   +-------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator >=<class_RID_operator_gte_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )  |
-   +-------------------------+--------------------------------------------------------------------------------------+
+   +-------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator != <class_RID_operator_neq_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )  |
+   +-------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator \< <class_RID_operator_lt_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )   |
+   +-------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator \<= <class_RID_operator_lte_RID>`\ (\ right\: :ref:`RID<class_RID>`\ ) |
+   +-------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator == <class_RID_operator_eq_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )   |
+   +-------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator > <class_RID_operator_gt_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )    |
+   +-------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator >= <class_RID_operator_gte_RID>`\ (\ right\: :ref:`RID<class_RID>`\ )  |
+   +-------------------------+---------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -85,8 +85,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_RID_constructor_RID:
 
@@ -94,7 +94,7 @@ Constructor Descriptions
 
 :ref:`RID<class_RID>` **RID**\ (\ ) :ref:`🔗<class_RID_constructor_RID>`
 
-Constructs an empty **RID** with the invalid ID ``0``.
+Khởi tạo một **RID** rỗng với ID không hợp lệ ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Constructs an empty **RID** with the invalid ID ``0``.
 
 :ref:`RID<class_RID>` **RID**\ (\ from\: :ref:`RID<class_RID>`\ )
 
-Constructs an **RID** as a copy of the given **RID**.
+Khởi tạo một **RID** dưới dạng bản sao của **RID** được cung cấp.
 
 .. rst-class:: classref-section-separator
 
@@ -112,8 +112,8 @@ Constructs an **RID** as a copy of the given **RID**.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_RID_method_get_id:
 
@@ -121,7 +121,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_id**\ (\ ) |const| :ref:`🔗<class_RID_method_get_id>`
 
-Returns the ID of the referenced low-level resource.
+Trả về ID của resource cấp thấp được tham chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ Returns the ID of the referenced low-level resource.
 
 :ref:`bool<class_bool>` **is_valid**\ (\ ) |const| :ref:`🔗<class_RID_method_is_valid>`
 
-Returns ``true`` if the **RID** is not ``0``.
+Trả về ``true`` nếu **RID** không phải là ``0``.
 
 .. rst-class:: classref-section-separator
 
@@ -141,16 +141,16 @@ Returns ``true`` if the **RID** is not ``0``.
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_RID_operator_neq_RID:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RID_operator_neq_RID>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗 <class_RID_operator_neq_RID>`
 
-Returns ``true`` if the **RID**\ s are not equal.
+Trả về ``true`` nếu các **RID**\  không bằng nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -160,9 +160,9 @@ Returns ``true`` if the **RID**\ s are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RID_operator_lt_RID>`
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗 <class_RID_operator_lt_RID>`
 
-Returns ``true`` if the **RID**'s ID is less than ``right``'s ID.
+Trả về ``true`` nếu ID của **RID** nhỏ hơn ID của ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -172,9 +172,9 @@ Returns ``true`` if the **RID**'s ID is less than ``right``'s ID.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RID_operator_lte_RID>`
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗 <class_RID_operator_lte_RID>`
 
-Returns ``true`` if the **RID**'s ID is less than or equal to ``right``'s ID.
+Trả về ``true`` nếu ID của **RID** nhỏ hơn hoặc bằng ID của ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -184,9 +184,9 @@ Returns ``true`` if the **RID**'s ID is less than or equal to ``right``'s ID.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RID_operator_eq_RID>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗 <class_RID_operator_eq_RID>`
 
-Returns ``true`` if both **RID**\ s are equal, which means they both refer to the same low-level resource.
+Trả về ``true`` nếu cả hai **RID**\  đều bằng nhau, nghĩa là cả hai cùng tham chiếu đến một resource cấp thấp.
 
 .. rst-class:: classref-item-separator
 
@@ -196,9 +196,9 @@ Returns ``true`` if both **RID**\ s are equal, which means they both refer to th
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RID_operator_gt_RID>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗 <class_RID_operator_gt_RID>`
 
-Returns ``true`` if the **RID**'s ID is greater than ``right``'s ID.
+Trả về ``true`` nếu ID của **RID** lớn hơn ID của ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -208,16 +208,16 @@ Returns ``true`` if the **RID**'s ID is greater than ``right``'s ID.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_RID_operator_gte_RID>`
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`RID<class_RID>`\ ) :ref:`🔗 <class_RID_operator_gte_RID>`
 
-Returns ``true`` if the **RID**'s ID is greater than or equal to ``right``'s ID.
+Trả về ``true`` nếu ID của **RID** lớn hơn hoặc bằng ID của ``right``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

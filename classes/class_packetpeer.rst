@@ -10,24 +10,24 @@
 PacketPeer
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`ENetPacketPeer<class_ENetPacketPeer>`, :ref:`MultiplayerPeer<class_MultiplayerPeer>`, :ref:`PacketPeerDTLS<class_PacketPeerDTLS>`, :ref:`PacketPeerExtension<class_PacketPeerExtension>`, :ref:`PacketPeerStream<class_PacketPeerStream>`, :ref:`PacketPeerUDP<class_PacketPeerUDP>`, :ref:`WebRTCDataChannel<class_WebRTCDataChannel>`, :ref:`WebSocketPeer<class_WebSocketPeer>`
+**Được kế thừa bởi:** :ref:`ENetPacketPeer<class_ENetPacketPeer>`, :ref:`MultiplayerPeer<class_MultiplayerPeer>`, :ref:`PacketPeerDTLS<class_PacketPeerDTLS>`, :ref:`PacketPeerExtension<class_PacketPeerExtension>`, :ref:`PacketPeerStream<class_PacketPeerStream>`, :ref:`PacketPeerUDP<class_PacketPeerUDP>`, :ref:`WebRTCDataChannel<class_WebRTCDataChannel>`, :ref:`WebSocketPeer<class_WebSocketPeer>`
 
-Abstraction and base class for packet-based protocols.
+Lớp trừu tượng và lớp cơ sở cho các giao thức dựa trên packet.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-PacketPeer is an abstraction and base class for packet-based protocols (such as UDP). It provides an API for sending and receiving packets both as raw data or variables. This makes it easy to transfer data over a protocol, without having to encode data as low-level bytes or having to worry about network ordering.
+PacketPeer là một lớp trừu tượng và lớp cơ sở cho các giao thức dựa trên packet (chẳng hạn như UDP). Lớp này cung cấp API để gửi và nhận packet dưới dạng dữ liệu thô hoặc biến. Nhờ đó, bạn có thể dễ dàng truyền dữ liệu qua một giao thức mà không phải mã hóa dữ liệu thành các byte cấp thấp hoặc phải lo lắng về thứ tự mạng.
 
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+\ **Lưu ý:** Khi export sang Android, hãy bật quyền ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -50,13 +50,13 @@ Methods
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`get_packet<class_PacketPeer_method_get_packet>`\ (\ )                                                                                |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`get_packet_error<class_PacketPeer_method_get_packet_error>`\ (\ ) |const|                                                            |
+   | :ref:`Error <enum_@GlobalScope_Error>`        | :ref:`get_packet_error<class_PacketPeer_method_get_packet_error>`\ (\ ) |const|                                                            |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Variant<class_Variant>`                 | :ref:`get_var<class_PacketPeer_method_get_var>`\ (\ allow_objects\: :ref:`bool<class_bool>` = false\ )                                     |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`put_packet<class_PacketPeer_method_put_packet>`\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                        |
+   | :ref:`Error <enum_@GlobalScope_Error>`        | :ref:`put_packet<class_PacketPeer_method_put_packet>`\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                        |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`put_var<class_PacketPeer_method_put_var>`\ (\ var\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) |
+   | :ref:`Error <enum_@GlobalScope_Error>`        | :ref:`put_var<class_PacketPeer_method_put_var>`\ (\ var\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -65,8 +65,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PacketPeer_property_encode_buffer_max_size:
 
@@ -79,9 +79,9 @@ Property Descriptions
 - |void| **set_encode_buffer_max_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_encode_buffer_max_size**\ (\ )
 
-Maximum buffer size allowed when encoding :ref:`Variant<class_Variant>`\ s. Raise this value to support heavier memory allocations.
+Kích thước bộ đệm tối đa được phép khi mã hóa :ref:`Variant<class_Variant>`\ s. Tăng giá trị này để hỗ trợ các phân bổ bộ nhớ lớn hơn.
 
-The :ref:`put_var()<class_PacketPeer_method_put_var>` method allocates memory on the stack, and the buffer used will grow automatically to the closest power of two to match the size of the :ref:`Variant<class_Variant>`. If the :ref:`Variant<class_Variant>` is bigger than :ref:`encode_buffer_max_size<class_PacketPeer_property_encode_buffer_max_size>`, the method will error out with :ref:`@GlobalScope.ERR_OUT_OF_MEMORY<class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>`.
+Phương thức :ref:`put_var()<class_PacketPeer_method_put_var>` phân bổ bộ nhớ trên stack, và bộ đệm được sử dụng sẽ tự động tăng lên lũy thừa của hai gần nhất để khớp với kích thước của :ref:`Variant<class_Variant>`. Nếu :ref:`Variant<class_Variant>` lớn hơn :ref:`encode_buffer_max_size<class_PacketPeer_property_encode_buffer_max_size>`, phương thức sẽ báo lỗi với :ref:`@GlobalScope.ERR_OUT_OF_MEMORY <class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>`.
 
 .. rst-class:: classref-section-separator
 
@@ -89,8 +89,8 @@ The :ref:`put_var()<class_PacketPeer_method_put_var>` method allocates memory on
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PacketPeer_method_get_available_packet_count:
 
@@ -98,7 +98,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_available_packet_count**\ (\ ) |const| :ref:`🔗<class_PacketPeer_method_get_available_packet_count>`
 
-Returns the number of packets currently available in the ring-buffer.
+Trả về số lượng gói tin hiện có trong bộ đệm vòng.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Returns the number of packets currently available in the ring-buffer.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **get_packet**\ (\ ) :ref:`🔗<class_PacketPeer_method_get_packet>`
 
-Gets a raw packet.
+Lấy một gói tin thô.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Gets a raw packet.
 
 :ref:`Error<enum_@GlobalScope_Error>` **get_packet_error**\ (\ ) |const| :ref:`🔗<class_PacketPeer_method_get_packet_error>`
 
-Returns the error state of the last packet received (via :ref:`get_packet()<class_PacketPeer_method_get_packet>` and :ref:`get_var()<class_PacketPeer_method_get_var>`).
+Trả về trạng thái lỗi của gói tin cuối cùng nhận được (thông qua :ref:`get_packet()<class_PacketPeer_method_get_packet>` và :ref:`get_var()<class_PacketPeer_method_get_var>`).
 
 .. rst-class:: classref-item-separator
 
@@ -134,11 +134,11 @@ Returns the error state of the last packet received (via :ref:`get_packet()<clas
 
 :ref:`Variant<class_Variant>` **get_var**\ (\ allow_objects\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PacketPeer_method_get_var>`
 
-Gets a Variant. If ``allow_objects`` is ``true``, decoding objects is allowed.
+Lấy một Variant. Nếu ``allow_objects`` là ``true``, thì được phép giải mã các đối tượng.
 
-Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.bytes_to_var()<class_@GlobalScope_method_bytes_to_var>` method.
+Về nội bộ, phương thức này sử dụng cùng cơ chế giải mã như phương thức :ref:`@GlobalScope.bytes_to_var() <class_@GlobalScope_method_bytes_to_var>`.
 
-\ **Warning:** Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats such as remote code execution.
+\ **Cảnh báo:** Các đối tượng được deserialize có thể chứa mã được thực thi. Không sử dụng tùy chọn này nếu đối tượng được serialize đến từ các nguồn không đáng tin cậy để tránh những mối đe dọa bảo mật tiềm ẩn như thực thi mã từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.byte
 
 :ref:`Error<enum_@GlobalScope_Error>` **put_packet**\ (\ buffer\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_PacketPeer_method_put_packet>`
 
-Sends a raw packet.
+Gửi một gói tin thô.
 
 .. rst-class:: classref-item-separator
 
@@ -162,16 +162,16 @@ Sends a raw packet.
 
 :ref:`Error<enum_@GlobalScope_Error>` **put_var**\ (\ var\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PacketPeer_method_put_var>`
 
-Sends a :ref:`Variant<class_Variant>` as a packet. If ``full_objects`` is ``true``, encoding objects is allowed (and can potentially include code).
+Gửi một :ref:`Variant<class_Variant>` dưới dạng gói tin. Nếu ``full_objects`` là ``true``, thì được phép mã hóa các đối tượng (và có khả năng bao gồm mã).
 
-Internally, this uses the same encoding mechanism as the :ref:`@GlobalScope.var_to_bytes()<class_@GlobalScope_method_var_to_bytes>` method.
+Về nội bộ, phương thức này sử dụng cùng cơ chế mã hóa như phương thức :ref:`@GlobalScope.var_to_bytes() <class_@GlobalScope_method_var_to_bytes>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

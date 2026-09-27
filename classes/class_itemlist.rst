@@ -10,194 +10,194 @@
 ItemList
 ========
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A vertical list of selectable items with one or multiple columns.
+Danh sách dọc gồm các mục có thể chọn, với một hoặc nhiều cột.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This control provides a vertical list of selectable items that may be in a single or in multiple columns, with each item having options for text and an icon. Tooltips are supported and may be different for every item in the list.
+Control này cung cấp một danh sách dọc gồm các mục có thể chọn, nằm trong một hoặc nhiều cột, trong đó mỗi mục có các tùy chọn về văn bản và biểu tượng. Tooltip được hỗ trợ và có thể khác nhau đối với từng mục trong danh sách.
 
-Selectable items in the list may be selected or deselected and multiple selection may be enabled. Selection with right mouse button may also be enabled to allow use of popup context menus. Items may also be "activated" by double-clicking them or by pressing :kbd:`Enter`.
+Các mục có thể chọn trong danh sách có thể được chọn hoặc bỏ chọn, đồng thời có thể bật tính năng chọn nhiều mục. Cũng có thể bật tính năng chọn bằng nút chuột phải để cho phép sử dụng các menu ngữ cảnh popup. Các mục cũng có thể được "kích hoạt" bằng cách nhấp đúp vào chúng hoặc nhấn :kbd:`Enter`.
 
-Item text only supports single-line strings. Newline characters (e.g. ``\n``) in the string won't produce a newline. Text wrapping is enabled in :ref:`ICON_MODE_TOP<class_ItemList_constant_ICON_MODE_TOP>` mode, but the column's width is adjusted to fully fit its content by default. You need to set :ref:`fixed_column_width<class_ItemList_property_fixed_column_width>` greater than zero to wrap the text.
+Văn bản của mục chỉ hỗ trợ các chuỗi một dòng. Các ký tự xuống dòng (ví dụ: ``\n``) trong chuỗi sẽ không tạo ra dòng mới. Tính năng ngắt dòng được bật trong chế độ :ref:`ICON_MODE_TOP<class_ItemList_constant_ICON_MODE_TOP>`, nhưng theo mặc định, chiều rộng của cột được điều chỉnh để vừa khít toàn bộ nội dung. Bạn cần đặt :ref:`fixed_column_width<class_ItemList_property_fixed_column_width>` lớn hơn 0 để ngắt dòng văn bản.
 
-All ``set_*`` methods allow negative item indices, i.e. ``-1`` to access the last item, ``-2`` to select the second-to-last item, and so on.
+Tất cả các phương thức ``set_*`` đều cho phép sử dụng chỉ mục mục âm, tức là ``-1`` để truy cập mục cuối cùng, ``-2`` để chọn mục áp chót, v.v.
 
-\ **Incremental search:** Like :ref:`PopupMenu<class_PopupMenu>` and :ref:`Tree<class_Tree>`, **ItemList** supports searching within the list while the control is focused. Press a key that matches the first letter of an item's name to select the first item starting with the given letter. After that point, there are two ways to perform incremental search: 1) Press the same key again before the timeout duration to select the next item starting with the same letter. 2) Press letter keys that match the rest of the word before the timeout duration to match to select the item in question directly. Both of these actions will be reset to the beginning of the list if the timeout duration has passed since the last keystroke was registered. You can adjust the timeout duration by changing :ref:`ProjectSettings.gui/timers/incremental_search_max_interval_msec<class_ProjectSettings_property_gui/timers/incremental_search_max_interval_msec>`.
+\ **Tìm kiếm tăng dần:** Giống như :ref:`PopupMenu<class_PopupMenu>` và :ref:`Tree<class_Tree>`, **ItemList** hỗ trợ tìm kiếm trong danh sách khi control đang được focus. Nhấn một phím khớp với chữ cái đầu tiên trong tên của một mục để chọn mục đầu tiên bắt đầu bằng chữ cái đó. Sau đó, có hai cách để thực hiện tìm kiếm tăng dần: 1) Nhấn lại cùng phím đó trước khi hết thời gian chờ để chọn mục tiếp theo bắt đầu bằng cùng chữ cái. 2) Nhấn các phím chữ khớp với phần còn lại của từ trước khi hết thời gian chờ để khớp và chọn trực tiếp mục tương ứng. Cả hai thao tác này sẽ được đặt lại về đầu danh sách nếu thời gian chờ đã trôi qua kể từ lần nhấn phím cuối cùng được ghi nhận. Bạn có thể điều chỉnh thời gian chờ bằng cách thay đổi :ref:`ProjectSettings.gui/timers/incremental_search_max_interval_msec <class_ProjectSettings_property_gui/timers/incremental_search_max_interval_msec>`.。
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`allow_reselect<class_ItemList_property_allow_reselect>`                   | ``false``                                                                 |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`allow_rmb_select<class_ItemList_property_allow_rmb_select>`               | ``false``                                                                 |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`allow_search<class_ItemList_property_allow_search>`                       | ``true``                                                                  |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`auto_height<class_ItemList_property_auto_height>`                         | ``false``                                                                 |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`auto_width<class_ItemList_property_auto_width>`                           | ``false``                                                                 |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | clip_contents                                                                   | ``true`` (overrides :ref:`Control<class_Control_property_clip_contents>`) |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                   | :ref:`fixed_column_width<class_ItemList_property_fixed_column_width>`           | ``0``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                         | :ref:`fixed_icon_size<class_ItemList_property_fixed_icon_size>`                 | ``Vector2i(0, 0)``                                                        |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                | focus_mode                                                                      | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)       |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`IconMode<enum_ItemList_IconMode>`                 | :ref:`icon_mode<class_ItemList_property_icon_mode>`                             | ``1``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                               | :ref:`icon_scale<class_ItemList_property_icon_scale>`                           | ``1.0``                                                                   |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                   | :ref:`item_count<class_ItemList_property_item_count>`                           | ``0``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`item_{index}/disabled<class_ItemList_property_item_{index}/disabled>`     | ``false``                                                                 |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                       | :ref:`item_{index}/icon<class_ItemList_property_item_{index}/icon>`             |                                                                           |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`item_{index}/selectable<class_ItemList_property_item_{index}/selectable>` | ``true``                                                                  |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                             | :ref:`item_{index}/text<class_ItemList_property_item_{index}/text>`             | ``""``                                                                    |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                   | :ref:`max_columns<class_ItemList_property_max_columns>`                         | ``1``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                   | :ref:`max_text_lines<class_ItemList_property_max_text_lines>`                   | ``1``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`same_column_width<class_ItemList_property_same_column_width>`             | ``false``                                                                 |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`ScrollHintMode<enum_ItemList_ScrollHintMode>`     | :ref:`scroll_hint_mode<class_ItemList_property_scroll_hint_mode>`               | ``0``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`SelectMode<enum_ItemList_SelectMode>`             | :ref:`select_mode<class_ItemList_property_select_mode>`                         | ``0``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` | :ref:`text_overrun_behavior<class_ItemList_property_text_overrun_behavior>`     | ``3``                                                                     |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`tile_scroll_hint<class_ItemList_property_tile_scroll_hint>`               | ``false``                                                                 |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`wraparound_items<class_ItemList_property_wraparound_items>`               | ``true``                                                                  |
-   +---------------------------------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`allow_reselect<class_ItemList_property_allow_reselect>`                    | ``false``                                                              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`allow_rmb_select<class_ItemList_property_allow_rmb_select>`                | ``false``                                                              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`allow_search<class_ItemList_property_allow_search>`                        | ``true``                                                               |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`auto_height<class_ItemList_property_auto_height>`                          | ``false``                                                              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`auto_width<class_ItemList_property_auto_width>`                            | ``false``                                                              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | clip_contents                                                                    | ``true`` (ghi đè :ref:`Control<class_Control_property_clip_contents>`) |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                    | :ref:`fixed_column_width<class_ItemList_property_fixed_column_width>`            | ``0``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Vector2i<class_Vector2i>`                          | :ref:`fixed_icon_size<class_ItemList_property_fixed_icon_size>`                  | ``Vector2i(0, 0)``                                                     |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`                | focus_mode                                                                       | ``2`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)       |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`IconMode <enum_ItemList_IconMode>`                 | :ref:`icon_mode<class_ItemList_property_icon_mode>`                              | ``1``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                | :ref:`icon_scale<class_ItemList_property_icon_scale>`                            | ``1.0``                                                                |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                    | :ref:`item_count<class_ItemList_property_item_count>`                            | ``0``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`item_{index}/disabled <class_ItemList_property_item_{index}/disabled>`     | ``false``                                                              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                        | :ref:`item_{index}/icon <class_ItemList_property_item_{index}/icon>`             |                                                                        |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`item_{index}/selectable <class_ItemList_property_item_{index}/selectable>` | ``true``                                                               |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                              | :ref:`item_{index}/text <class_ItemList_property_item_{index}/text>`             | ``""``                                                                 |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                    | :ref:`max_columns<class_ItemList_property_max_columns>`                          | ``1``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                    | :ref:`max_text_lines<class_ItemList_property_max_text_lines>`                    | ``1``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`same_column_width<class_ItemList_property_same_column_width>`              | ``false``                                                              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`ScrollHintMode <enum_ItemList_ScrollHintMode>`     | :ref:`scroll_hint_mode<class_ItemList_property_scroll_hint_mode>`                | ``0``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`SelectMode <enum_ItemList_SelectMode>`             | :ref:`select_mode<class_ItemList_property_select_mode>`                          | ``0``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`OverrunBehavior <enum_TextServer_OverrunBehavior>` | :ref:`text_overrun_behavior<class_ItemList_property_text_overrun_behavior>`      | ``3``                                                                  |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`tile_scroll_hint<class_ItemList_property_tile_scroll_hint>`                | ``false``                                                              |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`wraparound_items<class_ItemList_property_wraparound_items>`                | ``true``                                                               |
+   +----------------------------------------------------------+----------------------------------------------------------------------------------+------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                 | :ref:`add_icon_item<class_ItemList_method_add_icon_item>`\ (\ icon\: :ref:`Texture2D<class_Texture2D>`, selectable\: :ref:`bool<class_bool>` = true\ )                                   |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                 | :ref:`add_item<class_ItemList_method_add_item>`\ (\ text\: :ref:`String<class_String>`, icon\: :ref:`Texture2D<class_Texture2D>` = null, selectable\: :ref:`bool<class_bool>` = true\ )  |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`center_on_current<class_ItemList_method_center_on_current>`\ (\ center_verically\: :ref:`bool<class_bool>` = true, center_horizontally\: :ref:`bool<class_bool>` = true\ )         |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`clear<class_ItemList_method_clear>`\ (\ )                                                                                                                                          |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`deselect<class_ItemList_method_deselect>`\ (\ idx\: :ref:`int<class_int>`\ )                                                                                                       |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`deselect_all<class_ItemList_method_deselect_all>`\ (\ )                                                                                                                            |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`ensure_current_is_visible<class_ItemList_method_ensure_current_is_visible>`\ (\ )                                                                                                  |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`force_update_list_size<class_ItemList_method_force_update_list_size>`\ (\ )                                                                                                        |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`HScrollBar<class_HScrollBar>`                   | :ref:`get_h_scroll_bar<class_ItemList_method_get_h_scroll_bar>`\ (\ )                                                                                                                    |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                 | :ref:`get_item_at_position<class_ItemList_method_get_item_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`, exact\: :ref:`bool<class_bool>` = false\ ) |const|                 |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` | :ref:`get_item_auto_translate_mode<class_ItemList_method_get_item_auto_translate_mode>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                       |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                             | :ref:`get_item_custom_bg_color<class_ItemList_method_get_item_custom_bg_color>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                               |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                             | :ref:`get_item_custom_fg_color<class_ItemList_method_get_item_custom_fg_color>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                               |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                     | :ref:`get_item_icon<class_ItemList_method_get_item_icon>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                     |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                             | :ref:`get_item_icon_modulate<class_ItemList_method_get_item_icon_modulate>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                   |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                             | :ref:`get_item_icon_region<class_ItemList_method_get_item_icon_region>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                       |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                           | :ref:`get_item_language<class_ItemList_method_get_item_language>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                             |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                         | :ref:`get_item_metadata<class_ItemList_method_get_item_metadata>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                             |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                             | :ref:`get_item_rect<class_ItemList_method_get_item_rect>`\ (\ idx\: :ref:`int<class_int>`, expand\: :ref:`bool<class_bool>` = true\ ) |const|                                            |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                           | :ref:`get_item_text<class_ItemList_method_get_item_text>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                     |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`TextDirection<enum_Control_TextDirection>`      | :ref:`get_item_text_direction<class_ItemList_method_get_item_text_direction>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                 |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                           | :ref:`get_item_tooltip<class_ItemList_method_get_item_tooltip>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                               |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>`       | :ref:`get_selected_items<class_ItemList_method_get_selected_items>`\ (\ )                                                                                                                |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`VScrollBar<class_VScrollBar>`                   | :ref:`get_v_scroll_bar<class_ItemList_method_get_v_scroll_bar>`\ (\ )                                                                                                                    |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`is_anything_selected<class_ItemList_method_is_anything_selected>`\ (\ )                                                                                                            |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`is_item_disabled<class_ItemList_method_is_item_disabled>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                               |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`is_item_icon_transposed<class_ItemList_method_is_item_icon_transposed>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                 |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`is_item_selectable<class_ItemList_method_is_item_selectable>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                           |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`is_item_tooltip_enabled<class_ItemList_method_is_item_tooltip_enabled>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                 |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`is_selected<class_ItemList_method_is_selected>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                         |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`move_item<class_ItemList_method_move_item>`\ (\ from_idx\: :ref:`int<class_int>`, to_idx\: :ref:`int<class_int>`\ )                                                                |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`remove_item<class_ItemList_method_remove_item>`\ (\ idx\: :ref:`int<class_int>`\ )                                                                                                 |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`select<class_ItemList_method_select>`\ (\ idx\: :ref:`int<class_int>`, single\: :ref:`bool<class_bool>` = true\ )                                                                  |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_auto_translate_mode<class_ItemList_method_set_item_auto_translate_mode>`\ (\ idx\: :ref:`int<class_int>`, mode\: :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>`\ ) |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_custom_bg_color<class_ItemList_method_set_item_custom_bg_color>`\ (\ idx\: :ref:`int<class_int>`, custom_bg_color\: :ref:`Color<class_Color>`\ )                          |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_custom_fg_color<class_ItemList_method_set_item_custom_fg_color>`\ (\ idx\: :ref:`int<class_int>`, custom_fg_color\: :ref:`Color<class_Color>`\ )                          |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_disabled<class_ItemList_method_set_item_disabled>`\ (\ idx\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ )                                                 |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_icon<class_ItemList_method_set_item_icon>`\ (\ idx\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ )                                                   |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_icon_modulate<class_ItemList_method_set_item_icon_modulate>`\ (\ idx\: :ref:`int<class_int>`, modulate\: :ref:`Color<class_Color>`\ )                                     |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_icon_region<class_ItemList_method_set_item_icon_region>`\ (\ idx\: :ref:`int<class_int>`, rect\: :ref:`Rect2<class_Rect2>`\ )                                             |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_icon_transposed<class_ItemList_method_set_item_icon_transposed>`\ (\ idx\: :ref:`int<class_int>`, transposed\: :ref:`bool<class_bool>`\ )                                 |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_language<class_ItemList_method_set_item_language>`\ (\ idx\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ )                                             |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_metadata<class_ItemList_method_set_item_metadata>`\ (\ idx\: :ref:`int<class_int>`, metadata\: :ref:`Variant<class_Variant>`\ )                                           |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_selectable<class_ItemList_method_set_item_selectable>`\ (\ idx\: :ref:`int<class_int>`, selectable\: :ref:`bool<class_bool>`\ )                                           |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_text<class_ItemList_method_set_item_text>`\ (\ idx\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ )                                                         |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_text_direction<class_ItemList_method_set_item_text_direction>`\ (\ idx\: :ref:`int<class_int>`, direction\: :ref:`TextDirection<enum_Control_TextDirection>`\ )           |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_tooltip<class_ItemList_method_set_item_tooltip>`\ (\ idx\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ )                                                |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`set_item_tooltip_enabled<class_ItemList_method_set_item_tooltip_enabled>`\ (\ idx\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )                                     |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                | :ref:`sort_items_by_text<class_ItemList_method_sort_items_by_text>`\ (\ )                                                                                                                |
-   +-------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                  | :ref:`add_icon_item<class_ItemList_method_add_icon_item>`\ (\ icon\: :ref:`Texture2D<class_Texture2D>`, selectable\: :ref:`bool<class_bool>` = true\ )                                    |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                  | :ref:`add_item<class_ItemList_method_add_item>`\ (\ text\: :ref:`String<class_String>`, icon\: :ref:`Texture2D<class_Texture2D>` = null, selectable\: :ref:`bool<class_bool>` = true\ )   |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`center_on_current<class_ItemList_method_center_on_current>`\ (\ center_verically\: :ref:`bool<class_bool>` = true, center_horizontally\: :ref:`bool<class_bool>` = true\ )          |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`clear<class_ItemList_method_clear>`\ (\ )                                                                                                                                           |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`deselect<class_ItemList_method_deselect>`\ (\ idx\: :ref:`int<class_int>`\ )                                                                                                        |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`deselect_all<class_ItemList_method_deselect_all>`\ (\ )                                                                                                                             |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`ensure_current_is_visible<class_ItemList_method_ensure_current_is_visible>`\ (\ )                                                                                                   |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`force_update_list_size<class_ItemList_method_force_update_list_size>`\ (\ )                                                                                                         |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`HScrollBar<class_HScrollBar>`                    | :ref:`get_h_scroll_bar<class_ItemList_method_get_h_scroll_bar>`\ (\ )                                                                                                                     |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                  | :ref:`get_item_at_position<class_ItemList_method_get_item_at_position>`\ (\ position\: :ref:`Vector2<class_Vector2>`, exact\: :ref:`bool<class_bool>` = false\ ) |const|                  |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`AutoTranslateMode <enum_Node_AutoTranslateMode>` | :ref:`get_item_auto_translate_mode<class_ItemList_method_get_item_auto_translate_mode>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                        |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                              | :ref:`get_item_custom_bg_color<class_ItemList_method_get_item_custom_bg_color>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                              | :ref:`get_item_custom_fg_color<class_ItemList_method_get_item_custom_fg_color>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                      | :ref:`get_item_icon<class_ItemList_method_get_item_icon>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                      |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                              | :ref:`get_item_icon_modulate<class_ItemList_method_get_item_icon_modulate>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                    |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                              | :ref:`get_item_icon_region<class_ItemList_method_get_item_icon_region>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                        |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                            | :ref:`get_item_language<class_ItemList_method_get_item_language>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                              |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                          | :ref:`get_item_metadata<class_ItemList_method_get_item_metadata>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                              |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                              | :ref:`get_item_rect<class_ItemList_method_get_item_rect>`\ (\ idx\: :ref:`int<class_int>`, expand\: :ref:`bool<class_bool>` = true\ ) |const|                                             |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                            | :ref:`get_item_text<class_ItemList_method_get_item_text>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                      |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`TextDirection <enum_Control_TextDirection>`      | :ref:`get_item_text_direction<class_ItemList_method_get_item_text_direction>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                  |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                            | :ref:`get_item_tooltip<class_ItemList_method_get_item_tooltip>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`        | :ref:`get_selected_items<class_ItemList_method_get_selected_items>`\ (\ )                                                                                                                 |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`VScrollBar<class_VScrollBar>`                    | :ref:`get_v_scroll_bar<class_ItemList_method_get_v_scroll_bar>`\ (\ )                                                                                                                     |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                | :ref:`is_anything_selected<class_ItemList_method_is_anything_selected>`\ (\ )                                                                                                             |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                | :ref:`is_item_disabled<class_ItemList_method_is_item_disabled>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                | :ref:`is_item_icon_transposed<class_ItemList_method_is_item_icon_transposed>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                  |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                | :ref:`is_item_selectable<class_ItemList_method_is_item_selectable>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                            |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                | :ref:`is_item_tooltip_enabled<class_ItemList_method_is_item_tooltip_enabled>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                  |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                | :ref:`is_selected<class_ItemList_method_is_selected>`\ (\ idx\: :ref:`int<class_int>`\ ) |const|                                                                                          |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`move_item<class_ItemList_method_move_item>`\ (\ from_idx\: :ref:`int<class_int>`, to_idx\: :ref:`int<class_int>`\ )                                                                 |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`remove_item<class_ItemList_method_remove_item>`\ (\ idx\: :ref:`int<class_int>`\ )                                                                                                  |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`select<class_ItemList_method_select>`\ (\ idx\: :ref:`int<class_int>`, single\: :ref:`bool<class_bool>` = true\ )                                                                   |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_auto_translate_mode<class_ItemList_method_set_item_auto_translate_mode>`\ (\ idx\: :ref:`int<class_int>`, mode\: :ref:`AutoTranslateMode <enum_Node_AutoTranslateMode>`\ ) |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_custom_bg_color<class_ItemList_method_set_item_custom_bg_color>`\ (\ idx\: :ref:`int<class_int>`, custom_bg_color\: :ref:`Color<class_Color>`\ )                           |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_custom_fg_color<class_ItemList_method_set_item_custom_fg_color>`\ (\ idx\: :ref:`int<class_int>`, custom_fg_color\: :ref:`Color<class_Color>`\ )                           |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_disabled<class_ItemList_method_set_item_disabled>`\ (\ idx\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ )                                                  |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_icon<class_ItemList_method_set_item_icon>`\ (\ idx\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ )                                                    |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_icon_modulate<class_ItemList_method_set_item_icon_modulate>`\ (\ idx\: :ref:`int<class_int>`, modulate\: :ref:`Color<class_Color>`\ )                                      |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_icon_region<class_ItemList_method_set_item_icon_region>`\ (\ idx\: :ref:`int<class_int>`, rect\: :ref:`Rect2<class_Rect2>`\ )                                              |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_icon_transposed<class_ItemList_method_set_item_icon_transposed>`\ (\ idx\: :ref:`int<class_int>`, transposed\: :ref:`bool<class_bool>`\ )                                  |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_language<class_ItemList_method_set_item_language>`\ (\ idx\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ )                                              |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_metadata<class_ItemList_method_set_item_metadata>`\ (\ idx\: :ref:`int<class_int>`, metadata\: :ref:`Variant<class_Variant>`\ )                                            |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_selectable<class_ItemList_method_set_item_selectable>`\ (\ idx\: :ref:`int<class_int>`, selectable\: :ref:`bool<class_bool>`\ )                                            |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_text<class_ItemList_method_set_item_text>`\ (\ idx\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ )                                                          |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_text_direction<class_ItemList_method_set_item_text_direction>`\ (\ idx\: :ref:`int<class_int>`, direction\: :ref:`TextDirection <enum_Control_TextDirection>`\ )           |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_tooltip<class_ItemList_method_set_item_tooltip>`\ (\ idx\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ )                                                 |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`set_item_tooltip_enabled<class_ItemList_method_set_item_tooltip_enabled>`\ (\ idx\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ )                                      |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                 | :ref:`sort_items_by_text<class_ItemList_method_sort_items_by_text>`\ (\ )                                                                                                                 |
+   +--------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -259,8 +259,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_ItemList_signal_empty_clicked:
 
@@ -268,9 +268,9 @@ Signals
 
 **empty_clicked**\ (\ at_position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ItemList_signal_empty_clicked>`
 
-Emitted when any mouse click is issued within the rect of the list but on empty space.
+Được phát ra khi có bất kỳ lần nhấp chuột nào trong vùng chữ nhật của danh sách nhưng ở khoảng trống.
 
-\ ``at_position`` is the click position in this control's local coordinate system.
+\ ``at_position`` là vị trí nhấp trong hệ tọa độ cục bộ của control này.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Emitted when any mouse click is issued within the rect of the list but on empty 
 
 **item_activated**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ItemList_signal_item_activated>`
 
-Emitted when specified list item is activated via double-clicking or by pressing :kbd:`Enter`.
+Được phát ra khi mục danh sách được chỉ định được kích hoạt bằng cách nhấp đúp hoặc nhấn :kbd:`Enter`.
 
 .. rst-class:: classref-item-separator
 
@@ -294,9 +294,9 @@ Emitted when specified list item is activated via double-clicking or by pressing
 
 **item_clicked**\ (\ index\: :ref:`int<class_int>`, at_position\: :ref:`Vector2<class_Vector2>`, mouse_button_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ItemList_signal_item_clicked>`
 
-Emitted when specified list item has been clicked with any mouse button.
+Được phát ra khi mục danh sách được chỉ định được nhấp bằng bất kỳ nút chuột nào.
 
-\ ``at_position`` is the click position in this control's local coordinate system.
+\ ``at_position`` là vị trí nhấp trong hệ tọa độ cục bộ của control này.
 
 .. rst-class:: classref-item-separator
 
@@ -308,9 +308,9 @@ Emitted when specified list item has been clicked with any mouse button.
 
 **item_selected**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ItemList_signal_item_selected>`
 
-Emitted when specified item has been selected. Only applicable in single selection mode.
+Được phát ra khi mục được chỉ định được chọn. Chỉ áp dụng trong chế độ chọn đơn.
 
-\ :ref:`allow_reselect<class_ItemList_property_allow_reselect>` must be enabled to reselect an item.
+\ :ref:`allow_reselect<class_ItemList_property_allow_reselect>` phải được bật để chọn lại một mục.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +322,7 @@ Emitted when specified item has been selected. Only applicable in single selecti
 
 **multi_selected**\ (\ index\: :ref:`int<class_int>`, selected\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_ItemList_signal_multi_selected>`
 
-Emitted when a multiple selection is altered on a list allowing multiple selection.
+Được phát ra khi lựa chọn nhiều mục bị thay đổi trong một danh sách cho phép chọn nhiều mục.
 
 .. rst-class:: classref-section-separator
 
@@ -330,14 +330,14 @@ Emitted when a multiple selection is altered on a list allowing multiple selecti
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ItemList_IconMode:
 
 .. rst-class:: classref-enumeration
 
-enum **IconMode**: :ref:`🔗<enum_ItemList_IconMode>`
+enum **IconMode**: :ref:`🔗 <enum_ItemList_IconMode>`
 
 .. _class_ItemList_constant_ICON_MODE_TOP:
 
@@ -345,7 +345,7 @@ enum **IconMode**: :ref:`🔗<enum_ItemList_IconMode>`
 
 :ref:`IconMode<enum_ItemList_IconMode>` **ICON_MODE_TOP** = ``0``
 
-Icon is drawn above the text.
+Biểu tượng được vẽ phía trên văn bản.
 
 .. _class_ItemList_constant_ICON_MODE_LEFT:
 
@@ -353,7 +353,7 @@ Icon is drawn above the text.
 
 :ref:`IconMode<enum_ItemList_IconMode>` **ICON_MODE_LEFT** = ``1``
 
-Icon is drawn to the left of the text.
+Biểu tượng được vẽ bên trái văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -363,7 +363,7 @@ Icon is drawn to the left of the text.
 
 .. rst-class:: classref-enumeration
 
-enum **SelectMode**: :ref:`🔗<enum_ItemList_SelectMode>`
+enum **SelectMode**: :ref:`🔗 <enum_ItemList_SelectMode>`
 
 .. _class_ItemList_constant_SELECT_SINGLE:
 
@@ -371,7 +371,7 @@ enum **SelectMode**: :ref:`🔗<enum_ItemList_SelectMode>`
 
 :ref:`SelectMode<enum_ItemList_SelectMode>` **SELECT_SINGLE** = ``0``
 
-Only allow selecting a single item.
+Chỉ cho phép chọn một mục.
 
 .. _class_ItemList_constant_SELECT_MULTI:
 
@@ -379,7 +379,7 @@ Only allow selecting a single item.
 
 :ref:`SelectMode<enum_ItemList_SelectMode>` **SELECT_MULTI** = ``1``
 
-Allows selecting multiple items by holding :kbd:`Ctrl` or :kbd:`Shift`.
+Cho phép chọn nhiều mục bằng cách giữ :kbd:`Ctrl` hoặc :kbd:`Shift`.
 
 .. _class_ItemList_constant_SELECT_TOGGLE:
 
@@ -387,7 +387,7 @@ Allows selecting multiple items by holding :kbd:`Ctrl` or :kbd:`Shift`.
 
 :ref:`SelectMode<enum_ItemList_SelectMode>` **SELECT_TOGGLE** = ``2``
 
-Allows selecting multiple items by toggling them on and off.
+Cho phép chọn nhiều mục bằng cách bật hoặc tắt chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -397,7 +397,7 @@ Allows selecting multiple items by toggling them on and off.
 
 .. rst-class:: classref-enumeration
 
-enum **ScrollHintMode**: :ref:`🔗<enum_ItemList_ScrollHintMode>`
+enum **ScrollHintMode**: :ref:`🔗 <enum_ItemList_ScrollHintMode>`
 
 .. _class_ItemList_constant_SCROLL_HINT_MODE_DISABLED:
 
@@ -405,7 +405,7 @@ enum **ScrollHintMode**: :ref:`🔗<enum_ItemList_ScrollHintMode>`
 
 :ref:`ScrollHintMode<enum_ItemList_ScrollHintMode>` **SCROLL_HINT_MODE_DISABLED** = ``0``
 
-Scroll hints will never be shown.
+Gợi ý cuộn sẽ không bao giờ được hiển thị.
 
 .. _class_ItemList_constant_SCROLL_HINT_MODE_BOTH:
 
@@ -413,7 +413,7 @@ Scroll hints will never be shown.
 
 :ref:`ScrollHintMode<enum_ItemList_ScrollHintMode>` **SCROLL_HINT_MODE_BOTH** = ``1``
 
-Scroll hints will be shown at the top and bottom.
+Gợi ý cuộn sẽ được hiển thị ở trên cùng và dưới cùng.
 
 .. _class_ItemList_constant_SCROLL_HINT_MODE_TOP:
 
@@ -421,7 +421,7 @@ Scroll hints will be shown at the top and bottom.
 
 :ref:`ScrollHintMode<enum_ItemList_ScrollHintMode>` **SCROLL_HINT_MODE_TOP** = ``2``
 
-Only the top scroll hint will be shown.
+Chỉ gợi ý cuộn ở trên cùng sẽ được hiển thị.
 
 .. _class_ItemList_constant_SCROLL_HINT_MODE_BOTTOM:
 
@@ -429,7 +429,7 @@ Only the top scroll hint will be shown.
 
 :ref:`ScrollHintMode<enum_ItemList_ScrollHintMode>` **SCROLL_HINT_MODE_BOTTOM** = ``3``
 
-Only the bottom scroll hint will be shown.
+Chỉ gợi ý cuộn ở dưới cùng sẽ được hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -437,8 +437,8 @@ Only the bottom scroll hint will be shown.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ItemList_property_allow_reselect:
 
@@ -451,7 +451,7 @@ Property Descriptions
 - |void| **set_allow_reselect**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_allow_reselect**\ (\ )
 
-If ``true``, the currently selected item can be selected again.
+Nếu ``true``, mục hiện được chọn có thể được chọn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -468,7 +468,7 @@ If ``true``, the currently selected item can be selected again.
 - |void| **set_allow_rmb_select**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_allow_rmb_select**\ (\ )
 
-If ``true``, right mouse button click can select items.
+Nếu ``true``, có thể chọn các mục bằng cách nhấp chuột phải.
 
 .. rst-class:: classref-item-separator
 
@@ -485,7 +485,7 @@ If ``true``, right mouse button click can select items.
 - |void| **set_allow_search**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_allow_search**\ (\ )
 
-If ``true``, allows navigating the **ItemList** with letter keys through incremental search.
+Nếu ``true``, cho phép điều hướng trong **ItemList** bằng các phím chữ thông qua tìm kiếm tăng dần.
 
 .. rst-class:: classref-item-separator
 
@@ -502,7 +502,7 @@ If ``true``, allows navigating the **ItemList** with letter keys through increme
 - |void| **set_auto_height**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_auto_height**\ (\ )
 
-If ``true``, the control will automatically resize the height to fit its content.
+Nếu ``true``, control sẽ tự động điều chỉnh chiều cao để vừa với nội dung.
 
 .. rst-class:: classref-item-separator
 
@@ -519,7 +519,7 @@ If ``true``, the control will automatically resize the height to fit its content
 - |void| **set_auto_width**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_auto_width**\ (\ )
 
-If ``true``, the control will automatically resize the width to fit its content.
+Nếu ``true``, control sẽ tự động điều chỉnh chiều rộng để vừa với nội dung.
 
 .. rst-class:: classref-item-separator
 
@@ -536,9 +536,9 @@ If ``true``, the control will automatically resize the width to fit its content.
 - |void| **set_fixed_column_width**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_fixed_column_width**\ (\ )
 
-The width all columns will be adjusted to.
+Chiều rộng mà tất cả các cột sẽ được điều chỉnh theo.
 
-A value of zero disables the adjustment, each item will have a width equal to the width of its content and the columns will have an uneven width.
+Giá trị bằng 0 sẽ tắt việc điều chỉnh; mỗi mục sẽ có chiều rộng bằng chiều rộng nội dung của mục đó và các cột sẽ có chiều rộng không đồng đều.
 
 .. rst-class:: classref-item-separator
 
@@ -555,9 +555,9 @@ A value of zero disables the adjustment, each item will have a width equal to th
 - |void| **set_fixed_icon_size**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_fixed_icon_size**\ (\ )
 
-The size all icons will be adjusted to.
+Kích thước mà tất cả các biểu tượng sẽ được điều chỉnh theo.
 
-If either X or Y component is not greater than zero, icon size won't be affected.
+Nếu thành phần X hoặc Y không lớn hơn 0, kích thước biểu tượng sẽ không bị ảnh hưởng.
 
 .. rst-class:: classref-item-separator
 
@@ -574,7 +574,7 @@ If either X or Y component is not greater than zero, icon size won't be affected
 - |void| **set_icon_mode**\ (\ value\: :ref:`IconMode<enum_ItemList_IconMode>`\ )
 - :ref:`IconMode<enum_ItemList_IconMode>` **get_icon_mode**\ (\ )
 
-The icon position, whether above or to the left of the text. See the :ref:`IconMode<enum_ItemList_IconMode>` constants.
+Vị trí của biểu tượng, ở phía trên hoặc bên trái văn bản. Xem các hằng số :ref:`IconMode <enum_ItemList_IconMode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -591,7 +591,7 @@ The icon position, whether above or to the left of the text. See the :ref:`IconM
 - |void| **set_icon_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_icon_scale**\ (\ )
 
-The scale of icon applied after :ref:`fixed_icon_size<class_ItemList_property_fixed_icon_size>` and transposing takes effect.
+Tỷ lệ của biểu tượng được áp dụng sau khi :ref:`fixed_icon_size<class_ItemList_property_fixed_icon_size>` và phép chuyển vị có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -608,7 +608,7 @@ The scale of icon applied after :ref:`fixed_icon_size<class_ItemList_property_fi
 - |void| **set_item_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_item_count**\ (\ )
 
-The number of items currently in the list.
+Số lượng mục hiện có trong danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -618,11 +618,11 @@ The number of items currently in the list.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **item_{index}/disabled** = ``false`` :ref:`🔗<class_ItemList_property_item_{index}/disabled>`
+:ref:`bool<class_bool>` **item_{index}/disabled** = ``false`` :ref:`🔗 <class_ItemList_property_item_{index}/disabled>`
 
-If ``true``, the item at ``index`` is disabled.
+Nếu ``true``, mục tại ``index`` sẽ bị vô hiệu hóa.
 
-\ **Note:** ``index`` is a value in the ``0 .. item_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. item_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -632,11 +632,11 @@ If ``true``, the item at ``index`` is disabled.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **item_{index}/icon** :ref:`🔗<class_ItemList_property_item_{index}/icon>`
+:ref:`Texture2D<class_Texture2D>` **item_{index}/icon** :ref:`🔗 <class_ItemList_property_item_{index}/icon>`
 
-The icon of the item at ``index``.
+Biểu tượng của mục tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. item_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. item_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -646,11 +646,11 @@ The icon of the item at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **item_{index}/selectable** = ``true`` :ref:`🔗<class_ItemList_property_item_{index}/selectable>`
+:ref:`bool<class_bool>` **item_{index}/selectable** = ``true`` :ref:`🔗 <class_ItemList_property_item_{index}/selectable>`
 
-If ``true``, the item at ``index`` is selectable.
+Nếu ``true``, mục tại ``index`` có thể được chọn.
 
-\ **Note:** ``index`` is a value in the ``0 .. item_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. item_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -660,11 +660,11 @@ If ``true``, the item at ``index`` is selectable.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **item_{index}/text** = ``""`` :ref:`🔗<class_ItemList_property_item_{index}/text>`
+:ref:`String<class_String>` **item_{index}/text** = ``""`` :ref:`🔗 <class_ItemList_property_item_{index}/text>`
 
-The text of the item at ``index``.
+Văn bản của mục tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. item_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. item_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -681,11 +681,11 @@ The text of the item at ``index``.
 - |void| **set_max_columns**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_columns**\ (\ )
 
-Maximum columns the list will have.
+Số cột tối đa mà danh sách sẽ có.
 
-If greater than zero, the content will be split among the specified columns.
+Nếu lớn hơn 0, nội dung sẽ được chia giữa các cột được chỉ định.
 
-A value of zero means unlimited columns, i.e. all items will be put in the same row.
+Giá trị 0 có nghĩa là số cột không giới hạn, tức là tất cả các mục sẽ được đặt trên cùng một hàng.
 
 .. rst-class:: classref-item-separator
 
@@ -702,9 +702,9 @@ A value of zero means unlimited columns, i.e. all items will be put in the same 
 - |void| **set_max_text_lines**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_text_lines**\ (\ )
 
-Maximum lines of text allowed in each item. Space will be reserved even when there is not enough lines of text to display.
+Số dòng văn bản tối đa được phép trong mỗi mục. Không gian sẽ được dành sẵn ngay cả khi không có đủ dòng văn bản để hiển thị.
 
-\ **Note:** This property takes effect only when :ref:`icon_mode<class_ItemList_property_icon_mode>` is :ref:`ICON_MODE_TOP<class_ItemList_constant_ICON_MODE_TOP>`. To make the text wrap, :ref:`fixed_column_width<class_ItemList_property_fixed_column_width>` should be greater than zero.
+\ **Lưu ý:** Thuộc tính này chỉ có hiệu lực khi :ref:`icon_mode<class_ItemList_property_icon_mode>` là :ref:`ICON_MODE_TOP<class_ItemList_constant_ICON_MODE_TOP>`. Để văn bản tự động xuống dòng, :ref:`fixed_column_width<class_ItemList_property_fixed_column_width>` phải lớn hơn 0.
 
 .. rst-class:: classref-item-separator
 
@@ -721,9 +721,9 @@ Maximum lines of text allowed in each item. Space will be reserved even when the
 - |void| **set_same_column_width**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_same_column_width**\ (\ )
 
-Whether all columns will have the same width.
+Các cột có cùng chiều rộng hay không.
 
-If ``true``, the width is equal to the largest column width of all columns.
+Nếu ``true``, chiều rộng sẽ bằng chiều rộng cột lớn nhất trong tất cả các cột.
 
 .. rst-class:: classref-item-separator
 
@@ -740,7 +740,7 @@ If ``true``, the width is equal to the largest column width of all columns.
 - |void| **set_scroll_hint_mode**\ (\ value\: :ref:`ScrollHintMode<enum_ItemList_ScrollHintMode>`\ )
 - :ref:`ScrollHintMode<enum_ItemList_ScrollHintMode>` **get_scroll_hint_mode**\ (\ )
 
-The way which scroll hints (indicators that show that the content can still be scrolled in a certain direction) will be shown.
+Cách hiển thị các gợi ý cuộn (các chỉ báo cho biết nội dung vẫn có thể được cuộn theo một hướng nhất định).
 
 .. rst-class:: classref-item-separator
 
@@ -757,7 +757,7 @@ The way which scroll hints (indicators that show that the content can still be s
 - |void| **set_select_mode**\ (\ value\: :ref:`SelectMode<enum_ItemList_SelectMode>`\ )
 - :ref:`SelectMode<enum_ItemList_SelectMode>` **get_select_mode**\ (\ )
 
-Allows single or multiple item selection. See the :ref:`SelectMode<enum_ItemList_SelectMode>` constants.
+Cho phép chọn một hoặc nhiều mục. Xem các hằng số :ref:`SelectMode <enum_ItemList_SelectMode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -774,7 +774,7 @@ Allows single or multiple item selection. See the :ref:`SelectMode<enum_ItemList
 - |void| **set_text_overrun_behavior**\ (\ value\: :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`\ )
 - :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior**\ (\ )
 
-The clipping behavior when the text exceeds an item's bounding rectangle.
+Hành vi cắt xén khi văn bản vượt quá hình chữ nhật bao quanh một mục.
 
 .. rst-class:: classref-item-separator
 
@@ -791,7 +791,7 @@ The clipping behavior when the text exceeds an item's bounding rectangle.
 - |void| **set_tile_scroll_hint**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_scroll_hint_tiled**\ (\ )
 
-If ``true``, the scroll hint texture will be tiled instead of stretched. See :ref:`scroll_hint_mode<class_ItemList_property_scroll_hint_mode>`.
+Nếu ``true``, texture gợi ý cuộn sẽ được xếp dạng ô thay vì kéo giãn. Xem :ref:`scroll_hint_mode<class_ItemList_property_scroll_hint_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -808,9 +808,9 @@ If ``true``, the scroll hint texture will be tiled instead of stretched. See :re
 - |void| **set_wraparound_items**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_wraparound_items**\ (\ )
 
-If ``true``, the control will automatically move items into a new row to fit its content. See also :ref:`HFlowContainer<class_HFlowContainer>` for this behavior.
+Nếu ``true``, control sẽ tự động chuyển các mục vào một hàng mới để vừa với nội dung. Cũng xem :ref:`HFlowContainer<class_HFlowContainer>` để biết về hành vi này.
 
-If ``false``, the control will add a horizontal scrollbar to make all items visible.
+Nếu ``false``, control sẽ thêm thanh cuộn ngang để hiển thị tất cả các mục.
 
 .. rst-class:: classref-section-separator
 
@@ -818,8 +818,8 @@ If ``false``, the control will add a horizontal scrollbar to make all items visi
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ItemList_method_add_icon_item:
 
@@ -827,7 +827,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **add_icon_item**\ (\ icon\: :ref:`Texture2D<class_Texture2D>`, selectable\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ItemList_method_add_icon_item>`
 
-Adds an item to the item list with no text, only an icon. Returns the index of an added item.
+Thêm một mục vào danh sách mục không có văn bản, chỉ có biểu tượng. Trả về chỉ mục của mục đã thêm.
 
 .. rst-class:: classref-item-separator
 
@@ -839,11 +839,11 @@ Adds an item to the item list with no text, only an icon. Returns the index of a
 
 :ref:`int<class_int>` **add_item**\ (\ text\: :ref:`String<class_String>`, icon\: :ref:`Texture2D<class_Texture2D>` = null, selectable\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ItemList_method_add_item>`
 
-Adds an item to the item list with specified text. Returns the index of an added item.
+Thêm một mục vào danh sách mục với văn bản được chỉ định. Trả về chỉ mục của mục đã thêm.
 
-Specify an ``icon``, or use ``null`` as the ``icon`` for a list item with no icon.
+Chỉ định một ``icon``, hoặc sử dụng ``null`` làm ``icon`` cho mục danh sách không có biểu tượng.
 
-If ``selectable`` is ``true``, the list item will be selectable.
+Nếu ``selectable`` là ``true``, mục danh sách sẽ có thể được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -855,9 +855,9 @@ If ``selectable`` is ``true``, the list item will be selectable.
 
 |void| **center_on_current**\ (\ center_verically\: :ref:`bool<class_bool>` = true, center_horizontally\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ItemList_method_center_on_current>`
 
-Ensures the currently selected item (the first selected item if multiple selection is enabled) is visible, adjusting the scroll position as necessary to place the item at the center of the list if possible. See also :ref:`ensure_current_is_visible()<class_ItemList_method_ensure_current_is_visible>`.
+Đảm bảo mục hiện được chọn (mục đầu tiên được chọn nếu bật chế độ chọn nhiều mục) hiển thị trong danh sách, điều chỉnh vị trí cuộn khi cần để đặt mục ở giữa danh sách nếu có thể. Xem thêm :ref:`ensure_current_is_visible()<class_ItemList_method_ensure_current_is_visible>`.
 
-Fails and prints an error if both arguments are ``false``.
+Không thành công và in lỗi nếu cả hai đối số đều là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -869,7 +869,7 @@ Fails and prints an error if both arguments are ``false``.
 
 |void| **clear**\ (\ ) :ref:`🔗<class_ItemList_method_clear>`
 
-Removes all items from the list.
+Xóa tất cả các mục khỏi danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -881,7 +881,7 @@ Removes all items from the list.
 
 |void| **deselect**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ItemList_method_deselect>`
 
-Ensures the item associated with the specified index is not selected.
+Đảm bảo mục được liên kết với chỉ mục đã chỉ định không được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -893,7 +893,7 @@ Ensures the item associated with the specified index is not selected.
 
 |void| **deselect_all**\ (\ ) :ref:`🔗<class_ItemList_method_deselect_all>`
 
-Ensures there are no items selected.
+Đảm bảo không có mục nào được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -905,7 +905,7 @@ Ensures there are no items selected.
 
 |void| **ensure_current_is_visible**\ (\ ) :ref:`🔗<class_ItemList_method_ensure_current_is_visible>`
 
-Ensures the currently selected item (the first selected item if multiple selection is enabled) is visible, adjusting the scroll position as necessary. See also :ref:`center_on_current()<class_ItemList_method_center_on_current>`.
+Đảm bảo mục hiện được chọn (mục được chọn đầu tiên nếu bật chế độ chọn nhiều mục) hiển thị, điều chỉnh vị trí cuộn khi cần. Xem thêm :ref:`center_on_current()<class_ItemList_method_center_on_current>`.
 
 .. rst-class:: classref-item-separator
 
@@ -917,7 +917,7 @@ Ensures the currently selected item (the first selected item if multiple selecti
 
 |void| **force_update_list_size**\ (\ ) :ref:`🔗<class_ItemList_method_force_update_list_size>`
 
-Forces an update to the list size based on its items. This happens automatically whenever size of the items, or other relevant settings like :ref:`auto_height<class_ItemList_property_auto_height>`, change. The method can be used to trigger the update ahead of next drawing pass.
+Buộc cập nhật kích thước danh sách dựa trên các mục trong danh sách. Việc này tự động xảy ra bất cứ khi nào kích thước của các mục hoặc những thiết lập liên quan khác như :ref:`auto_height<class_ItemList_property_auto_height>` thay đổi. Có thể sử dụng phương thức này để kích hoạt cập nhật trước lượt vẽ tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -929,9 +929,9 @@ Forces an update to the list size based on its items. This happens automatically
 
 :ref:`HScrollBar<class_HScrollBar>` **get_h_scroll_bar**\ (\ ) :ref:`🔗<class_ItemList_method_get_h_scroll_bar>`
 
-Returns the horizontal scrollbar.
+Trả về thanh cuộn ngang.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây ra lỗi crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -943,11 +943,11 @@ Returns the horizontal scrollbar.
 
 :ref:`int<class_int>` **get_item_at_position**\ (\ position\: :ref:`Vector2<class_Vector2>`, exact\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ItemList_method_get_item_at_position>`
 
-Returns the item index at the given ``position``.
+Trả về chỉ mục mục tại ``position`` đã cho.
 
-When there is no item at that point, -1 will be returned if ``exact`` is ``true``, and the closest item index will be returned otherwise.
+Khi không có mục nào tại vị trí đó, -1 sẽ được trả về nếu ``exact`` là ``true``, còn không thì chỉ mục của mục gần nhất sẽ được trả về.
 
-\ **Note:** The returned value is unreliable if called right after modifying the **ItemList**, before it redraws in the next frame.
+\ **Lưu ý:** Giá trị được trả về không đáng tin cậy nếu được gọi ngay sau khi sửa đổi **ItemList**, trước khi nó được vẽ lại ở frame tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -959,7 +959,7 @@ When there is no item at that point, -1 will be returned if ``exact`` is ``true`
 
 :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` **get_item_auto_translate_mode**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_auto_translate_mode>`
 
-Returns item's auto translate mode.
+Trả về chế độ tự động dịch của mục.
 
 .. rst-class:: classref-item-separator
 
@@ -971,7 +971,7 @@ Returns item's auto translate mode.
 
 :ref:`Color<class_Color>` **get_item_custom_bg_color**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_custom_bg_color>`
 
-Returns the custom background color of the item specified by ``idx`` index.
+Trả về màu nền tùy chỉnh của mục được chỉ định bởi chỉ mục ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -983,7 +983,7 @@ Returns the custom background color of the item specified by ``idx`` index.
 
 :ref:`Color<class_Color>` **get_item_custom_fg_color**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_custom_fg_color>`
 
-Returns the custom foreground color of the item specified by ``idx`` index.
+Trả về màu nền trước tùy chỉnh của mục được chỉ định bởi chỉ mục ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -995,7 +995,7 @@ Returns the custom foreground color of the item specified by ``idx`` index.
 
 :ref:`Texture2D<class_Texture2D>` **get_item_icon**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_icon>`
 
-Returns the icon associated with the specified index.
+Trả về biểu tượng liên kết với chỉ mục đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1007,7 +1007,7 @@ Returns the icon associated with the specified index.
 
 :ref:`Color<class_Color>` **get_item_icon_modulate**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_icon_modulate>`
 
-Returns a :ref:`Color<class_Color>` modulating item's icon at the specified index.
+Trả về một :ref:`Color<class_Color>` điều chỉnh biểu tượng của mục tại chỉ mục được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1019,7 +1019,7 @@ Returns a :ref:`Color<class_Color>` modulating item's icon at the specified inde
 
 :ref:`Rect2<class_Rect2>` **get_item_icon_region**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_icon_region>`
 
-Returns the region of item's icon used. The whole icon will be used if the region has no area.
+Trả về vùng của biểu tượng mục được sử dụng. Toàn bộ biểu tượng sẽ được sử dụng nếu vùng này không có diện tích.
 
 .. rst-class:: classref-item-separator
 
@@ -1031,7 +1031,7 @@ Returns the region of item's icon used. The whole icon will be used if the regio
 
 :ref:`String<class_String>` **get_item_language**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_language>`
 
-Returns item's text language code.
+Trả về mã ngôn ngữ của văn bản mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1043,7 +1043,7 @@ Returns item's text language code.
 
 :ref:`Variant<class_Variant>` **get_item_metadata**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_metadata>`
 
-Returns the metadata value of the specified index.
+Trả về giá trị metadata tại chỉ mục được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1055,9 +1055,9 @@ Returns the metadata value of the specified index.
 
 :ref:`Rect2<class_Rect2>` **get_item_rect**\ (\ idx\: :ref:`int<class_int>`, expand\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_ItemList_method_get_item_rect>`
 
-Returns the position and size of the item with the specified index, in the coordinate system of the **ItemList** node. If ``expand`` is ``true`` the last column expands to fill the rest of the row.
+Trả về vị trí và kích thước của mục tại chỉ mục được chỉ định trong hệ tọa độ của node **ItemList**. Nếu ``expand`` là ``true``, cột cuối cùng sẽ mở rộng để lấp đầy phần còn lại của hàng.
 
-\ **Note:** The returned value is unreliable if called right after modifying the **ItemList**, before it redraws in the next frame.
+\ **Lưu ý:** Giá trị được trả về không đáng tin cậy nếu được gọi ngay sau khi sửa đổi **ItemList**, trước khi nó được vẽ lại ở frame tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -1069,7 +1069,7 @@ Returns the position and size of the item with the specified index, in the coord
 
 :ref:`String<class_String>` **get_item_text**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_text>`
 
-Returns the text associated with the specified index.
+Trả về văn bản liên kết với chỉ mục được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1081,7 +1081,7 @@ Returns the text associated with the specified index.
 
 :ref:`TextDirection<enum_Control_TextDirection>` **get_item_text_direction**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_text_direction>`
 
-Returns item's text base writing direction.
+Trả về hướng viết cơ bản của văn bản trong mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1093,7 +1093,7 @@ Returns item's text base writing direction.
 
 :ref:`String<class_String>` **get_item_tooltip**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_get_item_tooltip>`
 
-Returns the tooltip hint associated with the specified index.
+Trả về gợi ý chú giải công cụ liên kết với chỉ mục được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1105,7 +1105,7 @@ Returns the tooltip hint associated with the specified index.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_selected_items**\ (\ ) :ref:`🔗<class_ItemList_method_get_selected_items>`
 
-Returns an array with the indexes of the selected items.
+Trả về một mảng chứa các chỉ mục của những mục đã chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1117,9 +1117,9 @@ Returns an array with the indexes of the selected items.
 
 :ref:`VScrollBar<class_VScrollBar>` **get_v_scroll_bar**\ (\ ) :ref:`🔗<class_ItemList_method_get_v_scroll_bar>`
 
-Returns the vertical scrollbar.
+Trả về thanh cuộn dọc.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây ra lỗi crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -1131,7 +1131,7 @@ Returns the vertical scrollbar.
 
 :ref:`bool<class_bool>` **is_anything_selected**\ (\ ) :ref:`🔗<class_ItemList_method_is_anything_selected>`
 
-Returns ``true`` if one or more items are selected.
+Trả về ``true`` nếu một hoặc nhiều mục được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1143,7 +1143,7 @@ Returns ``true`` if one or more items are selected.
 
 :ref:`bool<class_bool>` **is_item_disabled**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_is_item_disabled>`
 
-Returns ``true`` if the item at the specified index is disabled.
+Trả về ``true`` nếu mục tại chỉ mục được chỉ định bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -1155,7 +1155,7 @@ Returns ``true`` if the item at the specified index is disabled.
 
 :ref:`bool<class_bool>` **is_item_icon_transposed**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_is_item_icon_transposed>`
 
-Returns ``true`` if the item icon will be drawn transposed, i.e. the X and Y axes are swapped.
+Trả về ``true`` nếu biểu tượng của mục sẽ được vẽ theo dạng chuyển vị, tức là trục X và Y được hoán đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -1167,7 +1167,7 @@ Returns ``true`` if the item icon will be drawn transposed, i.e. the X and Y axe
 
 :ref:`bool<class_bool>` **is_item_selectable**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_is_item_selectable>`
 
-Returns ``true`` if the item at the specified index is selectable.
+Trả về ``true`` nếu mục tại chỉ mục được chỉ định có thể được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1179,7 +1179,7 @@ Returns ``true`` if the item at the specified index is selectable.
 
 :ref:`bool<class_bool>` **is_item_tooltip_enabled**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_is_item_tooltip_enabled>`
 
-Returns ``true`` if the tooltip is enabled for specified item index.
+Trả về ``true`` nếu tooltip được bật cho mục tại chỉ mục được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1191,7 +1191,7 @@ Returns ``true`` if the tooltip is enabled for specified item index.
 
 :ref:`bool<class_bool>` **is_selected**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_ItemList_method_is_selected>`
 
-Returns ``true`` if the item at the specified index is currently selected.
+Trả về ``true`` nếu mục tại chỉ mục được chỉ định hiện đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1203,7 +1203,7 @@ Returns ``true`` if the item at the specified index is currently selected.
 
 |void| **move_item**\ (\ from_idx\: :ref:`int<class_int>`, to_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ItemList_method_move_item>`
 
-Moves item from index ``from_idx`` to ``to_idx``.
+Di chuyển mục từ chỉ mục ``from_idx`` đến ``to_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -1215,7 +1215,7 @@ Moves item from index ``from_idx`` to ``to_idx``.
 
 |void| **remove_item**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ItemList_method_remove_item>`
 
-Removes the item specified by ``idx`` index from the list.
+Xóa mục được chỉ định bởi chỉ mục ``idx`` khỏi danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -1227,9 +1227,9 @@ Removes the item specified by ``idx`` index from the list.
 
 |void| **select**\ (\ idx\: :ref:`int<class_int>`, single\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_ItemList_method_select>`
 
-Selects the item at the specified index.
+Chọn mục tại chỉ mục được chỉ định.
 
-\ **Note:** This method does not trigger the item selection signal.
+\ **Lưu ý:** Phương thức này không kích hoạt tín hiệu chọn mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1241,9 +1241,9 @@ Selects the item at the specified index.
 
 |void| **set_item_auto_translate_mode**\ (\ idx\: :ref:`int<class_int>`, mode\: :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>`\ ) :ref:`🔗<class_ItemList_method_set_item_auto_translate_mode>`
 
-Sets the auto translate mode of the item associated with the specified index.
+Đặt chế độ tự động dịch của mục liên kết với chỉ mục đã chỉ định.
 
-Items use :ref:`Node.AUTO_TRANSLATE_MODE_INHERIT<class_Node_constant_AUTO_TRANSLATE_MODE_INHERIT>` by default, which uses the same auto translate mode as the **ItemList** itself.
+Theo mặc định, các mục sử dụng :ref:`Node.AUTO_TRANSLATE_MODE_INHERIT<class_Node_constant_AUTO_TRANSLATE_MODE_INHERIT>`, chế độ này sử dụng cùng chế độ tự động dịch với chính **ItemList**.
 
 .. rst-class:: classref-item-separator
 
@@ -1255,7 +1255,7 @@ Items use :ref:`Node.AUTO_TRANSLATE_MODE_INHERIT<class_Node_constant_AUTO_TRANSL
 
 |void| **set_item_custom_bg_color**\ (\ idx\: :ref:`int<class_int>`, custom_bg_color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ItemList_method_set_item_custom_bg_color>`
 
-Sets the background color of the item specified by ``idx`` index to the specified :ref:`Color<class_Color>`.
+Đặt màu nền của mục được chỉ định bằng chỉ mục ``idx`` thành :ref:`Color<class_Color>` đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1267,7 +1267,7 @@ Sets the background color of the item specified by ``idx`` index to the specifie
 
 |void| **set_item_custom_fg_color**\ (\ idx\: :ref:`int<class_int>`, custom_fg_color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ItemList_method_set_item_custom_fg_color>`
 
-Sets the foreground color of the item specified by ``idx`` index to the specified :ref:`Color<class_Color>`.
+Đặt màu tiền cảnh của mục được chỉ định bằng chỉ mục ``idx`` thành :ref:`Color<class_Color>` đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1279,9 +1279,9 @@ Sets the foreground color of the item specified by ``idx`` index to the specifie
 
 |void| **set_item_disabled**\ (\ idx\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_ItemList_method_set_item_disabled>`
 
-Disables (or enables) the item at the specified index.
+Vô hiệu hóa (hoặc bật) mục tại chỉ mục đã chỉ định.
 
-Disabled items cannot be selected and do not trigger activation signals (when double-clicking or pressing :kbd:`Enter`).
+Không thể chọn các mục bị vô hiệu hóa và chúng không kích hoạt tín hiệu kích hoạt (khi nhấp đúp hoặc nhấn :kbd:`Enter`).
 
 .. rst-class:: classref-item-separator
 
@@ -1293,7 +1293,7 @@ Disabled items cannot be selected and do not trigger activation signals (when do
 
 |void| **set_item_icon**\ (\ idx\: :ref:`int<class_int>`, icon\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_ItemList_method_set_item_icon>`
 
-Sets (or replaces) the icon's :ref:`Texture2D<class_Texture2D>` associated with the specified index.
+Thiết lập (hoặc thay thế) :ref:`Texture2D<class_Texture2D>` của biểu tượng được liên kết với chỉ mục đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1305,7 +1305,7 @@ Sets (or replaces) the icon's :ref:`Texture2D<class_Texture2D>` associated with 
 
 |void| **set_item_icon_modulate**\ (\ idx\: :ref:`int<class_int>`, modulate\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ItemList_method_set_item_icon_modulate>`
 
-Sets a modulating :ref:`Color<class_Color>` of the item associated with the specified index.
+Thiết lập :ref:`Color<class_Color>` điều biến của mục được liên kết với chỉ mục đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1317,7 +1317,7 @@ Sets a modulating :ref:`Color<class_Color>` of the item associated with the spec
 
 |void| **set_item_icon_region**\ (\ idx\: :ref:`int<class_int>`, rect\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_ItemList_method_set_item_icon_region>`
 
-Sets the region of item's icon used. The whole icon will be used if the region has no area.
+Thiết lập vùng của biểu tượng của mục được sử dụng. Toàn bộ biểu tượng sẽ được sử dụng nếu vùng này không có diện tích.
 
 .. rst-class:: classref-item-separator
 
@@ -1329,7 +1329,7 @@ Sets the region of item's icon used. The whole icon will be used if the region h
 
 |void| **set_item_icon_transposed**\ (\ idx\: :ref:`int<class_int>`, transposed\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_ItemList_method_set_item_icon_transposed>`
 
-Sets whether the item icon will be drawn transposed.
+Thiết lập việc biểu tượng của mục có được vẽ theo phép chuyển vị hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1341,7 +1341,7 @@ Sets whether the item icon will be drawn transposed.
 
 |void| **set_item_language**\ (\ idx\: :ref:`int<class_int>`, language\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ItemList_method_set_item_language>`
 
-Sets the language code of the text for the item at the given index to ``language``. This is used for line-breaking and text shaping algorithms. If ``language`` is empty, the current locale is used.
+Thiết lập mã ngôn ngữ của văn bản cho mục tại chỉ mục đã cho thành ``language``. Mã này được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu ``language`` trống, locale hiện tại sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1353,7 +1353,7 @@ Sets the language code of the text for the item at the given index to ``language
 
 |void| **set_item_metadata**\ (\ idx\: :ref:`int<class_int>`, metadata\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_ItemList_method_set_item_metadata>`
 
-Sets a value (of any type) to be stored with the item associated with the specified index.
+Thiết lập một giá trị (thuộc bất kỳ kiểu nào) để lưu trữ cùng với mục được liên kết với chỉ mục đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1365,7 +1365,7 @@ Sets a value (of any type) to be stored with the item associated with the specif
 
 |void| **set_item_selectable**\ (\ idx\: :ref:`int<class_int>`, selectable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_ItemList_method_set_item_selectable>`
 
-Allows or disallows selection of the item associated with the specified index.
+Cho phép hoặc không cho phép chọn mục được liên kết với chỉ mục đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1377,7 +1377,7 @@ Allows or disallows selection of the item associated with the specified index.
 
 |void| **set_item_text**\ (\ idx\: :ref:`int<class_int>`, text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ItemList_method_set_item_text>`
 
-Sets text of the item associated with the specified index.
+Thiết lập văn bản của mục được liên kết với chỉ mục đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1389,7 +1389,7 @@ Sets text of the item associated with the specified index.
 
 |void| **set_item_text_direction**\ (\ idx\: :ref:`int<class_int>`, direction\: :ref:`TextDirection<enum_Control_TextDirection>`\ ) :ref:`🔗<class_ItemList_method_set_item_text_direction>`
 
-Sets item's text base writing direction.
+Thiết lập hướng viết cơ sở của văn bản mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1401,7 +1401,7 @@ Sets item's text base writing direction.
 
 |void| **set_item_tooltip**\ (\ idx\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ItemList_method_set_item_tooltip>`
 
-Sets the tooltip hint for the item associated with the specified index.
+Thiết lập chú giải công cụ cho mục được liên kết với chỉ mục đã chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1413,7 +1413,7 @@ Sets the tooltip hint for the item associated with the specified index.
 
 |void| **set_item_tooltip_enabled**\ (\ idx\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_ItemList_method_set_item_tooltip_enabled>`
 
-Sets whether the tooltip hint is enabled for specified item index.
+Thiết lập việc chú giải công cụ có được bật cho mục có chỉ mục đã chỉ định hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1425,7 +1425,7 @@ Sets whether the tooltip hint is enabled for specified item index.
 
 |void| **sort_items_by_text**\ (\ ) :ref:`🔗<class_ItemList_method_sort_items_by_text>`
 
-Sorts items in the list by their text.
+Sắp xếp các mục trong danh sách theo văn bản của chúng.
 
 .. rst-class:: classref-section-separator
 
@@ -1433,8 +1433,8 @@ Sorts items in the list by their text.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_ItemList_theme_color_font_color:
 
@@ -1442,7 +1442,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **font_color** = ``Color(0.65, 0.65, 0.65, 1)`` :ref:`🔗<class_ItemList_theme_color_font_color>`
 
-Default text :ref:`Color<class_Color>` of the item.
+:ref:`Color<class_Color>` văn bản mặc định của mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1454,7 +1454,7 @@ Default text :ref:`Color<class_Color>` of the item.
 
 :ref:`Color<class_Color>` **font_hovered_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_ItemList_theme_color_font_hovered_color>`
 
-Text :ref:`Color<class_Color>` used when the item is hovered and not selected yet.
+Màu văn bản :ref:`Color<class_Color>` được sử dụng khi mục được di chuột qua nhưng chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1466,7 +1466,7 @@ Text :ref:`Color<class_Color>` used when the item is hovered and not selected ye
 
 :ref:`Color<class_Color>` **font_hovered_selected_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_ItemList_theme_color_font_hovered_selected_color>`
 
-Text :ref:`Color<class_Color>` used when the item is hovered and selected.
+Màu văn bản :ref:`Color<class_Color>` được sử dụng khi mục được di chuột qua và đã được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1478,7 +1478,7 @@ Text :ref:`Color<class_Color>` used when the item is hovered and selected.
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_ItemList_theme_color_font_outline_color>`
 
-The tint of text outline of the item.
+Sắc độ của đường viền văn bản của mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1490,7 +1490,7 @@ The tint of text outline of the item.
 
 :ref:`Color<class_Color>` **font_selected_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_ItemList_theme_color_font_selected_color>`
 
-Text :ref:`Color<class_Color>` used when the item is selected, but not hovered.
+Màu văn bản :ref:`Color<class_Color>` được sử dụng khi mục được chọn nhưng không được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -1502,7 +1502,7 @@ Text :ref:`Color<class_Color>` used when the item is selected, but not hovered.
 
 :ref:`Color<class_Color>` **guide_color** = ``Color(0.7, 0.7, 0.7, 0.25)`` :ref:`🔗<class_ItemList_theme_color_guide_color>`
 
-:ref:`Color<class_Color>` of the guideline. The guideline is a line drawn between each row of items.
+:ref:`Color<class_Color>` của đường hướng dẫn. Đường hướng dẫn là một đường được vẽ giữa mỗi hàng mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1514,7 +1514,7 @@ Text :ref:`Color<class_Color>` used when the item is selected, but not hovered.
 
 :ref:`Color<class_Color>` **scroll_hint_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_ItemList_theme_color_scroll_hint_color>`
 
-:ref:`Color<class_Color>` used to modulate the :ref:`scroll_hint<class_ItemList_theme_icon_scroll_hint>` texture.
+:ref:`Color<class_Color>` được sử dụng để điều chỉnh texture :ref:`scroll_hint<class_ItemList_theme_icon_scroll_hint>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1526,7 +1526,7 @@ Text :ref:`Color<class_Color>` used when the item is selected, but not hovered.
 
 :ref:`int<class_int>` **h_separation** = ``4`` :ref:`🔗<class_ItemList_theme_constant_h_separation>`
 
-The horizontal spacing between items.
+Khoảng cách theo chiều ngang giữa các mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1538,7 +1538,7 @@ The horizontal spacing between items.
 
 :ref:`int<class_int>` **icon_margin** = ``4`` :ref:`🔗<class_ItemList_theme_constant_icon_margin>`
 
-The spacing between item's icon and text.
+Khoảng cách giữa biểu tượng và văn bản của mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1550,7 +1550,7 @@ The spacing between item's icon and text.
 
 :ref:`int<class_int>` **line_separation** = ``2`` :ref:`🔗<class_ItemList_theme_constant_line_separation>`
 
-The vertical spacing between each line of text.
+Khoảng cách theo chiều dọc giữa từng dòng văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -1562,9 +1562,9 @@ The vertical spacing between each line of text.
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_ItemList_theme_constant_outline_size>`
 
-The size of the item text outline.
+Kích thước đường viền văn bản của mục.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_ItemList_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng một font có :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` được bật, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của font đó phải được đặt ít nhất bằng *gấp đôi* giá trị của :ref:`outline_size<class_ItemList_theme_constant_outline_size>` để việc kết xuất đường viền hiển thị chính xác. Nếu không, đường viền có thể bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -1576,7 +1576,7 @@ The size of the item text outline.
 
 :ref:`int<class_int>` **v_separation** = ``4`` :ref:`🔗<class_ItemList_theme_constant_v_separation>`
 
-The vertical spacing between items.
+Khoảng cách theo chiều dọc giữa các mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1586,9 +1586,9 @@ The vertical spacing between items.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_ItemList_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_ItemList_theme_font_font>`
 
-:ref:`Font<class_Font>` of the item's text.
+:ref:`Font<class_Font>` của văn bản trong mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1598,9 +1598,9 @@ The vertical spacing between items.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_ItemList_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_ItemList_theme_font_size_font_size>`
 
-Font size of the item's text.
+Kích thước phông chữ của văn bản trong mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1610,9 +1610,9 @@ Font size of the item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **scroll_hint** :ref:`🔗<class_ItemList_theme_icon_scroll_hint>`
+:ref:`Texture2D<class_Texture2D>` **scroll_hint** :ref:`🔗 <class_ItemList_theme_icon_scroll_hint>`
 
-The indicator that will be shown when the content can still be scrolled. See :ref:`scroll_hint_mode<class_ItemList_property_scroll_hint_mode>`.
+Chỉ báo sẽ được hiển thị khi nội dung vẫn có thể được cuộn. Xem :ref:`scroll_hint_mode<class_ItemList_property_scroll_hint_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1622,9 +1622,9 @@ The indicator that will be shown when the content can still be scrolled. See :re
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **cursor** :ref:`🔗<class_ItemList_theme_style_cursor>`
+:ref:`StyleBox<class_StyleBox>` **cursor** :ref:`🔗 <class_ItemList_theme_style_cursor>`
 
-:ref:`StyleBox<class_StyleBox>` used for the cursor, when the **ItemList** is being focused.
+:ref:`StyleBox<class_StyleBox>` được dùng cho con trỏ khi **ItemList** đang được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1634,9 +1634,9 @@ The indicator that will be shown when the content can still be scrolled. See :re
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **cursor_unfocused** :ref:`🔗<class_ItemList_theme_style_cursor_unfocused>`
+:ref:`StyleBox<class_StyleBox>` **cursor_unfocused** :ref:`🔗 <class_ItemList_theme_style_cursor_unfocused>`
 
-:ref:`StyleBox<class_StyleBox>` used for the cursor, when the **ItemList** is not being focused.
+:ref:`StyleBox<class_StyleBox>` được dùng cho con trỏ khi **ItemList** không được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1646,9 +1646,9 @@ The indicator that will be shown when the content can still be scrolled. See :re
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_ItemList_theme_style_focus>`
+:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗 <class_ItemList_theme_style_focus>`
 
-The focused style for the **ItemList**, drawn on top of everything.
+Kiểu focus cho **ItemList**, được vẽ lên trên mọi thứ.
 
 .. rst-class:: classref-item-separator
 
@@ -1658,9 +1658,9 @@ The focused style for the **ItemList**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hovered** :ref:`🔗<class_ItemList_theme_style_hovered>`
+:ref:`StyleBox<class_StyleBox>` **hovered** :ref:`🔗 <class_ItemList_theme_style_hovered>`
 
-:ref:`StyleBox<class_StyleBox>` for the hovered, but not selected items.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục được di chuột qua nhưng chưa được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1670,9 +1670,9 @@ The focused style for the **ItemList**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hovered_selected** :ref:`🔗<class_ItemList_theme_style_hovered_selected>`
+:ref:`StyleBox<class_StyleBox>` **hovered_selected** :ref:`🔗 <class_ItemList_theme_style_hovered_selected>`
 
-:ref:`StyleBox<class_StyleBox>` for the hovered and selected items, used when the **ItemList** is not being focused.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục được di chuột qua và được chọn, dùng khi **ItemList** không được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1682,9 +1682,9 @@ The focused style for the **ItemList**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hovered_selected_focus** :ref:`🔗<class_ItemList_theme_style_hovered_selected_focus>`
+:ref:`StyleBox<class_StyleBox>` **hovered_selected** :ref:`🔗 <class_ItemList_theme_style_hovered_selected_focus>`
 
-:ref:`StyleBox<class_StyleBox>` for the hovered and selected items, used when the **ItemList** is being focused.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục đang được di chuột qua và được chọn, được sử dụng khi **ItemList** đang được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1694,9 +1694,9 @@ The focused style for the **ItemList**, drawn on top of everything.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_ItemList_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_ItemList_theme_style_panel>`
 
-The background style for the **ItemList**.
+Kiểu nền cho **ItemList**.
 
 .. rst-class:: classref-item-separator
 
@@ -1706,9 +1706,9 @@ The background style for the **ItemList**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **selected** :ref:`🔗<class_ItemList_theme_style_selected>`
+:ref:`StyleBox<class_StyleBox>` **selected** :ref:`🔗 <class_ItemList_theme_style_selected>`
 
-:ref:`StyleBox<class_StyleBox>` for the selected items, used when the **ItemList** is not being focused.
+:ref:`StyleBox<class_StyleBox>` dành cho các mục được chọn, được sử dụng khi **ItemList** không được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1718,16 +1718,16 @@ The background style for the **ItemList**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **selected_focus** :ref:`🔗<class_ItemList_theme_style_selected_focus>`
+:ref:`StyleBox<class_StyleBox>` **selected_focus** :ref:`🔗 <class_ItemList_theme_style_selected_focus>`
 
-:ref:`StyleBox<class_StyleBox>` for the selected items, used when the **ItemList** is being focused.
+:ref:`StyleBox<class_StyleBox>` cho các mục đã chọn, được sử dụng khi **ItemList** đang được tập trung.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một đối tượng để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

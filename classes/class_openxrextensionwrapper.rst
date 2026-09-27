@@ -10,33 +10,33 @@
 OpenXRExtensionWrapper
 ======================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`OpenXRAndroidThreadSettingsExtension<class_OpenXRAndroidThreadSettingsExtension>`, :ref:`OpenXRExtensionWrapperExtension<class_OpenXRExtensionWrapperExtension>`, :ref:`OpenXRFrameSynthesisExtension<class_OpenXRFrameSynthesisExtension>`, :ref:`OpenXRFutureExtension<class_OpenXRFutureExtension>`, :ref:`OpenXRRenderModelExtension<class_OpenXRRenderModelExtension>`, :ref:`OpenXRSpatialAnchorCapability<class_OpenXRSpatialAnchorCapability>`, :ref:`OpenXRSpatialEntityExtension<class_OpenXRSpatialEntityExtension>`, :ref:`OpenXRSpatialMarkerTrackingCapability<class_OpenXRSpatialMarkerTrackingCapability>`, :ref:`OpenXRSpatialPlaneTrackingCapability<class_OpenXRSpatialPlaneTrackingCapability>`
+**Được kế thừa bởi:** :ref:`OpenXRAndroidThreadSettingsExtension<class_OpenXRAndroidThreadSettingsExtension>`, :ref:`OpenXRExtensionWrapperExtension<class_OpenXRExtensionWrapperExtension>`, :ref:`OpenXRFrameSynthesisExtension<class_OpenXRFrameSynthesisExtension>`, :ref:`OpenXRFutureExtension<class_OpenXRFutureExtension>`, :ref:`OpenXRRenderModelExtension<class_OpenXRRenderModelExtension>`, :ref:`OpenXRSpatialAnchorCapability<class_OpenXRSpatialAnchorCapability>`, :ref:`OpenXRSpatialEntityExtension<class_OpenXRSpatialEntityExtension>`, :ref:`OpenXRSpatialMarkerTrackingCapability<class_OpenXRSpatialMarkerTrackingCapability>`, :ref:`OpenXRSpatialPlaneTrackingCapability<class_OpenXRSpatialPlaneTrackingCapability>`
 
-Allows implementing OpenXR extensions with GDExtension.
+Cho phép triển khai các extension OpenXR bằng GDExtension.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**OpenXRExtensionWrapper** allows implementing OpenXR extensions with GDExtension. The extension should be registered with :ref:`register_extension_wrapper()<class_OpenXRExtensionWrapper_method_register_extension_wrapper>`.
+**OpenXRExtensionWrapper** cho phép triển khai các extension OpenXR bằng GDExtension. Extension này phải được đăng ký bằng :ref:`register_extension_wrapper()<class_OpenXRExtensionWrapper_method_register_extension_wrapper>`.
 
-When :ref:`OpenXRInterface<class_OpenXRInterface>` is initialized as the primary interface and any :ref:`Viewport<class_Viewport>` has :ref:`Viewport.use_xr<class_Viewport_property_use_xr>` set to ``true``, OpenXR will become involved in Godot's rendering process. If :ref:`ProjectSettings.rendering/driver/threads/thread_model<class_ProjectSettings_property_rendering/driver/threads/thread_model>` is set to "Separate", Godot's renderer will run on its own thread, and special care must be taken in all **OpenXRExtensionWrapper**\ s in order to prevent crashes or unexpected behavior. Some virtual methods will be called on the render thread, and any data they access should not be directly written to on the main thread. This is to prevent two potential issues:
+Khi :ref:`OpenXRInterface<class_OpenXRInterface>` được khởi tạo làm interface chính và bất kỳ :ref:`Viewport<class_Viewport>` nào có :ref:`Viewport.use_xr<class_Viewport_property_use_xr>` được đặt thành ``true``, OpenXR sẽ tham gia vào quy trình render của Godot. Nếu :ref:`ProjectSettings.rendering/driver/threads/thread_model <class_ProjectSettings_property_rendering/driver/threads/thread_model>` được đặt thành "Separate", renderer của Godot sẽ chạy trên thread riêng và phải đặc biệt cẩn thận với tất cả **OpenXRExtensionWrapper**\ s để tránh crash hoặc hành vi không mong muốn. Một số phương thức virtual sẽ được gọi trên render thread và mọi dữ liệu mà chúng truy cập không được ghi trực tiếp trên main thread. Điều này nhằm ngăn chặn hai vấn đề tiềm ẩn:
 
-1. Changes intended for the next frame, taking effect on the current frame. When using the "Separate" thread model, the main thread will immediately start working on the next frame while the render thread may still be rendering the current frame. If the main thread changes anything used by the render thread directly, the change could end up being used one frame earlier than intended.
+1. Các thay đổi dành cho frame tiếp theo nhưng lại có hiệu lực trên frame hiện tại. Khi sử dụng mô hình thread "Separate", main thread sẽ ngay lập tức bắt đầu xử lý frame tiếp theo trong khi render thread có thể vẫn đang render frame hiện tại. Nếu main thread trực tiếp thay đổi bất kỳ yếu tố nào được render thread sử dụng, thay đổi đó có thể bị áp dụng sớm hơn một frame so với dự kiến.
 
-2. Reading and writing to the same data at the same time from different threads can lead to the render thread using data in an invalid state.
+2. Việc đọc và ghi cùng một dữ liệu đồng thời từ các thread khác nhau có thể khiến render thread sử dụng dữ liệu ở trạng thái không hợp lệ.
 
-In most cases, the solution is to use :ref:`RenderingServer.call_on_render_thread()<class_RenderingServer_method_call_on_render_thread>` to schedule :ref:`Callable<class_Callable>`\ s to write to any data used on the render thread. When using the "Separate" thread model, these :ref:`Callable<class_Callable>`\ s will run after the renderer finishes the current frame and before it starts rendering the next frame. When not using this mode, they'll run immediately, so it's recommended to always use :ref:`RenderingServer.call_on_render_thread()<class_RenderingServer_method_call_on_render_thread>` in these cases, which will allow your code to do the right thing regardless of the thread model.
+Trong hầu hết trường hợp, giải pháp là sử dụng :ref:`RenderingServer.call_on_render_thread()<class_RenderingServer_method_call_on_render_thread>` để lên lịch cho :ref:`Callable<class_Callable>`\ s ghi vào bất kỳ dữ liệu nào được sử dụng trên render thread. Khi sử dụng mô hình thread "Separate", các :ref:`Callable<class_Callable>`\ s này sẽ chạy sau khi renderer hoàn tất frame hiện tại và trước khi bắt đầu render frame tiếp theo. Khi không sử dụng chế độ này, chúng sẽ chạy ngay lập tức, vì vậy trong những trường hợp này, bạn nên luôn sử dụng :ref:`RenderingServer.call_on_render_thread()<class_RenderingServer_method_call_on_render_thread>`, cho phép code của bạn hoạt động đúng bất kể mô hình thread nào.
 
-Any virtual methods that run on the render thread will be noted below.
+Mọi phương thức virtual chạy trên render thread sẽ được ghi chú bên dưới.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -143,8 +143,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRExtensionWrapper_private_method__get_composition_layer:
 
@@ -152,11 +152,11 @@ Method Descriptions
 
 :ref:`int<class_int>` **_get_composition_layer**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__get_composition_layer>`
 
-Returns a pointer to an ``XrCompositionLayerBaseHeader`` struct to provide the given composition layer.
+Trả về một con trỏ tới struct ``XrCompositionLayerBaseHeader`` để cung cấp lớp composition đã cho.
 
-This will only be called if the extension previously registered itself with :ref:`OpenXRAPIExtension.register_composition_layer_provider()<class_OpenXRAPIExtension_method_register_composition_layer_provider>`.
+Điều này chỉ được gọi nếu extension trước đó đã tự đăng ký với :ref:`OpenXRAPIExtension.register_composition_layer_provider()<class_OpenXRAPIExtension_method_register_composition_layer_provider>`.
 
-\ **Note:** This virtual method will be called on the render thread. Additionally, the data it returns will be used shortly after this method is called, so it needs to remain valid until the next time :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` runs.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread. Ngoài ra, dữ liệu mà phương thức này trả về sẽ được sử dụng ngay sau khi phương thức được gọi, vì vậy dữ liệu đó phải còn hợp lệ cho đến lần tiếp theo :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -168,11 +168,11 @@ This will only be called if the extension previously registered itself with :ref
 
 :ref:`int<class_int>` **_get_composition_layer_count**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__get_composition_layer_count>`
 
-Returns the number of composition layers this extension wrapper provides via :ref:`_get_composition_layer()<class_OpenXRExtensionWrapper_private_method__get_composition_layer>`.
+Trả về số lượng lớp composition mà extension wrapper này cung cấp thông qua :ref:`_get_composition_layer()<class_OpenXRExtensionWrapper_private_method__get_composition_layer>`.
 
-This will only be called if the extension previously registered itself with :ref:`OpenXRAPIExtension.register_composition_layer_provider()<class_OpenXRAPIExtension_method_register_composition_layer_provider>`.
+Điều này chỉ được gọi nếu extension trước đó đã tự đăng ký với :ref:`OpenXRAPIExtension.register_composition_layer_provider()<class_OpenXRAPIExtension_method_register_composition_layer_provider>`.
 
-\ **Note:** This virtual method will be called on the render thread. Additionally, the data it returns will be used shortly after this method is called, so it needs to remain valid until the next time :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` runs.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread. Ngoài ra, dữ liệu mà phương thức này trả về sẽ được sử dụng ngay sau khi phương thức được gọi, vì vậy dữ liệu đó phải còn hợp lệ cho đến lần tiếp theo :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -184,11 +184,11 @@ This will only be called if the extension previously registered itself with :ref
 
 :ref:`int<class_int>` **_get_composition_layer_order**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__get_composition_layer_order>`
 
-Returns an integer that will be used to sort the given composition layer provided via :ref:`_get_composition_layer()<class_OpenXRExtensionWrapper_private_method__get_composition_layer>`. Lower numbers will move the layer to the front of the list, and higher numbers to the end. The default projection layer has an order of ``0``, so layers provided by this method should probably be above or below (but not exactly) ``0``.
+Trả về một số nguyên được dùng để sắp xếp layer bố cục được cung cấp thông qua :ref:`_get_composition_layer()<class_OpenXRExtensionWrapper_private_method__get_composition_layer>`. Các số nhỏ hơn sẽ đưa layer lên đầu danh sách, còn các số lớn hơn sẽ đưa layer xuống cuối. Layer projection mặc định có thứ tự là ``0``, vì vậy các layer được cung cấp bởi phương thức này có lẽ nên nằm trên hoặc dưới (nhưng không được chính xác bằng) ``0``.
 
-This will only be called if the extension previously registered itself with :ref:`OpenXRAPIExtension.register_composition_layer_provider()<class_OpenXRAPIExtension_method_register_composition_layer_provider>`.
+Điều này chỉ được gọi nếu extension trước đó đã tự đăng ký với :ref:`OpenXRAPIExtension.register_composition_layer_provider()<class_OpenXRAPIExtension_method_register_composition_layer_provider>`.
 
-\ **Note:** This virtual method will be called on the render thread. Additionally, the data it returns will be used shortly after this method is called, so it needs to remain valid until the next time :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` runs.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread. Ngoài ra, dữ liệu mà phương thức này trả về sẽ được sử dụng ngay sau khi phương thức được gọi, vì vậy dữ liệu đó phải còn hợp lệ cho đến lần tiếp theo :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -200,11 +200,11 @@ This will only be called if the extension previously registered itself with :ref
 
 :ref:`Dictionary<class_Dictionary>` **_get_requested_extensions**\ (\ xr_version\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__get_requested_extensions>`
 
-Returns a :ref:`Dictionary<class_Dictionary>` of OpenXR extensions related to this extension. ``xr_version`` specifies the OpenXR version we're instantiating. This will be zero if the editor requests this list to flag supported features. The :ref:`Dictionary<class_Dictionary>` should contain the name of the extension, mapped to a ``bool *`` cast to an integer:
+Trả về một :ref:`Dictionary<class_Dictionary>` gồm các extension OpenXR liên quan đến extension này. ``xr_version`` chỉ định phiên bản OpenXR mà chúng ta đang khởi tạo. Giá trị này sẽ bằng không nếu editor yêu cầu danh sách này để đánh dấu các tính năng được hỗ trợ. :ref:`Dictionary<class_Dictionary>` phải chứa tên của extension, được ánh xạ tới một ``bool *`` được ép kiểu thành số nguyên:
 
-- If the ``bool *`` is a ``nullptr`` this extension is mandatory.
+- Nếu ``bool *`` là một ``nullptr`` thì extension này là bắt buộc.
 
-- If the ``bool *`` points to a boolean, the boolean will be updated to ``true`` if the extension is enabled.
+- Nếu ``bool *`` trỏ đến một boolean, boolean đó sẽ được cập nhật thành ``true`` nếu extension được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Returns a :ref:`Dictionary<class_Dictionary>` of OpenXR extensions related to th
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_suggested_tracker_names**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__get_suggested_tracker_names>`
 
-Returns a :ref:`PackedStringArray<class_PackedStringArray>` of positional tracker names that are used within the extension wrapper.
+Trả về một :ref:`PackedStringArray<class_PackedStringArray>` gồm các tên positional tracker được sử dụng trong extension wrapper.
 
 .. rst-class:: classref-item-separator
 
@@ -228,9 +228,9 @@ Returns a :ref:`PackedStringArray<class_PackedStringArray>` of positional tracke
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_viewport_composition_layer_extension_properties**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_properties>`
 
-Gets an array of :ref:`Dictionary<class_Dictionary>`\ s that represent properties, just like :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>`, that will be added to :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>` nodes.
+Lấy một mảng các :ref:`Dictionary<class_Dictionary>`\ s đại diện cho các thuộc tính, giống như :ref:`Object._get_property_list()<class_Object_private_method__get_property_list>`, sẽ được thêm vào các node :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>`.
 
-\ **Note:** This virtual method will be called on the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ Gets an array of :ref:`Dictionary<class_Dictionary>`\ s that represent propertie
 
 :ref:`Dictionary<class_Dictionary>` **_get_viewport_composition_layer_extension_property_defaults**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_property_defaults>`
 
-Gets a :ref:`Dictionary<class_Dictionary>` containing the default values for the properties returned by :ref:`_get_viewport_composition_layer_extension_properties()<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_properties>`.
+Lấy một :ref:`Dictionary<class_Dictionary>` chứa các giá trị mặc định cho những thuộc tính được trả về bởi :ref:`_get_viewport_composition_layer_extension_properties()<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_properties>`.
 
 .. rst-class:: classref-item-separator
 
@@ -254,9 +254,9 @@ Gets a :ref:`Dictionary<class_Dictionary>` containing the default values for the
 
 |void| **_on_before_instance_created**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_before_instance_created>`
 
-Called before the OpenXR instance is created.
+Được gọi trước khi instance OpenXR được tạo.
 
-\ **Note:** This virtual method will be called on the main thread, however, it will be called *before* OpenXR becomes involved in rendering, so it is safe to write to data that will be used by the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên main thread, tuy nhiên, nó sẽ được gọi *trước* khi OpenXR tham gia vào quá trình rendering, vì vậy có thể an toàn ghi vào dữ liệu sẽ được render thread sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -268,7 +268,7 @@ Called before the OpenXR instance is created.
 
 :ref:`bool<class_bool>` **_on_event_polled**\ (\ event\: ``const void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_event_polled>`
 
-Called when there is an OpenXR event to process. When implementing, return ``true`` if the event was handled, return ``false`` otherwise.
+Được gọi khi có một sự kiện OpenXR cần được xử lý. Khi triển khai, hãy trả về ``true`` nếu sự kiện đã được xử lý, nếu không hãy trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -280,9 +280,9 @@ Called when there is an OpenXR event to process. When implementing, return ``tru
 
 |void| **_on_instance_created**\ (\ instance\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_instance_created>`
 
-Called right after the OpenXR instance is created.
+Được gọi ngay sau khi OpenXR instance được tạo.
 
-\ **Note:** This virtual method will be called on the main thread, however, it will be called *before* OpenXR becomes involved in rendering, so it is safe to write to data that will be used by the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên main thread, tuy nhiên, nó sẽ được gọi *trước* khi OpenXR tham gia vào quá trình rendering, vì vậy có thể an toàn ghi vào dữ liệu sẽ được render thread sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -294,9 +294,9 @@ Called right after the OpenXR instance is created.
 
 |void| **_on_instance_destroyed**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_instance_destroyed>`
 
-Called right before the OpenXR instance is destroyed.
+Được gọi ngay trước khi OpenXR instance bị hủy.
 
-\ **Note:** This virtual method will be called on the main thread, however, it will be called *after* OpenXR is done being involved in rendering, so it is safe to write to data that was used by the render thread.
+\ **Lưu ý:** Phương thức virtual này sẽ được gọi trên main thread, tuy nhiên, nó sẽ được gọi *sau khi* OpenXR hoàn tất việc tham gia vào quá trình render, vì vậy việc ghi vào dữ liệu đã được render thread sử dụng là an toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -308,9 +308,9 @@ Called right before the OpenXR instance is destroyed.
 
 |void| **_on_main_swapchains_created**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_main_swapchains_created>`
 
-Called right after the main swapchains are (re)created.
+Được gọi ngay sau khi các main swapchain được tạo lại.
 
-\ **Note:** This virtual method will be called on the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread.
 
 .. rst-class:: classref-item-separator
 
@@ -322,11 +322,11 @@ Called right after the main swapchains are (re)created.
 
 |void| **_on_post_draw_viewport**\ (\ viewport\: :ref:`RID<class_RID>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_post_draw_viewport>`
 
-Called right after the given viewport is rendered.
+Được gọi ngay sau khi viewport được chỉ định được render.
 
-\ **Note:** The draw commands might only be queued at this point, not executed.
+\ **Lưu ý:** Tại thời điểm này, các lệnh vẽ có thể mới chỉ được xếp hàng đợi chứ chưa được thực thi.
 
-\ **Note:** This virtual method will be called on the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread.
 
 .. rst-class:: classref-item-separator
 
@@ -338,9 +338,9 @@ Called right after the given viewport is rendered.
 
 |void| **_on_pre_draw_viewport**\ (\ viewport\: :ref:`RID<class_RID>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_pre_draw_viewport>`
 
-Called right before the given viewport is rendered.
+Được gọi ngay trước khi viewport được chỉ định được render.
 
-\ **Note:** This virtual method will be called on the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread.
 
 .. rst-class:: classref-item-separator
 
@@ -352,9 +352,9 @@ Called right before the given viewport is rendered.
 
 |void| **_on_pre_render**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_pre_render>`
 
-Called right before the XR viewports begin their rendering step.
+Được gọi ngay trước khi các viewport XR bắt đầu bước render.
 
-\ **Note:** This virtual method will be called on the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread.
 
 .. rst-class:: classref-item-separator
 
@@ -366,7 +366,7 @@ Called right before the XR viewports begin their rendering step.
 
 |void| **_on_process**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_process>`
 
-Called as part of the OpenXR process handling. This happens right before general and physics processing steps of the main loop. During this step controller data is queried and made available to game logic.
+Được gọi trong quá trình xử lý OpenXR. Việc này diễn ra ngay trước các bước xử lý chung và vật lý của vòng lặp chính. Trong bước này, dữ liệu controller được truy vấn và cung cấp cho logic trò chơi.
 
 .. rst-class:: classref-item-separator
 
@@ -378,9 +378,9 @@ Called as part of the OpenXR process handling. This happens right before general
 
 |void| **_on_register_metadata**\ (\ interaction_profile_metadata\: :ref:`OpenXRInteractionProfileMetadata<class_OpenXRInteractionProfileMetadata>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_register_metadata>`
 
-Allows extensions to register additional controller metadata. This function is called even when the OpenXR API is not constructed as the metadata needs to be available to the editor.
+Cho phép các extension đăng ký metadata bổ sung của controller. Hàm này được gọi ngay cả khi API OpenXR chưa được khởi tạo, vì metadata cần có sẵn cho editor.
 
-Extensions should also provide metadata regardless of whether they are supported on the host system. The controller data is used to setup action maps for users who may have access to the relevant hardware.
+Các extension cũng nên cung cấp metadata bất kể chúng có được hệ thống máy chủ hỗ trợ hay không. Dữ liệu controller được dùng để thiết lập action map cho những người dùng có thể truy cập phần cứng tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -392,9 +392,9 @@ Extensions should also provide metadata regardless of whether they are supported
 
 |void| **_on_session_created**\ (\ session\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_session_created>`
 
-Called right after the OpenXR session is created.
+Được gọi ngay sau khi OpenXR session được tạo.
 
-\ **Note:** This virtual method will be called on the main thread, however, it will be called *before* OpenXR becomes involved in rendering, so it is safe to write to data that will be used by the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên main thread, tuy nhiên, nó sẽ được gọi *trước* khi OpenXR tham gia vào quá trình rendering, vì vậy có thể an toàn ghi vào dữ liệu sẽ được render thread sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -406,9 +406,9 @@ Called right after the OpenXR session is created.
 
 |void| **_on_session_destroyed**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_session_destroyed>`
 
-Called right before the OpenXR session is destroyed.
+Được gọi ngay trước khi OpenXR session bị hủy.
 
-\ **Note:** This virtual method will be called on the main thread, however, it will be called *after* OpenXR is done being involved in rendering, so it is safe to write to data that was used by the render thread.
+\ **Lưu ý:** Phương thức virtual này sẽ được gọi trên main thread, tuy nhiên, nó sẽ được gọi *sau khi* OpenXR hoàn tất việc tham gia vào quá trình render, vì vậy việc ghi vào dữ liệu đã được render thread sử dụng là an toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -420,7 +420,7 @@ Called right before the OpenXR session is destroyed.
 
 |void| **_on_state_exiting**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_exiting>`
 
-Called when the OpenXR session state is changed to exiting.
+Được gọi khi trạng thái phiên OpenXR chuyển thành exiting.
 
 .. rst-class:: classref-item-separator
 
@@ -432,7 +432,7 @@ Called when the OpenXR session state is changed to exiting.
 
 |void| **_on_state_focused**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_focused>`
 
-Called when the OpenXR session state is changed to focused. This state is the active state when the game runs.
+Được gọi khi trạng thái phiên OpenXR chuyển thành focused. Đây là trạng thái hoạt động khi trò chơi chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -444,7 +444,7 @@ Called when the OpenXR session state is changed to focused. This state is the ac
 
 |void| **_on_state_idle**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_idle>`
 
-Called when the OpenXR session state is changed to idle.
+Được gọi khi trạng thái phiên OpenXR chuyển thành idle.
 
 .. rst-class:: classref-item-separator
 
@@ -456,7 +456,7 @@ Called when the OpenXR session state is changed to idle.
 
 |void| **_on_state_loss_pending**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_loss_pending>`
 
-Called when the OpenXR session state is changed to loss pending.
+Được gọi khi trạng thái phiên OpenXR chuyển thành loss pending.
 
 .. rst-class:: classref-item-separator
 
@@ -468,7 +468,7 @@ Called when the OpenXR session state is changed to loss pending.
 
 |void| **_on_state_ready**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_ready>`
 
-Called when the OpenXR session state is changed to ready. This means OpenXR is ready to set up the session.
+Được gọi khi trạng thái phiên OpenXR chuyển thành ready. Điều này có nghĩa là OpenXR đã sẵn sàng thiết lập phiên.
 
 .. rst-class:: classref-item-separator
 
@@ -480,7 +480,7 @@ Called when the OpenXR session state is changed to ready. This means OpenXR is r
 
 |void| **_on_state_stopping**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_stopping>`
 
-Called when the OpenXR session state is changed to stopping.
+Được gọi khi trạng thái phiên OpenXR chuyển thành stopping.
 
 .. rst-class:: classref-item-separator
 
@@ -492,7 +492,7 @@ Called when the OpenXR session state is changed to stopping.
 
 |void| **_on_state_synchronized**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_synchronized>`
 
-Called when the OpenXR session state is changed to synchronized. OpenXR also returns to this state when the application loses focus.
+Được gọi khi trạng thái phiên OpenXR chuyển thành synchronized. OpenXR cũng trở lại trạng thái này khi ứng dụng mất focus.
 
 .. rst-class:: classref-item-separator
 
@@ -504,7 +504,7 @@ Called when the OpenXR session state is changed to synchronized. OpenXR also ret
 
 |void| **_on_state_visible**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_state_visible>`
 
-Called when the OpenXR session state is changed to visible. This means OpenXR is now ready to receive frames.
+Được gọi khi trạng thái phiên OpenXR được thay đổi thành visible. Điều này có nghĩa là OpenXR hiện đã sẵn sàng để nhận các frame.
 
 .. rst-class:: classref-item-separator
 
@@ -516,7 +516,7 @@ Called when the OpenXR session state is changed to visible. This means OpenXR is
 
 |void| **_on_sync_actions**\ (\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_sync_actions>`
 
-Called when OpenXR has performed its action sync.
+Được gọi khi OpenXR đã thực hiện đồng bộ action.
 
 .. rst-class:: classref-item-separator
 
@@ -528,9 +528,9 @@ Called when OpenXR has performed its action sync.
 
 |void| **_on_viewport_composition_layer_destroyed**\ (\ layer\: ``const void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__on_viewport_composition_layer_destroyed>`
 
-Called when a composition layer created via :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>` is destroyed.
+Được gọi khi một composition layer được tạo thông qua :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>` bị hủy.
 
-\ ``layer`` is a pointer to an ``XrCompositionLayerBaseHeader`` struct.
+\ ``layer`` là một con trỏ tới struct ``XrCompositionLayerBaseHeader``.
 
 .. rst-class:: classref-item-separator
 
@@ -542,7 +542,7 @@ Called when a composition layer created via :ref:`OpenXRCompositionLayer<class_O
 
 |void| **_prepare_view_configuration**\ (\ view_count\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__prepare_view_configuration>`
 
-Called before :ref:`_set_view_configuration_and_get_next_pointer()<class_OpenXRExtensionWrapper_private_method__set_view_configuration_and_get_next_pointer>` to allow the extension to reserve data for the given number of views.
+Được gọi trước :ref:`_set_view_configuration_and_get_next_pointer()<class_OpenXRExtensionWrapper_private_method__set_view_configuration_and_get_next_pointer>` để cho phép extension dành chỗ cho dữ liệu tương ứng với số view đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -554,7 +554,7 @@ Called before :ref:`_set_view_configuration_and_get_next_pointer()<class_OpenXRE
 
 |void| **_print_view_configuration_info**\ (\ view\: :ref:`int<class_int>`\ ) |virtual| |const| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__print_view_configuration_info>`
 
-Called to allow an extension to print additional information about its view configuration, if applicable. This will only be called if verbose output is enabled.
+Được gọi để cho phép extension in thêm thông tin về cấu hình view của nó, nếu có. Hàm này chỉ được gọi khi đầu ra chi tiết được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -566,11 +566,11 @@ Called to allow an extension to print additional information about its view conf
 
 :ref:`int<class_int>` **_set_android_surface_swapchain_create_info_and_get_next_pointer**\ (\ property_values\: :ref:`Dictionary<class_Dictionary>`, next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_android_surface_swapchain_create_info_and_get_next_pointer>`
 
-Add additional data structures to Android surface swapchains created by :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>`.
+Thêm các cấu trúc dữ liệu bổ sung vào các Android surface swapchain được tạo bởi :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>`.
 
-\ ``property_values`` contains the values of the properties returned by :ref:`_get_viewport_composition_layer_extension_properties()<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_properties>`.
+\ ``property_values`` chứa các giá trị của những thuộc tính được :ref:`_get_viewport_composition_layer_extension_properties()<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_properties>` trả về.
 
-\ **Note:** This virtual method will be called on the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread.
 
 .. rst-class:: classref-item-separator
 
@@ -582,11 +582,11 @@ Add additional data structures to Android surface swapchains created by :ref:`Op
 
 :ref:`int<class_int>` **_set_frame_end_info_and_get_next_pointer**\ (\ next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_frame_end_info_and_get_next_pointer>`
 
-Add additional data structures to ``XrFrameEndInfo``.
+Thêm các cấu trúc dữ liệu bổ sung vào ``XrFrameEndInfo``.
 
-This will only be called if the extension previously registered itself with :ref:`OpenXRAPIExtension.register_frame_info_extension()<class_OpenXRAPIExtension_method_register_frame_info_extension>`.
+Phương thức này sẽ chỉ được gọi nếu extension trước đó đã đăng ký với :ref:`OpenXRAPIExtension.register_frame_info_extension()<class_OpenXRAPIExtension_method_register_frame_info_extension>`.
 
-\ **Note:** This virtual method will be called on the render thread. Additionally, the data it returns will be used shortly after this method is called, so it needs to remain valid until the next time :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` runs.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread. Ngoài ra, dữ liệu mà phương thức này trả về sẽ được sử dụng ngay sau khi phương thức được gọi, vì vậy dữ liệu đó phải còn hợp lệ cho đến lần tiếp theo :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -598,11 +598,11 @@ This will only be called if the extension previously registered itself with :ref
 
 :ref:`int<class_int>` **_set_frame_wait_info_and_get_next_pointer**\ (\ next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_frame_wait_info_and_get_next_pointer>`
 
-Add additional data structures to ``XrFrameWaitInfo``.
+Thêm các cấu trúc dữ liệu bổ sung vào ``XrFrameWaitInfo``.
 
-This will only be called if the extension previously registered itself with :ref:`OpenXRAPIExtension.register_frame_info_extension()<class_OpenXRAPIExtension_method_register_frame_info_extension>`.
+Phương thức này sẽ chỉ được gọi nếu extension trước đó đã đăng ký với :ref:`OpenXRAPIExtension.register_frame_info_extension()<class_OpenXRAPIExtension_method_register_frame_info_extension>`.
 
-\ **Note:** This virtual method will be called on the render thread.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread.
 
 .. rst-class:: classref-item-separator
 
@@ -614,7 +614,7 @@ This will only be called if the extension previously registered itself with :ref
 
 :ref:`int<class_int>` **_set_hand_joint_locations_and_get_next_pointer**\ (\ hand_index\: :ref:`int<class_int>`, next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_hand_joint_locations_and_get_next_pointer>`
 
-Add additional data structures when each hand tracker is created.
+Thêm các cấu trúc dữ liệu bổ sung khi mỗi bộ theo dõi bàn tay được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -626,7 +626,7 @@ Add additional data structures when each hand tracker is created.
 
 :ref:`int<class_int>` **_set_instance_create_info_and_get_next_pointer**\ (\ xr_version\: :ref:`int<class_int>`, next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_instance_create_info_and_get_next_pointer>`
 
-Add additional data structures when the OpenXR instance is created. ``xr_version`` specifies the OpenXR version we're instantiating.
+Thêm các cấu trúc dữ liệu bổ sung khi OpenXR instance được tạo. ``xr_version`` chỉ định phiên bản OpenXR mà chúng ta đang khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -638,9 +638,9 @@ Add additional data structures when the OpenXR instance is created. ``xr_version
 
 :ref:`int<class_int>` **_set_projection_layer_and_get_next_pointer**\ (\ next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_projection_layer_and_get_next_pointer>`
 
-Adds additional data structures to ``XrCompositionLayerProjection``.
+Thêm các cấu trúc dữ liệu bổ sung vào ``XrCompositionLayerProjection``.
 
-This will only be called if the extension previously registered itself with :ref:`OpenXRAPIExtension.register_projection_layer_extension()<class_OpenXRAPIExtension_method_register_projection_layer_extension>`.
+Hàm này chỉ được gọi nếu extension trước đó đã tự đăng ký với :ref:`OpenXRAPIExtension.register_projection_layer_extension()<class_OpenXRAPIExtension_method_register_projection_layer_extension>`.
 
 .. rst-class:: classref-item-separator
 
@@ -652,9 +652,9 @@ This will only be called if the extension previously registered itself with :ref
 
 :ref:`int<class_int>` **_set_projection_views_and_get_next_pointer**\ (\ view_index\: :ref:`int<class_int>`, next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_projection_views_and_get_next_pointer>`
 
-Add additional data structures to the projection view of the given ``view_index``.
+Thêm các cấu trúc dữ liệu bổ sung vào projection view của ``view_index`` đã cho.
 
-\ **Note:** This virtual method will be called on the render thread. Additionally, the data it returns will be used shortly after this method is called, so it needs to remain valid until the next time :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` runs.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread. Ngoài ra, dữ liệu mà phương thức này trả về sẽ được sử dụng ngay sau khi phương thức được gọi, vì vậy dữ liệu đó phải còn hợp lệ cho đến lần tiếp theo :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -666,7 +666,7 @@ Add additional data structures to the projection view of the given ``view_index`
 
 :ref:`int<class_int>` **_set_reference_space_create_info_and_get_next_pointer**\ (\ reference_space_type\: :ref:`int<class_int>`, next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_reference_space_create_info_and_get_next_pointer>`
 
-Add additional data structures to ``XrReferenceSpaceCreateInfo``.
+Thêm các cấu trúc dữ liệu bổ sung vào ``XrReferenceSpaceCreateInfo``.
 
 .. rst-class:: classref-item-separator
 
@@ -678,7 +678,7 @@ Add additional data structures to ``XrReferenceSpaceCreateInfo``.
 
 :ref:`int<class_int>` **_set_session_create_and_get_next_pointer**\ (\ next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_session_create_and_get_next_pointer>`
 
-Add additional data structures when the OpenXR session is created.
+Thêm các cấu trúc dữ liệu bổ sung khi tạo OpenXR session.
 
 .. rst-class:: classref-item-separator
 
@@ -690,7 +690,7 @@ Add additional data structures when the OpenXR session is created.
 
 :ref:`int<class_int>` **_set_swapchain_create_info_and_get_next_pointer**\ (\ next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_swapchain_create_info_and_get_next_pointer>`
 
-Add additional data structures when creating OpenXR swapchains.
+Thêm các cấu trúc dữ liệu bổ sung khi tạo OpenXR swapchain.
 
 .. rst-class:: classref-item-separator
 
@@ -702,7 +702,7 @@ Add additional data structures when creating OpenXR swapchains.
 
 :ref:`int<class_int>` **_set_system_properties_and_get_next_pointer**\ (\ next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_system_properties_and_get_next_pointer>`
 
-Add additional data structures when querying OpenXR system abilities.
+Thêm các cấu trúc dữ liệu bổ sung khi truy vấn các khả năng của hệ thống OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -714,7 +714,7 @@ Add additional data structures when querying OpenXR system abilities.
 
 :ref:`int<class_int>` **_set_view_configuration_and_get_next_pointer**\ (\ view\: :ref:`int<class_int>`, next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_view_configuration_and_get_next_pointer>`
 
-Add additional data structures when querying OpenXR view configuration.
+Thêm các cấu trúc dữ liệu bổ sung khi truy vấn cấu hình chế độ xem OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -726,11 +726,11 @@ Add additional data structures when querying OpenXR view configuration.
 
 :ref:`int<class_int>` **_set_view_locate_info_and_get_next_pointer**\ (\ next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_view_locate_info_and_get_next_pointer>`
 
-Add additional data structures to ``XrViewLocateInfo``.
+Thêm các cấu trúc dữ liệu bổ sung vào ``XrViewLocateInfo``.
 
-This will only be called if the extension previously registered itself with :ref:`OpenXRAPIExtension.register_frame_info_extension()<class_OpenXRAPIExtension_method_register_frame_info_extension>`.
+Phương thức này sẽ chỉ được gọi nếu extension trước đó đã đăng ký với :ref:`OpenXRAPIExtension.register_frame_info_extension()<class_OpenXRAPIExtension_method_register_frame_info_extension>`.
 
-\ **Note:** This virtual method will be called on the render thread. Additionally, the data it returns will be used shortly after this method is called, so it needs to remain valid until the next time :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` runs.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread. Ngoài ra, dữ liệu mà phương thức này trả về sẽ được sử dụng ngay sau khi phương thức được gọi, vì vậy dữ liệu đó phải còn hợp lệ cho đến lần tiếp theo :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -742,13 +742,13 @@ This will only be called if the extension previously registered itself with :ref
 
 :ref:`int<class_int>` **_set_viewport_composition_layer_and_get_next_pointer**\ (\ layer\: ``const void*``, property_values\: :ref:`Dictionary<class_Dictionary>`, next_pointer\: ``void*``\ ) |virtual| :ref:`🔗<class_OpenXRExtensionWrapper_private_method__set_viewport_composition_layer_and_get_next_pointer>`
 
-Add additional data structures to composition layers created by :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>`.
+Thêm các cấu trúc dữ liệu bổ sung vào các composition layer được tạo bởi :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>`.
 
-\ ``property_values`` contains the values of the properties returned by :ref:`_get_viewport_composition_layer_extension_properties()<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_properties>`.
+\ ``property_values`` chứa các giá trị của những thuộc tính được :ref:`_get_viewport_composition_layer_extension_properties()<class_OpenXRExtensionWrapper_private_method__get_viewport_composition_layer_extension_properties>` trả về.
 
-\ ``layer`` is a pointer to an ``XrCompositionLayerBaseHeader`` struct.
+\ ``layer`` là một con trỏ tới struct ``XrCompositionLayerBaseHeader``.
 
-\ **Note:** This virtual method will be called on the render thread. Additionally, the data it returns will be used shortly after this method is called, so it needs to remain valid until the next time :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` runs.
+\ **Lưu ý:** Phương thức ảo này sẽ được gọi trên render thread. Ngoài ra, dữ liệu mà phương thức này trả về sẽ được sử dụng ngay sau khi phương thức được gọi, vì vậy dữ liệu đó phải còn hợp lệ cho đến lần tiếp theo :ref:`_on_pre_render()<class_OpenXRExtensionWrapper_private_method__on_pre_render>` chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -760,7 +760,7 @@ Add additional data structures to composition layers created by :ref:`OpenXRComp
 
 :ref:`OpenXRAPIExtension<class_OpenXRAPIExtension>` **get_openxr_api**\ (\ ) :ref:`🔗<class_OpenXRExtensionWrapper_method_get_openxr_api>`
 
-Returns the created :ref:`OpenXRAPIExtension<class_OpenXRAPIExtension>`, which can be used to access the OpenXR API.
+Trả về :ref:`OpenXRAPIExtension<class_OpenXRAPIExtension>` đã tạo, có thể dùng để truy cập API OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -772,16 +772,16 @@ Returns the created :ref:`OpenXRAPIExtension<class_OpenXRAPIExtension>`, which c
 
 |void| **register_extension_wrapper**\ (\ ) :ref:`🔗<class_OpenXRExtensionWrapper_method_register_extension_wrapper>`
 
-Registers the extension. This should happen at core module initialization level.
+Đăng ký extension. Việc này nên được thực hiện ở cấp độ khởi tạo module lõi.
 
-\ **Note:** This cannot be called once OpenXR has been initialized.
+\ **Lưu ý:** Không thể gọi phương thức này sau khi OpenXR đã được khởi tạo.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,33 +10,33 @@
 OpenXRAction
 ============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An OpenXR action.
+Một action OpenXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This resource defines an OpenXR action. Actions can be used both for inputs (buttons, joysticks, triggers, etc.) and outputs (haptics).
+Tài nguyên này định nghĩa một action OpenXR. Các action có thể được sử dụng cho cả input (nút, cần điều khiển, cò, v.v.) và output (haptic).
 
-OpenXR performs automatic conversion between action type and input type whenever possible. An analog trigger bound to a boolean action will thus return ``false`` if the trigger is depressed and ``true`` if pressed fully.
+OpenXR tự động chuyển đổi giữa kiểu action và kiểu input bất cứ khi nào có thể. Do đó, một cò analog được liên kết với action boolean sẽ trả về ``false`` khi cò được nhấn và ``true`` khi được nhấn hoàn toàn.
 
-Actions are not directly bound to specific devices, instead OpenXR recognizes a limited number of top level paths that identify devices by usage. We can restrict which devices an action can be bound to by these top level paths. For instance an action that should only be used for hand held controllers can have the top level paths "/user/hand/left" and "/user/hand/right" associated with them. See the `reserved path section in the OpenXR specification <https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-reserved>`__ for more info on the top level paths.
+Các action không được liên kết trực tiếp với những thiết bị cụ thể; thay vào đó, OpenXR nhận diện một số lượng giới hạn các đường dẫn cấp cao nhất xác định thiết bị theo mục đích sử dụng. Chúng ta có thể giới hạn những thiết bị mà một action có thể được liên kết bằng các đường dẫn cấp cao nhất này. Ví dụ, một action chỉ nên được sử dụng cho các tay cầm điều khiển cầm tay có thể được liên kết với các đường dẫn cấp cao nhất "/user/hand/left" và "/user/hand/right". Xem `mục đường dẫn dành riêng trong đặc tả OpenXR <https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-reserved>`__ để biết thêm thông tin về các đường dẫn cấp cao nhất.
 
-Note that the name of the resource is used to register the action with.
+Lưu ý rằng tên của tài nguyên được sử dụng để đăng ký action.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
    +---------------------------------------------------+-------------------------------------------------------------------+-------------------------+
-   | :ref:`ActionType<enum_OpenXRAction_ActionType>`   | :ref:`action_type<class_OpenXRAction_property_action_type>`       | ``1``                   |
+   | :ref:`ActionType <enum_OpenXRAction_ActionType>`  | :ref:`action_type<class_OpenXRAction_property_action_type>`       | ``1``                   |
    +---------------------------------------------------+-------------------------------------------------------------------+-------------------------+
    | :ref:`String<class_String>`                       | :ref:`localized_name<class_OpenXRAction_property_localized_name>` | ``""``                  |
    +---------------------------------------------------+-------------------------------------------------------------------+-------------------------+
@@ -49,14 +49,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OpenXRAction_ActionType:
 
 .. rst-class:: classref-enumeration
 
-enum **ActionType**: :ref:`🔗<enum_OpenXRAction_ActionType>`
+enum **ActionType**: :ref:`🔗 <enum_OpenXRAction_ActionType>`
 
 .. _class_OpenXRAction_constant_OPENXR_ACTION_BOOL:
 
@@ -64,7 +64,7 @@ enum **ActionType**: :ref:`🔗<enum_OpenXRAction_ActionType>`
 
 :ref:`ActionType<enum_OpenXRAction_ActionType>` **OPENXR_ACTION_BOOL** = ``0``
 
-This action provides a boolean value.
+Action này cung cấp một giá trị boolean.
 
 .. _class_OpenXRAction_constant_OPENXR_ACTION_FLOAT:
 
@@ -72,7 +72,7 @@ This action provides a boolean value.
 
 :ref:`ActionType<enum_OpenXRAction_ActionType>` **OPENXR_ACTION_FLOAT** = ``1``
 
-This action provides a float value between ``0.0`` and ``1.0`` for any analog input such as triggers.
+Action này cung cấp một giá trị float nằm giữa ``0.0`` và ``1.0`` cho mọi đầu vào analog, chẳng hạn như trigger.
 
 .. _class_OpenXRAction_constant_OPENXR_ACTION_VECTOR2:
 
@@ -80,7 +80,7 @@ This action provides a float value between ``0.0`` and ``1.0`` for any analog in
 
 :ref:`ActionType<enum_OpenXRAction_ActionType>` **OPENXR_ACTION_VECTOR2** = ``2``
 
-This action provides a :ref:`Vector2<class_Vector2>` value and can be bound to embedded trackpads and joysticks.
+Action này cung cấp một giá trị :ref:`Vector2<class_Vector2>` và có thể được liên kết với trackpad tích hợp và joystick.
 
 .. _class_OpenXRAction_constant_OPENXR_ACTION_POSE:
 
@@ -100,8 +100,8 @@ This action provides a :ref:`Vector2<class_Vector2>` value and can be bound to e
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRAction_property_action_type:
 
@@ -114,7 +114,7 @@ Property Descriptions
 - |void| **set_action_type**\ (\ value\: :ref:`ActionType<enum_OpenXRAction_ActionType>`\ )
 - :ref:`ActionType<enum_OpenXRAction_ActionType>` **get_action_type**\ (\ )
 
-The type of action.
+Loại hành động.
 
 .. rst-class:: classref-item-separator
 
@@ -131,7 +131,7 @@ The type of action.
 - |void| **set_localized_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_localized_name**\ (\ )
 
-The localized description of this action.
+Mô tả đã bản địa hóa của hành động này.
 
 .. rst-class:: classref-item-separator
 
@@ -148,16 +148,16 @@ The localized description of this action.
 - |void| **set_toplevel_paths**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_toplevel_paths**\ (\ )
 
-A collections of toplevel paths to which this action can be bound.
+Một tập hợp các đường dẫn cấp cao nhất mà hành động này có thể được liên kết.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với nó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

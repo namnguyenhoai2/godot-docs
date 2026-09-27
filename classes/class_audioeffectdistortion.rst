@@ -10,57 +10,57 @@
 AudioEffectDistortion
 =====================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a distortion audio effect to an audio bus.
+Thêm hiệu ứng âm thanh distortion vào một audio bus.
 
-Remaps audio samples using a nonlinear function to achieve a distorted sound.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "distortion" effect modifies the waveform via a nonlinear mathematical function (see available ones in :ref:`Mode<enum_AudioEffectDistortion_Mode>`), based on the amplitude of the waveform's samples.
-
-\ **Note:** In a nonlinear function, an input sample at *x* amplitude value, will either have its amplitude increased or decreased to a *y* value, based on the function value at *x*, which is why even at the same :ref:`drive<class_AudioEffectDistortion_property_drive>`, the output sound will vary depending on the input's volume. To change the volume while maintaining the output waveform, use :ref:`post_gain<class_AudioEffectDistortion_property_post_gain>`.
-
-In this effect, each type is a different nonlinear function. The different types available are: clip, atan, lofi (bitcrush), overdrive, and waveshape. Every distortion type available here is symmetric: negative amplitude values are affected the same way as positive ones.
-
-Although distortion will always change frequency content, usually by introducing high harmonics, different distortion types offer a range of sound qualities; from "soft" and "warm", to "crunchy" and "abrasive".
-
-For games, it can help simulate sound coming from some saturated device or speaker very efficiently. It can also help the audio stand out in a mix, by introducing higher frequencies and increasing the volume.
-
-\ **Note:** Although usually imperceptible, an enabled distortion effect still changes the sound even when :ref:`drive<class_AudioEffectDistortion_property_drive>` is set to 0. This is not a bug. If this behavior is undesirable, consider disabling the effect using :ref:`AudioServer.set_bus_effect_enabled()<class_AudioServer_method_set_bus_effect_enabled>`.
+Ánh xạ lại các mẫu âm thanh bằng một hàm phi tuyến để tạo ra âm thanh bị biến dạng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Hiệu ứng "distortion" biến đổi dạng sóng thông qua một hàm toán học phi tuyến (xem các hàm có sẵn trong :ref:`Mode <enum_AudioEffectDistortion_Mode>`), dựa trên biên độ của các mẫu trong dạng sóng.
+
+\ **Lưu ý:** Trong một hàm phi tuyến, một mẫu đầu vào có giá trị biên độ *x* sẽ có biên độ được tăng hoặc giảm thành giá trị *y*, dựa trên giá trị của hàm tại *x*, vì vậy ngay cả khi cùng :ref:`drive<class_AudioEffectDistortion_property_drive>`, âm thanh đầu ra vẫn sẽ thay đổi tùy theo âm lượng đầu vào. Để thay đổi âm lượng mà vẫn duy trì dạng sóng đầu ra, hãy sử dụng :ref:`post_gain<class_AudioEffectDistortion_property_post_gain>`.
+
+Trong hiệu ứng này, mỗi loại là một hàm phi tuyến khác nhau. Các loại có sẵn gồm: clip, atan, lofi (bitcrush), overdrive và waveshape. Mọi loại distortion có sẵn ở đây đều đối xứng: các giá trị biên độ âm chịu ảnh hưởng giống như các giá trị dương.
+
+Mặc dù hiện tượng distortion luôn làm thay đổi thành phần tần số, thường bằng cách tạo ra các họa âm bậc cao, nhưng các loại distortion khác nhau mang đến nhiều chất âm đa dạng, từ "mềm mại" và "ấm áp" đến "gai" và "chói tai".
+
+Trong game, distortion có thể giúp mô phỏng rất hiệu quả âm thanh phát ra từ một thiết bị hoặc loa bị bão hòa. Nó cũng có thể giúp âm thanh nổi bật trong bản mix bằng cách bổ sung các tần số cao hơn và tăng âm lượng.
+
+\ **Lưu ý:** Mặc dù thường không thể nhận thấy, hiệu ứng distortion đang bật vẫn làm thay đổi âm thanh ngay cả khi :ref:`drive<class_AudioEffectDistortion_property_drive>` được đặt thành 0. Đây không phải là lỗi. Nếu hành vi này không mong muốn, hãy cân nhắc tắt hiệu ứng bằng :ref:`AudioServer.set_bus_effect_enabled()<class_AudioServer_method_set_bus_effect_enabled>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------+--------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                    | :ref:`drive<class_AudioEffectDistortion_property_drive>`           | ``0.0``     |
-   +----------------------------------------------+--------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                    | :ref:`keep_hf_hz<class_AudioEffectDistortion_property_keep_hf_hz>` | ``16000.0`` |
-   +----------------------------------------------+--------------------------------------------------------------------+-------------+
-   | :ref:`Mode<enum_AudioEffectDistortion_Mode>` | :ref:`mode<class_AudioEffectDistortion_property_mode>`             | ``0``       |
-   +----------------------------------------------+--------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                    | :ref:`post_gain<class_AudioEffectDistortion_property_post_gain>`   | ``0.0``     |
-   +----------------------------------------------+--------------------------------------------------------------------+-------------+
-   | :ref:`float<class_float>`                    | :ref:`pre_gain<class_AudioEffectDistortion_property_pre_gain>`     | ``0.0``     |
-   +----------------------------------------------+--------------------------------------------------------------------+-------------+
+   +-----------------------------------------------+--------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                     | :ref:`drive<class_AudioEffectDistortion_property_drive>`           | ``0.0``     |
+   +-----------------------------------------------+--------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                     | :ref:`keep_hf_hz<class_AudioEffectDistortion_property_keep_hf_hz>` | ``16000.0`` |
+   +-----------------------------------------------+--------------------------------------------------------------------+-------------+
+   | :ref:`Mode <enum_AudioEffectDistortion_Mode>` | :ref:`mode<class_AudioEffectDistortion_property_mode>`             | ``0``       |
+   +-----------------------------------------------+--------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                     | :ref:`post_gain<class_AudioEffectDistortion_property_post_gain>`   | ``0.0``     |
+   +-----------------------------------------------+--------------------------------------------------------------------+-------------+
+   | :ref:`float<class_float>`                     | :ref:`pre_gain<class_AudioEffectDistortion_property_pre_gain>`     | ``0.0``     |
+   +-----------------------------------------------+--------------------------------------------------------------------+-------------+
 
 .. rst-class:: classref-section-separator
 
@@ -68,14 +68,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các giá trị enum
+----------------
 
 .. _enum_AudioEffectDistortion_Mode:
 
 .. rst-class:: classref-enumeration
 
-enum **Mode**: :ref:`🔗<enum_AudioEffectDistortion_Mode>`
+enum **Mode**: :ref:`🔗 <enum_AudioEffectDistortion_Mode>`
 
 .. _class_AudioEffectDistortion_constant_MODE_CLIP:
 
@@ -83,7 +83,7 @@ enum **Mode**: :ref:`🔗<enum_AudioEffectDistortion_Mode>`
 
 :ref:`Mode<enum_AudioEffectDistortion_Mode>` **MODE_CLIP** = ``0``
 
-Flattens the waveform at 0 dB in a sharp manner. :ref:`drive<class_AudioEffectDistortion_property_drive>` increases amplitude of samples exponentially. This mode functions as a hard clipper if :ref:`drive<class_AudioEffectDistortion_property_drive>` is set to 0, and is the only mode that clips audio signals at 0 dB.
+Làm phẳng dạng sóng ở mức 0 dB theo cách gắt. :ref:`drive<class_AudioEffectDistortion_property_drive>` tăng biên độ của các mẫu theo cấp số mũ. Chế độ này hoạt động như một hard clipper nếu :ref:`drive<class_AudioEffectDistortion_property_drive>` được đặt thành 0 và là chế độ duy nhất clip tín hiệu âm thanh ở mức 0 dB.
 
 .. _class_AudioEffectDistortion_constant_MODE_ATAN:
 
@@ -91,7 +91,7 @@ Flattens the waveform at 0 dB in a sharp manner. :ref:`drive<class_AudioEffectDi
 
 :ref:`Mode<enum_AudioEffectDistortion_Mode>` **MODE_ATAN** = ``1``
 
-Flattens the waveform in a smooth manner, following an arctangent curve. The audio decreases in volume, before flattening peaks to ``PI * 4.0`` (linear value), if it was normalized beforehand.
+Làm phẳng dạng sóng một cách mượt mà theo đường cong arctangent. Âm thanh giảm âm lượng trước khi làm phẳng các đỉnh thành ``PI * 4.0`` (giá trị tuyến tính), nếu trước đó đã được chuẩn hóa.
 
 .. _class_AudioEffectDistortion_constant_MODE_LOFI:
 
@@ -99,7 +99,7 @@ Flattens the waveform in a smooth manner, following an arctangent curve. The aud
 
 :ref:`Mode<enum_AudioEffectDistortion_Mode>` **MODE_LOFI** = ``2``
 
-Decreases audio bit depth to achieve a low-resolution audio signal, going from 16-bit to 2-bit. Can be used to emulate the sound of early digital audio devices.
+Giảm bit depth của âm thanh để tạo ra tín hiệu âm thanh độ phân giải thấp, từ 16-bit xuống 2-bit. Có thể dùng để mô phỏng âm thanh của các thiết bị âm thanh kỹ thuật số đời đầu.
 
 .. _class_AudioEffectDistortion_constant_MODE_OVERDRIVE:
 
@@ -107,7 +107,7 @@ Decreases audio bit depth to achieve a low-resolution audio signal, going from 1
 
 :ref:`Mode<enum_AudioEffectDistortion_Mode>` **MODE_OVERDRIVE** = ``3``
 
-Emulates the warm distortion produced by a field effect transistor, which is commonly used in solid-state musical instrument amplifiers. :ref:`drive<class_AudioEffectDistortion_property_drive>` has no effect in this mode.
+Mô phỏng hiện tượng méo ấm do transistor hiệu ứng trường tạo ra, thường được sử dụng trong các bộ khuếch đại nhạc cụ thể rắn. :ref:`drive<class_AudioEffectDistortion_property_drive>` không có tác dụng trong chế độ này.
 
 .. _class_AudioEffectDistortion_constant_MODE_WAVESHAPE:
 
@@ -115,7 +115,7 @@ Emulates the warm distortion produced by a field effect transistor, which is com
 
 :ref:`Mode<enum_AudioEffectDistortion_Mode>` **MODE_WAVESHAPE** = ``4``
 
-Flattens the waveform in a smooth manner, until it reaches a sharp peak at ``drive = 1``, following a generic absolute sigmoid function.
+Làm phẳng dạng sóng một cách mượt mà cho đến khi đạt đến một đỉnh nhọn tại ``drive = 1``, theo một hàm sigmoid tuyệt đối tổng quát.
 
 .. rst-class:: classref-section-separator
 
@@ -123,8 +123,8 @@ Flattens the waveform in a smooth manner, until it reaches a sharp peak at ``dri
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectDistortion_property_drive:
 
@@ -137,7 +137,7 @@ Property Descriptions
 - |void| **set_drive**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_drive**\ (\ )
 
-Distortion intensity. Controls how much of the input audio is affected by the distortion curve by moving from a linear function to a nonlinear one. Value can range from 0 to 1.
+Cường độ distortion. Kiểm soát mức độ âm thanh đầu vào bị ảnh hưởng bởi đường cong distortion bằng cách chuyển từ hàm tuyến tính sang hàm phi tuyến. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Distortion intensity. Controls how much of the input audio is affected by the di
 - |void| **set_keep_hf_hz**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_keep_hf_hz**\ (\ )
 
-High-pass filter, in Hz. Frequencies higher than this value will not be affected by the distortion. Value can range from 1 to 20000.
+Bộ lọc high-pass, tính bằng Hz. Các tần số cao hơn giá trị này sẽ không bị ảnh hưởng bởi distortion. Giá trị có thể nằm trong khoảng từ 1 đến 20000.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ High-pass filter, in Hz. Frequencies higher than this value will not be affected
 - |void| **set_mode**\ (\ value\: :ref:`Mode<enum_AudioEffectDistortion_Mode>`\ )
 - :ref:`Mode<enum_AudioEffectDistortion_Mode>` **get_mode**\ (\ )
 
-Distortion type. Changes the nonlinear function used to distort the waveform. See :ref:`Mode<enum_AudioEffectDistortion_Mode>`.
+Loại distortion. Thay đổi hàm phi tuyến được dùng để làm biến dạng dạng sóng. Xem :ref:`Mode <enum_AudioEffectDistortion_Mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ Distortion type. Changes the nonlinear function used to distort the waveform. Se
 - |void| **set_post_gain**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_post_gain**\ (\ )
 
-Gain after the effect, in dB. Value can range from -80 to 24.
+Gain sau hiệu ứng, tính bằng dB. Giá trị có thể nằm trong khoảng từ -80 đến 24.
 
 .. rst-class:: classref-item-separator
 
@@ -205,14 +205,14 @@ Gain after the effect, in dB. Value can range from -80 to 24.
 - |void| **set_pre_gain**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pre_gain**\ (\ )
 
-Gain before the effect, in dB. Value can range from -60 to 60.
+Gain trước hiệu ứng, tính bằng dB. Giá trị có thể nằm trong khoảng từ -60 đến 60.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

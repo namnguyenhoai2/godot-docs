@@ -10,32 +10,32 @@
 EditorPlugin
 ============
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`GridMapEditorPlugin<class_GridMapEditorPlugin>`
+**Được kế thừa bởi:** :ref:`GridMapEditorPlugin<class_GridMapEditorPlugin>`
 
-Used by the editor to extend its functionality.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Plugins are used by the editor to extend functionality. The most common types of plugins are those which edit a given node or resource type, import plugins and export plugins. See also :ref:`EditorScript<class_EditorScript>` to add functions to the editor.
-
-\ **Note:** Some names in this class contain "left" or "right" (e.g. :ref:`DOCK_SLOT_LEFT_UL<class_EditorPlugin_constant_DOCK_SLOT_LEFT_UL>`). These APIs assume left-to-right layout, and would be backwards when using right-to-left layout. These names are kept for compatibility reasons.
+Được editor sử dụng để mở rộng chức năng của nó.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Plugin được editor sử dụng để mở rộng chức năng. Các loại plugin phổ biến nhất là những plugin chỉnh sửa một node hoặc resource type nhất định, plugin import và plugin export. Xem thêm :ref:`EditorScript<class_EditorScript>` để thêm các hàm vào editor.
+
+\ **Lưu ý:** Một số tên trong class này chứa "left" hoặc "right" (ví dụ: :ref:`DOCK_SLOT_LEFT_UL<class_EditorPlugin_constant_DOCK_SLOT_LEFT_UL>`). Các API này giả định bố cục từ trái sang phải và sẽ bị đảo ngược khi sử dụng bố cục từ phải sang trái. Những tên này được giữ lại vì lý do tương thích.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Editor plugins documentation index <../tutorials/plugins/editor/index>`
+- :doc:`Mục lục tài liệu về plugin của Editor <../tutorials/plugins/editor/index>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -93,13 +93,13 @@ Methods
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                    | :ref:`add_autoload_singleton<class_EditorPlugin_method_add_autoload_singleton>`\ (\ name\: :ref:`String<class_String>`, path\: :ref:`String<class_String>`\ )                                                                                          |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                    | :ref:`add_context_menu_plugin<class_EditorPlugin_method_add_context_menu_plugin>`\ (\ slot\: :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>`, plugin\: :ref:`EditorContextMenuPlugin<class_EditorContextMenuPlugin>`\ )           |
+   | |void|                                                    | :ref:`add_context_menu_plugin<class_EditorPlugin_method_add_context_menu_plugin>`\ (\ slot\: :ref:`ContextMenuSlot <enum_EditorContextMenuPlugin_ContextMenuSlot>`, plugin\: :ref:`EditorContextMenuPlugin<class_EditorContextMenuPlugin>`\ )          |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Button<class_Button>`                               | :ref:`add_control_to_bottom_panel<class_EditorPlugin_method_add_control_to_bottom_panel>`\ (\ control\: :ref:`Control<class_Control>`, title\: :ref:`String<class_String>`, shortcut\: :ref:`Shortcut<class_Shortcut>` = null\ )                       |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                    | :ref:`add_control_to_container<class_EditorPlugin_method_add_control_to_container>`\ (\ container\: :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>`, control\: :ref:`Control<class_Control>`\ )                                |
+   | |void|                                                    | :ref:`add_control_to_container<class_EditorPlugin_method_add_control_to_container>`\ (\ container\: :ref:`CustomControlContainer <enum_EditorPlugin_CustomControlContainer>`, control\: :ref:`Control<class_Control>`\ )                               |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                    | :ref:`add_control_to_dock<class_EditorPlugin_method_add_control_to_dock>`\ (\ slot\: :ref:`DockSlot<enum_EditorPlugin_DockSlot>`, control\: :ref:`Control<class_Control>`, shortcut\: :ref:`Shortcut<class_Shortcut>` = null\ )                        |
+   | |void|                                                    | :ref:`add_control_to_dock<class_EditorPlugin_method_add_control_to_dock>`\ (\ slot\: :ref:`DockSlot <enum_EditorPlugin_DockSlot>`, control\: :ref:`Control<class_Control>`, shortcut\: :ref:`Shortcut<class_Shortcut>` = null\ )                       |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                    | :ref:`add_custom_type<class_EditorPlugin_method_add_custom_type>`\ (\ type\: :ref:`String<class_String>`, base\: :ref:`String<class_String>`, script\: :ref:`Script<class_Script>`, icon\: :ref:`Texture2D<class_Texture2D>`\ )                        |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -153,7 +153,7 @@ Methods
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                    | :ref:`remove_control_from_bottom_panel<class_EditorPlugin_method_remove_control_from_bottom_panel>`\ (\ control\: :ref:`Control<class_Control>`\ )                                                                                                     |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                    | :ref:`remove_control_from_container<class_EditorPlugin_method_remove_control_from_container>`\ (\ container\: :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>`, control\: :ref:`Control<class_Control>`\ )                      |
+   | |void|                                                    | :ref:`remove_control_from_container<class_EditorPlugin_method_remove_control_from_container>`\ (\ container\: :ref:`CustomControlContainer <enum_EditorPlugin_CustomControlContainer>`, control\: :ref:`Control<class_Control>`\ )                     |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                    | :ref:`remove_control_from_docks<class_EditorPlugin_method_remove_control_from_docks>`\ (\ control\: :ref:`Control<class_Control>`\ )                                                                                                                   |
    +-----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -200,8 +200,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorPlugin_signal_main_screen_changed:
 
@@ -209,7 +209,7 @@ Signals
 
 **main_screen_changed**\ (\ screen_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorPlugin_signal_main_screen_changed>`
 
-Emitted when user changes the workspace (**2D**, **3D**, **Script**, **Game**, **Asset Store**). Also works with custom screens defined by plugins.
+Được phát ra khi người dùng thay đổi workspace (**2D**, **3D**, **Script**, **Game**, **Asset Store**). Cũng hoạt động với các màn hình tùy chỉnh do plugin định nghĩa.
 
 .. rst-class:: classref-item-separator
 
@@ -221,9 +221,9 @@ Emitted when user changes the workspace (**2D**, **3D**, **Script**, **Game**, *
 
 **project_settings_changed**\ (\ ) :ref:`🔗<class_EditorPlugin_signal_project_settings_changed>`
 
-**Deprecated:** Use :ref:`ProjectSettings.settings_changed<class_ProjectSettings_signal_settings_changed>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`ProjectSettings.settings_changed<class_ProjectSettings_signal_settings_changed>` thay thế.
 
-Emitted when any project setting has changed.
+Được phát ra khi bất kỳ thiết lập nào của project thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ Emitted when any project setting has changed.
 
 **resource_saved**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_EditorPlugin_signal_resource_saved>`
 
-Emitted when the given ``resource`` was saved on disc. See also :ref:`scene_saved<class_EditorPlugin_signal_scene_saved>`.
+Được phát ra khi ``resource`` đã được lưu trên đĩa. Xem thêm :ref:`scene_saved<class_EditorPlugin_signal_scene_saved>`.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ Emitted when the given ``resource`` was saved on disc. See also :ref:`scene_save
 
 **scene_changed**\ (\ scene_root\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_EditorPlugin_signal_scene_changed>`
 
-Emitted when the scene is changed in the editor. The argument will return the root node of the scene that has just become active. If this scene is new and empty, the argument will be ``null``.
+Được phát ra khi scene thay đổi trong editor. Đối số sẽ trả về node gốc của scene vừa trở nên active. Nếu scene này mới và trống, đối số sẽ là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Emitted when the scene is changed in the editor. The argument will return the ro
 
 **scene_closed**\ (\ filepath\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorPlugin_signal_scene_closed>`
 
-Emitted when user closes a scene. The argument is a file path to the closed scene.
+Được phát ra khi người dùng đóng một scene. Đối số là đường dẫn tệp đến scene đã đóng.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ Emitted when user closes a scene. The argument is a file path to the closed scen
 
 **scene_saved**\ (\ filepath\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorPlugin_signal_scene_saved>`
 
-Emitted when a scene was saved on disc. The argument is a file path to the saved scene. See also :ref:`resource_saved<class_EditorPlugin_signal_resource_saved>`.
+Được phát ra khi một scene được lưu trên đĩa. Đối số là đường dẫn tệp đến scene đã lưu. Xem thêm :ref:`resource_saved<class_EditorPlugin_signal_resource_saved>`.
 
 .. rst-class:: classref-section-separator
 
@@ -279,14 +279,14 @@ Emitted when a scene was saved on disc. The argument is a file path to the saved
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorPlugin_CustomControlContainer:
 
 .. rst-class:: classref-enumeration
 
-enum **CustomControlContainer**: :ref:`🔗<enum_EditorPlugin_CustomControlContainer>`
+enum **CustomControlContainer**: :ref:`🔗 <enum_EditorPlugin_CustomControlContainer>`
 
 .. _class_EditorPlugin_constant_CONTAINER_TOOLBAR:
 
@@ -294,7 +294,7 @@ enum **CustomControlContainer**: :ref:`🔗<enum_EditorPlugin_CustomControlConta
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_TOOLBAR** = ``0``
 
-Main editor toolbar, next to play buttons.
+Thanh công cụ chính của trình chỉnh sửa, bên cạnh các nút phát.
 
 .. _class_EditorPlugin_constant_CONTAINER_SPATIAL_EDITOR_MENU:
 
@@ -302,7 +302,7 @@ Main editor toolbar, next to play buttons.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_SPATIAL_EDITOR_MENU** = ``1``
 
-The toolbar that appears when 3D editor is active.
+Thanh công cụ xuất hiện khi trình chỉnh sửa 3D đang hoạt động.
 
 .. _class_EditorPlugin_constant_CONTAINER_SPATIAL_EDITOR_SIDE_LEFT:
 
@@ -310,7 +310,7 @@ The toolbar that appears when 3D editor is active.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_SPATIAL_EDITOR_SIDE_LEFT** = ``2``
 
-Left sidebar of the 3D editor.
+Thanh bên trái của trình chỉnh sửa 3D.
 
 .. _class_EditorPlugin_constant_CONTAINER_SPATIAL_EDITOR_SIDE_RIGHT:
 
@@ -318,7 +318,7 @@ Left sidebar of the 3D editor.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_SPATIAL_EDITOR_SIDE_RIGHT** = ``3``
 
-Right sidebar of the 3D editor.
+Thanh bên phải của trình chỉnh sửa 3D.
 
 .. _class_EditorPlugin_constant_CONTAINER_SPATIAL_EDITOR_BOTTOM:
 
@@ -326,7 +326,7 @@ Right sidebar of the 3D editor.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_SPATIAL_EDITOR_BOTTOM** = ``4``
 
-Bottom panel of the 3D editor.
+Bảng điều khiển phía dưới của trình chỉnh sửa 3D.
 
 .. _class_EditorPlugin_constant_CONTAINER_CANVAS_EDITOR_MENU:
 
@@ -334,7 +334,7 @@ Bottom panel of the 3D editor.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_CANVAS_EDITOR_MENU** = ``5``
 
-The toolbar that appears when 2D editor is active.
+Thanh công cụ xuất hiện khi trình chỉnh sửa 2D đang hoạt động.
 
 .. _class_EditorPlugin_constant_CONTAINER_CANVAS_EDITOR_SIDE_LEFT:
 
@@ -342,7 +342,7 @@ The toolbar that appears when 2D editor is active.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_CANVAS_EDITOR_SIDE_LEFT** = ``6``
 
-Left sidebar of the 2D editor.
+Thanh bên trái của trình chỉnh sửa 2D.
 
 .. _class_EditorPlugin_constant_CONTAINER_CANVAS_EDITOR_SIDE_RIGHT:
 
@@ -350,7 +350,7 @@ Left sidebar of the 2D editor.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_CANVAS_EDITOR_SIDE_RIGHT** = ``7``
 
-Right sidebar of the 2D editor.
+Thanh bên phải của trình chỉnh sửa 2D.
 
 .. _class_EditorPlugin_constant_CONTAINER_CANVAS_EDITOR_BOTTOM:
 
@@ -358,7 +358,7 @@ Right sidebar of the 2D editor.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_CANVAS_EDITOR_BOTTOM** = ``8``
 
-Bottom panel of the 2D editor.
+Bảng điều khiển phía dưới của trình chỉnh sửa 2D.
 
 .. _class_EditorPlugin_constant_CONTAINER_INSPECTOR_BOTTOM:
 
@@ -366,7 +366,7 @@ Bottom panel of the 2D editor.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_INSPECTOR_BOTTOM** = ``9``
 
-Bottom section of the inspector.
+Phần phía dưới của inspector.
 
 .. _class_EditorPlugin_constant_CONTAINER_PROJECT_SETTING_TAB_LEFT:
 
@@ -374,7 +374,7 @@ Bottom section of the inspector.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_PROJECT_SETTING_TAB_LEFT** = ``10``
 
-Tab of Project Settings dialog, to the left of other tabs.
+Tab của hộp thoại Project Settings, ở bên trái các tab khác.
 
 .. _class_EditorPlugin_constant_CONTAINER_PROJECT_SETTING_TAB_RIGHT:
 
@@ -382,7 +382,7 @@ Tab of Project Settings dialog, to the left of other tabs.
 
 :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>` **CONTAINER_PROJECT_SETTING_TAB_RIGHT** = ``11``
 
-Tab of Project Settings dialog, to the right of other tabs.
+Tab của hộp thoại Project Settings, ở bên phải các tab khác.
 
 .. rst-class:: classref-item-separator
 
@@ -392,7 +392,7 @@ Tab of Project Settings dialog, to the right of other tabs.
 
 .. rst-class:: classref-enumeration
 
-enum **DockSlot**: :ref:`🔗<enum_EditorPlugin_DockSlot>`
+enum **DockSlot**: :ref:`🔗 <enum_EditorPlugin_DockSlot>`
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_NONE:
 
@@ -400,7 +400,7 @@ enum **DockSlot**: :ref:`🔗<enum_EditorPlugin_DockSlot>`
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_NONE** = ``-1``
 
-The dock is closed.
+Dock đã được đóng.
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_LEFT_UL:
 
@@ -408,7 +408,7 @@ The dock is closed.
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_LEFT_UL** = ``0``
 
-Dock slot, left side, upper-left (empty in default layout).
+Vị trí dock, phía bên trái, góc trên bên trái (trống trong bố cục mặc định).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_LEFT_BL:
 
@@ -416,7 +416,7 @@ Dock slot, left side, upper-left (empty in default layout).
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_LEFT_BL** = ``1``
 
-Dock slot, left side, bottom-left (empty in default layout).
+Vị trí dock, phía bên trái, góc dưới bên trái (trống trong bố cục mặc định).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_LEFT_UR:
 
@@ -424,7 +424,7 @@ Dock slot, left side, bottom-left (empty in default layout).
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_LEFT_UR** = ``2``
 
-Dock slot, left side, upper-right (in default layout includes Scene and Import docks).
+Vị trí dock, phía bên trái, góc trên bên phải (trong bố cục mặc định bao gồm các dock Scene và Import).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_LEFT_BR:
 
@@ -432,7 +432,7 @@ Dock slot, left side, upper-right (in default layout includes Scene and Import d
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_LEFT_BR** = ``3``
 
-Dock slot, left side, bottom-right (in default layout includes FileSystem dock).
+Vị trí dock, phía bên trái, góc dưới bên phải (trong bố cục mặc định có dock FileSystem).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_RIGHT_UL:
 
@@ -440,7 +440,7 @@ Dock slot, left side, bottom-right (in default layout includes FileSystem dock).
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_RIGHT_UL** = ``4``
 
-Dock slot, right side, upper-left (in default layout includes Inspector, Node, and History docks).
+Vị trí dock, phía bên phải, góc trên bên trái (trong bố cục mặc định có các dock Inspector, Node và History).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_RIGHT_BL:
 
@@ -448,7 +448,7 @@ Dock slot, right side, upper-left (in default layout includes Inspector, Node, a
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_RIGHT_BL** = ``5``
 
-Dock slot, right side, bottom-left (empty in default layout).
+Vị trí dock, phía bên phải, góc dưới bên trái (trống trong bố cục mặc định).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_RIGHT_UR:
 
@@ -456,7 +456,7 @@ Dock slot, right side, bottom-left (empty in default layout).
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_RIGHT_UR** = ``6``
 
-Dock slot, right side, upper-right (empty in default layout).
+Vị trí dock, phía bên phải, góc trên bên phải (trống trong bố cục mặc định).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_RIGHT_BR:
 
@@ -464,7 +464,7 @@ Dock slot, right side, upper-right (empty in default layout).
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_RIGHT_BR** = ``7``
 
-Dock slot, right side, bottom-right (empty in default layout).
+Vị trí dock, phía bên phải, góc dưới bên phải (trống trong bố cục mặc định).
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_BOTTOM:
 
@@ -472,7 +472,7 @@ Dock slot, right side, bottom-right (empty in default layout).
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_BOTTOM** = ``8``
 
-Bottom panel.
+Bảng phía dưới.
 
 .. _class_EditorPlugin_constant_DOCK_SLOT_MAX:
 
@@ -480,7 +480,7 @@ Bottom panel.
 
 :ref:`DockSlot<enum_EditorPlugin_DockSlot>` **DOCK_SLOT_MAX** = ``9``
 
-Represents the size of the :ref:`DockSlot<enum_EditorPlugin_DockSlot>` enum.
+Biểu thị kích thước của enum :ref:`DockSlot <enum_EditorPlugin_DockSlot>`.
 
 .. rst-class:: classref-item-separator
 
@@ -490,7 +490,7 @@ Represents the size of the :ref:`DockSlot<enum_EditorPlugin_DockSlot>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **AfterGUIInput**: :ref:`🔗<enum_EditorPlugin_AfterGUIInput>`
+enum **AfterGUIInput**: :ref:`🔗 <enum_EditorPlugin_AfterGUIInput>`
 
 .. _class_EditorPlugin_constant_AFTER_GUI_INPUT_PASS:
 
@@ -498,7 +498,7 @@ enum **AfterGUIInput**: :ref:`🔗<enum_EditorPlugin_AfterGUIInput>`
 
 :ref:`AfterGUIInput<enum_EditorPlugin_AfterGUIInput>` **AFTER_GUI_INPUT_PASS** = ``0``
 
-Forwards the :ref:`InputEvent<class_InputEvent>` to other EditorPlugins.
+Chuyển tiếp :ref:`InputEvent<class_InputEvent>` đến các EditorPlugin khác.
 
 .. _class_EditorPlugin_constant_AFTER_GUI_INPUT_STOP:
 
@@ -506,7 +506,7 @@ Forwards the :ref:`InputEvent<class_InputEvent>` to other EditorPlugins.
 
 :ref:`AfterGUIInput<enum_EditorPlugin_AfterGUIInput>` **AFTER_GUI_INPUT_STOP** = ``1``
 
-Prevents the :ref:`InputEvent<class_InputEvent>` from reaching other Editor classes.
+Ngăn không cho :ref:`InputEvent<class_InputEvent>` được chuyển đến các lớp Editor khác.
 
 .. _class_EditorPlugin_constant_AFTER_GUI_INPUT_CUSTOM:
 
@@ -514,7 +514,7 @@ Prevents the :ref:`InputEvent<class_InputEvent>` from reaching other Editor clas
 
 :ref:`AfterGUIInput<enum_EditorPlugin_AfterGUIInput>` **AFTER_GUI_INPUT_CUSTOM** = ``2``
 
-Pass the :ref:`InputEvent<class_InputEvent>` to other editor plugins except the main :ref:`Node3D<class_Node3D>` one. This can be used to prevent node selection changes and work with sub-gizmos instead.
+Chuyển :ref:`InputEvent<class_InputEvent>` đến các plugin editor khác, ngoại trừ plugin :ref:`Node3D<class_Node3D>` chính. Có thể dùng cách này để ngăn thay đổi lựa chọn node và thay vào đó làm việc với các sub-gizmo.
 
 .. rst-class:: classref-section-separator
 
@@ -522,8 +522,8 @@ Pass the :ref:`InputEvent<class_InputEvent>` to other editor plugins except the 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorPlugin_private_method__apply_changes:
 
@@ -531,9 +531,9 @@ Method Descriptions
 
 |void| **_apply_changes**\ (\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__apply_changes>`
 
-This method is called when the editor is about to save the project, switch to another tab, etc. It asks the plugin to apply any pending state changes to ensure consistency.
+Phương thức này được gọi khi editor sắp lưu project, chuyển sang tab khác, v.v. Phương thức yêu cầu plugin áp dụng mọi thay đổi trạng thái đang chờ xử lý để đảm bảo tính nhất quán.
 
-This is used, for example, in shader editors to let the plugin know that it must apply the shader code being written by the user to the object.
+Ví dụ, shader editor sử dụng phương thức này để cho plugin biết rằng nó phải áp dụng mã shader mà người dùng đang viết vào đối tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -545,9 +545,9 @@ This is used, for example, in shader editors to let the plugin know that it must
 
 :ref:`bool<class_bool>` **_build**\ (\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__build>`
 
-This method is called when the editor is about to run the project. The plugin can then perform required operations before the project runs.
+Phương thức này được gọi khi editor sắp chạy project. Sau đó, plugin có thể thực hiện các thao tác cần thiết trước khi project chạy.
 
-This method must return a boolean. If this method returns ``false``, the project will not run. The run is aborted immediately, so this also prevents all other plugins' :ref:`_build()<class_EditorPlugin_private_method__build>` methods from running.
+Phương thức này phải trả về một giá trị boolean. Nếu phương thức này trả về ``false``, project sẽ không chạy. Quá trình chạy bị hủy ngay lập tức, vì vậy điều này cũng ngăn không cho các phương thức :ref:`_build()<class_EditorPlugin_private_method__build>` của tất cả plugin khác chạy.
 
 .. rst-class:: classref-item-separator
 
@@ -559,7 +559,7 @@ This method must return a boolean. If this method returns ``false``, the project
 
 |void| **_clear**\ (\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__clear>`
 
-Clear all the state and reset the object being edited to zero. This ensures your plugin does not keep editing a currently existing node, or a node from the wrong scene.
+Xóa toàn bộ trạng thái và đặt lại đối tượng đang được chỉnh sửa về số không. Điều này đảm bảo plugin của bạn không tiếp tục chỉnh sửa một node hiện có hoặc một node thuộc scene không đúng.
 
 .. rst-class:: classref-item-separator
 
@@ -571,7 +571,7 @@ Clear all the state and reset the object being edited to zero. This ensures your
 
 |void| **_disable_plugin**\ (\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__disable_plugin>`
 
-Called by the engine when the user disables the **EditorPlugin** in the Plugin tab of the project settings window.
+Được engine gọi khi người dùng tắt **EditorPlugin** trong tab Plugin của cửa sổ cài đặt project.
 
 .. rst-class:: classref-item-separator
 
@@ -583,9 +583,9 @@ Called by the engine when the user disables the **EditorPlugin** in the Plugin t
 
 |void| **_edit**\ (\ object\: :ref:`Object<class_Object>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__edit>`
 
-This function is used for plugins that edit specific object types (nodes or resources). It requests the editor to edit the given object.
+Hàm này được dùng cho các plugin chỉnh sửa các loại đối tượng cụ thể (node hoặc resource). Hàm yêu cầu editor chỉnh sửa đối tượng đã cho.
 
-\ ``object`` can be ``null`` if the plugin was editing an object, but there is no longer any selected object handled by this plugin. It can be used to cleanup editing state.
+\ ``object`` có thể là ``null`` nếu plugin đang chỉnh sửa một đối tượng nhưng không còn đối tượng nào được chọn do plugin này xử lý. Có thể dùng nó để dọn dẹp trạng thái chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -597,7 +597,7 @@ This function is used for plugins that edit specific object types (nodes or reso
 
 |void| **_enable_plugin**\ (\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__enable_plugin>`
 
-Called by the engine when the user enables the **EditorPlugin** in the Plugin tab of the project settings window.
+Được engine gọi khi người dùng bật **EditorPlugin** trong tab Plugin của cửa sổ cài đặt project.
 
 .. rst-class:: classref-item-separator
 
@@ -609,7 +609,7 @@ Called by the engine when the user enables the **EditorPlugin** in the Plugin ta
 
 |void| **_forward_3d_draw_over_viewport**\ (\ viewport_control\: :ref:`Control<class_Control>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__forward_3d_draw_over_viewport>`
 
-Called by the engine when the 3D editor's viewport is updated. ``viewport_control`` is an overlay on top of the viewport and it can be used for drawing. You can update the viewport manually by calling :ref:`update_overlays()<class_EditorPlugin_method_update_overlays>`.
+Được engine gọi khi viewport của trình chỉnh sửa 3D được cập nhật. ``viewport_control`` là một lớp phủ trên viewport và có thể được dùng để vẽ. Bạn có thể cập nhật viewport theo cách thủ công bằng cách gọi :ref:`update_overlays()<class_EditorPlugin_method_update_overlays>`.
 
 
 .. tabs::
@@ -617,12 +617,12 @@ Called by the engine when the 3D editor's viewport is updated. ``viewport_contro
  .. code-tab:: gdscript
 
     func _forward_3d_draw_over_viewport(overlay):
-        # Draw a circle at the cursor's position.
+        # Vẽ một hình tròn tại vị trí con trỏ.
         overlay.draw_circle(overlay.get_local_mouse_position(), 64, Color.WHITE)
 
     func _forward_3d_gui_input(camera, event):
         if event is InputEventMouseMotion:
-            # Redraw the viewport when the cursor is moved.
+            # Vẽ lại viewport khi con trỏ di chuyển.
             update_overlays()
             return EditorPlugin.AFTER_GUI_INPUT_STOP
         return EditorPlugin.AFTER_GUI_INPUT_PASS
@@ -631,7 +631,7 @@ Called by the engine when the 3D editor's viewport is updated. ``viewport_contro
 
     public override void _Forward3DDrawOverViewport(Control viewportControl)
     {
-        // Draw a circle at the cursor's position.
+        // Vẽ một hình tròn tại vị trí con trỏ.
         viewportControl.DrawCircle(viewportControl.GetLocalMousePosition(), 64, Colors.White);
     }
 
@@ -639,7 +639,7 @@ Called by the engine when the 3D editor's viewport is updated. ``viewport_contro
     {
         if (@event is InputEventMouseMotion)
         {
-            // Redraw the viewport when the cursor is moved.
+            // Vẽ lại viewport khi con trỏ di chuyển.
             UpdateOverlays();
             return EditorPlugin.AfterGuiInput.Stop;
         }
@@ -658,9 +658,9 @@ Called by the engine when the 3D editor's viewport is updated. ``viewport_contro
 
 |void| **_forward_3d_force_draw_over_viewport**\ (\ viewport_control\: :ref:`Control<class_Control>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__forward_3d_force_draw_over_viewport>`
 
-This method is the same as :ref:`_forward_3d_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_draw_over_viewport>`, except it draws on top of everything. Useful when you need an extra layer that shows over anything else.
+Phương thức này giống với :ref:`_forward_3d_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_draw_over_viewport>`, ngoại trừ việc nó vẽ lên trên mọi thứ. Hữu ích khi bạn cần một lớp bổ sung hiển thị trên mọi nội dung khác.
 
-You need to enable calling of this method by using :ref:`set_force_draw_over_forwarding_enabled()<class_EditorPlugin_method_set_force_draw_over_forwarding_enabled>`.
+Bạn cần bật việc gọi phương thức này bằng cách sử dụng :ref:`set_force_draw_over_forwarding_enabled()<class_EditorPlugin_method_set_force_draw_over_forwarding_enabled>`.
 
 .. rst-class:: classref-item-separator
 
@@ -672,20 +672,20 @@ You need to enable calling of this method by using :ref:`set_force_draw_over_for
 
 :ref:`int<class_int>` **_forward_3d_gui_input**\ (\ viewport_camera\: :ref:`Camera3D<class_Camera3D>`, event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__forward_3d_gui_input>`
 
-Called when there is a root node in the current edited scene, :ref:`_handles()<class_EditorPlugin_private_method__handles>` is implemented, and an :ref:`InputEvent<class_InputEvent>` happens in the 3D viewport. The return value decides whether the :ref:`InputEvent<class_InputEvent>` is consumed or forwarded to other **EditorPlugin**\ s. See :ref:`AfterGUIInput<enum_EditorPlugin_AfterGUIInput>` for options.
+Được gọi khi có một node gốc trong scene hiện đang chỉnh sửa, :ref:`_handles()<class_EditorPlugin_private_method__handles>` được triển khai và một :ref:`InputEvent<class_InputEvent>` xảy ra trong viewport 3D. Giá trị trả về quyết định :ref:`InputEvent<class_InputEvent>` được tiêu thụ hay chuyển tiếp đến các **EditorPlugin**\ s khác. Xem :ref:`AfterGUIInput <enum_EditorPlugin_AfterGUIInput>` để biết các tùy chọn.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Prevents the InputEvent from reaching other Editor classes.
+    # Ngăn InputEvent tiếp cận các lớp Editor khác.
     func _forward_3d_gui_input(camera, event):
         return EditorPlugin.AFTER_GUI_INPUT_STOP
 
  .. code-tab:: csharp
 
-    // Prevents the InputEvent from reaching other Editor classes.
+    // Ngăn InputEvent tiếp cận các lớp Editor khác.
     public override EditorPlugin.AfterGuiInput _Forward3DGuiInput(Camera3D camera, InputEvent @event)
     {
         return EditorPlugin.AfterGuiInput.Stop;
@@ -693,20 +693,20 @@ Called when there is a root node in the current edited scene, :ref:`_handles()<c
 
 
 
-This method must return :ref:`AFTER_GUI_INPUT_PASS<class_EditorPlugin_constant_AFTER_GUI_INPUT_PASS>` in order to forward the :ref:`InputEvent<class_InputEvent>` to other Editor classes.
+Phương thức này phải trả về :ref:`AFTER_GUI_INPUT_PASS<class_EditorPlugin_constant_AFTER_GUI_INPUT_PASS>` để chuyển tiếp :ref:`InputEvent<class_InputEvent>` đến các lớp Editor khác.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Consumes InputEventMouseMotion and forwards other InputEvent types.
+    # Tiêu thụ InputEventMouseMotion và chuyển tiếp các kiểu InputEvent khác.
     func _forward_3d_gui_input(camera, event):
         return EditorPlugin.AFTER_GUI_INPUT_STOP if event is InputEventMouseMotion else EditorPlugin.AFTER_GUI_INPUT_PASS
 
  .. code-tab:: csharp
 
-    // Consumes InputEventMouseMotion and forwards other InputEvent types.
+    // Tiêu thụ InputEventMouseMotion và chuyển tiếp các kiểu InputEvent khác.
     public override EditorPlugin.AfterGuiInput _Forward3DGuiInput(Camera3D camera, InputEvent @event)
     {
         return @event is InputEventMouseMotion ? EditorPlugin.AfterGuiInput.Stop : EditorPlugin.AfterGuiInput.Pass;
@@ -724,7 +724,7 @@ This method must return :ref:`AFTER_GUI_INPUT_PASS<class_EditorPlugin_constant_A
 
 |void| **_forward_canvas_draw_over_viewport**\ (\ viewport_control\: :ref:`Control<class_Control>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__forward_canvas_draw_over_viewport>`
 
-Called by the engine when the 2D editor's viewport is updated. ``viewport_control`` is an overlay on top of the viewport and it can be used for drawing. You can update the viewport manually by calling :ref:`update_overlays()<class_EditorPlugin_method_update_overlays>`.
+Được engine gọi khi viewport của trình chỉnh sửa 2D được cập nhật. ``viewport_control`` là một lớp phủ trên viewport và có thể được dùng để vẽ. Bạn có thể cập nhật viewport theo cách thủ công bằng cách gọi :ref:`update_overlays()<class_EditorPlugin_method_update_overlays>`.
 
 
 .. tabs::
@@ -732,12 +732,12 @@ Called by the engine when the 2D editor's viewport is updated. ``viewport_contro
  .. code-tab:: gdscript
 
     func _forward_canvas_draw_over_viewport(overlay):
-        # Draw a circle at the cursor's position.
+        # Vẽ một hình tròn tại vị trí con trỏ.
         overlay.draw_circle(overlay.get_local_mouse_position(), 64, Color.WHITE)
 
     func _forward_canvas_gui_input(event):
         if event is InputEventMouseMotion:
-            # Redraw the viewport when the cursor is moved.
+            # Vẽ lại viewport khi con trỏ di chuyển.
             update_overlays()
             return true
         return false
@@ -746,7 +746,7 @@ Called by the engine when the 2D editor's viewport is updated. ``viewport_contro
 
     public override void _ForwardCanvasDrawOverViewport(Control viewportControl)
     {
-        // Draw a circle at the cursor's position.
+        // Vẽ một hình tròn tại vị trí con trỏ.
         viewportControl.DrawCircle(viewportControl.GetLocalMousePosition(), 64, Colors.White);
     }
 
@@ -754,7 +754,7 @@ Called by the engine when the 2D editor's viewport is updated. ``viewport_contro
     {
         if (@event is InputEventMouseMotion)
         {
-            // Redraw the viewport when the cursor is moved.
+            // Vẽ lại viewport khi con trỏ di chuyển.
             UpdateOverlays();
             return true;
         }
@@ -773,9 +773,9 @@ Called by the engine when the 2D editor's viewport is updated. ``viewport_contro
 
 |void| **_forward_canvas_force_draw_over_viewport**\ (\ viewport_control\: :ref:`Control<class_Control>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__forward_canvas_force_draw_over_viewport>`
 
-This method is the same as :ref:`_forward_canvas_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_draw_over_viewport>`, except it draws on top of everything. Useful when you need an extra layer that shows over anything else.
+Phương thức này giống :ref:`_forward_canvas_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_draw_over_viewport>`, ngoại trừ việc nó vẽ đè lên mọi thứ. Hữu ích khi bạn cần một lớp bổ sung hiển thị bên trên mọi thành phần khác.
 
-You need to enable calling of this method by using :ref:`set_force_draw_over_forwarding_enabled()<class_EditorPlugin_method_set_force_draw_over_forwarding_enabled>`.
+Bạn cần bật việc gọi phương thức này bằng cách sử dụng :ref:`set_force_draw_over_forwarding_enabled()<class_EditorPlugin_method_set_force_draw_over_forwarding_enabled>`.
 
 .. rst-class:: classref-item-separator
 
@@ -787,20 +787,20 @@ You need to enable calling of this method by using :ref:`set_force_draw_over_for
 
 :ref:`bool<class_bool>` **_forward_canvas_gui_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__forward_canvas_gui_input>`
 
-Called when there is a root node in the current edited scene, :ref:`_handles()<class_EditorPlugin_private_method__handles>` is implemented, and an :ref:`InputEvent<class_InputEvent>` happens in the 2D viewport. If this method returns ``true``, ``event`` is intercepted by this **EditorPlugin**, otherwise ``event`` is forwarded to other Editor classes.
+Được gọi khi có một node gốc trong scene hiện đang chỉnh sửa, :ref:`_handles()<class_EditorPlugin_private_method__handles>` được triển khai và xảy ra :ref:`InputEvent<class_InputEvent>` trong viewport 2D. Nếu phương thức này trả về ``true``, ``event`` sẽ bị **EditorPlugin** này chặn lại; nếu không, ``event`` sẽ được chuyển tiếp đến các lớp Editor khác.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Prevents the InputEvent from reaching other Editor classes.
+    # Ngăn InputEvent tiếp cận các lớp Editor khác.
     func _forward_canvas_gui_input(event):
         return true
 
  .. code-tab:: csharp
 
-    // Prevents the InputEvent from reaching other Editor classes.
+    // Ngăn InputEvent tiếp cận các lớp Editor khác.
     public override bool ForwardCanvasGuiInput(InputEvent @event)
     {
         return true;
@@ -808,14 +808,14 @@ Called when there is a root node in the current edited scene, :ref:`_handles()<c
 
 
 
-This method must return ``false`` in order to forward the :ref:`InputEvent<class_InputEvent>` to other Editor classes.
+Phương thức này phải trả về ``false`` để chuyển tiếp :ref:`InputEvent<class_InputEvent>` đến các lớp Editor khác.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Consumes InputEventMouseMotion and forwards other InputEvent types.
+    # Tiêu thụ InputEventMouseMotion và chuyển tiếp các kiểu InputEvent khác.
     func _forward_canvas_gui_input(event):
         if (event is InputEventMouseMotion):
             return true
@@ -823,7 +823,7 @@ This method must return ``false`` in order to forward the :ref:`InputEvent<class
 
  .. code-tab:: csharp
 
-    // Consumes InputEventMouseMotion and forwards other InputEvent types.
+    // Tiêu thụ InputEventMouseMotion và chuyển tiếp các kiểu InputEvent khác.
     public override bool _ForwardCanvasGuiInput(InputEvent @event)
     {
         if (@event is InputEventMouseMotion)
@@ -845,7 +845,7 @@ This method must return ``false`` in order to forward the :ref:`InputEvent<class
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_breakpoints**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__get_breakpoints>`
 
-This is for editors that edit script-based objects. You can return a list of breakpoints in the format (``script:line``), for example: ``res://path_to_script.gd:25``.
+Phương thức này dành cho các editor chỉnh sửa những đối tượng dựa trên script. Bạn có thể trả về một danh sách breakpoint theo định dạng (``script:line``), ví dụ: ``res://path_to_script.gd:25``.
 
 .. rst-class:: classref-item-separator
 
@@ -857,11 +857,11 @@ This is for editors that edit script-based objects. You can return a list of bre
 
 :ref:`Texture2D<class_Texture2D>` **_get_plugin_icon**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__get_plugin_icon>`
 
-Override this method in your plugin to return a :ref:`Texture2D<class_Texture2D>` in order to give it an icon.
+Ghi đè phương thức này trong plugin của bạn để trả về :ref:`Texture2D<class_Texture2D>` nhằm cung cấp cho plugin đó một biểu tượng.
 
-For main screen plugins, this appears at the top of the screen, to the right of the "2D", "3D", "Script", "Game", and "Asset Store" buttons.
+Đối với các plugin trên màn hình chính, nội dung này xuất hiện ở đầu màn hình, bên phải các nút "2D", "3D", "Script", "Game" và "Asset Store".
 
-Ideally, the plugin icon should be white with a transparent background and 16×16 pixels in size.
+Tốt nhất, biểu tượng plugin nên có màu trắng, nền trong suốt và kích thước 16×16 pixel.
 
 
 .. tabs::
@@ -869,18 +869,18 @@ Ideally, the plugin icon should be white with a transparent background and 16×1
  .. code-tab:: gdscript
 
     func _get_plugin_icon():
-        # You can use a custom icon:
+        # Bạn có thể sử dụng biểu tượng tùy chỉnh:
         return preload("res://addons/my_plugin/my_plugin_icon.svg")
-        # Or use a built-in icon:
+        # Hoặc sử dụng biểu tượng tích hợp sẵn:
         return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")
 
  .. code-tab:: csharp
 
     public override Texture2D _GetPluginIcon()
     {
-        // You can use a custom icon:
+        // Bạn có thể sử dụng biểu tượng tùy chỉnh:
         return ResourceLoader.Load<Texture2D>("res://addons/my_plugin/my_plugin_icon.svg");
-        // Or use a built-in icon:
+        // Hoặc sử dụng biểu tượng tích hợp sẵn:
         return EditorInterface.Singleton.GetEditorTheme().GetIcon("Node", "EditorIcons");
     }
 
@@ -896,9 +896,9 @@ Ideally, the plugin icon should be white with a transparent background and 16×1
 
 :ref:`String<class_String>` **_get_plugin_name**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__get_plugin_name>`
 
-Override this method in your plugin to provide the name of the plugin when displayed in the Godot editor.
+Ghi đè phương thức này trong plugin của bạn để cung cấp tên của plugin khi hiển thị trong trình chỉnh sửa Godot.
 
-For main screen plugins, this appears at the top of the screen, to the right of the "2D", "3D", "Script", "Game", and "Asset Store" buttons.
+Đối với các plugin trên màn hình chính, nội dung này xuất hiện ở đầu màn hình, bên phải các nút "2D", "3D", "Script", "Game" và "Asset Store".
 
 .. rst-class:: classref-item-separator
 
@@ -910,13 +910,13 @@ For main screen plugins, this appears at the top of the screen, to the right of 
 
 :ref:`Dictionary<class_Dictionary>` **_get_state**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__get_state>`
 
-Override this method to provide a state data you want to be saved, like view position, grid settings, folding, etc. This is used when saving the scene (so state is kept when opening it again) and for switching tabs (so state can be restored when the tab returns). This data is automatically saved for each scene in an ``editstate`` file in the editor metadata folder. If you want to store global (scene-independent) editor data for your plugin, you can use :ref:`_get_window_layout()<class_EditorPlugin_private_method__get_window_layout>` instead.
+Ghi đè phương thức này để cung cấp dữ liệu trạng thái bạn muốn lưu, chẳng hạn như vị trí chế độ xem, thiết lập lưới, trạng thái thu gọn, v.v. Dữ liệu này được sử dụng khi lưu scene (để giữ lại trạng thái khi mở lại scene) và khi chuyển tab (để có thể khôi phục trạng thái khi quay lại tab). Dữ liệu này sẽ tự động được lưu cho từng scene trong tệp ``editstate`` trong thư mục siêu dữ liệu của editor. Nếu muốn lưu dữ liệu editor toàn cục (không phụ thuộc scene) cho plugin, bạn có thể sử dụng :ref:`_get_window_layout()<class_EditorPlugin_private_method__get_window_layout>` thay thế.
 
-Use :ref:`_set_state()<class_EditorPlugin_private_method__set_state>` to restore your saved state.
+Sử dụng :ref:`_set_state()<class_EditorPlugin_private_method__set_state>` để khôi phục trạng thái đã lưu.
 
-\ **Note:** This method should not be used to save important settings that should persist with the project.
+\ **Lưu ý:** Không nên sử dụng phương thức này để lưu các thiết lập quan trọng cần được duy trì cùng với project.
 
-\ **Note:** You must implement :ref:`_get_plugin_name()<class_EditorPlugin_private_method__get_plugin_name>` for the state to be stored and restored correctly.
+\ **Lưu ý:** Bạn phải triển khai :ref:`_get_plugin_name()<class_EditorPlugin_private_method__get_plugin_name>` để trạng thái được lưu trữ và khôi phục chính xác.
 
 ::
 
@@ -934,11 +934,11 @@ Use :ref:`_set_state()<class_EditorPlugin_private_method__set_state>` to restore
 
 :ref:`String<class_String>` **_get_unsaved_status**\ (\ for_scene\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__get_unsaved_status>`
 
-Override this method to provide a custom message that lists unsaved changes. The editor will call this method when exiting or when closing a scene, and display the returned string in a confirmation dialog. Return empty string if the plugin has no unsaved changes.
+Ghi đè phương thức này để cung cấp thông báo tùy chỉnh liệt kê các thay đổi chưa lưu. Editor sẽ gọi phương thức này khi thoát hoặc khi đóng scene, đồng thời hiển thị chuỗi được trả về trong hộp thoại xác nhận. Trả về chuỗi rỗng nếu plugin không có thay đổi chưa lưu.
 
-When closing a scene, ``for_scene`` is the path to the scene being closed. You can use it to handle built-in resources in that scene.
+Khi đóng scene, ``for_scene`` là đường dẫn đến scene đang được đóng. Bạn có thể sử dụng đường dẫn này để xử lý các tài nguyên tích hợp sẵn trong scene đó.
 
-If the user confirms saving, :ref:`_save_external_data()<class_EditorPlugin_private_method__save_external_data>` will be called, before closing the editor.
+Nếu người dùng xác nhận việc lưu, :ref:`_save_external_data()<class_EditorPlugin_private_method__save_external_data>` sẽ được gọi trước khi đóng trình chỉnh sửa.
 
 ::
 
@@ -954,7 +954,7 @@ If the user confirms saving, :ref:`_save_external_data()<class_EditorPlugin_priv
     func _save_external_data():
         unsaved = false
 
-If the plugin has no scene-specific changes, you can ignore the calls when closing scenes:
+Nếu plugin không có thay đổi dành riêng cho scene, bạn có thể bỏ qua các lệnh gọi khi đóng scene:
 
 ::
 
@@ -972,9 +972,9 @@ If the plugin has no scene-specific changes, you can ignore the calls when closi
 
 |void| **_get_window_layout**\ (\ configuration\: :ref:`ConfigFile<class_ConfigFile>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__get_window_layout>`
 
-Override this method to provide the GUI layout of the plugin or any other data you want to be stored. This is used to save the project's editor layout when :ref:`queue_save_layout()<class_EditorPlugin_method_queue_save_layout>` is called or the editor layout was changed (for example changing the position of a dock). The data is stored in the ``editor_layout.cfg`` file in the editor metadata directory.
+Ghi đè phương thức này để cung cấp bố cục GUI của plugin hoặc bất kỳ dữ liệu nào khác mà bạn muốn lưu. Phương thức này được dùng để lưu bố cục trình chỉnh sửa của dự án khi :ref:`queue_save_layout()<class_EditorPlugin_method_queue_save_layout>` được gọi hoặc khi bố cục trình chỉnh sửa thay đổi (ví dụ: thay đổi vị trí của một dock). Dữ liệu được lưu trong tệp ``editor_layout.cfg`` trong thư mục metadata của trình chỉnh sửa.
 
-Use :ref:`_set_window_layout()<class_EditorPlugin_private_method__set_window_layout>` to restore your saved layout.
+Sử dụng :ref:`_set_window_layout()<class_EditorPlugin_private_method__set_window_layout>` để khôi phục bố cục đã lưu.
 
 ::
 
@@ -992,9 +992,9 @@ Use :ref:`_set_window_layout()<class_EditorPlugin_private_method__set_window_lay
 
 :ref:`bool<class_bool>` **_handles**\ (\ object\: :ref:`Object<class_Object>`\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__handles>`
 
-Implement this function if your plugin edits a specific type of object (Resource or Node). If you return ``true``, then you will get the functions :ref:`_edit()<class_EditorPlugin_private_method__edit>` and :ref:`_make_visible()<class_EditorPlugin_private_method__make_visible>` called when the editor requests them. If you have declared the methods :ref:`_forward_canvas_gui_input()<class_EditorPlugin_private_method__forward_canvas_gui_input>` and :ref:`_forward_3d_gui_input()<class_EditorPlugin_private_method__forward_3d_gui_input>` these will be called too.
+Triển khai hàm này nếu plugin của bạn chỉnh sửa một loại đối tượng cụ thể (Resource hoặc Node). Nếu bạn trả về ``true``, thì các hàm :ref:`_edit()<class_EditorPlugin_private_method__edit>` và :ref:`_make_visible()<class_EditorPlugin_private_method__make_visible>` sẽ được gọi khi trình chỉnh sửa yêu cầu chúng. Nếu bạn đã khai báo các phương thức :ref:`_forward_canvas_gui_input()<class_EditorPlugin_private_method__forward_canvas_gui_input>` và :ref:`_forward_3d_gui_input()<class_EditorPlugin_private_method__forward_3d_gui_input>`, chúng cũng sẽ được gọi.
 
-\ **Note:** Each plugin should handle only one type of objects at a time. If a plugin handles more types of objects and they are edited at the same time, it will result in errors.
+\ **Lưu ý:** Mỗi plugin chỉ nên xử lý một loại đối tượng tại một thời điểm. Nếu plugin xử lý nhiều loại đối tượng hơn và chúng được chỉnh sửa cùng lúc, sẽ xảy ra lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -1006,11 +1006,11 @@ Implement this function if your plugin edits a specific type of object (Resource
 
 :ref:`bool<class_bool>` **_has_main_screen**\ (\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__has_main_screen>`
 
-Returns ``true`` if this is a main screen editor plugin (it goes in the workspace selector together with **2D**, **3D**, **Script**, **Game**, and **Asset Store**).
+Trả về ``true`` nếu đây là plugin trình chỉnh sửa màn hình chính (nó xuất hiện trong bộ chọn workspace cùng với **2D**, **3D**, **Script**, **Game** và **Asset Store**).
 
-When the plugin's workspace is selected, other main screen plugins will be hidden, but your plugin will not appear automatically. It needs to be added as a child of :ref:`EditorInterface.get_editor_main_screen()<class_EditorInterface_method_get_editor_main_screen>` and made visible inside :ref:`_make_visible()<class_EditorPlugin_private_method__make_visible>`.
+Khi workspace của plugin được chọn, các plugin khác trên màn hình chính sẽ bị ẩn, nhưng plugin của bạn sẽ không tự động xuất hiện. Bạn cần thêm plugin đó làm phần tử con của :ref:`EditorInterface.get_editor_main_screen()<class_EditorInterface_method_get_editor_main_screen>` và đặt plugin ở trạng thái hiển thị bên trong :ref:`_make_visible()<class_EditorPlugin_private_method__make_visible>`.
 
-Use :ref:`_get_plugin_name()<class_EditorPlugin_private_method__get_plugin_name>` and :ref:`_get_plugin_icon()<class_EditorPlugin_private_method__get_plugin_icon>` to customize the plugin button's appearance.
+Sử dụng :ref:`_get_plugin_name()<class_EditorPlugin_private_method__get_plugin_name>` và :ref:`_get_plugin_icon()<class_EditorPlugin_private_method__get_plugin_icon>` để tùy chỉnh giao diện của nút plugin.
 
 ::
 
@@ -1043,9 +1043,9 @@ Use :ref:`_get_plugin_name()<class_EditorPlugin_private_method__get_plugin_name>
 
 |void| **_make_visible**\ (\ visible\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__make_visible>`
 
-This function will be called when the editor is requested to become visible. It is used for plugins that edit a specific object type.
+Hàm này sẽ được gọi khi editor được yêu cầu trở nên hiển thị. Hàm này được dùng cho các plugin chỉnh sửa một kiểu đối tượng cụ thể.
 
-Remember that you have to manage the visibility of all your editor controls manually.
+Hãy nhớ rằng bạn phải tự quản lý khả năng hiển thị của tất cả các control trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -1057,7 +1057,7 @@ Remember that you have to manage the visibility of all your editor controls manu
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_run_scene**\ (\ scene\: :ref:`String<class_String>`, args\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |virtual| |const| :ref:`🔗<class_EditorPlugin_private_method__run_scene>`
 
-This function is called when an individual scene is about to be played in the editor. ``args`` is a list of command line arguments that will be passed to the new Godot instance, which will be replaced by the list returned by this function.
+Hàm này được gọi ngay trước khi một scene riêng lẻ được phát trong editor. ``args`` là danh sách các đối số dòng lệnh sẽ được truyền đến instance Godot mới, và sẽ được thay thế bằng danh sách do hàm này trả về.
 
 ::
 
@@ -1065,7 +1065,7 @@ This function is called when an individual scene is about to be played in the ed
         args.append("--an-extra-argument")
         return args
 
-\ **Note:** Text that is printed in this method will not be visible in the editor's Output panel unless :ref:`EditorSettings.run/output/always_clear_output_on_play<class_EditorSettings_property_run/output/always_clear_output_on_play>` is ``false``.
+\ **Lưu ý:** Văn bản được in trong phương thức này sẽ không hiển thị trong bảng Output của editor, trừ khi :ref:`EditorSettings.run/output/always_clear_output_on_play <class_EditorSettings_property_run/output/always_clear_output_on_play>` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1077,7 +1077,7 @@ This function is called when an individual scene is about to be played in the ed
 
 |void| **_save_external_data**\ (\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__save_external_data>`
 
-This method is called after the editor saves the project or when it's closed. It asks the plugin to save edited external scenes/resources.
+Phương thức này được gọi sau khi editor lưu project hoặc khi editor bị đóng. Phương thức này yêu cầu plugin lưu các scene/resource bên ngoài đã chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -1089,9 +1089,9 @@ This method is called after the editor saves the project or when it's closed. It
 
 |void| **_set_state**\ (\ state\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__set_state>`
 
-Restore the state saved by :ref:`_get_state()<class_EditorPlugin_private_method__get_state>`. This method is called when the current scene tab is changed in the editor.
+Khôi phục trạng thái được lưu bởi :ref:`_get_state()<class_EditorPlugin_private_method__get_state>`. Phương thức này được gọi khi tab scene hiện tại được thay đổi trong editor.
 
-\ **Note:** Your plugin must implement :ref:`_get_plugin_name()<class_EditorPlugin_private_method__get_plugin_name>`, otherwise it will not be recognized and this method will not be called.
+\ **Lưu ý:** Plugin của bạn phải triển khai :ref:`_get_plugin_name()<class_EditorPlugin_private_method__get_plugin_name>`, nếu không plugin sẽ không được nhận diện và phương thức này sẽ không được gọi.
 
 ::
 
@@ -1109,7 +1109,7 @@ Restore the state saved by :ref:`_get_state()<class_EditorPlugin_private_method_
 
 |void| **_set_window_layout**\ (\ configuration\: :ref:`ConfigFile<class_ConfigFile>`\ ) |virtual| :ref:`🔗<class_EditorPlugin_private_method__set_window_layout>`
 
-Restore the plugin GUI layout and data saved by :ref:`_get_window_layout()<class_EditorPlugin_private_method__get_window_layout>`. This method is called for every plugin on editor startup. Use the provided ``configuration`` file to read your saved data.
+Khôi phục bố cục và dữ liệu GUI của plugin được lưu bởi :ref:`_get_window_layout()<class_EditorPlugin_private_method__get_window_layout>`. Phương thức này được gọi cho mọi plugin khi editor khởi động. Sử dụng tệp ``configuration`` được cung cấp để đọc dữ liệu đã lưu.
 
 ::
 
@@ -1127,7 +1127,7 @@ Restore the plugin GUI layout and data saved by :ref:`_get_window_layout()<class
 
 |void| **add_autoload_singleton**\ (\ name\: :ref:`String<class_String>`, path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorPlugin_method_add_autoload_singleton>`
 
-Adds a script at ``path`` to the Autoload list as ``name``.
+Thêm một script tại ``path`` vào danh sách Autoload với tên ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -1139,9 +1139,9 @@ Adds a script at ``path`` to the Autoload list as ``name``.
 
 |void| **add_context_menu_plugin**\ (\ slot\: :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>`, plugin\: :ref:`EditorContextMenuPlugin<class_EditorContextMenuPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_add_context_menu_plugin>`
 
-Adds a plugin to the context menu. ``slot`` is the context menu where the plugin will be added.
+Thêm một plugin vào context menu. ``slot`` là context menu nơi plugin sẽ được thêm vào.
 
-\ **Note:** A plugin instance can belong only to a single context menu slot.
+\ **Lưu ý:** Một instance của plugin chỉ có thể thuộc về một slot context menu duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -1153,13 +1153,13 @@ Adds a plugin to the context menu. ``slot`` is the context menu where the plugin
 
 :ref:`Button<class_Button>` **add_control_to_bottom_panel**\ (\ control\: :ref:`Control<class_Control>`, title\: :ref:`String<class_String>`, shortcut\: :ref:`Shortcut<class_Shortcut>` = null\ ) :ref:`🔗<class_EditorPlugin_method_add_control_to_bottom_panel>`
 
-**Deprecated:** Use :ref:`add_dock()<class_EditorPlugin_method_add_dock>` instead, with :ref:`EditorDock.default_slot<class_EditorDock_property_default_slot>` set to :ref:`DOCK_SLOT_BOTTOM<class_EditorPlugin_constant_DOCK_SLOT_BOTTOM>`.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`add_dock()<class_EditorPlugin_method_add_dock>` với :ref:`EditorDock.default_slot<class_EditorDock_property_default_slot>` được đặt thành :ref:`DOCK_SLOT_BOTTOM<class_EditorPlugin_constant_DOCK_SLOT_BOTTOM>`.
 
-Adds a control to the bottom panel (together with Output, Debug, Animation, etc.). Returns a reference to a button that is outside the scene tree. It's up to you to hide/show the button when needed. When your plugin is deactivated, make sure to remove your custom control with :ref:`remove_control_from_bottom_panel()<class_EditorPlugin_method_remove_control_from_bottom_panel>` and free it with :ref:`Node.queue_free()<class_Node_method_queue_free>`.
+Thêm một control vào bảng điều khiển phía dưới (cùng với Output, Debug, Animation, v.v.). Trả về một tham chiếu đến một button nằm bên ngoài scene tree. Bạn cần tự ẩn/hiện button khi cần. Khi plugin của bạn bị vô hiệu hóa, hãy đảm bảo xóa control tùy chỉnh bằng :ref:`remove_control_from_bottom_panel()<class_EditorPlugin_method_remove_control_from_bottom_panel>` và giải phóng nó bằng :ref:`Node.queue_free()<class_Node_method_queue_free>`.
 
-\ ``shortcut`` is a shortcut that, when activated, will toggle the bottom panel's visibility. The shortcut object is only set when this control is added to the bottom panel.
+\ ``shortcut`` là một phím tắt; khi được kích hoạt, phím tắt này sẽ bật/tắt khả năng hiển thị của bảng điều khiển phía dưới. Đối tượng phím tắt chỉ được thiết lập khi control này được thêm vào bảng điều khiển phía dưới.
 
-\ **Note** See the default editor bottom panel shortcuts in the Editor Settings for inspiration. By convention, they all use :kbd:`Alt` modifier.
+\ **Note** Xem các phím tắt mặc định của bảng điều khiển phía dưới của editor trong Editor Settings để tham khảo. Theo quy ước, tất cả chúng đều sử dụng modifier :kbd:`Alt`.
 
 .. rst-class:: classref-item-separator
 
@@ -1171,11 +1171,11 @@ Adds a control to the bottom panel (together with Output, Debug, Animation, etc.
 
 |void| **add_control_to_container**\ (\ container\: :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>`, control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorPlugin_method_add_control_to_container>`
 
-Adds a custom control to a container in the editor UI.
+Thêm một control tùy chỉnh vào một container trong giao diện người dùng của editor.
 
-Please remember that you have to manage the visibility of your custom controls yourself (and likely hide it after adding it).
+Xin lưu ý rằng bạn phải tự quản lý khả năng hiển thị của các control tùy chỉnh (và có thể cần ẩn control đó sau khi thêm).
 
-When your plugin is deactivated, make sure to remove your custom control with :ref:`remove_control_from_container()<class_EditorPlugin_method_remove_control_from_container>` and free it with :ref:`Node.queue_free()<class_Node_method_queue_free>`.
+Khi plugin của bạn bị vô hiệu hóa, hãy đảm bảo xóa control tùy chỉnh bằng :ref:`remove_control_from_container()<class_EditorPlugin_method_remove_control_from_container>` và giải phóng nó bằng :ref:`Node.queue_free()<class_Node_method_queue_free>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1187,15 +1187,15 @@ When your plugin is deactivated, make sure to remove your custom control with :r
 
 |void| **add_control_to_dock**\ (\ slot\: :ref:`DockSlot<enum_EditorPlugin_DockSlot>`, control\: :ref:`Control<class_Control>`, shortcut\: :ref:`Shortcut<class_Shortcut>` = null\ ) :ref:`🔗<class_EditorPlugin_method_add_control_to_dock>`
 
-**Deprecated:** Use :ref:`add_dock()<class_EditorPlugin_method_add_dock>` instead.
+**Deprecated:** Thay vào đó, hãy sử dụng :ref:`add_dock()<class_EditorPlugin_method_add_dock>`.
 
-Adds the control to a specific dock slot.
+Thêm control vào một dock cụ thể.
 
-If the dock is repositioned and as long as the plugin is active, the editor will save the dock position on further sessions.
+Nếu dock được định vị lại và plugin vẫn đang hoạt động, editor sẽ lưu vị trí dock cho các phiên làm việc tiếp theo.
 
-When your plugin is deactivated, make sure to remove your custom control with :ref:`remove_control_from_docks()<class_EditorPlugin_method_remove_control_from_docks>` and free it with :ref:`Node.queue_free()<class_Node_method_queue_free>`.
+Khi plugin của bạn bị vô hiệu hóa, hãy đảm bảo xóa control tùy chỉnh bằng :ref:`remove_control_from_docks()<class_EditorPlugin_method_remove_control_from_docks>` và giải phóng nó bằng :ref:`Node.queue_free()<class_Node_method_queue_free>`.
 
-Optionally, you can specify a shortcut parameter. When pressed, this shortcut will open and focus the dock.
+Bạn cũng có thể chỉ định tham số shortcut. Khi được nhấn, shortcut này sẽ mở và đưa dock vào trạng thái được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1207,17 +1207,17 @@ Optionally, you can specify a shortcut parameter. When pressed, this shortcut wi
 
 |void| **add_custom_type**\ (\ type\: :ref:`String<class_String>`, base\: :ref:`String<class_String>`, script\: :ref:`Script<class_Script>`, icon\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_EditorPlugin_method_add_custom_type>`
 
-Adds a custom type, which will appear in the list of nodes or resources.
+Thêm một kiểu tùy chỉnh, kiểu này sẽ xuất hiện trong danh sách các node hoặc resource.
 
-When a given node or resource is selected, the base type will be instantiated (e.g. "Node3D", "Control", "Resource"), then the script will be loaded and set to this object.
+Khi một node hoặc resource nhất định được chọn, kiểu cơ sở sẽ được khởi tạo (ví dụ: "Node3D", "Control", "Resource"), sau đó script sẽ được tải và thiết lập cho đối tượng này.
 
-\ **Note:** The base type is the base engine class which this type's class hierarchy inherits, not any custom type parent classes.
+\ **Lưu ý:** Kiểu cơ sở là lớp engine cơ sở mà hệ thống phân cấp lớp của kiểu này kế thừa, không phải bất kỳ lớp cha kiểu tùy chỉnh nào.
 
-You can use the virtual method :ref:`_handles()<class_EditorPlugin_private_method__handles>` to check if your custom object is being edited by checking the script or using the ``is`` keyword.
+Bạn có thể sử dụng phương thức ảo :ref:`_handles()<class_EditorPlugin_private_method__handles>` để kiểm tra xem đối tượng tùy chỉnh của mình có đang được chỉnh sửa hay không bằng cách kiểm tra script hoặc sử dụng từ khóa ``is``.
 
-During run-time, this will be a simple object with a script so this function does not need to be called then.
+Trong thời gian chạy, đây sẽ là một đối tượng đơn giản có script, vì vậy khi đó không cần gọi hàm này.
 
-\ **Note:** Custom types added this way are not true classes. They are just a helper to create a node with specific script.
+\ **Lưu ý:** Các kiểu tùy chỉnh được thêm theo cách này không phải là các class thực sự. Chúng chỉ là một helper để tạo một node với script cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -1229,7 +1229,7 @@ During run-time, this will be a simple object with a script so this function doe
 
 |void| **add_debugger_plugin**\ (\ script\: :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_add_debugger_plugin>`
 
-Adds a :ref:`Script<class_Script>` as debugger plugin to the Debugger. The script must extend :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>`.
+Thêm một :ref:`Script<class_Script>` làm plugin debugger vào Debugger. Script phải kế thừa :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1241,9 +1241,9 @@ Adds a :ref:`Script<class_Script>` as debugger plugin to the Debugger. The scrip
 
 |void| **add_dock**\ (\ dock\: :ref:`EditorDock<class_EditorDock>`\ ) :ref:`🔗<class_EditorPlugin_method_add_dock>`
 
-Adds a new dock.
+Thêm một dock mới.
 
-When your plugin is deactivated, make sure to remove your custom dock with :ref:`remove_dock()<class_EditorPlugin_method_remove_dock>` and free it with :ref:`Node.queue_free()<class_Node_method_queue_free>`.
+Khi plugin của bạn bị vô hiệu hóa, hãy đảm bảo xóa dock tùy chỉnh bằng :ref:`remove_dock()<class_EditorPlugin_method_remove_dock>` và giải phóng nó bằng :ref:`Node.queue_free()<class_Node_method_queue_free>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1255,7 +1255,7 @@ When your plugin is deactivated, make sure to remove your custom dock with :ref:
 
 |void| **add_export_platform**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`\ ) :ref:`🔗<class_EditorPlugin_method_add_export_platform>`
 
-Registers a new :ref:`EditorExportPlatform<class_EditorExportPlatform>`. Export platforms provides functionality of exporting to the specific platform.
+Đăng ký một :ref:`EditorExportPlatform<class_EditorExportPlatform>` mới. Export platform cung cấp chức năng xuất sang nền tảng cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -1267,9 +1267,9 @@ Registers a new :ref:`EditorExportPlatform<class_EditorExportPlatform>`. Export 
 
 |void| **add_export_plugin**\ (\ plugin\: :ref:`EditorExportPlugin<class_EditorExportPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_add_export_plugin>`
 
-Registers a new :ref:`EditorExportPlugin<class_EditorExportPlugin>`. Export plugins are used to perform tasks when the project is being exported.
+Đăng ký một :ref:`EditorExportPlugin<class_EditorExportPlugin>` mới. Các plugin export được dùng để thực hiện các tác vụ khi dự án đang được export.
 
-See :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>` for an example of how to register a plugin.
+Xem :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>` để biết ví dụ về cách đăng ký một plugin.
 
 .. rst-class:: classref-item-separator
 
@@ -1281,13 +1281,13 @@ See :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>
 
 |void| **add_import_plugin**\ (\ importer\: :ref:`EditorImportPlugin<class_EditorImportPlugin>`, first_priority\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EditorPlugin_method_add_import_plugin>`
 
-Registers a new :ref:`EditorImportPlugin<class_EditorImportPlugin>`. Import plugins are used to import custom and unsupported assets as a custom :ref:`Resource<class_Resource>` type.
+Đăng ký một :ref:`EditorImportPlugin<class_EditorImportPlugin>` mới. Các plugin import được dùng để import các asset tùy chỉnh và không được hỗ trợ dưới dạng một kiểu :ref:`Resource<class_Resource>` tùy chỉnh.
 
-If ``first_priority`` is ``true``, the new import plugin is inserted first in the list and takes precedence over pre-existing plugins.
+Nếu ``first_priority`` là ``true``, plugin import mới sẽ được chèn vào đầu danh sách và được ưu tiên hơn các plugin đã tồn tại.
 
-\ **Note:** If you want to import custom 3D asset formats use :ref:`add_scene_format_importer_plugin()<class_EditorPlugin_method_add_scene_format_importer_plugin>` instead.
+\ **Lưu ý:** Nếu bạn muốn import các định dạng asset 3D tùy chỉnh, hãy sử dụng :ref:`add_scene_format_importer_plugin()<class_EditorPlugin_method_add_scene_format_importer_plugin>` thay thế.
 
-See :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>` for an example of how to register a plugin.
+Xem :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>` để biết ví dụ về cách đăng ký một plugin.
 
 .. rst-class:: classref-item-separator
 
@@ -1299,9 +1299,9 @@ See :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>
 
 |void| **add_inspector_plugin**\ (\ plugin\: :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_add_inspector_plugin>`
 
-Registers a new :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>`. Inspector plugins are used to extend :ref:`EditorInspector<class_EditorInspector>` and provide custom configuration tools for your object's properties.
+Đăng ký một :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>` mới. Các plugin Inspector được dùng để mở rộng :ref:`EditorInspector<class_EditorInspector>` và cung cấp các công cụ cấu hình tùy chỉnh cho các thuộc tính của đối tượng.
 
-\ **Note:** Always use :ref:`remove_inspector_plugin()<class_EditorPlugin_method_remove_inspector_plugin>` to remove the registered :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>` when your **EditorPlugin** is disabled to prevent leaks and an unexpected behavior.
+\ **Lưu ý:** Luôn sử dụng :ref:`remove_inspector_plugin()<class_EditorPlugin_method_remove_inspector_plugin>` để gỡ bỏ :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>` đã đăng ký khi **EditorPlugin** của bạn bị vô hiệu hóa nhằm ngăn rò rỉ và hành vi không mong muốn.
 
 
 .. tabs::
@@ -1329,9 +1329,9 @@ Registers a new :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>`. Inspe
 
 |void| **add_node_3d_gizmo_plugin**\ (\ plugin\: :ref:`EditorNode3DGizmoPlugin<class_EditorNode3DGizmoPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_add_node_3d_gizmo_plugin>`
 
-Registers a new :ref:`EditorNode3DGizmoPlugin<class_EditorNode3DGizmoPlugin>`. Gizmo plugins are used to add custom gizmos to the 3D preview viewport for a :ref:`Node3D<class_Node3D>`.
+Đăng ký một :ref:`EditorNode3DGizmoPlugin<class_EditorNode3DGizmoPlugin>` mới. Plugin Gizmo được sử dụng để thêm gizmo tùy chỉnh vào viewport xem trước 3D cho một :ref:`Node3D<class_Node3D>`.
 
-See :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>` for an example of how to register a plugin.
+Xem :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>` để biết ví dụ về cách đăng ký một plugin.
 
 .. rst-class:: classref-item-separator
 
@@ -1343,9 +1343,9 @@ See :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>
 
 |void| **add_resource_conversion_plugin**\ (\ plugin\: :ref:`EditorResourceConversionPlugin<class_EditorResourceConversionPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_add_resource_conversion_plugin>`
 
-Registers a new :ref:`EditorResourceConversionPlugin<class_EditorResourceConversionPlugin>`. Resource conversion plugins are used to add custom resource converters to the editor inspector.
+Đăng ký một :ref:`EditorResourceConversionPlugin<class_EditorResourceConversionPlugin>` mới. Plugin chuyển đổi tài nguyên được sử dụng để thêm các bộ chuyển đổi tài nguyên tùy chỉnh vào trình kiểm tra của editor.
 
-See :ref:`EditorResourceConversionPlugin<class_EditorResourceConversionPlugin>` for an example of how to create a resource conversion plugin.
+Xem :ref:`EditorResourceConversionPlugin<class_EditorResourceConversionPlugin>` để biết ví dụ về cách tạo plugin chuyển đổi tài nguyên.
 
 .. rst-class:: classref-item-separator
 
@@ -1357,9 +1357,9 @@ See :ref:`EditorResourceConversionPlugin<class_EditorResourceConversionPlugin>` 
 
 |void| **add_scene_format_importer_plugin**\ (\ scene_format_importer\: :ref:`EditorSceneFormatImporter<class_EditorSceneFormatImporter>`, first_priority\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EditorPlugin_method_add_scene_format_importer_plugin>`
 
-Registers a new :ref:`EditorSceneFormatImporter<class_EditorSceneFormatImporter>`. Scene importers are used to import custom 3D asset formats as scenes.
+Đăng ký một :ref:`EditorSceneFormatImporter<class_EditorSceneFormatImporter>` mới. Scene importer được sử dụng để nhập các định dạng asset 3D tùy chỉnh dưới dạng scene.
 
-If ``first_priority`` is ``true``, the new import plugin is inserted first in the list and takes precedence over pre-existing plugins.
+Nếu ``first_priority`` là ``true``, plugin import mới sẽ được chèn vào đầu danh sách và được ưu tiên hơn các plugin đã tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1371,9 +1371,9 @@ If ``first_priority`` is ``true``, the new import plugin is inserted first in th
 
 |void| **add_scene_post_import_plugin**\ (\ scene_import_plugin\: :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>`, first_priority\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EditorPlugin_method_add_scene_post_import_plugin>`
 
-Add an :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>`. These plugins allow customizing the import process of 3D assets by adding new options to the import dialogs.
+Thêm một :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>`. Các plugin này cho phép tùy chỉnh quá trình import tài sản 3D bằng cách thêm các tùy chọn mới vào các hộp thoại import.
 
-If ``first_priority`` is ``true``, the new import plugin is inserted first in the list and takes precedence over pre-existing plugins.
+Nếu ``first_priority`` là ``true``, plugin import mới sẽ được chèn vào đầu danh sách và được ưu tiên hơn các plugin đã tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1385,7 +1385,7 @@ If ``first_priority`` is ``true``, the new import plugin is inserted first in th
 
 |void| **add_tool_menu_item**\ (\ name\: :ref:`String<class_String>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_EditorPlugin_method_add_tool_menu_item>`
 
-Adds a custom menu item to **Project > Tools** named ``name``. When clicked, the provided ``callable`` will be called.
+Thêm một mục menu tùy chỉnh vào **Project > Tools** có tên ``name``. Khi được nhấp, ``callable`` được cung cấp sẽ được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -1397,7 +1397,7 @@ Adds a custom menu item to **Project > Tools** named ``name``. When clicked, the
 
 |void| **add_tool_submenu_item**\ (\ name\: :ref:`String<class_String>`, submenu\: :ref:`PopupMenu<class_PopupMenu>`\ ) :ref:`🔗<class_EditorPlugin_method_add_tool_submenu_item>`
 
-Adds a custom :ref:`PopupMenu<class_PopupMenu>` submenu under **Project > Tools >** ``name``. Use :ref:`remove_tool_menu_item()<class_EditorPlugin_method_remove_tool_menu_item>` on plugin clean up to remove the menu.
+Thêm một submenu tùy chỉnh :ref:`PopupMenu<class_PopupMenu>` bên dưới **Project > Tools >** ``name``. Sử dụng :ref:`remove_tool_menu_item()<class_EditorPlugin_method_remove_tool_menu_item>` khi dọn dẹp plugin để xóa menu.
 
 .. rst-class:: classref-item-separator
 
@@ -1409,7 +1409,7 @@ Adds a custom :ref:`PopupMenu<class_PopupMenu>` submenu under **Project > Tools 
 
 |void| **add_translation_parser_plugin**\ (\ parser\: :ref:`EditorTranslationParserPlugin<class_EditorTranslationParserPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_add_translation_parser_plugin>`
 
-Registers a custom translation parser plugin for extracting translatable strings from custom files.
+Đăng ký một plugin phân tích cú pháp bản dịch tùy chỉnh để trích xuất các chuỗi có thể dịch từ các tệp tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -1421,9 +1421,9 @@ Registers a custom translation parser plugin for extracting translatable strings
 
 |void| **add_undo_redo_inspector_hook_callback**\ (\ callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_EditorPlugin_method_add_undo_redo_inspector_hook_callback>`
 
-Hooks a callback into the undo/redo action creation when a property is modified in the inspector. This allows, for example, to save other properties that may be lost when a given property is modified.
+Gắn một callback vào quá trình tạo hành động hoàn tác/làm lại khi một thuộc tính được sửa đổi trong inspector. Điều này cho phép, chẳng hạn, lưu các thuộc tính khác có thể bị mất khi một thuộc tính nhất định được sửa đổi.
 
-The callback should have 4 arguments: :ref:`Object<class_Object>` ``undo_redo``, :ref:`Object<class_Object>` ``modified_object``, :ref:`String<class_String>` ``property`` and :ref:`Variant<class_Variant>` ``new_value``. They are, respectively, the :ref:`UndoRedo<class_UndoRedo>` object used by the inspector, the currently modified object, the name of the modified property and the new value the property is about to take.
+Callback phải có 4 đối số: :ref:`Object<class_Object>` ``undo_redo``, :ref:`Object<class_Object>` ``modified_object``, :ref:`String<class_String>` ``property`` và :ref:`Variant<class_Variant>` ``new_value``. Lần lượt, chúng là đối tượng :ref:`UndoRedo<class_UndoRedo>` được inspector sử dụng, đối tượng hiện đang được sửa đổi, tên của thuộc tính được sửa đổi và giá trị mới mà thuộc tính sắp nhận.
 
 .. rst-class:: classref-item-separator
 
@@ -1435,9 +1435,9 @@ The callback should have 4 arguments: :ref:`Object<class_Object>` ``undo_redo``,
 
 :ref:`EditorInterface<class_EditorInterface>` **get_editor_interface**\ (\ ) :ref:`🔗<class_EditorPlugin_method_get_editor_interface>`
 
-**Deprecated:** :ref:`EditorInterface<class_EditorInterface>` is a global singleton and can be accessed directly by its name.
+**Đã lỗi thời:** :ref:`EditorInterface<class_EditorInterface>` là một singleton toàn cục và có thể được truy cập trực tiếp bằng tên của nó.
 
-Returns the :ref:`EditorInterface<class_EditorInterface>` singleton instance.
+Trả về instance singleton :ref:`EditorInterface<class_EditorInterface>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1449,7 +1449,7 @@ Returns the :ref:`EditorInterface<class_EditorInterface>` singleton instance.
 
 :ref:`PopupMenu<class_PopupMenu>` **get_export_as_menu**\ (\ ) :ref:`🔗<class_EditorPlugin_method_get_export_as_menu>`
 
-Returns the :ref:`PopupMenu<class_PopupMenu>` under **Scene > Export As...**.
+Trả về :ref:`PopupMenu<class_PopupMenu>` trong **Scene > Export As...**.
 
 .. rst-class:: classref-item-separator
 
@@ -1461,7 +1461,7 @@ Returns the :ref:`PopupMenu<class_PopupMenu>` under **Scene > Export As...**.
 
 :ref:`String<class_String>` **get_plugin_version**\ (\ ) |const| :ref:`🔗<class_EditorPlugin_method_get_plugin_version>`
 
-Provide the version of the plugin declared in the ``plugin.cfg`` config file.
+Cung cấp phiên bản của plugin được khai báo trong tệp cấu hình ``plugin.cfg``.
 
 .. rst-class:: classref-item-separator
 
@@ -1473,11 +1473,11 @@ Provide the version of the plugin declared in the ``plugin.cfg`` config file.
 
 :ref:`ScriptCreateDialog<class_ScriptCreateDialog>` **get_script_create_dialog**\ (\ ) :ref:`🔗<class_EditorPlugin_method_get_script_create_dialog>`
 
-Gets the Editor's dialog used for making scripts.
+Lấy hộp thoại của Editor dùng để tạo script.
 
-\ **Note:** Users can configure it before use.
+\ **Lưu ý:** Người dùng có thể cấu hình nó trước khi sử dụng.
 
-\ **Warning:** Removing and freeing this node will render a part of the editor useless and may cause a crash.
+\ **Cảnh báo:** Việc xóa và giải phóng node này sẽ khiến một phần của editor không thể sử dụng và có thể gây ra lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -1489,7 +1489,7 @@ Gets the Editor's dialog used for making scripts.
 
 :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>` **get_undo_redo**\ (\ ) :ref:`🔗<class_EditorPlugin_method_get_undo_redo>`
 
-Gets the undo/redo object. Most actions in the editor can be undoable, so use this object to make sure this happens when it's worth it.
+Lấy đối tượng undo/redo. Hầu hết các thao tác trong editor đều có thể hoàn tác, vì vậy hãy sử dụng đối tượng này để đảm bảo điều đó xảy ra khi cần thiết.
 
 .. rst-class:: classref-item-separator
 
@@ -1501,7 +1501,7 @@ Gets the undo/redo object. Most actions in the editor can be undoable, so use th
 
 |void| **hide_bottom_panel**\ (\ ) :ref:`🔗<class_EditorPlugin_method_hide_bottom_panel>`
 
-Minimizes the bottom panel.
+Thu nhỏ bảng điều khiển phía dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -1513,7 +1513,7 @@ Minimizes the bottom panel.
 
 |void| **make_bottom_panel_item_visible**\ (\ item\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorPlugin_method_make_bottom_panel_item_visible>`
 
-Makes a specific item in the bottom panel visible.
+Hiển thị một mục cụ thể trong bảng điều khiển phía dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -1525,7 +1525,7 @@ Makes a specific item in the bottom panel visible.
 
 |void| **queue_save_layout**\ (\ ) :ref:`🔗<class_EditorPlugin_method_queue_save_layout>`
 
-Queue save the project's editor layout.
+Xếp hàng đợi để lưu bố cục editor của dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -1537,7 +1537,7 @@ Queue save the project's editor layout.
 
 |void| **remove_autoload_singleton**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_autoload_singleton>`
 
-Removes an Autoload ``name`` from the list.
+Xóa một Autoload ``name`` khỏi danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -1549,7 +1549,7 @@ Removes an Autoload ``name`` from the list.
 
 |void| **remove_context_menu_plugin**\ (\ plugin\: :ref:`EditorContextMenuPlugin<class_EditorContextMenuPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_context_menu_plugin>`
 
-Removes the specified context menu plugin.
+Xóa plugin menu ngữ cảnh được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -1561,9 +1561,9 @@ Removes the specified context menu plugin.
 
 |void| **remove_control_from_bottom_panel**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_control_from_bottom_panel>`
 
-**Deprecated:** Use :ref:`remove_dock()<class_EditorPlugin_method_remove_dock>` instead.
+**Không còn được dùng:** Hãy sử dụng :ref:`remove_dock()<class_EditorPlugin_method_remove_dock>` thay thế.
 
-Removes the control from the bottom panel. You have to manually :ref:`Node.queue_free()<class_Node_method_queue_free>` the control.
+Xóa control khỏi panel dưới. Bạn phải tự :ref:`Node.queue_free()<class_Node_method_queue_free>` control.
 
 .. rst-class:: classref-item-separator
 
@@ -1575,7 +1575,7 @@ Removes the control from the bottom panel. You have to manually :ref:`Node.queue
 
 |void| **remove_control_from_container**\ (\ container\: :ref:`CustomControlContainer<enum_EditorPlugin_CustomControlContainer>`, control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_control_from_container>`
 
-Removes the control from the specified container. You have to manually :ref:`Node.queue_free()<class_Node_method_queue_free>` the control.
+Xóa control khỏi container được chỉ định. Bạn phải tự :ref:`Node.queue_free()<class_Node_method_queue_free>` control.
 
 .. rst-class:: classref-item-separator
 
@@ -1587,9 +1587,9 @@ Removes the control from the specified container. You have to manually :ref:`Nod
 
 |void| **remove_control_from_docks**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_control_from_docks>`
 
-**Deprecated:** Use :ref:`remove_dock()<class_EditorPlugin_method_remove_dock>` instead.
+**Không còn được dùng:** Hãy sử dụng :ref:`remove_dock()<class_EditorPlugin_method_remove_dock>` thay thế.
 
-Removes the control from the dock. You have to manually :ref:`Node.queue_free()<class_Node_method_queue_free>` the control.
+Xóa control khỏi dock. Bạn phải tự :ref:`Node.queue_free()<class_Node_method_queue_free>` control.
 
 .. rst-class:: classref-item-separator
 
@@ -1601,7 +1601,7 @@ Removes the control from the dock. You have to manually :ref:`Node.queue_free()<
 
 |void| **remove_custom_type**\ (\ type\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_custom_type>`
 
-Removes a custom type added by :ref:`add_custom_type()<class_EditorPlugin_method_add_custom_type>`.
+Xóa một kiểu tùy chỉnh được thêm bởi :ref:`add_custom_type()<class_EditorPlugin_method_add_custom_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1613,7 +1613,7 @@ Removes a custom type added by :ref:`add_custom_type()<class_EditorPlugin_method
 
 |void| **remove_debugger_plugin**\ (\ script\: :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_debugger_plugin>`
 
-Removes the debugger plugin with given script from the Debugger.
+Xóa plugin debugger có script được chỉ định khỏi Debugger.
 
 .. rst-class:: classref-item-separator
 
@@ -1625,7 +1625,7 @@ Removes the debugger plugin with given script from the Debugger.
 
 |void| **remove_dock**\ (\ dock\: :ref:`EditorDock<class_EditorDock>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_dock>`
 
-Removes ``dock`` from the available docks. You should manually call :ref:`Node.queue_free()<class_Node_method_queue_free>` to free it.
+Xóa ``dock`` khỏi các dock hiện có. Bạn nên gọi :ref:`Node.queue_free()<class_Node_method_queue_free>` theo cách thủ công để giải phóng nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1637,7 +1637,7 @@ Removes ``dock`` from the available docks. You should manually call :ref:`Node.q
 
 |void| **remove_export_platform**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_export_platform>`
 
-Removes an export platform registered by :ref:`add_export_platform()<class_EditorPlugin_method_add_export_platform>`.
+Xóa nền tảng export được đăng ký bởi :ref:`add_export_platform()<class_EditorPlugin_method_add_export_platform>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1649,7 +1649,7 @@ Removes an export platform registered by :ref:`add_export_platform()<class_Edito
 
 |void| **remove_export_plugin**\ (\ plugin\: :ref:`EditorExportPlugin<class_EditorExportPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_export_plugin>`
 
-Removes an export plugin registered by :ref:`add_export_plugin()<class_EditorPlugin_method_add_export_plugin>`.
+Xóa plugin export được đăng ký bởi :ref:`add_export_plugin()<class_EditorPlugin_method_add_export_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1661,7 +1661,7 @@ Removes an export plugin registered by :ref:`add_export_plugin()<class_EditorPlu
 
 |void| **remove_import_plugin**\ (\ importer\: :ref:`EditorImportPlugin<class_EditorImportPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_import_plugin>`
 
-Removes an import plugin registered by :ref:`add_import_plugin()<class_EditorPlugin_method_add_import_plugin>`.
+Xóa plugin import được đăng ký bởi :ref:`add_import_plugin()<class_EditorPlugin_method_add_import_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1673,7 +1673,7 @@ Removes an import plugin registered by :ref:`add_import_plugin()<class_EditorPlu
 
 |void| **remove_inspector_plugin**\ (\ plugin\: :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_inspector_plugin>`
 
-Removes an inspector plugin registered by :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>`.
+Xóa plugin inspector được đăng ký bởi :ref:`add_inspector_plugin()<class_EditorPlugin_method_add_inspector_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1685,7 +1685,7 @@ Removes an inspector plugin registered by :ref:`add_inspector_plugin()<class_Edi
 
 |void| **remove_node_3d_gizmo_plugin**\ (\ plugin\: :ref:`EditorNode3DGizmoPlugin<class_EditorNode3DGizmoPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_node_3d_gizmo_plugin>`
 
-Removes a gizmo plugin registered by :ref:`add_node_3d_gizmo_plugin()<class_EditorPlugin_method_add_node_3d_gizmo_plugin>`.
+Xóa plugin gizmo được đăng ký bởi :ref:`add_node_3d_gizmo_plugin()<class_EditorPlugin_method_add_node_3d_gizmo_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1697,7 +1697,7 @@ Removes a gizmo plugin registered by :ref:`add_node_3d_gizmo_plugin()<class_Edit
 
 |void| **remove_resource_conversion_plugin**\ (\ plugin\: :ref:`EditorResourceConversionPlugin<class_EditorResourceConversionPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_resource_conversion_plugin>`
 
-Removes a resource conversion plugin registered by :ref:`add_resource_conversion_plugin()<class_EditorPlugin_method_add_resource_conversion_plugin>`.
+Xóa plugin chuyển đổi tài nguyên được đăng ký bởi :ref:`add_resource_conversion_plugin()<class_EditorPlugin_method_add_resource_conversion_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1709,7 +1709,7 @@ Removes a resource conversion plugin registered by :ref:`add_resource_conversion
 
 |void| **remove_scene_format_importer_plugin**\ (\ scene_format_importer\: :ref:`EditorSceneFormatImporter<class_EditorSceneFormatImporter>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_scene_format_importer_plugin>`
 
-Removes a scene format importer registered by :ref:`add_scene_format_importer_plugin()<class_EditorPlugin_method_add_scene_format_importer_plugin>`.
+Xóa trình import định dạng cảnh được đăng ký bởi :ref:`add_scene_format_importer_plugin()<class_EditorPlugin_method_add_scene_format_importer_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1721,7 +1721,7 @@ Removes a scene format importer registered by :ref:`add_scene_format_importer_pl
 
 |void| **remove_scene_post_import_plugin**\ (\ scene_import_plugin\: :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_scene_post_import_plugin>`
 
-Remove the :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>`, added with :ref:`add_scene_post_import_plugin()<class_EditorPlugin_method_add_scene_post_import_plugin>`.
+Xóa :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>`, được thêm bằng :ref:`add_scene_post_import_plugin()<class_EditorPlugin_method_add_scene_post_import_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1733,7 +1733,7 @@ Remove the :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>`
 
 |void| **remove_tool_menu_item**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_tool_menu_item>`
 
-Removes a menu ``name`` from **Project > Tools**.
+Xóa một mục menu ``name`` khỏi **Project > Tools**.
 
 .. rst-class:: classref-item-separator
 
@@ -1745,7 +1745,7 @@ Removes a menu ``name`` from **Project > Tools**.
 
 |void| **remove_translation_parser_plugin**\ (\ parser\: :ref:`EditorTranslationParserPlugin<class_EditorTranslationParserPlugin>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_translation_parser_plugin>`
 
-Removes a custom translation parser plugin registered by :ref:`add_translation_parser_plugin()<class_EditorPlugin_method_add_translation_parser_plugin>`.
+Xóa plugin trình phân tích bản dịch tùy chỉnh đã được đăng ký bởi :ref:`add_translation_parser_plugin()<class_EditorPlugin_method_add_translation_parser_plugin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1757,7 +1757,7 @@ Removes a custom translation parser plugin registered by :ref:`add_translation_p
 
 |void| **remove_undo_redo_inspector_hook_callback**\ (\ callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_EditorPlugin_method_remove_undo_redo_inspector_hook_callback>`
 
-Removes a callback previously added by :ref:`add_undo_redo_inspector_hook_callback()<class_EditorPlugin_method_add_undo_redo_inspector_hook_callback>`.
+Xóa callback trước đó đã được thêm bởi :ref:`add_undo_redo_inspector_hook_callback()<class_EditorPlugin_method_add_undo_redo_inspector_hook_callback>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1769,9 +1769,9 @@ Removes a callback previously added by :ref:`add_undo_redo_inspector_hook_callba
 
 |void| **set_dock_tab_icon**\ (\ control\: :ref:`Control<class_Control>`, icon\: :ref:`Texture2D<class_Texture2D>`\ ) :ref:`🔗<class_EditorPlugin_method_set_dock_tab_icon>`
 
-**Deprecated:** Use :ref:`EditorDock.dock_icon<class_EditorDock_property_dock_icon>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy dùng :ref:`EditorDock.dock_icon<class_EditorDock_property_dock_icon>`.
 
-Sets the tab icon for the given control in a dock slot. Setting to ``null`` removes the icon.
+Đặt biểu tượng tab cho control đã cho trong một dock slot. Đặt thành ``null`` sẽ xóa biểu tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -1783,7 +1783,7 @@ Sets the tab icon for the given control in a dock slot. Setting to ``null`` remo
 
 |void| **set_force_draw_over_forwarding_enabled**\ (\ ) :ref:`🔗<class_EditorPlugin_method_set_force_draw_over_forwarding_enabled>`
 
-Enables calling of :ref:`_forward_canvas_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_force_draw_over_viewport>` for the 2D editor and :ref:`_forward_3d_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_force_draw_over_viewport>` for the 3D editor when their viewports are updated. You need to call this method only once and it will work permanently for this plugin.
+Cho phép gọi :ref:`_forward_canvas_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_force_draw_over_viewport>` cho trình biên tập 2D và :ref:`_forward_3d_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_force_draw_over_viewport>` cho trình biên tập 3D khi viewport của chúng được cập nhật. Bạn chỉ cần gọi phương thức này một lần và nó sẽ hoạt động vĩnh viễn cho plugin này.
 
 .. rst-class:: classref-item-separator
 
@@ -1795,7 +1795,7 @@ Enables calling of :ref:`_forward_canvas_force_draw_over_viewport()<class_Editor
 
 |void| **set_input_event_forwarding_always_enabled**\ (\ ) :ref:`🔗<class_EditorPlugin_method_set_input_event_forwarding_always_enabled>`
 
-Use this method if you always want to receive inputs from 3D view screen inside :ref:`_forward_3d_gui_input()<class_EditorPlugin_private_method__forward_3d_gui_input>`. It might be especially usable if your plugin will want to use raycast in the scene.
+Sử dụng phương thức này nếu bạn luôn muốn nhận dữ liệu đầu vào từ màn hình chế độ xem 3D bên trong :ref:`_forward_3d_gui_input()<class_EditorPlugin_private_method__forward_3d_gui_input>`. Phương thức này đặc biệt hữu ích nếu plugin của bạn muốn sử dụng raycast trong cảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -1807,14 +1807,14 @@ Use this method if you always want to receive inputs from 3D view screen inside 
 
 :ref:`int<class_int>` **update_overlays**\ (\ ) |const| :ref:`🔗<class_EditorPlugin_method_update_overlays>`
 
-Updates the overlays of the 2D and 3D editor viewport. Causes methods :ref:`_forward_canvas_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_draw_over_viewport>`, :ref:`_forward_canvas_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_force_draw_over_viewport>`, :ref:`_forward_3d_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_draw_over_viewport>` and :ref:`_forward_3d_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_force_draw_over_viewport>` to be called.
+Cập nhật các lớp phủ của viewport trình chỉnh sửa 2D và 3D. Khiến các phương thức :ref:`_forward_canvas_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_draw_over_viewport>`, :ref:`_forward_canvas_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_canvas_force_draw_over_viewport>`, :ref:`_forward_3d_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_draw_over_viewport>` và :ref:`_forward_3d_force_draw_over_viewport()<class_EditorPlugin_private_method__forward_3d_force_draw_over_viewport>` được gọi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

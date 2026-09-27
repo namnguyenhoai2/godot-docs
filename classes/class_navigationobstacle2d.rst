@@ -10,33 +10,33 @@
 NavigationObstacle2D
 ====================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-2D obstacle used to affect navigation mesh baking or constrain velocities of avoidance controlled agents.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-An obstacle needs a navigation map and outline :ref:`vertices<class_NavigationObstacle2D_property_vertices>` defined to work correctly. The outlines can not cross or overlap.
-
-Obstacles can be included in the navigation mesh baking process when :ref:`affect_navigation_mesh<class_NavigationObstacle2D_property_affect_navigation_mesh>` is enabled. They do not add walkable geometry, instead their role is to discard other source geometry inside the shape. This can be used to prevent navigation mesh from appearing in unwanted places. If :ref:`carve_navigation_mesh<class_NavigationObstacle2D_property_carve_navigation_mesh>` is enabled the baked shape will not be affected by offsets of the navigation mesh baking, e.g. the agent radius.
-
-With :ref:`avoidance_enabled<class_NavigationObstacle2D_property_avoidance_enabled>` the obstacle can constrain the avoidance velocities of avoidance using agents. If the obstacle's vertices are wound in clockwise order, avoidance agents will be pushed in by the obstacle, otherwise, avoidance agents will be pushed out. Obstacles using vertices and avoidance can warp to a new position but should not be moved every single frame as each change requires a rebuild of the avoidance map.
+Chướng ngại vật 2D được dùng để tác động đến quá trình baking navigation mesh hoặc giới hạn vận tốc của các agent do hệ thống avoidance điều khiển.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một chướng ngại vật cần có navigation map và outline :ref:`vertices<class_NavigationObstacle2D_property_vertices>` được xác định để hoạt động chính xác. Các outline không được cắt nhau hoặc chồng lấn.
+
+Các chướng ngại vật có thể được đưa vào quy trình baking navigation mesh khi :ref:`affect_navigation_mesh<class_NavigationObstacle2D_property_affect_navigation_mesh>` được bật. Chúng không thêm geometry có thể đi được; thay vào đó, vai trò của chúng là loại bỏ geometry nguồn khác bên trong hình dạng này. Có thể sử dụng chúng để ngăn navigation mesh xuất hiện ở những vị trí không mong muốn. Nếu :ref:`carve_navigation_mesh<class_NavigationObstacle2D_property_carve_navigation_mesh>` được bật, hình dạng đã bake sẽ không bị ảnh hưởng bởi các offset của quá trình baking navigation mesh, chẳng hạn như bán kính của agent.
+
+Với :ref:`avoidance_enabled<class_NavigationObstacle2D_property_avoidance_enabled>`, chướng ngại vật có thể giới hạn các vận tốc avoidance của những agent sử dụng avoidance. Nếu các đỉnh của chướng ngại vật được sắp xếp theo chiều kim đồng hồ, các agent avoidance sẽ bị đẩy vào phía chướng ngại vật; nếu không, các agent avoidance sẽ bị đẩy ra ngoài. Các chướng ngại vật sử dụng các đỉnh và avoidance có thể dịch chuyển tức thời đến vị trí mới, nhưng không nên được di chuyển ở mọi frame, vì mỗi thay đổi đều yêu cầu xây dựng lại avoidance map.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using NavigationObstacles <../tutorials/navigation/navigation_using_navigationobstacles>`
+- :doc:`Sử dụng NavigationObstacles <../tutorials/navigation/navigation_using_navigationobstacles>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -60,8 +60,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -84,8 +84,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_NavigationObstacle2D_property_affect_navigation_mesh:
 
@@ -98,7 +98,7 @@ Property Descriptions
 - |void| **set_affect_navigation_mesh**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_affect_navigation_mesh**\ (\ )
 
-If enabled and parsed in a navigation mesh baking process the obstacle will discard source geometry inside its :ref:`vertices<class_NavigationObstacle2D_property_vertices>` defined shape.
+Nếu được bật và được phân tích trong quá trình bake navigation mesh, vật cản sẽ loại bỏ hình học nguồn bên trong hình dạng được xác định bởi :ref:`vertices<class_NavigationObstacle2D_property_vertices>`.
 
 .. rst-class:: classref-item-separator
 
@@ -115,7 +115,7 @@ If enabled and parsed in a navigation mesh baking process the obstacle will disc
 - |void| **set_avoidance_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_avoidance_enabled**\ (\ )
 
-If ``true`` the obstacle affects avoidance using agents.
+Nếu ``true``, vật cản sẽ ảnh hưởng đến việc tránh va chạm khi sử dụng agents.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ If ``true`` the obstacle affects avoidance using agents.
 - |void| **set_avoidance_layers**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_avoidance_layers**\ (\ )
 
-A bitfield determining the avoidance layers for this obstacle. Agents with a matching bit on the their avoidance mask will avoid this obstacle.
+Một bitfield xác định các lớp tránh va chạm cho vật cản này. Các agents có bit tương ứng trong avoidance mask của mình sẽ tránh vật cản này.
 
 .. rst-class:: classref-item-separator
 
@@ -149,11 +149,11 @@ A bitfield determining the avoidance layers for this obstacle. Agents with a mat
 - |void| **set_carve_navigation_mesh**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_carve_navigation_mesh**\ (\ )
 
-If enabled the obstacle vertices will carve into the baked navigation mesh with the shape unaffected by additional offsets (e.g. agent radius).
+Nếu được bật, các đỉnh của vật cản sẽ carve vào navigation mesh đã bake, với hình dạng không bị ảnh hưởng bởi các offset bổ sung (ví dụ: bán kính của agent).
 
-It will still be affected by further postprocessing of the baking process, like edge and polygon simplification.
+Nó vẫn sẽ bị ảnh hưởng bởi các bước postprocessing tiếp theo của quá trình bake, chẳng hạn như đơn giản hóa cạnh và đa giác.
 
-Requires :ref:`affect_navigation_mesh<class_NavigationObstacle2D_property_affect_navigation_mesh>` to be enabled.
+Yêu cầu :ref:`affect_navigation_mesh<class_NavigationObstacle2D_property_affect_navigation_mesh>` được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Requires :ref:`affect_navigation_mesh<class_NavigationObstacle2D_property_affect
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-Sets the avoidance radius for the obstacle.
+Thiết lập bán kính tránh cho chướng ngại vật.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ Sets the avoidance radius for the obstacle.
 - |void| **set_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_velocity**\ (\ )
 
-Sets the wanted velocity for the obstacle so other agent's can better predict the obstacle if it is moved with a velocity regularly (every frame) instead of warped to a new position. Does only affect avoidance for the obstacles :ref:`radius<class_NavigationObstacle2D_property_radius>`. Does nothing for the obstacles static vertices.
+Thiết lập vận tốc mong muốn cho chướng ngại vật để các agent khác có thể dự đoán chướng ngại vật tốt hơn nếu chướng ngại vật được di chuyển với một vận tốc đều đặn (mỗi frame) thay vì dịch chuyển tức thời đến một vị trí mới. Chỉ ảnh hưởng đến việc tránh đối với các chướng ngại vật :ref:`radius<class_NavigationObstacle2D_property_radius>`. Không có tác dụng đối với các đỉnh tĩnh của chướng ngại vật.
 
 .. rst-class:: classref-item-separator
 
@@ -204,9 +204,9 @@ Sets the wanted velocity for the obstacle so other agent's can better predict th
 - |void| **set_vertices**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_vertices**\ (\ )
 
-The outline vertices of the obstacle. If the vertices are winded in clockwise order agents will be pushed in by the obstacle, else they will be pushed out. Outlines can not be crossed or overlap. Should the vertices using obstacle be warped to a new position agent's can not predict this movement and may get trapped inside the obstacle.
+Các đỉnh đường bao của chướng ngại vật. Nếu các đỉnh được sắp xếp theo chiều kim đồng hồ, các agent sẽ bị chướng ngại vật đẩy vào trong; nếu không, chúng sẽ bị đẩy ra ngoài. Các đường bao không được giao nhau hoặc chồng lấn. Nếu các đỉnh dùng cho chướng ngại vật được dịch chuyển tức thời đến một vị trí mới, các agent không thể dự đoán chuyển động này và có thể bị mắc kẹt bên trong chướng ngại vật.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -214,8 +214,8 @@ The outline vertices of the obstacle. If the vertices are winded in clockwise or
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationObstacle2D_method_get_avoidance_layer_value:
 
@@ -223,7 +223,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **get_avoidance_layer_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationObstacle2D_method_get_avoidance_layer_value>`
 
-Returns whether or not the specified layer of the :ref:`avoidance_layers<class_NavigationObstacle2D_property_avoidance_layers>` bitmask is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc lớp được chỉ định của bitmask :ref:`avoidance_layers<class_NavigationObstacle2D_property_avoidance_layers>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ Returns whether or not the specified layer of the :ref:`avoidance_layers<class_N
 
 :ref:`RID<class_RID>` **get_navigation_map**\ (\ ) |const| :ref:`🔗<class_NavigationObstacle2D_method_get_navigation_map>`
 
-Returns the :ref:`RID<class_RID>` of the navigation map for this NavigationObstacle node. This function returns always the map set on the NavigationObstacle node and not the map of the abstract obstacle on the NavigationServer. If the obstacle map is changed directly with the NavigationServer API the NavigationObstacle node will not be aware of the map change. Use :ref:`set_navigation_map()<class_NavigationObstacle2D_method_set_navigation_map>` to change the navigation map for the NavigationObstacle and also update the obstacle on the NavigationServer.
+Trả về :ref:`RID<class_RID>` của bản đồ điều hướng cho node NavigationObstacle này. Hàm này luôn trả về bản đồ được thiết lập trên node NavigationObstacle, không phải bản đồ của chướng ngại vật trừu tượng trên NavigationServer. Nếu bản đồ của chướng ngại vật được thay đổi trực tiếp bằng API NavigationServer, node NavigationObstacle sẽ không nhận biết được thay đổi bản đồ. Sử dụng :ref:`set_navigation_map()<class_NavigationObstacle2D_method_set_navigation_map>` để thay đổi bản đồ điều hướng cho NavigationObstacle và đồng thời cập nhật chướng ngại vật trên NavigationServer.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ Returns the :ref:`RID<class_RID>` of the navigation map for this NavigationObsta
 
 :ref:`RID<class_RID>` **get_rid**\ (\ ) |const| :ref:`🔗<class_NavigationObstacle2D_method_get_rid>`
 
-Returns the :ref:`RID<class_RID>` of this obstacle on the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Trả về :ref:`RID<class_RID>` của chướng ngại vật này trên :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Returns the :ref:`RID<class_RID>` of this obstacle on the :ref:`NavigationServer
 
 |void| **set_avoidance_layer_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationObstacle2D_method_set_avoidance_layer_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`avoidance_layers<class_NavigationObstacle2D_property_avoidance_layers>` bitmask, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong bitmask :ref:`avoidance_layers<class_NavigationObstacle2D_property_avoidance_layers>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -271,14 +271,14 @@ Based on ``value``, enables or disables the specified layer in the :ref:`avoidan
 
 |void| **set_navigation_map**\ (\ navigation_map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationObstacle2D_method_set_navigation_map>`
 
-Sets the :ref:`RID<class_RID>` of the navigation map this NavigationObstacle node should use and also updates the ``obstacle`` on the NavigationServer.
+Đặt :ref:`RID<class_RID>` của bản đồ điều hướng mà node NavigationObstacle này sẽ sử dụng, đồng thời cập nhật ``obstacle`` trên NavigationServer.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

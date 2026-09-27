@@ -10,33 +10,33 @@
 EditorScenePostImport
 =====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Post-processes scenes after import.
+Xử lý hậu kỳ các scene sau khi import.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Imported scenes can be automatically modified right after import by setting their **Custom Script** Import property to a ``tool`` script that inherits from this class.
+Các scene đã import có thể được tự động sửa đổi ngay sau khi import bằng cách đặt thuộc tính Import **Custom Script** của chúng thành một ``tool`` script kế thừa từ lớp này.
 
-The :ref:`_post_import()<class_EditorScenePostImport_private_method__post_import>` callback receives the imported scene's root node and returns the modified version of the scene:
+:ref:`_post_import()<class_EditorScenePostImport_private_method__post_import>` callback nhận nút gốc của scene đã import và trả về phiên bản đã sửa đổi của scene:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    @tool # Needed so it runs in editor.
+    @tool # Cần thiết để nó chạy trong editor.
     extends EditorScenePostImport
 
-    # This sample changes all node names.
-    # Called right after the scene is imported and gets the root node.
+    # Mẫu này thay đổi tên của tất cả các node.
+    # Được gọi ngay sau khi cảnh được nhập và lấy nút gốc.
     func _post_import(scene):
-        # Change all node names to "modified_[oldnodename]"
+        # Đổi tên tất cả các nút thành "modified_[oldnodename]"
         iterate(scene)
-        return scene # Remember to return the imported scene
+        return scene # Nhớ trả về cảnh đã nhập
 
     func iterate(node):
         if node != null:
@@ -48,16 +48,16 @@ The :ref:`_post_import()<class_EditorScenePostImport_private_method__post_import
 
     using Godot;
 
-    // This sample changes all node names.
-    // Called right after the scene is imported and gets the root node.
+    // Mẫu này đổi tên tất cả các nút.
+    // Được gọi ngay sau khi cảnh được nhập và lấy nút gốc.
     [Tool]
     public partial class NodeRenamer : EditorScenePostImport
     {
         public override GodotObject _PostImport(Node scene)
         {
-            // Change all node names to "modified_[oldnodename]"
+            // Đổi tên tất cả các nút thành "modified_[oldnodename]"
             Iterate(scene);
-            return scene; // Remember to return the imported scene
+            return scene; // Nhớ trả về cảnh đã nhập
         }
 
         public void Iterate(Node node)
@@ -77,15 +77,15 @@ The :ref:`_post_import()<class_EditorScenePostImport_private_method__post_import
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `Importing 3D scenes: Configuration: Using import scripts for automation <../tutorials/assets_pipeline/importing_3d_scenes/import_configuration.html#using-import-scripts-for-automation>`__
+- `Nhập cảnh 3D: Cấu hình: Sử dụng import script để tự động hóa <../tutorials/assets_pipeline/importing_3d_scenes/import_configuration.html#using-import-scripts-for-automation>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -102,8 +102,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorScenePostImport_private_method__post_import:
 
@@ -111,7 +111,7 @@ Method Descriptions
 
 :ref:`Object<class_Object>` **_post_import**\ (\ scene\: :ref:`Node<class_Node>`\ ) |virtual| :ref:`🔗<class_EditorScenePostImport_private_method__post_import>`
 
-Called after the scene was imported. This method must return the modified version of the scene.
+Được gọi sau khi cảnh được nhập. Phương thức này phải trả về phiên bản đã sửa đổi của cảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -123,14 +123,14 @@ Called after the scene was imported. This method must return the modified versio
 
 :ref:`String<class_String>` **get_source_file**\ (\ ) |const| :ref:`🔗<class_EditorScenePostImport_method_get_source_file>`
 
-Returns the source file path which got imported (e.g. ``res://scene.dae``).
+Trả về đường dẫn tệp nguồn đã được nhập (ví dụ: ``res://scene.dae``).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,34 +10,34 @@
 StreamPeerSocket
 ================
 
-**Inherits:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`StreamPeerTCP<class_StreamPeerTCP>`, :ref:`StreamPeerUDS<class_StreamPeerUDS>`
+**Được kế thừa bởi:** :ref:`StreamPeerTCP<class_StreamPeerTCP>`, :ref:`StreamPeerUDS<class_StreamPeerUDS>`
 
-Abstract base class for interacting with socket streams.
+Lớp cơ sở trừu tượng để tương tác với các socket stream.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-StreamPeerSocket is an abstract base class that defines common behavior for socket-based streams.
+StreamPeerSocket là một lớp cơ sở trừu tượng xác định hành vi chung cho các stream dựa trên socket.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------+---------------------------------------------------------------------------------------+
-   | |void|                                      | :ref:`disconnect_from_host<class_StreamPeerSocket_method_disconnect_from_host>`\ (\ ) |
-   +---------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`Status<enum_StreamPeerSocket_Status>` | :ref:`get_status<class_StreamPeerSocket_method_get_status>`\ (\ ) |const|             |
-   +---------------------------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`       | :ref:`poll<class_StreamPeerSocket_method_poll>`\ (\ )                                 |
-   +---------------------------------------------+---------------------------------------------------------------------------------------+
+   +----------------------------------------------+---------------------------------------------------------------------------------------+
+   | |void|                                       | :ref:`disconnect_from_host<class_StreamPeerSocket_method_disconnect_from_host>`\ (\ ) |
+   +----------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`Status <enum_StreamPeerSocket_Status>` | :ref:`get_status<class_StreamPeerSocket_method_get_status>`\ (\ ) |const|             |
+   +----------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`       | :ref:`poll<class_StreamPeerSocket_method_poll>`\ (\ )                                 |
+   +----------------------------------------------+---------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -45,14 +45,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enumeration
+---------------
 
 .. _enum_StreamPeerSocket_Status:
 
 .. rst-class:: classref-enumeration
 
-enum **Status**: :ref:`🔗<enum_StreamPeerSocket_Status>`
+enum **Status**: :ref:`🔗 <enum_StreamPeerSocket_Status>`
 
 .. _class_StreamPeerSocket_constant_STATUS_NONE:
 
@@ -60,7 +60,7 @@ enum **Status**: :ref:`🔗<enum_StreamPeerSocket_Status>`
 
 :ref:`Status<enum_StreamPeerSocket_Status>` **STATUS_NONE** = ``0``
 
-The initial status of the **StreamPeerSocket**. This is also the status after disconnecting.
+Trạng thái ban đầu của **StreamPeerSocket**. Đây cũng là trạng thái sau khi ngắt kết nối.
 
 .. _class_StreamPeerSocket_constant_STATUS_CONNECTING:
 
@@ -68,7 +68,7 @@ The initial status of the **StreamPeerSocket**. This is also the status after di
 
 :ref:`Status<enum_StreamPeerSocket_Status>` **STATUS_CONNECTING** = ``1``
 
-A status representing a **StreamPeerSocket** that is connecting to a host.
+Trạng thái biểu thị một **StreamPeerSocket** đang kết nối với một host.
 
 .. _class_StreamPeerSocket_constant_STATUS_CONNECTED:
 
@@ -76,7 +76,7 @@ A status representing a **StreamPeerSocket** that is connecting to a host.
 
 :ref:`Status<enum_StreamPeerSocket_Status>` **STATUS_CONNECTED** = ``2``
 
-A status representing a **StreamPeerSocket** that is connected to a host.
+Trạng thái biểu thị một **StreamPeerSocket** đã kết nối với một host.
 
 .. _class_StreamPeerSocket_constant_STATUS_ERROR:
 
@@ -84,7 +84,7 @@ A status representing a **StreamPeerSocket** that is connected to a host.
 
 :ref:`Status<enum_StreamPeerSocket_Status>` **STATUS_ERROR** = ``3``
 
-A status representing a **StreamPeerSocket** in error state.
+Trạng thái biểu thị một **StreamPeerSocket** đang ở trạng thái lỗi.
 
 .. rst-class:: classref-section-separator
 
@@ -92,8 +92,8 @@ A status representing a **StreamPeerSocket** in error state.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StreamPeerSocket_method_disconnect_from_host:
 
@@ -101,7 +101,7 @@ Method Descriptions
 
 |void| **disconnect_from_host**\ (\ ) :ref:`🔗<class_StreamPeerSocket_method_disconnect_from_host>`
 
-Disconnects from host.
+Ngắt kết nối khỏi host.
 
 .. rst-class:: classref-item-separator
 
@@ -113,7 +113,7 @@ Disconnects from host.
 
 :ref:`Status<enum_StreamPeerSocket_Status>` **get_status**\ (\ ) |const| :ref:`🔗<class_StreamPeerSocket_method_get_status>`
 
-Returns the status of the connection.
+Trả về trạng thái của kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -125,14 +125,14 @@ Returns the status of the connection.
 
 :ref:`Error<enum_@GlobalScope_Error>` **poll**\ (\ ) :ref:`🔗<class_StreamPeerSocket_method_poll>`
 
-Polls the socket, updating its state. See :ref:`get_status()<class_StreamPeerSocket_method_get_status>`.
+Thăm dò socket và cập nhật trạng thái của nó. Xem :ref:`get_status()<class_StreamPeerSocket_method_get_status>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,41 +10,41 @@
 AspectRatioContainer
 ====================
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A container that preserves the proportions of its child controls.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A container type that arranges its child controls in a way that preserves their proportions automatically when the container is resized. Useful when a container has a dynamic size and the child nodes must adjust their sizes accordingly without losing their aspect ratios.
+Một container bảo toàn tỷ lệ của các control con.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một loại container tự động sắp xếp các control con theo cách bảo toàn tỷ lệ của chúng khi container được thay đổi kích thước. Hữu ích khi container có kích thước động và các node con phải điều chỉnh kích thước tương ứng mà không làm mất tỷ lệ khung hình của chúng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng Container <../tutorials/ui/gui_containers>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
-   | :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>` | :ref:`alignment_horizontal<class_AspectRatioContainer_property_alignment_horizontal>` | ``1``   |
-   +---------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
-   | :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>` | :ref:`alignment_vertical<class_AspectRatioContainer_property_alignment_vertical>`     | ``1``   |
-   +---------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>`                                     | :ref:`ratio<class_AspectRatioContainer_property_ratio>`                               | ``1.0`` |
-   +---------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
-   | :ref:`StretchMode<enum_AspectRatioContainer_StretchMode>`     | :ref:`stretch_mode<class_AspectRatioContainer_property_stretch_mode>`                 | ``2``   |
-   +---------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
+   +----------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
+   | :ref:`AlignmentMode <enum_AspectRatioContainer_AlignmentMode>` | :ref:`alignment_horizontal<class_AspectRatioContainer_property_alignment_horizontal>` | ``1``   |
+   +----------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
+   | :ref:`AlignmentMode <enum_AspectRatioContainer_AlignmentMode>` | :ref:`alignment_vertical<class_AspectRatioContainer_property_alignment_vertical>`     | ``1``   |
+   +----------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>`                                      | :ref:`ratio<class_AspectRatioContainer_property_ratio>`                               | ``1.0`` |
+   +----------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
+   | :ref:`StretchMode <enum_AspectRatioContainer_StretchMode>`     | :ref:`stretch_mode<class_AspectRatioContainer_property_stretch_mode>`                 | ``2``   |
+   +----------------------------------------------------------------+---------------------------------------------------------------------------------------+---------+
 
 .. rst-class:: classref-section-separator
 
@@ -52,14 +52,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AspectRatioContainer_StretchMode:
 
 .. rst-class:: classref-enumeration
 
-enum **StretchMode**: :ref:`🔗<enum_AspectRatioContainer_StretchMode>`
+enum **StretchMode**: :ref:`🔗 <enum_AspectRatioContainer_StretchMode>`
 
 .. _class_AspectRatioContainer_constant_STRETCH_WIDTH_CONTROLS_HEIGHT:
 
@@ -67,7 +67,7 @@ enum **StretchMode**: :ref:`🔗<enum_AspectRatioContainer_StretchMode>`
 
 :ref:`StretchMode<enum_AspectRatioContainer_StretchMode>` **STRETCH_WIDTH_CONTROLS_HEIGHT** = ``0``
 
-The height of child controls is automatically adjusted based on the width of the container.
+Chiều cao của các control con được tự động điều chỉnh dựa trên chiều rộng của container.
 
 .. _class_AspectRatioContainer_constant_STRETCH_HEIGHT_CONTROLS_WIDTH:
 
@@ -75,7 +75,7 @@ The height of child controls is automatically adjusted based on the width of the
 
 :ref:`StretchMode<enum_AspectRatioContainer_StretchMode>` **STRETCH_HEIGHT_CONTROLS_WIDTH** = ``1``
 
-The width of child controls is automatically adjusted based on the height of the container.
+Chiều rộng của các control con được tự động điều chỉnh dựa trên chiều cao của container.
 
 .. _class_AspectRatioContainer_constant_STRETCH_FIT:
 
@@ -83,7 +83,7 @@ The width of child controls is automatically adjusted based on the height of the
 
 :ref:`StretchMode<enum_AspectRatioContainer_StretchMode>` **STRETCH_FIT** = ``2``
 
-The bounding rectangle of child controls is automatically adjusted to fit inside the container while keeping the aspect ratio.
+Hình chữ nhật bao quanh các control con được tự động điều chỉnh để nằm bên trong container mà vẫn giữ nguyên tỷ lệ khung hình.
 
 .. _class_AspectRatioContainer_constant_STRETCH_COVER:
 
@@ -91,9 +91,9 @@ The bounding rectangle of child controls is automatically adjusted to fit inside
 
 :ref:`StretchMode<enum_AspectRatioContainer_StretchMode>` **STRETCH_COVER** = ``3``
 
-The width and height of child controls is automatically adjusted to make their bounding rectangle cover the entire area of the container while keeping the aspect ratio.
+Chiều rộng và chiều cao của các control con được tự động điều chỉnh để hình chữ nhật bao quanh chúng phủ toàn bộ vùng của container mà vẫn giữ nguyên tỷ lệ khung hình.
 
-When the bounding rectangle of child controls exceed the container's size and :ref:`Control.clip_contents<class_Control_property_clip_contents>` is enabled, this allows to show only the container's area restricted by its own bounding rectangle.
+Khi hình chữ nhật bao quanh các control con vượt quá kích thước của container và :ref:`Control.clip_contents<class_Control_property_clip_contents>` được bật, tùy chọn này cho phép chỉ hiển thị vùng của container bị giới hạn bởi hình chữ nhật bao quanh chính nó.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ When the bounding rectangle of child controls exceed the container's size and :r
 
 .. rst-class:: classref-enumeration
 
-enum **AlignmentMode**: :ref:`🔗<enum_AspectRatioContainer_AlignmentMode>`
+enum **AlignmentMode**: :ref:`🔗 <enum_AspectRatioContainer_AlignmentMode>`
 
 .. _class_AspectRatioContainer_constant_ALIGNMENT_BEGIN:
 
@@ -111,7 +111,7 @@ enum **AlignmentMode**: :ref:`🔗<enum_AspectRatioContainer_AlignmentMode>`
 
 :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>` **ALIGNMENT_BEGIN** = ``0``
 
-Aligns child controls with the beginning (left or top) of the container.
+Căn các control con theo điểm bắt đầu (bên trái hoặc phía trên) của container.
 
 .. _class_AspectRatioContainer_constant_ALIGNMENT_CENTER:
 
@@ -119,7 +119,7 @@ Aligns child controls with the beginning (left or top) of the container.
 
 :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>` **ALIGNMENT_CENTER** = ``1``
 
-Aligns child controls with the center of the container.
+Căn các control con vào giữa container.
 
 .. _class_AspectRatioContainer_constant_ALIGNMENT_END:
 
@@ -127,7 +127,7 @@ Aligns child controls with the center of the container.
 
 :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>` **ALIGNMENT_END** = ``2``
 
-Aligns child controls with the end (right or bottom) of the container.
+Căn các control con theo điểm kết thúc (bên phải hoặc phía dưới) của container.
 
 .. rst-class:: classref-section-separator
 
@@ -135,8 +135,8 @@ Aligns child controls with the end (right or bottom) of the container.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AspectRatioContainer_property_alignment_horizontal:
 
@@ -149,7 +149,7 @@ Property Descriptions
 - |void| **set_alignment_horizontal**\ (\ value\: :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>`\ )
 - :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>` **get_alignment_horizontal**\ (\ )
 
-Specifies the horizontal relative position of child controls.
+Chỉ định vị trí tương đối theo chiều ngang của các control con.
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ Specifies the horizontal relative position of child controls.
 - |void| **set_alignment_vertical**\ (\ value\: :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>`\ )
 - :ref:`AlignmentMode<enum_AspectRatioContainer_AlignmentMode>` **get_alignment_vertical**\ (\ )
 
-Specifies the vertical relative position of child controls.
+Chỉ định vị trí tương đối theo chiều dọc của các control con.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Specifies the vertical relative position of child controls.
 - |void| **set_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_ratio**\ (\ )
 
-The aspect ratio to enforce on child controls. This is the width divided by the height. The ratio depends on the :ref:`stretch_mode<class_AspectRatioContainer_property_stretch_mode>`.
+Tỷ lệ khung hình được áp dụng cho các control con. Đây là chiều rộng chia cho chiều cao. Tỷ lệ này phụ thuộc vào :ref:`stretch_mode<class_AspectRatioContainer_property_stretch_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -200,14 +200,14 @@ The aspect ratio to enforce on child controls. This is the width divided by the 
 - |void| **set_stretch_mode**\ (\ value\: :ref:`StretchMode<enum_AspectRatioContainer_StretchMode>`\ )
 - :ref:`StretchMode<enum_AspectRatioContainer_StretchMode>` **get_stretch_mode**\ (\ )
 
-The stretch mode used to align child controls.
+Chế độ co giãn được sử dụng để căn chỉnh các control con.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

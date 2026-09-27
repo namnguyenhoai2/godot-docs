@@ -10,22 +10,22 @@
 OpenXRRenderModel
 =================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-This node will display an OpenXR render model.
+Node này sẽ hiển thị một render model của OpenXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node will display an OpenXR render model by accessing the associated GLTF and processes all animation data (if supported by the XR runtime).
+Node này sẽ hiển thị một render model của OpenXR bằng cách truy cập GLTF liên kết và xử lý tất cả dữ liệu animation (nếu được XR runtime hỗ trợ).
 
-Render models were introduced to allow showing the correct model for the controller (or other device) the user has in hand, since the OpenXR action map does not provide information about the hardware used by the user. Note that while the controller (or device) can be somewhat inferred by the bound action map profile, this is a dangerous approach as the user may be using hardware not known at time of development and OpenXR will simply simulate an available interaction profile.
+Render model được giới thiệu để cho phép hiển thị model chính xác của controller (hoặc thiết bị khác) mà người dùng đang cầm, vì OpenXR action map không cung cấp thông tin về phần cứng người dùng đang sử dụng. Lưu ý rằng mặc dù có thể suy đoán phần nào controller (hoặc thiết bị) dựa trên profile của action map đã liên kết, đây là một cách tiếp cận nguy hiểm vì người dùng có thể đang sử dụng phần cứng chưa được biết đến tại thời điểm phát triển và OpenXR sẽ chỉ mô phỏng một interaction profile có sẵn.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -37,8 +37,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -53,8 +53,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_OpenXRRenderModel_signal_render_model_top_level_path_changed:
 
@@ -62,7 +62,7 @@ Signals
 
 **render_model_top_level_path_changed**\ (\ ) :ref:`🔗<class_OpenXRRenderModel_signal_render_model_top_level_path_changed>`
 
-Emitted when the top level path of this render model has changed.
+Được phát ra khi đường dẫn cấp cao nhất của render model này đã thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -70,8 +70,8 @@ Emitted when the top level path of this render model has changed.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRRenderModel_property_render_model:
 
@@ -84,7 +84,7 @@ Property Descriptions
 - |void| **set_render_model**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_render_model**\ (\ )
 
-The render model RID for the render model to load, as returned by :ref:`OpenXRRenderModelExtension.render_model_create()<class_OpenXRRenderModelExtension_method_render_model_create>` or :ref:`OpenXRRenderModelExtension.render_model_get_all()<class_OpenXRRenderModelExtension_method_render_model_get_all>`.
+RID của render model cần tải, được trả về bởi :ref:`OpenXRRenderModelExtension.render_model_create()<class_OpenXRRenderModelExtension_method_render_model_create>` hoặc :ref:`OpenXRRenderModelExtension.render_model_get_all()<class_OpenXRRenderModelExtension_method_render_model_get_all>`.
 
 .. rst-class:: classref-section-separator
 
@@ -92,8 +92,8 @@ The render model RID for the render model to load, as returned by :ref:`OpenXRRe
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRRenderModel_method_get_top_level_path:
 
@@ -101,14 +101,14 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_top_level_path**\ (\ ) |const| :ref:`🔗<class_OpenXRRenderModel_method_get_top_level_path>`
 
-Returns the top level path related to this render model.
+Trả về đường dẫn cấp cao nhất liên quan đến render model này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

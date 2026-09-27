@@ -10,30 +10,30 @@
 EditorToaster
 =============
 
-**Inherits:** :ref:`HBoxContainer<class_HBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`HBoxContainer<class_HBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Manages toast notifications within the editor.
+Quản lý các thông báo toast trong editor.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object manages the functionality and display of toast notifications within the editor, ensuring immediate and informative alerts are presented to the user.
+Đối tượng này quản lý chức năng và việc hiển thị các thông báo toast trong editor, đảm bảo người dùng nhận được các cảnh báo tức thời và giàu thông tin.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_editor_toaster()<class_EditorInterface_method_get_editor_toaster>`.
+\ **Lưu ý:** Không nên khởi tạo trực tiếp class này. Thay vào đó, hãy truy cập singleton bằng :ref:`EditorInterface.get_editor_toaster()<class_EditorInterface_method_get_editor_toaster>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void| | :ref:`push_toast<class_EditorToaster_method_push_toast>`\ (\ message\: :ref:`String<class_String>`, severity\: :ref:`Severity<enum_EditorToaster_Severity>` = 0, tooltip\: :ref:`String<class_String>` = ""\ ) |
-   +--------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void| | :ref:`push_toast<class_EditorToaster_method_push_toast>`\ (\ message\: :ref:`String<class_String>`, severity\: :ref:`Severity <enum_EditorToaster_Severity>` = 0, tooltip\: :ref:`String<class_String>` = ""\ ) |
+   +--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -41,14 +41,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorToaster_Severity:
 
 .. rst-class:: classref-enumeration
 
-enum **Severity**: :ref:`🔗<enum_EditorToaster_Severity>`
+enum **Severity**: :ref:`🔗 <enum_EditorToaster_Severity>`
 
 .. _class_EditorToaster_constant_SEVERITY_INFO:
 
@@ -56,7 +56,7 @@ enum **Severity**: :ref:`🔗<enum_EditorToaster_Severity>`
 
 :ref:`Severity<enum_EditorToaster_Severity>` **SEVERITY_INFO** = ``0``
 
-Toast will display with an INFO severity.
+Toast sẽ hiển thị với mức độ INFO.
 
 .. _class_EditorToaster_constant_SEVERITY_WARNING:
 
@@ -64,7 +64,7 @@ Toast will display with an INFO severity.
 
 :ref:`Severity<enum_EditorToaster_Severity>` **SEVERITY_WARNING** = ``1``
 
-Toast will display with a WARNING severity and have a corresponding color.
+Toast sẽ hiển thị với mức độ WARNING và có màu tương ứng.
 
 .. _class_EditorToaster_constant_SEVERITY_ERROR:
 
@@ -72,7 +72,7 @@ Toast will display with a WARNING severity and have a corresponding color.
 
 :ref:`Severity<enum_EditorToaster_Severity>` **SEVERITY_ERROR** = ``2``
 
-Toast will display with an ERROR severity and have a corresponding color.
+Toast sẽ hiển thị với mức độ ERROR và có màu tương ứng.
 
 .. rst-class:: classref-section-separator
 
@@ -80,8 +80,8 @@ Toast will display with an ERROR severity and have a corresponding color.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorToaster_method_push_toast:
 
@@ -89,14 +89,14 @@ Method Descriptions
 
 |void| **push_toast**\ (\ message\: :ref:`String<class_String>`, severity\: :ref:`Severity<enum_EditorToaster_Severity>` = 0, tooltip\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_EditorToaster_method_push_toast>`
 
-Pushes a toast notification to the editor for display.
+Đẩy một thông báo toast đến editor để hiển thị.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

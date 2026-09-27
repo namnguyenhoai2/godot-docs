@@ -10,47 +10,47 @@
 GraphFrame
 ==========
 
-**Inherits:** :ref:`GraphElement<class_GraphElement>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`GraphElement<class_GraphElement>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-GraphFrame is a special :ref:`GraphElement<class_GraphElement>` that can be used to organize other :ref:`GraphElement<class_GraphElement>`\ s inside a :ref:`GraphEdit<class_GraphEdit>`.
+GraphFrame là một :ref:`GraphElement<class_GraphElement>` đặc biệt có thể dùng để sắp xếp các :ref:`GraphElement<class_GraphElement>`\ s khác bên trong một :ref:`GraphEdit<class_GraphEdit>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-GraphFrame is a special :ref:`GraphElement<class_GraphElement>` to which other :ref:`GraphElement<class_GraphElement>`\ s can be attached. It can be configured to automatically resize to enclose all attached :ref:`GraphElement<class_GraphElement>`\ s. If the frame is moved, all the attached :ref:`GraphElement<class_GraphElement>`\ s inside it will be moved as well.
+GraphFrame là một :ref:`GraphElement<class_GraphElement>` đặc biệt để gắn các :ref:`GraphElement<class_GraphElement>`\ s khác vào. Nó có thể được cấu hình để tự động thay đổi kích thước nhằm bao quanh tất cả :ref:`GraphElement<class_GraphElement>`\ s đã gắn. Nếu frame được di chuyển, tất cả :ref:`GraphElement<class_GraphElement>`\ s được gắn bên trong nó cũng sẽ được di chuyển theo.
 
-A GraphFrame is always kept behind the connection layer and other :ref:`GraphElement<class_GraphElement>`\ s inside a :ref:`GraphEdit<class_GraphEdit>`.
+GraphFrame luôn được giữ phía sau lớp kết nối và các :ref:`GraphElement<class_GraphElement>`\ s khác bên trong một :ref:`GraphEdit<class_GraphEdit>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                      | :ref:`autoshrink_enabled<class_GraphFrame_property_autoshrink_enabled>` | ``true``                                                              |
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`int<class_int>`                        | :ref:`autoshrink_margin<class_GraphFrame_property_autoshrink_margin>`   | ``40``                                                                |
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`int<class_int>`                        | :ref:`drag_margin<class_GraphFrame_property_drag_margin>`               | ``16``                                                                |
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>` | mouse_filter                                                            | ``0`` (overrides :ref:`Control<class_Control_property_mouse_filter>`) |
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                    | :ref:`tint_color<class_GraphFrame_property_tint_color>`                 | ``Color(0.3, 0.3, 0.3, 0.75)``                                        |
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                      | :ref:`tint_color_enabled<class_GraphFrame_property_tint_color_enabled>` | ``false``                                                             |
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
-   | :ref:`String<class_String>`                  | :ref:`title<class_GraphFrame_property_title>`                           | ``""``                                                                |
-   +----------------------------------------------+-------------------------------------------------------------------------+-----------------------------------------------------------------------+
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                       | :ref:`autoshrink_enabled<class_GraphFrame_property_autoshrink_enabled>` | ``true``                                                           |
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`int<class_int>`                         | :ref:`autoshrink_margin<class_GraphFrame_property_autoshrink_margin>`   | ``40``                                                             |
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`int<class_int>`                         | :ref:`drag_margin<class_GraphFrame_property_drag_margin>`               | ``16``                                                             |
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>` | mouse_filter                                                            | ``0`` (ghi đè :ref:`Control<class_Control_property_mouse_filter>`) |
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                     | :ref:`tint_color<class_GraphFrame_property_tint_color>`                 | ``Color(0.3, 0.3, 0.3, 0.75)``                                     |
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                       | :ref:`tint_color_enabled<class_GraphFrame_property_tint_color_enabled>` | ``false``                                                          |
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
+   | :ref:`String<class_String>`                   | :ref:`title<class_GraphFrame_property_title>`                           | ``""``                                                             |
+   +-----------------------------------------------+-------------------------------------------------------------------------+--------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -61,7 +61,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -85,8 +85,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_GraphFrame_signal_autoshrink_changed:
 
@@ -94,7 +94,7 @@ Signals
 
 **autoshrink_changed**\ (\ ) :ref:`🔗<class_GraphFrame_signal_autoshrink_changed>`
 
-Emitted when :ref:`autoshrink_enabled<class_GraphFrame_property_autoshrink_enabled>` or :ref:`autoshrink_margin<class_GraphFrame_property_autoshrink_margin>` changes.
+Được phát khi :ref:`autoshrink_enabled<class_GraphFrame_property_autoshrink_enabled>` hoặc :ref:`autoshrink_margin<class_GraphFrame_property_autoshrink_margin>` thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -102,8 +102,8 @@ Emitted when :ref:`autoshrink_enabled<class_GraphFrame_property_autoshrink_enabl
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GraphFrame_property_autoshrink_enabled:
 
@@ -116,7 +116,7 @@ Property Descriptions
 - |void| **set_autoshrink_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_autoshrink_enabled**\ (\ )
 
-If ``true``, the frame's rect will be adjusted automatically to enclose all attached :ref:`GraphElement<class_GraphElement>`\ s.
+Nếu ``true``, rect của frame sẽ tự động được điều chỉnh để bao quanh tất cả :ref:`GraphElement<class_GraphElement>`\ s được gắn vào.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ If ``true``, the frame's rect will be adjusted automatically to enclose all atta
 - |void| **set_autoshrink_margin**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_autoshrink_margin**\ (\ )
 
-The margin around the attached nodes that is used to calculate the size of the frame when :ref:`autoshrink_enabled<class_GraphFrame_property_autoshrink_enabled>` is ``true``.
+Lề xung quanh các node được gắn vào, dùng để tính kích thước của frame khi :ref:`autoshrink_enabled<class_GraphFrame_property_autoshrink_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ The margin around the attached nodes that is used to calculate the size of the f
 - |void| **set_drag_margin**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_drag_margin**\ (\ )
 
-The margin inside the frame that can be used to drag the frame.
+Lề bên trong frame có thể được dùng để kéo frame.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ The margin inside the frame that can be used to drag the frame.
 - |void| **set_tint_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_tint_color**\ (\ )
 
-The color of the frame when :ref:`tint_color_enabled<class_GraphFrame_property_tint_color_enabled>` is ``true``.
+Màu của frame khi :ref:`tint_color_enabled<class_GraphFrame_property_tint_color_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -184,7 +184,7 @@ The color of the frame when :ref:`tint_color_enabled<class_GraphFrame_property_t
 - |void| **set_tint_color_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_tint_color_enabled**\ (\ )
 
-If ``true``, the tint color will be used to tint the frame.
+Nếu ``true``, màu tint sẽ được dùng để tạo tint cho frame.
 
 .. rst-class:: classref-item-separator
 
@@ -201,7 +201,7 @@ If ``true``, the tint color will be used to tint the frame.
 - |void| **set_title**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_title**\ (\ )
 
-Title of the frame.
+Tiêu đề của frame.
 
 .. rst-class:: classref-section-separator
 
@@ -209,8 +209,8 @@ Title of the frame.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GraphFrame_method_get_titlebar_hbox:
 
@@ -218,9 +218,9 @@ Method Descriptions
 
 :ref:`HBoxContainer<class_HBoxContainer>` **get_titlebar_hbox**\ (\ ) :ref:`🔗<class_GraphFrame_method_get_titlebar_hbox>`
 
-Returns the :ref:`HBoxContainer<class_HBoxContainer>` used for the title bar, only containing a :ref:`Label<class_Label>` for displaying the title by default.
+Trả về :ref:`HBoxContainer<class_HBoxContainer>` được dùng cho thanh tiêu đề, chỉ chứa một :ref:`Label<class_Label>` để hiển thị tiêu đề theo mặc định.
 
-This can be used to add custom controls to the title bar such as option or close buttons.
+Bạn có thể sử dụng cách này để thêm các điều khiển tùy chỉnh vào thanh tiêu đề, chẳng hạn như các nút tùy chọn hoặc đóng.
 
 .. rst-class:: classref-section-separator
 
@@ -228,8 +228,8 @@ This can be used to add custom controls to the title bar such as option or close
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_GraphFrame_theme_color_resizer_color:
 
@@ -237,7 +237,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **resizer_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_GraphFrame_theme_color_resizer_color>`
 
-The color modulation applied to the resizer icon.
+Màu điều biến được áp dụng cho biểu tượng resizer.
 
 .. rst-class:: classref-item-separator
 
@@ -247,9 +247,9 @@ The color modulation applied to the resizer icon.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗<class_GraphFrame_theme_style_panel>`
+:ref:`StyleBox<class_StyleBox>` **panel** :ref:`🔗 <class_GraphFrame_theme_style_panel>`
 
-The default :ref:`StyleBox<class_StyleBox>` used for the background of the **GraphFrame**.
+:ref:`StyleBox<class_StyleBox>` mặc định được dùng cho nền của **GraphFrame**.
 
 .. rst-class:: classref-item-separator
 
@@ -259,9 +259,9 @@ The default :ref:`StyleBox<class_StyleBox>` used for the background of the **Gra
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **panel_selected** :ref:`🔗<class_GraphFrame_theme_style_panel_selected>`
+:ref:`StyleBox<class_StyleBox>` **panel_selected** :ref:`🔗 <class_GraphFrame_theme_style_panel_selected>`
 
-The :ref:`StyleBox<class_StyleBox>` used for the background of the **GraphFrame** when it is selected.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho nền của **GraphFrame** khi nó được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -271,9 +271,9 @@ The :ref:`StyleBox<class_StyleBox>` used for the background of the **GraphFrame*
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **titlebar** :ref:`🔗<class_GraphFrame_theme_style_titlebar>`
+:ref:`StyleBox<class_StyleBox>` **titlebar** :ref:`🔗 <class_GraphFrame_theme_style_titlebar>`
 
-The :ref:`StyleBox<class_StyleBox>` used for the title bar of the **GraphFrame**.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho thanh tiêu đề của **GraphFrame**.
 
 .. rst-class:: classref-item-separator
 
@@ -283,16 +283,16 @@ The :ref:`StyleBox<class_StyleBox>` used for the title bar of the **GraphFrame**
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **titlebar_selected** :ref:`🔗<class_GraphFrame_theme_style_titlebar_selected>`
+:ref:`StyleBox<class_StyleBox>` **titlebar_selected** :ref:`🔗 <class_GraphFrame_theme_style_titlebar_selected>`
 
-The :ref:`StyleBox<class_StyleBox>` used for the title bar of the **GraphFrame** when it is selected.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho thanh tiêu đề của **GraphFrame** khi nó được chọn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Để có hiệu lực, thông thường người dùng nên ghi đè phương thức này.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

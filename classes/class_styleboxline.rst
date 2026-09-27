@@ -10,20 +10,20 @@
 StyleBoxLine
 ============
 
-**Inherits:** :ref:`StyleBox<class_StyleBox>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`StyleBox<class_StyleBox>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A :ref:`StyleBox<class_StyleBox>` that displays a single line of a given color and thickness.
+Một :ref:`StyleBox<class_StyleBox>` hiển thị một đường thẳng có màu sắc và độ dày nhất định.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A :ref:`StyleBox<class_StyleBox>` that displays a single line of a given color and thickness. The line can be either horizontal or vertical. Useful for separators.
+Một :ref:`StyleBox<class_StyleBox>` hiển thị một đường thẳng có màu sắc và độ dày nhất định. Đường thẳng có thể nằm ngang hoặc dọc. Hữu ích để làm đường phân cách.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StyleBoxLine_property_color:
 
@@ -61,7 +61,7 @@ Property Descriptions
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The line's color.
+Màu của đường thẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ The line's color.
 - |void| **set_grow_begin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_grow_begin**\ (\ )
 
-The number of pixels the line will extend before the **StyleBoxLine**'s bounds. If set to a negative value, the line will begin inside the **StyleBoxLine**'s bounds.
+Số pixel mà đường thẳng sẽ kéo dài ra trước giới hạn của **StyleBoxLine**. Nếu được đặt thành giá trị âm, đường thẳng sẽ bắt đầu bên trong giới hạn của **StyleBoxLine**.
 
 .. rst-class:: classref-item-separator
 
@@ -95,7 +95,7 @@ The number of pixels the line will extend before the **StyleBoxLine**'s bounds. 
 - |void| **set_grow_end**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_grow_end**\ (\ )
 
-The number of pixels the line will extend past the **StyleBoxLine**'s bounds. If set to a negative value, the line will end inside the **StyleBoxLine**'s bounds.
+Số pixel mà đường thẳng sẽ kéo dài vượt quá giới hạn của **StyleBoxLine**. Nếu được đặt thành giá trị âm, đường thẳng sẽ kết thúc bên trong giới hạn của **StyleBoxLine**.
 
 .. rst-class:: classref-item-separator
 
@@ -112,7 +112,7 @@ The number of pixels the line will extend past the **StyleBoxLine**'s bounds. If
 - |void| **set_thickness**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_thickness**\ (\ )
 
-The line's thickness in pixels.
+Độ dày của đường thẳng tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -129,14 +129,14 @@ The line's thickness in pixels.
 - |void| **set_vertical**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_vertical**\ (\ )
 
-If ``true``, the line will be vertical. If ``false``, the line will be horizontal.
+Nếu là ``true``, đường thẳng sẽ nằm dọc. Nếu là ``false``, đường thẳng sẽ nằm ngang.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

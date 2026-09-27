@@ -10,29 +10,29 @@
 IKModifier3D
 ============
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`ChainIK3D<class_ChainIK3D>`, :ref:`TwoBoneIK3D<class_TwoBoneIK3D>`
+**Được kế thừa bởi:** :ref:`ChainIK3D<class_ChainIK3D>`, :ref:`TwoBoneIK3D<class_TwoBoneIK3D>`
 
-A node for inverse kinematics which may modify more than one bone.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Base class of :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`\ s that has some joint lists and applies inverse kinematics. This class has some structs, enums, and helper methods which are useful to solve inverse kinematics.
+Một node cho inverse kinematics có thể sửa đổi nhiều bone.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở của :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`\ s, chứa một số danh sách joint và áp dụng inverse kinematics. Lớp này có một số struct, enum và phương thức trợ giúp hữu ích để giải inverse kinematics.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Inverse Kinematics Returns to Godot 4.6 - IKModifier3D <https://godotengine.org/article/inverse-kinematics-returns-to-godot-4-6/#ikmodifier3d-and-7-child-classes>`__
+- `Inverse Kinematics trở lại với Godot 4.6 - IKModifier3D <https://godotengine.org/article/inverse-kinematics-returns-to-godot-4-6/#ikmodifier3d-and-7-child-classes>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -44,8 +44,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -66,8 +66,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_IKModifier3D_property_mutable_bone_axes:
 
@@ -80,9 +80,9 @@ Property Descriptions
 - |void| **set_mutable_bone_axes**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_bone_axes_mutable**\ (\ )
 
-If ``true``, the solver retrieves the bone axis from the bone pose every frame.
+Nếu ``true``, solver sẽ lấy trục bone từ bone pose ở mỗi frame.
 
-If ``false``, the solver retrieves the bone axis from the bone rest and caches it, which increases performance slightly, but position changes in the bone pose made before processing this **IKModifier3D** are ignored.
+Nếu ``false``, solver sẽ lấy trục bone từ bone rest và lưu vào bộ nhớ đệm, giúp tăng hiệu suất đôi chút, nhưng các thay đổi vị trí trong bone pose được thực hiện trước khi xử lý **IKModifier3D** này sẽ bị bỏ qua.
 
 .. rst-class:: classref-section-separator
 
@@ -90,8 +90,8 @@ If ``false``, the solver retrieves the bone axis from the bone rest and caches i
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_IKModifier3D_method_clear_settings:
 
@@ -99,7 +99,7 @@ Method Descriptions
 
 |void| **clear_settings**\ (\ ) :ref:`🔗<class_IKModifier3D_method_clear_settings>`
 
-Clears all settings.
+Xóa tất cả cài đặt.
 
 .. rst-class:: classref-item-separator
 
@@ -111,7 +111,7 @@ Clears all settings.
 
 :ref:`int<class_int>` **get_setting_count**\ (\ ) |const| :ref:`🔗<class_IKModifier3D_method_get_setting_count>`
 
-Returns the number of settings.
+Trả về số lượng cài đặt.
 
 .. rst-class:: classref-item-separator
 
@@ -123,7 +123,7 @@ Returns the number of settings.
 
 |void| **reset**\ (\ ) :ref:`🔗<class_IKModifier3D_method_reset>`
 
-Resets a state with respect to the current bone pose.
+Đặt lại một trạng thái dựa trên tư thế xương hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -135,14 +135,14 @@ Resets a state with respect to the current bone pose.
 
 |void| **set_setting_count**\ (\ count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_IKModifier3D_method_set_setting_count>`
 
-Sets the number of settings.
+Đặt số lượng cài đặt.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

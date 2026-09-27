@@ -10,406 +10,406 @@
 EditorExportPlatformVisionOS
 ============================
 
-**Inherits:** :ref:`EditorExportPlatformAppleEmbedded<class_EditorExportPlatformAppleEmbedded>` **<** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorExportPlatformAppleEmbedded<class_EditorExportPlatformAppleEmbedded>` **<** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exporter for visionOS.
+Trình xuất cho visionOS.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Exporting for iOS <../tutorials/export/exporting_for_ios>`
+- :doc:`Xuất cho iOS <../tutorials/export/exporting_for_ios>`
 
-- :doc:`iOS plugins documentation index <../tutorials/platform/ios/index>`
+- :doc:`Mục lục tài liệu về plugin iOS <../tutorials/platform/ios/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/additional_plist_content<class_EditorExportPlatformVisionOS_property_application/additional_plist_content>`                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/app_store_team_id<class_EditorExportPlatformVisionOS_property_application/app_store_team_id>`                                                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/bundle_identifier<class_EditorExportPlatformVisionOS_property_application/bundle_identifier>`                                                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/code_sign_identity_debug<class_EditorExportPlatformVisionOS_property_application/code_sign_identity_debug>`                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/code_sign_identity_release<class_EditorExportPlatformVisionOS_property_application/code_sign_identity_release>`                                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`application/delete_old_export_files_unconditionally<class_EditorExportPlatformVisionOS_property_application/delete_old_export_files_unconditionally>`                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/export_method_debug<class_EditorExportPlatformVisionOS_property_application/export_method_debug>`                                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/export_method_release<class_EditorExportPlatformVisionOS_property_application/export_method_release>`                                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`application/export_project_only<class_EditorExportPlatformVisionOS_property_application/export_project_only>`                                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/icon_interpolation<class_EditorExportPlatformVisionOS_property_application/icon_interpolation>`                                                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/min_visionos_version<class_EditorExportPlatformVisionOS_property_application/min_visionos_version>`                                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_specifier_debug<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_debug>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_specifier_release<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_release>`                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_uuid_debug<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_debug>`                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_uuid_release<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_release>`                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/short_version<class_EditorExportPlatformVisionOS_property_application/short_version>`                                                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/signature<class_EditorExportPlatformVisionOS_property_application/signature>`                                                                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/version<class_EditorExportPlatformVisionOS_property_application/version>`                                                                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`architectures/arm64<class_EditorExportPlatformVisionOS_property_architectures/arm64>`                                                                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`capabilities/access_wifi<class_EditorExportPlatformVisionOS_property_capabilities/access_wifi>`                                                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`capabilities/additional<class_EditorExportPlatformVisionOS_property_capabilities/additional>`                                                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`capabilities/performance_a12<class_EditorExportPlatformVisionOS_property_capabilities/performance_a12>`                                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`capabilities/performance_gaming_tier<class_EditorExportPlatformVisionOS_property_capabilities/performance_gaming_tier>`                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/debug<class_EditorExportPlatformVisionOS_property_custom_template/debug>`                                                                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/release<class_EditorExportPlatformVisionOS_property_custom_template/release>`                                                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`entitlements/additional<class_EditorExportPlatformVisionOS_property_entitlements/additional>`                                                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`entitlements/game_center<class_EditorExportPlatformVisionOS_property_entitlements/game_center>`                                                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`entitlements/increased_memory_limit<class_EditorExportPlatformVisionOS_property_entitlements/increased_memory_limit>`                                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`entitlements/push_notifications<class_EditorExportPlatformVisionOS_property_entitlements/push_notifications>`                                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`icons/icon_1024x1024<class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024>`                                                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`icons/icon_1024x1024_dark<class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_dark>`                                                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`icons/icon_1024x1024_tinted<class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_tinted>`                                                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`modules/camera<class_EditorExportPlatformVisionOS_property_modules/camera>`                                                                                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/active_keyboard_access_reasons<class_EditorExportPlatformVisionOS_property_privacy/active_keyboard_access_reasons>`                                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/camera_usage_description<class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description>`                                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/camera_usage_description_localized<class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description_localized>`                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/advertising_data/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collected>`                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/audio_data/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collection_purposes>`                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/linked_to_user>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/used_for_tracking>`                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/browsing_history/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collected>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/coarse_location/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collection_purposes>`                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/linked_to_user>`                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/used_for_tracking>`                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collected>`                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/contacts/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collection_purposes>`                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/linked_to_user>`                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/used_for_tracking>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collected>`                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/crash_data/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collection_purposes>`                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/linked_to_user>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/used_for_tracking>`                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collected>`                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/credit_info/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collection_purposes>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/linked_to_user>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/used_for_tracking>`                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/customer_support/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collected>`                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/device_id/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collection_purposes>`                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/linked_to_user>`                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/used_for_tracking>`                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collected>`                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/email_address/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collection_purposes>`                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/linked_to_user>`                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/used_for_tracking>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collected>`                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/emails_or_text_messages/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>` |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collected>`                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/environment_scanning/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collection_purposes>`       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/linked_to_user>`                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collected>`                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/fitness/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collection_purposes>`                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/linked_to_user>`                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/used_for_tracking>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/gameplay_content/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collected>`                                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/hands/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collection_purposes>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/linked_to_user>`                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/used_for_tracking>`                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collected>`                                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/head/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collection_purposes>`                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/linked_to_user>`                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/used_for_tracking>`                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collected>`                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/health/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collection_purposes>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/linked_to_user>`                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/used_for_tracking>`                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collected>`                                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/name/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collection_purposes>`                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/linked_to_user>`                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/used_for_tracking>`                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collected>`                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_contact_info/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collection_purposes>`           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/linked_to_user>`                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_data_types/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collected>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_diagnostic_data/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collected>`                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_financial_info/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collection_purposes>`       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/linked_to_user>`                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_usage_data/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collected>`                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_user_content/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collection_purposes>`           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/linked_to_user>`                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/used_for_tracking>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collected>`                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/payment_info/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collection_purposes>`                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/linked_to_user>`                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/used_for_tracking>`                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/performance_data/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collected>`                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/phone_number/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collection_purposes>`                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/linked_to_user>`                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/used_for_tracking>`                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/photos_or_videos/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/physical_address/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/precise_location/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collected>`                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/product_interaction/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collection_purposes>`         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/linked_to_user>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/used_for_tracking>`             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collected>`                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/purchase_history/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collection_purposes>`               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/linked_to_user>`                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/used_for_tracking>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collected>`                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/search_history/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collection_purposes>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/linked_to_user>`                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/used_for_tracking>`                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collected>`                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/sensitive_info/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collection_purposes>`                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/linked_to_user>`                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/collected<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collected>`                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/user_id/collection_purposes<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collection_purposes>`                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/linked_to_user<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/linked_to_user>`                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/used_for_tracking<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/used_for_tracking>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/disk_space_access_reasons<class_EditorExportPlatformVisionOS_property_privacy/disk_space_access_reasons>`                                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/file_timestamp_access_reasons<class_EditorExportPlatformVisionOS_property_privacy/file_timestamp_access_reasons>`                                                           |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/microphone_usage_description<class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description>`                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/microphone_usage_description_localized<class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description_localized>`                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`privacy/photolibrary_usage_description<class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description>`                                                         |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/photolibrary_usage_description_localized<class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description_localized>`                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/system_boot_time_access_reasons<class_EditorExportPlatformVisionOS_property_privacy/system_boot_time_access_reasons>`                                                       |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`privacy/tracking_domains<class_EditorExportPlatformVisionOS_property_privacy/tracking_domains>`                                                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`privacy/tracking_enabled<class_EditorExportPlatformVisionOS_property_privacy/tracking_enabled>`                                                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`privacy/user_defaults_access_reasons<class_EditorExportPlatformVisionOS_property_privacy/user_defaults_access_reasons>`                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled<class_EditorExportPlatformVisionOS_property_shader_baker/enabled>`                                                                                             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`user_data/accessible_from_files_app<class_EditorExportPlatformVisionOS_property_user_data/accessible_from_files_app>`                                                               |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`user_data/accessible_from_itunes_sharing<class_EditorExportPlatformVisionOS_property_user_data/accessible_from_itunes_sharing>`                                                     |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/additional_plist_content <class_EditorExportPlatformVisionOS_property_application/additional_plist_content>`                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/app_store_team_id <class_EditorExportPlatformVisionOS_property_application/app_store_team_id>`                                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/bundle_identifier <class_EditorExportPlatformVisionOS_property_application/bundle_identifier>`                                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/code_sign_identity_debug <class_EditorExportPlatformVisionOS_property_application/code_sign_identity_debug>`                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/code_sign_identity_release <class_EditorExportPlatformVisionOS_property_application/code_sign_identity_release>`                                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`application/delete_old_export_files_unconditionally <class_EditorExportPlatformVisionOS_property_application/delete_old_export_files_unconditionally>`                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/export_method_debug <class_EditorExportPlatformVisionOS_property_application/export_method_debug>`                                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/export_method_release <class_EditorExportPlatformVisionOS_property_application/export_method_release>`                                                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`application/export_project_only <class_EditorExportPlatformVisionOS_property_application/export_project_only>`                                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/icon_interpolation <class_EditorExportPlatformVisionOS_property_application/icon_interpolation>`                                                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/min_visionos_version <class_EditorExportPlatformVisionOS_property_application/min_visionos_version>`                                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_specifier_debug <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_debug>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_specifier_release <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_release>`                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_uuid_debug <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_debug>`                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/provisioning_profile_uuid_release <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_release>`                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/short_version <class_EditorExportPlatformVisionOS_property_application/short_version>`                                                                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/signature <class_EditorExportPlatformVisionOS_property_application/signature>`                                                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/version <class_EditorExportPlatformVisionOS_property_application/version>`                                                                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`architectures/arm64 <class_EditorExportPlatformVisionOS_property_architectures/arm64>`                                                                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`capabilities/access_wifi <class_EditorExportPlatformVisionOS_property_capabilities/access_wifi>`                                                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`capabilities/additional <class_EditorExportPlatformVisionOS_property_capabilities/additional>`                                                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`capabilities/performance_a12 <class_EditorExportPlatformVisionOS_property_capabilities/performance_a12>`                                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`capabilities/performance_gaming_tier <class_EditorExportPlatformVisionOS_property_capabilities/performance_gaming_tier>`                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/debug <class_EditorExportPlatformVisionOS_property_custom_template/debug>`                                                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/release <class_EditorExportPlatformVisionOS_property_custom_template/release>`                                                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`entitlements/additional <class_EditorExportPlatformVisionOS_property_entitlements/additional>`                                                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`entitlements/game_center <class_EditorExportPlatformVisionOS_property_entitlements/game_center>`                                                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`entitlements/increased_memory_limit <class_EditorExportPlatformVisionOS_property_entitlements/increased_memory_limit>`                                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`entitlements/push_notifications <class_EditorExportPlatformVisionOS_property_entitlements/push_notifications>`                                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`icons/icon_1024x1024 <class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024>`                                                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`icons/icon_1024x1024_dark <class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_dark>`                                                                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`icons/icon_1024x1024_tinted <class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_tinted>`                                                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`modules/camera <class_EditorExportPlatformVisionOS_property_modules/camera>`                                                                                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/active_keyboard_access_reasons <class_EditorExportPlatformVisionOS_property_privacy/active_keyboard_access_reasons>`                                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/camera_usage_description <class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description>`                                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/camera_usage_description_localized <class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description_localized>`                                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/advertising_data/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/advertising_data/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collected>`                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/audio_data/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collection_purposes>`                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/linked_to_user>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/audio_data/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/used_for_tracking>`                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/browsing_history/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/browsing_history/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collected>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/coarse_location/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collection_purposes>`                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/linked_to_user>`                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/coarse_location/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/used_for_tracking>`                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collected>`                                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/contacts/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collection_purposes>`                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/linked_to_user>`                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/contacts/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/used_for_tracking>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collected>`                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/crash_data/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collection_purposes>`                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/linked_to_user>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/crash_data/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/used_for_tracking>`                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collected>`                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/credit_info/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collection_purposes>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/linked_to_user>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/credit_info/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/used_for_tracking>`                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/customer_support/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/customer_support/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collected>`                                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/device_id/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collection_purposes>`                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/linked_to_user>`                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/device_id/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/used_for_tracking>`                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collected>`                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/email_address/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collection_purposes>`                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/linked_to_user>`                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/email_address/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/used_for_tracking>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collected>`                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/emails_or_text_messages/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>` |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/emails_or_text_messages/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collected>`                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/environment_scanning/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collection_purposes>`       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/linked_to_user>`                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/environment_scanning/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collected>`                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/fitness/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collection_purposes>`                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/linked_to_user>`                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/fitness/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/used_for_tracking>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/gameplay_content/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/gameplay_content/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collected>`                                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/hands/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collection_purposes>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/linked_to_user>`                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/hands/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/used_for_tracking>`                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collected>`                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/head/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collection_purposes>`                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/linked_to_user>`                                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/head/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/used_for_tracking>`                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collected>`                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/health/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collection_purposes>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/linked_to_user>`                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/health/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/used_for_tracking>`                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collected>`                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/name/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collection_purposes>`                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/linked_to_user>`                                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/name/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/used_for_tracking>`                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collected>`                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_contact_info/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collection_purposes>`           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/linked_to_user>`                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_contact_info/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_data_types/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_data_types/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collected>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_diagnostic_data/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_diagnostic_data/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collected>`                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_financial_info/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collection_purposes>`       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/linked_to_user>`                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_financial_info/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_usage_data/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_usage_data/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collected>`                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/other_user_content/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collection_purposes>`           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/linked_to_user>`                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/other_user_content/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/used_for_tracking>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collected>`                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/payment_info/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collection_purposes>`                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/linked_to_user>`                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/payment_info/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/used_for_tracking>`                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/performance_data/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/performance_data/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collected>`                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/phone_number/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collection_purposes>`                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/linked_to_user>`                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/phone_number/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/used_for_tracking>`                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/photos_or_videos/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/photos_or_videos/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/physical_address/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/physical_address/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/precise_location/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/precise_location/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collected>`                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/product_interaction/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collection_purposes>`         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/linked_to_user>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/product_interaction/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/used_for_tracking>`             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collected>`                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/purchase_history/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collection_purposes>`               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/linked_to_user>`                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/purchase_history/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/used_for_tracking>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collected>`                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/search_history/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collection_purposes>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/linked_to_user>`                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/search_history/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/used_for_tracking>`                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collected>`                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/sensitive_info/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collection_purposes>`                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/linked_to_user>`                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/sensitive_info/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/collected <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collected>`                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/collected_data/user_id/collection_purposes <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collection_purposes>`                                 |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/linked_to_user <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/linked_to_user>`                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/collected_data/user_id/used_for_tracking <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/used_for_tracking>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/disk_space_access_reasons <class_EditorExportPlatformVisionOS_property_privacy/disk_space_access_reasons>`                                                                   |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/file_timestamp_access_reasons <class_EditorExportPlatformVisionOS_property_privacy/file_timestamp_access_reasons>`                                                           |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/microphone_usage_description <class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description>`                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/microphone_usage_description_localized <class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description_localized>`                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`privacy/photolibrary_usage_description <class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description>`                                                         |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`privacy/photolibrary_usage_description_localized <class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description_localized>`                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/system_boot_time_access_reasons <class_EditorExportPlatformVisionOS_property_privacy/system_boot_time_access_reasons>`                                                       |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`privacy/tracking_domains <class_EditorExportPlatformVisionOS_property_privacy/tracking_domains>`                                                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`privacy/tracking_enabled <class_EditorExportPlatformVisionOS_property_privacy/tracking_enabled>`                                                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`privacy/user_defaults_access_reasons <class_EditorExportPlatformVisionOS_property_privacy/user_defaults_access_reasons>`                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled <class_EditorExportPlatformVisionOS_property_shader_baker/enabled>`                                                                                             |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`user_data/accessible_from_files_app <class_EditorExportPlatformVisionOS_property_user_data/accessible_from_files_app>`                                                               |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`user_data/accessible_from_itunes_sharing <class_EditorExportPlatformVisionOS_property_user_data/accessible_from_itunes_sharing>`                                                     |
+   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -417,16 +417,16 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorExportPlatformVisionOS_property_application/additional_plist_content:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/additional_plist_content** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/additional_plist_content>`
+:ref:`String<class_String>` **application/additional_plist_content** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/additional_plist_content>`
 
-Additional data added to the root ``<dict>`` section of the `Info.plist <https://developer.apple.com/documentation/bundleresources/information_property_list>`__ file. The value should be an XML section with pairs of key-value elements, e.g.:
+Dữ liệu bổ sung được thêm vào phần ``<dict>`` gốc của tệp `Info.plist <https://developer.apple.com/documentation/bundleresources/information_property_list>`__. Giá trị này phải là một phần XML chứa các cặp phần tử khóa-giá trị, ví dụ:
 
 .. code:: text
 
@@ -441,9 +441,9 @@ Additional data added to the root ``<dict>`` section of the `Info.plist <https:/
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/app_store_team_id** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/app_store_team_id>`
+:ref:`String<class_String>` **application/app_store_team_id** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/app_store_team_id>`
 
-Apple Team ID, unique 10-character string. To locate your Team ID check "Membership details" section in your Apple developer account dashboard, or "Organizational Unit" of your code signing certificate. See `Locate your Team ID <https://developer.apple.com/help/account/manage-your-team/locate-your-team-id>`__.
+Apple Team ID là chuỗi duy nhất gồm 10 ký tự. Để tìm Team ID của bạn, hãy kiểm tra phần "Membership details" trong trang tổng quan tài khoản nhà phát triển Apple hoặc mục "Organizational Unit" trong chứng chỉ code signing của bạn. Xem `Locate your Team ID <https://developer.apple.com/help/account/manage-your-team/locate-your-team-id>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -453,9 +453,9 @@ Apple Team ID, unique 10-character string. To locate your Team ID check "Members
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/bundle_identifier** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/bundle_identifier>`
+:ref:`String<class_String>` **application/bundle_identifier** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/bundle_identifier>`
 
-Unique application identifier in a reverse-DNS format, can only contain alphanumeric characters (``A-Z``, ``a-z``, and ``0-9``), hyphens (``-``), and periods (``.``).
+Mã định danh ứng dụng duy nhất ở định dạng reverse-DNS, chỉ có thể chứa các ký tự chữ và số (``A-Z``, ``a-z`` và ``0-9``), dấu gạch nối (``-``) và dấu chấm (``.``).
 
 .. rst-class:: classref-item-separator
 
@@ -465,9 +465,9 @@ Unique application identifier in a reverse-DNS format, can only contain alphanum
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/code_sign_identity_debug** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/code_sign_identity_debug>`
+:ref:`String<class_String>` **application/code_sign_identity_debug** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/code_sign_identity_debug>`
 
-The "Full Name", "Common Name" or SHA-1 hash of the signing identity used for debug export.
+"Full Name", "Common Name" hoặc hàm băm SHA-1 của signing identity được sử dụng cho việc xuất debug.
 
 .. rst-class:: classref-item-separator
 
@@ -477,9 +477,9 @@ The "Full Name", "Common Name" or SHA-1 hash of the signing identity used for de
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/code_sign_identity_release** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/code_sign_identity_release>`
+:ref:`String<class_String>` **application/code_sign_identity_release** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/code_sign_identity_release>`
 
-The "Full Name", "Common Name" or SHA-1 hash of the signing identity used for release export.
+"Full Name", "Common Name" hoặc hàm băm SHA-1 của signing identity được sử dụng cho việc xuất release.
 
 .. rst-class:: classref-item-separator
 
@@ -489,9 +489,9 @@ The "Full Name", "Common Name" or SHA-1 hash of the signing identity used for re
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **application/delete_old_export_files_unconditionally** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/delete_old_export_files_unconditionally>`
+:ref:`bool<class_bool>` **application/delete_old_export_files_unconditionally** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/delete_old_export_files_unconditionally>`
 
-If ``true``, existing "project name" and "project name.xcodeproj" in the export destination directory will be unconditionally deleted during export.
+Nếu ``true``, "tên dự án" và "tên dự án.xcodeproj" hiện có trong thư mục đích xuất sẽ bị xóa vô điều kiện trong quá trình xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -501,9 +501,9 @@ If ``true``, existing "project name" and "project name.xcodeproj" in the export 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/export_method_debug** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/export_method_debug>`
+:ref:`int<class_int>` **application/export_method_debug** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/export_method_debug>`
 
-Application distribution target (debug export).
+Đích phân phối ứng dụng (xuất debug).
 
 .. rst-class:: classref-item-separator
 
@@ -513,9 +513,9 @@ Application distribution target (debug export).
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/export_method_release** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/export_method_release>`
+:ref:`int<class_int>` **application/export_method_release** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/export_method_release>`
 
-Application distribution target (release export).
+Đích phân phối ứng dụng (xuất bản phát hành).
 
 .. rst-class:: classref-item-separator
 
@@ -525,9 +525,9 @@ Application distribution target (release export).
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **application/export_project_only** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/export_project_only>`
+:ref:`bool<class_bool>` **application/export_project_only** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/export_project_only>`
 
-If ``true``, exports iOS project files without building an XCArchive or ``.ipa`` file. If ``false``, exports iOS project files and builds an XCArchive and ``.ipa`` file at the same time. When combining Godot with Fastlane or other build pipelines, you may want to set this to ``true``.
+Nếu ``true``, xuất các tệp project iOS mà không build XCArchive hoặc tệp ``.ipa``. Nếu ``false``, xuất các tệp project iOS và đồng thời build XCArchive cùng tệp ``.ipa``. Khi kết hợp Godot với Fastlane hoặc các build pipeline khác, bạn có thể muốn đặt giá trị này thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -537,9 +537,9 @@ If ``true``, exports iOS project files without building an XCArchive or ``.ipa``
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/icon_interpolation** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/icon_interpolation>`
+:ref:`int<class_int>` **application/icon_interpolation** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/icon_interpolation>`
 
-Interpolation method used to resize application icon.
+Phương pháp interpolation được sử dụng để thay đổi kích thước biểu tượng ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -549,7 +549,7 @@ Interpolation method used to resize application icon.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/min_visionos_version** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/min_visionos_version>`
+:ref:`String<class_String>` **application/min_visionos_version** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/min_visionos_version>`
 
 .. container:: contribute
 
@@ -563,11 +563,11 @@ Interpolation method used to resize application icon.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/provisioning_profile_specifier_debug** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_debug>`
+:ref:`String<class_String>` **application/provisioning_profile_specifier_debug** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_debug>`
 
-Name of the provisioning profile. Sets XCode PROVISIONING_PROFILE_SPECIFIER for debug. `Used for manual provisioning <https://developer.apple.com/documentation/xcode/build-settings-reference#Provisioning-Profile>`__.
+Tên của provisioning profile. Đặt XCode PROVISIONING_PROFILE_SPECIFIER cho debug. `Dùng cho provisioning thủ công <https://developer.apple.com/documentation/xcode/build-settings-reference#Provisioning-Profile>`__.
 
-Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROFILE_SPECIFIER_DEBUG``.
+Có thể ghi đè bằng biến môi trường ``GODOT_APPLE_PLATFORM_PROFILE_SPECIFIER_DEBUG``.
 
 .. rst-class:: classref-item-separator
 
@@ -577,11 +577,11 @@ Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROFILE_S
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/provisioning_profile_specifier_release** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_release>`
+:ref:`String<class_String>` **application/provisioning_profile_specifier_release** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_specifier_release>`
 
-Name of the provisioning profile. Sets XCode PROVISIONING_PROFILE_SPECIFIER for release. `Used for manual provisioning <https://developer.apple.com/documentation/xcode/build-settings-reference#Provisioning-Profile>`__.
+Tên của provisioning profile. Đặt XCode PROVISIONING_PROFILE_SPECIFIER cho release. `Dùng cho provisioning thủ công <https://developer.apple.com/documentation/xcode/build-settings-reference#Provisioning-Profile>`__.
 
-Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROFILE_SPECIFIER_RELEASE``.
+Có thể ghi đè bằng biến môi trường ``GODOT_APPLE_PLATFORM_PROFILE_SPECIFIER_RELEASE``.
 
 .. rst-class:: classref-item-separator
 
@@ -591,11 +591,11 @@ Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROFILE_S
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/provisioning_profile_uuid_debug** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_debug>`
+:ref:`String<class_String>` **application/provisioning_profile_uuid_debug** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_debug>`
 
-UUID of the provisioning profile. If left empty, Xcode will download or create a provisioning profile automatically. See `Edit, download, or delete provisioning profiles <https://developer.apple.com/help/account/manage-profiles/edit-download-or-delete-profiles>`__.
+UUID của provisioning profile. Nếu để trống, Xcode sẽ tự động tải xuống hoặc tạo provisioning profile. Xem `Chỉnh sửa, tải xuống hoặc xóa provisioning profile <https://developer.apple.com/help/account/manage-profiles/edit-download-or-delete-profiles>`__.
 
-Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROVISIONING_PROFILE_UUID_DEBUG``.
+Có thể ghi đè bằng biến môi trường ``GODOT_APPLE_PLATFORM_PROVISIONING_PROFILE_UUID_DEBUG``.
 
 .. rst-class:: classref-item-separator
 
@@ -605,11 +605,11 @@ Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROVISION
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/provisioning_profile_uuid_release** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_release>`
+:ref:`String<class_String>` **application/provisioning_profile_uuid_release** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/provisioning_profile_uuid_release>`
 
-UUID of the provisioning profile. If left empty, Xcode will download or create a provisioning profile automatically. See `Edit, download, or delete provisioning profiles <https://developer.apple.com/help/account/manage-profiles/edit-download-or-delete-profiles>`__.
+UUID của provisioning profile. Nếu để trống, Xcode sẽ tự động tải xuống hoặc tạo provisioning profile. Xem `Chỉnh sửa, tải xuống hoặc xóa provisioning profile <https://developer.apple.com/help/account/manage-profiles/edit-download-or-delete-profiles>`__.
 
-Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROVISIONING_PROFILE_UUID_RELEASE``.
+Có thể ghi đè bằng biến môi trường ``GODOT_APPLE_PLATFORM_PROVISIONING_PROFILE_UUID_RELEASE``.
 
 .. rst-class:: classref-item-separator
 
@@ -619,11 +619,11 @@ Can be overridden with the environment variable ``GODOT_APPLE_PLATFORM_PROVISION
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/short_version** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/short_version>`
+:ref:`String<class_String>` **application/short_version** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/short_version>`
 
-Application version visible to the user. Can only contain numeric characters (``0-9``) and periods (``.``). Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty.
+Phiên bản ứng dụng hiển thị với người dùng. Chỉ có thể chứa các ký tự số (``0-9``) và dấu chấm (``.``). Nếu để trống, giá trị này sẽ lấy từ :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>`.
 
-\ **Note:** This value is used for the *Identity > Version* value in the generated Xcode project.
+\ **Lưu ý:** Giá trị này được sử dụng cho giá trị *Identity > Version* trong dự án Xcode được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -633,9 +633,9 @@ Application version visible to the user. Can only contain numeric characters (``
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/signature** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/signature>`
+:ref:`String<class_String>` **application/signature** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/signature>`
 
-A four-character creator code that is specific to the bundle. Optional.
+Mã creator gồm bốn ký tự dành riêng cho bundle. Không bắt buộc.
 
 .. rst-class:: classref-item-separator
 
@@ -645,11 +645,11 @@ A four-character creator code that is specific to the bundle. Optional.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/version** :ref:`🔗<class_EditorExportPlatformVisionOS_property_application/version>`
+:ref:`String<class_String>` **application/version** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_application/version>`
 
-Machine-readable application version in the ``major.minor.patch`` format. Can only contain numeric characters (``0-9``) and periods (``.``). This must be incremented with every new release pushed to the App Store. Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty.
+Phiên bản ứng dụng ở dạng có thể đọc bằng máy theo định dạng ``major.minor.patch``. Chỉ có thể chứa các ký tự số (``0-9``) và dấu chấm (``.``). Giá trị này phải được tăng lên sau mỗi bản phát hành mới được đẩy lên App Store. Nếu để trống, giá trị này sẽ dùng :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>` làm giá trị dự phòng.
 
-\ **Note:** This value is used for the *Identity > Build* value in the generated Xcode project.
+\ **Lưu ý:** Giá trị này được sử dụng cho giá trị *Identity > Build* trong dự án Xcode được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -659,9 +659,9 @@ Machine-readable application version in the ``major.minor.patch`` format. Can on
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **architectures/arm64** :ref:`🔗<class_EditorExportPlatformVisionOS_property_architectures/arm64>`
+:ref:`bool<class_bool>` **architectures/arm64** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_architectures/arm64>`
 
-If ``true``, ``arm64`` binaries are included into exported project.
+Nếu ``true``, các tệp nhị phân ``arm64`` được đưa vào dự án đã xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -671,9 +671,9 @@ If ``true``, ``arm64`` binaries are included into exported project.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **capabilities/access_wifi** :ref:`🔗<class_EditorExportPlatformVisionOS_property_capabilities/access_wifi>`
+:ref:`bool<class_bool>` **capabilities/access_wifi** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_capabilities/access_wifi>`
 
-If ``true``, networking features related to Wi-Fi access are enabled. See `Required Device Capabilities <https://developer.apple.com/support/required-device-capabilities/>`__.
+Nếu ``true``, các tính năng mạng liên quan đến quyền truy cập Wi-Fi được bật. Xem `Required Device Capabilities <https://developer.apple.com/support/required-device-capabilities/>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -683,11 +683,11 @@ If ``true``, networking features related to Wi-Fi access are enabled. See `Requi
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **capabilities/additional** :ref:`🔗<class_EditorExportPlatformVisionOS_property_capabilities/additional>`
+:ref:`PackedStringArray<class_PackedStringArray>` **capabilities/additional** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_capabilities/additional>`
 
-Additional data added to the ``UIRequiredDeviceCapabilities`` array of the ``Info.plist`` file.
+Dữ liệu bổ sung được thêm vào mảng ``UIRequiredDeviceCapabilities`` của tệp ``Info.plist``.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -697,11 +697,11 @@ Additional data added to the ``UIRequiredDeviceCapabilities`` array of the ``Inf
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **capabilities/performance_a12** :ref:`🔗<class_EditorExportPlatformVisionOS_property_capabilities/performance_a12>`
+:ref:`bool<class_bool>` **capabilities/performance_a12** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_capabilities/performance_a12>`
 
-Requires the graphics performance and features of the A12 Bionic and later chips (devices supporting all Vulkan renderer features).
+Yêu cầu hiệu năng đồ họa và các tính năng của chip A12 Bionic trở lên (các thiết bị hỗ trợ tất cả tính năng của trình kết xuất Vulkan).
 
-Enabling this option limits supported devices to: iPhone XS, iPhone XR, iPad Mini (5th gen.), iPad Air (3rd gen.), iPad (8th gen) and newer.
+Bật tùy chọn này sẽ giới hạn các thiết bị được hỗ trợ ở: iPhone XS, iPhone XR, iPad Mini (thế hệ 5), iPad Air (thế hệ 3), iPad (thế hệ 8) và các phiên bản mới hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -711,11 +711,11 @@ Enabling this option limits supported devices to: iPhone XS, iPhone XR, iPad Min
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **capabilities/performance_gaming_tier** :ref:`🔗<class_EditorExportPlatformVisionOS_property_capabilities/performance_gaming_tier>`
+:ref:`bool<class_bool>` **capabilities/performance_gaming_tier** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_capabilities/performance_gaming_tier>`
 
-Requires the graphics performance and features of the A17 Pro and later chips.
+Yêu cầu hiệu năng đồ họa và các tính năng của chip A17 Pro trở lên.
 
-Enabling this option limits supported devices to: iPhone 15 Pro and newer.
+Bật tùy chọn này sẽ giới hạn các thiết bị được hỗ trợ ở: iPhone 15 Pro và các phiên bản mới hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -725,9 +725,9 @@ Enabling this option limits supported devices to: iPhone 15 Pro and newer.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/debug** :ref:`🔗<class_EditorExportPlatformVisionOS_property_custom_template/debug>`
+:ref:`String<class_String>` **custom_template/debug** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_custom_template/debug>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến template export tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -737,9 +737,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/release** :ref:`🔗<class_EditorExportPlatformVisionOS_property_custom_template/release>`
+:ref:`String<class_String>` **custom_template/release** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_custom_template/release>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến template export tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -749,9 +749,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **entitlements/additional** :ref:`🔗<class_EditorExportPlatformVisionOS_property_entitlements/additional>`
+:ref:`String<class_String>` **entitlements/additional** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_entitlements/additional>`
 
-Additional data added to the root ``<dict>`` section of the `.entitlements <https://developer.apple.com/documentation/bundleresources/entitlements>`__ file. The value should be an XML section with pairs of key-value elements, for example:
+Dữ liệu bổ sung được thêm vào phần ``<dict>`` gốc của tệp `.entitlements <https://developer.apple.com/documentation/bundleresources/entitlements>`__. Giá trị phải là một phần XML chứa các cặp phần tử khóa-giá trị, ví dụ:
 
 .. code:: text
 
@@ -766,9 +766,9 @@ Additional data added to the root ``<dict>`` section of the `.entitlements <http
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **entitlements/game_center** :ref:`🔗<class_EditorExportPlatformVisionOS_property_entitlements/game_center>`
+:ref:`bool<class_bool>` **entitlements/game_center** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_entitlements/game_center>`
 
-If ``true``, allows access to Game Center features. See `com.apple.developer.game-center <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_game-center>`__.
+Nếu ``true``, cho phép truy cập vào các tính năng của Game Center. Xem `com.apple.developer.game-center <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_game-center>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -778,9 +778,9 @@ If ``true``, allows access to Game Center features. See `com.apple.developer.gam
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **entitlements/increased_memory_limit** :ref:`🔗<class_EditorExportPlatformVisionOS_property_entitlements/increased_memory_limit>`
+:ref:`bool<class_bool>` **entitlements/increased_memory_limit** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_entitlements/increased_memory_limit>`
 
-If ``true``, hints that the app might perform better with a higher memory limit. See `com.apple.developer.kernel.increased-memory-limit <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_kernel_increased-memory-limit>`__.
+Nếu ``true``, điều này cho biết ứng dụng có thể hoạt động tốt hơn với giới hạn bộ nhớ cao hơn. Xem `com.apple.developer.kernel.increased-memory-limit <https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_kernel_increased-memory-limit>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -790,9 +790,9 @@ If ``true``, hints that the app might perform better with a higher memory limit.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **entitlements/push_notifications** :ref:`🔗<class_EditorExportPlatformVisionOS_property_entitlements/push_notifications>`
+:ref:`String<class_String>` **entitlements/push_notifications** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_entitlements/push_notifications>`
 
-Environment for Apple Push Notification service. See `aps-environment <https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment>`__.
+Môi trường cho dịch vụ Apple Push Notification. Xem `aps-environment <https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -802,9 +802,9 @@ Environment for Apple Push Notification service. See `aps-environment <https://d
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **icons/icon_1024x1024** :ref:`🔗<class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024>`
+:ref:`String<class_String>` **icons/icon_1024x1024** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024>`
 
-Base application icon used to generate other icons. If left empty, it will fallback to :ref:`ProjectSettings.application/config/icon<class_ProjectSettings_property_application/config/icon>`. See `App icons <https://developer.apple.com/design/human-interface-guidelines/foundations/app-icons>`__.
+Biểu tượng ứng dụng cơ sở được dùng để tạo các biểu tượng khác. Nếu để trống, thuộc tính này sẽ sử dụng dự phòng :ref:`ProjectSettings.application/config/icon <class_ProjectSettings_property_application/config/icon>`. Xem `App icons <https://developer.apple.com/design/human-interface-guidelines/foundations/app-icons>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -814,9 +814,9 @@ Base application icon used to generate other icons. If left empty, it will fallb
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **icons/icon_1024x1024_dark** :ref:`🔗<class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_dark>`
+:ref:`String<class_String>` **icons/icon_1024x1024_dark** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_dark>`
 
-Base application icon used to generate other icons, dark version. See `App icons <https://developer.apple.com/design/human-interface-guidelines/foundations/app-icons>`__.
+Biểu tượng ứng dụng cơ sở được dùng để tạo các biểu tượng khác, phiên bản tối. Xem `App icons <https://developer.apple.com/design/human-interface-guidelines/foundations/app-icons>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -826,9 +826,9 @@ Base application icon used to generate other icons, dark version. See `App icons
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **icons/icon_1024x1024_tinted** :ref:`🔗<class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_tinted>`
+:ref:`String<class_String>` **icons/icon_1024x1024_tinted** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_icons/icon_1024x1024_tinted>`
 
-Base application icon used to generate other icons, tinted version. See `App icons <https://developer.apple.com/design/human-interface-guidelines/foundations/app-icons>`__.
+Biểu tượng ứng dụng cơ sở dùng để tạo các biểu tượng khác, phiên bản có màu. Xem `App icons <https://developer.apple.com/design/human-interface-guidelines/foundations/app-icons>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -838,9 +838,9 @@ Base application icon used to generate other icons, tinted version. See `App ico
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **modules/camera** :ref:`🔗<class_EditorExportPlatformVisionOS_property_modules/camera>`
+:ref:`bool<class_bool>` **modules/camera** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_modules/camera>`
 
-If ``true``, :ref:`CameraServer<class_CameraServer>` module is added to the exported project.
+Nếu ``true``, module :ref:`CameraServer<class_CameraServer>` được thêm vào dự án đã xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -850,9 +850,9 @@ If ``true``, :ref:`CameraServer<class_CameraServer>` module is added to the expo
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/active_keyboard_access_reasons** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/active_keyboard_access_reasons>`
+:ref:`int<class_int>` **privacy/active_keyboard_access_reasons** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/active_keyboard_access_reasons>`
 
-The reasons your app use active keyboard API. See `Describing use of required reason API <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
+Các lý do ứng dụng của bạn sử dụng API active keyboard. Xem `Describing use of required reason API <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -862,9 +862,9 @@ The reasons your app use active keyboard API. See `Describing use of required re
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/camera_usage_description** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description>`
+:ref:`String<class_String>` **privacy/camera_usage_description** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description>`
 
-A message displayed when requesting access to the device's camera (in English).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào camera của thiết bị (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -874,9 +874,9 @@ A message displayed when requesting access to the device's camera (in English).
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/camera_usage_description_localized** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/camera_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/camera_usage_description_localized>`
 
-A message displayed when requesting access to the device's camera (localized).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào camera của thiết bị (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -886,9 +886,9 @@ A message displayed when requesting access to the device's camera (localized).
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collected>`
 
-Indicates whether your app collects advertising data.
+Cho biết liệu ứng dụng của bạn có thu thập dữ liệu quảng cáo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -898,9 +898,9 @@ Indicates whether your app collects advertising data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/advertising_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/advertising_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/collection_purposes>`
 
-The reasons your app collects advertising data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu quảng cáo. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -910,9 +910,9 @@ The reasons your app collects advertising data. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/linked_to_user>`
 
-Indicates whether your app links advertising data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu quảng cáo với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -922,9 +922,9 @@ Indicates whether your app links advertising data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/advertising_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/advertising_data/used_for_tracking>`
 
-Indicates whether your app uses advertising data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu quảng cáo để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -934,9 +934,9 @@ Indicates whether your app uses advertising data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/audio_data/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/audio_data/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collected>`
 
-Indicates whether your app collects audio data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu âm thanh hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -946,9 +946,9 @@ Indicates whether your app collects audio data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/audio_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/audio_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/collection_purposes>`
 
-The reasons your app collects audio data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu âm thanh. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -958,9 +958,9 @@ The reasons your app collects audio data. See `Describing data use in privacy ma
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/audio_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/audio_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/linked_to_user>`
 
-Indicates whether your app links audio data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu âm thanh với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -970,9 +970,9 @@ Indicates whether your app links audio data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/audio_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/audio_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/audio_data/used_for_tracking>`
 
-Indicates whether your app uses audio data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu âm thanh để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -982,9 +982,9 @@ Indicates whether your app uses audio data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collected>`
 
-Indicates whether your app collects browsing history.
+Cho biết ứng dụng của bạn có thu thập lịch sử duyệt web hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -994,9 +994,9 @@ Indicates whether your app collects browsing history.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/browsing_history/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/browsing_history/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/collection_purposes>`
 
-The reasons your app collects browsing history. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập lịch sử duyệt web. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1006,9 +1006,9 @@ The reasons your app collects browsing history. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/linked_to_user>`
 
-Indicates whether your app links browsing history to the user's identity.
+Cho biết ứng dụng của bạn có liên kết lịch sử duyệt web với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1018,9 +1018,9 @@ Indicates whether your app links browsing history to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/browsing_history/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/browsing_history/used_for_tracking>`
 
-Indicates whether your app uses browsing history for tracking.
+Cho biết ứng dụng của bạn có sử dụng lịch sử duyệt web để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1030,9 +1030,9 @@ Indicates whether your app uses browsing history for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collected>`
 
-Indicates whether your app collects coarse location data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu vị trí gần đúng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1042,9 +1042,9 @@ Indicates whether your app collects coarse location data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/coarse_location/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/coarse_location/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/collection_purposes>`
 
-The reasons your app collects coarse location data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu vị trí gần đúng. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1054,9 +1054,9 @@ The reasons your app collects coarse location data. See `Describing data use in 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/linked_to_user>`
 
-Indicates whether your app links coarse location data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu vị trí gần đúng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1066,9 +1066,9 @@ Indicates whether your app links coarse location data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/coarse_location/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/coarse_location/used_for_tracking>`
 
-Indicates whether your app uses coarse location data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu vị trí gần đúng để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1078,9 +1078,9 @@ Indicates whether your app uses coarse location data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/contacts/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/contacts/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collected>`
 
-Indicates whether your app collects contacts.
+Cho biết ứng dụng của bạn có thu thập danh bạ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1090,9 +1090,9 @@ Indicates whether your app collects contacts.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/contacts/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/contacts/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/collection_purposes>`
 
-The reasons your app collects contacts. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập danh bạ. Xem `Mô tả cách sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1102,9 +1102,9 @@ The reasons your app collects contacts. See `Describing data use in privacy mani
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/contacts/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/contacts/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/linked_to_user>`
 
-Indicates whether your app links contacts to the user's identity.
+Cho biết ứng dụng của bạn có liên kết danh bạ với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1114,9 +1114,9 @@ Indicates whether your app links contacts to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/contacts/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/contacts/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/contacts/used_for_tracking>`
 
-Indicates whether your app uses contacts for tracking.
+Cho biết ứng dụng của bạn có sử dụng danh bạ để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1126,9 +1126,9 @@ Indicates whether your app uses contacts for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/crash_data/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/crash_data/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collected>`
 
-Indicates whether your app collects crash data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu sự cố hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1138,9 +1138,9 @@ Indicates whether your app collects crash data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/crash_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/crash_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/collection_purposes>`
 
-The reasons your app collects crash data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu sự cố. Xem `Mô tả việc sử dụng dữ liệu trong các bản kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1150,9 +1150,9 @@ The reasons your app collects crash data. See `Describing data use in privacy ma
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/crash_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/crash_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/linked_to_user>`
 
-Indicates whether your app links crash data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu sự cố với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1162,9 +1162,9 @@ Indicates whether your app links crash data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/crash_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/crash_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/crash_data/used_for_tracking>`
 
-Indicates whether your app uses crash data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu sự cố để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1174,9 +1174,9 @@ Indicates whether your app uses crash data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/credit_info/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/credit_info/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collected>`
 
-Indicates whether your app collects credit information.
+Cho biết ứng dụng của bạn có thu thập thông tin tín dụng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1186,9 +1186,9 @@ Indicates whether your app collects credit information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/credit_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/credit_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/collection_purposes>`
 
-The reasons your app collects credit information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập thông tin tín dụng. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1198,9 +1198,9 @@ The reasons your app collects credit information. See `Describing data use in pr
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/credit_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/credit_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/linked_to_user>`
 
-Indicates whether your app links credit information to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết thông tin tín dụng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1210,9 +1210,9 @@ Indicates whether your app links credit information to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/credit_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/credit_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/credit_info/used_for_tracking>`
 
-Indicates whether your app uses credit information for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng thông tin tín dụng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1222,9 +1222,9 @@ Indicates whether your app uses credit information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/customer_support/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/customer_support/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collected>`
 
-Indicates whether your app collects customer support data.
+Cho biết liệu ứng dụng của bạn có thu thập dữ liệu hỗ trợ khách hàng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1234,9 +1234,9 @@ Indicates whether your app collects customer support data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/customer_support/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/customer_support/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/collection_purposes>`
 
-The reasons your app collects customer support data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu hỗ trợ khách hàng. Xem `Mô tả cách sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1246,9 +1246,9 @@ The reasons your app collects customer support data. See `Describing data use in
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/customer_support/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/customer_support/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/linked_to_user>`
 
-Indicates whether your app links customer support data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu hỗ trợ khách hàng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1258,9 +1258,9 @@ Indicates whether your app links customer support data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/customer_support/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/customer_support/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/customer_support/used_for_tracking>`
 
-Indicates whether your app uses customer support data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu hỗ trợ khách hàng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1270,9 +1270,9 @@ Indicates whether your app uses customer support data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/device_id/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/device_id/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collected>`
 
-Indicates whether your app collects device IDs.
+Cho biết ứng dụng của bạn có thu thập ID thiết bị hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1282,9 +1282,9 @@ Indicates whether your app collects device IDs.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/device_id/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/device_id/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/collection_purposes>`
 
-The reasons your app collects device IDs. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập ID thiết bị. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1294,9 +1294,9 @@ The reasons your app collects device IDs. See `Describing data use in privacy ma
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/device_id/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/device_id/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/linked_to_user>`
 
-Indicates whether your app links device IDs to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết ID thiết bị với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1306,9 +1306,9 @@ Indicates whether your app links device IDs to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/device_id/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/device_id/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/device_id/used_for_tracking>`
 
-Indicates whether your app uses device IDs for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng ID thiết bị để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1318,9 +1318,9 @@ Indicates whether your app uses device IDs for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/email_address/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/email_address/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collected>`
 
-Indicates whether your app collects email address.
+Cho biết liệu ứng dụng của bạn có thu thập địa chỉ email hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1330,9 +1330,9 @@ Indicates whether your app collects email address.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/email_address/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/email_address/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/collection_purposes>`
 
-The reasons your app collects email address. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập địa chỉ email. Xem `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1342,9 +1342,9 @@ The reasons your app collects email address. See `Describing data use in privacy
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/email_address/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/email_address/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/linked_to_user>`
 
-Indicates whether your app links email address to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết địa chỉ email với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1354,9 +1354,9 @@ Indicates whether your app links email address to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/email_address/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/email_address/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/email_address/used_for_tracking>`
 
-Indicates whether your app uses email address for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng địa chỉ email để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1366,9 +1366,9 @@ Indicates whether your app uses email address for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collected>`
 
-Indicates whether your app collects emails or text messages.
+Cho biết liệu ứng dụng của bạn có thu thập email hoặc tin nhắn văn bản hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1378,9 +1378,9 @@ Indicates whether your app collects emails or text messages.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/emails_or_text_messages/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/emails_or_text_messages/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/collection_purposes>`
 
-The reasons your app collects emails or text messages. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập email hoặc tin nhắn văn bản. Xem `Mô tả cách sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1390,9 +1390,9 @@ The reasons your app collects emails or text messages. See `Describing data use 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/linked_to_user>`
 
-Indicates whether your app links emails or text messages to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết email hoặc tin nhắn văn bản với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1402,9 +1402,9 @@ Indicates whether your app links emails or text messages to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/emails_or_text_messages/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/emails_or_text_messages/used_for_tracking>`
 
-Indicates whether your app uses emails or text messages for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng email hoặc tin nhắn văn bản để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1414,9 +1414,9 @@ Indicates whether your app uses emails or text messages for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collected>`
 
-Indicates whether your app collects environment scanning data.
+Cho biết liệu ứng dụng của bạn có thu thập dữ liệu quét môi trường hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1426,9 +1426,9 @@ Indicates whether your app collects environment scanning data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/environment_scanning/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/environment_scanning/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/collection_purposes>`
 
-The reasons your app collects environment scanning data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu quét môi trường. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1438,9 +1438,9 @@ The reasons your app collects environment scanning data. See `Describing data us
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/linked_to_user>`
 
-Indicates whether your app links environment scanning data to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết dữ liệu quét môi trường với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1450,9 +1450,9 @@ Indicates whether your app links environment scanning data to the user's identit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/environment_scanning/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/environment_scanning/used_for_tracking>`
 
-Indicates whether your app uses environment scanning data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu quét môi trường để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1462,9 +1462,9 @@ Indicates whether your app uses environment scanning data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/fitness/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/fitness/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collected>`
 
-Indicates whether your app collects fitness and exercise data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu về thể chất và việc tập luyện hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1474,9 +1474,9 @@ Indicates whether your app collects fitness and exercise data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/fitness/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/fitness/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/collection_purposes>`
 
-The reasons your app collects fitness and exercise data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu về thể chất và việc tập luyện. Xem `Mô tả việc sử dụng dữ liệu trong các privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1486,9 +1486,9 @@ The reasons your app collects fitness and exercise data. See `Describing data us
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/fitness/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/fitness/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/linked_to_user>`
 
-Indicates whether your app links fitness and exercise data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu về thể chất và việc tập luyện với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1498,9 +1498,9 @@ Indicates whether your app links fitness and exercise data to the user's identit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/fitness/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/fitness/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/fitness/used_for_tracking>`
 
-Indicates whether your app uses fitness and exercise data for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng dữ liệu về thể chất và tập luyện để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1510,9 +1510,9 @@ Indicates whether your app uses fitness and exercise data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collected>`
 
-Indicates whether your app collects gameplay content.
+Cho biết liệu ứng dụng của bạn có thu thập nội dung chơi game hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1522,9 +1522,9 @@ Indicates whether your app collects gameplay content.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/gameplay_content/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/gameplay_content/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/collection_purposes>`
 
-The reasons your app collects gameplay content. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập nội dung chơi game. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1534,9 +1534,9 @@ The reasons your app collects gameplay content. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/linked_to_user>`
 
-Indicates whether your app links gameplay content to the user's identity.
+Cho biết ứng dụng của bạn có liên kết nội dung gameplay với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1546,9 +1546,9 @@ Indicates whether your app links gameplay content to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/gameplay_content/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/gameplay_content/used_for_tracking>`
 
-Indicates whether your app uses gameplay content for tracking.
+Cho biết ứng dụng của bạn có sử dụng nội dung gameplay để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1558,9 +1558,9 @@ Indicates whether your app uses gameplay content for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/hands/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/hands/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collected>`
 
-Indicates whether your app collects user's hand structure and hand movements.
+Cho biết ứng dụng của bạn có thu thập cấu trúc bàn tay và chuyển động bàn tay của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1570,9 +1570,9 @@ Indicates whether your app collects user's hand structure and hand movements.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/hands/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/hands/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/collection_purposes>`
 
-The reasons your app collects user's hand structure and hand movements. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập cấu trúc bàn tay và chuyển động bàn tay của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1582,9 +1582,9 @@ The reasons your app collects user's hand structure and hand movements. See `Des
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/hands/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/hands/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/linked_to_user>`
 
-Indicates whether your app links user's hand structure and hand movements to the user's identity.
+Cho biết ứng dụng của bạn có liên kết cấu trúc bàn tay và chuyển động bàn tay của người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1594,9 +1594,9 @@ Indicates whether your app links user's hand structure and hand movements to the
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/hands/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/hands/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/hands/used_for_tracking>`
 
-Indicates whether your app uses user's hand structure and hand movements for tracking.
+Cho biết ứng dụng của bạn có sử dụng cấu trúc bàn tay và chuyển động bàn tay của người dùng để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1606,9 +1606,9 @@ Indicates whether your app uses user's hand structure and hand movements for tra
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/head/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/head/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collected>`
 
-Indicates whether your app collects user's head movement.
+Cho biết ứng dụng của bạn có thu thập chuyển động đầu của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1618,9 +1618,9 @@ Indicates whether your app collects user's head movement.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/head/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/head/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/collection_purposes>`
 
-The reasons your app collects user's head movement. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập chuyển động đầu của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong các privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1630,9 +1630,9 @@ The reasons your app collects user's head movement. See `Describing data use in 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/head/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/head/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/linked_to_user>`
 
-Indicates whether your app links user's head movement to the user's identity.
+Cho biết ứng dụng của bạn có liên kết chuyển động đầu của người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1642,9 +1642,9 @@ Indicates whether your app links user's head movement to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/head/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/head/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/head/used_for_tracking>`
 
-Indicates whether your app uses user's head movement for tracking.
+Cho biết ứng dụng của bạn có sử dụng chuyển động đầu của người dùng để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1654,9 +1654,9 @@ Indicates whether your app uses user's head movement for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/health/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/health/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collected>`
 
-Indicates whether your app collects health and medical data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu sức khỏe và y tế hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1666,9 +1666,9 @@ Indicates whether your app collects health and medical data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/health/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/health/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/collection_purposes>`
 
-The reasons your app collects health and medical data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu sức khỏe và y tế. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1678,9 +1678,9 @@ The reasons your app collects health and medical data. See `Describing data use 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/health/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/health/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/linked_to_user>`
 
-Indicates whether your app links health and medical data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu sức khỏe và y tế với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1690,9 +1690,9 @@ Indicates whether your app links health and medical data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/health/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/health/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/health/used_for_tracking>`
 
-Indicates whether your app uses health and medical data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu sức khỏe và y tế để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1702,9 +1702,9 @@ Indicates whether your app uses health and medical data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/name/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/name/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collected>`
 
-Indicates whether your app collects user's name.
+Cho biết liệu ứng dụng của bạn có thu thập tên của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1714,9 +1714,9 @@ Indicates whether your app collects user's name.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/name/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/name/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/collection_purposes>`
 
-The reasons your app collects user's name. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập tên của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1726,9 +1726,9 @@ The reasons your app collects user's name. See `Describing data use in privacy m
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/name/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/name/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/linked_to_user>`
 
-Indicates whether your app links user's name to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết tên của người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1738,9 +1738,9 @@ Indicates whether your app links user's name to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/name/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/name/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/name/used_for_tracking>`
 
-Indicates whether your app uses user's name for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng tên của người dùng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1750,9 +1750,9 @@ Indicates whether your app uses user's name for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collected>`
 
-Indicates whether your app collects any other contact information.
+Cho biết liệu ứng dụng của bạn có thu thập bất kỳ thông tin liên hệ nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1762,9 +1762,9 @@ Indicates whether your app collects any other contact information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_contact_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_contact_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/collection_purposes>`
 
-The reasons your app collects any other contact information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ thông tin liên hệ nào khác. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1774,9 +1774,9 @@ The reasons your app collects any other contact information. See `Describing dat
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/linked_to_user>`
 
-Indicates whether your app links any other contact information to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết bất kỳ thông tin liên hệ nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1786,9 +1786,9 @@ Indicates whether your app links any other contact information to the user's ide
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_contact_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_contact_info/used_for_tracking>`
 
-Indicates whether your app uses any other contact information for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng bất kỳ thông tin liên hệ nào khác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1798,9 +1798,9 @@ Indicates whether your app uses any other contact information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collected>`
 
-Indicates whether your app collects any other data.
+Cho biết liệu ứng dụng của bạn có thu thập bất kỳ dữ liệu nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1810,9 +1810,9 @@ Indicates whether your app collects any other data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_data_types/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_data_types/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/collection_purposes>`
 
-The reasons your app collects any other data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ dữ liệu nào khác. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1822,9 +1822,9 @@ The reasons your app collects any other data. See `Describing data use in privac
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/linked_to_user>`
 
-Indicates whether your app links any other data to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết bất kỳ dữ liệu nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1834,9 +1834,9 @@ Indicates whether your app links any other data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_data_types/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_data_types/used_for_tracking>`
 
-Indicates whether your app uses any other data for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng bất kỳ dữ liệu nào khác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1846,9 +1846,9 @@ Indicates whether your app uses any other data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collected>`
 
-Indicates whether your app collects any other diagnostic data.
+Cho biết liệu ứng dụng của bạn có thu thập bất kỳ dữ liệu chẩn đoán nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1858,9 +1858,9 @@ Indicates whether your app collects any other diagnostic data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_diagnostic_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_diagnostic_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/collection_purposes>`
 
-The reasons your app collects any other diagnostic data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập bất kỳ dữ liệu chẩn đoán nào khác. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1870,9 +1870,9 @@ The reasons your app collects any other diagnostic data. See `Describing data us
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/linked_to_user>`
 
-Indicates whether your app links any other diagnostic data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết bất kỳ dữ liệu chẩn đoán nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1882,9 +1882,9 @@ Indicates whether your app links any other diagnostic data to the user's identit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_diagnostic_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_diagnostic_data/used_for_tracking>`
 
-Indicates whether your app uses any other diagnostic data for tracking.
+Cho biết ứng dụng của bạn có sử dụng bất kỳ dữ liệu chẩn đoán nào khác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1894,9 +1894,9 @@ Indicates whether your app uses any other diagnostic data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collected>`
 
-Indicates whether your app collects any other financial information.
+Cho biết ứng dụng của bạn có thu thập bất kỳ thông tin tài chính nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1906,9 +1906,9 @@ Indicates whether your app collects any other financial information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_financial_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_financial_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/collection_purposes>`
 
-The reasons your app collects any other financial information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ thông tin tài chính nào khác. Xem `Mô tả việc sử dụng dữ liệu trong các bản kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1918,9 +1918,9 @@ The reasons your app collects any other financial information. See `Describing d
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/linked_to_user>`
 
-Indicates whether your app links any other financial information to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết bất kỳ thông tin tài chính nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1930,9 +1930,9 @@ Indicates whether your app links any other financial information to the user's i
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_financial_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_financial_info/used_for_tracking>`
 
-Indicates whether your app uses any other financial information for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng bất kỳ thông tin tài chính nào khác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1942,9 +1942,9 @@ Indicates whether your app uses any other financial information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collected>`
 
-Indicates whether your app collects any other usage data.
+Cho biết liệu ứng dụng của bạn có thu thập bất kỳ dữ liệu sử dụng nào khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1954,9 +1954,9 @@ Indicates whether your app collects any other usage data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_usage_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_usage_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/collection_purposes>`
 
-The reasons your app collects any other usage data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ dữ liệu sử dụng nào khác. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1966,9 +1966,9 @@ The reasons your app collects any other usage data. See `Describing data use in 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/linked_to_user>`
 
-Indicates whether your app links any other usage data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết bất kỳ dữ liệu sử dụng nào khác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1978,9 +1978,9 @@ Indicates whether your app links any other usage data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_usage_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_usage_data/used_for_tracking>`
 
-Indicates whether your app uses any other usage data for tracking.
+Cho biết ứng dụng của bạn có sử dụng bất kỳ dữ liệu sử dụng nào khác để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1990,9 +1990,9 @@ Indicates whether your app uses any other usage data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collected>`
 
-Indicates whether your app collects any other user generated content.
+Cho biết ứng dụng của bạn có thu thập bất kỳ nội dung nào khác do người dùng tạo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2002,9 +2002,9 @@ Indicates whether your app collects any other user generated content.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/other_user_content/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/other_user_content/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/collection_purposes>`
 
-The reasons your app collects any other user generated content. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập bất kỳ nội dung nào khác do người dùng tạo. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2014,9 +2014,9 @@ The reasons your app collects any other user generated content. See `Describing 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/linked_to_user>`
 
-Indicates whether your app links any other user generated content to the user's identity.
+Cho biết ứng dụng của bạn có liên kết bất kỳ nội dung nào khác do người dùng tạo với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2026,9 +2026,9 @@ Indicates whether your app links any other user generated content to the user's 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/other_user_content/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/other_user_content/used_for_tracking>`
 
-Indicates whether your app uses any other user generated content for tracking.
+Cho biết ứng dụng của bạn có sử dụng bất kỳ nội dung nào khác do người dùng tạo để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2038,9 +2038,9 @@ Indicates whether your app uses any other user generated content for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/payment_info/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/payment_info/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collected>`
 
-Indicates whether your app collects payment information.
+Cho biết liệu ứng dụng của bạn có thu thập thông tin thanh toán hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2050,9 +2050,9 @@ Indicates whether your app collects payment information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/payment_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/payment_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/collection_purposes>`
 
-The reasons your app collects payment information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập thông tin thanh toán. Xem `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2062,9 +2062,9 @@ The reasons your app collects payment information. See `Describing data use in p
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/payment_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/payment_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/linked_to_user>`
 
-Indicates whether your app links payment information to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết thông tin thanh toán với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2074,9 +2074,9 @@ Indicates whether your app links payment information to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/payment_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/payment_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/payment_info/used_for_tracking>`
 
-Indicates whether your app uses payment information for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng thông tin thanh toán để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2086,9 +2086,9 @@ Indicates whether your app uses payment information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/performance_data/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/performance_data/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collected>`
 
-Indicates whether your app collects performance data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu hiệu suất hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2098,9 +2098,9 @@ Indicates whether your app collects performance data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/performance_data/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/performance_data/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/collection_purposes>`
 
-The reasons your app collects performance data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu hiệu suất. Xem `Mô tả việc sử dụng dữ liệu trong các tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2110,9 +2110,9 @@ The reasons your app collects performance data. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/performance_data/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/performance_data/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/linked_to_user>`
 
-Indicates whether your app links performance data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu hiệu suất với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2122,9 +2122,9 @@ Indicates whether your app links performance data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/performance_data/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/performance_data/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/performance_data/used_for_tracking>`
 
-Indicates whether your app uses performance data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu hiệu suất để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2134,9 +2134,9 @@ Indicates whether your app uses performance data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/phone_number/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/phone_number/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collected>`
 
-Indicates whether your app collects phone number.
+Cho biết ứng dụng của bạn có thu thập số điện thoại hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2146,9 +2146,9 @@ Indicates whether your app collects phone number.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/phone_number/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/phone_number/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/collection_purposes>`
 
-The reasons your app collects phone number. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập số điện thoại. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2158,9 +2158,9 @@ The reasons your app collects phone number. See `Describing data use in privacy 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/phone_number/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/phone_number/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/linked_to_user>`
 
-Indicates whether your app links phone number to the user's identity.
+Cho biết ứng dụng của bạn có liên kết số điện thoại với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2170,9 +2170,9 @@ Indicates whether your app links phone number to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/phone_number/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/phone_number/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/phone_number/used_for_tracking>`
 
-Indicates whether your app uses phone number for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng số điện thoại để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2182,9 +2182,9 @@ Indicates whether your app uses phone number for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collected>`
 
-Indicates whether your app collects photos or videos.
+Cho biết liệu ứng dụng của bạn có thu thập ảnh hoặc video hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2194,9 +2194,9 @@ Indicates whether your app collects photos or videos.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/photos_or_videos/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/photos_or_videos/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/collection_purposes>`
 
-The reasons your app collects photos or videos. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập ảnh hoặc video. Xem `Mô tả cách sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2206,9 +2206,9 @@ The reasons your app collects photos or videos. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/linked_to_user>`
 
-Indicates whether your app links photos or videos to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết ảnh hoặc video với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2218,9 +2218,9 @@ Indicates whether your app links photos or videos to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/photos_or_videos/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/photos_or_videos/used_for_tracking>`
 
-Indicates whether your app uses photos or videos for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng ảnh hoặc video để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2230,9 +2230,9 @@ Indicates whether your app uses photos or videos for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/physical_address/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/physical_address/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collected>`
 
-Indicates whether your app collects physical address.
+Cho biết liệu ứng dụng của bạn có thu thập địa chỉ thực hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2242,9 +2242,9 @@ Indicates whether your app collects physical address.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/physical_address/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/physical_address/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/collection_purposes>`
 
-The reasons your app collects physical address. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập địa chỉ thực. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2254,9 +2254,9 @@ The reasons your app collects physical address. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/physical_address/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/physical_address/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/linked_to_user>`
 
-Indicates whether your app links physical address to the user's identity.
+Cho biết ứng dụng của bạn có liên kết địa chỉ thực với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2266,9 +2266,9 @@ Indicates whether your app links physical address to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/physical_address/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/physical_address/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/physical_address/used_for_tracking>`
 
-Indicates whether your app uses physical address for tracking.
+Cho biết ứng dụng của bạn có sử dụng địa chỉ thực để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2278,9 +2278,9 @@ Indicates whether your app uses physical address for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/precise_location/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/precise_location/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collected>`
 
-Indicates whether your app collects precise location data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu vị trí chính xác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2290,9 +2290,9 @@ Indicates whether your app collects precise location data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/precise_location/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/precise_location/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/collection_purposes>`
 
-The reasons your app collects precise location data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Lý do ứng dụng của bạn thu thập dữ liệu vị trí chính xác. Xem `Mô tả việc sử dụng dữ liệu trong các privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2302,9 +2302,9 @@ The reasons your app collects precise location data. See `Describing data use in
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/precise_location/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/precise_location/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/linked_to_user>`
 
-Indicates whether your app links precise location data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu vị trí chính xác với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2314,9 +2314,9 @@ Indicates whether your app links precise location data to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/precise_location/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/precise_location/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/precise_location/used_for_tracking>`
 
-Indicates whether your app uses precise location data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu vị trí chính xác để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2326,9 +2326,9 @@ Indicates whether your app uses precise location data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collected>`
 
-Indicates whether your app collects product interaction data.
+Cho biết ứng dụng của bạn có thu thập dữ liệu tương tác với sản phẩm hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2338,9 +2338,9 @@ Indicates whether your app collects product interaction data.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/product_interaction/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/product_interaction/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/collection_purposes>`
 
-The reasons your app collects product interaction data. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập dữ liệu về tương tác với sản phẩm. Xem `Mô tả việc sử dụng dữ liệu trong các manifest về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2350,9 +2350,9 @@ The reasons your app collects product interaction data. See `Describing data use
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/linked_to_user>`
 
-Indicates whether your app links product interaction data to the user's identity.
+Cho biết ứng dụng của bạn có liên kết dữ liệu về tương tác với sản phẩm với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2362,9 +2362,9 @@ Indicates whether your app links product interaction data to the user's identity
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/product_interaction/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/product_interaction/used_for_tracking>`
 
-Indicates whether your app uses product interaction data for tracking.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu về tương tác với sản phẩm để tracking hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2374,9 +2374,9 @@ Indicates whether your app uses product interaction data for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collected>`
 
-Indicates whether your app collects purchase history.
+Cho biết liệu ứng dụng của bạn có thu thập lịch sử mua hàng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2386,9 +2386,9 @@ Indicates whether your app collects purchase history.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/purchase_history/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/purchase_history/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/collection_purposes>`
 
-The reasons your app collects purchase history. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập lịch sử mua hàng. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2398,9 +2398,9 @@ The reasons your app collects purchase history. See `Describing data use in priv
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/linked_to_user>`
 
-Indicates whether your app links purchase history to the user's identity.
+Cho biết liệu ứng dụng của bạn có liên kết lịch sử mua hàng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2410,9 +2410,9 @@ Indicates whether your app links purchase history to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/purchase_history/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/purchase_history/used_for_tracking>`
 
-Indicates whether your app uses purchase history for tracking.
+Cho biết liệu ứng dụng của bạn có sử dụng lịch sử mua hàng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2422,9 +2422,9 @@ Indicates whether your app uses purchase history for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/search_history/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/search_history/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collected>`
 
-Indicates whether your app collects search history.
+Cho biết ứng dụng của bạn có thu thập lịch sử tìm kiếm hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2434,9 +2434,9 @@ Indicates whether your app collects search history.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/search_history/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/search_history/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/collection_purposes>`
 
-The reasons your app collects search history. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập lịch sử tìm kiếm. Xem `Mô tả việc sử dụng dữ liệu trong tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2446,9 +2446,9 @@ The reasons your app collects search history. See `Describing data use in privac
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/search_history/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/search_history/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/linked_to_user>`
 
-Indicates whether your app links search history to the user's identity.
+Cho biết ứng dụng của bạn có liên kết lịch sử tìm kiếm với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2458,9 +2458,9 @@ Indicates whether your app links search history to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/search_history/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/search_history/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/search_history/used_for_tracking>`
 
-Indicates whether your app uses search history for tracking.
+Cho biết ứng dụng của bạn có sử dụng lịch sử tìm kiếm để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2470,9 +2470,9 @@ Indicates whether your app uses search history for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collected>`
 
-Indicates whether your app collects sensitive user information.
+Cho biết ứng dụng của bạn có thu thập thông tin nhạy cảm của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2482,9 +2482,9 @@ Indicates whether your app collects sensitive user information.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/sensitive_info/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/sensitive_info/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/collection_purposes>`
 
-The reasons your app collects sensitive user information. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập thông tin nhạy cảm của người dùng. Xem `Mô tả việc sử dụng dữ liệu trong privacy manifest <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2494,9 +2494,9 @@ The reasons your app collects sensitive user information. See `Describing data u
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/linked_to_user>`
 
-Indicates whether your app links sensitive user information to the user's identity.
+Cho biết ứng dụng của bạn có liên kết thông tin nhạy cảm của người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2506,9 +2506,9 @@ Indicates whether your app links sensitive user information to the user's identi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/sensitive_info/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/sensitive_info/used_for_tracking>`
 
-Indicates whether your app uses sensitive user information for tracking.
+Cho biết ứng dụng của bạn có sử dụng thông tin nhạy cảm của người dùng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2518,9 +2518,9 @@ Indicates whether your app uses sensitive user information for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/user_id/collected** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collected>`
+:ref:`bool<class_bool>` **privacy/collected_data/user_id/collected** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collected>`
 
-Indicates whether your app collects user IDs.
+Cho biết ứng dụng của bạn có thu thập ID người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2530,9 +2530,9 @@ Indicates whether your app collects user IDs.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/collected_data/user_id/collection_purposes** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collection_purposes>`
+:ref:`int<class_int>` **privacy/collected_data/user_id/collection_purposes** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/collection_purposes>`
 
-The reasons your app collects user IDs. See `Describing data use in privacy manifests <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
+Các lý do ứng dụng của bạn thu thập ID người dùng. Xem `Mô tả việc sử dụng dữ liệu trong các manifest về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2542,9 +2542,9 @@ The reasons your app collects user IDs. See `Describing data use in privacy mani
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/user_id/linked_to_user** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/linked_to_user>`
+:ref:`bool<class_bool>` **privacy/collected_data/user_id/linked_to_user** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/linked_to_user>`
 
-Indicates whether your app links user IDs to the user's identity.
+Cho biết ứng dụng của bạn có liên kết ID người dùng với danh tính của người dùng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2554,9 +2554,9 @@ Indicates whether your app links user IDs to the user's identity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/collected_data/user_id/used_for_tracking** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/used_for_tracking>`
+:ref:`bool<class_bool>` **privacy/collected_data/user_id/used_for_tracking** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/collected_data/user_id/used_for_tracking>`
 
-Indicates whether your app uses user IDs for tracking.
+Cho biết ứng dụng của bạn có sử dụng ID người dùng để theo dõi hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2566,9 +2566,9 @@ Indicates whether your app uses user IDs for tracking.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/disk_space_access_reasons** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/disk_space_access_reasons>`
+:ref:`int<class_int>` **privacy/disk_space_access_reasons** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/disk_space_access_reasons>`
 
-The reasons your app use free disk space API. See `Describing use of required reason API <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
+Các lý do ứng dụng của bạn sử dụng API dung lượng đĩa trống. Xem `Mô tả việc sử dụng API lý do bắt buộc <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2578,9 +2578,9 @@ The reasons your app use free disk space API. See `Describing use of required re
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/file_timestamp_access_reasons** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/file_timestamp_access_reasons>`
+:ref:`int<class_int>` **privacy/file_timestamp_access_reasons** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/file_timestamp_access_reasons>`
 
-The reasons your app use file timestamp/metadata API. See `Describing use of required reason API <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
+Các lý do ứng dụng của bạn sử dụng API dấu thời gian/siêu dữ liệu tệp. Xem `Mô tả việc sử dụng API lý do bắt buộc <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2590,9 +2590,9 @@ The reasons your app use file timestamp/metadata API. See `Describing use of req
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/microphone_usage_description** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description>`
+:ref:`String<class_String>` **privacy/microphone_usage_description** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description>`
 
-A message displayed when requesting access to the device's microphone (in English).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào microphone của thiết bị (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -2602,9 +2602,9 @@ A message displayed when requesting access to the device's microphone (in Englis
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/microphone_usage_description_localized** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/microphone_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/microphone_usage_description_localized>`
 
-A message displayed when requesting access to the device's microphone (localized).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào microphone của thiết bị (bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -2614,9 +2614,9 @@ A message displayed when requesting access to the device's microphone (localized
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **privacy/photolibrary_usage_description** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description>`
+:ref:`String<class_String>` **privacy/photolibrary_usage_description** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description>`
 
-A message displayed when requesting access to the user's photo library (in English).
+Thông báo được hiển thị khi yêu cầu quyền truy cập vào thư viện ảnh của người dùng (bằng tiếng Anh).
 
 .. rst-class:: classref-item-separator
 
@@ -2626,9 +2626,9 @@ A message displayed when requesting access to the user's photo library (in Engli
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **privacy/photolibrary_usage_description_localized** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description_localized>`
+:ref:`Dictionary<class_Dictionary>` **privacy/photolibrary_usage_description_localized** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/photolibrary_usage_description_localized>`
 
-A message displayed when requesting access to the user's photo library (localized).
+Thông báo hiển thị khi yêu cầu quyền truy cập vào thư viện ảnh của người dùng (đã bản địa hóa).
 
 .. rst-class:: classref-item-separator
 
@@ -2638,9 +2638,9 @@ A message displayed when requesting access to the user's photo library (localize
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/system_boot_time_access_reasons** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/system_boot_time_access_reasons>`
+:ref:`int<class_int>` **privacy/system_boot_time_access_reasons** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/system_boot_time_access_reasons>`
 
-The reasons your app use system boot time / absolute time API. See `Describing use of required reason API <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
+Các lý do ứng dụng của bạn sử dụng API thời gian khởi động hệ thống / thời gian tuyệt đối. Xem `Mô tả việc sử dụng API bắt buộc <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2650,11 +2650,11 @@ The reasons your app use system boot time / absolute time API. See `Describing u
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **privacy/tracking_domains** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/tracking_domains>`
+:ref:`PackedStringArray<class_PackedStringArray>` **privacy/tracking_domains** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/tracking_domains>`
 
-The list of internet domains your app connects to that engage in tracking. See `Privacy manifest files <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
+Danh sách các miền Internet mà ứng dụng của bạn kết nối đến và có hoạt động tracking. Xem `Tệp kê khai quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -2664,9 +2664,9 @@ The list of internet domains your app connects to that engage in tracking. See `
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **privacy/tracking_enabled** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/tracking_enabled>`
+:ref:`bool<class_bool>` **privacy/tracking_enabled** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/tracking_enabled>`
 
-Indicates whether your app uses data for tracking. See `Privacy manifest files <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
+Cho biết ứng dụng của bạn có sử dụng dữ liệu để theo dõi hay không. Xem `Tệp manifest về quyền riêng tư <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2676,9 +2676,9 @@ Indicates whether your app uses data for tracking. See `Privacy manifest files <
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **privacy/user_defaults_access_reasons** :ref:`🔗<class_EditorExportPlatformVisionOS_property_privacy/user_defaults_access_reasons>`
+:ref:`int<class_int>` **privacy/user_defaults_access_reasons** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_privacy/user_defaults_access_reasons>`
 
-The reasons your app use user defaults API. See `Describing use of required reason API <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
+Các lý do ứng dụng của bạn sử dụng user defaults API. Xem `Mô tả việc sử dụng API bắt buộc có lý do <https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2688,11 +2688,11 @@ The reasons your app use user defaults API. See `Describing use of required reas
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗<class_EditorExportPlatformVisionOS_property_shader_baker/enabled>`
+:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_shader_baker/enabled>`
 
-If ``true``, shaders will be compiled and embedded in the application. This option is only supported when using the Forward+ and Mobile renderers.
+Nếu ``true``, các shader sẽ được biên dịch và nhúng vào ứng dụng. Tùy chọn này chỉ được hỗ trợ khi sử dụng Forward+ và Mobile renderer.
 
-\ **Note:** When exporting as a dedicated server, the shader baker is always disabled since no rendering is performed.
+\ **Lưu ý:** Khi xuất dưới dạng dedicated server, shader baker luôn bị tắt vì không thực hiện kết xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -2702,9 +2702,9 @@ If ``true``, shaders will be compiled and embedded in the application. This opti
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **user_data/accessible_from_files_app** :ref:`🔗<class_EditorExportPlatformVisionOS_property_user_data/accessible_from_files_app>`
+:ref:`bool<class_bool>` **user_data/accessible_from_files_app** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_user_data/accessible_from_files_app>`
 
-If ``true``, the app "Documents" folder can be accessed via "Files" app. See `LSSupportsOpeningDocumentsInPlace <https://developer.apple.com/documentation/bundleresources/information_property_list/lssupportsopeningdocumentsinplace>`__.
+Nếu ``true``, thư mục "Documents" của ứng dụng có thể được truy cập thông qua ứng dụng "Files". Xem `LSSupportsOpeningDocumentsInPlace <https://developer.apple.com/documentation/bundleresources/information_property_list/lssupportsopeningdocumentsinplace>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2714,16 +2714,16 @@ If ``true``, the app "Documents" folder can be accessed via "Files" app. See `LS
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **user_data/accessible_from_itunes_sharing** :ref:`🔗<class_EditorExportPlatformVisionOS_property_user_data/accessible_from_itunes_sharing>`
+:ref:`bool<class_bool>` **user_data/accessible_from_itunes_sharing** :ref:`🔗 <class_EditorExportPlatformVisionOS_property_user_data/accessible_from_itunes_sharing>`
 
-If ``true``, the app "Documents" folder can be accessed via iTunes file sharing. See `UIFileSharingEnabled <https://developer.apple.com/documentation/bundleresources/information_property_list/uifilesharingenabled>`__.
+Nếu ``true``, thư mục "Documents" của ứng dụng có thể được truy cập thông qua tính năng chia sẻ tệp của iTunes. Xem `UIFileSharingEnabled <https://developer.apple.com/documentation/bundleresources/information_property_list/uifilesharingenabled>`__.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

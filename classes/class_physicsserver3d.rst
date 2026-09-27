@@ -10,37 +10,37 @@
 PhysicsServer3D
 ===============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`PhysicsServer3DExtension<class_PhysicsServer3DExtension>`
+**Được kế thừa bởi:** :ref:`PhysicsServer3DExtension<class_PhysicsServer3DExtension>`
 
-A server interface for low-level 3D physics access.
+Giao diện server để truy cập vật lý 3D cấp thấp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-PhysicsServer3D is the server responsible for all 3D physics. It can directly create and manipulate all physics objects:
+PhysicsServer3D là server chịu trách nhiệm cho toàn bộ vật lý 3D. Nó có thể trực tiếp tạo và thao tác với tất cả các đối tượng vật lý:
 
-- A *space* is a self-contained world for a physics simulation. It contains bodies, areas, and joints. Its state can be queried for collision and intersection information, and several parameters of the simulation can be modified.
+- Một *không gian* là một thế giới độc lập cho mô phỏng vật lý. Nó chứa các vật thể, khu vực và khớp nối. Có thể truy vấn trạng thái của nó để lấy thông tin về va chạm và giao nhau, đồng thời có thể sửa đổi một số tham số của mô phỏng.
 
-- A *shape* is a geometric shape such as a sphere, a box, a cylinder, or a polygon. It can be used for collision detection by adding it to a body/area, possibly with an extra transformation relative to the body/area's origin. Bodies/areas can have multiple (transformed) shapes added to them, and a single shape can be added to bodies/areas multiple times with different local transformations.
+- Một *hình dạng* là một hình dạng hình học như hình cầu, hình hộp, hình trụ hoặc đa giác. Nó có thể được sử dụng để phát hiện va chạm bằng cách thêm vào một vật thể/khu vực, có thể kèm theo một phép biến đổi bổ sung so với gốc của vật thể/khu vực. Có thể thêm nhiều hình dạng (đã biến đổi) vào các vật thể/khu vực, và một hình dạng duy nhất có thể được thêm vào các vật thể/khu vực nhiều lần với các phép biến đổi cục bộ khác nhau.
 
-- A *body* is a physical object which can be in static, kinematic, or rigid mode. Its state (such as position and velocity) can be queried and updated. A force integration callback can be set to customize the body's physics.
+- Một *body* là một đối tượng vật lý có thể ở chế độ static, kinematic hoặc rigid. Trạng thái của nó (chẳng hạn như vị trí và vận tốc) có thể được truy vấn và cập nhật. Có thể thiết lập callback tích hợp lực để tùy chỉnh physics của body.
 
-- An *area* is a region in space which can be used to detect bodies and areas entering and exiting it. A body monitoring callback can be set to report entering/exiting body shapes, and similarly an area monitoring callback can be set. Gravity and damping can be overridden within the area by setting area parameters.
+- Một *area* là một vùng trong không gian, có thể được dùng để phát hiện các body và area đi vào hoặc rời khỏi vùng đó. Có thể thiết lập callback giám sát body để báo cáo các shape của body đi vào hoặc rời khỏi vùng, và tương tự cũng có thể thiết lập callback giám sát area. Có thể ghi đè gravity và damping trong area bằng cách thiết lập các tham số của area.
 
-- A *joint* is a constraint, either between two bodies or on one body relative to a point. Parameters such as the joint bias and the rest length of a spring joint can be adjusted.
+- Một *joint* là một ràng buộc, nằm giữa hai body hoặc trên một body so với một điểm. Có thể điều chỉnh các tham số như joint bias và rest length của một spring joint.
 
-Physics objects in **PhysicsServer3D** may be created and manipulated independently; they do not have to be tied to nodes in the scene tree.
+Các đối tượng physics trong **PhysicsServer3D** có thể được tạo và thao tác độc lập; chúng không cần phải gắn với các node trong scene tree.
 
-\ **Note:** All the 3D physics nodes use the physics server internally. Adding a physics node to the scene tree will cause a corresponding physics object to be created in the physics server. A rigid body node registers a callback that updates the node's transform with the transform of the respective body object in the physics server (every physics update). An area node registers a callback to inform the area node about overlaps with the respective area object in the physics server. The raycast node queries the direct state of the relevant space in the physics server.
+\ **Lưu ý:** Tất cả các node physics 3D đều sử dụng physics server ở bên trong. Việc thêm một node physics vào scene tree sẽ khiến một đối tượng physics tương ứng được tạo trong physics server. Một node rigid body đăng ký một callback để cập nhật transform của node bằng transform của đối tượng body tương ứng trong physics server (sau mỗi lần cập nhật physics). Một node area đăng ký một callback để thông báo cho node area về các vùng chồng lấn với đối tượng area tương ứng trong physics server. Node raycast truy vấn direct state của space liên quan trong physics server.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -60,7 +60,7 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`area_get_object_instance_id<class_PhysicsServer3D_method_area_get_object_instance_id>`\ (\ area\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                            |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`area_get_param<class_PhysicsServer3D_method_area_get_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>`\ ) |const|                                                                                                                    |
+   | :ref:`Variant<class_Variant>`                                     | :ref:`area_get_param<class_PhysicsServer3D_method_area_get_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter <enum_PhysicsServer3D_AreaParameter>`\ ) |const|                                                                                                                   |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`area_get_shape<class_PhysicsServer3D_method_area_get_shape>`\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                   |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -84,7 +84,7 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`area_set_monitorable<class_PhysicsServer3D_method_area_set_monitorable>`\ (\ area\: :ref:`RID<class_RID>`, monitorable\: :ref:`bool<class_bool>`\ )                                                                                                                                           |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`area_set_param<class_PhysicsServer3D_method_area_set_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                     |
+   | |void|                                                            | :ref:`area_set_param<class_PhysicsServer3D_method_area_set_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter <enum_PhysicsServer3D_AreaParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                    |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`area_set_ray_pickable<class_PhysicsServer3D_method_area_set_ray_pickable>`\ (\ area\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ )                                                                                                                                              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -140,11 +140,11 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`body_get_max_contacts_reported<class_PhysicsServer3D_method_body_get_max_contacts_reported>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>`                    | :ref:`body_get_mode<class_PhysicsServer3D_method_body_get_mode>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                        |
+   | :ref:`BodyMode <enum_PhysicsServer3D_BodyMode>`                   | :ref:`body_get_mode<class_PhysicsServer3D_method_body_get_mode>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`body_get_object_instance_id<class_PhysicsServer3D_method_body_get_object_instance_id>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                            |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_param<class_PhysicsServer3D_method_body_get_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>`\ ) |const|                                                                                                                    |
+   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_param<class_PhysicsServer3D_method_body_get_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter <enum_PhysicsServer3D_BodyParameter>`\ ) |const|                                                                                                                   |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`body_get_shape<class_PhysicsServer3D_method_body_get_shape>`\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                   |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -154,9 +154,9 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`body_get_space<class_PhysicsServer3D_method_body_get_space>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_state<class_PhysicsServer3D_method_body_get_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`\ ) |const|                                                                                                                            |
+   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_state<class_PhysicsServer3D_method_body_get_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState <enum_PhysicsServer3D_BodyState>`\ ) |const|                                                                                                                           |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`body_is_axis_locked<class_PhysicsServer3D_method_body_is_axis_locked>`\ (\ body\: :ref:`RID<class_RID>`, axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|                                                                                                                     |
+   | :ref:`bool<class_bool>`                                           | :ref:`body_is_axis_locked<class_PhysicsServer3D_method_body_is_axis_locked>`\ (\ body\: :ref:`RID<class_RID>`, axis\: :ref:`BodyAxis <enum_PhysicsServer3D_BodyAxis>`\ ) |const|                                                                                                                    |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`body_is_continuous_collision_detection_enabled<class_PhysicsServer3D_method_body_is_continuous_collision_detection_enabled>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -168,7 +168,7 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_reset_mass_properties<class_PhysicsServer3D_method_body_reset_mass_properties>`\ (\ body\: :ref:`RID<class_RID>`\ )                                                                                                                                                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_axis_lock<class_PhysicsServer3D_method_body_set_axis_lock>`\ (\ body\: :ref:`RID<class_RID>`, axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )                                                                                               |
+   | |void|                                                            | :ref:`body_set_axis_lock<class_PhysicsServer3D_method_body_set_axis_lock>`\ (\ body\: :ref:`RID<class_RID>`, axis\: :ref:`BodyAxis <enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )                                                                                              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_axis_velocity<class_PhysicsServer3D_method_body_set_axis_velocity>`\ (\ body\: :ref:`RID<class_RID>`, axis_velocity\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                               |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -188,11 +188,11 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_max_contacts_reported<class_PhysicsServer3D_method_body_set_max_contacts_reported>`\ (\ body\: :ref:`RID<class_RID>`, amount\: :ref:`int<class_int>`\ )                                                                                                                              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_mode<class_PhysicsServer3D_method_body_set_mode>`\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>`\ )                                                                                                                                         |
+   | |void|                                                            | :ref:`body_set_mode<class_PhysicsServer3D_method_body_set_mode>`\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`BodyMode <enum_PhysicsServer3D_BodyMode>`\ )                                                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_omit_force_integration<class_PhysicsServer3D_method_body_set_omit_force_integration>`\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ )                                                                                                                          |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_param<class_PhysicsServer3D_method_body_set_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                     |
+   | |void|                                                            | :ref:`body_set_param<class_PhysicsServer3D_method_body_set_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter <enum_PhysicsServer3D_BodyParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                    |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_ray_pickable<class_PhysicsServer3D_method_body_set_ray_pickable>`\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ )                                                                                                                                              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -204,11 +204,11 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_space<class_PhysicsServer3D_method_body_set_space>`\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ )                                                                                                                                                               |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_state<class_PhysicsServer3D_method_body_set_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                             |
+   | |void|                                                            | :ref:`body_set_state<class_PhysicsServer3D_method_body_set_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState <enum_PhysicsServer3D_BodyState>`, value\: :ref:`Variant<class_Variant>`\ )"                                                                                           |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_state_sync_callback<class_PhysicsServer3D_method_body_set_state_sync_callback>`\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`\ )                                                                                                                      |
+   | |void|                                                            | :ref:`body_set_state_sync_callback<class_PhysicsServer3D_method_body_set_state_sync_callback>`\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`\ )"                                                                                                                     |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`body_test_motion<class_PhysicsServer3D_method_body_test_motion>`\ (\ body\: :ref:`RID<class_RID>`, parameters\: :ref:`PhysicsTestMotionParameters3D<class_PhysicsTestMotionParameters3D>`, result\: :ref:`PhysicsTestMotionResult3D<class_PhysicsTestMotionResult3D>` = null\ )               |
+   | :ref:`bool<class_bool>`                                           | :ref:`body_test_motion<class_PhysicsServer3D_method_body_test_motion>`\ (\ body\: :ref:`RID<class_RID>`, parameters\: :ref:`PhysicsTestMotionParameters3D<class_PhysicsTestMotionParameters3D>`, result\: :ref:`PhysicsTestMotionResult3D<class_PhysicsTestMotionResult3D>` = null\ )"              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`box_shape_create<class_PhysicsServer3D_method_box_shape_create>`\ (\ )                                                                                                                                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -216,9 +216,9 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`concave_polygon_shape_create<class_PhysicsServer3D_method_concave_polygon_shape_create>`\ (\ )                                                                                                                                                                                                |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`cone_twist_joint_get_param<class_PhysicsServer3D_method_cone_twist_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>`\ ) |const|                                                                               |
+   | :ref:`float<class_float>`                                         | :ref:`cone_twist_joint_get_param<class_PhysicsServer3D_method_cone_twist_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`ConeTwistJointParam <enum_PhysicsServer3D_ConeTwistJointParam>`\ ) |const|"                                                                             |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`cone_twist_joint_set_param<class_PhysicsServer3D_method_cone_twist_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>`, value\: :ref:`float<class_float>`\ )                                                    |
+   | |void|                                                            | :ref:`cone_twist_joint_set_param<class_PhysicsServer3D_method_cone_twist_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`ConeTwistJointParam <enum_PhysicsServer3D_ConeTwistJointParam>`, value\: :ref:`float<class_float>`\ )"                                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`convex_polygon_shape_create<class_PhysicsServer3D_method_convex_polygon_shape_create>`\ (\ )                                                                                                                                                                                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -226,27 +226,27 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`cylinder_shape_create<class_PhysicsServer3D_method_cylinder_shape_create>`\ (\ )                                                                                                                                                                                                              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`free_rid<class_PhysicsServer3D_method_free_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                           |
+   | |void|                                                            | :ref:`free_rid<class_PhysicsServer3D_method_free_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ )"                                                                                                                                                                                                          |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`generic_6dof_joint_get_flag<class_PhysicsServer3D_method_generic_6dof_joint_get_flag>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, flag\: :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>`\ ) |const|                                         |
+   | :ref:`bool<class_bool>`                                           | :ref:`generic_6dof_joint_get_flag<class_PhysicsServer3D_method_generic_6dof_joint_get_flag>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis <enum_Vector3_Axis>`, flag\: :ref:`G6DOFJointAxisFlag <enum_PhysicsServer3D_G6DOFJointAxisFlag>`\ ) |const|"                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`generic_6dof_joint_get_param<class_PhysicsServer3D_method_generic_6dof_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, param\: :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>`\ ) |const|                                    |
+   | :ref:`float<class_float>`                                         | :ref:`generic_6dof_joint_get_param<class_PhysicsServer3D_method_generic_6dof_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis <enum_Vector3_Axis>`, param\: :ref:`G6DOFJointAxisParam <enum_PhysicsServer3D_G6DOFJointAxisParam>`\ ) |const|                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`generic_6dof_joint_set_flag<class_PhysicsServer3D_method_generic_6dof_joint_set_flag>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, flag\: :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>`, enable\: :ref:`bool<class_bool>`\ )               |
+   | |void|                                                            | :ref:`generic_6dof_joint_set_flag<class_PhysicsServer3D_method_generic_6dof_joint_set_flag>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis <enum_Vector3_Axis>`, flag\: :ref:`G6DOFJointAxisFlag <enum_PhysicsServer3D_G6DOFJointAxisFlag>`, enable\: :ref:`bool<class_bool>`\ )             |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`generic_6dof_joint_set_param<class_PhysicsServer3D_method_generic_6dof_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, param\: :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>`, value\: :ref:`float<class_float>`\ )         |
+   | |void|                                                            | :ref:`generic_6dof_joint_set_param<class_PhysicsServer3D_method_generic_6dof_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis <enum_Vector3_Axis>`, param\: :ref:`G6DOFJointAxisParam <enum_PhysicsServer3D_G6DOFJointAxisParam>`, value\: :ref:`float<class_float>`\ )       |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_process_info<class_PhysicsServer3D_method_get_process_info>`\ (\ process_info\: :ref:`ProcessInfo<enum_PhysicsServer3D_ProcessInfo>`\ )                                                                                                                                                   |
+   | :ref:`int<class_int>`                                             | :ref:`get_process_info<class_PhysicsServer3D_method_get_process_info>`\ (\ process_info\: :ref:`ProcessInfo <enum_PhysicsServer3D_ProcessInfo>`\ )                                                                                                                                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`heightmap_shape_create<class_PhysicsServer3D_method_heightmap_shape_create>`\ (\ )                                                                                                                                                                                                            |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`hinge_joint_get_flag<class_PhysicsServer3D_method_hinge_joint_get_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`HingeJointFlag<enum_PhysicsServer3D_HingeJointFlag>`\ ) |const|                                                                                                      |
+   | :ref:`bool<class_bool>`                                           | :ref:`hinge_joint_get_flag<class_PhysicsServer3D_method_hinge_joint_get_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`HingeJointFlag <enum_PhysicsServer3D_HingeJointFlag>`\ ) |const|                                                                                                     |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`hinge_joint_get_param<class_PhysicsServer3D_method_hinge_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>`\ ) |const|                                                                                                 |
+   | :ref:`float<class_float>`                                         | :ref:`hinge_joint_get_param<class_PhysicsServer3D_method_hinge_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`HingeJointParam <enum_PhysicsServer3D_HingeJointParam>`\ ) |const|                                                                                                |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`hinge_joint_set_flag<class_PhysicsServer3D_method_hinge_joint_set_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`HingeJointFlag<enum_PhysicsServer3D_HingeJointFlag>`, enabled\: :ref:`bool<class_bool>`\ )                                                                           |
+   | |void|                                                            | :ref:`hinge_joint_set_flag<class_PhysicsServer3D_method_hinge_joint_set_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`HingeJointFlag <enum_PhysicsServer3D_HingeJointFlag>`, enabled\: :ref:`bool<class_bool>`\ )                                                                          |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`hinge_joint_set_param<class_PhysicsServer3D_method_hinge_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>`, value\: :ref:`float<class_float>`\ )                                                                      |
+   | |void|                                                            | :ref:`hinge_joint_set_param<class_PhysicsServer3D_method_hinge_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`HingeJointParam <enum_PhysicsServer3D_HingeJointParam>`, value\: :ref:`float<class_float>`\ )                                                                     |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`joint_clear<class_PhysicsServer3D_method_joint_clear>`\ (\ joint\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                   |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -256,7 +256,7 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`joint_get_solver_priority<class_PhysicsServer3D_method_joint_get_solver_priority>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                               |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`JointType<enum_PhysicsServer3D_JointType>`                  | :ref:`joint_get_type<class_PhysicsServer3D_method_joint_get_type>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                     |
+   | :ref:`JointType <enum_PhysicsServer3D_JointType>`                 | :ref:`joint_get_type<class_PhysicsServer3D_method_joint_get_type>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                     |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`joint_is_disabled_collisions_between_bodies<class_PhysicsServer3D_method_joint_is_disabled_collisions_between_bodies>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                           |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -276,13 +276,13 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Vector3<class_Vector3>`                                     | :ref:`pin_joint_get_local_b<class_PhysicsServer3D_method_pin_joint_get_local_b>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                       |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`pin_joint_get_param<class_PhysicsServer3D_method_pin_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer3D_PinJointParam>`\ ) |const|                                                                                                         |
+   | :ref:`float<class_float>`                                         | :ref:`pin_joint_get_param<class_PhysicsServer3D_method_pin_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam <enum_PhysicsServer3D_PinJointParam>`\ ) |const|                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`pin_joint_set_local_a<class_PhysicsServer3D_method_pin_joint_set_local_a>`\ (\ joint\: :ref:`RID<class_RID>`, local_A\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`pin_joint_set_local_b<class_PhysicsServer3D_method_pin_joint_set_local_b>`\ (\ joint\: :ref:`RID<class_RID>`, local_B\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                                      |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`pin_joint_set_param<class_PhysicsServer3D_method_pin_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer3D_PinJointParam>`, value\: :ref:`float<class_float>`\ )                                                                              |
+   | |void|                                                            | :ref:`pin_joint_set_param<class_PhysicsServer3D_method_pin_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam <enum_PhysicsServer3D_PinJointParam>`, value\: :ref:`float<class_float>`\ )                                                                             |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`separation_ray_shape_create<class_PhysicsServer3D_method_separation_ray_shape_create>`\ (\ )                                                                                                                                                                                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -292,15 +292,15 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                         | :ref:`shape_get_margin<class_PhysicsServer3D_method_shape_get_margin>`\ (\ shape\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                 |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>`                  | :ref:`shape_get_type<class_PhysicsServer3D_method_shape_get_type>`\ (\ shape\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                     |
+   | :ref:`ShapeType <enum_PhysicsServer3D_ShapeType>`                 | :ref:`shape_get_type<class_PhysicsServer3D_method_shape_get_type>`\ (\ shape\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                     |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`shape_set_data<class_PhysicsServer3D_method_shape_set_data>`\ (\ shape\: :ref:`RID<class_RID>`, data\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                       |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`shape_set_margin<class_PhysicsServer3D_method_shape_set_margin>`\ (\ shape\: :ref:`RID<class_RID>`, margin\: :ref:`float<class_float>`\ )                                                                                                                                                     |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`slider_joint_get_param<class_PhysicsServer3D_method_slider_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>`\ ) |const|                                                                                             |
+   | :ref:`float<class_float>`                                         | :ref:`slider_joint_get_param<class_PhysicsServer3D_method_slider_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`SliderJointParam <enum_PhysicsServer3D_SliderJointParam>`\ ) |const|                                                                                            |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`slider_joint_set_param<class_PhysicsServer3D_method_slider_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>`, value\: :ref:`float<class_float>`\ )                                                                  |
+   | |void|                                                            | :ref:`slider_joint_set_param<class_PhysicsServer3D_method_slider_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`SliderJointParam <enum_PhysicsServer3D_SliderJointParam>`, value\: :ref:`float<class_float>`\ )                                                                 |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`soft_body_add_collision_exception<class_PhysicsServer3D_method_soft_body_add_collision_exception>`\ (\ body\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>`\ )                                                                                                                        |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -336,7 +336,7 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`soft_body_get_space<class_PhysicsServer3D_method_soft_body_get_space>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                            |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`soft_body_get_state<class_PhysicsServer3D_method_soft_body_get_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`\ ) |const|                                                                                                                  |
+   | :ref:`Variant<class_Variant>`                                     | :ref:`soft_body_get_state<class_PhysicsServer3D_method_soft_body_get_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState <enum_PhysicsServer3D_BodyState>`\ ) |const|                                                                                                                 |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                         | :ref:`soft_body_get_total_mass<class_PhysicsServer3D_method_soft_body_get_total_mass>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -372,7 +372,7 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`soft_body_set_space<class_PhysicsServer3D_method_soft_body_set_space>`\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ )                                                                                                                                                     |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`soft_body_set_state<class_PhysicsServer3D_method_soft_body_set_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`, variant\: :ref:`Variant<class_Variant>`\ )                                                                                 |
+   | |void|                                                            | :ref:`soft_body_set_state<class_PhysicsServer3D_method_soft_body_set_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState <enum_PhysicsServer3D_BodyState>`, variant\: :ref:`Variant<class_Variant>`\ )                                                                                |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`soft_body_set_total_mass<class_PhysicsServer3D_method_soft_body_set_total_mass>`\ (\ body\: :ref:`RID<class_RID>`, total_mass\: :ref:`float<class_float>`\ )                                                                                                                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -384,13 +384,13 @@ Methods
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>` | :ref:`space_get_direct_state<class_PhysicsServer3D_method_space_get_direct_state>`\ (\ space\: :ref:`RID<class_RID>`\ )                                                                                                                                                                             |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`space_get_param<class_PhysicsServer3D_method_space_get_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>`\ ) |const|                                                                                                               |
+   | :ref:`float<class_float>`                                         | :ref:`space_get_param<class_PhysicsServer3D_method_space_get_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter <enum_PhysicsServer3D_SpaceParameter>`\ ) |const|                                                                                                              |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`space_is_active<class_PhysicsServer3D_method_space_is_active>`\ (\ space\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                   |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`space_set_active<class_PhysicsServer3D_method_space_set_active>`\ (\ space\: :ref:`RID<class_RID>`, active\: :ref:`bool<class_bool>`\ )                                                                                                                                                       |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`space_set_param<class_PhysicsServer3D_method_space_set_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>`, value\: :ref:`float<class_float>`\ )                                                                                    |
+   | |void|                                                            | :ref:`space_set_param<class_PhysicsServer3D_method_space_set_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter <enum_PhysicsServer3D_SpaceParameter>`, value\: :ref:`float<class_float>`\ )                                                                                   |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`sphere_shape_create<class_PhysicsServer3D_method_sphere_shape_create>`\ (\ )                                                                                                                                                                                                                  |
    +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -403,14 +403,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_PhysicsServer3D_JointType:
 
 .. rst-class:: classref-enumeration
 
-enum **JointType**: :ref:`🔗<enum_PhysicsServer3D_JointType>`
+enum **JointType**: :ref:`🔗 <enum_PhysicsServer3D_JointType>`
 
 .. _class_PhysicsServer3D_constant_JOINT_TYPE_PIN:
 
@@ -418,7 +418,7 @@ enum **JointType**: :ref:`🔗<enum_PhysicsServer3D_JointType>`
 
 :ref:`JointType<enum_PhysicsServer3D_JointType>` **JOINT_TYPE_PIN** = ``0``
 
-The :ref:`Joint3D<class_Joint3D>` is a :ref:`PinJoint3D<class_PinJoint3D>`.
+Đối tượng :ref:`Joint3D<class_Joint3D>` là một :ref:`PinJoint3D<class_PinJoint3D>`.
 
 .. _class_PhysicsServer3D_constant_JOINT_TYPE_HINGE:
 
@@ -426,7 +426,7 @@ The :ref:`Joint3D<class_Joint3D>` is a :ref:`PinJoint3D<class_PinJoint3D>`.
 
 :ref:`JointType<enum_PhysicsServer3D_JointType>` **JOINT_TYPE_HINGE** = ``1``
 
-The :ref:`Joint3D<class_Joint3D>` is a :ref:`HingeJoint3D<class_HingeJoint3D>`.
+:ref:`Joint3D<class_Joint3D>` là một :ref:`HingeJoint3D<class_HingeJoint3D>`.
 
 .. _class_PhysicsServer3D_constant_JOINT_TYPE_SLIDER:
 
@@ -434,7 +434,7 @@ The :ref:`Joint3D<class_Joint3D>` is a :ref:`HingeJoint3D<class_HingeJoint3D>`.
 
 :ref:`JointType<enum_PhysicsServer3D_JointType>` **JOINT_TYPE_SLIDER** = ``2``
 
-The :ref:`Joint3D<class_Joint3D>` is a :ref:`SliderJoint3D<class_SliderJoint3D>`.
+:ref:`Joint3D<class_Joint3D>` là một :ref:`SliderJoint3D<class_SliderJoint3D>`.
 
 .. _class_PhysicsServer3D_constant_JOINT_TYPE_CONE_TWIST:
 
@@ -442,7 +442,7 @@ The :ref:`Joint3D<class_Joint3D>` is a :ref:`SliderJoint3D<class_SliderJoint3D>`
 
 :ref:`JointType<enum_PhysicsServer3D_JointType>` **JOINT_TYPE_CONE_TWIST** = ``3``
 
-The :ref:`Joint3D<class_Joint3D>` is a :ref:`ConeTwistJoint3D<class_ConeTwistJoint3D>`.
+:ref:`Joint3D<class_Joint3D>` là một :ref:`ConeTwistJoint3D<class_ConeTwistJoint3D>`.
 
 .. _class_PhysicsServer3D_constant_JOINT_TYPE_6DOF:
 
@@ -450,7 +450,7 @@ The :ref:`Joint3D<class_Joint3D>` is a :ref:`ConeTwistJoint3D<class_ConeTwistJoi
 
 :ref:`JointType<enum_PhysicsServer3D_JointType>` **JOINT_TYPE_6DOF** = ``4``
 
-The :ref:`Joint3D<class_Joint3D>` is a :ref:`Generic6DOFJoint3D<class_Generic6DOFJoint3D>`.
+:ref:`Joint3D<class_Joint3D>` là một :ref:`Generic6DOFJoint3D<class_Generic6DOFJoint3D>`.
 
 .. _class_PhysicsServer3D_constant_JOINT_TYPE_MAX:
 
@@ -458,7 +458,7 @@ The :ref:`Joint3D<class_Joint3D>` is a :ref:`Generic6DOFJoint3D<class_Generic6DO
 
 :ref:`JointType<enum_PhysicsServer3D_JointType>` **JOINT_TYPE_MAX** = ``5``
 
-Represents the size of the :ref:`JointType<enum_PhysicsServer3D_JointType>` enum.
+Biểu thị kích thước của enum :ref:`JointType <enum_PhysicsServer3D_JointType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -468,7 +468,7 @@ Represents the size of the :ref:`JointType<enum_PhysicsServer3D_JointType>` enum
 
 .. rst-class:: classref-enumeration
 
-enum **PinJointParam**: :ref:`🔗<enum_PhysicsServer3D_PinJointParam>`
+enum **PinJointParam**: :ref:`🔗 <enum_PhysicsServer3D_PinJointParam>`
 
 .. _class_PhysicsServer3D_constant_PIN_JOINT_BIAS:
 
@@ -476,9 +476,9 @@ enum **PinJointParam**: :ref:`🔗<enum_PhysicsServer3D_PinJointParam>`
 
 :ref:`PinJointParam<enum_PhysicsServer3D_PinJointParam>` **PIN_JOINT_BIAS** = ``0``
 
-The strength with which the pinned objects try to stay in positional relation to each other. The higher, the stronger.
+Mức độ mạnh mà các đối tượng được ghim cố gắng duy trì mối quan hệ về vị trí với nhau. Giá trị càng cao thì mức độ càng mạnh.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_PIN_JOINT_DAMPING:
 
@@ -486,9 +486,9 @@ The strength with which the pinned objects try to stay in positional relation to
 
 :ref:`PinJointParam<enum_PhysicsServer3D_PinJointParam>` **PIN_JOINT_DAMPING** = ``1``
 
-The strength with which the pinned objects try to stay in velocity relation to each other. The higher, the stronger.
+Mức độ mạnh mà các đối tượng được ghim cố gắng duy trì mối quan hệ về vận tốc với nhau. Giá trị càng cao thì mức độ càng mạnh.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_PIN_JOINT_IMPULSE_CLAMP:
 
@@ -496,9 +496,9 @@ The strength with which the pinned objects try to stay in velocity relation to e
 
 :ref:`PinJointParam<enum_PhysicsServer3D_PinJointParam>` **PIN_JOINT_IMPULSE_CLAMP** = ``2``
 
-If above 0, this value is the maximum value for an impulse that this Joint3D puts on its ends.
+Nếu lớn hơn 0, giá trị này là giá trị tối đa cho một xung lực mà Joint3D tác dụng lên các đầu của nó.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. rst-class:: classref-item-separator
 
@@ -508,7 +508,7 @@ If above 0, this value is the maximum value for an impulse that this Joint3D put
 
 .. rst-class:: classref-enumeration
 
-enum **HingeJointParam**: :ref:`🔗<enum_PhysicsServer3D_HingeJointParam>`
+enum **HingeJointParam**: :ref:`🔗 <enum_PhysicsServer3D_HingeJointParam>`
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_BIAS:
 
@@ -516,9 +516,9 @@ enum **HingeJointParam**: :ref:`🔗<enum_PhysicsServer3D_HingeJointParam>`
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_BIAS** = ``0``
 
-The speed with which the two bodies get pulled together when they move in different directions.
+Tốc độ mà hai vật thể bị kéo lại gần nhau khi chúng chuyển động theo các hướng khác nhau.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_LIMIT_UPPER:
 
@@ -526,7 +526,7 @@ The speed with which the two bodies get pulled together when they move in differ
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_LIMIT_UPPER** = ``1``
 
-The maximum rotation across the Hinge.
+Góc xoay tối đa qua Hinge.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_LIMIT_LOWER:
 
@@ -534,7 +534,7 @@ The maximum rotation across the Hinge.
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_LIMIT_LOWER** = ``2``
 
-The minimum rotation across the Hinge.
+Góc xoay tối thiểu qua Hinge.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_LIMIT_BIAS:
 
@@ -542,9 +542,9 @@ The minimum rotation across the Hinge.
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_LIMIT_BIAS** = ``3``
 
-The speed with which the rotation across the axis perpendicular to the hinge gets corrected.
+Tốc độ hiệu chỉnh chuyển động xoay quanh trục vuông góc với bản lề.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_LIMIT_SOFTNESS:
 
@@ -552,7 +552,7 @@ The speed with which the rotation across the axis perpendicular to the hinge get
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_LIMIT_SOFTNESS** = ``4``
 
-**Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+**Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_LIMIT_RELAXATION:
 
@@ -560,9 +560,9 @@ The speed with which the rotation across the axis perpendicular to the hinge get
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_LIMIT_RELAXATION** = ``5``
 
-The lower this value, the more the rotation gets slowed down.
+Giá trị này càng thấp thì chuyển động xoay càng bị làm chậm.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_MOTOR_TARGET_VELOCITY:
 
@@ -570,7 +570,7 @@ The lower this value, the more the rotation gets slowed down.
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_MOTOR_TARGET_VELOCITY** = ``6``
 
-Target speed for the motor.
+Tốc độ mục tiêu cho motor.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_MOTOR_MAX_IMPULSE:
 
@@ -578,7 +578,7 @@ Target speed for the motor.
 
 :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>` **HINGE_JOINT_MOTOR_MAX_IMPULSE** = ``7``
 
-Maximum acceleration for the motor.
+Gia tốc tối đa cho motor.
 
 .. rst-class:: classref-item-separator
 
@@ -588,7 +588,7 @@ Maximum acceleration for the motor.
 
 .. rst-class:: classref-enumeration
 
-enum **HingeJointFlag**: :ref:`🔗<enum_PhysicsServer3D_HingeJointFlag>`
+enum **HingeJointFlag**: :ref:`🔗 <enum_PhysicsServer3D_HingeJointFlag>`
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_FLAG_USE_LIMIT:
 
@@ -596,7 +596,7 @@ enum **HingeJointFlag**: :ref:`🔗<enum_PhysicsServer3D_HingeJointFlag>`
 
 :ref:`HingeJointFlag<enum_PhysicsServer3D_HingeJointFlag>` **HINGE_JOINT_FLAG_USE_LIMIT** = ``0``
 
-If ``true``, the Hinge has a maximum and a minimum rotation.
+Nếu ``true``, Hinge có góc xoay tối đa và tối thiểu.
 
 .. _class_PhysicsServer3D_constant_HINGE_JOINT_FLAG_ENABLE_MOTOR:
 
@@ -604,7 +604,7 @@ If ``true``, the Hinge has a maximum and a minimum rotation.
 
 :ref:`HingeJointFlag<enum_PhysicsServer3D_HingeJointFlag>` **HINGE_JOINT_FLAG_ENABLE_MOTOR** = ``1``
 
-If ``true``, a motor turns the Hinge.
+Nếu ``true``, một motor sẽ xoay Hinge.
 
 .. rst-class:: classref-item-separator
 
@@ -614,7 +614,7 @@ If ``true``, a motor turns the Hinge.
 
 .. rst-class:: classref-enumeration
 
-enum **SliderJointParam**: :ref:`🔗<enum_PhysicsServer3D_SliderJointParam>`
+enum **SliderJointParam**: :ref:`🔗 <enum_PhysicsServer3D_SliderJointParam>`
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_LIMIT_UPPER:
 
@@ -622,7 +622,7 @@ enum **SliderJointParam**: :ref:`🔗<enum_PhysicsServer3D_SliderJointParam>`
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_LIMIT_UPPER** = ``0``
 
-The maximum difference between the pivot points on their X axis before damping happens.
+Độ chênh lệch tối đa giữa các điểm pivot trên trục X trước khi quá trình giảm chấn diễn ra.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_LIMIT_LOWER:
 
@@ -630,7 +630,7 @@ The maximum difference between the pivot points on their X axis before damping h
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_LIMIT_LOWER** = ``1``
 
-The minimum difference between the pivot points on their X axis before damping happens.
+Độ chênh lệch tối thiểu giữa các điểm pivot trên trục X trước khi quá trình giảm chấn diễn ra.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_LIMIT_SOFTNESS:
 
@@ -638,9 +638,9 @@ The minimum difference between the pivot points on their X axis before damping h
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_LIMIT_SOFTNESS** = ``2``
 
-A factor applied to the movement across the slider axis once the limits get surpassed. The lower, the slower the movement.
+Hệ số áp dụng cho chuyển động dọc theo trục slider khi vượt quá các giới hạn. Hệ số càng thấp thì chuyển động càng chậm.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_LIMIT_RESTITUTION:
 
@@ -648,9 +648,9 @@ A factor applied to the movement across the slider axis once the limits get surp
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_LIMIT_RESTITUTION** = ``3``
 
-The amount of restitution once the limits are surpassed. The lower, the more velocity-energy gets lost.
+Mức độ restitution khi vượt quá các giới hạn. Giá trị càng thấp thì càng mất nhiều năng lượng vận tốc.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_LIMIT_DAMPING:
 
@@ -658,9 +658,9 @@ The amount of restitution once the limits are surpassed. The lower, the more vel
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_LIMIT_DAMPING** = ``4``
 
-The amount of damping once the slider limits are surpassed.
+Mức độ damping khi vượt quá các giới hạn của slider.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_MOTION_SOFTNESS:
 
@@ -668,9 +668,9 @@ The amount of damping once the slider limits are surpassed.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_MOTION_SOFTNESS** = ``5``
 
-A factor applied to the movement across the slider axis as long as the slider is in the limits. The lower, the slower the movement.
+Một hệ số được áp dụng cho chuyển động dọc theo trục slider khi slider vẫn nằm trong các giới hạn. Giá trị càng thấp thì chuyển động càng chậm.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_MOTION_RESTITUTION:
 
@@ -678,9 +678,9 @@ A factor applied to the movement across the slider axis as long as the slider is
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_MOTION_RESTITUTION** = ``6``
 
-The amount of restitution inside the slider limits.
+Mức độ đàn hồi trong giới hạn của thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_MOTION_DAMPING:
 
@@ -688,9 +688,9 @@ The amount of restitution inside the slider limits.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_MOTION_DAMPING** = ``7``
 
-The amount of damping inside the slider limits.
+Mức độ giảm chấn trong giới hạn của thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_ORTHOGONAL_SOFTNESS:
 
@@ -698,9 +698,9 @@ The amount of damping inside the slider limits.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_ORTHOGONAL_SOFTNESS** = ``8``
 
-A factor applied to the movement across axes orthogonal to the slider.
+Hệ số được áp dụng cho chuyển động trên các trục vuông góc với thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_ORTHOGONAL_RESTITUTION:
 
@@ -708,9 +708,9 @@ A factor applied to the movement across axes orthogonal to the slider.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_ORTHOGONAL_RESTITUTION** = ``9``
 
-The amount of restitution when movement is across axes orthogonal to the slider.
+Mức độ đàn hồi khi chuyển động trên các trục vuông góc với thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_LINEAR_ORTHOGONAL_DAMPING:
 
@@ -718,9 +718,9 @@ The amount of restitution when movement is across axes orthogonal to the slider.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_LINEAR_ORTHOGONAL_DAMPING** = ``10``
 
-The amount of damping when movement is across axes orthogonal to the slider.
+Mức độ giảm chấn khi chuyển động theo các trục vuông góc với thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_LIMIT_UPPER:
 
@@ -728,9 +728,9 @@ The amount of damping when movement is across axes orthogonal to the slider.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_LIMIT_UPPER** = ``11``
 
-The upper limit of rotation in the slider.
+Giới hạn trên của góc xoay trong thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_LIMIT_LOWER:
 
@@ -738,9 +738,9 @@ The upper limit of rotation in the slider.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_LIMIT_LOWER** = ``12``
 
-The lower limit of rotation in the slider.
+Giới hạn dưới của góc xoay trong thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_LIMIT_SOFTNESS:
 
@@ -748,9 +748,9 @@ The lower limit of rotation in the slider.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_LIMIT_SOFTNESS** = ``13``
 
-A factor applied to the all rotation once the limit is surpassed.
+Hệ số được áp dụng cho toàn bộ chuyển động quay khi vượt quá giới hạn.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_LIMIT_RESTITUTION:
 
@@ -758,9 +758,9 @@ A factor applied to the all rotation once the limit is surpassed.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_LIMIT_RESTITUTION** = ``14``
 
-The amount of restitution of the rotation when the limit is surpassed.
+Mức độ đàn hồi của chuyển động quay khi vượt quá giới hạn.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_LIMIT_DAMPING:
 
@@ -768,9 +768,9 @@ The amount of restitution of the rotation when the limit is surpassed.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_LIMIT_DAMPING** = ``15``
 
-The amount of damping of the rotation when the limit is surpassed.
+Mức độ giảm chấn của chuyển động quay khi vượt quá giới hạn.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_MOTION_SOFTNESS:
 
@@ -778,9 +778,9 @@ The amount of damping of the rotation when the limit is surpassed.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_MOTION_SOFTNESS** = ``16``
 
-A factor that gets applied to the all rotation in the limits.
+Hệ số được áp dụng cho toàn bộ chuyển động quay trong các giới hạn.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_MOTION_RESTITUTION:
 
@@ -788,9 +788,9 @@ A factor that gets applied to the all rotation in the limits.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_MOTION_RESTITUTION** = ``17``
 
-The amount of restitution of the rotation in the limits.
+Mức độ hoàn trả của chuyển động quay tại các giới hạn.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_MOTION_DAMPING:
 
@@ -798,9 +798,9 @@ The amount of restitution of the rotation in the limits.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_MOTION_DAMPING** = ``18``
 
-The amount of damping of the rotation in the limits.
+Mức độ giảm chấn của chuyển động quay tại các giới hạn.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_ORTHOGONAL_SOFTNESS:
 
@@ -808,9 +808,9 @@ The amount of damping of the rotation in the limits.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_ORTHOGONAL_SOFTNESS** = ``19``
 
-A factor that gets applied to the all rotation across axes orthogonal to the slider.
+Một hệ số được áp dụng cho toàn bộ chuyển động quay trên các trục vuông góc với thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_ORTHOGONAL_RESTITUTION:
 
@@ -818,9 +818,9 @@ A factor that gets applied to the all rotation across axes orthogonal to the sli
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_ORTHOGONAL_RESTITUTION** = ``20``
 
-The amount of restitution of the rotation across axes orthogonal to the slider.
+Mức độ đàn hồi của chuyển động quay quanh các trục vuông góc với thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_ANGULAR_ORTHOGONAL_DAMPING:
 
@@ -828,9 +828,9 @@ The amount of restitution of the rotation across axes orthogonal to the slider.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_ANGULAR_ORTHOGONAL_DAMPING** = ``21``
 
-The amount of damping of the rotation across axes orthogonal to the slider.
+Mức độ giảm chấn của chuyển động quay quanh các trục vuông góc với thanh trượt.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SLIDER_JOINT_MAX:
 
@@ -838,7 +838,7 @@ The amount of damping of the rotation across axes orthogonal to the slider.
 
 :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` **SLIDER_JOINT_MAX** = ``22``
 
-Represents the size of the :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>` enum.
+Biểu thị số lượng của enum :ref:`SliderJointParam <enum_PhysicsServer3D_SliderJointParam>`.
 
 .. rst-class:: classref-item-separator
 
@@ -848,7 +848,7 @@ Represents the size of the :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJoi
 
 .. rst-class:: classref-enumeration
 
-enum **ConeTwistJointParam**: :ref:`🔗<enum_PhysicsServer3D_ConeTwistJointParam>`
+enum **ConeTwistJointParam**: :ref:`🔗 <enum_PhysicsServer3D_ConeTwistJointParam>`
 
 .. _class_PhysicsServer3D_constant_CONE_TWIST_JOINT_SWING_SPAN:
 
@@ -856,11 +856,11 @@ enum **ConeTwistJointParam**: :ref:`🔗<enum_PhysicsServer3D_ConeTwistJointPara
 
 :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>` **CONE_TWIST_JOINT_SWING_SPAN** = ``0``
 
-Swing is rotation from side to side, around the axis perpendicular to the twist axis.
+Swing là chuyển động quay từ bên này sang bên kia, quanh trục vuông góc với trục twist.
 
-The swing span defines, how much rotation will not get corrected along the swing axis.
+Swing span xác định mức độ xoay sẽ không được hiệu chỉnh dọc theo swing axis.
 
-Could be defined as looseness in the :ref:`ConeTwistJoint3D<class_ConeTwistJoint3D>`. If below 0.05, this behavior is locked.
+Có thể được hiểu là độ lỏng trong :ref:`ConeTwistJoint3D<class_ConeTwistJoint3D>`. Nếu nhỏ hơn 0.05, hành vi này sẽ bị khóa.
 
 .. _class_PhysicsServer3D_constant_CONE_TWIST_JOINT_TWIST_SPAN:
 
@@ -868,7 +868,7 @@ Could be defined as looseness in the :ref:`ConeTwistJoint3D<class_ConeTwistJoint
 
 :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>` **CONE_TWIST_JOINT_TWIST_SPAN** = ``1``
 
-Twist is the rotation around the twist axis, this value defined how far the joint can twist. Twist is locked if below 0.05.
+Twist là chuyển động xoay quanh twist axis; giá trị này xác định mức độ mà khớp có thể xoắn. Twist sẽ bị khóa nếu nhỏ hơn 0.05.
 
 .. _class_PhysicsServer3D_constant_CONE_TWIST_JOINT_BIAS:
 
@@ -876,9 +876,9 @@ Twist is the rotation around the twist axis, this value defined how far the join
 
 :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>` **CONE_TWIST_JOINT_BIAS** = ``2``
 
-The speed with which the swing or twist will take place. The higher, the faster.
+Tốc độ thực hiện swing hoặc twist. Giá trị càng cao thì tốc độ càng nhanh.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_CONE_TWIST_JOINT_SOFTNESS:
 
@@ -886,9 +886,9 @@ The speed with which the swing or twist will take place. The higher, the faster.
 
 :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>` **CONE_TWIST_JOINT_SOFTNESS** = ``3``
 
-The ease with which the Joint3D twists, if it's too low, it takes more force to twist the joint.
+Mức độ dễ xoắn của Joint3D; nếu giá trị quá thấp, cần nhiều lực hơn để xoắn khớp.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_CONE_TWIST_JOINT_RELAXATION:
 
@@ -896,9 +896,9 @@ The ease with which the Joint3D twists, if it's too low, it takes more force to 
 
 :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>` **CONE_TWIST_JOINT_RELAXATION** = ``4``
 
-Defines, how fast the swing- and twist-speed-difference on both sides gets synced.
+Xác định tốc độ đồng bộ hóa chênh lệch tốc độ swing và twist ở cả hai phía.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. rst-class:: classref-item-separator
 
@@ -908,7 +908,7 @@ Defines, how fast the swing- and twist-speed-difference on both sides gets synce
 
 .. rst-class:: classref-enumeration
 
-enum **G6DOFJointAxisParam**: :ref:`🔗<enum_PhysicsServer3D_G6DOFJointAxisParam>`
+enum **G6DOFJointAxisParam**: :ref:`🔗 <enum_PhysicsServer3D_G6DOFJointAxisParam>`
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_LOWER_LIMIT:
 
@@ -916,7 +916,7 @@ enum **G6DOFJointAxisParam**: :ref:`🔗<enum_PhysicsServer3D_G6DOFJointAxisPara
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_LINEAR_LOWER_LIMIT** = ``0``
 
-The minimum difference between the pivot points' axes.
+Độ chênh lệch tối thiểu giữa các trục của các điểm pivot.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_UPPER_LIMIT:
 
@@ -924,7 +924,7 @@ The minimum difference between the pivot points' axes.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_LINEAR_UPPER_LIMIT** = ``1``
 
-The maximum difference between the pivot points' axes.
+Độ chênh lệch tối đa giữa các trục của các điểm pivot.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_LIMIT_SOFTNESS:
 
@@ -932,9 +932,9 @@ The maximum difference between the pivot points' axes.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_LINEAR_LIMIT_SOFTNESS** = ``2``
 
-A factor that gets applied to the movement across the axes. The lower, the slower the movement.
+Một hệ số được áp dụng cho chuyển động dọc theo các trục. Hệ số càng thấp thì chuyển động càng chậm.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_RESTITUTION:
 
@@ -942,9 +942,9 @@ A factor that gets applied to the movement across the axes. The lower, the slowe
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_LINEAR_RESTITUTION** = ``3``
 
-The amount of restitution on the axes movement. The lower, the more velocity-energy gets lost.
+Mức độ restitution của chuyển động theo các trục. Giá trị càng thấp thì càng nhiều năng lượng vận tốc bị mất.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_DAMPING:
 
@@ -952,9 +952,9 @@ The amount of restitution on the axes movement. The lower, the more velocity-ene
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_LINEAR_DAMPING** = ``4``
 
-The amount of damping that happens at the linear motion across the axes.
+Mức độ damping xảy ra trong chuyển động tuyến tính dọc theo các trục.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY:
 
@@ -962,7 +962,7 @@ The amount of damping that happens at the linear motion across the axes.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_LINEAR_MOTOR_TARGET_VELOCITY** = ``5``
 
-The velocity that the joint's linear motor will attempt to reach.
+Vận tốc mà linear motor của joint sẽ cố gắng đạt tới.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT:
 
@@ -970,7 +970,7 @@ The velocity that the joint's linear motor will attempt to reach.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_LINEAR_MOTOR_FORCE_LIMIT** = ``6``
 
-The maximum force that the linear motor can apply while trying to reach the target velocity.
+Lực tối đa mà linear motor có thể tác dụng khi cố gắng đạt tới vận tốc mục tiêu.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_LINEAR_SPRING_STIFFNESS:
 
@@ -1014,7 +1014,7 @@ The maximum force that the linear motor can apply while trying to reach the targ
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_LOWER_LIMIT** = ``10``
 
-The minimum rotation in negative direction to break loose and rotate around the axes.
+Góc quay tối thiểu theo hướng âm để thoát khỏi trạng thái khóa và quay quanh các trục.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_UPPER_LIMIT:
 
@@ -1022,7 +1022,7 @@ The minimum rotation in negative direction to break loose and rotate around the 
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_UPPER_LIMIT** = ``11``
 
-The minimum rotation in positive direction to break loose and rotate around the axes.
+Mức xoay tối thiểu theo hướng dương để thoát khỏi trạng thái khóa và xoay quanh các trục.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_LIMIT_SOFTNESS:
 
@@ -1030,9 +1030,9 @@ The minimum rotation in positive direction to break loose and rotate around the 
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_LIMIT_SOFTNESS** = ``12``
 
-A factor that gets multiplied onto all rotations across the axes.
+Hệ số được nhân với tất cả các phép xoay trên các trục.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_DAMPING:
 
@@ -1040,9 +1040,9 @@ A factor that gets multiplied onto all rotations across the axes.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_DAMPING** = ``13``
 
-The amount of rotational damping across the axes. The lower, the more damping occurs.
+Mức damping xoay trên các trục. Giá trị càng thấp thì damping càng nhiều.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_RESTITUTION:
 
@@ -1050,9 +1050,9 @@ The amount of rotational damping across the axes. The lower, the more damping oc
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_RESTITUTION** = ``14``
 
-The amount of rotational restitution across the axes. The lower, the more restitution occurs.
+Mức restitution xoay trên các trục. Giá trị càng thấp thì restitution càng nhiều.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_FORCE_LIMIT:
 
@@ -1060,9 +1060,9 @@ The amount of rotational restitution across the axes. The lower, the more restit
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_FORCE_LIMIT** = ``15``
 
-The maximum amount of force that can occur, when rotating around the axes.
+Lực tối đa có thể xảy ra khi xoay quanh các trục.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_ERP:
 
@@ -1070,9 +1070,9 @@ The maximum amount of force that can occur, when rotating around the axes.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_ERP** = ``16``
 
-When correcting the crossing of limits in rotation across the axes, this error tolerance factor defines how much the correction gets slowed down. The lower, the slower.
+Khi điều chỉnh việc vượt qua giới hạn trong quá trình xoay qua các trục, hệ số dung sai lỗi này xác định mức độ giảm tốc của quá trình điều chỉnh. Giá trị càng thấp thì tốc độ càng chậm.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_MOTOR_TARGET_VELOCITY:
 
@@ -1080,7 +1080,7 @@ When correcting the crossing of limits in rotation across the axes, this error t
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_MOTOR_TARGET_VELOCITY** = ``17``
 
-Target speed for the motor at the axes.
+Tốc độ mục tiêu của động cơ tại các trục.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_MOTOR_FORCE_LIMIT:
 
@@ -1088,7 +1088,7 @@ Target speed for the motor at the axes.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_ANGULAR_MOTOR_FORCE_LIMIT** = ``18``
 
-Maximum acceleration for the motor at the axes.
+Gia tốc tối đa của động cơ tại các trục.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_ANGULAR_SPRING_STIFFNESS:
 
@@ -1132,7 +1132,7 @@ Maximum acceleration for the motor at the axes.
 
 :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` **G6DOF_JOINT_MAX** = ``22``
 
-Represents the size of the :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>` enum.
+Biểu thị kích thước của enum :ref:`G6DOFJointAxisParam <enum_PhysicsServer3D_G6DOFJointAxisParam>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1142,7 +1142,7 @@ Represents the size of the :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJ
 
 .. rst-class:: classref-enumeration
 
-enum **G6DOFJointAxisFlag**: :ref:`🔗<enum_PhysicsServer3D_G6DOFJointAxisFlag>`
+enum **G6DOFJointAxisFlag**: :ref:`🔗 <enum_PhysicsServer3D_G6DOFJointAxisFlag>`
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_FLAG_ENABLE_LINEAR_LIMIT:
 
@@ -1150,7 +1150,7 @@ enum **G6DOFJointAxisFlag**: :ref:`🔗<enum_PhysicsServer3D_G6DOFJointAxisFlag>
 
 :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>` **G6DOF_JOINT_FLAG_ENABLE_LINEAR_LIMIT** = ``0``
 
-If set, linear motion is possible within the given limits.
+Nếu được thiết lập, chuyển động tuyến tính có thể thực hiện trong các giới hạn đã cho.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_FLAG_ENABLE_ANGULAR_LIMIT:
 
@@ -1158,7 +1158,7 @@ If set, linear motion is possible within the given limits.
 
 :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>` **G6DOF_JOINT_FLAG_ENABLE_ANGULAR_LIMIT** = ``1``
 
-If set, rotational motion is possible.
+Nếu được thiết lập, chuyển động quay có thể thực hiện.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_FLAG_ENABLE_ANGULAR_SPRING:
 
@@ -1190,7 +1190,7 @@ If set, rotational motion is possible.
 
 :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>` **G6DOF_JOINT_FLAG_ENABLE_MOTOR** = ``4``
 
-If set, there is a rotational motor across these axes.
+Nếu được thiết lập, có một động cơ quay trên các trục này.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR:
 
@@ -1198,7 +1198,7 @@ If set, there is a rotational motor across these axes.
 
 :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>` **G6DOF_JOINT_FLAG_ENABLE_LINEAR_MOTOR** = ``5``
 
-If set, there is a linear motor on this axis that targets a specific velocity.
+Nếu được thiết lập, có một động cơ tuyến tính trên trục này nhắm đến một vận tốc cụ thể.
 
 .. _class_PhysicsServer3D_constant_G6DOF_JOINT_FLAG_MAX:
 
@@ -1206,7 +1206,7 @@ If set, there is a linear motor on this axis that targets a specific velocity.
 
 :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>` **G6DOF_JOINT_FLAG_MAX** = ``6``
 
-Represents the size of the :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>` enum.
+Đại diện cho kích thước của enum :ref:`G6DOFJointAxisFlag <enum_PhysicsServer3D_G6DOFJointAxisFlag>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1216,7 +1216,7 @@ Represents the size of the :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJo
 
 .. rst-class:: classref-enumeration
 
-enum **ShapeType**: :ref:`🔗<enum_PhysicsServer3D_ShapeType>`
+enum **ShapeType**: :ref:`🔗 <enum_PhysicsServer3D_ShapeType>`
 
 .. _class_PhysicsServer3D_constant_SHAPE_WORLD_BOUNDARY:
 
@@ -1224,7 +1224,7 @@ enum **ShapeType**: :ref:`🔗<enum_PhysicsServer3D_ShapeType>`
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_WORLD_BOUNDARY** = ``0``
 
-Constant for creating a world boundary shape (used by the :ref:`WorldBoundaryShape3D<class_WorldBoundaryShape3D>` resource).
+Hằng số để tạo hình biên thế giới (được tài nguyên :ref:`WorldBoundaryShape3D<class_WorldBoundaryShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_SEPARATION_RAY:
 
@@ -1232,7 +1232,7 @@ Constant for creating a world boundary shape (used by the :ref:`WorldBoundarySha
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_SEPARATION_RAY** = ``1``
 
-Constant for creating a separation ray shape (used by the :ref:`SeparationRayShape3D<class_SeparationRayShape3D>` resource).
+Hằng số để tạo hình tia phân tách (được tài nguyên :ref:`SeparationRayShape3D<class_SeparationRayShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_SPHERE:
 
@@ -1240,7 +1240,7 @@ Constant for creating a separation ray shape (used by the :ref:`SeparationRaySha
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_SPHERE** = ``2``
 
-Constant for creating a sphere shape (used by the :ref:`SphereShape3D<class_SphereShape3D>` resource).
+Hằng số để tạo hình cầu (được tài nguyên :ref:`SphereShape3D<class_SphereShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_BOX:
 
@@ -1248,7 +1248,7 @@ Constant for creating a sphere shape (used by the :ref:`SphereShape3D<class_Sphe
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_BOX** = ``3``
 
-Constant for creating a box shape (used by the :ref:`BoxShape3D<class_BoxShape3D>` resource).
+Hằng số để tạo hình hộp (được tài nguyên :ref:`BoxShape3D<class_BoxShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_CAPSULE:
 
@@ -1256,7 +1256,7 @@ Constant for creating a box shape (used by the :ref:`BoxShape3D<class_BoxShape3D
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_CAPSULE** = ``4``
 
-Constant for creating a capsule shape (used by the :ref:`CapsuleShape3D<class_CapsuleShape3D>` resource).
+Hằng số để tạo hình viên nang (được tài nguyên :ref:`CapsuleShape3D<class_CapsuleShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_CYLINDER:
 
@@ -1264,7 +1264,7 @@ Constant for creating a capsule shape (used by the :ref:`CapsuleShape3D<class_Ca
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_CYLINDER** = ``5``
 
-Constant for creating a cylinder shape (used by the :ref:`CylinderShape3D<class_CylinderShape3D>` resource).
+Hằng số để tạo hình trụ (được tài nguyên :ref:`CylinderShape3D<class_CylinderShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_CONVEX_POLYGON:
 
@@ -1272,7 +1272,7 @@ Constant for creating a cylinder shape (used by the :ref:`CylinderShape3D<class_
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_CONVEX_POLYGON** = ``6``
 
-Constant for creating a convex polygon shape (used by the :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` resource).
+Hằng số để tạo hình đa giác lồi (được tài nguyên :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_CONCAVE_POLYGON:
 
@@ -1280,7 +1280,7 @@ Constant for creating a convex polygon shape (used by the :ref:`ConvexPolygonSha
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_CONCAVE_POLYGON** = ``7``
 
-Constant for creating a concave polygon (trimesh) shape (used by the :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` resource).
+Hằng số để tạo hình đa giác lõm (trimesh) (được tài nguyên :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_HEIGHTMAP:
 
@@ -1288,7 +1288,7 @@ Constant for creating a concave polygon (trimesh) shape (used by the :ref:`Conca
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_HEIGHTMAP** = ``8``
 
-Constant for creating a heightmap shape (used by the :ref:`HeightMapShape3D<class_HeightMapShape3D>` resource).
+Hằng số để tạo hình heightmap (được tài nguyên :ref:`HeightMapShape3D<class_HeightMapShape3D>` sử dụng).
 
 .. _class_PhysicsServer3D_constant_SHAPE_SOFT_BODY:
 
@@ -1296,7 +1296,7 @@ Constant for creating a heightmap shape (used by the :ref:`HeightMapShape3D<clas
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_SOFT_BODY** = ``9``
 
-Constant used internally for a soft body shape. Any attempt to create this kind of shape results in an error.
+Hằng số được sử dụng nội bộ cho hình soft body. Mọi nỗ lực tạo loại hình này đều dẫn đến lỗi.
 
 .. _class_PhysicsServer3D_constant_SHAPE_CUSTOM:
 
@@ -1304,7 +1304,7 @@ Constant used internally for a soft body shape. Any attempt to create this kind 
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **SHAPE_CUSTOM** = ``10``
 
-Constant used internally for a custom shape. Any attempt to create this kind of shape results in an error when using Godot Physics or Jolt Physics.
+Hằng số được sử dụng nội bộ cho hình tùy chỉnh. Mọi nỗ lực tạo loại hình này đều dẫn đến lỗi khi sử dụng Godot Physics hoặc Jolt Physics.
 
 .. rst-class:: classref-item-separator
 
@@ -1314,7 +1314,7 @@ Constant used internally for a custom shape. Any attempt to create this kind of 
 
 .. rst-class:: classref-enumeration
 
-enum **AreaParameter**: :ref:`🔗<enum_PhysicsServer3D_AreaParameter>`
+enum **AreaParameter**: :ref:`🔗 <enum_PhysicsServer3D_AreaParameter>`
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_GRAVITY_OVERRIDE_MODE:
 
@@ -1322,7 +1322,7 @@ enum **AreaParameter**: :ref:`🔗<enum_PhysicsServer3D_AreaParameter>`
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_GRAVITY_OVERRIDE_MODE** = ``0``
 
-Constant to set/get gravity override mode in an area. See :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` for possible values.
+Hằng số để đặt/lấy chế độ ghi đè trọng lực trong một area. Xem :ref:`AreaSpaceOverrideMode <enum_PhysicsServer3D_AreaSpaceOverrideMode>` để biết các giá trị có thể sử dụng.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_GRAVITY:
 
@@ -1330,7 +1330,7 @@ Constant to set/get gravity override mode in an area. See :ref:`AreaSpaceOverrid
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_GRAVITY** = ``1``
 
-Constant to set/get gravity strength in an area.
+Hằng số để đặt/lấy cường độ trọng lực trong một area.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_GRAVITY_VECTOR:
 
@@ -1338,7 +1338,7 @@ Constant to set/get gravity strength in an area.
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_GRAVITY_VECTOR** = ``2``
 
-Constant to set/get gravity vector/center in an area.
+Hằng số dùng để thiết lập/lấy vector trọng lực/tâm trọng lực trong một khu vực.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_GRAVITY_IS_POINT:
 
@@ -1346,7 +1346,7 @@ Constant to set/get gravity vector/center in an area.
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_GRAVITY_IS_POINT** = ``3``
 
-Constant to set/get whether the gravity vector of an area is a direction, or a center point.
+Hằng số dùng để thiết lập/lấy việc vector trọng lực của một khu vực là một hướng hay một điểm trung tâm.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE:
 
@@ -1354,9 +1354,9 @@ Constant to set/get whether the gravity vector of an area is a direction, or a c
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE** = ``4``
 
-Constant to set/get the distance at which the gravity strength is equal to the gravity controlled by :ref:`AREA_PARAM_GRAVITY<class_PhysicsServer3D_constant_AREA_PARAM_GRAVITY>`. For example, on a planet 100 meters in radius with a surface gravity of 4.0 m/s², set the gravity to 4.0 and the unit distance to 100.0. The gravity will have falloff according to the inverse square law, so in the example, at 200 meters from the center the gravity will be 1.0 m/s² (twice the distance, 1/4th the gravity), at 50 meters it will be 16.0 m/s² (half the distance, 4x the gravity), and so on.
+Hằng số dùng để thiết lập/lấy khoảng cách tại đó cường độ trọng lực bằng với trọng lực được điều khiển bởi :ref:`AREA_PARAM_GRAVITY<class_PhysicsServer3D_constant_AREA_PARAM_GRAVITY>`. Ví dụ, trên một hành tinh có bán kính 100 mét và trọng lực bề mặt là 4.0 m/s², hãy đặt trọng lực thành 4.0 và khoảng cách đơn vị thành 100.0. Trọng lực sẽ suy giảm theo định luật nghịch đảo bình phương, vì vậy trong ví dụ này, ở khoảng cách 200 mét tính từ tâm, trọng lực sẽ là 1.0 m/s² (khoảng cách gấp đôi, trọng lực bằng 1/4), còn ở khoảng cách 50 mét, trọng lực sẽ là 16.0 m/s² (khoảng cách bằng một nửa, trọng lực gấp 4 lần), v.v.
 
-The above is true only when the unit distance is a positive number. When this is set to 0.0, the gravity will be constant regardless of distance.
+Điều trên chỉ đúng khi khoảng cách đơn vị là một số dương. Khi đặt giá trị này thành 0.0, trọng lực sẽ không đổi bất kể khoảng cách.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE:
 
@@ -1364,7 +1364,7 @@ The above is true only when the unit distance is a positive number. When this is
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE** = ``5``
 
-Constant to set/get linear damping override mode in an area. See :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` for possible values.
+Hằng số dùng để thiết lập/lấy chế độ ghi đè lực cản tuyến tính trong một khu vực. Xem :ref:`AreaSpaceOverrideMode <enum_PhysicsServer3D_AreaSpaceOverrideMode>` để biết các giá trị có thể sử dụng.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_LINEAR_DAMP:
 
@@ -1372,7 +1372,7 @@ Constant to set/get linear damping override mode in an area. See :ref:`AreaSpace
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_LINEAR_DAMP** = ``6``
 
-Constant to set/get the linear damping factor of an area.
+Hằng số dùng để thiết lập/lấy hệ số lực cản tuyến tính của một khu vực.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE:
 
@@ -1380,7 +1380,7 @@ Constant to set/get the linear damping factor of an area.
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE** = ``7``
 
-Constant to set/get angular damping override mode in an area. See :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` for possible values.
+Hằng số dùng để thiết lập/lấy chế độ ghi đè lực cản góc trong một khu vực. Xem :ref:`AreaSpaceOverrideMode <enum_PhysicsServer3D_AreaSpaceOverrideMode>` để biết các giá trị có thể sử dụng.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_ANGULAR_DAMP:
 
@@ -1388,7 +1388,7 @@ Constant to set/get angular damping override mode in an area. See :ref:`AreaSpac
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_ANGULAR_DAMP** = ``8``
 
-Constant to set/get the angular damping factor of an area.
+Hằng số dùng để đặt/lấy hệ số damping góc của một vùng.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_PRIORITY:
 
@@ -1396,7 +1396,7 @@ Constant to set/get the angular damping factor of an area.
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_PRIORITY** = ``9``
 
-Constant to set/get the priority (order of processing) of an area.
+Hằng số dùng để đặt/lấy độ ưu tiên (thứ tự xử lý) của một vùng.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_WIND_FORCE_MAGNITUDE:
 
@@ -1404,7 +1404,7 @@ Constant to set/get the priority (order of processing) of an area.
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_WIND_FORCE_MAGNITUDE** = ``10``
 
-Constant to set/get the magnitude of area-specific wind force. This wind force only applies to :ref:`SoftBody3D<class_SoftBody3D>` nodes. Other physics bodies are currently not affected by wind.
+Hằng số dùng để đặt/lấy độ lớn của lực gió riêng cho vùng. Lực gió này chỉ áp dụng cho các node :ref:`SoftBody3D<class_SoftBody3D>`. Các body vật lý khác hiện không bị ảnh hưởng bởi gió.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_WIND_SOURCE:
 
@@ -1412,7 +1412,7 @@ Constant to set/get the magnitude of area-specific wind force. This wind force o
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_WIND_SOURCE** = ``11``
 
-Constant to set/get the 3D vector that specifies the origin from which an area-specific wind blows.
+Hằng số dùng để đặt/lấy vector 3D xác định điểm gốc mà từ đó gió riêng cho vùng thổi ra.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_WIND_DIRECTION:
 
@@ -1420,7 +1420,7 @@ Constant to set/get the 3D vector that specifies the origin from which an area-s
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_WIND_DIRECTION** = ``12``
 
-Constant to set/get the 3D vector that specifies the direction in which an area-specific wind blows.
+Hằng số dùng để đặt/lấy vector 3D xác định hướng mà gió riêng cho vùng thổi theo.
 
 .. _class_PhysicsServer3D_constant_AREA_PARAM_WIND_ATTENUATION_FACTOR:
 
@@ -1428,7 +1428,7 @@ Constant to set/get the 3D vector that specifies the direction in which an area-
 
 :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` **AREA_PARAM_WIND_ATTENUATION_FACTOR** = ``13``
 
-Constant to set/get the exponential rate at which wind force decreases with distance from its origin.
+Hằng số dùng để đặt/lấy tốc độ giảm theo hàm mũ của lực gió khi khoảng cách từ điểm gốc tăng lên.
 
 .. rst-class:: classref-item-separator
 
@@ -1438,7 +1438,7 @@ Constant to set/get the exponential rate at which wind force decreases with dist
 
 .. rst-class:: classref-enumeration
 
-enum **AreaSpaceOverrideMode**: :ref:`🔗<enum_PhysicsServer3D_AreaSpaceOverrideMode>`
+enum **AreaSpaceOverrideMode**: :ref:`🔗 <enum_PhysicsServer3D_AreaSpaceOverrideMode>`
 
 .. _class_PhysicsServer3D_constant_AREA_SPACE_OVERRIDE_DISABLED:
 
@@ -1446,7 +1446,7 @@ enum **AreaSpaceOverrideMode**: :ref:`🔗<enum_PhysicsServer3D_AreaSpaceOverrid
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_DISABLED** = ``0``
 
-This area does not affect gravity/damp. These are generally areas that exist only to detect collisions, and objects entering or exiting them.
+Vùng này không ảnh hưởng đến gravity/damp. Đây thường là những vùng chỉ tồn tại để phát hiện các va chạm và các đối tượng đi vào hoặc đi ra khỏi chúng.
 
 .. _class_PhysicsServer3D_constant_AREA_SPACE_OVERRIDE_COMBINE:
 
@@ -1454,7 +1454,7 @@ This area does not affect gravity/damp. These are generally areas that exist onl
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_COMBINE** = ``1``
 
-This area adds its gravity/damp values to whatever has been calculated so far. This way, many overlapping areas can combine their physics to make interesting effects.
+Vùng này cộng các giá trị gravity/damp của nó vào kết quả đã được tính toán cho đến thời điểm hiện tại. Nhờ đó, nhiều vùng chồng lấp có thể kết hợp physics của chúng để tạo ra những hiệu ứng thú vị.
 
 .. _class_PhysicsServer3D_constant_AREA_SPACE_OVERRIDE_COMBINE_REPLACE:
 
@@ -1462,7 +1462,7 @@ This area adds its gravity/damp values to whatever has been calculated so far. T
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_COMBINE_REPLACE** = ``2``
 
-This area adds its gravity/damp values to whatever has been calculated so far. Then stops taking into account the rest of the areas, even the default one.
+Vùng này cộng các giá trị gravity/damp của nó vào kết quả đã được tính toán cho đến thời điểm hiện tại. Sau đó, vùng này ngừng tính đến các vùng còn lại, kể cả vùng mặc định.
 
 .. _class_PhysicsServer3D_constant_AREA_SPACE_OVERRIDE_REPLACE:
 
@@ -1470,7 +1470,7 @@ This area adds its gravity/damp values to whatever has been calculated so far. T
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_REPLACE** = ``3``
 
-This area replaces any gravity/damp, even the default one, and stops taking into account the rest of the areas.
+Vùng này thay thế mọi gravity/damp, kể cả gravity/damp mặc định, và ngừng tính đến các vùng còn lại.
 
 .. _class_PhysicsServer3D_constant_AREA_SPACE_OVERRIDE_REPLACE_COMBINE:
 
@@ -1478,7 +1478,7 @@ This area replaces any gravity/damp, even the default one, and stops taking into
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer3D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_REPLACE_COMBINE** = ``4``
 
-This area replaces any gravity/damp calculated so far, but keeps calculating the rest of the areas, down to the default one.
+Vùng này thay thế gravity/damp đã được tính toán cho đến thời điểm hiện tại, nhưng vẫn tiếp tục tính toán các vùng còn lại, cho đến vùng mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -1488,7 +1488,7 @@ This area replaces any gravity/damp calculated so far, but keeps calculating the
 
 .. rst-class:: classref-enumeration
 
-enum **BodyMode**: :ref:`🔗<enum_PhysicsServer3D_BodyMode>`
+enum **BodyMode**: :ref:`🔗 <enum_PhysicsServer3D_BodyMode>`
 
 .. _class_PhysicsServer3D_constant_BODY_MODE_STATIC:
 
@@ -1496,7 +1496,7 @@ enum **BodyMode**: :ref:`🔗<enum_PhysicsServer3D_BodyMode>`
 
 :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>` **BODY_MODE_STATIC** = ``0``
 
-Constant for static bodies. In this mode, a body can be only moved by user code and doesn't collide with other bodies along its path when moved.
+Hằng số dành cho các body tĩnh. Ở chế độ này, body chỉ có thể được di chuyển bằng user code và không va chạm với các body khác trên đường đi khi được di chuyển.
 
 .. _class_PhysicsServer3D_constant_BODY_MODE_KINEMATIC:
 
@@ -1504,7 +1504,7 @@ Constant for static bodies. In this mode, a body can be only moved by user code 
 
 :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>` **BODY_MODE_KINEMATIC** = ``1``
 
-Constant for kinematic bodies. In this mode, a body can be only moved by user code and collides with other bodies along its path.
+Hằng số dành cho các vật thể động học. Ở chế độ này, vật thể chỉ có thể được di chuyển bằng mã người dùng và va chạm với các vật thể khác trên đường đi của nó.
 
 .. _class_PhysicsServer3D_constant_BODY_MODE_RIGID:
 
@@ -1512,7 +1512,7 @@ Constant for kinematic bodies. In this mode, a body can be only moved by user co
 
 :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>` **BODY_MODE_RIGID** = ``2``
 
-Constant for rigid bodies. In this mode, a body can be pushed by other bodies and has forces applied.
+Hằng số dành cho các vật thể cứng. Ở chế độ này, vật thể có thể bị các vật thể khác đẩy và chịu tác dụng của các lực.
 
 .. _class_PhysicsServer3D_constant_BODY_MODE_RIGID_LINEAR:
 
@@ -1520,7 +1520,7 @@ Constant for rigid bodies. In this mode, a body can be pushed by other bodies an
 
 :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>` **BODY_MODE_RIGID_LINEAR** = ``3``
 
-Constant for linear rigid bodies. In this mode, a body can not rotate, and only its linear velocity is affected by external forces.
+Hằng số dành cho các vật thể cứng tuyến tính. Ở chế độ này, vật thể không thể xoay và chỉ vận tốc tuyến tính của nó bị ảnh hưởng bởi các lực bên ngoài.
 
 .. rst-class:: classref-item-separator
 
@@ -1530,7 +1530,7 @@ Constant for linear rigid bodies. In this mode, a body can not rotate, and only 
 
 .. rst-class:: classref-enumeration
 
-enum **BodyParameter**: :ref:`🔗<enum_PhysicsServer3D_BodyParameter>`
+enum **BodyParameter**: :ref:`🔗 <enum_PhysicsServer3D_BodyParameter>`
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_BOUNCE:
 
@@ -1538,7 +1538,7 @@ enum **BodyParameter**: :ref:`🔗<enum_PhysicsServer3D_BodyParameter>`
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_BOUNCE** = ``0``
 
-Constant to set/get a body's bounce factor.
+Hằng số để thiết lập/lấy hệ số nảy của một vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_FRICTION:
 
@@ -1546,7 +1546,7 @@ Constant to set/get a body's bounce factor.
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_FRICTION** = ``1``
 
-Constant to set/get a body's friction.
+Hằng số để thiết lập/lấy ma sát của một vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_MASS:
 
@@ -1554,7 +1554,7 @@ Constant to set/get a body's friction.
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_MASS** = ``2``
 
-Constant to set/get a body's mass.
+Hằng số để thiết lập/lấy khối lượng của một vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_INERTIA:
 
@@ -1562,7 +1562,7 @@ Constant to set/get a body's mass.
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_INERTIA** = ``3``
 
-Constant to set/get a body's inertia.
+Hằng số để thiết lập/lấy mômen quán tính của một vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_CENTER_OF_MASS:
 
@@ -1570,7 +1570,7 @@ Constant to set/get a body's inertia.
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_CENTER_OF_MASS** = ``4``
 
-Constant to set/get a body's center of mass position in the body's local coordinate system.
+Hằng số để thiết lập/lấy vị trí trọng tâm của một vật thể trong hệ tọa độ cục bộ của vật thể đó.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_GRAVITY_SCALE:
 
@@ -1578,7 +1578,7 @@ Constant to set/get a body's center of mass position in the body's local coordin
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_GRAVITY_SCALE** = ``5``
 
-Constant to set/get a body's gravity multiplier.
+Hằng số để thiết lập/lấy hệ số trọng lực của một vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_LINEAR_DAMP_MODE:
 
@@ -1586,7 +1586,7 @@ Constant to set/get a body's gravity multiplier.
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_LINEAR_DAMP_MODE** = ``6``
 
-Constant to set/get a body's linear damping mode. See :ref:`BodyDampMode<enum_PhysicsServer3D_BodyDampMode>` for possible values.
+Hằng số để thiết lập/lấy chế độ giảm chấn tuyến tính của một vật thể. Xem :ref:`BodyDampMode <enum_PhysicsServer3D_BodyDampMode>` để biết các giá trị có thể sử dụng.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_ANGULAR_DAMP_MODE:
 
@@ -1594,7 +1594,7 @@ Constant to set/get a body's linear damping mode. See :ref:`BodyDampMode<enum_Ph
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_ANGULAR_DAMP_MODE** = ``7``
 
-Constant to set/get a body's angular damping mode. See :ref:`BodyDampMode<enum_PhysicsServer3D_BodyDampMode>` for possible values.
+Hằng số để thiết lập/lấy chế độ giảm chấn góc của một vật thể. Xem :ref:`BodyDampMode <enum_PhysicsServer3D_BodyDampMode>` để biết các giá trị có thể sử dụng.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_LINEAR_DAMP:
 
@@ -1602,7 +1602,7 @@ Constant to set/get a body's angular damping mode. See :ref:`BodyDampMode<enum_P
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_LINEAR_DAMP** = ``8``
 
-Constant to set/get a body's linear damping factor.
+Hằng số để thiết lập/lấy hệ số giảm chấn tuyến tính của một vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_ANGULAR_DAMP:
 
@@ -1610,7 +1610,7 @@ Constant to set/get a body's linear damping factor.
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_ANGULAR_DAMP** = ``9``
 
-Constant to set/get a body's angular damping factor.
+Hằng số để thiết lập/lấy hệ số giảm chấn góc của một vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_PARAM_MAX:
 
@@ -1618,7 +1618,7 @@ Constant to set/get a body's angular damping factor.
 
 :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` **BODY_PARAM_MAX** = ``10``
 
-Represents the size of the :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` enum.
+Biểu thị kích thước của enum :ref:`BodyParameter <enum_PhysicsServer3D_BodyParameter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1628,7 +1628,7 @@ Represents the size of the :ref:`BodyParameter<enum_PhysicsServer3D_BodyParamete
 
 .. rst-class:: classref-enumeration
 
-enum **BodyDampMode**: :ref:`🔗<enum_PhysicsServer3D_BodyDampMode>`
+enum **BodyDampMode**: :ref:`🔗 <enum_PhysicsServer3D_BodyDampMode>`
 
 .. _class_PhysicsServer3D_constant_BODY_DAMP_MODE_COMBINE:
 
@@ -1636,7 +1636,7 @@ enum **BodyDampMode**: :ref:`🔗<enum_PhysicsServer3D_BodyDampMode>`
 
 :ref:`BodyDampMode<enum_PhysicsServer3D_BodyDampMode>` **BODY_DAMP_MODE_COMBINE** = ``0``
 
-The body's damping value is added to any value set in areas or the default value.
+Giá trị damping của body được cộng vào mọi giá trị được thiết lập trong các area hoặc giá trị mặc định.
 
 .. _class_PhysicsServer3D_constant_BODY_DAMP_MODE_REPLACE:
 
@@ -1644,7 +1644,7 @@ The body's damping value is added to any value set in areas or the default value
 
 :ref:`BodyDampMode<enum_PhysicsServer3D_BodyDampMode>` **BODY_DAMP_MODE_REPLACE** = ``1``
 
-The body's damping value replaces any value set in areas or the default value.
+Giá trị damping của body thay thế mọi giá trị được thiết lập trong các area hoặc giá trị mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -1654,7 +1654,7 @@ The body's damping value replaces any value set in areas or the default value.
 
 .. rst-class:: classref-enumeration
 
-enum **BodyState**: :ref:`🔗<enum_PhysicsServer3D_BodyState>`
+enum **BodyState**: :ref:`🔗 <enum_PhysicsServer3D_BodyState>`
 
 .. _class_PhysicsServer3D_constant_BODY_STATE_TRANSFORM:
 
@@ -1662,7 +1662,7 @@ enum **BodyState**: :ref:`🔗<enum_PhysicsServer3D_BodyState>`
 
 :ref:`BodyState<enum_PhysicsServer3D_BodyState>` **BODY_STATE_TRANSFORM** = ``0``
 
-Constant to set/get the current transform matrix of the body.
+Hằng số để thiết lập/lấy ma trận transform hiện tại của body.
 
 .. _class_PhysicsServer3D_constant_BODY_STATE_LINEAR_VELOCITY:
 
@@ -1670,7 +1670,7 @@ Constant to set/get the current transform matrix of the body.
 
 :ref:`BodyState<enum_PhysicsServer3D_BodyState>` **BODY_STATE_LINEAR_VELOCITY** = ``1``
 
-Constant to set/get the current linear velocity of the body.
+Hằng số để thiết lập/lấy vận tốc tuyến tính hiện tại của body.
 
 .. _class_PhysicsServer3D_constant_BODY_STATE_ANGULAR_VELOCITY:
 
@@ -1678,7 +1678,7 @@ Constant to set/get the current linear velocity of the body.
 
 :ref:`BodyState<enum_PhysicsServer3D_BodyState>` **BODY_STATE_ANGULAR_VELOCITY** = ``2``
 
-Constant to set/get the current angular velocity of the body.
+Hằng số để thiết lập/lấy vận tốc góc hiện tại của vật thể.
 
 .. _class_PhysicsServer3D_constant_BODY_STATE_SLEEPING:
 
@@ -1686,7 +1686,7 @@ Constant to set/get the current angular velocity of the body.
 
 :ref:`BodyState<enum_PhysicsServer3D_BodyState>` **BODY_STATE_SLEEPING** = ``3``
 
-Constant to sleep/wake up a body, or to get whether it is sleeping.
+Hằng số để cho vật thể ngủ/đánh thức vật thể hoặc lấy thông tin cho biết vật thể có đang ngủ hay không.
 
 .. _class_PhysicsServer3D_constant_BODY_STATE_CAN_SLEEP:
 
@@ -1694,7 +1694,7 @@ Constant to sleep/wake up a body, or to get whether it is sleeping.
 
 :ref:`BodyState<enum_PhysicsServer3D_BodyState>` **BODY_STATE_CAN_SLEEP** = ``4``
 
-Constant to set/get whether the body can sleep.
+Hằng số để thiết lập/lấy thông tin cho biết vật thể có thể ngủ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1704,7 +1704,7 @@ Constant to set/get whether the body can sleep.
 
 .. rst-class:: classref-enumeration
 
-enum **AreaBodyStatus**: :ref:`🔗<enum_PhysicsServer3D_AreaBodyStatus>`
+enum **AreaBodyStatus**: :ref:`🔗 <enum_PhysicsServer3D_AreaBodyStatus>`
 
 .. _class_PhysicsServer3D_constant_AREA_BODY_ADDED:
 
@@ -1712,7 +1712,7 @@ enum **AreaBodyStatus**: :ref:`🔗<enum_PhysicsServer3D_AreaBodyStatus>`
 
 :ref:`AreaBodyStatus<enum_PhysicsServer3D_AreaBodyStatus>` **AREA_BODY_ADDED** = ``0``
 
-The value of the first parameter and area callback function receives, when an object enters one of its shapes.
+Giá trị của tham số đầu tiên mà hàm callback của area nhận được khi một đối tượng đi vào một trong các shape của area.
 
 .. _class_PhysicsServer3D_constant_AREA_BODY_REMOVED:
 
@@ -1720,7 +1720,7 @@ The value of the first parameter and area callback function receives, when an ob
 
 :ref:`AreaBodyStatus<enum_PhysicsServer3D_AreaBodyStatus>` **AREA_BODY_REMOVED** = ``1``
 
-The value of the first parameter and area callback function receives, when an object exits one of its shapes.
+Giá trị của tham số đầu tiên mà hàm callback của area nhận được khi một đối tượng rời khỏi một trong các shape của area.
 
 .. rst-class:: classref-item-separator
 
@@ -1730,7 +1730,7 @@ The value of the first parameter and area callback function receives, when an ob
 
 .. rst-class:: classref-enumeration
 
-enum **ProcessInfo**: :ref:`🔗<enum_PhysicsServer3D_ProcessInfo>`
+enum **ProcessInfo**: :ref:`🔗 <enum_PhysicsServer3D_ProcessInfo>`
 
 .. _class_PhysicsServer3D_constant_INFO_ACTIVE_OBJECTS:
 
@@ -1738,7 +1738,7 @@ enum **ProcessInfo**: :ref:`🔗<enum_PhysicsServer3D_ProcessInfo>`
 
 :ref:`ProcessInfo<enum_PhysicsServer3D_ProcessInfo>` **INFO_ACTIVE_OBJECTS** = ``0``
 
-Constant to get the number of objects that are not sleeping.
+Hằng số để lấy số lượng đối tượng không ở trạng thái ngủ.
 
 .. _class_PhysicsServer3D_constant_INFO_COLLISION_PAIRS:
 
@@ -1746,7 +1746,7 @@ Constant to get the number of objects that are not sleeping.
 
 :ref:`ProcessInfo<enum_PhysicsServer3D_ProcessInfo>` **INFO_COLLISION_PAIRS** = ``1``
 
-Constant to get the number of possible collisions.
+Hằng số để lấy số lượng va chạm có thể xảy ra.
 
 .. _class_PhysicsServer3D_constant_INFO_ISLAND_COUNT:
 
@@ -1754,7 +1754,7 @@ Constant to get the number of possible collisions.
 
 :ref:`ProcessInfo<enum_PhysicsServer3D_ProcessInfo>` **INFO_ISLAND_COUNT** = ``2``
 
-Constant to get the number of space regions where a collision could occur.
+Hằng số để lấy số lượng vùng không gian nơi va chạm có thể xảy ra.
 
 .. rst-class:: classref-item-separator
 
@@ -1764,7 +1764,7 @@ Constant to get the number of space regions where a collision could occur.
 
 .. rst-class:: classref-enumeration
 
-enum **SpaceParameter**: :ref:`🔗<enum_PhysicsServer3D_SpaceParameter>`
+enum **SpaceParameter**: :ref:`🔗 <enum_PhysicsServer3D_SpaceParameter>`
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_CONTACT_RECYCLE_RADIUS:
 
@@ -1772,7 +1772,7 @@ enum **SpaceParameter**: :ref:`🔗<enum_PhysicsServer3D_SpaceParameter>`
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_CONTACT_RECYCLE_RADIUS** = ``0``
 
-Constant to set/get the maximum distance a pair of bodies has to move before their collision status has to be recalculated.
+Hằng số để thiết lập/lấy khoảng cách tối đa mà một cặp vật thể phải di chuyển trước khi trạng thái va chạm của chúng cần được tính toán lại.
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_CONTACT_MAX_SEPARATION:
 
@@ -1780,7 +1780,7 @@ Constant to set/get the maximum distance a pair of bodies has to move before the
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_CONTACT_MAX_SEPARATION** = ``1``
 
-Constant to set/get the maximum distance a shape can be from another before they are considered separated and the contact is discarded.
+Hằng số để thiết lập/lấy khoảng cách tối đa mà một hình dạng có thể cách một hình dạng khác trước khi chúng được xem là đã tách rời và contact bị loại bỏ.
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION:
 
@@ -1788,7 +1788,7 @@ Constant to set/get the maximum distance a shape can be from another before they
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION** = ``2``
 
-Constant to set/get the maximum distance a shape can penetrate another shape before it is considered a collision.
+Hằng số để thiết lập/lấy khoảng cách tối đa mà một hình dạng có thể xuyên vào một hình dạng khác trước khi được xem là xảy ra va chạm.
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_CONTACT_DEFAULT_BIAS:
 
@@ -1796,7 +1796,7 @@ Constant to set/get the maximum distance a shape can penetrate another shape bef
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_CONTACT_DEFAULT_BIAS** = ``3``
 
-Constant to set/get the default solver bias for all physics contacts. A solver bias is a factor controlling how much two objects "rebound", after overlapping, to avoid leaving them in that state because of numerical imprecision.
+Hằng số để thiết lập/lấy solver bias mặc định cho tất cả các tiếp xúc vật lý. Solver bias là một hệ số kiểm soát mức độ hai đối tượng "bật lại" sau khi chồng lấn lên nhau, nhằm tránh để chúng ở trạng thái đó do sai số số học.
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD:
 
@@ -1804,9 +1804,9 @@ Constant to set/get the default solver bias for all physics contacts. A solver b
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD** = ``4``
 
-Constant to set/get the threshold linear velocity of activity. A body marked as potentially inactive for both linear and angular velocity will be put to sleep after the time given.
+Hằng số để thiết lập/lấy ngưỡng vận tốc tuyến tính của trạng thái hoạt động. Một vật thể được đánh dấu là có khả năng không hoạt động do cả vận tốc tuyến tính và vận tốc góc sẽ chuyển sang trạng thái ngủ sau khoảng thời gian đã cho.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD:
 
@@ -1814,9 +1814,9 @@ Constant to set/get the threshold linear velocity of activity. A body marked as 
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD** = ``5``
 
-Constant to set/get the threshold angular velocity of activity. A body marked as potentially inactive for both linear and angular velocity will be put to sleep after the time given.
+Hằng số để thiết lập/lấy ngưỡng vận tốc góc của trạng thái hoạt động. Một vật thể được đánh dấu là có khả năng không hoạt động do cả vận tốc tuyến tính và vận tốc góc sẽ chuyển sang trạng thái ngủ sau khoảng thời gian đã cho.
 
-\ **Note:** Only supported when using GodotPhysics3D. This parameter is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Tham số này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_BODY_TIME_TO_SLEEP:
 
@@ -1824,7 +1824,7 @@ Constant to set/get the threshold angular velocity of activity. A body marked as
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_BODY_TIME_TO_SLEEP** = ``6``
 
-Constant to set/get the maximum time of activity. A body marked as potentially inactive for both linear and angular velocity will be put to sleep after this time.
+Hằng số để thiết lập/lấy thời gian hoạt động tối đa. Một vật thể được đánh dấu là có khả năng không hoạt động do cả vận tốc tuyến tính và vận tốc góc sẽ chuyển sang trạng thái ngủ sau khoảng thời gian này.
 
 .. _class_PhysicsServer3D_constant_SPACE_PARAM_SOLVER_ITERATIONS:
 
@@ -1832,7 +1832,7 @@ Constant to set/get the maximum time of activity. A body marked as potentially i
 
 :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` **SPACE_PARAM_SOLVER_ITERATIONS** = ``7``
 
-Constant to set/get the number of solver iterations for contacts and constraints. The greater the number of iterations, the more accurate the collisions and constraints will be. However, a greater number of iterations requires more CPU power, which can decrease performance.
+Hằng số để thiết lập/lấy số lần lặp solver cho các tiếp xúc và ràng buộc. Số lần lặp càng lớn thì các va chạm và ràng buộc càng chính xác. Tuy nhiên, số lần lặp lớn hơn đòi hỏi nhiều năng lực CPU hơn, điều này có thể làm giảm hiệu năng.
 
 .. rst-class:: classref-item-separator
 
@@ -1842,7 +1842,7 @@ Constant to set/get the number of solver iterations for contacts and constraints
 
 .. rst-class:: classref-enumeration
 
-enum **BodyAxis**: :ref:`🔗<enum_PhysicsServer3D_BodyAxis>`
+enum **BodyAxis**: :ref:`🔗 <enum_PhysicsServer3D_BodyAxis>`
 
 .. _class_PhysicsServer3D_constant_BODY_AXIS_LINEAR_X:
 
@@ -1922,8 +1922,8 @@ enum **BodyAxis**: :ref:`🔗<enum_PhysicsServer3D_BodyAxis>`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicsServer3D_method_area_add_shape:
 
@@ -1931,7 +1931,7 @@ Method Descriptions
 
 |void| **area_add_shape**\ (\ area\: :ref:`RID<class_RID>`, shape\: :ref:`RID<class_RID>`, transform\: :ref:`Transform3D<class_Transform3D>` = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0), disabled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PhysicsServer3D_method_area_add_shape>`
 
-Adds a shape to the area, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
+Thêm một hình dạng vào vùng, cùng với một ma trận biến đổi. Các hình dạng thường được tham chiếu theo chỉ mục, vì vậy bạn nên theo dõi hình dạng nào có một chỉ mục nhất định.
 
 .. rst-class:: classref-item-separator
 
@@ -1943,7 +1943,7 @@ Adds a shape to the area, along with a transform matrix. Shapes are usually refe
 
 |void| **area_attach_object_instance_id**\ (\ area\: :ref:`RID<class_RID>`, id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_attach_object_instance_id>`
 
-Assigns the area to a descendant of :ref:`Object<class_Object>`, so it can exist in the node tree.
+Gán vùng cho một hậu duệ của :ref:`Object<class_Object>`, để vùng có thể tồn tại trong cây node.
 
 .. rst-class:: classref-item-separator
 
@@ -1955,7 +1955,7 @@ Assigns the area to a descendant of :ref:`Object<class_Object>`, so it can exist
 
 |void| **area_clear_shapes**\ (\ area\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_clear_shapes>`
 
-Removes all shapes from an area. It does not delete the shapes, so they can be reassigned later.
+Xóa tất cả hình dạng khỏi một vùng. Các hình dạng không bị xóa, vì vậy chúng có thể được gán lại sau.
 
 .. rst-class:: classref-item-separator
 
@@ -1967,9 +1967,9 @@ Removes all shapes from an area. It does not delete the shapes, so they can be r
 
 :ref:`RID<class_RID>` **area_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_area_create>`
 
-Creates a 3D area object in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. The default settings for the created area include a collision layer and mask set to ``1``, and ``monitorable`` set to ``false``.
+Tạo một đối tượng vùng 3D trong physics server và trả về :ref:`RID<class_RID>` xác định đối tượng đó. Các thiết lập mặc định của vùng được tạo bao gồm collision layer và mask được đặt thành ``1``, còn ``monitorable`` được đặt thành ``false``.
 
-Use :ref:`area_add_shape()<class_PhysicsServer3D_method_area_add_shape>` to add shapes to it, use :ref:`area_set_transform()<class_PhysicsServer3D_method_area_set_transform>` to set its transform, and use :ref:`area_set_space()<class_PhysicsServer3D_method_area_set_space>` to add the area to a space. If you want the area to be detectable use :ref:`area_set_monitorable()<class_PhysicsServer3D_method_area_set_monitorable>`.
+Sử dụng :ref:`area_add_shape()<class_PhysicsServer3D_method_area_add_shape>` để thêm các hình dạng vào vùng, sử dụng :ref:`area_set_transform()<class_PhysicsServer3D_method_area_set_transform>` để thiết lập transform của vùng và sử dụng :ref:`area_set_space()<class_PhysicsServer3D_method_area_set_space>` để thêm vùng vào một space. Nếu muốn vùng có thể được phát hiện, hãy sử dụng :ref:`area_set_monitorable()<class_PhysicsServer3D_method_area_set_monitorable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1981,7 +1981,7 @@ Use :ref:`area_add_shape()<class_PhysicsServer3D_method_area_add_shape>` to add 
 
 :ref:`int<class_int>` **area_get_collision_layer**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_collision_layer>`
 
-Returns the physics layer or layers an area belongs to.
+Trả về lớp vật lý hoặc các lớp vật lý mà một vùng thuộc về.
 
 .. rst-class:: classref-item-separator
 
@@ -1993,7 +1993,7 @@ Returns the physics layer or layers an area belongs to.
 
 :ref:`int<class_int>` **area_get_collision_mask**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_collision_mask>`
 
-Returns the physics layer or layers an area can contact with.
+Trả về lớp vật lý hoặc các lớp vật lý mà một vùng có thể tiếp xúc.
 
 .. rst-class:: classref-item-separator
 
@@ -2005,7 +2005,7 @@ Returns the physics layer or layers an area can contact with.
 
 :ref:`int<class_int>` **area_get_object_instance_id**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_object_instance_id>`
 
-Gets the instance ID of the object the area is assigned to.
+Lấy ID instance của đối tượng mà vùng được gán cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2017,7 +2017,7 @@ Gets the instance ID of the object the area is assigned to.
 
 :ref:`Variant<class_Variant>` **area_get_param**\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_param>`
 
-Returns an area parameter value. A list of available parameters is on the :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` constants.
+Trả về giá trị tham số của một vùng. Danh sách các tham số có sẵn nằm trong các hằng số :ref:`AreaParameter <enum_PhysicsServer3D_AreaParameter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2029,7 +2029,7 @@ Returns an area parameter value. A list of available parameters is on the :ref:`
 
 :ref:`RID<class_RID>` **area_get_shape**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_shape>`
 
-Returns the :ref:`RID<class_RID>` of the nth shape of an area.
+Trả về :ref:`RID<class_RID>` của shape thứ n của một vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2041,7 +2041,7 @@ Returns the :ref:`RID<class_RID>` of the nth shape of an area.
 
 :ref:`int<class_int>` **area_get_shape_count**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_shape_count>`
 
-Returns the number of shapes assigned to an area.
+Trả về số lượng shape được gán cho một vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2053,7 +2053,7 @@ Returns the number of shapes assigned to an area.
 
 :ref:`Transform3D<class_Transform3D>` **area_get_shape_transform**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_shape_transform>`
 
-Returns the transform matrix of a shape within an area.
+Trả về ma trận transform của một shape trong một vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2065,7 +2065,7 @@ Returns the transform matrix of a shape within an area.
 
 :ref:`RID<class_RID>` **area_get_space**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_space>`
 
-Returns the space assigned to the area.
+Trả về không gian được gán cho area.
 
 .. rst-class:: classref-item-separator
 
@@ -2077,7 +2077,7 @@ Returns the space assigned to the area.
 
 :ref:`Transform3D<class_Transform3D>` **area_get_transform**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_area_get_transform>`
 
-Returns the transform matrix for an area.
+Trả về ma trận biến đổi của area.
 
 .. rst-class:: classref-item-separator
 
@@ -2089,7 +2089,7 @@ Returns the transform matrix for an area.
 
 |void| **area_remove_shape**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_remove_shape>`
 
-Removes a shape from an area. It does not delete the shape, so it can be reassigned later.
+Xóa một shape khỏi area. Shape không bị xóa, vì vậy có thể được gán lại sau.
 
 .. rst-class:: classref-item-separator
 
@@ -2101,19 +2101,19 @@ Removes a shape from an area. It does not delete the shape, so it can be reassig
 
 |void| **area_set_area_monitor_callback**\ (\ area\: :ref:`RID<class_RID>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_area_monitor_callback>`
 
-Sets the area's area monitor callback. This callback will be called when any other (shape of an) area enters or exits (a shape of) the given area, and must take the following five parameters:
+Thiết lập callback giám sát area của area. Callback này sẽ được gọi khi bất kỳ area nào khác (hoặc shape của area đó) đi vào hoặc rời khỏi (một shape của) area đã cho, và phải nhận năm tham số sau:
 
-1. an integer ``status``: either :ref:`AREA_BODY_ADDED<class_PhysicsServer3D_constant_AREA_BODY_ADDED>` or :ref:`AREA_BODY_REMOVED<class_PhysicsServer3D_constant_AREA_BODY_REMOVED>` depending on whether the other area's shape entered or exited the area,
+1. một số nguyên ``status``: :ref:`AREA_BODY_ADDED<class_PhysicsServer3D_constant_AREA_BODY_ADDED>` hoặc :ref:`AREA_BODY_REMOVED<class_PhysicsServer3D_constant_AREA_BODY_REMOVED>`, tùy thuộc vào việc shape của area khác đi vào hay rời khỏi area,
 
-2. an :ref:`RID<class_RID>` ``area_rid``: the :ref:`RID<class_RID>` of the other area that entered or exited the area,
+2. một :ref:`RID<class_RID>` ``area_rid``: :ref:`RID<class_RID>` của area khác đã đi vào hoặc rời khỏi area,
 
-3. an integer ``instance_id``: the ``ObjectID`` attached to the other area,
+3. một số nguyên ``instance_id``: ``ObjectID`` được gắn với area khác,
 
-4. an integer ``area_shape_idx``: the index of the shape of the other area that entered or exited the area,
+4. một số nguyên ``area_shape_idx``: chỉ mục của shape thuộc area còn lại đã đi vào hoặc đi ra khỏi area,
 
-5. an integer ``self_shape_idx``: the index of the shape of the area where the other area entered or exited.
+5. một số nguyên ``self_shape_idx``: chỉ mục của shape thuộc area nơi area còn lại đã đi vào hoặc đi ra.
 
-By counting (or keeping track of) the shapes that enter and exit, it can be determined if an area (with all its shapes) is entering for the first time or exiting for the last time.
+Bằng cách đếm (hoặc theo dõi) các shape đi vào và đi ra, có thể xác định liệu một area (cùng tất cả shape của nó) đang đi vào lần đầu tiên hay đi ra lần cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2125,7 +2125,7 @@ By counting (or keeping track of) the shapes that enter and exit, it can be dete
 
 |void| **area_set_collision_layer**\ (\ area\: :ref:`RID<class_RID>`, layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_collision_layer>`
 
-Assigns the area to one or many physics layers.
+Gán area vào một hoặc nhiều physics layer.
 
 .. rst-class:: classref-item-separator
 
@@ -2137,7 +2137,7 @@ Assigns the area to one or many physics layers.
 
 |void| **area_set_collision_mask**\ (\ area\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_collision_mask>`
 
-Sets which physics layers the area will monitor.
+Thiết lập các physics layer mà area sẽ giám sát.
 
 .. rst-class:: classref-item-separator
 
@@ -2149,19 +2149,19 @@ Sets which physics layers the area will monitor.
 
 |void| **area_set_monitor_callback**\ (\ area\: :ref:`RID<class_RID>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_monitor_callback>`
 
-Sets the area's body monitor callback. This callback will be called when any other (shape of a) body enters or exits (a shape of) the given area, and must take the following five parameters:
+Thiết lập callback giám sát body của area. Callback này sẽ được gọi khi bất kỳ body nào khác (hoặc shape của body đó) đi vào hoặc đi ra khỏi (một shape của) area đã cho, và phải nhận năm tham số sau:
 
-1. an integer ``status``: either :ref:`AREA_BODY_ADDED<class_PhysicsServer3D_constant_AREA_BODY_ADDED>` or :ref:`AREA_BODY_REMOVED<class_PhysicsServer3D_constant_AREA_BODY_REMOVED>` depending on whether the other body shape entered or exited the area,
+1. một số nguyên ``status``: là :ref:`AREA_BODY_ADDED<class_PhysicsServer3D_constant_AREA_BODY_ADDED>` hoặc :ref:`AREA_BODY_REMOVED<class_PhysicsServer3D_constant_AREA_BODY_REMOVED>`, tùy thuộc vào việc shape của body còn lại đã đi vào hay đi ra khỏi area,
 
-2. an :ref:`RID<class_RID>` ``body_rid``: the :ref:`RID<class_RID>` of the body that entered or exited the area,
+2. một :ref:`RID<class_RID>` ``body_rid``: :ref:`RID<class_RID>` của body đã đi vào hoặc đi ra khỏi area,
 
-3. an integer ``instance_id``: the ``ObjectID`` attached to the body,
+3. một số nguyên ``instance_id``: ``ObjectID`` được gắn với body,
 
-4. an integer ``body_shape_idx``: the index of the shape of the body that entered or exited the area,
+4. một số nguyên ``body_shape_idx``: chỉ mục của shape thuộc body đã đi vào hoặc đi ra khỏi area,
 
-5. an integer ``self_shape_idx``: the index of the shape of the area where the body entered or exited.
+5. một số nguyên ``self_shape_idx``: chỉ mục của shape thuộc area nơi body đi vào hoặc đi ra.
 
-By counting (or keeping track of) the shapes that enter and exit, it can be determined if a body (with all its shapes) is entering for the first time or exiting for the last time.
+Bằng cách đếm (hoặc theo dõi) các shape đi vào và đi ra, có thể xác định liệu một body (cùng tất cả shape của nó) đang đi vào lần đầu tiên hay đi ra lần cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2187,7 +2187,7 @@ By counting (or keeping track of) the shapes that enter and exit, it can be dete
 
 |void| **area_set_param**\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_param>`
 
-Sets the value for an area parameter. A list of available parameters is on the :ref:`AreaParameter<enum_PhysicsServer3D_AreaParameter>` constants.
+Đặt giá trị cho một tham số của area. Danh sách các tham số hiện có nằm trong các hằng số :ref:`AreaParameter <enum_PhysicsServer3D_AreaParameter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2199,7 +2199,7 @@ Sets the value for an area parameter. A list of available parameters is on the :
 
 |void| **area_set_ray_pickable**\ (\ area\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_ray_pickable>`
 
-Sets object pickable with rays.
+Đặt đối tượng để có thể được chọn bằng các tia.
 
 .. rst-class:: classref-item-separator
 
@@ -2211,7 +2211,7 @@ Sets object pickable with rays.
 
 |void| **area_set_shape**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, shape\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_shape>`
 
-Substitutes a given area shape by another. The old shape is selected by its index, the new one by its :ref:`RID<class_RID>`.
+Thay thế một hình dạng vùng đã cho bằng một hình dạng khác. Hình dạng cũ được chọn theo chỉ mục, còn hình dạng mới được chọn theo :ref:`RID<class_RID>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2237,7 +2237,7 @@ Substitutes a given area shape by another. The old shape is selected by its inde
 
 |void| **area_set_shape_transform**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, transform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_shape_transform>`
 
-Sets the transform matrix for an area shape.
+Đặt ma trận biến đổi cho hình dạng vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2249,7 +2249,7 @@ Sets the transform matrix for an area shape.
 
 |void| **area_set_space**\ (\ area\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_space>`
 
-Assigns a space to the area.
+Gán một không gian cho vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2261,7 +2261,7 @@ Assigns a space to the area.
 
 |void| **area_set_transform**\ (\ area\: :ref:`RID<class_RID>`, transform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_PhysicsServer3D_method_area_set_transform>`
 
-Sets the transform matrix for an area.
+Đặt ma trận biến đổi cho vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2273,7 +2273,7 @@ Sets the transform matrix for an area.
 
 |void| **body_add_collision_exception**\ (\ body\: :ref:`RID<class_RID>`, excepted_body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_add_collision_exception>`
 
-Adds a body to the list of bodies exempt from collisions.
+Thêm một body vào danh sách các body được miễn va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -2285,9 +2285,9 @@ Adds a body to the list of bodies exempt from collisions.
 
 |void| **body_add_constant_central_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_add_constant_central_force>`
 
-Adds a constant directional force without affecting rotation that keeps being applied over time until cleared with ``body_set_constant_force(body, Vector3(0, 0, 0))``.
+Thêm một lực có hướng không đổi mà không ảnh hưởng đến chuyển động quay, lực này tiếp tục được áp dụng theo thời gian cho đến khi được xóa bằng ``body_set_constant_force(body, Vector3(0, 0, 0))``.
 
-This is equivalent to using :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` at the body's center of mass.
+Tương đương với việc sử dụng :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` tại tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2299,9 +2299,9 @@ This is equivalent to using :ref:`body_add_constant_force()<class_PhysicsServer3
 
 |void| **body_add_constant_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`, position\: :ref:`Vector3<class_Vector3>` = Vector3(0, 0, 0)\ ) :ref:`🔗<class_PhysicsServer3D_method_body_add_constant_force>`
 
-Adds a constant positioned force to the body that keeps being applied over time until cleared with ``body_set_constant_force(body, Vector3(0, 0, 0))``.
+Thêm một lực có vị trí cố định vào vật thể, lực này tiếp tục được áp dụng theo thời gian cho đến khi được xóa bằng ``body_set_constant_force(body, Vector3(0, 0, 0))``.
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của vật thể trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -2313,7 +2313,7 @@ Adds a constant positioned force to the body that keeps being applied over time 
 
 |void| **body_add_constant_torque**\ (\ body\: :ref:`RID<class_RID>`, torque\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_add_constant_torque>`
 
-Adds a constant rotational force without affecting position that keeps being applied over time until cleared with ``body_set_constant_torque(body, Vector3(0, 0, 0))``.
+Thêm một lực quay cố định mà không ảnh hưởng đến vị trí, lực này tiếp tục được áp dụng theo thời gian cho đến khi được xóa bằng ``body_set_constant_torque(body, Vector3(0, 0, 0))``.
 
 .. rst-class:: classref-item-separator
 
@@ -2325,7 +2325,7 @@ Adds a constant rotational force without affecting position that keeps being app
 
 |void| **body_add_shape**\ (\ body\: :ref:`RID<class_RID>`, shape\: :ref:`RID<class_RID>`, transform\: :ref:`Transform3D<class_Transform3D>` = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0), disabled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PhysicsServer3D_method_body_add_shape>`
 
-Adds a shape to the body, along with a transform matrix. Shapes are usually referenced by their index, so you should track which shape has a given index.
+Thêm một shape vào vật thể cùng với một ma trận biến đổi. Các shape thường được tham chiếu bằng chỉ mục, vì vậy bạn nên theo dõi shape nào có một chỉ mục nhất định.
 
 .. rst-class:: classref-item-separator
 
@@ -2337,9 +2337,9 @@ Adds a shape to the body, along with a transform matrix. Shapes are usually refe
 
 |void| **body_apply_central_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_apply_central_force>`
 
-Applies a directional force without affecting rotation. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực theo hướng mà không ảnh hưởng đến chuyển động quay. Lực phụ thuộc vào thời gian và được thiết kế để áp dụng trong mỗi lần cập nhật physics.
 
-This is equivalent to using :ref:`body_apply_force()<class_PhysicsServer3D_method_body_apply_force>` at the body's center of mass.
+Điều này tương đương với việc sử dụng :ref:`body_apply_force()<class_PhysicsServer3D_method_body_apply_force>` tại tâm khối lượng của vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2351,11 +2351,11 @@ This is equivalent to using :ref:`body_apply_force()<class_PhysicsServer3D_metho
 
 |void| **body_apply_central_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_apply_central_impulse>`
 
-Applies a directional impulse without affecting rotation.
+Áp dụng một xung lực theo hướng mà không ảnh hưởng đến chuyển động quay.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực ở mỗi khung hình sẽ tạo ra một lực phụ thuộc vào tốc độ khung hình. Vì lý do này, chỉ nên sử dụng xung lực khi mô phỏng các va chạm xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
-This is equivalent to using :ref:`body_apply_impulse()<class_PhysicsServer3D_method_body_apply_impulse>` at the body's center of mass.
+Điều này tương đương với việc sử dụng :ref:`body_apply_impulse()<class_PhysicsServer3D_method_body_apply_impulse>` tại tâm khối của vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2367,9 +2367,9 @@ This is equivalent to using :ref:`body_apply_impulse()<class_PhysicsServer3D_met
 
 |void| **body_apply_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`, position\: :ref:`Vector3<class_Vector3>` = Vector3(0, 0, 0)\ ) :ref:`🔗<class_PhysicsServer3D_method_body_apply_force>`
 
-Applies a positioned force to the body. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực tại vị trí lên vật thể. Lực phụ thuộc vào thời gian và được thiết kế để áp dụng trong mỗi lần cập nhật vật lý.
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của vật thể trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -2381,11 +2381,11 @@ Applies a positioned force to the body. A force is time dependent and meant to b
 
 |void| **body_apply_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector3<class_Vector3>`, position\: :ref:`Vector3<class_Vector3>` = Vector3(0, 0, 0)\ ) :ref:`🔗<class_PhysicsServer3D_method_body_apply_impulse>`
 
-Applies a positioned impulse to the body.
+Áp dụng một xung lực tại vị trí lên vật thể.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực ở mỗi khung hình sẽ tạo ra một lực phụ thuộc vào tốc độ khung hình. Vì lý do này, chỉ nên sử dụng xung lực khi mô phỏng các va chạm xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của vật thể trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -2397,7 +2397,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 |void| **body_apply_torque**\ (\ body\: :ref:`RID<class_RID>`, torque\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_apply_torque>`
 
-Applies a rotational force without affecting position. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực xoay mà không ảnh hưởng đến vị trí. Lực này phụ thuộc vào thời gian và được áp dụng trong mỗi lần cập nhật vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -2409,9 +2409,9 @@ Applies a rotational force without affecting position. A force is time dependent
 
 |void| **body_apply_torque_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_apply_torque_impulse>`
 
-Applies a rotational impulse to the body without affecting the position.
+Áp dụng một xung lực xoay lên body mà không ảnh hưởng đến vị trí.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực ở mỗi khung hình sẽ tạo ra một lực phụ thuộc vào tốc độ khung hình. Vì lý do này, chỉ nên sử dụng xung lực khi mô phỏng các va chạm xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
 .. rst-class:: classref-item-separator
 
@@ -2423,7 +2423,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 |void| **body_attach_object_instance_id**\ (\ body\: :ref:`RID<class_RID>`, id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_attach_object_instance_id>`
 
-Assigns the area to a descendant of :ref:`Object<class_Object>`, so it can exist in the node tree.
+Gán vùng cho một hậu duệ của :ref:`Object<class_Object>`, để vùng có thể tồn tại trong cây node.
 
 .. rst-class:: classref-item-separator
 
@@ -2435,7 +2435,7 @@ Assigns the area to a descendant of :ref:`Object<class_Object>`, so it can exist
 
 |void| **body_clear_shapes**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_clear_shapes>`
 
-Removes all shapes from a body.
+Xóa tất cả shape khỏi body.
 
 .. rst-class:: classref-item-separator
 
@@ -2447,9 +2447,9 @@ Removes all shapes from a body.
 
 :ref:`RID<class_RID>` **body_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_body_create>`
 
-Creates a 3D body object in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. The default settings for the created area include a collision layer and mask set to ``1``, and body mode set to :ref:`BODY_MODE_RIGID<class_PhysicsServer3D_constant_BODY_MODE_RIGID>`.
+Tạo một đối tượng body 3D trong physics server và trả về :ref:`RID<class_RID>` xác định đối tượng đó. Cài đặt mặc định cho area được tạo bao gồm collision layer và mask được đặt thành ``1``, còn body mode được đặt thành :ref:`BODY_MODE_RIGID<class_PhysicsServer3D_constant_BODY_MODE_RIGID>`.
 
-Use :ref:`body_add_shape()<class_PhysicsServer3D_method_body_add_shape>` to add shapes to it, use :ref:`body_set_state()<class_PhysicsServer3D_method_body_set_state>` to set its transform, and use :ref:`body_set_space()<class_PhysicsServer3D_method_body_set_space>` to add the body to a space.
+Sử dụng :ref:`body_add_shape()<class_PhysicsServer3D_method_body_add_shape>` để thêm shape vào đó, sử dụng :ref:`body_set_state()<class_PhysicsServer3D_method_body_set_state>` để thiết lập transform của nó và sử dụng :ref:`body_set_space()<class_PhysicsServer3D_method_body_set_space>` để thêm body vào một space.
 
 .. rst-class:: classref-item-separator
 
@@ -2461,7 +2461,7 @@ Use :ref:`body_add_shape()<class_PhysicsServer3D_method_body_add_shape>` to add 
 
 :ref:`int<class_int>` **body_get_collision_layer**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_collision_layer>`
 
-Returns the physics layer or layers a body belongs to.
+Trả về lớp vật lý hoặc các lớp vật lý mà một body thuộc về.
 
 .. rst-class:: classref-item-separator
 
@@ -2473,7 +2473,7 @@ Returns the physics layer or layers a body belongs to.
 
 :ref:`int<class_int>` **body_get_collision_mask**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_collision_mask>`
 
-Returns the physics layer or layers a body can collide with.
+Trả về lớp vật lý hoặc các lớp vật lý mà một body có thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -2485,7 +2485,7 @@ Returns the physics layer or layers a body can collide with.
 
 :ref:`float<class_float>` **body_get_collision_priority**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_collision_priority>`
 
-Returns the body's collision priority.
+Trả về độ ưu tiên va chạm của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2497,9 +2497,9 @@ Returns the body's collision priority.
 
 :ref:`Vector3<class_Vector3>` **body_get_constant_force**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_constant_force>`
 
-Returns the body's total constant positional forces applied during each physics update.
+Trả về tổng các lực vị trí không đổi tác dụng lên body trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force()<class_PhysicsServer3D_method_body_add_constant_central_force>`.
+Xem :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` và :ref:`body_add_constant_central_force()<class_PhysicsServer3D_method_body_add_constant_central_force>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2511,9 +2511,9 @@ See :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_consta
 
 :ref:`Vector3<class_Vector3>` **body_get_constant_torque**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_constant_torque>`
 
-Returns the body's total constant rotational forces applied during each physics update.
+Trả về tổng các lực xoay không đổi tác dụng lên body trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_constant_torque>`.
+Xem :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_constant_torque>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2525,7 +2525,7 @@ See :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_const
 
 :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>` **body_get_direct_state**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_get_direct_state>`
 
-Returns the :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>` of the body. Returns ``null`` if the body is destroyed or removed from the physics space.
+Trả về :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>` của vật thể. Trả về ``null`` nếu vật thể bị hủy hoặc bị xóa khỏi không gian vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -2537,7 +2537,7 @@ Returns the :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>` of t
 
 :ref:`int<class_int>` **body_get_max_contacts_reported**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_max_contacts_reported>`
 
-Returns the maximum contacts that can be reported. See :ref:`body_set_max_contacts_reported()<class_PhysicsServer3D_method_body_set_max_contacts_reported>`.
+Trả về số điểm tiếp xúc tối đa có thể được báo cáo. Xem :ref:`body_set_max_contacts_reported()<class_PhysicsServer3D_method_body_set_max_contacts_reported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2549,7 +2549,7 @@ Returns the maximum contacts that can be reported. See :ref:`body_set_max_contac
 
 :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>` **body_get_mode**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_mode>`
 
-Returns the body mode.
+Trả về chế độ của vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2561,7 +2561,7 @@ Returns the body mode.
 
 :ref:`int<class_int>` **body_get_object_instance_id**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_object_instance_id>`
 
-Gets the instance ID of the object the area is assigned to.
+Lấy ID instance của đối tượng mà vùng được gán cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2573,7 +2573,7 @@ Gets the instance ID of the object the area is assigned to.
 
 :ref:`Variant<class_Variant>` **body_get_param**\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_param>`
 
-Returns the value of a body parameter. A list of available parameters is on the :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` constants.
+Trả về giá trị của một tham số vật thể. Danh sách các tham số hiện có nằm trong các hằng số :ref:`BodyParameter <enum_PhysicsServer3D_BodyParameter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2585,7 +2585,7 @@ Returns the value of a body parameter. A list of available parameters is on the 
 
 :ref:`RID<class_RID>` **body_get_shape**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_shape>`
 
-Returns the :ref:`RID<class_RID>` of the nth shape of a body.
+Trả về :ref:`RID<class_RID>` của hình dạng thứ n của một vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2597,7 +2597,7 @@ Returns the :ref:`RID<class_RID>` of the nth shape of a body.
 
 :ref:`int<class_int>` **body_get_shape_count**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_shape_count>`
 
-Returns the number of shapes assigned to a body.
+Trả về số hình dạng được gán cho một vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2609,7 +2609,7 @@ Returns the number of shapes assigned to a body.
 
 :ref:`Transform3D<class_Transform3D>` **body_get_shape_transform**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_shape_transform>`
 
-Returns the transform matrix of a body shape.
+Trả về ma trận biến đổi của một hình dạng vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2621,7 +2621,7 @@ Returns the transform matrix of a body shape.
 
 :ref:`RID<class_RID>` **body_get_space**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_space>`
 
-Returns the :ref:`RID<class_RID>` of the space assigned to a body.
+Trả về :ref:`RID<class_RID>` của không gian được gán cho một vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2633,7 +2633,7 @@ Returns the :ref:`RID<class_RID>` of the space assigned to a body.
 
 :ref:`Variant<class_Variant>` **body_get_state**\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_get_state>`
 
-Returns a body state.
+Trả về trạng thái của vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2659,7 +2659,7 @@ Returns a body state.
 
 :ref:`bool<class_bool>` **body_is_continuous_collision_detection_enabled**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_is_continuous_collision_detection_enabled>`
 
-If ``true``, the continuous collision detection mode is enabled.
+Nếu ``true``, chế độ phát hiện va chạm liên tục được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -2671,7 +2671,7 @@ If ``true``, the continuous collision detection mode is enabled.
 
 :ref:`bool<class_bool>` **body_is_omitting_force_integration**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_body_is_omitting_force_integration>`
 
-Returns ``true`` if the body is omitting the standard force integration. See :ref:`body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>`.
+Trả về ``true`` nếu vật thể bỏ qua việc tích hợp lực tiêu chuẩn. Xem :ref:`body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2683,9 +2683,9 @@ Returns ``true`` if the body is omitting the standard force integration. See :re
 
 |void| **body_remove_collision_exception**\ (\ body\: :ref:`RID<class_RID>`, excepted_body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_remove_collision_exception>`
 
-Removes a body from the list of bodies exempt from collisions.
+Xóa một vật thể khỏi danh sách các vật thể được miễn va chạm.
 
-Continuous collision detection tries to predict where a moving body will collide, instead of moving it and correcting its movement if it collided.
+Phát hiện va chạm liên tục cố gắng dự đoán nơi một vật thể đang chuyển động sẽ va chạm, thay vì di chuyển vật thể đó rồi điều chỉnh chuyển động của nó nếu xảy ra va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -2697,7 +2697,7 @@ Continuous collision detection tries to predict where a moving body will collide
 
 |void| **body_remove_shape**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_remove_shape>`
 
-Removes a shape from a body. The shape is not deleted, so it can be reused afterwards.
+Xóa một hình dạng khỏi vật thể. Hình dạng này không bị xóa, vì vậy có thể được sử dụng lại sau đó.
 
 .. rst-class:: classref-item-separator
 
@@ -2709,7 +2709,7 @@ Removes a shape from a body. The shape is not deleted, so it can be reused after
 
 |void| **body_reset_mass_properties**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_reset_mass_properties>`
 
-Restores the default inertia and center of mass based on shapes to cancel any custom values previously set using :ref:`body_set_param()<class_PhysicsServer3D_method_body_set_param>`.
+Khôi phục mô men quán tính và tâm khối lượng mặc định dựa trên các hình dạng để hủy mọi giá trị tùy chỉnh đã được thiết lập trước đó bằng :ref:`body_set_param()<class_PhysicsServer3D_method_body_set_param>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2735,7 +2735,7 @@ Restores the default inertia and center of mass based on shapes to cancel any cu
 
 |void| **body_set_axis_velocity**\ (\ body\: :ref:`RID<class_RID>`, axis_velocity\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_axis_velocity>`
 
-Sets an axis velocity. The velocity in the given vector axis will be set as the given vector length. This is useful for jumping behavior.
+Thiết lập vận tốc theo một trục. Vận tốc trên trục của vector đã cho sẽ được đặt bằng độ dài của vector đã cho. Điều này hữu ích cho hành vi nhảy.
 
 .. rst-class:: classref-item-separator
 
@@ -2747,7 +2747,7 @@ Sets an axis velocity. The velocity in the given vector axis will be set as the 
 
 |void| **body_set_collision_layer**\ (\ body\: :ref:`RID<class_RID>`, layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_collision_layer>`
 
-Sets the physics layer or layers a body belongs to.
+Thiết lập lớp hoặc các lớp vật lý mà một vật thể thuộc về.
 
 .. rst-class:: classref-item-separator
 
@@ -2759,7 +2759,7 @@ Sets the physics layer or layers a body belongs to.
 
 |void| **body_set_collision_mask**\ (\ body\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_collision_mask>`
 
-Sets the physics layer or layers a body can collide with.
+Thiết lập lớp hoặc các lớp vật lý mà một vật thể có thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -2771,7 +2771,7 @@ Sets the physics layer or layers a body can collide with.
 
 |void| **body_set_collision_priority**\ (\ body\: :ref:`RID<class_RID>`, priority\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_collision_priority>`
 
-Sets the body's collision priority.
+Thiết lập độ ưu tiên va chạm của vật thể.
 
 .. rst-class:: classref-item-separator
 
@@ -2783,9 +2783,9 @@ Sets the body's collision priority.
 
 |void| **body_set_constant_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_constant_force>`
 
-Sets the body's total constant positional forces applied during each physics update.
+Thiết lập tổng các lực vị trí không đổi tác dụng lên vật thể trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force()<class_PhysicsServer3D_method_body_add_constant_central_force>`.
+Xem :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_constant_force>` và :ref:`body_add_constant_central_force()<class_PhysicsServer3D_method_body_add_constant_central_force>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2797,9 +2797,9 @@ See :ref:`body_add_constant_force()<class_PhysicsServer3D_method_body_add_consta
 
 |void| **body_set_constant_torque**\ (\ body\: :ref:`RID<class_RID>`, torque\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_constant_torque>`
 
-Sets the body's total constant rotational forces applied during each physics update.
+Đặt tổng các lực quay không đổi của vật thể được áp dụng trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_constant_torque>`.
+Xem :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_constant_torque>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2811,9 +2811,9 @@ See :ref:`body_add_constant_torque()<class_PhysicsServer3D_method_body_add_const
 
 |void| **body_set_enable_continuous_collision_detection**\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_enable_continuous_collision_detection>`
 
-If ``true``, the continuous collision detection mode is enabled.
+Nếu ``true``, chế độ phát hiện va chạm liên tục được bật.
 
-Continuous collision detection tries to predict where a moving body will collide, instead of moving it and correcting its movement if it collided.
+Phát hiện va chạm liên tục cố gắng dự đoán nơi một vật thể đang chuyển động sẽ va chạm, thay vì di chuyển vật thể đó rồi điều chỉnh chuyển động của nó nếu xảy ra va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -2825,17 +2825,17 @@ Continuous collision detection tries to predict where a moving body will collide
 
 |void| **body_set_force_integration_callback**\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`, userdata\: :ref:`Variant<class_Variant>` = null\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_force_integration_callback>`
 
-Sets the body's custom force integration callback function to ``callable``. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the custom callback.
+Đặt hàm callback tích hợp lực tùy chỉnh của vật thể thành ``callable``. Sử dụng một :ref:`Callable<class_Callable>` (``Callable()``) rỗng để xóa callback tùy chỉnh.
 
-The function ``callable`` will be called every physics tick, before the standard force integration (see :ref:`body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>`). It can be used for example to update the body's linear and angular velocity based on contact with other bodies.
+Hàm ``callable`` sẽ được gọi ở mỗi nhịp vật lý, trước khi tích hợp lực tiêu chuẩn (xem :ref:`body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>`). Ví dụ, hàm này có thể được dùng để cập nhật vận tốc tuyến tính và vận tốc góc của vật thể dựa trên tiếp xúc với các vật thể khác.
 
-If ``userdata`` is not ``null``, the function ``callable`` must take the following two parameters:
+Nếu ``userdata`` không phải là ``null``, hàm ``callable`` phải nhận hai tham số sau:
 
-1. ``state``: a :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>`, used to retrieve and modify the body's state,
+1. ``state``: một :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>`, được dùng để lấy và sửa đổi trạng thái của body,
 
-2. ``userdata``: a :ref:`Variant<class_Variant>`; its value will be the ``userdata`` passed into this method.
+2. ``userdata``: một :ref:`Variant<class_Variant>`; giá trị của nó sẽ là ``userdata`` được truyền vào phương thức này.
 
-If ``userdata`` is ``null``, then ``callable`` must take only the ``state`` parameter.
+Nếu ``userdata`` là ``null``, thì ``callable`` chỉ được nhận tham số ``state``.
 
 .. rst-class:: classref-item-separator
 
@@ -2847,7 +2847,7 @@ If ``userdata`` is ``null``, then ``callable`` must take only the ``state`` para
 
 |void| **body_set_max_contacts_reported**\ (\ body\: :ref:`RID<class_RID>`, amount\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_max_contacts_reported>`
 
-Sets the maximum contacts to report. Bodies can keep a log of the contacts with other bodies. This is enabled by setting the maximum number of contacts reported to a number greater than 0.
+Thiết lập số lượng contact tối đa cần báo cáo. Các body có thể lưu nhật ký contact với những body khác. Tính năng này được bật bằng cách đặt số lượng contact được báo cáo lớn hơn 0.
 
 .. rst-class:: classref-item-separator
 
@@ -2859,7 +2859,7 @@ Sets the maximum contacts to report. Bodies can keep a log of the contacts with 
 
 |void| **body_set_mode**\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`BodyMode<enum_PhysicsServer3D_BodyMode>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_mode>`
 
-Sets the body mode.
+Thiết lập chế độ của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2871,9 +2871,9 @@ Sets the body mode.
 
 |void| **body_set_omit_force_integration**\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_omit_force_integration>`
 
-Sets whether the body omits the standard force integration. If ``enable`` is ``true``, the body will not automatically use applied forces, torques, and damping to update the body's linear and angular velocity. In this case, :ref:`body_set_force_integration_callback()<class_PhysicsServer3D_method_body_set_force_integration_callback>` can be used to manually update the linear and angular velocity instead.
+Thiết lập việc body có bỏ qua quá trình tích hợp lực tiêu chuẩn hay không. Nếu ``enable`` là ``true``, body sẽ không tự động sử dụng các lực, mô-men xoắn và lực cản được áp dụng để cập nhật vận tốc tuyến tính và vận tốc góc của body. Trong trường hợp này, có thể sử dụng :ref:`body_set_force_integration_callback()<class_PhysicsServer3D_method_body_set_force_integration_callback>` để cập nhật thủ công vận tốc tuyến tính và vận tốc góc.
 
-This method is called when the property :ref:`RigidBody3D.custom_integrator<class_RigidBody3D_property_custom_integrator>` is set.
+Phương thức này được gọi khi thuộc tính :ref:`RigidBody3D.custom_integrator<class_RigidBody3D_property_custom_integrator>` được thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -2885,7 +2885,7 @@ This method is called when the property :ref:`RigidBody3D.custom_integrator<clas
 
 |void| **body_set_param**\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_param>`
 
-Sets a body parameter. A list of available parameters is on the :ref:`BodyParameter<enum_PhysicsServer3D_BodyParameter>` constants.
+Thiết lập một tham số body. Danh sách các tham số hiện có nằm trong các hằng số :ref:`BodyParameter <enum_PhysicsServer3D_BodyParameter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2897,7 +2897,7 @@ Sets a body parameter. A list of available parameters is on the :ref:`BodyParame
 
 |void| **body_set_ray_pickable**\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_ray_pickable>`
 
-Sets the body pickable with rays if ``enable`` is set.
+Thiết lập body có thể được chọn bằng các tia nếu ``enable`` được thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -2909,7 +2909,7 @@ Sets the body pickable with rays if ``enable`` is set.
 
 |void| **body_set_shape**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, shape\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_shape>`
 
-Substitutes a given body shape by another. The old shape is selected by its index, the new one by its :ref:`RID<class_RID>`.
+Thay thế một shape của body bằng shape khác. Shape cũ được chọn theo chỉ mục, còn shape mới được chọn theo :ref:`RID<class_RID>` của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -2935,7 +2935,7 @@ Substitutes a given body shape by another. The old shape is selected by its inde
 
 |void| **body_set_shape_transform**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, transform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_shape_transform>`
 
-Sets the transform matrix for a body shape.
+Thiết lập ma trận transform cho một shape của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2947,7 +2947,7 @@ Sets the transform matrix for a body shape.
 
 |void| **body_set_space**\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_space>`
 
-Assigns a space to the body (see :ref:`space_create()<class_PhysicsServer3D_method_space_create>`).
+Gán một space cho body (xem :ref:`space_create()<class_PhysicsServer3D_method_space_create>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2959,7 +2959,7 @@ Assigns a space to the body (see :ref:`space_create()<class_PhysicsServer3D_meth
 
 |void| **body_set_state**\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_state>`
 
-Sets a body state.
+Thiết lập trạng thái của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2971,13 +2971,13 @@ Sets a body state.
 
 |void| **body_set_state_sync_callback**\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_PhysicsServer3D_method_body_set_state_sync_callback>`
 
-Sets the body's state synchronization callback function to ``callable``. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the callback.
+Thiết lập hàm callback đồng bộ hóa trạng thái của body thành ``callable``. Sử dụng một :ref:`Callable<class_Callable>` (``Callable()``) rỗng để xóa callback.
 
-The function ``callable`` will be called every physics frame, assuming that the body was active during the previous physics tick, and can be used to fetch the latest state from the physics server.
+Hàm ``callable`` sẽ được gọi trong mỗi physics frame, với điều kiện body đã hoạt động trong physics tick trước đó, và có thể được dùng để lấy trạng thái mới nhất từ physics server.
 
-The function ``callable`` must take the following parameters:
+Hàm ``callable`` phải nhận các tham số sau:
 
-1. ``state``: a :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>`, used to retrieve the body's state.
+1. ``state``: một :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>`, được dùng để lấy trạng thái của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2989,7 +2989,7 @@ The function ``callable`` must take the following parameters:
 
 :ref:`bool<class_bool>` **body_test_motion**\ (\ body\: :ref:`RID<class_RID>`, parameters\: :ref:`PhysicsTestMotionParameters3D<class_PhysicsTestMotionParameters3D>`, result\: :ref:`PhysicsTestMotionResult3D<class_PhysicsTestMotionResult3D>` = null\ ) :ref:`🔗<class_PhysicsServer3D_method_body_test_motion>`
 
-Returns ``true`` if a collision would result from moving along a motion vector from a given point in space. :ref:`PhysicsTestMotionParameters3D<class_PhysicsTestMotionParameters3D>` is passed to set motion parameters. :ref:`PhysicsTestMotionResult3D<class_PhysicsTestMotionResult3D>` can be passed to return additional information.
+Trả về ``true`` nếu việc di chuyển theo một vector chuyển động từ một điểm cho trước trong không gian sẽ gây ra va chạm. :ref:`PhysicsTestMotionParameters3D<class_PhysicsTestMotionParameters3D>` được truyền vào để thiết lập các tham số chuyển động. Có thể truyền :ref:`PhysicsTestMotionResult3D<class_PhysicsTestMotionResult3D>` để trả về thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -3001,7 +3001,7 @@ Returns ``true`` if a collision would result from moving along a motion vector f
 
 :ref:`RID<class_RID>` **box_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_box_shape_create>`
 
-Creates a 3D box shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the box's half-extents.
+Tạo một hình hộp 3D trong physics server và trả về :ref:`RID<class_RID>` dùng để xác định hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập kích thước bán phần của hình hộp.
 
 .. rst-class:: classref-item-separator
 
@@ -3013,7 +3013,7 @@ Creates a 3D box shape in the physics server, and returns the :ref:`RID<class_RI
 
 :ref:`RID<class_RID>` **capsule_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_capsule_shape_create>`
 
-Creates a 3D capsule shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the capsule's height and radius.
+Tạo một hình con nhộng 3D trong physics server và trả về :ref:`RID<class_RID>` dùng để xác định hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập chiều cao và bán kính của hình con nhộng.
 
 .. rst-class:: classref-item-separator
 
@@ -3025,7 +3025,7 @@ Creates a 3D capsule shape in the physics server, and returns the :ref:`RID<clas
 
 :ref:`RID<class_RID>` **concave_polygon_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_concave_polygon_shape_create>`
 
-Creates a 3D concave polygon shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the concave polygon's triangles.
+Tạo một hình đa giác lõm 3D trong physics server và trả về :ref:`RID<class_RID>` định danh hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập các tam giác của đa giác lõm.
 
 .. rst-class:: classref-item-separator
 
@@ -3037,7 +3037,7 @@ Creates a 3D concave polygon shape in the physics server, and returns the :ref:`
 
 :ref:`float<class_float>` **cone_twist_joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_cone_twist_joint_get_param>`
 
-Gets a cone twist joint parameter.
+Lấy một tham số của cone twist joint.
 
 .. rst-class:: classref-item-separator
 
@@ -3049,7 +3049,7 @@ Gets a cone twist joint parameter.
 
 |void| **cone_twist_joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`ConeTwistJointParam<enum_PhysicsServer3D_ConeTwistJointParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_cone_twist_joint_set_param>`
 
-Sets a cone twist joint parameter.
+Thiết lập một tham số của cone twist joint.
 
 .. rst-class:: classref-item-separator
 
@@ -3061,7 +3061,7 @@ Sets a cone twist joint parameter.
 
 :ref:`RID<class_RID>` **convex_polygon_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_convex_polygon_shape_create>`
 
-Creates a 3D convex polygon shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the convex polygon's points.
+Tạo một hình đa giác lồi 3D trong physics server và trả về :ref:`RID<class_RID>` định danh hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập các điểm của đa giác lồi.
 
 .. rst-class:: classref-item-separator
 
@@ -3073,9 +3073,9 @@ Creates a 3D convex polygon shape in the physics server, and returns the :ref:`R
 
 :ref:`RID<class_RID>` **custom_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_custom_shape_create>`
 
-Creates a custom shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the shape's data.
+Tạo một hình tùy chỉnh trong physics server và trả về :ref:`RID<class_RID>` định danh hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập dữ liệu của hình.
 
-\ **Note:** Custom shapes are not supported by the built-in physics servers, so calling this method always produces an error when using Godot Physics or Jolt Physics. Custom physics servers implemented as GDExtensions may support a custom shape.
+\ **Lưu ý:** Các hình tùy chỉnh không được các physics server tích hợp sẵn hỗ trợ, vì vậy việc gọi phương thức này luôn gây ra lỗi khi sử dụng Godot Physics hoặc Jolt Physics. Các physics server tùy chỉnh được triển khai dưới dạng GDExtensions có thể hỗ trợ hình tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -3087,7 +3087,7 @@ Creates a custom shape in the physics server, and returns the :ref:`RID<class_RI
 
 :ref:`RID<class_RID>` **cylinder_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_cylinder_shape_create>`
 
-Creates a 3D cylinder shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the cylinder's height and radius.
+Tạo một hình trụ 3D trong physics server và trả về :ref:`RID<class_RID>` định danh hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập chiều cao và bán kính của hình trụ.
 
 .. rst-class:: classref-item-separator
 
@@ -3099,7 +3099,7 @@ Creates a 3D cylinder shape in the physics server, and returns the :ref:`RID<cla
 
 |void| **free_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_free_rid>`
 
-Destroys any of the objects created by PhysicsServer3D. If the :ref:`RID<class_RID>` passed is not one of the objects that can be created by PhysicsServer3D, an error will be sent to the console.
+Hủy mọi đối tượng được tạo bởi PhysicsServer3D. Nếu :ref:`RID<class_RID>` được truyền vào không phải là một trong các đối tượng có thể được tạo bởi PhysicsServer3D, một lỗi sẽ được gửi đến console.
 
 .. rst-class:: classref-item-separator
 
@@ -3111,7 +3111,7 @@ Destroys any of the objects created by PhysicsServer3D. If the :ref:`RID<class_R
 
 :ref:`bool<class_bool>` **generic_6dof_joint_get_flag**\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, flag\: :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_generic_6dof_joint_get_flag>`
 
-Returns the value of a generic 6DOF joint flag.
+Trả về giá trị của cờ joint 6DOF chung.
 
 .. rst-class:: classref-item-separator
 
@@ -3123,7 +3123,7 @@ Returns the value of a generic 6DOF joint flag.
 
 :ref:`float<class_float>` **generic_6dof_joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, param\: :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_generic_6dof_joint_get_param>`
 
-Returns the value of a generic 6DOF joint parameter.
+Trả về giá trị của tham số joint 6DOF chung.
 
 .. rst-class:: classref-item-separator
 
@@ -3135,7 +3135,7 @@ Returns the value of a generic 6DOF joint parameter.
 
 |void| **generic_6dof_joint_set_flag**\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, flag\: :ref:`G6DOFJointAxisFlag<enum_PhysicsServer3D_G6DOFJointAxisFlag>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_generic_6dof_joint_set_flag>`
 
-Sets the value of a given generic 6DOF joint flag.
+Thiết lập giá trị của cờ joint 6DOF chung được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -3147,7 +3147,7 @@ Sets the value of a given generic 6DOF joint flag.
 
 |void| **generic_6dof_joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, axis\: :ref:`Axis<enum_Vector3_Axis>`, param\: :ref:`G6DOFJointAxisParam<enum_PhysicsServer3D_G6DOFJointAxisParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_generic_6dof_joint_set_param>`
 
-Sets the value of a given generic 6DOF joint parameter.
+Thiết lập giá trị của tham số joint 6DOF chung được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -3159,7 +3159,7 @@ Sets the value of a given generic 6DOF joint parameter.
 
 :ref:`int<class_int>` **get_process_info**\ (\ process_info\: :ref:`ProcessInfo<enum_PhysicsServer3D_ProcessInfo>`\ ) :ref:`🔗<class_PhysicsServer3D_method_get_process_info>`
 
-Returns the value of a physics engine state specified by ``process_info``.
+Trả về giá trị của trạng thái physics engine được chỉ định bởi ``process_info``.
 
 .. rst-class:: classref-item-separator
 
@@ -3171,7 +3171,7 @@ Returns the value of a physics engine state specified by ``process_info``.
 
 :ref:`RID<class_RID>` **heightmap_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_heightmap_shape_create>`
 
-Creates a 3D heightmap shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the heightmap's data.
+Tạo một shape heightmap 3D trong physics server và trả về :ref:`RID<class_RID>` xác định shape đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập dữ liệu của heightmap.
 
 .. rst-class:: classref-item-separator
 
@@ -3183,7 +3183,7 @@ Creates a 3D heightmap shape in the physics server, and returns the :ref:`RID<cl
 
 :ref:`bool<class_bool>` **hinge_joint_get_flag**\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`HingeJointFlag<enum_PhysicsServer3D_HingeJointFlag>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_hinge_joint_get_flag>`
 
-Gets a hinge joint flag.
+Lấy cờ của khớp bản lề.
 
 .. rst-class:: classref-item-separator
 
@@ -3195,7 +3195,7 @@ Gets a hinge joint flag.
 
 :ref:`float<class_float>` **hinge_joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_hinge_joint_get_param>`
 
-Gets a hinge joint parameter.
+Lấy tham số của khớp bản lề.
 
 .. rst-class:: classref-item-separator
 
@@ -3207,7 +3207,7 @@ Gets a hinge joint parameter.
 
 |void| **hinge_joint_set_flag**\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`HingeJointFlag<enum_PhysicsServer3D_HingeJointFlag>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_hinge_joint_set_flag>`
 
-Sets a hinge joint flag.
+Đặt cờ cho khớp bản lề.
 
 .. rst-class:: classref-item-separator
 
@@ -3219,7 +3219,7 @@ Sets a hinge joint flag.
 
 |void| **hinge_joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`HingeJointParam<enum_PhysicsServer3D_HingeJointParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_hinge_joint_set_param>`
 
-Sets a hinge joint parameter.
+Đặt tham số cho khớp bản lề.
 
 .. rst-class:: classref-item-separator
 
@@ -3259,7 +3259,7 @@ Sets a hinge joint parameter.
 
 |void| **joint_disable_collisions_between_bodies**\ (\ joint\: :ref:`RID<class_RID>`, disable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_joint_disable_collisions_between_bodies>`
 
-Sets whether the bodies attached to the :ref:`Joint3D<class_Joint3D>` will collide with each other.
+Đặt liệu các body được gắn vào :ref:`Joint3D<class_Joint3D>` có va chạm với nhau hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -3271,9 +3271,9 @@ Sets whether the bodies attached to the :ref:`Joint3D<class_Joint3D>` will colli
 
 :ref:`int<class_int>` **joint_get_solver_priority**\ (\ joint\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_joint_get_solver_priority>`
 
-Gets the priority value of the Joint3D.
+Lấy giá trị ưu tiên của Joint3D.
 
-\ **Note:** Only supported when using GodotPhysics3D. This method always returns ``1`` when using Jolt Physics, as it does not support joint solver priority.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Phương thức này luôn trả về ``1`` khi sử dụng Jolt Physics, vì nó không hỗ trợ mức ưu tiên của joint solver.
 
 .. rst-class:: classref-item-separator
 
@@ -3285,7 +3285,7 @@ Gets the priority value of the Joint3D.
 
 :ref:`JointType<enum_PhysicsServer3D_JointType>` **joint_get_type**\ (\ joint\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_joint_get_type>`
 
-Returns the type of the Joint3D.
+Trả về kiểu của Joint3D.
 
 .. rst-class:: classref-item-separator
 
@@ -3297,7 +3297,7 @@ Returns the type of the Joint3D.
 
 :ref:`bool<class_bool>` **joint_is_disabled_collisions_between_bodies**\ (\ joint\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_joint_is_disabled_collisions_between_bodies>`
 
-Returns whether the bodies attached to the :ref:`Joint3D<class_Joint3D>` will collide with each other.
+Trả về việc các vật thể được gắn vào :ref:`Joint3D<class_Joint3D>` có va chạm với nhau hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -3323,7 +3323,7 @@ Returns whether the bodies attached to the :ref:`Joint3D<class_Joint3D>` will co
 
 |void| **joint_make_generic_6dof**\ (\ joint\: :ref:`RID<class_RID>`, body_A\: :ref:`RID<class_RID>`, local_ref_A\: :ref:`Transform3D<class_Transform3D>`, body_B\: :ref:`RID<class_RID>`, local_ref_B\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_PhysicsServer3D_method_joint_make_generic_6dof>`
 
-Make the joint a generic six degrees of freedom (6DOF) joint. Use :ref:`generic_6dof_joint_set_flag()<class_PhysicsServer3D_method_generic_6dof_joint_set_flag>` and :ref:`generic_6dof_joint_set_param()<class_PhysicsServer3D_method_generic_6dof_joint_set_param>` to set the joint's flags and parameters respectively.
+Biến joint thành joint sáu bậc tự do (6DOF) tổng quát. Sử dụng :ref:`generic_6dof_joint_set_flag()<class_PhysicsServer3D_method_generic_6dof_joint_set_flag>` và :ref:`generic_6dof_joint_set_param()<class_PhysicsServer3D_method_generic_6dof_joint_set_param>` để lần lượt thiết lập các cờ và tham số của joint.
 
 .. rst-class:: classref-item-separator
 
@@ -3377,9 +3377,9 @@ Make the joint a generic six degrees of freedom (6DOF) joint. Use :ref:`generic_
 
 |void| **joint_set_solver_priority**\ (\ joint\: :ref:`RID<class_RID>`, priority\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_joint_set_solver_priority>`
 
-Sets the priority value of the Joint3D.
+Thiết lập giá trị priority của Joint3D.
 
-\ **Note:** Only supported when using GodotPhysics3D. This method has no effect when using Jolt Physics, as it does not support joint solver priority.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Phương thức này không có tác dụng khi sử dụng Jolt Physics, vì nó không hỗ trợ priority của joint solver.
 
 .. rst-class:: classref-item-separator
 
@@ -3391,7 +3391,7 @@ Sets the priority value of the Joint3D.
 
 :ref:`Vector3<class_Vector3>` **pin_joint_get_local_a**\ (\ joint\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_pin_joint_get_local_a>`
 
-Returns position of the joint in the local space of body a of the joint.
+Trả về vị trí của joint trong local space của body a của joint.
 
 .. rst-class:: classref-item-separator
 
@@ -3403,7 +3403,7 @@ Returns position of the joint in the local space of body a of the joint.
 
 :ref:`Vector3<class_Vector3>` **pin_joint_get_local_b**\ (\ joint\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_pin_joint_get_local_b>`
 
-Returns position of the joint in the local space of body b of the joint.
+Trả về vị trí của joint trong local space của body b của joint.
 
 .. rst-class:: classref-item-separator
 
@@ -3415,7 +3415,7 @@ Returns position of the joint in the local space of body b of the joint.
 
 :ref:`float<class_float>` **pin_joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer3D_PinJointParam>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_pin_joint_get_param>`
 
-Gets a pin joint parameter.
+Lấy một tham số của khớp chốt.
 
 .. rst-class:: classref-item-separator
 
@@ -3427,7 +3427,7 @@ Gets a pin joint parameter.
 
 |void| **pin_joint_set_local_a**\ (\ joint\: :ref:`RID<class_RID>`, local_A\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_pin_joint_set_local_a>`
 
-Sets position of the joint in the local space of body a of the joint.
+Đặt vị trí của khớp trong không gian cục bộ của vật thể a thuộc khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -3439,7 +3439,7 @@ Sets position of the joint in the local space of body a of the joint.
 
 |void| **pin_joint_set_local_b**\ (\ joint\: :ref:`RID<class_RID>`, local_B\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_pin_joint_set_local_b>`
 
-Sets position of the joint in the local space of body b of the joint.
+Đặt vị trí của khớp trong không gian cục bộ của vật thể b thuộc khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -3451,7 +3451,7 @@ Sets position of the joint in the local space of body b of the joint.
 
 |void| **pin_joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer3D_PinJointParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_pin_joint_set_param>`
 
-Sets a pin joint parameter.
+Đặt một tham số của khớp chốt.
 
 .. rst-class:: classref-item-separator
 
@@ -3463,7 +3463,7 @@ Sets a pin joint parameter.
 
 :ref:`RID<class_RID>` **separation_ray_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_separation_ray_shape_create>`
 
-Creates a 3D separation ray shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the shape's ``length`` and ``slide_on_slope`` properties.
+Tạo một hình dạng tia phân tách 3D trong máy chủ vật lý và trả về :ref:`RID<class_RID>` xác định hình dạng đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để đặt các thuộc tính ``length`` và ``slide_on_slope`` của hình dạng.
 
 .. rst-class:: classref-item-separator
 
@@ -3475,7 +3475,7 @@ Creates a 3D separation ray shape in the physics server, and returns the :ref:`R
 
 |void| **set_active**\ (\ active\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_set_active>`
 
-Activates or deactivates the 3D physics engine.
+Kích hoạt hoặc vô hiệu hóa engine vật lý 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -3487,7 +3487,7 @@ Activates or deactivates the 3D physics engine.
 
 :ref:`Variant<class_Variant>` **shape_get_data**\ (\ shape\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_shape_get_data>`
 
-Returns the shape data that configures the shape, such as the half-extents of a box or the triangles of a concave (trimesh) shape. See :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` for the precise format of this data in each case.
+Trả về dữ liệu hình dạng dùng để cấu hình hình dạng, chẳng hạn như half-extents của một hình hộp hoặc các tam giác của hình dạng lõm (trimesh). Xem :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để biết định dạng chính xác của dữ liệu này trong từng trường hợp.
 
 .. rst-class:: classref-item-separator
 
@@ -3499,9 +3499,9 @@ Returns the shape data that configures the shape, such as the half-extents of a 
 
 :ref:`float<class_float>` **shape_get_margin**\ (\ shape\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_shape_get_margin>`
 
-Returns the collision margin for the shape.
+Trả về biên va chạm của hình dạng.
 
-\ **Note:** This is not used in Godot Physics, so will always return ``0``.
+\ **Lưu ý:** Điều này không được sử dụng trong Godot Physics, vì vậy sẽ luôn trả về ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -3513,7 +3513,7 @@ Returns the collision margin for the shape.
 
 :ref:`ShapeType<enum_PhysicsServer3D_ShapeType>` **shape_get_type**\ (\ shape\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_shape_get_type>`
 
-Returns the shape's type.
+Trả về kiểu của hình dạng.
 
 .. rst-class:: classref-item-separator
 
@@ -3525,29 +3525,29 @@ Returns the shape's type.
 
 |void| **shape_set_data**\ (\ shape\: :ref:`RID<class_RID>`, data\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer3D_method_shape_set_data>`
 
-Sets the shape data that configures the shape. The ``data`` to be passed depends on the shape's type (see :ref:`shape_get_type()<class_PhysicsServer3D_method_shape_get_type>`):
+Thiết lập dữ liệu hình dạng dùng để cấu hình hình dạng. ``data`` được truyền vào phụ thuộc vào kiểu của hình dạng (xem :ref:`shape_get_type()<class_PhysicsServer3D_method_shape_get_type>`):
 
-- :ref:`SHAPE_WORLD_BOUNDARY<class_PhysicsServer3D_constant_SHAPE_WORLD_BOUNDARY>`: a :ref:`Plane<class_Plane>`,
+- :ref:`SHAPE_WORLD_BOUNDARY<class_PhysicsServer3D_constant_SHAPE_WORLD_BOUNDARY>`: một :ref:`Plane<class_Plane>`,
 
-- :ref:`SHAPE_SEPARATION_RAY<class_PhysicsServer3D_constant_SHAPE_SEPARATION_RAY>`: a dictionary containing the key ``"length"`` with a :ref:`float<class_float>` value and the key ``"slide_on_slope"`` with a :ref:`bool<class_bool>` value,
+- :ref:`SHAPE_SEPARATION_RAY<class_PhysicsServer3D_constant_SHAPE_SEPARATION_RAY>`: một dictionary chứa khóa ``"length"`` với giá trị :ref:`float<class_float>` và khóa ``"slide_on_slope"`` với giá trị :ref:`bool<class_bool>`,
 
-- :ref:`SHAPE_SPHERE<class_PhysicsServer3D_constant_SHAPE_SPHERE>`: a :ref:`float<class_float>` that is the radius of the sphere,
+- :ref:`SHAPE_SPHERE<class_PhysicsServer3D_constant_SHAPE_SPHERE>`: một :ref:`float<class_float>` là bán kính của hình cầu,
 
-- :ref:`SHAPE_BOX<class_PhysicsServer3D_constant_SHAPE_BOX>`: a :ref:`Vector3<class_Vector3>` containing the half-extents of the box,
+- :ref:`SHAPE_BOX<class_PhysicsServer3D_constant_SHAPE_BOX>`: một :ref:`Vector3<class_Vector3>` chứa các nửa kích thước của hộp,
 
-- :ref:`SHAPE_CAPSULE<class_PhysicsServer3D_constant_SHAPE_CAPSULE>`: a dictionary containing the keys ``"height"`` and ``"radius"`` with :ref:`float<class_float>` values,
+- :ref:`SHAPE_CAPSULE<class_PhysicsServer3D_constant_SHAPE_CAPSULE>`: một dictionary chứa các khóa ``"height"`` và ``"radius"`` với các giá trị :ref:`float<class_float>`,
 
-- :ref:`SHAPE_CYLINDER<class_PhysicsServer3D_constant_SHAPE_CYLINDER>`: a dictionary containing the keys ``"height"`` and ``"radius"`` with :ref:`float<class_float>` values,
+- :ref:`SHAPE_CYLINDER<class_PhysicsServer3D_constant_SHAPE_CYLINDER>`: một dictionary chứa các khóa ``"height"`` và ``"radius"`` với các giá trị :ref:`float<class_float>`,
 
-- :ref:`SHAPE_CONVEX_POLYGON<class_PhysicsServer3D_constant_SHAPE_CONVEX_POLYGON>`: a :ref:`PackedVector3Array<class_PackedVector3Array>` of points defining a convex polygon (the shape will be the convex hull of the points),
+- :ref:`SHAPE_CONVEX_POLYGON<class_PhysicsServer3D_constant_SHAPE_CONVEX_POLYGON>`: một :ref:`PackedVector3Array<class_PackedVector3Array>` gồm các điểm xác định một đa giác lồi (hình dạng sẽ là bao lồi của các điểm),
 
-- :ref:`SHAPE_CONCAVE_POLYGON<class_PhysicsServer3D_constant_SHAPE_CONCAVE_POLYGON>`: a dictionary containing the key ``"faces"`` with a :ref:`PackedVector3Array<class_PackedVector3Array>` value (with a length divisible by 3, so that each 3-tuple of points forms a face) and the key ``"backface_collision"`` with a :ref:`bool<class_bool>` value,
+- :ref:`SHAPE_CONCAVE_POLYGON<class_PhysicsServer3D_constant_SHAPE_CONCAVE_POLYGON>`: một dictionary chứa khóa ``"faces"`` với một giá trị :ref:`PackedVector3Array<class_PackedVector3Array>` (có độ dài chia hết cho 3, để mỗi bộ 3 điểm tạo thành một mặt) và khóa ``"backface_collision"`` với một giá trị :ref:`bool<class_bool>`,
 
-- :ref:`SHAPE_HEIGHTMAP<class_PhysicsServer3D_constant_SHAPE_HEIGHTMAP>`: a dictionary containing the keys ``"width"`` and ``"depth"`` with :ref:`int<class_int>` values, and the key ``"heights"`` with a value that is a packed array of :ref:`float<class_float>`\ s of length ``width * depth`` (that is a :ref:`PackedFloat32Array<class_PackedFloat32Array>`, or a :ref:`PackedFloat64Array<class_PackedFloat64Array>` if Godot was compiled with the ``precision=double`` option), and optionally the keys ``"min_height"`` and ``"max_height"`` with :ref:`float<class_float>` values,
+- :ref:`SHAPE_HEIGHTMAP<class_PhysicsServer3D_constant_SHAPE_HEIGHTMAP>`: một dictionary chứa các khóa ``"width"`` và ``"depth"`` với các giá trị :ref:`int<class_int>`, và khóa ``"heights"`` với một giá trị là một mảng được đóng gói gồm :ref:`float<class_float>`\ s có độ dài ``width * depth`` (đó là một :ref:`PackedFloat32Array<class_PackedFloat32Array>`, hoặc một :ref:`PackedFloat64Array<class_PackedFloat64Array>` nếu Godot được biên dịch với tùy chọn ``precision=double``), và tùy chọn các khóa ``"min_height"`` và ``"max_height"`` với các giá trị :ref:`float<class_float>`,
 
-- :ref:`SHAPE_SOFT_BODY<class_PhysicsServer3D_constant_SHAPE_SOFT_BODY>`: the input ``data`` is ignored and this method has no effect,
+- :ref:`SHAPE_SOFT_BODY<class_PhysicsServer3D_constant_SHAPE_SOFT_BODY>`: ``data`` đầu vào bị bỏ qua và phương thức này không có tác dụng,
 
-- :ref:`SHAPE_CUSTOM<class_PhysicsServer3D_constant_SHAPE_CUSTOM>`: the input ``data`` is interpreted by a custom physics server, if it supports custom shapes.
+- :ref:`SHAPE_CUSTOM<class_PhysicsServer3D_constant_SHAPE_CUSTOM>`: đầu vào ``data`` được diễn giải bởi máy chủ vật lý tùy chỉnh, nếu máy chủ hỗ trợ các hình dạng tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -3559,9 +3559,9 @@ Sets the shape data that configures the shape. The ``data`` to be passed depends
 
 |void| **shape_set_margin**\ (\ shape\: :ref:`RID<class_RID>`, margin\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_shape_set_margin>`
 
-Sets the collision margin for the shape.
+Thiết lập biên va chạm cho hình dạng.
 
-\ **Note:** This is not used in Godot Physics.
+\ **Lưu ý:** Tùy chọn này không được sử dụng trong Godot Physics.
 
 .. rst-class:: classref-item-separator
 
@@ -3573,7 +3573,7 @@ Sets the collision margin for the shape.
 
 :ref:`float<class_float>` **slider_joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_slider_joint_get_param>`
 
-Gets a slider joint parameter.
+Lấy một tham số của khớp trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -3585,7 +3585,7 @@ Gets a slider joint parameter.
 
 |void| **slider_joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`SliderJointParam<enum_PhysicsServer3D_SliderJointParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_slider_joint_set_param>`
 
-Gets a slider joint parameter.
+Lấy một tham số của khớp trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -3597,7 +3597,7 @@ Gets a slider joint parameter.
 
 |void| **soft_body_add_collision_exception**\ (\ body\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_add_collision_exception>`
 
-Adds the given body to the list of bodies exempt from collisions.
+Thêm body đã cho vào danh sách các body được miễn va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -3609,7 +3609,7 @@ Adds the given body to the list of bodies exempt from collisions.
 
 |void| **soft_body_apply_central_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_central_force>`
 
-Distributes and applies a force to all points. A force is time dependent and meant to be applied every physics update.
+Phân phối và áp dụng một lực lên tất cả các điểm. Lực phụ thuộc vào thời gian và предназначена để được áp dụng trong mỗi lần cập nhật vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -3621,9 +3621,9 @@ Distributes and applies a force to all points. A force is time dependent and mea
 
 |void| **soft_body_apply_central_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_central_impulse>`
 
-Distributes and applies an impulse to all points.
+Phân phối và áp dụng một xung lực lên tất cả các điểm.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực ở mỗi khung hình sẽ tạo ra một lực phụ thuộc vào tốc độ khung hình. Vì lý do này, chỉ nên sử dụng xung lực khi mô phỏng các va chạm xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
 .. rst-class:: classref-item-separator
 
@@ -3635,7 +3635,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 |void| **soft_body_apply_point_force**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, force\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_point_force>`
 
-Applies a force to a point. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực lên một điểm. Lực phụ thuộc vào thời gian và được áp dụng trong mỗi lần cập nhật physics.
 
 .. rst-class:: classref-item-separator
 
@@ -3647,9 +3647,9 @@ Applies a force to a point. A force is time dependent and meant to be applied ev
 
 |void| **soft_body_apply_point_impulse**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_apply_point_impulse>`
 
-Applies an impulse to a point.
+Áp dụng một xung lực lên một điểm.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực ở mỗi khung hình sẽ tạo ra một lực phụ thuộc vào tốc độ khung hình. Vì lý do này, chỉ nên sử dụng xung lực khi mô phỏng các va chạm xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_force").
 
 .. rst-class:: classref-item-separator
 
@@ -3661,7 +3661,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 :ref:`RID<class_RID>` **soft_body_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_create>`
 
-Creates a new soft body and returns its internal :ref:`RID<class_RID>`.
+Tạo một soft body mới và trả về :ref:`RID<class_RID>` nội bộ của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -3673,7 +3673,7 @@ Creates a new soft body and returns its internal :ref:`RID<class_RID>`.
 
 :ref:`AABB<class_AABB>` **soft_body_get_bounds**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_bounds>`
 
-Returns the bounds of the given soft body in global coordinates.
+Trả về các giới hạn của soft body đã cho trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -3685,7 +3685,7 @@ Returns the bounds of the given soft body in global coordinates.
 
 :ref:`int<class_int>` **soft_body_get_collision_layer**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_collision_layer>`
 
-Returns the physics layer or layers that the given soft body belongs to.
+Trả về layer vật lý hoặc các layer vật lý mà soft body đã cho thuộc về.
 
 .. rst-class:: classref-item-separator
 
@@ -3697,7 +3697,7 @@ Returns the physics layer or layers that the given soft body belongs to.
 
 :ref:`int<class_int>` **soft_body_get_collision_mask**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_collision_mask>`
 
-Returns the physics layer or layers that the given soft body can collide with.
+Trả về layer vật lý hoặc các layer vật lý mà soft body đã cho có thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -3709,7 +3709,7 @@ Returns the physics layer or layers that the given soft body can collide with.
 
 :ref:`float<class_float>` **soft_body_get_damping_coefficient**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_damping_coefficient>`
 
-Returns the damping coefficient of the given soft body.
+Trả về hệ số giảm chấn của soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3721,7 +3721,7 @@ Returns the damping coefficient of the given soft body.
 
 :ref:`float<class_float>` **soft_body_get_drag_coefficient**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_drag_coefficient>`
 
-Returns the drag coefficient of the given soft body.
+Trả về hệ số lực cản của soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3733,7 +3733,7 @@ Returns the drag coefficient of the given soft body.
 
 :ref:`float<class_float>` **soft_body_get_linear_stiffness**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_linear_stiffness>`
 
-Returns the linear stiffness of the given soft body.
+Trả về độ cứng tuyến tính của soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3745,7 +3745,7 @@ Returns the linear stiffness of the given soft body.
 
 :ref:`Vector3<class_Vector3>` **soft_body_get_point_global_position**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_point_global_position>`
 
-Returns the current position of the given soft body point in global coordinates.
+Trả về vị trí hiện tại của điểm trên soft body đã cho trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -3757,7 +3757,7 @@ Returns the current position of the given soft body point in global coordinates.
 
 :ref:`float<class_float>` **soft_body_get_pressure_coefficient**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_pressure_coefficient>`
 
-Returns the pressure coefficient of the given soft body.
+Trả về hệ số áp suất của soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3769,7 +3769,7 @@ Returns the pressure coefficient of the given soft body.
 
 :ref:`float<class_float>` **soft_body_get_shrinking_factor**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_shrinking_factor>`
 
-Returns the shrinking factor of the given soft body.
+Trả về hệ số co của soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3781,7 +3781,7 @@ Returns the shrinking factor of the given soft body.
 
 :ref:`int<class_int>` **soft_body_get_simulation_precision**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_simulation_precision>`
 
-Returns the simulation precision of the given soft body.
+Trả về độ chính xác mô phỏng của soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3793,7 +3793,7 @@ Returns the simulation precision of the given soft body.
 
 :ref:`RID<class_RID>` **soft_body_get_space**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_space>`
 
-Returns the :ref:`RID<class_RID>` of the space assigned to the given soft body.
+Trả về :ref:`RID<class_RID>` của không gian được gán cho soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3805,9 +3805,9 @@ Returns the :ref:`RID<class_RID>` of the space assigned to the given soft body.
 
 :ref:`Variant<class_Variant>` **soft_body_get_state**\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_state>`
 
-Returns the given soft body state.
+Trả về trạng thái của soft body đã cho.
 
-\ **Note:** Godot's default physics implementation does not support :ref:`BODY_STATE_LINEAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_LINEAR_VELOCITY>`, :ref:`BODY_STATE_ANGULAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_ANGULAR_VELOCITY>`, :ref:`BODY_STATE_SLEEPING<class_PhysicsServer3D_constant_BODY_STATE_SLEEPING>`, or :ref:`BODY_STATE_CAN_SLEEP<class_PhysicsServer3D_constant_BODY_STATE_CAN_SLEEP>`.
+\ **Lưu ý:** Triển khai vật lý mặc định của Godot không hỗ trợ :ref:`BODY_STATE_LINEAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_LINEAR_VELOCITY>`, :ref:`BODY_STATE_ANGULAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_ANGULAR_VELOCITY>`, :ref:`BODY_STATE_SLEEPING<class_PhysicsServer3D_constant_BODY_STATE_SLEEPING>` hoặc :ref:`BODY_STATE_CAN_SLEEP<class_PhysicsServer3D_constant_BODY_STATE_CAN_SLEEP>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3819,7 +3819,7 @@ Returns the given soft body state.
 
 :ref:`float<class_float>` **soft_body_get_total_mass**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_get_total_mass>`
 
-Returns the total mass assigned to the given soft body.
+Trả về tổng khối lượng được gán cho soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3831,7 +3831,7 @@ Returns the total mass assigned to the given soft body.
 
 :ref:`bool<class_bool>` **soft_body_is_point_pinned**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_soft_body_is_point_pinned>`
 
-Returns whether the given soft body point is pinned.
+Trả về liệu điểm soft body đã cho có được ghim hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -3843,7 +3843,7 @@ Returns whether the given soft body point is pinned.
 
 |void| **soft_body_move_point**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, global_position\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_move_point>`
 
-Moves the given soft body point to a position in global coordinates.
+Di chuyển điểm vật thể mềm đã cho đến một vị trí trong tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -3855,9 +3855,9 @@ Moves the given soft body point to a position in global coordinates.
 
 |void| **soft_body_pin_point**\ (\ body\: :ref:`RID<class_RID>`, point_index\: :ref:`int<class_int>`, pin\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_pin_point>`
 
-Pins or unpins the given soft body point based on the value of ``pin``.
+Ghim hoặc bỏ ghim điểm vật thể mềm đã cho dựa trên giá trị của ``pin``.
 
-\ **Note:** Pinning a point effectively makes it kinematic, preventing it from being affected by forces, but you can still move it using :ref:`soft_body_move_point()<class_PhysicsServer3D_method_soft_body_move_point>`.
+\ **Lưu ý:** Việc ghim một điểm khiến điểm đó về cơ bản trở thành kinematic, ngăn không cho điểm đó bị tác động bởi các lực, nhưng bạn vẫn có thể di chuyển điểm đó bằng :ref:`soft_body_move_point()<class_PhysicsServer3D_method_soft_body_move_point>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3869,7 +3869,7 @@ Pins or unpins the given soft body point based on the value of ``pin``.
 
 |void| **soft_body_remove_all_pinned_points**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_remove_all_pinned_points>`
 
-Unpins all points of the given soft body.
+Bỏ ghim tất cả các điểm của vật thể mềm đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3881,7 +3881,7 @@ Unpins all points of the given soft body.
 
 |void| **soft_body_remove_collision_exception**\ (\ body\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_remove_collision_exception>`
 
-Removes the given body from the list of bodies exempt from collisions.
+Xóa body đã cho khỏi danh sách các body được miễn va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -3893,7 +3893,7 @@ Removes the given body from the list of bodies exempt from collisions.
 
 |void| **soft_body_set_collision_layer**\ (\ body\: :ref:`RID<class_RID>`, layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_collision_layer>`
 
-Sets the physics layer or layers the given soft body belongs to.
+Thiết lập layer vật lý hoặc các layer vật lý mà vật thể mềm đã cho thuộc về.
 
 .. rst-class:: classref-item-separator
 
@@ -3905,7 +3905,7 @@ Sets the physics layer or layers the given soft body belongs to.
 
 |void| **soft_body_set_collision_mask**\ (\ body\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_collision_mask>`
 
-Sets the physics layer or layers the given soft body can collide with.
+Thiết lập layer vật lý hoặc các layer vật lý mà vật thể mềm đã cho có thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -3917,7 +3917,7 @@ Sets the physics layer or layers the given soft body can collide with.
 
 |void| **soft_body_set_damping_coefficient**\ (\ body\: :ref:`RID<class_RID>`, damping_coefficient\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_damping_coefficient>`
 
-Sets the damping coefficient of the given soft body. Higher values will slow down the body more noticeably when forces are applied.
+Đặt hệ số giảm chấn của soft body đã cho. Giá trị cao hơn sẽ làm soft body chậm lại rõ rệt hơn khi có lực tác động.
 
 .. rst-class:: classref-item-separator
 
@@ -3929,9 +3929,9 @@ Sets the damping coefficient of the given soft body. Higher values will slow dow
 
 |void| **soft_body_set_drag_coefficient**\ (\ body\: :ref:`RID<class_RID>`, drag_coefficient\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_drag_coefficient>`
 
-Sets the drag coefficient of the given soft body. Higher values increase this body's air resistance.
+Đặt hệ số lực cản của soft body đã cho. Giá trị cao hơn sẽ làm tăng lực cản không khí của soft body này.
 
-\ **Note:** This value is currently unused by Godot's default physics implementation.
+\ **Lưu ý:** Giá trị này hiện không được triển khai trong implementation vật lý mặc định của Godot.
 
 .. rst-class:: classref-item-separator
 
@@ -3943,7 +3943,7 @@ Sets the drag coefficient of the given soft body. Higher values increase this bo
 
 |void| **soft_body_set_linear_stiffness**\ (\ body\: :ref:`RID<class_RID>`, stiffness\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_linear_stiffness>`
 
-Sets the linear stiffness of the given soft body. Higher values will result in a stiffer body, while lower values will increase the body's ability to bend. The value can be between ``0.0`` and ``1.0`` (inclusive).
+Đặt độ cứng tuyến tính của soft body đã cho. Giá trị cao hơn sẽ tạo ra soft body cứng hơn, trong khi giá trị thấp hơn sẽ tăng khả năng uốn cong của soft body. Giá trị có thể nằm trong khoảng từ ``0.0`` đến ``1.0`` (bao gồm cả hai giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -3955,7 +3955,7 @@ Sets the linear stiffness of the given soft body. Higher values will result in a
 
 |void| **soft_body_set_mesh**\ (\ body\: :ref:`RID<class_RID>`, mesh\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_mesh>`
 
-Sets the mesh of the given soft body.
+Đặt mesh của soft body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -3967,7 +3967,7 @@ Sets the mesh of the given soft body.
 
 |void| **soft_body_set_pressure_coefficient**\ (\ body\: :ref:`RID<class_RID>`, pressure_coefficient\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_pressure_coefficient>`
 
-Sets the pressure coefficient of the given soft body. Simulates pressure build-up from inside this body. Higher values increase the strength of this effect.
+Đặt hệ số áp suất của soft body đã cho. Mô phỏng sự tích tụ áp suất bên trong soft body này. Giá trị cao hơn sẽ làm tăng cường độ của hiệu ứng này.
 
 .. rst-class:: classref-item-separator
 
@@ -3979,7 +3979,7 @@ Sets the pressure coefficient of the given soft body. Simulates pressure build-u
 
 |void| **soft_body_set_ray_pickable**\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_ray_pickable>`
 
-Sets whether the given soft body will be pickable when using object picking.
+Đặt việc soft body đã cho có thể được chọn khi sử dụng tính năng chọn đối tượng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -3991,7 +3991,7 @@ Sets whether the given soft body will be pickable when using object picking.
 
 |void| **soft_body_set_shrinking_factor**\ (\ body\: :ref:`RID<class_RID>`, shrinking_factor\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_shrinking_factor>`
 
-Sets the shrinking factor of the given soft body.
+Thiết lập hệ số co của soft body được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -4003,7 +4003,7 @@ Sets the shrinking factor of the given soft body.
 
 |void| **soft_body_set_simulation_precision**\ (\ body\: :ref:`RID<class_RID>`, simulation_precision\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_simulation_precision>`
 
-Sets the simulation precision of the given soft body. Increasing this value will improve the resulting simulation, but can affect performance. Use with care.
+Thiết lập độ chính xác mô phỏng của soft body được chỉ định. Việc tăng giá trị này sẽ cải thiện kết quả mô phỏng, nhưng có thể ảnh hưởng đến hiệu suất. Hãy sử dụng một cách thận trọng.
 
 .. rst-class:: classref-item-separator
 
@@ -4015,7 +4015,7 @@ Sets the simulation precision of the given soft body. Increasing this value will
 
 |void| **soft_body_set_space**\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_space>`
 
-Assigns a space to the given soft body (see :ref:`space_create()<class_PhysicsServer3D_method_space_create>`).
+Gán một space cho soft body được chỉ định (xem :ref:`space_create()<class_PhysicsServer3D_method_space_create>`).
 
 .. rst-class:: classref-item-separator
 
@@ -4027,9 +4027,9 @@ Assigns a space to the given soft body (see :ref:`space_create()<class_PhysicsSe
 
 |void| **soft_body_set_state**\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer3D_BodyState>`, variant\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_state>`
 
-Sets the given body state for the given body.
+Thiết lập trạng thái body được chỉ định cho body được chỉ định.
 
-\ **Note:** Godot's default physics implementation does not support :ref:`BODY_STATE_LINEAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_LINEAR_VELOCITY>`, :ref:`BODY_STATE_ANGULAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_ANGULAR_VELOCITY>`, :ref:`BODY_STATE_SLEEPING<class_PhysicsServer3D_constant_BODY_STATE_SLEEPING>`, or :ref:`BODY_STATE_CAN_SLEEP<class_PhysicsServer3D_constant_BODY_STATE_CAN_SLEEP>`.
+\ **Lưu ý:** Triển khai vật lý mặc định của Godot không hỗ trợ :ref:`BODY_STATE_LINEAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_LINEAR_VELOCITY>`, :ref:`BODY_STATE_ANGULAR_VELOCITY<class_PhysicsServer3D_constant_BODY_STATE_ANGULAR_VELOCITY>`, :ref:`BODY_STATE_SLEEPING<class_PhysicsServer3D_constant_BODY_STATE_SLEEPING>` hoặc :ref:`BODY_STATE_CAN_SLEEP<class_PhysicsServer3D_constant_BODY_STATE_CAN_SLEEP>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4041,7 +4041,7 @@ Sets the given body state for the given body.
 
 |void| **soft_body_set_total_mass**\ (\ body\: :ref:`RID<class_RID>`, total_mass\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_total_mass>`
 
-Sets the total mass for the given soft body.
+Thiết lập tổng khối lượng cho soft body được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -4053,7 +4053,7 @@ Sets the total mass for the given soft body.
 
 |void| **soft_body_set_transform**\ (\ body\: :ref:`RID<class_RID>`, transform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_set_transform>`
 
-Sets the global transform of the given soft body.
+Thiết lập phép biến đổi toàn cục của soft body được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -4065,7 +4065,7 @@ Sets the global transform of the given soft body.
 
 |void| **soft_body_update_rendering_server**\ (\ body\: :ref:`RID<class_RID>`, rendering_server_handler\: :ref:`PhysicsServer3DRenderingServerHandler<class_PhysicsServer3DRenderingServerHandler>`\ ) :ref:`🔗<class_PhysicsServer3D_method_soft_body_update_rendering_server>`
 
-Requests that the physics server updates the rendering server with the latest positions of the given soft body's points through the ``rendering_server_handler`` interface.
+Yêu cầu physics server cập nhật rendering server với các vị trí mới nhất của các điểm thuộc soft body đã cho thông qua giao diện ``rendering_server_handler``.
 
 .. rst-class:: classref-item-separator
 
@@ -4077,7 +4077,7 @@ Requests that the physics server updates the rendering server with the latest po
 
 :ref:`RID<class_RID>` **space_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_space_create>`
 
-Creates a space. A space is a collection of parameters for the physics engine that can be assigned to an area or a body. It can be assigned to an area with :ref:`area_set_space()<class_PhysicsServer3D_method_area_set_space>`, or to a body with :ref:`body_set_space()<class_PhysicsServer3D_method_body_set_space>`.
+Tạo một space. Space là tập hợp các tham số cho physics engine, có thể được gán cho một area hoặc body. Space có thể được gán cho một area bằng :ref:`area_set_space()<class_PhysicsServer3D_method_area_set_space>`, hoặc cho một body bằng :ref:`body_set_space()<class_PhysicsServer3D_method_body_set_space>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4089,7 +4089,7 @@ Creates a space. A space is a collection of parameters for the physics engine th
 
 :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>` **space_get_direct_state**\ (\ space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer3D_method_space_get_direct_state>`
 
-Returns the state of a space, a :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>`. This object can be used to make collision/intersection queries.
+Trả về trạng thái của một space, một :ref:`PhysicsDirectSpaceState3D<class_PhysicsDirectSpaceState3D>`. Đối tượng này có thể được dùng để thực hiện các truy vấn va chạm/giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -4101,7 +4101,7 @@ Returns the state of a space, a :ref:`PhysicsDirectSpaceState3D<class_PhysicsDir
 
 :ref:`float<class_float>` **space_get_param**\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_space_get_param>`
 
-Returns the value of a space parameter.
+Trả về giá trị của một tham số space.
 
 .. rst-class:: classref-item-separator
 
@@ -4113,7 +4113,7 @@ Returns the value of a space parameter.
 
 :ref:`bool<class_bool>` **space_is_active**\ (\ space\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer3D_method_space_is_active>`
 
-Returns whether the space is active.
+Trả về việc space có đang active hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -4125,7 +4125,7 @@ Returns whether the space is active.
 
 |void| **space_set_active**\ (\ space\: :ref:`RID<class_RID>`, active\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer3D_method_space_set_active>`
 
-Marks a space as active. It will not have an effect, unless it is assigned to an area or body.
+Đánh dấu một space là active. Việc này sẽ không có hiệu lực nếu space chưa được gán cho một area hoặc body.
 
 .. rst-class:: classref-item-separator
 
@@ -4137,7 +4137,7 @@ Marks a space as active. It will not have an effect, unless it is assigned to an
 
 |void| **space_set_param**\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer3D_method_space_set_param>`
 
-Sets the value for a space parameter. A list of available parameters is on the :ref:`SpaceParameter<enum_PhysicsServer3D_SpaceParameter>` constants.
+Đặt giá trị cho một tham số space. Danh sách các tham số khả dụng nằm trong các hằng số :ref:`SpaceParameter <enum_PhysicsServer3D_SpaceParameter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -4149,7 +4149,7 @@ Sets the value for a space parameter. A list of available parameters is on the :
 
 :ref:`RID<class_RID>` **sphere_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_sphere_shape_create>`
 
-Creates a 3D sphere shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the sphere's radius.
+Tạo một hình dạng hình cầu 3D trong máy chủ vật lý và trả về :ref:`RID<class_RID>` xác định hình dạng đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập bán kính của hình cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -4161,14 +4161,14 @@ Creates a 3D sphere shape in the physics server, and returns the :ref:`RID<class
 
 :ref:`RID<class_RID>` **world_boundary_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer3D_method_world_boundary_shape_create>`
 
-Creates a 3D world boundary shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` to set the shape's normal direction and distance properties.
+Tạo một hình dạng ranh giới thế giới 3D trong máy chủ vật lý và trả về :ref:`RID<class_RID>` xác định hình dạng đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer3D_method_shape_set_data>` để thiết lập hướng pháp tuyến và các thuộc tính khoảng cách của hình dạng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

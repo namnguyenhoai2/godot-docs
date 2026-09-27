@@ -10,25 +10,25 @@
 CollisionShape3D
 ================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node that provides a :ref:`Shape3D<class_Shape3D>` to a :ref:`CollisionObject3D<class_CollisionObject3D>` parent.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A node that provides a :ref:`Shape3D<class_Shape3D>` to a :ref:`CollisionObject3D<class_CollisionObject3D>` parent and allows it to be edited. This can give a detection shape to an :ref:`Area3D<class_Area3D>` or turn a :ref:`PhysicsBody3D<class_PhysicsBody3D>` into a solid object.
-
-\ **Warning:** A non-uniformly scaled **CollisionShape3D** will likely not behave as expected. Make sure to keep its scale the same on all axes and adjust its :ref:`shape<class_CollisionShape3D_property_shape>` resource instead.
+Một node cung cấp :ref:`Shape3D<class_Shape3D>` cho một :ref:`CollisionObject3D<class_CollisionObject3D>` cha.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một node cung cấp :ref:`Shape3D<class_Shape3D>` cho một :ref:`CollisionObject3D<class_CollisionObject3D>` cha và cho phép chỉnh sửa nó. Điều này có thể cung cấp hình dạng phát hiện cho một :ref:`Area3D<class_Area3D>` hoặc biến một :ref:`PhysicsBody3D<class_PhysicsBody3D>` thành một đối tượng đặc.
+
+\ **Cảnh báo:** Một **CollisionShape3D** được scale không đồng đều có thể sẽ không hoạt động như mong đợi. Hãy đảm bảo giữ nguyên scale của nó trên tất cả các trục và thay vào đó điều chỉnh resource :ref:`shape<class_CollisionShape3D_property_shape>` của nó.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
 - `3D Kinematic Character Demo <https://godotengine.org/asset-library/asset/2739>`__
 
@@ -38,7 +38,7 @@ Tutorials
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -74,8 +74,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CollisionShape3D_property_debug_color:
 
@@ -88,9 +88,9 @@ Property Descriptions
 - |void| **set_debug_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_debug_color**\ (\ )
 
-The collision shape color that is displayed in the editor, or in the running project if **Debug > Visible Collision Shapes** is checked at the top of the editor.
+Màu của hình dạng va chạm được hiển thị trong editor hoặc trong project đang chạy nếu **Debug > Visible Collision Shapes** được đánh dấu ở đầu editor.
 
-\ **Note:** The default value is :ref:`ProjectSettings.debug/shapes/collision/shape_color<class_ProjectSettings_property_debug/shapes/collision/shape_color>`. The ``Color(0, 0, 0, 0)`` value documented here is a placeholder, and not the actual default debug color.
+\ **Lưu ý:** Giá trị mặc định là :ref:`ProjectSettings.debug/shapes/collision/shape_color <class_ProjectSettings_property_debug/shapes/collision/shape_color>`. Giá trị ``Color(0, 0, 0, 0)`` được ghi lại ở đây chỉ là phần giữ chỗ, không phải màu debug mặc định thực tế.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ The collision shape color that is displayed in the editor, or in the running pro
 - |void| **set_enable_debug_fill**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enable_debug_fill**\ (\ )
 
-If ``true``, when the shape is displayed, it will show a solid fill color in addition to its wireframe.
+Nếu ``true``, khi hình dạng được hiển thị, nó sẽ hiển thị màu tô đặc bên cạnh khung dây.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ If ``true``, when the shape is displayed, it will show a solid fill color in add
 - |void| **set_disabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_disabled**\ (\ )
 
-A disabled collision shape has no effect in the world. This property should be changed with :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
+Hình dạng va chạm bị vô hiệu hóa không có tác động nào trong thế giới. Nên thay đổi thuộc tính này bằng :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
 
 .. rst-class:: classref-item-separator
 
@@ -134,14 +134,14 @@ A disabled collision shape has no effect in the world. This property should be c
 
 .. rst-class:: classref-property
 
-:ref:`Shape3D<class_Shape3D>` **shape** :ref:`🔗<class_CollisionShape3D_property_shape>`
+:ref:`Shape3D<class_Shape3D>` **shape** :ref:`🔗 <class_CollisionShape3D_property_shape>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shape**\ (\ value\: :ref:`Shape3D<class_Shape3D>`\ )
 - :ref:`Shape3D<class_Shape3D>` **get_shape**\ (\ )
 
-The actual shape owned by this collision shape.
+Hình dạng thực tế do hình dạng va chạm này sở hữu.
 
 .. rst-class:: classref-section-separator
 
@@ -149,8 +149,8 @@ The actual shape owned by this collision shape.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CollisionShape3D_method_make_convex_from_siblings:
 
@@ -158,7 +158,7 @@ Method Descriptions
 
 |void| **make_convex_from_siblings**\ (\ ) :ref:`🔗<class_CollisionShape3D_method_make_convex_from_siblings>`
 
-Sets the collision shape's shape to the addition of all its convexed :ref:`MeshInstance3D<class_MeshInstance3D>` siblings geometry.
+Đặt hình dạng va chạm thành phần tổng hình học của tất cả các sibling được convex hóa :ref:`MeshInstance3D<class_MeshInstance3D>` của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -170,16 +170,16 @@ Sets the collision shape's shape to the addition of all its convexed :ref:`MeshI
 
 |void| **resource_changed**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_CollisionShape3D_method_resource_changed>`
 
-**Deprecated:** Use :ref:`Resource.changed<class_Resource_signal_changed>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`Resource.changed<class_Resource_signal_changed>`.
 
-This method does nothing.
+Phương thức này không thực hiện thao tác nào.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

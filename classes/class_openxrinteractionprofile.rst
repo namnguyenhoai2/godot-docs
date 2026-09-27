@@ -10,22 +10,22 @@
 OpenXRInteractionProfile
 ========================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Suggested bindings object for OpenXR.
+Đối tượng binding được đề xuất cho OpenXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object stores suggested bindings for an interaction profile. Interaction profiles define the metadata for a tracked XR device such as an XR controller.
+Đối tượng này lưu trữ các binding được đề xuất cho một interaction profile. Interaction profile xác định siêu dữ liệu cho một thiết bị XR được theo dõi, chẳng hạn như bộ điều khiển XR.
 
-For more information see the `interaction profiles info in the OpenXR specification <https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles>`__.
+Để biết thêm thông tin, hãy xem `thông tin về interaction profile trong đặc tả OpenXR <https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles>`__.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -63,8 +63,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRInteractionProfile_property_binding_modifiers:
 
@@ -77,7 +77,7 @@ Property Descriptions
 - |void| **set_binding_modifiers**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_binding_modifiers**\ (\ )
 
-Binding modifiers for this interaction profile.
+Các modifier binding cho interaction profile này.
 
 .. rst-class:: classref-item-separator
 
@@ -94,7 +94,7 @@ Binding modifiers for this interaction profile.
 - |void| **set_bindings**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_bindings**\ (\ )
 
-Action bindings for this interaction profile.
+Các action binding cho interaction profile này.
 
 .. rst-class:: classref-item-separator
 
@@ -111,7 +111,7 @@ Action bindings for this interaction profile.
 - |void| **set_interaction_profile_path**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_interaction_profile_path**\ (\ )
 
-The interaction profile path identifying the XR device.
+Đường dẫn interaction profile xác định thiết bị XR.
 
 .. rst-class:: classref-section-separator
 
@@ -119,8 +119,8 @@ The interaction profile path identifying the XR device.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRInteractionProfile_method_get_binding:
 
@@ -128,7 +128,7 @@ Method Descriptions
 
 :ref:`OpenXRIPBinding<class_OpenXRIPBinding>` **get_binding**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OpenXRInteractionProfile_method_get_binding>`
 
-Retrieve the binding at this index.
+Lấy binding tại chỉ mục này.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ Retrieve the binding at this index.
 
 :ref:`int<class_int>` **get_binding_count**\ (\ ) |const| :ref:`🔗<class_OpenXRInteractionProfile_method_get_binding_count>`
 
-Get the number of bindings in this interaction profile.
+Lấy số lượng binding trong hồ sơ tương tác này.
 
 .. rst-class:: classref-item-separator
 
@@ -152,7 +152,7 @@ Get the number of bindings in this interaction profile.
 
 :ref:`OpenXRIPBindingModifier<class_OpenXRIPBindingModifier>` **get_binding_modifier**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OpenXRInteractionProfile_method_get_binding_modifier>`
 
-Get the :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` at this index.
+Lấy :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` tại chỉ mục này.
 
 .. rst-class:: classref-item-separator
 
@@ -164,14 +164,14 @@ Get the :ref:`OpenXRBindingModifier<class_OpenXRBindingModifier>` at this index.
 
 :ref:`int<class_int>` **get_binding_modifier_count**\ (\ ) |const| :ref:`🔗<class_OpenXRInteractionProfile_method_get_binding_modifier_count>`
 
-Get the number of binding modifiers in this interaction profile.
+Lấy số lượng modifier của binding trong hồ sơ tương tác này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

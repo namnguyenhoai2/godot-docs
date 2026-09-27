@@ -10,34 +10,34 @@
 PhysicsDirectSpaceState3D
 =========================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`PhysicsDirectSpaceState3DExtension<class_PhysicsDirectSpaceState3DExtension>`
+**Được kế thừa bởi:** :ref:`PhysicsDirectSpaceState3DExtension<class_PhysicsDirectSpaceState3DExtension>`
 
-Provides direct access to a physics space in the :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Provides direct access to a physics space in the :ref:`PhysicsServer3D<class_PhysicsServer3D>`. It's used mainly to do queries against objects and areas residing in a given space.
-
-\ **Note:** This class is not meant to be instantiated directly. Use :ref:`World3D.direct_space_state<class_World3D_property_direct_space_state>` to get the world's physics 3D space state.
+Cung cấp quyền truy cập trực tiếp vào một không gian vật lý trong :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Cung cấp quyền truy cập trực tiếp vào một không gian vật lý trong :ref:`PhysicsServer3D<class_PhysicsServer3D>`. Lớp này chủ yếu được dùng để thực hiện các truy vấn đối với những đối tượng và khu vực nằm trong một không gian nhất định.
+
+\ **Lưu ý:** Không nên khởi tạo trực tiếp lớp này. Hãy sử dụng :ref:`World3D.direct_space_state<class_World3D_property_direct_space_state>` để lấy trạng thái không gian vật lý 3D của thế giới.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
-- :doc:`Ray-casting <../tutorials/physics/ray-casting>`
+- :doc:`Ray casting <../tutorials/physics/ray-casting>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -62,8 +62,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicsDirectSpaceState3D_method_cast_motion:
 
@@ -71,11 +71,11 @@ Method Descriptions
 
 :ref:`PackedFloat32Array<class_PackedFloat32Array>` **cast_motion**\ (\ parameters\: :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`\ ) :ref:`🔗<class_PhysicsDirectSpaceState3D_method_cast_motion>`
 
-Checks how far a :ref:`Shape3D<class_Shape3D>` can move without colliding. All the parameters for the query, including the shape and the motion, are supplied through a :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>` object.
+Kiểm tra xem một :ref:`Shape3D<class_Shape3D>` có thể di chuyển bao xa mà không va chạm. Tất cả tham số cho truy vấn, bao gồm shape và chuyển động, đều được cung cấp thông qua một đối tượng :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`.
 
-Returns an array with the safe and unsafe proportions (between 0 and 1) of the motion. The safe proportion is the maximum fraction of the motion that can be made without a collision. The unsafe proportion is the minimum fraction of the distance that must be moved for a collision. If no collision is detected a result of ``[1.0, 1.0]`` will be returned.
+Trả về một mảng chứa các tỷ lệ an toàn và không an toàn (nằm trong khoảng từ 0 đến 1) của chuyển động. Tỷ lệ an toàn là phần tối đa của chuyển động có thể thực hiện mà không xảy ra va chạm. Tỷ lệ không an toàn là phần tối thiểu của quãng đường phải di chuyển để xảy ra va chạm. Nếu không phát hiện va chạm, kết quả ``[1.0, 1.0]`` sẽ được trả về.
 
-\ **Note:** Any :ref:`Shape3D<class_Shape3D>`\ s that the shape is already colliding with e.g. inside of, will be ignored. Use :ref:`collide_shape()<class_PhysicsDirectSpaceState3D_method_collide_shape>` to determine the :ref:`Shape3D<class_Shape3D>`\ s that the shape is already colliding with.
+\ **Lưu ý:** Bất kỳ :ref:`Shape3D<class_Shape3D>`\ s nào mà shape đã va chạm, chẳng hạn như đang ở bên trong, sẽ bị bỏ qua. Sử dụng :ref:`collide_shape()<class_PhysicsDirectSpaceState3D_method_collide_shape>` để xác định các :ref:`Shape3D<class_Shape3D>`\ s mà shape đã va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -87,11 +87,11 @@ Returns an array with the safe and unsafe proportions (between 0 and 1) of the m
 
 :ref:`Array<class_Array>`\[:ref:`Vector3<class_Vector3>`\] **collide_shape**\ (\ parameters\: :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`, max_results\: :ref:`int<class_int>` = 32\ ) :ref:`🔗<class_PhysicsDirectSpaceState3D_method_collide_shape>`
 
-Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>` object, against the space. The resulting array contains a list of points where the shape intersects another. Like with :ref:`intersect_shape()<class_PhysicsDirectSpaceState3D_method_intersect_shape>`, the number of returned results can be limited to save processing time.
+Kiểm tra các giao điểm của một shape, được truyền qua một đối tượng :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`, với không gian. Mảng kết quả chứa danh sách các điểm tại đó shape giao với một shape khác. Tương tự như với :ref:`intersect_shape()<class_PhysicsDirectSpaceState3D_method_intersect_shape>`, có thể giới hạn số lượng kết quả được trả về để tiết kiệm thời gian xử lý.
 
-Returned points are a list of pairs of contact points. For each pair the first one is in the shape passed in :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>` object, second one is in the collided shape from the physics space.
+Các điểm trả về là một danh sách gồm các cặp điểm tiếp xúc. Với mỗi cặp, điểm đầu tiên nằm trên hình dạng được truyền vào đối tượng :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`, còn điểm thứ hai nằm trên hình dạng va chạm trong không gian vật lý.
 
-\ **Note:** This method does not take into account the ``motion`` property of the object.
+\ **Lưu ý:** Phương thức này không tính đến thuộc tính ``motion`` của đối tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -103,23 +103,23 @@ Returned points are a list of pairs of contact points. For each pair the first o
 
 :ref:`Dictionary<class_Dictionary>` **get_rest_info**\ (\ parameters\: :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`\ ) :ref:`🔗<class_PhysicsDirectSpaceState3D_method_get_rest_info>`
 
-Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>` object, against the space. If it collides with more than one shape, the nearest one is selected. The returned object is a dictionary containing the following fields:
+Kiểm tra các giao điểm của một hình dạng, được cung cấp thông qua đối tượng :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`, với không gian. Nếu hình dạng đó va chạm với nhiều hình dạng, hình dạng gần nhất sẽ được chọn. Đối tượng trả về là một dictionary chứa các trường sau:
 
-\ ``collider_id``: The colliding object's ID.
+\ ``collider_id``: ID của đối tượng va chạm.
 
-\ ``linear_velocity``: The colliding object's velocity :ref:`Vector3<class_Vector3>`. If the object is an :ref:`Area3D<class_Area3D>`, the result is ``(0, 0, 0)``.
+\ ``linear_velocity``: :ref:`Vector3<class_Vector3>` vận tốc của đối tượng va chạm. Nếu đối tượng là :ref:`Area3D<class_Area3D>`, kết quả là ``(0, 0, 0)``.
 
-\ ``normal``: The collision normal of the query shape at the intersection point, pointing away from the intersecting object.
+\ ``normal``: Pháp tuyến va chạm của hình dạng truy vấn tại điểm giao nhau, hướng ra xa đối tượng giao nhau.
 
-\ ``point``: The intersection point.
+\ ``point``: Điểm giao nhau.
 
-\ ``rid``: The intersecting object's :ref:`RID<class_RID>`.
+\ ``rid``: :ref:`RID<class_RID>` của đối tượng giao nhau.
 
-\ ``shape``: The shape index of the colliding shape.
+\ ``shape``: Chỉ mục hình dạng của hình dạng va chạm.
 
-If the shape did not intersect anything, then an empty dictionary is returned instead.
+Nếu hình dạng không giao nhau với bất kỳ thứ gì, thay vào đó sẽ trả về một dictionary trống.
 
-\ **Note:** This method does not take into account the ``motion`` property of the object.
+\ **Lưu ý:** Phương thức này không tính đến thuộc tính ``motion`` của đối tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -131,17 +131,17 @@ If the shape did not intersect anything, then an empty dictionary is returned in
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **intersect_point**\ (\ parameters\: :ref:`PhysicsPointQueryParameters3D<class_PhysicsPointQueryParameters3D>`, max_results\: :ref:`int<class_int>` = 32\ ) :ref:`🔗<class_PhysicsDirectSpaceState3D_method_intersect_point>`
 
-Checks whether a point is inside any solid shape. Position and other parameters are defined through :ref:`PhysicsPointQueryParameters3D<class_PhysicsPointQueryParameters3D>`. The shapes the point is inside of are returned in an array containing dictionaries with the following fields:
+Kiểm tra xem một điểm có nằm bên trong bất kỳ hình dạng đặc nào hay không. Vị trí và các tham số khác được xác định thông qua :ref:`PhysicsPointQueryParameters3D<class_PhysicsPointQueryParameters3D>`. Các hình dạng mà điểm nằm bên trong được trả về trong một mảng chứa các dictionary có những trường sau:
 
-\ ``collider``: The colliding object.
+\ ``collider``: Đối tượng va chạm.
 
-\ ``collider_id``: The colliding object's ID.
+\ ``collider_id``: ID của đối tượng va chạm.
 
-\ ``rid``: The intersecting object's :ref:`RID<class_RID>`.
+\ ``rid``: :ref:`RID<class_RID>` của đối tượng giao nhau.
 
-\ ``shape``: The shape index of the colliding shape.
+\ ``shape``: Chỉ mục hình dạng của hình dạng va chạm.
 
-The number of intersections can be limited with the ``max_results`` parameter, to reduce the processing time.
+Có thể giới hạn số lượng giao điểm bằng tham số ``max_results`` để giảm thời gian xử lý.
 
 .. rst-class:: classref-item-separator
 
@@ -153,25 +153,25 @@ The number of intersections can be limited with the ``max_results`` parameter, t
 
 :ref:`Dictionary<class_Dictionary>` **intersect_ray**\ (\ parameters\: :ref:`PhysicsRayQueryParameters3D<class_PhysicsRayQueryParameters3D>`\ ) :ref:`🔗<class_PhysicsDirectSpaceState3D_method_intersect_ray>`
 
-Intersects a ray in a given space. Ray position and other parameters are defined through :ref:`PhysicsRayQueryParameters3D<class_PhysicsRayQueryParameters3D>`. The returned object is a dictionary with the following fields:
+Giao một tia trong một không gian cho trước. Vị trí của tia và các tham số khác được xác định thông qua :ref:`PhysicsRayQueryParameters3D<class_PhysicsRayQueryParameters3D>`. Đối tượng được trả về là một dictionary có các trường sau:
 
-\ ``collider``: The colliding object.
+\ ``collider``: Đối tượng va chạm.
 
-\ ``collider_id``: The colliding object's ID.
+\ ``collider_id``: ID của đối tượng va chạm.
 
-\ ``normal``: The object's surface normal at the intersection point, or ``Vector3(0, 0, 0)`` if the ray starts inside the shape and :ref:`PhysicsRayQueryParameters3D.hit_from_inside<class_PhysicsRayQueryParameters3D_property_hit_from_inside>` is ``true``.
+\ ``normal``: Pháp tuyến bề mặt của đối tượng tại điểm giao, hoặc ``Vector3(0, 0, 0)`` nếu tia bắt đầu bên trong hình dạng và :ref:`PhysicsRayQueryParameters3D.hit_from_inside<class_PhysicsRayQueryParameters3D_property_hit_from_inside>` là ``true``.
 
-\ ``position``: The intersection point.
+\ ``position``: Điểm giao nhau.
 
-\ ``face_index``: The face index at the intersection point.
+\ ``face_index``: Chỉ mục mặt tại điểm giao nhau.
 
-\ **Note:** Returns a valid number only if the intersected shape is a :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>`. Otherwise, ``-1`` is returned.
+\ **Lưu ý:** Chỉ trả về một số hợp lệ nếu hình dạng được giao là một :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>`. Nếu không, ``-1`` sẽ được trả về.
 
-\ ``rid``: The intersecting object's :ref:`RID<class_RID>`.
+\ ``rid``: :ref:`RID<class_RID>` của đối tượng giao nhau.
 
-\ ``shape``: The shape index of the colliding shape.
+\ ``shape``: Chỉ mục hình dạng của hình dạng va chạm.
 
-If the ray did not intersect anything, then an empty dictionary is returned instead.
+Nếu tia không giao với bất kỳ đối tượng nào, thay vào đó, một từ điển rỗng sẽ được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -183,26 +183,26 @@ If the ray did not intersect anything, then an empty dictionary is returned inst
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **intersect_shape**\ (\ parameters\: :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`, max_results\: :ref:`int<class_int>` = 32\ ) :ref:`🔗<class_PhysicsDirectSpaceState3D_method_intersect_shape>`
 
-Checks the intersections of a shape, given through a :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>` object, against the space. The intersected shapes are returned in an array containing dictionaries with the following fields:
+Kiểm tra các giao điểm của một hình dạng, được truyền qua một đối tượng :ref:`PhysicsShapeQueryParameters3D<class_PhysicsShapeQueryParameters3D>`, với không gian. Các hình dạng được giao được trả về trong một mảng chứa các từ điển có các trường sau:
 
-\ ``collider``: The colliding object.
+\ ``collider``: Đối tượng va chạm.
 
-\ ``collider_id``: The colliding object's ID.
+\ ``collider_id``: ID của đối tượng va chạm.
 
-\ ``rid``: The intersecting object's :ref:`RID<class_RID>`.
+\ ``rid``: :ref:`RID<class_RID>` của đối tượng giao nhau.
 
-\ ``shape``: The shape index of the colliding shape.
+\ ``shape``: Chỉ mục hình dạng của hình dạng va chạm.
 
-The number of intersections can be limited with the ``max_results`` parameter, to reduce the processing time.
+Có thể giới hạn số lượng giao điểm bằng tham số ``max_results`` để giảm thời gian xử lý.
 
-\ **Note:** This method does not take into account the ``motion`` property of the object.
+\ **Lưu ý:** Phương thức này không tính đến thuộc tính ``motion`` của đối tượng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

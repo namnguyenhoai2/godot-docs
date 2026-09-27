@@ -10,20 +10,20 @@
 ConfirmationDialog
 ==================
 
-**Inherits:** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorCommandPalette<class_EditorCommandPalette>`, :ref:`FileDialog<class_FileDialog>`, :ref:`ScriptCreateDialog<class_ScriptCreateDialog>`
+**Được kế thừa bởi:** :ref:`EditorCommandPalette<class_EditorCommandPalette>`, :ref:`FileDialog<class_FileDialog>`, :ref:`ScriptCreateDialog<class_ScriptCreateDialog>`
 
-A dialog used for confirmation of actions.
+Một hộp thoại được dùng để xác nhận các hành động.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A dialog used for confirmation of actions. This window is similar to :ref:`AcceptDialog<class_AcceptDialog>`, but pressing its Cancel button can have a different outcome from pressing the OK button. The order of the two buttons varies depending on the host OS.
+Một hộp thoại được dùng để xác nhận các hành động. Cửa sổ này tương tự như :ref:`AcceptDialog<class_AcceptDialog>`, nhưng việc nhấn nút Cancel có thể cho kết quả khác với việc nhấn nút OK. Thứ tự của hai nút thay đổi tùy theo hệ điều hành máy chủ.
 
-To get cancel action, you can use:
+Để lấy hành động hủy, bạn có thể sử dụng:
 
 
 .. tabs::
@@ -38,30 +38,30 @@ To get cancel action, you can use:
 
 
 
-\ **Note:** :ref:`AcceptDialog<class_AcceptDialog>` is invisible by default. To make it visible, call one of the ``popup_*`` methods from :ref:`Window<class_Window>` on the node, such as :ref:`Window.popup_centered_clamped()<class_Window_method_popup_centered_clamped>`.
+\ **Lưu ý:** :ref:`AcceptDialog<class_AcceptDialog>` mặc định sẽ bị ẩn. Để hiển thị nó, hãy gọi một trong các phương thức ``popup_*`` từ :ref:`Window<class_Window>` trên node, chẳng hạn như :ref:`Window.popup_centered_clamped()<class_Window_method_popup_centered_clamped>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`     | :ref:`cancel_button_text<class_ConfirmationDialog_property_cancel_button_text>` | ``"Cancel"``                                                                    |
-   +---------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-   | :ref:`Vector2i<class_Vector2i>` | min_size                                                                        | ``Vector2i(200, 70)`` (overrides :ref:`Window<class_Window_property_min_size>`) |
-   +---------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-   | :ref:`Vector2i<class_Vector2i>` | size                                                                            | ``Vector2i(200, 100)`` (overrides :ref:`Window<class_Window_property_size>`)    |
-   +---------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`     | title                                                                           | ``"Please Confirm..."`` (overrides :ref:`Window<class_Window_property_title>`)  |
-   +---------------------------------+---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   +---------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`     | :ref:`cancel_button_text<class_ConfirmationDialog_property_cancel_button_text>` | ``"Cancel"``                                                                 |
+   +---------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   | :ref:`Vector2i<class_Vector2i>` | min_size                                                                        | ``Vector2i(200, 70)`` (ghi đè :ref:`Window<class_Window_property_min_size>`) |
+   +---------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   | :ref:`Vector2i<class_Vector2i>` | size                                                                            | ``Vector2i(200, 100)`` (ghi đè :ref:`Window<class_Window_property_size>`)    |
+   +---------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`     | title                                                                           | ``"Please Confirm..."`` (ghi đè :ref:`Window<class_Window_property_title>`)  |
+   +---------------------------------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -76,8 +76,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ConfirmationDialog_property_cancel_button_text:
 
@@ -90,7 +90,7 @@ Property Descriptions
 - |void| **set_cancel_button_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_cancel_button_text**\ (\ )
 
-The text displayed by the cancel button (see :ref:`get_cancel_button()<class_ConfirmationDialog_method_get_cancel_button>`).
+Văn bản được hiển thị trên nút hủy (xem :ref:`get_cancel_button()<class_ConfirmationDialog_method_get_cancel_button>`).
 
 .. rst-class:: classref-section-separator
 
@@ -98,8 +98,8 @@ The text displayed by the cancel button (see :ref:`get_cancel_button()<class_Con
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ConfirmationDialog_method_get_cancel_button:
 
@@ -107,16 +107,16 @@ Method Descriptions
 
 :ref:`Button<class_Button>` **get_cancel_button**\ (\ ) :ref:`🔗<class_ConfirmationDialog_method_get_cancel_button>`
 
-Returns the cancel button.
+Trả về nút hủy.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là một node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu bạn muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

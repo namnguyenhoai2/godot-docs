@@ -10,49 +10,49 @@
 Curve3D
 =======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Describes a Bézier curve in 3D space.
+Mô tả một đường cong Bézier trong không gian 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class describes a Bézier curve in 3D space. It is mainly used to give a shape to a :ref:`Path3D<class_Path3D>`, but can be manually sampled for other purposes.
+Lớp này mô tả một đường cong Bézier trong không gian 3D. Nó chủ yếu được dùng để tạo hình cho một :ref:`Path3D<class_Path3D>`, nhưng có thể được lấy mẫu thủ công cho các mục đích khác.
 
-It keeps a cache of precalculated points along the curve, to speed up further calculations.
+Lớp này lưu bộ nhớ đệm các điểm được tính toán trước dọc theo đường cong để tăng tốc các phép tính tiếp theo.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`     | :ref:`bake_interval<class_Curve3D_property_bake_interval>`                   | ``0.2``              |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`       | :ref:`closed<class_Curve3D_property_closed>`                                 | ``false``            |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`         | :ref:`point_count<class_Curve3D_property_point_count>`                       | ``0``                |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>` | :ref:`point_{index}/in<class_Curve3D_property_point_{index}/in>`             | ``Vector3(0, 0, 0)`` |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>` | :ref:`point_{index}/out<class_Curve3D_property_point_{index}/out>`           | ``Vector3(0, 0, 0)`` |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>` | :ref:`point_{index}/position<class_Curve3D_property_point_{index}/position>` | ``Vector3(0, 0, 0)`` |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`     | :ref:`point_{index}/tilt<class_Curve3D_property_point_{index}/tilt>`         | ``0.0``              |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`       | :ref:`up_vector_enabled<class_Curve3D_property_up_vector_enabled>`           | ``true``             |
-   +-------------------------------+------------------------------------------------------------------------------+----------------------+
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`     | :ref:`bake_interval<class_Curve3D_property_bake_interval>`                    | ``0.2``              |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`       | :ref:`closed<class_Curve3D_property_closed>`                                  | ``false``            |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`         | :ref:`point_count<class_Curve3D_property_point_count>`                        | ``0``                |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`point_{index}/in <class_Curve3D_property_point_{index}/in>`             | ``Vector3(0, 0, 0)`` |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`point_{index}/out <class_Curve3D_property_point_{index}/out>`           | ``Vector3(0, 0, 0)`` |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`point_{index}/position <class_Curve3D_property_point_{index}/position>` | ``Vector3(0, 0, 0)`` |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`     | :ref:`point_{index}/tilt <class_Curve3D_property_point_{index}/tilt>`         | ``0.0``              |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`       | :ref:`up_vector_enabled<class_Curve3D_property_up_vector_enabled>`            | ``true``             |
+   +-------------------------------+-------------------------------------------------------------------------------+----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -113,8 +113,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Curve3D_property_bake_interval:
 
@@ -127,7 +127,7 @@ Property Descriptions
 - |void| **set_bake_interval**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_bake_interval**\ (\ )
 
-The distance in meters between two adjacent cached points. Changing it forces the cache to be recomputed the next time the :ref:`get_baked_points()<class_Curve3D_method_get_baked_points>` or :ref:`get_baked_length()<class_Curve3D_method_get_baked_length>` function is called. The smaller the distance, the more points in the cache and the more memory it will consume, so use with care.
+Khoảng cách tính bằng mét giữa hai điểm liền kề được lưu trong cache. Việc thay đổi khoảng cách này buộc cache phải được tính toán lại vào lần tiếp theo hàm :ref:`get_baked_points()<class_Curve3D_method_get_baked_points>` hoặc :ref:`get_baked_length()<class_Curve3D_method_get_baked_length>` được gọi. Khoảng cách càng nhỏ thì cache càng chứa nhiều điểm và càng tiêu tốn nhiều bộ nhớ, vì vậy hãy sử dụng cẩn thận.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ The distance in meters between two adjacent cached points. Changing it forces th
 - |void| **set_closed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_closed**\ (\ )
 
-If ``true``, and the curve has more than 2 control points, the last point and the first one will be connected in a loop.
+Nếu ``true``, và đường cong có nhiều hơn 2 điểm điều khiển, điểm cuối và điểm đầu sẽ được nối thành một vòng lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ If ``true``, and the curve has more than 2 control points, the last point and th
 - |void| **set_point_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_point_count**\ (\ )
 
-The number of points describing the curve.
+Số điểm mô tả đường cong.
 
 .. rst-class:: classref-item-separator
 
@@ -171,11 +171,11 @@ The number of points describing the curve.
 
 .. rst-class:: classref-property
 
-:ref:`Vector3<class_Vector3>` **point_{index}/in** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_Curve3D_property_point_{index}/in>`
+:ref:`Vector3<class_Vector3>` **point_{index}/in** = ``Vector3(0, 0, 0)`` :ref:`🔗 <class_Curve3D_property_point_{index}/in>`
 
-The position of the control point leading to the vertex at ``index``.
+Vị trí của điểm điều khiển dẫn tới đỉnh tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. point_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong khoảng ``0 .. point_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -185,11 +185,11 @@ The position of the control point leading to the vertex at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`Vector3<class_Vector3>` **point_{index}/out** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_Curve3D_property_point_{index}/out>`
+:ref:`Vector3<class_Vector3>` **point_{index}/out** = ``Vector3(0, 0, 0)`` :ref:`🔗 <class_Curve3D_property_point_{index}/out>`
 
-The position of the control point leading out of the vertex at ``index``.
+Vị trí của điểm điều khiển dẫn ra khỏi đỉnh tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. point_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong khoảng ``0 .. point_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -199,11 +199,11 @@ The position of the control point leading out of the vertex at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`Vector3<class_Vector3>` **point_{index}/position** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_Curve3D_property_point_{index}/position>`
+:ref:`Vector3<class_Vector3>` **point_{index}/position** = ``Vector3(0, 0, 0)`` :ref:`🔗 <class_Curve3D_property_point_{index}/position>`
 
-The position of for the vertex at ``index``.
+Vị trí của đỉnh tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. point_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong khoảng ``0 .. point_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -213,11 +213,11 @@ The position of for the vertex at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **point_{index}/tilt** = ``0.0`` :ref:`🔗<class_Curve3D_property_point_{index}/tilt>`
+:ref:`float<class_float>` **point_{index}/tilt** = ``0.0`` :ref:`🔗 <class_Curve3D_property_point_{index}/tilt>`
 
-The tilt angle in radians for the point at ``index``.
+Góc nghiêng tính bằng radian của điểm tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. point_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong khoảng ``0 .. point_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -234,7 +234,7 @@ The tilt angle in radians for the point at ``index``.
 - |void| **set_up_vector_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_up_vector_enabled**\ (\ )
 
-If ``true``, the curve will bake up vectors used for orientation. This is used when :ref:`PathFollow3D.rotation_mode<class_PathFollow3D_property_rotation_mode>` is set to :ref:`PathFollow3D.ROTATION_ORIENTED<class_PathFollow3D_constant_ROTATION_ORIENTED>`. Changing it forces the cache to be recomputed.
+Nếu ``true``, đường cong sẽ tạo trước các vector hướng được dùng cho việc định hướng. Điều này được sử dụng khi :ref:`PathFollow3D.rotation_mode<class_PathFollow3D_property_rotation_mode>` được đặt thành :ref:`PathFollow3D.ROTATION_ORIENTED<class_PathFollow3D_constant_ROTATION_ORIENTED>`. Việc thay đổi giá trị này buộc bộ nhớ đệm phải được tính toán lại.
 
 .. rst-class:: classref-section-separator
 
@@ -242,8 +242,8 @@ If ``true``, the curve will bake up vectors used for orientation. This is used w
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Curve3D_method_add_point:
 
@@ -251,9 +251,9 @@ Method Descriptions
 
 |void| **add_point**\ (\ position\: :ref:`Vector3<class_Vector3>`, in\: :ref:`Vector3<class_Vector3>` = Vector3(0, 0, 0), out\: :ref:`Vector3<class_Vector3>` = Vector3(0, 0, 0), index\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_Curve3D_method_add_point>`
 
-Adds a point with the specified ``position`` relative to the curve's own position, with control points ``in`` and ``out``. Appends the new point at the end of the point list.
+Thêm một điểm với ``position`` được chỉ định, tương đối với vị trí riêng của đường cong, cùng các điểm điều khiển ``in`` và ``out``. Nối điểm mới vào cuối danh sách điểm.
 
-If ``index`` is given, the new point is inserted before the existing point identified by index ``index``. Every existing point starting from ``index`` is shifted further down the list of points. The index must be greater than or equal to ``0`` and must not exceed the number of existing points in the line. See :ref:`point_count<class_Curve3D_property_point_count>`.
+Nếu cung cấp ``index``, điểm mới sẽ được chèn trước điểm hiện có được xác định bằng chỉ mục ``index``. Mọi điểm hiện có bắt đầu từ ``index`` sẽ được dịch xuống dưới trong danh sách điểm. Chỉ mục phải lớn hơn hoặc bằng ``0`` và không được vượt quá số điểm hiện có trên đường. Xem :ref:`point_count<class_Curve3D_property_point_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ If ``index`` is given, the new point is inserted before the existing point ident
 
 |void| **clear_points**\ (\ ) :ref:`🔗<class_Curve3D_method_clear_points>`
 
-Removes all points from the curve.
+Xóa tất cả các điểm khỏi đường cong.
 
 .. rst-class:: classref-item-separator
 
@@ -277,7 +277,7 @@ Removes all points from the curve.
 
 :ref:`float<class_float>` **get_baked_length**\ (\ ) |const| :ref:`🔗<class_Curve3D_method_get_baked_length>`
 
-Returns the total length of the curve, based on the cached points. Given enough density (see :ref:`bake_interval<class_Curve3D_property_bake_interval>`), it should be approximate enough.
+Trả về tổng độ dài của đường cong, dựa trên các điểm được lưu trong bộ nhớ đệm. Với mật độ đủ lớn (xem :ref:`bake_interval<class_Curve3D_property_bake_interval>`), kết quả sẽ đủ gần đúng.
 
 .. rst-class:: classref-item-separator
 
@@ -289,7 +289,7 @@ Returns the total length of the curve, based on the cached points. Given enough 
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_baked_points**\ (\ ) |const| :ref:`🔗<class_Curve3D_method_get_baked_points>`
 
-Returns the cache of points as a :ref:`PackedVector3Array<class_PackedVector3Array>`.
+Trả về bộ nhớ đệm các điểm dưới dạng :ref:`PackedVector3Array<class_PackedVector3Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ Returns the cache of points as a :ref:`PackedVector3Array<class_PackedVector3Arr
 
 :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_baked_tilts**\ (\ ) |const| :ref:`🔗<class_Curve3D_method_get_baked_tilts>`
 
-Returns the cache of tilts as a :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
+Trả về bộ nhớ đệm các góc nghiêng dưới dạng :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -313,9 +313,9 @@ Returns the cache of tilts as a :ref:`PackedFloat32Array<class_PackedFloat32Arra
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_baked_up_vectors**\ (\ ) |const| :ref:`🔗<class_Curve3D_method_get_baked_up_vectors>`
 
-Returns the cache of up vectors as a :ref:`PackedVector3Array<class_PackedVector3Array>`.
+Trả về bộ nhớ đệm các vector hướng lên dưới dạng :ref:`PackedVector3Array<class_PackedVector3Array>`.
 
-If :ref:`up_vector_enabled<class_Curve3D_property_up_vector_enabled>` is ``false``, the cache will be empty.
+Nếu :ref:`up_vector_enabled<class_Curve3D_property_up_vector_enabled>` là ``false``, bộ nhớ đệm sẽ trống.
 
 .. rst-class:: classref-item-separator
 
@@ -327,9 +327,9 @@ If :ref:`up_vector_enabled<class_Curve3D_property_up_vector_enabled>` is ``false
 
 :ref:`float<class_float>` **get_closest_offset**\ (\ to_point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Curve3D_method_get_closest_offset>`
 
-Returns the closest offset to ``to_point``. This offset is meant to be used in :ref:`sample_baked()<class_Curve3D_method_sample_baked>` or :ref:`sample_baked_up_vector()<class_Curve3D_method_sample_baked_up_vector>`.
+Trả về offset gần nhất với ``to_point``. Offset này được dùng trong :ref:`sample_baked()<class_Curve3D_method_sample_baked>` hoặc :ref:`sample_baked_up_vector()<class_Curve3D_method_sample_baked_up_vector>`.
 
-\ ``to_point`` must be in this curve's local space.
+\ ``to_point`` phải nằm trong không gian cục bộ của đường cong này.
 
 .. rst-class:: classref-item-separator
 
@@ -341,9 +341,9 @@ Returns the closest offset to ``to_point``. This offset is meant to be used in :
 
 :ref:`Vector3<class_Vector3>` **get_closest_point**\ (\ to_point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Curve3D_method_get_closest_point>`
 
-Returns the closest point on baked segments (in curve's local space) to ``to_point``.
+Trả về điểm gần nhất trên các đoạn đã được bake (trong không gian cục bộ của đường cong) so với ``to_point``.
 
-\ ``to_point`` must be in this curve's local space.
+\ ``to_point`` phải nằm trong không gian cục bộ của đường cong này.
 
 .. rst-class:: classref-item-separator
 
@@ -355,7 +355,7 @@ Returns the closest point on baked segments (in curve's local space) to ``to_poi
 
 :ref:`Vector3<class_Vector3>` **get_point_in**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Curve3D_method_get_point_in>`
 
-Returns the position of the control point leading to the vertex ``idx``. The returned position is relative to the vertex ``idx``. If the index is out of bounds, the function sends an error to the console, and returns ``(0, 0, 0)``.
+Trả về vị trí của điểm điều khiển dẫn đến đỉnh ``idx``. Vị trí được trả về là vị trí tương đối so với đỉnh ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console và trả về ``(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -367,7 +367,7 @@ Returns the position of the control point leading to the vertex ``idx``. The ret
 
 :ref:`Vector3<class_Vector3>` **get_point_out**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Curve3D_method_get_point_out>`
 
-Returns the position of the control point leading out of the vertex ``idx``. The returned position is relative to the vertex ``idx``. If the index is out of bounds, the function sends an error to the console, and returns ``(0, 0, 0)``.
+Trả về vị trí của điểm điều khiển dẫn ra khỏi đỉnh ``idx``. Vị trí được trả về là vị trí tương đối so với đỉnh ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console và trả về ``(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -379,7 +379,7 @@ Returns the position of the control point leading out of the vertex ``idx``. The
 
 :ref:`Vector3<class_Vector3>` **get_point_position**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Curve3D_method_get_point_position>`
 
-Returns the position of the vertex ``idx``. If the index is out of bounds, the function sends an error to the console, and returns ``(0, 0, 0)``.
+Trả về vị trí của đỉnh ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console và trả về ``(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -391,7 +391,7 @@ Returns the position of the vertex ``idx``. If the index is out of bounds, the f
 
 :ref:`float<class_float>` **get_point_tilt**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Curve3D_method_get_point_tilt>`
 
-Returns the tilt angle in radians for the point ``idx``. If the index is out of bounds, the function sends an error to the console, and returns ``0``.
+Trả về góc nghiêng theo radian của điểm ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console và trả về ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -403,7 +403,7 @@ Returns the tilt angle in radians for the point ``idx``. If the index is out of 
 
 |void| **remove_point**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Curve3D_method_remove_point>`
 
-Deletes the point ``idx`` from the curve. Sends an error to the console if ``idx`` is out of bounds.
+Xóa điểm ``idx`` khỏi đường cong. Gửi lỗi đến console nếu ``idx`` nằm ngoài phạm vi.
 
 .. rst-class:: classref-item-separator
 
@@ -415,9 +415,9 @@ Deletes the point ``idx`` from the curve. Sends an error to the console if ``idx
 
 :ref:`Vector3<class_Vector3>` **sample**\ (\ idx\: :ref:`int<class_int>`, t\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Curve3D_method_sample>`
 
-Returns the position between the vertex ``idx`` and the vertex ``idx + 1``, where ``t`` controls if the point is the first vertex (``t = 0.0``), the last vertex (``t = 1.0``), or in between. Values of ``t`` outside the range (``0.0 >= t <=1``) give strange, but predictable results.
+Trả về vị trí giữa đỉnh ``idx`` và đỉnh ``idx + 1``, trong đó ``t`` xác định điểm đó là đỉnh đầu tiên (``t = 0.0``), đỉnh cuối cùng (``t = 1.0``) hay nằm ở giữa. Các giá trị của ``t`` nằm ngoài phạm vi (``0.0 >= t <=1``) sẽ cho kết quả bất thường nhưng có thể dự đoán được.
 
-If ``idx`` is out of bounds it is truncated to the first or last vertex, and ``t`` is ignored. If the curve has no points, the function sends an error to the console, and returns ``(0, 0, 0)``.
+Nếu ``idx`` nằm ngoài phạm vi, giá trị này sẽ được rút gọn thành đỉnh đầu tiên hoặc đỉnh cuối cùng, còn ``t`` sẽ bị bỏ qua. Nếu đường cong không có điểm nào, hàm sẽ gửi lỗi đến console và trả về ``(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -429,9 +429,9 @@ If ``idx`` is out of bounds it is truncated to the first or last vertex, and ``t
 
 :ref:`Vector3<class_Vector3>` **sample_baked**\ (\ offset\: :ref:`float<class_float>` = 0.0, cubic\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Curve3D_method_sample_baked>`
 
-Returns a point within the curve at position ``offset``, where ``offset`` is measured as a distance in 3D units along the curve. To do that, it finds the two cached points where the ``offset`` lies between, then interpolates the values. This interpolation is cubic if ``cubic`` is set to ``true``, or linear if set to ``false``.
+Trả về một điểm trên đường cong tại vị trí ``offset``, trong đó ``offset`` được đo bằng khoảng cách theo đơn vị 3D dọc theo đường cong. Để thực hiện việc đó, hàm tìm hai điểm đã lưu đệm mà ``offset`` nằm giữa, sau đó nội suy các giá trị. Phép nội suy này là cubic nếu ``cubic`` được đặt thành ``true``, hoặc linear nếu được đặt thành ``false``.
 
-Cubic interpolation tends to follow the curves better, but linear is faster (and often, precise enough).
+Nội suy cubic thường bám theo các đường cong tốt hơn, nhưng linear nhanh hơn (và thường đủ chính xác).
 
 .. rst-class:: classref-item-separator
 
@@ -443,9 +443,9 @@ Cubic interpolation tends to follow the curves better, but linear is faster (and
 
 :ref:`Vector3<class_Vector3>` **sample_baked_up_vector**\ (\ offset\: :ref:`float<class_float>`, apply_tilt\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Curve3D_method_sample_baked_up_vector>`
 
-Returns an up vector within the curve at position ``offset``, where ``offset`` is measured as a distance in 3D units along the curve. To do that, it finds the two cached up vectors where the ``offset`` lies between, then interpolates the values. If ``apply_tilt`` is ``true``, an interpolated tilt is applied to the interpolated up vector.
+Trả về một vector hướng lên trên đường cong tại vị trí ``offset``, trong đó ``offset`` được đo bằng khoảng cách theo đơn vị 3D dọc theo đường cong. Để thực hiện việc đó, hàm tìm hai vector hướng lên đã lưu đệm mà ``offset`` nằm giữa, sau đó nội suy các giá trị. Nếu ``apply_tilt`` là ``true``, độ nghiêng đã nội suy sẽ được áp dụng cho vector hướng lên đã nội suy.
 
-If the curve has no up vectors, the function sends an error to the console, and returns ``(0, 1, 0)``.
+Nếu đường cong không có các vector hướng lên, hàm sẽ gửi lỗi đến console và trả về ``(0, 1, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -457,7 +457,7 @@ If the curve has no up vectors, the function sends an error to the console, and 
 
 :ref:`Transform3D<class_Transform3D>` **sample_baked_with_rotation**\ (\ offset\: :ref:`float<class_float>` = 0.0, cubic\: :ref:`bool<class_bool>` = false, apply_tilt\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Curve3D_method_sample_baked_with_rotation>`
 
-Returns a :ref:`Transform3D<class_Transform3D>` with ``origin`` as point position, ``basis.x`` as sideway vector, ``basis.y`` as up vector, ``basis.z`` as forward vector. When the curve length is 0, there is no reasonable way to calculate the rotation, all vectors aligned with global space axes. See also :ref:`sample_baked()<class_Curve3D_method_sample_baked>`.
+Trả về một :ref:`Transform3D<class_Transform3D>` với ``origin`` là vị trí điểm, ``basis.x`` là vector ngang, ``basis.y`` là vector hướng lên và ``basis.z`` là vector hướng trước. Khi độ dài đường cong bằng 0, không có cách hợp lý nào để tính phép xoay; tất cả các vector đều thẳng hàng với các trục của không gian toàn cục. Xem thêm :ref:`sample_baked()<class_Curve3D_method_sample_baked>`.
 
 .. rst-class:: classref-item-separator
 
@@ -469,7 +469,7 @@ Returns a :ref:`Transform3D<class_Transform3D>` with ``origin`` as point positio
 
 :ref:`Vector3<class_Vector3>` **samplef**\ (\ fofs\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Curve3D_method_samplef>`
 
-Returns the position at the vertex ``fofs``. It calls :ref:`sample()<class_Curve3D_method_sample>` using the integer part of ``fofs`` as ``idx``, and its fractional part as ``t``.
+Trả về vị trí tại đỉnh ``fofs``. Hàm này gọi :ref:`sample()<class_Curve3D_method_sample>` bằng cách sử dụng phần nguyên của ``fofs`` làm ``idx`` và phần thập phân của nó làm ``t``.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ Returns the position at the vertex ``fofs``. It calls :ref:`sample()<class_Curve
 
 |void| **set_point_in**\ (\ idx\: :ref:`int<class_int>`, position\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Curve3D_method_set_point_in>`
 
-Sets the position of the control point leading to the vertex ``idx``. If the index is out of bounds, the function sends an error to the console. The position is relative to the vertex.
+Đặt vị trí của control point dẫn đến đỉnh ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console. Vị trí này là tương đối so với đỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ Sets the position of the control point leading to the vertex ``idx``. If the ind
 
 |void| **set_point_out**\ (\ idx\: :ref:`int<class_int>`, position\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Curve3D_method_set_point_out>`
 
-Sets the position of the control point leading out of the vertex ``idx``. If the index is out of bounds, the function sends an error to the console. The position is relative to the vertex.
+Đặt vị trí của control point đi ra từ đỉnh ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console. Vị trí này là tương đối so với đỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Sets the position of the control point leading out of the vertex ``idx``. If the
 
 |void| **set_point_position**\ (\ idx\: :ref:`int<class_int>`, position\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Curve3D_method_set_point_position>`
 
-Sets the position for the vertex ``idx``. If the index is out of bounds, the function sends an error to the console.
+Đặt vị trí cho đỉnh ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console.
 
 .. rst-class:: classref-item-separator
 
@@ -517,9 +517,9 @@ Sets the position for the vertex ``idx``. If the index is out of bounds, the fun
 
 |void| **set_point_tilt**\ (\ idx\: :ref:`int<class_int>`, tilt\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Curve3D_method_set_point_tilt>`
 
-Sets the tilt angle in radians for the point ``idx``. If the index is out of bounds, the function sends an error to the console.
+Đặt góc nghiêng theo radian cho điểm ``idx``. Nếu chỉ mục nằm ngoài phạm vi, hàm sẽ gửi lỗi đến console.
 
-The tilt controls the rotation along the look-at axis an object traveling the path would have. In the case of a curve controlling a :ref:`PathFollow3D<class_PathFollow3D>`, this tilt is an offset over the natural tilt the :ref:`PathFollow3D<class_PathFollow3D>` calculates.
+Độ nghiêng (tilt) điều khiển góc xoay quanh trục hướng nhìn mà một đối tượng di chuyển trên đường đi sẽ có. Trong trường hợp một đường cong điều khiển :ref:`PathFollow3D<class_PathFollow3D>`, độ nghiêng này là phần bù cho độ nghiêng tự nhiên mà :ref:`PathFollow3D<class_PathFollow3D>` tính toán.
 
 .. rst-class:: classref-item-separator
 
@@ -531,13 +531,13 @@ The tilt controls the rotation along the look-at axis an object traveling the pa
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **tessellate**\ (\ max_stages\: :ref:`int<class_int>` = 5, tolerance_degrees\: :ref:`float<class_float>` = 4\ ) |const| :ref:`🔗<class_Curve3D_method_tessellate>`
 
-Returns a list of points along the curve, with a curvature controlled point density. That is, the curvier parts will have more points than the straighter parts.
+Trả về danh sách các điểm dọc theo đường cong, với mật độ điểm được điều khiển theo độ cong. Nghĩa là, các phần cong hơn sẽ có nhiều điểm hơn các phần thẳng hơn.
 
-This approximation makes straight segments between each point, then subdivides those segments until the resulting shape is similar enough.
+Phép xấp xỉ này tạo các đoạn thẳng giữa từng cặp điểm, sau đó chia nhỏ các đoạn đó cho đến khi hình dạng thu được đủ tương đồng.
 
-\ ``max_stages`` controls how many subdivisions a curve segment may face before it is considered approximate enough. Each subdivision splits the segment in half, so the default 5 stages may mean up to 32 subdivisions per curve segment. Increase with care!
+\ ``max_stages`` điều khiển số lần chia nhỏ tối đa mà một đoạn đường cong có thể trải qua trước khi được xem là đủ gần đúng. Mỗi lần chia nhỏ sẽ chia đôi đoạn, vì vậy 5 giai đoạn mặc định có thể tạo ra tối đa 32 lần chia nhỏ cho mỗi đoạn đường cong. Hãy tăng giá trị này một cách thận trọng!
 
-\ ``tolerance_degrees`` controls how many degrees the midpoint of a segment may deviate from the real curve, before the segment has to be subdivided.
+\ ``tolerance_degrees`` điều khiển số độ mà điểm giữa của một đoạn có thể lệch so với đường cong thực trước khi đoạn đó phải được chia nhỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -549,16 +549,16 @@ This approximation makes straight segments between each point, then subdivides t
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **tessellate_even_length**\ (\ max_stages\: :ref:`int<class_int>` = 5, tolerance_length\: :ref:`float<class_float>` = 0.2\ ) |const| :ref:`🔗<class_Curve3D_method_tessellate_even_length>`
 
-Returns a list of points along the curve, with almost uniform density. ``max_stages`` controls how many subdivisions a curve segment may face before it is considered approximate enough. Each subdivision splits the segment in half, so the default 5 stages may mean up to 32 subdivisions per curve segment. Increase with care!
+Trả về danh sách các điểm dọc theo đường cong, với mật độ gần như đồng đều. ``max_stages`` điều khiển số lần chia nhỏ tối đa mà một đoạn đường cong có thể trải qua trước khi được xem là đủ gần đúng. Mỗi lần chia nhỏ sẽ chia đôi đoạn, vì vậy 5 giai đoạn mặc định có thể tạo ra tối đa 32 lần chia nhỏ cho mỗi đoạn đường cong. Hãy tăng giá trị này một cách thận trọng!
 
-\ ``tolerance_length`` controls the maximal distance between two neighboring points, before the segment has to be subdivided.
+\ ``tolerance_length`` điều khiển khoảng cách tối đa giữa hai điểm liền kề trước khi đoạn đó phải được chia nhỏ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

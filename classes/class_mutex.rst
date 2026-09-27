@@ -10,38 +10,38 @@
 Mutex
 =====
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A binary :ref:`Semaphore<class_Semaphore>` for synchronization of multiple :ref:`Thread<class_Thread>`\ s.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A synchronization mutex (mutual exclusion). This is used to synchronize multiple :ref:`Thread<class_Thread>`\ s, and is equivalent to a binary :ref:`Semaphore<class_Semaphore>`. It guarantees that only one thread can access a critical section at a time.
-
-This is a reentrant mutex, meaning that it can be locked multiple times by one thread, provided it also unlocks it as many times.
-
-\ **Warning:** To ensure proper cleanup without crashes or deadlocks, the following conditions must be met:
-
-- When a **Mutex**'s reference count reaches zero and it is therefore destroyed, no threads (including the one on which the destruction will happen) must have it locked.
-
-- When a :ref:`Thread<class_Thread>`'s reference count reaches zero and it is therefore destroyed, it must not have any mutex locked.
+Một :ref:`Semaphore<class_Semaphore>` nhị phân để đồng bộ hóa nhiều :ref:`Thread<class_Thread>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Using multiple threads <../tutorials/performance/using_multiple_threads>`
+Một mutex đồng bộ hóa (loại trừ lẫn nhau). Mutex này được dùng để đồng bộ hóa nhiều :ref:`Thread<class_Thread>`\ , và tương đương với một :ref:`Semaphore<class_Semaphore>` nhị phân. Nó đảm bảo rằng tại một thời điểm chỉ có một thread có thể truy cập phần quan trọng.
 
-- :doc:`Thread-safe APIs <../tutorials/performance/thread_safe_apis>`
+Đây là một mutex reentrant, nghĩa là một thread có thể khóa nó nhiều lần, với điều kiện thread đó cũng mở khóa nó bấy nhiêu lần.
+
+\ **Cảnh báo:** Để bảo đảm việc dọn dẹp đúng cách mà không xảy ra lỗi hoặc deadlock, phải đáp ứng các điều kiện sau:
+
+- Khi số lượng tham chiếu của một **Mutex** bằng không và do đó nó bị hủy, không thread nào (kể cả thread thực hiện việc hủy) được phép đang khóa nó.
+
+- Khi reference count của :ref:`Thread<class_Thread>` đạt đến 0 và do đó bị hủy, nó không được có mutex nào đang bị khóa.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Sử dụng nhiều thread <../tutorials/performance/using_multiple_threads>`
+
+- :doc:`API an toàn với thread <../tutorials/performance/thread_safe_apis>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -60,8 +60,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Mutex_method_lock:
 
@@ -69,9 +69,9 @@ Method Descriptions
 
 |void| **lock**\ (\ ) :ref:`🔗<class_Mutex_method_lock>`
 
-Locks this **Mutex**, blocks until it is unlocked by the current owner.
+Khóa **Mutex** này và chặn cho đến khi được chủ sở hữu hiện tại mở khóa.
 
-\ **Note:** This function returns without blocking if the thread already has ownership of the mutex.
+\ **Lưu ý:** Hàm này trả về mà không chặn nếu thread đã sở hữu mutex.
 
 .. rst-class:: classref-item-separator
 
@@ -83,9 +83,9 @@ Locks this **Mutex**, blocks until it is unlocked by the current owner.
 
 :ref:`bool<class_bool>` **try_lock**\ (\ ) :ref:`🔗<class_Mutex_method_try_lock>`
 
-Tries locking this **Mutex**, but does not block. Returns ``true`` on success, ``false`` otherwise.
+Thử khóa **Mutex** này nhưng không chặn. Trả về ``true`` khi thành công, ``false`` nếu không.
 
-\ **Note:** This function returns ``true`` if the thread already has ownership of the mutex.
+\ **Lưu ý:** Hàm này trả về ``true`` nếu thread đã sở hữu mutex.
 
 .. rst-class:: classref-item-separator
 
@@ -97,18 +97,18 @@ Tries locking this **Mutex**, but does not block. Returns ``true`` on success, `
 
 |void| **unlock**\ (\ ) :ref:`🔗<class_Mutex_method_unlock>`
 
-Unlocks this **Mutex**, leaving it to other threads.
+Mở khóa **Mutex** này, để các thread khác sử dụng.
 
-\ **Note:** If a thread called :ref:`lock()<class_Mutex_method_lock>` or :ref:`try_lock()<class_Mutex_method_try_lock>` multiple times while already having ownership of the mutex, it must also call :ref:`unlock()<class_Mutex_method_unlock>` the same number of times in order to unlock it correctly.
+\ **Lưu ý:** Nếu một thread đã gọi :ref:`lock()<class_Mutex_method_lock>` hoặc :ref:`try_lock()<class_Mutex_method_try_lock>` nhiều lần khi đã sở hữu mutex, thread đó cũng phải gọi :ref:`unlock()<class_Mutex_method_unlock>` cùng số lần để mở khóa đúng cách.
 
-\ **Warning:** Calling :ref:`unlock()<class_Mutex_method_unlock>` more times than :ref:`lock()<class_Mutex_method_lock>` on a given thread, thus ending up trying to unlock a non-locked mutex, is wrong and may causes crashes or deadlocks.
+\ **Cảnh báo:** Gọi :ref:`unlock()<class_Mutex_method_unlock>` nhiều lần hơn :ref:`lock()<class_Mutex_method_lock>` trên một thread nhất định, dẫn đến việc cố mở khóa một mutex chưa được khóa, là không đúng và có thể gây ra lỗi hoặc deadlock.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

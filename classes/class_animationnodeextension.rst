@@ -10,23 +10,23 @@
 AnimationNodeExtension
 ======================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Base class for extending :ref:`AnimationRootNode<class_AnimationRootNode>`\ s from GDScript, C#, or C++.
+Lớp cơ sở để mở rộng :ref:`AnimationRootNode<class_AnimationRootNode>`\ s từ GDScript, C# hoặc C++.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**AnimationNodeExtension** exposes the APIs of :ref:`AnimationRootNode<class_AnimationRootNode>` to allow users to extend it from GDScript, C#, or C++. This class is not meant to be used directly, but to be extended by other classes. It is used to create custom nodes for the :ref:`AnimationTree<class_AnimationTree>` system.
+**AnimationNodeExtension** cung cấp các API của :ref:`AnimationRootNode<class_AnimationRootNode>` để cho phép người dùng mở rộng nó từ GDScript, C# hoặc C++. Lớp này không được thiết kế để sử dụng trực tiếp mà để được các lớp khác mở rộng. Lớp này được dùng để tạo các node tùy chỉnh cho hệ thống :ref:`AnimationTree<class_AnimationTree>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationNodeExtension_private_method__process_animation_node:
 
@@ -54,11 +54,11 @@ Method Descriptions
 
 :ref:`PackedFloat32Array<class_PackedFloat32Array>` **_process_animation_node**\ (\ playback_info\: :ref:`PackedFloat64Array<class_PackedFloat64Array>`, test_only\: :ref:`bool<class_bool>`\ ) |virtual| |required| :ref:`🔗<class_AnimationNodeExtension_private_method__process_animation_node>`
 
-A version of the :ref:`AnimationNode._process()<class_AnimationNode_private_method__process>` method that is meant to be overridden by custom nodes. It returns a :ref:`PackedFloat32Array<class_PackedFloat32Array>` with the processed animation data.
+Một phiên bản của phương thức :ref:`AnimationNode._process()<class_AnimationNode_private_method__process>` được thiết kế để các node tùy chỉnh ghi đè. Phương thức này trả về một :ref:`PackedFloat32Array<class_PackedFloat32Array>` chứa dữ liệu animation đã được xử lý.
 
-The :ref:`PackedFloat64Array<class_PackedFloat64Array>` parameter contains the playback information, containing the following values encoded as floating point numbers (in order): playback time and delta, start and end times, whether a seek was requested (encoded as a float greater than ``0``), whether the seek request was externally requested (encoded as a float greater than ``0``), the current :ref:`LoopedFlag<enum_Animation_LoopedFlag>` (encoded as a float), and the current blend weight.
+Tham số :ref:`PackedFloat64Array<class_PackedFloat64Array>` chứa thông tin playback, bao gồm các giá trị sau được mã hóa dưới dạng số thực (theo thứ tự): thời gian playback và delta, thời gian bắt đầu và kết thúc, liệu có yêu cầu seek hay không (được mã hóa dưới dạng số thực lớn hơn ``0``), liệu yêu cầu seek có được đưa ra từ bên ngoài hay không (được mã hóa dưới dạng số thực lớn hơn ``0``), :ref:`LoopedFlag <enum_Animation_LoopedFlag>` hiện tại (được mã hóa dưới dạng số thực) và blend weight hiện tại.
 
-The function must return a :ref:`PackedFloat32Array<class_PackedFloat32Array>` of the node's time info, containing the following values (in order): animation length, time position, delta, :ref:`LoopMode<enum_Animation_LoopMode>` (encoded as a float), whether the animation is about to end (encoded as a float greater than ``0``) and whether the animation is infinite (encoded as a float greater than ``0``). All values must be included in the returned array.
+Hàm phải trả về một :ref:`PackedFloat32Array<class_PackedFloat32Array>` chứa thông tin thời gian của node, bao gồm các giá trị sau (theo thứ tự): độ dài animation, vị trí thời gian, delta, :ref:`LoopMode <enum_Animation_LoopMode>` (được mã hóa dưới dạng số thực), liệu animation có sắp kết thúc hay không (được mã hóa dưới dạng số thực lớn hơn ``0``) và liệu animation có vô hạn hay không (được mã hóa dưới dạng số thực lớn hơn ``0``). Tất cả các giá trị phải được đưa vào mảng được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -70,7 +70,7 @@ The function must return a :ref:`PackedFloat32Array<class_PackedFloat32Array>` o
 
 :ref:`float<class_float>` **get_remaining_time**\ (\ node_info\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`, break_loop\: :ref:`bool<class_bool>`\ ) |static| :ref:`🔗<class_AnimationNodeExtension_method_get_remaining_time>`
 
-Returns the animation's remaining time for the given node info. For looping animations, it will only return the remaining time if ``break_loop`` is ``true``, a large integer value will be returned otherwise.
+Trả về thời gian còn lại của animation cho thông tin node đã cho. Đối với animation lặp, phương thức chỉ trả về thời gian còn lại nếu ``break_loop`` là ``true``; nếu không, một giá trị số nguyên lớn sẽ được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -82,14 +82,14 @@ Returns the animation's remaining time for the given node info. For looping anim
 
 :ref:`bool<class_bool>` **is_looping**\ (\ node_info\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) |static| :ref:`🔗<class_AnimationNodeExtension_method_is_looping>`
 
-Returns ``true`` if the animation for the given ``node_info`` is looping.
+Trả về ``true`` nếu animation của ``node_info`` đã cho đang lặp lại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì nó mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

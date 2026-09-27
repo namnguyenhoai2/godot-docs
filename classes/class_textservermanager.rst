@@ -10,23 +10,23 @@
 TextServerManager
 =================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton for managing :ref:`TextServer<class_TextServer>` implementations.
+Một singleton dùng để quản lý các implementation của :ref:`TextServer<class_TextServer>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**TextServerManager** is the API backend for loading, enumerating, and switching :ref:`TextServer<class_TextServer>`\ s.
+**TextServerManager** là backend API để tải, liệt kê và chuyển đổi giữa các :ref:`TextServer<class_TextServer>`\ s.
 
-\ **Note:** Switching text server at runtime is possible, but will invalidate all fonts and text buffers. Make sure to unload all controls, fonts, and themes before doing so.
+\ **Lưu ý:** Có thể chuyển đổi text server trong runtime, nhưng thao tác này sẽ làm mất hiệu lực của tất cả font và text buffer. Hãy đảm bảo đã unload tất cả control, font và theme trước khi thực hiện.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_TextServerManager_signal_interface_added:
 
@@ -64,7 +64,7 @@ Signals
 
 **interface_added**\ (\ interface_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_TextServerManager_signal_interface_added>`
 
-Emitted when a new interface has been added.
+Được phát khi một interface mới được thêm.
 
 .. rst-class:: classref-item-separator
 
@@ -76,7 +76,7 @@ Emitted when a new interface has been added.
 
 **interface_removed**\ (\ interface_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_TextServerManager_signal_interface_removed>`
 
-Emitted when an interface is removed.
+Được phát khi một interface bị xóa.
 
 .. rst-class:: classref-section-separator
 
@@ -84,8 +84,8 @@ Emitted when an interface is removed.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TextServerManager_method_add_interface:
 
@@ -93,7 +93,7 @@ Method Descriptions
 
 |void| **add_interface**\ (\ interface\: :ref:`TextServer<class_TextServer>`\ ) :ref:`🔗<class_TextServerManager_method_add_interface>`
 
-Registers a :ref:`TextServer<class_TextServer>` interface.
+Đăng ký một interface :ref:`TextServer<class_TextServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Registers a :ref:`TextServer<class_TextServer>` interface.
 
 :ref:`TextServer<class_TextServer>` **find_interface**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_TextServerManager_method_find_interface>`
 
-Finds an interface by its ``name``.
+Tìm một interface theo ``name`` của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Finds an interface by its ``name``.
 
 :ref:`TextServer<class_TextServer>` **get_interface**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TextServerManager_method_get_interface>`
 
-Returns the interface registered at a given index.
+Trả về interface được đăng ký tại index đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Returns the interface registered at a given index.
 
 :ref:`int<class_int>` **get_interface_count**\ (\ ) |const| :ref:`🔗<class_TextServerManager_method_get_interface_count>`
 
-Returns the number of interfaces currently registered.
+Trả về số lượng interface hiện đang được đăng ký.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Returns the number of interfaces currently registered.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_interfaces**\ (\ ) |const| :ref:`🔗<class_TextServerManager_method_get_interfaces>`
 
-Returns a list of available interfaces, with the index and name of each interface.
+Trả về danh sách các interface hiện có, cùng với index và name của từng interface.
 
 .. rst-class:: classref-item-separator
 
@@ -153,7 +153,7 @@ Returns a list of available interfaces, with the index and name of each interfac
 
 :ref:`TextServer<class_TextServer>` **get_primary_interface**\ (\ ) |const| :ref:`🔗<class_TextServerManager_method_get_primary_interface>`
 
-Returns the primary :ref:`TextServer<class_TextServer>` interface currently in use.
+Trả về interface :ref:`TextServer<class_TextServer>` chính hiện đang được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Returns the primary :ref:`TextServer<class_TextServer>` interface currently in u
 
 |void| **remove_interface**\ (\ interface\: :ref:`TextServer<class_TextServer>`\ ) :ref:`🔗<class_TextServerManager_method_remove_interface>`
 
-Removes an interface. All fonts and shaped text caches should be freed before removing an interface.
+Xóa một interface. Cần giải phóng tất cả font và shaped text cache trước khi xóa một interface.
 
 .. rst-class:: classref-item-separator
 
@@ -177,14 +177,14 @@ Removes an interface. All fonts and shaped text caches should be freed before re
 
 |void| **set_primary_interface**\ (\ index\: :ref:`TextServer<class_TextServer>`\ ) :ref:`🔗<class_TextServerManager_method_set_primary_interface>`
 
-Sets the primary :ref:`TextServer<class_TextServer>` interface.
+Đặt interface :ref:`TextServer<class_TextServer>` chính.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng argument bất kỳ sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

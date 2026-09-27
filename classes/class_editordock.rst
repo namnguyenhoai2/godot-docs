@@ -10,22 +10,22 @@
 EditorDock
 ==========
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`MarginContainer<class_MarginContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`MarginContainer<class_MarginContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`FileSystemDock<class_FileSystemDock>`
+**Được kế thừa bởi:** :ref:`FileSystemDock<class_FileSystemDock>`
 
-Dockable container for the editor.
+Container có thể dock cho trình chỉnh sửa.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-EditorDock is a :ref:`Container<class_Container>` node that can be docked in one of the editor's dock slots. Docks are added by plugins to provide space for controls related to an :ref:`EditorPlugin<class_EditorPlugin>`. The editor comes with a few built-in docks, such as the Scene dock, FileSystem dock, etc.
+EditorDock là một :ref:`Container<class_Container>` node có thể được dock vào một trong các dock slot của trình chỉnh sửa. Các dock được plugin thêm vào để cung cấp không gian cho các control liên quan đến một :ref:`EditorPlugin<class_EditorPlugin>`. Trình chỉnh sửa có sẵn một vài dock tích hợp, chẳng hạn như Scene dock, FileSystem dock, v.v.
 
-You can add a dock by using :ref:`EditorPlugin.add_dock()<class_EditorPlugin_method_add_dock>`. The dock can be customized by changing its properties.
+Bạn có thể thêm một dock bằng cách sử dụng :ref:`EditorPlugin.add_dock()<class_EditorPlugin_method_add_dock>`. Có thể tùy chỉnh dock bằng cách thay đổi các thuộc tính của nó.
 
 ::
 
@@ -53,51 +53,51 @@ You can add a dock by using :ref:`EditorPlugin.add_dock()<class_EditorPlugin_met
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Making plugins <../tutorials/plugins/editor/making_plugins>`
+- :doc:`Tạo plugin <../tutorials/plugins/editor/making_plugins>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | accessibility_region                                                  | ``true`` (overrides :ref:`Container<class_Container_property_accessibility_region>`) |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`DockLayout<enum_EditorDock_DockLayout>`\] | :ref:`available_layouts<class_EditorDock_property_available_layouts>` | ``5``                                                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`closable<class_EditorDock_property_closable>`                   | ``false``                                                                            |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`DockSlot<enum_EditorDock_DockSlot>`                   | :ref:`default_slot<class_EditorDock_property_default_slot>`           | ``-1``                                                                               |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                           | :ref:`dock_icon<class_EditorDock_property_dock_icon>`                 |                                                                                      |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`Shortcut<class_Shortcut>`                             | :ref:`dock_shortcut<class_EditorDock_property_dock_shortcut>`         |                                                                                      |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`force_show_icon<class_EditorDock_property_force_show_icon>`     | ``false``                                                                            |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`global<class_EditorDock_property_global>`                       | ``true``                                                                             |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                         | :ref:`icon_name<class_EditorDock_property_icon_name>`                 | ``&""``                                                                              |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                 | :ref:`layout_key<class_EditorDock_property_layout_key>`               | ``""``                                                                               |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                 | :ref:`title<class_EditorDock_property_title>`                         | ``""``                                                                               |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                                   | :ref:`title_color<class_EditorDock_property_title_color>`             | ``Color(0, 0, 0, 0)``                                                                |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`transient<class_EditorDock_property_transient>`                 | ``false``                                                                            |
-   +-------------------------------------------------------------+-----------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | accessibility_region                                                  | ``true`` (ghi đè :ref:`Container<class_Container_property_accessibility_region>`) |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`DockLayout <enum_EditorDock_DockLayout>`\] | :ref:`available_layouts<class_EditorDock_property_available_layouts>` | ``5``                                                                             |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`closable<class_EditorDock_property_closable>`                   | ``false``                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`DockSlot <enum_EditorDock_DockSlot>`                   | :ref:`default_slot<class_EditorDock_property_default_slot>`           | ``-1``                                                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                            | :ref:`dock_icon<class_EditorDock_property_dock_icon>`                 |                                                                                   |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`Shortcut<class_Shortcut>`                              | :ref:`dock_shortcut<class_EditorDock_property_dock_shortcut>`         |                                                                                   |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`force_show_icon<class_EditorDock_property_force_show_icon>`     | ``false``                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`global<class_EditorDock_property_global>`                       | ``true``                                                                          |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                          | :ref:`icon_name<class_EditorDock_property_icon_name>`                 | ``&""``                                                                           |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`layout_key<class_EditorDock_property_layout_key>`               | ``""``                                                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                  | :ref:`title<class_EditorDock_property_title>`                         | ``""``                                                                            |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                                    | :ref:`title_color<class_EditorDock_property_title_color>`             | ``Color(0, 0, 0, 0)``                                                             |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`transient<class_EditorDock_property_transient>`                 | ``false``                                                                         |
+   +--------------------------------------------------------------+-----------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -122,8 +122,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorDock_signal_closed:
 
@@ -131,7 +131,7 @@ Signals
 
 **closed**\ (\ ) :ref:`🔗<class_EditorDock_signal_closed>`
 
-Emitted when the dock is closed with the Close button in the context popup, before it's removed from its parent. See :ref:`closable<class_EditorDock_property_closable>`.
+Được phát ra khi dock được đóng bằng nút Close trong cửa sổ bật lên theo ngữ cảnh, trước khi bị xóa khỏi phần tử cha. Xem :ref:`closable<class_EditorDock_property_closable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -143,7 +143,7 @@ Emitted when the dock is closed with the Close button in the context popup, befo
 
 **opened**\ (\ ) :ref:`🔗<class_EditorDock_signal_opened>`
 
-Emitted when the dock is opened via the Editor > Editor Docks menu, before it's made visible.
+Được phát ra khi dock được mở thông qua menu Editor > Editor Docks, trước khi được hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -151,14 +151,14 @@ Emitted when the dock is opened via the Editor > Editor Docks menu, before it's 
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorDock_DockLayout:
 
 .. rst-class:: classref-enumeration
 
-flags **DockLayout**: :ref:`🔗<enum_EditorDock_DockLayout>`
+flags **DockLayout**: :ref:`🔗 <enum_EditorDock_DockLayout>`
 
 .. _class_EditorDock_constant_DOCK_LAYOUT_VERTICAL:
 
@@ -166,7 +166,7 @@ flags **DockLayout**: :ref:`🔗<enum_EditorDock_DockLayout>`
 
 :ref:`DockLayout<enum_EditorDock_DockLayout>` **DOCK_LAYOUT_VERTICAL** = ``1``
 
-Allows placing the dock in the vertical dock slots on either side of the editor.
+Cho phép đặt dock vào các vị trí dock dọc ở hai bên editor.
 
 .. _class_EditorDock_constant_DOCK_LAYOUT_HORIZONTAL:
 
@@ -174,7 +174,7 @@ Allows placing the dock in the vertical dock slots on either side of the editor.
 
 :ref:`DockLayout<enum_EditorDock_DockLayout>` **DOCK_LAYOUT_HORIZONTAL** = ``2``
 
-Allows placing the dock in the horizontal dock slots at the bottom.
+Cho phép đặt dock vào các vị trí dock ngang ở phía dưới.
 
 .. _class_EditorDock_constant_DOCK_LAYOUT_FLOATING:
 
@@ -182,7 +182,7 @@ Allows placing the dock in the horizontal dock slots at the bottom.
 
 :ref:`DockLayout<enum_EditorDock_DockLayout>` **DOCK_LAYOUT_FLOATING** = ``4``
 
-Allows making the dock floating (opened as a separate window).
+Cho phép làm cho dock nổi (mở dưới dạng một cửa sổ riêng).
 
 .. _class_EditorDock_constant_DOCK_LAYOUT_ALL:
 
@@ -190,7 +190,7 @@ Allows making the dock floating (opened as a separate window).
 
 :ref:`DockLayout<enum_EditorDock_DockLayout>` **DOCK_LAYOUT_ALL** = ``7``
 
-Allows placing the dock in all available slots.
+Cho phép đặt dock vào tất cả các vị trí hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ Allows placing the dock in all available slots.
 
 .. rst-class:: classref-enumeration
 
-enum **DockSlot**: :ref:`🔗<enum_EditorDock_DockSlot>`
+enum **DockSlot**: :ref:`🔗 <enum_EditorDock_DockSlot>`
 
 .. _class_EditorDock_constant_DOCK_SLOT_NONE:
 
@@ -208,7 +208,7 @@ enum **DockSlot**: :ref:`🔗<enum_EditorDock_DockSlot>`
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_NONE** = ``-1``
 
-The dock is closed.
+Dock đã đóng.
 
 .. _class_EditorDock_constant_DOCK_SLOT_LEFT_UL:
 
@@ -216,7 +216,7 @@ The dock is closed.
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_LEFT_UL** = ``0``
 
-Dock slot, left side, upper-left (empty in default layout).
+Vị trí dock, bên trái, phía trên bên trái (trống trong bố cục mặc định).
 
 .. _class_EditorDock_constant_DOCK_SLOT_LEFT_BL:
 
@@ -224,7 +224,7 @@ Dock slot, left side, upper-left (empty in default layout).
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_LEFT_BL** = ``1``
 
-Dock slot, left side, bottom-left (empty in default layout).
+Vị trí dock, bên trái, phía dưới bên trái (trống trong bố cục mặc định).
 
 .. _class_EditorDock_constant_DOCK_SLOT_LEFT_UR:
 
@@ -232,7 +232,7 @@ Dock slot, left side, bottom-left (empty in default layout).
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_LEFT_UR** = ``2``
 
-Dock slot, left side, upper-right (in default layout includes Scene and Import docks).
+Vị trí dock, bên trái, phía trên bên phải (trong bố cục mặc định bao gồm các dock Scene và Import).
 
 .. _class_EditorDock_constant_DOCK_SLOT_LEFT_BR:
 
@@ -240,7 +240,7 @@ Dock slot, left side, upper-right (in default layout includes Scene and Import d
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_LEFT_BR** = ``3``
 
-Dock slot, left side, bottom-right (in default layout includes FileSystem and History docks).
+Vị trí dock, bên trái, phía dưới bên phải (trong bố cục mặc định bao gồm các dock FileSystem và History).
 
 .. _class_EditorDock_constant_DOCK_SLOT_RIGHT_UL:
 
@@ -248,7 +248,7 @@ Dock slot, left side, bottom-right (in default layout includes FileSystem and Hi
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_RIGHT_UL** = ``4``
 
-Dock slot, right side, upper-left (in default layout includes Inspector, Signal, and Group docks).
+Vị trí dock, bên phải, phía trên bên trái (trong bố cục mặc định bao gồm các dock Inspector, Signal và Group).
 
 .. _class_EditorDock_constant_DOCK_SLOT_RIGHT_BL:
 
@@ -256,7 +256,7 @@ Dock slot, right side, upper-left (in default layout includes Inspector, Signal,
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_RIGHT_BL** = ``5``
 
-Dock slot, right side, bottom-left (empty in default layout).
+Vị trí dock, bên phải, phía dưới bên trái (trống trong bố cục mặc định).
 
 .. _class_EditorDock_constant_DOCK_SLOT_RIGHT_UR:
 
@@ -264,7 +264,7 @@ Dock slot, right side, bottom-left (empty in default layout).
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_RIGHT_UR** = ``6``
 
-Dock slot, right side, upper-right (empty in default layout).
+Vị trí dock, bên phải, phía trên bên phải (trống trong bố cục mặc định).
 
 .. _class_EditorDock_constant_DOCK_SLOT_RIGHT_BR:
 
@@ -272,7 +272,7 @@ Dock slot, right side, upper-right (empty in default layout).
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_RIGHT_BR** = ``7``
 
-Dock slot, right side, bottom-right (empty in default layout).
+Vị trí dock, bên phải, phía dưới bên phải (trống trong bố cục mặc định).
 
 .. _class_EditorDock_constant_DOCK_SLOT_BOTTOM:
 
@@ -280,7 +280,7 @@ Dock slot, right side, bottom-right (empty in default layout).
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_BOTTOM** = ``8``
 
-Bottom panel.
+Bảng điều khiển dưới.
 
 .. _class_EditorDock_constant_DOCK_SLOT_BOTTOM_L:
 
@@ -288,7 +288,7 @@ Bottom panel.
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_BOTTOM_L** = ``9``
 
-Dock slot at the bottom, below bottom panel, on the left side.
+Vị trí dock ở phía dưới, bên dưới bảng điều khiển dưới, ở phía bên trái.
 
 .. _class_EditorDock_constant_DOCK_SLOT_BOTTOM_R:
 
@@ -296,7 +296,7 @@ Dock slot at the bottom, below bottom panel, on the left side.
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_BOTTOM_R** = ``10``
 
-Dock slot at the bottom, below bottom panel, on the right side.
+Vị trí dock ở phía dưới, bên dưới bảng điều khiển dưới, ở phía bên phải.
 
 .. _class_EditorDock_constant_DOCK_SLOT_MAX:
 
@@ -304,7 +304,7 @@ Dock slot at the bottom, below bottom panel, on the right side.
 
 :ref:`DockSlot<enum_EditorDock_DockSlot>` **DOCK_SLOT_MAX** = ``11``
 
-Represents the size of the :ref:`DockSlot<enum_EditorDock_DockSlot>` enum.
+Biểu thị kích thước của enum :ref:`DockSlot <enum_EditorDock_DockSlot>`.
 
 .. rst-class:: classref-section-separator
 
@@ -312,8 +312,8 @@ Represents the size of the :ref:`DockSlot<enum_EditorDock_DockSlot>` enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorDock_property_available_layouts:
 
@@ -326,7 +326,7 @@ Property Descriptions
 - |void| **set_available_layouts**\ (\ value\: |bitfield|\[:ref:`DockLayout<enum_EditorDock_DockLayout>`\]\ )
 - |bitfield|\[:ref:`DockLayout<enum_EditorDock_DockLayout>`\] **get_available_layouts**\ (\ )
 
-The available layouts for this dock, as a bitmask. By default, the dock allows vertical and floating layouts.
+Các bố cục khả dụng cho dock này, dưới dạng bitmask. Theo mặc định, dock cho phép các bố cục dọc và nổi.
 
 .. rst-class:: classref-item-separator
 
@@ -343,7 +343,7 @@ The available layouts for this dock, as a bitmask. By default, the dock allows v
 - |void| **set_closable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_closable**\ (\ )
 
-If ``true``, the dock can be closed with the Close button in the context popup. Docks with :ref:`global<class_EditorDock_property_global>` enabled are always closable.
+Nếu ``true``, có thể đóng dock bằng nút Close trong cửa sổ bật lên theo ngữ cảnh. Các dock bật :ref:`global<class_EditorDock_property_global>` luôn có thể đóng.
 
 .. rst-class:: classref-item-separator
 
@@ -360,9 +360,9 @@ If ``true``, the dock can be closed with the Close button in the context popup. 
 - |void| **set_default_slot**\ (\ value\: :ref:`DockSlot<enum_EditorDock_DockSlot>`\ )
 - :ref:`DockSlot<enum_EditorDock_DockSlot>` **get_default_slot**\ (\ )
 
-The default dock slot used when adding the dock with :ref:`EditorPlugin.add_dock()<class_EditorPlugin_method_add_dock>`.
+Slot dock mặc định được sử dụng khi thêm dock bằng :ref:`EditorPlugin.add_dock()<class_EditorPlugin_method_add_dock>`.
 
-After the dock is added, it can be moved to a different slot and the editor will automatically remember its position between sessions. If you remove and re-add the dock, it will be reset to default.
+Sau khi dock được thêm, bạn có thể di chuyển dock sang một slot khác và editor sẽ tự động ghi nhớ vị trí của dock giữa các phiên. Nếu bạn xóa rồi thêm lại dock, dock sẽ được đặt lại về mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -372,14 +372,14 @@ After the dock is added, it can be moved to a different slot and the editor will
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **dock_icon** :ref:`🔗<class_EditorDock_property_dock_icon>`
+:ref:`Texture2D<class_Texture2D>` **dock_icon** :ref:`🔗 <class_EditorDock_property_dock_icon>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_dock_icon**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_dock_icon**\ (\ )
 
-The icon for the dock, as a texture. If specified, it will override :ref:`icon_name<class_EditorDock_property_icon_name>`.
+Biểu tượng của dock, dưới dạng texture. Nếu được chỉ định, nó sẽ ghi đè :ref:`icon_name<class_EditorDock_property_icon_name>`.
 
 .. rst-class:: classref-item-separator
 
@@ -389,14 +389,14 @@ The icon for the dock, as a texture. If specified, it will override :ref:`icon_n
 
 .. rst-class:: classref-property
 
-:ref:`Shortcut<class_Shortcut>` **dock_shortcut** :ref:`🔗<class_EditorDock_property_dock_shortcut>`
+:ref:`Shortcut<class_Shortcut>` **dock_shortcut** :ref:`🔗 <class_EditorDock_property_dock_shortcut>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_dock_shortcut**\ (\ value\: :ref:`Shortcut<class_Shortcut>`\ )
 - :ref:`Shortcut<class_Shortcut>` **get_dock_shortcut**\ (\ )
 
-The shortcut used to open the dock.
+Phím tắt được sử dụng để mở dock.
 
 .. rst-class:: classref-item-separator
 
@@ -413,7 +413,7 @@ The shortcut used to open the dock.
 - |void| **set_force_show_icon**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_force_show_icon**\ (\ )
 
-If ``true``, the dock will always display an icon, regardless of :ref:`EditorSettings.interface/editor/docks/dock_tab_style<class_EditorSettings_property_interface/editor/docks/dock_tab_style>` or :ref:`EditorSettings.interface/editor/docks/bottom_dock_tab_style<class_EditorSettings_property_interface/editor/docks/bottom_dock_tab_style>`.
+Nếu ``true``, dock sẽ luôn hiển thị một biểu tượng, bất kể :ref:`EditorSettings.interface/editor/docks/dock_tab_style <class_EditorSettings_property_interface/editor/docks/dock_tab_style>` hoặc :ref:`EditorSettings.interface/editor/docks/bottom_dock_tab_style <class_EditorSettings_property_interface/editor/docks/bottom_dock_tab_style>`.
 
 .. rst-class:: classref-item-separator
 
@@ -430,7 +430,7 @@ If ``true``, the dock will always display an icon, regardless of :ref:`EditorSet
 - |void| **set_global**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_global**\ (\ )
 
-If ``true``, the dock appears in the **Editor > Editor Docks** menu and can be closed. Non-global docks can still be closed using :ref:`close()<class_EditorDock_method_close>` or when :ref:`closable<class_EditorDock_property_closable>` is ``true``.
+Nếu ``true``, dock sẽ xuất hiện trong menu **Editor > Editor Docks** và có thể được đóng. Các dock không phải toàn cục vẫn có thể được đóng bằng :ref:`close()<class_EditorDock_method_close>` hoặc khi :ref:`closable<class_EditorDock_property_closable>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -447,7 +447,7 @@ If ``true``, the dock appears in the **Editor > Editor Docks** menu and can be c
 - |void| **set_icon_name**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_icon_name**\ (\ )
 
-The icon for the dock, as a name from the ``EditorIcons`` theme type in the editor theme. You can find the list of available icons `here <https://godot-editor-icons.github.io/>`__.
+Biểu tượng của dock, dưới dạng tên thuộc loại theme ``EditorIcons`` trong theme của editor. Bạn có thể tìm danh sách các biểu tượng hiện có `tại đây <https://godot-editor-icons.github.io/>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -464,7 +464,7 @@ The icon for the dock, as a name from the ``EditorIcons`` theme type in the edit
 - |void| **set_layout_key**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_layout_key**\ (\ )
 
-The key representing this dock in the editor's layout file. If empty, the dock's displayed name will be used instead.
+Khóa đại diện cho dock này trong tệp bố cục của editor. Nếu để trống, tên hiển thị của dock sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ The key representing this dock in the editor's layout file. If empty, the dock's
 - |void| **set_title**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_title**\ (\ )
 
-The title of the dock's tab. If empty, the dock's :ref:`Node.name<class_Node_property_name>` will be used. If the name is auto-generated (contains ``@``), the first child's name will be used instead.
+Tiêu đề của tab dock. Nếu để trống, :ref:`Node.name<class_Node_property_name>` của dock sẽ được sử dụng. Nếu tên được tự động tạo (chứa ``@``), tên của phần tử con đầu tiên sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -498,7 +498,7 @@ The title of the dock's tab. If empty, the dock's :ref:`Node.name<class_Node_pro
 - |void| **set_title_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_title_color**\ (\ )
 
-The color of the dock tab's title. If its alpha is ``0.0``, the default font color will be used.
+Màu tiêu đề của tab dock. Nếu alpha của nó là ``0.0``, màu phông chữ mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -515,7 +515,7 @@ The color of the dock tab's title. If its alpha is ``0.0``, the default font col
 - |void| **set_transient**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_transient**\ (\ )
 
-If ``true``, the dock is not automatically opened or closed when loading an editor layout, only moved. It also can't be opened using a shortcut. This is meant for docks that are opened and closed in specific cases, such as when selecting a :ref:`TileMap<class_TileMap>` or :ref:`AnimationTree<class_AnimationTree>` node.
+Nếu ``true``, dock sẽ không tự động mở hoặc đóng khi tải bố cục editor mà chỉ được di chuyển. Dock cũng không thể được mở bằng phím tắt. Điều này dành cho các dock được mở và đóng trong những trường hợp cụ thể, chẳng hạn như khi chọn một node :ref:`TileMap<class_TileMap>` hoặc :ref:`AnimationTree<class_AnimationTree>`.
 
 .. rst-class:: classref-section-separator
 
@@ -523,8 +523,8 @@ If ``true``, the dock is not automatically opened or closed when loading an edit
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorDock_private_method__load_layout_from_config:
 
@@ -532,7 +532,7 @@ Method Descriptions
 
 |void| **_load_layout_from_config**\ (\ config\: :ref:`ConfigFile<class_ConfigFile>`, section\: :ref:`String<class_String>`\ ) |virtual| :ref:`🔗<class_EditorDock_private_method__load_layout_from_config>`
 
-Implement this method to handle loading this dock's layout. It's equivalent to :ref:`EditorPlugin._set_window_layout()<class_EditorPlugin_private_method__set_window_layout>`. ``section`` is a unique section based on :ref:`layout_key<class_EditorDock_property_layout_key>`.
+Triển khai phương thức này để xử lý việc tải bố cục của dock này. Phương thức này tương đương với :ref:`EditorPlugin._set_window_layout()<class_EditorPlugin_private_method__set_window_layout>`. ``section`` là một section duy nhất dựa trên :ref:`layout_key<class_EditorDock_property_layout_key>`.
 
 .. rst-class:: classref-item-separator
 
@@ -544,7 +544,7 @@ Implement this method to handle loading this dock's layout. It's equivalent to :
 
 |void| **_save_layout_to_config**\ (\ config\: :ref:`ConfigFile<class_ConfigFile>`, section\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_EditorDock_private_method__save_layout_to_config>`
 
-Implement this method to handle saving this dock's layout. It's equivalent to :ref:`EditorPlugin._get_window_layout()<class_EditorPlugin_private_method__get_window_layout>`. ``section`` is a unique section based on :ref:`layout_key<class_EditorDock_property_layout_key>`.
+Triển khai phương thức này để xử lý việc lưu bố cục của dock này. Phương thức này tương đương với :ref:`EditorPlugin._get_window_layout()<class_EditorPlugin_private_method__get_window_layout>`. ``section`` là một section duy nhất dựa trên :ref:`layout_key<class_EditorDock_property_layout_key>`.
 
 .. rst-class:: classref-item-separator
 
@@ -556,7 +556,7 @@ Implement this method to handle saving this dock's layout. It's equivalent to :r
 
 |void| **_update_layout**\ (\ layout\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_EditorDock_private_method__update_layout>`
 
-Implement this method to handle the layout switching for this dock. ``layout`` is one of the :ref:`DockLayout<enum_EditorDock_DockLayout>` constants.
+Triển khai phương thức này để xử lý việc chuyển đổi bố cục cho dock này. ``layout`` là một trong các hằng số :ref:`DockLayout <enum_EditorDock_DockLayout>`.
 
 ::
 
@@ -573,7 +573,7 @@ Implement this method to handle the layout switching for this dock. ``layout`` i
 
 |void| **close**\ (\ ) :ref:`🔗<class_EditorDock_method_close>`
 
-Closes the dock, making its tab hidden.
+Đóng dock, khiến tab của dock bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -585,7 +585,7 @@ Closes the dock, making its tab hidden.
 
 |void| **make_visible**\ (\ ) :ref:`🔗<class_EditorDock_method_make_visible>`
 
-Focuses the dock's tab (or window if it's floating). If the dock was closed, it will be opened. If it's a bottom dock, makes the bottom panel visible.
+Đưa tiêu điểm vào tab của dock (hoặc cửa sổ nếu dock đang nổi). Nếu dock đã đóng, dock sẽ được mở. Nếu là dock phía dưới, thao tác này sẽ hiển thị bottom panel.
 
 .. rst-class:: classref-item-separator
 
@@ -597,16 +597,16 @@ Focuses the dock's tab (or window if it's floating). If the dock was closed, it 
 
 |void| **open**\ (\ ) :ref:`🔗<class_EditorDock_method_open>`
 
-Opens the dock. It will appear in the last used dock slot. If the dock has no default slot, it will be opened floating.
+Mở dock. Dock sẽ xuất hiện trong vị trí dock được sử dụng gần đây nhất. Nếu dock không có vị trí mặc định, dock sẽ được mở ở dạng nổi.
 
-\ **Note:** This does not focus the dock. If you want to open and focus the dock, use :ref:`make_visible()<class_EditorDock_method_make_visible>`.
+\ **Lưu ý:** Thao tác này không đưa dock vào tiêu điểm. Nếu bạn muốn mở và đưa dock vào tiêu điểm, hãy sử dụng :ref:`make_visible()<class_EditorDock_method_make_visible>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

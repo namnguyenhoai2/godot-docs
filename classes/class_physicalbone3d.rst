@@ -13,72 +13,72 @@
 PhysicalBone3D
 ==============
 
-**Inherits:** :ref:`PhysicsBody3D<class_PhysicsBody3D>` **<** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PhysicsBody3D<class_PhysicsBody3D>` **<** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics body used to make bones in a :ref:`Skeleton3D<class_Skeleton3D>` react to physics.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The **PhysicalBone3D** node is a physics body that can be used to make bones in a :ref:`Skeleton3D<class_Skeleton3D>` react to physics.
-
-\ **Note:** In order to detect physical bones with raycasts, the :ref:`SkeletonModifier3D.active<class_SkeletonModifier3D_property_active>` property of the parent :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` must be ``true`` and the :ref:`Skeleton3D<class_Skeleton3D>`'s bone must be assigned to **PhysicalBone3D** correctly; it means that :ref:`get_bone_id()<class_PhysicalBone3D_method_get_bone_id>` should return a valid id (``>= 0``).
+Một physics body được dùng để khiến các xương trong :ref:`Skeleton3D<class_Skeleton3D>` phản ứng với vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Nút **PhysicalBone3D** là một physics body có thể được dùng để khiến các xương trong :ref:`Skeleton3D<class_Skeleton3D>` phản ứng với vật lý.
+
+\ **Lưu ý:** Để phát hiện các xương vật lý bằng raycast, thuộc tính :ref:`SkeletonModifier3D.active<class_SkeletonModifier3D_property_active>` của :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` cha phải là ``true`` và bone của :ref:`Skeleton3D<class_Skeleton3D>` phải được gán đúng vào **PhysicalBone3D**; điều đó có nghĩa là :ref:`get_bone_id()<class_PhysicalBone3D_method_get_bone_id>` phải trả về một id hợp lệ (``>= 0``).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Ragdoll System <../tutorials/physics/ragdoll_system>`
+- :doc:`Hệ thống Ragdoll <../tutorials/physics/ragdoll_system>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>`           | ``0.0``                                             |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`DampMode<enum_PhysicalBone3D_DampMode>`   | :ref:`angular_damp_mode<class_PhysicalBone3D_property_angular_damp_mode>` | ``0``                                               |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                   | :ref:`angular_velocity<class_PhysicalBone3D_property_angular_velocity>`   | ``Vector3(0, 0, 0)``                                |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`           | :ref:`body_offset<class_PhysicalBone3D_property_body_offset>`             | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`bounce<class_PhysicalBone3D_property_bounce>`                       | ``0.0``                                             |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`can_sleep<class_PhysicalBone3D_property_can_sleep>`                 | ``true``                                            |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`custom_integrator<class_PhysicalBone3D_property_custom_integrator>` | ``false``                                           |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`friction<class_PhysicalBone3D_property_friction>`                   | ``1.0``                                             |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`gravity_scale<class_PhysicalBone3D_property_gravity_scale>`         | ``1.0``                                             |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Transform3D<class_Transform3D>`           | :ref:`joint_offset<class_PhysicalBone3D_property_joint_offset>`           | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                   | :ref:`joint_rotation<class_PhysicalBone3D_property_joint_rotation>`       | ``Vector3(0, 0, 0)``                                |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`JointType<enum_PhysicalBone3D_JointType>` | :ref:`joint_type<class_PhysicalBone3D_property_joint_type>`               | ``0``                                               |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>`             | ``0.0``                                             |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`DampMode<enum_PhysicalBone3D_DampMode>`   | :ref:`linear_damp_mode<class_PhysicalBone3D_property_linear_damp_mode>`   | ``0``                                               |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                   | :ref:`linear_velocity<class_PhysicalBone3D_property_linear_velocity>`     | ``Vector3(0, 0, 0)``                                |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`mass<class_PhysicalBone3D_property_mass>`                           | ``1.0``                                             |
-   +-------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`float<class_float>`                        | :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>`           | ``0.0``                                             |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`DampMode <enum_PhysicalBone3D_DampMode>`   | :ref:`angular_damp_mode<class_PhysicalBone3D_property_angular_damp_mode>` | ``0``                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                    | :ref:`angular_velocity<class_PhysicalBone3D_property_angular_velocity>`   | ``Vector3(0, 0, 0)``                                |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`            | :ref:`body_offset<class_PhysicalBone3D_property_body_offset>`             | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`float<class_float>`                        | :ref:`bounce<class_PhysicalBone3D_property_bounce>`                       | ``0.0``                                             |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`can_sleep<class_PhysicalBone3D_property_can_sleep>`                 | ``true``                                            |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`custom_integrator<class_PhysicalBone3D_property_custom_integrator>` | ``false``                                           |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`float<class_float>`                        | :ref:`friction<class_PhysicalBone3D_property_friction>`                   | ``1.0``                                             |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`float<class_float>`                        | :ref:`gravity_scale<class_PhysicalBone3D_property_gravity_scale>`         | ``1.0``                                             |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Transform3D<class_Transform3D>`            | :ref:`joint_offset<class_PhysicalBone3D_property_joint_offset>`           | ``Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)`` |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                    | :ref:`joint_rotation<class_PhysicalBone3D_property_joint_rotation>`       | ``Vector3(0, 0, 0)``                                |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`JointType <enum_PhysicalBone3D_JointType>` | :ref:`joint_type<class_PhysicalBone3D_property_joint_type>`               | ``0``                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`float<class_float>`                        | :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>`             | ``0.0``                                             |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`DampMode <enum_PhysicalBone3D_DampMode>`   | :ref:`linear_damp_mode<class_PhysicalBone3D_property_linear_damp_mode>`   | ``0``                                               |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                    | :ref:`linear_velocity<class_PhysicalBone3D_property_linear_velocity>`     | ``Vector3(0, 0, 0)``                                |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
+   | :ref:`float<class_float>`                        | :ref:`mass<class_PhysicalBone3D_property_mass>`                           | ``1.0``                                             |
+   +--------------------------------------------------+---------------------------------------------------------------------------+-----------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -103,14 +103,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_PhysicalBone3D_DampMode:
 
 .. rst-class:: classref-enumeration
 
-enum **DampMode**: :ref:`🔗<enum_PhysicalBone3D_DampMode>`
+enum **DampMode**: :ref:`🔗 <enum_PhysicalBone3D_DampMode>`
 
 .. _class_PhysicalBone3D_constant_DAMP_MODE_COMBINE:
 
@@ -118,7 +118,7 @@ enum **DampMode**: :ref:`🔗<enum_PhysicalBone3D_DampMode>`
 
 :ref:`DampMode<enum_PhysicalBone3D_DampMode>` **DAMP_MODE_COMBINE** = ``0``
 
-In this mode, the body's damping value is added to any value set in areas or the default value.
+Ở chế độ này, giá trị damping của body được cộng vào mọi giá trị được đặt trong các area hoặc giá trị mặc định.
 
 .. _class_PhysicalBone3D_constant_DAMP_MODE_REPLACE:
 
@@ -126,7 +126,7 @@ In this mode, the body's damping value is added to any value set in areas or the
 
 :ref:`DampMode<enum_PhysicalBone3D_DampMode>` **DAMP_MODE_REPLACE** = ``1``
 
-In this mode, the body's damping value replaces any value set in areas or the default value.
+Ở chế độ này, giá trị damping của body thay thế mọi giá trị được đặt trong các area hoặc giá trị mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -136,7 +136,7 @@ In this mode, the body's damping value replaces any value set in areas or the de
 
 .. rst-class:: classref-enumeration
 
-enum **JointType**: :ref:`🔗<enum_PhysicalBone3D_JointType>`
+enum **JointType**: :ref:`🔗 <enum_PhysicalBone3D_JointType>`
 
 .. _class_PhysicalBone3D_constant_JOINT_TYPE_NONE:
 
@@ -144,7 +144,7 @@ enum **JointType**: :ref:`🔗<enum_PhysicalBone3D_JointType>`
 
 :ref:`JointType<enum_PhysicalBone3D_JointType>` **JOINT_TYPE_NONE** = ``0``
 
-No joint is applied to the PhysicsBone3D.
+Không áp dụng khớp nào cho PhysicsBone3D.
 
 .. _class_PhysicalBone3D_constant_JOINT_TYPE_PIN:
 
@@ -152,7 +152,7 @@ No joint is applied to the PhysicsBone3D.
 
 :ref:`JointType<enum_PhysicalBone3D_JointType>` **JOINT_TYPE_PIN** = ``1``
 
-A pin joint is applied to the PhysicsBone3D.
+Áp dụng khớp chốt cho PhysicsBone3D.
 
 .. _class_PhysicalBone3D_constant_JOINT_TYPE_CONE:
 
@@ -160,7 +160,7 @@ A pin joint is applied to the PhysicsBone3D.
 
 :ref:`JointType<enum_PhysicalBone3D_JointType>` **JOINT_TYPE_CONE** = ``2``
 
-A cone joint is applied to the PhysicsBone3D.
+Áp dụng khớp hình nón cho PhysicsBone3D.
 
 .. _class_PhysicalBone3D_constant_JOINT_TYPE_HINGE:
 
@@ -168,7 +168,7 @@ A cone joint is applied to the PhysicsBone3D.
 
 :ref:`JointType<enum_PhysicalBone3D_JointType>` **JOINT_TYPE_HINGE** = ``3``
 
-A hinge joint is applied to the PhysicsBone3D.
+Áp dụng khớp bản lề cho PhysicsBone3D.
 
 .. _class_PhysicalBone3D_constant_JOINT_TYPE_SLIDER:
 
@@ -176,7 +176,7 @@ A hinge joint is applied to the PhysicsBone3D.
 
 :ref:`JointType<enum_PhysicalBone3D_JointType>` **JOINT_TYPE_SLIDER** = ``4``
 
-A slider joint is applied to the PhysicsBone3D.
+Áp dụng khớp trượt cho PhysicsBone3D.
 
 .. _class_PhysicalBone3D_constant_JOINT_TYPE_6DOF:
 
@@ -184,7 +184,7 @@ A slider joint is applied to the PhysicsBone3D.
 
 :ref:`JointType<enum_PhysicalBone3D_JointType>` **JOINT_TYPE_6DOF** = ``5``
 
-A 6 degrees of freedom joint is applied to the PhysicsBone3D.
+Áp dụng khớp 6 bậc tự do cho PhysicsBone3D.
 
 .. rst-class:: classref-section-separator
 
@@ -192,8 +192,8 @@ A 6 degrees of freedom joint is applied to the PhysicsBone3D.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicalBone3D_property_angular_damp:
 
@@ -206,9 +206,9 @@ Property Descriptions
 - |void| **set_angular_damp**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_angular_damp**\ (\ )
 
-Damps the body's rotation. By default, the body will use the :ref:`ProjectSettings.physics/3d/default_angular_damp<class_ProjectSettings_property_physics/3d/default_angular_damp>` project setting or any value override set by an :ref:`Area3D<class_Area3D>` the body is in. Depending on :ref:`angular_damp_mode<class_PhysicalBone3D_property_angular_damp_mode>`, you can set :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>` to be added to or to replace the body's damping value.
+Làm giảm chuyển động quay của body. Theo mặc định, body sẽ sử dụng thiết lập dự án :ref:`ProjectSettings.physics/3d/default_angular_damp <class_ProjectSettings_property_physics/3d/default_angular_damp>` hoặc bất kỳ giá trị ghi đè nào được thiết lập bởi một :ref:`Area3D<class_Area3D>` mà body đang ở trong đó. Tùy thuộc vào :ref:`angular_damp_mode<class_PhysicalBone3D_property_angular_damp_mode>`, bạn có thể đặt :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>` để được cộng vào hoặc thay thế giá trị giảm chấn của body.
 
-See :ref:`ProjectSettings.physics/3d/default_angular_damp<class_ProjectSettings_property_physics/3d/default_angular_damp>` for more details about damping.
+Xem :ref:`ProjectSettings.physics/3d/default_angular_damp <class_ProjectSettings_property_physics/3d/default_angular_damp>` để biết thêm chi tiết về tính năng giảm chấn.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ See :ref:`ProjectSettings.physics/3d/default_angular_damp<class_ProjectSettings_
 - |void| **set_angular_damp_mode**\ (\ value\: :ref:`DampMode<enum_PhysicalBone3D_DampMode>`\ )
 - :ref:`DampMode<enum_PhysicalBone3D_DampMode>` **get_angular_damp_mode**\ (\ )
 
-Defines how :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>` is applied.
+Xác định cách :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>` được áp dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ Defines how :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>` is a
 - |void| **set_angular_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_angular_velocity**\ (\ )
 
-The PhysicalBone3D's rotational velocity in *radians* per second.
+Vận tốc quay của PhysicalBone3D tính bằng *radians* mỗi giây.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ The PhysicalBone3D's rotational velocity in *radians* per second.
 - |void| **set_body_offset**\ (\ value\: :ref:`Transform3D<class_Transform3D>`\ )
 - :ref:`Transform3D<class_Transform3D>` **get_body_offset**\ (\ )
 
-Sets the body's transform.
+Thiết lập transform của body.
 
 .. rst-class:: classref-item-separator
 
@@ -276,9 +276,9 @@ Sets the body's transform.
 - |void| **set_bounce**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_bounce**\ (\ )
 
-The body's bounciness. Values range from ``0`` (no bounce) to ``1`` (full bounciness).
+Độ nảy của body. Giá trị nằm trong khoảng từ ``0`` (không nảy) đến ``1`` (độ nảy tối đa).
 
-\ **Note:** Even with :ref:`bounce<class_PhysicalBone3D_property_bounce>` set to ``1.0``, some energy will be lost over time due to linear and angular damping. To have a **PhysicalBone3D** that preserves all its energy over time, set :ref:`bounce<class_PhysicalBone3D_property_bounce>` to ``1.0``, :ref:`linear_damp_mode<class_PhysicalBone3D_property_linear_damp_mode>` to :ref:`DAMP_MODE_REPLACE<class_PhysicalBone3D_constant_DAMP_MODE_REPLACE>`, :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>` to ``0.0``, :ref:`angular_damp_mode<class_PhysicalBone3D_property_angular_damp_mode>` to :ref:`DAMP_MODE_REPLACE<class_PhysicalBone3D_constant_DAMP_MODE_REPLACE>`, and :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>` to ``0.0``.
+\ **Lưu ý:** Ngay cả khi :ref:`bounce<class_PhysicalBone3D_property_bounce>` được đặt thành ``1.0``, một phần năng lượng vẫn sẽ bị mất theo thời gian do giảm chấn tuyến tính và giảm chấn góc. Để có một **PhysicalBone3D** bảo toàn toàn bộ năng lượng theo thời gian, hãy đặt :ref:`bounce<class_PhysicalBone3D_property_bounce>` thành ``1.0``, :ref:`linear_damp_mode<class_PhysicalBone3D_property_linear_damp_mode>` thành :ref:`DAMP_MODE_REPLACE<class_PhysicalBone3D_constant_DAMP_MODE_REPLACE>`, :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>` thành ``0.0``, :ref:`angular_damp_mode<class_PhysicalBone3D_property_angular_damp_mode>` thành :ref:`DAMP_MODE_REPLACE<class_PhysicalBone3D_constant_DAMP_MODE_REPLACE>` và :ref:`angular_damp<class_PhysicalBone3D_property_angular_damp>` thành ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ The body's bounciness. Values range from ``0`` (no bounce) to ``1`` (full bounci
 - |void| **set_can_sleep**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_able_to_sleep**\ (\ )
 
-If ``true``, the body is deactivated when there is no movement, so it will not take part in the simulation until it is awakened by an external force.
+Nếu ``true``, body sẽ bị vô hiệu hóa khi không có chuyển động, vì vậy nó sẽ không tham gia mô phỏng cho đến khi được đánh thức bởi một lực bên ngoài.
 
 .. rst-class:: classref-item-separator
 
@@ -312,9 +312,9 @@ If ``true``, the body is deactivated when there is no movement, so it will not t
 - |void| **set_use_custom_integrator**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_custom_integrator**\ (\ )
 
-If ``true``, the standard force integration (like gravity or damping) will be disabled for this body. Other than collision response, the body will only move as determined by the :ref:`_integrate_forces()<class_PhysicalBone3D_private_method__integrate_forces>` method, if that virtual method is overridden.
+Nếu ``true``, việc tích hợp lực tiêu chuẩn (chẳng hạn như trọng lực hoặc damping) sẽ bị vô hiệu hóa đối với body này. Ngoài phản hồi va chạm, body sẽ chỉ di chuyển theo như được xác định bởi phương thức :ref:`_integrate_forces()<class_PhysicalBone3D_private_method__integrate_forces>`, nếu phương thức ảo đó được ghi đè.
 
-Setting this property will call the method :ref:`PhysicsServer3D.body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>` internally.
+Việc thiết lập thuộc tính này sẽ gọi nội bộ phương thức :ref:`PhysicsServer3D.body_set_omit_force_integration()<class_PhysicsServer3D_method_body_set_omit_force_integration>`.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +331,7 @@ Setting this property will call the method :ref:`PhysicsServer3D.body_set_omit_f
 - |void| **set_friction**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_friction**\ (\ )
 
-The body's friction, from ``0`` (frictionless) to ``1`` (max friction).
+Độ ma sát của body, từ ``0`` (không ma sát) đến ``1`` (ma sát tối đa).
 
 .. rst-class:: classref-item-separator
 
@@ -348,7 +348,7 @@ The body's friction, from ``0`` (frictionless) to ``1`` (max friction).
 - |void| **set_gravity_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_gravity_scale**\ (\ )
 
-This is multiplied by :ref:`ProjectSettings.physics/3d/default_gravity<class_ProjectSettings_property_physics/3d/default_gravity>` to produce this body's gravity. For example, a value of ``1.0`` will apply normal gravity, ``2.0`` will apply double the gravity, and ``0.5`` will apply half the gravity to this body.
+Giá trị này được nhân với :ref:`ProjectSettings.physics/3d/default_gravity <class_ProjectSettings_property_physics/3d/default_gravity>` để tạo ra trọng lực cho body này. Ví dụ: giá trị ``1.0`` sẽ áp dụng trọng lực bình thường, ``2.0`` sẽ áp dụng trọng lực gấp đôi và ``0.5`` sẽ áp dụng trọng lực bằng một nửa cho body này.
 
 .. rst-class:: classref-item-separator
 
@@ -365,7 +365,7 @@ This is multiplied by :ref:`ProjectSettings.physics/3d/default_gravity<class_Pro
 - |void| **set_joint_offset**\ (\ value\: :ref:`Transform3D<class_Transform3D>`\ )
 - :ref:`Transform3D<class_Transform3D>` **get_joint_offset**\ (\ )
 
-Sets the joint's transform.
+Thiết lập transform của joint.
 
 .. rst-class:: classref-item-separator
 
@@ -382,7 +382,7 @@ Sets the joint's transform.
 - |void| **set_joint_rotation**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_joint_rotation**\ (\ )
 
-Sets the joint's rotation in radians.
+Thiết lập rotation của joint theo radian.
 
 .. rst-class:: classref-item-separator
 
@@ -399,7 +399,7 @@ Sets the joint's rotation in radians.
 - |void| **set_joint_type**\ (\ value\: :ref:`JointType<enum_PhysicalBone3D_JointType>`\ )
 - :ref:`JointType<enum_PhysicalBone3D_JointType>` **get_joint_type**\ (\ )
 
-Sets the joint type.
+Thiết lập loại khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -416,9 +416,9 @@ Sets the joint type.
 - |void| **set_linear_damp**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_linear_damp**\ (\ )
 
-Damps the body's movement. By default, the body will use :ref:`ProjectSettings.physics/3d/default_linear_damp<class_ProjectSettings_property_physics/3d/default_linear_damp>` or any value override set by an :ref:`Area3D<class_Area3D>` the body is in. Depending on :ref:`linear_damp_mode<class_PhysicalBone3D_property_linear_damp_mode>`, :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>` may be added to or replace the body's damping value.
+Giảm chấn chuyển động của body. Theo mặc định, body sẽ sử dụng :ref:`ProjectSettings.physics/3d/default_linear_damp <class_ProjectSettings_property_physics/3d/default_linear_damp>` hoặc bất kỳ giá trị ghi đè nào được thiết lập bởi một :ref:`Area3D<class_Area3D>` mà body đang ở trong đó. Tùy thuộc vào :ref:`linear_damp_mode<class_PhysicalBone3D_property_linear_damp_mode>`, :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>` có thể được cộng vào hoặc thay thế giá trị giảm chấn của body.
 
-See :ref:`ProjectSettings.physics/3d/default_linear_damp<class_ProjectSettings_property_physics/3d/default_linear_damp>` for more details about damping.
+Xem :ref:`ProjectSettings.physics/3d/default_linear_damp <class_ProjectSettings_property_physics/3d/default_linear_damp>` để biết thêm chi tiết về giảm chấn.
 
 .. rst-class:: classref-item-separator
 
@@ -435,7 +435,7 @@ See :ref:`ProjectSettings.physics/3d/default_linear_damp<class_ProjectSettings_p
 - |void| **set_linear_damp_mode**\ (\ value\: :ref:`DampMode<enum_PhysicalBone3D_DampMode>`\ )
 - :ref:`DampMode<enum_PhysicalBone3D_DampMode>` **get_linear_damp_mode**\ (\ )
 
-Defines how :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>` is applied.
+Xác định cách :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>` được áp dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -452,7 +452,7 @@ Defines how :ref:`linear_damp<class_PhysicalBone3D_property_linear_damp>` is app
 - |void| **set_linear_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_linear_velocity**\ (\ )
 
-The body's linear velocity in units per second. Can be used sporadically, but **don't set this every frame**, because physics may run in another thread and runs at a different granularity. Use :ref:`_integrate_forces()<class_PhysicalBone3D_private_method__integrate_forces>` as your process loop for precise control of the body state.
+Vận tốc tuyến tính của body tính bằng đơn vị mỗi giây. Có thể sử dụng không thường xuyên, nhưng **đừng thiết lập giá trị này ở mỗi frame**, vì physics có thể chạy trong một thread khác và chạy với độ chi tiết khác. Sử dụng :ref:`_integrate_forces()<class_PhysicalBone3D_private_method__integrate_forces>` làm vòng lặp process để kiểm soát chính xác trạng thái của body.
 
 .. rst-class:: classref-item-separator
 
@@ -469,7 +469,7 @@ The body's linear velocity in units per second. Can be used sporadically, but **
 - |void| **set_mass**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mass**\ (\ )
 
-The body's mass.
+Khối lượng của body.
 
 .. rst-class:: classref-section-separator
 
@@ -477,8 +477,8 @@ The body's mass.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicalBone3D_private_method__integrate_forces:
 
@@ -486,7 +486,7 @@ Method Descriptions
 
 |void| **_integrate_forces**\ (\ state\: :ref:`PhysicsDirectBodyState3D<class_PhysicsDirectBodyState3D>`\ ) |virtual| :ref:`🔗<class_PhysicalBone3D_private_method__integrate_forces>`
 
-Called during physics processing, allowing you to read and safely modify the simulation state for the object. By default, it is called before the standard force integration, but the :ref:`custom_integrator<class_PhysicalBone3D_property_custom_integrator>` property allows you to disable the standard force integration and do fully custom force integration for a body.
+Được gọi trong quá trình xử lý vật lý, cho phép bạn đọc và sửa đổi an toàn trạng thái mô phỏng của đối tượng. Theo mặc định, hàm này được gọi trước khi tích hợp lực tiêu chuẩn, nhưng thuộc tính :ref:`custom_integrator<class_PhysicalBone3D_property_custom_integrator>` cho phép bạn tắt tính năng tích hợp lực tiêu chuẩn và thực hiện tích hợp lực hoàn toàn tùy chỉnh cho một body.
 
 .. rst-class:: classref-item-separator
 
@@ -498,11 +498,11 @@ Called during physics processing, allowing you to read and safely modify the sim
 
 |void| **apply_central_impulse**\ (\ impulse\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_PhysicalBone3D_method_apply_central_impulse>`
 
-Applies a directional impulse without affecting rotation.
+Áp dụng một xung theo hướng mà không ảnh hưởng đến chuyển động quay.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_integrate_forces" functions otherwise).
+Xung không phụ thuộc vào thời gian! Việc áp dụng một xung ở mỗi frame sẽ tạo ra lực phụ thuộc vào framerate. Vì lý do này, bạn chỉ nên sử dụng xung khi mô phỏng các va chạm xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_integrate_forces").
 
-This is equivalent to using :ref:`apply_impulse()<class_PhysicalBone3D_method_apply_impulse>` at the body's center of mass.
+Điều này tương đương với việc sử dụng :ref:`apply_impulse()<class_PhysicalBone3D_method_apply_impulse>` tại tâm khối của body.
 
 .. rst-class:: classref-item-separator
 
@@ -514,11 +514,11 @@ This is equivalent to using :ref:`apply_impulse()<class_PhysicalBone3D_method_ap
 
 |void| **apply_impulse**\ (\ impulse\: :ref:`Vector3<class_Vector3>`, position\: :ref:`Vector3<class_Vector3>` = Vector3(0, 0, 0)\ ) :ref:`🔗<class_PhysicalBone3D_method_apply_impulse>`
 
-Applies a positioned impulse to the PhysicsBone3D.
+Áp dụng một xung tại vị trí cho PhysicsBone3D.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_integrate_forces" functions otherwise).
+Xung không phụ thuộc vào thời gian! Việc áp dụng một xung ở mỗi frame sẽ tạo ra lực phụ thuộc vào framerate. Vì lý do này, bạn chỉ nên sử dụng xung khi mô phỏng các va chạm xảy ra một lần (trong các trường hợp khác, hãy sử dụng các hàm "_integrate_forces").
 
-\ ``position`` is the offset from the PhysicsBone3D origin in global coordinates.
+\ ``position`` là độ lệch từ gốc của PhysicsBone3D trong tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -530,7 +530,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 :ref:`int<class_int>` **get_bone_id**\ (\ ) |const| :ref:`🔗<class_PhysicalBone3D_method_get_bone_id>`
 
-Returns the unique identifier of the PhysicsBone3D.
+Trả về mã định danh duy nhất của PhysicsBone3D.
 
 .. rst-class:: classref-item-separator
 
@@ -542,7 +542,7 @@ Returns the unique identifier of the PhysicsBone3D.
 
 :ref:`bool<class_bool>` **get_simulate_physics**\ (\ ) :ref:`🔗<class_PhysicalBone3D_method_get_simulate_physics>`
 
-Returns ``true`` if the PhysicsBone3D is allowed to simulate physics.
+Trả về ``true`` nếu PhysicsBone3D được phép mô phỏng vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -554,14 +554,14 @@ Returns ``true`` if the PhysicsBone3D is allowed to simulate physics.
 
 :ref:`bool<class_bool>` **is_simulating_physics**\ (\ ) :ref:`🔗<class_PhysicalBone3D_method_is_simulating_physics>`
 
-Returns ``true`` if the PhysicsBone3D is currently simulating physics.
+Trả về ``true`` nếu PhysicsBone3D hiện đang mô phỏng vật lý.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

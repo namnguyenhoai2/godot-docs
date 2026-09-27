@@ -10,20 +10,20 @@
 ProgressBar
 ===========
 
-**Inherits:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A control used for visual representation of a percentage.
+Một control được dùng để biểu diễn trực quan một tỷ lệ phần trăm.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A control used for visual representation of a percentage. Shows the fill percentage in the center. Can also be used to show indeterminate progress. For more fill modes, use :ref:`TextureProgressBar<class_TextureProgressBar>` instead.
+Một control được dùng để biểu diễn trực quan một tỷ lệ phần trăm. Hiển thị tỷ lệ phần trăm đã tô ở giữa. Cũng có thể được dùng để hiển thị tiến trình không xác định. Để sử dụng thêm các chế độ tô đầy, hãy dùng :ref:`TextureProgressBar<class_TextureProgressBar>` thay vào đó.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính giao diện
+--------------------
 
 .. table::
    :widths: auto
@@ -69,14 +69,14 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ProgressBar_FillMode:
 
 .. rst-class:: classref-enumeration
 
-enum **FillMode**: :ref:`🔗<enum_ProgressBar_FillMode>`
+enum **FillMode**: :ref:`🔗 <enum_ProgressBar_FillMode>`
 
 .. _class_ProgressBar_constant_FILL_BEGIN_TO_END:
 
@@ -84,7 +84,7 @@ enum **FillMode**: :ref:`🔗<enum_ProgressBar_FillMode>`
 
 :ref:`FillMode<enum_ProgressBar_FillMode>` **FILL_BEGIN_TO_END** = ``0``
 
-The progress bar fills from begin to end horizontally, according to the language direction. If :ref:`Control.is_layout_rtl()<class_Control_method_is_layout_rtl>` returns ``false``, it fills from left to right, and if it returns ``true``, it fills from right to left.
+Thanh tiến trình được lấp đầy theo chiều ngang từ đầu đến cuối, dựa trên hướng của ngôn ngữ. Nếu :ref:`Control.is_layout_rtl()<class_Control_method_is_layout_rtl>` trả về ``false``, thanh sẽ được lấp đầy từ trái sang phải; nếu trả về ``true``, thanh sẽ được lấp đầy từ phải sang trái.
 
 .. _class_ProgressBar_constant_FILL_END_TO_BEGIN:
 
@@ -92,7 +92,7 @@ The progress bar fills from begin to end horizontally, according to the language
 
 :ref:`FillMode<enum_ProgressBar_FillMode>` **FILL_END_TO_BEGIN** = ``1``
 
-The progress bar fills from end to begin horizontally, according to the language direction. If :ref:`Control.is_layout_rtl()<class_Control_method_is_layout_rtl>` returns ``false``, it fills from right to left, and if it returns ``true``, it fills from left to right.
+Thanh tiến trình được lấp đầy theo chiều ngang từ cuối đến đầu, dựa trên hướng của ngôn ngữ. Nếu :ref:`Control.is_layout_rtl()<class_Control_method_is_layout_rtl>` trả về ``false``, thanh sẽ được lấp đầy từ phải sang trái; nếu trả về ``true``, thanh sẽ được lấp đầy từ trái sang phải.
 
 .. _class_ProgressBar_constant_FILL_TOP_TO_BOTTOM:
 
@@ -100,7 +100,7 @@ The progress bar fills from end to begin horizontally, according to the language
 
 :ref:`FillMode<enum_ProgressBar_FillMode>` **FILL_TOP_TO_BOTTOM** = ``2``
 
-The progress fills from top to bottom.
+Tiến trình được lấp đầy từ trên xuống dưới.
 
 .. _class_ProgressBar_constant_FILL_BOTTOM_TO_TOP:
 
@@ -108,7 +108,7 @@ The progress fills from top to bottom.
 
 :ref:`FillMode<enum_ProgressBar_FillMode>` **FILL_BOTTOM_TO_TOP** = ``3``
 
-The progress fills from bottom to top.
+Tiến trình được lấp đầy từ dưới lên trên.
 
 .. rst-class:: classref-section-separator
 
@@ -116,21 +116,21 @@ The progress fills from bottom to top.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ProgressBar_property_editor_preview_indeterminate:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **editor_preview_indeterminate** :ref:`🔗<class_ProgressBar_property_editor_preview_indeterminate>`
+:ref:`bool<class_bool>` **editor_preview_indeterminate** :ref:`🔗 <class_ProgressBar_property_editor_preview_indeterminate>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_editor_preview_indeterminate**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editor_preview_indeterminate_enabled**\ (\ )
 
-If ``false``, the :ref:`indeterminate<class_ProgressBar_property_indeterminate>` animation will be paused in the editor.
+Nếu ``false``, hoạt ảnh :ref:`indeterminate<class_ProgressBar_property_indeterminate>` sẽ được tạm dừng trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -147,7 +147,7 @@ If ``false``, the :ref:`indeterminate<class_ProgressBar_property_indeterminate>`
 - |void| **set_fill_mode**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_fill_mode**\ (\ )
 
-The fill direction. See :ref:`FillMode<enum_ProgressBar_FillMode>` for possible values.
+Hướng tô màu. Xem :ref:`FillMode <enum_ProgressBar_FillMode>` để biết các giá trị có thể dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ The fill direction. See :ref:`FillMode<enum_ProgressBar_FillMode>` for possible 
 - |void| **set_indeterminate**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_indeterminate**\ (\ )
 
-When set to ``true``, the progress bar indicates that something is happening with an animation, but does not show the fill percentage or value.
+Khi được đặt thành ``true``, thanh tiến trình cho biết một tác vụ đang diễn ra với một animation, nhưng không hiển thị phần trăm hoặc giá trị đã tô màu.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ When set to ``true``, the progress bar indicates that something is happening wit
 - |void| **set_show_percentage**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_percentage_shown**\ (\ )
 
-If ``true``, the fill percentage is displayed on the bar.
+Nếu ``true``, phần trăm đã tô màu sẽ được hiển thị trên thanh.
 
 .. rst-class:: classref-section-separator
 
@@ -189,8 +189,8 @@ If ``true``, the fill percentage is displayed on the bar.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_ProgressBar_theme_color_font_color:
 
@@ -198,7 +198,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **font_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_ProgressBar_theme_color_font_color>`
 
-The color of the text.
+Màu của văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ The color of the text.
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_ProgressBar_theme_color_font_outline_color>`
 
-The tint of text outline of the **ProgressBar**.
+Màu sắc của đường viền văn bản của **ProgressBar**.
 
 .. rst-class:: classref-item-separator
 
@@ -222,9 +222,9 @@ The tint of text outline of the **ProgressBar**.
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_ProgressBar_theme_constant_outline_size>`
 
-The size of the text outline.
+Kích thước của đường viền văn bản.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_ProgressBar_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng phông chữ có :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` được bật, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của phông chữ đó phải được đặt ít nhất bằng *hai lần* giá trị của :ref:`outline_size<class_ProgressBar_theme_constant_outline_size>` để kết quả hiển thị đường viền chính xác. Nếu không, đường viền có thể bị cắt sớm hơn dự định.
 
 .. rst-class:: classref-item-separator
 
@@ -234,9 +234,9 @@ The size of the text outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_ProgressBar_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_ProgressBar_theme_font_font>`
 
-Font used to draw the fill percentage if :ref:`show_percentage<class_ProgressBar_property_show_percentage>` is ``true``.
+Phông chữ được sử dụng để vẽ phần trăm mức lấp đầy nếu :ref:`show_percentage<class_ProgressBar_property_show_percentage>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -246,9 +246,9 @@ Font used to draw the fill percentage if :ref:`show_percentage<class_ProgressBar
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_ProgressBar_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_ProgressBar_theme_font_size_font_size>`
 
-Font size used to draw the fill percentage if :ref:`show_percentage<class_ProgressBar_property_show_percentage>` is ``true``.
+Kích thước phông chữ được sử dụng để vẽ phần trăm mức lấp đầy nếu :ref:`show_percentage<class_ProgressBar_property_show_percentage>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -258,9 +258,9 @@ Font size used to draw the fill percentage if :ref:`show_percentage<class_Progre
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **background** :ref:`🔗<class_ProgressBar_theme_style_background>`
+:ref:`StyleBox<class_StyleBox>` **background** :ref:`🔗 <class_ProgressBar_theme_style_background>`
 
-The style of the background.
+Kiểu của nền.
 
 .. rst-class:: classref-item-separator
 
@@ -270,16 +270,16 @@ The style of the background.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **fill** :ref:`🔗<class_ProgressBar_theme_style_fill>`
+:ref:`StyleBox<class_StyleBox>` **fill** :ref:`🔗 <class_ProgressBar_theme_style_fill>`
 
-The style of the progress (i.e. the part that fills the bar).
+Kiểu của phần tiến trình (tức là phần làm đầy thanh).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,18 +10,18 @@
 AStarGrid2D
 ===========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An implementation of A\* for finding the shortest path between two points on a partial 2D grid.
+Một triển khai của A\* để tìm đường đi ngắn nhất giữa hai điểm trên một lưới 2D một phần.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**AStarGrid2D** is a variant of :ref:`AStar2D<class_AStar2D>` that is specialized for partial 2D grids. It is simpler to use because it doesn't require you to manually create points and connect them together. This class also supports multiple types of heuristics, modes for diagonal movement, and a jumping mode to speed up calculations.
+**AStarGrid2D** là một biến thể của :ref:`AStar2D<class_AStar2D>` được chuyên biệt hóa cho các lưới 2D một phần. Lớp này dễ sử dụng hơn vì bạn không cần tự tạo các điểm và kết nối chúng với nhau. Lớp này cũng hỗ trợ nhiều loại heuristic, các chế độ di chuyển theo đường chéo và chế độ nhảy để tăng tốc độ tính toán.
 
-To use **AStarGrid2D**, you only need to set the :ref:`region<class_AStarGrid2D_property_region>` of the grid, optionally set the :ref:`cell_size<class_AStarGrid2D_property_cell_size>`, and then call the :ref:`update()<class_AStarGrid2D_method_update>` method:
+Để sử dụng **AStarGrid2D**, bạn chỉ cần đặt :ref:`region<class_AStarGrid2D_property_region>` của lưới, tùy chọn đặt :ref:`cell_size<class_AStarGrid2D_property_cell_size>`, sau đó gọi phương thức :ref:`update()<class_AStarGrid2D_method_update>`:
 
 
 .. tabs::
@@ -32,8 +32,8 @@ To use **AStarGrid2D**, you only need to set the :ref:`region<class_AStarGrid2D_
     astar_grid.region = Rect2i(0, 0, 32, 32)
     astar_grid.cell_size = Vector2(16, 16)
     astar_grid.update()
-    print(astar_grid.get_id_path(Vector2i(0, 0), Vector2i(3, 4))) # Prints [(0, 0), (1, 1), (2, 2), (3, 3), (3, 4)]
-    print(astar_grid.get_point_path(Vector2i(0, 0), Vector2i(3, 4))) # Prints [(0, 0), (16, 16), (32, 32), (48, 48), (48, 64)]
+    print(astar_grid.get_id_path(Vector2i(0, 0), Vector2i(3, 4))) # In ra [(0, 0), (1, 1), (2, 2), (3, 3), (3, 4)]
+    print(astar_grid.get_point_path(Vector2i(0, 0), Vector2i(3, 4))) # In ra [(0, 0), (16, 16), (32, 32), (48, 48), (48, 64)]
 
  .. code-tab:: csharp
 
@@ -41,52 +41,52 @@ To use **AStarGrid2D**, you only need to set the :ref:`region<class_AStarGrid2D_
     astarGrid.Region = new Rect2I(0, 0, 32, 32);
     astarGrid.CellSize = new Vector2I(16, 16);
     astarGrid.Update();
-    GD.Print(astarGrid.GetIdPath(Vector2I.Zero, new Vector2I(3, 4))); // Prints [(0, 0), (1, 1), (2, 2), (3, 3), (3, 4)]
-    GD.Print(astarGrid.GetPointPath(Vector2I.Zero, new Vector2I(3, 4))); // Prints [(0, 0), (16, 16), (32, 32), (48, 48), (48, 64)]
+    GD.Print(astarGrid.GetIdPath(Vector2I.Zero, new Vector2I(3, 4))); // In ra [(0, 0), (1, 1), (2, 2), (3, 3), (3, 4)]
+    GD.Print(astarGrid.GetPointPath(Vector2I.Zero, new Vector2I(3, 4))); // In ra [(0, 0), (16, 16), (32, 32), (48, 48), (48, 64)]
 
 
 
-To remove a point from the pathfinding grid, it must be set as "solid" with :ref:`set_point_solid()<class_AStarGrid2D_method_set_point_solid>`.
+Để xóa một điểm khỏi lưới tìm đường, điểm đó phải được đặt là "solid" bằng :ref:`set_point_solid()<class_AStarGrid2D_method_set_point_solid>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `Grid-based Navigation with AStarGrid2D Demo <https://godotengine.org/asset-library/asset/2723>`__
+- `Điều hướng dựa trên lưới với bản minh họa AStarGrid2D <https://godotengine.org/asset-library/asset/2723>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`CellShape<enum_AStarGrid2D_CellShape>`       | :ref:`cell_shape<class_AStarGrid2D_property_cell_shape>`                                 | ``0``                  |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Vector2<class_Vector2>`                      | :ref:`cell_size<class_AStarGrid2D_property_cell_size>`                                   | ``Vector2(1, 1)``      |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Heuristic<enum_AStarGrid2D_Heuristic>`       | :ref:`default_compute_heuristic<class_AStarGrid2D_property_default_compute_heuristic>`   | ``0``                  |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Heuristic<enum_AStarGrid2D_Heuristic>`       | :ref:`default_estimate_heuristic<class_AStarGrid2D_property_default_estimate_heuristic>` | ``0``                  |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` | :ref:`diagonal_mode<class_AStarGrid2D_property_diagonal_mode>`                           | ``0``                  |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`bool<class_bool>`                            | :ref:`jumping_enabled<class_AStarGrid2D_property_jumping_enabled>`                       | ``false``              |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Vector2<class_Vector2>`                      | :ref:`offset<class_AStarGrid2D_property_offset>`                                         | ``Vector2(0, 0)``      |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Rect2i<class_Rect2i>`                        | :ref:`region<class_AStarGrid2D_property_region>`                                         | ``Rect2i(0, 0, 0, 0)`` |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                    | :ref:`size<class_AStarGrid2D_property_size>`                                             | ``Vector2i(0, 0)``     |
-   +----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`CellShape <enum_AStarGrid2D_CellShape>`       | :ref:`cell_shape<class_AStarGrid2D_property_cell_shape>`                                 | ``0``                  |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Vector2<class_Vector2>`                       | :ref:`cell_size<class_AStarGrid2D_property_cell_size>`                                   | ``Vector2(1, 1)``      |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Heuristic <enum_AStarGrid2D_Heuristic>`       | :ref:`default_compute_heuristic<class_AStarGrid2D_property_default_compute_heuristic>`   | ``0``                  |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Heuristic <enum_AStarGrid2D_Heuristic>`       | :ref:`default_estimate_heuristic<class_AStarGrid2D_property_default_estimate_heuristic>` | ``0``                  |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`DiagonalMode <enum_AStarGrid2D_DiagonalMode>` | :ref:`diagonal_mode<class_AStarGrid2D_property_diagonal_mode>`                           | ``0``                  |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`jumping_enabled<class_AStarGrid2D_property_jumping_enabled>`                       | ``false``              |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Vector2<class_Vector2>`                       | :ref:`offset<class_AStarGrid2D_property_offset>`                                         | ``Vector2(0, 0)``      |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Rect2i<class_Rect2i>`                         | :ref:`region<class_AStarGrid2D_property_region>`                                         | ``Rect2i(0, 0, 0, 0)`` |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
+   | :ref:`Vector2i<class_Vector2i>`                     | :ref:`size<class_AStarGrid2D_property_size>`                                             | ``Vector2i(0, 0)``     |
+   +-----------------------------------------------------+------------------------------------------------------------------------------------------+------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -133,14 +133,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AStarGrid2D_Heuristic:
 
 .. rst-class:: classref-enumeration
 
-enum **Heuristic**: :ref:`🔗<enum_AStarGrid2D_Heuristic>`
+enum **Heuristic**: :ref:`🔗 <enum_AStarGrid2D_Heuristic>`
 
 .. _class_AStarGrid2D_constant_HEURISTIC_EUCLIDEAN:
 
@@ -148,7 +148,7 @@ enum **Heuristic**: :ref:`🔗<enum_AStarGrid2D_Heuristic>`
 
 :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` **HEURISTIC_EUCLIDEAN** = ``0``
 
-The `Euclidean heuristic <https://en.wikipedia.org/wiki/Euclidean_distance>`__ to be used for the pathfinding using the following formula:
+`Heuristic Euclidean <https://en.wikipedia.org/wiki/Euclidean_distance>`__ được sử dụng để tìm đường theo công thức sau:
 
 ::
 
@@ -156,7 +156,7 @@ The `Euclidean heuristic <https://en.wikipedia.org/wiki/Euclidean_distance>`__ t
     dy = abs(to_id.y - from_id.y)
     result = sqrt(dx * dx + dy * dy)
 
-\ **Note:** This is also the internal heuristic used in :ref:`AStar3D<class_AStar3D>` and :ref:`AStar2D<class_AStar2D>` by default (with the inclusion of possible z-axis coordinate).
+\ **Lưu ý:** Đây cũng là heuristic nội bộ được sử dụng mặc định trong :ref:`AStar3D<class_AStar3D>` và :ref:`AStar2D<class_AStar2D>` (có tính cả tọa độ trục z nếu có thể).
 
 .. _class_AStarGrid2D_constant_HEURISTIC_MANHATTAN:
 
@@ -164,7 +164,7 @@ The `Euclidean heuristic <https://en.wikipedia.org/wiki/Euclidean_distance>`__ t
 
 :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` **HEURISTIC_MANHATTAN** = ``1``
 
-The `Manhattan heuristic <https://en.wikipedia.org/wiki/Taxicab_geometry>`__ to be used for the pathfinding using the following formula:
+`Heuristic Manhattan <https://en.wikipedia.org/wiki/Taxicab_geometry>`__ được sử dụng để tìm đường theo công thức sau:
 
 ::
 
@@ -172,7 +172,7 @@ The `Manhattan heuristic <https://en.wikipedia.org/wiki/Taxicab_geometry>`__ to 
     dy = abs(to_id.y - from_id.y)
     result = dx + dy
 
-\ **Note:** This heuristic is intended to be used with 4-side orthogonal movements, provided by setting the :ref:`diagonal_mode<class_AStarGrid2D_property_diagonal_mode>` to :ref:`DIAGONAL_MODE_NEVER<class_AStarGrid2D_constant_DIAGONAL_MODE_NEVER>`.
+\ **Lưu ý:** Heuristic này предназначена để sử dụng với các chuyển động trực giao 4 hướng, bằng cách đặt :ref:`diagonal_mode<class_AStarGrid2D_property_diagonal_mode>` thành :ref:`DIAGONAL_MODE_NEVER<class_AStarGrid2D_constant_DIAGONAL_MODE_NEVER>`.
 
 .. _class_AStarGrid2D_constant_HEURISTIC_OCTILE:
 
@@ -180,7 +180,7 @@ The `Manhattan heuristic <https://en.wikipedia.org/wiki/Taxicab_geometry>`__ to 
 
 :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` **HEURISTIC_OCTILE** = ``2``
 
-The Octile heuristic to be used for the pathfinding using the following formula:
+Heuristic Octile được sử dụng để tìm đường theo công thức sau:
 
 ::
 
@@ -195,7 +195,7 @@ The Octile heuristic to be used for the pathfinding using the following formula:
 
 :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` **HEURISTIC_CHEBYSHEV** = ``3``
 
-The `Chebyshev heuristic <https://en.wikipedia.org/wiki/Chebyshev_distance>`__ to be used for the pathfinding using the following formula:
+`Heuristic Chebyshev <https://en.wikipedia.org/wiki/Chebyshev_distance>`__ được sử dụng để tìm đường theo công thức sau:
 
 ::
 
@@ -209,7 +209,7 @@ The `Chebyshev heuristic <https://en.wikipedia.org/wiki/Chebyshev_distance>`__ t
 
 :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` **HEURISTIC_MAX** = ``4``
 
-Represents the size of the :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` enum.
+Đại diện cho kích thước của enum :ref:`Heuristic <enum_AStarGrid2D_Heuristic>`.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ Represents the size of the :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **DiagonalMode**: :ref:`🔗<enum_AStarGrid2D_DiagonalMode>`
+enum **DiagonalMode**: :ref:`🔗 <enum_AStarGrid2D_DiagonalMode>`
 
 .. _class_AStarGrid2D_constant_DIAGONAL_MODE_ALWAYS:
 
@@ -227,7 +227,7 @@ enum **DiagonalMode**: :ref:`🔗<enum_AStarGrid2D_DiagonalMode>`
 
 :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` **DIAGONAL_MODE_ALWAYS** = ``0``
 
-The pathfinding algorithm will ignore solid neighbors around the target cell and allow passing using diagonals.
+Thuật toán tìm đường sẽ bỏ qua các ô lân cận dạng đặc xung quanh ô đích và cho phép đi qua theo đường chéo.
 
 .. _class_AStarGrid2D_constant_DIAGONAL_MODE_NEVER:
 
@@ -235,7 +235,7 @@ The pathfinding algorithm will ignore solid neighbors around the target cell and
 
 :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` **DIAGONAL_MODE_NEVER** = ``1``
 
-The pathfinding algorithm will ignore all diagonals and the way will be always orthogonal.
+Thuật toán tìm đường sẽ bỏ qua tất cả các đường chéo và đường đi sẽ luôn theo phương vuông góc.
 
 .. _class_AStarGrid2D_constant_DIAGONAL_MODE_AT_LEAST_ONE_WALKABLE:
 
@@ -243,7 +243,7 @@ The pathfinding algorithm will ignore all diagonals and the way will be always o
 
 :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` **DIAGONAL_MODE_AT_LEAST_ONE_WALKABLE** = ``2``
 
-The pathfinding algorithm will avoid using diagonals if at least two obstacles have been placed around the neighboring cells of the specific path segment.
+Thuật toán tìm đường sẽ tránh sử dụng đường chéo nếu có ít nhất hai chướng ngại vật được đặt xung quanh các ô lân cận của đoạn đường cụ thể.
 
 .. _class_AStarGrid2D_constant_DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES:
 
@@ -251,7 +251,7 @@ The pathfinding algorithm will avoid using diagonals if at least two obstacles h
 
 :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` **DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES** = ``3``
 
-The pathfinding algorithm will avoid using diagonals if any obstacle has been placed around the neighboring cells of the specific path segment.
+Thuật toán tìm đường sẽ tránh sử dụng đường chéo nếu có bất kỳ chướng ngại vật nào được đặt xung quanh các ô lân cận của đoạn đường cụ thể.
 
 .. _class_AStarGrid2D_constant_DIAGONAL_MODE_MAX:
 
@@ -259,7 +259,7 @@ The pathfinding algorithm will avoid using diagonals if any obstacle has been pl
 
 :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` **DIAGONAL_MODE_MAX** = ``4``
 
-Represents the size of the :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` enum.
+Biểu thị kích thước của enum :ref:`DiagonalMode <enum_AStarGrid2D_DiagonalMode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Represents the size of the :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` en
 
 .. rst-class:: classref-enumeration
 
-enum **CellShape**: :ref:`🔗<enum_AStarGrid2D_CellShape>`
+enum **CellShape**: :ref:`🔗 <enum_AStarGrid2D_CellShape>`
 
 .. _class_AStarGrid2D_constant_CELL_SHAPE_SQUARE:
 
@@ -277,7 +277,7 @@ enum **CellShape**: :ref:`🔗<enum_AStarGrid2D_CellShape>`
 
 :ref:`CellShape<enum_AStarGrid2D_CellShape>` **CELL_SHAPE_SQUARE** = ``0``
 
-Rectangular cell shape.
+Hình dạng ô hình chữ nhật.
 
 .. _class_AStarGrid2D_constant_CELL_SHAPE_ISOMETRIC_RIGHT:
 
@@ -285,7 +285,7 @@ Rectangular cell shape.
 
 :ref:`CellShape<enum_AStarGrid2D_CellShape>` **CELL_SHAPE_ISOMETRIC_RIGHT** = ``1``
 
-Diamond cell shape (for isometric look). Cell coordinates layout where the horizontal axis goes up-right, and the vertical one goes down-right.
+Hình dạng ô hình thoi (để tạo giao diện đẳng hướng). Bố cục tọa độ ô trong đó trục ngang hướng lên-phải, còn trục dọc hướng xuống-phải.
 
 .. _class_AStarGrid2D_constant_CELL_SHAPE_ISOMETRIC_DOWN:
 
@@ -293,7 +293,7 @@ Diamond cell shape (for isometric look). Cell coordinates layout where the horiz
 
 :ref:`CellShape<enum_AStarGrid2D_CellShape>` **CELL_SHAPE_ISOMETRIC_DOWN** = ``2``
 
-Diamond cell shape (for isometric look). Cell coordinates layout where the horizontal axis goes down-right, and the vertical one goes down-left.
+Hình dạng ô hình thoi (để tạo giao diện đẳng hướng). Bố cục tọa độ ô trong đó trục ngang hướng xuống-phải, còn trục dọc hướng xuống-trái.
 
 .. _class_AStarGrid2D_constant_CELL_SHAPE_MAX:
 
@@ -301,7 +301,7 @@ Diamond cell shape (for isometric look). Cell coordinates layout where the horiz
 
 :ref:`CellShape<enum_AStarGrid2D_CellShape>` **CELL_SHAPE_MAX** = ``3``
 
-Represents the size of the :ref:`CellShape<enum_AStarGrid2D_CellShape>` enum.
+Đại diện cho kích thước của enum :ref:`CellShape <enum_AStarGrid2D_CellShape>`.
 
 .. rst-class:: classref-section-separator
 
@@ -309,8 +309,8 @@ Represents the size of the :ref:`CellShape<enum_AStarGrid2D_CellShape>` enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AStarGrid2D_property_cell_shape:
 
@@ -323,7 +323,7 @@ Property Descriptions
 - |void| **set_cell_shape**\ (\ value\: :ref:`CellShape<enum_AStarGrid2D_CellShape>`\ )
 - :ref:`CellShape<enum_AStarGrid2D_CellShape>` **get_cell_shape**\ (\ )
 
-The cell shape. Affects how the positions are placed in the grid. If changed, :ref:`update()<class_AStarGrid2D_method_update>` needs to be called before finding the next path.
+Hình dạng ô. Ảnh hưởng đến cách các vị trí được sắp xếp trong lưới. Nếu thay đổi, cần gọi :ref:`update()<class_AStarGrid2D_method_update>` trước khi tìm đường đi tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -340,7 +340,7 @@ The cell shape. Affects how the positions are placed in the grid. If changed, :r
 - |void| **set_cell_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_cell_size**\ (\ )
 
-The size of the point cell which will be applied to calculate the resulting point position returned by :ref:`get_point_path()<class_AStarGrid2D_method_get_point_path>`. If changed, :ref:`update()<class_AStarGrid2D_method_update>` needs to be called before finding the next path.
+Kích thước của ô điểm sẽ được áp dụng để tính toán vị trí điểm kết quả do :ref:`get_point_path()<class_AStarGrid2D_method_get_point_path>` trả về. Nếu thay đổi, cần gọi :ref:`update()<class_AStarGrid2D_method_update>` trước khi tìm đường đi tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -357,7 +357,7 @@ The size of the point cell which will be applied to calculate the resulting poin
 - |void| **set_default_compute_heuristic**\ (\ value\: :ref:`Heuristic<enum_AStarGrid2D_Heuristic>`\ )
 - :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` **get_default_compute_heuristic**\ (\ )
 
-The default :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` which will be used to calculate the cost between two points if :ref:`_compute_cost()<class_AStarGrid2D_private_method__compute_cost>` was not overridden.
+:ref:`Heuristic <enum_AStarGrid2D_Heuristic>` mặc định được dùng để tính chi phí giữa hai điểm nếu :ref:`_compute_cost()<class_AStarGrid2D_private_method__compute_cost>` chưa được ghi đè.
 
 .. rst-class:: classref-item-separator
 
@@ -374,7 +374,7 @@ The default :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` which will be used to c
 - |void| **set_default_estimate_heuristic**\ (\ value\: :ref:`Heuristic<enum_AStarGrid2D_Heuristic>`\ )
 - :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` **get_default_estimate_heuristic**\ (\ )
 
-The default :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` which will be used to calculate the cost between the point and the end point if :ref:`_estimate_cost()<class_AStarGrid2D_private_method__estimate_cost>` was not overridden.
+:ref:`Heuristic <enum_AStarGrid2D_Heuristic>` mặc định sẽ được dùng để tính chi phí giữa điểm và điểm đích nếu :ref:`_estimate_cost()<class_AStarGrid2D_private_method__estimate_cost>` chưa được ghi đè.
 
 .. rst-class:: classref-item-separator
 
@@ -391,7 +391,7 @@ The default :ref:`Heuristic<enum_AStarGrid2D_Heuristic>` which will be used to c
 - |void| **set_diagonal_mode**\ (\ value\: :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>`\ )
 - :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` **get_diagonal_mode**\ (\ )
 
-A specific :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` mode which will force the path to avoid or accept the specified diagonals.
+Một chế độ :ref:`DiagonalMode <enum_AStarGrid2D_DiagonalMode>` cụ thể sẽ buộc đường đi tránh hoặc chấp nhận các đường chéo được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -408,9 +408,9 @@ A specific :ref:`DiagonalMode<enum_AStarGrid2D_DiagonalMode>` mode which will fo
 - |void| **set_jumping_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_jumping_enabled**\ (\ )
 
-Enables or disables jumping to skip up the intermediate points and speeds up the searching algorithm.
+Bật hoặc tắt việc nhảy để bỏ qua các điểm trung gian và tăng tốc thuật toán tìm kiếm.
 
-\ **Note:** Currently, toggling it on disables the consideration of weight scaling in pathfinding.
+\ **Lưu ý:** Hiện tại, việc bật tùy chọn này sẽ vô hiệu hóa việc xem xét điều chỉnh trọng số trong pathfinding.
 
 .. rst-class:: classref-item-separator
 
@@ -427,7 +427,7 @@ Enables or disables jumping to skip up the intermediate points and speeds up the
 - |void| **set_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_offset**\ (\ )
 
-The offset of the grid which will be applied to calculate the resulting point position returned by :ref:`get_point_path()<class_AStarGrid2D_method_get_point_path>`. If changed, :ref:`update()<class_AStarGrid2D_method_update>` needs to be called before finding the next path.
+Độ lệch của grid sẽ được áp dụng để tính vị trí điểm kết quả do :ref:`get_point_path()<class_AStarGrid2D_method_get_point_path>` trả về. Nếu thay đổi, cần gọi :ref:`update()<class_AStarGrid2D_method_update>` trước khi tìm đường đi tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -444,7 +444,7 @@ The offset of the grid which will be applied to calculate the resulting point po
 - |void| **set_region**\ (\ value\: :ref:`Rect2i<class_Rect2i>`\ )
 - :ref:`Rect2i<class_Rect2i>` **get_region**\ (\ )
 
-The region of grid cells available for pathfinding. If changed, :ref:`update()<class_AStarGrid2D_method_update>` needs to be called before finding the next path.
+Vùng các ô grid có sẵn cho pathfinding. Nếu thay đổi, cần gọi :ref:`update()<class_AStarGrid2D_method_update>` trước khi tìm đường đi tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -461,9 +461,9 @@ The region of grid cells available for pathfinding. If changed, :ref:`update()<c
 - |void| **set_size**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_size**\ (\ )
 
-**Deprecated:** Use :ref:`region<class_AStarGrid2D_property_region>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`region<class_AStarGrid2D_property_region>`.
 
-The size of the grid (number of cells of size :ref:`cell_size<class_AStarGrid2D_property_cell_size>` on each axis). If changed, :ref:`update()<class_AStarGrid2D_method_update>` needs to be called before finding the next path.
+Kích thước của lưới (số ô có kích thước :ref:`cell_size<class_AStarGrid2D_property_cell_size>` trên mỗi trục). Nếu thay đổi, cần gọi :ref:`update()<class_AStarGrid2D_method_update>` trước khi tìm đường đi tiếp theo.
 
 .. rst-class:: classref-section-separator
 
@@ -471,8 +471,8 @@ The size of the grid (number of cells of size :ref:`cell_size<class_AStarGrid2D_
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AStarGrid2D_private_method__compute_cost:
 
@@ -480,9 +480,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_compute_cost**\ (\ from_id\: :ref:`Vector2i<class_Vector2i>`, to_id\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual| |const| :ref:`🔗<class_AStarGrid2D_private_method__compute_cost>`
 
-Called when computing the cost between two connected points.
+Được gọi khi tính chi phí giữa hai điểm được kết nối.
 
-Note that this function is hidden in the default **AStarGrid2D** class.
+Lưu ý rằng hàm này bị ẩn trong lớp **AStarGrid2D** mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -494,9 +494,9 @@ Note that this function is hidden in the default **AStarGrid2D** class.
 
 :ref:`float<class_float>` **_estimate_cost**\ (\ from_id\: :ref:`Vector2i<class_Vector2i>`, end_id\: :ref:`Vector2i<class_Vector2i>`\ ) |virtual| |const| :ref:`🔗<class_AStarGrid2D_private_method__estimate_cost>`
 
-Called when estimating the cost between a point and the path's ending point.
+Được gọi khi ước tính chi phí giữa một điểm và điểm kết thúc của đường đi.
 
-Note that this function is hidden in the default **AStarGrid2D** class.
+Lưu ý rằng hàm này bị ẩn trong lớp **AStarGrid2D** mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -508,7 +508,7 @@ Note that this function is hidden in the default **AStarGrid2D** class.
 
 |void| **clear**\ (\ ) :ref:`🔗<class_AStarGrid2D_method_clear>`
 
-Clears the grid and sets the :ref:`region<class_AStarGrid2D_property_region>` to ``Rect2i(0, 0, 0, 0)``.
+Xóa lưới và đặt :ref:`region<class_AStarGrid2D_property_region>` thành ``Rect2i(0, 0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -520,9 +520,9 @@ Clears the grid and sets the :ref:`region<class_AStarGrid2D_property_region>` to
 
 |void| **fill_solid_region**\ (\ region\: :ref:`Rect2i<class_Rect2i>`, solid\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_AStarGrid2D_method_fill_solid_region>`
 
-Fills the given ``region`` on the grid with the specified value for the solid flag.
+Điền ``region`` đã cho trên lưới bằng giá trị được chỉ định cho cờ solid.
 
-\ **Note:** Calling :ref:`update()<class_AStarGrid2D_method_update>` is not needed after the call of this function.
+\ **Lưu ý:** Không cần gọi :ref:`update()<class_AStarGrid2D_method_update>` sau khi gọi hàm này.
 
 .. rst-class:: classref-item-separator
 
@@ -534,9 +534,9 @@ Fills the given ``region`` on the grid with the specified value for the solid fl
 
 |void| **fill_weight_scale_region**\ (\ region\: :ref:`Rect2i<class_Rect2i>`, weight_scale\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AStarGrid2D_method_fill_weight_scale_region>`
 
-Fills the given ``region`` on the grid with the specified value for the weight scale.
+Điền ``region`` đã cho trên lưới bằng giá trị được chỉ định cho weight scale.
 
-\ **Note:** Calling :ref:`update()<class_AStarGrid2D_method_update>` is not needed after the call of this function.
+\ **Lưu ý:** Không cần gọi :ref:`update()<class_AStarGrid2D_method_update>` sau khi gọi hàm này.
 
 .. rst-class:: classref-item-separator
 
@@ -548,13 +548,13 @@ Fills the given ``region`` on the grid with the specified value for the weight s
 
 :ref:`Array<class_Array>`\[:ref:`Vector2i<class_Vector2i>`\] **get_id_path**\ (\ from_id\: :ref:`Vector2i<class_Vector2i>`, to_id\: :ref:`Vector2i<class_Vector2i>`, allow_partial_path\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AStarGrid2D_method_get_id_path>`
 
-Returns an array with the IDs of the points that form the path found by AStar2D between the given points. The array is ordered from the starting point to the ending point of the path.
+Trả về một mảng chứa các ID của những điểm tạo thành đường đi được AStar2D tìm thấy giữa các điểm đã cho. Mảng được sắp xếp từ điểm bắt đầu đến điểm kết thúc của đường đi.
 
-If ``from_id`` point is disabled, returns an empty array (even if ``from_id == to_id``).
+Nếu điểm ``from_id`` bị vô hiệu hóa, trả về một mảng rỗng (ngay cả khi ``from_id == to_id``).
 
-If ``from_id`` point is not disabled, there is no valid path to the target, and ``allow_partial_path`` is ``true``, returns a path to the point closest to the target that can be reached.
+Nếu điểm ``from_id`` không bị vô hiệu hóa, không có đường đi hợp lệ đến đích và ``allow_partial_path`` là ``true``, trả về đường đi đến điểm gần đích nhất mà có thể tiếp cận.
 
-\ **Note:** When ``allow_partial_path`` is ``true`` and ``to_id`` is solid the search may take an unusually long time to finish.
+\ **Lưu ý:** Khi ``allow_partial_path`` là ``true`` và ``to_id`` ở trạng thái solid, quá trình tìm kiếm có thể mất thời gian lâu bất thường mới hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -566,7 +566,7 @@ If ``from_id`` point is not disabled, there is no valid path to the target, and 
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_point_data_in_region**\ (\ region\: :ref:`Rect2i<class_Rect2i>`\ ) |const| :ref:`🔗<class_AStarGrid2D_method_get_point_data_in_region>`
 
-Returns an array of dictionaries with point data (``id``: :ref:`Vector2i<class_Vector2i>`, ``position``: :ref:`Vector2<class_Vector2>`, ``solid``: :ref:`bool<class_bool>`, ``weight_scale``: :ref:`float<class_float>`) within a ``region``.
+Trả về một mảng các dictionary chứa dữ liệu điểm (``id``: :ref:`Vector2i<class_Vector2i>`, ``position``: :ref:`Vector2<class_Vector2>`, ``solid``: :ref:`bool<class_bool>`, ``weight_scale``: :ref:`float<class_float>`) trong một ``region``.
 
 .. rst-class:: classref-item-separator
 
@@ -578,15 +578,15 @@ Returns an array of dictionaries with point data (``id``: :ref:`Vector2i<class_V
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **get_point_path**\ (\ from_id\: :ref:`Vector2i<class_Vector2i>`, to_id\: :ref:`Vector2i<class_Vector2i>`, allow_partial_path\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AStarGrid2D_method_get_point_path>`
 
-Returns an array with the points that are in the path found by **AStarGrid2D** between the given points. The array is ordered from the starting point to the ending point of the path.
+Trả về một mảng chứa các điểm nằm trên đường đi được **AStarGrid2D** tìm thấy giữa các điểm đã cho. Mảng được sắp xếp từ điểm bắt đầu đến điểm kết thúc của đường đi.
 
-If ``from_id`` point is disabled, returns an empty array (even if ``from_id == to_id``).
+Nếu điểm ``from_id`` bị vô hiệu hóa, trả về một mảng rỗng (ngay cả khi ``from_id == to_id``).
 
-If ``from_id`` point is not disabled, there is no valid path to the target, and ``allow_partial_path`` is ``true``, returns a path to the point closest to the target that can be reached.
+Nếu điểm ``from_id`` không bị vô hiệu hóa, không có đường đi hợp lệ đến đích và ``allow_partial_path`` là ``true``, trả về đường đi đến điểm gần đích nhất mà có thể tiếp cận.
 
-\ **Note:** This method is not thread-safe; it can only be used from a single :ref:`Thread<class_Thread>` at a given time. Consider using :ref:`Mutex<class_Mutex>` to ensure exclusive access to one thread to avoid race conditions.
+\ **Lưu ý:** Phương thức này không thread-safe; tại một thời điểm, nó chỉ có thể được sử dụng từ một :ref:`Thread<class_Thread>` duy nhất. Hãy cân nhắc sử dụng :ref:`Mutex<class_Mutex>` để đảm bảo quyền truy cập độc quyền cho một thread nhằm tránh các race condition.
 
-Additionally, when ``allow_partial_path`` is ``true`` and ``to_id`` is solid the search may take an unusually long time to finish.
+Ngoài ra, khi ``allow_partial_path`` là ``true`` và ``to_id`` ở trạng thái solid, quá trình tìm kiếm có thể mất thời gian lâu bất thường mới hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -598,7 +598,7 @@ Additionally, when ``allow_partial_path`` is ``true`` and ``to_id`` is solid the
 
 :ref:`Vector2<class_Vector2>` **get_point_position**\ (\ id\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_AStarGrid2D_method_get_point_position>`
 
-Returns the position of the point associated with the given ``id``.
+Trả về vị trí của điểm được liên kết với ``id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -610,7 +610,7 @@ Returns the position of the point associated with the given ``id``.
 
 :ref:`float<class_float>` **get_point_weight_scale**\ (\ id\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_AStarGrid2D_method_get_point_weight_scale>`
 
-Returns the weight scale of the point associated with the given ``id``.
+Trả về thang đo trọng số của điểm được liên kết với ``id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -622,7 +622,7 @@ Returns the weight scale of the point associated with the given ``id``.
 
 :ref:`bool<class_bool>` **is_dirty**\ (\ ) |const| :ref:`🔗<class_AStarGrid2D_method_is_dirty>`
 
-Indicates that the grid parameters were changed and :ref:`update()<class_AStarGrid2D_method_update>` needs to be called.
+Cho biết các tham số lưới đã thay đổi và cần gọi :ref:`update()<class_AStarGrid2D_method_update>`.
 
 .. rst-class:: classref-item-separator
 
@@ -634,7 +634,7 @@ Indicates that the grid parameters were changed and :ref:`update()<class_AStarGr
 
 :ref:`bool<class_bool>` **is_in_bounds**\ (\ x\: :ref:`int<class_int>`, y\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AStarGrid2D_method_is_in_bounds>`
 
-Returns ``true`` if the ``x`` and ``y`` is a valid grid coordinate (id), i.e. if it is inside :ref:`region<class_AStarGrid2D_property_region>`. Equivalent to ``region.has_point(Vector2i(x, y))``.
+Trả về ``true`` nếu ``x`` và ``y`` là một tọa độ lưới (id) hợp lệ, tức là nằm trong :ref:`region<class_AStarGrid2D_property_region>`. Tương đương với ``region.has_point(Vector2i(x, y))``.
 
 .. rst-class:: classref-item-separator
 
@@ -646,7 +646,7 @@ Returns ``true`` if the ``x`` and ``y`` is a valid grid coordinate (id), i.e. if
 
 :ref:`bool<class_bool>` **is_in_boundsv**\ (\ id\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_AStarGrid2D_method_is_in_boundsv>`
 
-Returns ``true`` if the ``id`` vector is a valid grid coordinate, i.e. if it is inside :ref:`region<class_AStarGrid2D_property_region>`. Equivalent to ``region.has_point(id)``.
+Trả về ``true`` nếu vector ``id`` là một tọa độ lưới hợp lệ, tức là nằm trong :ref:`region<class_AStarGrid2D_property_region>`. Tương đương với ``region.has_point(id)``.
 
 .. rst-class:: classref-item-separator
 
@@ -658,7 +658,7 @@ Returns ``true`` if the ``id`` vector is a valid grid coordinate, i.e. if it is 
 
 :ref:`bool<class_bool>` **is_point_solid**\ (\ id\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_AStarGrid2D_method_is_point_solid>`
 
-Returns ``true`` if a point is disabled for pathfinding. By default, all points are enabled.
+Trả về ``true`` nếu một điểm bị vô hiệu hóa đối với việc tìm đường. Theo mặc định, tất cả các điểm đều được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -670,9 +670,9 @@ Returns ``true`` if a point is disabled for pathfinding. By default, all points 
 
 |void| **set_point_solid**\ (\ id\: :ref:`Vector2i<class_Vector2i>`, solid\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_AStarGrid2D_method_set_point_solid>`
 
-Disables or enables the specified point for pathfinding. Useful for making an obstacle. By default, all points are enabled.
+Vô hiệu hóa hoặc bật điểm được chỉ định để tìm đường. Hữu ích khi tạo chướng ngại vật. Theo mặc định, tất cả các điểm đều được bật.
 
-\ **Note:** Calling :ref:`update()<class_AStarGrid2D_method_update>` is not needed after the call of this function.
+\ **Lưu ý:** Không cần gọi :ref:`update()<class_AStarGrid2D_method_update>` sau khi gọi hàm này.
 
 .. rst-class:: classref-item-separator
 
@@ -684,9 +684,9 @@ Disables or enables the specified point for pathfinding. Useful for making an ob
 
 |void| **set_point_weight_scale**\ (\ id\: :ref:`Vector2i<class_Vector2i>`, weight_scale\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AStarGrid2D_method_set_point_weight_scale>`
 
-Sets the ``weight_scale`` for the point with the given ``id``. The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost()<class_AStarGrid2D_private_method__compute_cost>` when determining the overall cost of traveling across a segment from a neighboring point to this point.
+Đặt ``weight_scale`` cho điểm có ``id`` được cung cấp. ``weight_scale`` được nhân với kết quả của :ref:`_compute_cost()<class_AStarGrid2D_private_method__compute_cost>` khi xác định tổng chi phí di chuyển qua một đoạn từ điểm lân cận đến điểm này.
 
-\ **Note:** Calling :ref:`update()<class_AStarGrid2D_method_update>` is not needed after the call of this function.
+\ **Lưu ý:** Không cần gọi :ref:`update()<class_AStarGrid2D_method_update>` sau khi gọi hàm này.
 
 .. rst-class:: classref-item-separator
 
@@ -698,16 +698,16 @@ Sets the ``weight_scale`` for the point with the given ``id``. The ``weight_scal
 
 |void| **update**\ (\ ) :ref:`🔗<class_AStarGrid2D_method_update>`
 
-Updates the internal state of the grid according to the parameters to prepare it to search the path. Needs to be called if parameters like :ref:`region<class_AStarGrid2D_property_region>`, :ref:`cell_size<class_AStarGrid2D_property_cell_size>` or :ref:`offset<class_AStarGrid2D_property_offset>` are changed. :ref:`is_dirty()<class_AStarGrid2D_method_is_dirty>` will return ``true`` if this is the case and this needs to be called.
+Cập nhật trạng thái nội bộ của lưới theo các tham số để chuẩn bị tìm đường đi. Cần gọi phương thức này nếu các tham số như :ref:`region<class_AStarGrid2D_property_region>`, :ref:`cell_size<class_AStarGrid2D_property_cell_size>` hoặc :ref:`offset<class_AStarGrid2D_property_offset>` bị thay đổi. :ref:`is_dirty()<class_AStarGrid2D_method_is_dirty>` sẽ trả về ``true`` nếu trường hợp này xảy ra và cần gọi phương thức này.
 
-\ **Note:** All point data (solidity and weight scale) will be cleared.
+\ **Lưu ý:** Tất cả dữ liệu điểm (độ rắn và hệ số trọng số) sẽ bị xóa.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,28 +10,28 @@
 InputMap
 ========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton that manages all :ref:`InputEventAction<class_InputEventAction>`\ s.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Manages all :ref:`InputEventAction<class_InputEventAction>` which can be created/modified from the project settings menu **Project > Project Settings > Input Map** or in code with :ref:`add_action()<class_InputMap_method_add_action>` and :ref:`action_add_event()<class_InputMap_method_action_add_event>`. See :ref:`Node._input()<class_Node_private_method__input>`.
+Một singleton quản lý tất cả :ref:`InputEventAction<class_InputEventAction>`\ s.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Quản lý tất cả :ref:`InputEventAction<class_InputEventAction>` có thể được tạo/chỉnh sửa từ menu cài đặt dự án **Project > Project Settings > Input Map** hoặc trong code bằng :ref:`add_action()<class_InputMap_method_add_action>` và :ref:`action_add_event()<class_InputMap_method_action_add_event>`. Xem :ref:`Node._input()<class_Node_private_method__input>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Using InputEvent: InputMap <../tutorials/inputs/inputevent.html#inputmap>`__
+- `Sử dụng InputEvent: InputMap <../tutorials/inputs/inputevent.html#inputmap>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -72,8 +72,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_InputMap_signal_project_settings_loaded:
 
@@ -81,7 +81,7 @@ Signals
 
 **project_settings_loaded**\ (\ ) :ref:`🔗<class_InputMap_signal_project_settings_loaded>`
 
-Emitted when the :ref:`ProjectSettings<class_ProjectSettings>` **InputMap** has been loaded.
+Được phát ra khi :ref:`ProjectSettings<class_ProjectSettings>` **InputMap** đã được tải.
 
 .. rst-class:: classref-section-separator
 
@@ -89,8 +89,8 @@ Emitted when the :ref:`ProjectSettings<class_ProjectSettings>` **InputMap** has 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_InputMap_method_action_add_event:
 
@@ -98,7 +98,7 @@ Method Descriptions
 
 |void| **action_add_event**\ (\ action\: :ref:`StringName<class_StringName>`, event\: :ref:`InputEvent<class_InputEvent>`\ ) :ref:`🔗<class_InputMap_method_action_add_event>`
 
-Adds an :ref:`InputEvent<class_InputEvent>` to an action. This :ref:`InputEvent<class_InputEvent>` will trigger the action.
+Thêm một :ref:`InputEvent<class_InputEvent>` vào một action. :ref:`InputEvent<class_InputEvent>` này sẽ kích hoạt action.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Adds an :ref:`InputEvent<class_InputEvent>` to an action. This :ref:`InputEvent<
 
 |void| **action_erase_event**\ (\ action\: :ref:`StringName<class_StringName>`, event\: :ref:`InputEvent<class_InputEvent>`\ ) :ref:`🔗<class_InputMap_method_action_erase_event>`
 
-Removes an :ref:`InputEvent<class_InputEvent>` from an action.
+Xóa một :ref:`InputEvent<class_InputEvent>` khỏi một action.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Removes an :ref:`InputEvent<class_InputEvent>` from an action.
 
 |void| **action_erase_events**\ (\ action\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_InputMap_method_action_erase_events>`
 
-Removes all events from an action.
+Xóa tất cả event khỏi một action.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Removes all events from an action.
 
 :ref:`float<class_float>` **action_get_deadzone**\ (\ action\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_InputMap_method_action_get_deadzone>`
 
-Returns a deadzone value for the action.
+Trả về giá trị deadzone của action.
 
 .. rst-class:: classref-item-separator
 
@@ -146,9 +146,9 @@ Returns a deadzone value for the action.
 
 :ref:`Array<class_Array>`\[:ref:`InputEvent<class_InputEvent>`\] **action_get_events**\ (\ action\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_InputMap_method_action_get_events>`
 
-Returns an array of :ref:`InputEvent<class_InputEvent>`\ s associated with a given action.
+Trả về một mảng các :ref:`InputEvent<class_InputEvent>`\ s liên kết với action đã cho.
 
-\ **Note:** When used in the editor (e.g. a tool script or :ref:`EditorPlugin<class_EditorPlugin>`), this method will return events for the editor action. If you want to access your project's input binds from the editor, read the ``input/*`` settings from :ref:`ProjectSettings<class_ProjectSettings>`.
+\ **Lưu ý:** Khi được sử dụng trong editor (ví dụ: tool script hoặc :ref:`EditorPlugin<class_EditorPlugin>`), phương thức này sẽ trả về các event cho action của editor. Nếu bạn muốn truy cập các input bind của dự án từ editor, hãy đọc các thiết lập ``input/*`` từ :ref:`ProjectSettings<class_ProjectSettings>`.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +160,7 @@ Returns an array of :ref:`InputEvent<class_InputEvent>`\ s associated with a giv
 
 :ref:`bool<class_bool>` **action_has_event**\ (\ action\: :ref:`StringName<class_StringName>`, event\: :ref:`InputEvent<class_InputEvent>`\ ) :ref:`🔗<class_InputMap_method_action_has_event>`
 
-Returns ``true`` if the action has the given :ref:`InputEvent<class_InputEvent>` associated with it.
+Trả về ``true`` nếu action có :ref:`InputEvent<class_InputEvent>` đã cho liên kết với nó.
 
 .. rst-class:: classref-item-separator
 
@@ -172,7 +172,7 @@ Returns ``true`` if the action has the given :ref:`InputEvent<class_InputEvent>`
 
 |void| **action_set_deadzone**\ (\ action\: :ref:`StringName<class_StringName>`, deadzone\: :ref:`float<class_float>`\ ) :ref:`🔗<class_InputMap_method_action_set_deadzone>`
 
-Sets a deadzone value for the action.
+Thiết lập giá trị deadzone cho action.
 
 .. rst-class:: classref-item-separator
 
@@ -184,9 +184,9 @@ Sets a deadzone value for the action.
 
 |void| **add_action**\ (\ action\: :ref:`StringName<class_StringName>`, deadzone\: :ref:`float<class_float>` = 0.2\ ) :ref:`🔗<class_InputMap_method_add_action>`
 
-Adds an empty action to the **InputMap** with a configurable ``deadzone``.
+Thêm một action trống vào **InputMap** với ``deadzone`` có thể cấu hình.
 
-An :ref:`InputEvent<class_InputEvent>` can then be added to this action with :ref:`action_add_event()<class_InputMap_method_action_add_event>`.
+Sau đó có thể thêm một :ref:`InputEvent<class_InputEvent>` vào action này bằng :ref:`action_add_event()<class_InputMap_method_action_add_event>`.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ An :ref:`InputEvent<class_InputEvent>` can then be added to this action with :re
 
 |void| **erase_action**\ (\ action\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_InputMap_method_erase_action>`
 
-Removes an action from the **InputMap**.
+Xóa một action khỏi **InputMap**.
 
 .. rst-class:: classref-item-separator
 
@@ -210,9 +210,9 @@ Removes an action from the **InputMap**.
 
 :ref:`bool<class_bool>` **event_is_action**\ (\ event\: :ref:`InputEvent<class_InputEvent>`, action\: :ref:`StringName<class_StringName>`, exact_match\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_InputMap_method_event_is_action>`
 
-Returns ``true`` if the given event is part of an existing action. This method ignores keyboard modifiers if the given :ref:`InputEvent<class_InputEvent>` is not pressed (for proper release detection). See :ref:`action_has_event()<class_InputMap_method_action_has_event>` if you don't want this behavior.
+Trả về ``true`` nếu event đã cho là một phần của action hiện có. Phương thức này bỏ qua các phím bổ trợ của bàn phím nếu :ref:`InputEvent<class_InputEvent>` đã cho không được nhấn (để phát hiện thao tác nhả phím chính xác). Xem :ref:`action_has_event()<class_InputMap_method_action_has_event>` nếu bạn không muốn hành vi này.
 
-If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:`InputEventKey<class_InputEventKey>` and :ref:`InputEventMouseButton<class_InputEventMouseButton>` events, and the direction for :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` events.
+Nếu ``exact_match`` là ``false``, phương thức sẽ bỏ qua các phím bổ trợ đầu vào bổ sung đối với các event :ref:`InputEventKey<class_InputEventKey>` và :ref:`InputEventMouseButton<class_InputEventMouseButton>`, cũng như hướng đối với các event :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -224,7 +224,7 @@ If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:
 
 :ref:`String<class_String>` **get_action_description**\ (\ action\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_InputMap_method_get_action_description>`
 
-Returns the human-readable description of the given action.
+Trả về mô tả dễ đọc đối với người dùng của action đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -236,7 +236,7 @@ Returns the human-readable description of the given action.
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_actions**\ (\ ) :ref:`🔗<class_InputMap_method_get_actions>`
 
-Returns an array of all actions in the **InputMap**.
+Trả về một mảng gồm tất cả action trong **InputMap**.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ Returns an array of all actions in the **InputMap**.
 
 :ref:`bool<class_bool>` **has_action**\ (\ action\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_InputMap_method_has_action>`
 
-Returns ``true`` if the **InputMap** has a registered action with the given name.
+Trả về ``true`` nếu **InputMap** có action đã đăng ký với tên đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -260,14 +260,14 @@ Returns ``true`` if the **InputMap** has a registered action with the given name
 
 |void| **load_from_project_settings**\ (\ ) :ref:`🔗<class_InputMap_method_load_from_project_settings>`
 
-Clears all :ref:`InputEventAction<class_InputEventAction>` in the **InputMap** and load it anew from :ref:`ProjectSettings<class_ProjectSettings>`.
+Xóa tất cả :ref:`InputEventAction<class_InputEventAction>` trong **InputMap** và tải lại từ :ref:`ProjectSettings<class_ProjectSettings>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

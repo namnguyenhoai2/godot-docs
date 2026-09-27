@@ -10,18 +10,18 @@
 Crypto
 ======
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides access to advanced cryptographic functionalities.
+Cung cấp quyền truy cập vào các chức năng mật mã nâng cao.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The Crypto class provides access to advanced cryptographic functionalities.
+Lớp Crypto cung cấp quyền truy cập vào các chức năng mật mã nâng cao.
 
-Currently, this includes asymmetric key encryption/decryption, signing/verification, and generating cryptographically secure random bytes, RSA keys, HMAC digests, and self-signed :ref:`X509Certificate<class_X509Certificate>`\ s.
+Hiện tại, các chức năng này bao gồm mã hóa/giải mã bằng khóa bất đối xứng, ký/xác minh và tạo các byte ngẫu nhiên an toàn về mặt mật mã, khóa RSA, digest HMAC và :ref:`X509Certificate<class_X509Certificate>`\ s tự ký.
 
 
 .. tabs::
@@ -30,30 +30,30 @@ Currently, this includes asymmetric key encryption/decryption, signing/verificat
 
     var crypto = Crypto.new()
 
-    # Generate new RSA key.
+    # Tạo khóa RSA mới.
     var key = crypto.generate_rsa(4096)
 
-    # Generate new self-signed certificate with the given key.
+    # Tạo chứng chỉ tự ký mới bằng khóa đã cho.
     var cert = crypto.generate_self_signed_certificate(key, "CN=mydomain.com,O=My Game Company,C=IT")
 
-    # Save key and certificate in the user folder.
+    # Lưu khóa và chứng chỉ trong thư mục người dùng.
     key.save("user://generated.key")
     cert.save("user://generated.crt")
 
-    # Encryption
+    # Mã hóa
     var data = "Some data"
     var encrypted = crypto.encrypt(key, data.to_utf8_buffer())
 
-    # Decryption
+    # Giải mã
     var decrypted = crypto.decrypt(key, encrypted)
 
-    # Signing
+    # Ký
     var signature = crypto.sign(HashingContext.HASH_SHA256, data.sha256_buffer(), key)
 
-    # Verifying
+    # Xác minh
     var verified = crypto.verify(HashingContext.HASH_SHA256, data.sha256_buffer(), signature, key)
 
-    # Checks
+    # Kiểm tra
     assert(verified)
     assert(data.to_utf8_buffer() == decrypted)
 
@@ -64,30 +64,30 @@ Currently, this includes asymmetric key encryption/decryption, signing/verificat
 
     Crypto crypto = new Crypto();
 
-    // Generate new RSA key.
+    // Tạo khóa RSA mới.
     CryptoKey key = crypto.GenerateRsa(4096);
 
-    // Generate new self-signed certificate with the given key.
+    // Tạo chứng chỉ tự ký mới bằng khóa đã cho.
     X509Certificate cert = crypto.GenerateSelfSignedCertificate(key, "CN=mydomain.com,O=My Game Company,C=IT");
 
-    // Save key and certificate in the user folder.
+    // Lưu khóa và chứng chỉ vào thư mục người dùng.
     key.Save("user://generated.key");
     cert.Save("user://generated.crt");
 
-    // Encryption
+    // Mã hóa
     string data = "Some data";
     byte[] encrypted = crypto.Encrypt(key, data.ToUtf8Buffer());
 
-    // Decryption
+    // Giải mã
     byte[] decrypted = crypto.Decrypt(key, encrypted);
 
-    // Signing
+    // Ký
     byte[] signature = crypto.Sign(HashingContext.HashType.Sha256, Data.Sha256Buffer(), key);
 
-    // Verifying
+    // Xác minh
     bool verified = crypto.Verify(HashingContext.HashType.Sha256, Data.Sha256Buffer(), signature, key);
 
-    // Checks
+    // Kiểm tra
     Debug.Assert(verified);
     Debug.Assert(data.ToUtf8Buffer() == decrypted);
 
@@ -95,8 +95,8 @@ Currently, this includes asymmetric key encryption/decryption, signing/verificat
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -114,11 +114,11 @@ Methods
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`X509Certificate<class_X509Certificate>` | :ref:`generate_self_signed_certificate<class_Crypto_method_generate_self_signed_certificate>`\ (\ key\: :ref:`CryptoKey<class_CryptoKey>`, issuer_name\: :ref:`String<class_String>` = "CN=myserver,O=myorganisation,C=IT", not_before\: :ref:`String<class_String>` = "20140101000000", not_after\: :ref:`String<class_String>` = "20340101000000"\ ) |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`hmac_digest<class_Crypto_method_hmac_digest>`\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`, msg\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                         |
+   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`hmac_digest<class_Crypto_method_hmac_digest>`\ (\ hash_type\: :ref:`HashType <enum_HashingContext_HashType>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`, msg\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                        |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`sign<class_Crypto_method_sign>`\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, hash\: :ref:`PackedByteArray<class_PackedByteArray>`, key\: :ref:`CryptoKey<class_CryptoKey>`\ )                                                                                                                                                  |
+   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`sign<class_Crypto_method_sign>`\ (\ hash_type\: :ref:`HashType <enum_HashingContext_HashType>`, hash\: :ref:`PackedByteArray<class_PackedByteArray>`, key\: :ref:`CryptoKey<class_CryptoKey>`\ )                                                                                                                                                 |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                       | :ref:`verify<class_Crypto_method_verify>`\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, hash\: :ref:`PackedByteArray<class_PackedByteArray>`, signature\: :ref:`PackedByteArray<class_PackedByteArray>`, key\: :ref:`CryptoKey<class_CryptoKey>`\ )                                                                                   |
+   | :ref:`bool<class_bool>`                       | :ref:`verify<class_Crypto_method_verify>`\ (\ hash_type\: :ref:`HashType <enum_HashingContext_HashType>`, hash\: :ref:`PackedByteArray<class_PackedByteArray>`, signature\: :ref:`PackedByteArray<class_PackedByteArray>`, key\: :ref:`CryptoKey<class_CryptoKey>`\ )                                                                                  |
    +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -127,8 +127,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Crypto_method_constant_time_compare:
 
@@ -136,9 +136,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **constant_time_compare**\ (\ trusted\: :ref:`PackedByteArray<class_PackedByteArray>`, received\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_Crypto_method_constant_time_compare>`
 
-Compares two :ref:`PackedByteArray<class_PackedByteArray>`\ s for equality without leaking timing information in order to prevent timing attacks.
+So sánh hai :ref:`PackedByteArray<class_PackedByteArray>`\  với nhau để tránh làm rò rỉ thông tin về thời gian, nhằm ngăn chặn các cuộc tấn công dựa trên thời gian.
 
-See `this blog post <https://paragonie.com/blog/2015/11/preventing-timing-attacks-on-string-comparison-with-double-hmac-strategy>`__ for more information.
+Xem `this blog post <https://paragonie.com/blog/2015/11/preventing-timing-attacks-on-string-comparison-with-double-hmac-strategy>`__ để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -150,9 +150,9 @@ See `this blog post <https://paragonie.com/blog/2015/11/preventing-timing-attack
 
 :ref:`PackedByteArray<class_PackedByteArray>` **decrypt**\ (\ key\: :ref:`CryptoKey<class_CryptoKey>`, ciphertext\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_Crypto_method_decrypt>`
 
-Decrypt the given ``ciphertext`` with the provided private ``key``.
+Giải mã ``ciphertext`` đã cho bằng ``key`` riêng tư được cung cấp.
 
-\ **Note:** The maximum size of accepted ciphertext is limited by the key size.
+\ **Lưu ý:** Kích thước tối đa của ciphertext được chấp nhận bị giới hạn bởi kích thước khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -164,9 +164,9 @@ Decrypt the given ``ciphertext`` with the provided private ``key``.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **encrypt**\ (\ key\: :ref:`CryptoKey<class_CryptoKey>`, plaintext\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_Crypto_method_encrypt>`
 
-Encrypt the given ``plaintext`` with the provided public ``key``.
+Mã hóa ``plaintext`` đã cho bằng ``key`` công khai được cung cấp.
 
-\ **Note:** The maximum size of accepted plaintext is limited by the key size.
+\ **Lưu ý:** Kích thước tối đa của plaintext được chấp nhận bị giới hạn bởi kích thước khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -178,7 +178,7 @@ Encrypt the given ``plaintext`` with the provided public ``key``.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **generate_random_bytes**\ (\ size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Crypto_method_generate_random_bytes>`
 
-Generates a :ref:`PackedByteArray<class_PackedByteArray>` of cryptographically secure random bytes with given ``size``.
+Tạo :ref:`PackedByteArray<class_PackedByteArray>` gồm các byte ngẫu nhiên an toàn về mặt mật mã với ``size`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ Generates a :ref:`PackedByteArray<class_PackedByteArray>` of cryptographically s
 
 :ref:`CryptoKey<class_CryptoKey>` **generate_rsa**\ (\ size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Crypto_method_generate_rsa>`
 
-Generates an RSA :ref:`CryptoKey<class_CryptoKey>` that can be used for creating self-signed certificates and passed to :ref:`StreamPeerTLS.accept_stream()<class_StreamPeerTLS_method_accept_stream>`.
+Tạo một :ref:`CryptoKey<class_CryptoKey>` RSA có thể được dùng để tạo chứng chỉ tự ký và truyền cho :ref:`StreamPeerTLS.accept_stream()<class_StreamPeerTLS_method_accept_stream>`.
 
 .. rst-class:: classref-item-separator
 
@@ -202,9 +202,9 @@ Generates an RSA :ref:`CryptoKey<class_CryptoKey>` that can be used for creating
 
 :ref:`X509Certificate<class_X509Certificate>` **generate_self_signed_certificate**\ (\ key\: :ref:`CryptoKey<class_CryptoKey>`, issuer_name\: :ref:`String<class_String>` = "CN=myserver,O=myorganisation,C=IT", not_before\: :ref:`String<class_String>` = "20140101000000", not_after\: :ref:`String<class_String>` = "20340101000000"\ ) :ref:`🔗<class_Crypto_method_generate_self_signed_certificate>`
 
-Generates a self-signed :ref:`X509Certificate<class_X509Certificate>` from the given :ref:`CryptoKey<class_CryptoKey>` and ``issuer_name``. The certificate validity will be defined by ``not_before`` and ``not_after`` (first valid date and last valid date). The ``issuer_name`` must contain at least "CN=" (common name, i.e. the domain name), "O=" (organization, i.e. your company name), "C=" (country, i.e. 2 lettered ISO-3166 code of the country the organization is based in).
+Tạo một :ref:`X509Certificate<class_X509Certificate>` tự ký từ :ref:`CryptoKey<class_CryptoKey>` và ``issuer_name`` đã cho. Thời hạn hiệu lực của chứng chỉ sẽ được xác định bởi ``not_before`` và ``not_after`` (ngày bắt đầu và ngày kết thúc hiệu lực). ``issuer_name`` phải chứa ít nhất "CN=" (tên chung, tức tên miền), "O=" (tổ chức, tức tên công ty của bạn), "C=" (quốc gia, tức mã ISO-3166 gồm 2 chữ cái của quốc gia nơi tổ chức đặt trụ sở).
 
-A small example to generate an RSA key and an X509 self-signed certificate.
+Một ví dụ ngắn về cách tạo khóa RSA và chứng chỉ tự ký X509.
 
 
 .. tabs::
@@ -212,17 +212,17 @@ A small example to generate an RSA key and an X509 self-signed certificate.
  .. code-tab:: gdscript
 
     var crypto = Crypto.new()
-    # Generate 4096 bits RSA key.
+    # Tạo khóa RSA 4096 bit.
     var key = crypto.generate_rsa(4096)
-    # Generate self-signed certificate using the given key.
+    # Tạo chứng chỉ tự ký bằng khóa đã cho.
     var cert = crypto.generate_self_signed_certificate(key, "CN=example.com,O=A Game Company,C=IT")
 
  .. code-tab:: csharp
 
     var crypto = new Crypto();
-    // Generate 4096 bits RSA key.
+    // Tạo khóa RSA 4096 bit.
     CryptoKey key = crypto.GenerateRsa(4096);
-    // Generate self-signed certificate using the given key.
+    // Tạo chứng chỉ tự ký bằng khóa đã cho.
     X509Certificate cert = crypto.GenerateSelfSignedCertificate(key, "CN=mydomain.com,O=My Game Company,C=IT");
 
 
@@ -237,9 +237,9 @@ A small example to generate an RSA key and an X509 self-signed certificate.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **hmac_digest**\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`, msg\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_Crypto_method_hmac_digest>`
 
-Generates an `HMAC <https://en.wikipedia.org/wiki/HMAC>`__ digest of ``msg`` using ``key``. The ``hash_type`` parameter is the hashing algorithm that is used for the inner and outer hashes.
+Tạo một digest `HMAC <https://en.wikipedia.org/wiki/HMAC>`__ của ``msg`` bằng ``key``. Tham số ``hash_type`` là thuật toán băm được sử dụng cho các hàm băm bên trong và bên ngoài.
 
-Currently, only :ref:`HashingContext.HASH_SHA256<class_HashingContext_constant_HASH_SHA256>` and :ref:`HashingContext.HASH_SHA1<class_HashingContext_constant_HASH_SHA1>` are supported.
+Hiện tại, chỉ :ref:`HashingContext.HASH_SHA256<class_HashingContext_constant_HASH_SHA256>` và :ref:`HashingContext.HASH_SHA1<class_HashingContext_constant_HASH_SHA1>` được hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -251,7 +251,7 @@ Currently, only :ref:`HashingContext.HASH_SHA256<class_HashingContext_constant_H
 
 :ref:`PackedByteArray<class_PackedByteArray>` **sign**\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, hash\: :ref:`PackedByteArray<class_PackedByteArray>`, key\: :ref:`CryptoKey<class_CryptoKey>`\ ) :ref:`🔗<class_Crypto_method_sign>`
 
-Sign a given ``hash`` of type ``hash_type`` with the provided private ``key``.
+Ký ``hash`` đã cho thuộc kiểu ``hash_type`` bằng ``key`` riêng tư được cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -263,14 +263,14 @@ Sign a given ``hash`` of type ``hash_type`` with the provided private ``key``.
 
 :ref:`bool<class_bool>` **verify**\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, hash\: :ref:`PackedByteArray<class_PackedByteArray>`, signature\: :ref:`PackedByteArray<class_PackedByteArray>`, key\: :ref:`CryptoKey<class_CryptoKey>`\ ) :ref:`🔗<class_Crypto_method_verify>`
 
-Verify that a given ``signature`` for ``hash`` of type ``hash_type`` against the provided public ``key``.
+Xác minh ``signature`` đã cho của ``hash`` thuộc kiểu ``hash_type`` bằng ``key`` công khai được cung cấp.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

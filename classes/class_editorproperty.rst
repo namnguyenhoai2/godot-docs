@@ -10,57 +10,57 @@
 EditorProperty
 ==============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Custom control for editing properties that can be added to the :ref:`EditorInspector<class_EditorInspector>`.
+Bộ điều khiển tùy chỉnh để chỉnh sửa các thuộc tính có thể được thêm vào :ref:`EditorInspector<class_EditorInspector>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A custom control for editing properties that can be added to the :ref:`EditorInspector<class_EditorInspector>`. It is added via :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>`.
+Bộ điều khiển tùy chỉnh để chỉnh sửa các thuộc tính có thể được thêm vào :ref:`EditorInspector<class_EditorInspector>`. Nó được thêm thông qua :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`checkable<class_EditorProperty_property_checkable>`               | ``false``                                                           |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`checked<class_EditorProperty_property_checked>`                   | ``false``                                                           |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`deletable<class_EditorProperty_property_deletable>`               | ``false``                                                           |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`draw_background<class_EditorProperty_property_draw_background>`   | ``true``                                                            |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`draw_label<class_EditorProperty_property_draw_label>`             | ``true``                                                            |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`draw_warning<class_EditorProperty_property_draw_warning>`         | ``false``                                                           |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>` | focus_mode                                                              | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`keying<class_EditorProperty_property_keying>`                     | ``false``                                                           |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`String<class_String>`              | :ref:`label<class_EditorProperty_property_label>`                       | ``""``                                                              |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`float<class_float>`                | :ref:`name_split_ratio<class_EditorProperty_property_name_split_ratio>` | ``0.5``                                                             |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`read_only<class_EditorProperty_property_read_only>`               | ``false``                                                           |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`selectable<class_EditorProperty_property_selectable>`             | ``true``                                                            |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                  | :ref:`use_folding<class_EditorProperty_property_use_folding>`           | ``false``                                                           |
-   +------------------------------------------+-------------------------------------------------------------------------+---------------------------------------------------------------------+
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`checkable<class_EditorProperty_property_checkable>`               | ``false``                                                        |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`checked<class_EditorProperty_property_checked>`                   | ``false``                                                        |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`deletable<class_EditorProperty_property_deletable>`               | ``false``                                                        |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`draw_background<class_EditorProperty_property_draw_background>`   | ``true``                                                         |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`draw_label<class_EditorProperty_property_draw_label>`             | ``true``                                                         |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`draw_warning<class_EditorProperty_property_draw_warning>`         | ``false``                                                        |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>` | focus_mode                                                              | ``3`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`) |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`keying<class_EditorProperty_property_keying>`                     | ``false``                                                        |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`String<class_String>`               | :ref:`label<class_EditorProperty_property_label>`                       | ``""``                                                           |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`float<class_float>`                 | :ref:`name_split_ratio<class_EditorProperty_property_name_split_ratio>` | ``0.5``                                                          |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`read_only<class_EditorProperty_property_read_only>`               | ``false``                                                        |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`selectable<class_EditorProperty_property_selectable>`             | ``true``                                                         |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                   | :ref:`use_folding<class_EditorProperty_property_use_folding>`           | ``false``                                                        |
+   +-------------------------------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -99,8 +99,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorProperty_signal_multiple_properties_changed:
 
@@ -108,7 +108,7 @@ Signals
 
 **multiple_properties_changed**\ (\ properties\: :ref:`PackedStringArray<class_PackedStringArray>`, value\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_EditorProperty_signal_multiple_properties_changed>`
 
-Emit it if you want multiple properties modified at the same time. Do not use if added via :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`.
+Phát tín hiệu này nếu bạn muốn sửa đổi nhiều thuộc tính cùng lúc. Không sử dụng nếu được thêm thông qua :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Emit it if you want multiple properties modified at the same time. Do not use if
 
 **object_id_selected**\ (\ property\: :ref:`StringName<class_StringName>`, id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorProperty_signal_object_id_selected>`
 
-Used by sub-inspectors. Emit it if what was selected was an Object ID.
+Được các sub-inspector sử dụng. Phát ra tín hiệu này nếu đối tượng được chọn là một Object ID.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ Used by sub-inspectors. Emit it if what was selected was an Object ID.
 
 **property_can_revert_changed**\ (\ property\: :ref:`StringName<class_StringName>`, can_revert\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorProperty_signal_property_can_revert_changed>`
 
-Emitted when the revertability (i.e., whether it has a non-default value and thus is displayed with a revert icon) of a property has changed.
+Được phát ra khi khả năng hoàn nguyên (tức là liệu thuộc tính đó có giá trị khác mặc định và vì vậy được hiển thị với biểu tượng hoàn nguyên hay không) của một thuộc tính đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Emitted when the revertability (i.e., whether it has a non-default value and thu
 
 **property_changed**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`, field\: :ref:`StringName<class_StringName>`, changing\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorProperty_signal_property_changed>`
 
-Do not emit this manually, use the :ref:`emit_changed()<class_EditorProperty_method_emit_changed>` method instead.
+Không phát ra tín hiệu này theo cách thủ công, hãy sử dụng phương thức :ref:`emit_changed()<class_EditorProperty_method_emit_changed>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ Do not emit this manually, use the :ref:`emit_changed()<class_EditorProperty_met
 
 **property_checked**\ (\ property\: :ref:`StringName<class_StringName>`, checked\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorProperty_signal_property_checked>`
 
-Emitted when a property was checked. Used internally.
+Được phát ra khi một thuộc tính được kiểm tra. Được sử dụng nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ Emitted when a property was checked. Used internally.
 
 **property_deleted**\ (\ property\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EditorProperty_signal_property_deleted>`
 
-Emitted when a property was deleted. Used internally.
+Được phát ra khi một thuộc tính bị xóa. Được sử dụng nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ Emitted when a property was deleted. Used internally.
 
 **property_favorited**\ (\ property\: :ref:`StringName<class_StringName>`, favorited\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorProperty_signal_property_favorited>`
 
-Emit it if you want to mark a property as favorited, making it appear at the top of the inspector.
+Phát ra tín hiệu này nếu bạn muốn đánh dấu một thuộc tính là yêu thích, để thuộc tính đó xuất hiện ở đầu inspector.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ Emit it if you want to mark a property as favorited, making it appear at the top
 
 **property_keyed**\ (\ property\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EditorProperty_signal_property_keyed>`
 
-Emit it if you want to add this value as an animation key (check for keying being enabled first).
+Phát ra tín hiệu này nếu bạn muốn thêm giá trị này làm key animation (trước tiên hãy kiểm tra xem tính năng keying đã được bật chưa).
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Emit it if you want to add this value as an animation key (check for keying bein
 
 **property_keyed_with_value**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_EditorProperty_signal_property_keyed_with_value>`
 
-Emit it if you want to key a property with a single value.
+Phát ra tín hiệu này nếu bạn muốn tạo key cho một thuộc tính bằng một giá trị duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Emit it if you want to key a property with a single value.
 
 **property_overridden**\ (\ ) :ref:`🔗<class_EditorProperty_signal_property_overridden>`
 
-Emitted when a setting override for the current project is requested.
+Được phát ra khi có yêu cầu ghi đè một thiết lập của project hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -228,9 +228,9 @@ Emitted when a setting override for the current project is requested.
 
 **property_pinned**\ (\ property\: :ref:`StringName<class_StringName>`, pinned\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorProperty_signal_property_pinned>`
 
-Emit it if you want to mark (or unmark) the value of a property for being saved regardless of being equal to the default value.
+Phát ra tín hiệu này nếu bạn muốn đánh dấu (hoặc bỏ đánh dấu) giá trị của một thuộc tính để giá trị đó được lưu bất kể có bằng giá trị mặc định hay không.
 
-The default value is the one the property will get when the node is just instantiated and can come from an ancestor scene in the inheritance/instantiation chain, a script or a builtin class.
+Giá trị mặc định là giá trị mà thuộc tính sẽ nhận khi nút vừa được khởi tạo và có thể đến từ một scene tổ tiên trong chuỗi kế thừa/khởi tạo, một script hoặc một lớp dựng sẵn.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ The default value is the one the property will get when the node is just instant
 
 **resource_selected**\ (\ path\: :ref:`String<class_String>`, resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_EditorProperty_signal_resource_selected>`
 
-If you want a sub-resource to be edited, emit this signal with the resource.
+Nếu bạn muốn chỉnh sửa một sub-resource, hãy phát signal này cùng với resource đó.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ If you want a sub-resource to be edited, emit this signal with the resource.
 
 **selected**\ (\ path\: :ref:`String<class_String>`, focusable_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorProperty_signal_selected>`
 
-Emitted when selected. Used internally.
+Được phát khi được chọn. Được sử dụng nội bộ.
 
 .. rst-class:: classref-section-separator
 
@@ -262,8 +262,8 @@ Emitted when selected. Used internally.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorProperty_property_checkable:
 
@@ -276,7 +276,7 @@ Property Descriptions
 - |void| **set_checkable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_checkable**\ (\ )
 
-Used by the inspector, set to ``true`` when the property is checkable.
+Được inspector sử dụng, đặt thành ``true`` khi thuộc tính có thể được đánh dấu.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ Used by the inspector, set to ``true`` when the property is checkable.
 - |void| **set_checked**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_checked**\ (\ )
 
-Used by the inspector, set to ``true`` when the property is checked.
+Được inspector sử dụng, đặt thành ``true`` khi thuộc tính được đánh dấu.
 
 .. rst-class:: classref-item-separator
 
@@ -310,7 +310,7 @@ Used by the inspector, set to ``true`` when the property is checked.
 - |void| **set_deletable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_deletable**\ (\ )
 
-Used by the inspector, set to ``true`` when the property can be deleted by the user.
+Được inspector sử dụng, đặt thành ``true`` khi người dùng có thể xóa thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -327,7 +327,7 @@ Used by the inspector, set to ``true`` when the property can be deleted by the u
 - |void| **set_draw_background**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_draw_background**\ (\ )
 
-Used by the inspector, set to ``true`` when the property background is drawn.
+Được inspector sử dụng, đặt thành ``true`` khi nền của thuộc tính được vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -344,7 +344,7 @@ Used by the inspector, set to ``true`` when the property background is drawn.
 - |void| **set_draw_label**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_draw_label**\ (\ )
 
-Used by the inspector, set to ``true`` when the property label is drawn.
+Được inspector sử dụng, đặt thành ``true`` khi nhãn của thuộc tính được vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -361,7 +361,7 @@ Used by the inspector, set to ``true`` when the property label is drawn.
 - |void| **set_draw_warning**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_draw_warning**\ (\ )
 
-Used by the inspector, set to ``true`` when the property is drawn with the editor theme's warning color. This is used for editable children's properties.
+Được inspector sử dụng, đặt thành ``true`` khi thuộc tính được vẽ bằng màu cảnh báo của theme trình chỉnh sửa. Màu này được sử dụng cho các thuộc tính của phần tử con có thể chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -378,7 +378,7 @@ Used by the inspector, set to ``true`` when the property is drawn with the edito
 - |void| **set_keying**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_keying**\ (\ )
 
-Used by the inspector, set to ``true`` when the property can add keys for animation.
+Được inspector sử dụng, đặt thành ``true`` khi thuộc tính có thể thêm các key cho animation.
 
 .. rst-class:: classref-item-separator
 
@@ -395,7 +395,7 @@ Used by the inspector, set to ``true`` when the property can add keys for animat
 - |void| **set_label**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_label**\ (\ )
 
-Set this property to change the label (if you want to show one).
+Đặt thuộc tính này để thay đổi nhãn (nếu bạn muốn hiển thị nhãn).
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ Set this property to change the label (if you want to show one).
 - |void| **set_name_split_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_name_split_ratio**\ (\ )
 
-Space distribution ratio between the label and the editing field.
+Tỷ lệ phân bổ không gian giữa nhãn và trường chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ Space distribution ratio between the label and the editing field.
 - |void| **set_read_only**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_read_only**\ (\ )
 
-Used by the inspector, set to ``true`` when the property is read-only.
+Được inspector sử dụng, đặt thành ``true`` khi thuộc tính ở chế độ chỉ đọc.
 
 .. rst-class:: classref-item-separator
 
@@ -446,7 +446,7 @@ Used by the inspector, set to ``true`` when the property is read-only.
 - |void| **set_selectable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_selectable**\ (\ )
 
-Used by the inspector, set to ``true`` when the property is selectable.
+Được inspector sử dụng, đặt thành ``true`` khi thuộc tính có thể được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -463,7 +463,7 @@ Used by the inspector, set to ``true`` when the property is selectable.
 - |void| **set_use_folding**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_folding**\ (\ )
 
-Used by the inspector, set to ``true`` when the property is using folding.
+Được inspector sử dụng, đặt thành ``true`` khi thuộc tính đang được thu gọn.
 
 .. rst-class:: classref-section-separator
 
@@ -471,8 +471,8 @@ Used by the inspector, set to ``true`` when the property is using folding.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorProperty_private_method__set_read_only:
 
@@ -480,7 +480,7 @@ Method Descriptions
 
 |void| **_set_read_only**\ (\ read_only\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_EditorProperty_private_method__set_read_only>`
 
-Called when the read-only status of the property is changed. It may be used to change custom controls into a read-only or modifiable state.
+Được gọi khi trạng thái chỉ đọc của thuộc tính thay đổi. Có thể dùng phương thức này để chuyển các control tùy chỉnh sang trạng thái chỉ đọc hoặc có thể chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -492,7 +492,7 @@ Called when the read-only status of the property is changed. It may be used to c
 
 |void| **_update_property**\ (\ ) |virtual| :ref:`🔗<class_EditorProperty_private_method__update_property>`
 
-When this virtual function is called, you must update your editor.
+Khi hàm ảo này được gọi, bạn phải cập nhật editor của mình.
 
 .. rst-class:: classref-item-separator
 
@@ -504,7 +504,7 @@ When this virtual function is called, you must update your editor.
 
 |void| **add_focusable**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorProperty_method_add_focusable>`
 
-If any of the controls added can gain keyboard focus, add it here. This ensures that focus will be restored if the inspector is refreshed.
+Nếu bất kỳ control nào được thêm vào có thể nhận focus bàn phím, hãy thêm nó tại đây. Điều này đảm bảo focus sẽ được khôi phục nếu inspector được làm mới.
 
 .. rst-class:: classref-item-separator
 
@@ -516,7 +516,7 @@ If any of the controls added can gain keyboard focus, add it here. This ensures 
 
 |void| **deselect**\ (\ ) :ref:`🔗<class_EditorProperty_method_deselect>`
 
-Draw property as not selected. Used by the inspector.
+Hiển thị thuộc tính ở trạng thái chưa được chọn. Được inspector sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -528,7 +528,7 @@ Draw property as not selected. Used by the inspector.
 
 |void| **emit_changed**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`, field\: :ref:`StringName<class_StringName>` = &"", changing\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EditorProperty_method_emit_changed>`
 
-If one or several properties have changed, this must be called. ``field`` is used in case your editor can modify fields separately (as an example, Vector3.x). The ``changing`` argument avoids the editor requesting this property to be refreshed (leave as ``false`` if unsure).
+Phải gọi phương thức này nếu một hoặc nhiều thuộc tính đã thay đổi. ``field`` được sử dụng khi editor của bạn có thể chỉnh sửa riêng từng trường (ví dụ: Vector3.x). Đối số ``changing`` giúp editor không yêu cầu làm mới thuộc tính này (giữ nguyên là ``false`` nếu không chắc chắn).
 
 .. rst-class:: classref-item-separator
 
@@ -540,9 +540,9 @@ If one or several properties have changed, this must be called. ``field`` is use
 
 :ref:`Object<class_Object>` **get_edited_object**\ (\ ) :ref:`🔗<class_EditorProperty_method_get_edited_object>`
 
-Returns the edited object.
+Trả về đối tượng đã chỉnh sửa.
 
-\ **Note:** This method could return ``null`` if the editor has not yet been associated with a property. However, in :ref:`_update_property()<class_EditorProperty_private_method__update_property>` and :ref:`_set_read_only()<class_EditorProperty_private_method__set_read_only>`, this value is *guaranteed* to be non-``null``.
+\ **Lưu ý:** Phương thức này có thể trả về ``null`` nếu editor chưa được liên kết với một thuộc tính. Tuy nhiên, trong :ref:`_update_property()<class_EditorProperty_private_method__update_property>` và :ref:`_set_read_only()<class_EditorProperty_private_method__set_read_only>`, giá trị này *được đảm bảo* là khác ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -554,9 +554,9 @@ Returns the edited object.
 
 :ref:`StringName<class_StringName>` **get_edited_property**\ (\ ) |const| :ref:`🔗<class_EditorProperty_method_get_edited_property>`
 
-Returns the edited property. If your editor is for a single property (added via :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`), then this will return the property.
+Trả về thuộc tính đã chỉnh sửa. Nếu editor của bạn dành cho một thuộc tính duy nhất (được thêm qua :ref:`EditorInspectorPlugin._parse_property()<class_EditorInspectorPlugin_private_method__parse_property>`), phương thức này sẽ trả về thuộc tính đó.
 
-\ **Note:** This method could return ``null`` if the editor has not yet been associated with a property. However, in :ref:`_update_property()<class_EditorProperty_private_method__update_property>` and :ref:`_set_read_only()<class_EditorProperty_private_method__set_read_only>`, this value is *guaranteed* to be non-``null``.
+\ **Lưu ý:** Phương thức này có thể trả về ``null`` nếu editor chưa được liên kết với một thuộc tính. Tuy nhiên, trong :ref:`_update_property()<class_EditorProperty_private_method__update_property>` và :ref:`_set_read_only()<class_EditorProperty_private_method__set_read_only>`, giá trị này *được đảm bảo* là khác ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -568,7 +568,7 @@ Returns the edited property. If your editor is for a single property (added via 
 
 :ref:`bool<class_bool>` **is_selected**\ (\ ) |const| :ref:`🔗<class_EditorProperty_method_is_selected>`
 
-Returns ``true`` if property is drawn as selected. Used by the inspector.
+Trả về ``true`` nếu thuộc tính được vẽ ở trạng thái được chọn. Được inspector sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -580,7 +580,7 @@ Returns ``true`` if property is drawn as selected. Used by the inspector.
 
 |void| **select**\ (\ focusable\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_EditorProperty_method_select>`
 
-Draw property as selected. Used by the inspector.
+Vẽ thuộc tính ở trạng thái được chọn. Được inspector sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -592,7 +592,7 @@ Draw property as selected. Used by the inspector.
 
 |void| **set_bottom_editor**\ (\ editor\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorProperty_method_set_bottom_editor>`
 
-Puts the ``editor`` control below the property label. The control must be previously added using :ref:`Node.add_child()<class_Node_method_add_child>`.
+Đặt control ``editor`` bên dưới nhãn thuộc tính. Control phải được thêm trước đó bằng :ref:`Node.add_child()<class_Node_method_add_child>`.
 
 .. rst-class:: classref-item-separator
 
@@ -604,7 +604,7 @@ Puts the ``editor`` control below the property label. The control must be previo
 
 |void| **set_label_reference**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorProperty_method_set_label_reference>`
 
-Used by the inspector, set to a control that will be used as a reference to calculate the size of the label.
+Được inspector sử dụng, đặt thành một control sẽ được dùng làm tham chiếu để tính kích thước của nhãn.
 
 .. rst-class:: classref-item-separator
 
@@ -616,7 +616,7 @@ Used by the inspector, set to a control that will be used as a reference to calc
 
 |void| **set_object_and_property**\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EditorProperty_method_set_object_and_property>`
 
-Assigns object and property to edit.
+Gán đối tượng và thuộc tính cần chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -628,14 +628,14 @@ Assigns object and property to edit.
 
 |void| **update_property**\ (\ ) :ref:`🔗<class_EditorProperty_method_update_property>`
 
-Forces a refresh of the property display.
+Buộc làm mới phần hiển thị thuộc tính.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

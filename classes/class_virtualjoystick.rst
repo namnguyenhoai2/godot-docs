@@ -10,55 +10,55 @@
 VirtualJoystick
 ===============
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A virtual joystick control for touchscreen devices.
+Một điều khiển cần điều khiển ảo dành cho các thiết bị màn hình cảm ứng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A customizable on-screen joystick control designed for touchscreen devices. It allows users to provide directional input by dragging a virtual tip within a defined circular area.
+Một điều khiển cần điều khiển trên màn hình có thể tùy chỉnh, được thiết kế cho các thiết bị màn hình cảm ứng. Điều khiển này cho phép người dùng nhập hướng bằng cách kéo một đầu ảo trong một vùng hình tròn xác định.
 
-This control can simulate directional actions (see :ref:`action_up<class_VirtualJoystick_property_action_up>`, :ref:`action_down<class_VirtualJoystick_property_action_down>`, :ref:`action_left<class_VirtualJoystick_property_action_left>`, and :ref:`action_right<class_VirtualJoystick_property_action_right>`), which are triggered when the joystick is moved in the corresponding directions.
+Điều khiển này có thể mô phỏng các hành động theo hướng (xem :ref:`action_up<class_VirtualJoystick_property_action_up>`, :ref:`action_down<class_VirtualJoystick_property_action_down>`, :ref:`action_left<class_VirtualJoystick_property_action_left>` và :ref:`action_right<class_VirtualJoystick_property_action_right>`), được kích hoạt khi cần điều khiển được di chuyển theo các hướng tương ứng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`StringName<class_StringName>`                        | :ref:`action_down<class_VirtualJoystick_property_action_down>`                   | ``&"ui_down"``        |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`StringName<class_StringName>`                        | :ref:`action_left<class_VirtualJoystick_property_action_left>`                   | ``&"ui_left"``        |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`StringName<class_StringName>`                        | :ref:`action_right<class_VirtualJoystick_property_action_right>`                 | ``&"ui_right"``       |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`StringName<class_StringName>`                        | :ref:`action_up<class_VirtualJoystick_property_action_up>`                       | ``&"ui_up"``          |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                  | :ref:`clampzone_ratio<class_VirtualJoystick_property_clampzone_ratio>`           | ``1.0``               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                  | :ref:`deadzone_ratio<class_VirtualJoystick_property_deadzone_ratio>`             | ``0.0``               |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`Vector2<class_Vector2>`                              | :ref:`initial_offset_ratio<class_VirtualJoystick_property_initial_offset_ratio>` | ``Vector2(0.5, 0.5)`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`JoystickMode<enum_VirtualJoystick_JoystickMode>`     | :ref:`joystick_mode<class_VirtualJoystick_property_joystick_mode>`               | ``0``                 |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                  | :ref:`joystick_size<class_VirtualJoystick_property_joystick_size>`               | ``100.0``             |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                                  | :ref:`tip_size<class_VirtualJoystick_property_tip_size>`                         | ``50.0``              |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
-   | :ref:`VisibilityMode<enum_VirtualJoystick_VisibilityMode>` | :ref:`visibility_mode<class_VirtualJoystick_property_visibility_mode>`           | ``0``                 |
-   +------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`StringName<class_StringName>`                         | :ref:`action_down<class_VirtualJoystick_property_action_down>`                   | ``&"ui_down"``        |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`StringName<class_StringName>`                         | :ref:`action_left<class_VirtualJoystick_property_action_left>`                   | ``&"ui_left"``        |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`StringName<class_StringName>`                         | :ref:`action_right<class_VirtualJoystick_property_action_right>`                 | ``&"ui_right"``       |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`StringName<class_StringName>`                         | :ref:`action_up<class_VirtualJoystick_property_action_up>`                       | ``&"ui_up"``          |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                   | :ref:`clampzone_ratio<class_VirtualJoystick_property_clampzone_ratio>`           | ``1.0``               |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                   | :ref:`deadzone_ratio<class_VirtualJoystick_property_deadzone_ratio>`             | ``0.0``               |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`Vector2<class_Vector2>`                               | :ref:`initial_offset_ratio<class_VirtualJoystick_property_initial_offset_ratio>` | ``Vector2(0.5, 0.5)`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`JoystickMode <enum_VirtualJoystick_JoystickMode>`     | :ref:`joystick_mode<class_VirtualJoystick_property_joystick_mode>`               | ``0``                 |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                   | :ref:`joystick_size<class_VirtualJoystick_property_joystick_size>`               | ``100.0``             |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                                   | :ref:`tip_size<class_VirtualJoystick_property_tip_size>`                         | ``50.0``              |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
+   | :ref:`VisibilityMode <enum_VirtualJoystick_VisibilityMode>` | :ref:`visibility_mode<class_VirtualJoystick_property_visibility_mode>`           | ``0``                 |
+   +-------------------------------------------------------------+----------------------------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính giao diện
+--------------------
 
 .. table::
    :widths: auto
@@ -79,8 +79,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_VirtualJoystick_signal_flick_canceled:
 
@@ -88,7 +88,7 @@ Signals
 
 **flick_canceled**\ (\ ) :ref:`🔗<class_VirtualJoystick_signal_flick_canceled>`
 
-Emitted when the tip enters the deadzone after being outside of it.
+Được phát khi đầu cần điều khiển đi vào vùng chết sau khi ở bên ngoài vùng đó.
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ Emitted when the tip enters the deadzone after being outside of it.
 
 **flicked**\ (\ input_vector\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_VirtualJoystick_signal_flicked>`
 
-Emitted when the tip moved outside the deadzone and the joystick is released. The ``input_vector`` contains the last input direction and strength before release. Its length is between ``0.0`` and ``1.0``.
+Được phát khi đầu cần điều khiển di chuyển ra ngoài vùng chết và cần điều khiển được thả. ``input_vector`` chứa hướng và độ mạnh đầu vào cuối cùng trước khi thả. Độ dài của nó nằm trong khoảng từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -112,7 +112,7 @@ Emitted when the tip moved outside the deadzone and the joystick is released. Th
 
 **pressed**\ (\ ) :ref:`🔗<class_VirtualJoystick_signal_pressed>`
 
-Emitted when the joystick is pressed.
+Được phát khi cần điều khiển được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ Emitted when the joystick is pressed.
 
 **released**\ (\ input_vector\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_VirtualJoystick_signal_released>`
 
-Emitted when the joystick is released. The ``input_vector`` is the final input direction and strength, with a length between ``0.0`` and ``1.0``.
+Được phát khi cần điều khiển được thả. ``input_vector`` là hướng và độ mạnh đầu vào cuối cùng, với độ dài nằm trong khoảng từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -136,7 +136,7 @@ Emitted when the joystick is released. The ``input_vector`` is the final input d
 
 **tapped**\ (\ ) :ref:`🔗<class_VirtualJoystick_signal_tapped>`
 
-Emitted when the joystick is released without moving the tip.
+Được phát ra khi cần điều khiển được thả ra mà không di chuyển đầu cần.
 
 .. rst-class:: classref-section-separator
 
@@ -144,14 +144,14 @@ Emitted when the joystick is released without moving the tip.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các giá trị liệt kê
+-------------------
 
 .. _enum_VirtualJoystick_JoystickMode:
 
 .. rst-class:: classref-enumeration
 
-enum **JoystickMode**: :ref:`🔗<enum_VirtualJoystick_JoystickMode>`
+enum **JoystickMode**: :ref:`🔗 <enum_VirtualJoystick_JoystickMode>`
 
 .. _class_VirtualJoystick_constant_JOYSTICK_FIXED:
 
@@ -159,7 +159,7 @@ enum **JoystickMode**: :ref:`🔗<enum_VirtualJoystick_JoystickMode>`
 
 :ref:`JoystickMode<enum_VirtualJoystick_JoystickMode>` **JOYSTICK_FIXED** = ``0``
 
-The joystick doesn't move.
+Cần điều khiển không di chuyển.
 
 .. _class_VirtualJoystick_constant_JOYSTICK_DYNAMIC:
 
@@ -167,7 +167,7 @@ The joystick doesn't move.
 
 :ref:`JoystickMode<enum_VirtualJoystick_JoystickMode>` **JOYSTICK_DYNAMIC** = ``1``
 
-The joystick is moved to the initial touch position as long as it's within the joystick's bounds. It moves back to its original position when released.
+Cần điều khiển được di chuyển đến vị trí chạm ban đầu miễn là vị trí đó nằm trong phạm vi của cần điều khiển. Cần sẽ trở về vị trí ban đầu khi được thả ra.
 
 .. _class_VirtualJoystick_constant_JOYSTICK_FOLLOWING:
 
@@ -175,7 +175,7 @@ The joystick is moved to the initial touch position as long as it's within the j
 
 :ref:`JoystickMode<enum_VirtualJoystick_JoystickMode>` **JOYSTICK_FOLLOWING** = ``2``
 
-The joystick is moved to the initial touch position as long as it's within the joystick's bounds. It will follow the touch input if it goes outside the joystick's range. It moves back to its original position when released.
+Cần điều khiển được di chuyển đến vị trí chạm ban đầu miễn là vị trí đó nằm trong phạm vi của cần điều khiển. Cần sẽ theo đầu vào chạm nếu đầu vào này đi ra ngoài phạm vi của cần điều khiển. Cần sẽ trở về vị trí ban đầu khi được thả ra.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ The joystick is moved to the initial touch position as long as it's within the j
 
 .. rst-class:: classref-enumeration
 
-enum **VisibilityMode**: :ref:`🔗<enum_VirtualJoystick_VisibilityMode>`
+enum **VisibilityMode**: :ref:`🔗 <enum_VirtualJoystick_VisibilityMode>`
 
 .. _class_VirtualJoystick_constant_VISIBILITY_ALWAYS:
 
@@ -193,7 +193,7 @@ enum **VisibilityMode**: :ref:`🔗<enum_VirtualJoystick_VisibilityMode>`
 
 :ref:`VisibilityMode<enum_VirtualJoystick_VisibilityMode>` **VISIBILITY_ALWAYS** = ``0``
 
-The joystick is always visible.
+Cần điều khiển luôn hiển thị.
 
 .. _class_VirtualJoystick_constant_VISIBILITY_WHEN_TOUCHED:
 
@@ -201,7 +201,7 @@ The joystick is always visible.
 
 :ref:`VisibilityMode<enum_VirtualJoystick_VisibilityMode>` **VISIBILITY_WHEN_TOUCHED** = ``1``
 
-The joystick is only visible when being touched.
+Cần điều khiển chỉ hiển thị khi được chạm vào.
 
 .. rst-class:: classref-section-separator
 
@@ -209,8 +209,8 @@ The joystick is only visible when being touched.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VirtualJoystick_property_action_down:
 
@@ -223,7 +223,7 @@ Property Descriptions
 - |void| **set_action_down**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_action_down**\ (\ )
 
-The action to trigger when the joystick is moved down.
+Hành động được kích hoạt khi cần điều khiển được di chuyển xuống.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ The action to trigger when the joystick is moved down.
 - |void| **set_action_left**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_action_left**\ (\ )
 
-The action to trigger when the joystick is moved left.
+Hành động được kích hoạt khi cần điều khiển được di chuyển sang trái.
 
 .. rst-class:: classref-item-separator
 
@@ -257,7 +257,7 @@ The action to trigger when the joystick is moved left.
 - |void| **set_action_right**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_action_right**\ (\ )
 
-The action to trigger when the joystick is moved right.
+Hành động được kích hoạt khi cần điều khiển được di chuyển sang phải.
 
 .. rst-class:: classref-item-separator
 
@@ -274,7 +274,7 @@ The action to trigger when the joystick is moved right.
 - |void| **set_action_up**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_action_up**\ (\ )
 
-The action to trigger when the joystick is moved up.
+Hành động được kích hoạt khi cần điều khiển được di chuyển lên.
 
 .. rst-class:: classref-item-separator
 
@@ -291,13 +291,13 @@ The action to trigger when the joystick is moved up.
 - |void| **set_clampzone_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_clampzone_ratio**\ (\ )
 
-The multiplier applied to the joystick's radius that defines the clamp zone.
+Hệ số nhân được áp dụng cho bán kính của joystick để xác định vùng giới hạn.
 
-This zone limits how far the joystick tip can move from its center before being clamped.
+Vùng này giới hạn khoảng cách mà đầu joystick có thể di chuyển khỏi tâm trước khi bị giới hạn.
 
-A value of ``1.0`` means the tip can move up to the edge of the joystick's visual size.
+Giá trị ``1.0`` có nghĩa là đầu joystick có thể di chuyển đến tận mép kích thước hiển thị của joystick.
 
-In :ref:`JOYSTICK_FOLLOWING<class_VirtualJoystick_constant_JOYSTICK_FOLLOWING>` mode, this radius also determines how far the finger can move before the joystick base starts following the touch input.
+Trong chế độ :ref:`JOYSTICK_FOLLOWING<class_VirtualJoystick_constant_JOYSTICK_FOLLOWING>`, bán kính này cũng xác định khoảng cách mà ngón tay có thể di chuyển trước khi đế joystick bắt đầu đi theo thao tác chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -314,13 +314,13 @@ In :ref:`JOYSTICK_FOLLOWING<class_VirtualJoystick_constant_JOYSTICK_FOLLOWING>` 
 - |void| **set_deadzone_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_deadzone_ratio**\ (\ )
 
-The ratio of the joystick size that defines the joystick deadzone. The joystick tip must move beyond this ratio before being considered active.
+Tỷ lệ kích thước của joystick dùng để xác định vùng chết của joystick. Đầu joystick phải di chuyển vượt quá tỷ lệ này trước khi được xem là đang hoạt động.
 
-This deadzone is applied before triggering input actions and affects the joystick's input vector and all related signals.
+Vùng chết này được áp dụng trước khi kích hoạt các hành động đầu vào và ảnh hưởng đến vector đầu vào của joystick cùng tất cả tín hiệu liên quan.
 
-Note that input actions may also define their own deadzones in the InputMap. If both are set, the joystick deadzone is applied first, followed by the action's deadzone.
+Lưu ý rằng các hành động đầu vào cũng có thể xác định vùng chết riêng trong InputMap. Nếu cả hai được thiết lập, vùng chết của joystick sẽ được áp dụng trước, sau đó đến vùng chết của hành động.
 
-By default, this value is ``0.0``, meaning the joystick does not apply its own deadzone and relies entirely on the InputMap action deadzones.
+Theo mặc định, giá trị này là ``0.0``, nghĩa là cần điều khiển không áp dụng vùng chết riêng mà hoàn toàn dựa vào các vùng chết của action trong InputMap.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ By default, this value is ``0.0``, meaning the joystick does not apply its own d
 - |void| **set_initial_offset_ratio**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_initial_offset_ratio**\ (\ )
 
-The initial position of the joystick as a ratio of the control's size. ``(0, 0)`` is top-left and ``(1, 1)`` is bottom-right.
+Vị trí ban đầu của cần điều khiển dưới dạng tỷ lệ so với kích thước của control. ``(0, 0)`` là góc trên bên trái và ``(1, 1)`` là góc dưới bên phải.
 
 .. rst-class:: classref-item-separator
 
@@ -354,7 +354,7 @@ The initial position of the joystick as a ratio of the control's size. ``(0, 0)`
 - |void| **set_joystick_mode**\ (\ value\: :ref:`JoystickMode<enum_VirtualJoystick_JoystickMode>`\ )
 - :ref:`JoystickMode<enum_VirtualJoystick_JoystickMode>` **get_joystick_mode**\ (\ )
 
-The joystick mode to use.
+Chế độ cần điều khiển sẽ sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ The joystick mode to use.
 - |void| **set_joystick_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_joystick_size**\ (\ )
 
-The size of the joystick in pixels.
+Kích thước của cần điều khiển tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ The size of the joystick in pixels.
 - |void| **set_tip_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_tip_size**\ (\ )
 
-The size of the joystick tip in pixels.
+Kích thước đầu cần điều khiển tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ The size of the joystick tip in pixels.
 - |void| **set_visibility_mode**\ (\ value\: :ref:`VisibilityMode<enum_VirtualJoystick_VisibilityMode>`\ )
 - :ref:`VisibilityMode<enum_VirtualJoystick_VisibilityMode>` **get_visibility_mode**\ (\ )
 
-The visibility mode to use.
+Chế độ hiển thị sẽ sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -413,16 +413,16 @@ The visibility mode to use.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_VirtualJoystick_theme_style_normal_joystick:
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal_joystick** :ref:`🔗<class_VirtualJoystick_theme_style_normal_joystick>`
+:ref:`StyleBox<class_StyleBox>` **normal_joystick** :ref:`🔗 <class_VirtualJoystick_theme_style_normal_joystick>`
 
-Base joystick :ref:`StyleBox<class_StyleBox>`.
+Joystick cơ sở :ref:`StyleBox<class_StyleBox>`.
 
 .. rst-class:: classref-item-separator
 
@@ -432,9 +432,9 @@ Base joystick :ref:`StyleBox<class_StyleBox>`.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal_tip** :ref:`🔗<class_VirtualJoystick_theme_style_normal_tip>`
+:ref:`StyleBox<class_StyleBox>` **normal_tip** :ref:`🔗 <class_VirtualJoystick_theme_style_normal_tip>`
 
-Tip joystick :ref:`StyleBox<class_StyleBox>`.
+Joystick đầu :ref:`StyleBox<class_StyleBox>`.
 
 .. rst-class:: classref-item-separator
 
@@ -444,9 +444,9 @@ Tip joystick :ref:`StyleBox<class_StyleBox>`.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **pressed_joystick** :ref:`🔗<class_VirtualJoystick_theme_style_pressed_joystick>`
+:ref:`StyleBox<class_StyleBox>` **pressed_joystick** :ref:`🔗 <class_VirtualJoystick_theme_style_pressed_joystick>`
 
-Base joystick :ref:`StyleBox<class_StyleBox>` when pressed.
+Joystick cơ sở :ref:`StyleBox<class_StyleBox>` khi được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -456,16 +456,16 @@ Base joystick :ref:`StyleBox<class_StyleBox>` when pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **pressed_tip** :ref:`🔗<class_VirtualJoystick_theme_style_pressed_tip>`
+:ref:`StyleBox<class_StyleBox>` **pressed_tip** :ref:`🔗 <class_VirtualJoystick_theme_style_pressed_tip>`
 
-Tip joystick :ref:`StyleBox<class_StyleBox>` when pressed.
+Đầu joystick :ref:`StyleBox<class_StyleBox>` khi được nhấn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

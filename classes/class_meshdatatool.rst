@@ -10,20 +10,20 @@
 MeshDataTool
 ============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Helper tool to access and edit :ref:`Mesh<class_Mesh>` data.
+Công cụ hỗ trợ để truy cập và chỉnh sửa dữ liệu :ref:`Mesh<class_Mesh>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-MeshDataTool provides access to individual vertices in a :ref:`Mesh<class_Mesh>`. It allows users to read and edit vertex data of meshes. It also creates an array of faces and edges.
+MeshDataTool cung cấp quyền truy cập vào từng đỉnh trong :ref:`Mesh<class_Mesh>`. Công cụ này cho phép người dùng đọc và chỉnh sửa dữ liệu đỉnh của mesh. Công cụ cũng tạo một mảng các mặt và cạnh.
 
-To use MeshDataTool, load a mesh with :ref:`create_from_surface()<class_MeshDataTool_method_create_from_surface>`. When you are finished editing the data commit the data to a mesh with :ref:`commit_to_surface()<class_MeshDataTool_method_commit_to_surface>`.
+Để sử dụng MeshDataTool, hãy tải một mesh bằng :ref:`create_from_surface()<class_MeshDataTool_method_create_from_surface>`. Khi chỉnh sửa dữ liệu xong, hãy commit dữ liệu vào một mesh bằng :ref:`commit_to_surface()<class_MeshDataTool_method_commit_to_surface>`.
 
-Below is an example of how MeshDataTool may be used.
+Dưới đây là một ví dụ về cách sử dụng MeshDataTool.
 
 
 .. tabs::
@@ -36,9 +36,9 @@ Below is an example of how MeshDataTool may be used.
     mdt.create_from_surface(mesh, 0)
     for i in range(mdt.get_vertex_count()):
         var vertex = mdt.get_vertex(i)
-        # In this example we extend the mesh by one unit, which results in separated faces as it is flat shaded.
+        # Trong ví dụ này, chúng ta mở rộng mesh thêm một đơn vị, dẫn đến các mặt bị tách rời vì mesh được flat shaded.
         vertex += mdt.get_vertex_normal(i)
-        # Save your change.
+        # Lưu thay đổi.
         mdt.set_vertex(i, vertex)
     mesh.clear_surfaces()
     mdt.commit_to_surface(mesh)
@@ -55,9 +55,9 @@ Below is an example of how MeshDataTool may be used.
     for (var i = 0; i < mdt.GetVertexCount(); i++)
     {
         Vector3 vertex = mdt.GetVertex(i);
-        // In this example we extend the mesh by one unit, which results in separated faces as it is flat shaded.
+        // Trong ví dụ này, chúng ta mở rộng mesh thêm một đơn vị, dẫn đến các mặt bị tách rời vì mesh được flat shading.
         vertex += mdt.GetVertexNormal(i);
-        // Save your change.
+        // Lưu thay đổi.
         mdt.SetVertex(i, vertex);
     }
     mesh.ClearSurfaces();
@@ -68,21 +68,21 @@ Below is an example of how MeshDataTool may be used.
 
 
 
-See also :ref:`ArrayMesh<class_ArrayMesh>`, :ref:`ImmediateMesh<class_ImmediateMesh>` and :ref:`SurfaceTool<class_SurfaceTool>` for procedural geometry generation.
+Xem thêm :ref:`ArrayMesh<class_ArrayMesh>`, :ref:`ImmediateMesh<class_ImmediateMesh>` và :ref:`SurfaceTool<class_SurfaceTool>` để tạo hình học procedural.
 
-\ **Note:** Godot uses clockwise `winding order <https://learnopengl.com/Advanced-OpenGL/Face-culling>`__ for front faces of triangle primitive modes.
+\ **Lưu ý:** Godot sử dụng `thứ tự winding <https://learnopengl.com/Advanced-OpenGL/Face-culling>`__ theo chiều kim đồng hồ cho các mặt trước của các chế độ primitive tam giác.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using the MeshDataTool <../tutorials/3d/procedural_geometry/meshdatatool>`
+- :doc:`Sử dụng MeshDataTool <../tutorials/3d/procedural_geometry/meshdatatool>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -90,9 +90,9 @@ Methods
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`clear<class_MeshDataTool_method_clear>`\ (\ )                                                                                                                       |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`               | :ref:`commit_to_surface<class_MeshDataTool_method_commit_to_surface>`\ (\ mesh\: :ref:`ArrayMesh<class_ArrayMesh>`, compression_flags\: :ref:`int<class_int>` = 0\ )      |
+   | :ref:`Error <enum_@GlobalScope_Error>`              | :ref:`commit_to_surface<class_MeshDataTool_method_commit_to_surface>`\ (\ mesh\: :ref:`ArrayMesh<class_ArrayMesh>`, compression_flags\: :ref:`int<class_int>` = 0\ )      |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`               | :ref:`create_from_surface<class_MeshDataTool_method_create_from_surface>`\ (\ mesh\: :ref:`ArrayMesh<class_ArrayMesh>`, surface\: :ref:`int<class_int>`\ )                |
+   | :ref:`Error <enum_@GlobalScope_Error>`              | :ref:`create_from_surface<class_MeshDataTool_method_create_from_surface>`\ (\ mesh\: :ref:`ArrayMesh<class_ArrayMesh>`, surface\: :ref:`int<class_int>`\ )                |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                               | :ref:`get_edge_count<class_MeshDataTool_method_get_edge_count>`\ (\ ) |const|                                                                                             |
    +-----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -171,8 +171,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MeshDataTool_method_clear:
 
@@ -180,7 +180,7 @@ Method Descriptions
 
 |void| **clear**\ (\ ) :ref:`🔗<class_MeshDataTool_method_clear>`
 
-Clears all data currently in MeshDataTool.
+Xóa tất cả dữ liệu hiện có trong MeshDataTool.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ Clears all data currently in MeshDataTool.
 
 :ref:`Error<enum_@GlobalScope_Error>` **commit_to_surface**\ (\ mesh\: :ref:`ArrayMesh<class_ArrayMesh>`, compression_flags\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_MeshDataTool_method_commit_to_surface>`
 
-Adds a new surface to specified :ref:`Mesh<class_Mesh>` with edited data.
+Thêm một bề mặt mới vào :ref:`Mesh<class_Mesh>` được chỉ định với dữ liệu đã chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -204,9 +204,9 @@ Adds a new surface to specified :ref:`Mesh<class_Mesh>` with edited data.
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_from_surface**\ (\ mesh\: :ref:`ArrayMesh<class_ArrayMesh>`, surface\: :ref:`int<class_int>`\ ) :ref:`🔗<class_MeshDataTool_method_create_from_surface>`
 
-Uses specified surface of given :ref:`Mesh<class_Mesh>` to populate data for MeshDataTool.
+Sử dụng bề mặt được chỉ định của :ref:`Mesh<class_Mesh>` đã cho để điền dữ liệu cho MeshDataTool.
 
-Requires :ref:`Mesh<class_Mesh>` with primitive type :ref:`Mesh.PRIMITIVE_TRIANGLES<class_Mesh_constant_PRIMITIVE_TRIANGLES>`.
+Yêu cầu :ref:`Mesh<class_Mesh>` có kiểu primitive là :ref:`Mesh.PRIMITIVE_TRIANGLES<class_Mesh_constant_PRIMITIVE_TRIANGLES>`.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ Requires :ref:`Mesh<class_Mesh>` with primitive type :ref:`Mesh.PRIMITIVE_TRIANG
 
 :ref:`int<class_int>` **get_edge_count**\ (\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_edge_count>`
 
-Returns the number of edges in this :ref:`Mesh<class_Mesh>`.
+Trả về số cạnh trong :ref:`Mesh<class_Mesh>` này.
 
 .. rst-class:: classref-item-separator
 
@@ -230,7 +230,7 @@ Returns the number of edges in this :ref:`Mesh<class_Mesh>`.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_edge_faces**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_edge_faces>`
 
-Returns array of faces that touch given edge.
+Trả về mảng các mặt tiếp giáp với cạnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ Returns array of faces that touch given edge.
 
 :ref:`Variant<class_Variant>` **get_edge_meta**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_edge_meta>`
 
-Returns meta information assigned to given edge.
+Trả về thông tin siêu dữ liệu được gán cho cạnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -254,9 +254,9 @@ Returns meta information assigned to given edge.
 
 :ref:`int<class_int>` **get_edge_vertex**\ (\ idx\: :ref:`int<class_int>`, vertex\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_edge_vertex>`
 
-Returns the index of the specified ``vertex`` connected to the edge at index ``idx``.
+Trả về chỉ mục của ``vertex`` được kết nối với cạnh tại chỉ mục ``idx``.
 
-\ ``vertex`` can only be ``0`` or ``1``, as edges are composed of two vertices.
+\ ``vertex`` chỉ có thể là ``0`` hoặc ``1``, vì các cạnh được tạo thành từ hai đỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -268,7 +268,7 @@ Returns the index of the specified ``vertex`` connected to the edge at index ``i
 
 :ref:`int<class_int>` **get_face_count**\ (\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_face_count>`
 
-Returns the number of faces in this :ref:`Mesh<class_Mesh>`.
+Trả về số mặt trong :ref:`Mesh<class_Mesh>` này.
 
 .. rst-class:: classref-item-separator
 
@@ -280,9 +280,9 @@ Returns the number of faces in this :ref:`Mesh<class_Mesh>`.
 
 :ref:`int<class_int>` **get_face_edge**\ (\ idx\: :ref:`int<class_int>`, edge\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_face_edge>`
 
-Returns the edge associated with the face at index ``idx``.
+Trả về cạnh liên kết với mặt tại chỉ mục ``idx``.
 
-\ ``edge`` argument must be either ``0``, ``1``, or ``2`` because a face only has three edges.
+Đối số \ ``edge`` phải là ``0``, ``1`` hoặc ``2``, vì một mặt chỉ có ba cạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -294,7 +294,7 @@ Returns the edge associated with the face at index ``idx``.
 
 :ref:`Variant<class_Variant>` **get_face_meta**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_face_meta>`
 
-Returns the metadata associated with the given face.
+Trả về siêu dữ liệu liên kết với mặt đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -306,7 +306,7 @@ Returns the metadata associated with the given face.
 
 :ref:`Vector3<class_Vector3>` **get_face_normal**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_face_normal>`
 
-Calculates and returns the face normal of the given face.
+Tính toán và trả về pháp tuyến của mặt đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -318,22 +318,22 @@ Calculates and returns the face normal of the given face.
 
 :ref:`int<class_int>` **get_face_vertex**\ (\ idx\: :ref:`int<class_int>`, vertex\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_face_vertex>`
 
-Returns the specified vertex index of the given face.
+Trả về chỉ số đỉnh được chỉ định của mặt đã cho.
 
-\ ``vertex`` must be either ``0``, ``1``, or ``2`` because faces contain three vertices.
+\ ``vertex`` phải là ``0``, ``1`` hoặc ``2`` vì các mặt chứa ba đỉnh.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var index = mesh_data_tool.get_face_vertex(0, 1) # Gets the index of the second vertex of the first face.
+    var index = mesh_data_tool.get_face_vertex(0, 1) # Lấy chỉ số của đỉnh thứ hai của mặt đầu tiên.
     var position = mesh_data_tool.get_vertex(index)
     var normal = mesh_data_tool.get_vertex_normal(index)
 
  .. code-tab:: csharp
 
-    int index = meshDataTool.GetFaceVertex(0, 1); // Gets the index of the second vertex of the first face.
+    int index = meshDataTool.GetFaceVertex(0, 1); // Lấy chỉ số của đỉnh thứ hai của mặt đầu tiên.
     Vector3 position = meshDataTool.GetVertex(index);
     Vector3 normal = meshDataTool.GetVertexNormal(index);
 
@@ -349,7 +349,7 @@ Returns the specified vertex index of the given face.
 
 :ref:`int<class_int>` **get_format**\ (\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_format>`
 
-Returns the :ref:`Mesh<class_Mesh>`'s format as a combination of the :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` flags. For example, a mesh containing both vertices and normals would return a format of ``3`` because :ref:`Mesh.ARRAY_FORMAT_VERTEX<class_Mesh_constant_ARRAY_FORMAT_VERTEX>` is ``1`` and :ref:`Mesh.ARRAY_FORMAT_NORMAL<class_Mesh_constant_ARRAY_FORMAT_NORMAL>` is ``2``.
+Trả về định dạng của :ref:`Mesh<class_Mesh>` dưới dạng kết hợp các cờ :ref:`ArrayFormat <enum_Mesh_ArrayFormat>`. Ví dụ: một mesh chứa cả đỉnh và pháp tuyến sẽ trả về định dạng ``3`` vì :ref:`Mesh.ARRAY_FORMAT_VERTEX<class_Mesh_constant_ARRAY_FORMAT_VERTEX>` là ``1`` và :ref:`Mesh.ARRAY_FORMAT_NORMAL<class_Mesh_constant_ARRAY_FORMAT_NORMAL>` là ``2``.
 
 .. rst-class:: classref-item-separator
 
@@ -361,7 +361,7 @@ Returns the :ref:`Mesh<class_Mesh>`'s format as a combination of the :ref:`Array
 
 :ref:`Material<class_Material>` **get_material**\ (\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_material>`
 
-Returns the material assigned to the :ref:`Mesh<class_Mesh>`.
+Trả về material được gán cho :ref:`Mesh<class_Mesh>`.
 
 .. rst-class:: classref-item-separator
 
@@ -373,7 +373,7 @@ Returns the material assigned to the :ref:`Mesh<class_Mesh>`.
 
 :ref:`Vector3<class_Vector3>` **get_vertex**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex>`
 
-Returns the position of the given vertex.
+Trả về vị trí của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ Returns the position of the given vertex.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_vertex_bones**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_bones>`
 
-Returns the bones of the given vertex.
+Trả về các xương của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -397,7 +397,7 @@ Returns the bones of the given vertex.
 
 :ref:`Color<class_Color>` **get_vertex_color**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_color>`
 
-Returns the color of the given vertex.
+Trả về màu của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ Returns the color of the given vertex.
 
 :ref:`int<class_int>` **get_vertex_count**\ (\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_count>`
 
-Returns the total number of vertices in :ref:`Mesh<class_Mesh>`.
+Trả về tổng số đỉnh trong :ref:`Mesh<class_Mesh>`.
 
 .. rst-class:: classref-item-separator
 
@@ -421,7 +421,7 @@ Returns the total number of vertices in :ref:`Mesh<class_Mesh>`.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_vertex_edges**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_edges>`
 
-Returns an array of edges that share the given vertex.
+Trả về một mảng các cạnh dùng chung đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -433,7 +433,7 @@ Returns an array of edges that share the given vertex.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_vertex_faces**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_faces>`
 
-Returns an array of faces that share the given vertex.
+Trả về một mảng các mặt dùng chung đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -445,7 +445,7 @@ Returns an array of faces that share the given vertex.
 
 :ref:`Variant<class_Variant>` **get_vertex_meta**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_meta>`
 
-Returns the metadata associated with the given vertex.
+Trả về siêu dữ liệu được liên kết với đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -457,7 +457,7 @@ Returns the metadata associated with the given vertex.
 
 :ref:`Vector3<class_Vector3>` **get_vertex_normal**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_normal>`
 
-Returns the normal of the given vertex.
+Trả về pháp tuyến của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -469,7 +469,7 @@ Returns the normal of the given vertex.
 
 :ref:`Plane<class_Plane>` **get_vertex_tangent**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_tangent>`
 
-Returns the tangent of the given vertex.
+Trả về tiếp tuyến của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ Returns the tangent of the given vertex.
 
 :ref:`Vector2<class_Vector2>` **get_vertex_uv**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_uv>`
 
-Returns the UV of the given vertex.
+Trả về UV của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ Returns the UV of the given vertex.
 
 :ref:`Vector2<class_Vector2>` **get_vertex_uv2**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_uv2>`
 
-Returns the UV2 of the given vertex.
+Trả về UV2 của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Returns the UV2 of the given vertex.
 
 :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_vertex_weights**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MeshDataTool_method_get_vertex_weights>`
 
-Returns bone weights of the given vertex.
+Trả về các trọng số bone của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -517,7 +517,7 @@ Returns bone weights of the given vertex.
 
 |void| **set_edge_meta**\ (\ idx\: :ref:`int<class_int>`, meta\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_MeshDataTool_method_set_edge_meta>`
 
-Sets the metadata of the given edge.
+Đặt metadata của cạnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -529,7 +529,7 @@ Sets the metadata of the given edge.
 
 |void| **set_face_meta**\ (\ idx\: :ref:`int<class_int>`, meta\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_MeshDataTool_method_set_face_meta>`
 
-Sets the metadata of the given face.
+Đặt metadata của mặt đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -541,7 +541,7 @@ Sets the metadata of the given face.
 
 |void| **set_material**\ (\ material\: :ref:`Material<class_Material>`\ ) :ref:`🔗<class_MeshDataTool_method_set_material>`
 
-Sets the material to be used by newly-constructed :ref:`Mesh<class_Mesh>`.
+Thiết lập vật liệu được sử dụng bởi :ref:`Mesh<class_Mesh>` mới được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -553,7 +553,7 @@ Sets the material to be used by newly-constructed :ref:`Mesh<class_Mesh>`.
 
 |void| **set_vertex**\ (\ idx\: :ref:`int<class_int>`, vertex\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex>`
 
-Sets the position of the given vertex.
+Thiết lập vị trí của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -565,7 +565,7 @@ Sets the position of the given vertex.
 
 |void| **set_vertex_bones**\ (\ idx\: :ref:`int<class_int>`, bones\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_bones>`
 
-Sets the bones of the given vertex.
+Thiết lập các xương của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -577,7 +577,7 @@ Sets the bones of the given vertex.
 
 |void| **set_vertex_color**\ (\ idx\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_color>`
 
-Sets the color of the given vertex.
+Thiết lập màu của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -589,7 +589,7 @@ Sets the color of the given vertex.
 
 |void| **set_vertex_meta**\ (\ idx\: :ref:`int<class_int>`, meta\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_meta>`
 
-Sets the metadata associated with the given vertex.
+Thiết lập siêu dữ liệu liên kết với đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -601,7 +601,7 @@ Sets the metadata associated with the given vertex.
 
 |void| **set_vertex_normal**\ (\ idx\: :ref:`int<class_int>`, normal\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_normal>`
 
-Sets the normal of the given vertex.
+Thiết lập pháp tuyến của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -613,9 +613,9 @@ Sets the normal of the given vertex.
 
 |void| **set_vertex_tangent**\ (\ idx\: :ref:`int<class_int>`, tangent\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_tangent>`
 
-Sets the tangent of the given vertex.
+Thiết lập tiếp tuyến của đỉnh đã cho.
 
-\ **Note:** Even though ``tangent`` is a :ref:`Plane<class_Plane>`, it does not directly represent the tangent plane. Its :ref:`Plane.x<class_Plane_property_x>`, :ref:`Plane.y<class_Plane_property_y>`, and :ref:`Plane.z<class_Plane_property_z>` represent the tangent vector and :ref:`Plane.d<class_Plane_property_d>` should be either ``-1`` or ``1``. See also :ref:`Mesh.ARRAY_TANGENT<class_Mesh_constant_ARRAY_TANGENT>`.
+\ **Lưu ý:** Mặc dù ``tangent`` là một :ref:`Plane<class_Plane>`, nó không trực tiếp biểu diễn mặt phẳng tiếp tuyến. Các thành phần :ref:`Plane.x<class_Plane_property_x>`, :ref:`Plane.y<class_Plane_property_y>` và :ref:`Plane.z<class_Plane_property_z>` của nó biểu diễn vector tiếp tuyến, còn :ref:`Plane.d<class_Plane_property_d>` phải là ``-1`` hoặc ``1``. Xem thêm :ref:`Mesh.ARRAY_TANGENT<class_Mesh_constant_ARRAY_TANGENT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -627,7 +627,7 @@ Sets the tangent of the given vertex.
 
 |void| **set_vertex_uv**\ (\ idx\: :ref:`int<class_int>`, uv\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_uv>`
 
-Sets the UV of the given vertex.
+Thiết lập UV của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -639,7 +639,7 @@ Sets the UV of the given vertex.
 
 |void| **set_vertex_uv2**\ (\ idx\: :ref:`int<class_int>`, uv2\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_uv2>`
 
-Sets the UV2 of the given vertex.
+Thiết lập UV2 của đỉnh đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -651,14 +651,14 @@ Sets the UV2 of the given vertex.
 
 |void| **set_vertex_weights**\ (\ idx\: :ref:`int<class_int>`, weights\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) :ref:`🔗<class_MeshDataTool_method_set_vertex_weights>`
 
-Sets the bone weights of the given vertex.
+Thiết lập trọng số xương của đỉnh đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

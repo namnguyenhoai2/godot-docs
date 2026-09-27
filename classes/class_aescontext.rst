@@ -10,16 +10,16 @@
 AESContext
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides access to AES encryption/decryption of raw data.
+Cung cấp quyền truy cập vào việc mã hóa/giải mã dữ liệu thô bằng AES.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class holds the context information required for encryption and decryption operations with AES (Advanced Encryption Standard). Both AES-ECB and AES-CBC modes are supported.
+Lớp này lưu trữ thông tin ngữ cảnh cần thiết cho các thao tác mã hóa và giải mã bằng AES (Advanced Encryption Standard). Cả hai chế độ AES-ECB và AES-CBC đều được hỗ trợ.
 
 
 .. tabs::
@@ -31,29 +31,29 @@ This class holds the context information required for encryption and decryption 
     var aes = AESContext.new()
 
     func _ready():
-        var key = "My secret key!!!" # Key must be either 16 or 32 bytes.
-        var data = "My secret text!!" # Data size must be multiple of 16 bytes, apply padding if needed.
-        # Encrypt ECB
+        var key = "My secret key!!!" # Khóa phải có độ dài 16 hoặc 32 byte.
+        var data = "My secret text!!" # Kích thước dữ liệu phải là bội số của 16 byte; hãy thêm padding nếu cần.
+        # Mã hóa ECB
         aes.start(AESContext.MODE_ECB_ENCRYPT, key.to_utf8_buffer())
         var encrypted = aes.update(data.to_utf8_buffer())
         aes.finish()
-        # Decrypt ECB
+        # Giải mã ECB
         aes.start(AESContext.MODE_ECB_DECRYPT, key.to_utf8_buffer())
         var decrypted = aes.update(encrypted)
         aes.finish()
-        # Check ECB
+        # Kiểm tra ECB
         assert(decrypted == data.to_utf8_buffer())
 
-        var iv = "My secret iv!!!!" # IV must be of exactly 16 bytes.
-        # Encrypt CBC
+        var iv = "My secret iv!!!!" # IV phải có chính xác 16 byte.
+        # Mã hóa CBC
         aes.start(AESContext.MODE_CBC_ENCRYPT, key.to_utf8_buffer(), iv.to_utf8_buffer())
         encrypted = aes.update(data.to_utf8_buffer())
         aes.finish()
-        # Decrypt CBC
+        # Giải mã CBC
         aes.start(AESContext.MODE_CBC_DECRYPT, key.to_utf8_buffer(), iv.to_utf8_buffer())
         decrypted = aes.update(encrypted)
         aes.finish()
-        # Check CBC
+        # Kiểm tra CBC
         assert(decrypted == data.to_utf8_buffer())
 
  .. code-tab:: csharp
@@ -67,29 +67,29 @@ This class holds the context information required for encryption and decryption 
 
         public override void _Ready()
         {
-            string key = "My secret key!!!"; // Key must be either 16 or 32 bytes.
-            string data = "My secret text!!"; // Data size must be multiple of 16 bytes, apply padding if needed.
-            // Encrypt ECB
+            string key = "My secret key!!!"; // Khóa phải có độ dài 16 hoặc 32 byte.
+            string data = "My secret text!!"; // Kích thước dữ liệu phải là bội số của 16 byte, thêm padding nếu cần.
+            // Mã hóa ECB
             _aes.Start(AesContext.Mode.EcbEncrypt, key.ToUtf8Buffer());
             byte[] encrypted = _aes.Update(data.ToUtf8Buffer());
             _aes.Finish();
-            // Decrypt ECB
+            // Giải mã ECB
             _aes.Start(AesContext.Mode.EcbDecrypt, key.ToUtf8Buffer());
             byte[] decrypted = _aes.Update(encrypted);
             _aes.Finish();
-            // Check ECB
+            // Kiểm tra ECB
             Debug.Assert(decrypted == data.ToUtf8Buffer());
 
-            string iv = "My secret iv!!!!"; // IV must be of exactly 16 bytes.
-            // Encrypt CBC
+            string iv = "My secret iv!!!!"; // IV phải có đúng 16 byte.
+            // Mã hóa CBC
             _aes.Start(AesContext.Mode.EcbEncrypt, key.ToUtf8Buffer(), iv.ToUtf8Buffer());
             encrypted = _aes.Update(data.ToUtf8Buffer());
             _aes.Finish();
-            // Decrypt CBC
+            // Giải mã CBC
             _aes.Start(AesContext.Mode.EcbDecrypt, key.ToUtf8Buffer(), iv.ToUtf8Buffer());
             decrypted = _aes.Update(encrypted);
             _aes.Finish();
-            // Check CBC
+            // Kiểm tra CBC
             Debug.Assert(decrypted == data.ToUtf8Buffer());
         }
     }
@@ -98,21 +98,21 @@ This class holds the context information required for encryption and decryption 
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                        | :ref:`finish<class_AESContext_method_finish>`\ (\ )                                                                                                                                                                      |
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`get_iv_state<class_AESContext_method_get_iv_state>`\ (\ )                                                                                                                                                          |
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`start<class_AESContext_method_start>`\ (\ mode\: :ref:`Mode<enum_AESContext_Mode>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`, iv\: :ref:`PackedByteArray<class_PackedByteArray>` = PackedByteArray()\ ) |
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`update<class_AESContext_method_update>`\ (\ src\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                 |
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                        | :ref:`finish<class_AESContext_method_finish>`\ (\ )                                                                                                                                                                       |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`get_iv_state<class_AESContext_method_get_iv_state>`\ (\ )                                                                                                                                                           |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`        | :ref:`start<class_AESContext_method_start>`\ (\ mode\: :ref:`Mode <enum_AESContext_Mode>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`, iv\: :ref:`PackedByteArray<class_PackedByteArray>` = PackedByteArray()\ ) |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`update<class_AESContext_method_update>`\ (\ src\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                                                                                  |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -120,14 +120,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AESContext_Mode:
 
 .. rst-class:: classref-enumeration
 
-enum **Mode**: :ref:`🔗<enum_AESContext_Mode>`
+enum **Mode**: :ref:`🔗 <enum_AESContext_Mode>`
 
 .. _class_AESContext_constant_MODE_ECB_ENCRYPT:
 
@@ -135,7 +135,7 @@ enum **Mode**: :ref:`🔗<enum_AESContext_Mode>`
 
 :ref:`Mode<enum_AESContext_Mode>` **MODE_ECB_ENCRYPT** = ``0``
 
-AES electronic codebook encryption mode.
+Chế độ mã hóa Electronic Codebook của AES.
 
 .. _class_AESContext_constant_MODE_ECB_DECRYPT:
 
@@ -143,7 +143,7 @@ AES electronic codebook encryption mode.
 
 :ref:`Mode<enum_AESContext_Mode>` **MODE_ECB_DECRYPT** = ``1``
 
-AES electronic codebook decryption mode.
+Chế độ giải mã Electronic Codebook của AES.
 
 .. _class_AESContext_constant_MODE_CBC_ENCRYPT:
 
@@ -151,7 +151,7 @@ AES electronic codebook decryption mode.
 
 :ref:`Mode<enum_AESContext_Mode>` **MODE_CBC_ENCRYPT** = ``2``
 
-AES cipher block chaining encryption mode.
+Chế độ mã hóa Cipher Block Chaining của AES.
 
 .. _class_AESContext_constant_MODE_CBC_DECRYPT:
 
@@ -159,7 +159,7 @@ AES cipher block chaining encryption mode.
 
 :ref:`Mode<enum_AESContext_Mode>` **MODE_CBC_DECRYPT** = ``3``
 
-AES cipher block chaining decryption mode.
+Chế độ giải mã Cipher Block Chaining của AES.
 
 .. _class_AESContext_constant_MODE_MAX:
 
@@ -167,7 +167,7 @@ AES cipher block chaining decryption mode.
 
 :ref:`Mode<enum_AESContext_Mode>` **MODE_MAX** = ``4``
 
-Maximum value for the mode enum.
+Giá trị tối đa của enum mode.
 
 .. rst-class:: classref-section-separator
 
@@ -175,8 +175,8 @@ Maximum value for the mode enum.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AESContext_method_finish:
 
@@ -184,7 +184,7 @@ Method Descriptions
 
 |void| **finish**\ (\ ) :ref:`🔗<class_AESContext_method_finish>`
 
-Close this AES context so it can be started again. See :ref:`start()<class_AESContext_method_start>`.
+Đóng context AES này để có thể khởi động lại. Xem :ref:`start()<class_AESContext_method_start>`.
 
 .. rst-class:: classref-item-separator
 
@@ -196,9 +196,9 @@ Close this AES context so it can be started again. See :ref:`start()<class_AESCo
 
 :ref:`PackedByteArray<class_PackedByteArray>` **get_iv_state**\ (\ ) :ref:`🔗<class_AESContext_method_get_iv_state>`
 
-Get the current IV state for this context (IV gets updated when calling :ref:`update()<class_AESContext_method_update>`). You normally don't need this function.
+Lấy trạng thái IV hiện tại cho context này (IV được cập nhật khi gọi :ref:`update()<class_AESContext_method_update>`). Thông thường bạn không cần hàm này.
 
-\ **Note:** This function only makes sense when the context is started with :ref:`MODE_CBC_ENCRYPT<class_AESContext_constant_MODE_CBC_ENCRYPT>` or :ref:`MODE_CBC_DECRYPT<class_AESContext_constant_MODE_CBC_DECRYPT>`.
+\ **Lưu ý:** Hàm này chỉ có ý nghĩa khi context được khởi động bằng :ref:`MODE_CBC_ENCRYPT<class_AESContext_constant_MODE_CBC_ENCRYPT>` hoặc :ref:`MODE_CBC_DECRYPT<class_AESContext_constant_MODE_CBC_DECRYPT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Get the current IV state for this context (IV gets updated when calling :ref:`up
 
 :ref:`Error<enum_@GlobalScope_Error>` **start**\ (\ mode\: :ref:`Mode<enum_AESContext_Mode>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`, iv\: :ref:`PackedByteArray<class_PackedByteArray>` = PackedByteArray()\ ) :ref:`🔗<class_AESContext_method_start>`
 
-Start the AES context in the given ``mode``. A ``key`` of either 16 or 32 bytes must always be provided, while an ``iv`` (initialization vector) of exactly 16 bytes, is only needed when ``mode`` is either :ref:`MODE_CBC_ENCRYPT<class_AESContext_constant_MODE_CBC_ENCRYPT>` or :ref:`MODE_CBC_DECRYPT<class_AESContext_constant_MODE_CBC_DECRYPT>`.
+Khởi động context AES ở ``mode`` đã cho. Luôn phải cung cấp một ``key`` có độ dài 16 hoặc 32 byte, trong khi ``iv`` (vector khởi tạo) có độ dài chính xác 16 byte chỉ cần thiết khi ``mode`` là :ref:`MODE_CBC_ENCRYPT<class_AESContext_constant_MODE_CBC_ENCRYPT>` hoặc :ref:`MODE_CBC_DECRYPT<class_AESContext_constant_MODE_CBC_DECRYPT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -222,16 +222,16 @@ Start the AES context in the given ``mode``. A ``key`` of either 16 or 32 bytes 
 
 :ref:`PackedByteArray<class_PackedByteArray>` **update**\ (\ src\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_AESContext_method_update>`
 
-Run the desired operation for this AES context. Will return a :ref:`PackedByteArray<class_PackedByteArray>` containing the result of encrypting (or decrypting) the given ``src``. See :ref:`start()<class_AESContext_method_start>` for mode of operation.
+Thực hiện thao tác mong muốn cho context AES này. Hàm sẽ trả về một :ref:`PackedByteArray<class_PackedByteArray>` chứa kết quả mã hóa (hoặc giải mã) ``src`` đã cho. Xem :ref:`start()<class_AESContext_method_start>` để biết mode hoạt động.
 
-\ **Note:** The size of ``src`` must be a multiple of 16. Apply some padding if needed.
+\ **Lưu ý:** Kích thước của ``src`` phải là bội số của 16. Hãy thêm padding nếu cần.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

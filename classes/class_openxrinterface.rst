@@ -10,29 +10,29 @@
 OpenXRInterface
 ===============
 
-**Inherits:** :ref:`XRInterface<class_XRInterface>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRInterface<class_XRInterface>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Our OpenXR interface.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The OpenXR interface allows Godot to interact with OpenXR runtimes and make it possible to create XR experiences and games.
-
-Due to the needs of OpenXR this interface works slightly different than other plugin based XR interfaces. It needs to be initialized when Godot starts. You need to enable OpenXR, settings for this can be found in your games project settings under the XR heading. You do need to mark a viewport for use with XR in order for Godot to know which render result should be output to the headset.
+Interface OpenXR của chúng tôi.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Interface OpenXR cho phép Godot tương tác với các runtime OpenXR và tạo ra các trải nghiệm cũng như trò chơi XR.
+
+Do các yêu cầu của OpenXR, interface này hoạt động hơi khác so với các interface XR dựa trên plugin khác. Interface này cần được khởi tạo khi Godot khởi động. Bạn cần bật OpenXR; các thiết lập cho việc này nằm trong project settings của trò chơi, bên dưới tiêu đề XR. Bạn cũng cần đánh dấu một viewport để sử dụng với XR, để Godot biết kết quả render nào cần được xuất ra headset.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Setting up XR <../tutorials/xr/setting_up_xr>`
+- :doc:`Thiết lập XR <../tutorials/xr/setting_up_xr>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,57 +56,57 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                                                | :ref:`get_action_sets<class_OpenXRInterface_method_get_action_sets>`\ (\ ) |const|                                                                                                                                            |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                                                | :ref:`get_available_display_refresh_rates<class_OpenXRInterface_method_get_available_display_refresh_rates>`\ (\ ) |const|                                                                                                    |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                            | :ref:`get_hand_joint_angular_velocity<class_OpenXRInterface_method_get_hand_joint_angular_velocity>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const| |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>`\] | :ref:`get_hand_joint_flags<class_OpenXRInterface_method_get_hand_joint_flags>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const|                       |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                            | :ref:`get_hand_joint_linear_velocity<class_OpenXRInterface_method_get_hand_joint_linear_velocity>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const|   |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                            | :ref:`get_hand_joint_position<class_OpenXRInterface_method_get_hand_joint_position>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const|                 |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                | :ref:`get_hand_joint_radius<class_OpenXRInterface_method_get_hand_joint_radius>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const|                     |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>`                                      | :ref:`get_hand_joint_rotation<class_OpenXRInterface_method_get_hand_joint_rotation>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const|                 |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrackedSource>`         | :ref:`get_hand_tracking_source<class_OpenXRInterface_method_get_hand_tracking_source>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`\ ) |const|                                                                           |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`HandMotionRange<enum_OpenXRInterface_HandMotionRange>`             | :ref:`get_motion_range<class_OpenXRInterface_method_get_motion_range>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`\ ) |const|                                                                                           |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`SessionState<enum_OpenXRInterface_SessionState>`                   | :ref:`get_session_state<class_OpenXRInterface_method_get_session_state>`\ (\ )                                                                                                                                                |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`is_action_set_active<class_OpenXRInterface_method_is_action_set_active>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                                                                              |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`is_eye_gaze_interaction_supported<class_OpenXRInterface_method_is_eye_gaze_interaction_supported>`\ (\ )                                                                                                                |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`is_foveation_supported<class_OpenXRInterface_method_is_foveation_supported>`\ (\ ) |const|                                                                                                                              |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`is_hand_interaction_supported<class_OpenXRInterface_method_is_hand_interaction_supported>`\ (\ ) |const|                                                                                                                |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`is_hand_tracking_supported<class_OpenXRInterface_method_is_hand_tracking_supported>`\ (\ )                                                                                                                              |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`is_user_presence_supported<class_OpenXRInterface_method_is_user_presence_supported>`\ (\ ) |const|                                                                                                                      |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                  | :ref:`is_user_present<class_OpenXRInterface_method_is_user_present>`\ (\ ) |const|                                                                                                                                            |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                   | :ref:`set_action_set_active<class_OpenXRInterface_method_set_action_set_active>`\ (\ name\: :ref:`String<class_String>`, active\: :ref:`bool<class_bool>`\ )                                                                  |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                   | :ref:`set_cpu_level<class_OpenXRInterface_method_set_cpu_level>`\ (\ level\: :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>`\ )                                                                              |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                   | :ref:`set_gpu_level<class_OpenXRInterface_method_set_gpu_level>`\ (\ level\: :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>`\ )                                                                              |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                   | :ref:`set_motion_range<class_OpenXRInterface_method_set_motion_range>`\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, motion_range\: :ref:`HandMotionRange<enum_OpenXRInterface_HandMotionRange>`\ )                      |
-   +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                                 | :ref:`get_action_sets<class_OpenXRInterface_method_get_action_sets>`\ (\ ) |const|                                                                                                                                              |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                                 | :ref:`get_available_display_refresh_rates<class_OpenXRInterface_method_get_available_display_refresh_rates>`\ (\ ) |const|                                                                                                      |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                             | :ref:`get_hand_joint_angular_velocity<class_OpenXRInterface_method_get_hand_joint_angular_velocity>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints <enum_OpenXRInterface_HandJoints>`\ ) |const| |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`HandJointFlags <enum_OpenXRInterface_HandJointFlags>`\] | :ref:`get_hand_joint_flags<class_OpenXRInterface_method_get_hand_joint_flags>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints <enum_OpenXRInterface_HandJoints>`\ ) |const|                       |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                             | :ref:`get_hand_joint_linear_velocity<class_OpenXRInterface_method_get_hand_joint_linear_velocity>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints <enum_OpenXRInterface_HandJoints>`\ ) |const|   |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                             | :ref:`get_hand_joint_position<class_OpenXRInterface_method_get_hand_joint_position>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints <enum_OpenXRInterface_HandJoints>`\ ) |const|                 |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                 | :ref:`get_hand_joint_radius<class_OpenXRInterface_method_get_hand_joint_radius>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints <enum_OpenXRInterface_HandJoints>`\ ) |const|                     |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>`                                       | :ref:`get_hand_joint_rotation<class_OpenXRInterface_method_get_hand_joint_rotation>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints <enum_OpenXRInterface_HandJoints>`\ ) |const|                 |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`HandTrackedSource <enum_OpenXRInterface_HandTrackedSource>`         | :ref:`get_hand_tracking_source<class_OpenXRInterface_method_get_hand_tracking_source>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`\ ) |const|                                                                            |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`HandMotionRange <enum_OpenXRInterface_HandMotionRange>`             | :ref:`get_motion_range<class_OpenXRInterface_method_get_motion_range>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`\ ) |const|                                                                                            |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`SessionState <enum_OpenXRInterface_SessionState>`                   | :ref:`get_session_state<class_OpenXRInterface_method_get_session_state>`\ (\ )                                                                                                                                                  |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`is_action_set_active<class_OpenXRInterface_method_is_action_set_active>`\ (\ name\: :ref:`String<class_String>`\ ) |const|                                                                                                |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`is_eye_gaze_interaction_supported<class_OpenXRInterface_method_is_eye_gaze_interaction_supported>`\ (\ )                                                                                                                  |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`is_foveation_supported<class_OpenXRInterface_method_is_foveation_supported>`\ (\ ) |const|                                                                                                                                |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`is_hand_interaction_supported<class_OpenXRInterface_method_is_hand_interaction_supported>`\ (\ ) |const|                                                                                                                  |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`is_hand_tracking_supported<class_OpenXRInterface_method_is_hand_tracking_supported>`\ (\ )                                                                                                                                |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`is_user_presence_supported<class_OpenXRInterface_method_is_user_presence_supported>`\ (\ ) |const|                                                                                                                        |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                   | :ref:`is_user_present<class_OpenXRInterface_method_is_user_present>`\ (\ ) |const|                                                                                                                                              |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                    | :ref:`set_action_set_active<class_OpenXRInterface_method_set_action_set_active>`\ (\ name\: :ref:`String<class_String>`, active\: :ref:`bool<class_bool>`\ )                                                                    |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                    | :ref:`set_cpu_level<class_OpenXRInterface_method_set_cpu_level>`\ (\ level\: :ref:`PerfSettingsLevel <enum_OpenXRInterface_PerfSettingsLevel>`\ )                                                                               |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                    | :ref:`set_gpu_level<class_OpenXRInterface_method_set_gpu_level>`\ (\ level\: :ref:`PerfSettingsLevel <enum_OpenXRInterface_PerfSettingsLevel>`\ )                                                                               |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                    | :ref:`set_motion_range<class_OpenXRInterface_method_set_motion_range>`\ (\ hand\: :ref:`Hand <enum_OpenXRInterface_Hand>`, motion_range\: :ref:`HandMotionRange <enum_OpenXRInterface_HandMotionRange>`\ )                      |
+   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -114,8 +114,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_OpenXRInterface_signal_cpu_level_changed:
 
@@ -123,7 +123,7 @@ Signals
 
 **cpu_level_changed**\ (\ sub_domain\: :ref:`int<class_int>`, from_level\: :ref:`int<class_int>`, to_level\: :ref:`int<class_int>`\ ) :ref:`🔗<class_OpenXRInterface_signal_cpu_level_changed>`
 
-Informs the device CPU performance level has changed in the specified subdomain.
+Cho biết mức hiệu năng CPU của thiết bị đã thay đổi trong miền con được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -135,7 +135,7 @@ Informs the device CPU performance level has changed in the specified subdomain.
 
 **gpu_level_changed**\ (\ sub_domain\: :ref:`int<class_int>`, from_level\: :ref:`int<class_int>`, to_level\: :ref:`int<class_int>`\ ) :ref:`🔗<class_OpenXRInterface_signal_gpu_level_changed>`
 
-Informs the device GPU performance level has changed in the specified subdomain.
+Thông báo rằng mức hiệu năng GPU của thiết bị đã thay đổi trong miền con được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -147,7 +147,7 @@ Informs the device GPU performance level has changed in the specified subdomain.
 
 **instance_exiting**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_instance_exiting>`
 
-Informs our OpenXR instance is exiting.
+Thông báo rằng OpenXR instance của chúng ta đang thoát.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Informs our OpenXR instance is exiting.
 
 **pose_recentered**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_pose_recentered>`
 
-Informs the user queued a recenter of the player position.
+Thông báo rằng người dùng đã xếp hàng yêu cầu căn giữa lại vị trí của người chơi.
 
 .. rst-class:: classref-item-separator
 
@@ -171,9 +171,9 @@ Informs the user queued a recenter of the player position.
 
 **refresh_rate_changed**\ (\ refresh_rate\: :ref:`float<class_float>`\ ) :ref:`🔗<class_OpenXRInterface_signal_refresh_rate_changed>`
 
-Informs the user the HMD refresh rate has changed.
+Thông báo rằng tần số quét của HMD đã thay đổi.
 
-\ **Note:** Only emitted if XR runtime supports the refresh rate extension.
+\ **Lưu ý:** Chỉ được phát nếu XR runtime hỗ trợ extension về tần số quét.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ Informs the user the HMD refresh rate has changed.
 
 **session_begun**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_session_begun>`
 
-Informs our OpenXR session has been started.
+Thông báo rằng OpenXR session của chúng ta đã được khởi động.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Informs our OpenXR session has been started.
 
 **session_focussed**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_session_focussed>`
 
-Informs our OpenXR session now has focus, for example output is sent to the HMD and we're receiving XR input.
+Thông báo rằng OpenXR session của chúng ta hiện đang được focus, ví dụ: đầu ra được gửi đến HMD và chúng ta đang nhận XR input.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Informs our OpenXR session now has focus, for example output is sent to the HMD 
 
 **session_loss_pending**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_session_loss_pending>`
 
-Informs our OpenXR session is in the process of being lost.
+Thông báo rằng OpenXR session của chúng ta đang trong quá trình bị mất.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ Informs our OpenXR session is in the process of being lost.
 
 **session_stopping**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_session_stopping>`
 
-Informs our OpenXR session is stopping.
+Thông báo rằng OpenXR session của chúng ta đang dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ Informs our OpenXR session is stopping.
 
 **session_synchronized**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_session_synchronized>`
 
-Informs our OpenXR session has been synchronized.
+Thông báo rằng OpenXR session của chúng ta đã được đồng bộ hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ Informs our OpenXR session has been synchronized.
 
 **session_visible**\ (\ ) :ref:`🔗<class_OpenXRInterface_signal_session_visible>`
 
-Informs our OpenXR session is now visible, for example output is sent to the HMD but we don't receive XR input.
+Thông báo rằng OpenXR session của chúng ta hiện đã hiển thị; chẳng hạn, đầu ra được gửi đến HMD nhưng chúng ta không nhận được dữ liệu đầu vào XR.
 
 .. rst-class:: classref-item-separator
 
@@ -257,9 +257,9 @@ Informs our OpenXR session is now visible, for example output is sent to the HMD
 
 **user_presence_changed**\ (\ is_user_present\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_OpenXRInterface_signal_user_presence_changed>`
 
-Signal emitted when the user presence value changes.
+Signal được phát khi giá trị trạng thái hiện diện của người dùng thay đổi.
 
-\ **Note:** This signal will not be emitted during application startup and application shutdown. Developers should assume user presence is gained on startup and lost on shutdown.
+\ **Lưu ý:** Signal này sẽ không được phát trong quá trình khởi động ứng dụng và tắt ứng dụng. Nhà phát triển nên giả định rằng trạng thái hiện diện của người dùng được thiết lập khi khởi động và bị mất khi tắt ứng dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -267,14 +267,14 @@ Signal emitted when the user presence value changes.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OpenXRInterface_SessionState:
 
 .. rst-class:: classref-enumeration
 
-enum **SessionState**: :ref:`🔗<enum_OpenXRInterface_SessionState>`
+enum **SessionState**: :ref:`🔗 <enum_OpenXRInterface_SessionState>`
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_UNKNOWN:
 
@@ -282,7 +282,7 @@ enum **SessionState**: :ref:`🔗<enum_OpenXRInterface_SessionState>`
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_UNKNOWN** = ``0``
 
-The state of the session is unknown, we haven't tried setting up OpenXR yet.
+Trạng thái của session chưa xác định; chúng ta vẫn chưa thử thiết lập OpenXR.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_IDLE:
 
@@ -290,7 +290,7 @@ The state of the session is unknown, we haven't tried setting up OpenXR yet.
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_IDLE** = ``1``
 
-The initial state after the OpenXR session is created or after the session is destroyed.
+Trạng thái ban đầu sau khi session OpenXR được tạo hoặc sau khi session bị hủy.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_READY:
 
@@ -298,7 +298,7 @@ The initial state after the OpenXR session is created or after the session is de
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_READY** = ``2``
 
-OpenXR is ready to begin our session. :ref:`session_begun<class_OpenXRInterface_signal_session_begun>` is emitted when we change to this state.
+OpenXR đã sẵn sàng để bắt đầu session của chúng ta. :ref:`session_begun<class_OpenXRInterface_signal_session_begun>` được phát ra khi chúng ta chuyển sang trạng thái này.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_SYNCHRONIZED:
 
@@ -306,7 +306,7 @@ OpenXR is ready to begin our session. :ref:`session_begun<class_OpenXRInterface_
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_SYNCHRONIZED** = ``3``
 
-The application has synched its frame loop with the runtime but we're not rendering anything. :ref:`session_synchronized<class_OpenXRInterface_signal_session_synchronized>` is emitted when we change to this state.
+Ứng dụng đã đồng bộ vòng lặp khung hình với runtime nhưng chúng ta chưa render gì. :ref:`session_synchronized<class_OpenXRInterface_signal_session_synchronized>` được phát ra khi chúng ta chuyển sang trạng thái này.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_VISIBLE:
 
@@ -314,9 +314,9 @@ The application has synched its frame loop with the runtime but we're not render
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_VISIBLE** = ``4``
 
-The application has synched its frame loop with the runtime and we're rendering output to the user, however we receive no user input. :ref:`session_visible<class_OpenXRInterface_signal_session_visible>` is emitted when we change to this state.
+Ứng dụng đã đồng bộ vòng lặp khung hình với runtime và chúng ta đang render đầu ra cho người dùng, tuy nhiên chúng ta không nhận được dữ liệu đầu vào nào từ người dùng. :ref:`session_visible<class_OpenXRInterface_signal_session_visible>` được phát ra khi chúng ta chuyển sang trạng thái này.
 
-\ **Note:** This is the current state just before we get the focused state, whenever the user opens a system menu, switches to another application, or takes off their headset.
+\ **Lưu ý:** Đây là trạng thái hiện tại ngay trước khi chúng ta chuyển sang trạng thái focused, mỗi khi người dùng mở menu hệ thống, chuyển sang ứng dụng khác hoặc tháo headset.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_FOCUSED:
 
@@ -324,9 +324,9 @@ The application has synched its frame loop with the runtime and we're rendering 
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_FOCUSED** = ``5``
 
-The application has synched its frame loop with the runtime, we're rendering output to the user and we're receiving XR input. :ref:`session_focussed<class_OpenXRInterface_signal_session_focussed>` is emitted when we change to this state.
+Ứng dụng đã đồng bộ vòng lặp khung hình với runtime, chúng ta đang kết xuất đầu ra cho người dùng và đang nhận XR input. :ref:`session_focussed<class_OpenXRInterface_signal_session_focussed>` được phát ra khi chúng ta chuyển sang trạng thái này.
 
-\ **Note:** This is the state OpenXR will be in when the user can fully interact with your game.
+\ **Lưu ý:** Đây là trạng thái mà OpenXR sẽ ở vào khi người dùng có thể tương tác hoàn toàn với game của bạn.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_STOPPING:
 
@@ -334,7 +334,7 @@ The application has synched its frame loop with the runtime, we're rendering out
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_STOPPING** = ``6``
 
-Our session is being stopped. :ref:`session_stopping<class_OpenXRInterface_signal_session_stopping>` is emitted when we change to this state.
+Session của chúng ta đang được dừng. :ref:`session_stopping<class_OpenXRInterface_signal_session_stopping>` được phát ra khi chúng ta chuyển sang trạng thái này.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_LOSS_PENDING:
 
@@ -342,7 +342,7 @@ Our session is being stopped. :ref:`session_stopping<class_OpenXRInterface_signa
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_LOSS_PENDING** = ``7``
 
-The session is about to be lost. :ref:`session_loss_pending<class_OpenXRInterface_signal_session_loss_pending>` is emitted when we change to this state.
+Session sắp bị mất. :ref:`session_loss_pending<class_OpenXRInterface_signal_session_loss_pending>` được phát ra khi chúng ta chuyển sang trạng thái này.
 
 .. _class_OpenXRInterface_constant_SESSION_STATE_EXITING:
 
@@ -350,7 +350,7 @@ The session is about to be lost. :ref:`session_loss_pending<class_OpenXRInterfac
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **SESSION_STATE_EXITING** = ``8``
 
-The OpenXR instance is about to be destroyed and we're exiting. :ref:`instance_exiting<class_OpenXRInterface_signal_instance_exiting>` is emitted when we change to this state.
+OpenXR instance sắp bị hủy và chúng ta đang thoát. :ref:`instance_exiting<class_OpenXRInterface_signal_instance_exiting>` được phát ra khi chúng ta chuyển sang trạng thái này.
 
 .. rst-class:: classref-item-separator
 
@@ -360,7 +360,7 @@ The OpenXR instance is about to be destroyed and we're exiting. :ref:`instance_e
 
 .. rst-class:: classref-enumeration
 
-enum **Hand**: :ref:`🔗<enum_OpenXRInterface_Hand>`
+enum **Hand**: :ref:`🔗 <enum_OpenXRInterface_Hand>`
 
 .. _class_OpenXRInterface_constant_HAND_LEFT:
 
@@ -368,7 +368,7 @@ enum **Hand**: :ref:`🔗<enum_OpenXRInterface_Hand>`
 
 :ref:`Hand<enum_OpenXRInterface_Hand>` **HAND_LEFT** = ``0``
 
-Left hand.
+Tay trái.
 
 .. _class_OpenXRInterface_constant_HAND_RIGHT:
 
@@ -376,7 +376,7 @@ Left hand.
 
 :ref:`Hand<enum_OpenXRInterface_Hand>` **HAND_RIGHT** = ``1``
 
-Right hand.
+Bàn tay phải.
 
 .. _class_OpenXRInterface_constant_HAND_MAX:
 
@@ -384,7 +384,7 @@ Right hand.
 
 :ref:`Hand<enum_OpenXRInterface_Hand>` **HAND_MAX** = ``2``
 
-Maximum value for the hand enum.
+Giá trị tối đa của enum hand.
 
 .. rst-class:: classref-item-separator
 
@@ -394,7 +394,7 @@ Maximum value for the hand enum.
 
 .. rst-class:: classref-enumeration
 
-enum **HandMotionRange**: :ref:`🔗<enum_OpenXRInterface_HandMotionRange>`
+enum **HandMotionRange**: :ref:`🔗 <enum_OpenXRInterface_HandMotionRange>`
 
 .. _class_OpenXRInterface_constant_HAND_MOTION_RANGE_UNOBSTRUCTED:
 
@@ -402,7 +402,7 @@ enum **HandMotionRange**: :ref:`🔗<enum_OpenXRInterface_HandMotionRange>`
 
 :ref:`HandMotionRange<enum_OpenXRInterface_HandMotionRange>` **HAND_MOTION_RANGE_UNOBSTRUCTED** = ``0``
 
-Full hand range, if user closes their hands, we make a full fist.
+Phạm vi đầy đủ của bàn tay; nếu người dùng nắm tay, chúng ta tạo thành một nắm tay hoàn chỉnh.
 
 .. _class_OpenXRInterface_constant_HAND_MOTION_RANGE_CONFORM_TO_CONTROLLER:
 
@@ -410,7 +410,7 @@ Full hand range, if user closes their hands, we make a full fist.
 
 :ref:`HandMotionRange<enum_OpenXRInterface_HandMotionRange>` **HAND_MOTION_RANGE_CONFORM_TO_CONTROLLER** = ``1``
 
-Conform to controller, if user closes their hands, the tracked data conforms to the shape of the controller.
+Tuân theo controller; nếu người dùng nắm tay, dữ liệu được theo dõi sẽ tuân theo hình dạng của controller.
 
 .. _class_OpenXRInterface_constant_HAND_MOTION_RANGE_MAX:
 
@@ -418,7 +418,7 @@ Conform to controller, if user closes their hands, the tracked data conforms to 
 
 :ref:`HandMotionRange<enum_OpenXRInterface_HandMotionRange>` **HAND_MOTION_RANGE_MAX** = ``2``
 
-Maximum value for the motion range enum.
+Giá trị tối đa của enum motion range.
 
 .. rst-class:: classref-item-separator
 
@@ -428,7 +428,7 @@ Maximum value for the motion range enum.
 
 .. rst-class:: classref-enumeration
 
-enum **HandTrackedSource**: :ref:`🔗<enum_OpenXRInterface_HandTrackedSource>`
+enum **HandTrackedSource**: :ref:`🔗 <enum_OpenXRInterface_HandTrackedSource>`
 
 .. _class_OpenXRInterface_constant_HAND_TRACKED_SOURCE_UNKNOWN:
 
@@ -436,7 +436,7 @@ enum **HandTrackedSource**: :ref:`🔗<enum_OpenXRInterface_HandTrackedSource>`
 
 :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrackedSource>` **HAND_TRACKED_SOURCE_UNKNOWN** = ``0``
 
-The source of hand tracking data is unknown (the extension is likely unsupported).
+Không xác định được nguồn dữ liệu theo dõi bàn tay (tiện ích mở rộng có thể không được hỗ trợ).
 
 .. _class_OpenXRInterface_constant_HAND_TRACKED_SOURCE_UNOBSTRUCTED:
 
@@ -444,7 +444,7 @@ The source of hand tracking data is unknown (the extension is likely unsupported
 
 :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrackedSource>` **HAND_TRACKED_SOURCE_UNOBSTRUCTED** = ``1``
 
-The source of hand tracking is unobstructed, this means that an accurate method of hand tracking is used, e.g. optical hand tracking, data gloves, etc.
+Nguồn theo dõi bàn tay không bị che khuất, nghĩa là đang sử dụng một phương pháp theo dõi bàn tay chính xác, chẳng hạn như theo dõi bàn tay bằng quang học, găng tay dữ liệu, v.v.
 
 .. _class_OpenXRInterface_constant_HAND_TRACKED_SOURCE_CONTROLLER:
 
@@ -452,7 +452,7 @@ The source of hand tracking is unobstructed, this means that an accurate method 
 
 :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrackedSource>` **HAND_TRACKED_SOURCE_CONTROLLER** = ``2``
 
-The source of hand tracking is a controller, bone positions are inferred from controller inputs.
+Nguồn theo dõi bàn tay là một controller; vị trí các xương được suy ra từ đầu vào của controller.
 
 .. _class_OpenXRInterface_constant_HAND_TRACKED_SOURCE_MAX:
 
@@ -460,7 +460,7 @@ The source of hand tracking is a controller, bone positions are inferred from co
 
 :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrackedSource>` **HAND_TRACKED_SOURCE_MAX** = ``3``
 
-Represents the size of the :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrackedSource>` enum.
+Biểu thị kích thước của enum :ref:`HandTrackedSource <enum_OpenXRInterface_HandTrackedSource>`.
 
 .. rst-class:: classref-item-separator
 
@@ -470,7 +470,7 @@ Represents the size of the :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrac
 
 .. rst-class:: classref-enumeration
 
-enum **HandJoints**: :ref:`🔗<enum_OpenXRInterface_HandJoints>`
+enum **HandJoints**: :ref:`🔗 <enum_OpenXRInterface_HandJoints>`
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_PALM:
 
@@ -478,7 +478,7 @@ enum **HandJoints**: :ref:`🔗<enum_OpenXRInterface_HandJoints>`
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_PALM** = ``0``
 
-Palm joint.
+Khớp lòng bàn tay.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_WRIST:
 
@@ -486,7 +486,7 @@ Palm joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_WRIST** = ``1``
 
-Wrist joint.
+Khớp cổ tay.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_THUMB_METACARPAL:
 
@@ -494,7 +494,7 @@ Wrist joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_THUMB_METACARPAL** = ``2``
 
-Thumb metacarpal joint.
+Khớp bàn-ngón cái.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_THUMB_PROXIMAL:
 
@@ -502,7 +502,7 @@ Thumb metacarpal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_THUMB_PROXIMAL** = ``3``
 
-Thumb proximal joint.
+Khớp gần của ngón cái.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_THUMB_DISTAL:
 
@@ -510,7 +510,7 @@ Thumb proximal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_THUMB_DISTAL** = ``4``
 
-Thumb distal joint.
+Khớp xa của ngón cái.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_THUMB_TIP:
 
@@ -518,7 +518,7 @@ Thumb distal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_THUMB_TIP** = ``5``
 
-Thumb tip joint.
+Khớp đầu ngón cái.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_INDEX_METACARPAL:
 
@@ -526,7 +526,7 @@ Thumb tip joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_INDEX_METACARPAL** = ``6``
 
-Index finger metacarpal joint.
+Khớp bàn-ngón trỏ.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_INDEX_PROXIMAL:
 
@@ -534,7 +534,7 @@ Index finger metacarpal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_INDEX_PROXIMAL** = ``7``
 
-Index finger phalanx proximal joint.
+Khớp đốt gần của ngón trỏ.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_INDEX_INTERMEDIATE:
 
@@ -542,7 +542,7 @@ Index finger phalanx proximal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_INDEX_INTERMEDIATE** = ``8``
 
-Index finger phalanx intermediate joint.
+Khớp đốt giữa của ngón trỏ.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_INDEX_DISTAL:
 
@@ -550,7 +550,7 @@ Index finger phalanx intermediate joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_INDEX_DISTAL** = ``9``
 
-Index finger phalanx distal joint.
+Khớp đốt xa của ngón trỏ.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_INDEX_TIP:
 
@@ -558,7 +558,7 @@ Index finger phalanx distal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_INDEX_TIP** = ``10``
 
-Index finger tip joint.
+Khớp đầu ngón trỏ.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_MIDDLE_METACARPAL:
 
@@ -566,7 +566,7 @@ Index finger tip joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_MIDDLE_METACARPAL** = ``11``
 
-Middle finger metacarpal joint.
+Khớp xương bàn tay của ngón giữa.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_MIDDLE_PROXIMAL:
 
@@ -574,7 +574,7 @@ Middle finger metacarpal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_MIDDLE_PROXIMAL** = ``12``
 
-Middle finger phalanx proximal joint.
+Khớp đốt gần của ngón giữa.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_MIDDLE_INTERMEDIATE:
 
@@ -582,7 +582,7 @@ Middle finger phalanx proximal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_MIDDLE_INTERMEDIATE** = ``13``
 
-Middle finger phalanx intermediate joint.
+Khớp đốt giữa của ngón giữa.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_MIDDLE_DISTAL:
 
@@ -590,7 +590,7 @@ Middle finger phalanx intermediate joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_MIDDLE_DISTAL** = ``14``
 
-Middle finger phalanx distal joint.
+Khớp đốt xa của ngón giữa.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_MIDDLE_TIP:
 
@@ -598,7 +598,7 @@ Middle finger phalanx distal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_MIDDLE_TIP** = ``15``
 
-Middle finger tip joint.
+Khớp đầu ngón giữa.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_RING_METACARPAL:
 
@@ -606,7 +606,7 @@ Middle finger tip joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_RING_METACARPAL** = ``16``
 
-Ring finger metacarpal joint.
+Khớp xương bàn tay của ngón áp út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_RING_PROXIMAL:
 
@@ -614,7 +614,7 @@ Ring finger metacarpal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_RING_PROXIMAL** = ``17``
 
-Ring finger phalanx proximal joint.
+Khớp đốt gần của ngón áp út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_RING_INTERMEDIATE:
 
@@ -622,7 +622,7 @@ Ring finger phalanx proximal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_RING_INTERMEDIATE** = ``18``
 
-Ring finger phalanx intermediate joint.
+Khớp đốt giữa của ngón áp út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_RING_DISTAL:
 
@@ -630,7 +630,7 @@ Ring finger phalanx intermediate joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_RING_DISTAL** = ``19``
 
-Ring finger phalanx distal joint.
+Khớp đốt xa của ngón áp út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_RING_TIP:
 
@@ -638,7 +638,7 @@ Ring finger phalanx distal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_RING_TIP** = ``20``
 
-Ring finger tip joint.
+Khớp đầu ngón tay của ngón áp út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_LITTLE_METACARPAL:
 
@@ -646,7 +646,7 @@ Ring finger tip joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_LITTLE_METACARPAL** = ``21``
 
-Pinky finger metacarpal joint.
+Khớp xương bàn tay của ngón út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_LITTLE_PROXIMAL:
 
@@ -654,7 +654,7 @@ Pinky finger metacarpal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_LITTLE_PROXIMAL** = ``22``
 
-Pinky finger phalanx proximal joint.
+Khớp đốt gần của ngón út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_LITTLE_INTERMEDIATE:
 
@@ -662,7 +662,7 @@ Pinky finger phalanx proximal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_LITTLE_INTERMEDIATE** = ``23``
 
-Pinky finger phalanx intermediate joint.
+Khớp giữa của đốt ngón tay út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_LITTLE_DISTAL:
 
@@ -670,7 +670,7 @@ Pinky finger phalanx intermediate joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_LITTLE_DISTAL** = ``24``
 
-Pinky finger phalanx distal joint.
+Khớp xa của đốt ngón tay út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_LITTLE_TIP:
 
@@ -678,7 +678,7 @@ Pinky finger phalanx distal joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_LITTLE_TIP** = ``25``
 
-Pinky finger tip joint.
+Khớp ở đầu ngón tay út.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_MAX:
 
@@ -686,7 +686,7 @@ Pinky finger tip joint.
 
 :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` **HAND_JOINT_MAX** = ``26``
 
-Represents the size of the :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` enum.
+Biểu thị số lượng phần tử trong enum :ref:`HandJoints <enum_OpenXRInterface_HandJoints>`.
 
 .. rst-class:: classref-item-separator
 
@@ -696,7 +696,7 @@ Represents the size of the :ref:`HandJoints<enum_OpenXRInterface_HandJoints>` en
 
 .. rst-class:: classref-enumeration
 
-enum **PerfSettingsLevel**: :ref:`🔗<enum_OpenXRInterface_PerfSettingsLevel>`
+enum **PerfSettingsLevel**: :ref:`🔗 <enum_OpenXRInterface_PerfSettingsLevel>`
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_LEVEL_POWER_SAVINGS:
 
@@ -704,7 +704,7 @@ enum **PerfSettingsLevel**: :ref:`🔗<enum_OpenXRInterface_PerfSettingsLevel>`
 
 :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>` **PERF_SETTINGS_LEVEL_POWER_SAVINGS** = ``0``
 
-The application has entered a non-XR section (head-locked / static screen), during which power savings are to be prioritized.
+Ứng dụng đã chuyển sang một phần không phải XR (màn hình bị khóa theo đầu / màn hình tĩnh), trong đó cần ưu tiên tiết kiệm năng lượng.
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_LEVEL_SUSTAINED_LOW:
 
@@ -712,7 +712,7 @@ The application has entered a non-XR section (head-locked / static screen), duri
 
 :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>` **PERF_SETTINGS_LEVEL_SUSTAINED_LOW** = ``1``
 
-The application has entered a low and stable complexity section, during which reducing power is more important than occasional late rendering frames.
+Ứng dụng đã chuyển sang một phần có độ phức tạp thấp và ổn định, trong đó việc giảm mức tiêu thụ năng lượng quan trọng hơn một vài khung hình kết xuất bị trễ.
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_LEVEL_SUSTAINED_HIGH:
 
@@ -720,7 +720,7 @@ The application has entered a low and stable complexity section, during which re
 
 :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>` **PERF_SETTINGS_LEVEL_SUSTAINED_HIGH** = ``2``
 
-The application has entered a high or dynamic complexity section, during which the XR Runtime strives for consistent XR compositing and frame rendering within a thermally sustainable range.
+Ứng dụng đã chuyển sang một mức độ phức tạp cao hoặc biến động, trong đó XR Runtime cố gắng duy trì việc tổng hợp XR và kết xuất khung hình ổn định trong phạm vi bền vững về nhiệt.
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_LEVEL_BOOST:
 
@@ -728,7 +728,7 @@ The application has entered a high or dynamic complexity section, during which t
 
 :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>` **PERF_SETTINGS_LEVEL_BOOST** = ``3``
 
-The application has entered a section with very high complexity, during which the XR Runtime is allowed to step up beyond the thermally sustainable range.
+Ứng dụng đã chuyển sang một mức độ có độ phức tạp rất cao, trong đó XR Runtime được phép tăng vượt quá phạm vi bền vững về nhiệt.
 
 .. rst-class:: classref-item-separator
 
@@ -738,7 +738,7 @@ The application has entered a section with very high complexity, during which th
 
 .. rst-class:: classref-enumeration
 
-enum **PerfSettingsSubDomain**: :ref:`🔗<enum_OpenXRInterface_PerfSettingsSubDomain>`
+enum **PerfSettingsSubDomain**: :ref:`🔗 <enum_OpenXRInterface_PerfSettingsSubDomain>`
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_SUB_DOMAIN_COMPOSITING:
 
@@ -746,7 +746,7 @@ enum **PerfSettingsSubDomain**: :ref:`🔗<enum_OpenXRInterface_PerfSettingsSubD
 
 :ref:`PerfSettingsSubDomain<enum_OpenXRInterface_PerfSettingsSubDomain>` **PERF_SETTINGS_SUB_DOMAIN_COMPOSITING** = ``0``
 
-The compositing performance within the runtime has reached a new level.
+Hiệu suất tổng hợp trong runtime đã đạt đến một cấp độ mới.
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_SUB_DOMAIN_RENDERING:
 
@@ -754,7 +754,7 @@ The compositing performance within the runtime has reached a new level.
 
 :ref:`PerfSettingsSubDomain<enum_OpenXRInterface_PerfSettingsSubDomain>` **PERF_SETTINGS_SUB_DOMAIN_RENDERING** = ``1``
 
-The application rendering performance has reached a new level.
+Hiệu suất kết xuất của ứng dụng đã đạt đến một cấp độ mới.
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_SUB_DOMAIN_THERMAL:
 
@@ -762,7 +762,7 @@ The application rendering performance has reached a new level.
 
 :ref:`PerfSettingsSubDomain<enum_OpenXRInterface_PerfSettingsSubDomain>` **PERF_SETTINGS_SUB_DOMAIN_THERMAL** = ``2``
 
-The temperature of the device has reached a new level.
+Nhiệt độ của thiết bị đã đạt đến một cấp độ mới.
 
 .. rst-class:: classref-item-separator
 
@@ -772,7 +772,7 @@ The temperature of the device has reached a new level.
 
 .. rst-class:: classref-enumeration
 
-enum **PerfSettingsNotificationLevel**: :ref:`🔗<enum_OpenXRInterface_PerfSettingsNotificationLevel>`
+enum **PerfSettingsNotificationLevel**: :ref:`🔗 <enum_OpenXRInterface_PerfSettingsNotificationLevel>`
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_NOTIF_LEVEL_NORMAL:
 
@@ -780,7 +780,7 @@ enum **PerfSettingsNotificationLevel**: :ref:`🔗<enum_OpenXRInterface_PerfSett
 
 :ref:`PerfSettingsNotificationLevel<enum_OpenXRInterface_PerfSettingsNotificationLevel>` **PERF_SETTINGS_NOTIF_LEVEL_NORMAL** = ``0``
 
-The sub-domain has reached a level where no further actions other than currently applied are necessary.
+Miền con đã đạt đến một mức mà không cần thực hiện thêm hành động nào ngoài các hành động hiện đang được áp dụng.
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_NOTIF_LEVEL_WARNING:
 
@@ -788,7 +788,7 @@ The sub-domain has reached a level where no further actions other than currently
 
 :ref:`PerfSettingsNotificationLevel<enum_OpenXRInterface_PerfSettingsNotificationLevel>` **PERF_SETTINGS_NOTIF_LEVEL_WARNING** = ``1``
 
-The sub-domain has reached an early warning level where the application should start proactive mitigation actions.
+Miền con đã đạt đến mức cảnh báo sớm, tại đó ứng dụng nên bắt đầu thực hiện các hành động giảm thiểu chủ động.
 
 .. _class_OpenXRInterface_constant_PERF_SETTINGS_NOTIF_LEVEL_IMPAIRED:
 
@@ -796,7 +796,7 @@ The sub-domain has reached an early warning level where the application should s
 
 :ref:`PerfSettingsNotificationLevel<enum_OpenXRInterface_PerfSettingsNotificationLevel>` **PERF_SETTINGS_NOTIF_LEVEL_IMPAIRED** = ``2``
 
-The sub-domain has reached a critical level where the application should start drastic mitigation actions.
+Miền con đã đạt đến mức nghiêm trọng, tại đó ứng dụng nên bắt đầu thực hiện các hành động giảm thiểu mạnh mẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -806,7 +806,7 @@ The sub-domain has reached a critical level where the application should start d
 
 .. rst-class:: classref-enumeration
 
-flags **HandJointFlags**: :ref:`🔗<enum_OpenXRInterface_HandJointFlags>`
+các cờ **HandJointFlags**: :ref:`🔗 <enum_OpenXRInterface_HandJointFlags>`
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_NONE:
 
@@ -814,7 +814,7 @@ flags **HandJointFlags**: :ref:`🔗<enum_OpenXRInterface_HandJointFlags>`
 
 :ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>` **HAND_JOINT_NONE** = ``0``
 
-No flags are set.
+Không có cờ nào được thiết lập.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_ORIENTATION_VALID:
 
@@ -822,7 +822,7 @@ No flags are set.
 
 :ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>` **HAND_JOINT_ORIENTATION_VALID** = ``1``
 
-If set, the orientation data is valid, otherwise, the orientation data is unreliable and should not be used.
+Nếu được thiết lập, dữ liệu định hướng là hợp lệ; nếu không, dữ liệu định hướng không đáng tin cậy và không nên được sử dụng.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_ORIENTATION_TRACKED:
 
@@ -830,7 +830,7 @@ If set, the orientation data is valid, otherwise, the orientation data is unreli
 
 :ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>` **HAND_JOINT_ORIENTATION_TRACKED** = ``2``
 
-If set, the orientation data comes from tracking data, otherwise, the orientation data contains predicted data.
+Nếu được thiết lập, dữ liệu định hướng đến từ dữ liệu tracking; nếu không, dữ liệu định hướng chứa dữ liệu dự đoán.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_POSITION_VALID:
 
@@ -838,7 +838,7 @@ If set, the orientation data comes from tracking data, otherwise, the orientatio
 
 :ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>` **HAND_JOINT_POSITION_VALID** = ``4``
 
-If set, the positional data is valid, otherwise, the positional data is unreliable and should not be used.
+Nếu được đặt, dữ liệu vị trí là hợp lệ; nếu không, dữ liệu vị trí không đáng tin cậy và không nên được sử dụng.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_POSITION_TRACKED:
 
@@ -846,7 +846,7 @@ If set, the positional data is valid, otherwise, the positional data is unreliab
 
 :ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>` **HAND_JOINT_POSITION_TRACKED** = ``8``
 
-If set, the positional data comes from tracking data, otherwise, the positional data contains predicted data.
+Nếu được đặt, dữ liệu vị trí đến từ dữ liệu tracking; nếu không, dữ liệu vị trí chứa dữ liệu dự đoán.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_LINEAR_VELOCITY_VALID:
 
@@ -854,7 +854,7 @@ If set, the positional data comes from tracking data, otherwise, the positional 
 
 :ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>` **HAND_JOINT_LINEAR_VELOCITY_VALID** = ``16``
 
-If set, our linear velocity data is valid, otherwise, the linear velocity data is unreliable and should not be used.
+Nếu được đặt, dữ liệu vận tốc tuyến tính của chúng tôi là hợp lệ; nếu không, dữ liệu vận tốc tuyến tính không đáng tin cậy và không nên được sử dụng.
 
 .. _class_OpenXRInterface_constant_HAND_JOINT_ANGULAR_VELOCITY_VALID:
 
@@ -862,7 +862,7 @@ If set, our linear velocity data is valid, otherwise, the linear velocity data i
 
 :ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>` **HAND_JOINT_ANGULAR_VELOCITY_VALID** = ``32``
 
-If set, our angular velocity data is valid, otherwise, the angular velocity data is unreliable and should not be used.
+Nếu được đặt, dữ liệu vận tốc góc của chúng tôi là hợp lệ; nếu không, dữ liệu vận tốc góc không đáng tin cậy và không nên được sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -870,8 +870,8 @@ If set, our angular velocity data is valid, otherwise, the angular velocity data
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRInterface_property_display_refresh_rate:
 
@@ -884,7 +884,7 @@ Property Descriptions
 - |void| **set_display_refresh_rate**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_display_refresh_rate**\ (\ )
 
-The display refresh rate for the current HMD. Only functional if this feature is supported by the OpenXR runtime and after the interface has been initialized.
+Tần số làm mới màn hình của HMD hiện tại. Chỉ hoạt động nếu tính năng này được OpenXR runtime hỗ trợ và sau khi interface đã được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -901,7 +901,7 @@ The display refresh rate for the current HMD. Only functional if this feature is
 - |void| **set_foveation_dynamic**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_foveation_dynamic**\ (\ )
 
-If ``true``, enables dynamic foveation adjustment. The interface must be initialized before this is accessible. If enabled, foveation will automatically be adjusted between low and :ref:`foveation_level<class_OpenXRInterface_property_foveation_level>`.
+Nếu ``true``, bật điều chỉnh foveation động. Interface phải được khởi tạo trước khi có thể truy cập tính năng này. Nếu được bật, foveation sẽ tự động được điều chỉnh trong khoảng từ thấp đến :ref:`foveation_level<class_OpenXRInterface_property_foveation_level>`.
 
 .. rst-class:: classref-item-separator
 
@@ -918,7 +918,7 @@ If ``true``, enables dynamic foveation adjustment. The interface must be initial
 - |void| **set_foveation_level**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_foveation_level**\ (\ )
 
-The foveation level, from ``0`` (off) to ``3`` (high). The interface must be initialized before this is accessible.
+Mức độ foveation, từ ``0`` (tắt) đến ``3`` (cao). Interface phải được khởi tạo trước khi có thể truy cập thuộc tính này.
 
 .. rst-class:: classref-item-separator
 
@@ -935,7 +935,7 @@ The foveation level, from ``0`` (off) to ``3`` (high). The interface must be ini
 - |void| **set_foveation_with_subsampled_images**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_foveation_with_subsampled_images**\ (\ )
 
-If ``true``, enables subsampled images with foveation, which can provide a performance boost on Vulkan.
+Nếu ``true``, bật các hình ảnh được lấy mẫu phụ với foveation, có thể cải thiện hiệu năng trên Vulkan.
 
 .. rst-class:: classref-item-separator
 
@@ -952,7 +952,7 @@ If ``true``, enables subsampled images with foveation, which can provide a perfo
 - |void| **set_render_target_size_multiplier**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_render_target_size_multiplier**\ (\ )
 
-The render size multiplier for the current HMD. Must be set before the interface has been initialized.
+Hệ số nhân kích thước kết xuất cho HMD hiện tại. Phải được thiết lập trước khi interface được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -969,9 +969,9 @@ The render size multiplier for the current HMD. Must be set before the interface
 - |void| **set_vrs_min_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vrs_min_radius**\ (\ )
 
-The minimum radius around the focal point where full quality is guaranteed if VRS is used as a percentage of screen size.
+Bán kính tối thiểu xung quanh tiêu điểm, tính theo phần trăm kích thước màn hình, trong đó chất lượng đầy đủ được đảm bảo nếu sử dụng VRS.
 
-\ **Note:** Mobile and Forward+ renderers only. Requires :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` to be set to :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
+\ **Lưu ý:** Chỉ dành cho các renderer Mobile và Forward+. Yêu cầu :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` được đặt thành :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
 
 .. rst-class:: classref-item-separator
 
@@ -988,9 +988,9 @@ The minimum radius around the focal point where full quality is guaranteed if VR
 - |void| **set_vrs_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_vrs_strength**\ (\ )
 
-The strength used to calculate the VRS density map. The greater this value, the more noticeable VRS is. This improves performance at the cost of quality.
+Mức độ được sử dụng để tính toán bản đồ mật độ VRS. Giá trị này càng lớn thì VRS càng dễ nhận thấy. Điều này cải thiện hiệu năng nhưng phải đánh đổi bằng chất lượng.
 
-\ **Note:** Mobile and Forward+ renderers only. Requires :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` to be set to :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
+\ **Lưu ý:** Chỉ dành cho các renderer Mobile và Forward+. Yêu cầu :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` được đặt thành :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>`.
 
 .. rst-class:: classref-section-separator
 
@@ -998,8 +998,8 @@ The strength used to calculate the VRS density map. The greater this value, the 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRInterface_method_get_action_sets:
 
@@ -1007,7 +1007,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>` **get_action_sets**\ (\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_action_sets>`
 
-Returns a list of action sets registered with Godot (loaded from the action map at runtime).
+Trả về danh sách các tập hành động đã đăng ký với Godot (được tải từ action map trong runtime).
 
 .. rst-class:: classref-item-separator
 
@@ -1019,7 +1019,7 @@ Returns a list of action sets registered with Godot (loaded from the action map 
 
 :ref:`Array<class_Array>` **get_available_display_refresh_rates**\ (\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_available_display_refresh_rates>`
 
-Returns a list of display refresh rates supported by the current HMD. Only returned if this feature is supported by the OpenXR runtime and after the interface has been initialized.
+Trả về danh sách các tần số làm mới màn hình được HMD hiện tại hỗ trợ. Chỉ được trả về nếu tính năng này được OpenXR runtime hỗ trợ và sau khi interface đã được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -1031,9 +1031,9 @@ Returns a list of display refresh rates supported by the current HMD. Only retur
 
 :ref:`Vector3<class_Vector3>` **get_hand_joint_angular_velocity**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_hand_joint_angular_velocity>`
 
-**Deprecated:** Use :ref:`XRHandTracker.get_hand_joint_angular_velocity()<class_XRHandTracker_method_get_hand_joint_angular_velocity>` obtained from :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`XRHandTracker.get_hand_joint_angular_velocity()<class_XRHandTracker_method_get_hand_joint_angular_velocity>` nhận được từ :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>`.
 
-If handtracking is enabled, returns the angular velocity of a joint (``joint``) of a hand (``hand``) as provided by OpenXR. This is relative to :ref:`XROrigin3D<class_XROrigin3D>`!
+Nếu tính năng theo dõi bàn tay được bật, trả về vận tốc góc của một khớp (``joint``) của bàn tay (``hand``) do OpenXR cung cấp. Giá trị này tương đối so với :ref:`XROrigin3D<class_XROrigin3D>`!
 
 .. rst-class:: classref-item-separator
 
@@ -1045,9 +1045,9 @@ If handtracking is enabled, returns the angular velocity of a joint (``joint``) 
 
 |bitfield|\[:ref:`HandJointFlags<enum_OpenXRInterface_HandJointFlags>`\] **get_hand_joint_flags**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_hand_joint_flags>`
 
-**Deprecated:** Use :ref:`XRHandTracker.get_hand_joint_flags()<class_XRHandTracker_method_get_hand_joint_flags>` obtained from :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`XRHandTracker.get_hand_joint_flags()<class_XRHandTracker_method_get_hand_joint_flags>` nhận được từ :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>`.
 
-If handtracking is enabled, returns flags that inform us of the validity of the tracking data.
+Nếu tính năng theo dõi bàn tay được bật, trả về các cờ cho biết tính hợp lệ của dữ liệu tracking.
 
 .. rst-class:: classref-item-separator
 
@@ -1059,9 +1059,9 @@ If handtracking is enabled, returns flags that inform us of the validity of the 
 
 :ref:`Vector3<class_Vector3>` **get_hand_joint_linear_velocity**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_hand_joint_linear_velocity>`
 
-**Deprecated:** Use :ref:`XRHandTracker.get_hand_joint_linear_velocity()<class_XRHandTracker_method_get_hand_joint_linear_velocity>` obtained from :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`XRHandTracker.get_hand_joint_linear_velocity()<class_XRHandTracker_method_get_hand_joint_linear_velocity>` nhận được từ :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` thay thế.
 
-If handtracking is enabled, returns the linear velocity of a joint (``joint``) of a hand (``hand``) as provided by OpenXR. This is relative to :ref:`XROrigin3D<class_XROrigin3D>` without worldscale applied!
+Nếu hand tracking được bật, trả về vận tốc tuyến tính của một khớp (``joint``) của bàn tay (``hand``) do OpenXR cung cấp. Giá trị này tương đối với :ref:`XROrigin3D<class_XROrigin3D>` và không áp dụng worldscale!
 
 .. rst-class:: classref-item-separator
 
@@ -1073,9 +1073,9 @@ If handtracking is enabled, returns the linear velocity of a joint (``joint``) o
 
 :ref:`Vector3<class_Vector3>` **get_hand_joint_position**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_hand_joint_position>`
 
-**Deprecated:** Use :ref:`XRHandTracker.get_hand_joint_transform()<class_XRHandTracker_method_get_hand_joint_transform>` obtained from :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`XRHandTracker.get_hand_joint_transform()<class_XRHandTracker_method_get_hand_joint_transform>` nhận được từ :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` thay thế.
 
-If handtracking is enabled, returns the position of a joint (``joint``) of a hand (``hand``) as provided by OpenXR. This is relative to :ref:`XROrigin3D<class_XROrigin3D>` without worldscale applied!
+Nếu hand tracking được bật, trả về vị trí của một khớp (``joint``) của bàn tay (``hand``) do OpenXR cung cấp. Giá trị này tương đối với :ref:`XROrigin3D<class_XROrigin3D>` và không áp dụng worldscale!
 
 .. rst-class:: classref-item-separator
 
@@ -1087,9 +1087,9 @@ If handtracking is enabled, returns the position of a joint (``joint``) of a han
 
 :ref:`float<class_float>` **get_hand_joint_radius**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_hand_joint_radius>`
 
-**Deprecated:** Use :ref:`XRHandTracker.get_hand_joint_radius()<class_XRHandTracker_method_get_hand_joint_radius>` obtained from :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`XRHandTracker.get_hand_joint_radius()<class_XRHandTracker_method_get_hand_joint_radius>` nhận được từ :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` thay thế.
 
-If handtracking is enabled, returns the radius of a joint (``joint``) of a hand (``hand``) as provided by OpenXR. This is without worldscale applied!
+Nếu hand tracking được bật, trả về bán kính của một khớp (``joint``) của bàn tay (``hand``) do OpenXR cung cấp. Giá trị này không áp dụng worldscale!
 
 .. rst-class:: classref-item-separator
 
@@ -1101,9 +1101,9 @@ If handtracking is enabled, returns the radius of a joint (``joint``) of a hand 
 
 :ref:`Quaternion<class_Quaternion>` **get_hand_joint_rotation**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, joint\: :ref:`HandJoints<enum_OpenXRInterface_HandJoints>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_hand_joint_rotation>`
 
-**Deprecated:** Use :ref:`XRHandTracker.get_hand_joint_transform()<class_XRHandTracker_method_get_hand_joint_transform>` obtained from :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`XRHandTracker.get_hand_joint_transform()<class_XRHandTracker_method_get_hand_joint_transform>` nhận được từ :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` thay thế.
 
-If handtracking is enabled, returns the rotation of a joint (``joint``) of a hand (``hand``) as provided by OpenXR.
+Nếu hand tracking được bật, trả về góc xoay của một khớp (``joint``) của bàn tay (``hand``) theo thông tin OpenXR cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -1115,9 +1115,9 @@ If handtracking is enabled, returns the rotation of a joint (``joint``) of a han
 
 :ref:`HandTrackedSource<enum_OpenXRInterface_HandTrackedSource>` **get_hand_tracking_source**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_hand_tracking_source>`
 
-**Deprecated:** Use :ref:`XRHandTracker.hand_tracking_source<class_XRHandTracker_property_hand_tracking_source>` obtained from :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>` instead.
+**Đã ngừng sử dụng:** Thay vào đó, hãy sử dụng :ref:`XRHandTracker.hand_tracking_source<class_XRHandTracker_property_hand_tracking_source>` nhận được từ :ref:`XRServer.get_tracker()<class_XRServer_method_get_tracker>`.
 
-If handtracking is enabled and hand tracking source is supported, gets the source of the hand tracking data for ``hand``.
+Nếu hand tracking được bật và nguồn dữ liệu theo dõi bàn tay được hỗ trợ, lấy nguồn của dữ liệu theo dõi bàn tay cho ``hand``.
 
 .. rst-class:: classref-item-separator
 
@@ -1129,7 +1129,7 @@ If handtracking is enabled and hand tracking source is supported, gets the sourc
 
 :ref:`HandMotionRange<enum_OpenXRInterface_HandMotionRange>` **get_motion_range**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_get_motion_range>`
 
-If handtracking is enabled and motion range is supported, gets the currently configured motion range for ``hand``.
+Nếu hand tracking được bật và phạm vi chuyển động được hỗ trợ, lấy phạm vi chuyển động hiện được cấu hình cho ``hand``.
 
 .. rst-class:: classref-item-separator
 
@@ -1141,7 +1141,7 @@ If handtracking is enabled and motion range is supported, gets the currently con
 
 :ref:`SessionState<enum_OpenXRInterface_SessionState>` **get_session_state**\ (\ ) :ref:`🔗<class_OpenXRInterface_method_get_session_state>`
 
-Returns the current state of our OpenXR session.
+Trả về trạng thái hiện tại của phiên OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -1153,7 +1153,7 @@ Returns the current state of our OpenXR session.
 
 :ref:`bool<class_bool>` **is_action_set_active**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OpenXRInterface_method_is_action_set_active>`
 
-Returns ``true`` if the given action set is active.
+Trả về ``true`` nếu action set đã cho đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -1165,9 +1165,9 @@ Returns ``true`` if the given action set is active.
 
 :ref:`bool<class_bool>` **is_eye_gaze_interaction_supported**\ (\ ) :ref:`🔗<class_OpenXRInterface_method_is_eye_gaze_interaction_supported>`
 
-Returns the capabilities of the eye gaze interaction extension.
+Trả về các khả năng của extension tương tác bằng ánh mắt.
 
-\ **Note:** This only returns a valid value after OpenXR has been initialized.
+\ **Lưu ý:** Giá trị này chỉ hợp lệ sau khi OpenXR được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -1179,9 +1179,9 @@ Returns the capabilities of the eye gaze interaction extension.
 
 :ref:`bool<class_bool>` **is_foveation_supported**\ (\ ) |const| :ref:`🔗<class_OpenXRInterface_method_is_foveation_supported>`
 
-Returns ``true`` if OpenXR's foveation extension is supported. The interface must be initialized before this returns a valid value.
+Trả về ``true`` nếu extension foveation của OpenXR được hỗ trợ. Interface phải được khởi tạo trước khi giá trị này hợp lệ.
 
-\ **Note:** When using the Vulkan rendering driver, :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` must be set to :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>` to support foveation.
+\ **Lưu ý:** Khi sử dụng driver kết xuất Vulkan, :ref:`Viewport.vrs_mode<class_Viewport_property_vrs_mode>` phải được đặt thành :ref:`Viewport.VRS_XR<class_Viewport_constant_VRS_XR>` để hỗ trợ foveation.
 
 .. rst-class:: classref-item-separator
 
@@ -1193,9 +1193,9 @@ Returns ``true`` if OpenXR's foveation extension is supported. The interface mus
 
 :ref:`bool<class_bool>` **is_hand_interaction_supported**\ (\ ) |const| :ref:`🔗<class_OpenXRInterface_method_is_hand_interaction_supported>`
 
-Returns ``true`` if OpenXR's hand interaction profile is supported and enabled.
+Trả về ``true`` nếu hand interaction profile của OpenXR được hỗ trợ và bật.
 
-\ **Note:** This only returns a valid value after OpenXR has been initialized.
+\ **Lưu ý:** Giá trị này chỉ hợp lệ sau khi OpenXR được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -1207,9 +1207,9 @@ Returns ``true`` if OpenXR's hand interaction profile is supported and enabled.
 
 :ref:`bool<class_bool>` **is_hand_tracking_supported**\ (\ ) :ref:`🔗<class_OpenXRInterface_method_is_hand_tracking_supported>`
 
-Returns ``true`` if OpenXR's hand tracking is supported and enabled.
+Trả về ``true`` nếu hand tracking của OpenXR được hỗ trợ và bật.
 
-\ **Note:** This only returns a valid value after OpenXR has been initialized.
+\ **Lưu ý:** Giá trị này chỉ hợp lệ sau khi OpenXR được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -1221,9 +1221,9 @@ Returns ``true`` if OpenXR's hand tracking is supported and enabled.
 
 :ref:`bool<class_bool>` **is_user_presence_supported**\ (\ ) |const| :ref:`🔗<class_OpenXRInterface_method_is_user_presence_supported>`
 
-Returns ``true`` if OpenXR's user presence extension is supported and enabled.
+Trả về ``true`` nếu extension về sự hiện diện của người dùng của OpenXR được hỗ trợ và bật.
 
-\ **Note:** This only returns a valid value after OpenXR has been initialized.
+\ **Lưu ý:** Giá trị này chỉ hợp lệ sau khi OpenXR được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -1235,7 +1235,7 @@ Returns ``true`` if OpenXR's user presence extension is supported and enabled.
 
 :ref:`bool<class_bool>` **is_user_present**\ (\ ) |const| :ref:`🔗<class_OpenXRInterface_method_is_user_present>`
 
-Returns ``true`` if system has detected the presence of a user in the XR experience.
+Trả về ``true`` nếu hệ thống đã phát hiện sự hiện diện của người dùng trong trải nghiệm XR.
 
 .. rst-class:: classref-item-separator
 
@@ -1247,7 +1247,7 @@ Returns ``true`` if system has detected the presence of a user in the XR experie
 
 |void| **set_action_set_active**\ (\ name\: :ref:`String<class_String>`, active\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_OpenXRInterface_method_set_action_set_active>`
 
-Sets the given action set as active or inactive.
+Đặt action set đã cho là active hoặc inactive.
 
 .. rst-class:: classref-item-separator
 
@@ -1259,7 +1259,7 @@ Sets the given action set as active or inactive.
 
 |void| **set_cpu_level**\ (\ level\: :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>`\ ) :ref:`🔗<class_OpenXRInterface_method_set_cpu_level>`
 
-Sets the CPU performance level of the OpenXR device.
+Đặt mức hiệu năng CPU của thiết bị OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -1271,7 +1271,7 @@ Sets the CPU performance level of the OpenXR device.
 
 |void| **set_gpu_level**\ (\ level\: :ref:`PerfSettingsLevel<enum_OpenXRInterface_PerfSettingsLevel>`\ ) :ref:`🔗<class_OpenXRInterface_method_set_gpu_level>`
 
-Sets the GPU performance level of the OpenXR device.
+Đặt mức hiệu năng GPU của thiết bị OpenXR.
 
 .. rst-class:: classref-item-separator
 
@@ -1283,14 +1283,14 @@ Sets the GPU performance level of the OpenXR device.
 
 |void| **set_motion_range**\ (\ hand\: :ref:`Hand<enum_OpenXRInterface_Hand>`, motion_range\: :ref:`HandMotionRange<enum_OpenXRInterface_HandMotionRange>`\ ) :ref:`🔗<class_OpenXRInterface_method_set_motion_range>`
 
-If handtracking is enabled and motion range is supported, sets the currently configured motion range for ``hand`` to ``motion_range``.
+Nếu hand tracking được bật và motion range được hỗ trợ, đặt motion range hiện được cấu hình cho ``hand`` thành ``motion_range``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,442 +10,442 @@
 EditorExportPlatformAndroid
 ===========================
 
-**Inherits:** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exporter for Android.
+Trình xuất cho Android.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Exporting for Android <../tutorials/export/exporting_for_android>`
+- :doc:`Xuất cho Android <../tutorials/export/exporting_for_android>`
 
-- :doc:`Gradle builds for Android <../tutorials/export/android_gradle_build>`
+- :doc:`Các bản build Gradle cho Android <../tutorials/export/android_gradle_build>`
 
-- :doc:`Android plugins documentation index <../tutorials/platform/index>`
+- :doc:`Mục lục tài liệu plugin Android <../tutorials/platform/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`architectures/arm64-v8a<class_EditorExportPlatformAndroid_property_architectures/arm64-v8a>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`architectures/armeabi-v7a<class_EditorExportPlatformAndroid_property_architectures/armeabi-v7a>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`architectures/x86<class_EditorExportPlatformAndroid_property_architectures/x86>`                                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`architectures/x86_64<class_EditorExportPlatformAndroid_property_architectures/x86_64>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`command_line/extra_args<class_EditorExportPlatformAndroid_property_command_line/extra_args>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/debug<class_EditorExportPlatformAndroid_property_custom_template/debug>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/release<class_EditorExportPlatformAndroid_property_custom_template/release>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`gesture/swipe_to_dismiss<class_EditorExportPlatformAndroid_property_gesture/swipe_to_dismiss>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`gradle_build/android_source_template<class_EditorExportPlatformAndroid_property_gradle_build/android_source_template>`                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`gradle_build/compress_native_libraries<class_EditorExportPlatformAndroid_property_gradle_build/compress_native_libraries>`                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`               | :ref:`gradle_build/custom_theme_attributes<class_EditorExportPlatformAndroid_property_gradle_build/custom_theme_attributes>`                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`gradle_build/export_format<class_EditorExportPlatformAndroid_property_gradle_build/export_format>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`gradle_build/gradle_build_directory<class_EditorExportPlatformAndroid_property_gradle_build/gradle_build_directory>`                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`gradle_build/min_sdk<class_EditorExportPlatformAndroid_property_gradle_build/min_sdk>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`gradle_build/target_sdk<class_EditorExportPlatformAndroid_property_gradle_build/target_sdk>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`graphics/opengl_debug<class_EditorExportPlatformAndroid_property_graphics/opengl_debug>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`keystore/debug<class_EditorExportPlatformAndroid_property_keystore/debug>`                                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`keystore/debug_password<class_EditorExportPlatformAndroid_property_keystore/debug_password>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`keystore/debug_user<class_EditorExportPlatformAndroid_property_keystore/debug_user>`                                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`keystore/release<class_EditorExportPlatformAndroid_property_keystore/release>`                                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`keystore/release_password<class_EditorExportPlatformAndroid_property_keystore/release_password>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`keystore/release_user<class_EditorExportPlatformAndroid_property_keystore/release_user>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`launcher_icons/adaptive_background_432x432<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>`         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`launcher_icons/adaptive_foreground_432x432<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_foreground_432x432>`         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`launcher_icons/adaptive_monochrome_432x432<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_monochrome_432x432>`         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`launcher_icons/main_192x192<class_EditorExportPlatformAndroid_property_launcher_icons/main_192x192>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`package/app_category<class_EditorExportPlatformAndroid_property_package/app_category>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`package/exclude_from_recents<class_EditorExportPlatformAndroid_property_package/exclude_from_recents>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`package/name<class_EditorExportPlatformAndroid_property_package/name>`                                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`package/retain_data_on_uninstall<class_EditorExportPlatformAndroid_property_package/retain_data_on_uninstall>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`package/show_as_launcher_app<class_EditorExportPlatformAndroid_property_package/show_as_launcher_app>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`package/show_in_android_tv<class_EditorExportPlatformAndroid_property_package/show_in_android_tv>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`package/show_in_app_library<class_EditorExportPlatformAndroid_property_package/show_in_app_library>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`package/signed<class_EditorExportPlatformAndroid_property_package/signed>`                                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`package/unique_name<class_EditorExportPlatformAndroid_property_package/unique_name>`                                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_checkin_properties<class_EditorExportPlatformAndroid_property_permissions/access_checkin_properties>`                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_coarse_location<class_EditorExportPlatformAndroid_property_permissions/access_coarse_location>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_fine_location<class_EditorExportPlatformAndroid_property_permissions/access_fine_location>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_location_extra_commands<class_EditorExportPlatformAndroid_property_permissions/access_location_extra_commands>`         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_media_location<class_EditorExportPlatformAndroid_property_permissions/access_media_location>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_mock_location<class_EditorExportPlatformAndroid_property_permissions/access_mock_location>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_network_state<class_EditorExportPlatformAndroid_property_permissions/access_network_state>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_surface_flinger<class_EditorExportPlatformAndroid_property_permissions/access_surface_flinger>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_wifi_state<class_EditorExportPlatformAndroid_property_permissions/access_wifi_state>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/account_manager<class_EditorExportPlatformAndroid_property_permissions/account_manager>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/add_voicemail<class_EditorExportPlatformAndroid_property_permissions/add_voicemail>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/authenticate_accounts<class_EditorExportPlatformAndroid_property_permissions/authenticate_accounts>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/battery_stats<class_EditorExportPlatformAndroid_property_permissions/battery_stats>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_accessibility_service<class_EditorExportPlatformAndroid_property_permissions/bind_accessibility_service>`                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_appwidget<class_EditorExportPlatformAndroid_property_permissions/bind_appwidget>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_device_admin<class_EditorExportPlatformAndroid_property_permissions/bind_device_admin>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_input_method<class_EditorExportPlatformAndroid_property_permissions/bind_input_method>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_nfc_service<class_EditorExportPlatformAndroid_property_permissions/bind_nfc_service>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_notification_listener_service<class_EditorExportPlatformAndroid_property_permissions/bind_notification_listener_service>` |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_print_service<class_EditorExportPlatformAndroid_property_permissions/bind_print_service>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_remoteviews<class_EditorExportPlatformAndroid_property_permissions/bind_remoteviews>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_text_service<class_EditorExportPlatformAndroid_property_permissions/bind_text_service>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_vpn_service<class_EditorExportPlatformAndroid_property_permissions/bind_vpn_service>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_wallpaper<class_EditorExportPlatformAndroid_property_permissions/bind_wallpaper>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bluetooth<class_EditorExportPlatformAndroid_property_permissions/bluetooth>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bluetooth_admin<class_EditorExportPlatformAndroid_property_permissions/bluetooth_admin>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/bluetooth_privileged<class_EditorExportPlatformAndroid_property_permissions/bluetooth_privileged>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/brick<class_EditorExportPlatformAndroid_property_permissions/brick>`                                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_package_removed<class_EditorExportPlatformAndroid_property_permissions/broadcast_package_removed>`                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_sms<class_EditorExportPlatformAndroid_property_permissions/broadcast_sms>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_sticky<class_EditorExportPlatformAndroid_property_permissions/broadcast_sticky>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_wap_push<class_EditorExportPlatformAndroid_property_permissions/broadcast_wap_push>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/call_phone<class_EditorExportPlatformAndroid_property_permissions/call_phone>`                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/call_privileged<class_EditorExportPlatformAndroid_property_permissions/call_privileged>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/camera<class_EditorExportPlatformAndroid_property_permissions/camera>`                                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/capture_audio_output<class_EditorExportPlatformAndroid_property_permissions/capture_audio_output>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/capture_secure_video_output<class_EditorExportPlatformAndroid_property_permissions/capture_secure_video_output>`               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/capture_video_output<class_EditorExportPlatformAndroid_property_permissions/capture_video_output>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_component_enabled_state<class_EditorExportPlatformAndroid_property_permissions/change_component_enabled_state>`         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_configuration<class_EditorExportPlatformAndroid_property_permissions/change_configuration>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_network_state<class_EditorExportPlatformAndroid_property_permissions/change_network_state>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_wifi_multicast_state<class_EditorExportPlatformAndroid_property_permissions/change_wifi_multicast_state>`               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_wifi_state<class_EditorExportPlatformAndroid_property_permissions/change_wifi_state>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/clear_app_cache<class_EditorExportPlatformAndroid_property_permissions/clear_app_cache>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/clear_app_user_data<class_EditorExportPlatformAndroid_property_permissions/clear_app_user_data>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/control_location_updates<class_EditorExportPlatformAndroid_property_permissions/control_location_updates>`                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`permissions/custom_permissions<class_EditorExportPlatformAndroid_property_permissions/custom_permissions>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/delete_cache_files<class_EditorExportPlatformAndroid_property_permissions/delete_cache_files>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/delete_packages<class_EditorExportPlatformAndroid_property_permissions/delete_packages>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/device_power<class_EditorExportPlatformAndroid_property_permissions/device_power>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/diagnostic<class_EditorExportPlatformAndroid_property_permissions/diagnostic>`                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/disable_keyguard<class_EditorExportPlatformAndroid_property_permissions/disable_keyguard>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/dump<class_EditorExportPlatformAndroid_property_permissions/dump>`                                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/expand_status_bar<class_EditorExportPlatformAndroid_property_permissions/expand_status_bar>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/factory_test<class_EditorExportPlatformAndroid_property_permissions/factory_test>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/flashlight<class_EditorExportPlatformAndroid_property_permissions/flashlight>`                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/force_back<class_EditorExportPlatformAndroid_property_permissions/force_back>`                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_accounts<class_EditorExportPlatformAndroid_property_permissions/get_accounts>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_package_size<class_EditorExportPlatformAndroid_property_permissions/get_package_size>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_tasks<class_EditorExportPlatformAndroid_property_permissions/get_tasks>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_top_activity_info<class_EditorExportPlatformAndroid_property_permissions/get_top_activity_info>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/global_search<class_EditorExportPlatformAndroid_property_permissions/global_search>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/hardware_test<class_EditorExportPlatformAndroid_property_permissions/hardware_test>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/inject_events<class_EditorExportPlatformAndroid_property_permissions/inject_events>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/install_location_provider<class_EditorExportPlatformAndroid_property_permissions/install_location_provider>`                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/install_packages<class_EditorExportPlatformAndroid_property_permissions/install_packages>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/install_shortcut<class_EditorExportPlatformAndroid_property_permissions/install_shortcut>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/internal_system_window<class_EditorExportPlatformAndroid_property_permissions/internal_system_window>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/internet<class_EditorExportPlatformAndroid_property_permissions/internet>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/kill_background_processes<class_EditorExportPlatformAndroid_property_permissions/kill_background_processes>`                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/location_hardware<class_EditorExportPlatformAndroid_property_permissions/location_hardware>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_accounts<class_EditorExportPlatformAndroid_property_permissions/manage_accounts>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_app_tokens<class_EditorExportPlatformAndroid_property_permissions/manage_app_tokens>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_documents<class_EditorExportPlatformAndroid_property_permissions/manage_documents>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_external_storage<class_EditorExportPlatformAndroid_property_permissions/manage_external_storage>`                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_media<class_EditorExportPlatformAndroid_property_permissions/manage_media>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/master_clear<class_EditorExportPlatformAndroid_property_permissions/master_clear>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/media_content_control<class_EditorExportPlatformAndroid_property_permissions/media_content_control>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/modify_audio_settings<class_EditorExportPlatformAndroid_property_permissions/modify_audio_settings>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/modify_phone_state<class_EditorExportPlatformAndroid_property_permissions/modify_phone_state>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/mount_format_filesystems<class_EditorExportPlatformAndroid_property_permissions/mount_format_filesystems>`                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/mount_unmount_filesystems<class_EditorExportPlatformAndroid_property_permissions/mount_unmount_filesystems>`                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/nfc<class_EditorExportPlatformAndroid_property_permissions/nfc>`                                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/persistent_activity<class_EditorExportPlatformAndroid_property_permissions/persistent_activity>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/post_notifications<class_EditorExportPlatformAndroid_property_permissions/post_notifications>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/process_outgoing_calls<class_EditorExportPlatformAndroid_property_permissions/process_outgoing_calls>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_calendar<class_EditorExportPlatformAndroid_property_permissions/read_calendar>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_call_log<class_EditorExportPlatformAndroid_property_permissions/read_call_log>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_contacts<class_EditorExportPlatformAndroid_property_permissions/read_contacts>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_external_storage<class_EditorExportPlatformAndroid_property_permissions/read_external_storage>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_frame_buffer<class_EditorExportPlatformAndroid_property_permissions/read_frame_buffer>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_history_bookmarks<class_EditorExportPlatformAndroid_property_permissions/read_history_bookmarks>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_input_state<class_EditorExportPlatformAndroid_property_permissions/read_input_state>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_logs<class_EditorExportPlatformAndroid_property_permissions/read_logs>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_audio<class_EditorExportPlatformAndroid_property_permissions/read_media_audio>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_images<class_EditorExportPlatformAndroid_property_permissions/read_media_images>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_video<class_EditorExportPlatformAndroid_property_permissions/read_media_video>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_visual_user_selected<class_EditorExportPlatformAndroid_property_permissions/read_media_visual_user_selected>`       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_phone_state<class_EditorExportPlatformAndroid_property_permissions/read_phone_state>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_profile<class_EditorExportPlatformAndroid_property_permissions/read_profile>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_sms<class_EditorExportPlatformAndroid_property_permissions/read_sms>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_social_stream<class_EditorExportPlatformAndroid_property_permissions/read_social_stream>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_sync_settings<class_EditorExportPlatformAndroid_property_permissions/read_sync_settings>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_sync_stats<class_EditorExportPlatformAndroid_property_permissions/read_sync_stats>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_user_dictionary<class_EditorExportPlatformAndroid_property_permissions/read_user_dictionary>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/reboot<class_EditorExportPlatformAndroid_property_permissions/reboot>`                                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_boot_completed<class_EditorExportPlatformAndroid_property_permissions/receive_boot_completed>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_mms<class_EditorExportPlatformAndroid_property_permissions/receive_mms>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_sms<class_EditorExportPlatformAndroid_property_permissions/receive_sms>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_wap_push<class_EditorExportPlatformAndroid_property_permissions/receive_wap_push>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/record_audio<class_EditorExportPlatformAndroid_property_permissions/record_audio>`                                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/reorder_tasks<class_EditorExportPlatformAndroid_property_permissions/reorder_tasks>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/restart_packages<class_EditorExportPlatformAndroid_property_permissions/restart_packages>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/send_respond_via_message<class_EditorExportPlatformAndroid_property_permissions/send_respond_via_message>`                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/send_sms<class_EditorExportPlatformAndroid_property_permissions/send_sms>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_activity_watcher<class_EditorExportPlatformAndroid_property_permissions/set_activity_watcher>`                             |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_alarm<class_EditorExportPlatformAndroid_property_permissions/set_alarm>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_always_finish<class_EditorExportPlatformAndroid_property_permissions/set_always_finish>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_animation_scale<class_EditorExportPlatformAndroid_property_permissions/set_animation_scale>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_debug_app<class_EditorExportPlatformAndroid_property_permissions/set_debug_app>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_orientation<class_EditorExportPlatformAndroid_property_permissions/set_orientation>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_pointer_speed<class_EditorExportPlatformAndroid_property_permissions/set_pointer_speed>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_preferred_applications<class_EditorExportPlatformAndroid_property_permissions/set_preferred_applications>`                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_process_limit<class_EditorExportPlatformAndroid_property_permissions/set_process_limit>`                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_time<class_EditorExportPlatformAndroid_property_permissions/set_time>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_time_zone<class_EditorExportPlatformAndroid_property_permissions/set_time_zone>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_wallpaper<class_EditorExportPlatformAndroid_property_permissions/set_wallpaper>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_wallpaper_hints<class_EditorExportPlatformAndroid_property_permissions/set_wallpaper_hints>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/signal_persistent_processes<class_EditorExportPlatformAndroid_property_permissions/signal_persistent_processes>`               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/status_bar<class_EditorExportPlatformAndroid_property_permissions/status_bar>`                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/subscribed_feeds_read<class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_read>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/subscribed_feeds_write<class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_write>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/system_alert_window<class_EditorExportPlatformAndroid_property_permissions/system_alert_window>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/transmit_ir<class_EditorExportPlatformAndroid_property_permissions/transmit_ir>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/uninstall_shortcut<class_EditorExportPlatformAndroid_property_permissions/uninstall_shortcut>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/update_device_stats<class_EditorExportPlatformAndroid_property_permissions/update_device_stats>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/use_credentials<class_EditorExportPlatformAndroid_property_permissions/use_credentials>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/use_sip<class_EditorExportPlatformAndroid_property_permissions/use_sip>`                                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/vibrate<class_EditorExportPlatformAndroid_property_permissions/vibrate>`                                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/wake_lock<class_EditorExportPlatformAndroid_property_permissions/wake_lock>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_apn_settings<class_EditorExportPlatformAndroid_property_permissions/write_apn_settings>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_calendar<class_EditorExportPlatformAndroid_property_permissions/write_calendar>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_call_log<class_EditorExportPlatformAndroid_property_permissions/write_call_log>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_contacts<class_EditorExportPlatformAndroid_property_permissions/write_contacts>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_external_storage<class_EditorExportPlatformAndroid_property_permissions/write_external_storage>`                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_gservices<class_EditorExportPlatformAndroid_property_permissions/write_gservices>`                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_history_bookmarks<class_EditorExportPlatformAndroid_property_permissions/write_history_bookmarks>`                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_profile<class_EditorExportPlatformAndroid_property_permissions/write_profile>`                                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_secure_settings<class_EditorExportPlatformAndroid_property_permissions/write_secure_settings>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_settings<class_EditorExportPlatformAndroid_property_permissions/write_settings>`                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_sms<class_EditorExportPlatformAndroid_property_permissions/write_sms>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_social_stream<class_EditorExportPlatformAndroid_property_permissions/write_social_stream>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_sync_settings<class_EditorExportPlatformAndroid_property_permissions/write_sync_settings>`                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_user_dictionary<class_EditorExportPlatformAndroid_property_permissions/write_user_dictionary>`                           |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`screen/background_color<class_EditorExportPlatformAndroid_property_screen/background_color>`                                               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`screen/edge_to_edge<class_EditorExportPlatformAndroid_property_screen/edge_to_edge>`                                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`screen/immersive_mode<class_EditorExportPlatformAndroid_property_screen/immersive_mode>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`screen/support_large<class_EditorExportPlatformAndroid_property_screen/support_large>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`screen/support_normal<class_EditorExportPlatformAndroid_property_screen/support_normal>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`screen/support_small<class_EditorExportPlatformAndroid_property_screen/support_small>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`screen/support_xlarge<class_EditorExportPlatformAndroid_property_screen/support_xlarge>`                                                   |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled<class_EditorExportPlatformAndroid_property_shader_baker/enabled>`                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`                         | :ref:`splash_screen/background_color<class_EditorExportPlatformAndroid_property_splash_screen/background_color>`                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`splash_screen/branding_image<class_EditorExportPlatformAndroid_property_splash_screen/branding_image>`                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`splash_screen/disable_godot_boot_splash<class_EditorExportPlatformAndroid_property_splash_screen/disable_godot_boot_splash>`               |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`splash_screen/icon<class_EditorExportPlatformAndroid_property_splash_screen/icon>`                                                         |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`user_data_backup/allow<class_EditorExportPlatformAndroid_property_user_data_backup/allow>`                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`version/code<class_EditorExportPlatformAndroid_property_version/code>`                                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`version/name<class_EditorExportPlatformAndroid_property_version/name>`                                                                     |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`xr_features/xr_mode<class_EditorExportPlatformAndroid_property_xr_features/xr_mode>`                                                       |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`architectures/arm64-v8a <class_EditorExportPlatformAndroid_property_architectures/arm64-v8a>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`architectures/armeabi-v7a <class_EditorExportPlatformAndroid_property_architectures/armeabi-v7a>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`architectures/x86 <class_EditorExportPlatformAndroid_property_architectures/x86>`                                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`architectures/x86_64 <class_EditorExportPlatformAndroid_property_architectures/x86_64>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`command_line/extra_args <class_EditorExportPlatformAndroid_property_command_line/extra_args>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/debug <class_EditorExportPlatformAndroid_property_custom_template/debug>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/release <class_EditorExportPlatformAndroid_property_custom_template/release>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`gesture/swipe_to_dismiss <class_EditorExportPlatformAndroid_property_gesture/swipe_to_dismiss>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`gradle_build/android_source_template <class_EditorExportPlatformAndroid_property_gradle_build/android_source_template>`                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`gradle_build/compress_native_libraries <class_EditorExportPlatformAndroid_property_gradle_build/compress_native_libraries>`                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`               | :ref:`gradle_build/custom_theme_attributes <class_EditorExportPlatformAndroid_property_gradle_build/custom_theme_attributes>`                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`gradle_build/export_format <class_EditorExportPlatformAndroid_property_gradle_build/export_format>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`gradle_build/gradle_build_directory <class_EditorExportPlatformAndroid_property_gradle_build/gradle_build_directory>`                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`gradle_build/min_sdk <class_EditorExportPlatformAndroid_property_gradle_build/min_sdk>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`gradle_build/target_sdk <class_EditorExportPlatformAndroid_property_gradle_build/target_sdk>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`graphics/opengl_debug <class_EditorExportPlatformAndroid_property_graphics/opengl_debug>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`keystore/debug <class_EditorExportPlatformAndroid_property_keystore/debug>`                                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`keystore/debug_password <class_EditorExportPlatformAndroid_property_keystore/debug_password>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`keystore/debug_user <class_EditorExportPlatformAndroid_property_keystore/debug_user>`                                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`keystore/release <class_EditorExportPlatformAndroid_property_keystore/release>`                                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`keystore/release_password <class_EditorExportPlatformAndroid_property_keystore/release_password>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`keystore/release_user <class_EditorExportPlatformAndroid_property_keystore/release_user>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`launcher_icons/adaptive_background_432x432 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>`         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`launcher_icons/adaptive_foreground_432x432 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_foreground_432x432>`         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`launcher_icons/adaptive_monochrome_432x432 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_monochrome_432x432>`         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`launcher_icons/main_192x192 <class_EditorExportPlatformAndroid_property_launcher_icons/main_192x192>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`package/app_category <class_EditorExportPlatformAndroid_property_package/app_category>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`package/exclude_from_recents <class_EditorExportPlatformAndroid_property_package/exclude_from_recents>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`package/name <class_EditorExportPlatformAndroid_property_package/name>`                                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`package/retain_data_on_uninstall <class_EditorExportPlatformAndroid_property_package/retain_data_on_uninstall>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`package/show_as_launcher_app <class_EditorExportPlatformAndroid_property_package/show_as_launcher_app>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`package/show_in_android_tv <class_EditorExportPlatformAndroid_property_package/show_in_android_tv>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`package/show_in_app_library <class_EditorExportPlatformAndroid_property_package/show_in_app_library>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`package/signed <class_EditorExportPlatformAndroid_property_package/signed>`                                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`package/unique_name <class_EditorExportPlatformAndroid_property_package/unique_name>`                                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_checkin_properties <class_EditorExportPlatformAndroid_property_permissions/access_checkin_properties>`                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_coarse_location <class_EditorExportPlatformAndroid_property_permissions/access_coarse_location>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_fine_location <class_EditorExportPlatformAndroid_property_permissions/access_fine_location>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_location_extra_commands <class_EditorExportPlatformAndroid_property_permissions/access_location_extra_commands>`         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_media_location <class_EditorExportPlatformAndroid_property_permissions/access_media_location>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_mock_location <class_EditorExportPlatformAndroid_property_permissions/access_mock_location>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_network_state <class_EditorExportPlatformAndroid_property_permissions/access_network_state>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_surface_flinger <class_EditorExportPlatformAndroid_property_permissions/access_surface_flinger>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/access_wifi_state <class_EditorExportPlatformAndroid_property_permissions/access_wifi_state>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/account_manager <class_EditorExportPlatformAndroid_property_permissions/account_manager>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/add_voicemail <class_EditorExportPlatformAndroid_property_permissions/add_voicemail>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/authenticate_accounts <class_EditorExportPlatformAndroid_property_permissions/authenticate_accounts>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/battery_stats <class_EditorExportPlatformAndroid_property_permissions/battery_stats>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_accessibility_service <class_EditorExportPlatformAndroid_property_permissions/bind_accessibility_service>`                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_appwidget <class_EditorExportPlatformAndroid_property_permissions/bind_appwidget>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_device_admin <class_EditorExportPlatformAndroid_property_permissions/bind_device_admin>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_input_method <class_EditorExportPlatformAndroid_property_permissions/bind_input_method>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_nfc_service <class_EditorExportPlatformAndroid_property_permissions/bind_nfc_service>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_notification_listener_service <class_EditorExportPlatformAndroid_property_permissions/bind_notification_listener_service>` |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_print_service <class_EditorExportPlatformAndroid_property_permissions/bind_print_service>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_remoteviews <class_EditorExportPlatformAndroid_property_permissions/bind_remoteviews>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_text_service <class_EditorExportPlatformAndroid_property_permissions/bind_text_service>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_vpn_service <class_EditorExportPlatformAndroid_property_permissions/bind_vpn_service>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bind_wallpaper <class_EditorExportPlatformAndroid_property_permissions/bind_wallpaper>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bluetooth <class_EditorExportPlatformAndroid_property_permissions/bluetooth>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bluetooth_admin <class_EditorExportPlatformAndroid_property_permissions/bluetooth_admin>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/bluetooth_privileged <class_EditorExportPlatformAndroid_property_permissions/bluetooth_privileged>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/brick <class_EditorExportPlatformAndroid_property_permissions/brick>`                                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_package_removed <class_EditorExportPlatformAndroid_property_permissions/broadcast_package_removed>`                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_sms <class_EditorExportPlatformAndroid_property_permissions/broadcast_sms>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_sticky <class_EditorExportPlatformAndroid_property_permissions/broadcast_sticky>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/broadcast_wap_push <class_EditorExportPlatformAndroid_property_permissions/broadcast_wap_push>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/call_phone <class_EditorExportPlatformAndroid_property_permissions/call_phone>`                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/call_privileged <class_EditorExportPlatformAndroid_property_permissions/call_privileged>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/camera <class_EditorExportPlatformAndroid_property_permissions/camera>`                                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/capture_audio_output <class_EditorExportPlatformAndroid_property_permissions/capture_audio_output>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/capture_secure_video_output <class_EditorExportPlatformAndroid_property_permissions/capture_secure_video_output>`               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/capture_video_output <class_EditorExportPlatformAndroid_property_permissions/capture_video_output>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_component_enabled_state <class_EditorExportPlatformAndroid_property_permissions/change_component_enabled_state>`         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_configuration <class_EditorExportPlatformAndroid_property_permissions/change_configuration>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_network_state <class_EditorExportPlatformAndroid_property_permissions/change_network_state>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_wifi_multicast_state <class_EditorExportPlatformAndroid_property_permissions/change_wifi_multicast_state>`               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/change_wifi_state <class_EditorExportPlatformAndroid_property_permissions/change_wifi_state>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/clear_app_cache <class_EditorExportPlatformAndroid_property_permissions/clear_app_cache>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/clear_app_user_data <class_EditorExportPlatformAndroid_property_permissions/clear_app_user_data>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/control_location_updates <class_EditorExportPlatformAndroid_property_permissions/control_location_updates>`                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`permissions/custom_permissions <class_EditorExportPlatformAndroid_property_permissions/custom_permissions>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/delete_cache_files <class_EditorExportPlatformAndroid_property_permissions/delete_cache_files>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/delete_packages <class_EditorExportPlatformAndroid_property_permissions/delete_packages>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/device_power <class_EditorExportPlatformAndroid_property_permissions/device_power>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/diagnostic <class_EditorExportPlatformAndroid_property_permissions/diagnostic>`                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/disable_keyguard <class_EditorExportPlatformAndroid_property_permissions/disable_keyguard>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/dump <class_EditorExportPlatformAndroid_property_permissions/dump>`                                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/expand_status_bar <class_EditorExportPlatformAndroid_property_permissions/expand_status_bar>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/factory_test <class_EditorExportPlatformAndroid_property_permissions/factory_test>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/flashlight <class_EditorExportPlatformAndroid_property_permissions/flashlight>`                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/force_back <class_EditorExportPlatformAndroid_property_permissions/force_back>`                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_accounts <class_EditorExportPlatformAndroid_property_permissions/get_accounts>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_package_size <class_EditorExportPlatformAndroid_property_permissions/get_package_size>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_tasks <class_EditorExportPlatformAndroid_property_permissions/get_tasks>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/get_top_activity_info <class_EditorExportPlatformAndroid_property_permissions/get_top_activity_info>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/global_search <class_EditorExportPlatformAndroid_property_permissions/global_search>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/hardware_test <class_EditorExportPlatformAndroid_property_permissions/hardware_test>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/inject_events <class_EditorExportPlatformAndroid_property_permissions/inject_events>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/install_location_provider <class_EditorExportPlatformAndroid_property_permissions/install_location_provider>`                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/install_packages <class_EditorExportPlatformAndroid_property_permissions/install_packages>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/install_shortcut <class_EditorExportPlatformAndroid_property_permissions/install_shortcut>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/internal_system_window <class_EditorExportPlatformAndroid_property_permissions/internal_system_window>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/internet <class_EditorExportPlatformAndroid_property_permissions/internet>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/kill_background_processes <class_EditorExportPlatformAndroid_property_permissions/kill_background_processes>`                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/location_hardware <class_EditorExportPlatformAndroid_property_permissions/location_hardware>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_accounts <class_EditorExportPlatformAndroid_property_permissions/manage_accounts>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_app_tokens <class_EditorExportPlatformAndroid_property_permissions/manage_app_tokens>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_documents <class_EditorExportPlatformAndroid_property_permissions/manage_documents>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_external_storage <class_EditorExportPlatformAndroid_property_permissions/manage_external_storage>`                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/manage_media <class_EditorExportPlatformAndroid_property_permissions/manage_media>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/master_clear <class_EditorExportPlatformAndroid_property_permissions/master_clear>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/media_content_control <class_EditorExportPlatformAndroid_property_permissions/media_content_control>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/modify_audio_settings <class_EditorExportPlatformAndroid_property_permissions/modify_audio_settings>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/modify_phone_state <class_EditorExportPlatformAndroid_property_permissions/modify_phone_state>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/mount_format_filesystems <class_EditorExportPlatformAndroid_property_permissions/mount_format_filesystems>`                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/mount_unmount_filesystems <class_EditorExportPlatformAndroid_property_permissions/mount_unmount_filesystems>`                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/nfc <class_EditorExportPlatformAndroid_property_permissions/nfc>`                                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/persistent_activity <class_EditorExportPlatformAndroid_property_permissions/persistent_activity>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/post_notifications <class_EditorExportPlatformAndroid_property_permissions/post_notifications>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/process_outgoing_calls <class_EditorExportPlatformAndroid_property_permissions/process_outgoing_calls>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_calendar <class_EditorExportPlatformAndroid_property_permissions/read_calendar>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_call_log <class_EditorExportPlatformAndroid_property_permissions/read_call_log>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_contacts <class_EditorExportPlatformAndroid_property_permissions/read_contacts>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_external_storage <class_EditorExportPlatformAndroid_property_permissions/read_external_storage>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_frame_buffer <class_EditorExportPlatformAndroid_property_permissions/read_frame_buffer>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_history_bookmarks <class_EditorExportPlatformAndroid_property_permissions/read_history_bookmarks>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_input_state <class_EditorExportPlatformAndroid_property_permissions/read_input_state>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_logs <class_EditorExportPlatformAndroid_property_permissions/read_logs>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_audio <class_EditorExportPlatformAndroid_property_permissions/read_media_audio>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_images <class_EditorExportPlatformAndroid_property_permissions/read_media_images>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_video <class_EditorExportPlatformAndroid_property_permissions/read_media_video>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_media_visual_user_selected <class_EditorExportPlatformAndroid_property_permissions/read_media_visual_user_selected>`       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_phone_state <class_EditorExportPlatformAndroid_property_permissions/read_phone_state>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_profile <class_EditorExportPlatformAndroid_property_permissions/read_profile>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_sms <class_EditorExportPlatformAndroid_property_permissions/read_sms>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_social_stream <class_EditorExportPlatformAndroid_property_permissions/read_social_stream>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_sync_settings <class_EditorExportPlatformAndroid_property_permissions/read_sync_settings>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_sync_stats <class_EditorExportPlatformAndroid_property_permissions/read_sync_stats>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/read_user_dictionary <class_EditorExportPlatformAndroid_property_permissions/read_user_dictionary>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/reboot <class_EditorExportPlatformAndroid_property_permissions/reboot>`                                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_boot_completed <class_EditorExportPlatformAndroid_property_permissions/receive_boot_completed>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_mms <class_EditorExportPlatformAndroid_property_permissions/receive_mms>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_sms <class_EditorExportPlatformAndroid_property_permissions/receive_sms>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/receive_wap_push <class_EditorExportPlatformAndroid_property_permissions/receive_wap_push>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/record_audio <class_EditorExportPlatformAndroid_property_permissions/record_audio>`                                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/reorder_tasks <class_EditorExportPlatformAndroid_property_permissions/reorder_tasks>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/restart_packages <class_EditorExportPlatformAndroid_property_permissions/restart_packages>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/send_respond_via_message <class_EditorExportPlatformAndroid_property_permissions/send_respond_via_message>`                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/send_sms <class_EditorExportPlatformAndroid_property_permissions/send_sms>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_activity_watcher <class_EditorExportPlatformAndroid_property_permissions/set_activity_watcher>`                             |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_alarm <class_EditorExportPlatformAndroid_property_permissions/set_alarm>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_always_finish <class_EditorExportPlatformAndroid_property_permissions/set_always_finish>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_animation_scale <class_EditorExportPlatformAndroid_property_permissions/set_animation_scale>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_debug_app <class_EditorExportPlatformAndroid_property_permissions/set_debug_app>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_orientation <class_EditorExportPlatformAndroid_property_permissions/set_orientation>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_pointer_speed <class_EditorExportPlatformAndroid_property_permissions/set_pointer_speed>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_preferred_applications <class_EditorExportPlatformAndroid_property_permissions/set_preferred_applications>`                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_process_limit <class_EditorExportPlatformAndroid_property_permissions/set_process_limit>`                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_time <class_EditorExportPlatformAndroid_property_permissions/set_time>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_time_zone <class_EditorExportPlatformAndroid_property_permissions/set_time_zone>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_wallpaper <class_EditorExportPlatformAndroid_property_permissions/set_wallpaper>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/set_wallpaper_hints <class_EditorExportPlatformAndroid_property_permissions/set_wallpaper_hints>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/signal_persistent_processes <class_EditorExportPlatformAndroid_property_permissions/signal_persistent_processes>`               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/status_bar <class_EditorExportPlatformAndroid_property_permissions/status_bar>`                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/subscribed_feeds_read <class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_read>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/subscribed_feeds_write <class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_write>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/system_alert_window <class_EditorExportPlatformAndroid_property_permissions/system_alert_window>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/transmit_ir <class_EditorExportPlatformAndroid_property_permissions/transmit_ir>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/uninstall_shortcut <class_EditorExportPlatformAndroid_property_permissions/uninstall_shortcut>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/update_device_stats <class_EditorExportPlatformAndroid_property_permissions/update_device_stats>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/use_credentials <class_EditorExportPlatformAndroid_property_permissions/use_credentials>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/use_sip <class_EditorExportPlatformAndroid_property_permissions/use_sip>`                                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/vibrate <class_EditorExportPlatformAndroid_property_permissions/vibrate>`                                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/wake_lock <class_EditorExportPlatformAndroid_property_permissions/wake_lock>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_apn_settings <class_EditorExportPlatformAndroid_property_permissions/write_apn_settings>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_calendar <class_EditorExportPlatformAndroid_property_permissions/write_calendar>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_call_log <class_EditorExportPlatformAndroid_property_permissions/write_call_log>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_contacts <class_EditorExportPlatformAndroid_property_permissions/write_contacts>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_external_storage <class_EditorExportPlatformAndroid_property_permissions/write_external_storage>`                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_gservices <class_EditorExportPlatformAndroid_property_permissions/write_gservices>`                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_history_bookmarks <class_EditorExportPlatformAndroid_property_permissions/write_history_bookmarks>`                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_profile <class_EditorExportPlatformAndroid_property_permissions/write_profile>`                                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_secure_settings <class_EditorExportPlatformAndroid_property_permissions/write_secure_settings>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_settings <class_EditorExportPlatformAndroid_property_permissions/write_settings>`                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_sms <class_EditorExportPlatformAndroid_property_permissions/write_sms>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_social_stream <class_EditorExportPlatformAndroid_property_permissions/write_social_stream>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_sync_settings <class_EditorExportPlatformAndroid_property_permissions/write_sync_settings>`                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`permissions/write_user_dictionary <class_EditorExportPlatformAndroid_property_permissions/write_user_dictionary>`                           |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`screen/background_color <class_EditorExportPlatformAndroid_property_screen/background_color>`                                               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`screen/edge_to_edge <class_EditorExportPlatformAndroid_property_screen/edge_to_edge>`                                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`screen/immersive_mode <class_EditorExportPlatformAndroid_property_screen/immersive_mode>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`screen/support_large <class_EditorExportPlatformAndroid_property_screen/support_large>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`screen/support_normal <class_EditorExportPlatformAndroid_property_screen/support_normal>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`screen/support_small <class_EditorExportPlatformAndroid_property_screen/support_small>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`screen/support_xlarge <class_EditorExportPlatformAndroid_property_screen/support_xlarge>`                                                   |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled <class_EditorExportPlatformAndroid_property_shader_baker/enabled>`                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`                         | :ref:`splash_screen/background_color <class_EditorExportPlatformAndroid_property_splash_screen/background_color>`                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`splash_screen/branding_image <class_EditorExportPlatformAndroid_property_splash_screen/branding_image>`                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`splash_screen/disable_godot_boot_splash <class_EditorExportPlatformAndroid_property_splash_screen/disable_godot_boot_splash>`               |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`splash_screen/icon <class_EditorExportPlatformAndroid_property_splash_screen/icon>`                                                         |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`user_data_backup/allow <class_EditorExportPlatformAndroid_property_user_data_backup/allow>`                                                 |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`version/code <class_EditorExportPlatformAndroid_property_version/code>`                                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`version/name <class_EditorExportPlatformAndroid_property_version/name>`                                                                     |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`xr_features/xr_mode <class_EditorExportPlatformAndroid_property_xr_features/xr_mode>`                                                       |
+   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -453,16 +453,16 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorExportPlatformAndroid_property_architectures/arm64-v8a:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **architectures/arm64-v8a** :ref:`🔗<class_EditorExportPlatformAndroid_property_architectures/arm64-v8a>`
+:ref:`bool<class_bool>` **architectures/arm64-v8a** :ref:`🔗 <class_EditorExportPlatformAndroid_property_architectures/arm64-v8a>`
 
-If ``true``, ``arm64`` binaries are included into exported project.
+Nếu ``true``, ``arm64`` các tệp nhị phân được đưa vào project đã export.
 
 .. rst-class:: classref-item-separator
 
@@ -472,9 +472,9 @@ If ``true``, ``arm64`` binaries are included into exported project.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **architectures/armeabi-v7a** :ref:`🔗<class_EditorExportPlatformAndroid_property_architectures/armeabi-v7a>`
+:ref:`bool<class_bool>` **architectures/armeabi-v7a** :ref:`🔗 <class_EditorExportPlatformAndroid_property_architectures/armeabi-v7a>`
 
-If ``true``, ``arm32`` binaries are included into exported project.
+Nếu ``true``, các tệp nhị phân ``arm32`` được đưa vào dự án đã xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -484,9 +484,9 @@ If ``true``, ``arm32`` binaries are included into exported project.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **architectures/x86** :ref:`🔗<class_EditorExportPlatformAndroid_property_architectures/x86>`
+:ref:`bool<class_bool>` **architectures/x86** :ref:`🔗 <class_EditorExportPlatformAndroid_property_architectures/x86>`
 
-If ``true``, ``x86_32`` binaries are included into exported project.
+Nếu ``true``, các tệp nhị phân ``x86_32`` được đưa vào dự án đã xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -496,9 +496,9 @@ If ``true``, ``x86_32`` binaries are included into exported project.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **architectures/x86_64** :ref:`🔗<class_EditorExportPlatformAndroid_property_architectures/x86_64>`
+:ref:`bool<class_bool>` **architectures/x86_64** :ref:`🔗 <class_EditorExportPlatformAndroid_property_architectures/x86_64>`
 
-If ``true``, ``x86_64`` binaries are included into exported project.
+Nếu ``true``, các tệp nhị phân ``x86_64`` được đưa vào dự án đã xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -508,9 +508,9 @@ If ``true``, ``x86_64`` binaries are included into exported project.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **command_line/extra_args** :ref:`🔗<class_EditorExportPlatformAndroid_property_command_line/extra_args>`
+:ref:`String<class_String>` **command_line/extra_args** :ref:`🔗 <class_EditorExportPlatformAndroid_property_command_line/extra_args>`
 
-A list of additional command line arguments, separated by space, which the exported project will receive when started.
+Danh sách các đối số dòng lệnh bổ sung, được phân tách bằng dấu cách, mà dự án đã xuất sẽ nhận khi khởi động.
 
 .. rst-class:: classref-item-separator
 
@@ -520,11 +520,11 @@ A list of additional command line arguments, separated by space, which the expor
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/debug** :ref:`🔗<class_EditorExportPlatformAndroid_property_custom_template/debug>`
+:ref:`String<class_String>` **custom_template/debug** :ref:`🔗 <class_EditorExportPlatformAndroid_property_custom_template/debug>`
 
-Path to an APK file to use as a custom export template for debug exports. If left empty, default template is used.
+Đường dẫn đến tệp APK dùng làm template export tùy chỉnh cho các bản export debug. Nếu để trống, template mặc định sẽ được sử dụng.
 
-\ **Note:** This is only used if :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` is disabled.
+\ **Lưu ý:** Tùy chọn này chỉ được sử dụng nếu :ref:`gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -534,11 +534,11 @@ Path to an APK file to use as a custom export template for debug exports. If lef
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/release** :ref:`🔗<class_EditorExportPlatformAndroid_property_custom_template/release>`
+:ref:`String<class_String>` **custom_template/release** :ref:`🔗 <class_EditorExportPlatformAndroid_property_custom_template/release>`
 
-Path to an APK file to use as a custom export template for release exports. If left empty, default template is used.
+Đường dẫn đến tệp APK dùng làm template export tùy chỉnh cho các bản export release. Nếu để trống, template mặc định sẽ được sử dụng.
 
-\ **Note:** This is only used if :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` is disabled.
+\ **Lưu ý:** Tùy chọn này chỉ được sử dụng nếu :ref:`gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -548,13 +548,13 @@ Path to an APK file to use as a custom export template for release exports. If l
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **gesture/swipe_to_dismiss** :ref:`🔗<class_EditorExportPlatformAndroid_property_gesture/swipe_to_dismiss>`
+:ref:`bool<class_bool>` **gesture/swipe_to_dismiss** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gesture/swipe_to_dismiss>`
 
-If ``true``, `Swipe to dismiss <https://developer.android.com/design/ui/wear/guides/components/swipe-to-dismiss>`__ will be enabled.
+Nếu ``true``, `Vuốt để bỏ qua <https://developer.android.com/design/ui/wear/guides/components/swipe-to-dismiss>`__ sẽ được bật.
 
-This functionality is intended for smartwatches and is generally ignored on standard Android devices. However, some devices may not ignore it. Therefore, it is recommended to keep this feature disabled for standard Android apps to avoid unexpected behavior.
+Chức năng này dành cho smartwatch và thường bị bỏ qua trên các thiết bị Android tiêu chuẩn. Tuy nhiên, một số thiết bị có thể không bỏ qua chức năng này. Do đó, bạn nên tắt tính năng này đối với các ứng dụng Android tiêu chuẩn để tránh hành vi không mong muốn.
 
-\ **Note:** This is ``false`` by default. To enable this behavior, :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` is required.
+\ **Lưu ý:** Tính năng này được ``false`` theo mặc định. Để bật hành vi này, cần có :ref:`gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`.
 
 .. rst-class:: classref-item-separator
 
@@ -564,9 +564,9 @@ This functionality is intended for smartwatches and is generally ignored on stan
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **gradle_build/android_source_template** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/android_source_template>`
+:ref:`String<class_String>` **gradle_build/android_source_template** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/android_source_template>`
 
-Path to a ZIP file holding the source for the export template used in a Gradle build. If left empty, the default template is used.
+Đường dẫn đến tệp ZIP chứa mã nguồn cho export template được sử dụng trong Gradle build. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -576,13 +576,13 @@ Path to a ZIP file holding the source for the export template used in a Gradle b
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **gradle_build/compress_native_libraries** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/compress_native_libraries>`
+:ref:`bool<class_bool>` **gradle_build/compress_native_libraries** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/compress_native_libraries>`
 
-If ``true``, native libraries are compressed when performing a Gradle build.
+Nếu ``true``, các native library sẽ được nén khi thực hiện Gradle build.
 
-\ **Note:** While enabling compression can reduce the size of the binary, it may result in slower application startup because the native libraries must be extracted before use, rather than being loaded directly.
+\ **Lưu ý:** Mặc dù việc bật tính năng nén có thể giảm kích thước binary, nhưng có thể khiến ứng dụng khởi động chậm hơn vì các thư viện native phải được giải nén trước khi sử dụng, thay vì được tải trực tiếp.
 
-If you're distributing your app via the Play Store, it's generally recommended to keep this option ``false``, see `official documentation <https://developer.android.com/build/releases/past-releases/agp-3-6-0-release-notes#extractNativeLibs>`__.
+Nếu bạn phân phối ứng dụng qua Play Store, thông thường bạn nên giữ tùy chọn này ở trạng thái ``false``, xem `tài liệu chính thức <https://developer.android.com/build/releases/past-releases/agp-3-6-0-release-notes#extractNativeLibs>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -592,15 +592,15 @@ If you're distributing your app via the Play Store, it's generally recommended t
 
 .. rst-class:: classref-property
 
-:ref:`Dictionary<class_Dictionary>` **gradle_build/custom_theme_attributes** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/custom_theme_attributes>`
+:ref:`Dictionary<class_Dictionary>` **gradle_build/custom_theme_attributes** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/custom_theme_attributes>`
 
-A dictionary of custom theme attributes to include in the exported Android project. Each entry defines a theme attribute name and its value, and will be added to the **GodotAppMainTheme**.
+Một dictionary gồm các theme attribute tùy chỉnh cần đưa vào project Android đã export. Mỗi mục xác định tên theme attribute và giá trị của nó, rồi sẽ được thêm vào **GodotAppMainTheme**.
 
-For example, the key ``android:windowSwipeToDismiss`` with the value ``false`` is resolved to ``<item name="android:windowSwipeToDismiss">false</item>``.
+Ví dụ, key ``android:windowSwipeToDismiss`` với value ``false`` sẽ được phân giải thành ``<item name="android:windowSwipeToDismiss">false</item>``.
 
-\ **Note:** To add a custom attribute to the **GodotAppSplashTheme**, prefix the attribute name with ``[splash]``.
+\ **Lưu ý:** Để thêm một attribute tùy chỉnh vào **GodotAppSplashTheme**, hãy thêm tiền tố ``[splash]`` vào tên attribute.
 
-\ **Note:** Reserved attributes configured via other export options or project settings cannot be overridden by ``custom_theme_attributes`` and are skipped during export.
+\ **Lưu ý:** Các attribute dành riêng được cấu hình thông qua các tùy chọn export hoặc project settings khác không thể bị ghi đè bởi ``custom_theme_attributes`` và sẽ bị bỏ qua trong quá trình export.
 
 .. rst-class:: classref-item-separator
 
@@ -610,9 +610,9 @@ For example, the key ``android:windowSwipeToDismiss`` with the value ``false`` i
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **gradle_build/export_format** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/export_format>`
+:ref:`int<class_int>` **gradle_build/export_format** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/export_format>`
 
-Application export format (\*.apk or \*.aab).
+Định dạng export ứng dụng (\*.apk hoặc \*.aab).
 
 .. rst-class:: classref-item-separator
 
@@ -622,9 +622,9 @@ Application export format (\*.apk or \*.aab).
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **gradle_build/gradle_build_directory** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/gradle_build_directory>`
+:ref:`String<class_String>` **gradle_build/gradle_build_directory** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/gradle_build_directory>`
 
-Path to the Gradle build directory. If left empty, then ``res://android`` will be used.
+Đường dẫn đến thư mục build Gradle. Nếu để trống, ``res://android`` sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -634,9 +634,9 @@ Path to the Gradle build directory. If left empty, then ``res://android`` will b
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **gradle_build/min_sdk** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/min_sdk>`
+:ref:`String<class_String>` **gradle_build/min_sdk** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/min_sdk>`
 
-Minimum Android API level required for the application to run (used during Gradle build). See `android:minSdkVersion <https://developer.android.com/guide/topics/manifest/uses-sdk-element#uses>`__.
+Cấp API Android tối thiểu cần thiết để ứng dụng chạy (được sử dụng trong quá trình Gradle build). Xem `android:minSdkVersion <https://developer.android.com/guide/topics/manifest/uses-sdk-element#uses>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -646,9 +646,9 @@ Minimum Android API level required for the application to run (used during Gradl
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **gradle_build/target_sdk** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/target_sdk>`
+:ref:`String<class_String>` **gradle_build/target_sdk** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/target_sdk>`
 
-The Android API level on which the application is designed to run (used during Gradle build). See `android:targetSdkVersion <https://developer.android.com/guide/topics/manifest/uses-sdk-element#uses>`__.
+Cấp độ API Android mà ứng dụng được thiết kế để chạy trên đó (được sử dụng trong quá trình Gradle build). Xem `android:targetSdkVersion <https://developer.android.com/guide/topics/manifest/uses-sdk-element#uses>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -658,9 +658,9 @@ The Android API level on which the application is designed to run (used during G
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **gradle_build/use_gradle_build** :ref:`🔗<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`
+:ref:`bool<class_bool>` **gradle_build/use_gradle_build** :ref:`🔗 <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`
 
-If ``true``, Gradle build is used instead of pre-built APK.
+Nếu ``true``, Gradle build sẽ được sử dụng thay cho APK dựng sẵn.
 
 .. rst-class:: classref-item-separator
 
@@ -670,9 +670,9 @@ If ``true``, Gradle build is used instead of pre-built APK.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **graphics/opengl_debug** :ref:`🔗<class_EditorExportPlatformAndroid_property_graphics/opengl_debug>`
+:ref:`bool<class_bool>` **graphics/opengl_debug** :ref:`🔗 <class_EditorExportPlatformAndroid_property_graphics/opengl_debug>`
 
-If ``true``, OpenGL ES debug context will be created (additional runtime checking, validation, and logging).
+Nếu ``true``, một OpenGL ES debug context sẽ được tạo (kiểm tra runtime, validation và ghi nhật ký bổ sung).
 
 .. rst-class:: classref-item-separator
 
@@ -682,13 +682,13 @@ If ``true``, OpenGL ES debug context will be created (additional runtime checkin
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **keystore/debug** :ref:`🔗<class_EditorExportPlatformAndroid_property_keystore/debug>`
+:ref:`String<class_String>` **keystore/debug** :ref:`🔗 <class_EditorExportPlatformAndroid_property_keystore/debug>`
 
-Path of the debug keystore file.
+Đường dẫn đến tệp debug keystore.
 
-Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_DEBUG_PATH``.
+Có thể được ghi đè bằng biến môi trường ``GODOT_ANDROID_KEYSTORE_DEBUG_PATH``.
 
-Fallbacks to ``EditorSettings.export/android/debug_keystore`` if empty.
+Dùng ``EditorSettings.export/android/debug_keystore`` thay thế nếu trống.
 
 .. rst-class:: classref-item-separator
 
@@ -698,13 +698,13 @@ Fallbacks to ``EditorSettings.export/android/debug_keystore`` if empty.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **keystore/debug_password** :ref:`🔗<class_EditorExportPlatformAndroid_property_keystore/debug_password>`
+:ref:`String<class_String>` **keystore/debug_password** :ref:`🔗 <class_EditorExportPlatformAndroid_property_keystore/debug_password>`
 
-Password for the debug keystore file.
+Mật khẩu của tệp keystore debug.
 
-Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD``.
+Có thể được ghi đè bằng biến môi trường ``GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD``.
 
-Fallbacks to ``EditorSettings.export/android/debug_keystore_pass`` if both it and :ref:`keystore/debug<class_EditorExportPlatformAndroid_property_keystore/debug>` are empty.
+Dùng ``EditorSettings.export/android/debug_keystore_pass`` thay thế nếu cả giá trị này và :ref:`keystore/debug <class_EditorExportPlatformAndroid_property_keystore/debug>` đều trống.
 
 .. rst-class:: classref-item-separator
 
@@ -714,13 +714,13 @@ Fallbacks to ``EditorSettings.export/android/debug_keystore_pass`` if both it an
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **keystore/debug_user** :ref:`🔗<class_EditorExportPlatformAndroid_property_keystore/debug_user>`
+:ref:`String<class_String>` **keystore/debug_user** :ref:`🔗 <class_EditorExportPlatformAndroid_property_keystore/debug_user>`
 
-User name for the debug keystore file.
+Tên người dùng cho tệp keystore debug.
 
-Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_DEBUG_USER``.
+Có thể ghi đè bằng biến môi trường ``GODOT_ANDROID_KEYSTORE_DEBUG_USER``.
 
-Fallbacks to ``EditorSettings.export/android/debug_keystore_user`` if both it and :ref:`keystore/debug<class_EditorExportPlatformAndroid_property_keystore/debug>` are empty.
+Sẽ dùng ``EditorSettings.export/android/debug_keystore_user`` làm giá trị dự phòng nếu cả giá trị này và :ref:`keystore/debug <class_EditorExportPlatformAndroid_property_keystore/debug>` đều trống.
 
 .. rst-class:: classref-item-separator
 
@@ -730,11 +730,11 @@ Fallbacks to ``EditorSettings.export/android/debug_keystore_user`` if both it an
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **keystore/release** :ref:`🔗<class_EditorExportPlatformAndroid_property_keystore/release>`
+:ref:`String<class_String>` **keystore/release** :ref:`🔗 <class_EditorExportPlatformAndroid_property_keystore/release>`
 
-Path of the release keystore file.
+Đường dẫn đến tệp keystore release.
 
-Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_RELEASE_PATH``.
+Có thể ghi đè bằng biến môi trường ``GODOT_ANDROID_KEYSTORE_RELEASE_PATH``.
 
 .. rst-class:: classref-item-separator
 
@@ -744,11 +744,11 @@ Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_RELEASE
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **keystore/release_password** :ref:`🔗<class_EditorExportPlatformAndroid_property_keystore/release_password>`
+:ref:`String<class_String>` **keystore/release_password** :ref:`🔗 <class_EditorExportPlatformAndroid_property_keystore/release_password>`
 
-Password for the release keystore file.
+Mật khẩu của tệp keystore phát hành.
 
-Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD``.
+Có thể ghi đè bằng biến môi trường ``GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD``.
 
 .. rst-class:: classref-item-separator
 
@@ -758,11 +758,11 @@ Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_RELEASE
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **keystore/release_user** :ref:`🔗<class_EditorExportPlatformAndroid_property_keystore/release_user>`
+:ref:`String<class_String>` **keystore/release_user** :ref:`🔗 <class_EditorExportPlatformAndroid_property_keystore/release_user>`
 
-User name for the release keystore file.
+Tên người dùng của tệp keystore phát hành.
 
-Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_RELEASE_USER``.
+Có thể ghi đè bằng biến môi trường ``GODOT_ANDROID_KEYSTORE_RELEASE_USER``.
 
 .. rst-class:: classref-item-separator
 
@@ -772,9 +772,9 @@ Can be overridden with the environment variable ``GODOT_ANDROID_KEYSTORE_RELEASE
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **launcher_icons/adaptive_background_432x432** :ref:`🔗<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>`
+:ref:`String<class_String>` **launcher_icons/adaptive_background_432x432** :ref:`🔗 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>`
 
-Background layer of the application adaptive icon file. See `Design adaptive icons <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive#design-adaptive-icons>`__.
+Lớp nền của tệp adaptive icon của ứng dụng. Xem `Thiết kế adaptive icon <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive#design-adaptive-icons>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -784,9 +784,9 @@ Background layer of the application adaptive icon file. See `Design adaptive ico
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **launcher_icons/adaptive_foreground_432x432** :ref:`🔗<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_foreground_432x432>`
+:ref:`String<class_String>` **launcher_icons/adaptive_foreground_432x432** :ref:`🔗 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_foreground_432x432>`
 
-Foreground layer of the application adaptive icon file. See `Design adaptive icons <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive#design-adaptive-icons>`__.
+Lớp foreground của tệp adaptive icon của ứng dụng. Xem `Thiết kế adaptive icon <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive#design-adaptive-icons>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -796,9 +796,9 @@ Foreground layer of the application adaptive icon file. See `Design adaptive ico
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **launcher_icons/adaptive_monochrome_432x432** :ref:`🔗<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_monochrome_432x432>`
+:ref:`String<class_String>` **launcher_icons/adaptive_monochrome_432x432** :ref:`🔗 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_monochrome_432x432>`
 
-Monochrome layer of the application adaptive icon file. See `Design adaptive icons <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive#design-adaptive-icons>`__.
+Lớp monochrome của tệp adaptive icon của ứng dụng. Xem `Thiết kế adaptive icon <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive#design-adaptive-icons>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -808,9 +808,9 @@ Monochrome layer of the application adaptive icon file. See `Design adaptive ico
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **launcher_icons/main_192x192** :ref:`🔗<class_EditorExportPlatformAndroid_property_launcher_icons/main_192x192>`
+:ref:`String<class_String>` **launcher_icons/main_192x192** :ref:`🔗 <class_EditorExportPlatformAndroid_property_launcher_icons/main_192x192>`
 
-Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.application/config/icon<class_ProjectSettings_property_application/config/icon>`.
+Tệp biểu tượng ứng dụng. Nếu để trống, giá trị này sẽ dùng dự phòng :ref:`ProjectSettings.application/config/icon <class_ProjectSettings_property_application/config/icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -820,9 +820,9 @@ Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **package/app_category** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/app_category>`
+:ref:`int<class_int>` **package/app_category** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/app_category>`
 
-Application category for the Google Play Store. Only define this if your application fits one of the categories well. See `android:appCategory <https://developer.android.com/guide/topics/manifest/application-element#appCategory>`__.
+Danh mục ứng dụng cho Google Play Store. Chỉ xác định thuộc tính này nếu ứng dụng của bạn phù hợp rõ ràng với một trong các danh mục. Xem `android:appCategory <https://developer.android.com/guide/topics/manifest/application-element#appCategory>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -832,9 +832,9 @@ Application category for the Google Play Store. Only define this if your applica
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **package/exclude_from_recents** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/exclude_from_recents>`
+:ref:`bool<class_bool>` **package/exclude_from_recents** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/exclude_from_recents>`
 
-If ``true``, task initiated by main activity will be excluded from the list of recently used applications. See `android:excludeFromRecents <https://developer.android.com/guide/topics/manifest/activity-element#exclude>`__.
+Nếu ``true``, tác vụ được khởi chạy bởi activity chính sẽ bị loại khỏi danh sách các ứng dụng được sử dụng gần đây. Xem `android:excludeFromRecents <https://developer.android.com/guide/topics/manifest/activity-element#exclude>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -844,9 +844,9 @@ If ``true``, task initiated by main activity will be excluded from the list of r
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **package/name** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/name>`
+:ref:`String<class_String>` **package/name** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/name>`
 
-Name of the application.
+Tên của ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -856,9 +856,9 @@ Name of the application.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **package/retain_data_on_uninstall** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/retain_data_on_uninstall>`
+:ref:`bool<class_bool>` **package/retain_data_on_uninstall** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/retain_data_on_uninstall>`
 
-If ``true``, when the user uninstalls an app, a prompt to keep the app's data will be shown. See `android:hasFragileUserData <https://developer.android.com/guide/topics/manifest/application-element#fragileuserdata>`__.
+Nếu ``true``, khi người dùng gỡ cài đặt ứng dụng, một lời nhắc giữ lại dữ liệu của ứng dụng sẽ được hiển thị. Xem `android:hasFragileUserData <https://developer.android.com/guide/topics/manifest/application-element#fragileuserdata>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -868,9 +868,9 @@ If ``true``, when the user uninstalls an app, a prompt to keep the app's data wi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **package/show_as_launcher_app** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/show_as_launcher_app>`
+:ref:`bool<class_bool>` **package/show_as_launcher_app** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/show_as_launcher_app>`
 
-If ``true``, the user will be able to set this app as the system launcher in Android preferences.
+Nếu ``true``, người dùng sẽ có thể đặt ứng dụng này làm launcher hệ thống trong tùy chọn Android.
 
 .. rst-class:: classref-item-separator
 
@@ -880,9 +880,9 @@ If ``true``, the user will be able to set this app as the system launcher in And
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **package/show_in_android_tv** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/show_in_android_tv>`
+:ref:`bool<class_bool>` **package/show_in_android_tv** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/show_in_android_tv>`
 
-If ``true``, this app will show in Android TV launcher UI.
+Nếu ``true``, ứng dụng này sẽ hiển thị trong giao diện launcher của Android TV.
 
 .. rst-class:: classref-item-separator
 
@@ -892,11 +892,11 @@ If ``true``, this app will show in Android TV launcher UI.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **package/show_in_app_library** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/show_in_app_library>`
+:ref:`bool<class_bool>` **package/show_in_app_library** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/show_in_app_library>`
 
-If ``true``, this app will show in the device's app library.
+Nếu ``true``, ứng dụng này sẽ hiển thị trong thư viện ứng dụng của thiết bị.
 
-\ **Note:** This is ``true`` by default.
+\ **Lưu ý:** Điều này ``true`` theo mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -906,9 +906,9 @@ If ``true``, this app will show in the device's app library.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **package/signed** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/signed>`
+:ref:`bool<class_bool>` **package/signed** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/signed>`
 
-If ``true``, package signing is enabled.
+Nếu ``true``, tính năng ký package được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -918,15 +918,15 @@ If ``true``, package signing is enabled.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **package/unique_name** :ref:`🔗<class_EditorExportPlatformAndroid_property_package/unique_name>`
+:ref:`String<class_String>` **package/unique_name** :ref:`🔗 <class_EditorExportPlatformAndroid_property_package/unique_name>`
 
-Unique application identifier in a reverse-DNS format. The reverse DNS format should preferably match a domain name you control, but this is not strictly required. For instance, if you own ``example.com``, your package unique name should preferably be of the form ``com.example.mygame``. This identifier can only contain lowercase alphanumeric characters (``a-z``, and ``0-9``), underscores (``_``), and periods (``.``). Each component of the reverse DNS format must start with a letter: for instance, ``com.example.8game`` is not valid.
+Mã định danh duy nhất của ứng dụng ở định dạng reverse-DNS. Định dạng reverse-DNS tốt nhất nên khớp với một tên miền mà bạn kiểm soát, nhưng đây không phải là yêu cầu bắt buộc. Ví dụ: nếu bạn sở hữu ``example.com``, tên duy nhất của package tốt nhất nên có dạng ``com.example.mygame``. Mã định danh này chỉ có thể chứa các ký tự chữ và số viết thường (``a-z``, và ``0-9``), dấu gạch dưới (``_``) và dấu chấm (``.``). Mỗi thành phần trong định dạng reverse-DNS phải bắt đầu bằng một chữ cái: ví dụ: ``com.example.8game`` không hợp lệ.
 
-If ``$genname`` is present in the value, it will be replaced by the project name converted to lowercase. If there are invalid characters in the project name, they will be stripped. If all characters in the project name are stripped, ``$genname`` is replaced by ``noname``.
+Nếu ``$genname`` xuất hiện trong giá trị, nó sẽ được thay thế bằng tên project chuyển thành chữ thường. Nếu tên project chứa các ký tự không hợp lệ, chúng sẽ bị loại bỏ. Nếu tất cả ký tự trong tên project đều bị loại bỏ, ``$genname`` sẽ được thay thế bằng ``noname``.
 
-\ **Note:** Changing the package name will cause the package to be considered as a new package, with its own installation and data paths. The new package won't be usable to update existing installations.
+\ **Lưu ý:** Việc thay đổi tên package sẽ khiến package được xem là một package mới, với các đường dẫn cài đặt và dữ liệu riêng. Package mới sẽ không thể được dùng để cập nhật các bản cài đặt hiện có.
 
-\ **Note:** When publishing to Google Play, the package name must be *globally* unique. This means no other apps published on Google Play must be using the same package name as yours. Otherwise, you'll be prevented from publishing your app on Google Play.
+\ **Lưu ý:** Khi phát hành lên Google Play, tên package phải *duy nhất trên toàn cầu*. Điều này có nghĩa là không có ứng dụng nào khác được phát hành trên Google Play được sử dụng cùng tên package với ứng dụng của bạn. Nếu không, bạn sẽ không thể phát hành ứng dụng trên Google Play.
 
 .. rst-class:: classref-item-separator
 
@@ -936,9 +936,9 @@ If ``$genname`` is present in the value, it will be replaced by the project name
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_checkin_properties** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_checkin_properties>`
+:ref:`bool<class_bool>` **permissions/access_checkin_properties** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_checkin_properties>`
 
-Allows read/write access to the "properties" table in the checkin database. See `ACCESS_CHECKIN_PROPERTIES <https://developer.android.com/reference/android/Manifest.permission#ACCESS_CHECKIN_PROPERTIES>`__.
+Cho phép quyền đọc/ghi đối với bảng "properties" trong cơ sở dữ liệu checkin. Xem `ACCESS_CHECKIN_PROPERTIES <https://developer.android.com/reference/android/Manifest.permission#ACCESS_CHECKIN_PROPERTIES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -948,9 +948,9 @@ Allows read/write access to the "properties" table in the checkin database. See 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_coarse_location** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_coarse_location>`
+:ref:`bool<class_bool>` **permissions/access_coarse_location** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_coarse_location>`
 
-Allows access to the approximate location information. See `ACCESS_COARSE_LOCATION <https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION>`__.
+Cho phép truy cập thông tin vị trí gần đúng. Xem `ACCESS_COARSE_LOCATION <https://developer.android.com/reference/android/Manifest.permission#ACCESS_COARSE_LOCATION>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -960,9 +960,9 @@ Allows access to the approximate location information. See `ACCESS_COARSE_LOCATI
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_fine_location** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_fine_location>`
+:ref:`bool<class_bool>` **permissions/access_fine_location** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_fine_location>`
 
-Allows access to the precise location information. See `ACCESS_FINE_LOCATION <https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION>`__.
+Cho phép truy cập thông tin vị trí chính xác. Xem `ACCESS_FINE_LOCATION <https://developer.android.com/reference/android/Manifest.permission#ACCESS_FINE_LOCATION>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -972,9 +972,9 @@ Allows access to the precise location information. See `ACCESS_FINE_LOCATION <ht
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_location_extra_commands** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_location_extra_commands>`
+:ref:`bool<class_bool>` **permissions/access_location_extra_commands** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_location_extra_commands>`
 
-Allows access to the extra location provider commands. See `ACCESS_LOCATION_EXTRA_COMMANDS <https://developer.android.com/reference/android/Manifest.permission#ACCESS_LOCATION_EXTRA_COMMANDS>`__.
+Cho phép truy cập các lệnh bổ sung của location provider. Xem `ACCESS_LOCATION_EXTRA_COMMANDS <https://developer.android.com/reference/android/Manifest.permission#ACCESS_LOCATION_EXTRA_COMMANDS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -984,9 +984,9 @@ Allows access to the extra location provider commands. See `ACCESS_LOCATION_EXTR
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_media_location** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_media_location>`
+:ref:`bool<class_bool>` **permissions/access_media_location** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_media_location>`
 
-Allows an application to access any geographic locations persisted in the user's shared collection. See `ACCESS_MEDIA_LOCATION <https://developer.android.com/reference/android/Manifest.permission#ACCESS_MEDIA_LOCATION>`__.
+Cho phép một ứng dụng truy cập mọi vị trí địa lý được lưu trong bộ sưu tập dùng chung của người dùng. Xem `ACCESS_MEDIA_LOCATION <https://developer.android.com/reference/android/Manifest.permission#ACCESS_MEDIA_LOCATION>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -996,9 +996,9 @@ Allows an application to access any geographic locations persisted in the user's
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_mock_location** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_mock_location>`
+:ref:`bool<class_bool>` **permissions/access_mock_location** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_mock_location>`
 
-Allows an application to create mock location providers for testing.
+Cho phép một ứng dụng tạo các location provider mô phỏng để kiểm thử.
 
 .. rst-class:: classref-item-separator
 
@@ -1008,9 +1008,9 @@ Allows an application to create mock location providers for testing.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_network_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_network_state>`
+:ref:`bool<class_bool>` **permissions/access_network_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_network_state>`
 
-Allows access to the information about networks. See `ACCESS_NETWORK_STATE <https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE>`__.
+Cho phép truy cập thông tin về các mạng. Xem `ACCESS_NETWORK_STATE <https://developer.android.com/reference/android/Manifest.permission#ACCESS_NETWORK_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1020,9 +1020,9 @@ Allows access to the information about networks. See `ACCESS_NETWORK_STATE <http
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_surface_flinger** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_surface_flinger>`
+:ref:`bool<class_bool>` **permissions/access_surface_flinger** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_surface_flinger>`
 
-Allows an application to use SurfaceFlinger's low level features.
+Cho phép ứng dụng sử dụng các tính năng cấp thấp của SurfaceFlinger.
 
 .. rst-class:: classref-item-separator
 
@@ -1032,9 +1032,9 @@ Allows an application to use SurfaceFlinger's low level features.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/access_wifi_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/access_wifi_state>`
+:ref:`bool<class_bool>` **permissions/access_wifi_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/access_wifi_state>`
 
-Allows access to the information about Wi-Fi networks. See `ACCESS_WIFI_STATE <https://developer.android.com/reference/android/Manifest.permission#ACCESS_WIFI_STATE>`__.
+Cho phép truy cập thông tin về các mạng Wi-Fi. Xem `ACCESS_WIFI_STATE <https://developer.android.com/reference/android/Manifest.permission#ACCESS_WIFI_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1044,9 +1044,9 @@ Allows access to the information about Wi-Fi networks. See `ACCESS_WIFI_STATE <h
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/account_manager** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/account_manager>`
+:ref:`bool<class_bool>` **permissions/account_manager** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/account_manager>`
 
-Allows applications to call into AccountAuthenticators. See `ACCOUNT_MANAGER <https://developer.android.com/reference/android/Manifest.permission#ACCOUNT_MANAGER>`__.
+Cho phép ứng dụng gọi đến AccountAuthenticators. Xem `ACCOUNT_MANAGER <https://developer.android.com/reference/android/Manifest.permission#ACCOUNT_MANAGER>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1056,9 +1056,9 @@ Allows applications to call into AccountAuthenticators. See `ACCOUNT_MANAGER <ht
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/add_voicemail** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/add_voicemail>`
+:ref:`bool<class_bool>` **permissions/add_voicemail** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/add_voicemail>`
 
-Allows an application to add voicemails into the system. See `ADD_VOICEMAIL <https://developer.android.com/reference/android/Manifest.permission#ADD_VOICEMAIL>`__.
+Cho phép một ứng dụng thêm thư thoại vào hệ thống. Xem `ADD_VOICEMAIL <https://developer.android.com/reference/android/Manifest.permission#ADD_VOICEMAIL>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1068,9 +1068,9 @@ Allows an application to add voicemails into the system. See `ADD_VOICEMAIL <htt
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/authenticate_accounts** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/authenticate_accounts>`
+:ref:`bool<class_bool>` **permissions/authenticate_accounts** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/authenticate_accounts>`
 
-Allows an application to act as an AccountAuthenticator for the AccountManager.
+Cho phép một ứng dụng hoạt động như một AccountAuthenticator cho AccountManager.
 
 .. rst-class:: classref-item-separator
 
@@ -1080,9 +1080,9 @@ Allows an application to act as an AccountAuthenticator for the AccountManager.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/battery_stats** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/battery_stats>`
+:ref:`bool<class_bool>` **permissions/battery_stats** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/battery_stats>`
 
-Allows an application to collect battery statistics. See `BATTERY_STATS <https://developer.android.com/reference/android/Manifest.permission#BATTERY_STATS>`__.
+Cho phép một ứng dụng thu thập thống kê pin. Xem `BATTERY_STATS <https://developer.android.com/reference/android/Manifest.permission#BATTERY_STATS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1092,9 +1092,9 @@ Allows an application to collect battery statistics. See `BATTERY_STATS <https:/
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_accessibility_service** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_accessibility_service>`
+:ref:`bool<class_bool>` **permissions/bind_accessibility_service** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_accessibility_service>`
 
-Must be required by an AccessibilityService, to ensure that only the system can bind to it. See `BIND_ACCESSIBILITY_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_ACCESSIBILITY_SERVICE>`__.
+AccessibilityService phải yêu cầu quyền này để đảm bảo chỉ hệ thống mới có thể bind vào nó. Xem `BIND_ACCESSIBILITY_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_ACCESSIBILITY_SERVICE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1104,9 +1104,9 @@ Must be required by an AccessibilityService, to ensure that only the system can 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_appwidget** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_appwidget>`
+:ref:`bool<class_bool>` **permissions/bind_appwidget** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_appwidget>`
 
-Allows an application to tell the AppWidget service which application can access AppWidget's data. See `BIND_APPWIDGET <https://developer.android.com/reference/android/Manifest.permission#BIND_APPWIDGET>`__.
+Cho phép một ứng dụng cho dịch vụ AppWidget biết ứng dụng nào có thể truy cập dữ liệu của AppWidget. Xem `BIND_APPWIDGET <https://developer.android.com/reference/android/Manifest.permission#BIND_APPWIDGET>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1116,9 +1116,9 @@ Allows an application to tell the AppWidget service which application can access
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_device_admin** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_device_admin>`
+:ref:`bool<class_bool>` **permissions/bind_device_admin** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_device_admin>`
 
-Must be required by device administration receiver, to ensure that only the system can interact with it. See `BIND_DEVICE_ADMIN <https://developer.android.com/reference/android/Manifest.permission#BIND_DEVICE_ADMIN>`__.
+Bộ nhận quản trị thiết bị phải yêu cầu quyền này để đảm bảo chỉ hệ thống mới có thể tương tác với nó. Xem `BIND_DEVICE_ADMIN <https://developer.android.com/reference/android/Manifest.permission#BIND_DEVICE_ADMIN>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1128,9 +1128,9 @@ Must be required by device administration receiver, to ensure that only the syst
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_input_method** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_input_method>`
+:ref:`bool<class_bool>` **permissions/bind_input_method** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_input_method>`
 
-Must be required by an InputMethodService, to ensure that only the system can bind to it. See `BIND_INPUT_METHOD <https://developer.android.com/reference/android/Manifest.permission#BIND_INPUT_METHOD>`__.
+InputMethodService phải yêu cầu quyền này để đảm bảo chỉ hệ thống mới có thể liên kết với nó. Xem `BIND_INPUT_METHOD <https://developer.android.com/reference/android/Manifest.permission#BIND_INPUT_METHOD>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1140,9 +1140,9 @@ Must be required by an InputMethodService, to ensure that only the system can bi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_nfc_service** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_nfc_service>`
+:ref:`bool<class_bool>` **permissions/bind_nfc_service** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_nfc_service>`
 
-Must be required by a HostApduService or OffHostApduService to ensure that only the system can bind to it. See `BIND_NFC_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_NFC_SERVICE>`__.
+Phải được HostApduService hoặc OffHostApduService yêu cầu để đảm bảo chỉ hệ thống mới có thể bind tới dịch vụ đó. Xem `BIND_NFC_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_NFC_SERVICE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1152,9 +1152,9 @@ Must be required by a HostApduService or OffHostApduService to ensure that only 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_notification_listener_service** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_notification_listener_service>`
+:ref:`bool<class_bool>` **permissions/bind_notification_listener_service** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_notification_listener_service>`
 
-Must be required by a NotificationListenerService, to ensure that only the system can bind to it. See `BIND_NOTIFICATION_LISTENER_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_NOTIFICATION_LISTENER_SERVICE>`__.
+Phải được NotificationListenerService yêu cầu để đảm bảo chỉ hệ thống mới có thể bind tới dịch vụ đó. Xem `BIND_NOTIFICATION_LISTENER_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_NOTIFICATION_LISTENER_SERVICE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1164,9 +1164,9 @@ Must be required by a NotificationListenerService, to ensure that only the syste
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_print_service** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_print_service>`
+:ref:`bool<class_bool>` **permissions/bind_print_service** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_print_service>`
 
-Must be required by a PrintService, to ensure that only the system can bind to it. See `BIND_PRINT_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_PRINT_SERVICE>`__.
+Phải được PrintService yêu cầu để đảm bảo chỉ hệ thống mới có thể bind tới dịch vụ đó. Xem `BIND_PRINT_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_PRINT_SERVICE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1176,9 +1176,9 @@ Must be required by a PrintService, to ensure that only the system can bind to i
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_remoteviews** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_remoteviews>`
+:ref:`bool<class_bool>` **permissions/bind_remoteviews** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_remoteviews>`
 
-Must be required by a RemoteViewsService, to ensure that only the system can bind to it. See `BIND_REMOTEVIEWS <https://developer.android.com/reference/android/Manifest.permission#BIND_REMOTEVIEWS>`__.
+Phải được RemoteViewsService yêu cầu để đảm bảo chỉ hệ thống mới có thể bind tới dịch vụ đó. Xem `BIND_REMOTEVIEWS <https://developer.android.com/reference/android/Manifest.permission#BIND_REMOTEVIEWS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1188,9 +1188,9 @@ Must be required by a RemoteViewsService, to ensure that only the system can bin
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_text_service** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_text_service>`
+:ref:`bool<class_bool>` **permissions/bind_text_service** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_text_service>`
 
-Must be required by a TextService (e.g. SpellCheckerService) to ensure that only the system can bind to it. See `BIND_TEXT_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_TEXT_SERVICE>`__.
+Phải được TextService (ví dụ: SpellCheckerService) yêu cầu để đảm bảo rằng chỉ hệ thống mới có thể bind với dịch vụ này. Xem `BIND_TEXT_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_TEXT_SERVICE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1200,9 +1200,9 @@ Must be required by a TextService (e.g. SpellCheckerService) to ensure that only
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_vpn_service** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_vpn_service>`
+:ref:`bool<class_bool>` **permissions/bind_vpn_service** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_vpn_service>`
 
-Must be required by a VpnService, to ensure that only the system can bind to it. See `BIND_VPN_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_VPN_SERVICE>`__.
+Phải được VpnService yêu cầu để đảm bảo rằng chỉ hệ thống mới có thể bind với dịch vụ này. Xem `BIND_VPN_SERVICE <https://developer.android.com/reference/android/Manifest.permission#BIND_VPN_SERVICE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1212,9 +1212,9 @@ Must be required by a VpnService, to ensure that only the system can bind to it.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bind_wallpaper** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bind_wallpaper>`
+:ref:`bool<class_bool>` **permissions/bind_wallpaper** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bind_wallpaper>`
 
-Must be required by a WallpaperService, to ensure that only the system can bind to it. See `BIND_WALLPAPER <https://developer.android.com/reference/android/Manifest.permission#BIND_WALLPAPER>`__.
+Phải được WallpaperService yêu cầu để đảm bảo rằng chỉ hệ thống mới có thể bind với dịch vụ này. Xem `BIND_WALLPAPER <https://developer.android.com/reference/android/Manifest.permission#BIND_WALLPAPER>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1224,9 +1224,9 @@ Must be required by a WallpaperService, to ensure that only the system can bind 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bluetooth** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bluetooth>`
+:ref:`bool<class_bool>` **permissions/bluetooth** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bluetooth>`
 
-Allows applications to connect to paired bluetooth devices. See `BLUETOOTH <https://developer.android.com/reference/android/Manifest.permission#BLUETOOTH>`__.
+Cho phép các ứng dụng kết nối với các thiết bị Bluetooth đã ghép đôi. Xem `BLUETOOTH <https://developer.android.com/reference/android/Manifest.permission#BLUETOOTH>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1236,9 +1236,9 @@ Allows applications to connect to paired bluetooth devices. See `BLUETOOTH <http
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bluetooth_admin** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bluetooth_admin>`
+:ref:`bool<class_bool>` **permissions/bluetooth_admin** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bluetooth_admin>`
 
-Allows applications to discover and pair bluetooth devices. See `BLUETOOTH_ADMIN <https://developer.android.com/reference/android/Manifest.permission#BLUETOOTH_ADMIN>`__.
+Cho phép các ứng dụng phát hiện và ghép đôi các thiết bị Bluetooth. Xem `BLUETOOTH_ADMIN <https://developer.android.com/reference/android/Manifest.permission#BLUETOOTH_ADMIN>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1248,9 +1248,9 @@ Allows applications to discover and pair bluetooth devices. See `BLUETOOTH_ADMIN
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/bluetooth_privileged** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/bluetooth_privileged>`
+:ref:`bool<class_bool>` **permissions/bluetooth_privileged** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/bluetooth_privileged>`
 
-Allows applications to pair bluetooth devices without user interaction, and to allow or disallow phonebook access or message access. See `BLUETOOTH_PRIVILEGED <https://developer.android.com/reference/android/Manifest.permission#BLUETOOTH_PRIVILEGED>`__.
+Cho phép các ứng dụng ghép đôi thiết bị Bluetooth mà không cần người dùng tương tác, đồng thời cho phép hoặc không cho phép truy cập danh bạ hoặc tin nhắn. Xem `BLUETOOTH_PRIVILEGED <https://developer.android.com/reference/android/Manifest.permission#BLUETOOTH_PRIVILEGED>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1260,9 +1260,9 @@ Allows applications to pair bluetooth devices without user interaction, and to a
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/brick** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/brick>`
+:ref:`bool<class_bool>` **permissions/brick** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/brick>`
 
-Required to be able to disable the device (very dangerous!).
+Bắt buộc để có thể vô hiệu hóa thiết bị (cực kỳ nguy hiểm!).
 
 .. rst-class:: classref-item-separator
 
@@ -1272,9 +1272,9 @@ Required to be able to disable the device (very dangerous!).
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/broadcast_package_removed** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/broadcast_package_removed>`
+:ref:`bool<class_bool>` **permissions/broadcast_package_removed** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/broadcast_package_removed>`
 
-Allows an application to broadcast a notification that an application package has been removed. See `BROADCAST_PACKAGE_REMOVED <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_PACKAGE_REMOVED>`__.
+Cho phép ứng dụng broadcast một thông báo rằng một gói ứng dụng đã bị gỡ bỏ. Xem `BROADCAST_PACKAGE_REMOVED <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_PACKAGE_REMOVED>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1284,9 +1284,9 @@ Allows an application to broadcast a notification that an application package ha
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/broadcast_sms** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/broadcast_sms>`
+:ref:`bool<class_bool>` **permissions/broadcast_sms** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/broadcast_sms>`
 
-Allows an application to broadcast an SMS receipt notification. See `BROADCAST_SMS <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_SMS>`__.
+Cho phép ứng dụng broadcast một thông báo xác nhận đã nhận SMS. Xem `BROADCAST_SMS <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_SMS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1296,9 +1296,9 @@ Allows an application to broadcast an SMS receipt notification. See `BROADCAST_S
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/broadcast_sticky** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/broadcast_sticky>`
+:ref:`bool<class_bool>` **permissions/broadcast_sticky** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/broadcast_sticky>`
 
-Allows an application to broadcast sticky intents. See `BROADCAST_STICKY <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_STICKY>`__.
+Cho phép ứng dụng broadcast các sticky intent. Xem `BROADCAST_STICKY <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_STICKY>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1308,9 +1308,9 @@ Allows an application to broadcast sticky intents. See `BROADCAST_STICKY <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/broadcast_wap_push** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/broadcast_wap_push>`
+:ref:`bool<class_bool>` **permissions/broadcast_wap_push** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/broadcast_wap_push>`
 
-Allows an application to broadcast a WAP PUSH receipt notification. See `BROADCAST_WAP_PUSH <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_WAP_PUSH>`__.
+Cho phép một ứng dụng phát một thông báo biên nhận WAP PUSH. Xem `BROADCAST_WAP_PUSH <https://developer.android.com/reference/android/Manifest.permission#BROADCAST_WAP_PUSH>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1320,9 +1320,9 @@ Allows an application to broadcast a WAP PUSH receipt notification. See `BROADCA
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/call_phone** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/call_phone>`
+:ref:`bool<class_bool>` **permissions/call_phone** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/call_phone>`
 
-Allows an application to initiate a phone call without going through the Dialer user interface. See `CALL_PHONE <https://developer.android.com/reference/android/Manifest.permission#CALL_PHONE>`__.
+Cho phép một ứng dụng bắt đầu cuộc gọi điện thoại mà không cần đi qua giao diện người dùng Dialer. Xem `CALL_PHONE <https://developer.android.com/reference/android/Manifest.permission#CALL_PHONE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1332,9 +1332,9 @@ Allows an application to initiate a phone call without going through the Dialer 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/call_privileged** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/call_privileged>`
+:ref:`bool<class_bool>` **permissions/call_privileged** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/call_privileged>`
 
-Allows an application to call any phone number, including emergency numbers, without going through the Dialer user interface. See `CALL_PRIVILEGED <https://developer.android.com/reference/android/Manifest.permission#CALL_PRIVILEGED>`__.
+Cho phép một ứng dụng gọi đến bất kỳ số điện thoại nào, bao gồm cả số khẩn cấp, mà không cần đi qua giao diện người dùng Dialer. Xem `CALL_PRIVILEGED <https://developer.android.com/reference/android/Manifest.permission#CALL_PRIVILEGED>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1344,9 +1344,9 @@ Allows an application to call any phone number, including emergency numbers, wit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/camera** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/camera>`
+:ref:`bool<class_bool>` **permissions/camera** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/camera>`
 
-Required to be able to access the camera device. See `CAMERA <https://developer.android.com/reference/android/Manifest.permission#CAMERA>`__.
+Bắt buộc để có thể truy cập thiết bị camera. Xem `CAMERA <https://developer.android.com/reference/android/Manifest.permission#CAMERA>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1356,9 +1356,9 @@ Required to be able to access the camera device. See `CAMERA <https://developer.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/capture_audio_output** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/capture_audio_output>`
+:ref:`bool<class_bool>` **permissions/capture_audio_output** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/capture_audio_output>`
 
-Allows an application to capture audio output. See `CAPTURE_AUDIO_OUTPUT <https://developer.android.com/reference/android/Manifest.permission#CAPTURE_AUDIO_OUTPUT>`__.
+Cho phép ứng dụng thu âm thanh đầu ra. Xem `CAPTURE_AUDIO_OUTPUT <https://developer.android.com/reference/android/Manifest.permission#CAPTURE_AUDIO_OUTPUT>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1368,9 +1368,9 @@ Allows an application to capture audio output. See `CAPTURE_AUDIO_OUTPUT <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/capture_secure_video_output** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/capture_secure_video_output>`
+:ref:`bool<class_bool>` **permissions/capture_secure_video_output** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/capture_secure_video_output>`
 
-Allows an application to capture secure video output.
+Cho phép ứng dụng thu video đầu ra bảo mật.
 
 .. rst-class:: classref-item-separator
 
@@ -1380,9 +1380,9 @@ Allows an application to capture secure video output.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/capture_video_output** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/capture_video_output>`
+:ref:`bool<class_bool>` **permissions/capture_video_output** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/capture_video_output>`
 
-Allows an application to capture video output.
+Cho phép ứng dụng thu video đầu ra.
 
 .. rst-class:: classref-item-separator
 
@@ -1392,9 +1392,9 @@ Allows an application to capture video output.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/change_component_enabled_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/change_component_enabled_state>`
+:ref:`bool<class_bool>` **permissions/change_component_enabled_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/change_component_enabled_state>`
 
-Allows an application to change whether an application component (other than its own) is enabled or not. See `CHANGE_COMPONENT_ENABLED_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_COMPONENT_ENABLED_STATE>`__.
+Cho phép một ứng dụng thay đổi trạng thái bật hoặc tắt của một thành phần ứng dụng (không phải thành phần của chính ứng dụng đó). Xem `CHANGE_COMPONENT_ENABLED_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_COMPONENT_ENABLED_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1404,9 +1404,9 @@ Allows an application to change whether an application component (other than its
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/change_configuration** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/change_configuration>`
+:ref:`bool<class_bool>` **permissions/change_configuration** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/change_configuration>`
 
-Allows an application to modify the current configuration, such as locale. See `CHANGE_CONFIGURATION <https://developer.android.com/reference/android/Manifest.permission#CHANGE_CONFIGURATION>`__.
+Cho phép một ứng dụng sửa đổi cấu hình hiện tại, chẳng hạn như locale. Xem `CHANGE_CONFIGURATION <https://developer.android.com/reference/android/Manifest.permission#CHANGE_CONFIGURATION>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1416,9 +1416,9 @@ Allows an application to modify the current configuration, such as locale. See `
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/change_network_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/change_network_state>`
+:ref:`bool<class_bool>` **permissions/change_network_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/change_network_state>`
 
-Allows applications to change network connectivity state. See `CHANGE_NETWORK_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_NETWORK_STATE>`__.
+Cho phép các ứng dụng thay đổi trạng thái kết nối mạng. Xem `CHANGE_NETWORK_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_NETWORK_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1428,9 +1428,9 @@ Allows applications to change network connectivity state. See `CHANGE_NETWORK_ST
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/change_wifi_multicast_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/change_wifi_multicast_state>`
+:ref:`bool<class_bool>` **permissions/change_wifi_multicast_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/change_wifi_multicast_state>`
 
-Allows applications to enter Wi-Fi Multicast mode. See `CHANGE_WIFI_MULTICAST_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_WIFI_MULTICAST_STATE>`__.
+Cho phép các ứng dụng chuyển sang chế độ Wi-Fi Multicast. Xem `CHANGE_WIFI_MULTICAST_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_WIFI_MULTICAST_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1440,9 +1440,9 @@ Allows applications to enter Wi-Fi Multicast mode. See `CHANGE_WIFI_MULTICAST_ST
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/change_wifi_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/change_wifi_state>`
+:ref:`bool<class_bool>` **permissions/change_wifi_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/change_wifi_state>`
 
-Allows applications to change Wi-Fi connectivity state. See `CHANGE_WIFI_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_WIFI_STATE>`__.
+Cho phép các ứng dụng thay đổi trạng thái kết nối Wi-Fi. Xem `CHANGE_WIFI_STATE <https://developer.android.com/reference/android/Manifest.permission#CHANGE_WIFI_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1452,9 +1452,9 @@ Allows applications to change Wi-Fi connectivity state. See `CHANGE_WIFI_STATE <
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/clear_app_cache** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/clear_app_cache>`
+:ref:`bool<class_bool>` **permissions/clear_app_cache** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/clear_app_cache>`
 
-Allows an application to clear the caches of all installed applications on the device. See `CLEAR_APP_CACHE <https://developer.android.com/reference/android/Manifest.permission#CLEAR_APP_CACHE>`__.
+Cho phép một ứng dụng xóa bộ nhớ đệm của tất cả ứng dụng đã cài đặt trên thiết bị. Xem `CLEAR_APP_CACHE <https://developer.android.com/reference/android/Manifest.permission#CLEAR_APP_CACHE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1464,9 +1464,9 @@ Allows an application to clear the caches of all installed applications on the d
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/clear_app_user_data** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/clear_app_user_data>`
+:ref:`bool<class_bool>` **permissions/clear_app_user_data** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/clear_app_user_data>`
 
-Allows an application to clear user data.
+Cho phép một ứng dụng xóa dữ liệu người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1476,9 +1476,9 @@ Allows an application to clear user data.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/control_location_updates** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/control_location_updates>`
+:ref:`bool<class_bool>` **permissions/control_location_updates** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/control_location_updates>`
 
-Allows enabling/disabling location update notifications from the radio. See `CONTROL_LOCATION_UPDATES <https://developer.android.com/reference/android/Manifest.permission#CONTROL_LOCATION_UPDATES>`__.
+Cho phép bật/tắt thông báo cập nhật vị trí từ radio. Xem `CONTROL_LOCATION_UPDATES <https://developer.android.com/reference/android/Manifest.permission#CONTROL_LOCATION_UPDATES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1488,11 +1488,11 @@ Allows enabling/disabling location update notifications from the radio. See `CON
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **permissions/custom_permissions** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/custom_permissions>`
+:ref:`PackedStringArray<class_PackedStringArray>` **permissions/custom_permissions** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/custom_permissions>`
 
-Array of custom permission strings.
+Mảng các chuỗi quyền tùy chỉnh.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -1502,9 +1502,9 @@ Array of custom permission strings.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/delete_cache_files** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/delete_cache_files>`
+:ref:`bool<class_bool>` **permissions/delete_cache_files** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/delete_cache_files>`
 
-**Deprecated:** This property may be changed or removed in future versions.
+**Không còn được dùng:** Thuộc tính này có thể bị thay đổi hoặc xóa trong các phiên bản tương lai.
 
 .. rst-class:: classref-item-separator
 
@@ -1514,9 +1514,9 @@ Array of custom permission strings.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/delete_packages** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/delete_packages>`
+:ref:`bool<class_bool>` **permissions/delete_packages** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/delete_packages>`
 
-Allows an application to delete packages. See `DELETE_PACKAGES <https://developer.android.com/reference/android/Manifest.permission#DELETE_PACKAGES>`__.
+Cho phép ứng dụng xóa các package. Xem `DELETE_PACKAGES <https://developer.android.com/reference/android/Manifest.permission#DELETE_PACKAGES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1526,9 +1526,9 @@ Allows an application to delete packages. See `DELETE_PACKAGES <https://develope
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/device_power** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/device_power>`
+:ref:`bool<class_bool>` **permissions/device_power** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/device_power>`
 
-Allows low-level access to power management.
+Cho phép truy cập cấp thấp vào hoạt động quản lý nguồn.
 
 .. rst-class:: classref-item-separator
 
@@ -1538,9 +1538,9 @@ Allows low-level access to power management.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/diagnostic** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/diagnostic>`
+:ref:`bool<class_bool>` **permissions/diagnostic** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/diagnostic>`
 
-Allows applications to RW to diagnostic resources. See `DIAGNOSTIC <https://developer.android.com/reference/android/Manifest.permission#DIAGNOSTIC>`__.
+Cho phép các ứng dụng RW đối với tài nguyên chẩn đoán. Xem `DIAGNOSTIC <https://developer.android.com/reference/android/Manifest.permission#DIAGNOSTIC>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1550,9 +1550,9 @@ Allows applications to RW to diagnostic resources. See `DIAGNOSTIC <https://deve
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/disable_keyguard** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/disable_keyguard>`
+:ref:`bool<class_bool>` **permissions/disable_keyguard** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/disable_keyguard>`
 
-Allows applications to disable the keyguard if it is not secure. See `DISABLE_KEYGUARD <https://developer.android.com/reference/android/Manifest.permission#DISABLE_KEYGUARD>`__.
+Cho phép các ứng dụng vô hiệu hóa keyguard nếu keyguard không an toàn. Xem `DISABLE_KEYGUARD <https://developer.android.com/reference/android/Manifest.permission#DISABLE_KEYGUARD>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1562,9 +1562,9 @@ Allows applications to disable the keyguard if it is not secure. See `DISABLE_KE
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/dump** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/dump>`
+:ref:`bool<class_bool>` **permissions/dump** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/dump>`
 
-Allows an application to retrieve state dump information from system services. See `DUMP <https://developer.android.com/reference/android/Manifest.permission#DUMP>`__.
+Cho phép ứng dụng truy xuất thông tin kết xuất trạng thái từ các system service. Xem `DUMP <https://developer.android.com/reference/android/Manifest.permission#DUMP>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1574,9 +1574,9 @@ Allows an application to retrieve state dump information from system services. S
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/expand_status_bar** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/expand_status_bar>`
+:ref:`bool<class_bool>` **permissions/expand_status_bar** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/expand_status_bar>`
 
-Allows an application to expand or collapse the status bar. See `EXPAND_STATUS_BAR <https://developer.android.com/reference/android/Manifest.permission#EXPAND_STATUS_BAR>`__.
+Cho phép ứng dụng mở rộng hoặc thu gọn thanh trạng thái. Xem `EXPAND_STATUS_BAR <https://developer.android.com/reference/android/Manifest.permission#EXPAND_STATUS_BAR>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1586,9 +1586,9 @@ Allows an application to expand or collapse the status bar. See `EXPAND_STATUS_B
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/factory_test** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/factory_test>`
+:ref:`bool<class_bool>` **permissions/factory_test** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/factory_test>`
 
-Run as a manufacturer test application, running as the root user. See `FACTORY_TEST <https://developer.android.com/reference/android/Manifest.permission#FACTORY_TEST>`__.
+Chạy dưới dạng ứng dụng kiểm thử của nhà sản xuất với tư cách người dùng root. Xem `FACTORY_TEST <https://developer.android.com/reference/android/Manifest.permission#FACTORY_TEST>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1598,9 +1598,9 @@ Run as a manufacturer test application, running as the root user. See `FACTORY_T
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/flashlight** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/flashlight>`
+:ref:`bool<class_bool>` **permissions/flashlight** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/flashlight>`
 
-Allows access to the flashlight.
+Cho phép truy cập vào đèn pin.
 
 .. rst-class:: classref-item-separator
 
@@ -1610,9 +1610,9 @@ Allows access to the flashlight.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/force_back** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/force_back>`
+:ref:`bool<class_bool>` **permissions/force_back** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/force_back>`
 
-Allows an application to force a BACK operation on whatever is the top activity.
+Cho phép một ứng dụng buộc thực hiện thao tác BACK trên activity hiện đang ở trên cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1622,9 +1622,9 @@ Allows an application to force a BACK operation on whatever is the top activity.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/get_accounts** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/get_accounts>`
+:ref:`bool<class_bool>` **permissions/get_accounts** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/get_accounts>`
 
-Allows access to the list of accounts in the Accounts Service. See `GET_ACCOUNTS <https://developer.android.com/reference/android/Manifest.permission#GET_ACCOUNTS>`__.
+Cho phép truy cập vào danh sách tài khoản trong Accounts Service. Xem `GET_ACCOUNTS <https://developer.android.com/reference/android/Manifest.permission#GET_ACCOUNTS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1634,9 +1634,9 @@ Allows access to the list of accounts in the Accounts Service. See `GET_ACCOUNTS
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/get_package_size** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/get_package_size>`
+:ref:`bool<class_bool>` **permissions/get_package_size** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/get_package_size>`
 
-Allows an application to find out the space used by any package. See `GET_PACKAGE_SIZE <https://developer.android.com/reference/android/Manifest.permission#GET_PACKAGE_SIZE>`__.
+Cho phép một ứng dụng tìm hiểu dung lượng mà bất kỳ package nào sử dụng. Xem `GET_PACKAGE_SIZE <https://developer.android.com/reference/android/Manifest.permission#GET_PACKAGE_SIZE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1646,9 +1646,9 @@ Allows an application to find out the space used by any package. See `GET_PACKAG
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/get_tasks** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/get_tasks>`
+:ref:`bool<class_bool>` **permissions/get_tasks** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/get_tasks>`
 
-**Deprecated:** Deprecated in API level 21.
+**Không dùng nữa:** Không dùng nữa trong API level 21.
 
 .. rst-class:: classref-item-separator
 
@@ -1658,9 +1658,9 @@ Allows an application to find out the space used by any package. See `GET_PACKAG
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/get_top_activity_info** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/get_top_activity_info>`
+:ref:`bool<class_bool>` **permissions/get_top_activity_info** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/get_top_activity_info>`
 
-Allows an application to retrieve private information about the current top activity.
+Cho phép một ứng dụng truy xuất thông tin riêng tư về activity trên cùng hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1670,9 +1670,9 @@ Allows an application to retrieve private information about the current top acti
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/global_search** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/global_search>`
+:ref:`bool<class_bool>` **permissions/global_search** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/global_search>`
 
-Used on content providers to allow the global search system to access their data. See `GLOBAL_SEARCH <https://developer.android.com/reference/android/Manifest.permission#GLOBAL_SEARCH>`__.
+Được sử dụng trên các content provider để cho phép hệ thống tìm kiếm toàn cục truy cập dữ liệu của chúng. Xem `GLOBAL_SEARCH <https://developer.android.com/reference/android/Manifest.permission#GLOBAL_SEARCH>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1682,9 +1682,9 @@ Used on content providers to allow the global search system to access their data
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/hardware_test** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/hardware_test>`
+:ref:`bool<class_bool>` **permissions/hardware_test** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/hardware_test>`
 
-Allows access to hardware peripherals.
+Cho phép truy cập các thiết bị ngoại vi phần cứng.
 
 .. rst-class:: classref-item-separator
 
@@ -1694,9 +1694,9 @@ Allows access to hardware peripherals.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/inject_events** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/inject_events>`
+:ref:`bool<class_bool>` **permissions/inject_events** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/inject_events>`
 
-Allows an application to inject user events (keys, touch, trackball) into the event stream and deliver them to ANY window.
+Cho phép ứng dụng chèn các sự kiện người dùng (phím, cảm ứng, bi xoay) vào luồng sự kiện và chuyển chúng đến BẤT KỲ cửa sổ nào.
 
 .. rst-class:: classref-item-separator
 
@@ -1706,9 +1706,9 @@ Allows an application to inject user events (keys, touch, trackball) into the ev
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/install_location_provider** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/install_location_provider>`
+:ref:`bool<class_bool>` **permissions/install_location_provider** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/install_location_provider>`
 
-Allows an application to install a location provider into the Location Manager. See `INSTALL_LOCATION_PROVIDER <https://developer.android.com/reference/android/Manifest.permission#INSTALL_LOCATION_PROVIDER>`__.
+Cho phép ứng dụng cài đặt location provider vào Location Manager. Xem `INSTALL_LOCATION_PROVIDER <https://developer.android.com/reference/android/Manifest.permission#INSTALL_LOCATION_PROVIDER>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1718,9 +1718,9 @@ Allows an application to install a location provider into the Location Manager. 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/install_packages** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/install_packages>`
+:ref:`bool<class_bool>` **permissions/install_packages** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/install_packages>`
 
-Allows an application to install packages. See `INSTALL_PACKAGES <https://developer.android.com/reference/android/Manifest.permission#INSTALL_PACKAGES>`__.
+Cho phép ứng dụng cài đặt các package. Xem `INSTALL_PACKAGES <https://developer.android.com/reference/android/Manifest.permission#INSTALL_PACKAGES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1730,9 +1730,9 @@ Allows an application to install packages. See `INSTALL_PACKAGES <https://develo
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/install_shortcut** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/install_shortcut>`
+:ref:`bool<class_bool>` **permissions/install_shortcut** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/install_shortcut>`
 
-Allows an application to install a shortcut in Launcher. See `INSTALL_SHORTCUT <https://developer.android.com/reference/android/Manifest.permission#INSTALL_SHORTCUT>`__.
+Cho phép ứng dụng cài đặt shortcut trong Launcher. Xem `INSTALL_SHORTCUT <https://developer.android.com/reference/android/Manifest.permission#INSTALL_SHORTCUT>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1742,9 +1742,9 @@ Allows an application to install a shortcut in Launcher. See `INSTALL_SHORTCUT <
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/internal_system_window** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/internal_system_window>`
+:ref:`bool<class_bool>` **permissions/internal_system_window** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/internal_system_window>`
 
-Allows an application to open windows that are for use by parts of the system user interface.
+Cho phép ứng dụng mở các cửa sổ được sử dụng bởi các phần của giao diện người dùng hệ thống.
 
 .. rst-class:: classref-item-separator
 
@@ -1754,9 +1754,9 @@ Allows an application to open windows that are for use by parts of the system us
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/internet** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/internet>`
+:ref:`bool<class_bool>` **permissions/internet** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/internet>`
 
-Allows applications to open network sockets. See `INTERNET <https://developer.android.com/reference/android/Manifest.permission#INTERNET>`__.
+Cho phép ứng dụng mở các network socket. Xem `INTERNET <https://developer.android.com/reference/android/Manifest.permission#INTERNET>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1766,9 +1766,9 @@ Allows applications to open network sockets. See `INTERNET <https://developer.an
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/kill_background_processes** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/kill_background_processes>`
+:ref:`bool<class_bool>` **permissions/kill_background_processes** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/kill_background_processes>`
 
-Allows an application to call ActivityManager.killBackgroundProcesses(String). See `KILL_BACKGROUND_PROCESSES <https://developer.android.com/reference/android/Manifest.permission#KILL_BACKGROUND_PROCESSES>`__.
+Cho phép ứng dụng gọi ActivityManager.killBackgroundProcesses(String). Xem `KILL_BACKGROUND_PROCESSES <https://developer.android.com/reference/android/Manifest.permission#KILL_BACKGROUND_PROCESSES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1778,9 +1778,9 @@ Allows an application to call ActivityManager.killBackgroundProcesses(String). S
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/location_hardware** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/location_hardware>`
+:ref:`bool<class_bool>` **permissions/location_hardware** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/location_hardware>`
 
-Allows an application to use location features in hardware, such as the geofencing api. See `LOCATION_HARDWARE <https://developer.android.com/reference/android/Manifest.permission#LOCATION_HARDWARE>`__.
+Cho phép ứng dụng sử dụng các tính năng định vị trên phần cứng, chẳng hạn như API geofencing. Xem `LOCATION_HARDWARE <https://developer.android.com/reference/android/Manifest.permission#LOCATION_HARDWARE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1790,9 +1790,9 @@ Allows an application to use location features in hardware, such as the geofenci
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/manage_accounts** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/manage_accounts>`
+:ref:`bool<class_bool>` **permissions/manage_accounts** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/manage_accounts>`
 
-Allows an application to manage the list of accounts in the AccountManager.
+Cho phép ứng dụng quản lý danh sách tài khoản trong AccountManager.
 
 .. rst-class:: classref-item-separator
 
@@ -1802,9 +1802,9 @@ Allows an application to manage the list of accounts in the AccountManager.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/manage_app_tokens** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/manage_app_tokens>`
+:ref:`bool<class_bool>` **permissions/manage_app_tokens** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/manage_app_tokens>`
 
-Allows an application to manage (create, destroy, Z-order) application tokens in the window manager.
+Cho phép ứng dụng quản lý (tạo, hủy, thứ tự Z) các application token trong window manager.
 
 .. rst-class:: classref-item-separator
 
@@ -1814,9 +1814,9 @@ Allows an application to manage (create, destroy, Z-order) application tokens in
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/manage_documents** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/manage_documents>`
+:ref:`bool<class_bool>` **permissions/manage_documents** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/manage_documents>`
 
-Allows an application to manage access to documents, usually as part of a document picker. See `MANAGE_DOCUMENTS <https://developer.android.com/reference/android/Manifest.permission#MANAGE_DOCUMENTS>`__.
+Cho phép ứng dụng quản lý quyền truy cập vào tài liệu, thường là một phần của bộ chọn tài liệu. Xem `MANAGE_DOCUMENTS <https://developer.android.com/reference/android/Manifest.permission#MANAGE_DOCUMENTS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1826,9 +1826,9 @@ Allows an application to manage access to documents, usually as part of a docume
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/manage_external_storage** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/manage_external_storage>`
+:ref:`bool<class_bool>` **permissions/manage_external_storage** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/manage_external_storage>`
 
-Allows an application a broad access to external storage in scoped storage. See `MANAGE_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#MANAGE_EXTERNAL_STORAGE>`__.
+Cho phép ứng dụng có quyền truy cập rộng vào bộ nhớ ngoài trong scoped storage. Xem `MANAGE_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#MANAGE_EXTERNAL_STORAGE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1838,9 +1838,9 @@ Allows an application a broad access to external storage in scoped storage. See 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/manage_media** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/manage_media>`
+:ref:`bool<class_bool>` **permissions/manage_media** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/manage_media>`
 
-Allows an application to modify and delete media files on this device or any connected storage device without user confirmation. Applications must already be granted the ``READ_EXTERNAL_STORAGE`` or ``MANAGE_EXTERNAL_STORAGE`` permissions for this permission to take effect. See `MANAGE_MEDIA <https://developer.android.com/reference/android/Manifest.permission#MANAGE_MEDIA>`__.
+Cho phép ứng dụng sửa đổi và xóa các tệp phương tiện trên thiết bị này hoặc bất kỳ thiết bị lưu trữ nào được kết nối mà không cần người dùng xác nhận. Ứng dụng trước đó phải được cấp quyền ``READ_EXTERNAL_STORAGE`` hoặc ``MANAGE_EXTERNAL_STORAGE`` thì quyền này mới có hiệu lực. Xem `MANAGE_MEDIA <https://developer.android.com/reference/android/Manifest.permission#MANAGE_MEDIA>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1850,9 +1850,9 @@ Allows an application to modify and delete media files on this device or any con
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/master_clear** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/master_clear>`
+:ref:`bool<class_bool>` **permissions/master_clear** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/master_clear>`
 
-See `MASTER_CLEAR <https://developer.android.com/reference/android/Manifest.permission#MASTER_CLEAR>`__.
+Xem `MASTER_CLEAR <https://developer.android.com/reference/android/Manifest.permission#MASTER_CLEAR>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1862,9 +1862,9 @@ See `MASTER_CLEAR <https://developer.android.com/reference/android/Manifest.perm
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/media_content_control** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/media_content_control>`
+:ref:`bool<class_bool>` **permissions/media_content_control** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/media_content_control>`
 
-Allows an application to know what content is playing and control its playback. See `MEDIA_CONTENT_CONTROL <https://developer.android.com/reference/android/Manifest.permission#MEDIA_CONTENT_CONTROL>`__.
+Cho phép ứng dụng biết nội dung nào đang phát và điều khiển việc phát nội dung đó. Xem `MEDIA_CONTENT_CONTROL <https://developer.android.com/reference/android/Manifest.permission#MEDIA_CONTENT_CONTROL>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1874,9 +1874,9 @@ Allows an application to know what content is playing and control its playback. 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/modify_audio_settings** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/modify_audio_settings>`
+:ref:`bool<class_bool>` **permissions/modify_audio_settings** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/modify_audio_settings>`
 
-Allows an application to modify global audio settings. See `MODIFY_AUDIO_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#MODIFY_AUDIO_SETTINGS>`__.
+Cho phép ứng dụng sửa đổi các cài đặt âm thanh toàn cục. Xem `MODIFY_AUDIO_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#MODIFY_AUDIO_SETTINGS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1886,9 +1886,9 @@ Allows an application to modify global audio settings. See `MODIFY_AUDIO_SETTING
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/modify_phone_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/modify_phone_state>`
+:ref:`bool<class_bool>` **permissions/modify_phone_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/modify_phone_state>`
 
-Allows modification of the telephony state - power on, mmi, etc. Does not include placing calls. See `MODIFY_PHONE_STATE <https://developer.android.com/reference/android/Manifest.permission#MODIFY_PHONE_STATE>`__.
+Cho phép sửa đổi trạng thái điện thoại - bật nguồn, mmi, v.v. Không bao gồm việc thực hiện cuộc gọi. Xem `MODIFY_PHONE_STATE <https://developer.android.com/reference/android/Manifest.permission#MODIFY_PHONE_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1898,9 +1898,9 @@ Allows modification of the telephony state - power on, mmi, etc. Does not includ
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/mount_format_filesystems** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/mount_format_filesystems>`
+:ref:`bool<class_bool>` **permissions/mount_format_filesystems** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/mount_format_filesystems>`
 
-Allows formatting file systems for removable storage. See `MOUNT_FORMAT_FILESYSTEMS <https://developer.android.com/reference/android/Manifest.permission#MOUNT_FORMAT_FILESYSTEMS>`__.
+Cho phép định dạng các hệ thống tệp cho bộ nhớ di động. Xem `MOUNT_FORMAT_FILESYSTEMS <https://developer.android.com/reference/android/Manifest.permission#MOUNT_FORMAT_FILESYSTEMS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1910,9 +1910,9 @@ Allows formatting file systems for removable storage. See `MOUNT_FORMAT_FILESYST
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/mount_unmount_filesystems** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/mount_unmount_filesystems>`
+:ref:`bool<class_bool>` **permissions/mount_unmount_filesystems** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/mount_unmount_filesystems>`
 
-Allows mounting and unmounting file systems for removable storage. See `MOUNT_UNMOUNT_FILESYSTEMS <https://developer.android.com/reference/android/Manifest.permission#MOUNT_UNMOUNT_FILESYSTEMS>`__.
+Cho phép mount và unmount các hệ thống tệp cho bộ nhớ di động. Xem `MOUNT_UNMOUNT_FILESYSTEMS <https://developer.android.com/reference/android/Manifest.permission#MOUNT_UNMOUNT_FILESYSTEMS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1922,9 +1922,9 @@ Allows mounting and unmounting file systems for removable storage. See `MOUNT_UN
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/nfc** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/nfc>`
+:ref:`bool<class_bool>` **permissions/nfc** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/nfc>`
 
-Allows applications to perform I/O operations over NFC. See `NFC <https://developer.android.com/reference/android/Manifest.permission#NFC>`__.
+Cho phép các ứng dụng thực hiện các thao tác I/O qua NFC. Xem `NFC <https://developer.android.com/reference/android/Manifest.permission#NFC>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1934,11 +1934,11 @@ Allows applications to perform I/O operations over NFC. See `NFC <https://develo
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/persistent_activity** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/persistent_activity>`
+:ref:`bool<class_bool>` **permissions/persistent_activity** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/persistent_activity>`
 
-**Deprecated:** Deprecated in API level 15.
+**Đã ngừng sử dụng:** Không dùng nữa kể từ API level 15.
 
-Allows an application to make its activities persistent.
+Cho phép ứng dụng duy trì các activity của ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1948,9 +1948,9 @@ Allows an application to make its activities persistent.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/post_notifications** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/post_notifications>`
+:ref:`bool<class_bool>` **permissions/post_notifications** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/post_notifications>`
 
-Allows an application to post notifications. Added in API level 33. See `Notification runtime permission <https://developer.android.com/develop/ui/views/notifications/notification-permission>`__.
+Cho phép ứng dụng đăng thông báo. Được thêm ở API level 33. Xem `Quyền runtime cho thông báo <https://developer.android.com/develop/ui/views/notifications/notification-permission>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1960,11 +1960,11 @@ Allows an application to post notifications. Added in API level 33. See `Notific
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/process_outgoing_calls** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/process_outgoing_calls>`
+:ref:`bool<class_bool>` **permissions/process_outgoing_calls** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/process_outgoing_calls>`
 
-**Deprecated:** Deprecated in API level 29.
+**Đã ngừng sử dụng:** Không dùng nữa kể từ API level 29.
 
-Allows an application to see the number being dialed during an outgoing call with the option to redirect the call to a different number or abort the call altogether. See `PROCESS_OUTGOING_CALLS <https://developer.android.com/reference/android/Manifest.permission#PROCESS_OUTGOING_CALLS>`__.
+Cho phép ứng dụng xem số đang được quay trong cuộc gọi đi, với tùy chọn chuyển hướng cuộc gọi đến một số khác hoặc hủy hoàn toàn cuộc gọi. Xem `PROCESS_OUTGOING_CALLS <https://developer.android.com/reference/android/Manifest.permission#PROCESS_OUTGOING_CALLS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1974,9 +1974,9 @@ Allows an application to see the number being dialed during an outgoing call wit
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_calendar** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_calendar>`
+:ref:`bool<class_bool>` **permissions/read_calendar** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_calendar>`
 
-Allows an application to read the user's calendar data. See `READ_CALENDAR <https://developer.android.com/reference/android/Manifest.permission#READ_CALENDAR>`__.
+Cho phép ứng dụng đọc dữ liệu lịch của người dùng. Xem `READ_CALENDAR <https://developer.android.com/reference/android/Manifest.permission#READ_CALENDAR>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1986,9 +1986,9 @@ Allows an application to read the user's calendar data. See `READ_CALENDAR <http
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_call_log** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_call_log>`
+:ref:`bool<class_bool>` **permissions/read_call_log** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_call_log>`
 
-Allows an application to read the user's call log. See `READ_CALL_LOG <https://developer.android.com/reference/android/Manifest.permission#READ_CALL_LOG>`__.
+Cho phép ứng dụng đọc nhật ký cuộc gọi của người dùng. Xem `READ_CALL_LOG <https://developer.android.com/reference/android/Manifest.permission#READ_CALL_LOG>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -1998,9 +1998,9 @@ Allows an application to read the user's call log. See `READ_CALL_LOG <https://d
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_contacts** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_contacts>`
+:ref:`bool<class_bool>` **permissions/read_contacts** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_contacts>`
 
-Allows an application to read the user's contacts data. See `READ_CONTACTS <https://developer.android.com/reference/android/Manifest.permission#READ_CONTACTS>`__.
+Cho phép ứng dụng đọc dữ liệu danh bạ của người dùng. Xem `READ_CONTACTS <https://developer.android.com/reference/android/Manifest.permission#READ_CONTACTS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2010,11 +2010,11 @@ Allows an application to read the user's contacts data. See `READ_CONTACTS <http
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_external_storage** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_external_storage>`
+:ref:`bool<class_bool>` **permissions/read_external_storage** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_external_storage>`
 
-**Deprecated:** Deprecated in API level 33.
+**Không còn được dùng:** Không còn được dùng từ API cấp 33.
 
-Allows an application to read from external storage. See `READ_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#READ_EXTERNAL_STORAGE>`__.
+Cho phép ứng dụng đọc từ bộ nhớ ngoài. Xem `READ_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#READ_EXTERNAL_STORAGE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2024,9 +2024,9 @@ Allows an application to read from external storage. See `READ_EXTERNAL_STORAGE 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_frame_buffer** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_frame_buffer>`
+:ref:`bool<class_bool>` **permissions/read_frame_buffer** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_frame_buffer>`
 
-Allows an application to take screen shots and more generally get access to the frame buffer data.
+Cho phép ứng dụng chụp ảnh màn hình và nói chung là truy cập dữ liệu bộ đệm khung hình.
 
 .. rst-class:: classref-item-separator
 
@@ -2036,9 +2036,9 @@ Allows an application to take screen shots and more generally get access to the 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_history_bookmarks** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_history_bookmarks>`
+:ref:`bool<class_bool>` **permissions/read_history_bookmarks** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_history_bookmarks>`
 
-Allows an application to read (but not write) the user's browsing history and bookmarks.
+Cho phép ứng dụng đọc (nhưng không ghi) lịch sử duyệt web và dấu trang của người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2048,9 +2048,9 @@ Allows an application to read (but not write) the user's browsing history and bo
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_input_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_input_state>`
+:ref:`bool<class_bool>` **permissions/read_input_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_input_state>`
 
-**Deprecated:** Deprecated in API level 16.
+**Không còn được dùng:** Không còn được dùng từ API level 16.
 
 .. rst-class:: classref-item-separator
 
@@ -2060,9 +2060,9 @@ Allows an application to read (but not write) the user's browsing history and bo
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_logs** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_logs>`
+:ref:`bool<class_bool>` **permissions/read_logs** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_logs>`
 
-Allows an application to read the low-level system log files. See `READ_LOGS <https://developer.android.com/reference/android/Manifest.permission#READ_LOGS>`__.
+Cho phép một ứng dụng đọc các tệp nhật ký hệ thống cấp thấp. Xem `READ_LOGS <https://developer.android.com/reference/android/Manifest.permission#READ_LOGS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2072,9 +2072,9 @@ Allows an application to read the low-level system log files. See `READ_LOGS <ht
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_media_audio** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_media_audio>`
+:ref:`bool<class_bool>` **permissions/read_media_audio** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_media_audio>`
 
-Allows an application to read audio files from external storage. See `READ_MEDIA_AUDIO <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_AUDIO>`__.
+Cho phép một ứng dụng đọc các tệp âm thanh từ bộ nhớ ngoài. Xem `READ_MEDIA_AUDIO <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_AUDIO>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2084,9 +2084,9 @@ Allows an application to read audio files from external storage. See `READ_MEDIA
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_media_images** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_media_images>`
+:ref:`bool<class_bool>` **permissions/read_media_images** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_media_images>`
 
-Allows an application to read image files from external storage. See `READ_MEDIA_IMAGES <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_IMAGES>`__.
+Cho phép một ứng dụng đọc các tệp hình ảnh từ bộ nhớ ngoài. Xem `READ_MEDIA_IMAGES <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_IMAGES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2096,9 +2096,9 @@ Allows an application to read image files from external storage. See `READ_MEDIA
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_media_video** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_media_video>`
+:ref:`bool<class_bool>` **permissions/read_media_video** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_media_video>`
 
-Allows an application to read video files from external storage. See `READ_MEDIA_VIDEO <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_VIDEO>`__.
+Cho phép ứng dụng đọc các tệp video từ bộ nhớ ngoài. Xem `READ_MEDIA_VIDEO <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_VIDEO>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2108,9 +2108,9 @@ Allows an application to read video files from external storage. See `READ_MEDIA
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_media_visual_user_selected** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_media_visual_user_selected>`
+:ref:`bool<class_bool>` **permissions/read_media_visual_user_selected** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_media_visual_user_selected>`
 
-Allows an application to read image or video files from external storage that a user has selected via the permission prompt photo picker. See `READ_MEDIA_VISUAL_USER_SELECTED <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_VISUAL_USER_SELECTED>`__.
+Cho phép ứng dụng đọc các tệp hình ảnh hoặc video từ bộ nhớ ngoài mà người dùng đã chọn thông qua trình chọn ảnh trong lời nhắc cấp quyền. Xem `READ_MEDIA_VISUAL_USER_SELECTED <https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_VISUAL_USER_SELECTED>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2120,9 +2120,9 @@ Allows an application to read image or video files from external storage that a 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_phone_state** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_phone_state>`
+:ref:`bool<class_bool>` **permissions/read_phone_state** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_phone_state>`
 
-Allows read only access to phone state. See `READ_PHONE_STATE <https://developer.android.com/reference/android/Manifest.permission#READ_PHONE_STATE>`__.
+Cho phép chỉ đọc trạng thái điện thoại. Xem `READ_PHONE_STATE <https://developer.android.com/reference/android/Manifest.permission#READ_PHONE_STATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2132,9 +2132,9 @@ Allows read only access to phone state. See `READ_PHONE_STATE <https://developer
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_profile** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_profile>`
+:ref:`bool<class_bool>` **permissions/read_profile** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_profile>`
 
-Allows an application to read the user's personal profile data.
+Cho phép ứng dụng đọc dữ liệu hồ sơ cá nhân của người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2144,9 +2144,9 @@ Allows an application to read the user's personal profile data.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_sms** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_sms>`
+:ref:`bool<class_bool>` **permissions/read_sms** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_sms>`
 
-Allows an application to read SMS messages. See `READ_SMS <https://developer.android.com/reference/android/Manifest.permission#READ_SMS>`__.
+Cho phép ứng dụng đọc tin nhắn SMS. Xem `READ_SMS <https://developer.android.com/reference/android/Manifest.permission#READ_SMS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2156,9 +2156,9 @@ Allows an application to read SMS messages. See `READ_SMS <https://developer.and
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_social_stream** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_social_stream>`
+:ref:`bool<class_bool>` **permissions/read_social_stream** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_social_stream>`
 
-Allows an application to read from the user's social stream.
+Cho phép ứng dụng đọc luồng mạng xã hội của người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2168,9 +2168,9 @@ Allows an application to read from the user's social stream.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_sync_settings** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_sync_settings>`
+:ref:`bool<class_bool>` **permissions/read_sync_settings** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_sync_settings>`
 
-Allows applications to read the sync settings. See `READ_SYNC_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#READ_SYNC_SETTINGS>`__.
+Cho phép ứng dụng đọc các cài đặt đồng bộ hóa. Xem `READ_SYNC_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#READ_SYNC_SETTINGS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2180,9 +2180,9 @@ Allows applications to read the sync settings. See `READ_SYNC_SETTINGS <https://
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_sync_stats** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_sync_stats>`
+:ref:`bool<class_bool>` **permissions/read_sync_stats** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_sync_stats>`
 
-Allows applications to read the sync stats. See `READ_SYNC_STATS <https://developer.android.com/reference/android/Manifest.permission#READ_SYNC_STATS>`__.
+Cho phép các ứng dụng đọc số liệu thống kê đồng bộ hóa. Xem `READ_SYNC_STATS <https://developer.android.com/reference/android/Manifest.permission#READ_SYNC_STATS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2192,9 +2192,9 @@ Allows applications to read the sync stats. See `READ_SYNC_STATS <https://develo
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/read_user_dictionary** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/read_user_dictionary>`
+:ref:`bool<class_bool>` **permissions/read_user_dictionary** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/read_user_dictionary>`
 
-Allows an application to read the user dictionary.
+Cho phép ứng dụng đọc từ điển người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2204,9 +2204,9 @@ Allows an application to read the user dictionary.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/reboot** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/reboot>`
+:ref:`bool<class_bool>` **permissions/reboot** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/reboot>`
 
-Required to be able to reboot the device. See `REBOOT <https://developer.android.com/reference/android/Manifest.permission#REBOOT>`__.
+Cần có quyền này để có thể khởi động lại thiết bị. Xem `REBOOT <https://developer.android.com/reference/android/Manifest.permission#REBOOT>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2216,9 +2216,9 @@ Required to be able to reboot the device. See `REBOOT <https://developer.android
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/receive_boot_completed** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/receive_boot_completed>`
+:ref:`bool<class_bool>` **permissions/receive_boot_completed** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/receive_boot_completed>`
 
-Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadcast after the system finishes booting. See `RECEIVE_BOOT_COMPLETED <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_BOOT_COMPLETED>`__.
+Cho phép ứng dụng nhận Intent.ACTION_BOOT_COMPLETED được broadcast sau khi hệ thống khởi động xong. Xem `RECEIVE_BOOT_COMPLETED <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_BOOT_COMPLETED>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2228,9 +2228,9 @@ Allows an application to receive the Intent.ACTION_BOOT_COMPLETED that is broadc
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/receive_mms** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/receive_mms>`
+:ref:`bool<class_bool>` **permissions/receive_mms** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/receive_mms>`
 
-Allows an application to monitor incoming MMS messages. See `RECEIVE_MMS <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_MMS>`__.
+Cho phép ứng dụng theo dõi các tin nhắn MMS đến. Xem `RECEIVE_MMS <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_MMS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2240,9 +2240,9 @@ Allows an application to monitor incoming MMS messages. See `RECEIVE_MMS <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/receive_sms** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/receive_sms>`
+:ref:`bool<class_bool>` **permissions/receive_sms** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/receive_sms>`
 
-Allows an application to receive SMS messages. See `RECEIVE_SMS <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_SMS>`__.
+Cho phép ứng dụng nhận tin nhắn SMS. Xem `RECEIVE_SMS <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_SMS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2252,9 +2252,9 @@ Allows an application to receive SMS messages. See `RECEIVE_SMS <https://develop
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/receive_wap_push** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/receive_wap_push>`
+:ref:`bool<class_bool>` **permissions/receive_wap_push** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/receive_wap_push>`
 
-Allows an application to receive WAP push messages. See `RECEIVE_WAP_PUSH <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_WAP_PUSH>`__.
+Cho phép ứng dụng nhận tin nhắn WAP push. Xem `RECEIVE_WAP_PUSH <https://developer.android.com/reference/android/Manifest.permission#RECEIVE_WAP_PUSH>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2264,9 +2264,9 @@ Allows an application to receive WAP push messages. See `RECEIVE_WAP_PUSH <https
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/record_audio** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/record_audio>`
+:ref:`bool<class_bool>` **permissions/record_audio** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/record_audio>`
 
-Allows an application to record audio. See `RECORD_AUDIO <https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO>`__.
+Cho phép ứng dụng ghi âm. Xem `RECORD_AUDIO <https://developer.android.com/reference/android/Manifest.permission#RECORD_AUDIO>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2276,9 +2276,9 @@ Allows an application to record audio. See `RECORD_AUDIO <https://developer.andr
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/reorder_tasks** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/reorder_tasks>`
+:ref:`bool<class_bool>` **permissions/reorder_tasks** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/reorder_tasks>`
 
-Allows an application to change the Z-order of tasks. See `REORDER_TASKS <https://developer.android.com/reference/android/Manifest.permission#REORDER_TASKS>`__.
+Cho phép ứng dụng thay đổi thứ tự Z của các tác vụ. Xem `REORDER_TASKS <https://developer.android.com/reference/android/Manifest.permission#REORDER_TASKS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2288,9 +2288,9 @@ Allows an application to change the Z-order of tasks. See `REORDER_TASKS <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/restart_packages** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/restart_packages>`
+:ref:`bool<class_bool>` **permissions/restart_packages** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/restart_packages>`
 
-**Deprecated:** Deprecated in API level 15.
+**Đã ngừng sử dụng:** Không dùng nữa kể từ API level 15.
 
 .. rst-class:: classref-item-separator
 
@@ -2300,9 +2300,9 @@ Allows an application to change the Z-order of tasks. See `REORDER_TASKS <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/send_respond_via_message** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/send_respond_via_message>`
+:ref:`bool<class_bool>` **permissions/send_respond_via_message** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/send_respond_via_message>`
 
-Allows an application (Phone) to send a request to other applications to handle the respond-via-message action during incoming calls. See `SEND_RESPOND_VIA_MESSAGE <https://developer.android.com/reference/android/Manifest.permission#SEND_RESPOND_VIA_MESSAGE>`__.
+Cho phép một ứng dụng (Phone) gửi yêu cầu đến các ứng dụng khác để xử lý hành động respond-via-message trong các cuộc gọi đến. Xem `SEND_RESPOND_VIA_MESSAGE <https://developer.android.com/reference/android/Manifest.permission#SEND_RESPOND_VIA_MESSAGE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2312,9 +2312,9 @@ Allows an application (Phone) to send a request to other applications to handle 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/send_sms** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/send_sms>`
+:ref:`bool<class_bool>` **permissions/send_sms** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/send_sms>`
 
-Allows an application to send SMS messages. See `SEND_SMS <https://developer.android.com/reference/android/Manifest.permission#SEND_SMS>`__.
+Cho phép một ứng dụng gửi tin nhắn SMS. Xem `SEND_SMS <https://developer.android.com/reference/android/Manifest.permission#SEND_SMS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2324,9 +2324,9 @@ Allows an application to send SMS messages. See `SEND_SMS <https://developer.and
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_activity_watcher** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_activity_watcher>`
+:ref:`bool<class_bool>` **permissions/set_activity_watcher** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_activity_watcher>`
 
-Allows an application to watch and control how activities are started globally in the system.
+Cho phép một ứng dụng theo dõi và kiểm soát cách các activity được khởi chạy trên toàn hệ thống.
 
 .. rst-class:: classref-item-separator
 
@@ -2336,9 +2336,9 @@ Allows an application to watch and control how activities are started globally i
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_alarm** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_alarm>`
+:ref:`bool<class_bool>` **permissions/set_alarm** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_alarm>`
 
-Allows an application to broadcast an Intent to set an alarm for the user. See `SET_ALARM <https://developer.android.com/reference/android/Manifest.permission#SET_ALARM>`__.
+Cho phép một ứng dụng broadcast một Intent để đặt báo thức cho người dùng. Xem `SET_ALARM <https://developer.android.com/reference/android/Manifest.permission#SET_ALARM>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2348,9 +2348,9 @@ Allows an application to broadcast an Intent to set an alarm for the user. See `
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_always_finish** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_always_finish>`
+:ref:`bool<class_bool>` **permissions/set_always_finish** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_always_finish>`
 
-Allows an application to control whether activities are immediately finished when put in the background. See `SET_ALWAYS_FINISH <https://developer.android.com/reference/android/Manifest.permission#SET_ALWAYS_FINISH>`__.
+Cho phép ứng dụng kiểm soát việc các activity có được kết thúc ngay lập tức khi chuyển xuống nền hay không. Xem `SET_ALWAYS_FINISH <https://developer.android.com/reference/android/Manifest.permission#SET_ALWAYS_FINISH>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2360,9 +2360,9 @@ Allows an application to control whether activities are immediately finished whe
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_animation_scale** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_animation_scale>`
+:ref:`bool<class_bool>` **permissions/set_animation_scale** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_animation_scale>`
 
-Allows to modify the global animation scaling factor. See `SET_ANIMATION_SCALE <https://developer.android.com/reference/android/Manifest.permission#SET_ANIMATION_SCALE>`__.
+Cho phép sửa đổi hệ số tỷ lệ animation toàn cục. Xem `SET_ANIMATION_SCALE <https://developer.android.com/reference/android/Manifest.permission#SET_ANIMATION_SCALE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2372,9 +2372,9 @@ Allows to modify the global animation scaling factor. See `SET_ANIMATION_SCALE <
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_debug_app** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_debug_app>`
+:ref:`bool<class_bool>` **permissions/set_debug_app** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_debug_app>`
 
-Configure an application for debugging. See `SET_DEBUG_APP <https://developer.android.com/reference/android/Manifest.permission#SET_DEBUG_APP>`__.
+Cấu hình một ứng dụng để debug. Xem `SET_DEBUG_APP <https://developer.android.com/reference/android/Manifest.permission#SET_DEBUG_APP>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2384,9 +2384,9 @@ Configure an application for debugging. See `SET_DEBUG_APP <https://developer.an
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_orientation** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_orientation>`
+:ref:`bool<class_bool>` **permissions/set_orientation** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_orientation>`
 
-Allows low-level access to setting the orientation (actually rotation) of the screen.
+Cho phép truy cập ở mức thấp để thiết lập hướng (thực ra là phép xoay) của màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -2396,9 +2396,9 @@ Allows low-level access to setting the orientation (actually rotation) of the sc
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_pointer_speed** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_pointer_speed>`
+:ref:`bool<class_bool>` **permissions/set_pointer_speed** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_pointer_speed>`
 
-Allows low-level access to setting the pointer speed.
+Cho phép truy cập ở mức thấp để thiết lập tốc độ con trỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -2408,9 +2408,9 @@ Allows low-level access to setting the pointer speed.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_preferred_applications** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_preferred_applications>`
+:ref:`bool<class_bool>` **permissions/set_preferred_applications** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_preferred_applications>`
 
-**Deprecated:** Deprecated in API level 15.
+**Đã ngừng sử dụng:** Không dùng nữa kể từ API level 15.
 
 .. rst-class:: classref-item-separator
 
@@ -2420,9 +2420,9 @@ Allows low-level access to setting the pointer speed.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_process_limit** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_process_limit>`
+:ref:`bool<class_bool>` **permissions/set_process_limit** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_process_limit>`
 
-Allows an application to set the maximum number of (not needed) application processes that can be running. See `SET_PROCESS_LIMIT <https://developer.android.com/reference/android/Manifest.permission#SET_PROCESS_LIMIT>`__.
+Cho phép một ứng dụng thiết lập số lượng tối đa các tiến trình ứng dụng (không cần thiết) có thể đang chạy. Xem `SET_PROCESS_LIMIT <https://developer.android.com/reference/android/Manifest.permission#SET_PROCESS_LIMIT>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2432,9 +2432,9 @@ Allows an application to set the maximum number of (not needed) application proc
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_time** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_time>`
+:ref:`bool<class_bool>` **permissions/set_time** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_time>`
 
-Allows applications to set the system time directly. See `SET_TIME <https://developer.android.com/reference/android/Manifest.permission#SET_TIME>`__.
+Cho phép các ứng dụng đặt trực tiếp thời gian hệ thống. Xem `SET_TIME <https://developer.android.com/reference/android/Manifest.permission#SET_TIME>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2444,9 +2444,9 @@ Allows applications to set the system time directly. See `SET_TIME <https://deve
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_time_zone** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_time_zone>`
+:ref:`bool<class_bool>` **permissions/set_time_zone** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_time_zone>`
 
-Allows applications to set the system time zone directly. See `SET_TIME_ZONE <https://developer.android.com/reference/android/Manifest.permission#SET_TIME_ZONE>`__.
+Cho phép các ứng dụng đặt trực tiếp múi giờ hệ thống. Xem `SET_TIME_ZONE <https://developer.android.com/reference/android/Manifest.permission#SET_TIME_ZONE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2456,9 +2456,9 @@ Allows applications to set the system time zone directly. See `SET_TIME_ZONE <ht
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_wallpaper** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_wallpaper>`
+:ref:`bool<class_bool>` **permissions/set_wallpaper** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_wallpaper>`
 
-Allows applications to set the wallpaper. See `SET_WALLPAPER <https://developer.android.com/reference/android/Manifest.permission#SET_WALLPAPER>`__.
+Cho phép các ứng dụng đặt hình nền. Xem `SET_WALLPAPER <https://developer.android.com/reference/android/Manifest.permission#SET_WALLPAPER>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2468,9 +2468,9 @@ Allows applications to set the wallpaper. See `SET_WALLPAPER <https://developer.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/set_wallpaper_hints** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/set_wallpaper_hints>`
+:ref:`bool<class_bool>` **permissions/set_wallpaper_hints** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/set_wallpaper_hints>`
 
-Allows applications to set the wallpaper hints. See `SET_WALLPAPER_HINTS <https://developer.android.com/reference/android/Manifest.permission#SET_WALLPAPER_HINTS>`__.
+Cho phép các ứng dụng thiết lập các gợi ý về hình nền. Xem `SET_WALLPAPER_HINTS <https://developer.android.com/reference/android/Manifest.permission#SET_WALLPAPER_HINTS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2480,9 +2480,9 @@ Allows applications to set the wallpaper hints. See `SET_WALLPAPER_HINTS <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/signal_persistent_processes** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/signal_persistent_processes>`
+:ref:`bool<class_bool>` **permissions/signal_persistent_processes** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/signal_persistent_processes>`
 
-Allow an application to request that a signal be sent to all persistent processes. See `SIGNAL_PERSISTENT_PROCESSES <https://developer.android.com/reference/android/Manifest.permission#SIGNAL_PERSISTENT_PROCESSES>`__.
+Cho phép ứng dụng yêu cầu gửi một signal đến tất cả các process persistent. Xem `SIGNAL_PERSISTENT_PROCESSES <https://developer.android.com/reference/android/Manifest.permission#SIGNAL_PERSISTENT_PROCESSES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2492,9 +2492,9 @@ Allow an application to request that a signal be sent to all persistent processe
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/status_bar** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/status_bar>`
+:ref:`bool<class_bool>` **permissions/status_bar** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/status_bar>`
 
-Allows an application to open, close, or disable the status bar and its icons. See `STATUS_BAR <https://developer.android.com/reference/android/Manifest.permission#STATUS_BAR>`__.
+Cho phép ứng dụng mở, đóng hoặc vô hiệu hóa status bar và các biểu tượng của thanh này. Xem `STATUS_BAR <https://developer.android.com/reference/android/Manifest.permission#STATUS_BAR>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2504,9 +2504,9 @@ Allows an application to open, close, or disable the status bar and its icons. S
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/subscribed_feeds_read** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_read>`
+:ref:`bool<class_bool>` **permissions/subscribed_feeds_read** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_read>`
 
-Allows an application to allow access the subscribed feeds ContentProvider.
+Cho phép ứng dụng truy cập ContentProvider của các feed đã đăng ký.
 
 .. rst-class:: classref-item-separator
 
@@ -2516,9 +2516,9 @@ Allows an application to allow access the subscribed feeds ContentProvider.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/subscribed_feeds_write** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_write>`
+:ref:`bool<class_bool>` **permissions/subscribed_feeds_write** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/subscribed_feeds_write>`
 
-**Deprecated:** This property may be changed or removed in future versions.
+**Không còn được dùng:** Thuộc tính này có thể bị thay đổi hoặc xóa trong các phiên bản tương lai.
 
 .. rst-class:: classref-item-separator
 
@@ -2528,9 +2528,9 @@ Allows an application to allow access the subscribed feeds ContentProvider.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/system_alert_window** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/system_alert_window>`
+:ref:`bool<class_bool>` **permissions/system_alert_window** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/system_alert_window>`
 
-Allows an app to create windows using the type WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, shown on top of all other apps. See `SYSTEM_ALERT_WINDOW <https://developer.android.com/reference/android/Manifest.permission#SYSTEM_ALERT_WINDOW>`__.
+Cho phép ứng dụng tạo các cửa sổ bằng kiểu WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, hiển thị phía trên tất cả ứng dụng khác. Xem `SYSTEM_ALERT_WINDOW <https://developer.android.com/reference/android/Manifest.permission#SYSTEM_ALERT_WINDOW>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2540,9 +2540,9 @@ Allows an app to create windows using the type WindowManager.LayoutParams.TYPE_A
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/transmit_ir** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/transmit_ir>`
+:ref:`bool<class_bool>` **permissions/transmit_ir** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/transmit_ir>`
 
-Allows using the device's IR transmitter, if available. See `TRANSMIT_IR <https://developer.android.com/reference/android/Manifest.permission#TRANSMIT_IR>`__.
+Cho phép sử dụng bộ phát IR của thiết bị, nếu có. Xem `TRANSMIT_IR <https://developer.android.com/reference/android/Manifest.permission#TRANSMIT_IR>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2552,9 +2552,9 @@ Allows using the device's IR transmitter, if available. See `TRANSMIT_IR <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/uninstall_shortcut** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/uninstall_shortcut>`
+:ref:`bool<class_bool>` **permissions/uninstall_shortcut** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/uninstall_shortcut>`
 
-**Deprecated:** This property may be changed or removed in future versions.
+**Không còn được dùng:** Thuộc tính này có thể bị thay đổi hoặc xóa trong các phiên bản tương lai.
 
 .. rst-class:: classref-item-separator
 
@@ -2564,9 +2564,9 @@ Allows using the device's IR transmitter, if available. See `TRANSMIT_IR <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/update_device_stats** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/update_device_stats>`
+:ref:`bool<class_bool>` **permissions/update_device_stats** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/update_device_stats>`
 
-Allows an application to update device statistics. See `UPDATE_DEVICE_STATS <https://developer.android.com/reference/android/Manifest.permission#UPDATE_DEVICE_STATS>`__.
+Cho phép một ứng dụng cập nhật số liệu thống kê của thiết bị. Xem `UPDATE_DEVICE_STATS <https://developer.android.com/reference/android/Manifest.permission#UPDATE_DEVICE_STATS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2576,9 +2576,9 @@ Allows an application to update device statistics. See `UPDATE_DEVICE_STATS <htt
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/use_credentials** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/use_credentials>`
+:ref:`bool<class_bool>` **permissions/use_credentials** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/use_credentials>`
 
-Allows an application to request authtokens from the AccountManager.
+Cho phép một ứng dụng yêu cầu authtokens từ AccountManager.
 
 .. rst-class:: classref-item-separator
 
@@ -2588,9 +2588,9 @@ Allows an application to request authtokens from the AccountManager.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/use_sip** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/use_sip>`
+:ref:`bool<class_bool>` **permissions/use_sip** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/use_sip>`
 
-Allows an application to use SIP service. See `USE_SIP <https://developer.android.com/reference/android/Manifest.permission#USE_SIP>`__.
+Cho phép một ứng dụng sử dụng dịch vụ SIP. Xem `USE_SIP <https://developer.android.com/reference/android/Manifest.permission#USE_SIP>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2600,9 +2600,9 @@ Allows an application to use SIP service. See `USE_SIP <https://developer.androi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/vibrate** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/vibrate>`
+:ref:`bool<class_bool>` **permissions/vibrate** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/vibrate>`
 
-Allows access to the vibrator. See `VIBRATE <https://developer.android.com/reference/android/Manifest.permission#VIBRATE>`__.
+Cho phép truy cập bộ rung. Xem `VIBRATE <https://developer.android.com/reference/android/Manifest.permission#VIBRATE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2612,9 +2612,9 @@ Allows access to the vibrator. See `VIBRATE <https://developer.android.com/refer
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/wake_lock** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/wake_lock>`
+:ref:`bool<class_bool>` **permissions/wake_lock** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/wake_lock>`
 
-Allows using PowerManager WakeLocks to keep processor from sleeping or screen from dimming. See `WAKE_LOCK <https://developer.android.com/reference/android/Manifest.permission#WAKE_LOCK>`__.
+Cho phép sử dụng PowerManager WakeLocks để giữ cho bộ xử lý không chuyển sang trạng thái ngủ hoặc màn hình không bị giảm độ sáng. Xem `WAKE_LOCK <https://developer.android.com/reference/android/Manifest.permission#WAKE_LOCK>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2624,9 +2624,9 @@ Allows using PowerManager WakeLocks to keep processor from sleeping or screen fr
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_apn_settings** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_apn_settings>`
+:ref:`bool<class_bool>` **permissions/write_apn_settings** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_apn_settings>`
 
-Allows applications to write the apn settings and read sensitive fields of an existing apn settings like user and password. See `WRITE_APN_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_APN_SETTINGS>`__.
+Cho phép các ứng dụng ghi cài đặt apn và đọc các trường nhạy cảm của cài đặt apn hiện có, chẳng hạn như tên người dùng và mật khẩu. Xem `WRITE_APN_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_APN_SETTINGS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2636,9 +2636,9 @@ Allows applications to write the apn settings and read sensitive fields of an ex
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_calendar** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_calendar>`
+:ref:`bool<class_bool>` **permissions/write_calendar** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_calendar>`
 
-Allows an application to write the user's calendar data. See `WRITE_CALENDAR <https://developer.android.com/reference/android/Manifest.permission#WRITE_CALENDAR>`__.
+Cho phép ứng dụng ghi dữ liệu lịch của người dùng. Xem `WRITE_CALENDAR <https://developer.android.com/reference/android/Manifest.permission#WRITE_CALENDAR>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2648,9 +2648,9 @@ Allows an application to write the user's calendar data. See `WRITE_CALENDAR <ht
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_call_log** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_call_log>`
+:ref:`bool<class_bool>` **permissions/write_call_log** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_call_log>`
 
-Allows an application to write (but not read) the user's call log data. See `WRITE_CALL_LOG <https://developer.android.com/reference/android/Manifest.permission#WRITE_CALL_LOG>`__.
+Cho phép ứng dụng ghi (nhưng không đọc) dữ liệu nhật ký cuộc gọi của người dùng. Xem `WRITE_CALL_LOG <https://developer.android.com/reference/android/Manifest.permission#WRITE_CALL_LOG>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2660,9 +2660,9 @@ Allows an application to write (but not read) the user's call log data. See `WRI
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_contacts** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_contacts>`
+:ref:`bool<class_bool>` **permissions/write_contacts** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_contacts>`
 
-Allows an application to write the user's contacts data. See `WRITE_CONTACTS <https://developer.android.com/reference/android/Manifest.permission#WRITE_CONTACTS>`__.
+Cho phép ứng dụng ghi dữ liệu danh bạ của người dùng. Xem `WRITE_CONTACTS <https://developer.android.com/reference/android/Manifest.permission#WRITE_CONTACTS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2672,9 +2672,9 @@ Allows an application to write the user's contacts data. See `WRITE_CONTACTS <ht
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_external_storage** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_external_storage>`
+:ref:`bool<class_bool>` **permissions/write_external_storage** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_external_storage>`
 
-Allows an application to write to external storage. See `WRITE_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#WRITE_EXTERNAL_STORAGE>`__.
+Cho phép ứng dụng ghi vào bộ nhớ ngoài. Xem `WRITE_EXTERNAL_STORAGE <https://developer.android.com/reference/android/Manifest.permission#WRITE_EXTERNAL_STORAGE>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2684,9 +2684,9 @@ Allows an application to write to external storage. See `WRITE_EXTERNAL_STORAGE 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_gservices** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_gservices>`
+:ref:`bool<class_bool>` **permissions/write_gservices** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_gservices>`
 
-Allows an application to modify the Google service map. See `WRITE_GSERVICES <https://developer.android.com/reference/android/Manifest.permission#WRITE_GSERVICES>`__.
+Cho phép một ứng dụng sửa đổi bản đồ dịch vụ Google. Xem `WRITE_GSERVICES <https://developer.android.com/reference/android/Manifest.permission#WRITE_GSERVICES>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2696,9 +2696,9 @@ Allows an application to modify the Google service map. See `WRITE_GSERVICES <ht
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_history_bookmarks** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_history_bookmarks>`
+:ref:`bool<class_bool>` **permissions/write_history_bookmarks** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_history_bookmarks>`
 
-Allows an application to write (but not read) the user's browsing history and bookmarks.
+Cho phép một ứng dụng ghi (nhưng không đọc) lịch sử duyệt web và dấu trang của người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2708,9 +2708,9 @@ Allows an application to write (but not read) the user's browsing history and bo
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_profile** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_profile>`
+:ref:`bool<class_bool>` **permissions/write_profile** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_profile>`
 
-Allows an application to write (but not read) the user's personal profile data.
+Cho phép một ứng dụng ghi (nhưng không đọc) dữ liệu hồ sơ cá nhân của người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2720,9 +2720,9 @@ Allows an application to write (but not read) the user's personal profile data.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_secure_settings** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_secure_settings>`
+:ref:`bool<class_bool>` **permissions/write_secure_settings** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_secure_settings>`
 
-Allows an application to read or write the secure system settings. See `WRITE_SECURE_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_SECURE_SETTINGS>`__.
+Cho phép ứng dụng đọc hoặc ghi các cài đặt hệ thống bảo mật. Xem `WRITE_SECURE_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_SECURE_SETTINGS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2732,9 +2732,9 @@ Allows an application to read or write the secure system settings. See `WRITE_SE
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_settings** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_settings>`
+:ref:`bool<class_bool>` **permissions/write_settings** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_settings>`
 
-Allows an application to read or write the system settings. See `WRITE_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_SETTINGS>`__.
+Cho phép ứng dụng đọc hoặc ghi các cài đặt hệ thống. Xem `WRITE_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_SETTINGS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2744,9 +2744,9 @@ Allows an application to read or write the system settings. See `WRITE_SETTINGS 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_sms** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_sms>`
+:ref:`bool<class_bool>` **permissions/write_sms** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_sms>`
 
-Allows an application to write SMS messages.
+Cho phép ứng dụng ghi tin nhắn SMS.
 
 .. rst-class:: classref-item-separator
 
@@ -2756,9 +2756,9 @@ Allows an application to write SMS messages.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_social_stream** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_social_stream>`
+:ref:`bool<class_bool>` **permissions/write_social_stream** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_social_stream>`
 
-Allows an application to write (but not read) the user's social stream data.
+Cho phép ứng dụng ghi (nhưng không đọc) dữ liệu luồng xã hội của người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2768,9 +2768,9 @@ Allows an application to write (but not read) the user's social stream data.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_sync_settings** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_sync_settings>`
+:ref:`bool<class_bool>` **permissions/write_sync_settings** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_sync_settings>`
 
-Allows applications to write the sync settings. See `WRITE_SYNC_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_SYNC_SETTINGS>`__.
+Cho phép các ứng dụng ghi cài đặt đồng bộ. Xem `WRITE_SYNC_SETTINGS <https://developer.android.com/reference/android/Manifest.permission#WRITE_SYNC_SETTINGS>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -2780,9 +2780,9 @@ Allows applications to write the sync settings. See `WRITE_SYNC_SETTINGS <https:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **permissions/write_user_dictionary** :ref:`🔗<class_EditorExportPlatformAndroid_property_permissions/write_user_dictionary>`
+:ref:`bool<class_bool>` **permissions/write_user_dictionary** :ref:`🔗 <class_EditorExportPlatformAndroid_property_permissions/write_user_dictionary>`
 
-Allows an application to write to the user dictionary.
+Cho phép một ứng dụng ghi vào từ điển người dùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2792,9 +2792,9 @@ Allows an application to write to the user dictionary.
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **screen/background_color** :ref:`🔗<class_EditorExportPlatformAndroid_property_screen/background_color>`
+:ref:`Color<class_Color>` **screen/background_color** :ref:`🔗 <class_EditorExportPlatformAndroid_property_screen/background_color>`
 
-The background color used for the root window. By default it's :ref:`Color.BLACK<class_Color_constant_BLACK>`.
+Màu nền được sử dụng cho cửa sổ gốc. Theo mặc định, màu này là :ref:`Color.BLACK<class_Color_constant_BLACK>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2804,11 +2804,11 @@ The background color used for the root window. By default it's :ref:`Color.BLACK
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **screen/edge_to_edge** :ref:`🔗<class_EditorExportPlatformAndroid_property_screen/edge_to_edge>`
+:ref:`bool<class_bool>` **screen/edge_to_edge** :ref:`🔗 <class_EditorExportPlatformAndroid_property_screen/edge_to_edge>`
 
-If ``true``, this makes the navigation and status bars translucent and allows the application content to extend edge to edge.
+Nếu ``true``, các thanh điều hướng và trạng thái sẽ trở nên trong mờ, đồng thời cho phép nội dung ứng dụng mở rộng từ cạnh này đến cạnh kia.
 
-\ **Note:** You should ensure that none of the application content is occluded by system elements by using the :ref:`DisplayServer.get_display_safe_area()<class_DisplayServer_method_get_display_safe_area>` and :ref:`DisplayServer.get_display_cutouts()<class_DisplayServer_method_get_display_cutouts>` methods.
+\ **Lưu ý:** Bạn nên đảm bảo rằng không phần nào của nội dung ứng dụng bị các thành phần hệ thống che khuất bằng cách sử dụng các phương thức :ref:`DisplayServer.get_display_safe_area()<class_DisplayServer_method_get_display_safe_area>` và :ref:`DisplayServer.get_display_cutouts()<class_DisplayServer_method_get_display_cutouts>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2818,9 +2818,9 @@ If ``true``, this makes the navigation and status bars translucent and allows th
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **screen/immersive_mode** :ref:`🔗<class_EditorExportPlatformAndroid_property_screen/immersive_mode>`
+:ref:`bool<class_bool>` **screen/immersive_mode** :ref:`🔗 <class_EditorExportPlatformAndroid_property_screen/immersive_mode>`
 
-If ``true``, hides the navigation and status bar. Set :ref:`DisplayServer.window_set_mode()<class_DisplayServer_method_window_set_mode>` to change this at runtime.
+Nếu ``true``, thanh điều hướng và thanh trạng thái sẽ bị ẩn. Đặt :ref:`DisplayServer.window_set_mode()<class_DisplayServer_method_window_set_mode>` để thay đổi điều này trong runtime.
 
 .. rst-class:: classref-item-separator
 
@@ -2830,9 +2830,9 @@ If ``true``, hides the navigation and status bar. Set :ref:`DisplayServer.window
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **screen/support_large** :ref:`🔗<class_EditorExportPlatformAndroid_property_screen/support_large>`
+:ref:`bool<class_bool>` **screen/support_large** :ref:`🔗 <class_EditorExportPlatformAndroid_property_screen/support_large>`
 
-Indicates whether the application supports larger screen form-factors.
+Cho biết ứng dụng có hỗ trợ các dạng kích thước màn hình lớn hơn hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2842,9 +2842,9 @@ Indicates whether the application supports larger screen form-factors.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **screen/support_normal** :ref:`🔗<class_EditorExportPlatformAndroid_property_screen/support_normal>`
+:ref:`bool<class_bool>` **screen/support_normal** :ref:`🔗 <class_EditorExportPlatformAndroid_property_screen/support_normal>`
 
-Indicates whether an application supports the "normal" screen form-factors.
+Cho biết ứng dụng có hỗ trợ các dạng màn hình "normal" hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2854,9 +2854,9 @@ Indicates whether an application supports the "normal" screen form-factors.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **screen/support_small** :ref:`🔗<class_EditorExportPlatformAndroid_property_screen/support_small>`
+:ref:`bool<class_bool>` **screen/support_small** :ref:`🔗 <class_EditorExportPlatformAndroid_property_screen/support_small>`
 
-Indicates whether the application supports smaller screen form-factors.
+Cho biết ứng dụng có hỗ trợ các dạng màn hình nhỏ hơn hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2866,9 +2866,9 @@ Indicates whether the application supports smaller screen form-factors.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **screen/support_xlarge** :ref:`🔗<class_EditorExportPlatformAndroid_property_screen/support_xlarge>`
+:ref:`bool<class_bool>` **screen/support_xlarge** :ref:`🔗 <class_EditorExportPlatformAndroid_property_screen/support_xlarge>`
 
-Indicates whether the application supports extra large screen form-factors.
+Cho biết ứng dụng có hỗ trợ các dạng màn hình cực lớn hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2878,11 +2878,11 @@ Indicates whether the application supports extra large screen form-factors.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗<class_EditorExportPlatformAndroid_property_shader_baker/enabled>`
+:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗 <class_EditorExportPlatformAndroid_property_shader_baker/enabled>`
 
-If ``true``, shaders will be compiled and embedded in the application. This option is only supported when using the Forward+ or Mobile renderers.
+Nếu ``true``, các shader sẽ được biên dịch và nhúng vào ứng dụng. Tùy chọn này chỉ được hỗ trợ khi sử dụng các renderer Forward+ hoặc Mobile.
 
-\ **Note:** When exporting as a dedicated server, the shader baker is always disabled since no rendering is performed.
+\ **Lưu ý:** Khi xuất dưới dạng dedicated server, shader baker luôn bị tắt vì không thực hiện kết xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -2892,13 +2892,13 @@ If ``true``, shaders will be compiled and embedded in the application. This opti
 
 .. rst-class:: classref-property
 
-:ref:`Color<class_Color>` **splash_screen/background_color** :ref:`🔗<class_EditorExportPlatformAndroid_property_splash_screen/background_color>`
+:ref:`Color<class_Color>` **splash_screen/background_color** :ref:`🔗 <class_EditorExportPlatformAndroid_property_splash_screen/background_color>`
 
-The background color used for the system splash screen window.
+Màu nền được sử dụng cho cửa sổ splash screen của hệ thống.
 
-If not set, it will fallback to :ref:`launcher_icons/adaptive_background_432x432<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>`.
+Nếu không được đặt, giá trị này sẽ fallback về :ref:`launcher_icons/adaptive_background_432x432 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>`.
 
-\ **Note:** This is only applied if :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` is enabled.
+\ **Lưu ý:** Giá trị này chỉ được áp dụng khi :ref:`gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -2908,11 +2908,11 @@ If not set, it will fallback to :ref:`launcher_icons/adaptive_background_432x432
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **splash_screen/branding_image** :ref:`🔗<class_EditorExportPlatformAndroid_property_splash_screen/branding_image>`
+:ref:`String<class_String>` **splash_screen/branding_image** :ref:`🔗 <class_EditorExportPlatformAndroid_property_splash_screen/branding_image>`
 
-System splash screen branding image file. If left empty, no branding image will be used. See `splash-screen dimensions <https://developer.android.com/develop/ui/views/launch/splash-screen#dimensions>`__.
+Tệp hình ảnh branding của splash screen hệ thống. Nếu để trống, sẽ không sử dụng hình ảnh branding. Xem `kích thước splash screen <https://developer.android.com/develop/ui/views/launch/splash-screen#dimensions>`__.
 
-\ **Note:** Can be used to set an image to be shown at the bottom of the splash screen.
+\ **Lưu ý:** Có thể dùng để đặt một hình ảnh hiển thị ở cuối màn hình splash.
 
 .. rst-class:: classref-item-separator
 
@@ -2922,9 +2922,9 @@ System splash screen branding image file. If left empty, no branding image will 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **splash_screen/disable_godot_boot_splash** :ref:`🔗<class_EditorExportPlatformAndroid_property_splash_screen/disable_godot_boot_splash>`
+:ref:`bool<class_bool>` **splash_screen/disable_godot_boot_splash** :ref:`🔗 <class_EditorExportPlatformAndroid_property_splash_screen/disable_godot_boot_splash>`
 
-If ``true``, Godot's boot splash will not be shown, and the system boot splash will remain visible for a longer time, until the mainloop starts.
+Nếu ``true``, màn hình splash khởi động của Godot sẽ không được hiển thị và màn hình splash khởi động của hệ thống sẽ tiếp tục hiển thị lâu hơn, cho đến khi mainloop bắt đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -2934,11 +2934,11 @@ If ``true``, Godot's boot splash will not be shown, and the system boot splash w
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **splash_screen/icon** :ref:`🔗<class_EditorExportPlatformAndroid_property_splash_screen/icon>`
+:ref:`String<class_String>` **splash_screen/icon** :ref:`🔗 <class_EditorExportPlatformAndroid_property_splash_screen/icon>`
 
-System splash screen icon file. If left empty, it will fall back to :ref:`launcher_icons/adaptive_foreground_432x432<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_foreground_432x432>`. See `splash-screen dimensions <https://developer.android.com/develop/ui/views/launch/splash-screen#dimensions>`__.
+Tệp biểu tượng màn hình splash của hệ thống. Nếu để trống, tệp sẽ sử dụng :ref:`launcher_icons/adaptive_foreground_432x432 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_foreground_432x432>` làm dự phòng. Xem `kích thước màn hình splash <https://developer.android.com/develop/ui/views/launch/splash-screen#dimensions>`__.
 
-\ **Note:** You can provide an `AnimatedVectorDrawable (AVD) <https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable>`__ XML. However, the XML file will only be used if :ref:`gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` is enabled. If not, it will fall back to :ref:`launcher_icons/adaptive_background_432x432<class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>`.
+\ **Lưu ý:** Bạn có thể cung cấp một XML `AnimatedVectorDrawable (AVD) <https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable>`__. Tuy nhiên, tệp XML sẽ chỉ được sử dụng nếu :ref:`gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` được bật. Nếu không, tệp sẽ sử dụng :ref:`launcher_icons/adaptive_background_432x432 <class_EditorExportPlatformAndroid_property_launcher_icons/adaptive_background_432x432>` làm dự phòng.
 
 .. rst-class:: classref-item-separator
 
@@ -2948,9 +2948,9 @@ System splash screen icon file. If left empty, it will fall back to :ref:`launch
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **user_data_backup/allow** :ref:`🔗<class_EditorExportPlatformAndroid_property_user_data_backup/allow>`
+:ref:`bool<class_bool>` **user_data_backup/allow** :ref:`🔗 <class_EditorExportPlatformAndroid_property_user_data_backup/allow>`
 
-If ``true``, allows the application to participate in the backup and restore infrastructure.
+Nếu ``true``, cho phép ứng dụng tham gia vào hạ tầng sao lưu và khôi phục.
 
 .. rst-class:: classref-item-separator
 
@@ -2960,9 +2960,9 @@ If ``true``, allows the application to participate in the backup and restore inf
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **version/code** :ref:`🔗<class_EditorExportPlatformAndroid_property_version/code>`
+:ref:`int<class_int>` **version/code** :ref:`🔗 <class_EditorExportPlatformAndroid_property_version/code>`
 
-Machine-readable application version. This must be incremented for every new release pushed to the Play Store.
+Phiên bản ứng dụng mà máy có thể đọc được. Giá trị này phải được tăng lên trong mỗi bản phát hành mới được đưa lên Play Store.
 
 .. rst-class:: classref-item-separator
 
@@ -2972,9 +2972,9 @@ Machine-readable application version. This must be incremented for every new rel
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **version/name** :ref:`🔗<class_EditorExportPlatformAndroid_property_version/name>`
+:ref:`String<class_String>` **version/name** :ref:`🔗 <class_EditorExportPlatformAndroid_property_version/name>`
 
-Application version visible to the user. Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty.
+Phiên bản ứng dụng hiển thị cho người dùng. Nếu để trống, giá trị này sẽ sử dụng :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2984,16 +2984,16 @@ Application version visible to the user. Falls back to :ref:`ProjectSettings.app
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **xr_features/xr_mode** :ref:`🔗<class_EditorExportPlatformAndroid_property_xr_features/xr_mode>`
+:ref:`int<class_int>` **xr_features/xr_mode** :ref:`🔗 <class_EditorExportPlatformAndroid_property_xr_features/xr_mode>`
 
-The extended reality (XR) mode for this application.
+Chế độ thực tế mở rộng (XR) cho ứng dụng này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

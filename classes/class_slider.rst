@@ -10,47 +10,47 @@
 Slider
 ======
 
-**Inherits:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`HSlider<class_HSlider>`, :ref:`VSlider<class_VSlider>`
+**Được kế thừa bởi:** :ref:`HSlider<class_HSlider>`, :ref:`VSlider<class_VSlider>`
 
-Abstract base class for sliders.
+Lớp cơ sở trừu tượng cho các thanh trượt.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Abstract base class for sliders, used to adjust a value by moving a grabber along a horizontal or vertical axis. Sliders are :ref:`Range<class_Range>`-based controls.
+Lớp cơ sở trừu tượng cho các thanh trượt, được dùng để điều chỉnh một giá trị bằng cách di chuyển một nút kéo dọc theo trục ngang hoặc dọc. Thanh trượt là các điều khiển dựa trên :ref:`Range<class_Range>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                       | :ref:`editable<class_Slider_property_editable>`                 | ``true``                                                            |
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`      | focus_mode                                                      | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                       | :ref:`scrollable<class_Slider_property_scrollable>`             | ``true``                                                            |
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`float<class_float>`                     | step                                                            | ``1.0`` (overrides :ref:`Range<class_Range_property_step>`)         |
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`int<class_int>`                         | :ref:`tick_count<class_Slider_property_tick_count>`             | ``0``                                                               |
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                       | :ref:`ticks_on_borders<class_Slider_property_ticks_on_borders>` | ``false``                                                           |
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`TickPosition<enum_Slider_TickPosition>` | :ref:`ticks_position<class_Slider_property_ticks_position>`     | ``0``                                                               |
-   +-----------------------------------------------+-----------------------------------------------------------------+---------------------------------------------------------------------+
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                        | :ref:`editable<class_Slider_property_editable>`                 | ``true``                                                          |
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`      | focus_mode                                                      | ``2`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)↩ |
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                        | :ref:`scrollable<class_Slider_property_scrollable>`             | ``true``                                                          |
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
+   | :ref:`float<class_float>`                      | step                                                            | ``1.0`` (ghi đè :ref:`Range<class_Range_property_step>`)↩         |
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
+   | :ref:`int<class_int>`                          | :ref:`tick_count<class_Slider_property_tick_count>`             | ``0``                                                             |
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                        | :ref:`ticks_on_borders<class_Slider_property_ticks_on_borders>` | ``false``                                                         |
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
+   | :ref:`TickPosition <enum_Slider_TickPosition>` | :ref:`ticks_position<class_Slider_property_ticks_position>`     | ``0``                                                             |
+   +------------------------------------------------+-----------------------------------------------------------------+-------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính giao diện
+--------------------
 
 .. table::
    :widths: auto
@@ -83,8 +83,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Signal
+------
 
 .. _class_Slider_signal_drag_ended:
 
@@ -92,7 +92,7 @@ Signals
 
 **drag_ended**\ (\ value_changed\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Slider_signal_drag_ended>`
 
-Emitted when the grabber stops being dragged. If ``value_changed`` is ``true``, :ref:`Range.value<class_Range_property_value>` is different from the value when the dragging was started.
+Được phát khi nút kéo ngừng bị kéo. Nếu ``value_changed`` là ``true``, :ref:`Range.value<class_Range_property_value>` khác với giá trị tại thời điểm bắt đầu kéo.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Emitted when the grabber stops being dragged. If ``value_changed`` is ``true``, 
 
 **drag_started**\ (\ ) :ref:`🔗<class_Slider_signal_drag_started>`
 
-Emitted when the grabber starts being dragged. This is emitted before the corresponding :ref:`Range.value_changed<class_Range_signal_value_changed>` signal.
+Được phát khi nút kéo bắt đầu bị kéo. Signal này được phát trước signal :ref:`Range.value_changed<class_Range_signal_value_changed>` tương ứng.
 
 .. rst-class:: classref-section-separator
 
@@ -112,14 +112,14 @@ Emitted when the grabber starts being dragged. This is emitted before the corres
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Slider_TickPosition:
 
 .. rst-class:: classref-enumeration
 
-enum **TickPosition**: :ref:`🔗<enum_Slider_TickPosition>`
+enum **TickPosition**: :ref:`🔗 <enum_Slider_TickPosition>`
 
 .. _class_Slider_constant_TICK_POSITION_BOTTOM_RIGHT:
 
@@ -127,7 +127,7 @@ enum **TickPosition**: :ref:`🔗<enum_Slider_TickPosition>`
 
 :ref:`TickPosition<enum_Slider_TickPosition>` **TICK_POSITION_BOTTOM_RIGHT** = ``0``
 
-Places the ticks at the bottom of the :ref:`HSlider<class_HSlider>`, or right of the :ref:`VSlider<class_VSlider>`.
+Đặt các vạch chia ở dưới cùng của :ref:`HSlider<class_HSlider>`, hoặc bên phải của :ref:`VSlider<class_VSlider>`.
 
 .. _class_Slider_constant_TICK_POSITION_TOP_LEFT:
 
@@ -135,7 +135,7 @@ Places the ticks at the bottom of the :ref:`HSlider<class_HSlider>`, or right of
 
 :ref:`TickPosition<enum_Slider_TickPosition>` **TICK_POSITION_TOP_LEFT** = ``1``
 
-Places the ticks at the top of the :ref:`HSlider<class_HSlider>`, or left of the :ref:`VSlider<class_VSlider>`.
+Đặt các vạch chia ở trên cùng của :ref:`HSlider<class_HSlider>`, hoặc bên trái của :ref:`VSlider<class_VSlider>`.
 
 .. _class_Slider_constant_TICK_POSITION_BOTH:
 
@@ -143,7 +143,7 @@ Places the ticks at the top of the :ref:`HSlider<class_HSlider>`, or left of the
 
 :ref:`TickPosition<enum_Slider_TickPosition>` **TICK_POSITION_BOTH** = ``2``
 
-Places the ticks at the both sides of the slider.
+Đặt các vạch chia ở cả hai bên của thanh trượt.
 
 .. _class_Slider_constant_TICK_POSITION_CENTER:
 
@@ -151,7 +151,7 @@ Places the ticks at the both sides of the slider.
 
 :ref:`TickPosition<enum_Slider_TickPosition>` **TICK_POSITION_CENTER** = ``3``
 
-Places the ticks at the center of the slider.
+Đặt các vạch chia ở giữa thanh trượt.
 
 .. rst-class:: classref-section-separator
 
@@ -159,8 +159,8 @@ Places the ticks at the center of the slider.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Slider_property_editable:
 
@@ -173,7 +173,7 @@ Property Descriptions
 - |void| **set_editable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editable**\ (\ )
 
-If ``true``, the slider can be interacted with. If ``false``, the value can be changed only by code.
+Nếu ``true``, người dùng có thể tương tác với thanh trượt. Nếu ``false``, chỉ code mới có thể thay đổi giá trị.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ If ``true``, the slider can be interacted with. If ``false``, the value can be c
 - |void| **set_scrollable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_scrollable**\ (\ )
 
-If ``true``, the value can be changed using the mouse wheel.
+Nếu ``true``, có thể thay đổi giá trị bằng con lăn chuột.
 
 .. rst-class:: classref-item-separator
 
@@ -207,7 +207,7 @@ If ``true``, the value can be changed using the mouse wheel.
 - |void| **set_ticks**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_ticks**\ (\ )
 
-Number of ticks displayed on the slider, including border ticks. Ticks are uniformly-distributed value markers.
+Số lượng vạch chia hiển thị trên thanh trượt, bao gồm cả các vạch ở biên. Các vạch chia là những mốc giá trị được phân bố đồng đều.
 
 .. rst-class:: classref-item-separator
 
@@ -224,7 +224,7 @@ Number of ticks displayed on the slider, including border ticks. Ticks are unifo
 - |void| **set_ticks_on_borders**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_ticks_on_borders**\ (\ )
 
-If ``true``, the slider will display ticks for minimum and maximum values.
+Nếu ``true``, thanh trượt sẽ hiển thị các vạch chia cho giá trị tối thiểu và tối đa.
 
 .. rst-class:: classref-item-separator
 
@@ -241,7 +241,7 @@ If ``true``, the slider will display ticks for minimum and maximum values.
 - |void| **set_ticks_position**\ (\ value\: :ref:`TickPosition<enum_Slider_TickPosition>`\ )
 - :ref:`TickPosition<enum_Slider_TickPosition>` **get_ticks_position**\ (\ )
 
-Sets the position of the ticks. See :ref:`TickPosition<enum_Slider_TickPosition>` for details.
+Thiết lập vị trí của các vạch chia. Xem :ref:`TickPosition <enum_Slider_TickPosition>` để biết chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -249,8 +249,8 @@ Sets the position of the ticks. See :ref:`TickPosition<enum_Slider_TickPosition>
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính giao diện
+--------------------------
 
 .. _class_Slider_theme_constant_center_grabber:
 
@@ -258,7 +258,7 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **center_grabber** = ``0`` :ref:`🔗<class_Slider_theme_constant_center_grabber>`
 
-Boolean constant. If ``1``, the grabber texture size will be ignored and it will fit within slider's bounds based only on its center position.
+Hằng số Boolean. Nếu ``1``, kích thước texture của nút kéo sẽ bị bỏ qua và nút sẽ nằm trong phạm vi của thanh trượt chỉ dựa trên vị trí tâm của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ Boolean constant. If ``1``, the grabber texture size will be ignored and it will
 
 :ref:`int<class_int>` **grabber_offset** = ``0`` :ref:`🔗<class_Slider_theme_constant_grabber_offset>`
 
-Vertical or horizontal offset of the grabber.
+Độ lệch dọc hoặc ngang của nút kéo.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Vertical or horizontal offset of the grabber.
 
 :ref:`int<class_int>` **tick_offset** = ``0`` :ref:`🔗<class_Slider_theme_constant_tick_offset>`
 
-Vertical or horizontal offset of the ticks. The offset is reversed for top or left ticks.
+Độ lệch dọc hoặc ngang của các vạch chia. Độ lệch bị đảo ngược đối với các vạch chia ở trên hoặc bên trái.
 
 .. rst-class:: classref-item-separator
 
@@ -292,9 +292,9 @@ Vertical or horizontal offset of the ticks. The offset is reversed for top or le
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **grabber** :ref:`🔗<class_Slider_theme_icon_grabber>`
+:ref:`Texture2D<class_Texture2D>` **grabber** :ref:`🔗 <class_Slider_theme_icon_grabber>`
 
-The texture for the grabber (the draggable element).
+Texture của nút kéo (phần tử có thể kéo).
 
 .. rst-class:: classref-item-separator
 
@@ -304,9 +304,9 @@ The texture for the grabber (the draggable element).
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **grabber_disabled** :ref:`🔗<class_Slider_theme_icon_grabber_disabled>`
+:ref:`Texture2D<class_Texture2D>` **grabber_disabled** :ref:`🔗 <class_Slider_theme_icon_grabber_disabled>`
 
-The texture for the grabber when it's disabled.
+Texture của nút kéo khi bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -316,9 +316,9 @@ The texture for the grabber when it's disabled.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **grabber_highlight** :ref:`🔗<class_Slider_theme_icon_grabber_highlight>`
+:ref:`Texture2D<class_Texture2D>` **grabber_highlight** :ref:`🔗 <class_Slider_theme_icon_grabber_highlight>`
 
-The texture for the grabber when it's focused.
+Texture của nút kéo khi được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -328,9 +328,9 @@ The texture for the grabber when it's focused.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **tick** :ref:`🔗<class_Slider_theme_icon_tick>`
+:ref:`Texture2D<class_Texture2D>` **tick** :ref:`🔗 <class_Slider_theme_icon_tick>`
 
-The texture for the ticks, visible when :ref:`tick_count<class_Slider_property_tick_count>` is greater than 0.
+Texture của các vạch chia, hiển thị khi :ref:`tick_count<class_Slider_property_tick_count>` lớn hơn 0.
 
 .. rst-class:: classref-item-separator
 
@@ -340,9 +340,9 @@ The texture for the ticks, visible when :ref:`tick_count<class_Slider_property_t
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **grabber_area** :ref:`🔗<class_Slider_theme_style_grabber_area>`
+:ref:`StyleBox<class_StyleBox>` **grabber_area** :ref:`🔗 <class_Slider_theme_style_grabber_area>`
 
-The background of the area to the left or bottom of the grabber.
+Nền của vùng ở bên trái hoặc bên dưới nút kéo.
 
 .. rst-class:: classref-item-separator
 
@@ -352,9 +352,9 @@ The background of the area to the left or bottom of the grabber.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **grabber_area_highlight** :ref:`🔗<class_Slider_theme_style_grabber_area_highlight>`
+:ref:`StyleBox<class_StyleBox>` **grabber_area_highlight** :ref:`🔗 <class_Slider_theme_style_grabber_area_highlight>`
 
-The background of the area to the left or bottom of the grabber that displays when it's being hovered or focused.
+Nền của vùng ở bên trái hoặc bên dưới nút kéo, hiển thị khi vùng này được di chuột qua hoặc focus.
 
 .. rst-class:: classref-item-separator
 
@@ -364,16 +364,16 @@ The background of the area to the left or bottom of the grabber that displays wh
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **slider** :ref:`🔗<class_Slider_theme_style_slider>`
+:ref:`StyleBox<class_StyleBox>` **slider** :ref:`🔗 <class_Slider_theme_style_slider>`
 
-The background for the whole slider. Affects the height or width of the :ref:`grabber_area<class_Slider_theme_style_grabber_area>`.
+Nền của toàn bộ thanh trượt. Ảnh hưởng đến chiều cao hoặc chiều rộng của :ref:`grabber_area<class_Slider_theme_style_grabber_area>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

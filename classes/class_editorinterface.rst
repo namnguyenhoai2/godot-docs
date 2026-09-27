@@ -10,18 +10,18 @@
 EditorInterface
 ===============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Godot editor's interface.
+Giao diện của trình biên tập Godot.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EditorInterface** gives you control over Godot editor's window. It allows customizing the window, saving and (re-)loading scenes, rendering mesh previews, inspecting and editing resources and objects, and provides access to :ref:`EditorSettings<class_EditorSettings>`, :ref:`EditorFileSystem<class_EditorFileSystem>`, :ref:`EditorResourcePreview<class_EditorResourcePreview>`, :ref:`ScriptEditor<class_ScriptEditor>`, the editor viewport, and information about scenes.
+**EditorInterface** cho phép bạn kiểm soát cửa sổ của trình biên tập Godot. Nó cho phép tùy chỉnh cửa sổ, lưu và (tải lại) các scene, kết xuất bản xem trước mesh, kiểm tra và chỉnh sửa các resource và object, đồng thời cung cấp quyền truy cập vào :ref:`EditorSettings<class_EditorSettings>`, :ref:`EditorFileSystem<class_EditorFileSystem>`, :ref:`EditorResourcePreview<class_EditorResourcePreview>`, :ref:`ScriptEditor<class_ScriptEditor>`, viewport của trình biên tập và thông tin về các scene.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton directly by its name.
+\ **Lưu ý:** Không nên khởi tạo trực tiếp lớp này. Thay vào đó, hãy truy cập singleton trực tiếp bằng tên của nó.
 
 
 .. tabs::
@@ -32,15 +32,15 @@ Description
 
  .. code-tab:: csharp
 
-    // In C# you can access it via the static Singleton property.
+    // Trong C#, bạn có thể truy cập nó thông qua thuộc tính static Singleton.
     EditorSettings settings = EditorInterface.Singleton.GetEditorSettings();
 
 
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -53,8 +53,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -62,7 +62,7 @@ Methods
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                         | :ref:`add_root_node<class_EditorInterface_method_add_root_node>`\ (\ node\: :ref:`Node<class_Node>`\ )                                                                                                                                                                                                                                                                         |
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                          | :ref:`close_scene<class_EditorInterface_method_close_scene>`\ (\ )                                                                                                                                                                                                                                                                                                             |
+   | :ref:`Error <enum_@GlobalScope_Error>`                         | :ref:`close_scene<class_EditorInterface_method_close_scene>`\ (\ )                                                                                                                                                                                                                                                                                                             |
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                         | :ref:`edit_node<class_EditorInterface_method_edit_node>`\ (\ node\: :ref:`Node<class_Node>`\ )                                                                                                                                                                                                                                                                                 |
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -178,7 +178,7 @@ Methods
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                         | :ref:`save_all_scenes<class_EditorInterface_method_save_all_scenes>`\ (\ )                                                                                                                                                                                                                                                                                                     |
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                          | :ref:`save_scene<class_EditorInterface_method_save_scene>`\ (\ )                                                                                                                                                                                                                                                                                                               |
+   | :ref:`Error <enum_@GlobalScope_Error>`                         | :ref:`save_scene<class_EditorInterface_method_save_scene>`\ (\ )                                                                                                                                                                                                                                                                                                               |
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                         | :ref:`save_scene_as<class_EditorInterface_method_save_scene_as>`\ (\ path\: :ref:`String<class_String>`, with_preview\: :ref:`bool<class_bool>` = true\ )                                                                                                                                                                                                                      |
    +----------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -201,21 +201,21 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorInterface_property_distraction_free_mode:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **distraction_free_mode** :ref:`🔗<class_EditorInterface_property_distraction_free_mode>`
+:ref:`bool<class_bool>` **distraction_free_mode** :ref:`🔗 <class_EditorInterface_property_distraction_free_mode>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_distraction_free_mode**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_distraction_free_mode_enabled**\ (\ )
 
-If ``true``, enables distraction-free mode which hides side docks to increase the space available for the main view.
+Nếu ``true``, bật chế độ không bị xao nhãng, chế độ này ẩn các dock bên để tăng không gian dành cho chế độ xem chính.
 
 .. rst-class:: classref-item-separator
 
@@ -225,14 +225,14 @@ If ``true``, enables distraction-free mode which hides side docks to increase th
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **movie_maker_enabled** :ref:`🔗<class_EditorInterface_property_movie_maker_enabled>`
+:ref:`bool<class_bool>` **movie_maker_enabled** :ref:`🔗 <class_EditorInterface_property_movie_maker_enabled>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_movie_maker_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_movie_maker_enabled**\ (\ )
 
-If ``true``, the Movie Maker mode is enabled in the editor. See :ref:`MovieWriter<class_MovieWriter>` for more information.
+Nếu ``true``, chế độ Movie Maker được bật trong editor. Xem :ref:`MovieWriter<class_MovieWriter>` để biết thêm thông tin.
 
 .. rst-class:: classref-section-separator
 
@@ -240,8 +240,8 @@ If ``true``, the Movie Maker mode is enabled in the editor. See :ref:`MovieWrite
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorInterface_method_add_root_node:
 
@@ -249,7 +249,7 @@ Method Descriptions
 
 |void| **add_root_node**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_EditorInterface_method_add_root_node>`
 
-Makes ``node`` root of the currently opened scene. Only works if the scene is empty. If the ``node`` is a scene instance, an inheriting scene will be created.
+Đặt ``node`` làm root của scene hiện đang mở. Chỉ hoạt động nếu scene trống. Nếu ``node`` là một scene instance, một scene kế thừa sẽ được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -261,7 +261,7 @@ Makes ``node`` root of the currently opened scene. Only works if the scene is em
 
 :ref:`Error<enum_@GlobalScope_Error>` **close_scene**\ (\ ) :ref:`🔗<class_EditorInterface_method_close_scene>`
 
-Closes the currently active scene, discarding any pending changes in the process. Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success or :ref:`@GlobalScope.ERR_DOES_NOT_EXIST<class_@GlobalScope_constant_ERR_DOES_NOT_EXIST>` if there is no scene to close.
+Đóng scene hiện đang hoạt động, đồng thời loại bỏ mọi thay đổi đang chờ. Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công hoặc :ref:`@GlobalScope.ERR_DOES_NOT_EXIST <class_@GlobalScope_constant_ERR_DOES_NOT_EXIST>` nếu không có scene nào để đóng.
 
 .. rst-class:: classref-item-separator
 
@@ -273,7 +273,7 @@ Closes the currently active scene, discarding any pending changes in the process
 
 |void| **edit_node**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_EditorInterface_method_edit_node>`
 
-Edits the given :ref:`Node<class_Node>`. The node will be also selected if it's inside the scene tree.
+Chỉnh sửa :ref:`Node<class_Node>` đã cho. Node cũng sẽ được chọn nếu nằm trong scene tree.
 
 .. rst-class:: classref-item-separator
 
@@ -285,7 +285,7 @@ Edits the given :ref:`Node<class_Node>`. The node will be also selected if it's 
 
 |void| **edit_resource**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_EditorInterface_method_edit_resource>`
 
-Edits the given :ref:`Resource<class_Resource>`. If the resource is a :ref:`Script<class_Script>` you can also edit it with :ref:`edit_script()<class_EditorInterface_method_edit_script>` to specify the line and column position.
+Chỉnh sửa :ref:`Resource<class_Resource>` đã cho. Nếu resource là :ref:`Script<class_Script>`, bạn cũng có thể chỉnh sửa bằng :ref:`edit_script()<class_EditorInterface_method_edit_script>` để chỉ định vị trí dòng và cột.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ Edits the given :ref:`Resource<class_Resource>`. If the resource is a :ref:`Scri
 
 |void| **edit_script**\ (\ script\: :ref:`Script<class_Script>`, line\: :ref:`int<class_int>` = -1, column\: :ref:`int<class_int>` = 0, grab_focus\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_EditorInterface_method_edit_script>`
 
-Edits the given :ref:`Script<class_Script>`. The line and column on which to open the script can also be specified. The script will be open with the user-configured editor for the script's language which may be an external editor.
+Chỉnh sửa :ref:`Script<class_Script>` đã cho. Bạn cũng có thể chỉ định dòng và cột cần mở script. Script sẽ được mở bằng editor do người dùng cấu hình cho ngôn ngữ của script; editor này có thể là một trình chỉnh sửa bên ngoài.
 
 .. rst-class:: classref-item-separator
 
@@ -309,9 +309,9 @@ Edits the given :ref:`Script<class_Script>`. The line and column on which to ope
 
 :ref:`Control<class_Control>` **get_base_control**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_base_control>`
 
-Returns the main container of Godot editor's window. For example, you can use it to retrieve the size of the container and place your controls accordingly.
+Trả về vùng chứa chính của cửa sổ Godot editor. Ví dụ, bạn có thể sử dụng nó để lấy kích thước của vùng chứa và đặt các control tương ứng.
 
-\ **Warning:** Removing and freeing this node will render the editor useless and may cause a crash.
+\ **Cảnh báo:** Việc xóa và giải phóng node này sẽ khiến editor không thể sử dụng được và có thể gây crash.
 
 .. rst-class:: classref-item-separator
 
@@ -323,9 +323,9 @@ Returns the main container of Godot editor's window. For example, you can use it
 
 :ref:`EditorCommandPalette<class_EditorCommandPalette>` **get_command_palette**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_command_palette>`
 
-Returns the editor's :ref:`EditorCommandPalette<class_EditorCommandPalette>` instance.
+Trả về instance :ref:`EditorCommandPalette<class_EditorCommandPalette>` của editor.
 
-\ **Warning:** Removing and freeing this node will render a part of the editor useless and may cause a crash.
+\ **Cảnh báo:** Việc xóa và giải phóng node này sẽ khiến một phần editor không thể sử dụng được và có thể gây crash.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ Returns the editor's :ref:`EditorCommandPalette<class_EditorCommandPalette>` ins
 
 :ref:`String<class_String>` **get_current_directory**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_current_directory>`
 
-Returns the current directory being viewed in the :ref:`FileSystemDock<class_FileSystemDock>`. If a file is selected, its base directory will be returned using :ref:`String.get_base_dir()<class_String_method_get_base_dir>` instead.
+Trả về thư mục hiện đang được xem trong :ref:`FileSystemDock<class_FileSystemDock>`. Nếu một tệp được chọn, thư mục cơ sở của tệp đó sẽ được trả về bằng :ref:`String.get_base_dir()<class_String_method_get_base_dir>`.
 
 .. rst-class:: classref-item-separator
 
@@ -349,11 +349,11 @@ Returns the current directory being viewed in the :ref:`FileSystemDock<class_Fil
 
 :ref:`String<class_String>` **get_current_feature_profile**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_current_feature_profile>`
 
-Returns the name of the currently activated feature profile. If the default profile is currently active, an empty string is returned instead.
+Trả về tên của feature profile hiện đang được kích hoạt. Nếu profile mặc định hiện đang hoạt động, thay vào đó sẽ trả về một chuỗi rỗng.
 
-In order to get a reference to the :ref:`EditorFeatureProfile<class_EditorFeatureProfile>`, you must load the feature profile using :ref:`EditorFeatureProfile.load_from_file()<class_EditorFeatureProfile_method_load_from_file>`.
+Để lấy tham chiếu đến :ref:`EditorFeatureProfile<class_EditorFeatureProfile>`, bạn phải tải feature profile bằng :ref:`EditorFeatureProfile.load_from_file()<class_EditorFeatureProfile_method_load_from_file>`.
 
-\ **Note:** Feature profiles created via the user interface are loaded from the ``feature_profiles`` directory, as a file with the ``.profile`` extension. The editor configuration folder can be found by using :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
+\ **Lưu ý:** Các feature profile được tạo thông qua giao diện người dùng sẽ được tải từ thư mục ``feature_profiles``, dưới dạng tệp có phần mở rộng ``.profile``. Có thể tìm thư mục cấu hình của editor bằng cách sử dụng :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
 
 .. rst-class:: classref-item-separator
 
@@ -365,7 +365,7 @@ In order to get a reference to the :ref:`EditorFeatureProfile<class_EditorFeatur
 
 :ref:`String<class_String>` **get_current_path**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_current_path>`
 
-Returns the current path being viewed in the :ref:`FileSystemDock<class_FileSystemDock>`.
+Trả về đường dẫn hiện đang được xem trong :ref:`FileSystemDock<class_FileSystemDock>`.
 
 .. rst-class:: classref-item-separator
 
@@ -377,7 +377,7 @@ Returns the current path being viewed in the :ref:`FileSystemDock<class_FileSyst
 
 :ref:`Node<class_Node>` **get_edited_scene_root**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_edited_scene_root>`
 
-Returns the edited (current) scene's root :ref:`Node<class_Node>`.
+Trả về :ref:`Node<class_Node>` gốc của scene đang được chỉnh sửa (hiện tại).
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ Returns the edited (current) scene's root :ref:`Node<class_Node>`.
 
 :ref:`String<class_String>` **get_editor_language**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_language>`
 
-Returns the language currently used for the editor interface.
+Trả về ngôn ngữ hiện đang được sử dụng cho giao diện editor.
 
 .. rst-class:: classref-item-separator
 
@@ -401,11 +401,11 @@ Returns the language currently used for the editor interface.
 
 :ref:`VBoxContainer<class_VBoxContainer>` **get_editor_main_screen**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_main_screen>`
 
-Returns the editor control responsible for main screen plugins and tools. Use it with plugins that implement :ref:`EditorPlugin._has_main_screen()<class_EditorPlugin_private_method__has_main_screen>`.
+Trả về control của editor chịu trách nhiệm cho các plugin và công cụ trên màn hình chính. Sử dụng nó với các plugin triển khai :ref:`EditorPlugin._has_main_screen()<class_EditorPlugin_private_method__has_main_screen>`.
 
-\ **Note:** This node is a :ref:`VBoxContainer<class_VBoxContainer>`, which means that if you add a :ref:`Control<class_Control>` child to it, you need to set the child's :ref:`Control.size_flags_vertical<class_Control_property_size_flags_vertical>` to :ref:`Control.SIZE_EXPAND_FILL<class_Control_constant_SIZE_EXPAND_FILL>` to make it use the full available space.
+\ **Lưu ý:** Node này là một :ref:`VBoxContainer<class_VBoxContainer>`, nghĩa là nếu bạn thêm một node con :ref:`Control<class_Control>` vào nó, bạn cần đặt :ref:`Control.size_flags_vertical<class_Control_property_size_flags_vertical>` của node con thành :ref:`Control.SIZE_EXPAND_FILL<class_Control_constant_SIZE_EXPAND_FILL>` để node đó sử dụng toàn bộ không gian khả dụng.
 
-\ **Warning:** Removing and freeing this node will render a part of the editor useless and may cause a crash.
+\ **Cảnh báo:** Việc xóa và giải phóng node này sẽ khiến một phần editor không thể sử dụng được và có thể gây crash.
 
 .. rst-class:: classref-item-separator
 
@@ -417,7 +417,7 @@ Returns the editor control responsible for main screen plugins and tools. Use it
 
 :ref:`EditorPaths<class_EditorPaths>` **get_editor_paths**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_paths>`
 
-Returns the :ref:`EditorPaths<class_EditorPaths>` singleton.
+Trả về singleton :ref:`EditorPaths<class_EditorPaths>`.
 
 .. rst-class:: classref-item-separator
 
@@ -429,9 +429,9 @@ Returns the :ref:`EditorPaths<class_EditorPaths>` singleton.
 
 :ref:`float<class_float>` **get_editor_scale**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_scale>`
 
-Returns the actual scale of the editor UI (``1.0`` being 100% scale). This can be used to adjust position and dimensions of the UI added by plugins.
+Trả về tỷ lệ thực tế của giao diện người dùng của trình chỉnh sửa (``1.0`` tương ứng với tỷ lệ 100%). Có thể sử dụng giá trị này để điều chỉnh vị trí và kích thước của giao diện người dùng do các plugin thêm vào.
 
-\ **Note:** This value is set via the :ref:`EditorSettings.interface/editor/appearance/display_scale<class_EditorSettings_property_interface/editor/appearance/display_scale>` and :ref:`EditorSettings.interface/editor/appearance/custom_display_scale<class_EditorSettings_property_interface/editor/appearance/custom_display_scale>` settings. The editor must be restarted for changes to be properly applied.
+\ **Lưu ý:** Giá trị này được đặt thông qua các thiết lập :ref:`EditorSettings.interface/editor/appearance/display_scale <class_EditorSettings_property_interface/editor/appearance/display_scale>` và :ref:`EditorSettings.interface/editor/appearance/custom_display_scale <class_EditorSettings_property_interface/editor/appearance/custom_display_scale>`. Cần khởi động lại trình chỉnh sửa để các thay đổi được áp dụng chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +443,7 @@ Returns the actual scale of the editor UI (``1.0`` being 100% scale). This can b
 
 :ref:`EditorSettings<class_EditorSettings>` **get_editor_settings**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_settings>`
 
-Returns the editor's :ref:`EditorSettings<class_EditorSettings>` instance.
+Trả về instance :ref:`EditorSettings<class_EditorSettings>` của trình chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -455,9 +455,9 @@ Returns the editor's :ref:`EditorSettings<class_EditorSettings>` instance.
 
 :ref:`Theme<class_Theme>` **get_editor_theme**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_theme>`
 
-Returns the editor's :ref:`Theme<class_Theme>`.
+Trả về :ref:`Theme<class_Theme>` của trình chỉnh sửa.
 
-\ **Note:** When creating custom editor UI, prefer accessing theme items directly from your GUI nodes using the ``get_theme_*`` methods.
+\ **Lưu ý:** Khi tạo giao diện người dùng tùy chỉnh cho trình chỉnh sửa, hãy ưu tiên truy cập trực tiếp các mục theme từ các GUI node bằng các phương thức ``get_theme_*``.
 
 .. rst-class:: classref-item-separator
 
@@ -469,7 +469,7 @@ Returns the editor's :ref:`Theme<class_Theme>`.
 
 :ref:`EditorToaster<class_EditorToaster>` **get_editor_toaster**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_toaster>`
 
-Returns the editor's :ref:`EditorToaster<class_EditorToaster>`.
+Trả về :ref:`EditorToaster<class_EditorToaster>` của trình chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ Returns the editor's :ref:`EditorToaster<class_EditorToaster>`.
 
 :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>` **get_editor_undo_redo**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_undo_redo>`
 
-Returns the editor's :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>`.
+Trả về :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>` của editor.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ Returns the editor's :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>`.
 
 :ref:`SubViewport<class_SubViewport>` **get_editor_viewport_2d**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_viewport_2d>`
 
-Returns the 2D editor :ref:`SubViewport<class_SubViewport>`. It does not have a camera. Instead, the view transforms are done directly and can be accessed with :ref:`Viewport.global_canvas_transform<class_Viewport_property_global_canvas_transform>`.
+Trả về :ref:`SubViewport<class_SubViewport>` của editor 2D. Nó không có camera. Thay vào đó, các phép biến đổi chế độ xem được thực hiện trực tiếp và có thể được truy cập bằng :ref:`Viewport.global_canvas_transform<class_Viewport_property_global_canvas_transform>`.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Returns the 2D editor :ref:`SubViewport<class_SubViewport>`. It does not have a 
 
 :ref:`SubViewport<class_SubViewport>` **get_editor_viewport_3d**\ (\ idx\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_EditorInterface_method_get_editor_viewport_3d>`
 
-Returns the specified 3D editor :ref:`SubViewport<class_SubViewport>`, from ``0`` to ``3``. The viewport can be used to access the active editor cameras with :ref:`Viewport.get_camera_3d()<class_Viewport_method_get_camera_3d>`.
+Trả về :ref:`SubViewport<class_SubViewport>` của editor 3D được chỉ định, từ ``0`` đến ``3``. Có thể sử dụng viewport để truy cập các camera editor đang hoạt động bằng :ref:`Viewport.get_camera_3d()<class_Viewport_method_get_camera_3d>`.
 
 .. rst-class:: classref-item-separator
 
@@ -517,9 +517,9 @@ Returns the specified 3D editor :ref:`SubViewport<class_SubViewport>`, from ``0`
 
 :ref:`FileSystemDock<class_FileSystemDock>` **get_file_system_dock**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_file_system_dock>`
 
-Returns the editor's :ref:`FileSystemDock<class_FileSystemDock>` instance.
+Trả về instance :ref:`FileSystemDock<class_FileSystemDock>` của editor.
 
-\ **Warning:** Removing and freeing this node will render a part of the editor useless and may cause a crash.
+\ **Cảnh báo:** Việc xóa và giải phóng node này sẽ khiến một phần editor không thể sử dụng được và có thể gây crash.
 
 .. rst-class:: classref-item-separator
 
@@ -531,9 +531,9 @@ Returns the editor's :ref:`FileSystemDock<class_FileSystemDock>` instance.
 
 :ref:`EditorInspector<class_EditorInspector>` **get_inspector**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_inspector>`
 
-Returns the editor's :ref:`EditorInspector<class_EditorInspector>` instance.
+Trả về instance :ref:`EditorInspector<class_EditorInspector>` của editor.
 
-\ **Warning:** Removing and freeing this node will render a part of the editor useless and may cause a crash.
+\ **Cảnh báo:** Việc xóa và giải phóng node này sẽ khiến một phần editor không thể sử dụng được và có thể gây crash.
 
 .. rst-class:: classref-item-separator
 
@@ -545,7 +545,7 @@ Returns the editor's :ref:`EditorInspector<class_EditorInspector>` instance.
 
 :ref:`float<class_float>` **get_node_3d_rotate_snap**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_node_3d_rotate_snap>`
 
-Returns the amount of degrees the 3D editor's rotational snapping is set to.
+Trả về số độ mà tính năng bắt dính xoay của trình chỉnh sửa 3D được thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -557,7 +557,7 @@ Returns the amount of degrees the 3D editor's rotational snapping is set to.
 
 :ref:`float<class_float>` **get_node_3d_scale_snap**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_node_3d_scale_snap>`
 
-Returns the amount of units the 3D editor's scale snapping is set to.
+Trả về số đơn vị mà tính năng bắt dính tỷ lệ của trình chỉnh sửa 3D được thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -569,7 +569,7 @@ Returns the amount of units the 3D editor's scale snapping is set to.
 
 :ref:`float<class_float>` **get_node_3d_translate_snap**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_node_3d_translate_snap>`
 
-Returns the amount of units the 3D editor's translation snapping is set to.
+Trả về số đơn vị mà tính năng bắt dính dịch chuyển của trình chỉnh sửa 3D được thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -581,7 +581,7 @@ Returns the amount of units the 3D editor's translation snapping is set to.
 
 :ref:`Array<class_Array>`\[:ref:`Node<class_Node>`\] **get_open_scene_roots**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_open_scene_roots>`
 
-Returns an array with references to the root nodes of the currently opened scenes.
+Trả về một mảng chứa các tham chiếu đến các node gốc của những scene hiện đang mở.
 
 .. rst-class:: classref-item-separator
 
@@ -593,7 +593,7 @@ Returns an array with references to the root nodes of the currently opened scene
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_open_scenes**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_open_scenes>`
 
-Returns an array with the file paths of the currently opened scenes.
+Trả về một mảng chứa các đường dẫn tệp của những scene hiện đang mở.
 
 .. rst-class:: classref-item-separator
 
@@ -605,7 +605,7 @@ Returns an array with the file paths of the currently opened scenes.
 
 :ref:`String<class_String>` **get_playing_scene**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_playing_scene>`
 
-Returns the name of the scene that is being played. If no scene is currently being played, returns an empty string.
+Trả về tên của scene đang được phát. Nếu hiện không có scene nào đang được phát, trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -617,7 +617,7 @@ Returns the name of the scene that is being played. If no scene is currently bei
 
 :ref:`EditorFileSystem<class_EditorFileSystem>` **get_resource_filesystem**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_resource_filesystem>`
 
-Returns the editor's :ref:`EditorFileSystem<class_EditorFileSystem>` instance.
+Trả về instance :ref:`EditorFileSystem<class_EditorFileSystem>` của trình chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -629,7 +629,7 @@ Returns the editor's :ref:`EditorFileSystem<class_EditorFileSystem>` instance.
 
 :ref:`EditorResourcePreview<class_EditorResourcePreview>` **get_resource_previewer**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_resource_previewer>`
 
-Returns the editor's :ref:`EditorResourcePreview<class_EditorResourcePreview>` instance.
+Trả về instance :ref:`EditorResourcePreview<class_EditorResourcePreview>` của editor.
 
 .. rst-class:: classref-item-separator
 
@@ -641,9 +641,9 @@ Returns the editor's :ref:`EditorResourcePreview<class_EditorResourcePreview>` i
 
 :ref:`ScriptEditor<class_ScriptEditor>` **get_script_editor**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_script_editor>`
 
-Returns the editor's :ref:`ScriptEditor<class_ScriptEditor>` instance.
+Trả về instance :ref:`ScriptEditor<class_ScriptEditor>` của editor.
 
-\ **Warning:** Removing and freeing this node will render a part of the editor useless and may cause a crash.
+\ **Cảnh báo:** Việc xóa và giải phóng node này sẽ khiến một phần editor không thể sử dụng được và có thể gây crash.
 
 .. rst-class:: classref-item-separator
 
@@ -655,7 +655,7 @@ Returns the editor's :ref:`ScriptEditor<class_ScriptEditor>` instance.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_selected_paths**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_selected_paths>`
 
-Returns an array containing the paths of the currently selected files (and directories) in the :ref:`FileSystemDock<class_FileSystemDock>`.
+Trả về một mảng chứa các đường dẫn của những tệp (và thư mục) hiện đang được chọn trong :ref:`FileSystemDock<class_FileSystemDock>`.
 
 .. rst-class:: classref-item-separator
 
@@ -667,7 +667,7 @@ Returns an array containing the paths of the currently selected files (and direc
 
 :ref:`EditorSelection<class_EditorSelection>` **get_selection**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_selection>`
 
-Returns the editor's :ref:`EditorSelection<class_EditorSelection>` instance.
+Trả về instance :ref:`EditorSelection<class_EditorSelection>` của editor.
 
 .. rst-class:: classref-item-separator
 
@@ -679,7 +679,7 @@ Returns the editor's :ref:`EditorSelection<class_EditorSelection>` instance.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_unsaved_scenes**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_get_unsaved_scenes>`
 
-Returns an array of file paths of currently unsaved scenes.
+Trả về một mảng các đường dẫn tệp của những scene hiện chưa được lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -691,7 +691,7 @@ Returns an array of file paths of currently unsaved scenes.
 
 |void| **inspect_object**\ (\ object\: :ref:`Object<class_Object>`, for_property\: :ref:`String<class_String>` = "", inspector_only\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EditorInterface_method_inspect_object>`
 
-Shows the given property on the given ``object`` in the editor's Inspector dock. If ``inspector_only`` is ``true``, plugins will not attempt to edit ``object``.
+Hiển thị thuộc tính đã cho trên ``object`` đã cho trong dock Inspector của editor. Nếu ``inspector_only`` là ``true``, các plugin sẽ không cố chỉnh sửa ``object``.
 
 .. rst-class:: classref-item-separator
 
@@ -703,13 +703,13 @@ Shows the given property on the given ``object`` in the editor's Inspector dock.
 
 :ref:`bool<class_bool>` **is_multi_window_enabled**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_is_multi_window_enabled>`
 
-Returns ``true`` if multiple window support is enabled in the editor. Multiple window support is enabled if *all* of these statements are true:
+Trả về ``true`` nếu trình soạn thảo hỗ trợ nhiều cửa sổ. Hỗ trợ nhiều cửa sổ được bật nếu *tất cả* các mệnh đề sau đều đúng:
 
-- :ref:`EditorSettings.interface/multi_window/enable<class_EditorSettings_property_interface/multi_window/enable>` is ``true``.
+- :ref:`EditorSettings.interface/multi_window/enable <class_EditorSettings_property_interface/multi_window/enable>` là ``true``.
 
-- :ref:`EditorSettings.interface/editor/display/single_window_mode<class_EditorSettings_property_interface/editor/display/single_window_mode>` is ``false``.
+- :ref:`EditorSettings.interface/editor/display/single_window_mode <class_EditorSettings_property_interface/editor/display/single_window_mode>` là ``false``.
 
-- :ref:`Viewport.gui_embed_subwindows<class_Viewport_property_gui_embed_subwindows>` is ``false``. This is forced to ``true`` on platforms that don't support multiple windows such as Web, or when the ``--single-window`` :doc:`command line argument <../tutorials/editor/command_line_tutorial>` is used.
+- :ref:`Viewport.gui_embed_subwindows<class_Viewport_property_gui_embed_subwindows>` là ``false``. Giá trị này bị buộc thành ``true`` trên các nền tảng không hỗ trợ nhiều cửa sổ như Web hoặc khi sử dụng ``--single-window`` :doc:`đối số dòng lệnh <../tutorials/editor/command_line_tutorial>`.
 
 .. rst-class:: classref-item-separator
 
@@ -721,7 +721,7 @@ Returns ``true`` if multiple window support is enabled in the editor. Multiple w
 
 :ref:`bool<class_bool>` **is_node_3d_snap_enabled**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_is_node_3d_snap_enabled>`
 
-Returns ``true`` if the 3D editor currently has snapping mode enabled, and ``false`` otherwise.
+Trả về ``true`` nếu trình soạn thảo 3D hiện đang bật chế độ snapping, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -733,7 +733,7 @@ Returns ``true`` if the 3D editor currently has snapping mode enabled, and ``fal
 
 :ref:`bool<class_bool>` **is_object_edited**\ (\ object\: :ref:`Object<class_Object>`\ ) |const| :ref:`🔗<class_EditorInterface_method_is_object_edited>`
 
-Returns ``true`` if the object has been marked as edited through :ref:`set_object_edited()<class_EditorInterface_method_set_object_edited>`.
+Trả về ``true`` nếu đối tượng đã được đánh dấu là đã chỉnh sửa thông qua :ref:`set_object_edited()<class_EditorInterface_method_set_object_edited>`.
 
 .. rst-class:: classref-item-separator
 
@@ -745,7 +745,7 @@ Returns ``true`` if the object has been marked as edited through :ref:`set_objec
 
 :ref:`bool<class_bool>` **is_playing_scene**\ (\ ) |const| :ref:`🔗<class_EditorInterface_method_is_playing_scene>`
 
-Returns ``true`` if a scene is currently being played, ``false`` otherwise. Paused scenes are considered as being played.
+Trả về ``true`` nếu một cảnh hiện đang được phát, nếu không thì trả về ``false``. Các cảnh bị tạm dừng được xem là đang được phát.
 
 .. rst-class:: classref-item-separator
 
@@ -757,7 +757,7 @@ Returns ``true`` if a scene is currently being played, ``false`` otherwise. Paus
 
 :ref:`bool<class_bool>` **is_plugin_enabled**\ (\ plugin\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_EditorInterface_method_is_plugin_enabled>`
 
-Returns ``true`` if the specified ``plugin`` is enabled. The plugin name is the same as its directory name.
+Trả về ``true`` nếu ``plugin`` được chỉ định đã được bật. Tên plugin giống với tên thư mục của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -769,7 +769,7 @@ Returns ``true`` if the specified ``plugin`` is enabled. The plugin name is the 
 
 :ref:`Array<class_Array>`\[:ref:`Texture2D<class_Texture2D>`\] **make_mesh_previews**\ (\ meshes\: :ref:`Array<class_Array>`\[:ref:`Mesh<class_Mesh>`\], preview_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorInterface_method_make_mesh_previews>`
 
-Returns mesh previews rendered at the given size as an :ref:`Array<class_Array>` of :ref:`Texture2D<class_Texture2D>`\ s.
+Trả về các bản xem trước mesh được kết xuất ở kích thước đã cho dưới dạng một :ref:`Array<class_Array>` gồm các :ref:`Texture2D<class_Texture2D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -781,7 +781,7 @@ Returns mesh previews rendered at the given size as an :ref:`Array<class_Array>`
 
 |void| **mark_scene_as_unsaved**\ (\ ) :ref:`🔗<class_EditorInterface_method_mark_scene_as_unsaved>`
 
-Marks the current scene tab as unsaved.
+Đánh dấu tab scene hiện tại là chưa lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -793,7 +793,7 @@ Marks the current scene tab as unsaved.
 
 |void| **open_scene_from_path**\ (\ scene_filepath\: :ref:`String<class_String>`, set_inherited\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EditorInterface_method_open_scene_from_path>`
 
-Opens the scene at the given path. If ``set_inherited`` is ``true``, creates a new inherited scene.
+Mở scene tại đường dẫn đã cho. Nếu ``set_inherited`` là ``true``, tạo một scene kế thừa mới.
 
 .. rst-class:: classref-item-separator
 
@@ -805,7 +805,7 @@ Opens the scene at the given path. If ``set_inherited`` is ``true``, creates a n
 
 |void| **play_current_scene**\ (\ ) :ref:`🔗<class_EditorInterface_method_play_current_scene>`
 
-Plays the currently active scene.
+Chạy scene hiện đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -817,7 +817,7 @@ Plays the currently active scene.
 
 |void| **play_custom_scene**\ (\ scene_filepath\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInterface_method_play_custom_scene>`
 
-Plays the scene specified by its filepath.
+Chạy scene được chỉ định bằng filepath của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -829,7 +829,7 @@ Plays the scene specified by its filepath.
 
 |void| **play_main_scene**\ (\ ) :ref:`🔗<class_EditorInterface_method_play_main_scene>`
 
-Plays the main scene.
+Chạy scene chính.
 
 .. rst-class:: classref-item-separator
 
@@ -841,21 +841,21 @@ Plays the main scene.
 
 |void| **popup_create_dialog**\ (\ callback\: :ref:`Callable<class_Callable>`, base_type\: :ref:`StringName<class_StringName>` = "", current_type\: :ref:`String<class_String>` = "", dialog_title\: :ref:`String<class_String>` = "", type_blocklist\: :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] = []\ ) :ref:`🔗<class_EditorInterface_method_popup_create_dialog>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Pops up an editor dialog for creating an object.
+Mở hộp thoại trình chỉnh sửa để tạo một đối tượng.
 
-The ``callback`` must take a single argument of type :ref:`String<class_String>`, which will contain the type name of the selected object (or the script path of the type, if the type is created from a script), or be an empty string if no item is selected.
+``callback`` phải nhận một đối số duy nhất thuộc kiểu :ref:`String<class_String>`, đối số này sẽ chứa tên kiểu của đối tượng được chọn (hoặc đường dẫn tập lệnh của kiểu nếu kiểu đó được tạo từ một tập lệnh), hoặc là một chuỗi trống nếu không có mục nào được chọn.
 
-The ``base_type`` specifies the base type of objects to display. For example, if you set this to "Resource", all types derived from :ref:`Resource<class_Resource>` will display in the create dialog.
+``base_type`` chỉ định kiểu cơ sở của các đối tượng cần hiển thị. Ví dụ: nếu đặt giá trị này là "Resource", tất cả các kiểu dẫn xuất từ :ref:`Resource<class_Resource>` sẽ được hiển thị trong hộp thoại tạo.
 
-The ``current_type`` will be passed in the search box of the create dialog, and the specified type can be immediately selected when the dialog pops up. If the ``current_type`` is not derived from ``base_type``, there will be no result of the type in the dialog.
+``current_type`` sẽ được truyền vào ô tìm kiếm của hộp thoại tạo, và kiểu được chỉ định có thể được chọn ngay khi hộp thoại xuất hiện. Nếu ``current_type`` không dẫn xuất từ ``base_type``, sẽ không có kết quả thuộc kiểu đó trong hộp thoại.
 
-The ``dialog_title`` allows you to define a custom title for the dialog. This is useful if you want to accurately hint the usage of the dialog. If the ``dialog_title`` is an empty string, the dialog will use "Create New 'Base Type'" as the default title.
+``dialog_title`` cho phép bạn xác định tiêu đề tùy chỉnh cho hộp thoại. Điều này hữu ích nếu bạn muốn gợi ý chính xác mục đích sử dụng của hộp thoại. Nếu ``dialog_title`` là một chuỗi trống, hộp thoại sẽ sử dụng "Create New 'Base Type'" làm tiêu đề mặc định.
 
-The ``type_blocklist`` contains a list of type names, and the types in the blocklist will be hidden from the create dialog.
+``type_blocklist`` chứa danh sách tên kiểu, và các kiểu trong blocklist sẽ bị ẩn khỏi hộp thoại tạo.
 
-\ **Note:** Trying to list the base type in the ``type_blocklist`` will hide all types derived from the base type from the create dialog.
+\ **Lưu ý:** Việc liệt kê base type trong ``type_blocklist`` sẽ khiến mọi type được dẫn xuất từ base type bị ẩn khỏi hộp thoại tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -867,9 +867,9 @@ The ``type_blocklist`` contains a list of type names, and the types in the block
 
 |void| **popup_dialog**\ (\ dialog\: :ref:`Window<class_Window>`, rect\: :ref:`Rect2i<class_Rect2i>` = Rect2i(0, 0, 0, 0)\ ) :ref:`🔗<class_EditorInterface_method_popup_dialog>`
 
-Pops up the ``dialog`` in the editor UI with :ref:`Window.popup_exclusive()<class_Window_method_popup_exclusive>`. The dialog must have no current parent, otherwise the method fails.
+Hiển thị ``dialog`` trong giao diện trình chỉnh sửa với :ref:`Window.popup_exclusive()<class_Window_method_popup_exclusive>`. Hộp thoại không được có parent hiện tại, nếu không phương thức sẽ thất bại.
 
-See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
+Xem thêm :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
 
 .. rst-class:: classref-item-separator
 
@@ -881,9 +881,9 @@ See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unpa
 
 |void| **popup_dialog_centered**\ (\ dialog\: :ref:`Window<class_Window>`, minsize\: :ref:`Vector2i<class_Vector2i>` = Vector2i(0, 0)\ ) :ref:`🔗<class_EditorInterface_method_popup_dialog_centered>`
 
-Pops up the ``dialog`` in the editor UI with :ref:`Window.popup_exclusive_centered()<class_Window_method_popup_exclusive_centered>`. The dialog must have no current parent, otherwise the method fails.
+Hiển thị ``dialog`` trong giao diện trình chỉnh sửa với :ref:`Window.popup_exclusive_centered()<class_Window_method_popup_exclusive_centered>`. Hộp thoại không được có parent hiện tại, nếu không phương thức sẽ thất bại.
 
-See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
+Xem thêm :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
 
 .. rst-class:: classref-item-separator
 
@@ -895,9 +895,9 @@ See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unpa
 
 |void| **popup_dialog_centered_clamped**\ (\ dialog\: :ref:`Window<class_Window>`, minsize\: :ref:`Vector2i<class_Vector2i>` = Vector2i(0, 0), fallback_ratio\: :ref:`float<class_float>` = 0.75\ ) :ref:`🔗<class_EditorInterface_method_popup_dialog_centered_clamped>`
 
-Pops up the ``dialog`` in the editor UI with :ref:`Window.popup_exclusive_centered_clamped()<class_Window_method_popup_exclusive_centered_clamped>`. The dialog must have no current parent, otherwise the method fails.
+Hiển thị ``dialog`` trong giao diện trình chỉnh sửa với :ref:`Window.popup_exclusive_centered_clamped()<class_Window_method_popup_exclusive_centered_clamped>`. Hộp thoại không được có parent hiện tại, nếu không phương thức sẽ thất bại.
 
-See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
+Xem thêm :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
 
 .. rst-class:: classref-item-separator
 
@@ -909,9 +909,9 @@ See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unpa
 
 |void| **popup_dialog_centered_ratio**\ (\ dialog\: :ref:`Window<class_Window>`, ratio\: :ref:`float<class_float>` = 0.8\ ) :ref:`🔗<class_EditorInterface_method_popup_dialog_centered_ratio>`
 
-Pops up the ``dialog`` in the editor UI with :ref:`Window.popup_exclusive_centered_ratio()<class_Window_method_popup_exclusive_centered_ratio>`. The dialog must have no current parent, otherwise the method fails.
+Hiển thị ``dialog`` trong giao diện người dùng của trình soạn thảo cùng với :ref:`Window.popup_exclusive_centered_ratio()<class_Window_method_popup_exclusive_centered_ratio>`. Hộp thoại không được có parent hiện tại, nếu không phương thức sẽ thất bại.
 
-See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
+Xem thêm :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unparent_when_invisible>`.
 
 .. rst-class:: classref-item-separator
 
@@ -923,7 +923,7 @@ See also :ref:`Window.set_unparent_when_invisible()<class_Window_method_set_unpa
 
 |void| **popup_method_selector**\ (\ object\: :ref:`Object<class_Object>`, callback\: :ref:`Callable<class_Callable>`, current_value\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_EditorInterface_method_popup_method_selector>`
 
-Pops up an editor dialog for selecting a method from ``object``. The ``callback`` must take a single argument of type :ref:`String<class_String>` which will contain the name of the selected method or be empty if the dialog is canceled. If ``current_value`` is provided, the method will be selected automatically in the method list, if it exists.
+Hiển thị hộp thoại của trình soạn thảo để chọn một phương thức từ ``object``. ``callback`` phải nhận một đối số duy nhất thuộc kiểu :ref:`String<class_String>`, đối số này sẽ chứa tên của phương thức được chọn hoặc để trống nếu hộp thoại bị hủy. Nếu cung cấp ``current_value``, phương thức sẽ được tự động chọn trong danh sách phương thức, nếu phương thức đó tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -935,9 +935,9 @@ Pops up an editor dialog for selecting a method from ``object``. The ``callback`
 
 |void| **popup_node_selector**\ (\ callback\: :ref:`Callable<class_Callable>`, valid_types\: :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] = [], current_value\: :ref:`Node<class_Node>` = null\ ) :ref:`🔗<class_EditorInterface_method_popup_node_selector>`
 
-Pops up an editor dialog for selecting a :ref:`Node<class_Node>` from the edited scene. The ``callback`` must take a single argument of type :ref:`NodePath<class_NodePath>`. It is called on the selected :ref:`NodePath<class_NodePath>` or the empty path ``^""`` if the dialog is canceled. If ``valid_types`` is provided, the dialog will only show Nodes that match one of the listed Node types. If ``current_value`` is provided, the Node will be automatically selected in the tree, if it exists.
+Hiển thị hộp thoại của trình soạn thảo để chọn một :ref:`Node<class_Node>` từ scene đang chỉnh sửa. ``callback`` phải nhận một đối số duy nhất thuộc kiểu :ref:`NodePath<class_NodePath>`. Hàm này được gọi với :ref:`NodePath<class_NodePath>` được chọn hoặc với path trống ``^""`` nếu hộp thoại bị hủy. Nếu cung cấp ``valid_types``, hộp thoại sẽ chỉ hiển thị các Node khớp với một trong các kiểu Node được liệt kê. Nếu cung cấp ``current_value``, Node sẽ được tự động chọn trong cây, nếu Node đó tồn tại.
 
-\ **Example:** Display the node selection dialog as soon as this node is added to the tree for the first time:
+\ **Ví dụ:** Hiển thị hộp thoại chọn node ngay khi node này được thêm vào cây lần đầu tiên:
 
 ::
 
@@ -961,7 +961,7 @@ Pops up an editor dialog for selecting a :ref:`Node<class_Node>` from the edited
 
 |void| **popup_property_selector**\ (\ object\: :ref:`Object<class_Object>`, callback\: :ref:`Callable<class_Callable>`, type_filter\: :ref:`PackedInt32Array<class_PackedInt32Array>` = PackedInt32Array(), current_value\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_EditorInterface_method_popup_property_selector>`
 
-Pops up an editor dialog for selecting properties from ``object``. The ``callback`` must take a single argument of type :ref:`NodePath<class_NodePath>`. It is called on the selected property path (see :ref:`NodePath.get_as_property_path()<class_NodePath_method_get_as_property_path>`) or the empty path ``^""`` if the dialog is canceled. If ``type_filter`` is provided, the dialog will only show properties that match one of the listed :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` values. If ``current_value`` is provided, the property will be selected automatically in the property list, if it exists.
+Hiển thị hộp thoại của trình soạn thảo để chọn các thuộc tính từ ``object``. ``callback`` phải nhận một đối số duy nhất thuộc kiểu :ref:`NodePath<class_NodePath>`. Hàm này được gọi với property path đã chọn (xem :ref:`NodePath.get_as_property_path()<class_NodePath_method_get_as_property_path>`) hoặc với path trống ``^""`` nếu hộp thoại bị hủy. Nếu cung cấp ``type_filter``, hộp thoại sẽ chỉ hiển thị các thuộc tính khớp với một trong các giá trị :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>` được liệt kê. Nếu cung cấp ``current_value``, thuộc tính sẽ được tự động chọn trong danh sách thuộc tính, nếu thuộc tính đó tồn tại.
 
 ::
 
@@ -985,7 +985,7 @@ Pops up an editor dialog for selecting properties from ``object``. The ``callbac
 
 |void| **popup_quick_open**\ (\ callback\: :ref:`Callable<class_Callable>`, base_types\: :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] = []\ ) :ref:`🔗<class_EditorInterface_method_popup_quick_open>`
 
-Pops up an editor dialog for quick selecting a resource file. The ``callback`` must take a single argument of type :ref:`String<class_String>` which will contain the path of the selected resource or be empty if the dialog is canceled. If ``base_types`` is provided, the dialog will only show resources that match these types. Only types deriving from :ref:`Resource<class_Resource>` are supported.
+Hiển thị hộp thoại của trình soạn thảo để chọn nhanh một tệp resource. ``callback`` phải nhận một đối số duy nhất thuộc kiểu :ref:`String<class_String>`, đối số này sẽ chứa path của resource được chọn hoặc để trống nếu hộp thoại bị hủy. Nếu cung cấp ``base_types``, hộp thoại sẽ chỉ hiển thị các resource khớp với những kiểu này. Chỉ hỗ trợ các kiểu kế thừa từ :ref:`Resource<class_Resource>`.
 
 .. rst-class:: classref-item-separator
 
@@ -997,7 +997,7 @@ Pops up an editor dialog for quick selecting a resource file. The ``callback`` m
 
 |void| **reload_scene_from_path**\ (\ scene_filepath\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInterface_method_reload_scene_from_path>`
 
-Reloads the scene at the given path. Fails if the scene is not open.
+Tải lại scene tại đường dẫn đã cho. Không thành công nếu scene chưa được mở.
 
 .. rst-class:: classref-item-separator
 
@@ -1009,7 +1009,7 @@ Reloads the scene at the given path. Fails if the scene is not open.
 
 |void| **restart_editor**\ (\ save\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_EditorInterface_method_restart_editor>`
 
-Restarts the editor. This closes the editor and then opens the same project. If ``save`` is ``true``, the project will be saved before restarting.
+Khởi động lại editor. Thao tác này đóng editor rồi mở lại cùng project. Nếu ``save`` là ``true``, project sẽ được lưu trước khi khởi động lại.
 
 .. rst-class:: classref-item-separator
 
@@ -1021,7 +1021,7 @@ Restarts the editor. This closes the editor and then opens the same project. If 
 
 |void| **save_all_scenes**\ (\ ) :ref:`🔗<class_EditorInterface_method_save_all_scenes>`
 
-Saves all opened scenes in the editor.
+Lưu tất cả các scene đã mở trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -1033,7 +1033,7 @@ Saves all opened scenes in the editor.
 
 :ref:`Error<enum_@GlobalScope_Error>` **save_scene**\ (\ ) :ref:`🔗<class_EditorInterface_method_save_scene>`
 
-Saves the currently active scene. Returns either :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` or :ref:`@GlobalScope.ERR_CANT_CREATE<class_@GlobalScope_constant_ERR_CANT_CREATE>`.
+Lưu scene hiện đang hoạt động. Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` hoặc :ref:`@GlobalScope.ERR_CANT_CREATE <class_@GlobalScope_constant_ERR_CANT_CREATE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1045,7 +1045,7 @@ Saves the currently active scene. Returns either :ref:`@GlobalScope.OK<class_@Gl
 
 |void| **save_scene_as**\ (\ path\: :ref:`String<class_String>`, with_preview\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_EditorInterface_method_save_scene_as>`
 
-Saves the currently active scene as a file at ``path``.
+Lưu scene hiện đang hoạt động thành một tệp tại ``path``.
 
 .. rst-class:: classref-item-separator
 
@@ -1057,7 +1057,7 @@ Saves the currently active scene as a file at ``path``.
 
 |void| **select_file**\ (\ file\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInterface_method_select_file>`
 
-Selects the file, with the path provided by ``file``, in the FileSystem dock.
+Chọn tệp có đường dẫn do ``file`` cung cấp trong dock FileSystem.
 
 .. rst-class:: classref-item-separator
 
@@ -1069,11 +1069,11 @@ Selects the file, with the path provided by ``file``, in the FileSystem dock.
 
 |void| **set_current_feature_profile**\ (\ profile_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInterface_method_set_current_feature_profile>`
 
-Selects and activates the specified feature profile with the given ``profile_name``. Set ``profile_name`` to an empty string to reset to the default feature profile.
+Chọn và kích hoạt feature profile được chỉ định với ``profile_name`` đã cho. Đặt ``profile_name`` thành một chuỗi rỗng để đặt lại về feature profile mặc định.
 
-A feature profile can be created programmatically using the :ref:`EditorFeatureProfile<class_EditorFeatureProfile>` class.
+Có thể tạo một feature profile bằng lập trình thông qua lớp :ref:`EditorFeatureProfile<class_EditorFeatureProfile>`.
 
-\ **Note:** The feature profile that gets activated must be located in the ``feature_profiles`` directory, as a file with the ``.profile`` extension. If a profile could not be found, an error occurs. The editor configuration folder can be found by using :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
+\ **Lưu ý:** Feature profile được kích hoạt phải nằm trong thư mục ``feature_profiles``, dưới dạng tệp có phần mở rộng ``.profile``. Nếu không tìm thấy profile, sẽ xảy ra lỗi. Có thể tìm thư mục cấu hình của editor bằng cách sử dụng :ref:`EditorPaths.get_config_dir()<class_EditorPaths_method_get_config_dir>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1085,7 +1085,7 @@ A feature profile can be created programmatically using the :ref:`EditorFeatureP
 
 |void| **set_main_screen_editor**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorInterface_method_set_main_screen_editor>`
 
-Sets the editor's current main screen to the one specified in ``name``. ``name`` must match the title of the tab in question exactly (e.g. ``2D``, ``3D``, ``Script``, ``Game``, or ``Asset Store`` for default tabs).
+Đặt màn hình chính hiện tại của editor thành màn hình được chỉ định trong ``name``. ``name`` phải khớp chính xác với tiêu đề của tab tương ứng (ví dụ: ``2D``, ``3D``, ``Script``, ``Game`` hoặc ``Asset Store`` đối với các tab mặc định).
 
 .. rst-class:: classref-item-separator
 
@@ -1097,11 +1097,11 @@ Sets the editor's current main screen to the one specified in ``name``. ``name``
 
 |void| **set_object_edited**\ (\ object\: :ref:`Object<class_Object>`, edited\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorInterface_method_set_object_edited>`
 
-If ``edited`` is ``true``, the object is marked as edited.
+Nếu ``edited`` là ``true``, đối tượng sẽ được đánh dấu là đã chỉnh sửa.
 
-\ **Note:** This is primarily used by the editor for :ref:`Resource<class_Resource>` based objects to track their modified state. For example, any changes to an open scene, a resource in the inspector, or an edited script will cause this method to be called with ``true``. Saving the scene, script, or resource resets the edited state by calling this method with ``false``.
+\ **Lưu ý:** Phương thức này chủ yếu được editor sử dụng cho các đối tượng dựa trên :ref:`Resource<class_Resource>` để theo dõi trạng thái đã chỉnh sửa của chúng. Ví dụ: mọi thay đổi đối với một scene đang mở, một resource trong inspector hoặc một script đang chỉnh sửa sẽ khiến phương thức này được gọi với ``true``. Việc lưu scene, script hoặc resource sẽ đặt lại trạng thái đã chỉnh sửa bằng cách gọi phương thức này với ``false``.
 
-\ **Note:** Each call to this method increments the object's edited version. This is used to track changes in the editor and to trigger when thumbnails should be regenerated for resources.
+\ **Lưu ý:** Mỗi lần gọi phương thức này sẽ tăng phiên bản đã chỉnh sửa của đối tượng lên một. Thông tin này được dùng để theo dõi các thay đổi trong editor và kích hoạt việc tạo lại thumbnail cho các resource.
 
 .. rst-class:: classref-item-separator
 
@@ -1113,7 +1113,7 @@ If ``edited`` is ``true``, the object is marked as edited.
 
 |void| **set_plugin_enabled**\ (\ plugin\: :ref:`String<class_String>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorInterface_method_set_plugin_enabled>`
 
-Sets the enabled status of a plugin. The plugin name is the same as its directory name.
+Đặt trạng thái bật của plugin. Tên plugin giống với tên thư mục của plugin.
 
 .. rst-class:: classref-item-separator
 
@@ -1125,14 +1125,14 @@ Sets the enabled status of a plugin. The plugin name is the same as its director
 
 |void| **stop_playing_scene**\ (\ ) :ref:`🔗<class_EditorInterface_method_stop_playing_scene>`
 
-Stops the scene that is currently playing.
+Dừng cảnh hiện đang phát.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

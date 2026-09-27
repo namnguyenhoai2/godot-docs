@@ -10,20 +10,20 @@
 Engine
 ======
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Provides access to engine properties.
+Cung cấp quyền truy cập vào các thuộc tính của engine.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Engine** singleton allows you to query and modify the project's run-time parameters, such as frames per second, time scale, and others. It also stores information about the current build of Godot, such as the current version.
+Singleton **Engine** cho phép bạn truy vấn và sửa đổi các tham số thời gian chạy của dự án, chẳng hạn như số khung hình trên giây, tỷ lệ thời gian và các tham số khác. Singleton này cũng lưu trữ thông tin về bản build hiện tại của Godot, chẳng hạn như phiên bản hiện tại.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -100,11 +100,11 @@ Methods
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                    | :ref:`is_in_physics_frame<class_Engine_method_is_in_physics_frame>`\ (\ ) |const|                                                                           |
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                      | :ref:`register_script_language<class_Engine_method_register_script_language>`\ (\ language\: :ref:`ScriptLanguage<class_ScriptLanguage>`\ )                 |
+   | :ref:`Error <enum_@GlobalScope_Error>`                                     | :ref:`register_script_language<class_Engine_method_register_script_language>`\ (\ language\: :ref:`ScriptLanguage<class_ScriptLanguage>`\ )                 |
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                     | :ref:`register_singleton<class_Engine_method_register_singleton>`\ (\ name\: :ref:`StringName<class_StringName>`, instance\: :ref:`Object<class_Object>`\ ) |
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                      | :ref:`unregister_script_language<class_Engine_method_unregister_script_language>`\ (\ language\: :ref:`ScriptLanguage<class_ScriptLanguage>`\ )             |
+   | :ref:`Error <enum_@GlobalScope_Error>`                                     | :ref:`unregister_script_language<class_Engine_method_unregister_script_language>`\ (\ language\: :ref:`ScriptLanguage<class_ScriptLanguage>`\ )             |
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                     | :ref:`unregister_singleton<class_Engine_method_unregister_singleton>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                     |
    +----------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -115,8 +115,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Engine_property_max_fps:
 
@@ -129,17 +129,17 @@ Property Descriptions
 - |void| **set_max_fps**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_fps**\ (\ )
 
-The maximum number of frames that can be rendered every second (FPS). A value of ``0`` means the framerate is uncapped.
+Số lượng frame tối đa có thể được render mỗi giây (FPS). Giá trị ``0`` có nghĩa là framerate không bị giới hạn.
 
-Limiting the FPS can be useful to reduce the host machine's power consumption, which reduces heat, noise emissions, and improves battery life.
+Giới hạn FPS có thể hữu ích để giảm mức tiêu thụ điện năng của máy chủ, từ đó giảm nhiệt lượng, tiếng ồn và cải thiện thời lượng pin.
 
-If :ref:`ProjectSettings.display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is **Enabled** or **Adaptive**, the setting takes precedence and the max FPS number cannot exceed the monitor's refresh rate. See also :ref:`DisplayServer.screen_get_refresh_rate()<class_DisplayServer_method_screen_get_refresh_rate>`.
+Nếu :ref:`ProjectSettings.display/window/vsync/vsync_mode <class_ProjectSettings_property_display/window/vsync/vsync_mode>` là **Enabled** hoặc **Adaptive**, thiết lập này sẽ được ưu tiên và số FPS tối đa không thể vượt quá tốc độ làm mới của màn hình. Xem thêm :ref:`DisplayServer.screen_get_refresh_rate()<class_DisplayServer_method_screen_get_refresh_rate>`.
 
-If :ref:`ProjectSettings.display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is **Enabled**, on monitors with variable refresh rate enabled (G-Sync/FreeSync), using an FPS limit a few frames lower than the monitor's refresh rate will `reduce input lag while avoiding tearing <https://blurbusters.com/howto-low-lag-vsync-on/>`__. At higher refresh rates, the difference between the FPS limit and the monitor refresh rate should be increased to ensure frames to account for timing inaccuracies. The optimal formula for the FPS limit value in this scenario is ``r - (r * r) / 3600.0``, where ``r`` is the monitor's refresh rate.
+Nếu :ref:`ProjectSettings.display/window/vsync/vsync_mode <class_ProjectSettings_property_display/window/vsync/vsync_mode>` là **Enabled**, trên các màn hình đã bật tốc độ làm mới biến đổi (G-Sync/FreeSync), việc sử dụng giới hạn FPS thấp hơn tốc độ làm mới của màn hình vài khung hình sẽ `giảm độ trễ đầu vào đồng thời tránh hiện tượng xé hình <https://blurbusters.com/howto-low-lag-vsync-on/>`__. Ở tốc độ làm mới cao hơn, cần tăng độ chênh lệch giữa giới hạn FPS và tốc độ làm mới của màn hình để đảm bảo có đủ khung hình bù cho những sai số về thời gian. Công thức tối ưu cho giá trị giới hạn FPS trong trường hợp này là ``r - (r * r) / 3600.0``, trong đó ``r`` là tốc độ làm mới của màn hình.
 
-\ **Note:** The actual number of frames per second may still be below this value if the CPU or GPU cannot keep up with the project's logic and rendering.
+\ **Lưu ý:** Số khung hình mỗi giây thực tế vẫn có thể thấp hơn giá trị này nếu CPU hoặc GPU không xử lý kịp logic và việc kết xuất của dự án.
 
-\ **Note:** If :ref:`ProjectSettings.display/window/vsync/vsync_mode<class_ProjectSettings_property_display/window/vsync/vsync_mode>` is **Disabled**, limiting the FPS to a high value that can be consistently reached on the system can reduce input lag compared to an uncapped framerate. Since this works by ensuring the GPU load is lower than 100%, this latency reduction is only effective in GPU-bottlenecked scenarios, not CPU-bottlenecked scenarios.
+\ **Lưu ý:** Nếu :ref:`ProjectSettings.display/window/vsync/vsync_mode <class_ProjectSettings_property_display/window/vsync/vsync_mode>` là **Disabled**, việc giới hạn FPS ở một giá trị cao có thể đạt ổn định trên hệ thống sẽ giảm độ trễ đầu vào so với tốc độ khung hình không giới hạn. Vì cách này hoạt động bằng cách đảm bảo tải GPU thấp hơn 100%, việc giảm độ trễ chỉ có hiệu quả trong các trường hợp bị nghẽn GPU, không phải các trường hợp bị nghẽn CPU.
 
 .. rst-class:: classref-item-separator
 
@@ -156,9 +156,9 @@ If :ref:`ProjectSettings.display/window/vsync/vsync_mode<class_ProjectSettings_p
 - |void| **set_max_physics_steps_per_frame**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_physics_steps_per_frame**\ (\ )
 
-The maximum number of physics steps that can be simulated each rendered frame.
+Số bước vật lý tối đa có thể được mô phỏng trong mỗi khung hình được kết xuất.
 
-\ **Note:** The default value is tuned to prevent expensive physics simulations from triggering even more expensive simulations indefinitely. However, the game will appear to slow down if the rendering FPS is less than ``1 / max_physics_steps_per_frame`` of :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. This occurs even if ``delta`` is consistently used in physics calculations. To avoid this, increase :ref:`max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` if you have increased :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` significantly above its default value.
+\ **Lưu ý:** Giá trị mặc định được tinh chỉnh để ngăn các mô phỏng vật lý tốn kém liên tục kích hoạt thêm những mô phỏng còn tốn kém hơn. Tuy nhiên, trò chơi sẽ có vẻ chậm lại nếu FPS kết xuất thấp hơn ``1 / max_physics_steps_per_frame`` của :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. Điều này xảy ra ngay cả khi ``delta`` được sử dụng ổn định trong các phép tính vật lý. Để tránh điều này, hãy tăng :ref:`max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` nếu bạn đã tăng :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` cao hơn đáng kể so với giá trị mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -175,11 +175,11 @@ The maximum number of physics steps that can be simulated each rendered frame.
 - |void| **set_physics_jitter_fix**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_physics_jitter_fix**\ (\ )
 
-How much physics ticks are synchronized with real time. If ``0`` or less, the ticks are fully synchronized. Higher values cause the in-game clock to deviate more from the real clock, but they smooth out framerate jitters.
+Mức độ các tick vật lý được đồng bộ với thời gian thực. Nếu ``0`` hoặc thấp hơn, các tick được đồng bộ hoàn toàn. Các giá trị cao hơn khiến đồng hồ trong trò chơi lệch nhiều hơn so với đồng hồ thực, nhưng giúp làm mượt hiện tượng giật tốc độ khung hình.
 
-\ **Note:** The default value of ``0.5`` should be good enough for most cases; values above ``2`` could cause the game to react to dropped frames with a noticeable delay and are not recommended.
+\ **Lưu ý:** Giá trị mặc định là ``0.5`` sẽ phù hợp với hầu hết các trường hợp; các giá trị trên ``2`` có thể khiến trò chơi phản hồi với các khung hình bị rớt sau một độ trễ đáng kể và không được khuyến nghị.
 
-\ **Note:** When using a custom physics interpolation solution, or within a network game, it's recommended to disable the physics jitter fix by setting this property to ``0``.
+\ **Lưu ý:** Khi sử dụng giải pháp nội suy vật lý tùy chỉnh hoặc trong trò chơi mạng, bạn nên tắt tính năng khắc phục hiện tượng giật vật lý bằng cách đặt thuộc tính này thành ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -196,15 +196,15 @@ How much physics ticks are synchronized with real time. If ``0`` or less, the ti
 - |void| **set_physics_ticks_per_second**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_physics_ticks_per_second**\ (\ )
 
-The number of fixed iterations per second. This controls how often physics simulation and the :ref:`Node._physics_process()<class_Node_private_method__physics_process>` method are run.
+Số lần lặp cố định mỗi giây. Giá trị này kiểm soát tần suất mô phỏng vật lý và phương thức :ref:`Node._physics_process()<class_Node_private_method__physics_process>` được chạy.
 
-CPU usage scales approximately with the physics tick rate. However, at very low tick rates (usually below 30), physics behavior can break down. Input can also become less responsive at low tick rates as there can be a gap between input being registered, and the response on the next physics tick. High tick rates give more accurate physics simulation, particularly for fast moving objects. For example, racing games may benefit from increasing the tick rate above the default 60.
+Mức sử dụng CPU tăng gần như tỷ lệ thuận với tần suất physics tick. Tuy nhiên, ở tần suất tick rất thấp (thường dưới 30), hoạt động của vật lý có thể bị lỗi. Input cũng có thể kém phản hồi hơn ở tần suất tick thấp, vì có thể có khoảng trễ giữa lúc input được ghi nhận và lúc phản hồi ở physics tick tiếp theo. Tần suất tick cao giúp mô phỏng vật lý chính xác hơn, đặc biệt đối với các vật thể chuyển động nhanh. Ví dụ, game đua xe có thể hưởng lợi từ việc tăng tần suất tick cao hơn mức mặc định 60.
 
-See also :ref:`max_fps<class_Engine_property_max_fps>` and :ref:`ProjectSettings.physics/common/physics_ticks_per_second<class_ProjectSettings_property_physics/common/physics_ticks_per_second>`.
+Xem thêm :ref:`max_fps<class_Engine_property_max_fps>` và :ref:`ProjectSettings.physics/common/physics_ticks_per_second <class_ProjectSettings_property_physics/common/physics_ticks_per_second>`.
 
-\ **Note:** Only :ref:`max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` physics ticks may be simulated per rendered frame at most. If more physics ticks have to be simulated per rendered frame to keep up with rendering, the project will appear to slow down (even if ``delta`` is used consistently in physics calculations). Therefore, it is recommended to also increase :ref:`max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` if increasing :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` significantly above its default value.
+\ **Lưu ý:** Tối đa chỉ có thể mô phỏng :ref:`max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` physics tick trong mỗi frame được kết xuất. Nếu cần mô phỏng nhiều physics tick hơn trong mỗi frame được kết xuất để theo kịp việc kết xuất, dự án sẽ có vẻ chậm lại (ngay cả khi ``delta`` được sử dụng nhất quán trong các phép tính vật lý). Do đó, bạn cũng nên tăng :ref:`max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` nếu tăng :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` cao hơn đáng kể so với giá trị mặc định.
 
-\ **Note:** Consider enabling :doc:`physics interpolation <../tutorials/physics/interpolation/index>` if you change :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` to a value that is not a multiple of ``60``. Using physics interpolation will avoid jittering when the monitor refresh rate and physics update rate don't exactly match.
+\ **Lưu ý:** Hãy cân nhắc bật :doc:`physics interpolation <../tutorials/physics/interpolation/index>` nếu bạn thay đổi :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` thành một giá trị không phải là bội số của ``60``. Sử dụng physics interpolation sẽ tránh hiện tượng giật khi tần số làm mới của màn hình và tần suất cập nhật vật lý không khớp chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -221,11 +221,11 @@ See also :ref:`max_fps<class_Engine_property_max_fps>` and :ref:`ProjectSettings
 - |void| **set_print_error_messages**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_printing_error_messages**\ (\ )
 
-If ``false``, stops printing error and warning messages to the console and editor Output log. This can be used to hide error and warning messages during unit test suite runs. This property is equivalent to the :ref:`ProjectSettings.application/run/disable_stderr<class_ProjectSettings_property_application/run/disable_stderr>` project setting.
+Nếu ``false``, các thông báo lỗi và cảnh báo sẽ ngừng được in ra console và nhật ký Output của editor. Bạn có thể dùng tùy chọn này để ẩn các thông báo lỗi và cảnh báo trong khi chạy bộ kiểm thử unit. Thuộc tính này tương đương với thiết lập dự án :ref:`ProjectSettings.application/run/disable_stderr <class_ProjectSettings_property_application/run/disable_stderr>`.
 
-\ **Note:** This property does not impact the editor's Errors tab when running a project from the editor.
+\ **Lưu ý:** Thuộc tính này không ảnh hưởng đến tab Errors của editor khi chạy một dự án từ editor.
 
-\ **Warning:** If set to ``false`` anywhere in the project, important error messages may be hidden even if they are emitted from other scripts. In a ``@tool`` script, this will also impact the editor itself. Do *not* report bugs before ensuring error messages are enabled (as they are by default).
+\ **Cảnh báo:** Nếu được đặt thành ``false`` ở bất kỳ đâu trong dự án, các thông báo lỗi quan trọng có thể bị ẩn ngay cả khi chúng được phát ra từ các script khác. Trong một script ``@tool``, điều này cũng sẽ ảnh hưởng đến chính editor. Đừng *báo cáo lỗi* trước khi đảm bảo rằng các thông báo lỗi đã được bật (theo mặc định, chúng được bật).
 
 .. rst-class:: classref-item-separator
 
@@ -242,9 +242,9 @@ If ``false``, stops printing error and warning messages to the console and edito
 - |void| **set_print_to_stdout**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_printing_to_stdout**\ (\ )
 
-If ``false``, stops printing messages (for example using :ref:`@GlobalScope.print()<class_@GlobalScope_method_print>`) to the console, log files, and editor Output log. This property is equivalent to the :ref:`ProjectSettings.application/run/disable_stdout<class_ProjectSettings_property_application/run/disable_stdout>` project setting.
+Nếu ``false``, sẽ ngừng in thông báo (ví dụ: bằng cách sử dụng :ref:`@GlobalScope.print() <class_@GlobalScope_method_print>`) ra console, các tệp nhật ký và nhật ký Output của editor. Thuộc tính này tương đương với thiết lập dự án :ref:`ProjectSettings.application/run/disable_stdout <class_ProjectSettings_property_application/run/disable_stdout>`.
 
-\ **Note:** This does not stop printing errors or warnings produced by scripts to the console or log files, for more details see :ref:`print_error_messages<class_Engine_property_print_error_messages>`.
+\ **Lưu ý:** Điều này không ngừng in các lỗi hoặc cảnh báo do script tạo ra ra console hoặc các tệp nhật ký; để biết thêm chi tiết, xem :ref:`print_error_messages<class_Engine_property_print_error_messages>`.
 
 .. rst-class:: classref-item-separator
 
@@ -261,15 +261,15 @@ If ``false``, stops printing messages (for example using :ref:`@GlobalScope.prin
 - |void| **set_time_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_time_scale**\ (\ )
 
-The speed multiplier at which the in-game clock updates, compared to real time. For example, if set to ``2.0`` the game runs twice as fast, and if set to ``0.5`` the game runs half as fast.
+Hệ số tốc độ mà đồng hồ trong game cập nhật so với thời gian thực. Ví dụ: nếu được đặt thành ``2.0``, game sẽ chạy nhanh gấp đôi; còn nếu được đặt thành ``0.5``, game sẽ chạy chậm bằng một nửa.
 
-This value affects :ref:`Timer<class_Timer>`, :ref:`SceneTreeTimer<class_SceneTreeTimer>`, and all other simulations that make use of ``delta`` time (such as :ref:`Node._process()<class_Node_private_method__process>` and :ref:`Node._physics_process()<class_Node_private_method__physics_process>`).
+Giá trị này ảnh hưởng đến :ref:`Timer<class_Timer>`, :ref:`SceneTreeTimer<class_SceneTreeTimer>` và tất cả các mô phỏng khác sử dụng thời gian ``delta`` (chẳng hạn như :ref:`Node._process()<class_Node_private_method__process>` và :ref:`Node._physics_process()<class_Node_private_method__physics_process>`).
 
-\ **Note:** It's recommended to keep this property above ``0.0``, as the game may behave unexpectedly otherwise.
+\ **Lưu ý:** Bạn nên giữ thuộc tính này cao hơn ``0.0``, vì nếu không game có thể hoạt động không như mong đợi.
 
-\ **Note:** This does not affect audio playback speed. Use :ref:`AudioServer.playback_speed_scale<class_AudioServer_property_playback_speed_scale>` to adjust audio playback speed independently of :ref:`time_scale<class_Engine_property_time_scale>`.
+\ **Lưu ý:** Điều này không ảnh hưởng đến tốc độ phát âm thanh. Hãy sử dụng :ref:`AudioServer.playback_speed_scale<class_AudioServer_property_playback_speed_scale>` để điều chỉnh tốc độ phát âm thanh độc lập với :ref:`time_scale<class_Engine_property_time_scale>`.
 
-\ **Note:** This does not automatically adjust :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. With values above ``1.0`` physics simulation may become less precise, as each physics tick will stretch over a larger period of engine time. If you're modifying :ref:`time_scale<class_Engine_property_time_scale>` to speed up simulation by a large factor, consider also increasing :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` to make the simulation more reliable.
+\ **Lưu ý:** Điều này không tự động điều chỉnh :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. Với các giá trị lớn hơn ``1.0``, mô phỏng vật lý có thể kém chính xác hơn, vì mỗi tick vật lý sẽ trải dài trong một khoảng thời gian engine lớn hơn. Nếu bạn đang sửa đổi :ref:`time_scale<class_Engine_property_time_scale>` để tăng tốc mô phỏng lên một hệ số lớn, hãy cân nhắc đồng thời tăng :ref:`physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` để mô phỏng đáng tin cậy hơn.
 
 .. rst-class:: classref-section-separator
 
@@ -277,8 +277,8 @@ This value affects :ref:`Timer<class_Timer>`, :ref:`SceneTreeTimer<class_SceneTr
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Engine_method_capture_script_backtraces:
 
@@ -286,13 +286,13 @@ Method Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`ScriptBacktrace<class_ScriptBacktrace>`\] **capture_script_backtraces**\ (\ include_variables\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Engine_method_capture_script_backtraces>`
 
-Captures and returns backtraces from all registered script languages.
+Thu thập và trả về backtrace từ tất cả các ngôn ngữ script đã đăng ký.
 
-By default, the returned :ref:`ScriptBacktrace<class_ScriptBacktrace>` will only contain stack frames in editor builds and debug builds. To enable them for release builds as well, you need to enable :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
+Theo mặc định, :ref:`ScriptBacktrace<class_ScriptBacktrace>` được trả về chỉ chứa các stack frame trong các bản build editor và debug. Để bật chúng cho cả các bản build release, bạn cần bật :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks <class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
 
-If ``include_variables`` is ``true``, the backtrace will also include the names and values of any global variables (e.g. autoload singletons) at the point of the capture, as well as local variables and class member variables at each stack frame. This will however will only be respected when running the game with a debugger attached, like when running the game from the editor. To enable it for export builds as well, you need to enable :ref:`ProjectSettings.debug/settings/gdscript/always_track_local_variables<class_ProjectSettings_property_debug/settings/gdscript/always_track_local_variables>`.
+Nếu ``include_variables`` là ``true``, backtrace cũng sẽ bao gồm tên và giá trị của mọi biến toàn cục (ví dụ: các singleton autoload) tại thời điểm thu thập, cũng như các biến cục bộ và biến thành viên của lớp trong mỗi stack frame. Tuy nhiên, điều này chỉ được áp dụng khi chạy game với debugger được đính kèm, chẳng hạn như khi chạy game từ editor. Để bật tính năng này cho cả các bản build export, bạn cần bật :ref:`ProjectSettings.debug/settings/gdscript/always_track_local_variables <class_ProjectSettings_property_debug/settings/gdscript/always_track_local_variables>`.
 
-\ **Warning:** When ``include_variables`` is ``true``, any captured variables can potentially (e.g. with GDScript backtraces) be their actual values, including any object references. This means that storing such a :ref:`ScriptBacktrace<class_ScriptBacktrace>` will prevent those objects from being deallocated, so it's generally recommended not to do so.
+\ **Cảnh báo:** Khi ``include_variables`` là ``true``, mọi biến được thu thập có thể (ví dụ: với backtrace GDScript) chứa các giá trị thực tế của chúng, bao gồm cả các tham chiếu đối tượng. Điều này có nghĩa là việc lưu trữ một :ref:`ScriptBacktrace<class_ScriptBacktrace>` như vậy sẽ ngăn các đối tượng đó được giải phóng, vì vậy nhìn chung bạn không nên làm vậy.
 
 .. rst-class:: classref-item-separator
 
@@ -304,11 +304,11 @@ If ``include_variables`` is ``true``, the backtrace will also include the names 
 
 :ref:`String<class_String>` **get_architecture_name**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_architecture_name>`
 
-Returns the name of the CPU architecture the Godot binary was built for. Possible return values include ``"x86_64"``, ``"x86_32"``, ``"arm64"``, ``"arm32"``, ``"rv64"``, ``"ppc64"``, ``"loongarch64"``, ``"wasm64"``, and ``"wasm32"``.
+Trả về tên của kiến trúc CPU mà tệp nhị phân Godot được build cho. Các giá trị có thể được trả về bao gồm ``"x86_64"``, ``"x86_32"``, ``"arm64"``, ``"arm32"``, ``"rv64"``, ``"ppc64"``, ``"loongarch64"``, ``"wasm64"`` và ``"wasm32"``.
 
-To detect whether the current build is 64-bit, or the type of architecture, don't use the architecture name. Instead, use :ref:`OS.has_feature()<class_OS_method_has_feature>` to check for the ``"64"`` feature tag, or tags such as ``"x86"`` or ``"arm"``. See the :doc:`Feature Tags <../tutorials/export/feature_tags>` documentation for more details.
+Để phát hiện bản build hiện tại có phải là 64-bit hay xác định loại kiến trúc, không sử dụng tên kiến trúc. Thay vào đó, hãy sử dụng :ref:`OS.has_feature()<class_OS_method_has_feature>` để kiểm tra thẻ tính năng ``"64"``, hoặc các thẻ như ``"x86"`` hay ``"arm"``. Xem tài liệu :doc:`Feature Tags <../tutorials/export/feature_tags>` để biết thêm chi tiết.
 
-\ **Note:** This method does *not* return the name of the system's CPU architecture (like :ref:`OS.get_processor_name()<class_OS_method_get_processor_name>`). For example, when running an ``x86_32`` Godot binary on an ``x86_64`` system, the returned value will still be ``"x86_32"``.
+\ **Lưu ý:** Phương thức này *không* trả về tên kiến trúc CPU của hệ thống (chẳng hạn như :ref:`OS.get_processor_name()<class_OS_method_get_processor_name>`). Ví dụ, khi chạy một tệp nhị phân Godot ``x86_32`` trên hệ thống ``x86_64``, giá trị được trả về vẫn là ``"x86_32"``.
 
 .. rst-class:: classref-item-separator
 
@@ -320,7 +320,7 @@ To detect whether the current build is 64-bit, or the type of architecture, don'
 
 :ref:`Dictionary<class_Dictionary>` **get_author_info**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_author_info>`
 
-Returns the engine author information as a :ref:`Dictionary<class_Dictionary>`, where each entry is an :ref:`Array<class_Array>` of strings with the names of notable contributors to the Godot Engine: ``lead_developers``, ``founders``, ``project_managers``, and ``developers``.
+Trả về thông tin tác giả của engine dưới dạng :ref:`Dictionary<class_Dictionary>`, trong đó mỗi mục là một :ref:`Array<class_Array>` gồm các chuỗi chứa tên của những người đóng góp nổi bật cho Godot Engine: ``lead_developers``, ``founders``, ``project_managers`` và ``developers``.
 
 .. rst-class:: classref-item-separator
 
@@ -332,15 +332,15 @@ Returns the engine author information as a :ref:`Dictionary<class_Dictionary>`, 
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **get_copyright_info**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_copyright_info>`
 
-Returns an :ref:`Array<class_Array>` of dictionaries with copyright information for every component of Godot's source code.
+Trả về một :ref:`Array<class_Array>` gồm các dictionary chứa thông tin bản quyền cho mọi thành phần trong mã nguồn của Godot.
 
-Every :ref:`Dictionary<class_Dictionary>` contains a ``name`` identifier, and a ``parts`` array of dictionaries. It describes the component in detail with the following entries:
+Mỗi :ref:`Dictionary<class_Dictionary>` chứa một mã định danh ``name`` và một mảng ``parts`` gồm các dictionary. Mảng này mô tả chi tiết thành phần với các mục sau:
 
-- ``files`` - :ref:`Array<class_Array>` of file paths from the source code affected by this component;
+- ``files`` - :ref:`Array<class_Array>` các đường dẫn tệp trong mã nguồn bị thành phần này ảnh hưởng;
 
-- ``copyright`` - :ref:`Array<class_Array>` of owners of this component;
+- ``copyright`` - :ref:`Array<class_Array>` các chủ sở hữu của thành phần này;
 
-- ``license`` - The license applied to this component (such as "`Expat <https://en.wikipedia.org/wiki/MIT_License#Ambiguity_and_variants>`__" or "`CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0/>`__").
+- ``license`` - Giấy phép được áp dụng cho thành phần này (chẳng hạn như "`Expat <https://en.wikipedia.org/wiki/MIT_License#Ambiguity_and_variants>`__" hoặc "`CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0/>`__").
 
 .. rst-class:: classref-item-separator
 
@@ -352,7 +352,7 @@ Every :ref:`Dictionary<class_Dictionary>` contains a ``name`` identifier, and a 
 
 :ref:`Dictionary<class_Dictionary>` **get_donor_info**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_donor_info>`
 
-Returns a :ref:`Dictionary<class_Dictionary>` of categorized donor names. Each entry is an :ref:`Array<class_Array>` of strings:
+Trả về một :ref:`Dictionary<class_Dictionary>` gồm các tên nhà tài trợ được phân loại. Mỗi mục là một :ref:`Array<class_Array>` gồm các chuỗi:
 
 {``platinum_sponsors``, ``gold_sponsors``, ``silver_sponsors``, ``bronze_sponsors``, ``mini_sponsors``, ``gold_donors``, ``silver_donors``, ``bronze_donors``}
 
@@ -366,9 +366,9 @@ Returns a :ref:`Dictionary<class_Dictionary>` of categorized donor names. Each e
 
 :ref:`int<class_int>` **get_frames_drawn**\ (\ ) :ref:`🔗<class_Engine_method_get_frames_drawn>`
 
-Returns the total number of frames drawn since the engine started.
+Trả về tổng số khung hình đã được render kể từ khi engine khởi động.
 
-\ **Note:** On headless platforms, or if rendering is disabled with ``--disable-render-loop`` via command line, this method always returns ``0``. See also :ref:`get_process_frames()<class_Engine_method_get_process_frames>`.
+\ **Lưu ý:** Trên các nền tảng headless hoặc nếu tính năng render bị tắt bằng ``--disable-render-loop`` qua dòng lệnh, phương thức này luôn trả về ``0``. Xem thêm :ref:`get_process_frames()<class_Engine_method_get_process_frames>`.
 
 .. rst-class:: classref-item-separator
 
@@ -380,7 +380,7 @@ Returns the total number of frames drawn since the engine started.
 
 :ref:`float<class_float>` **get_frames_per_second**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_frames_per_second>`
 
-Returns the average frames rendered every second (FPS), also known as the framerate.
+Trả về số khung hình trung bình được render mỗi giây (FPS), còn được gọi là framerate.
 
 .. rst-class:: classref-item-separator
 
@@ -392,7 +392,7 @@ Returns the average frames rendered every second (FPS), also known as the framer
 
 :ref:`Dictionary<class_Dictionary>` **get_license_info**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_license_info>`
 
-Returns a :ref:`Dictionary<class_Dictionary>` of licenses used by Godot and included third party components. Each entry is a license name (such as "`Expat <https://en.wikipedia.org/wiki/MIT_License#Ambiguity_and_variants>`__") and its associated text.
+Trả về một :ref:`Dictionary<class_Dictionary>` chứa các giấy phép được Godot và các thành phần bên thứ ba đi kèm sử dụng. Mỗi mục gồm tên giấy phép (chẳng hạn như "`Expat <https://en.wikipedia.org/wiki/MIT_License#Ambiguity_and_variants>`__") và nội dung tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -404,7 +404,7 @@ Returns a :ref:`Dictionary<class_Dictionary>` of licenses used by Godot and incl
 
 :ref:`String<class_String>` **get_license_text**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_license_text>`
 
-Returns the full Godot license text.
+Trả về toàn bộ nội dung giấy phép của Godot.
 
 .. rst-class:: classref-item-separator
 
@@ -416,9 +416,9 @@ Returns the full Godot license text.
 
 :ref:`MainLoop<class_MainLoop>` **get_main_loop**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_main_loop>`
 
-Returns the instance of the :ref:`MainLoop<class_MainLoop>`. This is usually the main :ref:`SceneTree<class_SceneTree>` and is the same as :ref:`Node.get_tree()<class_Node_method_get_tree>`.
+Trả về instance của :ref:`MainLoop<class_MainLoop>`. Đây thường là :ref:`SceneTree<class_SceneTree>` chính và giống với :ref:`Node.get_tree()<class_Node_method_get_tree>`.
 
-\ **Note:** The type instantiated as the main loop can changed with :ref:`ProjectSettings.application/run/main_loop_type<class_ProjectSettings_property_application/run/main_loop_type>`.
+\ **Lưu ý:** Kiểu được khởi tạo làm vòng lặp chính có thể được thay đổi bằng :ref:`ProjectSettings.application/run/main_loop_type <class_ProjectSettings_property_application/run/main_loop_type>`.
 
 .. rst-class:: classref-item-separator
 
@@ -430,9 +430,9 @@ Returns the instance of the :ref:`MainLoop<class_MainLoop>`. This is usually the
 
 :ref:`int<class_int>` **get_physics_frames**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_physics_frames>`
 
-Returns the total number of frames passed since the engine started. This number is increased every **physics frame**. See also :ref:`get_process_frames()<class_Engine_method_get_process_frames>`.
+Trả về tổng số frame đã trôi qua kể từ khi engine khởi động. Con số này tăng lên sau mỗi **physics frame**. Xem thêm :ref:`get_process_frames()<class_Engine_method_get_process_frames>`.
 
-This method can be used to run expensive logic less often without relying on a :ref:`Timer<class_Timer>`:
+Có thể sử dụng phương thức này để chạy logic tốn nhiều tài nguyên ít thường xuyên hơn mà không phụ thuộc vào một :ref:`Timer<class_Timer>`:
 
 
 .. tabs::
@@ -441,7 +441,7 @@ This method can be used to run expensive logic less often without relying on a :
 
     func _physics_process(_delta):
         if Engine.get_physics_frames() % 2 == 0:
-            pass # Run expensive logic only once every 2 physics frames here.
+            pass # Chỉ chạy logic tốn nhiều tài nguyên một lần sau mỗi 2 physics frame tại đây.
 
  .. code-tab:: csharp
 
@@ -451,7 +451,7 @@ This method can be used to run expensive logic less often without relying on a :
 
         if (Engine.GetPhysicsFrames() % 2 == 0)
         {
-            // Run expensive logic only once every 2 physics frames here.
+            // Chỉ chạy logic tốn nhiều tài nguyên một lần sau mỗi 2 physics frame tại đây.
         }
     }
 
@@ -467,7 +467,7 @@ This method can be used to run expensive logic less often without relying on a :
 
 :ref:`float<class_float>` **get_physics_interpolation_fraction**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_physics_interpolation_fraction>`
 
-Returns the fraction through the current physics tick we are at the time of rendering the frame. This can be used to implement fixed timestep interpolation.
+Trả về phần thời gian đã trôi qua trong physics tick hiện tại tính đến thời điểm render frame. Có thể sử dụng giá trị này để triển khai nội suy fixed timestep.
 
 .. rst-class:: classref-item-separator
 
@@ -479,9 +479,9 @@ Returns the fraction through the current physics tick we are at the time of rend
 
 :ref:`int<class_int>` **get_process_frames**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_process_frames>`
 
-Returns the total number of frames passed since the engine started. This number is increased every **process frame**, regardless of whether the render loop is enabled. See also :ref:`get_frames_drawn()<class_Engine_method_get_frames_drawn>` and :ref:`get_physics_frames()<class_Engine_method_get_physics_frames>`.
+Trả về tổng số frame đã trôi qua kể từ khi engine khởi động. Số này tăng lên sau mỗi **process frame**, bất kể vòng lặp render có được bật hay không. Xem thêm :ref:`get_frames_drawn()<class_Engine_method_get_frames_drawn>` và :ref:`get_physics_frames()<class_Engine_method_get_physics_frames>`.
 
-This method can be used to run expensive logic less often without relying on a :ref:`Timer<class_Timer>`:
+Có thể sử dụng phương thức này để chạy logic tốn nhiều tài nguyên ít thường xuyên hơn mà không phụ thuộc vào một :ref:`Timer<class_Timer>`:
 
 
 .. tabs::
@@ -490,7 +490,7 @@ This method can be used to run expensive logic less often without relying on a :
 
     func _process(_delta):
         if Engine.get_process_frames() % 5 == 0:
-            pass # Run expensive logic only once every 5 process (render) frames here.
+            pass # Chỉ chạy logic tốn kém một lần sau mỗi 5 process (render) frame tại đây.
 
  .. code-tab:: csharp
 
@@ -500,7 +500,7 @@ This method can be used to run expensive logic less often without relying on a :
 
         if (Engine.GetProcessFrames() % 5 == 0)
         {
-            // Run expensive logic only once every 5 process (render) frames here.
+            // Chỉ chạy logic tốn kém một lần sau mỗi 5 process (render) frame tại đây.
         }
     }
 
@@ -516,7 +516,7 @@ This method can be used to run expensive logic less often without relying on a :
 
 :ref:`ScriptLanguage<class_ScriptLanguage>` **get_script_language**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Engine_method_get_script_language>`
 
-Returns an instance of a :ref:`ScriptLanguage<class_ScriptLanguage>` with the given ``index``.
+Trả về một instance của :ref:`ScriptLanguage<class_ScriptLanguage>` với ``index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -528,7 +528,7 @@ Returns an instance of a :ref:`ScriptLanguage<class_ScriptLanguage>` with the gi
 
 :ref:`int<class_int>` **get_script_language_count**\ (\ ) :ref:`🔗<class_Engine_method_get_script_language_count>`
 
-Returns the number of available script languages. Use with :ref:`get_script_language()<class_Engine_method_get_script_language>`.
+Trả về số lượng ngôn ngữ script khả dụng. Sử dụng với :ref:`get_script_language()<class_Engine_method_get_script_language>`.
 
 .. rst-class:: classref-item-separator
 
@@ -540,9 +540,9 @@ Returns the number of available script languages. Use with :ref:`get_script_lang
 
 :ref:`Object<class_Object>` **get_singleton**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Engine_method_get_singleton>`
 
-Returns the global singleton with the given ``name``, or ``null`` if it does not exist. Often used for plugins. See also :ref:`has_singleton()<class_Engine_method_has_singleton>` and :ref:`get_singleton_list()<class_Engine_method_get_singleton_list>`.
+Trả về global singleton với ``name`` đã cho, hoặc ``null`` nếu không tồn tại. Thường được dùng cho plugin. Xem thêm :ref:`has_singleton()<class_Engine_method_has_singleton>` và :ref:`get_singleton_list()<class_Engine_method_get_singleton_list>`.
 
-\ **Note:** Global singletons are not the same as autoloaded nodes, which are configurable in the project settings.
+\ **Lưu ý:** Các singleton toàn cục không giống với các node autoload, vốn có thể được cấu hình trong project settings.
 
 .. rst-class:: classref-item-separator
 
@@ -554,7 +554,7 @@ Returns the global singleton with the given ``name``, or ``null`` if it does not
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_singleton_list**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_singleton_list>`
 
-Returns a list of names of all available global singletons. See also :ref:`get_singleton()<class_Engine_method_get_singleton>`.
+Trả về danh sách tên của tất cả singleton toàn cục hiện có. Xem thêm :ref:`get_singleton()<class_Engine_method_get_singleton>`.
 
 .. rst-class:: classref-item-separator
 
@@ -566,29 +566,29 @@ Returns a list of names of all available global singletons. See also :ref:`get_s
 
 :ref:`Dictionary<class_Dictionary>` **get_version_info**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_version_info>`
 
-Returns the current engine version information as a :ref:`Dictionary<class_Dictionary>` containing the following entries:
+Trả về thông tin phiên bản engine hiện tại dưới dạng :ref:`Dictionary<class_Dictionary>` chứa các mục sau:
 
-- ``major`` - Major version number as an int;
+- ``major`` - Số phiên bản Major dưới dạng int;
 
-- ``minor`` - Minor version number as an int;
+- ``minor`` - Số phiên bản Minor dưới dạng int;
 
-- ``patch`` - Patch version number as an int;
+- ``patch`` - Số phiên bản Patch dưới dạng int;
 
-- ``hex`` - Full version encoded as a hexadecimal int with one byte (2 hex digits) per number (see example below);
+- ``hex`` - Phiên bản đầy đủ được mã hóa dưới dạng int thập lục phân, với một byte (2 chữ số thập lục phân) cho mỗi số (xem ví dụ bên dưới);
 
-- ``status`` - Status (such as "beta", "rc1", "rc2", "stable", etc.) as a String;
+- ``status`` - Trạng thái (chẳng hạn như "beta", "rc1", "rc2", "stable", v.v.) dưới dạng String;
 
-- ``build`` - Build name (e.g. "custom_build") as a String;
+- ``build`` - Tên bản build (ví dụ: "custom_build") dưới dạng String;
 
-- ``hash`` - Full Git commit hash as a String;
+- ``hash`` - Mã băm commit Git đầy đủ dưới dạng String;
 
-- ``timestamp`` - Holds the Git commit date UNIX timestamp in seconds as an int, or ``0`` if unavailable;
+- ``timestamp`` - Chứa dấu thời gian UNIX của ngày commit Git tính bằng giây dưới dạng int, hoặc ``0`` nếu không khả dụng;
 
-- ``string`` - ``major``, ``minor``, ``patch``, ``status``, and ``build`` in a single String.
+- ``string`` - ``major``, ``minor``, ``patch``, ``status`` và ``build`` trong một String duy nhất.
 
-The ``hex`` value is encoded as follows, from left to right: one byte for the major, one byte for the minor, one byte for the patch version. For example, "3.1.12" would be ``0x03010C``.
+Giá trị ``hex`` được mã hóa như sau, từ trái sang phải: một byte cho phiên bản major, một byte cho phiên bản minor và một byte cho phiên bản patch. Ví dụ, "3.1.12" sẽ là ``0x03010C``.
 
-\ **Note:** The ``hex`` value is still an :ref:`int<class_int>` internally, and printing it will give you its decimal representation, which is not particularly meaningful. Use hexadecimal literals for quick version comparisons from code:
+\ **Ghi chú:** Giá trị ``hex`` bên trong vẫn là một :ref:`int<class_int>`, và khi in ra, nó sẽ cho bạn biểu diễn thập phân của giá trị đó, vốn không đặc biệt có ý nghĩa. Hãy sử dụng các literal hệ thập lục phân để nhanh chóng so sánh phiên bản trong code:
 
 
 .. tabs::
@@ -596,19 +596,19 @@ The ``hex`` value is encoded as follows, from left to right: one byte for the ma
  .. code-tab:: gdscript
 
     if Engine.get_version_info().hex >= 0x040100:
-        pass # Do things specific to version 4.1 or later.
+        pass # Thực hiện những việc dành riêng cho phiên bản 4.1 trở lên.
     else:
-        pass # Do things specific to versions before 4.1.
+        pass # Thực hiện những việc dành riêng cho các phiên bản trước 4.1.
 
  .. code-tab:: csharp
 
     if ((int)Engine.GetVersionInfo()["hex"] >= 0x040100)
     {
-        // Do things specific to version 4.1 or later.
+        // Thực hiện những việc dành riêng cho phiên bản 4.1 trở lên.
     }
     else
     {
-        // Do things specific to versions before 4.1.
+        // Thực hiện những việc dành riêng cho các phiên bản trước 4.1.
     }
 
 
@@ -623,7 +623,7 @@ The ``hex`` value is encoded as follows, from left to right: one byte for the ma
 
 :ref:`String<class_String>` **get_write_movie_path**\ (\ ) |const| :ref:`🔗<class_Engine_method_get_write_movie_path>`
 
-Returns the path to the :ref:`MovieWriter<class_MovieWriter>`'s output file, or an empty string if the engine wasn't started in Movie Maker mode. The default path can be changed in :ref:`ProjectSettings.editor/movie_writer/movie_file<class_ProjectSettings_property_editor/movie_writer/movie_file>`.
+Trả về đường dẫn đến tệp đầu ra của :ref:`MovieWriter<class_MovieWriter>`, hoặc một chuỗi rỗng nếu engine không được khởi động ở chế độ Movie Maker. Có thể thay đổi đường dẫn mặc định trong :ref:`ProjectSettings.editor/movie_writer/movie_file <class_ProjectSettings_property_editor/movie_writer/movie_file>`.
 
 .. rst-class:: classref-item-separator
 
@@ -635,28 +635,28 @@ Returns the path to the :ref:`MovieWriter<class_MovieWriter>`'s output file, or 
 
 :ref:`bool<class_bool>` **has_singleton**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Engine_method_has_singleton>`
 
-Returns ``true`` if a singleton with the given ``name`` exists in the global scope. See also :ref:`get_singleton()<class_Engine_method_get_singleton>`.
+Trả về ``true`` nếu một singleton có ``name`` đã cho tồn tại trong phạm vi global. Xem thêm :ref:`get_singleton()<class_Engine_method_get_singleton>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print(Engine.has_singleton("OS"))          # Prints true
-    print(Engine.has_singleton("Engine"))      # Prints true
-    print(Engine.has_singleton("AudioServer")) # Prints true
-    print(Engine.has_singleton("Unknown"))     # Prints false
+    print(Engine.has_singleton("OS"))          # In ra true
+    print(Engine.has_singleton("Engine"))      # In ra true
+    print(Engine.has_singleton("AudioServer")) # In ra true
+    print(Engine.has_singleton("Unknown"))     # In ra false
 
  .. code-tab:: csharp
 
-    GD.Print(Engine.HasSingleton("OS"));          // Prints True
-    GD.Print(Engine.HasSingleton("Engine"));      // Prints True
-    GD.Print(Engine.HasSingleton("AudioServer")); // Prints True
-    GD.Print(Engine.HasSingleton("Unknown"));     // Prints False
+    GD.Print(Engine.HasSingleton("OS"));          // In ra True
+    GD.Print(Engine.HasSingleton("Engine"));      // In ra True
+    GD.Print(Engine.HasSingleton("AudioServer")); // In ra True
+    GD.Print(Engine.HasSingleton("Unknown"));     // In ra False
 
 
 
-\ **Note:** Global singletons are not the same as autoloaded nodes, which are configurable in the project settings.
+\ **Lưu ý:** Các singleton toàn cục không giống với các node autoload, vốn có thể được cấu hình trong project settings.
 
 .. rst-class:: classref-item-separator
 
@@ -668,7 +668,7 @@ Returns ``true`` if a singleton with the given ``name`` exists in the global sco
 
 :ref:`bool<class_bool>` **is_editor_hint**\ (\ ) |const| :ref:`🔗<class_Engine_method_is_editor_hint>`
 
-Returns ``true`` if the script is currently running inside the editor, otherwise returns ``false``. This is useful for ``@tool`` scripts to conditionally draw editor helpers, or prevent accidentally running "game" code that would affect the scene state while in the editor:
+Trả về ``true`` nếu script hiện đang chạy bên trong editor, nếu không thì trả về ``false``. Điều này hữu ích cho các script ``@tool`` để vẽ có điều kiện các trình trợ giúp của editor hoặc ngăn việc vô tình chạy mã "game" làm ảnh hưởng đến trạng thái scene khi đang ở trong editor:
 
 
 .. tabs::
@@ -689,9 +689,9 @@ Returns ``true`` if the script is currently running inside the editor, otherwise
 
 
 
-See :doc:`Running code in the editor <../tutorials/plugins/running_code_in_the_editor>` in the documentation for more information.
+Xem :doc:`Running code in the editor <../tutorials/plugins/running_code_in_the_editor>` trong tài liệu để biết thêm thông tin.
 
-\ **Note:** To detect whether the script is running on an editor *build* (such as when pressing :kbd:`F5`), use :ref:`OS.has_feature()<class_OS_method_has_feature>` with the ``"editor"`` argument instead. ``OS.has_feature("editor")`` evaluate to ``true`` both when the script is running in the editor and when running the project from the editor, but returns ``false`` when run from an exported project.
+\ **Lưu ý:** Để phát hiện liệu script có đang chạy trên một *bản dựng* của editor hay không (chẳng hạn khi nhấn :kbd:`F5`), hãy sử dụng :ref:`OS.has_feature()<class_OS_method_has_feature>` cùng với đối số ``"editor"`` thay thế. ``OS.has_feature("editor")`` cho kết quả ``true`` cả khi script đang chạy trong editor và khi chạy project từ editor, nhưng trả về ``false`` khi chạy từ project đã export.
 
 .. rst-class:: classref-item-separator
 
@@ -703,7 +703,7 @@ See :doc:`Running code in the editor <../tutorials/plugins/running_code_in_the_e
 
 :ref:`bool<class_bool>` **is_embedded_in_editor**\ (\ ) |const| :ref:`🔗<class_Engine_method_is_embedded_in_editor>`
 
-Returns ``true`` if the engine is running embedded in the editor. This is useful to prevent attempting to update window mode or window flags that are not supported when running the project embedded in the editor.
+Trả về ``true`` nếu engine đang chạy được nhúng trong editor. Điều này hữu ích để ngăn việc cố gắng cập nhật chế độ cửa sổ hoặc các cờ cửa sổ không được hỗ trợ khi chạy project được nhúng trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -715,7 +715,7 @@ Returns ``true`` if the engine is running embedded in the editor. This is useful
 
 :ref:`bool<class_bool>` **is_in_physics_frame**\ (\ ) |const| :ref:`🔗<class_Engine_method_is_in_physics_frame>`
 
-Returns ``true`` if the engine is inside the fixed physics process step of the main loop.
+Trả về ``true`` nếu engine đang ở trong bước xử lý vật lý cố định của vòng lặp chính.
 
 ::
 
@@ -740,15 +740,15 @@ Returns ``true`` if the engine is inside the fixed physics process step of the m
 
 :ref:`Error<enum_@GlobalScope_Error>` **register_script_language**\ (\ language\: :ref:`ScriptLanguage<class_ScriptLanguage>`\ ) :ref:`🔗<class_Engine_method_register_script_language>`
 
-Registers a :ref:`ScriptLanguage<class_ScriptLanguage>` instance to be available with ``ScriptServer``.
+Đăng ký một instance :ref:`ScriptLanguage<class_ScriptLanguage>` để có thể truy cập bằng ``ScriptServer``.
 
-Returns:
+Trả về:
 
-- :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success;
+- :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công;
 
-- :ref:`@GlobalScope.ERR_UNAVAILABLE<class_@GlobalScope_constant_ERR_UNAVAILABLE>` if ``ScriptServer`` has reached the limit and cannot register any new language;
+- :ref:`@GlobalScope.ERR_UNAVAILABLE <class_@GlobalScope_constant_ERR_UNAVAILABLE>` nếu ``ScriptServer`` đã đạt đến giới hạn và không thể đăng ký thêm ngôn ngữ mới nào;
 
-- :ref:`@GlobalScope.ERR_ALREADY_EXISTS<class_@GlobalScope_constant_ERR_ALREADY_EXISTS>` if ``ScriptServer`` already contains a language with similar extension/name/type.
+- :ref:`@GlobalScope.ERR_ALREADY_EXISTS <class_@GlobalScope_constant_ERR_ALREADY_EXISTS>` nếu ``ScriptServer`` đã chứa một ngôn ngữ có phần mở rộng/tên/kiểu tương tự.
 
 .. rst-class:: classref-item-separator
 
@@ -760,7 +760,7 @@ Returns:
 
 |void| **register_singleton**\ (\ name\: :ref:`StringName<class_StringName>`, instance\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_Engine_method_register_singleton>`
 
-Registers the given :ref:`Object<class_Object>` ``instance`` as a singleton, available globally under ``name``. Useful for plugins.
+Đăng ký :ref:`Object<class_Object>` ``instance`` đã cho dưới dạng singleton, có thể truy cập trên toàn cục thông qua ``name``. Hữu ích cho plugin.
 
 .. rst-class:: classref-item-separator
 
@@ -772,13 +772,13 @@ Registers the given :ref:`Object<class_Object>` ``instance`` as a singleton, ava
 
 :ref:`Error<enum_@GlobalScope_Error>` **unregister_script_language**\ (\ language\: :ref:`ScriptLanguage<class_ScriptLanguage>`\ ) :ref:`🔗<class_Engine_method_unregister_script_language>`
 
-Unregisters the :ref:`ScriptLanguage<class_ScriptLanguage>` instance from ``ScriptServer``.
+Hủy đăng ký phiên bản :ref:`ScriptLanguage<class_ScriptLanguage>` khỏi ``ScriptServer``.
 
-Returns:
+Trả về:
 
-- :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success;
+- :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công;
 
-- :ref:`@GlobalScope.ERR_DOES_NOT_EXIST<class_@GlobalScope_constant_ERR_DOES_NOT_EXIST>` if the language is not registered in ``ScriptServer``.
+- :ref:`@GlobalScope.ERR_DOES_NOT_EXIST <class_@GlobalScope_constant_ERR_DOES_NOT_EXIST>` nếu ngôn ngữ chưa được đăng ký trong ``ScriptServer``.
 
 .. rst-class:: classref-item-separator
 
@@ -790,14 +790,14 @@ Returns:
 
 |void| **unregister_singleton**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Engine_method_unregister_singleton>`
 
-Removes the singleton registered under ``name``. The singleton object is *not* freed. Only works with user-defined singletons registered with :ref:`register_singleton()<class_Engine_method_register_singleton>`.
+Xóa singleton được đăng ký dưới ``name``. Đối tượng singleton *không* được giải phóng. Chỉ hoạt động với các singleton do người dùng định nghĩa được đăng ký bằng :ref:`register_singleton()<class_Engine_method_register_singleton>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

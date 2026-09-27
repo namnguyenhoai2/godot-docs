@@ -10,62 +10,62 @@
 AnimationMixer
 ==============
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AnimationPlayer<class_AnimationPlayer>`, :ref:`AnimationTree<class_AnimationTree>`
+**Được kế thừa bởi:** :ref:`AnimationPlayer<class_AnimationPlayer>`, :ref:`AnimationTree<class_AnimationTree>`
 
-Base class for :ref:`AnimationPlayer<class_AnimationPlayer>` and :ref:`AnimationTree<class_AnimationTree>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Base class for :ref:`AnimationPlayer<class_AnimationPlayer>` and :ref:`AnimationTree<class_AnimationTree>` to manage animation lists. It also has general properties and methods for playback and blending.
-
-After instantiating the playback information data within the extended class, the blending is processed by the **AnimationMixer**.
+Lớp cơ sở cho :ref:`AnimationPlayer<class_AnimationPlayer>` và :ref:`AnimationTree<class_AnimationTree>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở cho :ref:`AnimationPlayer<class_AnimationPlayer>` và :ref:`AnimationTree<class_AnimationTree>` để quản lý các danh sách animation. Lớp này cũng có các thuộc tính và phương thức chung để phát và trộn animation.
+
+Sau khi khởi tạo dữ liệu thông tin phát trong lớp mở rộng, việc trộn được xử lý bởi **AnimationMixer**.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Migrating Animations from Godot 4.0 to 4.3 <https://godotengine.org/article/migrating-animations-from-godot-4-0-to-4-3/>`__
+- `Di chuyển Animation từ Godot 4.0 sang 4.3 <https://godotengine.org/article/migrating-animations-from-godot-4-0-to-4-3/>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`bool<class_bool>`                                                                 | :ref:`active<class_AnimationMixer_property_active>`                                 | ``true``           |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`int<class_int>`                                                                   | :ref:`audio_max_polyphony<class_AnimationMixer_property_audio_max_polyphony>`       | ``32``             |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>` | :ref:`callback_mode_discrete<class_AnimationMixer_property_callback_mode_discrete>` | ``1``              |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`AnimationCallbackModeMethod<enum_AnimationMixer_AnimationCallbackModeMethod>`     | :ref:`callback_mode_method<class_AnimationMixer_property_callback_mode_method>`     | ``0``              |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`AnimationCallbackModeProcess<enum_AnimationMixer_AnimationCallbackModeProcess>`   | :ref:`callback_mode_process<class_AnimationMixer_property_callback_mode_process>`   | ``1``              |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`bool<class_bool>`                                                                 | :ref:`deterministic<class_AnimationMixer_property_deterministic>`                   | ``false``          |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`bool<class_bool>`                                                                 | :ref:`reset_on_save<class_AnimationMixer_property_reset_on_save>`                   | ``true``           |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`bool<class_bool>`                                                                 | :ref:`root_motion_local<class_AnimationMixer_property_root_motion_local>`           | ``false``          |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`NodePath<class_NodePath>`                                                         | :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>`           | ``NodePath("")``   |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
-   | :ref:`NodePath<class_NodePath>`                                                         | :ref:`root_node<class_AnimationMixer_property_root_node>`                           | ``NodePath("..")`` |
-   +-----------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`bool<class_bool>`                                                                  | :ref:`active<class_AnimationMixer_property_active>`                                 | ``true``           |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`int<class_int>`                                                                    | :ref:`audio_max_polyphony<class_AnimationMixer_property_audio_max_polyphony>`       | ``32``             |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`AnimationCallbackModeDiscrete <enum_AnimationMixer_AnimationCallbackModeDiscrete>` | :ref:`callback_mode_discrete<class_AnimationMixer_property_callback_mode_discrete>` | ``1``              |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`AnimationCallbackModeMethod <enum_AnimationMixer_AnimationCallbackModeMethod>`     | :ref:`callback_mode_method<class_AnimationMixer_property_callback_mode_method>`     | ``0``              |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`AnimationCallbackModeProcess <enum_AnimationMixer_AnimationCallbackModeProcess>`   | :ref:`callback_mode_process<class_AnimationMixer_property_callback_mode_process>`   | ``1``              |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`bool<class_bool>`                                                                  | :ref:`deterministic<class_AnimationMixer_property_deterministic>`                   | ``false``          |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`bool<class_bool>`                                                                  | :ref:`reset_on_save<class_AnimationMixer_property_reset_on_save>`                   | ``true``           |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`bool<class_bool>`                                                                  | :ref:`root_motion_local<class_AnimationMixer_property_root_motion_local>`           | ``false``          |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`NodePath<class_NodePath>`                                                          | :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>`           | ``NodePath("")``   |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
+   | :ref:`NodePath<class_NodePath>`                                                          | :ref:`root_node<class_AnimationMixer_property_root_node>`                           | ``NodePath("..")`` |
+   +------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+--------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -73,11 +73,11 @@ Methods
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Variant<class_Variant>`                                    | :ref:`_post_process_key_value<class_AnimationMixer_private_method__post_process_key_value>`\ (\ animation\: :ref:`Animation<class_Animation>`, track\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`, object_id\: :ref:`int<class_int>`, object_sub_idx\: :ref:`int<class_int>`\ ) |virtual| |const| |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`add_animation_library<class_AnimationMixer_method_add_animation_library>`\ (\ name\: :ref:`StringName<class_StringName>`, library\: :ref:`AnimationLibrary<class_AnimationLibrary>`\ )                                                                                                                        |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`add_animation_library<class_AnimationMixer_method_add_animation_library>`\ (\ name\: :ref:`StringName<class_StringName>`, library\: :ref:`AnimationLibrary<class_AnimationLibrary>`\ )                                                                                                                        |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`advance<class_AnimationMixer_method_advance>`\ (\ delta\: :ref:`float<class_float>`\ )                                                                                                                                                                                                                        |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`capture<class_AnimationMixer_method_capture>`\ (\ name\: :ref:`StringName<class_StringName>`, duration\: :ref:`float<class_float>`, trans_type\: :ref:`TransitionType<enum_Tween_TransitionType>` = 0, ease_type\: :ref:`EaseType<enum_Tween_EaseType>` = 0\ )                                                |
+   | |void|                                                           | :ref:`capture<class_AnimationMixer_method_capture>`\ (\ name\: :ref:`StringName<class_StringName>`, duration\: :ref:`float<class_float>`, trans_type\: :ref:`TransitionType <enum_Tween_TransitionType>` = 0, ease_type\: :ref:`EaseType <enum_Tween_EaseType>` = 0\ )                                              |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`clear_caches<class_AnimationMixer_method_clear_caches>`\ (\ )                                                                                                                                                                                                                                                 |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -120,8 +120,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_AnimationMixer_signal_animation_finished:
 
@@ -129,9 +129,9 @@ Signals
 
 **animation_finished**\ (\ anim_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationMixer_signal_animation_finished>`
 
-Notifies when an animation finished playing.
+Thông báo khi animation phát xong.
 
-\ **Note:** This signal is not emitted if an animation is looping.
+\ **Lưu ý:** Tín hiệu này không được phát ra nếu một animation đang lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -143,7 +143,7 @@ Notifies when an animation finished playing.
 
 **animation_libraries_updated**\ (\ ) :ref:`🔗<class_AnimationMixer_signal_animation_libraries_updated>`
 
-Notifies when the animation libraries have changed.
+Thông báo khi các thư viện animation đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -155,7 +155,7 @@ Notifies when the animation libraries have changed.
 
 **animation_list_changed**\ (\ ) :ref:`🔗<class_AnimationMixer_signal_animation_list_changed>`
 
-Notifies when an animation list is changed.
+Thông báo khi danh sách animation thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -167,9 +167,9 @@ Notifies when an animation list is changed.
 
 **animation_started**\ (\ anim_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationMixer_signal_animation_started>`
 
-Notifies when an animation starts playing.
+Thông báo khi một animation bắt đầu phát.
 
-\ **Note:** This signal is not emitted if an animation is looping.
+\ **Lưu ý:** Tín hiệu này không được phát ra nếu một animation đang lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ Notifies when an animation starts playing.
 
 **caches_cleared**\ (\ ) :ref:`🔗<class_AnimationMixer_signal_caches_cleared>`
 
-Notifies when the caches have been cleared, either automatically, or manually via :ref:`clear_caches()<class_AnimationMixer_method_clear_caches>`.
+Thông báo khi các bộ nhớ đệm đã được xóa, είτε tự động hoặc thủ công thông qua :ref:`clear_caches()<class_AnimationMixer_method_clear_caches>`.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ Notifies when the caches have been cleared, either automatically, or manually vi
 
 **mixer_applied**\ (\ ) :ref:`🔗<class_AnimationMixer_signal_mixer_applied>`
 
-Notifies when the blending result related have been applied to the target objects.
+Thông báo khi các kết quả blending liên quan đã được áp dụng cho các đối tượng đích.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Notifies when the blending result related have been applied to the target object
 
 **mixer_updated**\ (\ ) :ref:`🔗<class_AnimationMixer_signal_mixer_updated>`
 
-Notifies when the property related process have been updated.
+Thông báo khi quy trình liên quan đến thuộc tính được cập nhật.
 
 .. rst-class:: classref-section-separator
 
@@ -213,14 +213,14 @@ Notifies when the property related process have been updated.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AnimationMixer_AnimationCallbackModeProcess:
 
 .. rst-class:: classref-enumeration
 
-enum **AnimationCallbackModeProcess**: :ref:`🔗<enum_AnimationMixer_AnimationCallbackModeProcess>`
+enum **AnimationCallbackModeProcess**: :ref:`🔗 <enum_AnimationMixer_AnimationCallbackModeProcess>`
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS:
 
@@ -228,7 +228,7 @@ enum **AnimationCallbackModeProcess**: :ref:`🔗<enum_AnimationMixer_AnimationC
 
 :ref:`AnimationCallbackModeProcess<enum_AnimationMixer_AnimationCallbackModeProcess>` **ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS** = ``0``
 
-Process animation during physics frames (see :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`). This is especially useful when animating physics bodies.
+Xử lý animation trong các khung hình vật lý (xem :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`). Điều này đặc biệt hữu ích khi tạo animation cho các physics body.
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_IDLE:
 
@@ -236,7 +236,7 @@ Process animation during physics frames (see :ref:`Node.NOTIFICATION_INTERNAL_PH
 
 :ref:`AnimationCallbackModeProcess<enum_AnimationMixer_AnimationCallbackModeProcess>` **ANIMATION_CALLBACK_MODE_PROCESS_IDLE** = ``1``
 
-Process animation during process frames (see :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
+Xử lý animation trong các khung hình process (xem :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_MANUAL:
 
@@ -244,7 +244,7 @@ Process animation during process frames (see :ref:`Node.NOTIFICATION_INTERNAL_PR
 
 :ref:`AnimationCallbackModeProcess<enum_AnimationMixer_AnimationCallbackModeProcess>` **ANIMATION_CALLBACK_MODE_PROCESS_MANUAL** = ``2``
 
-Do not process animation. Use :ref:`advance()<class_AnimationMixer_method_advance>` to process the animation manually.
+Không xử lý animation. Sử dụng :ref:`advance()<class_AnimationMixer_method_advance>` để xử lý animation theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ Do not process animation. Use :ref:`advance()<class_AnimationMixer_method_advanc
 
 .. rst-class:: classref-enumeration
 
-enum **AnimationCallbackModeMethod**: :ref:`🔗<enum_AnimationMixer_AnimationCallbackModeMethod>`
+enum **AnimationCallbackModeMethod**: :ref:`🔗 <enum_AnimationMixer_AnimationCallbackModeMethod>`
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_METHOD_DEFERRED:
 
@@ -262,7 +262,7 @@ enum **AnimationCallbackModeMethod**: :ref:`🔗<enum_AnimationMixer_AnimationCa
 
 :ref:`AnimationCallbackModeMethod<enum_AnimationMixer_AnimationCallbackModeMethod>` **ANIMATION_CALLBACK_MODE_METHOD_DEFERRED** = ``0``
 
-Batch method calls during the animation process, then do the calls after events are processed. This avoids bugs involving deleting nodes or modifying the AnimationPlayer while playing.
+Gộp các lệnh gọi phương thức trong quá trình hoạt ảnh, sau đó thực hiện các lệnh gọi sau khi xử lý xong các sự kiện. Điều này tránh các lỗi liên quan đến việc xóa node hoặc sửa đổi AnimationPlayer trong khi đang phát.
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE:
 
@@ -270,7 +270,7 @@ Batch method calls during the animation process, then do the calls after events 
 
 :ref:`AnimationCallbackModeMethod<enum_AnimationMixer_AnimationCallbackModeMethod>` **ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE** = ``1``
 
-Make method calls immediately when reached in the animation.
+Thực hiện các lệnh gọi phương thức ngay khi gặp chúng trong hoạt ảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -280,7 +280,7 @@ Make method calls immediately when reached in the animation.
 
 .. rst-class:: classref-enumeration
 
-enum **AnimationCallbackModeDiscrete**: :ref:`🔗<enum_AnimationMixer_AnimationCallbackModeDiscrete>`
+enum **AnimationCallbackModeDiscrete**: :ref:`🔗 <enum_AnimationMixer_AnimationCallbackModeDiscrete>`
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_DOMINANT:
 
@@ -288,7 +288,7 @@ enum **AnimationCallbackModeDiscrete**: :ref:`🔗<enum_AnimationMixer_Animation
 
 :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>` **ANIMATION_CALLBACK_MODE_DISCRETE_DOMINANT** = ``0``
 
-An :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` track value takes precedence when blending :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` or :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>` track values and :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` track values.
+Một giá trị track :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` được ưu tiên khi blend các giá trị track :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` hoặc :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>` với các giá trị track :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>`.
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE:
 
@@ -296,7 +296,7 @@ An :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` tr
 
 :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>` **ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE** = ``1``
 
-An :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` or :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>` track value takes precedence when blending the :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` or :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>` track values and the :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` track values. This is the default behavior for :ref:`AnimationPlayer<class_AnimationPlayer>`.
+Giá trị track :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` hoặc :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>` được ưu tiên khi blend các giá trị track :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` hoặc :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>` với các giá trị track :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>`. Đây là hành vi mặc định của :ref:`AnimationPlayer<class_AnimationPlayer>`.
 
 .. _class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS:
 
@@ -304,33 +304,33 @@ An :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>
 
 :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>` **ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS** = ``2``
 
-Always treat the :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` track value as :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` with :ref:`Animation.INTERPOLATION_NEAREST<class_Animation_constant_INTERPOLATION_NEAREST>`. This is the default behavior for :ref:`AnimationTree<class_AnimationTree>`.
+Luôn coi giá trị track :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` là :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` với :ref:`Animation.INTERPOLATION_NEAREST<class_Animation_constant_INTERPOLATION_NEAREST>`. Đây là hành vi mặc định của :ref:`AnimationTree<class_AnimationTree>`.
 
-If a value track has un-interpolatable type key values, it is internally converted to use :ref:`ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE>` with :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>`.
+Nếu một value track có các giá trị khóa thuộc kiểu không thể nội suy, nó sẽ được chuyển đổi nội bộ để sử dụng :ref:`ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE>` với :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>`.
 
-Un-interpolatable type list:
+Danh sách các kiểu không thể nội suy:
 
-- :ref:`@GlobalScope.TYPE_NIL<class_@GlobalScope_constant_TYPE_NIL>`\ 
+- :ref:`@GlobalScope.TYPE_NIL <class_@GlobalScope_constant_TYPE_NIL>`\
 
-- :ref:`@GlobalScope.TYPE_NODE_PATH<class_@GlobalScope_constant_TYPE_NODE_PATH>`\ 
+- :ref:`@GlobalScope.TYPE_NODE_PATH <class_@GlobalScope_constant_TYPE_NODE_PATH>`\
 
-- :ref:`@GlobalScope.TYPE_RID<class_@GlobalScope_constant_TYPE_RID>`\ 
+- :ref:`@GlobalScope.TYPE_RID <class_@GlobalScope_constant_TYPE_RID>`\
 
-- :ref:`@GlobalScope.TYPE_OBJECT<class_@GlobalScope_constant_TYPE_OBJECT>`\ 
+- :ref:`@GlobalScope.TYPE_OBJECT <class_@GlobalScope_constant_TYPE_OBJECT>`\
 
-- :ref:`@GlobalScope.TYPE_CALLABLE<class_@GlobalScope_constant_TYPE_CALLABLE>`\ 
+- :ref:`@GlobalScope.TYPE_CALLABLE <class_@GlobalScope_constant_TYPE_CALLABLE>`\
 
-- :ref:`@GlobalScope.TYPE_SIGNAL<class_@GlobalScope_constant_TYPE_SIGNAL>`\ 
+- :ref:`@GlobalScope.TYPE_SIGNAL <class_@GlobalScope_constant_TYPE_SIGNAL>`\
 
-- :ref:`@GlobalScope.TYPE_DICTIONARY<class_@GlobalScope_constant_TYPE_DICTIONARY>`\ 
+- :ref:`@GlobalScope.TYPE_DICTIONARY <class_@GlobalScope_constant_TYPE_DICTIONARY>`\
 
-- :ref:`@GlobalScope.TYPE_PACKED_BYTE_ARRAY<class_@GlobalScope_constant_TYPE_PACKED_BYTE_ARRAY>`\ 
+- :ref:`@GlobalScope.TYPE_PACKED_BYTE_ARRAY <class_@GlobalScope_constant_TYPE_PACKED_BYTE_ARRAY>`\
 
-\ :ref:`@GlobalScope.TYPE_BOOL<class_@GlobalScope_constant_TYPE_BOOL>` and :ref:`@GlobalScope.TYPE_INT<class_@GlobalScope_constant_TYPE_INT>` are treated as :ref:`@GlobalScope.TYPE_FLOAT<class_@GlobalScope_constant_TYPE_FLOAT>` during blending and rounded when the result is retrieved.
+\ :ref:`@GlobalScope.TYPE_BOOL <class_@GlobalScope_constant_TYPE_BOOL>` và :ref:`@GlobalScope.TYPE_INT <class_@GlobalScope_constant_TYPE_INT>` được xem là :ref:`@GlobalScope.TYPE_FLOAT <class_@GlobalScope_constant_TYPE_FLOAT>` trong quá trình blending và được làm tròn khi lấy kết quả.
 
-It is same for arrays and vectors with them such as :ref:`@GlobalScope.TYPE_PACKED_INT32_ARRAY<class_@GlobalScope_constant_TYPE_PACKED_INT32_ARRAY>` or :ref:`@GlobalScope.TYPE_VECTOR2I<class_@GlobalScope_constant_TYPE_VECTOR2I>`, they are treated as :ref:`@GlobalScope.TYPE_PACKED_FLOAT32_ARRAY<class_@GlobalScope_constant_TYPE_PACKED_FLOAT32_ARRAY>` or :ref:`@GlobalScope.TYPE_VECTOR2<class_@GlobalScope_constant_TYPE_VECTOR2>`. Also note that for arrays, the size is also interpolated.
+Điều tương tự cũng áp dụng cho các mảng và vector chứa chúng, chẳng hạn như :ref:`@GlobalScope.TYPE_PACKED_INT32_ARRAY <class_@GlobalScope_constant_TYPE_PACKED_INT32_ARRAY>` hoặc :ref:`@GlobalScope.TYPE_VECTOR2I <class_@GlobalScope_constant_TYPE_VECTOR2I>`, chúng được xem là :ref:`@GlobalScope.TYPE_PACKED_FLOAT32_ARRAY <class_@GlobalScope_constant_TYPE_PACKED_FLOAT32_ARRAY>` hoặc :ref:`@GlobalScope.TYPE_VECTOR2 <class_@GlobalScope_constant_TYPE_VECTOR2>`. Cũng lưu ý rằng đối với các mảng, kích thước cũng được nội suy.
 
-\ :ref:`@GlobalScope.TYPE_STRING<class_@GlobalScope_constant_TYPE_STRING>` and :ref:`@GlobalScope.TYPE_STRING_NAME<class_@GlobalScope_constant_TYPE_STRING_NAME>` are interpolated between character codes and lengths, but note that there is a difference in algorithm between interpolation between keys and interpolation by blending.
+\ :ref:`@GlobalScope.TYPE_STRING <class_@GlobalScope_constant_TYPE_STRING>` và :ref:`@GlobalScope.TYPE_STRING_NAME <class_@GlobalScope_constant_TYPE_STRING_NAME>` được nội suy giữa các mã ký tự và độ dài, nhưng lưu ý rằng thuật toán sẽ khác nhau giữa nội suy giữa các key và nội suy bằng blending.
 
 .. rst-class:: classref-section-separator
 
@@ -338,8 +338,8 @@ It is same for arrays and vectors with them such as :ref:`@GlobalScope.TYPE_PACK
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationMixer_property_active:
 
@@ -352,7 +352,7 @@ Property Descriptions
 - |void| **set_active**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_active**\ (\ )
 
-If ``true``, the **AnimationMixer** will be processing.
+Nếu ``true``, **AnimationMixer** sẽ được xử lý.
 
 .. rst-class:: classref-item-separator
 
@@ -369,9 +369,9 @@ If ``true``, the **AnimationMixer** will be processing.
 - |void| **set_audio_max_polyphony**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_audio_max_polyphony**\ (\ )
 
-The number of possible simultaneous sounds for each of the assigned AudioStreamPlayers.
+Số lượng âm thanh có thể phát đồng thời cho mỗi AudioStreamPlayer được gán.
 
-For example, if this value is ``32`` and the animation has two audio tracks, the two :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`\ s assigned can play simultaneously up to ``32`` voices each.
+Ví dụ: nếu giá trị này là ``32`` và animation có hai audio track, hai :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`\  được gán có thể phát đồng thời tối đa ``32`` voice mỗi cái.
 
 .. rst-class:: classref-item-separator
 
@@ -388,11 +388,11 @@ For example, if this value is ``32`` and the animation has two audio tracks, the
 - |void| **set_callback_mode_discrete**\ (\ value\: :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>`\ )
 - :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>` **get_callback_mode_discrete**\ (\ )
 
-Ordinarily, tracks can be set to :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` to update infrequently, usually when using nearest interpolation.
+Thông thường, các track có thể được đặt thành :ref:`Animation.UPDATE_DISCRETE<class_Animation_constant_UPDATE_DISCRETE>` để cập nhật không thường xuyên, thường là khi sử dụng phép nội suy nearest.
 
-However, when blending with :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>` several results are considered. The :ref:`callback_mode_discrete<class_AnimationMixer_property_callback_mode_discrete>` specify it explicitly. See also :ref:`AnimationCallbackModeDiscrete<enum_AnimationMixer_AnimationCallbackModeDiscrete>`.
+Tuy nhiên, khi blend với :ref:`Animation.UPDATE_CONTINUOUS<class_Animation_constant_UPDATE_CONTINUOUS>`, một số kết quả sẽ được xem xét. :ref:`callback_mode_discrete<class_AnimationMixer_property_callback_mode_discrete>` chỉ định rõ điều này. Xem thêm :ref:`AnimationCallbackModeDiscrete <enum_AnimationMixer_AnimationCallbackModeDiscrete>`.
 
-To make the blended results look good, it is recommended to set this to :ref:`ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS>` to update every frame during blending. Other values exist for compatibility and they are fine if there is no blending, but not so, may produce artifacts.
+Để các kết quả blend trông đẹp mắt, bạn nên đặt giá trị này thành :ref:`ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS>` để cập nhật ở mỗi frame trong quá trình blending. Các giá trị khác tồn tại để đảm bảo khả năng tương thích và vẫn phù hợp nếu không có blending, nhưng nếu không, chúng có thể tạo ra các hiện tượng bất thường.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ To make the blended results look good, it is recommended to set this to :ref:`AN
 - |void| **set_callback_mode_method**\ (\ value\: :ref:`AnimationCallbackModeMethod<enum_AnimationMixer_AnimationCallbackModeMethod>`\ )
 - :ref:`AnimationCallbackModeMethod<enum_AnimationMixer_AnimationCallbackModeMethod>` **get_callback_mode_method**\ (\ )
 
-The call mode used for "Call Method" tracks.
+Chế độ gọi được sử dụng cho các track "Call Method".
 
 .. rst-class:: classref-item-separator
 
@@ -426,7 +426,7 @@ The call mode used for "Call Method" tracks.
 - |void| **set_callback_mode_process**\ (\ value\: :ref:`AnimationCallbackModeProcess<enum_AnimationMixer_AnimationCallbackModeProcess>`\ )
 - :ref:`AnimationCallbackModeProcess<enum_AnimationMixer_AnimationCallbackModeProcess>` **get_callback_mode_process**\ (\ )
 
-The process notification in which to update animations.
+Process notification mà trong đó các animation được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -443,17 +443,17 @@ The process notification in which to update animations.
 - |void| **set_deterministic**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_deterministic**\ (\ )
 
-If ``true``, the blending uses the deterministic algorithm. The total weight is not normalized and the result is accumulated with an initial value (``0`` or a ``"RESET"`` animation if present).
+Nếu ``true``, việc trộn sử dụng thuật toán tất định. Tổng trọng số không được chuẩn hóa và kết quả được cộng dồn với giá trị ban đầu (``0`` hoặc một animation ``"RESET"`` nếu có).
 
-This means that if the total amount of blending is ``0.0``, the result is equal to the ``"RESET"`` animation.
+Điều này có nghĩa là nếu tổng mức độ trộn là ``0.0``, kết quả sẽ bằng animation ``"RESET"``.
 
-If the number of tracks between the blended animations is different, the animation with the missing track is treated as if it had the initial value.
+Nếu số lượng track giữa các animation được trộn khác nhau, animation bị thiếu track sẽ được xem như có giá trị ban đầu.
 
-If ``false``, The blend does not use the deterministic algorithm. The total weight is normalized and always ``1.0``. If the number of tracks between the blended animations is different, nothing is done about the animation that is missing a track.
+Nếu ``false``, việc trộn không sử dụng thuật toán tất định. Tổng trọng số được chuẩn hóa và luôn ``1.0``. Nếu số lượng track giữa các animation được trộn khác nhau, không thực hiện xử lý nào đối với animation bị thiếu track.
 
-\ **Note:** In :ref:`AnimationTree<class_AnimationTree>`, the blending with :ref:`AnimationNodeAdd2<class_AnimationNodeAdd2>`, :ref:`AnimationNodeAdd3<class_AnimationNodeAdd3>`, :ref:`AnimationNodeSub2<class_AnimationNodeSub2>` or the weight greater than ``1.0`` may produce unexpected results.
+\ **Lưu ý:** Trong :ref:`AnimationTree<class_AnimationTree>`, việc trộn với :ref:`AnimationNodeAdd2<class_AnimationNodeAdd2>`, :ref:`AnimationNodeAdd3<class_AnimationNodeAdd3>`, :ref:`AnimationNodeSub2<class_AnimationNodeSub2>` hoặc trọng số lớn hơn ``1.0`` có thể tạo ra kết quả không mong muốn.
 
-For example, if :ref:`AnimationNodeAdd2<class_AnimationNodeAdd2>` blends two nodes with the amount ``1.0``, then total weight is ``2.0`` but it will be normalized to make the total amount ``1.0`` and the result will be equal to :ref:`AnimationNodeBlend2<class_AnimationNodeBlend2>` with the amount ``0.5``.
+Ví dụ: nếu :ref:`AnimationNodeAdd2<class_AnimationNodeAdd2>` trộn hai node với mức độ ``1.0``, thì tổng trọng số là ``2.0``, nhưng nó sẽ được chuẩn hóa để tổng mức độ là ``1.0``, và kết quả sẽ bằng :ref:`AnimationNodeBlend2<class_AnimationNodeBlend2>` với mức độ ``0.5``.
 
 .. rst-class:: classref-item-separator
 
@@ -470,9 +470,9 @@ For example, if :ref:`AnimationNodeAdd2<class_AnimationNodeAdd2>` blends two nod
 - |void| **set_reset_on_save_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_reset_on_save_enabled**\ (\ )
 
-This is used by the editor. If set to ``true``, the scene will be saved with the effects of the reset animation (the animation with the key ``"RESET"``) applied as if it had been seeked to time 0, with the editor keeping the values that the scene had before saving.
+Thuộc tính này được editor sử dụng. Nếu được đặt thành ``true``, scene sẽ được lưu với các hiệu ứng của animation reset (animation có key ``"RESET"``) đã được áp dụng như thể animation đó được seek đến thời điểm 0, trong khi editor giữ lại các giá trị mà scene có trước khi lưu.
 
-This makes it more convenient to preview and edit animations in the editor, as changes to the scene will not be saved as long as they are set in the reset animation.
+Điều này giúp việc xem trước và chỉnh sửa animation trong trình chỉnh sửa thuận tiện hơn, vì các thay đổi đối với scene sẽ không được lưu miễn là chúng được đặt trong animation reset.
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +489,7 @@ This makes it more convenient to preview and edit animations in the editor, as c
 - |void| **set_root_motion_local**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_root_motion_local**\ (\ )
 
-If ``true``, :ref:`get_root_motion_position()<class_AnimationMixer_method_get_root_motion_position>` value is extracted as a local translation value before blending. In other words, it is treated like the translation is done after the rotation.
+Nếu ``true``, giá trị :ref:`get_root_motion_position()<class_AnimationMixer_method_get_root_motion_position>` được trích xuất dưới dạng giá trị translation cục bộ trước khi blending. Nói cách khác, nó được xử lý như thể translation được thực hiện sau rotation.
 
 .. rst-class:: classref-item-separator
 
@@ -506,9 +506,9 @@ If ``true``, :ref:`get_root_motion_position()<class_AnimationMixer_method_get_ro
 - |void| **set_root_motion_track**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_root_motion_track**\ (\ )
 
-The path to the Animation track used for root motion. Paths must be valid scene-tree paths to a node, and must be specified starting from the parent node of the node that will reproduce the animation. The :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` uses the same format as :ref:`Animation.track_set_path()<class_Animation_method_track_set_path>`, but note that a bone must be specified.
+Đường dẫn đến Animation track được dùng cho root motion. Các đường dẫn phải là đường dẫn scene-tree hợp lệ đến một node và phải được chỉ định bắt đầu từ node cha của node sẽ tái hiện animation. :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` sử dụng cùng định dạng với :ref:`Animation.track_set_path()<class_Animation_method_track_set_path>`, nhưng lưu ý rằng phải chỉ định một bone.
 
-If the track has type :ref:`Animation.TYPE_POSITION_3D<class_Animation_constant_TYPE_POSITION_3D>`, :ref:`Animation.TYPE_ROTATION_3D<class_Animation_constant_TYPE_ROTATION_3D>`, or :ref:`Animation.TYPE_SCALE_3D<class_Animation_constant_TYPE_SCALE_3D>` the transformation will be canceled visually, and the animation will appear to stay in place. See also :ref:`get_root_motion_position()<class_AnimationMixer_method_get_root_motion_position>`, :ref:`get_root_motion_rotation()<class_AnimationMixer_method_get_root_motion_rotation>`, :ref:`get_root_motion_scale()<class_AnimationMixer_method_get_root_motion_scale>`, and :ref:`RootMotionView<class_RootMotionView>`.
+Nếu track có kiểu :ref:`Animation.TYPE_POSITION_3D<class_Animation_constant_TYPE_POSITION_3D>`, :ref:`Animation.TYPE_ROTATION_3D<class_Animation_constant_TYPE_ROTATION_3D>` hoặc :ref:`Animation.TYPE_SCALE_3D<class_Animation_constant_TYPE_SCALE_3D>`, transformation sẽ bị hủy về mặt hiển thị và animation sẽ có vẻ đứng yên tại chỗ. Xem thêm :ref:`get_root_motion_position()<class_AnimationMixer_method_get_root_motion_position>`, :ref:`get_root_motion_rotation()<class_AnimationMixer_method_get_root_motion_rotation>`, :ref:`get_root_motion_scale()<class_AnimationMixer_method_get_root_motion_scale>` và :ref:`RootMotionView<class_RootMotionView>`.
 
 .. rst-class:: classref-item-separator
 
@@ -525,7 +525,7 @@ If the track has type :ref:`Animation.TYPE_POSITION_3D<class_Animation_constant_
 - |void| **set_root_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_root_node**\ (\ )
 
-The node which node path references will travel from.
+Node mà các tham chiếu đến node path sẽ di chuyển từ đó.
 
 .. rst-class:: classref-section-separator
 
@@ -533,8 +533,8 @@ The node which node path references will travel from.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationMixer_private_method__post_process_key_value:
 
@@ -542,7 +542,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **_post_process_key_value**\ (\ animation\: :ref:`Animation<class_Animation>`, track\: :ref:`int<class_int>`, value\: :ref:`Variant<class_Variant>`, object_id\: :ref:`int<class_int>`, object_sub_idx\: :ref:`int<class_int>`\ ) |virtual| |const| :ref:`🔗<class_AnimationMixer_private_method__post_process_key_value>`
 
-A virtual function for processing after getting a key during playback.
+Một hàm ảo dùng để xử lý sau khi nhận được một key trong quá trình phát lại.
 
 .. rst-class:: classref-item-separator
 
@@ -554,9 +554,9 @@ A virtual function for processing after getting a key during playback.
 
 :ref:`Error<enum_@GlobalScope_Error>` **add_animation_library**\ (\ name\: :ref:`StringName<class_StringName>`, library\: :ref:`AnimationLibrary<class_AnimationLibrary>`\ ) :ref:`🔗<class_AnimationMixer_method_add_animation_library>`
 
-Adds ``library`` to the animation player, under the key ``name``.
+Thêm ``library`` vào trình phát animation, dưới khóa ``name``.
 
-AnimationMixer has a global library by default with an empty string as key. For adding an animation to the global library:
+AnimationMixer mặc định có một thư viện toàn cục với chuỗi rỗng làm khóa. Để thêm một animation vào thư viện toàn cục:
 
 
 .. tabs::
@@ -578,7 +578,7 @@ AnimationMixer has a global library by default with an empty string as key. For 
 
 |void| **advance**\ (\ delta\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AnimationMixer_method_advance>`
 
-Manually advance the animations by the specified time (in seconds).
+Tua tiến các animation theo khoảng thời gian được chỉ định (tính bằng giây).
 
 .. rst-class:: classref-item-separator
 
@@ -590,11 +590,11 @@ Manually advance the animations by the specified time (in seconds).
 
 |void| **capture**\ (\ name\: :ref:`StringName<class_StringName>`, duration\: :ref:`float<class_float>`, trans_type\: :ref:`TransitionType<enum_Tween_TransitionType>` = 0, ease_type\: :ref:`EaseType<enum_Tween_EaseType>` = 0\ ) :ref:`🔗<class_AnimationMixer_method_capture>`
 
-If the animation track specified by ``name`` has an option :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>`, stores current values of the objects indicated by the track path as a cache. If there is already a captured cache, the old cache is discarded.
+Nếu animation track được chỉ định bởi ``name`` có tùy chọn :ref:`Animation.UPDATE_CAPTURE<class_Animation_constant_UPDATE_CAPTURE>`, lưu các giá trị hiện tại của những đối tượng được chỉ định bởi đường dẫn của track vào bộ nhớ đệm. Nếu đã có bộ nhớ đệm được ghi lại, bộ nhớ đệm cũ sẽ bị loại bỏ.
 
-After this it will interpolate with current animation blending result during the playback process for the time specified by ``duration``, working like a crossfade.
+Sau đó, nó sẽ nội suy với kết quả trộn animation hiện tại trong quá trình phát lại trong khoảng thời gian được chỉ định bởi ``duration``, hoạt động như một crossfade.
 
-You can specify ``trans_type`` as the curve for the interpolation. For better results, it may be appropriate to specify :ref:`Tween.TRANS_LINEAR<class_Tween_constant_TRANS_LINEAR>` for cases where the first key of the track begins with a non-zero value or where the key value does not change, and :ref:`Tween.TRANS_QUAD<class_Tween_constant_TRANS_QUAD>` for cases where the key value changes linearly.
+Bạn có thể chỉ định ``trans_type`` làm đường cong nội suy. Để đạt kết quả tốt hơn, có thể thích hợp khi chỉ định :ref:`Tween.TRANS_LINEAR<class_Tween_constant_TRANS_LINEAR>` cho các trường hợp key đầu tiên của track bắt đầu bằng một giá trị khác không hoặc khi giá trị key không thay đổi, và :ref:`Tween.TRANS_QUAD<class_Tween_constant_TRANS_QUAD>` cho các trường hợp giá trị key thay đổi tuyến tính.
 
 .. rst-class:: classref-item-separator
 
@@ -606,7 +606,7 @@ You can specify ``trans_type`` as the curve for the interpolation. For better re
 
 |void| **clear_caches**\ (\ ) :ref:`🔗<class_AnimationMixer_method_clear_caches>`
 
-**AnimationMixer** caches animated nodes. It may not notice if a node disappears; :ref:`clear_caches()<class_AnimationMixer_method_clear_caches>` forces it to update the cache again.
+**AnimationMixer** lưu các node được animate vào bộ nhớ đệm. Nó có thể không nhận biết khi một node biến mất; :ref:`clear_caches()<class_AnimationMixer_method_clear_caches>` buộc nó cập nhật lại bộ nhớ đệm.
 
 .. rst-class:: classref-item-separator
 
@@ -618,7 +618,7 @@ You can specify ``trans_type`` as the curve for the interpolation. For better re
 
 :ref:`StringName<class_StringName>` **find_animation**\ (\ animation\: :ref:`Animation<class_Animation>`\ ) |const| :ref:`🔗<class_AnimationMixer_method_find_animation>`
 
-Returns the key of ``animation`` or an empty :ref:`StringName<class_StringName>` if not found.
+Trả về khóa của ``animation`` hoặc một :ref:`StringName<class_StringName>` rỗng nếu không tìm thấy.
 
 .. rst-class:: classref-item-separator
 
@@ -630,7 +630,7 @@ Returns the key of ``animation`` or an empty :ref:`StringName<class_StringName>`
 
 :ref:`StringName<class_StringName>` **find_animation_library**\ (\ animation\: :ref:`Animation<class_Animation>`\ ) |const| :ref:`🔗<class_AnimationMixer_method_find_animation_library>`
 
-Returns the key for the :ref:`AnimationLibrary<class_AnimationLibrary>` that contains ``animation`` or an empty :ref:`StringName<class_StringName>` if not found.
+Trả về khóa của :ref:`AnimationLibrary<class_AnimationLibrary>` chứa ``animation`` hoặc một :ref:`StringName<class_StringName>` rỗng nếu không tìm thấy.
 
 .. rst-class:: classref-item-separator
 
@@ -642,7 +642,7 @@ Returns the key for the :ref:`AnimationLibrary<class_AnimationLibrary>` that con
 
 :ref:`Animation<class_Animation>` **get_animation**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_animation>`
 
-Returns the :ref:`Animation<class_Animation>` with the key ``name``. If the animation does not exist, ``null`` is returned and an error is logged.
+Trả về :ref:`Animation<class_Animation>` có khóa ``name``. Nếu animation không tồn tại, ``null`` sẽ được trả về và một lỗi được ghi vào nhật ký.
 
 .. rst-class:: classref-item-separator
 
@@ -654,9 +654,9 @@ Returns the :ref:`Animation<class_Animation>` with the key ``name``. If the anim
 
 :ref:`AnimationLibrary<class_AnimationLibrary>` **get_animation_library**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_animation_library>`
 
-Returns the first :ref:`AnimationLibrary<class_AnimationLibrary>` with key ``name`` or ``null`` if not found.
+Trả về :ref:`AnimationLibrary<class_AnimationLibrary>` đầu tiên có khóa ``name`` hoặc ``null`` nếu không tìm thấy.
 
-To get the **AnimationMixer**'s global animation library, use ``get_animation_library("")``.
+Để lấy thư viện animation toàn cục của **AnimationMixer**, hãy sử dụng ``get_animation_library("")``.
 
 .. rst-class:: classref-item-separator
 
@@ -668,7 +668,7 @@ To get the **AnimationMixer**'s global animation library, use ``get_animation_li
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_animation_library_list**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_animation_library_list>`
 
-Returns the list of stored library keys.
+Trả về danh sách các khóa thư viện đã lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -680,7 +680,7 @@ Returns the list of stored library keys.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_animation_list**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_animation_list>`
 
-Returns the list of stored animation keys.
+Trả về danh sách các khóa animation đã lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -692,13 +692,13 @@ Returns the list of stored animation keys.
 
 :ref:`Vector3<class_Vector3>` **get_root_motion_position**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_root_motion_position>`
 
-Retrieve the motion delta of position with the :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` as a :ref:`Vector3<class_Vector3>` that can be used elsewhere.
+Lấy delta chuyển động của vị trí dưới dạng :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` với :ref:`Vector3<class_Vector3>`, có thể được sử dụng ở nơi khác.
 
-If :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` is not a path to a track of type :ref:`Animation.TYPE_POSITION_3D<class_Animation_constant_TYPE_POSITION_3D>`, returns ``Vector3(0, 0, 0)``.
+Nếu :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` không phải là đường dẫn đến một track thuộc kiểu :ref:`Animation.TYPE_POSITION_3D<class_Animation_constant_TYPE_POSITION_3D>`, trả về ``Vector3(0, 0, 0)``.
 
-See also :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` and :ref:`RootMotionView<class_RootMotionView>`.
+Xem thêm :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` và :ref:`RootMotionView<class_RootMotionView>`.
 
-The most basic example is applying position to :ref:`CharacterBody3D<class_CharacterBody3D>`:
+Ví dụ cơ bản nhất là áp dụng vị trí cho :ref:`CharacterBody3D<class_CharacterBody3D>`:
 
 
 .. tabs::
@@ -717,7 +717,7 @@ The most basic example is applying position to :ref:`CharacterBody3D<class_Chara
 
 
 
-By using this in combination with :ref:`get_root_motion_rotation_accumulator()<class_AnimationMixer_method_get_root_motion_rotation_accumulator>`, you can apply the root motion position more correctly to account for the rotation of the node.
+Bằng cách sử dụng kết hợp với :ref:`get_root_motion_rotation_accumulator()<class_AnimationMixer_method_get_root_motion_rotation_accumulator>`, bạn có thể áp dụng vị trí root motion chính xác hơn để tính đến rotation của node.
 
 
 .. tabs::
@@ -734,9 +734,9 @@ By using this in combination with :ref:`get_root_motion_rotation_accumulator()<c
 
 
 
-If :ref:`root_motion_local<class_AnimationMixer_property_root_motion_local>` is ``true``, returns the pre-multiplied translation value with the inverted rotation.
+Nếu :ref:`root_motion_local<class_AnimationMixer_property_root_motion_local>` là ``true``, trả về giá trị translation được nhân trước với rotation đảo ngược.
 
-In this case, the code can be written as follows:
+Trong trường hợp này, mã có thể được viết như sau:
 
 
 .. tabs::
@@ -763,11 +763,11 @@ In this case, the code can be written as follows:
 
 :ref:`Vector3<class_Vector3>` **get_root_motion_position_accumulator**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_root_motion_position_accumulator>`
 
-Retrieve the blended value of the position tracks with the :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` as a :ref:`Vector3<class_Vector3>` that can be used elsewhere.
+Lấy giá trị trộn của các track vị trí, với :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` là một :ref:`Vector3<class_Vector3>` có thể được sử dụng ở nơi khác.
 
-This is useful in cases where you want to respect the initial key values of the animation.
+Điều này hữu ích trong những trường hợp bạn muốn giữ nguyên các giá trị key ban đầu của animation.
 
-For example, if an animation with only one key ``Vector3(0, 0, 0)`` is played in the previous frame and then an animation with only one key ``Vector3(1, 0, 1)`` is played in the next frame, the difference can be calculated as follows:
+Ví dụ: nếu một animation chỉ có một key ``Vector3(0, 0, 0)`` được phát ở frame trước, sau đó một animation chỉ có một key ``Vector3(1, 0, 1)`` được phát ở frame tiếp theo, độ chênh lệch có thể được tính như sau:
 
 
 .. tabs::
@@ -786,7 +786,7 @@ For example, if an animation with only one key ``Vector3(0, 0, 0)`` is played in
 
 
 
-However, if the animation loops, an unintended discrete change may occur, so this is only useful for some simple use cases.
+Tuy nhiên, nếu animation lặp lại, một thay đổi rời rạc ngoài ý muốn có thể xảy ra, vì vậy cách này chỉ hữu ích cho một số trường hợp sử dụng đơn giản.
 
 .. rst-class:: classref-item-separator
 
@@ -798,13 +798,13 @@ However, if the animation loops, an unintended discrete change may occur, so thi
 
 :ref:`Quaternion<class_Quaternion>` **get_root_motion_rotation**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_root_motion_rotation>`
 
-Retrieve the motion delta of rotation with the :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` as a :ref:`Quaternion<class_Quaternion>` that can be used elsewhere.
+Lấy delta chuyển động của phép xoay, với :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` là một :ref:`Quaternion<class_Quaternion>` có thể được sử dụng ở nơi khác.
 
-If :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` is not a path to a track of type :ref:`Animation.TYPE_ROTATION_3D<class_Animation_constant_TYPE_ROTATION_3D>`, returns ``Quaternion(0, 0, 0, 1)``.
+Nếu :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` không phải là đường dẫn đến một track có kiểu :ref:`Animation.TYPE_ROTATION_3D<class_Animation_constant_TYPE_ROTATION_3D>`, trả về ``Quaternion(0, 0, 0, 1)``.
 
-See also :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` and :ref:`RootMotionView<class_RootMotionView>`.
+Xem thêm :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` và :ref:`RootMotionView<class_RootMotionView>`.
 
-The most basic example is applying rotation to :ref:`CharacterBody3D<class_CharacterBody3D>`:
+Ví dụ cơ bản nhất là áp dụng phép xoay cho :ref:`CharacterBody3D<class_CharacterBody3D>`:
 
 
 .. tabs::
@@ -828,13 +828,13 @@ The most basic example is applying rotation to :ref:`CharacterBody3D<class_Chara
 
 :ref:`Quaternion<class_Quaternion>` **get_root_motion_rotation_accumulator**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_root_motion_rotation_accumulator>`
 
-Retrieve the blended value of the rotation tracks with the :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` as a :ref:`Quaternion<class_Quaternion>` that can be used elsewhere.
+Lấy giá trị đã trộn của các track xoay, với :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` là một :ref:`Quaternion<class_Quaternion>` có thể được sử dụng ở nơi khác.
 
-This is necessary to apply the root motion position correctly, taking rotation into account. See also :ref:`get_root_motion_position()<class_AnimationMixer_method_get_root_motion_position>`.
+Điều này cần thiết để áp dụng chính xác vị trí root motion, có tính đến phép xoay. Xem thêm :ref:`get_root_motion_position()<class_AnimationMixer_method_get_root_motion_position>`.
 
-Also, this is useful in cases where you want to respect the initial key values of the animation.
+Ngoài ra, điều này hữu ích trong các trường hợp bạn muốn giữ nguyên các giá trị key ban đầu của animation.
 
-For example, if an animation with only one key ``Quaternion(0, 0, 0, 1)`` is played in the previous frame and then an animation with only one key ``Quaternion(0, 0.707, 0, 0.707)`` is played in the next frame, the difference can be calculated as follows:
+Ví dụ: nếu một animation chỉ có một key ``Quaternion(0, 0, 0, 1)`` được phát ở frame trước, sau đó một animation chỉ có một key ``Quaternion(0, 0.707, 0, 0.707)`` được phát ở frame tiếp theo, độ chênh lệch có thể được tính như sau:
 
 
 .. tabs::
@@ -853,7 +853,7 @@ For example, if an animation with only one key ``Quaternion(0, 0, 0, 1)`` is pla
 
 
 
-However, if the animation loops, an unintended discrete change may occur, so this is only useful for some simple use cases.
+Tuy nhiên, nếu animation lặp lại, một thay đổi rời rạc ngoài ý muốn có thể xảy ra, vì vậy cách này chỉ hữu ích cho một số trường hợp sử dụng đơn giản.
 
 .. rst-class:: classref-item-separator
 
@@ -865,13 +865,13 @@ However, if the animation loops, an unintended discrete change may occur, so thi
 
 :ref:`Vector3<class_Vector3>` **get_root_motion_scale**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_root_motion_scale>`
 
-Retrieve the motion delta of scale with the :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` as a :ref:`Vector3<class_Vector3>` that can be used elsewhere.
+Lấy delta chuyển động của scale, với :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` là một :ref:`Vector3<class_Vector3>` có thể được sử dụng ở nơi khác.
 
-If :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` is not a path to a track of type :ref:`Animation.TYPE_SCALE_3D<class_Animation_constant_TYPE_SCALE_3D>`, returns ``Vector3(0, 0, 0)``.
+Nếu :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` không phải là đường dẫn đến một track thuộc loại :ref:`Animation.TYPE_SCALE_3D<class_Animation_constant_TYPE_SCALE_3D>`, trả về ``Vector3(0, 0, 0)``.
 
-See also :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` and :ref:`RootMotionView<class_RootMotionView>`.
+Xem thêm :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` và :ref:`RootMotionView<class_RootMotionView>`.
 
-The most basic example is applying scale to :ref:`CharacterBody3D<class_CharacterBody3D>`:
+Ví dụ cơ bản nhất là áp dụng scale cho :ref:`CharacterBody3D<class_CharacterBody3D>`:
 
 
 .. tabs::
@@ -901,9 +901,9 @@ The most basic example is applying scale to :ref:`CharacterBody3D<class_Characte
 
 :ref:`Vector3<class_Vector3>` **get_root_motion_scale_accumulator**\ (\ ) |const| :ref:`🔗<class_AnimationMixer_method_get_root_motion_scale_accumulator>`
 
-Retrieve the blended value of the scale tracks with the :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` as a :ref:`Vector3<class_Vector3>` that can be used elsewhere.
+Lấy giá trị đã blend của các track scale với :ref:`root_motion_track<class_AnimationMixer_property_root_motion_track>` dưới dạng :ref:`Vector3<class_Vector3>` để có thể sử dụng ở nơi khác.
 
-For example, if an animation with only one key ``Vector3(1, 1, 1)`` is played in the previous frame and then an animation with only one key ``Vector3(2, 2, 2)`` is played in the next frame, the difference can be calculated as follows:
+Ví dụ: nếu một animation chỉ có một key ``Vector3(1, 1, 1)`` được phát ở frame trước đó, sau đó một animation chỉ có một key ``Vector3(2, 2, 2)`` được phát ở frame tiếp theo, độ chênh lệch có thể được tính như sau:
 
 
 .. tabs::
@@ -922,7 +922,7 @@ For example, if an animation with only one key ``Vector3(1, 1, 1)`` is played in
 
 
 
-However, if the animation loops, an unintended discrete change may occur, so this is only useful for some simple use cases.
+Tuy nhiên, nếu animation lặp lại, một thay đổi rời rạc ngoài ý muốn có thể xảy ra, vì vậy cách này chỉ hữu ích cho một số trường hợp sử dụng đơn giản.
 
 .. rst-class:: classref-item-separator
 
@@ -934,7 +934,7 @@ However, if the animation loops, an unintended discrete change may occur, so thi
 
 :ref:`bool<class_bool>` **has_animation**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationMixer_method_has_animation>`
 
-Returns ``true`` if the **AnimationMixer** stores an :ref:`Animation<class_Animation>` with key ``name``.
+Trả về ``true`` nếu **AnimationMixer** lưu trữ một :ref:`Animation<class_Animation>` với key ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -946,7 +946,7 @@ Returns ``true`` if the **AnimationMixer** stores an :ref:`Animation<class_Anima
 
 :ref:`bool<class_bool>` **has_animation_library**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationMixer_method_has_animation_library>`
 
-Returns ``true`` if the **AnimationMixer** stores an :ref:`AnimationLibrary<class_AnimationLibrary>` with key ``name``.
+Trả về ``true`` nếu **AnimationMixer** lưu trữ một :ref:`AnimationLibrary<class_AnimationLibrary>` với khóa ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -958,7 +958,7 @@ Returns ``true`` if the **AnimationMixer** stores an :ref:`AnimationLibrary<clas
 
 |void| **remove_animation_library**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationMixer_method_remove_animation_library>`
 
-Removes the :ref:`AnimationLibrary<class_AnimationLibrary>` associated with the key ``name``.
+Xóa :ref:`AnimationLibrary<class_AnimationLibrary>` được liên kết với khóa ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -970,14 +970,14 @@ Removes the :ref:`AnimationLibrary<class_AnimationLibrary>` associated with the 
 
 |void| **rename_animation_library**\ (\ name\: :ref:`StringName<class_StringName>`, newname\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationMixer_method_rename_animation_library>`
 
-Moves the :ref:`AnimationLibrary<class_AnimationLibrary>` associated with the key ``name`` to the key ``newname``.
+Di chuyển :ref:`AnimationLibrary<class_AnimationLibrary>` được liên kết với khóa ``name`` sang khóa ``newname``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để phát huy tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, nên có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

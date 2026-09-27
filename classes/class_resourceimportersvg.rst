@@ -10,21 +10,21 @@
 ResourceImporterSVG
 ===================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports an SVG file as an automatically scalable texture for use in UI elements and 2D rendering.
+Nhập tệp SVG dưới dạng texture có khả năng tự động thay đổi kích thước để sử dụng trong các phần tử UI và kết xuất 2D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This importer imports :ref:`DPITexture<class_DPITexture>` resources. See also :ref:`ResourceImporterTexture<class_ResourceImporterTexture>` and :ref:`ResourceImporterImage<class_ResourceImporterImage>`.
+Importer này nhập các tài nguyên :ref:`DPITexture<class_DPITexture>`. Xem thêm :ref:`ResourceImporterTexture<class_ResourceImporterTexture>` và :ref:`ResourceImporterImage<class_ResourceImporterImage>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterSVG_property_base_scale:
 
@@ -58,7 +58,7 @@ Property Descriptions
 
 :ref:`float<class_float>` **base_scale** = ``1.0`` :ref:`🔗<class_ResourceImporterSVG_property_base_scale>`
 
-Texture scale. ``1.0`` is the original SVG size. Higher values result in a larger image.
+Tỷ lệ texture. ``1.0`` là kích thước SVG gốc. Giá trị cao hơn sẽ tạo ra hình ảnh lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -70,7 +70,7 @@ Texture scale. ``1.0`` is the original SVG size. Higher values result in a large
 
 :ref:`Dictionary<class_Dictionary>` **color_map** = ``{}`` :ref:`🔗<class_ResourceImporterSVG_property_color_map>`
 
-If set, remaps texture colors according to :ref:`Color<class_Color>`-:ref:`Color<class_Color>` map.
+Nếu được đặt, ánh xạ lại màu của texture theo bản đồ :ref:`Color<class_Color>`-:ref:`Color<class_Color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ If set, remaps texture colors according to :ref:`Color<class_Color>`-:ref:`Color
 
 :ref:`bool<class_bool>` **compress** = ``true`` :ref:`🔗<class_ResourceImporterSVG_property_compress>`
 
-If ``true``, uses lossless compression for the SVG source.
+Nếu là ``true``, sử dụng phương pháp nén không mất dữ liệu cho nguồn SVG.
 
 .. rst-class:: classref-item-separator
 
@@ -94,7 +94,7 @@ If ``true``, uses lossless compression for the SVG source.
 
 :ref:`bool<class_bool>` **fix_alpha_border** = ``false`` :ref:`🔗<class_ResourceImporterSVG_property_fix_alpha_border>`
 
-If ``true``, puts pixels of the same surrounding color in transition from transparent to opaque areas. For textures displayed with bilinear filtering, this helps to reduce the outline effect when exporting images from an image editor.
+Nếu là ``true``, đặt các pixel có cùng màu xung quanh vào vùng chuyển tiếp từ trong suốt sang đục. Đối với các texture được hiển thị bằng bộ lọc song tuyến tính, điều này giúp giảm hiệu ứng viền khi xuất hình ảnh từ trình chỉnh sửa hình ảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -106,11 +106,11 @@ If ``true``, puts pixels of the same surrounding color in transition from transp
 
 :ref:`bool<class_bool>` **premult_alpha** = ``false`` :ref:`🔗<class_ResourceImporterSVG_property_premult_alpha>`
 
-An alternative to fixing darkened borders with :ref:`fix_alpha_border<class_ResourceImporterSVG_property_fix_alpha_border>` is to use premultiplied alpha. By enabling this option, the texture will be converted to this format. A premultiplied alpha texture requires specific materials to be displayed correctly:
+Một cách khác để khắc phục các viền bị tối bằng :ref:`fix_alpha_border<class_ResourceImporterSVG_property_fix_alpha_border>` là sử dụng alpha tiền nhân (premultiplied alpha). Khi bật tùy chọn này, texture sẽ được chuyển đổi sang định dạng đó. Texture alpha tiền nhân yêu cầu các material cụ thể để hiển thị chính xác:
 
-- In 2D, a :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` will need to be created and configured to use the :ref:`CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA<class_CanvasItemMaterial_constant_BLEND_MODE_PREMULT_ALPHA>` blend mode on :ref:`CanvasItem<class_CanvasItem>`\ s that use this texture. In custom ``canvas_item`` shaders, ``render_mode blend_premul_alpha;`` should be used.
+- Trong 2D, cần tạo một :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` và cấu hình để sử dụng chế độ hòa trộn :ref:`CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA<class_CanvasItemMaterial_constant_BLEND_MODE_PREMULT_ALPHA>` trên :ref:`CanvasItem<class_CanvasItem>`\ s sử dụng texture này. Trong các shader ``canvas_item`` tùy chỉnh, nên sử dụng ``render_mode blend_premul_alpha;``.
 
-- In 3D, a :ref:`BaseMaterial3D<class_BaseMaterial3D>` will need to be created and configured to use the :ref:`BaseMaterial3D.BLEND_MODE_PREMULT_ALPHA<class_BaseMaterial3D_constant_BLEND_MODE_PREMULT_ALPHA>` blend mode on materials that use this texture. In custom ``spatial`` shaders, ``render_mode blend_premul_alpha;`` should be used.
+- Trong 3D, cần tạo một :ref:`BaseMaterial3D<class_BaseMaterial3D>` và cấu hình để sử dụng chế độ hòa trộn :ref:`BaseMaterial3D.BLEND_MODE_PREMULT_ALPHA<class_BaseMaterial3D_constant_BLEND_MODE_PREMULT_ALPHA>` trên các material sử dụng texture này. Trong các shader ``spatial`` tùy chỉnh, nên sử dụng ``render_mode blend_premul_alpha;``.
 
 .. rst-class:: classref-item-separator
 
@@ -122,14 +122,14 @@ An alternative to fixing darkened borders with :ref:`fix_alpha_border<class_Reso
 
 :ref:`float<class_float>` **saturation** = ``1.0`` :ref:`🔗<class_ResourceImporterSVG_property_saturation>`
 
-Overrides texture saturation.
+Ghi đè độ bão hòa của texture.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

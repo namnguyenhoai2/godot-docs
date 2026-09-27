@@ -10,32 +10,32 @@
 OpenXRRenderModelManager
 ========================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Helper node that will automatically manage displaying render models.
+Node trợ giúp sẽ tự động quản lý việc hiển thị các render model.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This helper node will automatically manage displaying render models. It will create new :ref:`OpenXRRenderModel<class_OpenXRRenderModel>` nodes as controllers and other hand held devices are detected, and remove those nodes when they are deactivated.
+Node trợ giúp này sẽ tự động quản lý việc hiển thị các render model. Node này sẽ tạo các node :ref:`OpenXRRenderModel<class_OpenXRRenderModel>` mới khi phát hiện controller và các thiết bị cầm tay khác, đồng thời xóa các node đó khi chúng bị vô hiệu hóa.
 
-\ **Note:** If you want more control over this logic you can alternatively call :ref:`OpenXRRenderModelExtension.render_model_get_all()<class_OpenXRRenderModelExtension_method_render_model_get_all>` to obtain a list of active render model ids and create :ref:`OpenXRRenderModel<class_OpenXRRenderModel>` instances for each render model id provided.
+\ **Lưu ý:** Nếu muốn kiểm soát logic này nhiều hơn, bạn có thể gọi :ref:`OpenXRRenderModelExtension.render_model_get_all()<class_OpenXRRenderModelExtension_method_render_model_get_all>` để lấy danh sách id của các render model đang hoạt động và tạo các instance :ref:`OpenXRRenderModel<class_OpenXRRenderModel>` cho từng id render model được cung cấp.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                                                 | :ref:`make_local_to_pose<class_OpenXRRenderModelManager_property_make_local_to_pose>` | ``""`` |
-   +-----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+--------+
-   | :ref:`RenderModelTracker<enum_OpenXRRenderModelManager_RenderModelTracker>` | :ref:`tracker<class_OpenXRRenderModelManager_property_tracker>`                       | ``0``  |
-   +-----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+--------+
+   +------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                                                  | :ref:`make_local_to_pose<class_OpenXRRenderModelManager_property_make_local_to_pose>` | ``""`` |
+   +------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+--------+
+   | :ref:`RenderModelTracker <enum_OpenXRRenderModelManager_RenderModelTracker>` | :ref:`tracker<class_OpenXRRenderModelManager_property_tracker>`                       | ``0``  |
+   +------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-section-separator
 
@@ -43,8 +43,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_OpenXRRenderModelManager_signal_render_model_added:
 
@@ -52,7 +52,7 @@ Signals
 
 **render_model_added**\ (\ render_model\: :ref:`OpenXRRenderModel<class_OpenXRRenderModel>`\ ) :ref:`🔗<class_OpenXRRenderModelManager_signal_render_model_added>`
 
-Emitted when a render model node is added as a child to this node.
+Được phát ra khi một nút mô hình render được thêm làm nút con của nút này.
 
 .. rst-class:: classref-item-separator
 
@@ -64,7 +64,7 @@ Emitted when a render model node is added as a child to this node.
 
 **render_model_removed**\ (\ render_model\: :ref:`OpenXRRenderModel<class_OpenXRRenderModel>`\ ) :ref:`🔗<class_OpenXRRenderModelManager_signal_render_model_removed>`
 
-Emitted when a render model child node is about to be removed from this node.
+Được phát ra khi một nút con của mô hình render sắp bị xóa khỏi nút này.
 
 .. rst-class:: classref-section-separator
 
@@ -72,14 +72,14 @@ Emitted when a render model child node is about to be removed from this node.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OpenXRRenderModelManager_RenderModelTracker:
 
 .. rst-class:: classref-enumeration
 
-enum **RenderModelTracker**: :ref:`🔗<enum_OpenXRRenderModelManager_RenderModelTracker>`
+enum **RenderModelTracker**: :ref:`🔗 <enum_OpenXRRenderModelManager_RenderModelTracker>`
 
 .. _class_OpenXRRenderModelManager_constant_RENDER_MODEL_TRACKER_ANY:
 
@@ -87,7 +87,7 @@ enum **RenderModelTracker**: :ref:`🔗<enum_OpenXRRenderModelManager_RenderMode
 
 :ref:`RenderModelTracker<enum_OpenXRRenderModelManager_RenderModelTracker>` **RENDER_MODEL_TRACKER_ANY** = ``0``
 
-All active render models are shown regardless of what tracker they relate to.
+Tất cả mô hình render đang hoạt động đều được hiển thị, bất kể chúng liên quan đến tracker nào.
 
 .. _class_OpenXRRenderModelManager_constant_RENDER_MODEL_TRACKER_NONE_SET:
 
@@ -95,7 +95,7 @@ All active render models are shown regardless of what tracker they relate to.
 
 :ref:`RenderModelTracker<enum_OpenXRRenderModelManager_RenderModelTracker>` **RENDER_MODEL_TRACKER_NONE_SET** = ``1``
 
-Only active render models are shown that are not related to any tracker we manage.
+Chỉ các mô hình render đang hoạt động không liên quan đến bất kỳ tracker nào do chúng ta quản lý mới được hiển thị.
 
 .. _class_OpenXRRenderModelManager_constant_RENDER_MODEL_TRACKER_LEFT_HAND:
 
@@ -103,7 +103,7 @@ Only active render models are shown that are not related to any tracker we manag
 
 :ref:`RenderModelTracker<enum_OpenXRRenderModelManager_RenderModelTracker>` **RENDER_MODEL_TRACKER_LEFT_HAND** = ``2``
 
-Only active render models are shown that are related to the left hand tracker.
+Chỉ hiển thị các render model đang hoạt động có liên quan đến tracker tay trái.
 
 .. _class_OpenXRRenderModelManager_constant_RENDER_MODEL_TRACKER_RIGHT_HAND:
 
@@ -111,7 +111,7 @@ Only active render models are shown that are related to the left hand tracker.
 
 :ref:`RenderModelTracker<enum_OpenXRRenderModelManager_RenderModelTracker>` **RENDER_MODEL_TRACKER_RIGHT_HAND** = ``3``
 
-Only active render models are shown that are related to the right hand tracker.
+Chỉ hiển thị các render model đang hoạt động có liên quan đến tracker tay phải.
 
 .. rst-class:: classref-section-separator
 
@@ -119,8 +119,8 @@ Only active render models are shown that are related to the right hand tracker.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRRenderModelManager_property_make_local_to_pose:
 
@@ -133,7 +133,7 @@ Property Descriptions
 - |void| **set_make_local_to_pose**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_make_local_to_pose**\ (\ )
 
-Position render models local to this pose (this will adjust the position of the render models container node).
+Định vị các render model trong phạm vi cục bộ của pose này (điều này sẽ điều chỉnh vị trí của node container render model).
 
 .. rst-class:: classref-item-separator
 
@@ -150,14 +150,14 @@ Position render models local to this pose (this will adjust the position of the 
 - |void| **set_tracker**\ (\ value\: :ref:`RenderModelTracker<enum_OpenXRRenderModelManager_RenderModelTracker>`\ )
 - :ref:`RenderModelTracker<enum_OpenXRRenderModelManager_RenderModelTracker>` **get_tracker**\ (\ )
 
-Limits render models to the specified tracker. Include: 0 = All render models, 1 = Render models not related to a tracker, 2 = Render models related to the left hand tracker, 3 = Render models related to the right hand tracker.
+Giới hạn các render model ở tracker được chỉ định. Bao gồm: 0 = Tất cả render model, 1 = Render model không liên quan đến tracker, 2 = Render model liên quan đến tracker tay trái, 3 = Render model liên quan đến tracker tay phải.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

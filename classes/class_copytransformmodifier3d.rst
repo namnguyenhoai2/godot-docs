@@ -10,40 +10,40 @@
 CopyTransformModifier3D
 =======================
 
-**Inherits:** :ref:`BoneConstraint3D<class_BoneConstraint3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`BoneConstraint3D<class_BoneConstraint3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` that apply transform to the bone which copied from reference.
+Một :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` áp dụng phép biến đổi cho xương được sao chép từ tham chiếu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Apply the copied transform of the bone set by :ref:`BoneConstraint3D.set_reference_bone()<class_BoneConstraint3D_method_set_reference_bone>` to the bone set by :ref:`BoneConstraint3D.set_apply_bone()<class_BoneConstraint3D_method_set_apply_bone>` with processing it with some masks and options.
+Áp dụng phép biến đổi đã sao chép của xương được chỉ định bởi :ref:`BoneConstraint3D.set_reference_bone()<class_BoneConstraint3D_method_set_reference_bone>` cho xương được chỉ định bởi :ref:`BoneConstraint3D.set_apply_bone()<class_BoneConstraint3D_method_set_apply_bone>`, đồng thời xử lý bằng một số mask và tùy chọn.
 
-There are 4 ways to apply the transform, depending on the combination of :ref:`set_relative()<class_CopyTransformModifier3D_method_set_relative>` and :ref:`set_additive()<class_CopyTransformModifier3D_method_set_additive>`.
+Có 4 cách để áp dụng phép biến đổi, tùy thuộc vào sự kết hợp giữa :ref:`set_relative()<class_CopyTransformModifier3D_method_set_relative>` và :ref:`set_additive()<class_CopyTransformModifier3D_method_set_additive>`.
 
-\ **Relative + Additive:**\ 
+\ **Relative + Additive:**\
 
-- Extract reference pose relative to the rest and add it to the apply bone's pose.
+- Trích xuất tư thế tham chiếu tương đối so với tư thế nghỉ và cộng nó vào tư thế của xương áp dụng.
 
-\ **Relative + Not Additive:**\ 
+\ **Tương đối + Không cộng dồn:**\
 
-- Extract reference pose relative to the rest and add it to the apply bone's rest.
+- Trích xuất tư thế tham chiếu tương đối so với tư thế nghỉ rồi thêm nó vào tư thế nghỉ của xương áp dụng.
 
-\ **Not Relative + Additive:**\ 
+\ **Không tương đối + Cộng dồn:**\
 
-- Extract reference pose absolutely and add it to the apply bone's pose.
+- Trích xuất tư thế tham chiếu theo giá trị tuyệt đối rồi thêm nó vào tư thế của xương áp dụng.
 
-\ **Not Relative + Not Additive:**\ 
+\ **Không tương đối + Không cộng dồn:**\
 
-- Extract reference pose absolutely and the apply bone's pose is replaced with it.
+- Trích xuất tư thế tham chiếu theo giá trị tuyệt đối và thay thế tư thế của xương áp dụng bằng tư thế đó.
 
-\ **Note:** Relative option is available only in the case :ref:`BoneConstraint3D.get_reference_type()<class_BoneConstraint3D_method_get_reference_type>` is :ref:`BoneConstraint3D.REFERENCE_TYPE_BONE<class_BoneConstraint3D_constant_REFERENCE_TYPE_BONE>`. See also :ref:`ReferenceType<enum_BoneConstraint3D_ReferenceType>`.
+\ **Lưu ý:** Tùy chọn Relative chỉ khả dụng khi :ref:`BoneConstraint3D.get_reference_type()<class_BoneConstraint3D_method_get_reference_type>` là :ref:`BoneConstraint3D.REFERENCE_TYPE_BONE<class_BoneConstraint3D_constant_REFERENCE_TYPE_BONE>`. Xem thêm :ref:`ReferenceType <enum_BoneConstraint3D_ReferenceType>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -55,69 +55,69 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\]           | :ref:`get_axis_flags<class_CopyTransformModifier3D_method_get_axis_flags>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                      |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>`\] | :ref:`get_copy_flags<class_CopyTransformModifier3D_method_get_copy_flags>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                      |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\]           | :ref:`get_invert_flags<class_CopyTransformModifier3D_method_get_invert_flags>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                  |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_additive<class_CopyTransformModifier3D_method_is_additive>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                            |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_axis_x_enabled<class_CopyTransformModifier3D_method_is_axis_x_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_axis_x_inverted<class_CopyTransformModifier3D_method_is_axis_x_inverted>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_axis_y_enabled<class_CopyTransformModifier3D_method_is_axis_y_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_axis_y_inverted<class_CopyTransformModifier3D_method_is_axis_y_inverted>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_axis_z_enabled<class_CopyTransformModifier3D_method_is_axis_z_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_axis_z_inverted<class_CopyTransformModifier3D_method_is_axis_z_inverted>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_position_copying<class_CopyTransformModifier3D_method_is_position_copying>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                            |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_relative<class_CopyTransformModifier3D_method_is_relative>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                            |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_rotation_copying<class_CopyTransformModifier3D_method_is_rotation_copying>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                            |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`is_scale_copying<class_CopyTransformModifier3D_method_is_scale_copying>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                  |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_additive<class_CopyTransformModifier3D_method_set_additive>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                               |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_axis_flags<class_CopyTransformModifier3D_method_set_axis_flags>`\ (\ index\: :ref:`int<class_int>`, axis_flags\: |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\]\ )           |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_axis_x_enabled<class_CopyTransformModifier3D_method_set_axis_x_enabled>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                   |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_axis_x_inverted<class_CopyTransformModifier3D_method_set_axis_x_inverted>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                 |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_axis_y_enabled<class_CopyTransformModifier3D_method_set_axis_y_enabled>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                   |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_axis_y_inverted<class_CopyTransformModifier3D_method_set_axis_y_inverted>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                 |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_axis_z_enabled<class_CopyTransformModifier3D_method_set_axis_z_enabled>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                   |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_axis_z_inverted<class_CopyTransformModifier3D_method_set_axis_z_inverted>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                 |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_copy_flags<class_CopyTransformModifier3D_method_set_copy_flags>`\ (\ index\: :ref:`int<class_int>`, copy_flags\: |bitfield|\[:ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>`\]\ ) |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_copy_position<class_CopyTransformModifier3D_method_set_copy_position>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                     |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_copy_rotation<class_CopyTransformModifier3D_method_set_copy_rotation>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                     |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_copy_scale<class_CopyTransformModifier3D_method_set_copy_scale>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                           |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_invert_flags<class_CopyTransformModifier3D_method_set_invert_flags>`\ (\ index\: :ref:`int<class_int>`, axis_flags\: |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\]\ )       |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                         | :ref:`set_relative<class_CopyTransformModifier3D_method_set_relative>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                               |
-   +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`AxisFlag <enum_CopyTransformModifier3D_AxisFlag>`\]           | :ref:`get_axis_flags<class_CopyTransformModifier3D_method_get_axis_flags>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                       |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`TransformFlag <enum_CopyTransformModifier3D_TransformFlag>`\] | :ref:`get_copy_flags<class_CopyTransformModifier3D_method_get_copy_flags>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                       |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`AxisFlag <enum_CopyTransformModifier3D_AxisFlag>`\]           | :ref:`get_invert_flags<class_CopyTransformModifier3D_method_get_invert_flags>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                   |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_additive<class_CopyTransformModifier3D_method_is_additive>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                             |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_axis_x_enabled<class_CopyTransformModifier3D_method_is_axis_x_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                 |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_axis_x_inverted<class_CopyTransformModifier3D_method_is_axis_x_inverted>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_axis_y_enabled<class_CopyTransformModifier3D_method_is_axis_y_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                 |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_axis_y_inverted<class_CopyTransformModifier3D_method_is_axis_y_inverted>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_axis_z_enabled<class_CopyTransformModifier3D_method_is_axis_z_enabled>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                 |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_axis_z_inverted<class_CopyTransformModifier3D_method_is_axis_z_inverted>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_position_copying<class_CopyTransformModifier3D_method_is_position_copying>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                             |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_relative<class_CopyTransformModifier3D_method_is_relative>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                             |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_rotation_copying<class_CopyTransformModifier3D_method_is_rotation_copying>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                             |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`is_scale_copying<class_CopyTransformModifier3D_method_is_scale_copying>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                   |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_additive<class_CopyTransformModifier3D_method_set_additive>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                                |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_axis_flags<class_CopyTransformModifier3D_method_set_axis_flags>`\ (\ index\: :ref:`int<class_int>`, axis_flags\: |bitfield|\[:ref:`AxisFlag <enum_CopyTransformModifier3D_AxisFlag>`\]\ )           |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_axis_x_enabled<class_CopyTransformModifier3D_method_set_axis_x_enabled>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                    |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_axis_x_inverted<class_CopyTransformModifier3D_method_set_axis_x_inverted>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                  |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_axis_y_enabled<class_CopyTransformModifier3D_method_set_axis_y_enabled>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                    |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_axis_y_inverted<class_CopyTransformModifier3D_method_set_axis_y_inverted>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                  |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_axis_z_enabled<class_CopyTransformModifier3D_method_set_axis_z_enabled>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                    |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_axis_z_inverted<class_CopyTransformModifier3D_method_set_axis_z_inverted>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                  |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_copy_flags<class_CopyTransformModifier3D_method_set_copy_flags>`\ (\ index\: :ref:`int<class_int>`, copy_flags\: |bitfield|\[:ref:`TransformFlag <enum_CopyTransformModifier3D_TransformFlag>`\]\ ) |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_copy_position<class_CopyTransformModifier3D_method_set_copy_position>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                      |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_copy_rotation<class_CopyTransformModifier3D_method_set_copy_rotation>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                      |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_copy_scale<class_CopyTransformModifier3D_method_set_copy_scale>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                            |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_invert_flags<class_CopyTransformModifier3D_method_set_invert_flags>`\ (\ index\: :ref:`int<class_int>`, axis_flags\: |bitfield|\[:ref:`AxisFlag <enum_CopyTransformModifier3D_AxisFlag>`\]\ )       |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                          | :ref:`set_relative<class_CopyTransformModifier3D_method_set_relative>`\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ )                                                                |
+   +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -125,14 +125,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CopyTransformModifier3D_TransformFlag:
 
 .. rst-class:: classref-enumeration
 
-flags **TransformFlag**: :ref:`🔗<enum_CopyTransformModifier3D_TransformFlag>`
+flags **TransformFlag**: :ref:`🔗 <enum_CopyTransformModifier3D_TransformFlag>`
 
 .. _class_CopyTransformModifier3D_constant_TRANSFORM_FLAG_POSITION:
 
@@ -140,7 +140,7 @@ flags **TransformFlag**: :ref:`🔗<enum_CopyTransformModifier3D_TransformFlag>`
 
 :ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>` **TRANSFORM_FLAG_POSITION** = ``1``
 
-If set, allows to copy the position.
+Nếu được đặt, cho phép sao chép vị trí.
 
 .. _class_CopyTransformModifier3D_constant_TRANSFORM_FLAG_ROTATION:
 
@@ -148,7 +148,7 @@ If set, allows to copy the position.
 
 :ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>` **TRANSFORM_FLAG_ROTATION** = ``2``
 
-If set, allows to copy the rotation.
+Nếu được đặt, cho phép sao chép phép xoay.
 
 .. _class_CopyTransformModifier3D_constant_TRANSFORM_FLAG_SCALE:
 
@@ -156,7 +156,7 @@ If set, allows to copy the rotation.
 
 :ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>` **TRANSFORM_FLAG_SCALE** = ``4``
 
-If set, allows to copy the scale.
+Nếu được đặt, cho phép sao chép tỷ lệ.
 
 .. _class_CopyTransformModifier3D_constant_TRANSFORM_FLAG_ALL:
 
@@ -164,7 +164,7 @@ If set, allows to copy the scale.
 
 :ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>` **TRANSFORM_FLAG_ALL** = ``7``
 
-If set, allows to copy the position/rotation/scale.
+Nếu được đặt, cho phép sao chép vị trí/phép xoay/tỷ lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ If set, allows to copy the position/rotation/scale.
 
 .. rst-class:: classref-enumeration
 
-flags **AxisFlag**: :ref:`🔗<enum_CopyTransformModifier3D_AxisFlag>`
+các cờ **AxisFlag**: :ref:`🔗 <enum_CopyTransformModifier3D_AxisFlag>`
 
 .. _class_CopyTransformModifier3D_constant_AXIS_FLAG_X:
 
@@ -182,7 +182,7 @@ flags **AxisFlag**: :ref:`🔗<enum_CopyTransformModifier3D_AxisFlag>`
 
 :ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>` **AXIS_FLAG_X** = ``1``
 
-If set, allows to process the X-axis.
+Nếu được đặt, cho phép xử lý trục X.
 
 .. _class_CopyTransformModifier3D_constant_AXIS_FLAG_Y:
 
@@ -190,7 +190,7 @@ If set, allows to process the X-axis.
 
 :ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>` **AXIS_FLAG_Y** = ``2``
 
-If set, allows to process the Y-axis.
+Nếu được đặt, cho phép xử lý trục Y.
 
 .. _class_CopyTransformModifier3D_constant_AXIS_FLAG_Z:
 
@@ -198,7 +198,7 @@ If set, allows to process the Y-axis.
 
 :ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>` **AXIS_FLAG_Z** = ``4``
 
-If set, allows to process the Z-axis.
+Nếu được thiết lập, cho phép xử lý trục Z.
 
 .. _class_CopyTransformModifier3D_constant_AXIS_FLAG_ALL:
 
@@ -206,7 +206,7 @@ If set, allows to process the Z-axis.
 
 :ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>` **AXIS_FLAG_ALL** = ``7``
 
-If set, allows to process the all axes.
+Nếu được thiết lập, cho phép xử lý tất cả các trục.
 
 .. rst-class:: classref-section-separator
 
@@ -214,8 +214,8 @@ If set, allows to process the all axes.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CopyTransformModifier3D_property_setting_count:
 
@@ -228,7 +228,7 @@ Property Descriptions
 - |void| **set_setting_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_setting_count**\ (\ )
 
-The number of settings in the modifier.
+Số lượng thiết lập trong modifier.
 
 .. rst-class:: classref-section-separator
 
@@ -236,8 +236,8 @@ The number of settings in the modifier.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CopyTransformModifier3D_method_get_axis_flags:
 
@@ -245,7 +245,7 @@ Method Descriptions
 
 |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\] **get_axis_flags**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_get_axis_flags>`
 
-Returns the axis flags of the setting at ``index``.
+Trả về các cờ trục của thiết lập tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -257,7 +257,7 @@ Returns the axis flags of the setting at ``index``.
 
 |bitfield|\[:ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>`\] **get_copy_flags**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_get_copy_flags>`
 
-Returns the copy flags of the setting at ``index``.
+Trả về các cờ sao chép của thiết lập tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Returns the copy flags of the setting at ``index``.
 
 |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\] **get_invert_flags**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_get_invert_flags>`
 
-Returns the invert flags of the setting at ``index``.
+Trả về các cờ đảo chiều của thiết lập tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +281,7 @@ Returns the invert flags of the setting at ``index``.
 
 :ref:`bool<class_bool>` **is_additive**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_additive>`
 
-Returns ``true`` if the additive option is enabled in the setting at ``index``.
+Trả về ``true`` nếu tùy chọn cộng được bật trong thiết lập tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ Returns ``true`` if the additive option is enabled in the setting at ``index``.
 
 :ref:`bool<class_bool>` **is_axis_x_enabled**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_axis_x_enabled>`
 
-Returns ``true`` if the enable flags has the flag for the X-axis in the setting at ``index``. See also :ref:`set_axis_flags()<class_CopyTransformModifier3D_method_set_axis_flags>`.
+Trả về ``true`` nếu các cờ bật có cờ cho trục X trong thiết lập tại ``index``. Xem thêm :ref:`set_axis_flags()<class_CopyTransformModifier3D_method_set_axis_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ Returns ``true`` if the enable flags has the flag for the X-axis in the setting 
 
 :ref:`bool<class_bool>` **is_axis_x_inverted**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_axis_x_inverted>`
 
-Returns ``true`` if the invert flags has the flag for the X-axis in the setting at ``index``. See also :ref:`set_invert_flags()<class_CopyTransformModifier3D_method_set_invert_flags>`.
+Trả về ``true`` nếu các cờ đảo chiều có cờ cho trục X trong thiết lập tại ``index``. Xem thêm :ref:`set_invert_flags()<class_CopyTransformModifier3D_method_set_invert_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ Returns ``true`` if the invert flags has the flag for the X-axis in the setting 
 
 :ref:`bool<class_bool>` **is_axis_y_enabled**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_axis_y_enabled>`
 
-Returns ``true`` if the enable flags has the flag for the Y-axis in the setting at ``index``. See also :ref:`set_axis_flags()<class_CopyTransformModifier3D_method_set_axis_flags>`.
+Trả về ``true`` nếu các cờ bật có cờ cho trục Y trong thiết lập tại ``index``. Xem thêm :ref:`set_axis_flags()<class_CopyTransformModifier3D_method_set_axis_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ Returns ``true`` if the enable flags has the flag for the Y-axis in the setting 
 
 :ref:`bool<class_bool>` **is_axis_y_inverted**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_axis_y_inverted>`
 
-Returns ``true`` if the invert flags has the flag for the Y-axis in the setting at ``index``. See also :ref:`set_invert_flags()<class_CopyTransformModifier3D_method_set_invert_flags>`.
+Trả về ``true`` nếu các cờ đảo chiều có cờ cho trục Y trong thiết lập tại ``index``. Xem thêm :ref:`set_invert_flags()<class_CopyTransformModifier3D_method_set_invert_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -341,7 +341,7 @@ Returns ``true`` if the invert flags has the flag for the Y-axis in the setting 
 
 :ref:`bool<class_bool>` **is_axis_z_enabled**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_axis_z_enabled>`
 
-Returns ``true`` if the enable flags has the flag for the Z-axis in the setting at ``index``. See also :ref:`set_axis_flags()<class_CopyTransformModifier3D_method_set_axis_flags>`.
+Trả về ``true`` nếu các cờ bật có cờ cho trục Z trong thiết lập tại ``index``. Xem thêm :ref:`set_axis_flags()<class_CopyTransformModifier3D_method_set_axis_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ Returns ``true`` if the enable flags has the flag for the Z-axis in the setting 
 
 :ref:`bool<class_bool>` **is_axis_z_inverted**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_axis_z_inverted>`
 
-Returns ``true`` if the invert flags has the flag for the Z-axis in the setting at ``index``. See also :ref:`set_invert_flags()<class_CopyTransformModifier3D_method_set_invert_flags>`.
+Trả về ``true`` nếu invert flags có cờ cho trục Z trong thiết lập tại ``index``. Xem thêm :ref:`set_invert_flags()<class_CopyTransformModifier3D_method_set_invert_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -365,7 +365,7 @@ Returns ``true`` if the invert flags has the flag for the Z-axis in the setting 
 
 :ref:`bool<class_bool>` **is_position_copying**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_position_copying>`
 
-Returns ``true`` if the copy flags has the flag for the position in the setting at ``index``. See also :ref:`set_copy_flags()<class_CopyTransformModifier3D_method_set_copy_flags>`.
+Trả về ``true`` nếu copy flags có cờ cho vị trí trong thiết lập tại ``index``. Xem thêm :ref:`set_copy_flags()<class_CopyTransformModifier3D_method_set_copy_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -377,7 +377,7 @@ Returns ``true`` if the copy flags has the flag for the position in the setting 
 
 :ref:`bool<class_bool>` **is_relative**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_relative>`
 
-Returns ``true`` if the relative option is enabled in the setting at ``index``.
+Trả về ``true`` nếu tùy chọn relative được bật trong thiết lập tại ``index``.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ Returns ``true`` if the relative option is enabled in the setting at ``index``.
 
 :ref:`bool<class_bool>` **is_rotation_copying**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_rotation_copying>`
 
-Returns ``true`` if the copy flags has the flag for the rotation in the setting at ``index``. See also :ref:`set_copy_flags()<class_CopyTransformModifier3D_method_set_copy_flags>`.
+Trả về ``true`` nếu copy flags có cờ cho phép xoay trong thiết lập tại ``index``. Xem thêm :ref:`set_copy_flags()<class_CopyTransformModifier3D_method_set_copy_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -401,7 +401,7 @@ Returns ``true`` if the copy flags has the flag for the rotation in the setting 
 
 :ref:`bool<class_bool>` **is_scale_copying**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CopyTransformModifier3D_method_is_scale_copying>`
 
-Returns ``true`` if the copy flags has the flag for the scale in the setting at ``index``. See also :ref:`set_copy_flags()<class_CopyTransformModifier3D_method_set_copy_flags>`.
+Trả về ``true`` nếu copy flags có cờ cho scale trong thiết lập tại ``index``. Xem thêm :ref:`set_copy_flags()<class_CopyTransformModifier3D_method_set_copy_flags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -413,11 +413,11 @@ Returns ``true`` if the copy flags has the flag for the scale in the setting at 
 
 |void| **set_additive**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_additive>`
 
-Sets additive option in the setting at ``index`` to ``enabled``. This mainly affects the process of applying transform to the :ref:`BoneConstraint3D.set_apply_bone()<class_BoneConstraint3D_method_set_apply_bone>`.
+Đặt tùy chọn additive trong thiết lập tại ``index`` thành ``enabled``. Điều này chủ yếu ảnh hưởng đến quá trình áp dụng transform cho :ref:`BoneConstraint3D.set_apply_bone()<class_BoneConstraint3D_method_set_apply_bone>`.
 
-If sets ``enabled`` to ``true``, the processed transform is added to the pose of the current apply bone.
+Nếu đặt ``enabled`` thành ``true``, transform đã xử lý sẽ được thêm vào pose của apply bone hiện tại.
 
-If sets ``enabled`` to ``false``, the pose of the current apply bone is replaced with the processed transform. However, if set :ref:`set_relative()<class_CopyTransformModifier3D_method_set_relative>` to ``true``, the transform is relative to rest.
+Nếu đặt ``enabled`` thành ``false``, pose của apply bone hiện tại sẽ được thay thế bằng transform đã xử lý. Tuy nhiên, nếu đặt :ref:`set_relative()<class_CopyTransformModifier3D_method_set_relative>` thành ``true``, transform sẽ tương đối so với rest.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ If sets ``enabled`` to ``false``, the pose of the current apply bone is replaced
 
 |void| **set_axis_flags**\ (\ index\: :ref:`int<class_int>`, axis_flags\: |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\]\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_axis_flags>`
 
-Sets the flags to copy axes. If the flag is valid, the axis is copied.
+Đặt các flag để sao chép các trục. Nếu flag hợp lệ, trục đó sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -441,7 +441,7 @@ Sets the flags to copy axes. If the flag is valid, the axis is copied.
 
 |void| **set_axis_x_enabled**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_axis_x_enabled>`
 
-If sets ``enabled`` to ``true``, the X-axis will be copied.
+Nếu đặt ``enabled`` thành ``true``, trục X sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -453,7 +453,7 @@ If sets ``enabled`` to ``true``, the X-axis will be copied.
 
 |void| **set_axis_x_inverted**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_axis_x_inverted>`
 
-If sets ``enabled`` to ``true``, the X-axis will be inverted.
+Nếu đặt ``enabled`` thành ``true``, trục X sẽ bị đảo ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -465,7 +465,7 @@ If sets ``enabled`` to ``true``, the X-axis will be inverted.
 
 |void| **set_axis_y_enabled**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_axis_y_enabled>`
 
-If sets ``enabled`` to ``true``, the Y-axis will be copied.
+Nếu đặt ``enabled`` thành ``true``, trục Y sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -477,7 +477,7 @@ If sets ``enabled`` to ``true``, the Y-axis will be copied.
 
 |void| **set_axis_y_inverted**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_axis_y_inverted>`
 
-If sets ``enabled`` to ``true``, the Y-axis will be inverted.
+Nếu đặt ``enabled`` thành ``true``, trục Y sẽ bị đảo ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +489,7 @@ If sets ``enabled`` to ``true``, the Y-axis will be inverted.
 
 |void| **set_axis_z_enabled**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_axis_z_enabled>`
 
-If sets ``enabled`` to ``true``, the Z-axis will be copied.
+Nếu đặt ``enabled`` thành ``true``, trục Z sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -501,7 +501,7 @@ If sets ``enabled`` to ``true``, the Z-axis will be copied.
 
 |void| **set_axis_z_inverted**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_axis_z_inverted>`
 
-If sets ``enabled`` to ``true``, the Z-axis will be inverted.
+Nếu đặt ``enabled`` thành ``true``, trục Z sẽ bị đảo ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -513,9 +513,9 @@ If sets ``enabled`` to ``true``, the Z-axis will be inverted.
 
 |void| **set_copy_flags**\ (\ index\: :ref:`int<class_int>`, copy_flags\: |bitfield|\[:ref:`TransformFlag<enum_CopyTransformModifier3D_TransformFlag>`\]\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_copy_flags>`
 
-Sets the flags to process the transform operations. If the flag is valid, the transform operation is processed.
+Thiết lập các cờ để xử lý các thao tác biến đổi. Nếu cờ hợp lệ, thao tác biến đổi sẽ được xử lý.
 
-\ **Note:** If the rotation is valid for only one axis, it respects the roll of the valid axis. If the rotation is valid for two axes, it discards the roll of the invalid axis.
+\ **Lưu ý:** Nếu phép xoay chỉ hợp lệ trên một trục, phép xoay sẽ giữ nguyên roll của trục hợp lệ. Nếu phép xoay hợp lệ trên hai trục, phép xoay sẽ loại bỏ roll của trục không hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -527,7 +527,7 @@ Sets the flags to process the transform operations. If the flag is valid, the tr
 
 |void| **set_copy_position**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_copy_position>`
 
-If sets ``enabled`` to ``true``, the position will be copied.
+Nếu đặt ``enabled`` thành ``true``, vị trí sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -539,7 +539,7 @@ If sets ``enabled`` to ``true``, the position will be copied.
 
 |void| **set_copy_rotation**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_copy_rotation>`
 
-If sets ``enabled`` to ``true``, the rotation will be copied.
+Nếu đặt ``enabled`` thành ``true``, phép xoay sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -551,7 +551,7 @@ If sets ``enabled`` to ``true``, the rotation will be copied.
 
 |void| **set_copy_scale**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_copy_scale>`
 
-If sets ``enabled`` to ``true``, the scale will be copied.
+Nếu đặt ``enabled`` thành ``true``, tỷ lệ sẽ được sao chép.
 
 .. rst-class:: classref-item-separator
 
@@ -563,11 +563,11 @@ If sets ``enabled`` to ``true``, the scale will be copied.
 
 |void| **set_invert_flags**\ (\ index\: :ref:`int<class_int>`, axis_flags\: |bitfield|\[:ref:`AxisFlag<enum_CopyTransformModifier3D_AxisFlag>`\]\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_invert_flags>`
 
-Sets the flags to inverte axes. If the flag is valid, the axis is copied.
+Thiết lập các cờ để đảo ngược các trục. Nếu cờ hợp lệ, trục sẽ được sao chép.
 
-\ **Note:** An inverted scale means an inverse number, not a negative scale. For example, inverting ``2.0`` means ``0.5``.
+\ **Lưu ý:** Scale đảo ngược nghĩa là một số nghịch đảo, không phải scale âm. Ví dụ, đảo ngược ``2.0`` có nghĩa là ``0.5``.
 
-\ **Note:** An inverted rotation flips the elements of the quaternion. For example, a two-axis inversion will flip the roll of each axis, and a three-axis inversion will flip the final orientation. However, be aware that flipping only one axis may cause unintended rotation by the unflipped axes, due to the characteristics of the quaternion.
+\ **Lưu ý:** Rotation đảo ngược sẽ lật các phần tử của quaternion. Ví dụ, đảo ngược hai trục sẽ lật roll của từng trục, còn đảo ngược ba trục sẽ lật orientation cuối cùng. Tuy nhiên, hãy lưu ý rằng chỉ lật một trục có thể gây ra rotation ngoài ý muốn bởi các trục không bị lật, do đặc điểm của quaternion.
 
 .. rst-class:: classref-item-separator
 
@@ -579,18 +579,18 @@ Sets the flags to inverte axes. If the flag is valid, the axis is copied.
 
 |void| **set_relative**\ (\ index\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CopyTransformModifier3D_method_set_relative>`
 
-Sets relative option in the setting at ``index`` to ``enabled``.
+Đặt tùy chọn relative trong setting tại ``index`` thành ``enabled``.
 
-If sets ``enabled`` to ``true``, the extracted and applying transform is relative to the rest.
+Nếu đặt ``enabled`` thành ``true``, transform được trích xuất và áp dụng sẽ tương đối so với rest.
 
-If sets ``enabled`` to ``false``, the extracted transform is absolute.
+Nếu đặt ``enabled`` thành ``false``, transform được trích xuất là tuyệt đối.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override method này thì nó mới có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

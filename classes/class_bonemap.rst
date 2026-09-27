@@ -10,29 +10,29 @@
 BoneMap
 =======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Describes a mapping of bone names for retargeting :ref:`Skeleton3D<class_Skeleton3D>` into common names defined by a :ref:`SkeletonProfile<class_SkeletonProfile>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This class contains a dictionary that uses a list of bone names in :ref:`SkeletonProfile<class_SkeletonProfile>` as key names.
-
-By assigning the actual :ref:`Skeleton3D<class_Skeleton3D>` bone name as the key value, it maps the :ref:`Skeleton3D<class_Skeleton3D>` to the :ref:`SkeletonProfile<class_SkeletonProfile>`.
+Mô tả ánh xạ tên xương để retarget :ref:`Skeleton3D<class_Skeleton3D>` thành các tên thông dụng được xác định bởi một :ref:`SkeletonProfile<class_SkeletonProfile>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp này chứa một dictionary sử dụng danh sách tên xương trong :ref:`SkeletonProfile<class_SkeletonProfile>` làm tên khóa.
+
+Bằng cách gán tên xương :ref:`Skeleton3D<class_Skeleton3D>` thực tế làm giá trị khóa, nó ánh xạ :ref:`Skeleton3D<class_Skeleton3D>` tới :ref:`SkeletonProfile<class_SkeletonProfile>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Retargeting 3D Skeletons <../tutorials/assets_pipeline/retargeting_3d_skeletons>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -44,8 +44,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -64,8 +64,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_BoneMap_signal_bone_map_updated:
 
@@ -73,7 +73,7 @@ Signals
 
 **bone_map_updated**\ (\ ) :ref:`🔗<class_BoneMap_signal_bone_map_updated>`
 
-This signal is emitted when change the key value in the **BoneMap**. This is used to validate mapping and to update **BoneMap** editor.
+Tín hiệu này được phát ra khi giá trị khóa trong **BoneMap** thay đổi. Tín hiệu này được dùng để xác thực ánh xạ và cập nhật trình chỉnh sửa **BoneMap**.
 
 .. rst-class:: classref-item-separator
 
@@ -85,7 +85,7 @@ This signal is emitted when change the key value in the **BoneMap**. This is use
 
 **profile_updated**\ (\ ) :ref:`🔗<class_BoneMap_signal_profile_updated>`
 
-This signal is emitted when change the value in profile or change the reference of profile. This is used to update key names in the **BoneMap** and to redraw the **BoneMap** editor.
+Tín hiệu này được phát ra khi thay đổi giá trị trong profile hoặc thay đổi tham chiếu của profile. Tín hiệu này được dùng để cập nhật tên khóa trong **BoneMap** và vẽ lại trình chỉnh sửa **BoneMap**.
 
 .. rst-class:: classref-section-separator
 
@@ -93,21 +93,21 @@ This signal is emitted when change the value in profile or change the reference 
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_BoneMap_property_profile:
 
 .. rst-class:: classref-property
 
-:ref:`SkeletonProfile<class_SkeletonProfile>` **profile** :ref:`🔗<class_BoneMap_property_profile>`
+:ref:`SkeletonProfile<class_SkeletonProfile>` **profile** :ref:`🔗 <class_BoneMap_property_profile>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_profile**\ (\ value\: :ref:`SkeletonProfile<class_SkeletonProfile>`\ )
 - :ref:`SkeletonProfile<class_SkeletonProfile>` **get_profile**\ (\ )
 
-A :ref:`SkeletonProfile<class_SkeletonProfile>` of the mapping target. Key names in the **BoneMap** are synchronized with it.
+Một :ref:`SkeletonProfile<class_SkeletonProfile>` của mapping target. Các tên khóa trong **BoneMap** được đồng bộ với nó.
 
 .. rst-class:: classref-section-separator
 
@@ -115,8 +115,8 @@ A :ref:`SkeletonProfile<class_SkeletonProfile>` of the mapping target. Key names
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_BoneMap_method_find_profile_bone_name:
 
@@ -124,9 +124,9 @@ Method Descriptions
 
 :ref:`StringName<class_StringName>` **find_profile_bone_name**\ (\ skeleton_bone_name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_BoneMap_method_find_profile_bone_name>`
 
-Returns a profile bone name having ``skeleton_bone_name``. If not found, an empty :ref:`StringName<class_StringName>` will be returned.
+Trả về tên bone của profile có ``skeleton_bone_name``. Nếu không tìm thấy, một :ref:`StringName<class_StringName>` rỗng sẽ được trả về.
 
-In the retargeting process, the returned bone name is the bone name of the target skeleton.
+Trong quá trình retargeting, tên bone được trả về là tên bone của skeleton đích.
 
 .. rst-class:: classref-item-separator
 
@@ -138,9 +138,9 @@ In the retargeting process, the returned bone name is the bone name of the targe
 
 :ref:`StringName<class_StringName>` **get_skeleton_bone_name**\ (\ profile_bone_name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_BoneMap_method_get_skeleton_bone_name>`
 
-Returns a skeleton bone name is mapped to ``profile_bone_name``.
+Trả về tên xương của skeleton được ánh xạ tới ``profile_bone_name``.
 
-In the retargeting process, the returned bone name is the bone name of the source skeleton.
+Trong quá trình retargeting, tên xương được trả về là tên xương của skeleton nguồn.
 
 .. rst-class:: classref-item-separator
 
@@ -152,16 +152,16 @@ In the retargeting process, the returned bone name is the bone name of the sourc
 
 |void| **set_skeleton_bone_name**\ (\ profile_bone_name\: :ref:`StringName<class_StringName>`, skeleton_bone_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_BoneMap_method_set_skeleton_bone_name>`
 
-Maps a skeleton bone name to ``profile_bone_name``.
+Ánh xạ tên xương của skeleton tới ``profile_bone_name``.
 
-In the retargeting process, the setting bone name is the bone name of the source skeleton.
+Trong quá trình retargeting, tên xương được thiết lập là tên xương của skeleton nguồn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

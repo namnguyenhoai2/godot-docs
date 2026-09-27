@@ -10,41 +10,41 @@
 NavigationRegion3D
 ==================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A traversable 3D region that :ref:`NavigationAgent3D<class_NavigationAgent3D>`\ s can use for pathfinding.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A traversable 3D region based on a :ref:`NavigationMesh<class_NavigationMesh>` that :ref:`NavigationAgent3D<class_NavigationAgent3D>`\ s can use for pathfinding.
-
-Two regions can be connected to each other if they share a similar edge. You can set the minimum distance between two vertices required to connect two edges by using :ref:`NavigationServer3D.map_set_edge_connection_margin()<class_NavigationServer3D_method_map_set_edge_connection_margin>`.
-
-\ **Note:** Overlapping two regions' navigation meshes is not enough for connecting two regions. They must share a similar edge.
-
-The cost of entering this region from another region can be controlled with the :ref:`enter_cost<class_NavigationRegion3D_property_enter_cost>` value.
-
-\ **Note:** This value is not added to the path cost when the start position is already inside this region.
-
-The cost of traveling distances inside this region can be controlled with the :ref:`travel_cost<class_NavigationRegion3D_property_travel_cost>` multiplier.
-
-\ **Note:** This node caches changes to its properties, so if you make changes to the underlying region :ref:`RID<class_RID>` in :ref:`NavigationServer3D<class_NavigationServer3D>`, they will not be reflected in this node's properties.
+Một vùng 3D có thể đi qua mà :ref:`NavigationAgent3D<class_NavigationAgent3D>`\ s có thể sử dụng để tìm đường.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một vùng 3D có thể đi qua dựa trên một :ref:`NavigationMesh<class_NavigationMesh>` mà :ref:`NavigationAgent3D<class_NavigationAgent3D>`\ s có thể sử dụng để tìm đường.
+
+Hai vùng có thể được kết nối với nhau nếu chúng có chung một cạnh tương tự. Bạn có thể thiết lập khoảng cách tối thiểu giữa hai đỉnh cần thiết để kết nối hai cạnh bằng cách sử dụng :ref:`NavigationServer3D.map_set_edge_connection_margin()<class_NavigationServer3D_method_map_set_edge_connection_margin>`.
+
+\ **Lưu ý:** Việc chồng lấp navigation mesh của hai vùng là chưa đủ để kết nối chúng. Chúng phải có chung một cạnh tương tự.
+
+Chi phí khi đi vào vùng này từ một vùng khác có thể được kiểm soát bằng giá trị :ref:`enter_cost<class_NavigationRegion3D_property_enter_cost>`.
+
+\ **Lưu ý:** Giá trị này không được cộng vào chi phí đường đi khi vị trí bắt đầu đã nằm trong vùng này.
+
+Chi phí di chuyển qua các khoảng cách bên trong vùng này có thể được kiểm soát bằng hệ số :ref:`travel_cost<class_NavigationRegion3D_property_travel_cost>`.
+
+\ **Lưu ý:** Node này lưu vào bộ nhớ đệm các thay đổi đối với thuộc tính của nó, vì vậy nếu bạn thay đổi vùng nền tảng :ref:`RID<class_RID>` trong :ref:`NavigationServer3D<class_NavigationServer3D>`, những thay đổi đó sẽ không được phản ánh trong các thuộc tính của node này.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using NavigationRegions <../tutorials/navigation/navigation_using_navigationregions>`
+- :doc:`Sử dụng NavigationRegions <../tutorials/navigation/navigation_using_navigationregions>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -66,8 +66,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -98,8 +98,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_NavigationRegion3D_signal_bake_finished:
 
@@ -107,7 +107,7 @@ Signals
 
 **bake_finished**\ (\ ) :ref:`🔗<class_NavigationRegion3D_signal_bake_finished>`
 
-Notifies when the navigation mesh bake operation is completed.
+Thông báo khi thao tác bake navigation mesh hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -119,7 +119,7 @@ Notifies when the navigation mesh bake operation is completed.
 
 **navigation_mesh_changed**\ (\ ) :ref:`🔗<class_NavigationRegion3D_signal_navigation_mesh_changed>`
 
-Notifies when the :ref:`NavigationMesh<class_NavigationMesh>` has changed.
+Thông báo khi :ref:`NavigationMesh<class_NavigationMesh>` đã thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -127,8 +127,8 @@ Notifies when the :ref:`NavigationMesh<class_NavigationMesh>` has changed.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_NavigationRegion3D_property_enabled:
 
@@ -141,7 +141,7 @@ Property Descriptions
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-Determines if the **NavigationRegion3D** is enabled or disabled.
+Xác định xem **NavigationRegion3D** được bật hay tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Determines if the **NavigationRegion3D** is enabled or disabled.
 - |void| **set_enter_cost**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_enter_cost**\ (\ )
 
-When pathfinding enters this region's navigation mesh from another regions navigation mesh the :ref:`enter_cost<class_NavigationRegion3D_property_enter_cost>` value is added to the path distance for determining the shortest path.
+Khi tìm đường đi vào lưới điều hướng của vùng này từ lưới điều hướng của một vùng khác, giá trị :ref:`enter_cost<class_NavigationRegion3D_property_enter_cost>` được cộng vào khoảng cách đường đi để xác định đường đi ngắn nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ When pathfinding enters this region's navigation mesh from another regions navig
 - |void| **set_navigation_layers**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_navigation_layers**\ (\ )
 
-A bitfield determining all navigation layers the region belongs to. These navigation layers can be checked upon when requesting a path with :ref:`NavigationServer3D.map_get_path()<class_NavigationServer3D_method_map_get_path>`.
+Một trường bit xác định tất cả các lớp điều hướng mà vùng này thuộc về. Có thể kiểm tra các lớp điều hướng này khi yêu cầu đường đi bằng :ref:`NavigationServer3D.map_get_path()<class_NavigationServer3D_method_map_get_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -185,14 +185,14 @@ A bitfield determining all navigation layers the region belongs to. These naviga
 
 .. rst-class:: classref-property
 
-:ref:`NavigationMesh<class_NavigationMesh>` **navigation_mesh** :ref:`🔗<class_NavigationRegion3D_property_navigation_mesh>`
+:ref:`NavigationMesh<class_NavigationMesh>` **navigation_mesh** :ref:`🔗 <class_NavigationRegion3D_property_navigation_mesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_navigation_mesh**\ (\ value\: :ref:`NavigationMesh<class_NavigationMesh>`\ )
 - :ref:`NavigationMesh<class_NavigationMesh>` **get_navigation_mesh**\ (\ )
 
-The :ref:`NavigationMesh<class_NavigationMesh>` resource to use.
+Tài nguyên :ref:`NavigationMesh<class_NavigationMesh>` cần sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ The :ref:`NavigationMesh<class_NavigationMesh>` resource to use.
 - |void| **set_travel_cost**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_travel_cost**\ (\ )
 
-When pathfinding moves inside this region's navigation mesh the traveled distances are multiplied with :ref:`travel_cost<class_NavigationRegion3D_property_travel_cost>` for determining the shortest path.
+Khi tìm đường di chuyển bên trong navigation mesh của vùng này, các khoảng cách đã di chuyển được nhân với :ref:`travel_cost<class_NavigationRegion3D_property_travel_cost>` để xác định đường đi ngắn nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ When pathfinding moves inside this region's navigation mesh the traveled distanc
 - |void| **set_use_edge_connections**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_edge_connections**\ (\ )
 
-If enabled the navigation region will use edge connections to connect with other navigation regions within proximity of the navigation map edge connection margin.
+Nếu được bật, navigation region sẽ sử dụng các kết nối cạnh để kết nối với các navigation region khác nằm trong phạm vi margin kết nối cạnh của navigation map.
 
 .. rst-class:: classref-section-separator
 
@@ -234,8 +234,8 @@ If enabled the navigation region will use edge connections to connect with other
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationRegion3D_method_bake_navigation_mesh:
 
@@ -243,7 +243,7 @@ Method Descriptions
 
 |void| **bake_navigation_mesh**\ (\ on_thread\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_NavigationRegion3D_method_bake_navigation_mesh>`
 
-Bakes the :ref:`NavigationMesh<class_NavigationMesh>`. If ``on_thread`` is set to ``true`` (default), the baking is done on a separate thread. Baking on separate thread is useful because navigation baking is not a cheap operation. When it is completed, it automatically sets the new :ref:`NavigationMesh<class_NavigationMesh>`. Please note that baking on separate thread may be very slow if geometry is parsed from meshes as async access to each mesh involves heavy synchronization. Also, please note that baking on a separate thread is automatically disabled on operating systems that cannot use threads (such as Web with threads disabled).
+Bake :ref:`NavigationMesh<class_NavigationMesh>`. Nếu ``on_thread`` được đặt thành ``true`` (mặc định), quá trình bake sẽ được thực hiện trên một luồng riêng. Việc bake trên luồng riêng rất hữu ích vì baking navigation không phải là thao tác nhẹ. Khi hoàn tất, thao tác này sẽ tự động đặt :ref:`NavigationMesh<class_NavigationMesh>` mới. Lưu ý rằng việc bake trên luồng riêng có thể rất chậm nếu hình học được phân tích từ các mesh, vì việc truy cập bất đồng bộ vào từng mesh đòi hỏi đồng bộ hóa nặng. Ngoài ra, hãy lưu ý rằng việc bake trên luồng riêng sẽ tự động bị vô hiệu hóa trên các hệ điều hành không thể sử dụng luồng (chẳng hạn như Web khi đã tắt luồng).
 
 .. rst-class:: classref-item-separator
 
@@ -255,7 +255,7 @@ Bakes the :ref:`NavigationMesh<class_NavigationMesh>`. If ``on_thread`` is set t
 
 :ref:`AABB<class_AABB>` **get_bounds**\ (\ ) |const| :ref:`🔗<class_NavigationRegion3D_method_get_bounds>`
 
-Returns the axis-aligned bounding box for the region's transformed navigation mesh.
+Trả về bounding box căn chỉnh theo trục cho navigation mesh đã được biến đổi của vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Returns the axis-aligned bounding box for the region's transformed navigation me
 
 :ref:`bool<class_bool>` **get_navigation_layer_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationRegion3D_method_get_navigation_layer_value>`
 
-Returns whether or not the specified layer of the :ref:`navigation_layers<class_NavigationRegion3D_property_navigation_layers>` bitmask is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc lớp được chỉ định của bitmask :ref:`navigation_layers<class_NavigationRegion3D_property_navigation_layers>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -279,7 +279,7 @@ Returns whether or not the specified layer of the :ref:`navigation_layers<class_
 
 :ref:`RID<class_RID>` **get_navigation_map**\ (\ ) |const| :ref:`🔗<class_NavigationRegion3D_method_get_navigation_map>`
 
-Returns the current navigation map :ref:`RID<class_RID>` used by this region.
+Trả về :ref:`RID<class_RID>` navigation map hiện tại được vùng này sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -291,9 +291,9 @@ Returns the current navigation map :ref:`RID<class_RID>` used by this region.
 
 :ref:`RID<class_RID>` **get_region_rid**\ (\ ) |const| :ref:`🔗<class_NavigationRegion3D_method_get_region_rid>`
 
-**Deprecated:** Use :ref:`get_rid()<class_NavigationRegion3D_method_get_rid>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`get_rid()<class_NavigationRegion3D_method_get_rid>`.
 
-Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Trả về :ref:`RID<class_RID>` của vùng này trên :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D
 
 :ref:`RID<class_RID>` **get_rid**\ (\ ) |const| :ref:`🔗<class_NavigationRegion3D_method_get_rid>`
 
-Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D<class_NavigationServer3D>`. Combined with :ref:`NavigationServer3D.map_get_closest_point_owner()<class_NavigationServer3D_method_map_get_closest_point_owner>` can be used to identify the **NavigationRegion3D** closest to a point on the merged navigation map.
+Trả về :ref:`RID<class_RID>` của vùng này trên :ref:`NavigationServer3D<class_NavigationServer3D>`. Kết hợp với :ref:`NavigationServer3D.map_get_closest_point_owner()<class_NavigationServer3D_method_map_get_closest_point_owner>`, có thể dùng để xác định **NavigationRegion3D** gần một điểm nhất trên bản đồ điều hướng đã hợp nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ Returns the :ref:`RID<class_RID>` of this region on the :ref:`NavigationServer3D
 
 :ref:`bool<class_bool>` **is_baking**\ (\ ) |const| :ref:`🔗<class_NavigationRegion3D_method_is_baking>`
 
-Returns ``true`` when the :ref:`NavigationMesh<class_NavigationMesh>` is being baked on a background thread.
+Trả về ``true`` khi :ref:`NavigationMesh<class_NavigationMesh>` đang được bake trên một background thread.
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ Returns ``true`` when the :ref:`NavigationMesh<class_NavigationMesh>` is being b
 
 |void| **set_navigation_layer_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationRegion3D_method_set_navigation_layer_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`navigation_layers<class_NavigationRegion3D_property_navigation_layers>` bitmask, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong bitmask :ref:`navigation_layers<class_NavigationRegion3D_property_navigation_layers>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -341,14 +341,14 @@ Based on ``value``, enables or disables the specified layer in the :ref:`navigat
 
 |void| **set_navigation_map**\ (\ navigation_map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationRegion3D_method_set_navigation_map>`
 
-Sets the :ref:`RID<class_RID>` of the navigation map this region should use. By default the region will automatically join the :ref:`World3D<class_World3D>` default navigation map so this function is only required to override the default map.
+Thiết lập :ref:`RID<class_RID>` của bản đồ điều hướng mà vùng này nên sử dụng. Theo mặc định, vùng này sẽ tự động tham gia bản đồ điều hướng mặc định :ref:`World3D<class_World3D>`, vì vậy chỉ cần hàm này để ghi đè bản đồ mặc định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

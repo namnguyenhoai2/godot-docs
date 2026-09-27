@@ -10,36 +10,36 @@
 Basis
 =====
 
-A 3×3 matrix for representing 3D rotation and scale.
+Ma trận 3×3 dùng để biểu diễn phép xoay và tỷ lệ 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Basis** built-in :ref:`Variant<class_Variant>` type is a 3×3 `matrix <https://en.wikipedia.org/wiki/Matrix_(mathematics)>`__ used to represent 3D rotation, scale, and shear. It is frequently used within a :ref:`Transform3D<class_Transform3D>`.
+Kiểu **Basis** tích hợp sẵn :ref:`Variant<class_Variant>` là một `ma trận <https://en.wikipedia.org/wiki/Matrix_(mathematics)>`__ 3×3 được dùng để biểu diễn phép xoay, tỷ lệ và shear 3D. Kiểu này thường được sử dụng bên trong một :ref:`Transform3D<class_Transform3D>`.
 
-A **Basis** is composed by 3 axis vectors, each representing a column of the matrix: :ref:`x<class_Basis_property_x>`, :ref:`y<class_Basis_property_y>`, and :ref:`z<class_Basis_property_z>`. The length of each axis (:ref:`Vector3.length()<class_Vector3_method_length>`) influences the basis's scale, while the direction of all axes influence the rotation. Usually, these axes are perpendicular to one another. However, when you rotate any axis individually, the basis becomes sheared. Applying a sheared basis to a 3D model will make the model appear distorted.
+Một **Basis** được tạo thành từ 3 vector trục, mỗi vector biểu diễn một cột của ma trận: :ref:`x<class_Basis_property_x>`, :ref:`y<class_Basis_property_y>` và :ref:`z<class_Basis_property_z>`. Độ dài của mỗi trục (:ref:`Vector3.length()<class_Vector3_method_length>`) ảnh hưởng đến tỷ lệ của basis, còn hướng của tất cả các trục ảnh hưởng đến phép xoay. Thông thường, các trục này vuông góc với nhau. Tuy nhiên, khi bạn xoay riêng lẻ bất kỳ trục nào, basis sẽ bị shear. Việc áp dụng một basis bị shear cho mô hình 3D sẽ khiến mô hình trông bị biến dạng.
 
-A **Basis** is:
+Một **Basis** là:
 
-- **Orthogonal** if its axes are perpendicular to each other.
+- **Vuông góc** nếu các trục của nó vuông góc với nhau.
 
-- **Normalized** if the length of every axis is ``1.0``.
+- **Đã chuẩn hóa** nếu độ dài của mọi trục là ``1.0``.
 
-- **Uniform** if all axes share the same length (see :ref:`get_scale()<class_Basis_method_get_scale>`).
+- **Đồng nhất** nếu tất cả các trục có cùng độ dài (xem :ref:`get_scale()<class_Basis_method_get_scale>`).
 
-- **Orthonormal** if it is both orthogonal and normalized, which allows it to only represent rotations (see :ref:`orthonormalized()<class_Basis_method_orthonormalized>`).
+- **Trực chuẩn** nếu vừa trực giao vừa được chuẩn hóa, nhờ đó nó chỉ có thể biểu diễn các phép xoay (xem :ref:`orthonormalized()<class_Basis_method_orthonormalized>`).
 
-- **Conformal** if it is both orthogonal and uniform, which ensures it is not distorted.
+- **Đồng dạng** nếu vừa trực giao vừa đồng nhất, đảm bảo nó không bị biến dạng.
 
-For a general introduction, see the :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>` tutorial.
+Để có phần giới thiệu tổng quan, hãy xem tutorial :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>`.
 
-\ **Note:** Godot uses a `right-handed coordinate system <https://en.wikipedia.org/wiki/Right-hand_rule>`__, which is a common standard. For directions, the convention for built-in types like :ref:`Camera3D<class_Camera3D>` is for -Z to point forward (+X is right, +Y is up, and +Z is back). Other objects may use different direction conventions. For more information, see the `3D asset direction conventions <../tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html#d-asset-direction-conventions>`__ tutorial.
+\ **Lưu ý:** Godot sử dụng `hệ tọa độ thuận <https://en.wikipedia.org/wiki/Right-hand_rule>`__, đây là một tiêu chuẩn phổ biến. Đối với các hướng, quy ước cho những kiểu tích hợp như :ref:`Camera3D<class_Camera3D>` là -Z hướng về phía trước (+X là bên phải, +Y hướng lên trên và +Z hướng về phía sau). Các đối tượng khác có thể sử dụng những quy ước hướng khác. Để biết thêm thông tin, hãy xem tutorial `3D asset direction conventions <../tutorials/assets_pipeline/importing_3d_scenes/model_export_considerations.html#d-asset-direction-conventions>`__.
 
-\ **Note:** The basis matrices are exposed as `column-major <https://www.mindcontrol.org/~hplus/graphics/matrix-layout.html>`__ order, which is the same as OpenGL. However, they are stored internally in row-major order, which is the same as DirectX.
+\ **Lưu ý:** Các ma trận basis được hiển thị theo thứ tự `column-major <https://www.mindcontrol.org/~hplus/graphics/matrix-layout.html>`__, giống như trong OpenGL. Tuy nhiên, chúng được lưu trữ nội bộ theo thứ tự row-major, giống như trong DirectX.
 
-\ **Note:** In a boolean context, a basis will evaluate to ``false`` if it's equal to :ref:`IDENTITY<class_Basis_constant_IDENTITY>`. Otherwise, a basis will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một basis sẽ được đánh giá là ``false`` nếu nó bằng :ref:`IDENTITY<class_Basis_constant_IDENTITY>`. Nếu không, basis sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -47,26 +47,26 @@ For a general introduction, see the :doc:`Matrices and transforms <../tutorials/
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Math documentation index <../tutorials/math/index>`
+- :doc:`Chỉ mục tài liệu Math <../tutorials/math/index>`
 
-- :doc:`Matrices and transforms <../tutorials/math/matrices_and_transforms>`
+- :doc:`Ma trận và phép biến đổi <../tutorials/math/matrices_and_transforms>`
 
-- :doc:`Using 3D transforms <../tutorials/3d/using_transforms>`
+- :doc:`Sử dụng phép biến đổi 3D <../tutorials/3d/using_transforms>`
 
-- `Matrix Transform Demo <https://godotengine.org/asset-library/asset/2787>`__
+- `Bản demo biến đổi ma trận <https://godotengine.org/asset-library/asset/2787>`__
 
-- `3D Platformer Demo <https://godotengine.org/asset-library/asset/2748>`__
+- `Bản demo Platformer 3D <https://godotengine.org/asset-library/asset/2748>`__
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản demo Voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
-- `2.5D Game Demo <https://godotengine.org/asset-library/asset/2783>`__
+- `Bản demo trò chơi 2.5D <https://godotengine.org/asset-library/asset/2783>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -82,7 +82,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -102,8 +102,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -154,31 +154,31 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator !=<class_Basis_operator_neq_Basis>`\ (\ right\: :ref:`Basis<class_Basis>`\ )      |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`Basis<class_Basis>`     | :ref:`operator *<class_Basis_operator_mul_Basis>`\ (\ right\: :ref:`Basis<class_Basis>`\ )       |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>` | :ref:`operator *<class_Basis_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`Basis<class_Basis>`     | :ref:`operator *<class_Basis_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )       |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`Basis<class_Basis>`     | :ref:`operator *<class_Basis_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )             |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`Basis<class_Basis>`     | :ref:`operator /<class_Basis_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )       |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`Basis<class_Basis>`     | :ref:`operator /<class_Basis_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )             |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | :ref:`operator ==<class_Basis_operator_eq_Basis>`\ (\ right\: :ref:`Basis<class_Basis>`\ )       |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>` | :ref:`operator []<class_Basis_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )            |
-   +-------------------------------+--------------------------------------------------------------------------------------------------+
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator != <class_Basis_operator_neq_Basis>`\ (\ right\: :ref:`Basis<class_Basis>`\ )      |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`Basis<class_Basis>`     | :ref:`operator * <class_Basis_operator_mul_Basis>`\ (\ right\: :ref:`Basis<class_Basis>`\ )       |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`operator * <class_Basis_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`Basis<class_Basis>`     | :ref:`operator * <class_Basis_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )       |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`Basis<class_Basis>`     | :ref:`operator * <class_Basis_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )             |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`Basis<class_Basis>`     | :ref:`operator / <class_Basis_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )       |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`Basis<class_Basis>`     | :ref:`operator / <class_Basis_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )             |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | :ref:`operator == <class_Basis_operator_eq_Basis>`\ (\ right\: :ref:`Basis<class_Basis>`\ )       |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>` | :ref:`operator [] <class_Basis_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )            |
+   +-------------------------------+---------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -186,8 +186,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Basis_constant_IDENTITY:
 
@@ -195,13 +195,13 @@ Constants
 
 **IDENTITY** = ``Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)`` :ref:`🔗<class_Basis_constant_IDENTITY>`
 
-The identity **Basis**. This is an orthonormal basis with no rotation, no shear, and a scale of :ref:`Vector3.ONE<class_Vector3_constant_ONE>`. This also means that:
+Phép đồng nhất **Basis**. Đây là một cơ sở trực chuẩn không có phép quay, không có shear và có tỷ lệ :ref:`Vector3.ONE<class_Vector3_constant_ONE>`. Điều này cũng có nghĩa là:
 
-- The :ref:`x<class_Basis_property_x>` points right (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`);
+- :ref:`x<class_Basis_property_x>` hướng sang phải (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`);
 
-- The :ref:`y<class_Basis_property_y>` points up (:ref:`Vector3.UP<class_Vector3_constant_UP>`);
+- :ref:`y<class_Basis_property_y>` hướng lên trên (:ref:`Vector3.UP<class_Vector3_constant_UP>`);
 
-- The :ref:`z<class_Basis_property_z>` points back (:ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
+- :ref:`z<class_Basis_property_z>` hướng ra phía sau (:ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
 
 ::
 
@@ -216,9 +216,9 @@ The identity **Basis**. This is an orthonormal basis with no rotation, no shear,
     # | 0 | 1 | 0
     # | 0 | 0 | 1
 
-If a :ref:`Vector3<class_Vector3>` or another **Basis** is transformed (multiplied) by this constant, no transformation occurs.
+Nếu một :ref:`Vector3<class_Vector3>` hoặc một **Basis** khác được biến đổi (nhân) với hằng số này thì sẽ không có phép biến đổi nào xảy ra.
 
-\ **Note:** In GDScript, this constant is equivalent to creating a :ref:`Basis<class_Basis_constructor_Basis>` without any arguments. It can be used to make your code clearer, and for consistency with C#.
+\ **Lưu ý:** Trong GDScript, hằng số này tương đương với việc tạo một :ref:`Basis<class_Basis_constructor_Basis>` mà không truyền đối số nào. Hằng số này có thể được dùng để làm cho mã của bạn rõ ràng hơn và để nhất quán với C#.
 
 .. _class_Basis_constant_FLIP_X:
 
@@ -226,9 +226,9 @@ If a :ref:`Vector3<class_Vector3>` or another **Basis** is transformed (multipli
 
 **FLIP_X** = ``Basis(-1, 0, 0, 0, 1, 0, 0, 0, 1)`` :ref:`🔗<class_Basis_constant_FLIP_X>`
 
-When any basis is multiplied by :ref:`FLIP_X<class_Basis_constant_FLIP_X>`, it negates all components of the :ref:`x<class_Basis_property_x>` axis (the X column).
+Khi bất kỳ basis nào được nhân với :ref:`FLIP_X<class_Basis_constant_FLIP_X>`, tất cả các thành phần của trục :ref:`x<class_Basis_property_x>` (cột X) sẽ bị đổi dấu.
 
-When :ref:`FLIP_X<class_Basis_constant_FLIP_X>` is multiplied by any basis, it negates the :ref:`Vector3.x<class_Vector3_property_x>` component of all axes (the X row).
+Khi :ref:`FLIP_X<class_Basis_constant_FLIP_X>` được nhân với bất kỳ basis nào, thành phần :ref:`Vector3.x<class_Vector3_property_x>` của tất cả các trục (hàng X) sẽ bị đổi dấu.
 
 .. _class_Basis_constant_FLIP_Y:
 
@@ -236,9 +236,9 @@ When :ref:`FLIP_X<class_Basis_constant_FLIP_X>` is multiplied by any basis, it n
 
 **FLIP_Y** = ``Basis(1, 0, 0, 0, -1, 0, 0, 0, 1)`` :ref:`🔗<class_Basis_constant_FLIP_Y>`
 
-When any basis is multiplied by :ref:`FLIP_Y<class_Basis_constant_FLIP_Y>`, it negates all components of the :ref:`y<class_Basis_property_y>` axis (the Y column).
+Khi bất kỳ basis nào được nhân với :ref:`FLIP_Y<class_Basis_constant_FLIP_Y>`, tất cả các thành phần của trục :ref:`y<class_Basis_property_y>` (cột Y) sẽ bị đổi dấu.
 
-When :ref:`FLIP_Y<class_Basis_constant_FLIP_Y>` is multiplied by any basis, it negates the :ref:`Vector3.y<class_Vector3_property_y>` component of all axes (the Y row).
+Khi :ref:`FLIP_Y<class_Basis_constant_FLIP_Y>` được nhân với bất kỳ basis nào, thành phần :ref:`Vector3.y<class_Vector3_property_y>` của tất cả các trục (hàng Y) sẽ bị đổi dấu.
 
 .. _class_Basis_constant_FLIP_Z:
 
@@ -246,9 +246,9 @@ When :ref:`FLIP_Y<class_Basis_constant_FLIP_Y>` is multiplied by any basis, it n
 
 **FLIP_Z** = ``Basis(1, 0, 0, 0, 1, 0, 0, 0, -1)`` :ref:`🔗<class_Basis_constant_FLIP_Z>`
 
-When any basis is multiplied by :ref:`FLIP_Z<class_Basis_constant_FLIP_Z>`, it negates all components of the :ref:`z<class_Basis_property_z>` axis (the Z column).
+Khi bất kỳ basis nào được nhân với :ref:`FLIP_Z<class_Basis_constant_FLIP_Z>`, tất cả các thành phần của trục :ref:`z<class_Basis_property_z>` (cột Z) sẽ bị đổi dấu.
 
-When :ref:`FLIP_Z<class_Basis_constant_FLIP_Z>` is multiplied by any basis, it negates the :ref:`Vector3.z<class_Vector3_property_z>` component of all axes (the Z row).
+Khi :ref:`FLIP_Z<class_Basis_constant_FLIP_Z>` được nhân với bất kỳ cơ sở nào, nó đảo dấu thành phần :ref:`Vector3.z<class_Vector3_property_z>` của tất cả các trục (hàng Z).
 
 .. rst-class:: classref-section-separator
 
@@ -256,8 +256,8 @@ When :ref:`FLIP_Z<class_Basis_constant_FLIP_Z>` is multiplied by any basis, it n
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Basis_property_x:
 
@@ -265,9 +265,9 @@ Property Descriptions
 
 :ref:`Vector3<class_Vector3>` **x** = ``Vector3(1, 0, 0)`` :ref:`🔗<class_Basis_property_x>`
 
-The basis's X axis, and the column ``0`` of the matrix.
+Trục X của cơ sở và cột ``0`` của ma trận.
 
-On the identity basis, this vector points right (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`).
+Trong cơ sở đơn vị, vector này hướng sang phải (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`).
 
 .. rst-class:: classref-item-separator
 
@@ -279,9 +279,9 @@ On the identity basis, this vector points right (:ref:`Vector3.RIGHT<class_Vecto
 
 :ref:`Vector3<class_Vector3>` **y** = ``Vector3(0, 1, 0)`` :ref:`🔗<class_Basis_property_y>`
 
-The basis's Y axis, and the column ``1`` of the matrix.
+Trục Y của cơ sở và cột ``1`` của ma trận.
 
-On the identity basis, this vector points up (:ref:`Vector3.UP<class_Vector3_constant_UP>`).
+Trong cơ sở đơn vị, vector này hướng lên trên (:ref:`Vector3.UP<class_Vector3_constant_UP>`).
 
 .. rst-class:: classref-item-separator
 
@@ -293,9 +293,9 @@ On the identity basis, this vector points up (:ref:`Vector3.UP<class_Vector3_con
 
 :ref:`Vector3<class_Vector3>` **z** = ``Vector3(0, 0, 1)`` :ref:`🔗<class_Basis_property_z>`
 
-The basis's Z axis, and the column ``2`` of the matrix.
+Trục Z của cơ sở và cột ``2`` của ma trận.
 
-On the identity basis, this vector points back (:ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
+Dựa trên cơ sở đơn vị, vector này hướng ngược trở lại (:ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
 
 .. rst-class:: classref-section-separator
 
@@ -303,8 +303,8 @@ On the identity basis, this vector points back (:ref:`Vector3.BACK<class_Vector3
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Basis_constructor_Basis:
 
@@ -312,9 +312,9 @@ Constructor Descriptions
 
 :ref:`Basis<class_Basis>` **Basis**\ (\ ) :ref:`🔗<class_Basis_constructor_Basis>`
 
-Constructs a **Basis** identical to :ref:`IDENTITY<class_Basis_constant_IDENTITY>`.
+Khởi tạo một **Basis** giống hệt :ref:`IDENTITY<class_Basis_constant_IDENTITY>`.
 
-\ **Note:** In C#, this constructs a **Basis** with all of its components set to :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`.
+\ **Lưu ý:** Trong C#, điều này khởi tạo một **Basis** với tất cả các thành phần được đặt thành :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`.
 
 .. rst-class:: classref-item-separator
 
@@ -324,7 +324,7 @@ Constructs a **Basis** identical to :ref:`IDENTITY<class_Basis_constant_IDENTITY
 
 :ref:`Basis<class_Basis>` **Basis**\ (\ from\: :ref:`Basis<class_Basis>`\ )
 
-Constructs a **Basis** as a copy of the given **Basis**.
+Khởi tạo một **Basis** dưới dạng bản sao của **Basis** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -334,9 +334,9 @@ Constructs a **Basis** as a copy of the given **Basis**.
 
 :ref:`Basis<class_Basis>` **Basis**\ (\ axis\: :ref:`Vector3<class_Vector3>`, angle\: :ref:`float<class_float>`\ )
 
-Constructs a **Basis** that only represents rotation, rotated around the ``axis`` by the given ``angle``, in radians. The axis must be a normalized vector.
+Khởi tạo một **Basis** chỉ biểu diễn phép xoay, xoay quanh ``axis`` một góc ``angle`` đã cho, tính bằng radian. Trục phải là một vector đã được chuẩn hóa.
 
-\ **Note:** This is the same as using :ref:`rotated()<class_Basis_method_rotated>` on the :ref:`IDENTITY<class_Basis_constant_IDENTITY>` basis. With more than one angle consider using :ref:`from_euler()<class_Basis_method_from_euler>`, instead.
+\ **Lưu ý:** Điều này tương đương với việc sử dụng :ref:`rotated()<class_Basis_method_rotated>` trên cơ sở :ref:`IDENTITY<class_Basis_constant_IDENTITY>`. Khi có nhiều hơn một góc, hãy cân nhắc sử dụng :ref:`from_euler()<class_Basis_method_from_euler>` thay vào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -346,9 +346,9 @@ Constructs a **Basis** that only represents rotation, rotated around the ``axis`
 
 :ref:`Basis<class_Basis>` **Basis**\ (\ from\: :ref:`Quaternion<class_Quaternion>`\ )
 
-Constructs a **Basis** that only represents rotation from the given :ref:`Quaternion<class_Quaternion>`.
+Tạo một **Basis** chỉ biểu diễn phép xoay từ :ref:`Quaternion<class_Quaternion>` đã cho.
 
-\ **Note:** Quaternions *only* store rotation, not scale. Because of this, conversions from **Basis** to :ref:`Quaternion<class_Quaternion>` cannot always be reversed.
+\ **Lưu ý:** Quaternion *chỉ* lưu trữ phép xoay, không lưu trữ scale. Vì vậy, không phải lúc nào cũng có thể đảo ngược việc chuyển đổi từ **Basis** sang :ref:`Quaternion<class_Quaternion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -358,7 +358,7 @@ Constructs a **Basis** that only represents rotation from the given :ref:`Quater
 
 :ref:`Basis<class_Basis>` **Basis**\ (\ x_axis\: :ref:`Vector3<class_Vector3>`, y_axis\: :ref:`Vector3<class_Vector3>`, z_axis\: :ref:`Vector3<class_Vector3>`\ )
 
-Constructs a **Basis** from 3 axis vectors. These are the columns of the basis matrix.
+Tạo một **Basis** từ 3 vector trục. Đây là các cột của ma trận cơ sở.
 
 .. rst-class:: classref-section-separator
 
@@ -366,8 +366,8 @@ Constructs a **Basis** from 3 axis vectors. These are the columns of the basis m
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Basis_method_determinant:
 
@@ -375,13 +375,13 @@ Method Descriptions
 
 :ref:`float<class_float>` **determinant**\ (\ ) |const| :ref:`🔗<class_Basis_method_determinant>`
 
-Returns the `determinant <https://en.wikipedia.org/wiki/Determinant>`__ of this basis's matrix. For advanced math, this number can be used to determine a few attributes:
+Trả về `định thức <https://en.wikipedia.org/wiki/Determinant>`__ của ma trận của cơ sở này. Trong toán học nâng cao, con số này có thể được dùng để xác định một số thuộc tính:
 
-- If the determinant is exactly ``0.0``, the basis is not invertible (see :ref:`inverse()<class_Basis_method_inverse>`).
+- Nếu định thức chính xác bằng ``0.0``, cơ sở không khả nghịch (xem :ref:`inverse()<class_Basis_method_inverse>`).
 
-- If the determinant is a negative number, the basis represents a negative scale.
+- Nếu định thức là một số âm, cơ sở biểu diễn một scale âm.
 
-\ **Note:** If the basis's scale is the same for every axis, its determinant is always that scale by the power of 3.
+\ **Lưu ý:** Nếu scale của basis giống nhau trên mọi trục, định thức của nó luôn bằng scale lũy thừa 3.
 
 .. rst-class:: classref-item-separator
 
@@ -393,34 +393,34 @@ Returns the `determinant <https://en.wikipedia.org/wiki/Determinant>`__ of this 
 
 :ref:`Basis<class_Basis>` **from_euler**\ (\ euler\: :ref:`Vector3<class_Vector3>`, order\: :ref:`int<class_int>` = 2\ ) |static| :ref:`🔗<class_Basis_method_from_euler>`
 
-Constructs a new **Basis** that only represents rotation from the given :ref:`Vector3<class_Vector3>` of `Euler angles <https://en.wikipedia.org/wiki/Euler_angles>`__, in radians.
+Tạo một **Basis** mới chỉ biểu diễn phép xoay từ :ref:`Vector3<class_Vector3>` `các góc Euler <https://en.wikipedia.org/wiki/Euler_angles>`__ đã cho, tính bằng radian.
 
-- The :ref:`Vector3.x<class_Vector3_property_x>` should contain the angle around the :ref:`x<class_Basis_property_x>` axis (pitch);
+- :ref:`Vector3.x<class_Vector3_property_x>` phải chứa góc quanh trục :ref:`x<class_Basis_property_x>` (pitch);
 
-- The :ref:`Vector3.y<class_Vector3_property_y>` should contain the angle around the :ref:`y<class_Basis_property_y>` axis (yaw);
+- :ref:`Vector3.y<class_Vector3_property_y>` phải chứa góc quanh trục :ref:`y<class_Basis_property_y>` (yaw);
 
-- The :ref:`Vector3.z<class_Vector3_property_z>` should contain the angle around the :ref:`z<class_Basis_property_z>` axis (roll).
+- :ref:`Vector3.z<class_Vector3_property_z>` phải chứa góc quanh trục :ref:`z<class_Basis_property_z>` (roll).
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Creates a Basis whose z axis points down.
+    # Tạo một Basis có trục z hướng xuống.
     var my_basis = Basis.from_euler(Vector3(TAU / 4, 0, 0))
 
-    print(my_basis.z) # Prints (0.0, -1.0, 0.0)
+    print(my_basis.z) # In ra (0.0, -1.0, 0.0)
 
  .. code-tab:: csharp
 
-    // Creates a Basis whose z axis points down.
+    // Tạo một Basis có trục z hướng xuống.
     var myBasis = Basis.FromEuler(new Vector3(Mathf.Tau / 4.0f, 0.0f, 0.0f));
 
-    GD.Print(myBasis.Z); // Prints (0, -1, 0)
+    GD.Print(myBasis.Z); // In ra (0, -1, 0)
 
 
 
-The order of each consecutive rotation can be changed with ``order`` (see :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` constants). In Godot, Euler angles always use intrinsic order. By default, the intrinsic YXZ convention is used (:ref:`@GlobalScope.EULER_ORDER_YXZ<class_@GlobalScope_constant_EULER_ORDER_YXZ>`): the basis rotates first around the local Y axis (yaw), then local X (pitch), and lastly local Z (roll). When using the opposite method :ref:`get_euler()<class_Basis_method_get_euler>` to decompose a rotation, this order is reversed.
+Thứ tự của mỗi phép xoay liên tiếp có thể được thay đổi bằng ``order`` (xem các hằng số :ref:`EulerOrder <enum_@GlobalScope_EulerOrder>`). Trong Godot, các góc Euler luôn sử dụng thứ tự nội tại. Theo mặc định, quy ước YXZ nội tại được sử dụng (:ref:`@GlobalScope.EULER_ORDER_YXZ <class_@GlobalScope_constant_EULER_ORDER_YXZ>`): basis xoay trước quanh trục Y cục bộ (yaw), sau đó quanh trục X cục bộ (pitch), và cuối cùng quanh trục Z cục bộ (roll). Khi sử dụng phương thức ngược lại :ref:`get_euler()<class_Basis_method_get_euler>` để phân rã một phép xoay, thứ tự này bị đảo ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -432,7 +432,7 @@ The order of each consecutive rotation can be changed with ``order`` (see :ref:`
 
 :ref:`Basis<class_Basis>` **from_scale**\ (\ scale\: :ref:`Vector3<class_Vector3>`\ ) |static| :ref:`🔗<class_Basis_method_from_scale>`
 
-Constructs a new **Basis** that only represents scale, with no rotation or shear, from the given ``scale`` vector.
+Tạo một **Basis** mới chỉ biểu diễn scale, không có rotation hoặc shear, từ vector ``scale`` đã cho.
 
 
 .. tabs::
@@ -441,21 +441,21 @@ Constructs a new **Basis** that only represents scale, with no rotation or shear
 
     var my_basis = Basis.from_scale(Vector3(2, 4, 8))
 
-    print(my_basis.x) # Prints (2.0, 0.0, 0.0)
-    print(my_basis.y) # Prints (0.0, 4.0, 0.0)
-    print(my_basis.z) # Prints (0.0, 0.0, 8.0)
+    print(my_basis.x) # In ra (2.0, 0.0, 0.0)
+    print(my_basis.y) # In ra (0.0, 4.0, 0.0)
+    print(my_basis.z) # In ra (0.0, 0.0, 8.0)
 
  .. code-tab:: csharp
 
     var myBasis = Basis.FromScale(new Vector3(2.0f, 4.0f, 8.0f));
 
-    GD.Print(myBasis.X); // Prints (2, 0, 0)
-    GD.Print(myBasis.Y); // Prints (0, 4, 0)
-    GD.Print(myBasis.Z); // Prints (0, 0, 8)
+    GD.Print(myBasis.X); // In ra (2, 0, 0)
+    GD.Print(myBasis.Y); // In ra (0, 4, 0)
+    GD.Print(myBasis.Z); // In ra (0, 0, 8)
 
 
 
-\ **Note:** In linear algebra, the matrix of this basis is also known as a `diagonal matrix <https://en.wikipedia.org/wiki/Diagonal_matrix>`__.
+\ **Lưu ý:** Trong đại số tuyến tính, ma trận của basis này còn được gọi là `ma trận đường chéo <https://en.wikipedia.org/wiki/Diagonal_matrix>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -467,21 +467,21 @@ Constructs a new **Basis** that only represents scale, with no rotation or shear
 
 :ref:`Vector3<class_Vector3>` **get_euler**\ (\ order\: :ref:`int<class_int>` = 2\ ) |const| :ref:`🔗<class_Basis_method_get_euler>`
 
-Returns this basis's rotation as a :ref:`Vector3<class_Vector3>` of `Euler angles <https://en.wikipedia.org/wiki/Euler_angles>`__, in radians. For the returned value:
+Trả về phép xoay của basis này dưới dạng một :ref:`Vector3<class_Vector3>` gồm `góc Euler <https://en.wikipedia.org/wiki/Euler_angles>`__, theo radian. Đối với giá trị trả về:
 
-- The :ref:`Vector3.x<class_Vector3_property_x>` contains the angle around the :ref:`x<class_Basis_property_x>` axis (pitch);
+- :ref:`Vector3.x<class_Vector3_property_x>` chứa góc quanh :ref:`x<class_Basis_property_x>` trục (pitch);
 
-- The :ref:`Vector3.y<class_Vector3_property_y>` contains the angle around the :ref:`y<class_Basis_property_y>` axis (yaw);
+- :ref:`Vector3.y<class_Vector3_property_y>` chứa góc quanh :ref:`y<class_Basis_property_y>` trục (yaw);
 
-- The :ref:`Vector3.z<class_Vector3_property_z>` contains the angle around the :ref:`z<class_Basis_property_z>` axis (roll).
+- :ref:`Vector3.z<class_Vector3_property_z>` chứa góc quanh trục :ref:`z<class_Basis_property_z>` (roll).
 
-The order of each consecutive rotation can be changed with ``order`` (see :ref:`EulerOrder<enum_@GlobalScope_EulerOrder>` constants). In Godot, Euler angles always use intrinsic order. By default, the intrinsic YXZ convention is used (:ref:`@GlobalScope.EULER_ORDER_YXZ<class_@GlobalScope_constant_EULER_ORDER_YXZ>`): since we are decomposing, local Z (roll) is calculated first, then local X (pitch), and lastly local Y (yaw). When using the opposite method :ref:`from_euler()<class_Basis_method_from_euler>` to compose a rotation, this order is reversed.
+Thứ tự của từng phép xoay liên tiếp có thể được thay đổi bằng ``order`` (xem các hằng số :ref:`EulerOrder <enum_@GlobalScope_EulerOrder>`). Trong Godot, các góc Euler luôn sử dụng thứ tự nội tại. Theo mặc định, quy ước YXZ nội tại được sử dụng (:ref:`@GlobalScope.EULER_ORDER_YXZ <class_@GlobalScope_constant_EULER_ORDER_YXZ>`): vì chúng ta đang phân rã, Z cục bộ (roll) được tính trước, tiếp theo là X cục bộ (pitch), và cuối cùng là Y cục bộ (yaw). Khi sử dụng phương thức ngược lại :ref:`from_euler()<class_Basis_method_from_euler>` để kết hợp một phép xoay, thứ tự này bị đảo ngược.
 
-\ **Note:** For this method to return correctly, the basis needs to be *orthonormal* (see :ref:`orthonormalized()<class_Basis_method_orthonormalized>`).
+\ **Lưu ý:** Để phương thức này trả về kết quả chính xác, basis cần phải *trực chuẩn* (xem :ref:`orthonormalized()<class_Basis_method_orthonormalized>`).
 
-\ **Note:** Euler angles are much more intuitive but are not suitable for 3D math. Because of this, consider using the :ref:`get_rotation_quaternion()<class_Basis_method_get_rotation_quaternion>` method instead, which returns a :ref:`Quaternion<class_Quaternion>`.
+\ **Lưu ý:** Các góc Euler trực quan hơn nhiều nhưng không phù hợp với phép toán 3D. Vì vậy, hãy cân nhắc sử dụng phương thức :ref:`get_rotation_quaternion()<class_Basis_method_get_rotation_quaternion>` thay thế, phương thức này trả về một :ref:`Quaternion<class_Quaternion>`.
 
-\ **Note:** In the Inspector dock, a basis's rotation is often displayed in Euler angles (in degrees), as is the case with the :ref:`Node3D.rotation<class_Node3D_property_rotation>` property.
+\ **Lưu ý:** Trong dock Inspector, phép xoay của một basis thường được hiển thị dưới dạng góc Euler (theo độ), tương tự như thuộc tính :ref:`Node3D.rotation<class_Node3D_property_rotation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -493,9 +493,9 @@ The order of each consecutive rotation can be changed with ``order`` (see :ref:`
 
 :ref:`Quaternion<class_Quaternion>` **get_rotation_quaternion**\ (\ ) |const| :ref:`🔗<class_Basis_method_get_rotation_quaternion>`
 
-Returns this basis's rotation as a :ref:`Quaternion<class_Quaternion>`.
+Trả về phép xoay của basis này dưới dạng :ref:`Quaternion<class_Quaternion>`.
 
-\ **Note:** Quaternions are much more suitable for 3D math but are less intuitive. For user interfaces, consider using the :ref:`get_euler()<class_Basis_method_get_euler>` method, which returns Euler angles.
+\ **Lưu ý:** Quaternion phù hợp hơn nhiều cho phép toán 3D nhưng kém trực quan hơn. Đối với giao diện người dùng, hãy cân nhắc sử dụng phương thức :ref:`get_euler()<class_Basis_method_get_euler>`, phương thức này trả về các góc Euler.
 
 .. rst-class:: classref-item-separator
 
@@ -507,7 +507,7 @@ Returns this basis's rotation as a :ref:`Quaternion<class_Quaternion>`.
 
 :ref:`Vector3<class_Vector3>` **get_scale**\ (\ ) |const| :ref:`🔗<class_Basis_method_get_scale>`
 
-Returns the length of each axis of this basis, as a :ref:`Vector3<class_Vector3>`. If the basis is not sheared, this value is the scaling factor. It is not affected by rotation.
+Trả về độ dài của mỗi trục của basis này dưới dạng một :ref:`Vector3<class_Vector3>`. Nếu basis không bị shear, giá trị này là hệ số scale. Giá trị này không bị ảnh hưởng bởi phép xoay.
 
 
 .. tabs::
@@ -519,11 +519,11 @@ Returns the length of each axis of this basis, as a :ref:`Vector3<class_Vector3>
         Vector3(0, 4, 0),
         Vector3(0, 0, 8)
     )
-    # Rotating the Basis in any way preserves its scale.
+    # Xoay Basis theo bất kỳ cách nào cũng giữ nguyên scale của nó.
     my_basis = my_basis.rotated(Vector3.UP, TAU / 2)
     my_basis = my_basis.rotated(Vector3.RIGHT, TAU / 4)
 
-    print(my_basis.get_scale()) # Prints (2.0, 4.0, 8.0)
+    print(my_basis.get_scale()) # In ra (2.0, 4.0, 8.0)
 
  .. code-tab:: csharp
 
@@ -532,15 +532,15 @@ Returns the length of each axis of this basis, as a :ref:`Vector3<class_Vector3>
         Vector3(0.0f, 4.0f, 0.0f),
         Vector3(0.0f, 0.0f, 8.0f)
     );
-    // Rotating the Basis in any way preserves its scale.
+    // Xoay Basis theo bất kỳ cách nào cũng giữ nguyên scale của nó.
     myBasis = myBasis.Rotated(Vector3.Up, Mathf.Tau / 2.0f);
     myBasis = myBasis.Rotated(Vector3.Right, Mathf.Tau / 4.0f);
 
-    GD.Print(myBasis.Scale); // Prints (2, 4, 8)
+    GD.Print(myBasis.Scale); // In ra (2, 4, 8)
 
 
 
-\ **Note:** If the value returned by :ref:`determinant()<class_Basis_method_determinant>` is negative, the scale is also negative.
+\ **Lưu ý:** Nếu giá trị được trả về bởi :ref:`determinant()<class_Basis_method_determinant>` là âm, scale cũng là âm.
 
 .. rst-class:: classref-item-separator
 
@@ -552,7 +552,7 @@ Returns the length of each axis of this basis, as a :ref:`Vector3<class_Vector3>
 
 :ref:`Basis<class_Basis>` **inverse**\ (\ ) |const| :ref:`🔗<class_Basis_method_inverse>`
 
-Returns the `inverse of this basis's matrix <https://en.wikipedia.org/wiki/Invertible_matrix>`__.
+Trả về `ma trận nghịch đảo của basis này <https://en.wikipedia.org/wiki/Invertible_matrix>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -564,7 +564,7 @@ Returns the `inverse of this basis's matrix <https://en.wikipedia.org/wiki/Inver
 
 :ref:`bool<class_bool>` **is_conformal**\ (\ ) |const| :ref:`🔗<class_Basis_method_is_conformal>`
 
-Returns ``true`` if this basis is conformal. A conformal basis is both *orthogonal* (the axes are perpendicular to each other) and *uniform* (the axes share the same length). This method can be especially useful during physics calculations.
+Trả về ``true`` nếu basis này là conformal. Một basis conformal vừa *trực giao* (các trục vuông góc với nhau) vừa *đồng đều* (các trục có cùng độ dài). Phương thức này đặc biệt hữu ích trong các phép tính vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -576,7 +576,7 @@ Returns ``true`` if this basis is conformal. A conformal basis is both *orthogon
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ b\: :ref:`Basis<class_Basis>`\ ) |const| :ref:`🔗<class_Basis_method_is_equal_approx>`
 
-Returns ``true`` if this basis and ``b`` are approximately equal, by calling :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` on all vector components.
+Trả về ``true`` nếu basis này và ``b`` xấp xỉ bằng nhau, bằng cách gọi :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` trên tất cả các thành phần vector.
 
 .. rst-class:: classref-item-separator
 
@@ -588,7 +588,7 @@ Returns ``true`` if this basis and ``b`` are approximately equal, by calling :re
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_Basis_method_is_finite>`
 
-Returns ``true`` if this basis is finite, by calling :ref:`@GlobalScope.is_finite()<class_@GlobalScope_method_is_finite>` on all vector components.
+Trả về ``true`` nếu basis này hữu hạn, bằng cách gọi :ref:`@GlobalScope.is_finite() <class_@GlobalScope_method_is_finite>` trên tất cả các thành phần vector.
 
 .. rst-class:: classref-item-separator
 
@@ -600,7 +600,7 @@ Returns ``true`` if this basis is finite, by calling :ref:`@GlobalScope.is_finit
 
 :ref:`bool<class_bool>` **is_orthonormal**\ (\ ) |const| :ref:`🔗<class_Basis_method_is_orthonormal>`
 
-Returns ``true`` if this basis is orthonormal. An orthonormal basis is both *orthogonal* (the axes are perpendicular to each other) and *normalized* (the length of every axis is ``1.0``). This method can be especially useful during physics calculations.
+Trả về ``true`` nếu basis này là trực chuẩn. Một basis trực chuẩn vừa *trực giao* (các trục vuông góc với nhau) vừa *chuẩn hóa* (độ dài của mọi trục là ``1.0``). Phương thức này đặc biệt hữu ích trong các phép tính vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -612,13 +612,13 @@ Returns ``true`` if this basis is orthonormal. An orthonormal basis is both *ort
 
 :ref:`Basis<class_Basis>` **looking_at**\ (\ target\: :ref:`Vector3<class_Vector3>`, up\: :ref:`Vector3<class_Vector3>` = Vector3(0, 1, 0), use_model_front\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_Basis_method_looking_at>`
 
-Creates a new **Basis** with a rotation such that the forward axis (-Z) points towards the ``target`` position.
+Tạo một **Basis** mới với phép xoay sao cho trục hướng về phía trước (-Z) hướng về vị trí ``target``.
 
-By default, the -Z axis (camera forward) is treated as forward (implies +X is right). If ``use_model_front`` is ``true``, the +Z axis (asset front) is treated as forward (implies +X is left) and points toward the ``target`` position.
+Theo mặc định, trục -Z (hướng về phía trước của camera) được xem là hướng về phía trước (ngụ ý +X là bên phải). Nếu ``use_model_front`` là ``true``, trục +Z (mặt trước của asset) được xem là hướng về phía trước (ngụ ý +X là bên trái) và hướng về vị trí ``target``.
 
-The up axis (+Y) points as close to the ``up`` vector as possible while staying perpendicular to the forward axis. The returned basis is orthonormalized (see :ref:`orthonormalized()<class_Basis_method_orthonormalized>`).
+Trục hướng lên (+Y) hướng gần vector ``up`` nhất có thể trong khi vẫn vuông góc với trục hướng về phía trước. Basis được trả về đã được trực chuẩn hóa (xem :ref:`orthonormalized()<class_Basis_method_orthonormalized>`).
 
-The ``target`` and the ``up`` cannot be :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`, and shouldn't be colinear to avoid unintended rotation around local Z axis.
+``target`` và ``up`` không được :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`, đồng thời không nên thẳng hàng để tránh việc xoay ngoài ý muốn quanh trục Z cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -630,16 +630,16 @@ The ``target`` and the ``up`` cannot be :ref:`Vector3.ZERO<class_Vector3_constan
 
 :ref:`Basis<class_Basis>` **orthonormalized**\ (\ ) |const| :ref:`🔗<class_Basis_method_orthonormalized>`
 
-Returns the orthonormalized version of this basis. An orthonormal basis is both *orthogonal* (the axes are perpendicular to each other) and *normalized* (the axes have a length of ``1.0``), which also means it can only represent a rotation.
+Trả về phiên bản đã trực chuẩn hóa của cơ sở này. Một cơ sở trực chuẩn vừa *vuông góc* (các trục vuông góc với nhau) vừa *chuẩn hóa* (các trục có độ dài bằng ``1.0``), điều này cũng có nghĩa là nó chỉ có thể biểu diễn một phép xoay.
 
-It is often useful to call this method to avoid rounding errors on a rotating basis:
+Thường hữu ích khi gọi phương thức này để tránh lỗi làm tròn trên một cơ sở đang xoay:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Rotate this Node3D every frame.
+    # Xoay Node3D này trong mỗi frame.
     func _process(delta):
         basis = basis.rotated(Vector3.UP, TAU * delta)
         basis = basis.rotated(Vector3.RIGHT, TAU * delta)
@@ -647,7 +647,7 @@ It is often useful to call this method to avoid rounding errors on a rotating ba
 
  .. code-tab:: csharp
 
-    // Rotate this Node3D every frame.
+    // Xoay Node3D này trong mỗi frame.
     public override void _Process(double delta)
     {
         Basis = Basis.Rotated(Vector3.Up, Mathf.Tau * (float)delta)
@@ -667,9 +667,9 @@ It is often useful to call this method to avoid rounding errors on a rotating ba
 
 :ref:`Basis<class_Basis>` **rotated**\ (\ axis\: :ref:`Vector3<class_Vector3>`, angle\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Basis_method_rotated>`
 
-Returns a copy of this basis rotated around the given ``axis`` by the given ``angle`` (in radians).
+Trả về một bản sao của cơ sở này được xoay quanh ``axis`` đã cho với ``angle`` đã cho (tính bằng radian).
 
-The ``axis`` must be a normalized vector (see :ref:`Vector3.normalized()<class_Vector3_method_normalized>`). If ``angle`` is positive, the basis is rotated counter-clockwise around the axis.
+``axis`` phải là một vector đã chuẩn hóa (xem :ref:`Vector3.normalized()<class_Vector3_method_normalized>`). Nếu ``angle`` là số dương, cơ sở sẽ được xoay ngược chiều kim đồng hồ quanh trục.
 
 
 .. tabs::
@@ -679,18 +679,18 @@ The ``axis`` must be a normalized vector (see :ref:`Vector3.normalized()<class_V
     var my_basis = Basis.IDENTITY
     var angle = TAU / 2
 
-    my_basis = my_basis.rotated(Vector3.UP, angle)    # Rotate around the up axis (yaw).
-    my_basis = my_basis.rotated(Vector3.RIGHT, angle) # Rotate around the right axis (pitch).
-    my_basis = my_basis.rotated(Vector3.BACK, angle)  # Rotate around the back axis (roll).
+    my_basis = my_basis.rotated(Vector3.UP, angle)    # Xoay quanh trục hướng lên (yaw).
+    my_basis = my_basis.rotated(Vector3.RIGHT, angle) # Xoay quanh trục bên phải (pitch).
+    my_basis = my_basis.rotated(Vector3.BACK, angle)  # Xoay quanh trục phía sau (roll).
 
  .. code-tab:: csharp
 
     var myBasis = Basis.Identity;
     var angle = Mathf.Tau / 2.0f;
 
-    myBasis = myBasis.Rotated(Vector3.Up, angle);    // Rotate around the up axis (yaw).
-    myBasis = myBasis.Rotated(Vector3.Right, angle); // Rotate around the right axis (pitch).
-    myBasis = myBasis.Rotated(Vector3.Back, angle);  // Rotate around the back axis (roll).
+    myBasis = myBasis.Rotated(Vector3.Up, angle);    // Xoay quanh trục hướng lên (yaw).
+    myBasis = myBasis.Rotated(Vector3.Right, angle); // Xoay quanh trục bên phải (pitch).
+    myBasis = myBasis.Rotated(Vector3.Back, angle);  // Xoay quanh trục phía sau (roll).
 
 
 
@@ -704,9 +704,9 @@ The ``axis`` must be a normalized vector (see :ref:`Vector3.normalized()<class_V
 
 :ref:`Basis<class_Basis>` **scaled**\ (\ scale\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Basis_method_scaled>`
 
-Returns this basis with each axis's components scaled by the given ``scale``'s components.
+Trả về basis này với các thành phần của mỗi trục được scale theo các thành phần của ``scale`` đã cho.
 
-The basis matrix's rows are multiplied by ``scale``'s components. This operation is a global scale (relative to the parent).
+Các hàng của ma trận cơ sở được nhân với các thành phần của ``scale``. Đây là phép scale toàn cục (so với node cha).
 
 
 .. tabs::
@@ -720,9 +720,9 @@ The basis matrix's rows are multiplied by ``scale``'s components. This operation
     )
     my_basis = my_basis.scaled(Vector3(0, 2, -2))
 
-    print(my_basis.x) # Prints (0.0, 2.0, -2.0)
-    print(my_basis.y) # Prints (0.0, 4.0, -4.0)
-    print(my_basis.z) # Prints (0.0, 6.0, -6.0)
+    print(my_basis.x) # In ra (0.0, 2.0, -2.0)
+    print(my_basis.y) # In ra (0.0, 4.0, -4.0)
+    print(my_basis.z) # In ra (0.0, 6.0, -6.0)
 
  .. code-tab:: csharp
 
@@ -733,9 +733,9 @@ The basis matrix's rows are multiplied by ``scale``'s components. This operation
     );
     myBasis = myBasis.Scaled(new Vector3(0.0f, 2.0f, -2.0f));
 
-    GD.Print(myBasis.X); // Prints (0, 2, -2)
-    GD.Print(myBasis.Y); // Prints (0, 4, -4)
-    GD.Print(myBasis.Z); // Prints (0, 6, -6)
+    GD.Print(myBasis.X); // In ra (0, 2, -2)
+    GD.Print(myBasis.Y); // In ra (0, 4, -4)
+    GD.Print(myBasis.Z); // In ra (0, 6, -6)
 
 
 
@@ -749,9 +749,9 @@ The basis matrix's rows are multiplied by ``scale``'s components. This operation
 
 :ref:`Basis<class_Basis>` **scaled_local**\ (\ scale\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Basis_method_scaled_local>`
 
-Returns this basis with each axis scaled by the corresponding component in the given ``scale``.
+Trả về basis này với mỗi trục được scale theo component tương ứng trong ``scale`` đã cho.
 
-The basis matrix's columns are multiplied by ``scale``'s components. This operation is a local scale (relative to self).
+Các cột của ma trận basis được nhân với các component của ``scale``. Đây là phép scale cục bộ (tương đối với self).
 
 
 .. tabs::
@@ -765,9 +765,9 @@ The basis matrix's columns are multiplied by ``scale``'s components. This operat
     )
     my_basis = my_basis.scaled_local(Vector3(0, 2, -2))
 
-    print(my_basis.x) # Prints (0.0, 0.0, 0.0)
-    print(my_basis.y) # Prints (4.0, 4.0, 4.0)
-    print(my_basis.z) # Prints (-6.0, -6.0, -6.0)
+    print(my_basis.x) # In ra (0.0, 0.0, 0.0)
+    print(my_basis.y) # In ra (4.0, 4.0, 4.0)
+    print(my_basis.z) # In ra (-6.0, -6.0, -6.0)
 
  .. code-tab:: csharp
 
@@ -778,9 +778,9 @@ The basis matrix's columns are multiplied by ``scale``'s components. This operat
     );
     myBasis = myBasis.ScaledLocal(new Vector3(0.0f, 2.0f, -2.0f));
 
-    GD.Print(myBasis.X); // Prints (0, 0, 0)
-    GD.Print(myBasis.Y); // Prints (4, 4, 4)
-    GD.Print(myBasis.Z); // Prints (-6, -6, -6)
+    GD.Print(myBasis.X); // In ra (0, 0, 0)
+    GD.Print(myBasis.Y); // In ra (4, 4, 4)
+    GD.Print(myBasis.Z); // In ra (-6, -6, -6)
 
 
 
@@ -794,9 +794,9 @@ The basis matrix's columns are multiplied by ``scale``'s components. This operat
 
 :ref:`Basis<class_Basis>` **slerp**\ (\ to\: :ref:`Basis<class_Basis>`, weight\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Basis_method_slerp>`
 
-Performs a spherical-linear interpolation with the ``to`` basis, given a ``weight``. Both this basis and ``to`` should represent a rotation.
+Thực hiện phép nội suy tuyến tính cầu với cơ sở ``to``, dựa trên một ``weight``. Cả cơ sở này và ``to`` đều phải biểu diễn một phép xoay.
 
-\ **Example:** Smoothly rotate a :ref:`Node3D<class_Node3D>` to the target basis over time, with a :ref:`Tween<class_Tween>`:
+\ **Ví dụ:** Xoay mượt mà một :ref:`Node3D<class_Node3D>` đến cơ sở đích theo thời gian, với một :ref:`Tween<class_Tween>`:
 
 ::
 
@@ -819,9 +819,9 @@ Performs a spherical-linear interpolation with the ``to`` basis, given a ``weigh
 
 :ref:`float<class_float>` **tdotx**\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Basis_method_tdotx>`
 
-Returns the transposed dot product between ``with`` and the :ref:`x<class_Basis_property_x>` axis (see :ref:`transposed()<class_Basis_method_transposed>`).
+Trả về tích vô hướng chuyển vị giữa ``with`` và trục :ref:`x<class_Basis_property_x>` (xem :ref:`transposed()<class_Basis_method_transposed>`).
 
-This is equivalent to ``basis.x.dot(vector)``.
+Tương đương với ``basis.x.dot(vector)``.
 
 .. rst-class:: classref-item-separator
 
@@ -833,9 +833,9 @@ This is equivalent to ``basis.x.dot(vector)``.
 
 :ref:`float<class_float>` **tdoty**\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Basis_method_tdoty>`
 
-Returns the transposed dot product between ``with`` and the :ref:`y<class_Basis_property_y>` axis (see :ref:`transposed()<class_Basis_method_transposed>`).
+Trả về tích vô hướng chuyển vị giữa ``with`` và trục :ref:`y<class_Basis_property_y>` (xem :ref:`transposed()<class_Basis_method_transposed>`).
 
-This is equivalent to ``basis.y.dot(vector)``.
+Tương đương với ``basis.y.dot(vector)``.
 
 .. rst-class:: classref-item-separator
 
@@ -847,9 +847,9 @@ This is equivalent to ``basis.y.dot(vector)``.
 
 :ref:`float<class_float>` **tdotz**\ (\ with\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Basis_method_tdotz>`
 
-Returns the transposed dot product between ``with`` and the :ref:`z<class_Basis_property_z>` axis (see :ref:`transposed()<class_Basis_method_transposed>`).
+Trả về tích vô hướng chuyển vị giữa ``with`` và trục :ref:`z<class_Basis_property_z>` (xem :ref:`transposed()<class_Basis_method_transposed>`).
 
-This is equivalent to ``basis.z.dot(vector)``.
+Tương đương với ``basis.z.dot(vector)``.
 
 .. rst-class:: classref-item-separator
 
@@ -861,7 +861,7 @@ This is equivalent to ``basis.z.dot(vector)``.
 
 :ref:`Basis<class_Basis>` **transposed**\ (\ ) |const| :ref:`🔗<class_Basis_method_transposed>`
 
-Returns the transposed version of this basis. This turns the basis matrix's columns into rows, and its rows into columns.
+Trả về phiên bản chuyển vị của basis này. Thao tác này biến các cột của ma trận basis thành các hàng và các hàng thành các cột.
 
 
 .. tabs::
@@ -875,9 +875,9 @@ Returns the transposed version of this basis. This turns the basis matrix's colu
     )
     my_basis = my_basis.transposed()
 
-    print(my_basis.x) # Prints (1.0, 4.0, 7.0)
-    print(my_basis.y) # Prints (2.0, 5.0, 8.0)
-    print(my_basis.z) # Prints (3.0, 6.0, 9.0)
+    print(my_basis.x) # In (1.0, 4.0, 7.0)
+    print(my_basis.y) # In (2.0, 5.0, 8.0)
+    print(my_basis.z) # In (3.0, 6.0, 9.0)
 
  .. code-tab:: csharp
 
@@ -888,9 +888,9 @@ Returns the transposed version of this basis. This turns the basis matrix's colu
     );
     myBasis = myBasis.Transposed();
 
-    GD.Print(myBasis.X); // Prints (1, 4, 7)
-    GD.Print(myBasis.Y); // Prints (2, 5, 8)
-    GD.Print(myBasis.Z); // Prints (3, 6, 9)
+    GD.Print(myBasis.X); // In (1, 4, 7)
+    GD.Print(myBasis.Y); // In ra (2, 5, 8)
+    GD.Print(myBasis.Z); // In ra (3, 6, 9)
 
 
 
@@ -900,18 +900,18 @@ Returns the transposed version of this basis. This turns the basis matrix's colu
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Basis_operator_neq_Basis:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Basis<class_Basis>`\ ) :ref:`🔗<class_Basis_operator_neq_Basis>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Basis<class_Basis>`\ ) :ref:`🔗 <class_Basis_operator_neq_Basis>`
 
-Returns ``true`` if the components of both **Basis** matrices are not equal.
+Trả về ``true`` nếu các thành phần của cả hai ma trận **Basis** không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Basis_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Basis_method_is_equal_approx>` thay vào đó, vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -921,11 +921,11 @@ Returns ``true`` if the components of both **Basis** matrices are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Basis<class_Basis>` **operator ***\ (\ right\: :ref:`Basis<class_Basis>`\ ) :ref:`🔗<class_Basis_operator_mul_Basis>`
+:ref:`Basis<class_Basis>` **operator ***\ (\ right\: :ref:`Basis<class_Basis>`\ ) :ref:`🔗 <class_Basis_operator_mul_Basis>`
 
-Transforms (multiplies) the ``right`` basis by this basis.
+Biến đổi (nhân) cơ sở ``right`` bằng cơ sở này.
 
-This is the operation performed between parent and child :ref:`Node3D<class_Node3D>`\ s.
+Đây là phép toán được thực hiện giữa :ref:`Node3D<class_Node3D>`\ s cha và con.
 
 .. rst-class:: classref-item-separator
 
@@ -935,24 +935,24 @@ This is the operation performed between parent and child :ref:`Node3D<class_Node
 
 .. rst-class:: classref-operator
 
-:ref:`Vector3<class_Vector3>` **operator ***\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Basis_operator_mul_Vector3>`
+:ref:`Vector3<class_Vector3>` **toán tử ***\ (\ phải\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗 <class_Basis_operator_mul_Vector3>`
 
-Transforms (multiplies) the ``right`` vector by this basis, returning a :ref:`Vector3<class_Vector3>`.
+Biến đổi (nhân) vector ``right`` bằng cơ sở này, trả về một :ref:`Vector3<class_Vector3>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Basis that swaps the X/Z axes and doubles the scale.
+    # Cơ sở hoán đổi các trục X/Z và tăng gấp đôi scale.
     var my_basis = Basis(Vector3(0, 2, 0), Vector3(2, 0, 0), Vector3(0, 0, 2))
-    print(my_basis * Vector3(1, 2, 3)) # Prints (4.0, 2.0, 6.0)
+    print(my_basis * Vector3(1, 2, 3)) # In ra (4.0, 2.0, 6.0)
 
  .. code-tab:: csharp
 
-    // Basis that swaps the X/Z axes and doubles the scale.
+    // Cơ sở hoán đổi các trục X/Z và tăng gấp đôi scale.
     var myBasis = new Basis(new Vector3(0, 2, 0), new Vector3(2, 0, 0), new Vector3(0, 0, 2));
-    GD.Print(myBasis * new Vector3(1, 2, 3)); // Prints (4, 2, 6)
+    GD.Print(myBasis * new Vector3(1, 2, 3)); // In ra (4, 2, 6)
 
 
 
@@ -964,9 +964,9 @@ Transforms (multiplies) the ``right`` vector by this basis, returning a :ref:`Ve
 
 .. rst-class:: classref-operator
 
-:ref:`Basis<class_Basis>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Basis_operator_mul_float>`
+:ref:`Basis<class_Basis>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Basis_operator_mul_float>`
 
-Multiplies all components of the **Basis** by the given :ref:`float<class_float>`. This affects the basis's scale uniformly, resizing all 3 axes by the ``right`` value.
+Nhân tất cả các thành phần của **Basis** với :ref:`float<class_float>` đã cho. Điều này ảnh hưởng đồng đều đến tỷ lệ của basis, thay đổi kích thước cả 3 trục theo giá trị ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -976,9 +976,9 @@ Multiplies all components of the **Basis** by the given :ref:`float<class_float>
 
 .. rst-class:: classref-operator
 
-:ref:`Basis<class_Basis>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Basis_operator_mul_int>`
+:ref:`Basis<class_Basis>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Basis_operator_mul_int>`
 
-Multiplies all components of the **Basis** by the given :ref:`int<class_int>`. This affects the basis's scale uniformly, resizing all 3 axes by the ``right`` value.
+Nhân tất cả các thành phần của **Basis** với :ref:`int<class_int>` đã cho. Điều này ảnh hưởng đồng đều đến tỷ lệ của basis, thay đổi kích thước cả 3 trục theo giá trị ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -988,9 +988,9 @@ Multiplies all components of the **Basis** by the given :ref:`int<class_int>`. T
 
 .. rst-class:: classref-operator
 
-:ref:`Basis<class_Basis>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Basis_operator_div_float>`
+:ref:`Basis<class_Basis>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_Basis_operator_div_float>`
 
-Divides all components of the **Basis** by the given :ref:`float<class_float>`. This affects the basis's scale uniformly, resizing all 3 axes by the ``right`` value.
+Chia tất cả các thành phần của **Basis** cho :ref:`float<class_float>` đã cho. Điều này ảnh hưởng đồng đều đến tỷ lệ của basis, thay đổi kích thước cả 3 trục theo giá trị ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -1000,9 +1000,9 @@ Divides all components of the **Basis** by the given :ref:`float<class_float>`. 
 
 .. rst-class:: classref-operator
 
-:ref:`Basis<class_Basis>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Basis_operator_div_int>`
+:ref:`Basis<class_Basis>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Basis_operator_div_int>`
 
-Divides all components of the **Basis** by the given :ref:`int<class_int>`. This affects the basis's scale uniformly, resizing all 3 axes by the ``right`` value.
+Chia tất cả các thành phần của **Basis** cho :ref:`int<class_int>` đã cho. Điều này tác động đồng đều đến tỷ lệ của basis, thay đổi kích thước cả 3 trục theo giá trị ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -1012,11 +1012,11 @@ Divides all components of the **Basis** by the given :ref:`int<class_int>`. This
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Basis<class_Basis>`\ ) :ref:`🔗<class_Basis_operator_eq_Basis>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Basis<class_Basis>`\ ) :ref:`🔗 <class_Basis_operator_eq_Basis>`
 
-Returns ``true`` if the components of both **Basis** matrices are exactly equal.
+Trả về ``true`` nếu các thành phần của cả hai ma trận **Basis** hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_Basis_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_Basis_method_is_equal_approx>` thay vào đó, vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -1026,18 +1026,18 @@ Returns ``true`` if the components of both **Basis** matrices are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector3<class_Vector3>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Basis_operator_idx_int>`
+:ref:`Vector3<class_Vector3>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Basis_operator_idx_int>`
 
-Accesses each axis (column) of this basis by their index. Index ``0`` is the same as :ref:`x<class_Basis_property_x>`, index ``1`` is the same as :ref:`y<class_Basis_property_y>`, and index ``2`` is the same as :ref:`z<class_Basis_property_z>`.
+Truy cập từng trục (cột) của basis này theo chỉ mục của chúng. Chỉ mục ``0`` tương ứng với :ref:`x<class_Basis_property_x>`, chỉ mục ``1`` tương ứng với :ref:`y<class_Basis_property_y>`, và chỉ mục ``2`` tương ứng với :ref:`z<class_Basis_property_z>`.
 
-\ **Note:** In C++, this operator accesses the rows of the basis matrix, *not* the columns. For the same behavior as scripting languages, use the ``set_column`` and ``get_column`` methods.
+\ **Lưu ý:** Trong C++, toán tử này truy cập các hàng của ma trận cơ sở, *không phải* các cột. Để có hành vi giống như trong các ngôn ngữ scripting, hãy sử dụng các phương thức ``set_column`` và ``get_column``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

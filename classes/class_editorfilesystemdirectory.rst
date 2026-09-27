@@ -10,21 +10,21 @@
 EditorFileSystemDirectory
 =========================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A directory for the resource filesystem.
+Một thư mục cho hệ thống tệp tài nguyên.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A more generalized, low-level variation of the directory concept.
+Một biến thể tổng quát hơn, cấp thấp hơn của khái niệm thư mục.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -65,8 +65,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorFileSystemDirectory_method_find_dir_index:
 
@@ -74,7 +74,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **find_dir_index**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_find_dir_index>`
 
-Returns the index of the directory with name ``name`` or ``-1`` if not found.
+Trả về chỉ mục của thư mục có tên ``name`` hoặc ``-1`` nếu không tìm thấy.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ Returns the index of the directory with name ``name`` or ``-1`` if not found.
 
 :ref:`int<class_int>` **find_file_index**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_find_file_index>`
 
-Returns the index of the file with name ``name`` or ``-1`` if not found.
+Trả về chỉ mục của tệp có tên ``name`` hoặc ``-1`` nếu không tìm thấy.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ Returns the index of the file with name ``name`` or ``-1`` if not found.
 
 :ref:`String<class_String>` **get_file**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_file>`
 
-Returns the name of the file at index ``idx``.
+Trả về tên của tệp tại chỉ mục ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Returns the name of the file at index ``idx``.
 
 :ref:`int<class_int>` **get_file_count**\ (\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_file_count>`
 
-Returns the number of files in this directory.
+Trả về số lượng tệp trong thư mục này.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Returns the number of files in this directory.
 
 :ref:`bool<class_bool>` **get_file_import_is_valid**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_file_import_is_valid>`
 
-Returns ``true`` if the file at index ``idx`` imported properly.
+Trả về ``true`` nếu tệp tại chỉ mục ``idx`` được import đúng cách.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Returns ``true`` if the file at index ``idx`` imported properly.
 
 :ref:`String<class_String>` **get_file_path**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_file_path>`
 
-Returns the path to the file at index ``idx``.
+Trả về đường dẫn đến tệp tại chỉ mục ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ Returns the path to the file at index ``idx``.
 
 :ref:`String<class_String>` **get_file_script_class_extends**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_file_script_class_extends>`
 
-Returns the base class of the script class defined in the file at index ``idx``. If the file doesn't define a script class using the ``class_name`` syntax, this will return an empty string.
+Trả về lớp cơ sở của lớp script được định nghĩa trong tệp tại chỉ mục ``idx``. Nếu tệp không định nghĩa lớp script bằng cú pháp ``class_name``, phương thức này sẽ trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Returns the base class of the script class defined in the file at index ``idx``.
 
 :ref:`String<class_String>` **get_file_script_class_name**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_file_script_class_name>`
 
-Returns the name of the script class defined in the file at index ``idx``. If the file doesn't define a script class using the ``class_name`` syntax, this will return an empty string.
+Trả về tên của lớp script được định nghĩa trong tệp tại chỉ mục ``idx``. Nếu tệp không định nghĩa lớp script bằng cú pháp ``class_name``, phương thức này sẽ trả về một chuỗi rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Returns the name of the script class defined in the file at index ``idx``. If th
 
 :ref:`StringName<class_StringName>` **get_file_type**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_file_type>`
 
-Returns the resource type of the file at index ``idx``. This returns a string such as ``"Resource"`` or ``"GDScript"``, *not* a file extension such as ``".gd"``.
+Trả về loại tài nguyên của tệp tại chỉ mục ``idx``. Phương thức này trả về một chuỗi như ``"Resource"`` hoặc ``"GDScript"``, *không phải* một phần mở rộng tệp như ``".gd"``.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Returns the resource type of the file at index ``idx``. This returns a string su
 
 :ref:`String<class_String>` **get_name**\ (\ ) :ref:`🔗<class_EditorFileSystemDirectory_method_get_name>`
 
-Returns the name of this directory.
+Trả về tên của thư mục này.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ Returns the name of this directory.
 
 :ref:`EditorFileSystemDirectory<class_EditorFileSystemDirectory>` **get_parent**\ (\ ) :ref:`🔗<class_EditorFileSystemDirectory_method_get_parent>`
 
-Returns the parent directory for this directory or ``null`` if called on a directory at ``res://`` or ``user://``.
+Trả về thư mục cha của thư mục này hoặc ``null`` nếu được gọi trên một thư mục tại ``res://`` hoặc ``user://``.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Returns the parent directory for this directory or ``null`` if called on a direc
 
 :ref:`String<class_String>` **get_path**\ (\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_path>`
 
-Returns the path to this directory.
+Trả về đường dẫn đến thư mục này.
 
 .. rst-class:: classref-item-separator
 
@@ -218,7 +218,7 @@ Returns the path to this directory.
 
 :ref:`EditorFileSystemDirectory<class_EditorFileSystemDirectory>` **get_subdir**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorFileSystemDirectory_method_get_subdir>`
 
-Returns the subdirectory at index ``idx``.
+Trả về thư mục con tại chỉ mục ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -230,14 +230,14 @@ Returns the subdirectory at index ``idx``.
 
 :ref:`int<class_int>` **get_subdir_count**\ (\ ) |const| :ref:`🔗<class_EditorFileSystemDirectory_method_get_subdir_count>`
 
-Returns the number of subdirectories in this directory.
+Trả về số lượng thư mục con trong thư mục này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

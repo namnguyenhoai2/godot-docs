@@ -10,37 +10,37 @@
 PhysicsServer2D
 ===============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`PhysicsServer2DExtension<class_PhysicsServer2DExtension>`
+**Được kế thừa bởi:** :ref:`PhysicsServer2DExtension<class_PhysicsServer2DExtension>`
 
-A server interface for low-level 2D physics access.
+Một server interface để truy cập vật lý 2D cấp thấp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-PhysicsServer2D is the server responsible for all 2D physics. It can directly create and manipulate all physics objects:
+PhysicsServer2D là server chịu trách nhiệm về toàn bộ vật lý 2D. Nó có thể trực tiếp tạo và thao tác với tất cả các đối tượng vật lý:
 
-- A *space* is a self-contained world for a physics simulation. It contains bodies, areas, and joints. Its state can be queried for collision and intersection information, and several parameters of the simulation can be modified.
+- Một *không gian* là một thế giới độc lập dành cho mô phỏng vật lý. Nó chứa các body, area và joint. Có thể truy vấn trạng thái của không gian để lấy thông tin về va chạm và giao nhau, đồng thời có thể sửa đổi một số tham số của mô phỏng.
 
-- A *shape* is a geometric shape such as a circle, a rectangle, a capsule, or a polygon. It can be used for collision detection by adding it to a body/area, possibly with an extra transformation relative to the body/area's origin. Bodies/areas can have multiple (transformed) shapes added to them, and a single shape can be added to bodies/areas multiple times with different local transformations.
+- Một *hình dạng* là một hình dạng hình học, chẳng hạn như hình tròn, hình chữ nhật, capsule hoặc polygon. Có thể sử dụng hình dạng này để phát hiện va chạm bằng cách thêm nó vào một body/area, có thể kèm theo một phép biến đổi bổ sung tương đối với gốc của body/area. Body/area có thể có nhiều hình dạng (đã biến đổi) được thêm vào, và một hình dạng duy nhất có thể được thêm vào các body/area nhiều lần với các phép biến đổi cục bộ khác nhau.
 
-- A *body* is a physical object which can be in static, kinematic, or rigid mode. Its state (such as position and velocity) can be queried and updated. A force integration callback can be set to customize the body's physics.
+- Một *body* là một đối tượng vật lý có thể ở chế độ tĩnh, động học hoặc rắn. Trạng thái của nó (chẳng hạn như vị trí và vận tốc) có thể được truy vấn và cập nhật. Có thể thiết lập callback tích hợp lực để tùy chỉnh physics của body.
 
-- An *area* is a region in space which can be used to detect bodies and areas entering and exiting it. A body monitoring callback can be set to report entering/exiting body shapes, and similarly an area monitoring callback can be set. Gravity and damping can be overridden within the area by setting area parameters.
+- Một *area* là một vùng trong không gian, có thể được dùng để phát hiện các body và area đi vào hoặc rời khỏi vùng đó. Có thể thiết lập callback theo dõi body để báo cáo các shape của body đi vào hoặc rời khỏi vùng, và tương tự cũng có thể thiết lập callback theo dõi area. Có thể ghi đè gravity và damping trong area bằng cách thiết lập các tham số của area.
 
-- A *joint* is a constraint, either between two bodies or on one body relative to a point. Parameters such as the joint bias and the rest length of a spring joint can be adjusted.
+- Một *joint* là một ràng buộc, nằm giữa hai body hoặc trên một body duy nhất tương đối với một điểm. Có thể điều chỉnh các tham số như độ lệch của joint và độ dài tự nhiên của spring joint.
 
-Physics objects in **PhysicsServer2D** may be created and manipulated independently; they do not have to be tied to nodes in the scene tree.
+Các đối tượng vật lý trong **PhysicsServer2D** có thể được tạo và thao tác độc lập; chúng không cần phải gắn với các node trong scene tree.
 
-\ **Note:** All the 2D physics nodes use the physics server internally. Adding a physics node to the scene tree will cause a corresponding physics object to be created in the physics server. A rigid body node registers a callback that updates the node's transform with the transform of the respective body object in the physics server (every physics update). An area node registers a callback to inform the area node about overlaps with the respective area object in the physics server. The raycast node queries the direct state of the relevant space in the physics server.
+\ **Lưu ý:** Tất cả các node physics 2D đều sử dụng physics server ở bên trong. Việc thêm một node physics vào scene tree sẽ khiến một đối tượng physics tương ứng được tạo trong physics server. Một node rigid body đăng ký callback để cập nhật transform của node bằng transform của đối tượng body tương ứng trong physics server (sau mỗi lần cập nhật physics). Một node area đăng ký callback để thông báo cho node area về các vùng chồng lấn với đối tượng area tương ứng trong physics server. Node raycast truy vấn trạng thái trực tiếp của space liên quan trong physics server.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -64,7 +64,7 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`area_get_object_instance_id<class_PhysicsServer2D_method_area_get_object_instance_id>`\ (\ area\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`area_get_param<class_PhysicsServer2D_method_area_get_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>`\ ) |const|                                                                                                                                              |
+   | :ref:`Variant<class_Variant>`                                     | :ref:`area_get_param<class_PhysicsServer2D_method_area_get_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter <enum_PhysicsServer2D_AreaParameter>`\ ) |const|                                                                                                                                             |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`area_get_shape<class_PhysicsServer2D_method_area_get_shape>`\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                             |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -88,7 +88,7 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`area_set_monitorable<class_PhysicsServer2D_method_area_set_monitorable>`\ (\ area\: :ref:`RID<class_RID>`, monitorable\: :ref:`bool<class_bool>`\ )                                                                                                                                                                     |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`area_set_param<class_PhysicsServer2D_method_area_set_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                               |
+   | |void|                                                            | :ref:`area_set_param<class_PhysicsServer2D_method_area_set_param>`\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter <enum_PhysicsServer2D_AreaParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                              |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`area_set_shape<class_PhysicsServer2D_method_area_set_shape>`\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, shape\: :ref:`RID<class_RID>`\ )                                                                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -142,17 +142,17 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`float<class_float>`                                         | :ref:`body_get_constant_torque<class_PhysicsServer2D_method_body_get_constant_torque>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`CCDMode<enum_PhysicsServer2D_CCDMode>`                      | :ref:`body_get_continuous_collision_detection_mode<class_PhysicsServer2D_method_body_get_continuous_collision_detection_mode>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                    |
+   | :ref:`CCDMode <enum_PhysicsServer2D_CCDMode>`                     | :ref:`body_get_continuous_collision_detection_mode<class_PhysicsServer2D_method_body_get_continuous_collision_detection_mode>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                    |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>`   | :ref:`body_get_direct_state<class_PhysicsServer2D_method_body_get_direct_state>`\ (\ body\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                          |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`body_get_max_contacts_reported<class_PhysicsServer2D_method_body_get_max_contacts_reported>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>`                    | :ref:`body_get_mode<class_PhysicsServer2D_method_body_get_mode>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                  |
+   | :ref:`BodyMode <enum_PhysicsServer2D_BodyMode>`                   | :ref:`body_get_mode<class_PhysicsServer2D_method_body_get_mode>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                  |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                             | :ref:`body_get_object_instance_id<class_PhysicsServer2D_method_body_get_object_instance_id>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_param<class_PhysicsServer2D_method_body_get_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>`\ ) |const|                                                                                                                                              |
+   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_param<class_PhysicsServer2D_method_body_get_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter <enum_PhysicsServer2D_BodyParameter>`\ ) |const|                                                                                                                                             |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`body_get_shape<class_PhysicsServer2D_method_body_get_shape>`\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                             |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -162,7 +162,7 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`body_get_space<class_PhysicsServer2D_method_body_get_space>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                                |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_state<class_PhysicsServer2D_method_body_get_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer2D_BodyState>`\ ) |const|                                                                                                                                                      |
+   | :ref:`Variant<class_Variant>`                                     | :ref:`body_get_state<class_PhysicsServer2D_method_body_get_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState <enum_PhysicsServer2D_BodyState>`\ ) |const|                                                                                                                                                     |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`body_is_omitting_force_integration<class_PhysicsServer2D_method_body_is_omitting_force_integration>`\ (\ body\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                        |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -184,17 +184,17 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_constant_torque<class_PhysicsServer2D_method_body_set_constant_torque>`\ (\ body\: :ref:`RID<class_RID>`, torque\: :ref:`float<class_float>`\ )                                                                                                                                                                |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_continuous_collision_detection_mode<class_PhysicsServer2D_method_body_set_continuous_collision_detection_mode>`\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`CCDMode<enum_PhysicsServer2D_CCDMode>`\ )                                                                                                       |
+   | |void|                                                            | :ref:`body_set_continuous_collision_detection_mode<class_PhysicsServer2D_method_body_set_continuous_collision_detection_mode>`\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`CCDMode <enum_PhysicsServer2D_CCDMode>`\ )                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_force_integration_callback<class_PhysicsServer2D_method_body_set_force_integration_callback>`\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`, userdata\: :ref:`Variant<class_Variant>` = null\ )                                                                                 |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_max_contacts_reported<class_PhysicsServer2D_method_body_set_max_contacts_reported>`\ (\ body\: :ref:`RID<class_RID>`, amount\: :ref:`int<class_int>`\ )                                                                                                                                                        |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_mode<class_PhysicsServer2D_method_body_set_mode>`\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>`\ )                                                                                                                                                                   |
+   | |void|                                                            | :ref:`body_set_mode<class_PhysicsServer2D_method_body_set_mode>`\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`BodyMode <enum_PhysicsServer2D_BodyMode>`\ )                                                                                                                                                                  |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_omit_force_integration<class_PhysicsServer2D_method_body_set_omit_force_integration>`\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ )                                                                                                                                                    |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_param<class_PhysicsServer2D_method_body_set_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                               |
+   | |void|                                                            | :ref:`body_set_param<class_PhysicsServer2D_method_body_set_param>`\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter <enum_PhysicsServer2D_BodyParameter>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                              |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_shape<class_PhysicsServer2D_method_body_set_shape>`\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, shape\: :ref:`RID<class_RID>`\ )                                                                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -206,7 +206,7 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_space<class_PhysicsServer2D_method_body_set_space>`\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                         |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`body_set_state<class_PhysicsServer2D_method_body_set_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer2D_BodyState>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                       |
+   | |void|                                                            | :ref:`body_set_state<class_PhysicsServer2D_method_body_set_state>`\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState <enum_PhysicsServer2D_BodyState>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`body_set_state_sync_callback<class_PhysicsServer2D_method_body_set_state_sync_callback>`\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`\ )                                                                                                                                                |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -220,13 +220,13 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`convex_polygon_shape_create<class_PhysicsServer2D_method_convex_polygon_shape_create>`\ (\ )                                                                                                                                                                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`damped_spring_joint_get_param<class_PhysicsServer2D_method_damped_spring_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`DampedSpringParam<enum_PhysicsServer2D_DampedSpringParam>`\ ) |const|                                                                                                       |
+   | :ref:`float<class_float>`                                         | :ref:`damped_spring_joint_get_param<class_PhysicsServer2D_method_damped_spring_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`DampedSpringParam <enum_PhysicsServer2D_DampedSpringParam>`\ ) |const|                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`damped_spring_joint_set_param<class_PhysicsServer2D_method_damped_spring_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`DampedSpringParam<enum_PhysicsServer2D_DampedSpringParam>`, value\: :ref:`float<class_float>`\ )                                                                            |
+   | |void|                                                            | :ref:`damped_spring_joint_set_param<class_PhysicsServer2D_method_damped_spring_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`DampedSpringParam <enum_PhysicsServer2D_DampedSpringParam>`, value\: :ref:`float<class_float>`\ )                                                                           |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`free_rid<class_PhysicsServer2D_method_free_rid>`\ (\ rid\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                                     |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_process_info<class_PhysicsServer2D_method_get_process_info>`\ (\ process_info\: :ref:`ProcessInfo<enum_PhysicsServer2D_ProcessInfo>`\ )                                                                                                                                                                             |
+   | :ref:`int<class_int>`                                             | :ref:`get_process_info<class_PhysicsServer2D_method_get_process_info>`\ (\ process_info\: :ref:`ProcessInfo <enum_PhysicsServer2D_ProcessInfo>`\ )                                                                                                                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`joint_clear<class_PhysicsServer2D_method_joint_clear>`\ (\ joint\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                                             |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -234,9 +234,9 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`joint_disable_collisions_between_bodies<class_PhysicsServer2D_method_joint_disable_collisions_between_bodies>`\ (\ joint\: :ref:`RID<class_RID>`, disable\: :ref:`bool<class_bool>`\ )                                                                                                                                  |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`joint_get_param<class_PhysicsServer2D_method_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`JointParam<enum_PhysicsServer2D_JointParam>`\ ) |const|                                                                                                                                                 |
+   | :ref:`float<class_float>`                                         | :ref:`joint_get_param<class_PhysicsServer2D_method_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`JointParam <enum_PhysicsServer2D_JointParam>`\ ) |const|                                                                                                                                                |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`JointType<enum_PhysicsServer2D_JointType>`                  | :ref:`joint_get_type<class_PhysicsServer2D_method_joint_get_type>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                               |
+   | :ref:`JointType <enum_PhysicsServer2D_JointType>`                 | :ref:`joint_get_type<class_PhysicsServer2D_method_joint_get_type>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                               |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`joint_is_disabled_collisions_between_bodies<class_PhysicsServer2D_method_joint_is_disabled_collisions_between_bodies>`\ (\ joint\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                     |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -246,15 +246,15 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`joint_make_pin<class_PhysicsServer2D_method_joint_make_pin>`\ (\ joint\: :ref:`RID<class_RID>`, anchor\: :ref:`Vector2<class_Vector2>`, body_a\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>` = RID()\ )                                                                                                       |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`joint_set_param<class_PhysicsServer2D_method_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`JointParam<enum_PhysicsServer2D_JointParam>`, value\: :ref:`float<class_float>`\ )                                                                                                                      |
+   | |void|                                                            | :ref:`joint_set_param<class_PhysicsServer2D_method_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`JointParam <enum_PhysicsServer2D_JointParam>`, value\: :ref:`float<class_float>`\ )                                                                                                                     |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`pin_joint_get_flag<class_PhysicsServer2D_method_pin_joint_get_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`PinJointFlag<enum_PhysicsServer2D_PinJointFlag>`\ ) |const|                                                                                                                                        |
+   | :ref:`bool<class_bool>`                                           | :ref:`pin_joint_get_flag<class_PhysicsServer2D_method_pin_joint_get_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`PinJointFlag <enum_PhysicsServer2D_PinJointFlag>`\ ) |const|                                                                                                                                       |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`pin_joint_get_param<class_PhysicsServer2D_method_pin_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>`\ ) |const|                                                                                                                                   |
+   | :ref:`float<class_float>`                                         | :ref:`pin_joint_get_param<class_PhysicsServer2D_method_pin_joint_get_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam <enum_PhysicsServer2D_PinJointParam>`\ ) |const|                                                                                                                                  |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`pin_joint_set_flag<class_PhysicsServer2D_method_pin_joint_set_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`PinJointFlag<enum_PhysicsServer2D_PinJointFlag>`, enabled\: :ref:`bool<class_bool>`\ )                                                                                                             |
+   | |void|                                                            | :ref:`pin_joint_set_flag<class_PhysicsServer2D_method_pin_joint_set_flag>`\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`PinJointFlag <enum_PhysicsServer2D_PinJointFlag>`, enabled\: :ref:`bool<class_bool>`\ )                                                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`pin_joint_set_param<class_PhysicsServer2D_method_pin_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>`, value\: :ref:`float<class_float>`\ )                                                                                                        |
+   | |void|                                                            | :ref:`pin_joint_set_param<class_PhysicsServer2D_method_pin_joint_set_param>`\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam <enum_PhysicsServer2D_PinJointParam>`, value\: :ref:`float<class_float>`\ )                                                                                                       |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`rectangle_shape_create<class_PhysicsServer2D_method_rectangle_shape_create>`\ (\ )                                                                                                                                                                                                                                      |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -266,7 +266,7 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Variant<class_Variant>`                                     | :ref:`shape_get_data<class_PhysicsServer2D_method_shape_get_data>`\ (\ shape\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                               |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>`                  | :ref:`shape_get_type<class_PhysicsServer2D_method_shape_get_type>`\ (\ shape\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                               |
+   | :ref:`ShapeType <enum_PhysicsServer2D_ShapeType>`                 | :ref:`shape_get_type<class_PhysicsServer2D_method_shape_get_type>`\ (\ shape\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                               |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`shape_set_data<class_PhysicsServer2D_method_shape_set_data>`\ (\ shape\: :ref:`RID<class_RID>`, data\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                                                 |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -274,13 +274,13 @@ Methods
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>` | :ref:`space_get_direct_state<class_PhysicsServer2D_method_space_get_direct_state>`\ (\ space\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                       |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`space_get_param<class_PhysicsServer2D_method_space_get_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>`\ ) |const|                                                                                                                                         |
+   | :ref:`float<class_float>`                                         | :ref:`space_get_param<class_PhysicsServer2D_method_space_get_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter <enum_PhysicsServer2D_SpaceParameter>`\ ) |const|                                                                                                                                        |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                           | :ref:`space_is_active<class_PhysicsServer2D_method_space_is_active>`\ (\ space\: :ref:`RID<class_RID>`\ ) |const|                                                                                                                                                                                                             |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                            | :ref:`space_set_active<class_PhysicsServer2D_method_space_set_active>`\ (\ space\: :ref:`RID<class_RID>`, active\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                 |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                            | :ref:`space_set_param<class_PhysicsServer2D_method_space_set_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>`, value\: :ref:`float<class_float>`\ )                                                                                                              |
+   | |void|                                                            | :ref:`space_set_param<class_PhysicsServer2D_method_space_set_param>`\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter <enum_PhysicsServer2D_SpaceParameter>`, value\: :ref:`float<class_float>`\ )                                                                                                             |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`                                             | :ref:`world_boundary_shape_create<class_PhysicsServer2D_method_world_boundary_shape_create>`\ (\ )                                                                                                                                                                                                                            |
    +-------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -291,14 +291,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_PhysicsServer2D_SpaceParameter:
 
 .. rst-class:: classref-enumeration
 
-enum **SpaceParameter**: :ref:`🔗<enum_PhysicsServer2D_SpaceParameter>`
+enum **SpaceParameter**: :ref:`🔗 <enum_PhysicsServer2D_SpaceParameter>`
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_CONTACT_RECYCLE_RADIUS:
 
@@ -306,7 +306,7 @@ enum **SpaceParameter**: :ref:`🔗<enum_PhysicsServer2D_SpaceParameter>`
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_CONTACT_RECYCLE_RADIUS** = ``0``
 
-Constant to set/get the maximum distance a pair of bodies has to move before their collision status has to be recalculated. The default value of this parameter is :ref:`ProjectSettings.physics/2d/solver/contact_recycle_radius<class_ProjectSettings_property_physics/2d/solver/contact_recycle_radius>`.
+Hằng số dùng để thiết lập/lấy khoảng cách tối đa mà một cặp vật thể phải di chuyển trước khi trạng thái va chạm của chúng được tính toán lại. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/solver/contact_recycle_radius <class_ProjectSettings_property_physics/2d/solver/contact_recycle_radius>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_CONTACT_MAX_SEPARATION:
 
@@ -314,7 +314,7 @@ Constant to set/get the maximum distance a pair of bodies has to move before the
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_CONTACT_MAX_SEPARATION** = ``1``
 
-Constant to set/get the maximum distance a shape can be from another before they are considered separated and the contact is discarded. The default value of this parameter is :ref:`ProjectSettings.physics/2d/solver/contact_max_separation<class_ProjectSettings_property_physics/2d/solver/contact_max_separation>`.
+Hằng số dùng để thiết lập/lấy khoảng cách tối đa mà một shape có thể cách một shape khác trước khi chúng được xem là đã tách rời và tiếp xúc bị loại bỏ. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/solver/contact_max_separation <class_ProjectSettings_property_physics/2d/solver/contact_max_separation>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION:
 
@@ -322,7 +322,7 @@ Constant to set/get the maximum distance a shape can be from another before they
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_CONTACT_MAX_ALLOWED_PENETRATION** = ``2``
 
-Constant to set/get the maximum distance a shape can penetrate another shape before it is considered a collision. The default value of this parameter is :ref:`ProjectSettings.physics/2d/solver/contact_max_allowed_penetration<class_ProjectSettings_property_physics/2d/solver/contact_max_allowed_penetration>`.
+Hằng số dùng để thiết lập/lấy khoảng cách tối đa mà một shape có thể xuyên vào một shape khác trước khi được xem là xảy ra va chạm. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/solver/contact_max_allowed_penetration <class_ProjectSettings_property_physics/2d/solver/contact_max_allowed_penetration>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_CONTACT_DEFAULT_BIAS:
 
@@ -330,7 +330,7 @@ Constant to set/get the maximum distance a shape can penetrate another shape bef
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_CONTACT_DEFAULT_BIAS** = ``3``
 
-Constant to set/get the default solver bias for all physics contacts. A solver bias is a factor controlling how much two objects "rebound", after overlapping, to avoid leaving them in that state because of numerical imprecision. The default value of this parameter is :ref:`ProjectSettings.physics/2d/solver/default_contact_bias<class_ProjectSettings_property_physics/2d/solver/default_contact_bias>`.
+Hằng số dùng để thiết lập/lấy solver bias mặc định cho mọi tiếp xúc vật lý. Solver bias là một hệ số kiểm soát mức độ hai đối tượng "bật lại" sau khi chồng lấn, nhằm tránh để chúng ở trạng thái đó do sai số tính toán số. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/solver/default_contact_bias <class_ProjectSettings_property_physics/2d/solver/default_contact_bias>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD:
 
@@ -338,7 +338,7 @@ Constant to set/get the default solver bias for all physics contacts. A solver b
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_BODY_LINEAR_VELOCITY_SLEEP_THRESHOLD** = ``4``
 
-Constant to set/get the threshold linear velocity of activity. A body marked as potentially inactive for both linear and angular velocity will be put to sleep after the time given. The default value of this parameter is :ref:`ProjectSettings.physics/2d/sleep_threshold_linear<class_ProjectSettings_property_physics/2d/sleep_threshold_linear>`.
+Hằng số dùng để thiết lập/lấy vận tốc tuyến tính ngưỡng của trạng thái hoạt động. Một vật thể được đánh dấu là có khả năng không hoạt động đối với cả vận tốc tuyến tính và vận tốc góc sẽ chuyển sang trạng thái ngủ sau khoảng thời gian được chỉ định. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/sleep_threshold_linear <class_ProjectSettings_property_physics/2d/sleep_threshold_linear>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD:
 
@@ -346,7 +346,7 @@ Constant to set/get the threshold linear velocity of activity. A body marked as 
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_BODY_ANGULAR_VELOCITY_SLEEP_THRESHOLD** = ``5``
 
-Constant to set/get the threshold angular velocity of activity. A body marked as potentially inactive for both linear and angular velocity will be put to sleep after the time given. The default value of this parameter is :ref:`ProjectSettings.physics/2d/sleep_threshold_angular<class_ProjectSettings_property_physics/2d/sleep_threshold_angular>`.
+Hằng số dùng để thiết lập/lấy vận tốc góc ngưỡng của trạng thái hoạt động. Một vật thể được đánh dấu là có khả năng không hoạt động đối với cả vận tốc tuyến tính và vận tốc góc sẽ chuyển sang trạng thái ngủ sau khoảng thời gian được chỉ định. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/sleep_threshold_angular <class_ProjectSettings_property_physics/2d/sleep_threshold_angular>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_BODY_TIME_TO_SLEEP:
 
@@ -354,7 +354,7 @@ Constant to set/get the threshold angular velocity of activity. A body marked as
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_BODY_TIME_TO_SLEEP** = ``6``
 
-Constant to set/get the maximum time of activity. A body marked as potentially inactive for both linear and angular velocity will be put to sleep after this time. The default value of this parameter is :ref:`ProjectSettings.physics/2d/time_before_sleep<class_ProjectSettings_property_physics/2d/time_before_sleep>`.
+Hằng số dùng để thiết lập/lấy thời gian hoạt động tối đa. Một vật thể được đánh dấu là có khả năng không hoạt động đối với cả vận tốc tuyến tính và vận tốc góc sẽ chuyển sang trạng thái ngủ sau khoảng thời gian này. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/time_before_sleep <class_ProjectSettings_property_physics/2d/time_before_sleep>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_CONSTRAINT_DEFAULT_BIAS:
 
@@ -362,7 +362,7 @@ Constant to set/get the maximum time of activity. A body marked as potentially i
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_CONSTRAINT_DEFAULT_BIAS** = ``7``
 
-Constant to set/get the default solver bias for all physics constraints. A solver bias is a factor controlling how much two objects "rebound", after violating a constraint, to avoid leaving them in that state because of numerical imprecision. The default value of this parameter is :ref:`ProjectSettings.physics/2d/solver/default_constraint_bias<class_ProjectSettings_property_physics/2d/solver/default_constraint_bias>`.
+Hằng số dùng để đặt/lấy solver bias mặc định cho tất cả các ràng buộc vật lý. Solver bias là một hệ số kiểm soát mức độ hai đối tượng "bật lại" sau khi vi phạm một ràng buộc, nhằm tránh để chúng ở trạng thái đó do sai số tính toán số. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/solver/default_constraint_bias <class_ProjectSettings_property_physics/2d/solver/default_constraint_bias>`.
 
 .. _class_PhysicsServer2D_constant_SPACE_PARAM_SOLVER_ITERATIONS:
 
@@ -370,7 +370,7 @@ Constant to set/get the default solver bias for all physics constraints. A solve
 
 :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>` **SPACE_PARAM_SOLVER_ITERATIONS** = ``8``
 
-Constant to set/get the number of solver iterations for all contacts and constraints. The greater the number of iterations, the more accurate the collisions will be. However, a greater number of iterations requires more CPU power, which can decrease performance. The default value of this parameter is :ref:`ProjectSettings.physics/2d/solver/solver_iterations<class_ProjectSettings_property_physics/2d/solver/solver_iterations>`.
+Hằng số dùng để đặt/lấy số lần lặp của solver cho tất cả các tiếp xúc và ràng buộc. Số lần lặp càng lớn thì các va chạm càng chính xác. Tuy nhiên, số lần lặp lớn hơn đòi hỏi nhiều CPU hơn, có thể làm giảm hiệu năng. Giá trị mặc định của tham số này là :ref:`ProjectSettings.physics/2d/solver/solver_iterations <class_ProjectSettings_property_physics/2d/solver/solver_iterations>`.
 
 .. rst-class:: classref-item-separator
 
@@ -380,7 +380,7 @@ Constant to set/get the number of solver iterations for all contacts and constra
 
 .. rst-class:: classref-enumeration
 
-enum **ShapeType**: :ref:`🔗<enum_PhysicsServer2D_ShapeType>`
+enum **ShapeType**: :ref:`🔗 <enum_PhysicsServer2D_ShapeType>`
 
 .. _class_PhysicsServer2D_constant_SHAPE_WORLD_BOUNDARY:
 
@@ -388,7 +388,7 @@ enum **ShapeType**: :ref:`🔗<enum_PhysicsServer2D_ShapeType>`
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_WORLD_BOUNDARY** = ``0``
 
-This is the constant for creating world boundary shapes. A world boundary shape is an *infinite* line with an origin point, and a normal. Thus, it can be used for front/behind checks.
+Đây là hằng số dùng để tạo các hình dạng biên thế giới. Hình dạng biên thế giới là một đường *vô hạn* có điểm gốc và pháp tuyến. Vì vậy, nó có thể được dùng để kiểm tra phía trước/phía sau.
 
 .. _class_PhysicsServer2D_constant_SHAPE_SEPARATION_RAY:
 
@@ -396,7 +396,7 @@ This is the constant for creating world boundary shapes. A world boundary shape 
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_SEPARATION_RAY** = ``1``
 
-This is the constant for creating separation ray shapes. A separation ray is defined by a length and separates itself from what is touching its far endpoint. Useful for character controllers.
+Đây là hằng số dùng để tạo các hình dạng tia phân tách. Một tia phân tách được xác định bởi độ dài và tự tách khỏi vật đang chạm vào điểm cuối xa của nó. Hữu ích cho các character controller.
 
 .. _class_PhysicsServer2D_constant_SHAPE_SEGMENT:
 
@@ -404,7 +404,7 @@ This is the constant for creating separation ray shapes. A separation ray is def
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_SEGMENT** = ``2``
 
-This is the constant for creating segment shapes. A segment shape is a *finite* line from a point A to a point B. It can be checked for intersections.
+Đây là hằng số dùng để tạo các hình dạng đoạn thẳng. Hình dạng đoạn thẳng là một đường *hữu hạn* từ điểm A đến điểm B. Có thể kiểm tra các giao điểm của nó.
 
 .. _class_PhysicsServer2D_constant_SHAPE_CIRCLE:
 
@@ -412,7 +412,7 @@ This is the constant for creating segment shapes. A segment shape is a *finite* 
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_CIRCLE** = ``3``
 
-This is the constant for creating circle shapes. A circle shape only has a radius. It can be used for intersections and inside/outside checks.
+Đây là hằng số dùng để tạo các hình dạng hình tròn. Hình tròn chỉ có bán kính. Nó có thể được dùng để kiểm tra giao điểm và kiểm tra bên trong/bên ngoài.
 
 .. _class_PhysicsServer2D_constant_SHAPE_RECTANGLE:
 
@@ -420,7 +420,7 @@ This is the constant for creating circle shapes. A circle shape only has a radiu
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_RECTANGLE** = ``4``
 
-This is the constant for creating rectangle shapes. A rectangle shape is defined by a width and a height. It can be used for intersections and inside/outside checks.
+Đây là hằng số để tạo các shape hình chữ nhật. Một shape hình chữ nhật được xác định bởi chiều rộng và chiều cao. Shape này có thể được dùng để kiểm tra giao nhau và kiểm tra bên trong/bên ngoài.
 
 .. _class_PhysicsServer2D_constant_SHAPE_CAPSULE:
 
@@ -428,7 +428,7 @@ This is the constant for creating rectangle shapes. A rectangle shape is defined
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_CAPSULE** = ``5``
 
-This is the constant for creating capsule shapes. A capsule shape is defined by a radius and a length. It can be used for intersections and inside/outside checks.
+Đây là hằng số để tạo các shape capsule. Một shape capsule được xác định bởi bán kính và chiều dài. Shape này có thể được dùng để kiểm tra giao nhau và kiểm tra bên trong/bên ngoài.
 
 .. _class_PhysicsServer2D_constant_SHAPE_CONVEX_POLYGON:
 
@@ -436,7 +436,7 @@ This is the constant for creating capsule shapes. A capsule shape is defined by 
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_CONVEX_POLYGON** = ``6``
 
-This is the constant for creating convex polygon shapes. A polygon is defined by a list of points. It can be used for intersections and inside/outside checks.
+Đây là hằng số để tạo các shape polygon lồi. Một polygon được xác định bởi một danh sách các điểm. Polygon này có thể được dùng để kiểm tra giao nhau và kiểm tra bên trong/bên ngoài.
 
 .. _class_PhysicsServer2D_constant_SHAPE_CONCAVE_POLYGON:
 
@@ -444,7 +444,7 @@ This is the constant for creating convex polygon shapes. A polygon is defined by
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_CONCAVE_POLYGON** = ``7``
 
-This is the constant for creating concave polygon shapes. A polygon is defined by a list of points. It can be used for intersections checks, but not for inside/outside checks.
+Đây là hằng số để tạo các shape polygon lõm. Một polygon được xác định bởi một danh sách các điểm. Polygon này có thể được dùng để kiểm tra giao nhau, nhưng không thể dùng để kiểm tra bên trong/bên ngoài.
 
 .. _class_PhysicsServer2D_constant_SHAPE_CUSTOM:
 
@@ -452,7 +452,7 @@ This is the constant for creating concave polygon shapes. A polygon is defined b
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **SHAPE_CUSTOM** = ``8``
 
-This constant is used internally by the engine. Any attempt to create this kind of shape results in an error.
+Hằng số này được engine sử dụng nội bộ. Mọi nỗ lực tạo loại shape này đều dẫn đến lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -462,7 +462,7 @@ This constant is used internally by the engine. Any attempt to create this kind 
 
 .. rst-class:: classref-enumeration
 
-enum **AreaParameter**: :ref:`🔗<enum_PhysicsServer2D_AreaParameter>`
+enum **AreaParameter**: :ref:`🔗 <enum_PhysicsServer2D_AreaParameter>`
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_GRAVITY_OVERRIDE_MODE:
 
@@ -470,7 +470,7 @@ enum **AreaParameter**: :ref:`🔗<enum_PhysicsServer2D_AreaParameter>`
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_GRAVITY_OVERRIDE_MODE** = ``0``
 
-Constant to set/get gravity override mode in an area. See :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` for possible values. The default value of this parameter is :ref:`AREA_SPACE_OVERRIDE_DISABLED<class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_DISABLED>`.
+Hằng số để đặt/lấy chế độ ghi đè trọng lực trong một area. Xem :ref:`AreaSpaceOverrideMode <enum_PhysicsServer2D_AreaSpaceOverrideMode>` để biết các giá trị có thể có. Giá trị mặc định của tham số này là :ref:`AREA_SPACE_OVERRIDE_DISABLED<class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_DISABLED>`.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_GRAVITY:
 
@@ -478,7 +478,7 @@ Constant to set/get gravity override mode in an area. See :ref:`AreaSpaceOverrid
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_GRAVITY** = ``1``
 
-Constant to set/get gravity strength in an area. The default value of this parameter is ``9.80665``.
+Hằng số để thiết lập/lấy cường độ trọng lực trong một vùng. Giá trị mặc định của tham số này là ``9.80665``.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_GRAVITY_VECTOR:
 
@@ -486,7 +486,7 @@ Constant to set/get gravity strength in an area. The default value of this param
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_GRAVITY_VECTOR** = ``2``
 
-Constant to set/get gravity vector/center in an area. The default value of this parameter is ``Vector2(0, -1)``.
+Hằng số để thiết lập/lấy vectơ/tâm trọng lực trong một vùng. Giá trị mặc định của tham số này là ``Vector2(0, -1)``.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_GRAVITY_IS_POINT:
 
@@ -494,7 +494,7 @@ Constant to set/get gravity vector/center in an area. The default value of this 
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_GRAVITY_IS_POINT** = ``3``
 
-Constant to set/get whether the gravity vector of an area is a direction, or a center point. The default value of this parameter is ``false``.
+Hằng số để thiết lập/lấy việc vectơ trọng lực của một vùng là một hướng hay một điểm trung tâm. Giá trị mặc định của tham số này là ``false``.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE:
 
@@ -502,9 +502,9 @@ Constant to set/get whether the gravity vector of an area is a direction, or a c
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_GRAVITY_POINT_UNIT_DISTANCE** = ``4``
 
-Constant to set/get the distance at which the gravity strength is equal to the gravity controlled by :ref:`AREA_PARAM_GRAVITY<class_PhysicsServer2D_constant_AREA_PARAM_GRAVITY>`. For example, on a planet 100 pixels in radius with a surface gravity of 4.0 px/s², set the gravity to 4.0 and the unit distance to 100.0. The gravity will have falloff according to the inverse square law, so in the example, at 200 pixels from the center the gravity will be 1.0 px/s² (twice the distance, 1/4th the gravity), at 50 pixels it will be 16.0 px/s² (half the distance, 4x the gravity), and so on.
+Hằng số để thiết lập/lấy khoảng cách tại đó cường độ trọng lực bằng với trọng lực được điều khiển bởi :ref:`AREA_PARAM_GRAVITY<class_PhysicsServer2D_constant_AREA_PARAM_GRAVITY>`. Ví dụ: trên một hành tinh có bán kính 100 pixel và trọng lực bề mặt là 4.0 px/s², hãy đặt trọng lực thành 4.0 và khoảng cách đơn vị thành 100.0. Trọng lực sẽ suy giảm theo định luật nghịch đảo bình phương, vì vậy trong ví dụ này, tại khoảng cách 200 pixel tính từ tâm, trọng lực sẽ là 1.0 px/s² (khoảng cách gấp đôi, trọng lực bằng 1/4), tại 50 pixel, trọng lực sẽ là 16.0 px/s² (khoảng cách giảm một nửa, trọng lực gấp 4 lần), v.v.
 
-The above is true only when the unit distance is a positive number. When the unit distance is set to 0.0, the gravity will be constant regardless of distance. The default value of this parameter is ``0.0``.
+Điều trên chỉ đúng khi khoảng cách đơn vị là một số dương. Khi khoảng cách đơn vị được đặt thành 0.0, trọng lực sẽ không đổi bất kể khoảng cách. Giá trị mặc định của tham số này là ``0.0``.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE:
 
@@ -512,7 +512,7 @@ The above is true only when the unit distance is a positive number. When the uni
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_LINEAR_DAMP_OVERRIDE_MODE** = ``5``
 
-Constant to set/get linear damping override mode in an area. See :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` for possible values. The default value of this parameter is :ref:`AREA_SPACE_OVERRIDE_DISABLED<class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_DISABLED>`.
+Hằng số để thiết lập/lấy chế độ ghi đè linear damping trong một vùng. Xem :ref:`AreaSpaceOverrideMode <enum_PhysicsServer2D_AreaSpaceOverrideMode>` để biết các giá trị có thể sử dụng. Giá trị mặc định của tham số này là :ref:`AREA_SPACE_OVERRIDE_DISABLED<class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_DISABLED>`.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_LINEAR_DAMP:
 
@@ -520,7 +520,7 @@ Constant to set/get linear damping override mode in an area. See :ref:`AreaSpace
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_LINEAR_DAMP** = ``6``
 
-Constant to set/get the linear damping factor of an area. The default value of this parameter is ``0.1``.
+Hằng số để thiết lập/lấy hệ số linear damping của một vùng. Giá trị mặc định của tham số này là ``0.1``.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE:
 
@@ -528,7 +528,7 @@ Constant to set/get the linear damping factor of an area. The default value of t
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_ANGULAR_DAMP_OVERRIDE_MODE** = ``7``
 
-Constant to set/get angular damping override mode in an area. See :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` for possible values. The default value of this parameter is :ref:`AREA_SPACE_OVERRIDE_DISABLED<class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_DISABLED>`.
+Hằng số dùng để thiết lập/lấy chế độ ghi đè lực cản góc trong một khu vực. Xem :ref:`AreaSpaceOverrideMode <enum_PhysicsServer2D_AreaSpaceOverrideMode>` để biết các giá trị có thể có. Giá trị mặc định của tham số này là :ref:`AREA_SPACE_OVERRIDE_DISABLED<class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_DISABLED>`.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_ANGULAR_DAMP:
 
@@ -536,7 +536,7 @@ Constant to set/get angular damping override mode in an area. See :ref:`AreaSpac
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_ANGULAR_DAMP** = ``8``
 
-Constant to set/get the angular damping factor of an area. The default value of this parameter is ``1.0``.
+Hằng số dùng để thiết lập/lấy hệ số lực cản góc của một khu vực. Giá trị mặc định của tham số này là ``1.0``.
 
 .. _class_PhysicsServer2D_constant_AREA_PARAM_PRIORITY:
 
@@ -544,7 +544,7 @@ Constant to set/get the angular damping factor of an area. The default value of 
 
 :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>` **AREA_PARAM_PRIORITY** = ``9``
 
-Constant to set/get the priority (order of processing) of an area. The default value of this parameter is ``0``.
+Hằng số dùng để thiết lập/lấy độ ưu tiên (thứ tự xử lý) của một khu vực. Giá trị mặc định của tham số này là ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -554,7 +554,7 @@ Constant to set/get the priority (order of processing) of an area. The default v
 
 .. rst-class:: classref-enumeration
 
-enum **AreaSpaceOverrideMode**: :ref:`🔗<enum_PhysicsServer2D_AreaSpaceOverrideMode>`
+enum **AreaSpaceOverrideMode**: :ref:`🔗 <enum_PhysicsServer2D_AreaSpaceOverrideMode>`
 
 .. _class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_DISABLED:
 
@@ -562,7 +562,7 @@ enum **AreaSpaceOverrideMode**: :ref:`🔗<enum_PhysicsServer2D_AreaSpaceOverrid
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_DISABLED** = ``0``
 
-This area does not affect gravity/damp. These are generally areas that exist only to detect collisions, and objects entering or exiting them.
+Khu vực này không ảnh hưởng đến trọng lực/lực cản. Đây thường là những khu vực chỉ tồn tại để phát hiện va chạm và các đối tượng đi vào hoặc rời khỏi chúng.
 
 .. _class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_COMBINE:
 
@@ -570,7 +570,7 @@ This area does not affect gravity/damp. These are generally areas that exist onl
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_COMBINE** = ``1``
 
-This area adds its gravity/damp values to whatever has been calculated so far. This way, many overlapping areas can combine their physics to make interesting effects.
+Khu vực này cộng các giá trị trọng lực/lực cản của nó vào kết quả đã tính cho đến thời điểm hiện tại. Nhờ đó, nhiều khu vực chồng lấp có thể kết hợp vật lý của chúng để tạo ra những hiệu ứng thú vị.
 
 .. _class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_COMBINE_REPLACE:
 
@@ -578,7 +578,7 @@ This area adds its gravity/damp values to whatever has been calculated so far. T
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_COMBINE_REPLACE** = ``2``
 
-This area adds its gravity/damp values to whatever has been calculated so far. Then stops taking into account the rest of the areas, even the default one.
+Khu vực này cộng các giá trị trọng lực/lực cản của nó vào kết quả đã tính cho đến thời điểm hiện tại. Sau đó, khu vực này không xét đến các khu vực còn lại, kể cả khu vực mặc định.
 
 .. _class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_REPLACE:
 
@@ -586,7 +586,7 @@ This area adds its gravity/damp values to whatever has been calculated so far. T
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_REPLACE** = ``3``
 
-This area replaces any gravity/damp, even the default one, and stops taking into account the rest of the areas.
+Vùng này thay thế mọi trọng lực/giảm chấn, kể cả trọng lực/giảm chấn mặc định, và ngừng xét các vùng còn lại.
 
 .. _class_PhysicsServer2D_constant_AREA_SPACE_OVERRIDE_REPLACE_COMBINE:
 
@@ -594,7 +594,7 @@ This area replaces any gravity/damp, even the default one, and stops taking into
 
 :ref:`AreaSpaceOverrideMode<enum_PhysicsServer2D_AreaSpaceOverrideMode>` **AREA_SPACE_OVERRIDE_REPLACE_COMBINE** = ``4``
 
-This area replaces any gravity/damp calculated so far, but keeps calculating the rest of the areas, down to the default one.
+Vùng này thay thế mọi trọng lực/giảm chấn đã được tính cho đến nay, nhưng vẫn tiếp tục tính các vùng còn lại, cho đến vùng mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -604,7 +604,7 @@ This area replaces any gravity/damp calculated so far, but keeps calculating the
 
 .. rst-class:: classref-enumeration
 
-enum **BodyMode**: :ref:`🔗<enum_PhysicsServer2D_BodyMode>`
+enum **BodyMode**: :ref:`🔗 <enum_PhysicsServer2D_BodyMode>`
 
 .. _class_PhysicsServer2D_constant_BODY_MODE_STATIC:
 
@@ -612,7 +612,7 @@ enum **BodyMode**: :ref:`🔗<enum_PhysicsServer2D_BodyMode>`
 
 :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>` **BODY_MODE_STATIC** = ``0``
 
-Constant for static bodies. In this mode, a body can be only moved by user code and doesn't collide with other bodies along its path when moved.
+Hằng số dành cho các vật thể tĩnh. Ở chế độ này, vật thể chỉ có thể được di chuyển bằng mã của người dùng và không va chạm với các vật thể khác trên quỹ đạo của nó khi được di chuyển.
 
 .. _class_PhysicsServer2D_constant_BODY_MODE_KINEMATIC:
 
@@ -620,7 +620,7 @@ Constant for static bodies. In this mode, a body can be only moved by user code 
 
 :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>` **BODY_MODE_KINEMATIC** = ``1``
 
-Constant for kinematic bodies. In this mode, a body can be only moved by user code and collides with other bodies along its path.
+Hằng số dành cho các vật thể động học. Ở chế độ này, vật thể chỉ có thể được di chuyển bằng mã của người dùng và va chạm với các vật thể khác trên quỹ đạo của nó.
 
 .. _class_PhysicsServer2D_constant_BODY_MODE_RIGID:
 
@@ -628,7 +628,7 @@ Constant for kinematic bodies. In this mode, a body can be only moved by user co
 
 :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>` **BODY_MODE_RIGID** = ``2``
 
-Constant for rigid bodies. In this mode, a body can be pushed by other bodies and has forces applied.
+Hằng số dành cho các vật thể cứng. Ở chế độ này, vật thể có thể bị các vật thể khác đẩy và chịu tác động của các lực.
 
 .. _class_PhysicsServer2D_constant_BODY_MODE_RIGID_LINEAR:
 
@@ -636,7 +636,7 @@ Constant for rigid bodies. In this mode, a body can be pushed by other bodies an
 
 :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>` **BODY_MODE_RIGID_LINEAR** = ``3``
 
-Constant for linear rigid bodies. In this mode, a body can not rotate, and only its linear velocity is affected by external forces.
+Hằng số dành cho các vật thể cứng tuyến tính. Ở chế độ này, vật thể không thể xoay và chỉ vận tốc tuyến tính của nó bị ảnh hưởng bởi các lực bên ngoài.
 
 .. rst-class:: classref-item-separator
 
@@ -646,7 +646,7 @@ Constant for linear rigid bodies. In this mode, a body can not rotate, and only 
 
 .. rst-class:: classref-enumeration
 
-enum **BodyParameter**: :ref:`🔗<enum_PhysicsServer2D_BodyParameter>`
+enum **BodyParameter**: :ref:`🔗 <enum_PhysicsServer2D_BodyParameter>`
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_BOUNCE:
 
@@ -654,7 +654,7 @@ enum **BodyParameter**: :ref:`🔗<enum_PhysicsServer2D_BodyParameter>`
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_BOUNCE** = ``0``
 
-Constant to set/get a body's bounce factor. The default value of this parameter is ``0.0``.
+Hằng số dùng để thiết lập/lấy hệ số nảy của vật thể. Giá trị mặc định của tham số này là ``0.0``.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_FRICTION:
 
@@ -662,7 +662,7 @@ Constant to set/get a body's bounce factor. The default value of this parameter 
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_FRICTION** = ``1``
 
-Constant to set/get a body's friction. The default value of this parameter is ``1.0``.
+Hằng số dùng để thiết lập/lấy ma sát của vật thể. Giá trị mặc định của tham số này là ``1.0``.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_MASS:
 
@@ -670,11 +670,11 @@ Constant to set/get a body's friction. The default value of this parameter is ``
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_MASS** = ``2``
 
-Constant to set/get a body's mass. The default value of this parameter is ``1.0``. If the body's mode is set to :ref:`BODY_MODE_RIGID<class_PhysicsServer2D_constant_BODY_MODE_RIGID>`, then setting this parameter will have the following additional effects:
+Hằng số dùng để thiết lập/lấy khối lượng của vật thể. Giá trị mặc định của tham số này là ``1.0``. Nếu mode của vật thể được đặt thành :ref:`BODY_MODE_RIGID<class_PhysicsServer2D_constant_BODY_MODE_RIGID>`, thì việc thiết lập tham số này sẽ có thêm các tác động sau:
 
-- If the parameter :ref:`BODY_PARAM_CENTER_OF_MASS<class_PhysicsServer2D_constant_BODY_PARAM_CENTER_OF_MASS>` has never been set explicitly, then the value of that parameter will be recalculated based on the body's shapes.
+- Nếu tham số :ref:`BODY_PARAM_CENTER_OF_MASS<class_PhysicsServer2D_constant_BODY_PARAM_CENTER_OF_MASS>` chưa từng được thiết lập một cách rõ ràng, thì giá trị của tham số đó sẽ được tính toán lại dựa trên các hình dạng của vật thể.
 
-- If the parameter :ref:`BODY_PARAM_INERTIA<class_PhysicsServer2D_constant_BODY_PARAM_INERTIA>` is set to a value ``<= 0.0``, then the value of that parameter will be recalculated based on the body's shapes, mass, and center of mass.
+- Nếu tham số :ref:`BODY_PARAM_INERTIA<class_PhysicsServer2D_constant_BODY_PARAM_INERTIA>` được đặt thành giá trị ``<= 0.0``, thì giá trị của tham số đó sẽ được tính toán lại dựa trên các hình dạng, khối lượng và tâm khối của vật thể.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_INERTIA:
 
@@ -682,7 +682,7 @@ Constant to set/get a body's mass. The default value of this parameter is ``1.0`
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_INERTIA** = ``3``
 
-Constant to set/get a body's inertia. The default value of this parameter is ``0.0``. If the body's inertia is set to a value ``<= 0.0``, then the inertia will be recalculated based on the body's shapes, mass, and center of mass.
+Hằng số dùng để thiết lập/lấy mô men quán tính của vật thể. Giá trị mặc định của tham số này là ``0.0``. Nếu mô men quán tính của vật thể được đặt thành giá trị ``<= 0.0``, thì mô men quán tính sẽ được tính toán lại dựa trên các hình dạng, khối lượng và tâm khối của vật thể.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_CENTER_OF_MASS:
 
@@ -690,7 +690,7 @@ Constant to set/get a body's inertia. The default value of this parameter is ``0
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_CENTER_OF_MASS** = ``4``
 
-Constant to set/get a body's center of mass position in the body's local coordinate system. The default value of this parameter is ``Vector2(0, 0)``. If this parameter is never set explicitly, then it is recalculated based on the body's shapes when setting the parameter :ref:`BODY_PARAM_MASS<class_PhysicsServer2D_constant_BODY_PARAM_MASS>` or when calling :ref:`body_set_space()<class_PhysicsServer2D_method_body_set_space>`.
+Hằng số dùng để đặt/lấy vị trí tâm khối lượng của một body trong hệ tọa độ cục bộ của body đó. Giá trị mặc định của tham số này là ``Vector2(0, 0)``. Nếu tham số này không bao giờ được đặt một cách rõ ràng, thì nó sẽ được tính toán lại dựa trên các shape của body khi đặt tham số :ref:`BODY_PARAM_MASS<class_PhysicsServer2D_constant_BODY_PARAM_MASS>` hoặc khi gọi :ref:`body_set_space()<class_PhysicsServer2D_method_body_set_space>`.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_GRAVITY_SCALE:
 
@@ -698,7 +698,7 @@ Constant to set/get a body's center of mass position in the body's local coordin
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_GRAVITY_SCALE** = ``5``
 
-Constant to set/get a body's gravity multiplier. The default value of this parameter is ``1.0``.
+Hằng số dùng để đặt/lấy hệ số trọng lực của một body. Giá trị mặc định của tham số này là ``1.0``.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_LINEAR_DAMP_MODE:
 
@@ -706,7 +706,7 @@ Constant to set/get a body's gravity multiplier. The default value of this param
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_LINEAR_DAMP_MODE** = ``6``
 
-Constant to set/get a body's linear damping mode. See :ref:`BodyDampMode<enum_PhysicsServer2D_BodyDampMode>` for possible values. The default value of this parameter is :ref:`BODY_DAMP_MODE_COMBINE<class_PhysicsServer2D_constant_BODY_DAMP_MODE_COMBINE>`.
+Hằng số dùng để đặt/lấy chế độ damping tuyến tính của một body. Xem :ref:`BodyDampMode <enum_PhysicsServer2D_BodyDampMode>` để biết các giá trị có thể sử dụng. Giá trị mặc định của tham số này là :ref:`BODY_DAMP_MODE_COMBINE<class_PhysicsServer2D_constant_BODY_DAMP_MODE_COMBINE>`.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_ANGULAR_DAMP_MODE:
 
@@ -714,7 +714,7 @@ Constant to set/get a body's linear damping mode. See :ref:`BodyDampMode<enum_Ph
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_ANGULAR_DAMP_MODE** = ``7``
 
-Constant to set/get a body's angular damping mode. See :ref:`BodyDampMode<enum_PhysicsServer2D_BodyDampMode>` for possible values. The default value of this parameter is :ref:`BODY_DAMP_MODE_COMBINE<class_PhysicsServer2D_constant_BODY_DAMP_MODE_COMBINE>`.
+Hằng số dùng để đặt/lấy chế độ damping góc của một body. Xem :ref:`BodyDampMode <enum_PhysicsServer2D_BodyDampMode>` để biết các giá trị có thể sử dụng. Giá trị mặc định của tham số này là :ref:`BODY_DAMP_MODE_COMBINE<class_PhysicsServer2D_constant_BODY_DAMP_MODE_COMBINE>`.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_LINEAR_DAMP:
 
@@ -722,7 +722,7 @@ Constant to set/get a body's angular damping mode. See :ref:`BodyDampMode<enum_P
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_LINEAR_DAMP** = ``8``
 
-Constant to set/get a body's linear damping factor. The default value of this parameter is ``0.0``.
+Hằng số dùng để đặt/lấy hệ số damping tuyến tính của một body. Giá trị mặc định của tham số này là ``0.0``.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_ANGULAR_DAMP:
 
@@ -730,7 +730,7 @@ Constant to set/get a body's linear damping factor. The default value of this pa
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_ANGULAR_DAMP** = ``9``
 
-Constant to set/get a body's angular damping factor. The default value of this parameter is ``0.0``.
+Hằng số dùng để đặt/lấy hệ số damping góc của một body. Giá trị mặc định của tham số này là ``0.0``.
 
 .. _class_PhysicsServer2D_constant_BODY_PARAM_MAX:
 
@@ -738,7 +738,7 @@ Constant to set/get a body's angular damping factor. The default value of this p
 
 :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` **BODY_PARAM_MAX** = ``10``
 
-Represents the size of the :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>` enum.
+Biểu thị số lượng phần tử của enum :ref:`BodyParameter <enum_PhysicsServer2D_BodyParameter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -748,7 +748,7 @@ Represents the size of the :ref:`BodyParameter<enum_PhysicsServer2D_BodyParamete
 
 .. rst-class:: classref-enumeration
 
-enum **BodyDampMode**: :ref:`🔗<enum_PhysicsServer2D_BodyDampMode>`
+enum **BodyDampMode**: :ref:`🔗 <enum_PhysicsServer2D_BodyDampMode>`
 
 .. _class_PhysicsServer2D_constant_BODY_DAMP_MODE_COMBINE:
 
@@ -756,7 +756,7 @@ enum **BodyDampMode**: :ref:`🔗<enum_PhysicsServer2D_BodyDampMode>`
 
 :ref:`BodyDampMode<enum_PhysicsServer2D_BodyDampMode>` **BODY_DAMP_MODE_COMBINE** = ``0``
 
-The body's damping value is added to any value set in areas or the default value.
+Giá trị damping của body được cộng vào mọi giá trị được thiết lập trong các area hoặc giá trị mặc định.
 
 .. _class_PhysicsServer2D_constant_BODY_DAMP_MODE_REPLACE:
 
@@ -764,7 +764,7 @@ The body's damping value is added to any value set in areas or the default value
 
 :ref:`BodyDampMode<enum_PhysicsServer2D_BodyDampMode>` **BODY_DAMP_MODE_REPLACE** = ``1``
 
-The body's damping value replaces any value set in areas or the default value.
+Giá trị damping của body thay thế mọi giá trị được thiết lập trong các area hoặc giá trị mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -774,7 +774,7 @@ The body's damping value replaces any value set in areas or the default value.
 
 .. rst-class:: classref-enumeration
 
-enum **BodyState**: :ref:`🔗<enum_PhysicsServer2D_BodyState>`
+enum **BodyState**: :ref:`🔗 <enum_PhysicsServer2D_BodyState>`
 
 .. _class_PhysicsServer2D_constant_BODY_STATE_TRANSFORM:
 
@@ -782,7 +782,7 @@ enum **BodyState**: :ref:`🔗<enum_PhysicsServer2D_BodyState>`
 
 :ref:`BodyState<enum_PhysicsServer2D_BodyState>` **BODY_STATE_TRANSFORM** = ``0``
 
-Constant to set/get the current transform matrix of the body.
+Hằng số để thiết lập/lấy ma trận transform hiện tại của body.
 
 .. _class_PhysicsServer2D_constant_BODY_STATE_LINEAR_VELOCITY:
 
@@ -790,7 +790,7 @@ Constant to set/get the current transform matrix of the body.
 
 :ref:`BodyState<enum_PhysicsServer2D_BodyState>` **BODY_STATE_LINEAR_VELOCITY** = ``1``
 
-Constant to set/get the current linear velocity of the body.
+Hằng số để thiết lập/lấy vận tốc tuyến tính hiện tại của body.
 
 .. _class_PhysicsServer2D_constant_BODY_STATE_ANGULAR_VELOCITY:
 
@@ -798,7 +798,7 @@ Constant to set/get the current linear velocity of the body.
 
 :ref:`BodyState<enum_PhysicsServer2D_BodyState>` **BODY_STATE_ANGULAR_VELOCITY** = ``2``
 
-Constant to set/get the current angular velocity of the body.
+Hằng số để thiết lập/lấy vận tốc góc hiện tại của body.
 
 .. _class_PhysicsServer2D_constant_BODY_STATE_SLEEPING:
 
@@ -806,7 +806,7 @@ Constant to set/get the current angular velocity of the body.
 
 :ref:`BodyState<enum_PhysicsServer2D_BodyState>` **BODY_STATE_SLEEPING** = ``3``
 
-Constant to sleep/wake up a body, or to get whether it is sleeping.
+Hằng số để đưa một body vào trạng thái ngủ/đánh thức body hoặc lấy thông tin cho biết body có đang ngủ hay không.
 
 .. _class_PhysicsServer2D_constant_BODY_STATE_CAN_SLEEP:
 
@@ -814,7 +814,7 @@ Constant to sleep/wake up a body, or to get whether it is sleeping.
 
 :ref:`BodyState<enum_PhysicsServer2D_BodyState>` **BODY_STATE_CAN_SLEEP** = ``4``
 
-Constant to set/get whether the body can sleep.
+Hằng số để đặt/lấy thông tin cho biết body có thể ngủ hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -824,7 +824,7 @@ Constant to set/get whether the body can sleep.
 
 .. rst-class:: classref-enumeration
 
-enum **JointType**: :ref:`🔗<enum_PhysicsServer2D_JointType>`
+enum **JointType**: :ref:`🔗 <enum_PhysicsServer2D_JointType>`
 
 .. _class_PhysicsServer2D_constant_JOINT_TYPE_PIN:
 
@@ -832,7 +832,7 @@ enum **JointType**: :ref:`🔗<enum_PhysicsServer2D_JointType>`
 
 :ref:`JointType<enum_PhysicsServer2D_JointType>` **JOINT_TYPE_PIN** = ``0``
 
-Constant to create pin joints.
+Hằng số để tạo các khớp chốt.
 
 .. _class_PhysicsServer2D_constant_JOINT_TYPE_GROOVE:
 
@@ -840,7 +840,7 @@ Constant to create pin joints.
 
 :ref:`JointType<enum_PhysicsServer2D_JointType>` **JOINT_TYPE_GROOVE** = ``1``
 
-Constant to create groove joints.
+Hằng số để tạo các khớp rãnh.
 
 .. _class_PhysicsServer2D_constant_JOINT_TYPE_DAMPED_SPRING:
 
@@ -848,7 +848,7 @@ Constant to create groove joints.
 
 :ref:`JointType<enum_PhysicsServer2D_JointType>` **JOINT_TYPE_DAMPED_SPRING** = ``2``
 
-Constant to create damped spring joints.
+Hằng số để tạo các khớp lò xo giảm chấn.
 
 .. _class_PhysicsServer2D_constant_JOINT_TYPE_MAX:
 
@@ -856,7 +856,7 @@ Constant to create damped spring joints.
 
 :ref:`JointType<enum_PhysicsServer2D_JointType>` **JOINT_TYPE_MAX** = ``3``
 
-Represents the size of the :ref:`JointType<enum_PhysicsServer2D_JointType>` enum.
+Biểu thị kích thước của enum :ref:`JointType <enum_PhysicsServer2D_JointType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -866,7 +866,7 @@ Represents the size of the :ref:`JointType<enum_PhysicsServer2D_JointType>` enum
 
 .. rst-class:: classref-enumeration
 
-enum **JointParam**: :ref:`🔗<enum_PhysicsServer2D_JointParam>`
+enum **JointParam**: :ref:`🔗 <enum_PhysicsServer2D_JointParam>`
 
 .. _class_PhysicsServer2D_constant_JOINT_PARAM_BIAS:
 
@@ -874,9 +874,9 @@ enum **JointParam**: :ref:`🔗<enum_PhysicsServer2D_JointParam>`
 
 :ref:`JointParam<enum_PhysicsServer2D_JointParam>` **JOINT_PARAM_BIAS** = ``0``
 
-Constant to set/get how fast the joint pulls the bodies back to satisfy the joint constraint. The lower the value, the more the two bodies can pull on the joint. The default value of this parameter is ``0.0``.
+Hằng số dùng để thiết lập/lấy tốc độ mà joint kéo các body trở lại để đáp ứng constraint của joint. Giá trị càng thấp thì hai body càng có thể kéo joint. Giá trị mặc định của tham số này là ``0.0``.
 
-\ **Note:** In Godot Physics, this parameter is only used for pin joints and groove joints.
+\ **Lưu ý:** Trong Godot Physics, tham số này chỉ được sử dụng cho pin joint và groove joint.
 
 .. _class_PhysicsServer2D_constant_JOINT_PARAM_MAX_BIAS:
 
@@ -884,9 +884,9 @@ Constant to set/get how fast the joint pulls the bodies back to satisfy the join
 
 :ref:`JointParam<enum_PhysicsServer2D_JointParam>` **JOINT_PARAM_MAX_BIAS** = ``1``
 
-Constant to set/get the maximum speed with which the joint can apply corrections. The default value of this parameter is ``3.40282e+38``.
+Hằng số dùng để thiết lập/lấy tốc độ tối đa mà joint có thể áp dụng để điều chỉnh. Giá trị mặc định của tham số này là ``3.40282e+38``.
 
-\ **Note:** In Godot Physics, this parameter is only used for groove joints.
+\ **Lưu ý:** Trong Godot Physics, tham số này chỉ được sử dụng cho groove joint.
 
 .. _class_PhysicsServer2D_constant_JOINT_PARAM_MAX_FORCE:
 
@@ -894,9 +894,9 @@ Constant to set/get the maximum speed with which the joint can apply corrections
 
 :ref:`JointParam<enum_PhysicsServer2D_JointParam>` **JOINT_PARAM_MAX_FORCE** = ``2``
 
-Constant to set/get the maximum force that the joint can use to act on the two bodies. The default value of this parameter is ``3.40282e+38``.
+Hằng số dùng để thiết lập/lấy lực tối đa mà joint có thể sử dụng để tác động lên hai body. Giá trị mặc định của tham số này là ``3.40282e+38``.
 
-\ **Note:** In Godot Physics, this parameter is only used for groove joints.
+\ **Lưu ý:** Trong Godot Physics, tham số này chỉ được sử dụng cho groove joint.
 
 .. rst-class:: classref-item-separator
 
@@ -906,7 +906,7 @@ Constant to set/get the maximum force that the joint can use to act on the two b
 
 .. rst-class:: classref-enumeration
 
-enum **PinJointParam**: :ref:`🔗<enum_PhysicsServer2D_PinJointParam>`
+enum **PinJointParam**: :ref:`🔗 <enum_PhysicsServer2D_PinJointParam>`
 
 .. _class_PhysicsServer2D_constant_PIN_JOINT_SOFTNESS:
 
@@ -914,7 +914,7 @@ enum **PinJointParam**: :ref:`🔗<enum_PhysicsServer2D_PinJointParam>`
 
 :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>` **PIN_JOINT_SOFTNESS** = ``0``
 
-Constant to set/get a how much the bond of the pin joint can flex. The default value of this parameter is ``0.0``.
+Hằng số để đặt/lấy mức độ liên kết của pin joint có thể uốn cong. Giá trị mặc định của tham số này là ``0.0``.
 
 .. _class_PhysicsServer2D_constant_PIN_JOINT_LIMIT_UPPER:
 
@@ -922,7 +922,7 @@ Constant to set/get a how much the bond of the pin joint can flex. The default v
 
 :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>` **PIN_JOINT_LIMIT_UPPER** = ``1``
 
-The maximum rotation around the pin.
+Góc xoay tối đa quanh pin.
 
 .. _class_PhysicsServer2D_constant_PIN_JOINT_LIMIT_LOWER:
 
@@ -930,7 +930,7 @@ The maximum rotation around the pin.
 
 :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>` **PIN_JOINT_LIMIT_LOWER** = ``2``
 
-The minimum rotation around the pin.
+Góc xoay tối thiểu quanh pin.
 
 .. _class_PhysicsServer2D_constant_PIN_JOINT_MOTOR_TARGET_VELOCITY:
 
@@ -938,7 +938,7 @@ The minimum rotation around the pin.
 
 :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>` **PIN_JOINT_MOTOR_TARGET_VELOCITY** = ``3``
 
-Target speed for the motor. In radians per second.
+Tốc độ mục tiêu cho motor. Tính bằng radian trên giây.
 
 .. rst-class:: classref-item-separator
 
@@ -948,7 +948,7 @@ Target speed for the motor. In radians per second.
 
 .. rst-class:: classref-enumeration
 
-enum **PinJointFlag**: :ref:`🔗<enum_PhysicsServer2D_PinJointFlag>`
+enum **PinJointFlag**: :ref:`🔗 <enum_PhysicsServer2D_PinJointFlag>`
 
 .. _class_PhysicsServer2D_constant_PIN_JOINT_FLAG_ANGULAR_LIMIT_ENABLED:
 
@@ -956,7 +956,7 @@ enum **PinJointFlag**: :ref:`🔗<enum_PhysicsServer2D_PinJointFlag>`
 
 :ref:`PinJointFlag<enum_PhysicsServer2D_PinJointFlag>` **PIN_JOINT_FLAG_ANGULAR_LIMIT_ENABLED** = ``0``
 
-If ``true``, the pin has a maximum and a minimum rotation.
+Nếu là ``true``, pin có góc xoay tối đa và tối thiểu.
 
 .. _class_PhysicsServer2D_constant_PIN_JOINT_FLAG_MOTOR_ENABLED:
 
@@ -964,7 +964,7 @@ If ``true``, the pin has a maximum and a minimum rotation.
 
 :ref:`PinJointFlag<enum_PhysicsServer2D_PinJointFlag>` **PIN_JOINT_FLAG_MOTOR_ENABLED** = ``1``
 
-If ``true``, a motor turns the pin.
+Nếu ``true``, một động cơ sẽ xoay chốt.
 
 .. rst-class:: classref-item-separator
 
@@ -974,7 +974,7 @@ If ``true``, a motor turns the pin.
 
 .. rst-class:: classref-enumeration
 
-enum **DampedSpringParam**: :ref:`🔗<enum_PhysicsServer2D_DampedSpringParam>`
+enum **DampedSpringParam**: :ref:`🔗 <enum_PhysicsServer2D_DampedSpringParam>`
 
 .. _class_PhysicsServer2D_constant_DAMPED_SPRING_REST_LENGTH:
 
@@ -982,7 +982,7 @@ enum **DampedSpringParam**: :ref:`🔗<enum_PhysicsServer2D_DampedSpringParam>`
 
 :ref:`DampedSpringParam<enum_PhysicsServer2D_DampedSpringParam>` **DAMPED_SPRING_REST_LENGTH** = ``0``
 
-Sets the resting length of the spring joint. The joint will always try to go to back this length when pulled apart. The default value of this parameter is the distance between the joint's anchor points.
+Thiết lập độ dài ở trạng thái nghỉ của khớp lò xo. Khớp sẽ luôn cố gắng trở về độ dài này khi bị kéo giãn. Giá trị mặc định của tham số này là khoảng cách giữa các điểm neo của khớp.
 
 .. _class_PhysicsServer2D_constant_DAMPED_SPRING_STIFFNESS:
 
@@ -990,7 +990,7 @@ Sets the resting length of the spring joint. The joint will always try to go to 
 
 :ref:`DampedSpringParam<enum_PhysicsServer2D_DampedSpringParam>` **DAMPED_SPRING_STIFFNESS** = ``1``
 
-Sets the stiffness of the spring joint. The joint applies a force equal to the stiffness times the distance from its resting length. The default value of this parameter is ``20.0``.
+Thiết lập độ cứng của khớp lò xo. Khớp tác dụng một lực bằng độ cứng nhân với khoảng cách so với độ dài ở trạng thái nghỉ. Giá trị mặc định của tham số này là ``20.0``.
 
 .. _class_PhysicsServer2D_constant_DAMPED_SPRING_DAMPING:
 
@@ -998,7 +998,7 @@ Sets the stiffness of the spring joint. The joint applies a force equal to the s
 
 :ref:`DampedSpringParam<enum_PhysicsServer2D_DampedSpringParam>` **DAMPED_SPRING_DAMPING** = ``2``
 
-Sets the damping ratio of the spring joint. A value of 0 indicates an undamped spring, while 1 causes the system to reach equilibrium as fast as possible (critical damping). The default value of this parameter is ``1.5``.
+Thiết lập tỷ số giảm chấn của khớp lò xo. Giá trị 0 cho biết lò xo không được giảm chấn, trong khi giá trị 1 khiến hệ đạt trạng thái cân bằng nhanh nhất có thể (giảm chấn tới hạn). Giá trị mặc định của tham số này là ``1.5``.
 
 .. rst-class:: classref-item-separator
 
@@ -1008,7 +1008,7 @@ Sets the damping ratio of the spring joint. A value of 0 indicates an undamped s
 
 .. rst-class:: classref-enumeration
 
-enum **CCDMode**: :ref:`🔗<enum_PhysicsServer2D_CCDMode>`
+enum **CCDMode**: :ref:`🔗 <enum_PhysicsServer2D_CCDMode>`
 
 .. _class_PhysicsServer2D_constant_CCD_MODE_DISABLED:
 
@@ -1016,7 +1016,7 @@ enum **CCDMode**: :ref:`🔗<enum_PhysicsServer2D_CCDMode>`
 
 :ref:`CCDMode<enum_PhysicsServer2D_CCDMode>` **CCD_MODE_DISABLED** = ``0``
 
-Disables continuous collision detection. This is the fastest way to detect body collisions, but it can miss small and/or fast-moving objects.
+Tắt tính năng phát hiện va chạm liên tục. Đây là cách nhanh nhất để phát hiện va chạm giữa các body, nhưng có thể bỏ sót các đối tượng nhỏ và/hoặc di chuyển nhanh.
 
 .. _class_PhysicsServer2D_constant_CCD_MODE_CAST_RAY:
 
@@ -1024,7 +1024,7 @@ Disables continuous collision detection. This is the fastest way to detect body 
 
 :ref:`CCDMode<enum_PhysicsServer2D_CCDMode>` **CCD_MODE_CAST_RAY** = ``1``
 
-Enables continuous collision detection by raycasting. It is faster than shapecasting, but less precise.
+Bật phát hiện va chạm liên tục bằng cách raycast. Cách này nhanh hơn shapecast nhưng kém chính xác hơn.
 
 .. _class_PhysicsServer2D_constant_CCD_MODE_CAST_SHAPE:
 
@@ -1032,7 +1032,7 @@ Enables continuous collision detection by raycasting. It is faster than shapecas
 
 :ref:`CCDMode<enum_PhysicsServer2D_CCDMode>` **CCD_MODE_CAST_SHAPE** = ``2``
 
-Enables continuous collision detection by shapecasting. It is the slowest CCD method, and the most precise.
+Bật phát hiện va chạm liên tục bằng cách shapecast. Đây là phương pháp CCD chậm nhất và chính xác nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -1042,7 +1042,7 @@ Enables continuous collision detection by shapecasting. It is the slowest CCD me
 
 .. rst-class:: classref-enumeration
 
-enum **AreaBodyStatus**: :ref:`🔗<enum_PhysicsServer2D_AreaBodyStatus>`
+enum **AreaBodyStatus**: :ref:`🔗 <enum_PhysicsServer2D_AreaBodyStatus>`
 
 .. _class_PhysicsServer2D_constant_AREA_BODY_ADDED:
 
@@ -1050,7 +1050,7 @@ enum **AreaBodyStatus**: :ref:`🔗<enum_PhysicsServer2D_AreaBodyStatus>`
 
 :ref:`AreaBodyStatus<enum_PhysicsServer2D_AreaBodyStatus>` **AREA_BODY_ADDED** = ``0``
 
-The value of the first parameter and area callback function receives, when an object enters one of its shapes.
+Giá trị của tham số đầu tiên mà hàm callback của area nhận được khi một đối tượng đi vào một trong các shape của nó.
 
 .. _class_PhysicsServer2D_constant_AREA_BODY_REMOVED:
 
@@ -1058,7 +1058,7 @@ The value of the first parameter and area callback function receives, when an ob
 
 :ref:`AreaBodyStatus<enum_PhysicsServer2D_AreaBodyStatus>` **AREA_BODY_REMOVED** = ``1``
 
-The value of the first parameter and area callback function receives, when an object exits one of its shapes.
+Giá trị của tham số đầu tiên mà hàm callback của area nhận được khi một đối tượng rời khỏi một trong các shape của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1068,7 +1068,7 @@ The value of the first parameter and area callback function receives, when an ob
 
 .. rst-class:: classref-enumeration
 
-enum **ProcessInfo**: :ref:`🔗<enum_PhysicsServer2D_ProcessInfo>`
+enum **ProcessInfo**: :ref:`🔗 <enum_PhysicsServer2D_ProcessInfo>`
 
 .. _class_PhysicsServer2D_constant_INFO_ACTIVE_OBJECTS:
 
@@ -1076,7 +1076,7 @@ enum **ProcessInfo**: :ref:`🔗<enum_PhysicsServer2D_ProcessInfo>`
 
 :ref:`ProcessInfo<enum_PhysicsServer2D_ProcessInfo>` **INFO_ACTIVE_OBJECTS** = ``0``
 
-Constant to get the number of objects that are not sleeping.
+Hằng số để lấy số lượng đối tượng không ở trạng thái ngủ.
 
 .. _class_PhysicsServer2D_constant_INFO_COLLISION_PAIRS:
 
@@ -1084,7 +1084,7 @@ Constant to get the number of objects that are not sleeping.
 
 :ref:`ProcessInfo<enum_PhysicsServer2D_ProcessInfo>` **INFO_COLLISION_PAIRS** = ``1``
 
-Constant to get the number of possible collisions.
+Hằng số để lấy số lượng va chạm có thể xảy ra.
 
 .. _class_PhysicsServer2D_constant_INFO_ISLAND_COUNT:
 
@@ -1092,7 +1092,7 @@ Constant to get the number of possible collisions.
 
 :ref:`ProcessInfo<enum_PhysicsServer2D_ProcessInfo>` **INFO_ISLAND_COUNT** = ``2``
 
-Constant to get the number of space regions where a collision could occur.
+Hằng số để lấy số lượng vùng không gian nơi va chạm có thể xảy ra.
 
 .. rst-class:: classref-section-separator
 
@@ -1100,8 +1100,8 @@ Constant to get the number of space regions where a collision could occur.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicsServer2D_method_area_add_shape:
 
@@ -1109,7 +1109,7 @@ Method Descriptions
 
 |void| **area_add_shape**\ (\ area\: :ref:`RID<class_RID>`, shape\: :ref:`RID<class_RID>`, transform\: :ref:`Transform2D<class_Transform2D>` = Transform2D(1, 0, 0, 1, 0, 0), disabled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PhysicsServer2D_method_area_add_shape>`
 
-Adds a shape to the area, with the given local transform. The shape (together with its ``transform`` and ``disabled`` properties) is added to an array of shapes, and the shapes of an area are usually referenced by their index in this array.
+Thêm một shape vào vùng, với phép biến đổi cục bộ đã cho. Shape đó (cùng với các thuộc tính ``transform`` và ``disabled``) được thêm vào một mảng các shape, và các shape của một vùng thường được tham chiếu bằng chỉ mục của chúng trong mảng này.
 
 .. rst-class:: classref-item-separator
 
@@ -1121,7 +1121,7 @@ Adds a shape to the area, with the given local transform. The shape (together wi
 
 |void| **area_attach_canvas_instance_id**\ (\ area\: :ref:`RID<class_RID>`, id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_attach_canvas_instance_id>`
 
-Attaches the ``ObjectID`` of a canvas to the area. Use :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` to get the ``ObjectID`` of a :ref:`CanvasLayer<class_CanvasLayer>`.
+Gắn ``ObjectID`` của một canvas vào vùng. Sử dụng :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` để lấy ``ObjectID`` của một :ref:`CanvasLayer<class_CanvasLayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1133,7 +1133,7 @@ Attaches the ``ObjectID`` of a canvas to the area. Use :ref:`Object.get_instance
 
 |void| **area_attach_object_instance_id**\ (\ area\: :ref:`RID<class_RID>`, id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_attach_object_instance_id>`
 
-Attaches the ``ObjectID`` of an :ref:`Object<class_Object>` to the area. Use :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` to get the ``ObjectID`` of a :ref:`CollisionObject2D<class_CollisionObject2D>`.
+Gắn ``ObjectID`` của một :ref:`Object<class_Object>` vào vùng. Sử dụng :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` để lấy ``ObjectID`` của một :ref:`CollisionObject2D<class_CollisionObject2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1145,7 +1145,7 @@ Attaches the ``ObjectID`` of an :ref:`Object<class_Object>` to the area. Use :re
 
 |void| **area_clear_shapes**\ (\ area\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_clear_shapes>`
 
-Removes all shapes from the area. This does not delete the shapes themselves, so they can continue to be used elsewhere or added back later.
+Xóa tất cả shape khỏi vùng. Thao tác này không xóa chính các shape đó, vì vậy chúng vẫn có thể tiếp tục được sử dụng ở nơi khác hoặc được thêm lại sau đó.
 
 .. rst-class:: classref-item-separator
 
@@ -1157,9 +1157,9 @@ Removes all shapes from the area. This does not delete the shapes themselves, so
 
 :ref:`RID<class_RID>` **area_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_area_create>`
 
-Creates a 2D area object in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. The default settings for the created area include a collision layer and mask set to ``1``, and ``monitorable`` set to ``false``.
+Tạo một đối tượng vùng 2D trên máy chủ vật lý và trả về :ref:`RID<class_RID>` xác định đối tượng đó. Các thiết lập mặc định của vùng được tạo bao gồm lớp va chạm và mặt nạ được đặt thành ``1``, cùng với ``monitorable`` được đặt thành ``false``.
 
-Use :ref:`area_add_shape()<class_PhysicsServer2D_method_area_add_shape>` to add shapes to it, use :ref:`area_set_transform()<class_PhysicsServer2D_method_area_set_transform>` to set its transform, and use :ref:`area_set_space()<class_PhysicsServer2D_method_area_set_space>` to add the area to a space. If you want the area to be detectable use :ref:`area_set_monitorable()<class_PhysicsServer2D_method_area_set_monitorable>`.
+Sử dụng :ref:`area_add_shape()<class_PhysicsServer2D_method_area_add_shape>` để thêm các hình dạng vào vùng, sử dụng :ref:`area_set_transform()<class_PhysicsServer2D_method_area_set_transform>` để đặt phép biến đổi của vùng và sử dụng :ref:`area_set_space()<class_PhysicsServer2D_method_area_set_space>` để thêm vùng vào không gian. Nếu muốn vùng có thể được phát hiện, hãy sử dụng :ref:`area_set_monitorable()<class_PhysicsServer2D_method_area_set_monitorable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1171,7 +1171,7 @@ Use :ref:`area_add_shape()<class_PhysicsServer2D_method_area_add_shape>` to add 
 
 :ref:`int<class_int>` **area_get_canvas_instance_id**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_canvas_instance_id>`
 
-Returns the ``ObjectID`` of the canvas attached to the area. Use :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>` to retrieve a :ref:`CanvasLayer<class_CanvasLayer>` from a nonzero ``ObjectID``.
+Trả về ``ObjectID`` của canvas được gắn vào vùng. Sử dụng :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>` để truy xuất một :ref:`CanvasLayer<class_CanvasLayer>` từ một ``ObjectID`` khác 0.
 
 .. rst-class:: classref-item-separator
 
@@ -1183,7 +1183,7 @@ Returns the ``ObjectID`` of the canvas attached to the area. Use :ref:`@GlobalSc
 
 :ref:`int<class_int>` **area_get_collision_layer**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_collision_layer>`
 
-Returns the physics layer or layers the area belongs to, as a bitmask.
+Trả về lớp hoặc các lớp vật lý mà vùng thuộc về, dưới dạng bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1195,7 +1195,7 @@ Returns the physics layer or layers the area belongs to, as a bitmask.
 
 :ref:`int<class_int>` **area_get_collision_mask**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_collision_mask>`
 
-Returns the physics layer or layers the area can contact with, as a bitmask.
+Trả về lớp hoặc các lớp vật lý mà vùng có thể tiếp xúc, dưới dạng bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1207,7 +1207,7 @@ Returns the physics layer or layers the area can contact with, as a bitmask.
 
 :ref:`int<class_int>` **area_get_object_instance_id**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_object_instance_id>`
 
-Returns the ``ObjectID`` attached to the area. Use :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>` to retrieve an :ref:`Object<class_Object>` from a nonzero ``ObjectID``.
+Trả về ``ObjectID`` được gắn vào vùng. Sử dụng :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>` để truy xuất một :ref:`Object<class_Object>` từ một ``ObjectID`` khác 0.
 
 .. rst-class:: classref-item-separator
 
@@ -1219,7 +1219,7 @@ Returns the ``ObjectID`` attached to the area. Use :ref:`@GlobalScope.instance_f
 
 :ref:`Variant<class_Variant>` **area_get_param**\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_param>`
 
-Returns the value of the given area parameter.
+Trả về giá trị của tham số vùng đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1231,7 +1231,7 @@ Returns the value of the given area parameter.
 
 :ref:`RID<class_RID>` **area_get_shape**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_shape>`
 
-Returns the :ref:`RID<class_RID>` of the shape with the given index in the area's array of shapes.
+Trả về :ref:`RID<class_RID>` của hình dạng có chỉ mục đã cho trong mảng các hình dạng của vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1243,7 +1243,7 @@ Returns the :ref:`RID<class_RID>` of the shape with the given index in the area'
 
 :ref:`int<class_int>` **area_get_shape_count**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_shape_count>`
 
-Returns the number of shapes added to the area.
+Trả về số lượng hình dạng đã được thêm vào vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1255,7 +1255,7 @@ Returns the number of shapes added to the area.
 
 :ref:`Transform2D<class_Transform2D>` **area_get_shape_transform**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_shape_transform>`
 
-Returns the local transform matrix of the shape with the given index in the area's array of shapes.
+Trả về ma trận biến đổi cục bộ của hình dạng có chỉ mục đã cho trong mảng các hình dạng của vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1267,7 +1267,7 @@ Returns the local transform matrix of the shape with the given index in the area
 
 :ref:`RID<class_RID>` **area_get_space**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_space>`
 
-Returns the :ref:`RID<class_RID>` of the space assigned to the area. Returns an empty :ref:`RID<class_RID>` if no space is assigned.
+Trả về :ref:`RID<class_RID>` của không gian được gán cho vùng. Trả về một :ref:`RID<class_RID>` trống nếu không có không gian nào được gán.
 
 .. rst-class:: classref-item-separator
 
@@ -1279,7 +1279,7 @@ Returns the :ref:`RID<class_RID>` of the space assigned to the area. Returns an 
 
 :ref:`Transform2D<class_Transform2D>` **area_get_transform**\ (\ area\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_area_get_transform>`
 
-Returns the transform matrix of the area.
+Trả về ma trận biến đổi của vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1291,7 +1291,7 @@ Returns the transform matrix of the area.
 
 |void| **area_remove_shape**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_remove_shape>`
 
-Removes the shape with the given index from the area's array of shapes. The shape itself is not deleted, so it can continue to be used elsewhere or added back later. As a result of this operation, the area's shapes which used to have indices higher than ``shape_idx`` will have their index decreased by one.
+Xóa hình dạng có chỉ mục đã cho khỏi mảng các hình dạng của vùng. Bản thân hình dạng không bị xóa, vì vậy hình dạng đó vẫn có thể tiếp tục được sử dụng ở nơi khác hoặc được thêm lại sau này. Do thao tác này, chỉ mục của các hình dạng trong vùng trước đây có chỉ mục lớn hơn ``shape_idx`` sẽ giảm đi một.
 
 .. rst-class:: classref-item-separator
 
@@ -1303,19 +1303,19 @@ Removes the shape with the given index from the area's array of shapes. The shap
 
 |void| **area_set_area_monitor_callback**\ (\ area\: :ref:`RID<class_RID>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_area_monitor_callback>`
 
-Sets the area's area monitor callback. This callback will be called when any other (shape of an) area enters or exits (a shape of) the given area, and must take the following five parameters:
+Thiết lập callback giám sát vùng của vùng. Callback này sẽ được gọi khi bất kỳ (hình dạng của) vùng nào khác đi vào hoặc rời khỏi (một hình dạng của) vùng đã cho, và phải nhận năm tham số sau:
 
-1. an integer ``status``: either :ref:`AREA_BODY_ADDED<class_PhysicsServer2D_constant_AREA_BODY_ADDED>` or :ref:`AREA_BODY_REMOVED<class_PhysicsServer2D_constant_AREA_BODY_REMOVED>` depending on whether the other area's shape entered or exited the area,
+1. một số nguyên ``status``: :ref:`AREA_BODY_ADDED<class_PhysicsServer2D_constant_AREA_BODY_ADDED>` hoặc :ref:`AREA_BODY_REMOVED<class_PhysicsServer2D_constant_AREA_BODY_REMOVED>`, tùy thuộc vào việc hình dạng của vùng còn lại đã đi vào hay rời khỏi vùng này,
 
-2. an :ref:`RID<class_RID>` ``area_rid``: the :ref:`RID<class_RID>` of the other area that entered or exited the area,
+2. một :ref:`RID<class_RID>` ``area_rid``: :ref:`RID<class_RID>` của vùng còn lại đã đi vào hoặc rời khỏi vùng này,
 
-3. an integer ``instance_id``: the ``ObjectID`` attached to the other area,
+3. một số nguyên ``instance_id``: ``ObjectID`` được gắn với vùng còn lại,
 
-4. an integer ``area_shape_idx``: the index of the shape of the other area that entered or exited the area,
+4. một số nguyên ``area_shape_idx``: chỉ mục của hình dạng thuộc vùng còn lại đã đi vào hoặc rời khỏi vùng này,
 
-5. an integer ``self_shape_idx``: the index of the shape of the area where the other area entered or exited.
+5. một số nguyên ``self_shape_idx``: chỉ mục của hình dạng thuộc vùng mà vùng còn lại đã đi vào hoặc rời khỏi.
 
-By counting (or keeping track of) the shapes that enter and exit, it can be determined if an area (with all its shapes) is entering for the first time or exiting for the last time.
+Bằng cách đếm (hoặc theo dõi) các hình dạng đi vào và rời khỏi, có thể xác định liệu một vùng (cùng tất cả hình dạng của vùng đó) đang đi vào lần đầu tiên hay rời khỏi lần cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1327,7 +1327,7 @@ By counting (or keeping track of) the shapes that enter and exit, it can be dete
 
 |void| **area_set_collision_layer**\ (\ area\: :ref:`RID<class_RID>`, layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_collision_layer>`
 
-Assigns the area to one or many physics layers, via a bitmask.
+Gán vùng vào một hoặc nhiều lớp physics bằng bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1339,7 +1339,7 @@ Assigns the area to one or many physics layers, via a bitmask.
 
 |void| **area_set_collision_mask**\ (\ area\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_collision_mask>`
 
-Sets which physics layers the area will monitor, via a bitmask.
+Thiết lập các lớp physics mà area sẽ giám sát, thông qua một bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1351,19 +1351,19 @@ Sets which physics layers the area will monitor, via a bitmask.
 
 |void| **area_set_monitor_callback**\ (\ area\: :ref:`RID<class_RID>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_monitor_callback>`
 
-Sets the area's body monitor callback. This callback will be called when any other (shape of a) body enters or exits (a shape of) the given area, and must take the following five parameters:
+Thiết lập callback giám sát body của area. Callback này sẽ được gọi khi bất kỳ body nào khác (shape của body đó) đi vào hoặc rời khỏi (một shape của) area đã cho, và phải nhận năm tham số sau:
 
-1. an integer ``status``: either :ref:`AREA_BODY_ADDED<class_PhysicsServer2D_constant_AREA_BODY_ADDED>` or :ref:`AREA_BODY_REMOVED<class_PhysicsServer2D_constant_AREA_BODY_REMOVED>` depending on whether the other body shape entered or exited the area,
+1. một số nguyên ``status``: :ref:`AREA_BODY_ADDED<class_PhysicsServer2D_constant_AREA_BODY_ADDED>` hoặc :ref:`AREA_BODY_REMOVED<class_PhysicsServer2D_constant_AREA_BODY_REMOVED>`, tùy thuộc vào việc shape của body kia đi vào hay rời khỏi area,
 
-2. an :ref:`RID<class_RID>` ``body_rid``: the :ref:`RID<class_RID>` of the body that entered or exited the area,
+2. một :ref:`RID<class_RID>` ``body_rid``: :ref:`RID<class_RID>` của body đã đi vào hoặc rời khỏi area,
 
-3. an integer ``instance_id``: the ``ObjectID`` attached to the body,
+3. một số nguyên ``instance_id``: ``ObjectID`` được gắn vào body,
 
-4. an integer ``body_shape_idx``: the index of the shape of the body that entered or exited the area,
+4. một số nguyên ``body_shape_idx``: chỉ mục của shape thuộc body đã đi vào hoặc rời khỏi area,
 
-5. an integer ``self_shape_idx``: the index of the shape of the area where the body entered or exited.
+5. một số nguyên ``self_shape_idx``: chỉ mục của shape thuộc area nơi body đi vào hoặc rời khỏi.
 
-By counting (or keeping track of) the shapes that enter and exit, it can be determined if a body (with all its shapes) is entering for the first time or exiting for the last time.
+Bằng cách đếm (hoặc theo dõi) các hình dạng đi vào và đi ra, có thể xác định một body (cùng tất cả hình dạng của nó) đang đi vào lần đầu tiên hay đi ra lần cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1375,7 +1375,7 @@ By counting (or keeping track of) the shapes that enter and exit, it can be dete
 
 |void| **area_set_monitorable**\ (\ area\: :ref:`RID<class_RID>`, monitorable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_monitorable>`
 
-Sets whether the area is monitorable or not. If ``monitorable`` is ``true``, the area monitoring callback of other areas will be called when this area enters or exits them.
+Thiết lập việc khu vực có thể được giám sát hay không. Nếu ``monitorable`` là ``true``, callback giám sát khu vực của các khu vực khác sẽ được gọi khi khu vực này đi vào hoặc đi ra khỏi chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -1387,7 +1387,7 @@ Sets whether the area is monitorable or not. If ``monitorable`` is ``true``, the
 
 |void| **area_set_param**\ (\ area\: :ref:`RID<class_RID>`, param\: :ref:`AreaParameter<enum_PhysicsServer2D_AreaParameter>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_param>`
 
-Sets the value of the given area parameter.
+Thiết lập giá trị của tham số khu vực đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1399,7 +1399,7 @@ Sets the value of the given area parameter.
 
 |void| **area_set_shape**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, shape\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_shape>`
 
-Replaces the area's shape at the given index by another shape, while not affecting the ``transform`` and ``disabled`` properties at the same index.
+Thay thế hình dạng của khu vực tại chỉ mục đã cho bằng một hình dạng khác, đồng thời không ảnh hưởng đến các thuộc tính ``transform`` và ``disabled`` tại cùng chỉ mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1411,7 +1411,7 @@ Replaces the area's shape at the given index by another shape, while not affecti
 
 |void| **area_set_shape_disabled**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_shape_disabled>`
 
-Sets the disabled property of the area's shape with the given index. If ``disabled`` is ``true``, then the shape will not detect any other shapes entering or exiting it.
+Thiết lập thuộc tính disabled của hình dạng khu vực tại chỉ mục đã cho. Nếu ``disabled`` là ``true``, hình dạng đó sẽ không phát hiện bất kỳ hình dạng nào khác đi vào hoặc đi ra khỏi nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1423,7 +1423,7 @@ Sets the disabled property of the area's shape with the given index. If ``disabl
 
 |void| **area_set_shape_transform**\ (\ area\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_shape_transform>`
 
-Sets the local transform matrix of the area's shape with the given index.
+Thiết lập ma trận biến đổi cục bộ của hình dạng khu vực tại chỉ mục đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1435,9 +1435,9 @@ Sets the local transform matrix of the area's shape with the given index.
 
 |void| **area_set_space**\ (\ area\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_space>`
 
-Adds the area to the given space, after removing the area from the previously assigned space (if any).
+Thêm khu vực vào space đã cho sau khi xóa khu vực khỏi space đã được gán trước đó (nếu có).
 
-\ **Note:** To remove an area from a space without immediately adding it back elsewhere, use ``PhysicsServer2D.area_set_space(area, RID())``.
+\ **Lưu ý:** Để xóa một area khỏi một space mà không ngay lập tức thêm nó trở lại ở nơi khác, hãy sử dụng ``PhysicsServer2D.area_set_space(area, RID())``.
 
 .. rst-class:: classref-item-separator
 
@@ -1449,7 +1449,7 @@ Adds the area to the given space, after removing the area from the previously as
 
 |void| **area_set_transform**\ (\ area\: :ref:`RID<class_RID>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_PhysicsServer2D_method_area_set_transform>`
 
-Sets the transform matrix of the area.
+Thiết lập ma trận transform của area.
 
 .. rst-class:: classref-item-separator
 
@@ -1461,7 +1461,7 @@ Sets the transform matrix of the area.
 
 |void| **body_add_collision_exception**\ (\ body\: :ref:`RID<class_RID>`, excepted_body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_add_collision_exception>`
 
-Adds ``excepted_body`` to the body's list of collision exceptions, so that collisions with it are ignored.
+Thêm ``excepted_body`` vào danh sách các ngoại lệ va chạm của body, để bỏ qua các va chạm với nó.
 
 .. rst-class:: classref-item-separator
 
@@ -1473,9 +1473,9 @@ Adds ``excepted_body`` to the body's list of collision exceptions, so that colli
 
 |void| **body_add_constant_central_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_add_constant_central_force>`
 
-Adds a constant directional force to the body. The force does not affect rotation. The force remains applied over time until cleared with ``PhysicsServer2D.body_set_constant_force(body, Vector2(0, 0))``.
+Thêm một lực có hướng không đổi vào body. Lực này không ảnh hưởng đến chuyển động quay. Lực vẫn được áp dụng theo thời gian cho đến khi được xóa bằng ``PhysicsServer2D.body_set_constant_force(body, Vector2(0, 0))``.
 
-This is equivalent to using :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_constant_force>` at the body's center of mass.
+Tương đương với việc sử dụng :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_constant_force>` tại tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -1487,9 +1487,9 @@ This is equivalent to using :ref:`body_add_constant_force()<class_PhysicsServer2
 
 |void| **body_add_constant_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector2<class_Vector2>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_PhysicsServer2D_method_body_add_constant_force>`
 
-Adds a constant positioned force to the body. The force can affect rotation if ``position`` is different from the body's center of mass. The force remains applied over time until cleared with ``PhysicsServer2D.body_set_constant_force(body, Vector2(0, 0))``.
+Thêm một lực không đổi tại một vị trí vào body. Lực này có thể ảnh hưởng đến chuyển động quay nếu ``position`` khác với tâm khối lượng của body. Lực vẫn được áp dụng theo thời gian cho đến khi được xóa bằng ``PhysicsServer2D.body_set_constant_force(body, Vector2(0, 0))``.
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của body trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -1501,7 +1501,7 @@ Adds a constant positioned force to the body. The force can affect rotation if `
 
 |void| **body_add_constant_torque**\ (\ body\: :ref:`RID<class_RID>`, torque\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_add_constant_torque>`
 
-Adds a constant rotational force to the body. The force does not affect position. The force remains applied over time until cleared with ``PhysicsServer2D.body_set_constant_torque(body, 0)``.
+Thêm một mô-men xoắn không đổi vào body. Lực này không ảnh hưởng đến vị trí. Lực vẫn được áp dụng theo thời gian cho đến khi được xóa bằng ``PhysicsServer2D.body_set_constant_torque(body, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -1513,7 +1513,7 @@ Adds a constant rotational force to the body. The force does not affect position
 
 |void| **body_add_shape**\ (\ body\: :ref:`RID<class_RID>`, shape\: :ref:`RID<class_RID>`, transform\: :ref:`Transform2D<class_Transform2D>` = Transform2D(1, 0, 0, 1, 0, 0), disabled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PhysicsServer2D_method_body_add_shape>`
 
-Adds a shape to the area, with the given local transform. The shape (together with its ``transform`` and ``disabled`` properties) is added to an array of shapes, and the shapes of a body are usually referenced by their index in this array.
+Thêm một shape vào area với transform cục bộ đã cho. Shape (cùng với các thuộc tính ``transform`` và ``disabled`` của nó) được thêm vào một mảng các shape, và các shape của body thường được tham chiếu bằng chỉ mục của chúng trong mảng này.
 
 .. rst-class:: classref-item-separator
 
@@ -1525,9 +1525,9 @@ Adds a shape to the area, with the given local transform. The shape (together wi
 
 |void| **body_apply_central_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_apply_central_force>`
 
-Applies a directional force to the body, at the body's center of mass. The force does not affect rotation. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực định hướng lên body tại tâm khối lượng của body. Lực này không ảnh hưởng đến chuyển động quay. Lực phụ thuộc vào thời gian và được dùng để áp dụng trong mỗi lần cập nhật physics.
 
-This is equivalent to using :ref:`body_apply_force()<class_PhysicsServer2D_method_body_apply_force>` at the body's center of mass.
+Tương đương với việc sử dụng :ref:`body_apply_force()<class_PhysicsServer2D_method_body_apply_force>` tại tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -1539,11 +1539,11 @@ This is equivalent to using :ref:`body_apply_force()<class_PhysicsServer2D_metho
 
 |void| **body_apply_central_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_apply_central_impulse>`
 
-Applies a directional impulse to the body, at the body's center of mass. The impulse does not affect rotation.
+Áp dụng một xung lực định hướng lên body tại tâm khối lượng của body. Xung lực này không ảnh hưởng đến chuyển động quay.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, xung lực chỉ nên được dùng khi mô phỏng các tác động xảy ra một lần (nếu không, hãy sử dụng các hàm "_force").
 
-This is equivalent to using :ref:`body_apply_impulse()<class_PhysicsServer2D_method_body_apply_impulse>` at the body's center of mass.
+Tương đương với việc sử dụng :ref:`body_apply_impulse()<class_PhysicsServer2D_method_body_apply_impulse>` tại tâm khối lượng của body.
 
 .. rst-class:: classref-item-separator
 
@@ -1555,9 +1555,9 @@ This is equivalent to using :ref:`body_apply_impulse()<class_PhysicsServer2D_met
 
 |void| **body_apply_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector2<class_Vector2>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_PhysicsServer2D_method_body_apply_force>`
 
-Applies a positioned force to the body. The force can affect rotation if ``position`` is different from the body's center of mass. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực tại vị trí lên vật thể. Lực này có thể ảnh hưởng đến chuyển động quay nếu ``position`` khác với khối tâm của vật thể. Lực phụ thuộc vào thời gian và được dùng để áp dụng trong mỗi lần cập nhật vật lý.
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của body trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -1569,11 +1569,11 @@ Applies a positioned force to the body. The force can affect rotation if ``posit
 
 |void| **body_apply_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`Vector2<class_Vector2>`, position\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) :ref:`🔗<class_PhysicsServer2D_method_body_apply_impulse>`
 
-Applies a positioned impulse to the body. The impulse can affect rotation if ``position`` is different from the body's center of mass.
+Áp dụng một xung lực tại vị trí lên vật thể. Xung lực này có thể ảnh hưởng đến chuyển động quay nếu ``position`` khác với khối tâm của vật thể.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, xung lực chỉ nên được dùng khi mô phỏng các tác động xảy ra một lần (nếu không, hãy sử dụng các hàm "_force").
 
-\ ``position`` is the offset from the body origin in global coordinates.
+\ ``position`` là độ lệch so với gốc của body trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -1585,7 +1585,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 |void| **body_apply_torque**\ (\ body\: :ref:`RID<class_RID>`, torque\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_apply_torque>`
 
-Applies a rotational force to the body. The force does not affect position. A force is time dependent and meant to be applied every physics update.
+Áp dụng một lực quay lên vật thể. Lực này không ảnh hưởng đến vị trí. Lực phụ thuộc vào thời gian và được dùng để áp dụng trong mỗi lần cập nhật vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -1597,9 +1597,9 @@ Applies a rotational force to the body. The force does not affect position. A fo
 
 |void| **body_apply_torque_impulse**\ (\ body\: :ref:`RID<class_RID>`, impulse\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_apply_torque_impulse>`
 
-Applies a rotational impulse to the body. The impulse does not affect position.
+Áp dụng một xung lực quay lên vật thể. Xung lực này không ảnh hưởng đến vị trí.
 
-An impulse is time-independent! Applying an impulse every frame would result in a framerate-dependent force. For this reason, it should only be used when simulating one-time impacts (use the "_force" functions otherwise).
+Xung lực không phụ thuộc vào thời gian! Việc áp dụng xung lực trong mỗi frame sẽ tạo ra một lực phụ thuộc vào framerate. Vì lý do này, xung lực chỉ nên được dùng khi mô phỏng các tác động xảy ra một lần (nếu không, hãy sử dụng các hàm "_force").
 
 .. rst-class:: classref-item-separator
 
@@ -1611,7 +1611,7 @@ An impulse is time-independent! Applying an impulse every frame would result in 
 
 |void| **body_attach_canvas_instance_id**\ (\ body\: :ref:`RID<class_RID>`, id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_attach_canvas_instance_id>`
 
-Attaches the ``ObjectID`` of a canvas to the body. Use :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` to get the ``ObjectID`` of a :ref:`CanvasLayer<class_CanvasLayer>`.
+Gắn ``ObjectID`` của một canvas vào body. Sử dụng :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` để lấy ``ObjectID`` của một :ref:`CanvasLayer<class_CanvasLayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1623,7 +1623,7 @@ Attaches the ``ObjectID`` of a canvas to the body. Use :ref:`Object.get_instance
 
 |void| **body_attach_object_instance_id**\ (\ body\: :ref:`RID<class_RID>`, id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_attach_object_instance_id>`
 
-Attaches the ``ObjectID`` of an :ref:`Object<class_Object>` to the body. Use :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` to get the ``ObjectID`` of a :ref:`CollisionObject2D<class_CollisionObject2D>`.
+Gắn ``ObjectID`` của một :ref:`Object<class_Object>` vào body. Sử dụng :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>` để lấy ``ObjectID`` của một :ref:`CollisionObject2D<class_CollisionObject2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1635,7 +1635,7 @@ Attaches the ``ObjectID`` of an :ref:`Object<class_Object>` to the body. Use :re
 
 |void| **body_clear_shapes**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_clear_shapes>`
 
-Removes all shapes from the body. This does not delete the shapes themselves, so they can continue to be used elsewhere or added back later.
+Xóa tất cả shape khỏi body. Thao tác này không xóa các shape, vì vậy bạn vẫn có thể tiếp tục sử dụng chúng ở nơi khác hoặc thêm lại sau.
 
 .. rst-class:: classref-item-separator
 
@@ -1647,9 +1647,9 @@ Removes all shapes from the body. This does not delete the shapes themselves, so
 
 :ref:`RID<class_RID>` **body_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_body_create>`
 
-Creates a 2D body object in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. The default settings for the created area include a collision layer and mask set to ``1``, and body mode set to :ref:`BODY_MODE_RIGID<class_PhysicsServer2D_constant_BODY_MODE_RIGID>`.
+Tạo một đối tượng body 2D trong physics server và trả về :ref:`RID<class_RID>` xác định đối tượng đó. Các thiết lập mặc định của area được tạo bao gồm collision layer và mask được đặt thành ``1``, còn body mode được đặt thành :ref:`BODY_MODE_RIGID<class_PhysicsServer2D_constant_BODY_MODE_RIGID>`.
 
-Use :ref:`body_add_shape()<class_PhysicsServer2D_method_body_add_shape>` to add shapes to it, use :ref:`body_set_state()<class_PhysicsServer2D_method_body_set_state>` to set its transform, and use :ref:`body_set_space()<class_PhysicsServer2D_method_body_set_space>` to add the body to a space.
+Sử dụng :ref:`body_add_shape()<class_PhysicsServer2D_method_body_add_shape>` để thêm shape vào body, sử dụng :ref:`body_set_state()<class_PhysicsServer2D_method_body_set_state>` để thiết lập transform của body, và sử dụng :ref:`body_set_space()<class_PhysicsServer2D_method_body_set_space>` để thêm body vào một space.
 
 .. rst-class:: classref-item-separator
 
@@ -1661,7 +1661,7 @@ Use :ref:`body_add_shape()<class_PhysicsServer2D_method_body_add_shape>` to add 
 
 :ref:`int<class_int>` **body_get_canvas_instance_id**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_canvas_instance_id>`
 
-Returns the ``ObjectID`` of the canvas attached to the body. Use :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>` to retrieve a :ref:`CanvasLayer<class_CanvasLayer>` from a nonzero ``ObjectID``.
+Trả về ``ObjectID`` của canvas được gắn vào body. Sử dụng :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>` để truy xuất một :ref:`CanvasLayer<class_CanvasLayer>` từ một ``ObjectID`` khác không phải 0.
 
 .. rst-class:: classref-item-separator
 
@@ -1673,7 +1673,7 @@ Returns the ``ObjectID`` of the canvas attached to the body. Use :ref:`@GlobalSc
 
 :ref:`int<class_int>` **body_get_collision_layer**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_collision_layer>`
 
-Returns the physics layer or layers the body belongs to, as a bitmask.
+Trả về lớp hoặc các lớp vật lý mà body thuộc về, dưới dạng bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1685,7 +1685,7 @@ Returns the physics layer or layers the body belongs to, as a bitmask.
 
 :ref:`int<class_int>` **body_get_collision_mask**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_collision_mask>`
 
-Returns the physics layer or layers the body can collide with, as a bitmask.
+Trả về lớp hoặc các lớp vật lý mà body có thể va chạm, dưới dạng bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1697,7 +1697,7 @@ Returns the physics layer or layers the body can collide with, as a bitmask.
 
 :ref:`float<class_float>` **body_get_collision_priority**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_collision_priority>`
 
-Returns the body's collision priority. This is used in the depenetration phase of :ref:`body_test_motion()<class_PhysicsServer2D_method_body_test_motion>`. The higher the priority is, the lower the penetration into the body will be.
+Trả về mức độ ưu tiên va chạm của body. Giá trị này được sử dụng trong giai đoạn depenetration của :ref:`body_test_motion()<class_PhysicsServer2D_method_body_test_motion>`. Mức độ ưu tiên càng cao thì độ xuyên vào body càng thấp.
 
 .. rst-class:: classref-item-separator
 
@@ -1709,9 +1709,9 @@ Returns the body's collision priority. This is used in the depenetration phase o
 
 :ref:`Vector2<class_Vector2>` **body_get_constant_force**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_constant_force>`
 
-Returns the body's total constant positional force applied during each physics update.
+Trả về tổng lực vị trí không đổi tác dụng lên body trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force()<class_PhysicsServer2D_method_body_add_constant_central_force>`.
+Xem :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_constant_force>` và :ref:`body_add_constant_central_force()<class_PhysicsServer2D_method_body_add_constant_central_force>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1723,9 +1723,9 @@ See :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_consta
 
 :ref:`float<class_float>` **body_get_constant_torque**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_constant_torque>`
 
-Returns the body's total constant rotational force applied during each physics update.
+Trả về tổng lực xoay không đổi tác dụng lên body trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_torque()<class_PhysicsServer2D_method_body_add_constant_torque>`.
+Xem :ref:`body_add_constant_torque()<class_PhysicsServer2D_method_body_add_constant_torque>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1737,7 +1737,7 @@ See :ref:`body_add_constant_torque()<class_PhysicsServer2D_method_body_add_const
 
 :ref:`CCDMode<enum_PhysicsServer2D_CCDMode>` **body_get_continuous_collision_detection_mode**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_continuous_collision_detection_mode>`
 
-Returns the body's continuous collision detection mode.
+Trả về chế độ phát hiện va chạm liên tục của body.
 
 .. rst-class:: classref-item-separator
 
@@ -1749,7 +1749,7 @@ Returns the body's continuous collision detection mode.
 
 :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>` **body_get_direct_state**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_get_direct_state>`
 
-Returns the :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>` of the body. Returns ``null`` if the body is destroyed or not assigned to a space.
+Trả về :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>` của body. Trả về ``null`` nếu body đã bị hủy hoặc chưa được gán vào một space.
 
 .. rst-class:: classref-item-separator
 
@@ -1761,7 +1761,7 @@ Returns the :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>` of t
 
 :ref:`int<class_int>` **body_get_max_contacts_reported**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_max_contacts_reported>`
 
-Returns the maximum number of contacts that the body can report. See :ref:`body_set_max_contacts_reported()<class_PhysicsServer2D_method_body_set_max_contacts_reported>`.
+Trả về số lượng contact tối đa mà body có thể báo cáo. Xem :ref:`body_set_max_contacts_reported()<class_PhysicsServer2D_method_body_set_max_contacts_reported>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1773,7 +1773,7 @@ Returns the maximum number of contacts that the body can report. See :ref:`body_
 
 :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>` **body_get_mode**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_mode>`
 
-Returns the body's mode.
+Trả về mode của body.
 
 .. rst-class:: classref-item-separator
 
@@ -1785,7 +1785,7 @@ Returns the body's mode.
 
 :ref:`int<class_int>` **body_get_object_instance_id**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_object_instance_id>`
 
-Returns the ``ObjectID`` attached to the body. Use :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>` to retrieve an :ref:`Object<class_Object>` from a nonzero ``ObjectID``.
+Trả về ``ObjectID`` được gắn vào body. Sử dụng :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>` để lấy một :ref:`Object<class_Object>` từ ``ObjectID`` khác không.
 
 .. rst-class:: classref-item-separator
 
@@ -1797,7 +1797,7 @@ Returns the ``ObjectID`` attached to the body. Use :ref:`@GlobalScope.instance_f
 
 :ref:`Variant<class_Variant>` **body_get_param**\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_param>`
 
-Returns the value of the given body parameter.
+Trả về giá trị của tham số body đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -1809,7 +1809,7 @@ Returns the value of the given body parameter.
 
 :ref:`RID<class_RID>` **body_get_shape**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_shape>`
 
-Returns the :ref:`RID<class_RID>` of the shape with the given index in the body's array of shapes.
+Trả về :ref:`RID<class_RID>` của shape có chỉ mục đã cho trong mảng shape của body.
 
 .. rst-class:: classref-item-separator
 
@@ -1821,7 +1821,7 @@ Returns the :ref:`RID<class_RID>` of the shape with the given index in the body'
 
 :ref:`int<class_int>` **body_get_shape_count**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_shape_count>`
 
-Returns the number of shapes added to the body.
+Trả về số lượng shape được thêm vào body.
 
 .. rst-class:: classref-item-separator
 
@@ -1833,7 +1833,7 @@ Returns the number of shapes added to the body.
 
 :ref:`Transform2D<class_Transform2D>` **body_get_shape_transform**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_shape_transform>`
 
-Returns the local transform matrix of the shape with the given index in the area's array of shapes.
+Trả về ma trận biến đổi cục bộ của hình dạng có chỉ mục đã cho trong mảng các hình dạng của vùng.
 
 .. rst-class:: classref-item-separator
 
@@ -1845,7 +1845,7 @@ Returns the local transform matrix of the shape with the given index in the area
 
 :ref:`RID<class_RID>` **body_get_space**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_space>`
 
-Returns the :ref:`RID<class_RID>` of the space assigned to the body. Returns an empty :ref:`RID<class_RID>` if no space is assigned.
+Trả về :ref:`RID<class_RID>` của space được gán cho body. Trả về một :ref:`RID<class_RID>` rỗng nếu chưa gán space.
 
 .. rst-class:: classref-item-separator
 
@@ -1857,7 +1857,7 @@ Returns the :ref:`RID<class_RID>` of the space assigned to the body. Returns an 
 
 :ref:`Variant<class_Variant>` **body_get_state**\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer2D_BodyState>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_get_state>`
 
-Returns the value of the given state of the body.
+Trả về giá trị của state đã cho của body.
 
 .. rst-class:: classref-item-separator
 
@@ -1869,7 +1869,7 @@ Returns the value of the given state of the body.
 
 :ref:`bool<class_bool>` **body_is_omitting_force_integration**\ (\ body\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_body_is_omitting_force_integration>`
 
-Returns ``true`` if the body is omitting the standard force integration. See :ref:`body_set_omit_force_integration()<class_PhysicsServer2D_method_body_set_omit_force_integration>`.
+Trả về ``true`` nếu body đang bỏ qua việc tích hợp lực tiêu chuẩn. Xem :ref:`body_set_omit_force_integration()<class_PhysicsServer2D_method_body_set_omit_force_integration>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1881,7 +1881,7 @@ Returns ``true`` if the body is omitting the standard force integration. See :re
 
 |void| **body_remove_collision_exception**\ (\ body\: :ref:`RID<class_RID>`, excepted_body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_remove_collision_exception>`
 
-Removes ``excepted_body`` from the body's list of collision exceptions, so that collisions with it are no longer ignored.
+Xóa ``excepted_body`` khỏi danh sách các ngoại lệ va chạm của body, để các va chạm với nó không còn bị bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -1893,7 +1893,7 @@ Removes ``excepted_body`` from the body's list of collision exceptions, so that 
 
 |void| **body_remove_shape**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_remove_shape>`
 
-Removes the shape with the given index from the body's array of shapes. The shape itself is not deleted, so it can continue to be used elsewhere or added back later. As a result of this operation, the body's shapes which used to have indices higher than ``shape_idx`` will have their index decreased by one.
+Xóa shape có index đã cho khỏi mảng các shape của body. Bản thân shape không bị xóa, vì vậy có thể tiếp tục được sử dụng ở nơi khác hoặc được thêm lại sau. Do thao tác này, các shape của body trước đây có index cao hơn ``shape_idx`` sẽ bị giảm index đi một.
 
 .. rst-class:: classref-item-separator
 
@@ -1905,7 +1905,7 @@ Removes the shape with the given index from the body's array of shapes. The shap
 
 |void| **body_reset_mass_properties**\ (\ body\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_reset_mass_properties>`
 
-Restores the default inertia and center of mass of the body based on its shapes. This undoes any custom values previously set using :ref:`body_set_param()<class_PhysicsServer2D_method_body_set_param>`.
+Khôi phục mômen quán tính và tâm khối lượng mặc định của vật thể dựa trên các hình dạng của vật thể. Thao tác này hoàn tác mọi giá trị tùy chỉnh đã được thiết lập bằng :ref:`body_set_param()<class_PhysicsServer2D_method_body_set_param>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1917,7 +1917,7 @@ Restores the default inertia and center of mass of the body based on its shapes.
 
 |void| **body_set_axis_velocity**\ (\ body\: :ref:`RID<class_RID>`, axis_velocity\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_axis_velocity>`
 
-Modifies the body's linear velocity so that its projection to the axis ``axis_velocity.normalized()`` is exactly ``axis_velocity.length()``. This is useful for jumping behavior.
+Điều chỉnh vận tốc tuyến tính của vật thể để hình chiếu của nó lên trục ``axis_velocity.normalized()`` chính xác bằng ``axis_velocity.length()``. Điều này hữu ích cho hành vi nhảy.
 
 .. rst-class:: classref-item-separator
 
@@ -1929,7 +1929,7 @@ Modifies the body's linear velocity so that its projection to the axis ``axis_ve
 
 |void| **body_set_collision_layer**\ (\ body\: :ref:`RID<class_RID>`, layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_collision_layer>`
 
-Sets the physics layer or layers the body belongs to, via a bitmask.
+Thiết lập lớp hoặc các lớp vật lý mà vật thể thuộc về thông qua một bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1941,7 +1941,7 @@ Sets the physics layer or layers the body belongs to, via a bitmask.
 
 |void| **body_set_collision_mask**\ (\ body\: :ref:`RID<class_RID>`, mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_collision_mask>`
 
-Sets the physics layer or layers the body can collide with, via a bitmask.
+Thiết lập lớp hoặc các lớp vật lý mà vật thể có thể va chạm thông qua một bitmask.
 
 .. rst-class:: classref-item-separator
 
@@ -1953,7 +1953,7 @@ Sets the physics layer or layers the body can collide with, via a bitmask.
 
 |void| **body_set_collision_priority**\ (\ body\: :ref:`RID<class_RID>`, priority\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_collision_priority>`
 
-Sets the body's collision priority. This is used in the depenetration phase of :ref:`body_test_motion()<class_PhysicsServer2D_method_body_test_motion>`. The higher the priority is, the lower the penetration into the body will be.
+Thiết lập mức ưu tiên va chạm của vật thể. Giá trị này được sử dụng trong giai đoạn khử xuyên lấn của :ref:`body_test_motion()<class_PhysicsServer2D_method_body_test_motion>`. Mức ưu tiên càng cao thì độ xuyên lấn vào vật thể càng thấp.
 
 .. rst-class:: classref-item-separator
 
@@ -1965,9 +1965,9 @@ Sets the body's collision priority. This is used in the depenetration phase of :
 
 |void| **body_set_constant_force**\ (\ body\: :ref:`RID<class_RID>`, force\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_constant_force>`
 
-Sets the body's total constant positional force applied during each physics update.
+Thiết lập tổng lực vị trí không đổi tác dụng lên vật thể trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_constant_force>` and :ref:`body_add_constant_central_force()<class_PhysicsServer2D_method_body_add_constant_central_force>`.
+Xem :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_constant_force>` và :ref:`body_add_constant_central_force()<class_PhysicsServer2D_method_body_add_constant_central_force>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1979,9 +1979,9 @@ See :ref:`body_add_constant_force()<class_PhysicsServer2D_method_body_add_consta
 
 |void| **body_set_constant_torque**\ (\ body\: :ref:`RID<class_RID>`, torque\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_constant_torque>`
 
-Sets the body's total constant rotational force applied during each physics update.
+Thiết lập tổng lực quay không đổi của vật thể, được áp dụng trong mỗi lần cập nhật vật lý.
 
-See :ref:`body_add_constant_torque()<class_PhysicsServer2D_method_body_add_constant_torque>`.
+Xem :ref:`body_add_constant_torque()<class_PhysicsServer2D_method_body_add_constant_torque>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1993,9 +1993,9 @@ See :ref:`body_add_constant_torque()<class_PhysicsServer2D_method_body_add_const
 
 |void| **body_set_continuous_collision_detection_mode**\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`CCDMode<enum_PhysicsServer2D_CCDMode>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_continuous_collision_detection_mode>`
 
-Sets the continuous collision detection mode.
+Thiết lập chế độ phát hiện va chạm liên tục.
 
-Continuous collision detection tries to predict where a moving body would collide in between physics updates, instead of moving it and correcting its movement if it collided.
+Tính năng phát hiện va chạm liên tục cố gắng dự đoán vị trí mà một vật thể đang chuyển động sẽ va chạm giữa các lần cập nhật vật lý, thay vì di chuyển vật thể rồi điều chỉnh chuyển động của nó nếu xảy ra va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -2007,17 +2007,17 @@ Continuous collision detection tries to predict where a moving body would collid
 
 |void| **body_set_force_integration_callback**\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`, userdata\: :ref:`Variant<class_Variant>` = null\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_force_integration_callback>`
 
-Sets the body's custom force integration callback function to ``callable``. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the custom callback.
+Thiết lập hàm callback tích hợp lực tùy chỉnh của vật thể thành ``callable``. Sử dụng một :ref:`Callable<class_Callable>` (``Callable()``) rỗng để xóa callback tùy chỉnh.
 
-The function ``callable`` will be called every physics tick, before the standard force integration (see :ref:`body_set_omit_force_integration()<class_PhysicsServer2D_method_body_set_omit_force_integration>`). It can be used for example to update the body's linear and angular velocity based on contact with other bodies.
+Hàm ``callable`` sẽ được gọi ở mỗi nhịp vật lý, trước khi tích hợp lực tiêu chuẩn (xem :ref:`body_set_omit_force_integration()<class_PhysicsServer2D_method_body_set_omit_force_integration>`). Hàm này có thể được sử dụng, chẳng hạn, để cập nhật vận tốc tuyến tính và vận tốc góc của vật thể dựa trên việc tiếp xúc với các vật thể khác.
 
-If ``userdata`` is not ``null``, the function ``callable`` must take the following two parameters:
+Nếu ``userdata`` không phải là ``null``, hàm ``callable`` phải nhận hai tham số sau:
 
-1. ``state``: a :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>` used to retrieve and modify the body's state,
+1. ``state``: một :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>` được dùng để truy xuất và sửa đổi trạng thái của body,
 
-2. ``userdata``: a :ref:`Variant<class_Variant>`; its value will be the ``userdata`` passed into this method.
+2. ``userdata``: một :ref:`Variant<class_Variant>`; giá trị của nó sẽ là ``userdata`` được truyền vào phương thức này.
 
-If ``userdata`` is ``null``, then ``callable`` must take only the ``state`` parameter.
+Nếu ``userdata`` là ``null``, thì ``callable`` chỉ được nhận tham số ``state``.
 
 .. rst-class:: classref-item-separator
 
@@ -2029,7 +2029,7 @@ If ``userdata`` is ``null``, then ``callable`` must take only the ``state`` para
 
 |void| **body_set_max_contacts_reported**\ (\ body\: :ref:`RID<class_RID>`, amount\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_max_contacts_reported>`
 
-Sets the maximum number of contacts that the body can report. If ``amount`` is greater than zero, then the body will keep track of at most this many contacts with other bodies.
+Đặt số lượng contact tối đa mà body có thể báo cáo. Nếu ``amount`` lớn hơn không, body sẽ theo dõi nhiều nhất số contact này với các body khác.
 
 .. rst-class:: classref-item-separator
 
@@ -2041,7 +2041,7 @@ Sets the maximum number of contacts that the body can report. If ``amount`` is g
 
 |void| **body_set_mode**\ (\ body\: :ref:`RID<class_RID>`, mode\: :ref:`BodyMode<enum_PhysicsServer2D_BodyMode>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_mode>`
 
-Sets the body's mode.
+Đặt mode của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2053,9 +2053,9 @@ Sets the body's mode.
 
 |void| **body_set_omit_force_integration**\ (\ body\: :ref:`RID<class_RID>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_omit_force_integration>`
 
-Sets whether the body omits the standard force integration. If ``enable`` is ``true``, the body will not automatically use applied forces, torques, and damping to update the body's linear and angular velocity. In this case, :ref:`body_set_force_integration_callback()<class_PhysicsServer2D_method_body_set_force_integration_callback>` can be used to manually update the linear and angular velocity instead.
+Đặt xem body có bỏ qua phép tích hợp lực tiêu chuẩn hay không. Nếu ``enable`` là ``true``, body sẽ không tự động sử dụng các lực, mô-men xoắn và lực cản được áp dụng để cập nhật vận tốc tuyến tính và vận tốc góc của body. Trong trường hợp này, có thể sử dụng :ref:`body_set_force_integration_callback()<class_PhysicsServer2D_method_body_set_force_integration_callback>` để cập nhật thủ công vận tốc tuyến tính và vận tốc góc.
 
-This method is called when the property :ref:`RigidBody2D.custom_integrator<class_RigidBody2D_property_custom_integrator>` is set.
+Phương thức này được gọi khi thuộc tính :ref:`RigidBody2D.custom_integrator<class_RigidBody2D_property_custom_integrator>` được thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -2067,7 +2067,7 @@ This method is called when the property :ref:`RigidBody2D.custom_integrator<clas
 
 |void| **body_set_param**\ (\ body\: :ref:`RID<class_RID>`, param\: :ref:`BodyParameter<enum_PhysicsServer2D_BodyParameter>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_param>`
 
-Sets the value of the given body parameter.
+Đặt giá trị của tham số body được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -2079,7 +2079,7 @@ Sets the value of the given body parameter.
 
 |void| **body_set_shape**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, shape\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_shape>`
 
-Replaces the body's shape at the given index by another shape, while not affecting the ``transform``, ``disabled``, and one-way collision properties at the same index.
+Thay thế hình dạng của body tại chỉ số đã cho bằng một hình dạng khác, đồng thời không ảnh hưởng đến ``transform``, ``disabled`` và các thuộc tính va chạm một chiều tại cùng chỉ số.
 
 .. rst-class:: classref-item-separator
 
@@ -2091,7 +2091,7 @@ Replaces the body's shape at the given index by another shape, while not affecti
 
 |void| **body_set_shape_as_one_way_collision**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`, margin\: :ref:`float<class_float>`, direction\: :ref:`Vector2<class_Vector2>` = Vector2(0, 1)\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_shape_as_one_way_collision>`
 
-Sets the one-way collision properties of the body's shape with the given index. If ``enable`` is ``true``, the one-way collision direction given by ``direction`` in the shape's local space (that is ``body_get_shape_transform(body, shape_idx).basis_xform(direction).normalized()`` in the body's local space) will be used to ignore collisions with the shape in the opposite direction, and to ensure depenetration of kinematic bodies happens in this direction.
+Đặt các thuộc tính va chạm một chiều của hình dạng body tại chỉ số đã cho. Nếu ``enable`` là ``true``, hướng va chạm một chiều được chỉ định bởi ``direction`` trong không gian cục bộ của hình dạng (tức là ``body_get_shape_transform(body, shape_idx).basis_xform(direction).normalized()`` trong không gian cục bộ của body) sẽ được sử dụng để bỏ qua va chạm với hình dạng theo hướng ngược lại và đảm bảo việc khử xuyên của các body động học xảy ra theo hướng này.
 
 .. rst-class:: classref-item-separator
 
@@ -2103,7 +2103,7 @@ Sets the one-way collision properties of the body's shape with the given index. 
 
 |void| **body_set_shape_disabled**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_shape_disabled>`
 
-Sets the disabled property of the body's shape with the given index. If ``disabled`` is ``true``, then the shape will be ignored in all collision detection.
+Đặt thuộc tính disabled của hình dạng body tại chỉ số đã cho. Nếu ``disabled`` là ``true``, hình dạng đó sẽ bị bỏ qua trong mọi quá trình phát hiện va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -2115,7 +2115,7 @@ Sets the disabled property of the body's shape with the given index. If ``disabl
 
 |void| **body_set_shape_transform**\ (\ body\: :ref:`RID<class_RID>`, shape_idx\: :ref:`int<class_int>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_shape_transform>`
 
-Sets the local transform matrix of the body's shape with the given index.
+Đặt ma trận biến đổi cục bộ của hình dạng body tại chỉ số đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2127,13 +2127,13 @@ Sets the local transform matrix of the body's shape with the given index.
 
 |void| **body_set_space**\ (\ body\: :ref:`RID<class_RID>`, space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_space>`
 
-Adds the body to the given space, after removing the body from the previously assigned space (if any). If the body's mode is set to :ref:`BODY_MODE_RIGID<class_PhysicsServer2D_constant_BODY_MODE_RIGID>`, then adding the body to a space will have the following additional effects:
+Thêm body vào không gian đã cho sau khi xóa body khỏi không gian được gán trước đó (nếu có). Nếu mode của body được đặt thành :ref:`BODY_MODE_RIGID<class_PhysicsServer2D_constant_BODY_MODE_RIGID>`, việc thêm body vào một không gian sẽ có thêm các tác động sau:
 
-- If the parameter :ref:`BODY_PARAM_CENTER_OF_MASS<class_PhysicsServer2D_constant_BODY_PARAM_CENTER_OF_MASS>` has never been set explicitly, then the value of that parameter will be recalculated based on the body's shapes.
+- Nếu tham số :ref:`BODY_PARAM_CENTER_OF_MASS<class_PhysicsServer2D_constant_BODY_PARAM_CENTER_OF_MASS>` chưa từng được đặt một cách rõ ràng, giá trị của tham số đó sẽ được tính toán lại dựa trên các hình dạng của body.
 
-- If the parameter :ref:`BODY_PARAM_INERTIA<class_PhysicsServer2D_constant_BODY_PARAM_INERTIA>` is set to a value ``<= 0.0``, then the value of that parameter will be recalculated based on the body's shapes, mass, and center of mass.
+- Nếu tham số :ref:`BODY_PARAM_INERTIA<class_PhysicsServer2D_constant_BODY_PARAM_INERTIA>` được đặt thành giá trị ``<= 0.0``, thì giá trị của tham số đó sẽ được tính toán lại dựa trên các hình dạng, khối lượng và tâm khối của body.
 
-\ **Note:** To remove a body from a space without immediately adding it back elsewhere, use ``PhysicsServer2D.body_set_space(body, RID())``.
+\ **Lưu ý:** Để xóa một body khỏi một space mà không lập tức thêm nó trở lại ở nơi khác, hãy sử dụng ``PhysicsServer2D.body_set_space(body, RID())``.
 
 .. rst-class:: classref-item-separator
 
@@ -2145,9 +2145,9 @@ Adds the body to the given space, after removing the body from the previously as
 
 |void| **body_set_state**\ (\ body\: :ref:`RID<class_RID>`, state\: :ref:`BodyState<enum_PhysicsServer2D_BodyState>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_state>`
 
-Sets the value of a body's state.
+Đặt giá trị state của body.
 
-\ **Note:** The state change doesn't take effect immediately. The state will change on the next physics frame.
+\ **Lưu ý:** Việc thay đổi state không có hiệu lực ngay lập tức. State sẽ thay đổi ở frame vật lý tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -2159,13 +2159,13 @@ Sets the value of a body's state.
 
 |void| **body_set_state_sync_callback**\ (\ body\: :ref:`RID<class_RID>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_PhysicsServer2D_method_body_set_state_sync_callback>`
 
-Sets the body's state synchronization callback function to ``callable``. Use an empty :ref:`Callable<class_Callable>` (``Callable()``) to clear the callback.
+Đặt hàm callback đồng bộ state của body thành ``callable``. Sử dụng một :ref:`Callable<class_Callable>` trống (``Callable()``) để xóa callback.
 
-The function ``callable`` will be called every physics frame, assuming that the body was active during the previous physics tick, and can be used to fetch the latest state from the physics server.
+Hàm ``callable`` sẽ được gọi ở mỗi frame vật lý, với điều kiện body đã active trong tick vật lý trước đó, và có thể được dùng để lấy state mới nhất từ physics server.
 
-The function ``callable`` must take the following parameters:
+Hàm ``callable`` phải nhận các tham số sau:
 
-1. ``state``: a :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>`, used to retrieve the body's state.
+1. ``state``: một :ref:`PhysicsDirectBodyState2D<class_PhysicsDirectBodyState2D>`, được dùng để truy xuất trạng thái của body.
 
 .. rst-class:: classref-item-separator
 
@@ -2177,7 +2177,7 @@ The function ``callable`` must take the following parameters:
 
 :ref:`bool<class_bool>` **body_test_motion**\ (\ body\: :ref:`RID<class_RID>`, parameters\: :ref:`PhysicsTestMotionParameters2D<class_PhysicsTestMotionParameters2D>`, result\: :ref:`PhysicsTestMotionResult2D<class_PhysicsTestMotionResult2D>` = null\ ) :ref:`🔗<class_PhysicsServer2D_method_body_test_motion>`
 
-Returns ``true`` if a collision would result from moving the body along a motion vector from a given point in space. See :ref:`PhysicsTestMotionParameters2D<class_PhysicsTestMotionParameters2D>` for the available motion parameters. Optionally a :ref:`PhysicsTestMotionResult2D<class_PhysicsTestMotionResult2D>` object can be passed, which will be used to store the information about the resulting collision.
+Trả về ``true`` nếu việc di chuyển body dọc theo một vector chuyển động từ một điểm xác định trong không gian sẽ gây ra va chạm. Xem :ref:`PhysicsTestMotionParameters2D<class_PhysicsTestMotionParameters2D>` để biết các tham số chuyển động khả dụng. Bạn có thể truyền một đối tượng :ref:`PhysicsTestMotionResult2D<class_PhysicsTestMotionResult2D>` tùy chọn, đối tượng này sẽ được dùng để lưu thông tin về va chạm xảy ra.
 
 .. rst-class:: classref-item-separator
 
@@ -2189,7 +2189,7 @@ Returns ``true`` if a collision would result from moving the body along a motion
 
 :ref:`RID<class_RID>` **capsule_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_capsule_shape_create>`
 
-Creates a 2D capsule shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the capsule's height and radius.
+Tạo một capsule shape 2D trong physics server và trả về :ref:`RID<class_RID>` nhận diện shape đó. Dùng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập chiều cao và bán kính của capsule.
 
 .. rst-class:: classref-item-separator
 
@@ -2201,7 +2201,7 @@ Creates a 2D capsule shape in the physics server, and returns the :ref:`RID<clas
 
 :ref:`RID<class_RID>` **circle_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_circle_shape_create>`
 
-Creates a 2D circle shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the circle's radius.
+Tạo một circle shape 2D trong physics server và trả về :ref:`RID<class_RID>` nhận diện shape đó. Dùng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập bán kính của circle.
 
 .. rst-class:: classref-item-separator
 
@@ -2213,7 +2213,7 @@ Creates a 2D circle shape in the physics server, and returns the :ref:`RID<class
 
 :ref:`RID<class_RID>` **concave_polygon_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_concave_polygon_shape_create>`
 
-Creates a 2D concave polygon shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the concave polygon's segments.
+Tạo một concave polygon shape 2D trong physics server và trả về :ref:`RID<class_RID>` nhận diện shape đó. Dùng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập các đoạn của concave polygon.
 
 .. rst-class:: classref-item-separator
 
@@ -2225,7 +2225,7 @@ Creates a 2D concave polygon shape in the physics server, and returns the :ref:`
 
 :ref:`RID<class_RID>` **convex_polygon_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_convex_polygon_shape_create>`
 
-Creates a 2D convex polygon shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the convex polygon's points.
+Tạo một convex polygon shape 2D trong physics server và trả về :ref:`RID<class_RID>` nhận diện shape đó. Dùng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập các điểm của convex polygon.
 
 .. rst-class:: classref-item-separator
 
@@ -2237,7 +2237,7 @@ Creates a 2D convex polygon shape in the physics server, and returns the :ref:`R
 
 :ref:`float<class_float>` **damped_spring_joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`DampedSpringParam<enum_PhysicsServer2D_DampedSpringParam>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_damped_spring_joint_get_param>`
 
-Returns the value of the given damped spring joint parameter.
+Trả về giá trị của tham số joint lò xo giảm chấn đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2249,7 +2249,7 @@ Returns the value of the given damped spring joint parameter.
 
 |void| **damped_spring_joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`DampedSpringParam<enum_PhysicsServer2D_DampedSpringParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_damped_spring_joint_set_param>`
 
-Sets the value of the given damped spring joint parameter.
+Đặt giá trị của tham số khớp lò xo giảm chấn đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2261,7 +2261,7 @@ Sets the value of the given damped spring joint parameter.
 
 |void| **free_rid**\ (\ rid\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_free_rid>`
 
-Destroys any of the objects created by PhysicsServer2D. If the :ref:`RID<class_RID>` passed is not one of the objects that can be created by PhysicsServer2D, an error will be printed to the console.
+Hủy bất kỳ đối tượng nào được tạo bởi PhysicsServer2D. Nếu :ref:`RID<class_RID>` được truyền vào không phải là một trong các đối tượng có thể được tạo bởi PhysicsServer2D, một lỗi sẽ được in ra console.
 
 .. rst-class:: classref-item-separator
 
@@ -2273,7 +2273,7 @@ Destroys any of the objects created by PhysicsServer2D. If the :ref:`RID<class_R
 
 :ref:`int<class_int>` **get_process_info**\ (\ process_info\: :ref:`ProcessInfo<enum_PhysicsServer2D_ProcessInfo>`\ ) :ref:`🔗<class_PhysicsServer2D_method_get_process_info>`
 
-Returns the value of a physics engine state specified by ``process_info``.
+Trả về giá trị của trạng thái physics engine được chỉ định bởi ``process_info``.
 
 .. rst-class:: classref-item-separator
 
@@ -2285,7 +2285,7 @@ Returns the value of a physics engine state specified by ``process_info``.
 
 |void| **joint_clear**\ (\ joint\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_joint_clear>`
 
-Destroys the joint with the given :ref:`RID<class_RID>`, creates a new uninitialized joint, and makes the :ref:`RID<class_RID>` refer to this new joint.
+Hủy khớp có :ref:`RID<class_RID>` đã cho, tạo một khớp mới chưa được khởi tạo và khiến :ref:`RID<class_RID>` tham chiếu đến khớp mới này.
 
 .. rst-class:: classref-item-separator
 
@@ -2297,7 +2297,7 @@ Destroys the joint with the given :ref:`RID<class_RID>`, creates a new uninitial
 
 :ref:`RID<class_RID>` **joint_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_joint_create>`
 
-Creates a 2D joint in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. To set the joint type, use :ref:`joint_make_damped_spring()<class_PhysicsServer2D_method_joint_make_damped_spring>`, :ref:`joint_make_groove()<class_PhysicsServer2D_method_joint_make_groove>` or :ref:`joint_make_pin()<class_PhysicsServer2D_method_joint_make_pin>`. Use :ref:`joint_set_param()<class_PhysicsServer2D_method_joint_set_param>` to set generic joint parameters.
+Tạo một khớp 2D trong physics server và trả về :ref:`RID<class_RID>` nhận diện khớp đó. Để đặt loại khớp, hãy sử dụng :ref:`joint_make_damped_spring()<class_PhysicsServer2D_method_joint_make_damped_spring>`, :ref:`joint_make_groove()<class_PhysicsServer2D_method_joint_make_groove>` hoặc :ref:`joint_make_pin()<class_PhysicsServer2D_method_joint_make_pin>`. Sử dụng :ref:`joint_set_param()<class_PhysicsServer2D_method_joint_set_param>` để đặt các tham số khớp chung.
 
 .. rst-class:: classref-item-separator
 
@@ -2309,7 +2309,7 @@ Creates a 2D joint in the physics server, and returns the :ref:`RID<class_RID>` 
 
 |void| **joint_disable_collisions_between_bodies**\ (\ joint\: :ref:`RID<class_RID>`, disable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_joint_disable_collisions_between_bodies>`
 
-Sets whether the bodies attached to the :ref:`Joint2D<class_Joint2D>` will collide with each other.
+Đặt việc các body được gắn vào :ref:`Joint2D<class_Joint2D>` có va chạm với nhau hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2321,7 +2321,7 @@ Sets whether the bodies attached to the :ref:`Joint2D<class_Joint2D>` will colli
 
 :ref:`float<class_float>` **joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`JointParam<enum_PhysicsServer2D_JointParam>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_joint_get_param>`
 
-Returns the value of the given joint parameter.
+Trả về giá trị của tham số khớp đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2333,7 +2333,7 @@ Returns the value of the given joint parameter.
 
 :ref:`JointType<enum_PhysicsServer2D_JointType>` **joint_get_type**\ (\ joint\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_joint_get_type>`
 
-Returns the joint's type.
+Trả về loại của khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -2345,7 +2345,7 @@ Returns the joint's type.
 
 :ref:`bool<class_bool>` **joint_is_disabled_collisions_between_bodies**\ (\ joint\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_joint_is_disabled_collisions_between_bodies>`
 
-Returns whether the bodies attached to the :ref:`Joint2D<class_Joint2D>` will collide with each other.
+Trả về việc các vật thể được gắn vào :ref:`Joint2D<class_Joint2D>` có va chạm với nhau hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -2357,7 +2357,7 @@ Returns whether the bodies attached to the :ref:`Joint2D<class_Joint2D>` will co
 
 |void| **joint_make_damped_spring**\ (\ joint\: :ref:`RID<class_RID>`, anchor_a\: :ref:`Vector2<class_Vector2>`, anchor_b\: :ref:`Vector2<class_Vector2>`, body_a\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>` = RID()\ ) :ref:`🔗<class_PhysicsServer2D_method_joint_make_damped_spring>`
 
-Makes the joint a damped spring joint, attached at the point ``anchor_a`` (given in global coordinates) on the body ``body_a`` and at the point ``anchor_b`` (given in global coordinates) on the body ``body_b``. To set the parameters which are specific to the damped spring, see :ref:`damped_spring_joint_set_param()<class_PhysicsServer2D_method_damped_spring_joint_set_param>`.
+Biến khớp thành một khớp lò xo giảm chấn, được gắn tại điểm ``anchor_a`` (được cung cấp trong hệ tọa độ toàn cục) trên vật thể ``body_a`` và tại điểm ``anchor_b`` (được cung cấp trong hệ tọa độ toàn cục) trên vật thể ``body_b``. Để thiết lập các tham số riêng của lò xo giảm chấn, hãy xem :ref:`damped_spring_joint_set_param()<class_PhysicsServer2D_method_damped_spring_joint_set_param>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2369,7 +2369,7 @@ Makes the joint a damped spring joint, attached at the point ``anchor_a`` (given
 
 |void| **joint_make_groove**\ (\ joint\: :ref:`RID<class_RID>`, groove1_a\: :ref:`Vector2<class_Vector2>`, groove2_a\: :ref:`Vector2<class_Vector2>`, anchor_b\: :ref:`Vector2<class_Vector2>`, body_a\: :ref:`RID<class_RID>` = RID(), body_b\: :ref:`RID<class_RID>` = RID()\ ) :ref:`🔗<class_PhysicsServer2D_method_joint_make_groove>`
 
-Makes the joint a groove joint.
+Biến khớp thành một khớp rãnh.
 
 .. rst-class:: classref-item-separator
 
@@ -2381,7 +2381,7 @@ Makes the joint a groove joint.
 
 |void| **joint_make_pin**\ (\ joint\: :ref:`RID<class_RID>`, anchor\: :ref:`Vector2<class_Vector2>`, body_a\: :ref:`RID<class_RID>`, body_b\: :ref:`RID<class_RID>` = RID()\ ) :ref:`🔗<class_PhysicsServer2D_method_joint_make_pin>`
 
-Makes the joint a pin joint. If ``body_b`` is an empty :ref:`RID<class_RID>`, then ``body_a`` is pinned to the point ``anchor`` (given in global coordinates); otherwise, ``body_a`` is pinned to ``body_b`` at the point ``anchor`` (given in global coordinates). To set the parameters which are specific to the pin joint, see :ref:`pin_joint_set_param()<class_PhysicsServer2D_method_pin_joint_set_param>`.
+Biến khớp thành một khớp chốt. Nếu ``body_b`` là một :ref:`RID<class_RID>` rỗng, thì ``body_a`` được ghim vào điểm ``anchor`` (được cung cấp trong hệ tọa độ toàn cục); nếu không, ``body_a`` được ghim vào ``body_b`` tại điểm ``anchor`` (được cung cấp trong hệ tọa độ toàn cục). Để thiết lập các tham số riêng của khớp chốt, hãy xem :ref:`pin_joint_set_param()<class_PhysicsServer2D_method_pin_joint_set_param>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2393,7 +2393,7 @@ Makes the joint a pin joint. If ``body_b`` is an empty :ref:`RID<class_RID>`, th
 
 |void| **joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`JointParam<enum_PhysicsServer2D_JointParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_joint_set_param>`
 
-Sets the value of the given joint parameter.
+Đặt giá trị của tham số khớp đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2405,7 +2405,7 @@ Sets the value of the given joint parameter.
 
 :ref:`bool<class_bool>` **pin_joint_get_flag**\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`PinJointFlag<enum_PhysicsServer2D_PinJointFlag>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_pin_joint_get_flag>`
 
-Gets a pin joint flag.
+Lấy một cờ khớp chốt.
 
 .. rst-class:: classref-item-separator
 
@@ -2417,7 +2417,7 @@ Gets a pin joint flag.
 
 :ref:`float<class_float>` **pin_joint_get_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_pin_joint_get_param>`
 
-Returns the value of a pin joint parameter.
+Trả về giá trị của một tham số khớp chốt.
 
 .. rst-class:: classref-item-separator
 
@@ -2429,7 +2429,7 @@ Returns the value of a pin joint parameter.
 
 |void| **pin_joint_set_flag**\ (\ joint\: :ref:`RID<class_RID>`, flag\: :ref:`PinJointFlag<enum_PhysicsServer2D_PinJointFlag>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_pin_joint_set_flag>`
 
-Sets a pin joint flag.
+Thiết lập một cờ của khớp chốt.
 
 .. rst-class:: classref-item-separator
 
@@ -2441,7 +2441,7 @@ Sets a pin joint flag.
 
 |void| **pin_joint_set_param**\ (\ joint\: :ref:`RID<class_RID>`, param\: :ref:`PinJointParam<enum_PhysicsServer2D_PinJointParam>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_pin_joint_set_param>`
 
-Sets a pin joint parameter.
+Thiết lập một tham số của khớp chốt.
 
 .. rst-class:: classref-item-separator
 
@@ -2453,7 +2453,7 @@ Sets a pin joint parameter.
 
 :ref:`RID<class_RID>` **rectangle_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_rectangle_shape_create>`
 
-Creates a 2D rectangle shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the rectangle's half-extents.
+Tạo một hình chữ nhật 2D trong physics server và trả về :ref:`RID<class_RID>` xác định hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập kích thước nửa chiều dài các cạnh của hình chữ nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -2465,7 +2465,7 @@ Creates a 2D rectangle shape in the physics server, and returns the :ref:`RID<cl
 
 :ref:`RID<class_RID>` **segment_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_segment_shape_create>`
 
-Creates a 2D segment shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the segment's start and end points.
+Tạo một hình đoạn thẳng 2D trong physics server và trả về :ref:`RID<class_RID>` xác định hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập các điểm đầu và cuối của đoạn thẳng.
 
 .. rst-class:: classref-item-separator
 
@@ -2477,7 +2477,7 @@ Creates a 2D segment shape in the physics server, and returns the :ref:`RID<clas
 
 :ref:`RID<class_RID>` **separation_ray_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_separation_ray_shape_create>`
 
-Creates a 2D separation ray shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the shape's ``length`` and ``slide_on_slope`` properties.
+Tạo một hình tia phân tách 2D trong physics server và trả về :ref:`RID<class_RID>` xác định hình đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập các thuộc tính ``length`` và ``slide_on_slope`` của hình.
 
 .. rst-class:: classref-item-separator
 
@@ -2489,7 +2489,7 @@ Creates a 2D separation ray shape in the physics server, and returns the :ref:`R
 
 |void| **set_active**\ (\ active\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_set_active>`
 
-Activates or deactivates the 2D physics server. If ``active`` is ``false``, then the physics server will not do anything in its physics step.
+Kích hoạt hoặc hủy kích hoạt physics server 2D. Nếu ``active`` là ``false``, physics server sẽ không thực hiện bất kỳ thao tác nào trong bước vật lý của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -2501,7 +2501,7 @@ Activates or deactivates the 2D physics server. If ``active`` is ``false``, then
 
 :ref:`Variant<class_Variant>` **shape_get_data**\ (\ shape\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_shape_get_data>`
 
-Returns the shape data that defines the configuration of the shape, such as the half-extents of a rectangle or the segments of a concave shape. See :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` for the precise format of this data in each case.
+Trả về dữ liệu hình dạng xác định cấu hình của hình dạng, chẳng hạn như nửa kích thước của hình chữ nhật hoặc các đoạn của hình dạng lõm. Xem :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để biết định dạng chính xác của dữ liệu này trong từng trường hợp.
 
 .. rst-class:: classref-item-separator
 
@@ -2513,7 +2513,7 @@ Returns the shape data that defines the configuration of the shape, such as the 
 
 :ref:`ShapeType<enum_PhysicsServer2D_ShapeType>` **shape_get_type**\ (\ shape\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_shape_get_type>`
 
-Returns the shape's type.
+Trả về loại của hình dạng.
 
 .. rst-class:: classref-item-separator
 
@@ -2525,25 +2525,25 @@ Returns the shape's type.
 
 |void| **shape_set_data**\ (\ shape\: :ref:`RID<class_RID>`, data\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PhysicsServer2D_method_shape_set_data>`
 
-Sets the shape data that defines the configuration of the shape. The ``data`` to be passed depends on the shape's type (see :ref:`shape_get_type()<class_PhysicsServer2D_method_shape_get_type>`):
+Đặt dữ liệu hình dạng xác định cấu hình của hình dạng. ``data`` cần truyền vào phụ thuộc vào loại của hình dạng (xem :ref:`shape_get_type()<class_PhysicsServer2D_method_shape_get_type>`):
 
-- :ref:`SHAPE_WORLD_BOUNDARY<class_PhysicsServer2D_constant_SHAPE_WORLD_BOUNDARY>`: an array of length two containing a :ref:`Vector2<class_Vector2>` ``normal`` direction and a :ref:`float<class_float>` distance ``d``,
+- :ref:`SHAPE_WORLD_BOUNDARY<class_PhysicsServer2D_constant_SHAPE_WORLD_BOUNDARY>`: một mảng có độ dài bằng hai, chứa một hướng :ref:`Vector2<class_Vector2>` ``normal`` và một khoảng cách :ref:`float<class_float>` ``d``,
 
-- :ref:`SHAPE_SEPARATION_RAY<class_PhysicsServer2D_constant_SHAPE_SEPARATION_RAY>`: a dictionary containing the key ``length`` with a :ref:`float<class_float>` value and the key ``slide_on_slope`` with a :ref:`bool<class_bool>` value,
+- :ref:`SHAPE_SEPARATION_RAY<class_PhysicsServer2D_constant_SHAPE_SEPARATION_RAY>`: một dictionary chứa khóa ``length`` với giá trị :ref:`float<class_float>` và khóa ``slide_on_slope`` với giá trị :ref:`bool<class_bool>`,
 
-- :ref:`SHAPE_SEGMENT<class_PhysicsServer2D_constant_SHAPE_SEGMENT>`: a :ref:`Rect2<class_Rect2>` ``rect`` containing the first point of the segment in ``rect.position`` and the second point of the segment in ``rect.size``,
+- :ref:`SHAPE_SEGMENT<class_PhysicsServer2D_constant_SHAPE_SEGMENT>`: một :ref:`Rect2<class_Rect2>` ``rect`` chứa điểm đầu tiên của đoạn trong ``rect.position`` và điểm thứ hai của đoạn trong ``rect.size``,
 
-- :ref:`SHAPE_CIRCLE<class_PhysicsServer2D_constant_SHAPE_CIRCLE>`: a :ref:`float<class_float>` ``radius``,
+- :ref:`SHAPE_CIRCLE<class_PhysicsServer2D_constant_SHAPE_CIRCLE>`: một :ref:`float<class_float>` ``radius``,
 
-- :ref:`SHAPE_RECTANGLE<class_PhysicsServer2D_constant_SHAPE_RECTANGLE>`: a :ref:`Vector2<class_Vector2>` ``half_extents``,
+- :ref:`SHAPE_RECTANGLE<class_PhysicsServer2D_constant_SHAPE_RECTANGLE>`: một :ref:`Vector2<class_Vector2>` ``half_extents``,
 
-- :ref:`SHAPE_CAPSULE<class_PhysicsServer2D_constant_SHAPE_CAPSULE>`: an array of length two (or a :ref:`Vector2<class_Vector2>`) containing a :ref:`float<class_float>` ``height`` and a :ref:`float<class_float>` ``radius``,
+- :ref:`SHAPE_CAPSULE<class_PhysicsServer2D_constant_SHAPE_CAPSULE>`: một mảng có độ dài bằng hai (hoặc một :ref:`Vector2<class_Vector2>`) chứa một :ref:`float<class_float>` ``height`` và một :ref:`float<class_float>` ``radius``,
 
-- :ref:`SHAPE_CONVEX_POLYGON<class_PhysicsServer2D_constant_SHAPE_CONVEX_POLYGON>`: either a :ref:`PackedVector2Array<class_PackedVector2Array>` of points defining a convex polygon in counterclockwise order (the clockwise outward normal of each segment formed by consecutive points is calculated internally), or a :ref:`PackedFloat32Array<class_PackedFloat32Array>` of length divisible by four so that every 4-tuple of :ref:`float<class_float>`\ s contains the coordinates of a point followed by the coordinates of the clockwise outward normal vector to the segment between the current point and the next point,
+- :ref:`SHAPE_CONVEX_POLYGON<class_PhysicsServer2D_constant_SHAPE_CONVEX_POLYGON>`: либо một :ref:`PackedVector2Array<class_PackedVector2Array>` gồm các điểm xác định một đa giác lồi theo thứ tự ngược chiều kim đồng hồ (pháp tuyến hướng ra ngoài theo chiều kim đồng hồ của mỗi đoạn được tạo bởi các điểm liên tiếp sẽ được tính nội bộ), hoặc một :ref:`PackedFloat32Array<class_PackedFloat32Array>` có độ dài chia hết cho bốn, sao cho mỗi bộ 4 phần tử của :ref:`float<class_float>`\ s chứa tọa độ của một điểm, sau đó là tọa độ của vector pháp tuyến hướng ra ngoài theo chiều kim đồng hồ của đoạn nối điểm hiện tại với điểm tiếp theo,
 
-- :ref:`SHAPE_CONCAVE_POLYGON<class_PhysicsServer2D_constant_SHAPE_CONCAVE_POLYGON>`: a :ref:`PackedVector2Array<class_PackedVector2Array>` of length divisible by two (each pair of points forms one segment).
+- :ref:`SHAPE_CONCAVE_POLYGON<class_PhysicsServer2D_constant_SHAPE_CONCAVE_POLYGON>`: một :ref:`PackedVector2Array<class_PackedVector2Array>` có độ dài chia hết cho hai (mỗi cặp điểm tạo thành một đoạn).
 
-\ **Warning:** In the case of :ref:`SHAPE_CONVEX_POLYGON<class_PhysicsServer2D_constant_SHAPE_CONVEX_POLYGON>`, this method does not check if the points supplied actually form a convex polygon (unlike the :ref:`CollisionPolygon2D.polygon<class_CollisionPolygon2D_property_polygon>` property).
+\ **Cảnh báo:** Trong trường hợp :ref:`SHAPE_CONVEX_POLYGON<class_PhysicsServer2D_constant_SHAPE_CONVEX_POLYGON>`, phương thức này không kiểm tra xem các điểm được cung cấp có thực sự tạo thành một đa giác lồi hay không (khác với thuộc tính :ref:`CollisionPolygon2D.polygon<class_CollisionPolygon2D_property_polygon>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2555,7 +2555,7 @@ Sets the shape data that defines the configuration of the shape. The ``data`` to
 
 :ref:`RID<class_RID>` **space_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_space_create>`
 
-Creates a 2D space in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. A space contains bodies and areas, and controls the stepping of the physics simulation of the objects in it.
+Tạo một space 2D trong physics server và trả về :ref:`RID<class_RID>` xác định space đó. Một space chứa các body và area, đồng thời điều khiển từng bước mô phỏng vật lý của các đối tượng trong đó.
 
 .. rst-class:: classref-item-separator
 
@@ -2567,7 +2567,7 @@ Creates a 2D space in the physics server, and returns the :ref:`RID<class_RID>` 
 
 :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>` **space_get_direct_state**\ (\ space\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicsServer2D_method_space_get_direct_state>`
 
-Returns the state of a space, a :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`. This object can be used for collision/intersection queries.
+Trả về trạng thái của một space, một :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`. Đối tượng này có thể được sử dụng cho các truy vấn va chạm/giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -2579,7 +2579,7 @@ Returns the state of a space, a :ref:`PhysicsDirectSpaceState2D<class_PhysicsDir
 
 :ref:`float<class_float>` **space_get_param**\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_space_get_param>`
 
-Returns the value of the given space parameter.
+Trả về giá trị của tham số không gian đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2591,7 +2591,7 @@ Returns the value of the given space parameter.
 
 :ref:`bool<class_bool>` **space_is_active**\ (\ space\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_PhysicsServer2D_method_space_is_active>`
 
-Returns ``true`` if the space is active.
+Trả về ``true`` nếu không gian đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -2603,7 +2603,7 @@ Returns ``true`` if the space is active.
 
 |void| **space_set_active**\ (\ space\: :ref:`RID<class_RID>`, active\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsServer2D_method_space_set_active>`
 
-Activates or deactivates the space. If ``active`` is ``false``, then the physics server will not do anything with this space in its physics step.
+Kích hoạt hoặc tắt không gian. Nếu ``active`` là ``false``, thì physics server sẽ không thực hiện thao tác nào với không gian này trong bước vật lý.
 
 .. rst-class:: classref-item-separator
 
@@ -2615,7 +2615,7 @@ Activates or deactivates the space. If ``active`` is ``false``, then the physics
 
 |void| **space_set_param**\ (\ space\: :ref:`RID<class_RID>`, param\: :ref:`SpaceParameter<enum_PhysicsServer2D_SpaceParameter>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PhysicsServer2D_method_space_set_param>`
 
-Sets the value of the given space parameter.
+Thiết lập giá trị của tham số không gian đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -2627,14 +2627,14 @@ Sets the value of the given space parameter.
 
 :ref:`RID<class_RID>` **world_boundary_shape_create**\ (\ ) :ref:`🔗<class_PhysicsServer2D_method_world_boundary_shape_create>`
 
-Creates a 2D world boundary shape in the physics server, and returns the :ref:`RID<class_RID>` that identifies it. Use :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` to set the shape's normal direction and distance properties.
+Tạo một hình dạng ranh giới thế giới 2D trong physics server và trả về :ref:`RID<class_RID>` dùng để xác định hình dạng đó. Sử dụng :ref:`shape_set_data()<class_PhysicsServer2D_method_shape_set_data>` để thiết lập hướng pháp tuyến và các thuộc tính khoảng cách của hình dạng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

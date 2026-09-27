@@ -10,40 +10,40 @@
 ParallaxLayer
 =============
 
-**Deprecated:** Use the :ref:`Parallax2D<class_Parallax2D>` node instead.
+**Đã ngừng sử dụng:** Thay vào đó, hãy sử dụng node :ref:`Parallax2D<class_Parallax2D>`.
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A parallax scrolling layer to be used with :ref:`ParallaxBackground<class_ParallaxBackground>`.
+Một lớp cuộn parallax được sử dụng với :ref:`ParallaxBackground<class_ParallaxBackground>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A ParallaxLayer must be the child of a :ref:`ParallaxBackground<class_ParallaxBackground>` node. Each ParallaxLayer can be set to move at different speeds relative to the camera movement or the :ref:`ParallaxBackground.scroll_offset<class_ParallaxBackground_property_scroll_offset>` value.
+ParallaxLayer phải là node con của node :ref:`ParallaxBackground<class_ParallaxBackground>`. Mỗi ParallaxLayer có thể được thiết lập để di chuyển với tốc độ khác nhau so với chuyển động của camera hoặc giá trị :ref:`ParallaxBackground.scroll_offset<class_ParallaxBackground_property_scroll_offset>`.
 
-This node's children will be affected by its scroll offset.
+Các node con của node này sẽ chịu ảnh hưởng của độ lệch cuộn của nó.
 
-\ **Note:** Any changes to this node's position and scale made after it enters the scene will be ignored.
+\ **Lưu ý:** Mọi thay đổi đối với vị trí và tỷ lệ của node này sau khi node được thêm vào scene sẽ bị bỏ qua.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`motion_mirroring<class_ParallaxLayer_property_motion_mirroring>` | ``Vector2(0, 0)``                                                             |
-   +---------------------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`motion_offset<class_ParallaxLayer_property_motion_offset>`       | ``Vector2(0, 0)``                                                             |
-   +---------------------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`motion_scale<class_ParallaxLayer_property_motion_scale>`         | ``Vector2(1, 1)``                                                             |
-   +---------------------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                             | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
-   +---------------------------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +----------------------------------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`motion_mirroring<class_ParallaxLayer_property_motion_mirroring>` | ``Vector2(0, 0)``                                                          |
+   +----------------------------------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`motion_offset<class_ParallaxLayer_property_motion_offset>`       | ``Vector2(0, 0)``                                                          |
+   +----------------------------------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`motion_scale<class_ParallaxLayer_property_motion_scale>`         | ``Vector2(1, 1)``                                                          |
+   +----------------------------------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`PhysicsInterpolationMode <enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                             | ``2`` (ghi đè :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
+   +----------------------------------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -51,8 +51,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ParallaxLayer_property_motion_mirroring:
 
@@ -65,13 +65,13 @@ Property Descriptions
 - |void| **set_mirroring**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_mirroring**\ (\ )
 
-The interval, in pixels, at which the **ParallaxLayer** is drawn repeatedly. Useful for creating an infinitely scrolling background. If an axis is set to ``0``, the **ParallaxLayer** will be drawn only once along that direction.
+Khoảng cách, tính bằng pixel, mà **ParallaxLayer** được vẽ lặp lại. Hữu ích khi tạo nền cuộn vô hạn. Nếu một trục được đặt thành ``0``, **ParallaxLayer** sẽ chỉ được vẽ một lần theo hướng đó.
 
-\ **Note:** If you want the repetition to pixel-perfect match a :ref:`Texture2D<class_Texture2D>` displayed by a child node, you should account for any scale applied to the texture when defining this interval. For example, if you use a child :ref:`Sprite2D<class_Sprite2D>` scaled to ``0.5`` to display a 600x600 texture, and want this sprite to be repeated continuously horizontally, you should set the mirroring to ``Vector2(300, 0)``.
+\ **Lưu ý:** Nếu bạn muốn việc lặp lại khớp chính xác đến từng pixel với một :ref:`Texture2D<class_Texture2D>` được hiển thị bởi node con, bạn nên tính đến mọi scale được áp dụng cho texture khi xác định khoảng cách này. Ví dụ: nếu bạn sử dụng một :ref:`Sprite2D<class_Sprite2D>` con được scale thành ``0.5`` để hiển thị texture 600x600 và muốn sprite này được lặp lại liên tục theo chiều ngang, bạn nên đặt chế độ phản chiếu thành ``Vector2(300, 0)``.
 
-\ **Note:** If the length of the viewport axis is bigger than twice the repeated axis size, it will not repeat infinitely, as the parallax layer only draws 2 instances of the layer at any given time. The visibility window is calculated from the parent :ref:`ParallaxBackground<class_ParallaxBackground>`'s position, not the layer's own position. So, if you use mirroring, **do not** change the **ParallaxLayer** position relative to its parent. Instead, if you need to adjust the background's position, set the :ref:`CanvasLayer.offset<class_CanvasLayer_property_offset>` property in the parent :ref:`ParallaxBackground<class_ParallaxBackground>`.
+\ **Lưu ý:** Nếu độ dài của trục viewport lớn hơn hai lần kích thước trục lặp lại, nó sẽ không lặp vô hạn, vì lớp parallax chỉ vẽ 2 bản sao của lớp tại một thời điểm bất kỳ. Cửa sổ hiển thị được tính từ vị trí của :ref:`ParallaxBackground<class_ParallaxBackground>`, không phải vị trí của chính lớp đó. Vì vậy, nếu sử dụng tính năng phản chiếu, **không** thay đổi vị trí của **ParallaxLayer** so với parent. Thay vào đó, nếu cần điều chỉnh vị trí của background, hãy đặt thuộc tính :ref:`CanvasLayer.offset<class_CanvasLayer_property_offset>` trong parent :ref:`ParallaxBackground<class_ParallaxBackground>`.
 
-\ **Note:** Despite the name, the layer will not be mirrored, it will only be repeated.
+\ **Lưu ý:** Mặc dù có tên như vậy, lớp này sẽ không được phản chiếu mà chỉ được lặp lại.
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ The interval, in pixels, at which the **ParallaxLayer** is drawn repeatedly. Use
 - |void| **set_motion_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_motion_offset**\ (\ )
 
-The ParallaxLayer's offset relative to the parent ParallaxBackground's :ref:`ParallaxBackground.scroll_offset<class_ParallaxBackground_property_scroll_offset>`.
+Độ lệch của ParallaxLayer so với :ref:`ParallaxBackground.scroll_offset<class_ParallaxBackground_property_scroll_offset>` của ParallaxBackground cha.
 
 .. rst-class:: classref-item-separator
 
@@ -105,14 +105,14 @@ The ParallaxLayer's offset relative to the parent ParallaxBackground's :ref:`Par
 - |void| **set_motion_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_motion_scale**\ (\ )
 
-Multiplies the ParallaxLayer's motion. If an axis is set to ``0``, it will not scroll.
+Nhân chuyển động của ParallaxLayer. Nếu một trục được đặt thành ``0``, trục đó sẽ không cuộn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

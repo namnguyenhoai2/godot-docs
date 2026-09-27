@@ -10,29 +10,29 @@
 GLTFSpecGloss
 =============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Archived glTF extension for specular/glossy materials.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-KHR_materials_pbrSpecularGlossiness is an archived glTF extension. This means that it is deprecated and not recommended for new files. However, it is still supported for loading old files.
+Phần mở rộng glTF đã lưu trữ dành cho vật liệu specular/glossy.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+KHR_materials_pbrSpecularGlossiness là một phần mở rộng glTF đã lưu trữ. Điều này có nghĩa là phần mở rộng này đã lỗi thời và không được khuyến nghị sử dụng cho các tệp mới. Tuy nhiên, phần mở rộng này vẫn được hỗ trợ để tải các tệp cũ.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `KHR_materials_pbrSpecularGlossiness glTF extension spec <https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Archived/KHR_materials_pbrSpecularGlossiness>`__
+- `Đặc tả phần mở rộng glTF KHR_materials_pbrSpecularGlossiness <https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Archived/KHR_materials_pbrSpecularGlossiness>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFSpecGloss_property_diffuse_factor:
 
@@ -70,7 +70,7 @@ Property Descriptions
 - |void| **set_diffuse_factor**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_diffuse_factor**\ (\ )
 
-The reflected diffuse factor of the material.
+Hệ số khuếch tán phản xạ của vật liệu.
 
 .. rst-class:: classref-item-separator
 
@@ -80,14 +80,14 @@ The reflected diffuse factor of the material.
 
 .. rst-class:: classref-property
 
-:ref:`Image<class_Image>` **diffuse_img** :ref:`🔗<class_GLTFSpecGloss_property_diffuse_img>`
+:ref:`Image<class_Image>` **diffuse_img** :ref:`🔗 <class_GLTFSpecGloss_property_diffuse_img>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_diffuse_img**\ (\ value\: :ref:`Image<class_Image>`\ )
 - :ref:`Image<class_Image>` **get_diffuse_img**\ (\ )
 
-The diffuse texture.
+Kết cấu khuếch tán.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ The diffuse texture.
 - |void| **set_gloss_factor**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_gloss_factor**\ (\ )
 
-The glossiness or smoothness of the material.
+Độ bóng hoặc độ mịn của vật liệu.
 
 .. rst-class:: classref-item-separator
 
@@ -114,14 +114,14 @@ The glossiness or smoothness of the material.
 
 .. rst-class:: classref-property
 
-:ref:`Image<class_Image>` **spec_gloss_img** :ref:`🔗<class_GLTFSpecGloss_property_spec_gloss_img>`
+:ref:`Image<class_Image>` **spec_gloss_img** :ref:`🔗 <class_GLTFSpecGloss_property_spec_gloss_img>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_spec_gloss_img**\ (\ value\: :ref:`Image<class_Image>`\ )
 - :ref:`Image<class_Image>` **get_spec_gloss_img**\ (\ )
 
-The specular-glossiness texture.
+Texture specular-glossiness.
 
 .. rst-class:: classref-item-separator
 
@@ -138,14 +138,14 @@ The specular-glossiness texture.
 - |void| **set_specular_factor**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_specular_factor**\ (\ )
 
-The specular RGB color of the material. The alpha channel is unused.
+Màu RGB specular của vật liệu. Kênh alpha không được sử dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

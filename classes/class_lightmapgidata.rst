@@ -10,20 +10,20 @@
 LightmapGIData
 ==============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Contains baked lightmap and dynamic object probe data for :ref:`LightmapGI<class_LightmapGI>`.
+Chứa dữ liệu lightmap đã bake và dữ liệu probe của đối tượng động cho :ref:`LightmapGI<class_LightmapGI>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**LightmapGIData** contains baked lightmap and dynamic object probe data for :ref:`LightmapGI<class_LightmapGI>`. It is replaced every time lightmaps are baked in :ref:`LightmapGI<class_LightmapGI>`.
+**LightmapGIData** chứa dữ liệu lightmap đã bake và dữ liệu probe của đối tượng động cho :ref:`LightmapGI<class_LightmapGI>`. Nó được thay thế mỗi khi lightmap được bake trong :ref:`LightmapGI<class_LightmapGI>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -65,14 +65,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_LightmapGIData_ShadowmaskMode:
 
 .. rst-class:: classref-enumeration
 
-enum **ShadowmaskMode**: :ref:`🔗<enum_LightmapGIData_ShadowmaskMode>`
+enum **ShadowmaskMode**: :ref:`🔗 <enum_LightmapGIData_ShadowmaskMode>`
 
 .. _class_LightmapGIData_constant_SHADOWMASK_MODE_NONE:
 
@@ -80,7 +80,7 @@ enum **ShadowmaskMode**: :ref:`🔗<enum_LightmapGIData_ShadowmaskMode>`
 
 :ref:`ShadowmaskMode<enum_LightmapGIData_ShadowmaskMode>` **SHADOWMASK_MODE_NONE** = ``0``
 
-Shadowmasking is disabled. No shadowmask texture will be created when baking lightmaps. Existing shadowmask textures will be removed during baking.
+Shadowmasking bị tắt. Không có texture shadowmask nào được tạo khi bake lightmap. Các texture shadowmask hiện có sẽ bị xóa trong quá trình baking.
 
 .. _class_LightmapGIData_constant_SHADOWMASK_MODE_REPLACE:
 
@@ -88,7 +88,7 @@ Shadowmasking is disabled. No shadowmask texture will be created when baking lig
 
 :ref:`ShadowmaskMode<enum_LightmapGIData_ShadowmaskMode>` **SHADOWMASK_MODE_REPLACE** = ``1``
 
-Shadowmasking is enabled. Directional shadows that are outside the :ref:`DirectionalLight3D.directional_shadow_max_distance<class_DirectionalLight3D_property_directional_shadow_max_distance>` will be rendered using the shadowmask texture. Shadows that are inside the range will be rendered using real-time shadows exclusively. This mode allows for more precise real-time shadows up close, without the potential "smearing" effect that can occur when using lightmaps with a high texel size. The downside is that when the camera moves fast, the transition between the real-time light and shadowmask can be obvious. Also, objects that only have shadows baked in the shadowmask (and no real-time shadows) won't display any shadows up close.
+Shadowmasking được bật. Các bóng đổ định hướng nằm ngoài :ref:`DirectionalLight3D.directional_shadow_max_distance<class_DirectionalLight3D_property_directional_shadow_max_distance>` sẽ được kết xuất bằng texture shadowmask. Các bóng nằm trong phạm vi này sẽ chỉ được kết xuất bằng bóng thời gian thực. Chế độ này cho phép tạo bóng thời gian thực chính xác hơn ở khoảng cách gần, mà không gặp phải hiệu ứng "nhòe" có thể xảy ra khi sử dụng lightmap với kích thước texel lớn. Nhược điểm là khi camera di chuyển nhanh, sự chuyển tiếp giữa ánh sáng thời gian thực và shadowmask có thể trở nên rõ rệt. Ngoài ra, các đối tượng chỉ có bóng được bake trong shadowmask (không có bóng thời gian thực) sẽ không hiển thị bóng ở khoảng cách gần.
 
 .. _class_LightmapGIData_constant_SHADOWMASK_MODE_OVERLAY:
 
@@ -96,7 +96,7 @@ Shadowmasking is enabled. Directional shadows that are outside the :ref:`Directi
 
 :ref:`ShadowmaskMode<enum_LightmapGIData_ShadowmaskMode>` **SHADOWMASK_MODE_OVERLAY** = ``2``
 
-Shadowmasking is enabled. Directional shadows will be rendered with real-time shadows overlaid on top of the shadowmask texture. This mode makes for smoother shadow transitions when the camera moves fast, at the cost of a potential smearing effect for directional shadows that are up close (due to the real-time shadow being mixed with a low-resolution shadowmask). Objects that only have shadows baked in the shadowmask (and no real-time shadows) will keep their shadows up close.
+Shadowmasking được bật. Các bóng đổ định hướng sẽ được kết xuất bằng bóng thời gian thực phủ lên trên texture shadowmask. Chế độ này tạo ra sự chuyển tiếp bóng mượt hơn khi camera di chuyển nhanh, nhưng có thể gây ra hiệu ứng nhòe đối với các bóng đổ định hướng ở khoảng cách gần (do bóng thời gian thực được trộn với shadowmask có độ phân giải thấp). Các đối tượng chỉ có bóng được bake trong shadowmask (không có bóng thời gian thực) sẽ vẫn hiển thị bóng ở khoảng cách gần.
 
 .. rst-class:: classref-section-separator
 
@@ -104,23 +104,23 @@ Shadowmasking is enabled. Directional shadows will be rendered with real-time sh
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_LightmapGIData_property_light_texture:
 
 .. rst-class:: classref-property
 
-:ref:`TextureLayered<class_TextureLayered>` **light_texture** :ref:`🔗<class_LightmapGIData_property_light_texture>`
+:ref:`TextureLayered<class_TextureLayered>` **light_texture** :ref:`🔗 <class_LightmapGIData_property_light_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_light_texture**\ (\ value\: :ref:`TextureLayered<class_TextureLayered>`\ )
 - :ref:`TextureLayered<class_TextureLayered>` **get_light_texture**\ (\ )
 
-**Deprecated:** The lightmap atlas can now contain multiple textures. See :ref:`lightmap_textures<class_LightmapGIData_property_lightmap_textures>`.
+**Đã deprecated:** Atlas lightmap hiện có thể chứa nhiều texture. Xem :ref:`lightmap_textures<class_LightmapGIData_property_lightmap_textures>`.
 
-The lightmap atlas texture generated by the lightmapper.
+Texture atlas lightmap được lightmapper tạo ra.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ The lightmap atlas texture generated by the lightmapper.
 - |void| **set_lightmap_textures**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`TextureLayered<class_TextureLayered>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`TextureLayered<class_TextureLayered>`\] **get_lightmap_textures**\ (\ )
 
-The lightmap atlas textures generated by the lightmapper.
+Các texture atlas lightmap được lightmapper tạo ra.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ The lightmap atlas textures generated by the lightmapper.
 - |void| **set_shadowmask_textures**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`TextureLayered<class_TextureLayered>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`TextureLayered<class_TextureLayered>`\] **get_shadowmask_textures**\ (\ )
 
-The shadowmask atlas textures generated by the lightmapper.
+Các texture atlas shadowmask được lightmapper tạo ra.
 
 .. rst-class:: classref-section-separator
 
@@ -162,8 +162,8 @@ The shadowmask atlas textures generated by the lightmapper.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_LightmapGIData_method_add_user:
 
@@ -171,7 +171,7 @@ Method Descriptions
 
 |void| **add_user**\ (\ path\: :ref:`NodePath<class_NodePath>`, uv_scale\: :ref:`Rect2<class_Rect2>`, slice_index\: :ref:`int<class_int>`, sub_instance\: :ref:`int<class_int>`\ ) :ref:`🔗<class_LightmapGIData_method_add_user>`
 
-Adds an object that is considered baked within this **LightmapGIData**.
+Thêm một đối tượng được xem là đã bake trong **LightmapGIData**.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Adds an object that is considered baked within this **LightmapGIData**.
 
 |void| **clear_users**\ (\ ) :ref:`🔗<class_LightmapGIData_method_clear_users>`
 
-Clear all objects that are considered baked within this **LightmapGIData**.
+Xóa tất cả các đối tượng được xem là đã bake trong **LightmapGIData**.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Clear all objects that are considered baked within this **LightmapGIData**.
 
 :ref:`int<class_int>` **get_user_count**\ (\ ) |const| :ref:`🔗<class_LightmapGIData_method_get_user_count>`
 
-Returns the number of objects that are considered baked within this **LightmapGIData**.
+Trả về số lượng đối tượng được xem là đã bake trong **LightmapGIData**.
 
 .. rst-class:: classref-item-separator
 
@@ -207,7 +207,7 @@ Returns the number of objects that are considered baked within this **LightmapGI
 
 :ref:`NodePath<class_NodePath>` **get_user_path**\ (\ user_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_LightmapGIData_method_get_user_path>`
 
-Returns the :ref:`NodePath<class_NodePath>` of the baked object at index ``user_idx``.
+Trả về :ref:`NodePath<class_NodePath>` của đối tượng đã bake tại chỉ mục ``user_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ Returns the :ref:`NodePath<class_NodePath>` of the baked object at index ``user_
 
 :ref:`bool<class_bool>` **is_using_spherical_harmonics**\ (\ ) |const| :ref:`🔗<class_LightmapGIData_method_is_using_spherical_harmonics>`
 
-If ``true``, lightmaps were baked with directional information. See also :ref:`LightmapGI.directional<class_LightmapGI_property_directional>`.
+Nếu ``true``, lightmap đã được bake với thông tin định hướng. Xem thêm :ref:`LightmapGI.directional<class_LightmapGI_property_directional>`.
 
 .. rst-class:: classref-item-separator
 
@@ -231,16 +231,16 @@ If ``true``, lightmaps were baked with directional information. See also :ref:`L
 
 |void| **set_uses_spherical_harmonics**\ (\ uses_spherical_harmonics\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_LightmapGIData_method_set_uses_spherical_harmonics>`
 
-If ``uses_spherical_harmonics`` is ``true``, tells the engine to treat the lightmap data as if it was baked with directional information.
+Nếu ``uses_spherical_harmonics`` là ``true``, yêu cầu engine xử lý dữ liệu lightmap như thể dữ liệu đó đã được bake với thông tin định hướng.
 
-\ **Note:** Changing this value on already baked lightmaps will not cause them to be baked again. This means the material appearance will look incorrect until lightmaps are baked again, in which case the value set here is discarded as the entire **LightmapGIData** resource is replaced by the lightmapper.
+\ **Lưu ý:** Việc thay đổi giá trị này trên các lightmap đã bake sẽ không khiến chúng được bake lại. Điều này có nghĩa là giao diện của material sẽ hiển thị không chính xác cho đến khi các lightmap được bake lại; khi đó, giá trị được đặt ở đây sẽ bị loại bỏ vì toàn bộ tài nguyên **LightmapGIData** được lightmapper thay thế.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

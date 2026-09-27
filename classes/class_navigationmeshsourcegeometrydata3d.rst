@@ -10,23 +10,23 @@
 NavigationMeshSourceGeometryData3D
 ==================================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Container for parsed source geometry data used in navigation mesh baking.
+Bộ chứa dữ liệu hình học nguồn đã phân tích cú pháp được sử dụng để xây dựng navigation mesh.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Container for parsed source geometry data used in navigation mesh baking.
+Bộ chứa dữ liệu hình học nguồn đã phân tích cú pháp được sử dụng để xây dựng navigation mesh.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -62,7 +62,7 @@ Methods
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                              | :ref:`set_projected_obstructions<class_NavigationMeshSourceGeometryData3D_method_set_projected_obstructions>`\ (\ projected_obstructions\: :ref:`Array<class_Array>`\ )                                                                                                                       |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                              | :ref:`set_vertices<class_NavigationMeshSourceGeometryData3D_method_set_vertices>`\ (\ vertices\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )                                                                                                                                       |
+   | |void|                                              | :ref:`set_vertices<class_NavigationMeshSourceGeometryData3D_method_set_vertices>`\ (\ đỉnh\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )                                                                                                                                           |
    +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationMeshSourceGeometryData3D_method_add_faces:
 
@@ -80,7 +80,7 @@ Method Descriptions
 
 |void| **add_faces**\ (\ faces\: :ref:`PackedVector3Array<class_PackedVector3Array>`, xform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_add_faces>`
 
-Adds an array of vertex positions to the geometry data for navigation mesh baking to form triangulated faces. For each face the array must have three vertex positions in clockwise winding order. Since :ref:`NavigationMesh<class_NavigationMesh>` resources have no transform, all vertex positions need to be offset by the node's transform using ``xform``.
+Thêm một mảng các vị trí đỉnh vào dữ liệu hình học để nướng navigation mesh nhằm tạo thành các mặt tam giác. Với mỗi mặt, mảng phải có ba vị trí đỉnh theo thứ tự quanh chiều kim đồng hồ. Vì tài nguyên :ref:`NavigationMesh<class_NavigationMesh>` không có phép biến đổi, tất cả vị trí đỉnh cần được dịch chuyển theo phép biến đổi của node bằng ``xform``.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Adds an array of vertex positions to the geometry data for navigation mesh bakin
 
 |void| **add_mesh**\ (\ mesh\: :ref:`Mesh<class_Mesh>`, xform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_add_mesh>`
 
-Adds the geometry data of a :ref:`Mesh<class_Mesh>` resource to the navigation mesh baking data. The mesh must have valid triangulated mesh data to be considered. Since :ref:`NavigationMesh<class_NavigationMesh>` resources have no transform, all vertex positions need to be offset by the node's transform using ``xform``.
+Thêm dữ liệu hình học của tài nguyên :ref:`Mesh<class_Mesh>` vào dữ liệu nướng navigation mesh. Mesh phải có dữ liệu mesh tam giác hợp lệ thì mới được xem xét. Vì tài nguyên :ref:`NavigationMesh<class_NavigationMesh>` không có phép biến đổi, tất cả vị trí đỉnh cần được dịch chuyển theo phép biến đổi của node bằng ``xform``.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Adds the geometry data of a :ref:`Mesh<class_Mesh>` resource to the navigation m
 
 |void| **add_mesh_array**\ (\ mesh_array\: :ref:`Array<class_Array>`, xform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_add_mesh_array>`
 
-Adds an :ref:`Array<class_Array>` the size of :ref:`Mesh.ARRAY_MAX<class_Mesh_constant_ARRAY_MAX>` and with vertices at index :ref:`Mesh.ARRAY_VERTEX<class_Mesh_constant_ARRAY_VERTEX>` and indices at index :ref:`Mesh.ARRAY_INDEX<class_Mesh_constant_ARRAY_INDEX>` to the navigation mesh baking data. The array must have valid triangulated mesh data to be considered. Since :ref:`NavigationMesh<class_NavigationMesh>` resources have no transform, all vertex positions need to be offset by the node's transform using ``xform``.
+Thêm một :ref:`Array<class_Array>` có kích thước :ref:`Mesh.ARRAY_MAX<class_Mesh_constant_ARRAY_MAX>`, với các đỉnh bắt đầu tại chỉ mục :ref:`Mesh.ARRAY_VERTEX<class_Mesh_constant_ARRAY_VERTEX>` và các chỉ mục bắt đầu tại chỉ mục :ref:`Mesh.ARRAY_INDEX<class_Mesh_constant_ARRAY_INDEX>` vào dữ liệu nướng navigation mesh. Mảng phải có dữ liệu mesh tam giác hợp lệ thì mới được xem xét. Vì tài nguyên :ref:`NavigationMesh<class_NavigationMesh>` không có phép biến đổi, tất cả vị trí đỉnh cần được dịch chuyển theo phép biến đổi của node bằng ``xform``.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Adds an :ref:`Array<class_Array>` the size of :ref:`Mesh.ARRAY_MAX<class_Mesh_co
 
 |void| **add_projected_obstruction**\ (\ vertices\: :ref:`PackedVector3Array<class_PackedVector3Array>`, elevation\: :ref:`float<class_float>`, height\: :ref:`float<class_float>`, carve\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_add_projected_obstruction>`
 
-Adds a projected obstruction shape to the source geometry. The ``vertices`` are considered projected on an xz-axes plane, placed at the global y-axis ``elevation`` and extruded by ``height``. If ``carve`` is ``true`` the carved shape will not be affected by additional offsets (e.g. agent radius) of the navigation mesh baking process.
+Thêm một hình dạng vật cản được chiếu vào hình học nguồn. ``vertices`` được xem là được chiếu lên một mặt phẳng trục xz, đặt tại ``elevation`` trên trục y toàn cục và được đùn theo ``height``. Nếu ``carve`` là ``true``, hình dạng được khoét sẽ không bị ảnh hưởng bởi các độ lệch bổ sung (ví dụ: bán kính agent) của quá trình nướng navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -128,7 +128,7 @@ Adds a projected obstruction shape to the source geometry. The ``vertices`` are 
 
 |void| **append_arrays**\ (\ vertices\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`, indices\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_append_arrays>`
 
-Appends arrays of ``vertices`` and ``indices`` at the end of the existing arrays. Adds the existing index as an offset to the appended indices.
+Nối các mảng ``vertices`` và ``indices`` vào cuối các mảng hiện có. Thêm chỉ mục hiện có làm độ lệch cho các chỉ mục được nối.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ Appends arrays of ``vertices`` and ``indices`` at the end of the existing arrays
 
 |void| **clear**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_clear>`
 
-Clears the internal data.
+Xóa dữ liệu nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -152,7 +152,7 @@ Clears the internal data.
 
 |void| **clear_projected_obstructions**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_clear_projected_obstructions>`
 
-Clears all projected obstructions.
+Xóa tất cả các vật cản đã chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ Clears all projected obstructions.
 
 :ref:`AABB<class_AABB>` **get_bounds**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_get_bounds>`
 
-Returns an axis-aligned bounding box that covers all the stored geometry data. The bounds are calculated when calling this function with the result cached until further geometry changes are made.
+Trả về một hộp giới hạn căn theo trục bao phủ toàn bộ dữ liệu hình học đã lưu. Các giới hạn được tính khi gọi hàm này và kết quả được lưu vào bộ nhớ đệm cho đến khi có thay đổi tiếp theo đối với hình học.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ Returns an axis-aligned bounding box that covers all the stored geometry data. T
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_indices**\ (\ ) |const| :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_get_indices>`
 
-Returns the parsed source geometry data indices array.
+Trả về mảng chỉ mục của dữ liệu hình học nguồn đã được phân tích cú pháp.
 
 .. rst-class:: classref-item-separator
 
@@ -188,15 +188,15 @@ Returns the parsed source geometry data indices array.
 
 :ref:`Array<class_Array>` **get_projected_obstructions**\ (\ ) |const| :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_get_projected_obstructions>`
 
-Returns the projected obstructions as an :ref:`Array<class_Array>` of dictionaries. Each :ref:`Dictionary<class_Dictionary>` contains the following entries:
+Trả về các vật cản đã chiếu dưới dạng một :ref:`Array<class_Array>` các từ điển. Mỗi :ref:`Dictionary<class_Dictionary>` chứa các mục sau:
 
-- ``vertices`` - A :ref:`PackedFloat32Array<class_PackedFloat32Array>` that defines the outline points of the projected shape.
+- ``vertices`` - Một :ref:`PackedFloat32Array<class_PackedFloat32Array>` xác định các điểm đường bao của hình dạng đã chiếu.
 
-- ``elevation`` - A :ref:`float<class_float>` that defines the projected shape placement on the y-axis.
+- ``elevation`` - Một :ref:`float<class_float>` xác định vị trí của hình dạng đã chiếu trên trục y.
 
-- ``height`` - A :ref:`float<class_float>` that defines how much the projected shape is extruded along the y-axis.
+- ``height`` - Một :ref:`float<class_float>` xác định mức độ hình dạng đã chiếu được đùn theo trục y.
 
-- ``carve`` - A :ref:`bool<class_bool>` that defines how the obstacle affects the navigation mesh baking. If ``true`` the projected shape will not be affected by addition offsets, e.g. agent radius.
+- ``carve`` - Một :ref:`bool<class_bool>` xác định cách vật cản ảnh hưởng đến quá trình baking navigation mesh. Nếu ``true``, hình dạng đã chiếu sẽ không bị ảnh hưởng bởi các offset bổ sung, chẳng hạn như bán kính agent.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ Returns the projected obstructions as an :ref:`Array<class_Array>` of dictionari
 
 :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_vertices**\ (\ ) |const| :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_get_vertices>`
 
-Returns the parsed source geometry data vertices array.
+Trả về mảng vertex của dữ liệu hình học nguồn đã được phân tích cú pháp.
 
 .. rst-class:: classref-item-separator
 
@@ -220,7 +220,7 @@ Returns the parsed source geometry data vertices array.
 
 :ref:`bool<class_bool>` **has_data**\ (\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_has_data>`
 
-Returns ``true`` when parsed source geometry data exists.
+Trả về ``true`` khi dữ liệu hình học nguồn đã được phân tích cú pháp tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -232,7 +232,7 @@ Returns ``true`` when parsed source geometry data exists.
 
 |void| **merge**\ (\ other_geometry\: :ref:`NavigationMeshSourceGeometryData3D<class_NavigationMeshSourceGeometryData3D>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_merge>`
 
-Adds the geometry data of another **NavigationMeshSourceGeometryData3D** to the navigation mesh baking data.
+Thêm dữ liệu hình học của một **NavigationMeshSourceGeometryData3D** khác vào dữ liệu baking navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -244,9 +244,9 @@ Adds the geometry data of another **NavigationMeshSourceGeometryData3D** to the 
 
 |void| **set_indices**\ (\ indices\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_set_indices>`
 
-Sets the parsed source geometry data indices. The indices need to be matched with appropriated vertices.
+Thiết lập các indices của dữ liệu hình học nguồn đã được phân tích cú pháp. Các indices cần khớp với các vertex tương ứng.
 
-\ **Warning:** Inappropriate data can crash the baking process of the involved third-party libraries.
+\ **Cảnh báo:** Dữ liệu không phù hợp có thể làm hỏng quá trình baking của các thư viện bên thứ ba liên quan.
 
 .. rst-class:: classref-item-separator
 
@@ -258,7 +258,7 @@ Sets the parsed source geometry data indices. The indices need to be matched wit
 
 |void| **set_projected_obstructions**\ (\ projected_obstructions\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_set_projected_obstructions>`
 
-Sets the projected obstructions with an Array of Dictionaries with the following key value pairs:
+Thiết lập các chướng ngại vật đã chiếu bằng một Array gồm các Dictionary với các cặp khóa-giá trị sau:
 
 
 .. tabs::
@@ -282,16 +282,16 @@ Sets the projected obstructions with an Array of Dictionaries with the following
 
 |void| **set_vertices**\ (\ vertices\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) :ref:`🔗<class_NavigationMeshSourceGeometryData3D_method_set_vertices>`
 
-Sets the parsed source geometry data vertices. The vertices need to be matched with appropriated indices.
+Thiết lập các đỉnh của dữ liệu hình học nguồn đã được phân tích cú pháp. Các đỉnh cần được ghép với các chỉ số thích hợp.
 
-\ **Warning:** Inappropriate data can crash the baking process of the involved third-party libraries.
+\ **Cảnh báo:** Dữ liệu không phù hợp có thể làm hỏng quá trình baking của các thư viện bên thứ ba liên quan.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

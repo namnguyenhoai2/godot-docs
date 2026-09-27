@@ -10,31 +10,31 @@
 AudioStreamOggVorbis
 ====================
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A class representing an Ogg Vorbis audio stream.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The AudioStreamOggVorbis class is a specialized :ref:`AudioStream<class_AudioStream>` for handling Ogg Vorbis file formats. It offers functionality for loading and playing back Ogg Vorbis files, as well as managing looping and other playback properties. More info can be found in :ref:`ResourceImporterOggVorbis<class_ResourceImporterOggVorbis>`.
-
-This class is part of the audio stream system, which also supports WAV files through the :ref:`AudioStreamWAV<class_AudioStreamWAV>` class, and MP3 files through the :ref:`AudioStreamMP3<class_AudioStreamMP3>` class.
+Một lớp đại diện cho luồng âm thanh Ogg Vorbis.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp AudioStreamOggVorbis là một :ref:`AudioStream<class_AudioStream>` chuyên dụng để xử lý các định dạng tệp Ogg Vorbis. Lớp này cung cấp chức năng tải và phát các tệp Ogg Vorbis, cũng như quản lý việc lặp lại và các thuộc tính phát khác. Bạn có thể tìm thêm thông tin trong :ref:`ResourceImporterOggVorbis<class_ResourceImporterOggVorbis>`.
+
+Lớp này là một phần của hệ thống luồng âm thanh, hệ thống cũng hỗ trợ các tệp WAV thông qua lớp :ref:`AudioStreamWAV<class_AudioStreamWAV>` và các tệp MP3 thông qua lớp :ref:`AudioStreamMP3<class_AudioStreamMP3>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,8 +58,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -76,8 +76,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioStreamOggVorbis_property_bar_beats:
 
@@ -90,7 +90,7 @@ Property Descriptions
 - |void| **set_bar_beats**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bar_beats**\ (\ )
 
-The number of beats within a single bar in the audio track.
+Số nhịp trong một ô nhịp của bản nhạc.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ The number of beats within a single bar in the audio track.
 - |void| **set_beat_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_beat_count**\ (\ )
 
-The length of the audio track, in beats. The actual duration of the audio file might be longer than what is indicated by this property. It defines the end of the audio for looping, :ref:`AudioStreamPlaylist<class_AudioStreamPlaylist>`, and :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`.
+Độ dài của bản nhạc, tính bằng nhịp. Thời lượng thực tế của tệp âm thanh có thể dài hơn giá trị được chỉ báo bởi thuộc tính này. Thuộc tính này xác định điểm kết thúc của âm thanh để lặp, :ref:`AudioStreamPlaylist<class_AudioStreamPlaylist>`, và :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ The length of the audio track, in beats. The actual duration of the audio file m
 - |void| **set_bpm**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_bpm**\ (\ )
 
-The tempo of the audio track, measured in beats per minute.
+Tempo của bản nhạc, được đo bằng nhịp mỗi phút.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ The tempo of the audio track, measured in beats per minute.
 - |void| **set_loop**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_loop**\ (\ )
 
-If ``true``, the stream will play again from the specified :ref:`loop_offset<class_AudioStreamOggVorbis_property_loop_offset>` once it reaches the end of the audio track, or once it reaches the end of the last beat according to the amount specified in :ref:`beat_count<class_AudioStreamOggVorbis_property_beat_count>`. Useful for ambient sounds and background music.
+Nếu ``true``, stream sẽ phát lại từ :ref:`loop_offset<class_AudioStreamOggVorbis_property_loop_offset>` được chỉ định sau khi đến cuối bản nhạc, hoặc sau khi đến cuối nhịp cuối cùng theo số lượng được chỉ định trong :ref:`beat_count<class_AudioStreamOggVorbis_property_beat_count>`. Hữu ích cho âm thanh môi trường và nhạc nền.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ If ``true``, the stream will play again from the specified :ref:`loop_offset<cla
 - |void| **set_loop_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_loop_offset**\ (\ )
 
-Time in seconds at which the stream starts after being looped.
+Thời điểm tính bằng giây mà stream bắt đầu sau khi được lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -168,14 +168,14 @@ Time in seconds at which the stream starts after being looped.
 
 .. rst-class:: classref-property
 
-:ref:`OggPacketSequence<class_OggPacketSequence>` **packet_sequence** :ref:`🔗<class_AudioStreamOggVorbis_property_packet_sequence>`
+:ref:`OggPacketSequence<class_OggPacketSequence>` **packet_sequence** :ref:`🔗 <class_AudioStreamOggVorbis_property_packet_sequence>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_packet_sequence**\ (\ value\: :ref:`OggPacketSequence<class_OggPacketSequence>`\ )
 - :ref:`OggPacketSequence<class_OggPacketSequence>` **get_packet_sequence**\ (\ )
 
-Contains the raw Ogg data for this stream.
+Chứa dữ liệu Ogg thô cho stream này.
 
 .. rst-class:: classref-item-separator
 
@@ -192,11 +192,11 @@ Contains the raw Ogg data for this stream.
 - |void| **set_tags**\ (\ value\: :ref:`Dictionary<class_Dictionary>`\ )
 - :ref:`Dictionary<class_Dictionary>` **get_tags**\ (\ )
 
-Contains user-defined tags if found in the Ogg Vorbis data.
+Chứa các thẻ do người dùng định nghĩa nếu được tìm thấy trong dữ liệu Ogg Vorbis.
 
-Commonly used tags include ``title``, ``artist``, ``album``, ``tracknumber``, and ``date`` (``date`` does not have a standard date format).
+Các tag thường được sử dụng bao gồm ``title``, ``artist``, ``album``, ``tracknumber`` và ``date`` (``date`` không có định dạng ngày tiêu chuẩn).
 
-\ **Note:** No tag is *guaranteed* to be present in every file, so make sure to account for the keys not always existing.
+\ **Lưu ý:** Không có tag nào được *đảm bảo* là luôn xuất hiện trong mọi tệp, vì vậy hãy đảm bảo xử lý trường hợp các khóa không phải lúc nào cũng tồn tại.
 
 .. rst-class:: classref-section-separator
 
@@ -204,8 +204,8 @@ Commonly used tags include ``title``, ``artist``, ``album``, ``tracknumber``, an
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioStreamOggVorbis_method_load_from_buffer:
 
@@ -213,7 +213,7 @@ Method Descriptions
 
 :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` **load_from_buffer**\ (\ stream_data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static| :ref:`🔗<class_AudioStreamOggVorbis_method_load_from_buffer>`
 
-Creates a new **AudioStreamOggVorbis** instance from the given buffer. The buffer must contain Ogg Vorbis data.
+Tạo một instance **AudioStreamOggVorbis** mới từ buffer được cung cấp. Buffer phải chứa dữ liệu Ogg Vorbis.
 
 .. rst-class:: classref-item-separator
 
@@ -225,14 +225,14 @@ Creates a new **AudioStreamOggVorbis** instance from the given buffer. The buffe
 
 :ref:`AudioStreamOggVorbis<class_AudioStreamOggVorbis>` **load_from_file**\ (\ path\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_AudioStreamOggVorbis_method_load_from_file>`
 
-Creates a new **AudioStreamOggVorbis** instance from the given file path. The file must be in Ogg Vorbis format.
+Tạo một instance **AudioStreamOggVorbis** mới từ đường dẫn tệp được cung cấp. Tệp phải ở định dạng Ogg Vorbis.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

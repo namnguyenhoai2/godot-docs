@@ -10,21 +10,21 @@
 ShaderIncludeDB
 ===============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Internal database of built in shader include files.
+Cơ sở dữ liệu nội bộ về các tệp include shader tích hợp sẵn.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object contains shader fragments from Godot's internal shaders. These can be used when access to internal uniform buffers and/or internal functions is required for instance when composing compositor effects or compute shaders. Only fragments for the current rendering device are loaded.
+Đối tượng này chứa các mảnh shader từ các shader nội bộ của Godot. Bạn có thể sử dụng chúng khi cần truy cập vào các uniform buffer nội bộ và/hoặc các hàm nội bộ, chẳng hạn như khi kết hợp các hiệu ứng compositor hoặc compute shader. Chỉ các mảnh dành cho rendering device hiện tại mới được tải.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -43,8 +43,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ShaderIncludeDB_method_get_built_in_include_file:
 
@@ -52,7 +52,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **get_built_in_include_file**\ (\ filename\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_ShaderIncludeDB_method_get_built_in_include_file>`
 
-Returns the code for the built-in shader fragment. You can also access this in your shader code through ``#include "filename"``.
+Trả về mã của mảnh shader tích hợp sẵn. Bạn cũng có thể truy cập mã này trong shader code thông qua ``#include "filename"``.
 
 .. rst-class:: classref-item-separator
 
@@ -64,7 +64,7 @@ Returns the code for the built-in shader fragment. You can also access this in y
 
 :ref:`bool<class_bool>` **has_built_in_include_file**\ (\ filename\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_ShaderIncludeDB_method_has_built_in_include_file>`
 
-Returns ``true`` if an include file with this name exists.
+Trả về ``true`` nếu tồn tại tệp include có tên này.
 
 .. rst-class:: classref-item-separator
 
@@ -76,14 +76,14 @@ Returns ``true`` if an include file with this name exists.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **list_built_in_include_files**\ (\ ) |static| :ref:`🔗<class_ShaderIncludeDB_method_list_built_in_include_files>`
 
-Returns a list of built-in include files that are currently registered.
+Trả về danh sách các tệp include tích hợp sẵn hiện đang được đăng ký.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bạn phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

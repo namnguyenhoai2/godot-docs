@@ -10,20 +10,20 @@
 Rect2i
 ======
 
-A 2D axis-aligned bounding box using integer coordinates.
+Một hộp giới hạn 2D căn chỉnh theo trục sử dụng tọa độ số nguyên.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Rect2i** built-in :ref:`Variant<class_Variant>` type represents an axis-aligned rectangle in a 2D space, using integer coordinates. It is defined by its :ref:`position<class_Rect2i_property_position>` and :ref:`size<class_Rect2i_property_size>`, which are :ref:`Vector2i<class_Vector2i>`. Because it does not rotate, it is frequently used for fast overlap tests (see :ref:`intersects()<class_Rect2i_method_intersects>`).
+Kiểu **Rect2i** tích hợp :ref:`Variant<class_Variant>` biểu diễn một hình chữ nhật căn chỉnh theo trục trong không gian 2D, sử dụng tọa độ số nguyên. Kiểu này được xác định bởi :ref:`position<class_Rect2i_property_position>` và :ref:`size<class_Rect2i_property_size>`, là :ref:`Vector2i<class_Vector2i>`. Vì không xoay nên kiểu này thường được dùng để kiểm tra chồng lấn nhanh (xem :ref:`intersects()<class_Rect2i_method_intersects>`).
 
-For floating-point coordinates, see :ref:`Rect2<class_Rect2>`.
+Đối với tọa độ dấu phẩy động, hãy xem :ref:`Rect2<class_Rect2>`.
 
-\ **Note:** Negative values for :ref:`size<class_Rect2i_property_size>` are not supported. With negative size, most **Rect2i** methods do not work correctly. Use :ref:`abs()<class_Rect2i_method_abs>` to get an equivalent **Rect2i** with a non-negative size.
+\ **Lưu ý:** Không hỗ trợ các giá trị âm cho :ref:`size<class_Rect2i_property_size>`. Khi kích thước âm, hầu hết các phương thức **Rect2i** không hoạt động chính xác. Hãy sử dụng :ref:`abs()<class_Rect2i_method_abs>` để lấy một **Rect2i** tương đương có kích thước không âm.
 
-\ **Note:** In a boolean context, a **Rect2i** evaluates to ``false`` if both :ref:`position<class_Rect2i_property_position>` and :ref:`size<class_Rect2i_property_size>` are zero (equal to :ref:`Vector2i.ZERO<class_Vector2i_constant_ZERO>`). Otherwise, it always evaluates to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một **Rect2i** được đánh giá là ``false`` nếu cả :ref:`position<class_Rect2i_property_position>` và :ref:`size<class_Rect2i_property_size>` đều bằng 0 (bằng :ref:`Vector2i.ZERO<class_Vector2i_constant_ZERO>`). Nếu không, nó luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -31,16 +31,16 @@ For floating-point coordinates, see :ref:`Rect2<class_Rect2>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Math documentation index <../tutorials/math/index>`
+- :doc:`Chỉ mục tài liệu về toán học <../tutorials/math/index>`
 
-- :doc:`Vector math <../tutorials/math/vector_math>`
+- :doc:`Toán vector <../tutorials/math/vector_math>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
-------------
+Các hàm khởi tạo
+----------------
 
 .. table::
    :widths: auto
@@ -76,8 +76,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -112,17 +112,17 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator !=<class_Rect2i_operator_neq_Rect2i>`\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ ) |
-   +-------------------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ==<class_Rect2i_operator_eq_Rect2i>`\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ )  |
-   +-------------------------+-------------------------------------------------------------------------------------------------+
+   +-------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator != <class_Rect2i_operator_neq_Rect2i>`\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ ) |
+   +-------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator == <class_Rect2i_operator_eq_Rect2i>`\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ )  |
+   +-------------------------+--------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -130,8 +130,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Rect2i_property_end:
 
@@ -139,7 +139,7 @@ Property Descriptions
 
 :ref:`Vector2i<class_Vector2i>` **end** = ``Vector2i(0, 0)`` :ref:`🔗<class_Rect2i_property_end>`
 
-The ending point. This is usually the bottom-right corner of the rectangle, and is equivalent to ``position + size``. Setting this point affects the :ref:`size<class_Rect2i_property_size>`.
+Điểm kết thúc. Đây thường là góc dưới bên phải của hình chữ nhật và tương đương với ``position + size``. Việc đặt điểm này sẽ ảnh hưởng đến :ref:`size<class_Rect2i_property_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -151,7 +151,7 @@ The ending point. This is usually the bottom-right corner of the rectangle, and 
 
 :ref:`Vector2i<class_Vector2i>` **position** = ``Vector2i(0, 0)`` :ref:`🔗<class_Rect2i_property_position>`
 
-The origin point. This is usually the top-left corner of the rectangle.
+Điểm gốc. Đây thường là góc trên bên trái của hình chữ nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -163,9 +163,9 @@ The origin point. This is usually the top-left corner of the rectangle.
 
 :ref:`Vector2i<class_Vector2i>` **size** = ``Vector2i(0, 0)`` :ref:`🔗<class_Rect2i_property_size>`
 
-The rectangle's width and height, starting from :ref:`position<class_Rect2i_property_position>`. Setting this value also affects the :ref:`end<class_Rect2i_property_end>` point.
+Chiều rộng và chiều cao của hình chữ nhật, bắt đầu từ :ref:`position<class_Rect2i_property_position>`. Việc đặt giá trị này cũng ảnh hưởng đến điểm :ref:`end<class_Rect2i_property_end>`.
 
-\ **Note:** It's recommended setting the width and height to non-negative values, as most methods in Godot assume that the :ref:`position<class_Rect2i_property_position>` is the top-left corner, and the :ref:`end<class_Rect2i_property_end>` is the bottom-right corner. To get an equivalent rectangle with non-negative size, use :ref:`abs()<class_Rect2i_method_abs>`.
+\ **Lưu ý:** Bạn nên đặt chiều rộng và chiều cao thành các giá trị không âm, vì hầu hết các phương thức trong Godot đều giả định rằng :ref:`position<class_Rect2i_property_position>` là góc trên bên trái và :ref:`end<class_Rect2i_property_end>` là góc dưới bên phải. Để lấy một hình chữ nhật tương đương có kích thước không âm, hãy sử dụng :ref:`abs()<class_Rect2i_method_abs>`.
 
 .. rst-class:: classref-section-separator
 
@@ -173,8 +173,8 @@ The rectangle's width and height, starting from :ref:`position<class_Rect2i_prop
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Rect2i_constructor_Rect2i:
 
@@ -182,7 +182,7 @@ Constructor Descriptions
 
 :ref:`Rect2i<class_Rect2i>` **Rect2i**\ (\ ) :ref:`🔗<class_Rect2i_constructor_Rect2i>`
 
-Constructs a **Rect2i** with its :ref:`position<class_Rect2i_property_position>` and :ref:`size<class_Rect2i_property_size>` set to :ref:`Vector2i.ZERO<class_Vector2i_constant_ZERO>`.
+Tạo một **Rect2i** với :ref:`position<class_Rect2i_property_position>` và :ref:`size<class_Rect2i_property_size>` được đặt thành :ref:`Vector2i.ZERO<class_Vector2i_constant_ZERO>`.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ Constructs a **Rect2i** with its :ref:`position<class_Rect2i_property_position>`
 
 :ref:`Rect2i<class_Rect2i>` **Rect2i**\ (\ from\: :ref:`Rect2i<class_Rect2i>`\ )
 
-Constructs a **Rect2i** as a copy of the given **Rect2i**.
+Tạo một **Rect2i** dưới dạng bản sao của **Rect2i** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ Constructs a **Rect2i** as a copy of the given **Rect2i**.
 
 :ref:`Rect2i<class_Rect2i>` **Rect2i**\ (\ from\: :ref:`Rect2<class_Rect2>`\ )
 
-Constructs a **Rect2i** from a :ref:`Rect2<class_Rect2>`. The floating-point coordinates are truncated.
+Tạo một **Rect2i** từ một :ref:`Rect2<class_Rect2>`. Các tọa độ dấu phẩy động bị cắt phần thập phân.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ Constructs a **Rect2i** from a :ref:`Rect2<class_Rect2>`. The floating-point coo
 
 :ref:`Rect2i<class_Rect2i>` **Rect2i**\ (\ position\: :ref:`Vector2i<class_Vector2i>`, size\: :ref:`Vector2i<class_Vector2i>`\ )
 
-Constructs a **Rect2i** by ``position`` and ``size``.
+Tạo một **Rect2i** bằng cách ``position`` và ``size``.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ Constructs a **Rect2i** by ``position`` and ``size``.
 
 :ref:`Rect2i<class_Rect2i>` **Rect2i**\ (\ x\: :ref:`int<class_int>`, y\: :ref:`int<class_int>`, width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`\ )
 
-Constructs a **Rect2i** by setting its :ref:`position<class_Rect2i_property_position>` to (``x``, ``y``), and its :ref:`size<class_Rect2i_property_size>` to (``width``, ``height``).
+Tạo một **Rect2i** bằng cách đặt :ref:`position<class_Rect2i_property_position>` của nó thành (``x``, ``y``), và :ref:`size<class_Rect2i_property_size>` của nó thành (``width``, ``height``).
 
 .. rst-class:: classref-section-separator
 
@@ -230,8 +230,8 @@ Constructs a **Rect2i** by setting its :ref:`position<class_Rect2i_property_posi
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Rect2i_method_abs:
 
@@ -239,7 +239,7 @@ Method Descriptions
 
 :ref:`Rect2i<class_Rect2i>` **abs**\ (\ ) |const| :ref:`🔗<class_Rect2i_method_abs>`
 
-Returns a **Rect2i** equivalent to this rectangle, with its width and height modified to be non-negative values, and with its :ref:`position<class_Rect2i_property_position>` being the top-left corner of the rectangle.
+Trả về một **Rect2i** tương đương với hình chữ nhật này, trong đó chiều rộng và chiều cao được thay đổi thành các giá trị không âm, còn :ref:`position<class_Rect2i_property_position>` là góc trên bên trái của hình chữ nhật.
 
 
 .. tabs::
@@ -247,16 +247,16 @@ Returns a **Rect2i** equivalent to this rectangle, with its width and height mod
  .. code-tab:: gdscript
 
     var rect = Rect2i(25, 25, -100, -50)
-    var absolute = rect.abs() # absolute is Rect2i(-75, -25, 100, 50)
+    var absolute = rect.abs() # absolute là Rect2i(-75, -25, 100, 50)
 
  .. code-tab:: csharp
 
     var rect = new Rect2I(25, 25, -100, -50);
-    var absolute = rect.Abs(); // absolute is Rect2I(-75, -25, 100, 50)
+    var absolute = rect.Abs(); // absolute là Rect2I(-75, -25, 100, 50)
 
 
 
-\ **Note:** It's recommended to use this method when :ref:`size<class_Rect2i_property_size>` is negative, as most other methods in Godot assume that the :ref:`position<class_Rect2i_property_position>` is the top-left corner, and the :ref:`end<class_Rect2i_property_end>` is the bottom-right corner.
+\ **Lưu ý:** Bạn nên sử dụng phương thức này khi :ref:`size<class_Rect2i_property_size>` là số âm, vì hầu hết các phương thức khác trong Godot đều giả định rằng :ref:`position<class_Rect2i_property_position>` là góc trên bên trái và :ref:`end<class_Rect2i_property_end>` là góc dưới bên phải.
 
 .. rst-class:: classref-item-separator
 
@@ -268,7 +268,7 @@ Returns a **Rect2i** equivalent to this rectangle, with its width and height mod
 
 :ref:`bool<class_bool>` **encloses**\ (\ b\: :ref:`Rect2i<class_Rect2i>`\ ) |const| :ref:`🔗<class_Rect2i_method_encloses>`
 
-Returns ``true`` if this **Rect2i** completely encloses another one.
+Trả về ``true`` nếu **Rect2i** này bao quanh hoàn toàn một **Rect2i** khác.
 
 .. rst-class:: classref-item-separator
 
@@ -280,7 +280,7 @@ Returns ``true`` if this **Rect2i** completely encloses another one.
 
 :ref:`Rect2i<class_Rect2i>` **expand**\ (\ to\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_Rect2i_method_expand>`
 
-Returns a copy of this rectangle expanded to align the edges with the given ``to`` point, if necessary.
+Trả về một bản sao của hình chữ nhật này được mở rộng để căn chỉnh các cạnh với điểm ``to`` đã cho, nếu cần.
 
 
 .. tabs::
@@ -289,15 +289,15 @@ Returns a copy of this rectangle expanded to align the edges with the given ``to
 
     var rect = Rect2i(0, 0, 5, 2)
 
-    rect = rect.expand(Vector2i(10, 0)) # rect is Rect2i(0, 0, 10, 2)
-    rect = rect.expand(Vector2i(-5, 5)) # rect is Rect2i(-5, 0, 15, 5)
+    rect = rect.expand(Vector2i(10, 0)) # rect là Rect2i(0, 0, 10, 2)
+    rect = rect.expand(Vector2i(-5, 5)) # rect là Rect2i(-5, 0, 15, 5)
 
  .. code-tab:: csharp
 
     var rect = new Rect2I(0, 0, 5, 2);
 
-    rect = rect.Expand(new Vector2I(10, 0)); // rect is Rect2I(0, 0, 10, 2)
-    rect = rect.Expand(new Vector2I(-5, 5)); // rect is Rect2I(-5, 0, 15, 5)
+    rect = rect.Expand(new Vector2I(10, 0)); // rect là Rect2I(0, 0, 10, 2)
+    rect = rect.Expand(new Vector2I(-5, 5)); // rect là Rect2I(-5, 0, 15, 5)
 
 
 
@@ -311,7 +311,7 @@ Returns a copy of this rectangle expanded to align the edges with the given ``to
 
 :ref:`int<class_int>` **get_area**\ (\ ) |const| :ref:`🔗<class_Rect2i_method_get_area>`
 
-Returns the rectangle's area. This is equivalent to ``size.x * size.y``. See also :ref:`has_area()<class_Rect2i_method_has_area>`.
+Trả về diện tích của hình chữ nhật. Giá trị này tương đương với ``size.x * size.y``. Xem thêm :ref:`has_area()<class_Rect2i_method_has_area>`.
 
 .. rst-class:: classref-item-separator
 
@@ -323,9 +323,9 @@ Returns the rectangle's area. This is equivalent to ``size.x * size.y``. See als
 
 :ref:`Vector2i<class_Vector2i>` **get_center**\ (\ ) |const| :ref:`🔗<class_Rect2i_method_get_center>`
 
-Returns the center point of the rectangle. This is the same as ``position + (size / 2)``.
+Trả về điểm trung tâm của hình chữ nhật. Giá trị này giống với ``position + (size / 2)``.
 
-\ **Note:** If the :ref:`size<class_Rect2i_property_size>` is odd, the result will be rounded towards :ref:`position<class_Rect2i_property_position>`.
+\ **Lưu ý:** Nếu :ref:`size<class_Rect2i_property_size>` là số lẻ, kết quả sẽ được làm tròn về phía :ref:`position<class_Rect2i_property_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -337,20 +337,20 @@ Returns the center point of the rectangle. This is the same as ``position + (siz
 
 :ref:`Rect2i<class_Rect2i>` **grow**\ (\ amount\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Rect2i_method_grow>`
 
-Returns a copy of this rectangle extended on all sides by the given ``amount``. A negative ``amount`` shrinks the rectangle instead. See also :ref:`grow_individual()<class_Rect2i_method_grow_individual>` and :ref:`grow_side()<class_Rect2i_method_grow_side>`.
+Trả về một bản sao của hình chữ nhật này được mở rộng về mọi phía theo ``amount`` đã cho. ``amount`` âm sẽ thu nhỏ hình chữ nhật. Xem thêm :ref:`grow_individual()<class_Rect2i_method_grow_individual>` và :ref:`grow_side()<class_Rect2i_method_grow_side>`.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    var a = Rect2i(4, 4, 8, 8).grow(4) # a is Rect2i(0, 0, 16, 16)
-    var b = Rect2i(0, 0, 8, 4).grow(2) # b is Rect2i(-2, -2, 12, 8)
+    var a = Rect2i(4, 4, 8, 8).grow(4) # a là Rect2i(0, 0, 16, 16)
+    var b = Rect2i(0, 0, 8, 4).grow(2) # b là Rect2i(-2, -2, 12, 8)
 
  .. code-tab:: csharp
 
-    var a = new Rect2I(4, 4, 8, 8).Grow(4); // a is Rect2I(0, 0, 16, 16)
-    var b = new Rect2I(0, 0, 8, 4).Grow(2); // b is Rect2I(-2, -2, 12, 8)
+    var a = new Rect2I(4, 4, 8, 8).Grow(4); // a là Rect2I(0, 0, 16, 16)
+    var b = new Rect2I(0, 0, 8, 4).Grow(2); // b là Rect2I(-2, -2, 12, 8)
 
 
 
@@ -364,7 +364,7 @@ Returns a copy of this rectangle extended on all sides by the given ``amount``. 
 
 :ref:`Rect2i<class_Rect2i>` **grow_individual**\ (\ left\: :ref:`int<class_int>`, top\: :ref:`int<class_int>`, right\: :ref:`int<class_int>`, bottom\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Rect2i_method_grow_individual>`
 
-Returns a copy of this rectangle with its ``left``, ``top``, ``right``, and ``bottom`` sides extended by the given amounts. Negative values shrink the sides, instead. See also :ref:`grow()<class_Rect2i_method_grow>` and :ref:`grow_side()<class_Rect2i_method_grow_side>`.
+Trả về một bản sao của hình chữ nhật này với các cạnh ``left``, ``top``, ``right`` và ``bottom`` được mở rộng theo các lượng đã cho. Các giá trị âm sẽ thu nhỏ các cạnh. Xem thêm :ref:`grow()<class_Rect2i_method_grow>` và :ref:`grow_side()<class_Rect2i_method_grow_side>`.
 
 .. rst-class:: classref-item-separator
 
@@ -376,7 +376,7 @@ Returns a copy of this rectangle with its ``left``, ``top``, ``right``, and ``bo
 
 :ref:`Rect2i<class_Rect2i>` **grow_side**\ (\ side\: :ref:`int<class_int>`, amount\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Rect2i_method_grow_side>`
 
-Returns a copy of this rectangle with its ``side`` extended by the given ``amount`` (see :ref:`Side<enum_@GlobalScope_Side>` constants). A negative ``amount`` shrinks the rectangle, instead. See also :ref:`grow()<class_Rect2i_method_grow>` and :ref:`grow_individual()<class_Rect2i_method_grow_individual>`.
+Trả về một bản sao của hình chữ nhật này với ``side`` được mở rộng theo ``amount`` đã cho (xem các hằng số :ref:`Side <enum_@GlobalScope_Side>`). ``amount`` âm sẽ thu nhỏ hình chữ nhật. Xem thêm :ref:`grow()<class_Rect2i_method_grow>` và :ref:`grow_individual()<class_Rect2i_method_grow_individual>`.
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ Returns a copy of this rectangle with its ``side`` extended by the given ``amoun
 
 :ref:`bool<class_bool>` **has_area**\ (\ ) |const| :ref:`🔗<class_Rect2i_method_has_area>`
 
-Returns ``true`` if this rectangle has positive width and height. See also :ref:`get_area()<class_Rect2i_method_get_area>`.
+Trả về ``true`` nếu hình chữ nhật này có chiều rộng và chiều cao dương. Xem thêm :ref:`get_area()<class_Rect2i_method_get_area>`.
 
 .. rst-class:: classref-item-separator
 
@@ -400,9 +400,9 @@ Returns ``true`` if this rectangle has positive width and height. See also :ref:
 
 :ref:`bool<class_bool>` **has_point**\ (\ point\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_Rect2i_method_has_point>`
 
-Returns ``true`` if the rectangle contains the given ``point``. By convention, points on the right and bottom edges are **not** included.
+Trả về ``true`` nếu hình chữ nhật chứa ``point`` đã cho. Theo quy ước, các điểm trên cạnh phải và cạnh dưới được **không** bao gồm.
 
-\ **Note:** This method is not reliable for **Rect2i** with a *negative* :ref:`size<class_Rect2i_property_size>`. Use :ref:`abs()<class_Rect2i_method_abs>` first to get a valid rectangle.
+\ **Lưu ý:** Phương thức này không đáng tin cậy đối với **Rect2i** có *âm* :ref:`size<class_Rect2i_property_size>`. Trước tiên hãy dùng :ref:`abs()<class_Rect2i_method_abs>` để lấy một hình chữ nhật hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -414,7 +414,7 @@ Returns ``true`` if the rectangle contains the given ``point``. By convention, p
 
 :ref:`Rect2i<class_Rect2i>` **intersection**\ (\ b\: :ref:`Rect2i<class_Rect2i>`\ ) |const| :ref:`🔗<class_Rect2i_method_intersection>`
 
-Returns the intersection between this rectangle and ``b``. If the rectangles do not intersect, returns an empty **Rect2i**.
+Trả về phần giao giữa hình chữ nhật này và ``b``. Nếu các hình chữ nhật không giao nhau, trả về một **Rect2i** rỗng.
 
 
 .. tabs::
@@ -424,18 +424,18 @@ Returns the intersection between this rectangle and ``b``. If the rectangles do 
     var a = Rect2i(0, 0, 5, 10)
     var b = Rect2i(2, 0, 8, 4)
 
-    var c = a.intersection(b) # c is Rect2i(2, 0, 3, 4)
+    var c = a.intersection(b) # c là Rect2i(2, 0, 3, 4)
 
  .. code-tab:: csharp
 
     var a = new Rect2I(0, 0, 5, 10);
     var b = new Rect2I(2, 0, 8, 4);
 
-    var c = rect1.Intersection(rect2); // c is Rect2I(2, 0, 3, 4)
+    var c = rect1.Intersection(rect2); // c là Rect2I(2, 0, 3, 4)
 
 
 
-\ **Note:** If you only need to know whether two rectangles are overlapping, use :ref:`intersects()<class_Rect2i_method_intersects>`, instead.
+\ **Lưu ý:** Nếu bạn chỉ cần biết hai hình chữ nhật có chồng lấp hay không, hãy dùng :ref:`intersects()<class_Rect2i_method_intersects>`.
 
 .. rst-class:: classref-item-separator
 
@@ -447,7 +447,7 @@ Returns the intersection between this rectangle and ``b``. If the rectangles do 
 
 :ref:`bool<class_bool>` **intersects**\ (\ b\: :ref:`Rect2i<class_Rect2i>`\ ) |const| :ref:`🔗<class_Rect2i_method_intersects>`
 
-Returns ``true`` if this rectangle overlaps with the ``b`` rectangle. The edges of both rectangles are excluded.
+Trả về ``true`` nếu hình chữ nhật này chồng lấp với hình chữ nhật ``b``. Các cạnh của cả hai hình chữ nhật đều bị loại trừ.
 
 .. rst-class:: classref-item-separator
 
@@ -459,7 +459,7 @@ Returns ``true`` if this rectangle overlaps with the ``b`` rectangle. The edges 
 
 :ref:`Rect2i<class_Rect2i>` **merge**\ (\ b\: :ref:`Rect2i<class_Rect2i>`\ ) |const| :ref:`🔗<class_Rect2i_method_merge>`
 
-Returns a **Rect2i** that encloses both this rectangle and ``b`` around the edges. See also :ref:`encloses()<class_Rect2i_method_encloses>`.
+Trả về một **Rect2i** bao bọc cả hình chữ nhật này và ``b`` quanh các cạnh. Xem thêm :ref:`encloses()<class_Rect2i_method_encloses>`.
 
 .. rst-class:: classref-section-separator
 
@@ -467,16 +467,16 @@ Returns a **Rect2i** that encloses both this rectangle and ``b`` around the edge
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Rect2i_operator_neq_Rect2i:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ ) :ref:`🔗<class_Rect2i_operator_neq_Rect2i>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ ) :ref:`🔗 <class_Rect2i_operator_neq_Rect2i>`
 
-Returns ``true`` if the :ref:`position<class_Rect2i_property_position>` or :ref:`size<class_Rect2i_property_size>` of both rectangles are not equal.
+Trả về ``true`` nếu :ref:`position<class_Rect2i_property_position>` hoặc :ref:`size<class_Rect2i_property_size>` của hai hình chữ nhật không bằng nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -486,16 +486,16 @@ Returns ``true`` if the :ref:`position<class_Rect2i_property_position>` or :ref:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ ) :ref:`🔗<class_Rect2i_operator_eq_Rect2i>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Rect2i<class_Rect2i>`\ ) :ref:`🔗 <class_Rect2i_operator_eq_Rect2i>`
 
-Returns ``true`` if both :ref:`position<class_Rect2i_property_position>` and :ref:`size<class_Rect2i_property_size>` of the rectangles are equal, respectively.
+Trả về ``true`` nếu cả :ref:`position<class_Rect2i_property_position>` và :ref:`size<class_Rect2i_property_size>` của các hình chữ nhật lần lượt bằng nhau.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

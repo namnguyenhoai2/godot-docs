@@ -10,20 +10,20 @@
 PhysicsTestMotionParameters3D
 =============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides parameters for :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
+Cung cấp các tham số cho :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-By changing various properties of this object, such as the motion, you can configure the parameters for :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
+Bằng cách thay đổi các thuộc tính khác nhau của đối tượng này, chẳng hạn như chuyển động, bạn có thể cấu hình các tham số cho :ref:`PhysicsServer3D.body_test_motion()<class_PhysicsServer3D_method_body_test_motion>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -53,8 +53,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicsTestMotionParameters3D_property_collide_separation_ray:
 
@@ -67,9 +67,9 @@ Property Descriptions
 - |void| **set_collide_separation_ray_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_separation_ray_enabled**\ (\ )
 
-If set to ``true``, shapes of type :ref:`PhysicsServer3D.SHAPE_SEPARATION_RAY<class_PhysicsServer3D_constant_SHAPE_SEPARATION_RAY>` are used to detect collisions and can stop the motion. Can be useful when snapping to the ground.
+Nếu được đặt thành ``true``, các shape thuộc loại :ref:`PhysicsServer3D.SHAPE_SEPARATION_RAY<class_PhysicsServer3D_constant_SHAPE_SEPARATION_RAY>` sẽ được sử dụng để phát hiện va chạm và có thể dừng chuyển động. Có thể hữu ích khi bám vào mặt đất.
 
-If set to ``false``, shapes of type :ref:`PhysicsServer3D.SHAPE_SEPARATION_RAY<class_PhysicsServer3D_constant_SHAPE_SEPARATION_RAY>` are only used for separation when overlapping with other bodies. That's the main use for separation ray shapes.
+Nếu được đặt thành ``false``, các shape thuộc loại :ref:`PhysicsServer3D.SHAPE_SEPARATION_RAY<class_PhysicsServer3D_constant_SHAPE_SEPARATION_RAY>` chỉ được sử dụng để tách rời khi chồng lấn với các body khác. Đây là công dụng chính của các shape tia tách rời.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ If set to ``false``, shapes of type :ref:`PhysicsServer3D.SHAPE_SEPARATION_RAY<c
 - |void| **set_exclude_bodies**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_exclude_bodies**\ (\ )
 
-Optional array of body :ref:`RID<class_RID>` to exclude from collision. Use :ref:`CollisionObject3D.get_rid()<class_CollisionObject3D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject3D<class_CollisionObject3D>`-derived node.
+Mảng tùy chọn gồm các :ref:`RID<class_RID>` của body cần loại trừ khỏi va chạm. Sử dụng :ref:`CollisionObject3D.get_rid()<class_CollisionObject3D_method_get_rid>` để lấy :ref:`RID<class_RID>` liên kết với một node dẫn xuất từ :ref:`CollisionObject3D<class_CollisionObject3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ Optional array of body :ref:`RID<class_RID>` to exclude from collision. Use :ref
 - |void| **set_exclude_objects**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`int<class_int>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`int<class_int>`\] **get_exclude_objects**\ (\ )
 
-Optional array of object unique instance ID to exclude from collision. See :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
+Mảng tùy chọn gồm các ID instance duy nhất của object cần loại trừ khỏi va chạm. Xem :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Optional array of object unique instance ID to exclude from collision. See :ref:
 - |void| **set_from**\ (\ value\: :ref:`Transform3D<class_Transform3D>`\ )
 - :ref:`Transform3D<class_Transform3D>` **get_from**\ (\ )
 
-Transform in global space where the motion should start. Usually set to :ref:`Node3D.global_transform<class_Node3D_property_global_transform>` for the current body's transform.
+Transform trong không gian toàn cục nơi chuyển động sẽ bắt đầu. Thường được đặt thành :ref:`Node3D.global_transform<class_Node3D_property_global_transform>` cho transform của body hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Transform in global space where the motion should start. Usually set to :ref:`No
 - |void| **set_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_margin**\ (\ )
 
-Increases the size of the shapes involved in the collision detection.
+Tăng kích thước của các shape tham gia vào quá trình phát hiện va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Increases the size of the shapes involved in the collision detection.
 - |void| **set_max_collisions**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_collisions**\ (\ )
 
-Maximum number of returned collisions, between ``1`` and ``32``. Always returns the deepest detected collisions.
+Số lượng va chạm tối đa được trả về, trong khoảng từ ``1`` đến ``32``. Luôn trả về các va chạm được phát hiện có độ sâu lớn nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ Maximum number of returned collisions, between ``1`` and ``32``. Always returns 
 - |void| **set_motion**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_motion**\ (\ )
 
-Motion vector to define the length and direction of the motion to test.
+Vector chuyển động xác định độ dài và hướng của chuyển động cần kiểm tra.
 
 .. rst-class:: classref-item-separator
 
@@ -188,16 +188,16 @@ Motion vector to define the length and direction of the motion to test.
 - |void| **set_recovery_as_collision_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_recovery_as_collision_enabled**\ (\ )
 
-If set to ``true``, any depenetration from the recovery phase is reported as a collision; this is used e.g. by :ref:`CharacterBody3D<class_CharacterBody3D>` for improving floor detection during floor snapping.
+Nếu được đặt thành ``true``, mọi quá trình thoát xuyên trong giai đoạn khôi phục sẽ được báo cáo là một va chạm; điều này được :ref:`CharacterBody3D<class_CharacterBody3D>` sử dụng, chẳng hạn, để cải thiện việc phát hiện sàn trong quá trình bám sàn.
 
-If set to ``false``, only collisions resulting from the motion are reported, which is generally the desired behavior.
+Nếu được đặt thành ``false``, chỉ các va chạm phát sinh từ chuyển động mới được báo cáo, đây thường là hành vi mong muốn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

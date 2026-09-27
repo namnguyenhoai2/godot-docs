@@ -10,21 +10,21 @@
 Marshalls
 =========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Data transformation (marshaling) and encoding helpers.
+Các hàm hỗ trợ chuyển đổi dữ liệu (marshaling) và encoding.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Provides data transformation and encoding utility functions.
+Cung cấp các hàm tiện ích để chuyển đổi và encoding dữ liệu.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -49,8 +49,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Marshalls_method_base64_to_raw:
 
@@ -58,7 +58,7 @@ Method Descriptions
 
 :ref:`PackedByteArray<class_PackedByteArray>` **base64_to_raw**\ (\ base64_str\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Marshalls_method_base64_to_raw>`
 
-Returns a decoded :ref:`PackedByteArray<class_PackedByteArray>` corresponding to the Base64-encoded string ``base64_str``.
+Trả về một :ref:`PackedByteArray<class_PackedByteArray>` đã được giải mã tương ứng với chuỗi được mã hóa bằng Base64 ``base64_str``.
 
 .. rst-class:: classref-item-separator
 
@@ -70,7 +70,7 @@ Returns a decoded :ref:`PackedByteArray<class_PackedByteArray>` corresponding to
 
 :ref:`String<class_String>` **base64_to_utf8**\ (\ base64_str\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Marshalls_method_base64_to_utf8>`
 
-Returns a decoded string corresponding to the Base64-encoded string ``base64_str``.
+Trả về một chuỗi đã được giải mã tương ứng với chuỗi được mã hóa bằng Base64 ``base64_str``.
 
 .. rst-class:: classref-item-separator
 
@@ -82,11 +82,11 @@ Returns a decoded string corresponding to the Base64-encoded string ``base64_str
 
 :ref:`Variant<class_Variant>` **base64_to_variant**\ (\ base64_str\: :ref:`String<class_String>`, allow_objects\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Marshalls_method_base64_to_variant>`
 
-Returns a decoded :ref:`Variant<class_Variant>` corresponding to the Base64-encoded string ``base64_str``. If ``allow_objects`` is ``true``, decoding objects is allowed.
+Trả về một :ref:`Variant<class_Variant>` được giải mã tương ứng với chuỗi được mã hóa Base64 ``base64_str``. Nếu ``allow_objects`` là ``true``, cho phép giải mã các object.
 
-Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.bytes_to_var()<class_@GlobalScope_method_bytes_to_var>` method.
+Về nội bộ, phương thức này sử dụng cùng cơ chế giải mã như phương thức :ref:`@GlobalScope.bytes_to_var() <class_@GlobalScope_method_bytes_to_var>`.
 
-\ **Warning:** Deserialized objects can contain code which gets executed. Do not use this option if the serialized object comes from untrusted sources to avoid potential security threats such as remote code execution.
+\ **Cảnh báo:** Các object đã được deserialize có thể chứa mã được thực thi. Không sử dụng tùy chọn này nếu object đã serialize đến từ các nguồn không đáng tin cậy để tránh các mối đe dọa bảo mật tiềm ẩn như thực thi mã từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ Internally, this uses the same decoding mechanism as the :ref:`@GlobalScope.byte
 
 :ref:`String<class_String>` **raw_to_base64**\ (\ array\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_Marshalls_method_raw_to_base64>`
 
-Returns a Base64-encoded string of a given :ref:`PackedByteArray<class_PackedByteArray>`.
+Trả về một chuỗi được mã hóa Base64 của :ref:`PackedByteArray<class_PackedByteArray>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Returns a Base64-encoded string of a given :ref:`PackedByteArray<class_PackedByt
 
 :ref:`String<class_String>` **utf8_to_base64**\ (\ utf8_str\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Marshalls_method_utf8_to_base64>`
 
-Returns a Base64-encoded string of the UTF-8 string ``utf8_str``.
+Trả về một chuỗi được mã hóa Base64 của chuỗi UTF-8 ``utf8_str``.
 
 .. rst-class:: classref-item-separator
 
@@ -122,16 +122,16 @@ Returns a Base64-encoded string of the UTF-8 string ``utf8_str``.
 
 :ref:`String<class_String>` **variant_to_base64**\ (\ variant\: :ref:`Variant<class_Variant>`, full_objects\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Marshalls_method_variant_to_base64>`
 
-Returns a Base64-encoded string of the :ref:`Variant<class_Variant>` ``variant``. If ``full_objects`` is ``true``, encoding objects is allowed (and can potentially include code).
+Trả về một chuỗi được mã hóa Base64 của :ref:`Variant<class_Variant>` ``variant``. Nếu ``full_objects`` là ``true``, cho phép mã hóa các object (và có thể chứa mã).
 
-Internally, this uses the same encoding mechanism as the :ref:`@GlobalScope.var_to_bytes()<class_@GlobalScope_method_var_to_bytes>` method.
+Về nội bộ, phương thức này sử dụng cùng cơ chế mã hóa như phương thức :ref:`@GlobalScope.var_to_bytes() <class_@GlobalScope_method_var_to_bytes>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

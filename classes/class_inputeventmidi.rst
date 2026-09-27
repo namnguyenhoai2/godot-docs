@@ -10,20 +10,20 @@
 InputEventMIDI
 ==============
 
-**Inherits:** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a MIDI message from a MIDI device, such as a musical keyboard.
+Đại diện cho một thông báo MIDI từ thiết bị MIDI, chẳng hạn như bàn phím nhạc.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-InputEventMIDI stores information about messages from `MIDI <https://en.wikipedia.org/wiki/MIDI>`__ (Musical Instrument Digital Interface) devices. These may include musical keyboards, synthesizers, and drum machines.
+InputEventMIDI lưu trữ thông tin về các thông báo từ thiết bị `MIDI <https://en.wikipedia.org/wiki/MIDI>`__ (Musical Instrument Digital Interface). Các thiết bị này có thể bao gồm bàn phím nhạc, synthesizer và máy trống.
 
-MIDI messages can be received over a 5-pin MIDI connector or over USB. If your device supports both be sure to check the settings in the device to see which output it is using.
+Các thông báo MIDI có thể được nhận qua đầu nối MIDI 5 chân hoặc qua USB. Nếu thiết bị của bạn hỗ trợ cả hai, hãy nhớ kiểm tra cài đặt trên thiết bị để biết thiết bị đang sử dụng đầu ra nào.
 
-By default, Godot does not detect MIDI devices. You need to call :ref:`OS.open_midi_inputs()<class_OS_method_open_midi_inputs>`, first. You can check which devices are detected with :ref:`OS.get_connected_midi_inputs()<class_OS_method_get_connected_midi_inputs>`, and close the connection with :ref:`OS.close_midi_inputs()<class_OS_method_close_midi_inputs>`.
+Theo mặc định, Godot không phát hiện các thiết bị MIDI. Trước tiên, bạn cần gọi :ref:`OS.open_midi_inputs()<class_OS_method_open_midi_inputs>`. Bạn có thể kiểm tra những thiết bị đã được phát hiện bằng :ref:`OS.get_connected_midi_inputs()<class_OS_method_get_connected_midi_inputs>`, và đóng kết nối bằng :ref:`OS.close_midi_inputs()<class_OS_method_close_midi_inputs>`.
 
 
 .. tabs::
@@ -80,46 +80,46 @@ By default, Godot does not detect MIDI devices. You need to call :ref:`OS.open_m
 
 
 
-\ **Note:** Godot does not support MIDI output, so there is no way to emit MIDI messages from Godot. Only MIDI input is supported.
+\ **Lưu ý:** Godot không hỗ trợ đầu ra MIDI, vì vậy không có cách nào để phát các thông báo MIDI từ Godot. Chỉ hỗ trợ đầu vào MIDI.
 
-\ **Note:** On the Web platform, using MIDI input requires a browser permission to be granted first. This permission request is performed when calling :ref:`OS.open_midi_inputs()<class_OS_method_open_midi_inputs>`. MIDI input will not work until the user accepts the permission request.
+\ **Lưu ý:** Trên nền tảng Web, việc sử dụng đầu vào MIDI trước tiên yêu cầu cấp quyền cho trình duyệt. Yêu cầu cấp quyền này được thực hiện khi gọi :ref:`OS.open_midi_inputs()<class_OS_method_open_midi_inputs>`. Đầu vào MIDI sẽ không hoạt động cho đến khi người dùng chấp nhận yêu cầu cấp quyền.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `MIDI Message Status Byte List <https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes>`__
+- `Danh sách byte trạng thái của thông báo MIDI <https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes>`__
 
-- `Wikipedia General MIDI Instrument List <https://en.wikipedia.org/wiki/General_MIDI#Program_change_events>`__
+- `Danh sách nhạc cụ General MIDI trên Wikipedia <https://en.wikipedia.org/wiki/General_MIDI#Program_change_events>`__
 
-- `Wikipedia Piano Key Frequencies List <https://en.wikipedia.org/wiki/Piano_key_frequencies#List>`__
+- `Danh sách tần số phím đàn piano trên Wikipedia <https://en.wikipedia.org/wiki/Piano_key_frequencies#List>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                             | :ref:`channel<class_InputEventMIDI_property_channel>`                     | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                             | :ref:`controller_number<class_InputEventMIDI_property_controller_number>` | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                             | :ref:`controller_value<class_InputEventMIDI_property_controller_value>`   | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                             | :ref:`instrument<class_InputEventMIDI_property_instrument>`               | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` | :ref:`message<class_InputEventMIDI_property_message>`                     | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                             | :ref:`pitch<class_InputEventMIDI_property_pitch>`                         | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                             | :ref:`pressure<class_InputEventMIDI_property_pressure>`                   | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
-   | :ref:`int<class_int>`                             | :ref:`velocity<class_InputEventMIDI_property_velocity>`                   | ``0`` |
-   +---------------------------------------------------+---------------------------------------------------------------------------+-------+
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                              | :ref:`channel<class_InputEventMIDI_property_channel>`                     | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                              | :ref:`controller_number<class_InputEventMIDI_property_controller_number>` | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                              | :ref:`controller_value<class_InputEventMIDI_property_controller_value>`   | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                              | :ref:`instrument<class_InputEventMIDI_property_instrument>`               | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`MIDIMessage <enum_@GlobalScope_MIDIMessage>` | :ref:`message<class_InputEventMIDI_property_message>`                     | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                              | :ref:`pitch<class_InputEventMIDI_property_pitch>`                         | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                              | :ref:`pressure<class_InputEventMIDI_property_pressure>`                   | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
+   | :ref:`int<class_int>`                              | :ref:`velocity<class_InputEventMIDI_property_velocity>`                   | ``0`` |
+   +----------------------------------------------------+---------------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -127,8 +127,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEventMIDI_property_channel:
 
@@ -141,7 +141,7 @@ Property Descriptions
 - |void| **set_channel**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_channel**\ (\ )
 
-The MIDI channel of this message, ranging from ``0`` to ``15``. MIDI channel ``9`` is reserved for percussion instruments.
+Kênh MIDI của thông báo này, nằm trong khoảng từ ``0`` đến ``15``. Kênh MIDI ``9`` được dành riêng cho các nhạc cụ bộ gõ.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ The MIDI channel of this message, ranging from ``0`` to ``15``. MIDI channel ``9
 - |void| **set_controller_number**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_controller_number**\ (\ )
 
-The unique number of the controller, if :ref:`message<class_InputEventMIDI_property_message>` is :ref:`@GlobalScope.MIDI_MESSAGE_CONTROL_CHANGE<class_@GlobalScope_constant_MIDI_MESSAGE_CONTROL_CHANGE>`, otherwise this is ``0``. This value can be used to identify sliders for volume, balance, and panning, as well as switches and pedals on the MIDI device. See the `General MIDI specification <https://en.wikipedia.org/wiki/General_MIDI#Controller_events>`__ for a small list.
+Số duy nhất của controller, nếu :ref:`message<class_InputEventMIDI_property_message>` là :ref:`@GlobalScope.MIDI_MESSAGE_CONTROL_CHANGE <class_@GlobalScope_constant_MIDI_MESSAGE_CONTROL_CHANGE>`, nếu không thì đây là ``0``. Giá trị này có thể được dùng để xác định các thanh trượt điều chỉnh âm lượng, cân bằng và panning, cũng như các công tắc và pedal trên thiết bị MIDI. Xem `đặc tả General MIDI <https://en.wikipedia.org/wiki/General_MIDI#Controller_events>`__ để biết một danh sách ngắn.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ The unique number of the controller, if :ref:`message<class_InputEventMIDI_prope
 - |void| **set_controller_value**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_controller_value**\ (\ )
 
-The value applied to the controller. If :ref:`message<class_InputEventMIDI_property_message>` is :ref:`@GlobalScope.MIDI_MESSAGE_CONTROL_CHANGE<class_@GlobalScope_constant_MIDI_MESSAGE_CONTROL_CHANGE>`, this value ranges from ``0`` to ``127``, otherwise it is ``0``. See also :ref:`controller_value<class_InputEventMIDI_property_controller_value>`.
+Giá trị được áp dụng cho controller. Nếu :ref:`message<class_InputEventMIDI_property_message>` là :ref:`@GlobalScope.MIDI_MESSAGE_CONTROL_CHANGE <class_@GlobalScope_constant_MIDI_MESSAGE_CONTROL_CHANGE>`, giá trị này nằm trong khoảng từ ``0`` đến ``127``, nếu không thì đây là ``0``. Xem thêm :ref:`controller_value<class_InputEventMIDI_property_controller_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -192,9 +192,9 @@ The value applied to the controller. If :ref:`message<class_InputEventMIDI_prope
 - |void| **set_instrument**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_instrument**\ (\ )
 
-The instrument (also called *program* or *preset*) used on this MIDI message. This value ranges from ``0`` to ``127``.
+Nhạc cụ (còn được gọi là *program* hoặc *preset*) được sử dụng trong thông báo MIDI này. Giá trị này nằm trong khoảng từ ``0`` đến ``127``.
 
-To see what each value means, refer to the `General MIDI's instrument list <https://en.wikipedia.org/wiki/General_MIDI#Program_change_events>`__. Keep in mind that the list is off by 1 because it does not begin from 0. A value of ``0`` corresponds to the acoustic grand piano.
+Để biết ý nghĩa của từng giá trị, hãy tham khảo `danh sách nhạc cụ của General MIDI <https://en.wikipedia.org/wiki/General_MIDI#Program_change_events>`__. Lưu ý rằng danh sách này lệch 1 vì không bắt đầu từ 0. Giá trị ``0`` tương ứng với đàn piano grand acoustic.
 
 .. rst-class:: classref-item-separator
 
@@ -211,9 +211,9 @@ To see what each value means, refer to the `General MIDI's instrument list <http
 - |void| **set_message**\ (\ value\: :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>`\ )
 - :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` **get_message**\ (\ )
 
-Represents the type of MIDI message (see the :ref:`MIDIMessage<enum_@GlobalScope_MIDIMessage>` enum).
+Biểu thị loại thông báo MIDI (xem enum :ref:`MIDIMessage <enum_@GlobalScope_MIDIMessage>`).
 
-For more information, see the `MIDI message status byte list chart <https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes>`__.
+Để biết thêm thông tin, hãy xem `biểu đồ danh sách byte trạng thái của thông báo MIDI <https://www.midi.org/specifications-old/item/table-2-expanded-messages-list-status-bytes>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -230,7 +230,7 @@ For more information, see the `MIDI message status byte list chart <https://www.
 - |void| **set_pitch**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_pitch**\ (\ )
 
-The pitch index number of this MIDI message. This value ranges from ``0`` to ``127``.
+Số chỉ mục cao độ của thông báo MIDI này. Giá trị này nằm trong khoảng từ ``0`` đến ``127``.
 
 On a piano, the **middle C** is ``60``, followed by a **C-sharp** (``61``), then a **D** (``62``), and so on. Each octave is split in offsets of 12. See the "MIDI note number" column of the `piano key frequency chart <https://en.wikipedia.org/wiki/Piano_key_frequencies>`__ a full list.
 
@@ -249,9 +249,9 @@ On a piano, the **middle C** is ``60``, followed by a **C-sharp** (``61``), then
 - |void| **set_pressure**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_pressure**\ (\ )
 
-The strength of the key being pressed. This value ranges from ``0`` to ``127``.
+Cường độ của phím đang được nhấn. Giá trị này nằm trong khoảng từ ``0`` đến ``127``.
 
-\ **Note:** For many devices, this value is always ``0``. Other devices such as musical keyboards may simulate pressure by changing the :ref:`velocity<class_InputEventMIDI_property_velocity>`, instead.
+\ **Lưu ý:** Với nhiều thiết bị, giá trị này luôn là ``0``. Các thiết bị khác, chẳng hạn như bàn phím nhạc, có thể mô phỏng áp lực bằng cách thay đổi :ref:`velocity<class_InputEventMIDI_property_velocity>`, thay vào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -268,9 +268,9 @@ The strength of the key being pressed. This value ranges from ``0`` to ``127``.
 - |void| **set_velocity**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_velocity**\ (\ )
 
-The velocity of the MIDI message. This value ranges from ``0`` to ``127``. For a musical keyboard, this corresponds to how quickly the key was pressed, and is rarely above ``110`` in practice.
+Vận tốc của thông báo MIDI. Giá trị này nằm trong khoảng từ ``0`` đến ``127``. Đối với bàn phím nhạc, giá trị này tương ứng với tốc độ nhấn phím và trên thực tế hiếm khi vượt quá ``110``.
 
-\ **Note:** Some MIDI devices may send a :ref:`@GlobalScope.MIDI_MESSAGE_NOTE_ON<class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_ON>` message with ``0`` velocity and expect it to be treated the same as a :ref:`@GlobalScope.MIDI_MESSAGE_NOTE_OFF<class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_OFF>` message. If necessary, this can be handled with a few lines of code:
+\ **Lưu ý:** Một số thiết bị MIDI có thể gửi thông báo :ref:`@GlobalScope.MIDI_MESSAGE_NOTE_ON <class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_ON>` với ``0`` vận tốc và yêu cầu thông báo đó được xử lý giống như thông báo :ref:`@GlobalScope.MIDI_MESSAGE_NOTE_OFF <class_@GlobalScope_constant_MIDI_MESSAGE_NOTE_OFF>`. Nếu cần, bạn có thể xử lý việc này bằng vài dòng mã:
 
 ::
 
@@ -279,12 +279,12 @@ The velocity of the MIDI message. This value ranges from ``0`` to ``127``. For a
             if event.message == MIDI_MESSAGE_NOTE_ON and event.velocity > 0:
                 print("Note pressed!")
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một đối tượng để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

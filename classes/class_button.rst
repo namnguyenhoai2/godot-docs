@@ -10,20 +10,20 @@
 Button
 ======
 
-**Inherits:** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CheckBox<class_CheckBox>`, :ref:`CheckButton<class_CheckButton>`, :ref:`ColorPickerButton<class_ColorPickerButton>`, :ref:`MenuButton<class_MenuButton>`, :ref:`OptionButton<class_OptionButton>`
+**Được kế thừa bởi:** :ref:`CheckBox<class_CheckBox>`, :ref:`CheckButton<class_CheckButton>`, :ref:`ColorPickerButton<class_ColorPickerButton>`, :ref:`MenuButton<class_MenuButton>`, :ref:`OptionButton<class_OptionButton>`
 
-A themed button that can contain text and an icon.
+Một nút theo theme có thể chứa văn bản và biểu tượng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**Button** is the standard themed button. It can contain text and an icon, and it will display them according to the current :ref:`Theme<class_Theme>`.
+**Button** là nút theo theme tiêu chuẩn. Nó có thể chứa văn bản và biểu tượng, đồng thời sẽ hiển thị chúng theo :ref:`Theme<class_Theme>` hiện tại.
 
-\ **Example:** Create a button and connect a method that will be called when the button is pressed:
+\ **Ví dụ:** Tạo một nút và kết nối một phương thức sẽ được gọi khi nút được nhấn:
 
 
 .. tabs::
@@ -56,59 +56,59 @@ Description
 
 
 
-See also :ref:`BaseButton<class_BaseButton>` which contains common properties and methods associated with this node.
+Xem thêm :ref:`BaseButton<class_BaseButton>`, trong đó chứa các thuộc tính và phương thức phổ biến liên quan đến node này.
 
-\ **Note:** Buttons support multitouch via touch input, allowing multiple buttons to be pressed at the same time. Otherwise, mouse input is used, limiting interaction to one button press at a time.
+\ **Lưu ý:** Các nút hỗ trợ multitouch thông qua đầu vào cảm ứng, cho phép nhấn nhiều nút cùng lúc. Nếu không, đầu vào chuột sẽ được sử dụng, giới hạn tương tác ở việc nhấn từng nút một.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
+- `Bản demo 2D Dodge The Creeps <https://godotengine.org/asset-library/asset/2712>`__
 
-- `Operating System Testing Demo <https://godotengine.org/asset-library/asset/2789>`__
+- `Bản demo kiểm thử hệ điều hành <https://godotengine.org/asset-library/asset/2789>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` | :ref:`alignment<class_Button_property_alignment>`                             | ``1``     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`                 | :ref:`autowrap_mode<class_Button_property_autowrap_mode>`                     | ``0``     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\] | :ref:`autowrap_trim_flags<class_Button_property_autowrap_trim_flags>`         | ``128``   |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                           | :ref:`clip_text<class_Button_property_clip_text>`                             | ``false`` |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                           | :ref:`expand_icon<class_Button_property_expand_icon>`                         | ``false`` |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                           | :ref:`flat<class_Button_property_flat>`                                       | ``false`` |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                                 | :ref:`icon<class_Button_property_icon>`                                       |           |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` | :ref:`icon_alignment<class_Button_property_icon_alignment>`                   | ``0``     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                                       | :ref:`language<class_Button_property_language>`                               | ``""``    |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                                       | :ref:`text<class_Button_property_text>`                                       | ``""``    |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`TextDirection<enum_Control_TextDirection>`                  | :ref:`text_direction<class_Button_property_text_direction>`                   | ``0``     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`           | :ref:`text_overrun_behavior<class_Button_property_text_overrun_behavior>`     | ``0``     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
-   | :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>`     | :ref:`vertical_icon_alignment<class_Button_property_vertical_icon_alignment>` | ``1``     |
-   +-------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` | :ref:`alignment<class_Button_property_alignment>`                             | ``1``     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`AutowrapMode <enum_TextServer_AutowrapMode>`                 | :ref:`autowrap_mode<class_Button_property_autowrap_mode>`                     | ``0``     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | |bitfield|\[:ref:`LineBreakFlag <enum_TextServer_LineBreakFlag>`\] | :ref:`autowrap_trim_flags<class_Button_property_autowrap_trim_flags>`         | ``128``   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                            | :ref:`clip_text<class_Button_property_clip_text>`                             | ``false`` |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                            | :ref:`expand_icon<class_Button_property_expand_icon>`                         | ``false`` |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                            | :ref:`flat<class_Button_property_flat>`                                       | ``false`` |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                                  | :ref:`icon<class_Button_property_icon>`                                       |           |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` | :ref:`icon_alignment<class_Button_property_icon_alignment>`                   | ``0``     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`                                        | :ref:`language<class_Button_property_language>`                               | ``""``    |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`                                        | :ref:`text<class_Button_property_text>`                                       | ``""``    |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`TextDirection <enum_Control_TextDirection>`                  | :ref:`text_direction<class_Button_property_text_direction>`                   | ``0``     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`OverrunBehavior <enum_TextServer_OverrunBehavior>`           | :ref:`text_overrun_behavior<class_Button_property_text_overrun_behavior>`     | ``0``     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
+   | :ref:`VerticalAlignment <enum_@GlobalScope_VerticalAlignment>`     | :ref:`vertical_icon_alignment<class_Button_property_vertical_icon_alignment>` | ``1``     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính chủ đề
+-----------------
 
 .. table::
    :widths: auto
@@ -185,8 +185,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Button_property_alignment:
 
@@ -199,7 +199,7 @@ Property Descriptions
 - |void| **set_text_alignment**\ (\ value\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )
 - :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_text_alignment**\ (\ )
 
-Text alignment policy for the button's text.
+Chính sách căn chỉnh văn bản của nút.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Text alignment policy for the button's text.
 - |void| **set_autowrap_mode**\ (\ value\: :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`\ )
 - :ref:`AutowrapMode<enum_TextServer_AutowrapMode>` **get_autowrap_mode**\ (\ )
 
-If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`, the text gets wrapped inside the node's bounding rectangle.
+Nếu được đặt thành giá trị khác :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`, văn bản sẽ được bọc bên trong hình chữ nhật giới hạn của node.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_co
 - |void| **set_autowrap_trim_flags**\ (\ value\: |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\]\ )
 - |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\] **get_autowrap_trim_flags**\ (\ )
 
-Autowrap space trimming flags. See :ref:`TextServer.BREAK_TRIM_START_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_START_EDGE_SPACES>` and :ref:`TextServer.BREAK_TRIM_END_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_END_EDGE_SPACES>` for more info.
+Các cờ cắt khoảng trắng khi tự động xuống dòng. Xem :ref:`TextServer.BREAK_TRIM_START_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_START_EDGE_SPACES>` và :ref:`TextServer.BREAK_TRIM_END_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_END_EDGE_SPACES>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -250,7 +250,7 @@ Autowrap space trimming flags. See :ref:`TextServer.BREAK_TRIM_START_EDGE_SPACES
 - |void| **set_clip_text**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_clip_text**\ (\ )
 
-If ``true``, text that is too large to fit the button is clipped horizontally. If ``false``, the button will always be wide enough to hold the text. The text is not vertically clipped, and the button's height is not affected by this property.
+Nếu ``true``, văn bản quá lớn không vừa với nút sẽ bị cắt theo chiều ngang. Nếu ``false``, nút sẽ luôn đủ rộng để chứa văn bản. Văn bản không bị cắt theo chiều dọc và chiều cao của nút không bị ảnh hưởng bởi thuộc tính này.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ If ``true``, text that is too large to fit the button is clipped horizontally. I
 - |void| **set_expand_icon**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_expand_icon**\ (\ )
 
-When enabled, the button's icon will expand/shrink to fit the button's size while keeping its aspect. See also :ref:`icon_max_width<class_Button_theme_constant_icon_max_width>`.
+Khi được bật, biểu tượng của nút sẽ phóng to/thu nhỏ để vừa với kích thước của nút mà vẫn giữ nguyên tỷ lệ. Xem thêm :ref:`icon_max_width<class_Button_theme_constant_icon_max_width>`.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ When enabled, the button's icon will expand/shrink to fit the button's size whil
 - |void| **set_flat**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flat**\ (\ )
 
-Flat buttons don't display decoration.
+Các nút phẳng không hiển thị phần trang trí.
 
 .. rst-class:: classref-item-separator
 
@@ -294,16 +294,16 @@ Flat buttons don't display decoration.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **icon** :ref:`🔗<class_Button_property_icon>`
+:ref:`Texture2D<class_Texture2D>` **biểu tượng** :ref:`🔗 <class_Button_property_icon>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_button_icon**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_button_icon**\ (\ )
 
-Button's icon, if text is present the icon will be placed before the text.
+Biểu tượng của nút; nếu có văn bản, biểu tượng sẽ được đặt trước văn bản.
 
-To edit margin and spacing of the icon, use :ref:`h_separation<class_Button_theme_constant_h_separation>` theme property and ``content_margin_*`` properties of the used :ref:`StyleBox<class_StyleBox>`\ es.
+Để chỉnh sửa lề và khoảng cách của biểu tượng, hãy sử dụng thuộc tính theme :ref:`h_separation<class_Button_theme_constant_h_separation>` và các thuộc tính ``content_margin_*`` của các :ref:`StyleBox<class_StyleBox>`\ es đang được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -320,7 +320,7 @@ To edit margin and spacing of the icon, use :ref:`h_separation<class_Button_them
 - |void| **set_icon_alignment**\ (\ value\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )
 - :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_icon_alignment**\ (\ )
 
-Specifies if the icon should be aligned horizontally to the left, right, or center of a button. Uses the same :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` constants as the text alignment. If centered horizontally and vertically, text will draw on top of the icon.
+Chỉ định xem biểu tượng có được căn theo chiều ngang về bên trái, bên phải hay ở giữa nút hay không. Sử dụng cùng các hằng số :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` như khi căn chỉnh văn bản. Nếu được căn giữa theo cả chiều ngang và chiều dọc, văn bản sẽ được vẽ đè lên biểu tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ Specifies if the icon should be aligned horizontally to the left, right, or cent
 - |void| **set_language**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_language**\ (\ )
 
-Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead.
+Mã ngôn ngữ được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -354,7 +354,7 @@ Language code used for line-breaking and text shaping algorithms. If left empty,
 - |void| **set_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_text**\ (\ )
 
-The button's text that will be displayed inside the button's area.
+Văn bản của nút sẽ được hiển thị bên trong vùng của nút.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ The button's text that will be displayed inside the button's area.
 - |void| **set_text_direction**\ (\ value\: :ref:`TextDirection<enum_Control_TextDirection>`\ )
 - :ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ )
 
-Base text writing direction.
+Hướng viết cơ sở của văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ Base text writing direction.
 - |void| **set_text_overrun_behavior**\ (\ value\: :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`\ )
 - :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior**\ (\ )
 
-Sets the clipping behavior when the text exceeds the node's bounding rectangle.
+Thiết lập hành vi cắt xén khi văn bản vượt quá hình chữ nhật bao của node.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ Sets the clipping behavior when the text exceeds the node's bounding rectangle.
 - |void| **set_vertical_icon_alignment**\ (\ value\: :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>`\ )
 - :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **get_vertical_icon_alignment**\ (\ )
 
-Specifies if the icon should be aligned vertically to the top, bottom, or center of a button. Uses the same :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` constants as the text alignment. If centered horizontally and vertically, text will draw on top of the icon.
+Chỉ định biểu tượng sẽ được căn theo chiều dọc ở phía trên, phía dưới hoặc chính giữa nút. Sử dụng các hằng số :ref:`VerticalAlignment <enum_@GlobalScope_VerticalAlignment>` giống như căn chỉnh văn bản. Nếu được căn giữa theo cả chiều ngang và chiều dọc, văn bản sẽ được vẽ chồng lên biểu tượng.
 
 .. rst-class:: classref-section-separator
 
@@ -413,8 +413,8 @@ Specifies if the icon should be aligned vertically to the top, bottom, or center
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_Button_theme_color_font_color:
 
@@ -422,7 +422,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **font_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_Button_theme_color_font_color>`
 
-Default text :ref:`Color<class_Color>` of the **Button**.
+Văn bản :ref:`Color<class_Color>` mặc định của **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -434,7 +434,7 @@ Default text :ref:`Color<class_Color>` of the **Button**.
 
 :ref:`Color<class_Color>` **font_disabled_color** = ``Color(0.875, 0.875, 0.875, 0.5)`` :ref:`🔗<class_Button_theme_color_font_disabled_color>`
 
-Text :ref:`Color<class_Color>` used when the **Button** is disabled.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi **Button** bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -446,7 +446,7 @@ Text :ref:`Color<class_Color>` used when the **Button** is disabled.
 
 :ref:`Color<class_Color>` **font_focus_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_Button_theme_color_font_focus_color>`
 
-Text :ref:`Color<class_Color>` used when the **Button** is focused. Only replaces the normal text color of the button. Disabled, hovered, and pressed states take precedence over this color.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi **Button** đang được focus. Chỉ thay thế màu văn bản thông thường của nút. Các trạng thái bị vô hiệu hóa, di chuột qua và được nhấn được ưu tiên hơn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -458,7 +458,7 @@ Text :ref:`Color<class_Color>` used when the **Button** is focused. Only replace
 
 :ref:`Color<class_Color>` **font_hover_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_Button_theme_color_font_hover_color>`
 
-Text :ref:`Color<class_Color>` used when the **Button** is being hovered.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi đang di chuột qua **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -470,7 +470,7 @@ Text :ref:`Color<class_Color>` used when the **Button** is being hovered.
 
 :ref:`Color<class_Color>` **font_hover_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_font_hover_pressed_color>`
 
-Text :ref:`Color<class_Color>` used when the **Button** is being hovered and pressed.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi đang di chuột qua và nhấn **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -482,7 +482,7 @@ Text :ref:`Color<class_Color>` used when the **Button** is being hovered and pre
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_Button_theme_color_font_outline_color>`
 
-The tint of text outline of the **Button**.
+Màu sắc của đường viền văn bản của **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -494,7 +494,7 @@ The tint of text outline of the **Button**.
 
 :ref:`Color<class_Color>` **font_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_font_pressed_color>`
 
-Text :ref:`Color<class_Color>` used when the **Button** is being pressed.
+:ref:`Color<class_Color>` văn bản được sử dụng khi **Button** đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -506,7 +506,7 @@ Text :ref:`Color<class_Color>` used when the **Button** is being pressed.
 
 :ref:`Color<class_Color>` **icon_disabled_color** = ``Color(1, 1, 1, 0.4)`` :ref:`🔗<class_Button_theme_color_icon_disabled_color>`
 
-Icon modulate :ref:`Color<class_Color>` used when the **Button** is disabled.
+:ref:`Color<class_Color>` điều chỉnh sắc độ của biểu tượng được sử dụng khi **Button** bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -518,7 +518,7 @@ Icon modulate :ref:`Color<class_Color>` used when the **Button** is disabled.
 
 :ref:`Color<class_Color>` **icon_focus_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_focus_color>`
 
-Icon modulate :ref:`Color<class_Color>` used when the **Button** is focused. Only replaces the normal modulate color of the button. Disabled, hovered, and pressed states take precedence over this color.
+:ref:`Color<class_Color>` điều chỉnh sắc độ của biểu tượng được sử dụng khi **Button** được focus. Chỉ thay thế màu điều chỉnh sắc độ bình thường của nút. Các trạng thái bị vô hiệu hóa, di chuột qua và được nhấn được ưu tiên hơn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -530,7 +530,7 @@ Icon modulate :ref:`Color<class_Color>` used when the **Button** is focused. Onl
 
 :ref:`Color<class_Color>` **icon_hover_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_hover_color>`
 
-Icon modulate :ref:`Color<class_Color>` used when the **Button** is being hovered.
+:ref:`Color<class_Color>` điều chỉnh sắc độ của biểu tượng được sử dụng khi di chuột qua **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -542,7 +542,7 @@ Icon modulate :ref:`Color<class_Color>` used when the **Button** is being hovere
 
 :ref:`Color<class_Color>` **icon_hover_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_hover_pressed_color>`
 
-Icon modulate :ref:`Color<class_Color>` used when the **Button** is being hovered and pressed.
+:ref:`Color<class_Color>` điều chỉnh sắc độ của biểu tượng được sử dụng khi **Button** vừa được di chuột qua vừa được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -554,7 +554,7 @@ Icon modulate :ref:`Color<class_Color>` used when the **Button** is being hovere
 
 :ref:`Color<class_Color>` **icon_normal_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_normal_color>`
 
-Default icon modulate :ref:`Color<class_Color>` of the **Button**.
+:ref:`Color<class_Color>` điều chỉnh sắc độ mặc định của biểu tượng của **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -566,7 +566,7 @@ Default icon modulate :ref:`Color<class_Color>` of the **Button**.
 
 :ref:`Color<class_Color>` **icon_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Button_theme_color_icon_pressed_color>`
 
-Icon modulate :ref:`Color<class_Color>` used when the **Button** is being pressed.
+Màu điều biến biểu tượng :ref:`Color<class_Color>` được sử dụng khi **Button** đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -578,7 +578,7 @@ Icon modulate :ref:`Color<class_Color>` used when the **Button** is being presse
 
 :ref:`int<class_int>` **align_to_largest_stylebox** = ``0`` :ref:`🔗<class_Button_theme_constant_align_to_largest_stylebox>`
 
-This constant acts as a boolean. If ``true``, the minimum size of the button and text/icon alignment is always based on the largest stylebox margins, otherwise it's based on the current button state stylebox margins.
+Hằng số này hoạt động như một giá trị boolean. Nếu ``true``, kích thước tối thiểu của nút và căn chỉnh văn bản/biểu tượng luôn dựa trên các lề stylebox lớn nhất; nếu không, chúng dựa trên các lề stylebox của trạng thái nút hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -590,7 +590,7 @@ This constant acts as a boolean. If ``true``, the minimum size of the button and
 
 :ref:`int<class_int>` **h_separation** = ``4`` :ref:`🔗<class_Button_theme_constant_h_separation>`
 
-The horizontal space between **Button**'s icon and text. Negative values will be treated as ``0`` when used.
+Khoảng cách theo chiều ngang giữa biểu tượng và văn bản của **Button**. Các giá trị âm sẽ được coi là ``0`` khi được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -602,7 +602,7 @@ The horizontal space between **Button**'s icon and text. Negative values will be
 
 :ref:`int<class_int>` **icon_max_width** = ``0`` :ref:`🔗<class_Button_theme_constant_icon_max_width>`
 
-The maximum allowed width of the **Button**'s icon. This limit is applied on top of the default size of the icon, or its expanded size if :ref:`expand_icon<class_Button_property_expand_icon>` is ``true``. The height is adjusted according to the icon's ratio. If the button has additional icons (e.g. :ref:`CheckBox<class_CheckBox>`), they will also be limited.
+Chiều rộng tối đa được phép của biểu tượng **Button**. Giới hạn này được áp dụng trên kích thước mặc định của biểu tượng hoặc kích thước mở rộng của biểu tượng nếu :ref:`expand_icon<class_Button_property_expand_icon>` là ``true``. Chiều cao được điều chỉnh theo tỷ lệ của biểu tượng. Nếu nút có các biểu tượng bổ sung (ví dụ: :ref:`CheckBox<class_CheckBox>`), chúng cũng sẽ bị giới hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -614,7 +614,7 @@ The maximum allowed width of the **Button**'s icon. This limit is applied on top
 
 :ref:`int<class_int>` **line_spacing** = ``0`` :ref:`🔗<class_Button_theme_constant_line_spacing>`
 
-Additional vertical spacing between lines (in pixels), spacing is added to line descent. This value can be negative.
+Khoảng cách dọc bổ sung giữa các dòng (tính bằng pixel); khoảng cách này được cộng vào độ hạ dòng. Giá trị này có thể âm.
 
 .. rst-class:: classref-item-separator
 
@@ -626,9 +626,9 @@ Additional vertical spacing between lines (in pixels), spacing is added to line 
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_Button_theme_constant_outline_size>`
 
-The size of the text outline.
+Kích thước đường viền văn bản.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_Button_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng phông chữ có :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` được bật, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của phông chữ đó phải được đặt ít nhất bằng *hai lần* giá trị của :ref:`outline_size<class_Button_theme_constant_outline_size>` để việc kết xuất đường viền hiển thị chính xác. Nếu không, đường viền có thể bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -638,9 +638,9 @@ The size of the text outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_Button_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_Button_theme_font_font>`
 
-:ref:`Font<class_Font>` of the **Button**'s text.
+:ref:`Font<class_Font>` của văn bản của **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -650,9 +650,9 @@ The size of the text outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_Button_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_Button_theme_font_size_font_size>`
 
-Font size of the **Button**'s text.
+Kích thước phông chữ của văn bản của **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -662,9 +662,9 @@ Font size of the **Button**'s text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **icon** :ref:`🔗<class_Button_theme_icon_icon>`
+:ref:`Texture2D<class_Texture2D>` **icon** :ref:`🔗 <class_Button_theme_icon_icon>`
 
-Default icon for the **Button**. Appears only if :ref:`icon<class_Button_property_icon>` is not assigned.
+Biểu tượng mặc định cho **Button**. Chỉ xuất hiện nếu :ref:`icon<class_Button_property_icon>` chưa được gán.
 
 .. rst-class:: classref-item-separator
 
@@ -674,9 +674,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **disabled** :ref:`🔗<class_Button_theme_style_disabled>`
+:ref:`StyleBox<class_StyleBox>` **disabled** :ref:`🔗 <class_Button_theme_style_disabled>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is disabled.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -686,9 +686,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **disabled_mirrored** :ref:`🔗<class_Button_theme_style_disabled_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **disabled_mirrored** :ref:`🔗 <class_Button_theme_style_disabled_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is disabled (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** bị vô hiệu hóa (đối với các bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -698,9 +698,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_Button_theme_style_focus>`
+:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗 <class_Button_theme_style_focus>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is focused. The :ref:`focus<class_Button_theme_style_focus>` :ref:`StyleBox<class_StyleBox>` is displayed *over* the base :ref:`StyleBox<class_StyleBox>`, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the base :ref:`StyleBox<class_StyleBox>` remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** đang được focus. :ref:`focus<class_Button_theme_style_focus>` :ref:`StyleBox<class_StyleBox>` được hiển thị *trên* :ref:`StyleBox<class_StyleBox>` cơ sở, vì vậy nên sử dụng :ref:`StyleBox<class_StyleBox>` bán trong suốt để đảm bảo :ref:`StyleBox<class_StyleBox>` cơ sở vẫn hiển thị. Một :ref:`StyleBox<class_StyleBox>` đại diện cho đường viền hoặc đường gạch chân sẽ phù hợp cho mục đích này. Để tắt hiệu ứng hiển thị focus, hãy gán tài nguyên :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`. Lưu ý rằng việc tắt hiệu ứng hiển thị focus sẽ ảnh hưởng đến khả năng sử dụng của thao tác điều hướng bằng bàn phím/bộ điều khiển, vì vậy không nên thực hiện việc này vì lý do khả năng tiếp cận.
 
 .. rst-class:: classref-item-separator
 
@@ -710,9 +710,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover** :ref:`🔗<class_Button_theme_style_hover>`
+:ref:`StyleBox<class_StyleBox>` **hover** :ref:`🔗 <class_Button_theme_style_hover>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is being hovered.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** đang được hover.
 
 .. rst-class:: classref-item-separator
 
@@ -722,9 +722,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover_mirrored** :ref:`🔗<class_Button_theme_style_hover_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **hover_mirrored** :ref:`🔗 <class_Button_theme_style_hover_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is being hovered (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** đang được di chuột qua (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -734,9 +734,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover_pressed** :ref:`🔗<class_Button_theme_style_hover_pressed>`
+:ref:`StyleBox<class_StyleBox>` **hover_pressed** :ref:`🔗 <class_Button_theme_style_hover_pressed>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is being pressed and hovered at the same time.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** đang được nhấn và di chuột qua cùng lúc.
 
 .. rst-class:: classref-item-separator
 
@@ -746,9 +746,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover_pressed_mirrored** :ref:`🔗<class_Button_theme_style_hover_pressed_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **hover_pressed_mirrored** :ref:`🔗 <class_Button_theme_style_hover_pressed_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is being pressed and hovered at the same time (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** đang được nhấn và di chuột qua cùng lúc (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -758,9 +758,9 @@ Default icon for the **Button**. Appears only if :ref:`icon<class_Button_propert
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗<class_Button_theme_style_normal>`
+:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗 <class_Button_theme_style_normal>`
 
-Default :ref:`StyleBox<class_StyleBox>` for the **Button**.
+Mặc định :ref:`StyleBox<class_StyleBox>` cho **Button**.
 
 .. rst-class:: classref-item-separator
 
@@ -770,7 +770,7 @@ Default :ref:`StyleBox<class_StyleBox>` for the **Button**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal_mirrored** :ref:`🔗<class_Button_theme_style_normal_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **normal_mirrored** :ref:`🔗 <class_Button_theme_style_normal_mirrored>`
 
 Default :ref:`StyleBox<class_StyleBox>` for the **Button** (for right-to-left layouts).
 
@@ -782,9 +782,9 @@ Default :ref:`StyleBox<class_StyleBox>` for the **Button** (for right-to-left la
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **pressed** :ref:`🔗<class_Button_theme_style_pressed>`
+:ref:`StyleBox<class_StyleBox>` **pressed** :ref:`🔗 <class_Button_theme_style_pressed>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is being pressed.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -794,16 +794,16 @@ Default :ref:`StyleBox<class_StyleBox>` for the **Button** (for right-to-left la
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **pressed_mirrored** :ref:`🔗<class_Button_theme_style_pressed_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **pressed_mirrored** :ref:`🔗 <class_Button_theme_style_pressed_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Button** is being pressed (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **Button** đang được nhấn (đối với bố cục từ phải sang trái).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

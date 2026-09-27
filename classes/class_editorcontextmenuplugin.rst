@@ -10,23 +10,23 @@
 EditorContextMenuPlugin
 =======================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Plugin for adding custom context menus in the editor.
+Plugin để thêm các menu ngữ cảnh tùy chỉnh trong editor.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EditorContextMenuPlugin** allows for the addition of custom options in the editor's context menu.
+**EditorContextMenuPlugin** cho phép thêm các tùy chọn tùy chỉnh vào menu ngữ cảnh của editor.
 
-Currently, context menus are supported for three commonly used areas: the file system, scene tree, and editor script list panel.
+Hiện tại, menu ngữ cảnh được hỗ trợ cho ba khu vực thường dùng: hệ thống tệp, cây cảnh và bảng danh sách script của editor.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -49,14 +49,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorContextMenuPlugin_ContextMenuSlot:
 
 .. rst-class:: classref-enumeration
 
-enum **ContextMenuSlot**: :ref:`🔗<enum_EditorContextMenuPlugin_ContextMenuSlot>`
+enum **ContextMenuSlot**: :ref:`🔗 <enum_EditorContextMenuPlugin_ContextMenuSlot>`
 
 .. _class_EditorContextMenuPlugin_constant_CONTEXT_SLOT_SCENE_TREE:
 
@@ -64,7 +64,7 @@ enum **ContextMenuSlot**: :ref:`🔗<enum_EditorContextMenuPlugin_ContextMenuSlo
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_SCENE_TREE** = ``0``
 
-Context menu of Scene dock. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` will be called with a list of paths to currently selected nodes, while option callback will receive the list of currently selected nodes.
+Menu ngữ cảnh của dock Scene. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` sẽ được gọi với danh sách các đường dẫn đến các node hiện đang được chọn, trong khi callback của option sẽ nhận danh sách các node hiện đang được chọn.
 
 .. _class_EditorContextMenuPlugin_constant_CONTEXT_SLOT_FILESYSTEM:
 
@@ -72,7 +72,7 @@ Context menu of Scene dock. :ref:`_popup_menu()<class_EditorContextMenuPlugin_pr
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_FILESYSTEM** = ``1``
 
-Context menu of FileSystem dock. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` and option callback will be called with list of paths of the currently selected files.
+Menu ngữ cảnh của dock FileSystem. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` và callback của tùy chọn sẽ được gọi với danh sách các đường dẫn của những tệp hiện đang được chọn.
 
 .. _class_EditorContextMenuPlugin_constant_CONTEXT_SLOT_SCRIPT_EDITOR:
 
@@ -80,7 +80,7 @@ Context menu of FileSystem dock. :ref:`_popup_menu()<class_EditorContextMenuPlug
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_SCRIPT_EDITOR** = ``2``
 
-Context menu of Script editor's script tabs. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` will be called with the path to the currently edited script, while option callback will receive reference to that script.
+Menu ngữ cảnh của các tab script trong Script editor. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` sẽ được gọi với đường dẫn đến script hiện đang được chỉnh sửa, trong khi callback của tùy chọn sẽ nhận tham chiếu đến script đó.
 
 .. _class_EditorContextMenuPlugin_constant_CONTEXT_SLOT_FILESYSTEM_CREATE:
 
@@ -88,7 +88,7 @@ Context menu of Script editor's script tabs. :ref:`_popup_menu()<class_EditorCon
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_FILESYSTEM_CREATE** = ``3``
 
-The "Create..." submenu of FileSystem dock's context menu, or the "New" section of the main context menu when empty space is clicked. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` and option callback will be called with the path of the currently selected folder. When clicking the empty space, the list of paths for popup method will be empty.
+Menu con "Create..." của menu ngữ cảnh dock FileSystem hoặc phần "New" của menu ngữ cảnh chính khi nhấp vào khoảng trống. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` và callback của tùy chọn sẽ được gọi với đường dẫn của thư mục hiện đang được chọn. Khi nhấp vào khoảng trống, danh sách đường dẫn dành cho phương thức popup sẽ trống.
 
 ::
 
@@ -104,14 +104,14 @@ The "Create..." submenu of FileSystem dock's context menu, or the "New" section 
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_SCRIPT_EDITOR_CODE** = ``4``
 
-Context menu of Script editor's code editor. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` will be called with the path to the :ref:`CodeEdit<class_CodeEdit>` node. You can fetch it using this code:
+Menu ngữ cảnh của trình soạn thảo mã trong Script editor. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` sẽ được gọi với đường dẫn đến node :ref:`CodeEdit<class_CodeEdit>`. Bạn có thể lấy node này bằng đoạn mã sau:
 
 ::
 
     func _popup_menu(paths):
         var code_edit = Engine.get_main_loop().root.get_node(paths[0]);
 
-The option callback will receive reference to that node. You can use :ref:`CodeEdit<class_CodeEdit>` methods to perform symbol lookups etc.
+Callback của tùy chọn sẽ nhận tham chiếu đến node đó. Bạn có thể sử dụng các phương thức của :ref:`CodeEdit<class_CodeEdit>` để thực hiện tra cứu symbol, v.v.
 
 .. _class_EditorContextMenuPlugin_constant_CONTEXT_SLOT_SCENE_TABS:
 
@@ -119,7 +119,7 @@ The option callback will receive reference to that node. You can use :ref:`CodeE
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_SCENE_TABS** = ``5``
 
-Context menu of scene tabs. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` will be called with the path of the clicked scene, or empty :ref:`PackedStringArray<class_PackedStringArray>` if the menu was opened on empty space. The option callback will receive the path of the clicked scene, or empty :ref:`String<class_String>` if none was clicked.
+Menu ngữ cảnh của các tab scene. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` sẽ được gọi với đường dẫn của scene được nhấp vào hoặc :ref:`PackedStringArray<class_PackedStringArray>` trống nếu menu được mở trên khoảng trống. Callback của tùy chọn sẽ nhận đường dẫn của scene được nhấp vào hoặc :ref:`String<class_String>` trống nếu không có scene nào được nhấp vào.
 
 .. _class_EditorContextMenuPlugin_constant_CONTEXT_SLOT_2D_EDITOR:
 
@@ -127,14 +127,14 @@ Context menu of scene tabs. :ref:`_popup_menu()<class_EditorContextMenuPlugin_pr
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_2D_EDITOR** = ``6``
 
-Context menu of 2D editor's basic right-click menu. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` will be called with paths to all :ref:`CanvasItem<class_CanvasItem>` nodes under the cursor. You can fetch them using this code:
+Menu ngữ cảnh cơ bản khi nhấp chuột phải của trình soạn thảo 2D. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` sẽ được gọi với đường dẫn đến tất cả các node :ref:`CanvasItem<class_CanvasItem>` bên dưới con trỏ. Bạn có thể lấy chúng bằng đoạn mã sau:
 
 ::
 
     func _popup_menu(paths):
         var canvas_item = Engine.get_main_loop().root.get_node(paths[0]); # Replace 0 with the desired index.
 
-The paths array is empty if there weren't any nodes under cursor. The option callback will receive a typed array of :ref:`CanvasItem<class_CanvasItem>` nodes.
+Mảng paths sẽ trống nếu không có node nào bên dưới con trỏ. callback của option sẽ nhận một mảng có kiểu gồm các node :ref:`CanvasItem<class_CanvasItem>`.
 
 .. _class_EditorContextMenuPlugin_constant_CONTEXT_SLOT_INSPECTOR_PROPERTY:
 
@@ -142,7 +142,7 @@ The paths array is empty if there weren't any nodes under cursor. The option cal
 
 :ref:`ContextMenuSlot<enum_EditorContextMenuPlugin_ContextMenuSlot>` **CONTEXT_SLOT_INSPECTOR_PROPERTY** = ``7``
 
-Context menu of the inspectors right-click menu. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` will be called with an array of two items: The first will be the object's ID, the second will be the property name. An object can be retrieved from it's ID via :ref:`@GlobalScope.instance_from_id()<class_@GlobalScope_method_instance_from_id>` after converting it to an int. The option callback will receive the EditorProperty directly.
+Menu ngữ cảnh của menu chuột phải của inspector. :ref:`_popup_menu()<class_EditorContextMenuPlugin_private_method__popup_menu>` sẽ được gọi với một mảng gồm hai mục: Mục đầu tiên là ID của object, mục thứ hai là tên thuộc tính. Có thể truy xuất một object từ ID của nó thông qua :ref:`@GlobalScope.instance_from_id() <class_@GlobalScope_method_instance_from_id>` sau khi chuyển đổi ID đó thành int. callback của option sẽ nhận trực tiếp EditorProperty.
 
 .. rst-class:: classref-section-separator
 
@@ -150,8 +150,8 @@ Context menu of the inspectors right-click menu. :ref:`_popup_menu()<class_Edito
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorContextMenuPlugin_private_method__popup_menu:
 
@@ -159,7 +159,7 @@ Method Descriptions
 
 |void| **_popup_menu**\ (\ paths\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |virtual| :ref:`🔗<class_EditorContextMenuPlugin_private_method__popup_menu>`
 
-Called when creating a context menu, custom options can be added by using the :ref:`add_context_menu_item()<class_EditorContextMenuPlugin_method_add_context_menu_item>` or :ref:`add_context_menu_item_from_shortcut()<class_EditorContextMenuPlugin_method_add_context_menu_item_from_shortcut>` functions. ``paths`` contains currently selected paths (depending on menu), which can be used to conditionally add options.
+Được gọi khi tạo menu ngữ cảnh; có thể thêm các option tùy chỉnh bằng cách sử dụng các hàm :ref:`add_context_menu_item()<class_EditorContextMenuPlugin_method_add_context_menu_item>` hoặc :ref:`add_context_menu_item_from_shortcut()<class_EditorContextMenuPlugin_method_add_context_menu_item_from_shortcut>`. ``paths`` chứa các paths hiện được chọn (tùy thuộc vào menu), có thể dùng để thêm option một cách có điều kiện.
 
 .. rst-class:: classref-item-separator
 
@@ -171,14 +171,14 @@ Called when creating a context menu, custom options can be added by using the :r
 
 |void| **add_context_menu_item**\ (\ name\: :ref:`String<class_String>`, callback\: :ref:`Callable<class_Callable>`, icon\: :ref:`Texture2D<class_Texture2D>` = null\ ) :ref:`🔗<class_EditorContextMenuPlugin_method_add_context_menu_item>`
 
-Add custom option to the context menu of the plugin's specified slot. When the option is activated, ``callback`` will be called. Callback should take single :ref:`Array<class_Array>` argument; array contents depend on context menu slot.
+Thêm option tùy chỉnh vào menu ngữ cảnh của slot được chỉ định của plugin. Khi option được kích hoạt, ``callback`` sẽ được gọi. Callback phải nhận một đối số :ref:`Array<class_Array>` duy nhất; nội dung của mảng phụ thuộc vào slot của menu ngữ cảnh.
 
 ::
 
     func _popup_menu(paths):
         add_context_menu_item("File Custom options", handle, ICON)
 
-If you want to assign shortcut to the menu item, use :ref:`add_context_menu_item_from_shortcut()<class_EditorContextMenuPlugin_method_add_context_menu_item_from_shortcut>` instead.
+Nếu muốn gán shortcut cho mục menu, hãy sử dụng :ref:`add_context_menu_item_from_shortcut()<class_EditorContextMenuPlugin_method_add_context_menu_item_from_shortcut>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ If you want to assign shortcut to the menu item, use :ref:`add_context_menu_item
 
 |void| **add_context_menu_item_from_shortcut**\ (\ name\: :ref:`String<class_String>`, shortcut\: :ref:`Shortcut<class_Shortcut>`, icon\: :ref:`Texture2D<class_Texture2D>` = null\ ) :ref:`🔗<class_EditorContextMenuPlugin_method_add_context_menu_item_from_shortcut>`
 
-Add custom option to the context menu of the plugin's specified slot. The option will have the ``shortcut`` assigned and reuse its callback. The shortcut has to be registered beforehand with :ref:`add_menu_shortcut()<class_EditorContextMenuPlugin_method_add_menu_shortcut>`.
+Thêm option tùy chỉnh vào menu ngữ cảnh của slot được chỉ định của plugin. Option sẽ được gán ``shortcut`` và sử dụng lại callback của nó. Shortcut phải được đăng ký trước bằng :ref:`add_menu_shortcut()<class_EditorContextMenuPlugin_method_add_menu_shortcut>`.
 
 ::
 
@@ -210,7 +210,7 @@ Add custom option to the context menu of the plugin's specified slot. The option
 
 |void| **add_context_submenu_item**\ (\ name\: :ref:`String<class_String>`, menu\: :ref:`PopupMenu<class_PopupMenu>`, icon\: :ref:`Texture2D<class_Texture2D>` = null\ ) :ref:`🔗<class_EditorContextMenuPlugin_method_add_context_submenu_item>`
 
-Add a submenu to the context menu of the plugin's specified slot. The submenu is not automatically handled, you need to connect to its signals yourself. Also the submenu is freed on every popup, so provide a new :ref:`PopupMenu<class_PopupMenu>` every time.
+Thêm một submenu vào context menu của slot được chỉ định của plugin. Submenu này không được tự động xử lý, bạn cần tự kết nối với các signal của nó. Ngoài ra, submenu được giải phóng sau mỗi lần popup, vì vậy hãy cung cấp một :ref:`PopupMenu<class_PopupMenu>` mới mỗi lần.
 
 ::
 
@@ -232,19 +232,19 @@ Add a submenu to the context menu of the plugin's specified slot. The submenu is
 
 |void| **add_menu_shortcut**\ (\ shortcut\: :ref:`Shortcut<class_Shortcut>`, callback\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_EditorContextMenuPlugin_method_add_menu_shortcut>`
 
-Registers a shortcut associated with the plugin's context menu. This method should be called once (e.g. in plugin's :ref:`Object._init()<class_Object_private_method__init>`). ``callback`` will be called when user presses the specified ``shortcut`` while the menu's context is in effect (e.g. FileSystem dock is focused). Callback should take single :ref:`Array<class_Array>` argument; array contents depend on context menu slot.
+Đăng ký một shortcut liên kết với context menu của plugin. Phương thức này nên được gọi một lần (ví dụ: trong :ref:`Object._init()<class_Object_private_method__init>` của plugin). ``callback`` sẽ được gọi khi người dùng nhấn ``shortcut`` được chỉ định trong lúc context của menu có hiệu lực (ví dụ: dock FileSystem đang được focus). Callback phải nhận một đối số :ref:`Array<class_Array>` duy nhất; nội dung của mảng phụ thuộc vào slot của context menu.
 
 ::
 
     func _init():
         add_menu_shortcut(SHORTCUT, handle)
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

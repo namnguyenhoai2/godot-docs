@@ -10,22 +10,22 @@
 OpenXRCompositionLayerEquirect
 ==============================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRCompositionLayer<class_OpenXRCompositionLayer>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-An OpenXR composition layer that is rendered as an internal slice of a sphere.
+Một composition layer của OpenXR được kết xuất dưới dạng một lát bên trong của hình cầu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An OpenXR composition layer that allows rendering a :ref:`SubViewport<class_SubViewport>` on an internal slice of a sphere.
+Một composition layer của OpenXR cho phép kết xuất một :ref:`SubViewport<class_SubViewport>` trên một lát bên trong của hình cầu.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRCompositionLayerEquirect_property_central_horizontal_angle:
 
@@ -63,7 +63,7 @@ Property Descriptions
 - |void| **set_central_horizontal_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_central_horizontal_angle**\ (\ )
 
-The central horizontal angle of the sphere. Used to set the width.
+Góc ngang trung tâm của hình cầu. Dùng để thiết lập chiều rộng.
 
 .. rst-class:: classref-item-separator
 
@@ -80,7 +80,7 @@ The central horizontal angle of the sphere. Used to set the width.
 - |void| **set_fallback_segments**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_fallback_segments**\ (\ )
 
-The number of segments to use in the fallback mesh.
+Số lượng phân đoạn cần dùng trong fallback mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -97,7 +97,7 @@ The number of segments to use in the fallback mesh.
 - |void| **set_lower_vertical_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_lower_vertical_angle**\ (\ )
 
-The lower vertical angle of the sphere. Used (together with :ref:`upper_vertical_angle<class_OpenXRCompositionLayerEquirect_property_upper_vertical_angle>`) to set the height.
+Góc dọc phía dưới của hình cầu. Dùng (cùng với :ref:`upper_vertical_angle<class_OpenXRCompositionLayerEquirect_property_upper_vertical_angle>`) để thiết lập chiều cao.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ The lower vertical angle of the sphere. Used (together with :ref:`upper_vertical
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The radius of the sphere.
+Bán kính của hình cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -131,14 +131,14 @@ The radius of the sphere.
 - |void| **set_upper_vertical_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_upper_vertical_angle**\ (\ )
 
-The upper vertical angle of the sphere. Used (together with :ref:`lower_vertical_angle<class_OpenXRCompositionLayerEquirect_property_lower_vertical_angle>`) to set the height.
+Góc dọc phía trên của hình cầu. Dùng (cùng với :ref:`lower_vertical_angle<class_OpenXRCompositionLayerEquirect_property_lower_vertical_angle>`) để thiết lập chiều cao.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

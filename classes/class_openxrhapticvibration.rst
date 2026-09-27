@@ -10,20 +10,20 @@
 OpenXRHapticVibration
 =====================
 
-**Inherits:** :ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRHapticBase<class_OpenXRHapticBase>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Vibration haptic feedback.
+Phản hồi xúc giác dạng rung.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This haptic feedback resource makes it possible to define a vibration based haptic feedback pulse that can be triggered through actions in the OpenXR action map.
+Tài nguyên phản hồi xúc giác này cho phép xác định một xung phản hồi xúc giác dựa trên rung, có thể được kích hoạt thông qua các action trong action map của OpenXR.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -43,8 +43,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRHapticVibration_property_amplitude:
 
@@ -57,7 +57,7 @@ Property Descriptions
 - |void| **set_amplitude**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_amplitude**\ (\ )
 
-The amplitude of the pulse between ``0.0`` and ``1.0``.
+Biên độ của xung nằm trong khoảng từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -74,7 +74,7 @@ The amplitude of the pulse between ``0.0`` and ``1.0``.
 - |void| **set_duration**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_duration**\ (\ )
 
-The duration of the pulse in nanoseconds. Use ``-1`` for a minimum duration pulse for the current XR runtime.
+Thời lượng của xung tính bằng nanosecond. Sử dụng ``-1`` để tạo xung có thời lượng tối thiểu cho XR runtime hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -91,14 +91,14 @@ The duration of the pulse in nanoseconds. Use ``-1`` for a minimum duration puls
 - |void| **set_frequency**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_frequency**\ (\ )
 
-The frequency of the pulse in Hz. ``0.0`` will let the XR runtime chose an optimal frequency for the device used.
+Tần số của xung tính bằng Hz. ``0.0`` sẽ cho phép XR runtime chọn tần số tối ưu cho thiết bị được sử dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè method này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

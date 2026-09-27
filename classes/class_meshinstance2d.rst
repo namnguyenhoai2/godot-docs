@@ -10,31 +10,31 @@
 MeshInstance2D
 ==============
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Node used for displaying a :ref:`Mesh<class_Mesh>` in 2D.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Node used for displaying a :ref:`Mesh<class_Mesh>` in 2D. This can be faster to render compared to displaying a :ref:`Sprite2D<class_Sprite2D>` node with large transparent areas, especially if the node takes up a lot of space on screen at high viewport resolutions. This is because using a mesh designed to fit the sprite's opaque areas will reduce GPU fill rate utilization (at the cost of increased vertex processing utilization).
-
-When a :ref:`Mesh<class_Mesh>` has to be instantiated more than thousands of times close to each other, consider using a :ref:`MultiMesh<class_MultiMesh>` in a :ref:`MultiMeshInstance2D<class_MultiMeshInstance2D>` instead.
-
-A **MeshInstance2D** can be created from an existing :ref:`Sprite2D<class_Sprite2D>` via a tool in the editor toolbar. Select the :ref:`Sprite2D<class_Sprite2D>` node, then choose **Sprite2D > Convert to MeshInstance2D** at the top of the 2D editor viewport.
+Nút dùng để hiển thị một :ref:`Mesh<class_Mesh>` trong 2D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Nút dùng để hiển thị một :ref:`Mesh<class_Mesh>` trong 2D. Cách này có thể render nhanh hơn so với hiển thị một nút :ref:`Sprite2D<class_Sprite2D>` có các vùng trong suốt lớn, đặc biệt nếu nút chiếm nhiều không gian trên màn hình ở độ phân giải viewport cao. Lý do là việc sử dụng một mesh được thiết kế vừa với các vùng không trong suốt của sprite sẽ giảm mức sử dụng fill rate của GPU (đổi lại làm tăng mức sử dụng khả năng xử lý vertex).
+
+Khi một :ref:`Mesh<class_Mesh>` cần được khởi tạo hơn hàng nghìn lần ở gần nhau, hãy cân nhắc sử dụng một :ref:`MultiMesh<class_MultiMesh>` trong một :ref:`MultiMeshInstance2D<class_MultiMeshInstance2D>` thay thế.
+
+Có thể tạo một **MeshInstance2D** từ một :ref:`Sprite2D<class_Sprite2D>` hiện có thông qua một công cụ trên thanh công cụ của trình chỉnh sửa. Chọn nút :ref:`Sprite2D<class_Sprite2D>`, sau đó chọn **Sprite2D > Convert to MeshInstance2D** ở phía trên viewport của trình chỉnh sửa 2D.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`2D meshes <../tutorials/2d/2d_meshes>`
+- :doc:`mesh 2D <../tutorials/2d/2d_meshes>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -52,8 +52,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_MeshInstance2D_signal_texture_changed:
 
@@ -61,7 +61,7 @@ Signals
 
 **texture_changed**\ (\ ) :ref:`🔗<class_MeshInstance2D_signal_texture_changed>`
 
-Emitted when the :ref:`texture<class_MeshInstance2D_property_texture>` is changed.
+Được phát ra khi :ref:`texture<class_MeshInstance2D_property_texture>` được thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -69,21 +69,21 @@ Emitted when the :ref:`texture<class_MeshInstance2D_property_texture>` is change
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MeshInstance2D_property_mesh:
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗<class_MeshInstance2D_property_mesh>`
+:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗 <class_MeshInstance2D_property_mesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_mesh**\ (\ value\: :ref:`Mesh<class_Mesh>`\ )
 - :ref:`Mesh<class_Mesh>` **get_mesh**\ (\ )
 
-The :ref:`Mesh<class_Mesh>` that will be drawn by the **MeshInstance2D**.
+:ref:`Mesh<class_Mesh>` sẽ được **MeshInstance2D** vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -93,21 +93,21 @@ The :ref:`Mesh<class_Mesh>` that will be drawn by the **MeshInstance2D**.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_MeshInstance2D_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_MeshInstance2D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-The :ref:`Texture2D<class_Texture2D>` that will be used if using the default :ref:`CanvasItemMaterial<class_CanvasItemMaterial>`. Can be accessed as ``TEXTURE`` in CanvasItem shader.
+:ref:`Texture2D<class_Texture2D>` được sử dụng khi dùng :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` mặc định. Có thể truy cập dưới dạng ``TEXTURE`` trong shader CanvasItem.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

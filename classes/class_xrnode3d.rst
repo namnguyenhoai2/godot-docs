@@ -10,48 +10,48 @@
 XRNode3D
 ========
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`XRAnchor3D<class_XRAnchor3D>`, :ref:`XRController3D<class_XRController3D>`
+**Được kế thừa bởi:** :ref:`XRAnchor3D<class_XRAnchor3D>`, :ref:`XRController3D<class_XRController3D>`
 
-A 3D node that has its position automatically updated by the :ref:`XRServer<class_XRServer>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This node can be bound to a specific pose of an :ref:`XRPositionalTracker<class_XRPositionalTracker>` and will automatically have its :ref:`Node3D.transform<class_Node3D_property_transform>` updated by the :ref:`XRServer<class_XRServer>`. Nodes of this type must be added as children of the :ref:`XROrigin3D<class_XROrigin3D>` node.
+Một node 3D có vị trí được tự động cập nhật bởi :ref:`XRServer<class_XRServer>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node này có thể được liên kết với một pose cụ thể của :ref:`XRPositionalTracker<class_XRPositionalTracker>` và :ref:`Node3D.transform<class_Node3D_property_transform>` của nó sẽ tự động được :ref:`XRServer<class_XRServer>` cập nhật. Các node thuộc loại này phải được thêm làm node con của node :ref:`XROrigin3D<class_XROrigin3D>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`chỉ mục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                          | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                                 | :ref:`pose<class_XRNode3D_property_pose>`                           | ``&"default"``                                                                |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`show_when_tracked<class_XRNode3D_property_show_when_tracked>` | ``false``                                                                     |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                                 | :ref:`tracker<class_XRNode3D_property_tracker>`                     | ``&""``                                                                       |
-   +---------------------------------------------------------------------+---------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +----------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`PhysicsInterpolationMode <enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                          | ``2`` (ghi đè :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                                  | :ref:`pose<class_XRNode3D_property_pose>`                           | ``&"default"``                                                             |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`show_when_tracked<class_XRNode3D_property_show_when_tracked>` | ``false``                                                                  |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                                  | :ref:`tracker<class_XRNode3D_property_tracker>`                     | ``&""``                                                                    |
+   +----------------------------------------------------------------------+---------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -72,8 +72,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_XRNode3D_signal_tracking_changed:
 
@@ -81,7 +81,7 @@ Signals
 
 **tracking_changed**\ (\ tracking\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_XRNode3D_signal_tracking_changed>`
 
-Emitted when the :ref:`tracker<class_XRNode3D_property_tracker>` starts or stops receiving updated tracking data for the :ref:`pose<class_XRNode3D_property_pose>` being tracked. The ``tracking`` argument indicates whether the tracker is getting updated tracking data.
+Được phát ra khi :ref:`tracker<class_XRNode3D_property_tracker>` bắt đầu hoặc dừng nhận dữ liệu tracking được cập nhật cho :ref:`pose<class_XRNode3D_property_pose>` đang được theo dõi. Đối số ``tracking`` cho biết tracker có đang nhận dữ liệu tracking được cập nhật hay không.
 
 .. rst-class:: classref-section-separator
 
@@ -89,8 +89,8 @@ Emitted when the :ref:`tracker<class_XRNode3D_property_tracker>` starts or stops
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRNode3D_property_pose:
 
@@ -103,9 +103,9 @@ Property Descriptions
 - |void| **set_pose_name**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_pose_name**\ (\ )
 
-The name of the pose we're bound to. Which poses a tracker supports is not known during design time.
+Tên của pose mà chúng ta liên kết. Không thể biết trong thời gian thiết kế tracker hỗ trợ những pose nào.
 
-Godot defines number of standard pose names such as ``aim`` and ``grip`` but other may be configured within a given :ref:`XRInterface<class_XRInterface>`.
+Godot định nghĩa một số tên pose tiêu chuẩn như ``aim`` và ``grip``, nhưng các tên khác có thể được cấu hình trong một :ref:`XRInterface<class_XRInterface>` nhất định.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Godot defines number of standard pose names such as ``aim`` and ``grip`` but oth
 - |void| **set_show_when_tracked**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_show_when_tracked**\ (\ )
 
-Enables showing the node when tracking starts, and hiding the node when tracking is lost.
+Bật hiển thị node khi bắt đầu tracking và ẩn node khi mất tracking.
 
 .. rst-class:: classref-item-separator
 
@@ -139,9 +139,9 @@ Enables showing the node when tracking starts, and hiding the node when tracking
 - |void| **set_tracker**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_tracker**\ (\ )
 
-The name of the tracker we're bound to. Which trackers are available is not known during design time.
+Tên của tracker mà chúng ta liên kết. Không thể biết trong thời gian thiết kế có những tracker nào.
 
-Godot defines a number of standard trackers such as ``left_hand`` and ``right_hand`` but others may be configured within a given :ref:`XRInterface<class_XRInterface>`.
+Godot định nghĩa một số tracker tiêu chuẩn như ``left_hand`` và ``right_hand``, nhưng các tracker khác có thể được cấu hình trong một :ref:`XRInterface<class_XRInterface>` nhất định.
 
 .. rst-class:: classref-section-separator
 
@@ -149,8 +149,8 @@ Godot defines a number of standard trackers such as ``left_hand`` and ``right_ha
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRNode3D_method_get_has_tracking_data:
 
@@ -158,7 +158,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **get_has_tracking_data**\ (\ ) |const| :ref:`🔗<class_XRNode3D_method_get_has_tracking_data>`
 
-Returns ``true`` if the :ref:`tracker<class_XRNode3D_property_tracker>` has current tracking data for the :ref:`pose<class_XRNode3D_property_pose>` being tracked.
+Trả về ``true`` nếu :ref:`tracker<class_XRNode3D_property_tracker>` có dữ liệu theo dõi hiện tại cho :ref:`pose<class_XRNode3D_property_pose>` đang được theo dõi.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Returns ``true`` if the :ref:`tracker<class_XRNode3D_property_tracker>` has curr
 
 :ref:`bool<class_bool>` **get_is_active**\ (\ ) |const| :ref:`🔗<class_XRNode3D_method_get_is_active>`
 
-Returns ``true`` if the :ref:`tracker<class_XRNode3D_property_tracker>` has been registered and the :ref:`pose<class_XRNode3D_property_pose>` is being tracked.
+Trả về ``true`` nếu :ref:`tracker<class_XRNode3D_property_tracker>` đã được đăng ký và :ref:`pose<class_XRNode3D_property_pose>` đang được theo dõi.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Returns ``true`` if the :ref:`tracker<class_XRNode3D_property_tracker>` has been
 
 :ref:`XRPose<class_XRPose>` **get_pose**\ (\ ) :ref:`🔗<class_XRNode3D_method_get_pose>`
 
-Returns the :ref:`XRPose<class_XRPose>` containing the current state of the pose being tracked. This gives access to additional properties of this pose.
+Trả về :ref:`XRPose<class_XRPose>` chứa trạng thái hiện tại của tư thế đang được theo dõi. Điều này cho phép truy cập các thuộc tính bổ sung của tư thế này.
 
 .. rst-class:: classref-item-separator
 
@@ -194,24 +194,24 @@ Returns the :ref:`XRPose<class_XRPose>` containing the current state of the pose
 
 |void| **trigger_haptic_pulse**\ (\ action_name\: :ref:`String<class_String>`, frequency\: :ref:`float<class_float>`, amplitude\: :ref:`float<class_float>`, duration_sec\: :ref:`float<class_float>`, delay_sec\: :ref:`float<class_float>`\ ) :ref:`🔗<class_XRNode3D_method_trigger_haptic_pulse>`
 
-Triggers a haptic pulse on a device associated with this interface.
+Kích hoạt một xung phản hồi xúc giác trên thiết bị được liên kết với giao diện này.
 
-\ ``action_name`` is the name of the action for this pulse.
+\ ``action_name`` là tên của hành động cho xung này.
 
-\ ``frequency`` is the frequency of the pulse, set to ``0.0`` to have the system use a default frequency.
+\ ``frequency`` là tần số của xung, được đặt thành ``0.0`` để hệ thống sử dụng tần số mặc định.
 
-\ ``amplitude`` is the amplitude of the pulse between ``0.0`` and ``1.0``.
+\ ``amplitude`` là biên độ của xung giữa ``0.0`` và ``1.0``.
 
-\ ``duration_sec`` is the duration of the pulse in seconds.
+\ ``duration_sec`` là thời lượng của xung tính bằng giây.
 
-\ ``delay_sec`` is a delay in seconds before the pulse is given.
+\ ``delay_sec`` là khoảng trễ tính bằng giây trước khi xung được phát.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

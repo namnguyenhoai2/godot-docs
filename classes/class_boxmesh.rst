@@ -10,24 +10,24 @@
 BoxMesh
 =======
 
-**Inherits:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Generate an axis-aligned box :ref:`PrimitiveMesh<class_PrimitiveMesh>`.
+Tạo một hộp song song với các trục :ref:`PrimitiveMesh<class_PrimitiveMesh>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Generate an axis-aligned box :ref:`PrimitiveMesh<class_PrimitiveMesh>`.
+Tạo một hộp song song với các trục :ref:`PrimitiveMesh<class_PrimitiveMesh>`.
 
-The box's UV layout is arranged in a 3×2 layout that allows texturing each face individually. To apply the same texture on all faces, change the material's UV property to ``Vector3(3, 2, 1)``. This is equivalent to adding ``UV *= vec2(3.0, 2.0)`` in a vertex shader.
+Bố cục UV của hộp được sắp xếp theo bố cục 3×2, cho phép áp dụng texture riêng cho từng mặt. Để áp dụng cùng một texture cho tất cả các mặt, hãy thay đổi thuộc tính UV của material thành ``Vector3(3, 2, 1)``. Điều này tương đương với việc thêm ``UV *= vec2(3.0, 2.0)`` vào vertex shader.
 
 \ **Note:** When using a large textured **BoxMesh** (e.g. as a floor), you may stumble upon UV jittering issues depending on the camera angle. To solve this, increase :ref:`subdivide_depth<class_BoxMesh_property_subdivide_depth>`, :ref:`subdivide_height<class_BoxMesh_property_subdivide_height>` and :ref:`subdivide_width<class_BoxMesh_property_subdivide_width>` until you no longer notice UV jittering.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_BoxMesh_property_size:
 
@@ -63,7 +63,7 @@ Property Descriptions
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-The box's width, height and depth.
+Chiều rộng, chiều cao và chiều sâu của hộp.
 
 .. rst-class:: classref-item-separator
 
@@ -80,7 +80,7 @@ The box's width, height and depth.
 - |void| **set_subdivide_depth**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_subdivide_depth**\ (\ )
 
-Number of extra edge loops inserted along the Z axis.
+Số vòng cạnh bổ sung được chèn dọc theo trục Z.
 
 .. rst-class:: classref-item-separator
 
@@ -97,7 +97,7 @@ Number of extra edge loops inserted along the Z axis.
 - |void| **set_subdivide_height**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_subdivide_height**\ (\ )
 
-Number of extra edge loops inserted along the Y axis.
+Số vòng cạnh bổ sung được chèn dọc theo trục Y.
 
 .. rst-class:: classref-item-separator
 
@@ -114,14 +114,14 @@ Number of extra edge loops inserted along the Y axis.
 - |void| **set_subdivide_width**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_subdivide_width**\ (\ )
 
-Number of extra edge loops inserted along the X axis.
+Số vòng cạnh bổ sung được chèn dọc theo trục X.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,28 +10,28 @@
 ENetConnection
 ==============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A wrapper class for an `ENetHost <http://enet.bespin.org/group__host.html>`__.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-ENet's purpose is to provide a relatively thin, simple and robust network communication layer on top of UDP (User Datagram Protocol).
+Một lớp bao bọc cho `ENetHost <http://enet.bespin.org/group__host.html>`__.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Mục đích của ENet là cung cấp một lớp giao tiếp mạng tương đối mỏng, đơn giản và mạnh mẽ trên UDP (User Datagram Protocol).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `API documentation on the ENet website <http://enet.bespin.org/usergroup0.html>`__
+- `Tài liệu API trên trang web ENet <http://enet.bespin.org/usergroup0.html>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -43,19 +43,19 @@ Methods
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                   | :ref:`channel_limit<class_ENetConnection_method_channel_limit>`\ (\ limit\: :ref:`int<class_int>`\ )                                                                                                                                                                                                                                |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                   | :ref:`compress<class_ENetConnection_method_compress>`\ (\ mode\: :ref:`CompressionMode<enum_ENetConnection_CompressionMode>`\ )                                                                                                                                                                                                     |
+   | |void|                                                                   | :ref:`compress<class_ENetConnection_method_compress>`\ (\ mode\: :ref:`CompressionMode <enum_ENetConnection_CompressionMode>`\ )                                                                                                                                                                                                    |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`ENetPacketPeer<class_ENetPacketPeer>`                              | :ref:`connect_to_host<class_ENetConnection_method_connect_to_host>`\ (\ address\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`, channels\: :ref:`int<class_int>` = 0, data\: :ref:`int<class_int>` = 0\ )                                                                                                              |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                    | :ref:`create_host<class_ENetConnection_method_create_host>`\ (\ max_peers\: :ref:`int<class_int>` = 32, max_channels\: :ref:`int<class_int>` = 0, in_bandwidth\: :ref:`int<class_int>` = 0, out_bandwidth\: :ref:`int<class_int>` = 0\ )                                                                                            |
+   | :ref:`Error <enum_@GlobalScope_Error>`                                   | :ref:`create_host<class_ENetConnection_method_create_host>`\ (\ max_peers\: :ref:`int<class_int>` = 32, max_channels\: :ref:`int<class_int>` = 0, in_bandwidth\: :ref:`int<class_int>` = 0, out_bandwidth\: :ref:`int<class_int>` = 0\ )                                                                                            |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                    | :ref:`create_host_bound<class_ENetConnection_method_create_host_bound>`\ (\ bind_address\: :ref:`String<class_String>`, bind_port\: :ref:`int<class_int>`, max_peers\: :ref:`int<class_int>` = 32, max_channels\: :ref:`int<class_int>` = 0, in_bandwidth\: :ref:`int<class_int>` = 0, out_bandwidth\: :ref:`int<class_int>` = 0\ ) |
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                                     | :ref:`create_host_bound<class_ENetConnection_method_create_host_bound>`\ (\ bind_address\: :ref:`String<class_String>`, bind_port\: :ref:`int<class_int>`, max_peers\: :ref:`int<class_int>` = 32, max_channels\: :ref:`int<class_int>` = 0, in_bandwidth\: :ref:`int<class_int>` = 0, out_bandwidth\: :ref:`int<class_int>` = 0\ ) |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                   | :ref:`destroy<class_ENetConnection_method_destroy>`\ (\ )                                                                                                                                                                                                                                                                           |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                    | :ref:`dtls_client_setup<class_ENetConnection_method_dtls_client_setup>`\ (\ hostname\: :ref:`String<class_String>`, client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )                                                                                                                                                  |
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                                     | :ref:`dtls_client_setup<class_ENetConnection_method_dtls_client_setup>`\ (\ hostname\: :ref:`String<class_String>`, client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ )                                                                                                                                                  |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                    | :ref:`dtls_server_setup<class_ENetConnection_method_dtls_server_setup>`\ (\ server_options\: :ref:`TLSOptions<class_TLSOptions>`\ )                                                                                                                                                                                                 |
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                                     | :ref:`dtls_server_setup<class_ENetConnection_method_dtls_server_setup>`\ (\ server_options\: :ref:`TLSOptions<class_TLSOptions>`\ )                                                                                                                                                                                                 |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                   | :ref:`flush<class_ENetConnection_method_flush>`\ (\ )                                                                                                                                                                                                                                                                               |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -65,7 +65,7 @@ Methods
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`ENetPacketPeer<class_ENetPacketPeer>`\] | :ref:`get_peers<class_ENetConnection_method_get_peers>`\ (\ )                                                                                                                                                                                                                                                                       |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                | :ref:`pop_statistic<class_ENetConnection_method_pop_statistic>`\ (\ statistic\: :ref:`HostStatistic<enum_ENetConnection_HostStatistic>`\ )                                                                                                                                                                                          |
+   | :ref:`float<class_float>`                                                | :ref:`pop_statistic<class_ENetConnection_method_pop_statistic>`\ (\ statistic\: :ref:`HostStatistic <enum_ENetConnection_HostStatistic>`\ )                                                                                                                                                                                         |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                   | :ref:`refuse_new_connections<class_ENetConnection_method_refuse_new_connections>`\ (\ refuse\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                           |
    +--------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -80,14 +80,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ENetConnection_CompressionMode:
 
 .. rst-class:: classref-enumeration
 
-enum **CompressionMode**: :ref:`🔗<enum_ENetConnection_CompressionMode>`
+enum **CompressionMode**: :ref:`🔗 <enum_ENetConnection_CompressionMode>`
 
 .. _class_ENetConnection_constant_COMPRESS_NONE:
 
@@ -95,7 +95,7 @@ enum **CompressionMode**: :ref:`🔗<enum_ENetConnection_CompressionMode>`
 
 :ref:`CompressionMode<enum_ENetConnection_CompressionMode>` **COMPRESS_NONE** = ``0``
 
-No compression. This uses the most bandwidth, but has the upside of requiring the fewest CPU resources. This option may also be used to make network debugging using tools like Wireshark easier.
+Không nén. Tùy chọn này sử dụng nhiều băng thông nhất, nhưng có ưu điểm là yêu cầu ít tài nguyên CPU nhất. Tùy chọn này cũng có thể được dùng để việc gỡ lỗi mạng bằng các công cụ như Wireshark trở nên dễ dàng hơn.
 
 .. _class_ENetConnection_constant_COMPRESS_RANGE_CODER:
 
@@ -103,7 +103,7 @@ No compression. This uses the most bandwidth, but has the upside of requiring th
 
 :ref:`CompressionMode<enum_ENetConnection_CompressionMode>` **COMPRESS_RANGE_CODER** = ``1``
 
-ENet's built-in range encoding. Works well on small packets, but is not the most efficient algorithm on packets larger than 4 KB.
+Mã hóa phạm vi tích hợp sẵn của ENet. Hoạt động tốt trên các gói tin nhỏ, nhưng không phải là thuật toán hiệu quả nhất đối với các gói tin lớn hơn 4 KB.
 
 .. _class_ENetConnection_constant_COMPRESS_FASTLZ:
 
@@ -111,7 +111,7 @@ ENet's built-in range encoding. Works well on small packets, but is not the most
 
 :ref:`CompressionMode<enum_ENetConnection_CompressionMode>` **COMPRESS_FASTLZ** = ``2``
 
-`FastLZ <https://fastlz.org/>`__ compression. This option uses less CPU resources compared to :ref:`COMPRESS_ZLIB<class_ENetConnection_constant_COMPRESS_ZLIB>`, at the expense of using more bandwidth.
+`FastLZ <https://fastlz.org/>`__ compression. Tùy chọn này sử dụng ít tài nguyên CPU hơn so với :ref:`COMPRESS_ZLIB<class_ENetConnection_constant_COMPRESS_ZLIB>`, đổi lại sử dụng nhiều băng thông hơn.
 
 .. _class_ENetConnection_constant_COMPRESS_ZLIB:
 
@@ -119,7 +119,7 @@ ENet's built-in range encoding. Works well on small packets, but is not the most
 
 :ref:`CompressionMode<enum_ENetConnection_CompressionMode>` **COMPRESS_ZLIB** = ``3``
 
-`Zlib <https://www.zlib.net/>`__ compression. This option uses less bandwidth compared to :ref:`COMPRESS_FASTLZ<class_ENetConnection_constant_COMPRESS_FASTLZ>`, at the expense of using more CPU resources.
+`Zlib <https://www.zlib.net/>`__ compression. Tùy chọn này sử dụng ít băng thông hơn so với :ref:`COMPRESS_FASTLZ<class_ENetConnection_constant_COMPRESS_FASTLZ>`, đổi lại sử dụng nhiều tài nguyên CPU hơn.
 
 .. _class_ENetConnection_constant_COMPRESS_ZSTD:
 
@@ -127,7 +127,7 @@ ENet's built-in range encoding. Works well on small packets, but is not the most
 
 :ref:`CompressionMode<enum_ENetConnection_CompressionMode>` **COMPRESS_ZSTD** = ``4``
 
-`Zstandard <https://facebook.github.io/zstd/>`__ compression. Note that this algorithm is not very efficient on packets smaller than 4 KB. Therefore, it's recommended to use other compression algorithms in most cases.
+`Zstandard <https://facebook.github.io/zstd/>`__ compression. Lưu ý rằng thuật toán này không thực sự hiệu quả trên các packet nhỏ hơn 4 KB. Do đó, trong hầu hết trường hợp, bạn nên sử dụng các thuật toán nén khác.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ ENet's built-in range encoding. Works well on small packets, but is not the most
 
 .. rst-class:: classref-enumeration
 
-enum **EventType**: :ref:`🔗<enum_ENetConnection_EventType>`
+enum **EventType**: :ref:`🔗 <enum_ENetConnection_EventType>`
 
 .. _class_ENetConnection_constant_EVENT_ERROR:
 
@@ -145,7 +145,7 @@ enum **EventType**: :ref:`🔗<enum_ENetConnection_EventType>`
 
 :ref:`EventType<enum_ENetConnection_EventType>` **EVENT_ERROR** = ``-1``
 
-An error occurred during :ref:`service()<class_ENetConnection_method_service>`. You will likely need to :ref:`destroy()<class_ENetConnection_method_destroy>` the host and recreate it.
+Đã xảy ra lỗi trong quá trình :ref:`service()<class_ENetConnection_method_service>`. Có thể bạn sẽ cần :ref:`destroy()<class_ENetConnection_method_destroy>` host và tạo lại host.
 
 .. _class_ENetConnection_constant_EVENT_NONE:
 
@@ -153,7 +153,7 @@ An error occurred during :ref:`service()<class_ENetConnection_method_service>`. 
 
 :ref:`EventType<enum_ENetConnection_EventType>` **EVENT_NONE** = ``0``
 
-No event occurred within the specified time limit.
+Không có event nào xảy ra trong khoảng thời gian giới hạn được chỉ định.
 
 .. _class_ENetConnection_constant_EVENT_CONNECT:
 
@@ -161,7 +161,7 @@ No event occurred within the specified time limit.
 
 :ref:`EventType<enum_ENetConnection_EventType>` **EVENT_CONNECT** = ``1``
 
-A connection request initiated by enet_host_connect has completed. The array will contain the peer which successfully connected.
+Một yêu cầu kết nối do enet_host_connect khởi tạo đã hoàn tất. Mảng sẽ chứa peer đã kết nối thành công.
 
 .. _class_ENetConnection_constant_EVENT_DISCONNECT:
 
@@ -169,7 +169,7 @@ A connection request initiated by enet_host_connect has completed. The array wil
 
 :ref:`EventType<enum_ENetConnection_EventType>` **EVENT_DISCONNECT** = ``2``
 
-A peer has disconnected. This event is generated on a successful completion of a disconnect initiated by :ref:`ENetPacketPeer.peer_disconnect()<class_ENetPacketPeer_method_peer_disconnect>`, if a peer has timed out, or if a connection request initialized by :ref:`connect_to_host()<class_ENetConnection_method_connect_to_host>` has timed out. The array will contain the peer which disconnected. The data field contains user supplied data describing the disconnection, or 0, if none is available.
+Một peer đã ngắt kết nối. Sự kiện này được tạo ra khi việc ngắt kết nối do :ref:`ENetPacketPeer.peer_disconnect()<class_ENetPacketPeer_method_peer_disconnect>` khởi tạo hoàn tất thành công, khi một peer hết thời gian chờ hoặc khi yêu cầu kết nối do :ref:`connect_to_host()<class_ENetConnection_method_connect_to_host>` khởi tạo đã hết thời gian chờ. Mảng sẽ chứa peer đã ngắt kết nối. Trường data chứa dữ liệu do người dùng cung cấp mô tả việc ngắt kết nối hoặc 0 nếu không có dữ liệu.
 
 .. _class_ENetConnection_constant_EVENT_RECEIVE:
 
@@ -177,7 +177,7 @@ A peer has disconnected. This event is generated on a successful completion of a
 
 :ref:`EventType<enum_ENetConnection_EventType>` **EVENT_RECEIVE** = ``3``
 
-A packet has been received from a peer. The array will contain the peer which sent the packet and the channel number upon which the packet was received. The received packet will be queued to the associated :ref:`ENetPacketPeer<class_ENetPacketPeer>`.
+Đã nhận một packet từ một peer. Mảng sẽ chứa peer đã gửi packet và số kênh mà packet được nhận trên đó. Packet đã nhận sẽ được xếp hàng vào :ref:`ENetPacketPeer<class_ENetPacketPeer>` tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ A packet has been received from a peer. The array will contain the peer which se
 
 .. rst-class:: classref-enumeration
 
-enum **HostStatistic**: :ref:`🔗<enum_ENetConnection_HostStatistic>`
+enum **HostStatistic**: :ref:`🔗 <enum_ENetConnection_HostStatistic>`
 
 .. _class_ENetConnection_constant_HOST_TOTAL_SENT_DATA:
 
@@ -195,7 +195,7 @@ enum **HostStatistic**: :ref:`🔗<enum_ENetConnection_HostStatistic>`
 
 :ref:`HostStatistic<enum_ENetConnection_HostStatistic>` **HOST_TOTAL_SENT_DATA** = ``0``
 
-Total data sent.
+Tổng dữ liệu đã gửi.
 
 .. _class_ENetConnection_constant_HOST_TOTAL_SENT_PACKETS:
 
@@ -203,7 +203,7 @@ Total data sent.
 
 :ref:`HostStatistic<enum_ENetConnection_HostStatistic>` **HOST_TOTAL_SENT_PACKETS** = ``1``
 
-Total UDP packets sent.
+Tổng số packet UDP đã gửi.
 
 .. _class_ENetConnection_constant_HOST_TOTAL_RECEIVED_DATA:
 
@@ -211,7 +211,7 @@ Total UDP packets sent.
 
 :ref:`HostStatistic<enum_ENetConnection_HostStatistic>` **HOST_TOTAL_RECEIVED_DATA** = ``2``
 
-Total data received.
+Tổng dữ liệu đã nhận.
 
 .. _class_ENetConnection_constant_HOST_TOTAL_RECEIVED_PACKETS:
 
@@ -219,7 +219,7 @@ Total data received.
 
 :ref:`HostStatistic<enum_ENetConnection_HostStatistic>` **HOST_TOTAL_RECEIVED_PACKETS** = ``3``
 
-Total UDP packets received.
+Tổng số packet UDP đã nhận.
 
 .. rst-class:: classref-section-separator
 
@@ -227,8 +227,8 @@ Total UDP packets received.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ENetConnection_method_bandwidth_limit:
 
@@ -236,7 +236,7 @@ Method Descriptions
 
 |void| **bandwidth_limit**\ (\ in_bandwidth\: :ref:`int<class_int>` = 0, out_bandwidth\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetConnection_method_bandwidth_limit>`
 
-Adjusts the bandwidth limits of a host.
+Điều chỉnh giới hạn băng thông của một host.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ Adjusts the bandwidth limits of a host.
 
 |void| **broadcast**\ (\ channel\: :ref:`int<class_int>`, packet\: :ref:`PackedByteArray<class_PackedByteArray>`, flags\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ENetConnection_method_broadcast>`
 
-Queues a ``packet`` to be sent to all peers associated with the host over the specified ``channel``. See :ref:`ENetPacketPeer<class_ENetPacketPeer>` ``FLAG_*`` constants for available packet flags.
+Xếp hàng một ``packet`` để gửi đến tất cả peer được liên kết với host thông qua ``channel`` đã chỉ định. Xem các hằng số :ref:`ENetPacketPeer<class_ENetPacketPeer>` ``FLAG_*`` để biết các cờ gói tin hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +260,7 @@ Queues a ``packet`` to be sent to all peers associated with the host over the sp
 
 |void| **channel_limit**\ (\ limit\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ENetConnection_method_channel_limit>`
 
-Limits the maximum allowed channels of future incoming connections.
+Giới hạn số kênh tối đa được phép của các kết nối đến trong tương lai.
 
 .. rst-class:: classref-item-separator
 
@@ -272,11 +272,11 @@ Limits the maximum allowed channels of future incoming connections.
 
 |void| **compress**\ (\ mode\: :ref:`CompressionMode<enum_ENetConnection_CompressionMode>`\ ) :ref:`🔗<class_ENetConnection_method_compress>`
 
-Sets the compression method used for network packets. These have different tradeoffs of compression speed versus bandwidth, you may need to test which one works best for your use case if you use compression at all.
+Thiết lập phương thức nén được sử dụng cho các gói tin mạng. Các phương thức này có sự đánh đổi khác nhau giữa tốc độ nén và băng thông; nếu sử dụng tính năng nén, bạn có thể cần kiểm tra để xem phương thức nào phù hợp nhất với trường hợp sử dụng của mình.
 
-\ **Note:** Most games' network design involve sending many small packets frequently (smaller than 4 KB each). If in doubt, it is recommended to keep the default compression algorithm as it works best on these small packets.
+\ **Lưu ý:** Thiết kế mạng của hầu hết các trò chơi bao gồm việc gửi thường xuyên nhiều gói tin nhỏ (mỗi gói nhỏ hơn 4 KB). Nếu không chắc chắn, bạn nên giữ thuật toán nén mặc định vì thuật toán này hoạt động tốt nhất với các gói tin nhỏ như vậy.
 
-\ **Note:** The compression mode must be set to the same value on both the server and all its clients. Clients will fail to connect if the compression mode set on the client differs from the one set on the server.
+\ **Lưu ý:** Chế độ nén phải được đặt thành cùng một giá trị trên máy chủ và tất cả client của máy chủ. Client sẽ không thể kết nối nếu chế độ nén được đặt trên client khác với chế độ được đặt trên máy chủ.
 
 .. rst-class:: classref-item-separator
 
@@ -288,9 +288,9 @@ Sets the compression method used for network packets. These have different trade
 
 :ref:`ENetPacketPeer<class_ENetPacketPeer>` **connect_to_host**\ (\ address\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`, channels\: :ref:`int<class_int>` = 0, data\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetConnection_method_connect_to_host>`
 
-Initiates a connection to a foreign ``address`` using the specified ``port`` and allocating the requested ``channels``. Optional ``data`` can be passed during connection in the form of a 32 bit integer.
+Khởi tạo kết nối đến một ``address`` từ xa bằng ``port`` được chỉ định và cấp phát ``channels`` được yêu cầu. Có thể truyền ``data`` tùy chọn trong quá trình kết nối dưới dạng số nguyên 32 bit.
 
-\ **Note:** You must call either :ref:`create_host()<class_ENetConnection_method_create_host>` or :ref:`create_host_bound()<class_ENetConnection_method_create_host_bound>` on both ends before calling this method.
+\ **Lưu ý:** Bạn phải gọi :ref:`create_host()<class_ENetConnection_method_create_host>` hoặc :ref:`create_host_bound()<class_ENetConnection_method_create_host_bound>` ở cả hai đầu trước khi gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -302,11 +302,11 @@ Initiates a connection to a foreign ``address`` using the specified ``port`` and
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_host**\ (\ max_peers\: :ref:`int<class_int>` = 32, max_channels\: :ref:`int<class_int>` = 0, in_bandwidth\: :ref:`int<class_int>` = 0, out_bandwidth\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetConnection_method_create_host>`
 
-Creates an ENetHost that allows up to ``max_peers`` connected peers, each allocating up to ``max_channels`` channels, optionally limiting bandwidth to ``in_bandwidth`` and ``out_bandwidth`` (if greater than zero).
+Tạo một ENetHost cho phép tối đa ``max_peers`` peer được kết nối, mỗi peer cấp phát tối đa ``max_channels`` channel, đồng thời có thể giới hạn băng thông ở mức ``in_bandwidth`` và ``out_bandwidth`` (nếu lớn hơn 0).
 
-This method binds a random available dynamic UDP port on the host machine at the *unspecified* address. Use :ref:`create_host_bound()<class_ENetConnection_method_create_host_bound>` to specify the address and port.
+Phương thức này liên kết một cổng UDP động khả dụng ngẫu nhiên trên máy chủ tại địa chỉ *không chỉ định*. Sử dụng :ref:`create_host_bound()<class_ENetConnection_method_create_host_bound>` để chỉ định địa chỉ và cổng.
 
-\ **Note:** It is necessary to create a host in both client and server in order to establish a connection.
+\ **Lưu ý:** Cần tạo một host ở cả client và server để thiết lập kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -318,9 +318,9 @@ This method binds a random available dynamic UDP port on the host machine at the
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_host_bound**\ (\ bind_address\: :ref:`String<class_String>`, bind_port\: :ref:`int<class_int>`, max_peers\: :ref:`int<class_int>` = 32, max_channels\: :ref:`int<class_int>` = 0, in_bandwidth\: :ref:`int<class_int>` = 0, out_bandwidth\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetConnection_method_create_host_bound>`
 
-Creates an ENetHost bound to the given ``bind_address`` and ``bind_port`` that allows up to ``max_peers`` connected peers, each allocating up to ``max_channels`` channels, optionally limiting bandwidth to ``in_bandwidth`` and ``out_bandwidth`` (if greater than zero).
+Tạo một ENetHost được liên kết với ``bind_address`` và ``bind_port`` đã cho, cho phép tối đa ``max_peers`` peer được kết nối, mỗi peer cấp phát tối đa ``max_channels`` channel, đồng thời có thể giới hạn băng thông ở mức ``in_bandwidth`` và ``out_bandwidth`` (nếu lớn hơn 0).
 
-\ **Note:** It is necessary to create a host in both client and server in order to establish a connection.
+\ **Lưu ý:** Cần tạo một host ở cả client và server để thiết lập kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -332,7 +332,7 @@ Creates an ENetHost bound to the given ``bind_address`` and ``bind_port`` that a
 
 |void| **destroy**\ (\ ) :ref:`🔗<class_ENetConnection_method_destroy>`
 
-Destroys the host and all resources associated with it.
+Hủy host và tất cả tài nguyên liên kết với host đó.
 
 .. rst-class:: classref-item-separator
 
@@ -344,7 +344,7 @@ Destroys the host and all resources associated with it.
 
 :ref:`Error<enum_@GlobalScope_Error>` **dtls_client_setup**\ (\ hostname\: :ref:`String<class_String>`, client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) :ref:`🔗<class_ENetConnection_method_dtls_client_setup>`
 
-Configure this ENetHost to use the custom Godot extension allowing DTLS encryption for ENet clients. Call this before :ref:`connect_to_host()<class_ENetConnection_method_connect_to_host>` to have ENet connect using DTLS validating the server certificate against ``hostname``. You can pass the optional ``client_options`` parameter to customize the trusted certification authorities, or disable the common name verification. See :ref:`TLSOptions.client()<class_TLSOptions_method_client>` and :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
+Cấu hình ENetHost này để sử dụng tiện ích mở rộng Godot tùy chỉnh cho phép mã hóa DTLS cho các ENet client. Gọi hàm này trước :ref:`connect_to_host()<class_ENetConnection_method_connect_to_host>` để ENet kết nối bằng DTLS, xác thực chứng chỉ máy chủ dựa trên ``hostname``. Bạn có thể truyền tham số tùy chọn ``client_options`` để tùy chỉnh các tổ chức chứng thực được tin cậy hoặc tắt tính năng xác minh common name. Xem :ref:`TLSOptions.client()<class_TLSOptions_method_client>` và :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
 
 .. rst-class:: classref-item-separator
 
@@ -356,7 +356,7 @@ Configure this ENetHost to use the custom Godot extension allowing DTLS encrypti
 
 :ref:`Error<enum_@GlobalScope_Error>` **dtls_server_setup**\ (\ server_options\: :ref:`TLSOptions<class_TLSOptions>`\ ) :ref:`🔗<class_ENetConnection_method_dtls_server_setup>`
 
-Configure this ENetHost to use the custom Godot extension allowing DTLS encryption for ENet servers. Call this right after :ref:`create_host_bound()<class_ENetConnection_method_create_host_bound>` to have ENet expect peers to connect using DTLS. See :ref:`TLSOptions.server()<class_TLSOptions_method_server>`.
+Cấu hình ENetHost này để sử dụng tiện ích mở rộng Godot tùy chỉnh cho phép mã hóa DTLS cho các ENet server. Gọi hàm này ngay sau :ref:`create_host_bound()<class_ENetConnection_method_create_host_bound>` để ENet yêu cầu các peer kết nối bằng DTLS. Xem :ref:`TLSOptions.server()<class_TLSOptions_method_server>`.
 
 .. rst-class:: classref-item-separator
 
@@ -368,7 +368,7 @@ Configure this ENetHost to use the custom Godot extension allowing DTLS encrypti
 
 |void| **flush**\ (\ ) :ref:`🔗<class_ENetConnection_method_flush>`
 
-Sends any queued packets on the host specified to its designated peers.
+Gửi mọi packet đang xếp hàng trên host được chỉ định đến các peer tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -380,7 +380,7 @@ Sends any queued packets on the host specified to its designated peers.
 
 :ref:`int<class_int>` **get_local_port**\ (\ ) |const| :ref:`🔗<class_ENetConnection_method_get_local_port>`
 
-Returns the local port to which this peer is bound.
+Trả về cổng cục bộ mà peer này được liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -392,7 +392,7 @@ Returns the local port to which this peer is bound.
 
 :ref:`int<class_int>` **get_max_channels**\ (\ ) |const| :ref:`🔗<class_ENetConnection_method_get_max_channels>`
 
-Returns the maximum number of channels allowed for connected peers.
+Trả về số lượng channel tối đa được phép đối với các peer đã kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -404,9 +404,9 @@ Returns the maximum number of channels allowed for connected peers.
 
 :ref:`Array<class_Array>`\[:ref:`ENetPacketPeer<class_ENetPacketPeer>`\] **get_peers**\ (\ ) :ref:`🔗<class_ENetConnection_method_get_peers>`
 
-Returns the list of peers associated with this host.
+Trả về danh sách các peer liên kết với host này.
 
-\ **Note:** This list might include some peers that are not fully connected or are still being disconnected.
+\ **Lưu ý:** Danh sách này có thể bao gồm một số peer chưa được kết nối hoàn toàn hoặc vẫn đang bị ngắt kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -418,7 +418,7 @@ Returns the list of peers associated with this host.
 
 :ref:`float<class_float>` **pop_statistic**\ (\ statistic\: :ref:`HostStatistic<enum_ENetConnection_HostStatistic>`\ ) :ref:`🔗<class_ENetConnection_method_pop_statistic>`
 
-Returns and resets host statistics.
+Trả về và đặt lại các thống kê của host.
 
 .. rst-class:: classref-item-separator
 
@@ -430,9 +430,9 @@ Returns and resets host statistics.
 
 |void| **refuse_new_connections**\ (\ refuse\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_ENetConnection_method_refuse_new_connections>`
 
-Configures the DTLS server to automatically drop new connections.
+Cấu hình DTLS server để tự động loại bỏ các kết nối mới.
 
-\ **Note:** This method is only relevant after calling :ref:`dtls_server_setup()<class_ENetConnection_method_dtls_server_setup>`.
+\ **Lưu ý:** Phương thức này chỉ có hiệu lực sau khi gọi :ref:`dtls_server_setup()<class_ENetConnection_method_dtls_server_setup>`.
 
 .. rst-class:: classref-item-separator
 
@@ -444,11 +444,11 @@ Configures the DTLS server to automatically drop new connections.
 
 :ref:`Array<class_Array>` **service**\ (\ timeout\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetConnection_method_service>`
 
-Waits for events on this connection and shuttles packets between the host and its peers, with the given ``timeout`` (in milliseconds). The returned :ref:`Array<class_Array>` will have 4 elements. An :ref:`EventType<enum_ENetConnection_EventType>`, the :ref:`ENetPacketPeer<class_ENetPacketPeer>` which generated the event, the event associated data (if any), the event associated channel (if any). If the generated event is :ref:`EVENT_RECEIVE<class_ENetConnection_constant_EVENT_RECEIVE>`, the received packet will be queued to the associated :ref:`ENetPacketPeer<class_ENetPacketPeer>`.
+Chờ các sự kiện trên kết nối này và chuyển tiếp các gói tin giữa host và các peer của host, với ``timeout`` đã cho (tính bằng mili giây). :ref:`Array<class_Array>` được trả về sẽ có 4 phần tử. Một :ref:`EventType <enum_ENetConnection_EventType>`, :ref:`ENetPacketPeer<class_ENetPacketPeer>` đã tạo ra sự kiện, dữ liệu liên kết với sự kiện (nếu có), kênh liên kết với sự kiện (nếu có). Nếu sự kiện được tạo ra là :ref:`EVENT_RECEIVE<class_ENetConnection_constant_EVENT_RECEIVE>`, gói tin nhận được sẽ được xếp hàng vào :ref:`ENetPacketPeer<class_ENetPacketPeer>` tương ứng.
 
-Call this function regularly to handle connections, disconnections, and to receive new packets.
+Gọi hàm này thường xuyên để xử lý các kết nối, ngắt kết nối và nhận các gói tin mới.
 
-\ **Note:** This method must be called on both ends involved in the event (sending and receiving hosts).
+\ **Lưu ý:** Phương thức này phải được gọi ở cả hai đầu tham gia vào sự kiện (host gửi và host nhận).
 
 .. rst-class:: classref-item-separator
 
@@ -460,18 +460,18 @@ Call this function regularly to handle connections, disconnections, and to recei
 
 |void| **socket_send**\ (\ destination_address\: :ref:`String<class_String>`, destination_port\: :ref:`int<class_int>`, packet\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_ENetConnection_method_socket_send>`
 
-Sends a ``packet`` toward a destination from the address and port currently bound by this ENetConnection instance.
+Gửi một ``packet`` đến một đích từ địa chỉ và cổng hiện được instance ENetConnection này liên kết.
 
-This is useful as it serves to establish entries in NAT routing tables on all devices between this bound instance and the public facing internet, allowing a prospective client's connection packets to be routed backward through the NAT device(s) between the public internet and this host.
+Điều này hữu ích vì nó giúp thiết lập các mục trong bảng định tuyến NAT trên tất cả thiết bị nằm giữa instance đã liên kết này và internet công khai, cho phép các gói kết nối của client tiềm năng được định tuyến ngược qua (các) thiết bị NAT nằm giữa internet công khai và host này.
 
-This requires forward knowledge of a prospective client's address and communication port as seen by the public internet - after any NAT devices have handled their connection request. This information can be obtained by a `STUN <https://en.wikipedia.org/wiki/STUN>`__ service, and must be handed off to your host by an entity that is not the prospective client. This will never work for a client behind a Symmetric NAT due to the nature of the Symmetric NAT routing algorithm, as their IP and Port cannot be known beforehand.
+Điều này yêu cầu biết trước địa chỉ và cổng liên lạc của client tiềm năng như được internet công khai nhìn thấy — sau khi mọi thiết bị NAT đã xử lý yêu cầu kết nối của client. Thông tin này có thể được lấy từ một dịch vụ `STUN <https://en.wikipedia.org/wiki/STUN>`__, và phải được chuyển đến host của bạn bởi một thực thể không phải là client tiềm năng. Điều này sẽ không bao giờ hoạt động với client đứng sau Symmetric NAT do bản chất của thuật toán định tuyến Symmetric NAT, vì không thể biết trước IP và Port của client.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,36 +10,36 @@
 ConcavePolygonShape3D
 =====================
 
-**Inherits:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 3D trimesh shape used for physics collision.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A 3D trimesh shape, intended for use in physics. Usually used to provide a shape for a :ref:`CollisionShape3D<class_CollisionShape3D>`.
-
-Being just a collection of interconnected triangles, **ConcavePolygonShape3D** is the most freely configurable single 3D shape. It can be used to form polyhedra of any nature, or even shapes that don't enclose a volume. However, **ConcavePolygonShape3D** is *hollow* even if the interconnected triangles do enclose a volume, which often makes it unsuitable for physics or detection.
-
-\ **Note:** When used for collision, **ConcavePolygonShape3D** is intended to work with static :ref:`CollisionShape3D<class_CollisionShape3D>` nodes like :ref:`StaticBody3D<class_StaticBody3D>` and will likely not behave well for :ref:`CharacterBody3D<class_CharacterBody3D>`\ s or :ref:`RigidBody3D<class_RigidBody3D>`\ s in a mode other than Static.
-
-\ **Warning:** Physics bodies that are small have a chance to clip through this shape when moving fast. This happens because on one frame, the physics body may be on the "outside" of the shape, and on the next frame it may be "inside" it. **ConcavePolygonShape3D** is hollow, so it won't detect a collision.
-
-\ **Performance:** Due to its complexity, **ConcavePolygonShape3D** is the slowest 3D collision shape to check collisions against. Its use should generally be limited to level geometry. For convex geometry, :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` should be used. For dynamic physics bodies that need concave collision, several :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`\ s can be used to represent its collision by using convex decomposition; see :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`'s documentation for instructions.
+Một hình dạng trimesh 3D được sử dụng để phát hiện va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
+
+Một hình dạng trimesh 3D, được thiết kế để sử dụng trong vật lý. Thường được dùng để cung cấp hình dạng cho một :ref:`CollisionShape3D<class_CollisionShape3D>`.
+
+Chỉ là một tập hợp các tam giác liên kết với nhau, **ConcavePolygonShape3D** là hình dạng 3D đơn lẻ có khả năng cấu hình linh hoạt nhất. Nó có thể được dùng để tạo thành các khối đa diện thuộc bất kỳ dạng nào, hoặc thậm chí các hình dạng không bao kín một thể tích. Tuy nhiên, **ConcavePolygonShape3D** là *rỗng* ngay cả khi các tam giác liên kết với nhau bao kín một thể tích, điều này thường khiến nó không phù hợp cho vật lý hoặc phát hiện.
+
+\ **Lưu ý:** Khi được sử dụng để phát hiện va chạm, **ConcavePolygonShape3D** được thiết kế để hoạt động với các node :ref:`CollisionShape3D<class_CollisionShape3D>` tĩnh như :ref:`StaticBody3D<class_StaticBody3D>` và có thể sẽ không hoạt động tốt với :ref:`CharacterBody3D<class_CharacterBody3D>`\ s hoặc :ref:`RigidBody3D<class_RigidBody3D>`\ s ở chế độ khác Static.
+
+\ **Cảnh báo:** Các physics body nhỏ có thể xuyên qua hình dạng này khi di chuyển nhanh. Điều này xảy ra vì trong một frame, physics body có thể ở "bên ngoài" hình dạng, còn trong frame tiếp theo, nó có thể ở "bên trong" hình dạng. **ConcavePolygonShape3D** rỗng nên sẽ không phát hiện va chạm.
+
+\ **Hiệu năng:** Do có độ phức tạp cao, **ConcavePolygonShape3D** là hình dạng va chạm 3D chậm nhất khi kiểm tra va chạm. Nhìn chung, chỉ nên sử dụng nó cho hình học của level. Đối với hình học lồi, nên sử dụng :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`. Đối với các physics body động cần va chạm lõm, có thể sử dụng một số :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>`\ s để biểu diễn va chạm của nó bằng cách phân rã lồi; xem tài liệu của :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` để biết hướng dẫn.
+
+.. rst-class:: classref-introduction-group
+
+Các tutorial
+------------
 
 - `3D Physics Tests Demo <https://godotengine.org/asset-library/asset/2747>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -50,8 +50,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -68,8 +68,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ConcavePolygonShape3D_property_backface_collision:
 
@@ -82,7 +82,7 @@ Property Descriptions
 - |void| **set_backface_collision_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_backface_collision_enabled**\ (\ )
 
-If set to ``true``, collisions occur on both sides of the concave shape faces. Otherwise they occur only along the face normals.
+Nếu được đặt thành ``true``, va chạm xảy ra ở cả hai phía của các mặt của hình dạng lõm. Nếu không, chúng chỉ xảy ra dọc theo các pháp tuyến của mặt.
 
 .. rst-class:: classref-section-separator
 
@@ -90,8 +90,8 @@ If set to ``true``, collisions occur on both sides of the concave shape faces. O
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ConcavePolygonShape3D_method_get_faces:
 
@@ -99,7 +99,7 @@ Method Descriptions
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_faces**\ (\ ) |const| :ref:`🔗<class_ConcavePolygonShape3D_method_get_faces>`
 
-Returns the faces of the trimesh shape as an array of vertices. The array (of length divisible by three) is naturally divided into triples; each triple of vertices defines a triangle.
+Trả về các mặt của hình dạng trimesh dưới dạng một mảng các đỉnh. Mảng này (có độ dài chia hết cho ba) được chia tự nhiên thành các bộ ba; mỗi bộ ba đỉnh xác định một tam giác.
 
 .. rst-class:: classref-item-separator
 
@@ -111,14 +111,14 @@ Returns the faces of the trimesh shape as an array of vertices. The array (of le
 
 |void| **set_faces**\ (\ faces\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) :ref:`🔗<class_ConcavePolygonShape3D_method_set_faces>`
 
-Sets the faces of the trimesh shape from an array of vertices. The ``faces`` array should be composed of triples such that each triple of vertices defines a triangle.
+Thiết lập các mặt của hình dạng trimesh từ một mảng các đỉnh. Mảng ``faces`` phải được tạo thành từ các bộ ba sao cho mỗi bộ ba đỉnh xác định một tam giác.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

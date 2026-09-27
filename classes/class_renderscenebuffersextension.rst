@@ -10,21 +10,21 @@
 RenderSceneBuffersExtension
 ===========================
 
-**Inherits:** :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RenderSceneBuffers<class_RenderSceneBuffers>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-This class allows for a RenderSceneBuffer implementation to be made in GDExtension.
+Lớp này cho phép tạo một triển khai RenderSceneBuffer trong GDExtension.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class allows for a RenderSceneBuffer implementation to be made in GDExtension.
+Lớp này cho phép tạo một triển khai RenderSceneBuffer trong GDExtension.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -47,8 +47,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_RenderSceneBuffersExtension_private_method__configure:
 
@@ -56,7 +56,7 @@ Method Descriptions
 
 |void| **_configure**\ (\ config\: :ref:`RenderSceneBuffersConfiguration<class_RenderSceneBuffersConfiguration>`\ ) |virtual| :ref:`🔗<class_RenderSceneBuffersExtension_private_method__configure>`
 
-Implement this in GDExtension to handle the (re)sizing of a viewport.
+Triển khai phương thức này trong GDExtension để xử lý việc thay đổi kích thước của viewport.
 
 .. rst-class:: classref-item-separator
 
@@ -68,7 +68,7 @@ Implement this in GDExtension to handle the (re)sizing of a viewport.
 
 |void| **_set_anisotropic_filtering_level**\ (\ anisotropic_filtering_level\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_RenderSceneBuffersExtension_private_method__set_anisotropic_filtering_level>`
 
-Implement this in GDExtension to change the anisotropic filtering level.
+Triển khai phương thức này trong GDExtension để thay đổi mức lọc bất đẳng hướng.
 
 .. rst-class:: classref-item-separator
 
@@ -80,7 +80,7 @@ Implement this in GDExtension to change the anisotropic filtering level.
 
 |void| **_set_fsr_sharpness**\ (\ fsr_sharpness\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_RenderSceneBuffersExtension_private_method__set_fsr_sharpness>`
 
-Implement this in GDExtension to record a new FSR sharpness value.
+Triển khai phương thức này trong GDExtension để ghi lại giá trị độ sắc nét FSR mới.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Implement this in GDExtension to record a new FSR sharpness value.
 
 |void| **_set_texture_mipmap_bias**\ (\ texture_mipmap_bias\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_RenderSceneBuffersExtension_private_method__set_texture_mipmap_bias>`
 
-Implement this in GDExtension to change the texture mipmap bias.
+Triển khai phương thức này trong GDExtension để thay đổi texture mipmap bias.
 
 .. rst-class:: classref-item-separator
 
@@ -104,14 +104,14 @@ Implement this in GDExtension to change the texture mipmap bias.
 
 |void| **_set_use_debanding**\ (\ use_debanding\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_RenderSceneBuffersExtension_private_method__set_use_debanding>`
 
-Implement this in GDExtension to react to the debanding flag changing.
+Triển khai phương thức này trong GDExtension để phản hồi khi cờ debanding thay đổi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

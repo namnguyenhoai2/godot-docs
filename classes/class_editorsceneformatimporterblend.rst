@@ -10,31 +10,31 @@
 EditorSceneFormatImporterBlend
 ==============================
 
-**Inherits:** :ref:`EditorSceneFormatImporter<class_EditorSceneFormatImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorSceneFormatImporter<class_EditorSceneFormatImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Importer for Blender's ``.blend`` scene file format.
+Trình nhập khẩu cho định dạng tệp cảnh ``.blend`` của Blender.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Imports Blender scenes in the ``.blend`` file format through the glTF 2.0 3D import pipeline. This importer requires Blender to be installed by the user, so that it can be used to export the scene as glTF 2.0.
+Nhập các cảnh Blender ở định dạng tệp ``.blend`` thông qua pipeline nhập 3D glTF 2.0. Trình nhập khẩu này yêu cầu người dùng cài đặt Blender để có thể xuất cảnh dưới dạng glTF 2.0.
 
-The location of the Blender binary is set via the :ref:`EditorSettings.filesystem/import/blender/blender_path<class_EditorSettings_property_filesystem/import/blender/blender_path>` setting.
+Vị trí của tệp nhị phân Blender được thiết lập thông qua cài đặt :ref:`EditorSettings.filesystem/import/blender/blender_path <class_EditorSettings_property_filesystem/import/blender/blender_path>`.
 
-This importer is only used if :ref:`ProjectSettings.filesystem/import/blender/enabled<class_ProjectSettings_property_filesystem/import/blender/enabled>` is enabled, otherwise ``.blend`` files present in the project folder are not imported.
+Việc nhập Blend chỉ được sử dụng khi :ref:`ProjectSettings.filesystem/import/blender/enabled <class_ProjectSettings_property_filesystem/import/blender/enabled>` được bật; nếu không, các tệp ``.blend`` có trong thư mục dự án sẽ không được nhập.
 
-Blend import requires Blender 3.0.
+Việc nhập Blend yêu cầu Blender 3.0.
 
-Internally, the EditorSceneFormatImporterBlend uses the Blender glTF "Use Original" mode to reference external textures.
+Về mặt nội bộ, EditorSceneFormatImporterBlend sử dụng chế độ "Use Original" của Blender glTF để tham chiếu các texture bên ngoài.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -13,88 +13,88 @@
 Label
 =====
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A control for displaying plain text.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A control for displaying plain text. It gives you control over the horizontal and vertical alignment and can wrap the text inside the node's bounding rectangle. It doesn't support bold, italics, or other rich text formatting. For that, use :ref:`RichTextLabel<class_RichTextLabel>` instead.
-
-\ **Note:** A single Label node is not designed to display huge amounts of text. To display large amounts of text in a single node, consider using :ref:`RichTextLabel<class_RichTextLabel>` instead as it supports features like an integrated scroll bar and threading. :ref:`RichTextLabel<class_RichTextLabel>` generally performs better when displaying large amounts of text (several pages or more).
+Một control dùng để hiển thị văn bản thuần túy.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một control dùng để hiển thị văn bản thuần túy. Control này cho phép bạn điều khiển căn chỉnh theo chiều ngang và chiều dọc, đồng thời có thể ngắt dòng văn bản bên trong hình chữ nhật giới hạn của node. Control này không hỗ trợ định dạng văn bản in đậm, in nghiêng hoặc các định dạng văn bản đa dạng khác. Để làm điều đó, hãy sử dụng :ref:`RichTextLabel<class_RichTextLabel>` thay thế.
+
+\ **Lưu ý:** Một node Label đơn lẻ không được thiết kế để hiển thị lượng văn bản khổng lồ. Để hiển thị lượng văn bản lớn trong một node duy nhất, hãy cân nhắc sử dụng :ref:`RichTextLabel<class_RichTextLabel>` thay thế vì nó hỗ trợ các tính năng như thanh cuộn tích hợp và threading. :ref:`RichTextLabel<class_RichTextLabel>` thường hoạt động tốt hơn khi hiển thị lượng văn bản lớn (từ vài trang trở lên).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
+- `Bản demo 2D Dodge The Creeps <https://godotengine.org/asset-library/asset/2712>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`                           | :ref:`autowrap_mode<class_Label_property_autowrap_mode>`                                                 | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\]           | :ref:`autowrap_trim_flags<class_Label_property_autowrap_trim_flags>`                                     | ``192``                                                                      |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                     | :ref:`clip_text<class_Label_property_clip_text>`                                                         | ``false``                                                                    |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                                 | :ref:`ellipsis_char<class_Label_property_ellipsis_char>`                                                 | ``"…"``                                                                      |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`           | :ref:`horizontal_alignment<class_Label_property_horizontal_alignment>`                                   | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\]   | :ref:`justification_flags<class_Label_property_justification_flags>`                                     | ``163``                                                                      |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`LabelSettings<class_LabelSettings>`                                   | :ref:`label_settings<class_Label_property_label_settings>`                                               |                                                                              |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                                 | :ref:`language<class_Label_property_language>`                                                           | ``""``                                                                       |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                                       | :ref:`lines_skipped<class_Label_property_lines_skipped>`                                                 | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                                       | :ref:`max_lines_visible<class_Label_property_max_lines_visible>`                                         | ``-1``                                                                       |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>`                                | mouse_filter                                                                                             | ``2`` (overrides :ref:`Control<class_Control_property_mouse_filter>`)        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                                 | :ref:`paragraph_separator<class_Label_property_paragraph_separator>`                                     | ``"\\n"``                                                                    |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\]                      | size_flags_vertical                                                                                      | ``4`` (overrides :ref:`Control<class_Control_property_size_flags_vertical>`) |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`           | :ref:`structured_text_bidi_override<class_Label_property_structured_text_bidi_override>`                 | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                                                   | :ref:`structured_text_bidi_override_options<class_Label_property_structured_text_bidi_override_options>` | ``[]``                                                                       |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>`                         | :ref:`tab_stops<class_Label_property_tab_stops>`                                                         | ``PackedFloat32Array()``                                                     |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                                 | :ref:`text<class_Label_property_text>`                                                                   | ``""``                                                                       |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`TextDirection<enum_Control_TextDirection>`                            | :ref:`text_direction<class_Label_property_text_direction>`                                               | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`                     | :ref:`text_overrun_behavior<class_Label_property_text_overrun_behavior>`                                 | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                     | :ref:`uppercase<class_Label_property_uppercase>`                                                         | ``false``                                                                    |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>`               | :ref:`vertical_alignment<class_Label_property_vertical_alignment>`                                       | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                                       | :ref:`visible_characters<class_Label_property_visible_characters>`                                       | ``-1``                                                                       |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`VisibleCharactersBehavior<enum_TextServer_VisibleCharactersBehavior>` | :ref:`visible_characters_behavior<class_Label_property_visible_characters_behavior>`                     | ``0``                                                                        |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                                   | :ref:`visible_ratio<class_Label_property_visible_ratio>`                                                 | ``1.0``                                                                      |
-   +-----------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`AutowrapMode <enum_TextServer_AutowrapMode>`                           | :ref:`autowrap_mode<class_Label_property_autowrap_mode>`                                                 | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`LineBreakFlag <enum_TextServer_LineBreakFlag>`\]           | :ref:`autowrap_trim_flags<class_Label_property_autowrap_trim_flags>`                                     | ``192``                                                                   |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                      | :ref:`clip_text<class_Label_property_clip_text>`                                                         | ``false``                                                                 |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                  | :ref:`ellipsis_char<class_Label_property_ellipsis_char>`                                                 | ``"…"``                                                                   |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>`           | :ref:`horizontal_alignment<class_Label_property_horizontal_alignment>`                                   | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`JustificationFlag <enum_TextServer_JustificationFlag>`\]   | :ref:`justification_flags<class_Label_property_justification_flags>`                                     | ``163``                                                                   |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`LabelSettings<class_LabelSettings>`                                    | :ref:`label_settings<class_Label_property_label_settings>`                                               |                                                                           |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                  | :ref:`language<class_Label_property_language>`                                                           | ``""``                                                                    |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                        | :ref:`lines_skipped<class_Label_property_lines_skipped>`                                                 | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                        | :ref:`max_lines_visible<class_Label_property_max_lines_visible>`                                         | ``-1``                                                                    |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>`                                | mouse_filter                                                                                             | ``2`` (ghi đè :ref:`Control<class_Control_property_mouse_filter>`)        |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                  | :ref:`paragraph_separator<class_Label_property_paragraph_separator>`                                     | ``"\\n"``                                                                 |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`SizeFlags <enum_Control_SizeFlags>`\]                      | size_flags_vertical                                                                                      | ``4`` (ghi đè :ref:`Control<class_Control_property_size_flags_vertical>`) |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`StructuredTextParser <enum_TextServer_StructuredTextParser>`           | :ref:`structured_text_bidi_override<class_Label_property_structured_text_bidi_override>`                 | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                                    | :ref:`structured_text_bidi_override_options<class_Label_property_structured_text_bidi_override_options>` | ``[]``                                                                    |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>`                          | :ref:`tab_stops<class_Label_property_tab_stops>`                                                         | ``PackedFloat32Array()``                                                  |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                                  | :ref:`text<class_Label_property_text>`                                                                   | ``""``                                                                    |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`TextDirection <enum_Control_TextDirection>`                            | :ref:`text_direction<class_Label_property_text_direction>`                                               | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`OverrunBehavior <enum_TextServer_OverrunBehavior>`                     | :ref:`text_overrun_behavior<class_Label_property_text_overrun_behavior>`                                 | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                                      | :ref:`uppercase<class_Label_property_uppercase>`                                                         | ``false``                                                                 |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`VerticalAlignment <enum_@GlobalScope_VerticalAlignment>`               | :ref:`vertical_alignment<class_Label_property_vertical_alignment>`                                       | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                        | :ref:`visible_characters<class_Label_property_visible_characters>`                                       | ``-1``                                                                    |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`VisibleCharactersBehavior <enum_TextServer_VisibleCharactersBehavior>` | :ref:`visible_characters_behavior<class_Label_property_visible_characters_behavior>`                     | ``0``                                                                     |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                                    | :ref:`visible_ratio<class_Label_property_visible_ratio>`                                                 | ``1.0``                                                                   |
+   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -113,8 +113,8 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính chủ đề
+-----------------
 
 .. table::
    :widths: auto
@@ -153,8 +153,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Label_property_autowrap_mode:
 
@@ -167,9 +167,9 @@ Property Descriptions
 - |void| **set_autowrap_mode**\ (\ value\: :ref:`AutowrapMode<enum_TextServer_AutowrapMode>`\ )
 - :ref:`AutowrapMode<enum_TextServer_AutowrapMode>` **get_autowrap_mode**\ (\ )
 
-If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`, the text gets wrapped inside the node's bounding rectangle. If you resize the node, it will change its height automatically to show all the text.
+Nếu được đặt thành giá trị khác :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_constant_AUTOWRAP_OFF>`, văn bản sẽ được tự động xuống dòng bên trong hình chữ nhật bao quanh node. Nếu bạn thay đổi kích thước node, chiều cao của node sẽ tự động thay đổi để hiển thị toàn bộ văn bản.
 
-\ **Note:** Labels with autowrapping enabled must have a custom maximum width configured to work correctly, either through the Label's own :ref:`Control.custom_maximum_size<class_Control_property_custom_maximum_size>` or as a result of a propagated maximum size from a parent Control with :ref:`Control.propagate_maximum_size<class_Control_property_propagate_maximum_size>` enabled.
+\ **Lưu ý:** Các Label bật tính năng tự động xuống dòng phải được cấu hình chiều rộng tối đa tùy chỉnh để hoạt động chính xác, thông qua :ref:`Control.custom_maximum_size<class_Control_property_custom_maximum_size>` của chính Label hoặc do kích thước tối đa được truyền từ Control cha có bật :ref:`Control.propagate_maximum_size<class_Control_property_propagate_maximum_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ If set to something other than :ref:`TextServer.AUTOWRAP_OFF<class_TextServer_co
 - |void| **set_autowrap_trim_flags**\ (\ value\: |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\]\ )
 - |bitfield|\[:ref:`LineBreakFlag<enum_TextServer_LineBreakFlag>`\] **get_autowrap_trim_flags**\ (\ )
 
-Autowrap space trimming flags. See :ref:`TextServer.BREAK_TRIM_START_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_START_EDGE_SPACES>` and :ref:`TextServer.BREAK_TRIM_END_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_END_EDGE_SPACES>` for more info.
+Các cờ cắt bỏ khoảng trắng khi tự động xuống dòng. Xem :ref:`TextServer.BREAK_TRIM_START_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_START_EDGE_SPACES>` và :ref:`TextServer.BREAK_TRIM_END_EDGE_SPACES<class_TextServer_constant_BREAK_TRIM_END_EDGE_SPACES>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Autowrap space trimming flags. See :ref:`TextServer.BREAK_TRIM_START_EDGE_SPACES
 - |void| **set_clip_text**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_clipping_text**\ (\ )
 
-If ``true``, the Label only shows the text that fits inside its bounding rectangle and will clip text horizontally.
+Nếu ``true``, Label chỉ hiển thị phần văn bản vừa với hình chữ nhật bao quanh và sẽ cắt bớt văn bản theo chiều ngang.
 
 .. rst-class:: classref-item-separator
 
@@ -220,7 +220,7 @@ If ``true``, the Label only shows the text that fits inside its bounding rectang
 - |void| **set_ellipsis_char**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_ellipsis_char**\ (\ )
 
-Ellipsis character used for text clipping.
+Ký tự dấu chấm lửng được dùng để cắt bớt văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Ellipsis character used for text clipping.
 - |void| **set_horizontal_alignment**\ (\ value\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )
 - :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_horizontal_alignment**\ (\ )
 
-Controls the text's horizontal alignment. Supports left, center, right, and fill (also known as justify).
+Điều khiển căn chỉnh theo chiều ngang của văn bản. Hỗ trợ left, center, right và fill (còn gọi là justify).
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ Controls the text's horizontal alignment. Supports left, center, right, and fill
 - |void| **set_justification_flags**\ (\ value\: |bitfield|\[:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\]\ )
 - |bitfield|\[:ref:`JustificationFlag<enum_TextServer_JustificationFlag>`\] **get_justification_flags**\ (\ )
 
-Line fill alignment rules.
+Quy tắc căn chỉnh phần tô của đường.
 
 .. rst-class:: classref-item-separator
 
@@ -264,14 +264,14 @@ Line fill alignment rules.
 
 .. rst-class:: classref-property
 
-:ref:`LabelSettings<class_LabelSettings>` **label_settings** :ref:`🔗<class_Label_property_label_settings>`
+:ref:`LabelSettings<class_LabelSettings>` **label_settings** :ref:`🔗 <class_Label_property_label_settings>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_label_settings**\ (\ value\: :ref:`LabelSettings<class_LabelSettings>`\ )
 - :ref:`LabelSettings<class_LabelSettings>` **get_label_settings**\ (\ )
 
-A :ref:`LabelSettings<class_LabelSettings>` resource that can be shared between multiple **Label** nodes. Takes priority over theme properties.
+Một tài nguyên :ref:`LabelSettings<class_LabelSettings>` có thể được chia sẻ giữa nhiều node **Label**. Được ưu tiên hơn các thuộc tính của theme.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ A :ref:`LabelSettings<class_LabelSettings>` resource that can be shared between 
 - |void| **set_language**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_language**\ (\ )
 
-Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead.
+Mã ngôn ngữ được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ Language code used for line-breaking and text shaping algorithms. If left empty,
 - |void| **set_lines_skipped**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_lines_skipped**\ (\ )
 
-The number of the lines ignored and not displayed from the start of the :ref:`text<class_Label_property_text>` value.
+Số dòng bị bỏ qua và không được hiển thị từ đầu giá trị :ref:`text<class_Label_property_text>`.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +322,7 @@ The number of the lines ignored and not displayed from the start of the :ref:`te
 - |void| **set_max_lines_visible**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_lines_visible**\ (\ )
 
-Limits the lines of text the node shows on screen.
+Giới hạn số dòng văn bản mà node hiển thị trên màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -339,7 +339,7 @@ Limits the lines of text the node shows on screen.
 - |void| **set_paragraph_separator**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_paragraph_separator**\ (\ )
 
-String used as a paragraph separator. Each paragraph is processed independently, in its own BiDi context.
+Chuỗi được sử dụng làm dấu phân cách đoạn văn. Mỗi đoạn văn được xử lý độc lập trong ngữ cảnh BiDi riêng.
 
 .. rst-class:: classref-item-separator
 
@@ -356,7 +356,7 @@ String used as a paragraph separator. Each paragraph is processed independently,
 - |void| **set_structured_text_bidi_override**\ (\ value\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`\ )
 - :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` **get_structured_text_bidi_override**\ (\ )
 
-Set BiDi algorithm override for the structured text.
+Đặt chế độ ghi đè thuật toán BiDi cho văn bản có cấu trúc.
 
 .. rst-class:: classref-item-separator
 
@@ -373,7 +373,7 @@ Set BiDi algorithm override for the structured text.
 - |void| **set_structured_text_bidi_override_options**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_structured_text_bidi_override_options**\ (\ )
 
-Set additional options for BiDi override.
+Đặt các tùy chọn bổ sung cho chế độ ghi đè BiDi.
 
 .. rst-class:: classref-item-separator
 
@@ -390,9 +390,9 @@ Set additional options for BiDi override.
 - |void| **set_tab_stops**\ (\ value\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )
 - :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_tab_stops**\ (\ )
 
-Aligns text to the given tab-stops.
+Căn chỉnh văn bản theo các điểm dừng tab đã cho.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với nó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedFloat32Array<class_PackedFloat32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ Aligns text to the given tab-stops.
 - |void| **set_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_text**\ (\ )
 
-The text to display on screen.
+Văn bản cần hiển thị trên màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -426,7 +426,7 @@ The text to display on screen.
 - |void| **set_text_direction**\ (\ value\: :ref:`TextDirection<enum_Control_TextDirection>`\ )
 - :ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ )
 
-Base text writing direction.
+Hướng ghi văn bản cơ sở.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +443,7 @@ Base text writing direction.
 - |void| **set_text_overrun_behavior**\ (\ value\: :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`\ )
 - :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior**\ (\ )
 
-The clipping behavior when the text exceeds the node's bounding rectangle.
+Hành vi cắt xén khi văn bản vượt quá hình chữ nhật giới hạn của node.
 
 .. rst-class:: classref-item-separator
 
@@ -460,7 +460,7 @@ The clipping behavior when the text exceeds the node's bounding rectangle.
 - |void| **set_uppercase**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_uppercase**\ (\ )
 
-If ``true``, all the text displays as UPPERCASE.
+Nếu ``true``, toàn bộ văn bản được hiển thị IN HOA.
 
 .. rst-class:: classref-item-separator
 
@@ -477,7 +477,7 @@ If ``true``, all the text displays as UPPERCASE.
 - |void| **set_vertical_alignment**\ (\ value\: :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>`\ )
 - :ref:`VerticalAlignment<enum_@GlobalScope_VerticalAlignment>` **get_vertical_alignment**\ (\ )
 
-Controls the text's vertical alignment. Supports top, center, bottom, and fill.
+Kiểm soát căn chỉnh theo chiều dọc của văn bản. Hỗ trợ trên cùng, giữa, dưới cùng và lấp đầy.
 
 .. rst-class:: classref-item-separator
 
@@ -494,11 +494,11 @@ Controls the text's vertical alignment. Supports top, center, bottom, and fill.
 - |void| **set_visible_characters**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_visible_characters**\ (\ )
 
-The number of characters to display. If set to ``-1``, all characters are displayed. This can be useful when animating the text appearing in a dialog box.
+Số ký tự cần hiển thị. Nếu được đặt thành ``-1``, tất cả ký tự sẽ được hiển thị. Điều này có thể hữu ích khi tạo hiệu ứng cho văn bản xuất hiện trong hộp thoại.
 
-\ **Note:** Setting this property updates :ref:`visible_ratio<class_Label_property_visible_ratio>` accordingly.
+\ **Lưu ý:** Việc đặt thuộc tính này sẽ cập nhật :ref:`visible_ratio<class_Label_property_visible_ratio>` tương ứng.
 
-\ **Note:** Characters are counted as Unicode codepoints. A single visible grapheme may contain multiple codepoints (e.g. certain emoji use three codepoints). A single codepoint may contain two UTF-16 characters, which are used in C# strings.
+\ **Lưu ý:** Ký tự được đếm dưới dạng codepoint Unicode. Một grapheme hiển thị đơn lẻ có thể chứa nhiều codepoint (ví dụ: một số emoji sử dụng ba codepoint). Một codepoint đơn lẻ có thể chứa hai ký tự UTF-16, được sử dụng trong chuỗi C#.
 
 .. rst-class:: classref-item-separator
 
@@ -515,7 +515,7 @@ The number of characters to display. If set to ``-1``, all characters are displa
 - |void| **set_visible_characters_behavior**\ (\ value\: :ref:`VisibleCharactersBehavior<enum_TextServer_VisibleCharactersBehavior>`\ )
 - :ref:`VisibleCharactersBehavior<enum_TextServer_VisibleCharactersBehavior>` **get_visible_characters_behavior**\ (\ )
 
-The clipping behavior when :ref:`visible_characters<class_Label_property_visible_characters>` or :ref:`visible_ratio<class_Label_property_visible_ratio>` is set.
+Hành vi cắt xén khi :ref:`visible_characters<class_Label_property_visible_characters>` hoặc :ref:`visible_ratio<class_Label_property_visible_ratio>` được đặt.
 
 .. rst-class:: classref-item-separator
 
@@ -532,9 +532,9 @@ The clipping behavior when :ref:`visible_characters<class_Label_property_visible
 - |void| **set_visible_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_visible_ratio**\ (\ )
 
-The fraction of characters to display, relative to the total number of characters (see :ref:`get_total_character_count()<class_Label_method_get_total_character_count>`). If set to ``1.0``, all characters are displayed. If set to ``0.5``, only half of the characters will be displayed. This can be useful when animating the text appearing in a dialog box.
+Tỷ lệ ký tự cần hiển thị so với tổng số ký tự (xem :ref:`get_total_character_count()<class_Label_method_get_total_character_count>`). Nếu được đặt thành ``1.0``, tất cả ký tự sẽ được hiển thị. Nếu được đặt thành ``0.5``, chỉ một nửa số ký tự sẽ được hiển thị. Điều này có thể hữu ích khi tạo hiệu ứng cho văn bản xuất hiện trong hộp thoại.
 
-\ **Note:** Setting this property updates :ref:`visible_characters<class_Label_property_visible_characters>` accordingly.
+\ **Lưu ý:** Việc thiết lập thuộc tính này sẽ cập nhật :ref:`visible_characters<class_Label_property_visible_characters>` tương ứng.
 
 .. rst-class:: classref-section-separator
 
@@ -542,8 +542,8 @@ The fraction of characters to display, relative to the total number of character
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Label_method_get_character_bounds:
 
@@ -551,7 +551,7 @@ Method Descriptions
 
 :ref:`Rect2<class_Rect2>` **get_character_bounds**\ (\ pos\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Label_method_get_character_bounds>`
 
-Returns the bounding rectangle of the character at position ``pos`` in the label's local coordinate system. If the character is a non-visual character or ``pos`` is outside the valid range, an empty :ref:`Rect2<class_Rect2>` is returned. If the character is a part of a composite grapheme, the bounding rectangle of the whole grapheme is returned.
+Trả về hình chữ nhật bao quanh ký tự tại vị trí ``pos`` trong hệ tọa độ cục bộ của Label. Nếu ký tự là ký tự không hiển thị hoặc ``pos`` nằm ngoài phạm vi hợp lệ, một :ref:`Rect2<class_Rect2>` rỗng sẽ được trả về. Nếu ký tự là một phần của grapheme tổng hợp, hình chữ nhật bao quanh toàn bộ grapheme sẽ được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -563,7 +563,7 @@ Returns the bounding rectangle of the character at position ``pos`` in the label
 
 :ref:`int<class_int>` **get_line_count**\ (\ ) |const| :ref:`🔗<class_Label_method_get_line_count>`
 
-Returns the number of lines of text the Label has.
+Trả về số dòng văn bản mà Label có.
 
 .. rst-class:: classref-item-separator
 
@@ -575,11 +575,11 @@ Returns the number of lines of text the Label has.
 
 :ref:`int<class_int>` **get_line_height**\ (\ line\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_Label_method_get_line_height>`
 
-Returns the height of the line ``line``.
+Trả về chiều cao của dòng ``line``.
 
-If ``line`` is set to ``-1``, returns the biggest line height.
+Nếu ``line`` được đặt thành ``-1``, trả về chiều cao dòng lớn nhất.
 
-If there are no lines, returns font size in pixels.
+Nếu không có dòng nào, trả về kích thước phông chữ tính bằng pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -591,7 +591,7 @@ If there are no lines, returns font size in pixels.
 
 :ref:`int<class_int>` **get_total_character_count**\ (\ ) |const| :ref:`🔗<class_Label_method_get_total_character_count>`
 
-Returns the total number of printable characters in the text (excluding spaces and newlines).
+Trả về tổng số ký tự có thể in trong văn bản (không bao gồm dấu cách và ký tự xuống dòng).
 
 .. rst-class:: classref-item-separator
 
@@ -603,7 +603,7 @@ Returns the total number of printable characters in the text (excluding spaces a
 
 :ref:`int<class_int>` **get_visible_line_count**\ (\ ) |const| :ref:`🔗<class_Label_method_get_visible_line_count>`
 
-Returns the number of lines shown. Useful if the **Label**'s height cannot currently display all lines.
+Trả về số dòng được hiển thị. Hữu ích nếu chiều cao của **Label** hiện không thể hiển thị tất cả các dòng.
 
 .. rst-class:: classref-section-separator
 
@@ -611,8 +611,8 @@ Returns the number of lines shown. Useful if the **Label**'s height cannot curre
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_Label_theme_color_font_color:
 
@@ -620,7 +620,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **font_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_Label_theme_color_font_color>`
 
-Default text :ref:`Color<class_Color>` of the **Label**.
+Màu văn bản mặc định :ref:`Color<class_Color>` của **Label**.
 
 .. rst-class:: classref-item-separator
 
@@ -632,7 +632,7 @@ Default text :ref:`Color<class_Color>` of the **Label**.
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_Label_theme_color_font_outline_color>`
 
-The color of text outline.
+Màu của đường viền văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -644,7 +644,7 @@ The color of text outline.
 
 :ref:`Color<class_Color>` **font_shadow_color** = ``Color(0, 0, 0, 0)`` :ref:`🔗<class_Label_theme_color_font_shadow_color>`
 
-:ref:`Color<class_Color>` of the text's shadow effect.
+:ref:`Color<class_Color>` của hiệu ứng đổ bóng văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -656,7 +656,7 @@ The color of text outline.
 
 :ref:`int<class_int>` **line_spacing** = ``3`` :ref:`🔗<class_Label_theme_constant_line_spacing>`
 
-Additional vertical spacing between lines (in pixels), spacing is added to line descent. This value can be negative.
+Khoảng cách dọc bổ sung giữa các dòng (tính bằng pixel); khoảng cách này được cộng vào độ lệch dưới của dòng. Giá trị này có thể là số âm.
 
 .. rst-class:: classref-item-separator
 
@@ -668,11 +668,11 @@ Additional vertical spacing between lines (in pixels), spacing is added to line 
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_Label_theme_constant_outline_size>`
 
-Text outline size.
+Kích thước đường viền văn bản.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_Label_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng phông chữ có :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` được bật, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của phông chữ đó phải được đặt ít nhất *gấp đôi* giá trị của :ref:`outline_size<class_Label_theme_constant_outline_size>` để việc hiển thị đường viền trông chính xác. Nếu không, đường viền có thể bị cắt sớm hơn dự kiến.
 
-\ **Note:** Using a value that is larger than half the font size is not recommended, as the font outline may fail to be fully closed in this case.
+\ **Lưu ý:** Không nên sử dụng giá trị lớn hơn một nửa cỡ chữ, vì trong trường hợp này, đường viền phông chữ có thể không được khép kín hoàn toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -684,7 +684,7 @@ Text outline size.
 
 :ref:`int<class_int>` **paragraph_spacing** = ``0`` :ref:`🔗<class_Label_theme_constant_paragraph_spacing>`
 
-Vertical space between paragraphs. Added on top of :ref:`line_spacing<class_Label_theme_constant_line_spacing>`.
+Khoảng cách theo chiều dọc giữa các đoạn văn. Được thêm vào phía trên :ref:`line_spacing<class_Label_theme_constant_line_spacing>`.
 
 .. rst-class:: classref-item-separator
 
@@ -696,7 +696,7 @@ Vertical space between paragraphs. Added on top of :ref:`line_spacing<class_Labe
 
 :ref:`int<class_int>` **shadow_offset_x** = ``1`` :ref:`🔗<class_Label_theme_constant_shadow_offset_x>`
 
-The horizontal offset of the text's shadow.
+Độ lệch theo chiều ngang của bóng văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -708,7 +708,7 @@ The horizontal offset of the text's shadow.
 
 :ref:`int<class_int>` **shadow_offset_y** = ``1`` :ref:`🔗<class_Label_theme_constant_shadow_offset_y>`
 
-The vertical offset of the text's shadow.
+Độ lệch theo chiều dọc của bóng văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -720,7 +720,7 @@ The vertical offset of the text's shadow.
 
 :ref:`int<class_int>` **shadow_outline_size** = ``1`` :ref:`🔗<class_Label_theme_constant_shadow_outline_size>`
 
-The size of the shadow outline.
+Kích thước đường viền của bóng.
 
 .. rst-class:: classref-item-separator
 
@@ -730,9 +730,9 @@ The size of the shadow outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_Label_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_Label_theme_font_font>`
 
-:ref:`Font<class_Font>` used for the **Label**'s text.
+:ref:`Font<class_Font>` được dùng cho văn bản của **Label**.
 
 .. rst-class:: classref-item-separator
 
@@ -742,9 +742,9 @@ The size of the shadow outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_Label_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_Label_theme_font_size_font_size>`
 
-Font size of the **Label**'s text.
+Cỡ chữ của văn bản của **Label**.
 
 .. rst-class:: classref-item-separator
 
@@ -754,9 +754,9 @@ Font size of the **Label**'s text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_Label_theme_style_focus>`
+:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗 <class_Label_theme_style_focus>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **Label** is focused (when used with assistive apps).
+:ref:`StyleBox<class_StyleBox>` được dùng khi **Label** được focus (khi được dùng với các ứng dụng hỗ trợ).
 
 .. rst-class:: classref-item-separator
 
@@ -766,16 +766,16 @@ Font size of the **Label**'s text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗<class_Label_theme_style_normal>`
+:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗 <class_Label_theme_style_normal>`
 
-Background :ref:`StyleBox<class_StyleBox>` for the **Label**.
+Thông tin cơ bản :ref:`StyleBox<class_StyleBox>` cho **Label**.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Để có bất kỳ tác dụng nào, người dùng thường nên ghi đè phương thức này.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

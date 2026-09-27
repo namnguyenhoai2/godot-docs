@@ -10,41 +10,41 @@
 Gradient
 ========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A color transition.
+Một chuyển màu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This resource describes a color transition by defining a set of colored points and how to interpolate between them.
+Tài nguyên này mô tả một chuyển màu bằng cách xác định một tập hợp các điểm màu và cách nội suy giữa chúng.
 
-See also :ref:`Curve<class_Curve>` which supports more complex easing methods, but does not support colors.
+Xem thêm :ref:`Curve<class_Curve>`, hỗ trợ các phương pháp easing phức tạp hơn nhưng không hỗ trợ màu sắc.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
-   | :ref:`PackedColorArray<class_PackedColorArray>`           | :ref:`colors<class_Gradient_property_colors>`                                       | ``PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1)`` |
-   +-----------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
-   | :ref:`ColorSpace<enum_Gradient_ColorSpace>`               | :ref:`interpolation_color_space<class_Gradient_property_interpolation_color_space>` | ``0``                                        |
-   +-----------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
-   | :ref:`InterpolationMode<enum_Gradient_InterpolationMode>` | :ref:`interpolation_mode<class_Gradient_property_interpolation_mode>`               | ``0``                                        |
-   +-----------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>`       | :ref:`offsets<class_Gradient_property_offsets>`                                     | ``PackedFloat32Array(0, 1)``                 |
-   +-----------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
+   +------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
+   | :ref:`PackedColorArray<class_PackedColorArray>`            | :ref:`colors<class_Gradient_property_colors>`                                       | ``PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1)`` |
+   +------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
+   | :ref:`ColorSpace <enum_Gradient_ColorSpace>`               | :ref:`interpolation_color_space<class_Gradient_property_interpolation_color_space>` | ``0``                                        |
+   +------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
+   | :ref:`InterpolationMode <enum_Gradient_InterpolationMode>` | :ref:`interpolation_mode<class_Gradient_property_interpolation_mode>`               | ``0``                                        |
+   +------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>`        | :ref:`offsets<class_Gradient_property_offsets>`                                     | ``PackedFloat32Array(0, 1)``                 |
+   +------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -75,14 +75,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Gradient_InterpolationMode:
 
 .. rst-class:: classref-enumeration
 
-enum **InterpolationMode**: :ref:`🔗<enum_Gradient_InterpolationMode>`
+enum **InterpolationMode**: :ref:`🔗 <enum_Gradient_InterpolationMode>`
 
 .. _class_Gradient_constant_GRADIENT_INTERPOLATE_LINEAR:
 
@@ -90,7 +90,7 @@ enum **InterpolationMode**: :ref:`🔗<enum_Gradient_InterpolationMode>`
 
 :ref:`InterpolationMode<enum_Gradient_InterpolationMode>` **GRADIENT_INTERPOLATE_LINEAR** = ``0``
 
-Linear interpolation.
+Nội suy tuyến tính.
 
 .. _class_Gradient_constant_GRADIENT_INTERPOLATE_CONSTANT:
 
@@ -98,7 +98,7 @@ Linear interpolation.
 
 :ref:`InterpolationMode<enum_Gradient_InterpolationMode>` **GRADIENT_INTERPOLATE_CONSTANT** = ``1``
 
-Constant interpolation, color changes abruptly at each point and stays uniform between. This might cause visible aliasing when used for a gradient texture in some cases.
+Nội suy hằng số, màu sắc thay đổi đột ngột tại mỗi điểm và giữ nguyên giữa các điểm. Trong một số trường hợp, điều này có thể gây hiện tượng aliasing dễ nhận thấy khi được sử dụng cho texture gradient.
 
 .. _class_Gradient_constant_GRADIENT_INTERPOLATE_CUBIC:
 
@@ -106,7 +106,7 @@ Constant interpolation, color changes abruptly at each point and stays uniform b
 
 :ref:`InterpolationMode<enum_Gradient_InterpolationMode>` **GRADIENT_INTERPOLATE_CUBIC** = ``2``
 
-Cubic interpolation.
+Nội suy cubic.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ Cubic interpolation.
 
 .. rst-class:: classref-enumeration
 
-enum **ColorSpace**: :ref:`🔗<enum_Gradient_ColorSpace>`
+enum **ColorSpace**: :ref:`🔗 <enum_Gradient_ColorSpace>`
 
 .. _class_Gradient_constant_GRADIENT_COLOR_SPACE_SRGB:
 
@@ -124,7 +124,7 @@ enum **ColorSpace**: :ref:`🔗<enum_Gradient_ColorSpace>`
 
 :ref:`ColorSpace<enum_Gradient_ColorSpace>` **GRADIENT_COLOR_SPACE_SRGB** = ``0``
 
-sRGB color space.
+Không gian màu sRGB.
 
 .. _class_Gradient_constant_GRADIENT_COLOR_SPACE_LINEAR_SRGB:
 
@@ -132,7 +132,7 @@ sRGB color space.
 
 :ref:`ColorSpace<enum_Gradient_ColorSpace>` **GRADIENT_COLOR_SPACE_LINEAR_SRGB** = ``1``
 
-Linear sRGB color space.
+Không gian màu sRGB tuyến tính.
 
 .. _class_Gradient_constant_GRADIENT_COLOR_SPACE_OKLAB:
 
@@ -140,7 +140,7 @@ Linear sRGB color space.
 
 :ref:`ColorSpace<enum_Gradient_ColorSpace>` **GRADIENT_COLOR_SPACE_OKLAB** = ``2``
 
-`Oklab <https://bottosson.github.io/posts/oklab/>`__ color space. This color space provides a smooth and uniform-looking transition between colors.
+`Oklab <https://bottosson.github.io/posts/oklab/>`__ là không gian màu. Không gian màu này cung cấp sự chuyển tiếp mượt mà và có vẻ đồng nhất giữa các màu.
 
 .. rst-class:: classref-section-separator
 
@@ -148,8 +148,8 @@ Linear sRGB color space.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Gradient_property_colors:
 
@@ -162,11 +162,11 @@ Property Descriptions
 - |void| **set_colors**\ (\ value\: :ref:`PackedColorArray<class_PackedColorArray>`\ )
 - :ref:`PackedColorArray<class_PackedColorArray>` **get_colors**\ (\ )
 
-Gradient's colors as a :ref:`PackedColorArray<class_PackedColorArray>`.
+Các màu của Gradient dưới dạng một :ref:`PackedColorArray<class_PackedColorArray>`.
 
-\ **Note:** Setting this property updates all colors at once. To update any color individually use :ref:`set_color()<class_Gradient_method_set_color>`.
+\ **Lưu ý:** Việc thiết lập thuộc tính này sẽ cập nhật tất cả màu cùng lúc. Để cập nhật từng màu riêng lẻ, hãy sử dụng :ref:`set_color()<class_Gradient_method_set_color>`.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedColorArray<class_PackedColorArray>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng đó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedColorArray<class_PackedColorArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -183,9 +183,9 @@ Gradient's colors as a :ref:`PackedColorArray<class_PackedColorArray>`.
 - |void| **set_interpolation_color_space**\ (\ value\: :ref:`ColorSpace<enum_Gradient_ColorSpace>`\ )
 - :ref:`ColorSpace<enum_Gradient_ColorSpace>` **get_interpolation_color_space**\ (\ )
 
-The color space used to interpolate between points of the gradient. It does not affect the returned colors, which will always use nonlinear sRGB encoding.
+Không gian màu được sử dụng để nội suy giữa các điểm của gradient. Điều này không ảnh hưởng đến các màu được trả về, vì chúng sẽ luôn sử dụng mã hóa sRGB phi tuyến.
 
-\ **Note:** This setting has no effect when :ref:`interpolation_mode<class_Gradient_property_interpolation_mode>` is set to :ref:`GRADIENT_INTERPOLATE_CONSTANT<class_Gradient_constant_GRADIENT_INTERPOLATE_CONSTANT>`.
+\ **Lưu ý:** Cài đặt này không có hiệu lực khi :ref:`interpolation_mode<class_Gradient_property_interpolation_mode>` được đặt thành :ref:`GRADIENT_INTERPOLATE_CONSTANT<class_Gradient_constant_GRADIENT_INTERPOLATE_CONSTANT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ The color space used to interpolate between points of the gradient. It does not 
 - |void| **set_interpolation_mode**\ (\ value\: :ref:`InterpolationMode<enum_Gradient_InterpolationMode>`\ )
 - :ref:`InterpolationMode<enum_Gradient_InterpolationMode>` **get_interpolation_mode**\ (\ )
 
-The algorithm used to interpolate between points of the gradient.
+Thuật toán được sử dụng để nội suy giữa các điểm của gradient.
 
 .. rst-class:: classref-item-separator
 
@@ -219,11 +219,11 @@ The algorithm used to interpolate between points of the gradient.
 - |void| **set_offsets**\ (\ value\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )
 - :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_offsets**\ (\ )
 
-Gradient's offsets as a :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
+Các offset của gradient dưới dạng một :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
-\ **Note:** Setting this property updates all offsets at once. To update any offset individually use :ref:`set_offset()<class_Gradient_method_set_offset>`.
+\ **Lưu ý:** Việc đặt thuộc tính này sẽ cập nhật tất cả offset cùng lúc. Để cập nhật từng offset riêng lẻ, hãy sử dụng :ref:`set_offset()<class_Gradient_method_set_offset>`.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng đó sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedFloat32Array<class_PackedFloat32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -231,8 +231,8 @@ Gradient's offsets as a :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Gradient_method_add_point:
 
@@ -240,7 +240,7 @@ Method Descriptions
 
 |void| **add_point**\ (\ offset\: :ref:`float<class_float>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_Gradient_method_add_point>`
 
-Adds the specified color to the gradient, with the specified offset.
+Thêm màu được chỉ định vào gradient, với offset được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Adds the specified color to the gradient, with the specified offset.
 
 :ref:`Color<class_Color>` **get_color**\ (\ point\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Gradient_method_get_color>`
 
-Returns the color of the gradient color at index ``point``.
+Trả về màu của gradient tại chỉ mục ``point``.
 
 .. rst-class:: classref-item-separator
 
@@ -264,7 +264,7 @@ Returns the color of the gradient color at index ``point``.
 
 :ref:`float<class_float>` **get_offset**\ (\ point\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Gradient_method_get_offset>`
 
-Returns the offset of the gradient color at index ``point``.
+Trả về offset của màu gradient tại chỉ mục ``point``.
 
 .. rst-class:: classref-item-separator
 
@@ -276,7 +276,7 @@ Returns the offset of the gradient color at index ``point``.
 
 :ref:`int<class_int>` **get_point_count**\ (\ ) |const| :ref:`🔗<class_Gradient_method_get_point_count>`
 
-Returns the number of colors in the gradient.
+Trả về số lượng màu trong gradient.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ Returns the number of colors in the gradient.
 
 |void| **remove_point**\ (\ point\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Gradient_method_remove_point>`
 
-Removes the color at index ``point``.
+Xóa màu tại chỉ mục ``point``.
 
 .. rst-class:: classref-item-separator
 
@@ -300,9 +300,9 @@ Removes the color at index ``point``.
 
 |void| **reverse**\ (\ ) :ref:`🔗<class_Gradient_method_reverse>`
 
-Reverses/mirrors the gradient.
+Đảo ngược/phản chiếu gradient.
 
-\ **Note:** This method mirrors all points around the middle of the gradient, which may produce unexpected results when :ref:`interpolation_mode<class_Gradient_property_interpolation_mode>` is set to :ref:`GRADIENT_INTERPOLATE_CONSTANT<class_Gradient_constant_GRADIENT_INTERPOLATE_CONSTANT>`.
+\ **Lưu ý:** Phương thức này phản chiếu tất cả các điểm qua trung điểm của gradient, điều này có thể tạo ra kết quả không mong muốn khi :ref:`interpolation_mode<class_Gradient_property_interpolation_mode>` được đặt thành :ref:`GRADIENT_INTERPOLATE_CONSTANT<class_Gradient_constant_GRADIENT_INTERPOLATE_CONSTANT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ Reverses/mirrors the gradient.
 
 :ref:`Color<class_Color>` **sample**\ (\ offset\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Gradient_method_sample>`
 
-Returns the interpolated color specified by ``offset``. ``offset`` should be between ``0.0`` and ``1.0`` (inclusive). Using a value lower than ``0.0`` will return the same color as ``0.0``, and using a value higher than ``1.0`` will return the same color as ``1.0``. If your input value is not within this range, consider using :ref:`@GlobalScope.remap()<class_@GlobalScope_method_remap>` on the input value with output values set to ``0.0`` and ``1.0``.
+Trả về màu được nội suy do ``offset`` chỉ định. ``offset`` phải nằm giữa ``0.0`` và ``1.0`` (bao gồm cả hai giá trị). Sử dụng giá trị nhỏ hơn ``0.0`` sẽ trả về cùng màu với ``0.0``, còn sử dụng giá trị lớn hơn ``1.0`` sẽ trả về cùng màu với ``1.0``. Nếu giá trị đầu vào của bạn không nằm trong phạm vi này, hãy cân nhắc sử dụng :ref:`@GlobalScope.remap() <class_@GlobalScope_method_remap>` trên giá trị đầu vào, với các giá trị đầu ra được đặt thành ``0.0`` và ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -326,7 +326,7 @@ Returns the interpolated color specified by ``offset``. ``offset`` should be bet
 
 |void| **set_color**\ (\ point\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_Gradient_method_set_color>`
 
-Sets the color of the gradient color at index ``point``.
+Đặt màu của màu gradient tại chỉ mục ``point``.
 
 .. rst-class:: classref-item-separator
 
@@ -338,14 +338,14 @@ Sets the color of the gradient color at index ``point``.
 
 |void| **set_offset**\ (\ point\: :ref:`int<class_int>`, offset\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Gradient_method_set_offset>`
 
-Sets the offset for the gradient color at index ``point``.
+Đặt offset cho màu gradient tại chỉ mục ``point``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

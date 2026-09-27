@@ -10,21 +10,21 @@
 DampedSpringJoint2D
 ===================
 
-**Inherits:** :ref:`Joint2D<class_Joint2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Joint2D<class_Joint2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics joint that connects two 2D physics bodies with a spring-like force.
+Một joint vật lý kết nối hai physics body 2D bằng một lực giống như lò xo.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A physics joint that connects two 2D physics bodies with a spring-like force. This behaves like a spring that always wants to stretch to a given length.
+Một joint vật lý kết nối hai physics body 2D bằng một lực giống như lò xo. Nó hoạt động như một lò xo luôn muốn kéo giãn đến một độ dài nhất định.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_DampedSpringJoint2D_property_damping:
 
@@ -59,7 +59,7 @@ Property Descriptions
 - |void| **set_damping**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_damping**\ (\ )
 
-The spring joint's damping ratio. A value between ``0`` and ``1``. When the two bodies move into different directions the system tries to align them to the spring axis again. A high :ref:`damping<class_DampedSpringJoint2D_property_damping>` value forces the attached bodies to align faster.
+Tỉ số giảm chấn của joint lò xo. Một giá trị nằm giữa ``0`` và ``1``. Khi hai body di chuyển theo các hướng khác nhau, hệ thống cố gắng căn chỉnh chúng lại theo trục của lò xo. Giá trị :ref:`damping<class_DampedSpringJoint2D_property_damping>` cao sẽ buộc các body được gắn căn chỉnh nhanh hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -76,7 +76,7 @@ The spring joint's damping ratio. A value between ``0`` and ``1``. When the two 
 - |void| **set_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_length**\ (\ )
 
-The spring joint's maximum length. The two attached bodies cannot stretch it past this value.
+Độ dài tối đa của khớp lò xo. Hai vật thể được gắn vào không thể kéo giãn khớp vượt quá giá trị này.
 
 .. rst-class:: classref-item-separator
 
@@ -93,7 +93,7 @@ The spring joint's maximum length. The two attached bodies cannot stretch it pas
 - |void| **set_rest_length**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_rest_length**\ (\ )
 
-When the bodies attached to the spring joint move they stretch or squash it. The joint always tries to resize towards this length.
+Khi các vật thể được gắn vào khớp lò xo chuyển động, chúng sẽ kéo giãn hoặc nén khớp. Khớp luôn cố gắng điều chỉnh về độ dài này.
 
 .. rst-class:: classref-item-separator
 
@@ -110,14 +110,14 @@ When the bodies attached to the spring joint move they stretch or squash it. The
 - |void| **set_stiffness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_stiffness**\ (\ )
 
-The higher the value, the less the bodies attached to the joint will deform it. The joint applies an opposing force to the bodies, the product of the stiffness multiplied by the size difference from its resting length.
+Giá trị càng cao thì các vật thể được gắn vào khớp càng ít làm biến dạng khớp. Khớp tác dụng một lực đối kháng lên các vật thể, bằng tích của độ cứng và độ chênh lệch kích thước so với độ dài ở trạng thái nghỉ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,16 +10,16 @@
 PackedStringArray
 =================
 
-A packed array of :ref:`String<class_String>`\ s.
+Một mảng đóng gói gồm các :ref:`String<class_String>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An array specifically designed to hold :ref:`String<class_String>`\ s. Packs data tightly, so it saves memory for large array sizes.
+Một mảng được thiết kế riêng để chứa các :ref:`String<class_String>`\ . Dữ liệu được đóng gói chặt chẽ, giúp tiết kiệm bộ nhớ khi kích thước mảng lớn.
 
-If you want to join the strings in the array, use :ref:`String.join()<class_String_method_join>`.
+Nếu bạn muốn nối các chuỗi trong mảng, hãy sử dụng :ref:`String.join()<class_String_method_join>`.
 
 ::
 
@@ -27,11 +27,11 @@ If you want to join the strings in the array, use :ref:`String.join()<class_Stri
     var string = " ".join(string_array)
     print(string) # "hello world"
 
-\ **Differences between packed arrays, typed arrays, and untyped arrays:** Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. **PackedStringArray** versus ``Array[String]``). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such as :ref:`Array.map()<class_Array_method_map>`. Typed arrays are in turn faster to iterate on and modify than untyped arrays.
+\ **Sự khác biệt giữa mảng đóng gói, mảng định kiểu và mảng không định kiểu:** Mảng đóng gói thường có tốc độ lặp và sửa đổi nhanh hơn so với mảng định kiểu cùng loại (ví dụ: **PackedStringArray** so với ``Array[String]``). Ngoài ra, mảng đóng gói sử dụng ít bộ nhớ hơn. Nhược điểm là mảng đóng gói kém linh hoạt hơn vì không cung cấp nhiều phương thức tiện ích như :ref:`Array.map()<class_Array_method_map>`. Đổi lại, mảng định kiểu có tốc độ lặp và sửa đổi nhanh hơn mảng không định kiểu.
 
-\ **Note:** Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate()<class_PackedStringArray_method_duplicate>`. This is *not* the case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it will *not* affect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.
+\ **Lưu ý:** Mảng đóng gói luôn được truyền theo tham chiếu. Để lấy một bản sao của mảng có thể được sửa đổi độc lập với mảng ban đầu, hãy sử dụng :ref:`duplicate()<class_PackedStringArray_method_duplicate>`. Điều này *không* đúng với các thuộc tính và phương thức dựng sẵn. Trong những trường hợp này, mảng đóng gói được trả về là một bản sao, và việc thay đổi mảng đó sẽ *không* ảnh hưởng đến giá trị ban đầu. Để cập nhật một thuộc tính dựng sẵn của kiểu này, hãy sửa đổi mảng được trả về rồi gán lại mảng đó cho thuộc tính.
 
-\ **Note:** In a boolean context, a packed array will evaluate to ``false`` if it's empty. Otherwise, a packed array will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một mảng đóng gói sẽ được đánh giá là ``false`` nếu mảng rỗng. Nếu không, mảng đóng gói sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -39,14 +39,14 @@ If you want to join the strings in the array, use :ref:`String.join()<class_Stri
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `Operating System Testing Demo <https://godotengine.org/asset-library/asset/2789>`__
+- `Bản minh họa kiểm thử hệ điều hành <https://godotengine.org/asset-library/asset/2789>`__
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -62,8 +62,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -118,21 +118,21 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`operator !=<class_PackedStringArray_operator_neq_PackedStringArray>`\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`operator +<class_PackedStringArray_operator_sum_PackedStringArray>`\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ )  |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`operator ==<class_PackedStringArray_operator_eq_PackedStringArray>`\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ )  |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`operator []<class_PackedStringArray_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                           |
-   +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`operator != <class_PackedStringArray_operator_neq_PackedStringArray>`\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`operator + <class_PackedStringArray_operator_sum_PackedStringArray>`\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ )  |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`operator == <class_PackedStringArray_operator_eq_PackedStringArray>`\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ )  |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`operator [] <class_PackedStringArray_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                           |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -140,8 +140,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_PackedStringArray_constructor_PackedStringArray:
 
@@ -149,7 +149,7 @@ Constructor Descriptions
 
 :ref:`PackedStringArray<class_PackedStringArray>` **PackedStringArray**\ (\ ) :ref:`🔗<class_PackedStringArray_constructor_PackedStringArray>`
 
-Constructs an empty **PackedStringArray**.
+Khởi tạo một **PackedStringArray** rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Constructs an empty **PackedStringArray**.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **PackedStringArray**\ (\ from\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 
-Constructs a **PackedStringArray** as a copy of the given **PackedStringArray**.
+Khởi tạo một **PackedStringArray** dưới dạng bản sao của **PackedStringArray** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ Constructs a **PackedStringArray** as a copy of the given **PackedStringArray**.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **PackedStringArray**\ (\ from\: :ref:`Array<class_Array>`\ )
 
-Constructs a new **PackedStringArray**. Optionally, you can pass in a generic :ref:`Array<class_Array>` that will be converted.
+Khởi tạo một **PackedStringArray** mới. Tùy chọn, bạn có thể truyền vào một :ref:`Array<class_Array>` tổng quát để chuyển đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -177,8 +177,8 @@ Constructs a new **PackedStringArray**. Optionally, you can pass in a generic :r
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PackedStringArray_method_append:
 
@@ -186,7 +186,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **append**\ (\ value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_PackedStringArray_method_append>`
 
-Appends an element at the end of the array (alias of :ref:`push_back()<class_PackedStringArray_method_push_back>`).
+Thêm một phần tử vào cuối array (bí danh của :ref:`push_back()<class_PackedStringArray_method_push_back>`).
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Appends an element at the end of the array (alias of :ref:`push_back()<class_Pac
 
 |void| **append_array**\ (\ array\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_PackedStringArray_method_append_array>`
 
-Appends a **PackedStringArray** at the end of this array.
+Thêm một **PackedStringArray** vào cuối array này.
 
 .. rst-class:: classref-item-separator
 
@@ -210,9 +210,9 @@ Appends a **PackedStringArray** at the end of this array.
 
 :ref:`int<class_int>` **bsearch**\ (\ value\: :ref:`String<class_String>`, before\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_PackedStringArray_method_bsearch>`
 
-Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a ``before`` specifier can be passed. If ``false``, the returned index comes after all existing entries of the value in the array.
+Tìm chỉ mục của một giá trị hiện có (hoặc chỉ mục chèn duy trì thứ tự sắp xếp nếu giá trị chưa có trong array) bằng binary search. Tùy chọn, có thể truyền một bộ chỉ định ``before``. Nếu ``false``, chỉ mục được trả về sẽ nằm sau tất cả các mục hiện có của giá trị đó trong array.
 
-\ **Note:** Calling :ref:`bsearch()<class_PackedStringArray_method_bsearch>` on an unsorted array results in unexpected behavior.
+\ **Lưu ý:** Việc gọi :ref:`bsearch()<class_PackedStringArray_method_bsearch>` trên một mảng chưa được sắp xếp sẽ dẫn đến hành vi không mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -224,7 +224,7 @@ Finds the index of an existing value (or the insertion index that maintains sort
 
 |void| **clear**\ (\ ) :ref:`🔗<class_PackedStringArray_method_clear>`
 
-Clears the array. This is equivalent to using :ref:`resize()<class_PackedStringArray_method_resize>` with a size of ``0``.
+Xóa mảng. Tương đương với việc sử dụng :ref:`resize()<class_PackedStringArray_method_resize>` với kích thước là ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -236,7 +236,7 @@ Clears the array. This is equivalent to using :ref:`resize()<class_PackedStringA
 
 :ref:`int<class_int>` **count**\ (\ value\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_PackedStringArray_method_count>`
 
-Returns the number of times an element is in the array.
+Trả về số lần một phần tử xuất hiện trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ Returns the number of times an element is in the array.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **duplicate**\ (\ ) |const| :ref:`🔗<class_PackedStringArray_method_duplicate>`
 
-Creates a copy of the array, and returns it.
+Tạo một bản sao của mảng và trả về bản sao đó.
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +260,7 @@ Creates a copy of the array, and returns it.
 
 :ref:`bool<class_bool>` **erase**\ (\ value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_PackedStringArray_method_erase>`
 
-Removes the first occurrence of a value from the array and returns ``true``. If the value does not exist in the array, nothing happens and ``false`` is returned. To remove an element by index, use :ref:`remove_at()<class_PackedStringArray_method_remove_at>` instead.
+Xóa lần xuất hiện đầu tiên của một giá trị khỏi mảng và trả về ``true``. Nếu giá trị không tồn tại trong mảng, không có thao tác nào được thực hiện và ``false`` được trả về. Để xóa một phần tử theo chỉ mục, hãy sử dụng :ref:`remove_at()<class_PackedStringArray_method_remove_at>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -272,7 +272,7 @@ Removes the first occurrence of a value from the array and returns ``true``. If 
 
 |void| **fill**\ (\ value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_PackedStringArray_method_fill>`
 
-Assigns the given value to all elements in the array. This can typically be used together with :ref:`resize()<class_PackedStringArray_method_resize>` to create an array with a given size and initialized elements.
+Gán giá trị đã cho cho tất cả các phần tử trong mảng. Thông thường, có thể sử dụng cùng với :ref:`resize()<class_PackedStringArray_method_resize>` để tạo một mảng có kích thước nhất định và các phần tử đã được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -284,7 +284,7 @@ Assigns the given value to all elements in the array. This can typically be used
 
 :ref:`int<class_int>` **find**\ (\ value\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_PackedStringArray_method_find>`
 
-Searches the array for a value and returns its index or ``-1`` if not found. Optionally, the initial search index can be passed.
+Tìm kiếm một giá trị trong mảng và trả về chỉ mục của giá trị đó hoặc ``-1`` nếu không tìm thấy. Có thể truyền chỉ mục bắt đầu tìm kiếm tùy chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -296,9 +296,9 @@ Searches the array for a value and returns its index or ``-1`` if not found. Opt
 
 :ref:`String<class_String>` **get**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PackedStringArray_method_get>`
 
-Returns the :ref:`String<class_String>` at the given ``index`` in the array. If ``index`` is out-of-bounds or negative, this method fails and returns an empty string.
+Trả về :ref:`String<class_String>` tại ``index`` đã cho trong mảng. Nếu ``index`` nằm ngoài phạm vi hoặc là số âm, phương thức này sẽ thất bại và trả về một chuỗi rỗng.
 
-This method is similar (but not identical) to the ``[]`` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.
+Phương thức này tương tự (nhưng không hoàn toàn giống) toán tử ``[]``. Đáng chú ý nhất là khi phương thức này thất bại, nó không tạm dừng quá trình thực thi của project nếu được chạy từ editor.
 
 .. rst-class:: classref-item-separator
 
@@ -310,7 +310,7 @@ This method is similar (but not identical) to the ``[]`` operator. Most notably,
 
 :ref:`bool<class_bool>` **has**\ (\ value\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_PackedStringArray_method_has>`
 
-Returns ``true`` if the array contains ``value``.
+Trả về ``true`` nếu mảng chứa ``value``.
 
 .. rst-class:: classref-item-separator
 
@@ -322,7 +322,7 @@ Returns ``true`` if the array contains ``value``.
 
 :ref:`int<class_int>` **insert**\ (\ at_index\: :ref:`int<class_int>`, value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_PackedStringArray_method_insert>`
 
-Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (``idx == size()``).
+Chèn một phần tử mới vào vị trí đã cho trong mảng. Vị trí phải hợp lệ hoặc ở cuối mảng (``idx == size()``).
 
 .. rst-class:: classref-item-separator
 
@@ -334,7 +334,7 @@ Inserts a new element at a given position in the array. The position must be val
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_PackedStringArray_method_is_empty>`
 
-Returns ``true`` if the array is empty.
+Trả về ``true`` nếu mảng trống.
 
 .. rst-class:: classref-item-separator
 
@@ -346,7 +346,7 @@ Returns ``true`` if the array is empty.
 
 :ref:`bool<class_bool>` **push_back**\ (\ value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_PackedStringArray_method_push_back>`
 
-Appends a string element at end of the array.
+Thêm một phần tử chuỗi vào cuối mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -358,7 +358,7 @@ Appends a string element at end of the array.
 
 |void| **remove_at**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedStringArray_method_remove_at>`
 
-Removes an element from the array by index.
+Xóa một phần tử khỏi mảng theo chỉ mục.
 
 .. rst-class:: classref-item-separator
 
@@ -370,9 +370,9 @@ Removes an element from the array by index.
 
 :ref:`int<class_int>` **resize**\ (\ new_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedStringArray_method_resize>`
 
-Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling :ref:`resize()<class_PackedStringArray_method_resize>` once and assigning the new values is faster than adding new elements one by one.
+Đặt kích thước của mảng. Nếu mảng được mở rộng, các phần tử sẽ được dành chỗ ở cuối mảng. Nếu mảng bị thu nhỏ, mảng sẽ bị cắt ngắn về kích thước mới. Gọi :ref:`resize()<class_PackedStringArray_method_resize>` một lần rồi gán các giá trị mới sẽ nhanh hơn so với việc thêm từng phần tử mới.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the following :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails: :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the size is negative, or :ref:`@GlobalScope.ERR_OUT_OF_MEMORY<class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` if allocations fail. Use :ref:`size()<class_PackedStringArray_method_size>` to find the actual size of the array after resize.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công hoặc một trong các hằng số :ref:`Error <enum_@GlobalScope_Error>` sau đây nếu phương thức không thành công: :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu kích thước là số âm hoặc :ref:`@GlobalScope.ERR_OUT_OF_MEMORY <class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` nếu việc cấp phát thất bại. Sử dụng :ref:`size()<class_PackedStringArray_method_size>` để tìm kích thước thực tế của mảng sau khi thay đổi kích thước.
 
 .. rst-class:: classref-item-separator
 
@@ -384,7 +384,7 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or on
 
 |void| **reverse**\ (\ ) :ref:`🔗<class_PackedStringArray_method_reverse>`
 
-Reverses the order of the elements in the array.
+Đảo ngược thứ tự các phần tử trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -396,7 +396,7 @@ Reverses the order of the elements in the array.
 
 :ref:`int<class_int>` **rfind**\ (\ value\: :ref:`String<class_String>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_PackedStringArray_method_rfind>`
 
-Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.
+Tìm kiếm mảng theo thứ tự ngược. Có thể truyền chỉ mục bắt đầu tìm kiếm. Nếu là số âm, chỉ mục bắt đầu được tính tương đối từ cuối mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -408,7 +408,7 @@ Searches the array in reverse order. Optionally, a start search index can be pas
 
 |void| **set**\ (\ index\: :ref:`int<class_int>`, value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_PackedStringArray_method_set>`
 
-Changes the :ref:`String<class_String>` at the given index.
+Thay đổi :ref:`String<class_String>` tại chỉ mục đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -420,7 +420,7 @@ Changes the :ref:`String<class_String>` at the given index.
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_PackedStringArray_method_size>`
 
-Returns the number of elements in the array.
+Trả về số phần tử trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -432,11 +432,11 @@ Returns the number of elements in the array.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **slice**\ (\ begin\: :ref:`int<class_int>`, end\: :ref:`int<class_int>` = 2147483647\ ) |const| :ref:`🔗<class_PackedStringArray_method_slice>`
 
-Returns the slice of the **PackedStringArray**, from ``begin`` (inclusive) to ``end`` (exclusive), as a new **PackedStringArray**.
+Trả về lát cắt của **PackedStringArray**, từ ``begin`` (bao gồm) đến ``end`` (không bao gồm), dưới dạng một **PackedStringArray** mới.
 
-The absolute value of ``begin`` and ``end`` will be clamped to the array size, so the default value for ``end`` makes it slice to the size of the array by default (i.e. ``arr.slice(1)`` is a shorthand for ``arr.slice(1, arr.size())``).
+Giá trị tuyệt đối của ``begin`` và ``end`` sẽ được giới hạn theo kích thước mảng, vì vậy giá trị mặc định của ``end`` khiến nó mặc định cắt đến kích thước của mảng (tức là ``arr.slice(1)`` là dạng viết tắt của ``arr.slice(1, arr.size())``).
 
-If either ``begin`` or ``end`` are negative, they will be relative to the end of the array (i.e. ``arr.slice(0, -2)`` is a shorthand for ``arr.slice(0, arr.size() - 2)``).
+Nếu ``begin`` hoặc ``end`` là số âm, chúng sẽ được tính tương đối từ cuối mảng (tức là ``arr.slice(0, -2)`` là dạng viết tắt của ``arr.slice(0, arr.size() - 2)``).
 
 .. rst-class:: classref-item-separator
 
@@ -448,7 +448,7 @@ If either ``begin`` or ``end`` are negative, they will be relative to the end of
 
 |void| **sort**\ (\ ) :ref:`🔗<class_PackedStringArray_method_sort>`
 
-Sorts the elements of the array in ascending order.
+Sắp xếp các phần tử của mảng theo thứ tự tăng dần.
 
 .. rst-class:: classref-item-separator
 
@@ -460,7 +460,7 @@ Sorts the elements of the array in ascending order.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_byte_array**\ (\ ) |const| :ref:`🔗<class_PackedStringArray_method_to_byte_array>`
 
-Returns a :ref:`PackedByteArray<class_PackedByteArray>` with each string encoded as UTF-8. Strings are ``null`` terminated.
+Trả về một :ref:`PackedByteArray<class_PackedByteArray>` với mỗi chuỗi được mã hóa theo UTF-8. Các chuỗi được kết thúc bằng ``null``.
 
 .. rst-class:: classref-section-separator
 
@@ -468,16 +468,16 @@ Returns a :ref:`PackedByteArray<class_PackedByteArray>` with each string encoded
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_PackedStringArray_operator_neq_PackedStringArray:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_PackedStringArray_operator_neq_PackedStringArray>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗 <class_PackedStringArray_operator_neq_PackedStringArray>`
 
-Returns ``true`` if contents of the arrays differ.
+Trả về ``true`` nếu nội dung của các mảng khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -487,9 +487,9 @@ Returns ``true`` if contents of the arrays differ.
 
 .. rst-class:: classref-operator
 
-:ref:`PackedStringArray<class_PackedStringArray>` **operator +**\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_PackedStringArray_operator_sum_PackedStringArray>`
+:ref:`PackedStringArray<class_PackedStringArray>` **operator +**\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗 <class_PackedStringArray_operator_sum_PackedStringArray>`
 
-Returns a new **PackedStringArray** with contents of ``right`` added at the end of this array. For better performance, consider using :ref:`append_array()<class_PackedStringArray_method_append_array>` instead.
+Trả về một **PackedStringArray** mới với nội dung của ``right`` được thêm vào cuối mảng này. Để có hiệu năng tốt hơn, hãy cân nhắc sử dụng :ref:`append_array()<class_PackedStringArray_method_append_array>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -499,9 +499,9 @@ Returns a new **PackedStringArray** with contents of ``right`` added at the end 
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_PackedStringArray_operator_eq_PackedStringArray>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗 <class_PackedStringArray_operator_eq_PackedStringArray>`
 
-Returns ``true`` if contents of both arrays are the same, i.e. they have all equal :ref:`String<class_String>`\ s at the corresponding indices.
+Trả về ``true`` nếu nội dung của cả hai mảng giống nhau, tức là chúng có tất cả :ref:`String<class_String>`\ s bằng nhau tại các chỉ mục tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -511,16 +511,16 @@ Returns ``true`` if contents of both arrays are the same, i.e. they have all equ
 
 .. rst-class:: classref-operator
 
-:ref:`String<class_String>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedStringArray_operator_idx_int>`
+:ref:`String<class_String>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_PackedStringArray_operator_idx_int>`
 
-Returns the :ref:`String<class_String>` at index ``index``. Negative indices can be used to access the elements starting from the end. Using index out of array's bounds will result in an error.
+Trả về :ref:`String<class_String>` tại chỉ mục ``index``. Có thể sử dụng chỉ mục âm để truy cập các phần tử bắt đầu từ cuối mảng. Việc sử dụng chỉ mục nằm ngoài giới hạn của mảng sẽ gây ra lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, nên có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

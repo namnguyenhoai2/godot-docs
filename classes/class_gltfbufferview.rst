@@ -10,32 +10,32 @@
 GLTFBufferView
 ==============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a glTF buffer view.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-GLTFBufferView is a data structure representing a glTF ``bufferView`` that would be found in the ``"bufferViews"`` array. A buffer is a blob of binary data. A buffer view is a slice of a buffer that can be used to identify and extract data from the buffer.
-
-Most custom uses of buffers only need to use the :ref:`buffer<class_GLTFBufferView_property_buffer>`, :ref:`byte_length<class_GLTFBufferView_property_byte_length>`, and :ref:`byte_offset<class_GLTFBufferView_property_byte_offset>`. The :ref:`byte_stride<class_GLTFBufferView_property_byte_stride>` and :ref:`indices<class_GLTFBufferView_property_indices>` properties are for more advanced use cases such as interleaved mesh data encoded for the GPU.
+Đại diện cho một buffer view của glTF.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+GLTFBufferView là một cấu trúc dữ liệu đại diện cho một ``bufferView`` của glTF, nằm trong mảng ``"bufferViews"``. Một buffer là một khối dữ liệu nhị phân. Buffer view là một lát cắt của buffer, có thể được dùng để xác định và trích xuất dữ liệu từ buffer.
+
+Hầu hết các trường hợp sử dụng buffer tùy chỉnh chỉ cần dùng :ref:`buffer<class_GLTFBufferView_property_buffer>`, :ref:`byte_length<class_GLTFBufferView_property_byte_length>` và :ref:`byte_offset<class_GLTFBufferView_property_byte_offset>`. Các thuộc tính :ref:`byte_stride<class_GLTFBufferView_property_byte_stride>` và :ref:`indices<class_GLTFBufferView_property_indices>` dành cho những trường hợp sử dụng nâng cao hơn, chẳng hạn như dữ liệu mesh đan xen được mã hóa cho GPU.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Buffers, BufferViews, and Accessors in Khronos glTF specification <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__
+- `Buffers, BufferViews và Accessors trong đặc tả glTF của Khronos <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp Runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -76,8 +76,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFBufferView_property_buffer:
 
@@ -90,7 +90,7 @@ Property Descriptions
 - |void| **set_buffer**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_buffer**\ (\ )
 
-The index of the buffer this buffer view is referencing. If ``-1``, this buffer view is not referencing any buffer.
+Chỉ mục của buffer mà buffer view này tham chiếu đến. Nếu ``-1``, buffer view này không tham chiếu đến buffer nào.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ The index of the buffer this buffer view is referencing. If ``-1``, this buffer 
 - |void| **set_byte_length**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_byte_length**\ (\ )
 
-The length, in bytes, of this buffer view. If ``0``, this buffer view is empty.
+Độ dài, tính bằng byte, của chế độ xem bộ đệm này. Nếu ``0``, chế độ xem bộ đệm này trống.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ The length, in bytes, of this buffer view. If ``0``, this buffer view is empty.
 - |void| **set_byte_offset**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_byte_offset**\ (\ )
 
-The offset, in bytes, from the start of the buffer to the start of this buffer view.
+Độ lệch, tính bằng byte, từ đầu bộ đệm đến đầu chế độ xem bộ đệm này.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ The offset, in bytes, from the start of the buffer to the start of this buffer v
 - |void| **set_byte_stride**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_byte_stride**\ (\ )
 
-The stride, in bytes, between interleaved data. If ``-1``, this buffer view is not interleaved.
+Stride, tính bằng byte, giữa các dữ liệu xen kẽ. Nếu ``-1``, chế độ xem bộ đệm này không xen kẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ The stride, in bytes, between interleaved data. If ``-1``, this buffer view is n
 - |void| **set_indices**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_indices**\ (\ )
 
-``true`` if the GLTFBufferView's OpenGL GPU buffer type is an ``ELEMENT_ARRAY_BUFFER`` used for vertex indices (integer constant ``34963``). ``false`` if the buffer type is any other value. See `Buffers, BufferViews, and Accessors <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__ for possible values. This property is set on import and used on export.
+``true`` nếu loại bộ đệm GPU OpenGL của GLTFBufferView là ``ELEMENT_ARRAY_BUFFER`` được dùng cho các chỉ số đỉnh (hằng số nguyên ``34963``). ``false`` nếu loại bộ đệm là bất kỳ giá trị nào khác. Xem `Buffers, BufferViews, and Accessors <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__ để biết các giá trị có thể có. Thuộc tính này được thiết lập khi import và được dùng khi export.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ The stride, in bytes, between interleaved data. If ``-1``, this buffer view is n
 - |void| **set_vertex_attributes**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_vertex_attributes**\ (\ )
 
-``true`` if the GLTFBufferView's OpenGL GPU buffer type is an ``ARRAY_BUFFER`` used for vertex attributes (integer constant ``34962``). ``false`` if the buffer type is any other value. See `Buffers, BufferViews, and Accessors <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__ for possible values. This property is set on import and used on export.
+``true`` nếu loại bộ đệm GPU OpenGL của GLTFBufferView là ``ARRAY_BUFFER`` được dùng cho các thuộc tính đỉnh (hằng số nguyên ``34962``). ``false`` nếu loại bộ đệm là bất kỳ giá trị nào khác. Xem `Buffers, BufferViews, and Accessors <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__ để biết các giá trị có thể có. Thuộc tính này được thiết lập khi import và được dùng khi export.
 
 .. rst-class:: classref-section-separator
 
@@ -183,8 +183,8 @@ The stride, in bytes, between interleaved data. If ``-1``, this buffer view is n
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFBufferView_method_from_dictionary:
 
@@ -192,7 +192,7 @@ Method Descriptions
 
 :ref:`GLTFBufferView<class_GLTFBufferView>` **from_dictionary**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |static| :ref:`🔗<class_GLTFBufferView_method_from_dictionary>`
 
-Creates a new GLTFBufferView instance by parsing the given :ref:`Dictionary<class_Dictionary>`.
+Tạo một thực thể GLTFBufferView mới bằng cách phân tích cú pháp :ref:`Dictionary<class_Dictionary>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Creates a new GLTFBufferView instance by parsing the given :ref:`Dictionary<clas
 
 :ref:`PackedByteArray<class_PackedByteArray>` **load_buffer_view_data**\ (\ state\: :ref:`GLTFState<class_GLTFState>`\ ) |const| :ref:`🔗<class_GLTFBufferView_method_load_buffer_view_data>`
 
-Loads the buffer view data from the buffer referenced by this buffer view in the given :ref:`GLTFState<class_GLTFState>`. Interleaved data with a byte stride is not yet supported by this method. The data is returned as a :ref:`PackedByteArray<class_PackedByteArray>`.
+Tải dữ liệu của buffer view từ buffer được tham chiếu bởi buffer view này trong :ref:`GLTFState<class_GLTFState>` đã cho. Phương thức này hiện chưa hỗ trợ dữ liệu xen kẽ có byte stride. Dữ liệu được trả về dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. rst-class:: classref-item-separator
 
@@ -216,14 +216,14 @@ Loads the buffer view data from the buffer referenced by this buffer view in the
 
 :ref:`Dictionary<class_Dictionary>` **to_dictionary**\ (\ ) |const| :ref:`🔗<class_GLTFBufferView_method_to_dictionary>`
 
-Serializes this GLTFBufferView instance into a :ref:`Dictionary<class_Dictionary>`.
+Tuần tự hóa instance GLTFBufferView này thành :ref:`Dictionary<class_Dictionary>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

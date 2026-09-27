@@ -10,29 +10,29 @@
 AudioEffectAmplify
 ==================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a volume manipulation audio effect to an audio bus.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Increases or decreases the volume being routed through the audio bus.
+Thêm hiệu ứng âm thanh điều chỉnh âm lượng vào một bus âm thanh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Tăng hoặc giảm âm lượng được định tuyến qua bus âm thanh.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,8 +50,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectAmplify_property_volume_db:
 
@@ -64,7 +64,7 @@ Property Descriptions
 - |void| **set_volume_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_volume_db**\ (\ )
 
-Amount of amplification in dB. Positive values make the sound louder, negative values make it quieter. Value can range from -80 to 24.
+Mức khuếch đại tính bằng dB. Giá trị dương làm âm thanh to hơn, giá trị âm làm âm thanh nhỏ hơn. Giá trị có thể nằm trong khoảng từ -80 đến 24.
 
 .. rst-class:: classref-item-separator
 
@@ -74,23 +74,23 @@ Amount of amplification in dB. Positive values make the sound louder, negative v
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **volume_linear** :ref:`🔗<class_AudioEffectAmplify_property_volume_linear>`
+:ref:`float<class_float>` **volume_linear** :ref:`🔗 <class_AudioEffectAmplify_property_volume_linear>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_volume_linear**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_volume_linear**\ (\ )
 
-Amount of amplification as a linear value.
+Mức khuếch đại dưới dạng giá trị tuyến tính.
 
-\ **Note:** This member modifies :ref:`volume_db<class_AudioEffectAmplify_property_volume_db>` for convenience. The returned value is equivalent to the result of :ref:`@GlobalScope.db_to_linear()<class_@GlobalScope_method_db_to_linear>` on :ref:`volume_db<class_AudioEffectAmplify_property_volume_db>`. Setting this member is equivalent to setting :ref:`volume_db<class_AudioEffectAmplify_property_volume_db>` to the result of :ref:`@GlobalScope.linear_to_db()<class_@GlobalScope_method_linear_to_db>` on a value.
+\ **Lưu ý:** Thành viên này sửa đổi :ref:`volume_db<class_AudioEffectAmplify_property_volume_db>` để thuận tiện. Giá trị trả về tương đương với kết quả của :ref:`@GlobalScope.db_to_linear() <class_@GlobalScope_method_db_to_linear>` trên :ref:`volume_db<class_AudioEffectAmplify_property_volume_db>`. Việc thiết lập thành viên này tương đương với việc thiết lập :ref:`volume_db<class_AudioEffectAmplify_property_volume_db>` thành kết quả của :ref:`@GlobalScope.linear_to_db() <class_@GlobalScope_method_linear_to_db>` trên một giá trị.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

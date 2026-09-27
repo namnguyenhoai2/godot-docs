@@ -10,23 +10,23 @@
 SceneState
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides access to a scene file's information.
+Cung cấp quyền truy cập vào thông tin của một tệp scene.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Maintains a list of resources, nodes, exported and overridden properties, and built-in scripts associated with a scene. They cannot be modified from a **SceneState**, only accessed. Useful for peeking into what a :ref:`PackedScene<class_PackedScene>` contains without instantiating it.
+Duy trì danh sách các resources, node, thuộc tính được export và ghi đè, cùng các script tích hợp liên kết với một scene. Không thể sửa đổi chúng từ một **SceneState**, chỉ có thể truy cập. Hữu ích để xem nhanh một :ref:`PackedScene<class_PackedScene>` chứa gì mà không cần khởi tạo nó.
 
-This class cannot be instantiated directly, it is retrieved for a given scene as the result of :ref:`PackedScene.get_state()<class_PackedScene_method_get_state>`.
+Không thể khởi tạo trực tiếp class này; nó được lấy cho một scene cụ thể dưới dạng kết quả của :ref:`PackedScene.get_state()<class_PackedScene_method_get_state>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -85,14 +85,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enumeration
+---------------
 
 .. _enum_SceneState_GenEditState:
 
 .. rst-class:: classref-enumeration
 
-enum **GenEditState**: :ref:`🔗<enum_SceneState_GenEditState>`
+enum **GenEditState**: :ref:`🔗 <enum_SceneState_GenEditState>`
 
 .. _class_SceneState_constant_GEN_EDIT_STATE_DISABLED:
 
@@ -100,7 +100,7 @@ enum **GenEditState**: :ref:`🔗<enum_SceneState_GenEditState>`
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_DISABLED** = ``0``
 
-If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, blocks edits to the scene state.
+Nếu được truyền vào :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, nó sẽ ngăn việc chỉnh sửa scene state.
 
 .. _class_SceneState_constant_GEN_EDIT_STATE_INSTANCE:
 
@@ -108,9 +108,9 @@ If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiat
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_INSTANCE** = ``1``
 
-If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, provides inherited scene resources to the local scene.
+Nếu được truyền vào :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, nó cung cấp các resource của scene kế thừa cho scene cục bộ.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. _class_SceneState_constant_GEN_EDIT_STATE_MAIN:
 
@@ -118,9 +118,9 @@ If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiat
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_MAIN** = ``2``
 
-If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, provides local scene resources to the local scene. Only the main scene should receive the main edit state.
+Nếu được truyền vào :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, nó cung cấp các resource của scene cục bộ cho scene cục bộ. Chỉ scene chính mới nên nhận main edit state.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. _class_SceneState_constant_GEN_EDIT_STATE_MAIN_INHERITED:
 
@@ -128,9 +128,9 @@ If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiat
 
 :ref:`GenEditState<enum_SceneState_GenEditState>` **GEN_EDIT_STATE_MAIN_INHERITED** = ``3``
 
-If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, it's similar to :ref:`GEN_EDIT_STATE_MAIN<class_SceneState_constant_GEN_EDIT_STATE_MAIN>`, but for the case where the scene is being instantiated to be the base of another one.
+Nếu được truyền vào :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`, nó tương tự như :ref:`GEN_EDIT_STATE_MAIN<class_SceneState_constant_GEN_EDIT_STATE_MAIN>`, nhưng dành cho trường hợp scene đang được khởi tạo để làm base của một scene khác.
 
-\ **Note:** Only available in editor builds.
+\ **Lưu ý:** Chỉ khả dụng trong các bản build của editor.
 
 .. rst-class:: classref-section-separator
 
@@ -138,8 +138,8 @@ If passed to :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiat
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_SceneState_method_get_base_scene_state:
 
@@ -147,7 +147,7 @@ Method Descriptions
 
 :ref:`SceneState<class_SceneState>` **get_base_scene_state**\ (\ ) |const| :ref:`🔗<class_SceneState_method_get_base_scene_state>`
 
-Returns the **SceneState** of the scene that this scene inherits from, or ``null`` if it doesn't inherit from any scene.
+Trả về **SceneState** của scene mà scene này kế thừa, hoặc ``null`` nếu nó không kế thừa scene nào.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Returns the **SceneState** of the scene that this scene inherits from, or ``null
 
 :ref:`Array<class_Array>` **get_connection_binds**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_binds>`
 
-Returns the list of bound parameters for the signal at ``idx``.
+Trả về danh sách các tham số đã liên kết của signal tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -171,9 +171,9 @@ Returns the list of bound parameters for the signal at ``idx``.
 
 :ref:`int<class_int>` **get_connection_count**\ (\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_count>`
 
-Returns the number of signal connections in the scene.
+Trả về số lượng kết nối signal trong scene.
 
-The ``idx`` argument used to query connection metadata in other ``get_connection_*`` methods in the interval ``[0, get_connection_count() - 1]``.
+Đối số ``idx`` được dùng để truy vấn metadata kết nối trong các phương thức ``get_connection_*`` khác trong khoảng ``[0, get_connection_count() - 1]``.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ The ``idx`` argument used to query connection metadata in other ``get_connection
 
 :ref:`int<class_int>` **get_connection_flags**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_flags>`
 
-Returns the connection flags for the signal at ``idx``. See :ref:`ConnectFlags<enum_Object_ConnectFlags>` constants.
+Trả về các cờ kết nối của signal tại ``idx``. Xem các hằng số :ref:`ConnectFlags <enum_Object_ConnectFlags>`.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Returns the connection flags for the signal at ``idx``. See :ref:`ConnectFlags<e
 
 :ref:`StringName<class_StringName>` **get_connection_method**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_method>`
 
-Returns the method connected to the signal at ``idx``.
+Trả về phương thức được kết nối với signal tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Returns the method connected to the signal at ``idx``.
 
 :ref:`StringName<class_StringName>` **get_connection_signal**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_signal>`
 
-Returns the name of the signal at ``idx``.
+Trả về tên của signal tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ Returns the name of the signal at ``idx``.
 
 :ref:`NodePath<class_NodePath>` **get_connection_source**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_source>`
 
-Returns the path to the node that owns the signal at ``idx``, relative to the root node.
+Trả về đường dẫn đến node sở hữu signal tại ``idx``, tính tương đối so với node gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ Returns the path to the node that owns the signal at ``idx``, relative to the ro
 
 :ref:`NodePath<class_NodePath>` **get_connection_target**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_target>`
 
-Returns the path to the node that owns the method connected to the signal at ``idx``, relative to the root node.
+Trả về đường dẫn đến node sở hữu method được kết nối với signal tại ``idx``, tính tương đối so với node gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ Returns the path to the node that owns the method connected to the signal at ``i
 
 :ref:`int<class_int>` **get_connection_unbinds**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_connection_unbinds>`
 
-Returns the number of unbound parameters for the signal at ``idx``.
+Trả về số lượng tham số chưa liên kết của signal tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -257,9 +257,9 @@ Returns the number of unbound parameters for the signal at ``idx``.
 
 :ref:`int<class_int>` **get_node_count**\ (\ ) |const| :ref:`🔗<class_SceneState_method_get_node_count>`
 
-Returns the number of nodes in the scene.
+Trả về số lượng node trong scene.
 
-The ``idx`` argument used to query node data in other ``get_node_*`` methods in the interval ``[0, get_node_count() - 1]``.
+Đối số ``idx`` được dùng để truy vấn dữ liệu node trong các method ``get_node_*`` khác trong khoảng ``[0, get_node_count() - 1]``.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ The ``idx`` argument used to query node data in other ``get_node_*`` methods in 
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_node_groups**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_groups>`
 
-Returns the list of group names associated with the node at ``idx``.
+Trả về danh sách tên group được liên kết với node tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -283,7 +283,7 @@ Returns the list of group names associated with the node at ``idx``.
 
 :ref:`int<class_int>` **get_node_index**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_index>`
 
-Returns the node's index, which is its position relative to its siblings. This is only relevant and saved in scenes for cases where new nodes are added to an instantiated or inherited scene among siblings from the base scene. Despite the name, this index is not related to the ``idx`` argument used here and in other methods.
+Trả về chỉ mục của node, tức là vị trí của node đó so với các node anh em. Chỉ mục này chỉ có ý nghĩa và được lưu trong scene khi các node mới được thêm vào một scene đã được khởi tạo hoặc kế thừa, nằm giữa các node anh em từ scene cơ sở. Mặc dù có tên như vậy, chỉ mục này không liên quan đến đối số ``idx`` được sử dụng ở đây và trong các method khác.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ Returns the node's index, which is its position relative to its siblings. This i
 
 :ref:`PackedScene<class_PackedScene>` **get_node_instance**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_instance>`
 
-Returns a :ref:`PackedScene<class_PackedScene>` for the node at ``idx`` (i.e. the whole branch starting at this node, with its child nodes and resources), or ``null`` if the node is not an instance.
+Trả về một :ref:`PackedScene<class_PackedScene>` cho node tại ``idx`` (tức là toàn bộ nhánh bắt đầu từ node này, cùng các node con và resource của nó), hoặc ``null`` nếu node này không phải là một instance.
 
 .. rst-class:: classref-item-separator
 
@@ -307,7 +307,7 @@ Returns a :ref:`PackedScene<class_PackedScene>` for the node at ``idx`` (i.e. th
 
 :ref:`String<class_String>` **get_node_instance_placeholder**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_instance_placeholder>`
 
-Returns the path to the represented scene file if the node at ``idx`` is an :ref:`InstancePlaceholder<class_InstancePlaceholder>`.
+Trả về đường dẫn đến tệp scene được biểu diễn nếu node tại ``idx`` là một :ref:`InstancePlaceholder<class_InstancePlaceholder>`.
 
 .. rst-class:: classref-item-separator
 
@@ -319,7 +319,7 @@ Returns the path to the represented scene file if the node at ``idx`` is an :ref
 
 :ref:`StringName<class_StringName>` **get_node_name**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_name>`
 
-Returns the name of the node at ``idx``.
+Trả về tên của node tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +331,7 @@ Returns the name of the node at ``idx``.
 
 :ref:`NodePath<class_NodePath>` **get_node_owner_path**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_owner_path>`
 
-Returns the path to the owner of the node at ``idx``, relative to the root node.
+Trả về đường dẫn đến owner của node tại ``idx``, tính tương đối so với node gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -343,9 +343,9 @@ Returns the path to the owner of the node at ``idx``, relative to the root node.
 
 :ref:`NodePath<class_NodePath>` **get_node_path**\ (\ idx\: :ref:`int<class_int>`, for_parent\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_SceneState_method_get_node_path>`
 
-Returns the path to the node at ``idx``.
+Trả về đường dẫn đến node tại ``idx``.
 
-If ``for_parent`` is ``true``, returns the path of the ``idx`` node's parent instead.
+Nếu ``for_parent`` là ``true``, thay vào đó trả về đường dẫn đến node cha của node ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -357,9 +357,9 @@ If ``for_parent`` is ``true``, returns the path of the ``idx`` node's parent ins
 
 :ref:`int<class_int>` **get_node_property_count**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_property_count>`
 
-Returns the number of exported or overridden properties for the node at ``idx``.
+Trả về số lượng property được export hoặc ghi đè của node tại ``idx``.
 
-The ``prop_idx`` argument used to query node property data in other ``get_node_property_*`` methods in the interval ``[0, get_node_property_count() - 1]``.
+Đối số ``prop_idx`` được dùng để truy vấn dữ liệu property của node trong các method ``get_node_property_*`` khác trong khoảng ``[0, get_node_property_count() - 1]``.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ The ``prop_idx`` argument used to query node property data in other ``get_node_p
 
 :ref:`StringName<class_StringName>` **get_node_property_name**\ (\ idx\: :ref:`int<class_int>`, prop_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_property_name>`
 
-Returns the name of the property at ``prop_idx`` for the node at ``idx``.
+Trả về tên của property tại ``prop_idx`` cho node tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -383,7 +383,7 @@ Returns the name of the property at ``prop_idx`` for the node at ``idx``.
 
 :ref:`Variant<class_Variant>` **get_node_property_value**\ (\ idx\: :ref:`int<class_int>`, prop_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_property_value>`
 
-Returns the value of the property at ``prop_idx`` for the node at ``idx``.
+Trả về giá trị của property tại ``prop_idx`` cho node tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -395,7 +395,7 @@ Returns the value of the property at ``prop_idx`` for the node at ``idx``.
 
 :ref:`StringName<class_StringName>` **get_node_type**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_get_node_type>`
 
-Returns the type of the node at ``idx``.
+Trả về loại của node tại ``idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -407,7 +407,7 @@ Returns the type of the node at ``idx``.
 
 :ref:`String<class_String>` **get_path**\ (\ ) |const| :ref:`🔗<class_SceneState_method_get_path>`
 
-Returns the resource path to the represented :ref:`PackedScene<class_PackedScene>`.
+Trả về đường dẫn resource đến :ref:`PackedScene<class_PackedScene>` được biểu diễn.
 
 .. rst-class:: classref-item-separator
 
@@ -419,14 +419,14 @@ Returns the resource path to the represented :ref:`PackedScene<class_PackedScene
 
 :ref:`bool<class_bool>` **is_node_instance_placeholder**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SceneState_method_is_node_instance_placeholder>`
 
-Returns ``true`` if the node at ``idx`` is an :ref:`InstancePlaceholder<class_InstancePlaceholder>`.
+Trả về ``true`` nếu node tại ``idx`` là một :ref:`InstancePlaceholder<class_InstancePlaceholder>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Method này thường nên được người dùng ghi đè để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được ghi đè khi mở rộng class cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có tác dụng phụ. Method này không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một toán tử hợp lệ có thể được sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

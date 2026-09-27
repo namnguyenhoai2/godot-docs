@@ -10,21 +10,21 @@
 PinJoint2D
 ==========
 
-**Inherits:** :ref:`Joint2D<class_Joint2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Joint2D<class_Joint2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics joint that attaches two 2D physics bodies at a single point, allowing them to freely rotate.
+Một joint vật lý gắn hai physics body 2D tại một điểm duy nhất, cho phép chúng tự do xoay.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A physics joint that attaches two 2D physics bodies at a single point, allowing them to freely rotate. For example, a :ref:`RigidBody2D<class_RigidBody2D>` can be attached to a :ref:`StaticBody2D<class_StaticBody2D>` to create a pendulum or a seesaw.
+Một joint vật lý gắn hai physics body 2D tại một điểm duy nhất, cho phép chúng tự do xoay. Ví dụ, một :ref:`RigidBody2D<class_RigidBody2D>` có thể được gắn vào một :ref:`StaticBody2D<class_StaticBody2D>` để tạo ra con lắc hoặc bập bênh.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PinJoint2D_property_angular_limit_enabled:
 
@@ -63,7 +63,7 @@ Property Descriptions
 - |void| **set_angular_limit_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_angular_limit_enabled**\ (\ )
 
-If ``true``, the pin maximum and minimum rotation, defined by :ref:`angular_limit_lower<class_PinJoint2D_property_angular_limit_lower>` and :ref:`angular_limit_upper<class_PinJoint2D_property_angular_limit_upper>` are applied.
+Nếu ``true``, giới hạn xoay tối đa và tối thiểu của pin, được xác định bởi :ref:`angular_limit_lower<class_PinJoint2D_property_angular_limit_lower>` và :ref:`angular_limit_upper<class_PinJoint2D_property_angular_limit_upper>`, sẽ được áp dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -80,7 +80,7 @@ If ``true``, the pin maximum and minimum rotation, defined by :ref:`angular_limi
 - |void| **set_angular_limit_lower**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_angular_limit_lower**\ (\ )
 
-The minimum rotation. Only active if :ref:`angular_limit_enabled<class_PinJoint2D_property_angular_limit_enabled>` is ``true``.
+Góc quay tối thiểu. Chỉ hoạt động nếu :ref:`angular_limit_enabled<class_PinJoint2D_property_angular_limit_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -97,7 +97,7 @@ The minimum rotation. Only active if :ref:`angular_limit_enabled<class_PinJoint2
 - |void| **set_angular_limit_upper**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_angular_limit_upper**\ (\ )
 
-The maximum rotation. Only active if :ref:`angular_limit_enabled<class_PinJoint2D_property_angular_limit_enabled>` is ``true``.
+Góc quay tối đa. Chỉ hoạt động nếu :ref:`angular_limit_enabled<class_PinJoint2D_property_angular_limit_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ The maximum rotation. Only active if :ref:`angular_limit_enabled<class_PinJoint2
 - |void| **set_motor_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_motor_enabled**\ (\ )
 
-When activated, a motor turns the pin.
+Khi được kích hoạt, một motor sẽ xoay pin.
 
 .. rst-class:: classref-item-separator
 
@@ -131,7 +131,7 @@ When activated, a motor turns the pin.
 - |void| **set_motor_target_velocity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_motor_target_velocity**\ (\ )
 
-Target speed for the motor. In radians per second.
+Tốc độ mục tiêu của motor. Tính bằng radian trên giây.
 
 .. rst-class:: classref-item-separator
 
@@ -148,14 +148,14 @@ Target speed for the motor. In radians per second.
 - |void| **set_softness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_softness**\ (\ )
 
-The higher this value, the more the bond to the pinned partner can flex.
+Giá trị này càng cao thì liên kết với đối tác được ghim càng có thể uốn cong.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

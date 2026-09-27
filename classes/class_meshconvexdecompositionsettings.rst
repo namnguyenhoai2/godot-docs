@@ -10,52 +10,52 @@
 MeshConvexDecompositionSettings
 ===============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Parameters to be used with a :ref:`Mesh<class_Mesh>` convex decomposition operation.
+Các tham số được sử dụng với thao tác phân rã lồi :ref:`Mesh<class_Mesh>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Parameters to be used with a :ref:`Mesh<class_Mesh>` convex decomposition operation.
+Các tham số được sử dụng với thao tác phân rã lồi :ref:`Mesh<class_Mesh>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`bool<class_bool>`                                | :ref:`convex_hull_approximation<class_MeshConvexDecompositionSettings_property_convex_hull_approximation>`               | ``true``   |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`int<class_int>`                                  | :ref:`convex_hull_downsampling<class_MeshConvexDecompositionSettings_property_convex_hull_downsampling>`                 | ``4``      |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>`                              | :ref:`max_concavity<class_MeshConvexDecompositionSettings_property_max_concavity>`                                       | ``1.0``    |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`int<class_int>`                                  | :ref:`max_convex_hulls<class_MeshConvexDecompositionSettings_property_max_convex_hulls>`                                 | ``1``      |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`int<class_int>`                                  | :ref:`max_num_vertices_per_convex_hull<class_MeshConvexDecompositionSettings_property_max_num_vertices_per_convex_hull>` | ``32``     |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>`                              | :ref:`min_volume_per_convex_hull<class_MeshConvexDecompositionSettings_property_min_volume_per_convex_hull>`             | ``0.0001`` |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`Mode<enum_MeshConvexDecompositionSettings_Mode>` | :ref:`mode<class_MeshConvexDecompositionSettings_property_mode>`                                                         | ``0``      |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`bool<class_bool>`                                | :ref:`normalize_mesh<class_MeshConvexDecompositionSettings_property_normalize_mesh>`                                     | ``false``  |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`int<class_int>`                                  | :ref:`plane_downsampling<class_MeshConvexDecompositionSettings_property_plane_downsampling>`                             | ``4``      |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`bool<class_bool>`                                | :ref:`project_hull_vertices<class_MeshConvexDecompositionSettings_property_project_hull_vertices>`                       | ``true``   |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`int<class_int>`                                  | :ref:`resolution<class_MeshConvexDecompositionSettings_property_resolution>`                                             | ``10000``  |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>`                              | :ref:`revolution_axes_clipping_bias<class_MeshConvexDecompositionSettings_property_revolution_axes_clipping_bias>`       | ``0.05``   |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>`                              | :ref:`symmetry_planes_clipping_bias<class_MeshConvexDecompositionSettings_property_symmetry_planes_clipping_bias>`       | ``0.05``   |
-   +--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`bool<class_bool>`                                 | :ref:`convex_hull_approximation<class_MeshConvexDecompositionSettings_property_convex_hull_approximation>`               | ``true``   |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`int<class_int>`                                   | :ref:`convex_hull_downsampling<class_MeshConvexDecompositionSettings_property_convex_hull_downsampling>`                 | ``4``      |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                               | :ref:`max_concavity<class_MeshConvexDecompositionSettings_property_max_concavity>`                                       | ``1.0``    |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`int<class_int>`                                   | :ref:`max_convex_hulls<class_MeshConvexDecompositionSettings_property_max_convex_hulls>`                                 | ``1``      |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`int<class_int>`                                   | :ref:`max_num_vertices_per_convex_hull<class_MeshConvexDecompositionSettings_property_max_num_vertices_per_convex_hull>` | ``32``     |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                               | :ref:`min_volume_per_convex_hull<class_MeshConvexDecompositionSettings_property_min_volume_per_convex_hull>`             | ``0.0001`` |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`Mode <enum_MeshConvexDecompositionSettings_Mode>` | :ref:`mode<class_MeshConvexDecompositionSettings_property_mode>`                                                         | ``0``      |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`bool<class_bool>`                                 | :ref:`normalize_mesh<class_MeshConvexDecompositionSettings_property_normalize_mesh>`                                     | ``false``  |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`int<class_int>`                                   | :ref:`plane_downsampling<class_MeshConvexDecompositionSettings_property_plane_downsampling>`                             | ``4``      |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`bool<class_bool>`                                 | :ref:`project_hull_vertices<class_MeshConvexDecompositionSettings_property_project_hull_vertices>`                       | ``true``   |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`int<class_int>`                                   | :ref:`resolution<class_MeshConvexDecompositionSettings_property_resolution>`                                             | ``10000``  |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                               | :ref:`revolution_axes_clipping_bias<class_MeshConvexDecompositionSettings_property_revolution_axes_clipping_bias>`       | ``0.05``   |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>`                               | :ref:`symmetry_planes_clipping_bias<class_MeshConvexDecompositionSettings_property_symmetry_planes_clipping_bias>`       | ``0.05``   |
+   +---------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+------------+
 
 .. rst-class:: classref-section-separator
 
@@ -63,14 +63,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_MeshConvexDecompositionSettings_Mode:
 
 .. rst-class:: classref-enumeration
 
-enum **Mode**: :ref:`🔗<enum_MeshConvexDecompositionSettings_Mode>`
+enum **Mode**: :ref:`🔗 <enum_MeshConvexDecompositionSettings_Mode>`
 
 .. _class_MeshConvexDecompositionSettings_constant_CONVEX_DECOMPOSITION_MODE_VOXEL:
 
@@ -78,7 +78,7 @@ enum **Mode**: :ref:`🔗<enum_MeshConvexDecompositionSettings_Mode>`
 
 :ref:`Mode<enum_MeshConvexDecompositionSettings_Mode>` **CONVEX_DECOMPOSITION_MODE_VOXEL** = ``0``
 
-Constant for voxel-based approximate convex decomposition.
+Hằng số cho phép phân rã lồi xấp xỉ dựa trên voxel.
 
 .. _class_MeshConvexDecompositionSettings_constant_CONVEX_DECOMPOSITION_MODE_TETRAHEDRON:
 
@@ -86,7 +86,7 @@ Constant for voxel-based approximate convex decomposition.
 
 :ref:`Mode<enum_MeshConvexDecompositionSettings_Mode>` **CONVEX_DECOMPOSITION_MODE_TETRAHEDRON** = ``1``
 
-Constant for tetrahedron-based approximate convex decomposition.
+Hằng số cho phép phân rã lồi xấp xỉ dựa trên tứ diện.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ Constant for tetrahedron-based approximate convex decomposition.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MeshConvexDecompositionSettings_property_convex_hull_approximation:
 
@@ -108,7 +108,7 @@ Property Descriptions
 - |void| **set_convex_hull_approximation**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_convex_hull_approximation**\ (\ )
 
-If ``true``, uses approximation for computing convex hulls.
+Nếu ``true``, sử dụng phép xấp xỉ để tính các bao lồi.
 
 .. rst-class:: classref-item-separator
 
@@ -125,7 +125,7 @@ If ``true``, uses approximation for computing convex hulls.
 - |void| **set_convex_hull_downsampling**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_convex_hull_downsampling**\ (\ )
 
-Controls the precision of the convex-hull generation process during the clipping plane selection stage. Ranges from ``1`` to ``16``.
+Kiểm soát độ chính xác của quá trình tạo bao lồi trong giai đoạn lựa chọn mặt phẳng cắt. Phạm vi từ ``1`` đến ``16``.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ Controls the precision of the convex-hull generation process during the clipping
 - |void| **set_max_concavity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_max_concavity**\ (\ )
 
-Maximum concavity. Ranges from ``0.0`` to ``1.0``.
+Độ lõm tối đa. Phạm vi từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Maximum concavity. Ranges from ``0.0`` to ``1.0``.
 - |void| **set_max_convex_hulls**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_convex_hulls**\ (\ )
 
-The maximum number of convex hulls to produce from the merge operation.
+Số lượng tối đa các bao lồi được tạo ra từ thao tác hợp nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -176,7 +176,7 @@ The maximum number of convex hulls to produce from the merge operation.
 - |void| **set_max_num_vertices_per_convex_hull**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_num_vertices_per_convex_hull**\ (\ )
 
-Controls the maximum number of triangles per convex-hull. Ranges from ``4`` to ``1024``.
+Kiểm soát số lượng hình tam giác tối đa trên mỗi bao lồi. Phạm vi từ ``4`` đến ``1024``.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ Controls the maximum number of triangles per convex-hull. Ranges from ``4`` to `
 - |void| **set_min_volume_per_convex_hull**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_min_volume_per_convex_hull**\ (\ )
 
-Controls the adaptive sampling of the generated convex-hulls. Ranges from ``0.0`` to ``0.01``.
+Kiểm soát việc lấy mẫu thích ứng của các bao lồi được tạo. Phạm vi từ ``0.0`` đến ``0.01``.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Controls the adaptive sampling of the generated convex-hulls. Ranges from ``0.0`
 - |void| **set_mode**\ (\ value\: :ref:`Mode<enum_MeshConvexDecompositionSettings_Mode>`\ )
 - :ref:`Mode<enum_MeshConvexDecompositionSettings_Mode>` **get_mode**\ (\ )
 
-Mode for the approximate convex decomposition.
+Chế độ phân rã lồi xấp xỉ.
 
 .. rst-class:: classref-item-separator
 
@@ -227,7 +227,7 @@ Mode for the approximate convex decomposition.
 - |void| **set_normalize_mesh**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_normalize_mesh**\ (\ )
 
-If ``true``, normalizes the mesh before applying the convex decomposition.
+Nếu là ``true``, chuẩn hóa mesh trước khi áp dụng phép phân rã lồi.
 
 .. rst-class:: classref-item-separator
 
@@ -244,7 +244,7 @@ If ``true``, normalizes the mesh before applying the convex decomposition.
 - |void| **set_plane_downsampling**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_plane_downsampling**\ (\ )
 
-Controls the granularity of the search for the "best" clipping plane. Ranges from ``1`` to ``16``.
+Kiểm soát độ chi tiết của quá trình tìm kiếm mặt phẳng cắt "tốt nhất". Phạm vi từ ``1`` đến ``16``.
 
 .. rst-class:: classref-item-separator
 
@@ -261,7 +261,7 @@ Controls the granularity of the search for the "best" clipping plane. Ranges fro
 - |void| **set_project_hull_vertices**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_project_hull_vertices**\ (\ )
 
-If ``true``, projects output convex hull vertices onto the original source mesh to increase floating-point accuracy of the results.
+Nếu là ``true``, chiếu các đỉnh bao lồi đầu ra lên mesh nguồn ban đầu để tăng độ chính xác số thực dấu phẩy động của kết quả.
 
 .. rst-class:: classref-item-separator
 
@@ -278,7 +278,7 @@ If ``true``, projects output convex hull vertices onto the original source mesh 
 - |void| **set_resolution**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_resolution**\ (\ )
 
-Maximum number of voxels generated during the voxelization stage.
+Số lượng voxel tối đa được tạo trong giai đoạn voxel hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ Maximum number of voxels generated during the voxelization stage.
 - |void| **set_revolution_axes_clipping_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_revolution_axes_clipping_bias**\ (\ )
 
-Controls the bias toward clipping along revolution axes. Ranges from ``0.0`` to ``1.0``.
+Kiểm soát độ thiên lệch khi cắt dọc theo các trục quay. Phạm vi từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -312,14 +312,14 @@ Controls the bias toward clipping along revolution axes. Ranges from ``0.0`` to 
 - |void| **set_symmetry_planes_clipping_bias**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_symmetry_planes_clipping_bias**\ (\ )
 
-Controls the bias toward clipping along symmetry planes. Ranges from ``0.0`` to ``1.0``.
+Kiểm soát độ thiên lệch khi cắt dọc theo các mặt phẳng đối xứng. Phạm vi từ ``0.0`` đến ``1.0``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,47 +10,47 @@
 RichTextEffect
 ==============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A custom effect for a :ref:`RichTextLabel<class_RichTextLabel>`.
+Một effect tùy chỉnh cho một :ref:`RichTextLabel<class_RichTextLabel>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A custom effect for a :ref:`RichTextLabel<class_RichTextLabel>`, which can be loaded in the :ref:`RichTextLabel<class_RichTextLabel>` inspector or using :ref:`RichTextLabel.install_effect()<class_RichTextLabel_method_install_effect>`.
+Một effect tùy chỉnh cho một :ref:`RichTextLabel<class_RichTextLabel>`, có thể được tải trong inspector :ref:`RichTextLabel<class_RichTextLabel>` hoặc bằng cách sử dụng :ref:`RichTextLabel.install_effect()<class_RichTextLabel_method_install_effect>`.
 
-\ **Note:** For a **RichTextEffect** to be usable, a BBCode tag must be defined as a member variable called ``bbcode`` in the script.
+\ **Lưu ý:** Để **RichTextEffect** có thể sử dụng được, một thẻ BBCode phải được định nghĩa dưới dạng biến thành viên có tên ``bbcode`` trong script.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # The RichTextEffect will be usable like this: `[example]Some text[/example]`
+    # RichTextEffect sẽ được sử dụng như sau: `[example]Some text[/example]`
     var bbcode = "example"
 
  .. code-tab:: csharp
 
-    // The RichTextEffect will be usable like this: `[example]Some text[/example]`
+    // RichTextEffect sẽ được sử dụng như sau: `[example]Some text[/example]`
     string bbcode = "example";
 
 
 
-\ **Note:** As soon as a :ref:`RichTextLabel<class_RichTextLabel>` contains at least one **RichTextEffect**, it will continuously process the effect unless the project is paused. This may impact battery life negatively.
+\ **Lưu ý:** Ngay khi một :ref:`RichTextLabel<class_RichTextLabel>` chứa ít nhất một **RichTextEffect**, nó sẽ liên tục xử lý effect trừ khi project bị tạm dừng. Điều này có thể ảnh hưởng tiêu cực đến thời lượng pin.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Tutorial
+--------
 
-- :doc:`BBCode in RichTextLabel <../tutorials/ui/bbcode_in_richtextlabel>`
+- :doc:`BBCode trong RichTextLabel <../tutorials/ui/bbcode_in_richtextlabel>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -65,8 +65,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_RichTextEffect_private_method__process_custom_fx:
 
@@ -74,14 +74,14 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_process_custom_fx**\ (\ char_fx\: :ref:`CharFXTransform<class_CharFXTransform>`\ ) |virtual| |const| :ref:`🔗<class_RichTextEffect_private_method__process_custom_fx>`
 
-Override this method to modify properties in ``char_fx``. The method must return ``true`` if the character could be transformed successfully. If the method returns ``false``, it will skip transformation to avoid displaying broken text.
+Ghi đè phương thức này để sửa đổi các thuộc tính trong ``char_fx``. Phương thức phải trả về ``true`` nếu ký tự đã được biến đổi thành công. Nếu phương thức trả về ``false``, thao tác biến đổi sẽ được bỏ qua để tránh hiển thị văn bản bị lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

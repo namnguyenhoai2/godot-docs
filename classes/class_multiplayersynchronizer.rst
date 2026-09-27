@@ -13,51 +13,51 @@
 MultiplayerSynchronizer
 =======================
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Synchronizes properties from the multiplayer authority to the remote peers.
+Đồng bộ hóa các thuộc tính từ multiplayer authority đến các peer từ xa.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-By default, **MultiplayerSynchronizer** synchronizes configured properties to all peers.
+Theo mặc định, **MultiplayerSynchronizer** đồng bộ hóa các thuộc tính đã cấu hình đến tất cả các peer.
 
-Visibility can be handled directly with :ref:`set_visibility_for()<class_MultiplayerSynchronizer_method_set_visibility_for>` or as-needed with :ref:`add_visibility_filter()<class_MultiplayerSynchronizer_method_add_visibility_filter>` and :ref:`update_visibility()<class_MultiplayerSynchronizer_method_update_visibility>`.
+Có thể xử lý visibility trực tiếp bằng :ref:`set_visibility_for()<class_MultiplayerSynchronizer_method_set_visibility_for>` hoặc khi cần bằng :ref:`add_visibility_filter()<class_MultiplayerSynchronizer_method_add_visibility_filter>` và :ref:`update_visibility()<class_MultiplayerSynchronizer_method_update_visibility>`.
 
-\ :ref:`MultiplayerSpawner<class_MultiplayerSpawner>`\ s will handle nodes according to visibility of synchronizers as long as the node at :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>` was spawned by one.
+\ :ref:`MultiplayerSpawner<class_MultiplayerSpawner>`\ s sẽ xử lý các node theo visibility của các synchronizer miễn là node tại :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>` đã được spawn bởi một synchronizer.
 
-Internally, **MultiplayerSynchronizer** uses :ref:`MultiplayerAPI.object_configuration_add()<class_MultiplayerAPI_method_object_configuration_add>` to notify synchronization start passing the :ref:`Node<class_Node>` at :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>` as the ``object`` and itself as the ``configuration``, and uses :ref:`MultiplayerAPI.object_configuration_remove()<class_MultiplayerAPI_method_object_configuration_remove>` to notify synchronization end in a similar way.
+Về nội bộ, **MultiplayerSynchronizer** sử dụng :ref:`MultiplayerAPI.object_configuration_add()<class_MultiplayerAPI_method_object_configuration_add>` để thông báo bắt đầu đồng bộ hóa bằng cách truyền :ref:`Node<class_Node>` tại :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>` làm ``object`` và chính nó làm ``configuration``, đồng thời sử dụng :ref:`MultiplayerAPI.object_configuration_remove()<class_MultiplayerAPI_method_object_configuration_remove>` để thông báo kết thúc đồng bộ hóa theo cách tương tự.
 
-\ **Note:** Synchronization is not supported for :ref:`Object<class_Object>` type properties, like :ref:`Resource<class_Resource>`. Properties that are unique to each peer, like the instance IDs of :ref:`Object<class_Object>`\ s (see :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`) or :ref:`RID<class_RID>`\ s, will also not work in synchronization.
+\ **Lưu ý:** Không hỗ trợ đồng bộ hóa cho các thuộc tính kiểu :ref:`Object<class_Object>`, chẳng hạn như :ref:`Resource<class_Resource>`. Các thuộc tính là duy nhất đối với từng peer, chẳng hạn như instance ID của :ref:`Object<class_Object>`\ s (xem :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`) hoặc :ref:`RID<class_RID>`\ s, cũng sẽ không hoạt động trong quá trình đồng bộ hóa.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`float<class_float>`                                                      | :ref:`delta_interval<class_MultiplayerSynchronizer_property_delta_interval>`                 | ``0.0``            |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`public_visibility<class_MultiplayerSynchronizer_property_public_visibility>`           | ``true``           |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`SceneReplicationConfig<class_SceneReplicationConfig>`                    | :ref:`replication_config<class_MultiplayerSynchronizer_property_replication_config>`         |                    |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`float<class_float>`                                                      | :ref:`replication_interval<class_MultiplayerSynchronizer_property_replication_interval>`     | ``0.0``            |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`NodePath<class_NodePath>`                                                | :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>`                           | ``NodePath("..")`` |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
-   | :ref:`VisibilityUpdateMode<enum_MultiplayerSynchronizer_VisibilityUpdateMode>` | :ref:`visibility_update_mode<class_MultiplayerSynchronizer_property_visibility_update_mode>` | ``0``              |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`float<class_float>`                                                       | :ref:`delta_interval<class_MultiplayerSynchronizer_property_delta_interval>`                 | ``0.0``            |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`public_visibility<class_MultiplayerSynchronizer_property_public_visibility>`           | ``true``           |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`SceneReplicationConfig<class_SceneReplicationConfig>`                     | :ref:`replication_config<class_MultiplayerSynchronizer_property_replication_config>`         |                    |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`float<class_float>`                                                       | :ref:`replication_interval<class_MultiplayerSynchronizer_property_replication_interval>`     | ``0.0``            |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`NodePath<class_NodePath>`                                                 | :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>`                           | ``NodePath("..")`` |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
+   | :ref:`VisibilityUpdateMode <enum_MultiplayerSynchronizer_VisibilityUpdateMode>` | :ref:`visibility_update_mode<class_MultiplayerSynchronizer_property_visibility_update_mode>` | ``0``              |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+--------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -80,8 +80,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_MultiplayerSynchronizer_signal_delta_synchronized:
 
@@ -89,7 +89,7 @@ Signals
 
 **delta_synchronized**\ (\ ) :ref:`🔗<class_MultiplayerSynchronizer_signal_delta_synchronized>`
 
-Emitted when a new delta synchronization state is received by this synchronizer after the properties have been updated.
+Được phát ra khi synchronizer này nhận được trạng thái đồng bộ hóa delta mới sau khi các thuộc tính đã được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -101,7 +101,7 @@ Emitted when a new delta synchronization state is received by this synchronizer 
 
 **synchronized**\ (\ ) :ref:`🔗<class_MultiplayerSynchronizer_signal_synchronized>`
 
-Emitted when a new synchronization state is received by this synchronizer after the properties have been updated.
+Được phát ra khi synchronizer này nhận được trạng thái đồng bộ hóa mới sau khi các thuộc tính đã được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -113,7 +113,7 @@ Emitted when a new synchronization state is received by this synchronizer after 
 
 **visibility_changed**\ (\ for_peer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_MultiplayerSynchronizer_signal_visibility_changed>`
 
-Emitted when visibility of ``for_peer`` is updated. See :ref:`update_visibility()<class_MultiplayerSynchronizer_method_update_visibility>`.
+Được phát ra khi khả năng hiển thị của ``for_peer`` được cập nhật. Xem :ref:`update_visibility()<class_MultiplayerSynchronizer_method_update_visibility>`.
 
 .. rst-class:: classref-section-separator
 
@@ -121,14 +121,14 @@ Emitted when visibility of ``for_peer`` is updated. See :ref:`update_visibility(
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_MultiplayerSynchronizer_VisibilityUpdateMode:
 
 .. rst-class:: classref-enumeration
 
-enum **VisibilityUpdateMode**: :ref:`🔗<enum_MultiplayerSynchronizer_VisibilityUpdateMode>`
+enum **VisibilityUpdateMode**: :ref:`🔗 <enum_MultiplayerSynchronizer_VisibilityUpdateMode>`
 
 .. _class_MultiplayerSynchronizer_constant_VISIBILITY_PROCESS_IDLE:
 
@@ -136,7 +136,7 @@ enum **VisibilityUpdateMode**: :ref:`🔗<enum_MultiplayerSynchronizer_Visibilit
 
 :ref:`VisibilityUpdateMode<enum_MultiplayerSynchronizer_VisibilityUpdateMode>` **VISIBILITY_PROCESS_IDLE** = ``0``
 
-Visibility filters are updated during process frames (see :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
+Các bộ lọc khả năng hiển thị được cập nhật trong các process frame (xem :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
 
 .. _class_MultiplayerSynchronizer_constant_VISIBILITY_PROCESS_PHYSICS:
 
@@ -144,7 +144,7 @@ Visibility filters are updated during process frames (see :ref:`Node.NOTIFICATIO
 
 :ref:`VisibilityUpdateMode<enum_MultiplayerSynchronizer_VisibilityUpdateMode>` **VISIBILITY_PROCESS_PHYSICS** = ``1``
 
-Visibility filters are updated during physics frames (see :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
+Các bộ lọc khả năng hiển thị được cập nhật trong các physics frame (xem :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
 
 .. _class_MultiplayerSynchronizer_constant_VISIBILITY_PROCESS_NONE:
 
@@ -152,7 +152,7 @@ Visibility filters are updated during physics frames (see :ref:`Node.NOTIFICATIO
 
 :ref:`VisibilityUpdateMode<enum_MultiplayerSynchronizer_VisibilityUpdateMode>` **VISIBILITY_PROCESS_NONE** = ``2``
 
-Visibility filters are not updated automatically, and must be updated manually by calling :ref:`update_visibility()<class_MultiplayerSynchronizer_method_update_visibility>`.
+Các bộ lọc khả năng hiển thị không được tự động cập nhật và phải được cập nhật thủ công bằng cách gọi :ref:`update_visibility()<class_MultiplayerSynchronizer_method_update_visibility>`.
 
 .. rst-class:: classref-section-separator
 
@@ -160,8 +160,8 @@ Visibility filters are not updated automatically, and must be updated manually b
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MultiplayerSynchronizer_property_delta_interval:
 
@@ -174,7 +174,7 @@ Property Descriptions
 - |void| **set_delta_interval**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_delta_interval**\ (\ )
 
-Time interval between delta synchronizations. Used when the replication is set to :ref:`SceneReplicationConfig.REPLICATION_MODE_ON_CHANGE<class_SceneReplicationConfig_constant_REPLICATION_MODE_ON_CHANGE>`. If set to ``0.0`` (the default), delta synchronizations happen every network process frame.
+Khoảng thời gian giữa các lần đồng bộ delta. Được sử dụng khi replication được đặt thành :ref:`SceneReplicationConfig.REPLICATION_MODE_ON_CHANGE<class_SceneReplicationConfig_constant_REPLICATION_MODE_ON_CHANGE>`. Nếu đặt thành ``0.0`` (mặc định), các lần đồng bộ delta sẽ diễn ra sau mỗi network process frame.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Time interval between delta synchronizations. Used when the replication is set t
 - |void| **set_visibility_public**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_visibility_public**\ (\ )
 
-Whether synchronization should be visible to all peers by default. See :ref:`set_visibility_for()<class_MultiplayerSynchronizer_method_set_visibility_for>` and :ref:`add_visibility_filter()<class_MultiplayerSynchronizer_method_add_visibility_filter>` for ways of configuring fine-grained visibility options.
+Theo mặc định, việc đồng bộ hóa có nên hiển thị với tất cả peer hay không. Xem :ref:`set_visibility_for()<class_MultiplayerSynchronizer_method_set_visibility_for>` và :ref:`add_visibility_filter()<class_MultiplayerSynchronizer_method_add_visibility_filter>` để biết cách cấu hình các tùy chọn hiển thị chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -201,14 +201,14 @@ Whether synchronization should be visible to all peers by default. See :ref:`set
 
 .. rst-class:: classref-property
 
-:ref:`SceneReplicationConfig<class_SceneReplicationConfig>` **replication_config** :ref:`🔗<class_MultiplayerSynchronizer_property_replication_config>`
+:ref:`SceneReplicationConfig<class_SceneReplicationConfig>` **replication_config** :ref:`🔗 <class_MultiplayerSynchronizer_property_replication_config>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_replication_config**\ (\ value\: :ref:`SceneReplicationConfig<class_SceneReplicationConfig>`\ )
 - :ref:`SceneReplicationConfig<class_SceneReplicationConfig>` **get_replication_config**\ (\ )
 
-Resource containing which properties to synchronize.
+Tài nguyên chứa các thuộc tính cần đồng bộ hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Resource containing which properties to synchronize.
 - |void| **set_replication_interval**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_replication_interval**\ (\ )
 
-Time interval between synchronizations. Used when the replication is set to :ref:`SceneReplicationConfig.REPLICATION_MODE_ALWAYS<class_SceneReplicationConfig_constant_REPLICATION_MODE_ALWAYS>`. If set to ``0.0`` (the default), synchronizations happen every network process frame.
+Khoảng thời gian giữa các lần đồng bộ hóa. Được sử dụng khi replication được đặt thành :ref:`SceneReplicationConfig.REPLICATION_MODE_ALWAYS<class_SceneReplicationConfig_constant_REPLICATION_MODE_ALWAYS>`. Nếu đặt thành ``0.0`` (mặc định), việc đồng bộ hóa sẽ diễn ra trong mỗi frame của tiến trình mạng.
 
 .. rst-class:: classref-item-separator
 
@@ -242,9 +242,9 @@ Time interval between synchronizations. Used when the replication is set to :ref
 - |void| **set_root_path**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_root_path**\ (\ )
 
-Node path that replicated properties are relative to.
+Đường dẫn node mà các thuộc tính được replication lấy làm gốc tương đối.
 
-If :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>` was spawned by a :ref:`MultiplayerSpawner<class_MultiplayerSpawner>`, the node will be also be spawned and despawned based on this synchronizer visibility options.
+Nếu :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>` được tạo bởi một :ref:`MultiplayerSpawner<class_MultiplayerSpawner>`, node này cũng sẽ được tạo và hủy dựa trên các tùy chọn hiển thị của synchronizer này.
 
 .. rst-class:: classref-item-separator
 
@@ -261,7 +261,7 @@ If :ref:`root_path<class_MultiplayerSynchronizer_property_root_path>` was spawne
 - |void| **set_visibility_update_mode**\ (\ value\: :ref:`VisibilityUpdateMode<enum_MultiplayerSynchronizer_VisibilityUpdateMode>`\ )
 - :ref:`VisibilityUpdateMode<enum_MultiplayerSynchronizer_VisibilityUpdateMode>` **get_visibility_update_mode**\ (\ )
 
-Specifies when visibility filters are updated.
+Chỉ định thời điểm cập nhật các bộ lọc hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -269,8 +269,8 @@ Specifies when visibility filters are updated.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MultiplayerSynchronizer_method_add_visibility_filter:
 
@@ -278,9 +278,9 @@ Method Descriptions
 
 |void| **add_visibility_filter**\ (\ filter\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_MultiplayerSynchronizer_method_add_visibility_filter>`
 
-Adds a peer visibility filter for this synchronizer.
+Thêm bộ lọc khả năng hiển thị của peer cho synchronizer này.
 
-\ ``filter`` should take a peer ID :ref:`int<class_int>` and return a :ref:`bool<class_bool>`.
+\ ``filter`` cần nhận một ID peer :ref:`int<class_int>` và trả về một :ref:`bool<class_bool>`.
 
 .. rst-class:: classref-item-separator
 
@@ -292,7 +292,7 @@ Adds a peer visibility filter for this synchronizer.
 
 :ref:`bool<class_bool>` **get_visibility_for**\ (\ peer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MultiplayerSynchronizer_method_get_visibility_for>`
 
-Queries the current visibility for peer ``peer``.
+Truy vấn khả năng hiển thị hiện tại của peer ``peer``.
 
 .. rst-class:: classref-item-separator
 
@@ -304,7 +304,7 @@ Queries the current visibility for peer ``peer``.
 
 |void| **remove_visibility_filter**\ (\ filter\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_MultiplayerSynchronizer_method_remove_visibility_filter>`
 
-Removes a peer visibility filter from this synchronizer.
+Xóa bộ lọc khả năng hiển thị của peer khỏi synchronizer này.
 
 .. rst-class:: classref-item-separator
 
@@ -316,7 +316,7 @@ Removes a peer visibility filter from this synchronizer.
 
 |void| **set_visibility_for**\ (\ peer\: :ref:`int<class_int>`, visible\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_MultiplayerSynchronizer_method_set_visibility_for>`
 
-Sets the visibility of ``peer`` to ``visible``. If ``peer`` is ``0``, the value of :ref:`public_visibility<class_MultiplayerSynchronizer_property_public_visibility>` will be updated instead.
+Đặt khả năng hiển thị của ``peer`` thành ``visible``. Nếu ``peer`` là ``0``, giá trị của :ref:`public_visibility<class_MultiplayerSynchronizer_property_public_visibility>` sẽ được cập nhật thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -328,14 +328,14 @@ Sets the visibility of ``peer`` to ``visible``. If ``peer`` is ``0``, the value 
 
 |void| **update_visibility**\ (\ for_peer\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_MultiplayerSynchronizer_method_update_visibility>`
 
-Updates the visibility of ``for_peer`` according to visibility filters. If ``for_peer`` is ``0`` (the default), all peers' visibilties are updated.
+Cập nhật khả năng hiển thị của ``for_peer`` theo các bộ lọc khả năng hiển thị. Nếu ``for_peer`` là ``0`` (giá trị mặc định), khả năng hiển thị của tất cả các peer sẽ được cập nhật.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này ở vai trò toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

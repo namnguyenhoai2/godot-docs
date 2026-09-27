@@ -10,7 +10,7 @@
 ImporterMeshInstance3D
 ======================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
 .. container:: contribute
 
@@ -18,33 +18,33 @@ ImporterMeshInstance3D
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`ShadowCastingSetting<enum_GeometryInstance3D_ShadowCastingSetting>`       | :ref:`cast_shadow<class_ImporterMeshInstance3D_property_cast_shadow>`                                     | ``1``            |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`int<class_int>`                                                           | :ref:`layer_mask<class_ImporterMeshInstance3D_property_layer_mask>`                                       | ``1``            |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`ImporterMesh<class_ImporterMesh>`                                         | :ref:`mesh<class_ImporterMeshInstance3D_property_mesh>`                                                   |                  |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`NodePath<class_NodePath>`                                                 | :ref:`skeleton_path<class_ImporterMeshInstance3D_property_skeleton_path>`                                 | ``NodePath("")`` |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`Skin<class_Skin>`                                                         | :ref:`skin<class_ImporterMeshInstance3D_property_skin>`                                                   |                  |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                                                       | :ref:`visibility_range_begin<class_ImporterMeshInstance3D_property_visibility_range_begin>`               | ``0.0``          |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                                                       | :ref:`visibility_range_begin_margin<class_ImporterMeshInstance3D_property_visibility_range_begin_margin>` | ``0.0``          |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                                                       | :ref:`visibility_range_end<class_ImporterMeshInstance3D_property_visibility_range_end>`                   | ``0.0``          |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`float<class_float>`                                                       | :ref:`visibility_range_end_margin<class_ImporterMeshInstance3D_property_visibility_range_end_margin>`     | ``0.0``          |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
-   | :ref:`VisibilityRangeFadeMode<enum_GeometryInstance3D_VisibilityRangeFadeMode>` | :ref:`visibility_range_fade_mode<class_ImporterMeshInstance3D_property_visibility_range_fade_mode>`       | ``0``            |
-   +---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`ShadowCastingSetting <enum_GeometryInstance3D_ShadowCastingSetting>`       | :ref:`cast_shadow<class_ImporterMeshInstance3D_property_cast_shadow>`                                     | ``1``            |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`int<class_int>`                                                            | :ref:`layer_mask<class_ImporterMeshInstance3D_property_layer_mask>`                                       | ``1``            |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`ImporterMesh<class_ImporterMesh>`                                          | :ref:`mesh<class_ImporterMeshInstance3D_property_mesh>`                                                   |                  |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`NodePath<class_NodePath>`                                                  | :ref:`skeleton_path<class_ImporterMeshInstance3D_property_skeleton_path>`                                 | ``NodePath("")`` |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`Skin<class_Skin>`                                                          | :ref:`skin<class_ImporterMeshInstance3D_property_skin>`                                                   |                  |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                                                        | :ref:`visibility_range_begin<class_ImporterMeshInstance3D_property_visibility_range_begin>`               | ``0.0``          |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                                                        | :ref:`visibility_range_begin_margin<class_ImporterMeshInstance3D_property_visibility_range_begin_margin>` | ``0.0``          |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                                                        | :ref:`visibility_range_end<class_ImporterMeshInstance3D_property_visibility_range_end>`                   | ``0.0``          |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`float<class_float>`                                                        | :ref:`visibility_range_end_margin<class_ImporterMeshInstance3D_property_visibility_range_end_margin>`     | ``0.0``          |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
+   | :ref:`VisibilityRangeFadeMode <enum_GeometryInstance3D_VisibilityRangeFadeMode>` | :ref:`visibility_range_fade_mode<class_ImporterMeshInstance3D_property_visibility_range_fade_mode>`       | ``0``            |
+   +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -52,8 +52,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ImporterMeshInstance3D_property_cast_shadow:
 
@@ -97,7 +97,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`ImporterMesh<class_ImporterMesh>` **mesh** :ref:`🔗<class_ImporterMeshInstance3D_property_mesh>`
+:ref:`ImporterMesh<class_ImporterMesh>` **mesh** :ref:`🔗 <class_ImporterMeshInstance3D_property_mesh>`
 
 .. rst-class:: classref-property-setget
 
@@ -135,7 +135,7 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`Skin<class_Skin>` **skin** :ref:`🔗<class_ImporterMeshInstance3D_property_skin>`
+:ref:`Skin<class_Skin>` **skin** :ref:`🔗 <class_ImporterMeshInstance3D_property_skin>`
 
 .. rst-class:: classref-property-setget
 
@@ -241,12 +241,12 @@ Property Descriptions
 
 	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

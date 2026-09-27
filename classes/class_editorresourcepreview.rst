@@ -10,23 +10,23 @@
 EditorResourcePreview
 =====================
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node used to generate previews of resources or files.
+Một node được dùng để tạo bản xem trước cho các resource hoặc file.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node is used to generate previews for resources or files.
+Node này được dùng để tạo bản xem trước cho các resource hoặc file.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_resource_previewer()<class_EditorInterface_method_get_resource_previewer>`.
+\ **Lưu ý:** Không nên khởi tạo trực tiếp class này. Thay vào đó, hãy truy cập singleton bằng :ref:`EditorInterface.get_resource_previewer()<class_EditorInterface_method_get_resource_previewer>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -49,8 +49,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorResourcePreview_signal_preview_invalidated:
 
@@ -58,7 +58,7 @@ Signals
 
 **preview_invalidated**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorResourcePreview_signal_preview_invalidated>`
 
-Emitted if a preview was invalidated (changed). ``path`` corresponds to the path of the preview.
+Được phát ra nếu bản xem trước bị vô hiệu hóa (thay đổi). ``path`` tương ứng với đường dẫn của bản xem trước.
 
 .. rst-class:: classref-section-separator
 
@@ -66,8 +66,8 @@ Emitted if a preview was invalidated (changed). ``path`` corresponds to the path
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorResourcePreview_method_add_preview_generator:
 
@@ -75,7 +75,7 @@ Method Descriptions
 
 |void| **add_preview_generator**\ (\ generator\: :ref:`EditorResourcePreviewGenerator<class_EditorResourcePreviewGenerator>`\ ) :ref:`🔗<class_EditorResourcePreview_method_add_preview_generator>`
 
-Create an own, custom preview generator.
+Tạo một trình tạo bản xem trước tùy chỉnh của riêng bạn.
 
 .. rst-class:: classref-item-separator
 
@@ -87,7 +87,7 @@ Create an own, custom preview generator.
 
 |void| **check_for_invalidation**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorResourcePreview_method_check_for_invalidation>`
 
-Check if the resource changed, if so, it will be invalidated and the corresponding signal emitted.
+Kiểm tra xem tài nguyên có thay đổi hay không; nếu có, tài nguyên sẽ bị vô hiệu hóa và signal tương ứng được phát ra.
 
 .. rst-class:: classref-item-separator
 
@@ -99,9 +99,9 @@ Check if the resource changed, if so, it will be invalidated and the correspondi
 
 |void| **queue_edited_resource_preview**\ (\ resource\: :ref:`Resource<class_Resource>`, receiver\: :ref:`Object<class_Object>`, receiver_func\: :ref:`StringName<class_StringName>`, userdata\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_EditorResourcePreview_method_queue_edited_resource_preview>`
 
-Queue the ``resource`` being edited for preview. Once the preview is ready, the ``receiver``'s ``receiver_func`` will be called. The ``receiver_func`` must take the following four arguments: :ref:`String<class_String>` path, :ref:`Texture2D<class_Texture2D>` preview, :ref:`Texture2D<class_Texture2D>` thumbnail_preview, :ref:`Variant<class_Variant>` userdata. ``userdata`` can be anything, and will be returned when ``receiver_func`` is called.
+Đưa ``resource`` đang được chỉnh sửa vào hàng đợi để tạo bản xem trước. Khi bản xem trước sẵn sàng, ``receiver_func`` của ``receiver`` sẽ được gọi. ``receiver_func`` phải nhận bốn đối số sau: :ref:`String<class_String>` path, :ref:`Texture2D<class_Texture2D>` preview, :ref:`Texture2D<class_Texture2D>` thumbnail_preview, :ref:`Variant<class_Variant>` userdata. ``userdata`` có thể là bất kỳ giá trị nào và sẽ được trả về khi ``receiver_func`` được gọi.
 
-\ **Note:** If it was not possible to create the preview the ``receiver_func`` will still be called, but the preview will be ``null``.
+\ **Lưu ý:** Nếu không thể tạo bản xem trước, ``receiver_func`` vẫn sẽ được gọi, nhưng bản xem trước sẽ là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -113,9 +113,9 @@ Queue the ``resource`` being edited for preview. Once the preview is ready, the 
 
 |void| **queue_resource_preview**\ (\ path\: :ref:`String<class_String>`, receiver\: :ref:`Object<class_Object>`, receiver_func\: :ref:`StringName<class_StringName>`, userdata\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_EditorResourcePreview_method_queue_resource_preview>`
 
-Queue a resource file located at ``path`` for preview. Once the preview is ready, the ``receiver``'s ``receiver_func`` will be called. The ``receiver_func`` must take the following four arguments: :ref:`String<class_String>` path, :ref:`Texture2D<class_Texture2D>` preview, :ref:`Texture2D<class_Texture2D>` thumbnail_preview, :ref:`Variant<class_Variant>` userdata. ``userdata`` can be anything, and will be returned when ``receiver_func`` is called.
+Đưa tệp tài nguyên nằm tại ``path`` vào hàng đợi để tạo bản xem trước. Khi bản xem trước sẵn sàng, ``receiver_func`` của ``receiver`` sẽ được gọi. ``receiver_func`` phải nhận bốn đối số sau: :ref:`String<class_String>` path, :ref:`Texture2D<class_Texture2D>` preview, :ref:`Texture2D<class_Texture2D>` thumbnail_preview, :ref:`Variant<class_Variant>` userdata. ``userdata`` có thể là bất kỳ giá trị nào và sẽ được trả về khi ``receiver_func`` được gọi.
 
-\ **Note:** If it was not possible to create the preview the ``receiver_func`` will still be called, but the preview will be ``null``.
+\ **Lưu ý:** Nếu không thể tạo bản xem trước, ``receiver_func`` vẫn sẽ được gọi, nhưng bản xem trước sẽ là ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -127,14 +127,14 @@ Queue a resource file located at ``path`` for preview. Once the preview is ready
 
 |void| **remove_preview_generator**\ (\ generator\: :ref:`EditorResourcePreviewGenerator<class_EditorResourcePreviewGenerator>`\ ) :ref:`🔗<class_EditorResourcePreview_method_remove_preview_generator>`
 
-Removes a custom preview generator.
+Xóa một trình tạo bản xem trước tùy chỉnh.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bạn bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ ngoài các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,64 +10,64 @@
 HingeJoint3D
 ============
 
-**Inherits:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics joint that restricts the rotation of a 3D physics body around an axis relative to another physics body.
+Một joint vật lý hạn chế chuyển động quay của một vật thể vật lý 3D quanh một trục so với một vật thể vật lý khác.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A physics joint that restricts the rotation of a 3D physics body around an axis relative to another physics body. For example, Body A can be a :ref:`StaticBody3D<class_StaticBody3D>` representing a door hinge that a :ref:`RigidBody3D<class_RigidBody3D>` rotates around.
+Một joint vật lý hạn chế chuyển động quay của một vật thể vật lý 3D quanh một trục so với một vật thể vật lý khác. Ví dụ: Body A có thể là một :ref:`StaticBody3D<class_StaticBody3D>` đại diện cho bản lề cửa, quanh đó một :ref:`RigidBody3D<class_RigidBody3D>` sẽ quay.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/bias<class_HingeJoint3D_property_angular_limit/bias>`             | ``0.3``        |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`bool<class_bool>`   | :ref:`angular_limit/enable<class_HingeJoint3D_property_angular_limit/enable>`         | ``false``      |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/lower<class_HingeJoint3D_property_angular_limit/lower>`           | ``-1.5707964`` |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/relaxation<class_HingeJoint3D_property_angular_limit/relaxation>` | ``1.0``        |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/softness<class_HingeJoint3D_property_angular_limit/softness>`     | ``0.9``        |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`angular_limit/upper<class_HingeJoint3D_property_angular_limit/upper>`           | ``1.5707964``  |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`bool<class_bool>`   | :ref:`motor/enable<class_HingeJoint3D_property_motor/enable>`                         | ``false``      |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`motor/max_impulse<class_HingeJoint3D_property_motor/max_impulse>`               | ``1.0``        |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`motor/target_velocity<class_HingeJoint3D_property_motor/target_velocity>`       | ``1.0``        |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
-   | :ref:`float<class_float>` | :ref:`params/bias<class_HingeJoint3D_property_params/bias>`                           | ``0.3``        |
-   +---------------------------+---------------------------------------------------------------------------------------+----------------+
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/bias <class_HingeJoint3D_property_angular_limit/bias>`             | ``0.3``        |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`bool<class_bool>`   | :ref:`angular_limit/enable <class_HingeJoint3D_property_angular_limit/enable>`         | ``false``      |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/lower <class_HingeJoint3D_property_angular_limit/lower>`           | ``-1.5707964`` |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/relaxation <class_HingeJoint3D_property_angular_limit/relaxation>` | ``1.0``        |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/softness <class_HingeJoint3D_property_angular_limit/softness>`     | ``0.9``        |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`angular_limit/upper <class_HingeJoint3D_property_angular_limit/upper>`           | ``1.5707964``  |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`bool<class_bool>`   | :ref:`motor/enable <class_HingeJoint3D_property_motor/enable>`                         | ``false``      |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`motor/max_impulse <class_HingeJoint3D_property_motor/max_impulse>`               | ``1.0``        |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`motor/target_velocity <class_HingeJoint3D_property_motor/target_velocity>`       | ``1.0``        |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
+   | :ref:`float<class_float>` | :ref:`params/bias <class_HingeJoint3D_property_params/bias>`                           | ``0.3``        |
+   +---------------------------+----------------------------------------------------------------------------------------+----------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`   | :ref:`get_flag<class_HingeJoint3D_method_get_flag>`\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`\ ) |const|                                 |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`get_param<class_HingeJoint3D_method_get_param>`\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|                            |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_flag<class_HingeJoint3D_method_set_flag>`\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`, enabled\: :ref:`bool<class_bool>`\ )      |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_param<class_HingeJoint3D_method_set_param>`\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
-   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`   | :ref:`get_flag<class_HingeJoint3D_method_get_flag>`\ (\ flag\: :ref:`Flag <enum_HingeJoint3D_Flag>`\ ) |const|                                 |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`get_param<class_HingeJoint3D_method_get_param>`\ (\ param\: :ref:`Param <enum_HingeJoint3D_Param>`\ ) |const|                            |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_flag<class_HingeJoint3D_method_set_flag>`\ (\ flag\: :ref:`Flag <enum_HingeJoint3D_Flag>`, enabled\: :ref:`bool<class_bool>`\ )      |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_param<class_HingeJoint3D_method_set_param>`\ (\ param\: :ref:`Param <enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
+   +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -75,14 +75,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các phép liệt kê
+----------------
 
 .. _enum_HingeJoint3D_Param:
 
 .. rst-class:: classref-enumeration
 
-enum **Param**: :ref:`🔗<enum_HingeJoint3D_Param>`
+enum **Param**: :ref:`🔗 <enum_HingeJoint3D_Param>`
 
 .. _class_HingeJoint3D_constant_PARAM_BIAS:
 
@@ -90,7 +90,7 @@ enum **Param**: :ref:`🔗<enum_HingeJoint3D_Param>`
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_BIAS** = ``0``
 
-The speed with which the two bodies get pulled together when they move in different directions.
+Tốc độ mà hai vật thể bị kéo lại gần nhau khi chúng chuyển động theo các hướng khác nhau.
 
 .. _class_HingeJoint3D_constant_PARAM_LIMIT_UPPER:
 
@@ -98,7 +98,7 @@ The speed with which the two bodies get pulled together when they move in differ
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_LIMIT_UPPER** = ``1``
 
-The maximum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint3D_property_angular_limit/enable>` is ``true``.
+Độ xoay tối đa. Chỉ hoạt động nếu :ref:`angular_limit/enable <class_HingeJoint3D_property_angular_limit/enable>` là ``true``.
 
 .. _class_HingeJoint3D_constant_PARAM_LIMIT_LOWER:
 
@@ -106,7 +106,7 @@ The maximum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_LIMIT_LOWER** = ``2``
 
-The minimum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint3D_property_angular_limit/enable>` is ``true``.
+Độ xoay tối thiểu. Chỉ hoạt động nếu :ref:`angular_limit/enable <class_HingeJoint3D_property_angular_limit/enable>` là ``true``.
 
 .. _class_HingeJoint3D_constant_PARAM_LIMIT_BIAS:
 
@@ -114,7 +114,7 @@ The minimum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_LIMIT_BIAS** = ``3``
 
-The speed with which the rotation across the axis perpendicular to the hinge gets corrected.
+Tốc độ điều chỉnh độ xoay quanh trục vuông góc với bản lề.
 
 .. _class_HingeJoint3D_constant_PARAM_LIMIT_SOFTNESS:
 
@@ -122,7 +122,7 @@ The speed with which the rotation across the axis perpendicular to the hinge get
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_LIMIT_SOFTNESS** = ``4``
 
-**Deprecated:** This property is never used by the engine and is kept for compatibility purpose.
+**Đã lỗi thời:** Thuộc tính này không bao giờ được engine sử dụng và được giữ lại vì mục đích tương thích.
 
 
 
@@ -132,7 +132,7 @@ The speed with which the rotation across the axis perpendicular to the hinge get
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_LIMIT_RELAXATION** = ``5``
 
-The lower this value, the more the rotation gets slowed down.
+Giá trị này càng thấp thì độ xoay càng bị làm chậm nhiều hơn.
 
 .. _class_HingeJoint3D_constant_PARAM_MOTOR_TARGET_VELOCITY:
 
@@ -140,7 +140,7 @@ The lower this value, the more the rotation gets slowed down.
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_MOTOR_TARGET_VELOCITY** = ``6``
 
-Target speed for the motor.
+Tốc độ mục tiêu của động cơ.
 
 .. _class_HingeJoint3D_constant_PARAM_MOTOR_MAX_IMPULSE:
 
@@ -148,7 +148,7 @@ Target speed for the motor.
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_MOTOR_MAX_IMPULSE** = ``7``
 
-Maximum acceleration for the motor.
+Gia tốc tối đa của động cơ.
 
 .. _class_HingeJoint3D_constant_PARAM_MAX:
 
@@ -156,7 +156,7 @@ Maximum acceleration for the motor.
 
 :ref:`Param<enum_HingeJoint3D_Param>` **PARAM_MAX** = ``8``
 
-Represents the size of the :ref:`Param<enum_HingeJoint3D_Param>` enum.
+Biểu thị kích thước của enum :ref:`Param <enum_HingeJoint3D_Param>`.
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ Represents the size of the :ref:`Param<enum_HingeJoint3D_Param>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **Flag**: :ref:`🔗<enum_HingeJoint3D_Flag>`
+enum **Flag**: :ref:`🔗 <enum_HingeJoint3D_Flag>`
 
 .. _class_HingeJoint3D_constant_FLAG_USE_LIMIT:
 
@@ -174,7 +174,7 @@ enum **Flag**: :ref:`🔗<enum_HingeJoint3D_Flag>`
 
 :ref:`Flag<enum_HingeJoint3D_Flag>` **FLAG_USE_LIMIT** = ``0``
 
-If ``true``, the hinges maximum and minimum rotation, defined by :ref:`angular_limit/lower<class_HingeJoint3D_property_angular_limit/lower>` and :ref:`angular_limit/upper<class_HingeJoint3D_property_angular_limit/upper>` has effects.
+Nếu ``true``, góc xoay tối đa và tối thiểu của bản lề, được xác định bởi :ref:`angular_limit/lower <class_HingeJoint3D_property_angular_limit/lower>` và :ref:`angular_limit/upper <class_HingeJoint3D_property_angular_limit/upper>`, sẽ có hiệu lực.
 
 .. _class_HingeJoint3D_constant_FLAG_ENABLE_MOTOR:
 
@@ -182,7 +182,7 @@ If ``true``, the hinges maximum and minimum rotation, defined by :ref:`angular_l
 
 :ref:`Flag<enum_HingeJoint3D_Flag>` **FLAG_ENABLE_MOTOR** = ``1``
 
-When activated, a motor turns the hinge.
+Khi được kích hoạt, một động cơ sẽ xoay bản lề.
 
 .. _class_HingeJoint3D_constant_FLAG_MAX:
 
@@ -190,7 +190,7 @@ When activated, a motor turns the hinge.
 
 :ref:`Flag<enum_HingeJoint3D_Flag>` **FLAG_MAX** = ``2``
 
-Represents the size of the :ref:`Flag<enum_HingeJoint3D_Flag>` enum.
+Biểu thị kích thước của enum :ref:`Flag <enum_HingeJoint3D_Flag>`.
 
 .. rst-class:: classref-section-separator
 
@@ -198,21 +198,21 @@ Represents the size of the :ref:`Flag<enum_HingeJoint3D_Flag>` enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_HingeJoint3D_property_angular_limit/bias:
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/bias** = ``0.3`` :ref:`🔗<class_HingeJoint3D_property_angular_limit/bias>`
+:ref:`float<class_float>` **angular_limit/bias** = ``0.3`` :ref:`🔗 <class_HingeJoint3D_property_angular_limit/bias>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-The speed with which the rotation across the axis perpendicular to the hinge gets corrected.
+Tốc độ điều chỉnh chuyển động xoay quanh trục vuông góc với bản lề.
 
 .. rst-class:: classref-item-separator
 
@@ -222,14 +222,14 @@ The speed with which the rotation across the axis perpendicular to the hinge get
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **angular_limit/enable** = ``false`` :ref:`🔗<class_HingeJoint3D_property_angular_limit/enable>`
+:ref:`bool<class_bool>` **angular_limit/enable** = ``false`` :ref:`🔗 <class_HingeJoint3D_property_angular_limit/enable>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_flag**\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_flag**\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`\ ) |const|
 
-If ``true``, the hinges maximum and minimum rotation, defined by :ref:`angular_limit/lower<class_HingeJoint3D_property_angular_limit/lower>` and :ref:`angular_limit/upper<class_HingeJoint3D_property_angular_limit/upper>` has effects.
+Nếu ``true``, giới hạn xoay tối đa và tối thiểu của bản lề, được xác định bởi :ref:`angular_limit/lower <class_HingeJoint3D_property_angular_limit/lower>` và :ref:`angular_limit/upper <class_HingeJoint3D_property_angular_limit/upper>`, sẽ có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -239,14 +239,14 @@ If ``true``, the hinges maximum and minimum rotation, defined by :ref:`angular_l
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/lower** = ``-1.5707964`` :ref:`🔗<class_HingeJoint3D_property_angular_limit/lower>`
+:ref:`float<class_float>` **angular_limit/lower** = ``-1.5707964`` :ref:`🔗 <class_HingeJoint3D_property_angular_limit/lower>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-The minimum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint3D_property_angular_limit/enable>` is ``true``.
+Góc xoay tối thiểu. Chỉ hoạt động nếu :ref:`angular_limit/enable <class_HingeJoint3D_property_angular_limit/enable>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -256,14 +256,14 @@ The minimum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/relaxation** = ``1.0`` :ref:`🔗<class_HingeJoint3D_property_angular_limit/relaxation>`
+:ref:`float<class_float>` **angular_limit/relaxation** = ``1.0`` :ref:`🔗 <class_HingeJoint3D_property_angular_limit/relaxation>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-The lower this value, the more the rotation gets slowed down.
+Giá trị này càng thấp thì chuyển động xoay càng chậm.
 
 .. rst-class:: classref-item-separator
 
@@ -273,14 +273,14 @@ The lower this value, the more the rotation gets slowed down.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/softness** = ``0.9`` :ref:`🔗<class_HingeJoint3D_property_angular_limit/softness>`
+:ref:`float<class_float>` **angular_limit/softness** = ``0.9`` :ref:`🔗 <class_HingeJoint3D_property_angular_limit/softness>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-**Deprecated:** This property is never set by the engine and is kept for compatibility purposes.
+**Không còn được dùng:** Thuộc tính này không bao giờ được engine thiết lập và được giữ lại để đảm bảo khả năng tương thích.
 
 .. rst-class:: classref-item-separator
 
@@ -290,14 +290,14 @@ The lower this value, the more the rotation gets slowed down.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **angular_limit/upper** = ``1.5707964`` :ref:`🔗<class_HingeJoint3D_property_angular_limit/upper>`
+:ref:`float<class_float>` **angular_limit/upper** = ``1.5707964`` :ref:`🔗 <class_HingeJoint3D_property_angular_limit/upper>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-The maximum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint3D_property_angular_limit/enable>` is ``true``.
+Góc xoay tối đa. Chỉ hoạt động nếu :ref:`angular_limit/enable <class_HingeJoint3D_property_angular_limit/enable>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -307,14 +307,14 @@ The maximum rotation. Only active if :ref:`angular_limit/enable<class_HingeJoint
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **motor/enable** = ``false`` :ref:`🔗<class_HingeJoint3D_property_motor/enable>`
+:ref:`bool<class_bool>` **motor/enable** = ``false`` :ref:`🔗 <class_HingeJoint3D_property_motor/enable>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_flag**\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_flag**\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`\ ) |const|
 
-When activated, a motor turns the hinge.
+Khi được kích hoạt, một động cơ sẽ xoay bản lề.
 
 .. rst-class:: classref-item-separator
 
@@ -324,14 +324,14 @@ When activated, a motor turns the hinge.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **motor/max_impulse** = ``1.0`` :ref:`🔗<class_HingeJoint3D_property_motor/max_impulse>`
+:ref:`float<class_float>` **motor/max_impulse** = ``1.0`` :ref:`🔗 <class_HingeJoint3D_property_motor/max_impulse>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-Maximum acceleration for the motor.
+Gia tốc tối đa của động cơ.
 
 .. rst-class:: classref-item-separator
 
@@ -341,14 +341,14 @@ Maximum acceleration for the motor.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **motor/target_velocity** = ``1.0`` :ref:`🔗<class_HingeJoint3D_property_motor/target_velocity>`
+:ref:`float<class_float>` **motor/target_velocity** = ``1.0`` :ref:`🔗 <class_HingeJoint3D_property_motor/target_velocity>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-Target speed for the motor.
+Tốc độ mục tiêu của động cơ.
 
 .. rst-class:: classref-item-separator
 
@@ -358,14 +358,14 @@ Target speed for the motor.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **params/bias** = ``0.3`` :ref:`🔗<class_HingeJoint3D_property_params/bias>`
+:ref:`float<class_float>` **params/bias** = ``0.3`` :ref:`🔗 <class_HingeJoint3D_property_params/bias>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const|
 
-The speed with which the two bodies get pulled together when they move in different directions.
+Tốc độ kéo hai vật thể lại gần nhau khi chúng chuyển động theo các hướng khác nhau.
 
 .. rst-class:: classref-section-separator
 
@@ -373,8 +373,8 @@ The speed with which the two bodies get pulled together when they move in differ
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_HingeJoint3D_method_get_flag:
 
@@ -382,7 +382,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **get_flag**\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`\ ) |const| :ref:`🔗<class_HingeJoint3D_method_get_flag>`
 
-Returns the value of the specified flag.
+Trả về giá trị của flag được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -394,7 +394,7 @@ Returns the value of the specified flag.
 
 :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`\ ) |const| :ref:`🔗<class_HingeJoint3D_method_get_param>`
 
-Returns the value of the specified parameter.
+Trả về giá trị của tham số được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -406,7 +406,7 @@ Returns the value of the specified parameter.
 
 |void| **set_flag**\ (\ flag\: :ref:`Flag<enum_HingeJoint3D_Flag>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_HingeJoint3D_method_set_flag>`
 
-If ``true``, enables the specified flag.
+Nếu ``true``, bật flag được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -418,14 +418,14 @@ If ``true``, enables the specified flag.
 
 |void| **set_param**\ (\ param\: :ref:`Param<enum_HingeJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_HingeJoint3D_method_set_param>`
 
-Sets the value of the specified parameter.
+Đặt giá trị của tham số được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

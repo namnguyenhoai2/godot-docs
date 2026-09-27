@@ -10,45 +10,45 @@
 MenuBar
 =======
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A horizontal menu bar that creates a menu for each :ref:`PopupMenu<class_PopupMenu>` child.
+Một thanh menu ngang tạo một menu cho mỗi :ref:`PopupMenu<class_PopupMenu>` con.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A horizontal menu bar that creates a menu for each :ref:`PopupMenu<class_PopupMenu>` child. New items are created by adding :ref:`PopupMenu<class_PopupMenu>`\ s to this node. Item title is determined by :ref:`Window.title<class_Window_property_title>`, or node name if :ref:`Window.title<class_Window_property_title>` is empty. Item title can be overridden using :ref:`set_menu_title()<class_MenuBar_method_set_menu_title>`.
+Một thanh menu ngang tạo một menu cho mỗi :ref:`PopupMenu<class_PopupMenu>` con. Các mục mới được tạo bằng cách thêm :ref:`PopupMenu<class_PopupMenu>`\ s vào nút này. Tiêu đề mục được xác định bởi :ref:`Window.title<class_Window_property_title>`, hoặc bằng tên nút nếu :ref:`Window.title<class_Window_property_title>` trống. Có thể ghi đè tiêu đề mục bằng :ref:`set_menu_title()<class_MenuBar_method_set_menu_title>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                          | :ref:`flat<class_MenuBar_property_flat>`                             | ``false``                                                           |
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`         | focus_mode                                                           | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`) |
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`String<class_String>`                      | :ref:`language<class_MenuBar_property_language>`                     | ``""``                                                              |
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                          | :ref:`prefer_global_menu<class_MenuBar_property_prefer_global_menu>` | ``true``                                                            |
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`int<class_int>`                            | :ref:`start_index<class_MenuBar_property_start_index>`               | ``-1``                                                              |
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                          | :ref:`switch_on_hover<class_MenuBar_property_switch_on_hover>`       | ``true``                                                            |
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
-   | :ref:`TextDirection<enum_Control_TextDirection>` | :ref:`text_direction<class_MenuBar_property_text_direction>`         | ``0``                                                               |
-   +--------------------------------------------------+----------------------------------------------------------------------+---------------------------------------------------------------------+
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`flat<class_MenuBar_property_flat>`                             | ``false``                                                        |
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`         | focus_mode                                                           | ``3`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`) |
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`language<class_MenuBar_property_language>`                     | ``""``                                                           |
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`prefer_global_menu<class_MenuBar_property_prefer_global_menu>` | ``true``                                                         |
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`start_index<class_MenuBar_property_start_index>`               | ``-1``                                                           |
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`switch_on_hover<class_MenuBar_property_switch_on_hover>`       | ``true``                                                         |
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
+   | :ref:`TextDirection <enum_Control_TextDirection>` | :ref:`text_direction<class_MenuBar_property_text_direction>`         | ``0``                                                            |
+   +---------------------------------------------------+----------------------------------------------------------------------+------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -81,7 +81,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -137,8 +137,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MenuBar_property_flat:
 
@@ -151,7 +151,7 @@ Property Descriptions
 - |void| **set_flat**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flat**\ (\ )
 
-Flat **MenuBar** don't display item decoration.
+Flat **MenuBar** không hiển thị phần trang trí mục.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ Flat **MenuBar** don't display item decoration.
 - |void| **set_language**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_language**\ (\ )
 
-Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead.
+Mã ngôn ngữ được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -185,11 +185,11 @@ Language code used for line-breaking and text shaping algorithms. If left empty,
 - |void| **set_prefer_global_menu**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_prefer_global_menu**\ (\ )
 
-If ``true``, **MenuBar** will use system global menu when supported.
+Nếu ``true``, **MenuBar** sẽ sử dụng menu toàn cục của hệ thống khi được hỗ trợ.
 
-\ **Note:** If ``true`` and global menu is supported, this node is not displayed, has zero size, and all its child nodes except :ref:`PopupMenu<class_PopupMenu>`\ s are inaccessible.
+\ **Lưu ý:** Nếu ``true`` và menu toàn cục được hỗ trợ, node này sẽ không được hiển thị, có kích thước bằng 0 và tất cả node con của nó, ngoại trừ các :ref:`PopupMenu<class_PopupMenu>`\ s, đều không thể truy cập.
 
-\ **Note:** This property overrides the value of the :ref:`PopupMenu.prefer_native_menu<class_PopupMenu_property_prefer_native_menu>` property of the child nodes.
+\ **Lưu ý:** Thuộc tính này ghi đè giá trị của thuộc tính :ref:`PopupMenu.prefer_native_menu<class_PopupMenu_property_prefer_native_menu>` của các node con.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ If ``true``, **MenuBar** will use system global menu when supported.
 - |void| **set_start_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_start_index**\ (\ )
 
-Position order in the global menu to insert **MenuBar** items at. All menu items in the **MenuBar** are always inserted as a continuous range. Menus with lower :ref:`start_index<class_MenuBar_property_start_index>` are inserted first. Menus with :ref:`start_index<class_MenuBar_property_start_index>` equal to ``-1`` are inserted last.
+Thứ tự vị trí trong menu toàn cục để chèn các mục **MenuBar**. Tất cả mục menu trong **MenuBar** luôn được chèn thành một dải liên tục. Các menu có :ref:`start_index<class_MenuBar_property_start_index>` thấp hơn được chèn trước. Các menu có :ref:`start_index<class_MenuBar_property_start_index>` bằng ``-1`` được chèn sau cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -223,7 +223,7 @@ Position order in the global menu to insert **MenuBar** items at. All menu items
 - |void| **set_switch_on_hover**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_switch_on_hover**\ (\ )
 
-If ``true``, when the cursor hovers above menu item, it will close the current :ref:`PopupMenu<class_PopupMenu>` and open the other one.
+Nếu ``true``, khi con trỏ di chuột qua mục menu, nó sẽ đóng :ref:`PopupMenu<class_PopupMenu>` hiện tại và mở mục còn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ If ``true``, when the cursor hovers above menu item, it will close the current :
 - |void| **set_text_direction**\ (\ value\: :ref:`TextDirection<enum_Control_TextDirection>`\ )
 - :ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ )
 
-Base text writing direction.
+Hướng viết văn bản cơ sở.
 
 .. rst-class:: classref-section-separator
 
@@ -248,8 +248,8 @@ Base text writing direction.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MenuBar_method_get_menu_count:
 
@@ -257,7 +257,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_menu_count**\ (\ ) |const| :ref:`🔗<class_MenuBar_method_get_menu_count>`
 
-Returns number of menu items.
+Trả về số lượng mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Returns number of menu items.
 
 :ref:`PopupMenu<class_PopupMenu>` **get_menu_popup**\ (\ menu\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MenuBar_method_get_menu_popup>`
 
-Returns :ref:`PopupMenu<class_PopupMenu>` associated with menu item.
+Trả về :ref:`PopupMenu<class_PopupMenu>` được liên kết với mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +281,7 @@ Returns :ref:`PopupMenu<class_PopupMenu>` associated with menu item.
 
 :ref:`String<class_String>` **get_menu_title**\ (\ menu\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MenuBar_method_get_menu_title>`
 
-Returns menu item title.
+Trả về tiêu đề mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ Returns menu item title.
 
 :ref:`String<class_String>` **get_menu_tooltip**\ (\ menu\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MenuBar_method_get_menu_tooltip>`
 
-Returns menu item tooltip.
+Trả về chú giải công cụ của mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -305,7 +305,7 @@ Returns menu item tooltip.
 
 :ref:`bool<class_bool>` **is_menu_disabled**\ (\ menu\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MenuBar_method_is_menu_disabled>`
 
-Returns ``true`` if the menu item is disabled.
+Trả về ``true`` nếu mục menu bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ Returns ``true`` if the menu item is disabled.
 
 :ref:`bool<class_bool>` **is_menu_hidden**\ (\ menu\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MenuBar_method_is_menu_hidden>`
 
-Returns ``true`` if the menu item is hidden.
+Trả về ``true`` nếu mục menu bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ Returns ``true`` if the menu item is hidden.
 
 :ref:`bool<class_bool>` **is_native_menu**\ (\ ) |const| :ref:`🔗<class_MenuBar_method_is_native_menu>`
 
-Returns ``true`` if the current system's global menu is supported and used by this **MenuBar**.
+Trả về ``true`` nếu menu toàn cục của hệ thống hiện tại được hỗ trợ và được **MenuBar** này sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -341,7 +341,7 @@ Returns ``true`` if the current system's global menu is supported and used by th
 
 |void| **set_disable_shortcuts**\ (\ disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_MenuBar_method_set_disable_shortcuts>`
 
-If ``true``, shortcuts are disabled and cannot be used to trigger the button.
+Nếu ``true``, các phím tắt sẽ bị vô hiệu hóa và không thể được sử dụng để kích hoạt nút.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ If ``true``, shortcuts are disabled and cannot be used to trigger the button.
 
 |void| **set_menu_disabled**\ (\ menu\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_MenuBar_method_set_menu_disabled>`
 
-If ``true``, menu item is disabled.
+Nếu ``true``, mục menu bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -365,7 +365,7 @@ If ``true``, menu item is disabled.
 
 |void| **set_menu_hidden**\ (\ menu\: :ref:`int<class_int>`, hidden\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_MenuBar_method_set_menu_hidden>`
 
-If ``true``, menu item is hidden.
+Nếu ``true``, mục menu bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -377,7 +377,7 @@ If ``true``, menu item is hidden.
 
 |void| **set_menu_title**\ (\ menu\: :ref:`int<class_int>`, title\: :ref:`String<class_String>`\ ) :ref:`🔗<class_MenuBar_method_set_menu_title>`
 
-Sets menu item title.
+Đặt tiêu đề mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ Sets menu item title.
 
 |void| **set_menu_tooltip**\ (\ menu\: :ref:`int<class_int>`, tooltip\: :ref:`String<class_String>`\ ) :ref:`🔗<class_MenuBar_method_set_menu_tooltip>`
 
-Sets menu item tooltip.
+Đặt chú giải công cụ cho mục menu.
 
 .. rst-class:: classref-section-separator
 
@@ -397,8 +397,8 @@ Sets menu item tooltip.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính theme
+----------------------
 
 .. _class_MenuBar_theme_color_font_color:
 
@@ -406,7 +406,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **font_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_MenuBar_theme_color_font_color>`
 
-Default text :ref:`Color<class_Color>` of the menu item.
+Màu văn bản mặc định :ref:`Color<class_Color>` của mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -418,7 +418,7 @@ Default text :ref:`Color<class_Color>` of the menu item.
 
 :ref:`Color<class_Color>` **font_disabled_color** = ``Color(0.875, 0.875, 0.875, 0.5)`` :ref:`🔗<class_MenuBar_theme_color_font_disabled_color>`
 
-Text :ref:`Color<class_Color>` used when the menu item is disabled.
+Màu văn bản :ref:`Color<class_Color>` được sử dụng khi mục menu bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -430,7 +430,7 @@ Text :ref:`Color<class_Color>` used when the menu item is disabled.
 
 :ref:`Color<class_Color>` **font_focus_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_MenuBar_theme_color_font_focus_color>`
 
-Text :ref:`Color<class_Color>` used when the menu item is focused. Only replaces the normal text color of the menu item. Disabled, hovered, and pressed states take precedence over this color.
+Màu văn bản :ref:`Color<class_Color>` được sử dụng khi mục menu được focus. Chỉ thay thế màu văn bản thông thường của mục menu. Các trạng thái bị vô hiệu hóa, di chuột qua và nhấn được ưu tiên hơn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -442,7 +442,7 @@ Text :ref:`Color<class_Color>` used when the menu item is focused. Only replaces
 
 :ref:`Color<class_Color>` **font_hover_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_MenuBar_theme_color_font_hover_color>`
 
-Text :ref:`Color<class_Color>` used when the menu item is being hovered.
+Màu văn bản :ref:`Color<class_Color>` được sử dụng khi di chuột qua mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -454,7 +454,7 @@ Text :ref:`Color<class_Color>` used when the menu item is being hovered.
 
 :ref:`Color<class_Color>` **font_hover_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_MenuBar_theme_color_font_hover_pressed_color>`
 
-Text :ref:`Color<class_Color>` used when the menu item is being hovered and pressed.
+Màu văn bản :ref:`Color<class_Color>` được sử dụng khi vừa di chuột qua vừa nhấn mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -466,7 +466,7 @@ Text :ref:`Color<class_Color>` used when the menu item is being hovered and pres
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_MenuBar_theme_color_font_outline_color>`
 
-The tint of text outline of the menu item.
+Sắc độ của đường viền văn bản của mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -478,7 +478,7 @@ The tint of text outline of the menu item.
 
 :ref:`Color<class_Color>` **font_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_MenuBar_theme_color_font_pressed_color>`
 
-Text :ref:`Color<class_Color>` used when the menu item is being pressed.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi mục menu đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -490,7 +490,7 @@ Text :ref:`Color<class_Color>` used when the menu item is being pressed.
 
 :ref:`int<class_int>` **h_separation** = ``4`` :ref:`🔗<class_MenuBar_theme_constant_h_separation>`
 
-The horizontal space between menu items.
+Khoảng cách theo chiều ngang giữa các mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -502,9 +502,9 @@ The horizontal space between menu items.
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_MenuBar_theme_constant_outline_size>`
 
-The size of the text outline.
+Kích thước của đường viền văn bản.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_MenuBar_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng một font có :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` được bật, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của font đó phải được đặt ít nhất *gấp đôi* giá trị của :ref:`outline_size<class_MenuBar_theme_constant_outline_size>` để kết xuất đường viền hiển thị chính xác. Nếu không, đường viền có thể trông như bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -514,9 +514,9 @@ The size of the text outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_MenuBar_theme_font_font>`
+:ref:`Font<class_Font>` **phông chữ** :ref:`🔗 <class_MenuBar_theme_font_font>`
 
-:ref:`Font<class_Font>` of the menu item's text.
+:ref:`Font<class_Font>` của văn bản trong mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -526,9 +526,9 @@ The size of the text outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_MenuBar_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_MenuBar_theme_font_size_font_size>`
 
-Font size of the menu item's text.
+Kích thước phông chữ của văn bản trong mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -538,9 +538,9 @@ Font size of the menu item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **disabled** :ref:`🔗<class_MenuBar_theme_style_disabled>`
+:ref:`StyleBox<class_StyleBox>` **disabled** :ref:`🔗 <class_MenuBar_theme_style_disabled>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is disabled.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -550,9 +550,9 @@ Font size of the menu item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **disabled_mirrored** :ref:`🔗<class_MenuBar_theme_style_disabled_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **disabled_mirrored** :ref:`🔗 <class_MenuBar_theme_style_disabled_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is disabled (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu bị vô hiệu hóa (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -562,9 +562,9 @@ Font size of the menu item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover** :ref:`🔗<class_MenuBar_theme_style_hover>`
+:ref:`StyleBox<class_StyleBox>` **hover** :ref:`🔗 <class_MenuBar_theme_style_hover>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is being hovered.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu đang được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -574,9 +574,9 @@ Font size of the menu item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover_mirrored** :ref:`🔗<class_MenuBar_theme_style_hover_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **hover_mirrored** :ref:`🔗 <class_MenuBar_theme_style_hover_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is being hovered (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu đang được di chuột qua (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -586,9 +586,9 @@ Font size of the menu item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover_pressed** :ref:`🔗<class_MenuBar_theme_style_hover_pressed>`
+:ref:`StyleBox<class_StyleBox>` **hover_pressed** :ref:`🔗 <class_MenuBar_theme_style_hover_pressed>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is being pressed and hovered at the same time.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu đang được nhấn và di chuột qua cùng lúc.
 
 .. rst-class:: classref-item-separator
 
@@ -598,9 +598,9 @@ Font size of the menu item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **hover_pressed_mirrored** :ref:`🔗<class_MenuBar_theme_style_hover_pressed_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **hover_pressed_mirrored** :ref:`🔗 <class_MenuBar_theme_style_hover_pressed_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is being pressed and hovered at the same time (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu đang được nhấn và di chuột qua cùng lúc (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -610,9 +610,9 @@ Font size of the menu item's text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗<class_MenuBar_theme_style_normal>`
+:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗 <class_MenuBar_theme_style_normal>`
 
-Default :ref:`StyleBox<class_StyleBox>` for the menu item.
+Mặc định :ref:`StyleBox<class_StyleBox>` cho mục menu.
 
 .. rst-class:: classref-item-separator
 
@@ -622,9 +622,9 @@ Default :ref:`StyleBox<class_StyleBox>` for the menu item.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal_mirrored** :ref:`🔗<class_MenuBar_theme_style_normal_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **normal_mirrored** :ref:`🔗 <class_MenuBar_theme_style_normal_mirrored>`
 
-Default :ref:`StyleBox<class_StyleBox>` for the menu item (for right-to-left layouts).
+Mặc định :ref:`StyleBox<class_StyleBox>` cho mục menu (dành cho bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -634,9 +634,9 @@ Default :ref:`StyleBox<class_StyleBox>` for the menu item (for right-to-left lay
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **pressed** :ref:`🔗<class_MenuBar_theme_style_pressed>`
+:ref:`StyleBox<class_StyleBox>` **pressed** :ref:`🔗 <class_MenuBar_theme_style_pressed>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is being pressed.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -646,16 +646,16 @@ Default :ref:`StyleBox<class_StyleBox>` for the menu item (for right-to-left lay
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **pressed_mirrored** :ref:`🔗<class_MenuBar_theme_style_pressed_mirrored>`
+:ref:`StyleBox<class_StyleBox>` **pressed_mirrored** :ref:`🔗 <class_MenuBar_theme_style_pressed_mirrored>`
 
-:ref:`StyleBox<class_StyleBox>` used when the menu item is being pressed (for right-to-left layouts).
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi mục menu đang được nhấn (đối với bố cục từ phải sang trái).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

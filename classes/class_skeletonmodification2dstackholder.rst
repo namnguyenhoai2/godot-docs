@@ -10,25 +10,25 @@
 SkeletonModification2DStackHolder
 =================================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A modification that holds and executes a :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`.
+Một modification chứa và thực thi một :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`SkeletonModification2D<class_SkeletonModification2D>` holds a reference to a :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`, allowing you to use multiple modification stacks on a single :ref:`Skeleton2D<class_Skeleton2D>`.
+:ref:`SkeletonModification2D<class_SkeletonModification2D>` này chứa tham chiếu đến một :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`, cho phép bạn sử dụng nhiều modification stack trên một :ref:`Skeleton2D<class_Skeleton2D>` duy nhất.
 
-\ **Note:** The modifications in the held :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` will only be executed if their execution mode matches the execution mode of the SkeletonModification2DStackHolder.
+\ **Lưu ý:** Các modification trong :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` được chứa sẽ chỉ được thực thi nếu execution mode của chúng khớp với execution mode của SkeletonModification2DStackHolder.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModification2DStackHolder_method_get_held_modification_stack:
 
@@ -54,7 +54,7 @@ Method Descriptions
 
 :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` **get_held_modification_stack**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DStackHolder_method_get_held_modification_stack>`
 
-Returns the :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` that this modification is holding.
+Trả về :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` mà modification này đang chứa.
 
 .. rst-class:: classref-item-separator
 
@@ -66,14 +66,14 @@ Returns the :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>
 
 |void| **set_held_modification_stack**\ (\ held_modification_stack\: :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>`\ ) :ref:`🔗<class_SkeletonModification2DStackHolder_method_set_held_modification_stack>`
 
-Sets the :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` that this modification is holding. This modification stack will then be executed when this modification is executed.
+Thiết lập :ref:`SkeletonModificationStack2D<class_SkeletonModificationStack2D>` mà modification này đang chứa. Modification stack này sau đó sẽ được thực thi khi modification này được thực thi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

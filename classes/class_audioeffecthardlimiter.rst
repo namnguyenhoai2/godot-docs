@@ -10,33 +10,33 @@
 AudioEffectHardLimiter
 ======================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a limiter audio effect to an audio bus.
+Thêm hiệu ứng limiter vào một audio bus.
 
-Prevents audio signals from exceeding a specified volume level.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "limiter" disallows audio signals from exceeding a given volume threshold level in dB. Hard limiters predict volume peaks, and will smoothly apply gain reduction when a peak crosses the ceiling threshold level to prevent clipping. It preserves the waveform and prevents it from crossing the ceiling threshold level. Adding one in the Master bus is recommended as a safety measure to prevent sudden volume peaks from occurring, and to prevent distortion caused by clipping, when the volume exceeds 0 dB.
-
-If clipping is desired, consider :ref:`AudioEffectDistortion.MODE_CLIP<class_AudioEffectDistortion_constant_MODE_CLIP>`.
+Ngăn các tín hiệu âm thanh vượt quá mức âm lượng được chỉ định.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+Một "limiter" ngăn các tín hiệu âm thanh vượt quá ngưỡng âm lượng đã cho tính bằng dB. Hard limiter dự đoán các đỉnh âm lượng và sẽ áp dụng giảm gain một cách mượt mà khi một đỉnh vượt qua mức trần để ngăn clipping. Nó bảo toàn dạng sóng và ngăn dạng sóng vượt qua mức trần. Bạn nên thêm một limiter vào Master bus như một biện pháp an toàn để ngăn các đỉnh âm lượng đột ngột xảy ra, đồng thời ngăn méo âm do clipping khi âm lượng vượt quá 0 dB.
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+Nếu muốn clipping, hãy cân nhắc :ref:`AudioEffectDistortion.MODE_CLIP<class_AudioEffectDistortion_constant_MODE_CLIP>`.
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Các bus âm thanh <../tutorials/audio/audio_buses>`
+
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectHardLimiter_property_ceiling_db:
 
@@ -70,9 +70,9 @@ Property Descriptions
 - |void| **set_ceiling_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_ceiling_db**\ (\ )
 
-The waveform's maximum allowed value, in dB. This value can range from -24 to 0.
+Giá trị tối đa được phép của waveform, tính bằng dB. Giá trị này có thể nằm trong khoảng từ -24 đến 0.
 
-The default value of -0.3 prevents potential inter-sample peaks (ISP) from crossing over 0 dB, which can cause slight distortion on some older hardware.
+Giá trị mặc định -0.3 ngăn các đỉnh giữa các mẫu (ISP) vượt quá 0 dB, điều này có thể gây méo nhẹ trên một số phần cứng cũ.
 
 .. rst-class:: classref-item-separator
 
@@ -89,7 +89,7 @@ The default value of -0.3 prevents potential inter-sample peaks (ISP) from cross
 - |void| **set_pre_gain_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pre_gain_db**\ (\ )
 
-Gain before limiting, in dB. Value can range from -24 to 24.
+Gain trước khi giới hạn, tính bằng dB. Giá trị có thể nằm trong khoảng từ -24 đến 24.
 
 .. rst-class:: classref-item-separator
 
@@ -106,14 +106,14 @@ Gain before limiting, in dB. Value can range from -24 to 24.
 - |void| **set_release**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_release**\ (\ )
 
-Time it takes in seconds for the gain reduction to fully release. Value can range from 0.01 to 3.
+Thời gian tính bằng giây để mức giảm gain được nhả hoàn toàn. Giá trị có thể nằm trong khoảng từ 0.01 đến 3.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào ngoài các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

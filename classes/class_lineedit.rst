@@ -13,173 +13,173 @@
 LineEdit
 ========
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-An input field for single-line text.
+Một trường nhập liệu dành cho văn bản một dòng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**LineEdit** provides an input field for editing a single line of text.
+**LineEdit** cung cấp một trường nhập liệu để chỉnh sửa một dòng văn bản.
 
-- When the **LineEdit** control is focused using the keyboard arrow keys, it will only gain focus and not enter edit mode.
+- Khi điều khiển **LineEdit** được lấy tiêu điểm bằng các phím mũi tên trên bàn phím, điều khiển chỉ nhận tiêu điểm mà không chuyển sang chế độ chỉnh sửa.
 
-- To enter edit mode, click on the control with the mouse, see also :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`.
+- Để vào chế độ chỉnh sửa, hãy nhấp vào điều khiển bằng chuột; xem thêm :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`.
 
-- To exit edit mode, press ``ui_text_submit`` or ``ui_cancel`` (by default :kbd:`Escape`) actions.
+- Để thoát khỏi chế độ chỉnh sửa, nhấn các thao tác ``ui_text_submit`` hoặc ``ui_cancel`` (theo mặc định là :kbd:`Escape`).
 
-- Check :ref:`edit()<class_LineEdit_method_edit>`, :ref:`unedit()<class_LineEdit_method_unedit>`, :ref:`is_editing()<class_LineEdit_method_is_editing>`, and :ref:`editing_toggled<class_LineEdit_signal_editing_toggled>` for more information.
+- Xem :ref:`edit()<class_LineEdit_method_edit>`, :ref:`unedit()<class_LineEdit_method_unedit>`, :ref:`is_editing()<class_LineEdit_method_is_editing>` và :ref:`editing_toggled<class_LineEdit_signal_editing_toggled>` để biết thêm thông tin.
 
-While entering text, it is possible to insert special characters using Unicode, OEM or Windows alt codes:
+Trong khi nhập văn bản, bạn có thể chèn các ký tự đặc biệt bằng mã alt Unicode, OEM hoặc Windows:
 
-- To enter Unicode codepoints, hold :kbd:`Alt` and type the codepoint on the numpad. For example, to enter the character ``á`` (U+00E1), hold :kbd:`Alt` and type :kbd:`+E1` on the numpad (the leading zeroes can be omitted).
+- Để nhập codepoint Unicode, giữ :kbd:`Alt` và nhập codepoint trên numpad. Ví dụ, để nhập ký tự ``á`` (U+00E1), giữ :kbd:`Alt` và nhập :kbd:`+E1` trên numpad (có thể bỏ các số 0 ở đầu).
 
-- To enter OEM codepoints, hold :kbd:`Alt` and type the code on the numpad. For example, to enter the character ``á`` (OEM 160), hold :kbd:`Alt` and type ``160`` on the numpad.
+- Để nhập codepoint OEM, giữ :kbd:`Alt` và nhập mã trên numpad. Ví dụ, để nhập ký tự ``á`` (OEM 160), giữ :kbd:`Alt` và nhập ``160`` trên numpad.
 
-- To enter Windows codepoints, hold :kbd:`Alt` and type the code on the numpad. For example, to enter the character ``á`` (Windows 0225), hold :kbd:`Alt` and type :kbd:`0`, :kbd:`2`, :kbd:`2`, :kbd:`5` on the numpad. The leading zero here must **not** be omitted, as this is how Windows codepoints are distinguished from OEM codepoints.
+- Để nhập codepoint Windows, giữ :kbd:`Alt` và nhập mã trên numpad. Ví dụ, để nhập ký tự ``á`` (Windows 0225), giữ :kbd:`Alt` và nhập :kbd:`0`, :kbd:`2`, :kbd:`2`, :kbd:`5` trên numpad. Số 0 ở đầu ở đây phải **có** được giữ lại, vì đây là cách phân biệt codepoint Windows với codepoint OEM.
 
-\ **Important:**\ 
+\ **Quan trọng:**\
 
-- Focusing the **LineEdit** with ``ui_focus_next`` (by default :kbd:`Tab`) or ``ui_focus_prev`` (by default :kbd:`Shift + Tab`) or :ref:`Control.grab_focus()<class_Control_method_grab_focus>` still enters edit mode (for compatibility).
+- Đặt tiêu điểm vào **LineEdit** bằng ``ui_focus_next`` (theo mặc định là :kbd:`Tab`) hoặc ``ui_focus_prev`` (theo mặc định là :kbd:`Shift + Tab`) hoặc :ref:`Control.grab_focus()<class_Control_method_grab_focus>` vẫn chuyển sang chế độ chỉnh sửa (để tương thích).
 
-\ **LineEdit** features many built-in shortcuts that are always available (:kbd:`Ctrl` here maps to :kbd:`Cmd` on macOS):
+\ **LineEdit** có nhiều phím tắt được tích hợp sẵn và luôn khả dụng (:kbd:`Ctrl` ở đây tương ứng với :kbd:`Cmd` trên macOS):
 
-- :kbd:`Ctrl + C`: Copy
+- :kbd:`Ctrl + C`: Sao chép
 
-- :kbd:`Ctrl + X`: Cut
+- :kbd:`Ctrl + X`: Cắt
 
-- :kbd:`Ctrl + V` or :kbd:`Ctrl + Y`: Paste/"yank"
+- :kbd:`Ctrl + V` hoặc :kbd:`Ctrl + Y`: Dán/"yank"
 
-- :kbd:`Ctrl + Z`: Undo
+- :kbd:`Ctrl + Z`: Hoàn tác
 
-- :kbd:`Ctrl + ~`: Swap input direction.
+- :kbd:`Ctrl + ~`: Chuyển đổi hướng nhập.
 
-- :kbd:`Ctrl + Shift + Z`: Redo
+- :kbd:`Ctrl + Shift + Z`: Làm lại
 
-- :kbd:`Ctrl + U`: Delete text from the caret position to the beginning of the line
+- :kbd:`Ctrl + U`: Xóa văn bản từ vị trí con trỏ đến đầu dòng
 
-- :kbd:`Ctrl + K`: Delete text from the caret position to the end of the line
+- :kbd:`Ctrl + K`: Xóa văn bản từ vị trí con trỏ đến cuối dòng
 
-- :kbd:`Ctrl + A`: Select all text
+- :kbd:`Ctrl + A`: Chọn toàn bộ văn bản
 
-- :kbd:`Up Arrow`/:kbd:`Down Arrow`: Move the caret to the beginning/end of the line
+- :kbd:`Up Arrow`/:kbd:`Down Arrow`: Di chuyển con trỏ đến đầu/cuối dòng
 
-On macOS, some extra keyboard shortcuts are available:
+Trên macOS, có một số phím tắt bổ sung:
 
-- :kbd:`Cmd + F`: Same as :kbd:`Right Arrow`, move the caret one character right
+- :kbd:`Cmd + F`: Giống như :kbd:`Right Arrow`, di chuyển con trỏ sang phải một ký tự
 
-- :kbd:`Cmd + B`: Same as :kbd:`Left Arrow`, move the caret one character left
+- :kbd:`Cmd + B`: Giống như :kbd:`Left Arrow`, di chuyển con trỏ sang trái một ký tự
 
-- :kbd:`Cmd + P`: Same as :kbd:`Up Arrow`, move the caret to the previous line
+- :kbd:`Cmd + P`: Giống như :kbd:`Up Arrow`, di chuyển con trỏ đến dòng trước
 
-- :kbd:`Cmd + N`: Same as :kbd:`Down Arrow`, move the caret to the next line
+- :kbd:`Cmd + N`: Giống như :kbd:`Down Arrow`, di chuyển con trỏ đến dòng tiếp theo
 
-- :kbd:`Cmd + D`: Same as :kbd:`Delete`, delete the character on the right side of caret
+- :kbd:`Cmd + D`: Giống như :kbd:`Delete`, xóa ký tự ở bên phải con trỏ
 
-- :kbd:`Cmd + H`: Same as :kbd:`Backspace`, delete the character on the left side of the caret
+- :kbd:`Cmd + H`: Giống như :kbd:`Backspace`, xóa ký tự ở bên trái con trỏ
 
-- :kbd:`Cmd + A`: Same as :kbd:`Home`, move the caret to the beginning of the line
+- :kbd:`Cmd + A`: Giống như :kbd:`Home`, di chuyển con trỏ đến đầu dòng
 
-- :kbd:`Cmd + E`: Same as :kbd:`End`, move the caret to the end of the line
+- :kbd:`Cmd + E`: Giống như :kbd:`End`, di chuyển con trỏ đến cuối dòng
 
-- :kbd:`Cmd + Left Arrow`: Same as :kbd:`Home`, move the caret to the beginning of the line
+- :kbd:`Cmd + Left Arrow`: Giống như :kbd:`Home`, di chuyển con trỏ đến đầu dòng
 
-- :kbd:`Cmd + Right Arrow`: Same as :kbd:`End`, move the caret to the end of the line
+- :kbd:`Cmd + Right Arrow`: Giống như :kbd:`End`, di chuyển con trỏ đến cuối dòng
 
-\ **Note:** Caret movement shortcuts listed above are not affected by :ref:`shortcut_keys_enabled<class_LineEdit_property_shortcut_keys_enabled>`.
+\ **Lưu ý:** Các phím tắt di chuyển con trỏ được liệt kê ở trên không bị ảnh hưởng bởi :ref:`shortcut_keys_enabled<class_LineEdit_property_shortcut_keys_enabled>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` | :ref:`alignment<class_LineEdit_property_alignment>`                                                                         | ``0``                                                                               |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`backspace_deletes_composite_character_enabled<class_LineEdit_property_backspace_deletes_composite_character_enabled>` | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`caret_blink<class_LineEdit_property_caret_blink>`                                                                     | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`caret_blink_interval<class_LineEdit_property_caret_blink_interval>`                                                   | ``0.65``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`caret_column<class_LineEdit_property_caret_column>`                                                                   | ``0``                                                                               |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`caret_force_displayed<class_LineEdit_property_caret_force_displayed>`                                                 | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`caret_mid_grapheme<class_LineEdit_property_caret_mid_grapheme>`                                                       | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`clear_button_enabled<class_LineEdit_property_clear_button_enabled>`                                                   | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`context_menu_enabled<class_LineEdit_property_context_menu_enabled>`                                                   | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`deselect_on_focus_loss_enabled<class_LineEdit_property_deselect_on_focus_loss_enabled>`                               | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`drag_and_drop_selection_enabled<class_LineEdit_property_drag_and_drop_selection_enabled>`                             | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`draw_control_chars<class_LineEdit_property_draw_control_chars>`                                                       | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`editable<class_LineEdit_property_editable>`                                                                           | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`emoji_menu_enabled<class_LineEdit_property_emoji_menu_enabled>`                                                       | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`expand_to_text_length<class_LineEdit_property_expand_to_text_length>`                                                 | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`flat<class_LineEdit_property_flat>`                                                                                   | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                          | focus_mode                                                                                                                  | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)                 |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`ExpandMode<enum_LineEdit_ExpandMode>`                       | :ref:`icon_expand_mode<class_LineEdit_property_icon_expand_mode>`                                                           | ``0``                                                                               |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`                                     | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`language<class_LineEdit_property_language>`                                                                           | ``""``                                                                              |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`max_length<class_LineEdit_property_max_length>`                                                                       | ``0``                                                                               |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`middle_mouse_paste_enabled<class_LineEdit_property_middle_mouse_paste_enabled>`                                       | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`CursorShape<enum_Control_CursorShape>`                      | mouse_default_cursor_shape                                                                                                  | ``1`` (overrides :ref:`Control<class_Control_property_mouse_default_cursor_shape>`) |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`placeholder_text<class_LineEdit_property_placeholder_text>`                                                           | ``""``                                                                              |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`Texture2D<class_Texture2D>`                                 | :ref:`right_icon<class_LineEdit_property_right_icon>`                                                                       |                                                                                     |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`right_icon_scale<class_LineEdit_property_right_icon_scale>`                                                           | ``1.0``                                                                             |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`secret<class_LineEdit_property_secret>`                                                                               | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`secret_character<class_LineEdit_property_secret_character>`                                                           | ``"•"``                                                                             |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`select_all_on_focus<class_LineEdit_property_select_all_on_focus>`                                                     | ``false``                                                                           |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`selecting_enabled<class_LineEdit_property_selecting_enabled>`                                                         | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`shortcut_keys_enabled<class_LineEdit_property_shortcut_keys_enabled>`                                                 | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` | :ref:`structured_text_bidi_override<class_LineEdit_property_structured_text_bidi_override>`                                 | ``0``                                                                               |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                                         | :ref:`structured_text_bidi_override_options<class_LineEdit_property_structured_text_bidi_override_options>`                 | ``[]``                                                                              |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`text<class_LineEdit_property_text>`                                                                                   | ``""``                                                                              |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`TextDirection<enum_Control_TextDirection>`                  | :ref:`text_direction<class_LineEdit_property_text_direction>`                                                               | ``0``                                                                               |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`virtual_keyboard_enabled<class_LineEdit_property_virtual_keyboard_enabled>`                                           | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`virtual_keyboard_show_on_focus<class_LineEdit_property_virtual_keyboard_show_on_focus>`                               | ``true``                                                                            |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>`     | :ref:`virtual_keyboard_type<class_LineEdit_property_virtual_keyboard_type>`                                                 | ``0``                                                                               |
-   +-------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` | :ref:`alignment<class_LineEdit_property_alignment>`                                                                         | ``0``                                                                            |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`backspace_deletes_composite_character_enabled<class_LineEdit_property_backspace_deletes_composite_character_enabled>` | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`caret_blink<class_LineEdit_property_caret_blink>`                                                                     | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                          | :ref:`caret_blink_interval<class_LineEdit_property_caret_blink_interval>`                                                   | ``0.65``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`caret_column<class_LineEdit_property_caret_column>`                                                                   | ``0``                                                                            |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`caret_force_displayed<class_LineEdit_property_caret_force_displayed>`                                                 | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`caret_mid_grapheme<class_LineEdit_property_caret_mid_grapheme>`                                                       | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`clear_button_enabled<class_LineEdit_property_clear_button_enabled>`                                                   | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`context_menu_enabled<class_LineEdit_property_context_menu_enabled>`                                                   | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`deselect_on_focus_loss_enabled<class_LineEdit_property_deselect_on_focus_loss_enabled>`                               | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`drag_and_drop_selection_enabled<class_LineEdit_property_drag_and_drop_selection_enabled>`                             | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`draw_control_chars<class_LineEdit_property_draw_control_chars>`                                                       | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`editable<class_LineEdit_property_editable>`                                                                           | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`emoji_menu_enabled<class_LineEdit_property_emoji_menu_enabled>`                                                       | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`expand_to_text_length<class_LineEdit_property_expand_to_text_length>`                                                 | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`flat<class_LineEdit_property_flat>`                                                                                   | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`                          | focus_mode                                                                                                                  | ``2`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)                 |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`ExpandMode <enum_LineEdit_ExpandMode>`                       | :ref:`icon_expand_mode<class_LineEdit_property_icon_expand_mode>`                                                           | ``0``                                                                            |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`                                     | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`language<class_LineEdit_property_language>`                                                                           | ``""``                                                                           |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`max_length<class_LineEdit_property_max_length>`                                                                       | ``0``                                                                            |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`middle_mouse_paste_enabled<class_LineEdit_property_middle_mouse_paste_enabled>`                                       | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`CursorShape <enum_Control_CursorShape>`                      | mouse_default_cursor_shape                                                                                                  | ``1`` (ghi đè :ref:`Control<class_Control_property_mouse_default_cursor_shape>`) |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`placeholder_text<class_LineEdit_property_placeholder_text>`                                                           | ``""``                                                                           |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`Texture2D<class_Texture2D>`                                  | :ref:`right_icon<class_LineEdit_property_right_icon>`                                                                       |                                                                                  |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                          | :ref:`right_icon_scale<class_LineEdit_property_right_icon_scale>`                                                           | ``1.0``                                                                          |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`secret<class_LineEdit_property_secret>`                                                                               | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`secret_character<class_LineEdit_property_secret_character>`                                                           | ``"•"``                                                                          |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`select_all_on_focus<class_LineEdit_property_select_all_on_focus>`                                                     | ``false``                                                                        |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`selecting_enabled<class_LineEdit_property_selecting_enabled>`                                                         | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`shortcut_keys_enabled<class_LineEdit_property_shortcut_keys_enabled>`                                                 | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`StructuredTextParser <enum_TextServer_StructuredTextParser>` | :ref:`structured_text_bidi_override<class_LineEdit_property_structured_text_bidi_override>`                                 | ``0``                                                                            |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                          | :ref:`structured_text_bidi_override_options<class_LineEdit_property_structured_text_bidi_override_options>`                 | ``[]``                                                                           |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`text<class_LineEdit_property_text>`                                                                                   | ``""``                                                                           |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`TextDirection <enum_Control_TextDirection>`                  | :ref:`text_direction<class_LineEdit_property_text_direction>`                                                               | ``0``                                                                            |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`virtual_keyboard_enabled<class_LineEdit_property_virtual_keyboard_enabled>`                                           | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`virtual_keyboard_show_on_focus<class_LineEdit_property_virtual_keyboard_show_on_focus>`                               | ``true``                                                                         |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`VirtualKeyboardType <enum_LineEdit_VirtualKeyboardType>`     | :ref:`virtual_keyboard_type<class_LineEdit_property_virtual_keyboard_type>`                                                 | ``0``                                                                            |
+   +--------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -238,7 +238,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -288,8 +288,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_LineEdit_signal_editing_toggled:
 
@@ -297,7 +297,7 @@ Signals
 
 **editing_toggled**\ (\ toggled_on\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_LineEdit_signal_editing_toggled>`
 
-Emitted when the **LineEdit** switches in or out of edit mode.
+Được phát khi **LineEdit** chuyển vào hoặc ra khỏi chế độ chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ Emitted when the **LineEdit** switches in or out of edit mode.
 
 **text_change_rejected**\ (\ rejected_substring\: :ref:`String<class_String>`\ ) :ref:`🔗<class_LineEdit_signal_text_change_rejected>`
 
-Emitted when appending text that overflows the :ref:`max_length<class_LineEdit_property_max_length>`. The appended text is truncated to fit :ref:`max_length<class_LineEdit_property_max_length>`, and the part that couldn't fit is passed as the ``rejected_substring`` argument.
+Được phát khi nối thêm văn bản vượt quá :ref:`max_length<class_LineEdit_property_max_length>`. Văn bản được nối thêm sẽ bị cắt ngắn để vừa với :ref:`max_length<class_LineEdit_property_max_length>`, và phần không thể vừa được truyền dưới dạng đối số ``rejected_substring``.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ Emitted when appending text that overflows the :ref:`max_length<class_LineEdit_p
 
 **text_changed**\ (\ new_text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_LineEdit_signal_text_changed>`
 
-Emitted when the text changes.
+Được phát khi văn bản thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -333,7 +333,7 @@ Emitted when the text changes.
 
 **text_submitted**\ (\ new_text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_LineEdit_signal_text_submitted>`
 
-Emitted when the user presses the ``ui_text_submit`` action (by default: :kbd:`Enter` or :kbd:`Kp Enter`) while the **LineEdit** has focus.
+Được phát ra khi người dùng nhấn hành động ``ui_text_submit`` (theo mặc định: :kbd:`Enter` hoặc :kbd:`Kp Enter`) trong khi **LineEdit** đang được focus.
 
 .. rst-class:: classref-section-separator
 
@@ -341,14 +341,14 @@ Emitted when the user presses the ``ui_text_submit`` action (by default: :kbd:`E
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_LineEdit_MenuItems:
 
 .. rst-class:: classref-enumeration
 
-enum **MenuItems**: :ref:`🔗<enum_LineEdit_MenuItems>`
+enum **MenuItems**: :ref:`🔗 <enum_LineEdit_MenuItems>`
 
 .. _class_LineEdit_constant_MENU_CUT:
 
@@ -356,7 +356,7 @@ enum **MenuItems**: :ref:`🔗<enum_LineEdit_MenuItems>`
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_CUT** = ``0``
 
-Cuts (copies and clears) the selected text.
+Cắt (sao chép và xóa) văn bản đã chọn.
 
 .. _class_LineEdit_constant_MENU_COPY:
 
@@ -364,7 +364,7 @@ Cuts (copies and clears) the selected text.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_COPY** = ``1``
 
-Copies the selected text.
+Sao chép văn bản đã chọn.
 
 .. _class_LineEdit_constant_MENU_PASTE:
 
@@ -372,9 +372,9 @@ Copies the selected text.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_PASTE** = ``2``
 
-Pastes the clipboard text over the selected text (or at the caret's position).
+Dán văn bản trong clipboard lên văn bản đã chọn (hoặc tại vị trí của con trỏ).
 
-Non-printable escape characters are automatically stripped from the OS clipboard via :ref:`String.strip_escapes()<class_String_method_strip_escapes>`.
+Các ký tự escape không in được sẽ tự động bị loại bỏ khỏi clipboard của hệ điều hành thông qua :ref:`String.strip_escapes()<class_String_method_strip_escapes>`.
 
 .. _class_LineEdit_constant_MENU_CLEAR:
 
@@ -382,7 +382,7 @@ Non-printable escape characters are automatically stripped from the OS clipboard
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_CLEAR** = ``3``
 
-Erases the whole **LineEdit** text.
+Xóa toàn bộ văn bản **LineEdit**.
 
 .. _class_LineEdit_constant_MENU_SELECT_ALL:
 
@@ -390,7 +390,7 @@ Erases the whole **LineEdit** text.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_SELECT_ALL** = ``4``
 
-Selects the whole **LineEdit** text.
+Chọn toàn bộ văn bản **LineEdit**.
 
 .. _class_LineEdit_constant_MENU_UNDO:
 
@@ -398,7 +398,7 @@ Selects the whole **LineEdit** text.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_UNDO** = ``5``
 
-Undoes the previous action.
+Hoàn tác hành động trước đó.
 
 .. _class_LineEdit_constant_MENU_REDO:
 
@@ -406,7 +406,7 @@ Undoes the previous action.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_REDO** = ``6``
 
-Reverse the last undo action.
+Đảo ngược hành động hoàn tác gần nhất.
 
 .. _class_LineEdit_constant_MENU_SUBMENU_TEXT_DIR:
 
@@ -414,7 +414,7 @@ Reverse the last undo action.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_SUBMENU_TEXT_DIR** = ``7``
 
-ID of "Text Writing Direction" submenu.
+ID của menu con "Text Writing Direction".
 
 .. _class_LineEdit_constant_MENU_DIR_INHERITED:
 
@@ -422,7 +422,7 @@ ID of "Text Writing Direction" submenu.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_DIR_INHERITED** = ``8``
 
-Sets text direction to inherited.
+Đặt hướng văn bản thành kế thừa.
 
 .. _class_LineEdit_constant_MENU_DIR_AUTO:
 
@@ -430,7 +430,7 @@ Sets text direction to inherited.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_DIR_AUTO** = ``9``
 
-Sets text direction to automatic.
+Đặt hướng văn bản thành tự động.
 
 .. _class_LineEdit_constant_MENU_DIR_LTR:
 
@@ -438,7 +438,7 @@ Sets text direction to automatic.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_DIR_LTR** = ``10``
 
-Sets text direction to left-to-right.
+Đặt hướng văn bản từ trái sang phải.
 
 .. _class_LineEdit_constant_MENU_DIR_RTL:
 
@@ -446,7 +446,7 @@ Sets text direction to left-to-right.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_DIR_RTL** = ``11``
 
-Sets text direction to right-to-left.
+Đặt hướng văn bản từ phải sang trái.
 
 .. _class_LineEdit_constant_MENU_DISPLAY_UCC:
 
@@ -454,7 +454,7 @@ Sets text direction to right-to-left.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_DISPLAY_UCC** = ``12``
 
-Toggles control character display.
+Bật/tắt hiển thị các ký tự điều khiển.
 
 .. _class_LineEdit_constant_MENU_SUBMENU_INSERT_UCC:
 
@@ -462,7 +462,7 @@ Toggles control character display.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_SUBMENU_INSERT_UCC** = ``13``
 
-ID of "Insert Control Character" submenu.
+ID của menu con "Insert Control Character".
 
 .. _class_LineEdit_constant_MENU_INSERT_LRM:
 
@@ -470,7 +470,7 @@ ID of "Insert Control Character" submenu.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_LRM** = ``14``
 
-Inserts left-to-right mark (LRM) character.
+Chèn ký tự dấu hướng từ trái sang phải (LRM).
 
 .. _class_LineEdit_constant_MENU_INSERT_RLM:
 
@@ -478,7 +478,7 @@ Inserts left-to-right mark (LRM) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_RLM** = ``15``
 
-Inserts right-to-left mark (RLM) character.
+Chèn ký tự dấu hướng từ phải sang trái (RLM).
 
 .. _class_LineEdit_constant_MENU_INSERT_LRE:
 
@@ -486,7 +486,7 @@ Inserts right-to-left mark (RLM) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_LRE** = ``16``
 
-Inserts start of left-to-right embedding (LRE) character.
+Chèn ký tự bắt đầu nhúng từ trái sang phải (LRE).
 
 .. _class_LineEdit_constant_MENU_INSERT_RLE:
 
@@ -494,7 +494,7 @@ Inserts start of left-to-right embedding (LRE) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_RLE** = ``17``
 
-Inserts start of right-to-left embedding (RLE) character.
+Chèn ký tự bắt đầu nhúng từ phải sang trái (RLE).
 
 .. _class_LineEdit_constant_MENU_INSERT_LRO:
 
@@ -502,7 +502,7 @@ Inserts start of right-to-left embedding (RLE) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_LRO** = ``18``
 
-Inserts start of left-to-right override (LRO) character.
+Chèn ký tự bắt đầu ghi đè từ trái sang phải (LRO).
 
 .. _class_LineEdit_constant_MENU_INSERT_RLO:
 
@@ -510,7 +510,7 @@ Inserts start of left-to-right override (LRO) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_RLO** = ``19``
 
-Inserts start of right-to-left override (RLO) character.
+Chèn ký tự bắt đầu ghi đè từ phải sang trái (RLO).
 
 .. _class_LineEdit_constant_MENU_INSERT_PDF:
 
@@ -518,7 +518,7 @@ Inserts start of right-to-left override (RLO) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_PDF** = ``20``
 
-Inserts pop direction formatting (PDF) character.
+Chèn ký tự loại bỏ định dạng hướng (PDF).
 
 .. _class_LineEdit_constant_MENU_INSERT_ALM:
 
@@ -526,7 +526,7 @@ Inserts pop direction formatting (PDF) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_ALM** = ``21``
 
-Inserts Arabic letter mark (ALM) character.
+Chèn ký tự dấu chữ Ả Rập (ALM).
 
 .. _class_LineEdit_constant_MENU_INSERT_LRI:
 
@@ -534,7 +534,7 @@ Inserts Arabic letter mark (ALM) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_LRI** = ``22``
 
-Inserts left-to-right isolate (LRI) character.
+Chèn ký tự cô lập từ trái sang phải (LRI).
 
 .. _class_LineEdit_constant_MENU_INSERT_RLI:
 
@@ -542,7 +542,7 @@ Inserts left-to-right isolate (LRI) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_RLI** = ``23``
 
-Inserts right-to-left isolate (RLI) character.
+Chèn ký tự cô lập từ phải sang trái (RLI).
 
 .. _class_LineEdit_constant_MENU_INSERT_FSI:
 
@@ -550,7 +550,7 @@ Inserts right-to-left isolate (RLI) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_FSI** = ``24``
 
-Inserts first strong isolate (FSI) character.
+Chèn ký tự isolate mạnh đầu tiên (FSI).
 
 .. _class_LineEdit_constant_MENU_INSERT_PDI:
 
@@ -558,7 +558,7 @@ Inserts first strong isolate (FSI) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_PDI** = ``25``
 
-Inserts pop direction isolate (PDI) character.
+Chèn ký tự pop directional isolate (PDI).
 
 .. _class_LineEdit_constant_MENU_INSERT_ZWJ:
 
@@ -566,7 +566,7 @@ Inserts pop direction isolate (PDI) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_ZWJ** = ``26``
 
-Inserts zero width joiner (ZWJ) character.
+Chèn ký tự zero width joiner (ZWJ).
 
 .. _class_LineEdit_constant_MENU_INSERT_ZWNJ:
 
@@ -574,7 +574,7 @@ Inserts zero width joiner (ZWJ) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_ZWNJ** = ``27``
 
-Inserts zero width non-joiner (ZWNJ) character.
+Chèn ký tự zero width non-joiner (ZWNJ).
 
 .. _class_LineEdit_constant_MENU_INSERT_WJ:
 
@@ -582,7 +582,7 @@ Inserts zero width non-joiner (ZWNJ) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_WJ** = ``28``
 
-Inserts word joiner (WJ) character.
+Chèn ký tự word joiner (WJ).
 
 .. _class_LineEdit_constant_MENU_INSERT_SHY:
 
@@ -590,7 +590,7 @@ Inserts word joiner (WJ) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_INSERT_SHY** = ``29``
 
-Inserts soft hyphen (SHY) character.
+Chèn ký tự soft hyphen (SHY).
 
 .. _class_LineEdit_constant_MENU_EMOJI_AND_SYMBOL:
 
@@ -598,7 +598,7 @@ Inserts soft hyphen (SHY) character.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_EMOJI_AND_SYMBOL** = ``30``
 
-Opens system emoji and symbol picker.
+Mở trình chọn emoji và ký hiệu của hệ thống.
 
 .. _class_LineEdit_constant_MENU_MAX:
 
@@ -606,7 +606,7 @@ Opens system emoji and symbol picker.
 
 :ref:`MenuItems<enum_LineEdit_MenuItems>` **MENU_MAX** = ``31``
 
-Represents the size of the :ref:`MenuItems<enum_LineEdit_MenuItems>` enum.
+Biểu thị kích thước của enum :ref:`MenuItems <enum_LineEdit_MenuItems>`.
 
 .. rst-class:: classref-item-separator
 
@@ -616,7 +616,7 @@ Represents the size of the :ref:`MenuItems<enum_LineEdit_MenuItems>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **VirtualKeyboardType**: :ref:`🔗<enum_LineEdit_VirtualKeyboardType>`
+enum **VirtualKeyboardType**: :ref:`🔗 <enum_LineEdit_VirtualKeyboardType>`
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_DEFAULT:
 
@@ -624,7 +624,7 @@ enum **VirtualKeyboardType**: :ref:`🔗<enum_LineEdit_VirtualKeyboardType>`
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_DEFAULT** = ``0``
 
-Default text virtual keyboard.
+Bàn phím ảo nhập văn bản mặc định.
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_MULTILINE:
 
@@ -632,7 +632,7 @@ Default text virtual keyboard.
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_MULTILINE** = ``1``
 
-Multiline virtual keyboard.
+Bàn phím ảo hỗ trợ nhiều dòng.
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_NUMBER:
 
@@ -640,7 +640,7 @@ Multiline virtual keyboard.
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_NUMBER** = ``2``
 
-Virtual number keypad, useful for PIN entry.
+Bàn phím số ảo, hữu ích khi nhập mã PIN.
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_NUMBER_DECIMAL:
 
@@ -648,7 +648,7 @@ Virtual number keypad, useful for PIN entry.
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_NUMBER_DECIMAL** = ``3``
 
-Virtual number keypad, useful for entering fractional numbers.
+Bàn phím số ảo, hữu ích khi nhập các số thập phân.
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_PHONE:
 
@@ -656,7 +656,7 @@ Virtual number keypad, useful for entering fractional numbers.
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_PHONE** = ``4``
 
-Virtual phone number keypad.
+Bàn phím số điện thoại ảo.
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_EMAIL_ADDRESS:
 
@@ -664,7 +664,7 @@ Virtual phone number keypad.
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_EMAIL_ADDRESS** = ``5``
 
-Virtual keyboard with additional keys to assist with typing email addresses.
+Bàn phím ảo với các phím bổ sung hỗ trợ nhập địa chỉ email.
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_PASSWORD:
 
@@ -672,9 +672,9 @@ Virtual keyboard with additional keys to assist with typing email addresses.
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_PASSWORD** = ``6``
 
-Virtual keyboard for entering a password. On most platforms, this should disable autocomplete and autocapitalization.
+Bàn phím ảo để nhập mật khẩu. Trên hầu hết các nền tảng, tùy chọn này sẽ tắt tính năng tự động hoàn tất và tự động viết hoa.
 
-\ **Note:** This is not supported on Web. Instead, this behaves identically to :ref:`KEYBOARD_TYPE_DEFAULT<class_LineEdit_constant_KEYBOARD_TYPE_DEFAULT>`.
+\ **Lưu ý:** Tính năng này không được hỗ trợ trên Web. Thay vào đó, tính năng này hoạt động giống hệt :ref:`KEYBOARD_TYPE_DEFAULT<class_LineEdit_constant_KEYBOARD_TYPE_DEFAULT>`.
 
 .. _class_LineEdit_constant_KEYBOARD_TYPE_URL:
 
@@ -682,7 +682,7 @@ Virtual keyboard for entering a password. On most platforms, this should disable
 
 :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **KEYBOARD_TYPE_URL** = ``7``
 
-Virtual keyboard with additional keys to assist with typing URLs.
+Bàn phím ảo với các phím bổ sung hỗ trợ nhập URL.
 
 .. rst-class:: classref-item-separator
 
@@ -692,7 +692,7 @@ Virtual keyboard with additional keys to assist with typing URLs.
 
 .. rst-class:: classref-enumeration
 
-enum **ExpandMode**: :ref:`🔗<enum_LineEdit_ExpandMode>`
+enum **ExpandMode**: :ref:`🔗 <enum_LineEdit_ExpandMode>`
 
 .. _class_LineEdit_constant_EXPAND_MODE_ORIGINAL_SIZE:
 
@@ -700,7 +700,7 @@ enum **ExpandMode**: :ref:`🔗<enum_LineEdit_ExpandMode>`
 
 :ref:`ExpandMode<enum_LineEdit_ExpandMode>` **EXPAND_MODE_ORIGINAL_SIZE** = ``0``
 
-Use the original size for the right icon.
+Sử dụng kích thước ban đầu cho biểu tượng bên phải.
 
 .. _class_LineEdit_constant_EXPAND_MODE_FIT_TO_TEXT:
 
@@ -708,7 +708,7 @@ Use the original size for the right icon.
 
 :ref:`ExpandMode<enum_LineEdit_ExpandMode>` **EXPAND_MODE_FIT_TO_TEXT** = ``1``
 
-Scale the right icon's size to match the size of the text.
+Điều chỉnh kích thước biểu tượng bên phải để khớp với kích thước văn bản.
 
 .. _class_LineEdit_constant_EXPAND_MODE_FIT_TO_LINE_EDIT:
 
@@ -716,7 +716,7 @@ Scale the right icon's size to match the size of the text.
 
 :ref:`ExpandMode<enum_LineEdit_ExpandMode>` **EXPAND_MODE_FIT_TO_LINE_EDIT** = ``2``
 
-Scale the right icon to fit the LineEdit.
+Điều chỉnh kích thước icon bên phải để vừa với LineEdit.
 
 .. rst-class:: classref-section-separator
 
@@ -724,8 +724,8 @@ Scale the right icon to fit the LineEdit.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_LineEdit_property_alignment:
 
@@ -738,7 +738,7 @@ Property Descriptions
 - |void| **set_horizontal_alignment**\ (\ value\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )
 - :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_horizontal_alignment**\ (\ )
 
-The text's horizontal alignment.
+Căn chỉnh theo chiều ngang của văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -755,7 +755,7 @@ The text's horizontal alignment.
 - |void| **set_backspace_deletes_composite_character_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_backspace_deletes_composite_character_enabled**\ (\ )
 
-If ``true`` and :ref:`caret_mid_grapheme<class_LineEdit_property_caret_mid_grapheme>` is ``false``, backspace deletes an entire composite character such as ❤️‍🩹, instead of deleting part of the composite character.
+Nếu ``true`` và :ref:`caret_mid_grapheme<class_LineEdit_property_caret_mid_grapheme>` là ``false``, phím backspace sẽ xóa toàn bộ ký tự tổ hợp, chẳng hạn như ❤️‍🩹, thay vì xóa một phần của ký tự tổ hợp.
 
 .. rst-class:: classref-item-separator
 
@@ -772,7 +772,7 @@ If ``true`` and :ref:`caret_mid_grapheme<class_LineEdit_property_caret_mid_graph
 - |void| **set_caret_blink_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_caret_blink_enabled**\ (\ )
 
-If ``true``, makes the caret blink.
+Nếu ``true``, làm cho caret nhấp nháy.
 
 .. rst-class:: classref-item-separator
 
@@ -789,7 +789,7 @@ If ``true``, makes the caret blink.
 - |void| **set_caret_blink_interval**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_caret_blink_interval**\ (\ )
 
-The interval at which the caret blinks (in seconds).
+Khoảng thời gian giữa các lần caret nhấp nháy (tính bằng giây).
 
 .. rst-class:: classref-item-separator
 
@@ -806,7 +806,7 @@ The interval at which the caret blinks (in seconds).
 - |void| **set_caret_column**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_caret_column**\ (\ )
 
-The caret's column position inside the **LineEdit**. When set, the text may scroll to accommodate it.
+Vị trí cột của caret bên trong **LineEdit**. Khi được đặt, văn bản có thể cuộn để chứa vị trí này.
 
 .. rst-class:: classref-item-separator
 
@@ -823,7 +823,7 @@ The caret's column position inside the **LineEdit**. When set, the text may scro
 - |void| **set_caret_force_displayed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_caret_force_displayed**\ (\ )
 
-If ``true``, the **LineEdit** will always show the caret, even if not editing or focus is lost.
+Nếu ``true``, **LineEdit** sẽ luôn hiển thị con trỏ, ngay cả khi không chỉnh sửa hoặc bị mất tiêu điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -840,9 +840,9 @@ If ``true``, the **LineEdit** will always show the caret, even if not editing or
 - |void| **set_caret_mid_grapheme_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_caret_mid_grapheme_enabled**\ (\ )
 
-Allow moving caret, selecting and removing the individual composite character components.
+Cho phép di chuyển con trỏ, chọn và xóa từng thành phần ký tự tổ hợp.
 
-\ **Note:** :kbd:`Backspace` is always removing individual composite character components.
+\ **Lưu ý:** :kbd:`Backspace` luôn xóa từng thành phần ký tự tổ hợp.
 
 .. rst-class:: classref-item-separator
 
@@ -859,7 +859,7 @@ Allow moving caret, selecting and removing the individual composite character co
 - |void| **set_clear_button_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_clear_button_enabled**\ (\ )
 
-If ``true``, the **LineEdit** will show a clear button if :ref:`text<class_LineEdit_property_text>` is not empty, which can be used to clear the text quickly.
+Nếu ``true``, **LineEdit** sẽ hiển thị nút xóa nếu :ref:`text<class_LineEdit_property_text>` không rỗng, có thể dùng để nhanh chóng xóa văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -876,7 +876,7 @@ If ``true``, the **LineEdit** will show a clear button if :ref:`text<class_LineE
 - |void| **set_context_menu_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_context_menu_enabled**\ (\ )
 
-If ``true``, the context menu will appear when right-clicked.
+Nếu ``true``, menu ngữ cảnh sẽ xuất hiện khi được nhấp chuột phải.
 
 .. rst-class:: classref-item-separator
 
@@ -893,7 +893,7 @@ If ``true``, the context menu will appear when right-clicked.
 - |void| **set_deselect_on_focus_loss_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_deselect_on_focus_loss_enabled**\ (\ )
 
-If ``true``, the selected text will be deselected when focus is lost.
+Nếu ``true``, văn bản được chọn sẽ bị bỏ chọn khi bị mất tiêu điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -910,7 +910,7 @@ If ``true``, the selected text will be deselected when focus is lost.
 - |void| **set_drag_and_drop_selection_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_drag_and_drop_selection_enabled**\ (\ )
 
-If ``true``, allow drag and drop of selected text.
+Nếu ``true``, cho phép kéo và thả văn bản được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -927,7 +927,7 @@ If ``true``, allow drag and drop of selected text.
 - |void| **set_draw_control_chars**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_draw_control_chars**\ (\ )
 
-If ``true``, control characters are displayed.
+Nếu ``true``, các ký tự điều khiển sẽ được hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -944,7 +944,7 @@ If ``true``, control characters are displayed.
 - |void| **set_editable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editable**\ (\ )
 
-If ``false``, existing text cannot be modified and new text cannot be added.
+Nếu ``false``, không thể sửa văn bản hiện có và không thể thêm văn bản mới.
 
 .. rst-class:: classref-item-separator
 
@@ -961,7 +961,7 @@ If ``false``, existing text cannot be modified and new text cannot be added.
 - |void| **set_emoji_menu_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_emoji_menu_enabled**\ (\ )
 
-If ``true``, "Emoji and Symbols" menu is enabled.
+Nếu ``true``, menu "Emoji and Symbols" sẽ được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -978,7 +978,7 @@ If ``true``, "Emoji and Symbols" menu is enabled.
 - |void| **set_expand_to_text_length_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_expand_to_text_length_enabled**\ (\ )
 
-If ``true``, the **LineEdit** width will increase to stay longer than the :ref:`text<class_LineEdit_property_text>`. It will **not** compress if the :ref:`text<class_LineEdit_property_text>` is shortened.
+Nếu ``true``, chiều rộng của **LineEdit** sẽ tăng để luôn dài hơn :ref:`text<class_LineEdit_property_text>`. Nó sẽ **không** thu gọn nếu :ref:`text<class_LineEdit_property_text>` bị rút ngắn.
 
 .. rst-class:: classref-item-separator
 
@@ -995,7 +995,7 @@ If ``true``, the **LineEdit** width will increase to stay longer than the :ref:`
 - |void| **set_flat**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flat**\ (\ )
 
-If ``true``, the **LineEdit** doesn't display decoration.
+Nếu ``true``, **LineEdit** sẽ không hiển thị phần trang trí.
 
 .. rst-class:: classref-item-separator
 
@@ -1012,7 +1012,7 @@ If ``true``, the **LineEdit** doesn't display decoration.
 - |void| **set_icon_expand_mode**\ (\ value\: :ref:`ExpandMode<enum_LineEdit_ExpandMode>`\ )
 - :ref:`ExpandMode<enum_LineEdit_ExpandMode>` **get_icon_expand_mode**\ (\ )
 
-Define the scaling behavior of the :ref:`right_icon<class_LineEdit_property_right_icon>`.
+Xác định hành vi co giãn của :ref:`right_icon<class_LineEdit_property_right_icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1029,7 +1029,7 @@ Define the scaling behavior of the :ref:`right_icon<class_LineEdit_property_righ
 - |void| **set_keep_editing_on_text_submit**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editing_kept_on_text_submit**\ (\ )
 
-If ``true``, the **LineEdit** will not exit edit mode when text is submitted by pressing ``ui_text_submit`` action (by default: :kbd:`Enter` or :kbd:`Kp Enter`).
+Nếu ``true``, **LineEdit** sẽ không thoát khỏi chế độ chỉnh sửa khi văn bản được gửi bằng cách nhấn thao tác ``ui_text_submit`` (theo mặc định: :kbd:`Enter` hoặc :kbd:`Kp Enter`).
 
 .. rst-class:: classref-item-separator
 
@@ -1046,7 +1046,7 @@ If ``true``, the **LineEdit** will not exit edit mode when text is submitted by 
 - |void| **set_language**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_language**\ (\ )
 
-Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead.
+Mã ngôn ngữ được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1063,11 +1063,11 @@ Language code used for line-breaking and text shaping algorithms. If left empty,
 - |void| **set_max_length**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_length**\ (\ )
 
-Maximum number of characters that can be entered inside the **LineEdit**. If ``0``, there is no limit.
+Số ký tự tối đa có thể được nhập vào bên trong **LineEdit**. Nếu ``0``, thì không có giới hạn.
 
-When a limit is defined, characters that would exceed :ref:`max_length<class_LineEdit_property_max_length>` are truncated. This happens both for existing :ref:`text<class_LineEdit_property_text>` contents when setting the max length, or for new text inserted in the **LineEdit**, including pasting.
+Khi một giới hạn được xác định, các ký tự vượt quá :ref:`max_length<class_LineEdit_property_max_length>` sẽ bị cắt bớt. Điều này xảy ra cả với nội dung :ref:`text<class_LineEdit_property_text>` hiện có khi đặt độ dài tối đa, lẫn với văn bản mới được chèn vào **LineEdit**, bao gồm cả thao tác dán.
 
-If any input text is truncated, the :ref:`text_change_rejected<class_LineEdit_signal_text_change_rejected>` signal is emitted with the truncated substring as a parameter:
+Nếu bất kỳ văn bản đầu vào nào bị cắt bớt, signal :ref:`text_change_rejected<class_LineEdit_signal_text_change_rejected>` sẽ được phát ra với chuỗi con bị cắt bớt làm tham số:
 
 
 .. tabs::
@@ -1076,21 +1076,21 @@ If any input text is truncated, the :ref:`text_change_rejected<class_LineEdit_si
 
     text = "Hello world"
     max_length = 5
-    # `text` becomes "Hello".
+    # `text` trở thành "Hello".
     max_length = 10
     text += " goodbye"
-    # `text` becomes "Hello good".
-    # `text_change_rejected` is emitted with "bye" as a parameter.
+    # `text` trở thành "Hello good".
+    # `text_change_rejected` được phát ra với "bye" làm tham số.
 
  .. code-tab:: csharp
 
     Text = "Hello world";
     MaxLength = 5;
-    // `Text` becomes "Hello".
+    // `Text` trở thành "Hello".
     MaxLength = 10;
     Text += " goodbye";
-    // `Text` becomes "Hello good".
-    // `text_change_rejected` is emitted with "bye" as a parameter.
+    // `Text` trở thành "Hello good".
+    // `text_change_rejected` được phát ra với "bye" làm tham số.
 
 
 
@@ -1109,9 +1109,9 @@ If any input text is truncated, the :ref:`text_change_rejected<class_LineEdit_si
 - |void| **set_middle_mouse_paste_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_middle_mouse_paste_enabled**\ (\ )
 
-If ``false``, using middle mouse button to paste clipboard will be disabled.
+Nếu ``false``, việc sử dụng nút chuột giữa để dán clipboard sẽ bị vô hiệu hóa.
 
-\ **Note:** This method is only implemented on Linux.
+\ **Lưu ý:** Phương thức này chỉ được triển khai trên Linux.
 
 .. rst-class:: classref-item-separator
 
@@ -1128,7 +1128,7 @@ If ``false``, using middle mouse button to paste clipboard will be disabled.
 - |void| **set_placeholder**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_placeholder**\ (\ )
 
-Text shown when the **LineEdit** is empty. It is **not** the **LineEdit**'s default value (see :ref:`text<class_LineEdit_property_text>`).
+Văn bản được hiển thị khi **LineEdit** trống. Đây **không** phải là giá trị mặc định của **LineEdit** (xem :ref:`text<class_LineEdit_property_text>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1138,14 +1138,14 @@ Text shown when the **LineEdit** is empty. It is **not** the **LineEdit**'s defa
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **right_icon** :ref:`🔗<class_LineEdit_property_right_icon>`
+:ref:`Texture2D<class_Texture2D>` **right_icon** :ref:`🔗 <class_LineEdit_property_right_icon>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_right_icon**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_right_icon**\ (\ )
 
-Sets the icon that will appear in the right end of the **LineEdit** if there's no :ref:`text<class_LineEdit_property_text>`, or always, if :ref:`clear_button_enabled<class_LineEdit_property_clear_button_enabled>` is set to ``false``.
+Đặt biểu tượng sẽ xuất hiện ở phía bên phải của **LineEdit** nếu không có :ref:`text<class_LineEdit_property_text>`, hoặc luôn xuất hiện nếu :ref:`clear_button_enabled<class_LineEdit_property_clear_button_enabled>` được đặt thành ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1162,7 +1162,7 @@ Sets the icon that will appear in the right end of the **LineEdit** if there's n
 - |void| **set_right_icon_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_right_icon_scale**\ (\ )
 
-Scale ratio of the icon when :ref:`icon_expand_mode<class_LineEdit_property_icon_expand_mode>` is set to :ref:`EXPAND_MODE_FIT_TO_LINE_EDIT<class_LineEdit_constant_EXPAND_MODE_FIT_TO_LINE_EDIT>`.
+Tỷ lệ thu phóng của biểu tượng khi :ref:`icon_expand_mode<class_LineEdit_property_icon_expand_mode>` được đặt thành :ref:`EXPAND_MODE_FIT_TO_LINE_EDIT<class_LineEdit_constant_EXPAND_MODE_FIT_TO_LINE_EDIT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1179,7 +1179,7 @@ Scale ratio of the icon when :ref:`icon_expand_mode<class_LineEdit_property_icon
 - |void| **set_secret**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_secret**\ (\ )
 
-If ``true``, every character is replaced with the secret character (see :ref:`secret_character<class_LineEdit_property_secret_character>`).
+Nếu ``true``, mọi ký tự sẽ được thay thế bằng ký tự bí mật (xem :ref:`secret_character<class_LineEdit_property_secret_character>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1196,7 +1196,7 @@ If ``true``, every character is replaced with the secret character (see :ref:`se
 - |void| **set_secret_character**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_secret_character**\ (\ )
 
-The character to use to mask secret input. Only a single character can be used as the secret character. If it is longer than one character, only the first one will be used. If it is empty, a space will be used instead.
+Ký tự dùng để che dữ liệu nhập bí mật. Chỉ có thể sử dụng một ký tự duy nhất làm ký tự bí mật. Nếu chuỗi dài hơn một ký tự, chỉ ký tự đầu tiên được sử dụng. Nếu chuỗi rỗng, thay vào đó sẽ sử dụng một dấu cách.
 
 .. rst-class:: classref-item-separator
 
@@ -1213,7 +1213,7 @@ The character to use to mask secret input. Only a single character can be used a
 - |void| **set_select_all_on_focus**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_select_all_on_focus**\ (\ )
 
-If ``true``, the **LineEdit** will select the whole text when it gains focus.
+Nếu ``true``, **LineEdit** sẽ chọn toàn bộ văn bản khi nhận focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1230,7 +1230,7 @@ If ``true``, the **LineEdit** will select the whole text when it gains focus.
 - |void| **set_selecting_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_selecting_enabled**\ (\ )
 
-If ``false``, it's impossible to select the text using mouse nor keyboard.
+Nếu ``false``, không thể chọn văn bản bằng chuột hoặc bàn phím.
 
 .. rst-class:: classref-item-separator
 
@@ -1247,7 +1247,7 @@ If ``false``, it's impossible to select the text using mouse nor keyboard.
 - |void| **set_shortcut_keys_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_shortcut_keys_enabled**\ (\ )
 
-If ``true``, shortcut keys for context menu items are enabled, even if the context menu is disabled.
+Nếu ``true``, các phím tắt cho các mục trong menu ngữ cảnh sẽ được bật, ngay cả khi menu ngữ cảnh bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -1264,7 +1264,7 @@ If ``true``, shortcut keys for context menu items are enabled, even if the conte
 - |void| **set_structured_text_bidi_override**\ (\ value\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`\ )
 - :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` **get_structured_text_bidi_override**\ (\ )
 
-Set BiDi algorithm override for the structured text.
+Đặt chế độ ghi đè thuật toán BiDi cho văn bản có cấu trúc.
 
 .. rst-class:: classref-item-separator
 
@@ -1281,7 +1281,7 @@ Set BiDi algorithm override for the structured text.
 - |void| **set_structured_text_bidi_override_options**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_structured_text_bidi_override_options**\ (\ )
 
-Set additional options for BiDi override.
+Đặt các tùy chọn bổ sung cho chế độ ghi đè BiDi.
 
 .. rst-class:: classref-item-separator
 
@@ -1298,9 +1298,9 @@ Set additional options for BiDi override.
 - |void| **set_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_text**\ (\ )
 
-String value of the **LineEdit**.
+Giá trị chuỗi của **LineEdit**.
 
-\ **Note:** Changing text using this property won't emit the :ref:`text_changed<class_LineEdit_signal_text_changed>` signal.
+\ **Lưu ý:** Việc thay đổi văn bản bằng thuộc tính này sẽ không phát tín hiệu :ref:`text_changed<class_LineEdit_signal_text_changed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1317,7 +1317,7 @@ String value of the **LineEdit**.
 - |void| **set_text_direction**\ (\ value\: :ref:`TextDirection<enum_Control_TextDirection>`\ )
 - :ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ )
 
-Base text writing direction.
+Hướng ghi văn bản cơ sở.
 
 .. rst-class:: classref-item-separator
 
@@ -1334,7 +1334,7 @@ Base text writing direction.
 - |void| **set_virtual_keyboard_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_virtual_keyboard_enabled**\ (\ )
 
-If ``true``, the native virtual keyboard is enabled on platforms that support it.
+Nếu ``true``, bàn phím ảo gốc được bật trên các nền tảng hỗ trợ tính năng này.
 
 .. rst-class:: classref-item-separator
 
@@ -1351,7 +1351,7 @@ If ``true``, the native virtual keyboard is enabled on platforms that support it
 - |void| **set_virtual_keyboard_show_on_focus**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_virtual_keyboard_show_on_focus**\ (\ )
 
-If ``true``, the native virtual keyboard is shown on focus events on platforms that support it.
+Nếu ``true``, bàn phím ảo gốc được hiển thị khi có sự kiện focus trên các nền tảng hỗ trợ tính năng này.
 
 .. rst-class:: classref-item-separator
 
@@ -1368,7 +1368,7 @@ If ``true``, the native virtual keyboard is shown on focus events on platforms t
 - |void| **set_virtual_keyboard_type**\ (\ value\: :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>`\ )
 - :ref:`VirtualKeyboardType<enum_LineEdit_VirtualKeyboardType>` **get_virtual_keyboard_type**\ (\ )
 
-Specifies the type of virtual keyboard to show.
+Chỉ định loại bàn phím ảo cần hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -1376,8 +1376,8 @@ Specifies the type of virtual keyboard to show.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_LineEdit_method_apply_ime:
 
@@ -1385,7 +1385,7 @@ Method Descriptions
 
 |void| **apply_ime**\ (\ ) :ref:`🔗<class_LineEdit_method_apply_ime>`
 
-Applies text from the `Input Method Editor <https://en.wikipedia.org/wiki/Input_method>`__ (IME) and closes the IME if it is open.
+Áp dụng văn bản từ `Input Method Editor <https://en.wikipedia.org/wiki/Input_method>`__ (IME) và đóng IME nếu đang mở.
 
 .. rst-class:: classref-item-separator
 
@@ -1397,7 +1397,7 @@ Applies text from the `Input Method Editor <https://en.wikipedia.org/wiki/Input_
 
 |void| **cancel_ime**\ (\ ) :ref:`🔗<class_LineEdit_method_cancel_ime>`
 
-Closes the `Input Method Editor <https://en.wikipedia.org/wiki/Input_method>`__ (IME) if it is open. Any text in the IME will be lost.
+Đóng `Input Method Editor <https://en.wikipedia.org/wiki/Input_method>`__ (IME) nếu đang mở. Mọi văn bản trong IME sẽ bị mất.
 
 .. rst-class:: classref-item-separator
 
@@ -1409,7 +1409,7 @@ Closes the `Input Method Editor <https://en.wikipedia.org/wiki/Input_method>`__ 
 
 |void| **clear**\ (\ ) :ref:`🔗<class_LineEdit_method_clear>`
 
-Erases the **LineEdit**'s :ref:`text<class_LineEdit_property_text>`.
+Xóa **LineEdit** của :ref:`text<class_LineEdit_property_text>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1421,7 +1421,7 @@ Erases the **LineEdit**'s :ref:`text<class_LineEdit_property_text>`.
 
 |void| **delete_char_at_caret**\ (\ ) :ref:`🔗<class_LineEdit_method_delete_char_at_caret>`
 
-Deletes one character at the caret's current position (equivalent to pressing :kbd:`Delete`).
+Xóa một ký tự tại vị trí hiện tại của con trỏ (tương đương với việc nhấn :kbd:`Delete`).
 
 .. rst-class:: classref-item-separator
 
@@ -1433,7 +1433,7 @@ Deletes one character at the caret's current position (equivalent to pressing :k
 
 |void| **delete_text**\ (\ from_column\: :ref:`int<class_int>`, to_column\: :ref:`int<class_int>`\ ) :ref:`🔗<class_LineEdit_method_delete_text>`
 
-Deletes a section of the :ref:`text<class_LineEdit_property_text>` going from position ``from_column`` to ``to_column``. Both parameters should be within the text's length.
+Xóa một đoạn của :ref:`text<class_LineEdit_property_text>` từ vị trí ``from_column`` đến ``to_column``. Cả hai tham số phải nằm trong phạm vi độ dài của văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -1445,7 +1445,7 @@ Deletes a section of the :ref:`text<class_LineEdit_property_text>` going from po
 
 |void| **deselect**\ (\ ) :ref:`🔗<class_LineEdit_method_deselect>`
 
-Clears the current selection.
+Xóa lựa chọn hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1457,9 +1457,9 @@ Clears the current selection.
 
 |void| **edit**\ (\ hide_focus\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_LineEdit_method_edit>`
 
-Allows entering edit mode whether the **LineEdit** is focused or not. If ``hide_focus`` is ``true``, the focused state will not be shown (see :ref:`Control.grab_focus()<class_Control_method_grab_focus>`).
+Cho phép vào chế độ chỉnh sửa независимо với việc **LineEdit** có được focus hay không. Nếu ``hide_focus`` là ``true``, trạng thái focus sẽ không được hiển thị (xem :ref:`Control.grab_focus()<class_Control_method_grab_focus>`).
 
-See also :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`.
+Xem thêm :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_on_text_submit>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1471,9 +1471,9 @@ See also :ref:`keep_editing_on_text_submit<class_LineEdit_property_keep_editing_
 
 :ref:`PopupMenu<class_PopupMenu>` **get_menu**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_get_menu>`
 
-Returns the :ref:`PopupMenu<class_PopupMenu>` of this **LineEdit**. By default, this menu is displayed when right-clicking on the **LineEdit**.
+Trả về :ref:`PopupMenu<class_PopupMenu>` của **LineEdit** này. Theo mặc định, menu này được hiển thị khi nhấp chuột phải vào **LineEdit**.
 
-You can add custom menu items or remove standard ones. Make sure your IDs don't conflict with the standard ones (see :ref:`MenuItems<enum_LineEdit_MenuItems>`). For example:
+Bạn có thể thêm các mục menu tùy chỉnh hoặc xóa các mục tiêu chuẩn. Hãy đảm bảo ID của bạn không xung đột với các ID tiêu chuẩn (xem :ref:`MenuItems <enum_LineEdit_MenuItems>`). Ví dụ:
 
 
 .. tabs::
@@ -1482,12 +1482,12 @@ You can add custom menu items or remove standard ones. Make sure your IDs don't 
 
     func _ready():
         var menu = get_menu()
-        # Remove all items after "Redo".
+        # Xóa tất cả các mục sau "Redo".
         menu.item_count = menu.get_item_index(MENU_REDO) + 1
-        # Add custom items.
+        # Thêm các mục tùy chỉnh.
         menu.add_separator()
         menu.add_item("Insert Date", MENU_MAX + 1)
-        # Connect callback.
+        # Kết nối callback.
         menu.id_pressed.connect(_on_item_pressed)
 
     func _on_item_pressed(id):
@@ -1499,12 +1499,12 @@ You can add custom menu items or remove standard ones. Make sure your IDs don't 
     public override void _Ready()
     {
         var menu = GetMenu();
-        // Remove all items after "Redo".
+        // Xóa tất cả mục sau "Redo".
         menu.ItemCount = menu.GetItemIndex(LineEdit.MenuItems.Redo) + 1;
-        // Add custom items.
+        // Thêm các mục tùy chỉnh.
         menu.AddSeparator();
         menu.AddItem("Insert Date", LineEdit.MenuItems.Max + 1);
-        // Add event handler.
+        // Thêm trình xử lý sự kiện.
         menu.IdPressed += OnItemPressed;
     }
 
@@ -1518,7 +1518,7 @@ You can add custom menu items or remove standard ones. Make sure your IDs don't 
 
 
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`Window.visible<class_Window_property_visible>` property.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc; việc xóa và giải phóng node này có thể gây crash. Nếu bạn muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`Window.visible<class_Window_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -1530,9 +1530,9 @@ You can add custom menu items or remove standard ones. Make sure your IDs don't 
 
 :ref:`int<class_int>` **get_next_composite_character_column**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_LineEdit_method_get_next_composite_character_column>`
 
-Returns the correct column at the end of a composite character like ❤️‍🩹 (mending heart; Unicode: ``U+2764 U+FE0F U+200D U+1FA79``) which is comprised of more than one Unicode code point, if the caret is at the start of the composite character. Also returns the correct column with the caret at mid grapheme and for non-composite characters.
+Trả về cột chính xác ở cuối một ký tự tổng hợp như ❤️‍🩹 (trái tim đang hồi phục; Unicode: ``U+2764 U+FE0F U+200D U+1FA79``), được tạo thành từ nhiều điểm mã Unicode, nếu caret nằm ở đầu ký tự tổng hợp. Hàm cũng trả về cột chính xác khi caret nằm giữa grapheme và đối với các ký tự không tổng hợp.
 
-\ **Note:** To check at caret location use ``get_next_composite_character_column(get_caret_column())``
+\ **Lưu ý:** Để kiểm tra tại vị trí caret, hãy sử dụng ``get_next_composite_character_column(get_caret_column())``
 
 .. rst-class:: classref-item-separator
 
@@ -1544,9 +1544,9 @@ Returns the correct column at the end of a composite character like ❤️‍�
 
 :ref:`int<class_int>` **get_previous_composite_character_column**\ (\ column\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_LineEdit_method_get_previous_composite_character_column>`
 
-Returns the correct column at the start of a composite character like ❤️‍🩹 (mending heart; Unicode: ``U+2764 U+FE0F U+200D U+1FA79``) which is comprised of more than one Unicode code point, if the caret is at the end of the composite character. Also returns the correct column with the caret at mid grapheme and for non-composite characters.
+Trả về cột chính xác ở đầu một ký tự ghép như ❤️‍🩹 (trái tim đang hồi phục; Unicode: ``U+2764 U+FE0F U+200D U+1FA79``), được tạo thành từ nhiều điểm mã Unicode, nếu con trỏ nằm ở cuối ký tự ghép. Đồng thời trả về cột chính xác khi con trỏ nằm giữa grapheme và đối với các ký tự không ghép.
 
-\ **Note:** To check at caret location use ``get_previous_composite_character_column(get_caret_column())``
+\ **Lưu ý:** Để kiểm tra tại vị trí con trỏ, hãy sử dụng ``get_previous_composite_character_column(get_caret_column())``
 
 .. rst-class:: classref-item-separator
 
@@ -1558,7 +1558,7 @@ Returns the correct column at the start of a composite character like ❤️‍�
 
 :ref:`float<class_float>` **get_scroll_offset**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_get_scroll_offset>`
 
-Returns the scroll offset due to :ref:`caret_column<class_LineEdit_property_caret_column>`, as a number of characters.
+Trả về độ lệch cuộn do :ref:`caret_column<class_LineEdit_property_caret_column>`, tính theo số ký tự.
 
 .. rst-class:: classref-item-separator
 
@@ -1570,7 +1570,7 @@ Returns the scroll offset due to :ref:`caret_column<class_LineEdit_property_care
 
 :ref:`String<class_String>` **get_selected_text**\ (\ ) :ref:`🔗<class_LineEdit_method_get_selected_text>`
 
-Returns the text inside the selection.
+Trả về văn bản bên trong vùng chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1582,7 +1582,7 @@ Returns the text inside the selection.
 
 :ref:`int<class_int>` **get_selection_from_column**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_get_selection_from_column>`
 
-Returns the selection begin column.
+Trả về cột bắt đầu của vùng chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1594,7 +1594,7 @@ Returns the selection begin column.
 
 :ref:`int<class_int>` **get_selection_to_column**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_get_selection_to_column>`
 
-Returns the selection end column.
+Trả về cột kết thúc của vùng chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1606,7 +1606,7 @@ Returns the selection end column.
 
 :ref:`bool<class_bool>` **has_ime_text**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_has_ime_text>`
 
-Returns ``true`` if the user has text in the `Input Method Editor <https://en.wikipedia.org/wiki/Input_method>`__ (IME).
+Trả về ``true`` nếu người dùng có văn bản trong `Input Method Editor <https://en.wikipedia.org/wiki/Input_method>`__ (IME).
 
 .. rst-class:: classref-item-separator
 
@@ -1618,7 +1618,7 @@ Returns ``true`` if the user has text in the `Input Method Editor <https://en.wi
 
 :ref:`bool<class_bool>` **has_redo**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_has_redo>`
 
-Returns ``true`` if a "redo" action is available.
+Trả về ``true`` nếu có hành động "redo".
 
 .. rst-class:: classref-item-separator
 
@@ -1630,7 +1630,7 @@ Returns ``true`` if a "redo" action is available.
 
 :ref:`bool<class_bool>` **has_selection**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_has_selection>`
 
-Returns ``true`` if the user has selected text.
+Trả về ``true`` nếu người dùng đã chọn văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -1642,7 +1642,7 @@ Returns ``true`` if the user has selected text.
 
 :ref:`bool<class_bool>` **has_undo**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_has_undo>`
 
-Returns ``true`` if an "undo" action is available.
+Trả về ``true`` nếu có hành động "undo".
 
 .. rst-class:: classref-item-separator
 
@@ -1654,7 +1654,7 @@ Returns ``true`` if an "undo" action is available.
 
 |void| **insert_text_at_caret**\ (\ text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_LineEdit_method_insert_text_at_caret>`
 
-Inserts ``text`` at the caret. If the resulting value is longer than :ref:`max_length<class_LineEdit_property_max_length>`, nothing happens.
+Chèn ``text`` tại vị trí con trỏ. Nếu giá trị kết quả dài hơn :ref:`max_length<class_LineEdit_property_max_length>`, không có gì xảy ra.
 
 .. rst-class:: classref-item-separator
 
@@ -1666,7 +1666,7 @@ Inserts ``text`` at the caret. If the resulting value is longer than :ref:`max_l
 
 :ref:`bool<class_bool>` **is_editing**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_is_editing>`
 
-Returns whether the **LineEdit** is being edited.
+Trả về việc **LineEdit** có đang được chỉnh sửa hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1678,7 +1678,7 @@ Returns whether the **LineEdit** is being edited.
 
 :ref:`bool<class_bool>` **is_menu_visible**\ (\ ) |const| :ref:`🔗<class_LineEdit_method_is_menu_visible>`
 
-Returns whether the menu is visible. Use this instead of ``get_menu().visible`` to improve performance (so the creation of the menu is avoided).
+Trả về việc menu có đang hiển thị hay không. Sử dụng cách này thay cho ``get_menu().visible`` để cải thiện hiệu suất (tránh tạo menu).
 
 .. rst-class:: classref-item-separator
 
@@ -1690,7 +1690,7 @@ Returns whether the menu is visible. Use this instead of ``get_menu().visible`` 
 
 |void| **menu_option**\ (\ option\: :ref:`int<class_int>`\ ) :ref:`🔗<class_LineEdit_method_menu_option>`
 
-Executes a given action as defined in the :ref:`MenuItems<enum_LineEdit_MenuItems>` enum.
+Thực thi một hành động nhất định như được định nghĩa trong enum :ref:`MenuItems <enum_LineEdit_MenuItems>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1702,7 +1702,7 @@ Executes a given action as defined in the :ref:`MenuItems<enum_LineEdit_MenuItem
 
 |void| **select**\ (\ from\: :ref:`int<class_int>` = 0, to\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_LineEdit_method_select>`
 
-Selects characters inside **LineEdit** between ``from`` and ``to``. By default, ``from`` is at the beginning and ``to`` at the end.
+Chọn các ký tự bên trong **LineEdit** nằm giữa ``from`` và ``to``. Theo mặc định, ``from`` ở đầu và ``to`` ở cuối.
 
 
 .. tabs::
@@ -1710,16 +1710,16 @@ Selects characters inside **LineEdit** between ``from`` and ``to``. By default, 
  .. code-tab:: gdscript
 
     text = "Welcome"
-    select() # Will select "Welcome".
-    select(4) # Will select "ome".
-    select(2, 5) # Will select "lco".
+    select() # Sẽ chọn "Welcome".
+    select(4) # Sẽ chọn "ome".
+    select(2, 5) # Sẽ chọn "lco".
 
  .. code-tab:: csharp
 
     Text = "Welcome";
-    Select(); // Will select "Welcome".
-    Select(4); // Will select "ome".
-    Select(2, 5); // Will select "lco".
+    Select(); // Sẽ chọn "Welcome".
+    Select(4); // Sẽ chọn "ome".
+    Select(2, 5); // Sẽ chọn "lco".
 
 
 
@@ -1733,7 +1733,7 @@ Selects characters inside **LineEdit** between ``from`` and ``to``. By default, 
 
 |void| **select_all**\ (\ ) :ref:`🔗<class_LineEdit_method_select_all>`
 
-Selects the whole :ref:`String<class_String>`.
+Chọn toàn bộ :ref:`String<class_String>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1745,7 +1745,7 @@ Selects the whole :ref:`String<class_String>`.
 
 |void| **unedit**\ (\ ) :ref:`🔗<class_LineEdit_method_unedit>`
 
-Allows exiting edit mode while preserving focus.
+Cho phép thoát khỏi chế độ chỉnh sửa mà vẫn giữ tiêu điểm.
 
 .. rst-class:: classref-section-separator
 
@@ -1753,8 +1753,8 @@ Allows exiting edit mode while preserving focus.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_LineEdit_theme_color_caret_color:
 
@@ -1762,7 +1762,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **caret_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_LineEdit_theme_color_caret_color>`
 
-Color of the **LineEdit**'s caret (text cursor). This can be set to a fully transparent color to hide the caret entirely.
+Màu của dấu nháy (con trỏ văn bản) của **LineEdit**. Có thể đặt màu hoàn toàn trong suốt để ẩn dấu nháy hoàn toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -1774,7 +1774,7 @@ Color of the **LineEdit**'s caret (text cursor). This can be set to a fully tran
 
 :ref:`Color<class_Color>` **clear_button_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_LineEdit_theme_color_clear_button_color>`
 
-Color used as default tint for the clear button.
+Màu được sử dụng làm sắc độ mặc định cho nút xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -1786,7 +1786,7 @@ Color used as default tint for the clear button.
 
 :ref:`Color<class_Color>` **clear_button_color_pressed** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_LineEdit_theme_color_clear_button_color_pressed>`
 
-Color used for the clear button when it's pressed.
+Màu được sử dụng cho nút xóa khi nút được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -1798,7 +1798,7 @@ Color used for the clear button when it's pressed.
 
 :ref:`Color<class_Color>` **font_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_LineEdit_theme_color_font_color>`
 
-Default font color.
+Màu phông chữ mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -1810,7 +1810,7 @@ Default font color.
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_LineEdit_theme_color_font_outline_color>`
 
-The tint of text outline of the **LineEdit**.
+Sắc độ của đường viền văn bản của **LineEdit**.
 
 .. rst-class:: classref-item-separator
 
@@ -1822,7 +1822,7 @@ The tint of text outline of the **LineEdit**.
 
 :ref:`Color<class_Color>` **font_placeholder_color** = ``Color(0.875, 0.875, 0.875, 0.6)`` :ref:`🔗<class_LineEdit_theme_color_font_placeholder_color>`
 
-Font color for :ref:`placeholder_text<class_LineEdit_property_placeholder_text>`.
+Màu phông chữ cho :ref:`placeholder_text<class_LineEdit_property_placeholder_text>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1834,7 +1834,7 @@ Font color for :ref:`placeholder_text<class_LineEdit_property_placeholder_text>`
 
 :ref:`Color<class_Color>` **font_selected_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_LineEdit_theme_color_font_selected_color>`
 
-Font color for selected text (inside the selection rectangle).
+Màu phông chữ của văn bản được chọn (bên trong hình chữ nhật vùng chọn).
 
 .. rst-class:: classref-item-separator
 
@@ -1846,7 +1846,7 @@ Font color for selected text (inside the selection rectangle).
 
 :ref:`Color<class_Color>` **font_uneditable_color** = ``Color(0.875, 0.875, 0.875, 0.5)`` :ref:`🔗<class_LineEdit_theme_color_font_uneditable_color>`
 
-Font color when editing is disabled.
+Màu phông chữ khi tính năng chỉnh sửa bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -1858,7 +1858,7 @@ Font color when editing is disabled.
 
 :ref:`Color<class_Color>` **selection_color** = ``Color(0.5, 0.5, 0.5, 1)`` :ref:`🔗<class_LineEdit_theme_color_selection_color>`
 
-Color of the selection rectangle.
+Màu của hình chữ nhật vùng chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1870,7 +1870,7 @@ Color of the selection rectangle.
 
 :ref:`int<class_int>` **caret_width** = ``1`` :ref:`🔗<class_LineEdit_theme_constant_caret_width>`
 
-The caret's width in pixels. Greater values can be used to improve accessibility by ensuring the caret is easily visible, or to ensure consistency with a large font size.
+Độ rộng của dấu nháy tính bằng pixel. Có thể sử dụng các giá trị lớn hơn để cải thiện khả năng tiếp cận bằng cách đảm bảo dấu nháy dễ nhìn thấy, hoặc để đảm bảo tính nhất quán với cỡ phông chữ lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -1882,7 +1882,7 @@ The caret's width in pixels. Greater values can be used to improve accessibility
 
 :ref:`int<class_int>` **minimum_character_width** = ``4`` :ref:`🔗<class_LineEdit_theme_constant_minimum_character_width>`
 
-Minimum horizontal space for the text (not counting the clear button and content margins). This value is measured in count of 'M' characters (i.e. this number of 'M' characters can be displayed without scrolling).
+Khoảng trống ngang tối thiểu cho văn bản (không tính nút xóa và lề nội dung). Giá trị này được đo bằng số ký tự 'M' (tức là có thể hiển thị số ký tự 'M' này mà không cần cuộn).
 
 .. rst-class:: classref-item-separator
 
@@ -1894,9 +1894,9 @@ Minimum horizontal space for the text (not counting the clear button and content
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_LineEdit_theme_constant_outline_size>`
 
-The size of the text outline.
+Kích thước đường viền văn bản.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_LineEdit_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng phông chữ có :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` được bật, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` của phông chữ đó phải được đặt ít nhất *hai lần* giá trị của :ref:`outline_size<class_LineEdit_theme_constant_outline_size>` để việc kết xuất đường viền hiển thị chính xác. Nếu không, đường viền có thể trông như bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -1906,9 +1906,9 @@ The size of the text outline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_LineEdit_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_LineEdit_theme_font_font>`
 
-Font used for the text.
+Phông chữ được sử dụng cho văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -1918,9 +1918,9 @@ Font used for the text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_LineEdit_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_LineEdit_theme_font_size_font_size>`
 
-Font size of the **LineEdit**'s text.
+Cỡ chữ cho văn bản của **LineEdit**.
 
 .. rst-class:: classref-item-separator
 
@@ -1930,9 +1930,9 @@ Font size of the **LineEdit**'s text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **clear** :ref:`🔗<class_LineEdit_theme_icon_clear>`
+:ref:`Texture2D<class_Texture2D>` **clear** :ref:`🔗 <class_LineEdit_theme_icon_clear>`
 
-Texture for the clear button. See :ref:`clear_button_enabled<class_LineEdit_property_clear_button_enabled>`.
+Texture cho nút xóa. Xem :ref:`clear_button_enabled<class_LineEdit_property_clear_button_enabled>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1942,9 +1942,9 @@ Texture for the clear button. See :ref:`clear_button_enabled<class_LineEdit_prop
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_LineEdit_theme_style_focus>`
+:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗 <class_LineEdit_theme_style_focus>`
 
-Background used when **LineEdit** has GUI focus. The :ref:`focus<class_LineEdit_theme_style_focus>` :ref:`StyleBox<class_StyleBox>` is displayed *over* the base :ref:`StyleBox<class_StyleBox>`, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the base :ref:`StyleBox<class_StyleBox>` remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+Nền được sử dụng khi **LineEdit** đang có focus trong GUI. :ref:`focus<class_LineEdit_theme_style_focus>` :ref:`StyleBox<class_StyleBox>` được hiển thị *lên trên* :ref:`StyleBox<class_StyleBox>` cơ sở, vì vậy nên sử dụng :ref:`StyleBox<class_StyleBox>` trong suốt một phần để đảm bảo :ref:`StyleBox<class_StyleBox>` cơ sở vẫn hiển thị. Một :ref:`StyleBox<class_StyleBox>` biểu thị đường viền hoặc gạch chân sẽ phù hợp với mục đích này. Để tắt hiệu ứng hiển thị focus, hãy gán tài nguyên :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`. Lưu ý rằng việc tắt hiệu ứng hiển thị focus sẽ làm giảm khả năng sử dụng khi điều hướng bằng bàn phím/bộ điều khiển, vì vậy không nên làm như vậy vì lý do khả năng tiếp cận.
 
 .. rst-class:: classref-item-separator
 
@@ -1954,9 +1954,9 @@ Background used when **LineEdit** has GUI focus. The :ref:`focus<class_LineEdit_
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗<class_LineEdit_theme_style_normal>`
+:ref:`StyleBox<class_StyleBox>` **normal** :ref:`🔗 <class_LineEdit_theme_style_normal>`
 
-Default background for the **LineEdit**.
+Nền mặc định cho **LineEdit**.
 
 .. rst-class:: classref-item-separator
 
@@ -1966,16 +1966,16 @@ Default background for the **LineEdit**.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **read_only** :ref:`🔗<class_LineEdit_theme_style_read_only>`
+:ref:`StyleBox<class_StyleBox>` **read_only** :ref:`🔗 <class_LineEdit_theme_style_read_only>`
 
-Background used when **LineEdit** is in read-only mode (:ref:`editable<class_LineEdit_property_editable>` is set to ``false``).
+Nền được sử dụng khi **LineEdit** ở chế độ chỉ đọc (:ref:`editable<class_LineEdit_property_editable>` được đặt thành ``false``).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

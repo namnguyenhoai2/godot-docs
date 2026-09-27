@@ -10,36 +10,36 @@
 PlaceholderTexture2D
 ====================
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Placeholder class for a 2-dimensional texture.
+Lớp Placeholder cho texture 2 chiều.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class is used when loading a project that uses a :ref:`Texture2D<class_Texture2D>` subclass in 2 conditions:
+Lớp này được sử dụng khi tải một project sử dụng một lớp con :ref:`Texture2D<class_Texture2D>` trong 2 trường hợp:
 
-- When running the project exported in dedicated server mode, only the texture's dimensions are kept (as they may be relied upon for gameplay purposes or positioning of other elements). This allows reducing the exported PCK's size significantly.
+- Khi chạy project được export ở chế độ dedicated server, chỉ các kích thước của texture được giữ lại (vì chúng có thể được sử dụng cho gameplay hoặc để định vị các phần tử khác). Điều này giúp giảm đáng kể kích thước của PCK đã export.
 
-- When this subclass is missing due to using a different engine version or build (e.g. modules disabled).
+- Khi lớp con này bị thiếu do sử dụng phiên bản hoặc bản build engine khác (ví dụ: các module bị tắt).
 
-\ **Note:** This is not intended to be used as an actual texture for rendering. It is not guaranteed to work like one in shaders or materials (for example when calculating UV).
+\ **Lưu ý:** Đây không phải là texture thực tế dành cho việc render. Không đảm bảo nó sẽ hoạt động như một texture trong shader hoặc material (ví dụ: khi tính toán UV).
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`       | resource_local_to_scene                               | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-------------------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>` | :ref:`size<class_PlaceholderTexture2D_property_size>` | ``Vector2(1, 1)``                                                                      |
-   +-------------------------------+-------------------------------------------------------+----------------------------------------------------------------------------------------+
+   +-------------------------------+-------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`       | resource_local_to_scene                               | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-------------------------------+-------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>` | :ref:`size<class_PlaceholderTexture2D_property_size>` | ``Vector2(1, 1)``                                                                   |
+   +-------------------------------+-------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PlaceholderTexture2D_property_size:
 
@@ -61,14 +61,14 @@ Property Descriptions
 - |void| **set_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_size**\ (\ )
 
-The texture's size (in pixels).
+Kích thước của texture (tính bằng pixel).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

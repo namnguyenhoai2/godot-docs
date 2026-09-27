@@ -10,28 +10,28 @@
 OpenXRAndroidThreadSettingsExtension
 ====================================
 
-**Inherits:** :ref:`OpenXRExtensionWrapper<class_OpenXRExtensionWrapper>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRExtensionWrapper<class_OpenXRExtensionWrapper>` **<** :ref:`Object<class_Object>`
 
-Wraps the `XR_KHR_android_thread_settings <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_KHR_android_thread_settings>`__ extension.
+Đóng gói extension `XR_KHR_android_thread_settings <https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html#XR_KHR_android_thread_settings>`__.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-For XR to be comfortable, it is important for applications to deliver frames quickly and consistently. In order to make sure the important application threads get their full share of time, these threads must be identified to the system, which will adjust their scheduling priority accordingly.
+Để XR mang lại trải nghiệm thoải mái, điều quan trọng là các ứng dụng phải cung cấp khung hình nhanh chóng và ổn định. Để đảm bảo các thread quan trọng của ứng dụng nhận được đầy đủ thời gian xử lý, những thread này phải được xác định với hệ thống, hệ thống sẽ điều chỉnh độ ưu tiên scheduling của chúng cho phù hợp.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`set_application_thread_type<class_OpenXRAndroidThreadSettingsExtension_method_set_application_thread_type>`\ (\ thread_type\: :ref:`ThreadType<enum_OpenXRAndroidThreadSettingsExtension_ThreadType>`, thread_id\: :ref:`int<class_int>` = 0\ ) |
-   +-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`set_application_thread_type<class_OpenXRAndroidThreadSettingsExtension_method_set_application_thread_type>`\ (\ thread_type\: :ref:`ThreadType <enum_OpenXRAndroidThreadSettingsExtension_ThreadType>`, thread_id\: :ref:`int<class_int>` = 0\ ) |
+   +-------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OpenXRAndroidThreadSettingsExtension_ThreadType:
 
 .. rst-class:: classref-enumeration
 
-enum **ThreadType**: :ref:`🔗<enum_OpenXRAndroidThreadSettingsExtension_ThreadType>`
+enum **ThreadType**: :ref:`🔗 <enum_OpenXRAndroidThreadSettingsExtension_ThreadType>`
 
 .. _class_OpenXRAndroidThreadSettingsExtension_constant_THREAD_TYPE_APPLICATION_MAIN:
 
@@ -54,7 +54,7 @@ enum **ThreadType**: :ref:`🔗<enum_OpenXRAndroidThreadSettingsExtension_Thread
 
 :ref:`ThreadType<enum_OpenXRAndroidThreadSettingsExtension_ThreadType>` **THREAD_TYPE_APPLICATION_MAIN** = ``0``
 
-Hints to the XR runtime that the thread is doing time critical CPU tasks.
+Gợi ý cho XR runtime rằng thread đang thực hiện các tác vụ CPU quan trọng về thời gian.
 
 .. _class_OpenXRAndroidThreadSettingsExtension_constant_THREAD_TYPE_APPLICATION_WORKER:
 
@@ -62,7 +62,7 @@ Hints to the XR runtime that the thread is doing time critical CPU tasks.
 
 :ref:`ThreadType<enum_OpenXRAndroidThreadSettingsExtension_ThreadType>` **THREAD_TYPE_APPLICATION_WORKER** = ``1``
 
-Hints to the XR runtime that the thread is doing background CPU tasks.
+Gợi ý cho XR runtime rằng thread đang thực hiện các tác vụ CPU nền.
 
 .. _class_OpenXRAndroidThreadSettingsExtension_constant_THREAD_TYPE_RENDERER_MAIN:
 
@@ -70,7 +70,7 @@ Hints to the XR runtime that the thread is doing background CPU tasks.
 
 :ref:`ThreadType<enum_OpenXRAndroidThreadSettingsExtension_ThreadType>` **THREAD_TYPE_RENDERER_MAIN** = ``2``
 
-Hints to the XR runtime that the thread is doing time critical graphics device tasks.
+Gợi ý cho XR runtime rằng thread đang thực hiện các tác vụ thiết bị đồ họa quan trọng về thời gian.
 
 .. _class_OpenXRAndroidThreadSettingsExtension_constant_THREAD_TYPE_RENDERER_WORKER:
 
@@ -78,7 +78,7 @@ Hints to the XR runtime that the thread is doing time critical graphics device t
 
 :ref:`ThreadType<enum_OpenXRAndroidThreadSettingsExtension_ThreadType>` **THREAD_TYPE_RENDERER_WORKER** = ``3``
 
-Hints to the XR runtime that the thread is doing background graphics device tasks.
+Gợi ý cho XR runtime rằng thread đang thực hiện các tác vụ thiết bị đồ họa nền.
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ Hints to the XR runtime that the thread is doing background graphics device task
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRAndroidThreadSettingsExtension_method_set_application_thread_type:
 
@@ -95,18 +95,18 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **set_application_thread_type**\ (\ thread_type\: :ref:`ThreadType<enum_OpenXRAndroidThreadSettingsExtension_ThreadType>`, thread_id\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_OpenXRAndroidThreadSettingsExtension_method_set_application_thread_type>`
 
-Sets the thread type of the given thread, so that the XR runtime can adjust its scheduling priority accordingly.
+Đặt loại thread cho thread đã cho để XR runtime có thể điều chỉnh mức độ ưu tiên lập lịch tương ứng.
 
-\ ``thread_id`` refers to the OS thread id (ie from ``gettid()``). When ``thread_id`` is ``0``, it will set the thread type of the current thread.
+\ ``thread_id`` đề cập đến id của thread hệ điều hành (tức là từ ``gettid()``). Khi ``thread_id`` là ``0``, nó sẽ đặt kiểu thread của thread hiện tại.
 
-\ **NOTE:** The id returned by :ref:`Thread.get_id()<class_Thread_method_get_id>` is incompatible with ``thread_id``.
+\ **LƯU Ý:** Id do :ref:`Thread.get_id()<class_Thread_method_get_id>` trả về không tương thích với ``thread_id``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được sử dụng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

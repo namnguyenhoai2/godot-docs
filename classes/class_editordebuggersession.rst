@@ -10,23 +10,23 @@
 EditorDebuggerSession
 =====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A class to interact with the editor debugger.
+Một class dùng để tương tác với trình debug của editor.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class cannot be directly instantiated and must be retrieved via an :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>`.
+Không thể khởi tạo trực tiếp class này và phải lấy nó thông qua một :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>`.
 
-You can add tabs to the session UI via :ref:`add_session_tab()<class_EditorDebuggerSession_method_add_session_tab>`, send messages via :ref:`send_message()<class_EditorDebuggerSession_method_send_message>`, and toggle :ref:`EngineProfiler<class_EngineProfiler>`\ s via :ref:`toggle_profiler()<class_EditorDebuggerSession_method_toggle_profiler>`.
+Bạn có thể thêm các tab vào UI của session thông qua :ref:`add_session_tab()<class_EditorDebuggerSession_method_add_session_tab>`, gửi thông báo qua :ref:`send_message()<class_EditorDebuggerSession_method_send_message>` và bật/tắt :ref:`EngineProfiler<class_EngineProfiler>`\ s thông qua :ref:`toggle_profiler()<class_EditorDebuggerSession_method_toggle_profiler>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorDebuggerSession_signal_breaked:
 
@@ -64,7 +64,7 @@ Signals
 
 **breaked**\ (\ can_debug\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorDebuggerSession_signal_breaked>`
 
-Emitted when the attached remote instance enters a break state. If ``can_debug`` is ``true``, the remote instance will enter the debug loop.
+Được phát ra khi phiên bản từ xa được đính kèm chuyển sang trạng thái dừng. Nếu ``can_debug`` là ``true``, phiên bản từ xa sẽ đi vào vòng lặp gỡ lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -76,7 +76,7 @@ Emitted when the attached remote instance enters a break state. If ``can_debug``
 
 **continued**\ (\ ) :ref:`🔗<class_EditorDebuggerSession_signal_continued>`
 
-Emitted when the attached remote instance exits a break state.
+Được phát ra khi phiên bản từ xa được đính kèm thoát khỏi trạng thái dừng.
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ Emitted when the attached remote instance exits a break state.
 
 **started**\ (\ ) :ref:`🔗<class_EditorDebuggerSession_signal_started>`
 
-Emitted when a remote instance is attached to this session (i.e. the session becomes active).
+Được phát ra khi một thực thể từ xa được gắn vào session này (tức là session trở nên active).
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ Emitted when a remote instance is attached to this session (i.e. the session bec
 
 **stopped**\ (\ ) :ref:`🔗<class_EditorDebuggerSession_signal_stopped>`
 
-Emitted when a remote instance is detached from this session (i.e. the session becomes inactive).
+Được phát ra khi một thực thể từ xa được tháo khỏi session này (tức là session trở nên inactive).
 
 .. rst-class:: classref-section-separator
 
@@ -108,8 +108,8 @@ Emitted when a remote instance is detached from this session (i.e. the session b
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorDebuggerSession_method_add_session_tab:
 
@@ -117,7 +117,7 @@ Method Descriptions
 
 |void| **add_session_tab**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorDebuggerSession_method_add_session_tab>`
 
-Adds the given ``control`` to the debug session UI in the debugger bottom panel. The ``control``'s node name will be used as the tab title.
+Thêm ``control`` đã cho vào giao diện debug session trong bảng điều khiển phía dưới của debugger. Tên node của ``control`` sẽ được dùng làm tiêu đề tab.
 
 .. rst-class:: classref-item-separator
 
@@ -129,7 +129,7 @@ Adds the given ``control`` to the debug session UI in the debugger bottom panel.
 
 :ref:`bool<class_bool>` **is_active**\ (\ ) :ref:`🔗<class_EditorDebuggerSession_method_is_active>`
 
-Returns ``true`` if the debug session is currently attached to a remote instance.
+Trả về ``true`` nếu debug session hiện được gắn vào một thực thể từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Returns ``true`` if the debug session is currently attached to a remote instance
 
 :ref:`bool<class_bool>` **is_breaked**\ (\ ) :ref:`🔗<class_EditorDebuggerSession_method_is_breaked>`
 
-Returns ``true`` if the attached remote instance is currently in the debug loop.
+Trả về ``true`` nếu thực thể từ xa được gắn hiện đang ở trong vòng lặp debug.
 
 .. rst-class:: classref-item-separator
 
@@ -153,7 +153,7 @@ Returns ``true`` if the attached remote instance is currently in the debug loop.
 
 :ref:`bool<class_bool>` **is_debuggable**\ (\ ) :ref:`🔗<class_EditorDebuggerSession_method_is_debuggable>`
 
-Returns ``true`` if the attached remote instance can be debugged.
+Trả về ``true`` nếu thực thể từ xa được gắn có thể được debug.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Returns ``true`` if the attached remote instance can be debugged.
 
 |void| **remove_session_tab**\ (\ control\: :ref:`Control<class_Control>`\ ) :ref:`🔗<class_EditorDebuggerSession_method_remove_session_tab>`
 
-Removes the given ``control`` from the debug session UI in the debugger bottom panel.
+Xóa ``control`` đã cho khỏi giao diện phiên debug trong bảng điều khiển phía dưới của debugger.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ Removes the given ``control`` from the debug session UI in the debugger bottom p
 
 |void| **send_message**\ (\ message\: :ref:`String<class_String>`, data\: :ref:`Array<class_Array>` = []\ ) :ref:`🔗<class_EditorDebuggerSession_method_send_message>`
 
-Sends the given ``message`` to the attached remote instance, optionally passing additionally ``data``. See :ref:`EngineDebugger<class_EngineDebugger>` for how to retrieve those messages.
+Gửi ``message`` đã cho đến phiên bản từ xa được đính kèm, đồng thời có thể truyền thêm ``data``. Xem :ref:`EngineDebugger<class_EngineDebugger>` để biết cách truy xuất các thông báo đó.
 
 .. rst-class:: classref-item-separator
 
@@ -189,7 +189,7 @@ Sends the given ``message`` to the attached remote instance, optionally passing 
 
 |void| **set_breakpoint**\ (\ path\: :ref:`String<class_String>`, line\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorDebuggerSession_method_set_breakpoint>`
 
-Enables or disables a specific breakpoint based on ``enabled``, updating the Editor Breakpoint Panel accordingly.
+Bật hoặc tắt breakpoint cụ thể dựa trên ``enabled``, đồng thời cập nhật Breakpoint Panel của Editor.
 
 .. rst-class:: classref-item-separator
 
@@ -201,14 +201,14 @@ Enables or disables a specific breakpoint based on ``enabled``, updating the Edi
 
 |void| **toggle_profiler**\ (\ profiler\: :ref:`String<class_String>`, enable\: :ref:`bool<class_bool>`, data\: :ref:`Array<class_Array>` = []\ ) :ref:`🔗<class_EditorDebuggerSession_method_toggle_profiler>`
 
-Toggle the given ``profiler`` on the attached remote instance, optionally passing additionally ``data``. See :ref:`EngineProfiler<class_EngineProfiler>` for more details.
+Bật hoặc tắt ``profiler`` đã cho trên phiên bản từ xa được đính kèm, đồng thời có thể truyền thêm ``data``. Xem :ref:`EngineProfiler<class_EngineProfiler>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,55 +10,55 @@
 XRFaceTracker
 =============
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A tracked face.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-An instance of this object represents a tracked face and its corresponding blend shapes. The blend shapes come from the `Unified Expressions <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/unified-blendshapes>`__ standard, and contain extended details and visuals for each blend shape. Additionally the `Tracking Standard Comparison <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/compatibility/overview>`__ page documents the relationship between Unified Expressions and other standards.
-
-As face trackers are turned on they are registered with the :ref:`XRServer<class_XRServer>`.
+Một khuôn mặt được theo dõi.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một thực thể của đối tượng này đại diện cho một khuôn mặt được theo dõi và các blend shape tương ứng. Các blend shape bắt nguồn từ tiêu chuẩn `Unified Expressions <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/unified-blendshapes>`__, đồng thời chứa thông tin chi tiết mở rộng và hình ảnh trực quan cho từng blend shape. Ngoài ra, trang `Tracking Standard Comparison <https://docs.vrcft.io/docs/tutorial-avatars/tutorial-avatars-extras/compatibility/overview>`__ ghi lại mối quan hệ giữa Unified Expressions và các tiêu chuẩn khác.
+
+Khi các bộ theo dõi khuôn mặt được bật, chúng sẽ được đăng ký với :ref:`XRServer<class_XRServer>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`XR documentation index <../tutorials/xr/index>`
+- :doc:`Mục lục tài liệu XR <../tutorials/xr/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`blend_shapes<class_XRFaceTracker_property_blend_shapes>` | ``PackedFloat32Array()``                                           |
-   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
-   | :ref:`TrackerType<enum_XRServer_TrackerType>`       | type                                                           | ``64`` (overrides :ref:`XRTracker<class_XRTracker_property_type>`) |
-   +-----------------------------------------------------+----------------------------------------------------------------+--------------------------------------------------------------------+
+   +-----------------------------------------------------+----------------------------------------------------------------+-----------------------------------------------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>` | :ref:`blend_shapes<class_XRFaceTracker_property_blend_shapes>` | ``PackedFloat32Array()``                                        |
+   +-----------------------------------------------------+----------------------------------------------------------------+-----------------------------------------------------------------+
+   | :ref:`TrackerType <enum_XRServer_TrackerType>`      | type                                                           | ``64`` (ghi đè :ref:`XRTracker<class_XRTracker_property_type>`) |
+   +-----------------------------------------------------+----------------------------------------------------------------+-----------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`get_blend_shape<class_XRFaceTracker_method_get_blend_shape>`\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`\ ) |const|                             |
-   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_blend_shape<class_XRFaceTracker_method_set_blend_shape>`\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`, weight\: :ref:`float<class_float>`\ ) |
-   +---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`get_blend_shape<class_XRFaceTracker_method_get_blend_shape>`\ (\ blend_shape\: :ref:`BlendShapeEntry <enum_XRFaceTracker_BlendShapeEntry>`\ ) |const|                             |
+   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_blend_shape<class_XRFaceTracker_method_set_blend_shape>`\ (\ blend_shape\: :ref:`BlendShapeEntry <enum_XRFaceTracker_BlendShapeEntry>`, weight\: :ref:`float<class_float>`\ ) |
+   +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -66,14 +66,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_XRFaceTracker_BlendShapeEntry:
 
 .. rst-class:: classref-enumeration
 
-enum **BlendShapeEntry**: :ref:`🔗<enum_XRFaceTracker_BlendShapeEntry>`
+enum **BlendShapeEntry**: :ref:`🔗 <enum_XRFaceTracker_BlendShapeEntry>`
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_OUT_RIGHT:
 
@@ -81,7 +81,7 @@ enum **BlendShapeEntry**: :ref:`🔗<enum_XRFaceTracker_BlendShapeEntry>`
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_OUT_RIGHT** = ``0``
 
-Right eye looks outwards.
+Mắt phải nhìn ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_IN_RIGHT:
 
@@ -89,7 +89,7 @@ Right eye looks outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_IN_RIGHT** = ``1``
 
-Right eye looks inwards.
+Mắt phải nhìn vào trong.
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_UP_RIGHT:
 
@@ -97,7 +97,7 @@ Right eye looks inwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_UP_RIGHT** = ``2``
 
-Right eye looks upwards.
+Mắt phải nhìn lên trên.
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_DOWN_RIGHT:
 
@@ -105,7 +105,7 @@ Right eye looks upwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_DOWN_RIGHT** = ``3``
 
-Right eye looks downwards.
+Mắt phải nhìn xuống dưới.
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_OUT_LEFT:
 
@@ -113,7 +113,7 @@ Right eye looks downwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_OUT_LEFT** = ``4``
 
-Left eye looks outwards.
+Mắt trái hướng ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_IN_LEFT:
 
@@ -121,7 +121,7 @@ Left eye looks outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_IN_LEFT** = ``5``
 
-Left eye looks inwards.
+Mắt trái hướng vào trong.
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_UP_LEFT:
 
@@ -129,7 +129,7 @@ Left eye looks inwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_UP_LEFT** = ``6``
 
-Left eye looks upwards.
+Mắt trái hướng lên trên.
 
 .. _class_XRFaceTracker_constant_FT_EYE_LOOK_DOWN_LEFT:
 
@@ -137,7 +137,7 @@ Left eye looks upwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_LOOK_DOWN_LEFT** = ``7``
 
-Left eye looks downwards.
+Mắt trái hướng xuống dưới.
 
 .. _class_XRFaceTracker_constant_FT_EYE_CLOSED_RIGHT:
 
@@ -145,7 +145,7 @@ Left eye looks downwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_CLOSED_RIGHT** = ``8``
 
-Closes the right eyelid.
+Nhắm mí mắt phải.
 
 .. _class_XRFaceTracker_constant_FT_EYE_CLOSED_LEFT:
 
@@ -153,7 +153,7 @@ Closes the right eyelid.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_CLOSED_LEFT** = ``9``
 
-Closes the left eyelid.
+Nhắm mí mắt trái.
 
 .. _class_XRFaceTracker_constant_FT_EYE_SQUINT_RIGHT:
 
@@ -161,7 +161,7 @@ Closes the left eyelid.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_SQUINT_RIGHT** = ``10``
 
-Squeezes the right eye socket muscles.
+Siết các cơ quanh hốc mắt phải.
 
 .. _class_XRFaceTracker_constant_FT_EYE_SQUINT_LEFT:
 
@@ -169,7 +169,7 @@ Squeezes the right eye socket muscles.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_SQUINT_LEFT** = ``11``
 
-Squeezes the left eye socket muscles.
+Co các cơ quanh hốc mắt trái.
 
 .. _class_XRFaceTracker_constant_FT_EYE_WIDE_RIGHT:
 
@@ -177,7 +177,7 @@ Squeezes the left eye socket muscles.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_WIDE_RIGHT** = ``12``
 
-Right eyelid widens beyond relaxed.
+Mí mắt phải mở rộng hơn trạng thái thả lỏng.
 
 .. _class_XRFaceTracker_constant_FT_EYE_WIDE_LEFT:
 
@@ -185,7 +185,7 @@ Right eyelid widens beyond relaxed.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_WIDE_LEFT** = ``13``
 
-Left eyelid widens beyond relaxed.
+Mí mắt trái mở rộng hơn trạng thái thả lỏng.
 
 .. _class_XRFaceTracker_constant_FT_EYE_DILATION_RIGHT:
 
@@ -193,7 +193,7 @@ Left eyelid widens beyond relaxed.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_DILATION_RIGHT** = ``14``
 
-Dilates the right eye pupil.
+Làm giãn đồng tử mắt phải.
 
 .. _class_XRFaceTracker_constant_FT_EYE_DILATION_LEFT:
 
@@ -201,7 +201,7 @@ Dilates the right eye pupil.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_DILATION_LEFT** = ``15``
 
-Dilates the left eye pupil.
+Làm giãn đồng tử mắt trái.
 
 .. _class_XRFaceTracker_constant_FT_EYE_CONSTRICT_RIGHT:
 
@@ -209,7 +209,7 @@ Dilates the left eye pupil.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_CONSTRICT_RIGHT** = ``16``
 
-Constricts the right eye pupil.
+Làm co đồng tử mắt phải.
 
 .. _class_XRFaceTracker_constant_FT_EYE_CONSTRICT_LEFT:
 
@@ -217,7 +217,7 @@ Constricts the right eye pupil.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_CONSTRICT_LEFT** = ``17``
 
-Constricts the left eye pupil.
+Làm co đồng tử mắt trái.
 
 .. _class_XRFaceTracker_constant_FT_BROW_PINCH_RIGHT:
 
@@ -225,7 +225,7 @@ Constricts the left eye pupil.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_PINCH_RIGHT** = ``18``
 
-Right eyebrow pinches in.
+Chân mày phải co vào trong.
 
 .. _class_XRFaceTracker_constant_FT_BROW_PINCH_LEFT:
 
@@ -233,7 +233,7 @@ Right eyebrow pinches in.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_PINCH_LEFT** = ``19``
 
-Left eyebrow pinches in.
+Chân mày trái co vào trong.
 
 .. _class_XRFaceTracker_constant_FT_BROW_LOWERER_RIGHT:
 
@@ -241,7 +241,7 @@ Left eyebrow pinches in.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_LOWERER_RIGHT** = ``20``
 
-Outer right eyebrow pulls down.
+Phần ngoài chân mày phải kéo xuống.
 
 .. _class_XRFaceTracker_constant_FT_BROW_LOWERER_LEFT:
 
@@ -249,7 +249,7 @@ Outer right eyebrow pulls down.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_LOWERER_LEFT** = ``21``
 
-Outer left eyebrow pulls down.
+Phần ngoài chân mày trái kéo xuống.
 
 .. _class_XRFaceTracker_constant_FT_BROW_INNER_UP_RIGHT:
 
@@ -257,7 +257,7 @@ Outer left eyebrow pulls down.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_INNER_UP_RIGHT** = ``22``
 
-Inner right eyebrow pulls up.
+Phần trong chân mày phải kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_BROW_INNER_UP_LEFT:
 
@@ -265,7 +265,7 @@ Inner right eyebrow pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_INNER_UP_LEFT** = ``23``
 
-Inner left eyebrow pulls up.
+Phần trong chân mày trái kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_BROW_OUTER_UP_RIGHT:
 
@@ -273,7 +273,7 @@ Inner left eyebrow pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_OUTER_UP_RIGHT** = ``24``
 
-Outer right eyebrow pulls up.
+Phần ngoài chân mày phải kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_BROW_OUTER_UP_LEFT:
 
@@ -281,7 +281,7 @@ Outer right eyebrow pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_OUTER_UP_LEFT** = ``25``
 
-Outer left eyebrow pulls up.
+Phần ngoài lông mày trái kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_NOSE_SNEER_RIGHT:
 
@@ -289,7 +289,7 @@ Outer left eyebrow pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NOSE_SNEER_RIGHT** = ``26``
 
-Right side face sneers.
+Nửa mặt bên phải nhếch mép.
 
 .. _class_XRFaceTracker_constant_FT_NOSE_SNEER_LEFT:
 
@@ -297,7 +297,7 @@ Right side face sneers.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NOSE_SNEER_LEFT** = ``27``
 
-Left side face sneers.
+Nửa mặt bên trái nhếch mép.
 
 .. _class_XRFaceTracker_constant_FT_NASAL_DILATION_RIGHT:
 
@@ -305,7 +305,7 @@ Left side face sneers.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NASAL_DILATION_RIGHT** = ``28``
 
-Right side nose canal dilates.
+Lỗ mũi bên phải giãn ra.
 
 .. _class_XRFaceTracker_constant_FT_NASAL_DILATION_LEFT:
 
@@ -313,7 +313,7 @@ Right side nose canal dilates.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NASAL_DILATION_LEFT** = ``29``
 
-Left side nose canal dilates.
+Lỗ mũi bên trái giãn ra.
 
 .. _class_XRFaceTracker_constant_FT_NASAL_CONSTRICT_RIGHT:
 
@@ -321,7 +321,7 @@ Left side nose canal dilates.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NASAL_CONSTRICT_RIGHT** = ``30``
 
-Right side nose canal constricts.
+Lỗ mũi bên phải co lại.
 
 .. _class_XRFaceTracker_constant_FT_NASAL_CONSTRICT_LEFT:
 
@@ -329,7 +329,7 @@ Right side nose canal constricts.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NASAL_CONSTRICT_LEFT** = ``31``
 
-Left side nose canal constricts.
+Lỗ mũi bên trái co lại.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_SQUINT_RIGHT:
 
@@ -337,7 +337,7 @@ Left side nose canal constricts.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_SQUINT_RIGHT** = ``32``
 
-Raises the right side cheek.
+Nâng má bên phải.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_SQUINT_LEFT:
 
@@ -345,7 +345,7 @@ Raises the right side cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_SQUINT_LEFT** = ``33``
 
-Raises the left side cheek.
+Nâng má bên trái.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_PUFF_RIGHT:
 
@@ -353,7 +353,7 @@ Raises the left side cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_PUFF_RIGHT** = ``34``
 
-Puffs the right side cheek.
+Phồng má bên phải.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_PUFF_LEFT:
 
@@ -361,7 +361,7 @@ Puffs the right side cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_PUFF_LEFT** = ``35``
 
-Puffs the left side cheek.
+Phồng má bên trái.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_SUCK_RIGHT:
 
@@ -369,7 +369,7 @@ Puffs the left side cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_SUCK_RIGHT** = ``36``
 
-Sucks in the right side cheek.
+Hóp má bên phải.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_SUCK_LEFT:
 
@@ -377,7 +377,7 @@ Sucks in the right side cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_SUCK_LEFT** = ``37``
 
-Sucks in the left side cheek.
+Hóp má bên trái.
 
 .. _class_XRFaceTracker_constant_FT_JAW_OPEN:
 
@@ -385,7 +385,7 @@ Sucks in the left side cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_JAW_OPEN** = ``38``
 
-Opens jawbone.
+Mở xương hàm.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_CLOSED:
 
@@ -393,7 +393,7 @@ Opens jawbone.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_CLOSED** = ``39``
 
-Closes the mouth.
+Khép miệng.
 
 .. _class_XRFaceTracker_constant_FT_JAW_RIGHT:
 
@@ -401,7 +401,7 @@ Closes the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_JAW_RIGHT** = ``40``
 
-Pushes jawbone right.
+Đẩy xương hàm sang phải.
 
 .. _class_XRFaceTracker_constant_FT_JAW_LEFT:
 
@@ -409,7 +409,7 @@ Pushes jawbone right.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_JAW_LEFT** = ``41``
 
-Pushes jawbone left.
+Đẩy xương hàm sang trái.
 
 .. _class_XRFaceTracker_constant_FT_JAW_FORWARD:
 
@@ -417,7 +417,7 @@ Pushes jawbone left.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_JAW_FORWARD** = ``42``
 
-Pushes jawbone forward.
+Đẩy xương hàm về phía trước.
 
 .. _class_XRFaceTracker_constant_FT_JAW_BACKWARD:
 
@@ -425,7 +425,7 @@ Pushes jawbone forward.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_JAW_BACKWARD** = ``43``
 
-Pushes jawbone backward.
+Đẩy xương hàm về phía sau.
 
 .. _class_XRFaceTracker_constant_FT_JAW_CLENCH:
 
@@ -433,7 +433,7 @@ Pushes jawbone backward.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_JAW_CLENCH** = ``44``
 
-Flexes jaw muscles.
+Co các cơ hàm.
 
 .. _class_XRFaceTracker_constant_FT_JAW_MANDIBLE_RAISE:
 
@@ -441,7 +441,7 @@ Flexes jaw muscles.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_JAW_MANDIBLE_RAISE** = ``45``
 
-Raises the jawbone.
+Nâng xương hàm.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_UPPER_RIGHT:
 
@@ -449,7 +449,7 @@ Raises the jawbone.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_UPPER_RIGHT** = ``46``
 
-Upper right lip part tucks in the mouth.
+Phần môi trên bên phải thụt vào trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_UPPER_LEFT:
 
@@ -457,7 +457,7 @@ Upper right lip part tucks in the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_UPPER_LEFT** = ``47``
 
-Upper left lip part tucks in the mouth.
+Phần môi trên bên trái thụt vào trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_LOWER_RIGHT:
 
@@ -465,7 +465,7 @@ Upper left lip part tucks in the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_LOWER_RIGHT** = ``48``
 
-Lower right lip part tucks in the mouth.
+Phần môi dưới bên phải thụt vào trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_LOWER_LEFT:
 
@@ -473,7 +473,7 @@ Lower right lip part tucks in the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_LOWER_LEFT** = ``49``
 
-Lower left lip part tucks in the mouth.
+Phần môi dưới bên trái thụt vào trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_CORNER_RIGHT:
 
@@ -481,7 +481,7 @@ Lower left lip part tucks in the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_CORNER_RIGHT** = ``50``
 
-Right lip corner folds into the mouth.
+Khóe môi bên phải gập vào trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_CORNER_LEFT:
 
@@ -489,7 +489,7 @@ Right lip corner folds into the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_CORNER_LEFT** = ``51``
 
-Left lip corner folds into the mouth.
+Khóe môi bên trái gập vào trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_LIP_FUNNEL_UPPER_RIGHT:
 
@@ -497,7 +497,7 @@ Left lip corner folds into the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_FUNNEL_UPPER_RIGHT** = ``52``
 
-Upper right lip part pushes into a funnel.
+Phần môi trên bên phải đẩy vào một cái phễu.
 
 .. _class_XRFaceTracker_constant_FT_LIP_FUNNEL_UPPER_LEFT:
 
@@ -505,7 +505,7 @@ Upper right lip part pushes into a funnel.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_FUNNEL_UPPER_LEFT** = ``53``
 
-Upper left lip part pushes into a funnel.
+Phần môi trên bên trái đẩy vào một cái phễu.
 
 .. _class_XRFaceTracker_constant_FT_LIP_FUNNEL_LOWER_RIGHT:
 
@@ -513,7 +513,7 @@ Upper left lip part pushes into a funnel.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_FUNNEL_LOWER_RIGHT** = ``54``
 
-Lower right lip part pushes into a funnel.
+Phần môi dưới bên phải đẩy vào một cái phễu.
 
 .. _class_XRFaceTracker_constant_FT_LIP_FUNNEL_LOWER_LEFT:
 
@@ -521,7 +521,7 @@ Lower right lip part pushes into a funnel.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_FUNNEL_LOWER_LEFT** = ``55``
 
-Lower left lip part pushes into a funnel.
+Phần môi dưới bên trái đẩy vào một cái phễu.
 
 .. _class_XRFaceTracker_constant_FT_LIP_PUCKER_UPPER_RIGHT:
 
@@ -529,7 +529,7 @@ Lower left lip part pushes into a funnel.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_PUCKER_UPPER_RIGHT** = ``56``
 
-Upper right lip part pushes outwards.
+Phần môi trên bên phải đẩy ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_LIP_PUCKER_UPPER_LEFT:
 
@@ -537,7 +537,7 @@ Upper right lip part pushes outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_PUCKER_UPPER_LEFT** = ``57``
 
-Upper left lip part pushes outwards.
+Phần môi trên bên trái đẩy ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_LIP_PUCKER_LOWER_RIGHT:
 
@@ -545,7 +545,7 @@ Upper left lip part pushes outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_PUCKER_LOWER_RIGHT** = ``58``
 
-Lower right lip part pushes outwards.
+Phần môi dưới bên phải đẩy ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_LIP_PUCKER_LOWER_LEFT:
 
@@ -553,7 +553,7 @@ Lower right lip part pushes outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_PUCKER_LOWER_LEFT** = ``59``
 
-Lower left lip part pushes outwards.
+Phần môi dưới bên trái đẩy ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_UPPER_UP_RIGHT:
 
@@ -561,7 +561,7 @@ Lower left lip part pushes outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_UPPER_UP_RIGHT** = ``60``
 
-Upper right part of the lip pulls up.
+Phần môi trên bên phải kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_UPPER_UP_LEFT:
 
@@ -569,7 +569,7 @@ Upper right part of the lip pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_UPPER_UP_LEFT** = ``61``
 
-Upper left part of the lip pulls up.
+Phần môi trên bên trái kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_LOWER_DOWN_RIGHT:
 
@@ -577,7 +577,7 @@ Upper left part of the lip pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_LOWER_DOWN_RIGHT** = ``62``
 
-Lower right part of the lip pulls up.
+Phần môi dưới bên phải kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_LOWER_DOWN_LEFT:
 
@@ -585,7 +585,7 @@ Lower right part of the lip pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_LOWER_DOWN_LEFT** = ``63``
 
-Lower left part of the lip pulls up.
+Phần môi dưới bên trái kéo lên.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_UPPER_DEEPEN_RIGHT:
 
@@ -593,7 +593,7 @@ Lower left part of the lip pulls up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_UPPER_DEEPEN_RIGHT** = ``64``
 
-Upper right lip part pushes in the cheek.
+Phần môi trên bên phải ấn vào má.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_UPPER_DEEPEN_LEFT:
 
@@ -601,7 +601,7 @@ Upper right lip part pushes in the cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_UPPER_DEEPEN_LEFT** = ``65``
 
-Upper left lip part pushes in the cheek.
+Phần môi trên bên trái ấn vào má.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_UPPER_RIGHT:
 
@@ -609,7 +609,7 @@ Upper left lip part pushes in the cheek.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_UPPER_RIGHT** = ``66``
 
-Moves upper lip right.
+Di chuyển môi trên sang phải.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_UPPER_LEFT:
 
@@ -617,7 +617,7 @@ Moves upper lip right.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_UPPER_LEFT** = ``67``
 
-Moves upper lip left.
+Di chuyển môi trên sang trái.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_LOWER_RIGHT:
 
@@ -625,7 +625,7 @@ Moves upper lip left.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_LOWER_RIGHT** = ``68``
 
-Moves lower lip right.
+Di chuyển môi dưới sang phải.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_LOWER_LEFT:
 
@@ -633,7 +633,7 @@ Moves lower lip right.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_LOWER_LEFT** = ``69``
 
-Moves lower lip left.
+Di chuyển môi dưới sang trái.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_CORNER_PULL_RIGHT:
 
@@ -641,7 +641,7 @@ Moves lower lip left.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_CORNER_PULL_RIGHT** = ``70``
 
-Right lip corner pulls diagonally up and out.
+Khóe môi bên phải kéo chéo lên trên và ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_CORNER_PULL_LEFT:
 
@@ -649,7 +649,7 @@ Right lip corner pulls diagonally up and out.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_CORNER_PULL_LEFT** = ``71``
 
-Left lip corner pulls diagonally up and out.
+Khóe môi bên trái kéo chéo lên trên và ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_CORNER_SLANT_RIGHT:
 
@@ -657,7 +657,7 @@ Left lip corner pulls diagonally up and out.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_CORNER_SLANT_RIGHT** = ``72``
 
-Right corner lip slants up.
+Khóe môi bên phải chếch lên trên.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_CORNER_SLANT_LEFT:
 
@@ -665,7 +665,7 @@ Right corner lip slants up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_CORNER_SLANT_LEFT** = ``73``
 
-Left corner lip slants up.
+Khóe môi bên trái chếch lên trên.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_FROWN_RIGHT:
 
@@ -673,7 +673,7 @@ Left corner lip slants up.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_FROWN_RIGHT** = ``74``
 
-Right corner lip pulls down.
+Khóe môi bên phải kéo xuống.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_FROWN_LEFT:
 
@@ -681,7 +681,7 @@ Right corner lip pulls down.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_FROWN_LEFT** = ``75``
 
-Left corner lip pulls down.
+Khóe môi bên trái kéo xuống.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_STRETCH_RIGHT:
 
@@ -689,7 +689,7 @@ Left corner lip pulls down.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_STRETCH_RIGHT** = ``76``
 
-Mouth corner lip pulls out and down.
+Khóe môi kéo ra ngoài và xuống.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_STRETCH_LEFT:
 
@@ -697,7 +697,7 @@ Mouth corner lip pulls out and down.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_STRETCH_LEFT** = ``77``
 
-Mouth corner lip pulls out and down.
+Khóe môi kéo ra ngoài và xuống.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_DIMPLE_RIGHT:
 
@@ -705,7 +705,7 @@ Mouth corner lip pulls out and down.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_DIMPLE_RIGHT** = ``78``
 
-Right lip corner is pushed backwards.
+Khóe môi bên phải bị đẩy ra sau.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_DIMPLE_LEFT:
 
@@ -713,7 +713,7 @@ Right lip corner is pushed backwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_DIMPLE_LEFT** = ``79``
 
-Left lip corner is pushed backwards.
+Khóe môi bên trái bị đẩy ra sau.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_RAISER_UPPER:
 
@@ -721,7 +721,7 @@ Left lip corner is pushed backwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_RAISER_UPPER** = ``80``
 
-Raises and slightly pushes out the upper mouth.
+Nâng và hơi đẩy phần miệng trên ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_RAISER_LOWER:
 
@@ -729,7 +729,7 @@ Raises and slightly pushes out the upper mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_RAISER_LOWER** = ``81``
 
-Raises and slightly pushes out the lower mouth.
+Nâng và hơi đẩy phần miệng dưới ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_PRESS_RIGHT:
 
@@ -737,7 +737,7 @@ Raises and slightly pushes out the lower mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_PRESS_RIGHT** = ``82``
 
-Right side lips press and flatten together vertically.
+Môi bên phải ép và dẹt lại với nhau theo chiều dọc.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_PRESS_LEFT:
 
@@ -745,7 +745,7 @@ Right side lips press and flatten together vertically.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_PRESS_LEFT** = ``83``
 
-Left side lips press and flatten together vertically.
+Môi bên trái ép và dẹt lại với nhau theo chiều dọc.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_TIGHTENER_RIGHT:
 
@@ -753,7 +753,7 @@ Left side lips press and flatten together vertically.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_TIGHTENER_RIGHT** = ``84``
 
-Right side lips squeeze together horizontally.
+Môi bên phải ép chặt vào nhau theo chiều ngang.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_TIGHTENER_LEFT:
 
@@ -761,7 +761,7 @@ Right side lips squeeze together horizontally.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_TIGHTENER_LEFT** = ``85``
 
-Left side lips squeeze together horizontally.
+Môi bên trái ép chặt vào nhau theo chiều ngang.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_OUT:
 
@@ -769,7 +769,7 @@ Left side lips squeeze together horizontally.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_OUT** = ``86``
 
-Tongue visibly sticks out of the mouth.
+Lưỡi nhô rõ ra khỏi miệng.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_UP:
 
@@ -777,7 +777,7 @@ Tongue visibly sticks out of the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_UP** = ``87``
 
-Tongue points upwards.
+Lưỡi hướng lên trên.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_DOWN:
 
@@ -785,7 +785,7 @@ Tongue points upwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_DOWN** = ``88``
 
-Tongue points downwards.
+Lưỡi hướng xuống dưới.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_RIGHT:
 
@@ -793,7 +793,7 @@ Tongue points downwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_RIGHT** = ``89``
 
-Tongue points right.
+Lưỡi hướng sang phải.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_LEFT:
 
@@ -801,7 +801,7 @@ Tongue points right.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_LEFT** = ``90``
 
-Tongue points left.
+Lưỡi hướng sang trái.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_ROLL:
 
@@ -809,7 +809,7 @@ Tongue points left.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_ROLL** = ``91``
 
-Sides of the tongue funnel, creating a roll.
+Hai bên lưỡi cuộn vào trong, tạo thành một cuộn.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_BLEND_DOWN:
 
@@ -817,7 +817,7 @@ Sides of the tongue funnel, creating a roll.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_BLEND_DOWN** = ``92``
 
-Tongue arches up then down inside the mouth.
+Lưỡi uốn cong lên rồi xuống bên trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_CURL_UP:
 
@@ -825,7 +825,7 @@ Tongue arches up then down inside the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_CURL_UP** = ``93``
 
-Tongue arches down then up inside the mouth.
+Lưỡi uốn cong xuống rồi lên bên trong miệng.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_SQUISH:
 
@@ -833,7 +833,7 @@ Tongue arches down then up inside the mouth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_SQUISH** = ``94``
 
-Tongue squishes together and thickens.
+Lưỡi ép lại với nhau và dày lên.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_FLAT:
 
@@ -841,7 +841,7 @@ Tongue squishes together and thickens.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_FLAT** = ``95``
 
-Tongue flattens and thins out.
+Lưỡi dẹt và mỏng đi.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_TWIST_RIGHT:
 
@@ -849,7 +849,7 @@ Tongue flattens and thins out.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_TWIST_RIGHT** = ``96``
 
-Tongue tip rotates clockwise, with the rest following gradually.
+Đầu lưỡi xoay theo chiều kim đồng hồ, phần còn lại dần dần xoay theo.
 
 .. _class_XRFaceTracker_constant_FT_TONGUE_TWIST_LEFT:
 
@@ -857,7 +857,7 @@ Tongue tip rotates clockwise, with the rest following gradually.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_TONGUE_TWIST_LEFT** = ``97``
 
-Tongue tip rotates counter-clockwise, with the rest following gradually.
+Đầu lưỡi xoay ngược chiều kim đồng hồ, phần còn lại dần dần xoay theo.
 
 .. _class_XRFaceTracker_constant_FT_SOFT_PALATE_CLOSE:
 
@@ -865,7 +865,7 @@ Tongue tip rotates counter-clockwise, with the rest following gradually.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_SOFT_PALATE_CLOSE** = ``98``
 
-Inner mouth throat closes.
+Phần họng bên trong miệng khép lại.
 
 .. _class_XRFaceTracker_constant_FT_THROAT_SWALLOW:
 
@@ -873,7 +873,7 @@ Inner mouth throat closes.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_THROAT_SWALLOW** = ``99``
 
-The Adam's apple visibly swallows.
+Yết hầu chuyển động nuốt thấy rõ.
 
 .. _class_XRFaceTracker_constant_FT_NECK_FLEX_RIGHT:
 
@@ -881,7 +881,7 @@ The Adam's apple visibly swallows.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NECK_FLEX_RIGHT** = ``100``
 
-Right side neck visibly flexes.
+Phía bên phải cổ co lại thấy rõ.
 
 .. _class_XRFaceTracker_constant_FT_NECK_FLEX_LEFT:
 
@@ -889,7 +889,7 @@ Right side neck visibly flexes.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NECK_FLEX_LEFT** = ``101``
 
-Left side neck visibly flexes.
+Phía bên trái cổ co lại thấy rõ.
 
 .. _class_XRFaceTracker_constant_FT_EYE_CLOSED:
 
@@ -897,7 +897,7 @@ Left side neck visibly flexes.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_CLOSED** = ``102``
 
-Closes both eye lids.
+Nhắm cả hai mí mắt.
 
 .. _class_XRFaceTracker_constant_FT_EYE_WIDE:
 
@@ -905,7 +905,7 @@ Closes both eye lids.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_WIDE** = ``103``
 
-Widens both eye lids.
+Mở to cả hai mí mắt.
 
 .. _class_XRFaceTracker_constant_FT_EYE_SQUINT:
 
@@ -913,7 +913,7 @@ Widens both eye lids.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_SQUINT** = ``104``
 
-Squints both eye lids.
+Nheo cả hai mí mắt.
 
 .. _class_XRFaceTracker_constant_FT_EYE_DILATION:
 
@@ -921,7 +921,7 @@ Squints both eye lids.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_DILATION** = ``105``
 
-Dilates both pupils.
+Làm giãn cả hai đồng tử.
 
 .. _class_XRFaceTracker_constant_FT_EYE_CONSTRICT:
 
@@ -929,7 +929,7 @@ Dilates both pupils.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_EYE_CONSTRICT** = ``106``
 
-Constricts both pupils.
+Làm co cả hai đồng tử.
 
 .. _class_XRFaceTracker_constant_FT_BROW_DOWN_RIGHT:
 
@@ -937,7 +937,7 @@ Constricts both pupils.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_DOWN_RIGHT** = ``107``
 
-Pulls the right eyebrow down and in.
+Kéo lông mày phải xuống và vào trong.
 
 .. _class_XRFaceTracker_constant_FT_BROW_DOWN_LEFT:
 
@@ -945,7 +945,7 @@ Pulls the right eyebrow down and in.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_DOWN_LEFT** = ``108``
 
-Pulls the left eyebrow down and in.
+Kéo lông mày trái xuống và vào trong.
 
 .. _class_XRFaceTracker_constant_FT_BROW_DOWN:
 
@@ -953,7 +953,7 @@ Pulls the left eyebrow down and in.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_DOWN** = ``109``
 
-Pulls both eyebrows down and in.
+Kéo cả hai lông mày xuống và vào trong.
 
 .. _class_XRFaceTracker_constant_FT_BROW_UP_RIGHT:
 
@@ -961,7 +961,7 @@ Pulls both eyebrows down and in.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_UP_RIGHT** = ``110``
 
-Right brow appears worried.
+Lông mày phải trông lo lắng.
 
 .. _class_XRFaceTracker_constant_FT_BROW_UP_LEFT:
 
@@ -969,7 +969,7 @@ Right brow appears worried.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_UP_LEFT** = ``111``
 
-Left brow appears worried.
+Lông mày trái trông lo lắng.
 
 .. _class_XRFaceTracker_constant_FT_BROW_UP:
 
@@ -977,7 +977,7 @@ Left brow appears worried.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_BROW_UP** = ``112``
 
-Both brows appear worried.
+Cả hai lông mày trông lo lắng.
 
 .. _class_XRFaceTracker_constant_FT_NOSE_SNEER:
 
@@ -985,7 +985,7 @@ Both brows appear worried.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NOSE_SNEER** = ``113``
 
-Entire face sneers.
+Toàn bộ khuôn mặt thể hiện vẻ khinh miệt.
 
 .. _class_XRFaceTracker_constant_FT_NASAL_DILATION:
 
@@ -993,7 +993,7 @@ Entire face sneers.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NASAL_DILATION** = ``114``
 
-Both nose canals dilate.
+Cả hai ống mũi giãn ra.
 
 .. _class_XRFaceTracker_constant_FT_NASAL_CONSTRICT:
 
@@ -1001,7 +1001,7 @@ Both nose canals dilate.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_NASAL_CONSTRICT** = ``115``
 
-Both nose canals constrict.
+Cả hai ống mũi co lại.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_PUFF:
 
@@ -1009,7 +1009,7 @@ Both nose canals constrict.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_PUFF** = ``116``
 
-Puffs both cheeks.
+Phồng cả hai má.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_SUCK:
 
@@ -1017,7 +1017,7 @@ Puffs both cheeks.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_SUCK** = ``117``
 
-Sucks in both cheeks.
+Hóp cả hai má.
 
 .. _class_XRFaceTracker_constant_FT_CHEEK_SQUINT:
 
@@ -1025,7 +1025,7 @@ Sucks in both cheeks.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_CHEEK_SQUINT** = ``118``
 
-Raises both cheeks.
+Nâng cả hai má.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_UPPER:
 
@@ -1033,7 +1033,7 @@ Raises both cheeks.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_UPPER** = ``119``
 
-Tucks in the upper lips.
+Cuộn môi trên vào trong.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK_LOWER:
 
@@ -1041,7 +1041,7 @@ Tucks in the upper lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK_LOWER** = ``120``
 
-Tucks in the lower lips.
+Cuộn môi dưới vào trong.
 
 .. _class_XRFaceTracker_constant_FT_LIP_SUCK:
 
@@ -1049,7 +1049,7 @@ Tucks in the lower lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_SUCK** = ``121``
 
-Tucks in both lips.
+Cuộn cả hai môi vào trong.
 
 .. _class_XRFaceTracker_constant_FT_LIP_FUNNEL_UPPER:
 
@@ -1057,7 +1057,7 @@ Tucks in both lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_FUNNEL_UPPER** = ``122``
 
-Funnels in the upper lips.
+Thu môi trên vào trong theo hình phễu.
 
 .. _class_XRFaceTracker_constant_FT_LIP_FUNNEL_LOWER:
 
@@ -1065,7 +1065,7 @@ Funnels in the upper lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_FUNNEL_LOWER** = ``123``
 
-Funnels in the lower lips.
+Tạo hình phễu ở môi dưới.
 
 .. _class_XRFaceTracker_constant_FT_LIP_FUNNEL:
 
@@ -1073,7 +1073,7 @@ Funnels in the lower lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_FUNNEL** = ``124``
 
-Funnels in both lips.
+Tạo hình phễu ở cả hai môi.
 
 .. _class_XRFaceTracker_constant_FT_LIP_PUCKER_UPPER:
 
@@ -1081,7 +1081,7 @@ Funnels in both lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_PUCKER_UPPER** = ``125``
 
-Upper lip part pushes outwards.
+Phần môi trên nhô ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_LIP_PUCKER_LOWER:
 
@@ -1089,7 +1089,7 @@ Upper lip part pushes outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_PUCKER_LOWER** = ``126``
 
-Lower lip part pushes outwards.
+Phần môi dưới nhô ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_LIP_PUCKER:
 
@@ -1097,7 +1097,7 @@ Lower lip part pushes outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_LIP_PUCKER** = ``127``
 
-Lips push outwards.
+Môi nhô ra ngoài.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_UPPER_UP:
 
@@ -1105,7 +1105,7 @@ Lips push outwards.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_UPPER_UP** = ``128``
 
-Raises the upper lips.
+Nâng môi trên.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_LOWER_DOWN:
 
@@ -1113,7 +1113,7 @@ Raises the upper lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_LOWER_DOWN** = ``129``
 
-Lowers the lower lips.
+Hạ môi dưới.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_OPEN:
 
@@ -1121,7 +1121,7 @@ Lowers the lower lips.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_OPEN** = ``130``
 
-Mouth opens, revealing teeth.
+Miệng mở, để lộ răng.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_RIGHT:
 
@@ -1129,7 +1129,7 @@ Mouth opens, revealing teeth.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_RIGHT** = ``131``
 
-Moves mouth right.
+Di chuyển miệng sang phải.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_LEFT:
 
@@ -1137,7 +1137,7 @@ Moves mouth right.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_LEFT** = ``132``
 
-Moves mouth left.
+Di chuyển miệng sang trái.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_SMILE_RIGHT:
 
@@ -1145,7 +1145,7 @@ Moves mouth left.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_SMILE_RIGHT** = ``133``
 
-Right side of the mouth smiles.
+Bên phải miệng mỉm cười.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_SMILE_LEFT:
 
@@ -1153,7 +1153,7 @@ Right side of the mouth smiles.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_SMILE_LEFT** = ``134``
 
-Left side of the mouth smiles.
+Bên trái miệng mỉm cười.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_SMILE:
 
@@ -1161,7 +1161,7 @@ Left side of the mouth smiles.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_SMILE** = ``135``
 
-Mouth expresses a smile.
+Miệng thể hiện nụ cười.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_SAD_RIGHT:
 
@@ -1169,7 +1169,7 @@ Mouth expresses a smile.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_SAD_RIGHT** = ``136``
 
-Right side of the mouth expresses sadness.
+Bên phải miệng thể hiện sự buồn bã.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_SAD_LEFT:
 
@@ -1177,7 +1177,7 @@ Right side of the mouth expresses sadness.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_SAD_LEFT** = ``137``
 
-Left side of the mouth expresses sadness.
+Bên trái miệng biểu hiện sự buồn bã.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_SAD:
 
@@ -1185,7 +1185,7 @@ Left side of the mouth expresses sadness.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_SAD** = ``138``
 
-Mouth expresses sadness.
+Miệng biểu hiện sự buồn bã.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_STRETCH:
 
@@ -1193,7 +1193,7 @@ Mouth expresses sadness.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_STRETCH** = ``139``
 
-Mouth stretches.
+Miệng giãn ra.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_DIMPLE:
 
@@ -1201,7 +1201,7 @@ Mouth stretches.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_DIMPLE** = ``140``
 
-Lip corners dimple.
+Khóe môi lõm xuống.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_TIGHTENER:
 
@@ -1209,7 +1209,7 @@ Lip corners dimple.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_TIGHTENER** = ``141``
 
-Mouth tightens.
+Miệng siết lại.
 
 .. _class_XRFaceTracker_constant_FT_MOUTH_PRESS:
 
@@ -1217,7 +1217,7 @@ Mouth tightens.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MOUTH_PRESS** = ``142``
 
-Mouth presses together.
+Miệng mím chặt.
 
 .. _class_XRFaceTracker_constant_FT_MAX:
 
@@ -1225,7 +1225,7 @@ Mouth presses together.
 
 :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` **FT_MAX** = ``143``
 
-Represents the size of the :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` enum.
+Biểu thị kích thước của enum :ref:`BlendShapeEntry <enum_XRFaceTracker_BlendShapeEntry>`.
 
 .. rst-class:: classref-section-separator
 
@@ -1233,8 +1233,8 @@ Represents the size of the :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEn
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_XRFaceTracker_property_blend_shapes:
 
@@ -1247,9 +1247,9 @@ Property Descriptions
 - |void| **set_blend_shapes**\ (\ value\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )
 - :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_blend_shapes**\ (\ )
 
-The array of face blend shape weights with indices corresponding to the :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>` enum.
+Mảng các trọng số blend shape của khuôn mặt với các chỉ số tương ứng với enum :ref:`BlendShapeEntry <enum_XRFaceTracker_BlendShapeEntry>`.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedFloat32Array<class_PackedFloat32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -1257,8 +1257,8 @@ The array of face blend shape weights with indices corresponding to the :ref:`Bl
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_XRFaceTracker_method_get_blend_shape:
 
@@ -1266,7 +1266,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_blend_shape**\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`\ ) |const| :ref:`🔗<class_XRFaceTracker_method_get_blend_shape>`
 
-Returns the requested face blend shape weight.
+Trả về trọng số blend shape khuôn mặt được yêu cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -1278,14 +1278,14 @@ Returns the requested face blend shape weight.
 
 |void| **set_blend_shape**\ (\ blend_shape\: :ref:`BlendShapeEntry<enum_XRFaceTracker_BlendShapeEntry>`, weight\: :ref:`float<class_float>`\ ) :ref:`🔗<class_XRFaceTracker_method_set_blend_shape>`
 
-Sets a face blend shape weight.
+Thiết lập trọng số blend shape khuôn mặt.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

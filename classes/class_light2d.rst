@@ -10,70 +10,70 @@
 Light2D
 =======
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`DirectionalLight2D<class_DirectionalLight2D>`, :ref:`PointLight2D<class_PointLight2D>`
+**Được kế thừa bởi:** :ref:`DirectionalLight2D<class_DirectionalLight2D>`, :ref:`PointLight2D<class_PointLight2D>`
 
-Casts light in a 2D environment.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Casts light in a 2D environment. A light is defined as a color, an energy value, a mode (see constants), and various other parameters (range and shadows-related).
+Chiếu sáng trong môi trường 2D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Chiếu sáng trong môi trường 2D. Một nguồn sáng được xác định bởi màu sắc, giá trị năng lượng, chế độ (xem các hằng số) và nhiều tham số khác (liên quan đến phạm vi và bóng đổ).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`2D lights and shadows <../tutorials/2d/2d_lights_and_shadows>`
+- :doc:`Đèn và bóng đổ 2D <../tutorials/2d/2d_lights_and_shadows>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`BlendMode<enum_Light2D_BlendMode>`       | :ref:`blend_mode<class_Light2D_property_blend_mode>`                       | ``0``                 |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`Color<class_Color>`                      | :ref:`color<class_Light2D_property_color>`                                 | ``Color(1, 1, 1, 1)`` |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                        | :ref:`editor_only<class_Light2D_property_editor_only>`                     | ``false``             |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                        | :ref:`enabled<class_Light2D_property_enabled>`                             | ``true``              |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                      | :ref:`energy<class_Light2D_property_energy>`                               | ``1.0``               |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                          | :ref:`range_item_cull_mask<class_Light2D_property_range_item_cull_mask>`   | ``1``                 |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                          | :ref:`range_layer_max<class_Light2D_property_range_layer_max>`             | ``0``                 |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                          | :ref:`range_layer_min<class_Light2D_property_range_layer_min>`             | ``0``                 |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                          | :ref:`range_z_max<class_Light2D_property_range_z_max>`                     | ``1024``              |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                          | :ref:`range_z_min<class_Light2D_property_range_z_min>`                     | ``-1024``             |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`Color<class_Color>`                      | :ref:`shadow_color<class_Light2D_property_shadow_color>`                   | ``Color(0, 0, 0, 0)`` |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                        | :ref:`shadow_enabled<class_Light2D_property_shadow_enabled>`               | ``false``             |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`ShadowFilter<enum_Light2D_ShadowFilter>` | :ref:`shadow_filter<class_Light2D_property_shadow_filter>`                 | ``0``                 |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`float<class_float>`                      | :ref:`shadow_filter_smooth<class_Light2D_property_shadow_filter_smooth>`   | ``0.0``               |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`int<class_int>`                          | :ref:`shadow_item_cull_mask<class_Light2D_property_shadow_item_cull_mask>` | ``1``                 |
-   +------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`BlendMode <enum_Light2D_BlendMode>`       | :ref:`blend_mode<class_Light2D_property_blend_mode>`                       | ``0``                 |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`Color<class_Color>`                       | :ref:`color<class_Light2D_property_color>`                                 | ``Color(1, 1, 1, 1)`` |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                         | :ref:`editor_only<class_Light2D_property_editor_only>`                     | ``false``             |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                         | :ref:`enabled<class_Light2D_property_enabled>`                             | ``true``              |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                       | :ref:`energy<class_Light2D_property_energy>`                               | ``1.0``               |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                           | :ref:`range_item_cull_mask<class_Light2D_property_range_item_cull_mask>`   | ``1``                 |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                           | :ref:`range_layer_max<class_Light2D_property_range_layer_max>`             | ``0``                 |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                           | :ref:`range_layer_min<class_Light2D_property_range_layer_min>`             | ``0``                 |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                           | :ref:`range_z_max<class_Light2D_property_range_z_max>`                     | ``1024``              |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                           | :ref:`range_z_min<class_Light2D_property_range_z_min>`                     | ``-1024``             |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`Color<class_Color>`                       | :ref:`shadow_color<class_Light2D_property_shadow_color>`                   | ``Color(0, 0, 0, 0)`` |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                         | :ref:`shadow_enabled<class_Light2D_property_shadow_enabled>`               | ``false``             |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`ShadowFilter <enum_Light2D_ShadowFilter>` | :ref:`shadow_filter<class_Light2D_property_shadow_filter>`                 | ``0``                 |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`float<class_float>`                       | :ref:`shadow_filter_smooth<class_Light2D_property_shadow_filter_smooth>`   | ``0.0``               |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`int<class_int>`                           | :ref:`shadow_item_cull_mask<class_Light2D_property_shadow_item_cull_mask>` | ``1``                 |
+   +-------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -90,14 +90,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Light2D_ShadowFilter:
 
 .. rst-class:: classref-enumeration
 
-enum **ShadowFilter**: :ref:`🔗<enum_Light2D_ShadowFilter>`
+enum **ShadowFilter**: :ref:`🔗 <enum_Light2D_ShadowFilter>`
 
 .. _class_Light2D_constant_SHADOW_FILTER_NONE:
 
@@ -105,7 +105,7 @@ enum **ShadowFilter**: :ref:`🔗<enum_Light2D_ShadowFilter>`
 
 :ref:`ShadowFilter<enum_Light2D_ShadowFilter>` **SHADOW_FILTER_NONE** = ``0``
 
-No filter applies to the shadow map. This provides hard shadow edges and is the fastest to render. See :ref:`shadow_filter<class_Light2D_property_shadow_filter>`.
+Không áp dụng bộ lọc nào cho shadow map. Điều này tạo ra các cạnh bóng cứng và là cách kết xuất nhanh nhất. Xem :ref:`shadow_filter<class_Light2D_property_shadow_filter>`.
 
 .. _class_Light2D_constant_SHADOW_FILTER_PCF5:
 
@@ -113,7 +113,7 @@ No filter applies to the shadow map. This provides hard shadow edges and is the 
 
 :ref:`ShadowFilter<enum_Light2D_ShadowFilter>` **SHADOW_FILTER_PCF5** = ``1``
 
-Percentage closer filtering (5 samples) applies to the shadow map. This is slower compared to hard shadow rendering. See :ref:`shadow_filter<class_Light2D_property_shadow_filter>`.
+Áp dụng bộ lọc percentage closer (5 mẫu) cho shadow map. Cách này chậm hơn so với kết xuất bóng cứng. Xem :ref:`shadow_filter<class_Light2D_property_shadow_filter>`.
 
 .. _class_Light2D_constant_SHADOW_FILTER_PCF13:
 
@@ -121,7 +121,7 @@ Percentage closer filtering (5 samples) applies to the shadow map. This is slowe
 
 :ref:`ShadowFilter<enum_Light2D_ShadowFilter>` **SHADOW_FILTER_PCF13** = ``2``
 
-Percentage closer filtering (13 samples) applies to the shadow map. This is the slowest shadow filtering mode, and should be used sparingly. See :ref:`shadow_filter<class_Light2D_property_shadow_filter>`.
+Áp dụng bộ lọc percentage closer (13 mẫu) cho shadow map. Đây là chế độ lọc bóng chậm nhất và nên được sử dụng hạn chế. Xem :ref:`shadow_filter<class_Light2D_property_shadow_filter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -131,7 +131,7 @@ Percentage closer filtering (13 samples) applies to the shadow map. This is the 
 
 .. rst-class:: classref-enumeration
 
-enum **BlendMode**: :ref:`🔗<enum_Light2D_BlendMode>`
+enum **BlendMode**: :ref:`🔗 <enum_Light2D_BlendMode>`
 
 .. _class_Light2D_constant_BLEND_MODE_ADD:
 
@@ -139,7 +139,7 @@ enum **BlendMode**: :ref:`🔗<enum_Light2D_BlendMode>`
 
 :ref:`BlendMode<enum_Light2D_BlendMode>` **BLEND_MODE_ADD** = ``0``
 
-Adds the value of pixels corresponding to the Light2D to the values of pixels under it. This is the common behavior of a light.
+Cộng giá trị của các pixel tương ứng với Light2D vào giá trị của các pixel bên dưới nó. Đây là hành vi thông thường của một nguồn sáng.
 
 .. _class_Light2D_constant_BLEND_MODE_SUB:
 
@@ -147,7 +147,7 @@ Adds the value of pixels corresponding to the Light2D to the values of pixels un
 
 :ref:`BlendMode<enum_Light2D_BlendMode>` **BLEND_MODE_SUB** = ``1``
 
-Subtracts the value of pixels corresponding to the Light2D to the values of pixels under it, resulting in inversed light effect.
+Trừ giá trị của các pixel tương ứng với Light2D khỏi giá trị của các pixel bên dưới nó, tạo ra hiệu ứng ánh sáng đảo ngược.
 
 .. _class_Light2D_constant_BLEND_MODE_MIX:
 
@@ -155,7 +155,7 @@ Subtracts the value of pixels corresponding to the Light2D to the values of pixe
 
 :ref:`BlendMode<enum_Light2D_BlendMode>` **BLEND_MODE_MIX** = ``2``
 
-Mix the value of pixels corresponding to the Light2D to the values of pixels under it by linear interpolation.
+Trộn giá trị của các pixel tương ứng với Light2D với giá trị của các pixel bên dưới nó bằng phép nội suy tuyến tính.
 
 .. rst-class:: classref-section-separator
 
@@ -163,8 +163,8 @@ Mix the value of pixels corresponding to the Light2D to the values of pixels und
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Light2D_property_blend_mode:
 
@@ -177,7 +177,7 @@ Property Descriptions
 - |void| **set_blend_mode**\ (\ value\: :ref:`BlendMode<enum_Light2D_BlendMode>`\ )
 - :ref:`BlendMode<enum_Light2D_BlendMode>` **get_blend_mode**\ (\ )
 
-The Light2D's blend mode.
+Chế độ hòa trộn của Light2D.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ The Light2D's blend mode.
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The Light2D's :ref:`Color<class_Color>`.
+:ref:`Color<class_Color>` của Light2D.
 
 .. rst-class:: classref-item-separator
 
@@ -211,7 +211,7 @@ The Light2D's :ref:`Color<class_Color>`.
 - |void| **set_editor_only**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editor_only**\ (\ )
 
-If ``true``, Light2D will only appear when editing the scene.
+Nếu ``true``, Light2D sẽ chỉ xuất hiện khi chỉnh sửa scene.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ If ``true``, Light2D will only appear when editing the scene.
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-If ``true``, Light2D will emit light.
+Nếu ``true``, Light2D sẽ phát sáng.
 
 .. rst-class:: classref-item-separator
 
@@ -245,7 +245,7 @@ If ``true``, Light2D will emit light.
 - |void| **set_energy**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_energy**\ (\ )
 
-The Light2D's energy value. The larger the value, the stronger the light.
+Giá trị năng lượng của Light2D. Giá trị càng lớn thì ánh sáng càng mạnh.
 
 .. rst-class:: classref-item-separator
 
@@ -262,9 +262,9 @@ The Light2D's energy value. The larger the value, the stronger the light.
 - |void| **set_item_cull_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_item_cull_mask**\ (\ )
 
-The layer mask. Only objects with a matching :ref:`CanvasItem.light_mask<class_CanvasItem_property_light_mask>` will be affected by the Light2D. See also :ref:`shadow_item_cull_mask<class_Light2D_property_shadow_item_cull_mask>`, which affects which objects can cast shadows.
+Mặt nạ lớp. Chỉ các đối tượng có :ref:`CanvasItem.light_mask<class_CanvasItem_property_light_mask>` tương ứng mới bị Light2D tác động. Xem thêm :ref:`shadow_item_cull_mask<class_Light2D_property_shadow_item_cull_mask>`, thuộc tính này xác định những đối tượng nào có thể tạo bóng.
 
-\ **Note:** :ref:`range_item_cull_mask<class_Light2D_property_range_item_cull_mask>` is ignored by :ref:`DirectionalLight2D<class_DirectionalLight2D>`, which will always light a 2D node regardless of the 2D node's :ref:`CanvasItem.light_mask<class_CanvasItem_property_light_mask>`.
+\ **Lưu ý:** :ref:`range_item_cull_mask<class_Light2D_property_range_item_cull_mask>` bị :ref:`DirectionalLight2D<class_DirectionalLight2D>` bỏ qua; :ref:`DirectionalLight2D<class_DirectionalLight2D>` sẽ luôn chiếu sáng một node 2D bất kể :ref:`CanvasItem.light_mask<class_CanvasItem_property_light_mask>` của node 2D đó.
 
 .. rst-class:: classref-item-separator
 
@@ -281,7 +281,7 @@ The layer mask. Only objects with a matching :ref:`CanvasItem.light_mask<class_C
 - |void| **set_layer_range_max**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_layer_range_max**\ (\ )
 
-Maximum layer value of objects that are affected by the Light2D.
+Giá trị layer tối đa của các đối tượng chịu ảnh hưởng của Light2D.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ Maximum layer value of objects that are affected by the Light2D.
 - |void| **set_layer_range_min**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_layer_range_min**\ (\ )
 
-Minimum layer value of objects that are affected by the Light2D.
+Giá trị layer tối thiểu của các đối tượng chịu ảnh hưởng của Light2D.
 
 .. rst-class:: classref-item-separator
 
@@ -315,7 +315,7 @@ Minimum layer value of objects that are affected by the Light2D.
 - |void| **set_z_range_max**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_z_range_max**\ (\ )
 
-Maximum ``z`` value of objects that are affected by the Light2D.
+Giá trị ``z`` tối đa của các đối tượng chịu ảnh hưởng của Light2D.
 
 .. rst-class:: classref-item-separator
 
@@ -332,7 +332,7 @@ Maximum ``z`` value of objects that are affected by the Light2D.
 - |void| **set_z_range_min**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_z_range_min**\ (\ )
 
-Minimum ``z`` value of objects that are affected by the Light2D.
+Giá trị ``z`` tối thiểu của các đối tượng chịu ảnh hưởng của Light2D.
 
 .. rst-class:: classref-item-separator
 
@@ -349,7 +349,7 @@ Minimum ``z`` value of objects that are affected by the Light2D.
 - |void| **set_shadow_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_shadow_color**\ (\ )
 
-:ref:`Color<class_Color>` of shadows cast by the Light2D.
+:ref:`Color<class_Color>` của bóng đổ do Light2D tạo ra.
 
 .. rst-class:: classref-item-separator
 
@@ -366,7 +366,7 @@ Minimum ``z`` value of objects that are affected by the Light2D.
 - |void| **set_shadow_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_shadow_enabled**\ (\ )
 
-If ``true``, the Light2D will cast shadows.
+Nếu ``true``, Light2D sẽ đổ bóng.
 
 .. rst-class:: classref-item-separator
 
@@ -383,7 +383,7 @@ If ``true``, the Light2D will cast shadows.
 - |void| **set_shadow_filter**\ (\ value\: :ref:`ShadowFilter<enum_Light2D_ShadowFilter>`\ )
 - :ref:`ShadowFilter<enum_Light2D_ShadowFilter>` **get_shadow_filter**\ (\ )
 
-Shadow filter type.
+Loại bộ lọc bóng.
 
 .. rst-class:: classref-item-separator
 
@@ -400,7 +400,7 @@ Shadow filter type.
 - |void| **set_shadow_smooth**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_shadow_smooth**\ (\ )
 
-Smoothing value for shadows. Higher values will result in softer shadows, at the cost of visible streaks that can appear in shadow rendering. :ref:`shadow_filter_smooth<class_Light2D_property_shadow_filter_smooth>` only has an effect if :ref:`shadow_filter<class_Light2D_property_shadow_filter>` is :ref:`SHADOW_FILTER_PCF5<class_Light2D_constant_SHADOW_FILTER_PCF5>` or :ref:`SHADOW_FILTER_PCF13<class_Light2D_constant_SHADOW_FILTER_PCF13>`.
+Giá trị làm mượt cho bóng. Giá trị cao hơn sẽ tạo ra các bóng mềm hơn, nhưng phải đánh đổi bằng các vệt nhìn thấy có thể xuất hiện khi kết xuất bóng. :ref:`shadow_filter_smooth<class_Light2D_property_shadow_filter_smooth>` chỉ có hiệu lực nếu :ref:`shadow_filter<class_Light2D_property_shadow_filter>` là :ref:`SHADOW_FILTER_PCF5<class_Light2D_constant_SHADOW_FILTER_PCF5>` hoặc :ref:`SHADOW_FILTER_PCF13<class_Light2D_constant_SHADOW_FILTER_PCF13>`.
 
 .. rst-class:: classref-item-separator
 
@@ -417,7 +417,7 @@ Smoothing value for shadows. Higher values will result in softer shadows, at the
 - |void| **set_item_shadow_cull_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_item_shadow_cull_mask**\ (\ )
 
-The shadow mask. Used with :ref:`LightOccluder2D<class_LightOccluder2D>` to cast shadows. Only occluders with a matching :ref:`CanvasItem.light_mask<class_CanvasItem_property_light_mask>` will cast shadows. See also :ref:`range_item_cull_mask<class_Light2D_property_range_item_cull_mask>`, which affects which objects can *receive* the light.
+Mặt nạ bóng. Được sử dụng cùng với :ref:`LightOccluder2D<class_LightOccluder2D>` để tạo bóng. Chỉ các vật thể che khuất có :ref:`CanvasItem.light_mask<class_CanvasItem_property_light_mask>` khớp mới tạo bóng. Xem thêm :ref:`range_item_cull_mask<class_Light2D_property_range_item_cull_mask>`, yếu tố quyết định những đối tượng nào có thể *nhận* ánh sáng.
 
 .. rst-class:: classref-section-separator
 
@@ -425,8 +425,8 @@ The shadow mask. Used with :ref:`LightOccluder2D<class_LightOccluder2D>` to cast
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Light2D_method_get_height:
 
@@ -434,7 +434,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_height**\ (\ ) |const| :ref:`🔗<class_Light2D_method_get_height>`
 
-Returns the light's height, which is used in 2D normal mapping. See :ref:`PointLight2D.height<class_PointLight2D_property_height>` and :ref:`DirectionalLight2D.height<class_DirectionalLight2D_property_height>`.
+Trả về chiều cao của ánh sáng, được sử dụng trong ánh xạ pháp tuyến 2D. Xem :ref:`PointLight2D.height<class_PointLight2D_property_height>` và :ref:`DirectionalLight2D.height<class_DirectionalLight2D_property_height>`.
 
 .. rst-class:: classref-item-separator
 
@@ -446,14 +446,14 @@ Returns the light's height, which is used in 2D normal mapping. See :ref:`PointL
 
 |void| **set_height**\ (\ height\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Light2D_method_set_height>`
 
-Sets the light's height, which is used in 2D normal mapping. See :ref:`PointLight2D.height<class_PointLight2D_property_height>` and :ref:`DirectionalLight2D.height<class_DirectionalLight2D_property_height>`.
+Thiết lập chiều cao của ánh sáng, được sử dụng trong ánh xạ pháp tuyến 2D. Xem :ref:`PointLight2D.height<class_PointLight2D_property_height>` và :ref:`DirectionalLight2D.height<class_DirectionalLight2D_property_height>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Để có tác dụng, phương thức này thường cần được người dùng ghi đè.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

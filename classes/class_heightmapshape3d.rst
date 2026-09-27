@@ -10,24 +10,24 @@
 HeightMapShape3D
 ================
 
-**Inherits:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Shape3D<class_Shape3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 3D heightmap shape used for physics collision.
+Một shape heightmap 3D được dùng cho va chạm vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 3D heightmap shape, intended for use in physics to provide a shape for a :ref:`CollisionShape3D<class_CollisionShape3D>`. This type is most commonly used for terrain with vertices placed in a fixed-width grid.
+Một shape heightmap 3D, được thiết kế để sử dụng trong vật lý nhằm cung cấp một shape cho :ref:`CollisionShape3D<class_CollisionShape3D>`. Loại này thường được dùng nhất cho địa hình có các đỉnh được đặt trên một lưới có chiều rộng cố định.
 
-The heightmap is represented as a 2D grid of height values, which represent the position of grid points on the Y axis. Grid points are spaced 1 unit apart on the X and Z axes, and the grid is centered on the origin of the :ref:`CollisionShape3D<class_CollisionShape3D>` node. Internally, each grid square is divided into two triangles.
+Heightmap được biểu diễn dưới dạng lưới 2D gồm các giá trị độ cao, đại diện cho vị trí của các điểm lưới trên trục Y. Các điểm lưới cách nhau 1 đơn vị trên các trục X và Z, và lưới được căn giữa tại gốc của node :ref:`CollisionShape3D<class_CollisionShape3D>`. Bên trong, mỗi ô lưới được chia thành hai tam giác.
 
-Due to the nature of the heightmap, it cannot be used to model overhangs or caves, which would require multiple vertices at the same vertical location. Holes can be punched through the collision by assigning :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` to the height of the desired vertices (this is supported in both GodotPhysics3D and Jolt Physics). You could then insert meshes with their own separate collision to provide overhangs, caves, and so on.
+Do đặc điểm của heightmap, không thể dùng nó để mô hình hóa các phần nhô ra hoặc hang động, vì những dạng này cần nhiều đỉnh ở cùng một vị trí theo chiều dọc. Có thể tạo các lỗ xuyên qua va chạm bằng cách gán :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` cho độ cao của các đỉnh mong muốn (tính năng này được hỗ trợ trong cả GodotPhysics3D và Jolt Physics). Sau đó, bạn có thể chèn các mesh có va chạm riêng để tạo các phần nhô ra, hang động, v.v.
 
-\ **Performance:** **HeightMapShape3D** is faster to check collisions against than :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>`, but it is significantly slower than primitive shapes like :ref:`BoxShape3D<class_BoxShape3D>`.
+\ **Hiệu năng:** **HeightMapShape3D** nhanh hơn khi kiểm tra va chạm so với :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>`, nhưng chậm hơn đáng kể so với các shape nguyên thủy như :ref:`BoxShape3D<class_BoxShape3D>`.
 
-A heightmap collision shape can also be built by using an :ref:`Image<class_Image>` reference:
+Một collision shape của heightmap cũng có thể được tạo bằng cách sử dụng một tham chiếu :ref:`Image<class_Image>`:
 
 
 .. tabs::
@@ -45,12 +45,12 @@ A heightmap collision shape can also be built by using an :ref:`Image<class_Imag
 
 
 
-\ **Note:** If you need to use a spacing different than 1 unit, you can adjust the :ref:`Node3D.scale<class_Node3D_property_scale>` of the shape. However, keep in mind that GodotPhysics3D does not support non-uniform scaling: you'll need to scale the Y axis by the same amount as the X and Z axes, which means the values in :ref:`map_data<class_HeightMapShape3D_property_map_data>` will need to be pre-scaled by the inverse of that scale. Also note that GodotPhysics3D does not support scaling at all for dynamic bodies (that is, non-frozen :ref:`RigidBody3D<class_RigidBody3D>` nodes); to use a scaled **HeightMapShape3D** with those, you will need to use Jolt Physics.
+\ **Lưu ý:** Nếu bạn cần sử dụng khoảng cách khác 1 unit, bạn có thể điều chỉnh :ref:`Node3D.scale<class_Node3D_property_scale>` của shape. Tuy nhiên, hãy lưu ý rằng GodotPhysics3D không hỗ trợ scaling không đồng nhất: bạn sẽ cần scale trục Y theo cùng một mức với các trục X và Z, điều này có nghĩa là các giá trị trong :ref:`map_data<class_HeightMapShape3D_property_map_data>` sẽ cần được pre-scale bằng nghịch đảo của scale đó. Cũng lưu ý rằng GodotPhysics3D hoàn toàn không hỗ trợ scaling đối với các dynamic body (tức là các node :ref:`RigidBody3D<class_RigidBody3D>` không bị đóng băng); để sử dụng **HeightMapShape3D** đã được scale với các node đó, bạn sẽ cần sử dụng Jolt Physics.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -65,8 +65,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -85,8 +85,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_HeightMapShape3D_property_map_data:
 
@@ -99,9 +99,9 @@ Property Descriptions
 - |void| **set_map_data**\ (\ value\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ )
 - :ref:`PackedFloat32Array<class_PackedFloat32Array>` **get_map_data**\ (\ )
 
-Heightmap data. The array's size must be equal to :ref:`map_width<class_HeightMapShape3D_property_map_width>` multiplied by :ref:`map_depth<class_HeightMapShape3D_property_map_depth>`.
+Dữ liệu heightmap. Kích thước của mảng phải bằng :ref:`map_width<class_HeightMapShape3D_property_map_width>` nhân với :ref:`map_depth<class_HeightMapShape3D_property_map_depth>`.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedFloat32Array<class_PackedFloat32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -118,7 +118,7 @@ Heightmap data. The array's size must be equal to :ref:`map_width<class_HeightMa
 - |void| **set_map_depth**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_map_depth**\ (\ )
 
-Number of vertices in the depth of the heightmap. Changing this will resize the :ref:`map_data<class_HeightMapShape3D_property_map_data>`.
+Số lượng đỉnh theo chiều sâu của heightmap. Thay đổi giá trị này sẽ thay đổi kích thước của :ref:`map_data<class_HeightMapShape3D_property_map_data>`.
 
 .. rst-class:: classref-item-separator
 
@@ -135,7 +135,7 @@ Number of vertices in the depth of the heightmap. Changing this will resize the 
 - |void| **set_map_width**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_map_width**\ (\ )
 
-Number of vertices in the width of the heightmap. Changing this will resize the :ref:`map_data<class_HeightMapShape3D_property_map_data>`.
+Số lượng đỉnh theo chiều rộng của heightmap. Thay đổi giá trị này sẽ thay đổi kích thước của :ref:`map_data<class_HeightMapShape3D_property_map_data>`.
 
 .. rst-class:: classref-section-separator
 
@@ -143,8 +143,8 @@ Number of vertices in the width of the heightmap. Changing this will resize the 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_HeightMapShape3D_method_get_max_height:
 
@@ -152,7 +152,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_max_height**\ (\ ) |const| :ref:`🔗<class_HeightMapShape3D_method_get_max_height>`
 
-Returns the largest height value found in :ref:`map_data<class_HeightMapShape3D_property_map_data>`. Recalculates only when :ref:`map_data<class_HeightMapShape3D_property_map_data>` changes.
+Trả về giá trị chiều cao lớn nhất được tìm thấy trong :ref:`map_data<class_HeightMapShape3D_property_map_data>`. Chỉ tính toán lại khi :ref:`map_data<class_HeightMapShape3D_property_map_data>` thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ Returns the largest height value found in :ref:`map_data<class_HeightMapShape3D_
 
 :ref:`float<class_float>` **get_min_height**\ (\ ) |const| :ref:`🔗<class_HeightMapShape3D_method_get_min_height>`
 
-Returns the smallest height value found in :ref:`map_data<class_HeightMapShape3D_property_map_data>`. Recalculates only when :ref:`map_data<class_HeightMapShape3D_property_map_data>` changes.
+Trả về giá trị chiều cao nhỏ nhất được tìm thấy trong :ref:`map_data<class_HeightMapShape3D_property_map_data>`. Chỉ tính toán lại khi :ref:`map_data<class_HeightMapShape3D_property_map_data>` thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -176,20 +176,20 @@ Returns the smallest height value found in :ref:`map_data<class_HeightMapShape3D
 
 |void| **update_map_data_from_image**\ (\ image\: :ref:`Image<class_Image>`, height_min\: :ref:`float<class_float>`, height_max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_HeightMapShape3D_method_update_map_data_from_image>`
 
-Updates :ref:`map_data<class_HeightMapShape3D_property_map_data>` with data read from an :ref:`Image<class_Image>` reference. Automatically resizes heightmap :ref:`map_width<class_HeightMapShape3D_property_map_width>` and :ref:`map_depth<class_HeightMapShape3D_property_map_depth>` to fit the full image width and height.
+Cập nhật :ref:`map_data<class_HeightMapShape3D_property_map_data>` bằng dữ liệu được đọc từ một tham chiếu :ref:`Image<class_Image>`. Tự động thay đổi kích thước :ref:`map_width<class_HeightMapShape3D_property_map_width>` và :ref:`map_depth<class_HeightMapShape3D_property_map_depth>` của heightmap để vừa với toàn bộ chiều rộng và chiều cao của ảnh.
 
-The image needs to be in either :ref:`Image.FORMAT_RF<class_Image_constant_FORMAT_RF>` (32 bit), :ref:`Image.FORMAT_RH<class_Image_constant_FORMAT_RH>` (16 bit), or :ref:`Image.FORMAT_R8<class_Image_constant_FORMAT_R8>` (8 bit).
+Hình ảnh phải ở một trong các định dạng :ref:`Image.FORMAT_RF<class_Image_constant_FORMAT_RF>` (32 bit), :ref:`Image.FORMAT_RH<class_Image_constant_FORMAT_RH>` (16 bit) hoặc :ref:`Image.FORMAT_R8<class_Image_constant_FORMAT_R8>` (8 bit).
 
-Each image pixel is read in as a float on the range from ``0.0`` (black pixel) to ``1.0`` (white pixel). This range value gets remapped to ``height_min`` and ``height_max`` to form the final height value.
+Mỗi pixel của hình ảnh được đọc dưới dạng số thực trong phạm vi từ ``0.0`` (pixel đen) đến ``1.0`` (pixel trắng). Giá trị trong phạm vi này được ánh xạ lại thành ``height_min`` và ``height_max`` để tạo thành giá trị chiều cao cuối cùng.
 
-\ **Note:** Using a heightmap with 16-bit or 32-bit data, stored in EXR or HDR format is recommended. Using 8-bit height data, or a format like PNG that Godot imports as 8-bit, will result in a terraced terrain.
+\ **Lưu ý:** Nên sử dụng heightmap có dữ liệu 16 bit hoặc 32 bit, được lưu ở định dạng EXR hoặc HDR. Việc sử dụng dữ liệu chiều cao 8 bit hoặc định dạng như PNG mà Godot nhập dưới dạng 8 bit sẽ tạo ra địa hình dạng bậc thang.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,43 +10,43 @@
 InputEventMouse
 ===============
 
-**Inherits:** :ref:`InputEventWithModifiers<class_InputEventWithModifiers>` **<** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`InputEventWithModifiers<class_InputEventWithModifiers>` **<** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`InputEventMouseButton<class_InputEventMouseButton>`, :ref:`InputEventMouseMotion<class_InputEventMouseMotion>`
+**Được kế thừa bởi:** :ref:`InputEventMouseButton<class_InputEventMouseButton>`, :ref:`InputEventMouseMotion<class_InputEventMouseMotion>`
 
-Base input event type for mouse events.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Stores general information about mouse events.
+Kiểu sự kiện đầu vào cơ sở cho các sự kiện chuột.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lưu trữ thông tin chung về các sự kiện chuột.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using InputEvent <../tutorials/inputs/inputevent>`
+- :doc:`Sử dụng InputEvent <../tutorials/inputs/inputevent>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>`\] | :ref:`button_mask<class_InputEventMouse_property_button_mask>`         | ``0``                                                                  |
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                                   | device                                                                 | ``32`` (overrides :ref:`InputEvent<class_InputEvent_property_device>`) |
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                           | :ref:`global_position<class_InputEventMouse_property_global_position>` | ``Vector2(0, 0)``                                                      |
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                           | :ref:`position<class_InputEventMouse_property_position>`               | ``Vector2(0, 0)``                                                      |
-   +-------------------------------------------------------------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | |bitfield|\[:ref:`MouseButtonMask <enum_@GlobalScope_MouseButtonMask>`\] | :ref:`button_mask<class_InputEventMouse_property_button_mask>`         | ``0``                                                               |
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                    | device                                                                 | ``32`` (ghi đè :ref:`InputEvent<class_InputEvent_property_device>`) |
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                            | :ref:`global_position<class_InputEventMouse_property_global_position>` | ``Vector2(0, 0)``                                                   |
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                            | :ref:`position<class_InputEventMouse_property_position>`               | ``Vector2(0, 0)``                                                   |
+   +--------------------------------------------------------------------------+------------------------------------------------------------------------+---------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEventMouse_property_button_mask:
 
@@ -68,7 +68,7 @@ Property Descriptions
 - |void| **set_button_mask**\ (\ value\: |bitfield|\[:ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>`\]\ )
 - |bitfield|\[:ref:`MouseButtonMask<enum_@GlobalScope_MouseButtonMask>`\] **get_button_mask**\ (\ )
 
-The mouse button mask identifier, one of or a bitwise combination of the :ref:`MouseButton<enum_@GlobalScope_MouseButton>` button masks.
+Mã định danh mặt nạ nút chuột, là một trong các mặt nạ nút :ref:`MouseButton <enum_@GlobalScope_MouseButton>` hoặc là tổ hợp theo phép bitwise của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -85,9 +85,9 @@ The mouse button mask identifier, one of or a bitwise combination of the :ref:`M
 - |void| **set_global_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_global_position**\ (\ )
 
-When received in :ref:`Node._input()<class_Node_private_method__input>` or :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`, returns the mouse's position in the root :ref:`Viewport<class_Viewport>` using the coordinate system of the root :ref:`Viewport<class_Viewport>`.
+Khi được nhận trong :ref:`Node._input()<class_Node_private_method__input>` hoặc :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`, trả về vị trí của chuột trong :ref:`Viewport<class_Viewport>` gốc bằng cách sử dụng hệ tọa độ của :ref:`Viewport<class_Viewport>` gốc.
 
-When received in :ref:`Control._gui_input()<class_Control_private_method__gui_input>`, returns the mouse's position in the :ref:`CanvasLayer<class_CanvasLayer>` that the :ref:`Control<class_Control>` is in using the coordinate system of the :ref:`CanvasLayer<class_CanvasLayer>`.
+Khi được nhận trong :ref:`Control._gui_input()<class_Control_private_method__gui_input>`, trả về vị trí của chuột trong :ref:`CanvasLayer<class_CanvasLayer>` mà :ref:`Control<class_Control>` đang ở, sử dụng hệ tọa độ của :ref:`CanvasLayer<class_CanvasLayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -104,16 +104,16 @@ When received in :ref:`Control._gui_input()<class_Control_private_method__gui_in
 - |void| **set_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_position**\ (\ )
 
-When received in :ref:`Node._input()<class_Node_private_method__input>` or :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`, returns the mouse's position in the :ref:`Viewport<class_Viewport>` this :ref:`Node<class_Node>` is in using the coordinate system of this :ref:`Viewport<class_Viewport>`.
+Khi được nhận trong :ref:`Node._input()<class_Node_private_method__input>` hoặc :ref:`Node._unhandled_input()<class_Node_private_method__unhandled_input>`, trả về vị trí của chuột trong :ref:`Viewport<class_Viewport>` mà :ref:`Node<class_Node>` đang ở, sử dụng hệ tọa độ của :ref:`Viewport<class_Viewport>`.
 
-When received in :ref:`Control._gui_input()<class_Control_private_method__gui_input>`, returns the mouse's position in the :ref:`Control<class_Control>` using the local coordinate system of the :ref:`Control<class_Control>`.
+Khi được nhận trong :ref:`Control._gui_input()<class_Control_private_method__gui_input>`, trả về vị trí của chuột trong :ref:`Control<class_Control>` bằng hệ tọa độ cục bộ của :ref:`Control<class_Control>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của thể hiện.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

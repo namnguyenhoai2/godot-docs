@@ -10,43 +10,43 @@
 X509Certificate
 ===============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An X509 certificate (e.g. for TLS).
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The X509Certificate class represents an X509 certificate. Certificates can be loaded and saved like any other :ref:`Resource<class_Resource>`.
-
-They can be used as the server certificate in :ref:`StreamPeerTLS.accept_stream()<class_StreamPeerTLS_method_accept_stream>` (along with the proper :ref:`CryptoKey<class_CryptoKey>`), and to specify the only certificate that should be accepted when connecting to a TLS server via :ref:`StreamPeerTLS.connect_to_stream()<class_StreamPeerTLS_method_connect_to_stream>`.
+Một chứng chỉ X509 (ví dụ: dùng cho TLS).
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp X509Certificate biểu diễn một chứng chỉ X509. Chứng chỉ có thể được tải và lưu như bất kỳ :ref:`Resource<class_Resource>` nào khác.
+
+Chúng có thể được dùng làm chứng chỉ máy chủ trong :ref:`StreamPeerTLS.accept_stream()<class_StreamPeerTLS_method_accept_stream>` (cùng với :ref:`CryptoKey<class_CryptoKey>` thích hợp), và để chỉ định chứng chỉ duy nhất được chấp nhận khi kết nối với máy chủ TLS thông qua :ref:`StreamPeerTLS.connect_to_stream()<class_StreamPeerTLS_method_connect_to_stream>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`SSL certificates <../tutorials/networking/ssl_certificates>`
+- :doc:`Chứng chỉ SSL <../tutorials/networking/ssl_certificates>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`load<class_X509Certificate_method_load>`\ (\ path\: :ref:`String<class_String>`\ )                           |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`load_from_string<class_X509Certificate_method_load_from_string>`\ (\ string\: :ref:`String<class_String>`\ ) |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`save<class_X509Certificate_method_save>`\ (\ path\: :ref:`String<class_String>`\ )                           |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`save_to_string<class_X509Certificate_method_save_to_string>`\ (\ )                                           |
-   +---------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`load<class_X509Certificate_method_load>`\ (\ path\: :ref:`String<class_String>`\ )                           |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`load_from_string<class_X509Certificate_method_load_from_string>`\ (\ string\: :ref:`String<class_String>`\ ) |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`save<class_X509Certificate_method_save>`\ (\ path\: :ref:`String<class_String>`\ )                           |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`            | :ref:`save_to_string<class_X509Certificate_method_save_to_string>`\ (\ )                                           |
+   +----------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -54,8 +54,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_X509Certificate_method_load:
 
@@ -63,7 +63,7 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **load**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_X509Certificate_method_load>`
 
-Loads a certificate from ``path`` ("\*.crt" file).
+Tải chứng chỉ từ ``path`` (tệp "\*.crt").
 
 .. rst-class:: classref-item-separator
 
@@ -75,7 +75,7 @@ Loads a certificate from ``path`` ("\*.crt" file).
 
 :ref:`Error<enum_@GlobalScope_Error>` **load_from_string**\ (\ string\: :ref:`String<class_String>`\ ) :ref:`🔗<class_X509Certificate_method_load_from_string>`
 
-Loads a certificate from the given ``string``.
+Tải chứng chỉ từ ``string`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -87,7 +87,7 @@ Loads a certificate from the given ``string``.
 
 :ref:`Error<enum_@GlobalScope_Error>` **save**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_X509Certificate_method_save>`
 
-Saves a certificate to the given ``path`` (should be a "\*.crt" file).
+Lưu chứng chỉ vào ``path`` đã cho (phải là tệp "\*.crt").
 
 .. rst-class:: classref-item-separator
 
@@ -99,14 +99,14 @@ Saves a certificate to the given ``path`` (should be a "\*.crt" file).
 
 :ref:`String<class_String>` **save_to_string**\ (\ ) :ref:`🔗<class_X509Certificate_method_save_to_string>`
 
-Returns a string representation of the certificate, or an empty string if the certificate is invalid.
+Trả về biểu diễn dạng chuỗi của chứng chỉ hoặc một chuỗi rỗng nếu chứng chỉ không hợp lệ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

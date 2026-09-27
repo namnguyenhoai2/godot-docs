@@ -10,70 +10,70 @@
 FastNoiseLite
 =============
 
-**Inherits:** :ref:`Noise<class_Noise>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Noise<class_Noise>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Generates noise using the FastNoiseLite library.
+Tạo nhiễu bằng thư viện FastNoiseLite.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class generates noise using the FastNoiseLite library, which is a collection of several noise algorithms including Cellular, Perlin, Value, and more.
+Lớp này tạo nhiễu bằng thư viện FastNoiseLite, một tập hợp gồm nhiều thuật toán nhiễu, bao gồm Cellular, Perlin, Value và nhiều thuật toán khác.
 
-Most generated noise values are in the range of ``[-1, 1]``, but not always. Some of the cellular noise algorithms return results above ``1``.
+Hầu hết các giá trị nhiễu được tạo nằm trong phạm vi ``[-1, 1]``, nhưng không phải lúc nào cũng vậy. Một số thuật toán nhiễu cellular trả về kết quả lớn hơn ``1``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` | :ref:`cellular_distance_function<class_FastNoiseLite_property_cellular_distance_function>`         | ``0``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`cellular_jitter<class_FastNoiseLite_property_cellular_jitter>`                               | ``1.0``              |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>`             | :ref:`cellular_return_type<class_FastNoiseLite_property_cellular_return_type>`                     | ``1``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`domain_warp_amplitude<class_FastNoiseLite_property_domain_warp_amplitude>`                   | ``30.0``             |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`                                                      | :ref:`domain_warp_enabled<class_FastNoiseLite_property_domain_warp_enabled>`                       | ``false``            |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`domain_warp_fractal_gain<class_FastNoiseLite_property_domain_warp_fractal_gain>`             | ``0.5``              |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`domain_warp_fractal_lacunarity<class_FastNoiseLite_property_domain_warp_fractal_lacunarity>` | ``6.0``              |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                                                        | :ref:`domain_warp_fractal_octaves<class_FastNoiseLite_property_domain_warp_fractal_octaves>`       | ``5``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>`       | :ref:`domain_warp_fractal_type<class_FastNoiseLite_property_domain_warp_fractal_type>`             | ``1``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`domain_warp_frequency<class_FastNoiseLite_property_domain_warp_frequency>`                   | ``0.05``             |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>`                     | :ref:`domain_warp_type<class_FastNoiseLite_property_domain_warp_type>`                             | ``0``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`fractal_gain<class_FastNoiseLite_property_fractal_gain>`                                     | ``0.5``              |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`fractal_lacunarity<class_FastNoiseLite_property_fractal_lacunarity>`                         | ``2.0``              |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                                                        | :ref:`fractal_octaves<class_FastNoiseLite_property_fractal_octaves>`                               | ``5``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`fractal_ping_pong_strength<class_FastNoiseLite_property_fractal_ping_pong_strength>`         | ``2.0``              |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`FractalType<enum_FastNoiseLite_FractalType>`                           | :ref:`fractal_type<class_FastNoiseLite_property_fractal_type>`                                     | ``1``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`fractal_weighted_strength<class_FastNoiseLite_property_fractal_weighted_strength>`           | ``0.0``              |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`float<class_float>`                                                    | :ref:`frequency<class_FastNoiseLite_property_frequency>`                                           | ``0.01``             |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`NoiseType<enum_FastNoiseLite_NoiseType>`                               | :ref:`noise_type<class_FastNoiseLite_property_noise_type>`                                         | ``1``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>`                                                | :ref:`offset<class_FastNoiseLite_property_offset>`                                                 | ``Vector3(0, 0, 0)`` |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                                                        | :ref:`seed<class_FastNoiseLite_property_seed>`                                                     | ``0``                |
-   +------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`CellularDistanceFunction <enum_FastNoiseLite_CellularDistanceFunction>` | :ref:`cellular_distance_function<class_FastNoiseLite_property_cellular_distance_function>`         | ``0``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`cellular_jitter<class_FastNoiseLite_property_cellular_jitter>`                               | ``1.0``              |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`CellularReturnType <enum_FastNoiseLite_CellularReturnType>`             | :ref:`cellular_return_type<class_FastNoiseLite_property_cellular_return_type>`                     | ``1``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`domain_warp_amplitude<class_FastNoiseLite_property_domain_warp_amplitude>`                   | ``30.0``             |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`                                                       | :ref:`domain_warp_enabled<class_FastNoiseLite_property_domain_warp_enabled>`                       | ``false``            |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`domain_warp_fractal_gain<class_FastNoiseLite_property_domain_warp_fractal_gain>`             | ``0.5``              |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`domain_warp_fractal_lacunarity<class_FastNoiseLite_property_domain_warp_fractal_lacunarity>` | ``6.0``              |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                                                         | :ref:`domain_warp_fractal_octaves<class_FastNoiseLite_property_domain_warp_fractal_octaves>`       | ``5``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`DomainWarpFractalType <enum_FastNoiseLite_DomainWarpFractalType>`       | :ref:`domain_warp_fractal_type<class_FastNoiseLite_property_domain_warp_fractal_type>`             | ``1``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`domain_warp_frequency<class_FastNoiseLite_property_domain_warp_frequency>`                   | ``0.05``             |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`DomainWarpType <enum_FastNoiseLite_DomainWarpType>`                     | :ref:`domain_warp_type<class_FastNoiseLite_property_domain_warp_type>`                             | ``0``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`fractal_gain<class_FastNoiseLite_property_fractal_gain>`                                     | ``0.5``              |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`fractal_lacunarity<class_FastNoiseLite_property_fractal_lacunarity>`                         | ``2.0``              |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                                                         | :ref:`fractal_octaves<class_FastNoiseLite_property_fractal_octaves>`                               | ``5``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`fractal_ping_pong_strength<class_FastNoiseLite_property_fractal_ping_pong_strength>`         | ``2.0``              |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`FractalType <enum_FastNoiseLite_FractalType>`                           | :ref:`fractal_type<class_FastNoiseLite_property_fractal_type>`                                     | ``1``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`fractal_weighted_strength<class_FastNoiseLite_property_fractal_weighted_strength>`           | ``0.0``              |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`float<class_float>`                                                     | :ref:`frequency<class_FastNoiseLite_property_frequency>`                                           | ``0.01``             |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`NoiseType <enum_FastNoiseLite_NoiseType>`                               | :ref:`noise_type<class_FastNoiseLite_property_noise_type>`                                         | ``1``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>`                                                 | :ref:`offset<class_FastNoiseLite_property_offset>`                                                 | ``Vector3(0, 0, 0)`` |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                                                         | :ref:`seed<class_FastNoiseLite_property_seed>`                                                     | ``0``                |
+   +-------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+----------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -81,14 +81,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_FastNoiseLite_NoiseType:
 
 .. rst-class:: classref-enumeration
 
-enum **NoiseType**: :ref:`🔗<enum_FastNoiseLite_NoiseType>`
+enum **NoiseType**: :ref:`🔗 <enum_FastNoiseLite_NoiseType>`
 
 .. _class_FastNoiseLite_constant_TYPE_VALUE:
 
@@ -96,7 +96,7 @@ enum **NoiseType**: :ref:`🔗<enum_FastNoiseLite_NoiseType>`
 
 :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **TYPE_VALUE** = ``5``
 
-A lattice of points are assigned random values then interpolated based on neighboring values.
+Một mạng lưới các điểm được gán các giá trị ngẫu nhiên, sau đó được nội suy dựa trên các giá trị lân cận.
 
 .. _class_FastNoiseLite_constant_TYPE_VALUE_CUBIC:
 
@@ -104,9 +104,9 @@ A lattice of points are assigned random values then interpolated based on neighb
 
 :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **TYPE_VALUE_CUBIC** = ``4``
 
-Similar to value noise (:ref:`TYPE_VALUE<class_FastNoiseLite_constant_TYPE_VALUE>`), but slower. Has more variance in peaks and valleys.
+Tương tự như value noise (:ref:`TYPE_VALUE<class_FastNoiseLite_constant_TYPE_VALUE>`), nhưng chậm hơn. Có độ biến thiên lớn hơn ở các đỉnh và thung lũng.
 
-Cubic noise can be used to avoid certain artifacts when using value noise to create a bumpmap. In general, you should always use this mode if the value noise is being used for a heightmap or bumpmap.
+Cubic noise có thể được dùng để tránh một số hiện tượng giả khi sử dụng value noise để tạo bumpmap. Nhìn chung, bạn luôn nên sử dụng chế độ này nếu value noise được dùng cho heightmap hoặc bumpmap.
 
 .. _class_FastNoiseLite_constant_TYPE_PERLIN:
 
@@ -114,7 +114,7 @@ Cubic noise can be used to avoid certain artifacts when using value noise to cre
 
 :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **TYPE_PERLIN** = ``3``
 
-A lattice of random gradients. Their dot products are interpolated to obtain values in between the lattices.
+Một mạng lưới các gradient ngẫu nhiên. Tích vô hướng của chúng được nội suy để thu được các giá trị ở giữa các mạng lưới.
 
 .. _class_FastNoiseLite_constant_TYPE_CELLULAR:
 
@@ -122,7 +122,7 @@ A lattice of random gradients. Their dot products are interpolated to obtain val
 
 :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **TYPE_CELLULAR** = ``2``
 
-Cellular includes both Worley noise and Voronoi diagrams which creates various regions of the same value.
+Cellular bao gồm cả Worley noise và các sơ đồ Voronoi, tạo ra nhiều vùng có cùng một giá trị.
 
 .. _class_FastNoiseLite_constant_TYPE_SIMPLEX:
 
@@ -130,7 +130,7 @@ Cellular includes both Worley noise and Voronoi diagrams which creates various r
 
 :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **TYPE_SIMPLEX** = ``0``
 
-As opposed to :ref:`TYPE_PERLIN<class_FastNoiseLite_constant_TYPE_PERLIN>`, gradients exist in a simplex lattice rather than a grid lattice, avoiding directional artifacts. Internally uses FastNoiseLite's OpenSimplex2 noise type.
+Trái ngược với :ref:`TYPE_PERLIN<class_FastNoiseLite_constant_TYPE_PERLIN>`, các gradient tồn tại trong một mạng lưới simplex thay vì mạng lưới dạng lưới, giúp tránh các hiện tượng giả theo hướng. Bên trong sử dụng loại noise OpenSimplex2 của FastNoiseLite.
 
 .. _class_FastNoiseLite_constant_TYPE_SIMPLEX_SMOOTH:
 
@@ -138,7 +138,7 @@ As opposed to :ref:`TYPE_PERLIN<class_FastNoiseLite_constant_TYPE_PERLIN>`, grad
 
 :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **TYPE_SIMPLEX_SMOOTH** = ``1``
 
-Modified, higher quality version of :ref:`TYPE_SIMPLEX<class_FastNoiseLite_constant_TYPE_SIMPLEX>`, but slower. Internally uses FastNoiseLite's OpenSimplex2S noise type.
+Phiên bản đã được sửa đổi và có chất lượng cao hơn của :ref:`TYPE_SIMPLEX<class_FastNoiseLite_constant_TYPE_SIMPLEX>`, nhưng chậm hơn. Bên trong sử dụng loại noise OpenSimplex2S của FastNoiseLite.
 
 .. rst-class:: classref-item-separator
 
@@ -148,7 +148,7 @@ Modified, higher quality version of :ref:`TYPE_SIMPLEX<class_FastNoiseLite_const
 
 .. rst-class:: classref-enumeration
 
-enum **FractalType**: :ref:`🔗<enum_FastNoiseLite_FractalType>`
+enum **FractalType**: :ref:`🔗 <enum_FastNoiseLite_FractalType>`
 
 .. _class_FastNoiseLite_constant_FRACTAL_NONE:
 
@@ -156,7 +156,7 @@ enum **FractalType**: :ref:`🔗<enum_FastNoiseLite_FractalType>`
 
 :ref:`FractalType<enum_FastNoiseLite_FractalType>` **FRACTAL_NONE** = ``0``
 
-No fractal noise.
+Không có nhiễu fractal.
 
 .. _class_FastNoiseLite_constant_FRACTAL_FBM:
 
@@ -164,7 +164,7 @@ No fractal noise.
 
 :ref:`FractalType<enum_FastNoiseLite_FractalType>` **FRACTAL_FBM** = ``1``
 
-Method using Fractional Brownian Motion to combine octaves into a fractal.
+Phương pháp sử dụng Fractional Brownian Motion để kết hợp các octave thành một fractal.
 
 .. _class_FastNoiseLite_constant_FRACTAL_RIDGED:
 
@@ -172,7 +172,7 @@ Method using Fractional Brownian Motion to combine octaves into a fractal.
 
 :ref:`FractalType<enum_FastNoiseLite_FractalType>` **FRACTAL_RIDGED** = ``2``
 
-Method of combining octaves into a fractal resulting in a "ridged" look.
+Phương pháp kết hợp các octave thành một fractal, tạo ra diện mạo "ridged".
 
 .. _class_FastNoiseLite_constant_FRACTAL_PING_PONG:
 
@@ -180,7 +180,7 @@ Method of combining octaves into a fractal resulting in a "ridged" look.
 
 :ref:`FractalType<enum_FastNoiseLite_FractalType>` **FRACTAL_PING_PONG** = ``3``
 
-Method of combining octaves into a fractal with a ping pong effect.
+Phương pháp kết hợp các octave thành một fractal với hiệu ứng ping pong.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ Method of combining octaves into a fractal with a ping pong effect.
 
 .. rst-class:: classref-enumeration
 
-enum **CellularDistanceFunction**: :ref:`🔗<enum_FastNoiseLite_CellularDistanceFunction>`
+enum **CellularDistanceFunction**: :ref:`🔗 <enum_FastNoiseLite_CellularDistanceFunction>`
 
 .. _class_FastNoiseLite_constant_DISTANCE_EUCLIDEAN:
 
@@ -198,7 +198,7 @@ enum **CellularDistanceFunction**: :ref:`🔗<enum_FastNoiseLite_CellularDistanc
 
 :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` **DISTANCE_EUCLIDEAN** = ``0``
 
-Euclidean distance to the nearest point.
+Khoảng cách Euclidean đến điểm gần nhất.
 
 .. _class_FastNoiseLite_constant_DISTANCE_EUCLIDEAN_SQUARED:
 
@@ -206,7 +206,7 @@ Euclidean distance to the nearest point.
 
 :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` **DISTANCE_EUCLIDEAN_SQUARED** = ``1``
 
-Squared Euclidean distance to the nearest point.
+Khoảng cách Euclidean bình phương đến điểm gần nhất.
 
 .. _class_FastNoiseLite_constant_DISTANCE_MANHATTAN:
 
@@ -214,7 +214,7 @@ Squared Euclidean distance to the nearest point.
 
 :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` **DISTANCE_MANHATTAN** = ``2``
 
-Manhattan distance (taxicab metric) to the nearest point.
+Khoảng cách Manhattan (metric taxi) đến điểm gần nhất.
 
 .. _class_FastNoiseLite_constant_DISTANCE_HYBRID:
 
@@ -222,7 +222,7 @@ Manhattan distance (taxicab metric) to the nearest point.
 
 :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` **DISTANCE_HYBRID** = ``3``
 
-Blend of :ref:`DISTANCE_EUCLIDEAN<class_FastNoiseLite_constant_DISTANCE_EUCLIDEAN>` and :ref:`DISTANCE_MANHATTAN<class_FastNoiseLite_constant_DISTANCE_MANHATTAN>` to give curved cell boundaries.
+Kết hợp :ref:`DISTANCE_EUCLIDEAN<class_FastNoiseLite_constant_DISTANCE_EUCLIDEAN>` và :ref:`DISTANCE_MANHATTAN<class_FastNoiseLite_constant_DISTANCE_MANHATTAN>` để tạo ra các ranh giới ô cong.
 
 .. rst-class:: classref-item-separator
 
@@ -232,7 +232,7 @@ Blend of :ref:`DISTANCE_EUCLIDEAN<class_FastNoiseLite_constant_DISTANCE_EUCLIDEA
 
 .. rst-class:: classref-enumeration
 
-enum **CellularReturnType**: :ref:`🔗<enum_FastNoiseLite_CellularReturnType>`
+enum **CellularReturnType**: :ref:`🔗 <enum_FastNoiseLite_CellularReturnType>`
 
 .. _class_FastNoiseLite_constant_RETURN_CELL_VALUE:
 
@@ -240,7 +240,7 @@ enum **CellularReturnType**: :ref:`🔗<enum_FastNoiseLite_CellularReturnType>`
 
 :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **RETURN_CELL_VALUE** = ``0``
 
-The cellular distance function will return the same value for all points within a cell.
+Hàm khoảng cách cellular sẽ trả về cùng một giá trị cho mọi điểm trong một ô.
 
 .. _class_FastNoiseLite_constant_RETURN_DISTANCE:
 
@@ -248,7 +248,7 @@ The cellular distance function will return the same value for all points within 
 
 :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **RETURN_DISTANCE** = ``1``
 
-The cellular distance function will return a value determined by the distance to the nearest point.
+Hàm khoảng cách cellular sẽ trả về một giá trị được xác định bởi khoảng cách đến điểm gần nhất.
 
 .. _class_FastNoiseLite_constant_RETURN_DISTANCE2:
 
@@ -256,7 +256,7 @@ The cellular distance function will return a value determined by the distance to
 
 :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **RETURN_DISTANCE2** = ``2``
 
-The cellular distance function returns the distance to the second-nearest point.
+Hàm khoảng cách cellular trả về khoảng cách đến điểm gần thứ hai.
 
 .. _class_FastNoiseLite_constant_RETURN_DISTANCE2_ADD:
 
@@ -264,7 +264,7 @@ The cellular distance function returns the distance to the second-nearest point.
 
 :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **RETURN_DISTANCE2_ADD** = ``3``
 
-The distance to the nearest point is added to the distance to the second-nearest point.
+Khoảng cách đến điểm gần nhất được cộng vào khoảng cách đến điểm gần thứ hai.
 
 .. _class_FastNoiseLite_constant_RETURN_DISTANCE2_SUB:
 
@@ -272,7 +272,7 @@ The distance to the nearest point is added to the distance to the second-nearest
 
 :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **RETURN_DISTANCE2_SUB** = ``4``
 
-The distance to the nearest point is subtracted from the distance to the second-nearest point.
+Khoảng cách đến điểm gần nhất được trừ khỏi khoảng cách đến điểm gần thứ hai.
 
 .. _class_FastNoiseLite_constant_RETURN_DISTANCE2_MUL:
 
@@ -280,7 +280,7 @@ The distance to the nearest point is subtracted from the distance to the second-
 
 :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **RETURN_DISTANCE2_MUL** = ``5``
 
-The distance to the nearest point is multiplied with the distance to the second-nearest point.
+Khoảng cách đến điểm gần nhất được nhân với khoảng cách đến điểm gần thứ hai.
 
 .. _class_FastNoiseLite_constant_RETURN_DISTANCE2_DIV:
 
@@ -288,7 +288,7 @@ The distance to the nearest point is multiplied with the distance to the second-
 
 :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **RETURN_DISTANCE2_DIV** = ``6``
 
-The distance to the nearest point is divided by the distance to the second-nearest point.
+Khoảng cách đến điểm gần nhất được chia cho khoảng cách đến điểm gần thứ hai.
 
 .. rst-class:: classref-item-separator
 
@@ -298,7 +298,7 @@ The distance to the nearest point is divided by the distance to the second-neare
 
 .. rst-class:: classref-enumeration
 
-enum **DomainWarpType**: :ref:`🔗<enum_FastNoiseLite_DomainWarpType>`
+enum **DomainWarpType**: :ref:`🔗 <enum_FastNoiseLite_DomainWarpType>`
 
 .. _class_FastNoiseLite_constant_DOMAIN_WARP_SIMPLEX:
 
@@ -306,7 +306,7 @@ enum **DomainWarpType**: :ref:`🔗<enum_FastNoiseLite_DomainWarpType>`
 
 :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>` **DOMAIN_WARP_SIMPLEX** = ``0``
 
-The domain is warped using the simplex noise algorithm.
+Miền được làm biến dạng bằng thuật toán simplex noise.
 
 .. _class_FastNoiseLite_constant_DOMAIN_WARP_SIMPLEX_REDUCED:
 
@@ -314,7 +314,7 @@ The domain is warped using the simplex noise algorithm.
 
 :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>` **DOMAIN_WARP_SIMPLEX_REDUCED** = ``1``
 
-The domain is warped using a simplified version of the simplex noise algorithm.
+Miền được làm biến dạng bằng một phiên bản đơn giản hóa của thuật toán simplex noise.
 
 .. _class_FastNoiseLite_constant_DOMAIN_WARP_BASIC_GRID:
 
@@ -322,7 +322,7 @@ The domain is warped using a simplified version of the simplex noise algorithm.
 
 :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>` **DOMAIN_WARP_BASIC_GRID** = ``2``
 
-The domain is warped using a simple noise grid (not as smooth as the other methods, but more performant).
+Miền được làm biến dạng bằng một lưới nhiễu đơn giản (không mượt bằng các phương pháp khác, nhưng có hiệu năng cao hơn).
 
 .. rst-class:: classref-item-separator
 
@@ -332,7 +332,7 @@ The domain is warped using a simple noise grid (not as smooth as the other metho
 
 .. rst-class:: classref-enumeration
 
-enum **DomainWarpFractalType**: :ref:`🔗<enum_FastNoiseLite_DomainWarpFractalType>`
+enum **DomainWarpFractalType**: :ref:`🔗 <enum_FastNoiseLite_DomainWarpFractalType>`
 
 .. _class_FastNoiseLite_constant_DOMAIN_WARP_FRACTAL_NONE:
 
@@ -340,7 +340,7 @@ enum **DomainWarpFractalType**: :ref:`🔗<enum_FastNoiseLite_DomainWarpFractalT
 
 :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>` **DOMAIN_WARP_FRACTAL_NONE** = ``0``
 
-No fractal noise for warping the space.
+Không sử dụng nhiễu fractal để làm biến dạng không gian.
 
 .. _class_FastNoiseLite_constant_DOMAIN_WARP_FRACTAL_PROGRESSIVE:
 
@@ -348,7 +348,7 @@ No fractal noise for warping the space.
 
 :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>` **DOMAIN_WARP_FRACTAL_PROGRESSIVE** = ``1``
 
-Warping the space progressively, octave for octave, resulting in a more "liquified" distortion.
+Làm biến dạng không gian dần dần, theo từng octave, tạo ra hiệu ứng biến dạng "hóa lỏng" hơn.
 
 .. _class_FastNoiseLite_constant_DOMAIN_WARP_FRACTAL_INDEPENDENT:
 
@@ -356,7 +356,7 @@ Warping the space progressively, octave for octave, resulting in a more "liquifi
 
 :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>` **DOMAIN_WARP_FRACTAL_INDEPENDENT** = ``2``
 
-Warping the space independently for each octave, resulting in a more chaotic distortion.
+Làm biến dạng không gian độc lập cho từng octave, tạo ra hiệu ứng biến dạng hỗn loạn hơn.
 
 .. rst-class:: classref-section-separator
 
@@ -364,8 +364,8 @@ Warping the space independently for each octave, resulting in a more chaotic dis
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_FastNoiseLite_property_cellular_distance_function:
 
@@ -378,7 +378,7 @@ Property Descriptions
 - |void| **set_cellular_distance_function**\ (\ value\: :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>`\ )
 - :ref:`CellularDistanceFunction<enum_FastNoiseLite_CellularDistanceFunction>` **get_cellular_distance_function**\ (\ )
 
-Determines how the distance to the nearest/second-nearest point is computed.
+Xác định cách tính khoảng cách đến điểm gần nhất/gần thứ hai.
 
 .. rst-class:: classref-item-separator
 
@@ -395,7 +395,7 @@ Determines how the distance to the nearest/second-nearest point is computed.
 - |void| **set_cellular_jitter**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_cellular_jitter**\ (\ )
 
-Maximum distance a point can move off of its grid position. Set to ``0`` for an even grid.
+Khoảng cách tối đa mà một điểm có thể lệch khỏi vị trí trên lưới. Đặt thành ``0`` để có lưới đều.
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ Maximum distance a point can move off of its grid position. Set to ``0`` for an 
 - |void| **set_cellular_return_type**\ (\ value\: :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>`\ )
 - :ref:`CellularReturnType<enum_FastNoiseLite_CellularReturnType>` **get_cellular_return_type**\ (\ )
 
-Return type from cellular noise calculations.
+Kiểu giá trị trả về từ các phép tính cellular noise.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ Return type from cellular noise calculations.
 - |void| **set_domain_warp_amplitude**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_domain_warp_amplitude**\ (\ )
 
-Sets the maximum warp distance from the origin.
+Đặt khoảng cách warp tối đa tính từ gốc tọa độ.
 
 .. rst-class:: classref-item-separator
 
@@ -446,7 +446,7 @@ Sets the maximum warp distance from the origin.
 - |void| **set_domain_warp_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_domain_warp_enabled**\ (\ )
 
-If enabled, another FastNoiseLite instance is used to warp the space, resulting in a distortion of the noise.
+Nếu được bật, một instance FastNoiseLite khác sẽ được sử dụng để warp không gian, tạo ra sự biến dạng của noise.
 
 .. rst-class:: classref-item-separator
 
@@ -463,9 +463,9 @@ If enabled, another FastNoiseLite instance is used to warp the space, resulting 
 - |void| **set_domain_warp_fractal_gain**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_domain_warp_fractal_gain**\ (\ )
 
-Determines the strength of each subsequent layer of the noise which is used to warp the space.
+Xác định cường độ của mỗi lớp noise tiếp theo được sử dụng để warp không gian.
 
-A low value places more emphasis on the lower frequency base layers, while a high value puts more emphasis on the higher frequency layers.
+Giá trị thấp làm nổi bật các lớp cơ sở có tần số thấp hơn, trong khi giá trị cao làm nổi bật các lớp có tần số cao hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -482,7 +482,7 @@ A low value places more emphasis on the lower frequency base layers, while a hig
 - |void| **set_domain_warp_fractal_lacunarity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_domain_warp_fractal_lacunarity**\ (\ )
 
-The change in frequency between octaves, also known as "lacunarity", of the fractal noise which warps the space. Increasing this value results in higher octaves, producing noise with finer details and a rougher appearance.
+Mức thay đổi tần số giữa các octave, còn được gọi là "lacunarity", của fractal noise dùng để warp không gian. Việc tăng giá trị này tạo ra các octave cao hơn, cho ra noise có chi tiết mịn hơn và vẻ ngoài gồ ghề hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -499,7 +499,7 @@ The change in frequency between octaves, also known as "lacunarity", of the frac
 - |void| **set_domain_warp_fractal_octaves**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_domain_warp_fractal_octaves**\ (\ )
 
-The number of noise layers that are sampled to get the final value for the fractal noise which warps the space.
+Số lượng lớp noise được lấy mẫu để nhận giá trị cuối cùng của fractal noise dùng để làm biến dạng không gian.
 
 .. rst-class:: classref-item-separator
 
@@ -516,7 +516,7 @@ The number of noise layers that are sampled to get the final value for the fract
 - |void| **set_domain_warp_fractal_type**\ (\ value\: :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>`\ )
 - :ref:`DomainWarpFractalType<enum_FastNoiseLite_DomainWarpFractalType>` **get_domain_warp_fractal_type**\ (\ )
 
-The method for combining octaves into a fractal which is used to warp the space.
+Phương thức kết hợp các octave thành một fractal được dùng để làm biến dạng không gian.
 
 .. rst-class:: classref-item-separator
 
@@ -533,7 +533,7 @@ The method for combining octaves into a fractal which is used to warp the space.
 - |void| **set_domain_warp_frequency**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_domain_warp_frequency**\ (\ )
 
-Frequency of the noise which warps the space. Low frequency results in smooth noise while high frequency results in rougher, more granular noise.
+Tần số của noise làm biến dạng không gian. Tần số thấp tạo ra noise mượt, trong khi tần số cao tạo ra noise thô hơn và có nhiều chi tiết dạng hạt hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -550,7 +550,7 @@ Frequency of the noise which warps the space. Low frequency results in smooth no
 - |void| **set_domain_warp_type**\ (\ value\: :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>`\ )
 - :ref:`DomainWarpType<enum_FastNoiseLite_DomainWarpType>` **get_domain_warp_type**\ (\ )
 
-The warp algorithm.
+Thuật toán warp.
 
 .. rst-class:: classref-item-separator
 
@@ -567,9 +567,9 @@ The warp algorithm.
 - |void| **set_fractal_gain**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fractal_gain**\ (\ )
 
-Determines the strength of each subsequent layer of noise in fractal noise.
+Xác định cường độ của mỗi lớp noise tiếp theo trong fractal noise.
 
-A low value places more emphasis on the lower frequency base layers, while a high value puts more emphasis on the higher frequency layers.
+Giá trị thấp làm nổi bật các lớp cơ sở có tần số thấp hơn, trong khi giá trị cao làm nổi bật các lớp có tần số cao hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -586,7 +586,7 @@ A low value places more emphasis on the lower frequency base layers, while a hig
 - |void| **set_fractal_lacunarity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fractal_lacunarity**\ (\ )
 
-Frequency multiplier between subsequent octaves. Increasing this value results in higher octaves producing noise with finer details and a rougher appearance.
+Hệ số nhân tần số giữa các octave liên tiếp. Việc tăng giá trị này khiến các octave cao hơn tạo ra noise có chi tiết mịn hơn và vẻ ngoài thô hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -603,7 +603,7 @@ Frequency multiplier between subsequent octaves. Increasing this value results i
 - |void| **set_fractal_octaves**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_fractal_octaves**\ (\ )
 
-The number of noise layers that are sampled to get the final value for fractal noise types.
+Số lượng lớp noise được lấy mẫu để thu được giá trị cuối cùng cho các loại fractal noise.
 
 .. rst-class:: classref-item-separator
 
@@ -620,7 +620,7 @@ The number of noise layers that are sampled to get the final value for fractal n
 - |void| **set_fractal_ping_pong_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fractal_ping_pong_strength**\ (\ )
 
-Sets the strength of the fractal ping pong type.
+Thiết lập cường độ của loại fractal ping pong.
 
 .. rst-class:: classref-item-separator
 
@@ -637,7 +637,7 @@ Sets the strength of the fractal ping pong type.
 - |void| **set_fractal_type**\ (\ value\: :ref:`FractalType<enum_FastNoiseLite_FractalType>`\ )
 - :ref:`FractalType<enum_FastNoiseLite_FractalType>` **get_fractal_type**\ (\ )
 
-The method for combining octaves into a fractal.
+Phương pháp kết hợp các octave thành một fractal.
 
 .. rst-class:: classref-item-separator
 
@@ -654,7 +654,7 @@ The method for combining octaves into a fractal.
 - |void| **set_fractal_weighted_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fractal_weighted_strength**\ (\ )
 
-Higher weighting means higher octaves have less impact if lower octaves have a large impact.
+Trọng số càng cao thì các octave cao càng ít ảnh hưởng nếu các octave thấp có ảnh hưởng lớn.
 
 .. rst-class:: classref-item-separator
 
@@ -671,7 +671,7 @@ Higher weighting means higher octaves have less impact if lower octaves have a l
 - |void| **set_frequency**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_frequency**\ (\ )
 
-The frequency for all noise types. Low frequency results in smooth noise while high frequency results in rougher, more granular noise.
+Tần số cho tất cả các loại noise. Tần số thấp tạo ra noise mượt, trong khi tần số cao tạo ra noise thô hơn, có dạng hạt rõ hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -688,7 +688,7 @@ The frequency for all noise types. Low frequency results in smooth noise while h
 - |void| **set_noise_type**\ (\ value\: :ref:`NoiseType<enum_FastNoiseLite_NoiseType>`\ )
 - :ref:`NoiseType<enum_FastNoiseLite_NoiseType>` **get_noise_type**\ (\ )
 
-The noise algorithm used.
+Thuật toán noise được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -705,7 +705,7 @@ The noise algorithm used.
 - |void| **set_offset**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_offset**\ (\ )
 
-Translate the noise input coordinates by the given :ref:`Vector3<class_Vector3>`.
+Dịch các tọa độ đầu vào của noise theo :ref:`Vector3<class_Vector3>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -722,14 +722,14 @@ Translate the noise input coordinates by the given :ref:`Vector3<class_Vector3>`
 - |void| **set_seed**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_seed**\ (\ )
 
-The random number seed for all noise types.
+Hạt giống số ngẫu nhiên cho tất cả các loại nhiễu.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,23 +10,23 @@
 OpenXRSpatialCapabilityConfigurationPlaneTracking
 =================================================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`OpenXRSpatialCapabilityConfigurationBaseHeader<class_OpenXRSpatialCapabilityConfigurationBaseHeader>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRSpatialCapabilityConfigurationBaseHeader<class_OpenXRSpatialCapabilityConfigurationBaseHeader>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Configuration header for plane tracking.
+Header cấu hình cho việc theo dõi mặt phẳng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Configuration header for plane tracking. Pass this to :ref:`OpenXRSpatialEntityExtension.create_spatial_context()<class_OpenXRSpatialEntityExtension_method_create_spatial_context>` to create a spatial context with plane tracking capabilities.
+Header cấu hình cho việc theo dõi mặt phẳng. Truyền giá trị này vào :ref:`OpenXRSpatialEntityExtension.create_spatial_context()<class_OpenXRSpatialEntityExtension_method_create_spatial_context>` để tạo một ngữ cảnh không gian với các khả năng theo dõi mặt phẳng.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -47,8 +47,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRSpatialCapabilityConfigurationPlaneTracking_method_get_enabled_components:
 
@@ -56,9 +56,9 @@ Method Descriptions
 
 :ref:`PackedInt64Array<class_PackedInt64Array>` **get_enabled_components**\ (\ ) |const| :ref:`🔗<class_OpenXRSpatialCapabilityConfigurationPlaneTracking_method_get_enabled_components>`
 
-Returns the components enabled by this configuration.
+Trả về các thành phần được bật bởi cấu hình này.
 
-\ **Note:** Only valid after this configuration was used to create a spatial context.
+\ **Lưu ý:** Chỉ hợp lệ sau khi cấu hình này được sử dụng để tạo một spatial context.
 
 .. rst-class:: classref-item-separator
 
@@ -70,7 +70,7 @@ Returns the components enabled by this configuration.
 
 :ref:`bool<class_bool>` **supports_labels**\ (\ ) :ref:`🔗<class_OpenXRSpatialCapabilityConfigurationPlaneTracking_method_supports_labels>`
 
-Returns ``true`` if we support the plane semantic label component (only valid after the OpenXR session has started). You can query these using the :ref:`OpenXRSpatialComponentPlaneSemanticLabelList<class_OpenXRSpatialComponentPlaneSemanticLabelList>` data object.
+Trả về ``true`` nếu chúng tôi hỗ trợ thành phần nhãn ngữ nghĩa mặt phẳng (chỉ hợp lệ sau khi OpenXR session đã bắt đầu). Bạn có thể truy vấn các thành phần này bằng đối tượng dữ liệu :ref:`OpenXRSpatialComponentPlaneSemanticLabelList<class_OpenXRSpatialComponentPlaneSemanticLabelList>`.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ Returns ``true`` if we support the plane semantic label component (only valid af
 
 :ref:`bool<class_bool>` **supports_mesh_2d**\ (\ ) :ref:`🔗<class_OpenXRSpatialCapabilityConfigurationPlaneTracking_method_supports_mesh_2d>`
 
-Returns ``true`` if we support the mesh 2D component (only valid after the OpenXR session has started). You can query these using the :ref:`OpenXRSpatialComponentMesh2DList<class_OpenXRSpatialComponentMesh2DList>` data object.
+Trả về ``true`` nếu chúng tôi hỗ trợ thành phần mesh 2D (chỉ hợp lệ sau khi OpenXR session đã bắt đầu). Bạn có thể truy vấn các thành phần này bằng đối tượng dữ liệu :ref:`OpenXRSpatialComponentMesh2DList<class_OpenXRSpatialComponentMesh2DList>`.
 
 .. rst-class:: classref-item-separator
 
@@ -94,14 +94,14 @@ Returns ``true`` if we support the mesh 2D component (only valid after the OpenX
 
 :ref:`bool<class_bool>` **supports_polygons**\ (\ ) :ref:`🔗<class_OpenXRSpatialCapabilityConfigurationPlaneTracking_method_supports_polygons>`
 
-Returns ``true`` if we support the polygon 2D component (only valid after the OpenXR session has started). You can query these using the :ref:`OpenXRSpatialComponentPolygon2DList<class_OpenXRSpatialComponentPolygon2DList>` data object.
+Trả về ``true`` nếu chúng tôi hỗ trợ thành phần polygon 2D (chỉ hợp lệ sau khi OpenXR session đã bắt đầu). Bạn có thể truy vấn các thành phần này bằng đối tượng dữ liệu :ref:`OpenXRSpatialComponentPolygon2DList<class_OpenXRSpatialComponentPolygon2DList>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

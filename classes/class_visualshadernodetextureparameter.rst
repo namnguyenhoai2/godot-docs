@@ -10,38 +10,38 @@
 VisualShaderNodeTextureParameter
 ================================
 
-**Inherits:** :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`VisualShaderNodeCubemapParameter<class_VisualShaderNodeCubemapParameter>`, :ref:`VisualShaderNodeTexture2DArrayParameter<class_VisualShaderNodeTexture2DArrayParameter>`, :ref:`VisualShaderNodeTexture2DParameter<class_VisualShaderNodeTexture2DParameter>`, :ref:`VisualShaderNodeTexture3DParameter<class_VisualShaderNodeTexture3DParameter>`, :ref:`VisualShaderNodeTextureParameterTriplanar<class_VisualShaderNodeTextureParameterTriplanar>`
+**Được kế thừa bởi:** :ref:`VisualShaderNodeCubemapParameter<class_VisualShaderNodeCubemapParameter>`, :ref:`VisualShaderNodeTexture2DArrayParameter<class_VisualShaderNodeTexture2DArrayParameter>`, :ref:`VisualShaderNodeTexture2DParameter<class_VisualShaderNodeTexture2DParameter>`, :ref:`VisualShaderNodeTexture3DParameter<class_VisualShaderNodeTexture3DParameter>`, :ref:`VisualShaderNodeTextureParameterTriplanar<class_VisualShaderNodeTextureParameterTriplanar>`
 
-Performs a uniform texture lookup within the visual shader graph.
+Thực hiện tra cứu texture đồng nhất trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Performs a lookup operation on the texture provided as a uniform for the shader.
+Thực hiện thao tác tra cứu trên texture được cung cấp dưới dạng uniform cho shader.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
-   | :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>`   | :ref:`color_default<class_VisualShaderNodeTextureParameter_property_color_default>`   | ``0`` |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
-   | :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` | :ref:`texture_filter<class_VisualShaderNodeTextureParameter_property_texture_filter>` | ``0`` |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
-   | :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>` | :ref:`texture_repeat<class_VisualShaderNodeTextureParameter_property_texture_repeat>` | ``0`` |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
-   | :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` | :ref:`texture_source<class_VisualShaderNodeTextureParameter_property_texture_source>` | ``0`` |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
-   | :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>`     | :ref:`texture_type<class_VisualShaderNodeTextureParameter_property_texture_type>`     | ``0`` |
-   +---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
+   | :ref:`ColorDefault <enum_VisualShaderNodeTextureParameter_ColorDefault>`   | :ref:`color_default<class_VisualShaderNodeTextureParameter_property_color_default>`   | ``0`` |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
+   | :ref:`TextureFilter <enum_VisualShaderNodeTextureParameter_TextureFilter>` | :ref:`texture_filter<class_VisualShaderNodeTextureParameter_property_texture_filter>` | ``0`` |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
+   | :ref:`TextureRepeat <enum_VisualShaderNodeTextureParameter_TextureRepeat>` | :ref:`texture_repeat<class_VisualShaderNodeTextureParameter_property_texture_repeat>` | ``0`` |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
+   | :ref:`TextureSource <enum_VisualShaderNodeTextureParameter_TextureSource>` | :ref:`texture_source<class_VisualShaderNodeTextureParameter_property_texture_source>` | ``0`` |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
+   | :ref:`TextureType <enum_VisualShaderNodeTextureParameter_TextureType>`     | :ref:`texture_type<class_VisualShaderNodeTextureParameter_property_texture_type>`     | ``0`` |
+   +----------------------------------------------------------------------------+---------------------------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -49,14 +49,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeTextureParameter_TextureType:
 
 .. rst-class:: classref-enumeration
 
-enum **TextureType**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_TextureType>`
+enum **TextureType**: :ref:`🔗 <enum_VisualShaderNodeTextureParameter_TextureType>`
 
 .. _class_VisualShaderNodeTextureParameter_constant_TYPE_DATA:
 
@@ -64,7 +64,7 @@ enum **TextureType**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_TextureTy
 
 :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>` **TYPE_DATA** = ``0``
 
-No hints are added to the uniform declaration.
+Không có gợi ý nào được thêm vào khai báo uniform.
 
 .. _class_VisualShaderNodeTextureParameter_constant_TYPE_COLOR:
 
@@ -72,7 +72,7 @@ No hints are added to the uniform declaration.
 
 :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>` **TYPE_COLOR** = ``1``
 
-Adds ``source_color`` as hint to the uniform declaration for proper conversion from nonlinear sRGB encoding to linear encoding.
+Thêm ``source_color`` làm gợi ý cho khai báo uniform để chuyển đổi chính xác từ mã hóa sRGB phi tuyến sang mã hóa tuyến tính.
 
 .. _class_VisualShaderNodeTextureParameter_constant_TYPE_NORMAL_MAP:
 
@@ -80,7 +80,7 @@ Adds ``source_color`` as hint to the uniform declaration for proper conversion f
 
 :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>` **TYPE_NORMAL_MAP** = ``2``
 
-Adds ``hint_normal`` as hint to the uniform declaration, which internally converts the texture for proper usage as normal map.
+Thêm ``hint_normal`` làm gợi ý cho khai báo uniform, trong đó texture được chuyển đổi nội bộ để sử dụng đúng cách làm normal map.
 
 .. _class_VisualShaderNodeTextureParameter_constant_TYPE_ANISOTROPY:
 
@@ -88,7 +88,7 @@ Adds ``hint_normal`` as hint to the uniform declaration, which internally conver
 
 :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>` **TYPE_ANISOTROPY** = ``3``
 
-Adds ``hint_anisotropy`` as hint to the uniform declaration to use for a flowmap.
+Thêm ``hint_anisotropy`` làm gợi ý cho khai báo uniform để sử dụng cho flowmap.
 
 .. _class_VisualShaderNodeTextureParameter_constant_TYPE_MAX:
 
@@ -96,7 +96,7 @@ Adds ``hint_anisotropy`` as hint to the uniform declaration to use for a flowmap
 
 :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>` **TYPE_MAX** = ``4``
 
-Represents the size of the :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>` enum.
+Biểu thị kích thước của enum :ref:`TextureType <enum_VisualShaderNodeTextureParameter_TextureType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ Represents the size of the :ref:`TextureType<enum_VisualShaderNodeTextureParamet
 
 .. rst-class:: classref-enumeration
 
-enum **ColorDefault**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_ColorDefault>`
+enum **ColorDefault**: :ref:`🔗 <enum_VisualShaderNodeTextureParameter_ColorDefault>`
 
 .. _class_VisualShaderNodeTextureParameter_constant_COLOR_DEFAULT_WHITE:
 
@@ -114,7 +114,7 @@ enum **ColorDefault**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_ColorDef
 
 :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>` **COLOR_DEFAULT_WHITE** = ``0``
 
-Defaults to fully opaque white color.
+Mặc định là màu trắng hoàn toàn không trong suốt.
 
 .. _class_VisualShaderNodeTextureParameter_constant_COLOR_DEFAULT_BLACK:
 
@@ -122,7 +122,7 @@ Defaults to fully opaque white color.
 
 :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>` **COLOR_DEFAULT_BLACK** = ``1``
 
-Defaults to fully opaque black color.
+Mặc định là màu đen hoàn toàn không trong suốt.
 
 .. _class_VisualShaderNodeTextureParameter_constant_COLOR_DEFAULT_TRANSPARENT:
 
@@ -130,7 +130,7 @@ Defaults to fully opaque black color.
 
 :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>` **COLOR_DEFAULT_TRANSPARENT** = ``2``
 
-Defaults to fully transparent black color.
+Mặc định là màu đen hoàn toàn trong suốt.
 
 .. _class_VisualShaderNodeTextureParameter_constant_COLOR_DEFAULT_MAX:
 
@@ -138,7 +138,7 @@ Defaults to fully transparent black color.
 
 :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>` **COLOR_DEFAULT_MAX** = ``3``
 
-Represents the size of the :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>` enum.
+Đại diện cho kích thước của enum :ref:`ColorDefault <enum_VisualShaderNodeTextureParameter_ColorDefault>`.
 
 .. rst-class:: classref-item-separator
 
@@ -148,7 +148,7 @@ Represents the size of the :ref:`ColorDefault<enum_VisualShaderNodeTextureParame
 
 .. rst-class:: classref-enumeration
 
-enum **TextureFilter**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_TextureFilter>`
+enum **TextureFilter**: :ref:`🔗 <enum_VisualShaderNodeTextureParameter_TextureFilter>`
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_DEFAULT:
 
@@ -156,7 +156,7 @@ enum **TextureFilter**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_Texture
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_DEFAULT** = ``0``
 
-Sample the texture using the filter determined by the node this shader is attached to.
+Lấy mẫu texture bằng bộ lọc được xác định bởi node mà shader này được gắn vào.
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_NEAREST:
 
@@ -164,7 +164,7 @@ Sample the texture using the filter determined by the node this shader is attach
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_NEAREST** = ``1``
 
-The texture filter reads from the nearest pixel only. This makes the texture look pixelated from up close, and grainy from a distance (due to mipmaps not being sampled).
+Bộ lọc texture chỉ đọc pixel gần nhất. Điều này khiến texture trông có dạng pixel khi nhìn từ gần và nhiễu hạt khi nhìn từ xa (do mipmap không được lấy mẫu).
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_LINEAR:
 
@@ -172,7 +172,7 @@ The texture filter reads from the nearest pixel only. This makes the texture loo
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_LINEAR** = ``2``
 
-The texture filter blends between the nearest 4 pixels. This makes the texture look smooth from up close, and grainy from a distance (due to mipmaps not being sampled).
+Bộ lọc texture hòa trộn giữa 4 pixel gần nhất. Điều này khiến texture trông mượt khi nhìn từ gần và nhiễu hạt khi nhìn từ xa (do mipmap không được lấy mẫu).
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_NEAREST_MIPMAP:
 
@@ -180,9 +180,9 @@ The texture filter blends between the nearest 4 pixels. This makes the texture l
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_NEAREST_MIPMAP** = ``3``
 
-The texture filter reads from the nearest pixel and blends between the nearest 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``). This makes the texture look pixelated from up close, and smooth from a distance.
+Bộ lọc texture đọc pixel gần nhất và hòa trộn giữa 2 mipmap gần nhất (hoặc sử dụng mipmap gần nhất nếu :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter <class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` là ``true``). Điều này khiến texture trông có dạng pixel khi nhìn từ gần và mượt khi nhìn từ xa.
 
-Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to :ref:`Camera2D<class_Camera2D>` zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.
+Sử dụng tùy chọn này cho các texture không phải pixel art có thể được xem ở tỷ lệ thấp (ví dụ do :ref:`Camera2D<class_Camera2D>` zoom hoặc co giãn sprite), vì mipmap rất quan trọng để làm mượt các pixel nhỏ hơn pixel trên màn hình.
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_LINEAR_MIPMAP:
 
@@ -190,9 +190,9 @@ Use this for non-pixel art textures that may be viewed at a low scale (e.g. due 
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_LINEAR_MIPMAP** = ``4``
 
-The texture filter blends between the nearest 4 pixels and between the nearest 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``). This makes the texture look smooth from up close, and smooth from a distance.
+Bộ lọc texture pha trộn giữa 4 pixel gần nhất và giữa 2 mipmap gần nhất (hoặc sử dụng mipmap gần nhất nếu :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter <class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` là ``true``). Nhờ đó, texture trông mượt khi nhìn gần cũng như khi nhìn từ xa.
 
-Use this for non-pixel art textures that may be viewed at a low scale (e.g. due to :ref:`Camera2D<class_Camera2D>` zoom or sprite scaling), as mipmaps are important to smooth out pixels that are smaller than on-screen pixels.
+Sử dụng tùy chọn này cho các texture không phải pixel art có thể được xem ở tỷ lệ thấp (ví dụ do :ref:`Camera2D<class_Camera2D>` zoom hoặc co giãn sprite), vì mipmap rất quan trọng để làm mượt các pixel nhỏ hơn pixel trên màn hình.
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_NEAREST_MIPMAP_ANISOTROPIC:
 
@@ -200,9 +200,9 @@ Use this for non-pixel art textures that may be viewed at a low scale (e.g. due 
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_NEAREST_MIPMAP_ANISOTROPIC** = ``5``
 
-The texture filter reads from the nearest pixel and blends between 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``) based on the angle between the surface and the camera view. This makes the texture look pixelated from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting :ref:`ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level<class_ProjectSettings_property_rendering/textures/default_filters/anisotropic_filtering_level>`.
+Bộ lọc texture đọc pixel gần nhất và pha trộn giữa 2 mipmap (hoặc sử dụng mipmap gần nhất nếu :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter <class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` là ``true``) dựa trên góc giữa bề mặt và hướng nhìn của camera. Nhờ đó, texture trông có dạng pixel khi nhìn gần và mượt khi nhìn từ xa. Lọc bất đẳng hướng (anisotropic filtering) cải thiện chất lượng texture trên các bề mặt gần như thẳng hàng với camera, nhưng chậm hơn một chút. Có thể thay đổi mức lọc bất đẳng hướng bằng cách điều chỉnh :ref:`ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level <class_ProjectSettings_property_rendering/textures/default_filters/anisotropic_filtering_level>`.
 
-\ **Note:** This texture filter is rarely useful in 2D projects. :ref:`FILTER_NEAREST_MIPMAP<class_VisualShaderNodeTextureParameter_constant_FILTER_NEAREST_MIPMAP>` is usually more appropriate in this case.
+\ **Note:** Bộ lọc texture này hiếm khi hữu ích trong các dự án 2D. Trong trường hợp này, :ref:`FILTER_NEAREST_MIPMAP<class_VisualShaderNodeTextureParameter_constant_FILTER_NEAREST_MIPMAP>` thường phù hợp hơn.
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_LINEAR_MIPMAP_ANISOTROPIC:
 
@@ -210,9 +210,9 @@ The texture filter reads from the nearest pixel and blends between 2 mipmaps (or
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_LINEAR_MIPMAP_ANISOTROPIC** = ``6``
 
-The texture filter blends between the nearest 4 pixels and blends between 2 mipmaps (or uses the nearest mipmap if :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter<class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` is ``true``) based on the angle between the surface and the camera view. This makes the texture look smooth from up close, and smooth from a distance. Anisotropic filtering improves texture quality on surfaces that are almost in line with the camera, but is slightly slower. The anisotropic filtering level can be changed by adjusting :ref:`ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level<class_ProjectSettings_property_rendering/textures/default_filters/anisotropic_filtering_level>`.
+Bộ lọc texture pha trộn giữa 4 pixel gần nhất và giữa 2 mipmap (hoặc sử dụng mipmap gần nhất nếu :ref:`ProjectSettings.rendering/textures/default_filters/use_nearest_mipmap_filter <class_ProjectSettings_property_rendering/textures/default_filters/use_nearest_mipmap_filter>` là ``true``) dựa trên góc giữa bề mặt và hướng nhìn của camera. Nhờ đó, texture trông mượt khi nhìn gần cũng như khi nhìn từ xa. Lọc bất đẳng hướng (anisotropic filtering) cải thiện chất lượng texture trên các bề mặt gần như thẳng hàng với camera, nhưng chậm hơn một chút. Có thể thay đổi mức lọc bất đẳng hướng bằng cách điều chỉnh :ref:`ProjectSettings.rendering/textures/default_filters/anisotropic_filtering_level <class_ProjectSettings_property_rendering/textures/default_filters/anisotropic_filtering_level>`.
 
-\ **Note:** This texture filter is rarely useful in 2D projects. :ref:`FILTER_LINEAR_MIPMAP<class_VisualShaderNodeTextureParameter_constant_FILTER_LINEAR_MIPMAP>` is usually more appropriate in this case.
+\ **Note:** Bộ lọc texture này hiếm khi hữu ích trong các dự án 2D. Trong trường hợp này, :ref:`FILTER_LINEAR_MIPMAP<class_VisualShaderNodeTextureParameter_constant_FILTER_LINEAR_MIPMAP>` thường phù hợp hơn.
 
 .. _class_VisualShaderNodeTextureParameter_constant_FILTER_MAX:
 
@@ -220,7 +220,7 @@ The texture filter blends between the nearest 4 pixels and blends between 2 mipm
 
 :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **FILTER_MAX** = ``7``
 
-Represents the size of the :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` enum.
+Biểu thị kích thước của enum :ref:`TextureFilter <enum_VisualShaderNodeTextureParameter_TextureFilter>`.
 
 .. rst-class:: classref-item-separator
 
@@ -230,7 +230,7 @@ Represents the size of the :ref:`TextureFilter<enum_VisualShaderNodeTextureParam
 
 .. rst-class:: classref-enumeration
 
-enum **TextureRepeat**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_TextureRepeat>`
+enum **TextureRepeat**: :ref:`🔗 <enum_VisualShaderNodeTextureParameter_TextureRepeat>`
 
 .. _class_VisualShaderNodeTextureParameter_constant_REPEAT_DEFAULT:
 
@@ -238,7 +238,7 @@ enum **TextureRepeat**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_Texture
 
 :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>` **REPEAT_DEFAULT** = ``0``
 
-Sample the texture using the repeat mode determined by the node this shader is attached to.
+Lấy mẫu texture bằng chế độ lặp do node mà shader này được gắn vào xác định.
 
 .. _class_VisualShaderNodeTextureParameter_constant_REPEAT_ENABLED:
 
@@ -246,7 +246,7 @@ Sample the texture using the repeat mode determined by the node this shader is a
 
 :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>` **REPEAT_ENABLED** = ``1``
 
-Texture will repeat normally.
+Texture sẽ lặp lại bình thường.
 
 .. _class_VisualShaderNodeTextureParameter_constant_REPEAT_DISABLED:
 
@@ -254,7 +254,7 @@ Texture will repeat normally.
 
 :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>` **REPEAT_DISABLED** = ``2``
 
-Texture will not repeat.
+Texture sẽ không lặp lại.
 
 .. _class_VisualShaderNodeTextureParameter_constant_REPEAT_MAX:
 
@@ -262,7 +262,7 @@ Texture will not repeat.
 
 :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>` **REPEAT_MAX** = ``3``
 
-Represents the size of the :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>` enum.
+Biểu thị kích thước của enum :ref:`TextureRepeat <enum_VisualShaderNodeTextureParameter_TextureRepeat>`.
 
 .. rst-class:: classref-item-separator
 
@@ -272,7 +272,7 @@ Represents the size of the :ref:`TextureRepeat<enum_VisualShaderNodeTextureParam
 
 .. rst-class:: classref-enumeration
 
-enum **TextureSource**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_TextureSource>`
+enum **TextureSource**: :ref:`🔗 <enum_VisualShaderNodeTextureParameter_TextureSource>`
 
 .. _class_VisualShaderNodeTextureParameter_constant_SOURCE_NONE:
 
@@ -280,7 +280,7 @@ enum **TextureSource**: :ref:`🔗<enum_VisualShaderNodeTextureParameter_Texture
 
 :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` **SOURCE_NONE** = ``0``
 
-The texture source is not specified in the shader.
+Nguồn texture chưa được chỉ định trong shader.
 
 .. _class_VisualShaderNodeTextureParameter_constant_SOURCE_SCREEN:
 
@@ -288,7 +288,7 @@ The texture source is not specified in the shader.
 
 :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` **SOURCE_SCREEN** = ``1``
 
-The texture source is the screen texture which captures all opaque objects drawn this frame.
+Nguồn texture là texture màn hình, ghi lại tất cả các đối tượng opaque được vẽ trong khung hình này.
 
 .. _class_VisualShaderNodeTextureParameter_constant_SOURCE_DEPTH:
 
@@ -296,7 +296,7 @@ The texture source is the screen texture which captures all opaque objects drawn
 
 :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` **SOURCE_DEPTH** = ``2``
 
-The texture source is the depth texture from the depth prepass.
+Nguồn texture là texture độ sâu từ depth prepass.
 
 .. _class_VisualShaderNodeTextureParameter_constant_SOURCE_NORMAL_ROUGHNESS:
 
@@ -304,7 +304,7 @@ The texture source is the depth texture from the depth prepass.
 
 :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` **SOURCE_NORMAL_ROUGHNESS** = ``3``
 
-The texture source is the normal-roughness buffer from the depth prepass.
+Nguồn texture là buffer normal-roughness từ depth prepass.
 
 .. _class_VisualShaderNodeTextureParameter_constant_SOURCE_MAX:
 
@@ -312,7 +312,7 @@ The texture source is the normal-roughness buffer from the depth prepass.
 
 :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` **SOURCE_MAX** = ``4``
 
-Represents the size of the :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` enum.
+Biểu thị kích thước của enum :ref:`TextureSource <enum_VisualShaderNodeTextureParameter_TextureSource>`.
 
 .. rst-class:: classref-section-separator
 
@@ -320,8 +320,8 @@ Represents the size of the :ref:`TextureSource<enum_VisualShaderNodeTextureParam
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeTextureParameter_property_color_default:
 
@@ -334,7 +334,7 @@ Property Descriptions
 - |void| **set_color_default**\ (\ value\: :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>`\ )
 - :ref:`ColorDefault<enum_VisualShaderNodeTextureParameter_ColorDefault>` **get_color_default**\ (\ )
 
-Sets the default color if no texture is assigned to the uniform.
+Đặt màu mặc định nếu không có texture nào được gán cho uniform.
 
 .. rst-class:: classref-item-separator
 
@@ -351,7 +351,7 @@ Sets the default color if no texture is assigned to the uniform.
 - |void| **set_texture_filter**\ (\ value\: :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>`\ )
 - :ref:`TextureFilter<enum_VisualShaderNodeTextureParameter_TextureFilter>` **get_texture_filter**\ (\ )
 
-Sets the texture filtering mode.
+Thiết lập chế độ lọc texture.
 
 .. rst-class:: classref-item-separator
 
@@ -368,7 +368,7 @@ Sets the texture filtering mode.
 - |void| **set_texture_repeat**\ (\ value\: :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>`\ )
 - :ref:`TextureRepeat<enum_VisualShaderNodeTextureParameter_TextureRepeat>` **get_texture_repeat**\ (\ )
 
-Sets the texture repeating mode.
+Thiết lập chế độ lặp texture.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ Sets the texture repeating mode.
 - |void| **set_texture_source**\ (\ value\: :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>`\ )
 - :ref:`TextureSource<enum_VisualShaderNodeTextureParameter_TextureSource>` **get_texture_source**\ (\ )
 
-Sets the texture source mode. Used for reading from the screen, depth, or normal_roughness texture.
+Thiết lập chế độ nguồn texture. Được sử dụng để đọc từ texture màn hình, depth hoặc normal_roughness.
 
 .. rst-class:: classref-item-separator
 
@@ -402,14 +402,14 @@ Sets the texture source mode. Used for reading from the screen, depth, or normal
 - |void| **set_texture_type**\ (\ value\: :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>`\ )
 - :ref:`TextureType<enum_VisualShaderNodeTextureParameter_TextureType>` **get_texture_type**\ (\ )
 
-Defines the type of data provided by the source texture.
+Xác định kiểu dữ liệu do texture nguồn cung cấp.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

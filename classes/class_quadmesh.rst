@@ -10,46 +10,46 @@
 QuadMesh
 ========
 
-**Inherits:** :ref:`PlaneMesh<class_PlaneMesh>` **<** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PlaneMesh<class_PlaneMesh>` **<** :ref:`PrimitiveMesh<class_PrimitiveMesh>` **<** :ref:`Mesh<class_Mesh>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Class representing a square mesh facing the camera.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Class representing a square :ref:`PrimitiveMesh<class_PrimitiveMesh>`. This flat mesh does not have a thickness. By default, this mesh is aligned on the X and Y axes; this rotation is more suited for use with billboarded materials. A **QuadMesh** is equivalent to a :ref:`PlaneMesh<class_PlaneMesh>` except its default :ref:`PlaneMesh.orientation<class_PlaneMesh_property_orientation>` is :ref:`PlaneMesh.FACE_Z<class_PlaneMesh_constant_FACE_Z>`.
+Lớp đại diện cho một mesh hình vuông hướng về phía camera.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp đại diện cho một :ref:`PrimitiveMesh<class_PrimitiveMesh>`. Mesh phẳng này không có độ dày. Theo mặc định, mesh này được căn chỉnh theo các trục X và Y; phép xoay này phù hợp hơn khi sử dụng với các material dạng billboard. Một **QuadMesh** tương đương với một :ref:`PlaneMesh<class_PlaneMesh>`, ngoại trừ việc :ref:`PlaneMesh.orientation<class_PlaneMesh_property_orientation>` mặc định của nó là :ref:`PlaneMesh.FACE_Z<class_PlaneMesh_constant_FACE_Z>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `GUI in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2807>`__
+- `Bản trình diễn GUI trong 3D Viewport <https://godotengine.org/asset-library/asset/2807>`__
 
-- `2D in 3D Viewport Demo <https://godotengine.org/asset-library/asset/2803>`__
+- `Bản trình diễn 2D trong 3D Viewport <https://godotengine.org/asset-library/asset/2803>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------+-------------+-------------------------------------------------------------------------------+
-   | :ref:`Orientation<enum_PlaneMesh_Orientation>` | orientation | ``2`` (overrides :ref:`PlaneMesh<class_PlaneMesh_property_orientation>`)      |
-   +------------------------------------------------+-------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                  | size        | ``Vector2(1, 1)`` (overrides :ref:`PlaneMesh<class_PlaneMesh_property_size>`) |
-   +------------------------------------------------+-------------+-------------------------------------------------------------------------------+
+   +-------------------------------------------------+-------------+----------------------------------------------------------------------------+
+   | :ref:`Orientation <enum_PlaneMesh_Orientation>` | orientation | ``2`` (ghi đè :ref:`PlaneMesh<class_PlaneMesh_property_orientation>`)      |
+   +-------------------------------------------------+-------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                   | size        | ``Vector2(1, 1)`` (ghi đè :ref:`PlaneMesh<class_PlaneMesh_property_size>`) |
+   +-------------------------------------------------+-------------+----------------------------------------------------------------------------+
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ ngoài các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

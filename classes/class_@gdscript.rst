@@ -10,28 +10,28 @@
 @GDScript
 =========
 
-Built-in GDScript constants, functions, and annotations.
+Các hằng số, hàm và chú thích tích hợp sẵn của GDScript.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A list of utility functions and annotations accessible from any script written in GDScript.
+Danh sách các hàm tiện ích và chú thích có thể truy cập từ mọi script được viết bằng GDScript.
 
-For the list of global functions and constants that can be accessed in any scripting language, see :ref:`@GlobalScope<class_@GlobalScope>`.
+Để xem danh sách các hàm và hằng số toàn cục có thể truy cập trong mọi ngôn ngữ script, hãy xem :ref:`@GlobalScope <class_@GlobalScope>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
 - :doc:`GDScript exports <../tutorials/scripting/gdscript/gdscript_exports>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -43,7 +43,7 @@ Methods
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`         | :ref:`char<class_@GDScript_method_char>`\ (\ code\: :ref:`int<class_int>`\ )                                                                                             |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`       | :ref:`convert<class_@GDScript_method_convert>`\ (\ what\: :ref:`Variant<class_Variant>`, type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`\ )                   |
+   | :ref:`Variant<class_Variant>`       | :ref:`convert<class_@GDScript_method_convert>`\ (\ what\: :ref:`Variant<class_Variant>`, type\: :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`\ )                  |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Object<class_Object>`         | :ref:`dict_to_inst<class_@GDScript_method_dict_to_inst>`\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ )                                                         |
    +-------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -76,8 +76,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_@GDScript_constant_PI:
 
@@ -85,7 +85,7 @@ Constants
 
 **PI** = ``3.14159265358979`` :ref:`🔗<class_@GDScript_constant_PI>`
 
-Constant that represents how many times the diameter of a circle fits around its perimeter. This is equivalent to ``TAU / 2``, or 180 degrees in rotations.
+Hằng số biểu thị số lần đường kính của một hình tròn vừa với chu vi của nó. Giá trị này tương đương với ``TAU / 2``, hoặc 180 độ khi tính theo phép quay.
 
 .. _class_@GDScript_constant_TAU:
 
@@ -93,7 +93,7 @@ Constant that represents how many times the diameter of a circle fits around its
 
 **TAU** = ``6.28318530717959`` :ref:`🔗<class_@GDScript_constant_TAU>`
 
-The circle constant, the circumference of the unit circle in radians. This is equivalent to ``PI * 2``, or 360 degrees in rotations.
+Hằng số hình tròn, là chu vi của đường tròn đơn vị tính theo radian. Giá trị này tương đương với ``PI * 2``, hoặc 360 độ khi tính theo phép quay.
 
 .. _class_@GDScript_constant_INF:
 
@@ -101,9 +101,9 @@ The circle constant, the circumference of the unit circle in radians. This is eq
 
 **INF** = ``inf`` :ref:`🔗<class_@GDScript_constant_INF>`
 
-Positive floating-point infinity. This is the result of floating-point division when the divisor is ``0.0``. For negative infinity, use ``-INF``. Dividing by ``-0.0`` will result in negative infinity if the numerator is positive, so dividing by ``0.0`` is not the same as dividing by ``-0.0`` (despite ``0.0 == -0.0`` returning ``true``).
+Vô cực dương dạng số thực dấu phẩy động. Đây là kết quả của phép chia số thực dấu phẩy động khi số chia là ``0.0``. Để biểu thị vô cực âm, hãy sử dụng ``-INF``. Chia cho ``-0.0`` sẽ cho kết quả là vô cực âm nếu tử số dương, vì vậy chia cho ``0.0`` không giống với chia cho ``-0.0`` (mặc dù ``0.0 == -0.0`` trả về ``true``).
 
-\ **Warning:** Numeric infinity is only a concept with floating-point numbers, and has no equivalent for integers. Dividing an integer number by ``0`` will not result in :ref:`INF<class_@GDScript_constant_INF>` and will result in a run-time error instead.
+\ **Cảnh báo:** Vô cực số chỉ là một khái niệm đối với các số thực dấu phẩy động và không có giá trị tương đương đối với số nguyên. Chia một số nguyên cho ``0`` sẽ không cho kết quả :ref:`INF<class_@GDScript_constant_INF>` mà thay vào đó sẽ gây ra lỗi khi chạy.
 
 .. _class_@GDScript_constant_NAN:
 
@@ -111,11 +111,11 @@ Positive floating-point infinity. This is the result of floating-point division 
 
 **NAN** = ``nan`` :ref:`🔗<class_@GDScript_constant_NAN>`
 
-"Not a Number", an invalid floating-point value. It is returned by some invalid operations, such as dividing floating-point ``0.0`` by ``0.0``.
+"Không phải là số", một giá trị số thực dấu phẩy động không hợp lệ. Giá trị này được trả về bởi một số phép toán không hợp lệ, chẳng hạn như chia số thực dấu phẩy động ``0.0`` cho ``0.0``.
 
-\ :ref:`NAN<class_@GDScript_constant_NAN>` has special properties, including that ``!=`` always returns ``true``, while other comparison operators always return ``false``. This is true even when comparing with itself (``NAN == NAN`` returns ``false`` and ``NAN != NAN`` returns ``true``). Due to this, you must use :ref:`@GlobalScope.is_nan()<class_@GlobalScope_method_is_nan>` to check whether a number is equal to :ref:`NAN<class_@GDScript_constant_NAN>`.
+\ :ref:`NAN<class_@GDScript_constant_NAN>` có các thuộc tính đặc biệt, trong đó ``!=`` luôn trả về ``true``, còn các toán tử so sánh khác luôn trả về ``false``. Điều này đúng ngay cả khi so sánh với chính nó (``NAN == NAN`` trả về ``false`` và ``NAN != NAN`` trả về ``true``). Vì vậy, bạn phải sử dụng :ref:`@GlobalScope.is_nan() <class_@GlobalScope_method_is_nan>` để kiểm tra xem một số có bằng :ref:`NAN<class_@GDScript_constant_NAN>` hay không.
 
-\ **Warning:** "Not a Number" is only a concept with floating-point numbers, and has no equivalent for integers. Dividing an integer ``0`` by ``0`` will not result in :ref:`NAN<class_@GDScript_constant_NAN>` and will result in a run-time error instead.
+\ **Cảnh báo:** "Không phải là số" chỉ là một khái niệm đối với các số thực dấu phẩy động và không có giá trị tương đương đối với số nguyên. Chia một số nguyên ``0`` cho ``0`` sẽ không cho kết quả :ref:`NAN<class_@GDScript_constant_NAN>` mà thay vào đó sẽ gây ra lỗi khi chạy.
 
 .. rst-class:: classref-section-separator
 
@@ -123,22 +123,22 @@ Positive floating-point infinity. This is the result of floating-point division 
 
 .. rst-class:: classref-descriptions-group
 
-Annotations
------------
+Chú thích
+---------
 
 .. _class_@GDScript_annotation_@abstract:
 
 .. rst-class:: classref-annotation
 
-**@abstract**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@abstract>`
+**@abstract**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@abstract>`
 
-Marks a class or a method as abstract.
+Đánh dấu một lớp hoặc một phương thức là abstract.
 
-An abstract class is a class that cannot be instantiated directly. Instead, it is meant to be inherited by other classes. Attempting to instantiate an abstract class will result in an error.
+Lớp abstract là lớp không thể được khởi tạo trực tiếp. Thay vào đó, lớp này được dùng để các lớp khác kế thừa. Việc cố gắng khởi tạo một lớp abstract sẽ gây ra lỗi.
 
-An abstract method is a method that has no implementation. Therefore, a newline or a semicolon is expected after the function header. This defines a contract that inheriting classes must conform to, because the method signature must be compatible when overriding.
+Phương thức abstract là phương thức không có phần triển khai. Do đó, sau phần khai báo hàm phải có một dòng mới hoặc dấu chấm phẩy. Điều này xác định một contract mà các lớp kế thừa phải tuân theo, vì chữ ký phương thức phải tương thích khi ghi đè.
 
-Inheriting classes must either provide implementations for all abstract methods, or the inheriting class must be marked as abstract. If a class has at least one abstract method (either its own or an unimplemented inherited one), then it must also be marked as abstract. However, the reverse is not true: an abstract class is allowed to have no abstract methods.
+Các lớp kế thừa phải cung cấp phần triển khai cho tất cả các phương thức abstract, hoặc lớp kế thừa phải được đánh dấu là abstract. Nếu một lớp có ít nhất một phương thức abstract (do chính lớp đó định nghĩa hoặc được kế thừa nhưng chưa triển khai), thì lớp đó cũng phải được đánh dấu là abstract. Tuy nhiên, điều ngược lại không đúng: một lớp abstract được phép không có phương thức abstract nào.
 
 ::
 
@@ -161,9 +161,9 @@ Inheriting classes must either provide implementations for all abstract methods,
 
 .. rst-class:: classref-annotation
 
-**@export**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export>`
+**@export**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export>`
 
-Mark the following property as exported (editable in the Inspector dock and saved to disk). To control the type of the exported property, use the type hint notation.
+Đánh dấu thuộc tính sau là exported (có thể chỉnh sửa trong Inspector dock và được lưu vào ổ đĩa). Để kiểm soát kiểu của thuộc tính exported, hãy sử dụng ký hiệu type hint.
 
 ::
 
@@ -195,9 +195,9 @@ Mark the following property as exported (editable in the Inspector dock and save
     @export var image_array: Array[Image]
     @export var node_array: Array[Node]
 
-\ **Note:** Custom resources and nodes should be registered as global classes using ``class_name``, since the Inspector currently only supports global classes. Otherwise, a less specific type will be exported instead.
+\ **Lưu ý:** Custom resources và nodes nên được đăng ký dưới dạng global classes bằng ``class_name``, vì Inspector hiện chỉ hỗ trợ global classes. Nếu không, một kiểu ít cụ thể hơn sẽ được export.
 
-\ **Note:** Node export is only supported in :ref:`Node<class_Node>`-derived classes and has a number of other limitations.
+\ **Lưu ý:** Việc export node chỉ được hỗ trợ trong các class kế thừa từ :ref:`Node<class_Node>` và còn có một số hạn chế khác.
 
 .. rst-class:: classref-item-separator
 
@@ -207,11 +207,11 @@ Mark the following property as exported (editable in the Inspector dock and save
 
 .. rst-class:: classref-annotation
 
-**@export_category**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_@GDScript_annotation_@export_category>`
+**@export_category**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗 <class_@GDScript_annotation_@export_category>`
 
-Define a new category for the following exported properties. This helps to organize properties in the Inspector dock.
+Xác định một category mới cho các thuộc tính exported sau. Điều này giúp sắp xếp các thuộc tính trong Inspector dock.
 
-See also :ref:`@GlobalScope.PROPERTY_USAGE_CATEGORY<class_@GlobalScope_constant_PROPERTY_USAGE_CATEGORY>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_USAGE_CATEGORY <class_@GlobalScope_constant_PROPERTY_USAGE_CATEGORY>`.
 
 ::
 
@@ -219,7 +219,7 @@ See also :ref:`@GlobalScope.PROPERTY_USAGE_CATEGORY<class_@GlobalScope_constant_
     @export var hp = 30
     @export var speed = 1.25
 
-\ **Note:** Categories in the Inspector dock's list usually divide properties coming from different classes (Node, Node2D, Sprite, etc.). For better clarity, it's recommended to use :ref:`@export_group<class_@GDScript_annotation_@export_group>` and :ref:`@export_subgroup<class_@GDScript_annotation_@export_subgroup>`, instead.
+\ **Lưu ý:** Các category trong danh sách của Inspector dock thường phân chia những thuộc tính đến từ các class khác nhau (Node, Node2D, Sprite, v.v.). Để rõ ràng hơn, bạn nên sử dụng :ref:`@export_group <class_@GDScript_annotation_@export_group>` và :ref:`@export_subgroup <class_@GDScript_annotation_@export_subgroup>`, thay vào đó.
 
 .. rst-class:: classref-item-separator
 
@@ -229,11 +229,11 @@ See also :ref:`@GlobalScope.PROPERTY_USAGE_CATEGORY<class_@GlobalScope_constant_
 
 .. rst-class:: classref-annotation
 
-**@export_color_no_alpha**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_color_no_alpha>`
+**@export_color_no_alpha**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_color_no_alpha>`
 
-Export a :ref:`Color<class_Color>`, :ref:`Array<class_Array>`\ \[:ref:`Color<class_Color>`\ \], or :ref:`PackedColorArray<class_PackedColorArray>` property without allowing its transparency (:ref:`Color.a<class_Color_property_a>`) to be edited.
+Xuất một :ref:`Color<class_Color>`, :ref:`Array<class_Array>`\ \[:ref:`Color<class_Color>`\ \], hoặc :ref:`PackedColorArray<class_PackedColorArray>` property mà không cho phép chỉnh sửa độ trong suốt (:ref:`Color.a<class_Color_property_a>`) của nó.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_COLOR_NO_ALPHA<class_@GlobalScope_constant_PROPERTY_HINT_COLOR_NO_ALPHA>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_COLOR_NO_ALPHA <class_@GlobalScope_constant_PROPERTY_HINT_COLOR_NO_ALPHA>`.
 
 ::
 
@@ -248,15 +248,15 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_COLOR_NO_ALPHA<class_@GlobalScope_cons
 
 .. rst-class:: classref-annotation
 
-**@export_custom**\ (\ hint\: :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>`, hint_string\: :ref:`String<class_String>`, usage\: |bitfield|\[:ref:`PropertyUsageFlags<enum_@GlobalScope_PropertyUsageFlags>`\] = 6\ ) :ref:`🔗<class_@GDScript_annotation_@export_custom>`
+**@export_custom**\ (\ hint\: :ref:`PropertyHint <enum_@GlobalScope_PropertyHint>`, hint_string\: :ref:`String<class_String>`, usage\: |bitfield|\[:ref:`PropertyUsageFlags <enum_@GlobalScope_PropertyUsageFlags>`\] = 6\ ) :ref:`🔗 <class_@GDScript_annotation_@export_custom>`
 
-Allows you to set a custom hint, hint string, and usage flags for the exported property. Note that there's no validation done in GDScript, it will just pass the parameters to the editor.
+Cho phép bạn đặt hint, chuỗi hint và các cờ usage tùy chỉnh cho property được export. Lưu ý rằng GDScript không thực hiện việc xác thực; nó chỉ truyền các tham số cho editor.
 
 ::
 
     @export_custom(PROPERTY_HINT_NONE, "suffix:m") var suffix: Vector3
 
-\ **Note:** Regardless of the ``usage`` value, the :ref:`@GlobalScope.PROPERTY_USAGE_SCRIPT_VARIABLE<class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_VARIABLE>` flag is always added, as with any explicitly declared script variable.
+\ **Lưu ý:** Bất kể giá trị ``usage`` nào, cờ :ref:`@GlobalScope.PROPERTY_USAGE_SCRIPT_VARIABLE <class_@GlobalScope_constant_PROPERTY_USAGE_SCRIPT_VARIABLE>` luôn được thêm vào, giống như với mọi script variable được khai báo tường minh.
 
 .. rst-class:: classref-item-separator
 
@@ -266,11 +266,11 @@ Allows you to set a custom hint, hint string, and usage flags for the exported p
 
 .. rst-class:: classref-annotation
 
-**@export_dir**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_dir>`
+**@export_dir**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_dir>`
 
-Export a :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], or :ref:`PackedStringArray<class_PackedStringArray>` property as a path to a directory. The path will be limited to the project folder and its subfolders. See :ref:`@export_global_dir<class_@GDScript_annotation_@export_global_dir>` to allow picking from the entire filesystem.
+Xuất một :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], hoặc thuộc tính :ref:`PackedStringArray<class_PackedStringArray>` dưới dạng đường dẫn đến một thư mục. Đường dẫn sẽ bị giới hạn trong thư mục dự án và các thư mục con của nó. Xem :ref:`@export_global_dir <class_@GDScript_annotation_@export_global_dir>` để cho phép chọn từ toàn bộ hệ thống tệp.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_DIR<class_@GlobalScope_constant_PROPERTY_HINT_DIR>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_DIR <class_@GlobalScope_constant_PROPERTY_HINT_DIR>`.
 
 ::
 
@@ -285,11 +285,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_DIR<class_@GlobalScope_constant_PROPER
 
 .. rst-class:: classref-annotation
 
-**@export_enum**\ (\ names\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_enum>`
+**@export_enum**\ (\ names\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_enum>`
 
-Export an :ref:`int<class_int>`, :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`int<class_int>`\ \], :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>`, :ref:`PackedInt64Array<class_PackedInt64Array>`, or :ref:`PackedStringArray<class_PackedStringArray>` property as an enumerated list of options (or an array of options). If the property is an :ref:`int<class_int>`, then the index of the value is stored, in the same order the values are provided. You can add explicit values using a colon. If the property is a :ref:`String<class_String>`, then the value is stored.
+Xuất một :ref:`int<class_int>`, :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`int<class_int>`\ \], :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>`, :ref:`PackedInt64Array<class_PackedInt64Array>`, hoặc thuộc tính :ref:`PackedStringArray<class_PackedStringArray>` dưới dạng danh sách các tùy chọn được liệt kê (hoặc một mảng các tùy chọn). Nếu thuộc tính là một :ref:`int<class_int>`, thì chỉ mục của giá trị sẽ được lưu trữ theo đúng thứ tự mà các giá trị được cung cấp. Bạn có thể thêm các giá trị rõ ràng bằng dấu hai chấm. Nếu thuộc tính là một :ref:`String<class_String>`, thì giá trị sẽ được lưu trữ.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPERTY_HINT_ENUM>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_ENUM <class_@GlobalScope_constant_PROPERTY_HINT_ENUM>`.
 
 ::
 
@@ -300,13 +300,13 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_ENUM<class_@GlobalScope_constant_PROPE
     @export_enum("Sword", "Spear", "Mace") var character_items: Array[int]
     @export_enum("double_jump", "climb", "dash") var character_skills: Array[String]
 
-If you want to set an initial value, you must specify it explicitly:
+Nếu muốn đặt một giá trị ban đầu, bạn phải chỉ định giá trị đó một cách rõ ràng:
 
 ::
 
     @export_enum("Rebecca", "Mary", "Leah") var character_name: String = "Rebecca"
 
-If you want to use named GDScript enums, then use :ref:`@export<class_@GDScript_annotation_@export>` instead:
+Nếu muốn sử dụng các enum có tên của GDScript, hãy dùng :ref:`@export <class_@GDScript_annotation_@export>` thay vào đó:
 
 ::
 
@@ -324,11 +324,11 @@ If you want to use named GDScript enums, then use :ref:`@export<class_@GDScript_
 
 .. rst-class:: classref-annotation
 
-**@export_exp_easing**\ (\ hints\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_exp_easing>`
+**@export_exp_easing**\ (\ hints\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_exp_easing>`
 
-Export a floating-point property with an easing editor widget. Additional hints can be provided to adjust the behavior of the widget. ``"attenuation"`` flips the curve, which makes it more intuitive for editing attenuation properties. ``"positive_only"`` limits values to only be greater than or equal to zero.
+Export một thuộc tính số thực với widget trình chỉnh sửa easing. Có thể cung cấp thêm các gợi ý để điều chỉnh hoạt động của widget. ``"attenuation"`` đảo ngược đường cong, giúp việc chỉnh sửa các thuộc tính attenuation trực quan hơn. ``"positive_only"`` giới hạn các giá trị chỉ ở mức lớn hơn hoặc bằng 0.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_EXP_EASING<class_@GlobalScope_constant_PROPERTY_HINT_EXP_EASING>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_EXP_EASING <class_@GlobalScope_constant_PROPERTY_HINT_EXP_EASING>`.
 
 ::
 
@@ -345,13 +345,13 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_EXP_EASING<class_@GlobalScope_constant
 
 .. rst-class:: classref-annotation
 
-**@export_file**\ (\ filter\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_file>`
+**@export_file**\ (\ filter\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_file>`
 
-Export a :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], or :ref:`PackedStringArray<class_PackedStringArray>` property as a path to a file. The path will be limited to the project folder and its subfolders. See :ref:`@export_global_file<class_@GDScript_annotation_@export_global_file>` to allow picking from the entire filesystem.
+Export một thuộc tính :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], hoặc :ref:`PackedStringArray<class_PackedStringArray>` dưới dạng đường dẫn đến một tệp. Đường dẫn sẽ bị giới hạn trong thư mục dự án và các thư mục con của nó. Xem :ref:`@export_global_file <class_@GDScript_annotation_@export_global_file>` để cho phép chọn từ toàn bộ hệ thống tệp.
 
-If ``filter`` is provided, only matching files will be available for picking.
+Nếu cung cấp ``filter``, chỉ các tệp khớp mới có thể được chọn.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPERTY_HINT_FILE>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_FILE <class_@GlobalScope_constant_PROPERTY_HINT_FILE>`.
 
 ::
 
@@ -359,7 +359,7 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPE
     @export_file("*.txt") var notes_path: String
     @export_file var level_paths: Array[String]
 
-\ **Note:** The file will be stored and referenced as UID, if available. This ensures that the reference is valid even when the file is moved. You can use :ref:`ResourceUID<class_ResourceUID>` methods to convert it to path.
+\ **Lưu ý:** Tệp sẽ được lưu trữ và tham chiếu dưới dạng UID, nếu có. Điều này đảm bảo tham chiếu vẫn hợp lệ ngay cả khi tệp được di chuyển. Bạn có thể sử dụng các phương thức :ref:`ResourceUID<class_ResourceUID>` để chuyển đổi tệp thành đường dẫn.
 
 .. rst-class:: classref-item-separator
 
@@ -369,9 +369,9 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_FILE<class_@GlobalScope_constant_PROPE
 
 .. rst-class:: classref-annotation
 
-**@export_file_path**\ (\ filter\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_file_path>`
+**@export_file_path**\ (\ filter\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_file_path>`
 
-Same as :ref:`@export_file<class_@GDScript_annotation_@export_file>`, except the file will be stored as a raw path. This means that it may become invalid when the file is moved. If you are exporting a :ref:`Resource<class_Resource>` path, consider using :ref:`@export_file<class_@GDScript_annotation_@export_file>` instead.
+Tương tự như :ref:`@export_file <class_@GDScript_annotation_@export_file>`, ngoại trừ việc tệp sẽ được lưu trữ dưới dạng đường dẫn thô. Điều này có nghĩa là đường dẫn có thể trở nên không hợp lệ khi tệp được di chuyển. Nếu bạn đang export một đường dẫn :ref:`Resource<class_Resource>`, hãy cân nhắc sử dụng :ref:`@export_file <class_@GDScript_annotation_@export_file>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -381,38 +381,38 @@ Same as :ref:`@export_file<class_@GDScript_annotation_@export_file>`, except the
 
 .. rst-class:: classref-annotation
 
-**@export_flags**\ (\ names\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_flags>`
+**@export_flags**\ (\ names\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_flags>`
 
-Export an integer property as a bit flag field. This allows to store several "checked" or ``true`` values with one property, and comfortably select them from the Inspector dock.
+Export một thuộc tính số nguyên dưới dạng trường bit flag. Điều này cho phép lưu trữ nhiều giá trị "đã chọn" hoặc ``true`` bằng một thuộc tính và dễ dàng chọn chúng trong dock Inspector.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_FLAGS<class_@GlobalScope_constant_PROPERTY_HINT_FLAGS>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_FLAGS <class_@GlobalScope_constant_PROPERTY_HINT_FLAGS>`.
 
 ::
 
     @export_flags("Fire", "Water", "Earth", "Wind") var spell_elements = 0
 
-You can add explicit values using a colon:
+Bạn có thể thêm các giá trị tường minh bằng dấu hai chấm:
 
 ::
 
     @export_flags("Self:4", "Allies:8", "Foes:16") var spell_targets = 0
 
-You can also combine several flags:
+Bạn cũng có thể kết hợp nhiều flag:
 
 ::
 
     @export_flags("Self:4", "Allies:8", "Self and Allies:12", "Foes:16")
     var spell_targets = 0
 
-\ **Note:** A flag value must be at least ``1`` and at most ``2 ** 32 - 1``.
+\ **Lưu ý:** Giá trị của flag phải ít nhất là ``1`` và nhiều nhất là ``2 ** 32 - 1``.
 
-\ **Note:** Unlike :ref:`@export_enum<class_@GDScript_annotation_@export_enum>`, the previous explicit value is not taken into account. In the following example, A is 16, B is 2, C is 4.
+\ **Lưu ý:** Không giống như :ref:`@export_enum <class_@GDScript_annotation_@export_enum>`, giá trị rõ ràng trước đó không được tính đến. Trong ví dụ sau, A là 16, B là 2, C là 4.
 
 ::
 
     @export_flags("A:16", "B", "C") var x
 
-You can also use the annotation on :ref:`Array<class_Array>`\ \[:ref:`int<class_int>`\ \], :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>`, and :ref:`PackedInt64Array<class_PackedInt64Array>`\ 
+Bạn cũng có thể sử dụng annotation trên :ref:`Array<class_Array>`\ \[:ref:`int<class_int>`\ \], :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>` và :ref:`PackedInt64Array<class_PackedInt64Array>`\
 
 ::
 
@@ -426,11 +426,11 @@ You can also use the annotation on :ref:`Array<class_Array>`\ \[:ref:`int<class_
 
 .. rst-class:: classref-annotation
 
-**@export_flags_2d_navigation**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_flags_2d_navigation>`
+**@export_flags_2d_navigation**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_flags_2d_navigation>`
 
-Export an integer property as a bit flag field for 2D navigation layers. The widget in the Inspector dock will use the layer names defined in :ref:`ProjectSettings.layer_names/2d_navigation/layer_1<class_ProjectSettings_property_layer_names/2d_navigation/layer_1>`.
+Xuất một thuộc tính số nguyên dưới dạng trường cờ bit cho các lớp điều hướng 2D. Widget trong Inspector dock sẽ sử dụng tên lớp được xác định trong :ref:`ProjectSettings.layer_names/2d_navigation/layer_1 <class_ProjectSettings_property_layer_names/2d_navigation/layer_1>`.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_NAVIGATION<class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_NAVIGATION>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_NAVIGATION <class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_NAVIGATION>`.
 
 ::
 
@@ -445,11 +445,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_NAVIGATION<class_@GlobalScop
 
 .. rst-class:: classref-annotation
 
-**@export_flags_2d_physics**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_flags_2d_physics>`
+**@export_flags_2d_physics**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_flags_2d_physics>`
 
-Export an integer property as a bit flag field for 2D physics layers. The widget in the Inspector dock will use the layer names defined in :ref:`ProjectSettings.layer_names/2d_physics/layer_1<class_ProjectSettings_property_layer_names/2d_physics/layer_1>`.
+Xuất một thuộc tính số nguyên dưới dạng trường cờ bit cho các layer vật lý 2D. Widget trong dock Inspector sẽ sử dụng tên layer được định nghĩa trong :ref:`ProjectSettings.layer_names/2d_physics/layer_1 <class_ProjectSettings_property_layer_names/2d_physics/layer_1>`.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_PHYSICS<class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_PHYSICS>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_PHYSICS <class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_PHYSICS>`.
 
 ::
 
@@ -464,11 +464,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_PHYSICS<class_@GlobalScope_c
 
 .. rst-class:: classref-annotation
 
-**@export_flags_2d_render**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_flags_2d_render>`
+**@export_flags_2d_render**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_flags_2d_render>`
 
-Export an integer property as a bit flag field for 2D render layers. The widget in the Inspector dock will use the layer names defined in :ref:`ProjectSettings.layer_names/2d_render/layer_1<class_ProjectSettings_property_layer_names/2d_render/layer_1>`.
+Xuất một thuộc tính số nguyên dưới dạng trường cờ bit cho các layer kết xuất 2D. Widget trong dock Inspector sẽ sử dụng tên layer được định nghĩa trong :ref:`ProjectSettings.layer_names/2d_render/layer_1 <class_ProjectSettings_property_layer_names/2d_render/layer_1>`.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_RENDER<class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_RENDER>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_RENDER <class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_2D_RENDER>`.
 
 ::
 
@@ -483,11 +483,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_2D_RENDER<class_@GlobalScope_co
 
 .. rst-class:: classref-annotation
 
-**@export_flags_3d_navigation**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_flags_3d_navigation>`
+**@export_flags_3d_navigation**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_flags_3d_navigation>`
 
-Export an integer property as a bit flag field for 3D navigation layers. The widget in the Inspector dock will use the layer names defined in :ref:`ProjectSettings.layer_names/3d_navigation/layer_1<class_ProjectSettings_property_layer_names/3d_navigation/layer_1>`.
+Xuất một thuộc tính số nguyên dưới dạng trường cờ bit cho các lớp điều hướng 3D. Widget trong dock Inspector sẽ sử dụng tên lớp được định nghĩa trong :ref:`ProjectSettings.layer_names/3d_navigation/layer_1 <class_ProjectSettings_property_layer_names/3d_navigation/layer_1>`.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_NAVIGATION<class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_NAVIGATION>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_NAVIGATION <class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_NAVIGATION>`.
 
 ::
 
@@ -502,11 +502,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_NAVIGATION<class_@GlobalScop
 
 .. rst-class:: classref-annotation
 
-**@export_flags_3d_physics**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_flags_3d_physics>`
+**@export_flags_3d_physics**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_flags_3d_physics>`
 
-Export an integer property as a bit flag field for 3D physics layers. The widget in the Inspector dock will use the layer names defined in :ref:`ProjectSettings.layer_names/3d_physics/layer_1<class_ProjectSettings_property_layer_names/3d_physics/layer_1>`.
+Xuất một thuộc tính số nguyên dưới dạng trường cờ bit cho các lớp vật lý 3D. Widget trong dock Inspector sẽ sử dụng tên lớp được định nghĩa trong :ref:`ProjectSettings.layer_names/3d_physics/layer_1 <class_ProjectSettings_property_layer_names/3d_physics/layer_1>`.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_PHYSICS<class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_PHYSICS>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_PHYSICS <class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_PHYSICS>`.
 
 ::
 
@@ -521,11 +521,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_PHYSICS<class_@GlobalScope_c
 
 .. rst-class:: classref-annotation
 
-**@export_flags_3d_render**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_flags_3d_render>`
+**@export_flags_3d_render**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_flags_3d_render>`
 
-Export an integer property as a bit flag field for 3D render layers. The widget in the Inspector dock will use the layer names defined in :ref:`ProjectSettings.layer_names/3d_render/layer_1<class_ProjectSettings_property_layer_names/3d_render/layer_1>`.
+Xuất một thuộc tính số nguyên dưới dạng trường cờ bit cho các lớp kết xuất 3D. Widget trong dock Inspector sẽ sử dụng tên lớp được định nghĩa trong :ref:`ProjectSettings.layer_names/3d_render/layer_1 <class_ProjectSettings_property_layer_names/3d_render/layer_1>`.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_RENDER<class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_RENDER>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_RENDER <class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_3D_RENDER>`.
 
 ::
 
@@ -540,11 +540,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_3D_RENDER<class_@GlobalScope_co
 
 .. rst-class:: classref-annotation
 
-**@export_flags_avoidance**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_flags_avoidance>`
+**@export_flags_avoidance**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_flags_avoidance>`
 
-Export an integer property as a bit flag field for navigation avoidance layers. The widget in the Inspector dock will use the layer names defined in :ref:`ProjectSettings.layer_names/avoidance/layer_1<class_ProjectSettings_property_layer_names/avoidance/layer_1>`.
+Xuất một thuộc tính số nguyên dưới dạng trường cờ bit cho các lớp tránh vật cản khi điều hướng. Widget trong dock Inspector sẽ sử dụng tên lớp được định nghĩa trong :ref:`ProjectSettings.layer_names/avoidance/layer_1 <class_ProjectSettings_property_layer_names/avoidance/layer_1>`.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_AVOIDANCE<class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_AVOIDANCE>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_AVOIDANCE <class_@GlobalScope_constant_PROPERTY_HINT_LAYERS_AVOIDANCE>`.
 
 ::
 
@@ -559,11 +559,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_LAYERS_AVOIDANCE<class_@GlobalScope_co
 
 .. rst-class:: classref-annotation
 
-**@export_global_dir**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_global_dir>`
+**@export_global_dir**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_global_dir>`
 
-Export a :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], or :ref:`PackedStringArray<class_PackedStringArray>` property as an absolute path to a directory. The path can be picked from the entire filesystem. See :ref:`@export_dir<class_@GDScript_annotation_@export_dir>` to limit it to the project folder and its subfolders.
+Xuất một thuộc tính :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], hoặc :ref:`PackedStringArray<class_PackedStringArray>` dưới dạng đường dẫn tuyệt đối đến một thư mục. Có thể chọn đường dẫn từ toàn bộ hệ thống tệp. Xem :ref:`@export_dir <class_@GDScript_annotation_@export_dir>` để giới hạn đường dẫn trong thư mục dự án và các thư mục con của nó.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_GLOBAL_DIR<class_@GlobalScope_constant_PROPERTY_HINT_GLOBAL_DIR>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_GLOBAL_DIR <class_@GlobalScope_constant_PROPERTY_HINT_GLOBAL_DIR>`.
 
 ::
 
@@ -578,13 +578,13 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_GLOBAL_DIR<class_@GlobalScope_constant
 
 .. rst-class:: classref-annotation
 
-**@export_global_file**\ (\ filter\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_global_file>`
+**@export_global_file**\ (\ filter\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_global_file>`
 
-Export a :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], or :ref:`PackedStringArray<class_PackedStringArray>` property as an absolute path to a file. The path can be picked from the entire filesystem. See :ref:`@export_file<class_@GDScript_annotation_@export_file>` to limit it to the project folder and its subfolders.
+Xuất một thuộc tính :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], hoặc :ref:`PackedStringArray<class_PackedStringArray>` dưới dạng đường dẫn tuyệt đối đến một tệp. Có thể chọn đường dẫn từ toàn bộ hệ thống tệp. Xem :ref:`@export_file <class_@GDScript_annotation_@export_file>` để giới hạn đường dẫn trong thư mục dự án và các thư mục con của nó.
 
-If ``filter`` is provided, only matching files will be available for picking.
+Nếu cung cấp ``filter``, chỉ các tệp khớp mới có thể được chọn.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_GLOBAL_FILE<class_@GlobalScope_constant_PROPERTY_HINT_GLOBAL_FILE>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_GLOBAL_FILE <class_@GlobalScope_constant_PROPERTY_HINT_GLOBAL_FILE>`.
 
 ::
 
@@ -600,15 +600,15 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_GLOBAL_FILE<class_@GlobalScope_constan
 
 .. rst-class:: classref-annotation
 
-**@export_group**\ (\ name\: :ref:`String<class_String>`, prefix\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_@GDScript_annotation_@export_group>`
+**@export_group**\ (\ name\: :ref:`String<class_String>`, prefix\: :ref:`String<class_String>` = ""\ ) :ref:`🔗 <class_@GDScript_annotation_@export_group>`
 
-Define a new group for the following exported properties. This helps to organize properties in the Inspector dock. Groups can be added with an optional ``prefix``, which would make group to only consider properties that have this prefix. The grouping will break on the first property that doesn't have a prefix. The prefix is also removed from the property's name in the Inspector dock.
+Xác định một nhóm mới cho các thuộc tính được export tiếp theo. Điều này giúp sắp xếp các thuộc tính trong dock Inspector. Có thể thêm nhóm với một ``prefix`` tùy chọn, khiến nhóm chỉ xét các thuộc tính có tiền tố này. Việc nhóm sẽ dừng ở thuộc tính đầu tiên không có tiền tố. Tiền tố cũng được xóa khỏi tên thuộc tính trong dock Inspector.
 
-If no ``prefix`` is provided, then every following property will be added to the group. The group ends when then next group or category is defined. You can also force end a group by using this annotation with empty strings for parameters, ``@export_group("", "")``.
+Nếu không cung cấp ``prefix``, mọi thuộc tính tiếp theo sẽ được thêm vào nhóm. Nhóm kết thúc khi nhóm hoặc danh mục tiếp theo được xác định. Bạn cũng có thể buộc kết thúc một nhóm bằng cách sử dụng annotation này với các tham số là chuỗi rỗng, ``@export_group("", "")``.
 
-Groups cannot be nested, use :ref:`@export_subgroup<class_@GDScript_annotation_@export_subgroup>` to add subgroups within groups.
+Các group không thể được lồng nhau, hãy sử dụng :ref:`@export_subgroup <class_@GDScript_annotation_@export_subgroup>` để thêm subgroup trong group.
 
-See also :ref:`@GlobalScope.PROPERTY_USAGE_GROUP<class_@GlobalScope_constant_PROPERTY_USAGE_GROUP>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_USAGE_GROUP <class_@GlobalScope_constant_PROPERTY_USAGE_GROUP>`.
 
 ::
 
@@ -631,11 +631,11 @@ See also :ref:`@GlobalScope.PROPERTY_USAGE_GROUP<class_@GlobalScope_constant_PRO
 
 .. rst-class:: classref-annotation
 
-**@export_multiline**\ (\ hint\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_multiline>`
+**@export_multiline**\ (\ hint\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_multiline>`
 
-Export a :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], :ref:`PackedStringArray<class_PackedStringArray>`, :ref:`Dictionary<class_Dictionary>` or :ref:`Array<class_Array>`\ \[:ref:`Dictionary<class_Dictionary>`\ \] property with a large :ref:`TextEdit<class_TextEdit>` widget instead of a :ref:`LineEdit<class_LineEdit>`. This adds support for multiline content and makes it easier to edit large amount of text stored in the property.
+Xuất một :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], :ref:`PackedStringArray<class_PackedStringArray>`, :ref:`Dictionary<class_Dictionary>` hoặc :ref:`Array<class_Array>`\ \[:ref:`Dictionary<class_Dictionary>`\ \] property với widget :ref:`TextEdit<class_TextEdit>` lớn thay vì :ref:`LineEdit<class_LineEdit>`. Điều này bổ sung hỗ trợ cho nội dung nhiều dòng và giúp chỉnh sửa dễ dàng hơn lượng văn bản lớn được lưu trong property.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_MULTILINE_TEXT<class_@GlobalScope_constant_PROPERTY_HINT_MULTILINE_TEXT>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_MULTILINE_TEXT <class_@GlobalScope_constant_PROPERTY_HINT_MULTILINE_TEXT>`.
 
 ::
 
@@ -651,18 +651,18 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_MULTILINE_TEXT<class_@GlobalScope_cons
 
 .. rst-class:: classref-annotation
 
-**@export_node_path**\ (\ type\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_node_path>`
+**@export_node_path**\ (\ type\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_node_path>`
 
-Export a :ref:`NodePath<class_NodePath>` or :ref:`Array<class_Array>`\ \[:ref:`NodePath<class_NodePath>`\ \] property with a filter for allowed node types.
+Xuất một :ref:`NodePath<class_NodePath>` hoặc :ref:`Array<class_Array>`\ \[:ref:`NodePath<class_NodePath>`\ \] property với bộ lọc cho các loại node được phép.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_NODE_PATH_VALID_TYPES<class_@GlobalScope_constant_PROPERTY_HINT_NODE_PATH_VALID_TYPES>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_NODE_PATH_VALID_TYPES <class_@GlobalScope_constant_PROPERTY_HINT_NODE_PATH_VALID_TYPES>`.
 
 ::
 
     @export_node_path("Button", "TouchScreenButton") var some_button
     @export_node_path("Button", "TouchScreenButton") var many_buttons: Array[NodePath]
 
-\ **Note:** The type must be a native class or a globally registered script (using the ``class_name`` keyword) that inherits :ref:`Node<class_Node>`.
+\ **Lưu ý:** Kiểu này phải là một class native hoặc một script được đăng ký toàn cục (bằng từ khóa ``class_name``) kế thừa :ref:`Node<class_Node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -672,11 +672,11 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_NODE_PATH_VALID_TYPES<class_@GlobalSco
 
 .. rst-class:: classref-annotation
 
-**@export_placeholder**\ (\ placeholder\: :ref:`String<class_String>`\ ) :ref:`🔗<class_@GDScript_annotation_@export_placeholder>`
+**@export_placeholder**\ (\ placeholder\: :ref:`String<class_String>`\ ) :ref:`🔗 <class_@GDScript_annotation_@export_placeholder>`
 
-Export a :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], or :ref:`PackedStringArray<class_PackedStringArray>` property with a placeholder text displayed in the editor widget when no value is present.
+Xuất một thuộc tính :ref:`String<class_String>`, :ref:`Array<class_Array>`\ \[:ref:`String<class_String>`\ \], hoặc :ref:`PackedStringArray<class_PackedStringArray>` với văn bản giữ chỗ được hiển thị trong widget của trình soạn thảo khi chưa có giá trị.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_PLACEHOLDER_TEXT<class_@GlobalScope_constant_PROPERTY_HINT_PLACEHOLDER_TEXT>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_PLACEHOLDER_TEXT <class_@GlobalScope_constant_PROPERTY_HINT_PLACEHOLDER_TEXT>`.
 
 ::
 
@@ -691,15 +691,15 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_PLACEHOLDER_TEXT<class_@GlobalScope_co
 
 .. rst-class:: classref-annotation
 
-**@export_range**\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`, step\: :ref:`float<class_float>` = 1.0, extra_hints\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@export_range>`
+**@export_range**\ (\ min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`, step\: :ref:`float<class_float>` = 1.0, extra_hints\: :ref:`String<class_String>` = "", ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@export_range>`
 
-Export an :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Array<class_Array>`\ \[:ref:`int<class_int>`\ \], :ref:`Array<class_Array>`\ \[:ref:`float<class_float>`\ \], :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>`, :ref:`PackedInt64Array<class_PackedInt64Array>`, :ref:`PackedFloat32Array<class_PackedFloat32Array>`, or :ref:`PackedFloat64Array<class_PackedFloat64Array>` property as a range value. The range must be defined by ``min`` and ``max``, as well as an optional ``step`` and a variety of extra hints. The ``step`` defaults to ``1`` for integer properties. For floating-point numbers this value depends on your :ref:`EditorSettings.interface/inspector/default_float_step<class_EditorSettings_property_interface/inspector/default_float_step>` setting.
+Xuất một thuộc tính :ref:`int<class_int>`, :ref:`float<class_float>`, :ref:`Array<class_Array>`\ \[:ref:`int<class_int>`\ \], :ref:`Array<class_Array>`\ \[:ref:`float<class_float>`\ \], :ref:`PackedByteArray<class_PackedByteArray>`, :ref:`PackedInt32Array<class_PackedInt32Array>`, :ref:`PackedInt64Array<class_PackedInt64Array>`, :ref:`PackedFloat32Array<class_PackedFloat32Array>`, hoặc :ref:`PackedFloat64Array<class_PackedFloat64Array>` dưới dạng giá trị phạm vi. Phạm vi phải được xác định bằng ``min`` và ``max``, cùng với ``step`` tùy chọn và nhiều gợi ý bổ sung. ``step`` mặc định là ``1`` đối với các thuộc tính số nguyên. Đối với số dấu phẩy động, giá trị này phụ thuộc vào thiết lập :ref:`EditorSettings.interface/inspector/default_float_step <class_EditorSettings_property_interface/inspector/default_float_step>` của bạn.
 
-If hints ``"or_greater"`` and ``"or_less"`` are provided, the editor widget will not cap the value at range boundaries. The ``"exp"`` hint will make the edited values on range to change exponentially. The ``"prefer_slider"`` hint will make integer values use the slider instead of arrows for editing, while ``"hide_control"`` will hide the element controlling the value of the editor widget.
+Nếu cung cấp các hint ``"or_greater"`` và ``"or_less"``, widget trình chỉnh sửa sẽ không giới hạn giá trị ở các ranh giới của phạm vi. Hint ``"exp"`` sẽ khiến các giá trị được chỉnh sửa trong phạm vi thay đổi theo cấp số mũ. Hint ``"prefer_slider"`` sẽ khiến các giá trị số nguyên sử dụng thanh trượt thay vì các mũi tên để chỉnh sửa, còn ``"hide_control"`` sẽ ẩn phần tử điều khiển giá trị của widget trình chỉnh sửa.
 
-Hints also allow to indicate the units for the edited value. Using ``"radians_as_degrees"`` you can specify that the actual value is in radians, but should be displayed in degrees in the Inspector dock (the range values are also in degrees). ``"degrees"`` allows to add a degree sign as a unit suffix (the value is unchanged). Finally, a custom suffix can be provided using ``"suffix:unit"``, where "unit" can be any string.
+Hint cũng cho phép chỉ định đơn vị cho giá trị được chỉnh sửa. Với ``"radians_as_degrees"``, bạn có thể chỉ định rằng giá trị thực tế tính bằng radian, nhưng sẽ được hiển thị theo độ trong dock Inspector (các giá trị phạm vi cũng tính bằng độ). ``"degrees"`` cho phép thêm ký hiệu độ làm hậu tố đơn vị (giá trị không thay đổi). Cuối cùng, có thể cung cấp hậu tố tùy chỉnh bằng ``"suffix:unit"``, trong đó "unit" có thể là bất kỳ chuỗi nào.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_RANGE<class_@GlobalScope_constant_PROPERTY_HINT_RANGE>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_RANGE <class_@GlobalScope_constant_PROPERTY_HINT_RANGE>`.
 
 ::
 
@@ -723,9 +723,9 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_RANGE<class_@GlobalScope_constant_PROP
 
 .. rst-class:: classref-annotation
 
-**@export_storage**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@export_storage>`
+**@export_storage**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@export_storage>`
 
-Export a property with :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` flag. The property is not displayed in the editor, but it is serialized and stored in the scene or resource file. This can be useful for :ref:`@tool<class_@GDScript_annotation_@tool>` scripts. Also the property value is copied when :ref:`Resource.duplicate()<class_Resource_method_duplicate>` or :ref:`Node.duplicate()<class_Node_method_duplicate>` is called, unlike non-exported variables.
+Export một property với cờ :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE <class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>`. Property này không được hiển thị trong editor, nhưng được serialize và lưu trong tệp scene hoặc resource. Điều này có thể hữu ích cho các script :ref:`@tool <class_@GDScript_annotation_@tool>`. Ngoài ra, giá trị của property được sao chép khi gọi :ref:`Resource.duplicate()<class_Resource_method_duplicate>` hoặc :ref:`Node.duplicate()<class_Node_method_duplicate>`, không giống như các biến không được export.
 
 ::
 
@@ -741,11 +741,11 @@ Export a property with :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalSc
 
 .. rst-class:: classref-annotation
 
-**@export_subgroup**\ (\ name\: :ref:`String<class_String>`, prefix\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_@GDScript_annotation_@export_subgroup>`
+**@export_subgroup**\ (\ name\: :ref:`String<class_String>`, prefix\: :ref:`String<class_String>` = ""\ ) :ref:`🔗 <class_@GDScript_annotation_@export_subgroup>`
 
-Define a new subgroup for the following exported properties. This helps to organize properties in the Inspector dock. Subgroups work exactly like groups, except they need a parent group to exist. See :ref:`@export_group<class_@GDScript_annotation_@export_group>`.
+Định nghĩa một subgroup mới cho các property được export tiếp theo. Điều này giúp tổ chức các property trong dock Inspector. Subgroup hoạt động chính xác như group, ngoại trừ việc chúng cần có một group cha tồn tại. Xem :ref:`@export_group <class_@GDScript_annotation_@export_group>`.
 
-See also :ref:`@GlobalScope.PROPERTY_USAGE_SUBGROUP<class_@GlobalScope_constant_PROPERTY_USAGE_SUBGROUP>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_USAGE_SUBGROUP <class_@GlobalScope_constant_PROPERTY_USAGE_SUBGROUP>`.
 
 ::
 
@@ -757,7 +757,7 @@ See also :ref:`@GlobalScope.PROPERTY_USAGE_SUBGROUP<class_@GlobalScope_constant_
     @export var car_label = "Speedy"
     @export var car_number = 3
 
-\ **Note:** Subgroups cannot be nested, but you can use the slash separator (``/``) to achieve the desired effect:
+\ **Lưu ý:** Không thể lồng các nhóm con, nhưng bạn có thể sử dụng dấu phân cách dấu gạch chéo (``/``) để đạt được hiệu ứng mong muốn:
 
 ::
 
@@ -780,15 +780,15 @@ See also :ref:`@GlobalScope.PROPERTY_USAGE_SUBGROUP<class_@GlobalScope_constant_
 
 .. rst-class:: classref-annotation
 
-**@export_tool_button**\ (\ text\: :ref:`String<class_String>`, icon\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_@GDScript_annotation_@export_tool_button>`
+**@export_tool_button**\ (\ text\: :ref:`String<class_String>`, icon\: :ref:`String<class_String>` = ""\ ) :ref:`🔗 <class_@GDScript_annotation_@export_tool_button>`
 
-Export a :ref:`Callable<class_Callable>` property as a clickable button with the label ``text``. When the button is pressed, the callable is called.
+Xuất một :ref:`Callable<class_Callable>` property dưới dạng nút có thể nhấp với nhãn ``text``. Khi nhấn nút, callable sẽ được gọi.
 
-If ``icon`` is specified, it is used to fetch an icon for the button via :ref:`Control.get_theme_icon()<class_Control_method_get_theme_icon>`, from the ``"EditorIcons"`` theme type. If ``icon`` is omitted, the default ``"Callable"`` icon is used instead.
+Nếu ``icon`` được chỉ định, nó sẽ được dùng để lấy biểu tượng cho nút thông qua :ref:`Control.get_theme_icon()<class_Control_method_get_theme_icon>`, từ loại theme ``"EditorIcons"``. Nếu ``icon`` bị bỏ qua, biểu tượng ``"Callable"`` mặc định sẽ được sử dụng thay thế.
 
-Consider using the :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>` to allow the action to be reverted safely.
+Cân nhắc sử dụng :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>` để cho phép hoàn tác hành động một cách an toàn.
 
-See also :ref:`@GlobalScope.PROPERTY_HINT_TOOL_BUTTON<class_@GlobalScope_constant_PROPERTY_HINT_TOOL_BUTTON>`.
+Xem thêm :ref:`@GlobalScope.PROPERTY_HINT_TOOL_BUTTON <class_@GlobalScope_constant_PROPERTY_HINT_TOOL_BUTTON>`.
 
 ::
 
@@ -809,15 +809,15 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_TOOL_BUTTON<class_@GlobalScope_constan
         undo_redo.add_undo_property(self, &"self_modulate", self_modulate)
         undo_redo.commit_action()
 
-\ **Note:** The property is exported without the :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` flag because a :ref:`Callable<class_Callable>` cannot be properly serialized and stored in a file.
+\ **Lưu ý:** Thuộc tính được export mà không có cờ :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE <class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>` vì :ref:`Callable<class_Callable>` không thể được tuần tự hóa và lưu trữ đúng cách trong tệp.
 
-\ **Note:** In an exported project neither :ref:`EditorInterface<class_EditorInterface>` nor :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>` exist, which may cause some scripts to break. To prevent this, you can use :ref:`Engine.get_singleton()<class_Engine_method_get_singleton>` and omit the static type from the variable declaration:
+\ **Lưu ý:** Trong project đã export, cả :ref:`EditorInterface<class_EditorInterface>` lẫn :ref:`EditorUndoRedoManager<class_EditorUndoRedoManager>` đều không tồn tại, điều này có thể khiến một số script bị lỗi. Để tránh việc này, bạn có thể sử dụng :ref:`Engine.get_singleton()<class_Engine_method_get_singleton>` và bỏ kiểu tĩnh khỏi khai báo biến:
 
 ::
 
     var undo_redo = Engine.get_singleton(&"EditorInterface").get_editor_undo_redo()
 
-\ **Note:** Avoid storing lambda callables in member variables of :ref:`RefCounted<class_RefCounted>`-based classes (e.g. resources), as this can lead to memory leaks. Use only method callables and optionally :ref:`Callable.bind()<class_Callable_method_bind>` or :ref:`Callable.unbind()<class_Callable_method_unbind>`.
+\ **Lưu ý:** Tránh lưu các callable lambda trong biến thành viên của các class dựa trên :ref:`RefCounted<class_RefCounted>` (ví dụ: resource), vì điều này có thể gây rò rỉ bộ nhớ. Chỉ sử dụng callable phương thức và tùy chọn :ref:`Callable.bind()<class_Callable_method_bind>` hoặc :ref:`Callable.unbind()<class_Callable_method_unbind>`.
 
 .. rst-class:: classref-item-separator
 
@@ -827,19 +827,19 @@ See also :ref:`@GlobalScope.PROPERTY_HINT_TOOL_BUTTON<class_@GlobalScope_constan
 
 .. rst-class:: classref-annotation
 
-**@icon**\ (\ icon_path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_@GDScript_annotation_@icon>`
+**@icon**\ (\ icon_path\: :ref:`String<class_String>`\ ) :ref:`🔗 <class_@GDScript_annotation_@icon>`
 
-Add a custom icon to the current script. The icon specified at ``icon_path`` is displayed in the Scene dock for every node of that class, as well as in various editor dialogs.
+Thêm một biểu tượng tùy chỉnh vào script hiện tại. Biểu tượng được chỉ định tại ``icon_path`` sẽ được hiển thị trong dock Scene cho mọi node thuộc class đó, cũng như trong nhiều hộp thoại của editor.
 
 ::
 
     @icon("res://path/to/class/icon.svg")
 
-\ **Note:** Only the script can have a custom icon. Inner classes are not supported.
+\ **Lưu ý:** Chỉ script mới có thể có biểu tượng tùy chỉnh. Không hỗ trợ các class bên trong.
 
-\ **Note:** As annotations describe their subject, the :ref:`@icon<class_@GDScript_annotation_@icon>` annotation must be placed before the class definition and inheritance.
+\ **Lưu ý:** Vì các annotation mô tả đối tượng mà chúng áp dụng, annotation :ref:`@icon <class_@GDScript_annotation_@icon>` phải được đặt trước phần định nghĩa và kế thừa của class.
 
-\ **Note:** Unlike most other annotations, the argument of the :ref:`@icon<class_@GDScript_annotation_@icon>` annotation must be a string literal (constant expressions are not supported).
+\ **Lưu ý:** Không giống hầu hết các annotation khác, đối số của annotation :ref:`@icon <class_@GDScript_annotation_@icon>` phải là một string literal (không hỗ trợ biểu thức hằng).
 
 .. rst-class:: classref-item-separator
 
@@ -849,9 +849,9 @@ Add a custom icon to the current script. The icon specified at ``icon_path`` is 
 
 .. rst-class:: classref-annotation
 
-**@onready**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@onready>`
+**@onready**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@onready>`
 
-Mark the following property as assigned when the :ref:`Node<class_Node>` is ready. Values for these properties are not assigned immediately when the node is initialized (:ref:`Object._init()<class_Object_private_method__init>`), and instead are computed and stored right before :ref:`Node._ready()<class_Node_private_method__ready>`.
+Đánh dấu thuộc tính sau là đã được gán khi :ref:`Node<class_Node>` sẵn sàng. Các giá trị cho những thuộc tính này không được gán ngay khi node được khởi tạo (:ref:`Object._init()<class_Object_private_method__init>`), mà thay vào đó được tính toán và lưu trữ ngay trước :ref:`Node._ready()<class_Node_private_method__ready>`.
 
 ::
 
@@ -865,19 +865,19 @@ Mark the following property as assigned when the :ref:`Node<class_Node>` is read
 
 .. rst-class:: classref-annotation
 
-**@rpc**\ (\ mode\: :ref:`String<class_String>` = "authority", sync\: :ref:`String<class_String>` = "call_remote", transfer_mode\: :ref:`String<class_String>` = "reliable", transfer_channel\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_@GDScript_annotation_@rpc>`
+**@rpc**\ (\ mode\: :ref:`String<class_String>` = "authority", sync\: :ref:`String<class_String>` = "call_remote", transfer_mode\: :ref:`String<class_String>` = "reliable", transfer_channel\: :ref:`int<class_int>` = 0\ ) :ref:`🔗 <class_@GDScript_annotation_@rpc>`
 
-Mark the following method for remote procedure calls. See :doc:`High-level multiplayer <../tutorials/networking/high_level_multiplayer>`.
+Đánh dấu method sau để sử dụng cho các remote procedure call. Xem :doc:`High-level multiplayer <../tutorials/networking/high_level_multiplayer>`.
 
-If ``mode`` is set as ``"any_peer"``, allows any peer to call this RPC function. Otherwise, only the authority peer is allowed to call it and ``mode`` should be kept as ``"authority"``. When configuring functions as RPCs with :ref:`Node.rpc_config()<class_Node_method_rpc_config>`, each of these modes respectively corresponds to the :ref:`MultiplayerAPI.RPC_MODE_AUTHORITY<class_MultiplayerAPI_constant_RPC_MODE_AUTHORITY>` and :ref:`MultiplayerAPI.RPC_MODE_ANY_PEER<class_MultiplayerAPI_constant_RPC_MODE_ANY_PEER>` RPC modes. See :ref:`RPCMode<enum_MultiplayerAPI_RPCMode>`. If a peer that is not the authority tries to call a function that is only allowed for the authority, the function will not be executed. If the error can be detected locally (when the RPC configuration is consistent between the local and the remote peer), an error message will be displayed on the sender peer. Otherwise, the remote peer will detect the error and print an error there.
+Nếu ``mode`` được đặt thành ``"any_peer"``, cho phép bất kỳ peer nào gọi hàm RPC này. Nếu không, chỉ peer authority mới được phép gọi hàm này và ``mode`` nên được giữ ở ``"authority"``. Khi cấu hình các hàm dưới dạng RPC bằng :ref:`Node.rpc_config()<class_Node_method_rpc_config>`, mỗi mode này lần lượt tương ứng với các mode RPC :ref:`MultiplayerAPI.RPC_MODE_AUTHORITY<class_MultiplayerAPI_constant_RPC_MODE_AUTHORITY>` và :ref:`MultiplayerAPI.RPC_MODE_ANY_PEER<class_MultiplayerAPI_constant_RPC_MODE_ANY_PEER>`. Xem :ref:`RPCMode <enum_MultiplayerAPI_RPCMode>`. Nếu một peer không phải authority cố gọi một hàm chỉ cho phép authority gọi, hàm đó sẽ không được thực thi. Nếu lỗi có thể được phát hiện cục bộ (khi cấu hình RPC nhất quán giữa peer cục bộ và peer từ xa), một thông báo lỗi sẽ được hiển thị trên peer gửi. Nếu không, peer từ xa sẽ phát hiện lỗi và in lỗi tại đó.
 
-If ``sync`` is set as ``"call_remote"``, the function will only be executed on the remote peer, but not locally. To run this function locally too, set ``sync`` to ``"call_local"``. When configuring functions as RPCs with :ref:`Node.rpc_config()<class_Node_method_rpc_config>`, this is equivalent to setting ``call_local`` to ``true``.
+Nếu ``sync`` được đặt thành ``"call_remote"``, hàm sẽ chỉ được thực thi trên peer từ xa mà không thực thi cục bộ. Để chạy hàm này cả cục bộ, hãy đặt ``sync`` thành ``"call_local"``. Khi cấu hình các hàm dưới dạng RPC bằng :ref:`Node.rpc_config()<class_Node_method_rpc_config>`, điều này tương đương với việc đặt ``call_local`` thành ``true``.
 
-The ``transfer_mode`` accepted values are ``"unreliable"``, ``"unreliable_ordered"``, or ``"reliable"``. It sets the transfer mode of the underlying :ref:`MultiplayerPeer<class_MultiplayerPeer>`. See :ref:`MultiplayerPeer.transfer_mode<class_MultiplayerPeer_property_transfer_mode>`.
+``transfer_mode`` chấp nhận các giá trị ``"unreliable"``, ``"unreliable_ordered"`` hoặc ``"reliable"``. Nó thiết lập chế độ truyền của :ref:`MultiplayerPeer<class_MultiplayerPeer>` bên dưới. Xem :ref:`MultiplayerPeer.transfer_mode<class_MultiplayerPeer_property_transfer_mode>`.
 
-The ``transfer_channel`` defines the channel of the underlying :ref:`MultiplayerPeer<class_MultiplayerPeer>`. See :ref:`MultiplayerPeer.transfer_channel<class_MultiplayerPeer_property_transfer_channel>`.
+``transfer_channel`` xác định kênh của :ref:`MultiplayerPeer<class_MultiplayerPeer>` bên dưới. Xem :ref:`MultiplayerPeer.transfer_channel<class_MultiplayerPeer_property_transfer_channel>`.
 
-The order of ``mode``, ``sync`` and ``transfer_mode`` does not matter, but values related to the same argument must not be used more than once. ``transfer_channel`` always has to be the 4th argument (you must specify 3 preceding arguments).
+Thứ tự của ``mode``, ``sync`` và ``transfer_mode`` không quan trọng, nhưng không được sử dụng quá một lần các giá trị liên quan đến cùng một đối số. ``transfer_channel`` luôn phải là đối số thứ 4 (bạn phải chỉ định 3 đối số trước đó).
 
 ::
 
@@ -890,7 +890,7 @@ The order of ``mode``, ``sync`` and ``transfer_mode`` does not matter, but value
     @rpc("authority", "call_remote", "reliable", 0) # Equivalent to @rpc
     func fn_default(): pass
 
-\ **Note:** Methods annotated with :ref:`@rpc<class_@GDScript_annotation_@rpc>` cannot receive objects which define required parameters in :ref:`Object._init()<class_Object_private_method__init>`. See :ref:`Object._init()<class_Object_private_method__init>` for more details.
+\ **Lưu ý:** Các phương thức được chú thích bằng :ref:`@rpc <class_@GDScript_annotation_@rpc>` không thể nhận các đối tượng định nghĩa các tham số bắt buộc trong :ref:`Object._init()<class_Object_private_method__init>`. Xem :ref:`Object._init()<class_Object_private_method__init>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -900,13 +900,13 @@ The order of ``mode``, ``sync`` and ``transfer_mode`` does not matter, but value
 
 .. rst-class:: classref-annotation
 
-**@static_unload**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@static_unload>`
+**@static_unload**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@static_unload>`
 
-Make a script with static variables to not persist after all references are lost. If the script is loaded again the static variables will revert to their default values.
+Tạo một script có các biến static để chúng không được duy trì sau khi mọi tham chiếu bị mất. Nếu script được tải lại, các biến static sẽ trở về giá trị mặc định.
 
-\ **Note:** As annotations describe their subject, the :ref:`@static_unload<class_@GDScript_annotation_@static_unload>` annotation must be placed before the class definition and inheritance.
+\ **Lưu ý:** Vì các annotation mô tả đối tượng mà chúng áp dụng, annotation :ref:`@static_unload <class_@GDScript_annotation_@static_unload>` phải được đặt trước phần định nghĩa lớp và phần kế thừa.
 
-\ **Warning:** Currently, due to a bug, scripts are never freed, even if :ref:`@static_unload<class_@GDScript_annotation_@static_unload>` annotation is used.
+\ **Cảnh báo:** Hiện tại, do một lỗi, các script không bao giờ được giải phóng, ngay cả khi sử dụng annotation :ref:`@static_unload <class_@GDScript_annotation_@static_unload>`.
 
 .. rst-class:: classref-item-separator
 
@@ -916,16 +916,16 @@ Make a script with static variables to not persist after all references are lost
 
 .. rst-class:: classref-annotation
 
-**@tool**\ (\ ) :ref:`🔗<class_@GDScript_annotation_@tool>`
+**@tool**\ (\ ) :ref:`🔗 <class_@GDScript_annotation_@tool>`
 
-Mark the current script as a tool script, allowing it to be loaded and executed by the editor. See :doc:`Running code in the editor <../tutorials/plugins/running_code_in_the_editor>`.
+Đánh dấu script hiện tại là một tool script, cho phép editor tải và thực thi script này. Xem :doc:`Chạy mã trong editor <../tutorials/plugins/running_code_in_the_editor>`.
 
 ::
 
     @tool
     extends Node
 
-\ **Note:** As annotations describe their subject, the :ref:`@tool<class_@GDScript_annotation_@tool>` annotation must be placed before the class definition and inheritance.
+\ **Lưu ý:** Vì các annotation mô tả đối tượng mà chúng áp dụng, annotation :ref:`@tool <class_@GDScript_annotation_@tool>` phải được đặt trước phần định nghĩa lớp và phần kế thừa.
 
 .. rst-class:: classref-item-separator
 
@@ -935,9 +935,9 @@ Mark the current script as a tool script, allowing it to be loaded and executed 
 
 .. rst-class:: classref-annotation
 
-**@warning_ignore**\ (\ warning\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@warning_ignore>`
+**@warning_ignore**\ (\ warning\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@warning_ignore>`
 
-Mark the following statement to ignore the specified ``warning``. See :doc:`GDScript warning system <../tutorials/scripting/gdscript/warning_system>`.
+Đánh dấu câu lệnh sau để bỏ qua ``warning`` được chỉ định. Xem :doc:`Hệ thống cảnh báo GDScript <../tutorials/scripting/gdscript/warning_system>`.
 
 ::
 
@@ -947,7 +947,7 @@ Mark the following statement to ignore the specified ``warning``. See :doc:`GDSc
         @warning_ignore("unreachable_code")
         print("unreachable")
 
-See also :ref:`@warning_ignore_start<class_@GDScript_annotation_@warning_ignore_start>` and :ref:`@warning_ignore_restore<class_@GDScript_annotation_@warning_ignore_restore>`.
+Xem thêm :ref:`@warning_ignore_start <class_@GDScript_annotation_@warning_ignore_start>` và :ref:`@warning_ignore_restore <class_@GDScript_annotation_@warning_ignore_restore>`.
 
 .. rst-class:: classref-item-separator
 
@@ -957,11 +957,11 @@ See also :ref:`@warning_ignore_start<class_@GDScript_annotation_@warning_ignore_
 
 .. rst-class:: classref-annotation
 
-**@warning_ignore_restore**\ (\ warning\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@warning_ignore_restore>`
+**@warning_ignore_restore**\ (\ warning\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@warning_ignore_restore>`
 
-Stops ignoring the listed warning types after :ref:`@warning_ignore_start<class_@GDScript_annotation_@warning_ignore_start>`. Ignoring the specified warning types will be reset to Project Settings. This annotation can be omitted to ignore the warning types until the end of the file.
+Dừng bỏ qua các loại cảnh báo được liệt kê sau :ref:`@warning_ignore_start <class_@GDScript_annotation_@warning_ignore_start>`. Việc bỏ qua các loại cảnh báo được chỉ định sẽ được đặt lại theo Project Settings. Có thể bỏ qua annotation này để tiếp tục bỏ qua các loại cảnh báo cho đến cuối tệp.
 
-\ **Note:** Unlike most other annotations, arguments of the :ref:`@warning_ignore_restore<class_@GDScript_annotation_@warning_ignore_restore>` annotation must be string literals (constant expressions are not supported).
+\ **Lưu ý:** Không giống hầu hết các annotation khác, các đối số của annotation :ref:`@warning_ignore_restore <class_@GDScript_annotation_@warning_ignore_restore>` phải là string literal (không hỗ trợ biểu thức hằng).
 
 .. rst-class:: classref-item-separator
 
@@ -971,9 +971,9 @@ Stops ignoring the listed warning types after :ref:`@warning_ignore_start<class_
 
 .. rst-class:: classref-annotation
 
-**@warning_ignore_start**\ (\ warning\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗<class_@GDScript_annotation_@warning_ignore_start>`
+**@warning_ignore_start**\ (\ warning\: :ref:`String<class_String>`, ...\ ) |vararg| :ref:`🔗 <class_@GDScript_annotation_@warning_ignore_start>`
 
-Starts ignoring the listed warning types until the end of the file or the :ref:`@warning_ignore_restore<class_@GDScript_annotation_@warning_ignore_restore>` annotation with the given warning type.
+Bắt đầu bỏ qua các loại cảnh báo được liệt kê cho đến cuối tệp hoặc annotation :ref:`@warning_ignore_restore <class_@GDScript_annotation_@warning_ignore_restore>` có loại cảnh báo tương ứng.
 
 ::
 
@@ -985,9 +985,9 @@ Starts ignoring the listed warning types until the end of the file or the :ref:`
         @warning_ignore_restore("unused_variable")
         var d = 4 # Warning (if enabled in the Project Settings).
 
-\ **Note:** To suppress a single warning, use :ref:`@warning_ignore<class_@GDScript_annotation_@warning_ignore>` instead.
+\ **Lưu ý:** Để loại bỏ một cảnh báo duy nhất, hãy sử dụng :ref:`@warning_ignore <class_@GDScript_annotation_@warning_ignore>` thay thế.
 
-\ **Note:** Unlike most other annotations, arguments of the :ref:`@warning_ignore_start<class_@GDScript_annotation_@warning_ignore_start>` annotation must be string literals (constant expressions are not supported).
+\ **Lưu ý:** Không giống hầu hết các annotation khác, các đối số của annotation :ref:`@warning_ignore_start <class_@GDScript_annotation_@warning_ignore_start>` phải là string literal (không hỗ trợ biểu thức hằng).
 
 .. rst-class:: classref-section-separator
 
@@ -995,8 +995,8 @@ Starts ignoring the listed warning types until the end of the file or the :ref:`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_@GDScript_method_Color8:
 
@@ -1004,9 +1004,9 @@ Method Descriptions
 
 :ref:`Color<class_Color>` **Color8**\ (\ r8\: :ref:`int<class_int>`, g8\: :ref:`int<class_int>`, b8\: :ref:`int<class_int>`, a8\: :ref:`int<class_int>` = 255\ ) :ref:`🔗<class_@GDScript_method_Color8>`
 
-**Deprecated:** Use :ref:`Color.from_rgba8()<class_Color_method_from_rgba8>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`Color.from_rgba8()<class_Color_method_from_rgba8>`.
 
-Returns a :ref:`Color<class_Color>` constructed from red (``r8``), green (``g8``), blue (``b8``), and optionally alpha (``a8``) integer channels, each divided by ``255.0`` for their final value. Using :ref:`Color8()<class_@GDScript_method_Color8>` instead of the standard :ref:`Color<class_Color>` constructor is useful when you need to match exact color values in an :ref:`Image<class_Image>`.
+Trả về một :ref:`Color<class_Color>` được tạo từ các kênh số nguyên red (``r8``), green (``g8``), blue (``b8``) và tùy chọn alpha (``a8``), mỗi kênh được chia cho ``255.0`` để có giá trị cuối cùng. Việc sử dụng :ref:`Color8()<class_@GDScript_method_Color8>` thay cho constructor :ref:`Color<class_Color>` tiêu chuẩn rất hữu ích khi bạn cần khớp chính xác các giá trị màu trong một :ref:`Image<class_Image>`.
 
 ::
 
@@ -1014,7 +1014,7 @@ Returns a :ref:`Color<class_Color>` constructed from red (``r8``), green (``g8``
     var dark_blue = Color8(0, 0, 51)        # Same as Color(0, 0, 0.2).
     var my_color = Color8(306, 255, 0, 102) # Same as Color(1.2, 1, 0, 0.4).
 
-\ **Note:** Due to the lower precision of :ref:`Color8()<class_@GDScript_method_Color8>` compared to the standard :ref:`Color<class_Color>` constructor, a color created with :ref:`Color8()<class_@GDScript_method_Color8>` will generally not be equal to the same color created with the standard :ref:`Color<class_Color>` constructor. Use :ref:`Color.is_equal_approx()<class_Color_method_is_equal_approx>` for comparisons to avoid issues with floating-point precision error.
+\ **Lưu ý:** Do độ chính xác thấp hơn của :ref:`Color8()<class_@GDScript_method_Color8>` so với constructor :ref:`Color<class_Color>` tiêu chuẩn, màu được tạo bằng :ref:`Color8()<class_@GDScript_method_Color8>` nhìn chung sẽ không bằng màu tương tự được tạo bằng constructor :ref:`Color<class_Color>` tiêu chuẩn. Hãy sử dụng :ref:`Color.is_equal_approx()<class_Color_method_is_equal_approx>` để so sánh nhằm tránh các vấn đề do sai số độ chính xác dấu phẩy động.
 
 .. rst-class:: classref-item-separator
 
@@ -1026,11 +1026,11 @@ Returns a :ref:`Color<class_Color>` constructed from red (``r8``), green (``g8``
 
 |void| **assert**\ (\ condition\: :ref:`bool<class_bool>`, message\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_@GDScript_method_assert>`
 
-Asserts that the ``condition`` is ``true``. If the ``condition`` is ``false``, an error is generated and the current method returns a default value. When running from the editor, failed asserts also cause a debugger break. This can be used as a stronger form of :ref:`@GlobalScope.push_error()<class_@GlobalScope_method_push_error>` for reporting errors to project developers or add-on users.
+Xác nhận rằng ``condition`` là ``true``. Nếu ``condition`` là ``false``, một lỗi sẽ được tạo ra và phương thức hiện tại trả về một giá trị mặc định. Khi chạy từ editor, các phép xác nhận không thành công cũng khiến trình gỡ lỗi tạm dừng. Có thể sử dụng cách này như một dạng mạnh hơn của :ref:`@GlobalScope.push_error() <class_@GlobalScope_method_push_error>` để báo cáo lỗi cho các nhà phát triển dự án hoặc người dùng add-on.
 
-An optional ``message`` can be shown in addition to the generic "Assertion failed" message. You can use this to provide additional details about why the assertion failed.
+Có thể hiển thị thêm một ``message`` tùy chọn bên cạnh thông báo chung "Assertion failed". Bạn có thể dùng thông báo này để cung cấp thêm chi tiết về lý do phép xác nhận không thành công.
 
-\ **Warning:** For performance reasons, the code inside :ref:`assert()<class_@GDScript_method_assert>` is only executed in debug builds or when running the project from the editor. Don't include code that has side effects in an :ref:`assert()<class_@GDScript_method_assert>` call. Otherwise, the project will behave differently when exported in release mode.
+\ **Cảnh báo:** Vì lý do hiệu năng, mã bên trong :ref:`assert()<class_@GDScript_method_assert>` chỉ được thực thi trong các bản build debug hoặc khi chạy dự án từ editor. Không đưa mã có tác dụng phụ vào lệnh gọi :ref:`assert()<class_@GDScript_method_assert>`. Nếu không, dự án sẽ hoạt động khác khi được export ở chế độ release.
 
 ::
 
@@ -1041,7 +1041,7 @@ An optional ``message`` can be shown in addition to the generic "Assertion faile
     assert(speed >= 0 and speed < 20) # You can also combine the two conditional statements in one check.
     assert(speed < 20, "the speed limit is 20") # Show a message.
 
-\ **Note:** :ref:`assert()<class_@GDScript_method_assert>` is a keyword, not a function. So you cannot access it as a :ref:`Callable<class_Callable>` or use it inside expressions.
+\ **Lưu ý:** :ref:`assert()<class_@GDScript_method_assert>` là một từ khóa, không phải một hàm. Vì vậy, bạn không thể truy cập nó dưới dạng :ref:`Callable<class_Callable>` hoặc sử dụng nó bên trong các biểu thức.
 
 .. rst-class:: classref-item-separator
 
@@ -1053,14 +1053,14 @@ An optional ``message`` can be shown in addition to the generic "Assertion faile
 
 :ref:`String<class_String>` **char**\ (\ code\: :ref:`int<class_int>`\ ) :ref:`🔗<class_@GDScript_method_char>`
 
-Returns a single character (as a :ref:`String<class_String>` of length 1) of the given Unicode code point ``code``.
+Trả về một ký tự duy nhất (dưới dạng :ref:`String<class_String>` có độ dài 1) của điểm mã Unicode ``code`` đã cho.
 
 ::
 
     print(char(65))     # Prints "A"
     print(char(129302)) # Prints "🤖" (robot face emoji)
 
-This is the inverse of :ref:`ord()<class_@GDScript_method_ord>`. See also :ref:`String.chr()<class_String_method_chr>` and :ref:`String.unicode_at()<class_String_method_unicode_at>`.
+Đây là phép nghịch đảo của :ref:`ord()<class_@GDScript_method_ord>`. Xem thêm :ref:`String.chr()<class_String_method_chr>` và :ref:`String.unicode_at()<class_String_method_unicode_at>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1072,9 +1072,9 @@ This is the inverse of :ref:`ord()<class_@GDScript_method_ord>`. See also :ref:`
 
 :ref:`Variant<class_Variant>` **convert**\ (\ what\: :ref:`Variant<class_Variant>`, type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`\ ) :ref:`🔗<class_@GDScript_method_convert>`
 
-**Deprecated:** Use :ref:`@GlobalScope.type_convert()<class_@GlobalScope_method_type_convert>` instead.
+**Không dùng nữa:** Thay vào đó, hãy sử dụng :ref:`@GlobalScope.type_convert() <class_@GlobalScope_method_type_convert>`.
 
-Converts ``what`` to ``type`` in the best way possible. The ``type`` uses the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` values.
+Chuyển đổi ``what`` thành ``type`` theo cách tốt nhất có thể. ``type`` sử dụng các giá trị :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`.
 
 ::
 
@@ -1095,9 +1095,9 @@ Converts ``what`` to ``type`` in the best way possible. The ``type`` uses the :r
 
 :ref:`Object<class_Object>` **dict_to_inst**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_@GDScript_method_dict_to_inst>`
 
-**Deprecated:** Consider using :ref:`JSON.to_native()<class_JSON_method_to_native>` or :ref:`Object.get_property_list()<class_Object_method_get_property_list>` instead.
+**Không dùng nữa:** Hãy cân nhắc sử dụng :ref:`JSON.to_native()<class_JSON_method_to_native>` hoặc :ref:`Object.get_property_list()<class_Object_method_get_property_list>` thay thế.
 
-Converts a ``dictionary`` (created with :ref:`inst_to_dict()<class_@GDScript_method_inst_to_dict>`) back to an Object instance. Can be useful for deserializing.
+Chuyển đổi một ``dictionary`` (được tạo bằng :ref:`inst_to_dict()<class_@GDScript_method_inst_to_dict>`) trở lại thành một thực thể Object. Điều này có thể hữu ích khi deserialization.
 
 .. rst-class:: classref-item-separator
 
@@ -1109,7 +1109,7 @@ Converts a ``dictionary`` (created with :ref:`inst_to_dict()<class_@GDScript_met
 
 :ref:`Array<class_Array>` **get_stack**\ (\ ) :ref:`🔗<class_@GDScript_method_get_stack>`
 
-Returns an array of dictionaries representing the current call stack.
+Trả về một mảng các dictionary biểu diễn call stack hiện tại.
 
 ::
 
@@ -1122,15 +1122,15 @@ Returns an array of dictionaries representing the current call stack.
     func bar():
         print(get_stack())
 
-Starting from ``_ready()``, ``bar()`` would print:
+Bắt đầu từ ``_ready()``, ``bar()`` sẽ in ra:
 
 .. code:: text
 
     [{function:bar, line:12, source:res://script.gd}, {function:foo, line:9, source:res://script.gd}, {function:_ready, line:6, source:res://script.gd}]
 
-See also :ref:`print_debug()<class_@GDScript_method_print_debug>`, :ref:`print_stack()<class_@GDScript_method_print_stack>`, and :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+Xem thêm :ref:`print_debug()<class_@GDScript_method_print_debug>`, :ref:`print_stack()<class_@GDScript_method_print_stack>` và :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
-\ **Note:** By default, backtraces are only available in editor builds and debug builds. To enable them for release builds as well, you need to enable :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
+\ **Lưu ý:** Theo mặc định, backtrace chỉ khả dụng trong các bản build editor và bản build debug. Để bật chúng cho cả các bản build release, bạn cần bật :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks <class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1142,9 +1142,9 @@ See also :ref:`print_debug()<class_@GDScript_method_print_debug>`, :ref:`print_s
 
 :ref:`Dictionary<class_Dictionary>` **inst_to_dict**\ (\ instance\: :ref:`Object<class_Object>`\ ) :ref:`🔗<class_@GDScript_method_inst_to_dict>`
 
-**Deprecated:** Consider using :ref:`JSON.from_native()<class_JSON_method_from_native>` or :ref:`Object.get_property_list()<class_Object_method_get_property_list>` instead.
+**Đã ngừng sử dụng:** Hãy cân nhắc sử dụng :ref:`JSON.from_native()<class_JSON_method_from_native>` hoặc :ref:`Object.get_property_list()<class_Object_method_get_property_list>` thay thế.
 
-Returns the passed ``instance`` converted to a :ref:`Dictionary<class_Dictionary>`. Can be useful for serializing.
+Trả về ``instance`` đã truyền, được chuyển đổi thành :ref:`Dictionary<class_Dictionary>`. Có thể hữu ích khi tuần tự hóa.
 
 ::
 
@@ -1154,16 +1154,16 @@ Returns the passed ``instance`` converted to a :ref:`Dictionary<class_Dictionary
         print(d.keys())
         print(d.values())
 
-Prints out:
+In ra:
 
 .. code:: text
 
     [@subpath, @path, foo]
     [, res://test.gd, bar]
 
-\ **Note:** This function can only be used to serialize objects with an attached :ref:`GDScript<class_GDScript>` stored in a separate file. Objects without an attached script, with a script written in another language, or with a built-in script are not supported.
+\ **Lưu ý:** Hàm này chỉ có thể được dùng để tuần tự hóa các đối tượng có :ref:`GDScript<class_GDScript>` đính kèm được lưu trong một tệp riêng. Các đối tượng không có script đính kèm, có script được viết bằng ngôn ngữ khác hoặc có script tích hợp sẵn đều không được hỗ trợ.
 
-\ **Note:** This function is not recursive, which means that nested objects will not be represented as dictionaries. Also, properties passed by reference (:ref:`Object<class_Object>`, :ref:`Dictionary<class_Dictionary>`, :ref:`Array<class_Array>`, and packed arrays) are copied by reference, not duplicated.
+\ **Lưu ý:** Hàm này không đệ quy, nghĩa là các đối tượng lồng nhau sẽ không được biểu diễn dưới dạng dictionary. Ngoài ra, các thuộc tính được truyền bằng tham chiếu (:ref:`Object<class_Object>`, :ref:`Dictionary<class_Dictionary>`, :ref:`Array<class_Array>` và các mảng packed) được sao chép bằng tham chiếu thay vì được nhân bản.
 
 .. rst-class:: classref-item-separator
 
@@ -1175,17 +1175,17 @@ Prints out:
 
 :ref:`bool<class_bool>` **is_instance_of**\ (\ value\: :ref:`Variant<class_Variant>`, type\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GDScript_method_is_instance_of>`
 
-Returns ``true`` if ``value`` is an instance of ``type``. The ``type`` value must be one of the following:
+Trả về ``true`` nếu ``value`` là một thực thể của ``type``. Giá trị ``type`` phải là một trong các giá trị sau:
 
-- A constant from the :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` enumeration, for example :ref:`@GlobalScope.TYPE_INT<class_@GlobalScope_constant_TYPE_INT>`.
+- Một hằng số từ kiểu liệt kê :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`, chẳng hạn như :ref:`@GlobalScope.TYPE_INT <class_@GlobalScope_constant_TYPE_INT>`.
 
-- An :ref:`Object<class_Object>`-derived class which exists in :ref:`ClassDB<class_ClassDB>`, for example :ref:`Node<class_Node>`.
+- Một lớp dẫn xuất từ :ref:`Object<class_Object>` tồn tại trong :ref:`ClassDB<class_ClassDB>`, chẳng hạn như :ref:`Node<class_Node>`.
 
-- A :ref:`Script<class_Script>` (you can use any class, including inner one).
+- Một :ref:`Script<class_Script>` (bạn có thể sử dụng bất kỳ lớp nào, bao gồm cả lớp bên trong).
 
-Unlike the right operand of the ``is`` operator, ``type`` can be a non-constant value. The ``is`` operator supports more features (such as typed arrays and dictionaries). Use the operator instead of this method if you do not need to check the type dynamically.
+Không giống toán hạng bên phải của toán tử ``is``, ``type`` có thể là một giá trị không phải hằng số. Toán tử ``is`` hỗ trợ nhiều tính năng hơn (chẳng hạn như typed array và dictionary). Hãy sử dụng toán tử thay cho phương thức này nếu bạn không cần kiểm tra kiểu một cách động.
 
-\ **Examples:**\ 
+\ **Ví dụ:**\
 
 ::
 
@@ -1194,9 +1194,9 @@ Unlike the right operand of the ``is`` operator, ``type`` can be a non-constant 
     print(is_instance_of(a, MyClass))
     print(is_instance_of(a, MyClass.InnerClass))
 
-\ **Note:** If ``value`` and/or ``type`` are freed objects (see :ref:`@GlobalScope.is_instance_valid()<class_@GlobalScope_method_is_instance_valid>`), or ``type`` is not one of the above options, this method will raise a runtime error.
+\ **Lưu ý:** Nếu ``value`` và/hoặc ``type`` là các đối tượng đã được giải phóng (xem :ref:`@GlobalScope.is_instance_valid() <class_@GlobalScope_method_is_instance_valid>`), hoặc ``type`` không phải là một trong các tùy chọn trên, phương thức này sẽ gây ra lỗi khi chạy.
 
-See also :ref:`@GlobalScope.typeof()<class_@GlobalScope_method_typeof>`, :ref:`Object.is_class()<class_Object_method_is_class>`, :ref:`Object.get_script()<class_Object_method_get_script>`, :ref:`Array.is_same_typed()<class_Array_method_is_same_typed>` (and other :ref:`Array<class_Array>` methods), :ref:`Dictionary.is_same_typed()<class_Dictionary_method_is_same_typed>` (and other :ref:`Dictionary<class_Dictionary>` methods).
+Xem thêm :ref:`@GlobalScope.typeof() <class_@GlobalScope_method_typeof>`, :ref:`Object.is_class()<class_Object_method_is_class>`, :ref:`Object.get_script()<class_Object_method_get_script>`, :ref:`Array.is_same_typed()<class_Array_method_is_same_typed>` (và các phương thức :ref:`Array<class_Array>` khác), :ref:`Dictionary.is_same_typed()<class_Dictionary_method_is_same_typed>` (và các phương thức :ref:`Dictionary<class_Dictionary>` khác).
 
 .. rst-class:: classref-item-separator
 
@@ -1208,7 +1208,7 @@ See also :ref:`@GlobalScope.typeof()<class_@GlobalScope_method_typeof>`, :ref:`O
 
 :ref:`int<class_int>` **len**\ (\ var\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_@GDScript_method_len>`
 
-Returns the length of the given Variant ``var``. The length can be the character count of a :ref:`String<class_String>` or :ref:`StringName<class_StringName>`, the element count of any array type, or the size of a :ref:`Dictionary<class_Dictionary>`. For every other Variant type, a run-time error is generated and execution is stopped.
+Trả về độ dài của Variant ``var`` đã cho. Độ dài có thể là số ký tự của :ref:`String<class_String>` hoặc :ref:`StringName<class_StringName>`, số phần tử của bất kỳ kiểu mảng nào, hoặc kích thước của :ref:`Dictionary<class_Dictionary>`. Với mọi kiểu Variant khác, một lỗi khi chạy sẽ được tạo ra và quá trình thực thi bị dừng.
 
 ::
 
@@ -1228,22 +1228,22 @@ Returns the length of the given Variant ``var``. The length can be the character
 
 :ref:`Resource<class_Resource>` **load**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_@GDScript_method_load>`
 
-Returns a :ref:`Resource<class_Resource>` from the filesystem located at the absolute ``path``. Unless it's already referenced elsewhere (such as in another script or in the scene), the resource is loaded from disk on function call, which might cause a slight delay, especially when loading large scenes. To avoid unnecessary delays when loading something multiple times, either store the resource in a variable or use :ref:`preload()<class_@GDScript_method_preload>`. This method is equivalent of using :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>` with :ref:`ResourceLoader.CACHE_MODE_REUSE<class_ResourceLoader_constant_CACHE_MODE_REUSE>`.
+Trả về một :ref:`Resource<class_Resource>` từ hệ thống tệp nằm tại ``path`` tuyệt đối. Trừ khi tài nguyên này đã được tham chiếu ở nơi khác (chẳng hạn như trong một script khác hoặc trong scene), tài nguyên sẽ được tải từ đĩa khi gọi hàm, điều này có thể gây ra một độ trễ nhỏ, đặc biệt khi tải các scene lớn. Để tránh độ trễ không cần thiết khi tải cùng một tài nguyên nhiều lần, hãy lưu tài nguyên vào một biến hoặc sử dụng :ref:`preload()<class_@GDScript_method_preload>`. Phương thức này tương đương với việc sử dụng :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>` với :ref:`ResourceLoader.CACHE_MODE_REUSE<class_ResourceLoader_constant_CACHE_MODE_REUSE>`.
 
-\ **Note:** Resource paths can be obtained by right-clicking on a resource in the FileSystem dock and choosing "Copy Path", or by dragging the file from the FileSystem dock into the current script.
+\ **Lưu ý:** Có thể lấy các đường dẫn tài nguyên bằng cách nhấp chuột phải vào một tài nguyên trong dock FileSystem rồi chọn "Copy Path", hoặc kéo tệp từ dock FileSystem vào script hiện tại.
 
 ::
 
     # Load a scene called "main" located in the root of the project directory and cache it in a variable.
     var main = load("res://main.tscn") # main will contain a PackedScene resource.
 
-\ **Important:** Relative paths are *not* relative to the script calling this method, instead it is prefixed with ``"res://"``. Loading from relative paths might not work as expected.
+\ **Quan trọng:** Các đường dẫn tương đối *không* tương đối với script gọi phương thức này, mà thay vào đó được thêm tiền tố ``"res://"``. Việc tải từ các đường dẫn tương đối có thể không hoạt động như mong đợi.
 
-This function is a simplified version of :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>`, which can be used for more advanced scenarios.
+Hàm này là phiên bản đơn giản hóa của :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>`, có thể được sử dụng cho các trường hợp nâng cao hơn.
 
-\ **Note:** Files have to be imported into the engine first to load them using this function. If you want to load :ref:`Image<class_Image>`\ s at run-time, you may use :ref:`Image.load()<class_Image_method_load>`. If you want to import audio files, you can use the snippet described in :ref:`AudioStreamMP3.data<class_AudioStreamMP3_property_data>`.
+\ **Lưu ý:** Trước tiên, các tệp phải được import vào engine để có thể tải chúng bằng hàm này. Nếu muốn tải :ref:`Image<class_Image>`\ s trong thời gian chạy, bạn có thể sử dụng :ref:`Image.load()<class_Image_method_load>`. Nếu muốn import các tệp âm thanh, bạn có thể sử dụng đoạn mã được mô tả trong :ref:`AudioStreamMP3.data<class_AudioStreamMP3_property_data>`.
 
-\ **Note:** If :ref:`ProjectSettings.editor/export/convert_text_resources_to_binary<class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>` is ``true``, :ref:`load()<class_@GDScript_method_load>` will not be able to read converted files in an exported project. If you rely on run-time loading of files present within the PCK, set :ref:`ProjectSettings.editor/export/convert_text_resources_to_binary<class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>` to ``false``.
+\ **Lưu ý:** Nếu :ref:`ProjectSettings.editor/export/convert_text_resources_to_binary <class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>` là ``true``, :ref:`load()<class_@GDScript_method_load>` sẽ không thể đọc các tệp đã chuyển đổi trong project đã export. Nếu dựa vào việc tải trong thời gian chạy các tệp có trong PCK, hãy đặt :ref:`ProjectSettings.editor/export/convert_text_resources_to_binary <class_ProjectSettings_property_editor/export/convert_text_resources_to_binary>` thành ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -1255,14 +1255,14 @@ This function is a simplified version of :ref:`ResourceLoader.load()<class_Resou
 
 :ref:`int<class_int>` **ord**\ (\ char\: :ref:`String<class_String>`\ ) :ref:`🔗<class_@GDScript_method_ord>`
 
-Returns an integer representing the Unicode code point of the given character ``char``, which should be a string of length 1.
+Trả về một số nguyên biểu thị code point Unicode của ký tự đã cho ``char``, ký tự này phải là một chuỗi có độ dài 1.
 
 ::
 
     print(ord("A")) # Prints 65
     print(ord("🤖")) # Prints 129302
 
-This is the inverse of :ref:`char()<class_@GDScript_method_char>`. See also :ref:`String.chr()<class_String_method_chr>` and :ref:`String.unicode_at()<class_String_method_unicode_at>`.
+Đây là phép nghịch đảo của :ref:`char()<class_@GDScript_method_char>`. Xem thêm :ref:`String.chr()<class_String_method_chr>` và :ref:`String.unicode_at()<class_String_method_unicode_at>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1274,16 +1274,16 @@ This is the inverse of :ref:`char()<class_@GDScript_method_char>`. See also :ref
 
 :ref:`Resource<class_Resource>` **preload**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_@GDScript_method_preload>`
 
-Returns a :ref:`Resource<class_Resource>` from the filesystem located at ``path``. During run-time, the resource is loaded when the script is being parsed. This function effectively acts as a reference to that resource. Note that this function requires ``path`` to be a constant :ref:`String<class_String>`. If you want to load a resource from a dynamic/variable path, use :ref:`load()<class_@GDScript_method_load>`.
+Trả về một :ref:`Resource<class_Resource>` từ filesystem tại ``path``. Trong thời gian chạy, resource được tải khi script đang được phân tích cú pháp. Về bản chất, hàm này hoạt động như một tham chiếu đến resource đó. Lưu ý rằng hàm này yêu cầu ``path`` phải là một hằng số :ref:`String<class_String>`. Nếu muốn tải một resource từ đường dẫn động/thay đổi, hãy sử dụng :ref:`load()<class_@GDScript_method_load>`.
 
-\ **Note:** Resource paths can be obtained by right-clicking on a resource in the Assets Panel and choosing "Copy Path", or by dragging the file from the FileSystem dock into the current script.
+\ **Lưu ý:** Có thể lấy đường dẫn resource bằng cách nhấp chuột phải vào một resource trong Assets Panel và chọn "Copy Path", hoặc kéo tệp từ dock FileSystem vào script hiện tại.
 
 ::
 
     # Create instance of a scene.
     var diamond = preload("res://diamond.tscn").instantiate()
 
-\ **Note:** :ref:`preload()<class_@GDScript_method_preload>` is a keyword, not a function. So you cannot access it as a :ref:`Callable<class_Callable>`.
+\ **Lưu ý:** :ref:`preload()<class_@GDScript_method_preload>` là một keyword, không phải một hàm. Vì vậy, bạn không thể truy cập nó dưới dạng một :ref:`Callable<class_Callable>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1295,18 +1295,18 @@ Returns a :ref:`Resource<class_Resource>` from the filesystem located at ``path`
 
 |void| **print_debug**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GDScript_method_print_debug>`
 
-Like :ref:`@GlobalScope.print()<class_@GlobalScope_method_print>`, but includes the current stack frame when running with the debugger turned on.
+Tương tự như :ref:`@GlobalScope.print() <class_@GlobalScope_method_print>`, nhưng bao gồm stack frame hiện tại khi chạy với debugger được bật.
 
-The output in the console may look like the following:
+Đầu ra trong console có thể trông như sau:
 
 .. code:: text
 
     Test print
     At: res://test.gd:15:_process()
 
-See also :ref:`print_stack()<class_@GDScript_method_print_stack>`, :ref:`get_stack()<class_@GDScript_method_get_stack>`, and :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+Xem thêm :ref:`print_stack()<class_@GDScript_method_print_stack>`, :ref:`get_stack()<class_@GDScript_method_get_stack>` và :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
-\ **Note:** By default, backtraces are only available in editor builds and debug builds. To enable them for release builds as well, you need to enable :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
+\ **Lưu ý:** Theo mặc định, backtrace chỉ khả dụng trong các bản build editor và bản build debug. Để bật chúng cho cả các bản build release, bạn cần bật :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks <class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1318,17 +1318,17 @@ See also :ref:`print_stack()<class_@GDScript_method_print_stack>`, :ref:`get_sta
 
 |void| **print_stack**\ (\ ) :ref:`🔗<class_@GDScript_method_print_stack>`
 
-Prints a stack trace at the current code location.
+In stack trace tại vị trí mã hiện tại.
 
-The output in the console may look like the following:
+Đầu ra trong console có thể trông như sau:
 
 .. code:: text
 
     Frame 0 - res://test.gd:16 in function '_process'
 
-See also :ref:`print_debug()<class_@GDScript_method_print_debug>`, :ref:`get_stack()<class_@GDScript_method_get_stack>`, and :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+Xem thêm :ref:`print_debug()<class_@GDScript_method_print_debug>`, :ref:`get_stack()<class_@GDScript_method_get_stack>` và :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
-\ **Note:** By default, backtraces are only available in editor builds and debug builds. To enable them for release builds as well, you need to enable :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
+\ **Lưu ý:** Theo mặc định, backtrace chỉ khả dụng trong các bản build editor và bản build debug. Để bật chúng cho cả các bản build release, bạn cần bật :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks <class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1340,19 +1340,19 @@ See also :ref:`print_debug()<class_@GDScript_method_print_debug>`, :ref:`get_sta
 
 :ref:`Array<class_Array>` **range**\ (\ ...\ ) |vararg| :ref:`🔗<class_@GDScript_method_range>`
 
-Returns an array with the given range. :ref:`range()<class_@GDScript_method_range>` can be called in three ways:
+Trả về một mảng với phạm vi đã cho. Có thể gọi :ref:`range()<class_@GDScript_method_range>` theo ba cách:
 
-\ ``range(n: int)``: Starts from 0, increases by steps of 1, and stops *before* ``n``. The argument ``n`` is **exclusive**.
+\ ``range(n: int)``: Bắt đầu từ 0, tăng theo từng bước 1 và dừng *trước* ``n``. Đối số ``n`` là **không bao gồm**.
 
-\ ``range(b: int, n: int)``: Starts from ``b``, increases by steps of 1, and stops *before* ``n``. The arguments ``b`` and ``n`` are **inclusive** and **exclusive**, respectively.
+\ ``range(b: int, n: int)``: Bắt đầu từ ``b``, tăng theo từng bước 1 và dừng *trước* ``n``. Các đối số ``b`` và ``n`` lần lượt **bao gồm** và **không bao gồm**.
 
-\ ``range(b: int, n: int, s: int)``: Starts from ``b``, increases/decreases by steps of ``s``, and stops *before* ``n``. The arguments ``b`` and ``n`` are **inclusive** and **exclusive**, respectively. The argument ``s`` **can** be negative, but not ``0``. If ``s`` is ``0``, an error message is printed.
+\ ``range(b: int, n: int, s: int)``: Bắt đầu từ ``b``, tăng/giảm theo từng bước ``s`` và dừng *trước* ``n``. Các đối số ``b`` và ``n`` lần lượt **bao gồm** và **không bao gồm**. Đối số ``s`` **có thể** là số âm, nhưng không được là ``0``. Nếu ``s`` là ``0``, một thông báo lỗi sẽ được in ra.
 
-\ :ref:`range()<class_@GDScript_method_range>` converts all arguments to :ref:`int<class_int>` before processing.
+\ :ref:`range()<class_@GDScript_method_range>` chuyển đổi tất cả đối số thành :ref:`int<class_int>` trước khi xử lý.
 
-\ **Note:** Returns an empty array if no value meets the value constraint (e.g. ``range(2, 5, -1)`` or ``range(5, 5, 1)``).
+\ **Lưu ý:** Trả về một mảng rỗng nếu không có giá trị nào đáp ứng ràng buộc về giá trị (ví dụ: ``range(2, 5, -1)`` hoặc ``range(5, 5, 1)``).
 
-\ **Examples:**\ 
+\ **Ví dụ:**\
 
 ::
 
@@ -1361,7 +1361,7 @@ Returns an array with the given range. :ref:`range()<class_@GDScript_method_rang
     print(range(0, 6, 2))  # Prints [0, 2, 4]
     print(range(4, 1, -1)) # Prints [4, 3, 2]
 
-To iterate over an :ref:`Array<class_Array>` backwards, use:
+Để lặp qua một :ref:`Array<class_Array>` theo chiều ngược lại, hãy sử dụng:
 
 ::
 
@@ -1369,7 +1369,7 @@ To iterate over an :ref:`Array<class_Array>` backwards, use:
     for i in range(array.size() - 1, -1, -1):
         print(array[i])
 
-Output:
+Kết quả:
 
 .. code:: text
 
@@ -1377,14 +1377,14 @@ Output:
     6
     3
 
-To iterate over :ref:`float<class_float>`, convert them in the loop.
+Để lặp qua :ref:`float<class_float>`, hãy chuyển đổi chúng trong vòng lặp.
 
 ::
 
     for i in range (3, 0, -1):
         print(i / 10.0)
 
-Output:
+Kết quả:
 
 .. code:: text
 
@@ -1402,21 +1402,21 @@ Output:
 
 :ref:`bool<class_bool>` **type_exists**\ (\ type\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_@GDScript_method_type_exists>`
 
-**Deprecated:** Use :ref:`ClassDB.class_exists()<class_ClassDB_method_class_exists>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`ClassDB.class_exists()<class_ClassDB_method_class_exists>` thay thế.
 
-Returns ``true`` if the given :ref:`Object<class_Object>`-derived class exists in :ref:`ClassDB<class_ClassDB>`. Note that :ref:`Variant<class_Variant>` data types are not registered in :ref:`ClassDB<class_ClassDB>`.
+Trả về ``true`` nếu lớp dẫn xuất từ :ref:`Object<class_Object>` đã cho tồn tại trong :ref:`ClassDB<class_ClassDB>`. Lưu ý rằng các kiểu dữ liệu :ref:`Variant<class_Variant>` không được đăng ký trong :ref:`ClassDB<class_ClassDB>`.
 
 ::
 
     type_exists("Sprite2D") # Returns true
     type_exists("NonExistentClass") # Returns false
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

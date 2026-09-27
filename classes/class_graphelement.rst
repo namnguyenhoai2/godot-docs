@@ -10,22 +10,22 @@
 GraphElement
 ============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`GraphFrame<class_GraphFrame>`, :ref:`GraphNode<class_GraphNode>`
+**Được kế thừa bởi:** :ref:`GraphFrame<class_GraphFrame>`, :ref:`GraphNode<class_GraphNode>`
 
-A container that represents a basic element that can be placed inside a :ref:`GraphEdit<class_GraphEdit>` control.
+Một vùng chứa đại diện cho một phần tử cơ bản có thể được đặt bên trong một control :ref:`GraphEdit<class_GraphEdit>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**GraphElement** allows to create custom elements for a :ref:`GraphEdit<class_GraphEdit>` graph. By default such elements can be selected, resized, and repositioned, but they cannot be connected. For a graph element that allows for connections see :ref:`GraphNode<class_GraphNode>`.
+**GraphElement** cho phép tạo các phần tử tùy chỉnh cho một đồ thị :ref:`GraphEdit<class_GraphEdit>`. Theo mặc định, các phần tử này có thể được chọn, thay đổi kích thước và định vị lại, nhưng không thể kết nối. Để sử dụng một phần tử đồ thị cho phép kết nối, hãy xem :ref:`GraphNode<class_GraphNode>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính chủ đề
+-----------------
 
 .. table::
    :widths: auto
@@ -63,8 +63,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_GraphElement_signal_delete_request:
 
@@ -72,7 +72,7 @@ Signals
 
 **delete_request**\ (\ ) :ref:`🔗<class_GraphElement_signal_delete_request>`
 
-Emitted when removing the GraphElement is requested.
+Được phát ra khi có yêu cầu xóa GraphElement.
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ Emitted when removing the GraphElement is requested.
 
 **dragged**\ (\ from\: :ref:`Vector2<class_Vector2>`, to\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphElement_signal_dragged>`
 
-Emitted when the GraphElement is dragged.
+Được phát ra khi GraphElement được kéo.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Emitted when the GraphElement is dragged.
 
 **node_deselected**\ (\ ) :ref:`🔗<class_GraphElement_signal_node_deselected>`
 
-Emitted when the GraphElement is deselected.
+Được phát ra khi GraphElement bị bỏ chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Emitted when the GraphElement is deselected.
 
 **node_selected**\ (\ ) :ref:`🔗<class_GraphElement_signal_node_selected>`
 
-Emitted when the GraphElement is selected.
+Được phát ra khi GraphElement được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Emitted when the GraphElement is selected.
 
 **position_offset_changed**\ (\ ) :ref:`🔗<class_GraphElement_signal_position_offset_changed>`
 
-Emitted when the GraphElement is moved.
+Được phát ra khi GraphElement được di chuyển.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ Emitted when the GraphElement is moved.
 
 **raise_request**\ (\ ) :ref:`🔗<class_GraphElement_signal_raise_request>`
 
-Emitted when displaying the GraphElement over other ones is requested. Happens on focusing (clicking into) the GraphElement.
+Được phát ra khi có yêu cầu hiển thị GraphElement trên các phần tử khác. Điều này xảy ra khi tập trung (nhấp vào) GraphElement.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Emitted when displaying the GraphElement over other ones is requested. Happens o
 
 **resize_end**\ (\ new_size\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphElement_signal_resize_end>`
 
-Emitted when releasing the mouse button after dragging the resizer handle (see :ref:`resizable<class_GraphElement_property_resizable>`).
+Được phát ra khi thả nút chuột sau khi kéo tay nắm điều chỉnh kích thước (xem :ref:`resizable<class_GraphElement_property_resizable>`).
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ Emitted when releasing the mouse button after dragging the resizer handle (see :
 
 **resize_request**\ (\ new_size\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_GraphElement_signal_resize_request>`
 
-Emitted when resizing the GraphElement is requested. Happens on dragging the resizer handle (see :ref:`resizable<class_GraphElement_property_resizable>`).
+Được phát ra khi có yêu cầu thay đổi kích thước GraphElement. Xảy ra khi kéo tay nắm điều chỉnh kích thước (xem :ref:`resizable<class_GraphElement_property_resizable>`).
 
 .. rst-class:: classref-section-separator
 
@@ -164,8 +164,8 @@ Emitted when resizing the GraphElement is requested. Happens on dragging the res
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GraphElement_property_draggable:
 
@@ -178,7 +178,7 @@ Property Descriptions
 - |void| **set_draggable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_draggable**\ (\ )
 
-If ``true``, the user can drag the GraphElement.
+Nếu ``true``, người dùng có thể kéo GraphElement.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ If ``true``, the user can drag the GraphElement.
 - |void| **set_position_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_position_offset**\ (\ )
 
-The offset of the GraphElement, relative to the scroll offset of the :ref:`GraphEdit<class_GraphEdit>`.
+Độ lệch của GraphElement so với độ lệch cuộn của :ref:`GraphEdit<class_GraphEdit>`.
 
 .. rst-class:: classref-item-separator
 
@@ -212,9 +212,9 @@ The offset of the GraphElement, relative to the scroll offset of the :ref:`Graph
 - |void| **set_resizable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_resizable**\ (\ )
 
-If ``true``, the user can resize the GraphElement.
+Nếu ``true``, người dùng có thể thay đổi kích thước GraphElement.
 
-\ **Note:** Dragging the handle will only emit the :ref:`resize_request<class_GraphElement_signal_resize_request>` and :ref:`resize_end<class_GraphElement_signal_resize_end>` signals, the GraphElement needs to be resized manually.
+\ **Lưu ý:** Việc kéo tay nắm chỉ phát ra các tín hiệu :ref:`resize_request<class_GraphElement_signal_resize_request>` và :ref:`resize_end<class_GraphElement_signal_resize_end>`, GraphElement cần được thay đổi kích thước theo cách thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ If ``true``, the user can resize the GraphElement.
 - |void| **set_scaling_menus**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_scaling_menus**\ (\ )
 
-If ``true``, :ref:`PopupMenu<class_PopupMenu>`\ s that are descendants of the GraphElement are scaled with the :ref:`GraphEdit<class_GraphEdit>` zoom.
+Nếu ``true``, :ref:`PopupMenu<class_PopupMenu>`\ s là các phần tử hậu duệ của GraphElement được scale theo mức zoom :ref:`GraphEdit<class_GraphEdit>`.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ If ``true``, :ref:`PopupMenu<class_PopupMenu>`\ s that are descendants of the Gr
 - |void| **set_selectable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_selectable**\ (\ )
 
-If ``true``, the user can select the GraphElement.
+Nếu ``true``, người dùng có thể chọn GraphElement.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ If ``true``, the user can select the GraphElement.
 - |void| **set_selected**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_selected**\ (\ )
 
-If ``true``, the GraphElement is selected.
+Nếu ``true``, GraphElement được chọn.
 
 .. rst-class:: classref-section-separator
 
@@ -273,23 +273,23 @@ If ``true``, the GraphElement is selected.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_GraphElement_theme_icon_resizer:
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **resizer** :ref:`🔗<class_GraphElement_theme_icon_resizer>`
+:ref:`Texture2D<class_Texture2D>` **resizer** :ref:`🔗 <class_GraphElement_theme_icon_resizer>`
 
-The icon used for the resizer, visible when :ref:`resizable<class_GraphElement_property_resizable>` is enabled.
+Biểu tượng được sử dụng cho resizer, hiển thị khi :ref:`resizable<class_GraphElement_property_resizable>` được bật.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

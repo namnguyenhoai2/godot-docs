@@ -10,20 +10,20 @@
 ConeTwistJoint3D
 ================
 
-**Inherits:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Joint3D<class_Joint3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A physics joint that connects two 3D physics bodies in a way that simulates a ball-and-socket joint.
+Một khớp vật lý kết nối hai thân vật lý 3D theo cách mô phỏng khớp cầu.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A physics joint that connects two 3D physics bodies in a way that simulates a ball-and-socket joint. The twist axis is initiated as the X axis of the **ConeTwistJoint3D**. Once the physics bodies swing, the twist axis is calculated as the middle of the X axes of the joint in the local space of the two physics bodies. Useful for limbs like shoulders and hips, lamps hanging off a ceiling, etc.
+Một khớp vật lý kết nối hai thân vật lý 3D theo cách mô phỏng khớp cầu. Trục xoắn ban đầu là trục X của **ConeTwistJoint3D**. Sau khi các thân vật lý xoay, trục xoắn được tính là trung điểm của các trục X của khớp trong không gian cục bộ của hai thân vật lý. Hữu ích cho các chi như vai và hông, đèn treo trên trần, v.v.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -43,17 +43,17 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`get_param<class_ConeTwistJoint3D_method_get_param>`\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`\ ) |const|                            |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                    | :ref:`set_param<class_ConeTwistJoint3D_method_set_param>`\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
-   +---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`get_param<class_ConeTwistJoint3D_method_get_param>`\ (\ param\: :ref:`Param <enum_ConeTwistJoint3D_Param>`\ ) |const|                            |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                    | :ref:`set_param<class_ConeTwistJoint3D_method_set_param>`\ (\ param\: :ref:`Param <enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) |
+   +---------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -61,14 +61,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ConeTwistJoint3D_Param:
 
 .. rst-class:: classref-enumeration
 
-enum **Param**: :ref:`🔗<enum_ConeTwistJoint3D_Param>`
+enum **Param**: :ref:`🔗 <enum_ConeTwistJoint3D_Param>`
 
 .. _class_ConeTwistJoint3D_constant_PARAM_SWING_SPAN:
 
@@ -76,13 +76,13 @@ enum **Param**: :ref:`🔗<enum_ConeTwistJoint3D_Param>`
 
 :ref:`Param<enum_ConeTwistJoint3D_Param>` **PARAM_SWING_SPAN** = ``0``
 
-Swing is rotation from side to side, around the axis perpendicular to the twist axis.
+Swing là chuyển động xoay từ bên này sang bên kia, quanh trục vuông góc với trục twist.
 
-The swing span defines, how much rotation will not get corrected along the swing axis.
+Phạm vi swing xác định mức độ xoay sẽ không được điều chỉnh dọc theo trục swing.
 
-Could be defined as looseness in the **ConeTwistJoint3D**.
+Có thể được định nghĩa là độ lỏng trong **ConeTwistJoint3D**.
 
-If below 0.05, this behavior is locked.
+Nếu nhỏ hơn 0.05, hành vi này sẽ bị khóa.
 
 .. _class_ConeTwistJoint3D_constant_PARAM_TWIST_SPAN:
 
@@ -90,9 +90,9 @@ If below 0.05, this behavior is locked.
 
 :ref:`Param<enum_ConeTwistJoint3D_Param>` **PARAM_TWIST_SPAN** = ``1``
 
-Twist is the rotation around the twist axis, this value defined how far the joint can twist.
+Twist là chuyển động xoay quanh trục xoắn; giá trị này xác định khớp có thể xoắn đến mức nào.
 
-Twist is locked if below 0.05.
+Twist bị khóa nếu giá trị nhỏ hơn 0.05.
 
 .. _class_ConeTwistJoint3D_constant_PARAM_BIAS:
 
@@ -100,9 +100,9 @@ Twist is locked if below 0.05.
 
 :ref:`Param<enum_ConeTwistJoint3D_Param>` **PARAM_BIAS** = ``2``
 
-The speed with which the swing or twist will take place.
+Tốc độ mà swing hoặc twist diễn ra.
 
-The higher, the faster.
+Giá trị càng cao thì tốc độ càng nhanh.
 
 .. _class_ConeTwistJoint3D_constant_PARAM_SOFTNESS:
 
@@ -110,7 +110,7 @@ The higher, the faster.
 
 :ref:`Param<enum_ConeTwistJoint3D_Param>` **PARAM_SOFTNESS** = ``3``
 
-The ease with which the joint starts to twist. If it's too low, it takes more force to start twisting the joint.
+Mức độ dễ dàng khi khớp bắt đầu xoắn. Nếu giá trị quá thấp, cần nhiều lực hơn để bắt đầu xoắn khớp.
 
 .. _class_ConeTwistJoint3D_constant_PARAM_RELAXATION:
 
@@ -118,7 +118,7 @@ The ease with which the joint starts to twist. If it's too low, it takes more fo
 
 :ref:`Param<enum_ConeTwistJoint3D_Param>` **PARAM_RELAXATION** = ``4``
 
-Defines, how fast the swing- and twist-speed-difference on both sides gets synced.
+Xác định tốc độ đồng bộ hóa chênh lệch giữa swing-speed và twist-speed ở cả hai phía.
 
 .. _class_ConeTwistJoint3D_constant_PARAM_MAX:
 
@@ -126,7 +126,7 @@ Defines, how fast the swing- and twist-speed-difference on both sides gets synce
 
 :ref:`Param<enum_ConeTwistJoint3D_Param>` **PARAM_MAX** = ``5``
 
-Represents the size of the :ref:`Param<enum_ConeTwistJoint3D_Param>` enum.
+Biểu thị số lượng phần tử của enum :ref:`Param <enum_ConeTwistJoint3D_Param>`.
 
 .. rst-class:: classref-section-separator
 
@@ -134,8 +134,8 @@ Represents the size of the :ref:`Param<enum_ConeTwistJoint3D_Param>` enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ConeTwistJoint3D_property_bias:
 
@@ -148,9 +148,9 @@ Property Descriptions
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`\ ) |const|
 
-The speed with which the swing or twist will take place.
+Tốc độ thực hiện chuyển động swing hoặc twist.
 
-The higher, the faster.
+Giá trị càng cao thì tốc độ càng nhanh.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ The higher, the faster.
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`\ ) |const|
 
-Defines, how fast the swing- and twist-speed-difference on both sides gets synced.
+Xác định tốc độ đồng bộ hóa chênh lệch tốc độ swing và twist ở cả hai bên.
 
 .. rst-class:: classref-item-separator
 
@@ -184,7 +184,7 @@ Defines, how fast the swing- and twist-speed-difference on both sides gets synce
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`\ ) |const|
 
-The ease with which the joint starts to twist. If it's too low, it takes more force to start twisting the joint.
+Mức độ dễ dàng khi khớp bắt đầu twist. Nếu giá trị này quá thấp, cần nhiều lực hơn để bắt đầu twist khớp.
 
 .. rst-class:: classref-item-separator
 
@@ -201,13 +201,13 @@ The ease with which the joint starts to twist. If it's too low, it takes more fo
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`\ ) |const|
 
-Swing is rotation from side to side, around the axis perpendicular to the twist axis.
+Swing là chuyển động xoay từ bên này sang bên kia, quanh trục vuông góc với trục twist.
 
-The swing span defines, how much rotation will not get corrected along the swing axis.
+Phạm vi swing xác định mức độ xoay sẽ không được điều chỉnh dọc theo trục swing.
 
-Could be defined as looseness in the **ConeTwistJoint3D**.
+Có thể được định nghĩa là độ lỏng trong **ConeTwistJoint3D**.
 
-If below 0.05, this behavior is locked.
+Nếu nhỏ hơn 0.05, hành vi này sẽ bị khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -224,9 +224,9 @@ If below 0.05, this behavior is locked.
 - |void| **set_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`\ ) |const|
 
-Twist is the rotation around the twist axis, this value defined how far the joint can twist.
+Twist là phép xoay quanh trục twist; giá trị này xác định khớp có thể twist đến mức nào.
 
-Twist is locked if below 0.05.
+Twist bị khóa nếu nhỏ hơn 0.05.
 
 .. rst-class:: classref-section-separator
 
@@ -234,8 +234,8 @@ Twist is locked if below 0.05.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ConeTwistJoint3D_method_get_param:
 
@@ -243,7 +243,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`\ ) |const| :ref:`🔗<class_ConeTwistJoint3D_method_get_param>`
 
-Returns the value of the specified parameter.
+Trả về giá trị của tham số được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -255,14 +255,14 @@ Returns the value of the specified parameter.
 
 |void| **set_param**\ (\ param\: :ref:`Param<enum_ConeTwistJoint3D_Param>`, value\: :ref:`float<class_float>`\ ) :ref:`🔗<class_ConeTwistJoint3D_method_set_param>`
 
-Sets the value of the specified parameter.
+Đặt giá trị của tham số được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

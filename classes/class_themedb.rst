@@ -10,22 +10,22 @@
 ThemeDB
 =======
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A singleton that provides access to static information about :ref:`Theme<class_Theme>` resources used by the engine and by your project.
+Singleton cung cấp quyền truy cập vào thông tin tĩnh về các resource :ref:`Theme<class_Theme>` được engine và project của bạn sử dụng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This singleton provides access to static information about :ref:`Theme<class_Theme>` resources used by the engine and by your projects. You can fetch the default engine theme, as well as your project configured theme.
+Singleton này cung cấp quyền truy cập vào thông tin tĩnh về các resource :ref:`Theme<class_Theme>` được engine và project của bạn sử dụng. Bạn có thể lấy theme mặc định của engine cũng như theme được cấu hình cho project.
 
-\ **ThemeDB** also contains fallback values for theme properties.
+\ **ThemeDB** cũng chứa các giá trị dự phòng cho những thuộc tính của theme.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -63,8 +63,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Signal
+------
 
 .. _class_ThemeDB_signal_fallback_changed:
 
@@ -72,7 +72,7 @@ Signals
 
 **fallback_changed**\ (\ ) :ref:`🔗<class_ThemeDB_signal_fallback_changed>`
 
-Emitted when one of the fallback values had been changed. Use it to refresh the look of controls that may rely on the fallback theme items.
+Được phát khi một trong các giá trị dự phòng đã bị thay đổi. Hãy sử dụng signal này để làm mới giao diện của các control có thể dựa trên những mục của theme dự phòng.
 
 .. rst-class:: classref-section-separator
 
@@ -80,8 +80,8 @@ Emitted when one of the fallback values had been changed. Use it to refresh the 
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ThemeDB_property_fallback_base_scale:
 
@@ -94,9 +94,9 @@ Property Descriptions
 - |void| **set_fallback_base_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fallback_base_scale**\ (\ )
 
-The fallback base scale factor of every :ref:`Control<class_Control>` node and :ref:`Theme<class_Theme>` resource. Used when no other value is available to the control.
+Hệ số tỷ lệ cơ sở dự phòng của mọi node :ref:`Control<class_Control>` và resource :ref:`Theme<class_Theme>`. Được sử dụng khi control không có giá trị nào khác.
 
-See also :ref:`Theme.default_base_scale<class_Theme_property_default_base_scale>`.
+Xem thêm :ref:`Theme.default_base_scale<class_Theme_property_default_base_scale>`.
 
 .. rst-class:: classref-item-separator
 
@@ -106,16 +106,16 @@ See also :ref:`Theme.default_base_scale<class_Theme_property_default_base_scale>
 
 .. rst-class:: classref-property
 
-:ref:`Font<class_Font>` **fallback_font** :ref:`🔗<class_ThemeDB_property_fallback_font>`
+:ref:`Font<class_Font>` **fallback_font** :ref:`🔗 <class_ThemeDB_property_fallback_font>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_fallback_font**\ (\ value\: :ref:`Font<class_Font>`\ )
 - :ref:`Font<class_Font>` **get_fallback_font**\ (\ )
 
-The fallback font of every :ref:`Control<class_Control>` node and :ref:`Theme<class_Theme>` resource. Used when no other value is available to the control.
+Font dự phòng của mọi node :ref:`Control<class_Control>` và resource :ref:`Theme<class_Theme>`. Được sử dụng khi control không có giá trị nào khác.
 
-See also :ref:`Theme.default_font<class_Theme_property_default_font>`.
+Xem thêm :ref:`Theme.default_font<class_Theme_property_default_font>`.
 
 .. rst-class:: classref-item-separator
 
@@ -132,9 +132,9 @@ See also :ref:`Theme.default_font<class_Theme_property_default_font>`.
 - |void| **set_fallback_font_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_fallback_font_size**\ (\ )
 
-The fallback font size of every :ref:`Control<class_Control>` node and :ref:`Theme<class_Theme>` resource. Used when no other value is available to the control.
+Cỡ font dự phòng của mọi node :ref:`Control<class_Control>` và resource :ref:`Theme<class_Theme>`. Được sử dụng khi control không có giá trị nào khác.
 
-See also :ref:`Theme.default_font_size<class_Theme_property_default_font_size>`.
+Xem thêm :ref:`Theme.default_font_size<class_Theme_property_default_font_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -144,14 +144,14 @@ See also :ref:`Theme.default_font_size<class_Theme_property_default_font_size>`.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **fallback_icon** :ref:`🔗<class_ThemeDB_property_fallback_icon>`
+:ref:`Texture2D<class_Texture2D>` **fallback_icon** :ref:`🔗 <class_ThemeDB_property_fallback_icon>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_fallback_icon**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_fallback_icon**\ (\ )
 
-The fallback icon of every :ref:`Control<class_Control>` node and :ref:`Theme<class_Theme>` resource. Used when no other value is available to the control.
+Icon dự phòng của mọi node :ref:`Control<class_Control>` và resource :ref:`Theme<class_Theme>`. Được sử dụng khi control không có giá trị nào khác.
 
 .. rst-class:: classref-item-separator
 
@@ -161,14 +161,14 @@ The fallback icon of every :ref:`Control<class_Control>` node and :ref:`Theme<cl
 
 .. rst-class:: classref-property
 
-:ref:`StyleBox<class_StyleBox>` **fallback_stylebox** :ref:`🔗<class_ThemeDB_property_fallback_stylebox>`
+:ref:`StyleBox<class_StyleBox>` **fallback_stylebox** :ref:`🔗 <class_ThemeDB_property_fallback_stylebox>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_fallback_stylebox**\ (\ value\: :ref:`StyleBox<class_StyleBox>`\ )
 - :ref:`StyleBox<class_StyleBox>` **get_fallback_stylebox**\ (\ )
 
-The fallback stylebox of every :ref:`Control<class_Control>` node and :ref:`Theme<class_Theme>` resource. Used when no other value is available to the control.
+StyleBox dự phòng của mọi node :ref:`Control<class_Control>` và resource :ref:`Theme<class_Theme>`. Được sử dụng khi control không có giá trị nào khác.
 
 .. rst-class:: classref-section-separator
 
@@ -176,8 +176,8 @@ The fallback stylebox of every :ref:`Control<class_Control>` node and :ref:`Them
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ThemeDB_method_get_default_theme:
 
@@ -185,7 +185,7 @@ Method Descriptions
 
 :ref:`Theme<class_Theme>` **get_default_theme**\ (\ ) :ref:`🔗<class_ThemeDB_method_get_default_theme>`
 
-Returns a reference to the default engine :ref:`Theme<class_Theme>`. This theme resource is responsible for the out-of-the-box look of :ref:`Control<class_Control>` nodes and cannot be overridden.
+Trả về một tham chiếu đến :ref:`Theme<class_Theme>` mặc định của engine. Resource theme này chịu trách nhiệm cho giao diện mặc định của các node :ref:`Control<class_Control>` và không thể bị ghi đè.
 
 .. rst-class:: classref-item-separator
 
@@ -197,16 +197,16 @@ Returns a reference to the default engine :ref:`Theme<class_Theme>`. This theme 
 
 :ref:`Theme<class_Theme>` **get_project_theme**\ (\ ) :ref:`🔗<class_ThemeDB_method_get_project_theme>`
 
-Returns a reference to the custom project :ref:`Theme<class_Theme>`. This theme resources allows to override the default engine theme for every control node in the project.
+Trả về một tham chiếu đến :ref:`Theme<class_Theme>` tùy chỉnh của project. Resource theme này cho phép ghi đè theme mặc định của engine cho mọi node control trong project.
 
-To set the project theme, see :ref:`ProjectSettings.gui/theme/custom<class_ProjectSettings_property_gui/theme/custom>`.
+Để đặt theme cho project, hãy xem :ref:`ProjectSettings.gui/theme/custom <class_ProjectSettings_property_gui/theme/custom>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

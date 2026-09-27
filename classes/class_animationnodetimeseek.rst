@@ -10,54 +10,54 @@
 AnimationNodeTimeSeek
 =====================
 
-**Inherits:** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A time-seeking animation node used in :ref:`AnimationTree<class_AnimationTree>`.
+Một node animation tìm kiếm thời gian được sử dụng trong :ref:`AnimationTree<class_AnimationTree>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This animation node can be used to cause a seek command to happen to any sub-children of the animation graph. Use to play an :ref:`Animation<class_Animation>` from the start or a certain playback position inside the :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
+Node animation này có thể được dùng để thực hiện lệnh seek trên mọi node con của animation graph. Dùng để phát một :ref:`Animation<class_Animation>` từ đầu hoặc từ một vị trí phát cụ thể bên trong :ref:`AnimationNodeBlendTree<class_AnimationNodeBlendTree>`.
 
-After setting the time and changing the animation playback, the time seek node automatically goes into sleep mode on the next process frame by setting its ``seek_request`` value to ``-1.0``.
+Sau khi đặt thời gian và thay đổi quá trình phát animation, node time seek sẽ tự động chuyển sang chế độ ngủ ở frame xử lý tiếp theo bằng cách đặt giá trị ``seek_request`` thành ``-1.0``.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Play child animation from the start.
+    # Phát animation con từ đầu.
     animation_tree.set("parameters/TimeSeek/seek_request", 0.0)
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho kết quả giống như trên).
     animation_tree["parameters/TimeSeek/seek_request"] = 0.0
 
-    # Play child animation from 12 second timestamp.
+    # Phát animation con từ mốc thời gian 12 giây.
     animation_tree.set("parameters/TimeSeek/seek_request", 12.0)
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho kết quả giống như trên).
     animation_tree["parameters/TimeSeek/seek_request"] = 12.0
 
  .. code-tab:: csharp
 
-    // Play child animation from the start.
+    // Phát animation con từ đầu.
     animationTree.Set("parameters/TimeSeek/seek_request", 0.0);
 
-    // Play child animation from 12 second timestamp.
+    // Phát animation con từ mốc thời gian 12 giây.
     animationTree.Set("parameters/TimeSeek/seek_request", 12.0);
 
 
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -73,8 +73,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationNodeTimeSeek_property_explicit_elapse:
 
@@ -87,14 +87,14 @@ Property Descriptions
 - |void| **set_explicit_elapse**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_explicit_elapse**\ (\ )
 
-If ``true``, some processes are executed to handle keys between seeks, such as calculating root motion and finding the nearest discrete key.
+Nếu ``true``, một số quy trình sẽ được thực thi để xử lý các key nằm giữa các seek, chẳng hạn như tính toán chuyển động gốc và tìm key rời rạc gần nhất.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,16 +10,16 @@
 AnimationNodeStateMachinePlayback
 =================================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides playback control for an :ref:`AnimationNodeStateMachine<class_AnimationNodeStateMachine>`.
+Cung cấp quyền điều khiển phát lại cho một :ref:`AnimationNodeStateMachine<class_AnimationNodeStateMachine>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Allows control of :ref:`AnimationTree<class_AnimationTree>` state machines created with :ref:`AnimationNodeStateMachine<class_AnimationNodeStateMachine>`. Retrieve with ``$AnimationTree.get("parameters/playback")``.
+Cho phép điều khiển các state machine của :ref:`AnimationTree<class_AnimationTree>` được tạo bằng :ref:`AnimationNodeStateMachine<class_AnimationNodeStateMachine>`. Truy xuất bằng ``$AnimationTree.get("parameters/playback")``.
 
 
 .. tabs::
@@ -38,60 +38,60 @@ Allows control of :ref:`AnimationTree<class_AnimationTree>` state machines creat
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-------------------------+---------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | resource_local_to_scene | ``true`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-------------------------+-------------------------+---------------------------------------------------------------------------------------+
+   +-------------------------+-------------------------+------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | resource_local_to_scene | ``true`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-------------------------+-------------------------+------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`get_current_length<class_AnimationNodeStateMachinePlayback_method_get_current_length>`\ (\ ) |const|                                                                    |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                              | :ref:`get_current_node<class_AnimationNodeStateMachinePlayback_method_get_current_node>`\ (\ ) |const|                                                                        |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`get_current_play_position<class_AnimationNodeStateMachinePlayback_method_get_current_play_position>`\ (\ ) |const|                                                      |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`get_fading_from_length<class_AnimationNodeStateMachinePlayback_method_get_fading_from_length>`\ (\ ) |const|                                                            |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                              | :ref:`get_fading_from_node<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>`\ (\ ) |const|                                                                |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`get_fading_from_play_position<class_AnimationNodeStateMachinePlayback_method_get_fading_from_play_position>`\ (\ ) |const|                                              |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`get_fading_length<class_AnimationNodeStateMachinePlayback_method_get_fading_length>`\ (\ ) |const|                                                                      |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`get_fading_position<class_AnimationNodeStateMachinePlayback_method_get_fading_position>`\ (\ ) |const|                                                                  |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] | :ref:`get_travel_path<class_AnimationNodeStateMachinePlayback_method_get_travel_path>`\ (\ ) |const|                                                                          |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`is_playing<class_AnimationNodeStateMachinePlayback_method_is_playing>`\ (\ ) |const|                                                                                    |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`next<class_AnimationNodeStateMachinePlayback_method_next>`\ (\ )                                                                                                        |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`start<class_AnimationNodeStateMachinePlayback_method_start>`\ (\ node\: :ref:`StringName<class_StringName>`, reset\: :ref:`bool<class_bool>` = true\ )                  |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`stop<class_AnimationNodeStateMachinePlayback_method_stop>`\ (\ )                                                                                                        |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`travel<class_AnimationNodeStateMachinePlayback_method_travel>`\ (\ to_node\: :ref:`StringName<class_StringName>`, reset_on_teleport\: :ref:`bool<class_bool>` = true\ ) |
-   +------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`get_current_length<class_AnimationNodeStateMachinePlayback_method_get_current_length>`\ (\ ) |const|                                                                        |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                              | :ref:`get_current_node<class_AnimationNodeStateMachinePlayback_method_get_current_node>`\ (\ ) |const|                                                                            |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`get_current_play_position<class_AnimationNodeStateMachinePlayback_method_get_current_play_position>`\ (\ ) |const|                                                          |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`get_fading_from_length<class_AnimationNodeStateMachinePlayback_method_get_fading_from_length>`\ (\ ) |const|                                                                |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                              | :ref:`get_fading_from_node<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>`\ (\ ) |const|                                                                    |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`get_fading_from_play_position<class_AnimationNodeStateMachinePlayback_method_get_fading_from_play_position>`\ (\ ) |const|                                                  |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`get_fading_length<class_AnimationNodeStateMachinePlayback_method_get_fading_length>`\ (\ ) |const|                                                                          |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`get_fading_position<class_AnimationNodeStateMachinePlayback_method_get_fading_position>`\ (\ ) |const|                                                                      |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] | :ref:`get_travel_path<class_AnimationNodeStateMachinePlayback_method_get_travel_path>`\ (\ ) |const|                                                                              |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`is_playing<class_AnimationNodeStateMachinePlayback_method_is_playing>`\ (\ ) |const|                                                                                        |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`next<class_AnimationNodeStateMachinePlayback_method_next>`\ (\ )                                                                                                            |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`start<class_AnimationNodeStateMachinePlayback_method_start>`\ (\ node\: :ref:`StringName<class_StringName>`, reset\: :ref:`bool<class_bool>` = true\ )                      |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`stop<class_AnimationNodeStateMachinePlayback_method_stop>`\ (\ )                                                                                                            |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`travel<class_AnimationNodeStateMachinePlayback_method_travel>`\ (\ to_node\: :ref:`StringName<class_StringName>`, reset_on_teleport\: :ref:`bool<class_bool>` = true\ )管理 |
+   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -99,8 +99,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_AnimationNodeStateMachinePlayback_signal_state_finished:
 
@@ -108,9 +108,9 @@ Signals
 
 **state_finished**\ (\ state\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeStateMachinePlayback_signal_state_finished>`
 
-Emitted when the ``state`` finishes playback. If ``state`` is a state machine set to grouped mode, its signals are passed through with its name prefixed.
+Được phát ra khi ``state`` hoàn tất phát. Nếu ``state`` là một state machine được đặt ở chế độ grouped, các signal của nó sẽ được truyền tiếp với tên của nó làm tiền tố.
 
-If there is a crossfade, this will be fired when the influence of the :ref:`get_fading_from_node()<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>` animation is no longer present.
+Nếu có crossfade, tín hiệu này sẽ được phát khi ảnh hưởng của animation :ref:`get_fading_from_node()<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>` không còn nữa.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ If there is a crossfade, this will be fired when the influence of the :ref:`get_
 
 **state_started**\ (\ state\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationNodeStateMachinePlayback_signal_state_started>`
 
-Emitted when the ``state`` starts playback. If ``state`` is a state machine set to grouped mode, its signals are passed through with its name prefixed.
+Được phát khi ``state`` bắt đầu phát. Nếu ``state`` là một state machine được đặt ở grouped mode, các tín hiệu của nó sẽ được truyền qua với tên của nó làm tiền tố.
 
 .. rst-class:: classref-section-separator
 
@@ -130,8 +130,8 @@ Emitted when the ``state`` starts playback. If ``state`` is a state machine set 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationNodeStateMachinePlayback_method_get_current_length:
 
@@ -139,9 +139,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_current_length**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_current_length>`
 
-Returns the current state length.
+Trả về thời lượng hiện tại của state.
 
-\ **Note:** It is possible that any :ref:`AnimationRootNode<class_AnimationRootNode>` can be nodes as well as animations. This means that there can be multiple animations within a single state. Which animation length has priority depends on the nodes connected inside it. Also, if a transition does not reset, the remaining length at that point will be returned.
+\ **Lưu ý:** Có thể bất kỳ :ref:`AnimationRootNode<class_AnimationRootNode>` nào cũng vừa là node vừa là animation. Điều này có nghĩa là một state có thể chứa nhiều animation. Animation nào được ưu tiên về thời lượng phụ thuộc vào các node được kết nối bên trong nó. Ngoài ra, nếu một transition không reset, thời lượng còn lại tại thời điểm đó sẽ được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -153,9 +153,9 @@ Returns the current state length.
 
 :ref:`StringName<class_StringName>` **get_current_node**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_current_node>`
 
-Returns the currently playing animation state.
+Trả về state animation hiện đang phát.
 
-\ **Note:** When using a cross-fade, the current state changes to the next state immediately after the cross-fade begins.
+\ **Lưu ý:** Khi sử dụng cross-fade, state hiện tại sẽ chuyển sang state tiếp theo ngay sau khi cross-fade bắt đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Returns the currently playing animation state.
 
 :ref:`float<class_float>` **get_current_play_position**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_current_play_position>`
 
-Returns the playback position within the current animation state.
+Trả về vị trí phát lại trong trạng thái hoạt ảnh hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -179,7 +179,7 @@ Returns the playback position within the current animation state.
 
 :ref:`float<class_float>` **get_fading_from_length**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_fading_from_length>`
 
-Returns the playback state length of the node from :ref:`get_fading_from_node()<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>`. Returns ``0`` if no animation fade is occurring.
+Trả về độ dài trạng thái phát lại của node từ :ref:`get_fading_from_node()<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>`. Trả về ``0`` nếu không có quá trình chuyển tiếp mờ hoạt ảnh nào đang diễn ra.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Returns the playback state length of the node from :ref:`get_fading_from_node()<
 
 :ref:`StringName<class_StringName>` **get_fading_from_node**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>`
 
-Returns the starting state of currently fading animation.
+Trả về trạng thái bắt đầu của hoạt ảnh đang chuyển tiếp mờ.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Returns the starting state of currently fading animation.
 
 :ref:`float<class_float>` **get_fading_from_play_position**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_fading_from_play_position>`
 
-Returns the playback position of the node from :ref:`get_fading_from_node()<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>`. Returns ``0`` if no animation fade is occurring.
+Trả về vị trí phát lại của node từ :ref:`get_fading_from_node()<class_AnimationNodeStateMachinePlayback_method_get_fading_from_node>`. Trả về ``0`` nếu không có quá trình chuyển tiếp mờ hoạt ảnh nào đang diễn ra.
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ Returns the playback position of the node from :ref:`get_fading_from_node()<clas
 
 :ref:`float<class_float>` **get_fading_length**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_fading_length>`
 
-Returns the length of the current fade animation. Returns ``0`` if no animation fade is occurring.
+Trả về độ dài của hoạt ảnh chuyển tiếp mờ hiện tại. Trả về ``0`` nếu không có quá trình chuyển tiếp mờ hoạt ảnh nào đang diễn ra.
 
 .. rst-class:: classref-item-separator
 
@@ -227,7 +227,7 @@ Returns the length of the current fade animation. Returns ``0`` if no animation 
 
 :ref:`float<class_float>` **get_fading_position**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_fading_position>`
 
-Returns the playback position of the current fade animation. Returns ``0`` if no animation fade is occurring.
+Trả về vị trí phát lại của hoạt ảnh chuyển tiếp mờ hiện tại. Trả về ``0`` nếu không có quá trình chuyển tiếp mờ hoạt ảnh nào đang diễn ra.
 
 .. rst-class:: classref-item-separator
 
@@ -239,7 +239,7 @@ Returns the playback position of the current fade animation. Returns ``0`` if no
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_travel_path**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_get_travel_path>`
 
-Returns the current travel path as computed internally by the A\* algorithm.
+Trả về đường dẫn chuyển tiếp hiện tại như được tính toán nội bộ bởi thuật toán A\*.
 
 .. rst-class:: classref-item-separator
 
@@ -251,7 +251,7 @@ Returns the current travel path as computed internally by the A\* algorithm.
 
 :ref:`bool<class_bool>` **is_playing**\ (\ ) |const| :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_is_playing>`
 
-Returns ``true`` if an animation is playing.
+Trả về ``true`` nếu một animation đang phát.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ Returns ``true`` if an animation is playing.
 
 |void| **next**\ (\ ) :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_next>`
 
-If there is a next path by travel or auto advance, immediately transitions from the current state to the next state.
+Nếu có path tiếp theo bằng travel hoặc auto advance, ngay lập tức chuyển từ state hiện tại sang state tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -275,9 +275,9 @@ If there is a next path by travel or auto advance, immediately transitions from 
 
 |void| **start**\ (\ node\: :ref:`StringName<class_StringName>`, reset\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_start>`
 
-Starts playing the given animation.
+Bắt đầu phát animation đã cho.
 
-If ``reset`` is ``true``, the animation is played from the beginning.
+Nếu ``reset`` là ``true``, animation sẽ được phát từ đầu.
 
 .. rst-class:: classref-item-separator
 
@@ -289,7 +289,7 @@ If ``reset`` is ``true``, the animation is played from the beginning.
 
 |void| **stop**\ (\ ) :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_stop>`
 
-Stops the currently playing animation.
+Dừng animation hiện đang phát.
 
 .. rst-class:: classref-item-separator
 
@@ -301,18 +301,18 @@ Stops the currently playing animation.
 
 |void| **travel**\ (\ to_node\: :ref:`StringName<class_StringName>`, reset_on_teleport\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_AnimationNodeStateMachinePlayback_method_travel>`
 
-Transitions from the current state to another one, following the shortest path.
+Chuyển từ state hiện tại sang một state khác theo path ngắn nhất.
 
-If the path does not connect from the current state, the animation will play after the state teleports.
+Nếu path không kết nối với state hiện tại, animation sẽ phát sau khi state được dịch chuyển tức thời.
 
-If ``reset_on_teleport`` is ``true``, the animation is played from the beginning when the travel cause a teleportation.
+Nếu ``reset_on_teleport`` là ``true``, hoạt ảnh sẽ được phát từ đầu khi việc di chuyển gây ra dịch chuyển tức thời.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

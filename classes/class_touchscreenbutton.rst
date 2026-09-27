@@ -10,53 +10,53 @@
 TouchScreenButton
 =================
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Button for touch screen devices for gameplay use.
+Nút dành cho các thiết bị màn hình cảm ứng để sử dụng trong gameplay.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-TouchScreenButton allows you to create on-screen buttons for touch devices. It's intended for gameplay use, such as a unit you have to touch to move. Unlike :ref:`Button<class_Button>`, TouchScreenButton supports multitouch out of the box. Several TouchScreenButtons can be pressed at the same time with touch input.
+TouchScreenButton cho phép bạn tạo các nút trên màn hình cho những thiết bị cảm ứng. Nút này dành cho gameplay, chẳng hạn như một đơn vị mà bạn phải chạm vào để di chuyển. Không giống :ref:`Button<class_Button>`, TouchScreenButton hỗ trợ multitouch ngay từ đầu. Có thể nhấn nhiều TouchScreenButton cùng lúc bằng thao tác chạm.
 
-This node inherits from :ref:`Node2D<class_Node2D>`. Unlike with :ref:`Control<class_Control>` nodes, you cannot set anchors on it. If you want to create menus or user interfaces, you may want to use :ref:`Button<class_Button>` nodes instead. To make button nodes react to touch events, you can enable :ref:`ProjectSettings.input_devices/pointing/emulate_mouse_from_touch<class_ProjectSettings_property_input_devices/pointing/emulate_mouse_from_touch>` in the Project Settings.
+Node này kế thừa từ :ref:`Node2D<class_Node2D>`. Không giống các node :ref:`Control<class_Control>`, bạn không thể đặt anchor cho nó. Nếu muốn tạo menu hoặc giao diện người dùng, bạn có thể sử dụng các node :ref:`Button<class_Button>` thay thế. Để các node nút phản hồi các sự kiện chạm, bạn có thể bật :ref:`ProjectSettings.input_devices/pointing/emulate_mouse_from_touch <class_ProjectSettings_property_input_devices/pointing/emulate_mouse_from_touch>` trong Project Settings.
 
-You can configure TouchScreenButton to be visible only on touch devices, helping you develop your game both for desktop and mobile devices.
+Bạn có thể cấu hình TouchScreenButton chỉ hiển thị trên các thiết bị cảm ứng, giúp bạn phát triển game cho cả thiết bị desktop và thiết bị di động.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                                  | :ref:`action<class_TouchScreenButton_property_action>`                   | ``""``    |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`BitMap<class_BitMap>`                                  | :ref:`bitmask<class_TouchScreenButton_property_bitmask>`                 |           |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                      | :ref:`passby_press<class_TouchScreenButton_property_passby_press>`       | ``false`` |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`Shape2D<class_Shape2D>`                                | :ref:`shape<class_TouchScreenButton_property_shape>`                     |           |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                      | :ref:`shape_centered<class_TouchScreenButton_property_shape_centered>`   | ``true``  |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                      | :ref:`shape_visible<class_TouchScreenButton_property_shape_visible>`     | ``true``  |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                            | :ref:`texture_normal<class_TouchScreenButton_property_texture_normal>`   |           |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`Texture2D<class_Texture2D>`                            | :ref:`texture_pressed<class_TouchScreenButton_property_texture_pressed>` |           |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
-   | :ref:`VisibilityMode<enum_TouchScreenButton_VisibilityMode>` | :ref:`visibility_mode<class_TouchScreenButton_property_visibility_mode>` | ``0``     |
-   +--------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`                                   | :ref:`action<class_TouchScreenButton_property_action>`                   | ``""``    |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`BitMap<class_BitMap>`                                   | :ref:`bitmask<class_TouchScreenButton_property_bitmask>`                 |           |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                       | :ref:`passby_press<class_TouchScreenButton_property_passby_press>`       | ``false`` |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`Shape2D<class_Shape2D>`                                 | :ref:`shape<class_TouchScreenButton_property_shape>`                     |           |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                       | :ref:`shape_centered<class_TouchScreenButton_property_shape_centered>`   | ``true``  |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                       | :ref:`shape_visible<class_TouchScreenButton_property_shape_visible>`     | ``true``  |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                             | :ref:`texture_normal<class_TouchScreenButton_property_texture_normal>`   |           |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`Texture2D<class_Texture2D>`                             | :ref:`texture_pressed<class_TouchScreenButton_property_texture_pressed>` |           |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
+   | :ref:`VisibilityMode <enum_TouchScreenButton_VisibilityMode>` | :ref:`visibility_mode<class_TouchScreenButton_property_visibility_mode>` | ``0``     |
+   +---------------------------------------------------------------+--------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_TouchScreenButton_signal_pressed:
 
@@ -80,7 +80,7 @@ Signals
 
 **pressed**\ (\ ) :ref:`🔗<class_TouchScreenButton_signal_pressed>`
 
-Emitted when the button is pressed (down).
+Được phát khi nút được nhấn (ấn xuống).
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Emitted when the button is pressed (down).
 
 **released**\ (\ ) :ref:`🔗<class_TouchScreenButton_signal_released>`
 
-Emitted when the button is released (up).
+Được phát khi nút được nhả (nhả lên).
 
 .. rst-class:: classref-section-separator
 
@@ -100,14 +100,14 @@ Emitted when the button is released (up).
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_TouchScreenButton_VisibilityMode:
 
 .. rst-class:: classref-enumeration
 
-enum **VisibilityMode**: :ref:`🔗<enum_TouchScreenButton_VisibilityMode>`
+enum **VisibilityMode**: :ref:`🔗 <enum_TouchScreenButton_VisibilityMode>`
 
 .. _class_TouchScreenButton_constant_VISIBILITY_ALWAYS:
 
@@ -115,7 +115,7 @@ enum **VisibilityMode**: :ref:`🔗<enum_TouchScreenButton_VisibilityMode>`
 
 :ref:`VisibilityMode<enum_TouchScreenButton_VisibilityMode>` **VISIBILITY_ALWAYS** = ``0``
 
-Always visible.
+Luôn hiển thị.
 
 .. _class_TouchScreenButton_constant_VISIBILITY_TOUCHSCREEN_ONLY:
 
@@ -123,7 +123,7 @@ Always visible.
 
 :ref:`VisibilityMode<enum_TouchScreenButton_VisibilityMode>` **VISIBILITY_TOUCHSCREEN_ONLY** = ``1``
 
-Visible on touch screens only.
+Chỉ hiển thị trên màn hình cảm ứng.
 
 .. rst-class:: classref-section-separator
 
@@ -131,8 +131,8 @@ Visible on touch screens only.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_TouchScreenButton_property_action:
 
@@ -145,7 +145,7 @@ Property Descriptions
 - |void| **set_action**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_action**\ (\ )
 
-The button's action. Actions can be handled with :ref:`InputEventAction<class_InputEventAction>`.
+Hành động của nút. Có thể xử lý các hành động bằng :ref:`InputEventAction<class_InputEventAction>`.
 
 .. rst-class:: classref-item-separator
 
@@ -155,14 +155,14 @@ The button's action. Actions can be handled with :ref:`InputEventAction<class_In
 
 .. rst-class:: classref-property
 
-:ref:`BitMap<class_BitMap>` **bitmask** :ref:`🔗<class_TouchScreenButton_property_bitmask>`
+:ref:`BitMap<class_BitMap>` **bitmask** :ref:`🔗 <class_TouchScreenButton_property_bitmask>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_bitmask**\ (\ value\: :ref:`BitMap<class_BitMap>`\ )
 - :ref:`BitMap<class_BitMap>` **get_bitmask**\ (\ )
 
-The button's bitmask.
+Bitmask của nút.
 
 .. rst-class:: classref-item-separator
 
@@ -179,9 +179,9 @@ The button's bitmask.
 - |void| **set_passby_press**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_passby_press_enabled**\ (\ )
 
-If ``true``, the :ref:`pressed<class_TouchScreenButton_signal_pressed>` and :ref:`released<class_TouchScreenButton_signal_released>` signals are emitted whenever a pressed finger goes in and out of the button, even if the pressure started outside the active area of the button.
+Nếu ``true``, các tín hiệu :ref:`pressed<class_TouchScreenButton_signal_pressed>` và :ref:`released<class_TouchScreenButton_signal_released>` được phát bất cứ khi nào ngón tay đang nhấn đi vào hoặc đi ra khỏi nút, ngay cả khi thao tác nhấn bắt đầu bên ngoài vùng hoạt động của nút.
 
-\ **Note:** This is a "pass-by" (not "bypass") press mode.
+\ **Lưu ý:** Đây là chế độ nhấn "pass-by" (không phải "bypass").
 
 .. rst-class:: classref-item-separator
 
@@ -191,14 +191,14 @@ If ``true``, the :ref:`pressed<class_TouchScreenButton_signal_pressed>` and :ref
 
 .. rst-class:: classref-property
 
-:ref:`Shape2D<class_Shape2D>` **shape** :ref:`🔗<class_TouchScreenButton_property_shape>`
+:ref:`Shape2D<class_Shape2D>` **shape** :ref:`🔗 <class_TouchScreenButton_property_shape>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shape**\ (\ value\: :ref:`Shape2D<class_Shape2D>`\ )
 - :ref:`Shape2D<class_Shape2D>` **get_shape**\ (\ )
 
-The button's shape.
+Hình dạng của nút.
 
 .. rst-class:: classref-item-separator
 
@@ -215,7 +215,7 @@ The button's shape.
 - |void| **set_shape_centered**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_shape_centered**\ (\ )
 
-If ``true``, the button's shape is centered in the provided texture. If no texture is used, this property has no effect.
+Nếu ``true``, hình dạng của nút được căn giữa trong texture được cung cấp. Nếu không sử dụng texture, thuộc tính này không có tác dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -232,7 +232,7 @@ If ``true``, the button's shape is centered in the provided texture. If no textu
 - |void| **set_shape_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_shape_visible**\ (\ )
 
-If ``true``, the button's shape is visible in the editor.
+Nếu ``true``, hình dạng của nút sẽ hiển thị trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -242,14 +242,14 @@ If ``true``, the button's shape is visible in the editor.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture_normal** :ref:`🔗<class_TouchScreenButton_property_texture_normal>`
+:ref:`Texture2D<class_Texture2D>` **texture_normal** :ref:`🔗 <class_TouchScreenButton_property_texture_normal>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture_normal**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture_normal**\ (\ )
 
-The button's texture for the normal state.
+Texture của nút ở trạng thái bình thường.
 
 .. rst-class:: classref-item-separator
 
@@ -259,14 +259,14 @@ The button's texture for the normal state.
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture_pressed** :ref:`🔗<class_TouchScreenButton_property_texture_pressed>`
+:ref:`Texture2D<class_Texture2D>` **texture_pressed** :ref:`🔗 <class_TouchScreenButton_property_texture_pressed>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture_pressed**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture_pressed**\ (\ )
 
-The button's texture for the pressed state.
+Texture của nút ở trạng thái được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -283,7 +283,7 @@ The button's texture for the pressed state.
 - |void| **set_visibility_mode**\ (\ value\: :ref:`VisibilityMode<enum_TouchScreenButton_VisibilityMode>`\ )
 - :ref:`VisibilityMode<enum_TouchScreenButton_VisibilityMode>` **get_visibility_mode**\ (\ )
 
-The button's visibility mode.
+Chế độ hiển thị của nút.
 
 .. rst-class:: classref-section-separator
 
@@ -291,8 +291,8 @@ The button's visibility mode.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_TouchScreenButton_method_is_pressed:
 
@@ -300,14 +300,14 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_pressed**\ (\ ) |const| :ref:`🔗<class_TouchScreenButton_method_is_pressed>`
 
-Returns ``true`` if this button is currently pressed.
+Trả về ``true`` nếu nút này hiện đang được nhấn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

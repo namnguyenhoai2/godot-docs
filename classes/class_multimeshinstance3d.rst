@@ -13,34 +13,34 @@
 MultiMeshInstance3D
 ===================
 
-**Inherits:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Node that instances a :ref:`MultiMesh<class_MultiMesh>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**MultiMeshInstance3D** is a specialized node to instance :ref:`GeometryInstance3D<class_GeometryInstance3D>`\ s based on a :ref:`MultiMesh<class_MultiMesh>` resource.
-
-This is useful to optimize the rendering of a high number of instances of a given mesh (for example trees in a forest or grass strands).
+Node tạo một instance của :ref:`MultiMesh<class_MultiMesh>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**MultiMeshInstance3D** là một node chuyên dụng để tạo các instance :ref:`GeometryInstance3D<class_GeometryInstance3D>`\  dựa trên resource :ref:`MultiMesh<class_MultiMesh>`.
+
+Điều này hữu ích để tối ưu hóa việc kết xuất một số lượng lớn instance của một mesh nhất định (ví dụ: cây trong rừng hoặc các bụi cỏ).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using MultiMeshInstance <../tutorials/3d/using_multi_mesh_instance>`
+- :doc:`Sử dụng MultiMeshInstance <../tutorials/3d/using_multi_mesh_instance>`
 
-- :doc:`Optimization using MultiMeshes <../tutorials/performance/using_multimesh>`
+- :doc:`Tối ưu hóa bằng MultiMesh <../tutorials/performance/using_multimesh>`
 
-- :doc:`Animating thousands of fish with MultiMeshInstance <../tutorials/performance/vertex_animation/animating_thousands_of_fish>`
+- :doc:`Tạo hiệu ứng hoạt ảnh cho hàng nghìn con cá bằng MultiMeshInstance <../tutorials/performance/vertex_animation/animating_thousands_of_fish>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -55,28 +55,28 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MultiMeshInstance3D_property_multimesh:
 
 .. rst-class:: classref-property
 
-:ref:`MultiMesh<class_MultiMesh>` **multimesh** :ref:`🔗<class_MultiMeshInstance3D_property_multimesh>`
+:ref:`MultiMesh<class_MultiMesh>` **multimesh** :ref:`🔗 <class_MultiMeshInstance3D_property_multimesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_multimesh**\ (\ value\: :ref:`MultiMesh<class_MultiMesh>`\ )
 - :ref:`MultiMesh<class_MultiMesh>` **get_multimesh**\ (\ )
 
-The :ref:`MultiMesh<class_MultiMesh>` resource that will be used and shared among all instances of the **MultiMeshInstance3D**.
+Tài nguyên :ref:`MultiMesh<class_MultiMesh>` sẽ được sử dụng và chia sẻ giữa tất cả các instance của **MultiMeshInstance3D**.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Không cần instance để gọi phương thức này, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,33 +10,33 @@
 PhysicsBody3D
 =============
 
-**Inherits:** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CharacterBody3D<class_CharacterBody3D>`, :ref:`PhysicalBone3D<class_PhysicalBone3D>`, :ref:`RigidBody3D<class_RigidBody3D>`, :ref:`StaticBody3D<class_StaticBody3D>`
+**Được kế thừa bởi:** :ref:`CharacterBody3D<class_CharacterBody3D>`, :ref:`PhysicalBone3D<class_PhysicalBone3D>`, :ref:`RigidBody3D<class_RigidBody3D>`, :ref:`StaticBody3D<class_StaticBody3D>`
 
-Abstract base class for 3D game objects affected by physics.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**PhysicsBody3D** is an abstract base class for 3D game objects affected by physics. All 3D physics bodies inherit from it.
-
-\ **Warning:** With a non-uniform scale, this node will likely not behave as expected. It is advised to keep its scale the same on all axes and adjust its collision shape(s) instead.
+Lớp cơ sở trừu tượng dành cho các đối tượng game 3D chịu ảnh hưởng của physics.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**PhysicsBody3D** là lớp cơ sở trừu tượng dành cho các đối tượng game 3D chịu ảnh hưởng của physics. Tất cả các physics body 3D đều kế thừa từ lớp này.
+
+\ **Cảnh báo:** Với scale không đồng nhất, node này có thể sẽ không hoạt động như mong đợi. Bạn nên giữ scale của nó giống nhau trên tất cả các trục và thay vào đó điều chỉnh (các) collision shape của nó.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
-- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+- :doc:`Khắc phục sự cố vật lý <../tutorials/physics/troubleshooting_physics_issues>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,8 +58,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -67,7 +67,7 @@ Methods
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                 | :ref:`add_collision_exception_with<class_PhysicsBody3D_method_add_collision_exception_with>`\ (\ body\: :ref:`Node<class_Node>`\ )                                                                                                                                                                                                                                                   |
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                                | :ref:`get_axis_lock<class_PhysicsBody3D_method_get_axis_lock>`\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|                                                                                                                                                                                                                                                  |
+   | :ref:`bool<class_bool>`                                                | :ref:`get_axis_lock<class_PhysicsBody3D_method_get_axis_lock>`\ (\ axis\: :ref:`BodyAxis <enum_PhysicsServer3D_BodyAxis>`\ ) |const|                                                                                                                                                                                                                                                 |
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`PhysicsBody3D<class_PhysicsBody3D>`\] | :ref:`get_collision_exceptions<class_PhysicsBody3D_method_get_collision_exceptions>`\ (\ )                                                                                                                                                                                                                                                                                           |
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -77,7 +77,7 @@ Methods
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                 | :ref:`remove_collision_exception_with<class_PhysicsBody3D_method_remove_collision_exception_with>`\ (\ body\: :ref:`Node<class_Node>`\ )                                                                                                                                                                                                                                             |
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                 | :ref:`set_axis_lock<class_PhysicsBody3D_method_set_axis_lock>`\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                          |
+   | |void|                                                                 | :ref:`set_axis_lock<class_PhysicsBody3D_method_set_axis_lock>`\ (\ axis\: :ref:`BodyAxis <enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                         |
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                                | :ref:`test_move<class_PhysicsBody3D_method_test_move>`\ (\ from\: :ref:`Transform3D<class_Transform3D>`, motion\: :ref:`Vector3<class_Vector3>`, collision\: :ref:`KinematicCollision3D<class_KinematicCollision3D>` = null, safe_margin\: :ref:`float<class_float>` = 0.001, recovery_as_collision\: :ref:`bool<class_bool>` = false, max_collisions\: :ref:`int<class_int>` = 1\ ) |
    +------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -88,8 +88,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicsBody3D_property_axis_lock_angular_x:
 
@@ -102,7 +102,7 @@ Property Descriptions
 - |void| **set_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|
 
-Lock the body's rotation in the X axis.
+Khóa chuyển động quay của body trên trục X.
 
 .. rst-class:: classref-item-separator
 
@@ -119,7 +119,7 @@ Lock the body's rotation in the X axis.
 - |void| **set_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|
 
-Lock the body's rotation in the Y axis.
+Khóa chuyển động quay của body trên trục Y.
 
 .. rst-class:: classref-item-separator
 
@@ -136,7 +136,7 @@ Lock the body's rotation in the Y axis.
 - |void| **set_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|
 
-Lock the body's rotation in the Z axis.
+Khóa chuyển động quay của body trên trục Z.
 
 .. rst-class:: classref-item-separator
 
@@ -153,7 +153,7 @@ Lock the body's rotation in the Z axis.
 - |void| **set_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|
 
-Lock the body's linear movement in the X axis.
+Khóa chuyển động tuyến tính của thân trên trục X.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Lock the body's linear movement in the X axis.
 - |void| **set_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|
 
-Lock the body's linear movement in the Y axis.
+Khóa chuyển động tuyến tính của thân trên trục Y.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ Lock the body's linear movement in the Y axis.
 - |void| **set_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const|
 
-Lock the body's linear movement in the Z axis.
+Khóa chuyển động tuyến tính của thân trên trục Z.
 
 .. rst-class:: classref-section-separator
 
@@ -195,8 +195,8 @@ Lock the body's linear movement in the Z axis.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicsBody3D_method_add_collision_exception_with:
 
@@ -204,7 +204,7 @@ Method Descriptions
 
 |void| **add_collision_exception_with**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_PhysicsBody3D_method_add_collision_exception_with>`
 
-Adds a body to the list of bodies that this body can't collide with.
+Thêm một thân vào danh sách các thân mà thân này không thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Adds a body to the list of bodies that this body can't collide with.
 
 :ref:`bool<class_bool>` **get_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`\ ) |const| :ref:`🔗<class_PhysicsBody3D_method_get_axis_lock>`
 
-Returns ``true`` if the specified linear or rotational ``axis`` is locked.
+Trả về ``true`` nếu ``axis`` tuyến tính hoặc xoay được chỉ định bị khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ Returns ``true`` if the specified linear or rotational ``axis`` is locked.
 
 :ref:`Array<class_Array>`\[:ref:`PhysicsBody3D<class_PhysicsBody3D>`\] **get_collision_exceptions**\ (\ ) :ref:`🔗<class_PhysicsBody3D_method_get_collision_exceptions>`
 
-Returns an array of nodes that were added as collision exceptions for this body.
+Trả về một mảng các node đã được thêm làm ngoại lệ va chạm cho thân này.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ Returns an array of nodes that were added as collision exceptions for this body.
 
 :ref:`Vector3<class_Vector3>` **get_gravity**\ (\ ) |const| :ref:`🔗<class_PhysicsBody3D_method_get_gravity>`
 
-Returns the gravity vector computed from all sources that can affect the body, including all gravity overrides from :ref:`Area3D<class_Area3D>` nodes and the global world gravity.
+Trả về vector trọng lực được tính từ tất cả các nguồn có thể ảnh hưởng đến vật thể, bao gồm mọi ghi đè trọng lực từ các node :ref:`Area3D<class_Area3D>` và trọng lực toàn cục của thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -252,17 +252,17 @@ Returns the gravity vector computed from all sources that can affect the body, i
 
 :ref:`KinematicCollision3D<class_KinematicCollision3D>` **move_and_collide**\ (\ motion\: :ref:`Vector3<class_Vector3>`, test_only\: :ref:`bool<class_bool>` = false, safe_margin\: :ref:`float<class_float>` = 0.001, recovery_as_collision\: :ref:`bool<class_bool>` = false, max_collisions\: :ref:`int<class_int>` = 1\ ) :ref:`🔗<class_PhysicsBody3D_method_move_and_collide>`
 
-Moves the body along the vector ``motion``. In order to be frame rate independent in :ref:`Node._physics_process()<class_Node_private_method__physics_process>` or :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` should be computed using ``delta``.
+Di chuyển vật thể theo vector ``motion``. Để không phụ thuộc vào tốc độ khung hình trong :ref:`Node._physics_process()<class_Node_private_method__physics_process>` hoặc :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` nên được tính bằng ``delta``.
 
-The body will stop if it collides. Returns a :ref:`KinematicCollision3D<class_KinematicCollision3D>`, which contains information about the collision when stopped, or when touching another body along the motion.
+Vật thể sẽ dừng lại nếu va chạm. Trả về một :ref:`KinematicCollision3D<class_KinematicCollision3D>`, chứa thông tin về vụ va chạm khi vật thể dừng lại hoặc khi chạm vào một vật thể khác trong quá trình di chuyển.
 
-If ``test_only`` is ``true``, the body does not move but the would-be collision information is given.
+Nếu ``test_only`` là ``true``, vật thể không di chuyển nhưng thông tin về vụ va chạm có thể xảy ra vẫn được cung cấp.
 
-\ ``safe_margin`` is the extra margin used for collision recovery (see :ref:`CharacterBody3D.safe_margin<class_CharacterBody3D_property_safe_margin>` for more details).
+\ ``safe_margin`` là khoảng đệm bổ sung được sử dụng để xử lý phục hồi sau va chạm (xem :ref:`CharacterBody3D.safe_margin<class_CharacterBody3D_property_safe_margin>` để biết thêm chi tiết).
 
-If ``recovery_as_collision`` is ``true``, any depenetration from the recovery phase is also reported as a collision; this is used e.g. by :ref:`CharacterBody3D<class_CharacterBody3D>` for improving floor detection during floor snapping.
+Nếu ``recovery_as_collision`` là ``true``, mọi quá trình tách vật thể khỏi trạng thái xuyên lấn trong giai đoạn phục hồi cũng được báo cáo là một vụ va chạm; tính năng này được :ref:`CharacterBody3D<class_CharacterBody3D>` sử dụng, chẳng hạn, để cải thiện việc phát hiện mặt sàn trong quá trình bám sàn.
 
-\ ``max_collisions`` allows to retrieve more than one collision result.
+\ ``max_collisions`` cho phép truy xuất nhiều hơn một kết quả va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -274,7 +274,7 @@ If ``recovery_as_collision`` is ``true``, any depenetration from the recovery ph
 
 |void| **remove_collision_exception_with**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_PhysicsBody3D_method_remove_collision_exception_with>`
 
-Removes a body from the list of bodies that this body can't collide with.
+Xóa một body khỏi danh sách các body mà body này không thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -286,7 +286,7 @@ Removes a body from the list of bodies that this body can't collide with.
 
 |void| **set_axis_lock**\ (\ axis\: :ref:`BodyAxis<enum_PhysicsServer3D_BodyAxis>`, lock\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_PhysicsBody3D_method_set_axis_lock>`
 
-Locks or unlocks the specified linear or rotational ``axis`` depending on the value of ``lock``.
+Khóa hoặc mở khóa ``axis`` tuyến tính hoặc xoay được chỉ định tùy thuộc vào giá trị của ``lock``.
 
 .. rst-class:: classref-item-separator
 
@@ -298,24 +298,24 @@ Locks or unlocks the specified linear or rotational ``axis`` depending on the va
 
 :ref:`bool<class_bool>` **test_move**\ (\ from\: :ref:`Transform3D<class_Transform3D>`, motion\: :ref:`Vector3<class_Vector3>`, collision\: :ref:`KinematicCollision3D<class_KinematicCollision3D>` = null, safe_margin\: :ref:`float<class_float>` = 0.001, recovery_as_collision\: :ref:`bool<class_bool>` = false, max_collisions\: :ref:`int<class_int>` = 1\ ) :ref:`🔗<class_PhysicsBody3D_method_test_move>`
 
-Checks for collisions without moving the body. In order to be frame rate independent in :ref:`Node._physics_process()<class_Node_private_method__physics_process>` or :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` should be computed using ``delta``.
+Kiểm tra va chạm mà không di chuyển body. Để độc lập với tốc độ khung hình trong :ref:`Node._physics_process()<class_Node_private_method__physics_process>` hoặc :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` nên được tính bằng ``delta``.
 
-Virtually sets the node's position, scale and rotation to that of the given :ref:`Transform3D<class_Transform3D>`, then tries to move the body along the vector ``motion``. Returns ``true`` if a collision would stop the body from moving along the whole path.
+Về mặt ảo, đặt vị trí, tỉ lệ và rotation của node thành vị trí, tỉ lệ và rotation của :ref:`Transform3D<class_Transform3D>` đã cho, sau đó cố gắng di chuyển body dọc theo vector ``motion``. Trả về ``true`` nếu một va chạm sẽ ngăn body di chuyển hết quãng đường.
 
-\ ``collision`` is an optional object of type :ref:`KinematicCollision3D<class_KinematicCollision3D>`, which contains additional information about the collision when stopped, or when touching another body along the motion.
+\ ``collision`` là một object tùy chọn thuộc kiểu :ref:`KinematicCollision3D<class_KinematicCollision3D>`, chứa thông tin bổ sung về va chạm khi dừng lại hoặc khi chạm vào body khác trong quá trình di chuyển.
 
-\ ``safe_margin`` is the extra margin used for collision recovery (see :ref:`CharacterBody3D.safe_margin<class_CharacterBody3D_property_safe_margin>` for more details).
+\ ``safe_margin`` là khoảng đệm bổ sung được sử dụng để xử lý phục hồi sau va chạm (xem :ref:`CharacterBody3D.safe_margin<class_CharacterBody3D_property_safe_margin>` để biết thêm chi tiết).
 
-If ``recovery_as_collision`` is ``true``, any depenetration from the recovery phase is also reported as a collision; this is useful for checking whether the body would *touch* any other bodies.
+Nếu ``recovery_as_collision`` là ``true``, mọi quá trình depenetration trong giai đoạn khôi phục cũng được báo cáo là một va chạm; điều này hữu ích để kiểm tra xem body có *chạm* bất kỳ body nào khác hay không.
 
-\ ``max_collisions`` allows to retrieve more than one collision result.
+\ ``max_collisions`` cho phép truy xuất nhiều hơn một kết quả va chạm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,64 +10,64 @@
 ColorPicker
 ===========
 
-**Inherits:** :ref:`VBoxContainer<class_VBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VBoxContainer<class_VBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A widget that provides an interface for selecting or modifying a color.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A widget that provides an interface for selecting or modifying a color. It can optionally provide functionalities like a color sampler (eyedropper), color modes, and presets.
-
-\ **Note:** This control is the color picker widget itself. You can use a :ref:`ColorPickerButton<class_ColorPickerButton>` instead if you need a button that brings up a **ColorPicker** in a popup.
+Một widget cung cấp giao diện để chọn hoặc chỉnh sửa màu.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một widget cung cấp giao diện để chọn hoặc chỉnh sửa màu. Widget này cũng có thể cung cấp các chức năng như bộ lấy mẫu màu (eyedropper), các chế độ màu và các preset.
+
+\ **Lưu ý:** Bản thân control này là widget color picker. Thay vào đó, bạn có thể sử dụng một :ref:`ColorPickerButton<class_ColorPickerButton>` nếu cần một nút mở **ColorPicker** trong cửa sổ bật lên.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Tween Interpolation Demo <https://godotengine.org/asset-library/asset/2733>`__
+- `Bản minh họa nội suy Tween <https://godotengine.org/asset-library/asset/2733>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`can_add_swatches<class_ColorPicker_property_can_add_swatches>`       | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`Color<class_Color>`                                | :ref:`color<class_ColorPicker_property_color>`                             | ``Color(1, 1, 1, 1)`` |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`ColorModeType<enum_ColorPicker_ColorModeType>`     | :ref:`color_mode<class_ColorPicker_property_color_mode>`                   | ``0``                 |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`color_modes_visible<class_ColorPicker_property_color_modes_visible>` | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`deferred_mode<class_ColorPicker_property_deferred_mode>`             | ``false``             |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`edit_alpha<class_ColorPicker_property_edit_alpha>`                   | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`edit_intensity<class_ColorPicker_property_edit_intensity>`           | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`hex_visible<class_ColorPicker_property_hex_visible>`                 | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` | :ref:`picker_shape<class_ColorPicker_property_picker_shape>`               | ``0``                 |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`presets_visible<class_ColorPicker_property_presets_visible>`         | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`sampler_visible<class_ColorPicker_property_sampler_visible>`         | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
-   | :ref:`bool<class_bool>`                                  | :ref:`sliders_visible<class_ColorPicker_property_sliders_visible>`         | ``true``              |
-   +----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`can_add_swatches<class_ColorPicker_property_can_add_swatches>`       | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`Color<class_Color>`                                 | :ref:`color<class_ColorPicker_property_color>`                             | ``Color(1, 1, 1, 1)`` |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`ColorModeType <enum_ColorPicker_ColorModeType>`     | :ref:`color_mode<class_ColorPicker_property_color_mode>`                   | ``0``                 |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`color_modes_visible<class_ColorPicker_property_color_modes_visible>` | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`deferred_mode<class_ColorPicker_property_deferred_mode>`             | ``false``             |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`edit_alpha<class_ColorPicker_property_edit_alpha>`                   | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`edit_intensity<class_ColorPicker_property_edit_intensity>`           | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`hex_visible<class_ColorPicker_property_hex_visible>`                 | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`PickerShapeType <enum_ColorPicker_PickerShapeType>` | :ref:`picker_shape<class_ColorPicker_property_picker_shape>`               | ``0``                 |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`presets_visible<class_ColorPicker_property_presets_visible>`         | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`sampler_visible<class_ColorPicker_property_sampler_visible>`         | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
+   | :ref:`bool<class_bool>`                                   | :ref:`sliders_visible<class_ColorPicker_property_sliders_visible>`         | ``true``              |
+   +-----------------------------------------------------------+----------------------------------------------------------------------------+-----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -88,8 +88,8 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Thuộc tính chủ đề
+-----------------
 
 .. table::
    :widths: auto
@@ -156,8 +156,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_ColorPicker_signal_color_changed:
 
@@ -165,7 +165,7 @@ Signals
 
 **color_changed**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPicker_signal_color_changed>`
 
-Emitted when the color is changed.
+Phát ra khi màu được thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ Emitted when the color is changed.
 
 **preset_added**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPicker_signal_preset_added>`
 
-Emitted when a preset is added.
+Phát ra khi một preset được thêm.
 
 .. rst-class:: classref-item-separator
 
@@ -189,7 +189,7 @@ Emitted when a preset is added.
 
 **preset_removed**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPicker_signal_preset_removed>`
 
-Emitted when a preset is removed.
+Phát ra khi một preset bị xóa.
 
 .. rst-class:: classref-section-separator
 
@@ -197,14 +197,14 @@ Emitted when a preset is removed.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ColorPicker_ColorModeType:
 
 .. rst-class:: classref-enumeration
 
-enum **ColorModeType**: :ref:`🔗<enum_ColorPicker_ColorModeType>`
+enum **ColorModeType**: :ref:`🔗 <enum_ColorPicker_ColorModeType>`
 
 .. _class_ColorPicker_constant_MODE_RGB:
 
@@ -212,7 +212,7 @@ enum **ColorModeType**: :ref:`🔗<enum_ColorPicker_ColorModeType>`
 
 :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_RGB** = ``0``
 
-Allows editing the color with Red/Green/Blue sliders in sRGB color space.
+Cho phép chỉnh sửa màu bằng các thanh trượt Red/Green/Blue trong không gian màu sRGB.
 
 .. _class_ColorPicker_constant_MODE_HSV:
 
@@ -220,7 +220,7 @@ Allows editing the color with Red/Green/Blue sliders in sRGB color space.
 
 :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_HSV** = ``1``
 
-Allows editing the color with Hue/Saturation/Value sliders.
+Cho phép chỉnh sửa màu bằng các thanh trượt Hue/Saturation/Value.
 
 .. _class_ColorPicker_constant_MODE_RAW:
 
@@ -228,7 +228,7 @@ Allows editing the color with Hue/Saturation/Value sliders.
 
 :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_RAW** = ``2``
 
-**Deprecated:** This is replaced by :ref:`MODE_LINEAR<class_ColorPicker_constant_MODE_LINEAR>`.
+**Deprecated:** Tùy chọn này đã được thay thế bằng :ref:`MODE_LINEAR<class_ColorPicker_constant_MODE_LINEAR>`.
 
 
 
@@ -238,7 +238,7 @@ Allows editing the color with Hue/Saturation/Value sliders.
 
 :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_LINEAR** = ``2``
 
-Allows editing the color with Red/Green/Blue sliders in linear color space.
+Cho phép chỉnh sửa màu bằng các thanh trượt Red/Green/Blue trong không gian màu tuyến tính.
 
 .. _class_ColorPicker_constant_MODE_OKHSL:
 
@@ -246,11 +246,11 @@ Allows editing the color with Red/Green/Blue sliders in linear color space.
 
 :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **MODE_OKHSL** = ``3``
 
-Allows editing the color with Hue/Saturation/Lightness sliders.
+Cho phép chỉnh sửa màu bằng các thanh trượt Hue/Saturation/Lightness.
 
-OKHSL is a new color space similar to HSL but that better match perception by leveraging the Oklab color space which is designed to be simple to use, while doing a good job at predicting perceived lightness, chroma and hue.
+OKHSL là một không gian màu mới tương tự HSL nhưng phù hợp hơn với nhận thức màu sắc nhờ tận dụng không gian màu Oklab, được thiết kế để dễ sử dụng đồng thời dự đoán tốt độ sáng, sắc độ và tông màu được cảm nhận.
 
-\ `Okhsv and Okhsl color spaces <https://bottosson.github.io/posts/colorpicker/>`__
+\ `Không gian màu Okhsv và Okhsl <https://bottosson.github.io/posts/colorpicker/>`__
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +260,7 @@ OKHSL is a new color space similar to HSL but that better match perception by le
 
 .. rst-class:: classref-enumeration
 
-enum **PickerShapeType**: :ref:`🔗<enum_ColorPicker_PickerShapeType>`
+enum **PickerShapeType**: :ref:`🔗 <enum_ColorPicker_PickerShapeType>`
 
 .. _class_ColorPicker_constant_SHAPE_HSV_RECTANGLE:
 
@@ -268,7 +268,7 @@ enum **PickerShapeType**: :ref:`🔗<enum_ColorPicker_PickerShapeType>`
 
 :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_HSV_RECTANGLE** = ``0``
 
-HSV Color Model rectangle color space.
+Không gian màu hình chữ nhật của Mô hình màu HSV.
 
 .. _class_ColorPicker_constant_SHAPE_HSV_WHEEL:
 
@@ -276,7 +276,7 @@ HSV Color Model rectangle color space.
 
 :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_HSV_WHEEL** = ``1``
 
-HSV Color Model rectangle color space with a wheel.
+Không gian màu hình chữ nhật của Mô hình màu HSV kèm một bánh xe.
 
 .. _class_ColorPicker_constant_SHAPE_VHS_CIRCLE:
 
@@ -284,7 +284,7 @@ HSV Color Model rectangle color space with a wheel.
 
 :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_VHS_CIRCLE** = ``2``
 
-HSV Color Model circle color space. Use Saturation as a radius.
+Không gian màu hình tròn của Mô hình màu HSV. Sử dụng Độ bão hòa làm bán kính.
 
 .. _class_ColorPicker_constant_SHAPE_OKHSL_CIRCLE:
 
@@ -292,7 +292,7 @@ HSV Color Model circle color space. Use Saturation as a radius.
 
 :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_OKHSL_CIRCLE** = ``3``
 
-HSL OK Color Model circle color space.
+Không gian màu hình tròn của Mô hình màu HSL OK.
 
 .. _class_ColorPicker_constant_SHAPE_NONE:
 
@@ -300,7 +300,7 @@ HSL OK Color Model circle color space.
 
 :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_NONE** = ``4``
 
-The color space shape and the shape select button are hidden. Can't be selected from the shapes popup.
+Hình dạng không gian màu và nút chọn hình dạng bị ẩn. Không thể chọn từ popup hình dạng.
 
 .. _class_ColorPicker_constant_SHAPE_OK_HS_RECTANGLE:
 
@@ -308,7 +308,7 @@ The color space shape and the shape select button are hidden. Can't be selected 
 
 :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_OK_HS_RECTANGLE** = ``5``
 
-OKHSL Color Model rectangle with constant lightness.
+Hình chữ nhật Mô hình màu OKHSL với độ sáng không đổi.
 
 .. _class_ColorPicker_constant_SHAPE_OK_HL_RECTANGLE:
 
@@ -316,7 +316,7 @@ OKHSL Color Model rectangle with constant lightness.
 
 :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **SHAPE_OK_HL_RECTANGLE** = ``6``
 
-OKHSL Color Model rectangle with constant saturation.
+Hình chữ nhật Mô hình màu OKHSL với độ bão hòa không đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -324,8 +324,8 @@ OKHSL Color Model rectangle with constant saturation.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ColorPicker_property_can_add_swatches:
 
@@ -338,7 +338,7 @@ Property Descriptions
 - |void| **set_can_add_swatches**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_swatches_enabled**\ (\ )
 
-If ``true``, it's possible to add presets under Swatches. If ``false``, the button to add presets is disabled.
+Nếu ``true``, bạn có thể thêm các preset vào Swatches. Nếu ``false``, nút thêm preset sẽ bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -355,7 +355,7 @@ If ``true``, it's possible to add presets under Swatches. If ``false``, the butt
 - |void| **set_pick_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_pick_color**\ (\ )
 
-The currently selected color.
+Màu hiện được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -372,7 +372,7 @@ The currently selected color.
 - |void| **set_color_mode**\ (\ value\: :ref:`ColorModeType<enum_ColorPicker_ColorModeType>`\ )
 - :ref:`ColorModeType<enum_ColorPicker_ColorModeType>` **get_color_mode**\ (\ )
 
-The currently selected color mode.
+Chế độ màu hiện được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ The currently selected color mode.
 - |void| **set_modes_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_modes_visible**\ (\ )
 
-If ``true``, the color mode buttons are visible.
+Nếu ``true``, các nút chế độ màu sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -406,7 +406,7 @@ If ``true``, the color mode buttons are visible.
 - |void| **set_deferred_mode**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_deferred_mode**\ (\ )
 
-If ``true``, the color will apply only after the user releases the mouse button, otherwise it will apply immediately even in mouse motion event (which can cause performance issues).
+Nếu ``true``, màu sẽ chỉ được áp dụng sau khi người dùng nhả nút chuột; nếu không, màu sẽ được áp dụng ngay cả trong sự kiện chuyển động chuột (có thể gây ra vấn đề về hiệu suất).
 
 .. rst-class:: classref-item-separator
 
@@ -423,7 +423,7 @@ If ``true``, the color will apply only after the user releases the mouse button,
 - |void| **set_edit_alpha**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editing_alpha**\ (\ )
 
-If ``true``, shows an alpha channel slider (opacity).
+Nếu ``true``, hiển thị thanh trượt kênh alpha (độ mờ).
 
 .. rst-class:: classref-item-separator
 
@@ -440,7 +440,7 @@ If ``true``, shows an alpha channel slider (opacity).
 - |void| **set_edit_intensity**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editing_intensity**\ (\ )
 
-If ``true``, shows an intensity slider. The intensity is applied as follows: convert the color to linear encoding, multiply it by ``2 ** intensity``, and then convert it back to nonlinear sRGB encoding.
+Nếu ``true``, hiển thị thanh trượt cường độ. Cường độ được áp dụng như sau: chuyển màu sang mã hóa tuyến tính, nhân màu với ``2 ** intensity``, rồi chuyển đổi lại sang mã hóa sRGB phi tuyến.
 
 .. rst-class:: classref-item-separator
 
@@ -457,7 +457,7 @@ If ``true``, shows an intensity slider. The intensity is applied as follows: con
 - |void| **set_hex_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_hex_visible**\ (\ )
 
-If ``true``, the hex color code input field is visible.
+Nếu ``true``, trường nhập mã màu hex sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -474,7 +474,7 @@ If ``true``, the hex color code input field is visible.
 - |void| **set_picker_shape**\ (\ value\: :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>`\ )
 - :ref:`PickerShapeType<enum_ColorPicker_PickerShapeType>` **get_picker_shape**\ (\ )
 
-The shape of the color space view.
+Hình dạng của chế độ xem không gian màu.
 
 .. rst-class:: classref-item-separator
 
@@ -491,7 +491,7 @@ The shape of the color space view.
 - |void| **set_presets_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_presets_visible**\ (\ )
 
-If ``true``, the Swatches and Recent Colors presets are visible.
+Nếu ``true``, các preset Swatches và Recent Colors sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -508,7 +508,7 @@ If ``true``, the Swatches and Recent Colors presets are visible.
 - |void| **set_sampler_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_sampler_visible**\ (\ )
 
-If ``true``, the color sampler and color preview are visible.
+Nếu ``true``, bộ lấy mẫu màu và bản xem trước màu sẽ hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -525,7 +525,7 @@ If ``true``, the color sampler and color preview are visible.
 - |void| **set_sliders_visible**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **are_sliders_visible**\ (\ )
 
-If ``true``, the color sliders are visible.
+Nếu ``true``, các thanh trượt màu sẽ hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -533,8 +533,8 @@ If ``true``, the color sliders are visible.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ColorPicker_method_add_preset:
 
@@ -542,9 +542,9 @@ Method Descriptions
 
 |void| **add_preset**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPicker_method_add_preset>`
 
-Adds the given color to a list of color presets. The presets are displayed in the color picker and the user will be able to select them.
+Thêm màu đã cho vào danh sách các preset màu. Các preset được hiển thị trong bộ chọn màu và người dùng có thể chọn chúng.
 
-\ **Note:** The presets list is only for *this* color picker.
+\ **Lưu ý:** Danh sách preset chỉ dành cho bộ chọn màu *this*.
 
 .. rst-class:: classref-item-separator
 
@@ -556,9 +556,9 @@ Adds the given color to a list of color presets. The presets are displayed in th
 
 |void| **add_recent_preset**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPicker_method_add_recent_preset>`
 
-Adds the given color to a list of color recent presets so that it can be picked later. Recent presets are the colors that were picked recently, a new preset is automatically created and added to recent presets when you pick a new color.
+Thêm màu đã cho vào danh sách các preset màu gần đây để có thể chọn lại sau. Các preset gần đây là những màu đã được chọn gần đây; một preset mới sẽ tự động được tạo và thêm vào các preset gần đây khi bạn chọn một màu mới.
 
-\ **Note:** The recent presets list is only for *this* color picker.
+\ **Lưu ý:** Danh sách preset gần đây chỉ dành cho bộ chọn màu *this*.
 
 .. rst-class:: classref-item-separator
 
@@ -570,7 +570,7 @@ Adds the given color to a list of color recent presets so that it can be picked 
 
 |void| **erase_preset**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPicker_method_erase_preset>`
 
-Removes the given color from the list of color presets of this color picker.
+Xóa màu đã cho khỏi danh sách preset màu của bộ chọn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -582,7 +582,7 @@ Removes the given color from the list of color presets of this color picker.
 
 |void| **erase_recent_preset**\ (\ color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_ColorPicker_method_erase_recent_preset>`
 
-Removes the given color from the list of color recent presets of this color picker.
+Xóa màu đã cho khỏi danh sách các preset màu gần đây của bộ chọn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -594,7 +594,7 @@ Removes the given color from the list of color recent presets of this color pick
 
 :ref:`PackedColorArray<class_PackedColorArray>` **get_presets**\ (\ ) |const| :ref:`🔗<class_ColorPicker_method_get_presets>`
 
-Returns the list of colors in the presets of the color picker.
+Trả về danh sách các màu trong các preset của bộ chọn màu.
 
 .. rst-class:: classref-item-separator
 
@@ -606,7 +606,7 @@ Returns the list of colors in the presets of the color picker.
 
 :ref:`PackedColorArray<class_PackedColorArray>` **get_recent_presets**\ (\ ) |const| :ref:`🔗<class_ColorPicker_method_get_recent_presets>`
 
-Returns the list of colors in the recent presets of the color picker.
+Trả về danh sách các màu trong các preset gần đây của bộ chọn màu.
 
 .. rst-class:: classref-section-separator
 
@@ -614,8 +614,8 @@ Returns the list of colors in the recent presets of the color picker.
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_ColorPicker_theme_color_focused_not_editing_cursor_color:
 
@@ -623,7 +623,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **focused_not_editing_cursor_color** = ``Color(1, 1, 1, 0.275)`` :ref:`🔗<class_ColorPicker_theme_color_focused_not_editing_cursor_color>`
 
-Color of rectangle or circle drawn when a picker shape part is focused but not editable via keyboard or joypad. Displayed *over* the picker shape, so a partially transparent color should be used to ensure the picker shape remains visible.
+Màu của hình chữ nhật hoặc hình tròn được vẽ khi một phần hình dạng của bộ chọn được focus nhưng không thể chỉnh sửa bằng bàn phím hoặc joypad. Được hiển thị *trên* hình dạng của bộ chọn, vì vậy nên sử dụng màu bán trong suốt để đảm bảo hình dạng của bộ chọn vẫn hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -635,7 +635,7 @@ Color of rectangle or circle drawn when a picker shape part is focused but not e
 
 :ref:`int<class_int>` **center_slider_grabbers** = ``1`` :ref:`🔗<class_ColorPicker_theme_constant_center_slider_grabbers>`
 
-Overrides the :ref:`Slider.center_grabber<class_Slider_theme_constant_center_grabber>` theme property of the sliders.
+Ghi đè thuộc tính Theme :ref:`Slider.center_grabber<class_Slider_theme_constant_center_grabber>` của các thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -647,7 +647,7 @@ Overrides the :ref:`Slider.center_grabber<class_Slider_theme_constant_center_gra
 
 :ref:`int<class_int>` **h_width** = ``30`` :ref:`🔗<class_ColorPicker_theme_constant_h_width>`
 
-The width of the hue selection slider.
+Chiều rộng của thanh trượt chọn hue.
 
 .. rst-class:: classref-item-separator
 
@@ -659,7 +659,7 @@ The width of the hue selection slider.
 
 :ref:`int<class_int>` **label_width** = ``10`` :ref:`🔗<class_ColorPicker_theme_constant_label_width>`
 
-The minimum width of the color labels next to sliders.
+Độ rộng tối thiểu của các nhãn màu bên cạnh thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -671,7 +671,7 @@ The minimum width of the color labels next to sliders.
 
 :ref:`int<class_int>` **margin** = ``4`` :ref:`🔗<class_ColorPicker_theme_constant_margin>`
 
-The margin around the **ColorPicker**.
+Lề xung quanh **ColorPicker**.
 
 .. rst-class:: classref-item-separator
 
@@ -683,7 +683,7 @@ The margin around the **ColorPicker**.
 
 :ref:`int<class_int>` **sv_height** = ``256`` :ref:`🔗<class_ColorPicker_theme_constant_sv_height>`
 
-The height of the saturation-value selection box.
+Chiều cao của hộp chọn độ bão hòa-giá trị.
 
 .. rst-class:: classref-item-separator
 
@@ -695,7 +695,7 @@ The height of the saturation-value selection box.
 
 :ref:`int<class_int>` **sv_width** = ``256`` :ref:`🔗<class_ColorPicker_theme_constant_sv_width>`
 
-The width of the saturation-value selection box.
+Chiều rộng của hộp chọn độ bão hòa-giá trị.
 
 .. rst-class:: classref-item-separator
 
@@ -705,9 +705,9 @@ The width of the saturation-value selection box.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **add_preset** :ref:`🔗<class_ColorPicker_theme_icon_add_preset>`
+:ref:`Texture2D<class_Texture2D>` **add_preset** :ref:`🔗 <class_ColorPicker_theme_icon_add_preset>`
 
-The icon for the "Add Preset" button.
+Biểu tượng của nút "Add Preset".
 
 .. rst-class:: classref-item-separator
 
@@ -717,9 +717,9 @@ The icon for the "Add Preset" button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **bar_arrow** :ref:`🔗<class_ColorPicker_theme_icon_bar_arrow>`
+:ref:`Texture2D<class_Texture2D>` **bar_arrow** :ref:`🔗 <class_ColorPicker_theme_icon_bar_arrow>`
 
-The texture for the arrow grabber.
+Kết cấu cho tay nắm mũi tên.
 
 .. rst-class:: classref-item-separator
 
@@ -729,9 +729,9 @@ The texture for the arrow grabber.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **color_copy** :ref:`🔗<class_ColorPicker_theme_icon_color_copy>`
+:ref:`Texture2D<class_Texture2D>` **color_copy** :ref:`🔗 <class_ColorPicker_theme_icon_color_copy>`
 
-The icon for the button that copies the color in text format to the clipboard.
+Biểu tượng cho nút sao chép màu ở định dạng văn bản vào clipboard.
 
 .. rst-class:: classref-item-separator
 
@@ -741,9 +741,9 @@ The icon for the button that copies the color in text format to the clipboard.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **color_hue** :ref:`🔗<class_ColorPicker_theme_icon_color_hue>`
+:ref:`Texture2D<class_Texture2D>` **color_hue** :ref:`🔗 <class_ColorPicker_theme_icon_color_hue>`
 
-Custom texture for the hue selection slider on the right.
+Kết cấu tùy chỉnh cho thanh trượt chọn sắc độ ở bên phải.
 
 .. rst-class:: classref-item-separator
 
@@ -753,9 +753,9 @@ Custom texture for the hue selection slider on the right.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **color_script** :ref:`🔗<class_ColorPicker_theme_icon_color_script>`
+:ref:`Texture2D<class_Texture2D>` **color_script** :ref:`🔗 <class_ColorPicker_theme_icon_color_script>`
 
-The icon for the button that switches color text to hexadecimal.
+Biểu tượng cho nút chuyển văn bản màu sang hệ thập lục phân.
 
 .. rst-class:: classref-item-separator
 
@@ -765,9 +765,9 @@ The icon for the button that switches color text to hexadecimal.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **expanded_arrow** :ref:`🔗<class_ColorPicker_theme_icon_expanded_arrow>`
+:ref:`Texture2D<class_Texture2D>` **expanded_arrow** :ref:`🔗 <class_ColorPicker_theme_icon_expanded_arrow>`
 
-The icon for color preset drop down menu when expanded.
+Biểu tượng của menu thả xuống các preset màu khi được mở rộng.
 
 .. rst-class:: classref-item-separator
 
@@ -777,9 +777,9 @@ The icon for color preset drop down menu when expanded.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **folded_arrow** :ref:`🔗<class_ColorPicker_theme_icon_folded_arrow>`
+:ref:`Texture2D<class_Texture2D>` **folded_arrow** :ref:`🔗 <class_ColorPicker_theme_icon_folded_arrow>`
 
-The icon for color preset drop down menu when folded.
+Biểu tượng của menu thả xuống các preset màu khi được thu gọn.
 
 .. rst-class:: classref-item-separator
 
@@ -789,9 +789,9 @@ The icon for color preset drop down menu when folded.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_option** :ref:`🔗<class_ColorPicker_theme_icon_menu_option>`
+:ref:`Texture2D<class_Texture2D>` **menu_option** :ref:`🔗 <class_ColorPicker_theme_icon_menu_option>`
 
-The icon for color preset option menu.
+Biểu tượng của menu tùy chọn preset màu.
 
 .. rst-class:: classref-item-separator
 
@@ -801,9 +801,9 @@ The icon for color preset option menu.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **overbright_indicator** :ref:`🔗<class_ColorPicker_theme_icon_overbright_indicator>`
+:ref:`Texture2D<class_Texture2D>` **overbright_indicator** :ref:`🔗 <class_ColorPicker_theme_icon_overbright_indicator>`
 
-The indicator used to signalize that the color value is outside the 0-1 range.
+Chỉ báo dùng để báo hiệu rằng giá trị màu nằm ngoài phạm vi 0-1.
 
 .. rst-class:: classref-item-separator
 
@@ -813,9 +813,9 @@ The indicator used to signalize that the color value is outside the 0-1 range.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **picker_cursor** :ref:`🔗<class_ColorPicker_theme_icon_picker_cursor>`
+:ref:`Texture2D<class_Texture2D>` **picker_cursor** :ref:`🔗 <class_ColorPicker_theme_icon_picker_cursor>`
 
-The image displayed over the color box/circle (depending on the :ref:`picker_shape<class_ColorPicker_property_picker_shape>`), marking the currently selected color.
+Hình ảnh được hiển thị trên ô/hình tròn màu (tùy thuộc vào :ref:`picker_shape<class_ColorPicker_property_picker_shape>`), đánh dấu màu hiện được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -825,9 +825,9 @@ The image displayed over the color box/circle (depending on the :ref:`picker_sha
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **picker_cursor_bg** :ref:`🔗<class_ColorPicker_theme_icon_picker_cursor_bg>`
+:ref:`Texture2D<class_Texture2D>` **picker_cursor_bg** :ref:`🔗 <class_ColorPicker_theme_icon_picker_cursor_bg>`
 
-The fill image displayed behind the picker cursor.
+Hình ảnh nền được hiển thị phía sau con trỏ chọn màu.
 
 .. rst-class:: classref-item-separator
 
@@ -837,9 +837,9 @@ The fill image displayed behind the picker cursor.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **sample_bg** :ref:`🔗<class_ColorPicker_theme_icon_sample_bg>`
+:ref:`Texture2D<class_Texture2D>` **sample_bg** :ref:`🔗 <class_ColorPicker_theme_icon_sample_bg>`
 
-Background panel for the color preview box (visible when the color is translucent).
+Bảng nền cho ô xem trước màu (hiển thị khi màu trong mờ).
 
 .. rst-class:: classref-item-separator
 
@@ -849,9 +849,9 @@ Background panel for the color preview box (visible when the color is translucen
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **sample_revert** :ref:`🔗<class_ColorPicker_theme_icon_sample_revert>`
+:ref:`Texture2D<class_Texture2D>` **sample_revert** :ref:`🔗 <class_ColorPicker_theme_icon_sample_revert>`
 
-The icon for the revert button (visible on the middle of the "old" color when it differs from the currently selected color). This icon is modulated with a dark color if the "old" color is bright enough, so the icon should be bright to ensure visibility in both scenarios.
+Biểu tượng cho nút hoàn nguyên (hiển thị ở giữa màu "cũ" khi màu này khác với màu hiện được chọn). Biểu tượng này được điều chỉnh bằng một màu tối nếu màu "cũ" đủ sáng, vì vậy biểu tượng phải có màu sáng để đảm bảo khả năng hiển thị trong cả hai trường hợp.
 
 .. rst-class:: classref-item-separator
 
@@ -861,9 +861,9 @@ The icon for the revert button (visible on the middle of the "old" color when it
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **screen_picker** :ref:`🔗<class_ColorPicker_theme_icon_screen_picker>`
+:ref:`Texture2D<class_Texture2D>` **screen_picker** :ref:`🔗 <class_ColorPicker_theme_icon_screen_picker>`
 
-The icon for the screen color picker button.
+Biểu tượng cho nút chọn màu trên màn hình.
 
 .. rst-class:: classref-item-separator
 
@@ -873,9 +873,9 @@ The icon for the screen color picker button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **shape_circle** :ref:`🔗<class_ColorPicker_theme_icon_shape_circle>`
+:ref:`Texture2D<class_Texture2D>` **shape_circle** :ref:`🔗 <class_ColorPicker_theme_icon_shape_circle>`
 
-The icon for circular picker shapes.
+Biểu tượng cho các hình dạng bộ chọn hình tròn.
 
 .. rst-class:: classref-item-separator
 
@@ -885,9 +885,9 @@ The icon for circular picker shapes.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **shape_rect** :ref:`🔗<class_ColorPicker_theme_icon_shape_rect>`
+:ref:`Texture2D<class_Texture2D>` **shape_rect** :ref:`🔗 <class_ColorPicker_theme_icon_shape_rect>`
 
-The icon for rectangular picker shapes.
+Biểu tượng cho các hình dạng bộ chọn hình chữ nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -897,9 +897,9 @@ The icon for rectangular picker shapes.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **shape_rect_wheel** :ref:`🔗<class_ColorPicker_theme_icon_shape_rect_wheel>`
+:ref:`Texture2D<class_Texture2D>` **shape_rect_wheel** :ref:`🔗 <class_ColorPicker_theme_icon_shape_rect_wheel>`
 
-The icon for rectangular wheel picker shapes.
+Biểu tượng cho các hình dạng bộ chọn bánh xe hình chữ nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -909,9 +909,9 @@ The icon for rectangular wheel picker shapes.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **picker_focus_circle** :ref:`🔗<class_ColorPicker_theme_style_picker_focus_circle>`
+:ref:`StyleBox<class_StyleBox>` **picker_focus_circle** :ref:`🔗 <class_ColorPicker_theme_style_picker_focus_circle>`
 
-The :ref:`StyleBox<class_StyleBox>` used when the circle-shaped part of the picker is focused. Displayed *over* the picker shape, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the picker shape remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi phần hình tròn của bộ chọn được focus. Được hiển thị *over* hình dạng bộ chọn, vì vậy nên sử dụng :ref:`StyleBox<class_StyleBox>` bán trong suốt để đảm bảo hình dạng bộ chọn vẫn hiển thị. Một :ref:`StyleBox<class_StyleBox>` biểu thị đường viền hoặc gạch chân sẽ phù hợp với mục đích này. Để tắt hiệu ứng hình ảnh khi focus, hãy gán một tài nguyên :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`. Lưu ý rằng việc tắt hiệu ứng hình ảnh khi focus sẽ làm giảm khả năng sử dụng của thao tác điều hướng bằng bàn phím/bộ điều khiển, vì vậy không nên làm điều này vì lý do khả năng tiếp cận.
 
 .. rst-class:: classref-item-separator
 
@@ -921,9 +921,9 @@ The :ref:`StyleBox<class_StyleBox>` used when the circle-shaped part of the pick
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **picker_focus_rectangle** :ref:`🔗<class_ColorPicker_theme_style_picker_focus_rectangle>`
+:ref:`StyleBox<class_StyleBox>` **picker_focus_rectangle** :ref:`🔗 <class_ColorPicker_theme_style_picker_focus_rectangle>`
 
-The :ref:`StyleBox<class_StyleBox>` used when the rectangle-shaped part of the picker is focused. Displayed *over* the picker shape, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the picker shape remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi phần hình chữ nhật của bộ chọn được focus. Được hiển thị *over* hình dạng bộ chọn, vì vậy nên sử dụng :ref:`StyleBox<class_StyleBox>` bán trong suốt để đảm bảo hình dạng bộ chọn vẫn hiển thị. Một :ref:`StyleBox<class_StyleBox>` biểu thị đường viền hoặc gạch chân sẽ phù hợp với mục đích này. Để tắt hiệu ứng hình ảnh khi focus, hãy gán một tài nguyên :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`. Lưu ý rằng việc tắt hiệu ứng hình ảnh khi focus sẽ làm giảm khả năng sử dụng của thao tác điều hướng bằng bàn phím/bộ điều khiển, vì vậy không nên làm điều này vì lý do khả năng tiếp cận.
 
 .. rst-class:: classref-item-separator
 
@@ -933,16 +933,16 @@ The :ref:`StyleBox<class_StyleBox>` used when the rectangle-shaped part of the p
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **sample_focus** :ref:`🔗<class_ColorPicker_theme_style_sample_focus>`
+:ref:`StyleBox<class_StyleBox>` **sample_focus** :ref:`🔗 <class_ColorPicker_theme_style_sample_focus>`
 
-The :ref:`StyleBox<class_StyleBox>` used for the old color sample part when it is focused. Displayed *over* the sample, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the picker shape remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+:ref:`StyleBox<class_StyleBox>` được sử dụng cho phần mẫu màu cũ khi phần này được focus. Được hiển thị *bên trên* mẫu, vì vậy nên sử dụng một :ref:`StyleBox<class_StyleBox>` có độ trong suốt một phần để đảm bảo hình dạng của bộ chọn vẫn hiển thị. Một :ref:`StyleBox<class_StyleBox>` đại diện cho đường viền hoặc gạch chân sẽ phù hợp với mục đích này. Để tắt hiệu ứng hiển thị khi focus, hãy gán một resource :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`. Lưu ý rằng việc tắt hiệu ứng hiển thị khi focus sẽ làm giảm khả năng sử dụng khi điều hướng bằng bàn phím/bộ điều khiển, vì vậy không nên thực hiện việc này vì lý do khả năng tiếp cận.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

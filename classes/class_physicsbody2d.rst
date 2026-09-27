@@ -10,44 +10,44 @@
 PhysicsBody2D
 =============
 
-**Inherits:** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CollisionObject2D<class_CollisionObject2D>` **<** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CharacterBody2D<class_CharacterBody2D>`, :ref:`RigidBody2D<class_RigidBody2D>`, :ref:`StaticBody2D<class_StaticBody2D>`
+**Được kế thừa bởi:** :ref:`CharacterBody2D<class_CharacterBody2D>`, :ref:`RigidBody2D<class_RigidBody2D>`, :ref:`StaticBody2D<class_StaticBody2D>`
 
-Abstract base class for 2D game objects affected by physics.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**PhysicsBody2D** is an abstract base class for 2D game objects affected by physics. All 2D physics bodies inherit from it.
+Lớp cơ sở trừu tượng dành cho các đối tượng game 2D chịu tác động của vật lý.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**PhysicsBody2D** là lớp cơ sở trừu tượng dành cho các đối tượng game 2D chịu tác động của vật lý. Tất cả các physics body 2D đều kế thừa từ lớp này.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
-- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+- :doc:`Khắc phục sự cố vật lý <../tutorials/physics/troubleshooting_physics_issues>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------+----------------+-------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | input_pickable | ``false`` (overrides :ref:`CollisionObject2D<class_CollisionObject2D_property_input_pickable>`) |
-   +-------------------------+----------------+-------------------------------------------------------------------------------------------------+
+   +-------------------------+----------------+----------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | input_pickable | ``false`` (ghi đè :ref:`CollisionObject2D<class_CollisionObject2D_property_input_pickable>`) |
+   +-------------------------+----------------+----------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -72,8 +72,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicsBody2D_method_add_collision_exception_with:
 
@@ -81,7 +81,7 @@ Method Descriptions
 
 |void| **add_collision_exception_with**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_PhysicsBody2D_method_add_collision_exception_with>`
 
-Adds a body to the list of bodies that this body can't collide with.
+Thêm một body vào danh sách các body mà body này không thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -93,7 +93,7 @@ Adds a body to the list of bodies that this body can't collide with.
 
 :ref:`Array<class_Array>`\[:ref:`PhysicsBody2D<class_PhysicsBody2D>`\] **get_collision_exceptions**\ (\ ) :ref:`🔗<class_PhysicsBody2D_method_get_collision_exceptions>`
 
-Returns an array of nodes that were added as collision exceptions for this body.
+Trả về một mảng các node đã được thêm làm ngoại lệ va chạm cho body này.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Returns an array of nodes that were added as collision exceptions for this body.
 
 :ref:`Vector2<class_Vector2>` **get_gravity**\ (\ ) |const| :ref:`🔗<class_PhysicsBody2D_method_get_gravity>`
 
-Returns the gravity vector computed from all sources that can affect the body, including all gravity overrides from :ref:`Area2D<class_Area2D>` nodes and the global world gravity.
+Trả về vector trọng lực được tính toán từ tất cả các nguồn có thể tác động lên body, bao gồm tất cả các gravity override từ các node :ref:`Area2D<class_Area2D>` và trọng lực toàn cục của thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -117,15 +117,15 @@ Returns the gravity vector computed from all sources that can affect the body, i
 
 :ref:`KinematicCollision2D<class_KinematicCollision2D>` **move_and_collide**\ (\ motion\: :ref:`Vector2<class_Vector2>`, test_only\: :ref:`bool<class_bool>` = false, safe_margin\: :ref:`float<class_float>` = 0.08, recovery_as_collision\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PhysicsBody2D_method_move_and_collide>`
 
-Moves the body along the vector ``motion``. In order to be frame rate independent in :ref:`Node._physics_process()<class_Node_private_method__physics_process>` or :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` should be computed using ``delta``.
+Di chuyển body dọc theo vector ``motion``. Để không phụ thuộc vào tốc độ khung hình trong :ref:`Node._physics_process()<class_Node_private_method__physics_process>` hoặc :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` phải được tính bằng ``delta``.
 
-Returns a :ref:`KinematicCollision2D<class_KinematicCollision2D>`, which contains information about the collision when stopped, or when touching another body along the motion.
+Trả về một :ref:`KinematicCollision2D<class_KinematicCollision2D>`, chứa thông tin về va chạm khi dừng lại hoặc khi chạm vào một vật thể khác trong quá trình chuyển động.
 
-If ``test_only`` is ``true``, the body does not move but the would-be collision information is given.
+Nếu ``test_only`` là ``true``, vật thể sẽ không di chuyển nhưng thông tin về va chạm có thể xảy ra vẫn được cung cấp.
 
-\ ``safe_margin`` is the extra margin used for collision recovery (see :ref:`CharacterBody2D.safe_margin<class_CharacterBody2D_property_safe_margin>` for more details).
+\ ``safe_margin`` là khoảng đệm bổ sung được sử dụng để khôi phục sau va chạm (xem :ref:`CharacterBody2D.safe_margin<class_CharacterBody2D_property_safe_margin>` để biết thêm chi tiết).
 
-If ``recovery_as_collision`` is ``true``, any depenetration from the recovery phase is also reported as a collision; this is used e.g. by :ref:`CharacterBody2D<class_CharacterBody2D>` for improving floor detection during floor snapping.
+Nếu ``recovery_as_collision`` là ``true``, mọi quá trình tách xuyên từ giai đoạn khôi phục cũng được báo cáo là va chạm; ví dụ, :ref:`CharacterBody2D<class_CharacterBody2D>` sử dụng tùy chọn này để cải thiện việc phát hiện sàn trong quá trình bám sàn.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ If ``recovery_as_collision`` is ``true``, any depenetration from the recovery ph
 
 |void| **remove_collision_exception_with**\ (\ body\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_PhysicsBody2D_method_remove_collision_exception_with>`
 
-Removes a body from the list of bodies that this body can't collide with.
+Xóa một vật thể khỏi danh sách các vật thể mà vật thể này không thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -149,22 +149,22 @@ Removes a body from the list of bodies that this body can't collide with.
 
 :ref:`bool<class_bool>` **test_move**\ (\ from\: :ref:`Transform2D<class_Transform2D>`, motion\: :ref:`Vector2<class_Vector2>`, collision\: :ref:`KinematicCollision2D<class_KinematicCollision2D>` = null, safe_margin\: :ref:`float<class_float>` = 0.08, recovery_as_collision\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_PhysicsBody2D_method_test_move>`
 
-Checks for collisions without moving the body. In order to be frame rate independent in :ref:`Node._physics_process()<class_Node_private_method__physics_process>` or :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` should be computed using ``delta``.
+Kiểm tra va chạm mà không di chuyển vật thể. Để không phụ thuộc vào tốc độ khung hình trong :ref:`Node._physics_process()<class_Node_private_method__physics_process>` hoặc :ref:`Node._process()<class_Node_private_method__process>`, ``motion`` nên được tính bằng ``delta``.
 
-Virtually sets the node's position, scale and rotation to that of the given :ref:`Transform2D<class_Transform2D>`, then tries to move the body along the vector ``motion``. Returns ``true`` if a collision would stop the body from moving along the whole path.
+Về mặt ảo, đặt vị trí, tỷ lệ và góc xoay của node thành các giá trị của :ref:`Transform2D<class_Transform2D>` đã cho, sau đó cố gắng di chuyển vật thể dọc theo vector ``motion``. Trả về ``true`` nếu va chạm sẽ khiến vật thể không thể di chuyển hết toàn bộ quãng đường.
 
-\ ``collision`` is an optional object of type :ref:`KinematicCollision2D<class_KinematicCollision2D>`, which contains additional information about the collision when stopped, or when touching another body along the motion.
+\ ``collision`` là một object tùy chọn thuộc kiểu :ref:`KinematicCollision2D<class_KinematicCollision2D>`, chứa thông tin bổ sung về va chạm khi dừng lại hoặc khi chạm vào một body khác trong quá trình di chuyển.
 
-\ ``safe_margin`` is the extra margin used for collision recovery (see :ref:`CharacterBody2D.safe_margin<class_CharacterBody2D_property_safe_margin>` for more details).
+\ ``safe_margin`` là khoảng đệm bổ sung được sử dụng để khôi phục sau va chạm (xem :ref:`CharacterBody2D.safe_margin<class_CharacterBody2D_property_safe_margin>` để biết thêm chi tiết).
 
-If ``recovery_as_collision`` is ``true``, any depenetration from the recovery phase is also reported as a collision; this is useful for checking whether the body would *touch* any other bodies.
+Nếu ``recovery_as_collision`` là ``true``, mọi quá trình thoát khỏi trạng thái xuyên lấn trong giai đoạn khôi phục cũng được báo cáo là va chạm; điều này hữu ích để kiểm tra xem body có *chạm vào* bất kỳ body nào khác hay không.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

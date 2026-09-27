@@ -10,29 +10,29 @@
 Timer
 =====
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A countdown timer.
+Bộ đếm ngược thời gian.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Timer** node is a countdown timer and is the simplest way to handle time-based logic in the engine. When a timer reaches the end of its :ref:`wait_time<class_Timer_property_wait_time>`, it will emit the :ref:`timeout<class_Timer_signal_timeout>` signal.
+Node **Timer** là một bộ đếm ngược thời gian và là cách đơn giản nhất để xử lý logic dựa trên thời gian trong engine. Khi timer đạt đến cuối :ref:`wait_time<class_Timer_property_wait_time>`, nó sẽ phát tín hiệu :ref:`timeout<class_Timer_signal_timeout>`.
 
-After a timer enters the scene tree, it can be manually started with :ref:`start()<class_Timer_method_start>`. A timer node is also started automatically if :ref:`autostart<class_Timer_property_autostart>` is ``true``.
+Sau khi timer đi vào scene tree, bạn có thể khởi động thủ công bằng :ref:`start()<class_Timer_method_start>`. Một timer node cũng sẽ tự động khởi động nếu :ref:`autostart<class_Timer_property_autostart>` là ``true``.
 
-Without requiring much code, a timer node can be added and configured in the editor. The :ref:`timeout<class_Timer_signal_timeout>` signal it emits can also be connected through the Signals dock in the editor:
+Không cần viết nhiều code, bạn có thể thêm và cấu hình một timer node trong editor. Bạn cũng có thể kết nối signal :ref:`timeout<class_Timer_signal_timeout>` mà nó phát ra thông qua Signals dock trong editor:
 
 ::
 
     func _on_timer_timeout():
         print("Time to attack!")
 
-\ **Note:** To create a one-shot timer without instantiating a node, use :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`.
+\ **Lưu ý:** Để tạo timer one-shot mà không khởi tạo node, hãy sử dụng :ref:`SceneTree.create_timer()<class_SceneTree_method_create_timer>`.
 
-\ **Note:** Timers are affected by :ref:`Engine.time_scale<class_Engine_property_time_scale>` unless :ref:`ignore_time_scale<class_Timer_property_ignore_time_scale>` is ``true``. The higher the time scale, the sooner timers will end. How often a timer processes may depend on the framerate or :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`.
+\ **Lưu ý:** Timers bị ảnh hưởng bởi :ref:`Engine.time_scale<class_Engine_property_time_scale>` trừ khi :ref:`ignore_time_scale<class_Timer_property_ignore_time_scale>` là ``true``. Time scale càng cao thì timers sẽ kết thúc càng sớm. Tần suất timer được xử lý có thể phụ thuộc vào framerate hoặc :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`.
 
 .. rst-class:: classref-introduction-group
 
@@ -49,21 +49,21 @@ Properties
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                      | :ref:`autostart<class_Timer_property_autostart>`                 | ``false`` |
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                      | :ref:`ignore_time_scale<class_Timer_property_ignore_time_scale>` | ``false`` |
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                      | :ref:`one_shot<class_Timer_property_one_shot>`                   | ``false`` |
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                      | :ref:`paused<class_Timer_property_paused>`                       |           |
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
-   | :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>` | :ref:`process_callback<class_Timer_property_process_callback>`   | ``1``     |
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                    | :ref:`time_left<class_Timer_property_time_left>`                 |           |
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                    | :ref:`wait_time<class_Timer_property_wait_time>`                 | ``1.0``   |
-   +--------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                       | :ref:`autostart<class_Timer_property_autostart>`                 | ``false`` |
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                       | :ref:`ignore_time_scale<class_Timer_property_ignore_time_scale>` | ``false`` |
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                       | :ref:`one_shot<class_Timer_property_one_shot>`                   | ``false`` |
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                       | :ref:`paused<class_Timer_property_paused>`                       |           |
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`TimerProcessCallback <enum_Timer_TimerProcessCallback>` | :ref:`process_callback<class_Timer_property_process_callback>`   | ``1``     |
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                     | :ref:`time_left<class_Timer_property_time_left>`                 |           |
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                     | :ref:`wait_time<class_Timer_property_wait_time>`                 | ``1.0``   |
+   +---------------------------------------------------------------+------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
@@ -96,7 +96,7 @@ Signals
 
 **timeout**\ (\ ) :ref:`🔗<class_Timer_signal_timeout>`
 
-Emitted when the timer reaches the end.
+Được phát khi timer đạt đến cuối.
 
 .. rst-class:: classref-section-separator
 
@@ -111,7 +111,7 @@ Enumerations
 
 .. rst-class:: classref-enumeration
 
-enum **TimerProcessCallback**: :ref:`🔗<enum_Timer_TimerProcessCallback>`
+enum **TimerProcessCallback**: :ref:`🔗 <enum_Timer_TimerProcessCallback>`
 
 .. _class_Timer_constant_TIMER_PROCESS_PHYSICS:
 
@@ -119,7 +119,7 @@ enum **TimerProcessCallback**: :ref:`🔗<enum_Timer_TimerProcessCallback>`
 
 :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>` **TIMER_PROCESS_PHYSICS** = ``0``
 
-Update the timer every physics process frame (see :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
+Cập nhật timer trong mỗi frame xử lý physics (xem :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
 
 .. _class_Timer_constant_TIMER_PROCESS_IDLE:
 
@@ -127,7 +127,7 @@ Update the timer every physics process frame (see :ref:`Node.NOTIFICATION_INTERN
 
 :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>` **TIMER_PROCESS_IDLE** = ``1``
 
-Update the timer every process (rendered) frame (see :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
+Cập nhật timer trong mỗi frame xử lý (được render) (xem :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
 
 .. rst-class:: classref-section-separator
 
@@ -135,8 +135,8 @@ Update the timer every process (rendered) frame (see :ref:`Node.NOTIFICATION_INT
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Timer_property_autostart:
 
@@ -149,11 +149,11 @@ Property Descriptions
 - |void| **set_autostart**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_autostart**\ (\ )
 
-If ``true``, the timer will start immediately when it enters the scene tree.
+Nếu ``true``, timer sẽ khởi động ngay khi đi vào scene tree.
 
-\ **Note:** After the timer enters the tree, this property is automatically set to ``false``.
+\ **Lưu ý:** Sau khi timer đi vào tree, thuộc tính này sẽ tự động được đặt thành ``false``.
 
-\ **Note:** This property does nothing when the timer is running in the editor.
+\ **Lưu ý:** Thuộc tính này không có tác dụng khi timer đang chạy trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ If ``true``, the timer will start immediately when it enters the scene tree.
 - |void| **set_ignore_time_scale**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_ignoring_time_scale**\ (\ )
 
-If ``true``, the timer will ignore :ref:`Engine.time_scale<class_Engine_property_time_scale>` and update with the real, elapsed time.
+Nếu ``true``, timer sẽ bỏ qua :ref:`Engine.time_scale<class_Engine_property_time_scale>` và cập nhật theo thời gian thực đã trôi qua.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ If ``true``, the timer will ignore :ref:`Engine.time_scale<class_Engine_property
 - |void| **set_one_shot**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_one_shot**\ (\ )
 
-If ``true``, the timer will stop after reaching the end. Otherwise, as by default, the timer will automatically restart.
+Nếu ``true``, timer sẽ dừng sau khi đạt đến cuối. Nếu không, như mặc định, timer sẽ tự động khởi động lại.
 
 .. rst-class:: classref-item-separator
 
@@ -197,14 +197,14 @@ If ``true``, the timer will stop after reaching the end. Otherwise, as by defaul
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **paused** :ref:`🔗<class_Timer_property_paused>`
+:ref:`bool<class_bool>` **paused** :ref:`🔗 <class_Timer_property_paused>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_paused**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_paused**\ (\ )
 
-If ``true``, the timer is paused. A paused timer does not process until this property is set back to ``false``, even when :ref:`start()<class_Timer_method_start>` is called. See also :ref:`stop()<class_Timer_method_stop>`.
+Nếu ``true``, timer sẽ bị tạm dừng. Timer bị tạm dừng sẽ không được xử lý cho đến khi thuộc tính này được đặt lại thành ``false``, ngay cả khi :ref:`start()<class_Timer_method_start>` được gọi. Xem thêm :ref:`stop()<class_Timer_method_stop>`.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ If ``true``, the timer is paused. A paused timer does not process until this pro
 - |void| **set_timer_process_callback**\ (\ value\: :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>`\ )
 - :ref:`TimerProcessCallback<enum_Timer_TimerProcessCallback>` **get_timer_process_callback**\ (\ )
 
-Specifies when the timer is updated during the main loop.
+Chỉ định thời điểm timer được cập nhật trong main loop.
 
 .. rst-class:: classref-item-separator
 
@@ -231,15 +231,15 @@ Specifies when the timer is updated during the main loop.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **time_left** :ref:`🔗<class_Timer_property_time_left>`
+:ref:`float<class_float>` **time_left** :ref:`🔗 <class_Timer_property_time_left>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`float<class_float>` **get_time_left**\ (\ )
 
-The timer's remaining time in seconds. This is always ``0`` if the timer is stopped.
+Thời gian còn lại của timer tính bằng giây. Giá trị này luôn là ``0`` nếu timer đã dừng.
 
-\ **Note:** This property is read-only and cannot be modified. It is based on :ref:`wait_time<class_Timer_property_wait_time>`.
+\ **Lưu ý:** Thuộc tính này chỉ được đọc và không thể sửa đổi. Nó dựa trên :ref:`wait_time<class_Timer_property_wait_time>`.
 
 .. rst-class:: classref-item-separator
 
@@ -256,9 +256,9 @@ The timer's remaining time in seconds. This is always ``0`` if the timer is stop
 - |void| **set_wait_time**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_wait_time**\ (\ )
 
-The time required for the timer to end, in seconds. This property can also be set every time :ref:`start()<class_Timer_method_start>` is called.
+Thời gian cần để timer kết thúc, tính bằng giây. Bạn cũng có thể đặt thuộc tính này mỗi khi :ref:`start()<class_Timer_method_start>` được gọi.
 
-\ **Note:** Timers can only process once per physics or process frame (depending on the :ref:`process_callback<class_Timer_property_process_callback>`). An unstable framerate may cause the timer to end inconsistently, which is especially noticeable if the wait time is lower than roughly ``0.05`` seconds. For very short timers, it is recommended to write your own code instead of using a **Timer** node. Timers are also affected by :ref:`Engine.time_scale<class_Engine_property_time_scale>`.
+\ **Lưu ý:** Timers chỉ có thể được xử lý một lần trong mỗi frame physics hoặc process (tùy thuộc vào :ref:`process_callback<class_Timer_property_process_callback>`). Framerate không ổn định có thể khiến timer kết thúc không nhất quán, đặc biệt dễ nhận thấy nếu wait time thấp hơn khoảng ``0.05`` giây. Với các timer rất ngắn, bạn nên tự viết code thay vì sử dụng node **Timer**. Timers cũng bị ảnh hưởng bởi :ref:`Engine.time_scale<class_Engine_property_time_scale>`.
 
 .. rst-class:: classref-section-separator
 
@@ -266,8 +266,8 @@ The time required for the timer to end, in seconds. This property can also be se
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Timer_method_is_stopped:
 
@@ -275,7 +275,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_stopped**\ (\ ) |const| :ref:`🔗<class_Timer_method_is_stopped>`
 
-Returns ``true`` if the timer is stopped or has not started.
+Trả về ``true`` nếu timer đã dừng hoặc chưa khởi động.
 
 .. rst-class:: classref-item-separator
 
@@ -287,9 +287,9 @@ Returns ``true`` if the timer is stopped or has not started.
 
 |void| **start**\ (\ time_sec\: :ref:`float<class_float>` = -1\ ) :ref:`🔗<class_Timer_method_start>`
 
-Starts the timer, or resets the timer if it was started already. Fails if the timer is not inside the scene tree. If ``time_sec`` is greater than ``0``, this value is used for the :ref:`wait_time<class_Timer_property_wait_time>`.
+Khởi động timer hoặc đặt lại timer nếu timer đã được khởi động. Sẽ thất bại nếu timer không nằm trong scene tree. Nếu ``time_sec`` lớn hơn ``0``, giá trị này sẽ được dùng cho :ref:`wait_time<class_Timer_property_wait_time>`.
 
-\ **Note:** This method does not resume a paused timer. See :ref:`paused<class_Timer_property_paused>`.
+\ **Lưu ý:** Phương thức này không tiếp tục một timer đang bị tạm dừng. Xem :ref:`paused<class_Timer_property_paused>`.
 
 .. rst-class:: classref-item-separator
 
@@ -301,16 +301,16 @@ Starts the timer, or resets the timer if it was started already. Fails if the ti
 
 |void| **stop**\ (\ ) :ref:`🔗<class_Timer_method_stop>`
 
-Stops the timer. See also :ref:`paused<class_Timer_property_paused>`. Unlike :ref:`start()<class_Timer_method_start>`, this can safely be called if the timer is not inside the scene tree.
+Dừng timer. Xem thêm :ref:`paused<class_Timer_property_paused>`. Không giống :ref:`start()<class_Timer_method_start>`, phương thức này có thể được gọi an toàn nếu timer không nằm trong scene tree.
 
-\ **Note:** Calling :ref:`stop()<class_Timer_method_stop>` does not emit the :ref:`timeout<class_Timer_signal_timeout>` signal, as the timer is not considered to have timed out. If this is desired, use ``$Timer.timeout.emit()`` after calling :ref:`stop()<class_Timer_method_stop>` to manually emit the signal.
+\ **Lưu ý:** Việc gọi :ref:`stop()<class_Timer_method_stop>` không phát signal :ref:`timeout<class_Timer_signal_timeout>`, vì timer không được xem là đã hết thời gian. Nếu muốn phát signal, hãy sử dụng ``$Timer.timeout.emit()`` sau khi gọi :ref:`stop()<class_Timer_method_stop>` để phát signal thủ công.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

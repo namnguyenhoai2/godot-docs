@@ -10,56 +10,56 @@
 EditorExportPlatformLinuxBSD
 ============================
 
-**Inherits:** :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>` **<** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>` **<** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exporter for Linux/BSD.
+Trình xuất cho Linux/BSD.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Exporting for Linux <../tutorials/export/exporting_for_linux>`
+- :doc:`Xuất cho Linux <../tutorials/export/exporting_for_linux>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`binary_format/architecture<class_EditorExportPlatformLinuxBSD_property_binary_format/architecture>`             |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`binary_format/embed_pck<class_EditorExportPlatformLinuxBSD_property_binary_format/embed_pck>`                   |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`custom_template/debug<class_EditorExportPlatformLinuxBSD_property_custom_template/debug>`                       |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`custom_template/release<class_EditorExportPlatformLinuxBSD_property_custom_template/release>`                   |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`       | :ref:`debug/export_console_wrapper<class_EditorExportPlatformLinuxBSD_property_debug/export_console_wrapper>`         |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`shader_baker/enabled<class_EditorExportPlatformLinuxBSD_property_shader_baker/enabled>`                         |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/cleanup_script<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/cleanup_script>` |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`ssh_remote_deploy/enabled<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/enabled>`               |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/extra_args_scp<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_scp>` |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/extra_args_ssh<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_ssh>` |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/host<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/host>`                     |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/port<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/port>`                     |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/run_script<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/run_script>`         |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`texture_format/etc2_astc<class_EditorExportPlatformLinuxBSD_property_texture_format/etc2_astc>`                 |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`     | :ref:`texture_format/s3tc_bptc<class_EditorExportPlatformLinuxBSD_property_texture_format/s3tc_bptc>`                 |
-   +-----------------------------+-----------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`binary_format/architecture <class_EditorExportPlatformLinuxBSD_property_binary_format/architecture>`             |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`binary_format/embed_pck <class_EditorExportPlatformLinuxBSD_property_binary_format/embed_pck>`                   |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`custom_template/debug <class_EditorExportPlatformLinuxBSD_property_custom_template/debug>`                       |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`custom_template/release <class_EditorExportPlatformLinuxBSD_property_custom_template/release>`                   |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`       | :ref:`debug/export_console_wrapper <class_EditorExportPlatformLinuxBSD_property_debug/export_console_wrapper>`         |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`shader_baker/enabled <class_EditorExportPlatformLinuxBSD_property_shader_baker/enabled>`                         |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/cleanup_script <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/cleanup_script>` |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`ssh_remote_deploy/enabled <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/enabled>`               |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/extra_args_scp <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_scp>` |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/extra_args_ssh <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_ssh>` |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/host <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/host>`                     |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/port <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/port>`                     |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>` | :ref:`ssh_remote_deploy/run_script <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/run_script>`         |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`texture_format/etc2_astc <class_EditorExportPlatformLinuxBSD_property_texture_format/etc2_astc>`                 |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`     | :ref:`texture_format/s3tc_bptc <class_EditorExportPlatformLinuxBSD_property_texture_format/s3tc_bptc>`                 |
+   +-----------------------------+------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -67,20 +67,20 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorExportPlatformLinuxBSD_property_binary_format/architecture:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **binary_format/architecture** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_binary_format/architecture>`
+:ref:`String<class_String>` **binary_format/architecture** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_binary_format/architecture>`
 
-Application executable architecture.
+Kiến trúc của tệp thực thi ứng dụng.
 
-Supported architectures: ``x86_32``, ``x86_64``, ``arm64``, ``arm32``, ``rv64``, ``ppc64``, and ``loongarch64``.
+Các kiến trúc được hỗ trợ: ``x86_32``, ``x86_64``, ``arm64``, ``arm32``, ``rv64``, ``ppc64`` và ``loongarch64``.
 
-Official export templates include ``x86_32``, ``x86_64``, ``arm32``, and ``arm64`` binaries only.
+Các template export chính thức chỉ bao gồm các binary ``x86_32``, ``x86_64``, ``arm32`` và ``arm64``.
 
 .. rst-class:: classref-item-separator
 
@@ -90,9 +90,9 @@ Official export templates include ``x86_32``, ``x86_64``, ``arm32``, and ``arm64
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **binary_format/embed_pck** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_binary_format/embed_pck>`
+:ref:`bool<class_bool>` **binary_format/embed_pck** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_binary_format/embed_pck>`
 
-If ``true``, project resources are embedded into the executable.
+Nếu ``true``, các tài nguyên của project sẽ được nhúng vào tệp thực thi.
 
 .. rst-class:: classref-item-separator
 
@@ -102,9 +102,9 @@ If ``true``, project resources are embedded into the executable.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/debug** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_custom_template/debug>`
+:ref:`String<class_String>` **custom_template/debug** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_custom_template/debug>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến export template tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -114,9 +114,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/release** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_custom_template/release>`
+:ref:`String<class_String>` **custom_template/release** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_custom_template/release>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến export template tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -126,9 +126,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **debug/export_console_wrapper** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_debug/export_console_wrapper>`
+:ref:`int<class_int>` **debug/export_console_wrapper** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_debug/export_console_wrapper>`
 
-If ``true``, a console wrapper is exported alongside the main executable, which allows running the project with enabled console output.
+Nếu ``true``, một console wrapper sẽ được export cùng với executable chính, cho phép chạy project với console output được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -138,11 +138,11 @@ If ``true``, a console wrapper is exported alongside the main executable, which 
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_shader_baker/enabled>`
+:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_shader_baker/enabled>`
 
-If ``true``, shaders will be compiled and embedded in the application. This option is only supported when using the Forward+ or Mobile renderers.
+Nếu ``true``, các shader sẽ được compile và nhúng vào application. Tùy chọn này chỉ được hỗ trợ khi sử dụng Forward+ hoặc Mobile renderer.
 
-\ **Note:** When exporting as a dedicated server, the shader baker is always disabled since no rendering is performed.
+\ **Lưu ý:** Khi xuất dưới dạng dedicated server, shader baker luôn bị tắt vì không thực hiện việc kết xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -152,19 +152,19 @@ If ``true``, shaders will be compiled and embedded in the application. This opti
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/cleanup_script** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/cleanup_script>`
+:ref:`String<class_String>` **ssh_remote_deploy/cleanup_script** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/cleanup_script>`
 
-Script code to execute on the remote host when app is finished.
+Mã script sẽ được thực thi trên máy chủ từ xa khi ứng dụng kết thúc.
 
-The following variables can be used in the script:
+Có thể sử dụng các biến sau trong script:
 
-- ``{temp_dir}`` - Path of temporary folder on the remote, used to upload app and scripts to.
+- ``{temp_dir}`` - Đường dẫn đến thư mục tạm trên máy chủ từ xa, được dùng để tải ứng dụng và các script lên.
 
-- ``{archive_name}`` - Name of the ZIP containing uploaded application.
+- ``{archive_name}`` - Tên của tệp ZIP chứa ứng dụng đã tải lên.
 
-- ``{exe_name}`` - Name of application executable.
+- ``{exe_name}`` - Tên của tệp thực thi ứng dụng.
 
-- ``{cmd_args}`` - Array of the command line argument for the application.
+- ``{cmd_args}`` - Mảng các đối số dòng lệnh cho ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -174,9 +174,9 @@ The following variables can be used in the script:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **ssh_remote_deploy/enabled** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/enabled>`
+:ref:`bool<class_bool>` **ssh_remote_deploy/enabled** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/enabled>`
 
-Enables remote deploy using SSH/SCP.
+Bật remote deploy bằng SSH/SCP.
 
 .. rst-class:: classref-item-separator
 
@@ -186,9 +186,9 @@ Enables remote deploy using SSH/SCP.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/extra_args_scp** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_scp>`
+:ref:`String<class_String>` **ssh_remote_deploy/extra_args_scp** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_scp>`
 
-Array of the additional command line arguments passed to the SCP.
+Mảng các đối số dòng lệnh bổ sung được truyền cho SCP.
 
 .. rst-class:: classref-item-separator
 
@@ -198,9 +198,9 @@ Array of the additional command line arguments passed to the SCP.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/extra_args_ssh** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_ssh>`
+:ref:`String<class_String>` **ssh_remote_deploy/extra_args_ssh** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/extra_args_ssh>`
 
-Array of the additional command line arguments passed to the SSH.
+Mảng các đối số dòng lệnh bổ sung được truyền cho SSH.
 
 .. rst-class:: classref-item-separator
 
@@ -210,9 +210,9 @@ Array of the additional command line arguments passed to the SSH.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/host** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/host>`
+:ref:`String<class_String>` **ssh_remote_deploy/host** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/host>`
 
-Remote host SSH user name and address, in ``user@address`` format.
+Tên người dùng SSH và địa chỉ của host từ xa, theo định dạng ``user@address``.
 
 .. rst-class:: classref-item-separator
 
@@ -222,9 +222,9 @@ Remote host SSH user name and address, in ``user@address`` format.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/port** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/port>`
+:ref:`String<class_String>` **ssh_remote_deploy/port** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/port>`
 
-Remote host SSH port number.
+Số cổng SSH của host từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -234,19 +234,19 @@ Remote host SSH port number.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/run_script** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/run_script>`
+:ref:`String<class_String>` **ssh_remote_deploy/run_script** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_ssh_remote_deploy/run_script>`
 
-Script code to execute on the remote host when running the app.
+Mã script cần thực thi trên host từ xa khi chạy ứng dụng.
 
-The following variables can be used in the script:
+Có thể sử dụng các biến sau trong script:
 
-- ``{temp_dir}`` - Path of temporary folder on the remote, used to upload app and scripts to.
+- ``{temp_dir}`` - Đường dẫn đến thư mục tạm trên máy chủ từ xa, được dùng để tải ứng dụng và các script lên.
 
-- ``{archive_name}`` - Name of the ZIP containing uploaded application.
+- ``{archive_name}`` - Tên của tệp ZIP chứa ứng dụng đã tải lên.
 
-- ``{exe_name}`` - Name of application executable.
+- ``{exe_name}`` - Tên của tệp thực thi ứng dụng.
 
-- ``{cmd_args}`` - Array of the command line argument for the application.
+- ``{cmd_args}`` - Mảng các đối số dòng lệnh cho ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -256,9 +256,9 @@ The following variables can be used in the script:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **texture_format/etc2_astc** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_texture_format/etc2_astc>`
+:ref:`bool<class_bool>` **texture_format/etc2_astc** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_texture_format/etc2_astc>`
 
-If ``true``, project textures are exported in the ETC2/ASTC format.
+Nếu ``true``, texture của dự án được xuất ở định dạng ETC2/ASTC.
 
 .. rst-class:: classref-item-separator
 
@@ -268,16 +268,16 @@ If ``true``, project textures are exported in the ETC2/ASTC format.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **texture_format/s3tc_bptc** :ref:`🔗<class_EditorExportPlatformLinuxBSD_property_texture_format/s3tc_bptc>`
+:ref:`bool<class_bool>` **texture_format/s3tc_bptc** :ref:`🔗 <class_EditorExportPlatformLinuxBSD_property_texture_format/s3tc_bptc>`
 
-If ``true``, project textures are exported in the S3TC/BPTC format.
+Nếu ``true``, texture của project sẽ được xuất ở định dạng S3TC/BPTC.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

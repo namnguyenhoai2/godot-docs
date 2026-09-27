@@ -10,70 +10,70 @@
 Camera3D
 ========
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`XRCamera3D<class_XRCamera3D>`
+**Được kế thừa bởi:** :ref:`XRCamera3D<class_XRCamera3D>`
 
-Camera node, displays from a point of view.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**Camera3D** is a special node that displays what is visible from its current location. Cameras register themselves in the nearest :ref:`Viewport<class_Viewport>` node (when ascending the tree). Only one camera can be active per viewport. If no viewport is available ascending the tree, the camera will register in the global viewport. In other words, a camera just provides 3D display capabilities to a :ref:`Viewport<class_Viewport>`, and, without one, a scene registered in that :ref:`Viewport<class_Viewport>` (or higher viewports) can't be displayed.
+Nút camera, hiển thị từ một góc nhìn.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**Camera3D** là một node đặc biệt hiển thị những gì có thể nhìn thấy từ vị trí hiện tại của nó. Các camera tự đăng ký với node :ref:`Viewport<class_Viewport>` gần nhất (khi đi lên trong cây). Mỗi viewport chỉ có thể có một camera hoạt động. Nếu không có viewport nào khi đi lên trong cây, camera sẽ đăng ký với global viewport. Nói cách khác, camera chỉ cung cấp khả năng hiển thị 3D cho một :ref:`Viewport<class_Viewport>`, và nếu không có camera, một scene được đăng ký trong :ref:`Viewport<class_Viewport>` đó (hoặc các viewport cao hơn) sẽ không thể được hiển thị.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn người thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`CameraAttributes<class_CameraAttributes>`       | :ref:`attributes<class_Camera3D_property_attributes>`             |                   |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`Compositor<class_Compositor>`                   | :ref:`compositor<class_Camera3D_property_compositor>`             |                   |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`int<class_int>`                                 | :ref:`cull_mask<class_Camera3D_property_cull_mask>`               | ``1048575``       |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`bool<class_bool>`                               | :ref:`current<class_Camera3D_property_current>`                   | ``false``         |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>` | :ref:`doppler_tracking<class_Camera3D_property_doppler_tracking>` | ``0``             |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`Environment<class_Environment>`                 | :ref:`environment<class_Camera3D_property_environment>`           |                   |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                             | :ref:`far<class_Camera3D_property_far>`                           | ``4000.0``        |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                             | :ref:`fov<class_Camera3D_property_fov>`                           | ``75.0``          |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>`                         | :ref:`frustum_offset<class_Camera3D_property_frustum_offset>`     | ``Vector2(0, 0)`` |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                             | :ref:`h_offset<class_Camera3D_property_h_offset>`                 | ``0.0``           |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`KeepAspect<enum_Camera3D_KeepAspect>`           | :ref:`keep_aspect<class_Camera3D_property_keep_aspect>`           | ``1``             |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                             | :ref:`near<class_Camera3D_property_near>`                         | ``0.05``          |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`ProjectionType<enum_Camera3D_ProjectionType>`   | :ref:`projection<class_Camera3D_property_projection>`             | ``0``             |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                             | :ref:`size<class_Camera3D_property_size>`                         | ``1.0``           |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
-   | :ref:`float<class_float>`                             | :ref:`v_offset<class_Camera3D_property_v_offset>`                 | ``0.0``           |
-   +-------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`CameraAttributes<class_CameraAttributes>`        | :ref:`attributes<class_Camera3D_property_attributes>`             |                   |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`Compositor<class_Compositor>`                    | :ref:`compositor<class_Camera3D_property_compositor>`             |                   |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`int<class_int>`                                  | :ref:`cull_mask<class_Camera3D_property_cull_mask>`               | ``1048575``       |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`bool<class_bool>`                                | :ref:`current<class_Camera3D_property_current>`                   | ``false``         |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`DopplerTracking <enum_Camera3D_DopplerTracking>` | :ref:`doppler_tracking<class_Camera3D_property_doppler_tracking>` | ``0``             |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`Environment<class_Environment>`                  | :ref:`environment<class_Camera3D_property_environment>`           |                   |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                              | :ref:`far<class_Camera3D_property_far>`                           | ``4000.0``        |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                              | :ref:`fov<class_Camera3D_property_fov>`                           | ``75.0``          |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>`                          | :ref:`frustum_offset<class_Camera3D_property_frustum_offset>`     | ``Vector2(0, 0)`` |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                              | :ref:`h_offset<class_Camera3D_property_h_offset>`                 | ``0.0``           |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`KeepAspect <enum_Camera3D_KeepAspect>`           | :ref:`keep_aspect<class_Camera3D_property_keep_aspect>`           | ``1``             |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                              | :ref:`near<class_Camera3D_property_near>`                         | ``0.05``          |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`ProjectionType <enum_Camera3D_ProjectionType>`   | :ref:`projection<class_Camera3D_property_projection>`             | ``0``             |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                              | :ref:`size<class_Camera3D_property_size>`                         | ``1.0``           |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
+   | :ref:`float<class_float>`                              | :ref:`v_offset<class_Camera3D_property_v_offset>`                 | ``0.0``           |
+   +--------------------------------------------------------+-------------------------------------------------------------------+-------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -124,14 +124,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Camera3D_ProjectionType:
 
 .. rst-class:: classref-enumeration
 
-enum **ProjectionType**: :ref:`🔗<enum_Camera3D_ProjectionType>`
+enum **ProjectionType**: :ref:`🔗 <enum_Camera3D_ProjectionType>`
 
 .. _class_Camera3D_constant_PROJECTION_PERSPECTIVE:
 
@@ -139,7 +139,7 @@ enum **ProjectionType**: :ref:`🔗<enum_Camera3D_ProjectionType>`
 
 :ref:`ProjectionType<enum_Camera3D_ProjectionType>` **PROJECTION_PERSPECTIVE** = ``0``
 
-Perspective projection. Objects on the screen becomes smaller when they are far away.
+Phép chiếu phối cảnh. Các đối tượng trên màn hình sẽ nhỏ hơn khi ở xa.
 
 .. _class_Camera3D_constant_PROJECTION_ORTHOGONAL:
 
@@ -147,7 +147,7 @@ Perspective projection. Objects on the screen becomes smaller when they are far 
 
 :ref:`ProjectionType<enum_Camera3D_ProjectionType>` **PROJECTION_ORTHOGONAL** = ``1``
 
-Orthogonal projection, also known as orthographic projection. Objects remain the same size on the screen no matter how far away they are.
+Phép chiếu trực giao, còn được gọi là phép chiếu orthographic. Các đối tượng giữ nguyên kích thước trên màn hình bất kể chúng cách xa đến đâu.
 
 .. _class_Camera3D_constant_PROJECTION_FRUSTUM:
 
@@ -155,7 +155,7 @@ Orthogonal projection, also known as orthographic projection. Objects remain the
 
 :ref:`ProjectionType<enum_Camera3D_ProjectionType>` **PROJECTION_FRUSTUM** = ``2``
 
-Frustum projection. This mode allows adjusting :ref:`frustum_offset<class_Camera3D_property_frustum_offset>` to create "tilted frustum" effects.
+Phép chiếu frustum. Chế độ này cho phép điều chỉnh :ref:`frustum_offset<class_Camera3D_property_frustum_offset>` để tạo hiệu ứng "tilted frustum".
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Frustum projection. This mode allows adjusting :ref:`frustum_offset<class_Camera
 
 .. rst-class:: classref-enumeration
 
-enum **KeepAspect**: :ref:`🔗<enum_Camera3D_KeepAspect>`
+enum **KeepAspect**: :ref:`🔗 <enum_Camera3D_KeepAspect>`
 
 .. _class_Camera3D_constant_KEEP_WIDTH:
 
@@ -173,7 +173,7 @@ enum **KeepAspect**: :ref:`🔗<enum_Camera3D_KeepAspect>`
 
 :ref:`KeepAspect<enum_Camera3D_KeepAspect>` **KEEP_WIDTH** = ``0``
 
-Preserves the horizontal aspect ratio; also known as Vert- scaling. This is usually the best option for projects running in portrait mode, as taller aspect ratios will benefit from a wider vertical FOV.
+Giữ nguyên tỷ lệ khung hình ngang; còn được gọi là scaling Vert-. Đây thường là lựa chọn tốt nhất cho các project chạy ở chế độ dọc, vì tỷ lệ khung hình cao hơn sẽ được hưởng lợi từ FOV dọc rộng hơn.
 
 .. _class_Camera3D_constant_KEEP_HEIGHT:
 
@@ -181,7 +181,7 @@ Preserves the horizontal aspect ratio; also known as Vert- scaling. This is usua
 
 :ref:`KeepAspect<enum_Camera3D_KeepAspect>` **KEEP_HEIGHT** = ``1``
 
-Preserves the vertical aspect ratio; also known as Hor+ scaling. This is usually the best option for projects running in landscape mode, as wider aspect ratios will automatically benefit from a wider horizontal FOV.
+Giữ nguyên tỷ lệ khung hình dọc; còn được gọi là scaling Hor+. Đây thường là lựa chọn tốt nhất cho các project chạy ở chế độ ngang, vì tỷ lệ khung hình rộng hơn sẽ tự động được hưởng lợi từ FOV ngang rộng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ Preserves the vertical aspect ratio; also known as Hor+ scaling. This is usually
 
 .. rst-class:: classref-enumeration
 
-enum **DopplerTracking**: :ref:`🔗<enum_Camera3D_DopplerTracking>`
+enum **DopplerTracking**: :ref:`🔗 <enum_Camera3D_DopplerTracking>`
 
 .. _class_Camera3D_constant_DOPPLER_TRACKING_DISABLED:
 
@@ -199,7 +199,7 @@ enum **DopplerTracking**: :ref:`🔗<enum_Camera3D_DopplerTracking>`
 
 :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>` **DOPPLER_TRACKING_DISABLED** = ``0``
 
-Disables `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ simulation (default).
+Tắt mô phỏng `hiệu ứng Doppler <https://en.wikipedia.org/wiki/Doppler_effect>`__ (mặc định).
 
 .. _class_Camera3D_constant_DOPPLER_TRACKING_IDLE_STEP:
 
@@ -207,7 +207,7 @@ Disables `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ simul
 
 :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>` **DOPPLER_TRACKING_IDLE_STEP** = ``1``
 
-Simulate `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ by tracking positions of objects that are changed in ``_process``. Changes in the relative velocity of this camera compared to those objects affect how audio is perceived (changing the audio's :ref:`AudioStreamPlayer3D.pitch_scale<class_AudioStreamPlayer3D_property_pitch_scale>`).
+Mô phỏng `hiệu ứng Doppler <https://en.wikipedia.org/wiki/Doppler_effect>`__ bằng cách theo dõi vị trí của các đối tượng được thay đổi trong ``_process``. Những thay đổi về vận tốc tương đối của camera này so với các đối tượng đó ảnh hưởng đến cách cảm nhận âm thanh (làm thay đổi :ref:`AudioStreamPlayer3D.pitch_scale<class_AudioStreamPlayer3D_property_pitch_scale>` của âm thanh).
 
 .. _class_Camera3D_constant_DOPPLER_TRACKING_PHYSICS_STEP:
 
@@ -215,7 +215,7 @@ Simulate `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ by tr
 
 :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>` **DOPPLER_TRACKING_PHYSICS_STEP** = ``2``
 
-Simulate `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ by tracking positions of objects that are changed in ``_physics_process``. Changes in the relative velocity of this camera compared to those objects affect how audio is perceived (changing the audio's :ref:`AudioStreamPlayer3D.pitch_scale<class_AudioStreamPlayer3D_property_pitch_scale>`).
+Mô phỏng `hiệu ứng Doppler <https://en.wikipedia.org/wiki/Doppler_effect>`__ bằng cách theo dõi vị trí của các đối tượng được thay đổi trong ``_physics_process``. Những thay đổi về vận tốc tương đối của camera này so với các đối tượng đó ảnh hưởng đến cách cảm nhận âm thanh (làm thay đổi :ref:`AudioStreamPlayer3D.pitch_scale<class_AudioStreamPlayer3D_property_pitch_scale>` của âm thanh).
 
 .. rst-class:: classref-section-separator
 
@@ -223,21 +223,21 @@ Simulate `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ by tr
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Camera3D_property_attributes:
 
 .. rst-class:: classref-property
 
-:ref:`CameraAttributes<class_CameraAttributes>` **attributes** :ref:`🔗<class_Camera3D_property_attributes>`
+:ref:`CameraAttributes<class_CameraAttributes>` **attributes** :ref:`🔗 <class_Camera3D_property_attributes>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_attributes**\ (\ value\: :ref:`CameraAttributes<class_CameraAttributes>`\ )
 - :ref:`CameraAttributes<class_CameraAttributes>` **get_attributes**\ (\ )
 
-The :ref:`CameraAttributes<class_CameraAttributes>` to use for this camera.
+:ref:`CameraAttributes<class_CameraAttributes>` cần sử dụng cho camera này.
 
 .. rst-class:: classref-item-separator
 
@@ -247,14 +247,14 @@ The :ref:`CameraAttributes<class_CameraAttributes>` to use for this camera.
 
 .. rst-class:: classref-property
 
-:ref:`Compositor<class_Compositor>` **compositor** :ref:`🔗<class_Camera3D_property_compositor>`
+:ref:`Compositor<class_Compositor>` **compositor** :ref:`🔗 <class_Camera3D_property_compositor>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_compositor**\ (\ value\: :ref:`Compositor<class_Compositor>`\ )
 - :ref:`Compositor<class_Compositor>` **get_compositor**\ (\ )
 
-The :ref:`Compositor<class_Compositor>` to use for this camera.
+:ref:`Compositor<class_Compositor>` cần sử dụng cho camera này.
 
 .. rst-class:: classref-item-separator
 
@@ -271,13 +271,13 @@ The :ref:`Compositor<class_Compositor>` to use for this camera.
 - |void| **set_cull_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_cull_mask**\ (\ )
 
-The culling mask that describes which :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` are rendered by this camera. By default, all 20 user-visible layers are rendered.
+Mặt nạ loại bỏ (culling mask) mô tả những :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` được camera này kết xuất. Theo mặc định, tất cả 20 layer hiển thị với người dùng đều được kết xuất.
 
-\ **Note:** Since the :ref:`cull_mask<class_Camera3D_property_cull_mask>` allows for 32 layers to be stored in total, there are an additional 12 layers that are only used internally by the engine and aren't exposed in the editor. Setting :ref:`cull_mask<class_Camera3D_property_cull_mask>` using a script allows you to toggle those reserved layers, which can be useful for editor plugins.
+\ **Lưu ý:** Vì :ref:`cull_mask<class_Camera3D_property_cull_mask>` cho phép lưu trữ tổng cộng 32 layer, nên có thêm 12 layer chỉ được engine sử dụng nội bộ và không hiển thị trong editor. Việc thiết lập :ref:`cull_mask<class_Camera3D_property_cull_mask>` bằng script cho phép bạn bật hoặc tắt các layer dành riêng đó, điều này có thể hữu ích cho các plugin của editor.
 
-To adjust :ref:`cull_mask<class_Camera3D_property_cull_mask>` more easily using a script, use :ref:`get_cull_mask_value()<class_Camera3D_method_get_cull_mask_value>` and :ref:`set_cull_mask_value()<class_Camera3D_method_set_cull_mask_value>`.
+Để điều chỉnh :ref:`cull_mask<class_Camera3D_property_cull_mask>` dễ dàng hơn bằng script, hãy sử dụng :ref:`get_cull_mask_value()<class_Camera3D_method_get_cull_mask_value>` và :ref:`set_cull_mask_value()<class_Camera3D_method_set_cull_mask_value>`.
 
-\ **Note:** :ref:`VoxelGI<class_VoxelGI>`, SDFGI and :ref:`LightmapGI<class_LightmapGI>` will always take all layers into account to determine what contributes to global illumination. If this is an issue, set :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` to :ref:`GeometryInstance3D.GI_MODE_DISABLED<class_GeometryInstance3D_constant_GI_MODE_DISABLED>` for meshes and :ref:`Light3D.light_bake_mode<class_Light3D_property_light_bake_mode>` to :ref:`Light3D.BAKE_DISABLED<class_Light3D_constant_BAKE_DISABLED>` for lights to exclude them from global illumination.
+\ **Lưu ý:** :ref:`VoxelGI<class_VoxelGI>`, SDFGI và :ref:`LightmapGI<class_LightmapGI>` sẽ luôn tính đến tất cả layer để xác định những gì đóng góp vào global illumination. Nếu đây là vấn đề, hãy đặt :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` thành :ref:`GeometryInstance3D.GI_MODE_DISABLED<class_GeometryInstance3D_constant_GI_MODE_DISABLED>` cho mesh và :ref:`Light3D.light_bake_mode<class_Light3D_property_light_bake_mode>` thành :ref:`Light3D.BAKE_DISABLED<class_Light3D_constant_BAKE_DISABLED>` cho light để loại chúng khỏi global illumination.
 
 .. rst-class:: classref-item-separator
 
@@ -294,9 +294,9 @@ To adjust :ref:`cull_mask<class_Camera3D_property_cull_mask>` more easily using 
 - |void| **set_current**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_current**\ (\ )
 
-If ``true``, the ancestor :ref:`Viewport<class_Viewport>` is currently using this camera.
+Nếu ``true``, node tổ tiên :ref:`Viewport<class_Viewport>` hiện đang sử dụng camera này.
 
-If multiple cameras are in the scene, one will always be made current. For example, if two **Camera3D** nodes are present in the scene and only one is current, setting one camera's :ref:`current<class_Camera3D_property_current>` to ``false`` will cause the other camera to be made current.
+Nếu có nhiều camera trong scene, một camera sẽ luôn được đặt làm camera hiện tại. Ví dụ: nếu có hai node **Camera3D** trong scene và chỉ một node đang là camera hiện tại, việc đặt :ref:`current<class_Camera3D_property_current>` của một camera thành ``false`` sẽ khiến camera còn lại được đặt làm camera hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -313,9 +313,9 @@ If multiple cameras are in the scene, one will always be made current. For examp
 - |void| **set_doppler_tracking**\ (\ value\: :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>`\ )
 - :ref:`DopplerTracking<enum_Camera3D_DopplerTracking>` **get_doppler_tracking**\ (\ )
 
-If not :ref:`DOPPLER_TRACKING_DISABLED<class_Camera3D_constant_DOPPLER_TRACKING_DISABLED>`, this camera will simulate the `Doppler effect <https://en.wikipedia.org/wiki/Doppler_effect>`__ for objects changed in particular ``_process`` methods.
+Nếu không phải :ref:`DOPPLER_TRACKING_DISABLED<class_Camera3D_constant_DOPPLER_TRACKING_DISABLED>`, camera này sẽ mô phỏng hiệu ứng `Doppler <https://en.wikipedia.org/wiki/Doppler_effect>`__ cho các đối tượng được thay đổi trong các phương thức ``_process`` cụ thể.
 
-\ **Note:** The Doppler effect will only be heard on :ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>`\ s if :ref:`AudioStreamPlayer3D.doppler_tracking<class_AudioStreamPlayer3D_property_doppler_tracking>` is not set to :ref:`AudioStreamPlayer3D.DOPPLER_TRACKING_DISABLED<class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_DISABLED>`.
+\ **Lưu ý:** Hiệu ứng Doppler chỉ được nghe trên :ref:`AudioStreamPlayer3D<class_AudioStreamPlayer3D>`\ s nếu :ref:`AudioStreamPlayer3D.doppler_tracking<class_AudioStreamPlayer3D_property_doppler_tracking>` chưa được đặt thành :ref:`AudioStreamPlayer3D.DOPPLER_TRACKING_DISABLED<class_AudioStreamPlayer3D_constant_DOPPLER_TRACKING_DISABLED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -325,14 +325,14 @@ If not :ref:`DOPPLER_TRACKING_DISABLED<class_Camera3D_constant_DOPPLER_TRACKING_
 
 .. rst-class:: classref-property
 
-:ref:`Environment<class_Environment>` **environment** :ref:`🔗<class_Camera3D_property_environment>`
+:ref:`Environment<class_Environment>` **environment** :ref:`🔗 <class_Camera3D_property_environment>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_environment**\ (\ value\: :ref:`Environment<class_Environment>`\ )
 - :ref:`Environment<class_Environment>` **get_environment**\ (\ )
 
-The :ref:`Environment<class_Environment>` to use for this camera.
+:ref:`Environment<class_Environment>` cần sử dụng cho camera này.
 
 .. rst-class:: classref-item-separator
 
@@ -349,7 +349,7 @@ The :ref:`Environment<class_Environment>` to use for this camera.
 - |void| **set_far**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_far**\ (\ )
 
-The distance to the far culling boundary for this camera relative to its local Z axis. Higher values allow the camera to see further away, while decreasing :ref:`far<class_Camera3D_property_far>` can improve performance if it results in objects being partially or fully culled.
+Khoảng cách đến ranh giới culling xa của camera này, tính theo trục Z cục bộ của camera. Giá trị cao hơn cho phép camera nhìn xa hơn, còn giảm :ref:`far<class_Camera3D_property_far>` có thể cải thiện hiệu suất nếu khiến các đối tượng bị culling một phần hoặc hoàn toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -366,17 +366,17 @@ The distance to the far culling boundary for this camera relative to its local Z
 - |void| **set_fov**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fov**\ (\ )
 
-The camera's field of view angle (in degrees). Only applicable in perspective mode. Since :ref:`keep_aspect<class_Camera3D_property_keep_aspect>` locks one axis, :ref:`fov<class_Camera3D_property_fov>` sets the other axis' field of view angle.
+Góc trường nhìn của camera (tính bằng độ). Chỉ áp dụng ở chế độ phối cảnh. Vì :ref:`keep_aspect<class_Camera3D_property_keep_aspect>` khóa một trục, :ref:`fov<class_Camera3D_property_fov>` đặt góc trường nhìn của trục còn lại.
 
-For reference, the default vertical field of view value (``75.0``) is equivalent to a horizontal FOV of:
+Để tham khảo, giá trị trường nhìn dọc mặc định (``75.0``) tương đương với FOV ngang là:
 
-- ~91.31 degrees in a 4:3 viewport
+- ~91,31 độ trong viewport 4:3
 
-- ~101.67 degrees in a 16:10 viewport
+- ~101.67 độ trong viewport 16:10
 
-- ~107.51 degrees in a 16:9 viewport
+- ~107.51 độ trong viewport 16:9
 
-- ~121.63 degrees in a 21:9 viewport
+- ~121.63 độ trong viewport 21:9
 
 .. rst-class:: classref-item-separator
 
@@ -393,9 +393,9 @@ For reference, the default vertical field of view value (``75.0``) is equivalent
 - |void| **set_frustum_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_frustum_offset**\ (\ )
 
-The camera's frustum offset. This can be changed from the default to create "tilted frustum" effects such as `Y-shearing <https://zdoom.org/wiki/Y-shearing>`__.
+Độ lệch frustum của camera. Có thể thay đổi giá trị mặc định này để tạo các hiệu ứng "tilted frustum" như `Y-shearing <https://zdoom.org/wiki/Y-shearing>`__.
 
-\ **Note:** Only effective if :ref:`projection<class_Camera3D_property_projection>` is :ref:`PROJECTION_FRUSTUM<class_Camera3D_constant_PROJECTION_FRUSTUM>`.
+\ **Lưu ý:** Chỉ có hiệu lực khi :ref:`projection<class_Camera3D_property_projection>` là :ref:`PROJECTION_FRUSTUM<class_Camera3D_constant_PROJECTION_FRUSTUM>`.
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ The camera's frustum offset. This can be changed from the default to create "til
 - |void| **set_h_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_h_offset**\ (\ )
 
-The horizontal (X) offset of the camera viewport.
+Độ lệch theo chiều ngang (X) của viewport camera.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ The horizontal (X) offset of the camera viewport.
 - |void| **set_keep_aspect_mode**\ (\ value\: :ref:`KeepAspect<enum_Camera3D_KeepAspect>`\ )
 - :ref:`KeepAspect<enum_Camera3D_KeepAspect>` **get_keep_aspect_mode**\ (\ )
 
-The axis to lock during :ref:`fov<class_Camera3D_property_fov>`/:ref:`size<class_Camera3D_property_size>` adjustments. Can be either :ref:`KEEP_WIDTH<class_Camera3D_constant_KEEP_WIDTH>` or :ref:`KEEP_HEIGHT<class_Camera3D_constant_KEEP_HEIGHT>`.
+Trục cần khóa trong quá trình điều chỉnh :ref:`fov<class_Camera3D_property_fov>`/:ref:`size<class_Camera3D_property_size>`. Có thể là :ref:`KEEP_WIDTH<class_Camera3D_constant_KEEP_WIDTH>` hoặc :ref:`KEEP_HEIGHT<class_Camera3D_constant_KEEP_HEIGHT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -446,7 +446,7 @@ The axis to lock during :ref:`fov<class_Camera3D_property_fov>`/:ref:`size<class
 - |void| **set_near**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_near**\ (\ )
 
-The distance to the near culling boundary for this camera relative to its local Z axis. Lower values allow the camera to see objects more up close to its origin, at the cost of lower precision across the *entire* range. Values lower than the default can lead to increased Z-fighting.
+Khoảng cách đến ranh giới culling gần của camera này so với trục Z cục bộ của nó. Các giá trị thấp hơn cho phép camera nhìn thấy các đối tượng ở gần gốc của nó hơn, nhưng phải đánh đổi bằng độ chính xác thấp hơn trên toàn bộ *phạm vi*. Các giá trị thấp hơn mặc định có thể dẫn đến hiện tượng Z-fighting tăng lên.
 
 .. rst-class:: classref-item-separator
 
@@ -463,7 +463,7 @@ The distance to the near culling boundary for this camera relative to its local 
 - |void| **set_projection**\ (\ value\: :ref:`ProjectionType<enum_Camera3D_ProjectionType>`\ )
 - :ref:`ProjectionType<enum_Camera3D_ProjectionType>` **get_projection**\ (\ )
 
-The camera's projection mode. In :ref:`PROJECTION_PERSPECTIVE<class_Camera3D_constant_PROJECTION_PERSPECTIVE>` mode, objects' Z distance from the camera's local space scales their perceived size.
+Chế độ chiếu của camera. Trong chế độ :ref:`PROJECTION_PERSPECTIVE<class_Camera3D_constant_PROJECTION_PERSPECTIVE>`, khoảng cách Z của các đối tượng so với không gian cục bộ của camera sẽ quyết định tỷ lệ kích thước mà chúng được cảm nhận.
 
 .. rst-class:: classref-item-separator
 
@@ -480,7 +480,7 @@ The camera's projection mode. In :ref:`PROJECTION_PERSPECTIVE<class_Camera3D_con
 - |void| **set_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_size**\ (\ )
 
-The camera's size in meters measured as the diameter of the width or height, depending on :ref:`keep_aspect<class_Camera3D_property_keep_aspect>`. Only applicable in orthogonal and frustum modes.
+Kích thước của camera tính bằng mét, được đo theo đường kính của chiều rộng hoặc chiều cao, tùy thuộc vào :ref:`keep_aspect<class_Camera3D_property_keep_aspect>`. Chỉ áp dụng trong các chế độ orthogonal và frustum.
 
 .. rst-class:: classref-item-separator
 
@@ -497,7 +497,7 @@ The camera's size in meters measured as the diameter of the width or height, dep
 - |void| **set_v_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_v_offset**\ (\ )
 
-The vertical (Y) offset of the camera viewport.
+Độ lệch theo chiều dọc (Y) của viewport camera.
 
 .. rst-class:: classref-section-separator
 
@@ -505,8 +505,8 @@ The vertical (Y) offset of the camera viewport.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Camera3D_method_clear_current:
 
@@ -514,7 +514,7 @@ Method Descriptions
 
 |void| **clear_current**\ (\ enable_next\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_Camera3D_method_clear_current>`
 
-If this is the current camera, remove it from being current. If ``enable_next`` is ``true``, request to make the next camera current, if any.
+Nếu đây là camera hiện tại, hãy xóa camera này khỏi trạng thái hiện tại. Nếu ``enable_next`` là ``true``, hãy yêu cầu đặt camera tiếp theo, nếu có, làm camera hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -526,7 +526,7 @@ If this is the current camera, remove it from being current. If ``enable_next`` 
 
 :ref:`Projection<class_Projection>` **get_camera_projection**\ (\ ) |const| :ref:`🔗<class_Camera3D_method_get_camera_projection>`
 
-Returns the projection matrix that this camera uses to render to its associated viewport. The camera must be part of the scene tree to function.
+Trả về ma trận chiếu mà camera này sử dụng để kết xuất vào viewport liên kết với nó. Camera phải là một phần của cây cảnh để hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -538,7 +538,7 @@ Returns the projection matrix that this camera uses to render to its associated 
 
 :ref:`RID<class_RID>` **get_camera_rid**\ (\ ) |const| :ref:`🔗<class_Camera3D_method_get_camera_rid>`
 
-Returns the camera's RID from the :ref:`RenderingServer<class_RenderingServer>`.
+Trả về RID của camera từ :ref:`RenderingServer<class_RenderingServer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -550,7 +550,7 @@ Returns the camera's RID from the :ref:`RenderingServer<class_RenderingServer>`.
 
 :ref:`Transform3D<class_Transform3D>` **get_camera_transform**\ (\ ) |const| :ref:`🔗<class_Camera3D_method_get_camera_transform>`
 
-Returns the transform of the camera plus the vertical (:ref:`v_offset<class_Camera3D_property_v_offset>`) and horizontal (:ref:`h_offset<class_Camera3D_property_h_offset>`) offsets; and any other adjustments made to the position and orientation of the camera by subclassed cameras such as :ref:`XRCamera3D<class_XRCamera3D>`.
+Trả về transform của camera cùng với các độ lệch theo chiều dọc (:ref:`v_offset<class_Camera3D_property_v_offset>`) và chiều ngang (:ref:`h_offset<class_Camera3D_property_h_offset>`); cũng như mọi điều chỉnh khác đối với vị trí và hướng của camera do các camera lớp con như :ref:`XRCamera3D<class_XRCamera3D>` thực hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -562,7 +562,7 @@ Returns the transform of the camera plus the vertical (:ref:`v_offset<class_Came
 
 :ref:`bool<class_bool>` **get_cull_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Camera3D_method_get_cull_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`cull_mask<class_Camera3D_property_cull_mask>` is enabled, given a ``layer_number`` between 1 and 20.
+Trả về liệu lớp được chỉ định của :ref:`cull_mask<class_Camera3D_property_cull_mask>` có được bật hay không, với một ``layer_number`` nằm trong khoảng từ 1 đến 20.
 
 .. rst-class:: classref-item-separator
 
@@ -574,7 +574,7 @@ Returns whether or not the specified layer of the :ref:`cull_mask<class_Camera3D
 
 :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] **get_frustum**\ (\ ) |const| :ref:`🔗<class_Camera3D_method_get_frustum>`
 
-Returns the camera's frustum planes in world space units as an array of :ref:`Plane<class_Plane>`\ s in the following order: near, far, left, top, right, bottom. Not to be confused with :ref:`frustum_offset<class_Camera3D_property_frustum_offset>`.
+Trả về các mặt phẳng frustum của camera theo đơn vị không gian thế giới dưới dạng một mảng gồm :ref:`Plane<class_Plane>`\  theo thứ tự sau: gần, xa, trái, trên, phải, dưới. Không được nhầm lẫn với :ref:`frustum_offset<class_Camera3D_property_frustum_offset>`.
 
 .. rst-class:: classref-item-separator
 
@@ -586,7 +586,7 @@ Returns the camera's frustum planes in world space units as an array of :ref:`Pl
 
 :ref:`RID<class_RID>` **get_pyramid_shape_rid**\ (\ ) :ref:`🔗<class_Camera3D_method_get_pyramid_shape_rid>`
 
-Returns the RID of a pyramid shape encompassing the camera's view frustum, ignoring the camera's near plane. The tip of the pyramid represents the position of the camera.
+Trả về RID của một hình chóp bao quanh frustum của camera, bỏ qua mặt phẳng gần của camera. Đỉnh của hình chóp biểu thị vị trí của camera.
 
 .. rst-class:: classref-item-separator
 
@@ -598,9 +598,9 @@ Returns the RID of a pyramid shape encompassing the camera's view frustum, ignor
 
 :ref:`bool<class_bool>` **is_position_behind**\ (\ world_point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Camera3D_method_is_position_behind>`
 
-Returns ``true`` if the given position is behind the camera (the blue part of the linked diagram). `See this diagram <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png>`__ for an overview of position query methods.
+Trả về ``true`` nếu vị trí đã cho nằm phía sau camera (phần màu xanh lam trong sơ đồ được liên kết). `Xem sơ đồ này <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png>`__ để biết tổng quan về các phương thức truy vấn vị trí.
 
-\ **Note:** A position which returns ``false`` may still be outside the camera's field of view.
+\ **Lưu ý:** Một vị trí trả về ``false`` vẫn có thể nằm ngoài trường nhìn của camera.
 
 .. rst-class:: classref-item-separator
 
@@ -612,7 +612,7 @@ Returns ``true`` if the given position is behind the camera (the blue part of th
 
 :ref:`bool<class_bool>` **is_position_in_frustum**\ (\ world_point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Camera3D_method_is_position_in_frustum>`
 
-Returns ``true`` if the given position is inside the camera's frustum (the green part of the linked diagram). `See this diagram <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png>`__ for an overview of position query methods.
+Trả về ``true`` nếu vị trí đã cho nằm bên trong frustum của camera (phần màu xanh lá trong sơ đồ được liên kết). `Xem sơ đồ này <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/camera3d_position_frustum.png>`__ để biết tổng quan về các phương thức truy vấn vị trí.
 
 .. rst-class:: classref-item-separator
 
@@ -624,7 +624,7 @@ Returns ``true`` if the given position is inside the camera's frustum (the green
 
 |void| **make_current**\ (\ ) :ref:`🔗<class_Camera3D_method_make_current>`
 
-Makes this camera the current camera for the :ref:`Viewport<class_Viewport>` (see class description). If the camera node is outside the scene tree, it will attempt to become current once it's added.
+Đặt camera này làm camera hiện tại cho :ref:`Viewport<class_Viewport>` (xem phần mô tả lớp). Nếu node camera nằm ngoài cây cảnh, camera sẽ cố gắng trở thành camera hiện tại ngay khi được thêm vào.
 
 .. rst-class:: classref-item-separator
 
@@ -636,7 +636,7 @@ Makes this camera the current camera for the :ref:`Viewport<class_Viewport>` (se
 
 :ref:`Vector3<class_Vector3>` **project_local_ray_normal**\ (\ screen_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Camera3D_method_project_local_ray_normal>`
 
-Returns a normal vector from the screen point location directed along the camera. Orthogonal cameras are normalized. Perspective cameras account for perspective, screen width/height, etc.
+Trả về một vector pháp tuyến từ vị trí điểm trên màn hình, hướng dọc theo camera. Các camera trực giao được chuẩn hóa. Các camera phối cảnh tính đến phối cảnh, chiều rộng/chiều cao màn hình, v.v.
 
 .. rst-class:: classref-item-separator
 
@@ -648,7 +648,7 @@ Returns a normal vector from the screen point location directed along the camera
 
 :ref:`Vector3<class_Vector3>` **project_position**\ (\ screen_point\: :ref:`Vector2<class_Vector2>`, z_depth\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Camera3D_method_project_position>`
 
-Returns the 3D point in world space that maps to the given 2D coordinate in the :ref:`Viewport<class_Viewport>` rectangle on a plane that is the given ``z_depth`` distance into the scene away from the camera.
+Trả về điểm 3D trong không gian thế giới ánh xạ tới tọa độ 2D đã cho trong hình chữ nhật :ref:`Viewport<class_Viewport>` trên một mặt phẳng nằm sâu vào cảnh một khoảng ``z_depth`` đã cho tính từ camera.
 
 .. rst-class:: classref-item-separator
 
@@ -660,7 +660,7 @@ Returns the 3D point in world space that maps to the given 2D coordinate in the 
 
 :ref:`Vector3<class_Vector3>` **project_ray_normal**\ (\ screen_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Camera3D_method_project_ray_normal>`
 
-Returns a normal vector in world space, that is the result of projecting a point on the :ref:`Viewport<class_Viewport>` rectangle by the inverse camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
+Trả về một vector pháp tuyến trong không gian thế giới, là kết quả của việc chiếu một điểm trên hình chữ nhật :ref:`Viewport<class_Viewport>` bằng phép chiếu ngược của camera. Điều này hữu ích khi phát tia dưới dạng (origin, normal) để kiểm tra giao nhau với đối tượng hoặc chọn đối tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -672,7 +672,7 @@ Returns a normal vector in world space, that is the result of projecting a point
 
 :ref:`Vector3<class_Vector3>` **project_ray_origin**\ (\ screen_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Camera3D_method_project_ray_origin>`
 
-Returns a 3D position in world space, that is the result of projecting a point on the :ref:`Viewport<class_Viewport>` rectangle by the inverse camera projection. This is useful for casting rays in the form of (origin, normal) for object intersection or picking.
+Trả về một vị trí 3D trong không gian thế giới, là kết quả của việc chiếu một điểm trên hình chữ nhật :ref:`Viewport<class_Viewport>` bằng phép chiếu ngược của camera. Điều này hữu ích khi phát tia dưới dạng (origin, normal) để kiểm tra giao nhau với đối tượng hoặc chọn đối tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -684,7 +684,7 @@ Returns a 3D position in world space, that is the result of projecting a point o
 
 |void| **set_cull_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Camera3D_method_set_cull_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`cull_mask<class_Camera3D_property_cull_mask>`, given a ``layer_number`` between 1 and 20.
+Dựa trên ``value``, bật hoặc tắt lớp được chỉ định trong :ref:`cull_mask<class_Camera3D_property_cull_mask>`, với ``layer_number`` nằm trong khoảng từ 1 đến 20.
 
 .. rst-class:: classref-item-separator
 
@@ -696,7 +696,7 @@ Based on ``value``, enables or disables the specified layer in the :ref:`cull_ma
 
 |void| **set_frustum**\ (\ size\: :ref:`float<class_float>`, offset\: :ref:`Vector2<class_Vector2>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Camera3D_method_set_frustum>`
 
-Sets the camera projection to frustum mode (see :ref:`PROJECTION_FRUSTUM<class_Camera3D_constant_PROJECTION_FRUSTUM>`), by specifying a ``size``, an ``offset``, and the ``z_near`` and ``z_far`` clip planes in world space units. The ``size`` parameter represents the size of the near plane, either its width or height depending on the value of :ref:`keep_aspect<class_Camera3D_property_keep_aspect>`. See also :ref:`frustum_offset<class_Camera3D_property_frustum_offset>`.
+Đặt phép chiếu của camera thành chế độ frustum (xem :ref:`PROJECTION_FRUSTUM<class_Camera3D_constant_PROJECTION_FRUSTUM>`), bằng cách chỉ định ``size``, ``offset``, cùng các mặt phẳng cắt ``z_near`` và ``z_far`` theo đơn vị trong không gian thế giới. Tham số ``size`` biểu thị kích thước của mặt phẳng gần, là chiều rộng hoặc chiều cao tùy thuộc vào giá trị của :ref:`keep_aspect<class_Camera3D_property_keep_aspect>`. Xem thêm :ref:`frustum_offset<class_Camera3D_property_frustum_offset>`.
 
 .. rst-class:: classref-item-separator
 
@@ -708,9 +708,9 @@ Sets the camera projection to frustum mode (see :ref:`PROJECTION_FRUSTUM<class_C
 
 |void| **set_orthogonal**\ (\ size\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Camera3D_method_set_orthogonal>`
 
-Sets the camera projection to orthogonal mode (see :ref:`PROJECTION_ORTHOGONAL<class_Camera3D_constant_PROJECTION_ORTHOGONAL>`), by specifying a ``size``, and the ``z_near`` and ``z_far`` clip planes in world space units.
+Đặt phép chiếu của camera thành chế độ trực giao (xem :ref:`PROJECTION_ORTHOGONAL<class_Camera3D_constant_PROJECTION_ORTHOGONAL>`), bằng cách chỉ định ``size``, cùng các mặt phẳng cắt ``z_near`` và ``z_far`` theo đơn vị trong không gian thế giới.
 
-As a hint, 3D games that look 2D often use this projection, with ``size`` specified in pixels.
+Gợi ý: các game 3D có hình thức 2D thường sử dụng phép chiếu này, với ``size`` được chỉ định theo pixel.
 
 .. rst-class:: classref-item-separator
 
@@ -722,7 +722,7 @@ As a hint, 3D games that look 2D often use this projection, with ``size`` specif
 
 |void| **set_perspective**\ (\ fov\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Camera3D_method_set_perspective>`
 
-Sets the camera projection to perspective mode (see :ref:`PROJECTION_PERSPECTIVE<class_Camera3D_constant_PROJECTION_PERSPECTIVE>`), by specifying a ``fov`` (field of view) angle in degrees, and the ``z_near`` and ``z_far`` clip planes in world space units.
+Đặt phép chiếu của camera thành chế độ phối cảnh (xem :ref:`PROJECTION_PERSPECTIVE<class_Camera3D_constant_PROJECTION_PERSPECTIVE>`), bằng cách chỉ định một góc ``fov`` (trường nhìn) theo độ, cùng các mặt phẳng cắt ``z_near`` và ``z_far`` theo đơn vị trong không gian thế giới.
 
 .. rst-class:: classref-item-separator
 
@@ -734,9 +734,9 @@ Sets the camera projection to perspective mode (see :ref:`PROJECTION_PERSPECTIVE
 
 :ref:`Vector2<class_Vector2>` **unproject_position**\ (\ world_point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_Camera3D_method_unproject_position>`
 
-Returns the 2D coordinate in the :ref:`Viewport<class_Viewport>` rectangle that maps to the given 3D point in world space.
+Trả về tọa độ 2D trong hình chữ nhật :ref:`Viewport<class_Viewport>` tương ứng với điểm 3D đã cho trong không gian thế giới.
 
-\ **Note:** When using this to position GUI elements over a 3D viewport, use :ref:`is_position_behind()<class_Camera3D_method_is_position_behind>` to prevent them from appearing if the 3D point is behind the camera:
+\ **Lưu ý:** Khi sử dụng phương thức này để định vị các phần tử GUI trên viewport 3D, hãy sử dụng :ref:`is_position_behind()<class_Camera3D_method_is_position_behind>` để ngăn chúng hiển thị nếu điểm 3D nằm phía sau camera:
 
 ::
 
@@ -745,12 +745,12 @@ Returns the 2D coordinate in the :ref:`Viewport<class_Viewport>` rectangle that 
     control.visible = not get_viewport().get_camera_3d().is_position_behind(global_transform.origin)
     control.position = get_viewport().get_camera_3d().unproject_position(global_transform.origin)
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

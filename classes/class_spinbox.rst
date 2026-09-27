@@ -13,20 +13,20 @@
 SpinBox
 =======
 
-**Inherits:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-An input field for numbers.
+Trường nhập số.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**SpinBox** is a numerical input text field. It allows entering integers and floating-point numbers. The **SpinBox** also has up and down buttons that can be clicked to increase or decrease the value. The value can also be changed by dragging the mouse up or down over the **SpinBox**'s arrows.
+**SpinBox** là một trường văn bản nhập số. Nó cho phép nhập số nguyên và số thực. **SpinBox** cũng có các nút lên và xuống để tăng hoặc giảm giá trị khi nhấp vào. Bạn cũng có thể thay đổi giá trị bằng cách kéo chuột lên hoặc xuống trên các mũi tên của **SpinBox**.
 
-Additionally, mathematical expressions can be entered. These are evaluated when the user presses :kbd:`Enter` while editing the **SpinBox**'s text field. This uses the :ref:`Expression<class_Expression>` class to parse and evaluate the expression. The result of the expression is then set as the value of the **SpinBox**. Some examples of valid expressions are ``5 + 2 * 3``, ``pow(2, 4)``, and ``PI + sin(0.5)``. Expressions are case-sensitive.
+Ngoài ra, bạn có thể nhập các biểu thức toán học. Các biểu thức này được đánh giá khi người dùng nhấn :kbd:`Enter` trong lúc chỉnh sửa trường văn bản của **SpinBox**. Việc này sử dụng lớp :ref:`Expression<class_Expression>` để phân tích cú pháp và đánh giá biểu thức. Sau đó, kết quả của biểu thức được đặt làm giá trị của **SpinBox**. Một số biểu thức hợp lệ là ``5 + 2 * 3``, ``pow(2, 4)`` và ``PI + sin(0.5)``. Các biểu thức phân biệt chữ hoa chữ thường.
 
-\ **Example:** Create a **SpinBox**, disable its context menu and set its text alignment to right.
+\ **Ví dụ:** Tạo một **SpinBox**, tắt context menu của nó và đặt căn chỉnh văn bản thành phải.
 
 
 .. tabs::
@@ -49,48 +49,48 @@ Additionally, mathematical expressions can be entered. These are evaluated when 
 
 
 
-See :ref:`Range<class_Range>` class for more options over the **SpinBox**.
+Xem lớp :ref:`Range<class_Range>` để biết thêm các tùy chọn cho **SpinBox**.
 
-\ **Note:** With the **SpinBox**'s context menu disabled, you can right-click the bottom half of the spinbox to set the value to its minimum, while right-clicking the top half sets the value to its maximum.
+\ **Lưu ý:** Khi đã tắt context menu của **SpinBox**, bạn có thể nhấp chuột phải vào nửa dưới của spinbox để đặt giá trị thành giá trị tối thiểu, còn nhấp chuột phải vào nửa trên sẽ đặt giá trị thành giá trị tối đa.
 
-\ **Note:** **SpinBox** relies on an underlying :ref:`LineEdit<class_LineEdit>` node. To theme a **SpinBox**'s background, add theme items for :ref:`LineEdit<class_LineEdit>` and customize them. The :ref:`LineEdit<class_LineEdit>` has the ``SpinBoxInnerLineEdit`` theme variation, so that you can give it a distinct appearance from regular :ref:`LineEdit<class_LineEdit>`\ s.
+\ **Lưu ý:** **SpinBox** dựa trên một node :ref:`LineEdit<class_LineEdit>` bên dưới. Để tạo theme cho nền của **SpinBox**, hãy thêm các theme item cho :ref:`LineEdit<class_LineEdit>` và tùy chỉnh chúng. :ref:`LineEdit<class_LineEdit>` có biến thể theme ``SpinBoxInnerLineEdit``, nhờ đó bạn có thể tạo diện mạo riêng khác với các :ref:`LineEdit<class_LineEdit>`\ s thông thường.
 
-\ **Note:** If you want to implement drag and drop for the underlying :ref:`LineEdit<class_LineEdit>`, you can use :ref:`Control.set_drag_forwarding()<class_Control_method_set_drag_forwarding>` on the node returned by :ref:`get_line_edit()<class_SpinBox_method_get_line_edit>`.
+\ **Lưu ý:** Nếu muốn triển khai thao tác kéo và thả cho :ref:`LineEdit<class_LineEdit>` bên dưới, bạn có thể sử dụng :ref:`Control.set_drag_forwarding()<class_Control_method_set_drag_forwarding>` trên node được trả về bởi :ref:`get_line_edit()<class_SpinBox_method_get_line_edit>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` | :ref:`alignment<class_SpinBox_property_alignment>`                           | ``0``                                                                        |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`custom_arrow_round<class_SpinBox_property_custom_arrow_round>`         | ``false``                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | :ref:`custom_arrow_step<class_SpinBox_property_custom_arrow_step>`           | ``0.0``                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`editable<class_SpinBox_property_editable>`                             | ``true``                                                                     |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`prefix<class_SpinBox_property_prefix>`                                 | ``""``                                                                       |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`select_all_on_focus<class_SpinBox_property_select_all_on_focus>`       | ``false``                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\]            | size_flags_vertical                                                          | ``1`` (overrides :ref:`Control<class_Control_property_size_flags_vertical>`) |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                         | step                                                                         | ``1.0`` (overrides :ref:`Range<class_Range_property_step>`)                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`suffix<class_SpinBox_property_suffix>`                                 | ``""``                                                                       |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`update_on_text_changed<class_SpinBox_property_update_on_text_changed>` | ``false``                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` | :ref:`alignment<class_SpinBox_property_alignment>`                           | ``0``                                                                     |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`custom_arrow_round<class_SpinBox_property_custom_arrow_round>`         | ``false``                                                                 |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                          | :ref:`custom_arrow_step<class_SpinBox_property_custom_arrow_step>`           | ``0.0``                                                                   |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`editable<class_SpinBox_property_editable>`                             | ``true``                                                                  |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`prefix<class_SpinBox_property_prefix>`                                 | ``""``                                                                    |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`select_all_on_focus<class_SpinBox_property_select_all_on_focus>`       | ``false``                                                                 |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`SizeFlags <enum_Control_SizeFlags>`\]            | size_flags_vertical                                                          | ``1`` (ghi đè :ref:`Control<class_Control_property_size_flags_vertical>`) |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                          | step                                                                         | ``1.0`` (ghi đè :ref:`Range<class_Range_property_step>`)                  |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`suffix<class_SpinBox_property_suffix>`                                 | ``""``                                                                    |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`update_on_text_changed<class_SpinBox_property_update_on_text_changed>` | ``false``                                                                 |
+   +--------------------------------------------------------------------+------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -103,8 +103,8 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Các thuộc tính theme
+--------------------
 
 .. table::
    :widths: auto
@@ -179,8 +179,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SpinBox_property_alignment:
 
@@ -193,7 +193,7 @@ Property Descriptions
 - |void| **set_horizontal_alignment**\ (\ value\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )
 - :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` **get_horizontal_alignment**\ (\ )
 
-Changes the alignment of the underlying :ref:`LineEdit<class_LineEdit>`.
+Thay đổi căn chỉnh của :ref:`LineEdit<class_LineEdit>` bên dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Changes the alignment of the underlying :ref:`LineEdit<class_LineEdit>`.
 - |void| **set_custom_arrow_round**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_custom_arrow_rounding**\ (\ )
 
-If ``true``, the value will be rounded to a multiple of :ref:`custom_arrow_step<class_SpinBox_property_custom_arrow_step>` when interacting with the arrow buttons. Otherwise, increments the value by :ref:`custom_arrow_step<class_SpinBox_property_custom_arrow_step>` and then rounds it according to :ref:`Range.step<class_Range_property_step>`.
+Nếu ``true``, giá trị sẽ được làm tròn thành bội số của :ref:`custom_arrow_step<class_SpinBox_property_custom_arrow_step>` khi tương tác với các nút mũi tên. Nếu không, giá trị được tăng thêm :ref:`custom_arrow_step<class_SpinBox_property_custom_arrow_step>` rồi làm tròn theo :ref:`Range.step<class_Range_property_step>`.
 
 .. rst-class:: classref-item-separator
 
@@ -227,9 +227,9 @@ If ``true``, the value will be rounded to a multiple of :ref:`custom_arrow_step<
 - |void| **set_custom_arrow_step**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_custom_arrow_step**\ (\ )
 
-If not ``0``, sets the step when interacting with the arrow buttons of the **SpinBox**.
+Nếu không phải ``0``, đặt bước khi tương tác với các nút mũi tên của **SpinBox**.
 
-\ **Note:** :ref:`Range.value<class_Range_property_value>` will still be rounded to a multiple of :ref:`Range.step<class_Range_property_step>`.
+\ **Lưu ý:** :ref:`Range.value<class_Range_property_value>` vẫn sẽ được làm tròn thành bội số của :ref:`Range.step<class_Range_property_step>`.
 
 .. rst-class:: classref-item-separator
 
@@ -246,7 +246,7 @@ If not ``0``, sets the step when interacting with the arrow buttons of the **Spi
 - |void| **set_editable**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editable**\ (\ )
 
-If ``true``, the **SpinBox** will be editable. Otherwise, it will be read only.
+Nếu ``true``, **SpinBox** sẽ có thể chỉnh sửa. Nếu không, nó sẽ ở chế độ chỉ đọc.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ If ``true``, the **SpinBox** will be editable. Otherwise, it will be read only.
 - |void| **set_prefix**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_prefix**\ (\ )
 
-Adds the specified prefix string before the numerical value of the **SpinBox**.
+Thêm chuỗi tiền tố được chỉ định vào trước giá trị số của **SpinBox**.
 
 .. rst-class:: classref-item-separator
 
@@ -280,7 +280,7 @@ Adds the specified prefix string before the numerical value of the **SpinBox**.
 - |void| **set_select_all_on_focus**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_select_all_on_focus**\ (\ )
 
-If ``true``, the **SpinBox** will select the whole text when the :ref:`LineEdit<class_LineEdit>` gains focus. Clicking the up and down arrows won't trigger this behavior.
+Nếu ``true``, **SpinBox** sẽ chọn toàn bộ văn bản khi :ref:`LineEdit<class_LineEdit>` nhận focus. Nhấp vào các mũi tên lên và xuống sẽ không kích hoạt hành vi này.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ If ``true``, the **SpinBox** will select the whole text when the :ref:`LineEdit<
 - |void| **set_suffix**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_suffix**\ (\ )
 
-Adds the specified suffix string after the numerical value of the **SpinBox**.
+Thêm chuỗi hậu tố được chỉ định vào sau giá trị số của **SpinBox**.
 
 .. rst-class:: classref-item-separator
 
@@ -314,9 +314,9 @@ Adds the specified suffix string after the numerical value of the **SpinBox**.
 - |void| **set_update_on_text_changed**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_update_on_text_changed**\ (\ )
 
-Sets the value of the :ref:`Range<class_Range>` for this **SpinBox** when the :ref:`LineEdit<class_LineEdit>` text is *changed* instead of *submitted*. See :ref:`LineEdit.text_changed<class_LineEdit_signal_text_changed>` and :ref:`LineEdit.text_submitted<class_LineEdit_signal_text_submitted>`.
+Đặt giá trị của :ref:`Range<class_Range>` cho **SpinBox** này khi văn bản của :ref:`LineEdit<class_LineEdit>` *được thay đổi* thay vì *được gửi*. Xem :ref:`LineEdit.text_changed<class_LineEdit_signal_text_changed>` và :ref:`LineEdit.text_submitted<class_LineEdit_signal_text_submitted>`.
 
-\ **Note:** If set to ``true``, this will interfere with entering mathematical expressions in the **SpinBox**. The **SpinBox** will try to evaluate the expression as you type, which means symbols like a trailing ``+`` are removed immediately by the expression being evaluated.
+\ **Lưu ý:** Nếu đặt thành ``true``, điều này sẽ cản trở việc nhập các biểu thức toán học vào **SpinBox**. **SpinBox** sẽ cố đánh giá biểu thức ngay khi bạn nhập, nghĩa là các ký hiệu như ``+`` ở cuối sẽ bị biểu thức đang được đánh giá xóa ngay lập tức.
 
 .. rst-class:: classref-section-separator
 
@@ -324,8 +324,8 @@ Sets the value of the :ref:`Range<class_Range>` for this **SpinBox** when the :r
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SpinBox_method_apply:
 
@@ -333,7 +333,7 @@ Method Descriptions
 
 |void| **apply**\ (\ ) :ref:`🔗<class_SpinBox_method_apply>`
 
-Applies the current value of this **SpinBox**. This is equivalent to pressing :kbd:`Enter` while editing the :ref:`LineEdit<class_LineEdit>` used by the **SpinBox**. This will cause :ref:`LineEdit.text_submitted<class_LineEdit_signal_text_submitted>` to be emitted and its currently contained expression to be evaluated.
+Áp dụng giá trị hiện tại của **SpinBox** này. Tương đương với việc nhấn :kbd:`Enter` trong lúc chỉnh sửa :ref:`LineEdit<class_LineEdit>` được **SpinBox** sử dụng. Việc này sẽ khiến :ref:`LineEdit.text_submitted<class_LineEdit_signal_text_submitted>` được phát ra và biểu thức hiện đang chứa trong đó được đánh giá.
 
 .. rst-class:: classref-item-separator
 
@@ -345,9 +345,9 @@ Applies the current value of this **SpinBox**. This is equivalent to pressing :k
 
 :ref:`LineEdit<class_LineEdit>` **get_line_edit**\ (\ ) :ref:`🔗<class_SpinBox_method_get_line_edit>`
 
-Returns the :ref:`LineEdit<class_LineEdit>` instance from this **SpinBox**. You can use it to access properties and methods of :ref:`LineEdit<class_LineEdit>`.
+Trả về thực thể :ref:`LineEdit<class_LineEdit>` từ **SpinBox** này. Bạn có thể dùng nó để truy cập các thuộc tính và phương thức của :ref:`LineEdit<class_LineEdit>`.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là một node nội bộ bắt buộc; việc xóa và giải phóng nó có thể gây crash. Nếu muốn ẩn nó hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` tương ứng.
 
 .. rst-class:: classref-section-separator
 
@@ -355,8 +355,8 @@ Returns the :ref:`LineEdit<class_LineEdit>` instance from this **SpinBox**. You 
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính theme
+----------------------
 
 .. _class_SpinBox_theme_color_down_disabled_icon_modulate:
 
@@ -364,7 +364,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **down_disabled_icon_modulate** = ``Color(0.875, 0.875, 0.875, 0.5)`` :ref:`🔗<class_SpinBox_theme_color_down_disabled_icon_modulate>`
 
-Down button icon modulation color, when the button is disabled.
+Màu điều biến biểu tượng của nút xuống khi nút bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -376,7 +376,7 @@ Down button icon modulation color, when the button is disabled.
 
 :ref:`Color<class_Color>` **down_hover_icon_modulate** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_SpinBox_theme_color_down_hover_icon_modulate>`
 
-Down button icon modulation color, when the button is hovered.
+Màu điều biến biểu tượng của nút xuống khi di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -388,7 +388,7 @@ Down button icon modulation color, when the button is hovered.
 
 :ref:`Color<class_Color>` **down_icon_modulate** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_SpinBox_theme_color_down_icon_modulate>`
 
-Down button icon modulation color.
+Màu điều biến biểu tượng của nút xuống.
 
 .. rst-class:: classref-item-separator
 
@@ -400,7 +400,7 @@ Down button icon modulation color.
 
 :ref:`Color<class_Color>` **down_pressed_icon_modulate** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_SpinBox_theme_color_down_pressed_icon_modulate>`
 
-Down button icon modulation color, when the button is being pressed.
+Màu điều biến biểu tượng của nút xuống khi nút đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -412,7 +412,7 @@ Down button icon modulation color, when the button is being pressed.
 
 :ref:`Color<class_Color>` **up_disabled_icon_modulate** = ``Color(0.875, 0.875, 0.875, 0.5)`` :ref:`🔗<class_SpinBox_theme_color_up_disabled_icon_modulate>`
 
-Up button icon modulation color, when the button is disabled.
+Màu điều biến biểu tượng của nút lên khi nút bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -424,7 +424,7 @@ Up button icon modulation color, when the button is disabled.
 
 :ref:`Color<class_Color>` **up_hover_icon_modulate** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_SpinBox_theme_color_up_hover_icon_modulate>`
 
-Up button icon modulation color, when the button is hovered.
+Màu điều biến biểu tượng của nút lên khi di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -436,7 +436,7 @@ Up button icon modulation color, when the button is hovered.
 
 :ref:`Color<class_Color>` **up_icon_modulate** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_SpinBox_theme_color_up_icon_modulate>`
 
-Up button icon modulation color.
+Màu điều biến biểu tượng của nút lên.
 
 .. rst-class:: classref-item-separator
 
@@ -448,7 +448,7 @@ Up button icon modulation color.
 
 :ref:`Color<class_Color>` **up_pressed_icon_modulate** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_SpinBox_theme_color_up_pressed_icon_modulate>`
 
-Up button icon modulation color, when the button is being pressed.
+Màu điều biến biểu tượng của nút lên khi nút đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -460,7 +460,7 @@ Up button icon modulation color, when the button is being pressed.
 
 :ref:`int<class_int>` **buttons_vertical_separation** = ``0`` :ref:`🔗<class_SpinBox_theme_constant_buttons_vertical_separation>`
 
-Vertical separation between the up and down buttons.
+Khoảng cách theo chiều dọc giữa các nút lên và xuống.
 
 .. rst-class:: classref-item-separator
 
@@ -472,7 +472,7 @@ Vertical separation between the up and down buttons.
 
 :ref:`int<class_int>` **buttons_width** = ``16`` :ref:`🔗<class_SpinBox_theme_constant_buttons_width>`
 
-Width of the up and down buttons. If smaller than any icon set on the buttons, the respective icon may overlap neighboring elements. If smaller than ``0``, the width is automatically adjusted from the icon size.
+Chiều rộng của các nút lên và xuống. Nếu nhỏ hơn bất kỳ biểu tượng nào được đặt trên các nút, biểu tượng tương ứng có thể chồng lên các phần tử lân cận. Nếu nhỏ hơn ``0``, chiều rộng sẽ tự động được điều chỉnh theo kích thước biểu tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -484,7 +484,7 @@ Width of the up and down buttons. If smaller than any icon set on the buttons, t
 
 :ref:`int<class_int>` **field_and_buttons_separation** = ``2`` :ref:`🔗<class_SpinBox_theme_constant_field_and_buttons_separation>`
 
-Width of the horizontal separation between the text input field (:ref:`LineEdit<class_LineEdit>`) and the buttons.
+Chiều rộng của khoảng cách ngang giữa trường nhập văn bản (:ref:`LineEdit<class_LineEdit>`) và các nút.
 
 .. rst-class:: classref-item-separator
 
@@ -496,7 +496,7 @@ Width of the horizontal separation between the text input field (:ref:`LineEdit<
 
 :ref:`int<class_int>` **set_min_buttons_width_from_icons** = ``1`` :ref:`🔗<class_SpinBox_theme_constant_set_min_buttons_width_from_icons>`
 
-If not ``0``, the minimum button width corresponds to the widest of all icons set on those buttons, even if :ref:`buttons_width<class_SpinBox_theme_constant_buttons_width>` is smaller.
+Nếu không phải ``0``, chiều rộng tối thiểu của nút sẽ tương ứng với biểu tượng rộng nhất trong tất cả các biểu tượng được đặt trên những nút đó, ngay cả khi :ref:`buttons_width<class_SpinBox_theme_constant_buttons_width>` nhỏ hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -506,9 +506,9 @@ If not ``0``, the minimum button width corresponds to the widest of all icons se
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **down** :ref:`🔗<class_SpinBox_theme_icon_down>`
+:ref:`Texture2D<class_Texture2D>` **down** :ref:`🔗 <class_SpinBox_theme_icon_down>`
 
-Down button icon, displayed in the middle of the down (value-decreasing) button.
+Biểu tượng của nút giảm, được hiển thị ở giữa nút giảm (giảm giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -518,9 +518,9 @@ Down button icon, displayed in the middle of the down (value-decreasing) button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **down_disabled** :ref:`🔗<class_SpinBox_theme_icon_down_disabled>`
+:ref:`Texture2D<class_Texture2D>` **down_disabled** :ref:`🔗 <class_SpinBox_theme_icon_down_disabled>`
 
-Down button icon when the button is disabled.
+Biểu tượng của nút giảm khi nút bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -530,9 +530,9 @@ Down button icon when the button is disabled.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **down_hover** :ref:`🔗<class_SpinBox_theme_icon_down_hover>`
+:ref:`Texture2D<class_Texture2D>` **down_hover** :ref:`🔗 <class_SpinBox_theme_icon_down_hover>`
 
-Down button icon when the button is hovered.
+Biểu tượng của nút giảm khi di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -542,9 +542,9 @@ Down button icon when the button is hovered.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **down_pressed** :ref:`🔗<class_SpinBox_theme_icon_down_pressed>`
+:ref:`Texture2D<class_Texture2D>` **down_pressed** :ref:`🔗 <class_SpinBox_theme_icon_down_pressed>`
 
-Down button icon when the button is being pressed.
+Biểu tượng của nút giảm khi đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -554,9 +554,9 @@ Down button icon when the button is being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **up** :ref:`🔗<class_SpinBox_theme_icon_up>`
+:ref:`Texture2D<class_Texture2D>` **up** :ref:`🔗 <class_SpinBox_theme_icon_up>`
 
-Up button icon, displayed in the middle of the up (value-increasing) button.
+Biểu tượng của nút tăng, được hiển thị ở giữa nút tăng (tăng giá trị).
 
 .. rst-class:: classref-item-separator
 
@@ -566,9 +566,9 @@ Up button icon, displayed in the middle of the up (value-increasing) button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **up_disabled** :ref:`🔗<class_SpinBox_theme_icon_up_disabled>`
+:ref:`Texture2D<class_Texture2D>` **up_disabled** :ref:`🔗 <class_SpinBox_theme_icon_up_disabled>`
 
-Up button icon when the button is disabled.
+Biểu tượng của nút tăng khi nút bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -578,9 +578,9 @@ Up button icon when the button is disabled.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **up_hover** :ref:`🔗<class_SpinBox_theme_icon_up_hover>`
+:ref:`Texture2D<class_Texture2D>` **up_hover** :ref:`🔗 <class_SpinBox_theme_icon_up_hover>`
 
-Up button icon when the button is hovered.
+Biểu tượng của nút tăng khi di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -590,9 +590,9 @@ Up button icon when the button is hovered.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **up_pressed** :ref:`🔗<class_SpinBox_theme_icon_up_pressed>`
+:ref:`Texture2D<class_Texture2D>` **up_pressed** :ref:`🔗 <class_SpinBox_theme_icon_up_pressed>`
 
-Up button icon when the button is being pressed.
+Biểu tượng của nút tăng khi đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -602,9 +602,9 @@ Up button icon when the button is being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **updown** :ref:`🔗<class_SpinBox_theme_icon_updown>`
+:ref:`Texture2D<class_Texture2D>` **updown** :ref:`🔗 <class_SpinBox_theme_icon_updown>`
 
-Single texture representing both the up and down buttons icons. It is displayed in the middle of the buttons and does not change upon interaction. If a valid icon is assigned, it will replace :ref:`up<class_SpinBox_theme_icon_up>` and :ref:`down<class_SpinBox_theme_icon_down>`.
+Một texture duy nhất đại diện cho biểu tượng của cả nút tăng và nút giảm. Texture này được hiển thị ở giữa các nút và không thay đổi khi tương tác. Nếu một biểu tượng hợp lệ được gán, biểu tượng đó sẽ thay thế :ref:`up<class_SpinBox_theme_icon_up>` và :ref:`down<class_SpinBox_theme_icon_down>`.
 
 .. rst-class:: classref-item-separator
 
@@ -614,9 +614,9 @@ Single texture representing both the up and down buttons icons. It is displayed 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **down_background** :ref:`🔗<class_SpinBox_theme_style_down_background>`
+:ref:`StyleBox<class_StyleBox>` **down_background** :ref:`🔗 <class_SpinBox_theme_style_down_background>`
 
-Background style of the down button.
+Kiểu nền của nút giảm.
 
 .. rst-class:: classref-item-separator
 
@@ -626,9 +626,9 @@ Background style of the down button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **down_background_disabled** :ref:`🔗<class_SpinBox_theme_style_down_background_disabled>`
+:ref:`StyleBox<class_StyleBox>` **down_background_disabled** :ref:`🔗 <class_SpinBox_theme_style_down_background_disabled>`
 
-Background style of the down button when disabled.
+Kiểu nền của nút giảm khi bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -638,9 +638,9 @@ Background style of the down button when disabled.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **down_background_hovered** :ref:`🔗<class_SpinBox_theme_style_down_background_hovered>`
+:ref:`StyleBox<class_StyleBox>` **down_background_hovered** :ref:`🔗 <class_SpinBox_theme_style_down_background_hovered>`
 
-Background style of the down button when hovered.
+Kiểu nền của nút giảm khi di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -650,9 +650,9 @@ Background style of the down button when hovered.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **down_background_pressed** :ref:`🔗<class_SpinBox_theme_style_down_background_pressed>`
+:ref:`StyleBox<class_StyleBox>` **down_background_pressed** :ref:`🔗 <class_SpinBox_theme_style_down_background_pressed>`
 
-Background style of the down button when being pressed.
+Kiểu nền của nút giảm khi đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -662,9 +662,9 @@ Background style of the down button when being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **field_and_buttons_separator** :ref:`🔗<class_SpinBox_theme_style_field_and_buttons_separator>`
+:ref:`StyleBox<class_StyleBox>` **field_and_buttons_separator** :ref:`🔗 <class_SpinBox_theme_style_field_and_buttons_separator>`
 
-:ref:`StyleBox<class_StyleBox>` drawn in the space occupied by the separation between the input field and the buttons.
+:ref:`StyleBox<class_StyleBox>` được vẽ trong phần không gian dành cho đường phân cách giữa trường nhập liệu và các nút.
 
 .. rst-class:: classref-item-separator
 
@@ -674,9 +674,9 @@ Background style of the down button when being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **up_background** :ref:`🔗<class_SpinBox_theme_style_up_background>`
+:ref:`StyleBox<class_StyleBox>` **up_background** :ref:`🔗 <class_SpinBox_theme_style_up_background>`
 
-Background style of the up button.
+Kiểu nền của nút tăng.
 
 .. rst-class:: classref-item-separator
 
@@ -686,9 +686,9 @@ Background style of the up button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **up_background_disabled** :ref:`🔗<class_SpinBox_theme_style_up_background_disabled>`
+:ref:`StyleBox<class_StyleBox>` **up_background_disabled** :ref:`🔗 <class_SpinBox_theme_style_up_background_disabled>`
 
-Background style of the up button when disabled.
+Kiểu nền của nút tăng khi bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -698,9 +698,9 @@ Background style of the up button when disabled.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **up_background_hovered** :ref:`🔗<class_SpinBox_theme_style_up_background_hovered>`
+:ref:`StyleBox<class_StyleBox>` **up_background_hovered** :ref:`🔗 <class_SpinBox_theme_style_up_background_hovered>`
 
-Background style of the up button when hovered.
+Kiểu nền của nút tăng khi di chuột qua nút.
 
 .. rst-class:: classref-item-separator
 
@@ -710,9 +710,9 @@ Background style of the up button when hovered.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **up_background_pressed** :ref:`🔗<class_SpinBox_theme_style_up_background_pressed>`
+:ref:`StyleBox<class_StyleBox>` **up_background_pressed** :ref:`🔗 <class_SpinBox_theme_style_up_background_pressed>`
 
-Background style of the up button when being pressed.
+Kiểu nền của nút tăng khi đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -722,16 +722,16 @@ Background style of the up button when being pressed.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **up_down_buttons_separator** :ref:`🔗<class_SpinBox_theme_style_up_down_buttons_separator>`
+:ref:`StyleBox<class_StyleBox>` **up_down_buttons_separator** :ref:`🔗 <class_SpinBox_theme_style_up_down_buttons_separator>`
 
-:ref:`StyleBox<class_StyleBox>` drawn in the space occupied by the separation between the up and down buttons.
+:ref:`StyleBox<class_StyleBox>` được vẽ trong phần không gian dành cho đường phân cách giữa nút tăng và nút giảm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

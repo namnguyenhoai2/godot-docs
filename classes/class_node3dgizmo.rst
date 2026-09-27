@@ -10,27 +10,27 @@
 Node3DGizmo
 ===========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`
+**Được kế thừa bởi:** :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`
 
-Abstract class to expose editor gizmos for :ref:`Node3D<class_Node3D>`.
+Lớp trừu tượng để hiển thị các gizmo của editor cho :ref:`Node3D<class_Node3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This abstract class helps connect the :ref:`Node3D<class_Node3D>` scene with the editor-specific :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>` class.
+Lớp trừu tượng này giúp kết nối scene :ref:`Node3D<class_Node3D>` với lớp :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>` dành riêng cho editor.
 
-\ **Node3DGizmo** by itself has no exposed API, refer to :ref:`Node3D.add_gizmo()<class_Node3D_method_add_gizmo>` and pass it an :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>` instance.
+\ **Node3DGizmo** bản thân không có API được công khai; hãy tham khảo :ref:`Node3D.add_gizmo()<class_Node3D_method_add_gizmo>` và truyền cho nó một instance :ref:`EditorNode3DGizmo<class_EditorNode3DGizmo>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng mặt nạ bit gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

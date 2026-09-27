@@ -10,29 +10,29 @@
 PlaceholderCubemapArray
 =======================
 
-**Inherits:** :ref:`PlaceholderTextureLayered<class_PlaceholderTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PlaceholderTextureLayered<class_PlaceholderTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A :ref:`CubemapArray<class_CubemapArray>` without image data.
+Một :ref:`CubemapArray<class_CubemapArray>` không có dữ liệu hình ảnh.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class replaces a :ref:`CubemapArray<class_CubemapArray>` or a :ref:`CubemapArray<class_CubemapArray>`-derived class in 2 conditions:
+Lớp này thay thế một :ref:`CubemapArray<class_CubemapArray>` hoặc một lớp bắt nguồn từ :ref:`CubemapArray<class_CubemapArray>` trong 2 trường hợp:
 
-- In dedicated server mode, where the image data shouldn't affect game logic. This allows reducing the exported PCK's size significantly.
+- Trong chế độ dedicated server, khi dữ liệu hình ảnh không nên ảnh hưởng đến logic trò chơi. Điều này cho phép giảm đáng kể kích thước PCK được export.
 
-- When the :ref:`CubemapArray<class_CubemapArray>`-derived class is missing, for example when using a different engine version.
+- Khi lớp bắt nguồn từ :ref:`CubemapArray<class_CubemapArray>` bị thiếu, chẳng hạn như khi sử dụng phiên bản engine khác.
 
-\ **Note:** This class is not intended for rendering or for use in shaders. Operations like calculating UV are not guaranteed to work.
+\ **Lưu ý:** Lớp này không предназначена cho việc rendering hoặc sử dụng trong shader. Các thao tác như tính toán UV không được đảm bảo sẽ hoạt động.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

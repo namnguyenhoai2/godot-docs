@@ -10,20 +10,20 @@
 NavigationPolygon
 =================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 2D navigation mesh that describes a traversable surface for pathfinding.
+Lưới điều hướng 2D mô tả một bề mặt có thể đi qua để tìm đường.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A navigation mesh can be created either by baking it with the help of the :ref:`NavigationServer2D<class_NavigationServer2D>`, or by adding vertices and convex polygon indices arrays manually.
+Có thể tạo lưới điều hướng bằng cách bake với sự trợ giúp của :ref:`NavigationServer2D<class_NavigationServer2D>`, hoặc thêm các mảng chỉ số đỉnh và đa giác lồi theo cách thủ công.
 
-To bake a navigation mesh at least one outline needs to be added that defines the outer bounds of the baked area.
+Để bake một lưới điều hướng, cần thêm ít nhất một đường bao xác định ranh giới bên ngoài của khu vực được bake.
 
 
 .. tabs::
@@ -46,7 +46,7 @@ To bake a navigation mesh at least one outline needs to be added that defines th
 
 
 
-Adding vertices and polygon indices manually.
+Thêm các đỉnh và chỉ số đa giác theo cách thủ công.
 
 
 .. tabs::
@@ -73,7 +73,7 @@ Adding vertices and polygon indices manually.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
 - :doc:`Using NavigationMeshes <../tutorials/navigation/navigation_using_navigationmeshes>`
@@ -82,38 +82,38 @@ Tutorials
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`float<class_float>`                                              | :ref:`agent_radius<class_NavigationPolygon_property_agent_radius>`                             | ``10.0``                                        |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`Rect2<class_Rect2>`                                              | :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>`                               | ``Rect2(0, 0, 0, 0)``                           |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                          | :ref:`baking_rect_offset<class_NavigationPolygon_property_baking_rect_offset>`                 | ``Vector2(0, 0)``                               |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`float<class_float>`                                              | :ref:`border_size<class_NavigationPolygon_property_border_size>`                               | ``0.0``                                         |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`float<class_float>`                                              | :ref:`cell_size<class_NavigationPolygon_property_cell_size>`                                   | ``1.0``                                         |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`int<class_int>`                                                  | :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>`           | ``4294967295``                                  |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>`   | :ref:`parsed_geometry_type<class_NavigationPolygon_property_parsed_geometry_type>`             | ``2``                                           |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` | :ref:`sample_partition_type<class_NavigationPolygon_property_sample_partition_type>`           | ``0``                                           |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`StringName<class_StringName>`                                    | :ref:`source_geometry_group_name<class_NavigationPolygon_property_source_geometry_group_name>` | ``&"navigation_polygon_source_geometry_group"`` |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
-   | :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>`   | :ref:`source_geometry_mode<class_NavigationPolygon_property_source_geometry_mode>`             | ``0``                                           |
-   +------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`float<class_float>`                                               | :ref:`agent_radius<class_NavigationPolygon_property_agent_radius>`                             | ``10.0``                                        |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`Rect2<class_Rect2>`                                               | :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>`                               | ``Rect2(0, 0, 0, 0)``                           |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                           | :ref:`baking_rect_offset<class_NavigationPolygon_property_baking_rect_offset>`                 | ``Vector2(0, 0)``                               |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`float<class_float>`                                               | :ref:`border_size<class_NavigationPolygon_property_border_size>`                               | ``0.0``                                         |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`float<class_float>`                                               | :ref:`cell_size<class_NavigationPolygon_property_cell_size>`                                   | ``1.0``                                         |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`int<class_int>`                                                   | :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>`           | ``4294967295``                                  |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`ParsedGeometryType <enum_NavigationPolygon_ParsedGeometryType>`   | :ref:`parsed_geometry_type<class_NavigationPolygon_property_parsed_geometry_type>`             | ``2``                                           |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`SamplePartitionType <enum_NavigationPolygon_SamplePartitionType>` | :ref:`sample_partition_type<class_NavigationPolygon_property_sample_partition_type>`           | ``0``                                           |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`StringName<class_StringName>`                                     | :ref:`source_geometry_group_name<class_NavigationPolygon_property_source_geometry_group_name>` | ``&"navigation_polygon_source_geometry_group"`` |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
+   | :ref:`SourceGeometryMode <enum_NavigationPolygon_SourceGeometryMode>`   | :ref:`source_geometry_mode<class_NavigationPolygon_property_source_geometry_mode>`             | ``0``                                           |
+   +-------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+-------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -162,14 +162,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các phép liệt kê
+----------------
 
 .. _enum_NavigationPolygon_SamplePartitionType:
 
 .. rst-class:: classref-enumeration
 
-enum **SamplePartitionType**: :ref:`🔗<enum_NavigationPolygon_SamplePartitionType>`
+enum **SamplePartitionType**: :ref:`🔗 <enum_NavigationPolygon_SamplePartitionType>`
 
 .. _class_NavigationPolygon_constant_SAMPLE_PARTITION_CONVEX_PARTITION:
 
@@ -177,7 +177,7 @@ enum **SamplePartitionType**: :ref:`🔗<enum_NavigationPolygon_SamplePartitionT
 
 :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` **SAMPLE_PARTITION_CONVEX_PARTITION** = ``0``
 
-Convex partitioning that results in a navigation mesh with convex polygons.
+Phân vùng lồi tạo ra một navigation mesh với các đa giác lồi.
 
 .. _class_NavigationPolygon_constant_SAMPLE_PARTITION_TRIANGULATE:
 
@@ -185,7 +185,7 @@ Convex partitioning that results in a navigation mesh with convex polygons.
 
 :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` **SAMPLE_PARTITION_TRIANGULATE** = ``1``
 
-Triangulation partitioning that results in a navigation mesh with triangle polygons.
+Phân vùng bằng cách tam giác hóa, tạo ra một navigation mesh với các polygon tam giác.
 
 .. _class_NavigationPolygon_constant_SAMPLE_PARTITION_MAX:
 
@@ -193,7 +193,7 @@ Triangulation partitioning that results in a navigation mesh with triangle polyg
 
 :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` **SAMPLE_PARTITION_MAX** = ``2``
 
-Represents the size of the :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` enum.
+Đại diện cho kích thước của enum :ref:`SamplePartitionType <enum_NavigationPolygon_SamplePartitionType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -203,7 +203,7 @@ Represents the size of the :ref:`SamplePartitionType<enum_NavigationPolygon_Samp
 
 .. rst-class:: classref-enumeration
 
-enum **ParsedGeometryType**: :ref:`🔗<enum_NavigationPolygon_ParsedGeometryType>`
+enum **ParsedGeometryType**: :ref:`🔗 <enum_NavigationPolygon_ParsedGeometryType>`
 
 .. _class_NavigationPolygon_constant_PARSED_GEOMETRY_MESH_INSTANCES:
 
@@ -211,9 +211,9 @@ enum **ParsedGeometryType**: :ref:`🔗<enum_NavigationPolygon_ParsedGeometryTyp
 
 :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` **PARSED_GEOMETRY_MESH_INSTANCES** = ``0``
 
-Parses mesh instances as obstruction geometry. This includes :ref:`Polygon2D<class_Polygon2D>`, :ref:`MeshInstance2D<class_MeshInstance2D>`, :ref:`MultiMeshInstance2D<class_MultiMeshInstance2D>`, and :ref:`TileMap<class_TileMap>` nodes.
+Phân tích các mesh instance dưới dạng hình học chướng ngại vật. Bao gồm các node :ref:`Polygon2D<class_Polygon2D>`, :ref:`MeshInstance2D<class_MeshInstance2D>`, :ref:`MultiMeshInstance2D<class_MultiMeshInstance2D>` và :ref:`TileMap<class_TileMap>`.
 
-Meshes are only parsed when they use a 2D vertices surface format.
+Mesh chỉ được phân tích khi sử dụng surface format vertex 2D.
 
 .. _class_NavigationPolygon_constant_PARSED_GEOMETRY_STATIC_COLLIDERS:
 
@@ -221,7 +221,7 @@ Meshes are only parsed when they use a 2D vertices surface format.
 
 :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` **PARSED_GEOMETRY_STATIC_COLLIDERS** = ``1``
 
-Parses :ref:`StaticBody2D<class_StaticBody2D>` and :ref:`TileMap<class_TileMap>` colliders as obstruction geometry. The collider should be in any of the layers specified by :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>`.
+Phân tích các collider :ref:`StaticBody2D<class_StaticBody2D>` và :ref:`TileMap<class_TileMap>` dưới dạng hình học chướng ngại vật. Collider phải nằm trong một trong các layer được chỉ định bởi :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>`.
 
 .. _class_NavigationPolygon_constant_PARSED_GEOMETRY_BOTH:
 
@@ -229,7 +229,7 @@ Parses :ref:`StaticBody2D<class_StaticBody2D>` and :ref:`TileMap<class_TileMap>`
 
 :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` **PARSED_GEOMETRY_BOTH** = ``2``
 
-Both :ref:`PARSED_GEOMETRY_MESH_INSTANCES<class_NavigationPolygon_constant_PARSED_GEOMETRY_MESH_INSTANCES>` and :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationPolygon_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>`.
+Cả :ref:`PARSED_GEOMETRY_MESH_INSTANCES<class_NavigationPolygon_constant_PARSED_GEOMETRY_MESH_INSTANCES>` và :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationPolygon_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>`.
 
 .. _class_NavigationPolygon_constant_PARSED_GEOMETRY_MAX:
 
@@ -237,7 +237,7 @@ Both :ref:`PARSED_GEOMETRY_MESH_INSTANCES<class_NavigationPolygon_constant_PARSE
 
 :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` **PARSED_GEOMETRY_MAX** = ``3``
 
-Represents the size of the :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` enum.
+Biểu thị kích thước của enum :ref:`ParsedGeometryType <enum_NavigationPolygon_ParsedGeometryType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ Represents the size of the :ref:`ParsedGeometryType<enum_NavigationPolygon_Parse
 
 .. rst-class:: classref-enumeration
 
-enum **SourceGeometryMode**: :ref:`🔗<enum_NavigationPolygon_SourceGeometryMode>`
+enum **SourceGeometryMode**: :ref:`🔗 <enum_NavigationPolygon_SourceGeometryMode>`
 
 .. _class_NavigationPolygon_constant_SOURCE_GEOMETRY_ROOT_NODE_CHILDREN:
 
@@ -255,7 +255,7 @@ enum **SourceGeometryMode**: :ref:`🔗<enum_NavigationPolygon_SourceGeometryMod
 
 :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` **SOURCE_GEOMETRY_ROOT_NODE_CHILDREN** = ``0``
 
-Scans the child nodes of the root node recursively for geometry.
+Quét đệ quy các nút con của nút gốc để tìm hình học.
 
 .. _class_NavigationPolygon_constant_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN:
 
@@ -263,7 +263,7 @@ Scans the child nodes of the root node recursively for geometry.
 
 :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` **SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN** = ``1``
 
-Scans nodes in a group and their child nodes recursively for geometry. The group is specified by :ref:`source_geometry_group_name<class_NavigationPolygon_property_source_geometry_group_name>`.
+Quét các nút trong một nhóm và các nút con của chúng theo cách đệ quy để tìm hình học. Nhóm được chỉ định bởi :ref:`source_geometry_group_name<class_NavigationPolygon_property_source_geometry_group_name>`.
 
 .. _class_NavigationPolygon_constant_SOURCE_GEOMETRY_GROUPS_EXPLICIT:
 
@@ -271,7 +271,7 @@ Scans nodes in a group and their child nodes recursively for geometry. The group
 
 :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` **SOURCE_GEOMETRY_GROUPS_EXPLICIT** = ``2``
 
-Uses nodes in a group for geometry. The group is specified by :ref:`source_geometry_group_name<class_NavigationPolygon_property_source_geometry_group_name>`.
+Sử dụng các nút trong một nhóm cho hình học. Nhóm được chỉ định bởi :ref:`source_geometry_group_name<class_NavigationPolygon_property_source_geometry_group_name>`.
 
 .. _class_NavigationPolygon_constant_SOURCE_GEOMETRY_MAX:
 
@@ -279,7 +279,7 @@ Uses nodes in a group for geometry. The group is specified by :ref:`source_geome
 
 :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` **SOURCE_GEOMETRY_MAX** = ``3``
 
-Represents the size of the :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` enum.
+Biểu thị kích thước của enum :ref:`SourceGeometryMode <enum_NavigationPolygon_SourceGeometryMode>`.
 
 .. rst-class:: classref-section-separator
 
@@ -287,8 +287,8 @@ Represents the size of the :ref:`SourceGeometryMode<enum_NavigationPolygon_Sourc
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_NavigationPolygon_property_agent_radius:
 
@@ -301,9 +301,9 @@ Property Descriptions
 - |void| **set_agent_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_agent_radius**\ (\ )
 
-The distance to erode/shrink the walkable surface when baking the navigation mesh.
+Khoảng cách dùng để bào mòn/thu nhỏ bề mặt có thể đi lại khi bake navigation mesh.
 
-\ **Note:** The radius must be equal or higher than ``0.0``. If the radius is ``0.0``, it won't be possible to fix invalid outline overlaps and other precision errors during the baking process. As a result, some obstacles may be excluded incorrectly from the final navigation mesh, or may delete the navigation mesh's polygons.
+\ **Lưu ý:** Bán kính phải bằng hoặc lớn hơn ``0.0``. Nếu bán kính là ``0.0``, sẽ không thể khắc phục các phần chồng lấn outline không hợp lệ và những lỗi về độ chính xác khác trong quá trình bake. Do đó, một số vật cản có thể bị loại không chính xác khỏi navigation mesh cuối cùng hoặc có thể xóa các polygon của navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -320,7 +320,7 @@ The distance to erode/shrink the walkable surface when baking the navigation mes
 - |void| **set_baking_rect**\ (\ value\: :ref:`Rect2<class_Rect2>`\ )
 - :ref:`Rect2<class_Rect2>` **get_baking_rect**\ (\ )
 
-If the baking :ref:`Rect2<class_Rect2>` has an area the navigation mesh baking will be restricted to its enclosing area.
+Nếu :ref:`Rect2<class_Rect2>` baking có một area, quá trình bake navigation mesh sẽ bị giới hạn trong area bao quanh nó.
 
 .. rst-class:: classref-item-separator
 
@@ -337,7 +337,7 @@ If the baking :ref:`Rect2<class_Rect2>` has an area the navigation mesh baking w
 - |void| **set_baking_rect_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_baking_rect_offset**\ (\ )
 
-The position offset applied to the :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` :ref:`Rect2<class_Rect2>`.
+Độ lệch vị trí được áp dụng cho :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` :ref:`Rect2<class_Rect2>`.
 
 .. rst-class:: classref-item-separator
 
@@ -354,9 +354,9 @@ The position offset applied to the :ref:`baking_rect<class_NavigationPolygon_pro
 - |void| **set_border_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_border_size**\ (\ )
 
-The size of the non-navigable border around the bake bounding area defined by the :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` :ref:`Rect2<class_Rect2>`.
+Kích thước của đường viền không thể điều hướng xung quanh vùng giới hạn bake được xác định bởi :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` :ref:`Rect2<class_Rect2>`.
 
-In conjunction with the :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>` the border size can be used to bake tile aligned navigation meshes without the tile edges being shrunk by :ref:`agent_radius<class_NavigationPolygon_property_agent_radius>`.
+Kết hợp với :ref:`baking_rect<class_NavigationPolygon_property_baking_rect>`, kích thước đường viền có thể được dùng để bake các navigation mesh được căn chỉnh theo tile mà không làm thu nhỏ các cạnh tile theo :ref:`agent_radius<class_NavigationPolygon_property_agent_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -373,7 +373,7 @@ In conjunction with the :ref:`baking_rect<class_NavigationPolygon_property_bakin
 - |void| **set_cell_size**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_cell_size**\ (\ )
 
-The cell size used to rasterize the navigation mesh vertices. Must match with the cell size on the navigation map.
+Kích thước cell được dùng để rasterize các đỉnh của navigation mesh. Phải khớp với kích thước cell trên navigation map.
 
 .. rst-class:: classref-item-separator
 
@@ -390,9 +390,9 @@ The cell size used to rasterize the navigation mesh vertices. Must match with th
 - |void| **set_parsed_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_parsed_collision_mask**\ (\ )
 
-The physics layers to scan for static colliders.
+Các lớp vật lý cần quét để tìm các bộ va chạm tĩnh.
 
-Only used when :ref:`parsed_geometry_type<class_NavigationPolygon_property_parsed_geometry_type>` is :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationPolygon_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>` or :ref:`PARSED_GEOMETRY_BOTH<class_NavigationPolygon_constant_PARSED_GEOMETRY_BOTH>`.
+Chỉ được sử dụng khi :ref:`parsed_geometry_type<class_NavigationPolygon_property_parsed_geometry_type>` là :ref:`PARSED_GEOMETRY_STATIC_COLLIDERS<class_NavigationPolygon_constant_PARSED_GEOMETRY_STATIC_COLLIDERS>` hoặc :ref:`PARSED_GEOMETRY_BOTH<class_NavigationPolygon_constant_PARSED_GEOMETRY_BOTH>`.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ Only used when :ref:`parsed_geometry_type<class_NavigationPolygon_property_parse
 - |void| **set_parsed_geometry_type**\ (\ value\: :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>`\ )
 - :ref:`ParsedGeometryType<enum_NavigationPolygon_ParsedGeometryType>` **get_parsed_geometry_type**\ (\ )
 
-Determines which type of nodes will be parsed as geometry.
+Xác định loại node nào sẽ được phân tích thành hình học.
 
 .. rst-class:: classref-item-separator
 
@@ -426,7 +426,7 @@ Determines which type of nodes will be parsed as geometry.
 - |void| **set_sample_partition_type**\ (\ value\: :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>`\ )
 - :ref:`SamplePartitionType<enum_NavigationPolygon_SamplePartitionType>` **get_sample_partition_type**\ (\ )
 
-Partitioning algorithm for creating the navigation mesh polys.
+Thuật toán phân vùng để tạo các đa giác của navigation mesh.
 
 .. rst-class:: classref-item-separator
 
@@ -443,9 +443,9 @@ Partitioning algorithm for creating the navigation mesh polys.
 - |void| **set_source_geometry_group_name**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_source_geometry_group_name**\ (\ )
 
-The group name of nodes that should be parsed for baking source geometry.
+Tên nhóm của các node cần được phân tích để tạo hình học nguồn dùng cho quá trình bake.
 
-Only used when :ref:`source_geometry_mode<class_NavigationPolygon_property_source_geometry_mode>` is :ref:`SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN<class_NavigationPolygon_constant_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN>` or :ref:`SOURCE_GEOMETRY_GROUPS_EXPLICIT<class_NavigationPolygon_constant_SOURCE_GEOMETRY_GROUPS_EXPLICIT>`.
+Chỉ được sử dụng khi :ref:`source_geometry_mode<class_NavigationPolygon_property_source_geometry_mode>` là :ref:`SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN<class_NavigationPolygon_constant_SOURCE_GEOMETRY_GROUPS_WITH_CHILDREN>` hoặc :ref:`SOURCE_GEOMETRY_GROUPS_EXPLICIT<class_NavigationPolygon_constant_SOURCE_GEOMETRY_GROUPS_EXPLICIT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -462,7 +462,7 @@ Only used when :ref:`source_geometry_mode<class_NavigationPolygon_property_sourc
 - |void| **set_source_geometry_mode**\ (\ value\: :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>`\ )
 - :ref:`SourceGeometryMode<enum_NavigationPolygon_SourceGeometryMode>` **get_source_geometry_mode**\ (\ )
 
-The source of the geometry used when baking.
+Nguồn hình học được sử dụng khi bake.
 
 .. rst-class:: classref-section-separator
 
@@ -470,8 +470,8 @@ The source of the geometry used when baking.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationPolygon_method_add_outline:
 
@@ -479,7 +479,7 @@ Method Descriptions
 
 |void| **add_outline**\ (\ outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationPolygon_method_add_outline>`
 
-Appends a :ref:`PackedVector2Array<class_PackedVector2Array>` that contains the vertices of an outline to the internal array that contains all the outlines.
+Thêm một :ref:`PackedVector2Array<class_PackedVector2Array>` chứa các đỉnh của một đường bao vào mảng nội bộ chứa tất cả các đường bao.
 
 .. rst-class:: classref-item-separator
 
@@ -491,7 +491,7 @@ Appends a :ref:`PackedVector2Array<class_PackedVector2Array>` that contains the 
 
 |void| **add_outline_at_index**\ (\ outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`, index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationPolygon_method_add_outline_at_index>`
 
-Adds a :ref:`PackedVector2Array<class_PackedVector2Array>` that contains the vertices of an outline to the internal array that contains all the outlines at a fixed position.
+Thêm một :ref:`PackedVector2Array<class_PackedVector2Array>` chứa các đỉnh của một đường bao vào mảng nội bộ chứa tất cả các đường bao tại một vị trí cố định.
 
 .. rst-class:: classref-item-separator
 
@@ -503,7 +503,7 @@ Adds a :ref:`PackedVector2Array<class_PackedVector2Array>` that contains the ver
 
 |void| **add_polygon**\ (\ polygon\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_NavigationPolygon_method_add_polygon>`
 
-Adds a polygon using the indices of the vertices you get when calling :ref:`get_vertices()<class_NavigationPolygon_method_get_vertices>`.
+Thêm một đa giác bằng cách sử dụng các chỉ số của các đỉnh nhận được khi gọi :ref:`get_vertices()<class_NavigationPolygon_method_get_vertices>`.
 
 .. rst-class:: classref-item-separator
 
@@ -515,7 +515,7 @@ Adds a polygon using the indices of the vertices you get when calling :ref:`get_
 
 |void| **clear**\ (\ ) :ref:`🔗<class_NavigationPolygon_method_clear>`
 
-Clears the internal arrays for vertices and polygon indices.
+Xóa các mảng nội bộ chứa các đỉnh và chỉ số đa giác.
 
 .. rst-class:: classref-item-separator
 
@@ -527,7 +527,7 @@ Clears the internal arrays for vertices and polygon indices.
 
 |void| **clear_outlines**\ (\ ) :ref:`🔗<class_NavigationPolygon_method_clear_outlines>`
 
-Clears the array of the outlines, but it doesn't clear the vertices and the polygons that were created by them.
+Xóa mảng các đường bao, nhưng không xóa các đỉnh và đa giác đã được tạo từ chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -539,7 +539,7 @@ Clears the array of the outlines, but it doesn't clear the vertices and the poly
 
 |void| **clear_polygons**\ (\ ) :ref:`🔗<class_NavigationPolygon_method_clear_polygons>`
 
-Clears the array of polygons, but it doesn't clear the array of outlines and vertices.
+Xóa mảng các đa giác, nhưng không xóa mảng các đường bao và đỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -551,7 +551,7 @@ Clears the array of polygons, but it doesn't clear the array of outlines and ver
 
 :ref:`NavigationMesh<class_NavigationMesh>` **get_navigation_mesh**\ (\ ) :ref:`🔗<class_NavigationPolygon_method_get_navigation_mesh>`
 
-Returns the :ref:`NavigationMesh<class_NavigationMesh>` resulting from this navigation polygon. This navigation mesh can be used to update the navigation mesh of a region with the :ref:`NavigationServer3D.region_set_navigation_mesh()<class_NavigationServer3D_method_region_set_navigation_mesh>` API directly.
+Trả về :ref:`NavigationMesh<class_NavigationMesh>` được tạo ra từ polygon điều hướng này. Navigation mesh này có thể được dùng để cập nhật navigation mesh của một vùng bằng API :ref:`NavigationServer3D.region_set_navigation_mesh()<class_NavigationServer3D_method_region_set_navigation_mesh>` trực tiếp.
 
 .. rst-class:: classref-item-separator
 
@@ -563,7 +563,7 @@ Returns the :ref:`NavigationMesh<class_NavigationMesh>` resulting from this navi
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **get_outline**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationPolygon_method_get_outline>`
 
-Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` containing the vertices of an outline that was created in the editor or by script.
+Trả về một :ref:`PackedVector2Array<class_PackedVector2Array>` chứa các đỉnh của đường bao được tạo trong editor hoặc bằng script.
 
 .. rst-class:: classref-item-separator
 
@@ -575,7 +575,7 @@ Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` containing the ver
 
 :ref:`int<class_int>` **get_outline_count**\ (\ ) |const| :ref:`🔗<class_NavigationPolygon_method_get_outline_count>`
 
-Returns the number of outlines that were created in the editor or by script.
+Trả về số lượng đường bao được tạo trong editor hoặc bằng script.
 
 .. rst-class:: classref-item-separator
 
@@ -587,7 +587,7 @@ Returns the number of outlines that were created in the editor or by script.
 
 :ref:`bool<class_bool>` **get_parsed_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationPolygon_method_get_parsed_collision_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc layer được chỉ định của :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -599,7 +599,7 @@ Returns whether or not the specified layer of the :ref:`parsed_collision_mask<cl
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_polygon**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationPolygon_method_get_polygon>`
 
-Returns a :ref:`PackedInt32Array<class_PackedInt32Array>` containing the indices of the vertices of a created polygon.
+Trả về một :ref:`PackedInt32Array<class_PackedInt32Array>` chứa các chỉ số của các đỉnh thuộc polygon đã tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -611,7 +611,7 @@ Returns a :ref:`PackedInt32Array<class_PackedInt32Array>` containing the indices
 
 :ref:`int<class_int>` **get_polygon_count**\ (\ ) |const| :ref:`🔗<class_NavigationPolygon_method_get_polygon_count>`
 
-Returns the count of all polygons.
+Trả về số lượng của tất cả polygon.
 
 .. rst-class:: classref-item-separator
 
@@ -623,7 +623,7 @@ Returns the count of all polygons.
 
 :ref:`PackedVector2Array<class_PackedVector2Array>` **get_vertices**\ (\ ) |const| :ref:`🔗<class_NavigationPolygon_method_get_vertices>`
 
-Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` containing all the vertices being used to create the polygons.
+Trả về một :ref:`PackedVector2Array<class_PackedVector2Array>` chứa tất cả các đỉnh được dùng để tạo polygon.
 
 .. rst-class:: classref-item-separator
 
@@ -635,9 +635,9 @@ Returns a :ref:`PackedVector2Array<class_PackedVector2Array>` containing all the
 
 |void| **make_polygons_from_outlines**\ (\ ) :ref:`🔗<class_NavigationPolygon_method_make_polygons_from_outlines>`
 
-**Deprecated:** Use :ref:`NavigationServer2D.parse_source_geometry_data()<class_NavigationServer2D_method_parse_source_geometry_data>` and :ref:`NavigationServer2D.bake_from_source_geometry_data()<class_NavigationServer2D_method_bake_from_source_geometry_data>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`NavigationServer2D.parse_source_geometry_data()<class_NavigationServer2D_method_parse_source_geometry_data>` và :ref:`NavigationServer2D.bake_from_source_geometry_data()<class_NavigationServer2D_method_bake_from_source_geometry_data>`.
 
-Creates polygons from the outlines added in the editor or by script.
+Tạo các polygon từ những đường bao được thêm trong editor hoặc bằng script.
 
 .. rst-class:: classref-item-separator
 
@@ -649,7 +649,7 @@ Creates polygons from the outlines added in the editor or by script.
 
 |void| **remove_outline**\ (\ idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_NavigationPolygon_method_remove_outline>`
 
-Removes an outline created in the editor or by script. You have to call :ref:`make_polygons_from_outlines()<class_NavigationPolygon_method_make_polygons_from_outlines>` for the polygons to update.
+Xóa một đường bao được tạo trong editor hoặc bằng script. Bạn phải gọi :ref:`make_polygons_from_outlines()<class_NavigationPolygon_method_make_polygons_from_outlines>` để cập nhật các polygon.
 
 .. rst-class:: classref-item-separator
 
@@ -661,7 +661,7 @@ Removes an outline created in the editor or by script. You have to call :ref:`ma
 
 |void| **set_outline**\ (\ idx\: :ref:`int<class_int>`, outline\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationPolygon_method_set_outline>`
 
-Changes an outline created in the editor or by script. You have to call :ref:`make_polygons_from_outlines()<class_NavigationPolygon_method_make_polygons_from_outlines>` for the polygons to update.
+Thay đổi một đường bao được tạo trong editor hoặc bằng script. Bạn phải gọi :ref:`make_polygons_from_outlines()<class_NavigationPolygon_method_make_polygons_from_outlines>` để cập nhật các polygon.
 
 .. rst-class:: classref-item-separator
 
@@ -673,7 +673,7 @@ Changes an outline created in the editor or by script. You have to call :ref:`ma
 
 |void| **set_parsed_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationPolygon_method_set_parsed_collision_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`parsed_collision_mask<class_NavigationPolygon_property_parsed_collision_mask>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -685,14 +685,14 @@ Based on ``value``, enables or disables the specified layer in the :ref:`parsed_
 
 |void| **set_vertices**\ (\ vertices\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ ) :ref:`🔗<class_NavigationPolygon_method_set_vertices>`
 
-Sets the vertices that can be then indexed to create polygons with the :ref:`add_polygon()<class_NavigationPolygon_method_add_polygon>` method.
+Thiết lập các đỉnh để sau đó có thể lập chỉ mục nhằm tạo polygon bằng phương thức :ref:`add_polygon()<class_NavigationPolygon_method_add_polygon>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,30 +10,30 @@
 EditorExportPlugin
 ==================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A script that is executed when exporting the project.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**EditorExportPlugin**\ s are automatically invoked whenever the user exports the project. They can be used to modify scenes and resources during project export based on what :doc:`Feature Tags <../tutorials/export/feature_tags>` are set. For each plugin, :ref:`_export_begin()<class_EditorExportPlugin_private_method__export_begin>` is called at the beginning of the export process and then :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>` is called for each exported file.
-
-Register a **EditorExportPlugin** by creating a new :ref:`EditorPlugin<class_EditorPlugin>` and calling its :ref:`EditorPlugin.add_export_plugin()<class_EditorPlugin_method_add_export_plugin>` method.
+Một script được thực thi khi export project.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**EditorExportPlugin**\ s được tự động gọi mỗi khi người dùng export project. Chúng có thể được sử dụng để sửa đổi các scene và resource trong quá trình export project, dựa trên những :doc:`Feature Tags <../tutorials/export/feature_tags>` được thiết lập. Đối với mỗi plugin, :ref:`_export_begin()<class_EditorExportPlugin_private_method__export_begin>` được gọi khi bắt đầu quá trình export, sau đó :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>` được gọi cho mỗi file được export.
+
+Đăng ký một **EditorExportPlugin** bằng cách tạo một :ref:`EditorPlugin<class_EditorPlugin>` mới và gọi phương thức :ref:`EditorPlugin.add_export_plugin()<class_EditorPlugin_method_add_export_plugin>` của nó.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Export Android plugins <../tutorials/platform/android/android_plugin>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -140,8 +140,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorExportPlugin_private_method__begin_customize_resources:
 
@@ -149,9 +149,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_begin_customize_resources**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, features\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__begin_customize_resources>`
 
-Return ``true`` if this plugin will customize resources based on the platform and features used.
+Trả về ``true`` nếu plugin này sẽ tùy chỉnh các tài nguyên dựa trên nền tảng và các tính năng được sử dụng.
 
-When enabled, :ref:`_get_customization_configuration_hash()<class_EditorExportPlugin_private_method__get_customization_configuration_hash>` and :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` will be called and must be implemented.
+Khi được bật, :ref:`_get_customization_configuration_hash()<class_EditorExportPlugin_private_method__get_customization_configuration_hash>` và :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` sẽ được gọi và phải được triển khai.
 
 .. rst-class:: classref-item-separator
 
@@ -163,11 +163,11 @@ When enabled, :ref:`_get_customization_configuration_hash()<class_EditorExportPl
 
 :ref:`bool<class_bool>` **_begin_customize_scenes**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, features\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__begin_customize_scenes>`
 
-Return ``true`` if this plugin will customize scenes based on the platform and features used.
+Trả về ``true`` nếu plugin này sẽ tùy chỉnh các cảnh dựa trên nền tảng và các tính năng được sử dụng.
 
-When enabled, :ref:`_get_customization_configuration_hash()<class_EditorExportPlugin_private_method__get_customization_configuration_hash>` and :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>` will be called and must be implemented.
+Khi được bật, :ref:`_get_customization_configuration_hash()<class_EditorExportPlugin_private_method__get_customization_configuration_hash>` và :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>` sẽ được gọi và phải được triển khai.
 
-\ **Note:** :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>` will only be called for scenes that have been modified since the last export.
+\ **Lưu ý:** :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>` sẽ chỉ được gọi cho các cảnh đã được sửa đổi kể từ lần xuất gần nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -179,13 +179,13 @@ When enabled, :ref:`_get_customization_configuration_hash()<class_EditorExportPl
 
 :ref:`Resource<class_Resource>` **_customize_resource**\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorExportPlugin_private_method__customize_resource>`
 
-Customize a resource. If changes are made to it, return the same or a new resource. Otherwise, return ``null``. When a new resource is returned, ``resource`` will be replaced by a copy of the new resource.
+Tùy chỉnh một tài nguyên. Nếu có thay đổi được thực hiện đối với tài nguyên đó, hãy trả về chính tài nguyên đó hoặc một tài nguyên mới. Nếu không, hãy trả về ``null``. Khi một tài nguyên mới được trả về, ``resource`` sẽ được thay thế bằng một bản sao của tài nguyên mới.
 
-The ``path`` argument is only used when customizing an actual file, otherwise this means that this resource is part of another one and it will be empty.
+Đối số ``path`` chỉ được sử dụng khi tùy chỉnh một tệp thực tế; nếu không, điều này có nghĩa là tài nguyên này là một phần của tài nguyên khác và nó sẽ rỗng.
 
-Implementing this method is required if :ref:`_begin_customize_resources()<class_EditorExportPlugin_private_method__begin_customize_resources>` returns ``true``.
+Việc triển khai phương thức này là bắt buộc nếu :ref:`_begin_customize_resources()<class_EditorExportPlugin_private_method__begin_customize_resources>` trả về ``true``.
 
-\ **Note:** When customizing any of the following types and returning another resource, the other resource should not be skipped using :ref:`skip()<class_EditorExportPlugin_method_skip>` in :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>`:
+\ **Lưu ý:** Khi tùy chỉnh bất kỳ kiểu nào sau đây và trả về một tài nguyên khác, không được bỏ qua tài nguyên còn lại bằng cách sử dụng :ref:`skip()<class_EditorExportPlugin_method_skip>` trong :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>`:
 
 - :ref:`AtlasTexture<class_AtlasTexture>`\ 
 
@@ -209,11 +209,11 @@ Implementing this method is required if :ref:`_begin_customize_resources()<class
 
 :ref:`Node<class_Node>` **_customize_scene**\ (\ scene\: :ref:`Node<class_Node>`, path\: :ref:`String<class_String>`\ ) |virtual| |required| :ref:`🔗<class_EditorExportPlugin_private_method__customize_scene>`
 
-Customize a scene. If changes are made to it, return the same or a new scene. Otherwise, return ``null``. If a new scene is returned, it is up to you to dispose of the old one.
+Tùy chỉnh một scene. Nếu có thay đổi đối với scene đó, hãy trả về chính scene đó hoặc một scene mới. Nếu không, hãy trả về ``null``. Nếu trả về một scene mới, bạn phải tự giải phóng scene cũ.
 
-Implementing this method is required if :ref:`_begin_customize_scenes()<class_EditorExportPlugin_private_method__begin_customize_scenes>` returns ``true``.
+Bạn phải triển khai phương thức này nếu :ref:`_begin_customize_scenes()<class_EditorExportPlugin_private_method__begin_customize_scenes>` trả về ``true``.
 
-\ **Note:** To change a variable in your scene, use the ``@export`` annotation when declaring it.
+\ **Lưu ý:** Để thay đổi một biến trong scene, hãy sử dụng annotation ``@export`` khi khai báo biến đó.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Implementing this method is required if :ref:`_begin_customize_scenes()<class_Ed
 
 |void| **_end_customize_resources**\ (\ ) |virtual| :ref:`🔗<class_EditorExportPlugin_private_method__end_customize_resources>`
 
-This is called when the customization process for resources ends.
+Phương thức này được gọi khi quá trình tùy chỉnh tài nguyên kết thúc.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ This is called when the customization process for resources ends.
 
 |void| **_end_customize_scenes**\ (\ ) |virtual| :ref:`🔗<class_EditorExportPlugin_private_method__end_customize_scenes>`
 
-This is called when the customization process for scenes ends.
+Phương thức này được gọi khi quá trình tùy chỉnh scene kết thúc.
 
 .. rst-class:: classref-item-separator
 
@@ -249,9 +249,9 @@ This is called when the customization process for scenes ends.
 
 |void| **_end_generate_apple_embedded_project**\ (\ path\: :ref:`String<class_String>`, will_build_archive\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_EditorExportPlugin_private_method__end_generate_apple_embedded_project>`
 
-This is called after Xcode project generation, but before it is built.
+Phương thức này được gọi sau khi tạo project Xcode nhưng trước khi project được build.
 
-\ **Note:** Only supported on iOS and visionOS.
+\ **Lưu ý:** Chỉ được hỗ trợ trên iOS và visionOS.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ This is called after Xcode project generation, but before it is built.
 
 |void| **_export_begin**\ (\ features\: :ref:`PackedStringArray<class_PackedStringArray>`, is_debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_EditorExportPlugin_private_method__export_begin>`
 
-Virtual method to be overridden by the user. It is called when the export starts and provides all information about the export. ``features`` is the list of features for the export, ``is_debug`` is ``true`` for debug builds, ``path`` is the target path for the exported project. ``flags`` is only used when running a runnable profile, e.g. when using native run on Android.
+Phương thức ảo để người dùng ghi đè. Phương thức này được gọi khi quá trình export bắt đầu và cung cấp tất cả thông tin về quá trình export. ``features`` là danh sách các tính năng cho quá trình export, ``is_debug`` là ``true`` cho các bản build debug, ``path`` là đường dẫn đích của project đã export. ``flags`` chỉ được sử dụng khi chạy một runnable profile, chẳng hạn như khi sử dụng native run trên Android.
 
 .. rst-class:: classref-item-separator
 
@@ -275,7 +275,7 @@ Virtual method to be overridden by the user. It is called when the export starts
 
 |void| **_export_end**\ (\ ) |virtual| :ref:`🔗<class_EditorExportPlugin_private_method__export_end>`
 
-Virtual method to be overridden by the user. Called when the export is finished.
+Phương thức ảo để người dùng ghi đè. Được gọi khi quá trình export hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -287,9 +287,9 @@ Virtual method to be overridden by the user. Called when the export is finished.
 
 |void| **_export_file**\ (\ path\: :ref:`String<class_String>`, type\: :ref:`String<class_String>`, features\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |virtual| :ref:`🔗<class_EditorExportPlugin_private_method__export_file>`
 
-Virtual method to be overridden by the user. Called for each exported file before :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` and :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>`. The arguments can be used to identify the file. ``path`` is the path of the file, ``type`` is the :ref:`Resource<class_Resource>` represented by the file (e.g. :ref:`PackedScene<class_PackedScene>`), and ``features`` is the list of features for the export.
+Phương thức ảo để người dùng ghi đè. Phương thức này được gọi cho mỗi tệp đã export trước :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` và :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>`. Các đối số có thể được sử dụng để xác định tệp. ``path`` là đường dẫn của tệp, ``type`` là :ref:`Resource<class_Resource>` được tệp đại diện (ví dụ: :ref:`PackedScene<class_PackedScene>`), và ``features`` là danh sách các tính năng cho quá trình export.
 
-Calling :ref:`skip()<class_EditorExportPlugin_method_skip>` inside this callback will make the file not included in the export.
+Việc gọi :ref:`skip()<class_EditorExportPlugin_method_skip>` bên trong callback này sẽ khiến tệp không được đưa vào bản export.
 
 .. rst-class:: classref-item-separator
 
@@ -301,11 +301,11 @@ Calling :ref:`skip()<class_EditorExportPlugin_method_skip>` inside this callback
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_android_dependencies**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, debug\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_android_dependencies>`
 
-Virtual method to be overridden by the user. This is called to retrieve the set of Android dependencies provided by this plugin. Each returned Android dependency should have the format of an Android remote binary dependency: ``org.godot.example:my-plugin:0.0.0``\ 
+Phương thức ảo để người dùng ghi đè. Phương thức này được gọi để lấy tập hợp các dependency Android do plugin này cung cấp. Mỗi dependency Android được trả về phải có định dạng của một Android remote binary dependency: ``org.godot.example:my-plugin:0.0.0``\
 
-For more information see `Android documentation on dependencies <https://developer.android.com/build/dependencies?agpversion=4.1#dependency-types>`__.
+Để biết thêm thông tin, hãy xem `tài liệu Android về các dependency <https://developer.android.com/build/dependencies?agpversion=4.1#dependency-types>`__.
 
-\ **Note:** Only supported on Android and requires :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` to be enabled.
+\ **Lưu ý:** Chỉ được hỗ trợ trên Android và yêu cầu bật :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`.
 
 .. rst-class:: classref-item-separator
 
@@ -317,13 +317,13 @@ For more information see `Android documentation on dependencies <https://develop
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_android_dependencies_maven_repos**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, debug\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_android_dependencies_maven_repos>`
 
-Virtual method to be overridden by the user. This is called to retrieve the URLs of Maven repositories for the set of Android dependencies provided by this plugin.
+Phương thức ảo để người dùng ghi đè. Phương thức này được gọi để lấy các URL của các Maven repository cho tập hợp dependency Android do plugin này cung cấp.
 
-For more information see `Gradle documentation on dependency management <https://docs.gradle.org/current/userguide/dependency_management.html#sec:maven_repo>`__.
+Để biết thêm thông tin, hãy xem `tài liệu Gradle về quản lý dependency <https://docs.gradle.org/current/userguide/dependency_management.html#sec:maven_repo>`__.
 
-\ **Note:** Google's Maven repo and the Maven Central repo are already included by default.
+\ **Lưu ý:** Maven repo của Google và Maven Central repo đã được bao gồm theo mặc định.
 
-\ **Note:** Only supported on Android and requires :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` to be enabled.
+\ **Lưu ý:** Chỉ được hỗ trợ trên Android và yêu cầu bật :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`.
 
 .. rst-class:: classref-item-separator
 
@@ -335,11 +335,11 @@ For more information see `Gradle documentation on dependency management <https:/
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_android_libraries**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, debug\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_android_libraries>`
 
-Virtual method to be overridden by the user. This is called to retrieve the local paths of the Android libraries archive (AAR) files provided by this plugin.
+Phương thức ảo để người dùng ghi đè. Phương thức này được gọi để lấy các đường dẫn cục bộ đến các tệp lưu trữ thư viện Android (AAR) do plugin này cung cấp.
 
-\ **Note:** Relative paths **must** be relative to Godot's ``res://addons/`` directory. For example, an AAR file located under ``res://addons/hello_world_plugin/HelloWorld.release.aar`` can be returned as an absolute path using ``res://addons/hello_world_plugin/HelloWorld.release.aar`` or a relative path using ``hello_world_plugin/HelloWorld.release.aar``.
+\ **Lưu ý:** Các đường dẫn tương đối **phải** tương đối so với thư mục ``res://addons/`` của Godot. Ví dụ: một tệp AAR nằm trong ``res://addons/hello_world_plugin/HelloWorld.release.aar`` có thể được trả về dưới dạng đường dẫn tuyệt đối bằng ``res://addons/hello_world_plugin/HelloWorld.release.aar`` hoặc đường dẫn tương đối bằng ``hello_world_plugin/HelloWorld.release.aar``.
 
-\ **Note:** Only supported on Android and requires :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` to be enabled.
+\ **Lưu ý:** Chỉ được hỗ trợ trên Android và yêu cầu bật :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`.
 
 .. rst-class:: classref-item-separator
 
@@ -351,9 +351,9 @@ Virtual method to be overridden by the user. This is called to retrieve the loca
 
 :ref:`String<class_String>` **_get_android_manifest_activity_element_contents**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, debug\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_android_manifest_activity_element_contents>`
 
-Virtual method to be overridden by the user. This is used at export time to update the contents of the ``activity`` element in the generated Android manifest.
+Phương thức ảo để người dùng ghi đè. Phương thức này được sử dụng khi export để cập nhật nội dung của phần tử ``activity`` trong Android manifest được tạo.
 
-\ **Note:** Only supported on Android and requires :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` to be enabled.
+\ **Lưu ý:** Chỉ được hỗ trợ trên Android và yêu cầu bật :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`.
 
 .. rst-class:: classref-item-separator
 
@@ -365,9 +365,9 @@ Virtual method to be overridden by the user. This is used at export time to upda
 
 :ref:`String<class_String>` **_get_android_manifest_application_element_contents**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, debug\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_android_manifest_application_element_contents>`
 
-Virtual method to be overridden by the user. This is used at export time to update the contents of the ``application`` element in the generated Android manifest.
+Phương thức ảo để người dùng ghi đè. Phương thức này được sử dụng khi export để cập nhật nội dung của phần tử ``application`` trong Android manifest được tạo.
 
-\ **Note:** Only supported on Android and requires :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` to be enabled.
+\ **Lưu ý:** Chỉ được hỗ trợ trên Android và yêu cầu bật :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`.
 
 .. rst-class:: classref-item-separator
 
@@ -379,9 +379,9 @@ Virtual method to be overridden by the user. This is used at export time to upda
 
 :ref:`String<class_String>` **_get_android_manifest_element_contents**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, debug\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_android_manifest_element_contents>`
 
-Virtual method to be overridden by the user. This is used at export time to update the contents of the ``manifest`` element in the generated Android manifest.
+Phương thức ảo để người dùng ghi đè. Phương thức này được sử dụng khi export để cập nhật nội dung của phần tử ``manifest`` trong Android manifest được tạo.
 
-\ **Note:** Only supported on Android and requires :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build<class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>` to be enabled.
+\ **Lưu ý:** Chỉ được hỗ trợ trên Android và yêu cầu bật :ref:`EditorExportPlatformAndroid.gradle_build/use_gradle_build <class_EditorExportPlatformAndroid_property_gradle_build/use_gradle_build>`.
 
 .. rst-class:: classref-item-separator
 
@@ -393,11 +393,11 @@ Virtual method to be overridden by the user. This is used at export time to upda
 
 :ref:`int<class_int>` **_get_customization_configuration_hash**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_customization_configuration_hash>`
 
-Return a hash based on the configuration passed (for both scenes and resources). This helps keep separate caches for separate export configurations.
+Trả về một hash dựa trên cấu hình được truyền vào (cho cả scene và resource). Điều này giúp duy trì các cache riêng biệt cho các cấu hình export riêng biệt.
 
-Implementing this method is required if :ref:`_begin_customize_resources()<class_EditorExportPlugin_private_method__begin_customize_resources>` returns ``true``.
+Việc triển khai phương thức này là bắt buộc nếu :ref:`_begin_customize_resources()<class_EditorExportPlugin_private_method__begin_customize_resources>` trả về ``true``.
 
-\ **Note:** :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` and :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>` will not be called when the **EditorExportPlugin** script is modified unless this hash changes too.
+\ **Lưu ý:** :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` và :ref:`_customize_scene()<class_EditorExportPlugin_private_method__customize_scene>` sẽ không được gọi khi script **EditorExportPlugin** được sửa đổi, trừ khi hash này cũng thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ Implementing this method is required if :ref:`_begin_customize_resources()<class
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_export_features**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, debug\: :ref:`bool<class_bool>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_export_features>`
 
-Return a :ref:`PackedStringArray<class_PackedStringArray>` of additional features this preset, for the given ``platform``, should have.
+Trả về một :ref:`PackedStringArray<class_PackedStringArray>` gồm các tính năng bổ sung mà preset này cần có cho ``platform`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -421,7 +421,7 @@ Return a :ref:`PackedStringArray<class_PackedStringArray>` of additional feature
 
 :ref:`bool<class_bool>` **_get_export_option_visibility**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, option\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_export_option_visibility>`
 
-Validates ``option`` and returns the visibility for the specified ``platform``. The default implementation returns ``true`` for all options.
+Xác thực ``option`` và trả về trạng thái hiển thị cho ``platform`` được chỉ định. Phần triển khai mặc định trả về ``true`` cho tất cả các tùy chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -433,9 +433,9 @@ Validates ``option`` and returns the visibility for the specified ``platform``. 
 
 :ref:`String<class_String>` **_get_export_option_warning**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, option\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_export_option_warning>`
 
-Check the requirements for the given ``option`` and return a non-empty warning string if they are not met.
+Kiểm tra các yêu cầu đối với ``option`` đã cho và trả về một chuỗi cảnh báo không rỗng nếu các yêu cầu đó không được đáp ứng.
 
-\ **Note:** Use :ref:`get_option()<class_EditorExportPlugin_method_get_option>` to check the value of the export options.
+\ **Lưu ý:** Sử dụng :ref:`get_option()<class_EditorExportPlugin_method_get_option>` để kiểm tra giá trị của các tùy chọn export.
 
 .. rst-class:: classref-item-separator
 
@@ -447,15 +447,15 @@ Check the requirements for the given ``option`` and return a non-empty warning s
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **_get_export_options**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_export_options>`
 
-Return a list of export options that can be configured for this export plugin.
+Trả về danh sách các tùy chọn export có thể được cấu hình cho plugin export này.
 
-Each element in the return value is a :ref:`Dictionary<class_Dictionary>` with the following keys:
+Mỗi phần tử trong giá trị trả về là một :ref:`Dictionary<class_Dictionary>` với các khóa sau:
 
-- ``option``: A dictionary with the structure documented by :ref:`Object.get_property_list()<class_Object_method_get_property_list>`, but all keys are optional.
+- ``option``: Một dictionary có cấu trúc được mô tả trong :ref:`Object.get_property_list()<class_Object_method_get_property_list>`, nhưng tất cả các khóa đều là tùy chọn.
 
-- ``default_value``: The default value for this option.
+- ``default_value``: Giá trị mặc định cho tùy chọn này.
 
-- ``update_visibility``: An optional boolean value. If set to ``true``, the preset will emit :ref:`Object.property_list_changed<class_Object_signal_property_list_changed>` when the option is changed.
+- ``update_visibility``: Một giá trị boolean tùy chọn. Nếu được đặt thành ``true``, preset sẽ phát :ref:`Object.property_list_changed<class_Object_signal_property_list_changed>` khi tùy chọn được thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -467,7 +467,7 @@ Each element in the return value is a :ref:`Dictionary<class_Dictionary>` with t
 
 :ref:`Dictionary<class_Dictionary>` **_get_export_options_overrides**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_export_options_overrides>`
 
-Return a :ref:`Dictionary<class_Dictionary>` of override values for export options, that will be used instead of user-provided values. Overridden options will be hidden from the user interface.
+Trả về một :ref:`Dictionary<class_Dictionary>` chứa các giá trị ghi đè cho các tùy chọn export, được sử dụng thay cho các giá trị do người dùng cung cấp. Các tùy chọn bị ghi đè sẽ bị ẩn khỏi giao diện người dùng.
 
 ::
 
@@ -497,9 +497,9 @@ Return a :ref:`Dictionary<class_Dictionary>` of override values for export optio
 
 :ref:`String<class_String>` **_get_name**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorExportPlugin_private_method__get_name>`
 
-Return the name identifier of this plugin (for future identification by the exporter). The plugins are sorted by name before exporting.
+Trả về mã định danh tên của plugin này (để exporter nhận diện trong tương lai). Các plugin được sắp xếp theo tên trước khi export.
 
-Implementing this method is required.
+Bắt buộc phải triển khai phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -511,7 +511,7 @@ Implementing this method is required.
 
 :ref:`bool<class_bool>` **_should_update_export_options**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__should_update_export_options>`
 
-Return ``true`` if the result of :ref:`_get_export_options()<class_EditorExportPlugin_private_method__get_export_options>` has changed and the export options of the preset corresponding to ``platform`` should be updated.
+Trả về ``true`` nếu kết quả của :ref:`_get_export_options()<class_EditorExportPlugin_private_method__get_export_options>` đã thay đổi và các tùy chọn export của preset tương ứng với ``platform`` cần được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -523,7 +523,7 @@ Return ``true`` if the result of :ref:`_get_export_options()<class_EditorExportP
 
 :ref:`bool<class_bool>` **_supports_platform**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__supports_platform>`
 
-Return ``true`` if the plugin supports the given ``platform``.
+Trả về ``true`` nếu plugin hỗ trợ ``platform`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -535,11 +535,11 @@ Return ``true`` if the plugin supports the given ``platform``.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **_update_android_prebuilt_manifest**\ (\ platform\: :ref:`EditorExportPlatform<class_EditorExportPlatform>`, manifest_data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |virtual| |const| :ref:`🔗<class_EditorExportPlugin_private_method__update_android_prebuilt_manifest>`
 
-Provide access to the Android prebuilt manifest and allows the plugin to modify it if needed.
+Cung cấp quyền truy cập vào manifest dựng sẵn của Android và cho phép plugin sửa đổi manifest này nếu cần.
 
-Implementers of this virtual method should take the binary manifest data from ``manifest_data``, copy it, modify it, and then return it with the modifications.
+Các bên triển khai phương thức ảo này phải lấy dữ liệu manifest nhị phân từ ``manifest_data``, sao chép và sửa đổi dữ liệu đó, sau đó trả về dữ liệu đã sửa đổi.
 
-If no modifications are needed, then an empty :ref:`PackedByteArray<class_PackedByteArray>` should be returned.
+Nếu không cần sửa đổi, hãy trả về một :ref:`PackedByteArray<class_PackedByteArray>` trống.
 
 .. rst-class:: classref-item-separator
 
@@ -551,7 +551,7 @@ If no modifications are needed, then an empty :ref:`PackedByteArray<class_Packed
 
 |void| **add_apple_embedded_platform_bundle_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_apple_embedded_platform_bundle_file>`
 
-Adds an Apple embedded platform bundle file from the given ``path`` to the exported project.
+Thêm tệp bundle của nền tảng Apple được nhúng từ ``path`` đã cho vào project đã export.
 
 .. rst-class:: classref-item-separator
 
@@ -563,7 +563,7 @@ Adds an Apple embedded platform bundle file from the given ``path`` to the expor
 
 |void| **add_apple_embedded_platform_cpp_code**\ (\ code\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_apple_embedded_platform_cpp_code>`
 
-Adds C++ code to the Apple embedded platform export. The final code is created from the code appended by each active export plugin.
+Thêm mã C++ vào bản xuất cho nền tảng nhúng Apple. Mã cuối cùng được tạo từ mã do mỗi export plugin đang hoạt động nối thêm.
 
 .. rst-class:: classref-item-separator
 
@@ -575,11 +575,11 @@ Adds C++ code to the Apple embedded platform export. The final code is created f
 
 |void| **add_apple_embedded_platform_embedded_framework**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_apple_embedded_platform_embedded_framework>`
 
-Adds a dynamic library (\*.dylib, \*.framework) to the Linking Phase in the Apple embedded platform's Xcode project and embeds it into the resulting binary.
+Thêm một dynamic library (\*.dylib, \*.framework) vào Linking Phase trong dự án Xcode của nền tảng nhúng Apple và nhúng thư viện đó vào binary kết quả.
 
-\ **Note:** For static libraries (\*.a), this works in the same way as :ref:`add_apple_embedded_platform_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_framework>`.
+\ **Lưu ý:** Đối với static library (\*.a), thao tác này hoạt động giống như :ref:`add_apple_embedded_platform_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_framework>`.
 
-\ **Note:** This method should not be used for System libraries as they are already present on the device.
+\ **Lưu ý:** Không nên sử dụng phương thức này cho System library vì chúng đã có sẵn trên thiết bị.
 
 .. rst-class:: classref-item-separator
 
@@ -591,7 +591,7 @@ Adds a dynamic library (\*.dylib, \*.framework) to the Linking Phase in the Appl
 
 |void| **add_apple_embedded_platform_framework**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_apple_embedded_platform_framework>`
 
-Adds a static library (\*.a) or a dynamic library (\*.dylib, \*.framework) to the Linking Phase to the Apple embedded platform's Xcode project.
+Thêm một static library (\*.a) hoặc một dynamic library (\*.dylib, \*.framework) vào Linking Phase trong dự án Xcode của nền tảng nhúng Apple.
 
 .. rst-class:: classref-item-separator
 
@@ -603,7 +603,7 @@ Adds a static library (\*.a) or a dynamic library (\*.dylib, \*.framework) to th
 
 |void| **add_apple_embedded_platform_linker_flags**\ (\ flags\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_apple_embedded_platform_linker_flags>`
 
-Adds linker flags for the Apple embedded platform export.
+Thêm các linker flag cho bản xuất nền tảng nhúng Apple.
 
 .. rst-class:: classref-item-separator
 
@@ -615,7 +615,7 @@ Adds linker flags for the Apple embedded platform export.
 
 |void| **add_apple_embedded_platform_plist_content**\ (\ plist_content\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_apple_embedded_platform_plist_content>`
 
-Adds additional fields to the Apple embedded platform's project Info.plist file.
+Thêm các trường bổ sung vào tệp Info.plist của dự án nền tảng nhúng Apple.
 
 .. rst-class:: classref-item-separator
 
@@ -627,7 +627,7 @@ Adds additional fields to the Apple embedded platform's project Info.plist file.
 
 |void| **add_apple_embedded_platform_project_static_lib**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_apple_embedded_platform_project_static_lib>`
 
-Adds a static library from the given ``path`` to the Apple embedded platform project.
+Thêm một thư viện tĩnh từ ``path`` đã cho vào dự án nền tảng Apple nhúng.
 
 .. rst-class:: classref-item-separator
 
@@ -639,11 +639,11 @@ Adds a static library from the given ``path`` to the Apple embedded platform pro
 
 |void| **add_file**\ (\ path\: :ref:`String<class_String>`, file\: :ref:`PackedByteArray<class_PackedByteArray>`, remap\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_file>`
 
-Adds a custom file to be exported. ``path`` is the virtual path that can be used to load the file, ``file`` is the binary data of the file.
+Thêm một tệp tùy chỉnh để xuất. ``path`` là đường dẫn ảo có thể dùng để tải tệp, còn ``file`` là dữ liệu nhị phân của tệp.
 
-When called inside :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>` and ``remap`` is ``true``, the current file will not be exported, but instead remapped to this custom file. ``remap`` is ignored when called in other places.
+Khi được gọi bên trong :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>` và ``remap`` là ``true``, tệp hiện tại sẽ không được xuất mà thay vào đó được ánh xạ lại tới tệp tùy chỉnh này. ``remap`` bị bỏ qua khi được gọi ở nơi khác.
 
-\ ``file`` will not be imported, so consider using :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` to remap imported resources.
+\ ``file`` sẽ không được import, vì vậy hãy cân nhắc sử dụng :ref:`_customize_resource()<class_EditorExportPlugin_private_method__customize_resource>` để ánh xạ lại các tài nguyên đã import.
 
 .. rst-class:: classref-item-separator
 
@@ -655,9 +655,9 @@ When called inside :ref:`_export_file()<class_EditorExportPlugin_private_method_
 
 |void| **add_ios_bundle_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_ios_bundle_file>`
 
-**Deprecated:** Use :ref:`add_apple_embedded_platform_bundle_file()<class_EditorExportPlugin_method_add_apple_embedded_platform_bundle_file>` instead.
+**Không còn được dùng:** Hãy sử dụng :ref:`add_apple_embedded_platform_bundle_file()<class_EditorExportPlugin_method_add_apple_embedded_platform_bundle_file>` thay thế.
 
-Adds an iOS bundle file from the given ``path`` to the exported project.
+Thêm một tệp bundle iOS từ ``path`` đã cho vào dự án đã xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -669,9 +669,9 @@ Adds an iOS bundle file from the given ``path`` to the exported project.
 
 |void| **add_ios_cpp_code**\ (\ code\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_ios_cpp_code>`
 
-**Deprecated:** Use :ref:`add_apple_embedded_platform_cpp_code()<class_EditorExportPlugin_method_add_apple_embedded_platform_cpp_code>` instead.
+**Không còn được dùng:** Hãy sử dụng :ref:`add_apple_embedded_platform_cpp_code()<class_EditorExportPlugin_method_add_apple_embedded_platform_cpp_code>` thay thế.
 
-Adds C++ code to the iOS export. The final code is created from the code appended by each active export plugin.
+Thêm mã C++ vào bản xuất iOS. Mã cuối cùng được tạo từ mã được nối thêm bởi mỗi export plugin đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -683,13 +683,13 @@ Adds C++ code to the iOS export. The final code is created from the code appende
 
 |void| **add_ios_embedded_framework**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_ios_embedded_framework>`
 
-**Deprecated:** Use :ref:`add_apple_embedded_platform_embedded_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_embedded_framework>` instead.
+**Đã ngừng sử dụng:** Thay vào đó, hãy sử dụng :ref:`add_apple_embedded_platform_embedded_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_embedded_framework>`.
 
-Adds a dynamic library (\*.dylib, \*.framework) to Linking Phase in iOS's Xcode project and embeds it into resulting binary.
+Thêm một thư viện động (\*.dylib, \*.framework) vào Linking Phase trong dự án Xcode của iOS và nhúng thư viện đó vào tệp nhị phân đầu ra.
 
-\ **Note:** For static libraries (\*.a), this works the in same way as :ref:`add_apple_embedded_platform_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_framework>`.
+\ **Lưu ý:** Đối với các thư viện tĩnh (\*.a), cách này hoạt động giống như :ref:`add_apple_embedded_platform_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_framework>`.
 
-\ **Note:** This method should not be used for System libraries as they are already present on the device.
+\ **Lưu ý:** Không nên sử dụng phương thức này cho System library vì chúng đã có sẵn trên thiết bị.
 
 .. rst-class:: classref-item-separator
 
@@ -701,9 +701,9 @@ Adds a dynamic library (\*.dylib, \*.framework) to Linking Phase in iOS's Xcode 
 
 |void| **add_ios_framework**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_ios_framework>`
 
-**Deprecated:** Use :ref:`add_apple_embedded_platform_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_framework>` instead.
+**Đã ngừng sử dụng:** Thay vào đó, hãy sử dụng :ref:`add_apple_embedded_platform_framework()<class_EditorExportPlugin_method_add_apple_embedded_platform_framework>`.
 
-Adds a static library (\*.a) or a dynamic library (\*.dylib, \*.framework) to the Linking Phase to the iOS Xcode project.
+Thêm một thư viện tĩnh (\*.a) hoặc một thư viện động (\*.dylib, \*.framework) vào Linking Phase của dự án Xcode iOS.
 
 .. rst-class:: classref-item-separator
 
@@ -715,9 +715,9 @@ Adds a static library (\*.a) or a dynamic library (\*.dylib, \*.framework) to th
 
 |void| **add_ios_linker_flags**\ (\ flags\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_ios_linker_flags>`
 
-**Deprecated:** Use :ref:`add_apple_embedded_platform_linker_flags()<class_EditorExportPlugin_method_add_apple_embedded_platform_linker_flags>` instead.
+**Đã ngừng sử dụng:** Sử dụng :ref:`add_apple_embedded_platform_linker_flags()<class_EditorExportPlugin_method_add_apple_embedded_platform_linker_flags>` thay thế.
 
-Adds linker flags for the iOS export.
+Thêm các linker flags cho bản export iOS.
 
 .. rst-class:: classref-item-separator
 
@@ -729,9 +729,9 @@ Adds linker flags for the iOS export.
 
 |void| **add_ios_plist_content**\ (\ plist_content\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_ios_plist_content>`
 
-**Deprecated:** Use :ref:`add_apple_embedded_platform_plist_content()<class_EditorExportPlugin_method_add_apple_embedded_platform_plist_content>` instead.
+**Đã ngừng sử dụng:** Sử dụng :ref:`add_apple_embedded_platform_plist_content()<class_EditorExportPlugin_method_add_apple_embedded_platform_plist_content>` thay thế.
 
-Adds additional fields to the iOS project Info.plist file.
+Thêm các trường bổ sung vào tệp Info.plist của dự án iOS.
 
 .. rst-class:: classref-item-separator
 
@@ -743,9 +743,9 @@ Adds additional fields to the iOS project Info.plist file.
 
 |void| **add_ios_project_static_lib**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_ios_project_static_lib>`
 
-**Deprecated:** Use :ref:`add_apple_embedded_platform_project_static_lib()<class_EditorExportPlugin_method_add_apple_embedded_platform_project_static_lib>` instead.
+**Đã ngừng sử dụng:** Sử dụng :ref:`add_apple_embedded_platform_project_static_lib()<class_EditorExportPlugin_method_add_apple_embedded_platform_project_static_lib>` thay thế.
 
-Adds a static library from the given ``path`` to the iOS project.
+Thêm một static library từ ``path`` đã cho vào dự án iOS.
 
 .. rst-class:: classref-item-separator
 
@@ -757,9 +757,9 @@ Adds a static library from the given ``path`` to the iOS project.
 
 |void| **add_macos_plugin_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_macos_plugin_file>`
 
-Adds file or directory matching ``path`` to ``PlugIns`` directory of macOS app bundle.
+Thêm tệp hoặc thư mục khớp với ``path`` vào thư mục ``PlugIns`` của app bundle macOS.
 
-\ **Note:** This is useful only for macOS exports.
+\ **Lưu ý:** Điều này chỉ hữu ích cho các bản export macOS.
 
 .. rst-class:: classref-item-separator
 
@@ -771,11 +771,11 @@ Adds file or directory matching ``path`` to ``PlugIns`` directory of macOS app b
 
 |void| **add_shared_object**\ (\ path\: :ref:`String<class_String>`, tags\: :ref:`PackedStringArray<class_PackedStringArray>`, target\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlugin_method_add_shared_object>`
 
-Adds a shared object or a directory containing only shared objects with the given ``tags`` and destination ``path``.
+Thêm một shared object hoặc một thư mục chỉ chứa các shared object với ``tags`` và đích đến ``path`` đã cho.
 
-\ **Note:** In case of macOS exports, those shared objects will be added to ``Frameworks`` directory of app bundle.
+\ **Lưu ý:** Trong trường hợp export macOS, các shared object đó sẽ được thêm vào thư mục ``Frameworks`` của app bundle.
 
-In case of a directory code-sign will error if you place non code object in directory.
+Trong trường hợp là một thư mục, code-sign sẽ báo lỗi nếu bạn đặt đối tượng không phải mã vào thư mục.
 
 .. rst-class:: classref-item-separator
 
@@ -787,7 +787,7 @@ In case of a directory code-sign will error if you place non code object in dire
 
 :ref:`EditorExportPlatform<class_EditorExportPlatform>` **get_export_platform**\ (\ ) |const| :ref:`🔗<class_EditorExportPlugin_method_get_export_platform>`
 
-Returns currently used export platform.
+Trả về nền tảng export hiện đang được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -799,7 +799,7 @@ Returns currently used export platform.
 
 :ref:`EditorExportPreset<class_EditorExportPreset>` **get_export_preset**\ (\ ) |const| :ref:`🔗<class_EditorExportPlugin_method_get_export_preset>`
 
-Returns currently used export preset.
+Trả về export preset hiện đang được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -811,7 +811,7 @@ Returns currently used export preset.
 
 :ref:`Variant<class_Variant>` **get_option**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_EditorExportPlugin_method_get_option>`
 
-Returns the current value of an export option supplied by :ref:`_get_export_options()<class_EditorExportPlugin_private_method__get_export_options>`.
+Trả về giá trị hiện tại của tùy chọn export được cung cấp bởi :ref:`_get_export_options()<class_EditorExportPlugin_private_method__get_export_options>`.
 
 .. rst-class:: classref-item-separator
 
@@ -823,14 +823,14 @@ Returns the current value of an export option supplied by :ref:`_get_export_opti
 
 |void| **skip**\ (\ ) :ref:`🔗<class_EditorExportPlugin_method_skip>`
 
-To be called inside :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>`. Skips the current file, so it's not included in the export.
+Được gọi bên trong :ref:`_export_file()<class_EditorExportPlugin_private_method__export_file>`. Bỏ qua tệp hiện tại nên tệp này không được đưa vào bản export.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

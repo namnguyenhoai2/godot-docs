@@ -10,43 +10,43 @@
 AudioEffectPitchShift
 =====================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a pitch-shifting audio effect to an audio bus.
+Thêm hiệu ứng thay đổi cao độ âm thanh vào một audio bus.
 
-Raises or lowers the pitch of the input audio.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Allows modulation of pitch without modifying speed. All frequencies can be raised or lowered with minimal effect on transients.
+Tăng hoặc giảm cao độ của âm thanh đầu vào.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Cho phép điều chế cao độ mà không làm thay đổi tốc độ. Tất cả các tần số có thể được tăng hoặc giảm với ảnh hưởng tối thiểu đến các transient.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Các audio bus <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------+------------------------------------------------------------------------+---------+
-   | :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` | :ref:`fft_size<class_AudioEffectPitchShift_property_fft_size>`         | ``3``   |
-   +----------------------------------------------------+------------------------------------------------------------------------+---------+
-   | :ref:`int<class_int>`                              | :ref:`oversampling<class_AudioEffectPitchShift_property_oversampling>` | ``4``   |
-   +----------------------------------------------------+------------------------------------------------------------------------+---------+
-   | :ref:`float<class_float>`                          | :ref:`pitch_scale<class_AudioEffectPitchShift_property_pitch_scale>`   | ``1.0`` |
-   +----------------------------------------------------+------------------------------------------------------------------------+---------+
+   +-----------------------------------------------------+------------------------------------------------------------------------+---------+
+   | :ref:`FFTSize <enum_AudioEffectPitchShift_FFTSize>` | :ref:`fft_size<class_AudioEffectPitchShift_property_fft_size>`         | ``3``   |
+   +-----------------------------------------------------+------------------------------------------------------------------------+---------+
+   | :ref:`int<class_int>`                               | :ref:`oversampling<class_AudioEffectPitchShift_property_oversampling>` | ``4``   |
+   +-----------------------------------------------------+------------------------------------------------------------------------+---------+
+   | :ref:`float<class_float>`                           | :ref:`pitch_scale<class_AudioEffectPitchShift_property_pitch_scale>`   | ``1.0`` |
+   +-----------------------------------------------------+------------------------------------------------------------------------+---------+
 
 .. rst-class:: classref-section-separator
 
@@ -54,14 +54,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AudioEffectPitchShift_FFTSize:
 
 .. rst-class:: classref-enumeration
 
-enum **FFTSize**: :ref:`🔗<enum_AudioEffectPitchShift_FFTSize>`
+enum **FFTSize**: :ref:`🔗 <enum_AudioEffectPitchShift_FFTSize>`
 
 .. _class_AudioEffectPitchShift_constant_FFT_SIZE_256:
 
@@ -69,7 +69,7 @@ enum **FFTSize**: :ref:`🔗<enum_AudioEffectPitchShift_FFTSize>`
 
 :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` **FFT_SIZE_256** = ``0``
 
-Use a buffer of 256 samples for the Fast Fourier transform. Lowest latency, but least stable over time.
+Sử dụng bộ đệm gồm 256 mẫu cho phép biến đổi Fourier nhanh (Fast Fourier transform). Độ trễ thấp nhất nhưng kém ổn định nhất theo thời gian.
 
 .. _class_AudioEffectPitchShift_constant_FFT_SIZE_512:
 
@@ -77,7 +77,7 @@ Use a buffer of 256 samples for the Fast Fourier transform. Lowest latency, but 
 
 :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` **FFT_SIZE_512** = ``1``
 
-Use a buffer of 512 samples for the Fast Fourier transform. Low latency, but less stable over time.
+Sử dụng bộ đệm gồm 512 mẫu cho phép biến đổi Fourier nhanh (Fast Fourier transform). Độ trễ thấp nhưng kém ổn định hơn theo thời gian.
 
 .. _class_AudioEffectPitchShift_constant_FFT_SIZE_1024:
 
@@ -85,7 +85,7 @@ Use a buffer of 512 samples for the Fast Fourier transform. Low latency, but les
 
 :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` **FFT_SIZE_1024** = ``2``
 
-Use a buffer of 1024 samples for the Fast Fourier transform. This is a compromise between latency and stability over time.
+Sử dụng bộ đệm gồm 1024 mẫu cho Fast Fourier transform. Đây là sự cân bằng giữa độ trễ và độ ổn định theo thời gian.
 
 .. _class_AudioEffectPitchShift_constant_FFT_SIZE_2048:
 
@@ -93,7 +93,7 @@ Use a buffer of 1024 samples for the Fast Fourier transform. This is a compromis
 
 :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` **FFT_SIZE_2048** = ``3``
 
-Use a buffer of 2048 samples for the Fast Fourier transform. High latency, but stable over time.
+Sử dụng bộ đệm gồm 2048 mẫu cho Fast Fourier transform. Độ trễ cao nhưng ổn định theo thời gian.
 
 .. _class_AudioEffectPitchShift_constant_FFT_SIZE_4096:
 
@@ -101,7 +101,7 @@ Use a buffer of 2048 samples for the Fast Fourier transform. High latency, but s
 
 :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` **FFT_SIZE_4096** = ``4``
 
-Use a buffer of 4096 samples for the Fast Fourier transform. Highest latency, but most stable over time.
+Sử dụng bộ đệm gồm 4096 mẫu cho Fast Fourier transform. Độ trễ cao nhất nhưng ổn định nhất theo thời gian.
 
 .. _class_AudioEffectPitchShift_constant_FFT_SIZE_MAX:
 
@@ -109,7 +109,7 @@ Use a buffer of 4096 samples for the Fast Fourier transform. Highest latency, bu
 
 :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` **FFT_SIZE_MAX** = ``5``
 
-Represents the size of the :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` enum.
+Biểu thị kích thước của enum :ref:`FFTSize <enum_AudioEffectPitchShift_FFTSize>`.
 
 .. rst-class:: classref-section-separator
 
@@ -117,8 +117,8 @@ Represents the size of the :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` en
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectPitchShift_property_fft_size:
 
@@ -131,7 +131,7 @@ Property Descriptions
 - |void| **set_fft_size**\ (\ value\: :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>`\ )
 - :ref:`FFTSize<enum_AudioEffectPitchShift_FFTSize>` **get_fft_size**\ (\ )
 
-The size of the `Fast Fourier transform <https://en.wikipedia.org/wiki/Fast_Fourier_transform>`__ buffer. Higher values smooth out the effect over time, but have greater latency. The effects of this higher latency are especially noticeable on audio signals that have sudden amplitude changes.
+Kích thước của bộ đệm `Fast Fourier transform <https://en.wikipedia.org/wiki/Fast_Fourier_transform>`__. Các giá trị cao hơn sẽ làm mượt hiệu ứng theo thời gian, nhưng có độ trễ lớn hơn. Tác động của độ trễ cao hơn này đặc biệt dễ nhận thấy trên các tín hiệu âm thanh có thay đổi biên độ đột ngột.
 
 .. rst-class:: classref-item-separator
 
@@ -148,7 +148,7 @@ The size of the `Fast Fourier transform <https://en.wikipedia.org/wiki/Fast_Four
 - |void| **set_oversampling**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_oversampling**\ (\ )
 
-The oversampling factor to use. Higher values result in better quality, but are more demanding on the CPU and may cause audio cracking if the CPU can't keep up.
+Hệ số oversampling cần sử dụng. Các giá trị cao hơn cho chất lượng tốt hơn, nhưng yêu cầu CPU nhiều hơn và có thể khiến âm thanh bị rè nếu CPU không xử lý kịp.
 
 .. rst-class:: classref-item-separator
 
@@ -165,14 +165,14 @@ The oversampling factor to use. Higher values result in better quality, but are 
 - |void| **set_pitch_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pitch_scale**\ (\ )
 
-The pitch scale to use. ``1.0`` is the default pitch and plays sounds unaffected. :ref:`pitch_scale<class_AudioEffectPitchShift_property_pitch_scale>` can range from 0 (infinitely low pitch, inaudible) to 16 (16 times higher than the initial pitch).
+Thang cao độ cần sử dụng. ``1.0`` là cao độ mặc định và phát âm thanh không bị thay đổi. :ref:`pitch_scale<class_AudioEffectPitchShift_property_pitch_scale>` có thể nằm trong khoảng từ 0 (cao độ thấp vô hạn, không thể nghe thấy) đến 16 (cao hơn 16 lần so với cao độ ban đầu).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

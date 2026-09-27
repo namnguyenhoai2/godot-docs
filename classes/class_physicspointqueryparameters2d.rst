@@ -10,20 +10,20 @@
 PhysicsPointQueryParameters2D
 =============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides parameters for :ref:`PhysicsDirectSpaceState2D.intersect_point()<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
+Cung cấp các tham số cho :ref:`PhysicsDirectSpaceState2D.intersect_point()<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-By changing various properties of this object, such as the point position, you can configure the parameters for :ref:`PhysicsDirectSpaceState2D.intersect_point()<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
+Bằng cách thay đổi các thuộc tính khác nhau của đối tượng này, chẳng hạn như vị trí của điểm, bạn có thể cấu hình các tham số cho :ref:`PhysicsDirectSpaceState2D.intersect_point()<class_PhysicsDirectSpaceState2D_method_intersect_point>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -49,8 +49,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicsPointQueryParameters2D_property_canvas_instance_id:
 
@@ -63,9 +63,9 @@ Property Descriptions
 - |void| **set_canvas_instance_id**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_canvas_instance_id**\ (\ )
 
-If different from ``0``, restricts the query to a specific canvas layer specified by its instance ID. See :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
+Nếu khác với ``0``, giới hạn truy vấn vào một canvas layer cụ thể được chỉ định bằng instance ID của layer đó. Xem :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
 
-If ``0``, restricts the query to the Viewport's default canvas layer.
+Nếu ``0``, giới hạn truy vấn ở lớp canvas mặc định của Viewport.
 
 .. rst-class:: classref-item-separator
 
@@ -82,7 +82,7 @@ If ``0``, restricts the query to the Viewport's default canvas layer.
 - |void| **set_collide_with_areas**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_areas_enabled**\ (\ )
 
-If ``true``, the query will take :ref:`Area2D<class_Area2D>`\ s into account.
+Nếu ``true``, truy vấn sẽ tính đến :ref:`Area2D<class_Area2D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ If ``true``, the query will take :ref:`Area2D<class_Area2D>`\ s into account.
 - |void| **set_collide_with_bodies**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_bodies_enabled**\ (\ )
 
-If ``true``, the query will take :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s into account.
+Nếu ``true``, truy vấn sẽ tính đến :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ If ``true``, the query will take :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s in
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The physics layers the query will detect (as a bitmask). By default, all collision layers are detected. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+Các lớp physics mà truy vấn sẽ phát hiện (dưới dạng bitmask). Theo mặc định, tất cả các lớp va chạm đều được phát hiện. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -133,9 +133,9 @@ The physics layers the query will detect (as a bitmask). By default, all collisi
 - |void| **set_exclude**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_exclude**\ (\ )
 
-The list of object :ref:`RID<class_RID>`\ s that will be excluded from collisions. Use :ref:`CollisionObject2D.get_rid()<class_CollisionObject2D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject2D<class_CollisionObject2D>`-derived node.
+Danh sách các :ref:`RID<class_RID>`\ s của đối tượng sẽ bị loại trừ khỏi các va chạm. Sử dụng :ref:`CollisionObject2D.get_rid()<class_CollisionObject2D_method_get_rid>` để lấy :ref:`RID<class_RID>` liên kết với một node dẫn xuất từ :ref:`CollisionObject2D<class_CollisionObject2D>`.
 
-\ **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.
+\ **Lưu ý:** Mảng được trả về là một bản sao và mọi thay đổi đối với nó sẽ không cập nhật giá trị thuộc tính ban đầu. Để cập nhật giá trị, bạn cần sửa đổi mảng được trả về, sau đó gán lại mảng đó cho thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -152,14 +152,14 @@ The list of object :ref:`RID<class_RID>`\ s that will be excluded from collision
 - |void| **set_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_position**\ (\ )
 
-The position being queried for, in global coordinates.
+Vị trí được truy vấn, tính theo tọa độ toàn cục.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

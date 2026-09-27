@@ -10,54 +10,54 @@
 EditorSpinSlider
 ================
 
-**Inherits:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Godot editor's control for editing numeric values.
+Control của Godot editor để chỉnh sửa các giá trị số.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This :ref:`Control<class_Control>` node is used in the editor's Inspector dock to allow editing of numeric values. Can be used with :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>` to recreate the same behavior.
+node :ref:`Control<class_Control>` này được dùng trong dock Inspector của editor để cho phép chỉnh sửa các giá trị số. Có thể dùng với :ref:`EditorInspectorPlugin<class_EditorInspectorPlugin>` để tái tạo hành vi tương tự.
 
-If the :ref:`Range.step<class_Range_property_step>` value is ``1``, the **EditorSpinSlider** will display up/down arrows, similar to :ref:`SpinBox<class_SpinBox>`. If the :ref:`Range.step<class_Range_property_step>` value is not ``1``, a slider will be displayed instead.
+Nếu giá trị :ref:`Range.step<class_Range_property_step>` là ``1``, **EditorSpinSlider** sẽ hiển thị các mũi tên lên/xuống, tương tự như :ref:`SpinBox<class_SpinBox>`. Nếu giá trị :ref:`Range.step<class_Range_property_step>` không phải là ``1``, một slider sẽ được hiển thị thay thế.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`ControlState<enum_EditorSpinSlider_ControlState>` | :ref:`control_state<class_EditorSpinSlider_property_control_state>`           | ``0``                                                                        |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`deferred_drag_mode<class_EditorSpinSlider_property_deferred_drag_mode>` | ``false``                                                                    |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`editing_integer<class_EditorSpinSlider_property_editing_integer>`       | ``false``                                                                    |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`flat<class_EditorSpinSlider_property_flat>`                             | ``false``                                                                    |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                | focus_mode                                                                    | ``2`` (overrides :ref:`Control<class_Control_property_focus_mode>`)          |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`hide_slider<class_EditorSpinSlider_property_hide_slider>`               | ``false``                                                                    |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                             | :ref:`label<class_EditorSpinSlider_property_label>`                           | ``""``                                                                       |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                 | :ref:`read_only<class_EditorSpinSlider_property_read_only>`                   | ``false``                                                                    |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\]  | size_flags_vertical                                                           | ``1`` (overrides :ref:`Control<class_Control_property_size_flags_vertical>`) |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                               | step                                                                          | ``1.0`` (overrides :ref:`Range<class_Range_property_step>`)                  |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                             | :ref:`suffix<class_EditorSpinSlider_property_suffix>`                         | ``""``                                                                       |
-   +---------------------------------------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`ControlState <enum_EditorSpinSlider_ControlState>` | :ref:`control_state<class_EditorSpinSlider_property_control_state>`           | ``0``                                                                     |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`deferred_drag_mode<class_EditorSpinSlider_property_deferred_drag_mode>` | ``false``                                                                 |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`editing_integer<class_EditorSpinSlider_property_editing_integer>`       | ``false``                                                                 |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`flat<class_EditorSpinSlider_property_flat>`                             | ``false``                                                                 |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`                | focus_mode                                                                    | ``2`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)          |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`hide_slider<class_EditorSpinSlider_property_hide_slider>`               | ``false``                                                                 |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                              | :ref:`label<class_EditorSpinSlider_property_label>`                           | ``""``                                                                    |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                  | :ref:`read_only<class_EditorSpinSlider_property_read_only>`                   | ``false``                                                                 |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`SizeFlags <enum_Control_SizeFlags>`\]  | size_flags_vertical                                                           | ``1`` (ghi đè :ref:`Control<class_Control_property_size_flags_vertical>`) |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                | step                                                                          | ``1.0`` (ghi đè :ref:`Range<class_Range_property_step>`)                  |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                              | :ref:`suffix<class_EditorSpinSlider_property_suffix>`                         | ``""``                                                                    |
+   +----------------------------------------------------------+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -75,8 +75,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorSpinSlider_signal_grabbed:
 
@@ -84,7 +84,7 @@ Signals
 
 **grabbed**\ (\ ) :ref:`🔗<class_EditorSpinSlider_signal_grabbed>`
 
-Emitted when the spinner/slider is grabbed.
+Được phát ra khi spinner/slider được nhấn giữ.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Emitted when the spinner/slider is grabbed.
 
 **ungrabbed**\ (\ ) :ref:`🔗<class_EditorSpinSlider_signal_ungrabbed>`
 
-Emitted when the spinner/slider is ungrabbed.
+Được phát ra khi spinner/slider được nhả ra.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Emitted when the spinner/slider is ungrabbed.
 
 **updown_pressed**\ (\ ) :ref:`🔗<class_EditorSpinSlider_signal_updown_pressed>`
 
-Emitted when the updown button is pressed.
+Được phát ra khi nút updown được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Emitted when the updown button is pressed.
 
 **value_focus_entered**\ (\ ) :ref:`🔗<class_EditorSpinSlider_signal_value_focus_entered>`
 
-Emitted when the value form gains focus.
+Được phát ra khi trường giá trị nhận focus.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ Emitted when the value form gains focus.
 
 **value_focus_exited**\ (\ ) :ref:`🔗<class_EditorSpinSlider_signal_value_focus_exited>`
 
-Emitted when the value form loses focus.
+Được phát ra khi biểu mẫu giá trị mất tiêu điểm.
 
 .. rst-class:: classref-section-separator
 
@@ -140,14 +140,14 @@ Emitted when the value form loses focus.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorSpinSlider_ControlState:
 
 .. rst-class:: classref-enumeration
 
-enum **ControlState**: :ref:`🔗<enum_EditorSpinSlider_ControlState>`
+enum **ControlState**: :ref:`🔗 <enum_EditorSpinSlider_ControlState>`
 
 .. _class_EditorSpinSlider_constant_CONTROL_STATE_DEFAULT:
 
@@ -155,7 +155,7 @@ enum **ControlState**: :ref:`🔗<enum_EditorSpinSlider_ControlState>`
 
 :ref:`ControlState<enum_EditorSpinSlider_ControlState>` **CONTROL_STATE_DEFAULT** = ``0``
 
-The type of control used will depend on the value of :ref:`editing_integer<class_EditorSpinSlider_property_editing_integer>`. Up-down arrows if ``true``, a slider if ``false``.
+Loại control được sử dụng sẽ phụ thuộc vào giá trị của :ref:`editing_integer<class_EditorSpinSlider_property_editing_integer>`. Mũi tên tăng giảm nếu là ``true``, thanh trượt nếu là ``false``.
 
 .. _class_EditorSpinSlider_constant_CONTROL_STATE_PREFER_SLIDER:
 
@@ -163,7 +163,7 @@ The type of control used will depend on the value of :ref:`editing_integer<class
 
 :ref:`ControlState<enum_EditorSpinSlider_ControlState>` **CONTROL_STATE_PREFER_SLIDER** = ``1``
 
-A slider will always be used, even if :ref:`editing_integer<class_EditorSpinSlider_property_editing_integer>` is enabled.
+Luôn sử dụng thanh trượt, ngay cả khi :ref:`editing_integer<class_EditorSpinSlider_property_editing_integer>` được bật.
 
 .. _class_EditorSpinSlider_constant_CONTROL_STATE_HIDE:
 
@@ -171,7 +171,7 @@ A slider will always be used, even if :ref:`editing_integer<class_EditorSpinSlid
 
 :ref:`ControlState<enum_EditorSpinSlider_ControlState>` **CONTROL_STATE_HIDE** = ``2``
 
-Neither the up-down arrows nor the slider will be shown.
+Cả mũi tên tăng giảm lẫn thanh trượt đều sẽ không được hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -179,8 +179,8 @@ Neither the up-down arrows nor the slider will be shown.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorSpinSlider_property_control_state:
 
@@ -193,7 +193,7 @@ Property Descriptions
 - |void| **set_control_state**\ (\ value\: :ref:`ControlState<enum_EditorSpinSlider_ControlState>`\ )
 - :ref:`ControlState<enum_EditorSpinSlider_ControlState>` **get_control_state**\ (\ )
 
-The state in which the control used to manipulate the value will be.
+Trạng thái mà control dùng để thao tác với giá trị sẽ ở đó.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ The state in which the control used to manipulate the value will be.
 - |void| **set_deferred_drag_mode_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_deferred_drag_mode_enabled**\ (\ )
 
-If ``true``, changing via dragging is applied only at the end of the input (for example, when the user releases a mouse button).
+Nếu ``true``, việc thay đổi bằng cách kéo chỉ được áp dụng ở cuối thao tác nhập (ví dụ: khi người dùng thả nút chuột).
 
 .. rst-class:: classref-item-separator
 
@@ -227,7 +227,7 @@ If ``true``, changing via dragging is applied only at the end of the input (for 
 - |void| **set_editing_integer**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_editing_integer**\ (\ )
 
-If ``true``, the **EditorSpinSlider** is considered to be editing an integer value. If ``false``, the **EditorSpinSlider** is considered to be editing a floating-point value. This is used to determine whether a slider should be drawn by default. The slider is only drawn for floats; integers use up-down arrows similar to :ref:`SpinBox<class_SpinBox>` instead, unless :ref:`control_state<class_EditorSpinSlider_property_control_state>` is set to :ref:`CONTROL_STATE_PREFER_SLIDER<class_EditorSpinSlider_constant_CONTROL_STATE_PREFER_SLIDER>`. It will also use :ref:`EditorSettings.interface/inspector/integer_drag_speed<class_EditorSettings_property_interface/inspector/integer_drag_speed>` instead of :ref:`EditorSettings.interface/inspector/float_drag_speed<class_EditorSettings_property_interface/inspector/float_drag_speed>` if the slider is available.
+Nếu ``true``, **EditorSpinSlider** được xem là đang chỉnh sửa một giá trị số nguyên. Nếu ``false``, **EditorSpinSlider** được xem là đang chỉnh sửa một giá trị số thực. Điều này được dùng để xác định xem slider có được vẽ theo mặc định hay không. Slider chỉ được vẽ cho số thực; số nguyên sẽ sử dụng các mũi tên tăng giảm tương tự :ref:`SpinBox<class_SpinBox>` thay vào đó, trừ khi :ref:`control_state<class_EditorSpinSlider_property_control_state>` được đặt thành :ref:`CONTROL_STATE_PREFER_SLIDER<class_EditorSpinSlider_constant_CONTROL_STATE_PREFER_SLIDER>`. Nó cũng sẽ sử dụng :ref:`EditorSettings.interface/inspector/integer_drag_speed <class_EditorSettings_property_interface/inspector/integer_drag_speed>` thay vì :ref:`EditorSettings.interface/inspector/float_drag_speed <class_EditorSettings_property_interface/inspector/float_drag_speed>` nếu slider khả dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -244,7 +244,7 @@ If ``true``, the **EditorSpinSlider** is considered to be editing an integer val
 - |void| **set_flat**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_flat**\ (\ )
 
-If ``true``, the slider will not draw background.
+Nếu ``true``, slider sẽ không hiển thị nền.
 
 .. rst-class:: classref-item-separator
 
@@ -261,9 +261,9 @@ If ``true``, the slider will not draw background.
 - |void| **set_hide_slider**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_hiding_slider**\ (\ )
 
-**Deprecated:** Use :ref:`control_state<class_EditorSpinSlider_property_control_state>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`control_state<class_EditorSpinSlider_property_control_state>`.
 
-If ``true``, the slider and up/down arrows are hidden.
+Nếu ``true``, slider và các mũi tên tăng giảm sẽ bị ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -280,7 +280,7 @@ If ``true``, the slider and up/down arrows are hidden.
 - |void| **set_label**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_label**\ (\ )
 
-The text that displays to the left of the value.
+Văn bản hiển thị ở bên trái giá trị.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ The text that displays to the left of the value.
 - |void| **set_read_only**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_read_only**\ (\ )
 
-If ``true``, the slider can't be interacted with.
+Nếu ``true``, không thể tương tác với thanh trượt.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ If ``true``, the slider can't be interacted with.
 - |void| **set_suffix**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_suffix**\ (\ )
 
-The suffix to display after the value (in a faded color). This should generally be a plural word. You may have to use an abbreviation if the suffix is too long to be displayed.
+Hậu tố hiển thị sau giá trị (với màu mờ). Thông thường, đây nên là một từ ở dạng số nhiều. Bạn có thể phải sử dụng dạng viết tắt nếu hậu tố quá dài để hiển thị.
 
 .. rst-class:: classref-section-separator
 
@@ -322,16 +322,16 @@ The suffix to display after the value (in a faded color). This should generally 
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_EditorSpinSlider_theme_icon_updown:
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **updown** :ref:`🔗<class_EditorSpinSlider_theme_icon_updown>`
+:ref:`Texture2D<class_Texture2D>` **updown** :ref:`🔗 <class_EditorSpinSlider_theme_icon_updown>`
 
-Single texture representing both the up and down buttons.
+Texture duy nhất đại diện cho cả nút tăng và giảm.
 
 .. rst-class:: classref-item-separator
 
@@ -341,16 +341,16 @@ Single texture representing both the up and down buttons.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **updown_disabled** :ref:`🔗<class_EditorSpinSlider_theme_icon_updown_disabled>`
+:ref:`Texture2D<class_Texture2D>` **updown_disabled** :ref:`🔗 <class_EditorSpinSlider_theme_icon_updown_disabled>`
 
-Single texture representing both the up and down buttons, when the control is readonly or disabled.
+Texture duy nhất đại diện cho cả nút tăng và giảm khi control ở chế độ readonly hoặc bị vô hiệu hóa.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

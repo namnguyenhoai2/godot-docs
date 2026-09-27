@@ -10,21 +10,21 @@
 Geometry3D
 ==========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Provides methods for some common 3D geometric operations.
+Cung cấp các phương thức cho một số thao tác hình học 3D phổ biến.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Provides a set of helper functions to create geometric shapes, compute intersections between shapes, and process various other geometric operations in 3D.
+Cung cấp một tập hợp các hàm trợ giúp để tạo các hình dạng hình học, tính toán giao điểm giữa các hình dạng và xử lý nhiều thao tác hình học khác trong không gian 3D.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -32,9 +32,9 @@ Methods
    +--------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] | :ref:`build_box_planes<class_Geometry3D_method_build_box_planes>`\ (\ extents\: :ref:`Vector3<class_Vector3>`\ )                                                                                                                                                                 |
    +--------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] | :ref:`build_capsule_planes<class_Geometry3D_method_build_capsule_planes>`\ (\ radius\: :ref:`float<class_float>`, height\: :ref:`float<class_float>`, sides\: :ref:`int<class_int>`, lats\: :ref:`int<class_int>`, axis\: :ref:`Axis<enum_Vector3_Axis>` = 2\ )                  |
+   | :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] | :ref:`build_capsule_planes<class_Geometry3D_method_build_capsule_planes>`\ (\ radius\: :ref:`float<class_float>`, height\: :ref:`float<class_float>`, sides\: :ref:`int<class_int>`, lats\: :ref:`int<class_int>`, axis\: :ref:`Axis <enum_Vector3_Axis>` = 2\ )                 |
    +--------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] | :ref:`build_cylinder_planes<class_Geometry3D_method_build_cylinder_planes>`\ (\ radius\: :ref:`float<class_float>`, height\: :ref:`float<class_float>`, sides\: :ref:`int<class_int>`, axis\: :ref:`Axis<enum_Vector3_Axis>` = 2\ )                                              |
+   | :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] | :ref:`build_cylinder_planes<class_Geometry3D_method_build_cylinder_planes>`\ (\ radius\: :ref:`float<class_float>`, height\: :ref:`float<class_float>`, sides\: :ref:`int<class_int>`, axis\: :ref:`Axis <enum_Vector3_Axis>` = 2\ )                                             |
    +--------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedVector3Array<class_PackedVector3Array>`    | :ref:`clip_polygon<class_Geometry3D_method_clip_polygon>`\ (\ points\: :ref:`PackedVector3Array<class_PackedVector3Array>`, plane\: :ref:`Plane<class_Plane>`\ )                                                                                                                 |
    +--------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -67,8 +67,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Geometry3D_method_build_box_planes:
 
@@ -76,7 +76,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] **build_box_planes**\ (\ extents\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Geometry3D_method_build_box_planes>`
 
-Returns an array with 6 :ref:`Plane<class_Plane>`\ s that describe the sides of a box centered at the origin. The box size is defined by ``extents``, which represents one (positive) corner of the box (i.e. half its actual size).
+Trả về một mảng gồm 6 :ref:`Plane<class_Plane>`\ s mô tả các mặt của một hình hộp có tâm tại gốc tọa độ. Kích thước hình hộp được xác định bởi ``extents``, đại diện cho một đỉnh (dương) của hình hộp (tức là một nửa kích thước thực của nó).
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ Returns an array with 6 :ref:`Plane<class_Plane>`\ s that describe the sides of 
 
 :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] **build_capsule_planes**\ (\ radius\: :ref:`float<class_float>`, height\: :ref:`float<class_float>`, sides\: :ref:`int<class_int>`, lats\: :ref:`int<class_int>`, axis\: :ref:`Axis<enum_Vector3_Axis>` = 2\ ) :ref:`🔗<class_Geometry3D_method_build_capsule_planes>`
 
-Returns an array of :ref:`Plane<class_Plane>`\ s closely bounding a faceted capsule centered at the origin with radius ``radius`` and height ``height``. The parameter ``sides`` defines how many planes will be generated for the side part of the capsule, whereas ``lats`` gives the number of latitudinal steps at the bottom and top of the capsule. The parameter ``axis`` describes the axis along which the capsule is oriented (0 for X, 1 for Y, 2 for Z).
+Trả về một mảng các :ref:`Plane<class_Plane>`\ s bao sát một capsule đa diện có tâm tại gốc tọa độ, bán kính ``radius`` và chiều cao ``height``. Tham số ``sides`` xác định số mặt phẳng sẽ được tạo cho phần bên của capsule, trong khi ``lats`` chỉ định số bước theo vĩ độ ở đáy và đỉnh của capsule. Tham số ``axis`` mô tả trục mà capsule được định hướng theo đó (0 là X, 1 là Y, 2 là Z).
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ Returns an array of :ref:`Plane<class_Plane>`\ s closely bounding a faceted caps
 
 :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\] **build_cylinder_planes**\ (\ radius\: :ref:`float<class_float>`, height\: :ref:`float<class_float>`, sides\: :ref:`int<class_int>`, axis\: :ref:`Axis<enum_Vector3_Axis>` = 2\ ) :ref:`🔗<class_Geometry3D_method_build_cylinder_planes>`
 
-Returns an array of :ref:`Plane<class_Plane>`\ s closely bounding a faceted cylinder centered at the origin with radius ``radius`` and height ``height``. The parameter ``sides`` defines how many planes will be generated for the round part of the cylinder. The parameter ``axis`` describes the axis along which the cylinder is oriented (0 for X, 1 for Y, 2 for Z).
+Trả về một mảng các :ref:`Plane<class_Plane>`\ s bao sát một hình trụ đa diện có tâm tại gốc tọa độ, bán kính ``radius`` và chiều cao ``height``. Tham số ``sides`` xác định số mặt phẳng sẽ được tạo cho phần tròn của hình trụ. Tham số ``axis`` mô tả trục mà hình trụ được định hướng theo đó (0 là X, 1 là Y, 2 là Z).
 
 .. rst-class:: classref-item-separator
 
@@ -112,7 +112,7 @@ Returns an array of :ref:`Plane<class_Plane>`\ s closely bounding a faceted cyli
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **clip_polygon**\ (\ points\: :ref:`PackedVector3Array<class_PackedVector3Array>`, plane\: :ref:`Plane<class_Plane>`\ ) :ref:`🔗<class_Geometry3D_method_clip_polygon>`
 
-Clips the polygon defined by the points in ``points`` against the ``plane`` and returns the points of the clipped polygon.
+Cắt đa giác được xác định bởi các điểm trong ``points`` theo ``plane`` và trả về các điểm của đa giác sau khi cắt.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ Clips the polygon defined by the points in ``points`` against the ``plane`` and 
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **compute_convex_mesh_points**\ (\ planes\: :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\]\ ) :ref:`🔗<class_Geometry3D_method_compute_convex_mesh_points>`
 
-Calculates and returns all the vertex points of a convex shape defined by an array of ``planes``.
+Tính toán và trả về tất cả các điểm đỉnh của một hình lồi được xác định bởi một mảng ``planes``.
 
 .. rst-class:: classref-item-separator
 
@@ -136,7 +136,7 @@ Calculates and returns all the vertex points of a convex shape defined by an arr
 
 :ref:`Vector3<class_Vector3>` **get_closest_point_to_segment**\ (\ point\: :ref:`Vector3<class_Vector3>`, s1\: :ref:`Vector3<class_Vector3>`, s2\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Geometry3D_method_get_closest_point_to_segment>`
 
-Returns the 3D point on the 3D segment (``s1``, ``s2``) that is closest to ``point``. The returned point will always be inside the specified segment.
+Trả về điểm 3D trên đoạn 3D (``s1``, ``s2``) gần ``point`` nhất. Điểm được trả về luôn nằm bên trong đoạn được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -148,7 +148,7 @@ Returns the 3D point on the 3D segment (``s1``, ``s2``) that is closest to ``poi
 
 :ref:`Vector3<class_Vector3>` **get_closest_point_to_segment_uncapped**\ (\ point\: :ref:`Vector3<class_Vector3>`, s1\: :ref:`Vector3<class_Vector3>`, s2\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Geometry3D_method_get_closest_point_to_segment_uncapped>`
 
-Returns the 3D point on the 3D line defined by (``s1``, ``s2``) that is closest to ``point``. The returned point can be inside the segment (``s1``, ``s2``) or outside of it, i.e. somewhere on the line extending from the segment.
+Trả về điểm 3D trên đường thẳng 3D được xác định bởi (``s1``, ``s2``) gần ``point`` nhất. Điểm được trả về có thể nằm bên trong đoạn (``s1``, ``s2``) hoặc nằm ngoài đoạn, tức là ở đâu đó trên đường thẳng kéo dài từ đoạn đó.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +160,7 @@ Returns the 3D point on the 3D line defined by (``s1``, ``s2``) that is closest 
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_closest_points_between_segments**\ (\ p1\: :ref:`Vector3<class_Vector3>`, p2\: :ref:`Vector3<class_Vector3>`, q1\: :ref:`Vector3<class_Vector3>`, q2\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Geometry3D_method_get_closest_points_between_segments>`
 
-Given the two 3D segments (``p1``, ``p2``) and (``q1``, ``q2``), finds those two points on the two segments that are closest to each other. Returns a :ref:`PackedVector3Array<class_PackedVector3Array>` that contains this point on (``p1``, ``p2``) as well the accompanying point on (``q1``, ``q2``).
+Với hai đoạn thẳng 3D (``p1``, ``p2``) và (``q1``, ``q2``), tìm hai điểm trên hai đoạn thẳng này gần nhau nhất. Trả về một :ref:`PackedVector3Array<class_PackedVector3Array>` chứa điểm này trên (``p1``, ``p2``) cũng như điểm tương ứng trên (``q1``, ``q2``).
 
 .. rst-class:: classref-item-separator
 
@@ -172,9 +172,9 @@ Given the two 3D segments (``p1``, ``p2``) and (``q1``, ``q2``), finds those two
 
 :ref:`Vector3<class_Vector3>` **get_triangle_barycentric_coords**\ (\ point\: :ref:`Vector3<class_Vector3>`, a\: :ref:`Vector3<class_Vector3>`, b\: :ref:`Vector3<class_Vector3>`, c\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Geometry3D_method_get_triangle_barycentric_coords>`
 
-Returns a :ref:`Vector3<class_Vector3>` containing weights based on how close a 3D position (``point``) is to a triangle's different vertices (``a``, ``b`` and ``c``). This is useful for interpolating between the data of different vertices in a triangle. One example use case is using this to smoothly rotate over a mesh instead of relying solely on face normals.
+Trả về một :ref:`Vector3<class_Vector3>` chứa các trọng số dựa trên mức độ gần của một vị trí 3D (``point``) với các đỉnh khác nhau của một tam giác (``a``, ``b`` và ``c``). Điều này hữu ích khi nội suy giữa dữ liệu của các đỉnh khác nhau trong một tam giác. Một trường hợp sử dụng là dùng cách này để xoay mượt mà trên một mesh thay vì chỉ dựa vào các pháp tuyến của mặt.
 
-\ `Here is a more detailed explanation of barycentric coordinates. <https://en.wikipedia.org/wiki/Barycentric_coordinate_system>`__
+\ `Dưới đây là phần giải thích chi tiết hơn về tọa độ barycentric. <https://en.wikipedia.org/wiki/Barycentric_coordinate_system>`__
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ Returns a :ref:`Vector3<class_Vector3>` containing weights based on how close a 
 
 :ref:`Variant<class_Variant>` **ray_intersects_triangle**\ (\ from\: :ref:`Vector3<class_Vector3>`, dir\: :ref:`Vector3<class_Vector3>`, a\: :ref:`Vector3<class_Vector3>`, b\: :ref:`Vector3<class_Vector3>`, c\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Geometry3D_method_ray_intersects_triangle>`
 
-Tests if the 3D ray starting at ``from`` with the direction of ``dir`` intersects the triangle specified by ``a``, ``b`` and ``c``. If yes, returns the point of intersection as :ref:`Vector3<class_Vector3>`. If no intersection takes place, returns ``null``.
+Kiểm tra xem tia 3D bắt đầu tại ``from`` với hướng ``dir`` có giao với tam giác được xác định bởi ``a``, ``b`` và ``c`` hay không. Nếu có, trả về điểm giao nhau dưới dạng :ref:`Vector3<class_Vector3>`. Nếu không có giao nhau, trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Tests if the 3D ray starting at ``from`` with the direction of ``dir`` intersect
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **segment_intersects_convex**\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`, planes\: :ref:`Array<class_Array>`\[:ref:`Plane<class_Plane>`\]\ ) :ref:`🔗<class_Geometry3D_method_segment_intersects_convex>`
 
-Given a convex hull defined though the :ref:`Plane<class_Plane>`\ s in the array ``planes``, tests if the segment (``from``, ``to``) intersects with that hull. If an intersection is found, returns a :ref:`PackedVector3Array<class_PackedVector3Array>` containing the point the intersection and the hull's normal. Otherwise, returns an empty array.
+Với một convex hull được xác định bởi các :ref:`Plane<class_Plane>`\  trong mảng ``planes``, kiểm tra xem đoạn thẳng (``from``, ``to``) có giao với hull đó hay không. Nếu tìm thấy giao nhau, trả về một :ref:`PackedVector3Array<class_PackedVector3Array>` chứa điểm giao nhau và pháp tuyến của hull. Nếu không, trả về một mảng rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Given a convex hull defined though the :ref:`Plane<class_Plane>`\ s in the array
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **segment_intersects_cylinder**\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`, height\: :ref:`float<class_float>`, radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Geometry3D_method_segment_intersects_cylinder>`
 
-Checks if the segment (``from``, ``to``) intersects the cylinder with height ``height`` that is centered at the origin and has radius ``radius``. If no, returns an empty :ref:`PackedVector3Array<class_PackedVector3Array>`. If an intersection takes place, the returned array contains the point of intersection and the cylinder's normal at the point of intersection.
+Kiểm tra xem đoạn thẳng (``from``, ``to``) có giao với hình trụ có chiều cao ``height``, được đặt tâm tại gốc tọa độ và có bán kính ``radius``, hay không. Nếu không, trả về một :ref:`PackedVector3Array<class_PackedVector3Array>` rỗng. Nếu có giao nhau, mảng được trả về chứa điểm giao nhau và pháp tuyến của hình trụ tại điểm giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ Checks if the segment (``from``, ``to``) intersects the cylinder with height ``h
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **segment_intersects_sphere**\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`, sphere_position\: :ref:`Vector3<class_Vector3>`, sphere_radius\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Geometry3D_method_segment_intersects_sphere>`
 
-Checks if the segment (``from``, ``to``) intersects the sphere that is located at ``sphere_position`` and has radius ``sphere_radius``. If no, returns an empty :ref:`PackedVector3Array<class_PackedVector3Array>`. If yes, returns a :ref:`PackedVector3Array<class_PackedVector3Array>` containing the point of intersection and the sphere's normal at the point of intersection.
+Kiểm tra xem đoạn thẳng (``from``, ``to``) có giao với hình cầu nằm tại ``sphere_position`` và có bán kính ``sphere_radius`` hay không. Nếu không, trả về một :ref:`PackedVector3Array<class_PackedVector3Array>` rỗng. Nếu có, trả về một :ref:`PackedVector3Array<class_PackedVector3Array>` chứa điểm giao nhau và pháp tuyến của hình cầu tại điểm giao nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -234,7 +234,7 @@ Checks if the segment (``from``, ``to``) intersects the sphere that is located a
 
 :ref:`Variant<class_Variant>` **segment_intersects_triangle**\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`, a\: :ref:`Vector3<class_Vector3>`, b\: :ref:`Vector3<class_Vector3>`, c\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Geometry3D_method_segment_intersects_triangle>`
 
-Tests if the segment (``from``, ``to``) intersects the triangle ``a``, ``b``, ``c``. If yes, returns the point of intersection as :ref:`Vector3<class_Vector3>`. If no intersection takes place, returns ``null``.
+Kiểm tra xem đoạn thẳng (``from``, ``to``) có giao với tam giác ``a``, ``b``, ``c`` hay không. Nếu có, trả về điểm giao dưới dạng :ref:`Vector3<class_Vector3>`. Nếu không có giao điểm, trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -246,14 +246,14 @@ Tests if the segment (``from``, ``to``) intersects the triangle ``a``, ``b``, ``
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **tetrahedralize_delaunay**\ (\ points\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ ) :ref:`🔗<class_Geometry3D_method_tetrahedralize_delaunay>`
 
-Tetrahedralizes the volume specified by a discrete set of ``points`` in 3D space, ensuring that no point lies within the circumsphere of any resulting tetrahedron. The method returns a :ref:`PackedInt32Array<class_PackedInt32Array>` where each tetrahedron consists of four consecutive point indices into the ``points`` array (resulting in an array with ``n * 4`` elements, where ``n`` is the number of tetrahedra found). If the tetrahedralization is unsuccessful, an empty :ref:`PackedInt32Array<class_PackedInt32Array>` is returned.
+Chia thể tích được xác định bởi một tập rời rạc các ``points`` trong không gian 3D thành các tứ diện, đảm bảo không có điểm nào nằm bên trong mặt cầu ngoại tiếp của bất kỳ tứ diện nào được tạo ra. Phương thức trả về một :ref:`PackedInt32Array<class_PackedInt32Array>`, trong đó mỗi tứ diện gồm bốn chỉ số điểm liên tiếp trong mảng ``points`` (tạo thành một mảng có ``n * 4`` phần tử, trong đó ``n`` là số tứ diện được tìm thấy). Nếu quá trình chia thành tứ diện không thành công, một :ref:`PackedInt32Array<class_PackedInt32Array>` rỗng sẽ được trả về.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,27 +10,27 @@
 SkeletonModificationStack2D
 ===========================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A resource that holds a stack of :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ s.
+Một resource chứa một stack các :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This resource is used by the Skeleton and holds a stack of :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ s.
+Resource này được Skeleton sử dụng và chứa một stack các :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ .
 
-This controls the order of the modifications and how they are applied. Modification order is especially important for full-body IK setups, as you need to execute the modifications in the correct order to get the desired results. For example, you want to execute a modification on the spine *before* the arms on a humanoid skeleton.
+Resource này kiểm soát thứ tự của các modification và cách chúng được áp dụng. Thứ tự modification đặc biệt quan trọng đối với các thiết lập full-body IK, vì bạn cần thực thi các modification theo đúng thứ tự để đạt được kết quả mong muốn. Ví dụ: bạn muốn thực thi modification trên cột sống *trước* các cánh tay trên một skeleton hình người.
 
-This resource also controls how strongly all of the modifications are applied to the :ref:`Skeleton2D<class_Skeleton2D>`.
+Resource này cũng kiểm soát mức độ áp dụng của tất cả modification lên :ref:`Skeleton2D<class_Skeleton2D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -77,8 +77,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModificationStack2D_property_enabled:
 
@@ -91,7 +91,7 @@ Property Descriptions
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_enabled**\ (\ )
 
-If ``true``, the modification's in the stack will be called. This is handled automatically through the :ref:`Skeleton2D<class_Skeleton2D>` node.
+Nếu ``true``, modification trong stack sẽ được gọi. Việc này được tự động xử lý thông qua node :ref:`Skeleton2D<class_Skeleton2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ If ``true``, the modification's in the stack will be called. This is handled aut
 - |void| **set_modification_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_modification_count**\ (\ )
 
-The number of modifications in the stack.
+Số lượng modification trong stack.
 
 .. rst-class:: classref-item-separator
 
@@ -125,7 +125,7 @@ The number of modifications in the stack.
 - |void| **set_strength**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_strength**\ (\ )
 
-The interpolation strength of the modifications in stack. A value of ``0`` will make it where the modifications are not applied, a strength of ``0.5`` will be half applied, and a strength of ``1`` will allow the modifications to be fully applied and override the :ref:`Skeleton2D<class_Skeleton2D>` :ref:`Bone2D<class_Bone2D>` poses.
+Mức độ nội suy của các modification trong stack. Giá trị ``0`` sẽ khiến các modification không được áp dụng, mức độ ``0.5`` sẽ áp dụng chúng một nửa, còn mức độ ``1`` sẽ cho phép áp dụng đầy đủ các modification và ghi đè các tư thế :ref:`Skeleton2D<class_Skeleton2D>` :ref:`Bone2D<class_Bone2D>`.
 
 .. rst-class:: classref-section-separator
 
@@ -133,8 +133,8 @@ The interpolation strength of the modifications in stack. A value of ``0`` will 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModificationStack2D_method_add_modification:
 
@@ -142,7 +142,7 @@ Method Descriptions
 
 |void| **add_modification**\ (\ modification\: :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ ) :ref:`🔗<class_SkeletonModificationStack2D_method_add_modification>`
 
-Adds the passed-in :ref:`SkeletonModification2D<class_SkeletonModification2D>` to the stack.
+Thêm :ref:`SkeletonModification2D<class_SkeletonModification2D>` được truyền vào stack.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Adds the passed-in :ref:`SkeletonModification2D<class_SkeletonModification2D>` t
 
 |void| **delete_modification**\ (\ mod_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModificationStack2D_method_delete_modification>`
 
-Deletes the :ref:`SkeletonModification2D<class_SkeletonModification2D>` at the index position ``mod_idx``, if it exists.
+Xóa :ref:`SkeletonModification2D<class_SkeletonModification2D>` tại vị trí chỉ mục ``mod_idx``, nếu nó tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -166,7 +166,7 @@ Deletes the :ref:`SkeletonModification2D<class_SkeletonModification2D>` at the i
 
 |void| **enable_all_modifications**\ (\ enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModificationStack2D_method_enable_all_modifications>`
 
-Enables all :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ s in the stack.
+Bật tất cả :ref:`SkeletonModification2D<class_SkeletonModification2D>`\  trong stack.
 
 .. rst-class:: classref-item-separator
 
@@ -178,9 +178,9 @@ Enables all :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ s in th
 
 |void| **execute**\ (\ delta\: :ref:`float<class_float>`, execution_mode\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModificationStack2D_method_execute>`
 
-Executes all of the :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ s in the stack that use the same execution mode as the passed-in ``execution_mode``, starting from index ``0`` to :ref:`modification_count<class_SkeletonModificationStack2D_property_modification_count>`.
+Thực thi tất cả :ref:`SkeletonModification2D<class_SkeletonModification2D>`\  trong stack sử dụng cùng execution mode với ``execution_mode`` được truyền vào, bắt đầu từ chỉ mục ``0`` đến :ref:`modification_count<class_SkeletonModificationStack2D_property_modification_count>`.
 
-\ **Note:** The order of the modifications can matter depending on the modifications. For example, modifications on a spine should operate before modifications on the arms in order to get proper results.
+\ **Lưu ý:** Thứ tự của các modification có thể quan trọng tùy thuộc vào các modification đó. Ví dụ: các modification trên cột sống nên được thực thi trước các modification trên cánh tay để đạt được kết quả chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ Executes all of the :ref:`SkeletonModification2D<class_SkeletonModification2D>`\
 
 :ref:`bool<class_bool>` **get_is_setup**\ (\ ) |const| :ref:`🔗<class_SkeletonModificationStack2D_method_get_is_setup>`
 
-Returns a boolean that indicates whether the modification stack is setup and can execute.
+Trả về một boolean cho biết modification stack đã được thiết lập và có thể thực thi hay chưa.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Returns a boolean that indicates whether the modification stack is setup and can
 
 :ref:`SkeletonModification2D<class_SkeletonModification2D>` **get_modification**\ (\ mod_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModificationStack2D_method_get_modification>`
 
-Returns the :ref:`SkeletonModification2D<class_SkeletonModification2D>` at the passed-in index, ``mod_idx``.
+Trả về :ref:`SkeletonModification2D<class_SkeletonModification2D>` tại chỉ mục được truyền vào, ``mod_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Returns the :ref:`SkeletonModification2D<class_SkeletonModification2D>` at the p
 
 :ref:`Skeleton2D<class_Skeleton2D>` **get_skeleton**\ (\ ) |const| :ref:`🔗<class_SkeletonModificationStack2D_method_get_skeleton>`
 
-Returns the :ref:`Skeleton2D<class_Skeleton2D>` node that the SkeletonModificationStack2D is bound to.
+Trả về node :ref:`Skeleton2D<class_Skeleton2D>` mà SkeletonModificationStack2D được liên kết với.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ Returns the :ref:`Skeleton2D<class_Skeleton2D>` node that the SkeletonModificati
 
 |void| **set_modification**\ (\ mod_idx\: :ref:`int<class_int>`, modification\: :ref:`SkeletonModification2D<class_SkeletonModification2D>`\ ) :ref:`🔗<class_SkeletonModificationStack2D_method_set_modification>`
 
-Sets the modification at ``mod_idx`` to the passed-in modification, ``modification``.
+Đặt modification tại ``mod_idx`` thành modification được truyền vào, ``modification``.
 
 .. rst-class:: classref-item-separator
 
@@ -240,14 +240,14 @@ Sets the modification at ``mod_idx`` to the passed-in modification, ``modificati
 
 |void| **setup**\ (\ ) :ref:`🔗<class_SkeletonModificationStack2D_method_setup>`
 
-Sets up the modification stack so it can execute. This function should be called by :ref:`Skeleton2D<class_Skeleton2D>` and shouldn't be manually called unless you know what you are doing.
+Thiết lập modification stack để có thể thực thi. Hàm này nên được gọi bởi :ref:`Skeleton2D<class_Skeleton2D>` và không nên được gọi thủ công trừ khi bạn biết mình đang làm gì.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được cấu thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

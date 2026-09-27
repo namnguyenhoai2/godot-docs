@@ -10,28 +10,28 @@
 Logger
 ======
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Custom logger to receive messages from the internal error/warning stream.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Custom logger to receive messages from the internal error/warning stream. Loggers are registered via :ref:`OS.add_logger()<class_OS_method_add_logger>`.
+Logger tùy chỉnh để nhận thông báo từ luồng lỗi/cảnh báo nội bộ.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Logger tùy chỉnh để nhận thông báo từ luồng lỗi/cảnh báo nội bộ. Các logger được đăng ký thông qua :ref:`OS.add_logger()<class_OS_method_add_logger>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Logging <../tutorials/scripting/logging>`
+- :doc:`Ghi nhật ký <../tutorials/scripting/logging>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -48,14 +48,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Logger_ErrorType:
 
 .. rst-class:: classref-enumeration
 
-enum **ErrorType**: :ref:`🔗<enum_Logger_ErrorType>`
+enum **ErrorType**: :ref:`🔗 <enum_Logger_ErrorType>`
 
 .. _class_Logger_constant_ERROR_TYPE_ERROR:
 
@@ -63,7 +63,7 @@ enum **ErrorType**: :ref:`🔗<enum_Logger_ErrorType>`
 
 :ref:`ErrorType<enum_Logger_ErrorType>` **ERROR_TYPE_ERROR** = ``0``
 
-The message received is an error.
+Thông báo nhận được là một lỗi.
 
 .. _class_Logger_constant_ERROR_TYPE_WARNING:
 
@@ -71,7 +71,7 @@ The message received is an error.
 
 :ref:`ErrorType<enum_Logger_ErrorType>` **ERROR_TYPE_WARNING** = ``1``
 
-The message received is a warning.
+Thông báo nhận được là một cảnh báo.
 
 .. _class_Logger_constant_ERROR_TYPE_SCRIPT:
 
@@ -79,7 +79,7 @@ The message received is a warning.
 
 :ref:`ErrorType<enum_Logger_ErrorType>` **ERROR_TYPE_SCRIPT** = ``2``
 
-The message received is a script error.
+Thông báo nhận được là một lỗi script.
 
 .. _class_Logger_constant_ERROR_TYPE_SHADER:
 
@@ -87,7 +87,7 @@ The message received is a script error.
 
 :ref:`ErrorType<enum_Logger_ErrorType>` **ERROR_TYPE_SHADER** = ``3``
 
-The message received is a shader error.
+Thông báo nhận được là một lỗi shader.
 
 .. rst-class:: classref-section-separator
 
@@ -95,8 +95,8 @@ The message received is a shader error.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Logger_private_method__log_error:
 
@@ -104,17 +104,17 @@ Method Descriptions
 
 |void| **_log_error**\ (\ function\: :ref:`String<class_String>`, file\: :ref:`String<class_String>`, line\: :ref:`int<class_int>`, code\: :ref:`String<class_String>`, rationale\: :ref:`String<class_String>`, editor_notify\: :ref:`bool<class_bool>`, error_type\: :ref:`int<class_int>`, script_backtraces\: :ref:`Array<class_Array>`\[:ref:`ScriptBacktrace<class_ScriptBacktrace>`\]\ ) |virtual| :ref:`🔗<class_Logger_private_method__log_error>`
 
-Called when an error is logged. The error provides the ``function``, ``file``, and ``line`` that it originated from, as well as either the ``code`` that generated the error or a ``rationale``.
+Được gọi khi một lỗi được ghi nhật ký. Lỗi cung cấp ``function``, ``file`` và ``line`` nơi lỗi bắt nguồn, cũng như ``code`` đã tạo ra lỗi hoặc một ``rationale``.
 
-The type of error provided by ``error_type`` is described in the :ref:`ErrorType<enum_Logger_ErrorType>` enumeration.
+Loại lỗi do ``error_type`` cung cấp được mô tả trong enumeration :ref:`ErrorType <enum_Logger_ErrorType>`.
 
-Additionally, ``script_backtraces`` provides backtraces for each of the script languages. These will only contain stack frames in editor builds and debug builds by default. To enable them for release builds as well, you need to enable :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks<class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
+Ngoài ra, ``script_backtraces`` cung cấp backtrace cho từng ngôn ngữ script. Theo mặc định, các backtrace này chỉ chứa các stack frame trong editor build và debug build. Để bật chúng cho cả release build, bạn cần bật :ref:`ProjectSettings.debug/settings/gdscript/always_track_call_stacks <class_ProjectSettings_property_debug/settings/gdscript/always_track_call_stacks>`.
 
-\ **Warning:** This method will be called from threads other than the main thread, possibly at the same time, so you will need to have some kind of thread-safety in your implementation of it, like a :ref:`Mutex<class_Mutex>`.
+\ **Cảnh báo:** Phương thức này sẽ được gọi từ các thread khác với main thread, có thể đồng thời, vì vậy bạn cần bảo đảm một mức độ thread-safety trong phần triển khai của mình, chẳng hạn như một :ref:`Mutex<class_Mutex>`.
 
-\ **Note:** ``script_backtraces`` will not contain any captured variables, due to its prohibitively high cost. To get those, you will need to capture the backtraces yourself, from within the **Logger** virtual methods, using :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
+\ **Lưu ý:** ``script_backtraces`` sẽ không chứa bất kỳ biến nào đã được capture do chi phí quá cao. Để lấy được chúng, bạn sẽ cần tự capture các backtrace từ bên trong các phương thức virtual **Logger**, bằng cách sử dụng :ref:`Engine.capture_script_backtraces()<class_Engine_method_capture_script_backtraces>`.
 
-\ **Note:** Logging errors from this method using functions like :ref:`@GlobalScope.push_error()<class_@GlobalScope_method_push_error>` or :ref:`@GlobalScope.push_warning()<class_@GlobalScope_method_push_warning>` is not supported, as it could cause infinite recursion. These errors will only show up in the console output.
+\ **Lưu ý:** Việc ghi lỗi từ phương thức này bằng các hàm như :ref:`@GlobalScope.push_error() <class_@GlobalScope_method_push_error>` hoặc :ref:`@GlobalScope.push_warning() <class_@GlobalScope_method_push_warning>` không được hỗ trợ vì có thể gây ra đệ quy vô hạn. Những lỗi này sẽ chỉ xuất hiện trong đầu ra của bảng điều khiển.
 
 .. rst-class:: classref-item-separator
 
@@ -126,18 +126,18 @@ Additionally, ``script_backtraces`` provides backtraces for each of the script l
 
 |void| **_log_message**\ (\ message\: :ref:`String<class_String>`, error\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_Logger_private_method__log_message>`
 
-Called when a message is logged. If ``error`` is ``true``, then this message was meant to be sent to ``stderr``.
+Được gọi khi một thông báo được ghi. Nếu ``error`` là ``true``, thì thông báo này được gửi đến ``stderr``.
 
-\ **Warning:** This method will be called from threads other than the main thread, possibly at the same time, so you will need to have some kind of thread-safety in your implementation of it, like a :ref:`Mutex<class_Mutex>`.
+\ **Cảnh báo:** Phương thức này sẽ được gọi từ các thread khác với main thread, có thể đồng thời, vì vậy bạn cần bảo đảm một mức độ thread-safety trong phần triển khai của mình, chẳng hạn như một :ref:`Mutex<class_Mutex>`.
 
-\ **Note:** Logging another message from this method using functions like :ref:`@GlobalScope.print()<class_@GlobalScope_method_print>` is not supported, as it could cause infinite recursion. These messages will only show up in the console output.
+\ **Lưu ý:** Việc ghi một thông báo khác từ phương thức này bằng các hàm như :ref:`@GlobalScope.print() <class_@GlobalScope_method_print>` không được hỗ trợ vì có thể gây ra đệ quy vô hạn. Những thông báo này sẽ chỉ xuất hiện trong đầu ra của bảng điều khiển.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

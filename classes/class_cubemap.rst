@@ -10,32 +10,32 @@
 Cubemap
 =======
 
-**Inherits:** :ref:`ImageTextureLayered<class_ImageTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ImageTextureLayered<class_ImageTextureLayered>` **<** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Six square textures representing the faces of a cube. Commonly used as a skybox.
+Sáu texture hình vuông đại diện cho các mặt của một khối lập phương. Thường được dùng làm skybox.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A cubemap is made of 6 textures organized in layers. They are typically used for faking reflections in 3D rendering (see :ref:`ReflectionProbe<class_ReflectionProbe>`). It can be used to make an object look as if it's reflecting its surroundings. This usually delivers much better performance than other reflection methods.
+Cubemap gồm 6 texture được sắp xếp theo các lớp. Chúng thường được dùng để giả lập phản xạ trong kết xuất 3D (xem :ref:`ReflectionProbe<class_ReflectionProbe>`). Nó có thể được dùng để khiến một đối tượng trông như đang phản chiếu môi trường xung quanh. Cách này thường cho hiệu năng tốt hơn nhiều so với các phương pháp phản xạ khác.
 
-This resource is typically used as a uniform in custom shaders. Few core Godot methods make use of **Cubemap** resources.
+Resource này thường được dùng làm uniform trong custom shader. Một số ít phương thức cốt lõi của Godot sử dụng các resource **Cubemap**.
 
-To create such a texture file yourself, reimport your image files using the Godot Editor import presets. To create a Cubemap from code, use :ref:`ImageTextureLayered.create_from_images()<class_ImageTextureLayered_method_create_from_images>` on an instance of the Cubemap class.
+Để tự tạo tệp texture như vậy, hãy reimport các tệp hình ảnh bằng import preset của Godot Editor. Để tạo Cubemap từ code, hãy dùng :ref:`ImageTextureLayered.create_from_images()<class_ImageTextureLayered_method_create_from_images>` trên một instance của lớp Cubemap.
 
-The expected image order is X+, X-, Y+, Y-, Z+, Z- (in Godot's coordinate system, so Y+ is "up" and Z- is "forward"). You can use one of the following templates as a base:
+Thứ tự hình ảnh dự kiến là X+, X-, Y+, Y-, Z+, Z- (theo hệ tọa độ của Godot, trong đó Y+ là "lên trên" và Z- là "hướng về phía trước"). Bạn có thể dùng một trong các template sau làm cơ sở:
 
-- `2×3 cubemap template (default layout option) <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_2x3.webp>`__\ 
+- `Mẫu cubemap 2×3 (tùy chọn bố cục mặc định) <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_2x3.webp>`__\
 
-- `3×2 cubemap template <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_3x2.webp>`__\ 
+- `Mẫu cubemap 3×2 <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_3x2.webp>`__\
 
-- `1×6 cubemap template <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_1x6.webp>`__\ 
+- `Mẫu cubemap 1×6 <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_1x6.webp>`__\
 
-- `6×1 cubemap template <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_6x1.webp>`__\ 
+- `Mẫu cubemap 6×1 <https://raw.githubusercontent.com/godotengine/godot-docs/master/tutorials/assets_pipeline/img/cubemap_template_6x1.webp>`__\
 
-\ **Note:** Godot doesn't support using cubemaps in a :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`. To use a cubemap as a skybox, convert the default :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>` to a :ref:`ShaderMaterial<class_ShaderMaterial>` using the **Convert to ShaderMaterial** resource dropdown option, then replace its code with the following:
+\ **Lưu ý:** Godot không hỗ trợ sử dụng cubemap trong :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`. Để sử dụng cubemap làm skybox, hãy chuyển đổi :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>` mặc định thành :ref:`ShaderMaterial<class_ShaderMaterial>` bằng tùy chọn danh sách tài nguyên **Convert to ShaderMaterial**, sau đó thay thế mã của nó bằng đoạn mã sau:
 
 .. code:: text
 
@@ -51,14 +51,14 @@ The expected image order is X+, X-, Y+, Y-, Z+, Z- (in Godot's coordinate system
         COLOR = texture(source_panorama, eyedir).rgb * exposure;
     }
 
-After replacing the shader code and saving, specify the imported Cubemap resource in the Shader Parameters section of the ShaderMaterial in the inspector.
+Sau khi thay thế mã shader và lưu, hãy chỉ định tài nguyên Cubemap đã import trong phần Shader Parameters của ShaderMaterial trong inspector.
 
-Alternatively, you can use `this tool <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`__ to convert a cubemap to an equirectangular sky map and use :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>` as usual.
+Ngoài ra, bạn có thể sử dụng `công cụ này <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`__ để chuyển đổi cubemap thành sky map equirectangular và sử dụng :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>` như bình thường.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -73,8 +73,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Cubemap_method_create_placeholder:
 
@@ -82,14 +82,14 @@ Method Descriptions
 
 :ref:`Resource<class_Resource>` **create_placeholder**\ (\ ) |const| :ref:`🔗<class_Cubemap_method_create_placeholder>`
 
-Creates a placeholder version of this resource (:ref:`PlaceholderCubemap<class_PlaceholderCubemap>`).
+Tạo phiên bản giữ chỗ của tài nguyên này (:ref:`PlaceholderCubemap<class_PlaceholderCubemap>`).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

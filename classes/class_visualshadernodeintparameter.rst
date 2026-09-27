@@ -10,40 +10,40 @@
 VisualShaderNodeIntParameter
 ============================
 
-**Inherits:** :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A visual shader node for shader parameter (uniform) of type :ref:`int<class_int>`.
+Một node shader trực quan dành cho tham số shader (uniform) kiểu :ref:`int<class_int>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` of type :ref:`int<class_int>`. Offers additional customization for range of accepted values.
+Một :ref:`VisualShaderNodeParameter<class_VisualShaderNodeParameter>` kiểu :ref:`int<class_int>`. Cung cấp thêm tùy chỉnh cho phạm vi các giá trị được chấp nhận.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                               | :ref:`default_value<class_VisualShaderNodeIntParameter_property_default_value>`                 | ``0``                   |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`default_value_enabled<class_VisualShaderNodeIntParameter_property_default_value_enabled>` | ``false``               |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`   | :ref:`enum_names<class_VisualShaderNodeIntParameter_property_enum_names>`                       | ``PackedStringArray()`` |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` | :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>`                                   | ``0``                   |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                               | :ref:`max<class_VisualShaderNodeIntParameter_property_max>`                                     | ``100``                 |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                               | :ref:`min<class_VisualShaderNodeIntParameter_property_min>`                                     | ``0``                   |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
-   | :ref:`int<class_int>`                               | :ref:`step<class_VisualShaderNodeIntParameter_property_step>`                                   | ``1``                   |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                | :ref:`default_value<class_VisualShaderNodeIntParameter_property_default_value>`                 | ``0``                   |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`default_value_enabled<class_VisualShaderNodeIntParameter_property_default_value_enabled>` | ``false``               |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`    | :ref:`enum_names<class_VisualShaderNodeIntParameter_property_enum_names>`                       | ``PackedStringArray()`` |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`Hint <enum_VisualShaderNodeIntParameter_Hint>` | :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>`                                   | ``0``                   |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                | :ref:`max<class_VisualShaderNodeIntParameter_property_max>`                                     | ``100``                 |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                | :ref:`min<class_VisualShaderNodeIntParameter_property_min>`                                     | ``0``                   |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
+   | :ref:`int<class_int>`                                | :ref:`step<class_VisualShaderNodeIntParameter_property_step>`                                   | ``1``                   |
+   +------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -51,14 +51,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeIntParameter_Hint:
 
 .. rst-class:: classref-enumeration
 
-enum **Hint**: :ref:`🔗<enum_VisualShaderNodeIntParameter_Hint>`
+enum **Hint**: :ref:`🔗 <enum_VisualShaderNodeIntParameter_Hint>`
 
 .. _class_VisualShaderNodeIntParameter_constant_HINT_NONE:
 
@@ -66,7 +66,7 @@ enum **Hint**: :ref:`🔗<enum_VisualShaderNodeIntParameter_Hint>`
 
 :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` **HINT_NONE** = ``0``
 
-The parameter will not constrain its value.
+Tham số sẽ không ràng buộc giá trị của nó.
 
 .. _class_VisualShaderNodeIntParameter_constant_HINT_RANGE:
 
@@ -74,7 +74,7 @@ The parameter will not constrain its value.
 
 :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` **HINT_RANGE** = ``1``
 
-The parameter's value must be within the specified :ref:`min<class_VisualShaderNodeIntParameter_property_min>`/:ref:`max<class_VisualShaderNodeIntParameter_property_max>` range.
+Giá trị của tham số phải nằm trong phạm vi :ref:`min<class_VisualShaderNodeIntParameter_property_min>`/:ref:`max<class_VisualShaderNodeIntParameter_property_max>` được chỉ định.
 
 .. _class_VisualShaderNodeIntParameter_constant_HINT_RANGE_STEP:
 
@@ -82,7 +82,7 @@ The parameter's value must be within the specified :ref:`min<class_VisualShaderN
 
 :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` **HINT_RANGE_STEP** = ``2``
 
-The parameter's value must be within the specified range, with the given :ref:`step<class_VisualShaderNodeIntParameter_property_step>` between values.
+Giá trị của tham số phải nằm trong phạm vi được chỉ định, với :ref:`step<class_VisualShaderNodeIntParameter_property_step>` đã cho.
 
 .. _class_VisualShaderNodeIntParameter_constant_HINT_ENUM:
 
@@ -90,7 +90,7 @@ The parameter's value must be within the specified range, with the given :ref:`s
 
 :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` **HINT_ENUM** = ``3``
 
-The parameter uses an enum to associate preset values to names in the editor.
+Tham số sử dụng enum để liên kết các giá trị đặt trước với tên trong editor.
 
 .. _class_VisualShaderNodeIntParameter_constant_HINT_MAX:
 
@@ -98,7 +98,7 @@ The parameter uses an enum to associate preset values to names in the editor.
 
 :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` **HINT_MAX** = ``4``
 
-Represents the size of the :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` enum.
+Đại diện cho kích thước của enum :ref:`Hint <enum_VisualShaderNodeIntParameter_Hint>`.
 
 .. rst-class:: classref-section-separator
 
@@ -106,8 +106,8 @@ Represents the size of the :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` e
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeIntParameter_property_default_value:
 
@@ -120,7 +120,7 @@ Property Descriptions
 - |void| **set_default_value**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_default_value**\ (\ )
 
-Default value of this parameter, which will be used if not set externally. :ref:`default_value_enabled<class_VisualShaderNodeIntParameter_property_default_value_enabled>` must be enabled; defaults to ``0`` otherwise.
+Giá trị mặc định của tham số này, được sử dụng nếu không được thiết lập từ bên ngoài. :ref:`default_value_enabled<class_VisualShaderNodeIntParameter_property_default_value_enabled>` phải được bật; nếu không, giá trị mặc định là ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Default value of this parameter, which will be used if not set externally. :ref:
 - |void| **set_default_value_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_default_value_enabled**\ (\ )
 
-If ``true``, the node will have a custom default value.
+Nếu ``true``, node sẽ có giá trị mặc định tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -154,9 +154,9 @@ If ``true``, the node will have a custom default value.
 - |void| **set_enum_names**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_enum_names**\ (\ )
 
-The names used for the enum select in the editor. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` must be :ref:`HINT_ENUM<class_VisualShaderNodeIntParameter_constant_HINT_ENUM>` for this to take effect.
+Tên được sử dụng cho enum select trong editor. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` phải là :ref:`HINT_ENUM<class_VisualShaderNodeIntParameter_constant_HINT_ENUM>` để thiết lập này có hiệu lực.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ The names used for the enum select in the editor. :ref:`hint<class_VisualShaderN
 - |void| **set_hint**\ (\ value\: :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>`\ )
 - :ref:`Hint<enum_VisualShaderNodeIntParameter_Hint>` **get_hint**\ (\ )
 
-Range hint of this node. Use it to customize valid parameter range.
+Gợi ý về phạm vi của node này. Sử dụng gợi ý này để tùy chỉnh phạm vi tham số hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ Range hint of this node. Use it to customize valid parameter range.
 - |void| **set_max**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max**\ (\ )
 
-The maximum value this parameter can take. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` must be either :ref:`HINT_RANGE<class_VisualShaderNodeIntParameter_constant_HINT_RANGE>` or :ref:`HINT_RANGE_STEP<class_VisualShaderNodeIntParameter_constant_HINT_RANGE_STEP>` for this to take effect.
+Giá trị tối đa mà tham số này có thể nhận. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` phải là :ref:`HINT_RANGE<class_VisualShaderNodeIntParameter_constant_HINT_RANGE>` hoặc :ref:`HINT_RANGE_STEP<class_VisualShaderNodeIntParameter_constant_HINT_RANGE_STEP>` để thiết lập này có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -207,7 +207,7 @@ The maximum value this parameter can take. :ref:`hint<class_VisualShaderNodeIntP
 - |void| **set_min**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_min**\ (\ )
 
-The minimum value this parameter can take. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` must be either :ref:`HINT_RANGE<class_VisualShaderNodeIntParameter_constant_HINT_RANGE>` or :ref:`HINT_RANGE_STEP<class_VisualShaderNodeIntParameter_constant_HINT_RANGE_STEP>` for this to take effect.
+Giá trị tối thiểu mà tham số này có thể nhận. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` phải là :ref:`HINT_RANGE<class_VisualShaderNodeIntParameter_constant_HINT_RANGE>` hoặc :ref:`HINT_RANGE_STEP<class_VisualShaderNodeIntParameter_constant_HINT_RANGE_STEP>` để thiết lập này có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -224,14 +224,14 @@ The minimum value this parameter can take. :ref:`hint<class_VisualShaderNodeIntP
 - |void| **set_step**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_step**\ (\ )
 
-The step between parameter's values. Forces the parameter to be a multiple of the given value. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` must be :ref:`HINT_RANGE_STEP<class_VisualShaderNodeIntParameter_constant_HINT_RANGE_STEP>` for this to take effect.
+Khoảng bước giữa các giá trị của tham số. Buộc tham số là bội số của giá trị đã cho. :ref:`hint<class_VisualShaderNodeIntParameter_property_hint>` phải là :ref:`HINT_RANGE_STEP<class_VisualShaderNodeIntParameter_constant_HINT_RANGE_STEP>` thì điều này mới có hiệu lực.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

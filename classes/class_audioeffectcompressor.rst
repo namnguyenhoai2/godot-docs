@@ -10,41 +10,41 @@
 AudioEffectCompressor
 =====================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a downward compressor audio effect to an audio bus.
+Thêm hiệu ứng âm thanh compressor giảm âm lượng vào một audio bus.
 
-Allows control of the dynamic range via a volume threshold and timing controls.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "compressor" decreases the volume of sounds when it exceeds a certain volume threshold level.
-
-A compressor can have many uses in a mix:
-
-- To compress the whole volume in the Master bus (although an :ref:`AudioEffectHardLimiter<class_AudioEffectHardLimiter>` is probably better).
-
-- To ensure balance of voice audio clips.
-
-- To sidechain, using another bus as a trigger. This decreases the volume of the bus it is attached to, by using the volume from another audio bus for threshold detection. This technique is common in video game mixing to decrease the volume of music and SFX while voices are being heard. This effect is also known as "ducking".
-
-- To accentuate transients by using a long attack, letting sounds exceed the volume threshold level for a short period before compressing them. This can be used to make SFX more punchy.
+Cho phép kiểm soát dải động thông qua ngưỡng âm lượng và các điều khiển thời gian.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một "compressor" làm giảm âm lượng của âm thanh khi âm lượng đó vượt quá một mức ngưỡng nhất định.
+
+Compressor có thể được sử dụng cho nhiều mục đích trong một bản phối:
+
+- Để nén toàn bộ âm lượng trong Master bus (mặc dù một :ref:`AudioEffectHardLimiter<class_AudioEffectHardLimiter>` có lẽ sẽ tốt hơn).
+
+- Để đảm bảo cân bằng các đoạn âm thanh thoại.
+
+- Để thực hiện sidechain bằng cách sử dụng một bus khác làm tín hiệu kích hoạt. Thao tác này làm giảm âm lượng của bus mà nó được gắn vào bằng cách sử dụng âm lượng từ một bus âm thanh khác để phát hiện ngưỡng. Kỹ thuật này thường được dùng trong quá trình mixing game để giảm âm lượng của nhạc và SFX khi có giọng thoại. Hiệu ứng này còn được gọi là "ducking".
+
+- Để làm nổi bật các transient bằng cách sử dụng thời gian attack dài, cho phép âm thanh vượt quá mức ngưỡng âm lượng trong một khoảng thời gian ngắn trước khi nén chúng. Cách này có thể được dùng để làm cho SFX mạnh và rõ nét hơn.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -72,8 +72,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectCompressor_property_attack_us:
 
@@ -86,7 +86,7 @@ Property Descriptions
 - |void| **set_attack_us**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_attack_us**\ (\ )
 
-Compressor's reaction time when the audio exceeds the volume threshold level, in microseconds. Value can range from 20 to 2000.
+Thời gian phản hồi của bộ nén khi âm thanh vượt quá mức ngưỡng âm lượng, tính bằng micro giây. Giá trị có thể nằm trong khoảng từ 20 đến 2000.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ Compressor's reaction time when the audio exceeds the volume threshold level, in
 - |void| **set_gain**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_gain**\ (\ )
 
-Gain of the audio signal, in dB. Value can range from -20 to 20.
+Gain của tín hiệu âm thanh, tính bằng dB. Giá trị có thể nằm trong khoảng từ -20 đến 20.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Gain of the audio signal, in dB. Value can range from -20 to 20.
 - |void| **set_mix**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mix**\ (\ )
 
-Balance between the original audio and the compressed audio. Value can range from 0 (totally dry) to 1 (totally wet).
+Mức cân bằng giữa âm thanh gốc và âm thanh đã nén. Giá trị có thể nằm trong khoảng từ 0 (hoàn toàn dry) đến 1 (hoàn toàn wet).
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Balance between the original audio and the compressed audio. Value can range fro
 - |void| **set_ratio**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_ratio**\ (\ )
 
-Amount of compression applied to the audio once it passes the volume threshold level. The higher the ratio, the stronger the compression applied to audio signals that pass the volume threshold level. Value can range from 1 to 48.
+Mức độ nén được áp dụng cho âm thanh sau khi âm thanh vượt qua mức ngưỡng âm lượng. Tỷ lệ càng cao thì mức nén áp dụng cho các tín hiệu âm thanh vượt qua mức ngưỡng âm lượng càng mạnh. Giá trị có thể nằm trong khoảng từ 1 đến 48.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Amount of compression applied to the audio once it passes the volume threshold l
 - |void| **set_release_ms**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_release_ms**\ (\ )
 
-Compressor's delay time to stop decreasing the volume after the it falls below the volume threshold level, in milliseconds. Value can range from 20 to 2000.
+Thời gian trễ của bộ nén trước khi ngừng giảm âm lượng sau khi âm lượng giảm xuống dưới mức ngưỡng âm lượng, tính bằng mili giây. Giá trị có thể nằm trong khoảng từ 20 đến 2000.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ Compressor's delay time to stop decreasing the volume after the it falls below t
 - |void| **set_sidechain**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_sidechain**\ (\ )
 
-Audio bus to use for the volume threshold detection.
+Audio bus được sử dụng để phát hiện mức ngưỡng âm lượng.
 
 .. rst-class:: classref-item-separator
 
@@ -188,14 +188,14 @@ Audio bus to use for the volume threshold detection.
 - |void| **set_threshold**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_threshold**\ (\ )
 
-The volume level above which compression is applied to the audio, in dB. Value can range from -60 to 0.
+Mức âm lượng mà từ đó compression được áp dụng cho âm thanh, tính bằng dB. Giá trị có thể nằm trong khoảng từ -60 đến 0.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

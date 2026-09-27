@@ -10,72 +10,72 @@
 GLTFAccessor
 ============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a glTF accessor.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-GLTFAccessor is a data structure representing a glTF ``accessor`` that would be found in the ``"accessors"`` array. A buffer is a blob of binary data. A buffer view is a slice of a buffer. An accessor is a typed interpretation of the data in a buffer view.
-
-Most custom data stored in glTF does not need accessors, only buffer views (see :ref:`GLTFBufferView<class_GLTFBufferView>`). Accessors are for more advanced use cases such as interleaved mesh data encoded for the GPU.
+Đại diện cho một glTF accessor.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+GLTFAccessor là một cấu trúc dữ liệu đại diện cho một ``accessor`` của glTF có trong mảng ``"accessors"``. Buffer là một khối dữ liệu nhị phân. Buffer view là một lát cắt của buffer. Accessor là cách diễn giải dữ liệu trong một buffer view theo kiểu dữ liệu cụ thể.
+
+Hầu hết dữ liệu tùy chỉnh được lưu trữ trong glTF không cần accessor, mà chỉ cần buffer view (xem :ref:`GLTFBufferView<class_GLTFBufferView>`). Accessor phục vụ các trường hợp sử dụng nâng cao hơn, chẳng hạn như dữ liệu mesh đan xen được mã hóa cho GPU.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Buffers, BufferViews, and Accessors in Khronos glTF specification <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__
+- `Buffer, BufferView và Accessor trong đặc tả Khronos glTF <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_005_BuffersBufferViewsAccessors.md>`__
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>`   | :ref:`accessor_type<class_GLTFAccessor_property_accessor_type>`                                 | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`buffer_view<class_GLTFAccessor_property_buffer_view>`                                     | ``-1``                   |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`byte_offset<class_GLTFAccessor_property_byte_offset>`                                     | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` | :ref:`component_type<class_GLTFAccessor_property_component_type>`                               | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`count<class_GLTFAccessor_property_count>`                                                 | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`PackedFloat64Array<class_PackedFloat64Array>`           | :ref:`max<class_GLTFAccessor_property_max>`                                                     | ``PackedFloat64Array()`` |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`PackedFloat64Array<class_PackedFloat64Array>`           | :ref:`min<class_GLTFAccessor_property_min>`                                                     | ``PackedFloat64Array()`` |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                                       | :ref:`normalized<class_GLTFAccessor_property_normalized>`                                       | ``false``                |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`sparse_count<class_GLTFAccessor_property_sparse_count>`                                   | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`sparse_indices_buffer_view<class_GLTFAccessor_property_sparse_indices_buffer_view>`       | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`sparse_indices_byte_offset<class_GLTFAccessor_property_sparse_indices_byte_offset>`       | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` | :ref:`sparse_indices_component_type<class_GLTFAccessor_property_sparse_indices_component_type>` | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`sparse_values_buffer_view<class_GLTFAccessor_property_sparse_values_buffer_view>`         | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`sparse_values_byte_offset<class_GLTFAccessor_property_sparse_values_byte_offset>`         | ``0``                    |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`int<class_int>`                                         | :ref:`type<class_GLTFAccessor_property_type>`                                                   |                          |
-   +---------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`GLTFAccessorType <enum_GLTFAccessor_GLTFAccessorType>`   | :ref:`accessor_type<class_GLTFAccessor_property_accessor_type>`                                 | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`buffer_view<class_GLTFAccessor_property_buffer_view>`                                     | ``-1``                   |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`byte_offset<class_GLTFAccessor_property_byte_offset>`                                     | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`GLTFComponentType <enum_GLTFAccessor_GLTFComponentType>` | :ref:`component_type<class_GLTFAccessor_property_component_type>`                               | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`count<class_GLTFAccessor_property_count>`                                                 | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`PackedFloat64Array<class_PackedFloat64Array>`            | :ref:`max<class_GLTFAccessor_property_max>`                                                     | ``PackedFloat64Array()`` |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`PackedFloat64Array<class_PackedFloat64Array>`            | :ref:`min<class_GLTFAccessor_property_min>`                                                     | ``PackedFloat64Array()`` |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                                        | :ref:`normalized<class_GLTFAccessor_property_normalized>`                                       | ``false``                |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`sparse_count<class_GLTFAccessor_property_sparse_count>`                                   | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`sparse_indices_buffer_view<class_GLTFAccessor_property_sparse_indices_buffer_view>`       | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`sparse_indices_byte_offset<class_GLTFAccessor_property_sparse_indices_byte_offset>`       | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`GLTFComponentType <enum_GLTFAccessor_GLTFComponentType>` | :ref:`sparse_indices_component_type<class_GLTFAccessor_property_sparse_indices_component_type>` | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`sparse_values_buffer_view<class_GLTFAccessor_property_sparse_values_buffer_view>`         | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`sparse_values_byte_offset<class_GLTFAccessor_property_sparse_values_byte_offset>`         | ``0``                    |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`int<class_int>`                                          | :ref:`type<class_GLTFAccessor_property_type>`                                                   |                          |
+   +----------------------------------------------------------------+-------------------------------------------------------------------------------------------------+--------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -92,14 +92,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_GLTFAccessor_GLTFAccessorType:
 
 .. rst-class:: classref-enumeration
 
-enum **GLTFAccessorType**: :ref:`🔗<enum_GLTFAccessor_GLTFAccessorType>`
+enum **GLTFAccessorType**: :ref:`🔗 <enum_GLTFAccessor_GLTFAccessorType>`
 
 .. _class_GLTFAccessor_constant_TYPE_SCALAR:
 
@@ -107,7 +107,7 @@ enum **GLTFAccessorType**: :ref:`🔗<enum_GLTFAccessor_GLTFAccessorType>`
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **TYPE_SCALAR** = ``0``
 
-Accessor type "SCALAR". For the glTF object model, this can be used to map to a single float, int, or bool value, or a float array.
+Kiểu accessor "SCALAR". Trong mô hình đối tượng glTF, kiểu này có thể được dùng để ánh xạ tới một giá trị float, int hoặc bool đơn lẻ, hoặc một mảng float.
 
 .. _class_GLTFAccessor_constant_TYPE_VEC2:
 
@@ -115,7 +115,7 @@ Accessor type "SCALAR". For the glTF object model, this can be used to map to a 
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **TYPE_VEC2** = ``1``
 
-Accessor type "VEC2". For the glTF object model, this maps to "float2", represented in the glTF JSON as an array of two floats.
+Kiểu accessor "VEC2". Trong mô hình đối tượng glTF, kiểu này ánh xạ tới "float2", được biểu diễn trong JSON glTF dưới dạng một mảng gồm hai số thực.
 
 .. _class_GLTFAccessor_constant_TYPE_VEC3:
 
@@ -123,7 +123,7 @@ Accessor type "VEC2". For the glTF object model, this maps to "float2", represen
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **TYPE_VEC3** = ``2``
 
-Accessor type "VEC3". For the glTF object model, this maps to "float3", represented in the glTF JSON as an array of three floats.
+Kiểu accessor "VEC3". Trong mô hình đối tượng glTF, kiểu này ánh xạ tới "float3", được biểu diễn trong JSON glTF dưới dạng một mảng gồm ba số thực.
 
 .. _class_GLTFAccessor_constant_TYPE_VEC4:
 
@@ -131,7 +131,7 @@ Accessor type "VEC3". For the glTF object model, this maps to "float3", represen
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **TYPE_VEC4** = ``3``
 
-Accessor type "VEC4". For the glTF object model, this maps to "float4", represented in the glTF JSON as an array of four floats.
+Kiểu accessor "VEC4". Trong mô hình đối tượng glTF, kiểu này ánh xạ tới "float4", được biểu diễn trong JSON glTF dưới dạng một mảng gồm bốn số thực.
 
 .. _class_GLTFAccessor_constant_TYPE_MAT2:
 
@@ -139,7 +139,7 @@ Accessor type "VEC4". For the glTF object model, this maps to "float4", represen
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **TYPE_MAT2** = ``4``
 
-Accessor type "MAT2". For the glTF object model, this maps to "float2x2", represented in the glTF JSON as an array of four floats.
+Kiểu accessor "MAT2". Trong mô hình đối tượng glTF, kiểu này ánh xạ tới "float2x2", được biểu diễn trong JSON glTF dưới dạng một mảng gồm bốn số thực.
 
 .. _class_GLTFAccessor_constant_TYPE_MAT3:
 
@@ -147,7 +147,7 @@ Accessor type "MAT2". For the glTF object model, this maps to "float2x2", repres
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **TYPE_MAT3** = ``5``
 
-Accessor type "MAT3". For the glTF object model, this maps to "float3x3", represented in the glTF JSON as an array of nine floats.
+Kiểu accessor "MAT3". Trong mô hình đối tượng glTF, kiểu này ánh xạ tới "float3x3", được biểu diễn trong JSON glTF dưới dạng một mảng gồm chín số thực.
 
 .. _class_GLTFAccessor_constant_TYPE_MAT4:
 
@@ -155,7 +155,7 @@ Accessor type "MAT3". For the glTF object model, this maps to "float3x3", repres
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **TYPE_MAT4** = ``6``
 
-Accessor type "MAT4". For the glTF object model, this maps to "float4x4", represented in the glTF JSON as an array of sixteen floats.
+Kiểu accessor "MAT4". Trong mô hình đối tượng glTF, kiểu này ánh xạ tới "float4x4", được biểu diễn trong JSON glTF dưới dạng một mảng gồm mười sáu số thực.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Accessor type "MAT4". For the glTF object model, this maps to "float4x4", repres
 
 .. rst-class:: classref-enumeration
 
-enum **GLTFComponentType**: :ref:`🔗<enum_GLTFAccessor_GLTFComponentType>`
+enum **GLTFComponentType**: :ref:`🔗 <enum_GLTFAccessor_GLTFComponentType>`
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_NONE:
 
@@ -173,7 +173,7 @@ enum **GLTFComponentType**: :ref:`🔗<enum_GLTFAccessor_GLTFComponentType>`
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_NONE** = ``0``
 
-Component type "NONE". This is not a valid component type, and is used to indicate that the component type is not set.
+Kiểu component "NONE". Đây không phải là một kiểu component hợp lệ và được dùng để cho biết kiểu component chưa được thiết lập.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_SIGNED_BYTE:
 
@@ -181,7 +181,7 @@ Component type "NONE". This is not a valid component type, and is used to indica
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_SIGNED_BYTE** = ``5120``
 
-Component type "BYTE". The value is ``0x1400`` which comes from OpenGL. This indicates data is stored in 1-byte or 8-bit signed integers. This is a core part of the glTF specification.
+Kiểu component "BYTE". Giá trị là ``0x1400``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên có dấu 1 byte hoặc 8 bit. Đây là một phần cốt lõi của đặc tả glTF.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_UNSIGNED_BYTE:
 
@@ -189,7 +189,7 @@ Component type "BYTE". The value is ``0x1400`` which comes from OpenGL. This ind
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_UNSIGNED_BYTE** = ``5121``
 
-Component type "UNSIGNED_BYTE". The value is ``0x1401`` which comes from OpenGL. This indicates data is stored in 1-byte or 8-bit unsigned integers. This is a core part of the glTF specification.
+Kiểu component "UNSIGNED_BYTE". Giá trị là ``0x1401``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên không dấu 1 byte hoặc 8 bit. Đây là một phần cốt lõi của đặc tả glTF.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_SIGNED_SHORT:
 
@@ -197,7 +197,7 @@ Component type "UNSIGNED_BYTE". The value is ``0x1401`` which comes from OpenGL.
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_SIGNED_SHORT** = ``5122``
 
-Component type "SHORT". The value is ``0x1402`` which comes from OpenGL. This indicates data is stored in 2-byte or 16-bit signed integers. This is a core part of the glTF specification.
+Kiểu component "SHORT". Giá trị là ``0x1402``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên có dấu 2 byte hoặc 16 bit. Đây là một phần cốt lõi của đặc tả glTF.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_UNSIGNED_SHORT:
 
@@ -205,7 +205,7 @@ Component type "SHORT". The value is ``0x1402`` which comes from OpenGL. This in
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_UNSIGNED_SHORT** = ``5123``
 
-Component type "UNSIGNED_SHORT". The value is ``0x1403`` which comes from OpenGL. This indicates data is stored in 2-byte or 16-bit unsigned integers. This is a core part of the glTF specification.
+Kiểu component "UNSIGNED_SHORT". Giá trị là ``0x1403``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên không dấu 2 byte hoặc 16 bit. Đây là một phần cốt lõi của đặc tả glTF.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_SIGNED_INT:
 
@@ -213,7 +213,7 @@ Component type "UNSIGNED_SHORT". The value is ``0x1403`` which comes from OpenGL
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_SIGNED_INT** = ``5124``
 
-Component type "INT". The value is ``0x1404`` which comes from OpenGL. This indicates data is stored in 4-byte or 32-bit signed integers. This is NOT a core part of the glTF specification, and may not be supported by all glTF importers. May be used by some extensions including ``KHR_interactivity``.
+Kiểu component "INT". Giá trị là ``0x1404``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên có dấu 4 byte hoặc 32 bit. Đây KHÔNG phải là một phần cốt lõi của đặc tả glTF và có thể không được tất cả glTF importer hỗ trợ. Có thể được một số extension sử dụng, bao gồm ``KHR_interactivity``.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_UNSIGNED_INT:
 
@@ -221,7 +221,7 @@ Component type "INT". The value is ``0x1404`` which comes from OpenGL. This indi
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_UNSIGNED_INT** = ``5125``
 
-Component type "UNSIGNED_INT". The value is ``0x1405`` which comes from OpenGL. This indicates data is stored in 4-byte or 32-bit unsigned integers. This is a core part of the glTF specification.
+Kiểu component "UNSIGNED_INT". Giá trị là ``0x1405``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên không dấu 4 byte hoặc 32 bit. Đây là một phần cốt lõi của đặc tả glTF.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_SINGLE_FLOAT:
 
@@ -229,7 +229,7 @@ Component type "UNSIGNED_INT". The value is ``0x1405`` which comes from OpenGL. 
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_SINGLE_FLOAT** = ``5126``
 
-Component type "FLOAT". The value is ``0x1406`` which comes from OpenGL. This indicates data is stored in 4-byte or 32-bit floating-point numbers. This is a core part of the glTF specification.
+Kiểu component "FLOAT". Giá trị là ``0x1406``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số dấu phẩy động 4 byte hoặc 32 bit. Đây là một phần cốt lõi của đặc tả glTF.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_DOUBLE_FLOAT:
 
@@ -237,7 +237,7 @@ Component type "FLOAT". The value is ``0x1406`` which comes from OpenGL. This in
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_DOUBLE_FLOAT** = ``5130``
 
-Component type "DOUBLE". The value is ``0x140A`` which comes from OpenGL. This indicates data is stored in 8-byte or 64-bit floating-point numbers. This is NOT a core part of the glTF specification, and may not be supported by all glTF importers. May be used by some extensions including ``KHR_interactivity``.
+Kiểu component "DOUBLE". Giá trị là ``0x140A``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số dấu phẩy động 8 byte hoặc 64 bit. Đây KHÔNG phải là một phần cốt lõi của đặc tả glTF và có thể không được tất cả glTF importer hỗ trợ. Có thể được một số extension sử dụng, bao gồm ``KHR_interactivity``.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_HALF_FLOAT:
 
@@ -245,7 +245,7 @@ Component type "DOUBLE". The value is ``0x140A`` which comes from OpenGL. This i
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_HALF_FLOAT** = ``5131``
 
-Component type "HALF_FLOAT". The value is ``0x140B`` which comes from OpenGL. This indicates data is stored in 2-byte or 16-bit floating-point numbers. This is NOT a core part of the glTF specification, and may not be supported by all glTF importers. May be used by some extensions including ``KHR_interactivity``.
+Kiểu component "HALF_FLOAT". Giá trị là ``0x140B``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số dấu phẩy động 2 byte hoặc 16 bit. Đây KHÔNG phải là một phần cốt lõi của đặc tả glTF và có thể không được tất cả glTF importer hỗ trợ. Có thể được một số extension sử dụng, bao gồm ``KHR_interactivity``.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_SIGNED_LONG:
 
@@ -253,7 +253,7 @@ Component type "HALF_FLOAT". The value is ``0x140B`` which comes from OpenGL. Th
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_SIGNED_LONG** = ``5134``
 
-Component type "LONG". The value is ``0x140E`` which comes from OpenGL. This indicates data is stored in 8-byte or 64-bit signed integers. This is NOT a core part of the glTF specification, and may not be supported by all glTF importers. May be used by some extensions including ``KHR_interactivity``.
+Kiểu component "LONG". Giá trị là ``0x140E``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên có dấu 8 byte hoặc 64 bit. Đây KHÔNG phải là một phần cốt lõi của đặc tả glTF và có thể không được tất cả glTF importer hỗ trợ. Có thể được một số extension sử dụng, bao gồm ``KHR_interactivity``.
 
 .. _class_GLTFAccessor_constant_COMPONENT_TYPE_UNSIGNED_LONG:
 
@@ -261,7 +261,7 @@ Component type "LONG". The value is ``0x140E`` which comes from OpenGL. This ind
 
 :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **COMPONENT_TYPE_UNSIGNED_LONG** = ``5135``
 
-Component type "UNSIGNED_LONG". The value is ``0x140F`` which comes from OpenGL. This indicates data is stored in 8-byte or 64-bit unsigned integers. This is NOT a core part of the glTF specification, and may not be supported by all glTF importers. May be used by some extensions including ``KHR_interactivity``.
+Loại component "UNSIGNED_LONG". Giá trị là ``0x140F``, bắt nguồn từ OpenGL. Điều này cho biết dữ liệu được lưu trữ dưới dạng số nguyên không dấu 8 byte hoặc 64 bit. Đây KHÔNG phải là phần cốt lõi của đặc tả glTF và có thể không được tất cả glTF importer hỗ trợ. Một số extension, bao gồm ``KHR_interactivity``, có thể sử dụng loại này.
 
 .. rst-class:: classref-section-separator
 
@@ -269,8 +269,8 @@ Component type "UNSIGNED_LONG". The value is ``0x140F`` which comes from OpenGL.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFAccessor_property_accessor_type:
 
@@ -283,7 +283,7 @@ Property Descriptions
 - |void| **set_accessor_type**\ (\ value\: :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>`\ )
 - :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **get_accessor_type**\ (\ )
 
-The glTF accessor type, as an enum.
+Loại accessor của glTF, dưới dạng enum.
 
 .. rst-class:: classref-item-separator
 
@@ -300,7 +300,7 @@ The glTF accessor type, as an enum.
 - |void| **set_buffer_view**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_buffer_view**\ (\ )
 
-The index of the buffer view this accessor is referencing. If ``-1``, this accessor is not referencing any buffer view.
+Chỉ mục của buffer view mà accessor này tham chiếu đến. Nếu là ``-1``, accessor này không tham chiếu đến buffer view nào.
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ The index of the buffer view this accessor is referencing. If ``-1``, this acces
 - |void| **set_byte_offset**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_byte_offset**\ (\ )
 
-The offset relative to the start of the buffer view in bytes.
+Offset tính bằng byte so với đầu buffer view.
 
 .. rst-class:: classref-item-separator
 
@@ -334,7 +334,7 @@ The offset relative to the start of the buffer view in bytes.
 - |void| **set_component_type**\ (\ value\: :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>`\ )
 - :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **get_component_type**\ (\ )
 
-The glTF component type as an enum. See :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` for possible values. Within the core glTF specification, a value of 5125 or "UNSIGNED_INT" must not be used for any accessor that is not referenced by mesh.primitive.indices.
+Loại component của glTF, dưới dạng enum. Xem :ref:`GLTFComponentType <enum_GLTFAccessor_GLTFComponentType>` để biết các giá trị có thể có. Trong đặc tả glTF cốt lõi, không được sử dụng giá trị 5125 hoặc "UNSIGNED_INT" cho bất kỳ accessor nào không được mesh.primitive.indices tham chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -351,7 +351,7 @@ The glTF component type as an enum. See :ref:`GLTFComponentType<enum_GLTFAccesso
 - |void| **set_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_count**\ (\ )
 
-The number of elements referenced by this accessor.
+Số lượng phần tử được accessor này tham chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -368,9 +368,9 @@ The number of elements referenced by this accessor.
 - |void| **set_max**\ (\ value\: :ref:`PackedFloat64Array<class_PackedFloat64Array>`\ )
 - :ref:`PackedFloat64Array<class_PackedFloat64Array>` **get_max**\ (\ )
 
-Maximum value of each component in this accessor.
+Giá trị tối đa của mỗi thành phần trong accessor này.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat64Array<class_PackedFloat64Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedFloat64Array<class_PackedFloat64Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -387,9 +387,9 @@ Maximum value of each component in this accessor.
 - |void| **set_min**\ (\ value\: :ref:`PackedFloat64Array<class_PackedFloat64Array>`\ )
 - :ref:`PackedFloat64Array<class_PackedFloat64Array>` **get_min**\ (\ )
 
-Minimum value of each component in this accessor.
+Giá trị tối thiểu của mỗi thành phần trong accessor này.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat64Array<class_PackedFloat64Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedFloat64Array<class_PackedFloat64Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -406,7 +406,7 @@ Minimum value of each component in this accessor.
 - |void| **set_normalized**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_normalized**\ (\ )
 
-Specifies whether integer data values are normalized before usage.
+Chỉ định liệu các giá trị dữ liệu số nguyên có được chuẩn hóa trước khi sử dụng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -423,7 +423,7 @@ Specifies whether integer data values are normalized before usage.
 - |void| **set_sparse_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sparse_count**\ (\ )
 
-Number of deviating accessor values stored in the sparse array.
+Số lượng giá trị accessor sai lệch được lưu trữ trong mảng thưa.
 
 .. rst-class:: classref-item-separator
 
@@ -440,7 +440,7 @@ Number of deviating accessor values stored in the sparse array.
 - |void| **set_sparse_indices_buffer_view**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sparse_indices_buffer_view**\ (\ )
 
-The index of the buffer view with sparse indices. The referenced buffer view MUST NOT have its target or byteStride properties defined. The buffer view and the optional byteOffset MUST be aligned to the componentType byte length.
+Chỉ mục của buffer view chứa các chỉ mục thưa. buffer view được tham chiếu MUST NOT xác định các thuộc tính target hoặc byteStride. buffer view và byteOffset tùy chọn MUST được căn chỉnh theo độ dài byte của componentType.
 
 .. rst-class:: classref-item-separator
 
@@ -457,7 +457,7 @@ The index of the buffer view with sparse indices. The referenced buffer view MUS
 - |void| **set_sparse_indices_byte_offset**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sparse_indices_byte_offset**\ (\ )
 
-The offset relative to the start of the buffer view in bytes.
+Offset tính bằng byte so với đầu buffer view.
 
 .. rst-class:: classref-item-separator
 
@@ -474,7 +474,7 @@ The offset relative to the start of the buffer view in bytes.
 - |void| **set_sparse_indices_component_type**\ (\ value\: :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>`\ )
 - :ref:`GLTFComponentType<enum_GLTFAccessor_GLTFComponentType>` **get_sparse_indices_component_type**\ (\ )
 
-The indices component data type as an enum. Possible values are 5121 for "UNSIGNED_BYTE", 5123 for "UNSIGNED_SHORT", and 5125 for "UNSIGNED_INT".
+Kiểu dữ liệu của thành phần indices dưới dạng enum. Các giá trị có thể có là 5121 cho "UNSIGNED_BYTE", 5123 cho "UNSIGNED_SHORT" và 5125 cho "UNSIGNED_INT".
 
 .. rst-class:: classref-item-separator
 
@@ -491,7 +491,7 @@ The indices component data type as an enum. Possible values are 5121 for "UNSIGN
 - |void| **set_sparse_values_buffer_view**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sparse_values_buffer_view**\ (\ )
 
-The index of the bufferView with sparse values. The referenced buffer view MUST NOT have its target or byteStride properties defined.
+Chỉ mục của bufferView chứa các giá trị thưa. buffer view được tham chiếu MUST NOT xác định các thuộc tính target hoặc byteStride.
 
 .. rst-class:: classref-item-separator
 
@@ -508,7 +508,7 @@ The index of the bufferView with sparse values. The referenced buffer view MUST 
 - |void| **set_sparse_values_byte_offset**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sparse_values_byte_offset**\ (\ )
 
-The offset relative to the start of the bufferView in bytes.
+Độ lệch tính bằng byte so với phần đầu của bufferView.
 
 .. rst-class:: classref-item-separator
 
@@ -518,16 +518,16 @@ The offset relative to the start of the bufferView in bytes.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **type** :ref:`🔗<class_GLTFAccessor_property_type>`
+:ref:`int<class_int>` **kiểu** :ref:`🔗 <class_GLTFAccessor_property_type>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_type**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_type**\ (\ )
 
-**Deprecated:** Use :ref:`accessor_type<class_GLTFAccessor_property_accessor_type>` instead.
+**Đã ngừng sử dụng:** Hãy sử dụng :ref:`accessor_type<class_GLTFAccessor_property_accessor_type>` thay thế.
 
-The glTF accessor type, as an :ref:`int<class_int>`. Possible values are ``0`` for "SCALAR", ``1`` for "VEC2", ``2`` for "VEC3", ``3`` for "VEC4", ``4`` for "MAT2", ``5`` for "MAT3", and ``6`` for "MAT4".
+Kiểu accessor của glTF, dưới dạng một :ref:`int<class_int>`. Các giá trị có thể có là ``0`` cho "SCALAR", ``1`` cho "VEC2", ``2`` cho "VEC3", ``3`` cho "VEC4", ``4`` cho "MAT2", ``5`` cho "MAT3" và ``6`` cho "MAT4".
 
 .. rst-class:: classref-section-separator
 
@@ -535,8 +535,8 @@ The glTF accessor type, as an :ref:`int<class_int>`. Possible values are ``0`` f
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFAccessor_method_from_dictionary:
 
@@ -544,7 +544,7 @@ Method Descriptions
 
 :ref:`GLTFAccessor<class_GLTFAccessor>` **from_dictionary**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |static| :ref:`🔗<class_GLTFAccessor_method_from_dictionary>`
 
-Creates a new GLTFAccessor instance by parsing the given :ref:`Dictionary<class_Dictionary>`.
+Tạo một thực thể GLTFAccessor mới bằng cách phân tích cú pháp :ref:`Dictionary<class_Dictionary>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -556,14 +556,14 @@ Creates a new GLTFAccessor instance by parsing the given :ref:`Dictionary<class_
 
 :ref:`Dictionary<class_Dictionary>` **to_dictionary**\ (\ ) |const| :ref:`🔗<class_GLTFAccessor_method_to_dictionary>`
 
-Serializes this GLTFAccessor instance into a :ref:`Dictionary<class_Dictionary>`.
+Tuần tự hóa thực thể GLTFAccessor này thành :ref:`Dictionary<class_Dictionary>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

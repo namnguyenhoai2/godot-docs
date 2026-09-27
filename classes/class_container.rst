@@ -10,46 +10,46 @@
 Container
 =========
 
-**Inherits:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AspectRatioContainer<class_AspectRatioContainer>`, :ref:`BoxContainer<class_BoxContainer>`, :ref:`CenterContainer<class_CenterContainer>`, :ref:`EditorProperty<class_EditorProperty>`, :ref:`FlowContainer<class_FlowContainer>`, :ref:`FoldableContainer<class_FoldableContainer>`, :ref:`GraphElement<class_GraphElement>`, :ref:`GridContainer<class_GridContainer>`, :ref:`MarginContainer<class_MarginContainer>`, :ref:`PanelContainer<class_PanelContainer>`, :ref:`ScrollContainer<class_ScrollContainer>`, :ref:`SplitContainer<class_SplitContainer>`, :ref:`SubViewportContainer<class_SubViewportContainer>`, :ref:`TabContainer<class_TabContainer>`
+**Được kế thừa bởi:** :ref:`AspectRatioContainer<class_AspectRatioContainer>`, :ref:`BoxContainer<class_BoxContainer>`, :ref:`CenterContainer<class_CenterContainer>`, :ref:`EditorProperty<class_EditorProperty>`, :ref:`FlowContainer<class_FlowContainer>`, :ref:`FoldableContainer<class_FoldableContainer>`, :ref:`GraphElement<class_GraphElement>`, :ref:`GridContainer<class_GridContainer>`, :ref:`MarginContainer<class_MarginContainer>`, :ref:`PanelContainer<class_PanelContainer>`, :ref:`ScrollContainer<class_ScrollContainer>`, :ref:`SplitContainer<class_SplitContainer>`, :ref:`SubViewportContainer<class_SubViewportContainer>`, :ref:`TabContainer<class_TabContainer>`
 
-Base class for all GUI containers.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Base class for all GUI containers. A **Container** automatically arranges its child controls in a certain way. This class can be inherited to make custom container types.
+Lớp cơ sở cho tất cả các container GUI.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở cho tất cả các container GUI. Một **Container** tự động sắp xếp các control con của nó theo một cách nhất định. Có thể kế thừa lớp này để tạo các kiểu container tùy chỉnh.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng Container <../tutorials/ui/gui_containers>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------+----------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                      | :ref:`accessibility_region<class_Container_property_accessibility_region>` | ``false``                                                                          |
-   +----------------------------------------------+----------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`MouseFilter<enum_Control_MouseFilter>` | mouse_filter                                                               | ``1`` (overrides :ref:`Control<class_Control_property_mouse_filter>`)              |
-   +----------------------------------------------+----------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                      | propagate_maximum_size                                                     | ``true`` (overrides :ref:`Control<class_Control_property_propagate_maximum_size>`) |
-   +----------------------------------------------+----------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+   +-----------------------------------------------+----------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                       | :ref:`accessibility_region<class_Container_property_accessibility_region>` | ``false``                                                                       |
+   +-----------------------------------------------+----------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`MouseFilter <enum_Control_MouseFilter>` | mouse_filter                                                               | ``1`` (ghi đè :ref:`Control<class_Control_property_mouse_filter>`)              |
+   +-----------------------------------------------+----------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                       | propagate_maximum_size                                                     | ``true`` (ghi đè :ref:`Control<class_Control_property_propagate_maximum_size>`) |
+   +-----------------------------------------------+----------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -70,8 +70,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Container_signal_pre_sort_children:
 
@@ -79,7 +79,7 @@ Signals
 
 **pre_sort_children**\ (\ ) :ref:`🔗<class_Container_signal_pre_sort_children>`
 
-Emitted when children are going to be sorted.
+Được phát ra khi các node con sắp được sắp xếp.
 
 .. rst-class:: classref-item-separator
 
@@ -91,7 +91,7 @@ Emitted when children are going to be sorted.
 
 **sort_children**\ (\ ) :ref:`🔗<class_Container_signal_sort_children>`
 
-Emitted when sorting the children is needed.
+Được phát ra khi cần sắp xếp các node con.
 
 .. rst-class:: classref-section-separator
 
@@ -99,8 +99,8 @@ Emitted when sorting the children is needed.
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Container_constant_NOTIFICATION_PRE_SORT_CHILDREN:
 
@@ -108,7 +108,7 @@ Constants
 
 **NOTIFICATION_PRE_SORT_CHILDREN** = ``50`` :ref:`🔗<class_Container_constant_NOTIFICATION_PRE_SORT_CHILDREN>`
 
-Notification just before children are going to be sorted, in case there's something to process beforehand.
+Thông báo ngay trước khi các node con sắp được sắp xếp, phòng trường hợp cần xử lý gì đó trước.
 
 .. _class_Container_constant_NOTIFICATION_SORT_CHILDREN:
 
@@ -116,7 +116,7 @@ Notification just before children are going to be sorted, in case there's someth
 
 **NOTIFICATION_SORT_CHILDREN** = ``51`` :ref:`🔗<class_Container_constant_NOTIFICATION_SORT_CHILDREN>`
 
-Notification for when sorting the children, it must be obeyed immediately.
+Thông báo khi sắp xếp các node con; phải được tuân thủ ngay lập tức.
 
 .. rst-class:: classref-section-separator
 
@@ -124,8 +124,8 @@ Notification for when sorting the children, it must be obeyed immediately.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Container_property_accessibility_region:
 
@@ -138,7 +138,7 @@ Property Descriptions
 - |void| **set_accessibility_region**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_accessibility_region**\ (\ )
 
-If ``true``, this container is marked as a region for accessibility. Use :ref:`Control.accessibility_name<class_Control_property_accessibility_name>` to give the region a descriptive name. Screen readers can navigate between regions using landmark navigation.
+Nếu ``true``, container này được đánh dấu là một khu vực để hỗ trợ khả năng truy cập. Sử dụng :ref:`Control.accessibility_name<class_Control_property_accessibility_name>` để đặt tên mô tả cho khu vực. Trình đọc màn hình có thể điều hướng giữa các khu vực bằng tính năng điều hướng landmark.
 
 .. rst-class:: classref-section-separator
 
@@ -146,8 +146,8 @@ If ``true``, this container is marked as a region for accessibility. Use :ref:`C
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Container_private_method__get_allowed_size_flags_horizontal:
 
@@ -155,9 +155,9 @@ Method Descriptions
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_get_allowed_size_flags_horizontal**\ (\ ) |virtual| |const| :ref:`🔗<class_Container_private_method__get_allowed_size_flags_horizontal>`
 
-Implement to return a list of allowed horizontal :ref:`SizeFlags<enum_Control_SizeFlags>` for child nodes. This doesn't technically prevent the usages of any other size flags, if your implementation requires that. This only limits the options available to the user in the Inspector dock.
+Triển khai để trả về danh sách các :ref:`SizeFlags <enum_Control_SizeFlags>` ngang được phép cho các node con. Về mặt kỹ thuật, điều này không ngăn việc sử dụng bất kỳ size flag nào khác nếu quá trình triển khai của bạn yêu cầu. Điều này chỉ giới hạn các tùy chọn có sẵn cho người dùng trong dock Inspector.
 
-\ **Note:** Having no size flags is equal to having :ref:`Control.SIZE_SHRINK_BEGIN<class_Control_constant_SIZE_SHRINK_BEGIN>`. As such, this value is always implicitly allowed.
+\ **Lưu ý:** Không có size flag tương đương với :ref:`Control.SIZE_SHRINK_BEGIN<class_Control_constant_SIZE_SHRINK_BEGIN>`. Vì vậy, giá trị này luôn được cho phép ngầm định.
 
 .. rst-class:: classref-item-separator
 
@@ -169,9 +169,9 @@ Implement to return a list of allowed horizontal :ref:`SizeFlags<enum_Control_Si
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **_get_allowed_size_flags_vertical**\ (\ ) |virtual| |const| :ref:`🔗<class_Container_private_method__get_allowed_size_flags_vertical>`
 
-Implement to return a list of allowed vertical :ref:`SizeFlags<enum_Control_SizeFlags>` for child nodes. This doesn't technically prevent the usages of any other size flags, if your implementation requires that. This only limits the options available to the user in the Inspector dock.
+Triển khai để trả về danh sách các :ref:`SizeFlags <enum_Control_SizeFlags>` dọc được phép cho các node con. Về mặt kỹ thuật, điều này không ngăn việc sử dụng bất kỳ size flag nào khác nếu quá trình triển khai của bạn yêu cầu. Điều này chỉ giới hạn các tùy chọn có sẵn cho người dùng trong dock Inspector.
 
-\ **Note:** Having no size flags is equal to having :ref:`Control.SIZE_SHRINK_BEGIN<class_Control_constant_SIZE_SHRINK_BEGIN>`. As such, this value is always implicitly allowed.
+\ **Lưu ý:** Không có size flag tương đương với :ref:`Control.SIZE_SHRINK_BEGIN<class_Control_constant_SIZE_SHRINK_BEGIN>`. Vì vậy, giá trị này luôn được cho phép ngầm định.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Implement to return a list of allowed vertical :ref:`SizeFlags<enum_Control_Size
 
 |void| **fit_child_in_rect**\ (\ child\: :ref:`Control<class_Control>`, rect\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_Container_method_fit_child_in_rect>`
 
-Fit a child control in a given rect. This is mainly a helper for creating custom container classes.
+Đặt một control con vừa với một hình chữ nhật cho trước. Đây chủ yếu là một helper để tạo các lớp container tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -195,14 +195,14 @@ Fit a child control in a given rect. This is mainly a helper for creating custom
 
 |void| **queue_sort**\ (\ ) :ref:`🔗<class_Container_method_queue_sort>`
 
-Queue resort of the contained children. This is called automatically anyway, but can be called upon request.
+Xếp hàng yêu cầu sắp xếp lại các control con được chứa. Việc này vốn được tự động thực hiện, nhưng cũng có thể được gọi theo yêu cầu.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

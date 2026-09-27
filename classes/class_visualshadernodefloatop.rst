@@ -10,28 +10,28 @@
 VisualShaderNodeFloatOp
 =======================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A floating-point scalar operator to be used within the visual shader graph.
+Một toán tử vô hướng dấu phẩy động được sử dụng trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Applies :ref:`operator<class_VisualShaderNodeFloatOp_property_operator>` to two floating-point inputs: ``a`` and ``b``.
+Áp dụng :ref:`operator<class_VisualShaderNodeFloatOp_property_operator>` cho hai đầu vào dấu phẩy động: ``a`` và ``b``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------+------------------------------------------------------------------+-------+
-   | :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` | :ref:`operator<class_VisualShaderNodeFloatOp_property_operator>` | ``0`` |
-   +--------------------------------------------------------+------------------------------------------------------------------+-------+
+   +---------------------------------------------------------+------------------------------------------------------------------+-------+
+   | :ref:`Operator <enum_VisualShaderNodeFloatOp_Operator>` | :ref:`operator<class_VisualShaderNodeFloatOp_property_operator>` | ``0`` |
+   +---------------------------------------------------------+------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeFloatOp_Operator:
 
 .. rst-class:: classref-enumeration
 
-enum **Operator**: :ref:`🔗<enum_VisualShaderNodeFloatOp_Operator>`
+enum **Operator**: :ref:`🔗 <enum_VisualShaderNodeFloatOp_Operator>`
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_ADD:
 
@@ -54,7 +54,7 @@ enum **Operator**: :ref:`🔗<enum_VisualShaderNodeFloatOp_Operator>`
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_ADD** = ``0``
 
-Sums two numbers using ``a + b``.
+Cộng hai số bằng ``a + b``.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_SUB:
 
@@ -62,7 +62,7 @@ Sums two numbers using ``a + b``.
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_SUB** = ``1``
 
-Subtracts two numbers using ``a - b``.
+Trừ hai số bằng ``a - b``.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_MUL:
 
@@ -70,7 +70,7 @@ Subtracts two numbers using ``a - b``.
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_MUL** = ``2``
 
-Multiplies two numbers using ``a * b``.
+Nhân hai số bằng ``a * b``.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_DIV:
 
@@ -78,7 +78,7 @@ Multiplies two numbers using ``a * b``.
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_DIV** = ``3``
 
-Divides two numbers using ``a / b``.
+Chia hai số bằng ``a / b``.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_MOD:
 
@@ -86,7 +86,7 @@ Divides two numbers using ``a / b``.
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_MOD** = ``4``
 
-Calculates the remainder of two numbers. Translates to ``mod(a, b)`` in the Godot Shader Language.
+Tính phần dư của hai số. Tương ứng với ``mod(a, b)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_POW:
 
@@ -94,7 +94,7 @@ Calculates the remainder of two numbers. Translates to ``mod(a, b)`` in the Godo
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_POW** = ``5``
 
-Raises the ``a`` to the power of ``b``. Translates to ``pow(a, b)`` in the Godot Shader Language.
+Lũy thừa ``a`` với số mũ ``b``. Tương ứng với ``pow(a, b)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_MAX:
 
@@ -102,7 +102,7 @@ Raises the ``a`` to the power of ``b``. Translates to ``pow(a, b)`` in the Godot
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_MAX** = ``6``
 
-Returns the greater of two numbers. Translates to ``max(a, b)`` in the Godot Shader Language.
+Trả về số lớn hơn trong hai số. Tương ứng với ``max(a, b)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_MIN:
 
@@ -110,7 +110,7 @@ Returns the greater of two numbers. Translates to ``max(a, b)`` in the Godot Sha
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_MIN** = ``7``
 
-Returns the lesser of two numbers. Translates to ``min(a, b)`` in the Godot Shader Language.
+Trả về số nhỏ hơn trong hai số. Tương ứng với ``min(a, b)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_ATAN2:
 
@@ -118,7 +118,7 @@ Returns the lesser of two numbers. Translates to ``min(a, b)`` in the Godot Shad
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_ATAN2** = ``8``
 
-Returns the arc-tangent of the parameters. Translates to ``atan(a, b)`` in the Godot Shader Language.
+Trả về arctangent của các tham số. Tương ứng với ``atan(a, b)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_STEP:
 
@@ -126,7 +126,7 @@ Returns the arc-tangent of the parameters. Translates to ``atan(a, b)`` in the G
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_STEP** = ``9``
 
-Generates a step function by comparing ``b``\ (x) to ``a``\ (edge). Returns 0.0 if ``x`` is smaller than ``edge`` and otherwise 1.0. Translates to ``step(a, b)`` in the Godot Shader Language.
+Tạo một hàm step bằng cách so sánh ``b``\ (x) với ``a``\ (edge). Trả về 0.0 nếu ``x`` nhỏ hơn ``edge``, và trong trường hợp còn lại trả về 1.0. Tương ứng với ``step(a, b)`` trong Godot Shader Language.
 
 .. _class_VisualShaderNodeFloatOp_constant_OP_ENUM_SIZE:
 
@@ -134,7 +134,7 @@ Generates a step function by comparing ``b``\ (x) to ``a``\ (edge). Returns 0.0 
 
 :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **OP_ENUM_SIZE** = ``10``
 
-Represents the size of the :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` enum.
+Đại diện cho kích thước của enum :ref:`Operator <enum_VisualShaderNodeFloatOp_Operator>`.
 
 .. rst-class:: classref-section-separator
 
@@ -142,8 +142,8 @@ Represents the size of the :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeFloatOp_property_operator:
 
@@ -156,14 +156,14 @@ Property Descriptions
 - |void| **set_operator**\ (\ value\: :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>`\ )
 - :ref:`Operator<enum_VisualShaderNodeFloatOp_Operator>` **get_operator**\ (\ )
 
-An operator to be applied to the inputs.
+Một operator được áp dụng cho các đầu vào.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

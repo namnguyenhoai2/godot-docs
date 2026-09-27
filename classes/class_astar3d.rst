@@ -10,22 +10,22 @@
 AStar3D
 =======
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An implementation of A\* for finding the shortest path between two vertices on a connected graph in 3D space.
+Một cách triển khai của A\* để tìm đường đi ngắn nhất giữa hai đỉnh trên một đồ thị liên thông trong không gian 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A\* (A star) is a computer algorithm used in pathfinding and graph traversal, the process of plotting short paths among vertices (points), passing through a given set of edges (segments). It enjoys widespread use due to its performance and accuracy. Godot's A\* implementation uses points in 3D space and Euclidean distances by default.
+A\* (A star) là một thuật toán máy tính được sử dụng để tìm đường đi và duyệt đồ thị, tức là quá trình vạch ra các đường đi ngắn giữa các đỉnh (điểm), đi qua một tập hợp cạnh (đoạn) cho trước. Thuật toán này được sử dụng rộng rãi nhờ hiệu năng và độ chính xác. Cách triển khai A\* của Godot sử dụng các điểm trong không gian 3D và khoảng cách Euclidean theo mặc định.
 
-You must add points manually with :ref:`add_point()<class_AStar3D_method_add_point>` and create segments manually with :ref:`connect_points()<class_AStar3D_method_connect_points>`. Once done, you can test if there is a path between two points with the :ref:`are_points_connected()<class_AStar3D_method_are_points_connected>` function, get a path containing indices by :ref:`get_id_path()<class_AStar3D_method_get_id_path>`, or one containing actual coordinates with :ref:`get_point_path()<class_AStar3D_method_get_point_path>`.
+Bạn phải thêm các điểm theo cách thủ công bằng :ref:`add_point()<class_AStar3D_method_add_point>` và tạo các đoạn theo cách thủ công bằng :ref:`connect_points()<class_AStar3D_method_connect_points>`. Sau khi hoàn tất, bạn có thể kiểm tra xem có đường đi giữa hai điểm bằng hàm :ref:`are_points_connected()<class_AStar3D_method_are_points_connected>`, lấy đường đi chứa các chỉ số bằng :ref:`get_id_path()<class_AStar3D_method_get_id_path>`, hoặc đường đi chứa tọa độ thực bằng :ref:`get_point_path()<class_AStar3D_method_get_point_path>`.
 
-It is also possible to use non-Euclidean distances. To do so, create a script that extends **AStar3D** and override the methods :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` and :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>`. Both should take two point IDs and return the distance between the corresponding points.
+Bạn cũng có thể sử dụng khoảng cách không phải Euclidean. Để làm vậy, hãy tạo một script kế thừa **AStar3D** và ghi đè các phương thức :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` và :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>`. Cả hai phương thức đều phải nhận hai ID điểm và trả về khoảng cách giữa các điểm tương ứng.
 
-\ **Example:** Use Manhattan distance instead of Euclidean distance:
+\ **Ví dụ:** Sử dụng khoảng cách Manhattan thay cho khoảng cách Euclidean:
 
 
 .. tabs::
@@ -70,13 +70,13 @@ It is also possible to use non-Euclidean distances. To do so, create a script th
 
 
 
-\ :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` should return a lower bound of the distance, i.e. ``_estimate_cost(u, v) <= _compute_cost(u, v)``. This serves as a hint to the algorithm because the custom :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` might be computation-heavy. If this is not the case, make :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` return the same value as :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` to provide the algorithm with the most accurate information.
+\ :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` nên trả về cận dưới của khoảng cách, tức là ``_estimate_cost(u, v) <= _compute_cost(u, v)``. Điều này cung cấp một gợi ý cho thuật toán vì :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` tùy chỉnh có thể yêu cầu nhiều phép tính. Nếu không phải vậy, hãy để :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` trả về cùng giá trị với :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` để cung cấp cho thuật toán thông tin chính xác nhất.
 
-If the default :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` and :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` methods are used, or if the supplied :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` method returns a lower bound of the cost, then the paths returned by A\* will be the lowest-cost paths. Here, the cost of a path equals the sum of the :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` results of all segments in the path multiplied by the ``weight_scale``\ s of the endpoints of the respective segments. If the default methods are used and the ``weight_scale``\ s of all points are set to ``1.0``, then this equals the sum of Euclidean distances of all segments in the path.
+Nếu sử dụng các phương thức :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` và :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` mặc định, hoặc nếu phương thức :ref:`_estimate_cost()<class_AStar3D_private_method__estimate_cost>` được cung cấp trả về cận dưới của chi phí, thì các đường đi do A\* trả về sẽ là những đường đi có chi phí thấp nhất. Ở đây, chi phí của một đường đi bằng tổng các kết quả :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` của tất cả các đoạn trong đường đi, nhân với ``weight_scale``\ s của các điểm đầu mút của từng đoạn tương ứng. Nếu sử dụng các phương thức mặc định và ``weight_scale``\ s của tất cả các điểm được đặt thành ``1.0``, thì giá trị này bằng tổng khoảng cách Euclidean của tất cả các đoạn trong đường đi.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -88,8 +88,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -154,8 +154,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AStar3D_property_neighbor_filter_enabled:
 
@@ -168,7 +168,7 @@ Property Descriptions
 - |void| **set_neighbor_filter_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_neighbor_filter_enabled**\ (\ )
 
-If ``true`` enables the filtering of neighbors via :ref:`_filter_neighbor()<class_AStar3D_private_method__filter_neighbor>`.
+Nếu ``true`` cho phép lọc các nút lân cận thông qua :ref:`_filter_neighbor()<class_AStar3D_private_method__filter_neighbor>`.
 
 .. rst-class:: classref-section-separator
 
@@ -176,8 +176,8 @@ If ``true`` enables the filtering of neighbors via :ref:`_filter_neighbor()<clas
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AStar3D_private_method__compute_cost:
 
@@ -185,9 +185,9 @@ Method Descriptions
 
 :ref:`float<class_float>` **_compute_cost**\ (\ from_id\: :ref:`int<class_int>`, to_id\: :ref:`int<class_int>`\ ) |virtual| |const| :ref:`🔗<class_AStar3D_private_method__compute_cost>`
 
-Called when computing the cost between two connected points.
+Được gọi khi tính chi phí giữa hai điểm được kết nối.
 
-Note that this function is hidden in the default **AStar3D** class.
+Lưu ý rằng hàm này bị ẩn trong lớp **AStar3D** mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -199,9 +199,9 @@ Note that this function is hidden in the default **AStar3D** class.
 
 :ref:`float<class_float>` **_estimate_cost**\ (\ from_id\: :ref:`int<class_int>`, end_id\: :ref:`int<class_int>`\ ) |virtual| |const| :ref:`🔗<class_AStar3D_private_method__estimate_cost>`
 
-Called when estimating the cost between a point and the path's ending point.
+Được gọi khi ước tính chi phí giữa một điểm và điểm kết thúc của path.
 
-Note that this function is hidden in the default **AStar3D** class.
+Lưu ý rằng hàm này bị ẩn trong lớp **AStar3D** mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -213,9 +213,9 @@ Note that this function is hidden in the default **AStar3D** class.
 
 :ref:`bool<class_bool>` **_filter_neighbor**\ (\ from_id\: :ref:`int<class_int>`, neighbor_id\: :ref:`int<class_int>`\ ) |virtual| |const| :ref:`🔗<class_AStar3D_private_method__filter_neighbor>`
 
-Called when neighboring point enters processing and if :ref:`neighbor_filter_enabled<class_AStar3D_property_neighbor_filter_enabled>` is ``true``. If ``true`` is returned the point will not be processed.
+Được gọi khi điểm lân cận bắt đầu được xử lý và khi :ref:`neighbor_filter_enabled<class_AStar3D_property_neighbor_filter_enabled>` là ``true``. Nếu trả về ``true``, điểm đó sẽ không được xử lý.
 
-Note that this function is hidden in the default **AStar3D** class.
+Lưu ý rằng hàm này bị ẩn trong lớp **AStar3D** mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -227,9 +227,9 @@ Note that this function is hidden in the default **AStar3D** class.
 
 |void| **add_point**\ (\ id\: :ref:`int<class_int>`, position\: :ref:`Vector3<class_Vector3>`, weight_scale\: :ref:`float<class_float>` = 1.0\ ) :ref:`🔗<class_AStar3D_method_add_point>`
 
-Adds a new point at the given position with the given identifier. The ``id`` must be 0 or larger, and the ``weight_scale`` must be 0.0 or greater.
+Thêm một điểm mới tại vị trí đã cho với mã định danh đã cho. ``id`` phải lớn hơn hoặc bằng 0, và ``weight_scale`` phải lớn hơn hoặc bằng 0.0.
 
-The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` when determining the overall cost of traveling across a segment from a neighboring point to this point. Thus, all else being equal, the algorithm prefers points with lower ``weight_scale``\ s to form a path.
+``weight_scale`` được nhân với kết quả của :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` khi xác định tổng chi phí di chuyển qua một đoạn từ điểm lân cận đến điểm này. Do đó, khi mọi yếu tố khác như nhau, thuật toán ưu tiên các điểm có ``weight_scale``\ s thấp hơn để tạo thành một đường đi.
 
 
 .. tabs::
@@ -237,16 +237,16 @@ The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost()<class_
  .. code-tab:: gdscript
 
     var astar = AStar3D.new()
-    astar.add_point(1, Vector3(1, 0, 0), 4) # Adds the point (1, 0, 0) with weight_scale 4 and id 1
+    astar.add_point(1, Vector3(1, 0, 0), 4) # Thêm điểm (1, 0, 0) với weight_scale 4 và id 1
 
  .. code-tab:: csharp
 
     var astar = new AStar3D();
-    astar.AddPoint(1, new Vector3(1, 0, 0), 4); // Adds the point (1, 0, 0) with weight_scale 4 and id 1
+    astar.AddPoint(1, new Vector3(1, 0, 0), 4); // Thêm điểm (1, 0, 0) với weight_scale 4 và id 1
 
 
 
-If there already exists a point for the given ``id``, its position and weight scale are updated to the given values.
+Nếu đã tồn tại một điểm cho ``id``, vị trí và hệ số trọng số của điểm đó sẽ được cập nhật thành các giá trị đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -258,7 +258,7 @@ If there already exists a point for the given ``id``, its position and weight sc
 
 :ref:`bool<class_bool>` **are_points_connected**\ (\ id\: :ref:`int<class_int>`, to_id\: :ref:`int<class_int>`, bidirectional\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_AStar3D_method_are_points_connected>`
 
-Returns whether the two given points are directly connected by a segment. If ``bidirectional`` is ``false``, returns whether movement from ``id`` to ``to_id`` is possible through this segment.
+Trả về việc hai điểm đã cho có được kết nối trực tiếp bằng một đoạn hay không. Nếu ``bidirectional`` là ``false``, trả về việc có thể di chuyển từ ``id`` đến ``to_id`` qua đoạn này hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ Returns whether the two given points are directly connected by a segment. If ``b
 
 |void| **clear**\ (\ ) :ref:`🔗<class_AStar3D_method_clear>`
 
-Clears all the points and segments.
+Xóa tất cả các điểm và đoạn.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Clears all the points and segments.
 
 |void| **connect_points**\ (\ id\: :ref:`int<class_int>`, to_id\: :ref:`int<class_int>`, bidirectional\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_AStar3D_method_connect_points>`
 
-Creates a segment between the given points. If ``bidirectional`` is ``false``, only movement from ``id`` to ``to_id`` is allowed, not the reverse direction.
+Tạo một đoạn giữa các điểm đã cho. Nếu ``bidirectional`` là ``false``, chỉ cho phép di chuyển từ ``id`` đến ``to_id``, không cho phép di chuyển theo hướng ngược lại.
 
 
 .. tabs::
@@ -313,7 +313,7 @@ Creates a segment between the given points. If ``bidirectional`` is ``false``, o
 
 |void| **disconnect_points**\ (\ id\: :ref:`int<class_int>`, to_id\: :ref:`int<class_int>`, bidirectional\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_AStar3D_method_disconnect_points>`
 
-Deletes the segment between the given points. If ``bidirectional`` is ``false``, only movement from ``id`` to ``to_id`` is prevented, and a unidirectional segment possibly remains.
+Xóa đoạn giữa các điểm đã cho. Nếu ``bidirectional`` là ``false``, chỉ ngăn việc di chuyển từ ``id`` đến ``to_id``, và một đoạn một chiều có thể vẫn còn.
 
 .. rst-class:: classref-item-separator
 
@@ -325,7 +325,7 @@ Deletes the segment between the given points. If ``bidirectional`` is ``false``,
 
 :ref:`int<class_int>` **get_available_point_id**\ (\ ) |const| :ref:`🔗<class_AStar3D_method_get_available_point_id>`
 
-Returns the next available point ID with no point associated to it.
+Trả về ID điểm khả dụng tiếp theo chưa được gán cho điểm nào.
 
 .. rst-class:: classref-item-separator
 
@@ -337,9 +337,9 @@ Returns the next available point ID with no point associated to it.
 
 :ref:`int<class_int>` **get_closest_point**\ (\ to_position\: :ref:`Vector3<class_Vector3>`, include_disabled\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_AStar3D_method_get_closest_point>`
 
-Returns the ID of the closest point to ``to_position``, optionally taking disabled points into account. Returns ``-1`` if there are no points in the points pool.
+Trả về ID của điểm gần ``to_position`` nhất, tùy chọn tính cả các điểm bị vô hiệu hóa. Trả về ``-1`` nếu không có điểm nào trong pool điểm.
 
-\ **Note:** If several points are the closest to ``to_position``, the one with the smallest ID will be returned, ensuring a deterministic result.
+\ **Lưu ý:** Nếu có nhiều điểm cùng gần ``to_position`` nhất, điểm có ID nhỏ nhất sẽ được trả về, đảm bảo kết quả xác định.
 
 .. rst-class:: classref-item-separator
 
@@ -351,7 +351,7 @@ Returns the ID of the closest point to ``to_position``, optionally taking disabl
 
 :ref:`Vector3<class_Vector3>` **get_closest_position_in_segment**\ (\ to_position\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_AStar3D_method_get_closest_position_in_segment>`
 
-Returns the closest position to ``to_position`` that resides inside a segment between two connected points.
+Trả về vị trí gần ``to_position`` nhất nằm trong một đoạn giữa hai điểm được kết nối.
 
 
 .. tabs::
@@ -362,7 +362,7 @@ Returns the closest position to ``to_position`` that resides inside a segment be
     astar.add_point(1, Vector3(0, 0, 0))
     astar.add_point(2, Vector3(0, 5, 0))
     astar.connect_points(1, 2)
-    var res = astar.get_closest_position_in_segment(Vector3(3, 3, 0)) # Returns (0, 3, 0)
+    var res = astar.get_closest_position_in_segment(Vector3(3, 3, 0)) # Trả về (0, 3, 0)
 
  .. code-tab:: csharp
 
@@ -370,11 +370,11 @@ Returns the closest position to ``to_position`` that resides inside a segment be
     astar.AddPoint(1, new Vector3(0, 0, 0));
     astar.AddPoint(2, new Vector3(0, 5, 0));
     astar.ConnectPoints(1, 2);
-    Vector3 res = astar.GetClosestPositionInSegment(new Vector3(3, 3, 0)); // Returns (0, 3, 0)
+    Vector3 res = astar.GetClosestPositionInSegment(new Vector3(3, 3, 0)); // Trả về (0, 3, 0)
 
 
 
-The result is in the segment that goes from ``y = 0`` to ``y = 5``. It's the closest position in the segment to the given point.
+Kết quả nằm trong đoạn từ ``y = 0`` đến ``y = 5``. Đây là vị trí gần điểm đã cho nhất trong đoạn.
 
 .. rst-class:: classref-item-separator
 
@@ -386,13 +386,13 @@ The result is in the segment that goes from ``y = 0`` to ``y = 5``. It's the clo
 
 :ref:`PackedInt64Array<class_PackedInt64Array>` **get_id_path**\ (\ from_id\: :ref:`int<class_int>`, to_id\: :ref:`int<class_int>`, allow_partial_path\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AStar3D_method_get_id_path>`
 
-Returns an array with the IDs of the points that form the path found by AStar3D between the given points. The array is ordered from the starting point to the ending point of the path.
+Trả về một mảng chứa các ID của những điểm tạo thành đường đi được AStar3D tìm thấy giữa các điểm đã cho. Mảng được sắp xếp từ điểm bắt đầu đến điểm kết thúc của đường đi.
 
-If ``from_id`` point is disabled, returns an empty array (even if ``from_id == to_id``).
+Nếu điểm ``from_id`` bị vô hiệu hóa, trả về một mảng rỗng (ngay cả khi ``from_id == to_id``).
 
-If ``from_id`` point is not disabled, there is no valid path to the target, and ``allow_partial_path`` is ``true``, returns a path to the point closest to the target that can be reached.
+Nếu điểm ``from_id`` không bị vô hiệu hóa, không có đường đi hợp lệ đến đích và ``allow_partial_path`` là ``true``, trả về đường đi đến điểm gần đích nhất mà có thể tiếp cận.
 
-\ **Note:** When ``allow_partial_path`` is ``true`` and ``to_id`` is disabled the search may take an unusually long time to finish.
+\ **Lưu ý:** Khi ``allow_partial_path`` là ``true`` và ``to_id`` bị vô hiệu hóa, quá trình tìm kiếm có thể mất thời gian lâu bất thường để hoàn tất.
 
 
 .. tabs::
@@ -401,7 +401,7 @@ If ``from_id`` point is not disabled, there is no valid path to the target, and 
 
     var astar = AStar3D.new()
     astar.add_point(1, Vector3(0, 0, 0))
-    astar.add_point(2, Vector3(0, 1, 0), 1) # Default weight is 1
+    astar.add_point(2, Vector3(0, 1, 0), 1) # Trọng số mặc định là 1
     astar.add_point(3, Vector3(1, 1, 0))
     astar.add_point(4, Vector3(2, 0, 0))
 
@@ -410,24 +410,24 @@ If ``from_id`` point is not disabled, there is no valid path to the target, and 
     astar.connect_points(4, 3, false)
     astar.connect_points(1, 4, false)
 
-    var res = astar.get_id_path(1, 3) # Returns [1, 2, 3]
+    var res = astar.get_id_path(1, 3) # Trả về [1, 2, 3]
 
  .. code-tab:: csharp
 
     var astar = new AStar3D();
     astar.AddPoint(1, new Vector3(0, 0, 0));
-    astar.AddPoint(2, new Vector3(0, 1, 0), 1); // Default weight is 1
+    astar.AddPoint(2, new Vector3(0, 1, 0), 1); // Trọng số mặc định là 1
     astar.AddPoint(3, new Vector3(1, 1, 0));
     astar.AddPoint(4, new Vector3(2, 0, 0));
     astar.ConnectPoints(1, 2, false);
     astar.ConnectPoints(2, 3, false);
     astar.ConnectPoints(4, 3, false);
     astar.ConnectPoints(1, 4, false);
-    long[] res = astar.GetIdPath(1, 3); // Returns [1, 2, 3]
+    long[] res = astar.GetIdPath(1, 3); // Trả về [1, 2, 3]
 
 
 
-If you change the 2nd point's weight to 3, then the result will be ``[1, 4, 3]`` instead, because now even though the distance is longer, it's "easier" to get through point 4 than through point 2.
+Nếu bạn thay đổi trọng số của điểm thứ 2 thành 3, thì kết quả sẽ là ``[1, 4, 3]`` thay vào đó, vì giờ đây mặc dù khoảng cách dài hơn, việc đi qua điểm 4 lại "dễ" hơn đi qua điểm 2.
 
 .. rst-class:: classref-item-separator
 
@@ -439,7 +439,7 @@ If you change the 2nd point's weight to 3, then the result will be ``[1, 4, 3]``
 
 :ref:`int<class_int>` **get_point_capacity**\ (\ ) |const| :ref:`🔗<class_AStar3D_method_get_point_capacity>`
 
-Returns the capacity of the structure backing the points, useful in conjunction with :ref:`reserve_space()<class_AStar3D_method_reserve_space>`.
+Trả về dung lượng của cấu trúc làm nền cho các điểm, hữu ích khi kết hợp với :ref:`reserve_space()<class_AStar3D_method_reserve_space>`.
 
 .. rst-class:: classref-item-separator
 
@@ -451,7 +451,7 @@ Returns the capacity of the structure backing the points, useful in conjunction 
 
 :ref:`PackedInt64Array<class_PackedInt64Array>` **get_point_connections**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AStar3D_method_get_point_connections>`
 
-Returns an array with the IDs of the points that form the connection with the given point.
+Trả về một mảng chứa các ID của những điểm tạo thành kết nối với điểm đã cho.
 
 
 .. tabs::
@@ -467,7 +467,7 @@ Returns an array with the IDs of the points that form the connection with the gi
     astar.connect_points(1, 2, true)
     astar.connect_points(1, 3, true)
 
-    var neighbors = astar.get_point_connections(1) # Returns [2, 3]
+    var neighbors = astar.get_point_connections(1) # Trả về [2, 3]
 
  .. code-tab:: csharp
 
@@ -479,7 +479,7 @@ Returns an array with the IDs of the points that form the connection with the gi
     astar.ConnectPoints(1, 2, true);
     astar.ConnectPoints(1, 3, true);
 
-    long[] neighbors = astar.GetPointConnections(1); // Returns [2, 3]
+    long[] neighbors = astar.GetPointConnections(1); // Trả về [2, 3]
 
 
 
@@ -493,7 +493,7 @@ Returns an array with the IDs of the points that form the connection with the gi
 
 :ref:`int<class_int>` **get_point_count**\ (\ ) |const| :ref:`🔗<class_AStar3D_method_get_point_count>`
 
-Returns the number of points currently in the points pool.
+Trả về số lượng điểm hiện có trong pool điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Returns the number of points currently in the points pool.
 
 :ref:`PackedInt64Array<class_PackedInt64Array>` **get_point_ids**\ (\ ) :ref:`🔗<class_AStar3D_method_get_point_ids>`
 
-Returns an array of all point IDs.
+Trả về một mảng chứa tất cả ID điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -517,15 +517,15 @@ Returns an array of all point IDs.
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_point_path**\ (\ from_id\: :ref:`int<class_int>`, to_id\: :ref:`int<class_int>`, allow_partial_path\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AStar3D_method_get_point_path>`
 
-Returns an array with the points that are in the path found by AStar3D between the given points. The array is ordered from the starting point to the ending point of the path.
+Trả về một mảng chứa các điểm nằm trên đường đi được AStar3D tìm thấy giữa các điểm đã cho. Mảng này được sắp xếp từ điểm bắt đầu đến điểm kết thúc của đường đi.
 
-If ``from_id`` point is disabled, returns an empty array (even if ``from_id == to_id``).
+Nếu điểm ``from_id`` bị vô hiệu hóa, trả về một mảng rỗng (ngay cả khi ``from_id == to_id``).
 
-If ``from_id`` point is not disabled, there is no valid path to the target, and ``allow_partial_path`` is ``true``, returns a path to the point closest to the target that can be reached.
+Nếu điểm ``from_id`` không bị vô hiệu hóa, không có đường đi hợp lệ đến đích và ``allow_partial_path`` là ``true``, trả về đường đi đến điểm gần đích nhất mà có thể tiếp cận.
 
-\ **Note:** This method is not thread-safe; it can only be used from a single :ref:`Thread<class_Thread>` at a given time. Consider using :ref:`Mutex<class_Mutex>` to ensure exclusive access to one thread to avoid race conditions.
+\ **Lưu ý:** Phương thức này không an toàn khi chạy đa luồng; chỉ có thể được sử dụng từ một :ref:`Thread<class_Thread>` tại một thời điểm. Hãy cân nhắc sử dụng :ref:`Mutex<class_Mutex>` để đảm bảo quyền truy cập độc quyền cho một thread nhằm tránh các race condition.
 
-Additionally, when ``allow_partial_path`` is ``true`` and ``to_id`` is disabled the search may take an unusually long time to finish.
+Ngoài ra, khi ``allow_partial_path`` là ``true`` và ``to_id`` bị tắt, quá trình tìm kiếm có thể mất khoảng thời gian dài bất thường để hoàn tất.
 
 .. rst-class:: classref-item-separator
 
@@ -537,7 +537,7 @@ Additionally, when ``allow_partial_path`` is ``true`` and ``to_id`` is disabled 
 
 :ref:`Vector3<class_Vector3>` **get_point_position**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AStar3D_method_get_point_position>`
 
-Returns the position of the point associated with the given ``id``.
+Trả về vị trí của điểm liên kết với ``id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -549,7 +549,7 @@ Returns the position of the point associated with the given ``id``.
 
 :ref:`float<class_float>` **get_point_weight_scale**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AStar3D_method_get_point_weight_scale>`
 
-Returns the weight scale of the point associated with the given ``id``.
+Trả về thang trọng số của điểm liên kết với ``id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -561,7 +561,7 @@ Returns the weight scale of the point associated with the given ``id``.
 
 :ref:`bool<class_bool>` **has_point**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AStar3D_method_has_point>`
 
-Returns whether a point associated with the given ``id`` exists.
+Trả về việc có tồn tại điểm liên kết với ``id`` đã cho hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -573,7 +573,7 @@ Returns whether a point associated with the given ``id`` exists.
 
 :ref:`bool<class_bool>` **is_point_disabled**\ (\ id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AStar3D_method_is_point_disabled>`
 
-Returns whether a point is disabled or not for pathfinding. By default, all points are enabled.
+Trả về việc một điểm có bị vô hiệu hóa để tìm đường hay không. Theo mặc định, tất cả các điểm đều được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -585,7 +585,7 @@ Returns whether a point is disabled or not for pathfinding. By default, all poin
 
 |void| **remove_point**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AStar3D_method_remove_point>`
 
-Removes the point associated with the given ``id`` from the points pool.
+Xóa điểm liên kết với ``id`` đã cho khỏi pool điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -597,7 +597,7 @@ Removes the point associated with the given ``id`` from the points pool.
 
 |void| **reserve_space**\ (\ num_nodes\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AStar3D_method_reserve_space>`
 
-Reserves space internally for ``num_nodes`` points. Useful if you're adding a known large number of points at once, such as points on a grid.
+Dành trước không gian nội bộ cho ``num_nodes`` điểm. Hữu ích khi bạn thêm cùng lúc một số lượng lớn điểm đã biết trước, chẳng hạn như các điểm trên một grid.
 
 .. rst-class:: classref-item-separator
 
@@ -609,7 +609,7 @@ Reserves space internally for ``num_nodes`` points. Useful if you're adding a kn
 
 |void| **set_point_disabled**\ (\ id\: :ref:`int<class_int>`, disabled\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_AStar3D_method_set_point_disabled>`
 
-Disables or enables the specified point for pathfinding. Useful for making a temporary obstacle.
+Vô hiệu hóa hoặc bật điểm được chỉ định để tìm đường. Hữu ích khi tạo một chướng ngại vật tạm thời.
 
 .. rst-class:: classref-item-separator
 
@@ -621,7 +621,7 @@ Disables or enables the specified point for pathfinding. Useful for making a tem
 
 |void| **set_point_position**\ (\ id\: :ref:`int<class_int>`, position\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_AStar3D_method_set_point_position>`
 
-Sets the ``position`` for the point with the given ``id``.
+Đặt ``position`` cho điểm có ``id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -633,14 +633,14 @@ Sets the ``position`` for the point with the given ``id``.
 
 |void| **set_point_weight_scale**\ (\ id\: :ref:`int<class_int>`, weight_scale\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AStar3D_method_set_point_weight_scale>`
 
-Sets the ``weight_scale`` for the point with the given ``id``. The ``weight_scale`` is multiplied by the result of :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` when determining the overall cost of traveling across a segment from a neighboring point to this point.
+Đặt ``weight_scale`` cho điểm có ``id`` đã cho. ``weight_scale`` được nhân với kết quả của :ref:`_compute_cost()<class_AStar3D_private_method__compute_cost>` khi xác định tổng chi phí di chuyển qua một đoạn từ điểm lân cận đến điểm này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

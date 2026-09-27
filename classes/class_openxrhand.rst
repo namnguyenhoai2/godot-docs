@@ -10,44 +10,44 @@
 OpenXRHand
 ==========
 
-**Deprecated:** Use :ref:`XRHandModifier3D<class_XRHandModifier3D>` instead.
+**Đã lỗi thời:** Hãy sử dụng :ref:`XRHandModifier3D<class_XRHandModifier3D>` thay thế.
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Node supporting hand and finger tracking in OpenXR.
+Node hỗ trợ theo dõi bàn tay và ngón tay trong OpenXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node enables OpenXR's hand tracking functionality. The node should be a child node of an :ref:`XROrigin3D<class_XROrigin3D>` node, tracking will update its position to the player's tracked hand Palm joint location (the center of the middle finger's metacarpal bone). This node also updates the skeleton of a properly skinned hand or avatar model.
+Node này bật chức năng theo dõi bàn tay của OpenXR. Node này phải là node con của một :ref:`XROrigin3D<class_XROrigin3D>` node, việc theo dõi sẽ cập nhật vị trí của nó đến vị trí khớp Palm của bàn tay được theo dõi của người chơi (tâm của xương bàn tay thuộc ngón giữa). Node này cũng cập nhật skeleton của một mô hình bàn tay hoặc avatar đã được skin đúng cách.
 
-If the skeleton is a hand (one of the hand bones is the root node of the skeleton), then the skeleton will be placed relative to the hand palm location and the hand mesh and skeleton should be children of the OpenXRHand node.
+Nếu skeleton là một bàn tay (một trong các xương bàn tay là node gốc của skeleton), thì skeleton sẽ được đặt tương đối so với vị trí lòng bàn tay, đồng thời mesh và skeleton của bàn tay phải là các node con của node OpenXRHand.
 
-If the hand bones are part of a full skeleton, then the root of the hand will keep its location with the assumption that IK is used to position the hand and arm.
+Nếu các xương bàn tay là một phần của skeleton đầy đủ, thì phần gốc của bàn tay sẽ giữ nguyên vị trí, với giả định rằng IK được sử dụng để định vị bàn tay và cánh tay.
 
-By default the skeleton hand bones are repositioned to match the size of the tracked hand. To preserve the modeled bone sizes change :ref:`bone_update<class_OpenXRHand_property_bone_update>` to apply rotation only.
+Theo mặc định, các xương bàn tay trong skeleton được định vị lại để khớp với kích thước của bàn tay được theo dõi. Để giữ nguyên kích thước xương đã mô hình hóa, hãy thay đổi :ref:`bone_update<class_OpenXRHand_property_bone_update>` để chỉ áp dụng xoay.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------+---------------------------------------------------------------+------------------+
-   | :ref:`BoneUpdate<enum_OpenXRHand_BoneUpdate>`   | :ref:`bone_update<class_OpenXRHand_property_bone_update>`     | ``0``            |
-   +-------------------------------------------------+---------------------------------------------------------------+------------------+
-   | :ref:`Hands<enum_OpenXRHand_Hands>`             | :ref:`hand<class_OpenXRHand_property_hand>`                   | ``0``            |
-   +-------------------------------------------------+---------------------------------------------------------------+------------------+
-   | :ref:`NodePath<class_NodePath>`                 | :ref:`hand_skeleton<class_OpenXRHand_property_hand_skeleton>` | ``NodePath("")`` |
-   +-------------------------------------------------+---------------------------------------------------------------+------------------+
-   | :ref:`MotionRange<enum_OpenXRHand_MotionRange>` | :ref:`motion_range<class_OpenXRHand_property_motion_range>`   | ``0``            |
-   +-------------------------------------------------+---------------------------------------------------------------+------------------+
-   | :ref:`SkeletonRig<enum_OpenXRHand_SkeletonRig>` | :ref:`skeleton_rig<class_OpenXRHand_property_skeleton_rig>`   | ``0``            |
-   +-------------------------------------------------+---------------------------------------------------------------+------------------+
+   +--------------------------------------------------+---------------------------------------------------------------+------------------+
+   | :ref:`BoneUpdate <enum_OpenXRHand_BoneUpdate>`   | :ref:`bone_update<class_OpenXRHand_property_bone_update>`     | ``0``            |
+   +--------------------------------------------------+---------------------------------------------------------------+------------------+
+   | :ref:`Hands <enum_OpenXRHand_Hands>`             | :ref:`hand<class_OpenXRHand_property_hand>`                   | ``0``            |
+   +--------------------------------------------------+---------------------------------------------------------------+------------------+
+   | :ref:`NodePath<class_NodePath>`                  | :ref:`hand_skeleton<class_OpenXRHand_property_hand_skeleton>` | ``NodePath("")`` |
+   +--------------------------------------------------+---------------------------------------------------------------+------------------+
+   | :ref:`MotionRange <enum_OpenXRHand_MotionRange>` | :ref:`motion_range<class_OpenXRHand_property_motion_range>`   | ``0``            |
+   +--------------------------------------------------+---------------------------------------------------------------+------------------+
+   | :ref:`SkeletonRig <enum_OpenXRHand_SkeletonRig>` | :ref:`skeleton_rig<class_OpenXRHand_property_skeleton_rig>`   | ``0``            |
+   +--------------------------------------------------+---------------------------------------------------------------+------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -55,14 +55,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OpenXRHand_Hands:
 
 .. rst-class:: classref-enumeration
 
-enum **Hands**: :ref:`🔗<enum_OpenXRHand_Hands>`
+enum **Hands**: :ref:`🔗 <enum_OpenXRHand_Hands>`
 
 .. _class_OpenXRHand_constant_HAND_LEFT:
 
@@ -70,7 +70,7 @@ enum **Hands**: :ref:`🔗<enum_OpenXRHand_Hands>`
 
 :ref:`Hands<enum_OpenXRHand_Hands>` **HAND_LEFT** = ``0``
 
-Tracking the player's left hand.
+Theo dõi bàn tay trái của người chơi.
 
 .. _class_OpenXRHand_constant_HAND_RIGHT:
 
@@ -78,7 +78,7 @@ Tracking the player's left hand.
 
 :ref:`Hands<enum_OpenXRHand_Hands>` **HAND_RIGHT** = ``1``
 
-Tracking the player's right hand.
+Theo dõi bàn tay phải của người chơi.
 
 .. _class_OpenXRHand_constant_HAND_MAX:
 
@@ -86,7 +86,7 @@ Tracking the player's right hand.
 
 :ref:`Hands<enum_OpenXRHand_Hands>` **HAND_MAX** = ``2``
 
-Maximum supported hands.
+Số lượng bàn tay được hỗ trợ tối đa.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Maximum supported hands.
 
 .. rst-class:: classref-enumeration
 
-enum **MotionRange**: :ref:`🔗<enum_OpenXRHand_MotionRange>`
+enum **MotionRange**: :ref:`🔗 <enum_OpenXRHand_MotionRange>`
 
 .. _class_OpenXRHand_constant_MOTION_RANGE_UNOBSTRUCTED:
 
@@ -104,7 +104,7 @@ enum **MotionRange**: :ref:`🔗<enum_OpenXRHand_MotionRange>`
 
 :ref:`MotionRange<enum_OpenXRHand_MotionRange>` **MOTION_RANGE_UNOBSTRUCTED** = ``0``
 
-When player grips, hand skeleton will form a full fist.
+Khi người chơi nắm tay, hand skeleton sẽ tạo thành một nắm đấm hoàn chỉnh.
 
 .. _class_OpenXRHand_constant_MOTION_RANGE_CONFORM_TO_CONTROLLER:
 
@@ -112,7 +112,7 @@ When player grips, hand skeleton will form a full fist.
 
 :ref:`MotionRange<enum_OpenXRHand_MotionRange>` **MOTION_RANGE_CONFORM_TO_CONTROLLER** = ``1``
 
-When player grips, hand skeleton conforms to the controller the player is holding.
+Khi người chơi nắm tay, hand skeleton sẽ khớp theo bộ điều khiển mà người chơi đang cầm.
 
 .. _class_OpenXRHand_constant_MOTION_RANGE_MAX:
 
@@ -120,7 +120,7 @@ When player grips, hand skeleton conforms to the controller the player is holdin
 
 :ref:`MotionRange<enum_OpenXRHand_MotionRange>` **MOTION_RANGE_MAX** = ``2``
 
-Maximum supported motion ranges.
+Các phạm vi chuyển động tối đa được hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -130,7 +130,7 @@ Maximum supported motion ranges.
 
 .. rst-class:: classref-enumeration
 
-enum **SkeletonRig**: :ref:`🔗<enum_OpenXRHand_SkeletonRig>`
+enum **SkeletonRig**: :ref:`🔗 <enum_OpenXRHand_SkeletonRig>`
 
 .. _class_OpenXRHand_constant_SKELETON_RIG_OPENXR:
 
@@ -138,7 +138,7 @@ enum **SkeletonRig**: :ref:`🔗<enum_OpenXRHand_SkeletonRig>`
 
 :ref:`SkeletonRig<enum_OpenXRHand_SkeletonRig>` **SKELETON_RIG_OPENXR** = ``0``
 
-An OpenXR compliant skeleton.
+Một bộ xương tuân thủ OpenXR.
 
 .. _class_OpenXRHand_constant_SKELETON_RIG_HUMANOID:
 
@@ -146,7 +146,7 @@ An OpenXR compliant skeleton.
 
 :ref:`SkeletonRig<enum_OpenXRHand_SkeletonRig>` **SKELETON_RIG_HUMANOID** = ``1``
 
-A :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` compliant skeleton.
+Một bộ xương tuân thủ :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>`.
 
 .. _class_OpenXRHand_constant_SKELETON_RIG_MAX:
 
@@ -154,7 +154,7 @@ A :ref:`SkeletonProfileHumanoid<class_SkeletonProfileHumanoid>` compliant skelet
 
 :ref:`SkeletonRig<enum_OpenXRHand_SkeletonRig>` **SKELETON_RIG_MAX** = ``2``
 
-Maximum supported hands.
+Số lượng bàn tay được hỗ trợ tối đa.
 
 .. rst-class:: classref-item-separator
 
@@ -164,7 +164,7 @@ Maximum supported hands.
 
 .. rst-class:: classref-enumeration
 
-enum **BoneUpdate**: :ref:`🔗<enum_OpenXRHand_BoneUpdate>`
+enum **BoneUpdate**: :ref:`🔗 <enum_OpenXRHand_BoneUpdate>`
 
 .. _class_OpenXRHand_constant_BONE_UPDATE_FULL:
 
@@ -172,7 +172,7 @@ enum **BoneUpdate**: :ref:`🔗<enum_OpenXRHand_BoneUpdate>`
 
 :ref:`BoneUpdate<enum_OpenXRHand_BoneUpdate>` **BONE_UPDATE_FULL** = ``0``
 
-The skeletons bones are fully updated (both position and rotation) to match the tracked bones.
+Các xương của bộ xương được cập nhật đầy đủ (cả vị trí và hướng xoay) để khớp với các xương được theo dõi.
 
 .. _class_OpenXRHand_constant_BONE_UPDATE_ROTATION_ONLY:
 
@@ -180,7 +180,7 @@ The skeletons bones are fully updated (both position and rotation) to match the 
 
 :ref:`BoneUpdate<enum_OpenXRHand_BoneUpdate>` **BONE_UPDATE_ROTATION_ONLY** = ``1``
 
-The skeletons bones are only rotated to align with the tracked bones, preserving bone length.
+Các xương của skeleton chỉ được xoay để căn chỉnh với các xương được theo dõi, giữ nguyên độ dài xương.
 
 .. _class_OpenXRHand_constant_BONE_UPDATE_MAX:
 
@@ -188,7 +188,7 @@ The skeletons bones are only rotated to align with the tracked bones, preserving
 
 :ref:`BoneUpdate<enum_OpenXRHand_BoneUpdate>` **BONE_UPDATE_MAX** = ``2``
 
-Maximum supported bone update mode.
+Chế độ cập nhật xương được hỗ trợ tối đa.
 
 .. rst-class:: classref-section-separator
 
@@ -196,8 +196,8 @@ Maximum supported bone update mode.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRHand_property_bone_update:
 
@@ -210,7 +210,7 @@ Property Descriptions
 - |void| **set_bone_update**\ (\ value\: :ref:`BoneUpdate<enum_OpenXRHand_BoneUpdate>`\ )
 - :ref:`BoneUpdate<enum_OpenXRHand_BoneUpdate>` **get_bone_update**\ (\ )
 
-Specify the type of updates to perform on the bone.
+Chỉ định loại cập nhật cần thực hiện trên xương.
 
 .. rst-class:: classref-item-separator
 
@@ -227,7 +227,7 @@ Specify the type of updates to perform on the bone.
 - |void| **set_hand**\ (\ value\: :ref:`Hands<enum_OpenXRHand_Hands>`\ )
 - :ref:`Hands<enum_OpenXRHand_Hands>` **get_hand**\ (\ )
 
-Specifies whether this node tracks the left or right hand of the player.
+Chỉ định node này theo dõi tay trái hay tay phải của người chơi.
 
 .. rst-class:: classref-item-separator
 
@@ -244,7 +244,7 @@ Specifies whether this node tracks the left or right hand of the player.
 - |void| **set_hand_skeleton**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_hand_skeleton**\ (\ )
 
-Set a :ref:`Skeleton3D<class_Skeleton3D>` node for which the pose positions will be updated.
+Thiết lập một node :ref:`Skeleton3D<class_Skeleton3D>` để cập nhật vị trí pose.
 
 .. rst-class:: classref-item-separator
 
@@ -261,7 +261,7 @@ Set a :ref:`Skeleton3D<class_Skeleton3D>` node for which the pose positions will
 - |void| **set_motion_range**\ (\ value\: :ref:`MotionRange<enum_OpenXRHand_MotionRange>`\ )
 - :ref:`MotionRange<enum_OpenXRHand_MotionRange>` **get_motion_range**\ (\ )
 
-Set the motion range (if supported) limiting the hand motion.
+Đặt phạm vi chuyển động (nếu được hỗ trợ) để giới hạn chuyển động của tay.
 
 .. rst-class:: classref-item-separator
 
@@ -278,14 +278,14 @@ Set the motion range (if supported) limiting the hand motion.
 - |void| **set_skeleton_rig**\ (\ value\: :ref:`SkeletonRig<enum_OpenXRHand_SkeletonRig>`\ )
 - :ref:`SkeletonRig<enum_OpenXRHand_SkeletonRig>` **get_skeleton_rig**\ (\ )
 
-Set the type of skeleton rig the :ref:`hand_skeleton<class_OpenXRHand_property_hand_skeleton>` is compliant with.
+Đặt loại skeleton rig mà :ref:`hand_skeleton<class_OpenXRHand_property_hand_skeleton>` tương thích.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

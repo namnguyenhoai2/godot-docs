@@ -10,37 +10,37 @@
 VoxelGI
 =======
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Real-time global illumination (GI) probe.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**VoxelGI**\ s are used to provide high-quality real-time indirect light and reflections to scenes. They precompute the effect of objects that emit light and the effect of static geometry to simulate the behavior of complex light in real-time. **VoxelGI**\ s need to be baked before having a visible effect. However, once baked, dynamic objects will receive light from them. Furthermore, lights can be fully dynamic or baked.
-
-\ **Note:** **VoxelGI** is only supported in the Forward+ rendering method, not Mobile or Compatibility.
-
-\ **Procedural generation:** **VoxelGI** can be baked in an exported project, which makes it suitable for procedurally generated or user-built levels as long as all the geometry is generated in advance. For games where geometry is generated at any time during gameplay, SDFGI is more suitable (see :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`).
-
-\ **Performance:** **VoxelGI** is relatively demanding on the GPU and is not suited to low-end hardware such as integrated graphics (consider :ref:`LightmapGI<class_LightmapGI>` instead). To improve performance, adjust :ref:`ProjectSettings.rendering/global_illumination/voxel_gi/quality<class_ProjectSettings_property_rendering/global_illumination/voxel_gi/quality>` and enable :ref:`ProjectSettings.rendering/global_illumination/gi/use_half_resolution<class_ProjectSettings_property_rendering/global_illumination/gi/use_half_resolution>` in the Project Settings. To provide a fallback for low-end hardware, consider adding an option to disable **VoxelGI** in your project's options menus. A **VoxelGI** node can be disabled by hiding it.
-
-\ **Note:** Meshes should have sufficiently thick walls to avoid light leaks (avoid one-sided walls). For interior levels, enclose your level geometry in a sufficiently large box and bridge the loops to close the mesh. To further prevent light leaks, you can also strategically place temporary :ref:`MeshInstance3D<class_MeshInstance3D>` nodes with their :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` set to :ref:`GeometryInstance3D.GI_MODE_STATIC<class_GeometryInstance3D_constant_GI_MODE_STATIC>`. These temporary nodes can then be hidden after baking the **VoxelGI** node.
+Probe global illumination (GI) theo thời gian thực.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**VoxelGI**\  được sử dụng để cung cấp ánh sáng gián tiếp và phản xạ chất lượng cao theo thời gian thực cho các cảnh. Chúng tính toán trước ảnh hưởng của các đối tượng phát sáng và ảnh hưởng của hình học tĩnh để mô phỏng hành vi của ánh sáng phức tạp trong thời gian thực. **VoxelGI**\  cần được bake trước khi có hiệu ứng nhìn thấy được. Tuy nhiên, sau khi bake, các đối tượng động sẽ nhận ánh sáng từ chúng. Ngoài ra, đèn có thể hoàn toàn động hoặc được bake.
+
+\ **Lưu ý:** **VoxelGI** chỉ được hỗ trợ trong phương thức kết xuất Forward+, không được hỗ trợ trong Mobile hoặc Compatibility.
+
+\ **Tạo sinh theo thủ tục:** **VoxelGI** có thể được bake trong một project đã export, nên phù hợp với các level được tạo sinh theo thủ tục hoặc do người dùng xây dựng, miễn là toàn bộ hình học được tạo trước. Đối với các game có hình học được tạo vào bất kỳ thời điểm nào trong khi chơi, SDFGI phù hợp hơn (xem :ref:`Environment.sdfgi_enabled<class_Environment_property_sdfgi_enabled>`).
+
+\ **Hiệu năng:** **VoxelGI** tương đối tốn GPU và không phù hợp với phần cứng cấp thấp như đồ họa tích hợp (thay vào đó, hãy cân nhắc :ref:`LightmapGI<class_LightmapGI>`). Để cải thiện hiệu năng, hãy điều chỉnh :ref:`ProjectSettings.rendering/global_illumination/voxel_gi/quality <class_ProjectSettings_property_rendering/global_illumination/voxel_gi/quality>` và bật :ref:`ProjectSettings.rendering/global_illumination/gi/use_half_resolution <class_ProjectSettings_property_rendering/global_illumination/gi/use_half_resolution>` trong Project Settings. Để cung cấp phương án dự phòng cho phần cứng cấp thấp, hãy cân nhắc thêm một tùy chọn để tắt **VoxelGI** trong các menu tùy chọn của project. Có thể tắt một node **VoxelGI** bằng cách ẩn node đó.
+
+\ **Lưu ý:** Mesh nên có tường đủ dày để tránh rò rỉ ánh sáng (tránh tường một mặt). Đối với các level nội thất, hãy bao kín hình học của level trong một khối hộp đủ lớn và nối các loop để đóng mesh. Để ngăn rò rỉ ánh sáng hiệu quả hơn, bạn cũng có thể đặt các node :ref:`MeshInstance3D<class_MeshInstance3D>` tạm thời một cách có chủ đích, với :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` được đặt thành :ref:`GeometryInstance3D.GI_MODE_STATIC<class_GeometryInstance3D_constant_GI_MODE_STATIC>`. Sau đó, bạn có thể ẩn các node tạm thời này sau khi bake node **VoxelGI**.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using Voxel global illumination <../tutorials/3d/global_illumination/using_voxel_gi>`
+- :doc:`Sử dụng global illumination dạng voxel <../tutorials/3d/global_illumination/using_voxel_gi>`
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo Third Person Shooter (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -53,13 +53,13 @@ Properties
    +-------------------------------------------------+--------------------------------------------------------------------+-------------------------+
    | :ref:`Vector3<class_Vector3>`                   | :ref:`size<class_VoxelGI_property_size>`                           | ``Vector3(20, 20, 20)`` |
    +-------------------------------------------------+--------------------------------------------------------------------+-------------------------+
-   | :ref:`Subdiv<enum_VoxelGI_Subdiv>`              | :ref:`subdiv<class_VoxelGI_property_subdiv>`                       | ``1``                   |
+   | :ref:`Subdiv <enum_VoxelGI_Subdiv>`             | :ref:`subdiv<class_VoxelGI_property_subdiv>`                       | ``1``                   |
    +-------------------------------------------------+--------------------------------------------------------------------+-------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -76,14 +76,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VoxelGI_Subdiv:
 
 .. rst-class:: classref-enumeration
 
-enum **Subdiv**: :ref:`🔗<enum_VoxelGI_Subdiv>`
+enum **Subdiv**: :ref:`🔗 <enum_VoxelGI_Subdiv>`
 
 .. _class_VoxelGI_constant_SUBDIV_64:
 
@@ -91,7 +91,7 @@ enum **Subdiv**: :ref:`🔗<enum_VoxelGI_Subdiv>`
 
 :ref:`Subdiv<enum_VoxelGI_Subdiv>` **SUBDIV_64** = ``0``
 
-Use 64 subdivisions. This is the lowest quality setting, but the fastest. Use it if you can, but especially use it on lower-end hardware.
+Sử dụng 64 phép chia nhỏ. Đây là thiết lập chất lượng thấp nhất nhưng nhanh nhất. Hãy sử dụng thiết lập này nếu có thể, đặc biệt là trên phần cứng cấp thấp.
 
 .. _class_VoxelGI_constant_SUBDIV_128:
 
@@ -99,7 +99,7 @@ Use 64 subdivisions. This is the lowest quality setting, but the fastest. Use it
 
 :ref:`Subdiv<enum_VoxelGI_Subdiv>` **SUBDIV_128** = ``1``
 
-Use 128 subdivisions. This is the default quality setting.
+Sử dụng 128 phép chia nhỏ. Đây là thiết lập chất lượng mặc định.
 
 .. _class_VoxelGI_constant_SUBDIV_256:
 
@@ -107,7 +107,7 @@ Use 128 subdivisions. This is the default quality setting.
 
 :ref:`Subdiv<enum_VoxelGI_Subdiv>` **SUBDIV_256** = ``2``
 
-Use 256 subdivisions.
+Sử dụng 256 phép chia nhỏ.
 
 .. _class_VoxelGI_constant_SUBDIV_512:
 
@@ -115,7 +115,7 @@ Use 256 subdivisions.
 
 :ref:`Subdiv<enum_VoxelGI_Subdiv>` **SUBDIV_512** = ``3``
 
-Use 512 subdivisions. This is the highest quality setting, but the slowest. On lower-end hardware, this could cause the GPU to stall.
+Sử dụng 512 phép chia nhỏ. Đây là thiết lập chất lượng cao nhất nhưng chậm nhất. Trên phần cứng cấp thấp, thiết lập này có thể khiến GPU bị đình trệ.
 
 .. _class_VoxelGI_constant_SUBDIV_MAX:
 
@@ -123,7 +123,7 @@ Use 512 subdivisions. This is the highest quality setting, but the slowest. On l
 
 :ref:`Subdiv<enum_VoxelGI_Subdiv>` **SUBDIV_MAX** = ``4``
 
-Represents the size of the :ref:`Subdiv<enum_VoxelGI_Subdiv>` enum.
+Biểu thị kích thước của enum :ref:`Subdiv <enum_VoxelGI_Subdiv>`.
 
 .. rst-class:: classref-section-separator
 
@@ -131,21 +131,21 @@ Represents the size of the :ref:`Subdiv<enum_VoxelGI_Subdiv>` enum.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VoxelGI_property_camera_attributes:
 
 .. rst-class:: classref-property
 
-:ref:`CameraAttributes<class_CameraAttributes>` **camera_attributes** :ref:`🔗<class_VoxelGI_property_camera_attributes>`
+:ref:`CameraAttributes<class_CameraAttributes>` **camera_attributes** :ref:`🔗 <class_VoxelGI_property_camera_attributes>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_camera_attributes**\ (\ value\: :ref:`CameraAttributes<class_CameraAttributes>`\ )
 - :ref:`CameraAttributes<class_CameraAttributes>` **get_camera_attributes**\ (\ )
 
-The :ref:`CameraAttributes<class_CameraAttributes>` resource that specifies exposure levels to bake at. Auto-exposure and non exposure properties will be ignored. Exposure settings should be used to reduce the dynamic range present when baking. If exposure is too high, the **VoxelGI** will have banding artifacts or may have over-exposure artifacts.
+Resource :ref:`CameraAttributes<class_CameraAttributes>` chỉ định các mức phơi sáng cần bake. Các thuộc tính phơi sáng tự động và không phơi sáng sẽ bị bỏ qua. Nên sử dụng các thiết lập phơi sáng để giảm dải động hiện có khi baking. Nếu phơi sáng quá cao, **VoxelGI** sẽ có các hiện tượng dải màu hoặc có thể xuất hiện hiện tượng phơi sáng quá mức.
 
 .. rst-class:: classref-item-separator
 
@@ -155,14 +155,14 @@ The :ref:`CameraAttributes<class_CameraAttributes>` resource that specifies expo
 
 .. rst-class:: classref-property
 
-:ref:`VoxelGIData<class_VoxelGIData>` **data** :ref:`🔗<class_VoxelGI_property_data>`
+:ref:`VoxelGIData<class_VoxelGIData>` **data** :ref:`🔗 <class_VoxelGI_property_data>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_probe_data**\ (\ value\: :ref:`VoxelGIData<class_VoxelGIData>`\ )
 - :ref:`VoxelGIData<class_VoxelGIData>` **get_probe_data**\ (\ )
 
-The :ref:`VoxelGIData<class_VoxelGIData>` resource that holds the data for this **VoxelGI**.
+Resource :ref:`VoxelGIData<class_VoxelGIData>` chứa dữ liệu cho **VoxelGI** này.
 
 .. rst-class:: classref-item-separator
 
@@ -179,9 +179,9 @@ The :ref:`VoxelGIData<class_VoxelGIData>` resource that holds the data for this 
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-The size of the area covered by the **VoxelGI**. This must be ``1.0`` or greater on each axis.
+Kích thước của vùng được **VoxelGI** bao phủ. Giá trị này phải bằng ``1.0`` hoặc lớn hơn trên mỗi trục.
 
-\ **Note:** If you make the size larger without increasing the number of subdivisions with :ref:`subdiv<class_VoxelGI_property_subdiv>`, the size of each cell will increase and result in less detailed lighting.
+\ **Lưu ý:** Nếu bạn tăng kích thước mà không tăng số lượng subdivisions bằng :ref:`subdiv<class_VoxelGI_property_subdiv>`, kích thước của mỗi ô sẽ tăng và dẫn đến ánh sáng kém chi tiết hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ The size of the area covered by the **VoxelGI**. This must be ``1.0`` or greater
 - |void| **set_subdiv**\ (\ value\: :ref:`Subdiv<enum_VoxelGI_Subdiv>`\ )
 - :ref:`Subdiv<enum_VoxelGI_Subdiv>` **get_subdiv**\ (\ )
 
-Number of times to subdivide the grid that the **VoxelGI** operates on. A higher number results in finer detail and thus higher visual quality, while lower numbers result in better performance.
+Số lần chia nhỏ lưới mà **VoxelGI** hoạt động trên đó. Số lần cao hơn cho độ chi tiết tốt hơn và do đó chất lượng hình ảnh cao hơn, trong khi số lần thấp hơn cho hiệu suất tốt hơn.
 
 .. rst-class:: classref-section-separator
 
@@ -206,8 +206,8 @@ Number of times to subdivide the grid that the **VoxelGI** operates on. A higher
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VoxelGI_method_bake:
 
@@ -215,11 +215,11 @@ Method Descriptions
 
 |void| **bake**\ (\ from_node\: :ref:`Node<class_Node>` = null, create_visual_debug\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_VoxelGI_method_bake>`
 
-Bakes the effect from all :ref:`GeometryInstance3D<class_GeometryInstance3D>`\ s marked with :ref:`GeometryInstance3D.GI_MODE_STATIC<class_GeometryInstance3D_constant_GI_MODE_STATIC>` and :ref:`Light3D<class_Light3D>`\ s marked with either :ref:`Light3D.BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>` or :ref:`Light3D.BAKE_DYNAMIC<class_Light3D_constant_BAKE_DYNAMIC>`. If ``create_visual_debug`` is ``true``, after baking the light, this will generate a :ref:`MultiMesh<class_MultiMesh>` that has a cube representing each solid cell with each cube colored to the cell's albedo color. This can be used to visualize the **VoxelGI**'s data and debug any issues that may be occurring.
+Nướng hiệu ứng từ tất cả :ref:`GeometryInstance3D<class_GeometryInstance3D>`\ s được đánh dấu bằng :ref:`GeometryInstance3D.GI_MODE_STATIC<class_GeometryInstance3D_constant_GI_MODE_STATIC>` và :ref:`Light3D<class_Light3D>`\ s được đánh dấu bằng :ref:`Light3D.BAKE_STATIC<class_Light3D_constant_BAKE_STATIC>` hoặc :ref:`Light3D.BAKE_DYNAMIC<class_Light3D_constant_BAKE_DYNAMIC>`. Nếu ``create_visual_debug`` là ``true``, sau khi nướng ánh sáng, thao tác này sẽ tạo một :ref:`MultiMesh<class_MultiMesh>` chứa một hình lập phương đại diện cho mỗi ô đặc, với mỗi hình lập phương được tô màu theo màu albedo của ô. Có thể dùng nó để trực quan hóa dữ liệu của **VoxelGI** và gỡ lỗi mọi vấn đề có thể xảy ra.
 
-\ **Note:** :ref:`bake()<class_VoxelGI_method_bake>` works from the editor and in exported projects. This makes it suitable for procedurally generated or user-built levels. Baking a **VoxelGI** node generally takes from 5 to 20 seconds in most scenes. Reducing :ref:`subdiv<class_VoxelGI_property_subdiv>` can speed up baking.
+\ **Lưu ý:** :ref:`bake()<class_VoxelGI_method_bake>` hoạt động trong editor và trong các project đã export. Điều này khiến nó phù hợp với các level được tạo theo thủ tục hoặc do người dùng xây dựng. Việc nướng một node **VoxelGI** thường mất từ 5 đến 20 giây trong hầu hết các scene. Giảm :ref:`subdiv<class_VoxelGI_property_subdiv>` có thể tăng tốc quá trình nướng.
 
-\ **Note:** :ref:`GeometryInstance3D<class_GeometryInstance3D>`\ s and :ref:`Light3D<class_Light3D>`\ s must be fully ready before :ref:`bake()<class_VoxelGI_method_bake>` is called. If you are procedurally creating those and some meshes or lights are missing from your baked **VoxelGI**, use ``call_deferred("bake")`` instead of calling :ref:`bake()<class_VoxelGI_method_bake>` directly.
+\ **Lưu ý:** :ref:`GeometryInstance3D<class_GeometryInstance3D>`\ s và :ref:`Light3D<class_Light3D>`\ s phải hoàn toàn sẵn sàng trước khi gọi :ref:`bake()<class_VoxelGI_method_bake>`. Nếu bạn tạo chúng theo thủ tục và một số mesh hoặc ánh sáng bị thiếu trong **VoxelGI** đã nướng, hãy sử dụng ``call_deferred("bake")`` thay vì gọi trực tiếp :ref:`bake()<class_VoxelGI_method_bake>`.
 
 .. rst-class:: classref-item-separator
 
@@ -231,14 +231,14 @@ Bakes the effect from all :ref:`GeometryInstance3D<class_GeometryInstance3D>`\ s
 
 |void| **debug_bake**\ (\ ) :ref:`🔗<class_VoxelGI_method_debug_bake>`
 
-Calls :ref:`bake()<class_VoxelGI_method_bake>` with ``create_visual_debug`` enabled.
+Gọi :ref:`bake()<class_VoxelGI_method_bake>` với ``create_visual_debug`` được bật.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ ngoài những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

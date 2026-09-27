@@ -10,21 +10,21 @@
 EngineDebugger
 ==============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Exposes the internal debugger.
+Cung cấp trình gỡ lỗi nội bộ.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EngineDebugger** handles the communication between the editor and the running game. It is active in the running game. Messages can be sent/received through it. It also manages the profilers.
+**EngineDebugger** xử lý việc liên lạc giữa trình chỉnh sửa và trò chơi đang chạy. Nó hoạt động trong trò chơi đang chạy. Có thể gửi/nhận tin nhắn thông qua nó. Nó cũng quản lý các profiler.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -83,8 +83,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EngineDebugger_method_clear_breakpoints:
 
@@ -92,7 +92,7 @@ Method Descriptions
 
 |void| **clear_breakpoints**\ (\ ) :ref:`🔗<class_EngineDebugger_method_clear_breakpoints>`
 
-Clears all breakpoints.
+Xóa tất cả các breakpoint.
 
 .. rst-class:: classref-item-separator
 
@@ -104,7 +104,7 @@ Clears all breakpoints.
 
 |void| **debug**\ (\ can_continue\: :ref:`bool<class_bool>` = true, is_error_breakpoint\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EngineDebugger_method_debug>`
 
-Starts a debug break in script execution, optionally specifying whether the program can continue based on ``can_continue`` and whether the break was due to a breakpoint.
+Bắt đầu tạm dừng debug trong quá trình thực thi script, tùy chọn chỉ định liệu chương trình có thể tiếp tục dựa trên ``can_continue`` hay không và việc tạm dừng có phải do breakpoint gây ra hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -116,9 +116,9 @@ Starts a debug break in script execution, optionally specifying whether the prog
 
 :ref:`int<class_int>` **get_depth**\ (\ ) |const| :ref:`🔗<class_EngineDebugger_method_get_depth>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Returns the current debug depth.
+Trả về độ sâu debug hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -130,9 +130,9 @@ Returns the current debug depth.
 
 :ref:`int<class_int>` **get_lines_left**\ (\ ) |const| :ref:`🔗<class_EngineDebugger_method_get_lines_left>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Returns the number of lines that remain.
+Trả về số dòng còn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Returns the number of lines that remain.
 
 :ref:`bool<class_bool>` **has_capture**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EngineDebugger_method_has_capture>`
 
-Returns ``true`` if a capture with the given name is present otherwise ``false``.
+Trả về ``true`` nếu có capture với tên đã cho, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ Returns ``true`` if a capture with the given name is present otherwise ``false``
 
 :ref:`bool<class_bool>` **has_profiler**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EngineDebugger_method_has_profiler>`
 
-Returns ``true`` if a profiler with the given name is present otherwise ``false``.
+Trả về ``true`` nếu có profiler với tên đã cho, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ Returns ``true`` if a profiler with the given name is present otherwise ``false`
 
 |void| **insert_breakpoint**\ (\ line\: :ref:`int<class_int>`, source\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EngineDebugger_method_insert_breakpoint>`
 
-Inserts a new breakpoint with the given ``source`` and ``line``.
+Chèn một breakpoint mới với ``source`` và ``line`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ Inserts a new breakpoint with the given ``source`` and ``line``.
 
 :ref:`bool<class_bool>` **is_active**\ (\ ) :ref:`🔗<class_EngineDebugger_method_is_active>`
 
-Returns ``true`` if the debugger is active otherwise ``false``.
+Trả về ``true`` nếu debugger đang hoạt động, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ Returns ``true`` if the debugger is active otherwise ``false``.
 
 :ref:`bool<class_bool>` **is_breakpoint**\ (\ line\: :ref:`int<class_int>`, source\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_EngineDebugger_method_is_breakpoint>`
 
-Returns ``true`` if the given ``source`` and ``line`` represent an existing breakpoint.
+Trả về ``true`` nếu ``source`` và ``line`` đã cho đại diện cho một breakpoint hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -204,7 +204,7 @@ Returns ``true`` if the given ``source`` and ``line`` represent an existing brea
 
 :ref:`bool<class_bool>` **is_profiling**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EngineDebugger_method_is_profiling>`
 
-Returns ``true`` if a profiler with the given name is present and active otherwise ``false``.
+Trả về ``true`` nếu có profiler với tên đã cho và đang hoạt động, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Returns ``true`` if a profiler with the given name is present and active otherwi
 
 :ref:`bool<class_bool>` **is_skipping_breakpoints**\ (\ ) |const| :ref:`🔗<class_EngineDebugger_method_is_skipping_breakpoints>`
 
-Returns ``true`` if the debugger is skipping breakpoints otherwise ``false``.
+Trả về ``true`` nếu debugger đang bỏ qua các breakpoint; nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -228,7 +228,7 @@ Returns ``true`` if the debugger is skipping breakpoints otherwise ``false``.
 
 |void| **line_poll**\ (\ ) :ref:`🔗<class_EngineDebugger_method_line_poll>`
 
-Forces a processing loop of debugger events. The purpose of this method is just processing events every now and then when the script might get too busy, so that bugs like infinite loops can be caught.
+Buộc một vòng lặp xử lý các sự kiện của debugger. Mục đích của phương thức này chỉ là thỉnh thoảng xử lý các sự kiện khi script có thể trở nên quá bận, để có thể phát hiện các lỗi như vòng lặp vô hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ Forces a processing loop of debugger events. The purpose of this method is just 
 
 |void| **profiler_add_frame_data**\ (\ name\: :ref:`StringName<class_StringName>`, data\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_EngineDebugger_method_profiler_add_frame_data>`
 
-Calls the ``add`` callable of the profiler with given ``name`` and ``data``.
+Gọi callable ``add`` của profiler với ``name`` và ``data`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Calls the ``add`` callable of the profiler with given ``name`` and ``data``.
 
 |void| **profiler_enable**\ (\ name\: :ref:`StringName<class_StringName>`, enable\: :ref:`bool<class_bool>`, arguments\: :ref:`Array<class_Array>` = []\ ) :ref:`🔗<class_EngineDebugger_method_profiler_enable>`
 
-Calls the ``toggle`` callable of the profiler with given ``name`` and ``arguments``. Enables/Disables the same profiler depending on ``enable`` argument.
+Gọi callable ``toggle`` của profiler với ``name`` và ``arguments`` đã cho. Bật/tắt chính profiler đó tùy thuộc vào đối số ``enable``.
 
 .. rst-class:: classref-item-separator
 
@@ -264,11 +264,11 @@ Calls the ``toggle`` callable of the profiler with given ``name`` and ``argument
 
 |void| **register_message_capture**\ (\ name\: :ref:`StringName<class_StringName>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_EngineDebugger_method_register_message_capture>`
 
-Registers a message capture with given ``name``. If ``name`` is "my_message" then messages starting with "my_message:" will be called with the given callable.
+Đăng ký việc thu thập thông báo với ``name`` đã cho. Nếu ``name`` là "my_message" thì các thông báo bắt đầu bằng "my_message:" sẽ được gọi bằng callable đã cho.
 
-The callable must accept a message string and a data array as argument. The callable should return ``true`` if the message is recognized.
+Callable phải chấp nhận một chuỗi thông báo và một mảng dữ liệu làm đối số. Callable phải trả về ``true`` nếu thông báo được nhận diện.
 
-\ **Note:** The callable will receive the message with the prefix stripped, unlike :ref:`EditorDebuggerPlugin._capture()<class_EditorDebuggerPlugin_private_method__capture>`. See the :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>` description for an example.
+\ **Lưu ý:** Callable sẽ nhận thông báo sau khi đã loại bỏ tiền tố, không giống như :ref:`EditorDebuggerPlugin._capture()<class_EditorDebuggerPlugin_private_method__capture>`. Xem phần mô tả :ref:`EditorDebuggerPlugin<class_EditorDebuggerPlugin>` để biết ví dụ.
 
 .. rst-class:: classref-item-separator
 
@@ -280,7 +280,7 @@ The callable must accept a message string and a data array as argument. The call
 
 |void| **register_profiler**\ (\ name\: :ref:`StringName<class_StringName>`, profiler\: :ref:`EngineProfiler<class_EngineProfiler>`\ ) :ref:`🔗<class_EngineDebugger_method_register_profiler>`
 
-Registers a profiler with the given ``name``. See :ref:`EngineProfiler<class_EngineProfiler>` for more information.
+Đăng ký một profiler với ``name`` đã cho. Xem :ref:`EngineProfiler<class_EngineProfiler>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -292,7 +292,7 @@ Registers a profiler with the given ``name``. See :ref:`EngineProfiler<class_Eng
 
 |void| **remove_breakpoint**\ (\ line\: :ref:`int<class_int>`, source\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EngineDebugger_method_remove_breakpoint>`
 
-Removes a breakpoint with the given ``source`` and ``line``.
+Xóa một breakpoint với ``source`` và ``line`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -304,7 +304,7 @@ Removes a breakpoint with the given ``source`` and ``line``.
 
 |void| **script_debug**\ (\ language\: :ref:`ScriptLanguage<class_ScriptLanguage>`, can_continue\: :ref:`bool<class_bool>` = true, is_error_breakpoint\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EngineDebugger_method_script_debug>`
 
-Starts a debug break in script execution, optionally specifying whether the program can continue based on ``can_continue`` and whether the break was due to a breakpoint.
+Bắt đầu tạm dừng debug trong quá trình thực thi script, tùy chọn chỉ định liệu chương trình có thể tiếp tục dựa trên ``can_continue`` hay không và việc tạm dừng có phải do breakpoint gây ra hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -316,7 +316,7 @@ Starts a debug break in script execution, optionally specifying whether the prog
 
 |void| **send_message**\ (\ message\: :ref:`String<class_String>`, data\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_EngineDebugger_method_send_message>`
 
-Sends a message with given ``message`` and ``data`` array.
+Gửi một message với ``message`` và mảng ``data`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -328,9 +328,9 @@ Sends a message with given ``message`` and ``data`` array.
 
 |void| **set_depth**\ (\ depth\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EngineDebugger_method_set_depth>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Sets the current debugging depth.
+Thiết lập độ sâu debugging hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -342,9 +342,9 @@ Sets the current debugging depth.
 
 |void| **set_lines_left**\ (\ lines\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EngineDebugger_method_set_lines_left>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Sets the current debugging lines that remain.
+Thiết lập các dòng gỡ lỗi hiện tại còn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -356,7 +356,7 @@ Sets the current debugging lines that remain.
 
 |void| **unregister_message_capture**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EngineDebugger_method_unregister_message_capture>`
 
-Unregisters the message capture with given ``name``.
+Hủy đăng ký việc capture thông báo với ``name`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -368,14 +368,14 @@ Unregisters the message capture with given ``name``.
 
 |void| **unregister_profiler**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EngineDebugger_method_unregister_profiler>`
 
-Unregisters a profiler with given ``name``.
+Hủy đăng ký một profiler với ``name`` đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

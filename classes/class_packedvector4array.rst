@@ -10,20 +10,20 @@
 PackedVector4Array
 ==================
 
-A packed array of :ref:`Vector4<class_Vector4>`\ s.
+Một mảng packed chứa :ref:`Vector4<class_Vector4>`\ .
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An array specifically designed to hold :ref:`Vector4<class_Vector4>`. Packs data tightly, so it saves memory for large array sizes.
+Một mảng được thiết kế riêng để chứa :ref:`Vector4<class_Vector4>`. Mảng này đóng gói dữ liệu chặt chẽ, nhờ đó tiết kiệm bộ nhớ khi kích thước mảng lớn.
 
-\ **Differences between packed arrays, typed arrays, and untyped arrays:** Packed arrays are generally faster to iterate on and modify compared to a typed array of the same type (e.g. **PackedVector4Array** versus ``Array[Vector4]``). Also, packed arrays consume less memory. As a downside, packed arrays are less flexible as they don't offer as many convenience methods such as :ref:`Array.map()<class_Array_method_map>`. Typed arrays are in turn faster to iterate on and modify than untyped arrays.
+\ **Sự khác biệt giữa các mảng packed, mảng typed và mảng untyped:** Các mảng packed thường nhanh hơn khi duyệt và chỉnh sửa so với mảng typed cùng kiểu (ví dụ: **PackedVector4Array** so với ``Array[Vector4]``). Ngoài ra, mảng packed sử dụng ít bộ nhớ hơn. Điểm bất lợi là mảng packed kém linh hoạt hơn vì không cung cấp nhiều convenience method như :ref:`Array.map()<class_Array_method_map>`. Ngược lại, mảng typed nhanh hơn mảng untyped khi duyệt và chỉnh sửa.
 
-\ **Note:** Packed arrays are always passed by reference. To get a copy of an array that can be modified independently of the original array, use :ref:`duplicate()<class_PackedVector4Array_method_duplicate>`. This is *not* the case for built-in properties and methods. In these cases the returned packed array is a copy, and changing it will *not* affect the original value. To update a built-in property of this type, modify the returned array and then assign it to the property again.
+\ **Lưu ý:** Mảng packed luôn được truyền bằng tham chiếu. Để lấy một bản sao của mảng có thể được sửa độc lập với mảng ban đầu, hãy sử dụng :ref:`duplicate()<class_PackedVector4Array_method_duplicate>`. Điều này *không* đúng với các thuộc tính và phương thức tích hợp sẵn. Trong những trường hợp này, mảng packed được trả về là một bản sao và việc thay đổi mảng đó sẽ *không* ảnh hưởng đến giá trị ban đầu. Để cập nhật một thuộc tính tích hợp sẵn thuộc kiểu này, hãy chỉnh sửa mảng được trả về rồi gán lại mảng đó cho thuộc tính.
 
-\ **Note:** In a boolean context, a packed array will evaluate to ``false`` if it's empty. Otherwise, a packed array will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một mảng packed sẽ được đánh giá là ``false`` nếu nó rỗng. Nếu không, một mảng packed sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -31,8 +31,8 @@ An array specifically designed to hold :ref:`Vector4<class_Vector4>`. Packs data
 
 .. rst-class:: classref-reftable-group
 
-Constructors
-------------
+Các hàm khởi tạo
+----------------
 
 .. table::
    :widths: auto
@@ -47,8 +47,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -103,21 +103,21 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`operator !=<class_PackedVector4Array_operator_neq_PackedVector4Array>`\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedVector4Array<class_PackedVector4Array>` | :ref:`operator +<class_PackedVector4Array_operator_sum_PackedVector4Array>`\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )  |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`operator ==<class_PackedVector4Array_operator_eq_PackedVector4Array>`\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )  |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>`                       | :ref:`operator []<class_PackedVector4Array_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                              |
-   +-----------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`operator != <class_PackedVector4Array_operator_neq_PackedVector4Array>`\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedVector4Array<class_PackedVector4Array>` | :ref:`operator + <class_PackedVector4Array_operator_sum_PackedVector4Array>`\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )  |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                             | :ref:`operator == <class_PackedVector4Array_operator_eq_PackedVector4Array>`\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )  |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>`                       | :ref:`operator [] <class_PackedVector4Array_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                                              |
+   +-----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -125,8 +125,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_PackedVector4Array_constructor_PackedVector4Array:
 
@@ -134,7 +134,7 @@ Constructor Descriptions
 
 :ref:`PackedVector4Array<class_PackedVector4Array>` **PackedVector4Array**\ (\ ) :ref:`🔗<class_PackedVector4Array_constructor_PackedVector4Array>`
 
-Constructs an empty **PackedVector4Array**.
+Tạo một **PackedVector4Array** trống.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Constructs an empty **PackedVector4Array**.
 
 :ref:`PackedVector4Array<class_PackedVector4Array>` **PackedVector4Array**\ (\ from\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ )
 
-Constructs a **PackedVector4Array** as a copy of the given **PackedVector4Array**.
+Tạo một **PackedVector4Array** dưới dạng bản sao của **PackedVector4Array** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -154,9 +154,9 @@ Constructs a **PackedVector4Array** as a copy of the given **PackedVector4Array*
 
 :ref:`PackedVector4Array<class_PackedVector4Array>` **PackedVector4Array**\ (\ from\: :ref:`Array<class_Array>`\ )
 
-Constructs a new **PackedVector4Array**. Optionally, you can pass in a generic :ref:`Array<class_Array>` that will be converted.
+Tạo một **PackedVector4Array** mới. Bạn có thể truyền vào một :ref:`Array<class_Array>` generic tùy chọn để chuyển đổi.
 
-\ **Note:** When initializing a **PackedVector4Array** with elements, it must be initialized with an :ref:`Array<class_Array>` of :ref:`Vector4<class_Vector4>` values:
+\ **Lưu ý:** Khi khởi tạo một **PackedVector4Array** với các phần tử, nó phải được khởi tạo bằng một :ref:`Array<class_Array>` gồm các giá trị :ref:`Vector4<class_Vector4>`:
 
 ::
 
@@ -168,8 +168,8 @@ Constructs a new **PackedVector4Array**. Optionally, you can pass in a generic :
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PackedVector4Array_method_append:
 
@@ -177,7 +177,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **append**\ (\ value\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_PackedVector4Array_method_append>`
 
-Appends an element at the end of the array (alias of :ref:`push_back()<class_PackedVector4Array_method_push_back>`).
+Thêm một phần tử vào cuối mảng (bí danh của :ref:`push_back()<class_PackedVector4Array_method_push_back>`).
 
 .. rst-class:: classref-item-separator
 
@@ -189,7 +189,7 @@ Appends an element at the end of the array (alias of :ref:`push_back()<class_Pac
 
 |void| **append_array**\ (\ array\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) :ref:`🔗<class_PackedVector4Array_method_append_array>`
 
-Appends a **PackedVector4Array** at the end of this array.
+Thêm một **PackedVector4Array** vào cuối mảng này.
 
 .. rst-class:: classref-item-separator
 
@@ -201,11 +201,11 @@ Appends a **PackedVector4Array** at the end of this array.
 
 :ref:`int<class_int>` **bsearch**\ (\ value\: :ref:`Vector4<class_Vector4>`, before\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_PackedVector4Array_method_bsearch>`
 
-Finds the index of an existing value (or the insertion index that maintains sorting order, if the value is not yet present in the array) using binary search. Optionally, a ``before`` specifier can be passed. If ``false``, the returned index comes after all existing entries of the value in the array.
+Tìm chỉ mục của một giá trị hiện có (hoặc chỉ mục chèn để duy trì thứ tự sắp xếp nếu giá trị đó chưa có trong mảng) bằng tìm kiếm nhị phân. Có thể tùy chọn truyền vào một bộ chỉ định ``before``. Nếu ``false``, chỉ mục được trả về nằm sau tất cả các mục hiện có của giá trị đó trong mảng.
 
-\ **Note:** Calling :ref:`bsearch()<class_PackedVector4Array_method_bsearch>` on an unsorted array results in unexpected behavior.
+\ **Lưu ý:** Việc gọi :ref:`bsearch()<class_PackedVector4Array_method_bsearch>` trên một mảng chưa được sắp xếp sẽ dẫn đến hành vi không mong muốn.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các vector khác. Do đó, kết quả của phương thức này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -217,7 +217,7 @@ Finds the index of an existing value (or the insertion index that maintains sort
 
 |void| **clear**\ (\ ) :ref:`🔗<class_PackedVector4Array_method_clear>`
 
-Clears the array. This is equivalent to using :ref:`resize()<class_PackedVector4Array_method_resize>` with a size of ``0``.
+Xóa mảng. Tương đương với việc sử dụng :ref:`resize()<class_PackedVector4Array_method_resize>` với kích thước ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -229,9 +229,9 @@ Clears the array. This is equivalent to using :ref:`resize()<class_PackedVector4
 
 :ref:`int<class_int>` **count**\ (\ value\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_PackedVector4Array_method_count>`
 
-Returns the number of times an element is in the array.
+Trả về số lần một phần tử xuất hiện trong mảng.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các vector khác. Do đó, kết quả của phương thức này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Returns the number of times an element is in the array.
 
 :ref:`PackedVector4Array<class_PackedVector4Array>` **duplicate**\ (\ ) |const| :ref:`🔗<class_PackedVector4Array_method_duplicate>`
 
-Creates a copy of the array, and returns it.
+Tạo một bản sao của mảng và trả về bản sao đó.
 
 .. rst-class:: classref-item-separator
 
@@ -255,9 +255,9 @@ Creates a copy of the array, and returns it.
 
 :ref:`bool<class_bool>` **erase**\ (\ value\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_PackedVector4Array_method_erase>`
 
-Removes the first occurrence of a value from the array and returns ``true``. If the value does not exist in the array, nothing happens and ``false`` is returned. To remove an element by index, use :ref:`remove_at()<class_PackedVector4Array_method_remove_at>` instead.
+Xóa lần xuất hiện đầu tiên của một giá trị khỏi mảng và trả về ``true``. Nếu giá trị không tồn tại trong mảng, không có gì xảy ra và ``false`` được trả về. Để xóa một phần tử theo chỉ mục, hãy sử dụng :ref:`remove_at()<class_PackedVector4Array_method_remove_at>` thay thế.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các vector khác. Do đó, kết quả của phương thức này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -269,7 +269,7 @@ Removes the first occurrence of a value from the array and returns ``true``. If 
 
 |void| **fill**\ (\ value\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_PackedVector4Array_method_fill>`
 
-Assigns the given value to all elements in the array. This can typically be used together with :ref:`resize()<class_PackedVector4Array_method_resize>` to create an array with a given size and initialized elements.
+Gán giá trị đã cho cho tất cả các phần tử trong mảng. Thông thường, bạn có thể sử dụng thao tác này cùng với :ref:`resize()<class_PackedVector4Array_method_resize>` để tạo một mảng có kích thước đã cho và các phần tử được khởi tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -281,9 +281,9 @@ Assigns the given value to all elements in the array. This can typically be used
 
 :ref:`int<class_int>` **find**\ (\ value\: :ref:`Vector4<class_Vector4>`, from\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_PackedVector4Array_method_find>`
 
-Searches the array for a value and returns its index or ``-1`` if not found. Optionally, the initial search index can be passed.
+Tìm kiếm một giá trị trong mảng và trả về chỉ mục của giá trị đó hoặc ``-1`` nếu không tìm thấy. Có thể truyền chỉ mục tìm kiếm ban đầu.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các vector khác. Do đó, kết quả của phương thức này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -295,9 +295,9 @@ Searches the array for a value and returns its index or ``-1`` if not found. Opt
 
 :ref:`Vector4<class_Vector4>` **get**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_PackedVector4Array_method_get>`
 
-Returns the :ref:`Vector4<class_Vector4>` at the given ``index`` in the array. If ``index`` is out-of-bounds or negative, this method fails and returns ``Vector4(0, 0, 0, 0)``.
+Trả về :ref:`Vector4<class_Vector4>` tại ``index`` đã cho trong mảng. Nếu ``index`` nằm ngoài phạm vi hoặc là số âm, phương thức này sẽ thất bại và trả về ``Vector4(0, 0, 0, 0)``.
 
-This method is similar (but not identical) to the ``[]`` operator. Most notably, when this method fails, it doesn't pause project execution if run from the editor.
+Phương thức này tương tự (nhưng không giống hệt) toán tử ``[]``. Đáng chú ý nhất là khi phương thức này thất bại, nó không tạm dừng quá trình thực thi dự án nếu được chạy từ trình chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -309,9 +309,9 @@ This method is similar (but not identical) to the ``[]`` operator. Most notably,
 
 :ref:`bool<class_bool>` **has**\ (\ value\: :ref:`Vector4<class_Vector4>`\ ) |const| :ref:`🔗<class_PackedVector4Array_method_has>`
 
-Returns ``true`` if the array contains ``value``.
+Trả về ``true`` nếu mảng chứa ``value``.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các vector khác. Do đó, kết quả của phương thức này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -323,7 +323,7 @@ Returns ``true`` if the array contains ``value``.
 
 :ref:`int<class_int>` **insert**\ (\ at_index\: :ref:`int<class_int>`, value\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_PackedVector4Array_method_insert>`
 
-Inserts a new element at a given position in the array. The position must be valid, or at the end of the array (``idx == size()``).
+Chèn một phần tử mới tại một vị trí đã cho trong mảng. Vị trí đó phải hợp lệ hoặc nằm ở cuối mảng (``idx == size()``).
 
 .. rst-class:: classref-item-separator
 
@@ -335,7 +335,7 @@ Inserts a new element at a given position in the array. The position must be val
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_PackedVector4Array_method_is_empty>`
 
-Returns ``true`` if the array is empty.
+Trả về ``true`` nếu mảng trống.
 
 .. rst-class:: classref-item-separator
 
@@ -347,7 +347,7 @@ Returns ``true`` if the array is empty.
 
 :ref:`bool<class_bool>` **push_back**\ (\ value\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_PackedVector4Array_method_push_back>`
 
-Inserts a :ref:`Vector4<class_Vector4>` at the end.
+Chèn một :ref:`Vector4<class_Vector4>` vào cuối.
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ Inserts a :ref:`Vector4<class_Vector4>` at the end.
 
 |void| **remove_at**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedVector4Array_method_remove_at>`
 
-Removes an element from the array by index.
+Xóa một phần tử khỏi mảng theo chỉ mục.
 
 .. rst-class:: classref-item-separator
 
@@ -371,9 +371,9 @@ Removes an element from the array by index.
 
 :ref:`int<class_int>` **resize**\ (\ new_size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedVector4Array_method_resize>`
 
-Sets the size of the array. If the array is grown, reserves elements at the end of the array. If the array is shrunk, truncates the array to the new size. Calling :ref:`resize()<class_PackedVector4Array_method_resize>` once and assigning the new values is faster than adding new elements one by one.
+Đặt kích thước của mảng. Nếu mảng được mở rộng, các phần tử sẽ được cấp chỗ ở cuối mảng. Nếu mảng bị thu nhỏ, mảng sẽ được cắt ngắn về kích thước mới. Gọi :ref:`resize()<class_PackedVector4Array_method_resize>` một lần rồi gán các giá trị mới sẽ nhanh hơn so với việc thêm từng phần tử mới.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or one of the following :ref:`Error<enum_@GlobalScope_Error>` constants if this method fails: :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the size is negative, or :ref:`@GlobalScope.ERR_OUT_OF_MEMORY<class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` if allocations fail. Use :ref:`size()<class_PackedVector4Array_method_size>` to find the actual size of the array after resize.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công hoặc một trong các hằng số :ref:`Error <enum_@GlobalScope_Error>` sau đây nếu phương thức này không thành công: :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu kích thước là số âm hoặc :ref:`@GlobalScope.ERR_OUT_OF_MEMORY <class_@GlobalScope_constant_ERR_OUT_OF_MEMORY>` nếu việc cấp phát thất bại. Sử dụng :ref:`size()<class_PackedVector4Array_method_size>` để tìm kích thước thực tế của mảng sau khi thay đổi kích thước.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or on
 
 |void| **reverse**\ (\ ) :ref:`🔗<class_PackedVector4Array_method_reverse>`
 
-Reverses the order of the elements in the array.
+Đảo ngược thứ tự các phần tử trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -397,9 +397,9 @@ Reverses the order of the elements in the array.
 
 :ref:`int<class_int>` **rfind**\ (\ value\: :ref:`Vector4<class_Vector4>`, from\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_PackedVector4Array_method_rfind>`
 
-Searches the array in reverse order. Optionally, a start search index can be passed. If negative, the start index is considered relative to the end of the array.
+Tìm kiếm mảng theo thứ tự ngược. Bạn có thể tùy chọn truyền vào một chỉ mục bắt đầu tìm kiếm. Nếu là số âm, chỉ mục bắt đầu được tính tương đối so với cuối mảng.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các vector khác. Do đó, kết quả của phương thức này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -411,7 +411,7 @@ Searches the array in reverse order. Optionally, a start search index can be pas
 
 |void| **set**\ (\ index\: :ref:`int<class_int>`, value\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_PackedVector4Array_method_set>`
 
-Changes the :ref:`Vector4<class_Vector4>` at the given index.
+Thay đổi :ref:`Vector4<class_Vector4>` tại chỉ mục đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -423,7 +423,7 @@ Changes the :ref:`Vector4<class_Vector4>` at the given index.
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_PackedVector4Array_method_size>`
 
-Returns the number of elements in the array.
+Trả về số phần tử trong mảng.
 
 .. rst-class:: classref-item-separator
 
@@ -435,11 +435,11 @@ Returns the number of elements in the array.
 
 :ref:`PackedVector4Array<class_PackedVector4Array>` **slice**\ (\ begin\: :ref:`int<class_int>`, end\: :ref:`int<class_int>` = 2147483647\ ) |const| :ref:`🔗<class_PackedVector4Array_method_slice>`
 
-Returns the slice of the **PackedVector4Array**, from ``begin`` (inclusive) to ``end`` (exclusive), as a new **PackedVector4Array**.
+Trả về phần con của **PackedVector4Array**, từ ``begin`` (bao gồm) đến ``end`` (không bao gồm), dưới dạng một **PackedVector4Array** mới.
 
-The absolute value of ``begin`` and ``end`` will be clamped to the array size, so the default value for ``end`` makes it slice to the size of the array by default (i.e. ``arr.slice(1)`` is a shorthand for ``arr.slice(1, arr.size())``).
+Giá trị tuyệt đối của ``begin`` và ``end`` sẽ được giới hạn theo kích thước mảng, vì vậy giá trị mặc định của ``end`` khiến thao tác mặc định cắt đến kích thước mảng (tức là ``arr.slice(1)`` là cách viết rút gọn của ``arr.slice(1, arr.size())``).
 
-If either ``begin`` or ``end`` are negative, they will be relative to the end of the array (i.e. ``arr.slice(0, -2)`` is a shorthand for ``arr.slice(0, arr.size() - 2)``).
+Nếu ``begin`` hoặc ``end`` là số âm, chúng sẽ được tính tương đối so với cuối mảng (tức là ``arr.slice(0, -2)`` là cách viết rút gọn của ``arr.slice(0, arr.size() - 2)``).
 
 .. rst-class:: classref-item-separator
 
@@ -451,9 +451,9 @@ If either ``begin`` or ``end`` are negative, they will be relative to the end of
 
 |void| **sort**\ (\ ) :ref:`🔗<class_PackedVector4Array_method_sort>`
 
-Sorts the elements of the array in ascending order.
+Sắp xếp các phần tử của mảng theo thứ tự tăng dần.
 
-\ **Note:** Vectors with :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` elements don't behave the same as other vectors. Therefore, the results from this method may not be accurate if NaNs are included.
+\ **Lưu ý:** Các vector có các phần tử :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các vector khác. Do đó, kết quả của phương thức này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -465,7 +465,7 @@ Sorts the elements of the array in ascending order.
 
 :ref:`PackedByteArray<class_PackedByteArray>` **to_byte_array**\ (\ ) |const| :ref:`🔗<class_PackedVector4Array_method_to_byte_array>`
 
-Returns a :ref:`PackedByteArray<class_PackedByteArray>` with each vector encoded as bytes.
+Trả về một :ref:`PackedByteArray<class_PackedByteArray>` trong đó mỗi vector được mã hóa dưới dạng byte.
 
 .. rst-class:: classref-section-separator
 
@@ -473,16 +473,16 @@ Returns a :ref:`PackedByteArray<class_PackedByteArray>` with each vector encoded
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_PackedVector4Array_operator_neq_PackedVector4Array:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) :ref:`🔗<class_PackedVector4Array_operator_neq_PackedVector4Array>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) :ref:`🔗 <class_PackedVector4Array_operator_neq_PackedVector4Array>`
 
-Returns ``true`` if contents of the arrays differ.
+Trả về ``true`` nếu nội dung của các mảng khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -492,9 +492,9 @@ Returns ``true`` if contents of the arrays differ.
 
 .. rst-class:: classref-operator
 
-:ref:`PackedVector4Array<class_PackedVector4Array>` **operator +**\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) :ref:`🔗<class_PackedVector4Array_operator_sum_PackedVector4Array>`
+:ref:`PackedVector4Array<class_PackedVector4Array>` **operator +**\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) :ref:`🔗 <class_PackedVector4Array_operator_sum_PackedVector4Array>`
 
-Returns a new **PackedVector4Array** with contents of ``right`` added at the end of this array. For better performance, consider using :ref:`append_array()<class_PackedVector4Array_method_append_array>` instead.
+Trả về một **PackedVector4Array** mới với nội dung của ``right`` được thêm vào cuối mảng này. Để có hiệu suất tốt hơn, hãy cân nhắc sử dụng :ref:`append_array()<class_PackedVector4Array_method_append_array>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -504,9 +504,9 @@ Returns a new **PackedVector4Array** with contents of ``right`` added at the end
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) :ref:`🔗<class_PackedVector4Array_operator_eq_PackedVector4Array>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`PackedVector4Array<class_PackedVector4Array>`\ ) :ref:`🔗 <class_PackedVector4Array_operator_eq_PackedVector4Array>`
 
-Returns ``true`` if contents of both arrays are the same, i.e. they have all equal :ref:`Vector4<class_Vector4>`\ s at the corresponding indices.
+Trả về ``true`` nếu nội dung của cả hai mảng giống nhau, tức là chúng có tất cả :ref:`Vector4<class_Vector4>`\ s bằng nhau tại các chỉ mục tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -516,16 +516,16 @@ Returns ``true`` if contents of both arrays are the same, i.e. they have all equ
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_PackedVector4Array_operator_idx_int>`
+:ref:`Vector4<class_Vector4>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_PackedVector4Array_operator_idx_int>`
 
-Returns the :ref:`Vector4<class_Vector4>` at index ``index``. Negative indices can be used to access the elements starting from the end. Using index out of array's bounds will result in an error.
+Trả về :ref:`Vector4<class_Vector4>` tại chỉ số ``index``. Có thể sử dụng chỉ số âm để truy cập các phần tử bắt đầu từ cuối. Sử dụng chỉ số nằm ngoài giới hạn của mảng sẽ dẫn đến lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

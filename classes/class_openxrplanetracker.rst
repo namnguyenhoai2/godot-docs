@@ -10,39 +10,39 @@
 OpenXRPlaneTracker
 ==================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`OpenXRSpatialEntityTracker<class_OpenXRSpatialEntityTracker>` **<** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRSpatialEntityTracker<class_OpenXRSpatialEntityTracker>` **<** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Spatial entity tracker for our spatial entity plane tracking extension.
+Trình theo dõi thực thể không gian cho extension theo dõi mặt phẳng của thực thể không gian.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Spatial entity tracker for our OpenXR spatial entity plane tracking extension. These trackers identify entities in our real space such as walls, floors, tables, etc. and map their location to our virtual space.
+Trình theo dõi thực thể không gian cho extension theo dõi mặt phẳng của thực thể không gian OpenXR. Các trình theo dõi này xác định các thực thể trong không gian thực của chúng ta, chẳng hạn như tường, sàn, bàn, v.v., và ánh xạ vị trí của chúng vào không gian ảo của chúng ta.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>`                                                       | :ref:`bounds_size<class_OpenXRPlaneTracker_property_bounds_size>`         | ``Vector2(0, 0)`` |
-   +-------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
-   | :ref:`PlaneAlignment<enum_OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment>` | :ref:`plane_alignment<class_OpenXRPlaneTracker_property_plane_alignment>` | ``0``             |
-   +-------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
-   | :ref:`String<class_String>`                                                         | :ref:`plane_label<class_OpenXRPlaneTracker_property_plane_label>`         | ``""``            |
-   +-------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
+   +-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>`                                                             | :ref:`bounds_size<class_OpenXRPlaneTracker_property_bounds_size>`         | ``Vector2(0, 0)`` |
+   +-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
+   | :ref:`Căn chỉnh mặt phẳng <enum_OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment>` | :ref:`plane_alignment<class_OpenXRPlaneTracker_property_plane_alignment>` | ``0``             |
+   +-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
+   | :ref:`String<class_String>`                                                               | :ref:`plane_label<class_OpenXRPlaneTracker_property_plane_label>`         | ``""``            |
+   +-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------+-------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -65,8 +65,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_OpenXRPlaneTracker_signal_mesh_changed:
 
@@ -74,7 +74,7 @@ Signals
 
 **mesh_changed**\ (\ ) :ref:`🔗<class_OpenXRPlaneTracker_signal_mesh_changed>`
 
-Emitted when our mesh data has changed the mesh instance and collision needs to be updated.
+Được phát ra khi dữ liệu mesh của chúng ta đã thay đổi mesh instance và cần cập nhật collision.
 
 .. rst-class:: classref-section-separator
 
@@ -82,8 +82,8 @@ Emitted when our mesh data has changed the mesh instance and collision needs to 
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRPlaneTracker_property_bounds_size:
 
@@ -96,7 +96,7 @@ Property Descriptions
 - |void| **set_bounds_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_bounds_size**\ (\ )
 
-The bounding size of the plane. This is a 2D size.
+Kích thước bao của mặt phẳng. Đây là kích thước 2D.
 
 .. rst-class:: classref-item-separator
 
@@ -113,7 +113,7 @@ The bounding size of the plane. This is a 2D size.
 - |void| **set_plane_alignment**\ (\ value\: :ref:`PlaneAlignment<enum_OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment>`\ )
 - :ref:`PlaneAlignment<enum_OpenXRSpatialComponentPlaneAlignmentList_PlaneAlignment>` **get_plane_alignment**\ (\ )
 
-The main alignment in space of this plane.
+Căn chỉnh chính trong không gian của mặt phẳng này.
 
 .. rst-class:: classref-item-separator
 
@@ -130,7 +130,7 @@ The main alignment in space of this plane.
 - |void| **set_plane_label**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_plane_label**\ (\ )
 
-The semantic label for this plane.
+Nhãn ngữ nghĩa cho mặt phẳng này.
 
 .. rst-class:: classref-section-separator
 
@@ -138,8 +138,8 @@ The semantic label for this plane.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRPlaneTracker_method_clear_mesh_data:
 
@@ -147,7 +147,7 @@ Method Descriptions
 
 |void| **clear_mesh_data**\ (\ ) :ref:`🔗<class_OpenXRPlaneTracker_method_clear_mesh_data>`
 
-Clears the mesh data for this tracker. You should only call this if you are handling your own discovery logic.
+Xóa dữ liệu mesh cho tracker này. Bạn chỉ nên gọi phương thức này nếu đang tự xử lý logic discovery của mình.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Clears the mesh data for this tracker. You should only call this if you are hand
 
 :ref:`Mesh<class_Mesh>` **get_mesh**\ (\ ) :ref:`🔗<class_OpenXRPlaneTracker_method_get_mesh>`
 
-Gets a mesh created from either the mesh data or from our bounding size for this plane.
+Lấy một mesh được tạo từ dữ liệu mesh hoặc từ kích thước bounding của mặt phẳng này.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ Gets a mesh created from either the mesh data or from our bounding size for this
 
 :ref:`Transform3D<class_Transform3D>` **get_mesh_offset**\ (\ ) |const| :ref:`🔗<class_OpenXRPlaneTracker_method_get_mesh_offset>`
 
-Gets the transform by which to offset the mesh and collision shape from our pose to display these correctly.
+Lấy transform dùng để offset mesh và collision shape từ pose của chúng ta nhằm hiển thị chúng chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Gets the transform by which to offset the mesh and collision shape from our pose
 
 :ref:`Shape3D<class_Shape3D>` **get_shape**\ (\ thickness\: :ref:`float<class_float>` = 0.01\ ) :ref:`🔗<class_OpenXRPlaneTracker_method_get_shape>`
 
-Gets a collision shape built either from the mesh data or from our bounding size for this plane.
+Lấy một collision shape được tạo từ dữ liệu mesh hoặc từ kích thước bounding của mặt phẳng này.
 
 .. rst-class:: classref-item-separator
 
@@ -195,14 +195,14 @@ Gets a collision shape built either from the mesh data or from our bounding size
 
 |void| **set_mesh_data**\ (\ origin\: :ref:`Transform3D<class_Transform3D>`, vertices\: :ref:`PackedVector2Array<class_PackedVector2Array>`, indices\: :ref:`PackedInt32Array<class_PackedInt32Array>` = PackedInt32Array()\ ) :ref:`🔗<class_OpenXRPlaneTracker_method_set_mesh_data>`
 
-Sets the mesh data for this plane. You should only call this if you are handling your own discovery logic.
+Thiết lập dữ liệu mesh cho mặt phẳng này. Bạn chỉ nên gọi phương thức này nếu đang tự xử lý logic discovery của mình.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

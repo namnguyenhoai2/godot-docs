@@ -10,91 +10,91 @@
 FileDialog
 ==========
 
-**Inherits:** :ref:`ConfirmationDialog<class_ConfirmationDialog>` **<** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ConfirmationDialog<class_ConfirmationDialog>` **<** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorFileDialog<class_EditorFileDialog>`
+**Được kế thừa bởi:** :ref:`EditorFileDialog<class_EditorFileDialog>`
 
-A dialog for selecting files or directories in the filesystem.
+Hộp thoại để chọn tệp hoặc thư mục trong hệ thống tệp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**FileDialog** is a preset dialog used to choose files and directories in the filesystem. It supports filter masks. **FileDialog** automatically sets its window title according to the :ref:`file_mode<class_FileDialog_property_file_mode>`. If you want to use a custom title, disable this by setting :ref:`mode_overrides_title<class_FileDialog_property_mode_overrides_title>` to ``false``.
+**FileDialog** là hộp thoại đặt sẵn dùng để chọn tệp và thư mục trong hệ thống tệp. Hộp thoại này hỗ trợ các mặt nạ bộ lọc. **FileDialog** tự động đặt tiêu đề cửa sổ theo :ref:`file_mode<class_FileDialog_property_file_mode>`. Nếu bạn muốn sử dụng tiêu đề tùy chỉnh, hãy tắt tính năng này bằng cách đặt :ref:`mode_overrides_title<class_FileDialog_property_mode_overrides_title>` thành ``false``.
 
-\ **Note:** **FileDialog** is invisible by default. To make it visible, call one of the ``popup_*`` methods from :ref:`Window<class_Window>` on the node, such as :ref:`Window.popup_centered_clamped()<class_Window_method_popup_centered_clamped>`.
+\ **Lưu ý:** **FileDialog** theo mặc định là không hiển thị. Để làm cho nó hiển thị, hãy gọi một trong các phương thức ``popup_*`` từ :ref:`Window<class_Window>` trên node, chẳng hạn như :ref:`Window.popup_centered_clamped()<class_Window_method_popup_centered_clamped>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`Access<enum_FileDialog_Access>`             | :ref:`access<class_FileDialog_property_access>`                                           | ``0``                                                                                    |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`current_dir<class_FileDialog_property_current_dir>`                                 |                                                                                          |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`current_file<class_FileDialog_property_current_file>`                               |                                                                                          |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`current_path<class_FileDialog_property_current_path>`                               |                                                                                          |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`deleting_enabled<class_FileDialog_property_deleting_enabled>`                       | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | dialog_hide_on_ok                                                                         | ``false`` (overrides :ref:`AcceptDialog<class_AcceptDialog_property_dialog_hide_on_ok>`) |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`DisplayMode<enum_FileDialog_DisplayMode>`   | :ref:`display_mode<class_FileDialog_property_display_mode>`                               | ``0``                                                                                    |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`favorites_enabled<class_FileDialog_property_favorites_enabled>`                     | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`file_filter_toggle_enabled<class_FileDialog_property_file_filter_toggle_enabled>`   | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`FileMode<enum_FileDialog_FileMode>`         | :ref:`file_mode<class_FileDialog_property_file_mode>`                                     | ``4``                                                                                    |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`file_sort_options_enabled<class_FileDialog_property_file_sort_options_enabled>`     | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`filename_filter<class_FileDialog_property_filename_filter>`                         | ``""``                                                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`filters<class_FileDialog_property_filters>`                                         | ``PackedStringArray()``                                                                  |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`folder_creation_enabled<class_FileDialog_property_folder_creation_enabled>`         | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`hidden_files_toggle_enabled<class_FileDialog_property_hidden_files_toggle_enabled>` | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`layout_toggle_enabled<class_FileDialog_property_layout_toggle_enabled>`             | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`mode_overrides_title<class_FileDialog_property_mode_overrides_title>`               | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`option_count<class_FileDialog_property_option_count>`                               | ``0``                                                                                    |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`option_{index}/default<class_FileDialog_property_option_{index}/default>`           | ``0``                                                                                    |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`option_{index}/name<class_FileDialog_property_option_{index}/name>`                 | ``""``                                                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`option_{index}/values<class_FileDialog_property_option_{index}/values>`             | ``PackedStringArray()``                                                                  |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`overwrite_warning_enabled<class_FileDialog_property_overwrite_warning_enabled>`     | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`recent_list_enabled<class_FileDialog_property_recent_list_enabled>`                 | ``true``                                                                                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`root_subfolder<class_FileDialog_property_root_subfolder>`                           | ``""``                                                                                   |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`show_hidden_files<class_FileDialog_property_show_hidden_files>`                     | ``false``                                                                                |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`Vector2i<class_Vector2i>`                   | size                                                                                      | ``Vector2i(640, 360)`` (overrides :ref:`Window<class_Window_property_size>`)             |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | title                                                                                     | ``"Save a File"`` (overrides :ref:`Window<class_Window_property_title>`)                 |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`use_native_dialog<class_FileDialog_property_use_native_dialog>`                     | ``false``                                                                                |
-   +---------------------------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`Access <enum_FileDialog_Access>`            | :ref:`access<class_FileDialog_property_access>`                                           | ``0``                                                                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`current_dir<class_FileDialog_property_current_dir>`                                 |                                                                                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`current_file<class_FileDialog_property_current_file>`                               |                                                                                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`current_path<class_FileDialog_property_current_path>`                               |                                                                                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`deleting_enabled<class_FileDialog_property_deleting_enabled>`                       | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | dialog_hide_on_ok                                                                         | ``false`` (ghi đè :ref:`AcceptDialog<class_AcceptDialog_property_dialog_hide_on_ok>`) |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`DisplayMode <enum_FileDialog_DisplayMode>`  | :ref:`display_mode<class_FileDialog_property_display_mode>`                               | ``0``                                                                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`favorites_enabled<class_FileDialog_property_favorites_enabled>`                     | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`file_filter_toggle_enabled<class_FileDialog_property_file_filter_toggle_enabled>`   | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`FileMode <enum_FileDialog_FileMode>`        | :ref:`file_mode<class_FileDialog_property_file_mode>`                                     | ``4``                                                                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`file_sort_options_enabled<class_FileDialog_property_file_sort_options_enabled>`     | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`filename_filter<class_FileDialog_property_filename_filter>`                         | ``""``                                                                                |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`filters<class_FileDialog_property_filters>`                                         | ``PackedStringArray()``                                                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`folder_creation_enabled<class_FileDialog_property_folder_creation_enabled>`         | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`hidden_files_toggle_enabled<class_FileDialog_property_hidden_files_toggle_enabled>` | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`layout_toggle_enabled<class_FileDialog_property_layout_toggle_enabled>`             | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`mode_overrides_title<class_FileDialog_property_mode_overrides_title>`               | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`option_count<class_FileDialog_property_option_count>`                               | ``0``                                                                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`option_{index}/default <class_FileDialog_property_option_{index}/default>`          | ``0``                                                                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`option_{index}/name <class_FileDialog_property_option_{index}/name>`                | ``""``                                                                                |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`option_{index}/values <class_FileDialog_property_option_{index}/values>`            | ``PackedStringArray()``                                                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`overwrite_warning_enabled<class_FileDialog_property_overwrite_warning_enabled>`     | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`recent_list_enabled<class_FileDialog_property_recent_list_enabled>`                 | ``true``                                                                              |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`root_subfolder<class_FileDialog_property_root_subfolder>`                           | ``""``                                                                                |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`show_hidden_files<class_FileDialog_property_show_hidden_files>`                     | ``false``                                                                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`Vector2i<class_Vector2i>`                   | size                                                                                      | ``Vector2i(640, 360)`` (ghi đè :ref:`Window<class_Window_property_size>`)             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | title                                                                                     | ``"Save a File"`` (ghi đè :ref:`Window<class_Window_property_title>`)                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`use_native_dialog<class_FileDialog_property_use_native_dialog>`                     | ``false``                                                                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -128,11 +128,11 @@ Methods
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`invalidate<class_FileDialog_method_invalidate>`\ (\ )                                                                                                                                              |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`is_customization_flag_enabled<class_FileDialog_method_is_customization_flag_enabled>`\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|                                    |
+   | :ref:`bool<class_bool>`                           | :ref:`is_customization_flag_enabled<class_FileDialog_method_is_customization_flag_enabled>`\ (\ flag\: :ref:`Customization <enum_FileDialog_Customization>`\ ) |const|                                   |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`popup_file_dialog<class_FileDialog_method_popup_file_dialog>`\ (\ )                                                                                                                                |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_customization_flag_enabled<class_FileDialog_method_set_customization_flag_enabled>`\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )       |
+   | |void|                                            | :ref:`set_customization_flag_enabled<class_FileDialog_method_set_customization_flag_enabled>`\ (\ flag\: :ref:`Customization <enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )      |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                            | :ref:`set_favorite_list<class_FileDialog_method_set_favorite_list>`\ (\ favorites\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |static|                                                        |
    +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -151,7 +151,7 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -219,8 +219,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_FileDialog_signal_dir_selected:
 
@@ -228,7 +228,7 @@ Signals
 
 **dir_selected**\ (\ dir\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileDialog_signal_dir_selected>`
 
-Emitted when the user selects a directory.
+Được phát ra khi người dùng chọn một thư mục.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ Emitted when the user selects a directory.
 
 **file_selected**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileDialog_signal_file_selected>`
 
-Emitted when the user selects a file by double-clicking it or pressing the **OK** button.
+Được phát ra khi người dùng chọn một tệp bằng cách nhấp đúp vào tệp đó hoặc nhấn nút **OK**.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Emitted when the user selects a file by double-clicking it or pressing the **OK*
 
 **filename_filter_changed**\ (\ filter\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileDialog_signal_filename_filter_changed>`
 
-Emitted when the filter for file names changes.
+Được phát ra khi bộ lọc tên tệp thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -264,7 +264,7 @@ Emitted when the filter for file names changes.
 
 **files_selected**\ (\ paths\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_FileDialog_signal_files_selected>`
 
-Emitted when the user selects multiple files.
+Được phát ra khi người dùng chọn nhiều tệp.
 
 .. rst-class:: classref-section-separator
 
@@ -272,14 +272,14 @@ Emitted when the user selects multiple files.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_FileDialog_FileMode:
 
 .. rst-class:: classref-enumeration
 
-enum **FileMode**: :ref:`🔗<enum_FileDialog_FileMode>`
+enum **FileMode**: :ref:`🔗 <enum_FileDialog_FileMode>`
 
 .. _class_FileDialog_constant_FILE_MODE_OPEN_FILE:
 
@@ -287,7 +287,7 @@ enum **FileMode**: :ref:`🔗<enum_FileDialog_FileMode>`
 
 :ref:`FileMode<enum_FileDialog_FileMode>` **FILE_MODE_OPEN_FILE** = ``0``
 
-The dialog allows selecting one, and only one file.
+Hộp thoại cho phép chọn một và chỉ một tệp.
 
 .. _class_FileDialog_constant_FILE_MODE_OPEN_FILES:
 
@@ -295,7 +295,7 @@ The dialog allows selecting one, and only one file.
 
 :ref:`FileMode<enum_FileDialog_FileMode>` **FILE_MODE_OPEN_FILES** = ``1``
 
-The dialog allows selecting multiple files.
+Hộp thoại cho phép chọn nhiều tệp.
 
 .. _class_FileDialog_constant_FILE_MODE_OPEN_DIR:
 
@@ -303,7 +303,7 @@ The dialog allows selecting multiple files.
 
 :ref:`FileMode<enum_FileDialog_FileMode>` **FILE_MODE_OPEN_DIR** = ``2``
 
-The dialog only allows selecting a directory, disallowing the selection of any file.
+Hộp thoại chỉ cho phép chọn một thư mục, không cho phép chọn bất kỳ tệp nào.
 
 .. _class_FileDialog_constant_FILE_MODE_OPEN_ANY:
 
@@ -311,7 +311,7 @@ The dialog only allows selecting a directory, disallowing the selection of any f
 
 :ref:`FileMode<enum_FileDialog_FileMode>` **FILE_MODE_OPEN_ANY** = ``3``
 
-The dialog allows selecting one file or directory.
+Hộp thoại cho phép chọn một tệp hoặc thư mục.
 
 .. _class_FileDialog_constant_FILE_MODE_SAVE_FILE:
 
@@ -319,7 +319,7 @@ The dialog allows selecting one file or directory.
 
 :ref:`FileMode<enum_FileDialog_FileMode>` **FILE_MODE_SAVE_FILE** = ``4``
 
-The dialog will warn when a file exists.
+Hộp thoại sẽ cảnh báo khi tệp đã tồn tại.
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ The dialog will warn when a file exists.
 
 .. rst-class:: classref-enumeration
 
-enum **Access**: :ref:`🔗<enum_FileDialog_Access>`
+enum **Access**: :ref:`🔗 <enum_FileDialog_Access>`
 
 .. _class_FileDialog_constant_ACCESS_RESOURCES:
 
@@ -337,7 +337,7 @@ enum **Access**: :ref:`🔗<enum_FileDialog_Access>`
 
 :ref:`Access<enum_FileDialog_Access>` **ACCESS_RESOURCES** = ``0``
 
-The dialog only allows accessing files under the :ref:`Resource<class_Resource>` path (``res://``).
+Hộp thoại chỉ cho phép truy cập các tệp trong đường dẫn :ref:`Resource<class_Resource>` (``res://``).
 
 .. _class_FileDialog_constant_ACCESS_USERDATA:
 
@@ -345,7 +345,7 @@ The dialog only allows accessing files under the :ref:`Resource<class_Resource>`
 
 :ref:`Access<enum_FileDialog_Access>` **ACCESS_USERDATA** = ``1``
 
-The dialog only allows accessing files under user data path (``user://``).
+Hộp thoại chỉ cho phép truy cập các tệp trong đường dẫn dữ liệu người dùng (``user://``).
 
 .. _class_FileDialog_constant_ACCESS_FILESYSTEM:
 
@@ -353,7 +353,7 @@ The dialog only allows accessing files under user data path (``user://``).
 
 :ref:`Access<enum_FileDialog_Access>` **ACCESS_FILESYSTEM** = ``2``
 
-The dialog allows accessing files on the whole file system.
+Hộp thoại cho phép truy cập các tệp trong toàn bộ hệ thống tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -363,7 +363,7 @@ The dialog allows accessing files on the whole file system.
 
 .. rst-class:: classref-enumeration
 
-enum **DisplayMode**: :ref:`🔗<enum_FileDialog_DisplayMode>`
+enum **DisplayMode**: :ref:`🔗 <enum_FileDialog_DisplayMode>`
 
 .. _class_FileDialog_constant_DISPLAY_THUMBNAILS:
 
@@ -371,7 +371,7 @@ enum **DisplayMode**: :ref:`🔗<enum_FileDialog_DisplayMode>`
 
 :ref:`DisplayMode<enum_FileDialog_DisplayMode>` **DISPLAY_THUMBNAILS** = ``0``
 
-The dialog displays files as a grid of thumbnails. Use :ref:`thumbnail_size<class_FileDialog_theme_constant_thumbnail_size>` to adjust their size.
+Hộp thoại hiển thị các tệp dưới dạng lưới hình thu nhỏ. Sử dụng :ref:`thumbnail_size<class_FileDialog_theme_constant_thumbnail_size>` để điều chỉnh kích thước của chúng.
 
 .. _class_FileDialog_constant_DISPLAY_LIST:
 
@@ -379,7 +379,7 @@ The dialog displays files as a grid of thumbnails. Use :ref:`thumbnail_size<clas
 
 :ref:`DisplayMode<enum_FileDialog_DisplayMode>` **DISPLAY_LIST** = ``1``
 
-The dialog displays files as a list of filenames.
+Hộp thoại hiển thị các tệp dưới dạng danh sách tên tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -389,7 +389,7 @@ The dialog displays files as a list of filenames.
 
 .. rst-class:: classref-enumeration
 
-enum **Customization**: :ref:`🔗<enum_FileDialog_Customization>`
+enum **Customization**: :ref:`🔗 <enum_FileDialog_Customization>`
 
 .. _class_FileDialog_constant_CUSTOMIZATION_HIDDEN_FILES:
 
@@ -397,9 +397,9 @@ enum **Customization**: :ref:`🔗<enum_FileDialog_Customization>`
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_HIDDEN_FILES** = ``0``
 
-Toggles visibility of the favorite button, and the favorite list on the left side of the dialog.
+Bật/tắt khả năng hiển thị của nút yêu thích và danh sách yêu thích ở bên trái hộp thoại.
 
-Equivalent to :ref:`hidden_files_toggle_enabled<class_FileDialog_property_hidden_files_toggle_enabled>`.
+Tương đương với :ref:`hidden_files_toggle_enabled<class_FileDialog_property_hidden_files_toggle_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_CREATE_FOLDER:
 
@@ -407,9 +407,9 @@ Equivalent to :ref:`hidden_files_toggle_enabled<class_FileDialog_property_hidden
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_CREATE_FOLDER** = ``1``
 
-If enabled, shows the button for creating new directories (when using :ref:`FILE_MODE_OPEN_DIR<class_FileDialog_constant_FILE_MODE_OPEN_DIR>`, :ref:`FILE_MODE_OPEN_ANY<class_FileDialog_constant_FILE_MODE_OPEN_ANY>`, or :ref:`FILE_MODE_SAVE_FILE<class_FileDialog_constant_FILE_MODE_SAVE_FILE>`).
+Nếu được bật, hiển thị nút tạo thư mục mới (khi sử dụng :ref:`FILE_MODE_OPEN_DIR<class_FileDialog_constant_FILE_MODE_OPEN_DIR>`, :ref:`FILE_MODE_OPEN_ANY<class_FileDialog_constant_FILE_MODE_OPEN_ANY>` hoặc :ref:`FILE_MODE_SAVE_FILE<class_FileDialog_constant_FILE_MODE_SAVE_FILE>`).
 
-Equivalent to :ref:`folder_creation_enabled<class_FileDialog_property_folder_creation_enabled>`.
+Tương đương với :ref:`folder_creation_enabled<class_FileDialog_property_folder_creation_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_FILE_FILTER:
 
@@ -417,9 +417,9 @@ Equivalent to :ref:`folder_creation_enabled<class_FileDialog_property_folder_cre
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_FILE_FILTER** = ``2``
 
-If enabled, shows the toggle file filter button.
+Nếu được bật, hiển thị nút bật/tắt bộ lọc tệp.
 
-Equivalent to :ref:`file_filter_toggle_enabled<class_FileDialog_property_file_filter_toggle_enabled>`.
+Tương đương với :ref:`file_filter_toggle_enabled<class_FileDialog_property_file_filter_toggle_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_FILE_SORT:
 
@@ -427,9 +427,9 @@ Equivalent to :ref:`file_filter_toggle_enabled<class_FileDialog_property_file_fi
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_FILE_SORT** = ``3``
 
-If enabled, shows the file sorting options button.
+Nếu được bật, hiển thị nút tùy chọn sắp xếp tệp.
 
-Equivalent to :ref:`file_sort_options_enabled<class_FileDialog_property_file_sort_options_enabled>`.
+Tương đương với :ref:`file_sort_options_enabled<class_FileDialog_property_file_sort_options_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_FAVORITES:
 
@@ -437,9 +437,9 @@ Equivalent to :ref:`file_sort_options_enabled<class_FileDialog_property_file_sor
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_FAVORITES** = ``4``
 
-If enabled, shows the toggle favorite button and favorite list on the left side of the dialog.
+Nếu được bật, hiển thị nút bật/tắt mục yêu thích và danh sách mục yêu thích ở bên trái hộp thoại.
 
-Equivalent to :ref:`favorites_enabled<class_FileDialog_property_favorites_enabled>`.
+Tương đương với :ref:`favorites_enabled<class_FileDialog_property_favorites_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_RECENT:
 
@@ -447,9 +447,9 @@ Equivalent to :ref:`favorites_enabled<class_FileDialog_property_favorites_enable
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_RECENT** = ``5``
 
-If enabled, shows the recent directories list on the left side of the dialog.
+Nếu được bật, hiển thị danh sách các thư mục gần đây ở bên trái hộp thoại.
 
-Equivalent to :ref:`recent_list_enabled<class_FileDialog_property_recent_list_enabled>`.
+Tương đương với :ref:`recent_list_enabled<class_FileDialog_property_recent_list_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_LAYOUT:
 
@@ -457,9 +457,9 @@ Equivalent to :ref:`recent_list_enabled<class_FileDialog_property_recent_list_en
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_LAYOUT** = ``6``
 
-If enabled, shows the layout switch buttons (list/thumbnails).
+Nếu được bật, hiển thị các nút chuyển đổi bố cục (danh sách/hình thu nhỏ).
 
-Equivalent to :ref:`layout_toggle_enabled<class_FileDialog_property_layout_toggle_enabled>`.
+Tương đương với :ref:`layout_toggle_enabled<class_FileDialog_property_layout_toggle_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_OVERWRITE_WARNING:
 
@@ -467,9 +467,9 @@ Equivalent to :ref:`layout_toggle_enabled<class_FileDialog_property_layout_toggl
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_OVERWRITE_WARNING** = ``7``
 
-If enabled, the **FileDialog** will warn the user before overwriting files in save mode.
+Nếu được bật, **FileDialog** sẽ cảnh báo người dùng trước khi ghi đè các tệp trong chế độ lưu.
 
-Equivalent to :ref:`overwrite_warning_enabled<class_FileDialog_property_overwrite_warning_enabled>`.
+Tương đương với :ref:`overwrite_warning_enabled<class_FileDialog_property_overwrite_warning_enabled>`.
 
 .. _class_FileDialog_constant_CUSTOMIZATION_DELETE:
 
@@ -477,9 +477,9 @@ Equivalent to :ref:`overwrite_warning_enabled<class_FileDialog_property_overwrit
 
 :ref:`Customization<enum_FileDialog_Customization>` **CUSTOMIZATION_DELETE** = ``8``
 
-If enabled, the context menu will show the "Delete" option, which allows moving files and folders to trash.
+Nếu được bật, context menu sẽ hiển thị tùy chọn "Delete", cho phép chuyển các tệp và thư mục vào thùng rác.
 
-Equivalent to :ref:`deleting_enabled<class_FileDialog_property_deleting_enabled>`.
+Tương đương với :ref:`deleting_enabled<class_FileDialog_property_deleting_enabled>`.
 
 .. rst-class:: classref-section-separator
 
@@ -487,8 +487,8 @@ Equivalent to :ref:`deleting_enabled<class_FileDialog_property_deleting_enabled>
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_FileDialog_property_access:
 
@@ -501,9 +501,9 @@ Property Descriptions
 - |void| **set_access**\ (\ value\: :ref:`Access<enum_FileDialog_Access>`\ )
 - :ref:`Access<enum_FileDialog_Access>` **get_access**\ (\ )
 
-The file system access scope.
+Phạm vi truy cập hệ thống tệp.
 
-\ **Warning:** In Web builds, FileDialog cannot access the host file system. In sandboxed Linux and macOS environments, :ref:`use_native_dialog<class_FileDialog_property_use_native_dialog>` is automatically used to allow limited access to host file system.
+\ **Cảnh báo:** Trong các bản build Web, FileDialog không thể truy cập hệ thống tệp của máy chủ. Trong môi trường Linux và macOS sandbox, :ref:`use_native_dialog<class_FileDialog_property_use_native_dialog>` được tự động sử dụng để cho phép quyền truy cập hạn chế vào hệ thống tệp của máy chủ.
 
 .. rst-class:: classref-item-separator
 
@@ -513,16 +513,16 @@ The file system access scope.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **current_dir** :ref:`🔗<class_FileDialog_property_current_dir>`
+:ref:`String<class_String>` **current_dir** :ref:`🔗 <class_FileDialog_property_current_dir>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_current_dir**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_current_dir**\ (\ )
 
-The current working directory of the file dialog.
+Thư mục làm việc hiện tại của hộp thoại tệp.
 
-\ **Note:** For native file dialogs, this property is only treated as a hint and may not be respected by specific OS implementations.
+\ **Lưu ý:** Đối với các hộp thoại tệp gốc, thuộc tính này chỉ được xem là một gợi ý và có thể không được các triển khai cụ thể của hệ điều hành tôn trọng.
 
 .. rst-class:: classref-item-separator
 
@@ -532,14 +532,14 @@ The current working directory of the file dialog.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **current_file** :ref:`🔗<class_FileDialog_property_current_file>`
+:ref:`String<class_String>` **current_file** :ref:`🔗 <class_FileDialog_property_current_file>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_current_file**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_current_file**\ (\ )
 
-The currently selected file of the file dialog.
+Tệp hiện được chọn trong hộp thoại tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -549,14 +549,14 @@ The currently selected file of the file dialog.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **current_path** :ref:`🔗<class_FileDialog_property_current_path>`
+:ref:`String<class_String>` **current_path** :ref:`🔗 <class_FileDialog_property_current_path>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_current_path**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_current_path**\ (\ )
 
-The currently selected file path of the file dialog.
+Đường dẫn đến tệp hiện được chọn trong hộp thoại tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -573,7 +573,7 @@ The currently selected file path of the file dialog.
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, the context menu will show the "Delete" option, which allows moving files and folders to trash.
+Nếu ``true``, menu ngữ cảnh sẽ hiển thị tùy chọn "Delete", cho phép di chuyển các tệp và thư mục vào thùng rác.
 
 .. rst-class:: classref-item-separator
 
@@ -590,7 +590,7 @@ If ``true``, the context menu will show the "Delete" option, which allows moving
 - |void| **set_display_mode**\ (\ value\: :ref:`DisplayMode<enum_FileDialog_DisplayMode>`\ )
 - :ref:`DisplayMode<enum_FileDialog_DisplayMode>` **get_display_mode**\ (\ )
 
-Display mode of the dialog's file list.
+Chế độ hiển thị danh sách tệp của hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -607,7 +607,7 @@ Display mode of the dialog's file list.
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, shows the toggle favorite button and favorite list on the left side of the dialog.
+Nếu ``true``, hiển thị nút chuyển đổi mục yêu thích và danh sách mục yêu thích ở bên trái hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -624,7 +624,7 @@ If ``true``, shows the toggle favorite button and favorite list on the left side
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, shows the toggle file filter button.
+Nếu ``true``, hiển thị nút chuyển đổi bộ lọc tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -641,7 +641,7 @@ If ``true``, shows the toggle file filter button.
 - |void| **set_file_mode**\ (\ value\: :ref:`FileMode<enum_FileDialog_FileMode>`\ )
 - :ref:`FileMode<enum_FileDialog_FileMode>` **get_file_mode**\ (\ )
 
-The dialog's open or save mode, which affects the selection behavior.
+Chế độ mở hoặc lưu của hộp thoại, ảnh hưởng đến hành vi lựa chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -658,7 +658,7 @@ The dialog's open or save mode, which affects the selection behavior.
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, shows the file sorting options button.
+Nếu ``true``, hiển thị nút tùy chọn sắp xếp tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -675,9 +675,9 @@ If ``true``, shows the file sorting options button.
 - |void| **set_filename_filter**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_filename_filter**\ (\ )
 
-The filter for file names (case-insensitive). When set to a non-empty string, only files that contains the substring will be shown. :ref:`filename_filter<class_FileDialog_property_filename_filter>` can be edited by the user with the filter button at the top of the file dialog.
+Bộ lọc cho tên tệp (không phân biệt chữ hoa chữ thường). Khi được đặt thành một chuỗi không rỗng, chỉ những tệp chứa chuỗi con đó mới được hiển thị. :ref:`filename_filter<class_FileDialog_property_filename_filter>` có thể được người dùng chỉnh sửa bằng nút bộ lọc ở đầu hộp thoại tệp.
 
-See also :ref:`filters<class_FileDialog_property_filters>`, which should be used to restrict the file types that can be selected instead of :ref:`filename_filter<class_FileDialog_property_filename_filter>` which is meant to be set by the user.
+Xem thêm :ref:`filters<class_FileDialog_property_filters>`, nên được sử dụng để giới hạn các loại tệp có thể được chọn, thay vì :ref:`filename_filter<class_FileDialog_property_filename_filter>`, vốn предназначен để người dùng thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -694,11 +694,11 @@ See also :ref:`filters<class_FileDialog_property_filters>`, which should be used
 - |void| **set_filters**\ (\ value\: :ref:`PackedStringArray<class_PackedStringArray>`\ )
 - :ref:`PackedStringArray<class_PackedStringArray>` **get_filters**\ (\ )
 
-The available file type filters. Each filter string in the array should be formatted like this: ``*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg``. The description text of the filter is optional and can be omitted. Both file extensions and MIME type should be always set.
+Các bộ lọc loại tệp hiện có. Mỗi chuỗi bộ lọc trong mảng phải được định dạng như sau: ``*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg``. Phần văn bản mô tả bộ lọc là tùy chọn và có thể được bỏ qua. Phần mở rộng tệp và MIME type luôn phải được thiết lập.
 
-\ **Note:** Embedded file dialogs and Windows file dialogs support only file extensions, while Android, Linux, and macOS file dialogs also support MIME types.
+\ **Lưu ý:** Các hộp thoại tệp được nhúng và hộp thoại tệp Windows chỉ hỗ trợ phần mở rộng tệp, trong khi hộp thoại tệp Android, Linux và macOS cũng hỗ trợ MIME types.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -715,7 +715,7 @@ The available file type filters. Each filter string in the array should be forma
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, shows the button for creating new directories (when using :ref:`FILE_MODE_OPEN_DIR<class_FileDialog_constant_FILE_MODE_OPEN_DIR>`, :ref:`FILE_MODE_OPEN_ANY<class_FileDialog_constant_FILE_MODE_OPEN_ANY>`, or :ref:`FILE_MODE_SAVE_FILE<class_FileDialog_constant_FILE_MODE_SAVE_FILE>`), and the context menu will have the "New Folder..." option.
+Nếu ``true``, hiển thị nút tạo thư mục mới (khi sử dụng :ref:`FILE_MODE_OPEN_DIR<class_FileDialog_constant_FILE_MODE_OPEN_DIR>`, :ref:`FILE_MODE_OPEN_ANY<class_FileDialog_constant_FILE_MODE_OPEN_ANY>` hoặc :ref:`FILE_MODE_SAVE_FILE<class_FileDialog_constant_FILE_MODE_SAVE_FILE>`), và menu ngữ cảnh sẽ có tùy chọn "New Folder...".
 
 .. rst-class:: classref-item-separator
 
@@ -732,7 +732,7 @@ If ``true``, shows the button for creating new directories (when using :ref:`FIL
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, shows the toggle hidden files button.
+Nếu ``true``, hiển thị nút bật/tắt tệp ẩn.
 
 .. rst-class:: classref-item-separator
 
@@ -749,7 +749,7 @@ If ``true``, shows the toggle hidden files button.
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, shows the layout switch buttons (list/thumbnails).
+Nếu ``true``, hiển thị các nút chuyển bố cục (danh sách/hình thu nhỏ).
 
 .. rst-class:: classref-item-separator
 
@@ -766,7 +766,7 @@ If ``true``, shows the layout switch buttons (list/thumbnails).
 - |void| **set_mode_overrides_title**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_mode_overriding_title**\ (\ )
 
-If ``true``, changing the :ref:`file_mode<class_FileDialog_property_file_mode>` property will set the window title accordingly (e.g. setting :ref:`file_mode<class_FileDialog_property_file_mode>` to :ref:`FILE_MODE_OPEN_FILE<class_FileDialog_constant_FILE_MODE_OPEN_FILE>` will change the window title to "Open a File").
+Nếu ``true``, việc thay đổi thuộc tính :ref:`file_mode<class_FileDialog_property_file_mode>` sẽ đặt tiêu đề cửa sổ tương ứng (ví dụ: đặt :ref:`file_mode<class_FileDialog_property_file_mode>` thành :ref:`FILE_MODE_OPEN_FILE<class_FileDialog_constant_FILE_MODE_OPEN_FILE>` sẽ đổi tiêu đề cửa sổ thành "Open a File").
 
 .. rst-class:: classref-item-separator
 
@@ -783,7 +783,7 @@ If ``true``, changing the :ref:`file_mode<class_FileDialog_property_file_mode>` 
 - |void| **set_option_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_option_count**\ (\ )
 
-The number of additional :ref:`OptionButton<class_OptionButton>`\ s and :ref:`CheckBox<class_CheckBox>`\ es in the dialog.
+Số lượng :ref:`OptionButton<class_OptionButton>`\ s và :ref:`CheckBox<class_CheckBox>`\ es bổ sung trong hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -793,11 +793,11 @@ The number of additional :ref:`OptionButton<class_OptionButton>`\ s and :ref:`Ch
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **option_{index}/default** = ``0`` :ref:`🔗<class_FileDialog_property_option_{index}/default>`
+:ref:`int<class_int>` **option_{index}/default** = ``0`` :ref:`🔗 <class_FileDialog_property_option_{index}/default>`
 
-The default value for the option at ``index``.
+Giá trị mặc định của tùy chọn tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. option_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. option_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -807,11 +807,11 @@ The default value for the option at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **option_{index}/name** = ``""`` :ref:`🔗<class_FileDialog_property_option_{index}/name>`
+:ref:`String<class_String>` **option_{index}/name** = ``""`` :ref:`🔗 <class_FileDialog_property_option_{index}/name>`
 
-The name of the option at ``index``.
+Tên của tùy chọn tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. option_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. option_count - 1``.
 
 .. rst-class:: classref-item-separator
 
@@ -821,13 +821,13 @@ The name of the option at ``index``.
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **option_{index}/values** = ``PackedStringArray()`` :ref:`🔗<class_FileDialog_property_option_{index}/values>`
+:ref:`PackedStringArray<class_PackedStringArray>` **option_{index}/values** = ``PackedStringArray()`` :ref:`🔗 <class_FileDialog_property_option_{index}/values>`
 
-The list of values for the option at ``index``.
+Danh sách các giá trị cho tùy chọn tại ``index``.
 
-\ **Note:** ``index`` is a value in the ``0 .. option_count - 1`` range.
+\ **Lưu ý:** ``index`` là một giá trị trong phạm vi ``0 .. option_count - 1``.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -844,7 +844,7 @@ The list of values for the option at ``index``.
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, the **FileDialog** will warn the user before overwriting files in save mode.
+Nếu ``true``, **FileDialog** sẽ cảnh báo người dùng trước khi ghi đè các tệp ở chế độ lưu.
 
 .. rst-class:: classref-item-separator
 
@@ -861,7 +861,7 @@ If ``true``, the **FileDialog** will warn the user before overwriting files in s
 - |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const|
 
-If ``true``, shows the recent directories list on the left side of the dialog.
+Nếu ``true``, hiển thị danh sách các thư mục gần đây ở bên trái hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -878,9 +878,9 @@ If ``true``, shows the recent directories list on the left side of the dialog.
 - |void| **set_root_subfolder**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_root_subfolder**\ (\ )
 
-If non-empty, the given sub-folder will be "root" of this **FileDialog**, i.e. user won't be able to go to its parent directory.
+Nếu không trống, thư mục con đã cho sẽ là "root" của **FileDialog** này, tức là người dùng sẽ không thể đi đến thư mục cha của nó.
 
-\ **Note:** This property is ignored by native file dialogs.
+\ **Lưu ý:** Thuộc tính này bị các hộp thoại tệp native bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -897,9 +897,9 @@ If non-empty, the given sub-folder will be "root" of this **FileDialog**, i.e. u
 - |void| **set_show_hidden_files**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_showing_hidden_files**\ (\ )
 
-If ``true``, the dialog will show hidden files.
+Nếu ``true``, hộp thoại sẽ hiển thị các tệp ẩn.
 
-\ **Note:** This property is ignored by native file dialogs on Android and Linux.
+\ **Lưu ý:** Thuộc tính này bị các hộp thoại tệp native trên Android và Linux bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -916,17 +916,17 @@ If ``true``, the dialog will show hidden files.
 - |void| **set_use_native_dialog**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_native_dialog**\ (\ )
 
-If ``true``, and if supported by the current :ref:`DisplayServer<class_DisplayServer>`, OS native dialog will be used instead of custom one.
+Nếu ``true`` và được :ref:`DisplayServer<class_DisplayServer>` hiện tại hỗ trợ, hộp thoại native của hệ điều hành sẽ được sử dụng thay cho hộp thoại tùy chỉnh.
 
-\ **Note:** On Android, it is only supported when using :ref:`ACCESS_FILESYSTEM<class_FileDialog_constant_ACCESS_FILESYSTEM>`. For access mode :ref:`ACCESS_RESOURCES<class_FileDialog_constant_ACCESS_RESOURCES>` and :ref:`ACCESS_USERDATA<class_FileDialog_constant_ACCESS_USERDATA>`, the system will fall back to custom FileDialog.
+\ **Lưu ý:** Trên Android, tính năng này chỉ được hỗ trợ khi sử dụng :ref:`ACCESS_FILESYSTEM<class_FileDialog_constant_ACCESS_FILESYSTEM>`. Với các chế độ truy cập :ref:`ACCESS_RESOURCES<class_FileDialog_constant_ACCESS_RESOURCES>` và :ref:`ACCESS_USERDATA<class_FileDialog_constant_ACCESS_USERDATA>`, hệ thống sẽ chuyển sang sử dụng FileDialog tùy chỉnh.
 
-\ **Note:** On Linux and macOS, sandboxed apps always use native dialogs to access the host file system.
+\ **Lưu ý:** Trên Linux và macOS, các ứng dụng chạy trong sandbox luôn sử dụng hộp thoại native để truy cập hệ thống tệp của máy chủ.
 
-\ **Note:** On macOS, sandboxed apps will save security-scoped bookmarks to retain access to the opened folders across multiple sessions. Use :ref:`OS.get_granted_permissions()<class_OS_method_get_granted_permissions>` to get a list of saved bookmarks.
+\ **Lưu ý:** Trên macOS, các ứng dụng chạy trong sandbox sẽ lưu các security-scoped bookmark để duy trì quyền truy cập vào các thư mục đã mở qua nhiều phiên. Sử dụng :ref:`OS.get_granted_permissions()<class_OS_method_get_granted_permissions>` để lấy danh sách các bookmark đã lưu.
 
-\ **Note:** Native dialogs are isolated from the base process, file dialog properties can't be modified once the dialog is shown.
+\ **Lưu ý:** Các hộp thoại gốc được tách biệt khỏi tiến trình cơ sở, nên không thể sửa đổi các thuộc tính của hộp thoại tệp sau khi hộp thoại được hiển thị.
 
-\ **Note:** This property is ignored in :ref:`EditorFileDialog<class_EditorFileDialog>`.
+\ **Lưu ý:** Thuộc tính này bị bỏ qua trong :ref:`EditorFileDialog<class_EditorFileDialog>`.
 
 .. rst-class:: classref-section-separator
 
@@ -934,8 +934,8 @@ If ``true``, and if supported by the current :ref:`DisplayServer<class_DisplaySe
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_FileDialog_method_add_filter:
 
@@ -943,13 +943,13 @@ Method Descriptions
 
 |void| **add_filter**\ (\ filter\: :ref:`String<class_String>`, description\: :ref:`String<class_String>` = "", mime_type\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_FileDialog_method_add_filter>`
 
-Adds a comma-separated file extension ``filter`` and comma-separated MIME type ``mime_type`` option to the **FileDialog** with an optional ``description``, which restricts what files can be picked.
+Thêm tùy chọn phần mở rộng tệp được phân tách bằng dấu phẩy ``filter`` và kiểu MIME được phân tách bằng dấu phẩy ``mime_type`` vào **FileDialog** cùng với ``description`` tùy chọn, dùng để giới hạn các tệp có thể được chọn.
 
-A ``filter`` should be of the form ``"filename.extension"``, where filename and extension can be ``*`` to match any string. Filters starting with ``.`` (i.e. empty filenames) are not allowed.
+Một ``filter`` phải có dạng ``"filename.extension"``, trong đó tên tệp và phần mở rộng có thể là ``*`` để khớp với bất kỳ chuỗi nào. Không cho phép các bộ lọc bắt đầu bằng ``.`` (tức là tên tệp trống).
 
-For example, a ``filter`` of ``"*.png, *.jpg"``, a ``mime_type`` of ``image/png, image/jpeg``, and a ``description`` of ``"Images"`` results in filter text "Images (\*.png, \*.jpg)".
+Ví dụ: ``filter`` là ``"*.png, *.jpg"``, ``mime_type`` là ``image/png, image/jpeg`` và ``description`` là ``"Images"`` sẽ tạo ra văn bản bộ lọc "Images (\*.png, \*.jpg)".
 
-\ **Note:** Embedded file dialogs and Windows file dialogs support only file extensions, while Android, Linux, and macOS file dialogs also support MIME types.
+\ **Lưu ý:** Các hộp thoại tệp được nhúng và hộp thoại tệp của Windows chỉ hỗ trợ phần mở rộng tệp, trong khi hộp thoại tệp của Android, Linux và macOS cũng hỗ trợ kiểu MIME.
 
 .. rst-class:: classref-item-separator
 
@@ -961,9 +961,9 @@ For example, a ``filter`` of ``"*.png, *.jpg"``, a ``mime_type`` of ``image/png,
 
 |void| **add_option**\ (\ name\: :ref:`String<class_String>`, values\: :ref:`PackedStringArray<class_PackedStringArray>`, default_value_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FileDialog_method_add_option>`
 
-Adds an additional :ref:`OptionButton<class_OptionButton>` to the file dialog. If ``values`` is empty, a :ref:`CheckBox<class_CheckBox>` is added instead.
+Thêm một :ref:`OptionButton<class_OptionButton>` bổ sung vào hộp thoại tệp. Nếu ``values`` trống, thay vào đó sẽ thêm một :ref:`CheckBox<class_CheckBox>`.
 
-\ ``default_value_index`` should be an index of the value in the ``values``. If ``values`` is empty it should be either ``1`` (checked), or ``0`` (unchecked).
+\ ``default_value_index`` phải là chỉ mục của giá trị trong ``values``. Nếu ``values`` trống, nó phải là ``1`` (đã chọn) hoặc ``0`` (bỏ chọn).
 
 .. rst-class:: classref-item-separator
 
@@ -975,7 +975,7 @@ Adds an additional :ref:`OptionButton<class_OptionButton>` to the file dialog. I
 
 |void| **clear_filename_filter**\ (\ ) :ref:`🔗<class_FileDialog_method_clear_filename_filter>`
 
-Clear the filter for file names.
+Xóa bộ lọc tên tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -987,7 +987,7 @@ Clear the filter for file names.
 
 |void| **clear_filters**\ (\ ) :ref:`🔗<class_FileDialog_method_clear_filters>`
 
-Clear all the added filters in the dialog.
+Xóa tất cả các bộ lọc đã thêm trong hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -999,7 +999,7 @@ Clear all the added filters in the dialog.
 
 |void| **deselect_all**\ (\ ) :ref:`🔗<class_FileDialog_method_deselect_all>`
 
-Clear all currently selected items in the dialog.
+Xóa tất cả các mục hiện đang được chọn trong hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -1011,7 +1011,7 @@ Clear all currently selected items in the dialog.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_favorite_list**\ (\ ) |static| :ref:`🔗<class_FileDialog_method_get_favorite_list>`
 
-Returns the list of favorite directories, which is shared by all **FileDialog** nodes. Useful to store the list of favorites between project sessions. This method can be called only from the main thread.
+Trả về danh sách các thư mục yêu thích, được chia sẻ bởi tất cả các node **FileDialog**. Hữu ích để lưu danh sách thư mục yêu thích giữa các phiên dự án. Phương thức này chỉ có thể được gọi từ main thread.
 
 .. rst-class:: classref-item-separator
 
@@ -1023,9 +1023,9 @@ Returns the list of favorite directories, which is shared by all **FileDialog** 
 
 :ref:`LineEdit<class_LineEdit>` **get_line_edit**\ (\ ) :ref:`🔗<class_FileDialog_method_get_line_edit>`
 
-Returns the LineEdit for the selected file.
+Trả về LineEdit cho tệp đã chọn.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc, việc xóa và giải phóng node này có thể gây crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -1037,7 +1037,7 @@ Returns the LineEdit for the selected file.
 
 :ref:`int<class_int>` **get_option_default**\ (\ option\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FileDialog_method_get_option_default>`
 
-Returns the default value index of the :ref:`OptionButton<class_OptionButton>` or :ref:`CheckBox<class_CheckBox>` with index ``option``.
+Trả về chỉ mục giá trị mặc định của :ref:`OptionButton<class_OptionButton>` hoặc :ref:`CheckBox<class_CheckBox>` có chỉ mục ``option``.
 
 .. rst-class:: classref-item-separator
 
@@ -1049,7 +1049,7 @@ Returns the default value index of the :ref:`OptionButton<class_OptionButton>` o
 
 :ref:`String<class_String>` **get_option_name**\ (\ option\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FileDialog_method_get_option_name>`
 
-Returns the name of the :ref:`OptionButton<class_OptionButton>` or :ref:`CheckBox<class_CheckBox>` with index ``option``.
+Trả về tên của :ref:`OptionButton<class_OptionButton>` hoặc :ref:`CheckBox<class_CheckBox>` có chỉ mục ``option``.
 
 .. rst-class:: classref-item-separator
 
@@ -1061,7 +1061,7 @@ Returns the name of the :ref:`OptionButton<class_OptionButton>` or :ref:`CheckBo
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_option_values**\ (\ option\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_FileDialog_method_get_option_values>`
 
-Returns an array of values of the :ref:`OptionButton<class_OptionButton>` with index ``option``.
+Trả về một mảng các giá trị của :ref:`OptionButton<class_OptionButton>` có chỉ mục ``option``.
 
 .. rst-class:: classref-item-separator
 
@@ -1073,7 +1073,7 @@ Returns an array of values of the :ref:`OptionButton<class_OptionButton>` with i
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_recent_list**\ (\ ) |static| :ref:`🔗<class_FileDialog_method_get_recent_list>`
 
-Returns the list of recent directories, which is shared by all **FileDialog** nodes. Useful to store the list of recents between project sessions. This method can be called only from the main thread.
+Trả về danh sách các thư mục gần đây, được dùng chung bởi tất cả các node **FileDialog**. Hữu ích để lưu trữ danh sách các mục gần đây giữa các phiên làm việc của project. Phương thức này chỉ có thể được gọi từ main thread.
 
 .. rst-class:: classref-item-separator
 
@@ -1085,7 +1085,7 @@ Returns the list of recent directories, which is shared by all **FileDialog** no
 
 :ref:`Dictionary<class_Dictionary>` **get_selected_options**\ (\ ) |const| :ref:`🔗<class_FileDialog_method_get_selected_options>`
 
-Returns a :ref:`Dictionary<class_Dictionary>` with the selected values of the additional :ref:`OptionButton<class_OptionButton>`\ s and/or :ref:`CheckBox<class_CheckBox>`\ es. :ref:`Dictionary<class_Dictionary>` keys are names and values are selected value indices.
+Trả về một :ref:`Dictionary<class_Dictionary>` với các giá trị đã chọn của các :ref:`OptionButton<class_OptionButton>`\ s bổ sung và/hoặc :ref:`CheckBox<class_CheckBox>`\ es. Các key của :ref:`Dictionary<class_Dictionary>` là tên và giá trị là các chỉ mục giá trị đã chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -1097,11 +1097,11 @@ Returns a :ref:`Dictionary<class_Dictionary>` with the selected values of the ad
 
 :ref:`VBoxContainer<class_VBoxContainer>` **get_vbox**\ (\ ) :ref:`🔗<class_FileDialog_method_get_vbox>`
 
-Returns the vertical box container of the dialog, custom controls can be added to it.
+Trả về vùng chứa hộp dọc của hộp thoại; có thể thêm các control tùy chỉnh vào đó.
 
-\ **Warning:** This is a required internal node, removing and freeing it may cause a crash. If you wish to hide it or any of its children, use their :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` property.
+\ **Cảnh báo:** Đây là node nội bộ bắt buộc, việc xóa và giải phóng node này có thể gây crash. Nếu muốn ẩn node này hoặc bất kỳ node con nào của nó, hãy sử dụng thuộc tính :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` của chúng.
 
-\ **Note:** Changes to this node are ignored by native file dialogs, use :ref:`add_option()<class_FileDialog_method_add_option>` to add custom elements to the dialog instead.
+\ **Lưu ý:** Các thay đổi đối với node này bị các hộp thoại tệp gốc bỏ qua; hãy sử dụng :ref:`add_option()<class_FileDialog_method_add_option>` để thêm các phần tử tùy chỉnh vào hộp thoại.
 
 .. rst-class:: classref-item-separator
 
@@ -1113,9 +1113,9 @@ Returns the vertical box container of the dialog, custom controls can be added t
 
 |void| **invalidate**\ (\ ) :ref:`🔗<class_FileDialog_method_invalidate>`
 
-Invalidates and updates this dialog's content list.
+Làm mất hiệu lực và cập nhật danh sách nội dung của hộp thoại này.
 
-\ **Note:** This method does nothing on native file dialogs.
+\ **Lưu ý:** Phương thức này không có tác dụng với các hộp thoại tệp gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -1127,7 +1127,7 @@ Invalidates and updates this dialog's content list.
 
 :ref:`bool<class_bool>` **is_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`\ ) |const| :ref:`🔗<class_FileDialog_method_is_customization_flag_enabled>`
 
-Returns ``true`` if the provided ``flag`` is enabled.
+Trả về ``true`` nếu ``flag`` được cung cấp đã được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -1139,7 +1139,7 @@ Returns ``true`` if the provided ``flag`` is enabled.
 
 |void| **popup_file_dialog**\ (\ ) :ref:`🔗<class_FileDialog_method_popup_file_dialog>`
 
-Shows the **FileDialog** using the default size and position for file dialogs, and selects the file name if there is a current file.
+Hiển thị **FileDialog** bằng kích thước và vị trí mặc định dành cho các hộp thoại tệp, đồng thời chọn tên tệp nếu có tệp hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1151,7 +1151,7 @@ Shows the **FileDialog** using the default size and position for file dialogs, a
 
 |void| **set_customization_flag_enabled**\ (\ flag\: :ref:`Customization<enum_FileDialog_Customization>`, enabled\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_FileDialog_method_set_customization_flag_enabled>`
 
-Sets the specified customization ``flag``, allowing to customize the features available in this **FileDialog**.
+Thiết lập tùy chỉnh ``flag`` được chỉ định, cho phép tùy chỉnh các tính năng có trong **FileDialog** này.
 
 .. rst-class:: classref-item-separator
 
@@ -1163,9 +1163,9 @@ Sets the specified customization ``flag``, allowing to customize the features av
 
 |void| **set_favorite_list**\ (\ favorites\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |static| :ref:`🔗<class_FileDialog_method_set_favorite_list>`
 
-Sets the list of favorite directories, which is shared by all **FileDialog** nodes. Useful to restore the list of favorites saved with :ref:`get_favorite_list()<class_FileDialog_method_get_favorite_list>`. This method can be called only from the main thread.
+Đặt danh sách các thư mục yêu thích, được chia sẻ bởi tất cả các node **FileDialog**. Hữu ích để khôi phục danh sách yêu thích đã lưu bằng :ref:`get_favorite_list()<class_FileDialog_method_get_favorite_list>`. Phương thức này chỉ có thể được gọi từ main thread.
 
-\ **Note:** **FileDialog** will update its internal :ref:`ItemList<class_ItemList>` of favorites when its visibility changes. Be sure to call this method earlier if you want your changes to have effect.
+\ **Lưu ý:** **FileDialog** sẽ cập nhật :ref:`ItemList<class_ItemList>` nội bộ của nó về các mục yêu thích khi khả năng hiển thị thay đổi. Hãy nhớ gọi phương thức này sớm hơn nếu bạn muốn các thay đổi của mình có hiệu lực.
 
 .. rst-class:: classref-item-separator
 
@@ -1177,7 +1177,7 @@ Sets the list of favorite directories, which is shared by all **FileDialog** nod
 
 |void| **set_get_icon_callback**\ (\ callback\: :ref:`Callable<class_Callable>`\ ) |static| :ref:`🔗<class_FileDialog_method_set_get_icon_callback>`
 
-Sets the callback used by the **FileDialog** nodes to get a file icon, when :ref:`DISPLAY_LIST<class_FileDialog_constant_DISPLAY_LIST>` mode is used. The callback should take a single :ref:`String<class_String>` argument (file path), and return a :ref:`Texture2D<class_Texture2D>`. If an invalid texture is returned, the :ref:`file<class_FileDialog_theme_icon_file>` icon will be used instead.
+Đặt callback được các node **FileDialog** sử dụng để lấy biểu tượng tệp khi sử dụng chế độ :ref:`DISPLAY_LIST<class_FileDialog_constant_DISPLAY_LIST>`. Callback phải nhận một đối số :ref:`String<class_String>` duy nhất (đường dẫn tệp) và trả về một :ref:`Texture2D<class_Texture2D>`. Nếu texture trả về không hợp lệ, biểu tượng :ref:`file<class_FileDialog_theme_icon_file>` sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -1189,9 +1189,9 @@ Sets the callback used by the **FileDialog** nodes to get a file icon, when :ref
 
 |void| **set_get_thumbnail_callback**\ (\ callback\: :ref:`Callable<class_Callable>`\ ) |static| :ref:`🔗<class_FileDialog_method_set_get_thumbnail_callback>`
 
-Sets the callback used by the **FileDialog** nodes to get a file icon, when :ref:`DISPLAY_THUMBNAILS<class_FileDialog_constant_DISPLAY_THUMBNAILS>` mode is used. The callback should take a single :ref:`String<class_String>` argument (file path), and return a :ref:`Texture2D<class_Texture2D>`. If an invalid texture is returned, the :ref:`file_thumbnail<class_FileDialog_theme_icon_file_thumbnail>` icon will be used instead.
+Đặt callback được các node **FileDialog** sử dụng để lấy biểu tượng tệp khi sử dụng chế độ :ref:`DISPLAY_THUMBNAILS<class_FileDialog_constant_DISPLAY_THUMBNAILS>`. Callback phải nhận một đối số :ref:`String<class_String>` duy nhất (đường dẫn tệp) và trả về một :ref:`Texture2D<class_Texture2D>`. Nếu texture trả về không hợp lệ, biểu tượng :ref:`file_thumbnail<class_FileDialog_theme_icon_file_thumbnail>` sẽ được sử dụng thay thế.
 
-Thumbnails are usually more complex and may take a while to load. To avoid stalling the application, you can use :ref:`ImageTexture<class_ImageTexture>` to asynchronously create the thumbnail.
+Thumbnail thường phức tạp hơn và có thể mất một lúc để tải. Để tránh làm ứng dụng bị đình trệ, bạn có thể sử dụng :ref:`ImageTexture<class_ImageTexture>` để tạo thumbnail bất đồng bộ.
 
 ::
 
@@ -1217,7 +1217,7 @@ Thumbnails are usually more complex and may take a while to load. To avoid stall
 
 |void| **set_option_default**\ (\ option\: :ref:`int<class_int>`, default_value_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_FileDialog_method_set_option_default>`
 
-Sets the default value index of the :ref:`OptionButton<class_OptionButton>` or :ref:`CheckBox<class_CheckBox>` with index ``option``.
+Đặt chỉ mục giá trị mặc định của :ref:`OptionButton<class_OptionButton>` hoặc :ref:`CheckBox<class_CheckBox>` có chỉ mục ``option``.
 
 .. rst-class:: classref-item-separator
 
@@ -1229,7 +1229,7 @@ Sets the default value index of the :ref:`OptionButton<class_OptionButton>` or :
 
 |void| **set_option_name**\ (\ option\: :ref:`int<class_int>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_FileDialog_method_set_option_name>`
 
-Sets the name of the :ref:`OptionButton<class_OptionButton>` or :ref:`CheckBox<class_CheckBox>` with index ``option``.
+Đặt tên của :ref:`OptionButton<class_OptionButton>` hoặc :ref:`CheckBox<class_CheckBox>` có chỉ mục ``option``.
 
 .. rst-class:: classref-item-separator
 
@@ -1241,7 +1241,7 @@ Sets the name of the :ref:`OptionButton<class_OptionButton>` or :ref:`CheckBox<c
 
 |void| **set_option_values**\ (\ option\: :ref:`int<class_int>`, values\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) :ref:`🔗<class_FileDialog_method_set_option_values>`
 
-Sets the option values of the :ref:`OptionButton<class_OptionButton>` with index ``option``.
+Thiết lập các giá trị tùy chọn của :ref:`OptionButton<class_OptionButton>` có chỉ mục ``option``.
 
 .. rst-class:: classref-item-separator
 
@@ -1253,9 +1253,9 @@ Sets the option values of the :ref:`OptionButton<class_OptionButton>` with index
 
 |void| **set_recent_list**\ (\ recents\: :ref:`PackedStringArray<class_PackedStringArray>`\ ) |static| :ref:`🔗<class_FileDialog_method_set_recent_list>`
 
-Sets the list of recent directories, which is shared by all **FileDialog** nodes. Useful to restore the list of recents saved with :ref:`set_recent_list()<class_FileDialog_method_set_recent_list>`. This method can be called only from the main thread.
+Thiết lập danh sách các thư mục gần đây, được dùng chung bởi tất cả các node **FileDialog**. Hữu ích để khôi phục danh sách các mục gần đây đã lưu cùng với :ref:`set_recent_list()<class_FileDialog_method_set_recent_list>`. Phương thức này chỉ có thể được gọi từ main thread.
 
-\ **Note:** **FileDialog** will update its internal :ref:`ItemList<class_ItemList>` of recent directories when its visibility changes. Be sure to call this method earlier if you want your changes to have effect.
+\ **Lưu ý:** **FileDialog** sẽ cập nhật :ref:`ItemList<class_ItemList>` nội bộ của nó về các thư mục gần đây khi khả năng hiển thị của nó thay đổi. Hãy đảm bảo gọi phương thức này sớm hơn nếu bạn muốn các thay đổi của mình có hiệu lực.
 
 .. rst-class:: classref-section-separator
 
@@ -1263,8 +1263,8 @@ Sets the list of recent directories, which is shared by all **FileDialog** nodes
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_FileDialog_theme_color_file_disabled_color:
 
@@ -1272,7 +1272,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **file_disabled_color** = ``Color(1, 1, 1, 0.25)`` :ref:`🔗<class_FileDialog_theme_color_file_disabled_color>`
 
-The color tint for disabled files (when the **FileDialog** is used in open folder mode).
+Màu sắc của các tệp bị vô hiệu hóa (khi sử dụng **FileDialog** ở chế độ mở thư mục).
 
 .. rst-class:: classref-item-separator
 
@@ -1284,7 +1284,7 @@ The color tint for disabled files (when the **FileDialog** is used in open folde
 
 :ref:`Color<class_Color>` **file_icon_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_FileDialog_theme_color_file_icon_color>`
 
-The color modulation applied to the file icon.
+Mức điều chỉnh màu được áp dụng cho biểu tượng tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -1296,7 +1296,7 @@ The color modulation applied to the file icon.
 
 :ref:`Color<class_Color>` **folder_icon_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_FileDialog_theme_color_folder_icon_color>`
 
-The color modulation applied to the folder icon.
+Mức điều chỉnh màu được áp dụng cho biểu tượng thư mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1308,7 +1308,7 @@ The color modulation applied to the folder icon.
 
 :ref:`int<class_int>` **thumbnail_size** = ``64`` :ref:`🔗<class_FileDialog_theme_constant_thumbnail_size>`
 
-The size of thumbnail icons when :ref:`DISPLAY_THUMBNAILS<class_FileDialog_constant_DISPLAY_THUMBNAILS>` is enabled.
+Kích thước của các biểu tượng hình thu nhỏ khi :ref:`DISPLAY_THUMBNAILS<class_FileDialog_constant_DISPLAY_THUMBNAILS>` được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -1318,9 +1318,9 @@ The size of thumbnail icons when :ref:`DISPLAY_THUMBNAILS<class_FileDialog_const
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **back_folder** :ref:`🔗<class_FileDialog_theme_icon_back_folder>`
+:ref:`Texture2D<class_Texture2D>` **back_folder** :ref:`🔗 <class_FileDialog_theme_icon_back_folder>`
 
-Custom icon for the back arrow.
+Biểu tượng tùy chỉnh cho mũi tên quay lại.
 
 .. rst-class:: classref-item-separator
 
@@ -1330,9 +1330,9 @@ Custom icon for the back arrow.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **create_folder** :ref:`🔗<class_FileDialog_theme_icon_create_folder>`
+:ref:`Texture2D<class_Texture2D>` **create_folder** :ref:`🔗 <class_FileDialog_theme_icon_create_folder>`
 
-Custom icon for the create folder button.
+Biểu tượng tùy chỉnh cho nút tạo thư mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1342,9 +1342,9 @@ Custom icon for the create folder button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **favorite** :ref:`🔗<class_FileDialog_theme_icon_favorite>`
+:ref:`Texture2D<class_Texture2D>` **favorite** :ref:`🔗 <class_FileDialog_theme_icon_favorite>`
 
-Custom icon for favorite folder button.
+Biểu tượng tùy chỉnh cho nút thư mục yêu thích.
 
 .. rst-class:: classref-item-separator
 
@@ -1354,9 +1354,9 @@ Custom icon for favorite folder button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **favorite_down** :ref:`🔗<class_FileDialog_theme_icon_favorite_down>`
+:ref:`Texture2D<class_Texture2D>` **favorite_down** :ref:`🔗 <class_FileDialog_theme_icon_favorite_down>`
 
-Custom icon for button to move down a favorite entry.
+Biểu tượng tùy chỉnh cho nút di chuyển một mục yêu thích xuống dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -1366,9 +1366,9 @@ Custom icon for button to move down a favorite entry.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **favorite_up** :ref:`🔗<class_FileDialog_theme_icon_favorite_up>`
+:ref:`Texture2D<class_Texture2D>` **favorite_up** :ref:`🔗 <class_FileDialog_theme_icon_favorite_up>`
 
-Custom icon for button to move up a favorite entry.
+Biểu tượng tùy chỉnh cho nút di chuyển một mục yêu thích lên trên.
 
 .. rst-class:: classref-item-separator
 
@@ -1378,9 +1378,9 @@ Custom icon for button to move up a favorite entry.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **file** :ref:`🔗<class_FileDialog_theme_icon_file>`
+:ref:`Texture2D<class_Texture2D>` **file** :ref:`🔗 <class_FileDialog_theme_icon_file>`
 
-Custom icon for files.
+Biểu tượng tùy chỉnh cho các tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -1390,9 +1390,9 @@ Custom icon for files.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **file_thumbnail** :ref:`🔗<class_FileDialog_theme_icon_file_thumbnail>`
+:ref:`Texture2D<class_Texture2D>` **file_thumbnail** :ref:`🔗 <class_FileDialog_theme_icon_file_thumbnail>`
 
-Icon for files when in thumbnail mode.
+Biểu tượng cho các tệp khi ở chế độ hình thu nhỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -1402,9 +1402,9 @@ Icon for files when in thumbnail mode.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **folder** :ref:`🔗<class_FileDialog_theme_icon_folder>`
+:ref:`Texture2D<class_Texture2D>` **folder** :ref:`🔗 <class_FileDialog_theme_icon_folder>`
 
-Custom icon for folders.
+Biểu tượng tùy chỉnh cho các thư mục.
 
 .. rst-class:: classref-item-separator
 
@@ -1414,9 +1414,9 @@ Custom icon for folders.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **folder_thumbnail** :ref:`🔗<class_FileDialog_theme_icon_folder_thumbnail>`
+:ref:`Texture2D<class_Texture2D>` **folder_thumbnail** :ref:`🔗 <class_FileDialog_theme_icon_folder_thumbnail>`
 
-Icon for folders when in thumbnail mode.
+Biểu tượng cho các thư mục khi ở chế độ hình thu nhỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -1426,9 +1426,9 @@ Icon for folders when in thumbnail mode.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **forward_folder** :ref:`🔗<class_FileDialog_theme_icon_forward_folder>`
+:ref:`Texture2D<class_Texture2D>` **forward_folder** :ref:`🔗 <class_FileDialog_theme_icon_forward_folder>`
 
-Custom icon for the forward arrow.
+Biểu tượng tùy chỉnh cho mũi tên chuyển tiếp.
 
 .. rst-class:: classref-item-separator
 
@@ -1438,9 +1438,9 @@ Custom icon for the forward arrow.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **list_mode** :ref:`🔗<class_FileDialog_theme_icon_list_mode>`
+:ref:`Texture2D<class_Texture2D>` **list_mode** :ref:`🔗 <class_FileDialog_theme_icon_list_mode>`
 
-Icon for the button that enables list mode.
+Biểu tượng cho nút bật chế độ danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -1450,9 +1450,9 @@ Icon for the button that enables list mode.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_copy_path** :ref:`🔗<class_FileDialog_theme_icon_menu_copy_path>`
+:ref:`Texture2D<class_Texture2D>` **menu_copy_path** :ref:`🔗 <class_FileDialog_theme_icon_menu_copy_path>`
 
-Icon for the "Copy Path" context menu option.
+Biểu tượng cho tùy chọn menu ngữ cảnh "Copy Path".
 
 .. rst-class:: classref-item-separator
 
@@ -1462,9 +1462,9 @@ Icon for the "Copy Path" context menu option.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_delete** :ref:`🔗<class_FileDialog_theme_icon_menu_delete>`
+:ref:`Texture2D<class_Texture2D>` **menu_delete** :ref:`🔗 <class_FileDialog_theme_icon_menu_delete>`
 
-Icon for the "Delete" context menu option.
+Biểu tượng cho tùy chọn menu ngữ cảnh "Delete".
 
 .. rst-class:: classref-item-separator
 
@@ -1474,9 +1474,9 @@ Icon for the "Delete" context menu option.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_new_folder** :ref:`🔗<class_FileDialog_theme_icon_menu_new_folder>`
+:ref:`Texture2D<class_Texture2D>` **menu_new_folder** :ref:`🔗 <class_FileDialog_theme_icon_menu_new_folder>`
 
-Icon for the "New Folder..." context menu option. Usually it should be the same as :ref:`create_folder<class_FileDialog_theme_icon_create_folder>`; leave it empty if you want the context menu to show no icons.
+Biểu tượng cho tùy chọn menu ngữ cảnh "New Folder...". Thông thường, biểu tượng này nên giống :ref:`create_folder<class_FileDialog_theme_icon_create_folder>`; để trống nếu bạn muốn menu ngữ cảnh không hiển thị biểu tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -1486,9 +1486,9 @@ Icon for the "New Folder..." context menu option. Usually it should be the same 
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_open_bundle** :ref:`🔗<class_FileDialog_theme_icon_menu_open_bundle>`
+:ref:`Texture2D<class_Texture2D>` **menu_open_bundle** :ref:`🔗 <class_FileDialog_theme_icon_menu_open_bundle>`
 
-Icon for the "Show Package Contents" context menu option. The option only appears for macOS bundles.
+Biểu tượng cho tùy chọn menu ngữ cảnh "Show Package Contents". Tùy chọn này chỉ xuất hiện đối với các bundle trên macOS.
 
 .. rst-class:: classref-item-separator
 
@@ -1498,9 +1498,9 @@ Icon for the "Show Package Contents" context menu option. The option only appear
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_refresh** :ref:`🔗<class_FileDialog_theme_icon_menu_refresh>`
+:ref:`Texture2D<class_Texture2D>` **menu_refresh** :ref:`🔗 <class_FileDialog_theme_icon_menu_refresh>`
 
-Icon for the "Refresh" context menu option. Usually it should be the same as :ref:`reload<class_FileDialog_theme_icon_reload>`; leave it empty if you want the context menu to show no icons.
+Biểu tượng cho tùy chọn menu ngữ cảnh "Refresh". Thông thường, biểu tượng này nên giống :ref:`reload<class_FileDialog_theme_icon_reload>`; để trống nếu bạn muốn menu ngữ cảnh không hiển thị biểu tượng.
 
 .. rst-class:: classref-item-separator
 
@@ -1510,9 +1510,9 @@ Icon for the "Refresh" context menu option. Usually it should be the same as :re
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **menu_show_in_file_manager** :ref:`🔗<class_FileDialog_theme_icon_menu_show_in_file_manager>`
+:ref:`Texture2D<class_Texture2D>` **menu_show_in_file_manager** :ref:`🔗 <class_FileDialog_theme_icon_menu_show_in_file_manager>`
 
-Icon for the "Show in File Manager" context menu option.
+Biểu tượng cho tùy chọn menu ngữ cảnh "Show in File Manager".
 
 .. rst-class:: classref-item-separator
 
@@ -1522,9 +1522,9 @@ Icon for the "Show in File Manager" context menu option.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **parent_folder** :ref:`🔗<class_FileDialog_theme_icon_parent_folder>`
+:ref:`Texture2D<class_Texture2D>` **parent_folder** :ref:`🔗 <class_FileDialog_theme_icon_parent_folder>`
 
-Custom icon for the parent folder arrow.
+Biểu tượng tùy chỉnh cho mũi tên thư mục cha.
 
 .. rst-class:: classref-item-separator
 
@@ -1534,9 +1534,9 @@ Custom icon for the parent folder arrow.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **reload** :ref:`🔗<class_FileDialog_theme_icon_reload>`
+:ref:`Texture2D<class_Texture2D>` **reload** :ref:`🔗 <class_FileDialog_theme_icon_reload>`
 
-Custom icon for the reload button.
+Biểu tượng tùy chỉnh cho nút reload.
 
 .. rst-class:: classref-item-separator
 
@@ -1546,9 +1546,9 @@ Custom icon for the reload button.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **sort** :ref:`🔗<class_FileDialog_theme_icon_sort>`
+:ref:`Texture2D<class_Texture2D>` **sort** :ref:`🔗 <class_FileDialog_theme_icon_sort>`
 
-Custom icon for the sorting options menu.
+Biểu tượng tùy chỉnh cho menu tùy chọn sắp xếp.
 
 .. rst-class:: classref-item-separator
 
@@ -1558,9 +1558,9 @@ Custom icon for the sorting options menu.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **thumbnail_mode** :ref:`🔗<class_FileDialog_theme_icon_thumbnail_mode>`
+:ref:`Texture2D<class_Texture2D>` **thumbnail_mode** :ref:`🔗 <class_FileDialog_theme_icon_thumbnail_mode>`
 
-Icon for the button that enables thumbnail mode.
+Biểu tượng cho nút bật chế độ hình thu nhỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -1570,9 +1570,9 @@ Icon for the button that enables thumbnail mode.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **toggle_filename_filter** :ref:`🔗<class_FileDialog_theme_icon_toggle_filename_filter>`
+:ref:`Texture2D<class_Texture2D>` **toggle_filename_filter** :ref:`🔗 <class_FileDialog_theme_icon_toggle_filename_filter>`
 
-Custom icon for the toggle button for the filter for file names.
+Biểu tượng tùy chỉnh cho nút chuyển đổi bộ lọc tên tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -1582,16 +1582,16 @@ Custom icon for the toggle button for the filter for file names.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **toggle_hidden** :ref:`🔗<class_FileDialog_theme_icon_toggle_hidden>`
+:ref:`Texture2D<class_Texture2D>` **toggle_hidden** :ref:`🔗 <class_FileDialog_theme_icon_toggle_hidden>`
 
-Custom icon for the toggle hidden button.
+Biểu tượng tùy chỉnh cho nút chuyển đổi chế độ ẩn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

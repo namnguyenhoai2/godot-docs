@@ -10,24 +10,24 @@
 CompressedTexture3D
 ===================
 
-**Inherits:** :ref:`Texture3D<class_Texture3D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture3D<class_Texture3D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Texture with 3 dimensions, optionally compressed.
+Texture có 3 chiều, tùy chọn nén.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**CompressedTexture3D** is the VRAM-compressed counterpart of :ref:`ImageTexture3D<class_ImageTexture3D>`. The file extension for **CompressedTexture3D** files is ``.ctex3d``. This file format is internal to Godot; it is created by importing other image formats with the import system.
+**CompressedTexture3D** là phiên bản nén VRAM tương ứng của :ref:`ImageTexture3D<class_ImageTexture3D>`. Phần mở rộng tệp của các tệp **CompressedTexture3D** là ``.ctex3d``. Định dạng tệp này là nội bộ của Godot; nó được tạo bằng cách nhập các định dạng hình ảnh khác thông qua hệ thống import.
 
-\ **CompressedTexture3D** uses VRAM compression, which allows to reduce memory usage on the GPU when rendering the texture. This also improves loading times, as VRAM-compressed textures are faster to load compared to textures using lossless compression. VRAM compression can exhibit noticeable artifacts and is intended to be used for 3D rendering, not 2D.
+\ **CompressedTexture3D** sử dụng tính năng nén VRAM, giúp giảm mức sử dụng bộ nhớ trên GPU khi kết xuất texture. Điều này cũng cải thiện thời gian tải, vì texture được nén VRAM tải nhanh hơn so với texture sử dụng tính năng nén không mất dữ liệu. Nén VRAM có thể tạo ra các hiện tượng đáng chú ý và được thiết kế để sử dụng cho kết xuất 3D, không phải 2D.
 
-See :ref:`Texture3D<class_Texture3D>` for a general description of 3D textures.
+Xem :ref:`Texture3D<class_Texture3D>` để biết mô tả chung về texture 3D.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,15 +39,15 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+----------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`load<class_CompressedTexture3D_method_load>`\ (\ path\: :ref:`String<class_String>`\ ) |
-   +---------------------------------------+----------------------------------------------------------------------------------------------+
+   +----------------------------------------+----------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`load<class_CompressedTexture3D_method_load>`\ (\ path\: :ref:`String<class_String>`\ ) |
+   +----------------------------------------+----------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CompressedTexture3D_property_load_path:
 
@@ -69,7 +69,7 @@ Property Descriptions
 - :ref:`Error<enum_@GlobalScope_Error>` **load**\ (\ path\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_load_path**\ (\ )
 
-The **CompressedTexture3D**'s file path to a ``.ctex3d`` file.
+Đường dẫn tệp của **CompressedTexture3D** đến một tệp ``.ctex3d``.
 
 .. rst-class:: classref-section-separator
 
@@ -77,8 +77,8 @@ The **CompressedTexture3D**'s file path to a ``.ctex3d`` file.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CompressedTexture3D_method_load:
 
@@ -86,14 +86,14 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **load**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_CompressedTexture3D_method_load>`
 
-Loads the texture from the specified ``path``.
+Tải texture từ ``path`` được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

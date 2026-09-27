@@ -10,18 +10,18 @@
 UPNP
 ====
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Universal Plug and Play (UPnP) functions for network device discovery, querying and port forwarding.
+Các chức năng Universal Plug and Play (UPnP) dùng để phát hiện thiết bị mạng, truy vấn và chuyển tiếp cổng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class can be used to discover compatible :ref:`UPNPDevice<class_UPNPDevice>`\ s on the local network and execute commands on them, like managing port mappings (for port forwarding/NAT traversal) and querying the local and remote network IP address. Note that methods on this class are synchronous and block the calling thread.
+Lớp này có thể được dùng để phát hiện các :ref:`UPNPDevice<class_UPNPDevice>`\ s tương thích trên mạng cục bộ và thực thi các lệnh trên chúng, chẳng hạn như quản lý ánh xạ cổng (để chuyển tiếp cổng/duyệt NAT) và truy vấn địa chỉ IP mạng cục bộ và mạng từ xa. Lưu ý rằng các phương thức của lớp này là đồng bộ và sẽ chặn thread gọi.
 
-To forward a specific port (here ``7777``, note both :ref:`discover()<class_UPNP_method_discover>` and :ref:`add_port_mapping()<class_UPNP_method_add_port_mapping>` can return errors that should be checked):
+Để chuyển tiếp một cổng cụ thể (ở đây là ``7777``, lưu ý rằng cả :ref:`discover()<class_UPNP_method_discover>` và :ref:`add_port_mapping()<class_UPNP_method_add_port_mapping>` đều có thể trả về lỗi và cần được kiểm tra):
 
 ::
 
@@ -29,13 +29,13 @@ To forward a specific port (here ``7777``, note both :ref:`discover()<class_UPNP
     upnp.discover()
     upnp.add_port_mapping(7777)
 
-To close a specific port (e.g. after you have finished using it):
+Để đóng một cổng cụ thể (ví dụ: sau khi bạn đã sử dụng xong):
 
 ::
 
     upnp.delete_port_mapping(port)
 
-\ **Note:** UPnP discovery blocks the current thread. To perform discovery without blocking the main thread, use :ref:`Thread<class_Thread>`\ s like this:
+\ **Lưu ý:** Việc phát hiện UPnP sẽ chặn thread hiện tại. Để thực hiện việc phát hiện mà không chặn thread chính, hãy sử dụng :ref:`Thread<class_Thread>`\ s như sau:
 
 ::
 
@@ -69,25 +69,25 @@ To close a specific port (e.g. after you have finished using it):
         # Wait for thread finish here to handle game exit while the thread is running.
         thread.wait_to_finish()
 
-\ **Terminology:** In the context of UPnP networking, "gateway" (or "internet gateway device", short IGD) refers to network devices that allow computers in the local network to access the internet ("wide area network", WAN). These gateways are often also called "routers".
+\ **Thuật ngữ:** Trong ngữ cảnh mạng UPnP, "gateway" (hay "internet gateway device", viết tắt là IGD) là các thiết bị mạng cho phép máy tính trong mạng cục bộ truy cập internet ("wide area network", WAN). Các gateway này thường còn được gọi là "router".
 
-\ **Pitfalls:**\ 
+\ **Cạm bẫy:**\
 
-- As explained above, these calls are blocking and shouldn't be run on the main thread, especially as they can block for multiple seconds at a time. Use threading!
+- Như đã giải thích ở trên, các lệnh gọi này có tính blocking và không nên được chạy trên main thread, đặc biệt vì chúng có thể bị chặn trong nhiều giây mỗi lần. Hãy sử dụng threading!
 
-- Networking is physical and messy. Packets get lost in transit or get filtered, addresses, free ports and assigned mappings change, and devices may leave or join the network at any time. Be mindful of this, be diligent when checking and handling errors, and handle these gracefully if you can: add clear error UI, timeouts and re-try handling.
+- Networking mang tính vật lý và phức tạp. Các packet có thể bị mất trong quá trình truyền hoặc bị lọc, địa chỉ, port còn trống và các mapping được gán có thể thay đổi, còn các thiết bị có thể rời khỏi hoặc tham gia mạng bất cứ lúc nào. Hãy lưu ý điều này, cẩn thận khi kiểm tra và xử lý lỗi, đồng thời xử lý các tình huống này một cách uyển chuyển nếu có thể: thêm UI lỗi rõ ràng, timeout và cơ chế thử lại.
 
-- Port mappings may change (and be removed) at any time, and the remote/external IP address of the gateway can change likewise. You should consider re-querying the external IP and try to update/refresh the port mapping periodically (for example, every 5 minutes and on networking failures).
+- Các port mapping có thể thay đổi (và bị xóa) bất cứ lúc nào, đồng thời địa chỉ IP từ xa/bên ngoài của gateway cũng có thể thay đổi tương tự. Bạn nên cân nhắc việc truy vấn lại IP bên ngoài và cố gắng cập nhật/làm mới port mapping theo định kỳ (ví dụ: mỗi 5 phút và khi xảy ra lỗi networking).
 
-- Not all devices support UPnP, and some users disable UPnP support. You need to handle this (e.g. documenting and requiring the user to manually forward ports, or adding alternative methods of NAT traversal, like a relay/mirror server, or NAT hole punching, STUN/TURN, etc.).
+- Không phải mọi thiết bị đều hỗ trợ UPnP, và một số người dùng tắt hỗ trợ UPnP. Bạn cần xử lý trường hợp này (ví dụ: hướng dẫn và yêu cầu người dùng chuyển tiếp port theo cách thủ công, hoặc bổ sung các phương thức NAT traversal thay thế như relay/mirror server, NAT hole punching, STUN/TURN, v.v.).
 
-- Consider what happens on mapping conflicts. Maybe multiple users on the same network would like to play your game at the same time, or maybe another application uses the same port. Make the port configurable, and optimally choose a port automatically (re-trying with a different port on failure).
+- Hãy cân nhắc điều gì xảy ra khi có xung đột mapping. Có thể nhiều người dùng trong cùng một mạng muốn chơi game của bạn cùng lúc, hoặc một ứng dụng khác đang sử dụng cùng port. Hãy cho phép cấu hình port và tốt nhất là tự động chọn port phù hợp (thử lại với port khác khi thất bại).
 
-\ **Further reading:** If you want to know more about UPnP (and the Internet Gateway Device (IGD) and Port Control Protocol (PCP) specifically), `Wikipedia <https://en.wikipedia.org/wiki/Universal_Plug_and_Play>`__ is a good first stop, the specification can be found at the `Open Connectivity Foundation <https://openconnectivity.org/developer/specifications/upnp-resources/upnp/>`__ and Godot's implementation is based on the `MiniUPnP client <https://github.com/miniupnp/miniupnp>`__.
+\ **Đọc thêm:** Nếu bạn muốn tìm hiểu thêm về UPnP (cụ thể là Internet Gateway Device (IGD) và Port Control Protocol (PCP)), `Wikipedia <https://en.wikipedia.org/wiki/Universal_Plug_and_Play>`__ là một điểm bắt đầu tốt; bạn có thể tìm thấy đặc tả tại `Open Connectivity Foundation <https://openconnectivity.org/developer/specifications/upnp-resources/upnp/>`__, còn phần triển khai của Godot dựa trên `MiniUPnP client <https://github.com/miniupnp/miniupnp>`__.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -103,8 +103,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -139,14 +139,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_UPNP_UPNPResult:
 
 .. rst-class:: classref-enumeration
 
-enum **UPNPResult**: :ref:`🔗<enum_UPNP_UPNPResult>`
+enum **UPNPResult**: :ref:`🔗 <enum_UPNP_UPNPResult>`
 
 .. _class_UPNP_constant_UPNP_RESULT_SUCCESS:
 
@@ -154,7 +154,7 @@ enum **UPNPResult**: :ref:`🔗<enum_UPNP_UPNPResult>`
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_SUCCESS** = ``0``
 
-UPNP command or discovery was successful.
+Lệnh hoặc quá trình discovery của UPNP đã thành công.
 
 .. _class_UPNP_constant_UPNP_RESULT_NOT_AUTHORIZED:
 
@@ -162,7 +162,7 @@ UPNP command or discovery was successful.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_NOT_AUTHORIZED** = ``1``
 
-Not authorized to use the command on the :ref:`UPNPDevice<class_UPNPDevice>`. May be returned when the user disabled UPNP on their router.
+Không được cấp quyền sử dụng lệnh trên :ref:`UPNPDevice<class_UPNPDevice>`. Có thể được trả về khi người dùng đã tắt UPNP trên bộ định tuyến của họ.
 
 .. _class_UPNP_constant_UPNP_RESULT_PORT_MAPPING_NOT_FOUND:
 
@@ -170,7 +170,7 @@ Not authorized to use the command on the :ref:`UPNPDevice<class_UPNPDevice>`. Ma
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_PORT_MAPPING_NOT_FOUND** = ``2``
 
-No port mapping was found for the given port, protocol combination on the given :ref:`UPNPDevice<class_UPNPDevice>`.
+Không tìm thấy ánh xạ cổng nào cho tổ hợp cổng, giao thức đã cho trên :ref:`UPNPDevice<class_UPNPDevice>` đã cho.
 
 .. _class_UPNP_constant_UPNP_RESULT_INCONSISTENT_PARAMETERS:
 
@@ -178,7 +178,7 @@ No port mapping was found for the given port, protocol combination on the given 
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INCONSISTENT_PARAMETERS** = ``3``
 
-Inconsistent parameters.
+Các tham số không nhất quán.
 
 .. _class_UPNP_constant_UPNP_RESULT_NO_SUCH_ENTRY_IN_ARRAY:
 
@@ -186,7 +186,7 @@ Inconsistent parameters.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_NO_SUCH_ENTRY_IN_ARRAY** = ``4``
 
-No such entry in array. May be returned if a given port, protocol combination is not found on a :ref:`UPNPDevice<class_UPNPDevice>`.
+Không có mục nhập như vậy trong mảng. Có thể được trả về nếu không tìm thấy tổ hợp cổng, giao thức đã cho trên :ref:`UPNPDevice<class_UPNPDevice>`.
 
 .. _class_UPNP_constant_UPNP_RESULT_ACTION_FAILED:
 
@@ -194,7 +194,7 @@ No such entry in array. May be returned if a given port, protocol combination is
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_ACTION_FAILED** = ``5``
 
-The action failed.
+Thao tác không thành công.
 
 .. _class_UPNP_constant_UPNP_RESULT_SRC_IP_WILDCARD_NOT_PERMITTED:
 
@@ -202,7 +202,7 @@ The action failed.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_SRC_IP_WILDCARD_NOT_PERMITTED** = ``6``
 
-The :ref:`UPNPDevice<class_UPNPDevice>` does not allow wildcard values for the source IP address.
+:ref:`UPNPDevice<class_UPNPDevice>` không cho phép các giá trị ký tự đại diện cho địa chỉ IP nguồn.
 
 .. _class_UPNP_constant_UPNP_RESULT_EXT_PORT_WILDCARD_NOT_PERMITTED:
 
@@ -210,7 +210,7 @@ The :ref:`UPNPDevice<class_UPNPDevice>` does not allow wildcard values for the s
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_EXT_PORT_WILDCARD_NOT_PERMITTED** = ``7``
 
-The :ref:`UPNPDevice<class_UPNPDevice>` does not allow wildcard values for the external port.
+:ref:`UPNPDevice<class_UPNPDevice>` không cho phép các giá trị ký tự đại diện cho cổng bên ngoài.
 
 .. _class_UPNP_constant_UPNP_RESULT_INT_PORT_WILDCARD_NOT_PERMITTED:
 
@@ -218,7 +218,7 @@ The :ref:`UPNPDevice<class_UPNPDevice>` does not allow wildcard values for the e
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INT_PORT_WILDCARD_NOT_PERMITTED** = ``8``
 
-The :ref:`UPNPDevice<class_UPNPDevice>` does not allow wildcard values for the internal port.
+:ref:`UPNPDevice<class_UPNPDevice>` không cho phép các giá trị ký tự đại diện cho cổng nội bộ.
 
 .. _class_UPNP_constant_UPNP_RESULT_REMOTE_HOST_MUST_BE_WILDCARD:
 
@@ -226,7 +226,7 @@ The :ref:`UPNPDevice<class_UPNPDevice>` does not allow wildcard values for the i
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_REMOTE_HOST_MUST_BE_WILDCARD** = ``9``
 
-The remote host value must be a wildcard.
+Giá trị máy chủ từ xa phải là ký tự đại diện.
 
 .. _class_UPNP_constant_UPNP_RESULT_EXT_PORT_MUST_BE_WILDCARD:
 
@@ -234,7 +234,7 @@ The remote host value must be a wildcard.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_EXT_PORT_MUST_BE_WILDCARD** = ``10``
 
-The external port value must be a wildcard.
+Giá trị cổng bên ngoài phải là ký tự đại diện.
 
 .. _class_UPNP_constant_UPNP_RESULT_NO_PORT_MAPS_AVAILABLE:
 
@@ -242,7 +242,7 @@ The external port value must be a wildcard.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_NO_PORT_MAPS_AVAILABLE** = ``11``
 
-No port maps are available. May also be returned if port mapping functionality is not available.
+Không có ánh xạ cổng nào. Cũng có thể được trả về nếu chức năng ánh xạ cổng không khả dụng.
 
 .. _class_UPNP_constant_UPNP_RESULT_CONFLICT_WITH_OTHER_MECHANISM:
 
@@ -250,7 +250,7 @@ No port maps are available. May also be returned if port mapping functionality i
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_CONFLICT_WITH_OTHER_MECHANISM** = ``12``
 
-Conflict with other mechanism. May be returned instead of :ref:`UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING<class_UPNP_constant_UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING>` if a port mapping conflicts with an existing one.
+Xung đột với cơ chế khác. Có thể được trả về thay cho :ref:`UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING<class_UPNP_constant_UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING>` nếu ánh xạ cổng xung đột với ánh xạ hiện có.
 
 .. _class_UPNP_constant_UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING:
 
@@ -258,7 +258,7 @@ Conflict with other mechanism. May be returned instead of :ref:`UPNP_RESULT_CONF
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_CONFLICT_WITH_OTHER_MAPPING** = ``13``
 
-Conflict with an existing port mapping.
+Xung đột với ánh xạ cổng hiện có.
 
 .. _class_UPNP_constant_UPNP_RESULT_SAME_PORT_VALUES_REQUIRED:
 
@@ -266,7 +266,7 @@ Conflict with an existing port mapping.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_SAME_PORT_VALUES_REQUIRED** = ``14``
 
-External and internal port values must be the same.
+Giá trị cổng bên ngoài và bên trong phải giống nhau.
 
 .. _class_UPNP_constant_UPNP_RESULT_ONLY_PERMANENT_LEASE_SUPPORTED:
 
@@ -274,7 +274,7 @@ External and internal port values must be the same.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_ONLY_PERMANENT_LEASE_SUPPORTED** = ``15``
 
-Only permanent leases are supported. Do not use the ``duration`` parameter when adding port mappings.
+Chỉ hỗ trợ các thời hạn thuê vĩnh viễn. Không sử dụng tham số ``duration`` khi thêm ánh xạ cổng.
 
 .. _class_UPNP_constant_UPNP_RESULT_INVALID_GATEWAY:
 
@@ -282,7 +282,7 @@ Only permanent leases are supported. Do not use the ``duration`` parameter when 
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INVALID_GATEWAY** = ``16``
 
-Invalid gateway.
+Gateway không hợp lệ.
 
 .. _class_UPNP_constant_UPNP_RESULT_INVALID_PORT:
 
@@ -290,7 +290,7 @@ Invalid gateway.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INVALID_PORT** = ``17``
 
-Invalid port.
+Cổng không hợp lệ.
 
 .. _class_UPNP_constant_UPNP_RESULT_INVALID_PROTOCOL:
 
@@ -298,7 +298,7 @@ Invalid port.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INVALID_PROTOCOL** = ``18``
 
-Invalid protocol.
+Giao thức không hợp lệ.
 
 .. _class_UPNP_constant_UPNP_RESULT_INVALID_DURATION:
 
@@ -306,7 +306,7 @@ Invalid protocol.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INVALID_DURATION** = ``19``
 
-Invalid duration.
+Thời lượng không hợp lệ.
 
 .. _class_UPNP_constant_UPNP_RESULT_INVALID_ARGS:
 
@@ -314,7 +314,7 @@ Invalid duration.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INVALID_ARGS** = ``20``
 
-Invalid arguments.
+Đối số không hợp lệ.
 
 .. _class_UPNP_constant_UPNP_RESULT_INVALID_RESPONSE:
 
@@ -322,7 +322,7 @@ Invalid arguments.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INVALID_RESPONSE** = ``21``
 
-Invalid response.
+Phản hồi không hợp lệ.
 
 .. _class_UPNP_constant_UPNP_RESULT_INVALID_PARAM:
 
@@ -330,7 +330,7 @@ Invalid response.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_INVALID_PARAM** = ``22``
 
-Invalid parameter.
+Tham số không hợp lệ.
 
 .. _class_UPNP_constant_UPNP_RESULT_HTTP_ERROR:
 
@@ -338,7 +338,7 @@ Invalid parameter.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_HTTP_ERROR** = ``23``
 
-HTTP error.
+Lỗi HTTP.
 
 .. _class_UPNP_constant_UPNP_RESULT_SOCKET_ERROR:
 
@@ -346,7 +346,7 @@ HTTP error.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_SOCKET_ERROR** = ``24``
 
-Socket error.
+Lỗi socket.
 
 .. _class_UPNP_constant_UPNP_RESULT_MEM_ALLOC_ERROR:
 
@@ -354,7 +354,7 @@ Socket error.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_MEM_ALLOC_ERROR** = ``25``
 
-Error allocating memory.
+Lỗi cấp phát bộ nhớ.
 
 .. _class_UPNP_constant_UPNP_RESULT_NO_GATEWAY:
 
@@ -362,7 +362,7 @@ Error allocating memory.
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_NO_GATEWAY** = ``26``
 
-No gateway available. You may need to call :ref:`discover()<class_UPNP_method_discover>` first, or discovery didn't detect any valid IGDs (InternetGatewayDevices).
+Không có gateway nào khả dụng. Có thể bạn cần gọi :ref:`discover()<class_UPNP_method_discover>` trước, hoặc quá trình discovery không phát hiện thấy IGD (InternetGatewayDevices) hợp lệ nào.
 
 .. _class_UPNP_constant_UPNP_RESULT_NO_DEVICES:
 
@@ -370,7 +370,7 @@ No gateway available. You may need to call :ref:`discover()<class_UPNP_method_di
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_NO_DEVICES** = ``27``
 
-No devices available. You may need to call :ref:`discover()<class_UPNP_method_discover>` first, or discovery didn't detect any valid :ref:`UPNPDevice<class_UPNPDevice>`\ s.
+Không có thiết bị nào khả dụng. Có thể bạn cần gọi :ref:`discover()<class_UPNP_method_discover>` trước, hoặc quá trình discovery không phát hiện thấy :ref:`UPNPDevice<class_UPNPDevice>`\ s hợp lệ nào.
 
 .. _class_UPNP_constant_UPNP_RESULT_UNKNOWN_ERROR:
 
@@ -378,7 +378,7 @@ No devices available. You may need to call :ref:`discover()<class_UPNP_method_di
 
 :ref:`UPNPResult<enum_UPNP_UPNPResult>` **UPNP_RESULT_UNKNOWN_ERROR** = ``28``
 
-Unknown error.
+Lỗi không xác định.
 
 .. rst-class:: classref-section-separator
 
@@ -386,8 +386,8 @@ Unknown error.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_UPNP_property_discover_ipv6:
 
@@ -400,7 +400,7 @@ Property Descriptions
 - |void| **set_discover_ipv6**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_discover_ipv6**\ (\ )
 
-If ``true``, IPv6 is used for :ref:`UPNPDevice<class_UPNPDevice>` discovery.
+Nếu ``true``, IPv6 được sử dụng để phát hiện :ref:`UPNPDevice<class_UPNPDevice>`.
 
 .. rst-class:: classref-item-separator
 
@@ -417,7 +417,7 @@ If ``true``, IPv6 is used for :ref:`UPNPDevice<class_UPNPDevice>` discovery.
 - |void| **set_discover_local_port**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_discover_local_port**\ (\ )
 
-If ``0``, the local port to use for discovery is chosen automatically by the system. If ``1``, discovery will be done from the source port 1900 (same as destination port). Otherwise, the value will be used as the port.
+Nếu ``0``, cổng cục bộ được sử dụng để phát hiện sẽ do hệ thống tự động chọn. Nếu ``1``, quá trình phát hiện sẽ được thực hiện từ cổng nguồn 1900 (giống với cổng đích). Nếu không, giá trị này sẽ được sử dụng làm cổng.
 
 .. rst-class:: classref-item-separator
 
@@ -434,7 +434,7 @@ If ``0``, the local port to use for discovery is chosen automatically by the sys
 - |void| **set_discover_multicast_if**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_discover_multicast_if**\ (\ )
 
-Multicast interface to use for discovery. Uses the default multicast interface if empty.
+Giao diện multicast được sử dụng để phát hiện. Nếu để trống, giao diện multicast mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-section-separator
 
@@ -442,8 +442,8 @@ Multicast interface to use for discovery. Uses the default multicast interface i
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_UPNP_method_add_device:
 
@@ -451,7 +451,7 @@ Method Descriptions
 
 |void| **add_device**\ (\ device\: :ref:`UPNPDevice<class_UPNPDevice>`\ ) :ref:`🔗<class_UPNP_method_add_device>`
 
-Adds the given :ref:`UPNPDevice<class_UPNPDevice>` to the list of discovered devices.
+Thêm :ref:`UPNPDevice<class_UPNPDevice>` đã cho vào danh sách các thiết bị được phát hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -463,17 +463,17 @@ Adds the given :ref:`UPNPDevice<class_UPNPDevice>` to the list of discovered dev
 
 :ref:`int<class_int>` **add_port_mapping**\ (\ port\: :ref:`int<class_int>`, port_internal\: :ref:`int<class_int>` = 0, desc\: :ref:`String<class_String>` = "", proto\: :ref:`String<class_String>` = "UDP", duration\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_UPNP_method_add_port_mapping>`
 
-Adds a mapping to forward the external ``port`` (between 1 and 65535, although recommended to use port 1024 or above) on the default gateway (see :ref:`get_gateway()<class_UPNP_method_get_gateway>`) to the ``port_internal`` on the local machine for the given protocol ``proto`` (either ``"TCP"`` or ``"UDP"``, with UDP being the default). If a port mapping for the given port and protocol combination already exists on that gateway device, this method tries to overwrite it. If that is not desired, you can retrieve the gateway manually with :ref:`get_gateway()<class_UPNP_method_get_gateway>` and call :ref:`add_port_mapping()<class_UPNP_method_add_port_mapping>` on it, if any. Note that forwarding a well-known port (below 1024) with UPnP may fail depending on the device.
+Thêm ánh xạ để chuyển tiếp ``port`` bên ngoài (nằm trong khoảng từ 1 đến 65535, mặc dù nên sử dụng cổng từ 1024 trở lên) trên gateway mặc định (xem :ref:`get_gateway()<class_UPNP_method_get_gateway>`) đến ``port_internal`` trên máy cục bộ cho giao thức ``proto`` đã cho (là ``"TCP"`` hoặc ``"UDP"``, trong đó UDP là mặc định). Nếu trên thiết bị gateway đó đã tồn tại ánh xạ cho tổ hợp cổng và giao thức đã cho, phương thức này sẽ cố gắng ghi đè ánh xạ đó. Nếu không muốn như vậy, bạn có thể lấy gateway theo cách thủ công bằng :ref:`get_gateway()<class_UPNP_method_get_gateway>` và gọi :ref:`add_port_mapping()<class_UPNP_method_add_port_mapping>` trên gateway đó, nếu có. Lưu ý rằng việc chuyển tiếp một cổng well-known (dưới 1024) bằng UPnP có thể không thành công tùy thuộc vào thiết bị.
 
-Depending on the gateway device, if a mapping for that port already exists, it will either be updated or it will refuse this command due to that conflict, especially if the existing mapping for that port wasn't created via UPnP or points to a different network address (or device) than this one.
+Tùy thuộc vào thiết bị gateway, nếu đã tồn tại ánh xạ cho cổng đó, ánh xạ sẽ được cập nhật hoặc thiết bị sẽ từ chối lệnh này do xung đột đó, đặc biệt nếu ánh xạ hiện có cho cổng đó không được tạo thông qua UPnP hoặc trỏ đến một địa chỉ mạng (hoặc thiết bị) khác với địa chỉ hoặc thiết bị này.
 
-If ``port_internal`` is ``0`` (the default), the same port number is used for both the external and the internal port (the ``port`` value).
+Nếu ``port_internal`` là ``0`` (mặc định), cùng một số cổng sẽ được sử dụng cho cả cổng bên ngoài và cổng bên trong (giá trị ``port``).
 
-The description (``desc``) is shown in some routers management UIs and can be used to point out which application added the mapping.
+Mô tả (``desc``) được hiển thị trong giao diện quản trị của một số router và có thể được dùng để cho biết ứng dụng nào đã thêm ánh xạ.
 
-The mapping's lease ``duration`` can be limited by specifying a duration in seconds. The default of ``0`` means no duration, i.e. a permanent lease and notably some devices only support these permanent leases. Note that whether permanent or not, this is only a request and the gateway may still decide at any point to remove the mapping (which usually happens on a reboot of the gateway, when its external IP address changes, or on some models when it detects a port mapping has become inactive, i.e. had no traffic for multiple minutes). If not ``0`` (permanent), the allowed range according to spec is between ``120`` (2 minutes) and ``86400`` seconds (24 hours).
+Thời hạn thuê của ánh xạ ``duration`` có thể được giới hạn bằng cách chỉ định khoảng thời gian tính bằng giây. Giá trị mặc định ``0`` có nghĩa là không giới hạn thời gian, tức là thời hạn thuê vĩnh viễn; đáng chú ý là một số thiết bị chỉ hỗ trợ các thời hạn thuê vĩnh viễn này. Lưu ý rằng dù là vĩnh viễn hay không, đây chỉ là một yêu cầu và gateway vẫn có thể quyết định xóa ánh xạ bất kỳ lúc nào (điều này thường xảy ra khi gateway khởi động lại, khi địa chỉ IP bên ngoài của gateway thay đổi, hoặc trên một số model khi gateway phát hiện ánh xạ cổng đã không còn hoạt động, tức là không có lưu lượng trong nhiều phút). Nếu không phải ``0`` (vĩnh viễn), phạm vi được phép theo đặc tả là từ ``120`` (2 phút) đến ``86400`` giây (24 giờ).
 
-See :ref:`UPNPResult<enum_UPNP_UPNPResult>` for possible return values.
+Xem :ref:`UPNPResult <enum_UPNP_UPNPResult>` để biết các giá trị trả về có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -485,7 +485,7 @@ See :ref:`UPNPResult<enum_UPNP_UPNPResult>` for possible return values.
 
 |void| **clear_devices**\ (\ ) :ref:`🔗<class_UPNP_method_clear_devices>`
 
-Clears the list of discovered devices.
+Xóa danh sách các thiết bị đã phát hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -497,7 +497,7 @@ Clears the list of discovered devices.
 
 :ref:`int<class_int>` **delete_port_mapping**\ (\ port\: :ref:`int<class_int>`, proto\: :ref:`String<class_String>` = "UDP"\ ) |const| :ref:`🔗<class_UPNP_method_delete_port_mapping>`
 
-Deletes the port mapping for the given port and protocol combination on the default gateway (see :ref:`get_gateway()<class_UPNP_method_get_gateway>`) if one exists. ``port`` must be a valid port between 1 and 65535, ``proto`` can be either ``"TCP"`` or ``"UDP"``. May be refused for mappings pointing to addresses other than this one, for well-known ports (below 1024), or for mappings not added via UPnP. See :ref:`UPNPResult<enum_UPNP_UPNPResult>` for possible return values.
+Xóa ánh xạ cổng cho tổ hợp cổng và giao thức đã cho trên gateway mặc định (xem :ref:`get_gateway()<class_UPNP_method_get_gateway>`) nếu ánh xạ đó tồn tại. ``port`` phải là một cổng hợp lệ trong khoảng từ 1 đến 65535, còn ``proto`` có thể là ``"TCP"`` hoặc ``"UDP"``. Thao tác này có thể bị từ chối đối với các ánh xạ trỏ đến địa chỉ khác địa chỉ này, các cổng phổ biến (dưới 1024) hoặc các ánh xạ không được thêm qua UPnP. Xem :ref:`UPNPResult <enum_UPNP_UPNPResult>` để biết các giá trị trả về có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -509,11 +509,11 @@ Deletes the port mapping for the given port and protocol combination on the defa
 
 :ref:`int<class_int>` **discover**\ (\ timeout\: :ref:`int<class_int>` = 2000, ttl\: :ref:`int<class_int>` = 2, device_filter\: :ref:`String<class_String>` = "InternetGatewayDevice"\ ) :ref:`🔗<class_UPNP_method_discover>`
 
-Discovers local :ref:`UPNPDevice<class_UPNPDevice>`\ s. Clears the list of previously discovered devices.
+Phát hiện các :ref:`UPNPDevice<class_UPNPDevice>`\ s cục bộ. Xóa danh sách các thiết bị đã phát hiện trước đó.
 
-Filters for IGD (InternetGatewayDevice) type devices by default, as those manage port forwarding. ``timeout`` is the time to wait for responses in milliseconds. ``ttl`` is the time-to-live; only touch this if you know what you're doing.
+Mặc định, lọc các thiết bị loại IGD (InternetGatewayDevice), vì chúng quản lý việc chuyển tiếp cổng. ``timeout`` là thời gian chờ phản hồi, tính bằng mili giây. ``ttl`` là thời gian tồn tại (time-to-live); chỉ thay đổi giá trị này nếu bạn biết mình đang làm gì.
 
-See :ref:`UPNPResult<enum_UPNP_UPNPResult>` for possible return values.
+Xem :ref:`UPNPResult <enum_UPNP_UPNPResult>` để biết các giá trị trả về có thể có.
 
 .. rst-class:: classref-item-separator
 
@@ -525,7 +525,7 @@ See :ref:`UPNPResult<enum_UPNP_UPNPResult>` for possible return values.
 
 :ref:`UPNPDevice<class_UPNPDevice>` **get_device**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_UPNP_method_get_device>`
 
-Returns the :ref:`UPNPDevice<class_UPNPDevice>` at the given ``index``.
+Trả về :ref:`UPNPDevice<class_UPNPDevice>` tại ``index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -537,7 +537,7 @@ Returns the :ref:`UPNPDevice<class_UPNPDevice>` at the given ``index``.
 
 :ref:`int<class_int>` **get_device_count**\ (\ ) |const| :ref:`🔗<class_UPNP_method_get_device_count>`
 
-Returns the number of discovered :ref:`UPNPDevice<class_UPNPDevice>`\ s.
+Trả về số lượng :ref:`UPNPDevice<class_UPNPDevice>`\ s đã được phát hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -549,7 +549,7 @@ Returns the number of discovered :ref:`UPNPDevice<class_UPNPDevice>`\ s.
 
 :ref:`UPNPDevice<class_UPNPDevice>` **get_gateway**\ (\ ) |const| :ref:`🔗<class_UPNP_method_get_gateway>`
 
-Returns the default gateway. That is the first discovered :ref:`UPNPDevice<class_UPNPDevice>` that is also a valid IGD (InternetGatewayDevice).
+Trả về gateway mặc định. Đó là :ref:`UPNPDevice<class_UPNPDevice>` đầu tiên được phát hiện và cũng là một IGD (InternetGatewayDevice) hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -561,7 +561,7 @@ Returns the default gateway. That is the first discovered :ref:`UPNPDevice<class
 
 :ref:`String<class_String>` **query_external_address**\ (\ ) |const| :ref:`🔗<class_UPNP_method_query_external_address>`
 
-Returns the external :ref:`IP<class_IP>` address of the default gateway (see :ref:`get_gateway()<class_UPNP_method_get_gateway>`) as string. Returns an empty string on error.
+Trả về địa chỉ :ref:`IP<class_IP>` bên ngoài của gateway mặc định (xem :ref:`get_gateway()<class_UPNP_method_get_gateway>`) dưới dạng chuỗi. Trả về chuỗi rỗng nếu xảy ra lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -573,7 +573,7 @@ Returns the external :ref:`IP<class_IP>` address of the default gateway (see :re
 
 |void| **remove_device**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_UPNP_method_remove_device>`
 
-Removes the device at ``index`` from the list of discovered devices.
+Xóa thiết bị tại ``index`` khỏi danh sách các thiết bị đã phát hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -585,14 +585,14 @@ Removes the device at ``index`` from the list of discovered devices.
 
 |void| **set_device**\ (\ index\: :ref:`int<class_int>`, device\: :ref:`UPNPDevice<class_UPNPDevice>`\ ) :ref:`🔗<class_UPNP_method_set_device>`
 
-Sets the device at ``index`` from the list of discovered devices to ``device``.
+Đặt thiết bị tại ``index`` trong danh sách các thiết bị đã phát hiện thành ``device``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

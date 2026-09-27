@@ -10,34 +10,34 @@
 AnimationLibrary
 ================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Container for :ref:`Animation<class_Animation>` resources.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-An animation library stores a set of animations accessible through :ref:`StringName<class_StringName>` keys, for use with :ref:`AnimationPlayer<class_AnimationPlayer>` nodes.
+Bộ chứa các tài nguyên :ref:`Animation<class_Animation>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Thư viện animation lưu trữ một tập hợp các animation có thể truy cập thông qua các key :ref:`StringName<class_StringName>`, để sử dụng với các node :ref:`AnimationPlayer<class_AnimationPlayer>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Animation tutorial index <../tutorials/animation/index>`
+- :doc:`Mục lục hướng dẫn về animation <../tutorials/animation/index>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`add_animation<class_AnimationLibrary_method_add_animation>`\ (\ name\: :ref:`StringName<class_StringName>`, animation\: :ref:`Animation<class_Animation>`\ )       |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`add_animation<class_AnimationLibrary_method_add_animation>`\ (\ name\: :ref:`StringName<class_StringName>`, animation\: :ref:`Animation<class_Animation>`\ )       |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Animation<class_Animation>`                                | :ref:`get_animation<class_AnimationLibrary_method_get_animation>`\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const|                                              |
    +------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -58,8 +58,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_AnimationLibrary_signal_animation_added:
 
@@ -67,7 +67,7 @@ Signals
 
 **animation_added**\ (\ anim_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationLibrary_signal_animation_added>`
 
-Emitted when an :ref:`Animation<class_Animation>` is added, under the key ``anim_name``.
+Được phát ra khi một :ref:`Animation<class_Animation>` được thêm vào dưới khóa ``anim_name``.
 
 .. rst-class:: classref-item-separator
 
@@ -79,9 +79,9 @@ Emitted when an :ref:`Animation<class_Animation>` is added, under the key ``anim
 
 **animation_changed**\ (\ anim_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationLibrary_signal_animation_changed>`
 
-Emitted when there's a change in one of the animations, e.g. tracks are added, moved or have changed paths. ``anim_name`` is the key of the animation that was changed.
+Được phát ra khi một trong các animation thay đổi, chẳng hạn như track được thêm, di chuyển hoặc thay đổi đường dẫn. ``anim_name`` là khóa của animation đã thay đổi.
 
-See also :ref:`Resource.changed<class_Resource_signal_changed>`, which this acts as a relay for.
+Xem thêm :ref:`Resource.changed<class_Resource_signal_changed>`, mà đây đóng vai trò relay.
 
 .. rst-class:: classref-item-separator
 
@@ -93,7 +93,7 @@ See also :ref:`Resource.changed<class_Resource_signal_changed>`, which this acts
 
 **animation_removed**\ (\ anim_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationLibrary_signal_animation_removed>`
 
-Emitted when an :ref:`Animation<class_Animation>` stored with the key ``anim_name`` is removed.
+Được phát ra khi :ref:`Animation<class_Animation>` được lưu trữ với khóa ``anim_name`` bị xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Emitted when an :ref:`Animation<class_Animation>` stored with the key ``anim_nam
 
 **animation_renamed**\ (\ old_name\: :ref:`StringName<class_StringName>`, new_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationLibrary_signal_animation_renamed>`
 
-Emitted when the key for an :ref:`Animation<class_Animation>` is changed, from ``old_name`` to ``new_name``.
+Được phát ra khi khóa của :ref:`Animation<class_Animation>` được thay đổi từ ``old_name`` thành ``new_name``.
 
 .. rst-class:: classref-section-separator
 
@@ -113,8 +113,8 @@ Emitted when the key for an :ref:`Animation<class_Animation>` is changed, from `
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationLibrary_method_add_animation:
 
@@ -122,7 +122,7 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **add_animation**\ (\ name\: :ref:`StringName<class_StringName>`, animation\: :ref:`Animation<class_Animation>`\ ) :ref:`🔗<class_AnimationLibrary_method_add_animation>`
 
-Adds the ``animation`` to the library, accessible by the key ``name``.
+Thêm ``animation`` vào library, có thể truy cập bằng khóa ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Adds the ``animation`` to the library, accessible by the key ``name``.
 
 :ref:`Animation<class_Animation>` **get_animation**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationLibrary_method_get_animation>`
 
-Returns the :ref:`Animation<class_Animation>` with the key ``name``. If the animation does not exist, ``null`` is returned and an error is logged.
+Trả về :ref:`Animation<class_Animation>` với khóa ``name``. Nếu animation không tồn tại, ``null`` được trả về và một lỗi được ghi vào log.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ Returns the :ref:`Animation<class_Animation>` with the key ``name``. If the anim
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_animation_list**\ (\ ) |const| :ref:`🔗<class_AnimationLibrary_method_get_animation_list>`
 
-Returns the keys for the :ref:`Animation<class_Animation>`\ s stored in the library.
+Trả về các khóa của :ref:`Animation<class_Animation>`\ s được lưu trữ trong thư viện.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Returns the keys for the :ref:`Animation<class_Animation>`\ s stored in the libr
 
 :ref:`int<class_int>` **get_animation_list_size**\ (\ ) |const| :ref:`🔗<class_AnimationLibrary_method_get_animation_list_size>`
 
-Returns the key count for the :ref:`Animation<class_Animation>`\ s stored in the library.
+Trả về số lượng khóa của :ref:`Animation<class_Animation>`\ s được lưu trữ trong thư viện.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Returns the key count for the :ref:`Animation<class_Animation>`\ s stored in the
 
 :ref:`bool<class_bool>` **has_animation**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_AnimationLibrary_method_has_animation>`
 
-Returns ``true`` if the library stores an :ref:`Animation<class_Animation>` with ``name`` as the key.
+Trả về ``true`` nếu thư viện lưu trữ một :ref:`Animation<class_Animation>` với ``name`` làm khóa.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Returns ``true`` if the library stores an :ref:`Animation<class_Animation>` with
 
 |void| **remove_animation**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationLibrary_method_remove_animation>`
 
-Removes the :ref:`Animation<class_Animation>` with the key ``name``.
+Xóa :ref:`Animation<class_Animation>` với khóa ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -194,14 +194,14 @@ Removes the :ref:`Animation<class_Animation>` with the key ``name``.
 
 |void| **rename_animation**\ (\ name\: :ref:`StringName<class_StringName>`, newname\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_AnimationLibrary_method_rename_animation>`
 
-Changes the key of the :ref:`Animation<class_Animation>` associated with the key ``name`` to ``newname``.
+Thay đổi khóa của :ref:`Animation<class_Animation>` được liên kết với khóa ``name`` thành ``newname``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

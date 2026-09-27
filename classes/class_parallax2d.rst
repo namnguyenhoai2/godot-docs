@@ -10,57 +10,57 @@
 Parallax2D
 ==========
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node used to create a parallax scrolling background.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A **Parallax2D** is used to create a parallax effect. It can move at a different speed relative to the camera movement using :ref:`scroll_scale<class_Parallax2D_property_scroll_scale>`. This creates an illusion of depth in a 2D game. If manual scrolling is desired, the :ref:`Camera2D<class_Camera2D>` position can be ignored with :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>`.
-
-\ **Note:** Any changes to this node's position made after it enters the scene tree will be overridden if :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>` is ``false`` or :ref:`screen_offset<class_Parallax2D_property_screen_offset>` is modified.
+Một node được dùng để tạo nền cuộn parallax.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một **Parallax2D** được dùng để tạo hiệu ứng parallax. Nó có thể di chuyển với tốc độ khác so với chuyển động của camera bằng cách sử dụng :ref:`scroll_scale<class_Parallax2D_property_scroll_scale>`. Điều này tạo ra ảo giác về chiều sâu trong game 2D. Nếu muốn cuộn thủ công, có thể bỏ qua vị trí :ref:`Camera2D<class_Camera2D>` bằng :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>`.
+
+\ **Lưu ý:** Mọi thay đổi đối với vị trí của node này sau khi node đi vào scene tree sẽ bị ghi đè nếu :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>` là ``false`` hoặc :ref:`screen_offset<class_Parallax2D_property_screen_offset>` bị sửa đổi.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`2D Parallax <../tutorials/2d/2d_parallax>`
+- :doc:`Parallax 2D <../tutorials/2d/2d_parallax>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`autoscroll<class_Parallax2D_property_autoscroll>`                     | ``Vector2(0, 0)``                                                             |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`follow_viewport<class_Parallax2D_property_follow_viewport>`           | ``true``                                                                      |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>` | ``false``                                                                     |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`limit_begin<class_Parallax2D_property_limit_begin>`                   | ``Vector2(-10000000, -10000000)``                                             |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`limit_end<class_Parallax2D_property_limit_end>`                       | ``Vector2(10000000, 10000000)``                                               |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                                  | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`repeat_size<class_Parallax2D_property_repeat_size>`                   | ``Vector2(0, 0)``                                                             |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                               | :ref:`repeat_times<class_Parallax2D_property_repeat_times>`                 | ``1``                                                                         |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`screen_offset<class_Parallax2D_property_screen_offset>`               | ``Vector2(0, 0)``                                                             |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`scroll_offset<class_Parallax2D_property_scroll_offset>`               | ``Vector2(0, 0)``                                                             |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`scroll_scale<class_Parallax2D_property_scroll_scale>`                 | ``Vector2(1, 1)``                                                             |
-   +---------------------------------------------------------------------+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`autoscroll<class_Parallax2D_property_autoscroll>`                     | ``Vector2(0, 0)``                                                          |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`follow_viewport<class_Parallax2D_property_follow_viewport>`           | ``true``                                                                   |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>` | ``false``                                                                  |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`limit_begin<class_Parallax2D_property_limit_begin>`                   | ``Vector2(-10000000, -10000000)``                                          |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`limit_end<class_Parallax2D_property_limit_end>`                       | ``Vector2(10000000, 10000000)``                                            |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`PhysicsInterpolationMode <enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                                  | ``2`` (ghi đè :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`repeat_size<class_Parallax2D_property_repeat_size>`                   | ``Vector2(0, 0)``                                                          |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                | :ref:`repeat_times<class_Parallax2D_property_repeat_times>`                 | ``1``                                                                      |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`screen_offset<class_Parallax2D_property_screen_offset>`               | ``Vector2(0, 0)``                                                          |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`scroll_offset<class_Parallax2D_property_scroll_offset>`               | ``Vector2(0, 0)``                                                          |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`scroll_scale<class_Parallax2D_property_scroll_scale>`                 | ``Vector2(1, 1)``                                                          |
+   +----------------------------------------------------------------------+-----------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -68,8 +68,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Parallax2D_property_autoscroll:
 
@@ -82,7 +82,7 @@ Property Descriptions
 - |void| **set_autoscroll**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_autoscroll**\ (\ )
 
-Velocity at which the offset scrolls automatically, in pixels per second.
+Tốc độ mà offset tự động cuộn, tính bằng pixel mỗi giây.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ Velocity at which the offset scrolls automatically, in pixels per second.
 - |void| **set_follow_viewport**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_follow_viewport**\ (\ )
 
-If ``true``, this **Parallax2D** is offset by the current camera's position. If the **Parallax2D** is in a :ref:`CanvasLayer<class_CanvasLayer>` separate from the current camera, it may be desired to match the value with :ref:`CanvasLayer.follow_viewport_enabled<class_CanvasLayer_property_follow_viewport_enabled>`.
+Nếu ``true``, **Parallax2D** này được offset theo vị trí hiện tại của camera. Nếu **Parallax2D** nằm trong một :ref:`CanvasLayer<class_CanvasLayer>` tách biệt với camera hiện tại, bạn có thể muốn đặt giá trị này khớp với :ref:`CanvasLayer.follow_viewport_enabled<class_CanvasLayer_property_follow_viewport_enabled>`.
 
 .. rst-class:: classref-item-separator
 
@@ -116,7 +116,7 @@ If ``true``, this **Parallax2D** is offset by the current camera's position. If 
 - |void| **set_ignore_camera_scroll**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_ignore_camera_scroll**\ (\ )
 
-If ``true``, **Parallax2D**'s position is not affected by the position of the camera.
+Nếu ``true``, vị trí của **Parallax2D** không bị ảnh hưởng bởi vị trí của camera.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ If ``true``, **Parallax2D**'s position is not affected by the position of the ca
 - |void| **set_limit_begin**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_limit_begin**\ (\ )
 
-Top-left limits for scrolling to begin. If the camera is outside of this limit, the **Parallax2D** stops scrolling. Must be lower than :ref:`limit_end<class_Parallax2D_property_limit_end>` minus the viewport size to work.
+Giới hạn phía trên bên trái để bắt đầu cuộn. Nếu camera nằm ngoài giới hạn này, **Parallax2D** sẽ dừng cuộn. Phải nhỏ hơn :ref:`limit_end<class_Parallax2D_property_limit_end>` trừ đi kích thước viewport thì mới hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Top-left limits for scrolling to begin. If the camera is outside of this limit, 
 - |void| **set_limit_end**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_limit_end**\ (\ )
 
-Bottom-right limits for scrolling to end. If the camera is outside of this limit, the **Parallax2D** will stop scrolling. Must be higher than :ref:`limit_begin<class_Parallax2D_property_limit_begin>` and the viewport size combined to work.
+Giới hạn phía dưới bên phải để kết thúc cuộn. Nếu camera nằm ngoài giới hạn này, **Parallax2D** sẽ dừng cuộn. Phải cao hơn tổng của :ref:`limit_begin<class_Parallax2D_property_limit_begin>` và kích thước viewport thì mới hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -167,7 +167,7 @@ Bottom-right limits for scrolling to end. If the camera is outside of this limit
 - |void| **set_repeat_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_repeat_size**\ (\ )
 
-Repeats the :ref:`Texture2D<class_Texture2D>` of each of this node's children and offsets them by this value. When scrolling, the node's position loops, giving the illusion of an infinite scrolling background if the values are larger than the screen size. If an axis is set to ``0``, the :ref:`Texture2D<class_Texture2D>` will not be repeated.
+Lặp lại :ref:`Texture2D<class_Texture2D>` của từng node con của node này và dịch chúng theo giá trị này. Khi cuộn, vị trí của node sẽ lặp lại, tạo ảo giác về một background cuộn vô hạn nếu các giá trị lớn hơn kích thước màn hình. Nếu một trục được đặt thành ``0``, :ref:`Texture2D<class_Texture2D>` sẽ không được lặp lại.
 
 .. rst-class:: classref-item-separator
 
@@ -184,7 +184,7 @@ Repeats the :ref:`Texture2D<class_Texture2D>` of each of this node's children an
 - |void| **set_repeat_times**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_repeat_times**\ (\ )
 
-Overrides the amount of times the texture repeats. Each texture copy spreads evenly from the original by :ref:`repeat_size<class_Parallax2D_property_repeat_size>`. Useful for when zooming out with a camera.
+Ghi đè số lần texture được lặp lại. Mỗi bản sao của texture được phân bố đều cách bản gốc một khoảng :ref:`repeat_size<class_Parallax2D_property_repeat_size>`. Hữu ích khi thu nhỏ bằng camera.
 
 .. rst-class:: classref-item-separator
 
@@ -201,7 +201,7 @@ Overrides the amount of times the texture repeats. Each texture copy spreads eve
 - |void| **set_screen_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_screen_offset**\ (\ )
 
-Offset used to scroll this **Parallax2D**. This value is updated automatically unless :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>` is ``true``.
+Độ lệch dùng để cuộn **Parallax2D**. Giá trị này được tự động cập nhật trừ khi :ref:`ignore_camera_scroll<class_Parallax2D_property_ignore_camera_scroll>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -218,9 +218,9 @@ Offset used to scroll this **Parallax2D**. This value is updated automatically u
 - |void| **set_scroll_offset**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scroll_offset**\ (\ )
 
-The **Parallax2D**'s offset. Similar to :ref:`screen_offset<class_Parallax2D_property_screen_offset>` and :ref:`Node2D.position<class_Node2D_property_position>`, but will not be overridden.
+Độ lệch của **Parallax2D**. Tương tự như :ref:`screen_offset<class_Parallax2D_property_screen_offset>` và :ref:`Node2D.position<class_Node2D_property_position>`, nhưng sẽ không bị ghi đè.
 
-\ **Note:** Values will loop if :ref:`repeat_size<class_Parallax2D_property_repeat_size>` is set higher than ``0``.
+\ **Lưu ý:** Các giá trị sẽ lặp lại nếu :ref:`repeat_size<class_Parallax2D_property_repeat_size>` được đặt cao hơn ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -237,16 +237,16 @@ The **Parallax2D**'s offset. Similar to :ref:`screen_offset<class_Parallax2D_pro
 - |void| **set_scroll_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scroll_scale**\ (\ )
 
-Multiplier to the final **Parallax2D**'s offset. Can be used to simulate distance from the camera.
+Hệ số nhân cho offset của **Parallax2D** cuối cùng. Có thể dùng để mô phỏng khoảng cách đến camera.
 
-For example, a value of ``1`` scrolls at the same speed as the camera. A value greater than ``1`` scrolls faster, making objects appear closer. Less than ``1`` scrolls slower, making objects appear further, and a value of ``0`` stops the objects completely.
+Ví dụ: giá trị ``1`` sẽ cuộn với cùng tốc độ như camera. Giá trị lớn hơn ``1`` sẽ cuộn nhanh hơn, khiến các đối tượng có vẻ gần hơn. Giá trị nhỏ hơn ``1`` sẽ cuộn chậm hơn, khiến các đối tượng có vẻ xa hơn, còn giá trị ``0`` sẽ khiến các đối tượng dừng hoàn toàn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

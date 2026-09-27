@@ -10,22 +10,22 @@
 EditorScript
 ============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Base script that can be used to add extension functions to the editor.
+Script cơ sở có thể được sử dụng để thêm các hàm mở rộng vào editor.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Scripts extending this class and implementing its :ref:`_run()<class_EditorScript_private_method__run>` method can be executed from the Script Editor's **File > Run** menu option (or by pressing :kbd:`Ctrl + Shift + X`) while the editor is running. This is useful for adding custom in-editor functionality to Godot. For more complex additions, consider using :ref:`EditorPlugin<class_EditorPlugin>`\ s instead.
+Các script mở rộng class này và triển khai phương thức :ref:`_run()<class_EditorScript_private_method__run>` có thể được thực thi từ tùy chọn **File > Run** trong menu của Script Editor (hoặc bằng cách nhấn :kbd:`Ctrl + Shift + X`) khi editor đang chạy. Điều này hữu ích để thêm chức năng tùy chỉnh trong editor cho Godot. Đối với các phần bổ sung phức tạp hơn, hãy cân nhắc sử dụng :ref:`EditorPlugin<class_EditorPlugin>`\ s thay vào đó.
 
-If a script extending this class also has a global class name, it will be included in the editor's command palette.
+Nếu một script mở rộng class này cũng có tên class global, nó sẽ được đưa vào command palette của editor.
 
-\ **Note:** Extending scripts need to have ``tool`` mode enabled.
+\ **Lưu ý:** Các script mở rộng cần bật chế độ ``tool``.
 
-\ **Example:** Running the following script prints "Hello from the Godot Editor!":
+\ **Ví dụ:** Chạy script sau sẽ in ra "Hello from the Godot Editor!":
 
 
 .. tabs::
@@ -53,12 +53,12 @@ If a script extending this class also has a global class name, it will be includ
 
 
 
-\ **Note:** EditorScript is :ref:`RefCounted<class_RefCounted>`, meaning it is destroyed when nothing references it. This can cause errors during asynchronous operations if there are no references to the script.
+\ **Lưu ý:** EditorScript là :ref:`RefCounted<class_RefCounted>`, nghĩa là nó sẽ bị hủy khi không có gì tham chiếu đến nó. Điều này có thể gây ra lỗi trong các thao tác bất đồng bộ nếu không có tham chiếu nào đến script.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -79,8 +79,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorScript_private_method__run:
 
@@ -88,7 +88,7 @@ Method Descriptions
 
 |void| **_run**\ (\ ) |virtual| |required| :ref:`🔗<class_EditorScript_private_method__run>`
 
-This method is executed by the Editor when **File > Run** is used.
+Phương thức này được Editor thực thi khi sử dụng **File > Run**.
 
 .. rst-class:: classref-item-separator
 
@@ -100,9 +100,9 @@ This method is executed by the Editor when **File > Run** is used.
 
 |void| **add_root_node**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_EditorScript_method_add_root_node>`
 
-**Deprecated:** Use :ref:`EditorInterface.add_root_node()<class_EditorInterface_method_add_root_node>` instead.
+**Không được dùng nữa:** Hãy sử dụng :ref:`EditorInterface.add_root_node()<class_EditorInterface_method_add_root_node>` thay thế.
 
-Makes ``node`` root of the currently opened scene. Only works if the scene is empty. If the ``node`` is a scene instance, an inheriting scene will be created.
+Đặt ``node`` làm root của scene hiện đang mở. Chỉ hoạt động khi scene trống. Nếu ``node`` là một scene instance, một scene kế thừa sẽ được tạo.
 
 .. rst-class:: classref-item-separator
 
@@ -114,9 +114,9 @@ Makes ``node`` root of the currently opened scene. Only works if the scene is em
 
 :ref:`EditorInterface<class_EditorInterface>` **get_editor_interface**\ (\ ) |const| :ref:`🔗<class_EditorScript_method_get_editor_interface>`
 
-**Deprecated:** :ref:`EditorInterface<class_EditorInterface>` is a global singleton and can be accessed directly by its name.
+**Không dùng nữa:** :ref:`EditorInterface<class_EditorInterface>` là singleton toàn cục và có thể được truy cập trực tiếp bằng tên của nó.
 
-Returns the :ref:`EditorInterface<class_EditorInterface>` singleton instance.
+Trả về instance singleton :ref:`EditorInterface<class_EditorInterface>`.
 
 .. rst-class:: classref-item-separator
 
@@ -128,16 +128,16 @@ Returns the :ref:`EditorInterface<class_EditorInterface>` singleton instance.
 
 :ref:`Node<class_Node>` **get_scene**\ (\ ) |const| :ref:`🔗<class_EditorScript_method_get_scene>`
 
-**Deprecated:** Use :ref:`EditorInterface.get_edited_scene_root()<class_EditorInterface_method_get_edited_scene_root>` instead.
+**Không dùng nữa:** Hãy sử dụng :ref:`EditorInterface.get_edited_scene_root()<class_EditorInterface_method_get_edited_scene_root>` thay thế.
 
-Returns the edited (current) scene's root :ref:`Node<class_Node>`. Equivalent of :ref:`EditorInterface.get_edited_scene_root()<class_EditorInterface_method_get_edited_scene_root>`.
+Trả về :ref:`Node<class_Node>` gốc của scene đang chỉnh sửa (hiện tại). Tương đương với :ref:`EditorInterface.get_edited_scene_root()<class_EditorInterface_method_get_edited_scene_root>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

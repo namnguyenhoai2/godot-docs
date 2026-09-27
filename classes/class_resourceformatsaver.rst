@@ -10,23 +10,23 @@
 ResourceFormatSaver
 ===================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Saves a specific resource type to a file.
+Lưu một loại resource cụ thể vào tệp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The engine can save resources when you do it from the editor, or when you use the :ref:`ResourceSaver<class_ResourceSaver>` singleton. This is accomplished thanks to multiple **ResourceFormatSaver**\ s, each handling its own format and called automatically by the engine.
+Engine có thể lưu resource khi bạn thực hiện thao tác này từ editor hoặc khi sử dụng singleton :ref:`ResourceSaver<class_ResourceSaver>`. Điều này được thực hiện nhờ nhiều **ResourceFormatSaver**\ , mỗi saver xử lý định dạng riêng và được engine tự động gọi.
 
-By default, Godot saves resources as ``.tres`` (text-based), ``.res`` (binary) or another built-in format, but you can choose to create your own format by extending this class. Be sure to respect the documented return types and values. You should give it a global class name with ``class_name`` for it to be registered. Like built-in ResourceFormatSavers, it will be called automatically when saving resources of its recognized type(s). You may also implement a :ref:`ResourceFormatLoader<class_ResourceFormatLoader>`.
+Theo mặc định, Godot lưu resource dưới dạng ``.tres`` (dựa trên văn bản), ``.res`` (nhị phân) hoặc một định dạng tích hợp khác, nhưng bạn có thể chọn tạo định dạng riêng bằng cách mở rộng class này. Hãy đảm bảo tuân thủ các kiểu và giá trị trả về được ghi trong tài liệu. Bạn nên đặt tên global class bằng ``class_name`` để class được đăng ký. Giống như các ResourceFormatSaver tích hợp, class này sẽ được tự động gọi khi lưu các resource thuộc loại mà nó nhận diện. Bạn cũng có thể triển khai một :ref:`ResourceFormatLoader<class_ResourceFormatLoader>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -38,9 +38,9 @@ Methods
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`_recognize_path<class_ResourceFormatSaver_private_method__recognize_path>`\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>`\ ) |virtual| |const|    |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`_save<class_ResourceFormatSaver_private_method__save>`\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>`, flags\: :ref:`int<class_int>`\ ) |virtual| |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`_save<class_ResourceFormatSaver_private_method__save>`\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>`, flags\: :ref:`int<class_int>`\ ) |virtual| |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`             | :ref:`_set_uid<class_ResourceFormatSaver_private_method__set_uid>`\ (\ path\: :ref:`String<class_String>`, uid\: :ref:`int<class_int>`\ ) |virtual|                                         |
+   | :ref:`Error <enum_@GlobalScope_Error>`            | :ref:`_set_uid<class_ResourceFormatSaver_private_method__set_uid>`\ (\ path\: :ref:`String<class_String>`, uid\: :ref:`int<class_int>`\ ) |virtual|                                         |
    +---------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -49,8 +49,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_ResourceFormatSaver_private_method__get_recognized_extensions:
 
@@ -58,7 +58,7 @@ Method Descriptions
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_recognized_extensions**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatSaver_private_method__get_recognized_extensions>`
 
-Returns the list of extensions available for saving the resource object, provided it is recognized (see :ref:`_recognize()<class_ResourceFormatSaver_private_method__recognize>`).
+Trả về danh sách các phần mở rộng có thể dùng để lưu đối tượng resource, với điều kiện đối tượng đó được nhận diện (xem :ref:`_recognize()<class_ResourceFormatSaver_private_method__recognize>`).
 
 .. rst-class:: classref-item-separator
 
@@ -70,7 +70,7 @@ Returns the list of extensions available for saving the resource object, provide
 
 :ref:`bool<class_bool>` **_recognize**\ (\ resource\: :ref:`Resource<class_Resource>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatSaver_private_method__recognize>`
 
-Returns whether the given resource object can be saved by this saver.
+Trả về liệu đối tượng resource đã cho có thể được saver này lưu hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -82,9 +82,9 @@ Returns whether the given resource object can be saved by this saver.
 
 :ref:`bool<class_bool>` **_recognize_path**\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_ResourceFormatSaver_private_method__recognize_path>`
 
-Returns ``true`` if this saver handles a given save path and ``false`` otherwise.
+Trả về ``true`` nếu saver này xử lý đường dẫn lưu đã cho và ``false`` trong trường hợp ngược lại.
 
-If this method is not implemented, the default behavior returns whether the path's extension is within the ones provided by :ref:`_get_recognized_extensions()<class_ResourceFormatSaver_private_method__get_recognized_extensions>`.
+Nếu phương thức này chưa được triển khai, hành vi mặc định sẽ trả về liệu phần mở rộng của đường dẫn có nằm trong các phần mở rộng được cung cấp bởi :ref:`_get_recognized_extensions()<class_ResourceFormatSaver_private_method__get_recognized_extensions>` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -96,9 +96,9 @@ If this method is not implemented, the default behavior returns whether the path
 
 :ref:`Error<enum_@GlobalScope_Error>` **_save**\ (\ resource\: :ref:`Resource<class_Resource>`, path\: :ref:`String<class_String>`, flags\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_ResourceFormatSaver_private_method__save>`
 
-Saves the given resource object to a file at the target ``path``. ``flags`` is a bitmask composed with :ref:`SaverFlags<enum_ResourceSaver_SaverFlags>` constants.
+Lưu đối tượng resource đã cho vào tệp tại ``path`` đích. ``flags`` là một bitmask được tạo từ các hằng số :ref:`SaverFlags <enum_ResourceSaver_SaverFlags>`.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or an :ref:`Error<enum_@GlobalScope_Error>` constant in case of failure.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công hoặc một hằng số :ref:`Error <enum_@GlobalScope_Error>` nếu xảy ra lỗi.
 
 .. rst-class:: classref-item-separator
 
@@ -110,14 +110,14 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or an
 
 :ref:`Error<enum_@GlobalScope_Error>` **_set_uid**\ (\ path\: :ref:`String<class_String>`, uid\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_ResourceFormatSaver_private_method__set_uid>`
 
-Sets a new UID for the resource at the given ``path``. Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success, or an :ref:`Error<enum_@GlobalScope_Error>` constant in case of failure.
+Đặt UID mới cho resource tại ``path`` đã cho. Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` khi thành công hoặc một hằng số :ref:`Error <enum_@GlobalScope_Error>` nếu xảy ra lỗi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng class cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

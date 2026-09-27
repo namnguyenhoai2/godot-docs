@@ -10,66 +10,66 @@
 CSGShape3D
 ==========
 
-**Inherits:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CSGCombiner3D<class_CSGCombiner3D>`, :ref:`CSGPrimitive3D<class_CSGPrimitive3D>`
+**Được kế thừa bởi:** :ref:`CSGCombiner3D<class_CSGCombiner3D>`, :ref:`CSGPrimitive3D<class_CSGPrimitive3D>`
 
-The CSG base class.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This is the CSG base class that provides CSG operation support to the various CSG nodes in Godot.
-
-\ **Performance:** CSG nodes are only intended for prototyping as they have a significant CPU performance cost. Consider baking final CSG operation results into static geometry that replaces the CSG nodes.
-
-Individual CSG root node results can be baked to nodes with static resources with the editor menu that appears when a CSG root node is selected.
-
-Individual CSG root nodes can also be baked to static resources with scripts by calling :ref:`bake_static_mesh()<class_CSGShape3D_method_bake_static_mesh>` for the visual mesh or :ref:`bake_collision_shape()<class_CSGShape3D_method_bake_collision_shape>` for the physics collision.
-
-Entire scenes of CSG nodes can be baked to static geometry and exported with the editor glTF scene exporter: **Scene > Export As... > glTF 2.0 Scene...**
+Lớp cơ sở CSG.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đây là lớp cơ sở CSG, cung cấp khả năng hỗ trợ các thao tác CSG cho nhiều node CSG khác nhau trong Godot.
+
+\ **Hiệu năng:** Các node CSG chỉ được dùng cho mục đích tạo nguyên mẫu vì chúng gây tốn CPU đáng kể. Hãy cân nhắc chuyển kết quả cuối cùng của các thao tác CSG thành geometry tĩnh để thay thế các node CSG.
+
+Có thể chuyển kết quả của từng node gốc CSG thành các node có resource tĩnh bằng menu của editor xuất hiện khi chọn một node gốc CSG.
+
+Các node gốc CSG riêng lẻ cũng có thể được bake thành tài nguyên tĩnh bằng script bằng cách gọi :ref:`bake_static_mesh()<class_CSGShape3D_method_bake_static_mesh>` cho lưới trực quan hoặc :ref:`bake_collision_shape()<class_CSGShape3D_method_bake_collision_shape>` cho phần va chạm vật lý.
+
+Toàn bộ scene gồm các node CSG có thể được bake thành hình học tĩnh và xuất bằng trình xuất scene glTF của editor: **Scene > Export As... > glTF 2.0 Scene...**
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Prototyping levels with CSG <../tutorials/3d/csg_tools>`
+- :doc:`Tạo nguyên mẫu các level bằng CSG <../tutorials/3d/csg_tools>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                     | :ref:`autosmooth<class_CSGShape3D_property_autosmooth>`                 | ``false`` |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                     | :ref:`calculate_tangents<class_CSGShape3D_property_calculate_tangents>` | ``true``  |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                       | :ref:`collision_layer<class_CSGShape3D_property_collision_layer>`       | ``1``     |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                       | :ref:`collision_mask<class_CSGShape3D_property_collision_mask>`         | ``1``     |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                   | :ref:`collision_priority<class_CSGShape3D_property_collision_priority>` | ``1.0``   |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`Operation<enum_CSGShape3D_Operation>` | :ref:`operation<class_CSGShape3D_property_operation>`                   | ``0``     |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                   | :ref:`smoothing_angle<class_CSGShape3D_property_smoothing_angle>`       | ``50.0``  |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                   | :ref:`snap<class_CSGShape3D_property_snap>`                             |           |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                     | :ref:`use_collision<class_CSGShape3D_property_use_collision>`           | ``false`` |
-   +---------------------------------------------+-------------------------------------------------------------------------+-----------+
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                      | :ref:`autosmooth<class_CSGShape3D_property_autosmooth>`                 | ``false`` |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                      | :ref:`calculate_tangents<class_CSGShape3D_property_calculate_tangents>` | ``true``  |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                        | :ref:`collision_layer<class_CSGShape3D_property_collision_layer>`       | ``1``     |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                        | :ref:`collision_mask<class_CSGShape3D_property_collision_mask>`         | ``1``     |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                    | :ref:`collision_priority<class_CSGShape3D_property_collision_priority>` | ``1.0``   |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`Operation <enum_CSGShape3D_Operation>` | :ref:`operation<class_CSGShape3D_property_operation>`                   | ``0``     |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                    | :ref:`smoothing_angle<class_CSGShape3D_property_smoothing_angle>`       | ``50.0``  |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                    | :ref:`snap<class_CSGShape3D_property_snap>`                             |           |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                      | :ref:`use_collision<class_CSGShape3D_property_use_collision>`           | ``false`` |
+   +----------------------------------------------+-------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -98,14 +98,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CSGShape3D_Operation:
 
 .. rst-class:: classref-enumeration
 
-enum **Operation**: :ref:`🔗<enum_CSGShape3D_Operation>`
+enum **Operation**: :ref:`🔗 <enum_CSGShape3D_Operation>`
 
 .. _class_CSGShape3D_constant_OPERATION_UNION:
 
@@ -113,7 +113,7 @@ enum **Operation**: :ref:`🔗<enum_CSGShape3D_Operation>`
 
 :ref:`Operation<enum_CSGShape3D_Operation>` **OPERATION_UNION** = ``0``
 
-Geometry of both primitives is merged, intersecting geometry is removed.
+Hình học của cả hai primitive được hợp nhất, phần hình học giao nhau bị loại bỏ.
 
 .. _class_CSGShape3D_constant_OPERATION_INTERSECTION:
 
@@ -121,7 +121,7 @@ Geometry of both primitives is merged, intersecting geometry is removed.
 
 :ref:`Operation<enum_CSGShape3D_Operation>` **OPERATION_INTERSECTION** = ``1``
 
-Only intersecting geometry remains, the rest is removed.
+Chỉ còn lại phần hình học giao nhau, phần còn lại bị xóa.
 
 .. _class_CSGShape3D_constant_OPERATION_SUBTRACTION:
 
@@ -129,7 +129,7 @@ Only intersecting geometry remains, the rest is removed.
 
 :ref:`Operation<enum_CSGShape3D_Operation>` **OPERATION_SUBTRACTION** = ``2``
 
-The second shape is subtracted from the first, leaving a dent with its shape.
+Hình dạng thứ hai được trừ khỏi hình dạng thứ nhất, để lại một vết lõm theo hình dạng của nó.
 
 .. rst-class:: classref-section-separator
 
@@ -137,8 +137,8 @@ The second shape is subtracted from the first, leaving a dent with its shape.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CSGShape3D_property_autosmooth:
 
@@ -151,9 +151,9 @@ Property Descriptions
 - |void| **set_autosmooth**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_autosmooth**\ (\ )
 
-Enables automatic smoothing. This overrides any smoothing on the CSG node and instead uses :ref:`smoothing_angle<class_CSGShape3D_property_smoothing_angle>` to calculate normals based on the angle between faces.
+Bật tính năng làm mượt tự động. Tùy chọn này ghi đè mọi thiết lập làm mượt trên node CSG và thay vào đó sử dụng :ref:`smoothing_angle<class_CSGShape3D_property_smoothing_angle>` để tính các vector pháp tuyến dựa trên góc giữa các mặt.
 
-Children of a :ref:`CSGCombiner3D<class_CSGCombiner3D>` node will be treated as a single mesh.
+Các node con của node :ref:`CSGCombiner3D<class_CSGCombiner3D>` sẽ được xem như một mesh duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Children of a :ref:`CSGCombiner3D<class_CSGCombiner3D>` node will be treated as 
 - |void| **set_calculate_tangents**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_calculating_tangents**\ (\ )
 
-Calculate tangents for the CSG shape which allows the use of normal and height maps. This is only applied on the root shape, this setting is ignored on any child. Setting this to ``false`` can speed up shape generation slightly.
+Tính các tangent cho hình dạng CSG, cho phép sử dụng các bản đồ normal và height. Tùy chọn này chỉ được áp dụng cho hình dạng gốc; mọi node con sẽ bỏ qua thiết lập này. Đặt tùy chọn này thành ``false`` có thể tăng tốc một chút quá trình tạo hình dạng.
 
 .. rst-class:: classref-item-separator
 
@@ -187,11 +187,11 @@ Calculate tangents for the CSG shape which allows the use of normal and height m
 - |void| **set_collision_layer**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_layer**\ (\ )
 
-The physics layers this area is in.
+Các lớp vật lý mà vùng này thuộc về.
 
-Collidable objects can exist in any of 32 different layers. These layers work like a tagging system, and are not visual. A collidable can use these layers to select with which objects it can collide, using the collision_mask property.
+Các đối tượng có thể va chạm có thể tồn tại trong bất kỳ lớp nào trong số 32 lớp khác nhau. Các lớp này hoạt động như một hệ thống gắn thẻ và không mang tính trực quan. Đối tượng có thể va chạm có thể sử dụng các lớp này để chọn những đối tượng mà nó có thể va chạm, bằng cách sử dụng thuộc tính collision_mask.
 
-A contact is detected if object A is in any of the layers that object B scans, or object B is in any layer scanned by object A. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+Một tiếp xúc được phát hiện nếu đối tượng A nằm trong bất kỳ lớp nào mà đối tượng B quét, hoặc đối tượng B nằm trong bất kỳ lớp nào mà đối tượng A quét. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ A contact is detected if object A is in any of the layers that object B scans, o
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The physics layers this CSG shape scans for collisions. Only effective if :ref:`use_collision<class_CSGShape3D_property_use_collision>` is ``true``. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+Các lớp vật lý mà hình CSG này quét để phát hiện va chạm. Chỉ có hiệu lực nếu :ref:`use_collision<class_CSGShape3D_property_use_collision>` là ``true``. Xem `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ The physics layers this CSG shape scans for collisions. Only effective if :ref:`
 - |void| **set_collision_priority**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_collision_priority**\ (\ )
 
-The priority used to solve colliding when occurring penetration. Only effective if :ref:`use_collision<class_CSGShape3D_property_use_collision>` is ``true``. The higher the priority is, the lower the penetration into the object will be. This can for example be used to prevent the player from breaking through the boundaries of a level.
+Độ ưu tiên được sử dụng để xử lý va chạm khi xảy ra xuyên thấu. Chỉ có hiệu lực nếu :ref:`use_collision<class_CSGShape3D_property_use_collision>` là ``true``. Độ ưu tiên càng cao thì mức độ xuyên vào đối tượng càng thấp. Ví dụ, tùy chọn này có thể được sử dụng để ngăn người chơi xuyên qua ranh giới của một màn chơi.
 
 .. rst-class:: classref-item-separator
 
@@ -242,7 +242,7 @@ The priority used to solve colliding when occurring penetration. Only effective 
 - |void| **set_operation**\ (\ value\: :ref:`Operation<enum_CSGShape3D_Operation>`\ )
 - :ref:`Operation<enum_CSGShape3D_Operation>` **get_operation**\ (\ )
 
-The operation that is performed on this shape. This is ignored for the first CSG child node as the operation is between this node and the previous child of this nodes parent.
+Phép toán được thực hiện trên hình này. Phép toán này bị bỏ qua đối với node CSG con đầu tiên, vì phép toán được thực hiện giữa node này và node con trước đó của node cha của node này.
 
 .. rst-class:: classref-item-separator
 
@@ -259,9 +259,9 @@ The operation that is performed on this shape. This is ignored for the first CSG
 - |void| **set_smoothing_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_smoothing_angle**\ (\ )
 
-When autosmooth is enabled, faces with an angle between them greater than this will be smoothed, while faces with a smaller angle will remain sharp.
+Khi autosmooth được bật, các mặt có góc giữa chúng lớn hơn giá trị này sẽ được làm mượt, còn các mặt có góc nhỏ hơn sẽ vẫn sắc nét.
 
-Note: An angle lower than 0.1 will cause all smoothing to be disabled, this can be used to increase performance.
+Lưu ý: Góc nhỏ hơn 0.1 sẽ khiến mọi thao tác làm mượt bị tắt; tùy chọn này có thể được sử dụng để tăng hiệu suất.
 
 .. rst-class:: classref-item-separator
 
@@ -271,16 +271,16 @@ Note: An angle lower than 0.1 will cause all smoothing to be disabled, this can 
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **snap** :ref:`🔗<class_CSGShape3D_property_snap>`
+:ref:`float<class_float>` **snap** :ref:`🔗 <class_CSGShape3D_property_snap>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_snap**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_snap**\ (\ )
 
-**Deprecated:** The CSG library no longer uses snapping.
+**Đã lỗi thời:** Thư viện CSG không còn sử dụng snapping.
 
-This property does nothing.
+Thuộc tính này không có tác dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ This property does nothing.
 - |void| **set_use_collision**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_collision**\ (\ )
 
-Adds a collision shape to the physics engine for our CSG shape. This will always act like a static body. Note that the collision shape is still active even if the CSG shape itself is hidden. See also :ref:`collision_mask<class_CSGShape3D_property_collision_mask>` and :ref:`collision_priority<class_CSGShape3D_property_collision_priority>`.
+Thêm một hình dạng va chạm vào physics engine cho hình dạng CSG của chúng ta. Hình dạng này sẽ luôn hoạt động như một static body. Lưu ý rằng hình dạng va chạm vẫn hoạt động ngay cả khi bản thân hình dạng CSG bị ẩn. Xem thêm :ref:`collision_mask<class_CSGShape3D_property_collision_mask>` và :ref:`collision_priority<class_CSGShape3D_property_collision_priority>`.
 
 .. rst-class:: classref-section-separator
 
@@ -305,8 +305,8 @@ Adds a collision shape to the physics engine for our CSG shape. This will always
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CSGShape3D_method_bake_collision_shape:
 
@@ -314,11 +314,11 @@ Method Descriptions
 
 :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` **bake_collision_shape**\ (\ ) :ref:`🔗<class_CSGShape3D_method_bake_collision_shape>`
 
-Returns a baked physics :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` of this node's CSG operation result. Returns an empty shape if the node is not a CSG root node or has no valid geometry.
+Trả về một :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` vật lý đã được bake từ kết quả phép toán CSG của node này. Trả về một hình dạng rỗng nếu node không phải là node gốc CSG hoặc không có hình học hợp lệ.
 
-\ **Performance:** If the CSG operation results in a very detailed geometry with many faces physics performance will be very slow. Concave shapes should in general only be used for static level geometry and not with dynamic objects that are moving.
+\ **Hiệu năng:** Nếu phép toán CSG tạo ra hình học rất chi tiết với nhiều mặt, hiệu năng physics sẽ rất chậm. Nhìn chung, chỉ nên sử dụng các hình dạng lõm cho hình học tĩnh của level, không nên sử dụng với các đối tượng động đang di chuyển.
 
-\ **Note:** CSG mesh data updates are deferred, which means they are updated with a delay of one rendered frame. To avoid getting an empty shape or outdated mesh data, make sure to call ``await get_tree().process_frame`` before using :ref:`bake_collision_shape()<class_CSGShape3D_method_bake_collision_shape>` in :ref:`Node._ready()<class_Node_private_method__ready>` or after changing properties on the **CSGShape3D**.
+\ **Lưu ý:** Việc cập nhật dữ liệu mesh CSG được trì hoãn, nghĩa là dữ liệu được cập nhật trễ một khung hình đã kết xuất. Để tránh nhận được shape trống hoặc dữ liệu mesh đã lỗi thời, hãy đảm bảo gọi ``await get_tree().process_frame`` trước khi sử dụng :ref:`bake_collision_shape()<class_CSGShape3D_method_bake_collision_shape>` trong :ref:`Node._ready()<class_Node_private_method__ready>` hoặc sau khi thay đổi các thuộc tính trên **CSGShape3D**.
 
 .. rst-class:: classref-item-separator
 
@@ -330,9 +330,9 @@ Returns a baked physics :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>
 
 :ref:`ArrayMesh<class_ArrayMesh>` **bake_static_mesh**\ (\ ) :ref:`🔗<class_CSGShape3D_method_bake_static_mesh>`
 
-Returns a baked static :ref:`ArrayMesh<class_ArrayMesh>` of this node's CSG operation result. Materials from involved CSG nodes are added as extra mesh surfaces. Returns an empty mesh if the node is not a CSG root node or has no valid geometry.
+Trả về một :ref:`ArrayMesh<class_ArrayMesh>` tĩnh đã được bake của kết quả thao tác CSG của node này. Materials từ các node CSG liên quan được thêm dưới dạng các mesh surface bổ sung. Trả về một mesh trống nếu node không phải là node gốc CSG hoặc không có hình học hợp lệ.
 
-\ **Note:** CSG mesh data updates are deferred, which means they are updated with a delay of one rendered frame. To avoid getting an empty mesh or outdated mesh data, make sure to call ``await get_tree().process_frame`` before using :ref:`bake_static_mesh()<class_CSGShape3D_method_bake_static_mesh>` in :ref:`Node._ready()<class_Node_private_method__ready>` or after changing properties on the **CSGShape3D**.
+\ **Lưu ý:** Việc cập nhật dữ liệu mesh CSG được trì hoãn, nghĩa là dữ liệu được cập nhật trễ một khung hình đã kết xuất. Để tránh nhận được mesh trống hoặc dữ liệu mesh đã lỗi thời, hãy đảm bảo gọi ``await get_tree().process_frame`` trước khi sử dụng :ref:`bake_static_mesh()<class_CSGShape3D_method_bake_static_mesh>` trong :ref:`Node._ready()<class_Node_private_method__ready>` hoặc sau khi thay đổi các thuộc tính trên **CSGShape3D**.
 
 .. rst-class:: classref-item-separator
 
@@ -344,7 +344,7 @@ Returns a baked static :ref:`ArrayMesh<class_ArrayMesh>` of this node's CSG oper
 
 :ref:`bool<class_bool>` **get_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CSGShape3D_method_get_collision_layer_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_layer<class_CSGShape3D_property_collision_layer>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc layer được chỉ định của :ref:`collision_layer<class_CSGShape3D_property_collision_layer>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -356,7 +356,7 @@ Returns whether or not the specified layer of the :ref:`collision_layer<class_CS
 
 :ref:`bool<class_bool>` **get_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_CSGShape3D_method_get_collision_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`collision_mask<class_CSGShape3D_property_collision_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về việc layer được chỉ định của :ref:`collision_mask<class_CSGShape3D_property_collision_mask>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -368,9 +368,9 @@ Returns whether or not the specified layer of the :ref:`collision_mask<class_CSG
 
 :ref:`Array<class_Array>` **get_meshes**\ (\ ) |const| :ref:`🔗<class_CSGShape3D_method_get_meshes>`
 
-Returns an :ref:`Array<class_Array>` with two elements, the first is the :ref:`Transform3D<class_Transform3D>` of this node and the second is the root :ref:`Mesh<class_Mesh>` of this node. Only works when this node is the root shape.
+Trả về một :ref:`Array<class_Array>` gồm hai phần tử; phần tử đầu tiên là :ref:`Transform3D<class_Transform3D>` của node này và phần tử thứ hai là :ref:`Mesh<class_Mesh>` gốc của node này. Chỉ hoạt động khi node này là shape gốc.
 
-\ **Note:** CSG mesh data updates are deferred, which means they are updated with a delay of one rendered frame. To avoid getting an empty shape or outdated mesh data, make sure to call ``await get_tree().process_frame`` before using :ref:`get_meshes()<class_CSGShape3D_method_get_meshes>` in :ref:`Node._ready()<class_Node_private_method__ready>` or after changing properties on the **CSGShape3D**.
+\ **Lưu ý:** Việc cập nhật dữ liệu mesh CSG được trì hoãn, nghĩa là dữ liệu được cập nhật trễ một khung hình đã kết xuất. Để tránh nhận được shape trống hoặc dữ liệu mesh đã lỗi thời, hãy đảm bảo gọi ``await get_tree().process_frame`` trước khi sử dụng :ref:`get_meshes()<class_CSGShape3D_method_get_meshes>` trong :ref:`Node._ready()<class_Node_private_method__ready>` hoặc sau khi thay đổi các thuộc tính trên **CSGShape3D**.
 
 .. rst-class:: classref-item-separator
 
@@ -382,7 +382,7 @@ Returns an :ref:`Array<class_Array>` with two elements, the first is the :ref:`T
 
 :ref:`bool<class_bool>` **is_root_shape**\ (\ ) |const| :ref:`🔗<class_CSGShape3D_method_is_root_shape>`
 
-Returns ``true`` if this is a root shape and is thus the object that is rendered.
+Trả về ``true`` nếu đây là shape gốc và do đó là đối tượng được render.
 
 .. rst-class:: classref-item-separator
 
@@ -394,7 +394,7 @@ Returns ``true`` if this is a root shape and is thus the object that is rendered
 
 |void| **set_collision_layer_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CSGShape3D_method_set_collision_layer_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_layer<class_CSGShape3D_property_collision_layer>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_layer<class_CSGShape3D_property_collision_layer>`, với một ``layer_number`` từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -406,14 +406,14 @@ Based on ``value``, enables or disables the specified layer in the :ref:`collisi
 
 |void| **set_collision_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_CSGShape3D_method_set_collision_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`collision_mask<class_CSGShape3D_property_collision_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`collision_mask<class_CSGShape3D_property_collision_mask>`, với một ``layer_number`` từ 1 đến 32.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,84 +10,84 @@
 EditorExportPlatform
 ====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorExportPlatformAndroid<class_EditorExportPlatformAndroid>`, :ref:`EditorExportPlatformAppleEmbedded<class_EditorExportPlatformAppleEmbedded>`, :ref:`EditorExportPlatformExtension<class_EditorExportPlatformExtension>`, :ref:`EditorExportPlatformMacOS<class_EditorExportPlatformMacOS>`, :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>`, :ref:`EditorExportPlatformWeb<class_EditorExportPlatformWeb>`
+**Được kế thừa bởi:** :ref:`EditorExportPlatformAndroid<class_EditorExportPlatformAndroid>`, :ref:`EditorExportPlatformAppleEmbedded<class_EditorExportPlatformAppleEmbedded>`, :ref:`EditorExportPlatformExtension<class_EditorExportPlatformExtension>`, :ref:`EditorExportPlatformMacOS<class_EditorExportPlatformMacOS>`, :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>`, :ref:`EditorExportPlatformWeb<class_EditorExportPlatformWeb>`
 
-Identifies a supported export platform, and internally provides the functionality of exporting to that platform.
+Xác định một nền tảng xuất được hỗ trợ và cung cấp nội bộ chức năng xuất sang nền tảng đó.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base resource that provides the functionality of exporting a release build of a project to a platform, from the editor. Stores platform-specific metadata such as the name and supported features of the platform, and performs the exporting of projects, PCK files, and ZIP files. Uses an export template for the platform provided at the time of project exporting.
+Tài nguyên cơ sở cung cấp chức năng xuất bản build phát hành của một project sang một nền tảng từ editor. Lưu trữ siêu dữ liệu dành riêng cho nền tảng, chẳng hạn như tên và các tính năng được nền tảng hỗ trợ, đồng thời thực hiện việc xuất project, tệp PCK và tệp ZIP. Sử dụng một export template dành cho nền tảng được cung cấp tại thời điểm xuất project.
 
-Used in scripting by :ref:`EditorExportPlugin<class_EditorExportPlugin>` to configure platform-specific customization of scenes and resources. See :ref:`EditorExportPlugin._begin_customize_scenes()<class_EditorExportPlugin_private_method__begin_customize_scenes>` and :ref:`EditorExportPlugin._begin_customize_resources()<class_EditorExportPlugin_private_method__begin_customize_resources>` for more details.
+Được sử dụng trong scripting bởi :ref:`EditorExportPlugin<class_EditorExportPlugin>` để cấu hình các tùy chỉnh dành riêng cho nền tảng của scene và resource. Xem :ref:`EditorExportPlugin._begin_customize_scenes()<class_EditorExportPlugin_private_method__begin_customize_scenes>` và :ref:`EditorExportPlugin._begin_customize_resources()<class_EditorExportPlugin_private_method__begin_customize_resources>` để biết thêm chi tiết.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`add_message<class_EditorExportPlatform_method_add_message>`\ (\ type\: :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>`, category\: :ref:`String<class_String>`, message\: :ref:`String<class_String>`\ )                                                                                                                                                         |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`clear_messages<class_EditorExportPlatform_method_clear_messages>`\ (\ )                                                                                                                                                                                                                                                                                                                |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`EditorExportPreset<class_EditorExportPreset>`                   | :ref:`create_preset<class_EditorExportPlatform_method_create_preset>`\ (\ )                                                                                                                                                                                                                                                                                                                  |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`export_pack<class_EditorExportPlatform_method_export_pack>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ )                                                                                                |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`export_pack_patch<class_EditorExportPlatform_method_export_pack_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, patches\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ ) |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`export_project<class_EditorExportPlatform_method_export_project>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0, notify\: :ref:`bool<class_bool>` = true\ )                                                 |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`export_project_files<class_EditorExportPlatform_method_export_project_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, save_cb\: :ref:`Callable<class_Callable>`, shared_cb\: :ref:`Callable<class_Callable>` = Callable()\ )                                                                                                |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`export_zip<class_EditorExportPlatform_method_export_zip>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ )                                                                                                  |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`export_zip_patch<class_EditorExportPlatform_method_export_zip_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, patches\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ )   |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`find_export_template<class_EditorExportPlatform_method_find_export_template>`\ (\ template_file_name\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                          |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`                     | :ref:`gen_export_flags<class_EditorExportPlatform_method_gen_export_flags>`\ (\ flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\]\ )                                                                                                                                                                                                                             |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                                             | :ref:`get_current_presets<class_EditorExportPlatform_method_get_current_presets>`\ (\ ) |const|                                                                                                                                                                                                                                                                                              |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`                     | :ref:`get_forced_export_files<class_EditorExportPlatform_method_get_forced_export_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>` = null\ ) |static|                                                                                                                                                                                                                |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`get_internal_export_files<class_EditorExportPlatform_method_get_internal_export_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                           |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                           | :ref:`get_message_category<class_EditorExportPlatform_method_get_message_category>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                             |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                                 | :ref:`get_message_count<class_EditorExportPlatform_method_get_message_count>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                  |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                           | :ref:`get_message_text<class_EditorExportPlatform_method_get_message_text>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                                     |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` | :ref:`get_message_type<class_EditorExportPlatform_method_get_message_type>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                                     |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                           | :ref:`get_os_name<class_EditorExportPlatform_method_get_os_name>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                              |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` | :ref:`get_worst_message_type<class_EditorExportPlatform_method_get_worst_message_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                        |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`save_pack<class_EditorExportPlatform_method_save_pack>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, embed\: :ref:`bool<class_bool>` = false\ )                                                                                                                                              |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`save_pack_patch<class_EditorExportPlatform_method_save_pack_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ )                                                                                                                                                                           |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`save_zip<class_EditorExportPlatform_method_save_zip>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ )                                                                                                                                                                                         |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                                   | :ref:`save_zip_patch<class_EditorExportPlatform_method_save_zip_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ )                                                                                                                                                                             |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`ssh_push_to_remote<class_EditorExportPlatform_method_ssh_push_to_remote>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, scp_args\: :ref:`PackedStringArray<class_PackedStringArray>`, src_file\: :ref:`String<class_String>`, dst_file\: :ref:`String<class_String>`\ ) |const|                                                                          |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                 | :ref:`ssh_run_on_remote<class_EditorExportPlatform_method_ssh_run_on_remote>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, ssh_arg\: :ref:`PackedStringArray<class_PackedStringArray>`, cmd_args\: :ref:`String<class_String>`, output\: :ref:`Array<class_Array>` = [], port_fwd\: :ref:`int<class_int>` = -1\ ) |const|                                     |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                                 | :ref:`ssh_run_on_remote_no_wait<class_EditorExportPlatform_method_ssh_run_on_remote_no_wait>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, ssh_args\: :ref:`PackedStringArray<class_PackedStringArray>`, cmd_args\: :ref:`String<class_String>`, port_fwd\: :ref:`int<class_int>` = -1\ ) |const|                                                             |
-   +-----------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`add_message<class_EditorExportPlatform_method_add_message>`\ (\ type\: :ref:`ExportMessageType <enum_EditorExportPlatform_ExportMessageType>`, category\: :ref:`String<class_String>`, message\: :ref:`String<class_String>`\ )                                                                                                                                                         |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`clear_messages<class_EditorExportPlatform_method_clear_messages>`\ (\ )                                                                                                                                                                                                                                                                                                                 |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`EditorExportPreset<class_EditorExportPreset>`                    | :ref:`create_preset<class_EditorExportPlatform_method_create_preset>`\ (\ )                                                                                                                                                                                                                                                                                                                   |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`                                 | :ref:`export_pack<class_EditorExportPlatform_method_export_pack>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags <enum_EditorExportPlatform_DebugFlags>`\] = 0\ )                                                                                                |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`                                 | :ref:`export_pack_patch<class_EditorExportPlatform_method_export_pack_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, patches\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), flags\: |bitfield|\[:ref:`DebugFlags <enum_EditorExportPlatform_DebugFlags>`\] = 0\ ) |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`                                 | :ref:`export_project<class_EditorExportPlatform_method_export_project>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags <enum_EditorExportPlatform_DebugFlags>`\] = 0, notify\: :ref:`bool<class_bool>` = true\ )                                                 |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                                   | :ref:`export_project_files<class_EditorExportPlatform_method_export_project_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, save_cb\: :ref:`Callable<class_Callable>`, shared_cb\: :ref:`Callable<class_Callable>` = Callable()\ )                                                                                                 |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                                   | :ref:`export_zip<class_EditorExportPlatform_method_export_zip>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags <enum_EditorExportPlatform_DebugFlags>`\] = 0\ )                                                                                                  |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                                   | :ref:`export_zip_patch<class_EditorExportPlatform_method_export_zip_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, patches\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), flags\: |bitfield|\[:ref:`DebugFlags <enum_EditorExportPlatform_DebugFlags>`\] = 0\ )   |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                    | :ref:`find_export_template<class_EditorExportPlatform_method_find_export_template>`\ (\ template_file_name\: :ref:`String<class_String>`\ ) |const|                                                                                                                                                                                                                                           |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`                      | :ref:`gen_export_flags<class_EditorExportPlatform_method_gen_export_flags>`\ (\ flags\: |bitfield|\[:ref:`DebugFlags <enum_EditorExportPlatform_DebugFlags>`\]\ )                                                                                                                                                                                                                             |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                              | :ref:`get_current_presets<class_EditorExportPlatform_method_get_current_presets>`\ (\ ) |const|                                                                                                                                                                                                                                                                                               |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`                      | :ref:`get_forced_export_files<class_EditorExportPlatform_method_get_forced_export_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>` = null\ ) |static|                                                                                                                                                                                                                 |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                    | :ref:`get_internal_export_files<class_EditorExportPlatform_method_get_internal_export_files>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                            |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                            | :ref:`get_message_category<class_EditorExportPlatform_method_get_message_category>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                              |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                  | :ref:`get_message_count<class_EditorExportPlatform_method_get_message_count>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                   |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                            | :ref:`get_message_text<class_EditorExportPlatform_method_get_message_text>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                                      |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`ExportMessageType <enum_EditorExportPlatform_ExportMessageType>` | :ref:`get_message_type<class_EditorExportPlatform_method_get_message_type>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                                                                                                                                                      |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                            | :ref:`get_os_name<class_EditorExportPlatform_method_get_os_name>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                               |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`ExportMessageType <enum_EditorExportPlatform_ExportMessageType>` | :ref:`get_worst_message_type<class_EditorExportPlatform_method_get_worst_message_type>`\ (\ ) |const|                                                                                                                                                                                                                                                                                         |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                    | :ref:`save_pack<class_EditorExportPlatform_method_save_pack>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, embed\: :ref:`bool<class_bool>` = false\ )                                                                                                                                               |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                    | :ref:`save_pack_patch<class_EditorExportPlatform_method_save_pack_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ )                                                                                                                                                                            |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                    | :ref:`save_zip<class_EditorExportPlatform_method_save_zip>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ )                                                                                                                                                                                          |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                    | :ref:`save_zip_patch<class_EditorExportPlatform_method_save_zip_patch>`\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ )                                                                                                                                                                              |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`                                 | :ref:`ssh_push_to_remote<class_EditorExportPlatform_method_ssh_push_to_remote>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, scp_args\: :ref:`PackedStringArray<class_PackedStringArray>`, src_file\: :ref:`String<class_String>`, dst_file\: :ref:`String<class_String>`\ ) |const|                                                                           |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`                                   | :ref:`ssh_run_on_remote<class_EditorExportPlatform_method_ssh_run_on_remote>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, ssh_arg\: :ref:`PackedStringArray<class_PackedStringArray>`, cmd_args\: :ref:`String<class_String>`, output\: :ref:`Array<class_Array>` = [], port_fwd\: :ref:`int<class_int>` = -1\ ) |const|                                      |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                  | :ref:`ssh_run_on_remote_no_wait<class_EditorExportPlatform_method_ssh_run_on_remote_no_wait>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, ssh_args\: :ref:`PackedStringArray<class_PackedStringArray>`, cmd_args\: :ref:`String<class_String>`, port_fwd\: :ref:`int<class_int>` = -1\ ) |const|                                                              |
+   +------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -95,14 +95,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorExportPlatform_ExportMessageType:
 
 .. rst-class:: classref-enumeration
 
-enum **ExportMessageType**: :ref:`🔗<enum_EditorExportPlatform_ExportMessageType>`
+enum **ExportMessageType**: :ref:`🔗 <enum_EditorExportPlatform_ExportMessageType>`
 
 .. _class_EditorExportPlatform_constant_EXPORT_MESSAGE_NONE:
 
@@ -110,7 +110,7 @@ enum **ExportMessageType**: :ref:`🔗<enum_EditorExportPlatform_ExportMessageTy
 
 :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` **EXPORT_MESSAGE_NONE** = ``0``
 
-Invalid message type used as the default value when no type is specified.
+Kiểu thông báo không hợp lệ được dùng làm giá trị mặc định khi không chỉ định kiểu.
 
 .. _class_EditorExportPlatform_constant_EXPORT_MESSAGE_INFO:
 
@@ -118,7 +118,7 @@ Invalid message type used as the default value when no type is specified.
 
 :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` **EXPORT_MESSAGE_INFO** = ``1``
 
-Message type for informational messages that have no effect on the export.
+Kiểu thông báo dành cho các thông báo cung cấp thông tin, không ảnh hưởng đến quá trình export.
 
 .. _class_EditorExportPlatform_constant_EXPORT_MESSAGE_WARNING:
 
@@ -126,7 +126,7 @@ Message type for informational messages that have no effect on the export.
 
 :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` **EXPORT_MESSAGE_WARNING** = ``2``
 
-Message type for warning messages that should be addressed but still allow to complete the export.
+Loại thông báo cảnh báo cần được xử lý nhưng vẫn cho phép hoàn tất quá trình xuất.
 
 .. _class_EditorExportPlatform_constant_EXPORT_MESSAGE_ERROR:
 
@@ -134,7 +134,7 @@ Message type for warning messages that should be addressed but still allow to co
 
 :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` **EXPORT_MESSAGE_ERROR** = ``3``
 
-Message type for error messages that must be addressed and fail the export.
+Loại thông báo lỗi phải được xử lý và khiến quá trình xuất thất bại.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Message type for error messages that must be addressed and fail the export.
 
 .. rst-class:: classref-enumeration
 
-flags **DebugFlags**: :ref:`🔗<enum_EditorExportPlatform_DebugFlags>`
+các cờ **DebugFlags**: :ref:`🔗 <enum_EditorExportPlatform_DebugFlags>`
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_DUMB_CLIENT:
 
@@ -152,7 +152,7 @@ flags **DebugFlags**: :ref:`🔗<enum_EditorExportPlatform_DebugFlags>`
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_DUMB_CLIENT** = ``1``
 
-Flag is set if the remotely debugged project is expected to use the remote file system. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append ``--remote-fs`` and ``--remote-fs-password`` (if :ref:`EditorSettings.filesystem/file_server/password<class_EditorSettings_property_filesystem/file_server/password>` is defined) command line arguments to the returned list.
+Cờ được đặt nếu dự án đang được debug từ xa dự kiến sử dụng hệ thống tệp từ xa. Nếu được đặt, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` sẽ nối thêm ``--remote-fs`` và ``--remote-fs-password`` (nếu :ref:`EditorSettings.filesystem/file_server/password <class_EditorSettings_property_filesystem/file_server/password>` được định nghĩa) vào danh sách đối số dòng lệnh được trả về.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_REMOTE_DEBUG:
 
@@ -160,7 +160,7 @@ Flag is set if the remotely debugged project is expected to use the remote file 
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_REMOTE_DEBUG** = ``2``
 
-Flag is set if remote debug is enabled. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append ``--remote-debug`` and ``--breakpoints`` (if breakpoints are selected in the script editor or added by the plugin) command line arguments to the returned list.
+Cờ được đặt nếu remote debug được bật. Nếu được đặt, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` sẽ nối thêm ``--remote-debug`` và ``--breakpoints`` (nếu các breakpoint được chọn trong trình soạn thảo script hoặc được plugin thêm vào) vào danh sách đối số dòng lệnh được trả về.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_REMOTE_DEBUG_LOCALHOST:
 
@@ -168,7 +168,7 @@ Flag is set if remote debug is enabled. If set, :ref:`gen_export_flags()<class_E
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_REMOTE_DEBUG_LOCALHOST** = ``4``
 
-Flag is set if remotely debugged project is running on the localhost. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will use ``localhost`` instead of :ref:`EditorSettings.network/debug/remote_host<class_EditorSettings_property_network/debug/remote_host>` as remote debugger host.
+Cờ được đặt nếu dự án đang được debug từ xa chạy trên localhost. Nếu được đặt, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` sẽ sử dụng ``localhost`` thay vì :ref:`EditorSettings.network/debug/remote_host <class_EditorSettings_property_network/debug/remote_host>` làm máy chủ remote debugger.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_VIEW_COLLISIONS:
 
@@ -176,7 +176,7 @@ Flag is set if remotely debugged project is running on the localhost. If set, :r
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_VIEW_COLLISIONS** = ``8``
 
-Flag is set if the "Visible Collision Shapes" remote debug option is enabled. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append the ``--debug-collisions`` command line argument to the returned list.
+Cờ được đặt nếu tùy chọn remote debug "Visible Collision Shapes" được bật. Nếu được đặt, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` sẽ nối thêm đối số dòng lệnh ``--debug-collisions`` vào danh sách được trả về.
 
 .. _class_EditorExportPlatform_constant_DEBUG_FLAG_VIEW_NAVIGATION:
 
@@ -184,7 +184,7 @@ Flag is set if the "Visible Collision Shapes" remote debug option is enabled. If
 
 :ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>` **DEBUG_FLAG_VIEW_NAVIGATION** = ``16``
 
-Flag is set if the "Visible Navigation" remote debug option is enabled. If set, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` will append the ``--debug-navigation`` command line argument to the returned list.
+Cờ được đặt nếu tùy chọn remote debug "Visible Navigation" được bật. Nếu được đặt, :ref:`gen_export_flags()<class_EditorExportPlatform_method_gen_export_flags>` sẽ thêm đối số dòng lệnh ``--debug-navigation`` vào danh sách được trả về.
 
 .. rst-class:: classref-section-separator
 
@@ -192,8 +192,8 @@ Flag is set if the "Visible Navigation" remote debug option is enabled. If set, 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorExportPlatform_method_add_message:
 
@@ -201,7 +201,7 @@ Method Descriptions
 
 |void| **add_message**\ (\ type\: :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>`, category\: :ref:`String<class_String>`, message\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlatform_method_add_message>`
 
-Adds a message to the export log that will be displayed when exporting ends.
+Thêm một thông báo vào export log, thông báo này sẽ được hiển thị khi quá trình export kết thúc.
 
 .. rst-class:: classref-item-separator
 
@@ -213,7 +213,7 @@ Adds a message to the export log that will be displayed when exporting ends.
 
 |void| **clear_messages**\ (\ ) :ref:`🔗<class_EditorExportPlatform_method_clear_messages>`
 
-Clears the export log.
+Xóa export log.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Clears the export log.
 
 :ref:`EditorExportPreset<class_EditorExportPreset>` **create_preset**\ (\ ) :ref:`🔗<class_EditorExportPlatform_method_create_preset>`
 
-Create a new preset for this platform.
+Tạo một preset mới cho nền tảng này.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Create a new preset for this platform.
 
 :ref:`Error<enum_@GlobalScope_Error>` **export_pack**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ ) :ref:`🔗<class_EditorExportPlatform_method_export_pack>`
 
-Creates a PCK archive at ``path`` for the specified ``preset``.
+Tạo một kho lưu trữ PCK tại ``path`` cho ``preset`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -249,9 +249,9 @@ Creates a PCK archive at ``path`` for the specified ``preset``.
 
 :ref:`Error<enum_@GlobalScope_Error>` **export_pack_patch**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, patches\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ ) :ref:`🔗<class_EditorExportPlatform_method_export_pack_patch>`
 
-Creates a patch PCK archive at ``path`` for the specified ``preset``, containing only the files that have changed since the last patch.
+Tạo một kho lưu trữ PCK bản vá tại ``path`` cho ``preset`` được chỉ định, chỉ chứa các tệp đã thay đổi kể từ bản vá gần nhất.
 
-\ **Note:** ``patches`` is an optional override of the set of patches defined in the export preset. When empty the patches defined in the export preset will be used instead.
+\ **Lưu ý:** ``patches`` là tùy chọn ghi đè cho tập hợp các bản vá được xác định trong export preset. Khi để trống, các bản vá được xác định trong export preset sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -263,7 +263,7 @@ Creates a patch PCK archive at ``path`` for the specified ``preset``, containing
 
 :ref:`Error<enum_@GlobalScope_Error>` **export_project**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0, notify\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_EditorExportPlatform_method_export_project>`
 
-Creates a full project at ``path`` for the specified ``preset``. If ``notify`` is ``true``, plugins using :ref:`EditorExportPlugin._export_begin()<class_EditorExportPlugin_private_method__export_begin>` will be called during the process.
+Tạo một project hoàn chỉnh tại ``path`` cho ``preset`` được chỉ định. Nếu ``notify`` là ``true``, các plugin sử dụng :ref:`EditorExportPlugin._export_begin()<class_EditorExportPlugin_private_method__export_begin>` sẽ được gọi trong quá trình này.
 
 .. rst-class:: classref-item-separator
 
@@ -275,13 +275,13 @@ Creates a full project at ``path`` for the specified ``preset``. If ``notify`` i
 
 :ref:`Error<enum_@GlobalScope_Error>` **export_project_files**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, save_cb\: :ref:`Callable<class_Callable>`, shared_cb\: :ref:`Callable<class_Callable>` = Callable()\ ) :ref:`🔗<class_EditorExportPlatform_method_export_project_files>`
 
-Exports project files for the specified preset. This method can be used to implement custom export format, other than PCK and ZIP. One of the callbacks is called for each exported file.
+Xuất các tệp project cho preset được chỉ định. Có thể sử dụng phương thức này để triển khai định dạng export tùy chỉnh, ngoài PCK và ZIP. Một trong các callback sẽ được gọi cho mỗi tệp được export.
 
-\ ``save_cb`` is called for all exported files and have the following arguments: ``file_path: String``, ``file_data: PackedByteArray``, ``file_index: int``, ``file_count: int``, ``encryption_include_filters: PackedStringArray``, ``encryption_exclude_filters: PackedStringArray``, ``encryption_key: PackedByteArray``.
+\ ``save_cb`` được gọi cho tất cả các tệp được export và nhận các đối số sau: ``file_path: String``, ``file_data: PackedByteArray``, ``file_index: int``, ``file_count: int``, ``encryption_include_filters: PackedStringArray``, ``encryption_exclude_filters: PackedStringArray``, ``encryption_key: PackedByteArray``.
 
-\ ``shared_cb`` is called for exported native shared/static libraries and have the following arguments: ``file_path: String``, ``tags: PackedStringArray``, ``target_folder: String``.
+\ ``shared_cb`` được gọi cho các thư viện native dạng shared/static được export và nhận các đối số sau: ``file_path: String``, ``tags: PackedStringArray``, ``target_folder: String``.
 
-\ **Note:** ``file_index`` and ``file_count`` are intended for progress tracking only and aren't necessarily unique and precise.
+\ **Lưu ý:** ``file_index`` và ``file_count`` chỉ nhằm mục đích theo dõi tiến trình và không nhất thiết là duy nhất hoặc chính xác.
 
 .. rst-class:: classref-item-separator
 
@@ -293,7 +293,7 @@ Exports project files for the specified preset. This method can be used to imple
 
 :ref:`Error<enum_@GlobalScope_Error>` **export_zip**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ ) :ref:`🔗<class_EditorExportPlatform_method_export_zip>`
 
-Create a ZIP archive at ``path`` for the specified ``preset``.
+Tạo một kho lưu trữ ZIP tại ``path`` cho ``preset`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -305,9 +305,9 @@ Create a ZIP archive at ``path`` for the specified ``preset``.
 
 :ref:`Error<enum_@GlobalScope_Error>` **export_zip_patch**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, patches\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\] = 0\ ) :ref:`🔗<class_EditorExportPlatform_method_export_zip_patch>`
 
-Create a patch ZIP archive at ``path`` for the specified ``preset``, containing only the files that have changed since the last patch.
+Tạo một tệp lưu trữ ZIP bản vá tại ``path`` cho ``preset`` được chỉ định, chỉ chứa các tệp đã thay đổi kể từ bản vá gần nhất.
 
-\ **Note:** ``patches`` is an optional override of the set of patches defined in the export preset. When empty the patches defined in the export preset will be used instead.
+\ **Lưu ý:** ``patches`` là tùy chọn ghi đè cho tập hợp các bản vá được xác định trong export preset. Khi để trống, các bản vá được xác định trong export preset sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -319,7 +319,7 @@ Create a patch ZIP archive at ``path`` for the specified ``preset``, containing 
 
 :ref:`Dictionary<class_Dictionary>` **find_export_template**\ (\ template_file_name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_find_export_template>`
 
-Locates export template for the platform, and returns :ref:`Dictionary<class_Dictionary>` with the following keys: ``path: String`` and ``error: String``. This method is provided for convenience and custom export platforms aren't required to use it or keep export templates stored in the same way official templates are.
+Định vị template export cho nền tảng và trả về :ref:`Dictionary<class_Dictionary>` với các khóa sau: ``path: String`` và ``error: String``. Phương thức này được cung cấp để thuận tiện; các nền tảng export tùy chỉnh không bắt buộc phải sử dụng phương thức này hoặc lưu trữ template export theo cùng cách với các template chính thức.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +331,7 @@ Locates export template for the platform, and returns :ref:`Dictionary<class_Dic
 
 :ref:`PackedStringArray<class_PackedStringArray>` **gen_export_flags**\ (\ flags\: |bitfield|\[:ref:`DebugFlags<enum_EditorExportPlatform_DebugFlags>`\]\ ) :ref:`🔗<class_EditorExportPlatform_method_gen_export_flags>`
 
-Generates array of command line arguments for the default export templates for the debug flags and editor settings.
+Tạo một mảng các đối số dòng lệnh cho các template export mặc định đối với các cờ debug và cài đặt editor.
 
 .. rst-class:: classref-item-separator
 
@@ -343,7 +343,7 @@ Generates array of command line arguments for the default export templates for t
 
 :ref:`Array<class_Array>` **get_current_presets**\ (\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_get_current_presets>`
 
-Returns array of :ref:`EditorExportPreset<class_EditorExportPreset>`\ s for this platform.
+Trả về một mảng :ref:`EditorExportPreset<class_EditorExportPreset>`\  cho nền tảng này.
 
 .. rst-class:: classref-item-separator
 
@@ -355,7 +355,7 @@ Returns array of :ref:`EditorExportPreset<class_EditorExportPreset>`\ s for this
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_forced_export_files**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>` = null\ ) |static| :ref:`🔗<class_EditorExportPlatform_method_get_forced_export_files>`
 
-Returns array of core file names that always should be exported regardless of preset config.
+Trả về một mảng tên tệp lõi luôn phải được export bất kể cấu hình preset.
 
 .. rst-class:: classref-item-separator
 
@@ -367,7 +367,7 @@ Returns array of core file names that always should be exported regardless of pr
 
 :ref:`Dictionary<class_Dictionary>` **get_internal_export_files**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_EditorExportPlatform_method_get_internal_export_files>`
 
-Returns additional files that should always be exported regardless of preset configuration, and are not part of the project source. The returned :ref:`Dictionary<class_Dictionary>` contains filename keys (:ref:`String<class_String>`) and their corresponding raw data (:ref:`PackedByteArray<class_PackedByteArray>`).
+Trả về các tệp bổ sung luôn phải được export bất kể cấu hình preset và không thuộc mã nguồn của dự án. :ref:`Dictionary<class_Dictionary>` được trả về chứa các khóa tên tệp (:ref:`String<class_String>`) cùng dữ liệu thô tương ứng của chúng (:ref:`PackedByteArray<class_PackedByteArray>`).
 
 .. rst-class:: classref-item-separator
 
@@ -379,7 +379,7 @@ Returns additional files that should always be exported regardless of preset con
 
 :ref:`String<class_String>` **get_message_category**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_get_message_category>`
 
-Returns the message category for the message with the given ``index``.
+Trả về danh mục thông báo của thông báo có ``index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -391,7 +391,7 @@ Returns the message category for the message with the given ``index``.
 
 :ref:`int<class_int>` **get_message_count**\ (\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_get_message_count>`
 
-Returns the number of messages in the export log.
+Trả về số lượng thông báo trong nhật ký export.
 
 .. rst-class:: classref-item-separator
 
@@ -403,7 +403,7 @@ Returns the number of messages in the export log.
 
 :ref:`String<class_String>` **get_message_text**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_get_message_text>`
 
-Returns the text for the message with the given ``index``.
+Trả về nội dung của thông báo có ``index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -415,7 +415,7 @@ Returns the text for the message with the given ``index``.
 
 :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` **get_message_type**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_get_message_type>`
 
-Returns the type for the message with the given ``index``.
+Trả về kiểu của thông báo có ``index`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -427,7 +427,7 @@ Returns the type for the message with the given ``index``.
 
 :ref:`String<class_String>` **get_os_name**\ (\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_get_os_name>`
 
-Returns the name of the export operating system handled by this **EditorExportPlatform** class, as a friendly string. Possible return values are ``Windows``, ``Linux``, ``macOS``, ``Android``, ``iOS``, and ``Web``.
+Trả về tên của hệ điều hành export được class **EditorExportPlatform** này xử lý, dưới dạng chuỗi thân thiện. Các giá trị có thể trả về là ``Windows``, ``Linux``, ``macOS``, ``Android``, ``iOS`` và ``Web``.
 
 .. rst-class:: classref-item-separator
 
@@ -439,7 +439,7 @@ Returns the name of the export operating system handled by this **EditorExportPl
 
 :ref:`ExportMessageType<enum_EditorExportPlatform_ExportMessageType>` **get_worst_message_type**\ (\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_get_worst_message_type>`
 
-Returns most severe message type currently present in the export log.
+Trả về kiểu thông báo nghiêm trọng nhất hiện có trong nhật ký export.
 
 .. rst-class:: classref-item-separator
 
@@ -451,9 +451,9 @@ Returns most severe message type currently present in the export log.
 
 :ref:`Dictionary<class_Dictionary>` **save_pack**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`, embed\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_EditorExportPlatform_method_save_pack>`
 
-Saves PCK archive and returns :ref:`Dictionary<class_Dictionary>` with the following keys: ``result: Error``, ``so_files: Array`` (array of the shared/static objects which contains dictionaries with the following keys: ``path: String``, ``tags: PackedStringArray``, and ``target_folder: String``).
+Lưu kho lưu trữ PCK và trả về :ref:`Dictionary<class_Dictionary>` với các khóa sau: ``result: Error``, ``so_files: Array`` (mảng các đối tượng shared/static chứa các dictionary với các khóa sau: ``path: String``, ``tags: PackedStringArray`` và ``target_folder: String``).
 
-If ``embed`` is ``true``, PCK content is appended to the end of ``path`` file and return :ref:`Dictionary<class_Dictionary>` additionally include following keys: ``embedded_start: int`` (embedded PCK offset) and ``embedded_size: int`` (embedded PCK size).
+Nếu ``embed`` là ``true``, nội dung PCK được nối vào cuối tệp ``path`` và :ref:`Dictionary<class_Dictionary>` trả về cũng bao gồm các khóa sau: ``embedded_start: int`` (offset của PCK được nhúng) và ``embedded_size: int`` (kích thước của PCK được nhúng).
 
 .. rst-class:: classref-item-separator
 
@@ -465,7 +465,7 @@ If ``embed`` is ``true``, PCK content is appended to the end of ``path`` file an
 
 :ref:`Dictionary<class_Dictionary>` **save_pack_patch**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlatform_method_save_pack_patch>`
 
-Saves patch PCK archive and returns :ref:`Dictionary<class_Dictionary>` with the following keys: ``result: Error``, ``so_files: Array`` (array of the shared/static objects which contains dictionaries with the following keys: ``path: String``, ``tags: PackedStringArray``, and ``target_folder: String``).
+Lưu tệp lưu trữ PCK bản vá và trả về :ref:`Dictionary<class_Dictionary>` với các khóa sau: ``result: Error``, ``so_files: Array`` (mảng các đối tượng shared/static chứa các dictionary với các khóa sau: ``path: String``, ``tags: PackedStringArray`` và ``target_folder: String``).
 
 .. rst-class:: classref-item-separator
 
@@ -477,7 +477,7 @@ Saves patch PCK archive and returns :ref:`Dictionary<class_Dictionary>` with the
 
 :ref:`Dictionary<class_Dictionary>` **save_zip**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlatform_method_save_zip>`
 
-Saves ZIP archive and returns :ref:`Dictionary<class_Dictionary>` with the following keys: ``result: Error``, ``so_files: Array`` (array of the shared/static objects which contains dictionaries with the following keys: ``path: String``, ``tags: PackedStringArray``, and ``target_folder: String``).
+Lưu tệp lưu trữ ZIP và trả về :ref:`Dictionary<class_Dictionary>` với các khóa sau: ``result: Error``, ``so_files: Array`` (mảng các đối tượng shared/static chứa các dictionary với các khóa sau: ``path: String``, ``tags: PackedStringArray`` và ``target_folder: String``).
 
 .. rst-class:: classref-item-separator
 
@@ -489,7 +489,7 @@ Saves ZIP archive and returns :ref:`Dictionary<class_Dictionary>` with the follo
 
 :ref:`Dictionary<class_Dictionary>` **save_zip_patch**\ (\ preset\: :ref:`EditorExportPreset<class_EditorExportPreset>`, debug\: :ref:`bool<class_bool>`, path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPlatform_method_save_zip_patch>`
 
-Saves patch ZIP archive and returns :ref:`Dictionary<class_Dictionary>` with the following keys: ``result: Error``, ``so_files: Array`` (array of the shared/static objects which contains dictionaries with the following keys: ``path: String``, ``tags: PackedStringArray``, and ``target_folder: String``).
+Lưu tệp lưu trữ ZIP bản vá và trả về :ref:`Dictionary<class_Dictionary>` với các khóa sau: ``result: Error``, ``so_files: Array`` (mảng các đối tượng shared/static chứa các dictionary với các khóa sau: ``path: String``, ``tags: PackedStringArray`` và ``target_folder: String``).
 
 .. rst-class:: classref-item-separator
 
@@ -501,7 +501,7 @@ Saves patch ZIP archive and returns :ref:`Dictionary<class_Dictionary>` with the
 
 :ref:`Error<enum_@GlobalScope_Error>` **ssh_push_to_remote**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, scp_args\: :ref:`PackedStringArray<class_PackedStringArray>`, src_file\: :ref:`String<class_String>`, dst_file\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_ssh_push_to_remote>`
 
-Uploads specified file over SCP protocol to the remote host.
+Tải tệp được chỉ định lên máy chủ từ xa qua giao thức SCP.
 
 .. rst-class:: classref-item-separator
 
@@ -513,7 +513,7 @@ Uploads specified file over SCP protocol to the remote host.
 
 :ref:`Error<enum_@GlobalScope_Error>` **ssh_run_on_remote**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, ssh_arg\: :ref:`PackedStringArray<class_PackedStringArray>`, cmd_args\: :ref:`String<class_String>`, output\: :ref:`Array<class_Array>` = [], port_fwd\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_ssh_run_on_remote>`
 
-Executes specified command on the remote host via SSH protocol and returns command output in the ``output``.
+Thực thi lệnh được chỉ định trên máy chủ từ xa qua giao thức SSH và trả về đầu ra của lệnh trong ``output``.
 
 .. rst-class:: classref-item-separator
 
@@ -525,14 +525,14 @@ Executes specified command on the remote host via SSH protocol and returns comma
 
 :ref:`int<class_int>` **ssh_run_on_remote_no_wait**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`String<class_String>`, ssh_args\: :ref:`PackedStringArray<class_PackedStringArray>`, cmd_args\: :ref:`String<class_String>`, port_fwd\: :ref:`int<class_int>` = -1\ ) |const| :ref:`🔗<class_EditorExportPlatform_method_ssh_run_on_remote_no_wait>`
 
-Executes specified command on the remote host via SSH protocol and returns process ID (on the remote host) without waiting for command to finish.
+Thực thi lệnh được chỉ định trên máy chủ từ xa qua giao thức SSH và trả về ID tiến trình (trên máy chủ từ xa) mà không chờ lệnh hoàn tất.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

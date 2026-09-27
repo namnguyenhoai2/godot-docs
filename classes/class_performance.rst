@@ -10,50 +10,50 @@
 Performance
 ===========
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Exposes performance-related data.
+Cung cấp dữ liệu liên quan đến hiệu suất.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class provides access to a number of different monitors related to performance, such as memory usage, draw calls, and FPS. These are the same as the values displayed in the **Monitor** tab in the editor's **Debugger** panel. By using the :ref:`get_monitor()<class_Performance_method_get_monitor>` method of this class, you can access this data from your code.
+Lớp này cung cấp quyền truy cập vào một số monitor khác nhau liên quan đến hiệu suất, chẳng hạn như mức sử dụng bộ nhớ, số draw call và FPS. Đây cũng là những giá trị được hiển thị trong tab **Monitor** của panel **Debugger** trong trình chỉnh sửa. Bằng cách sử dụng phương thức :ref:`get_monitor()<class_Performance_method_get_monitor>` của lớp này, bạn có thể truy cập dữ liệu này từ code của mình.
 
-You can add custom monitors using the :ref:`add_custom_monitor()<class_Performance_method_add_custom_monitor>` method. Custom monitors are available in **Monitor** tab in the editor's **Debugger** panel together with built-in monitors.
+Bạn có thể thêm các monitor tùy chỉnh bằng phương thức :ref:`add_custom_monitor()<class_Performance_method_add_custom_monitor>`. Các monitor tùy chỉnh sẽ khả dụng trong tab **Monitor** của panel **Debugger** trong trình chỉnh sửa, cùng với các monitor tích hợp sẵn.
 
-\ **Note:** Some of the built-in monitors are only available in debug mode and will always return ``0`` when used in a project exported in release mode.
+\ **Lưu ý:** Một số monitor tích hợp sẵn chỉ khả dụng trong chế độ debug và sẽ luôn trả về ``0`` khi được sử dụng trong một project được export ở chế độ release.
 
-\ **Note:** Some of the built-in monitors are not updated in real-time for performance reasons, so there may be a delay of up to 1 second between changes.
+\ **Lưu ý:** Một số monitor tích hợp sẵn không được cập nhật theo thời gian thực vì lý do hiệu suất, do đó có thể có độ trễ lên đến 1 giây giữa các thay đổi.
 
-\ **Note:** Custom monitors do not support negative values. Negative values are clamped to 0.
+\ **Lưu ý:** Các monitor tùy chỉnh không hỗ trợ giá trị âm. Các giá trị âm được giới hạn về 0.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`add_custom_monitor<class_Performance_method_add_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`, callable\: :ref:`Callable<class_Callable>`, arguments\: :ref:`Array<class_Array>` = [], type\: :ref:`MonitorType<enum_Performance_MonitorType>` = 0\ ) |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                    | :ref:`get_custom_monitor<class_Performance_method_get_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                      |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] | :ref:`get_custom_monitor_names<class_Performance_method_get_custom_monitor_names>`\ (\ )                                                                                                                                                                                    |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedInt32Array<class_PackedInt32Array>`                  | :ref:`get_custom_monitor_types<class_Performance_method_get_custom_monitor_types>`\ (\ )                                                                                                                                                                                    |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                                        | :ref:`get_monitor<class_Performance_method_get_monitor>`\ (\ monitor\: :ref:`Monitor<enum_Performance_Monitor>`\ ) |const|                                                                                                                                                  |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                            | :ref:`get_monitor_modification_time<class_Performance_method_get_monitor_modification_time>`\ (\ )                                                                                                                                                                          |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                          | :ref:`has_custom_monitor<class_Performance_method_has_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                      |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`remove_custom_monitor<class_Performance_method_remove_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                |
-   +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`add_custom_monitor<class_Performance_method_add_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`, callable\: :ref:`Callable<class_Callable>`, arguments\: :ref:`Array<class_Array>` = [], type\: :ref:`MonitorType <enum_Performance_MonitorType>` = 0\ ) |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                    | :ref:`get_custom_monitor<class_Performance_method_get_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                       |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] | :ref:`get_custom_monitor_names<class_Performance_method_get_custom_monitor_names>`\ (\ )                                                                                                                                                                                     |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedInt32Array<class_PackedInt32Array>`                  | :ref:`get_custom_monitor_types<class_Performance_method_get_custom_monitor_types>`\ (\ )                                                                                                                                                                                     |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                                        | :ref:`get_monitor<class_Performance_method_get_monitor>`\ (\ monitor\: :ref:`Monitor <enum_Performance_Monitor>`\ ) |const|                                                                                                                                                  |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                            | :ref:`get_monitor_modification_time<class_Performance_method_get_monitor_modification_time>`\ (\ )                                                                                                                                                                           |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                          | :ref:`has_custom_monitor<class_Performance_method_has_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                       |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                           | :ref:`remove_custom_monitor<class_Performance_method_remove_custom_monitor>`\ (\ id\: :ref:`StringName<class_StringName>`\ )                                                                                                                                                 |
+   +------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -61,14 +61,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Performance_Monitor:
 
 .. rst-class:: classref-enumeration
 
-enum **Monitor**: :ref:`🔗<enum_Performance_Monitor>`
+enum **Monitor**: :ref:`🔗 <enum_Performance_Monitor>`
 
 .. _class_Performance_constant_TIME_FPS:
 
@@ -76,7 +76,7 @@ enum **Monitor**: :ref:`🔗<enum_Performance_Monitor>`
 
 :ref:`Monitor<enum_Performance_Monitor>` **TIME_FPS** = ``0``
 
-The number of frames rendered in the last second. This metric is only updated once per second, even if queried more often. *Higher is better.*
+Số khung hình được kết xuất trong giây vừa qua. Chỉ số này chỉ được cập nhật một lần mỗi giây, ngay cả khi được truy vấn thường xuyên hơn. *Cao hơn thì tốt hơn.*
 
 .. _class_Performance_constant_TIME_PROCESS:
 
@@ -84,7 +84,7 @@ The number of frames rendered in the last second. This metric is only updated on
 
 :ref:`Monitor<enum_Performance_Monitor>` **TIME_PROCESS** = ``1``
 
-Time it took to complete one frame, in seconds. *Lower is better.*
+Thời gian cần để hoàn tất một khung hình, tính bằng giây. *Thấp hơn thì tốt hơn.*
 
 .. _class_Performance_constant_TIME_PHYSICS_PROCESS:
 
@@ -92,7 +92,7 @@ Time it took to complete one frame, in seconds. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **TIME_PHYSICS_PROCESS** = ``2``
 
-Time it took to complete one physics frame, in seconds. *Lower is better.*
+Thời gian cần để hoàn tất một khung hình vật lý, tính bằng giây. *Thấp hơn thì tốt hơn.*
 
 .. _class_Performance_constant_TIME_NAVIGATION_PROCESS:
 
@@ -100,7 +100,7 @@ Time it took to complete one physics frame, in seconds. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **TIME_NAVIGATION_PROCESS** = ``3``
 
-Time it took to complete one navigation step, in seconds. This includes navigation map updates as well as agent avoidance calculations. *Lower is better.*
+Thời gian cần để hoàn tất một bước điều hướng, tính bằng giây. Thời gian này bao gồm cả việc cập nhật bản đồ điều hướng và các phép tính tránh né của agent. *Thấp hơn thì tốt hơn.*
 
 .. _class_Performance_constant_MEMORY_STATIC:
 
@@ -108,7 +108,7 @@ Time it took to complete one navigation step, in seconds. This includes navigati
 
 :ref:`Monitor<enum_Performance_Monitor>` **MEMORY_STATIC** = ``4``
 
-Static memory currently used, in bytes. Not available in release builds. *Lower is better.*
+Dung lượng bộ nhớ tĩnh hiện đang được sử dụng, tính bằng byte. Không khả dụng trong các bản build release. *Thấp hơn thì tốt hơn.*
 
 .. _class_Performance_constant_MEMORY_STATIC_MAX:
 
@@ -116,7 +116,7 @@ Static memory currently used, in bytes. Not available in release builds. *Lower 
 
 :ref:`Monitor<enum_Performance_Monitor>` **MEMORY_STATIC_MAX** = ``5``
 
-Available static memory. Not available in release builds. *Lower is better.*
+Bộ nhớ tĩnh khả dụng. Không khả dụng trong các bản build phát hành. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_MEMORY_MESSAGE_BUFFER_MAX:
 
@@ -124,7 +124,7 @@ Available static memory. Not available in release builds. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **MEMORY_MESSAGE_BUFFER_MAX** = ``6``
 
-Largest amount of memory the message queue buffer has used, in bytes. The message queue is used for deferred functions calls and notifications. *Lower is better.*
+Lượng bộ nhớ lớn nhất mà bộ đệm hàng đợi thông báo đã sử dụng, tính bằng byte. Hàng đợi thông báo được dùng cho các lời gọi hàm trì hoãn và thông báo. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_OBJECT_COUNT:
 
@@ -132,7 +132,7 @@ Largest amount of memory the message queue buffer has used, in bytes. The messag
 
 :ref:`Monitor<enum_Performance_Monitor>` **OBJECT_COUNT** = ``7``
 
-Number of objects currently instantiated (including nodes). *Lower is better.*
+Số lượng đối tượng hiện được khởi tạo (bao gồm cả các node). *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_OBJECT_RESOURCE_COUNT:
 
@@ -140,7 +140,7 @@ Number of objects currently instantiated (including nodes). *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **OBJECT_RESOURCE_COUNT** = ``8``
 
-Number of resources currently used. *Lower is better.*
+Số lượng tài nguyên hiện đang được sử dụng. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_OBJECT_NODE_COUNT:
 
@@ -148,7 +148,7 @@ Number of resources currently used. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **OBJECT_NODE_COUNT** = ``9``
 
-Number of nodes currently instantiated in the scene tree. This also includes the root node. *Lower is better.*
+Số lượng node hiện được khởi tạo trong cây cảnh. Số này cũng bao gồm node gốc. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_OBJECT_ORPHAN_NODE_COUNT:
 
@@ -156,9 +156,9 @@ Number of nodes currently instantiated in the scene tree. This also includes the
 
 :ref:`Monitor<enum_Performance_Monitor>` **OBJECT_ORPHAN_NODE_COUNT** = ``10``
 
-Number of orphan nodes, i.e. nodes which are not parented to a node of the scene tree. *Lower is better.*\ 
+Số lượng node mồ côi, tức là các node không có node cha trong cây cảnh. *Thấp hơn là tốt hơn.*\
 
-\ **Note:** This is only available in debug mode and will always return ``0`` when used in a project exported in release mode.
+\ **Lưu ý:** Tùy chọn này chỉ khả dụng trong chế độ debug và sẽ luôn trả về ``0`` khi được sử dụng trong một project được export ở chế độ phát hành.
 
 .. _class_Performance_constant_RENDER_TOTAL_OBJECTS_IN_FRAME:
 
@@ -166,7 +166,7 @@ Number of orphan nodes, i.e. nodes which are not parented to a node of the scene
 
 :ref:`Monitor<enum_Performance_Monitor>` **RENDER_TOTAL_OBJECTS_IN_FRAME** = ``11``
 
-The total number of objects in the last rendered frame. This metric doesn't include culled objects (either via hiding nodes, frustum culling or occlusion culling). *Lower is better.*
+Tổng số đối tượng trong khung hình được kết xuất gần nhất. Chỉ số này không bao gồm các đối tượng bị loại bỏ (bằng cách ẩn node, frustum culling hoặc occlusion culling). *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_RENDER_TOTAL_PRIMITIVES_IN_FRAME:
 
@@ -174,7 +174,7 @@ The total number of objects in the last rendered frame. This metric doesn't incl
 
 :ref:`Monitor<enum_Performance_Monitor>` **RENDER_TOTAL_PRIMITIVES_IN_FRAME** = ``12``
 
-The total number of vertices or indices rendered in the last rendered frame. This metric doesn't include primitives from culled objects (either via hiding nodes, frustum culling or occlusion culling). Due to the depth prepass and shadow passes, the number of primitives is always higher than the actual number of vertices in the scene (typically double or triple the original vertex count). *Lower is better.*
+Tổng số đỉnh hoặc chỉ số được kết xuất trong khung hình được kết xuất gần nhất. Chỉ số này không bao gồm các primitive từ các đối tượng bị loại bỏ (bằng cách ẩn node, frustum culling hoặc occlusion culling). Do depth prepass và các shadow pass, số lượng primitive luôn cao hơn số đỉnh thực tế trong scene (thường gấp đôi hoặc gấp ba số đỉnh ban đầu). *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_RENDER_TOTAL_DRAW_CALLS_IN_FRAME:
 
@@ -182,7 +182,7 @@ The total number of vertices or indices rendered in the last rendered frame. Thi
 
 :ref:`Monitor<enum_Performance_Monitor>` **RENDER_TOTAL_DRAW_CALLS_IN_FRAME** = ``13``
 
-The total number of draw calls performed in the last rendered frame. This metric doesn't include culled objects (either via hiding nodes, frustum culling or occlusion culling), since they do not result in draw calls. *Lower is better.*
+Tổng số draw call được thực hiện trong khung hình được kết xuất gần nhất. Chỉ số này không bao gồm các đối tượng bị loại bỏ (bằng cách ẩn node, frustum culling hoặc occlusion culling), vì chúng không tạo ra draw call. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_RENDER_VIDEO_MEM_USED:
 
@@ -190,7 +190,7 @@ The total number of draw calls performed in the last rendered frame. This metric
 
 :ref:`Monitor<enum_Performance_Monitor>` **RENDER_VIDEO_MEM_USED** = ``14``
 
-The amount of video memory used (texture and vertex memory combined, in bytes). Since this metric also includes miscellaneous allocations, this value is always greater than the sum of :ref:`RENDER_TEXTURE_MEM_USED<class_Performance_constant_RENDER_TEXTURE_MEM_USED>` and :ref:`RENDER_BUFFER_MEM_USED<class_Performance_constant_RENDER_BUFFER_MEM_USED>`. *Lower is better.*
+Dung lượng video memory được sử dụng (tổng hợp texture memory và vertex memory, tính bằng byte). Vì chỉ số này cũng bao gồm các phân bổ phụ trợ, giá trị này luôn lớn hơn tổng của :ref:`RENDER_TEXTURE_MEM_USED<class_Performance_constant_RENDER_TEXTURE_MEM_USED>` và :ref:`RENDER_BUFFER_MEM_USED<class_Performance_constant_RENDER_BUFFER_MEM_USED>`. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_RENDER_TEXTURE_MEM_USED:
 
@@ -198,7 +198,7 @@ The amount of video memory used (texture and vertex memory combined, in bytes). 
 
 :ref:`Monitor<enum_Performance_Monitor>` **RENDER_TEXTURE_MEM_USED** = ``15``
 
-The amount of texture memory used (in bytes). *Lower is better.*
+Dung lượng texture memory được sử dụng (tính bằng byte). *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_RENDER_BUFFER_MEM_USED:
 
@@ -206,7 +206,7 @@ The amount of texture memory used (in bytes). *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **RENDER_BUFFER_MEM_USED** = ``16``
 
-The amount of render buffer memory used (in bytes). *Lower is better.*
+Dung lượng render buffer memory được sử dụng (tính bằng byte). *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_PHYSICS_2D_ACTIVE_OBJECTS:
 
@@ -214,7 +214,7 @@ The amount of render buffer memory used (in bytes). *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **PHYSICS_2D_ACTIVE_OBJECTS** = ``17``
 
-Number of active :ref:`RigidBody2D<class_RigidBody2D>` nodes in the game. *Lower is better.*
+Số lượng node :ref:`RigidBody2D<class_RigidBody2D>` đang hoạt động trong game. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_PHYSICS_2D_COLLISION_PAIRS:
 
@@ -222,7 +222,7 @@ Number of active :ref:`RigidBody2D<class_RigidBody2D>` nodes in the game. *Lower
 
 :ref:`Monitor<enum_Performance_Monitor>` **PHYSICS_2D_COLLISION_PAIRS** = ``18``
 
-Number of collision pairs in the 2D physics engine. *Lower is better.*
+Số cặp va chạm trong physics engine 2D. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_PHYSICS_2D_ISLAND_COUNT:
 
@@ -230,7 +230,7 @@ Number of collision pairs in the 2D physics engine. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **PHYSICS_2D_ISLAND_COUNT** = ``19``
 
-Number of islands in the 2D physics engine. *Lower is better.*
+Số island trong physics engine 2D. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_PHYSICS_3D_ACTIVE_OBJECTS:
 
@@ -238,7 +238,7 @@ Number of islands in the 2D physics engine. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **PHYSICS_3D_ACTIVE_OBJECTS** = ``20``
 
-Number of active :ref:`RigidBody3D<class_RigidBody3D>` and :ref:`VehicleBody3D<class_VehicleBody3D>` nodes in the game. *Lower is better.*
+Số node :ref:`RigidBody3D<class_RigidBody3D>` và :ref:`VehicleBody3D<class_VehicleBody3D>` đang hoạt động trong game. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_PHYSICS_3D_COLLISION_PAIRS:
 
@@ -246,7 +246,7 @@ Number of active :ref:`RigidBody3D<class_RigidBody3D>` and :ref:`VehicleBody3D<c
 
 :ref:`Monitor<enum_Performance_Monitor>` **PHYSICS_3D_COLLISION_PAIRS** = ``21``
 
-Number of collision pairs in the 3D physics engine. *Lower is better.*
+Số cặp va chạm trong physics engine 3D. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_PHYSICS_3D_ISLAND_COUNT:
 
@@ -254,7 +254,7 @@ Number of collision pairs in the 3D physics engine. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **PHYSICS_3D_ISLAND_COUNT** = ``22``
 
-Number of islands in the 3D physics engine. *Lower is better.*
+Số island trong physics engine 3D. *Thấp hơn là tốt hơn.*
 
 .. _class_Performance_constant_AUDIO_OUTPUT_LATENCY:
 
@@ -262,7 +262,7 @@ Number of islands in the 3D physics engine. *Lower is better.*
 
 :ref:`Monitor<enum_Performance_Monitor>` **AUDIO_OUTPUT_LATENCY** = ``23``
 
-Output latency of the :ref:`AudioServer<class_AudioServer>`. Equivalent to calling :ref:`AudioServer.get_output_latency()<class_AudioServer_method_get_output_latency>`, it is not recommended to call this every frame.
+Độ trễ đầu ra của :ref:`AudioServer<class_AudioServer>`. Tương đương với việc gọi :ref:`AudioServer.get_output_latency()<class_AudioServer_method_get_output_latency>`, không nên gọi hàm này ở mỗi frame.
 
 .. _class_Performance_constant_NAVIGATION_ACTIVE_MAPS:
 
@@ -270,7 +270,7 @@ Output latency of the :ref:`AudioServer<class_AudioServer>`. Equivalent to calli
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_ACTIVE_MAPS** = ``24``
 
-Number of active navigation maps in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`. This also includes the empty default navigation maps created by :ref:`World2D<class_World2D>` and :ref:`World3D<class_World3D>` instances.
+Số bản đồ điều hướng đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`. Số này cũng bao gồm các bản đồ điều hướng mặc định trống được tạo bởi các instance :ref:`World2D<class_World2D>` và :ref:`World3D<class_World3D>`.
 
 .. _class_Performance_constant_NAVIGATION_REGION_COUNT:
 
@@ -278,7 +278,7 @@ Number of active navigation maps in :ref:`NavigationServer2D<class_NavigationSer
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_REGION_COUNT** = ``25``
 
-Number of active navigation regions in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số vùng điều hướng đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_AGENT_COUNT:
 
@@ -286,7 +286,7 @@ Number of active navigation regions in :ref:`NavigationServer2D<class_Navigation
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_AGENT_COUNT** = ``26``
 
-Number of active navigation agents processing avoidance in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số tác nhân điều hướng đang hoạt động xử lý việc tránh va chạm trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_LINK_COUNT:
 
@@ -294,7 +294,7 @@ Number of active navigation agents processing avoidance in :ref:`NavigationServe
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_LINK_COUNT** = ``27``
 
-Number of active navigation links in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số liên kết điều hướng đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_POLYGON_COUNT:
 
@@ -302,7 +302,7 @@ Number of active navigation links in :ref:`NavigationServer2D<class_NavigationSe
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_POLYGON_COUNT** = ``28``
 
-Number of navigation mesh polygons in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số đa giác của lưới điều hướng trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_COUNT:
 
@@ -310,7 +310,7 @@ Number of navigation mesh polygons in :ref:`NavigationServer2D<class_NavigationS
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_COUNT** = ``29``
 
-Number of navigation mesh polygon edges in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số cạnh đa giác của lưới điều hướng trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_MERGE_COUNT:
 
@@ -318,7 +318,7 @@ Number of navigation mesh polygon edges in :ref:`NavigationServer2D<class_Naviga
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_MERGE_COUNT** = ``30``
 
-Number of navigation mesh polygon edges that were merged due to edge key overlap in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số cạnh đa giác của lưới điều hướng đã được hợp nhất do khóa cạnh bị chồng lấp trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_CONNECTION_COUNT:
 
@@ -326,7 +326,7 @@ Number of navigation mesh polygon edges that were merged due to edge key overlap
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_CONNECTION_COUNT** = ``31``
 
-Number of polygon edges that are considered connected by edge proximity :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số cạnh đa giác được xem là kết nối với nhau dựa trên độ gần của cạnh trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_EDGE_FREE_COUNT:
 
@@ -334,7 +334,7 @@ Number of polygon edges that are considered connected by edge proximity :ref:`Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_EDGE_FREE_COUNT** = ``32``
 
-Number of navigation mesh polygon edges that could not be merged in :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`. The edges still may be connected by edge proximity or with links.
+Số cạnh đa giác của navigation mesh không thể hợp nhất trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`. Các cạnh này vẫn có thể được kết nối thông qua độ gần của cạnh hoặc bằng các liên kết.
 
 .. _class_Performance_constant_NAVIGATION_OBSTACLE_COUNT:
 
@@ -342,7 +342,7 @@ Number of navigation mesh polygon edges that could not be merged in :ref:`Naviga
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_OBSTACLE_COUNT** = ``33``
 
-Number of active navigation obstacles in the :ref:`NavigationServer2D<class_NavigationServer2D>` and :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số chướng ngại vật điều hướng đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>` và :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_PIPELINE_COMPILATIONS_CANVAS:
 
@@ -350,7 +350,7 @@ Number of active navigation obstacles in the :ref:`NavigationServer2D<class_Navi
 
 :ref:`Monitor<enum_Performance_Monitor>` **PIPELINE_COMPILATIONS_CANVAS** = ``34``
 
-Number of pipeline compilations that were triggered by the 2D canvas renderer.
+Số lần biên dịch pipeline được trình kết xuất canvas 2D kích hoạt.
 
 .. _class_Performance_constant_PIPELINE_COMPILATIONS_MESH:
 
@@ -358,7 +358,7 @@ Number of pipeline compilations that were triggered by the 2D canvas renderer.
 
 :ref:`Monitor<enum_Performance_Monitor>` **PIPELINE_COMPILATIONS_MESH** = ``35``
 
-Number of pipeline compilations that were triggered by loading meshes. These compilations will show up as longer loading times the first time a user runs the game and the pipeline is required.
+Số lần biên dịch pipeline được kích hoạt do tải các mesh. Những lần biên dịch này sẽ làm thời gian tải lâu hơn trong lần đầu người dùng chạy trò chơi và pipeline là bắt buộc.
 
 .. _class_Performance_constant_PIPELINE_COMPILATIONS_SURFACE:
 
@@ -366,7 +366,7 @@ Number of pipeline compilations that were triggered by loading meshes. These com
 
 :ref:`Monitor<enum_Performance_Monitor>` **PIPELINE_COMPILATIONS_SURFACE** = ``36``
 
-Number of pipeline compilations that were triggered by building the surface cache before rendering the scene. These compilations will show up as a stutter when loading a scene the first time a user runs the game and the pipeline is required.
+Số lần biên dịch pipeline được kích hoạt do xây dựng surface cache trước khi kết xuất cảnh. Những lần biên dịch này sẽ xuất hiện dưới dạng hiện tượng giật khi tải cảnh trong lần đầu người dùng chạy trò chơi và pipeline là bắt buộc.
 
 .. _class_Performance_constant_PIPELINE_COMPILATIONS_DRAW:
 
@@ -374,7 +374,7 @@ Number of pipeline compilations that were triggered by building the surface cach
 
 :ref:`Monitor<enum_Performance_Monitor>` **PIPELINE_COMPILATIONS_DRAW** = ``37``
 
-Number of pipeline compilations that were triggered while drawing the scene. These compilations will show up as stutters during gameplay the first time a user runs the game and the pipeline is required.
+Số lần biên dịch pipeline được kích hoạt trong khi vẽ cảnh. Những lần biên dịch này sẽ xuất hiện dưới dạng hiện tượng giật trong lúc chơi trò chơi, trong lần đầu người dùng chạy trò chơi và pipeline là bắt buộc.
 
 .. _class_Performance_constant_PIPELINE_COMPILATIONS_SPECIALIZATION:
 
@@ -382,7 +382,7 @@ Number of pipeline compilations that were triggered while drawing the scene. The
 
 :ref:`Monitor<enum_Performance_Monitor>` **PIPELINE_COMPILATIONS_SPECIALIZATION** = ``38``
 
-Number of pipeline compilations that were triggered to optimize the current scene. These compilations are done in the background and should not cause any stutters whatsoever.
+Số lần biên dịch pipeline được kích hoạt để tối ưu hóa cảnh hiện tại. Những lần biên dịch này được thực hiện trong nền và hoàn toàn không gây ra hiện tượng giật.
 
 .. _class_Performance_constant_NAVIGATION_2D_ACTIVE_MAPS:
 
@@ -390,7 +390,7 @@ Number of pipeline compilations that were triggered to optimize the current scen
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_ACTIVE_MAPS** = ``39``
 
-Number of active navigation maps in the :ref:`NavigationServer2D<class_NavigationServer2D>`. This also includes the empty default navigation maps created by :ref:`World2D<class_World2D>` instances.
+Số lượng bản đồ điều hướng đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>`. Số này cũng bao gồm các bản đồ điều hướng mặc định trống được tạo bởi các thực thể :ref:`World2D<class_World2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_REGION_COUNT:
 
@@ -398,7 +398,7 @@ Number of active navigation maps in the :ref:`NavigationServer2D<class_Navigatio
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_REGION_COUNT** = ``40``
 
-Number of active navigation regions in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số lượng vùng điều hướng đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_AGENT_COUNT:
 
@@ -406,7 +406,7 @@ Number of active navigation regions in the :ref:`NavigationServer2D<class_Naviga
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_AGENT_COUNT** = ``41``
 
-Number of active navigation agents processing avoidance in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số lượng tác nhân điều hướng đang hoạt động xử lý việc tránh va chạm trong :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_LINK_COUNT:
 
@@ -414,7 +414,7 @@ Number of active navigation agents processing avoidance in the :ref:`NavigationS
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_LINK_COUNT** = ``42``
 
-Number of active navigation links in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số lượng liên kết điều hướng đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_POLYGON_COUNT:
 
@@ -422,7 +422,7 @@ Number of active navigation links in the :ref:`NavigationServer2D<class_Navigati
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_POLYGON_COUNT** = ``43``
 
-Number of navigation mesh polygons in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số lượng đa giác của lưới điều hướng trong :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_EDGE_COUNT:
 
@@ -430,7 +430,7 @@ Number of navigation mesh polygons in the :ref:`NavigationServer2D<class_Navigat
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_COUNT** = ``44``
 
-Number of navigation mesh polygon edges in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số lượng cạnh đa giác của lưới điều hướng trong :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_EDGE_MERGE_COUNT:
 
@@ -438,7 +438,7 @@ Number of navigation mesh polygon edges in the :ref:`NavigationServer2D<class_Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_MERGE_COUNT** = ``45``
 
-Number of navigation mesh polygon edges that were merged due to edge key overlap in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số lượng cạnh đa giác của lưới điều hướng đã được hợp nhất do các khóa cạnh bị trùng lặp trong :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_EDGE_CONNECTION_COUNT:
 
@@ -446,7 +446,7 @@ Number of navigation mesh polygon edges that were merged due to edge key overlap
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_CONNECTION_COUNT** = ``46``
 
-Number of polygon edges that are considered connected by edge proximity :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số cạnh đa giác được xem là kết nối do độ gần của cạnh :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_2D_EDGE_FREE_COUNT:
 
@@ -454,7 +454,7 @@ Number of polygon edges that are considered connected by edge proximity :ref:`Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_EDGE_FREE_COUNT** = ``47``
 
-Number of navigation mesh polygon edges that could not be merged in the :ref:`NavigationServer2D<class_NavigationServer2D>`. The edges still may be connected by edge proximity or with links.
+Số cạnh đa giác của navigation mesh không thể được hợp nhất trong :ref:`NavigationServer2D<class_NavigationServer2D>`. Các cạnh này vẫn có thể được kết nối do độ gần của cạnh hoặc bằng các liên kết.
 
 .. _class_Performance_constant_NAVIGATION_2D_OBSTACLE_COUNT:
 
@@ -462,7 +462,7 @@ Number of navigation mesh polygon edges that could not be merged in the :ref:`Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_2D_OBSTACLE_COUNT** = ``48``
 
-Number of active navigation obstacles in the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Số chướng ngại vật navigation đang hoạt động trong :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_ACTIVE_MAPS:
 
@@ -470,7 +470,7 @@ Number of active navigation obstacles in the :ref:`NavigationServer2D<class_Navi
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_ACTIVE_MAPS** = ``49``
 
-Number of active navigation maps in the :ref:`NavigationServer3D<class_NavigationServer3D>`. This also includes the empty default navigation maps created by :ref:`World3D<class_World3D>` instances.
+Số bản đồ navigation đang hoạt động trong :ref:`NavigationServer3D<class_NavigationServer3D>`. Số này cũng bao gồm các bản đồ navigation mặc định trống được tạo bởi các instance :ref:`World3D<class_World3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_REGION_COUNT:
 
@@ -478,7 +478,7 @@ Number of active navigation maps in the :ref:`NavigationServer3D<class_Navigatio
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_REGION_COUNT** = ``50``
 
-Number of active navigation regions in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số vùng navigation đang hoạt động trong :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_AGENT_COUNT:
 
@@ -486,7 +486,7 @@ Number of active navigation regions in the :ref:`NavigationServer3D<class_Naviga
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_AGENT_COUNT** = ``51``
 
-Number of active navigation agents processing avoidance in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số agent navigation đang hoạt động và xử lý việc tránh né trong :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_LINK_COUNT:
 
@@ -494,7 +494,7 @@ Number of active navigation agents processing avoidance in the :ref:`NavigationS
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_LINK_COUNT** = ``52``
 
-Number of active navigation links in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số liên kết navigation đang hoạt động trong :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_POLYGON_COUNT:
 
@@ -502,7 +502,7 @@ Number of active navigation links in the :ref:`NavigationServer3D<class_Navigati
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_POLYGON_COUNT** = ``53``
 
-Number of navigation mesh polygons in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số lượng polygon của navigation mesh trong :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_EDGE_COUNT:
 
@@ -510,7 +510,7 @@ Number of navigation mesh polygons in the :ref:`NavigationServer3D<class_Navigat
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_COUNT** = ``54``
 
-Number of navigation mesh polygon edges in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số lượng cạnh polygon của navigation mesh trong :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_EDGE_MERGE_COUNT:
 
@@ -518,7 +518,7 @@ Number of navigation mesh polygon edges in the :ref:`NavigationServer3D<class_Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_MERGE_COUNT** = ``55``
 
-Number of navigation mesh polygon edges that were merged due to edge key overlap in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số lượng cạnh polygon của navigation mesh đã được hợp nhất do các khóa cạnh bị trùng trong :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_EDGE_CONNECTION_COUNT:
 
@@ -526,7 +526,7 @@ Number of navigation mesh polygon edges that were merged due to edge key overlap
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_CONNECTION_COUNT** = ``56``
 
-Number of polygon edges that are considered connected by edge proximity :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số lượng cạnh polygon được xem là liên kết với nhau do độ gần của cạnh :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_NAVIGATION_3D_EDGE_FREE_COUNT:
 
@@ -534,7 +534,7 @@ Number of polygon edges that are considered connected by edge proximity :ref:`Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_EDGE_FREE_COUNT** = ``57``
 
-Number of navigation mesh polygon edges that could not be merged in the :ref:`NavigationServer3D<class_NavigationServer3D>`. The edges still may be connected by edge proximity or with links.
+Số lượng cạnh polygon của navigation mesh không thể hợp nhất trong :ref:`NavigationServer3D<class_NavigationServer3D>`. Các cạnh này vẫn có thể được liên kết với nhau do độ gần của cạnh hoặc bằng các liên kết.
 
 .. _class_Performance_constant_NAVIGATION_3D_OBSTACLE_COUNT:
 
@@ -542,7 +542,7 @@ Number of navigation mesh polygon edges that could not be merged in the :ref:`Na
 
 :ref:`Monitor<enum_Performance_Monitor>` **NAVIGATION_3D_OBSTACLE_COUNT** = ``58``
 
-Number of active navigation obstacles in the :ref:`NavigationServer3D<class_NavigationServer3D>`.
+Số lượng chướng ngại vật navigation đang hoạt động trong :ref:`NavigationServer3D<class_NavigationServer3D>`.
 
 .. _class_Performance_constant_MONITOR_MAX:
 
@@ -550,7 +550,7 @@ Number of active navigation obstacles in the :ref:`NavigationServer3D<class_Navi
 
 :ref:`Monitor<enum_Performance_Monitor>` **MONITOR_MAX** = ``59``
 
-Represents the size of the :ref:`Monitor<enum_Performance_Monitor>` enum.
+Đại diện cho kích thước của enum :ref:`Monitor <enum_Performance_Monitor>`.
 
 .. rst-class:: classref-item-separator
 
@@ -560,7 +560,7 @@ Represents the size of the :ref:`Monitor<enum_Performance_Monitor>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **MonitorType**: :ref:`🔗<enum_Performance_MonitorType>`
+enum **MonitorType**: :ref:`🔗 <enum_Performance_MonitorType>`
 
 .. _class_Performance_constant_MONITOR_TYPE_QUANTITY:
 
@@ -568,7 +568,7 @@ enum **MonitorType**: :ref:`🔗<enum_Performance_MonitorType>`
 
 :ref:`MonitorType<enum_Performance_MonitorType>` **MONITOR_TYPE_QUANTITY** = ``0``
 
-Monitor output is formatted as an integer value.
+Đầu ra của monitor được định dạng dưới dạng một giá trị số nguyên.
 
 .. _class_Performance_constant_MONITOR_TYPE_MEMORY:
 
@@ -576,7 +576,7 @@ Monitor output is formatted as an integer value.
 
 :ref:`MonitorType<enum_Performance_MonitorType>` **MONITOR_TYPE_MEMORY** = ``1``
 
-Monitor output is formatted as computer memory. Submitted values should represent a number of bytes.
+Đầu ra của monitor được định dạng dưới dạng bộ nhớ máy tính. Các giá trị được gửi phải biểu thị số byte.
 
 .. _class_Performance_constant_MONITOR_TYPE_TIME:
 
@@ -584,7 +584,7 @@ Monitor output is formatted as computer memory. Submitted values should represen
 
 :ref:`MonitorType<enum_Performance_MonitorType>` **MONITOR_TYPE_TIME** = ``2``
 
-Monitor output is formatted as time in milliseconds. Submitted values should represent a time in seconds (not milliseconds).
+Đầu ra của monitor được định dạng dưới dạng thời gian tính bằng mili giây. Các giá trị được gửi phải biểu thị thời gian tính bằng giây (không phải mili giây).
 
 .. _class_Performance_constant_MONITOR_TYPE_PERCENTAGE:
 
@@ -592,7 +592,7 @@ Monitor output is formatted as time in milliseconds. Submitted values should rep
 
 :ref:`MonitorType<enum_Performance_MonitorType>` **MONITOR_TYPE_PERCENTAGE** = ``3``
 
-Monitor output is formatted as a percentage. Submitted values should represent a fractional value rather than the percentage directly, e.g. ``0.5`` for ``50.00%``.
+Đầu ra của monitor được định dạng dưới dạng phần trăm. Các giá trị được gửi phải biểu thị một giá trị phân số thay vì trực tiếp là phần trăm, ví dụ: ``0.5`` cho ``50.00%``.
 
 .. rst-class:: classref-section-separator
 
@@ -600,8 +600,8 @@ Monitor output is formatted as a percentage. Submitted values should represent a
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Performance_method_add_custom_monitor:
 
@@ -609,7 +609,7 @@ Method Descriptions
 
 |void| **add_custom_monitor**\ (\ id\: :ref:`StringName<class_StringName>`, callable\: :ref:`Callable<class_Callable>`, arguments\: :ref:`Array<class_Array>` = [], type\: :ref:`MonitorType<enum_Performance_MonitorType>` = 0\ ) :ref:`🔗<class_Performance_method_add_custom_monitor>`
 
-Adds a custom monitor with the name ``id``. You can specify the category of the monitor using slash delimiters in ``id`` (for example: ``"Game/NumberOfNPCs"``). If there is more than one slash delimiter, then the default category is used. The default category is ``"Custom"``. Prints an error if given ``id`` is already present.
+Thêm một monitor tùy chỉnh có tên ``id``. Bạn có thể chỉ định danh mục của monitor bằng cách sử dụng dấu gạch chéo làm dấu phân cách trong ``id`` (ví dụ: ``"Game/NumberOfNPCs"``). Nếu có nhiều hơn một dấu gạch chéo làm dấu phân cách, danh mục mặc định sẽ được sử dụng. Danh mục mặc định là ``"Custom"``. In lỗi nếu ``id`` đã tồn tại.
 
 
 .. tabs::
@@ -619,18 +619,18 @@ Adds a custom monitor with the name ``id``. You can specify the category of the 
     func _ready():
         var monitor_value = Callable(self, "get_monitor_value")
 
-        # Adds monitor with name "MyName" to category "MyCategory".
+        # Thêm monitor có tên "MyName" vào category "MyCategory".
         Performance.add_custom_monitor("MyCategory/MyMonitor", monitor_value)
 
-        # Adds monitor with name "MyName" to category "Custom".
-        # Note: "MyCategory/MyMonitor" and "MyMonitor" have same name but different IDs, so the code is valid.
+        # Thêm monitor có tên "MyName" vào category "Custom".
+        # Lưu ý: "MyCategory/MyMonitor" và "MyMonitor" có cùng tên nhưng ID khác nhau, vì vậy code này hợp lệ.
         Performance.add_custom_monitor("MyMonitor", monitor_value)
 
-        # Adds monitor with name "MyName" to category "Custom".
-        # Note: "MyMonitor" and "Custom/MyMonitor" have same name and same category but different IDs, so the code is valid.
+        # Thêm monitor có tên "MyName" vào category "Custom".
+        # Lưu ý: "MyMonitor" và "Custom/MyMonitor" có cùng tên và cùng category nhưng ID khác nhau, vì vậy code này hợp lệ.
         Performance.add_custom_monitor("Custom/MyMonitor", monitor_value)
 
-        # Adds monitor with name "MyCategoryOne/MyCategoryTwo/MyMonitor" to category "Custom".
+        # Thêm monitor có tên "MyCategoryOne/MyCategoryTwo/MyMonitor" vào category "Custom".
         Performance.add_custom_monitor("MyCategoryOne/MyCategoryTwo/MyMonitor", monitor_value)
 
     func get_monitor_value():
@@ -642,17 +642,17 @@ Adds a custom monitor with the name ``id``. You can specify the category of the 
     {
         var monitorValue = new Callable(this, MethodName.GetMonitorValue);
 
-        // Adds monitor with name "MyName" to category "MyCategory".
+        // Thêm monitor có tên "MyName" vào category "MyCategory".
         Performance.AddCustomMonitor("MyCategory/MyMonitor", monitorValue);
-        // Adds monitor with name "MyName" to category "Custom".
-        // Note: "MyCategory/MyMonitor" and "MyMonitor" have same name but different ids so the code is valid.
+        // Thêm monitor có tên "MyName" vào category "Custom".
+        // Lưu ý: "MyCategory/MyMonitor" và "MyMonitor" có cùng tên nhưng khác id, vì vậy mã này hợp lệ.
         Performance.AddCustomMonitor("MyMonitor", monitorValue);
 
-        // Adds monitor with name "MyName" to category "Custom".
-        // Note: "MyMonitor" and "Custom/MyMonitor" have same name and same category but different ids so the code is valid.
+        // Thêm monitor có tên "MyName" vào category "Custom".
+        // Lưu ý: "MyMonitor" và "Custom/MyMonitor" có cùng tên và cùng category nhưng khác id, vì vậy mã này hợp lệ.
         Performance.AddCustomMonitor("Custom/MyMonitor", monitorValue);
 
-        // Adds monitor with name "MyCategoryOne/MyCategoryTwo/MyMonitor" to category "Custom".
+        // Thêm monitor có tên "MyCategoryOne/MyCategoryTwo/MyMonitor" vào category "Custom".
         Performance.AddCustomMonitor("MyCategoryOne/MyCategoryTwo/MyMonitor", monitorValue);
     }
 
@@ -663,9 +663,9 @@ Adds a custom monitor with the name ``id``. You can specify the category of the 
 
 
 
-The debugger calls the callable to get the value of custom monitor. The callable must return a zero or positive integer or floating-point number.
+Debugger gọi callable để lấy giá trị của monitor tùy chỉnh. Callable phải trả về một số nguyên hoặc số dấu phẩy động bằng không hoặc dương.
 
-Callables are called with arguments supplied in argument array.
+Các callable được gọi với những đối số được cung cấp trong mảng đối số.
 
 .. rst-class:: classref-item-separator
 
@@ -677,7 +677,7 @@ Callables are called with arguments supplied in argument array.
 
 :ref:`Variant<class_Variant>` **get_custom_monitor**\ (\ id\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Performance_method_get_custom_monitor>`
 
-Returns the value of custom monitor with given ``id``. The callable is called to get the value of custom monitor. See also :ref:`has_custom_monitor()<class_Performance_method_has_custom_monitor>`. Prints an error if the given ``id`` is absent.
+Trả về giá trị của custom monitor có ``id`` đã cho. Callable được gọi để lấy giá trị của custom monitor. Xem thêm :ref:`has_custom_monitor()<class_Performance_method_has_custom_monitor>`. In lỗi nếu không có ``id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -689,7 +689,7 @@ Returns the value of custom monitor with given ``id``. The callable is called to
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_custom_monitor_names**\ (\ ) :ref:`🔗<class_Performance_method_get_custom_monitor_names>`
 
-Returns the names of active custom monitors in an :ref:`Array<class_Array>`.
+Trả về tên của các custom monitor đang hoạt động trong một :ref:`Array<class_Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -701,7 +701,7 @@ Returns the names of active custom monitors in an :ref:`Array<class_Array>`.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_custom_monitor_types**\ (\ ) :ref:`🔗<class_Performance_method_get_custom_monitor_types>`
 
-Returns the :ref:`MonitorType<enum_Performance_MonitorType>` values of active custom monitors in an :ref:`Array<class_Array>`.
+Trả về các giá trị :ref:`MonitorType <enum_Performance_MonitorType>` của các custom monitor đang hoạt động trong một :ref:`Array<class_Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -713,22 +713,22 @@ Returns the :ref:`MonitorType<enum_Performance_MonitorType>` values of active cu
 
 :ref:`float<class_float>` **get_monitor**\ (\ monitor\: :ref:`Monitor<enum_Performance_Monitor>`\ ) |const| :ref:`🔗<class_Performance_method_get_monitor>`
 
-Returns the value of one of the available built-in monitors. You should provide one of the :ref:`Monitor<enum_Performance_Monitor>` constants as the argument, like this:
+Trả về giá trị của một trong các monitor tích hợp sẵn. Bạn nên cung cấp một trong các hằng số :ref:`Monitor <enum_Performance_Monitor>` làm đối số, như sau:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    print(Performance.get_monitor(Performance.TIME_FPS)) # Prints the FPS to the console.
+    print(Performance.get_monitor(Performance.TIME_FPS)) # In FPS ra console.
 
  .. code-tab:: csharp
 
-    GD.Print(Performance.GetMonitor(Performance.Monitor.TimeFps)); // Prints the FPS to the console.
+    GD.Print(Performance.GetMonitor(Performance.Monitor.TimeFps)); // In FPS ra console.
 
 
 
-See :ref:`get_custom_monitor()<class_Performance_method_get_custom_monitor>` to query custom performance monitors' values.
+Xem :ref:`get_custom_monitor()<class_Performance_method_get_custom_monitor>` để truy vấn giá trị của các custom performance monitor.
 
 .. rst-class:: classref-item-separator
 
@@ -740,7 +740,7 @@ See :ref:`get_custom_monitor()<class_Performance_method_get_custom_monitor>` to 
 
 :ref:`int<class_int>` **get_monitor_modification_time**\ (\ ) :ref:`🔗<class_Performance_method_get_monitor_modification_time>`
 
-Returns the last tick in which custom monitor was added/removed (in microseconds since the engine started). This is set to :ref:`Time.get_ticks_usec()<class_Time_method_get_ticks_usec>` when the monitor is updated.
+Trả về tick cuối cùng mà custom monitor được thêm vào/xóa đi (tính bằng microsecond kể từ khi engine khởi động). Giá trị này được đặt thành :ref:`Time.get_ticks_usec()<class_Time_method_get_ticks_usec>` khi monitor được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -752,7 +752,7 @@ Returns the last tick in which custom monitor was added/removed (in microseconds
 
 :ref:`bool<class_bool>` **has_custom_monitor**\ (\ id\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Performance_method_has_custom_monitor>`
 
-Returns ``true`` if custom monitor with the given ``id`` is present, ``false`` otherwise.
+Trả về ``true`` nếu custom monitor có ``id`` đã cho tồn tại, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -764,14 +764,14 @@ Returns ``true`` if custom monitor with the given ``id`` is present, ``false`` o
 
 |void| **remove_custom_monitor**\ (\ id\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Performance_method_remove_custom_monitor>`
 
-Removes the custom monitor with given ``id``. Prints an error if the given ``id`` is already absent.
+Xóa custom monitor có ``id`` đã cho. In lỗi nếu ``id`` đã cho không còn tồn tại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

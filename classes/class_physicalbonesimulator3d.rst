@@ -10,21 +10,21 @@
 PhysicalBoneSimulator3D
 =======================
 
-**Inherits:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Node that can be the parent of :ref:`PhysicalBone3D<class_PhysicalBone3D>` and can apply the simulation results to :ref:`Skeleton3D<class_Skeleton3D>`.
+Node có thể là nút cha của :ref:`PhysicalBone3D<class_PhysicalBone3D>` và có thể áp dụng các kết quả mô phỏng cho :ref:`Skeleton3D<class_Skeleton3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Node that can be the parent of :ref:`PhysicalBone3D<class_PhysicalBone3D>` and can apply the simulation results to :ref:`Skeleton3D<class_Skeleton3D>`.
+Node có thể là nút cha của :ref:`PhysicalBone3D<class_PhysicalBone3D>` và có thể áp dụng các kết quả mô phỏng cho :ref:`Skeleton3D<class_Skeleton3D>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -47,8 +47,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PhysicalBoneSimulator3D_method_is_simulating_physics:
 
@@ -56,7 +56,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_simulating_physics**\ (\ ) |const| :ref:`🔗<class_PhysicalBoneSimulator3D_method_is_simulating_physics>`
 
-Returns a boolean that indicates whether the **PhysicalBoneSimulator3D** is running and simulating.
+Trả về một giá trị boolean cho biết **PhysicalBoneSimulator3D** đang chạy và mô phỏng.
 
 .. rst-class:: classref-item-separator
 
@@ -68,9 +68,9 @@ Returns a boolean that indicates whether the **PhysicalBoneSimulator3D** is runn
 
 |void| **physical_bones_add_collision_exception**\ (\ exception\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicalBoneSimulator3D_method_physical_bones_add_collision_exception>`
 
-Adds a collision exception to the physical bone.
+Thêm một ngoại lệ va chạm cho xương vật lý.
 
-Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
+Hoạt động giống hệt node :ref:`RigidBody3D<class_RigidBody3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -82,9 +82,9 @@ Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
 
 |void| **physical_bones_remove_collision_exception**\ (\ exception\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_PhysicalBoneSimulator3D_method_physical_bones_remove_collision_exception>`
 
-Removes a collision exception to the physical bone.
+Xóa một ngoại lệ va chạm khỏi xương vật lý.
 
-Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
+Hoạt động giống hệt node :ref:`RigidBody3D<class_RigidBody3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -96,9 +96,9 @@ Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
 
 |void| **physical_bones_start_simulation**\ (\ bones\: :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] = []\ ) :ref:`🔗<class_PhysicalBoneSimulator3D_method_physical_bones_start_simulation>`
 
-Tells the :ref:`PhysicalBone3D<class_PhysicalBone3D>` nodes in the Skeleton to start simulating and reacting to the physics world.
+Yêu cầu các node :ref:`PhysicalBone3D<class_PhysicalBone3D>` trong Skeleton bắt đầu mô phỏng và phản ứng với thế giới vật lý.
 
-Optionally, a list of bone names can be passed-in, allowing only the passed-in bones to be simulated.
+Tùy chọn, có thể truyền vào danh sách tên xương, để chỉ các xương được truyền vào mới được mô phỏng.
 
 .. rst-class:: classref-item-separator
 
@@ -110,14 +110,14 @@ Optionally, a list of bone names can be passed-in, allowing only the passed-in b
 
 |void| **physical_bones_stop_simulation**\ (\ ) :ref:`🔗<class_PhysicalBoneSimulator3D_method_physical_bones_stop_simulation>`
 
-Tells the :ref:`PhysicalBone3D<class_PhysicalBone3D>` nodes in the Skeleton to stop simulating.
+Yêu cầu các node :ref:`PhysicalBone3D<class_PhysicalBone3D>` trong Skeleton dừng mô phỏng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

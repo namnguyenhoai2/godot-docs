@@ -10,33 +10,33 @@
 AudioEffectDelay
 ================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a delay audio effect to an audio bus.
+Thêm hiệu ứng âm thanh delay vào một bus âm thanh.
 
-Emulates an echo by playing the input audio back after a period of time.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "delay" effect plays the input audio signal back after a period of time. Each repetition is called a "delay tap" or simply "tap". Delay taps may be played back multiple times to create the sound of a repeating, decaying echo. Delay effects range from a subtle echo to a pronounced blending of previous sounds with new sounds.
-
-See also :ref:`AudioEffectReverb<class_AudioEffectReverb>` for a blurry, continuous echo.
+Mô phỏng tiếng vang bằng cách phát lại âm thanh đầu vào sau một khoảng thời gian.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Hiệu ứng "delay" phát lại tín hiệu âm thanh đầu vào sau một khoảng thời gian. Mỗi lần lặp lại được gọi là một "delay tap" hoặc đơn giản là "tap". Các delay tap có thể được phát lại nhiều lần để tạo ra âm thanh của tiếng vang lặp lại và nhỏ dần. Hiệu ứng delay có thể tạo ra âm vang nhẹ hoặc sự hòa trộn rõ rệt giữa âm thanh trước đó và âm thanh mới.
+
+Xem thêm :ref:`AudioEffectReverb<class_AudioEffectReverb>` để biết về một tiếng vang mờ và liên tục.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Các bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -76,8 +76,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectDelay_property_dry:
 
@@ -90,7 +90,7 @@ Property Descriptions
 - |void| **set_dry**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_dry**\ (\ )
 
-The volume ratio of the original audio. Value can range from 0 to 1.
+Tỷ lệ âm lượng của âm thanh gốc. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ The volume ratio of the original audio. Value can range from 0 to 1.
 - |void| **set_feedback_active**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_feedback_active**\ (\ )
 
-If ``true``, feedback is enabled, repeating taps after they are played.
+Nếu ``true``, feedback được bật, khiến các tap được lặp lại sau khi phát.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ If ``true``, feedback is enabled, repeating taps after they are played.
 - |void| **set_feedback_delay_ms**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_feedback_delay_ms**\ (\ )
 
-Feedback delay time in milliseconds. Value can range from 0 to 1500.
+Thời gian trễ feedback tính bằng mili giây. Giá trị có thể nằm trong khoảng từ 0 đến 1500.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Feedback delay time in milliseconds. Value can range from 0 to 1500.
 - |void| **set_feedback_level_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_feedback_level_db**\ (\ )
 
-Gain for feedback, in dB. Value can range from -60 to 0.
+Độ lợi cho feedback, tính bằng dB. Giá trị có thể nằm trong khoảng từ -60 đến 0.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Gain for feedback, in dB. Value can range from -60 to 0.
 - |void| **set_feedback_lowpass**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_feedback_lowpass**\ (\ )
 
-Low-pass filter for feedback, in Hz. Frequencies above this value are filtered out. Value can range from 1 to 16000.
+Bộ lọc thông thấp cho feedback, tính bằng Hz. Các tần số cao hơn giá trị này sẽ bị lọc. Giá trị có thể nằm trong khoảng từ 1 đến 16000.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Low-pass filter for feedback, in Hz. Frequencies above this value are filtered o
 - |void| **set_tap1_active**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_tap1_active**\ (\ )
 
-If ``true``, the first tap will be enabled.
+Nếu ``true``, tap đầu tiên sẽ được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ If ``true``, the first tap will be enabled.
 - |void| **set_tap1_delay_ms**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_tap1_delay_ms**\ (\ )
 
-First tap delay time in milliseconds, compared to the original audio. Value can range from 0 to 1500.
+Thời gian trễ của tap đầu tiên tính bằng mili giây, so với âm thanh gốc. Giá trị có thể nằm trong khoảng từ 0 đến 1500.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ First tap delay time in milliseconds, compared to the original audio. Value can 
 - |void| **set_tap1_level_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_tap1_level_db**\ (\ )
 
-Gain for the first tap, in dB. Value can range from -60 to 0.
+Độ lợi cho tap đầu tiên, tính bằng dB. Giá trị có thể nằm trong khoảng từ -60 đến 0.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ Gain for the first tap, in dB. Value can range from -60 to 0.
 - |void| **set_tap1_pan**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_tap1_pan**\ (\ )
 
-Pan position for the first tap. Negative values pan the sound to the left, positive pan to the right. Value can range from -1 to 1.
+Vị trí pan của tap đầu tiên. Giá trị âm pan âm thanh sang trái, giá trị dương pan sang phải. Giá trị có thể nằm trong khoảng từ -1 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Pan position for the first tap. Negative values pan the sound to the left, posit
 - |void| **set_tap2_active**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_tap2_active**\ (\ )
 
-If ``true``, the second tap will be enabled.
+Nếu ``true``, tap thứ hai sẽ được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -260,7 +260,7 @@ If ``true``, the second tap will be enabled.
 - |void| **set_tap2_delay_ms**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_tap2_delay_ms**\ (\ )
 
-Second tap delay time in milliseconds, compared to the original audio. Value can range from 0 to 1500.
+Thời gian trễ của tap thứ hai tính bằng mili giây, so với âm thanh gốc. Giá trị có thể nằm trong khoảng từ 0 đến 1500.
 
 .. rst-class:: classref-item-separator
 
@@ -277,7 +277,7 @@ Second tap delay time in milliseconds, compared to the original audio. Value can
 - |void| **set_tap2_level_db**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_tap2_level_db**\ (\ )
 
-Gain for the second tap, in dB. Value can range from -60 to 0.
+Gain của tap thứ hai, tính bằng dB. Giá trị có thể nằm trong khoảng từ -60 đến 0.
 
 .. rst-class:: classref-item-separator
 
@@ -294,14 +294,14 @@ Gain for the second tap, in dB. Value can range from -60 to 0.
 - |void| **set_tap2_pan**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_tap2_pan**\ (\ )
 
-Pan position for the second tap. Negative values pan the sound to the left, positive pan to the right. Value can range from -1 to 1.
+Vị trí pan của tap thứ hai. Giá trị âm sẽ pan âm thanh sang trái, giá trị dương sẽ pan sang phải. Giá trị có thể nằm trong khoảng từ -1 đến 1.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

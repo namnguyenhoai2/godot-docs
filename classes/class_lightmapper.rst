@@ -10,27 +10,27 @@
 Lightmapper
 ===========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`LightmapperRD<class_LightmapperRD>`
+**Được kế thừa bởi:** :ref:`LightmapperRD<class_LightmapperRD>`
 
-Abstract class extended by lightmappers, for use in :ref:`LightmapGI<class_LightmapGI>`.
+Lớp trừu tượng được các lightmapper mở rộng để sử dụng trong :ref:`LightmapGI<class_LightmapGI>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This class should be extended by custom lightmapper classes. Lightmappers can then be used with :ref:`LightmapGI<class_LightmapGI>` to provide fast baked global illumination in 3D.
+Lớp này nên được mở rộng bởi các lớp lightmapper tùy chỉnh. Sau đó, có thể sử dụng các lightmapper với :ref:`LightmapGI<class_LightmapGI>` để cung cấp khả năng chiếu sáng toàn cục được bake nhanh trong không gian 3D.
 
-Godot contains a built-in GPU-based lightmapper :ref:`LightmapperRD<class_LightmapperRD>` that uses compute shaders, but custom lightmappers can be implemented by C++ modules.
+Godot có sẵn lightmapper dựa trên GPU :ref:`LightmapperRD<class_LightmapperRD>`, sử dụng compute shader, nhưng có thể triển khai các lightmapper tùy chỉnh bằng các module C++.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

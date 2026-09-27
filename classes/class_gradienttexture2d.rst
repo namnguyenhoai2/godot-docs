@@ -10,46 +10,46 @@
 GradientTexture2D
 =================
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 2D texture that creates a pattern with colors obtained from a :ref:`Gradient<class_Gradient>`.
+Một texture 2D tạo ra một pattern với các màu lấy từ một :ref:`Gradient<class_Gradient>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 2D texture that obtains colors from a :ref:`Gradient<class_Gradient>` to fill the texture data. This texture is able to transform a color transition into different patterns such as a linear or a radial gradient. The texture is filled by interpolating colors starting from :ref:`fill_from<class_GradientTexture2D_property_fill_from>` to :ref:`fill_to<class_GradientTexture2D_property_fill_to>` offsets by default, but the gradient fill can be repeated to cover the entire texture.
+Một texture 2D lấy các màu từ một :ref:`Gradient<class_Gradient>` để lấp đầy dữ liệu texture. Texture này có thể biến đổi một chuyển tiếp màu thành các pattern khác nhau, chẳng hạn như gradient tuyến tính hoặc gradient xuyên tâm. Theo mặc định, texture được lấp đầy bằng cách nội suy các màu, bắt đầu từ offset :ref:`fill_from<class_GradientTexture2D_property_fill_from>` đến :ref:`fill_to<class_GradientTexture2D_property_fill_to>`, nhưng phần tô gradient có thể được lặp lại để phủ toàn bộ texture.
 
-The gradient is sampled individually for each pixel so it does not necessarily represent an exact copy of the gradient (see :ref:`width<class_GradientTexture2D_property_width>` and :ref:`height<class_GradientTexture2D_property_height>`). See also :ref:`GradientTexture1D<class_GradientTexture1D>`, :ref:`CurveTexture<class_CurveTexture>` and :ref:`CurveXYZTexture<class_CurveXYZTexture>`.
+Gradient được lấy mẫu riêng cho từng pixel, vì vậy không nhất thiết thể hiện bản sao chính xác của gradient (xem :ref:`width<class_GradientTexture2D_property_width>` và :ref:`height<class_GradientTexture2D_property_height>`). Xem thêm :ref:`GradientTexture1D<class_GradientTexture1D>`, :ref:`CurveTexture<class_CurveTexture>` và :ref:`CurveXYZTexture<class_CurveXYZTexture>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Fill<enum_GradientTexture2D_Fill>`     | :ref:`fill<class_GradientTexture2D_property_fill>`           | ``0``                                                                                  |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                | :ref:`fill_from<class_GradientTexture2D_property_fill_from>` | ``Vector2(0, 0)``                                                                      |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`                | :ref:`fill_to<class_GradientTexture2D_property_fill_to>`     | ``Vector2(1, 0)``                                                                      |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Gradient<class_Gradient>`              | :ref:`gradient<class_GradientTexture2D_property_gradient>`   |                                                                                        |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                        | :ref:`height<class_GradientTexture2D_property_height>`       | ``64``                                                                                 |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Repeat<enum_GradientTexture2D_Repeat>` | :ref:`repeat<class_GradientTexture2D_property_repeat>`       | ``0``                                                                                  |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                      | resource_local_to_scene                                      | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                      | :ref:`use_hdr<class_GradientTexture2D_property_use_hdr>`     | ``false``                                                                              |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                        | :ref:`width<class_GradientTexture2D_property_width>`         | ``64``                                                                                 |
-   +----------------------------------------------+--------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Fill <enum_GradientTexture2D_Fill>`     | :ref:`fill<class_GradientTexture2D_property_fill>`           | ``0``                                                                               |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                 | :ref:`fill_from<class_GradientTexture2D_property_fill_from>` | ``Vector2(0, 0)``                                                                   |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`                 | :ref:`fill_to<class_GradientTexture2D_property_fill_to>`     | ``Vector2(1, 0)``                                                                   |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Gradient<class_Gradient>`               | :ref:`gradient<class_GradientTexture2D_property_gradient>`   |                                                                                     |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                         | :ref:`height<class_GradientTexture2D_property_height>`       | ``64``                                                                              |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Repeat <enum_GradientTexture2D_Repeat>` | :ref:`repeat<class_GradientTexture2D_property_repeat>`       | ``0``                                                                               |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                       | resource_local_to_scene                                      | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                       | :ref:`use_hdr<class_GradientTexture2D_property_use_hdr>`     | ``false``                                                                           |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                         | :ref:`width<class_GradientTexture2D_property_width>`         | ``64``                                                                              |
+   +-----------------------------------------------+--------------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -57,14 +57,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_GradientTexture2D_Fill:
 
 .. rst-class:: classref-enumeration
 
-enum **Fill**: :ref:`🔗<enum_GradientTexture2D_Fill>`
+enum **Fill**: :ref:`🔗 <enum_GradientTexture2D_Fill>`
 
 .. _class_GradientTexture2D_constant_FILL_LINEAR:
 
@@ -72,7 +72,7 @@ enum **Fill**: :ref:`🔗<enum_GradientTexture2D_Fill>`
 
 :ref:`Fill<enum_GradientTexture2D_Fill>` **FILL_LINEAR** = ``0``
 
-The colors are linearly interpolated in a straight line.
+Các màu được nội suy tuyến tính theo một đường thẳng.
 
 .. _class_GradientTexture2D_constant_FILL_RADIAL:
 
@@ -80,7 +80,7 @@ The colors are linearly interpolated in a straight line.
 
 :ref:`Fill<enum_GradientTexture2D_Fill>` **FILL_RADIAL** = ``1``
 
-The colors are linearly interpolated in a circular pattern.
+Các màu được nội suy tuyến tính theo một đường tròn.
 
 .. _class_GradientTexture2D_constant_FILL_SQUARE:
 
@@ -88,7 +88,7 @@ The colors are linearly interpolated in a circular pattern.
 
 :ref:`Fill<enum_GradientTexture2D_Fill>` **FILL_SQUARE** = ``2``
 
-The colors are linearly interpolated in a square pattern.
+Các màu được nội suy tuyến tính theo mẫu hình vuông.
 
 .. _class_GradientTexture2D_constant_FILL_CONIC:
 
@@ -96,7 +96,7 @@ The colors are linearly interpolated in a square pattern.
 
 :ref:`Fill<enum_GradientTexture2D_Fill>` **FILL_CONIC** = ``3``
 
-The colors are linearly interpolated in a cone pattern.
+Các màu được nội suy tuyến tính theo mẫu hình nón.
 
 .. rst-class:: classref-item-separator
 
@@ -106,7 +106,7 @@ The colors are linearly interpolated in a cone pattern.
 
 .. rst-class:: classref-enumeration
 
-enum **Repeat**: :ref:`🔗<enum_GradientTexture2D_Repeat>`
+enum **Repeat**: :ref:`🔗 <enum_GradientTexture2D_Repeat>`
 
 .. _class_GradientTexture2D_constant_REPEAT_NONE:
 
@@ -114,7 +114,7 @@ enum **Repeat**: :ref:`🔗<enum_GradientTexture2D_Repeat>`
 
 :ref:`Repeat<enum_GradientTexture2D_Repeat>` **REPEAT_NONE** = ``0``
 
-The gradient fill is restricted to the range defined by :ref:`fill_from<class_GradientTexture2D_property_fill_from>` to :ref:`fill_to<class_GradientTexture2D_property_fill_to>` offsets.
+Phần tô chuyển màu bị giới hạn trong phạm vi được xác định bởi các offset từ :ref:`fill_from<class_GradientTexture2D_property_fill_from>` đến :ref:`fill_to<class_GradientTexture2D_property_fill_to>`.
 
 .. _class_GradientTexture2D_constant_REPEAT:
 
@@ -122,7 +122,7 @@ The gradient fill is restricted to the range defined by :ref:`fill_from<class_Gr
 
 :ref:`Repeat<enum_GradientTexture2D_Repeat>` **REPEAT** = ``1``
 
-The texture is filled starting from :ref:`fill_from<class_GradientTexture2D_property_fill_from>` to :ref:`fill_to<class_GradientTexture2D_property_fill_to>` offsets, repeating the same pattern in both directions.
+Họa tiết được tô bắt đầu từ các offset :ref:`fill_from<class_GradientTexture2D_property_fill_from>` đến :ref:`fill_to<class_GradientTexture2D_property_fill_to>`, lặp lại cùng một mẫu theo cả hai hướng.
 
 .. _class_GradientTexture2D_constant_REPEAT_MIRROR:
 
@@ -130,7 +130,7 @@ The texture is filled starting from :ref:`fill_from<class_GradientTexture2D_prop
 
 :ref:`Repeat<enum_GradientTexture2D_Repeat>` **REPEAT_MIRROR** = ``2``
 
-The texture is filled starting from :ref:`fill_from<class_GradientTexture2D_property_fill_from>` to :ref:`fill_to<class_GradientTexture2D_property_fill_to>` offsets, mirroring the pattern in both directions.
+Họa tiết được tô bắt đầu từ các offset :ref:`fill_from<class_GradientTexture2D_property_fill_from>` đến :ref:`fill_to<class_GradientTexture2D_property_fill_to>`, phản chiếu mẫu theo cả hai hướng.
 
 .. rst-class:: classref-section-separator
 
@@ -138,8 +138,8 @@ The texture is filled starting from :ref:`fill_from<class_GradientTexture2D_prop
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GradientTexture2D_property_fill:
 
@@ -152,7 +152,7 @@ Property Descriptions
 - |void| **set_fill**\ (\ value\: :ref:`Fill<enum_GradientTexture2D_Fill>`\ )
 - :ref:`Fill<enum_GradientTexture2D_Fill>` **get_fill**\ (\ )
 
-The gradient's fill type.
+Loại tô của gradient.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ The gradient's fill type.
 - |void| **set_fill_from**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_fill_from**\ (\ )
 
-The initial offset used to fill the texture specified in UV coordinates.
+Độ lệch ban đầu được dùng để tô texture được chỉ định trong tọa độ UV.
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ The initial offset used to fill the texture specified in UV coordinates.
 - |void| **set_fill_to**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_fill_to**\ (\ )
 
-The final offset used to fill the texture specified in UV coordinates.
+Độ lệch cuối cùng được dùng để tô texture được chỉ định trong tọa độ UV.
 
 .. rst-class:: classref-item-separator
 
@@ -196,14 +196,14 @@ The final offset used to fill the texture specified in UV coordinates.
 
 .. rst-class:: classref-property
 
-:ref:`Gradient<class_Gradient>` **gradient** :ref:`🔗<class_GradientTexture2D_property_gradient>`
+:ref:`Gradient<class_Gradient>` **gradient** :ref:`🔗 <class_GradientTexture2D_property_gradient>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_gradient**\ (\ value\: :ref:`Gradient<class_Gradient>`\ )
 - :ref:`Gradient<class_Gradient>` **get_gradient**\ (\ )
 
-The :ref:`Gradient<class_Gradient>` used to fill the texture.
+Đối tượng :ref:`Gradient<class_Gradient>` được dùng để tô texture.
 
 .. rst-class:: classref-item-separator
 
@@ -220,7 +220,7 @@ The :ref:`Gradient<class_Gradient>` used to fill the texture.
 - |void| **set_height**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_height**\ (\ )
 
-The number of vertical color samples that will be obtained from the :ref:`Gradient<class_Gradient>`, which also represents the texture's height.
+Số lượng mẫu màu theo chiều dọc sẽ được lấy từ :ref:`Gradient<class_Gradient>`, đồng thời cũng biểu thị chiều cao của texture.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ The number of vertical color samples that will be obtained from the :ref:`Gradie
 - |void| **set_repeat**\ (\ value\: :ref:`Repeat<enum_GradientTexture2D_Repeat>`\ )
 - :ref:`Repeat<enum_GradientTexture2D_Repeat>` **get_repeat**\ (\ )
 
-The gradient's repeat type.
+Kiểu lặp của gradient.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ The gradient's repeat type.
 - |void| **set_use_hdr**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_hdr**\ (\ )
 
-If ``true``, the generated texture will support high dynamic range (:ref:`Image.FORMAT_RGBAF<class_Image_constant_FORMAT_RGBAF>` format). This allows for glow effects to work if :ref:`Environment.glow_enabled<class_Environment_property_glow_enabled>` is ``true``. If ``false``, the generated texture will use low dynamic range; overbright colors will be clamped (:ref:`Image.FORMAT_RGBA8<class_Image_constant_FORMAT_RGBA8>` format).
+Nếu ``true``, texture được tạo sẽ hỗ trợ dải động cao (định dạng :ref:`Image.FORMAT_RGBAF<class_Image_constant_FORMAT_RGBAF>`). Điều này cho phép các hiệu ứng phát sáng hoạt động nếu :ref:`Environment.glow_enabled<class_Environment_property_glow_enabled>` là ``true``. Nếu ``false``, texture được tạo sẽ sử dụng dải động thấp; các màu quá sáng sẽ bị giới hạn (định dạng :ref:`Image.FORMAT_RGBA8<class_Image_constant_FORMAT_RGBA8>`).
 
 .. rst-class:: classref-item-separator
 
@@ -271,14 +271,14 @@ If ``true``, the generated texture will support high dynamic range (:ref:`Image.
 - |void| **set_width**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_width**\ (\ )
 
-The number of horizontal color samples that will be obtained from the :ref:`Gradient<class_Gradient>`, which also represents the texture's width.
+Số lượng mẫu màu theo chiều ngang sẽ được lấy từ :ref:`Gradient<class_Gradient>`, đồng thời cũng biểu thị chiều rộng của texture.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

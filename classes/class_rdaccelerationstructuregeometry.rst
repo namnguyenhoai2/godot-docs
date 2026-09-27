@@ -10,48 +10,48 @@
 RDAccelerationStructureGeometry
 ===============================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Acceleration structure geometry (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Hình học của cấu trúc gia tốc (được :ref:`RenderingDevice<class_RenderingDevice>` sử dụng).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**RDAccelerationStructureGeometry** describes a set of triangles used as raytracing geometry in the :ref:`RenderingDevice.blas_create()<class_RenderingDevice_method_blas_create>` method.
+**RDAccelerationStructureGeometry** mô tả một tập hợp các hình tam giác được sử dụng làm hình học raytracing trong phương thức :ref:`RenderingDevice.blas_create()<class_RenderingDevice_method_blas_create>`.
 
-The geometry is always in triangle list form, either indexed or non-indexed. Triangle strips are not supported.
+Hình học luôn ở dạng danh sách hình tam giác, có chỉ mục hoặc không có chỉ mục. Không hỗ trợ triangle strip.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | |bitfield|\[:ref:`AccelerationStructureGeometryFlagBits<enum_RenderingDevice_AccelerationStructureGeometryFlagBits>`\] | :ref:`flags<class_RDAccelerationStructureGeometry_property_flags>`                 | ``0``     |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`RID<class_RID>`                                                                                                  | :ref:`index_buffer<class_RDAccelerationStructureGeometry_property_index_buffer>`   | ``RID()`` |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`index_count<class_RDAccelerationStructureGeometry_property_index_count>`     | ``0``     |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`index_offset<class_RDAccelerationStructureGeometry_property_index_offset>`   | ``0``     |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`RID<class_RID>`                                                                                                  | :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>` | ``RID()`` |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`vertex_count<class_RDAccelerationStructureGeometry_property_vertex_count>`   | ``0``     |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`DataFormat<enum_RenderingDevice_DataFormat>`                                                                     | :ref:`vertex_format<class_RDAccelerationStructureGeometry_property_vertex_format>` | ``232``   |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`vertex_offset<class_RDAccelerationStructureGeometry_property_vertex_offset>` | ``0``     |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                                                                  | :ref:`vertex_stride<class_RDAccelerationStructureGeometry_property_vertex_stride>` | ``0``     |
-   +------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | |bitfield|\[:ref:`AccelerationStructureGeometryFlagBits <enum_RenderingDevice_AccelerationStructureGeometryFlagBits>`\] | :ref:`flags<class_RDAccelerationStructureGeometry_property_flags>`                 | ``0``     |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`RID<class_RID>`                                                                                                   | :ref:`index_buffer<class_RDAccelerationStructureGeometry_property_index_buffer>`   | ``RID()`` |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`index_count<class_RDAccelerationStructureGeometry_property_index_count>`     | ``0``     |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`index_offset<class_RDAccelerationStructureGeometry_property_index_offset>`   | ``0``     |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`RID<class_RID>`                                                                                                   | :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>` | ``RID()`` |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`vertex_count<class_RDAccelerationStructureGeometry_property_vertex_count>`   | ``0``     |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`DataFormat <enum_RenderingDevice_DataFormat>`                                                                     | :ref:`vertex_format<class_RDAccelerationStructureGeometry_property_vertex_format>` | ``232``   |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`vertex_offset<class_RDAccelerationStructureGeometry_property_vertex_offset>` | ``0``     |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                                                                   | :ref:`vertex_stride<class_RDAccelerationStructureGeometry_property_vertex_stride>` | ``0``     |
+   +-------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -59,8 +59,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDAccelerationStructureGeometry_property_flags:
 
@@ -73,7 +73,7 @@ Property Descriptions
 - |void| **set_flags**\ (\ value\: |bitfield|\[:ref:`AccelerationStructureGeometryFlagBits<enum_RenderingDevice_AccelerationStructureGeometryFlagBits>`\]\ )
 - |bitfield|\[:ref:`AccelerationStructureGeometryFlagBits<enum_RenderingDevice_AccelerationStructureGeometryFlagBits>`\] **get_flags**\ (\ )
 
-Flags for the geometry.
+Các cờ cho hình học.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ Flags for the geometry.
 - |void| **set_index_buffer**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_index_buffer**\ (\ )
 
-Buffer containing vertex indices. If ``null``, triangles are non-indexed.
+Bộ đệm chứa các chỉ mục đỉnh. Nếu ``null``, các hình tam giác không có chỉ mục.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ Buffer containing vertex indices. If ``null``, triangles are non-indexed.
 - |void| **set_index_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_index_count**\ (\ )
 
-Number of indices used by this geometry in :ref:`index_buffer<class_RDAccelerationStructureGeometry_property_index_buffer>`.
+Số lượng chỉ mục được hình học này sử dụng trong :ref:`index_buffer<class_RDAccelerationStructureGeometry_property_index_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ Number of indices used by this geometry in :ref:`index_buffer<class_RDAccelerati
 - |void| **set_index_offset**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_index_offset**\ (\ )
 
-Byte offset of the first index in :ref:`index_buffer<class_RDAccelerationStructureGeometry_property_index_buffer>`.
+Độ lệch byte của chỉ mục đầu tiên trong :ref:`index_buffer<class_RDAccelerationStructureGeometry_property_index_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ Byte offset of the first index in :ref:`index_buffer<class_RDAccelerationStructu
 - |void| **set_vertex_buffer**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_vertex_buffer**\ (\ )
 
-Buffer containing vertices.
+Bộ đệm chứa các đỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Buffer containing vertices.
 - |void| **set_vertex_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_vertex_count**\ (\ )
 
-Number of vertices used by this geometry in :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
+Số lượng đỉnh được hình học này sử dụng trong :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Number of vertices used by this geometry in :ref:`vertex_buffer<class_RDAccelera
 - |void| **set_vertex_format**\ (\ value\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ )
 - :ref:`DataFormat<enum_RenderingDevice_DataFormat>` **get_vertex_format**\ (\ )
 
-Format of the vertices in :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
+Định dạng của các đỉnh trong :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -192,7 +192,7 @@ Format of the vertices in :ref:`vertex_buffer<class_RDAccelerationStructureGeome
 - |void| **set_vertex_offset**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_vertex_offset**\ (\ )
 
-Byte offset of the first vertex in :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
+Độ lệch byte của đỉnh đầu tiên trong :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -209,14 +209,14 @@ Byte offset of the first vertex in :ref:`vertex_buffer<class_RDAccelerationStruc
 - |void| **set_vertex_stride**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_vertex_stride**\ (\ )
 
-Number of bytes between each vertex in :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
+Số byte giữa mỗi đỉnh trong :ref:`vertex_buffer<class_RDAccelerationStructureGeometry_property_vertex_buffer>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

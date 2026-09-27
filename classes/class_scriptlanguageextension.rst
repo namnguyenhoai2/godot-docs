@@ -10,7 +10,7 @@
 ScriptLanguageExtension
 =======================
 
-**Inherits:** :ref:`ScriptLanguage<class_ScriptLanguage>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ScriptLanguage<class_ScriptLanguage>` **<** :ref:`Object<class_Object>`
 
 .. container:: contribute
 
@@ -18,8 +18,8 @@ ScriptLanguageExtension
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -109,11 +109,11 @@ Methods
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`Script<class_Script>`                                      | :ref:`_make_template<class_ScriptLanguageExtension_private_method__make_template>`\ (\ template\: :ref:`String<class_String>`, class_name\: :ref:`String<class_String>`, base_class_name\: :ref:`String<class_String>`\ ) |virtual| |required| |const|                                                                                                                     |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`_open_in_external_editor<class_ScriptLanguageExtension_private_method__open_in_external_editor>`\ (\ script\: :ref:`Script<class_Script>`, line\: :ref:`int<class_int>`, column\: :ref:`int<class_int>`\ ) |virtual| |required|                                                                                                                                      |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`_open_in_external_editor<class_ScriptLanguageExtension_private_method__open_in_external_editor>`\ (\ script\: :ref:`Script<class_Script>`, line\: :ref:`int<class_int>`, column\: :ref:`int<class_int>`\ ) |virtual| |required|                                                                                                                                      |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                          | :ref:`_overrides_external_editor<class_ScriptLanguageExtension_private_method__overrides_external_editor>`\ (\ ) |virtual| |required|                                                                                                                                                                                                                                      |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ScriptNameCasing<enum_ScriptLanguage_ScriptNameCasing>`    | :ref:`_preferred_file_name_casing<class_ScriptLanguageExtension_private_method__preferred_file_name_casing>`\ (\ ) |virtual| |const|                                                                                                                                                                                                                                       |
+   | :ref:`ScriptNameCasing <enum_ScriptLanguage_ScriptNameCasing>`   | :ref:`_preferred_file_name_casing<class_ScriptLanguageExtension_private_method__preferred_file_name_casing>`\ (\ ) |virtual| |const|                                                                                                                                                                                                                                       |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                            | :ref:`_profiling_get_accumulated_data<class_ScriptLanguageExtension_private_method__profiling_get_accumulated_data>`\ (\ info_array\: ``ScriptLanguageExtensionProfilingInfo*``, info_max\: :ref:`int<class_int>`\ ) |virtual| |required|                                                                                                                                  |
    +------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -152,14 +152,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ScriptLanguageExtension_LookupResultType:
 
 .. rst-class:: classref-enumeration
 
-enum **LookupResultType**: :ref:`🔗<enum_ScriptLanguageExtension_LookupResultType>`
+enum **LookupResultType**: :ref:`🔗 <enum_ScriptLanguageExtension_LookupResultType>`
 
 .. _class_ScriptLanguageExtension_constant_LOOKUP_RESULT_SCRIPT_LOCATION:
 
@@ -251,7 +251,7 @@ enum **LookupResultType**: :ref:`🔗<enum_ScriptLanguageExtension_LookupResultT
 
 :ref:`LookupResultType<enum_ScriptLanguageExtension_LookupResultType>` **LOOKUP_RESULT_CLASS_TBD_GLOBALSCOPE** = ``7``
 
-**Deprecated:** This constant may be changed or removed in future versions.
+**Đã lỗi thời:** Hằng số này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
 
 
@@ -311,7 +311,7 @@ enum **LookupResultType**: :ref:`🔗<enum_ScriptLanguageExtension_LookupResultT
 
 .. rst-class:: classref-enumeration
 
-enum **CodeCompletionLocation**: :ref:`🔗<enum_ScriptLanguageExtension_CodeCompletionLocation>`
+enum **CodeCompletionLocation**: :ref:`🔗 <enum_ScriptLanguageExtension_CodeCompletionLocation>`
 
 .. _class_ScriptLanguageExtension_constant_LOCATION_LOCAL:
 
@@ -319,7 +319,7 @@ enum **CodeCompletionLocation**: :ref:`🔗<enum_ScriptLanguageExtension_CodeCom
 
 :ref:`CodeCompletionLocation<enum_ScriptLanguageExtension_CodeCompletionLocation>` **LOCATION_LOCAL** = ``0``
 
-The option is local to the location of the code completion query - e.g. a local variable. Subsequent value of location represent options from the outer class, the exact value represent how far they are (in terms of inner classes).
+Tùy chọn này là cục bộ đối với vị trí của truy vấn hoàn tất mã — ví dụ: một biến cục bộ. Giá trị tiếp theo của location biểu thị các tùy chọn từ lớp bên ngoài; giá trị cụ thể cho biết chúng cách bao xa nhau (xét theo các lớp bên trong).
 
 .. _class_ScriptLanguageExtension_constant_LOCATION_PARENT_MASK:
 
@@ -327,7 +327,7 @@ The option is local to the location of the code completion query - e.g. a local 
 
 :ref:`CodeCompletionLocation<enum_ScriptLanguageExtension_CodeCompletionLocation>` **LOCATION_PARENT_MASK** = ``256``
 
-The option is from the containing class or a parent class, relative to the location of the code completion query. Perform a bitwise OR with the class depth (e.g. ``0`` for the local class, ``1`` for the parent, ``2`` for the grandparent, etc.) to store the depth of an option in the class or a parent class.
+Tùy chọn này đến từ lớp chứa hoặc một lớp cha, xét tương đối với vị trí của truy vấn hoàn tất mã. Thực hiện phép OR theo bit với độ sâu của lớp (ví dụ: ``0`` cho lớp cục bộ, ``1`` cho lớp cha, ``2`` cho lớp ông, v.v.) để lưu trữ độ sâu của một tùy chọn trong lớp hoặc lớp cha.
 
 .. _class_ScriptLanguageExtension_constant_LOCATION_OTHER_USER_CODE:
 
@@ -335,7 +335,7 @@ The option is from the containing class or a parent class, relative to the locat
 
 :ref:`CodeCompletionLocation<enum_ScriptLanguageExtension_CodeCompletionLocation>` **LOCATION_OTHER_USER_CODE** = ``512``
 
-The option is from user code which is not local and not in a derived class (e.g. Autoload Singletons).
+Tùy chọn này đến từ mã người dùng không phải mã cục bộ và không nằm trong một lớp dẫn xuất (ví dụ: Autoload Singletons).
 
 .. _class_ScriptLanguageExtension_constant_LOCATION_OTHER:
 
@@ -343,7 +343,7 @@ The option is from user code which is not local and not in a derived class (e.g.
 
 :ref:`CodeCompletionLocation<enum_ScriptLanguageExtension_CodeCompletionLocation>` **LOCATION_OTHER** = ``1024``
 
-The option is from other engine code, not covered by the other enum constants - e.g. built-in classes.
+Tùy chọn này đến từ mã engine khác, không được bao quát bởi các hằng số enum khác — ví dụ: các lớp dựng sẵn.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ The option is from other engine code, not covered by the other enum constants - 
 
 .. rst-class:: classref-enumeration
 
-enum **CodeCompletionKind**: :ref:`🔗<enum_ScriptLanguageExtension_CodeCompletionKind>`
+enum **CodeCompletionKind**: :ref:`🔗 <enum_ScriptLanguageExtension_CodeCompletionKind>`
 
 .. _class_ScriptLanguageExtension_constant_CODE_COMPLETION_KIND_CLASS:
 
@@ -505,8 +505,8 @@ enum **CodeCompletionKind**: :ref:`🔗<enum_ScriptLanguageExtension_CodeComplet
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ScriptLanguageExtension_private_method__add_global_constant:
 
@@ -598,7 +598,7 @@ Method Descriptions
 
 :ref:`Object<class_Object>` **_create_script**\ (\ ) |virtual| |const| :ref:`🔗<class_ScriptLanguageExtension_private_method__create_script>`
 
-**Deprecated:** This method is not called by the engine.
+**Đã lỗi thời:** Engine không gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -736,7 +736,7 @@ Method Descriptions
 
 :ref:`String<class_String>` **_debug_get_stack_level_source**\ (\ level\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_ScriptLanguageExtension_private_method__debug_get_stack_level_source>`
 
-Returns the source associated with a given debug stack position.
+Trả về mã nguồn liên kết với một vị trí ngăn xếp gỡ lỗi cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -762,7 +762,7 @@ Returns the source associated with a given debug stack position.
 
 :ref:`int<class_int>` **_find_function**\ (\ function\: :ref:`String<class_String>`, code\: :ref:`String<class_String>`\ ) |virtual| |required| |const| :ref:`🔗<class_ScriptLanguageExtension_private_method__find_function>`
 
-Returns the line where the function is defined in the code, or ``-1`` if the function is not present.
+Trả về dòng nơi hàm được định nghĩa trong mã, hoặc ``-1`` nếu không có hàm.
 
 .. rst-class:: classref-item-separator
 
@@ -998,7 +998,7 @@ Returns the line where the function is defined in the code, or ``-1`` if the fun
 
 :ref:`bool<class_bool>` **_has_named_classes**\ (\ ) |virtual| |const| :ref:`🔗<class_ScriptLanguageExtension_private_method__has_named_classes>`
 
-**Deprecated:** This method is not called by the engine.
+**Đã lỗi thời:** Engine không gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -1220,7 +1220,7 @@ Returns the line where the function is defined in the code, or ``-1`` if the fun
 
 |void| **_reload_scripts**\ (\ scripts\: :ref:`Array<class_Array>`, soft_reload\: :ref:`bool<class_bool>`\ ) |virtual| |required| :ref:`🔗<class_ScriptLanguageExtension_private_method__reload_scripts>`
 
-Reloads all ``scripts`` from disk and the specifics of how that happens is **ScriptLanguageExtension** specific.
+Tải lại tất cả ``scripts`` từ đĩa; cách thức thực hiện cụ thể phụ thuộc vào **ScriptLanguageExtension**.
 
 .. rst-class:: classref-item-separator
 
@@ -1232,7 +1232,7 @@ Reloads all ``scripts`` from disk and the specifics of how that happens is **Scr
 
 |void| **_reload_tool_script**\ (\ script\: :ref:`Script<class_Script>`, soft_reload\: :ref:`bool<class_bool>`\ ) |virtual| |required| :ref:`🔗<class_ScriptLanguageExtension_private_method__reload_tool_script>`
 
-Reloads the given ``script`` from disk and the specifics of how that happens is **ScriptLanguageExtension** specific.
+Tải lại ``script`` đã cho từ đĩa; cách thức thực hiện cụ thể phụ thuộc vào **ScriptLanguageExtension**.
 
 .. rst-class:: classref-item-separator
 
@@ -1332,12 +1332,12 @@ Reloads the given ``script`` from disk and the specifics of how that happens is 
 
 	There is currently no description for this method. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

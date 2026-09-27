@@ -10,35 +10,35 @@
 Mesh
 ====
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`ArrayMesh<class_ArrayMesh>`, :ref:`ImmediateMesh<class_ImmediateMesh>`, :ref:`PlaceholderMesh<class_PlaceholderMesh>`, :ref:`PrimitiveMesh<class_PrimitiveMesh>`
+**Được kế thừa bởi:** :ref:`ArrayMesh<class_ArrayMesh>`, :ref:`ImmediateMesh<class_ImmediateMesh>`, :ref:`PlaceholderMesh<class_PlaceholderMesh>`, :ref:`PrimitiveMesh<class_PrimitiveMesh>`
 
-A :ref:`Resource<class_Resource>` that contains vertex array-based geometry.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Mesh is a type of :ref:`Resource<class_Resource>` that contains vertex array-based geometry, divided in *surfaces*. Each surface contains a completely separate array and a material used to draw it. Design wise, a mesh with multiple surfaces is preferred to a single surface, because objects created in 3D editing software commonly contain multiple materials. The maximum number of surfaces per mesh is :ref:`RenderingServer.MAX_MESH_SURFACES<class_RenderingServer_constant_MAX_MESH_SURFACES>`.
+Một :ref:`Resource<class_Resource>` chứa hình học dựa trên mảng đỉnh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Mesh là một loại :ref:`Resource<class_Resource>` chứa hình học dựa trên mảng đỉnh, được chia thành *bề mặt*. Mỗi bề mặt chứa một mảng hoàn toàn riêng biệt và một material được dùng để vẽ nó. Về mặt thiết kế, mesh có nhiều bề mặt được ưu tiên hơn một bề mặt duy nhất, vì các đối tượng được tạo trong phần mềm chỉnh sửa 3D thường chứa nhiều material. Số lượng bề mặt tối đa trên mỗi mesh là :ref:`RenderingServer.MAX_MESH_SURFACES<class_RenderingServer_constant_MAX_MESH_SURFACES>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - `3D Material Testers Demo <https://godotengine.org/asset-library/asset/2742>`__
 
-- `3D Kinematic Character Demo <https://godotengine.org/asset-library/asset/2739>`__
+- `Bản minh họa Nhân vật động học 3D <https://godotengine.org/asset-library/asset/2739>`__
 
-- `3D Platformer Demo <https://godotengine.org/asset-library/asset/2748>`__
+- `Bản minh họa game platformer 3D <https://godotengine.org/asset-library/asset/2748>`__
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản minh họa game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,8 +50,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -116,14 +116,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Mesh_PrimitiveType:
 
 .. rst-class:: classref-enumeration
 
-enum **PrimitiveType**: :ref:`🔗<enum_Mesh_PrimitiveType>`
+enum **PrimitiveType**: :ref:`🔗 <enum_Mesh_PrimitiveType>`
 
 .. _class_Mesh_constant_PRIMITIVE_POINTS:
 
@@ -131,7 +131,7 @@ enum **PrimitiveType**: :ref:`🔗<enum_Mesh_PrimitiveType>`
 
 :ref:`PrimitiveType<enum_Mesh_PrimitiveType>` **PRIMITIVE_POINTS** = ``0``
 
-Render array as points (one vertex equals one point).
+Hiển thị mảng dưới dạng các điểm (mỗi vertex tương ứng với một điểm).
 
 .. _class_Mesh_constant_PRIMITIVE_LINES:
 
@@ -139,7 +139,7 @@ Render array as points (one vertex equals one point).
 
 :ref:`PrimitiveType<enum_Mesh_PrimitiveType>` **PRIMITIVE_LINES** = ``1``
 
-Render array as lines (every two vertices a line is created).
+Hiển thị mảng dưới dạng các đường thẳng (cứ mỗi hai vertex sẽ tạo thành một đường thẳng).
 
 .. _class_Mesh_constant_PRIMITIVE_LINE_STRIP:
 
@@ -147,7 +147,7 @@ Render array as lines (every two vertices a line is created).
 
 :ref:`PrimitiveType<enum_Mesh_PrimitiveType>` **PRIMITIVE_LINE_STRIP** = ``2``
 
-Render array as line strip.
+Hiển thị mảng dưới dạng một dải đường thẳng.
 
 .. _class_Mesh_constant_PRIMITIVE_TRIANGLES:
 
@@ -155,7 +155,7 @@ Render array as line strip.
 
 :ref:`PrimitiveType<enum_Mesh_PrimitiveType>` **PRIMITIVE_TRIANGLES** = ``3``
 
-Render array as triangles (every three vertices a triangle is created).
+Hiển thị mảng dưới dạng các hình tam giác (cứ mỗi ba vertex sẽ tạo thành một hình tam giác).
 
 .. _class_Mesh_constant_PRIMITIVE_TRIANGLE_STRIP:
 
@@ -163,7 +163,7 @@ Render array as triangles (every three vertices a triangle is created).
 
 :ref:`PrimitiveType<enum_Mesh_PrimitiveType>` **PRIMITIVE_TRIANGLE_STRIP** = ``4``
 
-Render array as triangle strips.
+Kết xuất mảng dưới dạng các dải tam giác.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Render array as triangle strips.
 
 .. rst-class:: classref-enumeration
 
-enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
+enum **ArrayType**: :ref:`🔗 <enum_Mesh_ArrayType>`
 
 .. _class_Mesh_constant_ARRAY_VERTEX:
 
@@ -181,7 +181,7 @@ enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_VERTEX** = ``0``
 
-:ref:`PackedVector3Array<class_PackedVector3Array>`, :ref:`PackedVector2Array<class_PackedVector2Array>`, or :ref:`Array<class_Array>` of vertex positions.
+:ref:`PackedVector3Array<class_PackedVector3Array>`, :ref:`PackedVector2Array<class_PackedVector2Array>`, hoặc :ref:`Array<class_Array>` của các vị trí đỉnh.
 
 .. _class_Mesh_constant_ARRAY_NORMAL:
 
@@ -189,9 +189,9 @@ enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_NORMAL** = ``1``
 
-:ref:`PackedVector3Array<class_PackedVector3Array>` of vertex normals.
+:ref:`PackedVector3Array<class_PackedVector3Array>` của các pháp tuyến đỉnh.
 
-\ **Note:** The array has to consist of normal vectors, otherwise they will be normalized by the engine, potentially causing visual discrepancies.
+\ **Lưu ý:** Mảng phải chỉ bao gồm các vector pháp tuyến, nếu không chúng sẽ được engine chuẩn hóa, có khả năng gây ra sai khác về hình ảnh.
 
 .. _class_Mesh_constant_ARRAY_TANGENT:
 
@@ -199,7 +199,7 @@ enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_TANGENT** = ``2``
 
-:ref:`PackedFloat32Array<class_PackedFloat32Array>` of vertex tangents. Each element in groups of 4 floats, first 3 floats determine the tangent, and the last the binormal direction as -1 or 1.
+:ref:`PackedFloat32Array<class_PackedFloat32Array>` của các tiếp tuyến đỉnh. Mỗi phần tử gồm các nhóm 4 số thực, 3 số thực đầu tiên xác định tiếp tuyến, còn số cuối xác định hướng binormal là -1 hoặc 1.
 
 .. _class_Mesh_constant_ARRAY_COLOR:
 
@@ -207,7 +207,7 @@ enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_COLOR** = ``3``
 
-:ref:`PackedColorArray<class_PackedColorArray>` of vertex colors.
+:ref:`PackedColorArray<class_PackedColorArray>` của các màu đỉnh.
 
 .. _class_Mesh_constant_ARRAY_TEX_UV:
 
@@ -215,7 +215,7 @@ enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_TEX_UV** = ``4``
 
-:ref:`PackedVector2Array<class_PackedVector2Array>` for UV coordinates.
+:ref:`PackedVector2Array<class_PackedVector2Array>` cho tọa độ UV.
 
 .. _class_Mesh_constant_ARRAY_TEX_UV2:
 
@@ -223,7 +223,7 @@ enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_TEX_UV2** = ``5``
 
-:ref:`PackedVector2Array<class_PackedVector2Array>` for second UV coordinates.
+:ref:`PackedVector2Array<class_PackedVector2Array>` cho tọa độ UV thứ hai.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM0:
 
@@ -231,7 +231,7 @@ enum **ArrayType**: :ref:`🔗<enum_Mesh_ArrayType>`
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_CUSTOM0** = ``6``
 
-Contains custom color channel 0. :ref:`PackedByteArray<class_PackedByteArray>` if ``(format >> Mesh.ARRAY_FORMAT_CUSTOM0_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` is :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>`, or :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` otherwise.
+Chứa kênh màu tùy chỉnh 0. :ref:`PackedByteArray<class_PackedByteArray>` nếu ``(format >> Mesh.ARRAY_FORMAT_CUSTOM0_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` là :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>` hoặc :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` nếu không.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM1:
 
@@ -239,7 +239,7 @@ Contains custom color channel 0. :ref:`PackedByteArray<class_PackedByteArray>` i
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_CUSTOM1** = ``7``
 
-Contains custom color channel 1. :ref:`PackedByteArray<class_PackedByteArray>` if ``(format >> Mesh.ARRAY_FORMAT_CUSTOM1_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` is :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>`, or :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` otherwise.
+Chứa kênh màu tùy chỉnh 1. :ref:`PackedByteArray<class_PackedByteArray>` nếu ``(format >> Mesh.ARRAY_FORMAT_CUSTOM1_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` là :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>` hoặc :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` nếu không.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM2:
 
@@ -247,7 +247,7 @@ Contains custom color channel 1. :ref:`PackedByteArray<class_PackedByteArray>` i
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_CUSTOM2** = ``8``
 
-Contains custom color channel 2. :ref:`PackedByteArray<class_PackedByteArray>` if ``(format >> Mesh.ARRAY_FORMAT_CUSTOM2_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` is :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>`, or :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` otherwise.
+Chứa kênh màu tùy chỉnh 2. :ref:`PackedByteArray<class_PackedByteArray>` nếu ``(format >> Mesh.ARRAY_FORMAT_CUSTOM2_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` là :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>` hoặc :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` nếu không.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM3:
 
@@ -255,7 +255,7 @@ Contains custom color channel 2. :ref:`PackedByteArray<class_PackedByteArray>` i
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_CUSTOM3** = ``9``
 
-Contains custom color channel 3. :ref:`PackedByteArray<class_PackedByteArray>` if ``(format >> Mesh.ARRAY_FORMAT_CUSTOM3_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` is :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>`, or :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` otherwise.
+Chứa kênh màu tùy chỉnh 3. :ref:`PackedByteArray<class_PackedByteArray>` nếu ``(format >> Mesh.ARRAY_FORMAT_CUSTOM3_SHIFT) & Mesh.ARRAY_FORMAT_CUSTOM_MASK`` là :ref:`ARRAY_CUSTOM_RGBA8_UNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM>`, :ref:`ARRAY_CUSTOM_RGBA8_SNORM<class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM>`, :ref:`ARRAY_CUSTOM_RG_HALF<class_Mesh_constant_ARRAY_CUSTOM_RG_HALF>` hoặc :ref:`ARRAY_CUSTOM_RGBA_HALF<class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF>`. :ref:`PackedFloat32Array<class_PackedFloat32Array>` nếu không.
 
 .. _class_Mesh_constant_ARRAY_BONES:
 
@@ -263,7 +263,7 @@ Contains custom color channel 3. :ref:`PackedByteArray<class_PackedByteArray>` i
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_BONES** = ``10``
 
-:ref:`PackedFloat32Array<class_PackedFloat32Array>` or :ref:`PackedInt32Array<class_PackedInt32Array>` of bone indices. Contains either 4 or 8 numbers per vertex depending on the presence of the :ref:`ARRAY_FLAG_USE_8_BONE_WEIGHTS<class_Mesh_constant_ARRAY_FLAG_USE_8_BONE_WEIGHTS>` flag.
+:ref:`PackedFloat32Array<class_PackedFloat32Array>` hoặc :ref:`PackedInt32Array<class_PackedInt32Array>` của các chỉ số xương. Chứa 4 hoặc 8 số cho mỗi vertex, tùy thuộc vào việc có cờ :ref:`ARRAY_FLAG_USE_8_BONE_WEIGHTS<class_Mesh_constant_ARRAY_FLAG_USE_8_BONE_WEIGHTS>` hay không.
 
 .. _class_Mesh_constant_ARRAY_WEIGHTS:
 
@@ -271,7 +271,7 @@ Contains custom color channel 3. :ref:`PackedByteArray<class_PackedByteArray>` i
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_WEIGHTS** = ``11``
 
-:ref:`PackedFloat32Array<class_PackedFloat32Array>` or :ref:`PackedFloat64Array<class_PackedFloat64Array>` of bone weights in the range ``0.0`` to ``1.0`` (inclusive). Contains either 4 or 8 numbers per vertex depending on the presence of the :ref:`ARRAY_FLAG_USE_8_BONE_WEIGHTS<class_Mesh_constant_ARRAY_FLAG_USE_8_BONE_WEIGHTS>` flag.
+:ref:`PackedFloat32Array<class_PackedFloat32Array>` hoặc :ref:`PackedFloat64Array<class_PackedFloat64Array>` của các trọng số xương trong phạm vi từ ``0.0`` đến ``1.0`` (bao gồm cả hai đầu mút). Chứa 4 hoặc 8 số cho mỗi đỉnh, tùy thuộc vào việc có cờ :ref:`ARRAY_FLAG_USE_8_BONE_WEIGHTS<class_Mesh_constant_ARRAY_FLAG_USE_8_BONE_WEIGHTS>` hay không.
 
 .. _class_Mesh_constant_ARRAY_INDEX:
 
@@ -279,9 +279,9 @@ Contains custom color channel 3. :ref:`PackedByteArray<class_PackedByteArray>` i
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_INDEX** = ``12``
 
-:ref:`PackedInt32Array<class_PackedInt32Array>` of integers used as indices referencing vertices, colors, normals, tangents, and textures. All of those arrays must have the same number of elements as the vertex array. No index can be beyond the vertex array size. When this index array is present, it puts the function into "index mode," where the index selects the *i*'th vertex, normal, tangent, color, UV, etc. This means if you want to have different normals or colors along an edge, you have to duplicate the vertices.
+:ref:`PackedInt32Array<class_PackedInt32Array>` gồm các số nguyên được dùng làm chỉ số tham chiếu đến các đỉnh, màu sắc, pháp tuyến, tiếp tuyến và texture. Tất cả các mảng đó phải có cùng số phần tử với mảng đỉnh. Không chỉ số nào được vượt quá kích thước mảng đỉnh. Khi có mảng chỉ số này, hàm chuyển sang "chế độ chỉ số", trong đó chỉ số chọn đỉnh, pháp tuyến, tiếp tuyến, màu sắc, UV, v.v. thứ *i*. Điều này có nghĩa là nếu bạn muốn có các pháp tuyến hoặc màu sắc khác nhau dọc theo một cạnh, bạn phải nhân đôi các đỉnh.
 
-For triangles, the index array is interpreted as triples, referring to the vertices of each triangle. For lines, the index array is in pairs indicating the start and end of each line.
+Đối với các hình tam giác, mảng chỉ số được diễn giải thành các bộ ba, tham chiếu đến các đỉnh của từng hình tam giác. Đối với các đường thẳng, mảng chỉ số được chia thành các cặp, cho biết điểm bắt đầu và điểm kết thúc của từng đường.
 
 .. _class_Mesh_constant_ARRAY_MAX:
 
@@ -289,7 +289,7 @@ For triangles, the index array is interpreted as triples, referring to the verti
 
 :ref:`ArrayType<enum_Mesh_ArrayType>` **ARRAY_MAX** = ``13``
 
-Represents the size of the :ref:`ArrayType<enum_Mesh_ArrayType>` enum.
+Biểu thị kích thước của enum :ref:`ArrayType <enum_Mesh_ArrayType>`.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ Represents the size of the :ref:`ArrayType<enum_Mesh_ArrayType>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **ArrayCustomFormat**: :ref:`🔗<enum_Mesh_ArrayCustomFormat>`
+enum **ArrayCustomFormat**: :ref:`🔗 <enum_Mesh_ArrayCustomFormat>`
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_RGBA8_UNORM:
 
@@ -307,7 +307,7 @@ enum **ArrayCustomFormat**: :ref:`🔗<enum_Mesh_ArrayCustomFormat>`
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_RGBA8_UNORM** = ``0``
 
-Indicates this custom channel contains unsigned normalized byte colors from 0 to 1, encoded as :ref:`PackedByteArray<class_PackedByteArray>`.
+Cho biết channel tùy chỉnh này chứa các màu byte không dấu đã chuẩn hóa từ 0 đến 1, được mã hóa dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_RGBA8_SNORM:
 
@@ -315,7 +315,7 @@ Indicates this custom channel contains unsigned normalized byte colors from 0 to
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_RGBA8_SNORM** = ``1``
 
-Indicates this custom channel contains signed normalized byte colors from -1 to 1, encoded as :ref:`PackedByteArray<class_PackedByteArray>`.
+Cho biết channel tùy chỉnh này chứa các màu byte có dấu đã chuẩn hóa từ -1 đến 1, được mã hóa dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_RG_HALF:
 
@@ -323,7 +323,7 @@ Indicates this custom channel contains signed normalized byte colors from -1 to 
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_RG_HALF** = ``2``
 
-Indicates this custom channel contains half precision float colors, encoded as :ref:`PackedByteArray<class_PackedByteArray>`. Only red and green channels are used.
+Cho biết kênh tùy chỉnh này chứa các màu float độ chính xác nửa, được mã hóa dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`. Chỉ sử dụng các kênh đỏ và xanh lá.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_RGBA_HALF:
 
@@ -331,7 +331,7 @@ Indicates this custom channel contains half precision float colors, encoded as :
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_RGBA_HALF** = ``3``
 
-Indicates this custom channel contains half precision float colors, encoded as :ref:`PackedByteArray<class_PackedByteArray>`.
+Cho biết kênh tùy chỉnh này chứa các màu float độ chính xác nửa, được mã hóa dưới dạng :ref:`PackedByteArray<class_PackedByteArray>`.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_R_FLOAT:
 
@@ -339,7 +339,7 @@ Indicates this custom channel contains half precision float colors, encoded as :
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_R_FLOAT** = ``4``
 
-Indicates this custom channel contains full float colors, in a :ref:`PackedFloat32Array<class_PackedFloat32Array>`. Only the red channel is used.
+Cho biết kênh tùy chỉnh này chứa các màu float đầy đủ, dưới dạng :ref:`PackedFloat32Array<class_PackedFloat32Array>`. Chỉ sử dụng kênh đỏ.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_RG_FLOAT:
 
@@ -347,7 +347,7 @@ Indicates this custom channel contains full float colors, in a :ref:`PackedFloat
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_RG_FLOAT** = ``5``
 
-Indicates this custom channel contains full float colors, in a :ref:`PackedFloat32Array<class_PackedFloat32Array>`. Only red and green channels are used.
+Cho biết kênh tùy chỉnh này chứa các màu float đầy đủ, dưới dạng :ref:`PackedFloat32Array<class_PackedFloat32Array>`. Chỉ sử dụng các kênh đỏ và xanh lá.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_RGB_FLOAT:
 
@@ -355,7 +355,7 @@ Indicates this custom channel contains full float colors, in a :ref:`PackedFloat
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_RGB_FLOAT** = ``6``
 
-Indicates this custom channel contains full float colors, in a :ref:`PackedFloat32Array<class_PackedFloat32Array>`. Only red, green and blue channels are used.
+Cho biết kênh tùy chỉnh này chứa các màu float đầy đủ, dưới dạng :ref:`PackedFloat32Array<class_PackedFloat32Array>`. Chỉ sử dụng các kênh đỏ, xanh lá và xanh dương.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_RGBA_FLOAT:
 
@@ -363,7 +363,7 @@ Indicates this custom channel contains full float colors, in a :ref:`PackedFloat
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_RGBA_FLOAT** = ``7``
 
-Indicates this custom channel contains full float colors, in a :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
+Cho biết kênh tùy chỉnh này chứa các màu float đầy đủ, dưới dạng :ref:`PackedFloat32Array<class_PackedFloat32Array>`.
 
 .. _class_Mesh_constant_ARRAY_CUSTOM_MAX:
 
@@ -371,7 +371,7 @@ Indicates this custom channel contains full float colors, in a :ref:`PackedFloat
 
 :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` **ARRAY_CUSTOM_MAX** = ``8``
 
-Represents the size of the :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` enum.
+Biểu thị kích thước của enum :ref:`ArrayCustomFormat <enum_Mesh_ArrayCustomFormat>`.
 
 .. rst-class:: classref-item-separator
 
@@ -381,7 +381,7 @@ Represents the size of the :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>`
 
 .. rst-class:: classref-enumeration
 
-flags **ArrayFormat**: :ref:`🔗<enum_Mesh_ArrayFormat>`
+các cờ **ArrayFormat**: :ref:`🔗 <enum_Mesh_ArrayFormat>`
 
 .. _class_Mesh_constant_ARRAY_FORMAT_VERTEX:
 
@@ -389,7 +389,7 @@ flags **ArrayFormat**: :ref:`🔗<enum_Mesh_ArrayFormat>`
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_VERTEX** = ``1``
 
-Mesh array contains vertices. All meshes require a vertex array so this should always be present.
+Mảng Mesh chứa các vertex. Mọi Mesh đều yêu cầu một mảng vertex, vì vậy mảng này luôn phải có mặt.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_NORMAL:
 
@@ -397,7 +397,7 @@ Mesh array contains vertices. All meshes require a vertex array so this should a
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_NORMAL** = ``2``
 
-Mesh array contains normals.
+Mảng Mesh chứa các normal.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_TANGENT:
 
@@ -405,7 +405,7 @@ Mesh array contains normals.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_TANGENT** = ``4``
 
-Mesh array contains tangents.
+Mảng Mesh chứa các tangent.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_COLOR:
 
@@ -413,7 +413,7 @@ Mesh array contains tangents.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_COLOR** = ``8``
 
-Mesh array contains colors.
+Mảng Mesh chứa các color.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_TEX_UV:
 
@@ -421,7 +421,7 @@ Mesh array contains colors.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_TEX_UV** = ``16``
 
-Mesh array contains UVs.
+Mảng Mesh chứa các UV.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_TEX_UV2:
 
@@ -429,7 +429,7 @@ Mesh array contains UVs.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_TEX_UV2** = ``32``
 
-Mesh array contains second UV.
+Mảng Mesh chứa UV thứ hai.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM0:
 
@@ -437,7 +437,7 @@ Mesh array contains second UV.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM0** = ``64``
 
-Mesh array contains custom channel index 0.
+Mảng Mesh chứa chỉ mục kênh tùy chỉnh 0.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM1:
 
@@ -445,7 +445,7 @@ Mesh array contains custom channel index 0.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM1** = ``128``
 
-Mesh array contains custom channel index 1.
+Mảng Mesh chứa chỉ mục kênh tùy chỉnh 1.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM2:
 
@@ -453,7 +453,7 @@ Mesh array contains custom channel index 1.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM2** = ``256``
 
-Mesh array contains custom channel index 2.
+Mảng Mesh chứa chỉ mục kênh tùy chỉnh 2.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM3:
 
@@ -461,7 +461,7 @@ Mesh array contains custom channel index 2.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM3** = ``512``
 
-Mesh array contains custom channel index 3.
+Mảng Mesh chứa chỉ mục kênh tùy chỉnh 3.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_BONES:
 
@@ -469,7 +469,7 @@ Mesh array contains custom channel index 3.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_BONES** = ``1024``
 
-Mesh array contains bones.
+Mảng Mesh chứa các bone.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_WEIGHTS:
 
@@ -477,7 +477,7 @@ Mesh array contains bones.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_WEIGHTS** = ``2048``
 
-Mesh array contains bone weights.
+Mảng Mesh chứa trọng số bone.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_INDEX:
 
@@ -485,7 +485,7 @@ Mesh array contains bone weights.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_INDEX** = ``4096``
 
-Mesh array uses indices.
+Mảng Mesh sử dụng các chỉ mục.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_BLEND_SHAPE_MASK:
 
@@ -493,7 +493,7 @@ Mesh array uses indices.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_BLEND_SHAPE_MASK** = ``7``
 
-Mask of mesh channels permitted in blend shapes.
+Mặt nạ các kênh mesh được phép trong blend shapes.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM_BASE:
 
@@ -501,7 +501,7 @@ Mask of mesh channels permitted in blend shapes.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_BASE** = ``13``
 
-Shift of first custom channel.
+Độ dịch của kênh tùy chỉnh đầu tiên.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM_BITS:
 
@@ -509,7 +509,7 @@ Shift of first custom channel.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_BITS** = ``3``
 
-Number of format bits per custom channel. See :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>`.
+Số lượng bit định dạng trên mỗi kênh tùy chỉnh. Xem :ref:`ArrayCustomFormat <enum_Mesh_ArrayCustomFormat>`.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM0_SHIFT:
 
@@ -517,7 +517,7 @@ Number of format bits per custom channel. See :ref:`ArrayCustomFormat<enum_Mesh_
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM0_SHIFT** = ``13``
 
-Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom channel index 0.
+Số bit cần dịch :ref:`ArrayCustomFormat <enum_Mesh_ArrayCustomFormat>` cho chỉ mục kênh tùy chỉnh 0.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM1_SHIFT:
 
@@ -525,7 +525,7 @@ Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM1_SHIFT** = ``16``
 
-Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom channel index 1.
+Số bit cần dịch :ref:`ArrayCustomFormat <enum_Mesh_ArrayCustomFormat>` cho chỉ mục kênh tùy chỉnh 1.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM2_SHIFT:
 
@@ -533,7 +533,7 @@ Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM2_SHIFT** = ``19``
 
-Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom channel index 2.
+Số bit cần dịch :ref:`ArrayCustomFormat <enum_Mesh_ArrayCustomFormat>` cho chỉ mục kênh tùy chỉnh 2.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM3_SHIFT:
 
@@ -541,7 +541,7 @@ Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM3_SHIFT** = ``22``
 
-Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom channel index 3.
+Số bit cần dịch :ref:`ArrayCustomFormat <enum_Mesh_ArrayCustomFormat>` cho chỉ mục kênh tùy chỉnh 3.
 
 .. _class_Mesh_constant_ARRAY_FORMAT_CUSTOM_MASK:
 
@@ -549,7 +549,7 @@ Amount to shift :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>` for custom
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FORMAT_CUSTOM_MASK** = ``7``
 
-Mask of custom format bits per custom channel. Must be shifted by one of the SHIFT constants. See :ref:`ArrayCustomFormat<enum_Mesh_ArrayCustomFormat>`.
+Mặt nạ của các bit định dạng tùy chỉnh cho mỗi kênh tùy chỉnh. Phải được dịch chuyển bằng một trong các hằng số SHIFT. Xem :ref:`ArrayCustomFormat <enum_Mesh_ArrayCustomFormat>`.
 
 .. _class_Mesh_constant_ARRAY_COMPRESS_FLAGS_BASE:
 
@@ -557,7 +557,7 @@ Mask of custom format bits per custom channel. Must be shifted by one of the SHI
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_COMPRESS_FLAGS_BASE** = ``25``
 
-Shift of first compress flag. Compress flags should be passed to :ref:`ArrayMesh.add_surface_from_arrays()<class_ArrayMesh_method_add_surface_from_arrays>` and :ref:`SurfaceTool.commit()<class_SurfaceTool_method_commit>`.
+Độ dịch chuyển của cờ compress đầu tiên. Các cờ compress phải được truyền vào :ref:`ArrayMesh.add_surface_from_arrays()<class_ArrayMesh_method_add_surface_from_arrays>` và :ref:`SurfaceTool.commit()<class_SurfaceTool_method_commit>`.
 
 .. _class_Mesh_constant_ARRAY_FLAG_USE_2D_VERTICES:
 
@@ -565,7 +565,7 @@ Shift of first compress flag. Compress flags should be passed to :ref:`ArrayMesh
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FLAG_USE_2D_VERTICES** = ``33554432``
 
-Flag used to mark that the array contains 2D vertices.
+Cờ dùng để đánh dấu rằng mảng chứa các đỉnh 2D.
 
 .. _class_Mesh_constant_ARRAY_FLAG_USE_DYNAMIC_UPDATE:
 
@@ -573,7 +573,7 @@ Flag used to mark that the array contains 2D vertices.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FLAG_USE_DYNAMIC_UPDATE** = ``67108864``
 
-Flag used to mark that the mesh data will use ``GL_DYNAMIC_DRAW`` on GLES. Unused on Vulkan.
+Cờ dùng để đánh dấu rằng dữ liệu mesh sẽ sử dụng ``GL_DYNAMIC_DRAW`` trên GLES. Không được sử dụng trên Vulkan.
 
 .. _class_Mesh_constant_ARRAY_FLAG_USE_8_BONE_WEIGHTS:
 
@@ -581,7 +581,7 @@ Flag used to mark that the mesh data will use ``GL_DYNAMIC_DRAW`` on GLES. Unuse
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FLAG_USE_8_BONE_WEIGHTS** = ``134217728``
 
-Flag used to mark that the mesh contains up to 8 bone influences per vertex. This flag indicates that :ref:`ARRAY_BONES<class_Mesh_constant_ARRAY_BONES>` and :ref:`ARRAY_WEIGHTS<class_Mesh_constant_ARRAY_WEIGHTS>` elements will have double length.
+Cờ dùng để đánh dấu rằng mesh chứa tối đa 8 ảnh hưởng xương trên mỗi đỉnh. Cờ này cho biết các phần tử :ref:`ARRAY_BONES<class_Mesh_constant_ARRAY_BONES>` và :ref:`ARRAY_WEIGHTS<class_Mesh_constant_ARRAY_WEIGHTS>` sẽ có độ dài gấp đôi.
 
 .. _class_Mesh_constant_ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY:
 
@@ -589,7 +589,7 @@ Flag used to mark that the mesh contains up to 8 bone influences per vertex. Thi
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FLAG_USES_EMPTY_VERTEX_ARRAY** = ``268435456``
 
-Flag used to mark that the mesh intentionally contains no vertex array.
+Cờ dùng để đánh dấu rằng mesh cố ý không chứa vertex array.
 
 .. _class_Mesh_constant_ARRAY_FLAG_COMPRESS_ATTRIBUTES:
 
@@ -597,7 +597,7 @@ Flag used to mark that the mesh intentionally contains no vertex array.
 
 :ref:`ArrayFormat<enum_Mesh_ArrayFormat>` **ARRAY_FLAG_COMPRESS_ATTRIBUTES** = ``536870912``
 
-Flag used to mark that a mesh is using compressed attributes (vertices, normals, tangents, UVs). When this form of compression is enabled, vertex positions will be packed into an RGBA16UNORM attribute and scaled in the vertex shader. The normal and tangent will be packed into an RG16UNORM representing an axis, and a 16-bit float stored in the A-channel of the vertex. UVs will use 16-bit normalized floats instead of full 32-bit signed floats. When using this compression mode you must use either vertices, normals, and tangents or only vertices. You cannot use normals without tangents. Importers will automatically enable this compression if they can.
+Cờ dùng để đánh dấu rằng mesh đang sử dụng các thuộc tính đã nén (đỉnh, pháp tuyến, tiếp tuyến, UV). Khi bật dạng nén này, vị trí đỉnh sẽ được đóng gói vào một thuộc tính RGBA16UNORM và được scale trong vertex shader. Pháp tuyến và tiếp tuyến sẽ được đóng gói vào một RG16UNORM biểu diễn một trục, cùng một số thực 16 bit được lưu trong kênh A của đỉnh. UV sẽ sử dụng số thực chuẩn hóa 16 bit thay cho số thực có dấu 32 bit đầy đủ. Khi sử dụng chế độ nén này, bạn phải sử dụng hoặc vertices, normals và tangents, hoặc chỉ vertices. Bạn không thể sử dụng normals mà không có tangents. Importer sẽ tự động bật chế độ nén này nếu có thể.
 
 .. rst-class:: classref-item-separator
 
@@ -607,7 +607,7 @@ Flag used to mark that a mesh is using compressed attributes (vertices, normals,
 
 .. rst-class:: classref-enumeration
 
-enum **BlendShapeMode**: :ref:`🔗<enum_Mesh_BlendShapeMode>`
+enum **BlendShapeMode**: :ref:`🔗 <enum_Mesh_BlendShapeMode>`
 
 .. _class_Mesh_constant_BLEND_SHAPE_MODE_NORMALIZED:
 
@@ -615,7 +615,7 @@ enum **BlendShapeMode**: :ref:`🔗<enum_Mesh_BlendShapeMode>`
 
 :ref:`BlendShapeMode<enum_Mesh_BlendShapeMode>` **BLEND_SHAPE_MODE_NORMALIZED** = ``0``
 
-Blend shapes are normalized.
+Các blend shape được chuẩn hóa.
 
 .. _class_Mesh_constant_BLEND_SHAPE_MODE_RELATIVE:
 
@@ -623,7 +623,7 @@ Blend shapes are normalized.
 
 :ref:`BlendShapeMode<enum_Mesh_BlendShapeMode>` **BLEND_SHAPE_MODE_RELATIVE** = ``1``
 
-Blend shapes are relative to base weight.
+Các blend shape có quan hệ tương đối với trọng số cơ sở.
 
 .. rst-class:: classref-section-separator
 
@@ -631,8 +631,8 @@ Blend shapes are relative to base weight.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Mesh_property_lightmap_size_hint:
 
@@ -645,7 +645,7 @@ Property Descriptions
 - |void| **set_lightmap_size_hint**\ (\ value\: :ref:`Vector2i<class_Vector2i>`\ )
 - :ref:`Vector2i<class_Vector2i>` **get_lightmap_size_hint**\ (\ )
 
-Sets a hint to be used for lightmap resolution.
+Đặt một gợi ý được sử dụng cho độ phân giải lightmap.
 
 .. rst-class:: classref-section-separator
 
@@ -653,8 +653,8 @@ Sets a hint to be used for lightmap resolution.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Mesh_private_method__get_aabb:
 
@@ -662,7 +662,7 @@ Method Descriptions
 
 :ref:`AABB<class_AABB>` **_get_aabb**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__get_aabb>`
 
-Virtual method to override the :ref:`AABB<class_AABB>` for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè :ref:`AABB<class_AABB>` cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -674,7 +674,7 @@ Virtual method to override the :ref:`AABB<class_AABB>` for a custom class extend
 
 :ref:`int<class_int>` **_get_blend_shape_count**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__get_blend_shape_count>`
 
-Virtual method to override the number of blend shapes for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè số lượng blend shape cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -686,7 +686,7 @@ Virtual method to override the number of blend shapes for a custom class extendi
 
 :ref:`StringName<class_StringName>` **_get_blend_shape_name**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__get_blend_shape_name>`
 
-Virtual method to override the retrieval of blend shape names for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè việc truy xuất tên blend shape cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -698,7 +698,7 @@ Virtual method to override the retrieval of blend shape names for a custom class
 
 :ref:`int<class_int>` **_get_surface_count**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__get_surface_count>`
 
-Virtual method to override the surface count for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè số lượng surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -710,7 +710,7 @@ Virtual method to override the surface count for a custom class extending **Mesh
 
 |void| **_set_blend_shape_name**\ (\ index\: :ref:`int<class_int>`, name\: :ref:`StringName<class_StringName>`\ ) |virtual| |required| :ref:`🔗<class_Mesh_private_method__set_blend_shape_name>`
 
-Virtual method to override the names of blend shapes for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè tên của các blend shape cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -722,7 +722,7 @@ Virtual method to override the names of blend shapes for a custom class extendin
 
 :ref:`int<class_int>` **_surface_get_array_index_len**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_array_index_len>`
 
-Virtual method to override the surface array index length for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè độ dài chỉ mục mảng surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -734,7 +734,7 @@ Virtual method to override the surface array index length for a custom class ext
 
 :ref:`int<class_int>` **_surface_get_array_len**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_array_len>`
 
-Virtual method to override the surface array length for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè độ dài mảng surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -746,7 +746,7 @@ Virtual method to override the surface array length for a custom class extending
 
 :ref:`Array<class_Array>` **_surface_get_arrays**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_arrays>`
 
-Virtual method to override the surface arrays for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè các mảng surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -758,7 +758,7 @@ Virtual method to override the surface arrays for a custom class extending **Mes
 
 :ref:`Array<class_Array>`\[:ref:`Array<class_Array>`\] **_surface_get_blend_shape_arrays**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_blend_shape_arrays>`
 
-Virtual method to override the blend shape arrays for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè các mảng blend shape cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -770,7 +770,7 @@ Virtual method to override the blend shape arrays for a custom class extending *
 
 :ref:`int<class_int>` **_surface_get_format**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_format>`
 
-Virtual method to override the surface format for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè định dạng surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -782,7 +782,7 @@ Virtual method to override the surface format for a custom class extending **Mes
 
 :ref:`Dictionary<class_Dictionary>` **_surface_get_lods**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_lods>`
 
-Virtual method to override the surface LODs for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè các LOD của surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -794,7 +794,7 @@ Virtual method to override the surface LODs for a custom class extending **Mesh*
 
 :ref:`Material<class_Material>` **_surface_get_material**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_material>`
 
-Virtual method to override the surface material for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè material của surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -806,7 +806,7 @@ Virtual method to override the surface material for a custom class extending **M
 
 :ref:`int<class_int>` **_surface_get_primitive_type**\ (\ index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_Mesh_private_method__surface_get_primitive_type>`
 
-Virtual method to override the surface primitive type for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè kiểu primitive của surface cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -818,7 +818,7 @@ Virtual method to override the surface primitive type for a custom class extendi
 
 |void| **_surface_set_material**\ (\ index\: :ref:`int<class_int>`, material\: :ref:`Material<class_Material>`\ ) |virtual| |required| :ref:`🔗<class_Mesh_private_method__surface_set_material>`
 
-Virtual method to override the setting of a ``material`` at the given ``index`` for a custom class extending **Mesh**.
+Phương thức ảo để ghi đè việc thiết lập ``material`` tại ``index`` đã cho cho một lớp tùy chỉnh mở rộng **Mesh**.
 
 .. rst-class:: classref-item-separator
 
@@ -830,11 +830,11 @@ Virtual method to override the setting of a ``material`` at the given ``index`` 
 
 :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` **create_convex_shape**\ (\ clean\: :ref:`bool<class_bool>` = true, simplify\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Mesh_method_create_convex_shape>`
 
-Calculate a :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` from the mesh.
+Tính toán một :ref:`ConvexPolygonShape3D<class_ConvexPolygonShape3D>` từ mesh.
 
-If ``clean`` is ``true`` (default), duplicate and interior vertices are removed automatically. You can set it to ``false`` to make the process faster if not needed.
+Nếu ``clean`` là ``true`` (mặc định), các đỉnh trùng lặp và đỉnh bên trong sẽ tự động được loại bỏ. Bạn có thể đặt thành ``false`` để quá trình này nhanh hơn nếu không cần bước đó.
 
-If ``simplify`` is ``true``, the geometry can be further simplified to reduce the number of vertices. Disabled by default.
+Nếu ``simplify`` là ``true``, hình học có thể được đơn giản hóa thêm để giảm số lượng đỉnh. Mặc định bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -846,9 +846,9 @@ If ``simplify`` is ``true``, the geometry can be further simplified to reduce th
 
 :ref:`Mesh<class_Mesh>` **create_outline**\ (\ margin\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Mesh_method_create_outline>`
 
-Calculate an outline mesh at a defined offset (margin) from the original mesh.
+Tính một lưới đường bao ở độ lệch (lề) xác định so với lưới ban đầu.
 
-\ **Note:** This method typically returns the vertices in reverse order (e.g. clockwise to counterclockwise).
+\ **Lưu ý:** Phương thức này thường trả về các đỉnh theo thứ tự ngược lại (ví dụ: theo chiều kim đồng hồ thành ngược chiều kim đồng hồ).
 
 .. rst-class:: classref-item-separator
 
@@ -860,7 +860,7 @@ Calculate an outline mesh at a defined offset (margin) from the original mesh.
 
 :ref:`Resource<class_Resource>` **create_placeholder**\ (\ ) |const| :ref:`🔗<class_Mesh_method_create_placeholder>`
 
-Creates a placeholder version of this resource (:ref:`PlaceholderMesh<class_PlaceholderMesh>`).
+Tạo một phiên bản giữ chỗ của tài nguyên này (:ref:`PlaceholderMesh<class_PlaceholderMesh>`).
 
 .. rst-class:: classref-item-separator
 
@@ -872,7 +872,7 @@ Creates a placeholder version of this resource (:ref:`PlaceholderMesh<class_Plac
 
 :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` **create_trimesh_shape**\ (\ ) |const| :ref:`🔗<class_Mesh_method_create_trimesh_shape>`
 
-Calculate a :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` from the mesh.
+Tính một :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` từ lưới.
 
 .. rst-class:: classref-item-separator
 
@@ -884,7 +884,7 @@ Calculate a :ref:`ConcavePolygonShape3D<class_ConcavePolygonShape3D>` from the m
 
 :ref:`TriangleMesh<class_TriangleMesh>` **generate_triangle_mesh**\ (\ ) |const| :ref:`🔗<class_Mesh_method_generate_triangle_mesh>`
 
-Generate a :ref:`TriangleMesh<class_TriangleMesh>` from the mesh. Considers only surfaces using one of these primitive types: :ref:`PRIMITIVE_TRIANGLES<class_Mesh_constant_PRIMITIVE_TRIANGLES>`, :ref:`PRIMITIVE_TRIANGLE_STRIP<class_Mesh_constant_PRIMITIVE_TRIANGLE_STRIP>`.
+Tạo một :ref:`TriangleMesh<class_TriangleMesh>` từ lưới. Chỉ xét các bề mặt sử dụng một trong các kiểu primitive sau: :ref:`PRIMITIVE_TRIANGLES<class_Mesh_constant_PRIMITIVE_TRIANGLES>`, :ref:`PRIMITIVE_TRIANGLE_STRIP<class_Mesh_constant_PRIMITIVE_TRIANGLE_STRIP>`.
 
 .. rst-class:: classref-item-separator
 
@@ -896,9 +896,9 @@ Generate a :ref:`TriangleMesh<class_TriangleMesh>` from the mesh. Considers only
 
 :ref:`AABB<class_AABB>` **get_aabb**\ (\ ) |const| :ref:`🔗<class_Mesh_method_get_aabb>`
 
-Returns the smallest :ref:`AABB<class_AABB>` enclosing this mesh in local space. Not affected by ``custom_aabb``.
+Trả về :ref:`AABB<class_AABB>` nhỏ nhất bao quanh mesh này trong không gian cục bộ. Không bị ảnh hưởng bởi ``custom_aabb``.
 
-\ **Note:** This is only implemented for :ref:`ArrayMesh<class_ArrayMesh>` and :ref:`PrimitiveMesh<class_PrimitiveMesh>`.
+\ **Lưu ý:** Điều này chỉ được triển khai cho :ref:`ArrayMesh<class_ArrayMesh>` và :ref:`PrimitiveMesh<class_PrimitiveMesh>`.
 
 .. rst-class:: classref-item-separator
 
@@ -910,7 +910,7 @@ Returns the smallest :ref:`AABB<class_AABB>` enclosing this mesh in local space.
 
 :ref:`PackedVector3Array<class_PackedVector3Array>` **get_faces**\ (\ ) |const| :ref:`🔗<class_Mesh_method_get_faces>`
 
-Returns all the vertices that make up the faces of the mesh. Each three vertices represent one triangle.
+Trả về tất cả các đỉnh tạo nên các mặt của mesh. Cứ ba đỉnh biểu diễn một tam giác.
 
 .. rst-class:: classref-item-separator
 
@@ -922,7 +922,7 @@ Returns all the vertices that make up the faces of the mesh. Each three vertices
 
 :ref:`int<class_int>` **get_surface_count**\ (\ ) |const| :ref:`🔗<class_Mesh_method_get_surface_count>`
 
-Returns the number of surfaces that the **Mesh** holds. This is equivalent to :ref:`MeshInstance3D.get_surface_override_material_count()<class_MeshInstance3D_method_get_surface_override_material_count>`.
+Trả về số lượng bề mặt mà **Mesh** chứa. Tương đương với :ref:`MeshInstance3D.get_surface_override_material_count()<class_MeshInstance3D_method_get_surface_override_material_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -934,7 +934,7 @@ Returns the number of surfaces that the **Mesh** holds. This is equivalent to :r
 
 :ref:`Array<class_Array>` **surface_get_arrays**\ (\ surf_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Mesh_method_surface_get_arrays>`
 
-Returns the arrays for the vertices, normals, UVs, etc. that make up the requested surface (see :ref:`ArrayMesh.add_surface_from_arrays()<class_ArrayMesh_method_add_surface_from_arrays>`).
+Trả về các mảng chứa các đỉnh, pháp tuyến, UV, v.v. tạo nên bề mặt được yêu cầu (xem :ref:`ArrayMesh.add_surface_from_arrays()<class_ArrayMesh_method_add_surface_from_arrays>`).
 
 .. rst-class:: classref-item-separator
 
@@ -946,7 +946,7 @@ Returns the arrays for the vertices, normals, UVs, etc. that make up the request
 
 :ref:`Array<class_Array>`\[:ref:`Array<class_Array>`\] **surface_get_blend_shape_arrays**\ (\ surf_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Mesh_method_surface_get_blend_shape_arrays>`
 
-Returns the blend shape arrays for the requested surface.
+Trả về các mảng blend shape cho bề mặt được yêu cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -958,9 +958,9 @@ Returns the blend shape arrays for the requested surface.
 
 :ref:`Material<class_Material>` **surface_get_material**\ (\ surf_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Mesh_method_surface_get_material>`
 
-Returns a :ref:`Material<class_Material>` in a given surface. Surface is rendered using this material.
+Trả về một :ref:`Material<class_Material>` trong một bề mặt nhất định. Bề mặt được render bằng material này.
 
-\ **Note:** This returns the material within the **Mesh** resource, not the :ref:`Material<class_Material>` associated to the :ref:`MeshInstance3D<class_MeshInstance3D>`'s Surface Material Override properties. To get the :ref:`Material<class_Material>` associated to the :ref:`MeshInstance3D<class_MeshInstance3D>`'s Surface Material Override properties, use :ref:`MeshInstance3D.get_surface_override_material()<class_MeshInstance3D_method_get_surface_override_material>` instead.
+\ **Lưu ý:** Thao tác này trả về vật liệu bên trong resource **Mesh**, không phải :ref:`Material<class_Material>` được liên kết với các thuộc tính Surface Material Override của :ref:`MeshInstance3D<class_MeshInstance3D>`. Để lấy :ref:`Material<class_Material>` được liên kết với các thuộc tính Surface Material Override của :ref:`MeshInstance3D<class_MeshInstance3D>`, hãy sử dụng :ref:`MeshInstance3D.get_surface_override_material()<class_MeshInstance3D_method_get_surface_override_material>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -972,16 +972,16 @@ Returns a :ref:`Material<class_Material>` in a given surface. Surface is rendere
 
 |void| **surface_set_material**\ (\ surf_idx\: :ref:`int<class_int>`, material\: :ref:`Material<class_Material>`\ ) :ref:`🔗<class_Mesh_method_surface_set_material>`
 
-Sets a :ref:`Material<class_Material>` for a given surface. Surface will be rendered using this material.
+Thiết lập một :ref:`Material<class_Material>` cho một bề mặt nhất định. Bề mặt sẽ được render bằng vật liệu này.
 
-\ **Note:** This assigns the material within the **Mesh** resource, not the :ref:`Material<class_Material>` associated to the :ref:`MeshInstance3D<class_MeshInstance3D>`'s Surface Material Override properties. To set the :ref:`Material<class_Material>` associated to the :ref:`MeshInstance3D<class_MeshInstance3D>`'s Surface Material Override properties, use :ref:`MeshInstance3D.set_surface_override_material()<class_MeshInstance3D_method_set_surface_override_material>` instead.
+\ **Lưu ý:** Thao tác này gán vật liệu bên trong resource **Mesh**, không phải :ref:`Material<class_Material>` được liên kết với các thuộc tính Surface Material Override của :ref:`MeshInstance3D<class_MeshInstance3D>`. Để thiết lập :ref:`Material<class_Material>` được liên kết với các thuộc tính Surface Material Override của :ref:`MeshInstance3D<class_MeshInstance3D>`, hãy sử dụng :ref:`MeshInstance3D.set_surface_override_material()<class_MeshInstance3D_method_set_surface_override_material>` thay thế.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask gồm các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,22 +10,22 @@
 EditorDebuggerPlugin
 ====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A base class to implement debugger plugins.
+Lớp cơ sở để triển khai các plugin debugger.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EditorDebuggerPlugin** provides functions related to the editor side of the debugger.
+**EditorDebuggerPlugin** cung cấp các hàm liên quan đến phía editor của debugger.
 
-To interact with the debugger, an instance of this class must be added to the editor via :ref:`EditorPlugin.add_debugger_plugin()<class_EditorPlugin_method_add_debugger_plugin>`.
+Để tương tác với debugger, một instance của lớp này phải được thêm vào editor thông qua :ref:`EditorPlugin.add_debugger_plugin()<class_EditorPlugin_method_add_debugger_plugin>`.
 
-Once added, the :ref:`_setup_session()<class_EditorDebuggerPlugin_private_method__setup_session>` callback will be called for every :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` available to the plugin, and when new ones are created (the sessions may be inactive during this stage).
+Sau khi được thêm, callback :ref:`_setup_session()<class_EditorDebuggerPlugin_private_method__setup_session>` sẽ được gọi cho mọi :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` có sẵn cho plugin và khi có các phiên mới được tạo (các phiên có thể không hoạt động trong giai đoạn này).
 
-You can retrieve the available :ref:`EditorDebuggerSession<class_EditorDebuggerSession>`\ s via :ref:`get_sessions()<class_EditorDebuggerPlugin_method_get_sessions>` or get a specific one via :ref:`get_session()<class_EditorDebuggerPlugin_method_get_session>`.
+Bạn có thể truy xuất các :ref:`EditorDebuggerSession<class_EditorDebuggerSession>`\ s có sẵn thông qua :ref:`get_sessions()<class_EditorDebuggerPlugin_method_get_sessions>` hoặc lấy một phiên cụ thể thông qua :ref:`get_session()<class_EditorDebuggerPlugin_method_get_session>`.
 
 
 .. tabs::
@@ -38,7 +38,7 @@ You can retrieve the available :ref:`EditorDebuggerSession<class_EditorDebuggerS
     class ExampleEditorDebugger extends EditorDebuggerPlugin:
 
         func _has_capture(capture):
-            # Return true if you wish to handle messages with the prefix "my_plugin:".
+            # Trả về true nếu bạn muốn xử lý các message có tiền tố "my_plugin:".
             return capture == "my_plugin"
 
         func _capture(message, data, session_id):
@@ -48,12 +48,12 @@ You can retrieve the available :ref:`EditorDebuggerSession<class_EditorDebuggerS
             return false
 
         func _setup_session(session_id):
-            # Add a new tab in the debugger session UI containing a label.
+            # Thêm một tab mới vào giao diện phiên debugger, chứa một label.
             var label = Label.new()
-            label.name = "Example plugin" # Will be used as the tab title.
+            label.name = "Example plugin" # Được dùng làm tiêu đề tab.
             label.text = "Example plugin"
             var session = get_session(session_id)
-            # Listens to the session started and stopped signals.
+            # Lắng nghe các signal bắt đầu và dừng phiên.
             session.started.connect(func (): print("Session started"))
             session.stopped.connect(func (): print("Session stopped"))
             session.add_session_tab(label)
@@ -68,7 +68,7 @@ You can retrieve the available :ref:`EditorDebuggerSession<class_EditorDebuggerS
 
 
 
-To connect on the running game side, use the :ref:`EngineDebugger<class_EngineDebugger>` singleton:
+Để kết nối từ phía game đang chạy, hãy sử dụng singleton :ref:`EngineDebugger<class_EngineDebugger>`:
 
 
 .. tabs::
@@ -82,7 +82,7 @@ To connect on the running game side, use the :ref:`EngineDebugger<class_EngineDe
         EngineDebugger.send_message("my_plugin:ping", ["test"])
 
     func _capture(message, data):
-        # Note that the "my_plugin:" prefix is not used here.
+        # Lưu ý rằng tiền tố "my_plugin:" không được sử dụng ở đây.
         if message == "echo":
             prints("Echo received:", data)
             return true
@@ -90,12 +90,12 @@ To connect on the running game side, use the :ref:`EngineDebugger<class_EngineDe
 
 
 
-\ **Note:** While the game is running, :ref:`@GlobalScope.print()<class_@GlobalScope_method_print>` and similar functions *called in the editor* do not print anything, the Output Log prints only game messages.
+\ **Lưu ý:** Khi game đang chạy, :ref:`@GlobalScope.print() <class_@GlobalScope_method_print>` và các hàm tương tự *được gọi trong editor* không in ra bất kỳ nội dung nào; Output Log chỉ in các message của game.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -124,8 +124,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorDebuggerPlugin_private_method__breakpoint_set_in_tree:
 
@@ -133,7 +133,7 @@ Method Descriptions
 
 |void| **_breakpoint_set_in_tree**\ (\ script\: :ref:`Script<class_Script>`, line\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>`\ ) |virtual| :ref:`🔗<class_EditorDebuggerPlugin_private_method__breakpoint_set_in_tree>`
 
-Override this method to be notified when a breakpoint is set in the editor.
+Ghi đè phương thức này để nhận thông báo khi một breakpoint được đặt trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -145,7 +145,7 @@ Override this method to be notified when a breakpoint is set in the editor.
 
 |void| **_breakpoints_cleared_in_tree**\ (\ ) |virtual| :ref:`🔗<class_EditorDebuggerPlugin_private_method__breakpoints_cleared_in_tree>`
 
-Override this method to be notified when all breakpoints are cleared in the editor.
+Ghi đè phương thức này để nhận thông báo khi tất cả breakpoint bị xóa trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ Override this method to be notified when all breakpoints are cleared in the edit
 
 :ref:`bool<class_bool>` **_capture**\ (\ message\: :ref:`String<class_String>`, data\: :ref:`Array<class_Array>`, session_id\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_EditorDebuggerPlugin_private_method__capture>`
 
-Override this method to process incoming messages. The ``session_id`` is the ID of the :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` that received the ``message``. Use :ref:`get_session()<class_EditorDebuggerPlugin_method_get_session>` to retrieve the session. This method should return ``true`` if the message is recognized.
+Ghi đè phương thức này để xử lý các thông báo đến. ``session_id`` là ID của :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` đã nhận ``message``. Sử dụng :ref:`get_session()<class_EditorDebuggerPlugin_method_get_session>` để truy xuất session. Phương thức này sẽ trả về ``true`` nếu thông báo được nhận dạng.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ Override this method to process incoming messages. The ``session_id`` is the ID 
 
 |void| **_goto_script_line**\ (\ script\: :ref:`Script<class_Script>`, line\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_EditorDebuggerPlugin_private_method__goto_script_line>`
 
-Override this method to be notified when a breakpoint line has been clicked in the debugger breakpoint panel.
+Ghi đè phương thức này để nhận thông báo khi một dòng breakpoint được nhấp vào trong bảng breakpoint của debugger.
 
 .. rst-class:: classref-item-separator
 
@@ -181,7 +181,7 @@ Override this method to be notified when a breakpoint line has been clicked in t
 
 :ref:`bool<class_bool>` **_has_capture**\ (\ capture\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_EditorDebuggerPlugin_private_method__has_capture>`
 
-Override this method to enable receiving messages from the debugger. If ``capture`` is "my_message" then messages starting with "my_message:" will be passed to the :ref:`_capture()<class_EditorDebuggerPlugin_private_method__capture>` method.
+Ghi đè phương thức này để bật tính năng nhận thông báo từ debugger. Nếu ``capture`` là "my_message" thì các thông báo bắt đầu bằng "my_message:" sẽ được truyền đến phương thức :ref:`_capture()<class_EditorDebuggerPlugin_private_method__capture>`.
 
 .. rst-class:: classref-item-separator
 
@@ -193,7 +193,7 @@ Override this method to enable receiving messages from the debugger. If ``captur
 
 |void| **_setup_session**\ (\ session_id\: :ref:`int<class_int>`\ ) |virtual| :ref:`🔗<class_EditorDebuggerPlugin_private_method__setup_session>`
 
-Override this method to be notified whenever a new :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` is created. Note that the session may be inactive during this stage.
+Ghi đè phương thức này để nhận thông báo mỗi khi một :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` mới được tạo. Lưu ý rằng session có thể không hoạt động trong giai đoạn này.
 
 .. rst-class:: classref-item-separator
 
@@ -205,7 +205,7 @@ Override this method to be notified whenever a new :ref:`EditorDebuggerSession<c
 
 :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` **get_session**\ (\ id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_EditorDebuggerPlugin_method_get_session>`
 
-Returns the :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` with the given ``id``.
+Trả về :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` với ``id`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -217,16 +217,16 @@ Returns the :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` with the g
 
 :ref:`Array<class_Array>` **get_sessions**\ (\ ) :ref:`🔗<class_EditorDebuggerPlugin_method_get_sessions>`
 
-Returns an array of :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` currently available to this debugger plugin.
+Trả về một mảng các :ref:`EditorDebuggerSession<class_EditorDebuggerSession>` hiện đang khả dụng cho plugin debugger này.
 
-\ **Note:** Sessions in the array may be inactive, check their state via :ref:`EditorDebuggerSession.is_active()<class_EditorDebuggerSession_method_is_active>`.
+\ **Lưu ý:** Các phiên trong mảng có thể không hoạt động; hãy kiểm tra trạng thái của chúng qua :ref:`EditorDebuggerSession.is_active()<class_EditorDebuggerSession_method_is_active>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không gây ra tác dụng phụ nào. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

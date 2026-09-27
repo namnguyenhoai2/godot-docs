@@ -10,28 +10,28 @@
 VisualShaderNodeVectorFunc
 ==========================
 
-**Inherits:** :ref:`VisualShaderNodeVectorBase<class_VisualShaderNodeVectorBase>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNodeVectorBase<class_VisualShaderNodeVectorBase>` **<** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A vector function to be used within the visual shader graph.
+Một hàm vector được sử dụng trong đồ thị visual shader.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A visual shader node able to perform different functions using vectors.
+Một node visual shader có thể thực hiện nhiều hàm khác nhau bằng cách sử dụng các vector.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------+---------------------------------------------------------------------+-------+
-   | :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` | :ref:`function<class_VisualShaderNodeVectorFunc_property_function>` | ``0`` |
-   +-----------------------------------------------------------+---------------------------------------------------------------------+-------+
+   +------------------------------------------------------------+---------------------------------------------------------------------+-------+
+   | :ref:`Function <enum_VisualShaderNodeVectorFunc_Function>` | :ref:`function<class_VisualShaderNodeVectorFunc_property_function>` | ``0`` |
+   +------------------------------------------------------------+---------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeVectorFunc_Function:
 
 .. rst-class:: classref-enumeration
 
-enum **Function**: :ref:`🔗<enum_VisualShaderNodeVectorFunc_Function>`
+enum **Function**: :ref:`🔗 <enum_VisualShaderNodeVectorFunc_Function>`
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_NORMALIZE:
 
@@ -54,7 +54,7 @@ enum **Function**: :ref:`🔗<enum_VisualShaderNodeVectorFunc_Function>`
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_NORMALIZE** = ``0``
 
-Normalizes the vector so that it has a length of ``1`` but points in the same direction.
+Chuẩn hóa vector để nó có độ dài ``1`` nhưng vẫn trỏ theo cùng một hướng.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_SATURATE:
 
@@ -62,7 +62,7 @@ Normalizes the vector so that it has a length of ``1`` but points in the same di
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_SATURATE** = ``1``
 
-Clamps the value between ``0.0`` and ``1.0``.
+Giới hạn giá trị trong khoảng từ ``0.0`` đến ``1.0``.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_NEGATE:
 
@@ -70,7 +70,7 @@ Clamps the value between ``0.0`` and ``1.0``.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_NEGATE** = ``2``
 
-Returns the opposite value of the parameter.
+Trả về giá trị đối của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_RECIPROCAL:
 
@@ -78,7 +78,7 @@ Returns the opposite value of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_RECIPROCAL** = ``3``
 
-Returns ``1/vector``.
+Trả về ``1/vector``.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ABS:
 
@@ -86,7 +86,7 @@ Returns ``1/vector``.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ABS** = ``4``
 
-Returns the absolute value of the parameter.
+Trả về giá trị tuyệt đối của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ACOS:
 
@@ -94,7 +94,7 @@ Returns the absolute value of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ACOS** = ``5``
 
-Returns the arc-cosine of the parameter.
+Trả về arccosine của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ACOSH:
 
@@ -102,7 +102,7 @@ Returns the arc-cosine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ACOSH** = ``6``
 
-Returns the inverse hyperbolic cosine of the parameter.
+Trả về hyperbolic cosine nghịch đảo của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ASIN:
 
@@ -110,7 +110,7 @@ Returns the inverse hyperbolic cosine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ASIN** = ``7``
 
-Returns the arc-sine of the parameter.
+Trả về arc-sine của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ASINH:
 
@@ -118,7 +118,7 @@ Returns the arc-sine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ASINH** = ``8``
 
-Returns the inverse hyperbolic sine of the parameter.
+Trả về hyperbolic sine nghịch đảo của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ATAN:
 
@@ -126,7 +126,7 @@ Returns the inverse hyperbolic sine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ATAN** = ``9``
 
-Returns the arc-tangent of the parameter.
+Trả về arc-tangent của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ATANH:
 
@@ -134,7 +134,7 @@ Returns the arc-tangent of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ATANH** = ``10``
 
-Returns the inverse hyperbolic tangent of the parameter.
+Trả về hyperbolic tangent nghịch đảo của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_CEIL:
 
@@ -142,7 +142,7 @@ Returns the inverse hyperbolic tangent of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_CEIL** = ``11``
 
-Finds the nearest integer that is greater than or equal to the parameter.
+Tìm số nguyên gần nhất lớn hơn hoặc bằng tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_COS:
 
@@ -150,7 +150,7 @@ Finds the nearest integer that is greater than or equal to the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_COS** = ``12``
 
-Returns the cosine of the parameter.
+Trả về cosine của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_COSH:
 
@@ -158,7 +158,7 @@ Returns the cosine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_COSH** = ``13``
 
-Returns the hyperbolic cosine of the parameter.
+Trả về cos hyperbolic của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_DEGREES:
 
@@ -166,7 +166,7 @@ Returns the hyperbolic cosine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_DEGREES** = ``14``
 
-Converts a quantity in radians to degrees.
+Chuyển đổi một đại lượng tính bằng radian sang độ.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_EXP:
 
@@ -174,7 +174,7 @@ Converts a quantity in radians to degrees.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_EXP** = ``15``
 
-Base-e Exponential.
+Hàm mũ cơ số e.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_EXP2:
 
@@ -182,7 +182,7 @@ Base-e Exponential.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_EXP2** = ``16``
 
-Base-2 Exponential.
+Hàm mũ cơ số 2.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_FLOOR:
 
@@ -190,7 +190,7 @@ Base-2 Exponential.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_FLOOR** = ``17``
 
-Finds the nearest integer less than or equal to the parameter.
+Tìm số nguyên gần nhất nhỏ hơn hoặc bằng tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_FRACT:
 
@@ -198,7 +198,7 @@ Finds the nearest integer less than or equal to the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_FRACT** = ``18``
 
-Computes the fractional part of the argument.
+Tính phần lẻ của đối số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_INVERSE_SQRT:
 
@@ -206,7 +206,7 @@ Computes the fractional part of the argument.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_INVERSE_SQRT** = ``19``
 
-Returns the inverse of the square root of the parameter.
+Trả về nghịch đảo của căn bậc hai của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_LOG:
 
@@ -214,7 +214,7 @@ Returns the inverse of the square root of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_LOG** = ``20``
 
-Natural logarithm.
+Logarit tự nhiên.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_LOG2:
 
@@ -222,7 +222,7 @@ Natural logarithm.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_LOG2** = ``21``
 
-Base-2 logarithm.
+Logarit cơ số 2.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_RADIANS:
 
@@ -230,7 +230,7 @@ Base-2 logarithm.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_RADIANS** = ``22``
 
-Converts a quantity in degrees to radians.
+Chuyển đổi một đại lượng tính theo độ sang radian.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ROUND:
 
@@ -238,7 +238,7 @@ Converts a quantity in degrees to radians.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ROUND** = ``23``
 
-Finds the nearest integer to the parameter.
+Tìm số nguyên gần nhất với tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ROUNDEVEN:
 
@@ -246,7 +246,7 @@ Finds the nearest integer to the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ROUNDEVEN** = ``24``
 
-Finds the nearest even integer to the parameter.
+Tìm số nguyên chẵn gần nhất với tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_SIGN:
 
@@ -254,7 +254,7 @@ Finds the nearest even integer to the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_SIGN** = ``25``
 
-Extracts the sign of the parameter, i.e. returns ``-1`` if the parameter is negative, ``1`` if it's positive and ``0`` otherwise.
+Trích xuất dấu của tham số, tức là trả về ``-1`` nếu tham số là số âm, ``1`` nếu tham số là số dương và ``0`` trong các trường hợp khác.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_SIN:
 
@@ -262,7 +262,7 @@ Extracts the sign of the parameter, i.e. returns ``-1`` if the parameter is nega
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_SIN** = ``26``
 
-Returns the sine of the parameter.
+Trả về sin của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_SINH:
 
@@ -270,7 +270,7 @@ Returns the sine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_SINH** = ``27``
 
-Returns the hyperbolic sine of the parameter.
+Trả về sin hyperbolic của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_SQRT:
 
@@ -278,7 +278,7 @@ Returns the hyperbolic sine of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_SQRT** = ``28``
 
-Returns the square root of the parameter.
+Trả về căn bậc hai của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_TAN:
 
@@ -286,7 +286,7 @@ Returns the square root of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_TAN** = ``29``
 
-Returns the tangent of the parameter.
+Trả về tan của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_TANH:
 
@@ -294,7 +294,7 @@ Returns the tangent of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_TANH** = ``30``
 
-Returns the hyperbolic tangent of the parameter.
+Trả về tan hyperbolic của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_TRUNC:
 
@@ -302,7 +302,7 @@ Returns the hyperbolic tangent of the parameter.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_TRUNC** = ``31``
 
-Returns a value equal to the nearest integer to the parameter whose absolute value is not larger than the absolute value of the parameter.
+Trả về một giá trị bằng số nguyên gần nhất với tham số, có giá trị tuyệt đối không lớn hơn giá trị tuyệt đối của tham số.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_ONEMINUS:
 
@@ -310,7 +310,7 @@ Returns a value equal to the nearest integer to the parameter whose absolute val
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_ONEMINUS** = ``32``
 
-Returns ``1.0 - vector``.
+Trả về ``1.0 - vector``.
 
 .. _class_VisualShaderNodeVectorFunc_constant_FUNC_MAX:
 
@@ -318,7 +318,7 @@ Returns ``1.0 - vector``.
 
 :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **FUNC_MAX** = ``33``
 
-Represents the size of the :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` enum.
+Biểu thị kích thước của enum :ref:`Function <enum_VisualShaderNodeVectorFunc_Function>`.
 
 .. rst-class:: classref-section-separator
 
@@ -326,8 +326,8 @@ Represents the size of the :ref:`Function<enum_VisualShaderNodeVectorFunc_Functi
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeVectorFunc_property_function:
 
@@ -340,14 +340,14 @@ Property Descriptions
 - |void| **set_function**\ (\ value\: :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>`\ )
 - :ref:`Function<enum_VisualShaderNodeVectorFunc_Function>` **get_function**\ (\ )
 
-The function to be performed.
+Hàm cần thực hiện.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bạn bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

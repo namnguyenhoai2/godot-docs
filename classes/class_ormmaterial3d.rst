@@ -10,30 +10,30 @@
 ORMMaterial3D
 =============
 
-**Inherits:** :ref:`BaseMaterial3D<class_BaseMaterial3D>` **<** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`BaseMaterial3D<class_BaseMaterial3D>` **<** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A PBR (Physically Based Rendering) material to be used on 3D objects. Uses an ORM texture.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-ORMMaterial3D's properties are inherited from :ref:`BaseMaterial3D<class_BaseMaterial3D>`. Unlike :ref:`StandardMaterial3D<class_StandardMaterial3D>`, ORMMaterial3D uses a single texture for ambient occlusion, roughness and metallic maps, known as an ORM texture.
+Một material PBR (Physically Based Rendering) được sử dụng cho các đối tượng 3D. Sử dụng một texture ORM.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Các thuộc tính của ORMMaterial3D được kế thừa từ :ref:`BaseMaterial3D<class_BaseMaterial3D>`. Không giống :ref:`StandardMaterial3D<class_StandardMaterial3D>`, ORMMaterial3D sử dụng một texture duy nhất cho các map ambient occlusion, roughness và metallic, được gọi là texture ORM.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Standard Material 3D and ORM Material 3D <../tutorials/3d/standard_material_3d>`
+- :doc:`Standard Material 3D và ORM Material 3D <../tutorials/3d/standard_material_3d>`
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè thì mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

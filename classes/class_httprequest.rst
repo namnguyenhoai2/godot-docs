@@ -10,24 +10,24 @@
 HTTPRequest
 ===========
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node with the ability to send HTTP(S) requests.
+Một node có khả năng gửi các request HTTP(S).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A node with the ability to send HTTP requests. Uses :ref:`HTTPClient<class_HTTPClient>` internally.
+Một node có khả năng gửi các request HTTP. Sử dụng :ref:`HTTPClient<class_HTTPClient>` ở bên trong.
 
-Can be used to make HTTP requests, i.e. download or upload files or web content via HTTP.
+Có thể dùng để thực hiện các request HTTP, chẳng hạn như tải xuống hoặc tải lên tệp hay nội dung web qua HTTP.
 
-\ **Warning:** See the notes and warnings on :ref:`HTTPClient<class_HTTPClient>` for limitations, especially regarding TLS security.
+\ **Cảnh báo:** Xem các ghi chú và cảnh báo về :ref:`HTTPClient<class_HTTPClient>` để biết các giới hạn, đặc biệt là liên quan đến bảo mật TLS.
 
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+\ **Lưu ý:** Khi xuất sang Android, hãy đảm bảo bật quyền ``INTERNET`` trong Android export preset trước khi xuất project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
 
-\ **Example:** Contact a REST API and print one of its returned fields:
+\ **Ví dụ:** Gọi một REST API và in một trong các trường được trả về:
 
 
 .. tabs::
@@ -35,52 +35,52 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
  .. code-tab:: gdscript
 
     func _ready():
-        # Create an HTTP request node and connect its completion signal.
+        # Tạo một HTTP request node và kết nối completion signal của nó.
         var http_request = HTTPRequest.new()
         add_child(http_request)
         http_request.request_completed.connect(self._http_request_completed)
 
-        # Perform a GET request. The URL below returns JSON as of writing.
+        # Thực hiện một GET request. URL bên dưới trả về JSON tại thời điểm viết.
         var error = http_request.request("https://httpbin.org/get")
         if error != OK:
             push_error("An error occurred in the HTTP request.")
 
-        # Perform a POST request. The URL below returns JSON as of writing.
-        # Note: Don't make simultaneous requests using a single HTTPRequest node.
-        # The snippet below is provided for reference only.
+        # Thực hiện một POST request. URL bên dưới trả về JSON tại thời điểm viết.
+        # Lưu ý: Không thực hiện các request đồng thời bằng một HTTPRequest node duy nhất.
+        # Đoạn mã bên dưới chỉ được cung cấp để tham khảo.
         var body = JSON.stringify({"name": "Godette"})
         error = http_request.request("https://httpbin.org/post", [], HTTPClient.METHOD_POST, body)
         if error != OK:
             push_error("An error occurred in the HTTP request.")
 
-    # Called when the HTTP request is completed.
+    # Được gọi khi HTTP request hoàn tất.
     func _http_request_completed(result, response_code, headers, body):
         var json = JSON.new()
         json.parse(body.get_string_from_utf8())
         var response = json.get_data()
 
-        # Will print the user agent string used by the HTTPRequest node (as recognized by httpbin.org).
+        # In chuỗi user agent được HTTPRequest node sử dụng (theo nhận diện của httpbin.org).
         print(response.headers["User-Agent"])
 
  .. code-tab:: csharp
 
     public override void _Ready()
     {
-        // Create an HTTP request node and connect its completion signal.
+        // Tạo một HTTPRequest node và kết nối signal hoàn tất của nó.
         var httpRequest = new HttpRequest();
         AddChild(httpRequest);
         httpRequest.RequestCompleted += HttpRequestCompleted;
 
-        // Perform a GET request. The URL below returns JSON as of writing.
+        // Thực hiện một yêu cầu GET. URL bên dưới trả về JSON tại thời điểm viết.
         Error error = httpRequest.Request("https://httpbin.org/get");
         if (error != Error.Ok)
         {
             GD.PushError("An error occurred in the HTTP request.");
         }
 
-        // Perform a POST request. The URL below returns JSON as of writing.
-        // Note: Don't make simultaneous requests using a single HTTPRequest node.
-        // The snippet below is provided for reference only.
+        // Thực hiện một yêu cầu POST. URL bên dưới trả về JSON tại thời điểm viết.
+        // Lưu ý: Không thực hiện các yêu cầu đồng thời bằng một HTTPRequest node duy nhất.
+        // Đoạn mã bên dưới chỉ được cung cấp để tham khảo.
         string body = Json.Stringify(new Godot.Collections.Dictionary
         {
             { "name", "Godette" }
@@ -92,20 +92,20 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
         }
     }
 
-    // Called when the HTTP request is completed.
+    // Được gọi khi yêu cầu HTTP hoàn tất.
     private void HttpRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
     {
         var json = new Json();
         json.Parse(body.GetStringFromUtf8());
         var response = json.GetData().AsGodotDictionary();
 
-        // Will print the user agent string used by the HTTPRequest node (as recognized by httpbin.org).
+        // Sẽ in chuỗi user agent được HTTPRequest node sử dụng (theo nhận diện của httpbin.org).
         GD.Print((response["headers"].AsGodotDictionary())["User-Agent"]);
     }
 
 
 
-\ **Example:** Load an image using **HTTPRequest** and display it:
+\ **Ví dụ:** Tải một hình ảnh bằng **HTTPRequest** và hiển thị hình ảnh đó:
 
 
 .. tabs::
@@ -113,17 +113,17 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
  .. code-tab:: gdscript
 
     func _ready():
-        # Create an HTTP request node and connect its completion signal.
+        # Tạo một HTTP request node và kết nối completion signal của nó.
         var http_request = HTTPRequest.new()
         add_child(http_request)
         http_request.request_completed.connect(self._http_request_completed)
 
-        # Perform the HTTP request. The URL below returns a PNG image as of writing.
+        # Thực hiện HTTP request. URL bên dưới trả về một hình ảnh PNG tại thời điểm viết tài liệu này.
         var error = http_request.request("https://placehold.co/512.png")
         if error != OK:
             push_error("An error occurred in the HTTP request.")
 
-    # Called when the HTTP request is completed.
+    # Được gọi khi HTTP request hoàn tất.
     func _http_request_completed(result, response_code, headers, body):
         if result != HTTPRequest.RESULT_SUCCESS:
             push_error("Image couldn't be downloaded. Try a different image.")
@@ -135,7 +135,7 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
 
         var texture = ImageTexture.create_from_image(image)
 
-        # Display the image in a TextureRect node.
+        # Hiển thị hình ảnh trong một TextureRect node.
         var texture_rect = TextureRect.new()
         add_child(texture_rect)
         texture_rect.texture = texture
@@ -144,12 +144,12 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
 
     public override void _Ready()
     {
-        // Create an HTTP request node and connect its completion signal.
+        // Tạo một HTTPRequest node và kết nối signal hoàn tất của nó.
         var httpRequest = new HttpRequest();
         AddChild(httpRequest);
         httpRequest.RequestCompleted += HttpRequestCompleted;
 
-        // Perform the HTTP request. The URL below returns a PNG image as of writing.
+        // Thực hiện yêu cầu HTTP. URL bên dưới trả về một hình ảnh PNG tại thời điểm viết tài liệu.
         Error error = httpRequest.Request("https://placehold.co/512.png");
         if (error != Error.Ok)
         {
@@ -157,7 +157,7 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
         }
     }
 
-    // Called when the HTTP request is completed.
+    // Được gọi khi yêu cầu HTTP hoàn tất.
     private void HttpRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
     {
         if (result != (long)HttpRequest.Result.Success)
@@ -173,7 +173,7 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
 
         var texture = ImageTexture.CreateFromImage(image);
 
-        // Display the image in a TextureRect node.
+        // Hiển thị hình ảnh trong node TextureRect.
         var textureRect = new TextureRect();
         AddChild(textureRect);
         textureRect.Texture = texture;
@@ -181,20 +181,20 @@ Can be used to make HTTP requests, i.e. download or upload files or web content 
 
 
 
-\ **Note:** **HTTPRequest** nodes will automatically handle decompression of response bodies. An ``Accept-Encoding`` header will be automatically added to each of your requests, unless one is already specified. Any response with a ``Content-Encoding: gzip`` header will automatically be decompressed and delivered to you as uncompressed bytes.
+\ **Lưu ý:** **HTTPRequest** các node sẽ tự động xử lý việc giải nén nội dung phản hồi. Một header ``Accept-Encoding`` sẽ được tự động thêm vào mỗi yêu cầu của bạn, trừ khi header này đã được chỉ định. Mọi phản hồi có header ``Content-Encoding: gzip`` sẽ được tự động giải nén và gửi cho bạn dưới dạng byte chưa nén.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Making HTTP requests <../tutorials/networking/http_request_class>`
+- :doc:`Thực hiện yêu cầu HTTP <../tutorials/networking/http_request_class>`
 
-- :doc:`TLS certificates <../tutorials/networking/ssl_certificates>`
+- :doc:`Chứng chỉ TLS <../tutorials/networking/ssl_certificates>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -218,31 +218,31 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`cancel_request<class_HTTPRequest_method_cancel_request>`\ (\ )                                                                                                                                                                                                                                                                  |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_body_size<class_HTTPRequest_method_get_body_size>`\ (\ ) |const|                                                                                                                                                                                                                                                            |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                 | :ref:`get_downloaded_bytes<class_HTTPRequest_method_get_downloaded_bytes>`\ (\ ) |const|                                                                                                                                                                                                                                              |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Status<enum_HTTPClient_Status>` | :ref:`get_http_client_status<class_HTTPRequest_method_get_http_client_status>`\ (\ ) |const|                                                                                                                                                                                                                                          |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`request<class_HTTPRequest_method_request>`\ (\ url\: :ref:`String<class_String>`, custom_headers\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), method\: :ref:`Method<enum_HTTPClient_Method>` = 0, request_data\: :ref:`String<class_String>` = ""\ )                                              |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`request_raw<class_HTTPRequest_method_request_raw>`\ (\ url\: :ref:`String<class_String>`, custom_headers\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), method\: :ref:`Method<enum_HTTPClient_Method>` = 0, request_data_raw\: :ref:`PackedByteArray<class_PackedByteArray>` = PackedByteArray()\ ) |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_http_proxy<class_HTTPRequest_method_set_http_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                                                                                                |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_https_proxy<class_HTTPRequest_method_set_https_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                                                                                              |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`set_tls_options<class_HTTPRequest_method_set_tls_options>`\ (\ client_options\: :ref:`TLSOptions<class_TLSOptions>`\ )                                                                                                                                                                                                          |
-   +---------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`cancel_request<class_HTTPRequest_method_cancel_request>`\ (\ )                                                                                                                                                                                                                                                                   |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`get_body_size<class_HTTPRequest_method_get_body_size>`\ (\ ) |const|                                                                                                                                                                                                                                                             |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                  | :ref:`get_downloaded_bytes<class_HTTPRequest_method_get_downloaded_bytes>`\ (\ ) |const|                                                                                                                                                                                                                                               |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Status <enum_HTTPClient_Status>` | :ref:`get_http_client_status<class_HTTPRequest_method_get_http_client_status>`\ (\ ) |const|                                                                                                                                                                                                                                           |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`request<class_HTTPRequest_method_request>`\ (\ url\: :ref:`String<class_String>`, custom_headers\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), method\: :ref:`Method <enum_HTTPClient_Method>` = 0, request_data\: :ref:`String<class_String>` = ""\ )                                              |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`request_raw<class_HTTPRequest_method_request_raw>`\ (\ url\: :ref:`String<class_String>`, custom_headers\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), method\: :ref:`Method <enum_HTTPClient_Method>` = 0, request_data_raw\: :ref:`PackedByteArray<class_PackedByteArray>` = PackedByteArray()\ ) |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_http_proxy<class_HTTPRequest_method_set_http_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                                                                                                 |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_https_proxy<class_HTTPRequest_method_set_https_proxy>`\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ )                                                                                                                                                                                               |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`set_tls_options<class_HTTPRequest_method_set_tls_options>`\ (\ client_options\: :ref:`TLSOptions<class_TLSOptions>`\ )                                                                                                                                                                                                           |
+   +----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -250,8 +250,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_HTTPRequest_signal_request_completed:
 
@@ -259,7 +259,7 @@ Signals
 
 **request_completed**\ (\ result\: :ref:`int<class_int>`, response_code\: :ref:`int<class_int>`, headers\: :ref:`PackedStringArray<class_PackedStringArray>`, body\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_HTTPRequest_signal_request_completed>`
 
-Emitted when a request is completed.
+Được phát khi một request hoàn tất.
 
 .. rst-class:: classref-section-separator
 
@@ -267,14 +267,14 @@ Emitted when a request is completed.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_HTTPRequest_Result:
 
 .. rst-class:: classref-enumeration
 
-enum **Result**: :ref:`🔗<enum_HTTPRequest_Result>`
+enum **Result**: :ref:`🔗 <enum_HTTPRequest_Result>`
 
 .. _class_HTTPRequest_constant_RESULT_SUCCESS:
 
@@ -282,7 +282,7 @@ enum **Result**: :ref:`🔗<enum_HTTPRequest_Result>`
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_SUCCESS** = ``0``
 
-Request successful.
+Yêu cầu thành công.
 
 .. _class_HTTPRequest_constant_RESULT_CHUNKED_BODY_SIZE_MISMATCH:
 
@@ -290,7 +290,7 @@ Request successful.
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_CHUNKED_BODY_SIZE_MISMATCH** = ``1``
 
-Request failed due to a mismatch between the expected and actual chunked body size during transfer. Possible causes include network errors, server misconfiguration, or issues with chunked encoding.
+Yêu cầu không thành công do có sự không khớp giữa kích thước body dạng chunk dự kiến và thực tế trong quá trình truyền. Các nguyên nhân có thể bao gồm lỗi mạng, cấu hình máy chủ không chính xác hoặc sự cố với mã hóa dạng chunk.
 
 .. _class_HTTPRequest_constant_RESULT_CANT_CONNECT:
 
@@ -298,7 +298,7 @@ Request failed due to a mismatch between the expected and actual chunked body si
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_CANT_CONNECT** = ``2``
 
-Request failed while connecting.
+Yêu cầu không thành công trong khi kết nối.
 
 .. _class_HTTPRequest_constant_RESULT_CANT_RESOLVE:
 
@@ -306,7 +306,7 @@ Request failed while connecting.
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_CANT_RESOLVE** = ``3``
 
-Request failed while resolving.
+Yêu cầu không thành công trong khi phân giải.
 
 .. _class_HTTPRequest_constant_RESULT_CONNECTION_ERROR:
 
@@ -314,7 +314,7 @@ Request failed while resolving.
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_CONNECTION_ERROR** = ``4``
 
-Request failed due to connection (read/write) error.
+Yêu cầu không thành công do lỗi kết nối (đọc/ghi).
 
 .. _class_HTTPRequest_constant_RESULT_TLS_HANDSHAKE_ERROR:
 
@@ -322,7 +322,7 @@ Request failed due to connection (read/write) error.
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_TLS_HANDSHAKE_ERROR** = ``5``
 
-Request failed on TLS handshake.
+Yêu cầu không thành công trong quá trình bắt tay TLS.
 
 .. _class_HTTPRequest_constant_RESULT_NO_RESPONSE:
 
@@ -330,7 +330,7 @@ Request failed on TLS handshake.
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_NO_RESPONSE** = ``6``
 
-Request does not have a response (yet).
+Yêu cầu chưa có phản hồi.
 
 .. _class_HTTPRequest_constant_RESULT_BODY_SIZE_LIMIT_EXCEEDED:
 
@@ -338,7 +338,7 @@ Request does not have a response (yet).
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_BODY_SIZE_LIMIT_EXCEEDED** = ``7``
 
-Request exceeded its maximum size limit, see :ref:`body_size_limit<class_HTTPRequest_property_body_size_limit>`.
+Yêu cầu đã vượt quá giới hạn kích thước tối đa, xem :ref:`body_size_limit<class_HTTPRequest_property_body_size_limit>`.
 
 .. _class_HTTPRequest_constant_RESULT_BODY_DECOMPRESS_FAILED:
 
@@ -346,7 +346,7 @@ Request exceeded its maximum size limit, see :ref:`body_size_limit<class_HTTPReq
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_BODY_DECOMPRESS_FAILED** = ``8``
 
-Request failed due to an error while decompressing the response body. Possible causes include unsupported or incorrect compression format, corrupted data, or incomplete transfer.
+Yêu cầu không thành công do xảy ra lỗi khi giải nén nội dung phản hồi. Các nguyên nhân có thể bao gồm định dạng nén không được hỗ trợ hoặc không chính xác, dữ liệu bị hỏng hoặc quá trình truyền không hoàn tất.
 
 .. _class_HTTPRequest_constant_RESULT_REQUEST_FAILED:
 
@@ -354,7 +354,7 @@ Request failed due to an error while decompressing the response body. Possible c
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_REQUEST_FAILED** = ``9``
 
-Request failed (currently unused).
+Yêu cầu không thành công (hiện không được sử dụng).
 
 .. _class_HTTPRequest_constant_RESULT_DOWNLOAD_FILE_CANT_OPEN:
 
@@ -362,7 +362,7 @@ Request failed (currently unused).
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_DOWNLOAD_FILE_CANT_OPEN** = ``10``
 
-HTTPRequest couldn't open the download file.
+HTTPRequest không thể mở tệp tải xuống.
 
 .. _class_HTTPRequest_constant_RESULT_DOWNLOAD_FILE_WRITE_ERROR:
 
@@ -370,7 +370,7 @@ HTTPRequest couldn't open the download file.
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_DOWNLOAD_FILE_WRITE_ERROR** = ``11``
 
-HTTPRequest couldn't write to the download file.
+HTTPRequest không thể ghi vào tệp tải xuống.
 
 .. _class_HTTPRequest_constant_RESULT_REDIRECT_LIMIT_REACHED:
 
@@ -378,7 +378,7 @@ HTTPRequest couldn't write to the download file.
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_REDIRECT_LIMIT_REACHED** = ``12``
 
-Request reached its maximum redirect limit, see :ref:`max_redirects<class_HTTPRequest_property_max_redirects>`.
+Yêu cầu đã đạt đến giới hạn chuyển hướng tối đa, xem :ref:`max_redirects<class_HTTPRequest_property_max_redirects>`.
 
 .. _class_HTTPRequest_constant_RESULT_TIMEOUT:
 
@@ -386,7 +386,7 @@ Request reached its maximum redirect limit, see :ref:`max_redirects<class_HTTPRe
 
 :ref:`Result<enum_HTTPRequest_Result>` **RESULT_TIMEOUT** = ``13``
 
-Request failed due to a timeout. If you expect requests to take a long time, try increasing the value of :ref:`timeout<class_HTTPRequest_property_timeout>` or setting it to ``0.0`` to remove the timeout completely.
+Yêu cầu không thành công do hết thời gian chờ. Nếu bạn dự kiến các yêu cầu sẽ mất nhiều thời gian, hãy thử tăng giá trị của :ref:`timeout<class_HTTPRequest_property_timeout>` hoặc đặt giá trị này thành ``0.0`` để loại bỏ hoàn toàn thời gian chờ.
 
 .. rst-class:: classref-section-separator
 
@@ -394,8 +394,8 @@ Request failed due to a timeout. If you expect requests to take a long time, try
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_HTTPRequest_property_accept_gzip:
 
@@ -408,13 +408,13 @@ Property Descriptions
 - |void| **set_accept_gzip**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_accepting_gzip**\ (\ )
 
-If ``true``, this header will be added to each request: ``Accept-Encoding: gzip, deflate`` telling servers that it's okay to compress response bodies.
+Nếu ``true``, tiêu đề này sẽ được thêm vào mỗi request: ``Accept-Encoding: gzip, deflate``, cho các máy chủ biết rằng có thể nén phần thân phản hồi.
 
-Any Response body declaring a ``Content-Encoding`` of either ``gzip`` or ``deflate`` will then be automatically decompressed, and the uncompressed bytes will be delivered via :ref:`request_completed<class_HTTPRequest_signal_request_completed>`.
+Bất kỳ phần thân phản hồi nào khai báo ``Content-Encoding`` là ``gzip`` hoặc ``deflate`` sẽ được tự động giải nén, và các byte chưa nén sẽ được cung cấp thông qua :ref:`request_completed<class_HTTPRequest_signal_request_completed>`.
 
-If the user has specified their own ``Accept-Encoding`` header, then no header will be added regardless of :ref:`accept_gzip<class_HTTPRequest_property_accept_gzip>`.
+Nếu người dùng đã chỉ định tiêu đề ``Accept-Encoding`` riêng, thì sẽ không có tiêu đề nào được thêm vào, bất kể :ref:`accept_gzip<class_HTTPRequest_property_accept_gzip>`.
 
-If ``false`` no header will be added, and no decompression will be performed on response bodies. The raw bytes of the response body will be returned via :ref:`request_completed<class_HTTPRequest_signal_request_completed>`.
+Nếu ``false``, sẽ không có tiêu đề nào được thêm vào và phần thân phản hồi sẽ không được giải nén. Các byte thô của phần thân phản hồi sẽ được trả về thông qua :ref:`request_completed<class_HTTPRequest_signal_request_completed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -431,7 +431,7 @@ If ``false`` no header will be added, and no decompression will be performed on 
 - |void| **set_body_size_limit**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_body_size_limit**\ (\ )
 
-Maximum allowed size for response bodies. If the response body is compressed, this will be used as the maximum allowed size for the decompressed body.
+Kích thước tối đa được phép của phần thân phản hồi. Nếu phần thân phản hồi được nén, giá trị này sẽ được dùng làm kích thước tối đa được phép của phần thân sau khi giải nén.
 
 .. rst-class:: classref-item-separator
 
@@ -448,9 +448,9 @@ Maximum allowed size for response bodies. If the response body is compressed, th
 - |void| **set_download_chunk_size**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_download_chunk_size**\ (\ )
 
-The size of the buffer used and maximum bytes to read per iteration. See :ref:`HTTPClient.read_chunk_size<class_HTTPClient_property_read_chunk_size>`.
+Kích thước của bộ đệm được sử dụng và số byte tối đa được đọc trong mỗi lần lặp. Xem :ref:`HTTPClient.read_chunk_size<class_HTTPClient_property_read_chunk_size>`.
 
-Set this to a lower value (e.g. 4096 for 4 KiB) when downloading small files to decrease memory usage at the cost of download speeds.
+Đặt giá trị này thấp hơn (ví dụ: 4096 cho 4 KiB) khi tải xuống các tệp nhỏ để giảm mức sử dụng bộ nhớ, đánh đổi bằng tốc độ tải xuống.
 
 .. rst-class:: classref-item-separator
 
@@ -467,7 +467,7 @@ Set this to a lower value (e.g. 4096 for 4 KiB) when downloading small files to 
 - |void| **set_download_file**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_download_file**\ (\ )
 
-The file to download into. Will output any received file into it.
+Tệp để tải xuống vào đó. Mọi tệp nhận được sẽ được ghi vào tệp này.
 
 .. rst-class:: classref-item-separator
 
@@ -484,7 +484,7 @@ The file to download into. Will output any received file into it.
 - |void| **set_max_redirects**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_redirects**\ (\ )
 
-Maximum number of allowed redirects.
+Số lượng chuyển hướng tối đa được phép.
 
 .. rst-class:: classref-item-separator
 
@@ -501,9 +501,9 @@ Maximum number of allowed redirects.
 - |void| **set_timeout**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_timeout**\ (\ )
 
-The duration to wait before a request times out, in seconds (independent of :ref:`Engine.time_scale<class_Engine_property_time_scale>`). If :ref:`timeout<class_HTTPRequest_property_timeout>` is set to ``0.0``, the request will never time out.
+Thời gian chờ trước khi một request hết thời gian, tính bằng giây (độc lập với :ref:`Engine.time_scale<class_Engine_property_time_scale>`). Nếu :ref:`timeout<class_HTTPRequest_property_timeout>` được đặt thành ``0.0``, request sẽ không bao giờ hết thời gian.
 
-For simple requests, such as communication with a REST API, it is recommended to set :ref:`timeout<class_HTTPRequest_property_timeout>` to a value suitable for the server response time (commonly between ``1.0`` and ``10.0``). This will help prevent unwanted timeouts caused by variation in response times while still allowing the application to detect when a request has timed out. For larger requests such as file downloads, it is recommended to set :ref:`timeout<class_HTTPRequest_property_timeout>` to ``0.0``, disabling the timeout functionality. This will help prevent large transfers from failing due to exceeding the timeout value.
+Đối với các request đơn giản, chẳng hạn như giao tiếp với REST API, bạn nên đặt :ref:`timeout<class_HTTPRequest_property_timeout>` thành một giá trị phù hợp với thời gian phản hồi của server (thường từ ``1.0`` đến ``10.0``). Điều này giúp ngăn việc hết thời gian ngoài ý muốn do thời gian phản hồi thay đổi, đồng thời vẫn cho phép ứng dụng phát hiện khi một request đã hết thời gian. Đối với các request lớn hơn, chẳng hạn như tải xuống tệp, bạn nên đặt :ref:`timeout<class_HTTPRequest_property_timeout>` thành ``0.0``, qua đó tắt chức năng timeout. Điều này giúp ngăn các quá trình truyền dữ liệu lớn bị lỗi do vượt quá giá trị timeout.
 
 .. rst-class:: classref-item-separator
 
@@ -520,7 +520,7 @@ For simple requests, such as communication with a REST API, it is recommended to
 - |void| **set_use_threads**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_threads**\ (\ )
 
-If ``true``, multithreading is used to improve performance.
+Nếu ``true``, multithreading sẽ được sử dụng để cải thiện hiệu suất.
 
 .. rst-class:: classref-section-separator
 
@@ -528,8 +528,8 @@ If ``true``, multithreading is used to improve performance.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_HTTPRequest_method_cancel_request:
 
@@ -537,7 +537,7 @@ Method Descriptions
 
 |void| **cancel_request**\ (\ ) :ref:`🔗<class_HTTPRequest_method_cancel_request>`
 
-Cancels the current request.
+Hủy request hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -549,9 +549,9 @@ Cancels the current request.
 
 :ref:`int<class_int>` **get_body_size**\ (\ ) |const| :ref:`🔗<class_HTTPRequest_method_get_body_size>`
 
-Returns the response body length.
+Trả về độ dài body của response.
 
-\ **Note:** Some Web servers may not send a body length. In this case, the value returned will be ``-1``. If using chunked transfer encoding, the body length will also be ``-1``.
+\ **Lưu ý:** Một số Web server có thể không gửi độ dài body. Trong trường hợp này, giá trị được trả về sẽ là ``-1``. Nếu sử dụng chunked transfer encoding, độ dài body cũng sẽ là ``-1``.
 
 .. rst-class:: classref-item-separator
 
@@ -563,7 +563,7 @@ Returns the response body length.
 
 :ref:`int<class_int>` **get_downloaded_bytes**\ (\ ) |const| :ref:`🔗<class_HTTPRequest_method_get_downloaded_bytes>`
 
-Returns the number of bytes this HTTPRequest downloaded.
+Trả về số byte mà HTTPRequest này đã tải xuống.
 
 .. rst-class:: classref-item-separator
 
@@ -575,7 +575,7 @@ Returns the number of bytes this HTTPRequest downloaded.
 
 :ref:`Status<enum_HTTPClient_Status>` **get_http_client_status**\ (\ ) |const| :ref:`🔗<class_HTTPRequest_method_get_http_client_status>`
 
-Returns the current status of the underlying :ref:`HTTPClient<class_HTTPClient>`.
+Trả về trạng thái hiện tại của :ref:`HTTPClient<class_HTTPClient>` bên dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -587,13 +587,13 @@ Returns the current status of the underlying :ref:`HTTPClient<class_HTTPClient>`
 
 :ref:`Error<enum_@GlobalScope_Error>` **request**\ (\ url\: :ref:`String<class_String>`, custom_headers\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), method\: :ref:`Method<enum_HTTPClient_Method>` = 0, request_data\: :ref:`String<class_String>` = ""\ ) :ref:`🔗<class_HTTPRequest_method_request>`
 
-Creates request on the underlying :ref:`HTTPClient<class_HTTPClient>`. If there is no configuration errors, it tries to connect using :ref:`HTTPClient.connect_to_host()<class_HTTPClient_method_connect_to_host>` and passes parameters onto :ref:`HTTPClient.request()<class_HTTPClient_method_request>`.
+Tạo request trên :ref:`HTTPClient<class_HTTPClient>` bên dưới. Nếu không có lỗi cấu hình, phương thức này sẽ cố gắng kết nối bằng :ref:`HTTPClient.connect_to_host()<class_HTTPClient_method_connect_to_host>` và truyền các tham số cho :ref:`HTTPClient.request()<class_HTTPClient_method_request>`.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if request is successfully created. (Does not imply that the server has responded), :ref:`@GlobalScope.ERR_UNCONFIGURED<class_@GlobalScope_constant_ERR_UNCONFIGURED>` if not in the tree, :ref:`@GlobalScope.ERR_BUSY<class_@GlobalScope_constant_ERR_BUSY>` if still processing previous request, :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if given string is not a valid URL format, or :ref:`@GlobalScope.ERR_CANT_CONNECT<class_@GlobalScope_constant_ERR_CANT_CONNECT>` if not using thread and the :ref:`HTTPClient<class_HTTPClient>` cannot connect to host.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu request được tạo thành công (không có nghĩa là server đã phản hồi), :ref:`@GlobalScope.ERR_UNCONFIGURED <class_@GlobalScope_constant_ERR_UNCONFIGURED>` nếu không nằm trong tree, :ref:`@GlobalScope.ERR_BUSY <class_@GlobalScope_constant_ERR_BUSY>` nếu vẫn đang xử lý request trước đó, :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu chuỗi được cung cấp không có định dạng URL hợp lệ hoặc :ref:`@GlobalScope.ERR_CANT_CONNECT <class_@GlobalScope_constant_ERR_CANT_CONNECT>` nếu không sử dụng thread và :ref:`HTTPClient<class_HTTPClient>` không thể kết nối đến host.
 
-\ **Note:** When ``method`` is :ref:`HTTPClient.METHOD_GET<class_HTTPClient_constant_METHOD_GET>`, the payload sent via ``request_data`` might be ignored by the server or even cause the server to reject the request (check `RFC 7231 section 4.3.1 <https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1>`__ for more details). As a workaround, you can send data as a query string in the URL (see :ref:`String.uri_encode()<class_String_method_uri_encode>` for an example).
+\ **Lưu ý:** Khi ``method`` là :ref:`HTTPClient.METHOD_GET<class_HTTPClient_constant_METHOD_GET>`, payload được gửi qua ``request_data`` có thể bị máy chủ bỏ qua hoặc thậm chí khiến máy chủ từ chối yêu cầu (xem `RFC 7231 mục 4.3.1 <https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.1>`__ để biết thêm chi tiết). Để khắc phục tạm thời, bạn có thể gửi dữ liệu dưới dạng query string trong URL (xem :ref:`String.uri_encode()<class_String_method_uri_encode>` để biết ví dụ).
 
-\ **Note:** It's recommended to use transport encryption (TLS) and to avoid sending sensitive information (such as login credentials) in HTTP GET URL parameters. Consider using HTTP POST requests or HTTP headers for such information instead.
+\ **Lưu ý:** Bạn nên sử dụng mã hóa truyền tải (TLS) và tránh gửi thông tin nhạy cảm (chẳng hạn như thông tin đăng nhập) trong các tham số URL của HTTP GET. Thay vào đó, hãy cân nhắc sử dụng các yêu cầu HTTP POST hoặc HTTP headers cho những thông tin này.
 
 .. rst-class:: classref-item-separator
 
@@ -605,9 +605,9 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if request is suc
 
 :ref:`Error<enum_@GlobalScope_Error>` **request_raw**\ (\ url\: :ref:`String<class_String>`, custom_headers\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray(), method\: :ref:`Method<enum_HTTPClient_Method>` = 0, request_data_raw\: :ref:`PackedByteArray<class_PackedByteArray>` = PackedByteArray()\ ) :ref:`🔗<class_HTTPRequest_method_request_raw>`
 
-Creates request on the underlying :ref:`HTTPClient<class_HTTPClient>` using a raw array of bytes for the request body. If there is no configuration errors, it tries to connect using :ref:`HTTPClient.connect_to_host()<class_HTTPClient_method_connect_to_host>` and passes parameters onto :ref:`HTTPClient.request()<class_HTTPClient_method_request>`.
+Tạo request trên :ref:`HTTPClient<class_HTTPClient>` bên dưới bằng cách sử dụng một mảng byte thô cho request body. Nếu không có lỗi cấu hình, hàm này sẽ cố gắng kết nối bằng :ref:`HTTPClient.connect_to_host()<class_HTTPClient_method_connect_to_host>` và truyền các tham số cho :ref:`HTTPClient.request()<class_HTTPClient_method_request>`.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if request is successfully created. (Does not imply that the server has responded), :ref:`@GlobalScope.ERR_UNCONFIGURED<class_@GlobalScope_constant_ERR_UNCONFIGURED>` if not in the tree, :ref:`@GlobalScope.ERR_BUSY<class_@GlobalScope_constant_ERR_BUSY>` if still processing previous request, :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if given string is not a valid URL format, or :ref:`@GlobalScope.ERR_CANT_CONNECT<class_@GlobalScope_constant_ERR_CANT_CONNECT>` if not using thread and the :ref:`HTTPClient<class_HTTPClient>` cannot connect to host.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu request được tạo thành công (không có nghĩa là server đã phản hồi), :ref:`@GlobalScope.ERR_UNCONFIGURED <class_@GlobalScope_constant_ERR_UNCONFIGURED>` nếu không nằm trong tree, :ref:`@GlobalScope.ERR_BUSY <class_@GlobalScope_constant_ERR_BUSY>` nếu vẫn đang xử lý request trước đó, :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu chuỗi được cung cấp không có định dạng URL hợp lệ hoặc :ref:`@GlobalScope.ERR_CANT_CONNECT <class_@GlobalScope_constant_ERR_CANT_CONNECT>` nếu không sử dụng thread và :ref:`HTTPClient<class_HTTPClient>` không thể kết nối đến host.
 
 .. rst-class:: classref-item-separator
 
@@ -619,9 +619,9 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if request is suc
 
 |void| **set_http_proxy**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_HTTPRequest_method_set_http_proxy>`
 
-Sets the proxy server for HTTP requests.
+Thiết lập proxy server cho các yêu cầu HTTP.
 
-The proxy server is unset if ``host`` is empty or ``port`` is -1.
+Proxy server không được thiết lập nếu ``host`` rỗng hoặc ``port`` là -1.
 
 .. rst-class:: classref-item-separator
 
@@ -633,9 +633,9 @@ The proxy server is unset if ``host`` is empty or ``port`` is -1.
 
 |void| **set_https_proxy**\ (\ host\: :ref:`String<class_String>`, port\: :ref:`int<class_int>`\ ) :ref:`🔗<class_HTTPRequest_method_set_https_proxy>`
 
-Sets the proxy server for HTTPS requests.
+Thiết lập proxy server cho các yêu cầu HTTPS.
 
-The proxy server is unset if ``host`` is empty or ``port`` is -1.
+Proxy server không được thiết lập nếu ``host`` rỗng hoặc ``port`` là -1.
 
 .. rst-class:: classref-item-separator
 
@@ -647,14 +647,14 @@ The proxy server is unset if ``host`` is empty or ``port`` is -1.
 
 |void| **set_tls_options**\ (\ client_options\: :ref:`TLSOptions<class_TLSOptions>`\ ) :ref:`🔗<class_HTTPRequest_method_set_tls_options>`
 
-Sets the :ref:`TLSOptions<class_TLSOptions>` to be used when connecting to an HTTPS server. See :ref:`TLSOptions.client()<class_TLSOptions_method_client>`.
+Thiết lập :ref:`TLSOptions<class_TLSOptions>` được sử dụng khi kết nối đến máy chủ HTTPS. Xem :ref:`TLSOptions.client()<class_TLSOptions_method_client>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì nó mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

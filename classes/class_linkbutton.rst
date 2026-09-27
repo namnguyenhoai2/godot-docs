@@ -10,55 +10,55 @@
 LinkButton
 ==========
 
-**Inherits:** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A button that represents a link.
+Một button biểu thị một liên kết.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A button that represents a link. This type of button is primarily used for interactions that cause a context change (like linking to a web page).
+Một button biểu thị một liên kết. Loại button này chủ yếu được sử dụng cho các tương tác gây ra thay đổi ngữ cảnh (chẳng hạn như liên kết đến một trang web).
 
-See also :ref:`BaseButton<class_BaseButton>` which contains common properties and methods associated with this node.
+Xem thêm :ref:`BaseButton<class_BaseButton>`, trong đó chứa các thuộc tính và phương thức phổ biến liên quan đến node này.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`ellipsis_char<class_LinkButton_property_ellipsis_char>`                                                 | ``"…"``                                                                             |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`FocusMode<enum_Control_FocusMode>`                          | focus_mode                                                                                                    | ``3`` (overrides :ref:`Control<class_Control_property_focus_mode>`)                 |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`language<class_LinkButton_property_language>`                                                           | ``""``                                                                              |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`CursorShape<enum_Control_CursorShape>`                      | mouse_default_cursor_shape                                                                                    | ``2`` (overrides :ref:`Control<class_Control_property_mouse_default_cursor_shape>`) |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` | :ref:`structured_text_bidi_override<class_LinkButton_property_structured_text_bidi_override>`                 | ``0``                                                                               |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                                         | :ref:`structured_text_bidi_override_options<class_LinkButton_property_structured_text_bidi_override_options>` | ``[]``                                                                              |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`text<class_LinkButton_property_text>`                                                                   | ``""``                                                                              |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`TextDirection<enum_Control_TextDirection>`                  | :ref:`text_direction<class_LinkButton_property_text_direction>`                                               | ``0``                                                                               |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`           | :ref:`text_overrun_behavior<class_LinkButton_property_text_overrun_behavior>`                                 | ``0``                                                                               |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`UnderlineMode<enum_LinkButton_UnderlineMode>`               | :ref:`underline<class_LinkButton_property_underline>`                                                         | ``0``                                                                               |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`uri<class_LinkButton_property_uri>`                                                                     | ``""``                                                                              |
-   +-------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`ellipsis_char<class_LinkButton_property_ellipsis_char>`                                                 | ``"…"``                                                                          |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`FocusMode <enum_Control_FocusMode>`                          | focus_mode                                                                                                    | ``3`` (ghi đè :ref:`Control<class_Control_property_focus_mode>`)                 |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`language<class_LinkButton_property_language>`                                                           | ``""``                                                                           |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`CursorShape <enum_Control_CursorShape>`                      | mouse_default_cursor_shape                                                                                    | ``2`` (ghi đè :ref:`Control<class_Control_property_mouse_default_cursor_shape>`) |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`StructuredTextParser <enum_TextServer_StructuredTextParser>` | :ref:`structured_text_bidi_override<class_LinkButton_property_structured_text_bidi_override>`                 | ``0``                                                                            |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                                          | :ref:`structured_text_bidi_override_options<class_LinkButton_property_structured_text_bidi_override_options>` | ``[]``                                                                           |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`text<class_LinkButton_property_text>`                                                                   | ``""``                                                                           |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`TextDirection <enum_Control_TextDirection>`                  | :ref:`text_direction<class_LinkButton_property_text_direction>`                                               | ``0``                                                                            |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`OverrunBehavior <enum_TextServer_OverrunBehavior>`           | :ref:`text_overrun_behavior<class_LinkButton_property_text_overrun_behavior>`                                 | ``0``                                                                            |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`UnderlineMode <enum_LinkButton_UnderlineMode>`               | :ref:`underline<class_LinkButton_property_underline>`                                                         | ``0``                                                                            |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`uri<class_LinkButton_property_uri>`                                                                     | ``""``                                                                           |
+   +--------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Các thuộc tính giao diện
+------------------------
 
 .. table::
    :widths: auto
@@ -95,14 +95,14 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_LinkButton_UnderlineMode:
 
 .. rst-class:: classref-enumeration
 
-enum **UnderlineMode**: :ref:`🔗<enum_LinkButton_UnderlineMode>`
+enum **UnderlineMode**: :ref:`🔗 <enum_LinkButton_UnderlineMode>`
 
 .. _class_LinkButton_constant_UNDERLINE_MODE_ALWAYS:
 
@@ -110,7 +110,7 @@ enum **UnderlineMode**: :ref:`🔗<enum_LinkButton_UnderlineMode>`
 
 :ref:`UnderlineMode<enum_LinkButton_UnderlineMode>` **UNDERLINE_MODE_ALWAYS** = ``0``
 
-The LinkButton will always show an underline at the bottom of its text.
+LinkButton sẽ luôn hiển thị một đường gạch chân ở phía dưới văn bản của nó.
 
 .. _class_LinkButton_constant_UNDERLINE_MODE_ON_HOVER:
 
@@ -118,7 +118,7 @@ The LinkButton will always show an underline at the bottom of its text.
 
 :ref:`UnderlineMode<enum_LinkButton_UnderlineMode>` **UNDERLINE_MODE_ON_HOVER** = ``1``
 
-The LinkButton will show an underline at the bottom of its text when the mouse cursor is over it.
+LinkButton sẽ hiển thị một đường gạch chân ở phía dưới văn bản khi con trỏ chuột nằm trên nó.
 
 .. _class_LinkButton_constant_UNDERLINE_MODE_NEVER:
 
@@ -126,7 +126,7 @@ The LinkButton will show an underline at the bottom of its text when the mouse c
 
 :ref:`UnderlineMode<enum_LinkButton_UnderlineMode>` **UNDERLINE_MODE_NEVER** = ``2``
 
-The LinkButton will never show an underline at the bottom of its text.
+LinkButton sẽ không bao giờ hiển thị gạch chân ở bên dưới văn bản của nó.
 
 .. rst-class:: classref-section-separator
 
@@ -134,8 +134,8 @@ The LinkButton will never show an underline at the bottom of its text.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_LinkButton_property_ellipsis_char:
 
@@ -148,7 +148,7 @@ Property Descriptions
 - |void| **set_ellipsis_char**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_ellipsis_char**\ (\ )
 
-Ellipsis character used for text clipping.
+Ký tự dấu ba chấm được sử dụng để cắt ngắn văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -165,7 +165,7 @@ Ellipsis character used for text clipping.
 - |void| **set_language**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_language**\ (\ )
 
-Language code used for line-breaking and text shaping algorithms. If left empty, the current locale is used instead.
+Mã ngôn ngữ được sử dụng cho các thuật toán ngắt dòng và định hình văn bản. Nếu để trống, locale hiện tại sẽ được sử dụng thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Language code used for line-breaking and text shaping algorithms. If left empty,
 - |void| **set_structured_text_bidi_override**\ (\ value\: :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>`\ )
 - :ref:`StructuredTextParser<enum_TextServer_StructuredTextParser>` **get_structured_text_bidi_override**\ (\ )
 
-Set BiDi algorithm override for the structured text.
+Thiết lập ghi đè thuật toán BiDi cho văn bản có cấu trúc.
 
 .. rst-class:: classref-item-separator
 
@@ -199,7 +199,7 @@ Set BiDi algorithm override for the structured text.
 - |void| **set_structured_text_bidi_override_options**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_structured_text_bidi_override_options**\ (\ )
 
-Set additional options for BiDi override.
+Thiết lập các tùy chọn bổ sung cho việc ghi đè BiDi.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Set additional options for BiDi override.
 - |void| **set_text**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_text**\ (\ )
 
-The button's text that will be displayed inside the button's area.
+Văn bản của button sẽ được hiển thị bên trong vùng của button.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ The button's text that will be displayed inside the button's area.
 - |void| **set_text_direction**\ (\ value\: :ref:`TextDirection<enum_Control_TextDirection>`\ )
 - :ref:`TextDirection<enum_Control_TextDirection>` **get_text_direction**\ (\ )
 
-Base text writing direction.
+Hướng viết văn bản cơ sở.
 
 .. rst-class:: classref-item-separator
 
@@ -250,7 +250,7 @@ Base text writing direction.
 - |void| **set_text_overrun_behavior**\ (\ value\: :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>`\ )
 - :ref:`OverrunBehavior<enum_TextServer_OverrunBehavior>` **get_text_overrun_behavior**\ (\ )
 
-Sets the clipping behavior when the text exceeds the node's bounding rectangle.
+Thiết lập cách cắt xén khi văn bản vượt quá hình chữ nhật giới hạn của node.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Sets the clipping behavior when the text exceeds the node's bounding rectangle.
 - |void| **set_underline_mode**\ (\ value\: :ref:`UnderlineMode<enum_LinkButton_UnderlineMode>`\ )
 - :ref:`UnderlineMode<enum_LinkButton_UnderlineMode>` **get_underline_mode**\ (\ )
 
-The underline mode to use for the text.
+Chế độ gạch chân được sử dụng cho văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -284,22 +284,22 @@ The underline mode to use for the text.
 - |void| **set_uri**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_uri**\ (\ )
 
-The `URI <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier>`__ for this **LinkButton**. If set to a valid URI, pressing the button opens the URI using the operating system's default program for the protocol (via :ref:`OS.shell_open()<class_OS_method_shell_open>`). HTTP and HTTPS URLs open the default web browser.
+`URI <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier>`__ của **LinkButton** này. Nếu được đặt thành một URI hợp lệ, việc nhấn nút sẽ mở URI bằng chương trình mặc định của hệ điều hành cho giao thức đó (thông qua :ref:`OS.shell_open()<class_OS_method_shell_open>`). Các URL HTTP và HTTPS sẽ mở trình duyệt web mặc định.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    uri = "https://godotengine.org"  # Opens the URL in the default web browser.
-    uri = "C:\SomeFolder"  # Opens the file explorer at the given path.
-    uri = "C:\SomeImage.png"  # Opens the given image in the default viewing app.
+    uri = "https://godotengine.org"  # Mở URL trong trình duyệt web mặc định.
+    uri = "C:\SomeFolder"  # Mở trình quản lý tệp tại đường dẫn đã cho.
+    uri = "C:\SomeImage.png"  # Mở hình ảnh đã cho trong ứng dụng xem mặc định.
 
  .. code-tab:: csharp
 
-    Uri = "https://godotengine.org"; // Opens the URL in the default web browser.
-    Uri = "C:\SomeFolder"; // Opens the file explorer at the given path.
-    Uri = "C:\SomeImage.png"; // Opens the given image in the default viewing app.
+    Uri = "https://godotengine.org"; // Mở URL trong trình duyệt web mặc định.
+    Uri = "C:\SomeFolder"; // Mở trình khám phá tệp tại đường dẫn đã cho.
+    Uri = "C:\SomeImage.png"; // Mở hình ảnh đã cho trong ứng dụng xem mặc định.
 
 
 
@@ -309,8 +309,8 @@ The `URI <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier>`__ for this
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_LinkButton_theme_color_font_color:
 
@@ -318,7 +318,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **font_color** = ``Color(0.875, 0.875, 0.875, 1)`` :ref:`🔗<class_LinkButton_theme_color_font_color>`
 
-Default text :ref:`Color<class_Color>` of the **LinkButton**.
+Văn bản mặc định :ref:`Color<class_Color>` của **LinkButton**.
 
 .. rst-class:: classref-item-separator
 
@@ -330,7 +330,7 @@ Default text :ref:`Color<class_Color>` of the **LinkButton**.
 
 :ref:`Color<class_Color>` **font_disabled_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_LinkButton_theme_color_font_disabled_color>`
 
-Text :ref:`Color<class_Color>` used when the **LinkButton** is disabled.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi **LinkButton** bị tắt.
 
 .. rst-class:: classref-item-separator
 
@@ -342,7 +342,7 @@ Text :ref:`Color<class_Color>` used when the **LinkButton** is disabled.
 
 :ref:`Color<class_Color>` **font_focus_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_LinkButton_theme_color_font_focus_color>`
 
-Text :ref:`Color<class_Color>` used when the **LinkButton** is focused. Only replaces the normal text color of the button. Disabled, hovered, and pressed states take precedence over this color.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi **LinkButton** được focus. Chỉ thay thế màu văn bản thông thường của nút. Các trạng thái bị tắt, di chuột qua và được nhấn được ưu tiên hơn màu này.
 
 .. rst-class:: classref-item-separator
 
@@ -354,7 +354,7 @@ Text :ref:`Color<class_Color>` used when the **LinkButton** is focused. Only rep
 
 :ref:`Color<class_Color>` **font_hover_color** = ``Color(0.95, 0.95, 0.95, 1)`` :ref:`🔗<class_LinkButton_theme_color_font_hover_color>`
 
-Text :ref:`Color<class_Color>` used when the **LinkButton** is being hovered.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi **LinkButton** đang được di chuột qua.
 
 .. rst-class:: classref-item-separator
 
@@ -366,7 +366,7 @@ Text :ref:`Color<class_Color>` used when the **LinkButton** is being hovered.
 
 :ref:`Color<class_Color>` **font_hover_pressed_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_LinkButton_theme_color_font_hover_pressed_color>`
 
-Text :ref:`Color<class_Color>` used when the **LinkButton** is being hovered and pressed.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi **LinkButton** đang được di chuột qua và nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -378,7 +378,7 @@ Text :ref:`Color<class_Color>` used when the **LinkButton** is being hovered and
 
 :ref:`Color<class_Color>` **font_outline_color** = ``Color(0, 0, 0, 1)`` :ref:`🔗<class_LinkButton_theme_color_font_outline_color>`
 
-The tint of text outline of the **LinkButton**.
+Màu sắc của viền văn bản của **LinkButton**.
 
 .. rst-class:: classref-item-separator
 
@@ -390,7 +390,7 @@ The tint of text outline of the **LinkButton**.
 
 :ref:`Color<class_Color>` **font_pressed_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_LinkButton_theme_color_font_pressed_color>`
 
-Text :ref:`Color<class_Color>` used when the **LinkButton** is being pressed.
+Văn bản :ref:`Color<class_Color>` được sử dụng khi **LinkButton** đang được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -402,9 +402,9 @@ Text :ref:`Color<class_Color>` used when the **LinkButton** is being pressed.
 
 :ref:`int<class_int>` **outline_size** = ``0`` :ref:`🔗<class_LinkButton_theme_constant_outline_size>`
 
-The size of the text outline.
+Kích thước của viền văn bản.
 
-\ **Note:** If using a font with :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>` enabled, its :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` must be set to at least *twice* the value of :ref:`outline_size<class_LinkButton_theme_constant_outline_size>` for outline rendering to look correct. Otherwise, the outline may appear to be cut off earlier than intended.
+\ **Lưu ý:** Nếu sử dụng phông chữ đã bật :ref:`FontFile.multichannel_signed_distance_field<class_FontFile_property_multichannel_signed_distance_field>`, :ref:`FontFile.msdf_pixel_range<class_FontFile_property_msdf_pixel_range>` phải được đặt ít nhất bằng *hai lần* giá trị của :ref:`outline_size<class_LinkButton_theme_constant_outline_size>` để việc hiển thị viền trông chính xác. Nếu không, viền có thể bị cắt sớm hơn dự kiến.
 
 .. rst-class:: classref-item-separator
 
@@ -416,7 +416,7 @@ The size of the text outline.
 
 :ref:`int<class_int>` **underline_spacing** = ``2`` :ref:`🔗<class_LinkButton_theme_constant_underline_spacing>`
 
-The vertical space between the baseline of text and the underline.
+Khoảng cách theo chiều dọc giữa đường cơ sở của văn bản và phần gạch chân.
 
 .. rst-class:: classref-item-separator
 
@@ -426,9 +426,9 @@ The vertical space between the baseline of text and the underline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Font<class_Font>` **font** :ref:`🔗<class_LinkButton_theme_font_font>`
+:ref:`Font<class_Font>` **font** :ref:`🔗 <class_LinkButton_theme_font_font>`
 
-:ref:`Font<class_Font>` of the **LinkButton**'s text.
+:ref:`Font<class_Font>` của văn bản của **LinkButton**.
 
 .. rst-class:: classref-item-separator
 
@@ -438,9 +438,9 @@ The vertical space between the baseline of text and the underline.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`int<class_int>` **font_size** :ref:`🔗<class_LinkButton_theme_font_size_font_size>`
+:ref:`int<class_int>` **font_size** :ref:`🔗 <class_LinkButton_theme_font_size_font_size>`
 
-Font size of the **LinkButton**'s text.
+Cỡ chữ của văn bản của **LinkButton**.
 
 .. rst-class:: classref-item-separator
 
@@ -450,16 +450,16 @@ Font size of the **LinkButton**'s text.
 
 .. rst-class:: classref-themeproperty
 
-:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗<class_LinkButton_theme_style_focus>`
+:ref:`StyleBox<class_StyleBox>` **focus** :ref:`🔗 <class_LinkButton_theme_style_focus>`
 
-:ref:`StyleBox<class_StyleBox>` used when the **LinkButton** is focused. The :ref:`focus<class_LinkButton_theme_style_focus>` :ref:`StyleBox<class_StyleBox>` is displayed *over* the base :ref:`StyleBox<class_StyleBox>`, so a partially transparent :ref:`StyleBox<class_StyleBox>` should be used to ensure the base :ref:`StyleBox<class_StyleBox>` remains visible. A :ref:`StyleBox<class_StyleBox>` that represents an outline or an underline works well for this purpose. To disable the focus visual effect, assign a :ref:`StyleBoxEmpty<class_StyleBoxEmpty>` resource. Note that disabling the focus visual effect will harm keyboard/controller navigation usability, so this is not recommended for accessibility reasons.
+:ref:`StyleBox<class_StyleBox>` được sử dụng khi **LinkButton** được focus. :ref:`focus<class_LinkButton_theme_style_focus>` :ref:`StyleBox<class_StyleBox>` được hiển thị *chồng lên* :ref:`StyleBox<class_StyleBox>` cơ sở, vì vậy nên sử dụng :ref:`StyleBox<class_StyleBox>` bán trong suốt để đảm bảo :ref:`StyleBox<class_StyleBox>` cơ sở vẫn hiển thị. :ref:`StyleBox<class_StyleBox>` biểu thị đường viền hoặc gạch chân sẽ phù hợp cho mục đích này. Để tắt hiệu ứng hiển thị khi focus, hãy gán tài nguyên :ref:`StyleBoxEmpty<class_StyleBoxEmpty>`. Lưu ý rằng việc tắt hiệu ứng hiển thị khi focus sẽ làm giảm khả năng sử dụng của việc điều hướng bằng bàn phím/bộ điều khiển, vì vậy không nên làm vậy vì lý do khả năng tiếp cận.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này thì nó mới có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

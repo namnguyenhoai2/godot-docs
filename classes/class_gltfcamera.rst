@@ -10,31 +10,31 @@
 GLTFCamera
 ==========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a glTF camera.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Represents a camera as defined by the base glTF spec.
+Đại diện cho một camera glTF.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đại diện cho một camera được định nghĩa theo đặc tả glTF cơ sở.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong Runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `glTF camera detailed specification <https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#reference-camera>`__
+- `Đặc tả chi tiết về camera glTF <https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#reference-camera>`__
 
-- `glTF camera spec and example file <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_015_SimpleCameras.md>`__
+- `Đặc tả camera glTF và tệp ví dụ <https://github.com/KhronosGroup/glTF-Tutorials/blob/master/gltfTutorial/gltfTutorial_015_SimpleCameras.md>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -76,8 +76,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFCamera_property_depth_far:
 
@@ -90,7 +90,7 @@ Property Descriptions
 - |void| **set_depth_far**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth_far**\ (\ )
 
-The distance to the far culling boundary for this camera relative to its local Z axis, in meters. This maps to glTF's ``zfar`` property.
+Khoảng cách đến ranh giới culling xa của camera này so với trục Z cục bộ của nó, tính bằng mét. Điều này ánh xạ tới thuộc tính ``zfar`` của glTF.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ The distance to the far culling boundary for this camera relative to its local Z
 - |void| **set_depth_near**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth_near**\ (\ )
 
-The distance to the near culling boundary for this camera relative to its local Z axis, in meters. This maps to glTF's ``znear`` property.
+Khoảng cách đến ranh giới culling gần đối với camera này theo trục Z cục bộ của nó, tính bằng mét. Thuộc tính này ánh xạ tới thuộc tính ``znear`` của glTF.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ The distance to the near culling boundary for this camera relative to its local 
 - |void| **set_fov**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_fov**\ (\ )
 
-The FOV of the camera. This class and glTF define the camera FOV in radians, while Godot uses degrees. This maps to glTF's ``yfov`` property. This value is only used for perspective cameras, when :ref:`perspective<class_GLTFCamera_property_perspective>` is ``true``.
+FOV của camera. Lớp này và glTF xác định FOV của camera theo radian, trong khi Godot sử dụng độ. Giá trị này ánh xạ tới thuộc tính ``yfov`` của glTF. Giá trị này chỉ được sử dụng cho camera phối cảnh, khi :ref:`perspective<class_GLTFCamera_property_perspective>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -141,7 +141,7 @@ The FOV of the camera. This class and glTF define the camera FOV in radians, whi
 - |void| **set_perspective**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_perspective**\ (\ )
 
-If ``true``, the camera is in perspective mode. Otherwise, the camera is in orthographic/orthogonal mode. This maps to glTF's camera ``type`` property. See :ref:`Camera3D.projection<class_Camera3D_property_projection>` and the glTF spec for more information.
+Nếu ``true``, camera ở chế độ phối cảnh. Nếu không, camera ở chế độ trực giao/orthogonal. Giá trị này ánh xạ tới thuộc tính ``type`` của camera glTF. Xem :ref:`Camera3D.projection<class_Camera3D_property_projection>` và đặc tả glTF để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ If ``true``, the camera is in perspective mode. Otherwise, the camera is in orth
 - |void| **set_size_mag**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_size_mag**\ (\ )
 
-The size of the camera. This class and glTF define the camera size magnitude as a radius in meters, while Godot defines it as a diameter in meters. This maps to glTF's ``ymag`` property. This value is only used for orthographic/orthogonal cameras, when :ref:`perspective<class_GLTFCamera_property_perspective>` is ``false``.
+Kích thước của camera. Lớp này và glTF xác định độ lớn kích thước camera là bán kính tính bằng mét, trong khi Godot xác định đó là đường kính tính bằng mét. Giá trị này ánh xạ tới thuộc tính ``ymag`` của glTF. Giá trị này chỉ được sử dụng cho camera trực giao/orthogonal, khi :ref:`perspective<class_GLTFCamera_property_perspective>` là ``false``.
 
 .. rst-class:: classref-section-separator
 
@@ -166,8 +166,8 @@ The size of the camera. This class and glTF define the camera size magnitude as 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFCamera_method_from_dictionary:
 
@@ -175,7 +175,7 @@ Method Descriptions
 
 :ref:`GLTFCamera<class_GLTFCamera>` **from_dictionary**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |static| :ref:`🔗<class_GLTFCamera_method_from_dictionary>`
 
-Creates a new GLTFCamera instance by parsing the given :ref:`Dictionary<class_Dictionary>`.
+Tạo một thực thể GLTFCamera mới bằng cách phân tích cú pháp :ref:`Dictionary<class_Dictionary>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ Creates a new GLTFCamera instance by parsing the given :ref:`Dictionary<class_Di
 
 :ref:`GLTFCamera<class_GLTFCamera>` **from_node**\ (\ camera_node\: :ref:`Camera3D<class_Camera3D>`\ ) |static| :ref:`🔗<class_GLTFCamera_method_from_node>`
 
-Create a new GLTFCamera instance from the given Godot :ref:`Camera3D<class_Camera3D>` node.
+Tạo một thực thể GLTFCamera mới từ node :ref:`Camera3D<class_Camera3D>` của Godot đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -199,7 +199,7 @@ Create a new GLTFCamera instance from the given Godot :ref:`Camera3D<class_Camer
 
 :ref:`Dictionary<class_Dictionary>` **to_dictionary**\ (\ ) |const| :ref:`🔗<class_GLTFCamera_method_to_dictionary>`
 
-Serializes this GLTFCamera instance into a :ref:`Dictionary<class_Dictionary>`.
+Tuần tự hóa thực thể GLTFCamera này thành một :ref:`Dictionary<class_Dictionary>`.
 
 .. rst-class:: classref-item-separator
 
@@ -211,14 +211,14 @@ Serializes this GLTFCamera instance into a :ref:`Dictionary<class_Dictionary>`.
 
 :ref:`Camera3D<class_Camera3D>` **to_node**\ (\ ) |const| :ref:`🔗<class_GLTFCamera_method_to_node>`
 
-Converts this GLTFCamera instance into a Godot :ref:`Camera3D<class_Camera3D>` node.
+Chuyển đổi thực thể GLTFCamera này thành một node :ref:`Camera3D<class_Camera3D>` của Godot.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

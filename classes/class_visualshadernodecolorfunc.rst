@@ -10,28 +10,28 @@
 VisualShaderNodeColorFunc
 =========================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A :ref:`Color<class_Color>` function to be used within the visual shader graph.
+Một :ref:`Color<class_Color>` function được sử dụng trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Accept a :ref:`Color<class_Color>` to the input port and transform it according to :ref:`function<class_VisualShaderNodeColorFunc_property_function>`.
+Chấp nhận một :ref:`Color<class_Color>` tại cổng đầu vào và biến đổi nó theo :ref:`function<class_VisualShaderNodeColorFunc_property_function>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +----------------------------------------------------------+--------------------------------------------------------------------+-------+
-   | :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` | :ref:`function<class_VisualShaderNodeColorFunc_property_function>` | ``0`` |
-   +----------------------------------------------------------+--------------------------------------------------------------------+-------+
+   +-----------------------------------------------------------+--------------------------------------------------------------------+-------+
+   | :ref:`Function <enum_VisualShaderNodeColorFunc_Function>` | :ref:`function<class_VisualShaderNodeColorFunc_property_function>` | ``0`` |
+   +-----------------------------------------------------------+--------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các phép liệt kê
+----------------
 
 .. _enum_VisualShaderNodeColorFunc_Function:
 
 .. rst-class:: classref-enumeration
 
-enum **Function**: :ref:`🔗<enum_VisualShaderNodeColorFunc_Function>`
+enum **Function**: :ref:`🔗 <enum_VisualShaderNodeColorFunc_Function>`
 
 .. _class_VisualShaderNodeColorFunc_constant_FUNC_GRAYSCALE:
 
@@ -54,7 +54,7 @@ enum **Function**: :ref:`🔗<enum_VisualShaderNodeColorFunc_Function>`
 
 :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **FUNC_GRAYSCALE** = ``0``
 
-Converts the color to grayscale using the following formula:
+Chuyển đổi màu sang thang độ xám bằng công thức sau:
 
 ::
 
@@ -70,7 +70,7 @@ Converts the color to grayscale using the following formula:
 
 :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **FUNC_HSV2RGB** = ``1``
 
-Converts HSV vector to RGB equivalent.
+Chuyển đổi vector HSV sang giá trị tương đương trong RGB.
 
 .. _class_VisualShaderNodeColorFunc_constant_FUNC_RGB2HSV:
 
@@ -78,7 +78,7 @@ Converts HSV vector to RGB equivalent.
 
 :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **FUNC_RGB2HSV** = ``2``
 
-Converts RGB vector to HSV equivalent.
+Chuyển đổi vector RGB sang giá trị tương đương trong HSV.
 
 .. _class_VisualShaderNodeColorFunc_constant_FUNC_SEPIA:
 
@@ -86,7 +86,7 @@ Converts RGB vector to HSV equivalent.
 
 :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **FUNC_SEPIA** = ``3``
 
-Applies sepia tone effect using the following formula:
+Áp dụng hiệu ứng tông màu sepia bằng công thức sau:
 
 ::
 
@@ -102,14 +102,14 @@ Applies sepia tone effect using the following formula:
 
 :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **FUNC_LINEAR_TO_SRGB** = ``4``
 
-Converts color from linear encoding to nonlinear sRGB encoding using the following formula:
+Chuyển đổi màu từ mã hóa tuyến tính sang mã hóa sRGB phi tuyến bằng công thức sau:
 
 ::
 
     const vec3 a = vec3(0.055f);
     return mix((vec3(1.0f) + a) * pow(c.rgb, vec3(1.0f / 2.4f)) - a, 12.92f * c.rgb, lessThan(c.rgb, vec3(0.0031308f)));
 
-The Compatibility renderer uses a simpler formula that may produce undefined behavior with negative input values:
+Trình kết xuất Compatibility sử dụng công thức đơn giản hơn, có thể tạo ra hành vi không xác định với các giá trị đầu vào âm:
 
 ::
 
@@ -122,14 +122,14 @@ The Compatibility renderer uses a simpler formula that may produce undefined beh
 
 :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **FUNC_SRGB_TO_LINEAR** = ``5``
 
-Converts color from nonlinear sRGB encoding to linear encoding using the following formula:
+Chuyển đổi màu từ mã hóa sRGB phi tuyến tính sang mã hóa tuyến tính bằng công thức sau:
 
 ::
 
     vec3 c = input;
     return mix(pow((c.rgb + vec3(0.055)) * (1.0 / (1.0 + 0.055)), vec3(2.4)), c.rgb * (1.0 / 12.92), lessThan(c.rgb, vec3(0.04045)));
 
-The Compatibility renderer uses a simpler formula that behaves poorly with negative input values:
+Trình kết xuất Compatibility sử dụng một công thức đơn giản hơn nhưng hoạt động kém với các giá trị đầu vào âm:
 
 ::
 
@@ -142,7 +142,7 @@ The Compatibility renderer uses a simpler formula that behaves poorly with negat
 
 :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **FUNC_MAX** = ``6``
 
-Represents the size of the :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` enum.
+Biểu thị kích thước của enum :ref:`Function <enum_VisualShaderNodeColorFunc_Function>`.
 
 .. rst-class:: classref-section-separator
 
@@ -150,8 +150,8 @@ Represents the size of the :ref:`Function<enum_VisualShaderNodeColorFunc_Functio
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeColorFunc_property_function:
 
@@ -164,14 +164,14 @@ Property Descriptions
 - |void| **set_function**\ (\ value\: :ref:`Function<enum_VisualShaderNodeColorFunc_Function>`\ )
 - :ref:`Function<enum_VisualShaderNodeColorFunc_Function>` **get_function**\ (\ )
 
-A function to be applied to the input color.
+Một hàm được áp dụng cho màu đầu vào.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

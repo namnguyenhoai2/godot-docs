@@ -10,23 +10,23 @@
 InputEventScreenDrag
 ====================
 
-**Inherits:** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`InputEventFromWindow<class_InputEventFromWindow>` **<** :ref:`InputEvent<class_InputEvent>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a screen drag event.
+Đại diện cho một sự kiện kéo trên màn hình.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Stores information about screen drag events. See :ref:`Node._input()<class_Node_private_method__input>`.
+Lưu trữ thông tin về các sự kiện kéo trên màn hình. Xem :ref:`Node._input()<class_Node_private_method__input>`.
 
 .. rst-class:: classref-introduction-group
 
 Tutorials
 ---------
 
-- :doc:`Using InputEvent <../tutorials/inputs/inputevent>`
+- :doc:`Sử dụng InputEvent <../tutorials/inputs/inputevent>`
 
 .. rst-class:: classref-reftable-group
 
@@ -62,8 +62,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEventScreenDrag_property_index:
 
@@ -76,7 +76,7 @@ Property Descriptions
 - |void| **set_index**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_index**\ (\ )
 
-The drag event index in the case of a multi-drag event.
+Chỉ mục của sự kiện kéo trong trường hợp có nhiều sự kiện kéo.
 
 .. rst-class:: classref-item-separator
 
@@ -93,7 +93,7 @@ The drag event index in the case of a multi-drag event.
 - |void| **set_pen_inverted**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_pen_inverted**\ (\ )
 
-Returns ``true`` when using the eraser end of a stylus pen.
+Trả về ``true`` khi sử dụng đầu tẩy của bút cảm ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Returns ``true`` when using the eraser end of a stylus pen.
 - |void| **set_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_position**\ (\ )
 
-The drag position in the viewport the node is in, using the coordinate system of this viewport.
+Vị trí kéo trong viewport chứa node, sử dụng hệ tọa độ của viewport này.
 
 .. rst-class:: classref-item-separator
 
@@ -127,7 +127,7 @@ The drag position in the viewport the node is in, using the coordinate system of
 - |void| **set_pressure**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_pressure**\ (\ )
 
-Represents the pressure the user puts on the pen. Ranges from ``0.0`` to ``1.0``.
+Biểu thị lực người dùng tác động lên bút. Có giá trị từ ``0.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -144,9 +144,9 @@ Represents the pressure the user puts on the pen. Ranges from ``0.0`` to ``1.0``
 - |void| **set_relative**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_relative**\ (\ )
 
-The drag position relative to the previous position (position at the last frame).
+Vị trí kéo tương đối so với vị trí trước đó (vị trí ở frame trước).
 
-\ **Note:** :ref:`relative<class_InputEventScreenDrag_property_relative>` is automatically scaled according to the content scale factor, which is defined by the project's stretch mode settings. This means touch sensitivity will appear different depending on resolution when using :ref:`relative<class_InputEventScreenDrag_property_relative>` in a script that handles touch aiming. To avoid this, use :ref:`screen_relative<class_InputEventScreenDrag_property_screen_relative>` instead.
+\ **Lưu ý:** :ref:`relative<class_InputEventScreenDrag_property_relative>` được tự động điều chỉnh theo hệ số tỷ lệ nội dung, được xác định bởi các thiết lập stretch mode của project. Điều này có nghĩa là độ nhạy cảm ứng sẽ có vẻ khác nhau tùy theo độ phân giải khi sử dụng :ref:`relative<class_InputEventScreenDrag_property_relative>` trong một script xử lý thao tác ngắm bằng cảm ứng. Để tránh điều này, hãy sử dụng :ref:`screen_relative<class_InputEventScreenDrag_property_screen_relative>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -163,7 +163,7 @@ The drag position relative to the previous position (position at the last frame)
 - |void| **set_screen_relative**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_screen_relative**\ (\ )
 
-The unscaled drag position relative to the previous position in screen coordinates (position at the last frame). This position is *not* scaled according to the content scale factor or calls to :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`. This should be preferred over :ref:`relative<class_InputEventScreenDrag_property_relative>` for touch aiming regardless of the project's stretch mode.
+Vị trí kéo chưa được scale tương đối so với vị trí trước đó trong tọa độ màn hình (vị trí ở frame trước). Vị trí này *không* được scale theo hệ số scale nội dung hoặc các lệnh gọi đến :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`. Nên ưu tiên sử dụng vị trí này thay cho :ref:`relative<class_InputEventScreenDrag_property_relative>` khi ngắm bằng cảm ứng, bất kể chế độ stretch của dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -180,7 +180,7 @@ The unscaled drag position relative to the previous position in screen coordinat
 - |void| **set_screen_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_screen_velocity**\ (\ )
 
-The unscaled drag velocity in pixels per second in screen coordinates. This velocity is *not* scaled according to the content scale factor or calls to :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`. This should be preferred over :ref:`velocity<class_InputEventScreenDrag_property_velocity>` for touch aiming regardless of the project's stretch mode.
+Vận tốc kéo chưa được scale, tính bằng pixel mỗi giây trong tọa độ màn hình. Vận tốc này *không* được scale theo hệ số scale nội dung hoặc các lệnh gọi đến :ref:`InputEvent.xformed_by()<class_InputEvent_method_xformed_by>`. Nên ưu tiên sử dụng vận tốc này thay cho :ref:`velocity<class_InputEventScreenDrag_property_velocity>` khi ngắm bằng cảm ứng, bất kể chế độ stretch của dự án.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ The unscaled drag velocity in pixels per second in screen coordinates. This velo
 - |void| **set_tilt**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_tilt**\ (\ )
 
-Represents the angles of tilt of the pen. Positive X-coordinate value indicates a tilt to the right. Positive Y-coordinate value indicates a tilt toward the user. Ranges from ``-1.0`` to ``1.0`` for both axes.
+Biểu thị các góc nghiêng của bút. Giá trị tọa độ X dương cho biết bút nghiêng sang phải. Giá trị tọa độ Y dương cho biết bút nghiêng về phía người dùng. Cả hai trục đều có phạm vi từ ``-1.0`` đến ``1.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -214,16 +214,16 @@ Represents the angles of tilt of the pen. Positive X-coordinate value indicates 
 - |void| **set_velocity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_velocity**\ (\ )
 
-The drag velocity.
+Vận tốc kéo.
 
-\ **Note:** :ref:`velocity<class_InputEventScreenDrag_property_velocity>` is automatically scaled according to the content scale factor, which is defined by the project's stretch mode settings. This means touch sensitivity will appear different depending on resolution when using :ref:`velocity<class_InputEventScreenDrag_property_velocity>` in a script that handles touch aiming. To avoid this, use :ref:`screen_velocity<class_InputEventScreenDrag_property_screen_velocity>` instead.
+\ **Lưu ý:** :ref:`velocity<class_InputEventScreenDrag_property_velocity>` được tự động scale theo hệ số scale nội dung, được xác định bởi các thiết lập chế độ stretch của dự án. Điều này có nghĩa là độ nhạy cảm ứng sẽ có vẻ khác nhau tùy theo độ phân giải khi sử dụng :ref:`velocity<class_InputEventScreenDrag_property_velocity>` trong một script xử lý thao tác ngắm bằng cảm ứng. Để tránh điều này, hãy sử dụng :ref:`screen_velocity<class_InputEventScreenDrag_property_screen_velocity>` thay thế.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

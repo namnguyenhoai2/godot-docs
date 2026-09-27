@@ -10,22 +10,22 @@
 AccessibilityServer
 ===================
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A server interface for screen reader support.
+Giao diện máy chủ hỗ trợ trình đọc màn hình.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`         | :ref:`create_element<class_AccessibilityServer_method_create_element>`\ (\ window_id\: :ref:`int<class_int>`, role\: :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>`\ )                                                                                                                         |
+   | :ref:`RID<class_RID>`         | :ref:`create_element<class_AccessibilityServer_method_create_element>`\ (\ window_id\: :ref:`int<class_int>`, role\: :ref:`AccessibilityRole <enum_AccessibilityServer_AccessibilityRole>`\ )                                                                                                                        |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`         | :ref:`create_sub_element<class_AccessibilityServer_method_create_sub_element>`\ (\ parent_rid\: :ref:`RID<class_RID>`, role\: :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>`, insert_pos\: :ref:`int<class_int>` = -1\ )                                                                       |
+   | :ref:`RID<class_RID>`         | :ref:`create_sub_element<class_AccessibilityServer_method_create_sub_element>`\ (\ parent_rid\: :ref:`RID<class_RID>`, role\: :ref:`AccessibilityRole <enum_AccessibilityServer_AccessibilityRole>`, insert_pos\: :ref:`int<class_int>` = -1\ )                                                                      |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`RID<class_RID>`         | :ref:`create_sub_text_edit_elements<class_AccessibilityServer_method_create_sub_text_edit_elements>`\ (\ parent_rid\: :ref:`RID<class_RID>`, shaped_text\: :ref:`RID<class_RID>`, min_height\: :ref:`float<class_float>`, insert_pos\: :ref:`int<class_int>` = -1, is_last_line\: :ref:`bool<class_bool>` = false\ ) |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -45,7 +45,7 @@ Methods
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`set_window_rect<class_AccessibilityServer_method_set_window_rect>`\ (\ window_id\: :ref:`int<class_int>`, rect_out\: :ref:`Rect2<class_Rect2>`, rect_in\: :ref:`Rect2<class_Rect2>`\ )                                                                                                                         |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`update_add_action<class_AccessibilityServer_method_update_add_action>`\ (\ id\: :ref:`RID<class_RID>`, action\: :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>`, callable\: :ref:`Callable<class_Callable>`\ )                                                                        |
+   | |void|                        | :ref:`update_add_action<class_AccessibilityServer_method_update_add_action>`\ (\ id\: :ref:`RID<class_RID>`, action\: :ref:`AccessibilityAction <enum_AccessibilityServer_AccessibilityAction>`, callable\: :ref:`Callable<class_Callable>`\ )                                                                       |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_add_child<class_AccessibilityServer_method_update_add_child>`\ (\ id\: :ref:`RID<class_RID>`, child_id\: :ref:`RID<class_RID>`\ )                                                                                                                                                                       |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -85,7 +85,7 @@ Methods
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_extra_info<class_AccessibilityServer_method_update_set_extra_info>`\ (\ id\: :ref:`RID<class_RID>`, name\: :ref:`String<class_String>`\ )                                                                                                                                                           |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`update_set_flag<class_AccessibilityServer_method_update_set_flag>`\ (\ id\: :ref:`RID<class_RID>`, flag\: :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>`, value\: :ref:`bool<class_bool>`\ )                                                                                           |
+   | |void|                        | :ref:`update_set_flag<class_AccessibilityServer_method_update_set_flag>`\ (\ id\: :ref:`RID<class_RID>`, flag\: :ref:`AccessibilityFlags <enum_AccessibilityServer_AccessibilityFlags>`, value\: :ref:`bool<class_bool>`\ )                                                                                          |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_focus<class_AccessibilityServer_method_update_set_focus>`\ (\ id\: :ref:`RID<class_RID>`\ )                                                                                                                                                                                                         |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -107,7 +107,7 @@ Methods
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_list_orientation<class_AccessibilityServer_method_update_set_list_orientation>`\ (\ id\: :ref:`RID<class_RID>`, vertical\: :ref:`bool<class_bool>`\ )                                                                                                                                               |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`update_set_live<class_AccessibilityServer_method_update_set_live>`\ (\ id\: :ref:`RID<class_RID>`, live\: :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>`\ )                                                                                                                      |
+   | |void|                        | :ref:`update_set_live<class_AccessibilityServer_method_update_set_live>`\ (\ id\: :ref:`RID<class_RID>`, live\: :ref:`AccessibilityLiveMode <enum_AccessibilityServer_AccessibilityLiveMode>`\ )                                                                                                                     |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_member_of<class_AccessibilityServer_method_update_set_member_of>`\ (\ id\: :ref:`RID<class_RID>`, group_id\: :ref:`RID<class_RID>`\ )                                                                                                                                                               |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -125,11 +125,11 @@ Methods
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_placeholder<class_AccessibilityServer_method_update_set_placeholder>`\ (\ id\: :ref:`RID<class_RID>`, placeholder\: :ref:`String<class_String>`\ )                                                                                                                                                  |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`update_set_popup_type<class_AccessibilityServer_method_update_set_popup_type>`\ (\ id\: :ref:`RID<class_RID>`, popup\: :ref:`AccessibilityPopupType<enum_AccessibilityServer_AccessibilityPopupType>`\ )                                                                                                       |
+   | |void|                        | :ref:`update_set_popup_type<class_AccessibilityServer_method_update_set_popup_type>`\ (\ id\: :ref:`RID<class_RID>`, popup\: :ref:`AccessibilityPopupType <enum_AccessibilityServer_AccessibilityPopupType>`\ )                                                                                                      |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_previous_on_line<class_AccessibilityServer_method_update_set_previous_on_line>`\ (\ id\: :ref:`RID<class_RID>`, other_id\: :ref:`RID<class_RID>`\ )                                                                                                                                                 |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`update_set_role<class_AccessibilityServer_method_update_set_role>`\ (\ id\: :ref:`RID<class_RID>`, role\: :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>`\ )                                                                                                                              |
+   | |void|                        | :ref:`update_set_role<class_AccessibilityServer_method_update_set_role>`\ (\ id\: :ref:`RID<class_RID>`, role\: :ref:`AccessibilityRole <enum_AccessibilityServer_AccessibilityRole>`\ )                                                                                                                             |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_role_description<class_AccessibilityServer_method_update_set_role_description>`\ (\ id\: :ref:`RID<class_RID>`, description\: :ref:`String<class_String>`\ )                                                                                                                                        |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -157,7 +157,7 @@ Methods
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_table_row_index<class_AccessibilityServer_method_update_set_table_row_index>`\ (\ id\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ )                                                                                                                                                      |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                        | :ref:`update_set_text_align<class_AccessibilityServer_method_update_set_text_align>`\ (\ id\: :ref:`RID<class_RID>`, align\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ )                                                                                                                    |
+   | |void|                        | :ref:`update_set_text_align<class_AccessibilityServer_method_update_set_text_align>`\ (\ id\: :ref:`RID<class_RID>`, align\: :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>`\ )                                                                                                                   |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                        | :ref:`update_set_text_decorations<class_AccessibilityServer_method_update_set_text_decorations>`\ (\ id\: :ref:`RID<class_RID>`, underline\: :ref:`bool<class_bool>`, strikethrough\: :ref:`bool<class_bool>`, overline\: :ref:`bool<class_bool>`, color\: :ref:`Color<class_Color>` = Color(0, 0, 0, 1)\ )          |
    +-------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -180,14 +180,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_AccessibilityServer_AccessibilityRole:
 
 .. rst-class:: classref-enumeration
 
-enum **AccessibilityRole**: :ref:`🔗<enum_AccessibilityServer_AccessibilityRole>`
+enum **AccessibilityRole**: :ref:`🔗 <enum_AccessibilityServer_AccessibilityRole>`
 
 .. _class_AccessibilityServer_constant_ROLE_UNKNOWN:
 
@@ -195,7 +195,7 @@ enum **AccessibilityRole**: :ref:`🔗<enum_AccessibilityServer_AccessibilityRol
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_UNKNOWN** = ``0``
 
-Unknown or custom role.
+Vai trò không xác định hoặc tùy chỉnh.
 
 .. _class_AccessibilityServer_constant_ROLE_DEFAULT_BUTTON:
 
@@ -203,7 +203,7 @@ Unknown or custom role.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_DEFAULT_BUTTON** = ``1``
 
-Default dialog button element.
+Phần tử nút hộp thoại mặc định.
 
 .. _class_AccessibilityServer_constant_ROLE_AUDIO:
 
@@ -211,7 +211,7 @@ Default dialog button element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_AUDIO** = ``2``
 
-Audio player element.
+Phần tử trình phát âm thanh.
 
 .. _class_AccessibilityServer_constant_ROLE_VIDEO:
 
@@ -219,7 +219,7 @@ Audio player element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_VIDEO** = ``3``
 
-Video player element.
+Phần tử trình phát video.
 
 .. _class_AccessibilityServer_constant_ROLE_STATIC_TEXT:
 
@@ -227,7 +227,7 @@ Video player element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_STATIC_TEXT** = ``4``
 
-Non-editable text label.
+Nhãn văn bản không thể chỉnh sửa.
 
 .. _class_AccessibilityServer_constant_ROLE_CONTAINER:
 
@@ -235,7 +235,7 @@ Non-editable text label.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_CONTAINER** = ``5``
 
-Container element. Elements with this role are used for internal structure and ignored by screen readers.
+Phần tử container. Các phần tử có vai trò này được dùng cho cấu trúc nội bộ và bị trình đọc màn hình bỏ qua.
 
 .. _class_AccessibilityServer_constant_ROLE_PANEL:
 
@@ -243,7 +243,7 @@ Container element. Elements with this role are used for internal structure and i
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_PANEL** = ``6``
 
-Panel container element.
+Phần tử container của panel.
 
 .. _class_AccessibilityServer_constant_ROLE_BUTTON:
 
@@ -251,7 +251,7 @@ Panel container element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_BUTTON** = ``7``
 
-Button element.
+Phần tử button.
 
 .. _class_AccessibilityServer_constant_ROLE_LINK:
 
@@ -259,7 +259,7 @@ Button element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_LINK** = ``8``
 
-Link element.
+Phần tử link.
 
 .. _class_AccessibilityServer_constant_ROLE_CHECK_BOX:
 
@@ -267,7 +267,7 @@ Link element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_CHECK_BOX** = ``9``
 
-Check box element.
+Phần tử ô kiểm.
 
 .. _class_AccessibilityServer_constant_ROLE_RADIO_BUTTON:
 
@@ -275,7 +275,7 @@ Check box element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_RADIO_BUTTON** = ``10``
 
-Radio button element.
+Phần tử nút radio.
 
 .. _class_AccessibilityServer_constant_ROLE_CHECK_BUTTON:
 
@@ -283,7 +283,7 @@ Radio button element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_CHECK_BUTTON** = ``11``
 
-Check button element.
+Phần tử nút kiểm tra.
 
 .. _class_AccessibilityServer_constant_ROLE_SCROLL_BAR:
 
@@ -291,7 +291,7 @@ Check button element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_SCROLL_BAR** = ``12``
 
-Scroll bar element.
+Phần tử thanh cuộn.
 
 .. _class_AccessibilityServer_constant_ROLE_SCROLL_VIEW:
 
@@ -299,7 +299,7 @@ Scroll bar element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_SCROLL_VIEW** = ``13``
 
-Scroll container element.
+Phần tử vùng chứa cuộn.
 
 .. _class_AccessibilityServer_constant_ROLE_SPLITTER:
 
@@ -307,7 +307,7 @@ Scroll container element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_SPLITTER** = ``14``
 
-Container splitter handle element.
+Phần tử tay nắm bộ chia vùng chứa.
 
 .. _class_AccessibilityServer_constant_ROLE_SLIDER:
 
@@ -315,7 +315,7 @@ Container splitter handle element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_SLIDER** = ``15``
 
-Slider element.
+Phần tử thanh trượt.
 
 .. _class_AccessibilityServer_constant_ROLE_SPIN_BUTTON:
 
@@ -323,7 +323,7 @@ Slider element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_SPIN_BUTTON** = ``16``
 
-Spin box element.
+Phần tử hộp xoay.
 
 .. _class_AccessibilityServer_constant_ROLE_PROGRESS_INDICATOR:
 
@@ -331,7 +331,7 @@ Spin box element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_PROGRESS_INDICATOR** = ``17``
 
-Progress indicator element.
+Phần tử chỉ báo tiến trình.
 
 .. _class_AccessibilityServer_constant_ROLE_TEXT_FIELD:
 
@@ -339,7 +339,7 @@ Progress indicator element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TEXT_FIELD** = ``18``
 
-Editable text field element.
+Phần tử trường văn bản có thể chỉnh sửa.
 
 .. _class_AccessibilityServer_constant_ROLE_MULTILINE_TEXT_FIELD:
 
@@ -347,7 +347,7 @@ Editable text field element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_MULTILINE_TEXT_FIELD** = ``19``
 
-Multiline editable text field element.
+Phần tử trường văn bản có thể chỉnh sửa nhiều dòng.
 
 .. _class_AccessibilityServer_constant_ROLE_COLOR_PICKER:
 
@@ -355,7 +355,7 @@ Multiline editable text field element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_COLOR_PICKER** = ``20``
 
-Color picker element.
+Phần tử bộ chọn màu.
 
 .. _class_AccessibilityServer_constant_ROLE_TABLE:
 
@@ -363,7 +363,7 @@ Color picker element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TABLE** = ``21``
 
-Table element.
+Phần tử bảng.
 
 .. _class_AccessibilityServer_constant_ROLE_CELL:
 
@@ -371,7 +371,7 @@ Table element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_CELL** = ``22``
 
-Table/tree cell element.
+Phần tử ô bảng/cây.
 
 .. _class_AccessibilityServer_constant_ROLE_ROW:
 
@@ -379,7 +379,7 @@ Table/tree cell element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_ROW** = ``23``
 
-Table/tree row element.
+Phần tử hàng bảng/cây.
 
 .. _class_AccessibilityServer_constant_ROLE_ROW_GROUP:
 
@@ -387,7 +387,7 @@ Table/tree row element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_ROW_GROUP** = ``24``
 
-Table/tree row group element.
+Phần tử nhóm hàng bảng/cây.
 
 .. _class_AccessibilityServer_constant_ROLE_ROW_HEADER:
 
@@ -395,7 +395,7 @@ Table/tree row group element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_ROW_HEADER** = ``25``
 
-Table/tree row header element.
+Phần tử tiêu đề hàng bảng/cây.
 
 .. _class_AccessibilityServer_constant_ROLE_COLUMN_HEADER:
 
@@ -403,7 +403,7 @@ Table/tree row header element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_COLUMN_HEADER** = ``26``
 
-Table/tree column header element.
+Phần tử tiêu đề cột của bảng/cây.
 
 .. _class_AccessibilityServer_constant_ROLE_TREE:
 
@@ -411,7 +411,7 @@ Table/tree column header element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TREE** = ``27``
 
-Tree view element.
+Phần tử chế độ xem dạng cây.
 
 .. _class_AccessibilityServer_constant_ROLE_TREE_ITEM:
 
@@ -419,7 +419,7 @@ Tree view element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TREE_ITEM** = ``28``
 
-Tree view item element.
+Phần tử mục trong chế độ xem dạng cây.
 
 .. _class_AccessibilityServer_constant_ROLE_LIST:
 
@@ -427,7 +427,7 @@ Tree view item element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_LIST** = ``29``
 
-List element.
+Phần tử danh sách.
 
 .. _class_AccessibilityServer_constant_ROLE_LIST_ITEM:
 
@@ -435,7 +435,7 @@ List element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_LIST_ITEM** = ``30``
 
-List item element.
+Phần tử mục trong danh sách.
 
 .. _class_AccessibilityServer_constant_ROLE_LIST_BOX:
 
@@ -443,7 +443,7 @@ List item element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_LIST_BOX** = ``31``
 
-List view element.
+Phần tử chế độ xem danh sách.
 
 .. _class_AccessibilityServer_constant_ROLE_LIST_BOX_OPTION:
 
@@ -451,7 +451,7 @@ List view element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_LIST_BOX_OPTION** = ``32``
 
-List view item element.
+Phần tử mục trong chế độ xem danh sách.
 
 .. _class_AccessibilityServer_constant_ROLE_TAB_BAR:
 
@@ -459,7 +459,7 @@ List view item element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TAB_BAR** = ``33``
 
-Tab bar element.
+Phần tử thanh Tab.
 
 .. _class_AccessibilityServer_constant_ROLE_TAB:
 
@@ -467,7 +467,7 @@ Tab bar element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TAB** = ``34``
 
-Tab bar item element.
+Phần tử mục thanh Tab.
 
 .. _class_AccessibilityServer_constant_ROLE_TAB_PANEL:
 
@@ -475,7 +475,7 @@ Tab bar item element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TAB_PANEL** = ``35``
 
-Tab panel element.
+Phần tử bảng Tab.
 
 .. _class_AccessibilityServer_constant_ROLE_MENU_BAR:
 
@@ -483,7 +483,7 @@ Tab panel element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_MENU_BAR** = ``36``
 
-Menu bar element.
+Phần tử thanh menu.
 
 .. _class_AccessibilityServer_constant_ROLE_MENU:
 
@@ -491,7 +491,7 @@ Menu bar element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_MENU** = ``37``
 
-Popup menu element.
+Phần tử menu bật lên.
 
 .. _class_AccessibilityServer_constant_ROLE_MENU_ITEM:
 
@@ -499,7 +499,7 @@ Popup menu element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_MENU_ITEM** = ``38``
 
-Popup menu item element.
+Phần tử mục menu bật lên.
 
 .. _class_AccessibilityServer_constant_ROLE_MENU_ITEM_CHECK_BOX:
 
@@ -507,7 +507,7 @@ Popup menu item element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_MENU_ITEM_CHECK_BOX** = ``39``
 
-Popup menu check button item element.
+Phần tử mục nút kiểm tra của menu bật lên.
 
 .. _class_AccessibilityServer_constant_ROLE_MENU_ITEM_RADIO:
 
@@ -515,7 +515,7 @@ Popup menu check button item element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_MENU_ITEM_RADIO** = ``40``
 
-Popup menu radio button item element.
+Phần tử mục nút radio trong menu bật lên.
 
 .. _class_AccessibilityServer_constant_ROLE_IMAGE:
 
@@ -523,7 +523,7 @@ Popup menu radio button item element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_IMAGE** = ``41``
 
-Image element.
+Phần tử hình ảnh.
 
 .. _class_AccessibilityServer_constant_ROLE_WINDOW:
 
@@ -531,7 +531,7 @@ Image element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_WINDOW** = ``42``
 
-Window element.
+Phần tử cửa sổ.
 
 .. _class_AccessibilityServer_constant_ROLE_TITLE_BAR:
 
@@ -539,7 +539,7 @@ Window element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TITLE_BAR** = ``43``
 
-Embedded window title bar element.
+Phần tử thanh tiêu đề của cửa sổ được nhúng.
 
 .. _class_AccessibilityServer_constant_ROLE_DIALOG:
 
@@ -547,7 +547,7 @@ Embedded window title bar element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_DIALOG** = ``44``
 
-Dialog window element.
+Phần tử cửa sổ hộp thoại.
 
 .. _class_AccessibilityServer_constant_ROLE_TOOLTIP:
 
@@ -555,7 +555,7 @@ Dialog window element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TOOLTIP** = ``45``
 
-Tooltip element.
+Phần tử tooltip.
 
 .. _class_AccessibilityServer_constant_ROLE_REGION:
 
@@ -563,7 +563,7 @@ Tooltip element.
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_REGION** = ``46``
 
-Region/landmark element. Screen readers can navigate between regions using landmark navigation.
+Phần tử vùng/landmark. Trình đọc màn hình có thể điều hướng giữa các vùng bằng tính năng điều hướng landmark.
 
 .. _class_AccessibilityServer_constant_ROLE_TEXT_RUN:
 
@@ -571,9 +571,9 @@ Region/landmark element. Screen readers can navigate between regions using landm
 
 :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>` **ROLE_TEXT_RUN** = ``47``
 
-Unifor text run.
+Đoạn văn bản Unifor.
 
-Note: This role is used for internal text elements, and should not be assigned to nodes.
+Lưu ý: Vai trò này được sử dụng cho các phần tử văn bản nội bộ và không nên được gán cho các node.
 
 .. rst-class:: classref-item-separator
 
@@ -583,7 +583,7 @@ Note: This role is used for internal text elements, and should not be assigned t
 
 .. rst-class:: classref-enumeration
 
-enum **AccessibilityPopupType**: :ref:`🔗<enum_AccessibilityServer_AccessibilityPopupType>`
+enum **AccessibilityPopupType**: :ref:`🔗 <enum_AccessibilityServer_AccessibilityPopupType>`
 
 .. _class_AccessibilityServer_constant_POPUP_MENU:
 
@@ -591,7 +591,7 @@ enum **AccessibilityPopupType**: :ref:`🔗<enum_AccessibilityServer_Accessibili
 
 :ref:`AccessibilityPopupType<enum_AccessibilityServer_AccessibilityPopupType>` **POPUP_MENU** = ``0``
 
-Popup menu.
+Menu bật lên.
 
 .. _class_AccessibilityServer_constant_POPUP_LIST:
 
@@ -599,7 +599,7 @@ Popup menu.
 
 :ref:`AccessibilityPopupType<enum_AccessibilityServer_AccessibilityPopupType>` **POPUP_LIST** = ``1``
 
-Popup list.
+Danh sách bật lên.
 
 .. _class_AccessibilityServer_constant_POPUP_TREE:
 
@@ -607,7 +607,7 @@ Popup list.
 
 :ref:`AccessibilityPopupType<enum_AccessibilityServer_AccessibilityPopupType>` **POPUP_TREE** = ``2``
 
-Popup tree view.
+Chế độ xem cây bật lên.
 
 .. _class_AccessibilityServer_constant_POPUP_DIALOG:
 
@@ -615,7 +615,7 @@ Popup tree view.
 
 :ref:`AccessibilityPopupType<enum_AccessibilityServer_AccessibilityPopupType>` **POPUP_DIALOG** = ``3``
 
-Popup dialog.
+Hộp thoại bật lên.
 
 .. rst-class:: classref-item-separator
 
@@ -625,7 +625,7 @@ Popup dialog.
 
 .. rst-class:: classref-enumeration
 
-enum **AccessibilityFlags**: :ref:`🔗<enum_AccessibilityServer_AccessibilityFlags>`
+enum **AccessibilityFlags**: :ref:`🔗 <enum_AccessibilityServer_AccessibilityFlags>`
 
 .. _class_AccessibilityServer_constant_FLAG_HIDDEN:
 
@@ -633,7 +633,7 @@ enum **AccessibilityFlags**: :ref:`🔗<enum_AccessibilityServer_AccessibilityFl
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_HIDDEN** = ``0``
 
-Element is hidden for accessibility tools.
+Element bị ẩn đối với các công cụ hỗ trợ tiếp cận.
 
 .. _class_AccessibilityServer_constant_FLAG_MULTISELECTABLE:
 
@@ -641,7 +641,7 @@ Element is hidden for accessibility tools.
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_MULTISELECTABLE** = ``1``
 
-Element supports multiple item selection.
+Element hỗ trợ chọn nhiều mục.
 
 .. _class_AccessibilityServer_constant_FLAG_REQUIRED:
 
@@ -649,7 +649,7 @@ Element supports multiple item selection.
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_REQUIRED** = ``2``
 
-Element require user input.
+Element yêu cầu người dùng nhập dữ liệu.
 
 .. _class_AccessibilityServer_constant_FLAG_VISITED:
 
@@ -657,7 +657,7 @@ Element require user input.
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_VISITED** = ``3``
 
-Element is a visited link.
+Element là một liên kết đã truy cập.
 
 .. _class_AccessibilityServer_constant_FLAG_BUSY:
 
@@ -665,7 +665,7 @@ Element is a visited link.
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_BUSY** = ``4``
 
-Element content is not ready (e.g. loading).
+Nội dung của Element chưa sẵn sàng (ví dụ: đang tải).
 
 .. _class_AccessibilityServer_constant_FLAG_MODAL:
 
@@ -673,7 +673,7 @@ Element content is not ready (e.g. loading).
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_MODAL** = ``5``
 
-Element is modal window.
+Element là một cửa sổ modal.
 
 .. _class_AccessibilityServer_constant_FLAG_TOUCH_PASSTHROUGH:
 
@@ -681,7 +681,7 @@ Element is modal window.
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_TOUCH_PASSTHROUGH** = ``6``
 
-Element allows touches to be passed through when a screen reader is in touch exploration mode.
+Phần tử cho phép các thao tác chạm được truyền qua khi trình đọc màn hình ở chế độ khám phá bằng thao tác chạm.
 
 .. _class_AccessibilityServer_constant_FLAG_READONLY:
 
@@ -689,7 +689,7 @@ Element allows touches to be passed through when a screen reader is in touch exp
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_READONLY** = ``7``
 
-Element is text field with selectable but read-only text.
+Phần tử là trường văn bản có thể chọn nhưng chỉ đọc.
 
 .. _class_AccessibilityServer_constant_FLAG_DISABLED:
 
@@ -697,7 +697,7 @@ Element is text field with selectable but read-only text.
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_DISABLED** = ``8``
 
-Element is disabled.
+Phần tử bị vô hiệu hóa.
 
 .. _class_AccessibilityServer_constant_FLAG_CLIPS_CHILDREN:
 
@@ -705,7 +705,7 @@ Element is disabled.
 
 :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>` **FLAG_CLIPS_CHILDREN** = ``9``
 
-Element clips children.
+Phần tử cắt các phần tử con.
 
 .. rst-class:: classref-item-separator
 
@@ -715,7 +715,7 @@ Element clips children.
 
 .. rst-class:: classref-enumeration
 
-enum **AccessibilityAction**: :ref:`🔗<enum_AccessibilityServer_AccessibilityAction>`
+enum **AccessibilityAction**: :ref:`🔗 <enum_AccessibilityServer_AccessibilityAction>`
 
 .. _class_AccessibilityServer_constant_ACTION_CLICK:
 
@@ -723,7 +723,7 @@ enum **AccessibilityAction**: :ref:`🔗<enum_AccessibilityServer_AccessibilityA
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_CLICK** = ``0``
 
-Single click action, callback argument is not set.
+Thao tác nhấp một lần, đối số callback không được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_FOCUS:
 
@@ -731,7 +731,7 @@ Single click action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_FOCUS** = ``1``
 
-Focus action, callback argument is not set.
+Thao tác lấy tiêu điểm, đối số callback không được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_BLUR:
 
@@ -739,7 +739,7 @@ Focus action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_BLUR** = ``2``
 
-Blur action, callback argument is not set.
+Hành động làm mờ, đối số callback chưa được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_COLLAPSE:
 
@@ -747,7 +747,7 @@ Blur action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_COLLAPSE** = ``3``
 
-Collapse action, callback argument is not set.
+Hành động thu gọn, đối số callback chưa được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_EXPAND:
 
@@ -755,7 +755,7 @@ Collapse action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_EXPAND** = ``4``
 
-Expand action, callback argument is not set.
+Hành động mở rộng, đối số callback chưa được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_DECREMENT:
 
@@ -763,7 +763,7 @@ Expand action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_DECREMENT** = ``5``
 
-Decrement action, callback argument is not set.
+Hành động giảm, đối số callback chưa được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_INCREMENT:
 
@@ -771,7 +771,7 @@ Decrement action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_INCREMENT** = ``6``
 
-Increment action, callback argument is not set.
+Hành động tăng, đối số callback chưa được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_HIDE_TOOLTIP:
 
@@ -779,7 +779,7 @@ Increment action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_HIDE_TOOLTIP** = ``7``
 
-Hide tooltip action, callback argument is not set.
+Hành động ẩn tooltip, đối số callback chưa được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_SHOW_TOOLTIP:
 
@@ -787,7 +787,7 @@ Hide tooltip action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SHOW_TOOLTIP** = ``8``
 
-Show tooltip action, callback argument is not set.
+Hành động hiển thị tooltip, đối số callback chưa được thiết lập.
 
 .. _class_AccessibilityServer_constant_ACTION_SET_TEXT_SELECTION:
 
@@ -795,15 +795,15 @@ Show tooltip action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SET_TEXT_SELECTION** = ``9``
 
-Set text selection action, callback argument is set to :ref:`Dictionary<class_Dictionary>` with the following keys:
+Hành động đặt vùng chọn văn bản, đối số callback được đặt thành :ref:`Dictionary<class_Dictionary>` với các khóa sau:
 
-- ``"start_element"`` accessibility element of the selection start.
+- ``"start_element"`` phần tử hỗ trợ tiếp cận tại đầu vùng chọn.
 
-- ``"start_char"`` character offset relative to the accessibility element of the selection start.
+- ``"start_char"`` độ lệch ký tự tương đối so với phần tử hỗ trợ tiếp cận tại đầu vùng chọn.
 
-- ``"end_element"`` accessibility element of the selection end.
+- ``"end_element"`` phần tử hỗ trợ tiếp cận tại cuối vùng chọn.
 
-- ``"end_char"`` character offset relative to the accessibility element of the selection end.
+- ``"end_char"`` độ lệch ký tự tương đối so với phần tử hỗ trợ tiếp cận tại cuối vùng chọn.
 
 .. _class_AccessibilityServer_constant_ACTION_REPLACE_SELECTED_TEXT:
 
@@ -811,7 +811,7 @@ Set text selection action, callback argument is set to :ref:`Dictionary<class_Di
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_REPLACE_SELECTED_TEXT** = ``10``
 
-Replace text action, callback argument is set to :ref:`String<class_String>` with the replacement text.
+Hành động thay thế văn bản, đối số callback được đặt thành :ref:`String<class_String>` cùng với văn bản thay thế.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_BACKWARD:
 
@@ -819,7 +819,7 @@ Replace text action, callback argument is set to :ref:`String<class_String>` wit
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_BACKWARD** = ``11``
 
-Scroll backward action, callback argument is not set.
+Hành động cuộn về phía sau, đối số callback không được đặt.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_DOWN:
 
@@ -827,7 +827,7 @@ Scroll backward action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_DOWN** = ``12``
 
-Scroll down action, callback argument is set to :ref:`AccessibilityScrollUnit<enum_AccessibilityServer_AccessibilityScrollUnit>`.
+Hành động cuộn xuống, tham số callback được đặt thành :ref:`AccessibilityScrollUnit <enum_AccessibilityServer_AccessibilityScrollUnit>`.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_FORWARD:
 
@@ -835,7 +835,7 @@ Scroll down action, callback argument is set to :ref:`AccessibilityScrollUnit<en
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_FORWARD** = ``13``
 
-Scroll forward action, callback argument is not set.
+Hành động cuộn về phía trước, tham số callback không được đặt.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_LEFT:
 
@@ -843,7 +843,7 @@ Scroll forward action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_LEFT** = ``14``
 
-Scroll left action, callback argument is set to :ref:`AccessibilityScrollUnit<enum_AccessibilityServer_AccessibilityScrollUnit>`.
+Hành động cuộn sang trái, tham số callback được đặt thành :ref:`AccessibilityScrollUnit <enum_AccessibilityServer_AccessibilityScrollUnit>`.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_RIGHT:
 
@@ -851,7 +851,7 @@ Scroll left action, callback argument is set to :ref:`AccessibilityScrollUnit<en
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_RIGHT** = ``15``
 
-Scroll right action, callback argument is set to :ref:`AccessibilityScrollUnit<enum_AccessibilityServer_AccessibilityScrollUnit>`.
+Hành động cuộn sang phải, tham số callback được đặt thành :ref:`AccessibilityScrollUnit <enum_AccessibilityServer_AccessibilityScrollUnit>`.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_UP:
 
@@ -859,7 +859,7 @@ Scroll right action, callback argument is set to :ref:`AccessibilityScrollUnit<e
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_UP** = ``16``
 
-Scroll up action, callback argument is set to :ref:`AccessibilityScrollUnit<enum_AccessibilityServer_AccessibilityScrollUnit>`.
+Hành động cuộn lên, tham số callback được đặt thành :ref:`AccessibilityScrollUnit <enum_AccessibilityServer_AccessibilityScrollUnit>`.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_INTO_VIEW:
 
@@ -867,7 +867,7 @@ Scroll up action, callback argument is set to :ref:`AccessibilityScrollUnit<enum
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_INTO_VIEW** = ``17``
 
-Scroll into view action, callback argument is set to :ref:`AccessibilityScrollHint<enum_AccessibilityServer_AccessibilityScrollHint>`.
+Hành động cuộn vào vùng hiển thị, tham số callback được đặt thành :ref:`AccessibilityScrollHint <enum_AccessibilityServer_AccessibilityScrollHint>`.
 
 .. _class_AccessibilityServer_constant_ACTION_SCROLL_TO_POINT:
 
@@ -875,7 +875,7 @@ Scroll into view action, callback argument is set to :ref:`AccessibilityScrollHi
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SCROLL_TO_POINT** = ``18``
 
-Scroll to point action, callback argument is set to :ref:`Vector2<class_Vector2>` with the relative point coordinates.
+Hành động cuộn đến điểm, tham số callback được đặt thành :ref:`Vector2<class_Vector2>` cùng với tọa độ điểm tương đối.
 
 .. _class_AccessibilityServer_constant_ACTION_SET_SCROLL_OFFSET:
 
@@ -883,7 +883,7 @@ Scroll to point action, callback argument is set to :ref:`Vector2<class_Vector2>
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SET_SCROLL_OFFSET** = ``19``
 
-Set scroll offset action, callback argument is set to :ref:`Vector2<class_Vector2>` with the scroll offset.
+Hành động đặt độ lệch cuộn, đối số callback được đặt thành :ref:`Vector2<class_Vector2>` với độ lệch cuộn.
 
 .. _class_AccessibilityServer_constant_ACTION_SET_VALUE:
 
@@ -891,7 +891,7 @@ Set scroll offset action, callback argument is set to :ref:`Vector2<class_Vector
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SET_VALUE** = ``20``
 
-Set value action, callback argument is set to :ref:`String<class_String>` or number with the new value.
+Hành động đặt giá trị, đối số callback được đặt thành :ref:`String<class_String>` hoặc số với giá trị mới.
 
 .. _class_AccessibilityServer_constant_ACTION_SHOW_CONTEXT_MENU:
 
@@ -899,7 +899,7 @@ Set value action, callback argument is set to :ref:`String<class_String>` or num
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_SHOW_CONTEXT_MENU** = ``21``
 
-Show context menu action, callback argument is not set.
+Hành động hiển thị menu ngữ cảnh, đối số callback không được đặt.
 
 .. _class_AccessibilityServer_constant_ACTION_CUSTOM:
 
@@ -907,7 +907,7 @@ Show context menu action, callback argument is not set.
 
 :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>` **ACTION_CUSTOM** = ``22``
 
-Custom action, callback argument is set to the integer action ID.
+Hành động tùy chỉnh, đối số callback được đặt thành ID hành động dạng số nguyên.
 
 .. rst-class:: classref-item-separator
 
@@ -917,7 +917,7 @@ Custom action, callback argument is set to the integer action ID.
 
 .. rst-class:: classref-enumeration
 
-enum **AccessibilityLiveMode**: :ref:`🔗<enum_AccessibilityServer_AccessibilityLiveMode>`
+enum **AccessibilityLiveMode**: :ref:`🔗 <enum_AccessibilityServer_AccessibilityLiveMode>`
 
 .. _class_AccessibilityServer_constant_LIVE_OFF:
 
@@ -925,7 +925,7 @@ enum **AccessibilityLiveMode**: :ref:`🔗<enum_AccessibilityServer_Accessibilit
 
 :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>` **LIVE_OFF** = ``0``
 
-Indicates that updates to the live region should not be presented.
+Cho biết rằng các cập nhật đối với vùng trực tiếp không nên được trình bày.
 
 .. _class_AccessibilityServer_constant_LIVE_POLITE:
 
@@ -933,7 +933,7 @@ Indicates that updates to the live region should not be presented.
 
 :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>` **LIVE_POLITE** = ``1``
 
-Indicates that updates to the live region should be presented at the next opportunity (for example at the end of speaking the current sentence).
+Cho biết rằng các cập nhật đối với vùng trực tiếp nên được trình bày vào cơ hội tiếp theo (ví dụ: khi kết thúc việc đọc câu hiện tại).
 
 .. _class_AccessibilityServer_constant_LIVE_ASSERTIVE:
 
@@ -941,7 +941,7 @@ Indicates that updates to the live region should be presented at the next opport
 
 :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>` **LIVE_ASSERTIVE** = ``2``
 
-Indicates that updates to the live region have the highest priority and should be presented immediately.
+Cho biết rằng các cập nhật đối với live region có mức ưu tiên cao nhất và cần được trình bày ngay lập tức.
 
 .. rst-class:: classref-item-separator
 
@@ -951,7 +951,7 @@ Indicates that updates to the live region have the highest priority and should b
 
 .. rst-class:: classref-enumeration
 
-enum **AccessibilityScrollUnit**: :ref:`🔗<enum_AccessibilityServer_AccessibilityScrollUnit>`
+enum **AccessibilityScrollUnit**: :ref:`🔗 <enum_AccessibilityServer_AccessibilityScrollUnit>`
 
 .. _class_AccessibilityServer_constant_SCROLL_UNIT_ITEM:
 
@@ -959,7 +959,7 @@ enum **AccessibilityScrollUnit**: :ref:`🔗<enum_AccessibilityServer_Accessibil
 
 :ref:`AccessibilityScrollUnit<enum_AccessibilityServer_AccessibilityScrollUnit>` **SCROLL_UNIT_ITEM** = ``0``
 
-The amount by which to scroll. A single item of a list, line of text.
+Lượng cần cuộn. Một mục trong danh sách hoặc một dòng văn bản.
 
 .. _class_AccessibilityServer_constant_SCROLL_UNIT_PAGE:
 
@@ -967,7 +967,7 @@ The amount by which to scroll. A single item of a list, line of text.
 
 :ref:`AccessibilityScrollUnit<enum_AccessibilityServer_AccessibilityScrollUnit>` **SCROLL_UNIT_PAGE** = ``1``
 
-The amount by which to scroll. A single page.
+Lượng cần cuộn. Một trang duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -977,7 +977,7 @@ The amount by which to scroll. A single page.
 
 .. rst-class:: classref-enumeration
 
-enum **AccessibilityScrollHint**: :ref:`🔗<enum_AccessibilityServer_AccessibilityScrollHint>`
+enum **AccessibilityScrollHint**: :ref:`🔗 <enum_AccessibilityServer_AccessibilityScrollHint>`
 
 .. _class_AccessibilityServer_constant_SCROLL_HINT_TOP_LEFT:
 
@@ -985,7 +985,7 @@ enum **AccessibilityScrollHint**: :ref:`🔗<enum_AccessibilityServer_Accessibil
 
 :ref:`AccessibilityScrollHint<enum_AccessibilityServer_AccessibilityScrollHint>` **SCROLL_HINT_TOP_LEFT** = ``0``
 
-A preferred position for the node scrolled into view. Top-left edge of the scroll container.
+Vị trí ưu tiên để node được cuộn vào vùng hiển thị. Mép trên bên trái của vùng chứa cuộn.
 
 .. _class_AccessibilityServer_constant_SCROLL_HINT_BOTTOM_RIGHT:
 
@@ -993,7 +993,7 @@ A preferred position for the node scrolled into view. Top-left edge of the scrol
 
 :ref:`AccessibilityScrollHint<enum_AccessibilityServer_AccessibilityScrollHint>` **SCROLL_HINT_BOTTOM_RIGHT** = ``1``
 
-A preferred position for the node scrolled into view. Bottom-right edge of the scroll container.
+Vị trí ưu tiên để node được cuộn vào vùng hiển thị. Mép dưới bên phải của vùng chứa cuộn.
 
 .. _class_AccessibilityServer_constant_SCROLL_HINT_TOP_EDGE:
 
@@ -1001,7 +1001,7 @@ A preferred position for the node scrolled into view. Bottom-right edge of the s
 
 :ref:`AccessibilityScrollHint<enum_AccessibilityServer_AccessibilityScrollHint>` **SCROLL_HINT_TOP_EDGE** = ``2``
 
-A preferred position for the node scrolled into view. Top edge of the scroll container.
+Vị trí ưu tiên để node được cuộn vào vùng hiển thị. Cạnh trên của vùng chứa cuộn.
 
 .. _class_AccessibilityServer_constant_SCROLL_HINT_BOTTOM_EDGE:
 
@@ -1009,7 +1009,7 @@ A preferred position for the node scrolled into view. Top edge of the scroll con
 
 :ref:`AccessibilityScrollHint<enum_AccessibilityServer_AccessibilityScrollHint>` **SCROLL_HINT_BOTTOM_EDGE** = ``3``
 
-A preferred position for the node scrolled into view. Bottom edge of the scroll container.
+Vị trí ưu tiên để node được cuộn vào vùng hiển thị. Cạnh dưới của vùng chứa cuộn.
 
 .. _class_AccessibilityServer_constant_SCROLL_HINT_LEFT_EDGE:
 
@@ -1017,7 +1017,7 @@ A preferred position for the node scrolled into view. Bottom edge of the scroll 
 
 :ref:`AccessibilityScrollHint<enum_AccessibilityServer_AccessibilityScrollHint>` **SCROLL_HINT_LEFT_EDGE** = ``4``
 
-A preferred position for the node scrolled into view. Left edge of the scroll container.
+Vị trí ưu tiên để node được cuộn vào vùng hiển thị. Cạnh trái của vùng chứa cuộn.
 
 .. _class_AccessibilityServer_constant_SCROLL_HINT_RIGHT_EDGE:
 
@@ -1025,7 +1025,7 @@ A preferred position for the node scrolled into view. Left edge of the scroll co
 
 :ref:`AccessibilityScrollHint<enum_AccessibilityServer_AccessibilityScrollHint>` **SCROLL_HINT_RIGHT_EDGE** = ``5``
 
-A preferred position for the node scrolled into view. Right edge of the scroll container.
+Vị trí ưu tiên để node được cuộn vào vùng hiển thị. Cạnh phải của vùng chứa cuộn.
 
 .. rst-class:: classref-section-separator
 
@@ -1033,8 +1033,8 @@ A preferred position for the node scrolled into view. Right edge of the scroll c
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AccessibilityServer_method_create_element:
 
@@ -1042,9 +1042,9 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **create_element**\ (\ window_id\: :ref:`int<class_int>`, role\: :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>`\ ) :ref:`🔗<class_AccessibilityServer_method_create_element>`
 
-Creates a new, empty accessibility element resource.
+Tạo một tài nguyên accessibility element mới, trống.
 
-\ **Note:** An accessibility element is created and freed automatically for each :ref:`Node<class_Node>`. In general, this function should not be called manually.
+\ **Lưu ý:** Một accessibility element được tạo và giải phóng tự động cho mỗi :ref:`Node<class_Node>`. Nhìn chung, không nên gọi thủ công hàm này.
 
 .. rst-class:: classref-item-separator
 
@@ -1056,7 +1056,7 @@ Creates a new, empty accessibility element resource.
 
 :ref:`RID<class_RID>` **create_sub_element**\ (\ parent_rid\: :ref:`RID<class_RID>`, role\: :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>`, insert_pos\: :ref:`int<class_int>` = -1\ ) :ref:`🔗<class_AccessibilityServer_method_create_sub_element>`
 
-Creates a new, empty accessibility sub-element resource. Sub-elements can be used to provide accessibility information for objects which are not :ref:`Node<class_Node>`\ s, such as list items, table cells, or menu items. Sub-elements are freed automatically when the parent element is freed, or can be freed early using the :ref:`free_element()<class_AccessibilityServer_method_free_element>` method.
+Tạo một tài nguyên phần tử con hỗ trợ tiếp cận mới, trống. Các phần tử con có thể được dùng để cung cấp thông tin hỗ trợ tiếp cận cho những đối tượng không phải là :ref:`Node<class_Node>`\ s, chẳng hạn như các mục danh sách, ô bảng hoặc mục menu. Các phần tử con được giải phóng tự động khi phần tử cha được giải phóng hoặc có thể được giải phóng sớm bằng phương thức :ref:`free_element()<class_AccessibilityServer_method_free_element>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1068,9 +1068,9 @@ Creates a new, empty accessibility sub-element resource. Sub-elements can be use
 
 :ref:`RID<class_RID>` **create_sub_text_edit_elements**\ (\ parent_rid\: :ref:`RID<class_RID>`, shaped_text\: :ref:`RID<class_RID>`, min_height\: :ref:`float<class_float>`, insert_pos\: :ref:`int<class_int>` = -1, is_last_line\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_AccessibilityServer_method_create_sub_text_edit_elements>`
 
-Creates a new, empty accessibility sub-element from the shaped text buffer. Sub-elements are freed automatically when the parent element is freed, or can be freed early using the :ref:`free_element()<class_AccessibilityServer_method_free_element>` method.
+Tạo một phần tử con hỗ trợ tiếp cận mới, trống từ bộ đệm văn bản đã định hình. Các phần tử con được giải phóng tự động khi phần tử cha được giải phóng hoặc có thể được giải phóng sớm bằng phương thức :ref:`free_element()<class_AccessibilityServer_method_free_element>`.
 
-If ``is_last_line`` is ``true``, no trailing newline is appended to the text content. Set to ``true`` for the last line in multi-line text fields and for single-line text fields.
+Nếu ``is_last_line`` là ``true``, không nối thêm ký tự dòng mới vào nội dung văn bản. Đặt thành ``true`` cho dòng cuối cùng trong các trường văn bản nhiều dòng và cho các trường văn bản một dòng.
 
 .. rst-class:: classref-item-separator
 
@@ -1082,7 +1082,7 @@ If ``is_last_line`` is ``true``, no trailing newline is appended to the text con
 
 :ref:`Variant<class_Variant>` **element_get_meta**\ (\ id\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_AccessibilityServer_method_element_get_meta>`
 
-Returns the metadata of the accessibility element ``id``.
+Trả về siêu dữ liệu của phần tử hỗ trợ tiếp cận ``id``.
 
 .. rst-class:: classref-item-separator
 
@@ -1094,7 +1094,7 @@ Returns the metadata of the accessibility element ``id``.
 
 |void| **element_set_meta**\ (\ id\: :ref:`RID<class_RID>`, meta\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_AccessibilityServer_method_element_set_meta>`
 
-Sets the metadata of the accessibility element ``id`` to ``meta``.
+Đặt siêu dữ liệu của phần tử hỗ trợ tiếp cận ``id`` thành ``meta``.
 
 .. rst-class:: classref-item-separator
 
@@ -1106,7 +1106,7 @@ Sets the metadata of the accessibility element ``id`` to ``meta``.
 
 |void| **free_element**\ (\ id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_free_element>`
 
-Frees the accessibility element ``id`` created by :ref:`create_element()<class_AccessibilityServer_method_create_element>`, :ref:`create_sub_element()<class_AccessibilityServer_method_create_sub_element>`, or :ref:`create_sub_text_edit_elements()<class_AccessibilityServer_method_create_sub_text_edit_elements>`.
+Giải phóng phần tử hỗ trợ tiếp cận ``id`` được tạo bởi :ref:`create_element()<class_AccessibilityServer_method_create_element>`, :ref:`create_sub_element()<class_AccessibilityServer_method_create_sub_element>` hoặc :ref:`create_sub_text_edit_elements()<class_AccessibilityServer_method_create_sub_text_edit_elements>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1118,7 +1118,7 @@ Frees the accessibility element ``id`` created by :ref:`create_element()<class_A
 
 :ref:`RID<class_RID>` **get_window_root**\ (\ window_id\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AccessibilityServer_method_get_window_root>`
 
-Returns the main accessibility element of the OS native window.
+Trả về phần tử hỗ trợ tiếp cận chính của cửa sổ gốc của HĐH.
 
 .. rst-class:: classref-item-separator
 
@@ -1130,7 +1130,7 @@ Returns the main accessibility element of the OS native window.
 
 :ref:`bool<class_bool>` **has_element**\ (\ id\: :ref:`RID<class_RID>`\ ) |const| :ref:`🔗<class_AccessibilityServer_method_has_element>`
 
-Returns ``true`` if ``id`` is a valid accessibility element.
+Trả về ``true`` nếu ``id`` là một phần tử trợ năng hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -1142,7 +1142,7 @@ Returns ``true`` if ``id`` is a valid accessibility element.
 
 :ref:`bool<class_bool>` **is_supported**\ (\ ) |const| :ref:`🔗<class_AccessibilityServer_method_is_supported>`
 
-Returns ``true`` if screen reader is support by this implementation.
+Trả về ``true`` nếu trình đọc màn hình được triển khai này hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -1154,11 +1154,11 @@ Returns ``true`` if screen reader is support by this implementation.
 
 |void| **set_window_focused**\ (\ window_id\: :ref:`int<class_int>`, focused\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AccessibilityServer_method_set_window_focused>`
 
-Sets the window focused state for assistive apps.
+Thiết lập trạng thái được focus của cửa sổ cho các ứng dụng hỗ trợ.
 
-\ **Note:** This method is implemented on Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS và Windows.
 
-\ **Note:** Advanced users only! :ref:`Window<class_Window>` objects call this method automatically.
+\ **Lưu ý:** Chỉ dành cho người dùng nâng cao! Các đối tượng :ref:`Window<class_Window>` tự động gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -1170,11 +1170,11 @@ Sets the window focused state for assistive apps.
 
 |void| **set_window_rect**\ (\ window_id\: :ref:`int<class_int>`, rect_out\: :ref:`Rect2<class_Rect2>`, rect_in\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_AccessibilityServer_method_set_window_rect>`
 
-Sets window outer (with decorations) and inner (without decorations) bounds for assistive apps.
+Thiết lập giới hạn bên ngoài (có phần trang trí) và bên trong (không có phần trang trí) của cửa sổ cho các ứng dụng hỗ trợ.
 
-\ **Note:** This method is implemented on Linux, macOS, and Windows.
+\ **Lưu ý:** Phương thức này được triển khai trên Linux, macOS và Windows.
 
-\ **Note:** Advanced users only! :ref:`Window<class_Window>` objects call this method automatically.
+\ **Lưu ý:** Chỉ dành cho người dùng nâng cao! Các đối tượng :ref:`Window<class_Window>` tự động gọi phương thức này.
 
 .. rst-class:: classref-item-separator
 
@@ -1186,7 +1186,7 @@ Sets window outer (with decorations) and inner (without decorations) bounds for 
 
 |void| **update_add_action**\ (\ id\: :ref:`RID<class_RID>`, action\: :ref:`AccessibilityAction<enum_AccessibilityServer_AccessibilityAction>`, callable\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_action>`
 
-Adds a callback for the accessibility action (action which can be performed by using a special screen reader command or buttons on the Braille display), and marks this action as supported. The action callback receives one :ref:`Variant<class_Variant>` argument, which value depends on action type.
+Thêm một callback cho hành động trợ năng (hành động có thể được thực hiện bằng cách sử dụng một lệnh đặc biệt của trình đọc màn hình hoặc các nút trên màn hình Braille) và đánh dấu hành động này là được hỗ trợ. Callback của hành động nhận một đối số :ref:`Variant<class_Variant>`, với giá trị phụ thuộc vào loại hành động.
 
 .. rst-class:: classref-item-separator
 
@@ -1198,9 +1198,9 @@ Adds a callback for the accessibility action (action which can be performed by u
 
 |void| **update_add_child**\ (\ id\: :ref:`RID<class_RID>`, child_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_child>`
 
-Adds a child accessibility element.
+Thêm một phần tử trợ năng con.
 
-\ **Note:** :ref:`Node<class_Node>` children and sub-elements are added to the child list automatically.
+\ **Lưu ý:** :ref:`Node<class_Node>` các phần tử con và phần tử phụ được tự động thêm vào danh sách phần tử con.
 
 .. rst-class:: classref-item-separator
 
@@ -1212,7 +1212,7 @@ Adds a child accessibility element.
 
 |void| **update_add_custom_action**\ (\ id\: :ref:`RID<class_RID>`, action_id\: :ref:`int<class_int>`, action_description\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_custom_action>`
 
-Adds support for a custom accessibility action. ``action_id`` is passed as an argument to the callback of :ref:`ACTION_CUSTOM<class_AccessibilityServer_constant_ACTION_CUSTOM>` action.
+Thêm hỗ trợ cho một hành động trợ năng tùy chỉnh. ``action_id`` được truyền dưới dạng đối số cho callback của hành động :ref:`ACTION_CUSTOM<class_AccessibilityServer_constant_ACTION_CUSTOM>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1224,7 +1224,7 @@ Adds support for a custom accessibility action. ``action_id`` is passed as an ar
 
 |void| **update_add_related_controls**\ (\ id\: :ref:`RID<class_RID>`, related_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_related_controls>`
 
-Adds an element that is controlled by this element.
+Thêm một phần tử được điều khiển bởi phần tử này.
 
 .. rst-class:: classref-item-separator
 
@@ -1236,7 +1236,7 @@ Adds an element that is controlled by this element.
 
 |void| **update_add_related_described_by**\ (\ id\: :ref:`RID<class_RID>`, related_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_related_described_by>`
 
-Adds an element that describes this element.
+Thêm một phần tử mô tả phần tử này.
 
 .. rst-class:: classref-item-separator
 
@@ -1248,7 +1248,7 @@ Adds an element that describes this element.
 
 |void| **update_add_related_details**\ (\ id\: :ref:`RID<class_RID>`, related_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_related_details>`
 
-Adds an element that details this element.
+Thêm một phần tử mô tả chi tiết phần tử này.
 
 .. rst-class:: classref-item-separator
 
@@ -1260,7 +1260,7 @@ Adds an element that details this element.
 
 |void| **update_add_related_flow_to**\ (\ id\: :ref:`RID<class_RID>`, related_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_related_flow_to>`
 
-Adds an element that this element flow into.
+Thêm một phần tử mà phần tử này chuyển sang.
 
 .. rst-class:: classref-item-separator
 
@@ -1272,7 +1272,7 @@ Adds an element that this element flow into.
 
 |void| **update_add_related_labeled_by**\ (\ id\: :ref:`RID<class_RID>`, related_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_related_labeled_by>`
 
-Adds an element that labels this element.
+Thêm một phần tử gắn nhãn cho phần tử này.
 
 .. rst-class:: classref-item-separator
 
@@ -1284,9 +1284,9 @@ Adds an element that labels this element.
 
 |void| **update_add_related_radio_group**\ (\ id\: :ref:`RID<class_RID>`, related_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_add_related_radio_group>`
 
-Adds an element that is part of the same radio group.
+Thêm một phần tử thuộc cùng nhóm radio.
 
-\ **Note:** This method should be called on each element of the group, using all other elements as ``related_id``.
+\ **Lưu ý:** Phương thức này nên được gọi trên từng phần tử trong nhóm, sử dụng tất cả các phần tử khác làm ``related_id``.
 
 .. rst-class:: classref-item-separator
 
@@ -1298,7 +1298,7 @@ Adds an element that is part of the same radio group.
 
 |void| **update_set_active_descendant**\ (\ id\: :ref:`RID<class_RID>`, other_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_active_descendant>`
 
-Adds an element that is an active descendant of this element.
+Thêm một phần tử là phần tử hậu duệ đang hoạt động của phần tử này.
 
 .. rst-class:: classref-item-separator
 
@@ -1310,7 +1310,7 @@ Adds an element that is an active descendant of this element.
 
 |void| **update_set_background_color**\ (\ id\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_background_color>`
 
-Sets element background color.
+Đặt màu nền của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1322,7 +1322,7 @@ Sets element background color.
 
 |void| **update_set_bounds**\ (\ id\: :ref:`RID<class_RID>`, rect\: :ref:`Rect2<class_Rect2>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_bounds>`
 
-Sets element bounding box, relative to the node position.
+Đặt hộp giới hạn của phần tử, tương đối với vị trí của node.
 
 .. rst-class:: classref-item-separator
 
@@ -1334,7 +1334,7 @@ Sets element bounding box, relative to the node position.
 
 |void| **update_set_braille_label**\ (\ id\: :ref:`RID<class_RID>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_braille_label>`
 
-Sets element accessibility label for Braille display.
+Đặt nhãn trợ năng của phần tử cho màn hình chữ Braille.
 
 .. rst-class:: classref-item-separator
 
@@ -1346,7 +1346,7 @@ Sets element accessibility label for Braille display.
 
 |void| **update_set_braille_role_description**\ (\ id\: :ref:`RID<class_RID>`, description\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_braille_role_description>`
 
-Sets element accessibility role description for Braille display.
+Đặt mô tả vai trò trợ năng của phần tử cho màn hình chữ Braille.
 
 .. rst-class:: classref-item-separator
 
@@ -1358,7 +1358,7 @@ Sets element accessibility role description for Braille display.
 
 |void| **update_set_checked**\ (\ id\: :ref:`RID<class_RID>`, checekd\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_checked>`
 
-Sets element checked state.
+Đặt trạng thái đã chọn của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1370,7 +1370,7 @@ Sets element checked state.
 
 |void| **update_set_classname**\ (\ id\: :ref:`RID<class_RID>`, classname\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_classname>`
 
-Sets element class name.
+Đặt tên lớp của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1382,7 +1382,7 @@ Sets element class name.
 
 |void| **update_set_color_value**\ (\ id\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_color_value>`
 
-Sets element color value.
+Đặt giá trị màu của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1394,7 +1394,7 @@ Sets element color value.
 
 |void| **update_set_description**\ (\ id\: :ref:`RID<class_RID>`, description\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_description>`
 
-Sets element accessibility description.
+Đặt mô tả trợ năng của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1406,7 +1406,7 @@ Sets element accessibility description.
 
 |void| **update_set_error_message**\ (\ id\: :ref:`RID<class_RID>`, other_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_error_message>`
 
-Sets an element which contains an error message for this element.
+Đặt một phần tử chứa thông báo lỗi cho phần tử này.
 
 .. rst-class:: classref-item-separator
 
@@ -1418,7 +1418,7 @@ Sets an element which contains an error message for this element.
 
 |void| **update_set_extra_info**\ (\ id\: :ref:`RID<class_RID>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_extra_info>`
 
-Sets element accessibility extra information added to the element name.
+Đặt thông tin bổ sung về khả năng truy cập của phần tử, được thêm vào tên phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1430,7 +1430,7 @@ Sets element accessibility extra information added to the element name.
 
 |void| **update_set_flag**\ (\ id\: :ref:`RID<class_RID>`, flag\: :ref:`AccessibilityFlags<enum_AccessibilityServer_AccessibilityFlags>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_flag>`
 
-Sets element flag.
+Đặt cờ của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1442,7 +1442,7 @@ Sets element flag.
 
 |void| **update_set_focus**\ (\ id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_focus>`
 
-Sets currently focused element.
+Đặt phần tử hiện đang được focus.
 
 .. rst-class:: classref-item-separator
 
@@ -1454,7 +1454,7 @@ Sets currently focused element.
 
 |void| **update_set_foreground_color**\ (\ id\: :ref:`RID<class_RID>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_foreground_color>`
 
-Sets element foreground color.
+Đặt màu tiền cảnh của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1466,7 +1466,7 @@ Sets element foreground color.
 
 |void| **update_set_in_page_link_target**\ (\ id\: :ref:`RID<class_RID>`, other_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_in_page_link_target>`
 
-Sets target element for the link.
+Đặt phần tử đích cho liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -1478,7 +1478,7 @@ Sets target element for the link.
 
 |void| **update_set_language**\ (\ id\: :ref:`RID<class_RID>`, language\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_language>`
 
-Sets element text language.
+Đặt ngôn ngữ văn bản của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1490,7 +1490,7 @@ Sets element text language.
 
 |void| **update_set_list_item_count**\ (\ id\: :ref:`RID<class_RID>`, size\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_list_item_count>`
 
-Sets number of items in the list.
+Thiết lập số lượng mục trong danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -1502,7 +1502,7 @@ Sets number of items in the list.
 
 |void| **update_set_list_item_expanded**\ (\ id\: :ref:`RID<class_RID>`, expanded\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_list_item_expanded>`
 
-Sets list/tree item expanded status.
+Thiết lập trạng thái mở rộng của mục trong danh sách/cây.
 
 .. rst-class:: classref-item-separator
 
@@ -1514,7 +1514,7 @@ Sets list/tree item expanded status.
 
 |void| **update_set_list_item_index**\ (\ id\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_list_item_index>`
 
-Sets the position of the element in the list.
+Thiết lập vị trí của phần tử trong danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -1526,7 +1526,7 @@ Sets the position of the element in the list.
 
 |void| **update_set_list_item_level**\ (\ id\: :ref:`RID<class_RID>`, level\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_list_item_level>`
 
-Sets the hierarchical level of the element in the list.
+Thiết lập cấp bậc của phần tử trong danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -1538,7 +1538,7 @@ Sets the hierarchical level of the element in the list.
 
 |void| **update_set_list_item_selected**\ (\ id\: :ref:`RID<class_RID>`, selected\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_list_item_selected>`
 
-Sets list/tree item selected status.
+Thiết lập trạng thái được chọn của mục trong danh sách/cây.
 
 .. rst-class:: classref-item-separator
 
@@ -1550,7 +1550,7 @@ Sets list/tree item selected status.
 
 |void| **update_set_list_orientation**\ (\ id\: :ref:`RID<class_RID>`, vertical\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_list_orientation>`
 
-Sets the orientation of the list elements.
+Thiết lập hướng của các phần tử trong danh sách.
 
 .. rst-class:: classref-item-separator
 
@@ -1562,7 +1562,7 @@ Sets the orientation of the list elements.
 
 |void| **update_set_live**\ (\ id\: :ref:`RID<class_RID>`, live\: :ref:`AccessibilityLiveMode<enum_AccessibilityServer_AccessibilityLiveMode>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_live>`
 
-Sets the priority of the live region updates.
+Thiết lập mức độ ưu tiên của các bản cập nhật vùng live.
 
 .. rst-class:: classref-item-separator
 
@@ -1574,7 +1574,7 @@ Sets the priority of the live region updates.
 
 |void| **update_set_member_of**\ (\ id\: :ref:`RID<class_RID>`, group_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_member_of>`
 
-Sets the element to be a member of the group.
+Đặt phần tử làm thành viên của nhóm.
 
 .. rst-class:: classref-item-separator
 
@@ -1586,7 +1586,7 @@ Sets the element to be a member of the group.
 
 |void| **update_set_name**\ (\ id\: :ref:`RID<class_RID>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_name>`
 
-Sets element accessibility name.
+Đặt tên trợ năng của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1598,7 +1598,7 @@ Sets element accessibility name.
 
 |void| **update_set_next_on_line**\ (\ id\: :ref:`RID<class_RID>`, other_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_next_on_line>`
 
-Sets next element on the line.
+Đặt phần tử tiếp theo trên dòng.
 
 .. rst-class:: classref-item-separator
 
@@ -1610,7 +1610,7 @@ Sets next element on the line.
 
 |void| **update_set_num_jump**\ (\ id\: :ref:`RID<class_RID>`, jump\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_num_jump>`
 
-Sets numeric value jump.
+Đặt bước nhảy của giá trị số.
 
 .. rst-class:: classref-item-separator
 
@@ -1622,7 +1622,7 @@ Sets numeric value jump.
 
 |void| **update_set_num_range**\ (\ id\: :ref:`RID<class_RID>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_num_range>`
 
-Sets numeric value range.
+Đặt phạm vi giá trị số.
 
 .. rst-class:: classref-item-separator
 
@@ -1634,7 +1634,7 @@ Sets numeric value range.
 
 |void| **update_set_num_step**\ (\ id\: :ref:`RID<class_RID>`, step\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_num_step>`
 
-Sets numeric value step.
+Đặt bước của giá trị số.
 
 .. rst-class:: classref-item-separator
 
@@ -1646,7 +1646,7 @@ Sets numeric value step.
 
 |void| **update_set_num_value**\ (\ id\: :ref:`RID<class_RID>`, position\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_num_value>`
 
-Sets numeric value.
+Đặt giá trị số.
 
 .. rst-class:: classref-item-separator
 
@@ -1658,7 +1658,7 @@ Sets numeric value.
 
 |void| **update_set_placeholder**\ (\ id\: :ref:`RID<class_RID>`, placeholder\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_placeholder>`
 
-Sets placeholder text.
+Đặt văn bản giữ chỗ.
 
 .. rst-class:: classref-item-separator
 
@@ -1670,7 +1670,7 @@ Sets placeholder text.
 
 |void| **update_set_popup_type**\ (\ id\: :ref:`RID<class_RID>`, popup\: :ref:`AccessibilityPopupType<enum_AccessibilityServer_AccessibilityPopupType>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_popup_type>`
 
-Sets popup type for popup buttons.
+Đặt loại popup cho các nút popup.
 
 .. rst-class:: classref-item-separator
 
@@ -1682,7 +1682,7 @@ Sets popup type for popup buttons.
 
 |void| **update_set_previous_on_line**\ (\ id\: :ref:`RID<class_RID>`, other_id\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_previous_on_line>`
 
-Sets previous element on the line.
+Đặt phần tử trước đó trên dòng.
 
 .. rst-class:: classref-item-separator
 
@@ -1694,7 +1694,7 @@ Sets previous element on the line.
 
 |void| **update_set_role**\ (\ id\: :ref:`RID<class_RID>`, role\: :ref:`AccessibilityRole<enum_AccessibilityServer_AccessibilityRole>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_role>`
 
-Sets element accessibility role.
+Đặt vai trò trợ năng của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1706,7 +1706,7 @@ Sets element accessibility role.
 
 |void| **update_set_role_description**\ (\ id\: :ref:`RID<class_RID>`, description\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_role_description>`
 
-Sets element accessibility role description text.
+Đặt văn bản mô tả vai trò trợ năng của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1718,7 +1718,7 @@ Sets element accessibility role description text.
 
 |void| **update_set_scroll_x**\ (\ id\: :ref:`RID<class_RID>`, position\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_scroll_x>`
 
-Sets scroll bar x position.
+Đặt vị trí x của thanh cuộn.
 
 .. rst-class:: classref-item-separator
 
@@ -1730,7 +1730,7 @@ Sets scroll bar x position.
 
 |void| **update_set_scroll_x_range**\ (\ id\: :ref:`RID<class_RID>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_scroll_x_range>`
 
-Sets scroll bar x range.
+Đặt phạm vi x của thanh cuộn.
 
 .. rst-class:: classref-item-separator
 
@@ -1742,7 +1742,7 @@ Sets scroll bar x range.
 
 |void| **update_set_scroll_y**\ (\ id\: :ref:`RID<class_RID>`, position\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_scroll_y>`
 
-Sets scroll bar y position.
+Thiết lập vị trí y của thanh cuộn.
 
 .. rst-class:: classref-item-separator
 
@@ -1754,7 +1754,7 @@ Sets scroll bar y position.
 
 |void| **update_set_scroll_y_range**\ (\ id\: :ref:`RID<class_RID>`, min\: :ref:`float<class_float>`, max\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_scroll_y_range>`
 
-Sets scroll bar y range.
+Thiết lập phạm vi y của thanh cuộn.
 
 .. rst-class:: classref-item-separator
 
@@ -1766,7 +1766,7 @@ Sets scroll bar y range.
 
 |void| **update_set_shortcut**\ (\ id\: :ref:`RID<class_RID>`, shortcut\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_shortcut>`
 
-Sets the list of keyboard shortcuts used by element.
+Thiết lập danh sách phím tắt được phần tử sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -1778,7 +1778,7 @@ Sets the list of keyboard shortcuts used by element.
 
 |void| **update_set_state_description**\ (\ id\: :ref:`RID<class_RID>`, description\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_state_description>`
 
-Sets human-readable description of the current checked state.
+Thiết lập mô tả dễ hiểu về trạng thái được chọn hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -1790,7 +1790,7 @@ Sets human-readable description of the current checked state.
 
 |void| **update_set_table_cell_position**\ (\ id\: :ref:`RID<class_RID>`, row_index\: :ref:`int<class_int>`, column_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_table_cell_position>`
 
-Sets cell position in the table.
+Thiết lập vị trí của ô trong bảng.
 
 .. rst-class:: classref-item-separator
 
@@ -1802,7 +1802,7 @@ Sets cell position in the table.
 
 |void| **update_set_table_cell_span**\ (\ id\: :ref:`RID<class_RID>`, row_span\: :ref:`int<class_int>`, column_span\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_table_cell_span>`
 
-Sets cell row/column span.
+Thiết lập phạm vi hàng/cột của ô.
 
 .. rst-class:: classref-item-separator
 
@@ -1814,7 +1814,7 @@ Sets cell row/column span.
 
 |void| **update_set_table_column_count**\ (\ id\: :ref:`RID<class_RID>`, count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_table_column_count>`
 
-Sets number of columns in the table.
+Thiết lập số cột trong bảng.
 
 .. rst-class:: classref-item-separator
 
@@ -1826,7 +1826,7 @@ Sets number of columns in the table.
 
 |void| **update_set_table_column_index**\ (\ id\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_table_column_index>`
 
-Sets position of the column.
+Đặt vị trí của cột.
 
 .. rst-class:: classref-item-separator
 
@@ -1838,7 +1838,7 @@ Sets position of the column.
 
 |void| **update_set_table_row_count**\ (\ id\: :ref:`RID<class_RID>`, count\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_table_row_count>`
 
-Sets number of rows in the table.
+Đặt số hàng trong bảng.
 
 .. rst-class:: classref-item-separator
 
@@ -1850,7 +1850,7 @@ Sets number of rows in the table.
 
 |void| **update_set_table_row_index**\ (\ id\: :ref:`RID<class_RID>`, index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_table_row_index>`
 
-Sets position of the row in the table.
+Đặt vị trí của hàng trong bảng.
 
 .. rst-class:: classref-item-separator
 
@@ -1862,7 +1862,7 @@ Sets position of the row in the table.
 
 |void| **update_set_text_align**\ (\ id\: :ref:`RID<class_RID>`, align\: :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_text_align>`
 
-Sets element text alignment.
+Đặt căn chỉnh văn bản của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1874,7 +1874,7 @@ Sets element text alignment.
 
 |void| **update_set_text_decorations**\ (\ id\: :ref:`RID<class_RID>`, underline\: :ref:`bool<class_bool>`, strikethrough\: :ref:`bool<class_bool>`, overline\: :ref:`bool<class_bool>`, color\: :ref:`Color<class_Color>` = Color(0, 0, 0, 1)\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_text_decorations>`
 
-Sets text underline/overline/strikethrough.
+Đặt kiểu gạch chân/gạch trên/gạch ngang cho văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -1886,7 +1886,7 @@ Sets text underline/overline/strikethrough.
 
 |void| **update_set_text_orientation**\ (\ id\: :ref:`RID<class_RID>`, vertical\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_text_orientation>`
 
-Sets text orientation.
+Đặt hướng của văn bản.
 
 .. rst-class:: classref-item-separator
 
@@ -1898,7 +1898,7 @@ Sets text orientation.
 
 |void| **update_set_text_selection**\ (\ id\: :ref:`RID<class_RID>`, text_start_id\: :ref:`RID<class_RID>`, start_char\: :ref:`int<class_int>`, text_end_id\: :ref:`RID<class_RID>`, end_char\: :ref:`int<class_int>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_text_selection>`
 
-Sets text selection to the text field. ``text_start_id`` and ``text_end_id`` should be elements created by :ref:`create_sub_text_edit_elements()<class_AccessibilityServer_method_create_sub_text_edit_elements>`. Character offsets are relative to the corresponding element.
+Đặt vùng chọn văn bản cho trường văn bản. ``text_start_id`` và ``text_end_id`` phải là các phần tử được tạo bởi :ref:`create_sub_text_edit_elements()<class_AccessibilityServer_method_create_sub_text_edit_elements>`. Vị trí ký tự được tính tương đối với phần tử tương ứng.
 
 .. rst-class:: classref-item-separator
 
@@ -1910,7 +1910,7 @@ Sets text selection to the text field. ``text_start_id`` and ``text_end_id`` sho
 
 |void| **update_set_tooltip**\ (\ id\: :ref:`RID<class_RID>`, tooltip\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_tooltip>`
 
-Sets tooltip text.
+Đặt văn bản chú giải công cụ.
 
 .. rst-class:: classref-item-separator
 
@@ -1922,7 +1922,7 @@ Sets tooltip text.
 
 |void| **update_set_transform**\ (\ id\: :ref:`RID<class_RID>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_transform>`
 
-Sets element 2D transform.
+Đặt phép biến đổi 2D của phần tử.
 
 .. rst-class:: classref-item-separator
 
@@ -1934,7 +1934,7 @@ Sets element 2D transform.
 
 |void| **update_set_url**\ (\ id\: :ref:`RID<class_RID>`, url\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_url>`
 
-Sets link URL.
+Đặt URL liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -1946,14 +1946,14 @@ Sets link URL.
 
 |void| **update_set_value**\ (\ id\: :ref:`RID<class_RID>`, value\: :ref:`String<class_String>`\ ) :ref:`🔗<class_AccessibilityServer_method_update_set_value>`
 
-Sets element text value.
+Đặt giá trị văn bản của phần tử.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

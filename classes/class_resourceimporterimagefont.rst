@@ -10,29 +10,29 @@
 ResourceImporterImageFont
 =========================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports a bitmap font where all glyphs have the same width and height.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This image-based workflow can be easier to use than :ref:`ResourceImporterBMFont<class_ResourceImporterBMFont>`, but it requires all glyphs to have the same width and height, glyph advances and drawing offsets can be customized. This makes **ResourceImporterImageFont** most suited to fixed-width fonts.
-
-See also :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>`.
+Nhập một bitmap font trong đó tất cả glyph có cùng chiều rộng và chiều cao.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Quy trình làm việc dựa trên hình ảnh này có thể dễ sử dụng hơn :ref:`ResourceImporterBMFont<class_ResourceImporterBMFont>`, nhưng yêu cầu tất cả glyph phải có cùng chiều rộng và chiều cao; có thể tùy chỉnh độ tiến và độ lệch khi vẽ glyph. Vì vậy, **ResourceImporterImageFont** phù hợp nhất với các font có độ rộng cố định.
+
+Xem thêm :ref:`ResourceImporterDynamicFont<class_ResourceImporterDynamicFont>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Bitmap fonts - Using fonts <../tutorials/ui/gui_using_fonts.html#bitmap-fonts>`__
+- `Bitmap font - Sử dụng font <../tutorials/ui/gui_using_fonts.html#bitmap-fonts>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -68,8 +68,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterImageFont_property_ascent:
 
@@ -77,7 +77,7 @@ Property Descriptions
 
 :ref:`int<class_int>` **ascent** = ``0`` :ref:`🔗<class_ResourceImporterImageFont_property_ascent>`
 
-Font ascent (number of pixels above the baseline). If set to ``0``, half of the character height is used.
+Độ nhô lên của font (số pixel phía trên đường cơ sở). Nếu được đặt thành ``0``, một nửa chiều cao của ký tự sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -89,7 +89,7 @@ Font ascent (number of pixels above the baseline). If set to ``0``, half of the 
 
 :ref:`Rect2i<class_Rect2i>` **character_margin** = ``Rect2i(0, 0, 0, 0)`` :ref:`🔗<class_ResourceImporterImageFont_property_character_margin>`
 
-Margin applied around every imported glyph. If your font image contains guides (in the form of lines between glyphs) or if spacing between characters appears incorrect, try adjusting :ref:`character_margin<class_ResourceImporterImageFont_property_character_margin>`.
+Lề được áp dụng quanh mỗi glyph được nhập. Nếu hình ảnh font của bạn chứa các đường dẫn (dưới dạng các đường giữa các glyph) hoặc nếu khoảng cách giữa các ký tự có vẻ không chính xác, hãy thử điều chỉnh :ref:`character_margin<class_ResourceImporterImageFont_property_character_margin>`.
 
 .. rst-class:: classref-item-separator
 
@@ -101,15 +101,15 @@ Margin applied around every imported glyph. If your font image contains guides (
 
 :ref:`PackedStringArray<class_PackedStringArray>` **character_ranges** = ``PackedStringArray()`` :ref:`🔗<class_ResourceImporterImageFont_property_character_ranges>`
 
-The character ranges to import from the font image. This is an array that maps each position on the image (in tile coordinates, not pixels). The font atlas is traversed from left to right and top to bottom. Characters can be specified with decimal numbers (126), hexadecimal numbers (``0x007e`` or ``U+007e``), or between single quotes (``'~'``). Ranges can be specified with a hyphen between characters.
+Các phạm vi ký tự cần nhập từ hình ảnh font. Đây là một mảng ánh xạ mỗi vị trí trên hình ảnh (theo tọa độ tile, không phải pixel). Font atlas được duyệt từ trái sang phải và từ trên xuống dưới. Có thể chỉ định ký tự bằng số thập phân (126), số thập lục phân (``0x007e`` hoặc ``U+007e``), hoặc đặt trong dấu nháy đơn (``'~'``). Có thể chỉ định phạm vi bằng dấu gạch nối giữa các ký tự.
 
-For example, ``0-127`` represents the full ASCII range. It can also be written as ``0x0000-0x007f`` (or ``U+0000-U+007f``). As another example, ``' '-'~'`` is equivalent to ``32-126`` and represents the range of printable (visible) ASCII characters.
+Ví dụ, ``0-127`` biểu diễn toàn bộ phạm vi ASCII. Cũng có thể viết là ``0x0000-0x007f`` (hoặc ``U+0000-U+007f``). Một ví dụ khác, ``' '-'~'`` tương đương với ``32-126`` và biểu diễn phạm vi các ký tự ASCII có thể in (hiển thị được).
 
-For any range, the character advance and offset can be customized by appending three space-separated integer values (additional advance, x offset, y offset) to the end. For example ``'a'-'b' 4 5 2`` sets the advance to ``char_width + 4`` and offset to ``Vector2(5, 2)`` for both `a` and `b` characters.
+Với mọi phạm vi, có thể tùy chỉnh độ tiến và độ lệch của ký tự bằng cách thêm ba giá trị số nguyên, cách nhau bằng dấu cách (độ tiến bổ sung, độ lệch x, độ lệch y), vào cuối. Ví dụ, ``'a'-'b' 4 5 2`` đặt độ tiến thành ``char_width + 4`` và độ lệch thành ``Vector2(5, 2)`` cho cả hai ký tự `a` và `b`.
 
-\ **Note:** The overall number of characters must not exceed the number of :ref:`columns<class_ResourceImporterImageFont_property_columns>` multiplied by :ref:`rows<class_ResourceImporterImageFont_property_rows>`. Otherwise, the font will fail to import.
+\ **Lưu ý:** Tổng số ký tự không được vượt quá số lượng :ref:`columns<class_ResourceImporterImageFont_property_columns>` nhân với :ref:`rows<class_ResourceImporterImageFont_property_rows>`. Nếu không, font sẽ không thể được nhập.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ For any range, the character advance and offset can be customized by appending t
 
 :ref:`int<class_int>` **columns** = ``1`` :ref:`🔗<class_ResourceImporterImageFont_property_columns>`
 
-Number of columns in the font image. See also :ref:`rows<class_ResourceImporterImageFont_property_rows>`.
+Số cột trong hình ảnh font. Xem thêm :ref:`rows<class_ResourceImporterImageFont_property_rows>`.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ Number of columns in the font image. See also :ref:`rows<class_ResourceImporterI
 
 :ref:`bool<class_bool>` **compress** = ``true`` :ref:`🔗<class_ResourceImporterImageFont_property_compress>`
 
-If ``true``, uses lossless compression for the resulting font.
+Nếu ``true``, sử dụng tính năng nén không mất dữ liệu cho font kết quả.
 
 .. rst-class:: classref-item-separator
 
@@ -145,7 +145,7 @@ If ``true``, uses lossless compression for the resulting font.
 
 :ref:`int<class_int>` **descent** = ``0`` :ref:`🔗<class_ResourceImporterImageFont_property_descent>`
 
-Font descent (number of pixels below the baseline). If set to ``0``, half of the character height is used.
+Độ nhô xuống của font (số pixel phía dưới đường cơ sở). Nếu được đặt thành ``0``, một nửa chiều cao của ký tự sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ Font descent (number of pixels below the baseline). If set to ``0``, half of the
 
 :ref:`Array<class_Array>` **fallbacks** = ``[]`` :ref:`🔗<class_ResourceImporterImageFont_property_fallbacks>`
 
-List of font fallbacks to use if a glyph isn't found in this bitmap font. Fonts at the beginning of the array are attempted first.
+Danh sách các font fallback được sử dụng nếu không tìm thấy glyph trong bitmap font này. Các font ở đầu mảng sẽ được thử trước.
 
 .. rst-class:: classref-item-separator
 
@@ -169,7 +169,7 @@ List of font fallbacks to use if a glyph isn't found in this bitmap font. Fonts 
 
 :ref:`Rect2i<class_Rect2i>` **image_margin** = ``Rect2i(0, 0, 0, 0)`` :ref:`🔗<class_ResourceImporterImageFont_property_image_margin>`
 
-Margin to cut on the sides of the entire image. This can be used to cut parts of the image that contain attribution information or similar.
+Lề cần cắt ở các cạnh của toàn bộ hình ảnh. Có thể dùng tùy chọn này để cắt các phần hình ảnh chứa thông tin ghi công hoặc nội dung tương tự.
 
 .. rst-class:: classref-item-separator
 
@@ -181,11 +181,11 @@ Margin to cut on the sides of the entire image. This can be used to cut parts of
 
 :ref:`PackedStringArray<class_PackedStringArray>` **kerning_pairs** = ``PackedStringArray()`` :ref:`🔗<class_ResourceImporterImageFont_property_kerning_pairs>`
 
-Kerning pairs for the font. Kerning pair adjust the spacing between two characters.
+Các cặp kerning của font. Cặp kerning điều chỉnh khoảng cách giữa hai ký tự.
 
-Each string consist of three space separated values: "from" string, "to" string and integer offset. Each combination form the two string for a kerning pair, e.g, ``ab cd -3`` will create kerning pairs ``ac``, ``ad``, ``bc``, and ``bd`` with offset ``-3``. ``\uXXXX`` escape sequences can be used to add Unicode characters.
+Mỗi chuỗi gồm ba giá trị được phân tách bằng dấu cách: chuỗi "from", chuỗi "to" và độ lệch dạng số nguyên. Mỗi tổ hợp tạo thành hai chuỗi cho một cặp kerning; ví dụ, ``ab cd -3`` sẽ tạo các cặp kerning ``ac``, ``ad``, ``bc`` và ``bd`` với độ lệch ``-3``. Có thể sử dụng các chuỗi escape ``\uXXXX`` để thêm các ký tự Unicode.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Each string consist of three space separated values: "from" string, "to" string 
 
 :ref:`int<class_int>` **rows** = ``1`` :ref:`🔗<class_ResourceImporterImageFont_property_rows>`
 
-Number of rows in the font image. See also :ref:`columns<class_ResourceImporterImageFont_property_columns>`.
+Số hàng trong hình ảnh font. Xem thêm :ref:`columns<class_ResourceImporterImageFont_property_columns>`.
 
 .. rst-class:: classref-item-separator
 
@@ -209,14 +209,14 @@ Number of rows in the font image. See also :ref:`columns<class_ResourceImporterI
 
 :ref:`int<class_int>` **scaling_mode** = ``2`` :ref:`🔗<class_ResourceImporterImageFont_property_scaling_mode>`
 
-Font scaling mode.
+Chế độ scaling của font.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

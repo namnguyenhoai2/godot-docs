@@ -10,18 +10,18 @@
 NodePath
 ========
 
-A pre-parsed scene tree path.
+Một đường dẫn cây cảnh đã được phân tích cú pháp trước.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **NodePath** built-in :ref:`Variant<class_Variant>` type represents a path to a node or property in a hierarchy of nodes. It is designed to be efficiently passed into many built-in methods (such as :ref:`Node.get_node()<class_Node_method_get_node>`, :ref:`Object.set_indexed()<class_Object_method_set_indexed>`, :ref:`Tween.tween_property()<class_Tween_method_tween_property>`, etc.) without a hard dependence on the node or property they point to.
+Kiểu :ref:`Variant<class_Variant>` tích hợp sẵn **NodePath** biểu diễn một đường dẫn đến một node hoặc property trong hệ thống phân cấp các node. Kiểu này được thiết kế để truyền hiệu quả vào nhiều phương thức tích hợp sẵn (chẳng hạn như :ref:`Node.get_node()<class_Node_method_get_node>`, :ref:`Object.set_indexed()<class_Object_method_set_indexed>`, :ref:`Tween.tween_property()<class_Tween_method_tween_property>`, v.v.) mà không phụ thuộc cứng vào node hoặc property mà chúng trỏ đến.
 
-A node path is represented as a :ref:`String<class_String>` composed of slash-separated (``/``) node names and colon-separated (``:``) property names (also called "subnames"). Similar to a filesystem path, ``".."`` and ``"."`` are special node names. They refer to the parent node and the current node, respectively.
+Đường dẫn node được biểu diễn dưới dạng :ref:`String<class_String>`, bao gồm các tên node được phân tách bằng dấu gạch chéo (``/``) và các tên property được phân tách bằng dấu hai chấm (``:``) (còn được gọi là "subname"). Tương tự như đường dẫn hệ thống tệp, ``".."`` và ``"."`` là các tên node đặc biệt. Chúng lần lượt tham chiếu đến node cha và node hiện tại.
 
-The following examples are paths relative to the current node:
+Các ví dụ sau đây là những đường dẫn tương đối so với node hiện tại:
 
 ::
 
@@ -32,7 +32,7 @@ The following examples are paths relative to the current node:
     ^"../C"  # Points to the sibling node C.
     ^"../.." # Points to the grandparent node.
 
-A leading slash means the path is absolute, and begins from the :ref:`SceneTree<class_SceneTree>`:
+Dấu gạch chéo ở đầu có nghĩa là đường dẫn tuyệt đối và bắt đầu từ :ref:`SceneTree<class_SceneTree>`:
 
 ::
 
@@ -40,7 +40,7 @@ A leading slash means the path is absolute, and begins from the :ref:`SceneTree<
     ^"/root/Title"      # May point to the main scene's root node named "Title".
     ^"/root/Global"     # May point to an autoloaded node or scene named "Global".
 
-Despite their name, node paths may also point to a property:
+Mặc dù có tên như vậy, đường dẫn node cũng có thể trỏ đến một property:
 
 ::
 
@@ -49,15 +49,15 @@ Despite their name, node paths may also point to a property:
     ^"Camera3D:rotation:y" # Points to the child Camera3D and its y rotation.
     ^"/root:size:x"        # Points to the root Window and its width.
 
-In some situations, it's possible to omit the leading ``:`` when pointing to an object's property. As an example, this is the case with :ref:`Object.set_indexed()<class_Object_method_set_indexed>` and :ref:`Tween.tween_property()<class_Tween_method_tween_property>`, as those methods call :ref:`get_as_property_path()<class_NodePath_method_get_as_property_path>` under the hood. However, it's generally recommended to keep the ``:`` prefix.
+Trong một số tình huống, bạn có thể bỏ qua ``:`` ở đầu khi trỏ đến thuộc tính của một đối tượng. Ví dụ, trường hợp này áp dụng cho :ref:`Object.set_indexed()<class_Object_method_set_indexed>` và :ref:`Tween.tween_property()<class_Tween_method_tween_property>`, vì các phương thức đó gọi :ref:`get_as_property_path()<class_NodePath_method_get_as_property_path>` ở bên dưới. Tuy nhiên, nhìn chung bạn nên giữ tiền tố ``:``.
 
-Node paths cannot check whether they are valid and may point to nodes or properties that do not exist. Their meaning depends entirely on the context in which they're used.
+Các đường dẫn node không thể kiểm tra xem chúng có hợp lệ hay không và có thể trỏ đến các node hoặc thuộc tính không tồn tại. Ý nghĩa của chúng hoàn toàn phụ thuộc vào ngữ cảnh sử dụng.
 
-You usually do not have to worry about the **NodePath** type, as strings are automatically converted to the type when necessary. There are still times when defining node paths is useful. For example, exported **NodePath** properties allow you to easily select any node within the currently edited scene. They are also automatically updated when moving, renaming or deleting nodes in the scene tree editor. See also :ref:`@GDScript.@export_node_path<class_@GDScript_annotation_@export_node_path>`.
+Thông thường, bạn không cần phải quan tâm đến kiểu **NodePath**, vì các chuỗi sẽ tự động được chuyển đổi sang kiểu này khi cần. Tuy vậy, vẫn có những lúc việc định nghĩa đường dẫn node rất hữu ích. Ví dụ, các thuộc tính **NodePath** được export cho phép bạn dễ dàng chọn bất kỳ node nào trong scene hiện đang được chỉnh sửa. Chúng cũng được tự động cập nhật khi bạn di chuyển, đổi tên hoặc xóa node trong trình chỉnh sửa cây scene. Xem thêm :ref:`@GDScript.@export_node_path <class_@GDScript_annotation_@export_node_path>`.
 
-See also :ref:`StringName<class_StringName>`, which is a similar type designed for optimized strings.
+Xem thêm :ref:`StringName<class_StringName>`, một kiểu tương tự được thiết kế cho các chuỗi được tối ưu hóa.
 
-\ **Note:** In a boolean context, a **NodePath** will evaluate to ``false`` if it is empty (``NodePath("")``). Otherwise, a **NodePath** will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một **NodePath** sẽ được đánh giá là ``false`` nếu nó rỗng (``NodePath("")``). Nếu không, một **NodePath** sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -65,14 +65,14 @@ See also :ref:`StringName<class_StringName>`, which is a similar type designed f
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `2D Role Playing Game (RPG) Demo <https://godotengine.org/asset-library/asset/2729>`__
+- `Bản minh họa trò chơi nhập vai 2D (RPG) <https://godotengine.org/asset-library/asset/2729>`__
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -88,8 +88,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -120,17 +120,17 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------+---------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator !=<class_NodePath_operator_neq_NodePath>`\ (\ right\: :ref:`NodePath<class_NodePath>`\ ) |
-   +-------------------------+---------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ==<class_NodePath_operator_eq_NodePath>`\ (\ right\: :ref:`NodePath<class_NodePath>`\ )  |
-   +-------------------------+---------------------------------------------------------------------------------------------------------+
+   +-------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator != <class_NodePath_operator_neq_NodePath>`\ (\ right\: :ref:`NodePath<class_NodePath>`\ ) |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator == <class_NodePath_operator_eq_NodePath>`\ (\ right\: :ref:`NodePath<class_NodePath>`\ )  |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -138,8 +138,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm dựng
+--------------
 
 .. _class_NodePath_constructor_NodePath:
 
@@ -147,7 +147,7 @@ Constructor Descriptions
 
 :ref:`NodePath<class_NodePath>` **NodePath**\ (\ ) :ref:`🔗<class_NodePath_constructor_NodePath>`
 
-Constructs an empty **NodePath**.
+Tạo một **NodePath** rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ Constructs an empty **NodePath**.
 
 :ref:`NodePath<class_NodePath>` **NodePath**\ (\ from\: :ref:`NodePath<class_NodePath>`\ )
 
-Constructs a **NodePath** as a copy of the given **NodePath**.
+Tạo một **NodePath** dưới dạng bản sao của **NodePath** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -167,11 +167,11 @@ Constructs a **NodePath** as a copy of the given **NodePath**.
 
 :ref:`NodePath<class_NodePath>` **NodePath**\ (\ from\: :ref:`String<class_String>`\ )
 
-Constructs a **NodePath** from a :ref:`String<class_String>`. The created path is absolute if prefixed with a slash (see :ref:`is_absolute()<class_NodePath_method_is_absolute>`).
+Tạo một **NodePath** từ :ref:`String<class_String>`. Đường dẫn được tạo là tuyệt đối nếu có tiền tố là dấu gạch chéo (xem :ref:`is_absolute()<class_NodePath_method_is_absolute>`).
 
-The "subnames" optionally included after the path to the target node can point to properties, and can also be nested.
+Các "subnames" được thêm tùy chọn sau đường dẫn đến node đích có thể trỏ đến các thuộc tính và cũng có thể được lồng nhau.
 
-The following strings can be valid node paths:
+Các chuỗi sau đây có thể là những đường dẫn node hợp lệ:
 
 ::
 
@@ -192,7 +192,7 @@ The following strings can be valid node paths:
     # Points to the RigidBody2D node as an absolute path beginning from the SceneTree.
     "/root/Level/RigidBody2D"
 
-\ **Note:** In GDScript, it's also possible to convert a constant string into a node path by prefixing it with ``^``. ``^"path/to/node"`` is equivalent to ``NodePath("path/to/node")``.
+\ **Lưu ý:** Trong GDScript, bạn cũng có thể chuyển đổi một chuỗi hằng thành đường dẫn node bằng cách thêm tiền tố ``^`` vào trước chuỗi. ``^"path/to/node"`` tương đương với ``NodePath("path/to/node")``.
 
 .. rst-class:: classref-section-separator
 
@@ -200,8 +200,8 @@ The following strings can be valid node paths:
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NodePath_method_get_as_property_path:
 
@@ -209,28 +209,28 @@ Method Descriptions
 
 :ref:`NodePath<class_NodePath>` **get_as_property_path**\ (\ ) |const| :ref:`🔗<class_NodePath_method_get_as_property_path>`
 
-Returns a copy of this node path with a colon character (``:``) prefixed, transforming it to a pure property path with no node names (relative to the current node).
+Trả về một bản sao của đường dẫn node này với một ký tự hai chấm (``:``) được thêm vào trước, chuyển đổi nó thành một đường dẫn thuộc tính thuần túy không có tên node nào (tương đối với node hiện tại).
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # node_path points to the "x" property of the child node named "position".
+    # node_path trỏ đến thuộc tính "x" của node con có tên "position".
     var node_path = ^"position:x"
 
-    # property_path points to the "position" in the "x" axis of this node.
+    # property_path trỏ đến "position" trên trục "x" của node này.
     var property_path = node_path.get_as_property_path()
-    print(property_path) # Prints ":position:x"
+    print(property_path) # In ":position:x"
 
  .. code-tab:: csharp
 
-    // nodePath points to the "x" property of the child node named "position".
+    // nodePath trỏ đến thuộc tính "x" của node con có tên "position".
     var nodePath = new NodePath("position:x");
 
-    // propertyPath points to the "position" in the "x" axis of this node.
+    // propertyPath trỏ đến "position" trên trục "x" của node này.
     NodePath propertyPath = nodePath.GetAsPropertyPath();
-    GD.Print(propertyPath); // Prints ":position:x"
+    GD.Print(propertyPath); // In ":position:x"
 
 
 
@@ -244,7 +244,7 @@ Returns a copy of this node path with a colon character (``:``) prefixed, transf
 
 :ref:`StringName<class_StringName>` **get_concatenated_names**\ (\ ) |const| :ref:`🔗<class_NodePath_method_get_concatenated_names>`
 
-Returns all node names concatenated with a slash character (``/``) as a single :ref:`StringName<class_StringName>`.
+Trả về tất cả tên node được nối bằng ký tự gạch chéo (``/``) thành một :ref:`StringName<class_StringName>` duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -256,7 +256,7 @@ Returns all node names concatenated with a slash character (``/``) as a single :
 
 :ref:`StringName<class_StringName>` **get_concatenated_subnames**\ (\ ) |const| :ref:`🔗<class_NodePath_method_get_concatenated_subnames>`
 
-Returns all property subnames concatenated with a colon character (``:``) as a single :ref:`StringName<class_StringName>`.
+Trả về tất cả tên phụ của thuộc tính được nối bằng ký tự dấu hai chấm (``:``) thành một :ref:`StringName<class_StringName>` duy nhất.
 
 
 .. tabs::
@@ -264,12 +264,12 @@ Returns all property subnames concatenated with a colon character (``:``) as a s
  .. code-tab:: gdscript
 
     var node_path = ^"Sprite2D:texture:resource_name"
-    print(node_path.get_concatenated_subnames()) # Prints "texture:resource_name"
+    print(node_path.get_concatenated_subnames()) # In "texture:resource_name"
 
  .. code-tab:: csharp
 
     var nodePath = new NodePath("Sprite2D:texture:resource_name");
-    GD.Print(nodePath.GetConcatenatedSubnames()); // Prints "texture:resource_name"
+    GD.Print(nodePath.GetConcatenatedSubnames()); // In "texture:resource_name"
 
 
 
@@ -283,7 +283,7 @@ Returns all property subnames concatenated with a colon character (``:``) as a s
 
 :ref:`StringName<class_StringName>` **get_name**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NodePath_method_get_name>`
 
-Returns the node name indicated by ``idx``, starting from 0. If ``idx`` is out of bounds, an error is generated. See also :ref:`get_subname_count()<class_NodePath_method_get_subname_count>` and :ref:`get_name_count()<class_NodePath_method_get_name_count>`.
+Trả về tên nút được chỉ định bởi ``idx``, bắt đầu từ 0. Nếu ``idx`` nằm ngoài phạm vi, một lỗi sẽ được tạo. Xem thêm :ref:`get_subname_count()<class_NodePath_method_get_subname_count>` và :ref:`get_name_count()<class_NodePath_method_get_name_count>`.
 
 
 .. tabs::
@@ -291,16 +291,16 @@ Returns the node name indicated by ``idx``, starting from 0. If ``idx`` is out o
  .. code-tab:: gdscript
 
     var sprite_path = NodePath("../RigidBody2D/Sprite2D")
-    print(sprite_path.get_name(0)) # Prints ".."
-    print(sprite_path.get_name(1)) # Prints "RigidBody2D"
-    print(sprite_path.get_name(2)) # Prints "Sprite"
+    print(sprite_path.get_name(0)) # In ".."
+    print(sprite_path.get_name(1)) # In "RigidBody2D"
+    print(sprite_path.get_name(2)) # In "Sprite"
 
  .. code-tab:: csharp
 
     var spritePath = new NodePath("../RigidBody2D/Sprite2D");
-    GD.Print(spritePath.GetName(0)); // Prints ".."
-    GD.Print(spritePath.GetName(1)); // Prints "PathFollow2D"
-    GD.Print(spritePath.GetName(2)); // Prints "Sprite"
+    GD.Print(spritePath.GetName(0)); // In ".."
+    GD.Print(spritePath.GetName(1)); // In "PathFollow2D"
+    GD.Print(spritePath.GetName(2)); // In ra "Sprite"
 
 
 
@@ -314,9 +314,9 @@ Returns the node name indicated by ``idx``, starting from 0. If ``idx`` is out o
 
 :ref:`int<class_int>` **get_name_count**\ (\ ) |const| :ref:`🔗<class_NodePath_method_get_name_count>`
 
-Returns the number of node names in the path. Property subnames are not included.
+Trả về số lượng tên node trong đường dẫn. Các tên con của thuộc tính không được tính.
 
-For example, ``"../RigidBody2D/Sprite2D:texture"`` contains 3 node names.
+Ví dụ: ``"../RigidBody2D/Sprite2D:texture"`` chứa 3 tên node.
 
 .. rst-class:: classref-item-separator
 
@@ -328,7 +328,7 @@ For example, ``"../RigidBody2D/Sprite2D:texture"`` contains 3 node names.
 
 :ref:`StringName<class_StringName>` **get_subname**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NodePath_method_get_subname>`
 
-Returns the property name indicated by ``idx``, starting from 0. If ``idx`` is out of bounds, an error is generated. See also :ref:`get_subname_count()<class_NodePath_method_get_subname_count>`.
+Trả về tên thuộc tính được chỉ định bởi ``idx``, bắt đầu từ 0. Nếu ``idx`` nằm ngoài phạm vi, một lỗi sẽ được tạo ra. Xem thêm :ref:`get_subname_count()<class_NodePath_method_get_subname_count>`.
 
 
 .. tabs::
@@ -336,14 +336,14 @@ Returns the property name indicated by ``idx``, starting from 0. If ``idx`` is o
  .. code-tab:: gdscript
 
     var path_to_name = NodePath("Sprite2D:texture:resource_name")
-    print(path_to_name.get_subname(0)) # Prints "texture"
-    print(path_to_name.get_subname(1)) # Prints "resource_name"
+    print(path_to_name.get_subname(0)) # In ra "texture"
+    print(path_to_name.get_subname(1)) # In ra "resource_name"
 
  .. code-tab:: csharp
 
     var pathToName = new NodePath("Sprite2D:texture:resource_name");
-    GD.Print(pathToName.GetSubname(0)); // Prints "texture"
-    GD.Print(pathToName.GetSubname(1)); // Prints "resource_name"
+    GD.Print(pathToName.GetSubname(0)); // In ra "texture"
+    GD.Print(pathToName.GetSubname(1)); // In "resource_name"
 
 
 
@@ -357,9 +357,9 @@ Returns the property name indicated by ``idx``, starting from 0. If ``idx`` is o
 
 :ref:`int<class_int>` **get_subname_count**\ (\ ) |const| :ref:`🔗<class_NodePath_method_get_subname_count>`
 
-Returns the number of property names ("subnames") in the path. Each subname in the node path is listed after a colon character (``:``).
+Trả về số lượng tên thuộc tính ("subname") trong đường dẫn. Mỗi subname trong đường dẫn node được liệt kê sau ký tự dấu hai chấm (``:``).
 
-For example, ``"Level/RigidBody2D/Sprite2D:texture:resource_name"`` contains 2 subnames.
+Ví dụ, ``"Level/RigidBody2D/Sprite2D:texture:resource_name"`` chứa 2 subname.
 
 .. rst-class:: classref-item-separator
 
@@ -371,9 +371,9 @@ For example, ``"Level/RigidBody2D/Sprite2D:texture:resource_name"`` contains 2 s
 
 :ref:`int<class_int>` **hash**\ (\ ) |const| :ref:`🔗<class_NodePath_method_hash>`
 
-Returns the 32-bit hash value representing the node path's contents.
+Trả về giá trị băm 32-bit đại diện cho nội dung của đường dẫn node.
 
-\ **Note:** Node paths with equal hash values are *not* guaranteed to be the same, as a result of hash collisions. Node paths with different hash values are guaranteed to be different.
+\ **Lưu ý:** Các đường dẫn node có cùng giá trị băm *không* được đảm bảo là giống nhau do xảy ra xung đột băm. Các đường dẫn node có giá trị băm khác nhau được đảm bảo là khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ Returns the 32-bit hash value representing the node path's contents.
 
 :ref:`bool<class_bool>` **is_absolute**\ (\ ) |const| :ref:`🔗<class_NodePath_method_is_absolute>`
 
-Returns ``true`` if the node path is absolute. Unlike a relative path, an absolute path is represented by a leading slash character (``/``) and always begins from the :ref:`SceneTree<class_SceneTree>`. It can be used to reliably access nodes from the root node (e.g. ``"/root/Global"`` if an autoload named "Global" exists).
+Trả về ``true`` nếu đường dẫn node là tuyệt đối. Không giống đường dẫn tương đối, đường dẫn tuyệt đối được biểu diễn bằng ký tự gạch chéo ở đầu (``/``) và luôn bắt đầu từ :ref:`SceneTree<class_SceneTree>`. Nó có thể được dùng để truy cập đáng tin cậy các node từ node gốc (ví dụ: ``"/root/Global"`` nếu tồn tại autoload có tên "Global").
 
 .. rst-class:: classref-item-separator
 
@@ -397,7 +397,7 @@ Returns ``true`` if the node path is absolute. Unlike a relative path, an absolu
 
 :ref:`bool<class_bool>` **is_empty**\ (\ ) |const| :ref:`🔗<class_NodePath_method_is_empty>`
 
-Returns ``true`` if the node path has been constructed from an empty :ref:`String<class_String>` (``""``).
+Trả về ``true`` nếu đường dẫn node được xây dựng từ một :ref:`String<class_String>` (``""``) trống.
 
 .. rst-class:: classref-item-separator
 
@@ -409,9 +409,9 @@ Returns ``true`` if the node path has been constructed from an empty :ref:`Strin
 
 :ref:`NodePath<class_NodePath>` **slice**\ (\ begin\: :ref:`int<class_int>`, end\: :ref:`int<class_int>` = 2147483647\ ) |const| :ref:`🔗<class_NodePath_method_slice>`
 
-Returns the slice of the **NodePath**, from ``begin`` (inclusive) to ``end`` (exclusive), as a new **NodePath**.
+Trả về phần của **NodePath**, từ ``begin`` (bao gồm) đến ``end`` (không bao gồm), dưới dạng một **NodePath** mới.
 
-The absolute value of ``begin`` and ``end`` will be clamped to the sum of :ref:`get_name_count()<class_NodePath_method_get_name_count>` and :ref:`get_subname_count()<class_NodePath_method_get_subname_count>`, so the default value for ``end`` makes it slice to the end of the **NodePath** by default (i.e. ``path.slice(1)`` is a shorthand for ``path.slice(1, path.get_name_count() + path.get_subname_count())``).
+Giá trị tuyệt đối của ``begin`` và ``end`` sẽ được giới hạn ở tổng của :ref:`get_name_count()<class_NodePath_method_get_name_count>` và :ref:`get_subname_count()<class_NodePath_method_get_subname_count>`, vì vậy giá trị mặc định của ``end`` khiến thao tác này mặc định lấy phần tử đến cuối **NodePath** (tức là ``path.slice(1)`` là cách viết tắt của ``path.slice(1, path.get_name_count() + path.get_subname_count())``).
 
 If either ``begin`` or ``end`` are negative, they will be relative to the end of the **NodePath** (i.e. ``path.slice(0, -2)`` is a shorthand for ``path.slice(0, path.get_name_count() + path.get_subname_count() - 2)``).
 
@@ -421,16 +421,16 @@ If either ``begin`` or ``end`` are negative, they will be relative to the end of
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_NodePath_operator_neq_NodePath:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_NodePath_operator_neq_NodePath>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗 <class_NodePath_operator_neq_NodePath>`
 
-Returns ``true`` if two node paths are not equal.
+Trả về ``true`` nếu hai đường dẫn node không bằng nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -440,16 +440,16 @@ Returns ``true`` if two node paths are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_NodePath_operator_eq_NodePath>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗 <class_NodePath_operator_eq_NodePath>`
 
-Returns ``true`` if two node paths are equal, that is, they are composed of the same node names and subnames in the same order.
+Trả về ``true`` nếu hai đường dẫn node bằng nhau, nghĩa là chúng được tạo thành từ cùng các tên node và tên node con theo cùng một thứ tự.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,43 +10,43 @@
 FogVolume
 =========
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A region that contributes to the default volumetric fog from the world environment.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**FogVolume**\ s are used to add localized fog into the global volumetric fog effect. **FogVolume**\ s can also remove volumetric fog from specific areas if using a :ref:`FogMaterial<class_FogMaterial>` with a negative :ref:`FogMaterial.density<class_FogMaterial_property_density>`.
-
-Performance of **FogVolume**\ s is directly related to their relative size on the screen and the complexity of their attached :ref:`FogMaterial<class_FogMaterial>`. It is best to keep **FogVolume**\ s relatively small and simple where possible.
-
-\ **Note:** **FogVolume**\ s only have a visible effect if :ref:`Environment.volumetric_fog_enabled<class_Environment_property_volumetric_fog_enabled>` is ``true``. If you don't want fog to be globally visible (but only within **FogVolume** nodes), set :ref:`Environment.volumetric_fog_density<class_Environment_property_volumetric_fog_density>` to ``0.0``.
+Một vùng đóng góp vào sương mù thể tích mặc định từ môi trường thế giới.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**FogVolume**\ s được dùng để thêm sương mù cục bộ vào hiệu ứng sương mù thể tích toàn cục. **FogVolume**\ s cũng có thể loại bỏ sương mù thể tích khỏi các khu vực cụ thể khi sử dụng một :ref:`FogMaterial<class_FogMaterial>` có :ref:`FogMaterial.density<class_FogMaterial_property_density>` âm.
+
+Hiệu suất của **FogVolume**\ s liên quan trực tiếp đến kích thước tương đối của chúng trên màn hình và độ phức tạp của :ref:`FogMaterial<class_FogMaterial>` được gắn vào chúng. Khi có thể, tốt nhất nên giữ **FogVolume**\ s tương đối nhỏ và đơn giản.
+
+\ **Lưu ý:** **FogVolume**\ s chỉ có hiệu ứng hiển thị nếu :ref:`Environment.volumetric_fog_enabled<class_Environment_property_volumetric_fog_enabled>` là ``true``. Nếu bạn không muốn sương mù hiển thị trên toàn cục (mà chỉ bên trong các node **FogVolume**), hãy đặt :ref:`Environment.volumetric_fog_density<class_Environment_property_volumetric_fog_density>` thành ``0.0``.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Volumetric fog and fog volumes <../tutorials/3d/volumetric_fog>`
+- :doc:`Sương mù thể tích và các vùng sương mù <../tutorials/3d/volumetric_fog>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------+----------------------+
-   | :ref:`Material<class_Material>`                            | :ref:`material<class_FogVolume_property_material>` |                      |
-   +------------------------------------------------------------+----------------------------------------------------+----------------------+
-   | :ref:`FogVolumeShape<enum_RenderingServer_FogVolumeShape>` | :ref:`shape<class_FogVolume_property_shape>`       | ``3``                |
-   +------------------------------------------------------------+----------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>`                              | :ref:`size<class_FogVolume_property_size>`         | ``Vector3(2, 2, 2)`` |
-   +------------------------------------------------------------+----------------------------------------------------+----------------------+
+   +-------------------------------------------------------------+----------------------------------------------------+----------------------+
+   | :ref:`Material<class_Material>`                             | :ref:`material<class_FogVolume_property_material>` |                      |
+   +-------------------------------------------------------------+----------------------------------------------------+----------------------+
+   | :ref:`FogVolumeShape <enum_RenderingServer_FogVolumeShape>` | :ref:`shape<class_FogVolume_property_shape>`       | ``3``                |
+   +-------------------------------------------------------------+----------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>`                               | :ref:`size<class_FogVolume_property_size>`         | ``Vector3(2, 2, 2)`` |
+   +-------------------------------------------------------------+----------------------------------------------------+----------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -54,21 +54,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_FogVolume_property_material:
 
 .. rst-class:: classref-property
 
-:ref:`Material<class_Material>` **material** :ref:`🔗<class_FogVolume_property_material>`
+:ref:`Material<class_Material>` **material** :ref:`🔗 <class_FogVolume_property_material>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_material**\ (\ value\: :ref:`Material<class_Material>`\ )
 - :ref:`Material<class_Material>` **get_material**\ (\ )
 
-The :ref:`Material<class_Material>` used by the **FogVolume**. Can be either a built-in :ref:`FogMaterial<class_FogMaterial>` or a custom :ref:`ShaderMaterial<class_ShaderMaterial>`.
+:ref:`Material<class_Material>` được **FogVolume** sử dụng. Có thể là :ref:`FogMaterial<class_FogMaterial>` tích hợp sẵn hoặc :ref:`ShaderMaterial<class_ShaderMaterial>` tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -85,7 +85,7 @@ The :ref:`Material<class_Material>` used by the **FogVolume**. Can be either a b
 - |void| **set_shape**\ (\ value\: :ref:`FogVolumeShape<enum_RenderingServer_FogVolumeShape>`\ )
 - :ref:`FogVolumeShape<enum_RenderingServer_FogVolumeShape>` **get_shape**\ (\ )
 
-The shape of the **FogVolume**. This can be set to either :ref:`RenderingServer.FOG_VOLUME_SHAPE_ELLIPSOID<class_RenderingServer_constant_FOG_VOLUME_SHAPE_ELLIPSOID>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CONE<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CONE>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CYLINDER<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CYLINDER>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_BOX<class_RenderingServer_constant_FOG_VOLUME_SHAPE_BOX>` or :ref:`RenderingServer.FOG_VOLUME_SHAPE_WORLD<class_RenderingServer_constant_FOG_VOLUME_SHAPE_WORLD>`.
+Hình dạng của **FogVolume**. Có thể đặt thành :ref:`RenderingServer.FOG_VOLUME_SHAPE_ELLIPSOID<class_RenderingServer_constant_FOG_VOLUME_SHAPE_ELLIPSOID>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CONE<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CONE>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CYLINDER<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CYLINDER>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_BOX<class_RenderingServer_constant_FOG_VOLUME_SHAPE_BOX>` hoặc :ref:`RenderingServer.FOG_VOLUME_SHAPE_WORLD<class_RenderingServer_constant_FOG_VOLUME_SHAPE_WORLD>`.
 
 .. rst-class:: classref-item-separator
 
@@ -102,18 +102,18 @@ The shape of the **FogVolume**. This can be set to either :ref:`RenderingServer.
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-The size of the **FogVolume** when :ref:`shape<class_FogVolume_property_shape>` is :ref:`RenderingServer.FOG_VOLUME_SHAPE_ELLIPSOID<class_RenderingServer_constant_FOG_VOLUME_SHAPE_ELLIPSOID>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CONE<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CONE>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CYLINDER<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CYLINDER>` or :ref:`RenderingServer.FOG_VOLUME_SHAPE_BOX<class_RenderingServer_constant_FOG_VOLUME_SHAPE_BOX>`.
+Kích thước của **FogVolume** khi :ref:`shape<class_FogVolume_property_shape>` là :ref:`RenderingServer.FOG_VOLUME_SHAPE_ELLIPSOID<class_RenderingServer_constant_FOG_VOLUME_SHAPE_ELLIPSOID>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CONE<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CONE>`, :ref:`RenderingServer.FOG_VOLUME_SHAPE_CYLINDER<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CYLINDER>` hoặc :ref:`RenderingServer.FOG_VOLUME_SHAPE_BOX<class_RenderingServer_constant_FOG_VOLUME_SHAPE_BOX>`.
 
-\ **Note:** Thin fog volumes may appear to flicker when the camera moves or rotates. This can be alleviated by increasing :ref:`ProjectSettings.rendering/environment/volumetric_fog/volume_depth<class_ProjectSettings_property_rendering/environment/volumetric_fog/volume_depth>` (at a performance cost) or by decreasing :ref:`Environment.volumetric_fog_length<class_Environment_property_volumetric_fog_length>` (at no performance cost, but at the cost of lower fog range). Alternatively, the **FogVolume** can be made thicker and use a lower density in the :ref:`material<class_FogVolume_property_material>`.
+\ **Lưu ý:** Các thể tích sương mù mỏng có thể nhấp nháy khi camera di chuyển hoặc xoay. Có thể khắc phục bằng cách tăng :ref:`ProjectSettings.rendering/environment/volumetric_fog/volume_depth <class_ProjectSettings_property_rendering/environment/volumetric_fog/volume_depth>` (đánh đổi bằng hiệu năng) hoặc giảm :ref:`Environment.volumetric_fog_length<class_Environment_property_volumetric_fog_length>` (không ảnh hưởng đến hiệu năng, nhưng làm giảm phạm vi sương mù). Ngoài ra, **FogVolume** có thể được làm dày hơn và sử dụng mật độ thấp hơn trong :ref:`material<class_FogVolume_property_material>`.
 
-\ **Note:** If :ref:`shape<class_FogVolume_property_shape>` is :ref:`RenderingServer.FOG_VOLUME_SHAPE_CONE<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CONE>` or :ref:`RenderingServer.FOG_VOLUME_SHAPE_CYLINDER<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CYLINDER>`, the cone/cylinder will be adjusted to fit within the size. Non-uniform scaling of cone/cylinder shapes via the :ref:`size<class_FogVolume_property_size>` property is not supported, but you can scale the **FogVolume** node instead.
+\ **Lưu ý:** Nếu :ref:`shape<class_FogVolume_property_shape>` là :ref:`RenderingServer.FOG_VOLUME_SHAPE_CONE<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CONE>` hoặc :ref:`RenderingServer.FOG_VOLUME_SHAPE_CYLINDER<class_RenderingServer_constant_FOG_VOLUME_SHAPE_CYLINDER>`, hình nón/hình trụ sẽ được điều chỉnh để nằm trong kích thước đó. Không hỗ trợ scaling không đồng nhất các hình nón/hình trụ thông qua thuộc tính :ref:`size<class_FogVolume_property_size>`, nhưng bạn có thể scale node **FogVolume** thay thế.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,31 +10,31 @@
 AudioStreamMP3
 ==============
 
-**Inherits:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioStream<class_AudioStream>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-MP3 audio stream driver.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-MP3 audio stream driver. See :ref:`data<class_AudioStreamMP3_property_data>` if you want to load an MP3 file at run-time. More info can be found in :ref:`ResourceImporterMP3<class_ResourceImporterMP3>`.
-
-\ **Note:** This class can optionally support legacy MP1 and MP2 formats, provided that the engine is compiled with the ``minimp3_extra_formats=yes`` SCons option. These extra formats are not enabled by default.
+Trình điều khiển luồng âm thanh MP3.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Trình điều khiển luồng âm thanh MP3. Xem :ref:`data<class_AudioStreamMP3_property_data>` nếu bạn muốn tải tệp MP3 trong thời gian chạy. Bạn có thể tìm thêm thông tin trong :ref:`ResourceImporterMP3<class_ResourceImporterMP3>`.
+
+\ **Lưu ý:** Lớp này có thể tùy chọn hỗ trợ các định dạng MP1 và MP2 cũ, với điều kiện engine được biên dịch cùng tùy chọn SCons ``minimp3_extra_formats=yes``. Các định dạng bổ sung này không được bật theo mặc định.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio streams <../tutorials/audio/audio_streams>`
+- :doc:`Luồng âm thanh <../tutorials/audio/audio_streams>`
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -74,8 +74,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioStreamMP3_property_bar_beats:
 
@@ -88,7 +88,7 @@ Property Descriptions
 - |void| **set_bar_beats**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bar_beats**\ (\ )
 
-The number of beats within a single bar in the audio track.
+Số nhịp trong một ô nhịp của bản nhạc.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ The number of beats within a single bar in the audio track.
 - |void| **set_beat_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_beat_count**\ (\ )
 
-The length of the audio track, in beats. The actual duration of the audio file might be longer than what is indicated by this property. It defines the end of the audio for looping, :ref:`AudioStreamPlaylist<class_AudioStreamPlaylist>`, and :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`.
+Độ dài của bản nhạc, tính theo nhịp. Thời lượng thực tế của tệp âm thanh có thể dài hơn thời lượng được chỉ ra bởi thuộc tính này. Thuộc tính này xác định điểm kết thúc của âm thanh khi lặp, :ref:`AudioStreamPlaylist<class_AudioStreamPlaylist>`, và :ref:`AudioStreamInteractive<class_AudioStreamInteractive>`.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ The length of the audio track, in beats. The actual duration of the audio file m
 - |void| **set_bpm**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_bpm**\ (\ )
 
-The tempo of the audio track, measured in beats per minute.
+Tempo của bản nhạc, được đo bằng nhịp mỗi phút.
 
 .. rst-class:: classref-item-separator
 
@@ -139,9 +139,9 @@ The tempo of the audio track, measured in beats per minute.
 - |void| **set_data**\ (\ value\: :ref:`PackedByteArray<class_PackedByteArray>`\ )
 - :ref:`PackedByteArray<class_PackedByteArray>` **get_data**\ (\ )
 
-Contains the audio data in bytes.
+Chứa dữ liệu âm thanh dưới dạng byte.
 
-You can load a file without having to import it beforehand using the code snippet below. Keep in mind that this snippet loads the whole file into memory and may not be ideal for huge files (hundreds of megabytes or more).
+Bạn có thể tải một tệp mà không cần nhập tệp trước bằng đoạn mã bên dưới. Hãy lưu ý rằng đoạn mã này tải toàn bộ tệp vào bộ nhớ và có thể không phù hợp với các tệp rất lớn (hàng trăm megabyte trở lên).
 
 
 .. tabs::
@@ -166,7 +166,7 @@ You can load a file without having to import it beforehand using the code snippe
 
 
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedByteArray<class_PackedByteArray>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedByteArray<class_PackedByteArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ You can load a file without having to import it beforehand using the code snippe
 - |void| **set_loop**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **has_loop**\ (\ )
 
-If ``true``, the stream will play again from the specified :ref:`loop_offset<class_AudioStreamMP3_property_loop_offset>` once it reaches the end of the audio track, or once it reaches the end of the last beat according to the amount specified in :ref:`beat_count<class_AudioStreamMP3_property_beat_count>`. Useful for ambient sounds and background music.
+Nếu ``true``, luồng sẽ phát lại từ :ref:`loop_offset<class_AudioStreamMP3_property_loop_offset>` đã chỉ định khi đến cuối bản nhạc hoặc khi đến cuối nhịp cuối cùng theo lượng được chỉ định trong :ref:`beat_count<class_AudioStreamMP3_property_beat_count>`. Hữu ích cho âm thanh môi trường và nhạc nền.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ If ``true``, the stream will play again from the specified :ref:`loop_offset<cla
 - |void| **set_loop_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_loop_offset**\ (\ )
 
-Time in seconds at which the stream starts after being looped.
+Thời điểm tính bằng giây mà luồng bắt đầu sau khi được lặp lại.
 
 .. rst-class:: classref-section-separator
 
@@ -208,8 +208,8 @@ Time in seconds at which the stream starts after being looped.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioStreamMP3_method_load_from_buffer:
 
@@ -217,7 +217,7 @@ Method Descriptions
 
 :ref:`AudioStreamMP3<class_AudioStreamMP3>` **load_from_buffer**\ (\ stream_data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |static| :ref:`🔗<class_AudioStreamMP3_method_load_from_buffer>`
 
-Creates a new **AudioStreamMP3** instance from the given buffer. The buffer must contain MP3 data.
+Tạo một instance **AudioStreamMP3** mới từ buffer đã cho. Buffer phải chứa dữ liệu MP3.
 
 .. rst-class:: classref-item-separator
 
@@ -229,14 +229,14 @@ Creates a new **AudioStreamMP3** instance from the given buffer. The buffer must
 
 :ref:`AudioStreamMP3<class_AudioStreamMP3>` **load_from_file**\ (\ path\: :ref:`String<class_String>`\ ) |static| :ref:`🔗<class_AudioStreamMP3_method_load_from_file>`
 
-Creates a new **AudioStreamMP3** instance from the given file path. The file must be in MP3 format.
+Tạo một instance **AudioStreamMP3** mới từ đường dẫn tệp đã cho. Tệp phải ở định dạng MP3.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

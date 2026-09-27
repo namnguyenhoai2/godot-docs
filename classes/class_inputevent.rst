@@ -10,35 +10,35 @@
 InputEvent
 ==========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`InputEventAction<class_InputEventAction>`, :ref:`InputEventFromWindow<class_InputEventFromWindow>`, :ref:`InputEventJoypadButton<class_InputEventJoypadButton>`, :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`, :ref:`InputEventMIDI<class_InputEventMIDI>`, :ref:`InputEventShortcut<class_InputEventShortcut>`
+**Được kế thừa bởi:** :ref:`InputEventAction<class_InputEventAction>`, :ref:`InputEventFromWindow<class_InputEventFromWindow>`, :ref:`InputEventJoypadButton<class_InputEventJoypadButton>`, :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`, :ref:`InputEventMIDI<class_InputEventMIDI>`, :ref:`InputEventShortcut<class_InputEventShortcut>`
 
-Abstract base class for input events.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Abstract base class of all types of input events. See :ref:`Node._input()<class_Node_private_method__input>`.
+Lớp cơ sở trừu tượng cho các sự kiện input.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở trừu tượng của tất cả các loại sự kiện input. Xem :ref:`Node._input()<class_Node_private_method__input>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using InputEvent <../tutorials/inputs/inputevent>`
+- :doc:`Sử dụng InputEvent <../tutorials/inputs/inputevent>`
 
-- :doc:`Viewport and canvas transforms <../tutorials/2d/2d_transforms>`
+- :doc:`Biến đổi viewport và canvas <../tutorials/2d/2d_transforms>`
 
-- `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
+- `Bản demo 2D Dodge The Creeps <https://godotengine.org/asset-library/asset/2712>`__
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản demo Voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,8 +50,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -90,8 +90,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_InputEvent_constant_DEVICE_ID_EMULATION:
 
@@ -99,7 +99,7 @@ Constants
 
 **DEVICE_ID_EMULATION** = ``-1`` :ref:`🔗<class_InputEvent_constant_DEVICE_ID_EMULATION>`
 
-Device ID used for emulated mouse input from a touchscreen, or for emulated touch input from a mouse. This can be used to distinguish emulated mouse input from physical mouse input, or emulated touch input from physical touch input.
+ID thiết bị được sử dụng cho đầu vào chuột mô phỏng từ màn hình cảm ứng hoặc cho đầu vào cảm ứng mô phỏng từ chuột. Có thể sử dụng ID này để phân biệt đầu vào chuột mô phỏng với đầu vào chuột vật lý hoặc đầu vào cảm ứng mô phỏng với đầu vào cảm ứng vật lý.
 
 .. _class_InputEvent_constant_DEVICE_ID_KEYBOARD:
 
@@ -107,7 +107,7 @@ Device ID used for emulated mouse input from a touchscreen, or for emulated touc
 
 **DEVICE_ID_KEYBOARD** = ``16`` :ref:`🔗<class_InputEvent_constant_DEVICE_ID_KEYBOARD>`
 
-Device ID used for input from a keyboard. This can be used to distinguish keyboard input events from joypad input events.
+ID thiết bị được sử dụng cho dữ liệu đầu vào từ bàn phím. Có thể dùng ID này để phân biệt các sự kiện đầu vào từ bàn phím với các sự kiện đầu vào từ joypad.
 
 .. _class_InputEvent_constant_DEVICE_ID_MOUSE:
 
@@ -115,7 +115,7 @@ Device ID used for input from a keyboard. This can be used to distinguish keyboa
 
 **DEVICE_ID_MOUSE** = ``32`` :ref:`🔗<class_InputEvent_constant_DEVICE_ID_MOUSE>`
 
-Device ID used for input from a mouse. This can be used to distinguish mouse input events from joypad input events.
+ID thiết bị được sử dụng cho dữ liệu đầu vào từ chuột. Có thể dùng ID này để phân biệt các sự kiện đầu vào từ chuột với các sự kiện đầu vào từ joypad.
 
 .. rst-class:: classref-section-separator
 
@@ -123,8 +123,8 @@ Device ID used for input from a mouse. This can be used to distinguish mouse inp
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_InputEvent_property_device:
 
@@ -137,9 +137,9 @@ Property Descriptions
 - |void| **set_device**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_device**\ (\ )
 
-The event's device ID.
+ID thiết bị của sự kiện.
 
-\ **Note:** :ref:`device<class_InputEvent_property_device>` can be negative for special use cases that don't refer to devices physically present on the system. See :ref:`DEVICE_ID_EMULATION<class_InputEvent_constant_DEVICE_ID_EMULATION>`.
+\ **Lưu ý:** :ref:`device<class_InputEvent_property_device>` có thể là số âm trong các trường hợp đặc biệt không đề cập đến những thiết bị hiện diện thực tế trên hệ thống. Xem :ref:`DEVICE_ID_EMULATION<class_InputEvent_constant_DEVICE_ID_EMULATION>`.
 
 .. rst-class:: classref-section-separator
 
@@ -147,8 +147,8 @@ The event's device ID.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_InputEvent_method_accumulate:
 
@@ -156,9 +156,9 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **accumulate**\ (\ with_event\: :ref:`InputEvent<class_InputEvent>`\ ) :ref:`🔗<class_InputEvent_method_accumulate>`
 
-Returns ``true`` if the given input event and this input event can be added together (only for events of type :ref:`InputEventMouseMotion<class_InputEventMouseMotion>`).
+Trả về ``true`` nếu sự kiện đầu vào đã cho và sự kiện đầu vào này có thể được kết hợp với nhau (chỉ áp dụng cho các sự kiện thuộc loại :ref:`InputEventMouseMotion<class_InputEventMouseMotion>`).
 
-The given input event's position, global position and speed will be copied. The resulting ``relative`` is a sum of both events. Both events' modifiers have to be identical.
+Vị trí, vị trí toàn cục và tốc độ của sự kiện đầu vào được cung cấp sẽ được sao chép. ``relative`` kết quả là tổng của cả hai sự kiện. Modifier của cả hai sự kiện phải giống hệt nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ The given input event's position, global position and speed will be copied. The 
 
 :ref:`String<class_String>` **as_text**\ (\ ) |const| :ref:`🔗<class_InputEvent_method_as_text>`
 
-Returns a :ref:`String<class_String>` representation of the event.
+Trả về biểu diễn :ref:`String<class_String>` của sự kiện.
 
 .. rst-class:: classref-item-separator
 
@@ -182,9 +182,9 @@ Returns a :ref:`String<class_String>` representation of the event.
 
 :ref:`float<class_float>` **get_action_strength**\ (\ action\: :ref:`StringName<class_StringName>`, exact_match\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_InputEvent_method_get_action_strength>`
 
-Returns a value between 0.0 and 1.0 depending on the given actions' state. Useful for getting the value of events of type :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
+Trả về một giá trị từ 0.0 đến 1.0 tùy thuộc vào trạng thái của các action đã cho. Hữu ích để lấy giá trị của các sự kiện thuộc loại :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
 
-If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:`InputEventKey<class_InputEventKey>` and :ref:`InputEventMouseButton<class_InputEventMouseButton>` events, and the direction for :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` events.
+Nếu ``exact_match`` là ``false``, nó sẽ bỏ qua các modifier đầu vào bổ sung đối với các sự kiện :ref:`InputEventKey<class_InputEventKey>` và :ref:`InputEventMouseButton<class_InputEventMouseButton>`, cũng như hướng đối với các sự kiện :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -196,9 +196,9 @@ If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:
 
 :ref:`bool<class_bool>` **is_action**\ (\ action\: :ref:`StringName<class_StringName>`, exact_match\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_InputEvent_method_is_action>`
 
-Returns ``true`` if this input event matches a pre-defined action of any type.
+Trả về ``true`` nếu sự kiện đầu vào này khớp với một action được xác định trước thuộc bất kỳ loại nào.
 
-If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:`InputEventKey<class_InputEventKey>` and :ref:`InputEventMouseButton<class_InputEventMouseButton>` events, and the direction for :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` events.
+Nếu ``exact_match`` là ``false``, nó sẽ bỏ qua các modifier đầu vào bổ sung đối với các sự kiện :ref:`InputEventKey<class_InputEventKey>` và :ref:`InputEventMouseButton<class_InputEventMouseButton>`, cũng như hướng đối với các sự kiện :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -210,11 +210,11 @@ If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:
 
 :ref:`bool<class_bool>` **is_action_pressed**\ (\ action\: :ref:`StringName<class_StringName>`, allow_echo\: :ref:`bool<class_bool>` = false, exact_match\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_InputEvent_method_is_action_pressed>`
 
-Returns ``true`` if the given action matches this event and is being pressed (and is not an echo event for :ref:`InputEventKey<class_InputEventKey>` events, unless ``allow_echo`` is ``true``). Not relevant for events of type :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` or :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
+Trả về ``true`` nếu action đã cho khớp với sự kiện này và đang được nhấn (không phải là sự kiện echo đối với các sự kiện :ref:`InputEventKey<class_InputEventKey>`, trừ khi ``allow_echo`` là ``true``). Không áp dụng cho các sự kiện thuộc loại :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` hoặc :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
 
-If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:`InputEventKey<class_InputEventKey>` and :ref:`InputEventMouseButton<class_InputEventMouseButton>` events, and the direction for :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` events.
+Nếu ``exact_match`` là ``false``, nó sẽ bỏ qua các modifier đầu vào bổ sung đối với các sự kiện :ref:`InputEventKey<class_InputEventKey>` và :ref:`InputEventMouseButton<class_InputEventMouseButton>`, cũng như hướng đối với các sự kiện :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
 
-\ **Note:** Due to keyboard ghosting, :ref:`is_action_pressed()<class_InputEvent_method_is_action_pressed>` may return ``false`` even if one of the action's keys is pressed. See `Input examples <../tutorials/inputs/input_examples.html#keyboard-events>`__ in the documentation for more information.
+\ **Lưu ý:** Do hiện tượng ghosting của bàn phím, :ref:`is_action_pressed()<class_InputEvent_method_is_action_pressed>` có thể trả về ``false`` ngay cả khi một trong các phím của action được nhấn. Xem `Các ví dụ về đầu vào <../tutorials/inputs/input_examples.html#keyboard-events>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -226,9 +226,9 @@ If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:
 
 :ref:`bool<class_bool>` **is_action_released**\ (\ action\: :ref:`StringName<class_StringName>`, exact_match\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_InputEvent_method_is_action_released>`
 
-Returns ``true`` if the given action matches this event and is released (i.e. not pressed). Not relevant for events of type :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` or :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
+Trả về ``true`` nếu action đã cho khớp với event này và được nhả (tức là không được nhấn). Không áp dụng cho các event thuộc kiểu :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` hoặc :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
 
-If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:`InputEventKey<class_InputEventKey>` and :ref:`InputEventMouseButton<class_InputEventMouseButton>` events, and the direction for :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` events.
+Nếu ``exact_match`` là ``false``, nó sẽ bỏ qua các modifier đầu vào bổ sung đối với các sự kiện :ref:`InputEventKey<class_InputEventKey>` và :ref:`InputEventMouseButton<class_InputEventMouseButton>`, cũng như hướng đối với các sự kiện :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
 
 .. rst-class:: classref-item-separator
 
@@ -240,7 +240,7 @@ If ``exact_match`` is ``false``, it ignores additional input modifiers for :ref:
 
 :ref:`bool<class_bool>` **is_action_type**\ (\ ) |const| :ref:`🔗<class_InputEvent_method_is_action_type>`
 
-Returns ``true`` if this input event's type is one that can be assigned to an input action: :ref:`InputEventKey<class_InputEventKey>`, :ref:`InputEventMouseButton<class_InputEventMouseButton>`, :ref:`InputEventJoypadButton<class_InputEventJoypadButton>`, :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`, :ref:`InputEventAction<class_InputEventAction>`. Returns ``false`` for all other input event types.
+Trả về ``true`` nếu kiểu của input event này là kiểu có thể được gán cho một input action: :ref:`InputEventKey<class_InputEventKey>`, :ref:`InputEventMouseButton<class_InputEventMouseButton>`, :ref:`InputEventJoypadButton<class_InputEventJoypadButton>`, :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`, :ref:`InputEventAction<class_InputEventAction>`. Trả về ``false`` cho tất cả các kiểu input event khác.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Returns ``true`` if this input event's type is one that can be assigned to an in
 
 :ref:`bool<class_bool>` **is_canceled**\ (\ ) |const| :ref:`🔗<class_InputEvent_method_is_canceled>`
 
-Returns ``true`` if this input event has been canceled.
+Trả về ``true`` nếu input event này đã bị hủy.
 
 .. rst-class:: classref-item-separator
 
@@ -264,9 +264,9 @@ Returns ``true`` if this input event has been canceled.
 
 :ref:`bool<class_bool>` **is_echo**\ (\ ) |const| :ref:`🔗<class_InputEvent_method_is_echo>`
 
-Returns ``true`` if this input event is an echo event (only for events of type :ref:`InputEventKey<class_InputEventKey>`). An echo event is a repeated key event sent when the user is holding down the key. Any other event type returns ``false``.
+Trả về ``true`` nếu input event này là một echo event (chỉ áp dụng cho các event thuộc kiểu :ref:`InputEventKey<class_InputEventKey>`). Echo event là một key event lặp lại được gửi khi người dùng đang giữ phím. Mọi kiểu event khác đều trả về ``false``.
 
-\ **Note:** The rate at which echo events are sent is typically around 20 events per second (after holding down the key for roughly half a second). However, the key repeat delay/speed can be changed by the user or disabled entirely in the operating system settings. To ensure your project works correctly on all configurations, do not assume the user has a specific key repeat configuration in your project's behavior.
+\ **Lưu ý:** Tốc độ gửi các sự kiện echo thường vào khoảng 20 sự kiện mỗi giây (sau khi giữ phím khoảng nửa giây). Tuy nhiên, người dùng có thể thay đổi thời gian trễ/tốc độ lặp phím hoặc tắt hoàn toàn tính năng này trong phần cài đặt hệ điều hành. Để đảm bảo project của bạn hoạt động chính xác trên mọi cấu hình, đừng giả định người dùng có một cấu hình lặp phím cụ thể trong hành vi của project.
 
 .. rst-class:: classref-item-separator
 
@@ -278,11 +278,11 @@ Returns ``true`` if this input event is an echo event (only for events of type :
 
 :ref:`bool<class_bool>` **is_match**\ (\ event\: :ref:`InputEvent<class_InputEvent>`, exact_match\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_InputEvent_method_is_match>`
 
-Returns ``true`` if the specified ``event`` matches this event. Only valid for action events, which include key (:ref:`InputEventKey<class_InputEventKey>`), button (:ref:`InputEventMouseButton<class_InputEventMouseButton>` or :ref:`InputEventJoypadButton<class_InputEventJoypadButton>`), axis :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`, and action (:ref:`InputEventAction<class_InputEventAction>`) events.
+Trả về ``true`` nếu ``event`` được chỉ định khớp với sự kiện này. Chỉ hợp lệ đối với các sự kiện action, bao gồm các sự kiện key (:ref:`InputEventKey<class_InputEventKey>`), button (:ref:`InputEventMouseButton<class_InputEventMouseButton>` hoặc :ref:`InputEventJoypadButton<class_InputEventJoypadButton>`), axis :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` và action (:ref:`InputEventAction<class_InputEventAction>`).
 
-If ``exact_match`` is ``false``, the check ignores additional input modifiers for :ref:`InputEventKey<class_InputEventKey>` and :ref:`InputEventMouseButton<class_InputEventMouseButton>` events, and the direction for :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>` events.
+Nếu ``exact_match`` là ``false``, phép kiểm tra sẽ bỏ qua các input modifier bổ sung đối với các sự kiện :ref:`InputEventKey<class_InputEventKey>` và :ref:`InputEventMouseButton<class_InputEventMouseButton>`, cũng như hướng đối với các sự kiện :ref:`InputEventJoypadMotion<class_InputEventJoypadMotion>`.
 
-\ **Note:** This method only considers the event configuration (such as the keyboard key or the joypad axis), not state information like :ref:`is_pressed()<class_InputEvent_method_is_pressed>`, :ref:`is_released()<class_InputEvent_method_is_released>`, :ref:`is_echo()<class_InputEvent_method_is_echo>`, or :ref:`is_canceled()<class_InputEvent_method_is_canceled>`.
+\ **Lưu ý:** Phương thức này chỉ xét cấu hình của sự kiện (chẳng hạn như phím bàn phím hoặc trục joypad), không xét thông tin trạng thái như :ref:`is_pressed()<class_InputEvent_method_is_pressed>`, :ref:`is_released()<class_InputEvent_method_is_released>`, :ref:`is_echo()<class_InputEvent_method_is_echo>` hoặc :ref:`is_canceled()<class_InputEvent_method_is_canceled>`.
 
 .. rst-class:: classref-item-separator
 
@@ -294,9 +294,9 @@ If ``exact_match`` is ``false``, the check ignores additional input modifiers fo
 
 :ref:`bool<class_bool>` **is_pressed**\ (\ ) |const| :ref:`🔗<class_InputEvent_method_is_pressed>`
 
-Returns ``true`` if this input event is pressed. Not relevant for events of type :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` or :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
+Trả về ``true`` nếu sự kiện input này được nhấn. Không áp dụng cho các sự kiện có kiểu :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` hoặc :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
 
-\ **Note:** Due to keyboard ghosting, :ref:`is_pressed()<class_InputEvent_method_is_pressed>` may return ``false`` even if one of the action's keys is pressed. See `Input examples <../tutorials/inputs/input_examples.html#keyboard-events>`__ in the documentation for more information.
+\ **Lưu ý:** Do hiện tượng ghosting của bàn phím, :ref:`is_pressed()<class_InputEvent_method_is_pressed>` có thể trả về ``false`` ngay cả khi một trong các phím của action được nhấn. Xem `Ví dụ về input <../tutorials/inputs/input_examples.html#keyboard-events>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -308,7 +308,7 @@ Returns ``true`` if this input event is pressed. Not relevant for events of type
 
 :ref:`bool<class_bool>` **is_released**\ (\ ) |const| :ref:`🔗<class_InputEvent_method_is_released>`
 
-Returns ``true`` if this input event is released. Not relevant for events of type :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` or :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
+Trả về ``true`` nếu sự kiện input này được nhả. Không áp dụng cho các sự kiện có kiểu :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` hoặc :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`.
 
 .. rst-class:: classref-item-separator
 
@@ -320,14 +320,14 @@ Returns ``true`` if this input event is released. Not relevant for events of typ
 
 :ref:`InputEvent<class_InputEvent>` **xformed_by**\ (\ xform\: :ref:`Transform2D<class_Transform2D>`, local_ofs\: :ref:`Vector2<class_Vector2>` = Vector2(0, 0)\ ) |const| :ref:`🔗<class_InputEvent_method_xformed_by>`
 
-Returns a copy of the given input event which has been offset by ``local_ofs`` and transformed by ``xform``. Relevant for events of type :ref:`InputEventMouseButton<class_InputEventMouseButton>`, :ref:`InputEventMouseMotion<class_InputEventMouseMotion>`, :ref:`InputEventScreenTouch<class_InputEventScreenTouch>`, :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`, :ref:`InputEventMagnifyGesture<class_InputEventMagnifyGesture>` and :ref:`InputEventPanGesture<class_InputEventPanGesture>`.
+Trả về một bản sao của input event đã cho, được offset bởi ``local_ofs`` và biến đổi bởi ``xform``. Áp dụng cho các event thuộc kiểu :ref:`InputEventMouseButton<class_InputEventMouseButton>`, :ref:`InputEventMouseMotion<class_InputEventMouseMotion>`, :ref:`InputEventScreenTouch<class_InputEventScreenTouch>`, :ref:`InputEventScreenDrag<class_InputEventScreenDrag>`, :ref:`InputEventMagnifyGesture<class_InputEventMagnifyGesture>` và :ref:`InputEventPanGesture<class_InputEventPanGesture>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,20 +10,20 @@
 OggPacketSequence
 =================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A sequence of Ogg packets.
+Một chuỗi các gói Ogg.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A sequence of Ogg packets.
+Một chuỗi các gói Ogg.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -39,8 +39,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OggPacketSequence_property_granule_positions:
 
@@ -69,9 +69,9 @@ Property Descriptions
 - |void| **set_packet_granule_positions**\ (\ value\: :ref:`PackedInt64Array<class_PackedInt64Array>`\ )
 - :ref:`PackedInt64Array<class_PackedInt64Array>` **get_packet_granule_positions**\ (\ )
 
-Contains the granule positions for each page in this packet sequence.
+Chứa các vị trí granule cho từng trang trong chuỗi packet này.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt64Array<class_PackedInt64Array>` for more details.
+**Lưu ý:** Mảng được trả về là *được sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt64Array<class_PackedInt64Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -88,7 +88,7 @@ Contains the granule positions for each page in this packet sequence.
 - |void| **set_packet_data**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`Array<class_Array>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`Array<class_Array>`\] **get_packet_data**\ (\ )
 
-Contains the raw packets that make up this OggPacketSequence.
+Chứa các packet thô tạo nên OggPacketSequence này.
 
 .. rst-class:: classref-item-separator
 
@@ -105,7 +105,7 @@ Contains the raw packets that make up this OggPacketSequence.
 - |void| **set_sampling_rate**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sampling_rate**\ (\ )
 
-Holds sample rate information about this sequence. Must be set by another class that actually understands the codec.
+Lưu thông tin về sample rate của chuỗi này. Phải được một class khác thực sự hiểu codec thiết lập.
 
 .. rst-class:: classref-section-separator
 
@@ -113,8 +113,8 @@ Holds sample rate information about this sequence. Must be set by another class 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OggPacketSequence_method_get_length:
 
@@ -122,14 +122,14 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_length**\ (\ ) |const| :ref:`🔗<class_OggPacketSequence_method_get_length>`
 
-The length of this stream, in seconds.
+Độ dài của stream này, tính bằng giây.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

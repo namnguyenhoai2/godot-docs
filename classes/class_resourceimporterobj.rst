@@ -10,30 +10,30 @@
 ResourceImporterOBJ
 ===================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports an OBJ 3D model as an independent :ref:`Mesh<class_Mesh>` or scene.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Unlike :ref:`ResourceImporterScene<class_ResourceImporterScene>`, **ResourceImporterOBJ** will import a single :ref:`Mesh<class_Mesh>` resource by default instead of importing a :ref:`PackedScene<class_PackedScene>`. This makes it easier to use the :ref:`Mesh<class_Mesh>` resource in nodes that expect direct :ref:`Mesh<class_Mesh>` resources, such as :ref:`GridMap<class_GridMap>`, :ref:`GPUParticles3D<class_GPUParticles3D>` or :ref:`CPUParticles3D<class_CPUParticles3D>`. Note that it is still possible to save mesh resources from 3D scenes using the **Advanced Import Settings** dialog, regardless of the source format.
-
-See also :ref:`ResourceImporterScene<class_ResourceImporterScene>`, which is used for more advanced 3D formats such as glTF.
+Nhập một model 3D OBJ dưới dạng :ref:`Mesh<class_Mesh>` hoặc scene độc lập.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Không giống :ref:`ResourceImporterScene<class_ResourceImporterScene>`, **ResourceImporterOBJ** mặc định sẽ nhập một resource :ref:`Mesh<class_Mesh>` duy nhất thay vì nhập một :ref:`PackedScene<class_PackedScene>`. Điều này giúp sử dụng resource :ref:`Mesh<class_Mesh>` dễ dàng hơn trong các node yêu cầu resource :ref:`Mesh<class_Mesh>` trực tiếp, chẳng hạn như :ref:`GridMap<class_GridMap>`, :ref:`GPUParticles3D<class_GPUParticles3D>` hoặc :ref:`CPUParticles3D<class_CPUParticles3D>`. Lưu ý rằng bạn vẫn có thể lưu các resource mesh từ scene 3D bằng hộp thoại **Advanced Import Settings**, bất kể định dạng nguồn là gì.
+
+Xem thêm :ref:`ResourceImporterScene<class_ResourceImporterScene>`, được sử dụng cho các định dạng 3D nâng cao hơn như glTF.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing 3D scenes <../tutorials/assets_pipeline/importing_3d_scenes/index>`
+- :doc:`Nhập scene 3D <../tutorials/assets_pipeline/importing_3d_scenes/index>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -62,8 +62,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterOBJ_property_force_disable_mesh_compression:
 
@@ -71,7 +71,7 @@ Property Descriptions
 
 :ref:`bool<class_bool>` **force_disable_mesh_compression** = ``false`` :ref:`🔗<class_ResourceImporterOBJ_property_force_disable_mesh_compression>`
 
-If ``true``, mesh compression will not be used. Consider enabling if you notice blocky artifacts in your mesh normals or UVs, or if you have meshes that are larger than a few thousand meters in each direction.
+Nếu ``true``, tính năng nén mesh sẽ không được sử dụng. Hãy cân nhắc bật tính năng này nếu bạn nhận thấy các hiện tượng khối trong normal hoặc UV của mesh, hoặc nếu bạn có các mesh lớn hơn vài nghìn mét theo mỗi chiều.
 
 .. rst-class:: classref-item-separator
 
@@ -83,7 +83,7 @@ If ``true``, mesh compression will not be used. Consider enabling if you notice 
 
 :ref:`bool<class_bool>` **generate_lightmap_uv2** = ``false`` :ref:`🔗<class_ResourceImporterOBJ_property_generate_lightmap_uv2>`
 
-If ``true``, generates UV2 on import for :ref:`LightmapGI<class_LightmapGI>` baking.
+Nếu ``true``, tạo UV2 khi nhập để thực hiện việc bake :ref:`LightmapGI<class_LightmapGI>`.
 
 .. rst-class:: classref-item-separator
 
@@ -95,9 +95,9 @@ If ``true``, generates UV2 on import for :ref:`LightmapGI<class_LightmapGI>` bak
 
 :ref:`float<class_float>` **generate_lightmap_uv2_texel_size** = ``0.2`` :ref:`🔗<class_ResourceImporterOBJ_property_generate_lightmap_uv2_texel_size>`
 
-Controls the size of each texel on the baked lightmap. A smaller value results in more precise lightmaps, at the cost of larger lightmap sizes and longer bake times.
+Kiểm soát kích thước của mỗi texel trên lightmap đã bake. Giá trị nhỏ hơn tạo ra lightmap chính xác hơn, nhưng đổi lại kích thước lightmap lớn hơn và thời gian bake lâu hơn.
 
-\ **Note:** Only effective if :ref:`generate_lightmap_uv2<class_ResourceImporterOBJ_property_generate_lightmap_uv2>` is ``true``.
+\ **Lưu ý:** Chỉ có hiệu lực nếu :ref:`generate_lightmap_uv2<class_ResourceImporterOBJ_property_generate_lightmap_uv2>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -109,7 +109,7 @@ Controls the size of each texel on the baked lightmap. A smaller value results i
 
 :ref:`bool<class_bool>` **generate_lods** = ``true`` :ref:`🔗<class_ResourceImporterOBJ_property_generate_lods>`
 
-If ``true``, generates lower detail variants of the mesh which will be displayed in the distance to improve rendering performance. Not all meshes benefit from LOD, especially if they are never rendered from far away. Disabling this can reduce output file size and speed up importing. See `Mesh level of detail (LOD) <../tutorials/3d/mesh_lod.html#doc-mesh-lod>`__ for more information.
+Nếu ``true``, tạo các biến thể mesh có mức độ chi tiết thấp hơn, được hiển thị ở khoảng cách xa để cải thiện hiệu năng rendering. Không phải mesh nào cũng được hưởng lợi từ LOD, đặc biệt nếu chúng không bao giờ được render từ xa. Việc tắt tùy chọn này có thể giảm kích thước file đầu ra và tăng tốc quá trình nhập. Xem `Mesh level of detail (LOD) <../tutorials/3d/mesh_lod.html#doc-mesh-lod>`__ để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -121,7 +121,7 @@ If ``true``, generates lower detail variants of the mesh which will be displayed
 
 :ref:`bool<class_bool>` **generate_shadow_mesh** = ``true`` :ref:`🔗<class_ResourceImporterOBJ_property_generate_shadow_mesh>`
 
-If ``true``, enables the generation of shadow meshes on import. This optimizes shadow rendering without reducing quality by welding vertices together when possible. This in turn reduces the memory bandwidth required to render shadows. Shadow mesh generation currently doesn't support using a lower detail level than the source mesh (but shadow rendering will make use of LODs when relevant).
+Nếu ``true``, bật việc tạo shadow mesh khi nhập. Tùy chọn này tối ưu hóa việc render shadow mà không làm giảm chất lượng bằng cách gộp các vertex khi có thể. Nhờ đó, băng thông bộ nhớ cần thiết để render shadow cũng giảm xuống. Hiện tại, việc tạo shadow mesh không hỗ trợ sử dụng mức độ chi tiết thấp hơn mesh nguồn (nhưng việc render shadow sẽ sử dụng các LOD khi phù hợp).
 
 .. rst-class:: classref-item-separator
 
@@ -133,9 +133,9 @@ If ``true``, enables the generation of shadow meshes on import. This optimizes s
 
 :ref:`bool<class_bool>` **generate_tangents** = ``true`` :ref:`🔗<class_ResourceImporterOBJ_property_generate_tangents>`
 
-If ``true``, generate vertex tangents using `Mikktspace <http://www.mikktspace.com/>`__ if the source mesh doesn't have tangent data. When possible, it's recommended to let the 3D modeling software generate tangents on export instead of relying on this option. Tangents are required for correct display of normal and height maps, along with any material/shader features that require tangents.
+Nếu ``true``, tạo tangent cho vertex bằng `Mikktspace <http://www.mikktspace.com/>`__ nếu mesh nguồn không có dữ liệu tangent. Khi có thể, bạn nên để phần mềm tạo model 3D tạo tangent khi export thay vì phụ thuộc vào tùy chọn này. Tangent là thành phần cần thiết để hiển thị chính xác normal map và height map, cũng như mọi tính năng material/shader yêu cầu tangent.
 
-If you don't need material features that require tangents, disabling this can reduce output file size and speed up importing if the source 3D file doesn't contain tangents.
+Nếu bạn không cần các tính năng material yêu cầu tangent, việc tắt tùy chọn này có thể giảm kích thước file đầu ra và tăng tốc quá trình nhập nếu file 3D nguồn không chứa tangent.
 
 .. rst-class:: classref-item-separator
 
@@ -147,7 +147,7 @@ If you don't need material features that require tangents, disabling this can re
 
 :ref:`Vector3<class_Vector3>` **offset_mesh** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_ResourceImporterOBJ_property_offset_mesh>`
 
-Offsets the mesh's data by the specified value. This can be used to work around misaligned meshes without having to modify the source file.
+Dịch chuyển dữ liệu của mesh theo giá trị được chỉ định. Có thể dùng tùy chọn này để khắc phục các mesh bị lệch mà không cần chỉnh sửa file nguồn.
 
 .. rst-class:: classref-item-separator
 
@@ -159,14 +159,14 @@ Offsets the mesh's data by the specified value. This can be used to work around 
 
 :ref:`Vector3<class_Vector3>` **scale_mesh** = ``Vector3(1, 1, 1)`` :ref:`🔗<class_ResourceImporterOBJ_property_scale_mesh>`
 
-Scales the mesh's data by the specified value. This can be used to work around misscaled meshes without having to modify the source file.
+Thu phóng dữ liệu của mesh theo giá trị được chỉ định. Có thể dùng tùy chọn này để khắc phục các mesh bị sai tỷ lệ mà không cần chỉnh sửa file nguồn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng argument sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

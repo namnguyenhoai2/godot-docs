@@ -10,68 +10,68 @@
 AnimationNodeTransition
 =======================
 
-**Inherits:** :ref:`AnimationNodeSync<class_AnimationNodeSync>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AnimationNodeSync<class_AnimationNodeSync>` **<** :ref:`AnimationNode<class_AnimationNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A transition within an :ref:`AnimationTree<class_AnimationTree>` connecting two :ref:`AnimationNode<class_AnimationNode>`\ s.
+Một chuyển tiếp trong :ref:`AnimationTree<class_AnimationTree>` kết nối hai :ref:`AnimationNode<class_AnimationNode>`\ s.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Simple state machine for cases which don't require a more advanced :ref:`AnimationNodeStateMachine<class_AnimationNodeStateMachine>`. Animations can be connected to the inputs and transition times can be specified.
+Máy trạng thái đơn giản cho những trường hợp không yêu cầu một :ref:`AnimationNodeStateMachine<class_AnimationNodeStateMachine>` nâng cao hơn. Có thể kết nối các animation với các đầu vào và chỉ định thời gian chuyển tiếp.
 
-After setting the request and changing the animation playback, the transition node automatically clears the request on the next process frame by setting its ``transition_request`` value to empty.
+Sau khi thiết lập request và thay đổi việc phát animation, node chuyển tiếp sẽ tự động xóa request trong frame process tiếp theo bằng cách đặt giá trị ``transition_request`` thành rỗng.
 
-\ **Note:** When using a cross-fade, ``current_state`` and ``current_index`` change to the next state immediately after the cross-fade begins.
+\ **Lưu ý:** Khi sử dụng cross-fade, ``current_state`` và ``current_index`` sẽ chuyển sang state tiếp theo ngay sau khi cross-fade bắt đầu.
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Play child animation connected to "state_2" port.
+    # Phát animation con được kết nối với cổng "state_2".
     animation_tree.set("parameters/Transition/transition_request", "state_2")
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/Transition/transition_request"] = "state_2"
 
-    # Get current state name (read-only).
+    # Lấy tên trạng thái hiện tại (chỉ đọc).
     animation_tree.get("parameters/Transition/current_state")
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/Transition/current_state"]
 
-    # Get current state index (read-only).
+    # Lấy chỉ mục trạng thái hiện tại (chỉ đọc).
     animation_tree.get("parameters/Transition/current_index")
-    # Alternative syntax (same result as above).
+    # Cú pháp thay thế (cho cùng kết quả như trên).
     animation_tree["parameters/Transition/current_index"]
 
  .. code-tab:: csharp
 
-    // Play child animation connected to "state_2" port.
+    // Phát animation con được kết nối với cổng "state_2".
     animationTree.Set("parameters/Transition/transition_request", "state_2");
 
-    // Get current state name (read-only).
+    // Lấy tên trạng thái hiện tại (chỉ đọc).
     animationTree.Get("parameters/Transition/current_state");
 
-    // Get current state index (read-only).
+    // Lấy chỉ mục trạng thái hiện tại (chỉ đọc).
     animationTree.Get("parameters/Transition/current_index");
 
 
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using AnimationTree <../tutorials/animation/animation_tree>`
+- :doc:`Sử dụng AnimationTree <../tutorials/animation/animation_tree>`
 
-- `3D Platformer Demo <https://godotengine.org/asset-library/asset/2748>`__
+- `Bản demo game platformer 3D <https://godotengine.org/asset-library/asset/2748>`__
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn người thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -89,8 +89,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -115,8 +115,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AnimationNodeTransition_property_allow_transition_to_self:
 
@@ -129,7 +129,7 @@ Property Descriptions
 - |void| **set_allow_transition_to_self**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_allow_transition_to_self**\ (\ )
 
-If ``true``, allows transition to the self state. When the reset option is enabled in input, the animation is restarted. If ``false``, nothing happens on the transition to the self state.
+Nếu ``true``, cho phép chuyển sang trạng thái self. Khi tùy chọn reset được bật trong input, animation sẽ được khởi động lại. Nếu ``false``, sẽ không có gì xảy ra khi chuyển sang trạng thái self.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ If ``true``, allows transition to the self state. When the reset option is enabl
 - |void| **set_input_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_input_count**\ (\ )
 
-The number of enabled input ports for this animation node.
+Số lượng cổng input được bật cho animation node này.
 
 .. rst-class:: classref-item-separator
 
@@ -156,14 +156,14 @@ The number of enabled input ports for this animation node.
 
 .. rst-class:: classref-property
 
-:ref:`Curve<class_Curve>` **xfade_curve** :ref:`🔗<class_AnimationNodeTransition_property_xfade_curve>`
+:ref:`Curve<class_Curve>` **xfade_curve** :ref:`🔗 <class_AnimationNodeTransition_property_xfade_curve>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_xfade_curve**\ (\ value\: :ref:`Curve<class_Curve>`\ )
 - :ref:`Curve<class_Curve>` **get_xfade_curve**\ (\ )
 
-Determines how cross-fading between animations is eased. If empty, the transition will be linear. Should be a unit :ref:`Curve<class_Curve>`.
+Xác định cách chuyển tiếp giữa các animation được làm mượt. Nếu để trống, quá trình chuyển tiếp sẽ là tuyến tính. Phải là một :ref:`Curve<class_Curve>` đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -180,9 +180,9 @@ Determines how cross-fading between animations is eased. If empty, the transitio
 - |void| **set_xfade_time**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_xfade_time**\ (\ )
 
-Cross-fading time (in seconds) between each animation connected to the inputs.
+Thời gian chuyển tiếp (tính bằng giây) giữa mỗi animation được kết nối với các input.
 
-\ **Note:** **AnimationNodeTransition** transitions the current state immediately after the start of the fading. The precise remaining time can only be inferred from the main animation. When :ref:`AnimationNodeOutput<class_AnimationNodeOutput>` is considered as the most upstream, so the :ref:`xfade_time<class_AnimationNodeTransition_property_xfade_time>` is not scaled depending on the downstream delta. See also :ref:`AnimationNodeOneShot.fadeout_time<class_AnimationNodeOneShot_property_fadeout_time>`.
+\ **Lưu ý:** **AnimationNodeTransition** chuyển trạng thái hiện tại ngay sau khi bắt đầu quá trình chuyển tiếp. Thời gian còn lại chính xác chỉ có thể được suy ra từ animation chính. Khi :ref:`AnimationNodeOutput<class_AnimationNodeOutput>` được xem là ở upstream cao nhất, :ref:`xfade_time<class_AnimationNodeTransition_property_xfade_time>` sẽ không được scale tùy theo delta downstream. Xem thêm :ref:`AnimationNodeOneShot.fadeout_time<class_AnimationNodeOneShot_property_fadeout_time>`.
 
 .. rst-class:: classref-section-separator
 
@@ -190,8 +190,8 @@ Cross-fading time (in seconds) between each animation connected to the inputs.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AnimationNodeTransition_method_is_input_loop_broken_at_end:
 
@@ -199,7 +199,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_input_loop_broken_at_end**\ (\ input\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeTransition_method_is_input_loop_broken_at_end>`
 
-Returns whether the animation breaks the loop at the end of the loop cycle for transition.
+Trả về việc animation có dừng vòng lặp ở cuối chu kỳ vòng lặp khi chuyển tiếp hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -211,7 +211,7 @@ Returns whether the animation breaks the loop at the end of the loop cycle for t
 
 :ref:`bool<class_bool>` **is_input_reset**\ (\ input\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeTransition_method_is_input_reset>`
 
-Returns whether the animation restarts when the animation transitions from the other animation.
+Trả về việc animation có khởi động lại khi animation chuyển tiếp từ animation khác hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -223,7 +223,7 @@ Returns whether the animation restarts when the animation transitions from the o
 
 :ref:`bool<class_bool>` **is_input_set_as_auto_advance**\ (\ input\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AnimationNodeTransition_method_is_input_set_as_auto_advance>`
 
-Returns ``true`` if auto-advance is enabled for the given ``input`` index.
+Trả về ``true`` nếu auto-advance được bật cho chỉ mục ``input`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ Returns ``true`` if auto-advance is enabled for the given ``input`` index.
 
 |void| **set_input_as_auto_advance**\ (\ input\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AnimationNodeTransition_method_set_input_as_auto_advance>`
 
-Enables or disables auto-advance for the given ``input`` index. If enabled, state changes to the next input after playing the animation once. If enabled for the last input state, it loops to the first.
+Bật hoặc tắt auto-advance cho chỉ mục ``input`` đã cho. Nếu được bật, trạng thái sẽ chuyển sang input tiếp theo sau khi phát animation một lần. Nếu được bật cho trạng thái input cuối cùng, trạng thái sẽ quay vòng về trạng thái đầu tiên.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ Enables or disables auto-advance for the given ``input`` index. If enabled, stat
 
 |void| **set_input_break_loop_at_end**\ (\ input\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AnimationNodeTransition_method_set_input_break_loop_at_end>`
 
-If ``true``, breaks the loop at the end of the loop cycle for transition, even if the animation is looping.
+Nếu ``true``, dừng vòng lặp ở cuối chu kỳ vòng lặp khi chuyển tiếp, ngay cả khi animation đang lặp.
 
 .. rst-class:: classref-item-separator
 
@@ -259,14 +259,14 @@ If ``true``, breaks the loop at the end of the loop cycle for transition, even i
 
 |void| **set_input_reset**\ (\ input\: :ref:`int<class_int>`, enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_AnimationNodeTransition_method_set_input_reset>`
 
-If ``true``, the destination animation is restarted when the animation transitions.
+Nếu ``true``, animation đích sẽ được khởi động lại khi animation chuyển tiếp.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

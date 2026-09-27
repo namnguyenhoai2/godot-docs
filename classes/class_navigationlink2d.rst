@@ -10,29 +10,29 @@
 NavigationLink2D
 ================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A link between two positions on :ref:`NavigationRegion2D<class_NavigationRegion2D>`\ s that agents can be routed through.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A link between two positions on :ref:`NavigationRegion2D<class_NavigationRegion2D>`\ s that agents can be routed through. These positions can be on the same :ref:`NavigationRegion2D<class_NavigationRegion2D>` or on two different ones. Links are useful to express navigation methods other than traveling along the surface of the navigation polygon, such as ziplines, teleporters, or gaps that can be jumped across.
+Một liên kết giữa hai vị trí trên :ref:`NavigationRegion2D<class_NavigationRegion2D>`\ s mà các agent có thể được định tuyến qua.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một liên kết giữa hai vị trí trên :ref:`NavigationRegion2D<class_NavigationRegion2D>`\ s mà các agent có thể được định tuyến qua. Các vị trí này có thể nằm trên cùng một :ref:`NavigationRegion2D<class_NavigationRegion2D>` hoặc trên hai :ref:`NavigationRegion2D<class_NavigationRegion2D>` khác nhau. Các liên kết hữu ích để mô tả những phương thức điều hướng khác với việc di chuyển dọc theo bề mặt của đa giác điều hướng, chẳng hạn như đường zipline, máy dịch chuyển tức thời hoặc những khoảng trống có thể nhảy qua.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using NavigationLinks <../tutorials/navigation/navigation_using_navigationlinks>`
+- :doc:`Sử dụng NavigationLinks <../tutorials/navigation/navigation_using_navigationlinks>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -88,8 +88,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_NavigationLink2D_property_bidirectional:
 
@@ -102,7 +102,7 @@ Property Descriptions
 - |void| **set_bidirectional**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_bidirectional**\ (\ )
 
-Whether this link can be traveled in both directions or only from :ref:`start_position<class_NavigationLink2D_property_start_position>` to :ref:`end_position<class_NavigationLink2D_property_end_position>`.
+Liên kết này có thể được di chuyển theo cả hai hướng hay chỉ từ :ref:`start_position<class_NavigationLink2D_property_start_position>` đến :ref:`end_position<class_NavigationLink2D_property_end_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -119,7 +119,7 @@ Whether this link can be traveled in both directions or only from :ref:`start_po
 - |void| **set_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_enabled**\ (\ )
 
-Whether this link is currently active. If ``false``, :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>` will ignore this link.
+Liên kết này hiện có đang hoạt động hay không. Nếu ``false``, :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>` sẽ bỏ qua liên kết này.
 
 .. rst-class:: classref-item-separator
 
@@ -136,11 +136,11 @@ Whether this link is currently active. If ``false``, :ref:`NavigationServer2D.ma
 - |void| **set_end_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_end_position**\ (\ )
 
-Ending position of the link.
+Vị trí kết thúc của liên kết.
 
-This position will search out the nearest polygon in the navigation mesh to attach to.
+Vị trí này sẽ tìm polygon gần nhất trong navigation mesh để gắn vào.
 
-The distance the link will search is controlled by :ref:`NavigationServer2D.map_set_link_connection_radius()<class_NavigationServer2D_method_map_set_link_connection_radius>`.
+Khoảng cách mà liên kết sẽ tìm kiếm được kiểm soát bởi :ref:`NavigationServer2D.map_set_link_connection_radius()<class_NavigationServer2D_method_map_set_link_connection_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ The distance the link will search is controlled by :ref:`NavigationServer2D.map_
 - |void| **set_enter_cost**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_enter_cost**\ (\ )
 
-When pathfinding enters this link from another regions navigation mesh the :ref:`enter_cost<class_NavigationLink2D_property_enter_cost>` value is added to the path distance for determining the shortest path.
+Khi pathfinding đi vào liên kết này từ navigation mesh của một khu vực khác, giá trị :ref:`enter_cost<class_NavigationLink2D_property_enter_cost>` sẽ được cộng vào khoảng cách đường đi để xác định đường đi ngắn nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ When pathfinding enters this link from another regions navigation mesh the :ref:
 - |void| **set_navigation_layers**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_navigation_layers**\ (\ )
 
-A bitfield determining all navigation layers the link belongs to. These navigation layers will be checked when requesting a path with :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>`.
+Một bitfield xác định tất cả các lớp điều hướng mà liên kết thuộc về. Các lớp điều hướng này sẽ được kiểm tra khi yêu cầu một đường đi bằng :ref:`NavigationServer2D.map_get_path()<class_NavigationServer2D_method_map_get_path>`.
 
 .. rst-class:: classref-item-separator
 
@@ -191,11 +191,11 @@ A bitfield determining all navigation layers the link belongs to. These navigati
 - |void| **set_start_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_start_position**\ (\ )
 
-Starting position of the link.
+Vị trí bắt đầu của liên kết.
 
-This position will search out the nearest polygon in the navigation mesh to attach to.
+Vị trí này sẽ tìm polygon gần nhất trong navigation mesh để gắn vào.
 
-The distance the link will search is controlled by :ref:`NavigationServer2D.map_set_link_connection_radius()<class_NavigationServer2D_method_map_set_link_connection_radius>`.
+Khoảng cách mà liên kết sẽ tìm kiếm được kiểm soát bởi :ref:`NavigationServer2D.map_set_link_connection_radius()<class_NavigationServer2D_method_map_set_link_connection_radius>`.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ The distance the link will search is controlled by :ref:`NavigationServer2D.map_
 - |void| **set_travel_cost**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_travel_cost**\ (\ )
 
-When pathfinding moves along the link the traveled distance is multiplied with :ref:`travel_cost<class_NavigationLink2D_property_travel_cost>` for determining the shortest path.
+Khi thuật toán tìm đường di chuyển dọc theo liên kết, khoảng cách đã đi sẽ được nhân với :ref:`travel_cost<class_NavigationLink2D_property_travel_cost>` để xác định đường đi ngắn nhất.
 
 .. rst-class:: classref-section-separator
 
@@ -220,8 +220,8 @@ When pathfinding moves along the link the traveled distance is multiplied with :
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_NavigationLink2D_method_get_global_end_position:
 
@@ -229,7 +229,7 @@ Method Descriptions
 
 :ref:`Vector2<class_Vector2>` **get_global_end_position**\ (\ ) |const| :ref:`🔗<class_NavigationLink2D_method_get_global_end_position>`
 
-Returns the :ref:`end_position<class_NavigationLink2D_property_end_position>` that is relative to the link as a global position.
+Trả về :ref:`end_position<class_NavigationLink2D_property_end_position>` tương đối với liên kết dưới dạng một vị trí toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -241,7 +241,7 @@ Returns the :ref:`end_position<class_NavigationLink2D_property_end_position>` th
 
 :ref:`Vector2<class_Vector2>` **get_global_start_position**\ (\ ) |const| :ref:`🔗<class_NavigationLink2D_method_get_global_start_position>`
 
-Returns the :ref:`start_position<class_NavigationLink2D_property_start_position>` that is relative to the link as a global position.
+Trả về :ref:`start_position<class_NavigationLink2D_property_start_position>` tương đối so với liên kết dưới dạng vị trí toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -253,7 +253,7 @@ Returns the :ref:`start_position<class_NavigationLink2D_property_start_position>
 
 :ref:`bool<class_bool>` **get_navigation_layer_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_NavigationLink2D_method_get_navigation_layer_value>`
 
-Returns whether or not the specified layer of the :ref:`navigation_layers<class_NavigationLink2D_property_navigation_layers>` bitmask is enabled, given a ``layer_number`` between 1 and 32.
+Trả về liệu lớp được chỉ định của bitmask :ref:`navigation_layers<class_NavigationLink2D_property_navigation_layers>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ Returns whether or not the specified layer of the :ref:`navigation_layers<class_
 
 :ref:`RID<class_RID>` **get_navigation_map**\ (\ ) |const| :ref:`🔗<class_NavigationLink2D_method_get_navigation_map>`
 
-Returns the current navigation map :ref:`RID<class_RID>` used by this link.
+Trả về :ref:`RID<class_RID>` của bản đồ điều hướng hiện tại được liên kết này sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -277,7 +277,7 @@ Returns the current navigation map :ref:`RID<class_RID>` used by this link.
 
 :ref:`RID<class_RID>` **get_rid**\ (\ ) |const| :ref:`🔗<class_NavigationLink2D_method_get_rid>`
 
-Returns the :ref:`RID<class_RID>` of this link on the :ref:`NavigationServer2D<class_NavigationServer2D>`.
+Trả về :ref:`RID<class_RID>` của liên kết này trên :ref:`NavigationServer2D<class_NavigationServer2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -289,7 +289,7 @@ Returns the :ref:`RID<class_RID>` of this link on the :ref:`NavigationServer2D<c
 
 |void| **set_global_end_position**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationLink2D_method_set_global_end_position>`
 
-Sets the :ref:`end_position<class_NavigationLink2D_property_end_position>` that is relative to the link from a global ``position``.
+Đặt :ref:`end_position<class_NavigationLink2D_property_end_position>` tương đối so với liên kết từ ``position`` toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ Sets the :ref:`end_position<class_NavigationLink2D_property_end_position>` that 
 
 |void| **set_global_start_position**\ (\ position\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_NavigationLink2D_method_set_global_start_position>`
 
-Sets the :ref:`start_position<class_NavigationLink2D_property_start_position>` that is relative to the link from a global ``position``.
+Đặt :ref:`start_position<class_NavigationLink2D_property_start_position>` tương đối so với liên kết từ ``position`` toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -313,7 +313,7 @@ Sets the :ref:`start_position<class_NavigationLink2D_property_start_position>` t
 
 |void| **set_navigation_layer_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_NavigationLink2D_method_set_navigation_layer_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`navigation_layers<class_NavigationLink2D_property_navigation_layers>` bitmask, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt lớp được chỉ định trong bitmask :ref:`navigation_layers<class_NavigationLink2D_property_navigation_layers>`, với ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -325,14 +325,14 @@ Based on ``value``, enables or disables the specified layer in the :ref:`navigat
 
 |void| **set_navigation_map**\ (\ navigation_map\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_NavigationLink2D_method_set_navigation_map>`
 
-Sets the :ref:`RID<class_RID>` of the navigation map this link should use. By default the link will automatically join the :ref:`World2D<class_World2D>` default navigation map so this function is only required to override the default map.
+Thiết lập :ref:`RID<class_RID>` của bản đồ điều hướng mà liên kết này sẽ sử dụng. Theo mặc định, liên kết sẽ tự động tham gia vào bản đồ điều hướng mặc định :ref:`World2D<class_World2D>`, vì vậy chỉ cần dùng hàm này để ghi đè bản đồ mặc định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

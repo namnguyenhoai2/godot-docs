@@ -10,24 +10,24 @@
 CameraFeed
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A camera feed gives you access to a single physical camera attached to your device.
+Camera feed cho phép bạn truy cập vào một camera vật lý duy nhất được kết nối với thiết bị của bạn.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A camera feed gives you access to a single physical camera attached to your device. When enabled, Godot will start capturing frames from the camera which can then be used. See also :ref:`CameraServer<class_CameraServer>`.
+Camera feed cho phép bạn truy cập vào một camera vật lý duy nhất được kết nối với thiết bị của bạn. Khi được bật, Godot sẽ bắt đầu thu thập các khung hình từ camera để bạn có thể sử dụng. Xem thêm :ref:`CameraServer<class_CameraServer>`.
 
-\ **Note:** Many cameras will return YCbCr images which are split into two textures and need to be combined in a shader. Godot does this automatically for you if you set the environment to show the camera image in the background.
+\ **Lưu ý:** Nhiều camera sẽ trả về hình ảnh YCbCr được tách thành hai texture và cần được kết hợp trong một shader. Godot sẽ tự động thực hiện việc này cho bạn nếu bạn thiết lập môi trường để hiển thị hình ảnh camera ở nền.
 
-\ **Note:** This class is currently only implemented on Linux, Android, macOS, and iOS. On other platforms no **CameraFeed**\ s will be available. To get a **CameraFeed** on iOS, enable :ref:`EditorExportPlatformIOS.modules/camera<class_EditorExportPlatformIOS_property_modules/camera>`.
+\ **Lưu ý:** Hiện tại, class này chỉ được triển khai trên Linux, Android, macOS và iOS. Trên các nền tảng khác, **CameraFeed**\  sẽ không khả dụng. Để lấy **CameraFeed** trên iOS, hãy bật :ref:`EditorExportPlatformIOS.modules/camera <class_EditorExportPlatformIOS_property_modules/camera>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -43,45 +43,45 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`_activate_feed<class_CameraFeed_private_method__activate_feed>`\ (\ ) |virtual|                                                                            |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`_deactivate_feed<class_CameraFeed_private_method__deactivate_feed>`\ (\ ) |virtual|                                                                        |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Array<class_Array>`                         | :ref:`_get_formats<class_CameraFeed_private_method__get_formats>`\ (\ ) |virtual| |const|                                                                        |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`_set_format<class_CameraFeed_private_method__set_format>`\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` | :ref:`get_datatype<class_CameraFeed_method_get_datatype>`\ (\ ) |const|                                                                                          |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`get_id<class_CameraFeed_method_get_id>`\ (\ ) |const|                                                                                                      |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`get_name<class_CameraFeed_method_get_name>`\ (\ ) |const|                                                                                                  |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`FeedPosition<enum_CameraFeed_FeedPosition>` | :ref:`get_position<class_CameraFeed_method_get_position>`\ (\ ) |const|                                                                                          |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`get_texture_tex_id<class_CameraFeed_method_get_texture_tex_id>`\ (\ feed_image_type\: :ref:`FeedImage<enum_CameraServer_FeedImage>`\ )                     |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_external<class_CameraFeed_method_set_external>`\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`\ )                                   |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`set_format<class_CameraFeed_method_set_format>`\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ )                     |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_name<class_CameraFeed_method_set_name>`\ (\ name\: :ref:`String<class_String>`\ )                                                                      |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_position<class_CameraFeed_method_set_position>`\ (\ position\: :ref:`FeedPosition<enum_CameraFeed_FeedPosition>`\ )                                    |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_rgb_image<class_CameraFeed_method_set_rgb_image>`\ (\ rgb_image\: :ref:`Image<class_Image>`\ )                                                         |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_ycbcr_image<class_CameraFeed_method_set_ycbcr_image>`\ (\ ycbcr_image\: :ref:`Image<class_Image>`\ )                                                   |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`set_ycbcr_images<class_CameraFeed_method_set_ycbcr_images>`\ (\ y_image\: :ref:`Image<class_Image>`, cbcr_image\: :ref:`Image<class_Image>`\ )             |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                            | :ref:`_activate_feed<class_CameraFeed_private_method__activate_feed>`\ (\ ) |virtual|                                                                            |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`_deactivate_feed<class_CameraFeed_private_method__deactivate_feed>`\ (\ ) |virtual|                                                                        |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                          | :ref:`_get_formats<class_CameraFeed_private_method__get_formats>`\ (\ ) |virtual| |const|                                                                        |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                            | :ref:`_set_format<class_CameraFeed_private_method__set_format>`\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`FeedDataType <enum_CameraFeed_FeedDataType>` | :ref:`get_datatype<class_CameraFeed_method_get_datatype>`\ (\ ) |const|                                                                                          |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                              | :ref:`get_id<class_CameraFeed_method_get_id>`\ (\ ) |const|                                                                                                      |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                        | :ref:`get_name<class_CameraFeed_method_get_name>`\ (\ ) |const|                                                                                                  |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`FeedPosition <enum_CameraFeed_FeedPosition>` | :ref:`get_position<class_CameraFeed_method_get_position>`\ (\ ) |const|                                                                                          |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                              | :ref:`get_texture_tex_id<class_CameraFeed_method_get_texture_tex_id>`\ (\ feed_image_type\: :ref:`FeedImage <enum_CameraServer_FeedImage>`\ )                    |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_external<class_CameraFeed_method_set_external>`\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`\ )                                   |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                            | :ref:`set_format<class_CameraFeed_method_set_format>`\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ )                     |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_name<class_CameraFeed_method_set_name>`\ (\ name\: :ref:`String<class_String>`\ )                                                                      |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_position<class_CameraFeed_method_set_position>`\ (\ position\: :ref:`FeedPosition <enum_CameraFeed_FeedPosition>`\ )                                   |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_rgb_image<class_CameraFeed_method_set_rgb_image>`\ (\ rgb_image\: :ref:`Image<class_Image>`\ )                                                         |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_ycbcr_image<class_CameraFeed_method_set_ycbcr_image>`\ (\ ycbcr_image\: :ref:`Image<class_Image>`\ )                                                   |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                             | :ref:`set_ycbcr_images<class_CameraFeed_method_set_ycbcr_images>`\ (\ y_image\: :ref:`Image<class_Image>`, cbcr_image\: :ref:`Image<class_Image>`\ )             |
+   +----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -89,8 +89,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_CameraFeed_signal_format_changed:
 
@@ -98,7 +98,7 @@ Signals
 
 **format_changed**\ (\ ) :ref:`🔗<class_CameraFeed_signal_format_changed>`
 
-Emitted when the format has changed.
+Được phát ra khi định dạng thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Emitted when the format has changed.
 
 **frame_changed**\ (\ ) :ref:`🔗<class_CameraFeed_signal_frame_changed>`
 
-Emitted when a new frame is available.
+Được phát ra khi có frame mới.
 
 .. rst-class:: classref-section-separator
 
@@ -118,14 +118,14 @@ Emitted when a new frame is available.
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CameraFeed_FeedDataType:
 
 .. rst-class:: classref-enumeration
 
-enum **FeedDataType**: :ref:`🔗<enum_CameraFeed_FeedDataType>`
+enum **FeedDataType**: :ref:`🔗 <enum_CameraFeed_FeedDataType>`
 
 .. _class_CameraFeed_constant_FEED_NOIMAGE:
 
@@ -133,7 +133,7 @@ enum **FeedDataType**: :ref:`🔗<enum_CameraFeed_FeedDataType>`
 
 :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **FEED_NOIMAGE** = ``0``
 
-No image set for the feed.
+Feed không có image nào.
 
 .. _class_CameraFeed_constant_FEED_RGB:
 
@@ -141,7 +141,7 @@ No image set for the feed.
 
 :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **FEED_RGB** = ``1``
 
-Feed supplies RGB images.
+Feed cung cấp các image RGB.
 
 .. _class_CameraFeed_constant_FEED_YCBCR:
 
@@ -149,7 +149,7 @@ Feed supplies RGB images.
 
 :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **FEED_YCBCR** = ``2``
 
-Feed supplies YCbCr images that need to be converted to RGB.
+Feed cung cấp các image YCbCr cần được chuyển đổi sang RGB.
 
 .. _class_CameraFeed_constant_FEED_YCBCR_SEP:
 
@@ -157,7 +157,7 @@ Feed supplies YCbCr images that need to be converted to RGB.
 
 :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **FEED_YCBCR_SEP** = ``3``
 
-Feed supplies separate Y and CbCr images that need to be combined and converted to RGB.
+Feed cung cấp các image Y và CbCr riêng biệt cần được kết hợp và chuyển đổi sang RGB.
 
 .. _class_CameraFeed_constant_FEED_EXTERNAL:
 
@@ -165,7 +165,7 @@ Feed supplies separate Y and CbCr images that need to be combined and converted 
 
 :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **FEED_EXTERNAL** = ``4``
 
-Feed supplies external image.
+Feed cung cấp hình ảnh bên ngoài.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Feed supplies external image.
 
 .. rst-class:: classref-enumeration
 
-enum **FeedPosition**: :ref:`🔗<enum_CameraFeed_FeedPosition>`
+enum **FeedPosition**: :ref:`🔗 <enum_CameraFeed_FeedPosition>`
 
 .. _class_CameraFeed_constant_FEED_UNSPECIFIED:
 
@@ -183,7 +183,7 @@ enum **FeedPosition**: :ref:`🔗<enum_CameraFeed_FeedPosition>`
 
 :ref:`FeedPosition<enum_CameraFeed_FeedPosition>` **FEED_UNSPECIFIED** = ``0``
 
-Unspecified position.
+Vị trí không được chỉ định.
 
 .. _class_CameraFeed_constant_FEED_FRONT:
 
@@ -191,7 +191,7 @@ Unspecified position.
 
 :ref:`FeedPosition<enum_CameraFeed_FeedPosition>` **FEED_FRONT** = ``1``
 
-Camera is mounted at the front of the device.
+Camera được gắn ở phía trước thiết bị.
 
 .. _class_CameraFeed_constant_FEED_BACK:
 
@@ -199,7 +199,7 @@ Camera is mounted at the front of the device.
 
 :ref:`FeedPosition<enum_CameraFeed_FeedPosition>` **FEED_BACK** = ``2``
 
-Camera is mounted at the back of the device.
+Camera được gắn ở phía sau thiết bị.
 
 .. rst-class:: classref-section-separator
 
@@ -207,8 +207,8 @@ Camera is mounted at the back of the device.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CameraFeed_property_feed_is_active:
 
@@ -221,7 +221,7 @@ Property Descriptions
 - |void| **set_active**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_active**\ (\ )
 
-If ``true``, the feed is active.
+Nếu ``true``, feed đang hoạt động.
 
 .. rst-class:: classref-item-separator
 
@@ -238,7 +238,7 @@ If ``true``, the feed is active.
 - |void| **set_transform**\ (\ value\: :ref:`Transform2D<class_Transform2D>`\ )
 - :ref:`Transform2D<class_Transform2D>` **get_transform**\ (\ )
 
-The transform applied to the camera's image.
+Phép biến đổi được áp dụng cho hình ảnh của camera.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ The transform applied to the camera's image.
 
 - :ref:`Array<class_Array>` **get_formats**\ (\ )
 
-Formats supported by the feed. Each entry is a :ref:`Dictionary<class_Dictionary>` describing format parameters.
+Các định dạng được feed hỗ trợ. Mỗi mục là một :ref:`Dictionary<class_Dictionary>` mô tả các tham số định dạng.
 
 .. rst-class:: classref-section-separator
 
@@ -262,8 +262,8 @@ Formats supported by the feed. Each entry is a :ref:`Dictionary<class_Dictionary
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_CameraFeed_private_method__activate_feed:
 
@@ -271,7 +271,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **_activate_feed**\ (\ ) |virtual| :ref:`🔗<class_CameraFeed_private_method__activate_feed>`
 
-Called when the camera feed is activated.
+Được gọi khi feed của camera được kích hoạt.
 
 .. rst-class:: classref-item-separator
 
@@ -283,7 +283,7 @@ Called when the camera feed is activated.
 
 |void| **_deactivate_feed**\ (\ ) |virtual| :ref:`🔗<class_CameraFeed_private_method__deactivate_feed>`
 
-Called when the camera feed is deactivated.
+Được gọi khi feed của camera bị vô hiệu hóa.
 
 .. rst-class:: classref-item-separator
 
@@ -295,7 +295,7 @@ Called when the camera feed is deactivated.
 
 :ref:`Array<class_Array>` **_get_formats**\ (\ ) |virtual| |const| :ref:`🔗<class_CameraFeed_private_method__get_formats>`
 
-Override this method to define supported formats of the camera feed.
+Ghi đè phương thức này để xác định các định dạng được feed của camera hỗ trợ.
 
 .. rst-class:: classref-item-separator
 
@@ -307,7 +307,7 @@ Override this method to define supported formats of the camera feed.
 
 :ref:`bool<class_bool>` **_set_format**\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| :ref:`🔗<class_CameraFeed_private_method__set_format>`
 
-Override this method to set the format of the camera feed.
+Ghi đè phương thức này để thiết lập định dạng của feed camera.
 
 .. rst-class:: classref-item-separator
 
@@ -319,7 +319,7 @@ Override this method to set the format of the camera feed.
 
 :ref:`FeedDataType<enum_CameraFeed_FeedDataType>` **get_datatype**\ (\ ) |const| :ref:`🔗<class_CameraFeed_method_get_datatype>`
 
-Returns feed image data type.
+Trả về kiểu dữ liệu hình ảnh của feed.
 
 .. rst-class:: classref-item-separator
 
@@ -331,7 +331,7 @@ Returns feed image data type.
 
 :ref:`int<class_int>` **get_id**\ (\ ) |const| :ref:`🔗<class_CameraFeed_method_get_id>`
 
-Returns the unique ID for this feed.
+Trả về ID duy nhất của feed này.
 
 .. rst-class:: classref-item-separator
 
@@ -343,7 +343,7 @@ Returns the unique ID for this feed.
 
 :ref:`String<class_String>` **get_name**\ (\ ) |const| :ref:`🔗<class_CameraFeed_method_get_name>`
 
-Returns the camera's name.
+Trả về tên của camera.
 
 .. rst-class:: classref-item-separator
 
@@ -355,7 +355,7 @@ Returns the camera's name.
 
 :ref:`FeedPosition<enum_CameraFeed_FeedPosition>` **get_position**\ (\ ) |const| :ref:`🔗<class_CameraFeed_method_get_position>`
 
-Returns the position of camera on the device.
+Trả về vị trí của camera trên thiết bị.
 
 .. rst-class:: classref-item-separator
 
@@ -367,7 +367,7 @@ Returns the position of camera on the device.
 
 :ref:`int<class_int>` **get_texture_tex_id**\ (\ feed_image_type\: :ref:`FeedImage<enum_CameraServer_FeedImage>`\ ) :ref:`🔗<class_CameraFeed_method_get_texture_tex_id>`
 
-Returns the texture backend ID (usable by some external libraries that need a handle to a texture to write data).
+Trả về ID của texture backend (có thể được một số thư viện bên ngoài sử dụng khi cần handle đến một texture để ghi dữ liệu).
 
 .. rst-class:: classref-item-separator
 
@@ -379,7 +379,7 @@ Returns the texture backend ID (usable by some external libraries that need a ha
 
 |void| **set_external**\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`\ ) :ref:`🔗<class_CameraFeed_method_set_external>`
 
-Sets the feed as external feed provided by another library.
+Đặt feed làm external feed do một thư viện khác cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -391,13 +391,13 @@ Sets the feed as external feed provided by another library.
 
 :ref:`bool<class_bool>` **set_format**\ (\ index\: :ref:`int<class_int>`, parameters\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_CameraFeed_method_set_format>`
 
-Sets the feed format parameters for the given ``index`` in the :ref:`formats<class_CameraFeed_property_formats>` array. Returns ``true`` on success. By default, the YUYV encoded stream is transformed to :ref:`FEED_RGB<class_CameraFeed_constant_FEED_RGB>`. The YUYV encoded stream output format can be changed by setting ``parameters``'s ``output`` entry to one of the following:
+Đặt các tham số định dạng feed cho ``index`` đã cho trong mảng :ref:`formats<class_CameraFeed_property_formats>`. Trả về ``true`` nếu thành công. Theo mặc định, luồng được mã hóa YUYV sẽ được chuyển đổi thành :ref:`FEED_RGB<class_CameraFeed_constant_FEED_RGB>`. Có thể thay đổi định dạng đầu ra của luồng được mã hóa YUYV bằng cách đặt mục nhập ``output`` của ``parameters`` thành một trong các giá trị sau:
 
-- ``"separate"`` will result in :ref:`FEED_YCBCR_SEP<class_CameraFeed_constant_FEED_YCBCR_SEP>`;
+- ``"separate"`` sẽ cho ra :ref:`FEED_YCBCR_SEP<class_CameraFeed_constant_FEED_YCBCR_SEP>`;
 
-- ``"grayscale"`` will result in desaturated :ref:`FEED_RGB<class_CameraFeed_constant_FEED_RGB>`;
+- ``"grayscale"`` sẽ cho ra :ref:`FEED_RGB<class_CameraFeed_constant_FEED_RGB>` đã giảm độ bão hòa;
 
-- ``"copy"`` will result in :ref:`FEED_YCBCR<class_CameraFeed_constant_FEED_YCBCR>`.
+- ``"copy"`` sẽ cho ra :ref:`FEED_YCBCR<class_CameraFeed_constant_FEED_YCBCR>`.
 
 .. rst-class:: classref-item-separator
 
@@ -409,7 +409,7 @@ Sets the feed format parameters for the given ``index`` in the :ref:`formats<cla
 
 |void| **set_name**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_CameraFeed_method_set_name>`
 
-Sets the camera's name.
+Đặt tên của camera.
 
 .. rst-class:: classref-item-separator
 
@@ -421,7 +421,7 @@ Sets the camera's name.
 
 |void| **set_position**\ (\ position\: :ref:`FeedPosition<enum_CameraFeed_FeedPosition>`\ ) :ref:`🔗<class_CameraFeed_method_set_position>`
 
-Sets the position of this camera.
+Đặt vị trí của camera này.
 
 .. rst-class:: classref-item-separator
 
@@ -433,7 +433,7 @@ Sets the position of this camera.
 
 |void| **set_rgb_image**\ (\ rgb_image\: :ref:`Image<class_Image>`\ ) :ref:`🔗<class_CameraFeed_method_set_rgb_image>`
 
-Sets RGB image for this feed.
+Đặt hình ảnh RGB cho feed này.
 
 .. rst-class:: classref-item-separator
 
@@ -445,7 +445,7 @@ Sets RGB image for this feed.
 
 |void| **set_ycbcr_image**\ (\ ycbcr_image\: :ref:`Image<class_Image>`\ ) :ref:`🔗<class_CameraFeed_method_set_ycbcr_image>`
 
-Sets YCbCr image for this feed.
+Đặt hình ảnh YCbCr cho feed này.
 
 .. rst-class:: classref-item-separator
 
@@ -457,14 +457,14 @@ Sets YCbCr image for this feed.
 
 |void| **set_ycbcr_images**\ (\ y_image\: :ref:`Image<class_Image>`, cbcr_image\: :ref:`Image<class_Image>`\ ) :ref:`🔗<class_CameraFeed_method_set_ycbcr_images>`
 
-Sets Y and CbCr images for this feed.
+Thiết lập các ảnh Y và CbCr cho feed này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

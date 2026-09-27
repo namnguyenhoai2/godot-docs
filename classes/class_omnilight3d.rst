@@ -13,49 +13,49 @@
 OmniLight3D
 ===========
 
-**Inherits:** :ref:`Light3D<class_Light3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Light3D<class_Light3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Omnidirectional light, such as a light bulb or a candle.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-An Omnidirectional light is a type of :ref:`Light3D<class_Light3D>` that emits light in all directions. The light is attenuated by distance and this attenuation can be configured by changing its energy, radius, and attenuation parameters.
-
-\ **Note:** When using the Mobile rendering method, only 8 omni lights can be displayed on each mesh resource. Attempting to display more than 8 omni lights on a single mesh resource will result in omni lights flickering in and out as the camera moves. When using the Compatibility rendering method, only 8 omni lights can be displayed on each mesh resource by default, but this can be increased by adjusting :ref:`ProjectSettings.rendering/limits/opengl/max_lights_per_object<class_ProjectSettings_property_rendering/limits/opengl/max_lights_per_object>`.
-
-\ **Note:** When using the Mobile or Compatibility rendering methods, omni lights will only correctly affect meshes whose visibility AABB intersects with the light's AABB. If using a shader to deform the mesh in a way that makes it go outside its AABB, :ref:`GeometryInstance3D.extra_cull_margin<class_GeometryInstance3D_property_extra_cull_margin>` must be increased on the mesh. Otherwise, the light may not be visible on the mesh.
+Đèn đa hướng, chẳng hạn như bóng đèn hoặc ngọn nến.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đèn đa hướng là một loại :ref:`Light3D<class_Light3D>` phát ánh sáng theo mọi hướng. Ánh sáng bị suy giảm theo khoảng cách và có thể cấu hình độ suy giảm này bằng cách thay đổi các tham số energy, radius và attenuation.
+
+\ **Lưu ý:** Khi sử dụng phương pháp kết xuất Mobile, mỗi tài nguyên mesh chỉ có thể hiển thị 8 đèn omni. Việc cố hiển thị hơn 8 đèn omni trên một tài nguyên mesh sẽ khiến các đèn omni liên tục nhấp nháy khi camera di chuyển. Khi sử dụng phương pháp kết xuất Compatibility, theo mặc định mỗi tài nguyên mesh chỉ có thể hiển thị 8 đèn omni, nhưng có thể tăng giới hạn này bằng cách điều chỉnh :ref:`ProjectSettings.rendering/limits/opengl/max_lights_per_object <class_ProjectSettings_property_rendering/limits/opengl/max_lights_per_object>`.
+
+\ **Lưu ý:** Khi sử dụng phương pháp kết xuất Mobile hoặc Compatibility, đèn omni chỉ tác động chính xác đến các mesh có visibility AABB giao với AABB của đèn. Nếu sử dụng shader để biến dạng mesh theo cách khiến mesh vượt ra ngoài AABB của nó, cần tăng :ref:`GeometryInstance3D.extra_cull_margin<class_GeometryInstance3D_property_extra_cull_margin>` trên mesh. Nếu không, đèn có thể không hiển thị trên mesh.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `3D lights and shadows <../tutorials/3d/lights_and_shadows.html#omni-light>`__
+- `Đèn 3D và bóng đổ <../tutorials/3d/lights_and_shadows.html#omni-light>`__
 
-- :doc:`Faking global illumination <../tutorials/3d/global_illumination/faking_global_illumination>`
+- :doc:`Giả lập chiếu sáng toàn cục <../tutorials/3d/global_illumination/faking_global_illumination>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------+----------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                      | light_specular                                                       | ``0.5`` (overrides :ref:`Light3D<class_Light3D_property_light_specular>`)     |
-   +------------------------------------------------+----------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                      | :ref:`omni_attenuation<class_OmniLight3D_property_omni_attenuation>` | ``1.0``                                                                       |
-   +------------------------------------------------+----------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                      | :ref:`omni_range<class_OmniLight3D_property_omni_range>`             | ``5.0``                                                                       |
-   +------------------------------------------------+----------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`ShadowMode<enum_OmniLight3D_ShadowMode>` | :ref:`omni_shadow_mode<class_OmniLight3D_property_omni_shadow_mode>` | ``1``                                                                         |
-   +------------------------------------------------+----------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                      | shadow_normal_bias                                                   | ``1.0`` (overrides :ref:`Light3D<class_Light3D_property_shadow_normal_bias>`) |
-   +------------------------------------------------+----------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +-------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | light_specular                                                       | ``0.5`` (ghi đè :ref:`Light3D<class_Light3D_property_light_specular>`)     |
+   +-------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | :ref:`omni_attenuation<class_OmniLight3D_property_omni_attenuation>` | ``1.0``                                                                    |
+   +-------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | :ref:`omni_range<class_OmniLight3D_property_omni_range>`             | ``5.0``                                                                    |
+   +-------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`ShadowMode <enum_OmniLight3D_ShadowMode>` | :ref:`omni_shadow_mode<class_OmniLight3D_property_omni_shadow_mode>` | ``1``                                                                      |
+   +-------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                       | shadow_normal_bias                                                   | ``1.0`` (ghi đè :ref:`Light3D<class_Light3D_property_shadow_normal_bias>`) |
+   +-------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -63,14 +63,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OmniLight3D_ShadowMode:
 
 .. rst-class:: classref-enumeration
 
-enum **ShadowMode**: :ref:`🔗<enum_OmniLight3D_ShadowMode>`
+enum **ShadowMode**: :ref:`🔗 <enum_OmniLight3D_ShadowMode>`
 
 .. _class_OmniLight3D_constant_SHADOW_DUAL_PARABOLOID:
 
@@ -78,7 +78,7 @@ enum **ShadowMode**: :ref:`🔗<enum_OmniLight3D_ShadowMode>`
 
 :ref:`ShadowMode<enum_OmniLight3D_ShadowMode>` **SHADOW_DUAL_PARABOLOID** = ``0``
 
-Shadows are rendered to a dual-paraboloid texture. Faster than :ref:`SHADOW_CUBE<class_OmniLight3D_constant_SHADOW_CUBE>`, but lower-quality.
+Bóng được kết xuất vào texture dual-paraboloid. Nhanh hơn :ref:`SHADOW_CUBE<class_OmniLight3D_constant_SHADOW_CUBE>`, nhưng chất lượng thấp hơn.
 
 .. _class_OmniLight3D_constant_SHADOW_CUBE:
 
@@ -86,7 +86,7 @@ Shadows are rendered to a dual-paraboloid texture. Faster than :ref:`SHADOW_CUBE
 
 :ref:`ShadowMode<enum_OmniLight3D_ShadowMode>` **SHADOW_CUBE** = ``1``
 
-Shadows are rendered to a cubemap. Slower than :ref:`SHADOW_DUAL_PARABOLOID<class_OmniLight3D_constant_SHADOW_DUAL_PARABOLOID>`, but higher-quality.
+Bóng được kết xuất vào cubemap. Chậm hơn :ref:`SHADOW_DUAL_PARABOLOID<class_OmniLight3D_constant_SHADOW_DUAL_PARABOLOID>`, nhưng chất lượng cao hơn.
 
 .. rst-class:: classref-section-separator
 
@@ -94,8 +94,8 @@ Shadows are rendered to a cubemap. Slower than :ref:`SHADOW_DUAL_PARABOLOID<clas
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OmniLight3D_property_omni_attenuation:
 
@@ -108,13 +108,13 @@ Property Descriptions
 - |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ )
 
-Controls the distance attenuation function for omnilights.
+Điều khiển hàm suy giảm khoảng cách của đèn omni.
 
-A value of ``0.0`` will maintain a constant brightness through most of the range, but smoothly attenuate the light at the edge of the range. Use a value of ``2.0`` for physically accurate lights as it results in the proper inverse square attenutation.
+Giá trị ``0.0`` sẽ duy trì độ sáng không đổi trong phần lớn phạm vi, nhưng làm suy giảm ánh sáng một cách mượt mà ở rìa phạm vi. Sử dụng giá trị ``2.0`` cho đèn có độ chính xác vật lý vì giá trị này tạo ra mức suy giảm theo bình phương nghịch đảo chính xác.
 
-\ **Note:** Setting attenuation to ``2.0`` or higher may result in distant objects receiving minimal light, even within range. For example, with a range of ``4096``, an object at ``100`` units is attenuated by a factor of ``0.0001``. With a default brightness of ``1``, the light would not be visible at that distance.
+\ **Lưu ý:** Việc đặt độ suy giảm thành ``2.0`` hoặc cao hơn có thể khiến các đối tượng ở xa nhận được rất ít ánh sáng, ngay cả khi vẫn nằm trong phạm vi. Ví dụ, với phạm vi ``4096``, một đối tượng cách ``100`` đơn vị sẽ bị suy giảm theo hệ số ``0.0001``. Với độ sáng mặc định là ``1``, ánh sáng sẽ không thể nhìn thấy ở khoảng cách đó.
 
-\ **Note:** Using negative or values higher than ``10.0`` may lead to unexpected results.
+\ **Lưu ý:** Việc sử dụng giá trị âm hoặc giá trị cao hơn ``10.0`` có thể dẫn đến kết quả không mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -131,9 +131,9 @@ A value of ``0.0`` will maintain a constant brightness through most of the range
 - |void| **set_param**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_param**\ (\ )
 
-The light's radius. Note that the effectively lit area may appear to be smaller depending on the :ref:`omni_attenuation<class_OmniLight3D_property_omni_attenuation>` in use. No matter the :ref:`omni_attenuation<class_OmniLight3D_property_omni_attenuation>` in use, the light will never reach anything outside this radius.
+Bán kính của ánh sáng. Lưu ý rằng vùng được chiếu sáng thực tế có thể trông nhỏ hơn tùy thuộc vào :ref:`omni_attenuation<class_OmniLight3D_property_omni_attenuation>` đang được sử dụng. Bất kể :ref:`omni_attenuation<class_OmniLight3D_property_omni_attenuation>` nào đang được sử dụng, ánh sáng sẽ không bao giờ chiếu tới bất kỳ thứ gì bên ngoài bán kính này.
 
-\ **Note:** :ref:`omni_range<class_OmniLight3D_property_omni_range>` is not affected by :ref:`Node3D.scale<class_Node3D_property_scale>` (the light's scale or its parent's scale).
+\ **Lưu ý:** :ref:`omni_range<class_OmniLight3D_property_omni_range>` không bị ảnh hưởng bởi :ref:`Node3D.scale<class_Node3D_property_scale>` (tỷ lệ của ánh sáng hoặc tỷ lệ của node cha).
 
 .. rst-class:: classref-item-separator
 
@@ -154,12 +154,12 @@ The light's radius. Note that the effectively lit area may appear to be smaller 
 
 	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này thì nó mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

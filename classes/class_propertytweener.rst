@@ -10,25 +10,25 @@
 PropertyTweener
 ===============
 
-**Inherits:** :ref:`Tweener<class_Tweener>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Tweener<class_Tweener>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Interpolates an :ref:`Object<class_Object>`'s property over time.
+Nội suy thuộc tính của :ref:`Object<class_Object>` theo thời gian.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**PropertyTweener** is used to interpolate a property in an object. See :ref:`Tween.tween_property()<class_Tween_method_tween_property>` for more usage information.
+**PropertyTweener** được dùng để nội suy một thuộc tính trong một đối tượng. Xem :ref:`Tween.tween_property()<class_Tween_method_tween_property>` để biết thêm thông tin về cách sử dụng.
 
-The tweener will finish automatically if the target object is freed.
+Tweener sẽ tự động hoàn tất nếu đối tượng đích được giải phóng.
 
-\ **Note:** :ref:`Tween.tween_property()<class_Tween_method_tween_property>` is the only correct way to create **PropertyTweener**. Any **PropertyTweener** created manually will not function correctly.
+\ **Lưu ý:** :ref:`Tween.tween_property()<class_Tween_method_tween_property>` là cách duy nhất đúng để tạo **PropertyTweener**. Bất kỳ **PropertyTweener** nào được tạo thủ công sẽ không hoạt động chính xác.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -44,9 +44,9 @@ Methods
    +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PropertyTweener<class_PropertyTweener>` | :ref:`set_delay<class_PropertyTweener_method_set_delay>`\ (\ delay\: :ref:`float<class_float>`\ )                                                 |
    +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PropertyTweener<class_PropertyTweener>` | :ref:`set_ease<class_PropertyTweener_method_set_ease>`\ (\ ease\: :ref:`EaseType<enum_Tween_EaseType>`\ )                                         |
+   | :ref:`PropertyTweener<class_PropertyTweener>` | :ref:`set_ease<class_PropertyTweener_method_set_ease>`\ (\ ease\: :ref:`EaseType <enum_Tween_EaseType>`\ )                                        |
    +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PropertyTweener<class_PropertyTweener>` | :ref:`set_trans<class_PropertyTweener_method_set_trans>`\ (\ trans\: :ref:`TransitionType<enum_Tween_TransitionType>`\ )                          |
+   | :ref:`PropertyTweener<class_PropertyTweener>` | :ref:`set_trans<class_PropertyTweener_method_set_trans>`\ (\ trans\: :ref:`TransitionType <enum_Tween_TransitionType>`\ )                         |
    +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -55,8 +55,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PropertyTweener_method_as_relative:
 
@@ -64,9 +64,9 @@ Method Descriptions
 
 :ref:`PropertyTweener<class_PropertyTweener>` **as_relative**\ (\ ) :ref:`🔗<class_PropertyTweener_method_as_relative>`
 
-When called, the final value will be used as a relative value instead.
+Khi được gọi, giá trị cuối cùng sẽ được sử dụng làm giá trị tương đối.
 
-\ **Example:** Move the node by ``100`` pixels to the right.
+\ **Ví dụ:** Di chuyển node ``100`` pixel sang phải.
 
 
 .. tabs::
@@ -93,9 +93,9 @@ When called, the final value will be used as a relative value instead.
 
 :ref:`PropertyTweener<class_PropertyTweener>` **from**\ (\ value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_PropertyTweener_method_from>`
 
-Sets a custom initial value to the **PropertyTweener**.
+Đặt một giá trị ban đầu tùy chỉnh cho **PropertyTweener**.
 
-\ **Example:** Move the node from position ``(100, 100)`` to ``(200, 100)``.
+\ **Ví dụ:** Di chuyển node từ vị trí ``(100, 100)`` đến ``(200, 100)``.
 
 
 .. tabs::
@@ -122,7 +122,7 @@ Sets a custom initial value to the **PropertyTweener**.
 
 :ref:`PropertyTweener<class_PropertyTweener>` **from_current**\ (\ ) :ref:`🔗<class_PropertyTweener_method_from_current>`
 
-Makes the **PropertyTweener** use the current property value (i.e. at the time of creating this **PropertyTweener**) as a starting point. This is equivalent of using :ref:`from()<class_PropertyTweener_method_from>` with the current value. These two calls will do the same:
+Khiến **PropertyTweener** sử dụng giá trị thuộc tính hiện tại (tức là tại thời điểm tạo **PropertyTweener**) làm điểm bắt đầu. Điều này tương đương với việc sử dụng :ref:`from()<class_PropertyTweener_method_from>` cùng giá trị hiện tại. Hai lệnh gọi này sẽ thực hiện cùng một việc:
 
 
 .. tabs::
@@ -149,7 +149,7 @@ Makes the **PropertyTweener** use the current property value (i.e. at the time o
 
 :ref:`PropertyTweener<class_PropertyTweener>` **set_custom_interpolator**\ (\ interpolator_method\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_PropertyTweener_method_set_custom_interpolator>`
 
-Allows interpolating the value with a custom easing function. The provided ``interpolator_method`` will be called with a value ranging from ``0.0`` to ``1.0`` and is expected to return a value within the same range (values outside the range can be used for overshoot). The return value of the method is then used for interpolation between initial and final value. Note that the parameter passed to the method is still subject to the tweener's own easing.
+Cho phép nội suy giá trị bằng một hàm easing tùy chỉnh. ``interpolator_method`` được cung cấp sẽ được gọi với một giá trị trong khoảng từ ``0.0`` đến ``1.0`` và dự kiến trả về một giá trị trong cùng khoảng đó (có thể sử dụng các giá trị nằm ngoài khoảng để tạo hiệu ứng vượt quá). Sau đó, giá trị trả về của phương thức được dùng để nội suy giữa giá trị ban đầu và giá trị cuối. Lưu ý rằng tham số truyền cho phương thức vẫn chịu tác động của easing riêng của tweener.
 
 
 .. tabs::
@@ -160,7 +160,7 @@ Allows interpolating the value with a custom easing function. The provided ``int
 
     func _ready():
         var tween = create_tween()
-        # Interpolate the value using a custom curve.
+        # Nội suy giá trị bằng một đường cong tùy chỉnh.
         tween.tween_property(self, "position:x", 300, 1).as_relative().set_custom_interpolator(tween_curve)
 
     func tween_curve(v):
@@ -174,7 +174,7 @@ Allows interpolating the value with a custom easing function. The provided ``int
     public override void _Ready()
     {
         Tween tween = CreateTween();
-        // Interpolate the value using a custom curve.
+        // Nội suy giá trị bằng một đường cong tùy chỉnh.
         Callable tweenCurveCallable = Callable.From<float, float>(TweenCurve);
         tween.TweenProperty(this, "position:x", 300.0f, 1.0f).AsRelative().SetCustomInterpolator(tweenCurveCallable);
     }
@@ -196,7 +196,7 @@ Allows interpolating the value with a custom easing function. The provided ``int
 
 :ref:`PropertyTweener<class_PropertyTweener>` **set_delay**\ (\ delay\: :ref:`float<class_float>`\ ) :ref:`🔗<class_PropertyTweener_method_set_delay>`
 
-Sets the time in seconds after which the **PropertyTweener** will start interpolating. By default there's no delay.
+Đặt thời gian tính bằng giây sau đó **PropertyTweener** sẽ bắt đầu nội suy. Theo mặc định, không có độ trễ.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ Sets the time in seconds after which the **PropertyTweener** will start interpol
 
 :ref:`PropertyTweener<class_PropertyTweener>` **set_ease**\ (\ ease\: :ref:`EaseType<enum_Tween_EaseType>`\ ) :ref:`🔗<class_PropertyTweener_method_set_ease>`
 
-Sets the type of used easing from :ref:`EaseType<enum_Tween_EaseType>`. If not set, the default easing is used from the :ref:`Tween<class_Tween>` that contains this Tweener.
+Đặt kiểu easing được sử dụng từ :ref:`EaseType <enum_Tween_EaseType>`. Nếu không được đặt, easing mặc định sẽ được sử dụng từ :ref:`Tween<class_Tween>` chứa Tweener này.
 
 .. rst-class:: classref-item-separator
 
@@ -220,14 +220,14 @@ Sets the type of used easing from :ref:`EaseType<enum_Tween_EaseType>`. If not s
 
 :ref:`PropertyTweener<class_PropertyTweener>` **set_trans**\ (\ trans\: :ref:`TransitionType<enum_Tween_TransitionType>`\ ) :ref:`🔗<class_PropertyTweener_method_set_trans>`
 
-Sets the type of used transition from :ref:`TransitionType<enum_Tween_TransitionType>`. If not set, the default transition is used from the :ref:`Tween<class_Tween>` that contains this Tweener.
+Đặt kiểu transition được sử dụng từ :ref:`TransitionType <enum_Tween_TransitionType>`. Nếu không được đặt, transition mặc định sẽ được sử dụng từ :ref:`Tween<class_Tween>` chứa Tweener này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

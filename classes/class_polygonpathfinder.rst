@@ -10,7 +10,7 @@
 PolygonPathFinder
 =================
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
 .. container:: contribute
 
@@ -18,8 +18,8 @@ PolygonPathFinder
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -48,8 +48,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PolygonPathFinder_method_find_path:
 
@@ -127,7 +127,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **is_point_inside**\ (\ point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_PolygonPathFinder_method_is_point_inside>`
 
-Returns ``true`` if ``point`` falls inside the polygon area.
+Trả về ``true`` nếu ``point`` nằm bên trong vùng đa giác.
 
 
 .. tabs::
@@ -138,8 +138,8 @@ Returns ``true`` if ``point`` falls inside the polygon area.
     var points = [Vector2(0.0, 0.0), Vector2(1.0, 0.0), Vector2(0.0, 1.0)]
     var connections = [0, 1, 1, 2, 2, 0]
     polygon_path_finder.setup(points, connections)
-    print(polygon_path_finder.is_point_inside(Vector2(0.2, 0.2))) # Prints true
-    print(polygon_path_finder.is_point_inside(Vector2(1.0, 1.0))) # Prints false
+    print(polygon_path_finder.is_point_inside(Vector2(0.2, 0.2))) # In true
+    print(polygon_path_finder.is_point_inside(Vector2(1.0, 1.0))) # In false
 
  .. code-tab:: csharp
 
@@ -152,8 +152,8 @@ Returns ``true`` if ``point`` falls inside the polygon area.
     ];
     int[] connections = [0, 1, 1, 2, 2, 0];
     polygonPathFinder.Setup(points, connections);
-    GD.Print(polygonPathFinder.IsPointInside(new Vector2(0.2f, 0.2f))); // Prints True
-    GD.Print(polygonPathFinder.IsPointInside(new Vector2(1.0f, 1.0f))); // Prints False
+    GD.Print(polygonPathFinder.IsPointInside(new Vector2(0.2f, 0.2f))); // In True
+    GD.Print(polygonPathFinder.IsPointInside(new Vector2(1.0f, 1.0f))); // In ra False
 
 
 
@@ -181,9 +181,9 @@ Returns ``true`` if ``point`` falls inside the polygon area.
 
 |void| **setup**\ (\ points\: :ref:`PackedVector2Array<class_PackedVector2Array>`, connections\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_PolygonPathFinder_method_setup>`
 
-Sets up **PolygonPathFinder** with an array of points that define the vertices of the polygon, and an array of indices that determine the edges of the polygon.
+Thiết lập **PolygonPathFinder** bằng một mảng các điểm xác định các đỉnh của đa giác và một mảng chỉ số xác định các cạnh của đa giác.
 
-The length of ``connections`` must be even, returns an error if odd.
+Độ dài của ``connections`` phải là số chẵn; nếu là số lẻ, phương thức sẽ trả về lỗi.
 
 
 .. tabs::
@@ -209,12 +209,12 @@ The length of ``connections`` must be even, returns an error if odd.
 
 
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

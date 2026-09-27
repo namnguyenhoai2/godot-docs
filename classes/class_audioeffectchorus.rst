@@ -10,28 +10,28 @@
 AudioEffectChorus
 =================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a chorus audio effect to an audio bus.
+Thêm hiệu ứng âm thanh chorus vào audio bus.
 
-Gives the impression of multiple audio sources.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "chorus" effect creates multiple copies of the original audio (called "voices") with variations in pitch, and layers on top of the original, giving the impression that the sound comes from multiple sources. This creates spectral and spatial movement.
-
-Each voice is played a short period of time after the original audio, controlled by ``delay``. An internal low-frequency oscillator (LFO) controls their pitch, and ``depth`` controls the LFO's maximum amount.
-
-In the real world, this kind of effect is found in pianos, choirs, and instrument ensembles.
-
-This effect can also be used to widen mono audio and make digital sounds have a more natural or analog quality.
+Tạo cảm giác như có nhiều nguồn âm thanh.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Hiệu ứng "chorus" tạo nhiều bản sao của âm thanh gốc (gọi là "voices") với cao độ biến đổi, rồi chồng chúng lên âm thanh gốc, tạo cảm giác âm thanh phát ra từ nhiều nguồn. Hiệu ứng này tạo ra sự chuyển động về phổ tần và không gian.
+
+Mỗi voice được phát sau âm thanh gốc một khoảng thời gian ngắn, do ``delay`` điều khiển. Một bộ dao động tần số thấp (LFO) bên trong điều khiển cao độ của chúng, còn ``depth`` điều khiển mức tối đa của LFO.
+
+Trong thực tế, loại hiệu ứng này xuất hiện ở piano, dàn hợp xướng và các nhóm nhạc cụ.
+
+Hiệu ứng này cũng có thể được sử dụng để mở rộng âm thanh mono và làm cho âm thanh kỹ thuật số trở nên tự nhiên hơn hoặc mang chất analog hơn.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Audio buses <../tutorials/audio/audio_buses>`
@@ -40,72 +40,72 @@ Tutorials
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`dry<class_AudioEffectChorus_property_dry>`                             | ``1.0``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/1/cutoff_hz<class_AudioEffectChorus_property_voice/1/cutoff_hz>` | ``8000.0`` |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/1/delay_ms<class_AudioEffectChorus_property_voice/1/delay_ms>`   | ``15.0``   |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/1/depth_ms<class_AudioEffectChorus_property_voice/1/depth_ms>`   | ``2.0``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/1/level_db<class_AudioEffectChorus_property_voice/1/level_db>`   | ``0.0``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/1/pan<class_AudioEffectChorus_property_voice/1/pan>`             | ``-0.5``   |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/1/rate_hz<class_AudioEffectChorus_property_voice/1/rate_hz>`     | ``0.8``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/2/cutoff_hz<class_AudioEffectChorus_property_voice/2/cutoff_hz>` | ``8000.0`` |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/2/delay_ms<class_AudioEffectChorus_property_voice/2/delay_ms>`   | ``20.0``   |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/2/depth_ms<class_AudioEffectChorus_property_voice/2/depth_ms>`   | ``3.0``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/2/level_db<class_AudioEffectChorus_property_voice/2/level_db>`   | ``0.0``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/2/pan<class_AudioEffectChorus_property_voice/2/pan>`             | ``0.5``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/2/rate_hz<class_AudioEffectChorus_property_voice/2/rate_hz>`     | ``1.2``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/3/cutoff_hz<class_AudioEffectChorus_property_voice/3/cutoff_hz>` |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/3/delay_ms<class_AudioEffectChorus_property_voice/3/delay_ms>`   |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/3/depth_ms<class_AudioEffectChorus_property_voice/3/depth_ms>`   |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/3/level_db<class_AudioEffectChorus_property_voice/3/level_db>`   |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/3/pan<class_AudioEffectChorus_property_voice/3/pan>`             |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/3/rate_hz<class_AudioEffectChorus_property_voice/3/rate_hz>`     |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/4/cutoff_hz<class_AudioEffectChorus_property_voice/4/cutoff_hz>` |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/4/delay_ms<class_AudioEffectChorus_property_voice/4/delay_ms>`   |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/4/depth_ms<class_AudioEffectChorus_property_voice/4/depth_ms>`   |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/4/level_db<class_AudioEffectChorus_property_voice/4/level_db>`   |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/4/pan<class_AudioEffectChorus_property_voice/4/pan>`             |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`voice/4/rate_hz<class_AudioEffectChorus_property_voice/4/rate_hz>`     |            |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`int<class_int>`     | :ref:`voice_count<class_AudioEffectChorus_property_voice_count>`             | ``2``      |
-   +---------------------------+------------------------------------------------------------------------------+------------+
-   | :ref:`float<class_float>` | :ref:`wet<class_AudioEffectChorus_property_wet>`                             | ``0.5``    |
-   +---------------------------+------------------------------------------------------------------------------+------------+
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`dry<class_AudioEffectChorus_property_dry>`                              | ``1.0``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/1/cutoff_hz <class_AudioEffectChorus_property_voice/1/cutoff_hz>` | ``8000.0`` |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/1/delay_ms <class_AudioEffectChorus_property_voice/1/delay_ms>`   | ``15.0``   |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/1/depth_ms <class_AudioEffectChorus_property_voice/1/depth_ms>`   | ``2.0``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/1/level_db <class_AudioEffectChorus_property_voice/1/level_db>`   | ``0.0``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/1/pan <class_AudioEffectChorus_property_voice/1/pan>`             | ``-0.5``   |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/1/rate_hz <class_AudioEffectChorus_property_voice/1/rate_hz>`     | ``0.8``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/2/cutoff_hz <class_AudioEffectChorus_property_voice/2/cutoff_hz>` | ``8000.0`` |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/2/delay_ms <class_AudioEffectChorus_property_voice/2/delay_ms>`   | ``20.0``   |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/2/depth_ms <class_AudioEffectChorus_property_voice/2/depth_ms>`   | ``3.0``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/2/level_db <class_AudioEffectChorus_property_voice/2/level_db>`   | ``0.0``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/2/pan <class_AudioEffectChorus_property_voice/2/pan>`             | ``0.5``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/2/rate_hz <class_AudioEffectChorus_property_voice/2/rate_hz>`     | ``1.2``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/3/cutoff_hz <class_AudioEffectChorus_property_voice/3/cutoff_hz>` |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/3/delay_ms <class_AudioEffectChorus_property_voice/3/delay_ms>`   |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/3/depth_ms <class_AudioEffectChorus_property_voice/3/depth_ms>`   |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/3/level_db <class_AudioEffectChorus_property_voice/3/level_db>`   |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/3/pan <class_AudioEffectChorus_property_voice/3/pan>`             |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/3/rate_hz <class_AudioEffectChorus_property_voice/3/rate_hz>`     |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/4/cutoff_hz <class_AudioEffectChorus_property_voice/4/cutoff_hz>` |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/4/delay_ms <class_AudioEffectChorus_property_voice/4/delay_ms>`   |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/4/depth_ms <class_AudioEffectChorus_property_voice/4/depth_ms>`   |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/4/level_db <class_AudioEffectChorus_property_voice/4/level_db>`   |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/4/pan <class_AudioEffectChorus_property_voice/4/pan>`             |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`voice/4/rate_hz <class_AudioEffectChorus_property_voice/4/rate_hz>`     |            |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`int<class_int>`     | :ref:`voice_count<class_AudioEffectChorus_property_voice_count>`              | ``2``      |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
+   | :ref:`float<class_float>` | :ref:`wet<class_AudioEffectChorus_property_wet>`                              | ``0.5``    |
+   +---------------------------+-------------------------------------------------------------------------------+------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -142,8 +142,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectChorus_property_dry:
 
@@ -156,7 +156,7 @@ Property Descriptions
 - |void| **set_dry**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_dry**\ (\ )
 
-The volume ratio of the original audio. Value can range from 0 to 1.
+Tỷ lệ âm lượng của âm thanh gốc. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -166,14 +166,14 @@ The volume ratio of the original audio. Value can range from 0 to 1.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/1/cutoff_hz** = ``8000.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/1/cutoff_hz>`
+:ref:`float<class_float>` **voice/1/cutoff_hz** = ``8000.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/1/cutoff_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`, cutoff_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The frequency threshold of the voice's low-pass filter in Hz.
+Ngưỡng tần số của bộ lọc thông thấp của voice, tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -183,14 +183,14 @@ The frequency threshold of the voice's low-pass filter in Hz.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/1/delay_ms** = ``15.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/1/delay_ms>`
+:ref:`float<class_float>` **voice/1/delay_ms** = ``15.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/1/delay_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`, delay_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The delay of the voice in milliseconds, compared to the original audio.
+Độ trễ của voice tính bằng mili giây, so với âm thanh gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -200,14 +200,14 @@ The delay of the voice in milliseconds, compared to the original audio.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/1/depth_ms** = ``2.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/1/depth_ms>`
+:ref:`float<class_float>` **voice/1/depth_ms** = ``2.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/1/depth_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`, depth_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The depth of the voice's low-frequency oscillator in milliseconds.
+Độ sâu của bộ dao động tần số thấp của voice tính bằng mili giây.
 
 .. rst-class:: classref-item-separator
 
@@ -217,14 +217,14 @@ The depth of the voice's low-frequency oscillator in milliseconds.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/1/level_db** = ``0.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/1/level_db>`
+:ref:`float<class_float>` **voice/1/level_db** = ``0.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/1/level_db>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`, level_db\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The gain of the voice in dB.
+Gain của voice tính bằng dB.
 
 .. rst-class:: classref-item-separator
 
@@ -234,14 +234,14 @@ The gain of the voice in dB.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/1/pan** = ``-0.5`` :ref:`🔗<class_AudioEffectChorus_property_voice/1/pan>`
+:ref:`float<class_float>` **voice/1/pan** = ``-0.5`` :ref:`🔗 <class_AudioEffectChorus_property_voice/1/pan>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`, pan\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The pan position of the voice.
+Vị trí pan của voice.
 
 .. rst-class:: classref-item-separator
 
@@ -251,14 +251,14 @@ The pan position of the voice.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/1/rate_hz** = ``0.8`` :ref:`🔗<class_AudioEffectChorus_property_voice/1/rate_hz>`
+:ref:`float<class_float>` **voice/1/rate_hz** = ``0.8`` :ref:`🔗 <class_AudioEffectChorus_property_voice/1/rate_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`, rate_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The rate of the voice's low-frequency oscillator in Hz.
+Tốc độ của bộ dao động tần số thấp của voice tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -268,14 +268,14 @@ The rate of the voice's low-frequency oscillator in Hz.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/2/cutoff_hz** = ``8000.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/2/cutoff_hz>`
+:ref:`float<class_float>` **voice/2/cutoff_hz** = ``8000.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/2/cutoff_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`, cutoff_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The frequency threshold of the voice's low-pass filter in Hz.
+Ngưỡng tần số của bộ lọc thông thấp của voice, tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -285,14 +285,14 @@ The frequency threshold of the voice's low-pass filter in Hz.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/2/delay_ms** = ``20.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/2/delay_ms>`
+:ref:`float<class_float>` **voice/2/delay_ms** = ``20.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/2/delay_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`, delay_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The delay of the voice in milliseconds, compared to the original audio.
+Độ trễ của voice tính bằng mili giây, so với âm thanh gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -302,14 +302,14 @@ The delay of the voice in milliseconds, compared to the original audio.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/2/depth_ms** = ``3.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/2/depth_ms>`
+:ref:`float<class_float>` **voice/2/depth_ms** = ``3.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/2/depth_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`, depth_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The depth of the voice's low-frequency oscillator in milliseconds.
+Độ sâu của bộ dao động tần số thấp của voice tính bằng mili giây.
 
 .. rst-class:: classref-item-separator
 
@@ -319,14 +319,14 @@ The depth of the voice's low-frequency oscillator in milliseconds.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/2/level_db** = ``0.0`` :ref:`🔗<class_AudioEffectChorus_property_voice/2/level_db>`
+:ref:`float<class_float>` **voice/2/level_db** = ``0.0`` :ref:`🔗 <class_AudioEffectChorus_property_voice/2/level_db>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`, level_db\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The gain of the voice in dB.
+Gain của voice tính bằng dB.
 
 .. rst-class:: classref-item-separator
 
@@ -336,14 +336,14 @@ The gain of the voice in dB.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/2/pan** = ``0.5`` :ref:`🔗<class_AudioEffectChorus_property_voice/2/pan>`
+:ref:`float<class_float>` **voice/2/pan** = ``0.5`` :ref:`🔗 <class_AudioEffectChorus_property_voice/2/pan>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`, pan\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The pan position of the voice.
+Vị trí pan của voice.
 
 .. rst-class:: classref-item-separator
 
@@ -353,14 +353,14 @@ The pan position of the voice.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/2/rate_hz** = ``1.2`` :ref:`🔗<class_AudioEffectChorus_property_voice/2/rate_hz>`
+:ref:`float<class_float>` **voice/2/rate_hz** = ``1.2`` :ref:`🔗 <class_AudioEffectChorus_property_voice/2/rate_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`, rate_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The rate of the voice's low-frequency oscillator in Hz.
+Tốc độ của bộ dao động tần số thấp của voice tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -370,14 +370,14 @@ The rate of the voice's low-frequency oscillator in Hz.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/3/cutoff_hz** :ref:`🔗<class_AudioEffectChorus_property_voice/3/cutoff_hz>`
+:ref:`float<class_float>` **voice/3/cutoff_hz** :ref:`🔗 <class_AudioEffectChorus_property_voice/3/cutoff_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`, cutoff_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The frequency threshold of the voice's low-pass filter in Hz.
+Ngưỡng tần số của bộ lọc thông thấp của voice, tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -387,14 +387,14 @@ The frequency threshold of the voice's low-pass filter in Hz.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/3/delay_ms** :ref:`🔗<class_AudioEffectChorus_property_voice/3/delay_ms>`
+:ref:`float<class_float>` **voice/3/delay_ms** :ref:`🔗 <class_AudioEffectChorus_property_voice/3/delay_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`, delay_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The delay of the voice in milliseconds, compared to the original audio.
+Độ trễ của voice tính bằng mili giây, so với âm thanh gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -404,14 +404,14 @@ The delay of the voice in milliseconds, compared to the original audio.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/3/depth_ms** :ref:`🔗<class_AudioEffectChorus_property_voice/3/depth_ms>`
+:ref:`float<class_float>` **voice/3/depth_ms** :ref:`🔗 <class_AudioEffectChorus_property_voice/3/depth_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`, depth_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The depth of the voice's low-frequency oscillator in milliseconds.
+Độ sâu của bộ dao động tần số thấp của voice tính bằng mili giây.
 
 .. rst-class:: classref-item-separator
 
@@ -421,14 +421,14 @@ The depth of the voice's low-frequency oscillator in milliseconds.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/3/level_db** :ref:`🔗<class_AudioEffectChorus_property_voice/3/level_db>`
+:ref:`float<class_float>` **voice/3/level_db** :ref:`🔗 <class_AudioEffectChorus_property_voice/3/level_db>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`, level_db\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The gain of the voice in dB.
+Gain của voice tính bằng dB.
 
 .. rst-class:: classref-item-separator
 
@@ -438,14 +438,14 @@ The gain of the voice in dB.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/3/pan** :ref:`🔗<class_AudioEffectChorus_property_voice/3/pan>`
+:ref:`float<class_float>` **voice/3/pan** :ref:`🔗 <class_AudioEffectChorus_property_voice/3/pan>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`, pan\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The pan position of the voice.
+Vị trí pan của voice.
 
 .. rst-class:: classref-item-separator
 
@@ -455,14 +455,14 @@ The pan position of the voice.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/3/rate_hz** :ref:`🔗<class_AudioEffectChorus_property_voice/3/rate_hz>`
+:ref:`float<class_float>` **voice/3/rate_hz** :ref:`🔗 <class_AudioEffectChorus_property_voice/3/rate_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`, rate_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The rate of the voice's low-frequency oscillator in Hz.
+Tốc độ của bộ dao động tần số thấp của voice tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -472,14 +472,14 @@ The rate of the voice's low-frequency oscillator in Hz.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/4/cutoff_hz** :ref:`🔗<class_AudioEffectChorus_property_voice/4/cutoff_hz>`
+:ref:`float<class_float>` **voice/4/cutoff_hz** :ref:`🔗 <class_AudioEffectChorus_property_voice/4/cutoff_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`, cutoff_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The frequency threshold of the voice's low-pass filter in Hz.
+Ngưỡng tần số của bộ lọc thông thấp của voice, tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -489,14 +489,14 @@ The frequency threshold of the voice's low-pass filter in Hz.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/4/delay_ms** :ref:`🔗<class_AudioEffectChorus_property_voice/4/delay_ms>`
+:ref:`float<class_float>` **voice/4/delay_ms** :ref:`🔗 <class_AudioEffectChorus_property_voice/4/delay_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`, delay_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The delay of the voice in milliseconds, compared to the original audio.
+Độ trễ của voice tính bằng mili giây, so với âm thanh gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -506,14 +506,14 @@ The delay of the voice in milliseconds, compared to the original audio.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/4/depth_ms** :ref:`🔗<class_AudioEffectChorus_property_voice/4/depth_ms>`
+:ref:`float<class_float>` **voice/4/depth_ms** :ref:`🔗 <class_AudioEffectChorus_property_voice/4/depth_ms>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`, depth_ms\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The depth of the voice's low-frequency oscillator in milliseconds.
+Độ sâu của bộ dao động tần số thấp của voice tính bằng mili giây.
 
 .. rst-class:: classref-item-separator
 
@@ -523,14 +523,14 @@ The depth of the voice's low-frequency oscillator in milliseconds.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/4/level_db** :ref:`🔗<class_AudioEffectChorus_property_voice/4/level_db>`
+:ref:`float<class_float>` **voice/4/level_db** :ref:`🔗 <class_AudioEffectChorus_property_voice/4/level_db>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`, level_db\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The gain of the voice in dB.
+Gain của voice tính bằng dB.
 
 .. rst-class:: classref-item-separator
 
@@ -540,14 +540,14 @@ The gain of the voice in dB.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/4/pan** :ref:`🔗<class_AudioEffectChorus_property_voice/4/pan>`
+:ref:`float<class_float>` **voice/4/pan** :ref:`🔗 <class_AudioEffectChorus_property_voice/4/pan>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`, pan\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The pan position of the voice.
+Vị trí pan của voice.
 
 .. rst-class:: classref-item-separator
 
@@ -557,14 +557,14 @@ The pan position of the voice.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **voice/4/rate_hz** :ref:`🔗<class_AudioEffectChorus_property_voice/4/rate_hz>`
+:ref:`float<class_float>` **voice/4/rate_hz** :ref:`🔗 <class_AudioEffectChorus_property_voice/4/rate_hz>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`, rate_hz\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const|
 
-The rate of the voice's low-frequency oscillator in Hz.
+Tốc độ của bộ dao động tần số thấp của voice tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -581,7 +581,7 @@ The rate of the voice's low-frequency oscillator in Hz.
 - |void| **set_voice_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_voice_count**\ (\ )
 
-The number of voices in the effect. Value can range from 1 to 4.
+Số lượng voice trong effect. Giá trị có thể nằm trong khoảng từ 1 đến 4.
 
 .. rst-class:: classref-item-separator
 
@@ -598,7 +598,7 @@ The number of voices in the effect. Value can range from 1 to 4.
 - |void| **set_wet**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_wet**\ (\ )
 
-The volume ratio of all voices. Value can range from 0 to 1.
+Tỷ lệ âm lượng của tất cả voice. Giá trị có thể nằm trong khoảng từ 0 đến 1.
 
 .. rst-class:: classref-section-separator
 
@@ -606,8 +606,8 @@ The volume ratio of all voices. Value can range from 0 to 1.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AudioEffectChorus_method_get_voice_cutoff_hz:
 
@@ -615,7 +615,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioEffectChorus_method_get_voice_cutoff_hz>`
 
-Returns the frequency threshold of a given ``voice_idx``'s low-pass filter in Hz. Frequencies above this value are removed from the voice.
+Trả về ngưỡng tần số của bộ lọc low-pass của ``voice_idx`` đã cho, tính bằng Hz. Các tần số cao hơn giá trị này sẽ bị loại khỏi voice.
 
 .. rst-class:: classref-item-separator
 
@@ -627,7 +627,7 @@ Returns the frequency threshold of a given ``voice_idx``'s low-pass filter in Hz
 
 :ref:`float<class_float>` **get_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioEffectChorus_method_get_voice_delay_ms>`
 
-Returns the delay of a given ``voice_idx`` in milliseconds, compared to the original audio.
+Trả về độ trễ của ``voice_idx`` đã cho, tính bằng mili giây, so với âm thanh gốc.
 
 .. rst-class:: classref-item-separator
 
@@ -639,7 +639,7 @@ Returns the delay of a given ``voice_idx`` in milliseconds, compared to the orig
 
 :ref:`float<class_float>` **get_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioEffectChorus_method_get_voice_depth_ms>`
 
-Returns the depth of a given ``voice_idx``'s low-frequency oscillator in milliseconds.
+Trả về độ sâu của bộ dao động tần số thấp của ``voice_idx`` đã cho, tính bằng mili giây.
 
 .. rst-class:: classref-item-separator
 
@@ -651,7 +651,7 @@ Returns the depth of a given ``voice_idx``'s low-frequency oscillator in millise
 
 :ref:`float<class_float>` **get_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioEffectChorus_method_get_voice_level_db>`
 
-Returns the gain of a given ``voice_idx`` in dB.
+Trả về gain của ``voice_idx`` đã cho tính bằng dB.
 
 .. rst-class:: classref-item-separator
 
@@ -663,7 +663,7 @@ Returns the gain of a given ``voice_idx`` in dB.
 
 :ref:`float<class_float>` **get_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioEffectChorus_method_get_voice_pan>`
 
-Returns the pan position of a given ``voice_idx``. Negative values mean the left channel, positive mean the right.
+Trả về vị trí pan của ``voice_idx`` đã cho. Giá trị âm biểu thị kênh trái, giá trị dương biểu thị kênh phải.
 
 .. rst-class:: classref-item-separator
 
@@ -675,7 +675,7 @@ Returns the pan position of a given ``voice_idx``. Negative values mean the left
 
 :ref:`float<class_float>` **get_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AudioEffectChorus_method_get_voice_rate_hz>`
 
-Returns the rate of a given ``voice_idx``'s low-frequency oscillator in Hz.
+Trả về tốc độ của bộ dao động tần số thấp (low-frequency oscillator) của ``voice_idx`` đã cho, tính bằng Hz.
 
 .. rst-class:: classref-item-separator
 
@@ -687,7 +687,7 @@ Returns the rate of a given ``voice_idx``'s low-frequency oscillator in Hz.
 
 |void| **set_voice_cutoff_hz**\ (\ voice_idx\: :ref:`int<class_int>`, cutoff_hz\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AudioEffectChorus_method_set_voice_cutoff_hz>`
 
-Sets the frequency threshold of a given ``voice_idx``'s low-pass filter in Hz. Frequencies above ``cutoff_hz`` are removed from ``voice_idx``. Value can range from 1 to 20500.
+Đặt ngưỡng tần số của bộ lọc thông thấp của ``voice_idx`` đã cho, tính bằng Hz. Các tần số cao hơn ``cutoff_hz`` sẽ bị loại bỏ khỏi ``voice_idx``. Giá trị có thể nằm trong khoảng từ 1 đến 20500.
 
 .. rst-class:: classref-item-separator
 
@@ -699,7 +699,7 @@ Sets the frequency threshold of a given ``voice_idx``'s low-pass filter in Hz. F
 
 |void| **set_voice_delay_ms**\ (\ voice_idx\: :ref:`int<class_int>`, delay_ms\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AudioEffectChorus_method_set_voice_delay_ms>`
 
-Sets the delay of a given ``voice_idx`` in milliseconds, compared to the original audio. Value can range from 0 to 50.
+Đặt độ trễ của ``voice_idx`` đã cho, tính bằng mili giây, so với âm thanh gốc. Giá trị có thể nằm trong khoảng từ 0 đến 50.
 
 .. rst-class:: classref-item-separator
 
@@ -711,7 +711,7 @@ Sets the delay of a given ``voice_idx`` in milliseconds, compared to the origina
 
 |void| **set_voice_depth_ms**\ (\ voice_idx\: :ref:`int<class_int>`, depth_ms\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AudioEffectChorus_method_set_voice_depth_ms>`
 
-Sets the depth of a given ``voice_idx``'s low-frequency oscillator in milliseconds. Value can range from 0 to 20.
+Đặt độ sâu của bộ dao động tần số thấp (low-frequency oscillator) của ``voice_idx`` đã cho, tính bằng mili giây. Giá trị có thể nằm trong khoảng từ 0 đến 20.
 
 .. rst-class:: classref-item-separator
 
@@ -723,7 +723,7 @@ Sets the depth of a given ``voice_idx``'s low-frequency oscillator in millisecon
 
 |void| **set_voice_level_db**\ (\ voice_idx\: :ref:`int<class_int>`, level_db\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AudioEffectChorus_method_set_voice_level_db>`
 
-Sets the gain of a given ``voice_idx`` in dB. Value can range from -60 to 24.
+Đặt gain của ``voice_idx`` đã cho, tính bằng dB. Giá trị có thể nằm trong khoảng từ -60 đến 24.
 
 .. rst-class:: classref-item-separator
 
@@ -735,7 +735,7 @@ Sets the gain of a given ``voice_idx`` in dB. Value can range from -60 to 24.
 
 |void| **set_voice_pan**\ (\ voice_idx\: :ref:`int<class_int>`, pan\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AudioEffectChorus_method_set_voice_pan>`
 
-Sets the pan position of a given ``voice_idx``. Negative values pan the sound to the left, positive pan to the right. Value can range from -1 to 1.
+Đặt vị trí pan của một ``voice_idx`` nhất định. Giá trị âm sẽ pan âm thanh sang trái, giá trị dương sẽ pan sang phải. Giá trị có thể nằm trong khoảng từ -1 đến 1.
 
 .. rst-class:: classref-item-separator
 
@@ -747,14 +747,14 @@ Sets the pan position of a given ``voice_idx``. Negative values pan the sound to
 
 |void| **set_voice_rate_hz**\ (\ voice_idx\: :ref:`int<class_int>`, rate_hz\: :ref:`float<class_float>`\ ) :ref:`🔗<class_AudioEffectChorus_method_set_voice_rate_hz>`
 
-Sets the rate of a given ``voice_idx``'s low-frequency oscillator in Hz. Value can range from 0.1 to 20.
+Đặt tốc độ tính bằng Hz của bộ dao động tần số thấp của ``voice_idx``. Giá trị có thể nằm trong khoảng từ 0.1 đến 20.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

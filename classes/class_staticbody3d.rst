@@ -10,42 +10,42 @@
 StaticBody3D
 ============
 
-**Inherits:** :ref:`PhysicsBody3D<class_PhysicsBody3D>` **<** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PhysicsBody3D<class_PhysicsBody3D>` **<** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AnimatableBody3D<class_AnimatableBody3D>`
+**Được kế thừa bởi:** :ref:`AnimatableBody3D<class_AnimatableBody3D>`
 
-A 3D physics body that can't be moved by external forces. When moved manually, it doesn't affect other bodies in its path.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A static 3D physics body. It can't be moved by external forces or contacts, but can be moved manually by other means such as code, :ref:`AnimationMixer<class_AnimationMixer>`\ s (with :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` set to :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`), and :ref:`RemoteTransform3D<class_RemoteTransform3D>`.
-
-When **StaticBody3D** is moved, it is teleported to its new position without affecting other physics bodies in its path. If this is not desired, use :ref:`AnimatableBody3D<class_AnimatableBody3D>` instead.
-
-\ **StaticBody3D** is useful for completely static objects like floors and walls, as well as moving surfaces like conveyor belts and circular revolving platforms (by using :ref:`constant_linear_velocity<class_StaticBody3D_property_constant_linear_velocity>` and :ref:`constant_angular_velocity<class_StaticBody3D_property_constant_angular_velocity>`).
+Một physics body 3D không thể bị di chuyển bởi các lực bên ngoài. Khi được di chuyển thủ công, nó không ảnh hưởng đến các body khác trên đường đi của nó.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một physics body 3D tĩnh. Nó không thể bị di chuyển bởi các lực hoặc va chạm bên ngoài, nhưng có thể được di chuyển thủ công bằng các cách khác như code, :ref:`AnimationMixer<class_AnimationMixer>`\ s (với :ref:`AnimationMixer.callback_mode_process<class_AnimationMixer_property_callback_mode_process>` được đặt thành :ref:`AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS<class_AnimationMixer_constant_ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS>`), và :ref:`RemoteTransform3D<class_RemoteTransform3D>`.
+
+Khi **StaticBody3D** được di chuyển, nó được dịch chuyển tức thời đến vị trí mới mà không ảnh hưởng đến các physics body khác trên đường đi của nó. Nếu không muốn như vậy, hãy sử dụng :ref:`AnimatableBody3D<class_AnimatableBody3D>` thay thế.
+
+\ **StaticBody3D** hữu ích cho các đối tượng hoàn toàn tĩnh như sàn và tường, cũng như các bề mặt chuyển động như băng chuyền và nền tảng xoay tròn (bằng cách sử dụng :ref:`constant_linear_velocity<class_StaticBody3D_property_constant_linear_velocity>` và :ref:`constant_angular_velocity<class_StaticBody3D_property_constant_angular_velocity>`).
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về physics <../tutorials/physics/physics_introduction>`
 
-- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+- :doc:`Khắc phục sự cố physics <../tutorials/physics/troubleshooting_physics_issues>`
 
-- `3D Physics Tests Demo <https://godotengine.org/asset-library/asset/2747>`__
+- `Bản trình diễn kiểm thử physics 3D <https://godotengine.org/asset-library/asset/2747>`__
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản trình diễn game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
-- `3D Voxel Demo <https://godotengine.org/asset-library/asset/2755>`__
+- `Bản trình diễn voxel 3D <https://godotengine.org/asset-library/asset/2755>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -64,8 +64,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_StaticBody3D_property_constant_angular_velocity:
 
@@ -78,7 +78,7 @@ Property Descriptions
 - |void| **set_constant_angular_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_constant_angular_velocity**\ (\ )
 
-The body's constant angular velocity. This does not rotate the body, but affects touching bodies, as if it were rotating.
+Vận tốc góc không đổi của body. Giá trị này không làm body xoay, nhưng ảnh hưởng đến các body đang chạm vào nó như thể nó đang xoay.
 
 .. rst-class:: classref-item-separator
 
@@ -95,7 +95,7 @@ The body's constant angular velocity. This does not rotate the body, but affects
 - |void| **set_constant_linear_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_constant_linear_velocity**\ (\ )
 
-The body's constant linear velocity. This does not move the body, but affects touching bodies, as if it were moving.
+Vận tốc tuyến tính không đổi của body. Giá trị này không di chuyển body, nhưng ảnh hưởng đến các body đang chạm vào nó như thể nó đang di chuyển.
 
 .. rst-class:: classref-item-separator
 
@@ -105,23 +105,23 @@ The body's constant linear velocity. This does not move the body, but affects to
 
 .. rst-class:: classref-property
 
-:ref:`PhysicsMaterial<class_PhysicsMaterial>` **physics_material_override** :ref:`🔗<class_StaticBody3D_property_physics_material_override>`
+:ref:`PhysicsMaterial<class_PhysicsMaterial>` **physics_material_override** :ref:`🔗 <class_StaticBody3D_property_physics_material_override>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_physics_material_override**\ (\ value\: :ref:`PhysicsMaterial<class_PhysicsMaterial>`\ )
 - :ref:`PhysicsMaterial<class_PhysicsMaterial>` **get_physics_material_override**\ (\ )
 
-The physics material override for the body.
+Physics material override của body.
 
-If a material is assigned to this property, it will be used instead of any other physics material, such as an inherited one.
+Nếu một material được gán cho thuộc tính này, nó sẽ được sử dụng thay cho mọi physics material khác, chẳng hạn như material được kế thừa.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng phải override method này thì nó mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

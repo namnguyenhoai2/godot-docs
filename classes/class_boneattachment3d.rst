@@ -13,43 +13,43 @@
 BoneAttachment3D
 ================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-А node that dynamically copies or overrides the 3D transform of a bone in its parent :ref:`Skeleton3D<class_Skeleton3D>`.
+Một node tự động sao chép hoặc ghi đè phép biến đổi 3D của một bone trong :ref:`Skeleton3D<class_Skeleton3D>` của node cha.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node selects a bone in a :ref:`Skeleton3D<class_Skeleton3D>` and attaches to it. This means that the **BoneAttachment3D** node will either dynamically copy or override the 3D transform of the selected bone.
+Node này chọn một bone trong :ref:`Skeleton3D<class_Skeleton3D>` và gắn vào bone đó. Điều này có nghĩa là node **BoneAttachment3D** sẽ tự động sao chép hoặc ghi đè phép biến đổi 3D của bone đã chọn.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                               | :ref:`bone_idx<class_BoneAttachment3D_property_bone_idx>`                           | ``-1``                                                                        |
-   +---------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                         | :ref:`bone_name<class_BoneAttachment3D_property_bone_name>`                         | ``""``                                                                        |
-   +---------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                     | :ref:`external_skeleton<class_BoneAttachment3D_property_external_skeleton>`         |                                                                               |
-   +---------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`override_pose<class_BoneAttachment3D_property_override_pose>`                 | ``false``                                                                     |
-   +---------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                                          | ``2`` (overrides :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
-   +---------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                             | :ref:`use_external_skeleton<class_BoneAttachment3D_property_use_external_skeleton>` | ``false``                                                                     |
-   +---------------------------------------------------------------------+-------------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+   +----------------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                                | :ref:`bone_idx<class_BoneAttachment3D_property_bone_idx>`                           | ``-1``                                                                     |
+   +----------------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                          | :ref:`bone_name<class_BoneAttachment3D_property_bone_name>`                         | ``""``                                                                     |
+   +----------------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                      | :ref:`external_skeleton<class_BoneAttachment3D_property_external_skeleton>`         |                                                                            |
+   +----------------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`override_pose<class_BoneAttachment3D_property_override_pose>`                 | ``false``                                                                  |
+   +----------------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`PhysicsInterpolationMode <enum_Node_PhysicsInterpolationMode>` | physics_interpolation_mode                                                          | ``2`` (ghi đè :ref:`Node<class_Node_property_physics_interpolation_mode>`) |
+   +----------------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                              | :ref:`use_external_skeleton<class_BoneAttachment3D_property_use_external_skeleton>` | ``false``                                                                  |
+   +----------------------------------------------------------------------+-------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -66,8 +66,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_BoneAttachment3D_property_bone_idx:
 
@@ -80,7 +80,7 @@ Property Descriptions
 - |void| **set_bone_idx**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bone_idx**\ (\ )
 
-The index of the attached bone.
+Chỉ mục của xương được gắn.
 
 .. rst-class:: classref-item-separator
 
@@ -97,7 +97,7 @@ The index of the attached bone.
 - |void| **set_bone_name**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_bone_name**\ (\ )
 
-The name of the attached bone.
+Tên của xương được gắn.
 
 .. rst-class:: classref-item-separator
 
@@ -107,14 +107,14 @@ The name of the attached bone.
 
 .. rst-class:: classref-property
 
-:ref:`NodePath<class_NodePath>` **external_skeleton** :ref:`🔗<class_BoneAttachment3D_property_external_skeleton>`
+:ref:`NodePath<class_NodePath>` **external_skeleton** :ref:`🔗 <class_BoneAttachment3D_property_external_skeleton>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_external_skeleton**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_external_skeleton**\ (\ )
 
-The :ref:`NodePath<class_NodePath>` to the external :ref:`Skeleton3D<class_Skeleton3D>` node.
+Đường dẫn đến node :ref:`Skeleton3D<class_Skeleton3D>` bên ngoài :ref:`NodePath<class_NodePath>`.
 
 .. rst-class:: classref-item-separator
 
@@ -131,9 +131,9 @@ The :ref:`NodePath<class_NodePath>` to the external :ref:`Skeleton3D<class_Skele
 - |void| **set_override_pose**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_override_pose**\ (\ )
 
-Whether the **BoneAttachment3D** node will override the bone pose of the bone it is attached to. When set to ``true``, the **BoneAttachment3D** node can change the pose of the bone. When set to ``false``, the **BoneAttachment3D** will always be set to the bone's transform.
+Liệu node **BoneAttachment3D** có ghi đè tư thế của xương mà nó được gắn vào hay không. Khi đặt thành ``true``, node **BoneAttachment3D** có thể thay đổi tư thế của xương. Khi đặt thành ``false``, **BoneAttachment3D** sẽ luôn được đặt thành phép biến đổi của xương.
 
-\ **Note:** This override performs interruptively in the skeleton update process using signals due to the old design. It may cause unintended behavior when used at the same time with :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`.
+\ **Lưu ý:** Việc ghi đè này được thực hiện một cách gián đoạn trong quá trình cập nhật skeleton bằng signals do thiết kế cũ. Điều này có thể gây ra hành vi ngoài dự kiến khi được sử dụng đồng thời với :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Whether the **BoneAttachment3D** node will override the bone pose of the bone it
 - |void| **set_use_external_skeleton**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_external_skeleton**\ (\ )
 
-Whether the **BoneAttachment3D** node will use an external :ref:`Skeleton3D<class_Skeleton3D>` node rather than attempting to use its parent node as the :ref:`Skeleton3D<class_Skeleton3D>`. When set to ``true``, the **BoneAttachment3D** node will use the external :ref:`Skeleton3D<class_Skeleton3D>` node set in :ref:`external_skeleton<class_BoneAttachment3D_property_external_skeleton>`.
+Liệu node **BoneAttachment3D** có sử dụng node :ref:`Skeleton3D<class_Skeleton3D>` bên ngoài thay vì cố gắng sử dụng node cha của nó làm :ref:`Skeleton3D<class_Skeleton3D>` hay không. Khi đặt thành ``true``, node **BoneAttachment3D** sẽ sử dụng node :ref:`Skeleton3D<class_Skeleton3D>` bên ngoài được đặt trong :ref:`external_skeleton<class_BoneAttachment3D_property_external_skeleton>`.
 
 .. rst-class:: classref-section-separator
 
@@ -158,8 +158,8 @@ Whether the **BoneAttachment3D** node will use an external :ref:`Skeleton3D<clas
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_BoneAttachment3D_method_get_skeleton:
 
@@ -167,7 +167,7 @@ Method Descriptions
 
 :ref:`Skeleton3D<class_Skeleton3D>` **get_skeleton**\ (\ ) :ref:`🔗<class_BoneAttachment3D_method_get_skeleton>`
 
-Returns the parent or external :ref:`Skeleton3D<class_Skeleton3D>` node if it exists, otherwise returns ``null``.
+Trả về node :ref:`Skeleton3D<class_Skeleton3D>` cha hoặc bên ngoài nếu tồn tại, nếu không thì trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -179,14 +179,14 @@ Returns the parent or external :ref:`Skeleton3D<class_Skeleton3D>` node if it ex
 
 |void| **on_skeleton_update**\ (\ ) :ref:`🔗<class_BoneAttachment3D_method_on_skeleton_update>`
 
-A function that is called automatically when the :ref:`Skeleton3D<class_Skeleton3D>` is updated. This function is where the **BoneAttachment3D** node updates its position so it is correctly bound when it is *not* set to override the bone pose.
+Một hàm được tự động gọi khi :ref:`Skeleton3D<class_Skeleton3D>` được cập nhật. Đây là nơi node **BoneAttachment3D** cập nhật vị trí của nó để được liên kết chính xác khi nó *không* được đặt để ghi đè tư thế của xương.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

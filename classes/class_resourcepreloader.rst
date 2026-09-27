@@ -10,23 +10,23 @@
 ResourcePreloader
 =================
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node used to preload sub-resources inside a scene.
+Một node dùng để preload các sub-resource bên trong một scene.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This node is used to preload sub-resources inside a scene, so when the scene is loaded, all the resources are ready to use and can be retrieved from the preloader. You can add the resources using the ResourcePreloader tab when the node is selected.
+Node này được dùng để preload các sub-resource bên trong một scene, vì vậy khi scene được tải, tất cả resource đều sẵn sàng để sử dụng và có thể được lấy từ preloader. Bạn có thể thêm các resource bằng tab ResourcePreloader khi node được chọn.
 
-GDScript has a simplified :ref:`@GDScript.preload()<class_@GDScript_method_preload>` built-in method which can be used in most situations, leaving the use of **ResourcePreloader** for more advanced scenarios.
+GDScript có một built-in method :ref:`@GDScript.preload() <class_@GDScript_method_preload>` được đơn giản hóa, có thể dùng trong hầu hết tình huống, nên chỉ cần dùng **ResourcePreloader** trong các trường hợp nâng cao hơn.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -51,8 +51,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ResourcePreloader_method_add_resource:
 
@@ -60,7 +60,7 @@ Method Descriptions
 
 |void| **add_resource**\ (\ name\: :ref:`StringName<class_StringName>`, resource\: :ref:`Resource<class_Resource>`\ ) :ref:`🔗<class_ResourcePreloader_method_add_resource>`
 
-Adds a resource to the preloader with the given ``name``. If a resource with the given ``name`` already exists, the new resource will be renamed to "``name`` N" where N is an incrementing number starting from 2.
+Thêm một resource vào preloader với ``name`` đã cho. Nếu resource có ``name`` đã cho đã tồn tại, resource mới sẽ được đổi tên thành "``name`` N", trong đó N là một số tăng dần bắt đầu từ 2.
 
 .. rst-class:: classref-item-separator
 
@@ -72,7 +72,7 @@ Adds a resource to the preloader with the given ``name``. If a resource with the
 
 :ref:`Resource<class_Resource>` **get_resource**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ResourcePreloader_method_get_resource>`
 
-Returns the resource associated to ``name``.
+Trả về resource được liên kết với ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ Returns the resource associated to ``name``.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_resource_list**\ (\ ) |const| :ref:`🔗<class_ResourcePreloader_method_get_resource_list>`
 
-Returns the list of resources inside the preloader.
+Trả về danh sách các resource bên trong preloader.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Returns the list of resources inside the preloader.
 
 :ref:`bool<class_bool>` **has_resource**\ (\ name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ResourcePreloader_method_has_resource>`
 
-Returns ``true`` if the preloader contains a resource associated to ``name``.
+Trả về ``true`` nếu preloader chứa một resource được liên kết với ``name``.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Returns ``true`` if the preloader contains a resource associated to ``name``.
 
 |void| **remove_resource**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_ResourcePreloader_method_remove_resource>`
 
-Removes the resource associated to ``name`` from the preloader.
+Xóa resource được liên kết với ``name`` khỏi preloader.
 
 .. rst-class:: classref-item-separator
 
@@ -120,14 +120,14 @@ Removes the resource associated to ``name`` from the preloader.
 
 |void| **rename_resource**\ (\ name\: :ref:`StringName<class_StringName>`, newname\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_ResourcePreloader_method_rename_resource>`
 
-Renames a resource inside the preloader from ``name`` to ``newname``.
+Đổi tên một resource bên trong preloader từ ``name`` thành ``newname``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

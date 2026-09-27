@@ -13,27 +13,27 @@
 MarginContainer
 ===============
 
-**Inherits:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorDock<class_EditorDock>`
+**Được kế thừa bởi:** :ref:`EditorDock<class_EditorDock>`
 
-A container that keeps a margin around its child controls.
+Một container giữ một margin xung quanh các control con.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**MarginContainer** adds an adjustable margin on each side of its child controls. The margins are added around all children, not around each individual one. To control the **MarginContainer**'s margins, use the ``margin_*`` theme properties listed below.
+**MarginContainer** thêm một margin có thể điều chỉnh ở mỗi phía của các control con. Các margin được thêm xung quanh tất cả các control con, không phải quanh từng control riêng lẻ. Để điều khiển các margin của **MarginContainer**, hãy sử dụng các thuộc tính theme ``margin_*`` được liệt kê bên dưới.
 
-\ **Note:** The margin sizes are theme overrides, not normal properties. This is an example of how to change them in code:
+\ **Lưu ý:** Kích thước margin là các theme override, không phải các thuộc tính thông thường. Đây là một ví dụ về cách thay đổi chúng trong code:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # This code sample assumes the current script is extending MarginContainer.
+    # Mẫu mã này giả định rằng script hiện tại đang mở rộng MarginContainer.
     var margin_value = 100
     add_theme_constant_override("margin_top", margin_value)
     add_theme_constant_override("margin_left", margin_value)
@@ -42,7 +42,7 @@ Description
 
  .. code-tab:: csharp
 
-    // This code sample assumes the current script is extending MarginContainer.
+    // Mẫu mã này giả định rằng script hiện tại đang mở rộng MarginContainer.
     int marginValue = 100;
     AddThemeConstantOverride("margin_top", marginValue);
     AddThemeConstantOverride("margin_left", marginValue);
@@ -53,15 +53,15 @@ Description
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Using Containers <../tutorials/ui/gui_containers>`
+- :doc:`Sử dụng Container <../tutorials/ui/gui_containers>`
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
-----------------
+Các thuộc tính Theme
+--------------------
 
 .. table::
    :widths: auto
@@ -82,8 +82,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_MarginContainer_theme_constant_margin_bottom:
 
@@ -91,7 +91,7 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **margin_bottom** = ``0`` :ref:`🔗<class_MarginContainer_theme_constant_margin_bottom>`
 
-Offsets towards the inside direct children of the container by this amount of pixels from the bottom.
+Đẩy các node con trực tiếp của container vào phía trong một khoảng bằng số pixel này, tính từ cạnh dưới.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ Offsets towards the inside direct children of the container by this amount of pi
 
 :ref:`int<class_int>` **margin_left** = ``0`` :ref:`🔗<class_MarginContainer_theme_constant_margin_left>`
 
-Offsets towards the inside direct children of the container by this amount of pixels from the left.
+Dịch các phần tử con trực tiếp của container vào phía trong một khoảng bằng số pixel này tính từ bên trái.
 
 .. rst-class:: classref-item-separator
 
@@ -115,7 +115,7 @@ Offsets towards the inside direct children of the container by this amount of pi
 
 :ref:`int<class_int>` **margin_right** = ``0`` :ref:`🔗<class_MarginContainer_theme_constant_margin_right>`
 
-Offsets towards the inside direct children of the container by this amount of pixels from the right.
+Dịch các phần tử con trực tiếp của container vào phía trong một khoảng bằng số pixel này tính từ bên phải.
 
 .. rst-class:: classref-item-separator
 
@@ -127,14 +127,14 @@ Offsets towards the inside direct children of the container by this amount of pi
 
 :ref:`int<class_int>` **margin_top** = ``0`` :ref:`🔗<class_MarginContainer_theme_constant_margin_top>`
 
-Offsets towards the inside direct children of the container by this amount of pixels from the top.
+Dịch các phần tử con trực tiếp của container vào phía trong một khoảng bằng số pixel này tính từ phía trên.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

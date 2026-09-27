@@ -10,18 +10,18 @@
 EditorCommandPalette
 ====================
 
-**Inherits:** :ref:`ConfirmationDialog<class_ConfirmationDialog>` **<** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ConfirmationDialog<class_ConfirmationDialog>` **<** :ref:`AcceptDialog<class_AcceptDialog>` **<** :ref:`Window<class_Window>` **<** :ref:`Viewport<class_Viewport>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Godot editor's command palette.
+Command palette của Godot editor.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Object that holds all the available Commands and their shortcuts text. These Commands can be accessed through **Editor > Command Palette** menu.
+Đối tượng chứa tất cả Commands hiện có và văn bản phím tắt của chúng. Có thể truy cập các Commands này thông qua menu **Editor > Command Palette**.
 
-Command key names use slash delimiters to distinguish sections, for example: ``"example/command1"`` then ``example`` will be the section name.
+Tên phím lệnh sử dụng dấu gạch chéo để phân biệt các phần, ví dụ: ``"example/command1"`` rồi ``example`` sẽ là tên phần.
 
 
 .. tabs::
@@ -29,25 +29,25 @@ Command key names use slash delimiters to distinguish sections, for example: ``"
  .. code-tab:: gdscript
 
     var command_palette = EditorInterface.get_command_palette()
-    # external_command is a function that will be called with the command is executed.
+    # external_command là một hàm sẽ được gọi khi lệnh được thực thi.
     var command_callable = Callable(self, "external_command").bind(arguments)
     command_palette.add_command("command", "test/command",command_callable)
 
  .. code-tab:: csharp
 
     EditorCommandPalette commandPalette = EditorInterface.Singleton.GetCommandPalette();
-    // ExternalCommand is a function that will be called with the command is executed.
+    // ExternalCommand là một hàm sẽ được gọi khi lệnh được thực thi.
     Callable commandCallable = new Callable(this, MethodName.ExternalCommand);
     commandPalette.AddCommand("command", "test/command", commandCallable)
 
 
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_command_palette()<class_EditorInterface_method_get_command_palette>`.
+\ **Lưu ý:** Không nên khởi tạo trực tiếp lớp này. Thay vào đó, hãy truy cập singleton bằng :ref:`EditorInterface.get_command_palette()<class_EditorInterface_method_get_command_palette>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -64,8 +64,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorCommandPalette_method_add_command:
 
@@ -73,15 +73,15 @@ Method Descriptions
 
 |void| **add_command**\ (\ command_name\: :ref:`String<class_String>`, key_name\: :ref:`String<class_String>`, binded_callable\: :ref:`Callable<class_Callable>`, shortcut_text\: :ref:`String<class_String>` = "None"\ ) :ref:`🔗<class_EditorCommandPalette_method_add_command>`
 
-Adds a custom command to EditorCommandPalette.
+Thêm một lệnh tùy chỉnh vào EditorCommandPalette.
 
-- ``command_name``: :ref:`String<class_String>` (Name of the **Command**. This is displayed to the user.)
+- ``command_name``: :ref:`String<class_String>` (Tên của **Command**. Tên này được hiển thị cho người dùng.)
 
-- ``key_name``: :ref:`String<class_String>` (Name of the key for a particular **Command**. This is used to uniquely identify the **Command**.)
+- ``key_name``: :ref:`String<class_String>` (Tên khóa của một **Command** cụ thể. Khóa này được dùng để xác định duy nhất **Command**.)
 
-- ``binded_callable``: :ref:`Callable<class_Callable>` (Callable of the **Command**. This will be executed when the **Command** is selected.)
+- ``binded_callable``: :ref:`Callable<class_Callable>` (Callable của **Command**. Callable này sẽ được thực thi khi **Command** được chọn.)
 
-- ``shortcut_text``: :ref:`String<class_String>` (Shortcut text of the **Command** if available.)
+- ``shortcut_text``: :ref:`String<class_String>` (Văn bản phím tắt của **Command** nếu có.)
 
 .. rst-class:: classref-item-separator
 
@@ -93,16 +93,16 @@ Adds a custom command to EditorCommandPalette.
 
 |void| **remove_command**\ (\ key_name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorCommandPalette_method_remove_command>`
 
-Removes the custom command from EditorCommandPalette.
+Xóa lệnh tùy chỉnh khỏi EditorCommandPalette.
 
-- ``key_name``: :ref:`String<class_String>` (Name of the key for a particular **Command**.)
+- ``key_name``: :ref:`String<class_String>` (Tên khóa của một **Command** cụ thể.)
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

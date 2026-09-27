@@ -10,69 +10,69 @@
 ENetPacketPeer
 ==============
 
-**Inherits:** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PacketPeer<class_PacketPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A wrapper class for an `ENetPeer <http://enet.bespin.org/group__peer.html>`__.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A PacketPeer implementation representing a peer of an :ref:`ENetConnection<class_ENetConnection>`.
-
-This class cannot be instantiated directly but can be retrieved during :ref:`ENetConnection.service()<class_ENetConnection_method_service>` or via :ref:`ENetConnection.get_peers()<class_ENetConnection_method_get_peers>`.
-
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+Một lớp wrapper cho `ENetPeer <http://enet.bespin.org/group__peer.html>`__.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một triển khai PacketPeer đại diện cho một peer của :ref:`ENetConnection<class_ENetConnection>`.
+
+Không thể khởi tạo trực tiếp lớp này, nhưng bạn có thể lấy lớp này trong :ref:`ENetConnection.service()<class_ENetConnection_method_service>` hoặc thông qua :ref:`ENetConnection.get_peers()<class_ENetConnection_method_get_peers>`.
+
+\ **Lưu ý:** Khi export sang Android, hãy đảm bảo bật permission ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `API documentation on the ENet website <http://enet.bespin.org/usergroup0.html>`__
+- `Tài liệu API trên trang web ENet <http://enet.bespin.org/usergroup0.html>`__
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                           | :ref:`get_channels<class_ENetPacketPeer_method_get_channels>`\ (\ ) |const|                                                                                                                   |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                           | :ref:`get_packet_flags<class_ENetPacketPeer_method_get_packet_flags>`\ (\ ) |const|                                                                                                           |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                     | :ref:`get_remote_address<class_ENetPacketPeer_method_get_remote_address>`\ (\ ) |const|                                                                                                       |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                           | :ref:`get_remote_port<class_ENetPacketPeer_method_get_remote_port>`\ (\ ) |const|                                                                                                             |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PeerState<enum_ENetPacketPeer_PeerState>` | :ref:`get_state<class_ENetPacketPeer_method_get_state>`\ (\ ) |const|                                                                                                                         |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`                       | :ref:`get_statistic<class_ENetPacketPeer_method_get_statistic>`\ (\ statistic\: :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>`\ )                                                    |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                         | :ref:`is_active<class_ENetPacketPeer_method_is_active>`\ (\ ) |const|                                                                                                                         |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`peer_disconnect<class_ENetPacketPeer_method_peer_disconnect>`\ (\ data\: :ref:`int<class_int>` = 0\ )                                                                                   |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`peer_disconnect_later<class_ENetPacketPeer_method_peer_disconnect_later>`\ (\ data\: :ref:`int<class_int>` = 0\ )                                                                       |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`peer_disconnect_now<class_ENetPacketPeer_method_peer_disconnect_now>`\ (\ data\: :ref:`int<class_int>` = 0\ )                                                                           |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`ping<class_ENetPacketPeer_method_ping>`\ (\ )                                                                                                                                           |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`ping_interval<class_ENetPacketPeer_method_ping_interval>`\ (\ ping_interval\: :ref:`int<class_int>`\ )                                                                                  |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`reset<class_ENetPacketPeer_method_reset>`\ (\ )                                                                                                                                         |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`           | :ref:`send<class_ENetPacketPeer_method_send>`\ (\ channel\: :ref:`int<class_int>`, packet\: :ref:`PackedByteArray<class_PackedByteArray>`, flags\: :ref:`int<class_int>`\ )                   |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`set_timeout<class_ENetPacketPeer_method_set_timeout>`\ (\ timeout\: :ref:`int<class_int>`, timeout_min\: :ref:`int<class_int>`, timeout_max\: :ref:`int<class_int>`\ )                  |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                          | :ref:`throttle_configure<class_ENetPacketPeer_method_throttle_configure>`\ (\ interval\: :ref:`int<class_int>`, acceleration\: :ref:`int<class_int>`, deceleration\: :ref:`int<class_int>`\ ) |
-   +-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                            | :ref:`get_channels<class_ENetPacketPeer_method_get_channels>`\ (\ ) |const|                                                                                                                   |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                            | :ref:`get_packet_flags<class_ENetPacketPeer_method_get_packet_flags>`\ (\ ) |const|                                                                                                           |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                      | :ref:`get_remote_address<class_ENetPacketPeer_method_get_remote_address>`\ (\ ) |const|                                                                                                       |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                            | :ref:`get_remote_port<class_ENetPacketPeer_method_get_remote_port>`\ (\ ) |const|                                                                                                             |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PeerState <enum_ENetPacketPeer_PeerState>` | :ref:`get_state<class_ENetPacketPeer_method_get_state>`\ (\ ) |const|                                                                                                                         |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`                        | :ref:`get_statistic<class_ENetPacketPeer_method_get_statistic>`\ (\ statistic\: :ref:`PeerStatistic <enum_ENetPacketPeer_PeerStatistic>`\ )                                                   |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                          | :ref:`is_active<class_ENetPacketPeer_method_is_active>`\ (\ ) |const|                                                                                                                         |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`peer_disconnect<class_ENetPacketPeer_method_peer_disconnect>`\ (\ data\: :ref:`int<class_int>` = 0\ )                                                                                   |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`peer_disconnect_later<class_ENetPacketPeer_method_peer_disconnect_later>`\ (\ data\: :ref:`int<class_int>` = 0\ )                                                                       |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`peer_disconnect_now<class_ENetPacketPeer_method_peer_disconnect_now>`\ (\ data\: :ref:`int<class_int>` = 0\ )                                                                           |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`ping<class_ENetPacketPeer_method_ping>`\ (\ )                                                                                                                                           |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`ping_interval<class_ENetPacketPeer_method_ping_interval>`\ (\ ping_interval\: :ref:`int<class_int>`\ )                                                                                  |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`reset<class_ENetPacketPeer_method_reset>`\ (\ )                                                                                                                                         |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`           | :ref:`send<class_ENetPacketPeer_method_send>`\ (\ channel\: :ref:`int<class_int>`, packet\: :ref:`PackedByteArray<class_PackedByteArray>`, flags\: :ref:`int<class_int>`\ )                   |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`set_timeout<class_ENetPacketPeer_method_set_timeout>`\ (\ timeout\: :ref:`int<class_int>`, timeout_min\: :ref:`int<class_int>`, timeout_max\: :ref:`int<class_int>`\ )                  |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                           | :ref:`throttle_configure<class_ENetPacketPeer_method_throttle_configure>`\ (\ interval\: :ref:`int<class_int>`, acceleration\: :ref:`int<class_int>`, deceleration\: :ref:`int<class_int>`\ ) |
+   +--------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -80,14 +80,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_ENetPacketPeer_PeerState:
 
 .. rst-class:: classref-enumeration
 
-enum **PeerState**: :ref:`🔗<enum_ENetPacketPeer_PeerState>`
+enum **PeerState**: :ref:`🔗 <enum_ENetPacketPeer_PeerState>`
 
 .. _class_ENetPacketPeer_constant_STATE_DISCONNECTED:
 
@@ -95,7 +95,7 @@ enum **PeerState**: :ref:`🔗<enum_ENetPacketPeer_PeerState>`
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_DISCONNECTED** = ``0``
 
-The peer is disconnected.
+Peer đã ngắt kết nối.
 
 .. _class_ENetPacketPeer_constant_STATE_CONNECTING:
 
@@ -103,7 +103,7 @@ The peer is disconnected.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_CONNECTING** = ``1``
 
-The peer is currently attempting to connect.
+Peer hiện đang cố gắng kết nối.
 
 .. _class_ENetPacketPeer_constant_STATE_ACKNOWLEDGING_CONNECT:
 
@@ -111,7 +111,7 @@ The peer is currently attempting to connect.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_ACKNOWLEDGING_CONNECT** = ``2``
 
-The peer has acknowledged the connection request.
+Peer đã xác nhận yêu cầu kết nối.
 
 .. _class_ENetPacketPeer_constant_STATE_CONNECTION_PENDING:
 
@@ -119,7 +119,7 @@ The peer has acknowledged the connection request.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_CONNECTION_PENDING** = ``3``
 
-The peer is currently connecting.
+Peer hiện đang kết nối.
 
 .. _class_ENetPacketPeer_constant_STATE_CONNECTION_SUCCEEDED:
 
@@ -127,7 +127,7 @@ The peer is currently connecting.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_CONNECTION_SUCCEEDED** = ``4``
 
-The peer has successfully connected, but is not ready to communicate with yet (:ref:`STATE_CONNECTED<class_ENetPacketPeer_constant_STATE_CONNECTED>`).
+Peer đã kết nối thành công nhưng chưa sẵn sàng để giao tiếp với :ref:`STATE_CONNECTED<class_ENetPacketPeer_constant_STATE_CONNECTED>`.
 
 .. _class_ENetPacketPeer_constant_STATE_CONNECTED:
 
@@ -135,7 +135,7 @@ The peer has successfully connected, but is not ready to communicate with yet (:
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_CONNECTED** = ``5``
 
-The peer is currently connected and ready to communicate with.
+Peer hiện đã kết nối và sẵn sàng giao tiếp.
 
 .. _class_ENetPacketPeer_constant_STATE_DISCONNECT_LATER:
 
@@ -143,7 +143,7 @@ The peer is currently connected and ready to communicate with.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_DISCONNECT_LATER** = ``6``
 
-The peer is expected to disconnect after it has no more outgoing packets to send.
+Peer dự kiến sẽ ngắt kết nối sau khi không còn packet gửi đi nào.
 
 .. _class_ENetPacketPeer_constant_STATE_DISCONNECTING:
 
@@ -151,7 +151,7 @@ The peer is expected to disconnect after it has no more outgoing packets to send
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_DISCONNECTING** = ``7``
 
-The peer is currently disconnecting.
+Đối tác hiện đang ngắt kết nối.
 
 .. _class_ENetPacketPeer_constant_STATE_ACKNOWLEDGING_DISCONNECT:
 
@@ -159,7 +159,7 @@ The peer is currently disconnecting.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_ACKNOWLEDGING_DISCONNECT** = ``8``
 
-The peer has acknowledged the disconnection request.
+Đối tác đã xác nhận yêu cầu ngắt kết nối.
 
 .. _class_ENetPacketPeer_constant_STATE_ZOMBIE:
 
@@ -167,7 +167,7 @@ The peer has acknowledged the disconnection request.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **STATE_ZOMBIE** = ``9``
 
-The peer has lost connection, but is not considered truly disconnected (as the peer didn't acknowledge the disconnection request).
+Đối tác đã mất kết nối, nhưng chưa được xem là thực sự bị ngắt kết nối (vì đối tác chưa xác nhận yêu cầu ngắt kết nối).
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ The peer has lost connection, but is not considered truly disconnected (as the p
 
 .. rst-class:: classref-enumeration
 
-enum **PeerStatistic**: :ref:`🔗<enum_ENetPacketPeer_PeerStatistic>`
+enum **PeerStatistic**: :ref:`🔗 <enum_ENetPacketPeer_PeerStatistic>`
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_LOSS:
 
@@ -185,7 +185,7 @@ enum **PeerStatistic**: :ref:`🔗<enum_ENetPacketPeer_PeerStatistic>`
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_LOSS** = ``0``
 
-Mean packet loss of reliable packets as a ratio with respect to the :ref:`PACKET_LOSS_SCALE<class_ENetPacketPeer_constant_PACKET_LOSS_SCALE>`.
+Tổn thất gói tin đáng tin cậy trung bình, được biểu thị dưới dạng tỷ lệ so với :ref:`PACKET_LOSS_SCALE<class_ENetPacketPeer_constant_PACKET_LOSS_SCALE>`.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_LOSS_VARIANCE:
 
@@ -193,7 +193,7 @@ Mean packet loss of reliable packets as a ratio with respect to the :ref:`PACKET
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_LOSS_VARIANCE** = ``1``
 
-Packet loss variance.
+Phương sai của tổn thất gói tin.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_LOSS_EPOCH:
 
@@ -201,7 +201,7 @@ Packet loss variance.
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_LOSS_EPOCH** = ``2``
 
-The time at which packet loss statistics were last updated (in milliseconds since the connection started). The interval for packet loss statistics updates is 10 seconds, and at least one packet must have been sent since the last statistics update.
+Thời điểm số liệu thống kê về tổn thất gói tin được cập nhật lần cuối (tính bằng mili giây kể từ khi kết nối bắt đầu). Khoảng thời gian cập nhật số liệu thống kê về tổn thất gói tin là 10 giây và kể từ lần cập nhật số liệu thống kê gần nhất phải có ít nhất một gói tin được gửi đi.
 
 .. _class_ENetPacketPeer_constant_PEER_ROUND_TRIP_TIME:
 
@@ -209,7 +209,7 @@ The time at which packet loss statistics were last updated (in milliseconds sinc
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_ROUND_TRIP_TIME** = ``3``
 
-Mean packet round trip time for reliable packets.
+Thời gian trung bình cho một vòng khứ hồi của các gói tin đáng tin cậy.
 
 .. _class_ENetPacketPeer_constant_PEER_ROUND_TRIP_TIME_VARIANCE:
 
@@ -217,7 +217,7 @@ Mean packet round trip time for reliable packets.
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_ROUND_TRIP_TIME_VARIANCE** = ``4``
 
-Variance of the mean round trip time.
+Phương sai của thời gian vòng khứ hồi trung bình.
 
 .. _class_ENetPacketPeer_constant_PEER_LAST_ROUND_TRIP_TIME:
 
@@ -225,7 +225,7 @@ Variance of the mean round trip time.
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_LAST_ROUND_TRIP_TIME** = ``5``
 
-Last recorded round trip time for a reliable packet.
+Thời gian vòng khứ hồi gần nhất được ghi nhận cho một gói tin đáng tin cậy.
 
 .. _class_ENetPacketPeer_constant_PEER_LAST_ROUND_TRIP_TIME_VARIANCE:
 
@@ -233,7 +233,7 @@ Last recorded round trip time for a reliable packet.
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_LAST_ROUND_TRIP_TIME_VARIANCE** = ``6``
 
-Variance of the last trip time recorded.
+Phương sai của thời gian vòng khứ hồi gần nhất được ghi nhận.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE:
 
@@ -241,7 +241,7 @@ Variance of the last trip time recorded.
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_THROTTLE** = ``7``
 
-The peer's current throttle status.
+Trạng thái throttle hiện tại của peer.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_LIMIT:
 
@@ -249,7 +249,7 @@ The peer's current throttle status.
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_THROTTLE_LIMIT** = ``8``
 
-The maximum number of unreliable packets that should not be dropped. This value is always greater than or equal to ``1``. The initial value is equal to :ref:`PACKET_THROTTLE_SCALE<class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE>`.
+Số lượng tối đa các gói tin không đáng tin cậy không bị loại bỏ. Giá trị này luôn lớn hơn hoặc bằng ``1``. Giá trị ban đầu bằng :ref:`PACKET_THROTTLE_SCALE<class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE>`.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_COUNTER:
 
@@ -257,7 +257,7 @@ The maximum number of unreliable packets that should not be dropped. This value 
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_THROTTLE_COUNTER** = ``9``
 
-Internal value used to increment the packet throttle counter. The value is hardcoded to ``7`` and cannot be changed. You probably want to look at :ref:`PEER_PACKET_THROTTLE_ACCELERATION<class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_ACCELERATION>` instead.
+Giá trị nội bộ được dùng để tăng bộ đếm throttle của gói tin. Giá trị này được hardcode thành ``7`` và không thể thay đổi. Có lẽ bạn nên xem :ref:`PEER_PACKET_THROTTLE_ACCELERATION<class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_ACCELERATION>` thay vào đó.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_EPOCH:
 
@@ -265,7 +265,7 @@ Internal value used to increment the packet throttle counter. The value is hardc
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_THROTTLE_EPOCH** = ``10``
 
-The time at which throttle statistics were last updated (in milliseconds since the connection started). The interval for throttle statistics updates is :ref:`PEER_PACKET_THROTTLE_INTERVAL<class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_INTERVAL>`.
+Thời điểm thống kê throttle được cập nhật lần cuối (tính bằng mili giây kể từ khi kết nối bắt đầu). Khoảng thời gian giữa các lần cập nhật thống kê throttle là :ref:`PEER_PACKET_THROTTLE_INTERVAL<class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_INTERVAL>`.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_ACCELERATION:
 
@@ -273,7 +273,7 @@ The time at which throttle statistics were last updated (in milliseconds since t
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_THROTTLE_ACCELERATION** = ``11``
 
-The throttle's acceleration factor. Higher values will make ENet adapt to fluctuating network conditions faster, causing unrelaible packets to be sent *more* often. The default value is ``2``.
+Hệ số tăng tốc của throttle. Các giá trị cao hơn sẽ giúp ENet thích ứng với các điều kiện mạng biến động nhanh hơn, khiến các gói tin không đáng tin cậy được gửi *thường xuyên hơn*. Giá trị mặc định là ``2``.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_DECELERATION:
 
@@ -281,7 +281,7 @@ The throttle's acceleration factor. Higher values will make ENet adapt to fluctu
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_THROTTLE_DECELERATION** = ``12``
 
-The throttle's deceleration factor. Higher values will make ENet adapt to fluctuating network conditions faster, causing unrelaible packets to be sent *less* often. The default value is ``2``.
+Hệ số giảm tốc của throttle. Các giá trị cao hơn sẽ giúp ENet thích ứng với các điều kiện mạng biến động nhanh hơn, khiến các gói tin không đáng tin cậy được gửi *ít thường xuyên hơn*. Giá trị mặc định là ``2``.
 
 .. _class_ENetPacketPeer_constant_PEER_PACKET_THROTTLE_INTERVAL:
 
@@ -289,7 +289,7 @@ The throttle's deceleration factor. Higher values will make ENet adapt to fluctu
 
 :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>` **PEER_PACKET_THROTTLE_INTERVAL** = ``13``
 
-The interval over which the lowest mean round trip time should be measured for use by the throttle mechanism (in milliseconds). The default value is ``5000``.
+Khoảng thời gian dùng để đo thời gian khứ hồi trung bình thấp nhất, phục vụ cho cơ chế throttle (tính bằng mili giây). Giá trị mặc định là ``5000``.
 
 .. rst-class:: classref-section-separator
 
@@ -297,8 +297,8 @@ The interval over which the lowest mean round trip time should be measured for u
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_ENetPacketPeer_constant_PACKET_LOSS_SCALE:
 
@@ -306,7 +306,7 @@ Constants
 
 **PACKET_LOSS_SCALE** = ``65536`` :ref:`🔗<class_ENetPacketPeer_constant_PACKET_LOSS_SCALE>`
 
-The reference scale for packet loss. See :ref:`get_statistic()<class_ENetPacketPeer_method_get_statistic>` and :ref:`PEER_PACKET_LOSS<class_ENetPacketPeer_constant_PEER_PACKET_LOSS>`.
+Thang đo tham chiếu cho việc mất gói tin. Xem :ref:`get_statistic()<class_ENetPacketPeer_method_get_statistic>` và :ref:`PEER_PACKET_LOSS<class_ENetPacketPeer_constant_PEER_PACKET_LOSS>`.
 
 .. _class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE:
 
@@ -314,7 +314,7 @@ The reference scale for packet loss. See :ref:`get_statistic()<class_ENetPacketP
 
 **PACKET_THROTTLE_SCALE** = ``32`` :ref:`🔗<class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE>`
 
-The reference value for throttle configuration. The default value is ``32``. See :ref:`throttle_configure()<class_ENetPacketPeer_method_throttle_configure>`.
+Giá trị tham chiếu cho cấu hình throttle. Giá trị mặc định là ``32``. Xem :ref:`throttle_configure()<class_ENetPacketPeer_method_throttle_configure>`.
 
 .. _class_ENetPacketPeer_constant_FLAG_RELIABLE:
 
@@ -322,7 +322,7 @@ The reference value for throttle configuration. The default value is ``32``. See
 
 **FLAG_RELIABLE** = ``1`` :ref:`🔗<class_ENetPacketPeer_constant_FLAG_RELIABLE>`
 
-Mark the packet to be sent as reliable.
+Đánh dấu gói tin sẽ được gửi là đáng tin cậy.
 
 .. _class_ENetPacketPeer_constant_FLAG_UNSEQUENCED:
 
@@ -330,7 +330,7 @@ Mark the packet to be sent as reliable.
 
 **FLAG_UNSEQUENCED** = ``2`` :ref:`🔗<class_ENetPacketPeer_constant_FLAG_UNSEQUENCED>`
 
-Mark the packet to be sent unsequenced (unreliable).
+Đánh dấu gói tin sẽ được gửi là không theo thứ tự (không đáng tin cậy).
 
 .. _class_ENetPacketPeer_constant_FLAG_UNRELIABLE_FRAGMENT:
 
@@ -338,7 +338,7 @@ Mark the packet to be sent unsequenced (unreliable).
 
 **FLAG_UNRELIABLE_FRAGMENT** = ``8`` :ref:`🔗<class_ENetPacketPeer_constant_FLAG_UNRELIABLE_FRAGMENT>`
 
-Mark the packet to be sent unreliable even if the packet is too big and needs fragmentation (increasing the chance of it being dropped).
+Đánh dấu gói tin sẽ được gửi là không đáng tin cậy ngay cả khi gói tin quá lớn và cần được phân mảnh (làm tăng khả năng bị loại bỏ).
 
 .. rst-class:: classref-section-separator
 
@@ -346,8 +346,8 @@ Mark the packet to be sent unreliable even if the packet is too big and needs fr
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ENetPacketPeer_method_get_channels:
 
@@ -355,7 +355,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_channels**\ (\ ) |const| :ref:`🔗<class_ENetPacketPeer_method_get_channels>`
 
-Returns the number of channels allocated for communication with peer.
+Trả về số kênh được cấp phát để giao tiếp với peer.
 
 .. rst-class:: classref-item-separator
 
@@ -367,7 +367,7 @@ Returns the number of channels allocated for communication with peer.
 
 :ref:`int<class_int>` **get_packet_flags**\ (\ ) |const| :ref:`🔗<class_ENetPacketPeer_method_get_packet_flags>`
 
-Returns the ENet flags of the next packet in the received queue. See ``FLAG_*`` constants for available packet flags. Note that not all flags are replicated from the sending peer to the receiving peer.
+Trả về các cờ ENet của gói tin tiếp theo trong hàng đợi nhận. Xem các hằng số ``FLAG_*`` để biết các cờ gói tin hiện có. Lưu ý rằng không phải tất cả các cờ đều được sao chép từ peer gửi sang peer nhận.
 
 .. rst-class:: classref-item-separator
 
@@ -379,7 +379,7 @@ Returns the ENet flags of the next packet in the received queue. See ``FLAG_*`` 
 
 :ref:`String<class_String>` **get_remote_address**\ (\ ) |const| :ref:`🔗<class_ENetPacketPeer_method_get_remote_address>`
 
-Returns the IP address of this peer.
+Trả về địa chỉ IP của peer này.
 
 .. rst-class:: classref-item-separator
 
@@ -391,7 +391,7 @@ Returns the IP address of this peer.
 
 :ref:`int<class_int>` **get_remote_port**\ (\ ) |const| :ref:`🔗<class_ENetPacketPeer_method_get_remote_port>`
 
-Returns the remote port of this peer.
+Trả về cổng từ xa của peer này.
 
 .. rst-class:: classref-item-separator
 
@@ -403,7 +403,7 @@ Returns the remote port of this peer.
 
 :ref:`PeerState<enum_ENetPacketPeer_PeerState>` **get_state**\ (\ ) |const| :ref:`🔗<class_ENetPacketPeer_method_get_state>`
 
-Returns the current peer state.
+Trả về trạng thái hiện tại của peer.
 
 .. rst-class:: classref-item-separator
 
@@ -415,7 +415,7 @@ Returns the current peer state.
 
 :ref:`float<class_float>` **get_statistic**\ (\ statistic\: :ref:`PeerStatistic<enum_ENetPacketPeer_PeerStatistic>`\ ) :ref:`🔗<class_ENetPacketPeer_method_get_statistic>`
 
-Returns the requested ``statistic`` for this peer.
+Trả về ``statistic`` được yêu cầu cho peer này.
 
 .. rst-class:: classref-item-separator
 
@@ -427,7 +427,7 @@ Returns the requested ``statistic`` for this peer.
 
 :ref:`bool<class_bool>` **is_active**\ (\ ) |const| :ref:`🔗<class_ENetPacketPeer_method_is_active>`
 
-Returns ``true`` if the peer is currently active (i.e. the associated :ref:`ENetConnection<class_ENetConnection>` is still valid).
+Trả về ``true`` nếu peer hiện đang hoạt động (tức là :ref:`ENetConnection<class_ENetConnection>` liên kết vẫn còn hợp lệ).
 
 .. rst-class:: classref-item-separator
 
@@ -439,7 +439,7 @@ Returns ``true`` if the peer is currently active (i.e. the associated :ref:`ENet
 
 |void| **peer_disconnect**\ (\ data\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetPacketPeer_method_peer_disconnect>`
 
-Request a disconnection from a peer. An :ref:`ENetConnection.EVENT_DISCONNECT<class_ENetConnection_constant_EVENT_DISCONNECT>` will be generated during :ref:`ENetConnection.service()<class_ENetConnection_method_service>` once the disconnection is complete.
+Yêu cầu ngắt kết nối khỏi một peer. Một :ref:`ENetConnection.EVENT_DISCONNECT<class_ENetConnection_constant_EVENT_DISCONNECT>` sẽ được tạo trong :ref:`ENetConnection.service()<class_ENetConnection_method_service>` sau khi hoàn tất ngắt kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -451,7 +451,7 @@ Request a disconnection from a peer. An :ref:`ENetConnection.EVENT_DISCONNECT<cl
 
 |void| **peer_disconnect_later**\ (\ data\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetPacketPeer_method_peer_disconnect_later>`
 
-Request a disconnection from a peer, but only after all queued outgoing packets are sent. An :ref:`ENetConnection.EVENT_DISCONNECT<class_ENetConnection_constant_EVENT_DISCONNECT>` will be generated during :ref:`ENetConnection.service()<class_ENetConnection_method_service>` once the disconnection is complete.
+Yêu cầu ngắt kết nối khỏi một peer, nhưng chỉ sau khi tất cả các gói tin gửi đi đang xếp hàng đã được gửi. Một :ref:`ENetConnection.EVENT_DISCONNECT<class_ENetConnection_constant_EVENT_DISCONNECT>` sẽ được tạo trong :ref:`ENetConnection.service()<class_ENetConnection_method_service>` sau khi hoàn tất ngắt kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -463,7 +463,7 @@ Request a disconnection from a peer, but only after all queued outgoing packets 
 
 |void| **peer_disconnect_now**\ (\ data\: :ref:`int<class_int>` = 0\ ) :ref:`🔗<class_ENetPacketPeer_method_peer_disconnect_now>`
 
-Force an immediate disconnection from a peer. No :ref:`ENetConnection.EVENT_DISCONNECT<class_ENetConnection_constant_EVENT_DISCONNECT>` will be generated. The foreign peer is not guaranteed to receive the disconnect notification, and is reset immediately upon return from this function.
+Buộc ngắt kết nối ngay lập tức khỏi một peer. Sẽ không tạo :ref:`ENetConnection.EVENT_DISCONNECT<class_ENetConnection_constant_EVENT_DISCONNECT>`. Không đảm bảo peer từ xa sẽ nhận được thông báo ngắt kết nối và peer đó sẽ được đặt lại ngay khi hàm này trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -475,7 +475,7 @@ Force an immediate disconnection from a peer. No :ref:`ENetConnection.EVENT_DISC
 
 |void| **ping**\ (\ ) :ref:`🔗<class_ENetPacketPeer_method_ping>`
 
-Sends a ping request to a peer. ENet automatically pings all connected peers at regular intervals, however, this function may be called to ensure more frequent ping requests.
+Gửi một yêu cầu ping đến một peer. ENet tự động ping tất cả peer đã kết nối theo các khoảng thời gian đều đặn; tuy nhiên, có thể gọi hàm này để đảm bảo các yêu cầu ping được gửi thường xuyên hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -487,7 +487,7 @@ Sends a ping request to a peer. ENet automatically pings all connected peers at 
 
 |void| **ping_interval**\ (\ ping_interval\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ENetPacketPeer_method_ping_interval>`
 
-Sets the ``ping_interval`` in milliseconds at which pings will be sent to a peer. Pings are used both to monitor the liveness of the connection and also to dynamically adjust the throttle during periods of low traffic so that the throttle has reasonable responsiveness during traffic spikes. The default ping interval is ``500`` milliseconds.
+Đặt ``ping_interval`` tính bằng mili giây, xác định khoảng thời gian giữa các lần gửi ping đến một peer. Ping được dùng để giám sát trạng thái hoạt động của kết nối, đồng thời tự động điều chỉnh throttle trong những khoảng thời gian lưu lượng thấp, ताकि throttle có độ phản hồi hợp lý khi lưu lượng tăng đột biến. Khoảng thời gian ping mặc định là ``500`` mili giây.
 
 .. rst-class:: classref-item-separator
 
@@ -499,7 +499,7 @@ Sets the ``ping_interval`` in milliseconds at which pings will be sent to a peer
 
 |void| **reset**\ (\ ) :ref:`🔗<class_ENetPacketPeer_method_reset>`
 
-Forcefully disconnects a peer. The foreign host represented by the peer is not notified of the disconnection and will timeout on its connection to the local host.
+Buộc ngắt kết nối một peer. Máy chủ từ xa được peer đại diện sẽ không được thông báo về việc ngắt kết nối và sẽ hết thời gian chờ đối với kết nối đến máy chủ cục bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -511,7 +511,7 @@ Forcefully disconnects a peer. The foreign host represented by the peer is not n
 
 :ref:`Error<enum_@GlobalScope_Error>` **send**\ (\ channel\: :ref:`int<class_int>`, packet\: :ref:`PackedByteArray<class_PackedByteArray>`, flags\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ENetPacketPeer_method_send>`
 
-Queues a ``packet`` to be sent over the specified ``channel``. See ``FLAG_*`` constants for available packet flags.
+Xếp hàng một ``packet`` để gửi qua ``channel`` được chỉ định. Xem các hằng số ``FLAG_*`` để biết các cờ packet hiện có.
 
 .. rst-class:: classref-item-separator
 
@@ -523,9 +523,9 @@ Queues a ``packet`` to be sent over the specified ``channel``. See ``FLAG_*`` co
 
 |void| **set_timeout**\ (\ timeout\: :ref:`int<class_int>`, timeout_min\: :ref:`int<class_int>`, timeout_max\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ENetPacketPeer_method_set_timeout>`
 
-Sets the timeout parameters for a peer. The timeout parameters control how and when a peer will timeout from a failure to acknowledge reliable traffic. Timeout values are expressed in milliseconds.
+Đặt các tham số timeout cho một peer. Các tham số timeout kiểm soát cách thức và thời điểm một peer hết thời gian chờ do không xác nhận được traffic đáng tin cậy. Các giá trị timeout được tính bằng mili giây.
 
-The ``timeout`` is a factor that, multiplied by a value based on the average round trip time, will determine the timeout limit for a reliable packet. When that limit is reached, the timeout will be doubled, and the peer will be disconnected if that limit has reached ``timeout_min``. The ``timeout_max`` parameter, on the other hand, defines a fixed timeout for which any packet must be acknowledged or the peer will be dropped.
+``timeout`` là một hệ số; khi nhân với một giá trị dựa trên thời gian khứ hồi trung bình, hệ số này sẽ xác định giới hạn timeout cho một packet đáng tin cậy. Khi đạt đến giới hạn đó, timeout sẽ được nhân đôi và peer sẽ bị ngắt kết nối nếu giới hạn đó đã đạt đến ``timeout_min``. Mặt khác, tham số ``timeout_max`` xác định một timeout cố định mà trong khoảng thời gian đó mọi packet phải được xác nhận, nếu không peer sẽ bị loại bỏ.
 
 .. rst-class:: classref-item-separator
 
@@ -537,22 +537,22 @@ The ``timeout`` is a factor that, multiplied by a value based on the average rou
 
 |void| **throttle_configure**\ (\ interval\: :ref:`int<class_int>`, acceleration\: :ref:`int<class_int>`, deceleration\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ENetPacketPeer_method_throttle_configure>`
 
-Configures throttle parameter for a peer.
+Cấu hình tham số throttle cho một peer.
 
-Unreliable packets are dropped by ENet in response to the varying conditions of the Internet connection to the peer. The throttle represents a probability that an unreliable packet should not be dropped and thus sent by ENet to the peer. By measuring fluctuations in round trip times of reliable packets over the specified ``interval``, ENet will either increase the probability by the amount specified in the ``acceleration`` parameter, or decrease it by the amount specified in the ``deceleration`` parameter (both are ratios to :ref:`PACKET_THROTTLE_SCALE<class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE>`).
+Các packet không đáng tin cậy sẽ bị ENet loại bỏ để đáp ứng với các điều kiện thay đổi của kết nối Internet tới peer. Throttle biểu thị xác suất một packet không đáng tin cậy không bị loại bỏ và do đó được ENet gửi tới peer. Bằng cách đo mức dao động trong thời gian round trip của các packet đáng tin cậy trong khoảng thời gian ``interval`` được chỉ định, ENet sẽ tăng xác suất theo lượng được chỉ định trong tham số ``acceleration``, hoặc giảm xác suất theo lượng được chỉ định trong tham số ``deceleration`` (cả hai đều là các tỷ lệ so với :ref:`PACKET_THROTTLE_SCALE<class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE>`).
 
-When the throttle has a value of :ref:`PACKET_THROTTLE_SCALE<class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE>`, no unreliable packets are dropped by ENet, and so 100% of all unreliable packets will be sent.
+Khi throttle có giá trị :ref:`PACKET_THROTTLE_SCALE<class_ENetPacketPeer_constant_PACKET_THROTTLE_SCALE>`, không có packet không đáng tin cậy nào bị ENet loại bỏ, do đó 100% tổng số packet không đáng tin cậy sẽ được gửi.
 
-When the throttle has a value of ``0``, all unreliable packets are dropped by ENet, and so 0% of all unreliable packets will be sent.
+Khi throttle có giá trị ``0``, tất cả packet không đáng tin cậy đều bị ENet loại bỏ, do đó 0% tổng số packet không đáng tin cậy sẽ được gửi.
 
-Intermediate values for the throttle represent intermediate probabilities between 0% and 100% of unreliable packets being sent. The bandwidth limits of the local and foreign hosts are taken into account to determine a sensible limit for the throttle probability above which it should not raise even in the best of conditions.
+Các giá trị trung gian của throttle biểu thị các xác suất trung gian, từ 0% đến 100%, đối với việc gửi packet không đáng tin cậy. Giới hạn băng thông của các host cục bộ và từ xa được tính đến để xác định giới hạn hợp lý cho xác suất throttle, trên giới hạn đó xác suất này không được tăng thêm ngay cả trong điều kiện tốt nhất.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

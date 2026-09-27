@@ -10,16 +10,16 @@
 HMACContext
 ===========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Used to create an HMAC for a message using a key.
+Dùng để tạo HMAC cho một thông điệp bằng khóa.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The HMACContext class is useful for advanced HMAC use cases, such as streaming the message as it supports creating the message over time rather than providing it all at once.
+Lớp HMACContext hữu ích cho các trường hợp sử dụng HMAC nâng cao, chẳng hạn như streaming thông điệp, vì lớp này hỗ trợ tạo thông điệp theo thời gian thay vì cung cấp toàn bộ thông điệp cùng một lúc.
 
 
 .. tabs::
@@ -71,19 +71,19 @@ The HMACContext class is useful for advanced HMAC use cases, such as streaming t
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`finish<class_HMACContext_method_finish>`\ (\ )                                                                                                               |
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`start<class_HMACContext_method_start>`\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`update<class_HMACContext_method_update>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                         |
-   +-----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`finish<class_HMACContext_method_finish>`\ (\ )                                                                                                                |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`          | :ref:`start<class_HMACContext_method_start>`\ (\ hash_type\: :ref:`HashType <enum_HashingContext_HashType>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Lỗi <enum_@GlobalScope_Error>`          | :ref:`update<class_HMACContext_method_update>`\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ )                                                          |
+   +-----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -91,8 +91,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_HMACContext_method_finish:
 
@@ -100,7 +100,7 @@ Method Descriptions
 
 :ref:`PackedByteArray<class_PackedByteArray>` **finish**\ (\ ) :ref:`🔗<class_HMACContext_method_finish>`
 
-Returns the resulting HMAC. If the HMAC failed, an empty :ref:`PackedByteArray<class_PackedByteArray>` is returned.
+Trả về HMAC kết quả. Nếu HMAC không thành công, một :ref:`PackedByteArray<class_PackedByteArray>` trống được trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -112,7 +112,7 @@ Returns the resulting HMAC. If the HMAC failed, an empty :ref:`PackedByteArray<c
 
 :ref:`Error<enum_@GlobalScope_Error>` **start**\ (\ hash_type\: :ref:`HashType<enum_HashingContext_HashType>`, key\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_HMACContext_method_start>`
 
-Initializes the HMACContext. This method cannot be called again on the same HMACContext until :ref:`finish()<class_HMACContext_method_finish>` has been called.
+Khởi tạo HMACContext. Không thể gọi phương thức này lại trên cùng HMACContext cho đến khi :ref:`finish()<class_HMACContext_method_finish>` được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -124,14 +124,14 @@ Initializes the HMACContext. This method cannot be called again on the same HMAC
 
 :ref:`Error<enum_@GlobalScope_Error>` **update**\ (\ data\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_HMACContext_method_update>`
 
-Updates the message to be HMACed. This can be called multiple times before :ref:`finish()<class_HMACContext_method_finish>` is called to append ``data`` to the message, but cannot be called until :ref:`start()<class_HMACContext_method_start>` has been called.
+Cập nhật thông điệp sẽ được HMAC. Có thể gọi phương thức này nhiều lần trước khi gọi :ref:`finish()<class_HMACContext_method_finish>` để nối thêm ``data`` vào thông điệp, nhưng không thể gọi cho đến khi :ref:`start()<class_HMACContext_method_start>` được gọi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của đối tượng.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một đối tượng để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

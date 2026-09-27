@@ -10,29 +10,29 @@
 GLTFLight
 =========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a glTF light.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Represents a light as defined by the ``KHR_lights_punctual`` glTF extension.
+Đại diện cho một ánh sáng glTF.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đại diện cho một ánh sáng được định nghĩa bởi extension glTF ``KHR_lights_punctual``.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `KHR_lights_punctual glTF extension spec <https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_lights_punctual>`__
+- `Đặc tả extension glTF KHR_lights_punctual <https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_lights_punctual>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -54,8 +54,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -80,8 +80,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFLight_property_color:
 
@@ -94,9 +94,9 @@ Property Descriptions
 - |void| **set_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_color**\ (\ )
 
-The :ref:`Color<class_Color>` of the light in linear space. Defaults to white. A black color causes the light to have no effect.
+:ref:`Color<class_Color>` của ánh sáng trong không gian tuyến tính. Mặc định là màu trắng. Màu đen khiến ánh sáng không có tác dụng.
 
-This value is linear to match glTF, but will be converted to nonlinear sRGB when creating a Godot :ref:`Light3D<class_Light3D>` node upon import, or converted to linear when exporting a Godot :ref:`Light3D<class_Light3D>` to glTF.
+Giá trị này ở dạng tuyến tính để phù hợp với glTF, nhưng sẽ được chuyển đổi sang sRGB phi tuyến khi tạo một node Godot :ref:`Light3D<class_Light3D>` lúc nhập, hoặc được chuyển đổi sang dạng tuyến tính khi xuất một :ref:`Light3D<class_Light3D>` Godot sang glTF.
 
 .. rst-class:: classref-item-separator
 
@@ -113,9 +113,9 @@ This value is linear to match glTF, but will be converted to nonlinear sRGB when
 - |void| **set_inner_cone_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_inner_cone_angle**\ (\ )
 
-The inner angle of the cone in a spotlight. Must be less than or equal to the outer cone angle.
+Góc bên trong của hình nón trong đèn spotlight. Phải nhỏ hơn hoặc bằng góc hình nón bên ngoài.
 
-Within this angle, the light is at full brightness. Between the inner and outer cone angles, there is a transition from full brightness to zero brightness. When creating a Godot :ref:`SpotLight3D<class_SpotLight3D>`, the ratio between the inner and outer cone angles is used to calculate the attenuation of the light.
+Trong phạm vi góc này, ánh sáng có độ sáng tối đa. Giữa góc hình nón bên trong và bên ngoài, độ sáng chuyển từ tối đa về 0. Khi tạo một :ref:`SpotLight3D<class_SpotLight3D>` Godot, tỷ lệ giữa góc hình nón bên trong và bên ngoài được dùng để tính độ suy giảm của ánh sáng.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ Within this angle, the light is at full brightness. Between the inner and outer 
 - |void| **set_intensity**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_intensity**\ (\ )
 
-The intensity of the light. This is expressed in candelas (lumens per steradian) for point and spot lights, and lux (lumens per m²) for directional lights. When creating a Godot light, this value is converted to a unitless multiplier.
+Cường độ của ánh sáng. Giá trị này được biểu thị bằng candela (lumen trên steradian) đối với đèn point và spot, và bằng lux (lumen trên m²) đối với đèn directional. Khi tạo một đèn Godot, giá trị này được chuyển đổi thành một hệ số không có đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ The intensity of the light. This is expressed in candelas (lumens per steradian)
 - |void| **set_light_type**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_light_type**\ (\ )
 
-The type of the light. The values accepted by Godot are "point", "spot", and "directional", which correspond to Godot's :ref:`OmniLight3D<class_OmniLight3D>`, :ref:`SpotLight3D<class_SpotLight3D>`, and :ref:`DirectionalLight3D<class_DirectionalLight3D>` respectively.
+Loại ánh sáng. Các giá trị được Godot chấp nhận là "point", "spot" và "directional", lần lượt tương ứng với :ref:`OmniLight3D<class_OmniLight3D>`, :ref:`SpotLight3D<class_SpotLight3D>` và :ref:`DirectionalLight3D<class_DirectionalLight3D>` của Godot.
 
 .. rst-class:: classref-item-separator
 
@@ -166,9 +166,9 @@ The type of the light. The values accepted by Godot are "point", "spot", and "di
 - |void| **set_outer_cone_angle**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_outer_cone_angle**\ (\ )
 
-The outer angle of the cone in a spotlight. Must be greater than or equal to the inner angle.
+Góc bên ngoài của hình nón trong đèn spotlight. Phải lớn hơn hoặc bằng góc bên trong.
 
-At this angle, the light drops off to zero brightness. Between the inner and outer cone angles, there is a transition from full brightness to zero brightness. If this angle is a half turn, then the spotlight emits in all directions. When creating a Godot :ref:`SpotLight3D<class_SpotLight3D>`, the outer cone angle is used as the angle of the spotlight.
+Ở góc này, ánh sáng giảm dần xuống độ sáng bằng không. Trong khoảng giữa góc hình nón bên trong và bên ngoài, độ sáng chuyển từ tối đa xuống bằng không. Nếu góc này là nửa vòng, đèn chiếu điểm sẽ phát sáng theo mọi hướng. Khi tạo một :ref:`SpotLight3D<class_SpotLight3D>` trong Godot, góc hình nón bên ngoài được dùng làm góc của đèn chiếu điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ At this angle, the light drops off to zero brightness. Between the inner and out
 - |void| **set_range**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_range**\ (\ )
 
-The range of the light, beyond which the light has no effect. glTF lights with no range defined behave like physical lights (which have infinite range). When creating a Godot light, the range is clamped to ``4096.0``.
+Phạm vi của ánh sáng, vượt quá phạm vi này thì ánh sáng không còn tác dụng. Các đèn glTF không xác định phạm vi sẽ hoạt động như đèn vật lý (có phạm vi vô hạn). Khi tạo một đèn Godot, phạm vi được giới hạn trong ``4096.0``.
 
 .. rst-class:: classref-section-separator
 
@@ -193,8 +193,8 @@ The range of the light, beyond which the light has no effect. glTF lights with n
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFLight_method_from_dictionary:
 
@@ -202,7 +202,7 @@ Method Descriptions
 
 :ref:`GLTFLight<class_GLTFLight>` **from_dictionary**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |static| :ref:`🔗<class_GLTFLight_method_from_dictionary>`
 
-Creates a new GLTFLight instance by parsing the given :ref:`Dictionary<class_Dictionary>`.
+Tạo một thực thể GLTFLight mới bằng cách phân tích cú pháp :ref:`Dictionary<class_Dictionary>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -214,7 +214,7 @@ Creates a new GLTFLight instance by parsing the given :ref:`Dictionary<class_Dic
 
 :ref:`GLTFLight<class_GLTFLight>` **from_node**\ (\ light_node\: :ref:`Light3D<class_Light3D>`\ ) |static| :ref:`🔗<class_GLTFLight_method_from_node>`
 
-Create a new GLTFLight instance from the given Godot :ref:`Light3D<class_Light3D>` node.
+Tạo một thực thể GLTFLight mới từ node :ref:`Light3D<class_Light3D>` của Godot đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ Create a new GLTFLight instance from the given Godot :ref:`Light3D<class_Light3D
 
 :ref:`Dictionary<class_Dictionary>` **to_dictionary**\ (\ ) |const| :ref:`🔗<class_GLTFLight_method_to_dictionary>`
 
-Serializes this GLTFLight instance into a :ref:`Dictionary<class_Dictionary>`.
+Tuần tự hóa thực thể GLTFLight này thành một :ref:`Dictionary<class_Dictionary>`.
 
 .. rst-class:: classref-item-separator
 
@@ -266,14 +266,14 @@ Serializes this GLTFLight instance into a :ref:`Dictionary<class_Dictionary>`.
 
 :ref:`Light3D<class_Light3D>` **to_node**\ (\ ) |const| :ref:`🔗<class_GLTFLight_method_to_node>`
 
-Converts this GLTFLight instance into a Godot :ref:`Light3D<class_Light3D>` node.
+Chuyển đổi thực thể GLTFLight này thành một node :ref:`Light3D<class_Light3D>` của Godot.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

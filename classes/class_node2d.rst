@@ -10,33 +10,33 @@
 Node2D
 ======
 
-**Inherits:** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AnimatedSprite2D<class_AnimatedSprite2D>`, :ref:`AudioListener2D<class_AudioListener2D>`, :ref:`AudioStreamPlayer2D<class_AudioStreamPlayer2D>`, :ref:`BackBufferCopy<class_BackBufferCopy>`, :ref:`Bone2D<class_Bone2D>`, :ref:`Camera2D<class_Camera2D>`, :ref:`CanvasGroup<class_CanvasGroup>`, :ref:`CanvasModulate<class_CanvasModulate>`, :ref:`CollisionObject2D<class_CollisionObject2D>`, :ref:`CollisionPolygon2D<class_CollisionPolygon2D>`, :ref:`CollisionShape2D<class_CollisionShape2D>`, :ref:`CPUParticles2D<class_CPUParticles2D>`, :ref:`GPUParticles2D<class_GPUParticles2D>`, :ref:`Joint2D<class_Joint2D>`, :ref:`Light2D<class_Light2D>`, :ref:`LightOccluder2D<class_LightOccluder2D>`, :ref:`Line2D<class_Line2D>`, :ref:`Marker2D<class_Marker2D>`, :ref:`MeshInstance2D<class_MeshInstance2D>`, :ref:`MultiMeshInstance2D<class_MultiMeshInstance2D>`, :ref:`NavigationLink2D<class_NavigationLink2D>`, :ref:`NavigationObstacle2D<class_NavigationObstacle2D>`, :ref:`NavigationRegion2D<class_NavigationRegion2D>`, :ref:`Parallax2D<class_Parallax2D>`, :ref:`ParallaxLayer<class_ParallaxLayer>`, :ref:`Path2D<class_Path2D>`, :ref:`PathFollow2D<class_PathFollow2D>`, :ref:`Polygon2D<class_Polygon2D>`, :ref:`RayCast2D<class_RayCast2D>`, :ref:`RemoteTransform2D<class_RemoteTransform2D>`, :ref:`ShapeCast2D<class_ShapeCast2D>`, :ref:`Skeleton2D<class_Skeleton2D>`, :ref:`Sprite2D<class_Sprite2D>`, :ref:`TileMap<class_TileMap>`, :ref:`TileMapLayer<class_TileMapLayer>`, :ref:`TouchScreenButton<class_TouchScreenButton>`, :ref:`VisibleOnScreenNotifier2D<class_VisibleOnScreenNotifier2D>`
+**Được kế thừa bởi:** :ref:`AnimatedSprite2D<class_AnimatedSprite2D>`, :ref:`AudioListener2D<class_AudioListener2D>`, :ref:`AudioStreamPlayer2D<class_AudioStreamPlayer2D>`, :ref:`BackBufferCopy<class_BackBufferCopy>`, :ref:`Bone2D<class_Bone2D>`, :ref:`Camera2D<class_Camera2D>`, :ref:`CanvasGroup<class_CanvasGroup>`, :ref:`CanvasModulate<class_CanvasModulate>`, :ref:`CollisionObject2D<class_CollisionObject2D>`, :ref:`CollisionPolygon2D<class_CollisionPolygon2D>`, :ref:`CollisionShape2D<class_CollisionShape2D>`, :ref:`CPUParticles2D<class_CPUParticles2D>`, :ref:`GPUParticles2D<class_GPUParticles2D>`, :ref:`Joint2D<class_Joint2D>`, :ref:`Light2D<class_Light2D>`, :ref:`LightOccluder2D<class_LightOccluder2D>`, :ref:`Line2D<class_Line2D>`, :ref:`Marker2D<class_Marker2D>`, :ref:`MeshInstance2D<class_MeshInstance2D>`, :ref:`MultiMeshInstance2D<class_MultiMeshInstance2D>`, :ref:`NavigationLink2D<class_NavigationLink2D>`, :ref:`NavigationObstacle2D<class_NavigationObstacle2D>`, :ref:`NavigationRegion2D<class_NavigationRegion2D>`, :ref:`Parallax2D<class_Parallax2D>`, :ref:`ParallaxLayer<class_ParallaxLayer>`, :ref:`Path2D<class_Path2D>`, :ref:`PathFollow2D<class_PathFollow2D>`, :ref:`Polygon2D<class_Polygon2D>`, :ref:`RayCast2D<class_RayCast2D>`, :ref:`RemoteTransform2D<class_RemoteTransform2D>`, :ref:`ShapeCast2D<class_ShapeCast2D>`, :ref:`Skeleton2D<class_Skeleton2D>`, :ref:`Sprite2D<class_Sprite2D>`, :ref:`TileMap<class_TileMap>`, :ref:`TileMapLayer<class_TileMapLayer>`, :ref:`TouchScreenButton<class_TouchScreenButton>`, :ref:`VisibleOnScreenNotifier2D<class_VisibleOnScreenNotifier2D>`
 
-A 2D game object, inherited by all 2D-related nodes. Has a position, rotation, scale, and skew.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A 2D game object, with a transform (position, rotation, and scale). All 2D nodes, including physics objects and sprites, inherit from Node2D. Use Node2D as a parent node to move, scale and rotate children in a 2D project. Also gives control of the node's render order.
-
-\ **Note:** Since both **Node2D** and :ref:`Control<class_Control>` inherit from :ref:`CanvasItem<class_CanvasItem>`, they share several concepts from the class such as the :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` and :ref:`CanvasItem.visible<class_CanvasItem_property_visible>` properties.
+Một đối tượng game 2D, được tất cả các node liên quan đến 2D kế thừa. Có vị trí, góc xoay, tỷ lệ và độ nghiêng.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một đối tượng game 2D có transform (vị trí, góc xoay và tỷ lệ). Tất cả các node 2D, bao gồm các đối tượng vật lý và sprite, đều kế thừa từ Node2D. Sử dụng Node2D làm node cha để di chuyển, thay đổi tỷ lệ và xoay các node con trong một project 2D. Node2D cũng cho phép kiểm soát thứ tự render của node.
+
+\ **Lưu ý:** Vì cả **Node2D** và :ref:`Control<class_Control>` đều kế thừa từ :ref:`CanvasItem<class_CanvasItem>`, chúng dùng chung một số khái niệm của class này, chẳng hạn như các thuộc tính :ref:`CanvasItem.z_index<class_CanvasItem_property_z_index>` và :ref:`CanvasItem.visible<class_CanvasItem_property_visible>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Custom drawing in 2D <../tutorials/2d/custom_drawing_in_2d>`
+- :doc:`Tùy chỉnh cách vẽ trong 2D <../tutorials/2d/custom_drawing_in_2d>`
 
-- `All 2D Demos <https://github.com/godotengine/godot-demo-projects/tree/master/2d>`__
+- `Tất cả bản minh họa 2D <https://github.com/godotengine/godot-demo-projects/tree/master/2d>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -70,8 +70,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -106,21 +106,21 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Node2D_property_global_position:
 
 .. rst-class:: classref-property
 
-:ref:`Vector2<class_Vector2>` **global_position** :ref:`🔗<class_Node2D_property_global_position>`
+:ref:`Vector2<class_Vector2>` **global_position** :ref:`🔗 <class_Node2D_property_global_position>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_global_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_global_position**\ (\ )
 
-Global position. See also :ref:`position<class_Node2D_property_position>`.
+Vị trí toàn cục. Xem thêm :ref:`position<class_Node2D_property_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -130,14 +130,14 @@ Global position. See also :ref:`position<class_Node2D_property_position>`.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **global_rotation** :ref:`🔗<class_Node2D_property_global_rotation>`
+:ref:`float<class_float>` **global_rotation** :ref:`🔗 <class_Node2D_property_global_rotation>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_global_rotation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_global_rotation**\ (\ )
 
-Global rotation in radians. See also :ref:`rotation<class_Node2D_property_rotation>`.
+Góc xoay toàn cục tính bằng radian. Xem thêm :ref:`rotation<class_Node2D_property_rotation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -147,14 +147,14 @@ Global rotation in radians. See also :ref:`rotation<class_Node2D_property_rotati
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **global_rotation_degrees** :ref:`🔗<class_Node2D_property_global_rotation_degrees>`
+:ref:`float<class_float>` **global_rotation_degrees** :ref:`🔗 <class_Node2D_property_global_rotation_degrees>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_global_rotation_degrees**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_global_rotation_degrees**\ (\ )
 
-Helper property to access :ref:`global_rotation<class_Node2D_property_global_rotation>` in degrees instead of radians. See also :ref:`rotation_degrees<class_Node2D_property_rotation_degrees>`.
+Thuộc tính hỗ trợ để truy cập :ref:`global_rotation<class_Node2D_property_global_rotation>` theo độ thay vì radian. Xem thêm :ref:`rotation_degrees<class_Node2D_property_rotation_degrees>`.
 
 .. rst-class:: classref-item-separator
 
@@ -164,14 +164,14 @@ Helper property to access :ref:`global_rotation<class_Node2D_property_global_rot
 
 .. rst-class:: classref-property
 
-:ref:`Vector2<class_Vector2>` **global_scale** :ref:`🔗<class_Node2D_property_global_scale>`
+:ref:`Vector2<class_Vector2>` **global_scale** :ref:`🔗 <class_Node2D_property_global_scale>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_global_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_global_scale**\ (\ )
 
-Global scale. See also :ref:`scale<class_Node2D_property_scale>`.
+Tỷ lệ toàn cục. Xem thêm :ref:`scale<class_Node2D_property_scale>`.
 
 .. rst-class:: classref-item-separator
 
@@ -181,14 +181,14 @@ Global scale. See also :ref:`scale<class_Node2D_property_scale>`.
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **global_skew** :ref:`🔗<class_Node2D_property_global_skew>`
+:ref:`float<class_float>` **global_skew** :ref:`🔗 <class_Node2D_property_global_skew>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_global_skew**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_global_skew**\ (\ )
 
-Global skew in radians. See also :ref:`skew<class_Node2D_property_skew>`.
+Độ lệch toàn cục theo radian. Xem thêm :ref:`skew<class_Node2D_property_skew>`.
 
 .. rst-class:: classref-item-separator
 
@@ -198,14 +198,14 @@ Global skew in radians. See also :ref:`skew<class_Node2D_property_skew>`.
 
 .. rst-class:: classref-property
 
-:ref:`Transform2D<class_Transform2D>` **global_transform** :ref:`🔗<class_Node2D_property_global_transform>`
+:ref:`Transform2D<class_Transform2D>` **global_transform** :ref:`🔗 <class_Node2D_property_global_transform>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_global_transform**\ (\ value\: :ref:`Transform2D<class_Transform2D>`\ )
 - :ref:`Transform2D<class_Transform2D>` **get_global_transform**\ (\ )
 
-Global :ref:`Transform2D<class_Transform2D>`. See also :ref:`transform<class_Node2D_property_transform>`.
+:ref:`Transform2D<class_Transform2D>` toàn cục. Xem thêm :ref:`transform<class_Node2D_property_transform>`.
 
 .. rst-class:: classref-item-separator
 
@@ -222,7 +222,7 @@ Global :ref:`Transform2D<class_Transform2D>`. See also :ref:`transform<class_Nod
 - |void| **set_position**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_position**\ (\ )
 
-Position, relative to the node's parent. See also :ref:`global_position<class_Node2D_property_global_position>`.
+Vị trí tương đối với node cha. Xem thêm :ref:`global_position<class_Node2D_property_global_position>`.
 
 .. rst-class:: classref-item-separator
 
@@ -239,9 +239,9 @@ Position, relative to the node's parent. See also :ref:`global_position<class_No
 - |void| **set_rotation**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_rotation**\ (\ )
 
-Rotation in radians, relative to the node's parent. See also :ref:`global_rotation<class_Node2D_property_global_rotation>`.
+Góc xoay tính bằng radian, tương đối với node cha. Xem thêm :ref:`global_rotation<class_Node2D_property_global_rotation>`.
 
-\ **Note:** This property is edited in the inspector in degrees. If you want to use degrees in a script, use :ref:`rotation_degrees<class_Node2D_property_rotation_degrees>`.
+\ **Lưu ý:** Thuộc tính này được chỉnh sửa trong inspector theo đơn vị độ. Nếu bạn muốn sử dụng độ trong script, hãy dùng :ref:`rotation_degrees<class_Node2D_property_rotation_degrees>`.
 
 .. rst-class:: classref-item-separator
 
@@ -251,14 +251,14 @@ Rotation in radians, relative to the node's parent. See also :ref:`global_rotati
 
 .. rst-class:: classref-property
 
-:ref:`float<class_float>` **rotation_degrees** :ref:`🔗<class_Node2D_property_rotation_degrees>`
+:ref:`float<class_float>` **rotation_degrees** :ref:`🔗 <class_Node2D_property_rotation_degrees>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_rotation_degrees**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_rotation_degrees**\ (\ )
 
-Helper property to access :ref:`rotation<class_Node2D_property_rotation>` in degrees instead of radians. See also :ref:`global_rotation_degrees<class_Node2D_property_global_rotation_degrees>`.
+Thuộc tính hỗ trợ để truy cập :ref:`rotation<class_Node2D_property_rotation>` theo đơn vị độ thay vì radian. Xem thêm :ref:`global_rotation_degrees<class_Node2D_property_global_rotation_degrees>`.
 
 .. rst-class:: classref-item-separator
 
@@ -275,9 +275,9 @@ Helper property to access :ref:`rotation<class_Node2D_property_rotation>` in deg
 - |void| **set_scale**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_scale**\ (\ )
 
-The node's scale, relative to the node's parent. Unscaled value: ``(1, 1)``. See also :ref:`global_scale<class_Node2D_property_global_scale>`.
+Scale của node, tương đối với node cha. Giá trị không scale: ``(1, 1)``. Xem thêm :ref:`global_scale<class_Node2D_property_global_scale>`.
 
-\ **Note:** Negative X scales in 2D are not decomposable from the transformation matrix. Due to the way scale is represented with transformation matrices in Godot, negative scales on the X axis will be changed to negative scales on the Y axis and a rotation of 180 degrees when decomposed.
+\ **Lưu ý:** Scale X âm trong 2D không thể được phân rã từ ma trận biến đổi. Do cách biểu diễn scale bằng ma trận biến đổi trong Godot, scale âm trên trục X sẽ được chuyển thành scale âm trên trục Y và góc xoay 180 độ khi được phân rã.
 
 .. rst-class:: classref-item-separator
 
@@ -294,11 +294,11 @@ The node's scale, relative to the node's parent. Unscaled value: ``(1, 1)``. See
 - |void| **set_skew**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_skew**\ (\ )
 
-If set to a non-zero value, slants the node in one direction or another. This can be used for pseudo-3D effects. See also :ref:`global_skew<class_Node2D_property_global_skew>`.
+Nếu được đặt thành một giá trị khác không, thuộc tính này sẽ làm node nghiêng theo một hướng nào đó. Có thể dùng thuộc tính này để tạo hiệu ứng pseudo-3D. Xem thêm :ref:`global_skew<class_Node2D_property_global_skew>`.
 
-\ **Note:** Skew is performed on the X axis only, and *between* rotation and scaling.
+\ **Lưu ý:** Skew chỉ được thực hiện trên trục X và nằm *giữa* phép xoay và co giãn.
 
-\ **Note:** This property is edited in the inspector in degrees. If you want to use degrees in a script, use ``skew = deg_to_rad(value_in_degrees)``.
+\ **Lưu ý:** Thuộc tính này được chỉnh sửa trong inspector theo đơn vị độ. Nếu muốn sử dụng độ trong script, hãy dùng ``skew = deg_to_rad(value_in_degrees)``.
 
 .. rst-class:: classref-item-separator
 
@@ -308,14 +308,14 @@ If set to a non-zero value, slants the node in one direction or another. This ca
 
 .. rst-class:: classref-property
 
-:ref:`Transform2D<class_Transform2D>` **transform** :ref:`🔗<class_Node2D_property_transform>`
+:ref:`Transform2D<class_Transform2D>` **transform** :ref:`🔗 <class_Node2D_property_transform>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_transform**\ (\ value\: :ref:`Transform2D<class_Transform2D>`\ )
 - :ref:`Transform2D<class_Transform2D>` **get_transform**\ (\ )
 
-The node's :ref:`Transform2D<class_Transform2D>`, relative to the node's parent. See also :ref:`global_transform<class_Node2D_property_global_transform>`.
+:ref:`Transform2D<class_Transform2D>` của node, tính tương đối so với node cha. Xem thêm :ref:`global_transform<class_Node2D_property_global_transform>`.
 
 .. rst-class:: classref-section-separator
 
@@ -323,8 +323,8 @@ The node's :ref:`Transform2D<class_Transform2D>`, relative to the node's parent.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Node2D_method_apply_scale:
 
@@ -332,7 +332,7 @@ Method Descriptions
 
 |void| **apply_scale**\ (\ ratio\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Node2D_method_apply_scale>`
 
-Multiplies the current scale by the ``ratio`` vector.
+Nhân scale hiện tại với vector ``ratio``.
 
 .. rst-class:: classref-item-separator
 
@@ -344,9 +344,9 @@ Multiplies the current scale by the ``ratio`` vector.
 
 :ref:`float<class_float>` **get_angle_to**\ (\ point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Node2D_method_get_angle_to>`
 
-Returns the angle between the node and the ``point`` in radians. See also :ref:`look_at()<class_Node2D_method_look_at>`.
+Trả về góc giữa node và ``point`` theo đơn vị radian. Xem thêm :ref:`look_at()<class_Node2D_method_look_at>`.
 
-\ `Illustration of the returned angle. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/node2d_get_angle_to.png>`__
+\ `Minh họa về góc được trả về. <https://raw.githubusercontent.com/godotengine/godot-docs/master/img/node2d_get_angle_to.png>`__
 
 .. rst-class:: classref-item-separator
 
@@ -358,7 +358,7 @@ Returns the angle between the node and the ``point`` in radians. See also :ref:`
 
 :ref:`Transform2D<class_Transform2D>` **get_relative_transform_to_parent**\ (\ parent\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Node2D_method_get_relative_transform_to_parent>`
 
-Returns the :ref:`Transform2D<class_Transform2D>` relative to this node's parent.
+Trả về :ref:`Transform2D<class_Transform2D>` tương đối với node cha của node này.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +370,7 @@ Returns the :ref:`Transform2D<class_Transform2D>` relative to this node's parent
 
 |void| **global_translate**\ (\ offset\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Node2D_method_global_translate>`
 
-Adds the ``offset`` vector to the node's global position.
+Thêm vector ``offset`` vào vị trí toàn cục của node.
 
 .. rst-class:: classref-item-separator
 
@@ -382,9 +382,9 @@ Adds the ``offset`` vector to the node's global position.
 
 |void| **look_at**\ (\ point\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Node2D_method_look_at>`
 
-Rotates the node so that its local +X axis points towards the ``point``, which is expected to use global coordinates. This method is a combination of both :ref:`rotate()<class_Node2D_method_rotate>` and :ref:`get_angle_to()<class_Node2D_method_get_angle_to>`.
+Xoay node để trục +X cục bộ của node hướng về phía ``point``, vốn được kỳ vọng sử dụng tọa độ toàn cục. Phương thức này là sự kết hợp của cả :ref:`rotate()<class_Node2D_method_rotate>` và :ref:`get_angle_to()<class_Node2D_method_get_angle_to>`.
 
-\ ``point`` should not be the same as the node's position, otherwise the node always looks to the right.
+\ ``point`` không nên giống với vị trí của node, nếu không node sẽ luôn hướng sang phải.
 
 .. rst-class:: classref-item-separator
 
@@ -396,7 +396,7 @@ Rotates the node so that its local +X axis points towards the ``point``, which i
 
 |void| **move_local_x**\ (\ delta\: :ref:`float<class_float>`, scaled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node2D_method_move_local_x>`
 
-Applies a local translation on the node's X axis with the amount specified in ``delta``. If ``scaled`` is ``false``, normalizes the movement to occur independently of the node's :ref:`scale<class_Node2D_property_scale>`.
+Áp dụng phép tịnh tiến cục bộ trên trục X của node với giá trị được chỉ định trong ``delta``. Nếu ``scaled`` là ``false``, chuẩn hóa chuyển động để diễn ra độc lập với :ref:`scale<class_Node2D_property_scale>` của node.
 
 .. rst-class:: classref-item-separator
 
@@ -408,7 +408,7 @@ Applies a local translation on the node's X axis with the amount specified in ``
 
 |void| **move_local_y**\ (\ delta\: :ref:`float<class_float>`, scaled\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node2D_method_move_local_y>`
 
-Applies a local translation on the node's Y axis with the amount specified in ``delta``. If ``scaled`` is ``false``, normalizes the movement to occur independently of the node's :ref:`scale<class_Node2D_property_scale>`.
+Áp dụng phép tịnh tiến cục bộ trên trục Y của node với giá trị được chỉ định trong ``delta``. Nếu ``scaled`` là ``false``, chuẩn hóa chuyển động để diễn ra độc lập với :ref:`scale<class_Node2D_property_scale>` của node.
 
 .. rst-class:: classref-item-separator
 
@@ -420,7 +420,7 @@ Applies a local translation on the node's Y axis with the amount specified in ``
 
 |void| **rotate**\ (\ radians\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Node2D_method_rotate>`
 
-Applies a rotation to the node, in radians, starting from its current rotation. This is equivalent to ``rotation += radians``.
+Áp dụng phép xoay cho node, tính bằng radian, bắt đầu từ góc xoay hiện tại của node. Tương đương với ``rotation += radians``.
 
 .. rst-class:: classref-item-separator
 
@@ -432,7 +432,7 @@ Applies a rotation to the node, in radians, starting from its current rotation. 
 
 :ref:`Vector2<class_Vector2>` **to_global**\ (\ local_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Node2D_method_to_global>`
 
-Transforms the provided local position into a position in global coordinate space. The input is expected to be local relative to the **Node2D** it is called on. e.g. Applying this method to the positions of child nodes will correctly transform their positions into the global coordinate space, but applying it to a node's own position will give an incorrect result, as it will incorporate the node's own transformation into its global position.
+Biến đổi vị trí cục bộ được cung cấp thành một vị trí trong hệ tọa độ toàn cục. Đầu vào được kỳ vọng là cục bộ so với **Node2D** mà phương thức này được gọi trên đó. Ví dụ: áp dụng phương thức này cho vị trí của các node con sẽ biến đổi chính xác vị trí của chúng sang hệ tọa độ toàn cục, nhưng áp dụng nó cho vị trí của chính node đó sẽ cho kết quả không chính xác, vì phép biến đổi của chính node đó sẽ được tính vào vị trí toàn cục của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -444,7 +444,7 @@ Transforms the provided local position into a position in global coordinate spac
 
 :ref:`Vector2<class_Vector2>` **to_local**\ (\ global_point\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Node2D_method_to_local>`
 
-Transforms the provided global position into a position in local coordinate space. The output will be local relative to the **Node2D** it is called on. e.g. It is appropriate for determining the positions of child nodes, but it is not appropriate for determining its own position relative to its parent.
+Biến đổi vị trí toàn cục được cung cấp thành một vị trí trong hệ tọa độ cục bộ. Kết quả sẽ là cục bộ so với **Node2D** mà phương thức này được gọi trên đó. Ví dụ: phương thức này phù hợp để xác định vị trí của các node con, nhưng không phù hợp để xác định vị trí của chính node đó so với node cha.
 
 .. rst-class:: classref-item-separator
 
@@ -456,14 +456,14 @@ Transforms the provided global position into a position in local coordinate spac
 
 |void| **translate**\ (\ offset\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_Node2D_method_translate>`
 
-Translates the node by the given ``offset`` in local coordinates. This is equivalent to ``position += offset``.
+Tịnh tiến node theo ``offset`` đã cho trong hệ tọa độ cục bộ. Tương đương với ``position += offset``.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào ngoài các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

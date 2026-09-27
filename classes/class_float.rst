@@ -10,34 +10,34 @@
 float
 =====
 
-A built-in type for floating-point numbers.
+Một kiểu dựng sẵn dành cho các số dấu phẩy động.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **float** built-in type is a 64-bit double-precision floating-point number, equivalent to ``double`` in C++. This type has 14 reliable decimal digits of precision. The maximum value of **float** is approximately ``1.79769e308``, and the minimum is approximately ``-1.79769e308``.
+Kiểu dựng sẵn **float** là một số dấu phẩy động độ chính xác kép 64 bit, tương đương với ``double`` trong C++. Kiểu này có 14 chữ số thập phân chính xác đáng tin cậy. Giá trị lớn nhất của **float** xấp xỉ ``1.79769e308``, còn giá trị nhỏ nhất xấp xỉ ``-1.79769e308``.
 
-Many methods and properties in the engine use 32-bit single-precision floating-point numbers instead, equivalent to ``float`` in C++, which have 6 reliable decimal digits of precision. For data structures such as :ref:`Vector2<class_Vector2>` and :ref:`Vector3<class_Vector3>`, Godot uses 32-bit floating-point numbers by default, but it can be changed to use 64-bit doubles if Godot is compiled with the ``precision=double`` option.
+Nhiều phương thức và thuộc tính trong engine thay vào đó sử dụng các số dấu phẩy động độ chính xác đơn 32 bit, tương đương với ``float`` trong C++, có 6 chữ số thập phân chính xác đáng tin cậy. Đối với các cấu trúc dữ liệu như :ref:`Vector2<class_Vector2>` và :ref:`Vector3<class_Vector3>`, theo mặc định Godot sử dụng các số dấu phẩy động 32 bit, nhưng có thể thay đổi để sử dụng số double 64 bit nếu Godot được biên dịch với tùy chọn ``precision=double``.
 
-Math done using the **float** type is not guaranteed to be exact and will often result in small errors. You should usually use the :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` and :ref:`@GlobalScope.is_zero_approx()<class_@GlobalScope_method_is_zero_approx>` methods instead of ``==`` to compare **float** values for equality.
+Các phép tính sử dụng kiểu **float** không được đảm bảo là chính xác và thường dẫn đến các sai số nhỏ. Thông thường, bạn nên sử dụng các phương thức :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` và :ref:`@GlobalScope.is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` thay vì ``==`` để so sánh các giá trị **float** nhằm xác định chúng có bằng nhau hay không.
 
-\ **Note:** In a boolean context, a **float** will evaluate to ``false`` if it's exactly equal to ``0.0``, and to ``true`` otherwise.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một **float** sẽ được đánh giá là ``false`` nếu nó chính xác bằng ``0.0``, và là ``true`` trong các trường hợp khác.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- `Wikipedia: Double-precision floating-point format <https://en.wikipedia.org/wiki/Double-precision_floating-point_format>`__
+- `Wikipedia: Định dạng số thực dấu phẩy động độ chính xác kép <https://en.wikipedia.org/wiki/Double-precision_floating-point_format>`__
 
-- `Wikipedia: Single-precision floating-point format <https://en.wikipedia.org/wiki/Single-precision_floating-point_format>`__
+- `Wikipedia: Định dạng số thực dấu phẩy động độ chính xác đơn <https://en.wikipedia.org/wiki/Single-precision_floating-point_format>`__
 
 .. rst-class:: classref-reftable-group
 
-Constructors
-------------
+Các hàm khởi tạo
+----------------
 
 .. table::
    :widths: auto
@@ -56,77 +56,77 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator !=<class_float_operator_neq_float>`\ (\ right\: :ref:`float<class_float>`\ )               |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator !=<class_float_operator_neq_int>`\ (\ right\: :ref:`int<class_int>`\ )                     |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Color<class_Color>`           | :ref:`operator *<class_float_operator_mul_Color>`\ (\ right\: :ref:`Color<class_Color>`\ )                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator *<class_float_operator_mul_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`       | :ref:`operator *<class_float_operator_mul_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )          |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector2<class_Vector2>`       | :ref:`operator *<class_float_operator_mul_Vector2i>`\ (\ right\: :ref:`Vector2i<class_Vector2i>`\ )       |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`       | :ref:`operator *<class_float_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ )          |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`       | :ref:`operator *<class_float_operator_mul_Vector3i>`\ (\ right\: :ref:`Vector3i<class_Vector3i>`\ )       |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>`       | :ref:`operator *<class_float_operator_mul_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )          |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>`       | :ref:`operator *<class_float_operator_mul_Vector4i>`\ (\ right\: :ref:`Vector4i<class_Vector4i>`\ )       |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator *<class_float_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator *<class_float_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator **<class_float_operator_pow_float>`\ (\ right\: :ref:`float<class_float>`\ )               |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator **<class_float_operator_pow_int>`\ (\ right\: :ref:`int<class_int>`\ )                     |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator +<class_float_operator_sum_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator +<class_float_operator_sum_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator -<class_float_operator_dif_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator -<class_float_operator_dif_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator /<class_float_operator_div_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator /<class_float_operator_div_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator \<<class_float_operator_lt_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator \<<class_float_operator_lt_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator \<=<class_float_operator_lte_float>`\ (\ right\: :ref:`float<class_float>`\ )              |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator \<=<class_float_operator_lte_int>`\ (\ right\: :ref:`int<class_int>`\ )                    |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator ==<class_float_operator_eq_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator ==<class_float_operator_eq_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator ><class_float_operator_gt_float>`\ (\ right\: :ref:`float<class_float>`\ )                 |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator ><class_float_operator_gt_int>`\ (\ right\: :ref:`int<class_int>`\ )                       |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator >=<class_float_operator_gte_float>`\ (\ right\: :ref:`float<class_float>`\ )               |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator >=<class_float_operator_gte_int>`\ (\ right\: :ref:`int<class_int>`\ )                     |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator unary+<class_float_operator_unplus>`\ (\ )                                                 |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
-   | :ref:`float<class_float>`           | :ref:`operator unary-<class_float_operator_unminus>`\ (\ )                                                |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator != <class_float_operator_neq_float>`\ (\ right\: :ref:`float<class_float>`\ )               |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator != <class_float_operator_neq_int>`\ (\ right\: :ref:`int<class_int>`\ )                     |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Color<class_Color>`           | :ref:`operator * <class_float_operator_mul_Color>`\ (\ right\: :ref:`Color<class_Color>`\ )                |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>` | :ref:`operator * <class_float_operator_mul_Quaternion>`\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`       | :ref:`operator * <class_float_operator_mul_Vector2>`\ (\ right\: :ref:`Vector2<class_Vector2>`\ )          |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector2<class_Vector2>`       | :ref:`operator * <class_float_operator_mul_Vector2i>`\ (\ right\: :ref:`Vector2i<class_Vector2i>`\ )       |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`       | :ref:`toán tử * <class_float_operator_mul_Vector3>`\ (\ right\: :ref:`Vector3<class_Vector3>`\ )           |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`       | :ref:`toán tử * <class_float_operator_mul_Vector3i>`\ (\ right\: :ref:`Vector3i<class_Vector3i>`\ )        |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>`       | :ref:`toán tử * <class_float_operator_mul_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )           |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>`       | :ref:`toán tử * <class_float_operator_mul_Vector4i>`\ (\ right\: :ref:`Vector4i<class_Vector4i>`\ )        |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử * <class_float_operator_mul_float>`\ (\ right\: :ref:`float<class_float>`\ )                 |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử * <class_float_operator_mul_int>`\ (\ right\: :ref:`int<class_int>`\ )                       |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử **** <class_float_operator_pow_float>`\ (\ right\: :ref:`float<class_float>`\ )              |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử **** <class_float_operator_pow_int>`\ (\ phải\: :ref:`int<class_int>`\ )                     |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử + <class_float_operator_sum_float>`\ (\ phải\: :ref:`float<class_float>`\ )                  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử + <class_float_operator_sum_int>`\ (\ phải\: :ref:`int<class_int>`\ )                        |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử - <class_float_operator_dif_float>`\ (\ phải\: :ref:`float<class_float>`\ )                  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử - <class_float_operator_dif_int>`\ (\ phải\: :ref:`int<class_int>`\ )                        |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử / <class_float_operator_div_float>`\ (\ phải\: :ref:`float<class_float>`\ )                  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`toán tử / <class_float_operator_div_int>`\ (\ phải\: :ref:`int<class_int>`\ )                        |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator \< <class_float_operator_lt_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator \< <class_float_operator_lt_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator \<= <class_float_operator_lte_float>`\ (\ right\: :ref:`float<class_float>`\ )              |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator \<= <class_float_operator_lte_int>`\ (\ right\: :ref:`int<class_int>`\ )                    |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator == <class_float_operator_eq_float>`\ (\ right\: :ref:`float<class_float>`\ )                |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator == <class_float_operator_eq_int>`\ (\ right\: :ref:`int<class_int>`\ )                      |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator > <class_float_operator_gt_float>`\ (\ right\: :ref:`float<class_float>`\ )                 |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator > <class_float_operator_gt_int>`\ (\ right\: :ref:`int<class_int>`\ )                       |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator >= <class_float_operator_gte_float>`\ (\ right\: :ref:`float<class_float>`\ )               |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator >= <class_float_operator_gte_int>`\ (\ right\: :ref:`int<class_int>`\ )                     |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`operator unary+ <class_float_operator_unplus>`\ (\ )                                                 |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
+   | :ref:`float<class_float>`           | :ref:`operator unary- <class_float_operator_unminus>`\ (\ )                                                |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -134,8 +134,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_float_constructor_float:
 
@@ -143,7 +143,7 @@ Constructor Descriptions
 
 :ref:`float<class_float>` **float**\ (\ ) :ref:`🔗<class_float_constructor_float>`
 
-Constructs a default-initialized **float** set to ``0.0``.
+Tạo một **float** được khởi tạo mặc định với giá trị ``0.0``.
 
 .. rst-class:: classref-item-separator
 
@@ -153,7 +153,7 @@ Constructs a default-initialized **float** set to ``0.0``.
 
 :ref:`float<class_float>` **float**\ (\ from\: :ref:`float<class_float>`\ )
 
-Constructs a **float** as a copy of the given **float**.
+Tạo một **float** dưới dạng bản sao của **float** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -163,7 +163,7 @@ Constructs a **float** as a copy of the given **float**.
 
 :ref:`float<class_float>` **float**\ (\ from\: :ref:`String<class_String>`\ )
 
-Converts a :ref:`String<class_String>` to a **float**, following the same rules as :ref:`String.to_float()<class_String_method_to_float>`.
+Chuyển đổi một :ref:`String<class_String>` thành một **float**, theo cùng các quy tắc như :ref:`String.to_float()<class_String_method_to_float>`.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Converts a :ref:`String<class_String>` to a **float**, following the same rules 
 
 :ref:`float<class_float>` **float**\ (\ from\: :ref:`bool<class_bool>`\ )
 
-Cast a :ref:`bool<class_bool>` value to a floating-point value, ``float(true)`` will be equal to 1.0 and ``float(false)`` will be equal to 0.0.
+Ép kiểu một giá trị :ref:`bool<class_bool>` thành giá trị dấu phẩy động; ``float(true)`` sẽ bằng 1.0 và ``float(false)`` sẽ bằng 0.0.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Cast a :ref:`bool<class_bool>` value to a floating-point value, ``float(true)`` 
 
 :ref:`float<class_float>` **float**\ (\ from\: :ref:`int<class_int>`\ )
 
-Cast an :ref:`int<class_int>` value to a floating-point value, ``float(1)`` will be equal to ``1.0``.
+Ép kiểu một giá trị :ref:`int<class_int>` thành giá trị dấu phẩy động; ``float(1)`` sẽ bằng ``1.0``.
 
 .. rst-class:: classref-section-separator
 
@@ -191,18 +191,18 @@ Cast an :ref:`int<class_int>` value to a floating-point value, ``float(1)`` will
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_float_operator_neq_float:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_neq_float>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_neq_float>`
 
-Returns ``true`` if two floats are different from each other.
+Trả về ``true`` nếu hai số float khác nhau.
 
-\ **Note:** :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` doesn't behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các số khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -212,9 +212,9 @@ Returns ``true`` if two floats are different from each other.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_neq_int>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_neq_int>`
 
-Returns ``true`` if the integer has different value than the float.
+Trả về ``true`` nếu số nguyên có giá trị khác với số thực.
 
 .. rst-class:: classref-item-separator
 
@@ -224,9 +224,9 @@ Returns ``true`` if the integer has different value than the float.
 
 .. rst-class:: classref-operator
 
-:ref:`Color<class_Color>` **operator ***\ (\ right\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_float_operator_mul_Color>`
+:ref:`Color<class_Color>` **operator ***\ (\ right\: :ref:`Color<class_Color>`\ ) :ref:`🔗 <class_float_operator_mul_Color>`
 
-Multiplies each component of the :ref:`Color<class_Color>`, including the alpha, by the given **float**.
+Nhân từng thành phần của :ref:`Color<class_Color>`, bao gồm cả alpha, với **float** đã cho.
 
 ::
 
@@ -240,9 +240,9 @@ Multiplies each component of the :ref:`Color<class_Color>`, including the alpha,
 
 .. rst-class:: classref-operator
 
-:ref:`Quaternion<class_Quaternion>` **operator ***\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_float_operator_mul_Quaternion>`
+:ref:`Quaternion<class_Quaternion>` **operator ***\ (\ right\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗 <class_float_operator_mul_Quaternion>`
 
-Multiplies each component of the :ref:`Quaternion<class_Quaternion>` by the given **float**. This operation is not meaningful on its own, but it can be used as a part of a larger expression.
+Nhân từng thành phần của :ref:`Quaternion<class_Quaternion>` với **float** đã cho. Bản thân thao tác này không có ý nghĩa, nhưng có thể được sử dụng như một phần của biểu thức lớn hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -252,9 +252,9 @@ Multiplies each component of the :ref:`Quaternion<class_Quaternion>` by the give
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_float_operator_mul_Vector2>`
+:ref:`Vector2<class_Vector2>` **toán tử ***\ (\ right\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗 <class_float_operator_mul_Vector2>`
 
-Multiplies each component of the :ref:`Vector2<class_Vector2>` by the given **float**.
+Nhân từng thành phần của :ref:`Vector2<class_Vector2>` với giá trị **float** đã cho.
 
 ::
 
@@ -268,9 +268,9 @@ Multiplies each component of the :ref:`Vector2<class_Vector2>` by the given **fl
 
 .. rst-class:: classref-operator
 
-:ref:`Vector2<class_Vector2>` **operator ***\ (\ right\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_float_operator_mul_Vector2i>`
+:ref:`Vector2<class_Vector2>` **toán tử ***\ (\ right\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗 <class_float_operator_mul_Vector2i>`
 
-Multiplies each component of the :ref:`Vector2i<class_Vector2i>` by the given **float**. Returns a :ref:`Vector2<class_Vector2>`.
+Nhân từng thành phần của :ref:`Vector2i<class_Vector2i>` với giá trị **float** đã cho. Trả về một :ref:`Vector2<class_Vector2>`.
 
 ::
 
@@ -284,9 +284,9 @@ Multiplies each component of the :ref:`Vector2i<class_Vector2i>` by the given **
 
 .. rst-class:: classref-operator
 
-:ref:`Vector3<class_Vector3>` **operator ***\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_float_operator_mul_Vector3>`
+:ref:`Vector3<class_Vector3>` **toán tử ***\ (\ right\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗 <class_float_operator_mul_Vector3>`
 
-Multiplies each component of the :ref:`Vector3<class_Vector3>` by the given **float**.
+Nhân từng thành phần của :ref:`Vector3<class_Vector3>` với giá trị **float** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -296,9 +296,9 @@ Multiplies each component of the :ref:`Vector3<class_Vector3>` by the given **fl
 
 .. rst-class:: classref-operator
 
-:ref:`Vector3<class_Vector3>` **operator ***\ (\ right\: :ref:`Vector3i<class_Vector3i>`\ ) :ref:`🔗<class_float_operator_mul_Vector3i>`
+:ref:`Vector3<class_Vector3>` **toán tử ***\ (\ right\: :ref:`Vector3i<class_Vector3i>`\ ) :ref:`🔗 <class_float_operator_mul_Vector3i>`
 
-Multiplies each component of the :ref:`Vector3i<class_Vector3i>` by the given **float**. Returns a :ref:`Vector3<class_Vector3>`.
+Nhân từng thành phần của :ref:`Vector3i<class_Vector3i>` với **float** đã cho. Trả về một :ref:`Vector3<class_Vector3>`.
 
 ::
 
@@ -312,9 +312,9 @@ Multiplies each component of the :ref:`Vector3i<class_Vector3i>` by the given **
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_float_operator_mul_Vector4>`
+:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_float_operator_mul_Vector4>`
 
-Multiplies each component of the :ref:`Vector4<class_Vector4>` by the given **float**.
+Nhân từng thành phần của :ref:`Vector4<class_Vector4>` với **float** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -324,9 +324,9 @@ Multiplies each component of the :ref:`Vector4<class_Vector4>` by the given **fl
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Vector4i<class_Vector4i>`\ ) :ref:`🔗<class_float_operator_mul_Vector4i>`
+:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Vector4i<class_Vector4i>`\ ) :ref:`🔗 <class_float_operator_mul_Vector4i>`
 
-Multiplies each component of the :ref:`Vector4i<class_Vector4i>` by the given **float**. Returns a :ref:`Vector4<class_Vector4>`.
+Nhân từng thành phần của :ref:`Vector4i<class_Vector4i>` với **float** đã cho. Trả về một :ref:`Vector4<class_Vector4>`.
 
 ::
 
@@ -340,9 +340,9 @@ Multiplies each component of the :ref:`Vector4i<class_Vector4i>` by the given **
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_mul_float>`
+:ref:`float<class_float>` **operator ***\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_mul_float>`
 
-Multiplies two **float**\ s.
+Nhân hai **float**\ .
 
 .. rst-class:: classref-item-separator
 
@@ -352,9 +352,9 @@ Multiplies two **float**\ s.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_mul_int>`
+:ref:`float<class_float>` **toán tử ***\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_mul_int>`
 
-Multiplies a **float** and an :ref:`int<class_int>`. The result is a **float**.
+Nhân một **float** và một :ref:`int<class_int>`. Kết quả là một **float**.
 
 .. rst-class:: classref-item-separator
 
@@ -364,9 +364,9 @@ Multiplies a **float** and an :ref:`int<class_int>`. The result is a **float**.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator ****\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_pow_float>`
+:ref:`float<class_float>` **toán tử ****\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_pow_float>`
 
-Raises a **float** to a power of a **float**.
+Nâng một **float** lên lũy thừa của một **float**.
 
 ::
 
@@ -380,9 +380,9 @@ Raises a **float** to a power of a **float**.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator ****\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_pow_int>`
+:ref:`float<class_float>` **toán tử ****\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_pow_int>`
 
-Raises a **float** to a power of an :ref:`int<class_int>`. The result is a **float**.
+Nâng một **float** lên lũy thừa của một :ref:`int<class_int>`. Kết quả là một **float**.
 
 ::
 
@@ -396,9 +396,9 @@ Raises a **float** to a power of an :ref:`int<class_int>`. The result is a **flo
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator +**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_sum_float>`
+:ref:`float<class_float>` **toán tử +**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_sum_float>`
 
-Adds two floats.
+Cộng hai số thực.
 
 .. rst-class:: classref-item-separator
 
@@ -408,9 +408,9 @@ Adds two floats.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator +**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_sum_int>`
+:ref:`float<class_float>` **operator +**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_sum_int>`
 
-Adds a **float** and an :ref:`int<class_int>`. The result is a **float**.
+Cộng một **float** và một :ref:`int<class_int>`. Kết quả là một **float**.
 
 .. rst-class:: classref-item-separator
 
@@ -420,9 +420,9 @@ Adds a **float** and an :ref:`int<class_int>`. The result is a **float**.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator -**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_dif_float>`
+:ref:`float<class_float>` **operator -**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_dif_float>`
 
-Subtracts a float from a float.
+Trừ một số thực khỏi một số thực.
 
 .. rst-class:: classref-item-separator
 
@@ -432,9 +432,9 @@ Subtracts a float from a float.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator -**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_dif_int>`
+:ref:`float<class_float>` **operator -**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_dif_int>`
 
-Subtracts an :ref:`int<class_int>` from a **float**. The result is a **float**.
+Trừ một :ref:`int<class_int>` khỏi một **float**. Kết quả là một **float**.
 
 .. rst-class:: classref-item-separator
 
@@ -444,9 +444,9 @@ Subtracts an :ref:`int<class_int>` from a **float**. The result is a **float**.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_div_float>`
+:ref:`float<class_float>` **toán tử /**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_div_float>`
 
-Divides two floats.
+Chia hai float.
 
 .. rst-class:: classref-item-separator
 
@@ -456,9 +456,9 @@ Divides two floats.
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_div_int>`
+:ref:`float<class_float>` **toán tử /**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_div_int>`
 
-Divides a **float** by an :ref:`int<class_int>`. The result is a **float**.
+Chia một **float** cho một :ref:`int<class_int>`. Kết quả là một **float**.
 
 .. rst-class:: classref-item-separator
 
@@ -468,11 +468,11 @@ Divides a **float** by an :ref:`int<class_int>`. The result is a **float**.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_lt_float>`
+:ref:`bool<class_bool>` **toán tử <**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_lt_float>`
 
-Returns ``true`` if the left float is less than the right one.
+Trả về ``true`` nếu float bên trái nhỏ hơn float bên phải.
 
-\ **Note:** :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` doesn't behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các số khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -482,9 +482,9 @@ Returns ``true`` if the left float is less than the right one.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_lt_int>`
+:ref:`bool<class_bool>` **operator <**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_lt_int>`
 
-Returns ``true`` if this **float** is less than the given :ref:`int<class_int>`.
+Trả về ``true`` nếu **float** này nhỏ hơn :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -494,11 +494,11 @@ Returns ``true`` if this **float** is less than the given :ref:`int<class_int>`.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_lte_float>`
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_lte_float>`
 
-Returns ``true`` if the left float is less than or equal to the right one.
+Trả về ``true`` nếu float bên trái nhỏ hơn hoặc bằng float bên phải.
 
-\ **Note:** :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` doesn't behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các số khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -508,9 +508,9 @@ Returns ``true`` if the left float is less than or equal to the right one.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_lte_int>`
+:ref:`bool<class_bool>` **operator <=**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_lte_int>`
 
-Returns ``true`` if this **float** is less than or equal to the given :ref:`int<class_int>`.
+Trả về ``true`` nếu **float** này nhỏ hơn hoặc bằng :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -520,13 +520,13 @@ Returns ``true`` if this **float** is less than or equal to the given :ref:`int<
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_eq_float>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_eq_float>`
 
-Returns ``true`` if both floats are exactly equal.
+Trả về ``true`` nếu cả hai số thực hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`@GlobalScope.is_equal_approx()<class_@GlobalScope_method_is_equal_approx>` or :ref:`@GlobalScope.is_zero_approx()<class_@GlobalScope_method_is_zero_approx>` instead, which are more reliable.
+\ **Lưu ý:** Do các lỗi về độ chính xác của số dấu phẩy động, hãy cân nhắc sử dụng :ref:`@GlobalScope.is_equal_approx() <class_@GlobalScope_method_is_equal_approx>` hoặc :ref:`@GlobalScope.is_zero_approx() <class_@GlobalScope_method_is_zero_approx>` thay thế vì chúng đáng tin cậy hơn.
 
-\ **Note:** :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` doesn't behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các số khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -536,9 +536,9 @@ Returns ``true`` if both floats are exactly equal.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_eq_int>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_eq_int>`
 
-Returns ``true`` if the **float** and the given :ref:`int<class_int>` are equal.
+Trả về ``true`` nếu **float** và :ref:`int<class_int>` đã cho bằng nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -548,11 +548,11 @@ Returns ``true`` if the **float** and the given :ref:`int<class_int>` are equal.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_gt_float>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_gt_float>`
 
-Returns ``true`` if the left float is greater than the right one.
+Trả về ``true`` nếu float bên trái lớn hơn float bên phải.
 
-\ **Note:** :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` doesn't behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các số khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -562,9 +562,9 @@ Returns ``true`` if the left float is greater than the right one.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_gt_int>`
+:ref:`bool<class_bool>` **operator >**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_gt_int>`
 
-Returns ``true`` if this **float** is greater than the given :ref:`int<class_int>`.
+Trả về ``true`` nếu **float** này lớn hơn :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -574,11 +574,11 @@ Returns ``true`` if this **float** is greater than the given :ref:`int<class_int
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗<class_float_operator_gte_float>`
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`float<class_float>`\ ) :ref:`🔗 <class_float_operator_gte_float>`
 
-Returns ``true`` if the left float is greater than or equal to the right one.
+Trả về ``true`` nếu float bên trái lớn hơn hoặc bằng float bên phải.
 
-\ **Note:** :ref:`@GDScript.NAN<class_@GDScript_constant_NAN>` doesn't behave the same as other numbers. Therefore, the results from this operator may not be accurate if NaNs are included.
+\ **Lưu ý:** :ref:`@GDScript.NAN <class_@GDScript_constant_NAN>` không hoạt động giống các số khác. Do đó, kết quả từ toán tử này có thể không chính xác nếu có NaN.
 
 .. rst-class:: classref-item-separator
 
@@ -588,9 +588,9 @@ Returns ``true`` if the left float is greater than or equal to the right one.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗<class_float_operator_gte_int>`
+:ref:`bool<class_bool>` **operator >=**\ (\ right\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_float_operator_gte_int>`
 
-Returns ``true`` if this **float** is greater than or equal to the given :ref:`int<class_int>`.
+Trả về ``true`` nếu **float** này lớn hơn hoặc bằng :ref:`int<class_int>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -600,9 +600,9 @@ Returns ``true`` if this **float** is greater than or equal to the given :ref:`i
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator unary+**\ (\ ) :ref:`🔗<class_float_operator_unplus>`
+:ref:`float<class_float>` **operator unary+**\ (\ ) :ref:`🔗 <class_float_operator_unplus>`
 
-Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, but sometimes it can make your code more readable.
+Trả về cùng một giá trị như khi ``+`` không tồn tại. Toán tử một ngôi ``+`` không thực hiện thao tác nào, nhưng đôi khi có thể giúp mã của bạn dễ đọc hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -612,16 +612,16 @@ Returns the same value as if the ``+`` was not there. Unary ``+`` does nothing, 
 
 .. rst-class:: classref-operator
 
-:ref:`float<class_float>` **operator unary-**\ (\ ) :ref:`🔗<class_float_operator_unminus>`
+:ref:`float<class_float>` **operator unary-**\ (\ ) :ref:`🔗 <class_float_operator_unminus>`
 
-Returns the negative value of the **float**. If positive, turns the number negative. If negative, turns the number positive. With floats, the number zero can be either positive or negative.
+Trả về giá trị âm của **float**. Nếu dương, số đó sẽ trở thành số âm. Nếu âm, số đó sẽ trở thành số dương. Với số thực, số không có thể là dương hoặc âm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,21 +10,21 @@
 BitMap
 ======
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Boolean matrix.
+Ma trận boolean.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A two-dimensional array of boolean values, can be used to efficiently store a binary matrix (every matrix element takes only one bit) and query the values using natural cartesian coordinates.
+Một mảng hai chiều gồm các giá trị boolean, có thể được dùng để lưu trữ hiệu quả một ma trận nhị phân (mỗi phần tử ma trận chỉ chiếm một bit) và truy vấn các giá trị bằng cách sử dụng tọa độ Descartes tự nhiên.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -63,8 +63,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_BitMap_method_convert_to_image:
 
@@ -72,7 +72,7 @@ Method Descriptions
 
 :ref:`Image<class_Image>` **convert_to_image**\ (\ ) |const| :ref:`🔗<class_BitMap_method_convert_to_image>`
 
-Returns an image of the same size as the bitmap and with an :ref:`Format<enum_Image_Format>` of type :ref:`Image.FORMAT_L8<class_Image_constant_FORMAT_L8>`. ``true`` bits of the bitmap are being converted into white pixels, and ``false`` bits into black.
+Trả về một hình ảnh có cùng kích thước với bitmap và có :ref:`Format <enum_Image_Format>` thuộc kiểu :ref:`Image.FORMAT_L8<class_Image_constant_FORMAT_L8>`. Các bit ``true`` của bitmap được chuyển đổi thành các pixel màu trắng, còn các bit ``false`` được chuyển đổi thành màu đen.
 
 .. rst-class:: classref-item-separator
 
@@ -84,7 +84,7 @@ Returns an image of the same size as the bitmap and with an :ref:`Format<enum_Im
 
 |void| **create**\ (\ size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_BitMap_method_create>`
 
-Creates a bitmap with the specified size, filled with ``false``.
+Tạo một bitmap có kích thước được chỉ định, được điền bằng ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -96,7 +96,7 @@ Creates a bitmap with the specified size, filled with ``false``.
 
 |void| **create_from_image_alpha**\ (\ image\: :ref:`Image<class_Image>`, threshold\: :ref:`float<class_float>` = 0.1\ ) :ref:`🔗<class_BitMap_method_create_from_image_alpha>`
 
-Creates a bitmap that matches the given image dimensions, every element of the bitmap is set to ``false`` if the alpha value of the image at that position is equal to ``threshold`` or less, and ``true`` in other case.
+Tạo một bitmap khớp với kích thước của hình ảnh đã cho; mỗi phần tử của bitmap được đặt thành ``false`` nếu giá trị alpha của hình ảnh tại vị trí đó nhỏ hơn hoặc bằng ``threshold``, và thành ``true`` trong trường hợp còn lại.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Creates a bitmap that matches the given image dimensions, every element of the b
 
 :ref:`bool<class_bool>` **get_bit**\ (\ x\: :ref:`int<class_int>`, y\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_BitMap_method_get_bit>`
 
-Returns bitmap's value at the specified position.
+Trả về giá trị của bitmap tại vị trí được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -120,7 +120,7 @@ Returns bitmap's value at the specified position.
 
 :ref:`bool<class_bool>` **get_bitv**\ (\ position\: :ref:`Vector2i<class_Vector2i>`\ ) |const| :ref:`🔗<class_BitMap_method_get_bitv>`
 
-Returns bitmap's value at the specified position.
+Trả về giá trị của bitmap tại vị trí được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ Returns bitmap's value at the specified position.
 
 :ref:`Vector2i<class_Vector2i>` **get_size**\ (\ ) |const| :ref:`🔗<class_BitMap_method_get_size>`
 
-Returns bitmap's dimensions.
+Trả về kích thước của bitmap.
 
 .. rst-class:: classref-item-separator
 
@@ -144,7 +144,7 @@ Returns bitmap's dimensions.
 
 :ref:`int<class_int>` **get_true_bit_count**\ (\ ) |const| :ref:`🔗<class_BitMap_method_get_true_bit_count>`
 
-Returns the number of bitmap elements that are set to ``true``.
+Trả về số phần tử của bitmap được đặt thành ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ Returns the number of bitmap elements that are set to ``true``.
 
 |void| **grow_mask**\ (\ pixels\: :ref:`int<class_int>`, rect\: :ref:`Rect2i<class_Rect2i>`\ ) :ref:`🔗<class_BitMap_method_grow_mask>`
 
-Applies morphological dilation or erosion to the bitmap. If ``pixels`` is positive, dilation is applied to the bitmap. If ``pixels`` is negative, erosion is applied to the bitmap. ``rect`` defines the area where the morphological operation is applied. Pixels located outside the ``rect`` are unaffected by :ref:`grow_mask()<class_BitMap_method_grow_mask>`.
+Áp dụng phép giãn nở hoặc co hình thái học cho bitmap. Nếu ``pixels`` là số dương, phép giãn nở được áp dụng cho bitmap. Nếu ``pixels`` là số âm, phép co được áp dụng cho bitmap. ``rect`` xác định khu vực áp dụng phép toán hình thái học. Các pixel nằm ngoài ``rect`` không bị ảnh hưởng bởi :ref:`grow_mask()<class_BitMap_method_grow_mask>`.
 
 .. rst-class:: classref-item-separator
 
@@ -168,15 +168,15 @@ Applies morphological dilation or erosion to the bitmap. If ``pixels`` is positi
 
 :ref:`Array<class_Array>`\[:ref:`PackedVector2Array<class_PackedVector2Array>`\] **opaque_to_polygons**\ (\ rect\: :ref:`Rect2i<class_Rect2i>`, epsilon\: :ref:`float<class_float>` = 2.0\ ) |const| :ref:`🔗<class_BitMap_method_opaque_to_polygons>`
 
-Creates an :ref:`Array<class_Array>` of polygons covering a rectangular portion of the bitmap. It uses a marching squares algorithm, followed by Ramer-Douglas-Peucker (RDP) reduction of the number of vertices. Each polygon is described as a :ref:`PackedVector2Array<class_PackedVector2Array>` of its vertices.
+Tạo một :ref:`Array<class_Array>` gồm các polygon bao phủ một phần hình chữ nhật của bitmap. Phương thức này sử dụng thuật toán marching squares, sau đó dùng phép rút gọn Ramer-Douglas-Peucker (RDP) để giảm số lượng đỉnh. Mỗi polygon được mô tả dưới dạng một :ref:`PackedVector2Array<class_PackedVector2Array>` gồm các đỉnh của nó.
 
-To get polygons covering the whole bitmap, pass:
+Để lấy các polygon bao phủ toàn bộ bitmap, hãy truyền:
 
 ::
 
     Rect2(Vector2(), get_size())
 
-\ ``epsilon`` is passed to RDP to control how accurately the polygons cover the bitmap: a lower ``epsilon`` corresponds to more points in the polygons.
+\ ``epsilon`` được truyền vào RDP để kiểm soát mức độ chính xác của việc các polygon bao phủ bitmap: ``epsilon`` càng thấp thì các polygon càng có nhiều điểm.
 
 .. rst-class:: classref-item-separator
 
@@ -188,7 +188,7 @@ To get polygons covering the whole bitmap, pass:
 
 |void| **resize**\ (\ new_size\: :ref:`Vector2i<class_Vector2i>`\ ) :ref:`🔗<class_BitMap_method_resize>`
 
-Resizes the image to ``new_size``.
+Thay đổi kích thước hình ảnh thành ``new_size``.
 
 .. rst-class:: classref-item-separator
 
@@ -200,7 +200,7 @@ Resizes the image to ``new_size``.
 
 |void| **set_bit**\ (\ x\: :ref:`int<class_int>`, y\: :ref:`int<class_int>`, bit\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_BitMap_method_set_bit>`
 
-Sets the bitmap's element at the specified position, to the specified value.
+Đặt phần tử của bitmap tại vị trí được chỉ định thành giá trị được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -212,7 +212,7 @@ Sets the bitmap's element at the specified position, to the specified value.
 
 |void| **set_bit_rect**\ (\ rect\: :ref:`Rect2i<class_Rect2i>`, bit\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_BitMap_method_set_bit_rect>`
 
-Sets a rectangular portion of the bitmap to the specified value.
+Đặt một phần hình chữ nhật của bitmap thành giá trị được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -224,14 +224,14 @@ Sets a rectangular portion of the bitmap to the specified value.
 
 |void| **set_bitv**\ (\ position\: :ref:`Vector2i<class_Vector2i>`, bit\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_BitMap_method_set_bitv>`
 
-Sets the bitmap's element at the specified position, to the specified value.
+Đặt phần tử của bitmap tại vị trí được chỉ định thành giá trị được chỉ định.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

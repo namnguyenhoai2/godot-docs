@@ -10,20 +10,20 @@
 Expression
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A class that stores an expression you can execute.
+Một class lưu trữ một biểu thức mà bạn có thể thực thi.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-An expression can be made of any arithmetic operation, built-in math function call, method call of a passed instance, or built-in type construction call.
+Một biểu thức có thể bao gồm bất kỳ phép toán số học nào, lệnh gọi hàm toán học tích hợp sẵn, lệnh gọi phương thức của một instance được truyền vào hoặc lệnh gọi khởi tạo kiểu tích hợp sẵn.
 
-An example expression text using the built-in math functions could be ``sqrt(pow(3, 2) + pow(4, 2))``.
+Một ví dụ về văn bản biểu thức sử dụng các hàm toán học tích hợp sẵn có thể là ``sqrt(pow(3, 2) + pow(4, 2))``.
 
-In the following example we use a :ref:`LineEdit<class_LineEdit>` node to write our expression and show the result.
+Trong ví dụ sau, chúng ta sử dụng một node :ref:`LineEdit<class_LineEdit>` để viết biểu thức và hiển thị kết quả.
 
 
 .. tabs::
@@ -72,28 +72,28 @@ In the following example we use a :ref:`LineEdit<class_LineEdit>` node to write 
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Evaluating Expressions <../tutorials/scripting/evaluating_expressions>`
+- :doc:`Đánh giá biểu thức <../tutorials/scripting/evaluating_expressions>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`         | :ref:`execute<class_Expression_method_execute>`\ (\ inputs\: :ref:`Array<class_Array>` = [], base_instance\: :ref:`Object<class_Object>` = null, show_error\: :ref:`bool<class_bool>` = true, const_calls_only\: :ref:`bool<class_bool>` = false\ ) |
-   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`           | :ref:`get_error_text<class_Expression_method_get_error_text>`\ (\ ) |const|                                                                                                                                                                         |
-   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`               | :ref:`has_execute_failed<class_Expression_method_has_execute_failed>`\ (\ ) |const|                                                                                                                                                                 |
-   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`parse<class_Expression_method_parse>`\ (\ expression\: :ref:`String<class_String>`, input_names\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray()\ )                                                                  |
-   +---------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`          | :ref:`execute<class_Expression_method_execute>`\ (\ inputs\: :ref:`Array<class_Array>` = [], base_instance\: :ref:`Object<class_Object>` = null, show_error\: :ref:`bool<class_bool>` = true, const_calls_only\: :ref:`bool<class_bool>` = false\ ) |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`            | :ref:`get_error_text<class_Expression_method_get_error_text>`\ (\ ) |const|                                                                                                                                                                         |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                | :ref:`has_execute_failed<class_Expression_method_has_execute_failed>`\ (\ ) |const|                                                                                                                                                                 |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`parse<class_Expression_method_parse>`\ (\ expression\: :ref:`String<class_String>`, input_names\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray()\ )                                                                  |
+   +----------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -101,8 +101,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Expression_method_execute:
 
@@ -110,9 +110,9 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **execute**\ (\ inputs\: :ref:`Array<class_Array>` = [], base_instance\: :ref:`Object<class_Object>` = null, show_error\: :ref:`bool<class_bool>` = true, const_calls_only\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Expression_method_execute>`
 
-Executes the expression that was previously parsed by :ref:`parse()<class_Expression_method_parse>` and returns the result. Before you use the returned object, you should check if the method failed by calling :ref:`has_execute_failed()<class_Expression_method_has_execute_failed>`.
+Thực thi biểu thức đã được phân tích cú pháp trước đó bởi :ref:`parse()<class_Expression_method_parse>` và trả về kết quả. Trước khi sử dụng đối tượng được trả về, bạn nên kiểm tra xem phương thức có thất bại hay không bằng cách gọi :ref:`has_execute_failed()<class_Expression_method_has_execute_failed>`.
 
-If you defined input variables in :ref:`parse()<class_Expression_method_parse>`, you can specify their values in the inputs array, in the same order.
+Nếu bạn đã định nghĩa các biến đầu vào trong :ref:`parse()<class_Expression_method_parse>`, bạn có thể chỉ định giá trị của chúng trong mảng inputs, theo cùng thứ tự.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ If you defined input variables in :ref:`parse()<class_Expression_method_parse>`,
 
 :ref:`String<class_String>` **get_error_text**\ (\ ) |const| :ref:`🔗<class_Expression_method_get_error_text>`
 
-Returns the error text if :ref:`parse()<class_Expression_method_parse>` or :ref:`execute()<class_Expression_method_execute>` has failed.
+Trả về văn bản lỗi nếu :ref:`parse()<class_Expression_method_parse>` hoặc :ref:`execute()<class_Expression_method_execute>` không thành công.
 
 .. rst-class:: classref-item-separator
 
@@ -136,7 +136,7 @@ Returns the error text if :ref:`parse()<class_Expression_method_parse>` or :ref:
 
 :ref:`bool<class_bool>` **has_execute_failed**\ (\ ) |const| :ref:`🔗<class_Expression_method_has_execute_failed>`
 
-Returns ``true`` if :ref:`execute()<class_Expression_method_execute>` has failed.
+Trả về ``true`` nếu :ref:`execute()<class_Expression_method_execute>` không thành công.
 
 .. rst-class:: classref-item-separator
 
@@ -148,16 +148,16 @@ Returns ``true`` if :ref:`execute()<class_Expression_method_execute>` has failed
 
 :ref:`Error<enum_@GlobalScope_Error>` **parse**\ (\ expression\: :ref:`String<class_String>`, input_names\: :ref:`PackedStringArray<class_PackedStringArray>` = PackedStringArray()\ ) :ref:`🔗<class_Expression_method_parse>`
 
-Parses the expression and returns an :ref:`Error<enum_@GlobalScope_Error>` code.
+Phân tích biểu thức và trả về mã :ref:`Error <enum_@GlobalScope_Error>`.
 
-You can optionally specify names of variables that may appear in the expression with ``input_names``, so that you can bind them when it gets executed.
+Bạn có thể tùy chọn chỉ định tên của các biến có thể xuất hiện trong biểu thức bằng ``input_names``, để có thể liên kết chúng khi biểu thức được thực thi.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

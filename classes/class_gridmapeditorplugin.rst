@@ -13,21 +13,21 @@
 GridMapEditorPlugin
 ===================
 
-**Inherits:** :ref:`EditorPlugin<class_EditorPlugin>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorPlugin<class_EditorPlugin>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Editor for :ref:`GridMap<class_GridMap>` nodes.
+Trình chỉnh sửa cho các node :ref:`GridMap<class_GridMap>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-GridMapEditorPlugin provides access to the :ref:`GridMap<class_GridMap>` editor functionality.
+GridMapEditorPlugin cung cấp quyền truy cập vào chức năng trình chỉnh sửa :ref:`GridMap<class_GridMap>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -56,8 +56,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GridMapEditorPlugin_method_clear_selection:
 
@@ -65,7 +65,7 @@ Method Descriptions
 
 |void| **clear_selection**\ (\ ) :ref:`🔗<class_GridMapEditorPlugin_method_clear_selection>`
 
-Deselects any currently selected cells.
+Bỏ chọn mọi ô hiện đang được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -77,7 +77,7 @@ Deselects any currently selected cells.
 
 :ref:`GridMap<class_GridMap>` **get_current_grid_map**\ (\ ) |const| :ref:`🔗<class_GridMapEditorPlugin_method_get_current_grid_map>`
 
-Returns the :ref:`GridMap<class_GridMap>` node currently edited by the grid map editor.
+Trả về node :ref:`GridMap<class_GridMap>` hiện đang được chỉnh sửa bởi trình chỉnh sửa grid map.
 
 .. rst-class:: classref-item-separator
 
@@ -89,7 +89,7 @@ Returns the :ref:`GridMap<class_GridMap>` node currently edited by the grid map 
 
 :ref:`Array<class_Array>` **get_selected_cells**\ (\ ) |const| :ref:`🔗<class_GridMapEditorPlugin_method_get_selected_cells>`
 
-Returns an array of :ref:`Vector3i<class_Vector3i>`\ s with the selected cells' coordinates.
+Trả về một mảng các :ref:`Vector3i<class_Vector3i>`\  có tọa độ của các ô được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -101,9 +101,9 @@ Returns an array of :ref:`Vector3i<class_Vector3i>`\ s with the selected cells' 
 
 :ref:`int<class_int>` **get_selected_palette_item**\ (\ ) |const| :ref:`🔗<class_GridMapEditorPlugin_method_get_selected_palette_item>`
 
-Returns the index of the selected :ref:`MeshLibrary<class_MeshLibrary>` item in the grid map editor's palette or ``-1`` if no item is selected.
+Trả về chỉ mục của mục :ref:`MeshLibrary<class_MeshLibrary>` được chọn trong bảng màu của trình chỉnh sửa grid map hoặc ``-1`` nếu không có mục nào được chọn.
 
-\ **Note:** The indices might not be in the same order as they appear in the editor's interface.
+\ **Lưu ý:** Các chỉ mục có thể không theo cùng thứ tự như trong giao diện của trình chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -115,7 +115,7 @@ Returns the index of the selected :ref:`MeshLibrary<class_MeshLibrary>` item in 
 
 :ref:`AABB<class_AABB>` **get_selection**\ (\ ) |const| :ref:`🔗<class_GridMapEditorPlugin_method_get_selection>`
 
-Returns the cell coordinate bounds of the current selection. Use :ref:`has_selection()<class_GridMapEditorPlugin_method_has_selection>` to check if there is an active selection.
+Trả về các giới hạn tọa độ ô của vùng chọn hiện tại. Sử dụng :ref:`has_selection()<class_GridMapEditorPlugin_method_has_selection>` để kiểm tra xem có vùng chọn đang hoạt động hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -127,7 +127,7 @@ Returns the cell coordinate bounds of the current selection. Use :ref:`has_selec
 
 :ref:`bool<class_bool>` **has_selection**\ (\ ) |const| :ref:`🔗<class_GridMapEditorPlugin_method_has_selection>`
 
-Returns ``true`` if there are selected cells.
+Trả về ``true`` nếu có các ô được chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -139,9 +139,9 @@ Returns ``true`` if there are selected cells.
 
 |void| **set_selected_palette_item**\ (\ item\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GridMapEditorPlugin_method_set_selected_palette_item>`
 
-Selects the :ref:`MeshLibrary<class_MeshLibrary>` item with the given index in the grid map editor's palette. If a negative index is given, no item will be selected. If a value greater than the last index is given, the last item will be selected.
+Chọn mục :ref:`MeshLibrary<class_MeshLibrary>` có chỉ mục đã cho trong bảng màu của trình chỉnh sửa grid map. Nếu chỉ mục được cung cấp là số âm, không mục nào sẽ được chọn. Nếu giá trị được cung cấp lớn hơn chỉ mục cuối cùng, mục cuối cùng sẽ được chọn.
 
-\ **Note:** The indices might not be in the same order as they appear in the editor's interface.
+\ **Lưu ý:** Các chỉ mục có thể không theo cùng thứ tự như trong giao diện của trình chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -153,14 +153,14 @@ Selects the :ref:`MeshLibrary<class_MeshLibrary>` item with the given index in t
 
 |void| **set_selection**\ (\ begin\: :ref:`Vector3i<class_Vector3i>`, end\: :ref:`Vector3i<class_Vector3i>`\ ) :ref:`🔗<class_GridMapEditorPlugin_method_set_selection>`
 
-Selects the cells inside the given bounds from ``begin`` to ``end``.
+Chọn các ô nằm trong các giới hạn từ ``begin`` đến ``end`` đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

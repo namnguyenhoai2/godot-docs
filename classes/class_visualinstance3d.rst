@@ -10,22 +10,22 @@
 VisualInstance3D
 ================
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`Decal<class_Decal>`, :ref:`FogVolume<class_FogVolume>`, :ref:`GeometryInstance3D<class_GeometryInstance3D>`, :ref:`GPUParticlesAttractor3D<class_GPUParticlesAttractor3D>`, :ref:`GPUParticlesCollision3D<class_GPUParticlesCollision3D>`, :ref:`Light3D<class_Light3D>`, :ref:`LightmapGI<class_LightmapGI>`, :ref:`OccluderInstance3D<class_OccluderInstance3D>`, :ref:`OpenXRVisibilityMask<class_OpenXRVisibilityMask>`, :ref:`ReflectionProbe<class_ReflectionProbe>`, :ref:`RootMotionView<class_RootMotionView>`, :ref:`VisibleOnScreenNotifier3D<class_VisibleOnScreenNotifier3D>`, :ref:`VoxelGI<class_VoxelGI>`
+**Được kế thừa bởi:** :ref:`Decal<class_Decal>`, :ref:`FogVolume<class_FogVolume>`, :ref:`GeometryInstance3D<class_GeometryInstance3D>`, :ref:`GPUParticlesAttractor3D<class_GPUParticlesAttractor3D>`, :ref:`GPUParticlesCollision3D<class_GPUParticlesCollision3D>`, :ref:`Light3D<class_Light3D>`, :ref:`LightmapGI<class_LightmapGI>`, :ref:`OccluderInstance3D<class_OccluderInstance3D>`, :ref:`OpenXRVisibilityMask<class_OpenXRVisibilityMask>`, :ref:`ReflectionProbe<class_ReflectionProbe>`, :ref:`RootMotionView<class_RootMotionView>`, :ref:`VisibleOnScreenNotifier3D<class_VisibleOnScreenNotifier3D>`, :ref:`VoxelGI<class_VoxelGI>`
 
-Parent of all visual 3D nodes.
+Lớp cha của tất cả các node 3D trực quan.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **VisualInstance3D** is used to connect a resource to a visual representation. All visual 3D nodes inherit from the **VisualInstance3D**. In general, you should not access the **VisualInstance3D** properties directly as they are accessed and managed by the nodes that inherit from **VisualInstance3D**. **VisualInstance3D** is the node representation of the :ref:`RenderingServer<class_RenderingServer>` instance.
+**VisualInstance3D** được dùng để kết nối một resource với một biểu diễn trực quan. Tất cả các node 3D trực quan đều kế thừa từ **VisualInstance3D**. Nhìn chung, bạn không nên truy cập trực tiếp các thuộc tính của **VisualInstance3D**, vì chúng được các node kế thừa từ **VisualInstance3D** truy cập và quản lý. **VisualInstance3D** là biểu diễn node của instance :ref:`RenderingServer<class_RenderingServer>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -69,8 +69,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualInstance3D_property_layers:
 
@@ -83,15 +83,15 @@ Property Descriptions
 - |void| **set_layer_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_layer_mask**\ (\ )
 
-The render layer(s) this **VisualInstance3D** is drawn on.
+Các lớp render mà **VisualInstance3D** này được vẽ trên đó.
 
-This object will only be visible for :ref:`Camera3D<class_Camera3D>`\ s whose cull mask includes any of the render layers this **VisualInstance3D** is set to.
+Đối tượng này sẽ chỉ hiển thị đối với các :ref:`Camera3D<class_Camera3D>`\ s có cull mask bao gồm bất kỳ lớp render nào mà **VisualInstance3D** này được thiết lập.
 
-For :ref:`Light3D<class_Light3D>`\ s, this can be used to control which **VisualInstance3D**\ s are affected by a specific light. For :ref:`GPUParticles3D<class_GPUParticles3D>`, this can be used to control which particles are effected by a specific attractor. For :ref:`Decal<class_Decal>`\ s, this can be used to control which **VisualInstance3D**\ s are affected by a specific decal.
+Đối với các :ref:`Light3D<class_Light3D>`\ s, có thể dùng thuộc tính này để kiểm soát các **VisualInstance3D**\ s nào bị ảnh hưởng bởi một light cụ thể. Đối với :ref:`GPUParticles3D<class_GPUParticles3D>`, có thể dùng thuộc tính này để kiểm soát các particle nào bị ảnh hưởng bởi một attractor cụ thể. Đối với :ref:`Decal<class_Decal>`\ s, có thể dùng thuộc tính này để kiểm soát các **VisualInstance3D**\ s nào bị ảnh hưởng bởi một decal cụ thể.
 
-To adjust :ref:`layers<class_VisualInstance3D_property_layers>` more easily using a script, use :ref:`get_layer_mask_value()<class_VisualInstance3D_method_get_layer_mask_value>` and :ref:`set_layer_mask_value()<class_VisualInstance3D_method_set_layer_mask_value>`.
+Để điều chỉnh :ref:`layers<class_VisualInstance3D_property_layers>` dễ dàng hơn bằng script, hãy sử dụng :ref:`get_layer_mask_value()<class_VisualInstance3D_method_get_layer_mask_value>` và :ref:`set_layer_mask_value()<class_VisualInstance3D_method_set_layer_mask_value>`.
 
-\ **Note:** :ref:`VoxelGI<class_VoxelGI>`, SDFGI and :ref:`LightmapGI<class_LightmapGI>` will always take all layers into account to determine what contributes to global illumination. If this is an issue, set :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` to :ref:`GeometryInstance3D.GI_MODE_DISABLED<class_GeometryInstance3D_constant_GI_MODE_DISABLED>` for meshes and :ref:`Light3D.light_bake_mode<class_Light3D_property_light_bake_mode>` to :ref:`Light3D.BAKE_DISABLED<class_Light3D_constant_BAKE_DISABLED>` for lights to exclude them from global illumination.
+\ **Lưu ý:** :ref:`VoxelGI<class_VoxelGI>`, SDFGI và :ref:`LightmapGI<class_LightmapGI>` sẽ luôn xem xét tất cả các layer để xác định những gì đóng góp vào global illumination. Nếu đây là vấn đề, hãy đặt :ref:`GeometryInstance3D.gi_mode<class_GeometryInstance3D_property_gi_mode>` thành :ref:`GeometryInstance3D.GI_MODE_DISABLED<class_GeometryInstance3D_constant_GI_MODE_DISABLED>` cho mesh và :ref:`Light3D.light_bake_mode<class_Light3D_property_light_bake_mode>` thành :ref:`Light3D.BAKE_DISABLED<class_Light3D_constant_BAKE_DISABLED>` cho light để loại chúng khỏi global illumination.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ To adjust :ref:`layers<class_VisualInstance3D_property_layers>` more easily usin
 - |void| **set_sorting_offset**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sorting_offset**\ (\ )
 
-The amount by which the depth of this **VisualInstance3D** will be adjusted when sorting by depth. Uses the same units as the engine (which are typically meters). Adjusting it to a higher value will make the **VisualInstance3D** reliably draw on top of other **VisualInstance3D**\ s that are otherwise positioned at the same spot. To ensure it always draws on top of other objects around it (not positioned at the same spot), set the value to be greater than the distance between this **VisualInstance3D** and the other nearby **VisualInstance3D**\ s.
+Mức độ mà độ sâu của **VisualInstance3D** này sẽ được điều chỉnh khi sắp xếp theo độ sâu. Sử dụng cùng đơn vị với engine (thường là mét). Việc điều chỉnh lên giá trị cao hơn sẽ giúp **VisualInstance3D** luôn được vẽ đáng tin cậy ở phía trên các **VisualInstance3D**\ s khác vốn được đặt tại cùng một vị trí. Để đảm bảo nó luôn được vẽ ở phía trên các object khác xung quanh (không được đặt tại cùng một vị trí), hãy đặt giá trị lớn hơn khoảng cách giữa **VisualInstance3D** này và các **VisualInstance3D**\ s lân cận khác.
 
 .. rst-class:: classref-item-separator
 
@@ -118,16 +118,16 @@ The amount by which the depth of this **VisualInstance3D** will be adjusted when
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **sorting_use_aabb_center** :ref:`🔗<class_VisualInstance3D_property_sorting_use_aabb_center>`
+:ref:`bool<class_bool>` **sorting_use_aabb_center** :ref:`🔗 <class_VisualInstance3D_property_sorting_use_aabb_center>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_sorting_use_aabb_center**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_sorting_use_aabb_center**\ (\ )
 
-If ``true``, the object is sorted based on the :ref:`AABB<class_AABB>` center. The object will be sorted based on the global position otherwise.
+Nếu ``true``, object sẽ được sắp xếp dựa trên tâm của :ref:`AABB<class_AABB>`. Nếu không, object sẽ được sắp xếp dựa trên vị trí global.
 
-The :ref:`AABB<class_AABB>` center based sorting is generally more accurate for 3D models. The position based sorting instead allows to better control the drawing order when working with :ref:`GPUParticles3D<class_GPUParticles3D>` and :ref:`CPUParticles3D<class_CPUParticles3D>`.
+Việc sắp xếp dựa trên tâm của :ref:`AABB<class_AABB>` nhìn chung chính xác hơn đối với model 3D. Ngược lại, việc sắp xếp dựa trên vị trí cho phép kiểm soát tốt hơn thứ tự vẽ khi làm việc với :ref:`GPUParticles3D<class_GPUParticles3D>` và :ref:`CPUParticles3D<class_CPUParticles3D>`.
 
 .. rst-class:: classref-section-separator
 
@@ -135,8 +135,8 @@ The :ref:`AABB<class_AABB>` center based sorting is generally more accurate for 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_VisualInstance3D_private_method__get_aabb:
 
@@ -158,7 +158,7 @@ Method Descriptions
 
 :ref:`AABB<class_AABB>` **get_aabb**\ (\ ) |const| :ref:`🔗<class_VisualInstance3D_method_get_aabb>`
 
-Returns the :ref:`AABB<class_AABB>` (also known as the bounding box) for this **VisualInstance3D**.
+Trả về :ref:`AABB<class_AABB>` (còn được gọi là bounding box) của **VisualInstance3D** này.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Returns the :ref:`AABB<class_AABB>` (also known as the bounding box) for this **
 
 :ref:`RID<class_RID>` **get_base**\ (\ ) |const| :ref:`🔗<class_VisualInstance3D_method_get_base>`
 
-Returns the RID of the resource associated with this **VisualInstance3D**. For example, if the Node is a :ref:`MeshInstance3D<class_MeshInstance3D>`, this will return the RID of the associated :ref:`Mesh<class_Mesh>`.
+Trả về RID của resource được liên kết với **VisualInstance3D** này. Ví dụ: nếu Node là :ref:`MeshInstance3D<class_MeshInstance3D>`, phương thức này sẽ trả về RID của :ref:`Mesh<class_Mesh>` liên kết.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Returns the RID of the resource associated with this **VisualInstance3D**. For e
 
 :ref:`RID<class_RID>` **get_instance**\ (\ ) |const| :ref:`🔗<class_VisualInstance3D_method_get_instance>`
 
-Returns the RID of this instance. This RID is the same as the RID returned by :ref:`RenderingServer.instance_create()<class_RenderingServer_method_instance_create>`. This RID is needed if you want to call :ref:`RenderingServer<class_RenderingServer>` functions directly on this **VisualInstance3D**.
+Trả về RID của instance này. RID này giống với RID được :ref:`RenderingServer.instance_create()<class_RenderingServer_method_instance_create>` trả về. RID này là cần thiết nếu bạn muốn gọi trực tiếp các hàm :ref:`RenderingServer<class_RenderingServer>` trên **VisualInstance3D** này.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ Returns the RID of this instance. This RID is the same as the RID returned by :r
 
 :ref:`bool<class_bool>` **get_layer_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_VisualInstance3D_method_get_layer_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`layers<class_VisualInstance3D_property_layers>` is enabled, given a ``layer_number`` between 1 and 20.
+Trả về liệu layer được chỉ định của :ref:`layers<class_VisualInstance3D_property_layers>` có được bật hay không, với ``layer_number`` nằm trong khoảng từ 1 đến 20.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Returns whether or not the specified layer of the :ref:`layers<class_VisualInsta
 
 |void| **set_base**\ (\ base\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_VisualInstance3D_method_set_base>`
 
-Sets the resource that is instantiated by this **VisualInstance3D**, which changes how the engine handles the **VisualInstance3D** under the hood. Equivalent to :ref:`RenderingServer.instance_set_base()<class_RenderingServer_method_instance_set_base>`.
+Thiết lập resource được khởi tạo bởi **VisualInstance3D** này, từ đó thay đổi cách engine xử lý **VisualInstance3D** ở bên dưới. Tương đương với :ref:`RenderingServer.instance_set_base()<class_RenderingServer_method_instance_set_base>`.
 
 .. rst-class:: classref-item-separator
 
@@ -218,14 +218,14 @@ Sets the resource that is instantiated by this **VisualInstance3D**, which chang
 
 |void| **set_layer_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_VisualInstance3D_method_set_layer_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`layers<class_VisualInstance3D_property_layers>`, given a ``layer_number`` between 1 and 20.
+Dựa trên ``value``, bật hoặc tắt layer được chỉ định trong :ref:`layers<class_VisualInstance3D_property_layers>`, với ``layer_number`` nằm trong khoảng từ 1 đến 20.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

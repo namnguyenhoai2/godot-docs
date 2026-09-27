@@ -10,42 +10,42 @@
 EditorSceneFormatImporter
 =========================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`EditorSceneFormatImporterBlend<class_EditorSceneFormatImporterBlend>`, :ref:`EditorSceneFormatImporterFBX2GLTF<class_EditorSceneFormatImporterFBX2GLTF>`, :ref:`EditorSceneFormatImporterGLTF<class_EditorSceneFormatImporterGLTF>`, :ref:`EditorSceneFormatImporterUFBX<class_EditorSceneFormatImporterUFBX>`
+**Được kế thừa bởi:** :ref:`EditorSceneFormatImporterBlend<class_EditorSceneFormatImporterBlend>`, :ref:`EditorSceneFormatImporterFBX2GLTF<class_EditorSceneFormatImporterFBX2GLTF>`, :ref:`EditorSceneFormatImporterGLTF<class_EditorSceneFormatImporterGLTF>`, :ref:`EditorSceneFormatImporterUFBX<class_EditorSceneFormatImporterUFBX>`
 
-Imports scenes from third-parties' 3D files.
+Nhập các scene từ các tệp 3D của bên thứ ba.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**EditorSceneFormatImporter** allows to define an importer script for a third-party 3D format.
+**EditorSceneFormatImporter** cho phép định nghĩa một importer script cho một định dạng 3D của bên thứ ba.
 
-To use **EditorSceneFormatImporter**, register it using the :ref:`EditorPlugin.add_scene_format_importer_plugin()<class_EditorPlugin_method_add_scene_format_importer_plugin>` method first.
+Để sử dụng **EditorSceneFormatImporter**, trước tiên hãy đăng ký nó bằng phương thức :ref:`EditorPlugin.add_scene_format_importer_plugin()<class_EditorPlugin_method_add_scene_format_importer_plugin>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`_get_extensions<class_EditorSceneFormatImporter_private_method__get_extensions>`\ (\ ) |virtual| |required| |const|                                                                                                                                                                                                                                                                                          |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`_get_import_options<class_EditorSceneFormatImporter_private_method__get_import_options>`\ (\ path\: :ref:`String<class_String>`\ ) |virtual|                                                                                                                                                                                                                                                                 |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                     | :ref:`_get_option_visibility<class_EditorSceneFormatImporter_private_method__get_option_visibility>`\ (\ path\: :ref:`String<class_String>`, for_animation\: :ref:`bool<class_bool>`, option\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                    |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Object<class_Object>`                       | :ref:`_import_scene<class_EditorSceneFormatImporter_private_method__import_scene>`\ (\ path\: :ref:`String<class_String>`, flags\: :ref:`int<class_int>`, options\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |required|                                                                                                                                                                                    |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`add_import_option<class_EditorSceneFormatImporter_method_add_import_option>`\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                                                                                                                |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                            | :ref:`add_import_option_advanced<class_EditorSceneFormatImporter_method_add_import_option_advanced>`\ (\ type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`, name\: :ref:`String<class_String>`, default_value\: :ref:`Variant<class_Variant>`, hint\: :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` = 0, hint_string\: :ref:`String<class_String>` = "", usage_flags\: :ref:`int<class_int>` = 6\ ) |
-   +---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`_get_extensions<class_EditorSceneFormatImporter_private_method__get_extensions>`\ (\ ) |virtual| |required| |const|                                                                                                                                                                                                                                                                                            |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`_get_import_options<class_EditorSceneFormatImporter_private_method__get_import_options>`\ (\ path\: :ref:`String<class_String>`\ ) |virtual|                                                                                                                                                                                                                                                                   |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                     | :ref:`_get_option_visibility<class_EditorSceneFormatImporter_private_method__get_option_visibility>`\ (\ path\: :ref:`String<class_String>`, for_animation\: :ref:`bool<class_bool>`, option\: :ref:`String<class_String>`\ ) |virtual| |const|                                                                                                                                                                      |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Object<class_Object>`                       | :ref:`_import_scene<class_EditorSceneFormatImporter_private_method__import_scene>`\ (\ path\: :ref:`String<class_String>`, flags\: :ref:`int<class_int>`, options\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |required|                                                                                                                                                                                      |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`add_import_option<class_EditorSceneFormatImporter_method_add_import_option>`\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ )                                                                                                                                                                                                                                                  |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                            | :ref:`add_import_option_advanced<class_EditorSceneFormatImporter_method_add_import_option_advanced>`\ (\ type\: :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`, name\: :ref:`String<class_String>`, default_value\: :ref:`Variant<class_Variant>`, hint\: :ref:`PropertyHint <enum_@GlobalScope_PropertyHint>` = 0, hint_string\: :ref:`String<class_String>` = "", usage_flags\: :ref:`int<class_int>` = 6\ ) |
+   +---------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -53,14 +53,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_EditorSceneFormatImporter_ImportFlags:
 
 .. rst-class:: classref-enumeration
 
-flags **ImportFlags**: :ref:`🔗<enum_EditorSceneFormatImporter_ImportFlags>`
+flags **ImportFlags**: :ref:`🔗 <enum_EditorSceneFormatImporter_ImportFlags>`
 
 .. _class_EditorSceneFormatImporter_constant_IMPORT_SCENE:
 
@@ -68,7 +68,7 @@ flags **ImportFlags**: :ref:`🔗<enum_EditorSceneFormatImporter_ImportFlags>`
 
 :ref:`ImportFlags<enum_EditorSceneFormatImporter_ImportFlags>` **IMPORT_SCENE** = ``1``
 
-Unused flag (this has no effect when enabled).
+Cờ không được sử dụng (bật cờ này không có tác dụng).
 
 .. _class_EditorSceneFormatImporter_constant_IMPORT_ANIMATION:
 
@@ -76,7 +76,7 @@ Unused flag (this has no effect when enabled).
 
 :ref:`ImportFlags<enum_EditorSceneFormatImporter_ImportFlags>` **IMPORT_ANIMATION** = ``2``
 
-Import animations from the 3D scene. When importing a scene as an :ref:`AnimationLibrary<class_AnimationLibrary>`, this flag is always enabled.
+Nhập các animation từ cảnh 3D. Khi nhập một cảnh dưới dạng :ref:`AnimationLibrary<class_AnimationLibrary>`, cờ này luôn được bật.
 
 .. _class_EditorSceneFormatImporter_constant_IMPORT_FAIL_ON_MISSING_DEPENDENCIES:
 
@@ -84,7 +84,7 @@ Import animations from the 3D scene. When importing a scene as an :ref:`Animatio
 
 :ref:`ImportFlags<enum_EditorSceneFormatImporter_ImportFlags>` **IMPORT_FAIL_ON_MISSING_DEPENDENCIES** = ``4``
 
-Unused flag (this has no effect when enabled).
+Cờ không được sử dụng (bật cờ này không có tác dụng).
 
 .. _class_EditorSceneFormatImporter_constant_IMPORT_GENERATE_TANGENT_ARRAYS:
 
@@ -92,9 +92,9 @@ Unused flag (this has no effect when enabled).
 
 :ref:`ImportFlags<enum_EditorSceneFormatImporter_ImportFlags>` **IMPORT_GENERATE_TANGENT_ARRAYS** = ``8``
 
-If ``true``, generate vertex tangents using `Mikktspace <http://www.mikktspace.com/>`__ if the input meshes don't have tangent data. When possible, it's recommended to let the 3D modeling software generate tangents on export instead of relying on this option. Tangents are required for correct display of normal and height maps, along with any material/shader features that require tangents.
+Nếu ``true``, tạo các tangent của vertex bằng `Mikktspace <http://www.mikktspace.com/>`__ nếu các mesh đầu vào không có dữ liệu tangent. Khi có thể, bạn nên để phần mềm tạo mô hình 3D tạo tangent khi export thay vì dựa vào tùy chọn này. Tangent là bắt buộc để hiển thị chính xác normal map và height map, cùng với mọi tính năng material/shader yêu cầu tangent.
 
-If you don't need material features that require tangents, disabling this can reduce output file size and speed up importing if the source 3D file doesn't contain tangents.
+Nếu bạn không cần các tính năng material yêu cầu tangent, việc tắt tùy chọn này có thể giảm kích thước tệp đầu ra và tăng tốc quá trình import nếu tệp 3D nguồn không chứa tangent.
 
 .. _class_EditorSceneFormatImporter_constant_IMPORT_USE_NAMED_SKIN_BINDS:
 
@@ -102,15 +102,15 @@ If you don't need material features that require tangents, disabling this can re
 
 :ref:`ImportFlags<enum_EditorSceneFormatImporter_ImportFlags>` **IMPORT_USE_NAMED_SKIN_BINDS** = ``16``
 
-If checked, use named :ref:`Skin<class_Skin>`\ s for animation. The :ref:`MeshInstance3D<class_MeshInstance3D>` node contains 3 properties of relevance here: a skeleton :ref:`NodePath<class_NodePath>` pointing to the :ref:`Skeleton3D<class_Skeleton3D>` node (usually ``..``), a mesh, and a skin:
+Nếu được chọn, hãy sử dụng các :ref:`Skin<class_Skin>`\ s có tên cho animation. Node :ref:`MeshInstance3D<class_MeshInstance3D>` chứa 3 thuộc tính liên quan ở đây: một skeleton :ref:`NodePath<class_NodePath>` trỏ đến node :ref:`Skeleton3D<class_Skeleton3D>` (thường là ``..``), một mesh và một skin:
 
-- The :ref:`Skeleton3D<class_Skeleton3D>` node contains a list of bones with names, their pose and rest, a name, and a parent bone.
+- Node :ref:`Skeleton3D<class_Skeleton3D>` chứa danh sách các bone cùng tên, pose và rest của chúng, một tên và một bone cha.
 
-- The mesh is all of the raw vertex data needed to display a mesh. In terms of the mesh, it knows how vertices are weight-painted and uses some internal numbering often imported from 3D modeling software.
+- Mesh chứa toàn bộ dữ liệu đỉnh thô cần thiết để hiển thị một mesh. Xét theo mesh, nó biết các đỉnh được weight-paint như thế nào và sử dụng một hệ thống đánh số nội bộ thường được nhập từ phần mềm modeling 3D.
 
-- The skin contains the information necessary to bind this mesh onto this Skeleton3D. For each of the internal bone IDs chosen by the 3D modeling software, it contains two things. Firstly, a matrix known as the Bind Pose Matrix, Inverse Bind Matrix, or IBM for short. Secondly, the :ref:`Skin<class_Skin>` contains each bone's name (if this flag is enabled), or the bone's index within the :ref:`Skeleton3D<class_Skeleton3D>` list (if this flag is disabled).
+- Skin chứa thông tin cần thiết để liên kết mesh này với Skeleton3D. Đối với mỗi ID xương nội bộ do phần mềm modeling 3D chọn, nó chứa hai thành phần. Thứ nhất là một ma trận được gọi là Bind Pose Matrix, Inverse Bind Matrix, hoặc viết tắt là IBM. Thứ hai, :ref:`Skin<class_Skin>` chứa tên của từng xương (nếu cờ này được bật), hoặc chỉ số của xương trong danh sách :ref:`Skeleton3D<class_Skeleton3D>` (nếu cờ này bị tắt).
 
-Together, this information is enough to tell Godot how to use the bone poses in the :ref:`Skeleton3D<class_Skeleton3D>` node to render the mesh from each :ref:`MeshInstance3D<class_MeshInstance3D>`. Note that each :ref:`MeshInstance3D<class_MeshInstance3D>` may share binds, as is common in models exported from Blender, or each :ref:`MeshInstance3D<class_MeshInstance3D>` may use a separate :ref:`Skin<class_Skin>` object, as is common in models exported from other tools such as Maya.
+Kết hợp lại, thông tin này đủ để cho Godot biết cách sử dụng các tư thế xương trong node :ref:`Skeleton3D<class_Skeleton3D>` để render mesh từ mỗi :ref:`MeshInstance3D<class_MeshInstance3D>`. Lưu ý rằng mỗi :ref:`MeshInstance3D<class_MeshInstance3D>` có thể dùng chung các liên kết, như thường thấy trong các model được export từ Blender, hoặc mỗi :ref:`MeshInstance3D<class_MeshInstance3D>` có thể sử dụng một đối tượng :ref:`Skin<class_Skin>` riêng, như thường thấy trong các model được export từ những công cụ khác như Maya.
 
 .. _class_EditorSceneFormatImporter_constant_IMPORT_DISCARD_MESHES_AND_MATERIALS:
 
@@ -118,7 +118,7 @@ Together, this information is enough to tell Godot how to use the bone poses in 
 
 :ref:`ImportFlags<enum_EditorSceneFormatImporter_ImportFlags>` **IMPORT_DISCARD_MESHES_AND_MATERIALS** = ``32``
 
-Ignore meshes and materials on import. When importing a scene as an :ref:`AnimationLibrary<class_AnimationLibrary>`, this flag is always enabled.
+Bỏ qua mesh và material khi import. Khi import một scene dưới dạng :ref:`AnimationLibrary<class_AnimationLibrary>`, cờ này luôn được bật.
 
 .. _class_EditorSceneFormatImporter_constant_IMPORT_FORCE_DISABLE_MESH_COMPRESSION:
 
@@ -126,7 +126,7 @@ Ignore meshes and materials on import. When importing a scene as an :ref:`Animat
 
 :ref:`ImportFlags<enum_EditorSceneFormatImporter_ImportFlags>` **IMPORT_FORCE_DISABLE_MESH_COMPRESSION** = ``64``
 
-If ``true``, mesh compression will not be used. Consider enabling if you notice blocky artifacts in your mesh normals or UVs, or if you have meshes that are larger than a few thousand meters in each direction.
+Nếu ``true``, tính năng nén mesh sẽ không được sử dụng. Hãy cân nhắc bật tùy chọn này nếu bạn nhận thấy các lỗi dạng khối trong normal hoặc UV của mesh, hoặc nếu bạn có các mesh lớn hơn vài nghìn mét theo mỗi hướng.
 
 .. rst-class:: classref-section-separator
 
@@ -134,8 +134,8 @@ If ``true``, mesh compression will not be used. Consider enabling if you notice 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorSceneFormatImporter_private_method__get_extensions:
 
@@ -143,7 +143,7 @@ Method Descriptions
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_extensions**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_EditorSceneFormatImporter_private_method__get_extensions>`
 
-Return supported file extensions for this scene importer.
+Trả về các phần mở rộng tệp được hỗ trợ cho scene importer này.
 
 .. rst-class:: classref-item-separator
 
@@ -155,11 +155,11 @@ Return supported file extensions for this scene importer.
 
 |void| **_get_import_options**\ (\ path\: :ref:`String<class_String>`\ ) |virtual| :ref:`🔗<class_EditorSceneFormatImporter_private_method__get_import_options>`
 
-Override to add general import options. These will appear in the main import dock on the editor. Add options via :ref:`add_import_option()<class_EditorSceneFormatImporter_method_add_import_option>` and :ref:`add_import_option_advanced()<class_EditorSceneFormatImporter_method_add_import_option_advanced>`.
+Ghi đè để thêm các tùy chọn import chung. Các tùy chọn này sẽ xuất hiện trong import dock chính của trình chỉnh sửa. Thêm các tùy chọn bằng :ref:`add_import_option()<class_EditorSceneFormatImporter_method_add_import_option>` và :ref:`add_import_option_advanced()<class_EditorSceneFormatImporter_method_add_import_option_advanced>`.
 
-\ **Note:** All **EditorSceneFormatImporter** and :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>` instances will add options for all files. It is good practice to check the file extension when ``path`` is non-empty.
+\ **Lưu ý:** Tất cả các **EditorSceneFormatImporter** và :ref:`EditorScenePostImportPlugin<class_EditorScenePostImportPlugin>` instance đều sẽ thêm tùy chọn cho mọi tệp. Bạn nên kiểm tra phần mở rộng tệp khi ``path`` không rỗng.
 
-When the user is editing project settings, ``path`` will be empty. It is recommended to add all options when ``path`` is empty to allow the user to customize Import Defaults.
+Khi người dùng đang chỉnh sửa cài đặt dự án, ``path`` sẽ rỗng. Bạn nên thêm tất cả tùy chọn khi ``path`` rỗng để cho phép người dùng tùy chỉnh Import Defaults.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ When the user is editing project settings, ``path`` will be empty. It is recomme
 
 :ref:`Variant<class_Variant>` **_get_option_visibility**\ (\ path\: :ref:`String<class_String>`, for_animation\: :ref:`bool<class_bool>`, option\: :ref:`String<class_String>`\ ) |virtual| |const| :ref:`🔗<class_EditorSceneFormatImporter_private_method__get_option_visibility>`
 
-Should return ``true`` to show the given option, ``false`` to hide the given option, or ``null`` to ignore.
+Nên trả về ``true`` để hiển thị tùy chọn đã cho, ``false`` để ẩn tùy chọn đã cho hoặc ``null`` để bỏ qua.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Should return ``true`` to show the given option, ``false`` to hide the given opt
 
 :ref:`Object<class_Object>` **_import_scene**\ (\ path\: :ref:`String<class_String>`, flags\: :ref:`int<class_int>`, options\: :ref:`Dictionary<class_Dictionary>`\ ) |virtual| |required| :ref:`🔗<class_EditorSceneFormatImporter_private_method__import_scene>`
 
-Perform the bulk of the scene import logic here, for example using :ref:`GLTFDocument<class_GLTFDocument>` or :ref:`FBXDocument<class_FBXDocument>`.
+Thực hiện phần lớn logic import scene tại đây, chẳng hạn bằng cách sử dụng :ref:`GLTFDocument<class_GLTFDocument>` hoặc :ref:`FBXDocument<class_FBXDocument>`.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Perform the bulk of the scene import logic here, for example using :ref:`GLTFDoc
 
 |void| **add_import_option**\ (\ name\: :ref:`String<class_String>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_EditorSceneFormatImporter_method_add_import_option>`
 
-Add a specific import option (name and default value only). This function can only be called from :ref:`_get_import_options()<class_EditorSceneFormatImporter_private_method__get_import_options>`.
+Thêm một tùy chọn import cụ thể (chỉ tên và giá trị mặc định). Hàm này chỉ có thể được gọi từ :ref:`_get_import_options()<class_EditorSceneFormatImporter_private_method__get_import_options>`.
 
 .. rst-class:: classref-item-separator
 
@@ -207,14 +207,14 @@ Add a specific import option (name and default value only). This function can on
 
 |void| **add_import_option_advanced**\ (\ type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`, name\: :ref:`String<class_String>`, default_value\: :ref:`Variant<class_Variant>`, hint\: :ref:`PropertyHint<enum_@GlobalScope_PropertyHint>` = 0, hint_string\: :ref:`String<class_String>` = "", usage_flags\: :ref:`int<class_int>` = 6\ ) :ref:`🔗<class_EditorSceneFormatImporter_method_add_import_option_advanced>`
 
-Add a specific import option. This function can only be called from :ref:`_get_import_options()<class_EditorSceneFormatImporter_private_method__get_import_options>`.
+Thêm một tùy chọn import cụ thể. Hàm này chỉ có thể được gọi từ :ref:`_get_import_options()<class_EditorSceneFormatImporter_private_method__get_import_options>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

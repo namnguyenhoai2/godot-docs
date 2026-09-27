@@ -10,33 +10,33 @@
 AudioEffectPhaser
 =================
 
-**Inherits:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`AudioEffect<class_AudioEffect>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Adds a phaser audio effect to an audio bus.
+Thêm hiệu ứng âm thanh phaser vào một audio bus.
 
-Creates several notch and peak filters that sweep across the spectrum.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A "phaser" effect creates a copy of the original audio that phase-rotates differently across the entire frequency spectrum, with the use of a series of all-pass filter stages (6 in this effect). This copy modulates with a low-frequency oscillator and combines with the original audio, resulting in peaks and troughs that sweep across the spectrum.
-
-This effect can be used to create a "glassy" or "bubbly" sound.
+Tạo nhiều bộ lọc notch và peak quét qua phổ tần.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Hiệu ứng "phaser" tạo một bản sao của âm thanh gốc, trong đó pha xoay khác nhau trên toàn bộ phổ tần, bằng cách sử dụng một chuỗi các tầng bộ lọc all-pass (6 tầng trong hiệu ứng này). Bản sao này được điều biến bằng một bộ dao động tần số thấp rồi kết hợp với âm thanh gốc, tạo ra các đỉnh và hõm quét qua phổ tần.
+
+Có thể sử dụng hiệu ứng này để tạo ra âm thanh "thủy tinh" hoặc "bong bóng".
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Audio buses <../tutorials/audio/audio_buses>`
+- :doc:`Bus âm thanh <../tutorials/audio/audio_buses>`
 
-- :doc:`Audio effects <../tutorials/audio/audio_effects>`
+- :doc:`Hiệu ứng âm thanh <../tutorials/audio/audio_effects>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -60,8 +60,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AudioEffectPhaser_property_depth:
 
@@ -74,7 +74,7 @@ Property Descriptions
 - |void| **set_depth**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_depth**\ (\ )
 
-Intensity of the effect. Value can range from 0.1 to 4.0.
+Cường độ của hiệu ứng. Giá trị có thể nằm trong khoảng từ 0.1 đến 4.0.
 
 .. rst-class:: classref-item-separator
 
@@ -91,7 +91,7 @@ Intensity of the effect. Value can range from 0.1 to 4.0.
 - |void| **set_feedback**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_feedback**\ (\ )
 
-The volume ratio of the filtered audio that is fed back to the all-pass filters. The higher the value, the sharper and louder the peak filters created by the effect. Value can range from 0.1 to 0.9.
+Tỷ lệ âm lượng của âm thanh đã lọc được hồi tiếp đến các bộ lọc all-pass. Giá trị càng cao, các bộ lọc đỉnh do hiệu ứng tạo ra càng sắc nét và lớn hơn. Giá trị có thể nằm trong khoảng từ 0.1 đến 0.9.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ The volume ratio of the filtered audio that is fed back to the all-pass filters.
 - |void| **set_range_max_hz**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_range_max_hz**\ (\ )
 
-Determines the maximum frequency affected by the low-frequency oscillator modulations, in Hz. Value can range from 10 to 10000.
+Xác định tần số tối đa bị ảnh hưởng bởi các điều chế của bộ dao động tần số thấp, tính bằng Hz. Giá trị có thể nằm trong khoảng từ 10 đến 10000.
 
 .. rst-class:: classref-item-separator
 
@@ -125,7 +125,7 @@ Determines the maximum frequency affected by the low-frequency oscillator modula
 - |void| **set_range_min_hz**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_range_min_hz**\ (\ )
 
-Determines the minimum frequency affected by the low-frequency oscillator modulations, in Hz. Value can range from 10 to 10000.
+Xác định tần số tối thiểu bị ảnh hưởng bởi các điều chế của bộ dao động tần số thấp, tính bằng Hz. Giá trị có thể nằm trong khoảng từ 10 đến 10000.
 
 .. rst-class:: classref-item-separator
 
@@ -142,14 +142,14 @@ Determines the minimum frequency affected by the low-frequency oscillator modula
 - |void| **set_rate_hz**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_rate_hz**\ (\ )
 
-Adjusts the rate in Hz at which the effect sweeps up and down across the frequency range. Value can range from 0.01 to 20.
+Điều chỉnh tốc độ, tính bằng Hz, mà hiệu ứng quét lên xuống trong toàn bộ dải tần số. Giá trị có thể nằm trong khoảng từ 0.01 đến 20.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

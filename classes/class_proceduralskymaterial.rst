@@ -10,24 +10,24 @@
 ProceduralSkyMaterial
 =====================
 
-**Inherits:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A material that defines a simple sky for a :ref:`Sky<class_Sky>` resource.
+Một material xác định một bầu trời đơn giản cho tài nguyên :ref:`Sky<class_Sky>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**ProceduralSkyMaterial** provides a way to create an effective background quickly by defining procedural parameters for the sun, the sky and the ground. The sky and ground are defined by a main color, a color at the horizon, and an easing curve to interpolate between them. Suns are described by a position in the sky, a color, and a max angle from the sun at which the easing curve ends. The max angle therefore defines the size of the sun in the sky.
+**ProceduralSkyMaterial** cung cấp cách nhanh chóng tạo nền hiệu quả bằng cách xác định các tham số procedural cho mặt trời, bầu trời và mặt đất. Bầu trời và mặt đất được xác định bằng một màu chính, một màu tại đường chân trời và một đường cong easing để nội suy giữa chúng. Các mặt trời được mô tả bằng vị trí trên bầu trời, màu sắc và góc tối đa tính từ mặt trời, tại đó đường cong easing kết thúc. Do đó, góc tối đa xác định kích thước của mặt trời trên bầu trời.
 
-\ **ProceduralSkyMaterial** supports up to 4 suns, using the color, and energy, direction, and angular distance of the first four :ref:`DirectionalLight3D<class_DirectionalLight3D>` nodes in the scene. This means that the suns are defined individually by the properties of their corresponding :ref:`DirectionalLight3D<class_DirectionalLight3D>`\ s and globally by :ref:`sun_angle_max<class_ProceduralSkyMaterial_property_sun_angle_max>` and :ref:`sun_curve<class_ProceduralSkyMaterial_property_sun_curve>`.
+\ **ProceduralSkyMaterial** hỗ trợ tối đa 4 mặt trời, sử dụng màu sắc, năng lượng, hướng và khoảng cách góc của bốn node :ref:`DirectionalLight3D<class_DirectionalLight3D>` đầu tiên trong cảnh. Điều này có nghĩa là các mặt trời được xác định riêng lẻ bởi các thuộc tính của các :ref:`DirectionalLight3D<class_DirectionalLight3D>`\ s tương ứng và được xác định toàn cục bởi :ref:`sun_angle_max<class_ProceduralSkyMaterial_property_sun_angle_max>` và :ref:`sun_curve<class_ProceduralSkyMaterial_property_sun_curve>`.
 
-\ **ProceduralSkyMaterial** uses a lightweight shader to draw the sky and is therefore suited for real-time updates. This makes it a great option for a sky that is simple and computationally cheap, but unrealistic. If you need a more realistic procedural option, use :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>`.
+\ **ProceduralSkyMaterial** sử dụng shader nhẹ để vẽ bầu trời và do đó phù hợp với các bản cập nhật theo thời gian thực. Điều này khiến nó trở thành lựa chọn tuyệt vời cho một bầu trời đơn giản và ít tốn tài nguyên tính toán nhưng không thực tế. Nếu cần một tùy chọn procedural thực tế hơn, hãy sử dụng :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -69,8 +69,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ProceduralSkyMaterial_property_energy_multiplier:
 
@@ -83,7 +83,7 @@ Property Descriptions
 - |void| **set_energy_multiplier**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_energy_multiplier**\ (\ )
 
-The sky's overall brightness multiplier. Higher values result in a brighter sky.
+Hệ số nhân độ sáng tổng thể của bầu trời. Giá trị cao hơn sẽ làm bầu trời sáng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -100,7 +100,7 @@ The sky's overall brightness multiplier. Higher values result in a brighter sky.
 - |void| **set_ground_bottom_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_ground_bottom_color**\ (\ )
 
-Color of the ground at the bottom. Blends with :ref:`ground_horizon_color<class_ProceduralSkyMaterial_property_ground_horizon_color>`.
+Màu của mặt đất ở phía dưới. Hòa trộn với :ref:`ground_horizon_color<class_ProceduralSkyMaterial_property_ground_horizon_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -117,7 +117,7 @@ Color of the ground at the bottom. Blends with :ref:`ground_horizon_color<class_
 - |void| **set_ground_curve**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_ground_curve**\ (\ )
 
-How quickly the :ref:`ground_horizon_color<class_ProceduralSkyMaterial_property_ground_horizon_color>` fades into the :ref:`ground_bottom_color<class_ProceduralSkyMaterial_property_ground_bottom_color>`.
+Tốc độ :ref:`ground_horizon_color<class_ProceduralSkyMaterial_property_ground_horizon_color>` mờ dần vào :ref:`ground_bottom_color<class_ProceduralSkyMaterial_property_ground_bottom_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ How quickly the :ref:`ground_horizon_color<class_ProceduralSkyMaterial_property_
 - |void| **set_ground_energy_multiplier**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_ground_energy_multiplier**\ (\ )
 
-Multiplier for ground color. A higher value will make the ground brighter.
+Hệ số nhân cho màu mặt đất. Giá trị cao hơn sẽ làm mặt đất sáng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -151,7 +151,7 @@ Multiplier for ground color. A higher value will make the ground brighter.
 - |void| **set_ground_horizon_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_ground_horizon_color**\ (\ )
 
-Color of the ground at the horizon. Blends with :ref:`ground_bottom_color<class_ProceduralSkyMaterial_property_ground_bottom_color>`.
+Màu của mặt đất ở đường chân trời. Hòa trộn với :ref:`ground_bottom_color<class_ProceduralSkyMaterial_property_ground_bottom_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -161,14 +161,14 @@ Color of the ground at the horizon. Blends with :ref:`ground_bottom_color<class_
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **sky_cover** :ref:`🔗<class_ProceduralSkyMaterial_property_sky_cover>`
+:ref:`Texture2D<class_Texture2D>` **sky_cover** :ref:`🔗 <class_ProceduralSkyMaterial_property_sky_cover>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_sky_cover**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_sky_cover**\ (\ )
 
-The sky cover texture to use. This texture must use an equirectangular projection (similar to :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`). The texture's colors will be *added* to the existing sky color, and will be multiplied by :ref:`sky_energy_multiplier<class_ProceduralSkyMaterial_property_sky_energy_multiplier>` and :ref:`sky_cover_modulate<class_ProceduralSkyMaterial_property_sky_cover_modulate>`. This is mainly suited to displaying stars at night, but it can also be used to display clouds at day or night (with a non-physically-accurate look).
+Texture phủ bầu trời cần sử dụng. Texture này phải sử dụng phép chiếu equirectangular (tương tự :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`). Màu của texture sẽ được *cộng* vào màu bầu trời hiện có, và sẽ được nhân với :ref:`sky_energy_multiplier<class_ProceduralSkyMaterial_property_sky_energy_multiplier>` và :ref:`sky_cover_modulate<class_ProceduralSkyMaterial_property_sky_cover_modulate>`. Texture này chủ yếu phù hợp để hiển thị các ngôi sao vào ban đêm, nhưng cũng có thể được dùng để hiển thị mây vào ban ngày hoặc ban đêm (với hình ảnh không chính xác về mặt vật lý).
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ The sky cover texture to use. This texture must use an equirectangular projectio
 - |void| **set_sky_cover_modulate**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_sky_cover_modulate**\ (\ )
 
-The tint to apply to the :ref:`sky_cover<class_ProceduralSkyMaterial_property_sky_cover>` texture. This can be used to change the sky cover's colors or opacity independently of the sky energy, which is useful for day/night or weather transitions. Only effective if a texture is defined in :ref:`sky_cover<class_ProceduralSkyMaterial_property_sky_cover>`.
+Màu phủ cần áp dụng cho texture :ref:`sky_cover<class_ProceduralSkyMaterial_property_sky_cover>`. Có thể dùng thuộc tính này để thay đổi màu hoặc độ mờ của lớp phủ bầu trời độc lập với năng lượng bầu trời, rất hữu ích cho các hiệu ứng chuyển tiếp ngày/đêm hoặc thời tiết. Chỉ có hiệu lực nếu một texture được định nghĩa trong :ref:`sky_cover<class_ProceduralSkyMaterial_property_sky_cover>`.
 
 .. rst-class:: classref-item-separator
 
@@ -202,7 +202,7 @@ The tint to apply to the :ref:`sky_cover<class_ProceduralSkyMaterial_property_sk
 - |void| **set_sky_curve**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sky_curve**\ (\ )
 
-How quickly the :ref:`sky_horizon_color<class_ProceduralSkyMaterial_property_sky_horizon_color>` fades into the :ref:`sky_top_color<class_ProceduralSkyMaterial_property_sky_top_color>`.
+Tốc độ :ref:`sky_horizon_color<class_ProceduralSkyMaterial_property_sky_horizon_color>` chuyển dần vào :ref:`sky_top_color<class_ProceduralSkyMaterial_property_sky_top_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ How quickly the :ref:`sky_horizon_color<class_ProceduralSkyMaterial_property_sky
 - |void| **set_sky_energy_multiplier**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sky_energy_multiplier**\ (\ )
 
-Multiplier for sky color. A higher value will make the sky brighter.
+Hệ số nhân cho màu bầu trời. Giá trị cao hơn sẽ làm bầu trời sáng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -236,7 +236,7 @@ Multiplier for sky color. A higher value will make the sky brighter.
 - |void| **set_sky_horizon_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_sky_horizon_color**\ (\ )
 
-Color of the sky at the horizon. Blends with :ref:`sky_top_color<class_ProceduralSkyMaterial_property_sky_top_color>`.
+Màu của bầu trời ở đường chân trời. Hòa trộn với :ref:`sky_top_color<class_ProceduralSkyMaterial_property_sky_top_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -253,7 +253,7 @@ Color of the sky at the horizon. Blends with :ref:`sky_top_color<class_Procedura
 - |void| **set_sky_top_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_sky_top_color**\ (\ )
 
-Color of the sky at the top. Blends with :ref:`sky_horizon_color<class_ProceduralSkyMaterial_property_sky_horizon_color>`.
+Màu của bầu trời ở phía trên. Hòa trộn với :ref:`sky_horizon_color<class_ProceduralSkyMaterial_property_sky_horizon_color>`.
 
 .. rst-class:: classref-item-separator
 
@@ -270,7 +270,7 @@ Color of the sky at the top. Blends with :ref:`sky_horizon_color<class_Procedura
 - |void| **set_sun_angle_max**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sun_angle_max**\ (\ )
 
-Distance from center of sun where it fades out completely.
+Khoảng cách từ tâm Mặt Trời mà tại đó hiệu ứng mờ dần hoàn toàn.
 
 .. rst-class:: classref-item-separator
 
@@ -287,7 +287,7 @@ Distance from center of sun where it fades out completely.
 - |void| **set_sun_curve**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_sun_curve**\ (\ )
 
-How quickly the sun fades away between the edge of the sun disk and :ref:`sun_angle_max<class_ProceduralSkyMaterial_property_sun_angle_max>`.
+Mức độ nhanh chóng mặt trời mờ dần giữa rìa đĩa mặt trời và :ref:`sun_angle_max<class_ProceduralSkyMaterial_property_sun_angle_max>`.
 
 .. rst-class:: classref-item-separator
 
@@ -304,14 +304,14 @@ How quickly the sun fades away between the edge of the sun disk and :ref:`sun_an
 - |void| **set_use_debanding**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_debanding**\ (\ )
 
-If ``true``, enables debanding. Debanding adds a small amount of noise which helps reduce banding that appears from the smooth changes in color in the sky.
+Nếu ``true``, bật debanding. Debanding thêm một lượng nhỏ nhiễu, giúp giảm hiện tượng banding xuất hiện do sự thay đổi màu sắc mượt mà trên bầu trời.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

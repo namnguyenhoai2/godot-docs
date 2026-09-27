@@ -10,23 +10,23 @@
 KinematicCollision2D
 ====================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Holds collision data from the movement of a :ref:`PhysicsBody2D<class_PhysicsBody2D>`.
+Lưu trữ dữ liệu va chạm từ chuyển động của một :ref:`PhysicsBody2D<class_PhysicsBody2D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Holds collision data from the movement of a :ref:`PhysicsBody2D<class_PhysicsBody2D>`, usually from :ref:`PhysicsBody2D.move_and_collide()<class_PhysicsBody2D_method_move_and_collide>`. When a :ref:`PhysicsBody2D<class_PhysicsBody2D>` is moved, it stops if it detects a collision with another body. If a collision is detected, a **KinematicCollision2D** object is returned.
+Lưu trữ dữ liệu va chạm từ chuyển động của một :ref:`PhysicsBody2D<class_PhysicsBody2D>`, thường là từ :ref:`PhysicsBody2D.move_and_collide()<class_PhysicsBody2D_method_move_and_collide>`. Khi một :ref:`PhysicsBody2D<class_PhysicsBody2D>` di chuyển, nó sẽ dừng lại nếu phát hiện va chạm với một body khác. Nếu phát hiện va chạm, một đối tượng **KinematicCollision2D** sẽ được trả về.
 
-The collision data includes the colliding object, the remaining motion, and the collision position. This data can be used to determine a custom response to the collision.
+Dữ liệu va chạm bao gồm đối tượng đang va chạm, chuyển động còn lại và vị trí va chạm. Dữ liệu này có thể được dùng để xác định cách xử lý tùy chỉnh cho va chạm.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -65,8 +65,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_KinematicCollision2D_method_get_angle:
 
@@ -74,7 +74,7 @@ Method Descriptions
 
 :ref:`float<class_float>` **get_angle**\ (\ up_direction\: :ref:`Vector2<class_Vector2>` = Vector2(0, -1)\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_angle>`
 
-Returns the collision angle according to ``up_direction``, which is :ref:`Vector2.UP<class_Vector2_constant_UP>` by default. This value is always positive.
+Trả về góc va chạm theo ``up_direction``, mặc định là :ref:`Vector2.UP<class_Vector2_constant_UP>`. Giá trị này luôn dương.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ Returns the collision angle according to ``up_direction``, which is :ref:`Vector
 
 :ref:`Object<class_Object>` **get_collider**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_collider>`
 
-Returns the colliding body's attached :ref:`Object<class_Object>`.
+Trả về :ref:`Object<class_Object>` được gắn vào vật thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ Returns the colliding body's attached :ref:`Object<class_Object>`.
 
 :ref:`int<class_int>` **get_collider_id**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_collider_id>`
 
-Returns the unique instance ID of the colliding body's attached :ref:`Object<class_Object>`. See :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
+Trả về ID thực thể duy nhất của :ref:`Object<class_Object>` được gắn vào vật thể va chạm. Xem :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Returns the unique instance ID of the colliding body's attached :ref:`Object<cla
 
 :ref:`RID<class_RID>` **get_collider_rid**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_collider_rid>`
 
-Returns the colliding body's :ref:`RID<class_RID>` used by the :ref:`PhysicsServer2D<class_PhysicsServer2D>`.
+Trả về :ref:`RID<class_RID>` của vật thể va chạm được :ref:`PhysicsServer2D<class_PhysicsServer2D>` sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Returns the colliding body's :ref:`RID<class_RID>` used by the :ref:`PhysicsServ
 
 :ref:`Object<class_Object>` **get_collider_shape**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_collider_shape>`
 
-Returns the colliding body's shape.
+Trả về hình dạng của vật thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Returns the colliding body's shape.
 
 :ref:`int<class_int>` **get_collider_shape_index**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_collider_shape_index>`
 
-Returns the colliding body's shape index. See :ref:`CollisionObject2D<class_CollisionObject2D>`.
+Trả về chỉ mục hình dạng của vật thể va chạm. Xem :ref:`CollisionObject2D<class_CollisionObject2D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ Returns the colliding body's shape index. See :ref:`CollisionObject2D<class_Coll
 
 :ref:`Vector2<class_Vector2>` **get_collider_velocity**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_collider_velocity>`
 
-Returns the colliding body's velocity.
+Trả về vận tốc của vật thể va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Returns the colliding body's velocity.
 
 :ref:`float<class_float>` **get_depth**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_depth>`
 
-Returns the colliding body's length of overlap along the collision normal.
+Trả về độ dài phần chồng lấn của vật thể va chạm dọc theo pháp tuyến va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Returns the colliding body's length of overlap along the collision normal.
 
 :ref:`Object<class_Object>` **get_local_shape**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_local_shape>`
 
-Returns the moving object's colliding shape.
+Trả về hình dạng va chạm của đối tượng đang di chuyển.
 
 .. rst-class:: classref-item-separator
 
@@ -182,7 +182,7 @@ Returns the moving object's colliding shape.
 
 :ref:`Vector2<class_Vector2>` **get_normal**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_normal>`
 
-Returns the colliding body's shape's normal at the point of collision.
+Trả về pháp tuyến của hình dạng vật thể va chạm tại điểm va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -194,7 +194,7 @@ Returns the colliding body's shape's normal at the point of collision.
 
 :ref:`Vector2<class_Vector2>` **get_position**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_position>`
 
-Returns the point of collision in global coordinates.
+Trả về điểm va chạm trong hệ tọa độ toàn cục.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Returns the point of collision in global coordinates.
 
 :ref:`Vector2<class_Vector2>` **get_remainder**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_remainder>`
 
-Returns the moving object's remaining movement vector.
+Trả về vector chuyển động còn lại của đối tượng đang di chuyển.
 
 .. rst-class:: classref-item-separator
 
@@ -218,14 +218,14 @@ Returns the moving object's remaining movement vector.
 
 :ref:`Vector2<class_Vector2>` **get_travel**\ (\ ) |const| :ref:`🔗<class_KinematicCollision2D_method_get_travel>`
 
-Returns the moving object's travel before collision.
+Trả về quãng đường đối tượng đang di chuyển đã đi trước khi va chạm.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

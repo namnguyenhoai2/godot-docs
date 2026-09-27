@@ -10,29 +10,29 @@
 Joint3D
 =======
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`ConeTwistJoint3D<class_ConeTwistJoint3D>`, :ref:`Generic6DOFJoint3D<class_Generic6DOFJoint3D>`, :ref:`HingeJoint3D<class_HingeJoint3D>`, :ref:`PinJoint3D<class_PinJoint3D>`, :ref:`SliderJoint3D<class_SliderJoint3D>`
+**Được kế thừa bởi:** :ref:`ConeTwistJoint3D<class_ConeTwistJoint3D>`, :ref:`Generic6DOFJoint3D<class_Generic6DOFJoint3D>`, :ref:`HingeJoint3D<class_HingeJoint3D>`, :ref:`PinJoint3D<class_PinJoint3D>`, :ref:`SliderJoint3D<class_SliderJoint3D>`
 
-Abstract base class for all 3D physics joints.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Abstract base class for all joints in 3D physics. 3D joints bind together two physics bodies (:ref:`node_a<class_Joint3D_property_node_a>` and :ref:`node_b<class_Joint3D_property_node_b>`) and apply a constraint. If only one body is defined, it is attached to a fixed :ref:`StaticBody3D<class_StaticBody3D>` without collision shapes.
+Lớp cơ sở trừu tượng cho tất cả joint vật lý 3D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Lớp cơ sở trừu tượng cho tất cả joint trong vật lý 3D. Các joint 3D liên kết hai thân vật lý (:ref:`node_a<class_Joint3D_property_node_a>` và :ref:`node_b<class_Joint3D_property_node_b>`) và áp dụng một ràng buộc. Nếu chỉ xác định một thân, thân đó sẽ được gắn vào một :ref:`StaticBody3D<class_StaticBody3D>` cố định mà không có hình dạng va chạm.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `3D Truck Town Demo <https://godotengine.org/asset-library/asset/2752>`__
+- `Bản trình diễn 3D Truck Town <https://godotengine.org/asset-library/asset/2752>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -50,8 +50,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -66,8 +66,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Joint3D_property_exclude_nodes_from_collision:
 
@@ -80,7 +80,7 @@ Property Descriptions
 - |void| **set_exclude_nodes_from_collision**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_exclude_nodes_from_collision**\ (\ )
 
-If ``true``, the two bodies bound together do not collide with each other.
+Nếu ``true``, hai body được liên kết sẽ không va chạm với nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -97,9 +97,9 @@ If ``true``, the two bodies bound together do not collide with each other.
 - |void| **set_node_a**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_node_a**\ (\ )
 
-Path to the first node (A) attached to the joint. The node must inherit :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
+Đường dẫn đến node đầu tiên (A) được gắn vào joint. Node phải kế thừa :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
 
-If left empty and :ref:`node_b<class_Joint3D_property_node_b>` is set, the body is attached to a fixed :ref:`StaticBody3D<class_StaticBody3D>` without collision shapes.
+Nếu để trống và :ref:`node_b<class_Joint3D_property_node_b>` được thiết lập, body sẽ được gắn vào một :ref:`StaticBody3D<class_StaticBody3D>` cố định mà không có các hình dạng va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -116,9 +116,9 @@ If left empty and :ref:`node_b<class_Joint3D_property_node_b>` is set, the body 
 - |void| **set_node_b**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_node_b**\ (\ )
 
-Path to the second node (B) attached to the joint. The node must inherit :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
+Đường dẫn đến node thứ hai (B) được gắn vào joint. Node phải kế thừa :ref:`PhysicsBody3D<class_PhysicsBody3D>`.
 
-If left empty and :ref:`node_a<class_Joint3D_property_node_a>` is set, the body is attached to a fixed :ref:`StaticBody3D<class_StaticBody3D>` without collision shapes.
+Nếu để trống và :ref:`node_a<class_Joint3D_property_node_a>` được thiết lập, thân sẽ được gắn vào một :ref:`StaticBody3D<class_StaticBody3D>` cố định mà không có hình dạng va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -135,9 +135,9 @@ If left empty and :ref:`node_a<class_Joint3D_property_node_a>` is set, the body 
 - |void| **set_solver_priority**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_solver_priority**\ (\ )
 
-The priority used to define which solver is executed first for multiple joints. The lower the value, the higher the priority.
+Mức độ ưu tiên dùng để xác định solver nào được thực thi trước đối với nhiều joint. Giá trị càng thấp thì mức độ ưu tiên càng cao.
 
-\ **Note:** Only supported when using GodotPhysics3D. This property is ignored when using Jolt Physics.
+\ **Lưu ý:** Chỉ được hỗ trợ khi sử dụng GodotPhysics3D. Thuộc tính này bị bỏ qua khi sử dụng Jolt Physics.
 
 .. rst-class:: classref-section-separator
 
@@ -145,8 +145,8 @@ The priority used to define which solver is executed first for multiple joints. 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Joint3D_method_get_rid:
 
@@ -154,14 +154,14 @@ Method Descriptions
 
 :ref:`RID<class_RID>` **get_rid**\ (\ ) |const| :ref:`🔗<class_Joint3D_method_get_rid>`
 
-Returns the joint's internal :ref:`RID<class_RID>` from the :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
+Trả về :ref:`RID<class_RID>` nội bộ của joint từ :ref:`PhysicsServer3D<class_PhysicsServer3D>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

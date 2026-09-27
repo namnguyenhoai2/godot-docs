@@ -10,20 +10,20 @@
 Projection
 ==========
 
-A 4×4 matrix for 3D projective transformations.
+Một ma trận 4×4 cho các phép biến đổi chiếu 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 4×4 matrix used for 3D projective transformations. It can represent transformations such as translation, rotation, scaling, shearing, and perspective division. It consists of four :ref:`Vector4<class_Vector4>` columns.
+Một ma trận 4×4 được sử dụng cho các phép biến đổi chiếu 3D. Nó có thể biểu diễn các phép biến đổi như tịnh tiến, xoay, co giãn, biến dạng và chia phối cảnh. Nó gồm bốn :ref:`Vector4<class_Vector4>` cột.
 
-For purely linear transformations (translation, rotation, and scale), it is recommended to use :ref:`Transform3D<class_Transform3D>`, as it is more performant and requires less memory.
+Đối với các phép biến đổi tuyến tính thuần túy (tịnh tiến, xoay và co giãn), bạn nên sử dụng :ref:`Transform3D<class_Transform3D>`, vì nó có hiệu năng cao hơn và yêu cầu ít bộ nhớ hơn.
 
-Used internally as :ref:`Camera3D<class_Camera3D>`'s projection matrix.
+Được sử dụng nội bộ làm ma trận chiếu của :ref:`Camera3D<class_Camera3D>`.
 
-\ **Note:** In a boolean context, a projection will evaluate to ``false`` if it's equal to :ref:`IDENTITY<class_Projection_constant_IDENTITY>`. Otherwise, a projection will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một projection sẽ được đánh giá là ``false`` nếu nó bằng :ref:`IDENTITY<class_Projection_constant_IDENTITY>`. Nếu không, một projection sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -31,8 +31,8 @@ Used internally as :ref:`Camera3D<class_Camera3D>`'s projection matrix.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -49,7 +49,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -67,8 +67,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -129,23 +129,23 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator !=<class_Projection_operator_neq_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ ) |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Projection<class_Projection>` | :ref:`operator *<class_Projection_operator_mul_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ )  |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>`       | :ref:`operator *<class_Projection_operator_mul_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )           |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`             | :ref:`operator ==<class_Projection_operator_eq_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ )  |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector4<class_Vector4>`       | :ref:`operator []<class_Projection_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                      |
-   +-------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator != <class_Projection_operator_neq_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ ) |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Projection<class_Projection>` | :ref:`operator * <class_Projection_operator_mul_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ )  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>`       | :ref:`operator * <class_Projection_operator_mul_Vector4>`\ (\ right\: :ref:`Vector4<class_Vector4>`\ )           |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`             | :ref:`operator == <class_Projection_operator_eq_Projection>`\ (\ right\: :ref:`Projection<class_Projection>`\ )  |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector4<class_Vector4>`       | :ref:`operator [] <class_Projection_operator_idx_int>`\ (\ index\: :ref:`int<class_int>`\ )                      |
+   +-------------------------------------+------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -153,14 +153,14 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Projection_Planes:
 
 .. rst-class:: classref-enumeration
 
-enum **Planes**: :ref:`🔗<enum_Projection_Planes>`
+enum **Planes**: :ref:`🔗 <enum_Projection_Planes>`
 
 .. _class_Projection_constant_PLANE_NEAR:
 
@@ -168,7 +168,7 @@ enum **Planes**: :ref:`🔗<enum_Projection_Planes>`
 
 :ref:`Planes<enum_Projection_Planes>` **PLANE_NEAR** = ``0``
 
-The index value of the projection's near clipping plane.
+Giá trị chỉ mục của mặt phẳng cắt gần của phép chiếu.
 
 .. _class_Projection_constant_PLANE_FAR:
 
@@ -176,7 +176,7 @@ The index value of the projection's near clipping plane.
 
 :ref:`Planes<enum_Projection_Planes>` **PLANE_FAR** = ``1``
 
-The index value of the projection's far clipping plane.
+Giá trị chỉ mục của mặt phẳng cắt xa của phép chiếu.
 
 .. _class_Projection_constant_PLANE_LEFT:
 
@@ -184,7 +184,7 @@ The index value of the projection's far clipping plane.
 
 :ref:`Planes<enum_Projection_Planes>` **PLANE_LEFT** = ``2``
 
-The index value of the projection's left clipping plane.
+Giá trị chỉ mục của mặt phẳng cắt bên trái của phép chiếu.
 
 .. _class_Projection_constant_PLANE_TOP:
 
@@ -192,7 +192,7 @@ The index value of the projection's left clipping plane.
 
 :ref:`Planes<enum_Projection_Planes>` **PLANE_TOP** = ``3``
 
-The index value of the projection's top clipping plane.
+Giá trị chỉ mục của mặt phẳng cắt phía trên của phép chiếu.
 
 .. _class_Projection_constant_PLANE_RIGHT:
 
@@ -200,7 +200,7 @@ The index value of the projection's top clipping plane.
 
 :ref:`Planes<enum_Projection_Planes>` **PLANE_RIGHT** = ``4``
 
-The index value of the projection's right clipping plane.
+Giá trị chỉ mục của mặt phẳng cắt bên phải của phép chiếu.
 
 .. _class_Projection_constant_PLANE_BOTTOM:
 
@@ -208,7 +208,7 @@ The index value of the projection's right clipping plane.
 
 :ref:`Planes<enum_Projection_Planes>` **PLANE_BOTTOM** = ``5``
 
-The index value of the projection bottom clipping plane.
+Giá trị chỉ mục của mặt phẳng cắt phía dưới của phép chiếu.
 
 .. rst-class:: classref-section-separator
 
@@ -216,8 +216,8 @@ The index value of the projection bottom clipping plane.
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Projection_constant_IDENTITY:
 
@@ -225,7 +225,7 @@ Constants
 
 **IDENTITY** = ``Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)`` :ref:`🔗<class_Projection_constant_IDENTITY>`
 
-A **Projection** with no transformation defined. When applied to other data structures, no transformation is performed.
+Một **Projection** không xác định phép biến đổi nào. Khi áp dụng lên các cấu trúc dữ liệu khác, không có phép biến đổi nào được thực hiện.
 
 .. _class_Projection_constant_ZERO:
 
@@ -233,7 +233,7 @@ A **Projection** with no transformation defined. When applied to other data stru
 
 **ZERO** = ``Projection(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)`` :ref:`🔗<class_Projection_constant_ZERO>`
 
-A **Projection** with all values initialized to 0. When applied to other data structures, they will be zeroed.
+Một **Projection** với tất cả giá trị được khởi tạo bằng 0. Khi áp dụng lên các cấu trúc dữ liệu khác, chúng sẽ được đặt về 0.
 
 .. rst-class:: classref-section-separator
 
@@ -241,8 +241,8 @@ A **Projection** with all values initialized to 0. When applied to other data st
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Projection_property_w:
 
@@ -250,7 +250,7 @@ Property Descriptions
 
 :ref:`Vector4<class_Vector4>` **w** = ``Vector4(0, 0, 0, 1)`` :ref:`🔗<class_Projection_property_w>`
 
-The projection matrix's W vector (column 3). Equivalent to array index ``3``.
+Vector W của ma trận chiếu (cột 3). Tương đương với chỉ mục mảng ``3``.
 
 .. rst-class:: classref-item-separator
 
@@ -262,7 +262,7 @@ The projection matrix's W vector (column 3). Equivalent to array index ``3``.
 
 :ref:`Vector4<class_Vector4>` **x** = ``Vector4(1, 0, 0, 0)`` :ref:`🔗<class_Projection_property_x>`
 
-The projection matrix's X vector (column 0). Equivalent to array index ``0``.
+Vector X của ma trận chiếu (cột 0). Tương đương với chỉ mục mảng ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -274,7 +274,7 @@ The projection matrix's X vector (column 0). Equivalent to array index ``0``.
 
 :ref:`Vector4<class_Vector4>` **y** = ``Vector4(0, 1, 0, 0)`` :ref:`🔗<class_Projection_property_y>`
 
-The projection matrix's Y vector (column 1). Equivalent to array index ``1``.
+Vector Y của ma trận chiếu (cột 1). Tương đương với chỉ mục mảng ``1``.
 
 .. rst-class:: classref-item-separator
 
@@ -286,7 +286,7 @@ The projection matrix's Y vector (column 1). Equivalent to array index ``1``.
 
 :ref:`Vector4<class_Vector4>` **z** = ``Vector4(0, 0, 1, 0)`` :ref:`🔗<class_Projection_property_z>`
 
-The projection matrix's Z vector (column 2). Equivalent to array index ``2``.
+Vector Z của ma trận chiếu (cột 2). Tương đương với chỉ mục mảng ``2``.
 
 .. rst-class:: classref-section-separator
 
@@ -294,8 +294,8 @@ The projection matrix's Z vector (column 2). Equivalent to array index ``2``.
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Projection_constructor_Projection:
 
@@ -303,9 +303,9 @@ Constructor Descriptions
 
 :ref:`Projection<class_Projection>` **Projection**\ (\ ) :ref:`🔗<class_Projection_constructor_Projection>`
 
-Constructs a default-initialized **Projection** identical to :ref:`IDENTITY<class_Projection_constant_IDENTITY>`.
+Khởi tạo một **Projection** được khởi tạo mặc định, giống hệt :ref:`IDENTITY<class_Projection_constant_IDENTITY>`.
 
-\ **Note:** In C#, this constructs a **Projection** identical to :ref:`ZERO<class_Projection_constant_ZERO>`.
+\ **Lưu ý:** Trong C#, thao tác này khởi tạo một **Projection** giống hệt :ref:`ZERO<class_Projection_constant_ZERO>`.
 
 .. rst-class:: classref-item-separator
 
@@ -315,7 +315,7 @@ Constructs a default-initialized **Projection** identical to :ref:`IDENTITY<clas
 
 :ref:`Projection<class_Projection>` **Projection**\ (\ from\: :ref:`Projection<class_Projection>`\ )
 
-Constructs a **Projection** as a copy of the given **Projection**.
+Khởi tạo một **Projection** dưới dạng bản sao của **Projection** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -325,7 +325,7 @@ Constructs a **Projection** as a copy of the given **Projection**.
 
 :ref:`Projection<class_Projection>` **Projection**\ (\ from\: :ref:`Transform3D<class_Transform3D>`\ )
 
-Constructs a Projection as a copy of the given :ref:`Transform3D<class_Transform3D>`.
+Khởi tạo một Projection dưới dạng bản sao của :ref:`Transform3D<class_Transform3D>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -335,7 +335,7 @@ Constructs a Projection as a copy of the given :ref:`Transform3D<class_Transform
 
 :ref:`Projection<class_Projection>` **Projection**\ (\ x_axis\: :ref:`Vector4<class_Vector4>`, y_axis\: :ref:`Vector4<class_Vector4>`, z_axis\: :ref:`Vector4<class_Vector4>`, w_axis\: :ref:`Vector4<class_Vector4>`\ )
 
-Constructs a Projection from four :ref:`Vector4<class_Vector4>` values (matrix columns).
+Khởi tạo một Projection từ bốn giá trị :ref:`Vector4<class_Vector4>` (các cột của ma trận).
 
 .. rst-class:: classref-section-separator
 
@@ -343,8 +343,8 @@ Constructs a Projection from four :ref:`Vector4<class_Vector4>` values (matrix c
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Projection_method_create_depth_correction:
 
@@ -352,7 +352,7 @@ Method Descriptions
 
 :ref:`Projection<class_Projection>` **create_depth_correction**\ (\ flip_y\: :ref:`bool<class_bool>`\ ) |static| :ref:`🔗<class_Projection_method_create_depth_correction>`
 
-Creates a new **Projection** that projects positions from a depth range of ``-1`` to ``1`` to one that ranges from ``0`` to ``1``, and flips the projected positions vertically, according to ``flip_y``.
+Tạo một **Projection** mới, chiếu các vị trí từ phạm vi độ sâu ``-1`` đến ``1`` sang phạm vi từ ``0`` đến ``1``, đồng thời lật các vị trí đã chiếu theo chiều dọc, theo ``flip_y``.
 
 .. rst-class:: classref-item-separator
 
@@ -364,7 +364,7 @@ Creates a new **Projection** that projects positions from a depth range of ``-1`
 
 :ref:`Projection<class_Projection>` **create_fit_aabb**\ (\ aabb\: :ref:`AABB<class_AABB>`\ ) |static| :ref:`🔗<class_Projection_method_create_fit_aabb>`
 
-Creates a new **Projection** that scales a given projection to fit around a given :ref:`AABB<class_AABB>` in projection space.
+Tạo một **Projection** mới, điều chỉnh tỷ lệ của phép chiếu đã cho để vừa quanh một :ref:`AABB<class_AABB>` đã cho trong không gian phép chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -376,9 +376,9 @@ Creates a new **Projection** that scales a given projection to fit around a give
 
 :ref:`Projection<class_Projection>` **create_for_hmd**\ (\ eye\: :ref:`int<class_int>`, aspect\: :ref:`float<class_float>`, intraocular_dist\: :ref:`float<class_float>`, display_width\: :ref:`float<class_float>`, display_to_lens\: :ref:`float<class_float>`, oversample\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`\ ) |static| :ref:`🔗<class_Projection_method_create_for_hmd>`
 
-Creates a new **Projection** for projecting positions onto a head-mounted display with the given X:Y aspect ratio, distance between eyes, display width, distance to lens, oversampling factor, and depth clipping planes.
+Tạo một **Projection** mới để chiếu các vị trí lên màn hình gắn trên đầu với tỷ lệ khung hình X:Y, khoảng cách giữa hai mắt, chiều rộng màn hình, khoảng cách đến thấu kính, hệ số oversampling và các mặt phẳng cắt độ sâu đã cho.
 
-\ ``eye`` creates the projection for the left eye when set to 1, or the right eye when set to 2.
+\ ``eye`` tạo phép chiếu cho mắt trái khi được đặt thành 1 hoặc cho mắt phải khi được đặt thành 2.
 
 .. rst-class:: classref-item-separator
 
@@ -390,7 +390,7 @@ Creates a new **Projection** for projecting positions onto a head-mounted displa
 
 :ref:`Projection<class_Projection>` **create_frustum**\ (\ left\: :ref:`float<class_float>`, right\: :ref:`float<class_float>`, bottom\: :ref:`float<class_float>`, top\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`\ ) |static| :ref:`🔗<class_Projection_method_create_frustum>`
 
-Creates a new **Projection** that projects positions in a frustum with the given clipping planes.
+Tạo một **Projection** mới để chiếu các vị trí trong một frustum với các mặt phẳng cắt đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -402,9 +402,9 @@ Creates a new **Projection** that projects positions in a frustum with the given
 
 :ref:`Projection<class_Projection>` **create_frustum_aspect**\ (\ size\: :ref:`float<class_float>`, aspect\: :ref:`float<class_float>`, offset\: :ref:`Vector2<class_Vector2>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`, flip_fov\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_Projection_method_create_frustum_aspect>`
 
-Creates a new **Projection** that projects positions in a frustum with the given size, X:Y aspect ratio, offset, and clipping planes.
+Tạo một **Projection** mới để chiếu các vị trí trong một frustum với kích thước, tỷ lệ khung hình X:Y, độ lệch và các mặt phẳng cắt đã cho.
 
-\ ``flip_fov`` determines whether the projection's field of view is flipped over its diagonal.
+\ ``flip_fov`` xác định xem trường nhìn của phép chiếu có bị lật qua đường chéo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -416,7 +416,7 @@ Creates a new **Projection** that projects positions in a frustum with the given
 
 :ref:`Projection<class_Projection>` **create_light_atlas_rect**\ (\ rect\: :ref:`Rect2<class_Rect2>`\ ) |static| :ref:`🔗<class_Projection_method_create_light_atlas_rect>`
 
-Creates a new **Projection** that projects positions into the given :ref:`Rect2<class_Rect2>`.
+Tạo một **Projection** mới để chiếu các vị trí vào :ref:`Rect2<class_Rect2>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -428,7 +428,7 @@ Creates a new **Projection** that projects positions into the given :ref:`Rect2<
 
 :ref:`Projection<class_Projection>` **create_orthogonal**\ (\ left\: :ref:`float<class_float>`, right\: :ref:`float<class_float>`, bottom\: :ref:`float<class_float>`, top\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`\ ) |static| :ref:`🔗<class_Projection_method_create_orthogonal>`
 
-Creates a new **Projection** that projects positions using an orthogonal projection with the given clipping planes.
+Tạo một **Projection** mới để chiếu các vị trí bằng phép chiếu trực giao với các mặt phẳng cắt đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -440,9 +440,9 @@ Creates a new **Projection** that projects positions using an orthogonal project
 
 :ref:`Projection<class_Projection>` **create_orthogonal_aspect**\ (\ size\: :ref:`float<class_float>`, aspect\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`, flip_fov\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_Projection_method_create_orthogonal_aspect>`
 
-Creates a new **Projection** that projects positions using an orthogonal projection with the given size, X:Y aspect ratio, and clipping planes.
+Tạo một **Projection** mới để chiếu các vị trí bằng phép chiếu trực giao với kích thước, tỷ lệ khung hình X:Y và các mặt phẳng cắt đã cho.
 
-\ ``flip_fov`` determines whether the projection's field of view is flipped over its diagonal.
+\ ``flip_fov`` xác định xem trường nhìn của phép chiếu có bị lật qua đường chéo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -454,9 +454,9 @@ Creates a new **Projection** that projects positions using an orthogonal project
 
 :ref:`Projection<class_Projection>` **create_perspective**\ (\ fovy\: :ref:`float<class_float>`, aspect\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`, flip_fov\: :ref:`bool<class_bool>` = false\ ) |static| :ref:`🔗<class_Projection_method_create_perspective>`
 
-Creates a new **Projection** that projects positions using a perspective projection with the given Y-axis field of view (in degrees), X:Y aspect ratio, and clipping planes.
+Tạo một **Projection** mới để chiếu các vị trí bằng phép chiếu phối cảnh với trường nhìn theo trục Y (tính bằng độ), tỷ lệ khung hình X:Y và các mặt phẳng cắt đã cho.
 
-\ ``flip_fov`` determines whether the projection's field of view is flipped over its diagonal.
+\ ``flip_fov`` xác định xem trường nhìn của phép chiếu có bị lật qua đường chéo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -468,11 +468,11 @@ Creates a new **Projection** that projects positions using a perspective project
 
 :ref:`Projection<class_Projection>` **create_perspective_hmd**\ (\ fovy\: :ref:`float<class_float>`, aspect\: :ref:`float<class_float>`, z_near\: :ref:`float<class_float>`, z_far\: :ref:`float<class_float>`, flip_fov\: :ref:`bool<class_bool>`, eye\: :ref:`int<class_int>`, intraocular_dist\: :ref:`float<class_float>`, convergence_dist\: :ref:`float<class_float>`\ ) |static| :ref:`🔗<class_Projection_method_create_perspective_hmd>`
 
-Creates a new **Projection** that projects positions using a perspective projection with the given Y-axis field of view (in degrees), X:Y aspect ratio, and clipping distances. The projection is adjusted for a head-mounted display with the given distance between eyes and distance to a point that can be focused on.
+Tạo một **Projection** mới để chiếu các vị trí bằng phép chiếu phối cảnh với trường nhìn theo trục Y (tính bằng độ), tỷ lệ khung hình X:Y và các khoảng cách cắt đã cho. Phép chiếu được điều chỉnh cho màn hình gắn trên đầu với khoảng cách giữa hai mắt và khoảng cách đến một điểm có thể lấy nét đã cho.
 
-\ ``eye`` creates the projection for the left eye when set to 1, or the right eye when set to 2.
+\ ``eye`` tạo phép chiếu cho mắt trái khi được đặt thành 1 hoặc cho mắt phải khi được đặt thành 2.
 
-\ ``flip_fov`` determines whether the projection's field of view is flipped over its diagonal.
+\ ``flip_fov`` xác định xem trường nhìn của phép chiếu có bị lật qua đường chéo hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -484,9 +484,9 @@ Creates a new **Projection** that projects positions using a perspective project
 
 :ref:`float<class_float>` **determinant**\ (\ ) |const| :ref:`🔗<class_Projection_method_determinant>`
 
-Returns a scalar value that is the signed factor by which areas are scaled by this matrix. If the sign is negative, the matrix flips the orientation of the area.
+Trả về một giá trị vô hướng là hệ số có dấu mà theo đó các diện tích được co giãn bởi ma trận này. Nếu dấu là âm, ma trận sẽ lật hướng của diện tích.
 
-The determinant can be used to calculate the invertibility of a matrix or solve linear systems of equations involving the matrix, among other applications.
+Định thức có thể được dùng để tính khả nghịch của một ma trận hoặc giải các hệ phương trình tuyến tính liên quan đến ma trận đó, cùng nhiều ứng dụng khác.
 
 .. rst-class:: classref-item-separator
 
@@ -498,7 +498,7 @@ The determinant can be used to calculate the invertibility of a matrix or solve 
 
 :ref:`Projection<class_Projection>` **flipped_y**\ (\ ) |const| :ref:`🔗<class_Projection_method_flipped_y>`
 
-Returns a copy of this **Projection** with the signs of the values of the Y column flipped.
+Trả về một bản sao của **Projection** này với dấu của các giá trị trong cột Y bị đảo ngược.
 
 .. rst-class:: classref-item-separator
 
@@ -510,7 +510,7 @@ Returns a copy of this **Projection** with the signs of the values of the Y colu
 
 :ref:`float<class_float>` **get_aspect**\ (\ ) |const| :ref:`🔗<class_Projection_method_get_aspect>`
 
-Returns the X:Y aspect ratio of this **Projection**'s viewport.
+Trả về tỷ lệ khung hình X:Y của viewport của **Projection** này.
 
 .. rst-class:: classref-item-separator
 
@@ -522,7 +522,7 @@ Returns the X:Y aspect ratio of this **Projection**'s viewport.
 
 :ref:`Vector2<class_Vector2>` **get_far_plane_half_extents**\ (\ ) |const| :ref:`🔗<class_Projection_method_get_far_plane_half_extents>`
 
-Returns the dimensions of the far clipping plane of the projection, divided by two.
+Trả về kích thước của mặt phẳng clipping xa của phép chiếu, chia cho hai.
 
 .. rst-class:: classref-item-separator
 
@@ -534,7 +534,7 @@ Returns the dimensions of the far clipping plane of the projection, divided by t
 
 :ref:`float<class_float>` **get_fov**\ (\ ) |const| :ref:`🔗<class_Projection_method_get_fov>`
 
-Returns the horizontal field of view of the projection (in degrees).
+Trả về trường nhìn ngang của phép chiếu (tính theo độ).
 
 .. rst-class:: classref-item-separator
 
@@ -546,9 +546,9 @@ Returns the horizontal field of view of the projection (in degrees).
 
 :ref:`float<class_float>` **get_fovy**\ (\ fovx\: :ref:`float<class_float>`, aspect\: :ref:`float<class_float>`\ ) |static| :ref:`🔗<class_Projection_method_get_fovy>`
 
-Returns the vertical field of view of the projection (in degrees) associated with the given horizontal field of view (in degrees) and aspect ratio.
+Trả về trường nhìn dọc của phép chiếu (tính theo độ) tương ứng với trường nhìn ngang (tính theo độ) và tỷ lệ khung hình đã cho.
 
-\ **Note:** Unlike most methods of **Projection**, ``aspect`` is expected to be 1 divided by the X:Y aspect ratio.
+\ **Lưu ý:** Không giống như hầu hết các phương thức của **Projection**, ``aspect`` được kỳ vọng là 1 chia cho tỷ lệ khung hình X:Y.
 
 .. rst-class:: classref-item-separator
 
@@ -560,7 +560,7 @@ Returns the vertical field of view of the projection (in degrees) associated wit
 
 :ref:`float<class_float>` **get_lod_multiplier**\ (\ ) |const| :ref:`🔗<class_Projection_method_get_lod_multiplier>`
 
-Returns the factor by which the visible level of detail is scaled by this **Projection**.
+Trả về hệ số mà theo đó mức độ chi tiết hiển thị được thu phóng bởi **Projection** này.
 
 .. rst-class:: classref-item-separator
 
@@ -572,7 +572,7 @@ Returns the factor by which the visible level of detail is scaled by this **Proj
 
 :ref:`int<class_int>` **get_pixels_per_meter**\ (\ for_pixel_width\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Projection_method_get_pixels_per_meter>`
 
-Returns ``for_pixel_width`` divided by the viewport's width measured in meters on the near plane, after this **Projection** is applied.
+Trả về ``for_pixel_width`` chia cho chiều rộng của viewport được đo bằng mét trên mặt phẳng gần, sau khi áp dụng **Projection** này.
 
 .. rst-class:: classref-item-separator
 
@@ -584,9 +584,9 @@ Returns ``for_pixel_width`` divided by the viewport's width measured in meters o
 
 :ref:`Plane<class_Plane>` **get_projection_plane**\ (\ plane\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Projection_method_get_projection_plane>`
 
-Returns the clipping plane of this **Projection** whose index is given by ``plane``.
+Trả về mặt phẳng cắt của **Projection** này có chỉ mục được cung cấp bởi ``plane``.
 
-\ ``plane`` should be equal to one of :ref:`PLANE_NEAR<class_Projection_constant_PLANE_NEAR>`, :ref:`PLANE_FAR<class_Projection_constant_PLANE_FAR>`, :ref:`PLANE_LEFT<class_Projection_constant_PLANE_LEFT>`, :ref:`PLANE_TOP<class_Projection_constant_PLANE_TOP>`, :ref:`PLANE_RIGHT<class_Projection_constant_PLANE_RIGHT>`, or :ref:`PLANE_BOTTOM<class_Projection_constant_PLANE_BOTTOM>`.
+\ ``plane`` phải bằng một trong các giá trị :ref:`PLANE_NEAR<class_Projection_constant_PLANE_NEAR>`, :ref:`PLANE_FAR<class_Projection_constant_PLANE_FAR>`, :ref:`PLANE_LEFT<class_Projection_constant_PLANE_LEFT>`, :ref:`PLANE_TOP<class_Projection_constant_PLANE_TOP>`, :ref:`PLANE_RIGHT<class_Projection_constant_PLANE_RIGHT>` hoặc :ref:`PLANE_BOTTOM<class_Projection_constant_PLANE_BOTTOM>`.
 
 .. rst-class:: classref-item-separator
 
@@ -598,7 +598,7 @@ Returns the clipping plane of this **Projection** whose index is given by ``plan
 
 :ref:`Vector2<class_Vector2>` **get_viewport_half_extents**\ (\ ) |const| :ref:`🔗<class_Projection_method_get_viewport_half_extents>`
 
-Returns the dimensions of the viewport plane that this **Projection** projects positions onto, divided by two.
+Trả về các kích thước của mặt phẳng viewport mà **Projection** chiếu các vị trí lên, chia cho hai.
 
 .. rst-class:: classref-item-separator
 
@@ -610,7 +610,7 @@ Returns the dimensions of the viewport plane that this **Projection** projects p
 
 :ref:`float<class_float>` **get_z_far**\ (\ ) |const| :ref:`🔗<class_Projection_method_get_z_far>`
 
-Returns the distance for this **Projection** beyond which positions are clipped.
+Trả về khoảng cách đối với **Projection** mà nếu vượt quá thì các vị trí sẽ bị cắt.
 
 .. rst-class:: classref-item-separator
 
@@ -622,7 +622,7 @@ Returns the distance for this **Projection** beyond which positions are clipped.
 
 :ref:`float<class_float>` **get_z_near**\ (\ ) |const| :ref:`🔗<class_Projection_method_get_z_near>`
 
-Returns the distance for this **Projection** before which positions are clipped.
+Trả về khoảng cách đối với **Projection** mà nếu ở trước thì các vị trí sẽ bị cắt.
 
 .. rst-class:: classref-item-separator
 
@@ -634,7 +634,7 @@ Returns the distance for this **Projection** before which positions are clipped.
 
 :ref:`Projection<class_Projection>` **inverse**\ (\ ) |const| :ref:`🔗<class_Projection_method_inverse>`
 
-Returns a **Projection** that performs the inverse of this **Projection**'s projective transformation.
+Trả về một **Projection** thực hiện phép biến đổi chiếu ngược của phép biến đổi chiếu của **Projection** này.
 
 .. rst-class:: classref-item-separator
 
@@ -646,7 +646,7 @@ Returns a **Projection** that performs the inverse of this **Projection**'s proj
 
 :ref:`bool<class_bool>` **is_orthogonal**\ (\ ) |const| :ref:`🔗<class_Projection_method_is_orthogonal>`
 
-Returns ``true`` if this **Projection** performs an orthogonal projection.
+Trả về ``true`` nếu **Projection** này thực hiện phép chiếu trực giao.
 
 .. rst-class:: classref-item-separator
 
@@ -658,7 +658,7 @@ Returns ``true`` if this **Projection** performs an orthogonal projection.
 
 :ref:`Projection<class_Projection>` **jitter_offseted**\ (\ offset\: :ref:`Vector2<class_Vector2>`\ ) |const| :ref:`🔗<class_Projection_method_jitter_offseted>`
 
-Returns a **Projection** with the X and Y values from the given :ref:`Vector2<class_Vector2>` added to the first and second values of the final column respectively.
+Trả về một **Projection** với các giá trị X và Y từ :ref:`Vector2<class_Vector2>` đã cho lần lượt được cộng vào giá trị thứ nhất và thứ hai của cột cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -670,9 +670,9 @@ Returns a **Projection** with the X and Y values from the given :ref:`Vector2<cl
 
 :ref:`Projection<class_Projection>` **perspective_znear_adjusted**\ (\ new_znear\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_Projection_method_perspective_znear_adjusted>`
 
-Returns a **Projection** with the near clipping distance adjusted to be ``new_znear``.
+Trả về một **Projection** với khoảng cách cắt gần được điều chỉnh thành ``new_znear``.
 
-\ **Note:** The original **Projection** must be a perspective projection.
+\ **Lưu ý:** **Projection** ban đầu phải là một phép chiếu phối cảnh.
 
 .. rst-class:: classref-section-separator
 
@@ -680,18 +680,18 @@ Returns a **Projection** with the near clipping distance adjusted to be ``new_zn
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Projection_operator_neq_Projection:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗<class_Projection_operator_neq_Projection>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗 <class_Projection_operator_neq_Projection>`
 
-Returns ``true`` if the projections are not equal.
+Trả về ``true`` nếu các phép chiếu không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, this may return ``true``, even if the projections are virtually equal. An ``is_equal_approx`` method may be added in a future version of Godot.
+\ **Lưu ý:** Do lỗi độ chính xác số dấu phẩy động, phương thức này có thể trả về ``true``, ngay cả khi các phép chiếu gần như bằng nhau. Một phương thức ``is_equal_approx`` có thể được bổ sung trong phiên bản Godot tương lai.
 
 .. rst-class:: classref-item-separator
 
@@ -701,9 +701,9 @@ Returns ``true`` if the projections are not equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Projection<class_Projection>` **operator ***\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗<class_Projection_operator_mul_Projection>`
+:ref:`Projection<class_Projection>` **operator ***\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗 <class_Projection_operator_mul_Projection>`
 
-Returns a **Projection** that applies the combined transformations of this **Projection** and ``right``.
+Trả về một **Projection** áp dụng các phép biến đổi kết hợp của **Projection** này và ``right``.
 
 .. rst-class:: classref-item-separator
 
@@ -713,9 +713,9 @@ Returns a **Projection** that applies the combined transformations of this **Pro
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗<class_Projection_operator_mul_Vector4>`
+:ref:`Vector4<class_Vector4>` **operator ***\ (\ right\: :ref:`Vector4<class_Vector4>`\ ) :ref:`🔗 <class_Projection_operator_mul_Vector4>`
 
-Projects (multiplies) the given :ref:`Vector4<class_Vector4>` by this **Projection** matrix.
+Chiếu (nhân) :ref:`Vector4<class_Vector4>` đã cho với ma trận **Projection** này.
 
 .. rst-class:: classref-item-separator
 
@@ -725,11 +725,11 @@ Projects (multiplies) the given :ref:`Vector4<class_Vector4>` by this **Projecti
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗<class_Projection_operator_eq_Projection>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Projection<class_Projection>`\ ) :ref:`🔗 <class_Projection_operator_eq_Projection>`
 
-Returns ``true`` if the projections are equal.
+Trả về ``true`` nếu các phép chiếu bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, this may return ``false``, even if the projections are virtually equal. An ``is_equal_approx`` method may be added in a future version of Godot.
+\ **Lưu ý:** Do lỗi độ chính xác của số dấu phẩy động, giá trị này có thể trả về ``false``, ngay cả khi các phép chiếu gần như bằng nhau. Một phương thức ``is_equal_approx`` có thể được bổ sung trong phiên bản Godot tương lai.
 
 .. rst-class:: classref-item-separator
 
@@ -739,18 +739,18 @@ Returns ``true`` if the projections are equal.
 
 .. rst-class:: classref-operator
 
-:ref:`Vector4<class_Vector4>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Projection_operator_idx_int>`
+:ref:`Vector4<class_Vector4>` **operator []**\ (\ index\: :ref:`int<class_int>`\ ) :ref:`🔗 <class_Projection_operator_idx_int>`
 
-Returns the column of the **Projection** with the given index.
+Trả về cột của **Projection** với chỉ mục đã cho.
 
-Indices are in the following order: x, y, z, w.
+Các chỉ số theo thứ tự sau: x, y, z, w.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

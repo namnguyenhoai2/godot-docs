@@ -10,41 +10,41 @@
 OpenXRSpatialEntityTracker
 ==========================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-**Inherits:** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`OpenXRAnchorTracker<class_OpenXRAnchorTracker>`, :ref:`OpenXRMarkerTracker<class_OpenXRMarkerTracker>`, :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>`
+**Được kế thừa bởi:** :ref:`OpenXRAnchorTracker<class_OpenXRAnchorTracker>`, :ref:`OpenXRMarkerTracker<class_OpenXRMarkerTracker>`, :ref:`OpenXRPlaneTracker<class_OpenXRPlaneTracker>`
 
-Base class for Positional trackers managed by OpenXR's spatial entity extensions.
+Lớp cơ sở cho các positional tracker được quản lý bởi các phần mở rộng spatial entity của OpenXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-These are trackers created and managed by OpenXR's spatial entity extensions that give access to specific data related to OpenXR's spatial entities. They will always be of type ``TRACKER_ANCHOR``.
+Đây là các tracker được tạo và quản lý bởi các phần mở rộng spatial entity của OpenXR, cung cấp quyền truy cập vào dữ liệu cụ thể liên quan đến các spatial entity của OpenXR. Chúng sẽ luôn có kiểu ``TRACKER_ANCHOR``.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-   | :ref:`RID<class_RID>`                                                           | :ref:`entity<class_OpenXRSpatialEntityTracker_property_entity>`                                 | ``RID()``                                                         |
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-   | :ref:`EntityTrackingState<enum_OpenXRSpatialEntityTracker_EntityTrackingState>` | :ref:`spatial_tracking_state<class_OpenXRSpatialEntityTracker_property_spatial_tracking_state>` | ``2``                                                             |
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-   | :ref:`TrackerType<enum_XRServer_TrackerType>`                                   | type                                                                                            | ``8`` (overrides :ref:`XRTracker<class_XRTracker_property_type>`) |
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
+   | :ref:`RID<class_RID>`                                                            | :ref:`entity<class_OpenXRSpatialEntityTracker_property_entity>`                                 | ``RID()``                                                      |
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
+   | :ref:`EntityTrackingState <enum_OpenXRSpatialEntityTracker_EntityTrackingState>` | :ref:`spatial_tracking_state<class_OpenXRSpatialEntityTracker_property_spatial_tracking_state>` | ``2``                                                          |
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
+   | :ref:`TrackerType <enum_XRServer_TrackerType>`                                   | type                                                                                            | ``8`` (ghi đè :ref:`XRTracker<class_XRTracker_property_type>`) |
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+----------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -67,8 +67,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_OpenXRSpatialEntityTracker_signal_next_changed:
 
@@ -76,7 +76,7 @@ Signals
 
 **next_changed**\ (\ ) :ref:`🔗<class_OpenXRSpatialEntityTracker_signal_next_changed>`
 
-Emitted when the next-chain changes, from either :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` or :ref:`remove_next()<class_OpenXRSpatialEntityTracker_method_remove_next>`.
+Được phát khi chuỗi next thay đổi, từ :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` hoặc :ref:`remove_next()<class_OpenXRSpatialEntityTracker_method_remove_next>`.
 
 .. rst-class:: classref-item-separator
 
@@ -98,14 +98,14 @@ Emitted when the next-chain changes, from either :ref:`add_next()<class_OpenXRSp
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_OpenXRSpatialEntityTracker_EntityTrackingState:
 
 .. rst-class:: classref-enumeration
 
-enum **EntityTrackingState**: :ref:`🔗<enum_OpenXRSpatialEntityTracker_EntityTrackingState>`
+enum **EntityTrackingState**: :ref:`🔗 <enum_OpenXRSpatialEntityTracker_EntityTrackingState>`
 
 .. _class_OpenXRSpatialEntityTracker_constant_ENTITY_TRACKING_STATE_STOPPED:
 
@@ -113,7 +113,7 @@ enum **EntityTrackingState**: :ref:`🔗<enum_OpenXRSpatialEntityTracker_EntityT
 
 :ref:`EntityTrackingState<enum_OpenXRSpatialEntityTracker_EntityTrackingState>` **ENTITY_TRACKING_STATE_STOPPED** = ``1``
 
-This anchor has stopped tracking.
+Neo này đã dừng theo dõi.
 
 .. _class_OpenXRSpatialEntityTracker_constant_ENTITY_TRACKING_STATE_PAUSED:
 
@@ -121,7 +121,7 @@ This anchor has stopped tracking.
 
 :ref:`EntityTrackingState<enum_OpenXRSpatialEntityTracker_EntityTrackingState>` **ENTITY_TRACKING_STATE_PAUSED** = ``2``
 
-Tracking is currently paused.
+Việc theo dõi hiện đang tạm dừng.
 
 .. _class_OpenXRSpatialEntityTracker_constant_ENTITY_TRACKING_STATE_TRACKING:
 
@@ -129,7 +129,7 @@ Tracking is currently paused.
 
 :ref:`EntityTrackingState<enum_OpenXRSpatialEntityTracker_EntityTrackingState>` **ENTITY_TRACKING_STATE_TRACKING** = ``3``
 
-This anchor is currently being tracked.
+Neo này hiện đang được theo dõi.
 
 .. rst-class:: classref-section-separator
 
@@ -137,8 +137,8 @@ This anchor is currently being tracked.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRSpatialEntityTracker_property_entity:
 
@@ -151,7 +151,7 @@ Property Descriptions
 - |void| **set_entity**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_entity**\ (\ )
 
-The spatial entity associated with this tracker.
+Thực thể không gian được liên kết với bộ theo dõi này.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ The spatial entity associated with this tracker.
 - |void| **set_spatial_tracking_state**\ (\ value\: :ref:`EntityTrackingState<enum_OpenXRSpatialEntityTracker_EntityTrackingState>`\ )
 - :ref:`EntityTrackingState<enum_OpenXRSpatialEntityTracker_EntityTrackingState>` **get_spatial_tracking_state**\ (\ )
 
-The spatial tracking state for this tracker.
+Trạng thái theo dõi không gian của bộ theo dõi này.
 
 .. rst-class:: classref-section-separator
 
@@ -176,8 +176,8 @@ The spatial tracking state for this tracker.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRSpatialEntityTracker_method_add_next:
 
@@ -185,9 +185,9 @@ Method Descriptions
 
 |void| **add_next**\ (\ next\: :ref:`OpenXRStructureBase<class_OpenXRStructureBase>`\ ) :ref:`🔗<class_OpenXRSpatialEntityTracker_method_add_next>`
 
-Adds a new :ref:`OpenXRStructureBase<class_OpenXRStructureBase>` to the next-chain.
+Thêm một :ref:`OpenXRStructureBase<class_OpenXRStructureBase>` mới vào chuỗi next-chain.
 
-\ :ref:`get_next()<class_OpenXRSpatialEntityTracker_method_get_next>` will return this ``next`` until either :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` is called again or it's removed in :ref:`remove_next()<class_OpenXRSpatialEntityTracker_method_remove_next>`.
+\ :ref:`get_next()<class_OpenXRSpatialEntityTracker_method_get_next>` sẽ trả về ``next`` này cho đến khi :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` được gọi lại hoặc nó bị xóa trong :ref:`remove_next()<class_OpenXRSpatialEntityTracker_method_remove_next>`.
 
 .. rst-class:: classref-item-separator
 
@@ -199,9 +199,9 @@ Adds a new :ref:`OpenXRStructureBase<class_OpenXRStructureBase>` to the next-cha
 
 :ref:`OpenXRStructureBase<class_OpenXRStructureBase>` **get_next**\ (\ ) |const| :ref:`🔗<class_OpenXRSpatialEntityTracker_method_get_next>`
 
-Gets the head :ref:`OpenXRStructureBase<class_OpenXRStructureBase>` in the next-chain.
+Lấy head :ref:`OpenXRStructureBase<class_OpenXRStructureBase>` trong next-chain.
 
-See also :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` and :ref:`remove_next()<class_OpenXRSpatialEntityTracker_method_remove_next>`.
+Xem thêm :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` và :ref:`remove_next()<class_OpenXRSpatialEntityTracker_method_remove_next>`.
 
 .. rst-class:: classref-item-separator
 
@@ -213,7 +213,7 @@ See also :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` and
 
 :ref:`RID<class_RID>` **get_spatial_context**\ (\ ) |const| :ref:`🔗<class_OpenXRSpatialEntityTracker_method_get_spatial_context>`
 
-Gets the spatial context used to create this **OpenXRSpatialEntityTracker**.
+Lấy spatial context được sử dụng để tạo **OpenXRSpatialEntityTracker** này.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ Gets the spatial context used to create this **OpenXRSpatialEntityTracker**.
 
 |void| **remove_next**\ (\ next\: :ref:`OpenXRStructureBase<class_OpenXRStructureBase>`\ ) :ref:`🔗<class_OpenXRSpatialEntityTracker_method_remove_next>`
 
-Removes a ``next`` object previously added in :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` from the next-chain.
+Xóa đối tượng ``next`` đã được thêm trước đó trong :ref:`add_next()<class_OpenXRSpatialEntityTracker_method_add_next>` khỏi next-chain.
 
 .. rst-class:: classref-item-separator
 
@@ -237,14 +237,14 @@ Removes a ``next`` object previously added in :ref:`add_next()<class_OpenXRSpati
 
 |void| **set_spatial_context**\ (\ spatial_context\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_OpenXRSpatialEntityTracker_method_set_spatial_context>`
 
-Sets the spatial context used to create this tracker.
+Thiết lập spatial context được sử dụng để tạo tracker này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải override phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

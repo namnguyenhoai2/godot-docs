@@ -10,21 +10,21 @@
 ScriptEditorBase
 ================
 
-**Inherits:** :ref:`VBoxContainer<class_VBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VBoxContainer<class_VBoxContainer>` **<** :ref:`BoxContainer<class_BoxContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Base editor for editing scripts in the :ref:`ScriptEditor<class_ScriptEditor>`.
+Trình soạn thảo cơ sở để chỉnh sửa các script trong :ref:`ScriptEditor<class_ScriptEditor>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base editor for editing scripts in the :ref:`ScriptEditor<class_ScriptEditor>`. This does not include documentation items.
+Trình soạn thảo cơ sở để chỉnh sửa các script trong :ref:`ScriptEditor<class_ScriptEditor>`. Không bao gồm các mục tài liệu.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -41,8 +41,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_ScriptEditorBase_signal_edited_script_changed:
 
@@ -50,7 +50,7 @@ Signals
 
 **edited_script_changed**\ (\ ) :ref:`🔗<class_ScriptEditorBase_signal_edited_script_changed>`
 
-Emitted after script validation.
+Được phát sau khi xác thực script.
 
 .. rst-class:: classref-item-separator
 
@@ -62,7 +62,7 @@ Emitted after script validation.
 
 **go_to_help**\ (\ what\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditorBase_signal_go_to_help>`
 
-Emitted when the user requests a specific documentation page.
+Được phát khi người dùng yêu cầu một trang tài liệu cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -74,7 +74,7 @@ Emitted when the user requests a specific documentation page.
 
 **go_to_method**\ (\ script\: :ref:`Object<class_Object>`, method\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditorBase_signal_go_to_method>`
 
-Emitted when the user requests to view a specific method of a script, similar to :ref:`request_open_script_at_line<class_ScriptEditorBase_signal_request_open_script_at_line>`.
+Được phát khi người dùng yêu cầu xem một phương thức cụ thể của script, tương tự như :ref:`request_open_script_at_line<class_ScriptEditorBase_signal_request_open_script_at_line>`.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ Emitted when the user requests to view a specific method of a script, similar to
 
 **name_changed**\ (\ ) :ref:`🔗<class_ScriptEditorBase_signal_name_changed>`
 
-Emitted after script validation or when the edited resource has changed.
+Được phát sau khi xác thực script hoặc khi resource đang chỉnh sửa đã thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -98,7 +98,7 @@ Emitted after script validation or when the edited resource has changed.
 
 **replace_in_files_requested**\ (\ text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditorBase_signal_replace_in_files_requested>`
 
-Emitted when the user request to find and replace text in the file system.
+Được phát khi người dùng yêu cầu tìm và thay thế văn bản trong hệ thống tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -110,7 +110,7 @@ Emitted when the user request to find and replace text in the file system.
 
 **request_help**\ (\ topic\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditorBase_signal_request_help>`
 
-Emitted when the user requests contextual help.
+Được phát khi người dùng yêu cầu trợ giúp theo ngữ cảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -122,7 +122,7 @@ Emitted when the user requests contextual help.
 
 **request_open_script_at_line**\ (\ script\: :ref:`Object<class_Object>`, line\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ScriptEditorBase_signal_request_open_script_at_line>`
 
-Emitted when the user requests to view a specific line of a script, similar to :ref:`go_to_method<class_ScriptEditorBase_signal_go_to_method>`.
+Được phát khi người dùng yêu cầu xem một dòng cụ thể của script, tương tự như :ref:`go_to_method<class_ScriptEditorBase_signal_go_to_method>`.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Emitted when the user requests to view a specific line of a script, similar to :
 
 **request_save_history**\ (\ ) :ref:`🔗<class_ScriptEditorBase_signal_request_save_history>`
 
-Emitted when the user contextual goto and the item is in the same script.
+Được phát khi người dùng thực hiện contextual goto và mục đó nằm trong cùng một script.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ Emitted when the user contextual goto and the item is in the same script.
 
 **request_save_previous_state**\ (\ state\: :ref:`Dictionary<class_Dictionary>`\ ) :ref:`🔗<class_ScriptEditorBase_signal_request_save_previous_state>`
 
-Emitted when the user changes current script or moves caret by 10 or more columns within the same script.
+Được phát khi người dùng thay đổi script hiện tại hoặc di chuyển caret 10 cột trở lên trong cùng một script.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Emitted when the user changes current script or moves caret by 10 or more column
 
 **search_in_files_requested**\ (\ text\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditorBase_signal_search_in_files_requested>`
 
-Emitted when the user request to search text in the file system.
+Được phát khi người dùng yêu cầu tìm kiếm văn bản trong hệ thống tệp.
 
 .. rst-class:: classref-section-separator
 
@@ -166,8 +166,8 @@ Emitted when the user request to search text in the file system.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_ScriptEditorBase_method_add_syntax_highlighter:
 
@@ -175,7 +175,7 @@ Method Descriptions
 
 |void| **add_syntax_highlighter**\ (\ highlighter\: :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>`\ ) :ref:`🔗<class_ScriptEditorBase_method_add_syntax_highlighter>`
 
-Adds an :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` to the open script.
+Thêm một :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` vào script đang mở.
 
 .. rst-class:: classref-item-separator
 
@@ -187,14 +187,14 @@ Adds an :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` to the ope
 
 :ref:`Control<class_Control>` **get_base_editor**\ (\ ) |const| :ref:`🔗<class_ScriptEditorBase_method_get_base_editor>`
 
-Returns the underlying :ref:`Control<class_Control>` used for editing scripts. For text scripts, this is a :ref:`CodeEdit<class_CodeEdit>`.
+Trả về :ref:`Control<class_Control>` bên dưới được dùng để chỉnh sửa script. Đối với các script văn bản, đây là một :ref:`CodeEdit<class_CodeEdit>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

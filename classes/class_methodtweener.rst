@@ -10,36 +10,36 @@
 MethodTweener
 =============
 
-**Inherits:** :ref:`Tweener<class_Tweener>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Tweener<class_Tweener>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Interpolates an abstract value and supplies it to a method called over time.
+Nội suy một giá trị trừu tượng và cung cấp giá trị đó cho một phương thức được gọi theo thời gian.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**MethodTweener** is similar to a combination of :ref:`CallbackTweener<class_CallbackTweener>` and :ref:`PropertyTweener<class_PropertyTweener>`. It calls a method providing an interpolated value as a parameter. See :ref:`Tween.tween_method()<class_Tween_method_tween_method>` for more usage information.
+**MethodTweener** tương tự như sự kết hợp của :ref:`CallbackTweener<class_CallbackTweener>` và :ref:`PropertyTweener<class_PropertyTweener>`. Nó gọi một phương thức, cung cấp một giá trị đã nội suy làm tham số. Xem :ref:`Tween.tween_method()<class_Tween_method_tween_method>` để biết thêm thông tin về cách sử dụng.
 
-The tweener will finish automatically if the callback's target object is freed.
+Tweener sẽ tự động hoàn tất nếu đối tượng đích của callback được giải phóng.
 
-\ **Note:** :ref:`Tween.tween_method()<class_Tween_method_tween_method>` is the only correct way to create **MethodTweener**. Any **MethodTweener** created manually will not function correctly.
+\ **Lưu ý:** :ref:`Tween.tween_method()<class_Tween_method_tween_method>` là cách duy nhất đúng để tạo **MethodTweener**. Bất kỳ **MethodTweener** nào được tạo thủ công cũng sẽ không hoạt động đúng.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`MethodTweener<class_MethodTweener>` | :ref:`set_delay<class_MethodTweener_method_set_delay>`\ (\ delay\: :ref:`float<class_float>`\ )                        |
-   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`MethodTweener<class_MethodTweener>` | :ref:`set_ease<class_MethodTweener_method_set_ease>`\ (\ ease\: :ref:`EaseType<enum_Tween_EaseType>`\ )                |
-   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`MethodTweener<class_MethodTweener>` | :ref:`set_trans<class_MethodTweener_method_set_trans>`\ (\ trans\: :ref:`TransitionType<enum_Tween_TransitionType>`\ ) |
-   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`MethodTweener<class_MethodTweener>` | :ref:`set_delay<class_MethodTweener_method_set_delay>`\ (\ delay\: :ref:`float<class_float>`\ )                         |
+   +-------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`MethodTweener<class_MethodTweener>` | :ref:`set_ease<class_MethodTweener_method_set_ease>`\ (\ ease\: :ref:`EaseType <enum_Tween_EaseType>`\ )                |
+   +-------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`MethodTweener<class_MethodTweener>` | :ref:`set_trans<class_MethodTweener_method_set_trans>`\ (\ trans\: :ref:`TransitionType <enum_Tween_TransitionType>`\ ) |
+   +-------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -47,8 +47,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MethodTweener_method_set_delay:
 
@@ -56,7 +56,7 @@ Method Descriptions
 
 :ref:`MethodTweener<class_MethodTweener>` **set_delay**\ (\ delay\: :ref:`float<class_float>`\ ) :ref:`🔗<class_MethodTweener_method_set_delay>`
 
-Sets the time in seconds after which the **MethodTweener** will start interpolating. By default there's no delay.
+Đặt thời gian tính bằng giây sau đó **MethodTweener** sẽ bắt đầu nội suy. Theo mặc định, không có độ trễ.
 
 .. rst-class:: classref-item-separator
 
@@ -68,7 +68,7 @@ Sets the time in seconds after which the **MethodTweener** will start interpolat
 
 :ref:`MethodTweener<class_MethodTweener>` **set_ease**\ (\ ease\: :ref:`EaseType<enum_Tween_EaseType>`\ ) :ref:`🔗<class_MethodTweener_method_set_ease>`
 
-Sets the type of used easing from :ref:`EaseType<enum_Tween_EaseType>`. If not set, the default easing is used from the :ref:`Tween<class_Tween>` that contains this Tweener.
+Đặt kiểu easing được sử dụng từ :ref:`EaseType <enum_Tween_EaseType>`. Nếu không được đặt, easing mặc định sẽ được sử dụng từ :ref:`Tween<class_Tween>` chứa Tweener này.
 
 .. rst-class:: classref-item-separator
 
@@ -80,14 +80,14 @@ Sets the type of used easing from :ref:`EaseType<enum_Tween_EaseType>`. If not s
 
 :ref:`MethodTweener<class_MethodTweener>` **set_trans**\ (\ trans\: :ref:`TransitionType<enum_Tween_TransitionType>`\ ) :ref:`🔗<class_MethodTweener_method_set_trans>`
 
-Sets the type of used transition from :ref:`TransitionType<enum_Tween_TransitionType>`. If not set, the default transition is used from the :ref:`Tween<class_Tween>` that contains this Tweener.
+Đặt kiểu transition được sử dụng từ :ref:`TransitionType <enum_Tween_TransitionType>`. Nếu không được đặt, transition mặc định sẽ được sử dụng từ :ref:`Tween<class_Tween>` chứa Tweener này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit gồm các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

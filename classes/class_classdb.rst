@@ -10,23 +10,23 @@
 ClassDB
 =======
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-A class information repository.
+Một kho lưu trữ thông tin về lớp.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Provides access to metadata stored for every available engine class.
+Cung cấp quyền truy cập vào siêu dữ liệu được lưu trữ cho mọi lớp engine hiện có.
 
-\ **Note:** Script-defined classes with ``class_name`` are not part of **ClassDB**, so they will not return reflection data such as a method or property list. However, :ref:`GDExtension<class_GDExtension>`-defined classes *are* part of **ClassDB**, so they will return reflection data.
+\ **Lưu ý:** Các lớp được định nghĩa bằng Script có ``class_name`` không thuộc **ClassDB**, vì vậy sẽ không trả về dữ liệu reflection như danh sách phương thức hoặc thuộc tính. Tuy nhiên, các lớp :ref:`GDExtension<class_GDExtension>`-defined *là* một phần của **ClassDB**, vì vậy sẽ trả về dữ liệu reflection.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -38,7 +38,7 @@ Methods
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                          | :ref:`class_exists<class_ClassDB_method_class_exists>`\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                                       |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`APIType<enum_ClassDB_APIType>`                             | :ref:`class_get_api_type<class_ClassDB_method_class_get_api_type>`\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                           |
+   | :ref:`APIType <enum_ClassDB_APIType>`                            | :ref:`class_get_api_type<class_ClassDB_method_class_get_api_type>`\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                                           |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>`                | :ref:`class_get_enum_constants<class_ClassDB_method_class_get_enum_constants>`\ (\ class\: :ref:`StringName<class_StringName>`, enum\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const|                 |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -76,7 +76,7 @@ Methods
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                                          | :ref:`class_has_signal<class_ClassDB_method_class_has_signal>`\ (\ class\: :ref:`StringName<class_StringName>`, signal\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                 |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`class_set_property<class_ClassDB_method_class_set_property>`\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) |const|                                           |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`class_set_property<class_ClassDB_method_class_set_property>`\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) |const|                                           |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>`                | :ref:`get_class_list<class_ClassDB_method_get_class_list>`\ (\ ) |const|                                                                                                                                                                                |
    +------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -99,14 +99,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enum
+--------
 
 .. _enum_ClassDB_APIType:
 
 .. rst-class:: classref-enumeration
 
-enum **APIType**: :ref:`🔗<enum_ClassDB_APIType>`
+enum **APIType**: :ref:`🔗 <enum_ClassDB_APIType>`
 
 .. _class_ClassDB_constant_API_CORE:
 
@@ -114,7 +114,7 @@ enum **APIType**: :ref:`🔗<enum_ClassDB_APIType>`
 
 :ref:`APIType<enum_ClassDB_APIType>` **API_CORE** = ``0``
 
-Native Core class type.
+Kiểu lớp Core native.
 
 .. _class_ClassDB_constant_API_EDITOR:
 
@@ -122,7 +122,7 @@ Native Core class type.
 
 :ref:`APIType<enum_ClassDB_APIType>` **API_EDITOR** = ``1``
 
-Native Editor class type.
+Kiểu lớp Editor native.
 
 .. _class_ClassDB_constant_API_EXTENSION:
 
@@ -130,7 +130,7 @@ Native Editor class type.
 
 :ref:`APIType<enum_ClassDB_APIType>` **API_EXTENSION** = ``2``
 
-GDExtension class type.
+Kiểu lớp GDExtension.
 
 .. _class_ClassDB_constant_API_EDITOR_EXTENSION:
 
@@ -138,7 +138,7 @@ GDExtension class type.
 
 :ref:`APIType<enum_ClassDB_APIType>` **API_EDITOR_EXTENSION** = ``3``
 
-GDExtension Editor class type.
+Kiểu lớp Editor của GDExtension.
 
 .. _class_ClassDB_constant_API_NONE:
 
@@ -146,7 +146,7 @@ GDExtension Editor class type.
 
 :ref:`APIType<enum_ClassDB_APIType>` **API_NONE** = ``4``
 
-Unknown class type.
+Kiểu lớp không xác định.
 
 .. rst-class:: classref-section-separator
 
@@ -154,8 +154,8 @@ Unknown class type.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ClassDB_method_can_instantiate:
 
@@ -163,7 +163,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **can_instantiate**\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_can_instantiate>`
 
-Returns ``true`` if objects can be instantiated from the specified ``class``, otherwise returns ``false``.
+Trả về ``true`` nếu có thể khởi tạo đối tượng từ ``class`` được chỉ định, nếu không thì trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ Returns ``true`` if objects can be instantiated from the specified ``class``, ot
 
 :ref:`Variant<class_Variant>` **class_call_static**\ (\ class\: :ref:`StringName<class_StringName>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_ClassDB_method_class_call_static>`
 
-Calls a static method on a class.
+Gọi một phương thức static trên một lớp.
 
 .. rst-class:: classref-item-separator
 
@@ -187,7 +187,7 @@ Calls a static method on a class.
 
 :ref:`bool<class_bool>` **class_exists**\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_exists>`
 
-Returns whether the specified ``class`` is available or not.
+Trả về liệu ``class`` được chỉ định có khả dụng hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -199,7 +199,7 @@ Returns whether the specified ``class`` is available or not.
 
 :ref:`APIType<enum_ClassDB_APIType>` **class_get_api_type**\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_api_type>`
 
-Returns the API type of the specified ``class``.
+Trả về kiểu API của ``class`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -211,7 +211,7 @@ Returns the API type of the specified ``class``.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **class_get_enum_constants**\ (\ class\: :ref:`StringName<class_StringName>`, enum\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_enum_constants>`
 
-Returns an array with all the keys in ``enum`` of ``class`` or its ancestry.
+Trả về một mảng chứa tất cả các key trong ``enum`` của ``class`` hoặc các lớp tổ tiên của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -223,7 +223,7 @@ Returns an array with all the keys in ``enum`` of ``class`` or its ancestry.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **class_get_enum_list**\ (\ class\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_enum_list>`
 
-Returns an array with all the enums of ``class`` or its ancestry.
+Trả về một mảng chứa tất cả các enum của ``class`` hoặc các lớp tổ tiên của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ Returns an array with all the enums of ``class`` or its ancestry.
 
 :ref:`int<class_int>` **class_get_integer_constant**\ (\ class\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_integer_constant>`
 
-Returns the value of the integer constant ``name`` of ``class`` or its ancestry. Always returns 0 when the constant could not be found.
+Trả về giá trị của hằng số integer ``name`` của ``class`` hoặc các lớp tổ tiên của nó. Luôn trả về 0 khi không tìm thấy hằng số.
 
 .. rst-class:: classref-item-separator
 
@@ -247,7 +247,7 @@ Returns the value of the integer constant ``name`` of ``class`` or its ancestry.
 
 :ref:`StringName<class_StringName>` **class_get_integer_constant_enum**\ (\ class\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_integer_constant_enum>`
 
-Returns which enum the integer constant ``name`` of ``class`` or its ancestry belongs to.
+Trả về enum mà hằng số integer ``name`` của ``class`` hoặc các lớp tổ tiên của nó thuộc về.
 
 .. rst-class:: classref-item-separator
 
@@ -259,7 +259,7 @@ Returns which enum the integer constant ``name`` of ``class`` or its ancestry be
 
 :ref:`PackedStringArray<class_PackedStringArray>` **class_get_integer_constant_list**\ (\ class\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_integer_constant_list>`
 
-Returns an array with the names all the integer constants of ``class`` or its ancestry.
+Trả về một mảng chứa tên của tất cả các hằng số integer của ``class`` hoặc các lớp tổ tiên của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ Returns an array with the names all the integer constants of ``class`` or its an
 
 :ref:`int<class_int>` **class_get_method_argument_count**\ (\ class\: :ref:`StringName<class_StringName>`, method\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_method_argument_count>`
 
-Returns the number of arguments of the method ``method`` of ``class`` or its ancestry if ``no_inheritance`` is ``false``.
+Trả về số lượng đối số của method ``method`` của ``class`` hoặc các lớp tổ tiên của nó nếu ``no_inheritance`` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -283,9 +283,9 @@ Returns the number of arguments of the method ``method`` of ``class`` or its anc
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **class_get_method_list**\ (\ class\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_method_list>`
 
-Returns an array with all the methods of ``class`` or its ancestry if ``no_inheritance`` is ``false``. Every element of the array is a :ref:`Dictionary<class_Dictionary>` with the following keys: ``args``, ``default_args``, ``flags``, ``id``, ``name``, ``return: (class_name, hint, hint_string, name, type, usage)``.
+Trả về một mảng chứa tất cả các method của ``class`` hoặc các lớp tổ tiên của nó nếu ``no_inheritance`` là ``false``. Mỗi phần tử của mảng là một :ref:`Dictionary<class_Dictionary>` với các key sau: ``args``, ``default_args``, ``flags``, ``id``, ``name``, ``return: (class_name, hint, hint_string, name, type, usage)``.
 
-\ **Note:** In exported release builds the debug info is not available, so the returned dictionaries will contain only method names.
+\ **Lưu ý:** Trong các bản build release đã xuất, thông tin gỡ lỗi không khả dụng, vì vậy các dictionary được trả về sẽ chỉ chứa tên phương thức.
 
 .. rst-class:: classref-item-separator
 
@@ -297,7 +297,7 @@ Returns an array with all the methods of ``class`` or its ancestry if ``no_inher
 
 :ref:`Variant<class_Variant>` **class_get_property**\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_property>`
 
-Returns the value of ``property`` of ``object`` or its ancestry.
+Trả về giá trị của ``property`` của ``object`` hoặc tổ tiên của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -309,7 +309,7 @@ Returns the value of ``property`` of ``object`` or its ancestry.
 
 :ref:`Variant<class_Variant>` **class_get_property_default_value**\ (\ class\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_property_default_value>`
 
-Returns the default value of ``property`` of ``class`` or its ancestor classes.
+Trả về giá trị mặc định của ``property`` của ``class`` hoặc các lớp tổ tiên của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -321,7 +321,7 @@ Returns the default value of ``property`` of ``class`` or its ancestor classes.
 
 :ref:`StringName<class_StringName>` **class_get_property_getter**\ (\ class\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_ClassDB_method_class_get_property_getter>`
 
-Returns the getter method name of ``property`` of ``class``.
+Trả về tên phương thức getter của ``property`` của ``class``.
 
 .. rst-class:: classref-item-separator
 
@@ -333,7 +333,7 @@ Returns the getter method name of ``property`` of ``class``.
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **class_get_property_list**\ (\ class\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_property_list>`
 
-Returns an array with all the properties of ``class`` or its ancestry if ``no_inheritance`` is ``false``.
+Trả về một mảng chứa tất cả các thuộc tính của ``class`` hoặc tổ tiên của nó nếu ``no_inheritance`` là ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -345,7 +345,7 @@ Returns an array with all the properties of ``class`` or its ancestry if ``no_in
 
 :ref:`StringName<class_StringName>` **class_get_property_setter**\ (\ class\: :ref:`StringName<class_StringName>`, property\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_ClassDB_method_class_get_property_setter>`
 
-Returns the setter method name of ``property`` of ``class``.
+Trả về tên phương thức setter của ``property`` của ``class``.
 
 .. rst-class:: classref-item-separator
 
@@ -357,7 +357,7 @@ Returns the setter method name of ``property`` of ``class``.
 
 :ref:`Dictionary<class_Dictionary>` **class_get_signal**\ (\ class\: :ref:`StringName<class_StringName>`, signal\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_signal>`
 
-Returns the ``signal`` data of ``class`` or its ancestry. The returned value is a :ref:`Dictionary<class_Dictionary>` with the following keys: ``args``, ``default_args``, ``flags``, ``id``, ``name``, ``return: (class_name, hint, hint_string, name, type, usage)``.
+Trả về dữ liệu ``signal`` của ``class`` hoặc tổ tiên của nó. Giá trị được trả về là một :ref:`Dictionary<class_Dictionary>` với các khóa sau: ``args``, ``default_args``, ``flags``, ``id``, ``name``, ``return: (class_name, hint, hint_string, name, type, usage)``.
 
 .. rst-class:: classref-item-separator
 
@@ -369,7 +369,7 @@ Returns the ``signal`` data of ``class`` or its ancestry. The returned value is 
 
 :ref:`Array<class_Array>`\[:ref:`Dictionary<class_Dictionary>`\] **class_get_signal_list**\ (\ class\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_get_signal_list>`
 
-Returns an array with all the signals of ``class`` or its ancestry if ``no_inheritance`` is ``false``. Every element of the array is a :ref:`Dictionary<class_Dictionary>` as described in :ref:`class_get_signal()<class_ClassDB_method_class_get_signal>`.
+Trả về một mảng chứa tất cả tín hiệu của ``class`` hoặc các lớp cha của nó nếu ``no_inheritance`` là ``false``. Mỗi phần tử trong mảng là một :ref:`Dictionary<class_Dictionary>` như được mô tả trong :ref:`class_get_signal()<class_ClassDB_method_class_get_signal>`.
 
 .. rst-class:: classref-item-separator
 
@@ -381,7 +381,7 @@ Returns an array with all the signals of ``class`` or its ancestry if ``no_inher
 
 :ref:`bool<class_bool>` **class_has_enum**\ (\ class\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_has_enum>`
 
-Returns whether ``class`` or its ancestry has an enum called ``name`` or not.
+Trả về liệu ``class`` hoặc các lớp cha của nó có enum tên là ``name`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -393,7 +393,7 @@ Returns whether ``class`` or its ancestry has an enum called ``name`` or not.
 
 :ref:`bool<class_bool>` **class_has_integer_constant**\ (\ class\: :ref:`StringName<class_StringName>`, name\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_has_integer_constant>`
 
-Returns whether ``class`` or its ancestry has an integer constant called ``name`` or not.
+Trả về liệu ``class`` hoặc các lớp cha của nó có hằng số nguyên tên là ``name`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ Returns whether ``class`` or its ancestry has an integer constant called ``name`
 
 :ref:`bool<class_bool>` **class_has_method**\ (\ class\: :ref:`StringName<class_StringName>`, method\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_class_has_method>`
 
-Returns whether ``class`` (or its ancestry if ``no_inheritance`` is ``false``) has a method called ``method`` or not.
+Trả về liệu ``class`` (hoặc các lớp cha của nó nếu ``no_inheritance`` là ``false``) có phương thức tên là ``method`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -417,7 +417,7 @@ Returns whether ``class`` (or its ancestry if ``no_inheritance`` is ``false``) h
 
 :ref:`bool<class_bool>` **class_has_signal**\ (\ class\: :ref:`StringName<class_StringName>`, signal\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_has_signal>`
 
-Returns whether ``class`` or its ancestry has a signal called ``signal`` or not.
+Trả về liệu ``class`` hoặc các lớp cha của nó có tín hiệu tên là ``signal`` hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -429,7 +429,7 @@ Returns whether ``class`` or its ancestry has a signal called ``signal`` or not.
 
 :ref:`Error<enum_@GlobalScope_Error>` **class_set_property**\ (\ object\: :ref:`Object<class_Object>`, property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) |const| :ref:`🔗<class_ClassDB_method_class_set_property>`
 
-Sets ``property`` value of ``object`` to ``value``.
+Đặt giá trị ``property`` của ``object`` thành ``value``.
 
 .. rst-class:: classref-item-separator
 
@@ -441,9 +441,9 @@ Sets ``property`` value of ``object`` to ``value``.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_class_list**\ (\ ) |const| :ref:`🔗<class_ClassDB_method_get_class_list>`
 
-Returns the names of all engine classes available.
+Trả về tên của tất cả các lớp engine hiện có.
 
-\ **Note:** Script-defined classes with ``class_name`` are not included in this list. Use :ref:`ProjectSettings.get_global_class_list()<class_ProjectSettings_method_get_global_class_list>` to get a list of script-defined classes instead.
+\ **Lưu ý:** Các lớp được định nghĩa bằng script có ``class_name`` không được bao gồm trong danh sách này. Sử dụng :ref:`ProjectSettings.get_global_class_list()<class_ProjectSettings_method_get_global_class_list>` để lấy danh sách các lớp được định nghĩa bằng script.
 
 .. rst-class:: classref-item-separator
 
@@ -455,7 +455,7 @@ Returns the names of all engine classes available.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_inheriters_from_class**\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_get_inheriters_from_class>`
 
-Returns the names of all engine classes that directly or indirectly inherit from ``class``.
+Trả về tên của tất cả các lớp engine kế thừa trực tiếp hoặc gián tiếp từ ``class``.
 
 .. rst-class:: classref-item-separator
 
@@ -467,7 +467,7 @@ Returns the names of all engine classes that directly or indirectly inherit from
 
 :ref:`StringName<class_StringName>` **get_parent_class**\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_get_parent_class>`
 
-Returns the parent class of ``class``.
+Trả về lớp cha của ``class``.
 
 .. rst-class:: classref-item-separator
 
@@ -479,7 +479,7 @@ Returns the parent class of ``class``.
 
 :ref:`Variant<class_Variant>` **instantiate**\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_instantiate>`
 
-Creates an instance of ``class``.
+Tạo một instance của ``class``.
 
 .. rst-class:: classref-item-separator
 
@@ -491,7 +491,7 @@ Creates an instance of ``class``.
 
 :ref:`bool<class_bool>` **is_class_enabled**\ (\ class\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_is_class_enabled>`
 
-Returns whether this ``class`` is enabled or not.
+Trả về liệu ``class`` này có được bật hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -503,7 +503,7 @@ Returns whether this ``class`` is enabled or not.
 
 :ref:`bool<class_bool>` **is_class_enum_bitfield**\ (\ class\: :ref:`StringName<class_StringName>`, enum\: :ref:`StringName<class_StringName>`, no_inheritance\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_ClassDB_method_is_class_enum_bitfield>`
 
-Returns whether ``class`` (or its ancestor classes if ``no_inheritance`` is ``false``) has an enum called ``enum`` that is a bitfield.
+Trả về liệu ``class`` (hoặc các lớp tổ tiên của nó nếu ``no_inheritance`` là ``false``) có enum tên ``enum`` thuộc kiểu bitfield hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -515,14 +515,14 @@ Returns whether ``class`` (or its ancestor classes if ``no_inheritance`` is ``fa
 
 :ref:`bool<class_bool>` **is_parent_class**\ (\ class\: :ref:`StringName<class_StringName>`, inherits\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_ClassDB_method_is_parent_class>`
 
-Returns whether ``inherits`` is an ancestor of ``class`` or not.
+Trả về liệu ``inherits`` có phải là lớp tổ tiên của ``class`` hay không.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường cần được người dùng ghi đè để phát huy tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

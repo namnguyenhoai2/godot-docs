@@ -10,30 +10,30 @@
 VisualShaderNodeBillboard
 =========================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A node that controls how the object faces the camera to be used within the visual shader graph.
+Một node điều khiển cách đối tượng hướng về camera để sử dụng trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The output port of this node needs to be connected to ``Model View Matrix`` port of :ref:`VisualShaderNodeOutput<class_VisualShaderNodeOutput>`.
+Cổng đầu ra của node này cần được kết nối với cổng ``Model View Matrix`` của :ref:`VisualShaderNodeOutput<class_VisualShaderNodeOutput>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` | :ref:`billboard_type<class_VisualShaderNodeBillboard_property_billboard_type>` | ``1``     |
-   +--------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                            | :ref:`keep_scale<class_VisualShaderNodeBillboard_property_keep_scale>`         | ``false`` |
-   +--------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+
+   +---------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+
+   | :ref:`BillboardType <enum_VisualShaderNodeBillboard_BillboardType>` | :ref:`billboard_type<class_VisualShaderNodeBillboard_property_billboard_type>` | ``1``     |
+   +---------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                             | :ref:`keep_scale<class_VisualShaderNodeBillboard_property_keep_scale>`         | ``false`` |
+   +---------------------------------------------------------------------+--------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-section-separator
 
@@ -41,14 +41,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeBillboard_BillboardType:
 
 .. rst-class:: classref-enumeration
 
-enum **BillboardType**: :ref:`🔗<enum_VisualShaderNodeBillboard_BillboardType>`
+enum **BillboardType**: :ref:`🔗 <enum_VisualShaderNodeBillboard_BillboardType>`
 
 .. _class_VisualShaderNodeBillboard_constant_BILLBOARD_TYPE_DISABLED:
 
@@ -56,7 +56,7 @@ enum **BillboardType**: :ref:`🔗<enum_VisualShaderNodeBillboard_BillboardType>
 
 :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` **BILLBOARD_TYPE_DISABLED** = ``0``
 
-Billboarding is disabled and the node does nothing.
+Tính năng billboarding bị tắt và node không thực hiện thao tác nào.
 
 .. _class_VisualShaderNodeBillboard_constant_BILLBOARD_TYPE_ENABLED:
 
@@ -64,7 +64,7 @@ Billboarding is disabled and the node does nothing.
 
 :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` **BILLBOARD_TYPE_ENABLED** = ``1``
 
-A standard billboarding algorithm is enabled.
+Một thuật toán billboarding tiêu chuẩn được bật.
 
 .. _class_VisualShaderNodeBillboard_constant_BILLBOARD_TYPE_FIXED_Y:
 
@@ -72,7 +72,7 @@ A standard billboarding algorithm is enabled.
 
 :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` **BILLBOARD_TYPE_FIXED_Y** = ``2``
 
-A billboarding algorithm to rotate around Y-axis is enabled.
+Một thuật toán billboarding để xoay quanh trục Y được bật.
 
 .. _class_VisualShaderNodeBillboard_constant_BILLBOARD_TYPE_PARTICLES:
 
@@ -80,7 +80,7 @@ A billboarding algorithm to rotate around Y-axis is enabled.
 
 :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` **BILLBOARD_TYPE_PARTICLES** = ``3``
 
-A billboarding algorithm designed to use on particles is enabled.
+Một thuật toán billboarding được thiết kế để sử dụng cho các particle được bật.
 
 .. _class_VisualShaderNodeBillboard_constant_BILLBOARD_TYPE_MAX:
 
@@ -88,7 +88,7 @@ A billboarding algorithm designed to use on particles is enabled.
 
 :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` **BILLBOARD_TYPE_MAX** = ``4``
 
-Represents the size of the :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` enum.
+Biểu thị kích thước của enum :ref:`BillboardType <enum_VisualShaderNodeBillboard_BillboardType>`.
 
 .. rst-class:: classref-section-separator
 
@@ -96,8 +96,8 @@ Represents the size of the :ref:`BillboardType<enum_VisualShaderNodeBillboard_Bi
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeBillboard_property_billboard_type:
 
@@ -110,7 +110,7 @@ Property Descriptions
 - |void| **set_billboard_type**\ (\ value\: :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>`\ )
 - :ref:`BillboardType<enum_VisualShaderNodeBillboard_BillboardType>` **get_billboard_type**\ (\ )
 
-Controls how the object faces the camera.
+Điều khiển hướng mặt của đối tượng về phía camera.
 
 .. rst-class:: classref-item-separator
 
@@ -127,14 +127,14 @@ Controls how the object faces the camera.
 - |void| **set_keep_scale_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_keep_scale_enabled**\ (\ )
 
-If ``true``, the shader will keep the scale set for the mesh. Otherwise, the scale is lost when billboarding.
+Nếu ``true``, shader sẽ giữ nguyên tỷ lệ được thiết lập cho mesh. Nếu không, tỷ lệ sẽ bị mất khi sử dụng billboarding.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không gây ra tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

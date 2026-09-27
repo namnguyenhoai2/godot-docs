@@ -10,109 +10,109 @@
 EditorExportPlatformWindows
 ===========================
 
-**Inherits:** :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>` **<** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`EditorExportPlatformPC<class_EditorExportPlatformPC>` **<** :ref:`EditorExportPlatform<class_EditorExportPlatform>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Exporter for Windows.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-The Windows exporter customizes how a Windows build is handled. In the editor's "Export" window, it is created when adding a new "Windows" preset.
+Trình export cho Windows.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Trình export cho Windows tùy chỉnh cách xử lý bản build Windows. Trong cửa sổ "Export" của editor, trình này được tạo khi thêm preset "Windows" mới.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Exporting for Windows <../tutorials/export/exporting_for_windows>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/company_name<class_EditorExportPlatformWindows_property_application/company_name>`                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/console_wrapper_icon<class_EditorExportPlatformWindows_property_application/console_wrapper_icon>`               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/copyright<class_EditorExportPlatformWindows_property_application/copyright>`                                     |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`application/d3d12_agility_sdk_multiarch<class_EditorExportPlatformWindows_property_application/d3d12_agility_sdk_multiarch>` |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/export_angle<class_EditorExportPlatformWindows_property_application/export_angle>`                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/export_d3d12<class_EditorExportPlatformWindows_property_application/export_d3d12>`                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/file_description<class_EditorExportPlatformWindows_property_application/file_description>`                       |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/file_version<class_EditorExportPlatformWindows_property_application/file_version>`                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/icon<class_EditorExportPlatformWindows_property_application/icon>`                                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`application/icon_interpolation<class_EditorExportPlatformWindows_property_application/icon_interpolation>`                   |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`application/modify_resources<class_EditorExportPlatformWindows_property_application/modify_resources>`                       |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/product_name<class_EditorExportPlatformWindows_property_application/product_name>`                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/product_version<class_EditorExportPlatformWindows_property_application/product_version>`                         |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`application/trademarks<class_EditorExportPlatformWindows_property_application/trademarks>`                                   |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`binary_format/architecture<class_EditorExportPlatformWindows_property_binary_format/architecture>`                           |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`binary_format/embed_pck<class_EditorExportPlatformWindows_property_binary_format/embed_pck>`                                 |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`codesign/custom_options<class_EditorExportPlatformWindows_property_codesign/custom_options>`                                 |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/description<class_EditorExportPlatformWindows_property_codesign/description>`                                       |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/digest_algorithm<class_EditorExportPlatformWindows_property_codesign/digest_algorithm>`                             |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/enable<class_EditorExportPlatformWindows_property_codesign/enable>`                                                 |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/identity<class_EditorExportPlatformWindows_property_codesign/identity>`                                             |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`codesign/identity_type<class_EditorExportPlatformWindows_property_codesign/identity_type>`                                   |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/password<class_EditorExportPlatformWindows_property_codesign/password>`                                             |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`codesign/timestamp<class_EditorExportPlatformWindows_property_codesign/timestamp>`                                           |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`codesign/timestamp_server_url<class_EditorExportPlatformWindows_property_codesign/timestamp_server_url>`                     |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/debug<class_EditorExportPlatformWindows_property_custom_template/debug>`                                     |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`custom_template/release<class_EditorExportPlatformWindows_property_custom_template/release>`                                 |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`debug/export_console_wrapper<class_EditorExportPlatformWindows_property_debug/export_console_wrapper>`                       |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled<class_EditorExportPlatformWindows_property_shader_baker/enabled>`                                       |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/cleanup_script<class_EditorExportPlatformWindows_property_ssh_remote_deploy/cleanup_script>`               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`ssh_remote_deploy/enabled<class_EditorExportPlatformWindows_property_ssh_remote_deploy/enabled>`                             |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_scp<class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_scp>`               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_ssh<class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_ssh>`               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/host<class_EditorExportPlatformWindows_property_ssh_remote_deploy/host>`                                   |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/port<class_EditorExportPlatformWindows_property_ssh_remote_deploy/port>`                                   |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/run_script<class_EditorExportPlatformWindows_property_ssh_remote_deploy/run_script>`                       |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`texture_format/etc2_astc<class_EditorExportPlatformWindows_property_texture_format/etc2_astc>`                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | :ref:`texture_format/s3tc_bptc<class_EditorExportPlatformWindows_property_texture_format/s3tc_bptc>`                               |
-   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/company_name <class_EditorExportPlatformWindows_property_application/company_name>`                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/console_wrapper_icon <class_EditorExportPlatformWindows_property_application/console_wrapper_icon>`               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/copyright <class_EditorExportPlatformWindows_property_application/copyright>`                                     |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`application/d3d12_agility_sdk_multiarch <class_EditorExportPlatformWindows_property_application/d3d12_agility_sdk_multiarch>` |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/export_angle <class_EditorExportPlatformWindows_property_application/export_angle>`                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/export_d3d12 <class_EditorExportPlatformWindows_property_application/export_d3d12>`                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/file_description <class_EditorExportPlatformWindows_property_application/file_description>`                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/file_version <class_EditorExportPlatformWindows_property_application/file_version>`                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/icon <class_EditorExportPlatformWindows_property_application/icon>`                                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`application/icon_interpolation <class_EditorExportPlatformWindows_property_application/icon_interpolation>`                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`application/modify_resources <class_EditorExportPlatformWindows_property_application/modify_resources>`                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/product_name <class_EditorExportPlatformWindows_property_application/product_name>`                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/product_version <class_EditorExportPlatformWindows_property_application/product_version>`                         |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`application/trademarks <class_EditorExportPlatformWindows_property_application/trademarks>`                                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`binary_format/architecture <class_EditorExportPlatformWindows_property_binary_format/architecture>`                           |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`binary_format/embed_pck <class_EditorExportPlatformWindows_property_binary_format/embed_pck>`                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>` | :ref:`codesign/custom_options <class_EditorExportPlatformWindows_property_codesign/custom_options>`                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/description <class_EditorExportPlatformWindows_property_codesign/description>`                                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/digest_algorithm <class_EditorExportPlatformWindows_property_codesign/digest_algorithm>`                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/enable <class_EditorExportPlatformWindows_property_codesign/enable>`                                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/identity <class_EditorExportPlatformWindows_property_codesign/identity>`                                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`codesign/identity_type <class_EditorExportPlatformWindows_property_codesign/identity_type>`                                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/password <class_EditorExportPlatformWindows_property_codesign/password>`                                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`codesign/timestamp <class_EditorExportPlatformWindows_property_codesign/timestamp>`                                           |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`codesign/timestamp_server_url <class_EditorExportPlatformWindows_property_codesign/timestamp_server_url>`                     |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/debug <class_EditorExportPlatformWindows_property_custom_template/debug>`                                     |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`custom_template/release <class_EditorExportPlatformWindows_property_custom_template/release>`                                 |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`debug/export_console_wrapper <class_EditorExportPlatformWindows_property_debug/export_console_wrapper>`                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`shader_baker/enabled <class_EditorExportPlatformWindows_property_shader_baker/enabled>`                                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/cleanup_script <class_EditorExportPlatformWindows_property_ssh_remote_deploy/cleanup_script>`               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`ssh_remote_deploy/enabled <class_EditorExportPlatformWindows_property_ssh_remote_deploy/enabled>`                             |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_scp <class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_scp>`               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/extra_args_ssh <class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_ssh>`               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/host <class_EditorExportPlatformWindows_property_ssh_remote_deploy/host>`                                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/port <class_EditorExportPlatformWindows_property_ssh_remote_deploy/port>`                                   |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                       | :ref:`ssh_remote_deploy/run_script <class_EditorExportPlatformWindows_property_ssh_remote_deploy/run_script>`                       |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`texture_format/etc2_astc <class_EditorExportPlatformWindows_property_texture_format/etc2_astc>`                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`texture_format/s3tc_bptc <class_EditorExportPlatformWindows_property_texture_format/s3tc_bptc>`                               |
+   +---------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -120,16 +120,16 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_EditorExportPlatformWindows_property_application/company_name:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/company_name** :ref:`🔗<class_EditorExportPlatformWindows_property_application/company_name>`
+:ref:`String<class_String>` **application/company_name** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/company_name>`
 
-Company that produced the application. Required. See `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
+Công ty đã tạo ra ứng dụng. Bắt buộc. Xem `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -139,9 +139,9 @@ Company that produced the application. Required. See `StringFileInfo <https://le
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/console_wrapper_icon** :ref:`🔗<class_EditorExportPlatformWindows_property_application/console_wrapper_icon>`
+:ref:`String<class_String>` **application/console_wrapper_icon** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/console_wrapper_icon>`
 
-Console wrapper icon file. If left empty, it will fallback to :ref:`application/icon<class_EditorExportPlatformWindows_property_application/icon>`, then to :ref:`ProjectSettings.application/config/windows_native_icon<class_ProjectSettings_property_application/config/windows_native_icon>`, and lastly, :ref:`ProjectSettings.application/config/icon<class_ProjectSettings_property_application/config/icon>`.
+Tệp biểu tượng wrapper của console. Nếu để trống, nó sẽ fallback về :ref:`application/icon <class_EditorExportPlatformWindows_property_application/icon>`, sau đó đến :ref:`ProjectSettings.application/config/windows_native_icon <class_ProjectSettings_property_application/config/windows_native_icon>`, và cuối cùng là :ref:`ProjectSettings.application/config/icon <class_ProjectSettings_property_application/config/icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -151,9 +151,9 @@ Console wrapper icon file. If left empty, it will fallback to :ref:`application/
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/copyright** :ref:`🔗<class_EditorExportPlatformWindows_property_application/copyright>`
+:ref:`String<class_String>` **application/copyright** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/copyright>`
 
-Copyright notice for the bundle visible to the user. Optional. See `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
+Thông báo bản quyền của bundle hiển thị cho người dùng. Tùy chọn. Xem `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -163,9 +163,9 @@ Copyright notice for the bundle visible to the user. Optional. See `StringFileIn
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **application/d3d12_agility_sdk_multiarch** :ref:`🔗<class_EditorExportPlatformWindows_property_application/d3d12_agility_sdk_multiarch>`
+:ref:`bool<class_bool>` **application/d3d12_agility_sdk_multiarch** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/d3d12_agility_sdk_multiarch>`
 
-If ``true``, and :ref:`application/export_d3d12<class_EditorExportPlatformWindows_property_application/export_d3d12>` is set, the Agility SDK DLLs will be stored in arch-specific subdirectories.
+Nếu ``true`` và :ref:`application/export_d3d12 <class_EditorExportPlatformWindows_property_application/export_d3d12>` được thiết lập, các DLL của Agility SDK sẽ được lưu trong các thư mục con dành riêng cho từng kiến trúc.
 
 .. rst-class:: classref-item-separator
 
@@ -175,9 +175,9 @@ If ``true``, and :ref:`application/export_d3d12<class_EditorExportPlatformWindow
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/export_angle** :ref:`🔗<class_EditorExportPlatformWindows_property_application/export_angle>`
+:ref:`int<class_int>` **application/export_angle** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/export_angle>`
 
-If set to ``1``, ANGLE libraries are exported with the exported application. If set to ``0``, ANGLE libraries are exported only if :ref:`ProjectSettings.rendering/gl_compatibility/driver<class_ProjectSettings_property_rendering/gl_compatibility/driver>` is set to ``"opengl3_angle"``.
+Nếu được đặt thành ``1``, các thư viện ANGLE sẽ được export cùng với ứng dụng đã export. Nếu được đặt thành ``0``, các thư viện ANGLE chỉ được export khi :ref:`ProjectSettings.rendering/gl_compatibility/driver <class_ProjectSettings_property_rendering/gl_compatibility/driver>` được đặt thành ``"opengl3_angle"``.
 
 .. rst-class:: classref-item-separator
 
@@ -187,9 +187,9 @@ If set to ``1``, ANGLE libraries are exported with the exported application. If 
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/export_d3d12** :ref:`🔗<class_EditorExportPlatformWindows_property_application/export_d3d12>`
+:ref:`int<class_int>` **application/export_d3d12** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/export_d3d12>`
 
-If set to ``1``, the Direct3D 12 runtime libraries (Agility SDK, PIX) are exported with the exported application. If set to ``0``, Direct3D 12 libraries are exported only if :ref:`ProjectSettings.rendering/rendering_device/driver<class_ProjectSettings_property_rendering/rendering_device/driver>` is set to ``"d3d12"``.
+Nếu được đặt thành ``1``, các thư viện runtime Direct3D 12 (Agility SDK, PIX) sẽ được xuất cùng với ứng dụng đã xuất. Nếu được đặt thành ``0``, các thư viện Direct3D 12 chỉ được xuất nếu :ref:`ProjectSettings.rendering/rendering_device/driver <class_ProjectSettings_property_rendering/rendering_device/driver>` được đặt thành ``"d3d12"``.
 
 .. rst-class:: classref-item-separator
 
@@ -199,9 +199,9 @@ If set to ``1``, the Direct3D 12 runtime libraries (Agility SDK, PIX) are export
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/file_description** :ref:`🔗<class_EditorExportPlatformWindows_property_application/file_description>`
+:ref:`String<class_String>` **application/file_description** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/file_description>`
 
-File description to be presented to users. Required. See `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
+Mô tả tệp sẽ hiển thị cho người dùng. Bắt buộc. Xem `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -211,9 +211,9 @@ File description to be presented to users. Required. See `StringFileInfo <https:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/file_version** :ref:`🔗<class_EditorExportPlatformWindows_property_application/file_version>`
+:ref:`String<class_String>` **application/file_version** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/file_version>`
 
-Version number of the file. Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty. See `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
+Số phiên bản của tệp. Nếu để trống, giá trị sẽ được lấy từ :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>`. Xem `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -223,9 +223,9 @@ Version number of the file. Falls back to :ref:`ProjectSettings.application/conf
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/icon** :ref:`🔗<class_EditorExportPlatformWindows_property_application/icon>`
+:ref:`String<class_String>` **application/icon** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/icon>`
 
-Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.application/config/windows_native_icon<class_ProjectSettings_property_application/config/windows_native_icon>`, and then to :ref:`ProjectSettings.application/config/icon<class_ProjectSettings_property_application/config/icon>`.
+Tệp biểu tượng ứng dụng. Nếu để trống, hệ thống sẽ fallback về :ref:`ProjectSettings.application/config/windows_native_icon <class_ProjectSettings_property_application/config/windows_native_icon>`, rồi đến :ref:`ProjectSettings.application/config/icon <class_ProjectSettings_property_application/config/icon>`.
 
 .. rst-class:: classref-item-separator
 
@@ -235,9 +235,9 @@ Application icon file. If left empty, it will fallback to :ref:`ProjectSettings.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **application/icon_interpolation** :ref:`🔗<class_EditorExportPlatformWindows_property_application/icon_interpolation>`
+:ref:`int<class_int>` **application/icon_interpolation** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/icon_interpolation>`
 
-Interpolation method used to resize application icon.
+Phương thức nội suy được sử dụng để thay đổi kích thước biểu tượng ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -247,9 +247,9 @@ Interpolation method used to resize application icon.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **application/modify_resources** :ref:`🔗<class_EditorExportPlatformWindows_property_application/modify_resources>`
+:ref:`bool<class_bool>` **application/modify_resources** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/modify_resources>`
 
-If enabled, icon and metadata of the exported executable is set according to the other ``application/*`` values.
+Nếu được bật, biểu tượng và siêu dữ liệu của tệp thực thi đã xuất sẽ được thiết lập theo các giá trị ``application/*`` khác.
 
 .. rst-class:: classref-item-separator
 
@@ -259,9 +259,9 @@ If enabled, icon and metadata of the exported executable is set according to the
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/product_name** :ref:`🔗<class_EditorExportPlatformWindows_property_application/product_name>`
+:ref:`String<class_String>` **application/product_name** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/product_name>`
 
-Name of the application. Required. See `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
+Tên của ứng dụng. Bắt buộc. Xem `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -271,9 +271,9 @@ Name of the application. Required. See `StringFileInfo <https://learn.microsoft.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/product_version** :ref:`🔗<class_EditorExportPlatformWindows_property_application/product_version>`
+:ref:`String<class_String>` **application/product_version** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/product_version>`
 
-Application version visible to the user. Falls back to :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` if left empty. See `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
+Phiên bản ứng dụng hiển thị cho người dùng. Nếu để trống, giá trị sẽ mặc định là :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>`. Xem `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -283,9 +283,9 @@ Application version visible to the user. Falls back to :ref:`ProjectSettings.app
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **application/trademarks** :ref:`🔗<class_EditorExportPlatformWindows_property_application/trademarks>`
+:ref:`String<class_String>` **application/trademarks** :ref:`🔗 <class_EditorExportPlatformWindows_property_application/trademarks>`
 
-Trademarks and registered trademarks that apply to the file. Optional. See `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
+Các nhãn hiệu và nhãn hiệu đã đăng ký áp dụng cho tệp. Tùy chọn. Xem `StringFileInfo <https://learn.microsoft.com/en-us/windows/win32/menurc/stringfileinfo-block>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -295,11 +295,11 @@ Trademarks and registered trademarks that apply to the file. Optional. See `Stri
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **binary_format/architecture** :ref:`🔗<class_EditorExportPlatformWindows_property_binary_format/architecture>`
+:ref:`String<class_String>` **binary_format/architecture** :ref:`🔗 <class_EditorExportPlatformWindows_property_binary_format/architecture>`
 
-Application executable architecture.
+Kiến trúc của tệp thực thi ứng dụng.
 
-Supported architectures: ``x86_32``, ``x86_64``, and ``arm64``.
+Các kiến trúc được hỗ trợ: ``x86_32``, ``x86_64`` và ``arm64``.
 
 .. rst-class:: classref-item-separator
 
@@ -309,9 +309,9 @@ Supported architectures: ``x86_32``, ``x86_64``, and ``arm64``.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **binary_format/embed_pck** :ref:`🔗<class_EditorExportPlatformWindows_property_binary_format/embed_pck>`
+:ref:`bool<class_bool>` **binary_format/embed_pck** :ref:`🔗 <class_EditorExportPlatformWindows_property_binary_format/embed_pck>`
 
-If ``true``, project resources are embedded into the executable.
+Nếu ``true``, các tài nguyên của dự án được nhúng vào tệp thực thi.
 
 .. rst-class:: classref-item-separator
 
@@ -321,11 +321,11 @@ If ``true``, project resources are embedded into the executable.
 
 .. rst-class:: classref-property
 
-:ref:`PackedStringArray<class_PackedStringArray>` **codesign/custom_options** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/custom_options>`
+:ref:`PackedStringArray<class_PackedStringArray>` **codesign/custom_options** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/custom_options>`
 
-Array of the additional command line arguments passed to the code signing tool. See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+Mảng chứa các đối số dòng lệnh bổ sung được truyền cho công cụ ký mã. Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedStringArray<class_PackedStringArray>` for more details.
+**Note:** Mảng được trả về là *copied* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedStringArray<class_PackedStringArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -335,9 +335,9 @@ Array of the additional command line arguments passed to the code signing tool. 
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/description** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/description>`
+:ref:`String<class_String>` **codesign/description** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/description>`
 
-Description of the signed content. See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+Mô tả nội dung đã ký. Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -347,9 +347,9 @@ Description of the signed content. See `Sign Tool <https://learn.microsoft.com/e
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/digest_algorithm** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/digest_algorithm>`
+:ref:`int<class_int>` **codesign/digest_algorithm** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/digest_algorithm>`
 
-Digest algorithm to use for creating signature. See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+Thuật toán digest được sử dụng để tạo chữ ký. Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -359,9 +359,9 @@ Digest algorithm to use for creating signature. See `Sign Tool <https://learn.mi
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/enable** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/enable>`
+:ref:`bool<class_bool>` **codesign/enable** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/enable>`
 
-If ``true``, executable signing is enabled.
+Nếu ``true``, tính năng ký tệp thực thi được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -371,11 +371,11 @@ If ``true``, executable signing is enabled.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/identity** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/identity>`
+:ref:`String<class_String>` **codesign/identity** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/identity>`
 
-PKCS #12 certificate file used to sign executable or certificate SHA-1 hash (if :ref:`codesign/identity_type<class_EditorExportPlatformWindows_property_codesign/identity_type>` is set to "Use certificate store"). See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+Tệp chứng chỉ PKCS #12 được sử dụng để ký tệp thực thi hoặc mã băm SHA-1 của chứng chỉ (nếu :ref:`codesign/identity_type <class_EditorExportPlatformWindows_property_codesign/identity_type>` được đặt thành "Use certificate store"). Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
-Can be overridden with the environment variable ``GODOT_WINDOWS_CODESIGN_IDENTITY``.
+Có thể ghi đè bằng biến môi trường ``GODOT_WINDOWS_CODESIGN_IDENTITY``.
 
 .. rst-class:: classref-item-separator
 
@@ -385,11 +385,11 @@ Can be overridden with the environment variable ``GODOT_WINDOWS_CODESIGN_IDENTIT
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **codesign/identity_type** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/identity_type>`
+:ref:`int<class_int>` **codesign/identity_type** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/identity_type>`
 
-Type of identity to use. See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+Loại identity cần sử dụng. Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
-Can be overridden with the environment variable ``GODOT_WINDOWS_CODESIGN_IDENTITY_TYPE``.
+Có thể ghi đè bằng biến môi trường ``GODOT_WINDOWS_CODESIGN_IDENTITY_TYPE``.
 
 .. rst-class:: classref-item-separator
 
@@ -399,11 +399,11 @@ Can be overridden with the environment variable ``GODOT_WINDOWS_CODESIGN_IDENTIT
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/password** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/password>`
+:ref:`String<class_String>` **codesign/password** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/password>`
 
-Password for the certificate file used to sign executable. See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+Mật khẩu của tệp chứng chỉ được dùng để ký tệp thực thi. Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
-Can be overridden with the environment variable ``GODOT_WINDOWS_CODESIGN_PASSWORD``.
+Có thể ghi đè bằng biến môi trường ``GODOT_WINDOWS_CODESIGN_PASSWORD``.
 
 .. rst-class:: classref-item-separator
 
@@ -413,9 +413,9 @@ Can be overridden with the environment variable ``GODOT_WINDOWS_CODESIGN_PASSWOR
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **codesign/timestamp** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/timestamp>`
+:ref:`bool<class_bool>` **codesign/timestamp** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/timestamp>`
 
-If ``true``, time-stamp is added to the signature. See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+Nếu ``true``, dấu thời gian sẽ được thêm vào chữ ký. Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -425,9 +425,9 @@ If ``true``, time-stamp is added to the signature. See `Sign Tool <https://learn
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **codesign/timestamp_server_url** :ref:`🔗<class_EditorExportPlatformWindows_property_codesign/timestamp_server_url>`
+:ref:`String<class_String>` **codesign/timestamp_server_url** :ref:`🔗 <class_EditorExportPlatformWindows_property_codesign/timestamp_server_url>`
 
-URL of the time stamp server. If left empty, the default server is used. See `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
+URL của máy chủ dấu thời gian. Nếu để trống, máy chủ mặc định sẽ được sử dụng. Xem `Sign Tool <https://learn.microsoft.com/en-us/dotnet/framework/tools/signtool-exe>`__.
 
 .. rst-class:: classref-item-separator
 
@@ -437,9 +437,9 @@ URL of the time stamp server. If left empty, the default server is used. See `Si
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/debug** :ref:`🔗<class_EditorExportPlatformWindows_property_custom_template/debug>`
+:ref:`String<class_String>` **custom_template/debug** :ref:`🔗 <class_EditorExportPlatformWindows_property_custom_template/debug>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến template export tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -449,9 +449,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **custom_template/release** :ref:`🔗<class_EditorExportPlatformWindows_property_custom_template/release>`
+:ref:`String<class_String>` **custom_template/release** :ref:`🔗 <class_EditorExportPlatformWindows_property_custom_template/release>`
 
-Path to the custom export template. If left empty, default template is used.
+Đường dẫn đến template export tùy chỉnh. Nếu để trống, template mặc định sẽ được sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -461,9 +461,9 @@ Path to the custom export template. If left empty, default template is used.
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **debug/export_console_wrapper** :ref:`🔗<class_EditorExportPlatformWindows_property_debug/export_console_wrapper>`
+:ref:`int<class_int>` **debug/export_console_wrapper** :ref:`🔗 <class_EditorExportPlatformWindows_property_debug/export_console_wrapper>`
 
-If ``true``, a console wrapper executable is exported alongside the main executable, which allows running the project with enabled console output.
+Nếu ``true``, một tệp thực thi console wrapper sẽ được xuất cùng với tệp thực thi chính, cho phép chạy project với console output được bật.
 
 .. rst-class:: classref-item-separator
 
@@ -473,11 +473,11 @@ If ``true``, a console wrapper executable is exported alongside the main executa
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗<class_EditorExportPlatformWindows_property_shader_baker/enabled>`
+:ref:`bool<class_bool>` **shader_baker/enabled** :ref:`🔗 <class_EditorExportPlatformWindows_property_shader_baker/enabled>`
 
-If ``true``, shaders will be compiled and embedded in the application. This option is only supported when using the Forward+ and Mobile renderers.
+Nếu ``true``, các shader sẽ được biên dịch và nhúng vào ứng dụng. Tùy chọn này chỉ được hỗ trợ khi sử dụng Forward+ và Mobile renderer.
 
-\ **Note:** When exporting as a dedicated server, the shader baker is always disabled since no rendering is performed.
+\ **Lưu ý:** Khi xuất dưới dạng dedicated server, shader baker luôn bị tắt vì không thực hiện rendering.
 
 .. rst-class:: classref-item-separator
 
@@ -487,19 +487,19 @@ If ``true``, shaders will be compiled and embedded in the application. This opti
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/cleanup_script** :ref:`🔗<class_EditorExportPlatformWindows_property_ssh_remote_deploy/cleanup_script>`
+:ref:`String<class_String>` **ssh_remote_deploy/cleanup_script** :ref:`🔗 <class_EditorExportPlatformWindows_property_ssh_remote_deploy/cleanup_script>`
 
-Script code to execute on the remote host when app is finished.
+Mã script sẽ được thực thi trên máy chủ từ xa khi ứng dụng kết thúc.
 
-The following variables can be used in the script:
+Có thể sử dụng các biến sau trong script:
 
-- ``{temp_dir}`` - Path of temporary folder on the remote, used to upload app and scripts to.
+- ``{temp_dir}`` - Đường dẫn đến thư mục tạm trên máy từ xa, được dùng để tải ứng dụng và các script lên đó.
 
-- ``{archive_name}`` - Name of the ZIP containing uploaded application.
+- ``{archive_name}`` - Tên của tệp ZIP chứa ứng dụng đã tải lên.
 
-- ``{exe_name}`` - Name of application executable.
+- ``{exe_name}`` - Tên của tệp thực thi ứng dụng.
 
-- ``{cmd_args}`` - Array of the command line argument for the application.
+- ``{cmd_args}`` - Mảng các đối số dòng lệnh cho ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -509,9 +509,9 @@ The following variables can be used in the script:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **ssh_remote_deploy/enabled** :ref:`🔗<class_EditorExportPlatformWindows_property_ssh_remote_deploy/enabled>`
+:ref:`bool<class_bool>` **ssh_remote_deploy/enabled** :ref:`🔗 <class_EditorExportPlatformWindows_property_ssh_remote_deploy/enabled>`
 
-Enables remote deploy using SSH/SCP.
+Bật remote deploy bằng SSH/SCP.
 
 .. rst-class:: classref-item-separator
 
@@ -521,9 +521,9 @@ Enables remote deploy using SSH/SCP.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/extra_args_scp** :ref:`🔗<class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_scp>`
+:ref:`String<class_String>` **ssh_remote_deploy/extra_args_scp** :ref:`🔗 <class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_scp>`
 
-Array of the additional command line arguments passed to the SCP.
+Mảng các đối số dòng lệnh bổ sung được truyền cho SCP.
 
 .. rst-class:: classref-item-separator
 
@@ -533,9 +533,9 @@ Array of the additional command line arguments passed to the SCP.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/extra_args_ssh** :ref:`🔗<class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_ssh>`
+:ref:`String<class_String>` **ssh_remote_deploy/extra_args_ssh** :ref:`🔗 <class_EditorExportPlatformWindows_property_ssh_remote_deploy/extra_args_ssh>`
 
-Array of the additional command line arguments passed to the SSH.
+Mảng các đối số dòng lệnh bổ sung được truyền cho SSH.
 
 .. rst-class:: classref-item-separator
 
@@ -545,9 +545,9 @@ Array of the additional command line arguments passed to the SSH.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/host** :ref:`🔗<class_EditorExportPlatformWindows_property_ssh_remote_deploy/host>`
+:ref:`String<class_String>` **ssh_remote_deploy/host** :ref:`🔗 <class_EditorExportPlatformWindows_property_ssh_remote_deploy/host>`
 
-Remote host SSH user name and address, in ``user@address`` format.
+Tên người dùng SSH và địa chỉ của máy chủ từ xa, theo định dạng ``user@address``.
 
 .. rst-class:: classref-item-separator
 
@@ -557,9 +557,9 @@ Remote host SSH user name and address, in ``user@address`` format.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/port** :ref:`🔗<class_EditorExportPlatformWindows_property_ssh_remote_deploy/port>`
+:ref:`String<class_String>` **ssh_remote_deploy/port** :ref:`🔗 <class_EditorExportPlatformWindows_property_ssh_remote_deploy/port>`
 
-Remote host SSH port number.
+Số cổng SSH của máy chủ từ xa.
 
 .. rst-class:: classref-item-separator
 
@@ -569,19 +569,19 @@ Remote host SSH port number.
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **ssh_remote_deploy/run_script** :ref:`🔗<class_EditorExportPlatformWindows_property_ssh_remote_deploy/run_script>`
+:ref:`String<class_String>` **ssh_remote_deploy/run_script** :ref:`🔗 <class_EditorExportPlatformWindows_property_ssh_remote_deploy/run_script>`
 
-Script code to execute on the remote host when running the app.
+Mã script sẽ được thực thi trên máy chủ từ xa khi chạy ứng dụng.
 
-The following variables can be used in the script:
+Có thể sử dụng các biến sau trong script:
 
-- ``{temp_dir}`` - Path of temporary folder on the remote, used to upload app and scripts to.
+- ``{temp_dir}`` - Đường dẫn đến thư mục tạm trên máy từ xa, được dùng để tải ứng dụng và các script lên đó.
 
-- ``{archive_name}`` - Name of the ZIP containing uploaded application.
+- ``{archive_name}`` - Tên của tệp ZIP chứa ứng dụng đã tải lên.
 
-- ``{exe_name}`` - Name of application executable.
+- ``{exe_name}`` - Tên của tệp thực thi ứng dụng.
 
-- ``{cmd_args}`` - Array of the command line argument for the application.
+- ``{cmd_args}`` - Mảng các đối số dòng lệnh cho ứng dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -591,9 +591,9 @@ The following variables can be used in the script:
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **texture_format/etc2_astc** :ref:`🔗<class_EditorExportPlatformWindows_property_texture_format/etc2_astc>`
+:ref:`bool<class_bool>` **texture_format/etc2_astc** :ref:`🔗 <class_EditorExportPlatformWindows_property_texture_format/etc2_astc>`
 
-If ``true``, project textures are exported in the ETC2/ASTC format.
+Nếu ``true``, các texture của dự án được xuất ở định dạng ETC2/ASTC.
 
 .. rst-class:: classref-item-separator
 
@@ -603,16 +603,16 @@ If ``true``, project textures are exported in the ETC2/ASTC format.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **texture_format/s3tc_bptc** :ref:`🔗<class_EditorExportPlatformWindows_property_texture_format/s3tc_bptc>`
+:ref:`bool<class_bool>` **texture_format/s3tc_bptc** :ref:`🔗 <class_EditorExportPlatformWindows_property_texture_format/s3tc_bptc>`
 
-If ``true``, project textures are exported in the S3TC/BPTC format.
+Nếu ``true``, các texture của dự án được xuất ở định dạng S3TC/BPTC.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

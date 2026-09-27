@@ -10,50 +10,50 @@
 Skeleton3D
 ==========
 
-**Inherits:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node containing a bone hierarchy, used to create a 3D skeletal animation.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**Skeleton3D** provides an interface for managing a hierarchy of bones, including pose, rest and animation (see :ref:`Animation<class_Animation>`). It can also use ragdoll physics.
-
-The overall transform of a bone with respect to the skeleton is determined by bone pose. Bone rest defines the initial transform of the bone pose.
-
-Note that "global pose" below refers to the overall transform of the bone with respect to skeleton, so it is not the actual global/world transform of the bone.
+Một node chứa hệ thống phân cấp xương, được dùng để tạo animation khung xương 3D.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**Skeleton3D** cung cấp giao diện để quản lý hệ thống phân cấp xương, bao gồm pose, rest và animation (xem :ref:`Animation<class_Animation>`). Nó cũng có thể sử dụng vật lý ragdoll.
+
+Phép biến đổi tổng thể của một xương so với skeleton được xác định bởi bone pose. Bone rest xác định phép biến đổi ban đầu của bone pose.
+
+Lưu ý rằng "global pose" dưới đây đề cập đến phép biến đổi tổng thể của xương so với skeleton, vì vậy đây không phải là phép biến đổi global/world thực tế của xương.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- `Third Person Shooter (TPS) Demo <https://godotengine.org/asset-library/asset/2710>`__
+- `Bản demo game bắn súng góc nhìn thứ ba (TPS) <https://godotengine.org/asset-library/asset/2710>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                         | :ref:`animate_physical_bones<class_Skeleton3D_property_animate_physical_bones>`                 | ``true``  |
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`ModifierCallbackModeProcess<enum_Skeleton3D_ModifierCallbackModeProcess>` | :ref:`modifier_callback_mode_process<class_Skeleton3D_property_modifier_callback_mode_process>` | ``1``     |
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`float<class_float>`                                                       | :ref:`motion_scale<class_Skeleton3D_property_motion_scale>`                                     | ``1.0``   |
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                         | :ref:`show_rest_only<class_Skeleton3D_property_show_rest_only>`                                 | ``false`` |
-   +---------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                          | :ref:`animate_physical_bones<class_Skeleton3D_property_animate_physical_bones>`                 | ``true``  |
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`ModifierCallbackModeProcess <enum_Skeleton3D_ModifierCallbackModeProcess>` | :ref:`modifier_callback_mode_process<class_Skeleton3D_property_modifier_callback_mode_process>` | ``1``     |
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`float<class_float>`                                                        | :ref:`motion_scale<class_Skeleton3D_property_motion_scale>`                                     | ``1.0``   |
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                          | :ref:`show_rest_only<class_Skeleton3D_property_show_rest_only>`                                 | ``false`` |
+   +----------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -162,8 +162,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Skeleton3D_signal_bone_enabled_changed:
 
@@ -171,7 +171,7 @@ Signals
 
 **bone_enabled_changed**\ (\ bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Skeleton3D_signal_bone_enabled_changed>`
 
-Emitted when the bone at ``bone_idx`` is toggled with :ref:`set_bone_enabled()<class_Skeleton3D_method_set_bone_enabled>`. Use :ref:`is_bone_enabled()<class_Skeleton3D_method_is_bone_enabled>` to check the new value.
+Được phát ra khi bone tại ``bone_idx`` được bật hoặc tắt bằng :ref:`set_bone_enabled()<class_Skeleton3D_method_set_bone_enabled>`. Sử dụng :ref:`is_bone_enabled()<class_Skeleton3D_method_is_bone_enabled>` để kiểm tra giá trị mới.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Emitted when the bone at ``bone_idx`` is toggled with :ref:`set_bone_enabled()<c
 
 **bone_list_changed**\ (\ ) :ref:`🔗<class_Skeleton3D_signal_bone_list_changed>`
 
-Emitted when the list of bones changes, such as when calling :ref:`add_bone()<class_Skeleton3D_method_add_bone>`, :ref:`set_bone_parent()<class_Skeleton3D_method_set_bone_parent>`, :ref:`unparent_bone_and_rest()<class_Skeleton3D_method_unparent_bone_and_rest>`, or :ref:`clear_bones()<class_Skeleton3D_method_clear_bones>`.
+Được phát ra khi danh sách các bone thay đổi, chẳng hạn như khi gọi :ref:`add_bone()<class_Skeleton3D_method_add_bone>`, :ref:`set_bone_parent()<class_Skeleton3D_method_set_bone_parent>`, :ref:`unparent_bone_and_rest()<class_Skeleton3D_method_unparent_bone_and_rest>` hoặc :ref:`clear_bones()<class_Skeleton3D_method_clear_bones>`.
 
 .. rst-class:: classref-item-separator
 
@@ -195,9 +195,9 @@ Emitted when the list of bones changes, such as when calling :ref:`add_bone()<cl
 
 **pose_updated**\ (\ ) :ref:`🔗<class_Skeleton3D_signal_pose_updated>`
 
-Emitted when the pose is updated.
+Được phát ra khi pose được cập nhật.
 
-\ **Note:** During the update process, this signal is not fired, so modification by :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` is not detected.
+\ **Lưu ý:** Trong quá trình cập nhật, tín hiệu này không được phát ra, vì vậy việc sửa đổi bằng :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` sẽ không được phát hiện.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Emitted when the pose is updated.
 
 **rest_updated**\ (\ ) :ref:`🔗<class_Skeleton3D_signal_rest_updated>`
 
-Emitted when the rest is updated.
+Được phát ra khi rest được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ Emitted when the rest is updated.
 
 **show_rest_only_changed**\ (\ ) :ref:`🔗<class_Skeleton3D_signal_show_rest_only_changed>`
 
-Emitted when the value of :ref:`show_rest_only<class_Skeleton3D_property_show_rest_only>` changes.
+Được phát ra khi giá trị của :ref:`show_rest_only<class_Skeleton3D_property_show_rest_only>` thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -233,9 +233,9 @@ Emitted when the value of :ref:`show_rest_only<class_Skeleton3D_property_show_re
 
 **skeleton_updated**\ (\ ) :ref:`🔗<class_Skeleton3D_signal_skeleton_updated>`
 
-Emitted when the final pose has been calculated will be applied to the skin in the update process.
+Được phát ra khi pose cuối cùng đã được tính toán và sẽ được áp dụng cho skin trong quá trình cập nhật.
 
-This means that all :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` processing is complete. In order to detect the completion of the processing of each :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`, use :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
+Điều này có nghĩa là mọi quá trình xử lý :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` đã hoàn tất. Để phát hiện thời điểm xử lý từng :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` hoàn tất, hãy sử dụng :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
 
 .. rst-class:: classref-section-separator
 
@@ -243,14 +243,14 @@ This means that all :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` processi
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Skeleton3D_ModifierCallbackModeProcess:
 
 .. rst-class:: classref-enumeration
 
-enum **ModifierCallbackModeProcess**: :ref:`🔗<enum_Skeleton3D_ModifierCallbackModeProcess>`
+enum **ModifierCallbackModeProcess**: :ref:`🔗 <enum_Skeleton3D_ModifierCallbackModeProcess>`
 
 .. _class_Skeleton3D_constant_MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS:
 
@@ -258,7 +258,7 @@ enum **ModifierCallbackModeProcess**: :ref:`🔗<enum_Skeleton3D_ModifierCallbac
 
 :ref:`ModifierCallbackModeProcess<enum_Skeleton3D_ModifierCallbackModeProcess>` **MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS** = ``0``
 
-Set a flag to process modification during physics frames (see :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
+Đặt cờ để xử lý việc sửa đổi trong các frame vật lý (xem :ref:`Node.NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`).
 
 .. _class_Skeleton3D_constant_MODIFIER_CALLBACK_MODE_PROCESS_IDLE:
 
@@ -266,7 +266,7 @@ Set a flag to process modification during physics frames (see :ref:`Node.NOTIFIC
 
 :ref:`ModifierCallbackModeProcess<enum_Skeleton3D_ModifierCallbackModeProcess>` **MODIFIER_CALLBACK_MODE_PROCESS_IDLE** = ``1``
 
-Set a flag to process modification during process frames (see :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
+Đặt cờ để xử lý việc sửa đổi trong các frame xử lý (xem :ref:`Node.NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`).
 
 .. _class_Skeleton3D_constant_MODIFIER_CALLBACK_MODE_PROCESS_MANUAL:
 
@@ -274,7 +274,7 @@ Set a flag to process modification during process frames (see :ref:`Node.NOTIFIC
 
 :ref:`ModifierCallbackModeProcess<enum_Skeleton3D_ModifierCallbackModeProcess>` **MODIFIER_CALLBACK_MODE_PROCESS_MANUAL** = ``2``
 
-Do not process modification. Use :ref:`advance()<class_Skeleton3D_method_advance>` to process the modification manually.
+Không xử lý việc sửa đổi. Sử dụng :ref:`advance()<class_Skeleton3D_method_advance>` để xử lý việc sửa đổi theo cách thủ công.
 
 .. rst-class:: classref-section-separator
 
@@ -282,8 +282,8 @@ Do not process modification. Use :ref:`advance()<class_Skeleton3D_method_advance
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Các hằng số
+-----------
 
 .. _class_Skeleton3D_constant_NOTIFICATION_UPDATE_SKELETON:
 
@@ -291,7 +291,7 @@ Constants
 
 **NOTIFICATION_UPDATE_SKELETON** = ``50`` :ref:`🔗<class_Skeleton3D_constant_NOTIFICATION_UPDATE_SKELETON>`
 
-Notification received when this skeleton's pose needs to be updated. In that case, this is called only once per frame in a deferred process.
+Thông báo được nhận khi pose của skeleton này cần được cập nhật. Trong trường hợp đó, thông báo này chỉ được gọi một lần mỗi frame trong một deferred process.
 
 .. rst-class:: classref-section-separator
 
@@ -299,8 +299,8 @@ Notification received when this skeleton's pose needs to be updated. In that cas
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Skeleton3D_property_animate_physical_bones:
 
@@ -313,11 +313,11 @@ Property Descriptions
 - |void| **set_animate_physical_bones**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_animate_physical_bones**\ (\ )
 
-**Deprecated:** This property may be changed or removed in future versions.
+**Đã lỗi thời:** Thuộc tính này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-If you follow the recommended workflow and explicitly have :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` as a child of **Skeleton3D**, you can control whether it is affected by raycasting without running :ref:`physical_bones_start_simulation()<class_Skeleton3D_method_physical_bones_start_simulation>`, by its :ref:`SkeletonModifier3D.active<class_SkeletonModifier3D_property_active>`.
+Nếu bạn làm theo quy trình được khuyến nghị và đặt rõ ràng :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` làm phần tử con của **Skeleton3D**, bạn có thể kiểm soát việc nó có bị ảnh hưởng bởi raycasting hay không mà không cần chạy :ref:`physical_bones_start_simulation()<class_Skeleton3D_method_physical_bones_start_simulation>`, thông qua :ref:`SkeletonModifier3D.active<class_SkeletonModifier3D_property_active>` của nó.
 
-However, for old (deprecated) configurations, **Skeleton3D** has an internal virtual :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` for compatibility. This property controls the internal virtual :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>`'s :ref:`SkeletonModifier3D.active<class_SkeletonModifier3D_property_active>`.
+Tuy nhiên, đối với các cấu hình cũ (không còn được khuyến nghị), **Skeleton3D** có một :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` ảo nội bộ để đảm bảo khả năng tương thích. Thuộc tính này kiểm soát :ref:`SkeletonModifier3D.active<class_SkeletonModifier3D_property_active>` của :ref:`PhysicalBoneSimulator3D<class_PhysicalBoneSimulator3D>` ảo nội bộ.
 
 .. rst-class:: classref-item-separator
 
@@ -334,7 +334,7 @@ However, for old (deprecated) configurations, **Skeleton3D** has an internal vir
 - |void| **set_modifier_callback_mode_process**\ (\ value\: :ref:`ModifierCallbackModeProcess<enum_Skeleton3D_ModifierCallbackModeProcess>`\ )
 - :ref:`ModifierCallbackModeProcess<enum_Skeleton3D_ModifierCallbackModeProcess>` **get_modifier_callback_mode_process**\ (\ )
 
-Sets the processing timing for the Modifier.
+Thiết lập thời điểm xử lý cho Modifier.
 
 .. rst-class:: classref-item-separator
 
@@ -351,9 +351,9 @@ Sets the processing timing for the Modifier.
 - |void| **set_motion_scale**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_motion_scale**\ (\ )
 
-Multiplies the 3D position track animation.
+Nhân animation của track vị trí 3D.
 
-\ **Note:** Unless this value is ``1.0``, the key value in animation will not match the actual position value.
+\ **Lưu ý:** Trừ khi giá trị này là ``1.0``, giá trị key trong animation sẽ không khớp với giá trị vị trí thực tế.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +370,7 @@ Multiplies the 3D position track animation.
 - |void| **set_show_rest_only**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_show_rest_only**\ (\ )
 
-If ``true``, forces the bones in their default rest pose, regardless of their values. In the editor, this also prevents the bones from being edited.
+Nếu là ``true``, buộc các bone giữ pose rest mặc định, bất kể giá trị của chúng. Trong editor, điều này cũng ngăn không cho chỉnh sửa các bone.
 
 .. rst-class:: classref-section-separator
 
@@ -378,8 +378,8 @@ If ``true``, forces the bones in their default rest pose, regardless of their va
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Skeleton3D_method_add_bone:
 
@@ -387,9 +387,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **add_bone**\ (\ name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Skeleton3D_method_add_bone>`
 
-Adds a new bone with the given name. Returns the new bone's index, or ``-1`` if this method fails.
+Thêm một bone mới với tên đã cho. Trả về chỉ mục của bone mới hoặc ``-1`` nếu phương thức này không thành công.
 
-\ **Note:** Bone names should be unique, non empty, and cannot include the ``:`` and ``/`` characters.
+\ **Lưu ý:** Tên bone phải là duy nhất, không được để trống và không thể chứa các ký tự ``:`` và ``/``.
 
 .. rst-class:: classref-item-separator
 
@@ -401,9 +401,9 @@ Adds a new bone with the given name. Returns the new bone's index, or ``-1`` if 
 
 |void| **advance**\ (\ delta\: :ref:`float<class_float>`\ ) :ref:`🔗<class_Skeleton3D_method_advance>`
 
-Manually advance the child :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`\ s by the specified time (in seconds).
+Tăng tiến thủ công các :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`\ s con theo khoảng thời gian được chỉ định (tính bằng giây).
 
-\ **Note:** The ``delta`` is temporarily accumulated in the **Skeleton3D**, and the deferred process uses the accumulated value to process the modification.
+\ **Lưu ý:** ``delta`` được tạm thời tích lũy trong **Skeleton3D**, và deferred process sử dụng giá trị đã tích lũy để xử lý việc sửa đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -415,7 +415,7 @@ Manually advance the child :ref:`SkeletonModifier3D<class_SkeletonModifier3D>`\ 
 
 |void| **clear_bones**\ (\ ) :ref:`🔗<class_Skeleton3D_method_clear_bones>`
 
-Clear all the bones in this skeleton.
+Xóa tất cả bone trong skeleton này.
 
 .. rst-class:: classref-item-separator
 
@@ -427,9 +427,9 @@ Clear all the bones in this skeleton.
 
 |void| **clear_bones_global_pose_override**\ (\ ) :ref:`🔗<class_Skeleton3D_method_clear_bones_global_pose_override>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Removes the global pose override on all bones in the skeleton.
+Xóa ghi đè tư thế toàn cục trên tất cả xương trong skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -455,7 +455,7 @@ Removes the global pose override on all bones in the skeleton.
 
 :ref:`int<class_int>` **find_bone**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_find_bone>`
 
-Returns the bone index that matches ``name`` as its name. Returns ``-1`` if no bone with this name exists.
+Trả về chỉ mục xương có tên khớp với ``name``. Trả về ``-1`` nếu không tồn tại xương có tên này.
 
 .. rst-class:: classref-item-separator
 
@@ -467,9 +467,9 @@ Returns the bone index that matches ``name`` as its name. Returns ``-1`` if no b
 
 |void| **force_update_all_bone_transforms**\ (\ ) :ref:`🔗<class_Skeleton3D_method_force_update_all_bone_transforms>`
 
-**Deprecated:** This method should only be called internally.
+**Đã lỗi thời:** Chỉ nên gọi phương thức này từ bên trong.
 
-Force updates the bone transforms/poses for all bones in the skeleton.
+Buộc cập nhật các phép biến đổi/tư thế xương cho tất cả xương trong skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -481,7 +481,7 @@ Force updates the bone transforms/poses for all bones in the skeleton.
 
 |void| **force_update_bone_child_transform**\ (\ bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Skeleton3D_method_force_update_bone_child_transform>`
 
-Force updates the bone transform for the bone at ``bone_idx`` and all of its children.
+Buộc cập nhật phép biến đổi xương cho xương tại ``bone_idx`` và tất cả các xương con của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -493,7 +493,7 @@ Force updates the bone transform for the bone at ``bone_idx`` and all of its chi
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_bone_children**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_children>`
 
-Returns an array containing the bone indexes of all the child node of the passed in bone, ``bone_idx``.
+Trả về một mảng chứa các chỉ mục xương của tất cả node con của xương được truyền vào, ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -505,7 +505,7 @@ Returns an array containing the bone indexes of all the child node of the passed
 
 :ref:`int<class_int>` **get_bone_count**\ (\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_count>`
 
-Returns the number of bones in the skeleton.
+Trả về số lượng xương trong skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -517,9 +517,9 @@ Returns the number of bones in the skeleton.
 
 :ref:`Transform3D<class_Transform3D>` **get_bone_global_pose**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_global_pose>`
 
-Returns the overall transform of the specified bone, with respect to the skeleton. Being relative to the skeleton frame, this is not the actual "global" transform of the bone.
+Trả về phép biến đổi tổng thể của xương được chỉ định, theo hệ quy chiếu của skeleton. Vì tương đối so với frame của skeleton, đây không phải là phép biến đổi "toàn cục" thực tế của xương.
 
-\ **Note:** This is the global pose you set to the skeleton in the process, the final global pose can get overridden by modifiers in the deferred process, if you want to access the final global pose, use :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
+\ **Lưu ý:** Đây là tư thế toàn cục bạn đặt cho skeleton trong process, tư thế toàn cục cuối cùng có thể bị các modifier ghi đè trong deferred process; nếu muốn truy cập tư thế toàn cục cuối cùng, hãy sử dụng :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -531,9 +531,9 @@ Returns the overall transform of the specified bone, with respect to the skeleto
 
 :ref:`Transform3D<class_Transform3D>` **get_bone_global_pose_no_override**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_global_pose_no_override>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Returns the overall transform of the specified bone, with respect to the skeleton, but without any global pose overrides. Being relative to the skeleton frame, this is not the actual "global" transform of the bone.
+Trả về phép biến đổi tổng thể của xương được chỉ định, theo hệ quy chiếu của skeleton nhưng không có bất kỳ ghi đè tư thế toàn cục nào. Vì tương đối so với frame của skeleton, đây không phải là phép biến đổi "toàn cục" thực tế của xương.
 
 .. rst-class:: classref-item-separator
 
@@ -545,9 +545,9 @@ Returns the overall transform of the specified bone, with respect to the skeleto
 
 :ref:`Transform3D<class_Transform3D>` **get_bone_global_pose_override**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_global_pose_override>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Returns the global pose override transform for ``bone_idx``.
+Trả về phép biến đổi ghi đè tư thế toàn cục cho ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -559,7 +559,7 @@ Returns the global pose override transform for ``bone_idx``.
 
 :ref:`Transform3D<class_Transform3D>` **get_bone_global_rest**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_global_rest>`
 
-Returns the global rest transform for ``bone_idx``.
+Trả về phép biến đổi nghỉ toàn cục cho ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -571,7 +571,7 @@ Returns the global rest transform for ``bone_idx``.
 
 :ref:`Variant<class_Variant>` **get_bone_meta**\ (\ bone_idx\: :ref:`int<class_int>`, key\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_meta>`
 
-Returns the metadata with the given ``key`` for the bone at index ``bone_idx``.
+Trả về metadata có ``key`` đã cho cho xương tại chỉ mục ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -583,7 +583,7 @@ Returns the metadata with the given ``key`` for the bone at index ``bone_idx``.
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_bone_meta_list**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_meta_list>`
 
-Returns the list of all metadata keys for the bone at index ``bone_idx``.
+Trả về danh sách tất cả các khóa metadata của xương tại chỉ mục ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -595,7 +595,7 @@ Returns the list of all metadata keys for the bone at index ``bone_idx``.
 
 :ref:`String<class_String>` **get_bone_name**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_name>`
 
-Returns the name of the bone at index ``bone_idx``.
+Trả về tên của xương tại chỉ mục ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -607,9 +607,9 @@ Returns the name of the bone at index ``bone_idx``.
 
 :ref:`int<class_int>` **get_bone_parent**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_parent>`
 
-Returns the bone index which is the parent of the bone at ``bone_idx``. If -1, then bone has no parent.
+Trả về chỉ mục xương là cha của xương tại ``bone_idx``. Nếu là -1, xương không có xương cha.
 
-\ **Note:** The parent bone returned will always be less than ``bone_idx``.
+\ **Lưu ý:** Xương cha được trả về sẽ luôn có giá trị nhỏ hơn ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -621,9 +621,9 @@ Returns the bone index which is the parent of the bone at ``bone_idx``. If -1, t
 
 :ref:`Transform3D<class_Transform3D>` **get_bone_pose**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_pose>`
 
-Returns the pose transform of the specified bone.
+Trả về phép biến đổi tư thế của xương được chỉ định.
 
-\ **Note:** This is the pose you set to the skeleton in the process, the final pose can get overridden by modifiers in the deferred process, if you want to access the final pose, use :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
+\ **Lưu ý:** Đây là tư thế bạn đặt cho skeleton trong process, tư thế cuối cùng có thể bị các modifier ghi đè trong deferred process; nếu muốn truy cập tư thế cuối cùng, hãy sử dụng :ref:`SkeletonModifier3D.modification_processed<class_SkeletonModifier3D_signal_modification_processed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -635,7 +635,7 @@ Returns the pose transform of the specified bone.
 
 :ref:`Vector3<class_Vector3>` **get_bone_pose_position**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_pose_position>`
 
-Returns the pose position of the bone at ``bone_idx``. The returned :ref:`Vector3<class_Vector3>` is in the local coordinate space of the **Skeleton3D** node.
+Trả về vị trí tư thế của xương tại ``bone_idx``. :ref:`Vector3<class_Vector3>` được trả về nằm trong không gian tọa độ cục bộ của node **Skeleton3D**.
 
 .. rst-class:: classref-item-separator
 
@@ -647,7 +647,7 @@ Returns the pose position of the bone at ``bone_idx``. The returned :ref:`Vector
 
 :ref:`Quaternion<class_Quaternion>` **get_bone_pose_rotation**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_pose_rotation>`
 
-Returns the pose rotation of the bone at ``bone_idx``. The returned :ref:`Quaternion<class_Quaternion>` is local to the bone with respect to the rotation of any parent bones.
+Trả về góc quay tư thế của xương tại ``bone_idx``. :ref:`Quaternion<class_Quaternion>` được trả về là cục bộ so với xương, xét theo góc quay của mọi xương cha.
 
 .. rst-class:: classref-item-separator
 
@@ -659,7 +659,7 @@ Returns the pose rotation of the bone at ``bone_idx``. The returned :ref:`Quater
 
 :ref:`Vector3<class_Vector3>` **get_bone_pose_scale**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_pose_scale>`
 
-Returns the pose scale of the bone at ``bone_idx``.
+Trả về tỷ lệ tư thế của xương tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -671,7 +671,7 @@ Returns the pose scale of the bone at ``bone_idx``.
 
 :ref:`Transform3D<class_Transform3D>` **get_bone_rest**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_bone_rest>`
 
-Returns the rest transform for a bone ``bone_idx``.
+Trả về phép biến đổi nghỉ cho xương ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -683,9 +683,9 @@ Returns the rest transform for a bone ``bone_idx``.
 
 :ref:`StringName<class_StringName>` **get_concatenated_bone_names**\ (\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_concatenated_bone_names>`
 
-Returns all bone names concatenated with commas (``,``) as a single :ref:`StringName<class_StringName>`.
+Trả về tất cả tên xương được nối bằng dấu phẩy (``,``) dưới dạng một :ref:`StringName<class_StringName>` duy nhất.
 
-It is useful to set it as a hint for the enum property.
+Điều này hữu ích khi đặt nó làm gợi ý cho thuộc tính enum.
 
 .. rst-class:: classref-item-separator
 
@@ -697,7 +697,7 @@ It is useful to set it as a hint for the enum property.
 
 :ref:`PackedInt32Array<class_PackedInt32Array>` **get_parentless_bones**\ (\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_parentless_bones>`
 
-Returns an array with all of the bones that are parentless. Another way to look at this is that it returns the indexes of all the bones that are not dependent or modified by other bones in the Skeleton.
+Trả về một mảng chứa tất cả các xương không có xương cha. Có thể hiểu theo cách khác là trả về chỉ mục của tất cả các xương không phụ thuộc vào hoặc không bị sửa đổi bởi các xương khác trong Skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -709,11 +709,11 @@ Returns an array with all of the bones that are parentless. Another way to look 
 
 :ref:`int<class_int>` **get_version**\ (\ ) |const| :ref:`🔗<class_Skeleton3D_method_get_version>`
 
-Returns the number of times the bone hierarchy has changed within this skeleton, including renames.
+Trả về số lần hệ thống phân cấp xương đã thay đổi trong skeleton này, bao gồm cả việc đổi tên.
 
-The Skeleton version is not serialized: only use within a single instance of Skeleton3D.
+Phiên bản Skeleton không được tuần tự hóa: chỉ sử dụng trong một instance duy nhất của Skeleton3D.
 
-Use for invalidating caches in IK solvers and other nodes which process bones.
+Dùng để vô hiệu hóa cache trong các IK solver và những node khác xử lý xương.
 
 .. rst-class:: classref-item-separator
 
@@ -725,7 +725,7 @@ Use for invalidating caches in IK solvers and other nodes which process bones.
 
 :ref:`bool<class_bool>` **has_bone_meta**\ (\ bone_idx\: :ref:`int<class_int>`, key\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_has_bone_meta>`
 
-Returns ``true`` if the bone at index ``bone_idx`` has metadata with the given ``key``.
+Trả về ``true`` nếu xương tại chỉ mục ``bone_idx`` có metadata với ``key`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -737,7 +737,7 @@ Returns ``true`` if the bone at index ``bone_idx`` has metadata with the given `
 
 :ref:`bool<class_bool>` **is_bone_enabled**\ (\ bone_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Skeleton3D_method_is_bone_enabled>`
 
-Returns whether the bone pose for the bone at ``bone_idx`` is enabled.
+Trả về liệu tư thế xương của xương tại ``bone_idx`` có được bật hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -749,7 +749,7 @@ Returns whether the bone pose for the bone at ``bone_idx`` is enabled.
 
 |void| **localize_rests**\ (\ ) :ref:`🔗<class_Skeleton3D_method_localize_rests>`
 
-Returns all bones in the skeleton to their rest poses.
+Đưa tất cả xương trong skeleton về tư thế nghỉ.
 
 .. rst-class:: classref-item-separator
 
@@ -761,11 +761,11 @@ Returns all bones in the skeleton to their rest poses.
 
 |void| **physical_bones_add_collision_exception**\ (\ exception\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_Skeleton3D_method_physical_bones_add_collision_exception>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Adds a collision exception to the physical bone.
+Thêm một ngoại lệ va chạm cho xương vật lý.
 
-Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
+Hoạt động giống như node :ref:`RigidBody3D<class_RigidBody3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -777,11 +777,11 @@ Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
 
 |void| **physical_bones_remove_collision_exception**\ (\ exception\: :ref:`RID<class_RID>`\ ) :ref:`🔗<class_Skeleton3D_method_physical_bones_remove_collision_exception>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Removes a collision exception to the physical bone.
+Xóa một ngoại lệ va chạm khỏi xương vật lý.
 
-Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
+Hoạt động giống như node :ref:`RigidBody3D<class_RigidBody3D>`.
 
 .. rst-class:: classref-item-separator
 
@@ -793,11 +793,11 @@ Works just like the :ref:`RigidBody3D<class_RigidBody3D>` node.
 
 |void| **physical_bones_start_simulation**\ (\ bones\: :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] = []\ ) :ref:`🔗<class_Skeleton3D_method_physical_bones_start_simulation>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Tells the :ref:`PhysicalBone3D<class_PhysicalBone3D>` nodes in the Skeleton to start simulating and reacting to the physics world.
+Ra lệnh cho các node :ref:`PhysicalBone3D<class_PhysicalBone3D>` trong Skeleton bắt đầu mô phỏng và phản ứng với thế giới vật lý.
 
-Optionally, a list of bone names can be passed-in, allowing only the passed-in bones to be simulated.
+Tùy chọn, có thể truyền vào danh sách tên xương để chỉ cho phép các xương được truyền vào mô phỏng.
 
 .. rst-class:: classref-item-separator
 
@@ -809,9 +809,9 @@ Optionally, a list of bone names can be passed-in, allowing only the passed-in b
 
 |void| **physical_bones_stop_simulation**\ (\ ) :ref:`🔗<class_Skeleton3D_method_physical_bones_stop_simulation>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Tells the :ref:`PhysicalBone3D<class_PhysicalBone3D>` nodes in the Skeleton to stop simulating.
+Ra lệnh cho các node :ref:`PhysicalBone3D<class_PhysicalBone3D>` trong Skeleton dừng mô phỏng.
 
 .. rst-class:: classref-item-separator
 
@@ -823,7 +823,7 @@ Tells the :ref:`PhysicalBone3D<class_PhysicalBone3D>` nodes in the Skeleton to s
 
 :ref:`SkinReference<class_SkinReference>` **register_skin**\ (\ skin\: :ref:`Skin<class_Skin>`\ ) :ref:`🔗<class_Skeleton3D_method_register_skin>`
 
-Binds the given Skin to the Skeleton.
+Liên kết Skin đã cho với Skeleton.
 
 .. rst-class:: classref-item-separator
 
@@ -835,7 +835,7 @@ Binds the given Skin to the Skeleton.
 
 |void| **reset_bone_pose**\ (\ bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Skeleton3D_method_reset_bone_pose>`
 
-Sets the bone pose to rest for ``bone_idx``.
+Đặt tư thế xương về tư thế nghỉ cho ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -847,7 +847,7 @@ Sets the bone pose to rest for ``bone_idx``.
 
 |void| **reset_bone_poses**\ (\ ) :ref:`🔗<class_Skeleton3D_method_reset_bone_poses>`
 
-Sets all bone poses to rests.
+Đặt tất cả tư thế xương về tư thế nghỉ.
 
 .. rst-class:: classref-item-separator
 
@@ -859,7 +859,7 @@ Sets all bone poses to rests.
 
 |void| **set_bone_enabled**\ (\ bone_idx\: :ref:`int<class_int>`, enabled\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_enabled>`
 
-Disables the pose for the bone at ``bone_idx`` if ``false``, enables the bone pose if ``true``.
+Tắt tư thế của xương tại ``bone_idx`` nếu ``false``, bật tư thế xương nếu ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -871,9 +871,9 @@ Disables the pose for the bone at ``bone_idx`` if ``false``, enables the bone po
 
 |void| **set_bone_global_pose**\ (\ bone_idx\: :ref:`int<class_int>`, pose\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_global_pose>`
 
-Sets the global pose transform, ``pose``, for the bone at ``bone_idx``.
+Đặt phép biến đổi tư thế toàn cục, ``pose``, cho xương tại ``bone_idx``.
 
-\ **Note:** If other bone poses have been changed, this method executes a dirty poses recalculation and will cause performance to deteriorate. If you know that multiple global poses will be applied, consider using :ref:`set_bone_pose()<class_Skeleton3D_method_set_bone_pose>` with precalculation.
+\ **Lưu ý:** Nếu các tư thế xương khác đã được thay đổi, phương thức này sẽ thực hiện tính toán lại các tư thế bẩn và làm giảm hiệu năng. Nếu biết rằng sẽ áp dụng nhiều tư thế toàn cục, hãy cân nhắc sử dụng :ref:`set_bone_pose()<class_Skeleton3D_method_set_bone_pose>` với precalculation.
 
 .. rst-class:: classref-item-separator
 
@@ -885,13 +885,13 @@ Sets the global pose transform, ``pose``, for the bone at ``bone_idx``.
 
 |void| **set_bone_global_pose_override**\ (\ bone_idx\: :ref:`int<class_int>`, pose\: :ref:`Transform3D<class_Transform3D>`, amount\: :ref:`float<class_float>`, persistent\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_global_pose_override>`
 
-**Deprecated:** This method may be changed or removed in future versions.
+**Đã lỗi thời:** Phương thức này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-Sets the global pose transform, ``pose``, for the bone at ``bone_idx``.
+Đặt phép biến đổi tư thế toàn cục, ``pose``, cho xương tại ``bone_idx``.
 
-\ ``amount`` is the interpolation strength that will be used when applying the pose, and ``persistent`` determines if the applied pose will remain.
+\ ``amount`` là độ mạnh nội suy sẽ được sử dụng khi áp dụng pose, còn ``persistent`` xác định liệu pose đã áp dụng có được giữ lại hay không.
 
-\ **Note:** The pose transform needs to be a global pose! To convert a world transform from a :ref:`Node3D<class_Node3D>` to a global bone pose, multiply the :ref:`Transform3D.affine_inverse()<class_Transform3D_method_affine_inverse>` of the node's :ref:`Node3D.global_transform<class_Node3D_property_global_transform>` by the desired world transform.
+\ **Lưu ý:** Phép biến đổi pose phải là global pose! Để chuyển đổi một phép biến đổi thế giới từ :ref:`Node3D<class_Node3D>` thành global bone pose, hãy nhân :ref:`Transform3D.affine_inverse()<class_Transform3D_method_affine_inverse>` của :ref:`Node3D.global_transform<class_Node3D_property_global_transform>` của node với phép biến đổi thế giới mong muốn.
 
 .. rst-class:: classref-item-separator
 
@@ -903,7 +903,7 @@ Sets the global pose transform, ``pose``, for the bone at ``bone_idx``.
 
 |void| **set_bone_meta**\ (\ bone_idx\: :ref:`int<class_int>`, key\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_meta>`
 
-Sets the metadata with the given ``key`` to ``value`` for the bone at index ``bone_idx``.
+Thiết lập metadata với ``key`` đã cho thành ``value`` cho bone tại chỉ mục ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -915,7 +915,7 @@ Sets the metadata with the given ``key`` to ``value`` for the bone at index ``bo
 
 |void| **set_bone_name**\ (\ bone_idx\: :ref:`int<class_int>`, name\: :ref:`String<class_String>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_name>`
 
-Sets the bone name, ``name``, for the bone at ``bone_idx``.
+Thiết lập tên bone, ``name``, cho bone tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -927,9 +927,9 @@ Sets the bone name, ``name``, for the bone at ``bone_idx``.
 
 |void| **set_bone_parent**\ (\ bone_idx\: :ref:`int<class_int>`, parent_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_parent>`
 
-Sets the bone index ``parent_idx`` as the parent of the bone at ``bone_idx``. If -1, then bone has no parent.
+Thiết lập chỉ mục bone ``parent_idx`` làm parent của bone tại ``bone_idx``. Nếu là -1, bone không có parent.
 
-\ **Note:** ``parent_idx`` must be less than ``bone_idx``.
+\ **Lưu ý:** ``parent_idx`` phải nhỏ hơn ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -941,7 +941,7 @@ Sets the bone index ``parent_idx`` as the parent of the bone at ``bone_idx``. If
 
 |void| **set_bone_pose**\ (\ bone_idx\: :ref:`int<class_int>`, pose\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_pose>`
 
-Sets the pose transform, ``pose``, for the bone at ``bone_idx``.
+Thiết lập phép biến đổi pose, ``pose``, cho bone tại ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -953,7 +953,7 @@ Sets the pose transform, ``pose``, for the bone at ``bone_idx``.
 
 |void| **set_bone_pose_position**\ (\ bone_idx\: :ref:`int<class_int>`, position\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_pose_position>`
 
-Sets the pose position of the bone at ``bone_idx`` to ``position``. ``position`` is a :ref:`Vector3<class_Vector3>` describing a position local to the **Skeleton3D** node.
+Thiết lập vị trí pose của bone tại ``bone_idx`` thành ``position``. ``position`` là một :ref:`Vector3<class_Vector3>` mô tả vị trí cục bộ so với node **Skeleton3D**.
 
 .. rst-class:: classref-item-separator
 
@@ -965,7 +965,7 @@ Sets the pose position of the bone at ``bone_idx`` to ``position``. ``position``
 
 |void| **set_bone_pose_rotation**\ (\ bone_idx\: :ref:`int<class_int>`, rotation\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_pose_rotation>`
 
-Sets the pose rotation of the bone at ``bone_idx`` to ``rotation``. ``rotation`` is a :ref:`Quaternion<class_Quaternion>` describing a rotation in the bone's local coordinate space with respect to the rotation of any parent bones.
+Thiết lập góc xoay pose của bone tại ``bone_idx`` thành ``rotation``. ``rotation`` là một :ref:`Quaternion<class_Quaternion>` mô tả góc xoay trong không gian tọa độ cục bộ của bone, xét theo góc xoay của mọi bone parent.
 
 .. rst-class:: classref-item-separator
 
@@ -977,7 +977,7 @@ Sets the pose rotation of the bone at ``bone_idx`` to ``rotation``. ``rotation``
 
 |void| **set_bone_pose_scale**\ (\ bone_idx\: :ref:`int<class_int>`, scale\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_pose_scale>`
 
-Sets the pose scale of the bone at ``bone_idx`` to ``scale``.
+Thiết lập tỷ lệ pose của bone tại ``bone_idx`` thành ``scale``.
 
 .. rst-class:: classref-item-separator
 
@@ -989,7 +989,7 @@ Sets the pose scale of the bone at ``bone_idx`` to ``scale``.
 
 |void| **set_bone_rest**\ (\ bone_idx\: :ref:`int<class_int>`, rest\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_Skeleton3D_method_set_bone_rest>`
 
-Sets the rest transform for bone ``bone_idx``.
+Thiết lập phép biến đổi rest cho bone ``bone_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -1001,14 +1001,14 @@ Sets the rest transform for bone ``bone_idx``.
 
 |void| **unparent_bone_and_rest**\ (\ bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Skeleton3D_method_unparent_bone_and_rest>`
 
-Unparents the bone at ``bone_idx`` and sets its rest position to that of its parent prior to being reset.
+Hủy parent của bone tại ``bone_idx`` và thiết lập vị trí rest của nó thành vị trí rest của parent trước khi được đặt lại.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Method này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Method này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

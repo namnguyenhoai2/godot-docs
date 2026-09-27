@@ -10,24 +10,24 @@
 GLTFObjectModelProperty
 =======================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Describes how to access a property as defined in the glTF object model.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-GLTFObjectModelProperty defines a mapping between a property in the glTF object model and a NodePath in the Godot scene tree. This can be used to animate properties in a glTF file using the ``KHR_animation_pointer`` extension, or to access them through an engine-agnostic script such as a behavior graph as defined by the ``KHR_interactivity`` extension.
-
-The glTF property is identified by JSON pointer(s) stored in :ref:`json_pointers<class_GLTFObjectModelProperty_property_json_pointers>`, while the Godot property it maps to is defined by :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>`. In most cases :ref:`json_pointers<class_GLTFObjectModelProperty_property_json_pointers>` and :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` will each only have one item, but in some cases a single glTF JSON pointer will map to multiple Godot properties, or a single Godot property will be mapped to multiple glTF JSON pointers, or it might be a many-to-many relationship.
-
-\ :ref:`Expression<class_Expression>` objects can be used to define conversions between the data, such as when glTF defines an angle in radians and Godot uses degrees. The :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>` property defines the type of data stored in the glTF file as defined by the object model, see :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` for possible values.
+Mô tả cách truy cập một thuộc tính được định nghĩa trong mô hình đối tượng glTF.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+GLTFObjectModelProperty xác định ánh xạ giữa một thuộc tính trong mô hình đối tượng glTF và một NodePath trong cây cảnh Godot. Bạn có thể sử dụng ánh xạ này để tạo animation cho các thuộc tính trong tệp glTF bằng phần mở rộng ``KHR_animation_pointer``, hoặc truy cập chúng thông qua một script độc lập với engine như behavior graph được định nghĩa bởi phần mở rộng ``KHR_interactivity``.
+
+Thuộc tính glTF được xác định bởi (các) JSON pointer được lưu trong :ref:`json_pointers<class_GLTFObjectModelProperty_property_json_pointers>`, còn thuộc tính Godot mà nó ánh xạ tới được định nghĩa bởi :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>`. Trong hầu hết trường hợp, :ref:`json_pointers<class_GLTFObjectModelProperty_property_json_pointers>` và :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` mỗi đối tượng chỉ có một mục, nhưng trong một số trường hợp, một JSON pointer glTF có thể ánh xạ tới nhiều thuộc tính Godot, hoặc một thuộc tính Godot có thể được ánh xạ tới nhiều JSON pointer glTF, hoặc có thể tồn tại mối quan hệ nhiều-nhiều.
+
+Các đối tượng \ :ref:`Expression<class_Expression>` có thể được sử dụng để xác định chuyển đổi giữa các dữ liệu, chẳng hạn như khi glTF định nghĩa một góc theo radian còn Godot sử dụng độ. Thuộc tính :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>` xác định kiểu dữ liệu được lưu trong tệp glTF theo định nghĩa của mô hình đối tượng; xem :ref:`GLTFObjectModelType <enum_GLTFObjectModelProperty_GLTFObjectModelType>` để biết các giá trị có thể có.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - `GLTF Object Model <https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/ObjectModel.adoc>`__
@@ -36,7 +36,7 @@ Tutorials
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -51,32 +51,32 @@ Properties
    +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+--------+
    | :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]                   | :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>`                             | ``[]`` |
    +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+--------+
-   | :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>`   | :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>`               | ``0``  |
+   | :ref:`GLTFObjectModelType <enum_GLTFObjectModelProperty_GLTFObjectModelType>`  | :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>`               | ``0``  |
    +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+--------+
-   | :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`                            | :ref:`variant_type<class_GLTFObjectModelProperty_property_variant_type>`                         | ``0``  |
+   | :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`                           | :ref:`variant_type<class_GLTFObjectModelProperty_property_variant_type>`                         | ``0``  |
    +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`append_node_path<class_GLTFObjectModelProperty_method_append_node_path>`\ (\ node_path\: :ref:`NodePath<class_NodePath>`\ )                                                                                                         |
-   +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`append_path_to_property<class_GLTFObjectModelProperty_method_append_path_to_property>`\ (\ node_path\: :ref:`NodePath<class_NodePath>`, prop_name\: :ref:`StringName<class_StringName>`\ )                                          |
-   +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` | :ref:`get_accessor_type<class_GLTFObjectModelProperty_method_get_accessor_type>`\ (\ ) |const|                                                                                                                                            |
-   +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`has_json_pointers<class_GLTFObjectModelProperty_method_has_json_pointers>`\ (\ ) |const|                                                                                                                                            |
-   +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                     | :ref:`has_node_paths<class_GLTFObjectModelProperty_method_has_node_paths>`\ (\ ) |const|                                                                                                                                                  |
-   +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                      | :ref:`set_types<class_GLTFObjectModelProperty_method_set_types>`\ (\ variant_type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`, obj_model_type\: :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>`\ ) |
-   +-------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`append_node_path<class_GLTFObjectModelProperty_method_append_node_path>`\ (\ node_path\: :ref:`NodePath<class_NodePath>`\ )                                                                                                           |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`append_path_to_property<class_GLTFObjectModelProperty_method_append_path_to_property>`\ (\ node_path\: :ref:`NodePath<class_NodePath>`, prop_name\: :ref:`StringName<class_StringName>`\ )                                            |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`GLTFAccessorType <enum_GLTFAccessor_GLTFAccessorType>` | :ref:`get_accessor_type<class_GLTFObjectModelProperty_method_get_accessor_type>`\ (\ ) |const|                                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_json_pointers<class_GLTFObjectModelProperty_method_has_json_pointers>`\ (\ ) |const|                                                                                                                                              |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                      | :ref:`has_node_paths<class_GLTFObjectModelProperty_method_has_node_paths>`\ (\ ) |const|                                                                                                                                                    |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                       | :ref:`set_types<class_GLTFObjectModelProperty_method_set_types>`\ (\ variant_type\: :ref:`Variant.Type <enum_@GlobalScope_Variant.Type>`, obj_model_type\: :ref:`GLTFObjectModelType <enum_GLTFObjectModelProperty_GLTFObjectModelType>`\ ) |
+   +--------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -84,14 +84,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_GLTFObjectModelProperty_GLTFObjectModelType:
 
 .. rst-class:: classref-enumeration
 
-enum **GLTFObjectModelType**: :ref:`🔗<enum_GLTFObjectModelProperty_GLTFObjectModelType>`
+enum **GLTFObjectModelType**: :ref:`🔗 <enum_GLTFObjectModelProperty_GLTFObjectModelType>`
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_UNKNOWN:
 
@@ -99,7 +99,7 @@ enum **GLTFObjectModelType**: :ref:`🔗<enum_GLTFObjectModelProperty_GLTFObject
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_UNKNOWN** = ``0``
 
-Unknown or not set object model type. If the object model type is set to this value, the real type still needs to be determined.
+Kiểu mô hình đối tượng chưa xác định hoặc chưa được thiết lập. Nếu kiểu mô hình đối tượng được đặt thành giá trị này, vẫn cần xác định kiểu thực tế.
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_BOOL:
 
@@ -107,7 +107,7 @@ Unknown or not set object model type. If the object model type is set to this va
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_BOOL** = ``1``
 
-Object model type "bool". Represented in the glTF JSON as a boolean, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "SCALAR". When encoded in an accessor, a value of ``0`` is ``false``, and any other value is ``true``.
+Kiểu mô hình đối tượng "bool". Được biểu diễn trong JSON glTF dưới dạng boolean và được mã hóa trong một :ref:`GLTFAccessor<class_GLTFAccessor>` dưới dạng "SCALAR". Khi được mã hóa trong một accessor, một giá trị ``0`` là ``false``, còn mọi giá trị khác là ``true``.
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT:
 
@@ -115,7 +115,7 @@ Object model type "bool". Represented in the glTF JSON as a boolean, and encoded
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT** = ``2``
 
-Object model type "float". Represented in the glTF JSON as a number, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "SCALAR".
+Kiểu trong mô hình đối tượng "float". Được biểu diễn trong glTF JSON dưới dạng một số và được mã hóa trong :ref:`GLTFAccessor<class_GLTFAccessor>` thành "SCALAR".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT_ARRAY:
 
@@ -123,7 +123,7 @@ Object model type "float". Represented in the glTF JSON as a number, and encoded
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT_ARRAY** = ``3``
 
-Object model type "float\[\]". Represented in the glTF JSON as an array of numbers, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "SCALAR".
+Kiểu trong mô hình đối tượng "float\[\]". Được biểu diễn trong glTF JSON dưới dạng một mảng các số và được mã hóa trong :ref:`GLTFAccessor<class_GLTFAccessor>` thành "SCALAR".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT2:
 
@@ -131,7 +131,7 @@ Object model type "float\[\]". Represented in the glTF JSON as an array of numbe
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT2** = ``4``
 
-Object model type "float2". Represented in the glTF JSON as an array of two numbers, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "VEC2".
+Kiểu trong mô hình đối tượng "float2". Được biểu diễn trong glTF JSON dưới dạng một mảng gồm hai số và được mã hóa trong :ref:`GLTFAccessor<class_GLTFAccessor>` thành "VEC2".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT3:
 
@@ -139,7 +139,7 @@ Object model type "float2". Represented in the glTF JSON as an array of two numb
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT3** = ``5``
 
-Object model type "float3". Represented in the glTF JSON as an array of three numbers, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "VEC3".
+Kiểu trong mô hình đối tượng "float3". Được biểu diễn trong glTF JSON dưới dạng một mảng gồm ba số và được mã hóa trong :ref:`GLTFAccessor<class_GLTFAccessor>` thành "VEC3".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT4:
 
@@ -147,7 +147,7 @@ Object model type "float3". Represented in the glTF JSON as an array of three nu
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT4** = ``6``
 
-Object model type "float4". Represented in the glTF JSON as an array of four numbers, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "VEC4".
+Kiểu trong mô hình đối tượng "float4". Được biểu diễn trong glTF JSON dưới dạng một mảng gồm bốn số và được mã hóa trong :ref:`GLTFAccessor<class_GLTFAccessor>` thành "VEC4".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT2X2:
 
@@ -155,7 +155,7 @@ Object model type "float4". Represented in the glTF JSON as an array of four num
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT2X2** = ``7``
 
-Object model type "float2x2". Represented in the glTF JSON as an array of four numbers, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "MAT2".
+Kiểu trong mô hình đối tượng "float2x2". Được biểu diễn trong glTF JSON dưới dạng một mảng gồm bốn số và được mã hóa trong :ref:`GLTFAccessor<class_GLTFAccessor>` thành "MAT2".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT3X3:
 
@@ -163,7 +163,7 @@ Object model type "float2x2". Represented in the glTF JSON as an array of four n
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT3X3** = ``8``
 
-Object model type "float3x3". Represented in the glTF JSON as an array of nine numbers, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "MAT3".
+Kiểu trong mô hình đối tượng "float3x3". Được biểu diễn trong glTF JSON dưới dạng một mảng gồm chín số và được mã hóa trong :ref:`GLTFAccessor<class_GLTFAccessor>` thành "MAT3".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_FLOAT4X4:
 
@@ -171,7 +171,7 @@ Object model type "float3x3". Represented in the glTF JSON as an array of nine n
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_FLOAT4X4** = ``9``
 
-Object model type "float4x4". Represented in the glTF JSON as an array of sixteen numbers, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "MAT4".
+Kiểu dữ liệu trong mô hình đối tượng "float4x4". Được biểu diễn trong JSON của glTF dưới dạng một mảng gồm mười sáu số và được mã hóa trong một :ref:`GLTFAccessor<class_GLTFAccessor>` dưới dạng "MAT4".
 
 .. _class_GLTFObjectModelProperty_constant_GLTF_OBJECT_MODEL_TYPE_INT:
 
@@ -179,7 +179,7 @@ Object model type "float4x4". Represented in the glTF JSON as an array of sixtee
 
 :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **GLTF_OBJECT_MODEL_TYPE_INT** = ``10``
 
-Object model type "int". Represented in the glTF JSON as a number, and encoded in a :ref:`GLTFAccessor<class_GLTFAccessor>` as "SCALAR". The range of values is limited to signed integers. For ``KHR_interactivity``, only 32-bit integers are supported.
+Kiểu dữ liệu trong mô hình đối tượng "int". Được biểu diễn trong JSON của glTF dưới dạng một số và được mã hóa trong một :ref:`GLTFAccessor<class_GLTFAccessor>` dưới dạng "SCALAR". Phạm vi giá trị bị giới hạn ở các số nguyên có dấu. Đối với ``KHR_interactivity``, chỉ hỗ trợ số nguyên 32 bit.
 
 .. rst-class:: classref-section-separator
 
@@ -187,21 +187,21 @@ Object model type "int". Represented in the glTF JSON as a number, and encoded i
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFObjectModelProperty_property_gltf_to_godot_expression:
 
 .. rst-class:: classref-property
 
-:ref:`Expression<class_Expression>` **gltf_to_godot_expression** :ref:`🔗<class_GLTFObjectModelProperty_property_gltf_to_godot_expression>`
+:ref:`Expression<class_Expression>` **gltf_to_godot_expression** :ref:`🔗 <class_GLTFObjectModelProperty_property_gltf_to_godot_expression>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_gltf_to_godot_expression**\ (\ value\: :ref:`Expression<class_Expression>`\ )
 - :ref:`Expression<class_Expression>` **get_gltf_to_godot_expression**\ (\ )
 
-If set, this :ref:`Expression<class_Expression>` will be used to convert the property value from the glTF object model to the value expected by the Godot property. This is useful when the glTF object model uses a different unit system, or when the data needs to be transformed in some way. If ``null``, the value will be copied as-is.
+Nếu được thiết lập, :ref:`Expression<class_Expression>` này sẽ được dùng để chuyển đổi giá trị thuộc tính từ mô hình đối tượng glTF sang giá trị mà thuộc tính Godot yêu cầu. Điều này hữu ích khi mô hình đối tượng glTF sử dụng một hệ đơn vị khác hoặc khi dữ liệu cần được biến đổi theo một cách nào đó. Nếu ``null``, giá trị sẽ được sao chép nguyên trạng.
 
 .. rst-class:: classref-item-separator
 
@@ -211,14 +211,14 @@ If set, this :ref:`Expression<class_Expression>` will be used to convert the pro
 
 .. rst-class:: classref-property
 
-:ref:`Expression<class_Expression>` **godot_to_gltf_expression** :ref:`🔗<class_GLTFObjectModelProperty_property_godot_to_gltf_expression>`
+:ref:`Expression<class_Expression>` **godot_to_gltf_expression** :ref:`🔗 <class_GLTFObjectModelProperty_property_godot_to_gltf_expression>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_godot_to_gltf_expression**\ (\ value\: :ref:`Expression<class_Expression>`\ )
 - :ref:`Expression<class_Expression>` **get_godot_to_gltf_expression**\ (\ )
 
-If set, this :ref:`Expression<class_Expression>` will be used to convert the property value from the Godot property to the value expected by the glTF object model. This is useful when the glTF object model uses a different unit system, or when the data needs to be transformed in some way. If ``null``, the value will be copied as-is.
+Nếu được thiết lập, :ref:`Expression<class_Expression>` này sẽ được dùng để chuyển đổi giá trị thuộc tính từ thuộc tính Godot sang giá trị mà mô hình đối tượng glTF yêu cầu. Điều này hữu ích khi mô hình đối tượng glTF sử dụng một hệ đơn vị khác hoặc khi dữ liệu cần được biến đổi theo một cách nào đó. Nếu ``null``, giá trị sẽ được sao chép nguyên trạng.
 
 .. rst-class:: classref-item-separator
 
@@ -235,7 +235,7 @@ If set, this :ref:`Expression<class_Expression>` will be used to convert the pro
 - |void| **set_json_pointers**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`PackedStringArray<class_PackedStringArray>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`PackedStringArray<class_PackedStringArray>`\] **get_json_pointers**\ (\ )
 
-The glTF object model JSON pointers used to identify the property in the glTF object model. In most cases, there will be only one item in this array, but specific cases may require multiple pointers. The items are themselves arrays which represent the JSON pointer split into its components.
+Các JSON pointer của mô hình đối tượng glTF được dùng để xác định thuộc tính trong mô hình đối tượng glTF. Trong hầu hết trường hợp, mảng này chỉ có một mục, nhưng một số trường hợp cụ thể có thể yêu cầu nhiều pointer. Bản thân các mục là các mảng biểu diễn JSON pointer được tách thành các thành phần.
 
 .. rst-class:: classref-item-separator
 
@@ -252,9 +252,9 @@ The glTF object model JSON pointers used to identify the property in the glTF ob
 - |void| **set_node_paths**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`NodePath<class_NodePath>`\] **get_node_paths**\ (\ )
 
-An array of :ref:`NodePath<class_NodePath>`\ s that point to a property, or multiple properties, in the Godot scene tree. On import, this will either be set by :ref:`GLTFDocument<class_GLTFDocument>`, or by a :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` class. For simple cases, use :ref:`append_path_to_property()<class_GLTFObjectModelProperty_method_append_path_to_property>` to add properties to this array.
+Một mảng các :ref:`NodePath<class_NodePath>`\ s trỏ đến một hoặc nhiều thuộc tính trong cây cảnh Godot. Khi import, mảng này sẽ được thiết lập bởi :ref:`GLTFDocument<class_GLTFDocument>` hoặc bởi một lớp :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>`. Đối với các trường hợp đơn giản, hãy dùng :ref:`append_path_to_property()<class_GLTFObjectModelProperty_method_append_path_to_property>` để thêm các thuộc tính vào mảng này.
 
-In most cases :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` will only have one item, but in some cases a single glTF JSON pointer will map to multiple Godot properties. For example, a :ref:`GLTFCamera<class_GLTFCamera>` or :ref:`GLTFLight<class_GLTFLight>` used on multiple glTF nodes will be represented by multiple Godot nodes.
+Trong hầu hết trường hợp, :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` sẽ chỉ có một mục, nhưng trong một số trường hợp, một JSON pointer glTF duy nhất sẽ ánh xạ tới nhiều thuộc tính Godot. Ví dụ: một :ref:`GLTFCamera<class_GLTFCamera>` hoặc :ref:`GLTFLight<class_GLTFLight>` được dùng trên nhiều node glTF sẽ được biểu diễn bằng nhiều node Godot.
 
 .. rst-class:: classref-item-separator
 
@@ -271,7 +271,7 @@ In most cases :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths
 - |void| **set_object_model_type**\ (\ value\: :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>`\ )
 - :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` **get_object_model_type**\ (\ )
 
-The type of data stored in the glTF file as defined by the object model. This is a superset of the available accessor types, and determines the accessor type.
+Kiểu dữ liệu được lưu trữ trong tệp glTF, như được định nghĩa bởi mô hình đối tượng. Đây là một siêu tập của các kiểu accessor hiện có và xác định kiểu accessor.
 
 .. rst-class:: classref-item-separator
 
@@ -288,7 +288,7 @@ The type of data stored in the glTF file as defined by the object model. This is
 - |void| **set_variant_type**\ (\ value\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`\ )
 - :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>` **get_variant_type**\ (\ )
 
-The type of data stored in the Godot property. This is the type of the property that the :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` point to.
+Kiểu dữ liệu được lưu trữ trong thuộc tính Godot. Đây là kiểu của thuộc tính mà :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` trỏ tới.
 
 .. rst-class:: classref-section-separator
 
@@ -296,8 +296,8 @@ The type of data stored in the Godot property. This is the type of the property 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GLTFObjectModelProperty_method_append_node_path:
 
@@ -305,7 +305,7 @@ Method Descriptions
 
 |void| **append_node_path**\ (\ node_path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_GLTFObjectModelProperty_method_append_node_path>`
 
-Appends a :ref:`NodePath<class_NodePath>` to :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>`. This can be used by :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` classes to define how a glTF object model property maps to a Godot property, or multiple Godot properties. Prefer using :ref:`append_path_to_property()<class_GLTFObjectModelProperty_method_append_path_to_property>` for simple cases. Be sure to also call :ref:`set_types()<class_GLTFObjectModelProperty_method_set_types>` once (the order does not matter).
+Thêm một :ref:`NodePath<class_NodePath>` vào :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>`. Các lớp :ref:`GLTFDocumentExtension<class_GLTFDocumentExtension>` có thể dùng cách này để xác định cách một thuộc tính trong mô hình đối tượng glTF ánh xạ tới một hoặc nhiều thuộc tính Godot. Với các trường hợp đơn giản, nên dùng :ref:`append_path_to_property()<class_GLTFObjectModelProperty_method_append_path_to_property>`. Đồng thời, hãy nhớ gọi :ref:`set_types()<class_GLTFObjectModelProperty_method_set_types>` một lần (thứ tự không quan trọng).
 
 .. rst-class:: classref-item-separator
 
@@ -317,7 +317,7 @@ Appends a :ref:`NodePath<class_NodePath>` to :ref:`node_paths<class_GLTFObjectMo
 
 |void| **append_path_to_property**\ (\ node_path\: :ref:`NodePath<class_NodePath>`, prop_name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_GLTFObjectModelProperty_method_append_path_to_property>`
 
-High-level wrapper over :ref:`append_node_path()<class_GLTFObjectModelProperty_method_append_node_path>` that handles the most common cases. It constructs a new :ref:`NodePath<class_NodePath>` using ``node_path`` as a base and appends ``prop_name`` to the subpath. Be sure to also call :ref:`set_types()<class_GLTFObjectModelProperty_method_set_types>` once (the order does not matter).
+Wrapper cấp cao trên :ref:`append_node_path()<class_GLTFObjectModelProperty_method_append_node_path>` xử lý các trường hợp phổ biến nhất. Wrapper này tạo một :ref:`NodePath<class_NodePath>` mới bằng cách sử dụng ``node_path`` làm cơ sở và nối ``prop_name`` vào subpath. Hãy nhớ gọi :ref:`set_types()<class_GLTFObjectModelProperty_method_set_types>` một lần nữa (thứ tự không quan trọng).
 
 .. rst-class:: classref-item-separator
 
@@ -329,7 +329,7 @@ High-level wrapper over :ref:`append_node_path()<class_GLTFObjectModelProperty_m
 
 :ref:`GLTFAccessorType<enum_GLTFAccessor_GLTFAccessorType>` **get_accessor_type**\ (\ ) |const| :ref:`🔗<class_GLTFObjectModelProperty_method_get_accessor_type>`
 
-The GLTF accessor type associated with this property's :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>`. See :ref:`GLTFAccessor.accessor_type<class_GLTFAccessor_property_accessor_type>` for possible values, and see :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>` for how the object model type maps to accessor types.
+Kiểu accessor GLTF liên kết với :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>` của property này. Xem :ref:`GLTFAccessor.accessor_type<class_GLTFAccessor_property_accessor_type>` để biết các giá trị có thể có, và xem :ref:`GLTFObjectModelType <enum_GLTFObjectModelProperty_GLTFObjectModelType>` để biết kiểu object model ánh xạ như thế nào với các kiểu accessor.
 
 .. rst-class:: classref-item-separator
 
@@ -341,7 +341,7 @@ The GLTF accessor type associated with this property's :ref:`object_model_type<c
 
 :ref:`bool<class_bool>` **has_json_pointers**\ (\ ) |const| :ref:`🔗<class_GLTFObjectModelProperty_method_has_json_pointers>`
 
-Returns ``true`` if :ref:`json_pointers<class_GLTFObjectModelProperty_property_json_pointers>` is not empty. This is used during export to determine if a **GLTFObjectModelProperty** can handle converting a Godot property to a glTF object model property.
+Trả về ``true`` nếu :ref:`json_pointers<class_GLTFObjectModelProperty_property_json_pointers>` không rỗng. Điều này được sử dụng trong quá trình export để xác định xem một **GLTFObjectModelProperty** có thể xử lý việc chuyển đổi một property của Godot thành property của glTF object model hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ Returns ``true`` if :ref:`json_pointers<class_GLTFObjectModelProperty_property_j
 
 :ref:`bool<class_bool>` **has_node_paths**\ (\ ) |const| :ref:`🔗<class_GLTFObjectModelProperty_method_has_node_paths>`
 
-Returns ``true`` if :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` is not empty. This is used during import to determine if a **GLTFObjectModelProperty** can handle converting a glTF object model property to a Godot property.
+Trả về ``true`` nếu :ref:`node_paths<class_GLTFObjectModelProperty_property_node_paths>` không rỗng. Điều này được sử dụng trong quá trình import để xác định xem một **GLTFObjectModelProperty** có thể xử lý việc chuyển đổi một property của glTF object model thành property của Godot hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -365,14 +365,14 @@ Returns ``true`` if :ref:`node_paths<class_GLTFObjectModelProperty_property_node
 
 |void| **set_types**\ (\ variant_type\: :ref:`Variant.Type<enum_@GlobalScope_Variant.Type>`, obj_model_type\: :ref:`GLTFObjectModelType<enum_GLTFObjectModelProperty_GLTFObjectModelType>`\ ) :ref:`🔗<class_GLTFObjectModelProperty_method_set_types>`
 
-Sets the :ref:`variant_type<class_GLTFObjectModelProperty_property_variant_type>` and :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>` properties. This is a convenience method to set both properties at once, since they are almost always known at the same time. This method should be called once. Calling it again with the same values will have no effect.
+Thiết lập các property :ref:`variant_type<class_GLTFObjectModelProperty_property_variant_type>` và :ref:`object_model_type<class_GLTFObjectModelProperty_property_object_model_type>`. Đây là một convenience method để thiết lập cả hai property cùng lúc, vì chúng hầu như luôn được biết đến cùng thời điểm. Phương thức này nên được gọi một lần. Gọi lại phương thức với cùng các giá trị sẽ không có tác dụng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

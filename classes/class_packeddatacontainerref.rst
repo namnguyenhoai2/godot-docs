@@ -10,16 +10,16 @@
 PackedDataContainerRef
 ======================
 
-**Deprecated:** Use :ref:`@GlobalScope.var_to_bytes()<class_@GlobalScope_method_var_to_bytes>` or :ref:`FileAccess.store_var()<class_FileAccess_method_store_var>` instead. To enable data compression, use :ref:`PackedByteArray.compress()<class_PackedByteArray_method_compress>` or :ref:`FileAccess.open_compressed()<class_FileAccess_method_open_compressed>`.
+**Đã lỗi thời:** Hãy sử dụng :ref:`@GlobalScope.var_to_bytes() <class_@GlobalScope_method_var_to_bytes>` hoặc :ref:`FileAccess.store_var()<class_FileAccess_method_store_var>` thay thế. Để bật tính năng nén dữ liệu, hãy sử dụng :ref:`PackedByteArray.compress()<class_PackedByteArray_method_compress>` hoặc :ref:`FileAccess.open_compressed()<class_FileAccess_method_open_compressed>`.
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-An internal class used by :ref:`PackedDataContainer<class_PackedDataContainer>` to pack nested arrays and dictionaries.
+Một lớp nội bộ được :ref:`PackedDataContainer<class_PackedDataContainer>` sử dụng để đóng gói các mảng và từ điển lồng nhau.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
 When packing nested containers using :ref:`PackedDataContainer<class_PackedDataContainer>`, they are recursively packed into **PackedDataContainerRef** (only applies to :ref:`Array<class_Array>` and :ref:`Dictionary<class_Dictionary>`). Their data can be retrieved the same way as from :ref:`PackedDataContainer<class_PackedDataContainer>`.
 
@@ -35,7 +35,7 @@ When packing nested containers using :ref:`PackedDataContainer<class_PackedDataC
         else:
             print(element)
 
-Prints:
+In ra:
 
 .. code:: text
 
@@ -50,8 +50,8 @@ Prints:
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -66,8 +66,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_PackedDataContainerRef_method_size:
 
@@ -75,14 +75,14 @@ Method Descriptions
 
 :ref:`int<class_int>` **size**\ (\ ) |const| :ref:`🔗<class_PackedDataContainerRef_method_size>`
 
-Returns the size of the packed container (see :ref:`Array.size()<class_Array_method_size>` and :ref:`Dictionary.size()<class_Dictionary_method_size>`).
+Trả về kích thước của container đã đóng gói (xem :ref:`Array.size()<class_Array_method_size>` và :ref:`Dictionary.size()<class_Dictionary_method_size>`).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

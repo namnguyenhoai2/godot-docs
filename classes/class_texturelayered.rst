@@ -10,64 +10,64 @@
 TextureLayered
 ==============
 
-**Inherits:** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa từ:** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CompressedTextureLayered<class_CompressedTextureLayered>`, :ref:`ImageTextureLayered<class_ImageTextureLayered>`, :ref:`PlaceholderTextureLayered<class_PlaceholderTextureLayered>`, :ref:`TextureLayeredRD<class_TextureLayeredRD>`
+**Được kế thừa bởi:** :ref:`CompressedTextureLayered<class_CompressedTextureLayered>`, :ref:`ImageTextureLayered<class_ImageTextureLayered>`, :ref:`PlaceholderTextureLayered<class_PlaceholderTextureLayered>`, :ref:`TextureLayeredRD<class_TextureLayeredRD>`
 
-Base class for texture types which contain the data of multiple :ref:`Image<class_Image>`\ s. Each image is of the same size and format.
+Lớp cơ sở cho các loại texture chứa dữ liệu của nhiều :ref:`Image<class_Image>`\ . Mỗi hình ảnh có cùng kích thước và định dạng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base class for :ref:`ImageTextureLayered<class_ImageTextureLayered>` and :ref:`CompressedTextureLayered<class_CompressedTextureLayered>`. Cannot be used directly, but contains all the functions necessary for accessing the derived resource types. See also :ref:`Texture3D<class_Texture3D>`.
+Lớp cơ sở cho :ref:`ImageTextureLayered<class_ImageTextureLayered>` và :ref:`CompressedTextureLayered<class_CompressedTextureLayered>`. Không thể sử dụng trực tiếp, nhưng chứa tất cả các hàm cần thiết để truy cập các loại tài nguyên dẫn xuất. Xem thêm :ref:`Texture3D<class_Texture3D>`.
 
-Data is set on a per-layer basis. For :ref:`Texture2DArray<class_Texture2DArray>`\ s, the layer specifies the array layer.
+Dữ liệu được thiết lập theo từng layer. Đối với :ref:`Texture2DArray<class_Texture2DArray>`\ , layer chỉ định array layer.
 
-All images need to have the same width, height and number of mipmap levels.
+Tất cả hình ảnh phải có cùng chiều rộng, chiều cao và số lượng cấp độ mipmap.
 
-A **TextureLayered** can be loaded with :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>`.
+Có thể tải **TextureLayered** bằng :ref:`ResourceLoader.load()<class_ResourceLoader_method_load>`.
 
-Internally, Godot maps these files to their respective counterparts in the target rendering driver (Vulkan, OpenGL3).
+Ở bên trong, Godot ánh xạ các tệp này tới các đối tượng tương ứng trong rendering driver đích (Vulkan, OpenGL3).
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Format<enum_Image_Format>`                    | :ref:`_get_format<class_TextureLayered_private_method__get_format>`\ (\ ) |virtual| |required| |const|                                              |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`_get_height<class_TextureLayered_private_method__get_height>`\ (\ ) |virtual| |required| |const|                                              |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Image<class_Image>`                           | :ref:`_get_layer_data<class_TextureLayered_private_method__get_layer_data>`\ (\ layer_index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`_get_layered_type<class_TextureLayered_private_method__get_layered_type>`\ (\ ) |virtual| |required| |const|                                  |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`_get_layers<class_TextureLayered_private_method__get_layers>`\ (\ ) |virtual| |required| |const|                                              |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`_get_width<class_TextureLayered_private_method__get_width>`\ (\ ) |virtual| |required| |const|                                                |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`_has_mipmaps<class_TextureLayered_private_method__has_mipmaps>`\ (\ ) |virtual| |required| |const|                                            |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Format<enum_Image_Format>`                    | :ref:`get_format<class_TextureLayered_method_get_format>`\ (\ ) |const|                                                                             |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`get_height<class_TextureLayered_method_get_height>`\ (\ ) |const|                                                                             |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Image<class_Image>`                           | :ref:`get_layer_data<class_TextureLayered_method_get_layer_data>`\ (\ layer\: :ref:`int<class_int>`\ ) |const|                                      |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`LayeredType<enum_TextureLayered_LayeredType>` | :ref:`get_layered_type<class_TextureLayered_method_get_layered_type>`\ (\ ) |const|                                                                 |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`get_layers<class_TextureLayered_method_get_layers>`\ (\ ) |const|                                                                             |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                               | :ref:`get_width<class_TextureLayered_method_get_width>`\ (\ ) |const|                                                                               |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`has_mipmaps<class_TextureLayered_method_has_mipmaps>`\ (\ ) |const|                                                                           |
-   +-----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Format <enum_Image_Format>`                    | :ref:`_get_format<class_TextureLayered_private_method__get_format>`\ (\ ) |virtual| |required| |const|                                              |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                | :ref:`_get_height<class_TextureLayered_private_method__get_height>`\ (\ ) |virtual| |required| |const|                                              |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Image<class_Image>`                            | :ref:`_get_layer_data<class_TextureLayered_private_method__get_layer_data>`\ (\ layer_index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                | :ref:`_get_layered_type<class_TextureLayered_private_method__get_layered_type>`\ (\ ) |virtual| |required| |const|                                  |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                | :ref:`_get_layers<class_TextureLayered_private_method__get_layers>`\ (\ ) |virtual| |required| |const|                                              |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                | :ref:`_get_width<class_TextureLayered_private_method__get_width>`\ (\ ) |virtual| |required| |const|                                                |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`_has_mipmaps<class_TextureLayered_private_method__has_mipmaps>`\ (\ ) |virtual| |required| |const|                                            |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Format <enum_Image_Format>`                    | :ref:`get_format<class_TextureLayered_method_get_format>`\ (\ ) |const|                                                                             |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                | :ref:`get_height<class_TextureLayered_method_get_height>`\ (\ ) |const|                                                                             |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Image<class_Image>`                            | :ref:`get_layer_data<class_TextureLayered_method_get_layer_data>`\ (\ layer\: :ref:`int<class_int>`\ ) |const|                                      |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`LayeredType <enum_TextureLayered_LayeredType>` | :ref:`get_layered_type<class_TextureLayered_method_get_layered_type>`\ (\ ) |const|                                                                 |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                | :ref:`get_layers<class_TextureLayered_method_get_layers>`\ (\ ) |const|                                                                             |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                | :ref:`get_width<class_TextureLayered_method_get_width>`\ (\ ) |const|                                                                               |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`has_mipmaps<class_TextureLayered_method_has_mipmaps>`\ (\ ) |const|                                                                           |
+   +------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -75,14 +75,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_TextureLayered_LayeredType:
 
 .. rst-class:: classref-enumeration
 
-enum **LayeredType**: :ref:`🔗<enum_TextureLayered_LayeredType>`
+enum **LayeredType**: :ref:`🔗 <enum_TextureLayered_LayeredType>`
 
 .. _class_TextureLayered_constant_LAYERED_TYPE_2D_ARRAY:
 
@@ -90,7 +90,7 @@ enum **LayeredType**: :ref:`🔗<enum_TextureLayered_LayeredType>`
 
 :ref:`LayeredType<enum_TextureLayered_LayeredType>` **LAYERED_TYPE_2D_ARRAY** = ``0``
 
-Texture is a generic :ref:`Texture2DArray<class_Texture2DArray>`.
+Texture là một :ref:`Texture2DArray<class_Texture2DArray>` tổng quát.
 
 .. _class_TextureLayered_constant_LAYERED_TYPE_CUBEMAP:
 
@@ -98,7 +98,7 @@ Texture is a generic :ref:`Texture2DArray<class_Texture2DArray>`.
 
 :ref:`LayeredType<enum_TextureLayered_LayeredType>` **LAYERED_TYPE_CUBEMAP** = ``1``
 
-Texture is a :ref:`Cubemap<class_Cubemap>`, with each side in its own layer (6 in total).
+Texture là một :ref:`Cubemap<class_Cubemap>`, với mỗi mặt nằm trong một layer riêng (tổng cộng 6 layer).
 
 .. _class_TextureLayered_constant_LAYERED_TYPE_CUBEMAP_ARRAY:
 
@@ -106,7 +106,7 @@ Texture is a :ref:`Cubemap<class_Cubemap>`, with each side in its own layer (6 i
 
 :ref:`LayeredType<enum_TextureLayered_LayeredType>` **LAYERED_TYPE_CUBEMAP_ARRAY** = ``2``
 
-Texture is a :ref:`CubemapArray<class_CubemapArray>`, with each cubemap being made of 6 layers.
+Texture là một :ref:`CubemapArray<class_CubemapArray>`, trong đó mỗi cubemap được tạo thành từ 6 layer.
 
 .. rst-class:: classref-section-separator
 
@@ -114,8 +114,8 @@ Texture is a :ref:`CubemapArray<class_CubemapArray>`, with each cubemap being ma
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả các phương thức
+---------------------
 
 .. _class_TextureLayered_private_method__get_format:
 
@@ -123,7 +123,7 @@ Method Descriptions
 
 :ref:`Format<enum_Image_Format>` **_get_format**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_TextureLayered_private_method__get_format>`
 
-Called when the **TextureLayered**'s format is queried.
+Được gọi khi định dạng của **TextureLayered** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -135,7 +135,7 @@ Called when the **TextureLayered**'s format is queried.
 
 :ref:`int<class_int>` **_get_height**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_TextureLayered_private_method__get_height>`
 
-Called when the **TextureLayered**'s height is queried.
+Được gọi khi chiều cao của **TextureLayered** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -147,7 +147,7 @@ Called when the **TextureLayered**'s height is queried.
 
 :ref:`Image<class_Image>` **_get_layer_data**\ (\ layer_index\: :ref:`int<class_int>`\ ) |virtual| |required| |const| :ref:`🔗<class_TextureLayered_private_method__get_layer_data>`
 
-Called when the data for a layer in the **TextureLayered** is queried.
+Được gọi khi dữ liệu cho một layer trong **TextureLayered** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -159,7 +159,7 @@ Called when the data for a layer in the **TextureLayered** is queried.
 
 :ref:`int<class_int>` **_get_layered_type**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_TextureLayered_private_method__get_layered_type>`
 
-Called when the layers' type in the **TextureLayered** is queried.
+Được gọi khi kiểu layer của **TextureLayered** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -171,7 +171,7 @@ Called when the layers' type in the **TextureLayered** is queried.
 
 :ref:`int<class_int>` **_get_layers**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_TextureLayered_private_method__get_layers>`
 
-Called when the number of layers in the **TextureLayered** is queried.
+Được gọi khi số lượng layer trong **TextureLayered** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -183,7 +183,7 @@ Called when the number of layers in the **TextureLayered** is queried.
 
 :ref:`int<class_int>` **_get_width**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_TextureLayered_private_method__get_width>`
 
-Called when the **TextureLayered**'s width queried.
+Được gọi khi chiều rộng của **TextureLayered** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -195,7 +195,7 @@ Called when the **TextureLayered**'s width queried.
 
 :ref:`bool<class_bool>` **_has_mipmaps**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_TextureLayered_private_method__has_mipmaps>`
 
-Called when the presence of mipmaps in the **TextureLayered** is queried.
+Được gọi khi sự hiện diện của mipmap trong **TextureLayered** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -207,7 +207,7 @@ Called when the presence of mipmaps in the **TextureLayered** is queried.
 
 :ref:`Format<enum_Image_Format>` **get_format**\ (\ ) |const| :ref:`🔗<class_TextureLayered_method_get_format>`
 
-Returns the current format being used by this texture.
+Trả về định dạng hiện tại đang được texture này sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -219,7 +219,7 @@ Returns the current format being used by this texture.
 
 :ref:`int<class_int>` **get_height**\ (\ ) |const| :ref:`🔗<class_TextureLayered_method_get_height>`
 
-Returns the height of the texture in pixels. Height is typically represented by the Y axis.
+Trả về chiều cao của texture tính bằng pixel. Chiều cao thường được biểu diễn trên trục Y.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Returns the height of the texture in pixels. Height is typically represented by 
 
 :ref:`Image<class_Image>` **get_layer_data**\ (\ layer\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_TextureLayered_method_get_layer_data>`
 
-Returns an :ref:`Image<class_Image>` resource with the data from specified ``layer``.
+Trả về một tài nguyên :ref:`Image<class_Image>` với dữ liệu từ ``layer`` được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -243,7 +243,7 @@ Returns an :ref:`Image<class_Image>` resource with the data from specified ``lay
 
 :ref:`LayeredType<enum_TextureLayered_LayeredType>` **get_layered_type**\ (\ ) |const| :ref:`🔗<class_TextureLayered_method_get_layered_type>`
 
-Returns the **TextureLayered**'s type. The type determines how the data is accessed, with cubemaps having special types.
+Trả về kiểu của **TextureLayered**. Kiểu này xác định cách dữ liệu được truy cập, trong đó cubemap có các kiểu đặc biệt.
 
 .. rst-class:: classref-item-separator
 
@@ -255,7 +255,7 @@ Returns the **TextureLayered**'s type. The type determines how the data is acces
 
 :ref:`int<class_int>` **get_layers**\ (\ ) |const| :ref:`🔗<class_TextureLayered_method_get_layers>`
 
-Returns the number of referenced :ref:`Image<class_Image>`\ s.
+Trả về số lượng :ref:`Image<class_Image>`\  được tham chiếu.
 
 .. rst-class:: classref-item-separator
 
@@ -267,7 +267,7 @@ Returns the number of referenced :ref:`Image<class_Image>`\ s.
 
 :ref:`int<class_int>` **get_width**\ (\ ) |const| :ref:`🔗<class_TextureLayered_method_get_width>`
 
-Returns the width of the texture in pixels. Width is typically represented by the X axis.
+Trả về chiều rộng của texture tính bằng pixel. Chiều rộng thường được biểu diễn trên trục X.
 
 .. rst-class:: classref-item-separator
 
@@ -279,14 +279,14 @@ Returns the width of the texture in pixels. Width is typically represented by th
 
 :ref:`bool<class_bool>` **has_mipmaps**\ (\ ) |const| :ref:`🔗<class_TextureLayered_method_has_mipmaps>`
 
-Returns ``true`` if the layers have generated mipmaps.
+Trả về ``true`` nếu các layer đã tạo mipmap.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

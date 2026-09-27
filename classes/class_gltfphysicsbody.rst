@@ -10,29 +10,29 @@
 GLTFPhysicsBody
 ===============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Represents a glTF physics body.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Represents a physics body as an intermediary between the ``OMI_physics_body`` glTF data and Godot's nodes, and it's abstracted in a way that allows adding support for different glTF physics extensions in the future.
+Đại diện cho một physics body glTF.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Đại diện cho một physics body đóng vai trò trung gian giữa dữ liệu glTF ``OMI_physics_body`` và các node của Godot, đồng thời được trừu tượng hóa theo cách cho phép bổ sung hỗ trợ cho các physics extension glTF khác trong tương lai.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Runtime file loading and saving <../tutorials/io/runtime_file_loading_and_saving>`
+- :doc:`Tải và lưu tệp trong runtime <../tutorials/io/runtime_file_loading_and_saving>`
 
-- `OMI_physics_body glTF extension <https://github.com/omigroup/gltf-extensions/tree/main/extensions/2.0/OMI_physics_body>`__
+- `Phần mở rộng glTF OMI_physics_body <https://github.com/omigroup/gltf-extensions/tree/main/extensions/2.0/OMI_physics_body>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,8 +58,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -80,8 +80,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GLTFPhysicsBody_property_angular_velocity:
 
@@ -94,7 +94,7 @@ Property Descriptions
 - |void| **set_angular_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_angular_velocity**\ (\ )
 
-The angular velocity of the physics body, in radians per second. This is only used when the body type is "rigid" or "vehicle".
+Vận tốc góc của body vật lý, tính bằng radian trên giây. Giá trị này chỉ được sử dụng khi loại body là "rigid" hoặc "vehicle".
 
 .. rst-class:: classref-item-separator
 
@@ -111,11 +111,11 @@ The angular velocity of the physics body, in radians per second. This is only us
 - |void| **set_body_type**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_body_type**\ (\ )
 
-The type of the body.
+Loại của body.
 
-When importing, this controls what type of :ref:`CollisionObject3D<class_CollisionObject3D>` node Godot should generate. Valid values are ``"static"``, ``"animatable"``, ``"character"``, ``"rigid"``, ``"vehicle"``, and ``"trigger"``.
+Khi import, tùy chọn này kiểm soát loại node :ref:`CollisionObject3D<class_CollisionObject3D>` mà Godot sẽ tạo. Các giá trị hợp lệ là ``"static"``, ``"animatable"``, ``"character"``, ``"rigid"``, ``"vehicle"`` và ``"trigger"``.
 
-When exporting, this will be squashed down to one of ``"static"``, ``"kinematic"``, or ``"dynamic"`` motion types, or the ``"trigger"`` property.
+Khi export, tùy chọn này sẽ được rút gọn thành một trong các loại chuyển động ``"static"``, ``"kinematic"`` hoặc ``"dynamic"``, hoặc thuộc tính ``"trigger"``.
 
 .. rst-class:: classref-item-separator
 
@@ -132,7 +132,7 @@ When exporting, this will be squashed down to one of ``"static"``, ``"kinematic"
 - |void| **set_center_of_mass**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_center_of_mass**\ (\ )
 
-The center of mass of the body, in meters. This is in local space relative to the body. By default, the center of the mass is the body's origin.
+Tâm khối lượng của body, tính bằng mét. Tâm này nằm trong local space, tương đối so với body. Theo mặc định, tâm khối lượng là origin của body.
 
 .. rst-class:: classref-item-separator
 
@@ -149,9 +149,9 @@ The center of mass of the body, in meters. This is in local space relative to th
 - |void| **set_inertia_diagonal**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_inertia_diagonal**\ (\ )
 
-The inertia strength of the physics body, in kilogram meter squared (kg⋅m²). This represents the inertia around the principle axes, the diagonal of the inertia tensor matrix. This is only used when the body type is "rigid" or "vehicle".
+Độ lớn quán tính của physics body, tính bằng kilogram mét bình phương (kg⋅m²). Giá trị này biểu thị quán tính quanh các trục chính, tức đường chéo của ma trận tensor quán tính. Giá trị này chỉ được sử dụng khi loại body là "rigid" hoặc "vehicle".
 
-When converted to a Godot :ref:`RigidBody3D<class_RigidBody3D>` node, if this value is zero, then the inertia will be calculated automatically.
+Khi được chuyển đổi thành node Godot :ref:`RigidBody3D<class_RigidBody3D>`, nếu giá trị này bằng 0 thì quán tính sẽ được tự động tính toán.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ When converted to a Godot :ref:`RigidBody3D<class_RigidBody3D>` node, if this va
 - |void| **set_inertia_orientation**\ (\ value\: :ref:`Quaternion<class_Quaternion>`\ )
 - :ref:`Quaternion<class_Quaternion>` **get_inertia_orientation**\ (\ )
 
-The inertia orientation of the physics body. This defines the rotation of the inertia's principle axes relative to the object's local axes. This is only used when the body type is "rigid" or "vehicle" and :ref:`inertia_diagonal<class_GLTFPhysicsBody_property_inertia_diagonal>` is set to a non-zero value.
+Hướng quán tính của physics body. Giá trị này xác định độ xoay của các trục chính của quán tính so với các trục local của đối tượng. Giá trị này chỉ được sử dụng khi loại body là "rigid" hoặc "vehicle" và :ref:`inertia_diagonal<class_GLTFPhysicsBody_property_inertia_diagonal>` được đặt thành giá trị khác 0.
 
 .. rst-class:: classref-item-separator
 
@@ -185,11 +185,11 @@ The inertia orientation of the physics body. This defines the rotation of the in
 - |void| **set_inertia_tensor**\ (\ value\: :ref:`Basis<class_Basis>`\ )
 - :ref:`Basis<class_Basis>` **get_inertia_tensor**\ (\ )
 
-**Deprecated:** This property may be changed or removed in future versions.
+**Đã lỗi thời:** Thuộc tính này có thể được thay đổi hoặc xóa trong các phiên bản tương lai.
 
-The inertia tensor of the physics body, in kilogram meter squared (kg⋅m²). This is only used when the body type is "rigid" or "vehicle".
+Tensor quán tính của physics body, tính bằng kilôgam mét bình phương (kg⋅m²). Thuộc tính này chỉ được sử dụng khi kiểu body là "rigid" hoặc "vehicle".
 
-When converted to a Godot :ref:`RigidBody3D<class_RigidBody3D>` node, if this value is zero, then the inertia will be calculated automatically.
+Khi được chuyển đổi thành node Godot :ref:`RigidBody3D<class_RigidBody3D>`, nếu giá trị này bằng 0 thì quán tính sẽ được tự động tính toán.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ When converted to a Godot :ref:`RigidBody3D<class_RigidBody3D>` node, if this va
 - |void| **set_linear_velocity**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_linear_velocity**\ (\ )
 
-The linear velocity of the physics body, in meters per second. This is only used when the body type is "rigid" or "vehicle".
+Vận tốc tuyến tính của physics body, tính bằng mét trên giây. Thuộc tính này chỉ được sử dụng khi kiểu body là "rigid" hoặc "vehicle".
 
 .. rst-class:: classref-item-separator
 
@@ -223,7 +223,7 @@ The linear velocity of the physics body, in meters per second. This is only used
 - |void| **set_mass**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mass**\ (\ )
 
-The mass of the physics body, in kilograms. This is only used when the body type is "rigid" or "vehicle".
+Khối lượng của physics body, tính bằng kilôgam. Thuộc tính này chỉ được sử dụng khi kiểu body là "rigid" hoặc "vehicle".
 
 .. rst-class:: classref-section-separator
 
@@ -231,8 +231,8 @@ The mass of the physics body, in kilograms. This is only used when the body type
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả Method
+------------
 
 .. _class_GLTFPhysicsBody_method_from_dictionary:
 
@@ -240,7 +240,7 @@ Method Descriptions
 
 :ref:`GLTFPhysicsBody<class_GLTFPhysicsBody>` **from_dictionary**\ (\ dictionary\: :ref:`Dictionary<class_Dictionary>`\ ) |static| :ref:`🔗<class_GLTFPhysicsBody_method_from_dictionary>`
 
-Creates a new GLTFPhysicsBody instance by parsing the given :ref:`Dictionary<class_Dictionary>` in the ``OMI_physics_body`` glTF extension format.
+Tạo một instance GLTFPhysicsBody mới bằng cách phân tích cú pháp :ref:`Dictionary<class_Dictionary>` đã cho theo định dạng extension glTF ``OMI_physics_body``.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ Creates a new GLTFPhysicsBody instance by parsing the given :ref:`Dictionary<cla
 
 :ref:`GLTFPhysicsBody<class_GLTFPhysicsBody>` **from_node**\ (\ body_node\: :ref:`CollisionObject3D<class_CollisionObject3D>`\ ) |static| :ref:`🔗<class_GLTFPhysicsBody_method_from_node>`
 
-Creates a new GLTFPhysicsBody instance from the given Godot :ref:`CollisionObject3D<class_CollisionObject3D>` node.
+Tạo một instance GLTFPhysicsBody mới từ node Godot :ref:`CollisionObject3D<class_CollisionObject3D>` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -264,7 +264,7 @@ Creates a new GLTFPhysicsBody instance from the given Godot :ref:`CollisionObjec
 
 :ref:`Dictionary<class_Dictionary>` **to_dictionary**\ (\ ) |const| :ref:`🔗<class_GLTFPhysicsBody_method_to_dictionary>`
 
-Serializes this GLTFPhysicsBody instance into a :ref:`Dictionary<class_Dictionary>`. It will be in the format expected by the ``OMI_physics_body`` glTF extension.
+Tuần tự hóa instance GLTFPhysicsBody này thành một :ref:`Dictionary<class_Dictionary>`. Nó sẽ ở định dạng được ``OMI_physics_body`` glTF extension mong đợi.
 
 .. rst-class:: classref-item-separator
 
@@ -276,14 +276,14 @@ Serializes this GLTFPhysicsBody instance into a :ref:`Dictionary<class_Dictionar
 
 :ref:`CollisionObject3D<class_CollisionObject3D>` **to_node**\ (\ ) |const| :ref:`🔗<class_GLTFPhysicsBody_method_to_node>`
 
-Converts this GLTFPhysicsBody instance into a Godot :ref:`CollisionObject3D<class_CollisionObject3D>` node.
+Chuyển instance GLTFPhysicsBody này thành một node Godot :ref:`CollisionObject3D<class_CollisionObject3D>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ có thể sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

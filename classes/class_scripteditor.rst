@@ -10,23 +10,23 @@
 ScriptEditor
 ============
 
-**Inherits:** :ref:`PanelContainer<class_PanelContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`PanelContainer<class_PanelContainer>` **<** :ref:`Container<class_Container>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Godot editor's script editor.
+Trình soạn thảo script của trình soạn thảo Godot.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Godot editor's script editor.
+Trình soạn thảo script của trình soạn thảo Godot.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_script_editor()<class_EditorInterface_method_get_script_editor>`.
+\ **Ghi chú:** Không nên khởi tạo trực tiếp class này. Thay vào đó, hãy truy cập singleton bằng :ref:`EditorInterface.get_script_editor()<class_EditorInterface_method_get_script_editor>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -34,7 +34,7 @@ Methods
    +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                                       | :ref:`clear_docs_from_script<class_ScriptEditor_method_clear_docs_from_script>`\ (\ script\: :ref:`Script<class_Script>`\ )                                                             |
    +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                                        | :ref:`close_file<class_ScriptEditor_method_close_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                       |
+   | :ref:`Error <enum_@GlobalScope_Error>`                                       | :ref:`close_file<class_ScriptEditor_method_close_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                       |
    +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedStringArray<class_PackedStringArray>`                            | :ref:`get_breakpoints<class_ScriptEditor_method_get_breakpoints>`\ (\ )                                                                                                                 |
    +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -71,8 +71,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Các tín hiệu
+------------
 
 .. _class_ScriptEditor_signal_editor_script_changed:
 
@@ -80,7 +80,7 @@ Signals
 
 **editor_script_changed**\ (\ script\: :ref:`Script<class_Script>`\ ) :ref:`🔗<class_ScriptEditor_signal_editor_script_changed>`
 
-Emitted when user changed active script. Argument is a freshly activated :ref:`Script<class_Script>`.
+Được phát khi người dùng thay đổi script đang hoạt động. Đối số là một :ref:`Script<class_Script>` vừa được kích hoạt.
 
 .. rst-class:: classref-item-separator
 
@@ -92,7 +92,7 @@ Emitted when user changed active script. Argument is a freshly activated :ref:`S
 
 **script_close**\ (\ script\: :ref:`Script<class_Script>`\ ) :ref:`🔗<class_ScriptEditor_signal_script_close>`
 
-Emitted when editor is about to close the active script. Argument is a :ref:`Script<class_Script>` that is going to be closed.
+Được phát ngay trước khi trình soạn thảo đóng script đang hoạt động. Đối số là một :ref:`Script<class_Script>` sắp bị đóng.
 
 .. rst-class:: classref-section-separator
 
@@ -100,8 +100,8 @@ Emitted when editor is about to close the active script. Argument is a :ref:`Scr
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ScriptEditor_method_clear_docs_from_script:
 
@@ -109,9 +109,9 @@ Method Descriptions
 
 |void| **clear_docs_from_script**\ (\ script\: :ref:`Script<class_Script>`\ ) :ref:`🔗<class_ScriptEditor_method_clear_docs_from_script>`
 
-Removes the documentation for the given ``script``.
+Xóa tài liệu của ``script`` đã cho.
 
-\ **Note:** This should be called whenever the script is changed to keep the open documentation state up to date.
+\ **Ghi chú:** Cần gọi phương thức này mỗi khi script được thay đổi để giữ cho trạng thái tài liệu đang mở luôn được cập nhật.
 
 .. rst-class:: classref-item-separator
 
@@ -123,9 +123,9 @@ Removes the documentation for the given ``script``.
 
 :ref:`Error<enum_@GlobalScope_Error>` **close_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditor_method_close_file>`
 
-Closes the file at the given ``path``, discarding any unsaved changes.
+Đóng tệp tại ``path`` đã cho, loại bỏ mọi thay đổi chưa lưu.
 
-Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success or :ref:`@GlobalScope.ERR_FILE_NOT_FOUND<class_@GlobalScope_constant_ERR_FILE_NOT_FOUND>` if the file is not found.
+Trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu thành công hoặc :ref:`@GlobalScope.ERR_FILE_NOT_FOUND <class_@GlobalScope_constant_ERR_FILE_NOT_FOUND>` nếu không tìm thấy tệp.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Returns :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` on success or :re
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_breakpoints**\ (\ ) :ref:`🔗<class_ScriptEditor_method_get_breakpoints>`
 
-Returns array of breakpoints.
+Trả về mảng các breakpoint.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ Returns array of breakpoints.
 
 :ref:`ScriptEditorBase<class_ScriptEditorBase>` **get_current_editor**\ (\ ) |const| :ref:`🔗<class_ScriptEditor_method_get_current_editor>`
 
-Returns the :ref:`ScriptEditorBase<class_ScriptEditorBase>` object that the user is currently editing.
+Trả về đối tượng :ref:`ScriptEditorBase<class_ScriptEditorBase>` mà người dùng hiện đang chỉnh sửa.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ Returns the :ref:`ScriptEditorBase<class_ScriptEditorBase>` object that the user
 
 :ref:`Script<class_Script>` **get_current_script**\ (\ ) :ref:`🔗<class_ScriptEditor_method_get_current_script>`
 
-Returns a :ref:`Script<class_Script>` that is currently active in editor.
+Trả về một :ref:`Script<class_Script>` hiện đang hoạt động trong trình soạn thảo.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Returns a :ref:`Script<class_Script>` that is currently active in editor.
 
 :ref:`Array<class_Array>`\[:ref:`ScriptEditorBase<class_ScriptEditorBase>`\] **get_open_script_editors**\ (\ ) |const| :ref:`🔗<class_ScriptEditor_method_get_open_script_editors>`
 
-Returns an array with all :ref:`ScriptEditorBase<class_ScriptEditorBase>` objects which are currently open in editor.
+Trả về một mảng chứa tất cả đối tượng :ref:`ScriptEditorBase<class_ScriptEditorBase>` hiện đang mở trong trình soạn thảo.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ Returns an array with all :ref:`ScriptEditorBase<class_ScriptEditorBase>` object
 
 :ref:`Array<class_Array>`\[:ref:`Script<class_Script>`\] **get_open_scripts**\ (\ ) |const| :ref:`🔗<class_ScriptEditor_method_get_open_scripts>`
 
-Returns an array with all :ref:`Script<class_Script>` objects which are currently open in editor.
+Trả về một mảng chứa tất cả đối tượng :ref:`Script<class_Script>` hiện đang mở trong trình soạn thảo.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Returns an array with all :ref:`Script<class_Script>` objects which are currentl
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_unsaved_files**\ (\ ) |const| :ref:`🔗<class_ScriptEditor_method_get_unsaved_files>`
 
-Returns an array of file paths of scripts with unsaved changes open in the editor.
+Trả về một mảng các đường dẫn tệp của những script có thay đổi chưa lưu đang mở trong trình soạn thảo.
 
 .. rst-class:: classref-item-separator
 
@@ -209,9 +209,9 @@ Returns an array of file paths of scripts with unsaved changes open in the edito
 
 |void| **goto_help**\ (\ topic\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditor_method_goto_help>`
 
-Opens help for the given topic. The ``topic`` is an encoded string that controls which class, method, constant, signal, annotation, property, or theme item should be focused.
+Mở trợ giúp cho chủ đề đã cho. ``topic`` là một chuỗi được mã hóa, kiểm soát class, method, constant, signal, annotation, property hoặc theme item nào sẽ được đặt tiêu điểm.
 
-The supported ``topic`` formats include ``class_name:class``, ``class_method:class:method``, ``class_constant:class:constant``, ``class_signal:class:signal``, ``class_annotation:class:@annotation``, ``class_property:class:property``, and ``class_theme_item:class:item``, where ``class`` is the class name, ``method`` is the method name, ``constant`` is the constant name, ``signal`` is the signal name, ``annotation`` is the annotation name, ``property`` is the property name, and ``item`` is the theme item.
+Các định dạng ``topic`` được hỗ trợ bao gồm ``class_name:class``, ``class_method:class:method``, ``class_constant:class:constant``, ``class_signal:class:signal``, ``class_annotation:class:@annotation``, ``class_property:class:property`` và ``class_theme_item:class:item``, trong đó ``class`` là tên class, ``method`` là tên method, ``constant`` là tên constant, ``signal`` là tên signal, ``annotation`` là tên annotation, ``property`` là tên property và ``item`` là theme item.
 
 ::
 
@@ -244,7 +244,7 @@ The supported ``topic`` formats include ``class_name:class``, ``class_method:cla
 
 |void| **goto_line**\ (\ line_number\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ScriptEditor_method_goto_line>`
 
-Goes to the specified line in the current script.
+Chuyển đến dòng được chỉ định trong script hiện tại.
 
 .. rst-class:: classref-item-separator
 
@@ -256,7 +256,7 @@ Goes to the specified line in the current script.
 
 |void| **open_script_create_dialog**\ (\ base_name\: :ref:`String<class_String>`, base_path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_ScriptEditor_method_open_script_create_dialog>`
 
-Opens the script create dialog. The script will extend ``base_name``. The file extension can be omitted from ``base_path``. It will be added based on the selected scripting language.
+Mở hộp thoại tạo script. Script sẽ kế thừa ``base_name``. Có thể bỏ phần mở rộng tệp khỏi ``base_path``. Phần mở rộng sẽ được thêm dựa trên ngôn ngữ scripting đã chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -268,9 +268,9 @@ Opens the script create dialog. The script will extend ``base_name``. The file e
 
 |void| **register_syntax_highlighter**\ (\ syntax_highlighter\: :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>`\ ) :ref:`🔗<class_ScriptEditor_method_register_syntax_highlighter>`
 
-Registers the :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` to the editor, the :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` will be available on all open scripts.
+Đăng ký :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` với trình soạn thảo; :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` sẽ khả dụng trên tất cả script đang mở.
 
-\ **Note:** Does not apply to scripts that are already opened.
+\ **Ghi chú:** Không áp dụng cho các script đã được mở.
 
 .. rst-class:: classref-item-separator
 
@@ -282,7 +282,7 @@ Registers the :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` to t
 
 |void| **reload_open_files**\ (\ ) :ref:`🔗<class_ScriptEditor_method_reload_open_files>`
 
-Reloads all currently opened files. This should be used when opened files are changed outside of the script editor. The user may be prompted to resolve file conflicts, see :ref:`EditorSettings.text_editor/behavior/files/auto_reload_scripts_on_external_change<class_EditorSettings_property_text_editor/behavior/files/auto_reload_scripts_on_external_change>`.
+Tải lại tất cả tệp hiện đang mở. Nên sử dụng phương thức này khi các tệp đang mở bị thay đổi bên ngoài trình soạn thảo script. Người dùng có thể được yêu cầu giải quyết xung đột tệp; xem :ref:`EditorSettings.text_editor/behavior/files/auto_reload_scripts_on_external_change <class_EditorSettings_property_text_editor/behavior/files/auto_reload_scripts_on_external_change>`.
 
 .. rst-class:: classref-item-separator
 
@@ -294,7 +294,7 @@ Reloads all currently opened files. This should be used when opened files are ch
 
 |void| **save_all_scripts**\ (\ ) :ref:`🔗<class_ScriptEditor_method_save_all_scripts>`
 
-Saves all open scripts.
+Lưu tất cả script đang mở.
 
 .. rst-class:: classref-item-separator
 
@@ -306,9 +306,9 @@ Saves all open scripts.
 
 |void| **unregister_syntax_highlighter**\ (\ syntax_highlighter\: :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>`\ ) :ref:`🔗<class_ScriptEditor_method_unregister_syntax_highlighter>`
 
-Unregisters the :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` from the editor.
+Hủy đăng ký :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` khỏi trình soạn thảo.
 
-\ **Note:** The :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` will still be applied to scripts that are already opened.
+\ **Ghi chú:** :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` vẫn sẽ được áp dụng cho các script đã được mở.
 
 .. rst-class:: classref-item-separator
 
@@ -320,16 +320,16 @@ Unregisters the :ref:`EditorSyntaxHighlighter<class_EditorSyntaxHighlighter>` fr
 
 |void| **update_docs_from_script**\ (\ script\: :ref:`Script<class_Script>`\ ) :ref:`🔗<class_ScriptEditor_method_update_docs_from_script>`
 
-Updates the documentation for the given ``script``.
+Cập nhật tài liệu cho ``script`` đã cho.
 
-\ **Note:** This should be called whenever the script is changed to keep the open documentation state up to date.
+\ **Ghi chú:** Cần gọi phương thức này mỗi khi script được thay đổi để giữ cho trạng thái tài liệu đang mở luôn được cập nhật.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

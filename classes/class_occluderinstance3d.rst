@@ -10,37 +10,37 @@
 OccluderInstance3D
 ==================
 
-**Inherits:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Provides occlusion culling for 3D nodes, which improves performance in closed areas.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Occlusion culling can improve rendering performance in closed/semi-open areas by hiding geometry that is occluded by other objects.
-
-The occlusion culling system is mostly static. **OccluderInstance3D**\ s can be moved or hidden at run-time, but doing so will trigger a background recomputation that can take several frames. It is recommended to only move **OccluderInstance3D**\ s sporadically (e.g. for procedural generation purposes), rather than doing so every frame.
-
-The occlusion culling system works by rendering the occluders on the CPU in parallel using `Embree <https://www.embree.org/>`__, drawing the result to a low-resolution buffer then using this to cull 3D nodes individually. In the 3D editor, you can preview the occlusion culling buffer by choosing **Perspective > Display Advanced... > Occlusion Culling Buffer** in the top-left corner of the 3D viewport. The occlusion culling buffer quality can be adjusted in the Project Settings.
-
-\ **Baking:** Select an **OccluderInstance3D** node, then use the **Bake Occluders** button at the top of the 3D editor. Only opaque materials will be taken into account; transparent materials (alpha-blended or alpha-tested) will be ignored by the occluder generation.
-
-\ **Note:** Occlusion culling is only effective if :ref:`ProjectSettings.rendering/occlusion_culling/use_occlusion_culling<class_ProjectSettings_property_rendering/occlusion_culling/use_occlusion_culling>` is ``true``. Enabling occlusion culling has a cost on the CPU. Only enable occlusion culling if you actually plan to use it. Large open scenes with few or no objects blocking the view will generally not benefit much from occlusion culling. Large open scenes generally benefit more from mesh LOD and visibility ranges (:ref:`GeometryInstance3D.visibility_range_begin<class_GeometryInstance3D_property_visibility_range_begin>` and :ref:`GeometryInstance3D.visibility_range_end<class_GeometryInstance3D_property_visibility_range_end>`) compared to occlusion culling.
-
-\ **Note:** Due to memory constraints, occlusion culling is not supported by default in Web export templates. It can be enabled by compiling custom Web export templates with ``module_raycast_enabled=yes``.
+Cung cấp tính năng loại bỏ che khuất cho các node 3D, giúp cải thiện hiệu suất trong những khu vực khép kín.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Tính năng loại bỏ che khuất có thể cải thiện hiệu suất kết xuất trong các khu vực khép kín/bán mở bằng cách ẩn hình học bị các đối tượng khác che khuất.
+
+Hệ thống loại bỏ che khuất chủ yếu là tĩnh. **OccluderInstance3D**\ s có thể được di chuyển hoặc ẩn trong thời gian chạy, nhưng việc này sẽ kích hoạt quá trình tính toán lại ở chế độ nền, có thể kéo dài vài khung hình. Bạn chỉ nên di chuyển **OccluderInstance3D**\ s không thường xuyên (ví dụ: để tạo hình theo quy trình), thay vì thực hiện việc này ở mỗi khung hình.
+
+Hệ thống loại bỏ che khuất hoạt động bằng cách kết xuất các đối tượng che khuất trên CPU song song bằng `Embree <https://www.embree.org/>`__, vẽ kết quả vào một bộ đệm có độ phân giải thấp, sau đó dùng bộ đệm này để loại bỏ từng node 3D. Trong trình chỉnh sửa 3D, bạn có thể xem trước bộ đệm loại bỏ che khuất bằng cách chọn **Perspective > Display Advanced... > Occlusion Culling Buffer** ở góc trên bên trái của khung nhìn 3D. Có thể điều chỉnh chất lượng của bộ đệm loại bỏ che khuất trong Project Settings.
+
+\ **Nướng:** Chọn một node **OccluderInstance3D**, sau đó sử dụng nút **Bake Occluders** ở đầu trình chỉnh sửa 3D. Chỉ các vật liệu đục mới được tính đến; các vật liệu trong suốt (pha trộn alpha hoặc kiểm tra alpha) sẽ bị bỏ qua khi tạo đối tượng che khuất.
+
+\ **Lưu ý:** Occlusion culling chỉ có hiệu quả nếu :ref:`ProjectSettings.rendering/occlusion_culling/use_occlusion_culling <class_ProjectSettings_property_rendering/occlusion_culling/use_occlusion_culling>` được đặt thành ``true``. Việc bật occlusion culling sẽ làm CPU tốn thêm tài nguyên. Chỉ bật occlusion culling nếu bạn thực sự dự định sử dụng tính năng này. Các cảnh lớn, mở với ít hoặc không có đối tượng che khuất tầm nhìn thường sẽ không hưởng lợi nhiều từ occlusion culling. So với occlusion culling, các cảnh lớn, mở thường hưởng lợi nhiều hơn từ mesh LOD và các phạm vi hiển thị (:ref:`GeometryInstance3D.visibility_range_begin<class_GeometryInstance3D_property_visibility_range_begin>` và :ref:`GeometryInstance3D.visibility_range_end<class_GeometryInstance3D_property_visibility_range_end>`).
+
+\ **Lưu ý:** Do hạn chế về bộ nhớ, occlusion culling không được hỗ trợ mặc định trong các Web export template. Bạn có thể bật tính năng này bằng cách biên dịch các Web export template tùy chỉnh với ``module_raycast_enabled=yes``.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Occlusion culling <../tutorials/3d/occlusion_culling>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -56,8 +56,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -74,8 +74,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OccluderInstance3D_property_bake_mask:
 
@@ -88,9 +88,9 @@ Property Descriptions
 - |void| **set_bake_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_bake_mask**\ (\ )
 
-The visual layers to account for when baking for occluders. Only :ref:`MeshInstance3D<class_MeshInstance3D>`\ s whose :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` match with this :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>` will be included in the generated occluder mesh. By default, all objects with *opaque* materials are taken into account for the occluder baking.
+Các lớp hiển thị cần được tính đến khi bake cho các occluder. Chỉ các :ref:`MeshInstance3D<class_MeshInstance3D>`\ s có :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` khớp với :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>` này mới được đưa vào mesh occluder được tạo. Theo mặc định, tất cả các đối tượng có vật liệu *opaque* đều được tính đến khi bake occluder.
 
-To improve performance and avoid artifacts, it is recommended to exclude dynamic objects, small objects and fixtures from the baking process by moving them to a separate visual layer and excluding this layer in :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>`.
+Để cải thiện hiệu suất và tránh hiện tượng lỗi, bạn nên loại trừ các đối tượng động, đối tượng nhỏ và vật cố định khỏi quá trình bake bằng cách chuyển chúng sang một lớp hiển thị riêng rồi loại trừ lớp này trong :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>`.
 
 .. rst-class:: classref-item-separator
 
@@ -107,13 +107,13 @@ To improve performance and avoid artifacts, it is recommended to exclude dynamic
 - |void| **set_bake_simplification_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_bake_simplification_distance**\ (\ )
 
-The simplification distance to use for simplifying the generated occluder polygon (in 3D units). Higher values result in a less detailed occluder mesh, which improves performance but reduces culling accuracy.
+Khoảng cách đơn giản hóa được sử dụng để đơn giản hóa đa giác occluder được tạo (theo đơn vị 3D). Giá trị cao hơn sẽ tạo ra mesh occluder ít chi tiết hơn, giúp cải thiện hiệu suất nhưng làm giảm độ chính xác của việc culling.
 
-The occluder geometry is rendered on the CPU, so it is important to keep its geometry as simple as possible. Since the buffer is rendered at a low resolution, less detailed occluder meshes generally still work well. The default value is fairly aggressive, so you may have to decrease it if you run into false negatives (objects being occluded even though they are visible by the camera). A value of ``0.01`` will act conservatively, and will keep geometry *perceptually* unaffected in the occlusion culling buffer. Depending on the scene, a value of ``0.01`` may still simplify the mesh noticeably compared to disabling simplification entirely.
+Hình học occluder được render trên CPU, vì vậy điều quan trọng là giữ cho hình học này đơn giản nhất có thể. Vì buffer được render ở độ phân giải thấp, các mesh occluder ít chi tiết hơn nhìn chung vẫn hoạt động tốt. Giá trị mặc định khá mạnh, vì vậy bạn có thể phải giảm giá trị này nếu gặp false negative (các đối tượng bị occlude dù camera vẫn nhìn thấy chúng). Giá trị ``0.01`` sẽ hoạt động theo hướng thận trọng và giữ cho hình học *về mặt cảm nhận* không bị ảnh hưởng trong buffer occlusion culling. Tùy thuộc vào cảnh, giá trị ``0.01`` vẫn có thể đơn giản hóa mesh đáng kể so với việc tắt hoàn toàn tính năng đơn giản hóa.
 
-Setting this to ``0.0`` disables simplification entirely, but vertices in the exact same position will still be merged. The mesh will also be re-indexed to reduce both the number of vertices and indices.
+Đặt giá trị này thành ``0.0`` sẽ tắt hoàn toàn tính năng đơn giản hóa, nhưng các vertex ở chính xác cùng một vị trí vẫn sẽ được hợp nhất. Mesh cũng sẽ được đánh lại index để giảm cả số lượng vertex và index.
 
-\ **Note:** This uses the `meshoptimizer <https://meshoptimizer.org/>`__ library under the hood, similar to LOD generation.
+\ **Lưu ý:** Thư viện `meshoptimizer <https://meshoptimizer.org/>`__ được sử dụng bên dưới, tương tự như việc tạo LOD.
 
 .. rst-class:: classref-item-separator
 
@@ -123,18 +123,18 @@ Setting this to ``0.0`` disables simplification entirely, but vertices in the ex
 
 .. rst-class:: classref-property
 
-:ref:`Occluder3D<class_Occluder3D>` **occluder** :ref:`🔗<class_OccluderInstance3D_property_occluder>`
+:ref:`Occluder3D<class_Occluder3D>` **occluder** :ref:`🔗 <class_OccluderInstance3D_property_occluder>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_occluder**\ (\ value\: :ref:`Occluder3D<class_Occluder3D>`\ )
 - :ref:`Occluder3D<class_Occluder3D>` **get_occluder**\ (\ )
 
-The occluder resource for this **OccluderInstance3D**. You can generate an occluder resource by selecting an **OccluderInstance3D** node then using the **Bake Occluders** button at the top of the editor.
+Tài nguyên occluder cho **OccluderInstance3D** này. Bạn có thể tạo tài nguyên occluder bằng cách chọn một node **OccluderInstance3D**, sau đó sử dụng nút **Bake Occluders** ở đầu trình chỉnh sửa.
 
-You can also draw your own 2D occluder polygon by adding a new :ref:`PolygonOccluder3D<class_PolygonOccluder3D>` resource to the :ref:`occluder<class_OccluderInstance3D_property_occluder>` property in the Inspector.
+Bạn cũng có thể tự vẽ một polygon occluder 2D bằng cách thêm một tài nguyên :ref:`PolygonOccluder3D<class_PolygonOccluder3D>` mới vào thuộc tính :ref:`occluder<class_OccluderInstance3D_property_occluder>` trong Inspector.
 
-Alternatively, you can select a primitive occluder to use: :ref:`QuadOccluder3D<class_QuadOccluder3D>`, :ref:`BoxOccluder3D<class_BoxOccluder3D>` or :ref:`SphereOccluder3D<class_SphereOccluder3D>`.
+Ngoài ra, bạn có thể chọn một occluder nguyên thủy để sử dụng: :ref:`QuadOccluder3D<class_QuadOccluder3D>`, :ref:`BoxOccluder3D<class_BoxOccluder3D>` hoặc :ref:`SphereOccluder3D<class_SphereOccluder3D>`.
 
 .. rst-class:: classref-section-separator
 
@@ -142,8 +142,8 @@ Alternatively, you can select a primitive occluder to use: :ref:`QuadOccluder3D<
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OccluderInstance3D_method_get_bake_mask_value:
 
@@ -151,7 +151,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **get_bake_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OccluderInstance3D_method_get_bake_mask_value>`
 
-Returns whether or not the specified layer of the :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>` is enabled, given a ``layer_number`` between 1 and 32.
+Trả về liệu layer được chỉ định của :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>` có được bật hay không, với một ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
 .. rst-class:: classref-item-separator
 
@@ -163,14 +163,14 @@ Returns whether or not the specified layer of the :ref:`bake_mask<class_Occluder
 
 |void| **set_bake_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_OccluderInstance3D_method_set_bake_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>`, given a ``layer_number`` between 1 and 32.
+Dựa trên ``value``, bật hoặc tắt lớp được chỉ định trong :ref:`bake_mask<class_OccluderInstance3D_property_bake_mask>`, với một ``layer_number`` nằm trong khoảng từ 1 đến 32.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận số lượng argument bất kỳ sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Method này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Method này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

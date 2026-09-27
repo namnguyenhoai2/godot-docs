@@ -10,29 +10,29 @@
 CSGCylinder3D
 =============
 
-**Inherits:** :ref:`CSGPrimitive3D<class_CSGPrimitive3D>` **<** :ref:`CSGShape3D<class_CSGShape3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`CSGPrimitive3D<class_CSGPrimitive3D>` **<** :ref:`CSGShape3D<class_CSGShape3D>` **<** :ref:`GeometryInstance3D<class_GeometryInstance3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A CSG Cylinder shape.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This node allows you to create a cylinder (or cone) for use with the CSG system.
-
-\ **Note:** CSG nodes are intended to be used for level prototyping. Creating CSG nodes has a significant CPU cost compared to creating a :ref:`MeshInstance3D<class_MeshInstance3D>` with a :ref:`PrimitiveMesh<class_PrimitiveMesh>`. Moving a CSG node within another CSG node also has a significant CPU cost, so it should be avoided during gameplay.
+Một hình trụ CSG.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Node này cho phép bạn tạo một hình trụ (hoặc hình nón) để sử dụng với hệ thống CSG.
+
+\ **Lưu ý:** Các node CSG được thiết kế để dùng khi tạo prototype cho level. Việc tạo node CSG có chi phí CPU đáng kể so với việc tạo một :ref:`MeshInstance3D<class_MeshInstance3D>` với một :ref:`PrimitiveMesh<class_PrimitiveMesh>`. Việc di chuyển một node CSG vào bên trong một node CSG khác cũng có chi phí CPU đáng kể, vì vậy nên tránh thực hiện việc này trong khi chơi.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Prototyping levels with CSG <../tutorials/3d/csg_tools>`
+- :doc:`Tạo prototype level bằng CSG <../tutorials/3d/csg_tools>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,8 +58,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CSGCylinder3D_property_cone:
 
@@ -72,7 +72,7 @@ Property Descriptions
 - |void| **set_cone**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_cone**\ (\ )
 
-If ``true`` a cone is created, the :ref:`radius<class_CSGCylinder3D_property_radius>` will only apply to one side.
+Nếu ``true`` một hình nón được tạo, :ref:`radius<class_CSGCylinder3D_property_radius>` sẽ chỉ áp dụng cho một phía.
 
 .. rst-class:: classref-item-separator
 
@@ -89,7 +89,7 @@ If ``true`` a cone is created, the :ref:`radius<class_CSGCylinder3D_property_rad
 - |void| **set_height**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_height**\ (\ )
 
-The height of the cylinder.
+Chiều cao của hình trụ.
 
 .. rst-class:: classref-item-separator
 
@@ -99,14 +99,14 @@ The height of the cylinder.
 
 .. rst-class:: classref-property
 
-:ref:`Material<class_Material>` **material** :ref:`🔗<class_CSGCylinder3D_property_material>`
+:ref:`Material<class_Material>` **material** :ref:`🔗 <class_CSGCylinder3D_property_material>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_material**\ (\ value\: :ref:`Material<class_Material>`\ )
 - :ref:`Material<class_Material>` **get_material**\ (\ )
 
-The material used to render the cylinder.
+Vật liệu được sử dụng để kết xuất hình trụ.
 
 .. rst-class:: classref-item-separator
 
@@ -123,7 +123,7 @@ The material used to render the cylinder.
 - |void| **set_radius**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_radius**\ (\ )
 
-The radius of the cylinder.
+Bán kính của hình trụ.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ The radius of the cylinder.
 - |void| **set_sides**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_sides**\ (\ )
 
-The number of sides of the cylinder, the higher this number the more detail there will be in the cylinder.
+Số cạnh của hình trụ; số này càng lớn thì hình trụ sẽ càng có nhiều chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -157,14 +157,14 @@ The number of sides of the cylinder, the higher this number the more detail ther
 - |void| **set_smooth_faces**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_smooth_faces**\ (\ )
 
-If ``true`` the normals of the cylinder are set to give a smooth effect making the cylinder seem rounded. If ``false`` the cylinder will have a flat shaded look.
+Nếu ``true`` các normal của hình trụ được thiết lập để tạo hiệu ứng mượt, khiến hình trụ trông tròn hơn. Nếu ``false`` hình trụ sẽ có kiểu hiển thị đổ bóng phẳng.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

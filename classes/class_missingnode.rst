@@ -10,23 +10,23 @@
 MissingNode
 ===========
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-An internal editor class intended for keeping the data of unrecognized nodes.
+Một lớp editor nội bộ dùng để lưu giữ dữ liệu của các node không được nhận dạng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This is an internal editor class intended for keeping data of nodes of unknown type (most likely this type was supplied by an extension that is no longer loaded). It can't be manually instantiated or placed in a scene.
+Đây là một lớp editor nội bộ dùng để lưu giữ dữ liệu của các node có kiểu không xác định (rất có thể kiểu này được cung cấp bởi một extension không còn được tải). Không thể khởi tạo lớp này theo cách thủ công hoặc đặt nó vào một scene.
 
-\ **Warning:** Ignore missing nodes unless you know what you are doing. Existing properties on a missing node can be freely modified in code, regardless of the type they are intended to be.
+\ **Cảnh báo:** Bỏ qua các node bị thiếu trừ khi bạn biết mình đang làm gì. Có thể tự do sửa đổi các thuộc tính hiện có trên một node bị thiếu trong code, bất kể kiểu mà chúng được dùng cho là gì.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -47,21 +47,21 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MissingNode_property_original_class:
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **original_class** :ref:`🔗<class_MissingNode_property_original_class>`
+:ref:`String<class_String>` **original_class** :ref:`🔗 <class_MissingNode_property_original_class>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_original_class**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_original_class**\ (\ )
 
-The name of the class this node was supposed to be (see :ref:`Object.get_class()<class_Object_method_get_class>`).
+Tên của class mà node này đáng lẽ thuộc về (xem :ref:`Object.get_class()<class_Object_method_get_class>`).
 
 .. rst-class:: classref-item-separator
 
@@ -71,14 +71,14 @@ The name of the class this node was supposed to be (see :ref:`Object.get_class()
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **original_scene** :ref:`🔗<class_MissingNode_property_original_scene>`
+:ref:`String<class_String>` **original_scene** :ref:`🔗 <class_MissingNode_property_original_scene>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_original_scene**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_original_scene**\ (\ )
 
-Returns the path of the scene this node was instance of originally.
+Trả về đường dẫn của scene mà node này ban đầu là instance.
 
 .. rst-class:: classref-item-separator
 
@@ -88,14 +88,14 @@ Returns the path of the scene this node was instance of originally.
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **recording_properties** :ref:`🔗<class_MissingNode_property_recording_properties>`
+:ref:`bool<class_bool>` **recording_properties** :ref:`🔗 <class_MissingNode_property_recording_properties>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_recording_properties**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_recording_properties**\ (\ )
 
-If ``true``, allows new properties to be set along with existing ones. If ``false``, only existing properties' values can be set, and new properties cannot be added.
+Nếu ``true``, cho phép thiết lập các thuộc tính mới cùng với các thuộc tính hiện có. Nếu ``false``, chỉ có thể thiết lập giá trị của các thuộc tính hiện có và không thể thêm thuộc tính mới.
 
 .. rst-class:: classref-item-separator
 
@@ -105,21 +105,21 @@ If ``true``, allows new properties to be set along with existing ones. If ``fals
 
 .. rst-class:: classref-property
 
-:ref:`bool<class_bool>` **recording_signals** :ref:`🔗<class_MissingNode_property_recording_signals>`
+:ref:`bool<class_bool>` **recording_signals** :ref:`🔗 <class_MissingNode_property_recording_signals>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_recording_signals**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_recording_signals**\ (\ )
 
-If ``true``, allows new signals to be connected to along with existing ones. If ``false``, only existing signals can be connected to, and new signals cannot be added.
+Nếu ``true``, cho phép kết nối các signal mới cùng với các signal hiện có. Nếu ``false``, chỉ có thể kết nối các signal hiện có và không thể thêm signal mới.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override phương thức này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng argument bất kỳ sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

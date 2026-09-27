@@ -10,49 +10,49 @@
 GPUParticlesCollisionHeightField3D
 ==================================
 
-**Inherits:** :ref:`GPUParticlesCollision3D<class_GPUParticlesCollision3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`GPUParticlesCollision3D<class_GPUParticlesCollision3D>` **<** :ref:`VisualInstance3D<class_VisualInstance3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A real-time heightmap-shaped 3D particle collision shape affecting :ref:`GPUParticles3D<class_GPUParticles3D>` nodes.
+Một shape va chạm particle 3D dạng heightmap theo thời gian thực, ảnh hưởng đến các node :ref:`GPUParticles3D<class_GPUParticles3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A real-time heightmap-shaped 3D particle collision shape affecting :ref:`GPUParticles3D<class_GPUParticles3D>` nodes.
+Một shape va chạm particle 3D dạng heightmap theo thời gian thực, ảnh hưởng đến các node :ref:`GPUParticles3D<class_GPUParticles3D>`.
 
-Heightmap shapes allow for efficiently representing collisions for convex and concave objects with a single "floor" (such as terrain). This is less flexible than :ref:`GPUParticlesCollisionSDF3D<class_GPUParticlesCollisionSDF3D>`, but it doesn't require a baking step.
+Các shape dạng heightmap cho phép biểu diễn hiệu quả va chạm của các đối tượng lồi và lõm bằng một "mặt sàn" duy nhất (chẳng hạn như địa hình). Cách này kém linh hoạt hơn :ref:`GPUParticlesCollisionSDF3D<class_GPUParticlesCollisionSDF3D>`, nhưng không yêu cầu bước baking.
 
-\ **GPUParticlesCollisionHeightField3D** can also be regenerated in real-time when it is moved, when the camera moves, or even continuously. This makes **GPUParticlesCollisionHeightField3D** a good choice for weather effects such as rain and snow and games with highly dynamic geometry. However, this class is limited since heightmaps cannot represent overhangs (e.g. indoors or caves).
+\ **GPUParticlesCollisionHeightField3D** cũng có thể được tạo lại theo thời gian thực khi nó được di chuyển, khi camera di chuyển hoặc thậm chí liên tục. Điều này khiến **GPUParticlesCollisionHeightField3D** trở thành lựa chọn phù hợp cho các hiệu ứng thời tiết như mưa và tuyết, cũng như các game có hình học biến đổi linh hoạt. Tuy nhiên, class này bị giới hạn vì heightmap không thể biểu diễn các phần nhô ra (ví dụ: trong nhà hoặc hang động).
 
-\ **Note:** :ref:`ParticleProcessMaterial.collision_mode<class_ParticleProcessMaterial_property_collision_mode>` must be ``true`` on the :ref:`GPUParticles3D<class_GPUParticles3D>`'s process material for collision to work.
+\ **Lưu ý:** :ref:`ParticleProcessMaterial.collision_mode<class_ParticleProcessMaterial_property_collision_mode>` phải được ``true`` trên process material của :ref:`GPUParticles3D<class_GPUParticles3D>` để collision hoạt động.
 
-\ **Note:** Particle collision only affects :ref:`GPUParticles3D<class_GPUParticles3D>`, not :ref:`CPUParticles3D<class_CPUParticles3D>`.
+\ **Lưu ý:** Particle collision chỉ ảnh hưởng đến :ref:`GPUParticles3D<class_GPUParticles3D>`, không ảnh hưởng đến :ref:`CPUParticles3D<class_CPUParticles3D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`bool<class_bool>`                                               | :ref:`follow_camera_enabled<class_GPUParticlesCollisionHeightField3D_property_follow_camera_enabled>` | ``false``            |
-   +-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`int<class_int>`                                                 | :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>`           | ``1048575``          |
-   +-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` | :ref:`resolution<class_GPUParticlesCollisionHeightField3D_property_resolution>`                       | ``2``                |
-   +-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`Vector3<class_Vector3>`                                         | :ref:`size<class_GPUParticlesCollisionHeightField3D_property_size>`                                   | ``Vector3(2, 2, 2)`` |
-   +-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
-   | :ref:`UpdateMode<enum_GPUParticlesCollisionHeightField3D_UpdateMode>` | :ref:`update_mode<class_GPUParticlesCollisionHeightField3D_property_update_mode>`                     | ``0``                |
-   +-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
+   +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`bool<class_bool>`                                                | :ref:`follow_camera_enabled<class_GPUParticlesCollisionHeightField3D_property_follow_camera_enabled>` | ``false``            |
+   +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`int<class_int>`                                                  | :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>`           | ``1048575``          |
+   +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`Resolution <enum_GPUParticlesCollisionHeightField3D_Resolution>` | :ref:`resolution<class_GPUParticlesCollisionHeightField3D_property_resolution>`                       | ``2``                |
+   +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`Vector3<class_Vector3>`                                          | :ref:`size<class_GPUParticlesCollisionHeightField3D_property_size>`                                   | ``Vector3(2, 2, 2)`` |
+   +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
+   | :ref:`UpdateMode <enum_GPUParticlesCollisionHeightField3D_UpdateMode>` | :ref:`update_mode<class_GPUParticlesCollisionHeightField3D_property_update_mode>`                     | ``0``                |
+   +------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+----------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -69,14 +69,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_GPUParticlesCollisionHeightField3D_Resolution:
 
 .. rst-class:: classref-enumeration
 
-enum **Resolution**: :ref:`🔗<enum_GPUParticlesCollisionHeightField3D_Resolution>`
+enum **Resolution**: :ref:`🔗 <enum_GPUParticlesCollisionHeightField3D_Resolution>`
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_RESOLUTION_256:
 
@@ -84,7 +84,7 @@ enum **Resolution**: :ref:`🔗<enum_GPUParticlesCollisionHeightField3D_Resoluti
 
 :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **RESOLUTION_256** = ``0``
 
-Generate a 256×256 heightmap. Intended for small-scale scenes, or larger scenes with no distant particles.
+Tạo bản đồ độ cao 256×256. Dùng cho các cảnh quy mô nhỏ hoặc các cảnh lớn hơn không có hạt ở xa.
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_RESOLUTION_512:
 
@@ -92,7 +92,7 @@ Generate a 256×256 heightmap. Intended for small-scale scenes, or larger scenes
 
 :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **RESOLUTION_512** = ``1``
 
-Generate a 512×512 heightmap. Intended for medium-scale scenes, or larger scenes with no distant particles.
+Tạo bản đồ độ cao 512×512. Dùng cho các cảnh quy mô trung bình hoặc các cảnh lớn hơn không có hạt ở xa.
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_RESOLUTION_1024:
 
@@ -100,7 +100,7 @@ Generate a 512×512 heightmap. Intended for medium-scale scenes, or larger scene
 
 :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **RESOLUTION_1024** = ``2``
 
-Generate a 1024×1024 heightmap. Intended for large scenes with distant particles.
+Tạo bản đồ độ cao 1024×1024. Dùng cho các cảnh quy mô lớn có hạt ở xa.
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_RESOLUTION_2048:
 
@@ -108,7 +108,7 @@ Generate a 1024×1024 heightmap. Intended for large scenes with distant particle
 
 :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **RESOLUTION_2048** = ``3``
 
-Generate a 2048×2048 heightmap. Intended for very large scenes with distant particles.
+Tạo bản đồ độ cao 2048×2048. Dùng cho các cảnh quy mô rất lớn có hạt ở xa.
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_RESOLUTION_4096:
 
@@ -116,7 +116,7 @@ Generate a 2048×2048 heightmap. Intended for very large scenes with distant par
 
 :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **RESOLUTION_4096** = ``4``
 
-Generate a 4096×4096 heightmap. Intended for huge scenes with distant particles.
+Tạo bản đồ độ cao 4096×4096. Dùng cho các cảnh quy mô cực lớn có hạt ở xa.
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_RESOLUTION_8192:
 
@@ -124,7 +124,7 @@ Generate a 4096×4096 heightmap. Intended for huge scenes with distant particles
 
 :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **RESOLUTION_8192** = ``5``
 
-Generate a 8192×8192 heightmap. Intended for gigantic scenes with distant particles.
+Tạo một heightmap 8192×8192. Dành cho các cảnh khổng lồ với các particle ở xa.
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_RESOLUTION_MAX:
 
@@ -132,7 +132,7 @@ Generate a 8192×8192 heightmap. Intended for gigantic scenes with distant parti
 
 :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **RESOLUTION_MAX** = ``6``
 
-Represents the size of the :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` enum.
+Đại diện cho kích thước của enum :ref:`Resolution <enum_GPUParticlesCollisionHeightField3D_Resolution>`.
 
 .. rst-class:: classref-item-separator
 
@@ -142,7 +142,7 @@ Represents the size of the :ref:`Resolution<enum_GPUParticlesCollisionHeightFiel
 
 .. rst-class:: classref-enumeration
 
-enum **UpdateMode**: :ref:`🔗<enum_GPUParticlesCollisionHeightField3D_UpdateMode>`
+enum **UpdateMode**: :ref:`🔗 <enum_GPUParticlesCollisionHeightField3D_UpdateMode>`
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_UPDATE_MODE_WHEN_MOVED:
 
@@ -150,7 +150,7 @@ enum **UpdateMode**: :ref:`🔗<enum_GPUParticlesCollisionHeightField3D_UpdateMo
 
 :ref:`UpdateMode<enum_GPUParticlesCollisionHeightField3D_UpdateMode>` **UPDATE_MODE_WHEN_MOVED** = ``0``
 
-Only update the heightmap when the **GPUParticlesCollisionHeightField3D** node is moved, or when the camera moves if :ref:`follow_camera_enabled<class_GPUParticlesCollisionHeightField3D_property_follow_camera_enabled>` is ``true``. An update can be forced by slightly moving the **GPUParticlesCollisionHeightField3D** in any direction, or by calling :ref:`RenderingServer.particles_collision_height_field_update()<class_RenderingServer_method_particles_collision_height_field_update>`.
+Chỉ cập nhật heightmap khi node **GPUParticlesCollisionHeightField3D** được di chuyển hoặc khi camera di chuyển nếu :ref:`follow_camera_enabled<class_GPUParticlesCollisionHeightField3D_property_follow_camera_enabled>` là ``true``. Có thể buộc cập nhật bằng cách di chuyển nhẹ **GPUParticlesCollisionHeightField3D** theo bất kỳ hướng nào hoặc gọi :ref:`RenderingServer.particles_collision_height_field_update()<class_RenderingServer_method_particles_collision_height_field_update>`.
 
 .. _class_GPUParticlesCollisionHeightField3D_constant_UPDATE_MODE_ALWAYS:
 
@@ -158,7 +158,7 @@ Only update the heightmap when the **GPUParticlesCollisionHeightField3D** node i
 
 :ref:`UpdateMode<enum_GPUParticlesCollisionHeightField3D_UpdateMode>` **UPDATE_MODE_ALWAYS** = ``1``
 
-Update the heightmap every frame. This has a significant performance cost. This update should only be used when geometry that particles can collide with changes significantly during gameplay.
+Cập nhật heightmap ở mỗi frame. Việc này gây tốn hiệu năng đáng kể. Chỉ nên sử dụng tùy chọn cập nhật này khi hình học mà particle có thể va chạm thay đổi đáng kể trong quá trình gameplay.
 
 .. rst-class:: classref-section-separator
 
@@ -166,8 +166,8 @@ Update the heightmap every frame. This has a significant performance cost. This 
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_GPUParticlesCollisionHeightField3D_property_follow_camera_enabled:
 
@@ -180,9 +180,9 @@ Property Descriptions
 - |void| **set_follow_camera_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_follow_camera_enabled**\ (\ )
 
-If ``true``, the **GPUParticlesCollisionHeightField3D** will follow the current camera in global space. The **GPUParticlesCollisionHeightField3D** does not need to be a child of the :ref:`Camera3D<class_Camera3D>` node for this to work.
+Nếu ``true``, **GPUParticlesCollisionHeightField3D** sẽ theo camera hiện tại trong global space. **GPUParticlesCollisionHeightField3D** không cần là một node con của node :ref:`Camera3D<class_Camera3D>` để tính năng này hoạt động.
 
-Following the camera has a performance cost, as it will force the heightmap to update whenever the camera moves. Consider lowering :ref:`resolution<class_GPUParticlesCollisionHeightField3D_property_resolution>` to improve performance if :ref:`follow_camera_enabled<class_GPUParticlesCollisionHeightField3D_property_follow_camera_enabled>` is ``true``.
+Việc theo dõi camera làm giảm hiệu suất, vì nó sẽ buộc heightmap cập nhật mỗi khi camera di chuyển. Hãy cân nhắc giảm :ref:`resolution<class_GPUParticlesCollisionHeightField3D_property_resolution>` để cải thiện hiệu suất nếu :ref:`follow_camera_enabled<class_GPUParticlesCollisionHeightField3D_property_follow_camera_enabled>` là ``true``.
 
 .. rst-class:: classref-item-separator
 
@@ -199,11 +199,11 @@ Following the camera has a performance cost, as it will force the heightmap to u
 - |void| **set_heightfield_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_heightfield_mask**\ (\ )
 
-The visual layers to account for when updating the heightmap. Only :ref:`MeshInstance3D<class_MeshInstance3D>`\ s whose :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` match with this :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` will be included in the heightmap collision update. By default, all 20 user-visible layers are taken into account for updating the heightmap collision.
+Các lớp hiển thị cần được tính đến khi cập nhật heightmap. Chỉ :ref:`MeshInstance3D<class_MeshInstance3D>`\ s có :ref:`VisualInstance3D.layers<class_VisualInstance3D_property_layers>` khớp với :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` này mới được đưa vào quá trình cập nhật va chạm của heightmap. Theo mặc định, cả 20 lớp hiển thị với người dùng đều được tính đến khi cập nhật va chạm của heightmap.
 
-\ **Note:** Since the :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` allows for 32 layers to be stored in total, there are an additional 12 layers that are only used internally by the engine and aren't exposed in the editor. Setting :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` using a script allows you to toggle those reserved layers, which can be useful for editor plugins.
+\ **Lưu ý:** Vì :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` cho phép lưu trữ tổng cộng 32 lớp, nên có thêm 12 lớp chỉ được engine sử dụng nội bộ và không hiển thị trong editor. Việc đặt :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` bằng script cho phép bạn bật hoặc tắt các lớp dành riêng đó, điều này có thể hữu ích cho các plugin của editor.
 
-To adjust :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` more easily using a script, use :ref:`get_heightfield_mask_value()<class_GPUParticlesCollisionHeightField3D_method_get_heightfield_mask_value>` and :ref:`set_heightfield_mask_value()<class_GPUParticlesCollisionHeightField3D_method_set_heightfield_mask_value>`.
+Để điều chỉnh :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` dễ dàng hơn bằng script, hãy sử dụng :ref:`get_heightfield_mask_value()<class_GPUParticlesCollisionHeightField3D_method_get_heightfield_mask_value>` và :ref:`set_heightfield_mask_value()<class_GPUParticlesCollisionHeightField3D_method_set_heightfield_mask_value>`.
 
 .. rst-class:: classref-item-separator
 
@@ -220,7 +220,7 @@ To adjust :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_proper
 - |void| **set_resolution**\ (\ value\: :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>`\ )
 - :ref:`Resolution<enum_GPUParticlesCollisionHeightField3D_Resolution>` **get_resolution**\ (\ )
 
-Higher resolutions can represent small details more accurately in large scenes, at the cost of lower performance. If :ref:`update_mode<class_GPUParticlesCollisionHeightField3D_property_update_mode>` is :ref:`UPDATE_MODE_ALWAYS<class_GPUParticlesCollisionHeightField3D_constant_UPDATE_MODE_ALWAYS>`, consider using the lowest resolution possible.
+Độ phân giải cao hơn có thể biểu diễn các chi tiết nhỏ chính xác hơn trong những cảnh lớn, nhưng phải đánh đổi bằng hiệu suất thấp hơn. Nếu :ref:`update_mode<class_GPUParticlesCollisionHeightField3D_property_update_mode>` là :ref:`UPDATE_MODE_ALWAYS<class_GPUParticlesCollisionHeightField3D_constant_UPDATE_MODE_ALWAYS>`, hãy cân nhắc sử dụng độ phân giải thấp nhất có thể.
 
 .. rst-class:: classref-item-separator
 
@@ -237,7 +237,7 @@ Higher resolutions can represent small details more accurately in large scenes, 
 - |void| **set_size**\ (\ value\: :ref:`Vector3<class_Vector3>`\ )
 - :ref:`Vector3<class_Vector3>` **get_size**\ (\ )
 
-The collision heightmap's size in 3D units. To improve heightmap quality, :ref:`size<class_GPUParticlesCollisionHeightField3D_property_size>` should be set as small as possible while covering the parts of the scene you need.
+Kích thước của heightmap va chạm theo đơn vị 3D. Để cải thiện chất lượng heightmap, :ref:`size<class_GPUParticlesCollisionHeightField3D_property_size>` nên được đặt ở mức nhỏ nhất có thể trong khi vẫn bao phủ các phần của cảnh mà bạn cần.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ The collision heightmap's size in 3D units. To improve heightmap quality, :ref:`
 - |void| **set_update_mode**\ (\ value\: :ref:`UpdateMode<enum_GPUParticlesCollisionHeightField3D_UpdateMode>`\ )
 - :ref:`UpdateMode<enum_GPUParticlesCollisionHeightField3D_UpdateMode>` **get_update_mode**\ (\ )
 
-The update policy to use for the generated heightmap.
+Chính sách cập nhật được sử dụng cho heightmap đã tạo.
 
 .. rst-class:: classref-section-separator
 
@@ -262,8 +262,8 @@ The update policy to use for the generated heightmap.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_GPUParticlesCollisionHeightField3D_method_get_heightfield_mask_value:
 
@@ -271,7 +271,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **get_heightfield_mask_value**\ (\ layer_number\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_GPUParticlesCollisionHeightField3D_method_get_heightfield_mask_value>`
 
-Returns ``true`` if the specified layer of the :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` is enabled, given a ``layer_number`` between ``1`` and ``20``, inclusive.
+Trả về ``true`` nếu lớp được chỉ định của :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>` được bật, với một ``layer_number`` nằm trong khoảng từ ``1`` đến ``20``, bao gồm cả hai giá trị.
 
 .. rst-class:: classref-item-separator
 
@@ -283,14 +283,14 @@ Returns ``true`` if the specified layer of the :ref:`heightfield_mask<class_GPUP
 
 |void| **set_heightfield_mask_value**\ (\ layer_number\: :ref:`int<class_int>`, value\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_GPUParticlesCollisionHeightField3D_method_set_heightfield_mask_value>`
 
-Based on ``value``, enables or disables the specified layer in the :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>`, given a ``layer_number`` between ``1`` and ``20``, inclusive.
+Dựa trên ``value``, bật hoặc tắt lớp được chỉ định trong :ref:`heightfield_mask<class_GPUParticlesCollisionHeightField3D_property_heightfield_mask>`, với một ``layer_number`` nằm trong khoảng từ ``1`` đến ``20``, bao gồm cả hai giá trị.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

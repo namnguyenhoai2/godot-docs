@@ -10,40 +10,40 @@
 CollisionPolygon2D
 ==================
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node that provides a polygon shape to a :ref:`CollisionObject2D<class_CollisionObject2D>` parent.
+Một node cung cấp hình dạng đa giác cho parent :ref:`CollisionObject2D<class_CollisionObject2D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A node that provides a polygon shape to a :ref:`CollisionObject2D<class_CollisionObject2D>` parent and allows it to be edited. The polygon can be concave or convex. This can give a detection shape to an :ref:`Area2D<class_Area2D>`, turn a :ref:`PhysicsBody2D<class_PhysicsBody2D>` into a solid object, or give a hollow shape to a :ref:`StaticBody2D<class_StaticBody2D>`.
+Một node cung cấp hình dạng đa giác cho parent :ref:`CollisionObject2D<class_CollisionObject2D>` và cho phép chỉnh sửa nó. Đa giác có thể lõm hoặc lồi. Điều này có thể tạo hình dạng phát hiện cho :ref:`Area2D<class_Area2D>`, biến :ref:`PhysicsBody2D<class_PhysicsBody2D>` thành một đối tượng đặc hoặc tạo hình dạng rỗng cho :ref:`StaticBody2D<class_StaticBody2D>`.
 
-\ **Warning:** A non-uniformly scaled **CollisionPolygon2D** will likely not behave as expected. Make sure to keep its scale the same on all axes and adjust its polygon instead.
+\ **Cảnh báo:** **CollisionPolygon2D** được scale không đồng đều có thể sẽ không hoạt động như mong đợi. Hãy đảm bảo scale của nó giống nhau trên tất cả các trục và thay vào đó điều chỉnh đa giác của nó.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`BuildMode<enum_CollisionPolygon2D_BuildMode>` | :ref:`build_mode<class_CollisionPolygon2D_property_build_mode>`                                   | ``0``                    |
-   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`disabled<class_CollisionPolygon2D_property_disabled>`                                       | ``false``                |
-   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`bool<class_bool>`                             | :ref:`one_way_collision<class_CollisionPolygon2D_property_one_way_collision>`                     | ``false``                |
-   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`Vector2<class_Vector2>`                       | :ref:`one_way_collision_direction<class_CollisionPolygon2D_property_one_way_collision_direction>` | ``Vector2(0, 1)``        |
-   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`float<class_float>`                           | :ref:`one_way_collision_margin<class_CollisionPolygon2D_property_one_way_collision_margin>`       | ``1.0``                  |
-   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
-   | :ref:`PackedVector2Array<class_PackedVector2Array>` | :ref:`polygon<class_CollisionPolygon2D_property_polygon>`                                         | ``PackedVector2Array()`` |
-   +-----------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
+   +------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`BuildMode <enum_CollisionPolygon2D_BuildMode>` | :ref:`build_mode<class_CollisionPolygon2D_property_build_mode>`                                   | ``0``                    |
+   +------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`disabled<class_CollisionPolygon2D_property_disabled>`                                       | ``false``                |
+   +------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`bool<class_bool>`                              | :ref:`one_way_collision<class_CollisionPolygon2D_property_one_way_collision>`                     | ``false``                |
+   +------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`Vector2<class_Vector2>`                        | :ref:`one_way_collision_direction<class_CollisionPolygon2D_property_one_way_collision_direction>` | ``Vector2(0, 1)``        |
+   +------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`float<class_float>`                            | :ref:`one_way_collision_margin<class_CollisionPolygon2D_property_one_way_collision_margin>`       | ``1.0``                  |
+   +------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>`  | :ref:`polygon<class_CollisionPolygon2D_property_polygon>`                                         | ``PackedVector2Array()`` |
+   +------------------------------------------------------+---------------------------------------------------------------------------------------------------+--------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -51,14 +51,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_CollisionPolygon2D_BuildMode:
 
 .. rst-class:: classref-enumeration
 
-enum **BuildMode**: :ref:`🔗<enum_CollisionPolygon2D_BuildMode>`
+enum **BuildMode**: :ref:`🔗 <enum_CollisionPolygon2D_BuildMode>`
 
 .. _class_CollisionPolygon2D_constant_BUILD_SOLIDS:
 
@@ -66,7 +66,7 @@ enum **BuildMode**: :ref:`🔗<enum_CollisionPolygon2D_BuildMode>`
 
 :ref:`BuildMode<enum_CollisionPolygon2D_BuildMode>` **BUILD_SOLIDS** = ``0``
 
-Collisions will include the polygon and its contained area. In this mode the node has the same effect as several :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>` nodes, one for each convex shape in the convex decomposition of the polygon (but without the overhead of multiple nodes).
+Va chạm sẽ bao gồm đa giác và phần diện tích bên trong nó. Ở chế độ này, node có tác dụng tương tự như nhiều node :ref:`ConvexPolygonShape2D<class_ConvexPolygonShape2D>`, mỗi node tương ứng với một hình lồi trong phép phân rã lồi của đa giác (nhưng không chịu overhead do có nhiều node).
 
 .. _class_CollisionPolygon2D_constant_BUILD_SEGMENTS:
 
@@ -74,7 +74,7 @@ Collisions will include the polygon and its contained area. In this mode the nod
 
 :ref:`BuildMode<enum_CollisionPolygon2D_BuildMode>` **BUILD_SEGMENTS** = ``1``
 
-Collisions will only include the polygon edges. In this mode the node has the same effect as a single :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>` made of segments, with the restriction that each segment (after the first one) starts where the previous one ends, and the last one ends where the first one starts (forming a closed but hollow polygon).
+Va chạm sẽ chỉ bao gồm các cạnh của đa giác. Ở chế độ này, node có tác dụng tương tự như một :ref:`ConcavePolygonShape2D<class_ConcavePolygonShape2D>` duy nhất được tạo từ các đoạn thẳng, với hạn chế là mỗi đoạn (sau đoạn đầu tiên) bắt đầu tại nơi đoạn trước đó kết thúc, còn đoạn cuối cùng kết thúc tại nơi đoạn đầu tiên bắt đầu (tạo thành một đa giác kín nhưng rỗng).
 
 .. rst-class:: classref-section-separator
 
@@ -82,8 +82,8 @@ Collisions will only include the polygon edges. In this mode the node has the sa
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CollisionPolygon2D_property_build_mode:
 
@@ -96,7 +96,7 @@ Property Descriptions
 - |void| **set_build_mode**\ (\ value\: :ref:`BuildMode<enum_CollisionPolygon2D_BuildMode>`\ )
 - :ref:`BuildMode<enum_CollisionPolygon2D_BuildMode>` **get_build_mode**\ (\ )
 
-Collision build mode.
+Chế độ tạo va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -113,7 +113,7 @@ Collision build mode.
 - |void| **set_disabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_disabled**\ (\ )
 
-If ``true``, no collisions will be detected. This property should be changed with :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
+Nếu ``true``, sẽ không phát hiện va chạm nào. Nên thay đổi thuộc tính này bằng :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
 
 .. rst-class:: classref-item-separator
 
@@ -130,11 +130,11 @@ If ``true``, no collisions will be detected. This property should be changed wit
 - |void| **set_one_way_collision**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_one_way_collision_enabled**\ (\ )
 
-If ``true``, only edges that face up, relative to **CollisionPolygon2D**'s rotation, will collide with other objects.
+Nếu ``true``, chỉ những cạnh hướng lên trên, theo phép xoay của **CollisionPolygon2D**, mới va chạm với các đối tượng khác.
 
-\ **Note:** This property has no effect if this **CollisionPolygon2D** is a child of an :ref:`Area2D<class_Area2D>` node.
+\ **Lưu ý:** Thuộc tính này không có tác dụng nếu **CollisionPolygon2D** này là node con của một node :ref:`Area2D<class_Area2D>`.
 
-\ **Note:** The one way collision direction can be configured by setting :ref:`one_way_collision_direction<class_CollisionPolygon2D_property_one_way_collision_direction>`.
+\ **Lưu ý:** Có thể cấu hình hướng va chạm một chiều bằng cách thiết lập :ref:`one_way_collision_direction<class_CollisionPolygon2D_property_one_way_collision_direction>`.
 
 .. rst-class:: classref-item-separator
 
@@ -151,7 +151,7 @@ If ``true``, only edges that face up, relative to **CollisionPolygon2D**'s rotat
 - |void| **set_one_way_collision_direction**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_one_way_collision_direction**\ (\ )
 
-The direction used for one-way collision.
+Hướng được sử dụng cho va chạm một chiều.
 
 .. rst-class:: classref-item-separator
 
@@ -168,7 +168,7 @@ The direction used for one-way collision.
 - |void| **set_one_way_collision_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_one_way_collision_margin**\ (\ )
 
-The margin used for one-way collision (in pixels). Higher values will make the shape thicker, and work better for colliders that enter the polygon at a high velocity.
+Biên được sử dụng cho va chạm một chiều (tính bằng pixel). Giá trị cao hơn sẽ làm hình dạng dày hơn và hoạt động tốt hơn đối với các collider đi vào đa giác với vận tốc cao.
 
 .. rst-class:: classref-item-separator
 
@@ -185,18 +185,18 @@ The margin used for one-way collision (in pixels). Higher values will make the s
 - |void| **set_polygon**\ (\ value\: :ref:`PackedVector2Array<class_PackedVector2Array>`\ )
 - :ref:`PackedVector2Array<class_PackedVector2Array>` **get_polygon**\ (\ )
 
-The polygon's list of vertices. Each point will be connected to the next, and the final point will be connected to the first.
+Danh sách các đỉnh của đa giác. Mỗi điểm sẽ được nối với điểm tiếp theo, và điểm cuối cùng sẽ được nối với điểm đầu tiên.
 
-\ **Note:** The returned vertices are in the local coordinate space of the given **CollisionPolygon2D**.
+\ **Lưu ý:** Các đỉnh được trả về nằm trong không gian tọa độ cục bộ của **CollisionPolygon2D** đã cho.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

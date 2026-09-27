@@ -10,43 +10,43 @@
 UPNPDevice
 ==========
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Universal Plug and Play (UPnP) device.
+Thiết bị Universal Plug and Play (UPnP).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Universal Plug and Play (UPnP) device. See :ref:`UPNP<class_UPNP>` for UPnP discovery and utility functions. Provides low-level access to UPNP control commands. Allows to manage port mappings (port forwarding) and to query network information of the device (like local and external IP address and status). Note that methods on this class are synchronous and block the calling thread.
+Thiết bị Universal Plug and Play (UPnP). Xem :ref:`UPNP<class_UPNP>` để biết các hàm discovery và tiện ích của UPnP. Cung cấp quyền truy cập cấp thấp vào các lệnh điều khiển UPNP. Cho phép quản lý các ánh xạ cổng (port forwarding) và truy vấn thông tin mạng của thiết bị (chẳng hạn như địa chỉ IP cục bộ và bên ngoài cũng như trạng thái). Lưu ý rằng các phương thức trong lớp này là synchronous và chặn thread gọi.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------+---------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                 | :ref:`description_url<class_UPNPDevice_property_description_url>`   | ``""`` |
-   +---------------------------------------------+---------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                 | :ref:`igd_control_url<class_UPNPDevice_property_igd_control_url>`   | ``""`` |
-   +---------------------------------------------+---------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                 | :ref:`igd_our_addr<class_UPNPDevice_property_igd_our_addr>`         | ``""`` |
-   +---------------------------------------------+---------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                 | :ref:`igd_service_type<class_UPNPDevice_property_igd_service_type>` | ``""`` |
-   +---------------------------------------------+---------------------------------------------------------------------+--------+
-   | :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` | :ref:`igd_status<class_UPNPDevice_property_igd_status>`             | ``9``  |
-   +---------------------------------------------+---------------------------------------------------------------------+--------+
-   | :ref:`String<class_String>`                 | :ref:`service_type<class_UPNPDevice_property_service_type>`         | ``""`` |
-   +---------------------------------------------+---------------------------------------------------------------------+--------+
+   +----------------------------------------------+---------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                  | :ref:`description_url<class_UPNPDevice_property_description_url>`   | ``""`` |
+   +----------------------------------------------+---------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                  | :ref:`igd_control_url<class_UPNPDevice_property_igd_control_url>`   | ``""`` |
+   +----------------------------------------------+---------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                  | :ref:`igd_our_addr<class_UPNPDevice_property_igd_our_addr>`         | ``""`` |
+   +----------------------------------------------+---------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                  | :ref:`igd_service_type<class_UPNPDevice_property_igd_service_type>` | ``""`` |
+   +----------------------------------------------+---------------------------------------------------------------------+--------+
+   | :ref:`IGDStatus <enum_UPNPDevice_IGDStatus>` | :ref:`igd_status<class_UPNPDevice_property_igd_status>`             | ``9``  |
+   +----------------------------------------------+---------------------------------------------------------------------+--------+
+   | :ref:`String<class_String>`                  | :ref:`service_type<class_UPNPDevice_property_service_type>`         | ``""`` |
+   +----------------------------------------------+---------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -67,14 +67,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_UPNPDevice_IGDStatus:
 
 .. rst-class:: classref-enumeration
 
-enum **IGDStatus**: :ref:`🔗<enum_UPNPDevice_IGDStatus>`
+enum **IGDStatus**: :ref:`🔗 <enum_UPNPDevice_IGDStatus>`
 
 .. _class_UPNPDevice_constant_IGD_STATUS_OK:
 
@@ -90,7 +90,7 @@ OK.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_HTTP_ERROR** = ``1``
 
-HTTP error.
+Lỗi HTTP.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_HTTP_EMPTY:
 
@@ -98,7 +98,7 @@ HTTP error.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_HTTP_EMPTY** = ``2``
 
-Empty HTTP response.
+Phản hồi HTTP trống.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_NO_URLS:
 
@@ -106,9 +106,9 @@ Empty HTTP response.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_NO_URLS** = ``3``
 
-**Deprecated:** This value is no longer used.
+**Đã ngừng sử dụng:** Giá trị này không còn được sử dụng.
 
-Returned response contained no URLs.
+Phản hồi được trả về không chứa URL nào.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_NO_IGD:
 
@@ -116,7 +116,7 @@ Returned response contained no URLs.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_NO_IGD** = ``4``
 
-Not a valid IGD.
+IGD không hợp lệ.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_DISCONNECTED:
 
@@ -124,7 +124,7 @@ Not a valid IGD.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_DISCONNECTED** = ``5``
 
-Disconnected.
+Đã ngắt kết nối.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_UNKNOWN_DEVICE:
 
@@ -132,7 +132,7 @@ Disconnected.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_UNKNOWN_DEVICE** = ``6``
 
-Unknown device.
+Thiết bị không xác định.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_INVALID_CONTROL:
 
@@ -140,7 +140,7 @@ Unknown device.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_INVALID_CONTROL** = ``7``
 
-Invalid control.
+Điều khiển không hợp lệ.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_MALLOC_ERROR:
 
@@ -148,9 +148,9 @@ Invalid control.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_MALLOC_ERROR** = ``8``
 
-**Deprecated:** This value is no longer used.
+**Đã ngừng sử dụng:** Giá trị này không còn được sử dụng.
 
-Memory allocation error.
+Lỗi cấp phát bộ nhớ.
 
 .. _class_UPNPDevice_constant_IGD_STATUS_UNKNOWN_ERROR:
 
@@ -158,7 +158,7 @@ Memory allocation error.
 
 :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **IGD_STATUS_UNKNOWN_ERROR** = ``9``
 
-Unknown error.
+Lỗi không xác định.
 
 .. rst-class:: classref-section-separator
 
@@ -166,8 +166,8 @@ Unknown error.
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_UPNPDevice_property_description_url:
 
@@ -180,7 +180,7 @@ Property Descriptions
 - |void| **set_description_url**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_description_url**\ (\ )
 
-URL to the device description.
+URL đến mô tả thiết bị.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ URL to the device description.
 - |void| **set_igd_control_url**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_igd_control_url**\ (\ )
 
-IDG control URL.
+URL điều khiển IDG.
 
 .. rst-class:: classref-item-separator
 
@@ -214,7 +214,7 @@ IDG control URL.
 - |void| **set_igd_our_addr**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_igd_our_addr**\ (\ )
 
-Address of the local machine in the network connecting it to this **UPNPDevice**.
+Địa chỉ của máy cục bộ trong mạng kết nối máy đó với **UPNPDevice** này.
 
 .. rst-class:: classref-item-separator
 
@@ -231,7 +231,7 @@ Address of the local machine in the network connecting it to this **UPNPDevice**
 - |void| **set_igd_service_type**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_igd_service_type**\ (\ )
 
-IGD service type.
+Loại dịch vụ IGD.
 
 .. rst-class:: classref-item-separator
 
@@ -248,7 +248,7 @@ IGD service type.
 - |void| **set_igd_status**\ (\ value\: :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>`\ )
 - :ref:`IGDStatus<enum_UPNPDevice_IGDStatus>` **get_igd_status**\ (\ )
 
-IGD status.
+Trạng thái IGD.
 
 .. rst-class:: classref-item-separator
 
@@ -265,7 +265,7 @@ IGD status.
 - |void| **set_service_type**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_service_type**\ (\ )
 
-Service type.
+Loại dịch vụ.
 
 .. rst-class:: classref-section-separator
 
@@ -273,8 +273,8 @@ Service type.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_UPNPDevice_method_add_port_mapping:
 
@@ -282,7 +282,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **add_port_mapping**\ (\ port\: :ref:`int<class_int>`, port_internal\: :ref:`int<class_int>` = 0, desc\: :ref:`String<class_String>` = "", proto\: :ref:`String<class_String>` = "UDP", duration\: :ref:`int<class_int>` = 0\ ) |const| :ref:`🔗<class_UPNPDevice_method_add_port_mapping>`
 
-Adds a port mapping to forward the given external port on this **UPNPDevice** for the given protocol to the local machine. See :ref:`UPNP.add_port_mapping()<class_UPNP_method_add_port_mapping>`.
+Thêm ánh xạ cổng để chuyển tiếp cổng bên ngoài đã cho trên **UPNPDevice** cho giao thức đã cho đến máy cục bộ. Xem :ref:`UPNP.add_port_mapping()<class_UPNP_method_add_port_mapping>`.
 
 .. rst-class:: classref-item-separator
 
@@ -294,7 +294,7 @@ Adds a port mapping to forward the given external port on this **UPNPDevice** fo
 
 :ref:`int<class_int>` **delete_port_mapping**\ (\ port\: :ref:`int<class_int>`, proto\: :ref:`String<class_String>` = "UDP"\ ) |const| :ref:`🔗<class_UPNPDevice_method_delete_port_mapping>`
 
-Deletes the port mapping identified by the given port and protocol combination on this device. See :ref:`UPNP.delete_port_mapping()<class_UPNP_method_delete_port_mapping>`.
+Xóa ánh xạ cổng được xác định bởi tổ hợp cổng và giao thức đã cho trên thiết bị này. Xem :ref:`UPNP.delete_port_mapping()<class_UPNP_method_delete_port_mapping>`.
 
 .. rst-class:: classref-item-separator
 
@@ -306,7 +306,7 @@ Deletes the port mapping identified by the given port and protocol combination o
 
 :ref:`bool<class_bool>` **is_valid_gateway**\ (\ ) |const| :ref:`🔗<class_UPNPDevice_method_is_valid_gateway>`
 
-Returns ``true`` if this is a valid IGD (InternetGatewayDevice) which potentially supports port forwarding.
+Trả về ``true`` nếu đây là một IGD (InternetGatewayDevice) hợp lệ có khả năng hỗ trợ chuyển tiếp cổng.
 
 .. rst-class:: classref-item-separator
 
@@ -318,14 +318,14 @@ Returns ``true`` if this is a valid IGD (InternetGatewayDevice) which potentiall
 
 :ref:`String<class_String>` **query_external_address**\ (\ ) |const| :ref:`🔗<class_UPNPDevice_method_query_external_address>`
 
-Returns the external IP address of this **UPNPDevice** or an empty string.
+Trả về địa chỉ IP bên ngoài của **UPNPDevice** hoặc một chuỗi trống.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

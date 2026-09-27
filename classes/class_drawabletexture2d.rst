@@ -10,33 +10,33 @@
 DrawableTexture2D
 =================
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 2D texture that supports drawing to itself via Blit calls.
+Một texture 2D hỗ trợ vẽ lên chính nó thông qua các lệnh gọi Blit.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 2D texture that can be modified via blit calls, copying from a target texture to itself. Primarily intended to be managed in code, a user must call :ref:`setup()<class_DrawableTexture2D_method_setup>` to initialize the state before drawing. Each :ref:`blit_rect()<class_DrawableTexture2D_method_blit_rect>` call takes at least a rectangle, the area to draw to, and another texture, what to be drawn. The draw calls use a Texture_Blit Shader to process and calculate the result, pixel by pixel. Users can supply their own ShaderMaterial with custom Texture_Blit shaders for more complex behaviors.
+Một texture 2D có thể được sửa đổi thông qua các lệnh gọi Blit, sao chép từ một texture đích vào chính nó. Chủ yếu được thiết kế để quản lý bằng code, người dùng phải gọi :ref:`setup()<class_DrawableTexture2D_method_setup>` để khởi tạo trạng thái trước khi vẽ. Mỗi lệnh gọi :ref:`blit_rect()<class_DrawableTexture2D_method_blit_rect>` cần ít nhất một hình chữ nhật, tức vùng cần vẽ, và một texture khác, tức nội dung cần vẽ. Các lệnh gọi vẽ sử dụng một Texture_Blit Shader để xử lý và tính toán kết quả theo từng pixel. Người dùng có thể cung cấp ShaderMaterial của riêng mình cùng các shader Texture_Blit tùy chỉnh để thực hiện những hành vi phức tạp hơn.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | resource_local_to_scene | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-------------------------+-------------------------+----------------------------------------------------------------------------------------+
+   +-------------------------+-------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | resource_local_to_scene | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +-------------------------+-------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -50,11 +50,11 @@ Methods
    +-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>` | :ref:`get_use_mipmaps<class_DrawableTexture2D_method_get_use_mipmaps>`\ (\ ) |const|                                                                                                                                                                                                                                                                                                                                                        |
    +-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                  | :ref:`set_format<class_DrawableTexture2D_method_set_format>`\ (\ format\: :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>`\ )                                                                                                                                                                                                                                                                                                   |
+   | |void|                  | :ref:`set_format<class_DrawableTexture2D_method_set_format>`\ (\ format\: :ref:`DrawableFormat <enum_DrawableTexture2D_DrawableFormat>`\ )                                                                                                                                                                                                                                                                                                  |
    +-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                  | :ref:`set_use_mipmaps<class_DrawableTexture2D_method_set_use_mipmaps>`\ (\ mipmaps\: :ref:`bool<class_bool>`\ )                                                                                                                                                                                                                                                                                                                             |
    +-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                  | :ref:`setup<class_DrawableTexture2D_method_setup>`\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`, format\: :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>`, color\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1), use_mipmaps\: :ref:`bool<class_bool>` = false\ )                                                                                                                                        |
+   | |void|                  | :ref:`setup<class_DrawableTexture2D_method_setup>`\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`, format\: :ref:`DrawableFormat <enum_DrawableTexture2D_DrawableFormat>`, color\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1), use_mipmaps\: :ref:`bool<class_bool>` = false\ )                                                                                                                                       |
    +-------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -63,14 +63,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_DrawableTexture2D_DrawableFormat:
 
 .. rst-class:: classref-enumeration
 
-enum **DrawableFormat**: :ref:`🔗<enum_DrawableTexture2D_DrawableFormat>`
+enum **DrawableFormat**: :ref:`🔗 <enum_DrawableTexture2D_DrawableFormat>`
 
 .. _class_DrawableTexture2D_constant_DRAWABLE_FORMAT_RGBA8:
 
@@ -78,7 +78,7 @@ enum **DrawableFormat**: :ref:`🔗<enum_DrawableTexture2D_DrawableFormat>`
 
 :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>` **DRAWABLE_FORMAT_RGBA8** = ``0``
 
-OpenGL texture format RGBA with four components, each with a bitdepth of 8.
+Định dạng texture OpenGL RGBA với bốn thành phần, mỗi thành phần có độ sâu 8 bit.
 
 .. _class_DrawableTexture2D_constant_DRAWABLE_FORMAT_RGBA8_SRGB:
 
@@ -86,9 +86,9 @@ OpenGL texture format RGBA with four components, each with a bitdepth of 8.
 
 :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>` **DRAWABLE_FORMAT_RGBA8_SRGB** = ``1``
 
-OpenGL texture format RGBA with four components, each with a bitdepth of 8.
+Định dạng texture OpenGL RGBA với bốn thành phần, mỗi thành phần có độ sâu 8 bit.
 
-When drawn to, an sRGB to linear color space conversion is performed.
+Khi được vẽ vào, quá trình chuyển đổi không gian màu từ sRGB sang tuyến tính sẽ được thực hiện.
 
 .. _class_DrawableTexture2D_constant_DRAWABLE_FORMAT_RGBAH:
 
@@ -96,7 +96,7 @@ When drawn to, an sRGB to linear color space conversion is performed.
 
 :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>` **DRAWABLE_FORMAT_RGBAH** = ``2``
 
-OpenGL texture format GL_RGBA16F where there are four components, each a 16-bit "half-precision" floating-point value.
+Định dạng texture OpenGL GL_RGBA16F gồm bốn thành phần, mỗi thành phần là một giá trị dấu phẩy động "độ chính xác một nửa" 16 bit.
 
 .. _class_DrawableTexture2D_constant_DRAWABLE_FORMAT_RGBAF:
 
@@ -104,7 +104,7 @@ OpenGL texture format GL_RGBA16F where there are four components, each a 16-bit 
 
 :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>` **DRAWABLE_FORMAT_RGBAF** = ``3``
 
-OpenGL texture format GL_RGBA32F where there are four components, each a 32-bit floating-point value.
+Định dạng texture OpenGL GL_RGBA32F gồm bốn thành phần, mỗi thành phần là một giá trị dấu phẩy động 32 bit.
 
 .. rst-class:: classref-section-separator
 
@@ -112,8 +112,8 @@ OpenGL texture format GL_RGBA32F where there are four components, each a 32-bit 
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_DrawableTexture2D_method_blit_rect:
 
@@ -121,9 +121,9 @@ Method Descriptions
 
 |void| **blit_rect**\ (\ rect\: :ref:`Rect2i<class_Rect2i>`, source\: :ref:`Texture2D<class_Texture2D>`, modulate\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1), mipmap\: :ref:`int<class_int>` = 0, material\: :ref:`Material<class_Material>` = null\ ) :ref:`🔗<class_DrawableTexture2D_method_blit_rect>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-Draws to given ``rect`` on this texture by copying from the given ``source``. A ``modulate`` color can be passed in for the shader to use, but defaults to White. The ``mipmap`` value can specify a draw to a lower mipmap level. The ``material`` parameter can take a ShaderMaterial with a TextureBlit Shader for custom drawing behavior.
+Vẽ lên ``rect`` đã cho trên texture này bằng cách sao chép từ ``source`` đã cho. Có thể truyền vào màu ``modulate`` để shader sử dụng, nhưng mặc định là White. Giá trị ``mipmap`` có thể chỉ định việc vẽ lên cấp mipmap thấp hơn. Tham số ``material`` có thể nhận một ShaderMaterial với TextureBlit Shader để tùy chỉnh hành vi vẽ.
 
 .. rst-class:: classref-item-separator
 
@@ -135,9 +135,9 @@ Draws to given ``rect`` on this texture by copying from the given ``source``. A 
 
 |void| **blit_rect_multi**\ (\ rect\: :ref:`Rect2i<class_Rect2i>`, sources\: :ref:`Array<class_Array>`\[:ref:`Texture2D<class_Texture2D>`\], extra_targets\: :ref:`Array<class_Array>`\[:ref:`DrawableTexture2D<class_DrawableTexture2D>`\], modulate\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1), mipmap\: :ref:`int<class_int>` = 0, material\: :ref:`Material<class_Material>` = null\ ) :ref:`🔗<class_DrawableTexture2D_method_blit_rect_multi>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-Draws to the given ``rect`` on this texture, as well as on up to 3 DrawableTexture ``extra_targets``. All ``extra_targets`` must be the same size and DrawableFormat as the original target, otherwise the Shader may fail. Expects up to 4 Texture ``sources``, but will replace missing ``sources`` with default Black Textures.
+Vẽ lên ``rect`` đã cho trên texture này, cũng như tối đa 3 DrawableTexture ``extra_targets``. Tất cả ``extra_targets`` phải có cùng kích thước và DrawableFormat với đích ban đầu; nếu không, Shader có thể gặp lỗi. Nhận tối đa 4 Texture ``sources``, nhưng sẽ thay thế các ``sources`` bị thiếu bằng các Texture Black mặc định.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ Draws to the given ``rect`` on this texture, as well as on up to 3 DrawableTextu
 
 |void| **generate_mipmaps**\ (\ ) :ref:`🔗<class_DrawableTexture2D_method_generate_mipmaps>`
 
-Re-calculates the mipmaps for this texture on demand.
+Tính toán lại các mipmap cho texture này theo yêu cầu.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ Re-calculates the mipmaps for this texture on demand.
 
 :ref:`bool<class_bool>` **get_use_mipmaps**\ (\ ) |const| :ref:`🔗<class_DrawableTexture2D_method_get_use_mipmaps>`
 
-Returns ``true`` if mipmaps are set to be used on this DrawableTexture.
+Trả về ``true`` nếu mipmap được đặt để sử dụng trên DrawableTexture này.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Returns ``true`` if mipmaps are set to be used on this DrawableTexture.
 
 |void| **set_format**\ (\ format\: :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>`\ ) :ref:`🔗<class_DrawableTexture2D_method_set_format>`
 
-Sets the format of this DrawableTexture.
+Thiết lập định dạng của DrawableTexture này.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ Sets the format of this DrawableTexture.
 
 |void| **set_use_mipmaps**\ (\ mipmaps\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_DrawableTexture2D_method_set_use_mipmaps>`
 
-Sets if mipmaps should be used on this DrawableTexture.
+Đặt liệu mipmap có được sử dụng trên DrawableTexture này hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -197,16 +197,16 @@ Sets if mipmaps should be used on this DrawableTexture.
 
 |void| **setup**\ (\ width\: :ref:`int<class_int>`, height\: :ref:`int<class_int>`, format\: :ref:`DrawableFormat<enum_DrawableTexture2D_DrawableFormat>`, color\: :ref:`Color<class_Color>` = Color(1, 1, 1, 1), use_mipmaps\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_DrawableTexture2D_method_setup>`
 
-**Experimental:** This method may be changed or removed in future versions.
+**Thử nghiệm:** Phương thức này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-Initializes the DrawableTexture to a White texture of the given ``width``, ``height``, and ``format``.
+Khởi tạo DrawableTexture thành texture màu trắng với ``width``, ``height`` và ``format`` đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,32 +10,32 @@
 RDAttachmentFormat
 ==================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Attachment format (used by :ref:`RenderingDevice<class_RenderingDevice>`).
+Định dạng attachment (được :ref:`RenderingDevice<class_RenderingDevice>` sử dụng).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object is used by :ref:`RenderingDevice<class_RenderingDevice>`.
+Đối tượng này được :ref:`RenderingDevice<class_RenderingDevice>` sử dụng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+-------------------------------------------------------------------+--------+
-   | :ref:`DataFormat<enum_RenderingDevice_DataFormat>`         | :ref:`format<class_RDAttachmentFormat_property_format>`           | ``36`` |
-   +------------------------------------------------------------+-------------------------------------------------------------------+--------+
-   | :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>` | :ref:`samples<class_RDAttachmentFormat_property_samples>`         | ``0``  |
-   +------------------------------------------------------------+-------------------------------------------------------------------+--------+
-   | :ref:`int<class_int>`                                      | :ref:`usage_flags<class_RDAttachmentFormat_property_usage_flags>` | ``0``  |
-   +------------------------------------------------------------+-------------------------------------------------------------------+--------+
+   +-------------------------------------------------------------+-------------------------------------------------------------------+--------+
+   | :ref:`DataFormat <enum_RenderingDevice_DataFormat>`         | :ref:`format<class_RDAttachmentFormat_property_format>`           | ``36`` |
+   +-------------------------------------------------------------+-------------------------------------------------------------------+--------+
+   | :ref:`TextureSamples <enum_RenderingDevice_TextureSamples>` | :ref:`samples<class_RDAttachmentFormat_property_samples>`         | ``0``  |
+   +-------------------------------------------------------------+-------------------------------------------------------------------+--------+
+   | :ref:`int<class_int>`                                       | :ref:`usage_flags<class_RDAttachmentFormat_property_usage_flags>` | ``0``  |
+   +-------------------------------------------------------------+-------------------------------------------------------------------+--------+
 
 .. rst-class:: classref-section-separator
 
@@ -43,8 +43,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_RDAttachmentFormat_property_format:
 
@@ -57,7 +57,7 @@ Property Descriptions
 - |void| **set_format**\ (\ value\: :ref:`DataFormat<enum_RenderingDevice_DataFormat>`\ )
 - :ref:`DataFormat<enum_RenderingDevice_DataFormat>` **get_format**\ (\ )
 
-The attachment's data format.
+Định dạng dữ liệu của attachment.
 
 .. rst-class:: classref-item-separator
 
@@ -74,7 +74,7 @@ The attachment's data format.
 - |void| **set_samples**\ (\ value\: :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>`\ )
 - :ref:`TextureSamples<enum_RenderingDevice_TextureSamples>` **get_samples**\ (\ )
 
-The number of samples used when sampling the attachment.
+Số lượng sample được sử dụng khi sampling attachment.
 
 .. rst-class:: classref-item-separator
 
@@ -91,14 +91,14 @@ The number of samples used when sampling the attachment.
 - |void| **set_usage_flags**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_usage_flags**\ (\ )
 
-The attachment's usage flags, which determine what can be done with it.
+Các cờ usage của attachment, xác định những thao tác có thể thực hiện với attachment.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,21 +10,21 @@
 PhysicsShapeQueryParameters2D
 =============================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides parameters for :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`'s methods.
+Cung cấp các tham số cho các phương thức của :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-By changing various properties of this object, such as the shape, you can configure the parameters for :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`'s methods.
+Bằng cách thay đổi nhiều thuộc tính khác nhau của đối tượng này, chẳng hạn như hình dạng, bạn có thể cấu hình các tham số cho các phương thức của :ref:`PhysicsDirectSpaceState2D<class_PhysicsDirectSpaceState2D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -55,8 +55,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PhysicsShapeQueryParameters2D_property_collide_with_areas:
 
@@ -69,7 +69,7 @@ Property Descriptions
 - |void| **set_collide_with_areas**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_areas_enabled**\ (\ )
 
-If ``true``, the query will take :ref:`Area2D<class_Area2D>`\ s into account.
+Nếu ``true``, truy vấn sẽ tính đến :ref:`Area2D<class_Area2D>`\ s.
 
 .. rst-class:: classref-item-separator
 
@@ -86,7 +86,7 @@ If ``true``, the query will take :ref:`Area2D<class_Area2D>`\ s into account.
 - |void| **set_collide_with_bodies**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_collide_with_bodies_enabled**\ (\ )
 
-If ``true``, the query will take :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s into account.
+Nếu ``true``, truy vấn sẽ tính đến :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ .
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ If ``true``, the query will take :ref:`PhysicsBody2D<class_PhysicsBody2D>`\ s in
 - |void| **set_collision_mask**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_collision_mask**\ (\ )
 
-The physics layers the query will detect (as a bitmask). By default, all collision layers are detected. See `Collision layers and masks <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ in the documentation for more information.
+Các physics layer mà truy vấn sẽ phát hiện (dưới dạng bitmask). Theo mặc định, tất cả collision layer đều được phát hiện. Xem `Các layer và mask va chạm <../tutorials/physics/physics_introduction.html#collision-layers-and-masks>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -120,9 +120,9 @@ The physics layers the query will detect (as a bitmask). By default, all collisi
 - |void| **set_exclude**\ (\ value\: :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\]\ )
 - :ref:`Array<class_Array>`\[:ref:`RID<class_RID>`\] **get_exclude**\ (\ )
 
-The list of object :ref:`RID<class_RID>`\ s that will be excluded from collisions. Use :ref:`CollisionObject2D.get_rid()<class_CollisionObject2D_method_get_rid>` to get the :ref:`RID<class_RID>` associated with a :ref:`CollisionObject2D<class_CollisionObject2D>`-derived node.
+Danh sách các :ref:`RID<class_RID>`\  của đối tượng sẽ được loại trừ khỏi va chạm. Dùng :ref:`CollisionObject2D.get_rid()<class_CollisionObject2D_method_get_rid>` để lấy :ref:`RID<class_RID>` liên kết với một node bắt nguồn từ :ref:`CollisionObject2D<class_CollisionObject2D>`.
 
-\ **Note:** The returned array is copied and any changes to it will not update the original property value. To update the value you need to modify the returned array, and then assign it to the property again.
+\ **Lưu ý:** Mảng được trả về là một bản sao và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Để cập nhật giá trị, bạn cần sửa đổi mảng được trả về rồi gán lại mảng đó cho thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -139,7 +139,7 @@ The list of object :ref:`RID<class_RID>`\ s that will be excluded from collision
 - |void| **set_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_margin**\ (\ )
 
-The collision margin for the shape.
+Khoảng đệm va chạm của shape.
 
 .. rst-class:: classref-item-separator
 
@@ -156,7 +156,7 @@ The collision margin for the shape.
 - |void| **set_motion**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_motion**\ (\ )
 
-The motion of the shape being queried for.
+Chuyển động của shape được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -166,14 +166,14 @@ The motion of the shape being queried for.
 
 .. rst-class:: classref-property
 
-:ref:`Resource<class_Resource>` **shape** :ref:`🔗<class_PhysicsShapeQueryParameters2D_property_shape>`
+:ref:`Resource<class_Resource>` **shape** :ref:`🔗 <class_PhysicsShapeQueryParameters2D_property_shape>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shape**\ (\ value\: :ref:`Resource<class_Resource>`\ )
 - :ref:`Resource<class_Resource>` **get_shape**\ (\ )
 
-The :ref:`Shape2D<class_Shape2D>` that will be used for collision/intersection queries. This stores the actual reference which avoids the shape to be released while being used for queries, so always prefer using this over :ref:`shape_rid<class_PhysicsShapeQueryParameters2D_property_shape_rid>`.
+:ref:`Shape2D<class_Shape2D>` sẽ được sử dụng cho các truy vấn va chạm/giao nhau. Thuộc tính này lưu trữ tham chiếu thực tế, giúp tránh việc giải phóng shape trong khi đang được sử dụng cho các truy vấn, vì vậy hãy luôn ưu tiên sử dụng thuộc tính này thay cho :ref:`shape_rid<class_PhysicsShapeQueryParameters2D_property_shape_rid>`.
 
 .. rst-class:: classref-item-separator
 
@@ -190,7 +190,7 @@ The :ref:`Shape2D<class_Shape2D>` that will be used for collision/intersection q
 - |void| **set_shape_rid**\ (\ value\: :ref:`RID<class_RID>`\ )
 - :ref:`RID<class_RID>` **get_shape_rid**\ (\ )
 
-The queried shape's :ref:`RID<class_RID>` that will be used for collision/intersection queries. Use this over :ref:`shape<class_PhysicsShapeQueryParameters2D_property_shape>` if you want to optimize for performance using the Servers API:
+:ref:`RID<class_RID>` của shape được truy vấn, sẽ được sử dụng cho các truy vấn va chạm/giao nhau. Hãy sử dụng thuộc tính này thay cho :ref:`shape<class_PhysicsShapeQueryParameters2D_property_shape>` nếu bạn muốn tối ưu hiệu năng khi sử dụng Servers API:
 
 
 .. tabs::
@@ -204,9 +204,9 @@ The queried shape's :ref:`RID<class_RID>` that will be used for collision/inters
     var params = PhysicsShapeQueryParameters2D.new()
     params.shape_rid = shape_rid
 
-    # Execute physics queries here...
+    # Thực hiện các truy vấn vật lý tại đây...
 
-    # Release the shape when done with physics queries.
+    # Giải phóng shape sau khi hoàn tất các truy vấn vật lý.
     PhysicsServer2D.free_rid(shape_rid)
 
  .. code-tab:: csharp
@@ -218,9 +218,9 @@ The queried shape's :ref:`RID<class_RID>` that will be used for collision/inters
     var params = new PhysicsShapeQueryParameters2D();
     params.ShapeRid = shapeRid;
 
-    // Execute physics queries here...
+    // Thực hiện các truy vấn vật lý tại đây...
 
-    // Release the shape when done with physics queries.
+    // Giải phóng shape sau khi hoàn tất các truy vấn vật lý.
     PhysicsServer2D.FreeRid(shapeRid);
 
 
@@ -240,14 +240,14 @@ The queried shape's :ref:`RID<class_RID>` that will be used for collision/inters
 - |void| **set_transform**\ (\ value\: :ref:`Transform2D<class_Transform2D>`\ )
 - :ref:`Transform2D<class_Transform2D>` **get_transform**\ (\ )
 
-The queried shape's transform matrix.
+Ma trận biến đổi của shape được truy vấn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Không cần có instance để gọi phương thức này, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

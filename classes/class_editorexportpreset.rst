@@ -10,76 +10,76 @@
 EditorExportPreset
 ==================
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Export preset configuration.
+Cấu hình preset export.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Represents the configuration of an export preset, as created by the editor's export dialog. An **EditorExportPreset** instance is intended to be used a read-only configuration passed to the :ref:`EditorExportPlatform<class_EditorExportPlatform>` methods when exporting the project.
+Đại diện cho cấu hình của một preset export, được tạo bởi hộp thoại export của editor. Một instance **EditorExportPreset** được dùng như một cấu hình chỉ đọc, truyền vào các phương thức :ref:`EditorExportPlatform<class_EditorExportPlatform>` khi export project.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`are_advanced_options_enabled<class_EditorExportPreset_method_are_advanced_options_enabled>`\ (\ ) |const|                                                                                                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_custom_features<class_EditorExportPreset_method_get_custom_features>`\ (\ ) |const|                                                                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Dictionary<class_Dictionary>`                               | :ref:`get_customized_files<class_EditorExportPreset_method_get_customized_files>`\ (\ ) |const|                                                                                                                  |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                                             | :ref:`get_customized_files_count<class_EditorExportPreset_method_get_customized_files_count>`\ (\ ) |const|                                                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`get_encrypt_directory<class_EditorExportPreset_method_get_encrypt_directory>`\ (\ ) |const|                                                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`get_encrypt_pck<class_EditorExportPreset_method_get_encrypt_pck>`\ (\ ) |const|                                                                                                                            |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_encryption_ex_filter<class_EditorExportPreset_method_get_encryption_ex_filter>`\ (\ ) |const|                                                                                                          |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_encryption_in_filter<class_EditorExportPreset_method_get_encryption_in_filter>`\ (\ ) |const|                                                                                                          |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_encryption_key<class_EditorExportPreset_method_get_encryption_key>`\ (\ ) |const|                                                                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_exclude_filter<class_EditorExportPreset_method_get_exclude_filter>`\ (\ ) |const|                                                                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ExportFilter<enum_EditorExportPreset_ExportFilter>`         | :ref:`get_export_filter<class_EditorExportPreset_method_get_export_filter>`\ (\ ) |const|                                                                                                                        |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_export_path<class_EditorExportPreset_method_get_export_path>`\ (\ ) |const|                                                                                                                            |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`FileExportMode<enum_EditorExportPreset_FileExportMode>`     | :ref:`get_file_export_mode<class_EditorExportPreset_method_get_file_export_mode>`\ (\ path\: :ref:`String<class_String>`, default\: :ref:`FileExportMode<enum_EditorExportPreset_FileExportMode>` = 0\ ) |const| |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`                 | :ref:`get_files_to_export<class_EditorExportPreset_method_get_files_to_export>`\ (\ ) |const|                                                                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_include_filter<class_EditorExportPreset_method_get_include_filter>`\ (\ ) |const|                                                                                                                      |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`get_or_env<class_EditorExportPreset_method_get_or_env>`\ (\ name\: :ref:`StringName<class_StringName>`, env_var\: :ref:`String<class_String>`\ ) |const|                                                   |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`PackedStringArray<class_PackedStringArray>`                 | :ref:`get_patches<class_EditorExportPreset_method_get_patches>`\ (\ ) |const|                                                                                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_preset_name<class_EditorExportPreset_method_get_preset_name>`\ (\ ) |const|                                                                                                                            |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Variant<class_Variant>`                                     | :ref:`get_project_setting<class_EditorExportPreset_method_get_project_setting>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`ScriptExportMode<enum_EditorExportPreset_ScriptExportMode>` | :ref:`get_script_export_mode<class_EditorExportPreset_method_get_script_export_mode>`\ (\ ) |const|                                                                                                              |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`String<class_String>`                                       | :ref:`get_version<class_EditorExportPreset_method_get_version>`\ (\ name\: :ref:`StringName<class_StringName>`, windows_version\: :ref:`bool<class_bool>`\ ) |const|                                             |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`has<class_EditorExportPreset_method_has>`\ (\ property\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`has_export_file<class_EditorExportPreset_method_has_export_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`is_dedicated_server<class_EditorExportPreset_method_is_dedicated_server>`\ (\ ) |const|                                                                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | :ref:`is_runnable<class_EditorExportPreset_method_is_runnable>`\ (\ ) |const|                                                                                                                                    |
-   +-------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`are_advanced_options_enabled<class_EditorExportPreset_method_are_advanced_options_enabled>`\ (\ ) |const|                                                                                                   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_custom_features<class_EditorExportPreset_method_get_custom_features>`\ (\ ) |const|                                                                                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Dictionary<class_Dictionary>`                                | :ref:`get_customized_files<class_EditorExportPreset_method_get_customized_files>`\ (\ ) |const|                                                                                                                   |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                                              | :ref:`get_customized_files_count<class_EditorExportPreset_method_get_customized_files_count>`\ (\ ) |const|                                                                                                       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`get_encrypt_directory<class_EditorExportPreset_method_get_encrypt_directory>`\ (\ ) |const|                                                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`get_encrypt_pck<class_EditorExportPreset_method_get_encrypt_pck>`\ (\ ) |const|                                                                                                                             |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_encryption_ex_filter<class_EditorExportPreset_method_get_encryption_ex_filter>`\ (\ ) |const|                                                                                                           |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_encryption_in_filter<class_EditorExportPreset_method_get_encryption_in_filter>`\ (\ ) |const|                                                                                                           |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_encryption_key<class_EditorExportPreset_method_get_encryption_key>`\ (\ ) |const|                                                                                                                       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_exclude_filter<class_EditorExportPreset_method_get_exclude_filter>`\ (\ ) |const|                                                                                                                       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`ExportFilter <enum_EditorExportPreset_ExportFilter>`         | :ref:`get_export_filter<class_EditorExportPreset_method_get_export_filter>`\ (\ ) |const|                                                                                                                         |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_export_path<class_EditorExportPreset_method_get_export_path>`\ (\ ) |const|                                                                                                                             |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`FileExportMode <enum_EditorExportPreset_FileExportMode>`     | :ref:`get_file_export_mode<class_EditorExportPreset_method_get_file_export_mode>`\ (\ path\: :ref:`String<class_String>`, default\: :ref:`FileExportMode <enum_EditorExportPreset_FileExportMode>` = 0\ ) |const| |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`                  | :ref:`get_files_to_export<class_EditorExportPreset_method_get_files_to_export>`\ (\ ) |const|                                                                                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_include_filter<class_EditorExportPreset_method_get_include_filter>`\ (\ ) |const|                                                                                                                       |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                      | :ref:`get_or_env<class_EditorExportPreset_method_get_or_env>`\ (\ name\: :ref:`StringName<class_StringName>`, env_var\: :ref:`String<class_String>`\ ) |const|                                                    |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`PackedStringArray<class_PackedStringArray>`                  | :ref:`get_patches<class_EditorExportPreset_method_get_patches>`\ (\ ) |const|                                                                                                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_preset_name<class_EditorExportPreset_method_get_preset_name>`\ (\ ) |const|                                                                                                                             |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Variant<class_Variant>`                                      | :ref:`get_project_setting<class_EditorExportPreset_method_get_project_setting>`\ (\ name\: :ref:`StringName<class_StringName>`\ )                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`ScriptExportMode <enum_EditorExportPreset_ScriptExportMode>` | :ref:`get_script_export_mode<class_EditorExportPreset_method_get_script_export_mode>`\ (\ ) |const|                                                                                                               |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`String<class_String>`                                        | :ref:`get_version<class_EditorExportPreset_method_get_version>`\ (\ name\: :ref:`StringName<class_StringName>`, windows_version\: :ref:`bool<class_bool>`\ ) |const|                                              |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`has<class_EditorExportPreset_method_has>`\ (\ property\: :ref:`StringName<class_StringName>`\ ) |const|                                                                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`has_export_file<class_EditorExportPreset_method_has_export_file>`\ (\ path\: :ref:`String<class_String>`\ )                                                                                                 |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`is_dedicated_server<class_EditorExportPreset_method_is_dedicated_server>`\ (\ ) |const|                                                                                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | :ref:`is_runnable<class_EditorExportPreset_method_is_runnable>`\ (\ ) |const|                                                                                                                                     |
+   +--------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -87,14 +87,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các enum
+--------
 
 .. _enum_EditorExportPreset_ExportFilter:
 
 .. rst-class:: classref-enumeration
 
-enum **ExportFilter**: :ref:`🔗<enum_EditorExportPreset_ExportFilter>`
+enum **ExportFilter**: :ref:`🔗 <enum_EditorExportPreset_ExportFilter>`
 
 .. _class_EditorExportPreset_constant_EXPORT_ALL_RESOURCES:
 
@@ -164,7 +164,7 @@ enum **ExportFilter**: :ref:`🔗<enum_EditorExportPreset_ExportFilter>`
 
 .. rst-class:: classref-enumeration
 
-enum **FileExportMode**: :ref:`🔗<enum_EditorExportPreset_FileExportMode>`
+enum **FileExportMode**: :ref:`🔗 <enum_EditorExportPreset_FileExportMode>`
 
 .. _class_EditorExportPreset_constant_MODE_FILE_NOT_CUSTOMIZED:
 
@@ -222,7 +222,7 @@ enum **FileExportMode**: :ref:`🔗<enum_EditorExportPreset_FileExportMode>`
 
 .. rst-class:: classref-enumeration
 
-enum **ScriptExportMode**: :ref:`🔗<enum_EditorExportPreset_ScriptExportMode>`
+enum **ScriptExportMode**: :ref:`🔗 <enum_EditorExportPreset_ScriptExportMode>`
 
 .. _class_EditorExportPreset_constant_MODE_SCRIPT_TEXT:
 
@@ -266,8 +266,8 @@ enum **ScriptExportMode**: :ref:`🔗<enum_EditorExportPreset_ScriptExportMode>`
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorExportPreset_method_are_advanced_options_enabled:
 
@@ -275,7 +275,7 @@ Method Descriptions
 
 :ref:`bool<class_bool>` **are_advanced_options_enabled**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_are_advanced_options_enabled>`
 
-Returns ``true`` if the "Advanced" toggle is enabled in the export dialog.
+Trả về ``true`` nếu nút chuyển "Advanced" được bật trong hộp thoại export.
 
 .. rst-class:: classref-item-separator
 
@@ -287,7 +287,7 @@ Returns ``true`` if the "Advanced" toggle is enabled in the export dialog.
 
 :ref:`String<class_String>` **get_custom_features**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_custom_features>`
 
-Returns a comma-separated list of custom features added to this preset, as a string. See :doc:`Feature tags <../tutorials/export/feature_tags>` in the documentation for more information.
+Trả về danh sách các tính năng tùy chỉnh được thêm vào preset này, phân tách bằng dấu phẩy, dưới dạng chuỗi. Xem :doc:`Feature tags <../tutorials/export/feature_tags>` trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -299,7 +299,7 @@ Returns a comma-separated list of custom features added to this preset, as a str
 
 :ref:`Dictionary<class_Dictionary>` **get_customized_files**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_customized_files>`
 
-Returns a dictionary of files selected in the "Resources" tab of the export dialog. The dictionary's keys are file paths, and its values are the corresponding export modes: ``"strip"``, ``"keep"``, or ``"remove"``. See also :ref:`get_file_export_mode()<class_EditorExportPreset_method_get_file_export_mode>`.
+Trả về một từ điển gồm các tệp được chọn trong tab "Resources" của hộp thoại xuất. Các khóa của từ điển là đường dẫn tệp, còn các giá trị là các chế độ xuất tương ứng: ``"strip"``, ``"keep"`` hoặc ``"remove"``. Xem thêm :ref:`get_file_export_mode()<class_EditorExportPreset_method_get_file_export_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -311,7 +311,7 @@ Returns a dictionary of files selected in the "Resources" tab of the export dial
 
 :ref:`int<class_int>` **get_customized_files_count**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_customized_files_count>`
 
-Returns the number of files selected in the "Resources" tab of the export dialog.
+Trả về số lượng tệp được chọn trong tab "Resources" của hộp thoại xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -323,7 +323,7 @@ Returns the number of files selected in the "Resources" tab of the export dialog
 
 :ref:`bool<class_bool>` **get_encrypt_directory**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_encrypt_directory>`
 
-Returns ``true`` if PCK directory encryption is enabled in the export dialog.
+Trả về ``true`` nếu tính năng mã hóa thư mục PCK được bật trong hộp thoại xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -335,7 +335,7 @@ Returns ``true`` if PCK directory encryption is enabled in the export dialog.
 
 :ref:`bool<class_bool>` **get_encrypt_pck**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_encrypt_pck>`
 
-Returns ``true`` if PCK encryption is enabled in the export dialog.
+Trả về ``true`` nếu tính năng mã hóa PCK được bật trong hộp thoại xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -347,7 +347,7 @@ Returns ``true`` if PCK encryption is enabled in the export dialog.
 
 :ref:`String<class_String>` **get_encryption_ex_filter**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_encryption_ex_filter>`
 
-Returns file filters to exclude during PCK encryption.
+Trả về các bộ lọc tệp cần loại trừ trong quá trình mã hóa PCK.
 
 .. rst-class:: classref-item-separator
 
@@ -359,7 +359,7 @@ Returns file filters to exclude during PCK encryption.
 
 :ref:`String<class_String>` **get_encryption_in_filter**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_encryption_in_filter>`
 
-Returns file filters to include during PCK encryption.
+Trả về các bộ lọc tệp cần bao gồm trong quá trình mã hóa PCK.
 
 .. rst-class:: classref-item-separator
 
@@ -371,7 +371,7 @@ Returns file filters to include during PCK encryption.
 
 :ref:`String<class_String>` **get_encryption_key**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_encryption_key>`
 
-Returns PCK encryption key.
+Trả về khóa mã hóa PCK.
 
 .. rst-class:: classref-item-separator
 
@@ -383,7 +383,7 @@ Returns PCK encryption key.
 
 :ref:`String<class_String>` **get_exclude_filter**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_exclude_filter>`
 
-Returns file filters to exclude during export.
+Trả về các bộ lọc tệp cần loại trừ trong quá trình xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -395,7 +395,7 @@ Returns file filters to exclude during export.
 
 :ref:`ExportFilter<enum_EditorExportPreset_ExportFilter>` **get_export_filter**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_export_filter>`
 
-Returns export file filter mode selected in the "Resources" tab of the export dialog.
+Trả về chế độ bộ lọc tệp xuất được chọn trong tab "Resources" của hộp thoại xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -407,7 +407,7 @@ Returns export file filter mode selected in the "Resources" tab of the export di
 
 :ref:`String<class_String>` **get_export_path**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_export_path>`
 
-Returns export target path.
+Trả về đường dẫn đích xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -419,7 +419,7 @@ Returns export target path.
 
 :ref:`FileExportMode<enum_EditorExportPreset_FileExportMode>` **get_file_export_mode**\ (\ path\: :ref:`String<class_String>`, default\: :ref:`FileExportMode<enum_EditorExportPreset_FileExportMode>` = 0\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_file_export_mode>`
 
-Returns file export mode for the specified file.
+Trả về chế độ xuất tệp cho tệp được chỉ định.
 
 .. rst-class:: classref-item-separator
 
@@ -431,7 +431,7 @@ Returns file export mode for the specified file.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_files_to_export**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_files_to_export>`
 
-Returns array of files to export.
+Trả về mảng các tệp cần xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -443,7 +443,7 @@ Returns array of files to export.
 
 :ref:`String<class_String>` **get_include_filter**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_include_filter>`
 
-Returns file filters to include during export.
+Trả về các bộ lọc tệp cần đưa vào trong quá trình xuất.
 
 .. rst-class:: classref-item-separator
 
@@ -455,7 +455,7 @@ Returns file filters to include during export.
 
 :ref:`Variant<class_Variant>` **get_or_env**\ (\ name\: :ref:`StringName<class_StringName>`, env_var\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_or_env>`
 
-Returns export option value or value of environment variable if it is set.
+Trả về giá trị tùy chọn xuất hoặc giá trị của biến môi trường nếu biến đó được thiết lập.
 
 .. rst-class:: classref-item-separator
 
@@ -467,7 +467,7 @@ Returns export option value or value of environment variable if it is set.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **get_patches**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_patches>`
 
-Returns the list of packs on which to base a patch export on.
+Trả về danh sách các pack dùng làm cơ sở cho việc export patch.
 
 .. rst-class:: classref-item-separator
 
@@ -479,7 +479,7 @@ Returns the list of packs on which to base a patch export on.
 
 :ref:`String<class_String>` **get_preset_name**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_preset_name>`
 
-Returns this export preset's name.
+Trả về tên của export preset này.
 
 .. rst-class:: classref-item-separator
 
@@ -491,7 +491,7 @@ Returns this export preset's name.
 
 :ref:`Variant<class_Variant>` **get_project_setting**\ (\ name\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_EditorExportPreset_method_get_project_setting>`
 
-Returns the value of the setting identified by ``name`` using export preset feature tag overrides instead of current OS features.
+Trả về giá trị của thiết lập được xác định bởi ``name`` bằng cách sử dụng các giá trị ghi đè thẻ tính năng của export preset thay vì các tính năng hiện tại của hệ điều hành.
 
 .. rst-class:: classref-item-separator
 
@@ -503,7 +503,7 @@ Returns the value of the setting identified by ``name`` using export preset feat
 
 :ref:`ScriptExportMode<enum_EditorExportPreset_ScriptExportMode>` **get_script_export_mode**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_script_export_mode>`
 
-Returns the export mode used by GDScript files. ``0`` for "Text", ``1`` for "Binary tokens", and ``2`` for "Compressed binary tokens (smaller files)".
+Trả về chế độ export được sử dụng bởi các tệp GDScript. ``0`` cho "Text", ``1`` cho "Binary tokens" và ``2`` cho "Compressed binary tokens (smaller files)".
 
 .. rst-class:: classref-item-separator
 
@@ -515,9 +515,9 @@ Returns the export mode used by GDScript files. ``0`` for "Text", ``1`` for "Bin
 
 :ref:`String<class_String>` **get_version**\ (\ name\: :ref:`StringName<class_StringName>`, windows_version\: :ref:`bool<class_bool>`\ ) |const| :ref:`🔗<class_EditorExportPreset_method_get_version>`
 
-Returns the preset's version number, or fall back to the :ref:`ProjectSettings.application/config/version<class_ProjectSettings_property_application/config/version>` project setting if set to an empty string.
+Trả về số phiên bản của preset hoặc sử dụng thiết lập dự án :ref:`ProjectSettings.application/config/version <class_ProjectSettings_property_application/config/version>` nếu giá trị của số phiên bản là chuỗi rỗng.
 
-If ``windows_version`` is ``true``, formats the returned version number to be compatible with Windows executable metadata.
+Nếu ``windows_version`` là ``true``, định dạng số phiên bản được trả về để tương thích với siêu dữ liệu của tệp thực thi Windows.
 
 .. rst-class:: classref-item-separator
 
@@ -529,7 +529,7 @@ If ``windows_version`` is ``true``, formats the returned version number to be co
 
 :ref:`bool<class_bool>` **has**\ (\ property\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_EditorExportPreset_method_has>`
 
-Returns ``true`` if the preset has the property named ``property``.
+Trả về ``true`` nếu preset có thuộc tính tên là ``property``.
 
 .. rst-class:: classref-item-separator
 
@@ -541,7 +541,7 @@ Returns ``true`` if the preset has the property named ``property``.
 
 :ref:`bool<class_bool>` **has_export_file**\ (\ path\: :ref:`String<class_String>`\ ) :ref:`🔗<class_EditorExportPreset_method_has_export_file>`
 
-Returns ``true`` if the file at the specified ``path`` will be exported.
+Trả về ``true`` nếu tệp tại ``path`` được chỉ định sẽ được export.
 
 .. rst-class:: classref-item-separator
 
@@ -553,7 +553,7 @@ Returns ``true`` if the file at the specified ``path`` will be exported.
 
 :ref:`bool<class_bool>` **is_dedicated_server**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_is_dedicated_server>`
 
-Returns ``true`` if the dedicated server export mode is selected in the export dialog.
+Trả về ``true`` nếu chế độ export dedicated server được chọn trong hộp thoại export.
 
 .. rst-class:: classref-item-separator
 
@@ -565,14 +565,14 @@ Returns ``true`` if the dedicated server export mode is selected in the export d
 
 :ref:`bool<class_bool>` **is_runnable**\ (\ ) |const| :ref:`🔗<class_EditorExportPreset_method_is_runnable>`
 
-Returns ``true`` if the "Runnable" toggle is enabled in the export dialog.
+Trả về ``true`` nếu toggle "Runnable" được bật trong hộp thoại export.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần override phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được override khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

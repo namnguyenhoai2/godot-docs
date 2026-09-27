@@ -10,92 +10,92 @@
 Node
 ====
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`AnimationMixer<class_AnimationMixer>`, :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, :ref:`CanvasItem<class_CanvasItem>`, :ref:`CanvasLayer<class_CanvasLayer>`, :ref:`EditorFileSystem<class_EditorFileSystem>`, :ref:`EditorPlugin<class_EditorPlugin>`, :ref:`EditorResourcePreview<class_EditorResourcePreview>`, :ref:`HTTPRequest<class_HTTPRequest>`, :ref:`InstancePlaceholder<class_InstancePlaceholder>`, :ref:`MissingNode<class_MissingNode>`, :ref:`MultiplayerSpawner<class_MultiplayerSpawner>`, :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`, :ref:`NavigationAgent2D<class_NavigationAgent2D>`, :ref:`NavigationAgent3D<class_NavigationAgent3D>`, :ref:`Node3D<class_Node3D>`, :ref:`ResourcePreloader<class_ResourcePreloader>`, :ref:`ShaderGlobalsOverride<class_ShaderGlobalsOverride>`, :ref:`StatusIndicator<class_StatusIndicator>`, :ref:`Timer<class_Timer>`, :ref:`Viewport<class_Viewport>`, :ref:`WorldEnvironment<class_WorldEnvironment>`
+**Được kế thừa bởi:** :ref:`AnimationMixer<class_AnimationMixer>`, :ref:`AudioStreamPlayer<class_AudioStreamPlayer>`, :ref:`CanvasItem<class_CanvasItem>`, :ref:`CanvasLayer<class_CanvasLayer>`, :ref:`EditorFileSystem<class_EditorFileSystem>`, :ref:`EditorPlugin<class_EditorPlugin>`, :ref:`EditorResourcePreview<class_EditorResourcePreview>`, :ref:`HTTPRequest<class_HTTPRequest>`, :ref:`InstancePlaceholder<class_InstancePlaceholder>`, :ref:`MissingNode<class_MissingNode>`, :ref:`MultiplayerSpawner<class_MultiplayerSpawner>`, :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`, :ref:`NavigationAgent2D<class_NavigationAgent2D>`, :ref:`NavigationAgent3D<class_NavigationAgent3D>`, :ref:`Node3D<class_Node3D>`, :ref:`ResourcePreloader<class_ResourcePreloader>`, :ref:`ShaderGlobalsOverride<class_ShaderGlobalsOverride>`, :ref:`StatusIndicator<class_StatusIndicator>`, :ref:`Timer<class_Timer>`, :ref:`Viewport<class_Viewport>`, :ref:`WorldEnvironment<class_WorldEnvironment>`
 
-Base class for all scene objects.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-Nodes are Godot's building blocks. They can be assigned as the child of another node, resulting in a tree arrangement. A given node can contain any number of nodes as children with the requirement that all siblings (direct children of a node) should have unique names.
-
-A tree of nodes is called a *scene*. Scenes can be saved to the disk and then instantiated into other scenes. This allows for very high flexibility in the architecture and data model of Godot projects.
-
-\ **Scene tree:** The :ref:`SceneTree<class_SceneTree>` contains the active tree of nodes. When a node is added to the scene tree, it receives the :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` notification and its :ref:`_enter_tree()<class_Node_private_method__enter_tree>` callback is triggered. Child nodes are always added *after* their parent node, i.e. the :ref:`_enter_tree()<class_Node_private_method__enter_tree>` callback of a parent node will be triggered before its child's.
-
-Once all nodes have been added in the scene tree, they receive the :ref:`NOTIFICATION_READY<class_Node_constant_NOTIFICATION_READY>` notification and their respective :ref:`_ready()<class_Node_private_method__ready>` callbacks are triggered. For groups of nodes, the :ref:`_ready()<class_Node_private_method__ready>` callback is called in reverse order, starting with the children and moving up to the parent nodes.
-
-This means that when adding a node to the scene tree, the following order will be used for the callbacks: :ref:`_enter_tree()<class_Node_private_method__enter_tree>` of the parent, :ref:`_enter_tree()<class_Node_private_method__enter_tree>` of the children, :ref:`_ready()<class_Node_private_method__ready>` of the children and finally :ref:`_ready()<class_Node_private_method__ready>` of the parent (recursively for the entire scene tree).
-
-\ **Processing:** Nodes can override the "process" state, so that they receive a callback on each frame requesting them to process (do something). Normal processing (callback :ref:`_process()<class_Node_private_method__process>`, toggled with :ref:`set_process()<class_Node_method_set_process>`) happens as fast as possible and is dependent on the frame rate, so the processing time *delta* (in seconds) is passed as an argument. Physics processing (callback :ref:`_physics_process()<class_Node_private_method__physics_process>`, toggled with :ref:`set_physics_process()<class_Node_method_set_physics_process>`) happens a fixed number of times per second (60 by default) and is useful for code related to the physics engine.
-
-Nodes can also process input events. When present, the :ref:`_input()<class_Node_private_method__input>` function will be called for each input that the program receives. In many cases, this can be overkill (unless used for simple projects), and the :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` function might be preferred; it is called when the input event was not handled by anyone else (typically, GUI :ref:`Control<class_Control>` nodes), ensuring that the node only receives the events that were meant for it.
-
-To keep track of the scene hierarchy (especially when instantiating scenes into other scenes), an "owner" can be set for the node with the :ref:`owner<class_Node_property_owner>` property. This keeps track of who instantiated what. This is mostly useful when writing editors and tools, though.
-
-Finally, when a node is freed with :ref:`Object.free()<class_Object_method_free>` or :ref:`queue_free()<class_Node_method_queue_free>`, it will also free all its children.
-
-\ **Groups:** Nodes can be added to as many groups as you want to be easy to manage, you could create groups like "enemies" or "collectables" for example, depending on your game. See :ref:`add_to_group()<class_Node_method_add_to_group>`, :ref:`is_in_group()<class_Node_method_is_in_group>` and :ref:`remove_from_group()<class_Node_method_remove_from_group>`. You can then retrieve all nodes in these groups, iterate them and even call methods on groups via the methods on :ref:`SceneTree<class_SceneTree>`.
-
-\ **Networking with nodes:** After connecting to a server (or making one, see :ref:`ENetMultiplayerPeer<class_ENetMultiplayerPeer>`), it is possible to use the built-in RPC (remote procedure call) system to communicate over the network. By calling :ref:`rpc()<class_Node_method_rpc>` with a method name, it will be called locally and in all connected peers (peers = clients and the server that accepts connections). To identify which node receives the RPC call, Godot will use its :ref:`NodePath<class_NodePath>` (make sure node names are the same on all peers). Also, take a look at the high-level networking tutorial and corresponding demos.
-
-\ **Note:** The ``script`` property is part of the :ref:`Object<class_Object>` class, not **Node**. It isn't exposed like most properties but does have a setter and getter (see :ref:`Object.set_script()<class_Object_method_set_script>` and :ref:`Object.get_script()<class_Object_method_get_script>`).
+Lớp cơ sở cho tất cả các đối tượng trong scene.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
----------
+Mô tả
+-----
 
-- :doc:`Nodes and scenes <../getting_started/step_by_step/nodes_and_scenes>`
+Node là các khối xây dựng của Godot. Bạn có thể gán chúng làm node con của một node khác, tạo thành một cấu trúc dạng cây. Một node nhất định có thể chứa bất kỳ số lượng node nào làm node con, với yêu cầu tất cả các node cùng cấp (node con trực tiếp của một node) phải có tên duy nhất.
 
-- `All Demos <https://github.com/godotengine/godot-demo-projects/>`__
+Một cây node được gọi là *scene*. Scene có thể được lưu vào đĩa rồi khởi tạo trong các scene khác. Điều này mang lại tính linh hoạt rất cao cho kiến trúc và mô hình dữ liệu của các dự án Godot.
+
+\ **Cây scene:** :ref:`SceneTree<class_SceneTree>` chứa cây node đang hoạt động. Khi một node được thêm vào cây scene, nó nhận thông báo :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` và callback :ref:`_enter_tree()<class_Node_private_method__enter_tree>` của nó được kích hoạt. Các node con luôn được thêm *sau* node cha, tức là callback :ref:`_enter_tree()<class_Node_private_method__enter_tree>` của node cha sẽ được kích hoạt trước callback của node con.
+
+Sau khi tất cả các node đã được thêm vào scene tree, chúng nhận được thông báo :ref:`NOTIFICATION_READY<class_Node_constant_NOTIFICATION_READY>` và các callback :ref:`_ready()<class_Node_private_method__ready>` tương ứng của chúng được kích hoạt. Đối với các nhóm node, callback :ref:`_ready()<class_Node_private_method__ready>` được gọi theo thứ tự ngược lại, bắt đầu từ các node con rồi chuyển lên các node cha.
+
+Điều này có nghĩa là khi thêm một node vào scene tree, thứ tự sau đây sẽ được sử dụng cho các callback: :ref:`_enter_tree()<class_Node_private_method__enter_tree>` của node cha, :ref:`_enter_tree()<class_Node_private_method__enter_tree>` của các node con, :ref:`_ready()<class_Node_private_method__ready>` của các node con và cuối cùng là :ref:`_ready()<class_Node_private_method__ready>` của node cha (đệ quy cho toàn bộ scene tree).
+
+\ **Xử lý:** Các node có thể ghi đè trạng thái "process", để nhận callback ở mỗi frame yêu cầu chúng thực hiện việc xử lý (thực hiện một hành động). Việc xử lý thông thường (callback :ref:`_process()<class_Node_private_method__process>`, được bật/tắt bằng :ref:`set_process()<class_Node_method_set_process>`) diễn ra nhanh nhất có thể và phụ thuộc vào frame rate, vì vậy thời gian xử lý *delta* (tính bằng giây) được truyền dưới dạng đối số. Việc xử lý vật lý (callback :ref:`_physics_process()<class_Node_private_method__physics_process>`, được bật/tắt bằng :ref:`set_physics_process()<class_Node_method_set_physics_process>`) diễn ra một số lần cố định mỗi giây (mặc định là 60) và hữu ích cho mã liên quan đến physics engine.
+
+Các node cũng có thể xử lý các input event. Khi có mặt, hàm :ref:`_input()<class_Node_private_method__input>` sẽ được gọi cho mỗi input mà chương trình nhận được. Trong nhiều trường hợp, cách này có thể là quá mức cần thiết (trừ khi được dùng cho các dự án đơn giản), và hàm :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` có thể được ưu tiên hơn; hàm này được gọi khi input event chưa được bất kỳ đối tượng nào khác xử lý (thường là các node GUI :ref:`Control<class_Control>`), đảm bảo rằng node chỉ nhận những event dành cho nó.
+
+Để theo dõi hệ thống phân cấp của scene (đặc biệt khi khởi tạo các scene bên trong những scene khác), có thể đặt một "owner" cho node bằng thuộc tính :ref:`owner<class_Node_property_owner>`. Thuộc tính này theo dõi đối tượng nào đã khởi tạo đối tượng nào. Tuy nhiên, điều này chủ yếu hữu ích khi viết editor và tool.
+
+Cuối cùng, khi một node được giải phóng bằng :ref:`Object.free()<class_Object_method_free>` hoặc :ref:`queue_free()<class_Node_method_queue_free>`, tất cả các node con của nó cũng sẽ được giải phóng.
+
+\ **Các nhóm:** Các node có thể được thêm vào bao nhiêu nhóm tùy ý để dễ quản lý; chẳng hạn, tùy thuộc vào game, bạn có thể tạo các nhóm như "enemies" hoặc "collectables". Xem :ref:`add_to_group()<class_Node_method_add_to_group>`, :ref:`is_in_group()<class_Node_method_is_in_group>` và :ref:`remove_from_group()<class_Node_method_remove_from_group>`. Sau đó, bạn có thể lấy tất cả các node trong những nhóm này, lặp qua chúng và thậm chí gọi các method trên nhóm thông qua các method của :ref:`SceneTree<class_SceneTree>`.
+
+\ **Kết nối mạng với các node:** Sau khi kết nối với một server (hoặc tạo một server, xem :ref:`ENetMultiplayerPeer<class_ENetMultiplayerPeer>`), bạn có thể sử dụng hệ thống RPC (remote procedure call) tích hợp sẵn để giao tiếp qua mạng. Bằng cách gọi :ref:`rpc()<class_Node_method_rpc>` với tên của một method, method đó sẽ được gọi cục bộ và trên tất cả peer đã kết nối (peer = client và server chấp nhận các kết nối). Để xác định node nào nhận lệnh gọi RPC, Godot sẽ sử dụng :ref:`NodePath<class_NodePath>` của node đó (hãy đảm bảo tên node giống nhau trên tất cả peer). Ngoài ra, hãy xem tutorial về networking cấp cao và các bản demo tương ứng.
+
+\ **Lưu ý:** Thuộc tính ``script`` là một phần của class :ref:`Object<class_Object>`, không phải **Node**. Thuộc tính này không được hiển thị như hầu hết các thuộc tính khác, nhưng có setter và getter (xem :ref:`Object.set_script()<class_Object_method_set_script>` và :ref:`Object.get_script()<class_Object_method_get_script>`).
+
+.. rst-class:: classref-introduction-group
+
+Tutorial
+--------
+
+- :doc:`Node và scene <../getting_started/step_by_step/nodes_and_scenes>`
+
+- `Tất cả bản demo <https://github.com/godotengine/godot-demo-projects/>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>`                       | :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>`               | ``0``     |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                                                 | :ref:`editor_description<class_Node_property_editor_description>`                 | ``""``    |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`MultiplayerAPI<class_MultiplayerAPI>`                                 | :ref:`multiplayer<class_Node_property_multiplayer>`                               |           |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`StringName<class_StringName>`                                         | :ref:`name<class_Node_property_name>`                                             |           |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`Node<class_Node>`                                                     | :ref:`owner<class_Node_property_owner>`                                           |           |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>`         | :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` | ``0``     |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`ProcessMode<enum_Node_ProcessMode>`                                   | :ref:`process_mode<class_Node_property_process_mode>`                             | ``0``     |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                       | :ref:`process_physics_priority<class_Node_property_process_physics_priority>`     | ``0``     |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                       | :ref:`process_priority<class_Node_property_process_priority>`                     | ``0``     |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`ProcessThreadGroup<enum_Node_ProcessThreadGroup>`                     | :ref:`process_thread_group<class_Node_property_process_thread_group>`             | ``0``     |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`int<class_int>`                                                       | :ref:`process_thread_group_order<class_Node_property_process_thread_group_order>` |           |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | |bitfield|\[:ref:`ProcessThreadMessages<enum_Node_ProcessThreadMessages>`\] | :ref:`process_thread_messages<class_Node_property_process_thread_messages>`       |           |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`String<class_String>`                                                 | :ref:`scene_file_path<class_Node_property_scene_file_path>`                       |           |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
-   | :ref:`bool<class_bool>`                                                     | :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`             | ``false`` |
-   +-----------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`AutoTranslateMode <enum_Node_AutoTranslateMode>`                       | :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>`               | ``0``     |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`                                                  | :ref:`editor_description<class_Node_property_editor_description>`                 | ``""``    |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`MultiplayerAPI<class_MultiplayerAPI>`                                  | :ref:`multiplayer<class_Node_property_multiplayer>`                               |           |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`StringName<class_StringName>`                                          | :ref:`name<class_Node_property_name>`                                             |           |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`Node<class_Node>`                                                      | :ref:`owner<class_Node_property_owner>`                                           |           |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`PhysicsInterpolationMode <enum_Node_PhysicsInterpolationMode>`         | :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` | ``0``     |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`ProcessMode <enum_Node_ProcessMode>`                                   | :ref:`process_mode<class_Node_property_process_mode>`                             | ``0``     |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                        | :ref:`process_physics_priority<class_Node_property_process_physics_priority>`     | ``0``     |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                        | :ref:`process_priority<class_Node_property_process_priority>`                     | ``0``     |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`ProcessThreadGroup <enum_Node_ProcessThreadGroup>`                     | :ref:`process_thread_group<class_Node_property_process_thread_group>`             | ``0``     |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`int<class_int>`                                                        | :ref:`process_thread_group_order<class_Node_property_process_thread_group_order>` |           |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | |bitfield|\[:ref:`ProcessThreadMessages <enum_Node_ProcessThreadMessages>`\] | :ref:`process_thread_messages<class_Node_property_process_thread_messages>`       |           |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`String<class_String>`                                                  | :ref:`scene_file_path<class_Node_property_scene_file_path>`                       |           |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
+   | :ref:`bool<class_bool>`                                                      | :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`             | ``false`` |
+   +------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+-----------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -125,7 +125,7 @@ Methods
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`_unhandled_key_input<class_Node_private_method__unhandled_key_input>`\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual|                                                                                                |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                           | :ref:`add_child<class_Node_method_add_child>`\ (\ node\: :ref:`Node<class_Node>`, force_readable_name\: :ref:`bool<class_bool>` = false, internal\: :ref:`InternalMode<enum_Node_InternalMode>` = 0\ )                                  |
+   | |void|                                                           | :ref:`add_child<class_Node_method_add_child>`\ (\ node\: :ref:`Node<class_Node>`, force_readable_name\: :ref:`bool<class_bool>` = false, internal\: :ref:`InternalMode <enum_Node_InternalMode>` = 0\ )                                 |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`add_sibling<class_Node_method_add_sibling>`\ (\ sibling\: :ref:`Node<class_Node>`, force_readable_name\: :ref:`bool<class_bool>` = false\ )                                                                                       |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -275,11 +275,11 @@ Methods
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`reset_physics_interpolation<class_Node_method_reset_physics_interpolation>`\ (\ )                                                                                                                                                 |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`rpc<class_Node_method_rpc>`\ (\ method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                                                                     |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`rpc<class_Node_method_rpc>`\ (\ method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                                                                     |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`rpc_config<class_Node_method_rpc_config>`\ (\ method\: :ref:`StringName<class_StringName>`, config\: :ref:`Variant<class_Variant>`\ )                                                                                             |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`                            | :ref:`rpc_id<class_Node_method_rpc_id>`\ (\ peer_id\: :ref:`int<class_int>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                              |
+   | :ref:`Error <enum_@GlobalScope_Error>`                           | :ref:`rpc_id<class_Node_method_rpc_id>`\ (\ peer_id\: :ref:`int<class_int>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg|                                                                                              |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | |void|                                                           | :ref:`set_deferred_thread_group<class_Node_method_set_deferred_thread_group>`\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ )                                                              |
    +------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -320,8 +320,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_Node_signal_child_entered_tree:
 
@@ -329,9 +329,9 @@ Signals
 
 **child_entered_tree**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_Node_signal_child_entered_tree>`
 
-Emitted when the child ``node`` enters the :ref:`SceneTree<class_SceneTree>`, usually because this node entered the tree (see :ref:`tree_entered<class_Node_signal_tree_entered>`), or :ref:`add_child()<class_Node_method_add_child>` has been called.
+Được phát ra khi node con ``node`` đi vào :ref:`SceneTree<class_SceneTree>`, thường là do node này đi vào cây (xem :ref:`tree_entered<class_Node_signal_tree_entered>`), hoặc :ref:`add_child()<class_Node_method_add_child>` đã được gọi.
 
-This signal is emitted *after* the child node's own :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` and :ref:`tree_entered<class_Node_signal_tree_entered>`.
+Tín hiệu này được phát ra *sau khi* node con hoàn tất :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` và :ref:`tree_entered<class_Node_signal_tree_entered>` của chính nó.
 
 .. rst-class:: classref-item-separator
 
@@ -343,9 +343,9 @@ This signal is emitted *after* the child node's own :ref:`NOTIFICATION_ENTER_TRE
 
 **child_exiting_tree**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_Node_signal_child_exiting_tree>`
 
-Emitted when the child ``node`` is about to exit the :ref:`SceneTree<class_SceneTree>`, usually because this node is exiting the tree (see :ref:`tree_exiting<class_Node_signal_tree_exiting>`), or because the child ``node`` is being removed or freed.
+Được phát ra khi node con ``node`` sắp rời khỏi :ref:`SceneTree<class_SceneTree>`, thường là do node này đang rời khỏi cây (xem :ref:`tree_exiting<class_Node_signal_tree_exiting>`), hoặc vì node con ``node`` đang bị xóa hoặc giải phóng.
 
-When this signal is received, the child ``node`` is still accessible inside the tree. This signal is emitted *after* the child node's own :ref:`tree_exiting<class_Node_signal_tree_exiting>` and :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>`.
+Khi nhận được tín hiệu này, node con ``node`` vẫn có thể được truy cập trong cây. Tín hiệu này được phát ra *sau khi* node con hoàn tất :ref:`tree_exiting<class_Node_signal_tree_exiting>` và :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>` của chính nó.
 
 .. rst-class:: classref-item-separator
 
@@ -357,7 +357,7 @@ When this signal is received, the child ``node`` is still accessible inside the 
 
 **child_order_changed**\ (\ ) :ref:`🔗<class_Node_signal_child_order_changed>`
 
-Emitted when the list of children is changed. This happens when child nodes are added, moved or removed.
+Được phát ra khi danh sách các node con thay đổi. Điều này xảy ra khi các node con được thêm, di chuyển hoặc xóa.
 
 .. rst-class:: classref-item-separator
 
@@ -369,7 +369,7 @@ Emitted when the list of children is changed. This happens when child nodes are 
 
 **editor_description_changed**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_Node_signal_editor_description_changed>`
 
-Emitted when the node's editor description field changed.
+Được phát ra khi trường mô tả của node trong editor thay đổi.
 
 .. rst-class:: classref-item-separator
 
@@ -381,7 +381,7 @@ Emitted when the node's editor description field changed.
 
 **editor_state_changed**\ (\ ) :ref:`🔗<class_Node_signal_editor_state_changed>`
 
-Emitted when an attribute of the node that is relevant to the editor is changed. Only emitted in the editor.
+Được phát ra khi một thuộc tính của node có liên quan đến editor thay đổi. Chỉ được phát ra trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -393,7 +393,7 @@ Emitted when an attribute of the node that is relevant to the editor is changed.
 
 **ready**\ (\ ) :ref:`🔗<class_Node_signal_ready>`
 
-Emitted when the node is considered ready, after :ref:`_ready()<class_Node_private_method__ready>` is called.
+Được phát ra khi node được xem là sẵn sàng, sau khi :ref:`_ready()<class_Node_private_method__ready>` được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -405,7 +405,7 @@ Emitted when the node is considered ready, after :ref:`_ready()<class_Node_priva
 
 **renamed**\ (\ ) :ref:`🔗<class_Node_signal_renamed>`
 
-Emitted when the node's :ref:`name<class_Node_property_name>` is changed, if the node is inside the tree.
+Được phát ra khi :ref:`name<class_Node_property_name>` của node thay đổi, nếu node nằm trong cây.
 
 .. rst-class:: classref-item-separator
 
@@ -417,9 +417,9 @@ Emitted when the node's :ref:`name<class_Node_property_name>` is changed, if the
 
 **replacing_by**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_Node_signal_replacing_by>`
 
-Emitted when this node is being replaced by the ``node``, see :ref:`replace_by()<class_Node_method_replace_by>`.
+Được phát ra khi node này đang được thay thế bằng ``node``, xem :ref:`replace_by()<class_Node_method_replace_by>`.
 
-This signal is emitted *after* ``node`` has been added as a child of the original parent node, but *before* all original child nodes have been reparented to ``node``.
+Tín hiệu này được phát ra *sau* khi ``node`` đã được thêm làm node con của node cha ban đầu, nhưng *trước* khi tất cả các node con ban đầu đã được gán lại node cha cho ``node``.
 
 .. rst-class:: classref-item-separator
 
@@ -431,9 +431,9 @@ This signal is emitted *after* ``node`` has been added as a child of the origina
 
 **tree_entered**\ (\ ) :ref:`🔗<class_Node_signal_tree_entered>`
 
-Emitted when the node enters the tree.
+Được phát ra khi node đi vào cây.
 
-This signal is emitted *after* the related :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` notification.
+Tín hiệu này được phát ra *sau* thông báo :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` liên quan.
 
 .. rst-class:: classref-item-separator
 
@@ -445,9 +445,9 @@ This signal is emitted *after* the related :ref:`NOTIFICATION_ENTER_TREE<class_N
 
 **tree_exited**\ (\ ) :ref:`🔗<class_Node_signal_tree_exited>`
 
-Emitted after the node exits the tree and is no longer active.
+Được phát ra sau khi node thoát khỏi cây và không còn hoạt động.
 
-This signal is emitted *after* the related :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>` notification.
+Tín hiệu này được phát ra *sau* thông báo :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>` liên quan.
 
 .. rst-class:: classref-item-separator
 
@@ -459,9 +459,9 @@ This signal is emitted *after* the related :ref:`NOTIFICATION_EXIT_TREE<class_No
 
 **tree_exiting**\ (\ ) :ref:`🔗<class_Node_signal_tree_exiting>`
 
-Emitted when the node is just about to exit the tree. The node is still valid. As such, this is the right place for de-initialization (or a "destructor", if you will).
+Được phát ra khi node sắp thoát khỏi cây. Node vẫn còn hợp lệ. Vì vậy, đây là thời điểm thích hợp để thực hiện de-initialization (hay còn gọi là "destructor", nếu bạn muốn).
 
-This signal is emitted *after* the node's :ref:`_exit_tree()<class_Node_private_method__exit_tree>`, and *before* the related :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>`.
+Tín hiệu này được phát ra *sau* :ref:`_exit_tree()<class_Node_private_method__exit_tree>` của node, và *trước* thông báo :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>` liên quan.
 
 .. rst-class:: classref-section-separator
 
@@ -469,14 +469,14 @@ This signal is emitted *after* the node's :ref:`_exit_tree()<class_Node_private_
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Node_ProcessMode:
 
 .. rst-class:: classref-enumeration
 
-enum **ProcessMode**: :ref:`🔗<enum_Node_ProcessMode>`
+enum **ProcessMode**: :ref:`🔗 <enum_Node_ProcessMode>`
 
 .. _class_Node_constant_PROCESS_MODE_INHERIT:
 
@@ -484,7 +484,7 @@ enum **ProcessMode**: :ref:`🔗<enum_Node_ProcessMode>`
 
 :ref:`ProcessMode<enum_Node_ProcessMode>` **PROCESS_MODE_INHERIT** = ``0``
 
-Inherits :ref:`process_mode<class_Node_property_process_mode>` from the node's parent. This is the default for any newly created node.
+Kế thừa :ref:`process_mode<class_Node_property_process_mode>` từ node cha. Đây là giá trị mặc định cho mọi node mới được tạo.
 
 .. _class_Node_constant_PROCESS_MODE_PAUSABLE:
 
@@ -492,7 +492,7 @@ Inherits :ref:`process_mode<class_Node_property_process_mode>` from the node's p
 
 :ref:`ProcessMode<enum_Node_ProcessMode>` **PROCESS_MODE_PAUSABLE** = ``1``
 
-Processes when :ref:`SceneTree.paused<class_SceneTree_property_paused>` is ``false``. This is the inverse of :ref:`PROCESS_MODE_WHEN_PAUSED<class_Node_constant_PROCESS_MODE_WHEN_PAUSED>`, and the default for the root node.
+Xử lý khi :ref:`SceneTree.paused<class_SceneTree_property_paused>` là ``false``. Đây là nghịch đảo của :ref:`PROCESS_MODE_WHEN_PAUSED<class_Node_constant_PROCESS_MODE_WHEN_PAUSED>` và là giá trị mặc định cho node gốc.
 
 .. _class_Node_constant_PROCESS_MODE_WHEN_PAUSED:
 
@@ -500,7 +500,7 @@ Processes when :ref:`SceneTree.paused<class_SceneTree_property_paused>` is ``fal
 
 :ref:`ProcessMode<enum_Node_ProcessMode>` **PROCESS_MODE_WHEN_PAUSED** = ``2``
 
-Processes **only** when :ref:`SceneTree.paused<class_SceneTree_property_paused>` is ``true``. This is the inverse of :ref:`PROCESS_MODE_PAUSABLE<class_Node_constant_PROCESS_MODE_PAUSABLE>`.
+Chỉ xử lý **chỉ** khi :ref:`SceneTree.paused<class_SceneTree_property_paused>` là ``true``. Đây là nghịch đảo của :ref:`PROCESS_MODE_PAUSABLE<class_Node_constant_PROCESS_MODE_PAUSABLE>`.
 
 .. _class_Node_constant_PROCESS_MODE_ALWAYS:
 
@@ -508,7 +508,7 @@ Processes **only** when :ref:`SceneTree.paused<class_SceneTree_property_paused>`
 
 :ref:`ProcessMode<enum_Node_ProcessMode>` **PROCESS_MODE_ALWAYS** = ``3``
 
-Always processes. Keeps processing, ignoring :ref:`SceneTree.paused<class_SceneTree_property_paused>`. This is the inverse of :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
+Luôn xử lý. Tiếp tục xử lý, bỏ qua :ref:`SceneTree.paused<class_SceneTree_property_paused>`. Đây là nghịch đảo của :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. _class_Node_constant_PROCESS_MODE_DISABLED:
 
@@ -516,7 +516,7 @@ Always processes. Keeps processing, ignoring :ref:`SceneTree.paused<class_SceneT
 
 :ref:`ProcessMode<enum_Node_ProcessMode>` **PROCESS_MODE_DISABLED** = ``4``
 
-Never processes. Completely disables processing, ignoring :ref:`SceneTree.paused<class_SceneTree_property_paused>`. This is the inverse of :ref:`PROCESS_MODE_ALWAYS<class_Node_constant_PROCESS_MODE_ALWAYS>`.
+Không bao giờ xử lý. Vô hiệu hóa hoàn toàn việc xử lý, bỏ qua :ref:`SceneTree.paused<class_SceneTree_property_paused>`. Đây là nghịch đảo của :ref:`PROCESS_MODE_ALWAYS<class_Node_constant_PROCESS_MODE_ALWAYS>`.
 
 .. rst-class:: classref-item-separator
 
@@ -526,7 +526,7 @@ Never processes. Completely disables processing, ignoring :ref:`SceneTree.paused
 
 .. rst-class:: classref-enumeration
 
-enum **ProcessThreadGroup**: :ref:`🔗<enum_Node_ProcessThreadGroup>`
+enum **ProcessThreadGroup**: :ref:`🔗 <enum_Node_ProcessThreadGroup>`
 
 .. _class_Node_constant_PROCESS_THREAD_GROUP_INHERIT:
 
@@ -534,7 +534,7 @@ enum **ProcessThreadGroup**: :ref:`🔗<enum_Node_ProcessThreadGroup>`
 
 :ref:`ProcessThreadGroup<enum_Node_ProcessThreadGroup>` **PROCESS_THREAD_GROUP_INHERIT** = ``0``
 
-Process this node based on the thread group mode of the first parent (or grandparent) node that has a thread group mode that is not inherit. See :ref:`process_thread_group<class_Node_property_process_thread_group>` for more information.
+Xử lý node này dựa trên chế độ nhóm luồng của node cha (hoặc ông) đầu tiên có chế độ nhóm luồng không phải là inherit. Xem :ref:`process_thread_group<class_Node_property_process_thread_group>` để biết thêm thông tin.
 
 .. _class_Node_constant_PROCESS_THREAD_GROUP_MAIN_THREAD:
 
@@ -542,7 +542,7 @@ Process this node based on the thread group mode of the first parent (or grandpa
 
 :ref:`ProcessThreadGroup<enum_Node_ProcessThreadGroup>` **PROCESS_THREAD_GROUP_MAIN_THREAD** = ``1``
 
-Process this node (and child nodes set to inherit) on the main thread. See :ref:`process_thread_group<class_Node_property_process_thread_group>` for more information.
+Xử lý nút này (và các nút con được đặt là kế thừa) trên luồng chính. Xem :ref:`process_thread_group<class_Node_property_process_thread_group>` để biết thêm thông tin.
 
 .. _class_Node_constant_PROCESS_THREAD_GROUP_SUB_THREAD:
 
@@ -550,7 +550,7 @@ Process this node (and child nodes set to inherit) on the main thread. See :ref:
 
 :ref:`ProcessThreadGroup<enum_Node_ProcessThreadGroup>` **PROCESS_THREAD_GROUP_SUB_THREAD** = ``2``
 
-Process this node (and child nodes set to inherit) on a sub-thread. See :ref:`process_thread_group<class_Node_property_process_thread_group>` for more information.
+Xử lý nút này (và các nút con được đặt là kế thừa) trên luồng phụ. Xem :ref:`process_thread_group<class_Node_property_process_thread_group>` để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -560,7 +560,7 @@ Process this node (and child nodes set to inherit) on a sub-thread. See :ref:`pr
 
 .. rst-class:: classref-enumeration
 
-flags **ProcessThreadMessages**: :ref:`🔗<enum_Node_ProcessThreadMessages>`
+các cờ **ProcessThreadMessages**: :ref:`🔗 <enum_Node_ProcessThreadMessages>`
 
 .. _class_Node_constant_FLAG_PROCESS_THREAD_MESSAGES:
 
@@ -568,7 +568,7 @@ flags **ProcessThreadMessages**: :ref:`🔗<enum_Node_ProcessThreadMessages>`
 
 :ref:`ProcessThreadMessages<enum_Node_ProcessThreadMessages>` **FLAG_PROCESS_THREAD_MESSAGES** = ``1``
 
-Allows this node to process threaded messages created with :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` right before :ref:`_process()<class_Node_private_method__process>` is called.
+Cho phép nút này xử lý các thông điệp theo luồng được tạo bằng :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` ngay trước khi :ref:`_process()<class_Node_private_method__process>` được gọi.
 
 .. _class_Node_constant_FLAG_PROCESS_THREAD_MESSAGES_PHYSICS:
 
@@ -576,7 +576,7 @@ Allows this node to process threaded messages created with :ref:`call_deferred_t
 
 :ref:`ProcessThreadMessages<enum_Node_ProcessThreadMessages>` **FLAG_PROCESS_THREAD_MESSAGES_PHYSICS** = ``2``
 
-Allows this node to process threaded messages created with :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` right before :ref:`_physics_process()<class_Node_private_method__physics_process>` is called.
+Cho phép nút này xử lý các thông điệp theo luồng được tạo bằng :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` ngay trước khi :ref:`_physics_process()<class_Node_private_method__physics_process>` được gọi.
 
 .. _class_Node_constant_FLAG_PROCESS_THREAD_MESSAGES_ALL:
 
@@ -584,7 +584,7 @@ Allows this node to process threaded messages created with :ref:`call_deferred_t
 
 :ref:`ProcessThreadMessages<enum_Node_ProcessThreadMessages>` **FLAG_PROCESS_THREAD_MESSAGES_ALL** = ``3``
 
-Allows this node to process threaded messages created with :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` right before either :ref:`_process()<class_Node_private_method__process>` or :ref:`_physics_process()<class_Node_private_method__physics_process>` are called.
+Cho phép nút này xử lý các thông điệp theo luồng được tạo bằng :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` ngay trước khi :ref:`_process()<class_Node_private_method__process>` hoặc :ref:`_physics_process()<class_Node_private_method__physics_process>` được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -594,7 +594,7 @@ Allows this node to process threaded messages created with :ref:`call_deferred_t
 
 .. rst-class:: classref-enumeration
 
-enum **PhysicsInterpolationMode**: :ref:`🔗<enum_Node_PhysicsInterpolationMode>`
+enum **PhysicsInterpolationMode**: :ref:`🔗 <enum_Node_PhysicsInterpolationMode>`
 
 .. _class_Node_constant_PHYSICS_INTERPOLATION_MODE_INHERIT:
 
@@ -602,7 +602,7 @@ enum **PhysicsInterpolationMode**: :ref:`🔗<enum_Node_PhysicsInterpolationMode
 
 :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` **PHYSICS_INTERPOLATION_MODE_INHERIT** = ``0``
 
-Inherits :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` from the node's parent. This is the default for any newly created node.
+Kế thừa :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>` từ node cha của node. Đây là giá trị mặc định cho mọi node mới được tạo.
 
 .. _class_Node_constant_PHYSICS_INTERPOLATION_MODE_ON:
 
@@ -610,7 +610,7 @@ Inherits :ref:`physics_interpolation_mode<class_Node_property_physics_interpolat
 
 :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` **PHYSICS_INTERPOLATION_MODE_ON** = ``1``
 
-Enables physics interpolation for this node and for children set to :ref:`PHYSICS_INTERPOLATION_MODE_INHERIT<class_Node_constant_PHYSICS_INTERPOLATION_MODE_INHERIT>`. This is the default for the root node.
+Bật nội suy physics cho node này và các node con được đặt thành :ref:`PHYSICS_INTERPOLATION_MODE_INHERIT<class_Node_constant_PHYSICS_INTERPOLATION_MODE_INHERIT>`. Đây là giá trị mặc định cho node gốc.
 
 .. _class_Node_constant_PHYSICS_INTERPOLATION_MODE_OFF:
 
@@ -618,7 +618,7 @@ Enables physics interpolation for this node and for children set to :ref:`PHYSIC
 
 :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` **PHYSICS_INTERPOLATION_MODE_OFF** = ``2``
 
-Disables physics interpolation for this node and for children set to :ref:`PHYSICS_INTERPOLATION_MODE_INHERIT<class_Node_constant_PHYSICS_INTERPOLATION_MODE_INHERIT>`.
+Tắt nội suy physics cho node này và các node con được đặt thành :ref:`PHYSICS_INTERPOLATION_MODE_INHERIT<class_Node_constant_PHYSICS_INTERPOLATION_MODE_INHERIT>`.
 
 .. rst-class:: classref-item-separator
 
@@ -628,7 +628,7 @@ Disables physics interpolation for this node and for children set to :ref:`PHYSI
 
 .. rst-class:: classref-enumeration
 
-enum **DuplicateFlags**: :ref:`🔗<enum_Node_DuplicateFlags>`
+enum **DuplicateFlags**: :ref:`🔗 <enum_Node_DuplicateFlags>`
 
 .. _class_Node_constant_DUPLICATE_SIGNALS:
 
@@ -636,7 +636,7 @@ enum **DuplicateFlags**: :ref:`🔗<enum_Node_DuplicateFlags>`
 
 :ref:`DuplicateFlags<enum_Node_DuplicateFlags>` **DUPLICATE_SIGNALS** = ``1``
 
-Duplicate the node's signal connections that are connected with the :ref:`Object.CONNECT_PERSIST<class_Object_constant_CONNECT_PERSIST>` flag.
+Sao chép các kết nối signal của node được kết nối với cờ :ref:`Object.CONNECT_PERSIST<class_Object_constant_CONNECT_PERSIST>`.
 
 .. _class_Node_constant_DUPLICATE_GROUPS:
 
@@ -644,7 +644,7 @@ Duplicate the node's signal connections that are connected with the :ref:`Object
 
 :ref:`DuplicateFlags<enum_Node_DuplicateFlags>` **DUPLICATE_GROUPS** = ``2``
 
-Duplicate the node's groups.
+Sao chép các group của node.
 
 .. _class_Node_constant_DUPLICATE_SCRIPTS:
 
@@ -652,7 +652,7 @@ Duplicate the node's groups.
 
 :ref:`DuplicateFlags<enum_Node_DuplicateFlags>` **DUPLICATE_SCRIPTS** = ``4``
 
-Duplicate the node's script (also overriding the duplicated children's scripts, if combined with :ref:`DUPLICATE_USE_INSTANTIATION<class_Node_constant_DUPLICATE_USE_INSTANTIATION>`).
+Sao chép script của node (đồng thời ghi đè script của các node con được sao chép nếu kết hợp với :ref:`DUPLICATE_USE_INSTANTIATION<class_Node_constant_DUPLICATE_USE_INSTANTIATION>`).
 
 .. _class_Node_constant_DUPLICATE_USE_INSTANTIATION:
 
@@ -660,7 +660,7 @@ Duplicate the node's script (also overriding the duplicated children's scripts, 
 
 :ref:`DuplicateFlags<enum_Node_DuplicateFlags>` **DUPLICATE_USE_INSTANTIATION** = ``8``
 
-Duplicate using :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`. If the node comes from a scene saved on disk, reuses :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>` as the base for the duplicated node and its children.
+Nhân bản bằng :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>`. Nếu node bắt nguồn từ một scene được lưu trên đĩa, sử dụng lại :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>` làm cơ sở cho node được nhân bản và các node con của nó.
 
 .. _class_Node_constant_DUPLICATE_INTERNAL_STATE:
 
@@ -668,7 +668,7 @@ Duplicate using :ref:`PackedScene.instantiate()<class_PackedScene_method_instant
 
 :ref:`DuplicateFlags<enum_Node_DuplicateFlags>` **DUPLICATE_INTERNAL_STATE** = ``16``
 
-Duplicate also non-serializable variables (i.e. without :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>`).
+Cũng nhân bản các biến không thể tuần tự hóa (tức là không có :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE <class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>`).
 
 .. _class_Node_constant_DUPLICATE_DEFAULT:
 
@@ -676,7 +676,7 @@ Duplicate also non-serializable variables (i.e. without :ref:`@GlobalScope.PROPE
 
 :ref:`DuplicateFlags<enum_Node_DuplicateFlags>` **DUPLICATE_DEFAULT** = ``15``
 
-Duplicate using default flags. This constant is useful to add or remove a single flag.
+Nhân bản bằng các flag mặc định. Hằng số này hữu ích khi thêm hoặc xóa một flag riêng lẻ.
 
 ::
 
@@ -691,7 +691,7 @@ Duplicate using default flags. This constant is useful to add or remove a single
 
 .. rst-class:: classref-enumeration
 
-enum **InternalMode**: :ref:`🔗<enum_Node_InternalMode>`
+enum **InternalMode**: :ref:`🔗 <enum_Node_InternalMode>`
 
 .. _class_Node_constant_INTERNAL_MODE_DISABLED:
 
@@ -699,7 +699,7 @@ enum **InternalMode**: :ref:`🔗<enum_Node_InternalMode>`
 
 :ref:`InternalMode<enum_Node_InternalMode>` **INTERNAL_MODE_DISABLED** = ``0``
 
-The node will not be internal.
+Node sẽ không phải là internal.
 
 .. _class_Node_constant_INTERNAL_MODE_FRONT:
 
@@ -707,7 +707,7 @@ The node will not be internal.
 
 :ref:`InternalMode<enum_Node_InternalMode>` **INTERNAL_MODE_FRONT** = ``1``
 
-The node will be placed at the beginning of the parent's children, before any non-internal sibling.
+Node sẽ được đặt ở đầu danh sách các node con của parent, trước mọi sibling không phải là internal.
 
 .. _class_Node_constant_INTERNAL_MODE_BACK:
 
@@ -715,7 +715,7 @@ The node will be placed at the beginning of the parent's children, before any no
 
 :ref:`InternalMode<enum_Node_InternalMode>` **INTERNAL_MODE_BACK** = ``2``
 
-The node will be placed at the end of the parent's children, after any non-internal sibling.
+Node sẽ được đặt ở cuối danh sách các node con của parent, sau mọi sibling không phải là internal.
 
 .. rst-class:: classref-item-separator
 
@@ -725,7 +725,7 @@ The node will be placed at the end of the parent's children, after any non-inter
 
 .. rst-class:: classref-enumeration
 
-enum **AutoTranslateMode**: :ref:`🔗<enum_Node_AutoTranslateMode>`
+enum **AutoTranslateMode**: :ref:`🔗 <enum_Node_AutoTranslateMode>`
 
 .. _class_Node_constant_AUTO_TRANSLATE_MODE_INHERIT:
 
@@ -733,7 +733,7 @@ enum **AutoTranslateMode**: :ref:`🔗<enum_Node_AutoTranslateMode>`
 
 :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` **AUTO_TRANSLATE_MODE_INHERIT** = ``0``
 
-Inherits :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>` from the node's parent. This is the default for any newly created node.
+Kế thừa :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>` từ node cha. Đây là mặc định cho mọi node mới được tạo.
 
 .. _class_Node_constant_AUTO_TRANSLATE_MODE_ALWAYS:
 
@@ -741,7 +741,7 @@ Inherits :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>` fro
 
 :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` **AUTO_TRANSLATE_MODE_ALWAYS** = ``1``
 
-Always automatically translate. This is the inverse of :ref:`AUTO_TRANSLATE_MODE_DISABLED<class_Node_constant_AUTO_TRANSLATE_MODE_DISABLED>`, and the default for the root node.
+Luôn tự động dịch. Đây là giá trị ngược với :ref:`AUTO_TRANSLATE_MODE_DISABLED<class_Node_constant_AUTO_TRANSLATE_MODE_DISABLED>` và là mặc định cho node gốc.
 
 .. _class_Node_constant_AUTO_TRANSLATE_MODE_DISABLED:
 
@@ -749,9 +749,9 @@ Always automatically translate. This is the inverse of :ref:`AUTO_TRANSLATE_MODE
 
 :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` **AUTO_TRANSLATE_MODE_DISABLED** = ``2``
 
-Never automatically translate. This is the inverse of :ref:`AUTO_TRANSLATE_MODE_ALWAYS<class_Node_constant_AUTO_TRANSLATE_MODE_ALWAYS>`.
+Không bao giờ tự động dịch. Đây là giá trị ngược với :ref:`AUTO_TRANSLATE_MODE_ALWAYS<class_Node_constant_AUTO_TRANSLATE_MODE_ALWAYS>`.
 
-String parsing for translation template generation will be skipped for this node and children that are set to :ref:`AUTO_TRANSLATE_MODE_INHERIT<class_Node_constant_AUTO_TRANSLATE_MODE_INHERIT>`.
+Việc phân tích cú pháp chuỗi để tạo template dịch sẽ bị bỏ qua đối với node này và các node con được đặt thành :ref:`AUTO_TRANSLATE_MODE_INHERIT<class_Node_constant_AUTO_TRANSLATE_MODE_INHERIT>`.
 
 .. rst-class:: classref-section-separator
 
@@ -759,8 +759,8 @@ String parsing for translation template generation will be skipped for this node
 
 .. rst-class:: classref-descriptions-group
 
-Constants
----------
+Hằng số
+-------
 
 .. _class_Node_constant_NOTIFICATION_ENTER_TREE:
 
@@ -768,9 +768,9 @@ Constants
 
 **NOTIFICATION_ENTER_TREE** = ``10`` :ref:`🔗<class_Node_constant_NOTIFICATION_ENTER_TREE>`
 
-Notification received when the node enters a :ref:`SceneTree<class_SceneTree>`. See :ref:`_enter_tree()<class_Node_private_method__enter_tree>`.
+Thông báo được nhận khi node chuyển sang trạng thái :ref:`SceneTree<class_SceneTree>`. Xem :ref:`_enter_tree()<class_Node_private_method__enter_tree>`.
 
-This notification is received *before* the related :ref:`tree_entered<class_Node_signal_tree_entered>` signal.
+Thông báo này được nhận *trước* tín hiệu :ref:`tree_entered<class_Node_signal_tree_entered>` liên quan.
 
 .. _class_Node_constant_NOTIFICATION_EXIT_TREE:
 
@@ -778,11 +778,11 @@ This notification is received *before* the related :ref:`tree_entered<class_Node
 
 **NOTIFICATION_EXIT_TREE** = ``11`` :ref:`🔗<class_Node_constant_NOTIFICATION_EXIT_TREE>`
 
-Notification received when the node is about to exit a :ref:`SceneTree<class_SceneTree>`. See :ref:`_exit_tree()<class_Node_private_method__exit_tree>`.
+Thông báo được nhận khi node sắp thoát khỏi một :ref:`SceneTree<class_SceneTree>`. Xem :ref:`_exit_tree()<class_Node_private_method__exit_tree>`.
 
-This notification is received *after* the related :ref:`tree_exiting<class_Node_signal_tree_exiting>` signal.
+Thông báo này được nhận *sau* tín hiệu :ref:`tree_exiting<class_Node_signal_tree_exiting>` liên quan.
 
-This notification is sent in reversed order.
+Thông báo này được gửi theo thứ tự ngược lại.
 
 .. _class_Node_constant_NOTIFICATION_MOVED_IN_PARENT:
 
@@ -790,7 +790,7 @@ This notification is sent in reversed order.
 
 **NOTIFICATION_MOVED_IN_PARENT** = ``12`` :ref:`🔗<class_Node_constant_NOTIFICATION_MOVED_IN_PARENT>`
 
-**Deprecated:** This notification is no longer sent by the engine. Use :ref:`NOTIFICATION_CHILD_ORDER_CHANGED<class_Node_constant_NOTIFICATION_CHILD_ORDER_CHANGED>` instead.
+**Đã lỗi thời:** Thông báo này không còn được engine gửi. Thay vào đó, hãy sử dụng :ref:`NOTIFICATION_CHILD_ORDER_CHANGED<class_Node_constant_NOTIFICATION_CHILD_ORDER_CHANGED>`.
 
 
 
@@ -800,7 +800,7 @@ This notification is sent in reversed order.
 
 **NOTIFICATION_READY** = ``13`` :ref:`🔗<class_Node_constant_NOTIFICATION_READY>`
 
-Notification received when the node is ready. See :ref:`_ready()<class_Node_private_method__ready>`.
+Thông báo được nhận khi node sẵn sàng. Xem :ref:`_ready()<class_Node_private_method__ready>`.
 
 .. _class_Node_constant_NOTIFICATION_PAUSED:
 
@@ -808,7 +808,7 @@ Notification received when the node is ready. See :ref:`_ready()<class_Node_priv
 
 **NOTIFICATION_PAUSED** = ``14`` :ref:`🔗<class_Node_constant_NOTIFICATION_PAUSED>`
 
-Notification received when the node is paused. See :ref:`process_mode<class_Node_property_process_mode>`.
+Thông báo được nhận khi node bị tạm dừng. Xem :ref:`process_mode<class_Node_property_process_mode>`.
 
 .. _class_Node_constant_NOTIFICATION_UNPAUSED:
 
@@ -816,7 +816,7 @@ Notification received when the node is paused. See :ref:`process_mode<class_Node
 
 **NOTIFICATION_UNPAUSED** = ``15`` :ref:`🔗<class_Node_constant_NOTIFICATION_UNPAUSED>`
 
-Notification received when the node is unpaused. See :ref:`process_mode<class_Node_property_process_mode>`.
+Thông báo nhận được khi node được bỏ tạm dừng. Xem :ref:`process_mode<class_Node_property_process_mode>`.
 
 .. _class_Node_constant_NOTIFICATION_PHYSICS_PROCESS:
 
@@ -824,7 +824,7 @@ Notification received when the node is unpaused. See :ref:`process_mode<class_No
 
 **NOTIFICATION_PHYSICS_PROCESS** = ``16`` :ref:`🔗<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`
 
-Notification received from the tree every physics frame when :ref:`is_physics_processing()<class_Node_method_is_physics_processing>` returns ``true``. See :ref:`_physics_process()<class_Node_private_method__physics_process>`.
+Thông báo nhận được từ tree ở mỗi physics frame khi :ref:`is_physics_processing()<class_Node_method_is_physics_processing>` trả về ``true``. Xem :ref:`_physics_process()<class_Node_private_method__physics_process>`.
 
 .. _class_Node_constant_NOTIFICATION_PROCESS:
 
@@ -832,7 +832,7 @@ Notification received from the tree every physics frame when :ref:`is_physics_pr
 
 **NOTIFICATION_PROCESS** = ``17`` :ref:`🔗<class_Node_constant_NOTIFICATION_PROCESS>`
 
-Notification received from the tree every rendered frame when :ref:`is_processing()<class_Node_method_is_processing>` returns ``true``. See :ref:`_process()<class_Node_private_method__process>`.
+Thông báo nhận được từ tree ở mỗi rendered frame khi :ref:`is_processing()<class_Node_method_is_processing>` trả về ``true``. Xem :ref:`_process()<class_Node_private_method__process>`.
 
 .. _class_Node_constant_NOTIFICATION_PARENTED:
 
@@ -840,9 +840,9 @@ Notification received from the tree every rendered frame when :ref:`is_processin
 
 **NOTIFICATION_PARENTED** = ``18`` :ref:`🔗<class_Node_constant_NOTIFICATION_PARENTED>`
 
-Notification received when the node is set as a child of another node (see :ref:`add_child()<class_Node_method_add_child>` and :ref:`add_sibling()<class_Node_method_add_sibling>`).
+Thông báo nhận được khi node được đặt làm node con của một node khác (xem :ref:`add_child()<class_Node_method_add_child>` và :ref:`add_sibling()<class_Node_method_add_sibling>`).
 
-\ **Note:** This does *not* mean that the node entered the :ref:`SceneTree<class_SceneTree>`.
+\ **Lưu ý:** Điều này *không* có nghĩa là node đã vào :ref:`SceneTree<class_SceneTree>`.
 
 .. _class_Node_constant_NOTIFICATION_UNPARENTED:
 
@@ -850,9 +850,9 @@ Notification received when the node is set as a child of another node (see :ref:
 
 **NOTIFICATION_UNPARENTED** = ``19`` :ref:`🔗<class_Node_constant_NOTIFICATION_UNPARENTED>`
 
-Notification received when the parent node calls :ref:`remove_child()<class_Node_method_remove_child>` on this node.
+Thông báo nhận được khi node cha gọi :ref:`remove_child()<class_Node_method_remove_child>` trên node này.
 
-\ **Note:** This does *not* mean that the node exited the :ref:`SceneTree<class_SceneTree>`.
+\ **Lưu ý:** Điều này *không* có nghĩa là node đã rời khỏi :ref:`SceneTree<class_SceneTree>`.
 
 .. _class_Node_constant_NOTIFICATION_SCENE_INSTANTIATED:
 
@@ -860,7 +860,7 @@ Notification received when the parent node calls :ref:`remove_child()<class_Node
 
 **NOTIFICATION_SCENE_INSTANTIATED** = ``20`` :ref:`🔗<class_Node_constant_NOTIFICATION_SCENE_INSTANTIATED>`
 
-Notification received *only* by the newly instantiated scene root node, when :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>` is completed.
+Thông báo được nhận *chỉ* bởi nút gốc của scene mới được khởi tạo khi :ref:`PackedScene.instantiate()<class_PackedScene_method_instantiate>` hoàn tất.
 
 .. _class_Node_constant_NOTIFICATION_DRAG_BEGIN:
 
@@ -868,11 +868,11 @@ Notification received *only* by the newly instantiated scene root node, when :re
 
 **NOTIFICATION_DRAG_BEGIN** = ``21`` :ref:`🔗<class_Node_constant_NOTIFICATION_DRAG_BEGIN>`
 
-Notification received when a drag operation begins. All nodes receive this notification, not only the dragged one.
+Thông báo được nhận khi một thao tác kéo bắt đầu. Tất cả các nút đều nhận thông báo này, không chỉ nút được kéo.
 
-Can be triggered either by dragging a :ref:`Control<class_Control>` that provides drag data (see :ref:`Control._get_drag_data()<class_Control_private_method__get_drag_data>`) or using :ref:`Control.force_drag()<class_Control_method_force_drag>`.
+Có thể được kích hoạt bằng cách kéo một :ref:`Control<class_Control>` cung cấp dữ liệu kéo (xem :ref:`Control._get_drag_data()<class_Control_private_method__get_drag_data>`) hoặc sử dụng :ref:`Control.force_drag()<class_Control_method_force_drag>`.
 
-Use :ref:`Viewport.gui_get_drag_data()<class_Viewport_method_gui_get_drag_data>` to get the dragged data.
+Sử dụng :ref:`Viewport.gui_get_drag_data()<class_Viewport_method_gui_get_drag_data>` để lấy dữ liệu được kéo.
 
 .. _class_Node_constant_NOTIFICATION_DRAG_END:
 
@@ -880,9 +880,9 @@ Use :ref:`Viewport.gui_get_drag_data()<class_Viewport_method_gui_get_drag_data>`
 
 **NOTIFICATION_DRAG_END** = ``22`` :ref:`🔗<class_Node_constant_NOTIFICATION_DRAG_END>`
 
-Notification received when a drag operation ends.
+Thông báo được nhận khi một thao tác kéo kết thúc.
 
-Use :ref:`Viewport.gui_is_drag_successful()<class_Viewport_method_gui_is_drag_successful>` to check if the drag succeeded.
+Sử dụng :ref:`Viewport.gui_is_drag_successful()<class_Viewport_method_gui_is_drag_successful>` để kiểm tra xem thao tác kéo có thành công hay không.
 
 .. _class_Node_constant_NOTIFICATION_PATH_RENAMED:
 
@@ -890,7 +890,7 @@ Use :ref:`Viewport.gui_is_drag_successful()<class_Viewport_method_gui_is_drag_su
 
 **NOTIFICATION_PATH_RENAMED** = ``23`` :ref:`🔗<class_Node_constant_NOTIFICATION_PATH_RENAMED>`
 
-Notification received when the node's :ref:`name<class_Node_property_name>` or one of its ancestors' :ref:`name<class_Node_property_name>` is changed. This notification is *not* received when the node is removed from the :ref:`SceneTree<class_SceneTree>`.
+Thông báo được nhận khi :ref:`name<class_Node_property_name>` của node hoặc :ref:`name<class_Node_property_name>` của một trong các node tổ tiên của nó thay đổi. Thông báo này *không* được nhận khi node bị xóa khỏi :ref:`SceneTree<class_SceneTree>`.
 
 .. _class_Node_constant_NOTIFICATION_CHILD_ORDER_CHANGED:
 
@@ -898,7 +898,7 @@ Notification received when the node's :ref:`name<class_Node_property_name>` or o
 
 **NOTIFICATION_CHILD_ORDER_CHANGED** = ``24`` :ref:`🔗<class_Node_constant_NOTIFICATION_CHILD_ORDER_CHANGED>`
 
-Notification received when the list of children is changed. This happens when child nodes are added, moved or removed.
+Thông báo nhận được khi danh sách các node con thay đổi. Điều này xảy ra khi các node con được thêm, di chuyển hoặc xóa.
 
 .. _class_Node_constant_NOTIFICATION_INTERNAL_PROCESS:
 
@@ -906,7 +906,7 @@ Notification received when the list of children is changed. This happens when ch
 
 **NOTIFICATION_INTERNAL_PROCESS** = ``25`` :ref:`🔗<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`
 
-Notification received from the tree every rendered frame when :ref:`is_processing_internal()<class_Node_method_is_processing_internal>` returns ``true``.
+Thông báo nhận được từ cây ở mỗi khung hình được render khi :ref:`is_processing_internal()<class_Node_method_is_processing_internal>` trả về ``true``.
 
 .. _class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS:
 
@@ -914,7 +914,7 @@ Notification received from the tree every rendered frame when :ref:`is_processin
 
 **NOTIFICATION_INTERNAL_PHYSICS_PROCESS** = ``26`` :ref:`🔗<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`
 
-Notification received from the tree every physics frame when :ref:`is_physics_processing_internal()<class_Node_method_is_physics_processing_internal>` returns ``true``.
+Thông báo nhận được từ cây ở mỗi khung hình vật lý khi :ref:`is_physics_processing_internal()<class_Node_method_is_physics_processing_internal>` trả về ``true``.
 
 .. _class_Node_constant_NOTIFICATION_POST_ENTER_TREE:
 
@@ -922,7 +922,7 @@ Notification received from the tree every physics frame when :ref:`is_physics_pr
 
 **NOTIFICATION_POST_ENTER_TREE** = ``27`` :ref:`🔗<class_Node_constant_NOTIFICATION_POST_ENTER_TREE>`
 
-Notification received when the node enters the tree, just before :ref:`NOTIFICATION_READY<class_Node_constant_NOTIFICATION_READY>` may be received. Unlike the latter, it is sent every time the node enters tree, not just once.
+Thông báo nhận được khi node đi vào cây, ngay trước khi có thể nhận được :ref:`NOTIFICATION_READY<class_Node_constant_NOTIFICATION_READY>`. Không giống như thông báo sau, thông báo này được gửi mỗi lần node đi vào cây, không chỉ một lần.
 
 .. _class_Node_constant_NOTIFICATION_DISABLED:
 
@@ -930,7 +930,7 @@ Notification received when the node enters the tree, just before :ref:`NOTIFICAT
 
 **NOTIFICATION_DISABLED** = ``28`` :ref:`🔗<class_Node_constant_NOTIFICATION_DISABLED>`
 
-Notification received when the node is disabled. See :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
+Thông báo nhận được khi node bị vô hiệu hóa. Xem :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. _class_Node_constant_NOTIFICATION_ENABLED:
 
@@ -938,7 +938,7 @@ Notification received when the node is disabled. See :ref:`PROCESS_MODE_DISABLED
 
 **NOTIFICATION_ENABLED** = ``29`` :ref:`🔗<class_Node_constant_NOTIFICATION_ENABLED>`
 
-Notification received when the node is enabled again after being disabled. See :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
+Thông báo nhận được khi node được kích hoạt lại sau khi bị vô hiệu hóa. Xem :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. _class_Node_constant_NOTIFICATION_RESET_PHYSICS_INTERPOLATION:
 
@@ -946,7 +946,7 @@ Notification received when the node is enabled again after being disabled. See :
 
 **NOTIFICATION_RESET_PHYSICS_INTERPOLATION** = ``2001`` :ref:`🔗<class_Node_constant_NOTIFICATION_RESET_PHYSICS_INTERPOLATION>`
 
-Notification received when :ref:`reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>` is called on the node or its ancestors.
+Thông báo nhận được khi :ref:`reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>` được gọi trên node hoặc các node tổ tiên của nó.
 
 .. _class_Node_constant_NOTIFICATION_EDITOR_PRE_SAVE:
 
@@ -954,7 +954,7 @@ Notification received when :ref:`reset_physics_interpolation()<class_Node_method
 
 **NOTIFICATION_EDITOR_PRE_SAVE** = ``9001`` :ref:`🔗<class_Node_constant_NOTIFICATION_EDITOR_PRE_SAVE>`
 
-Notification received right before the scene with the node is saved in the editor. This notification is only sent in the Godot editor and will not occur in exported projects.
+Thông báo được nhận ngay trước khi cảnh chứa node được lưu trong editor. Thông báo này chỉ được gửi trong Godot editor và sẽ không xảy ra trong các project đã export.
 
 .. _class_Node_constant_NOTIFICATION_EDITOR_POST_SAVE:
 
@@ -962,7 +962,7 @@ Notification received right before the scene with the node is saved in the edito
 
 **NOTIFICATION_EDITOR_POST_SAVE** = ``9002`` :ref:`🔗<class_Node_constant_NOTIFICATION_EDITOR_POST_SAVE>`
 
-Notification received right after the scene with the node is saved in the editor. This notification is only sent in the Godot editor and will not occur in exported projects.
+Thông báo được nhận ngay sau khi cảnh chứa node được lưu trong editor. Thông báo này chỉ được gửi trong Godot editor và sẽ không xảy ra trong các project đã export.
 
 .. _class_Node_constant_NOTIFICATION_WM_MOUSE_ENTER:
 
@@ -970,9 +970,9 @@ Notification received right after the scene with the node is saved in the editor
 
 **NOTIFICATION_WM_MOUSE_ENTER** = ``1002`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_MOUSE_ENTER>`
 
-Notification received when the mouse enters the window.
+Thông báo được nhận khi chuột đi vào cửa sổ.
 
-Implemented for embedded windows and on desktop and web platforms.
+Được triển khai cho các cửa sổ nhúng và trên các nền tảng desktop và web.
 
 .. _class_Node_constant_NOTIFICATION_WM_MOUSE_EXIT:
 
@@ -980,9 +980,9 @@ Implemented for embedded windows and on desktop and web platforms.
 
 **NOTIFICATION_WM_MOUSE_EXIT** = ``1003`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_MOUSE_EXIT>`
 
-Notification received when the mouse leaves the window.
+Thông báo được nhận khi chuột rời khỏi cửa sổ.
 
-Implemented for embedded windows and on desktop and web platforms.
+Được triển khai cho các cửa sổ nhúng và trên các nền tảng desktop và web.
 
 .. _class_Node_constant_NOTIFICATION_WM_WINDOW_FOCUS_IN:
 
@@ -990,9 +990,9 @@ Implemented for embedded windows and on desktop and web platforms.
 
 **NOTIFICATION_WM_WINDOW_FOCUS_IN** = ``1004`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_WINDOW_FOCUS_IN>`
 
-Notification received from the OS when the node's :ref:`Window<class_Window>` ancestor is focused. This may be a change of focus between two windows of the same engine instance, or from the OS desktop or a third-party application to a window of the game (in which case :ref:`NOTIFICATION_APPLICATION_FOCUS_IN<class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_IN>` is also received).
+Thông báo được nhận từ OS khi ancestor :ref:`Window<class_Window>` của node được focus. Đây có thể là sự thay đổi focus giữa hai cửa sổ của cùng một engine instance, hoặc từ desktop của OS hay một ứng dụng bên thứ ba sang cửa sổ của game (trong trường hợp đó, :ref:`NOTIFICATION_APPLICATION_FOCUS_IN<class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_IN>` cũng được nhận).
 
-A :ref:`Window<class_Window>` node receives this notification when it is focused.
+Một node :ref:`Window<class_Window>` nhận được thông báo này khi được focus.
 
 .. _class_Node_constant_NOTIFICATION_WM_WINDOW_FOCUS_OUT:
 
@@ -1000,9 +1000,9 @@ A :ref:`Window<class_Window>` node receives this notification when it is focused
 
 **NOTIFICATION_WM_WINDOW_FOCUS_OUT** = ``1005`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_WINDOW_FOCUS_OUT>`
 
-Notification received from the OS when the node's :ref:`Window<class_Window>` ancestor is defocused. This may be a change of focus between two windows of the same engine instance, or from a window of the game to the OS desktop or a third-party application (in which case :ref:`NOTIFICATION_APPLICATION_FOCUS_OUT<class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_OUT>` is also received).
+Thông báo nhận được từ OS khi ancestor :ref:`Window<class_Window>` của node mất focus. Đây có thể là việc chuyển focus giữa hai cửa sổ của cùng một engine instance, hoặc từ một cửa sổ của game sang desktop của OS hay một ứng dụng bên thứ ba (trong trường hợp này, :ref:`NOTIFICATION_APPLICATION_FOCUS_OUT<class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_OUT>` cũng được nhận).
 
-A :ref:`Window<class_Window>` node receives this notification when it is defocused.
+Một node :ref:`Window<class_Window>` nhận được thông báo này khi mất focus.
 
 .. _class_Node_constant_NOTIFICATION_WM_CLOSE_REQUEST:
 
@@ -1010,9 +1010,9 @@ A :ref:`Window<class_Window>` node receives this notification when it is defocus
 
 **NOTIFICATION_WM_CLOSE_REQUEST** = ``1006`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_CLOSE_REQUEST>`
 
-Notification received from the OS when a close request is sent (e.g. closing the window with a "Close" button or :kbd:`Alt + F4`).
+Thông báo nhận được từ OS khi có yêu cầu đóng được gửi (ví dụ: đóng cửa sổ bằng nút "Close" hoặc :kbd:`Alt + F4`).
 
-Implemented on desktop platforms.
+Được triển khai trên các nền tảng desktop.
 
 .. _class_Node_constant_NOTIFICATION_WM_GO_BACK_REQUEST:
 
@@ -1020,9 +1020,9 @@ Implemented on desktop platforms.
 
 **NOTIFICATION_WM_GO_BACK_REQUEST** = ``1007`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_GO_BACK_REQUEST>`
 
-Notification received from the OS when a go back request is sent (e.g. pressing the "Back" button on Android).
+Thông báo nhận được từ OS khi có yêu cầu quay lại được gửi (ví dụ: nhấn nút "Back" trên Android).
 
-Implemented only on Android.
+Chỉ được triển khai trên Android.
 
 .. _class_Node_constant_NOTIFICATION_WM_SIZE_CHANGED:
 
@@ -1030,9 +1030,9 @@ Implemented only on Android.
 
 **NOTIFICATION_WM_SIZE_CHANGED** = ``1008`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_SIZE_CHANGED>`
 
-Notification received when the window is resized.
+Đã nhận thông báo khi cửa sổ được thay đổi kích thước.
 
-\ **Note:** Only the resized :ref:`Window<class_Window>` node receives this notification, and it's not propagated to the child nodes.
+\ **Lưu ý:** Chỉ :ref:`Window<class_Window>` node được thay đổi kích thước nhận thông báo này và thông báo không được truyền đến các node con.
 
 .. _class_Node_constant_NOTIFICATION_WM_DPI_CHANGE:
 
@@ -1040,7 +1040,7 @@ Notification received when the window is resized.
 
 **NOTIFICATION_WM_DPI_CHANGE** = ``1009`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_DPI_CHANGE>`
 
-Notification received from the OS when the screen's dots per inch (DPI) scale is changed. Only implemented on macOS.
+Đã nhận thông báo từ hệ điều hành khi tỷ lệ dots per inch (DPI) của màn hình thay đổi. Chỉ được triển khai trên macOS.
 
 .. _class_Node_constant_NOTIFICATION_VP_MOUSE_ENTER:
 
@@ -1048,7 +1048,7 @@ Notification received from the OS when the screen's dots per inch (DPI) scale is
 
 **NOTIFICATION_VP_MOUSE_ENTER** = ``1010`` :ref:`🔗<class_Node_constant_NOTIFICATION_VP_MOUSE_ENTER>`
 
-Notification received when the mouse cursor enters the :ref:`Viewport<class_Viewport>`'s visible area, that is not occluded behind other :ref:`Control<class_Control>`\ s or :ref:`Window<class_Window>`\ s, provided its :ref:`Viewport.gui_disable_input<class_Viewport_property_gui_disable_input>` is ``false`` and regardless if it's currently focused or not.
+Đã nhận thông báo khi con trỏ chuột đi vào vùng hiển thị của :ref:`Viewport<class_Viewport>`, không bị che khuất phía sau các :ref:`Control<class_Control>`\  hoặc :ref:`Window<class_Window>`\  khác, với điều kiện :ref:`Viewport.gui_disable_input<class_Viewport_property_gui_disable_input>` là ``false`` và bất kể hiện tại nó có đang được focus hay không.
 
 .. _class_Node_constant_NOTIFICATION_VP_MOUSE_EXIT:
 
@@ -1056,7 +1056,7 @@ Notification received when the mouse cursor enters the :ref:`Viewport<class_View
 
 **NOTIFICATION_VP_MOUSE_EXIT** = ``1011`` :ref:`🔗<class_Node_constant_NOTIFICATION_VP_MOUSE_EXIT>`
 
-Notification received when the mouse cursor leaves the :ref:`Viewport<class_Viewport>`'s visible area, that is not occluded behind other :ref:`Control<class_Control>`\ s or :ref:`Window<class_Window>`\ s, provided its :ref:`Viewport.gui_disable_input<class_Viewport_property_gui_disable_input>` is ``false`` and regardless if it's currently focused or not.
+Đã nhận thông báo khi con trỏ chuột rời khỏi vùng hiển thị của :ref:`Viewport<class_Viewport>`, không bị che khuất phía sau các :ref:`Control<class_Control>`\  hoặc :ref:`Window<class_Window>`\  khác, với điều kiện :ref:`Viewport.gui_disable_input<class_Viewport_property_gui_disable_input>` là ``false`` và bất kể hiện tại nó có đang được focus hay không.
 
 .. _class_Node_constant_NOTIFICATION_WM_POSITION_CHANGED:
 
@@ -1064,7 +1064,7 @@ Notification received when the mouse cursor leaves the :ref:`Viewport<class_View
 
 **NOTIFICATION_WM_POSITION_CHANGED** = ``1012`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_POSITION_CHANGED>`
 
-Notification received when the window is moved.
+Đã nhận thông báo khi cửa sổ được di chuyển.
 
 .. _class_Node_constant_NOTIFICATION_WM_OUTPUT_MAX_LINEAR_VALUE_CHANGED:
 
@@ -1072,9 +1072,9 @@ Notification received when the window is moved.
 
 **NOTIFICATION_WM_OUTPUT_MAX_LINEAR_VALUE_CHANGED** = ``1013`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_OUTPUT_MAX_LINEAR_VALUE_CHANGED>`
 
-Notification received when the output max linear value returned by :ref:`Window.get_output_max_linear_value()<class_Window_method_get_output_max_linear_value>` has changed.
+Đã nhận thông báo khi giá trị tuyến tính tối đa đầu ra được :ref:`Window.get_output_max_linear_value()<class_Window_method_get_output_max_linear_value>` trả về thay đổi.
 
-This occurs when HDR output is enabled or disabled and when any HDR output luminance values of the window have changed, such as when the player adjusts their screen brightness setting or moves the window to a different screen.
+Điều này xảy ra khi đầu ra HDR được bật hoặc tắt, cũng như khi bất kỳ giá trị độ sáng đầu ra HDR nào của cửa sổ thay đổi, chẳng hạn như khi người chơi điều chỉnh cài đặt độ sáng màn hình hoặc di chuyển cửa sổ sang một màn hình khác.
 
 .. _class_Node_constant_NOTIFICATION_OS_MEMORY_WARNING:
 
@@ -1082,9 +1082,9 @@ This occurs when HDR output is enabled or disabled and when any HDR output lumin
 
 **NOTIFICATION_OS_MEMORY_WARNING** = ``2009`` :ref:`🔗<class_Node_constant_NOTIFICATION_OS_MEMORY_WARNING>`
 
-Notification received from the OS when the application is exceeding its allocated memory.
+Thông báo nhận được từ OS khi ứng dụng đang vượt quá lượng bộ nhớ được cấp phát.
 
-Implemented only on iOS.
+Chỉ được triển khai trên iOS.
 
 .. _class_Node_constant_NOTIFICATION_TRANSLATION_CHANGED:
 
@@ -1092,9 +1092,9 @@ Implemented only on iOS.
 
 **NOTIFICATION_TRANSLATION_CHANGED** = ``2010`` :ref:`🔗<class_Node_constant_NOTIFICATION_TRANSLATION_CHANGED>`
 
-Notification received when translations may have changed. Can be triggered by the user changing the locale, changing :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>` or when the node enters the scene tree. Can be used to respond to language changes, for example to change the UI strings on the fly. Useful when working with the built-in translation support, like :ref:`Object.tr()<class_Object_method_tr>`.
+Thông báo nhận được khi bản dịch có thể đã thay đổi. Có thể được kích hoạt khi người dùng thay đổi locale, thay đổi :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>` hoặc khi node đi vào scene tree. Có thể dùng để phản hồi các thay đổi ngôn ngữ, chẳng hạn như thay đổi các chuỗi UI ngay lập tức. Hữu ích khi làm việc với tính năng hỗ trợ bản dịch tích hợp sẵn, chẳng hạn như :ref:`Object.tr()<class_Object_method_tr>`.
 
-\ **Note:** This notification is received alongside :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>`, so if you are instantiating a scene, the child nodes will not be initialized yet. You can use it to setup translations for this node, child nodes created from script, or if you want to access child nodes added in the editor, make sure the node is ready using :ref:`is_node_ready()<class_Node_method_is_node_ready>`.
+\ **Lưu ý:** Thông báo này được nhận cùng với :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>`, vì vậy nếu bạn đang khởi tạo một scene thì các node con vẫn chưa được khởi tạo. Bạn có thể dùng thông báo này để thiết lập bản dịch cho node này và các node con được tạo từ script; hoặc nếu muốn truy cập các node con được thêm trong editor, hãy đảm bảo node đã sẵn sàng bằng cách sử dụng :ref:`is_node_ready()<class_Node_method_is_node_ready>`.
 
 ::
 
@@ -1110,9 +1110,9 @@ Notification received when translations may have changed. Can be triggered by th
 
 **NOTIFICATION_WM_ABOUT** = ``2011`` :ref:`🔗<class_Node_constant_NOTIFICATION_WM_ABOUT>`
 
-Notification received from the OS when a request for "About" information is sent.
+Thông báo nhận được từ OS khi một yêu cầu cung cấp thông tin "About" được gửi.
 
-Implemented only on macOS.
+Chỉ được triển khai trên macOS.
 
 .. _class_Node_constant_NOTIFICATION_CRASH:
 
@@ -1120,9 +1120,9 @@ Implemented only on macOS.
 
 **NOTIFICATION_CRASH** = ``2012`` :ref:`🔗<class_Node_constant_NOTIFICATION_CRASH>`
 
-Notification received from Godot's crash handler when the engine is about to crash.
+Thông báo nhận được từ crash handler của Godot khi engine sắp gặp sự cố.
 
-Implemented on desktop platforms, if the crash handler is enabled.
+Được triển khai trên các nền tảng desktop nếu crash handler được bật.
 
 .. _class_Node_constant_NOTIFICATION_OS_IME_UPDATE:
 
@@ -1130,9 +1130,9 @@ Implemented on desktop platforms, if the crash handler is enabled.
 
 **NOTIFICATION_OS_IME_UPDATE** = ``2013`` :ref:`🔗<class_Node_constant_NOTIFICATION_OS_IME_UPDATE>`
 
-Notification received from the OS when an update of the Input Method Engine occurs (e.g. change of IME cursor position or composition string).
+Thông báo nhận được từ OS khi Input Method Engine được cập nhật (ví dụ: thay đổi vị trí con trỏ IME hoặc chuỗi composition).
 
-Implemented on desktop and web platforms.
+Được triển khai trên các nền tảng desktop và web.
 
 .. _class_Node_constant_NOTIFICATION_APPLICATION_RESUMED:
 
@@ -1140,9 +1140,9 @@ Implemented on desktop and web platforms.
 
 **NOTIFICATION_APPLICATION_RESUMED** = ``2014`` :ref:`🔗<class_Node_constant_NOTIFICATION_APPLICATION_RESUMED>`
 
-Notification received from the OS when the application is resumed.
+Thông báo nhận được từ OS khi ứng dụng được tiếp tục.
 
-Specific to the Android and iOS platforms.
+Chỉ dành cho các nền tảng Android và iOS.
 
 .. _class_Node_constant_NOTIFICATION_APPLICATION_PAUSED:
 
@@ -1150,11 +1150,11 @@ Specific to the Android and iOS platforms.
 
 **NOTIFICATION_APPLICATION_PAUSED** = ``2015`` :ref:`🔗<class_Node_constant_NOTIFICATION_APPLICATION_PAUSED>`
 
-Notification received from the OS when the application is paused.
+Thông báo nhận được từ OS khi ứng dụng bị tạm dừng.
 
-Specific to the Android and iOS platforms.
+Chỉ dành cho các nền tảng Android và iOS.
 
-\ **Note:** On iOS, you only have approximately 5 seconds to finish a task started by this signal. If you go over this allotment, iOS will kill the app instead of pausing it.
+\ **Lưu ý:** Trên iOS, bạn chỉ có khoảng 5 giây để hoàn thành tác vụ do tín hiệu này khởi chạy. Nếu vượt quá khoảng thời gian này, iOS sẽ tắt ứng dụng thay vì tạm dừng ứng dụng.
 
 .. _class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_IN:
 
@@ -1162,9 +1162,9 @@ Specific to the Android and iOS platforms.
 
 **NOTIFICATION_APPLICATION_FOCUS_IN** = ``2016`` :ref:`🔗<class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_IN>`
 
-Notification received from the OS when the application is focused, i.e. when changing the focus from the OS desktop or a thirdparty application to any open window of the Godot instance.
+Thông báo nhận được từ OS khi ứng dụng được focus, tức là khi chuyển focus từ desktop của OS hoặc một ứng dụng bên thứ ba sang bất kỳ cửa sổ đang mở nào của Godot instance.
 
-Implemented on desktop and mobile platforms.
+Được triển khai trên các nền tảng desktop và mobile.
 
 .. _class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_OUT:
 
@@ -1172,9 +1172,9 @@ Implemented on desktop and mobile platforms.
 
 **NOTIFICATION_APPLICATION_FOCUS_OUT** = ``2017`` :ref:`🔗<class_Node_constant_NOTIFICATION_APPLICATION_FOCUS_OUT>`
 
-Notification received from the OS when the application is defocused, i.e. when changing the focus from any open window of the Godot instance to the OS desktop or a thirdparty application.
+Thông báo nhận được từ OS khi ứng dụng mất focus, tức là khi chuyển focus từ bất kỳ cửa sổ đang mở nào của Godot instance sang desktop của OS hoặc một ứng dụng bên thứ ba.
 
-Implemented on desktop and mobile platforms.
+Được triển khai trên các nền tảng desktop và mobile.
 
 .. _class_Node_constant_NOTIFICATION_TEXT_SERVER_CHANGED:
 
@@ -1182,7 +1182,7 @@ Implemented on desktop and mobile platforms.
 
 **NOTIFICATION_TEXT_SERVER_CHANGED** = ``2018`` :ref:`🔗<class_Node_constant_NOTIFICATION_TEXT_SERVER_CHANGED>`
 
-Notification received when the :ref:`TextServer<class_TextServer>` is changed.
+Thông báo nhận được khi :ref:`TextServer<class_TextServer>` được thay đổi.
 
 .. _class_Node_constant_NOTIFICATION_APPLICATION_PIP_MODE_ENTERED:
 
@@ -1190,7 +1190,7 @@ Notification received when the :ref:`TextServer<class_TextServer>` is changed.
 
 **NOTIFICATION_APPLICATION_PIP_MODE_ENTERED** = ``2019`` :ref:`🔗<class_Node_constant_NOTIFICATION_APPLICATION_PIP_MODE_ENTERED>`
 
-Notification received when the application enters picture-in-picture mode.
+Thông báo nhận được khi ứng dụng chuyển sang chế độ picture-in-picture.
 
 .. _class_Node_constant_NOTIFICATION_APPLICATION_PIP_MODE_EXITED:
 
@@ -1198,7 +1198,7 @@ Notification received when the application enters picture-in-picture mode.
 
 **NOTIFICATION_APPLICATION_PIP_MODE_EXITED** = ``2020`` :ref:`🔗<class_Node_constant_NOTIFICATION_APPLICATION_PIP_MODE_EXITED>`
 
-Notification received when the application exits picture-in-picture mode.
+Thông báo nhận được khi ứng dụng thoát khỏi chế độ picture-in-picture.
 
 .. _class_Node_constant_NOTIFICATION_ACCESSIBILITY_UPDATE:
 
@@ -1206,7 +1206,7 @@ Notification received when the application exits picture-in-picture mode.
 
 **NOTIFICATION_ACCESSIBILITY_UPDATE** = ``3000`` :ref:`🔗<class_Node_constant_NOTIFICATION_ACCESSIBILITY_UPDATE>`
 
-Notification received when an accessibility information update is required.
+Thông báo nhận được khi cần cập nhật thông tin hỗ trợ tiếp cận.
 
 .. _class_Node_constant_NOTIFICATION_ACCESSIBILITY_INVALIDATE:
 
@@ -1214,7 +1214,7 @@ Notification received when an accessibility information update is required.
 
 **NOTIFICATION_ACCESSIBILITY_INVALIDATE** = ``3001`` :ref:`🔗<class_Node_constant_NOTIFICATION_ACCESSIBILITY_INVALIDATE>`
 
-Notification received when accessibility elements are invalidated. All node accessibility elements are automatically deleted after receiving this message, therefore all existing references to such elements should be discarded.
+Thông báo nhận được khi các phần tử hỗ trợ tiếp cận bị vô hiệu hóa. Tất cả phần tử hỗ trợ tiếp cận của node sẽ tự động bị xóa sau khi nhận được thông báo này, do đó cần loại bỏ mọi tham chiếu hiện có đến các phần tử đó.
 
 .. rst-class:: classref-section-separator
 
@@ -1222,8 +1222,8 @@ Notification received when accessibility elements are invalidated. All node acce
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Node_property_auto_translate_mode:
 
@@ -1236,9 +1236,9 @@ Property Descriptions
 - |void| **set_auto_translate_mode**\ (\ value\: :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>`\ )
 - :ref:`AutoTranslateMode<enum_Node_AutoTranslateMode>` **get_auto_translate_mode**\ (\ )
 
-Defines if any text should automatically change to its translated version depending on the current locale (for nodes such as :ref:`Label<class_Label>`, :ref:`RichTextLabel<class_RichTextLabel>`, :ref:`Window<class_Window>`, etc.). Also decides if the node's strings should be parsed for translation template generation.
+Xác định xem văn bản có tự động thay đổi thành phiên bản đã dịch tùy theo locale hiện tại hay không (đối với các node như :ref:`Label<class_Label>`, :ref:`RichTextLabel<class_RichTextLabel>`, :ref:`Window<class_Window>`, v.v.). Đồng thời xác định xem các chuỗi của node có được phân tích để tạo template bản dịch hay không.
 
-\ **Note:** For the root node, auto translate mode can also be set via :ref:`ProjectSettings.internationalization/rendering/root_node_auto_translate<class_ProjectSettings_property_internationalization/rendering/root_node_auto_translate>`.
+\ **Lưu ý:** Đối với node gốc, chế độ tự động dịch cũng có thể được thiết lập thông qua :ref:`ProjectSettings.internationalization/rendering/root_node_auto_translate <class_ProjectSettings_property_internationalization/rendering/root_node_auto_translate>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1255,7 +1255,7 @@ Defines if any text should automatically change to its translated version depend
 - |void| **set_editor_description**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_editor_description**\ (\ )
 
-An optional description to the node. It will be displayed as a tooltip when hovering over the node in the editor's Scene dock.
+Mô tả tùy chọn cho node. Mô tả này sẽ được hiển thị dưới dạng chú giải công cụ khi di chuột qua node trong Scene dock của editor.
 
 .. rst-class:: classref-item-separator
 
@@ -1265,15 +1265,15 @@ An optional description to the node. It will be displayed as a tooltip when hove
 
 .. rst-class:: classref-property
 
-:ref:`MultiplayerAPI<class_MultiplayerAPI>` **multiplayer** :ref:`🔗<class_Node_property_multiplayer>`
+:ref:`MultiplayerAPI<class_MultiplayerAPI>` **multiplayer** :ref:`🔗 <class_Node_property_multiplayer>`
 
 .. rst-class:: classref-property-setget
 
 - :ref:`MultiplayerAPI<class_MultiplayerAPI>` **get_multiplayer**\ (\ )
 
-The :ref:`MultiplayerAPI<class_MultiplayerAPI>` instance associated with this node. See :ref:`SceneTree.get_multiplayer()<class_SceneTree_method_get_multiplayer>`.
+Instance :ref:`MultiplayerAPI<class_MultiplayerAPI>` được liên kết với node này. Xem :ref:`SceneTree.get_multiplayer()<class_SceneTree_method_get_multiplayer>`.
 
-\ **Note:** Renaming the node, or moving it in the tree, will not move the :ref:`MultiplayerAPI<class_MultiplayerAPI>` to the new path, you will have to update this manually.
+\ **Lưu ý:** Việc đổi tên node hoặc di chuyển node trong cây sẽ không di chuyển :ref:`MultiplayerAPI<class_MultiplayerAPI>` đến path mới; bạn sẽ phải cập nhật thủ công.
 
 .. rst-class:: classref-item-separator
 
@@ -1283,16 +1283,16 @@ The :ref:`MultiplayerAPI<class_MultiplayerAPI>` instance associated with this no
 
 .. rst-class:: classref-property
 
-:ref:`StringName<class_StringName>` **name** :ref:`🔗<class_Node_property_name>`
+:ref:`StringName<class_StringName>` **name** :ref:`🔗 <class_Node_property_name>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_name**\ (\ value\: :ref:`StringName<class_StringName>`\ )
 - :ref:`StringName<class_StringName>` **get_name**\ (\ )
 
-The name of the node. This name must be unique among the siblings (other child nodes from the same parent). When set to an existing sibling's name, the node is automatically renamed.
+Tên của node. Tên này phải là duy nhất trong các node cùng cấp (các node con khác cùng parent). Khi được đặt thành tên của một node cùng cấp hiện có, node sẽ tự động được đổi tên.
 
-\ **Note:** When changing the name, the following characters will be replaced with an underscore: (``.`` ``:`` ``@`` ``/`` ``"`` ``%``). In particular, the ``@`` character is reserved for auto-generated names. See also :ref:`String.validate_node_name()<class_String_method_validate_node_name>`.
+\ **Lưu ý:** Khi thay đổi tên, các ký tự sau sẽ được thay thế bằng dấu gạch dưới: (``.`` ``:`` ``@`` ``/`` ``"`` ``%``). Cụ thể, ký tự ``@`` được dành riêng cho các tên được tự động tạo. Xem thêm :ref:`String.validate_node_name()<class_String_method_validate_node_name>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1302,18 +1302,18 @@ The name of the node. This name must be unique among the siblings (other child n
 
 .. rst-class:: classref-property
 
-:ref:`Node<class_Node>` **owner** :ref:`🔗<class_Node_property_owner>`
+:ref:`Node<class_Node>` **chủ sở hữu** :ref:`🔗 <class_Node_property_owner>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_owner**\ (\ value\: :ref:`Node<class_Node>`\ )
 - :ref:`Node<class_Node>` **get_owner**\ (\ )
 
-The owner of this node. The owner must be an ancestor of this node. When packing the owner node in a :ref:`PackedScene<class_PackedScene>`, all the nodes it owns are also saved with it. See also :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`.
+Chủ sở hữu của node này. Chủ sở hữu phải là một node tổ tiên của node này. Khi đóng gói node chủ sở hữu trong một :ref:`PackedScene<class_PackedScene>`, tất cả các node mà nó sở hữu cũng được lưu cùng. Xem thêm :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`.
 
-\ **Note:** In the editor, nodes not owned by the scene root are usually not displayed in the Scene dock, and will **not** be saved. To prevent this, remember to set the owner after calling :ref:`add_child()<class_Node_method_add_child>`.
+\ **Lưu ý:** Trong editor, các node không thuộc sở hữu của scene root thường không được hiển thị trong dock Scene và sẽ **không** được lưu. Để ngăn điều này, hãy nhớ đặt owner sau khi gọi :ref:`add_child()<class_Node_method_add_child>`.
 
-\ **Note:** The owner needs to be the current scene root. See `Instancing scenes <../tutorials/plugins/running_code_in_the_editor.html#instancing-scenes>`__ in the documentation for more information.
+\ **Lưu ý:** Owner cần phải là scene root hiện tại. Xem `Instancing scenes <../tutorials/plugins/running_code_in_the_editor.html#instancing-scenes>`__ trong tài liệu để biết thêm thông tin.
 
 .. rst-class:: classref-item-separator
 
@@ -1330,13 +1330,13 @@ The owner of this node. The owner must be an ancestor of this node. When packing
 - |void| **set_physics_interpolation_mode**\ (\ value\: :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>`\ )
 - :ref:`PhysicsInterpolationMode<enum_Node_PhysicsInterpolationMode>` **get_physics_interpolation_mode**\ (\ )
 
-The physics interpolation mode to use for this node. Only effective if :ref:`ProjectSettings.physics/common/physics_interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>` or :ref:`SceneTree.physics_interpolation<class_SceneTree_property_physics_interpolation>` is ``true``.
+Chế độ nội suy vật lý sẽ được sử dụng cho node này. Chỉ có hiệu lực nếu :ref:`ProjectSettings.physics/common/physics_interpolation <class_ProjectSettings_property_physics/common/physics_interpolation>` hoặc :ref:`SceneTree.physics_interpolation<class_SceneTree_property_physics_interpolation>` là ``true``.
 
-By default, nodes inherit the physics interpolation mode from their parent. This property can enable or disable physics interpolation individually for each node, regardless of their parents' physics interpolation mode.
+Theo mặc định, các node kế thừa chế độ nội suy vật lý từ node cha. Thuộc tính này có thể bật hoặc tắt nội suy vật lý riêng cho từng node, bất kể chế độ nội suy vật lý của node cha.
 
-\ **Note:** Some node types like :ref:`VehicleWheel3D<class_VehicleWheel3D>` have physics interpolation disabled by default, as they rely on their own custom solution.
+\ **Lưu ý:** Một số loại node như :ref:`VehicleWheel3D<class_VehicleWheel3D>` mặc định đã tắt nội suy vật lý vì chúng dựa vào giải pháp tùy chỉnh riêng.
 
-\ **Note:** When teleporting a node to a distant position, it's recommended to temporarily disable interpolation with :ref:`reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>` *after* moving the node. This avoids creating a visual streak between the old and new positions.
+\ **Lưu ý:** Khi dịch chuyển một node đến vị trí ở xa, bạn nên tạm thời tắt interpolation bằng :ref:`reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>` *sau khi* di chuyển node. Điều này tránh tạo ra một vệt hình ảnh giữa vị trí cũ và vị trí mới.
 
 .. rst-class:: classref-item-separator
 
@@ -1353,7 +1353,7 @@ By default, nodes inherit the physics interpolation mode from their parent. This
 - |void| **set_process_mode**\ (\ value\: :ref:`ProcessMode<enum_Node_ProcessMode>`\ )
 - :ref:`ProcessMode<enum_Node_ProcessMode>` **get_process_mode**\ (\ )
 
-The node's processing behavior. To check if the node can process in its current mode, use :ref:`can_process()<class_Node_method_can_process>`.
+Hành vi xử lý của node. Để kiểm tra xem node có thể xử lý ở chế độ hiện tại hay không, hãy sử dụng :ref:`can_process()<class_Node_method_can_process>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1370,7 +1370,7 @@ The node's processing behavior. To check if the node can process in its current 
 - |void| **set_physics_process_priority**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_physics_process_priority**\ (\ )
 
-Similar to :ref:`process_priority<class_Node_property_process_priority>` but for :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`, :ref:`_physics_process()<class_Node_private_method__physics_process>`, or :ref:`NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`.
+Tương tự như :ref:`process_priority<class_Node_property_process_priority>` nhưng dành cho :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`, :ref:`_physics_process()<class_Node_private_method__physics_process>` hoặc :ref:`NOTIFICATION_INTERNAL_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PHYSICS_PROCESS>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1387,7 +1387,7 @@ Similar to :ref:`process_priority<class_Node_property_process_priority>` but for
 - |void| **set_process_priority**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_process_priority**\ (\ )
 
-The node's execution order of the process callbacks (:ref:`_process()<class_Node_private_method__process>`, :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>`, and :ref:`NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`). Nodes whose priority value is *lower* call their process callbacks first, regardless of tree order.
+Thứ tự thực thi các process callback của node (:ref:`_process()<class_Node_private_method__process>`, :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>` và :ref:`NOTIFICATION_INTERNAL_PROCESS<class_Node_constant_NOTIFICATION_INTERNAL_PROCESS>`). Các node có giá trị độ ưu tiên *thấp hơn* sẽ gọi các process callback trước, bất kể thứ tự trong cây.
 
 .. rst-class:: classref-item-separator
 
@@ -1404,13 +1404,13 @@ The node's execution order of the process callbacks (:ref:`_process()<class_Node
 - |void| **set_process_thread_group**\ (\ value\: :ref:`ProcessThreadGroup<enum_Node_ProcessThreadGroup>`\ )
 - :ref:`ProcessThreadGroup<enum_Node_ProcessThreadGroup>` **get_process_thread_group**\ (\ )
 
-Set the process thread group for this node (basically, whether it receives :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>`, :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`, :ref:`_process()<class_Node_private_method__process>` or :ref:`_physics_process()<class_Node_private_method__physics_process>` (and the internal versions) on the main thread or in a sub-thread.
+Đặt nhóm thread xử lý cho node này (về cơ bản là xác định node nhận :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>`, :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`, :ref:`_process()<class_Node_private_method__process>` hoặc :ref:`_physics_process()<class_Node_private_method__physics_process>` (và các phiên bản nội bộ) trên thread chính hay trong một sub-thread.
 
-By default, the thread group is :ref:`PROCESS_THREAD_GROUP_INHERIT<class_Node_constant_PROCESS_THREAD_GROUP_INHERIT>`, which means that this node belongs to the same thread group as the parent node. The thread groups means that nodes in a specific thread group will process together, separate to other thread groups (depending on :ref:`process_thread_group_order<class_Node_property_process_thread_group_order>`). If the value is set is :ref:`PROCESS_THREAD_GROUP_SUB_THREAD<class_Node_constant_PROCESS_THREAD_GROUP_SUB_THREAD>`, this thread group will occur on a sub thread (not the main thread), otherwise if set to :ref:`PROCESS_THREAD_GROUP_MAIN_THREAD<class_Node_constant_PROCESS_THREAD_GROUP_MAIN_THREAD>` it will process on the main thread. If there is not a parent or grandparent node set to something other than inherit, the node will belong to the *default thread group*. This default group will process on the main thread and its group order is 0.
+Theo mặc định, nhóm thread là :ref:`PROCESS_THREAD_GROUP_INHERIT<class_Node_constant_PROCESS_THREAD_GROUP_INHERIT>`, nghĩa là node này thuộc cùng nhóm thread với node cha. Các nhóm thread có nghĩa là những node trong một nhóm thread cụ thể sẽ được xử lý cùng nhau, tách biệt với các nhóm thread khác (tùy thuộc vào :ref:`process_thread_group_order<class_Node_property_process_thread_group_order>`). Nếu giá trị được đặt thành :ref:`PROCESS_THREAD_GROUP_SUB_THREAD<class_Node_constant_PROCESS_THREAD_GROUP_SUB_THREAD>`, nhóm thread này sẽ chạy trên một sub-thread (không phải thread chính); ngược lại, nếu được đặt thành :ref:`PROCESS_THREAD_GROUP_MAIN_THREAD<class_Node_constant_PROCESS_THREAD_GROUP_MAIN_THREAD>`, nhóm sẽ được xử lý trên thread chính. Nếu không có node cha hoặc node ông bà nào được đặt thành giá trị khác inherit, node sẽ thuộc *nhóm thread mặc định*. Nhóm mặc định này sẽ được xử lý trên thread chính và thứ tự nhóm của nó là 0.
 
-During processing in a sub-thread, accessing most functions in nodes outside the thread group is forbidden (and it will result in an error in debug mode). Use :ref:`Object.call_deferred()<class_Object_method_call_deferred>`, :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` and the likes in order to communicate from the thread groups to the main thread (or to other thread groups).
+Trong khi xử lý trên một sub-thread, việc truy cập hầu hết các hàm trong những node nằm ngoài nhóm thread đều bị cấm (và sẽ gây ra lỗi trong debug mode). Hãy sử dụng :ref:`Object.call_deferred()<class_Object_method_call_deferred>`, :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` và các hàm tương tự để giao tiếp từ các nhóm thread với thread chính (hoặc với các nhóm thread khác).
 
-To better understand process thread groups, the idea is that any node set to any other value than :ref:`PROCESS_THREAD_GROUP_INHERIT<class_Node_constant_PROCESS_THREAD_GROUP_INHERIT>` will include any child (and grandchild) nodes set to inherit into its process thread group. This means that the processing of all the nodes in the group will happen together, at the same time as the node including them.
+Để hiểu rõ hơn về các nhóm luồng xử lý, ý tưởng là mọi node được đặt thành bất kỳ giá trị nào khác :ref:`PROCESS_THREAD_GROUP_INHERIT<class_Node_constant_PROCESS_THREAD_GROUP_INHERIT>` sẽ bao gồm mọi node con (và node cháu) được đặt thành inherit trong nhóm luồng xử lý của nó. Điều này có nghĩa là việc xử lý tất cả node trong nhóm sẽ diễn ra cùng nhau, đồng thời với node bao gồm chúng.
 
 .. rst-class:: classref-item-separator
 
@@ -1420,14 +1420,14 @@ To better understand process thread groups, the idea is that any node set to any
 
 .. rst-class:: classref-property
 
-:ref:`int<class_int>` **process_thread_group_order** :ref:`🔗<class_Node_property_process_thread_group_order>`
+:ref:`int<class_int>` **process_thread_group_order** :ref:`🔗 <class_Node_property_process_thread_group_order>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_process_thread_group_order**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_process_thread_group_order**\ (\ )
 
-Change the process thread group order. Groups with a lesser order will process before groups with a greater order. This is useful when a large amount of nodes process in sub thread and, afterwards, another group wants to collect their result in the main thread, as an example.
+Thay đổi thứ tự của nhóm luồng xử lý. Các nhóm có thứ tự thấp hơn sẽ được xử lý trước các nhóm có thứ tự cao hơn. Điều này hữu ích khi một lượng lớn node được xử lý trong sub thread và sau đó một nhóm khác muốn thu thập kết quả của chúng trong main thread, chẳng hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -1437,14 +1437,14 @@ Change the process thread group order. Groups with a lesser order will process b
 
 .. rst-class:: classref-property
 
-|bitfield|\[:ref:`ProcessThreadMessages<enum_Node_ProcessThreadMessages>`\] **process_thread_messages** :ref:`🔗<class_Node_property_process_thread_messages>`
+|bitfield|\[:ref:`ProcessThreadMessages <enum_Node_ProcessThreadMessages>`\] **process_thread_messages** :ref:`🔗 <class_Node_property_process_thread_messages>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_process_thread_messages**\ (\ value\: |bitfield|\[:ref:`ProcessThreadMessages<enum_Node_ProcessThreadMessages>`\]\ )
 - |bitfield|\[:ref:`ProcessThreadMessages<enum_Node_ProcessThreadMessages>`\] **get_process_thread_messages**\ (\ )
 
-Set whether the current thread group will process messages (calls to :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` on threads), and whether it wants to receive them during regular process or physics process callbacks.
+Thiết lập xem nhóm luồng hiện tại có xử lý các message (lời gọi đến :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>` trên các thread) hay không, cũng như nhóm có muốn nhận chúng trong các callback process hoặc physics process thông thường hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -1454,14 +1454,14 @@ Set whether the current thread group will process messages (calls to :ref:`call_
 
 .. rst-class:: classref-property
 
-:ref:`String<class_String>` **scene_file_path** :ref:`🔗<class_Node_property_scene_file_path>`
+:ref:`String<class_String>` **scene_file_path** :ref:`🔗 <class_Node_property_scene_file_path>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_scene_file_path**\ (\ value\: :ref:`String<class_String>`\ )
 - :ref:`String<class_String>` **get_scene_file_path**\ (\ )
 
-The original scene's file path, if the node has been instantiated from a :ref:`PackedScene<class_PackedScene>` file. Only scene root nodes contains this.
+Đường dẫn tệp của scene gốc, nếu node được khởi tạo từ một tệp :ref:`PackedScene<class_PackedScene>`. Chỉ các node gốc của scene mới chứa thông tin này.
 
 .. rst-class:: classref-item-separator
 
@@ -1478,9 +1478,9 @@ The original scene's file path, if the node has been instantiated from a :ref:`P
 - |void| **set_unique_name_in_owner**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_unique_name_in_owner**\ (\ )
 
-If ``true``, the node can be accessed from any node sharing the same :ref:`owner<class_Node_property_owner>` or from the :ref:`owner<class_Node_property_owner>` itself, with special ``%Name`` syntax in :ref:`get_node()<class_Node_method_get_node>`.
+Nếu ``true``, có thể truy cập node từ bất kỳ node nào dùng chung :ref:`owner<class_Node_property_owner>` hoặc từ chính :ref:`owner<class_Node_property_owner>`, với cú pháp ``%Name`` đặc biệt trong :ref:`get_node()<class_Node_method_get_node>`.
 
-\ **Note:** If another node with the same :ref:`owner<class_Node_property_owner>` shares the same :ref:`name<class_Node_property_name>` as this node, the other node will no longer be accessible as unique.
+\ **Lưu ý:** Nếu một node khác có cùng :ref:`owner<class_Node_property_owner>` dùng chung :ref:`name<class_Node_property_name>` với node này, node kia sẽ không còn có thể được truy cập dưới dạng duy nhất.
 
 .. rst-class:: classref-section-separator
 
@@ -1488,8 +1488,8 @@ If ``true``, the node can be accessed from any node sharing the same :ref:`owner
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Node_private_method__enter_tree:
 
@@ -1497,9 +1497,9 @@ Method Descriptions
 
 |void| **_enter_tree**\ (\ ) |virtual| :ref:`🔗<class_Node_private_method__enter_tree>`
 
-Called when the node enters the :ref:`SceneTree<class_SceneTree>` (e.g. upon instantiating, scene changing, or after calling :ref:`add_child()<class_Node_method_add_child>` in a script). If the node has children, its :ref:`_enter_tree()<class_Node_private_method__enter_tree>` callback will be called first, and then that of the children.
+Được gọi khi node đi vào :ref:`SceneTree<class_SceneTree>` (ví dụ: khi được khởi tạo, khi thay đổi scene hoặc sau khi gọi :ref:`add_child()<class_Node_method_add_child>` trong một script). Nếu node có các node con, callback :ref:`_enter_tree()<class_Node_private_method__enter_tree>` của nó sẽ được gọi trước, sau đó mới đến callback của các node con.
 
-Corresponds to the :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` notification in :ref:`Object._notification()<class_Object_private_method__notification>`.
+Tương ứng với thông báo :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATION_ENTER_TREE>` trong :ref:`Object._notification()<class_Object_private_method__notification>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1511,9 +1511,9 @@ Corresponds to the :ref:`NOTIFICATION_ENTER_TREE<class_Node_constant_NOTIFICATIO
 
 |void| **_exit_tree**\ (\ ) |virtual| :ref:`🔗<class_Node_private_method__exit_tree>`
 
-Called when the node is about to leave the :ref:`SceneTree<class_SceneTree>` (e.g. upon freeing, scene changing, or after calling :ref:`remove_child()<class_Node_method_remove_child>` in a script). If the node has children, its :ref:`_exit_tree()<class_Node_private_method__exit_tree>` callback will be called last, after all its children have left the tree.
+Được gọi khi node sắp rời khỏi :ref:`SceneTree<class_SceneTree>` (ví dụ: khi được giải phóng, khi thay đổi scene hoặc sau khi gọi :ref:`remove_child()<class_Node_method_remove_child>` trong một script). Nếu node có các node con, callback :ref:`_exit_tree()<class_Node_private_method__exit_tree>` của nó sẽ được gọi sau cùng, sau khi tất cả node con đã rời khỏi tree.
 
-Corresponds to the :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>` notification in :ref:`Object._notification()<class_Object_private_method__notification>` and signal :ref:`tree_exiting<class_Node_signal_tree_exiting>`. To get notified when the node has already left the active tree, connect to the :ref:`tree_exited<class_Node_signal_tree_exited>`.
+Tương ứng với thông báo :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION_EXIT_TREE>` trong :ref:`Object._notification()<class_Object_private_method__notification>` và signal :ref:`tree_exiting<class_Node_signal_tree_exiting>`. Để nhận thông báo khi node đã rời khỏi tree đang hoạt động, hãy kết nối với :ref:`tree_exited<class_Node_signal_tree_exited>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1525,9 +1525,9 @@ Corresponds to the :ref:`NOTIFICATION_EXIT_TREE<class_Node_constant_NOTIFICATION
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_accessibility_configuration_warnings**\ (\ ) |virtual| |const| :ref:`🔗<class_Node_private_method__get_accessibility_configuration_warnings>`
 
-The elements in the array returned from this method are displayed as warnings in the Scene dock if the script that overrides it is a ``tool`` script, and accessibility warnings are enabled in the editor settings.
+Các phần tử trong mảng được phương thức này trả về sẽ được hiển thị dưới dạng cảnh báo trong dock Scene nếu script ghi đè phương thức này là một script ``tool`` và các cảnh báo về khả năng tiếp cận được bật trong phần cài đặt của trình soạn thảo.
 
-Returning an empty array produces no warnings.
+Trả về một mảng rỗng sẽ không tạo ra cảnh báo nào.
 
 .. rst-class:: classref-item-separator
 
@@ -1539,11 +1539,11 @@ Returning an empty array produces no warnings.
 
 :ref:`PackedStringArray<class_PackedStringArray>` **_get_configuration_warnings**\ (\ ) |virtual| |const| :ref:`🔗<class_Node_private_method__get_configuration_warnings>`
 
-The elements in the array returned from this method are displayed as warnings in the Scene dock if the script that overrides it is a ``tool`` script.
+Các phần tử trong mảng được phương thức này trả về sẽ được hiển thị dưới dạng cảnh báo trong dock Scene nếu script ghi đè phương thức này là một script ``tool``.
 
-Returning an empty array produces no warnings.
+Trả về một mảng rỗng sẽ không tạo ra cảnh báo nào.
 
-Call :ref:`update_configuration_warnings()<class_Node_method_update_configuration_warnings>` when the warnings need to be updated for this node.
+Gọi :ref:`update_configuration_warnings()<class_Node_method_update_configuration_warnings>` khi cần cập nhật các cảnh báo cho node này.
 
 ::
 
@@ -1568,7 +1568,7 @@ Call :ref:`update_configuration_warnings()<class_Node_method_update_configuratio
 
 :ref:`RID<class_RID>` **_get_focused_accessibility_element**\ (\ ) |virtual| |const| :ref:`🔗<class_Node_private_method__get_focused_accessibility_element>`
 
-Called during accessibility information updates to determine the currently focused sub-element, should return a sub-element RID or the value returned by :ref:`get_accessibility_element()<class_Node_method_get_accessibility_element>`.
+Được gọi trong quá trình cập nhật thông tin về khả năng tiếp cận để xác định phần tử con hiện đang được focus; phương thức này phải trả về một RID của phần tử con hoặc giá trị do :ref:`get_accessibility_element()<class_Node_method_get_accessibility_element>` trả về.
 
 .. rst-class:: classref-item-separator
 
@@ -1580,15 +1580,15 @@ Called during accessibility information updates to determine the currently focus
 
 |void| **_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_Node_private_method__input>`
 
-Called when there is an input event. The input event propagates up through the node tree until a node consumes it.
+Được gọi khi có một sự kiện đầu vào. Sự kiện đầu vào sẽ lan truyền lên qua cây node cho đến khi một node tiếp nhận sự kiện đó.
 
-It is only called if input processing is enabled, which is done automatically if this method is overridden, and can be toggled with :ref:`set_process_input()<class_Node_method_set_process_input>`.
+Phương thức này chỉ được gọi nếu tính năng xử lý input được bật. Tính năng này được tự động bật nếu phương thức này bị ghi đè và có thể bật hoặc tắt bằng :ref:`set_process_input()<class_Node_method_set_process_input>`.
 
-To consume the input event and stop it propagating further to other nodes, :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>` can be called.
+Để tiếp nhận sự kiện input và ngăn không cho sự kiện tiếp tục lan truyền đến các node khác, có thể gọi :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>`.
 
-For gameplay input, :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` and :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` are usually a better fit as they allow the GUI to intercept the events first.
+Đối với input trong gameplay, :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` và :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` thường phù hợp hơn vì chúng cho phép GUI tiếp nhận các sự kiện trước.
 
-\ **Note:** This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
+\ **Lưu ý:** Phương thức này chỉ được gọi nếu node hiện diện trong scene tree (tức là không phải orphan).
 
 .. rst-class:: classref-item-separator
 
@@ -1600,17 +1600,17 @@ For gameplay input, :ref:`_unhandled_input()<class_Node_private_method__unhandle
 
 |void| **_physics_process**\ (\ delta\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_Node_private_method__physics_process>`
 
-Called once on each physics tick, and allows Nodes to synchronize their logic with physics ticks. ``delta`` is the logical time between physics ticks in seconds and is equal to :ref:`Engine.time_scale<class_Engine_property_time_scale>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`.
+Được gọi một lần trong mỗi nhịp vật lý và cho phép các Node đồng bộ logic của chúng với các nhịp vật lý. ``delta`` là khoảng thời gian logic giữa các nhịp vật lý, tính bằng giây, và bằng :ref:`Engine.time_scale<class_Engine_property_time_scale>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`.
 
-It is only called if physics processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with :ref:`set_physics_process()<class_Node_method_set_physics_process>`.
+Phương thức này chỉ được gọi nếu tính năng xử lý vật lý được bật cho Node này. Tính năng này được tự động bật nếu phương thức này bị ghi đè và có thể bật hoặc tắt bằng :ref:`set_physics_process()<class_Node_method_set_physics_process>`.
 
-Processing happens in order of :ref:`process_physics_priority<class_Node_property_process_physics_priority>`, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).
+Việc xử lý diễn ra theo thứ tự của :ref:`process_physics_priority<class_Node_property_process_physics_priority>`; các giá trị ưu tiên thấp hơn được gọi trước. Các node có cùng mức ưu tiên được xử lý theo thứ tự trong cây, từ trên xuống dưới như hiển thị trong editor (còn gọi là duyệt tiền thứ tự).
 
-Corresponds to the :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>` notification in :ref:`Object._notification()<class_Object_private_method__notification>`.
+Tương ứng với thông báo :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>` trong :ref:`Object._notification()<class_Object_private_method__notification>`.
 
-\ **Note:** This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
+\ **Lưu ý:** Phương thức này chỉ được gọi nếu node hiện diện trong scene tree (tức là không phải orphan).
 
-\ **Note:** Accumulated ``delta`` may diverge from real world seconds.
+\ **Lưu ý:** ``delta`` tích lũy có thể sai khác so với số giây trong thế giới thực.
 
 .. rst-class:: classref-item-separator
 
@@ -1622,21 +1622,21 @@ Corresponds to the :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFI
 
 |void| **_process**\ (\ delta\: :ref:`float<class_float>`\ ) |virtual| :ref:`🔗<class_Node_private_method__process>`
 
-Called on each idle frame, prior to rendering, and after physics ticks have been processed. ``delta`` is the time between frames in seconds.
+Được gọi trên mỗi frame nhàn rỗi, trước khi kết xuất và sau khi các tick vật lý đã được xử lý. ``delta`` là khoảng thời gian giữa các frame, tính bằng giây.
 
-It is only called if processing is enabled for this Node, which is done automatically if this method is overridden, and can be toggled with :ref:`set_process()<class_Node_method_set_process>`.
+Phương thức này chỉ được gọi nếu việc xử lý được bật cho Node này. Việc này được thực hiện tự động nếu phương thức này bị ghi đè và có thể được bật hoặc tắt bằng :ref:`set_process()<class_Node_method_set_process>`.
 
-Processing happens in order of :ref:`process_priority<class_Node_property_process_priority>`, lower priority values are called first. Nodes with the same priority are processed in tree order, or top to bottom as seen in the editor (also known as pre-order traversal).
+Việc xử lý diễn ra theo thứ tự của :ref:`process_priority<class_Node_property_process_priority>`; các giá trị ưu tiên thấp hơn được gọi trước. Các Node có cùng mức ưu tiên được xử lý theo thứ tự trong cây, hay từ trên xuống dưới như hiển thị trong trình chỉnh sửa (còn gọi là duyệt tiền thứ tự).
 
-Corresponds to the :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>` notification in :ref:`Object._notification()<class_Object_private_method__notification>`.
+Tương ứng với thông báo :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>` trong :ref:`Object._notification()<class_Object_private_method__notification>`.
 
-\ **Note:** This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
+\ **Lưu ý:** Phương thức này chỉ được gọi nếu node hiện diện trong scene tree (tức là không phải orphan).
 
-\ **Note:** When the engine is struggling and the frame rate is lowered, ``delta`` will increase. When ``delta`` is increased, it's capped at a maximum of :ref:`Engine.time_scale<class_Engine_property_time_scale>` \* :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. As a result, accumulated ``delta`` may not represent real world time.
+\ **Lưu ý:** Khi engine gặp khó khăn và tốc độ khung hình giảm, ``delta`` sẽ tăng. Khi ``delta`` tăng, giá trị này bị giới hạn ở mức tối đa là :ref:`Engine.time_scale<class_Engine_property_time_scale>` \* :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` / :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>`. Do đó, ``delta`` đã tích lũy có thể không phản ánh thời gian thực tế.
 
-\ **Note:** When ``--fixed-fps`` is enabled or the engine is running in Movie Maker mode (see :ref:`MovieWriter<class_MovieWriter>`), process ``delta`` will always be the same for every frame, regardless of how much time the frame took to render.
+\ **Lưu ý:** Khi ``--fixed-fps`` được bật hoặc engine đang chạy ở chế độ Movie Maker (xem :ref:`MovieWriter<class_MovieWriter>`), ``delta`` xử lý sẽ luôn giống nhau ở mọi khung hình, bất kể khung hình đó mất bao lâu để render.
 
-\ **Note:** Frame delta may be post-processed by :ref:`OS.delta_smoothing<class_OS_property_delta_smoothing>` if this is enabled for the project.
+\ **Lưu ý:** Độ lệch thời gian của khung hình có thể được hậu xử lý bởi :ref:`OS.delta_smoothing<class_OS_property_delta_smoothing>` nếu tính năng này được bật cho project.
 
 .. rst-class:: classref-item-separator
 
@@ -1648,13 +1648,13 @@ Corresponds to the :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_P
 
 |void| **_ready**\ (\ ) |virtual| :ref:`🔗<class_Node_private_method__ready>`
 
-Called when the node is "ready", i.e. when both the node and its children have entered the scene tree. If the node has children, their :ref:`_ready()<class_Node_private_method__ready>` callbacks get triggered first, and the parent node will receive the ready notification afterwards.
+Được gọi khi node ở trạng thái "sẵn sàng", tức là khi cả node và các node con của nó đã đi vào scene tree. Nếu node có các node con, các callback :ref:`_ready()<class_Node_private_method__ready>` của chúng sẽ được kích hoạt trước, sau đó node cha mới nhận được thông báo sẵn sàng.
 
-Corresponds to the :ref:`NOTIFICATION_READY<class_Node_constant_NOTIFICATION_READY>` notification in :ref:`Object._notification()<class_Object_private_method__notification>`. See also the ``@onready`` annotation for variables.
+Tương ứng với thông báo :ref:`NOTIFICATION_READY<class_Node_constant_NOTIFICATION_READY>` trong :ref:`Object._notification()<class_Object_private_method__notification>`. Xem thêm annotation ``@onready`` dành cho các biến.
 
-Usually used for initialization. For even earlier initialization, :ref:`Object._init()<class_Object_private_method__init>` may be used. See also :ref:`_enter_tree()<class_Node_private_method__enter_tree>`.
+Thường được dùng để khởi tạo. Để khởi tạo sớm hơn nữa, có thể sử dụng :ref:`Object._init()<class_Object_private_method__init>`. Xem thêm :ref:`_enter_tree()<class_Node_private_method__enter_tree>`.
 
-\ **Note:** This method may be called only once for each node. After removing a node from the scene tree and adding it again, :ref:`_ready()<class_Node_private_method__ready>` will **not** be called a second time. This can be bypassed by requesting another call with :ref:`request_ready()<class_Node_method_request_ready>`, which may be called anywhere before adding the node again.
+\ **Lưu ý:** Phương thức này chỉ có thể được gọi một lần cho mỗi node. Sau khi xóa một node khỏi scene tree rồi thêm lại, :ref:`_ready()<class_Node_private_method__ready>` sẽ **không** được gọi lần thứ hai. Bạn có thể bỏ qua giới hạn này bằng cách yêu cầu một lần gọi khác với :ref:`request_ready()<class_Node_method_request_ready>`, phương thức này có thể được gọi ở bất kỳ thời điểm nào trước khi thêm lại node.
 
 .. rst-class:: classref-item-separator
 
@@ -1666,15 +1666,15 @@ Usually used for initialization. For even earlier initialization, :ref:`Object._
 
 |void| **_shortcut_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_Node_private_method__shortcut_input>`
 
-Called when an :ref:`InputEventKey<class_InputEventKey>`, :ref:`InputEventShortcut<class_InputEventShortcut>`, or :ref:`InputEventJoypadButton<class_InputEventJoypadButton>` hasn't been consumed by :ref:`_input()<class_Node_private_method__input>` or any GUI :ref:`Control<class_Control>` item. It is called before :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` and :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>`. The input event propagates up through the node tree until a node consumes it.
+Được gọi khi một :ref:`InputEventKey<class_InputEventKey>`, :ref:`InputEventShortcut<class_InputEventShortcut>` hoặc :ref:`InputEventJoypadButton<class_InputEventJoypadButton>` chưa được :ref:`_input()<class_Node_private_method__input>` hay bất kỳ mục :ref:`Control<class_Control>` GUI nào xử lý. Phương thức này được gọi trước :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` và :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>`. Sự kiện đầu vào sẽ lan truyền lên qua cây node cho đến khi một node xử lý nó.
 
-It is only called if shortcut processing is enabled, which is done automatically if this method is overridden, and can be toggled with :ref:`set_process_shortcut_input()<class_Node_method_set_process_shortcut_input>`.
+Phương thức này chỉ được gọi nếu tính năng xử lý shortcut được bật. Tính năng này sẽ tự động được bật nếu phương thức này bị ghi đè và có thể được bật hoặc tắt bằng :ref:`set_process_shortcut_input()<class_Node_method_set_process_shortcut_input>`.
 
-To consume the input event and stop it propagating further to other nodes, :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>` can be called.
+Để tiếp nhận sự kiện input và ngăn không cho sự kiện tiếp tục lan truyền đến các node khác, có thể gọi :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>`.
 
-This method can be used to handle shortcuts. For generic GUI events, use :ref:`_input()<class_Node_private_method__input>` instead. Gameplay events should usually be handled with either :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` or :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>`.
+Có thể sử dụng phương thức này để xử lý shortcut. Đối với các sự kiện GUI thông thường, hãy sử dụng :ref:`_input()<class_Node_private_method__input>` thay thế. Các sự kiện gameplay thường nên được xử lý bằng :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` hoặc :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>`.
 
-\ **Note:** This method is only called if the node is present in the scene tree (i.e. if it's not orphan).
+\ **Lưu ý:** Phương thức này chỉ được gọi nếu node hiện diện trong scene tree (tức là không phải node mồ côi).
 
 .. rst-class:: classref-item-separator
 
@@ -1686,15 +1686,15 @@ This method can be used to handle shortcuts. For generic GUI events, use :ref:`_
 
 |void| **_unhandled_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_Node_private_method__unhandled_input>`
 
-Called when an :ref:`InputEvent<class_InputEvent>` hasn't been consumed by :ref:`_input()<class_Node_private_method__input>` or any GUI :ref:`Control<class_Control>` item. It is called after :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` and after :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>`. The input event propagates up through the node tree until a node consumes it.
+Được gọi khi một :ref:`InputEvent<class_InputEvent>` chưa được :ref:`_input()<class_Node_private_method__input>` hay bất kỳ mục :ref:`Control<class_Control>` GUI nào xử lý. Phương thức này được gọi sau :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` và sau :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>`. Sự kiện đầu vào sẽ lan truyền lên qua cây node cho đến khi một node xử lý nó.
 
-It is only called if unhandled input processing is enabled, which is done automatically if this method is overridden, and can be toggled with :ref:`set_process_unhandled_input()<class_Node_method_set_process_unhandled_input>`.
+Phương thức này chỉ được gọi khi tính năng xử lý input chưa được xử lý được bật; tính năng này được tự động bật nếu phương thức này bị ghi đè và có thể bật hoặc tắt bằng :ref:`set_process_unhandled_input()<class_Node_method_set_process_unhandled_input>`.
 
-To consume the input event and stop it propagating further to other nodes, :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>` can be called.
+Để tiếp nhận sự kiện input và ngăn không cho sự kiện tiếp tục lan truyền đến các node khác, có thể gọi :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>`.
 
-For gameplay input, this method is usually a better fit than :ref:`_input()<class_Node_private_method__input>`, as GUI events need a higher priority. For keyboard shortcuts, consider using :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` instead, as it is called before this method. Finally, to handle keyboard events, consider using :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` for performance reasons.
+Đối với input trong gameplay, phương thức này thường phù hợp hơn :ref:`_input()<class_Node_private_method__input>`, vì các sự kiện GUI cần độ ưu tiên cao hơn. Đối với phím tắt, hãy cân nhắc sử dụng :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` thay thế, vì nó được gọi trước phương thức này. Cuối cùng, để xử lý các sự kiện bàn phím, hãy cân nhắc sử dụng :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` vì lý do hiệu năng.
 
-\ **Note:** This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
+\ **Lưu ý:** Phương thức này chỉ được gọi nếu node hiện diện trong scene tree (tức là không phải orphan).
 
 .. rst-class:: classref-item-separator
 
@@ -1706,17 +1706,17 @@ For gameplay input, this method is usually a better fit than :ref:`_input()<clas
 
 |void| **_unhandled_key_input**\ (\ event\: :ref:`InputEvent<class_InputEvent>`\ ) |virtual| :ref:`🔗<class_Node_private_method__unhandled_key_input>`
 
-Called when an :ref:`InputEventKey<class_InputEventKey>` hasn't been consumed by :ref:`_input()<class_Node_private_method__input>` or any GUI :ref:`Control<class_Control>` item. It is called after :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` but before :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>`. The input event propagates up through the node tree until a node consumes it.
+Được gọi khi một :ref:`InputEventKey<class_InputEventKey>` chưa được :ref:`_input()<class_Node_private_method__input>` hoặc bất kỳ mục GUI :ref:`Control<class_Control>` nào tiêu thụ. Phương thức này được gọi sau :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` nhưng trước :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>`. Sự kiện input lan truyền lên qua cây node cho đến khi một node tiêu thụ nó.
 
-It is only called if unhandled key input processing is enabled, which is done automatically if this method is overridden, and can be toggled with :ref:`set_process_unhandled_key_input()<class_Node_method_set_process_unhandled_key_input>`.
+Phương thức này chỉ được gọi khi tính năng xử lý input bàn phím chưa được xử lý được bật; tính năng này được tự động bật nếu phương thức này bị ghi đè và có thể bật hoặc tắt bằng :ref:`set_process_unhandled_key_input()<class_Node_method_set_process_unhandled_key_input>`.
 
-To consume the input event and stop it propagating further to other nodes, :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>` can be called.
+Để tiếp nhận sự kiện input và ngăn không cho sự kiện tiếp tục lan truyền đến các node khác, có thể gọi :ref:`Viewport.set_input_as_handled()<class_Viewport_method_set_input_as_handled>`.
 
-This method can be used to handle Unicode character input with :kbd:`Alt`, :kbd:`Alt + Ctrl`, and :kbd:`Alt + Shift` modifiers, after shortcuts were handled.
+Phương thức này có thể được dùng để xử lý đầu vào ký tự Unicode với các modifier :kbd:`Alt`, :kbd:`Alt + Ctrl` và :kbd:`Alt + Shift`, sau khi các phím tắt đã được xử lý.
 
-For gameplay input, this and :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` are usually a better fit than :ref:`_input()<class_Node_private_method__input>`, as GUI events should be handled first. This method also performs better than :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>`, since unrelated events such as :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` are automatically filtered. For shortcuts, consider using :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` instead.
+Đối với đầu vào gameplay, phương thức này và :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` thường phù hợp hơn :ref:`_input()<class_Node_private_method__input>`, vì các sự kiện GUI nên được xử lý trước. Phương thức này cũng có hiệu năng tốt hơn :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>`, vì các sự kiện không liên quan như :ref:`InputEventMouseMotion<class_InputEventMouseMotion>` sẽ được tự động lọc. Đối với các phím tắt, hãy cân nhắc sử dụng :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` thay thế.
 
-\ **Note:** This method is only called if the node is present in the scene tree (i.e. if it's not an orphan).
+\ **Lưu ý:** Phương thức này chỉ được gọi nếu node hiện diện trong scene tree (tức là không phải orphan).
 
 .. rst-class:: classref-item-separator
 
@@ -1728,13 +1728,13 @@ For gameplay input, this and :ref:`_unhandled_input()<class_Node_private_method_
 
 |void| **add_child**\ (\ node\: :ref:`Node<class_Node>`, force_readable_name\: :ref:`bool<class_bool>` = false, internal\: :ref:`InternalMode<enum_Node_InternalMode>` = 0\ ) :ref:`🔗<class_Node_method_add_child>`
 
-Adds a child ``node``. Nodes can have any number of children, but every child must have a unique name. Child nodes are automatically deleted when the parent node is deleted, so an entire scene can be removed by deleting its topmost node.
+Thêm một ``node`` con. Các node có thể có bất kỳ số lượng node con nào, nhưng mỗi node con phải có một tên duy nhất. Các node con sẽ tự động bị xóa khi node cha bị xóa, vì vậy có thể xóa toàn bộ scene bằng cách xóa node cao nhất của nó.
 
-If ``force_readable_name`` is ``true``, improves the readability of the added ``node``. If not named, the ``node`` is renamed to its type, and if it shares :ref:`name<class_Node_property_name>` with a sibling, a number is suffixed more appropriately. This operation is very slow. As such, it is recommended leaving this to ``false``, which assigns a dummy name featuring ``@`` in both situations.
+Nếu ``force_readable_name`` là ``true``, khả năng dễ đọc của ``node`` được thêm vào sẽ được cải thiện. Nếu chưa được đặt tên, ``node`` sẽ được đổi tên theo kiểu của nó; nếu trùng :ref:`name<class_Node_property_name>` với một node cùng cấp, một số sẽ được thêm vào tên theo cách phù hợp hơn. Thao tác này rất chậm. Vì vậy, bạn nên để việc này cho ``false``, vốn gán một tên tạm có chứa ``@`` trong cả hai trường hợp.
 
-If ``internal`` is different than :ref:`INTERNAL_MODE_DISABLED<class_Node_constant_INTERNAL_MODE_DISABLED>`, the child will be added as internal node. These nodes are ignored by methods like :ref:`get_children()<class_Node_method_get_children>`, unless their parameter ``include_internal`` is ``true``. It also prevents these nodes being duplicated with their parent. The intended usage is to hide the internal nodes from the user, so the user won't accidentally delete or modify them. Used by some GUI nodes, e.g. :ref:`ColorPicker<class_ColorPicker>`.
+Nếu ``internal`` khác :ref:`INTERNAL_MODE_DISABLED<class_Node_constant_INTERNAL_MODE_DISABLED>`, node con sẽ được thêm dưới dạng internal node. Các node này sẽ bị các phương thức như :ref:`get_children()<class_Node_method_get_children>` bỏ qua, trừ khi tham số ``include_internal`` của chúng là ``true``. Điều này cũng ngăn các node này bị sao chép cùng với node cha. Mục đích sử dụng là ẩn các internal node khỏi người dùng, để người dùng không vô tình xóa hoặc sửa đổi chúng. Được một số node GUI sử dụng, ví dụ: :ref:`ColorPicker<class_ColorPicker>`.
 
-\ **Note:** If ``node`` already has a parent, this method will fail. Use :ref:`remove_child()<class_Node_method_remove_child>` first to remove ``node`` from its current parent. For example:
+\ **Lưu ý:** Nếu ``node`` đã có node cha, phương thức này sẽ không thành công. Trước tiên, hãy sử dụng :ref:`remove_child()<class_Node_method_remove_child>` để xóa ``node`` khỏi node cha hiện tại. Ví dụ:
 
 
 .. tabs::
@@ -1757,9 +1757,9 @@ If ``internal`` is different than :ref:`INTERNAL_MODE_DISABLED<class_Node_consta
 
 
 
-If you need the child node to be added below a specific node in the list of children, use :ref:`add_sibling()<class_Node_method_add_sibling>` instead of this method.
+Nếu bạn cần thêm nút con bên dưới một nút cụ thể trong danh sách các nút con, hãy sử dụng :ref:`add_sibling()<class_Node_method_add_sibling>` thay cho phương thức này.
 
-\ **Note:** If you want a child to be persisted to a :ref:`PackedScene<class_PackedScene>`, you must set :ref:`owner<class_Node_property_owner>` in addition to calling :ref:`add_child()<class_Node_method_add_child>`. This is typically relevant for :doc:`tool scripts <../tutorials/plugins/running_code_in_the_editor>` and :doc:`editor plugins <../tutorials/plugins/editor/index>`. If :ref:`add_child()<class_Node_method_add_child>` is called without setting :ref:`owner<class_Node_property_owner>`, the newly added **Node** will not be visible in the scene tree, though it will be visible in the 2D/3D view.
+\ **Lưu ý:** Nếu muốn một nút con được lưu vào :ref:`PackedScene<class_PackedScene>`, bạn phải thiết lập :ref:`owner<class_Node_property_owner>` ngoài việc gọi :ref:`add_child()<class_Node_method_add_child>`. Điều này thường liên quan đến các :doc:`tool scripts <../tutorials/plugins/running_code_in_the_editor>` và :doc:`editor plugins <../tutorials/plugins/editor/index>`. Nếu gọi :ref:`add_child()<class_Node_method_add_child>` mà không thiết lập :ref:`owner<class_Node_property_owner>`, **Node** mới được thêm sẽ không hiển thị trong cây cảnh, mặc dù vẫn hiển thị trong chế độ xem 2D/3D.
 
 .. rst-class:: classref-item-separator
 
@@ -1771,13 +1771,13 @@ If you need the child node to be added below a specific node in the list of chil
 
 |void| **add_sibling**\ (\ sibling\: :ref:`Node<class_Node>`, force_readable_name\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node_method_add_sibling>`
 
-Adds a ``sibling`` node to this node's parent, and moves the added sibling right below this node.
+Thêm một nút ``sibling`` vào nút cha của nút này và di chuyển sibling được thêm ngay bên dưới nút này.
 
-If ``force_readable_name`` is ``true``, improves the readability of the added ``sibling``. If not named, the ``sibling`` is renamed to its type, and if it shares :ref:`name<class_Node_property_name>` with a sibling, a number is suffixed more appropriately. This operation is very slow. As such, it is recommended leaving this to ``false``, which assigns a dummy name featuring ``@`` in both situations.
+Nếu ``force_readable_name`` là ``true``, phương thức này cải thiện khả năng đọc của ``sibling`` được thêm. Nếu chưa được đặt tên, ``sibling`` sẽ được đổi tên theo kiểu của nó; nếu trùng :ref:`name<class_Node_property_name>` với một sibling, một số sẽ được thêm vào tên theo cách phù hợp hơn. Thao tác này rất chậm. Vì vậy, bạn nên để việc này cho ``false``, phương thức này sẽ gán một tên giả có chứa ``@`` trong cả hai trường hợp.
 
-Use :ref:`add_child()<class_Node_method_add_child>` instead of this method if you don't need the child node to be added below a specific node in the list of children.
+Hãy sử dụng :ref:`add_child()<class_Node_method_add_child>` thay cho phương thức này nếu bạn không cần thêm nút con bên dưới một nút cụ thể trong danh sách các nút con.
 
-\ **Note:** If this node is internal, the added sibling will be internal too (see :ref:`add_child()<class_Node_method_add_child>`'s ``internal`` parameter).
+\ **Lưu ý:** Nếu nút này là nút nội bộ, sibling được thêm cũng sẽ là nút nội bộ (xem tham số ``internal`` của :ref:`add_child()<class_Node_method_add_child>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1789,13 +1789,13 @@ Use :ref:`add_child()<class_Node_method_add_child>` instead of this method if yo
 
 |void| **add_to_group**\ (\ group\: :ref:`StringName<class_StringName>`, persistent\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node_method_add_to_group>`
 
-Adds the node to the ``group``. Groups can be helpful to organize a subset of nodes, for example ``"enemies"`` or ``"collectables"``. See notes in the description, and the group methods in :ref:`SceneTree<class_SceneTree>`.
+Thêm nút vào ``group``. Các group có thể hữu ích để tổ chức một tập hợp con các nút, chẳng hạn như ``"enemies"`` hoặc ``"collectables"``. Xem các ghi chú trong phần mô tả và các phương thức group trong :ref:`SceneTree<class_SceneTree>`.
 
-If ``persistent`` is ``true``, the group will be stored when saved inside a :ref:`PackedScene<class_PackedScene>`. All groups created and displayed in the Groups dock are persistent.
+Nếu ``persistent`` là ``true``, nhóm sẽ được lưu khi được lưu bên trong một :ref:`PackedScene<class_PackedScene>`. Tất cả các nhóm được tạo và hiển thị trong dock Groups đều là nhóm persistent.
 
-\ **Note:** To improve performance, the order of group names is *not* guaranteed and may vary between project runs. Therefore, do not rely on the group order.
+\ **Lưu ý:** Để cải thiện hiệu suất, thứ tự tên nhóm *không* được đảm bảo và có thể thay đổi giữa các lần chạy project. Do đó, không nên dựa vào thứ tự nhóm.
 
-\ **Note:** :ref:`SceneTree<class_SceneTree>`'s group methods will *not* work on this node if not inside the tree (see :ref:`is_inside_tree()<class_Node_method_is_inside_tree>`).
+\ **Lưu ý:** Các phương thức group của :ref:`SceneTree<class_SceneTree>` sẽ *không* hoạt động trên node này nếu node không nằm trong tree (xem :ref:`is_inside_tree()<class_Node_method_is_inside_tree>`).
 
 .. rst-class:: classref-item-separator
 
@@ -1807,13 +1807,13 @@ If ``persistent`` is ``true``, the group will be stored when saved inside a :ref
 
 :ref:`String<class_String>` **atr**\ (\ message\: :ref:`String<class_String>`, context\: :ref:`StringName<class_StringName>` = ""\ ) |const| :ref:`🔗<class_Node_method_atr>`
 
-Translates a ``message``, using the translation catalogs configured in the Project Settings. Further ``context`` can be specified to help with the translation. Note that most :ref:`Control<class_Control>` nodes automatically translate their strings, so this method is mostly useful for formatted strings or custom drawn text.
+Dịch một ``message``, sử dụng các translation catalog được cấu hình trong Project Settings. Có thể chỉ định thêm ``context`` để hỗ trợ việc dịch. Lưu ý rằng hầu hết các node :ref:`Control<class_Control>` đều tự động dịch các string của chúng, vì vậy phương thức này chủ yếu hữu ích cho các string được định dạng hoặc text được vẽ tùy chỉnh.
 
-This method works the same as :ref:`Object.tr()<class_Object_method_tr>`, with the addition of respecting the :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>` state.
+Phương thức này hoạt động giống như :ref:`Object.tr()<class_Object_method_tr>`, đồng thời tôn trọng trạng thái :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>`.
 
-If :ref:`Object.can_translate_messages()<class_Object_method_can_translate_messages>` is ``false``, or no translation is available, this method returns the ``message`` without changes. See :ref:`Object.set_message_translation()<class_Object_method_set_message_translation>`.
+Nếu :ref:`Object.can_translate_messages()<class_Object_method_can_translate_messages>` là ``false``, hoặc không có bản dịch, phương thức này trả về ``message`` mà không thay đổi. Xem :ref:`Object.set_message_translation()<class_Object_method_set_message_translation>`.
 
-For detailed examples, see :doc:`Internationalizing games <../tutorials/i18n/internationalizing_games>`.
+Để xem các ví dụ chi tiết, hãy xem :doc:`Quốc tế hóa trò chơi <../tutorials/i18n/internationalizing_games>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1825,17 +1825,17 @@ For detailed examples, see :doc:`Internationalizing games <../tutorials/i18n/int
 
 :ref:`String<class_String>` **atr_n**\ (\ message\: :ref:`String<class_String>`, plural_message\: :ref:`StringName<class_StringName>`, n\: :ref:`int<class_int>`, context\: :ref:`StringName<class_StringName>` = ""\ ) |const| :ref:`🔗<class_Node_method_atr_n>`
 
-Translates a ``message`` or ``plural_message``, using the translation catalogs configured in the Project Settings. Further ``context`` can be specified to help with the translation.
+Dịch một ``message`` hoặc ``plural_message``, bằng cách sử dụng các catalog bản dịch được cấu hình trong Project Settings. Có thể chỉ định thêm ``context`` để hỗ trợ việc dịch.
 
-This method works the same as :ref:`Object.tr_n()<class_Object_method_tr_n>`, with the addition of respecting the :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>` state.
+Phương thức này hoạt động giống như :ref:`Object.tr_n()<class_Object_method_tr_n>`, đồng thời tôn trọng trạng thái :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>`.
 
-If :ref:`Object.can_translate_messages()<class_Object_method_can_translate_messages>` is ``false``, or no translation is available, this method returns ``message`` or ``plural_message``, without changes. See :ref:`Object.set_message_translation()<class_Object_method_set_message_translation>`.
+Nếu :ref:`Object.can_translate_messages()<class_Object_method_can_translate_messages>` là ``false``, hoặc không có bản dịch, phương thức này trả về ``message`` hoặc ``plural_message`` mà không thay đổi. Xem :ref:`Object.set_message_translation()<class_Object_method_set_message_translation>`.
 
-The ``n`` is the number, or amount, of the message's subject. It is used by the translation system to fetch the correct plural form for the current language.
+``n`` là số hoặc số lượng của chủ thể trong message. Nó được hệ thống dịch sử dụng để lấy dạng số nhiều chính xác cho ngôn ngữ hiện tại.
 
-For detailed examples, see :doc:`Localization using gettext <../tutorials/i18n/localization_using_gettext>`.
+Để xem các ví dụ chi tiết, hãy xem :doc:`Bản địa hóa bằng gettext <../tutorials/i18n/localization_using_gettext>`.
 
-\ **Note:** Negative and :ref:`float<class_float>` numbers may not properly apply to some countable subjects. It's recommended to handle these cases with :ref:`atr()<class_Node_method_atr>`.
+\ **Lưu ý:** Các số âm và :ref:`float<class_float>` có thể không được áp dụng chính xác cho một số chủ thể có thể đếm được. Bạn nên xử lý các trường hợp này bằng :ref:`atr()<class_Node_method_atr>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1847,7 +1847,7 @@ For detailed examples, see :doc:`Localization using gettext <../tutorials/i18n/l
 
 :ref:`Variant<class_Variant>` **call_deferred_thread_group**\ (\ method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_Node_method_call_deferred_thread_group>`
 
-This function is similar to :ref:`Object.call_deferred()<class_Object_method_call_deferred>` except that the call will take place when the node thread group is processed. If the node thread group processes in sub-threads, then the call will be done on that thread, right before :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>` or :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`, the :ref:`_process()<class_Node_private_method__process>` or :ref:`_physics_process()<class_Node_private_method__physics_process>` or their internal versions are called.
+Hàm này tương tự như :ref:`Object.call_deferred()<class_Object_method_call_deferred>`, ngoại trừ việc lệnh gọi sẽ diễn ra khi nhóm thread của node được xử lý. Nếu nhóm thread của node được xử lý trong các sub-thread, thì lệnh gọi sẽ được thực hiện trên thread đó, ngay trước khi :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>` hoặc :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`, :ref:`_process()<class_Node_private_method__process>` hoặc :ref:`_physics_process()<class_Node_private_method__physics_process>` hay các phiên bản nội bộ của chúng được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -1859,7 +1859,7 @@ This function is similar to :ref:`Object.call_deferred()<class_Object_method_cal
 
 :ref:`Variant<class_Variant>` **call_thread_safe**\ (\ method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_Node_method_call_thread_safe>`
 
-This function ensures that the calling of this function will succeed, no matter whether it's being done from a thread or not. If called from a thread that is not allowed to call the function, the call will become deferred. Otherwise, the call will go through directly.
+Hàm này đảm bảo việc gọi hàm sẽ thành công, bất kể việc gọi được thực hiện từ một thread hay không. Nếu được gọi từ một thread không được phép gọi hàm, lệnh gọi sẽ bị trì hoãn. Nếu không, lệnh gọi sẽ được thực hiện trực tiếp.
 
 .. rst-class:: classref-item-separator
 
@@ -1871,7 +1871,7 @@ This function ensures that the calling of this function will succeed, no matter 
 
 :ref:`bool<class_bool>` **can_auto_translate**\ (\ ) |const| :ref:`🔗<class_Node_method_can_auto_translate>`
 
-Returns ``true`` if this node can automatically translate messages depending on the current locale. See :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>`, :ref:`atr()<class_Node_method_atr>`, and :ref:`atr_n()<class_Node_method_atr_n>`.
+Trả về ``true`` nếu node này có thể tự động dịch các thông báo tùy theo locale hiện tại. Xem :ref:`auto_translate_mode<class_Node_property_auto_translate_mode>`, :ref:`atr()<class_Node_method_atr>` và :ref:`atr_n()<class_Node_method_atr_n>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1883,19 +1883,19 @@ Returns ``true`` if this node can automatically translate messages depending on 
 
 :ref:`bool<class_bool>` **can_process**\ (\ ) |const| :ref:`🔗<class_Node_method_can_process>`
 
-Returns ``true`` if the node can receive processing notifications and input callbacks (:ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>`, :ref:`_input()<class_Node_private_method__input>`, etc.) from the :ref:`SceneTree<class_SceneTree>` and :ref:`Viewport<class_Viewport>`. The returned value depends on :ref:`process_mode<class_Node_property_process_mode>`:
+Trả về ``true`` nếu node có thể nhận các thông báo xử lý và callback đầu vào (:ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>`, :ref:`_input()<class_Node_private_method__input>`, v.v.) từ :ref:`SceneTree<class_SceneTree>` và :ref:`Viewport<class_Viewport>`. Giá trị trả về phụ thuộc vào :ref:`process_mode<class_Node_property_process_mode>`:
 
-- If set to :ref:`PROCESS_MODE_PAUSABLE<class_Node_constant_PROCESS_MODE_PAUSABLE>`, returns ``true`` when the game is processing, i.e. :ref:`SceneTree.paused<class_SceneTree_property_paused>` is ``false``;
+- Nếu được đặt thành :ref:`PROCESS_MODE_PAUSABLE<class_Node_constant_PROCESS_MODE_PAUSABLE>`, trả về ``true`` khi game đang được xử lý, tức là :ref:`SceneTree.paused<class_SceneTree_property_paused>` là ``false``;
 
-- If set to :ref:`PROCESS_MODE_WHEN_PAUSED<class_Node_constant_PROCESS_MODE_WHEN_PAUSED>`, returns ``true`` when the game is paused, i.e. :ref:`SceneTree.paused<class_SceneTree_property_paused>` is ``true``;
+- Nếu được đặt thành :ref:`PROCESS_MODE_WHEN_PAUSED<class_Node_constant_PROCESS_MODE_WHEN_PAUSED>`, trả về ``true`` khi trò chơi bị tạm dừng, tức là :ref:`SceneTree.paused<class_SceneTree_property_paused>` là ``true``;
 
-- If set to :ref:`PROCESS_MODE_ALWAYS<class_Node_constant_PROCESS_MODE_ALWAYS>`, always returns ``true``;
+- Nếu được đặt thành :ref:`PROCESS_MODE_ALWAYS<class_Node_constant_PROCESS_MODE_ALWAYS>`, luôn trả về ``true``;
 
-- If set to :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, always returns ``false``;
+- Nếu được đặt thành :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`, luôn trả về ``false``;
 
-- If set to :ref:`PROCESS_MODE_INHERIT<class_Node_constant_PROCESS_MODE_INHERIT>`, use the parent node's :ref:`process_mode<class_Node_property_process_mode>` to determine the result.
+- Nếu được đặt thành :ref:`PROCESS_MODE_INHERIT<class_Node_constant_PROCESS_MODE_INHERIT>`, hãy sử dụng :ref:`process_mode<class_Node_property_process_mode>` của nút cha để xác định kết quả.
 
-If the node is not inside the tree, returns ``false`` no matter the value of :ref:`process_mode<class_Node_property_process_mode>`.
+Nếu nút không nằm trong cây, trả về ``false`` bất kể giá trị của :ref:`process_mode<class_Node_property_process_mode>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1907,9 +1907,9 @@ If the node is not inside the tree, returns ``false`` no matter the value of :re
 
 :ref:`Tween<class_Tween>` **create_tween**\ (\ ) :ref:`🔗<class_Node_method_create_tween>`
 
-Creates a new :ref:`Tween<class_Tween>` and binds it to this node.
+Tạo một :ref:`Tween<class_Tween>` mới và liên kết nó với nút này.
 
-This is the equivalent of doing:
+Điều này tương đương với việc thực hiện:
 
 
 .. tabs::
@@ -1924,9 +1924,9 @@ This is the equivalent of doing:
 
 
 
-The Tween will start automatically on the next process frame or physics frame (depending on :ref:`TweenProcessMode<enum_Tween_TweenProcessMode>`). See :ref:`Tween.bind_node()<class_Tween_method_bind_node>` for more info on Tweens bound to nodes.
+Tween sẽ tự động bắt đầu ở frame xử lý tiếp theo hoặc frame vật lý tiếp theo (tùy thuộc vào :ref:`TweenProcessMode <enum_Tween_TweenProcessMode>`). Xem :ref:`Tween.bind_node()<class_Tween_method_bind_node>` để biết thêm thông tin về Tween được liên kết với các nút.
 
-\ **Note:** The method can still be used when the node is not inside :ref:`SceneTree<class_SceneTree>`. It can fail in an unlikely case of using a custom :ref:`MainLoop<class_MainLoop>`.
+\ **Lưu ý:** Phương thức này vẫn có thể được sử dụng khi nút không nằm trong :ref:`SceneTree<class_SceneTree>`. Nó có thể không thành công trong trường hợp khó xảy ra khi sử dụng một :ref:`MainLoop<class_MainLoop>` tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -1938,11 +1938,11 @@ The Tween will start automatically on the next process frame or physics frame (d
 
 :ref:`Node<class_Node>` **duplicate**\ (\ flags\: :ref:`int<class_int>` = 15\ ) |const| :ref:`🔗<class_Node_method_duplicate>`
 
-Duplicates the node, returning a new node with all of its properties, signals, groups, and children copied from the original, recursively. The behavior can be tweaked through the ``flags`` (see :ref:`DuplicateFlags<enum_Node_DuplicateFlags>`). Internal nodes are not duplicated.
+Nhân bản nút, trả về một nút mới với tất cả thuộc tính, tín hiệu, nhóm và nút con của nút gốc được sao chép một cách đệ quy. Có thể điều chỉnh hành vi này thông qua ``flags`` (xem :ref:`DuplicateFlags <enum_Node_DuplicateFlags>`). Các nút nội bộ không được nhân bản.
 
-\ **Note:** For nodes with a :ref:`Script<class_Script>` attached, if :ref:`Object._init()<class_Object_private_method__init>` has been defined with required parameters, the duplicated node will not have a :ref:`Script<class_Script>`.
+\ **Lưu ý:** Đối với các node có gắn :ref:`Script<class_Script>`, nếu :ref:`Object._init()<class_Object_private_method__init>` được định nghĩa với các tham số bắt buộc, node được nhân bản sẽ không có :ref:`Script<class_Script>`.
 
-\ **Note:** By default, this method will duplicate only properties marked for serialization (i.e. using :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE<class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>`, or in GDScript, :ref:`@GDScript.@export<class_@GDScript_annotation_@export>`). If you want to duplicate all properties, use :ref:`DUPLICATE_INTERNAL_STATE<class_Node_constant_DUPLICATE_INTERNAL_STATE>`.
+\ **Lưu ý:** Theo mặc định, phương thức này chỉ nhân bản các thuộc tính được đánh dấu để serialization (tuần tự hóa) (tức là sử dụng :ref:`@GlobalScope.PROPERTY_USAGE_STORAGE <class_@GlobalScope_constant_PROPERTY_USAGE_STORAGE>`, hoặc trong GDScript, :ref:`@GDScript.@export <class_@GDScript_annotation_@export>`). Nếu muốn nhân bản tất cả thuộc tính, hãy sử dụng :ref:`DUPLICATE_INTERNAL_STATE<class_Node_constant_DUPLICATE_INTERNAL_STATE>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1954,15 +1954,15 @@ Duplicates the node, returning a new node with all of its properties, signals, g
 
 :ref:`Node<class_Node>` **find_child**\ (\ pattern\: :ref:`String<class_String>`, recursive\: :ref:`bool<class_bool>` = true, owned\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_Node_method_find_child>`
 
-Finds the first descendant of this node whose :ref:`name<class_Node_property_name>` matches ``pattern``, returning ``null`` if no match is found. The matching is done against node names, *not* their paths, through :ref:`String.match()<class_String_method_match>`. As such, it is case-sensitive, ``"*"`` matches zero or more characters, and ``"?"`` matches any single character.
+Tìm hậu duệ đầu tiên của node này có :ref:`name<class_Node_property_name>` khớp với ``pattern``, trả về ``null`` nếu không tìm thấy kết quả khớp. Việc khớp được thực hiện với tên node, *không phải* đường dẫn của chúng, thông qua :ref:`String.match()<class_String_method_match>`. Do đó, việc khớp có phân biệt chữ hoa chữ thường, ``"*"`` khớp với không hoặc nhiều ký tự, còn ``"?"`` khớp với bất kỳ ký tự đơn nào.
 
-If ``recursive`` is ``false``, only this node's direct children are checked. Nodes are checked in tree order, so this node's first direct child is checked first, then its own direct children, etc., before moving to the second direct child, and so on. Internal children are also included in the search (see ``internal`` parameter in :ref:`add_child()<class_Node_method_add_child>`).
+Nếu ``recursive`` là ``false``, chỉ các node con trực tiếp của node này được kiểm tra. Các node được kiểm tra theo thứ tự trong cây, vì vậy node con trực tiếp đầu tiên của node này được kiểm tra trước, sau đó đến các node con trực tiếp của chính nó, v.v., trước khi chuyển sang node con trực tiếp thứ hai, và tiếp tục như vậy. Các node con nội bộ cũng được bao gồm trong tìm kiếm (xem tham số ``internal`` trong :ref:`add_child()<class_Node_method_add_child>`).
 
-If ``owned`` is ``true``, only descendants with a valid :ref:`owner<class_Node_property_owner>` node are checked.
+Nếu ``owned`` là ``true``, chỉ các hậu duệ có node :ref:`owner<class_Node_property_owner>` hợp lệ mới được kiểm tra.
 
-\ **Note:** This method can be very slow. Consider storing a reference to the found node in a variable. Alternatively, use :ref:`get_node()<class_Node_method_get_node>` with unique names (see :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`).
+\ **Lưu ý:** Phương thức này có thể rất chậm. Hãy cân nhắc lưu tham chiếu đến node được tìm thấy vào một biến. Ngoài ra, hãy sử dụng :ref:`get_node()<class_Node_method_get_node>` với các tên duy nhất (xem :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`).
 
-\ **Note:** To find all descendant nodes matching a pattern or a class type, see :ref:`find_children()<class_Node_method_find_children>`.
+\ **Lưu ý:** Để tìm tất cả các node hậu duệ khớp với một mẫu hoặc một kiểu class, hãy xem :ref:`find_children()<class_Node_method_find_children>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1974,17 +1974,17 @@ If ``owned`` is ``true``, only descendants with a valid :ref:`owner<class_Node_p
 
 :ref:`Array<class_Array>`\[:ref:`Node<class_Node>`\] **find_children**\ (\ pattern\: :ref:`String<class_String>`, type\: :ref:`String<class_String>` = "", recursive\: :ref:`bool<class_bool>` = true, owned\: :ref:`bool<class_bool>` = true\ ) |const| :ref:`🔗<class_Node_method_find_children>`
 
-Finds all descendants of this node whose names match ``pattern``, returning an empty :ref:`Array<class_Array>` if no match is found. The matching is done against node names, *not* their paths, through :ref:`String.match()<class_String_method_match>`. As such, it is case-sensitive, ``"*"`` matches zero or more characters, and ``"?"`` matches any single character.
+Tìm tất cả các node hậu duệ của node này có tên khớp với ``pattern``, và trả về một :ref:`Array<class_Array>` rỗng nếu không tìm thấy kết quả khớp. Việc khớp được thực hiện trên tên node, *không phải* đường dẫn của chúng, thông qua :ref:`String.match()<class_String_method_match>`. Vì vậy, thao tác này phân biệt chữ hoa chữ thường, ``"*"`` khớp với không hoặc nhiều ký tự, còn ``"?"`` khớp với bất kỳ ký tự đơn nào.
 
-If ``type`` is not empty, only descendants inheriting from ``type`` are included (see :ref:`Object.is_class()<class_Object_method_is_class>`).
+Nếu ``type`` không rỗng, chỉ các node hậu duệ kế thừa từ ``type`` mới được đưa vào (xem :ref:`Object.is_class()<class_Object_method_is_class>`).
 
-If ``recursive`` is ``false``, only this node's direct children are checked. Nodes are checked in tree order, so this node's first direct child is checked first, then its own direct children, etc., before moving to the second direct child, and so on. Internal children are also included in the search (see ``internal`` parameter in :ref:`add_child()<class_Node_method_add_child>`).
+Nếu ``recursive`` là ``false``, chỉ các node con trực tiếp của node này được kiểm tra. Các node được kiểm tra theo thứ tự trong cây, vì vậy node con trực tiếp đầu tiên của node này được kiểm tra trước, sau đó đến các node con trực tiếp của chính nó, v.v., trước khi chuyển sang node con trực tiếp thứ hai, và tiếp tục như vậy. Các node con nội bộ cũng được bao gồm trong tìm kiếm (xem tham số ``internal`` trong :ref:`add_child()<class_Node_method_add_child>`).
 
-If ``owned`` is ``true``, only descendants with a valid :ref:`owner<class_Node_property_owner>` node are checked.
+Nếu ``owned`` là ``true``, chỉ các hậu duệ có node :ref:`owner<class_Node_property_owner>` hợp lệ mới được kiểm tra.
 
-\ **Note:** This method can be very slow. Consider storing references to the found nodes in a variable.
+\ **Lưu ý:** Phương thức này có thể rất chậm. Hãy cân nhắc lưu tham chiếu đến các node đã tìm thấy vào một biến.
 
-\ **Note:** To find a single descendant node matching a pattern, see :ref:`find_child()<class_Node_method_find_child>`.
+\ **Lưu ý:** Để tìm một node hậu duệ duy nhất khớp với một mẫu, hãy xem :ref:`find_child()<class_Node_method_find_child>`.
 
 .. rst-class:: classref-item-separator
 
@@ -1996,9 +1996,9 @@ If ``owned`` is ``true``, only descendants with a valid :ref:`owner<class_Node_p
 
 :ref:`Node<class_Node>` **find_parent**\ (\ pattern\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_Node_method_find_parent>`
 
-Finds the first ancestor of this node whose :ref:`name<class_Node_property_name>` matches ``pattern``, returning ``null`` if no match is found. The matching is done through :ref:`String.match()<class_String_method_match>`. As such, it is case-sensitive, ``"*"`` matches zero or more characters, and ``"?"`` matches any single character. See also :ref:`find_child()<class_Node_method_find_child>` and :ref:`find_children()<class_Node_method_find_children>`.
+Tìm tổ tiên đầu tiên của node này có :ref:`name<class_Node_property_name>` khớp với ``pattern``, và trả về ``null`` nếu không tìm thấy kết quả khớp. Việc khớp được thực hiện thông qua :ref:`String.match()<class_String_method_match>`. Vì vậy, thao tác này phân biệt chữ hoa chữ thường, ``"*"`` khớp với không hoặc nhiều ký tự, còn ``"?"`` khớp với bất kỳ ký tự đơn nào. Xem thêm :ref:`find_child()<class_Node_method_find_child>` và :ref:`find_children()<class_Node_method_find_children>`.
 
-\ **Note:** As this method walks upwards in the scene tree, it can be slow in large, deeply nested nodes. Consider storing a reference to the found node in a variable. Alternatively, use :ref:`get_node()<class_Node_method_get_node>` with unique names (see :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`).
+\ **Lưu ý:** Vì phương thức này duyệt ngược lên trong scene tree, nó có thể chạy chậm trong các node lớn, lồng nhau sâu. Hãy cân nhắc lưu tham chiếu đến node được tìm thấy vào một biến. Ngoài ra, hãy sử dụng :ref:`get_node()<class_Node_method_get_node>` với các tên duy nhất (xem :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2010,9 +2010,9 @@ Finds the first ancestor of this node whose :ref:`name<class_Node_property_name>
 
 :ref:`RID<class_RID>` **get_accessibility_element**\ (\ ) |const| :ref:`🔗<class_Node_method_get_accessibility_element>`
 
-Returns main accessibility element RID.
+Trả về RID của phần tử hỗ trợ khả năng truy cập chính.
 
-\ **Note:** This method should be called only during accessibility information updates (:ref:`NOTIFICATION_ACCESSIBILITY_UPDATE<class_Node_constant_NOTIFICATION_ACCESSIBILITY_UPDATE>`).
+\ **Lưu ý:** Chỉ nên gọi phương thức này trong quá trình cập nhật thông tin hỗ trợ khả năng truy cập (:ref:`NOTIFICATION_ACCESSIBILITY_UPDATE<class_Node_constant_NOTIFICATION_ACCESSIBILITY_UPDATE>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2024,9 +2024,9 @@ Returns main accessibility element RID.
 
 :ref:`Node<class_Node>` **get_child**\ (\ idx\: :ref:`int<class_int>`, include_internal\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Node_method_get_child>`
 
-Fetches a child node by its index. Each child node has an index relative to its siblings (see :ref:`get_index()<class_Node_method_get_index>`). The first child is at index 0. Negative values can also be used to start from the end of the list. This method can be used in combination with :ref:`get_child_count()<class_Node_method_get_child_count>` to iterate over this node's children. If no child exists at the given index, this method returns ``null`` and an error is generated.
+Lấy một node con theo chỉ mục của node đó. Mỗi node con có một chỉ mục tương đối với các node cùng cấp (xem :ref:`get_index()<class_Node_method_get_index>`). Node con đầu tiên có chỉ mục là 0. Bạn cũng có thể sử dụng các giá trị âm để bắt đầu từ cuối danh sách. Có thể dùng phương thức này kết hợp với :ref:`get_child_count()<class_Node_method_get_child_count>` để lặp qua các node con của node này. Nếu không có node con nào tại chỉ mục đã cho, phương thức này trả về ``null`` và tạo ra một lỗi.
 
-If ``include_internal`` is ``false``, internal children are ignored (see :ref:`add_child()<class_Node_method_add_child>`'s ``internal`` parameter).
+Nếu ``include_internal`` là ``false``, các node con nội bộ sẽ bị bỏ qua (xem tham số ``internal`` của :ref:`add_child()<class_Node_method_add_child>`).
 
 ::
 
@@ -2038,7 +2038,7 @@ If ``include_internal`` is ``false``, internal children are ignored (see :ref:`a
     var b = get_child(2).name  # b is "Last"
     var c = get_child(-1).name # c is "Last"
 
-\ **Note:** To fetch a node by :ref:`NodePath<class_NodePath>`, use :ref:`get_node()<class_Node_method_get_node>`.
+\ **Lưu ý:** Để lấy một node theo :ref:`NodePath<class_NodePath>`, hãy sử dụng :ref:`get_node()<class_Node_method_get_node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2050,9 +2050,9 @@ If ``include_internal`` is ``false``, internal children are ignored (see :ref:`a
 
 :ref:`int<class_int>` **get_child_count**\ (\ include_internal\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Node_method_get_child_count>`
 
-Returns the number of children of this node.
+Trả về số lượng node con của node này.
 
-If ``include_internal`` is ``false``, internal children are not counted (see :ref:`add_child()<class_Node_method_add_child>`'s ``internal`` parameter).
+Nếu ``include_internal`` là ``false``, các nút con nội bộ sẽ không được tính (xem tham số ``internal`` của :ref:`add_child()<class_Node_method_add_child>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2064,9 +2064,9 @@ If ``include_internal`` is ``false``, internal children are not counted (see :re
 
 :ref:`Array<class_Array>`\[:ref:`Node<class_Node>`\] **get_children**\ (\ include_internal\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Node_method_get_children>`
 
-Returns all children of this node inside an :ref:`Array<class_Array>`.
+Trả về tất cả các nút con của nút này bên trong một :ref:`Array<class_Array>`.
 
-If ``include_internal`` is ``false``, excludes internal children from the returned array (see :ref:`add_child()<class_Node_method_add_child>`'s ``internal`` parameter).
+Nếu ``include_internal`` là ``false``, loại trừ các nút con nội bộ khỏi mảng được trả về (xem tham số ``internal`` của :ref:`add_child()<class_Node_method_add_child>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2078,18 +2078,18 @@ If ``include_internal`` is ``false``, excludes internal children from the return
 
 :ref:`Array<class_Array>`\[:ref:`StringName<class_StringName>`\] **get_groups**\ (\ ) |const| :ref:`🔗<class_Node_method_get_groups>`
 
-Returns an :ref:`Array<class_Array>` of group names that the node has been added to.
+Trả về một :ref:`Array<class_Array>` chứa tên các group mà nút này đã được thêm vào.
 
-\ **Note:** To improve performance, the order of group names is *not* guaranteed and may vary between project runs. Therefore, do not rely on the group order.
+\ **Lưu ý:** Để cải thiện hiệu suất, thứ tự tên nhóm *không* được đảm bảo và có thể thay đổi giữa các lần chạy project. Do đó, không nên dựa vào thứ tự nhóm.
 
-\ **Note:** This method may also return some group names starting with an underscore (``_``). These are internally used by the engine. To avoid conflicts, do not use custom groups starting with underscores. To exclude internal groups, see the following code snippet:
+\ **Lưu ý:** Phương thức này cũng có thể trả về một số tên group bắt đầu bằng dấu gạch dưới (``_``). Đây là các group được engine sử dụng nội bộ. Để tránh xung đột, không sử dụng các group tùy chỉnh bắt đầu bằng dấu gạch dưới. Để loại trừ các group nội bộ, hãy xem đoạn mã sau:
 
 
 .. tabs::
 
  .. code-tab:: gdscript
 
-    # Stores the node's non-internal groups only (as an array of StringNames).
+    # Chỉ lưu các group không nội bộ của nút (dưới dạng một mảng StringNames).
     var non_internal_groups = []
     for group in get_groups():
         if not str(group).begins_with("_"):
@@ -2097,7 +2097,7 @@ Returns an :ref:`Array<class_Array>` of group names that the node has been added
 
  .. code-tab:: csharp
 
-    // Stores the node's non-internal groups only (as a List of StringNames).
+    // Chỉ lưu các group không nội bộ của node (dưới dạng List of StringNames).
     List<string> nonInternalGroups = new List<string>();
     foreach (string group in GetGroups())
     {
@@ -2117,9 +2117,9 @@ Returns an :ref:`Array<class_Array>` of group names that the node has been added
 
 :ref:`int<class_int>` **get_index**\ (\ include_internal\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Node_method_get_index>`
 
-Returns this node's order among its siblings. The first node's index is ``0``. See also :ref:`get_child()<class_Node_method_get_child>`.
+Trả về thứ tự của node này trong số các node cùng cấp. Chỉ mục của node đầu tiên là ``0``. Xem thêm :ref:`get_child()<class_Node_method_get_child>`.
 
-If ``include_internal`` is ``false``, returns the index ignoring internal children. The first, non-internal child will have an index of ``0`` (see :ref:`add_child()<class_Node_method_add_child>`'s ``internal`` parameter).
+Nếu ``include_internal`` là ``false``, trả về chỉ mục mà không tính các node con nội bộ. Node con không nội bộ đầu tiên sẽ có chỉ mục ``0`` (xem tham số ``internal`` của :ref:`add_child()<class_Node_method_add_child>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2131,7 +2131,7 @@ If ``include_internal`` is ``false``, returns the index ignoring internal childr
 
 :ref:`Window<class_Window>` **get_last_exclusive_window**\ (\ ) |const| :ref:`🔗<class_Node_method_get_last_exclusive_window>`
 
-Returns the :ref:`Window<class_Window>` that contains this node, or the last exclusive child in a chain of windows starting with the one that contains this node.
+Trả về :ref:`Window<class_Window>` chứa node này, hoặc node con loại trừ cuối cùng trong một chuỗi các cửa sổ bắt đầu bằng cửa sổ chứa node này.
 
 .. rst-class:: classref-item-separator
 
@@ -2143,7 +2143,7 @@ Returns the :ref:`Window<class_Window>` that contains this node, or the last exc
 
 :ref:`int<class_int>` **get_multiplayer_authority**\ (\ ) |const| :ref:`🔗<class_Node_method_get_multiplayer_authority>`
 
-Returns the peer ID of the multiplayer authority for this node. See :ref:`set_multiplayer_authority()<class_Node_method_set_multiplayer_authority>`.
+Trả về peer ID của authority multiplayer cho node này. Xem :ref:`set_multiplayer_authority()<class_Node_method_set_multiplayer_authority>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2155,11 +2155,11 @@ Returns the peer ID of the multiplayer authority for this node. See :ref:`set_mu
 
 :ref:`Node<class_Node>` **get_node**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) |const| :ref:`🔗<class_Node_method_get_node>`
 
-Fetches a node. The :ref:`NodePath<class_NodePath>` can either be a relative path (from this node), or an absolute path (from the :ref:`SceneTree.root<class_SceneTree_property_root>`) to a node. If ``path`` does not point to a valid node, generates an error and returns ``null``. Attempts to access methods on the return value will result in an *"Attempt to call <method> on a null instance."* error.
+Lấy một node. :ref:`NodePath<class_NodePath>` có thể là đường dẫn tương đối (từ node này) hoặc đường dẫn tuyệt đối (từ :ref:`SceneTree.root<class_SceneTree_property_root>`) đến một node. Nếu ``path`` không trỏ đến một node hợp lệ, hàm sẽ tạo lỗi và trả về ``null``. Việc cố gắng truy cập các phương thức trên giá trị trả về sẽ gây ra lỗi *"Attempt to call <method> on a null instance."*.
 
-\ **Note:** Fetching by absolute path only works when the node is inside the scene tree (see :ref:`is_inside_tree()<class_Node_method_is_inside_tree>`).
+\ **Lưu ý:** Việc lấy theo đường dẫn tuyệt đối chỉ hoạt động khi node nằm trong scene tree (xem :ref:`is_inside_tree()<class_Node_method_is_inside_tree>`).
 
-\ **Example:** Assume this method is called from the Character node, inside the following tree:
+\ **Ví dụ:** Giả sử phương thức này được gọi từ node Character, bên trong cây sau:
 
 .. code:: text
 
@@ -2174,7 +2174,7 @@ Fetches a node. The :ref:`NodePath<class_NodePath>` can either be a relative pat
            ┠╴Mosquito
            ┖╴Goblin
 
-The following calls will return a valid node:
+Các lệnh gọi sau sẽ trả về một node hợp lệ:
 
 
 .. tabs::
@@ -2205,15 +2205,15 @@ The following calls will return a valid node:
 
 :ref:`Array<class_Array>` **get_node_and_resource**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_Node_method_get_node_and_resource>`
 
-Fetches a node and its most nested resource as specified by the :ref:`NodePath<class_NodePath>`'s subname. Returns an :ref:`Array<class_Array>` of size ``3`` where:
+Lấy một node và resource lồng nhau sâu nhất của nó như được chỉ định bởi subname của :ref:`NodePath<class_NodePath>`. Trả về một :ref:`Array<class_Array>` có kích thước ``3``, trong đó:
 
-- Element ``0`` is the **Node**, or ``null`` if not found;
+- Phần tử ``0`` là **Node**, hoặc ``null`` nếu không tìm thấy;
 
-- Element ``1`` is the subname's last nested :ref:`Resource<class_Resource>`, or ``null`` if not found;
+- Phần tử ``1`` là :ref:`Resource<class_Resource>` lồng nhau cuối cùng của subname, hoặc ``null`` nếu không tìm thấy;
 
-- Element ``2`` is the remaining :ref:`NodePath<class_NodePath>`, referring to an existing, non-:ref:`Resource<class_Resource>` property (see :ref:`Object.get_indexed()<class_Object_method_get_indexed>`).
+- Phần tử ``2`` là :ref:`NodePath<class_NodePath>` còn lại, tham chiếu đến một thuộc tính hiện có, không phải :ref:`Resource<class_Resource>` (xem :ref:`Object.get_indexed()<class_Object_method_get_indexed>`).
 
-\ **Example:** Assume that the child's :ref:`Sprite2D.texture<class_Sprite2D_property_texture>` has been assigned an :ref:`AtlasTexture<class_AtlasTexture>`:
+\ **Ví dụ:** Giả sử :ref:`Sprite2D.texture<class_Sprite2D_property_texture>` của node con đã được gán một :ref:`AtlasTexture<class_AtlasTexture>`:
 
 
 .. tabs::
@@ -2221,36 +2221,36 @@ Fetches a node and its most nested resource as specified by the :ref:`NodePath<c
  .. code-tab:: gdscript
 
     var a = get_node_and_resource("Area2D/Sprite2D")
-    print(a[0].name) # Prints Sprite2D
-    print(a[1])      # Prints <null>
-    print(a[2])      # Prints ^""
+    print(a[0].name) # In ra Sprite2D
+    print(a[1])      # In ra <null>
+    print(a[2])      # In ra ^""
 
     var b = get_node_and_resource("Area2D/Sprite2D:texture:atlas")
-    print(b[0].name)        # Prints Sprite2D
-    print(b[1].get_class()) # Prints AtlasTexture
-    print(b[2])             # Prints ^""
+    print(b[0].name)        # In ra Sprite2D
+    print(b[1].get_class()) # In ra AtlasTexture
+    print(b[2])             # In ra ^""
 
     var c = get_node_and_resource("Area2D/Sprite2D:texture:atlas:region")
-    print(c[0].name)        # Prints Sprite2D
-    print(c[1].get_class()) # Prints AtlasTexture
-    print(c[2])             # Prints ^":region"
+    print(c[0].name)        # In ra Sprite2D
+    print(c[1].get_class()) # In ra AtlasTexture
+    print(c[2])             # In ra ^":region"
 
  .. code-tab:: csharp
 
     var a = GetNodeAndResource(NodePath("Area2D/Sprite2D"));
-    GD.Print(a[0].Name); // Prints Sprite2D
-    GD.Print(a[1]);      // Prints <null>
-    GD.Print(a[2]);      // Prints ^"
+    GD.Print(a[0].Name); // In ra Sprite2D
+    GD.Print(a[1]);      // In ra <null>
+    GD.Print(a[2]);      // In ra ^"
 
     var b = GetNodeAndResource(NodePath("Area2D/Sprite2D:texture:atlas"));
-    GD.Print(b[0].name);        // Prints Sprite2D
-    GD.Print(b[1].get_class()); // Prints AtlasTexture
-    GD.Print(b[2]);             // Prints ^""
+    GD.Print(b[0].name);        // In ra Sprite2D
+    GD.Print(b[1].get_class()); // In ra AtlasTexture
+    GD.Print(b[2]);             // In ^""
 
     var c = GetNodeAndResource(NodePath("Area2D/Sprite2D:texture:atlas:region"));
-    GD.Print(c[0].name);        // Prints Sprite2D
-    GD.Print(c[1].get_class()); // Prints AtlasTexture
-    GD.Print(c[2]);             // Prints ^":region"
+    GD.Print(c[0].name);        // In ra Sprite2D
+    GD.Print(c[1].get_class()); // In ra AtlasTexture
+    GD.Print(c[2]);             // In ^":region"
 
 
 
@@ -2264,7 +2264,7 @@ Fetches a node and its most nested resource as specified by the :ref:`NodePath<c
 
 :ref:`Node<class_Node>` **get_node_or_null**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) |const| :ref:`🔗<class_Node_method_get_node_or_null>`
 
-Fetches a node by :ref:`NodePath<class_NodePath>`. Similar to :ref:`get_node()<class_Node_method_get_node>`, but does not generate an error if ``path`` does not point to a valid node.
+Lấy một node theo :ref:`NodePath<class_NodePath>`. Tương tự :ref:`get_node()<class_Node_method_get_node>`, nhưng không tạo lỗi nếu ``path`` không trỏ đến một node hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -2276,9 +2276,9 @@ Fetches a node by :ref:`NodePath<class_NodePath>`. Similar to :ref:`get_node()<c
 
 :ref:`Variant<class_Variant>` **get_node_rpc_config**\ (\ ) |const| :ref:`🔗<class_Node_method_get_node_rpc_config>`
 
-Returns a :ref:`Dictionary<class_Dictionary>` mapping method names to their RPC configuration defined for this node using :ref:`rpc_config()<class_Node_method_rpc_config>`.
+Trả về một :ref:`Dictionary<class_Dictionary>` ánh xạ tên phương thức với cấu hình RPC được xác định cho node này bằng :ref:`rpc_config()<class_Node_method_rpc_config>`.
 
-\ **Note:** This method only returns the RPC configuration assigned via :ref:`rpc_config()<class_Node_method_rpc_config>`. See :ref:`Script.get_rpc_config()<class_Script_method_get_rpc_config>` to retrieve the RPCs defined by the :ref:`Script<class_Script>`.
+\ **Lưu ý:** Phương thức này chỉ trả về cấu hình RPC được gán qua :ref:`rpc_config()<class_Node_method_rpc_config>`. Xem :ref:`Script.get_rpc_config()<class_Script_method_get_rpc_config>` để lấy các RPC được định nghĩa bởi :ref:`Script<class_Script>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2290,9 +2290,9 @@ Returns a :ref:`Dictionary<class_Dictionary>` mapping method names to their RPC 
 
 :ref:`Array<class_Array>`\[:ref:`int<class_int>`\] **get_orphan_node_ids**\ (\ ) |static| :ref:`🔗<class_Node_method_get_orphan_node_ids>`
 
-Returns object IDs of all orphan nodes (nodes outside the :ref:`SceneTree<class_SceneTree>`). Used for debugging.
+Trả về ID đối tượng của tất cả các nút mồ côi (các nút nằm ngoài :ref:`SceneTree<class_SceneTree>`). Dùng để gỡ lỗi.
 
-\ **Note:** :ref:`get_orphan_node_ids()<class_Node_method_get_orphan_node_ids>` only works in debug builds. When called in a project exported in release mode, :ref:`get_orphan_node_ids()<class_Node_method_get_orphan_node_ids>` will return an empty array.
+\ **Lưu ý:** :ref:`get_orphan_node_ids()<class_Node_method_get_orphan_node_ids>` chỉ hoạt động trong các bản build debug. Khi được gọi trong một project được xuất ở chế độ release, :ref:`get_orphan_node_ids()<class_Node_method_get_orphan_node_ids>` sẽ trả về một mảng rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -2304,7 +2304,7 @@ Returns object IDs of all orphan nodes (nodes outside the :ref:`SceneTree<class_
 
 :ref:`Node<class_Node>` **get_parent**\ (\ ) |const| :ref:`🔗<class_Node_method_get_parent>`
 
-Returns this node's parent node, or ``null`` if the node doesn't have a parent.
+Trả về nút cha của nút này hoặc ``null`` nếu nút không có nút cha.
 
 .. rst-class:: classref-item-separator
 
@@ -2316,7 +2316,7 @@ Returns this node's parent node, or ``null`` if the node doesn't have a parent.
 
 :ref:`NodePath<class_NodePath>` **get_path**\ (\ ) |const| :ref:`🔗<class_Node_method_get_path>`
 
-Returns the node's absolute path, relative to the :ref:`SceneTree.root<class_SceneTree_property_root>`. If the node is not inside the scene tree, this method fails and returns an empty :ref:`NodePath<class_NodePath>`.
+Trả về đường dẫn tuyệt đối của nút này, tương đối so với :ref:`SceneTree.root<class_SceneTree_property_root>`. Nếu nút không nằm trong scene tree, phương thức này sẽ thất bại và trả về một :ref:`NodePath<class_NodePath>` rỗng.
 
 .. rst-class:: classref-item-separator
 
@@ -2328,11 +2328,11 @@ Returns the node's absolute path, relative to the :ref:`SceneTree.root<class_Sce
 
 :ref:`NodePath<class_NodePath>` **get_path_to**\ (\ node\: :ref:`Node<class_Node>`, use_unique_path\: :ref:`bool<class_bool>` = false\ ) |const| :ref:`🔗<class_Node_method_get_path_to>`
 
-Returns the relative :ref:`NodePath<class_NodePath>` from this node to the specified ``node``. Both nodes must be in the same :ref:`SceneTree<class_SceneTree>` or scene hierarchy, otherwise this method fails and returns an empty :ref:`NodePath<class_NodePath>`.
+Trả về :ref:`NodePath<class_NodePath>` tương đối từ nút này đến ``node`` được chỉ định. Cả hai nút phải nằm trong cùng một :ref:`SceneTree<class_SceneTree>` hoặc hệ phân cấp scene; nếu không, phương thức này sẽ thất bại và trả về một :ref:`NodePath<class_NodePath>` rỗng.
 
-If ``use_unique_path`` is ``true``, returns the shortest path accounting for this node's unique name (see :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`).
+Nếu ``use_unique_path`` là ``true``, trả về đường dẫn ngắn nhất có tính đến tên duy nhất của nút này (xem :ref:`unique_name_in_owner<class_Node_property_unique_name_in_owner>`).
 
-\ **Note:** If you get a relative path which starts from a unique node, the path may be longer than a normal relative path, due to the addition of the unique node's name.
+\ **Lưu ý:** Nếu bạn lấy một đường dẫn tương đối bắt đầu từ một nút duy nhất, đường dẫn đó có thể dài hơn đường dẫn tương đối thông thường do có thêm tên của nút duy nhất.
 
 .. rst-class:: classref-item-separator
 
@@ -2344,9 +2344,9 @@ If ``use_unique_path`` is ``true``, returns the shortest path accounting for thi
 
 :ref:`float<class_float>` **get_physics_process_delta_time**\ (\ ) |const| :ref:`🔗<class_Node_method_get_physics_process_delta_time>`
 
-Returns the time elapsed (in seconds) since the last physics callback. This value is identical to :ref:`_physics_process()<class_Node_private_method__physics_process>`'s ``delta`` parameter, and is often consistent at run-time, unless :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` is changed. See also :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`.
+Trả về thời gian đã trôi qua (tính bằng giây) kể từ callback vật lý gần nhất. Giá trị này giống hệt tham số ``delta`` của :ref:`_physics_process()<class_Node_private_method__physics_process>`, và thường nhất quán trong thời gian chạy, trừ khi :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` được thay đổi. Xem thêm :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>`.
 
-\ **Note:** The returned value will be larger than expected if running at a framerate lower than :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` / :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` FPS. This is done to avoid "spiral of death" scenarios where performance would plummet due to an ever-increasing number of physics steps per frame. This behavior affects both :ref:`_process()<class_Node_private_method__process>` and :ref:`_physics_process()<class_Node_private_method__physics_process>`. As a result, avoid using ``delta`` for time measurements in real-world seconds. Use the :ref:`Time<class_Time>` singleton's methods for this purpose instead, such as :ref:`Time.get_ticks_usec()<class_Time_method_get_ticks_usec>`.
+\ **Lưu ý:** Giá trị trả về sẽ lớn hơn dự kiến nếu chạy ở tốc độ khung hình thấp hơn :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` / :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` FPS. Điều này nhằm tránh các tình huống "spiral of death", trong đó hiệu suất sẽ giảm mạnh do số bước vật lý trên mỗi khung hình tăng liên tục. Hành vi này ảnh hưởng đến cả :ref:`_process()<class_Node_private_method__process>` và :ref:`_physics_process()<class_Node_private_method__physics_process>`. Do đó, tránh sử dụng ``delta`` để đo thời gian theo giây trong thực tế. Thay vào đó, hãy sử dụng các phương thức của singleton :ref:`Time<class_Time>` cho mục đích này, chẳng hạn như :ref:`Time.get_ticks_usec()<class_Time_method_get_ticks_usec>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2358,9 +2358,9 @@ Returns the time elapsed (in seconds) since the last physics callback. This valu
 
 :ref:`float<class_float>` **get_process_delta_time**\ (\ ) |const| :ref:`🔗<class_Node_method_get_process_delta_time>`
 
-Returns the time elapsed (in seconds) since the last process callback. This value is identical to :ref:`_process()<class_Node_private_method__process>`'s ``delta`` parameter, and may vary from frame to frame. See also :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>`.
+Trả về thời gian đã trôi qua (tính bằng giây) kể từ callback xử lý gần nhất. Giá trị này giống hệt tham số ``delta`` của :ref:`_process()<class_Node_private_method__process>`, và có thể thay đổi từ khung hình này sang khung hình khác. Xem thêm :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>`.
 
-\ **Note:** The returned value will be larger than expected if running at a framerate lower than :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` / :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` FPS. This is done to avoid "spiral of death" scenarios where performance would plummet due to an ever-increasing number of physics steps per frame. This behavior affects both :ref:`_process()<class_Node_private_method__process>` and :ref:`_physics_process()<class_Node_private_method__physics_process>`. As a result, avoid using ``delta`` for time measurements in real-world seconds. Use the :ref:`Time<class_Time>` singleton's methods for this purpose instead, such as :ref:`Time.get_ticks_usec()<class_Time_method_get_ticks_usec>`.
+\ **Lưu ý:** Giá trị trả về sẽ lớn hơn dự kiến nếu chạy ở tốc độ khung hình thấp hơn :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` / :ref:`Engine.max_physics_steps_per_frame<class_Engine_property_max_physics_steps_per_frame>` FPS. Điều này nhằm tránh các tình huống "spiral of death", trong đó hiệu suất sẽ giảm mạnh do số bước vật lý trên mỗi khung hình tăng liên tục. Hành vi này ảnh hưởng đến cả :ref:`_process()<class_Node_private_method__process>` và :ref:`_physics_process()<class_Node_private_method__physics_process>`. Do đó, tránh sử dụng ``delta`` để đo thời gian theo giây trong thực tế. Thay vào đó, hãy sử dụng các phương thức của singleton :ref:`Time<class_Time>` cho mục đích này, chẳng hạn như :ref:`Time.get_ticks_usec()<class_Time_method_get_ticks_usec>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2372,7 +2372,7 @@ Returns the time elapsed (in seconds) since the last process callback. This valu
 
 :ref:`bool<class_bool>` **get_scene_instance_load_placeholder**\ (\ ) |const| :ref:`🔗<class_Node_method_get_scene_instance_load_placeholder>`
 
-Returns ``true`` if this node is an instance load placeholder. See :ref:`InstancePlaceholder<class_InstancePlaceholder>` and :ref:`set_scene_instance_load_placeholder()<class_Node_method_set_scene_instance_load_placeholder>`.
+Trả về ``true`` nếu node này là một instance load placeholder. Xem :ref:`InstancePlaceholder<class_InstancePlaceholder>` và :ref:`set_scene_instance_load_placeholder()<class_Node_method_set_scene_instance_load_placeholder>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2384,7 +2384,7 @@ Returns ``true`` if this node is an instance load placeholder. See :ref:`Instanc
 
 :ref:`SceneTree<class_SceneTree>` **get_tree**\ (\ ) |const| :ref:`🔗<class_Node_method_get_tree>`
 
-Returns the :ref:`SceneTree<class_SceneTree>` that contains this node. If this node is not inside the tree, generates an error and returns ``null``. See also :ref:`is_inside_tree()<class_Node_method_is_inside_tree>`.
+Trả về :ref:`SceneTree<class_SceneTree>` chứa node này. Nếu node này không nằm trong tree, tạo một lỗi và trả về ``null``. Xem thêm :ref:`is_inside_tree()<class_Node_method_is_inside_tree>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2396,9 +2396,9 @@ Returns the :ref:`SceneTree<class_SceneTree>` that contains this node. If this n
 
 :ref:`String<class_String>` **get_tree_string**\ (\ ) :ref:`🔗<class_Node_method_get_tree_string>`
 
-Returns the tree as a :ref:`String<class_String>`. Used mainly for debugging purposes. This version displays the path relative to the current node, and is good for copy/pasting into the :ref:`get_node()<class_Node_method_get_node>` function. It also can be used in game UI/UX.
+Trả về tree dưới dạng :ref:`String<class_String>`. Chủ yếu được dùng cho mục đích debugging. Phiên bản này hiển thị đường dẫn tương đối so với node hiện tại và phù hợp để sao chép/dán vào hàm :ref:`get_node()<class_Node_method_get_node>`. Nó cũng có thể được sử dụng trong UI/UX của game.
 
-May print, for example:
+Có thể in ra, chẳng hạn:
 
 .. code:: text
 
@@ -2419,9 +2419,9 @@ May print, for example:
 
 :ref:`String<class_String>` **get_tree_string_pretty**\ (\ ) :ref:`🔗<class_Node_method_get_tree_string_pretty>`
 
-Similar to :ref:`get_tree_string()<class_Node_method_get_tree_string>`, this returns the tree as a :ref:`String<class_String>`. This version displays a more graphical representation similar to what is displayed in the Scene Dock. It is useful for inspecting larger trees.
+Tương tự như :ref:`get_tree_string()<class_Node_method_get_tree_string>`, phương thức này trả về cây dưới dạng :ref:`String<class_String>`. Phiên bản này hiển thị biểu diễn đồ họa hơn, tương tự như nội dung được hiển thị trong Scene Dock. Phương thức này hữu ích khi kiểm tra các cây lớn hơn.
 
-May print, for example:
+Có thể in ra, chẳng hạn:
 
 .. code:: text
 
@@ -2442,7 +2442,7 @@ May print, for example:
 
 :ref:`Viewport<class_Viewport>` **get_viewport**\ (\ ) |const| :ref:`🔗<class_Node_method_get_viewport>`
 
-Returns the node's closest :ref:`Viewport<class_Viewport>` ancestor, if the node is inside the tree. Otherwise, returns ``null``.
+Trả về tổ tiên :ref:`Viewport<class_Viewport>` gần nhất của node nếu node nằm trong cây. Nếu không, trả về ``null``.
 
 .. rst-class:: classref-item-separator
 
@@ -2454,7 +2454,7 @@ Returns the node's closest :ref:`Viewport<class_Viewport>` ancestor, if the node
 
 :ref:`Window<class_Window>` **get_window**\ (\ ) |const| :ref:`🔗<class_Node_method_get_window>`
 
-Returns the :ref:`Window<class_Window>` that contains this node. If the node is in the main window, this is equivalent to getting the root node (``get_tree().get_root()``).
+Trả về :ref:`Window<class_Window>` chứa node này. Nếu node nằm trong cửa sổ chính, kết quả tương đương với việc lấy node gốc (``get_tree().get_root()``).
 
 .. rst-class:: classref-item-separator
 
@@ -2466,7 +2466,7 @@ Returns the :ref:`Window<class_Window>` that contains this node. If the node is 
 
 :ref:`bool<class_bool>` **has_node**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) |const| :ref:`🔗<class_Node_method_has_node>`
 
-Returns ``true`` if the ``path`` points to a valid node. See also :ref:`get_node()<class_Node_method_get_node>`.
+Trả về ``true`` nếu ``path`` trỏ đến một node hợp lệ. Xem thêm :ref:`get_node()<class_Node_method_get_node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2478,7 +2478,7 @@ Returns ``true`` if the ``path`` points to a valid node. See also :ref:`get_node
 
 :ref:`bool<class_bool>` **has_node_and_resource**\ (\ path\: :ref:`NodePath<class_NodePath>`\ ) |const| :ref:`🔗<class_Node_method_has_node_and_resource>`
 
-Returns ``true`` if ``path`` points to a valid node and its subnames point to a valid :ref:`Resource<class_Resource>`, e.g. ``Area2D/CollisionShape2D:shape``. Properties that are not :ref:`Resource<class_Resource>` types (such as nodes or other :ref:`Variant<class_Variant>` types) are not considered. See also :ref:`get_node_and_resource()<class_Node_method_get_node_and_resource>`.
+Trả về ``true`` nếu ``path`` trỏ đến một node hợp lệ và các subname của nó trỏ đến một :ref:`Resource<class_Resource>` hợp lệ, ví dụ ``Area2D/CollisionShape2D:shape``. Các thuộc tính không thuộc kiểu :ref:`Resource<class_Resource>` (chẳng hạn như node hoặc các kiểu :ref:`Variant<class_Variant>` khác) sẽ không được xét đến. Xem thêm :ref:`get_node_and_resource()<class_Node_method_get_node_and_resource>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2490,7 +2490,7 @@ Returns ``true`` if ``path`` points to a valid node and its subnames point to a 
 
 :ref:`bool<class_bool>` **is_ancestor_of**\ (\ node\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Node_method_is_ancestor_of>`
 
-Returns ``true`` if the given ``node`` is a direct or indirect child of this node.
+Trả về ``true`` nếu ``node`` đã cho là nút con trực tiếp hoặc gián tiếp của nút này.
 
 .. rst-class:: classref-item-separator
 
@@ -2502,7 +2502,7 @@ Returns ``true`` if the given ``node`` is a direct or indirect child of this nod
 
 :ref:`bool<class_bool>` **is_displayed_folded**\ (\ ) |const| :ref:`🔗<class_Node_method_is_displayed_folded>`
 
-Returns ``true`` if the node is folded (collapsed) in the Scene dock. This method is intended to be used in editor plugins and tools. See also :ref:`set_display_folded()<class_Node_method_set_display_folded>`.
+Trả về ``true`` nếu nút này đang được gập (thu gọn) trong Scene dock. Phương thức này предназначен để sử dụng trong các plugin và công cụ của trình chỉnh sửa. Xem thêm :ref:`set_display_folded()<class_Node_method_set_display_folded>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2514,7 +2514,7 @@ Returns ``true`` if the node is folded (collapsed) in the Scene dock. This metho
 
 :ref:`bool<class_bool>` **is_editable_instance**\ (\ node\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Node_method_is_editable_instance>`
 
-Returns ``true`` if ``node`` has editable children enabled relative to this node. This method is intended to be used in editor plugins and tools. See also :ref:`set_editable_instance()<class_Node_method_set_editable_instance>`.
+Trả về ``true`` nếu ``node`` đã bật các nút con có thể chỉnh sửa đối với nút này. Phương thức này предназначен để sử dụng trong các plugin và công cụ của trình chỉnh sửa. Xem thêm :ref:`set_editable_instance()<class_Node_method_set_editable_instance>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2526,7 +2526,7 @@ Returns ``true`` if ``node`` has editable children enabled relative to this node
 
 :ref:`bool<class_bool>` **is_greater_than**\ (\ node\: :ref:`Node<class_Node>`\ ) |const| :ref:`🔗<class_Node_method_is_greater_than>`
 
-Returns ``true`` if the given ``node`` occurs later in the scene hierarchy than this node. A node occurring later is usually processed last.
+Trả về ``true`` nếu ``node`` đã cho xuất hiện sau nút này trong hệ thống phân cấp cảnh. Một nút xuất hiện sau thường được xử lý cuối cùng.
 
 .. rst-class:: classref-item-separator
 
@@ -2538,7 +2538,7 @@ Returns ``true`` if the given ``node`` occurs later in the scene hierarchy than 
 
 :ref:`bool<class_bool>` **is_in_group**\ (\ group\: :ref:`StringName<class_StringName>`\ ) |const| :ref:`🔗<class_Node_method_is_in_group>`
 
-Returns ``true`` if this node has been added to the given ``group``. See :ref:`add_to_group()<class_Node_method_add_to_group>` and :ref:`remove_from_group()<class_Node_method_remove_from_group>`. See also notes in the description, and the :ref:`SceneTree<class_SceneTree>`'s group methods.
+Trả về ``true`` nếu nút này đã được thêm vào ``group`` đã cho. Xem :ref:`add_to_group()<class_Node_method_add_to_group>` và :ref:`remove_from_group()<class_Node_method_remove_from_group>`. Đồng thời xem các ghi chú trong phần mô tả và các phương thức nhóm của :ref:`SceneTree<class_SceneTree>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2550,7 +2550,7 @@ Returns ``true`` if this node has been added to the given ``group``. See :ref:`a
 
 :ref:`bool<class_bool>` **is_inside_tree**\ (\ ) |const| :ref:`🔗<class_Node_method_is_inside_tree>`
 
-Returns ``true`` if this node is currently inside a :ref:`SceneTree<class_SceneTree>`. See also :ref:`get_tree()<class_Node_method_get_tree>`.
+Trả về ``true`` nếu nút này hiện đang nằm trong một :ref:`SceneTree<class_SceneTree>`. Xem thêm :ref:`get_tree()<class_Node_method_get_tree>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2562,7 +2562,7 @@ Returns ``true`` if this node is currently inside a :ref:`SceneTree<class_SceneT
 
 :ref:`bool<class_bool>` **is_multiplayer_authority**\ (\ ) |const| :ref:`🔗<class_Node_method_is_multiplayer_authority>`
 
-Returns ``true`` if the local system is the multiplayer authority of this node.
+Trả về ``true`` nếu hệ thống cục bộ là multiplayer authority của nút này.
 
 .. rst-class:: classref-item-separator
 
@@ -2574,9 +2574,9 @@ Returns ``true`` if the local system is the multiplayer authority of this node.
 
 :ref:`bool<class_bool>` **is_node_ready**\ (\ ) |const| :ref:`🔗<class_Node_method_is_node_ready>`
 
-Returns ``true`` if the node is ready, i.e. it's inside scene tree and all its children are initialized.
+Trả về ``true`` nếu node đã sẵn sàng, tức là node nằm trong scene tree và tất cả node con của nó đã được khởi tạo.
 
-\ :ref:`request_ready()<class_Node_method_request_ready>` resets it back to ``false``.
+\ :ref:`request_ready()<class_Node_method_request_ready>` đặt lại nó về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -2588,7 +2588,7 @@ Returns ``true`` if the node is ready, i.e. it's inside scene tree and all its c
 
 :ref:`bool<class_bool>` **is_part_of_edited_scene**\ (\ ) |const| :ref:`🔗<class_Node_method_is_part_of_edited_scene>`
 
-Returns ``true`` if the node is part of the scene currently opened in the editor.
+Trả về ``true`` nếu node là một phần của scene hiện đang được mở trong editor.
 
 .. rst-class:: classref-item-separator
 
@@ -2600,9 +2600,9 @@ Returns ``true`` if the node is part of the scene currently opened in the editor
 
 :ref:`bool<class_bool>` **is_physics_interpolated**\ (\ ) |const| :ref:`🔗<class_Node_method_is_physics_interpolated>`
 
-Returns ``true`` if physics interpolation is enabled for this node (see :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`).
+Trả về ``true`` nếu physics interpolation được bật cho node này (xem :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`).
 
-\ **Note:** Interpolation will only be active if both the flag is set **and** physics interpolation is enabled within the :ref:`SceneTree<class_SceneTree>`. This can be tested using :ref:`is_physics_interpolated_and_enabled()<class_Node_method_is_physics_interpolated_and_enabled>`.
+\ **Lưu ý:** Interpolation chỉ hoạt động nếu cả flag được đặt **và** physics interpolation được bật trong :ref:`SceneTree<class_SceneTree>`. Bạn có thể kiểm tra điều này bằng :ref:`is_physics_interpolated_and_enabled()<class_Node_method_is_physics_interpolated_and_enabled>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2614,11 +2614,11 @@ Returns ``true`` if physics interpolation is enabled for this node (see :ref:`ph
 
 :ref:`bool<class_bool>` **is_physics_interpolated_and_enabled**\ (\ ) |const| :ref:`🔗<class_Node_method_is_physics_interpolated_and_enabled>`
 
-Returns ``true`` if physics interpolation is enabled (see :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`) **and** enabled in the :ref:`SceneTree<class_SceneTree>`.
+Trả về ``true`` nếu physics interpolation được bật (xem :ref:`physics_interpolation_mode<class_Node_property_physics_interpolation_mode>`) **và** được bật trong :ref:`SceneTree<class_SceneTree>`.
 
-This is a convenience version of :ref:`is_physics_interpolated()<class_Node_method_is_physics_interpolated>` that also checks whether physics interpolation is enabled globally.
+Đây là phiên bản tiện lợi của :ref:`is_physics_interpolated()<class_Node_method_is_physics_interpolated>`, đồng thời kiểm tra xem physics interpolation có được bật trên toàn cục hay không.
 
-See :ref:`SceneTree.physics_interpolation<class_SceneTree_property_physics_interpolation>` and :ref:`ProjectSettings.physics/common/physics_interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>`.
+Xem :ref:`SceneTree.physics_interpolation<class_SceneTree_property_physics_interpolation>` và :ref:`ProjectSettings.physics/common/physics_interpolation <class_ProjectSettings_property_physics/common/physics_interpolation>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2630,7 +2630,7 @@ See :ref:`SceneTree.physics_interpolation<class_SceneTree_property_physics_inter
 
 :ref:`bool<class_bool>` **is_physics_processing**\ (\ ) |const| :ref:`🔗<class_Node_method_is_physics_processing>`
 
-Returns ``true`` if physics processing is enabled (see :ref:`set_physics_process()<class_Node_method_set_physics_process>`).
+Trả về ``true`` nếu xử lý vật lý được bật (xem :ref:`set_physics_process()<class_Node_method_set_physics_process>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2642,7 +2642,7 @@ Returns ``true`` if physics processing is enabled (see :ref:`set_physics_process
 
 :ref:`bool<class_bool>` **is_physics_processing_internal**\ (\ ) |const| :ref:`🔗<class_Node_method_is_physics_processing_internal>`
 
-Returns ``true`` if internal physics processing is enabled (see :ref:`set_physics_process_internal()<class_Node_method_set_physics_process_internal>`).
+Trả về ``true`` nếu xử lý vật lý nội bộ được bật (xem :ref:`set_physics_process_internal()<class_Node_method_set_physics_process_internal>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2654,7 +2654,7 @@ Returns ``true`` if internal physics processing is enabled (see :ref:`set_physic
 
 :ref:`bool<class_bool>` **is_processing**\ (\ ) |const| :ref:`🔗<class_Node_method_is_processing>`
 
-Returns ``true`` if processing is enabled (see :ref:`set_process()<class_Node_method_set_process>`).
+Trả về ``true`` nếu xử lý được bật (xem :ref:`set_process()<class_Node_method_set_process>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2666,7 +2666,7 @@ Returns ``true`` if processing is enabled (see :ref:`set_process()<class_Node_me
 
 :ref:`bool<class_bool>` **is_processing_input**\ (\ ) |const| :ref:`🔗<class_Node_method_is_processing_input>`
 
-Returns ``true`` if the node is processing input (see :ref:`set_process_input()<class_Node_method_set_process_input>`).
+Trả về ``true`` nếu node đang xử lý input (xem :ref:`set_process_input()<class_Node_method_set_process_input>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2678,7 +2678,7 @@ Returns ``true`` if the node is processing input (see :ref:`set_process_input()<
 
 :ref:`bool<class_bool>` **is_processing_internal**\ (\ ) |const| :ref:`🔗<class_Node_method_is_processing_internal>`
 
-Returns ``true`` if internal processing is enabled (see :ref:`set_process_internal()<class_Node_method_set_process_internal>`).
+Trả về ``true`` nếu xử lý nội bộ được bật (xem :ref:`set_process_internal()<class_Node_method_set_process_internal>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2690,7 +2690,7 @@ Returns ``true`` if internal processing is enabled (see :ref:`set_process_intern
 
 :ref:`bool<class_bool>` **is_processing_shortcut_input**\ (\ ) |const| :ref:`🔗<class_Node_method_is_processing_shortcut_input>`
 
-Returns ``true`` if the node is processing shortcuts (see :ref:`set_process_shortcut_input()<class_Node_method_set_process_shortcut_input>`).
+Trả về ``true`` nếu node đang xử lý phím tắt (xem :ref:`set_process_shortcut_input()<class_Node_method_set_process_shortcut_input>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2702,7 +2702,7 @@ Returns ``true`` if the node is processing shortcuts (see :ref:`set_process_shor
 
 :ref:`bool<class_bool>` **is_processing_unhandled_input**\ (\ ) |const| :ref:`🔗<class_Node_method_is_processing_unhandled_input>`
 
-Returns ``true`` if the node is processing unhandled input (see :ref:`set_process_unhandled_input()<class_Node_method_set_process_unhandled_input>`).
+Trả về ``true`` nếu node đang xử lý đầu vào chưa được xử lý (xem :ref:`set_process_unhandled_input()<class_Node_method_set_process_unhandled_input>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2714,7 +2714,7 @@ Returns ``true`` if the node is processing unhandled input (see :ref:`set_proces
 
 :ref:`bool<class_bool>` **is_processing_unhandled_key_input**\ (\ ) |const| :ref:`🔗<class_Node_method_is_processing_unhandled_key_input>`
 
-Returns ``true`` if the node is processing unhandled key input (see :ref:`set_process_unhandled_key_input()<class_Node_method_set_process_unhandled_key_input>`).
+Trả về ``true`` nếu node đang xử lý đầu vào phím chưa được xử lý (xem :ref:`set_process_unhandled_key_input()<class_Node_method_set_process_unhandled_key_input>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2726,9 +2726,9 @@ Returns ``true`` if the node is processing unhandled key input (see :ref:`set_pr
 
 |void| **move_child**\ (\ child_node\: :ref:`Node<class_Node>`, to_index\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Node_method_move_child>`
 
-Moves ``child_node`` to the given index. A node's index is the order among its siblings. If ``to_index`` is negative, the index is counted from the end of the list. See also :ref:`get_child()<class_Node_method_get_child>` and :ref:`get_index()<class_Node_method_get_index>`.
+Di chuyển ``child_node`` đến chỉ mục đã cho. Chỉ mục của một node là thứ tự của node đó trong các node cùng cấp. Nếu ``to_index`` là số âm, chỉ mục được tính từ cuối danh sách. Xem thêm :ref:`get_child()<class_Node_method_get_child>` và :ref:`get_index()<class_Node_method_get_index>`.
 
-\ **Note:** The processing order of several engine callbacks (:ref:`_ready()<class_Node_private_method__ready>`, :ref:`_process()<class_Node_private_method__process>`, etc.) and notifications sent through :ref:`propagate_notification()<class_Node_method_propagate_notification>` is affected by tree order. :ref:`CanvasItem<class_CanvasItem>` nodes are also rendered in tree order. See also :ref:`process_priority<class_Node_property_process_priority>`.
+\ **Lưu ý:** Thứ tự xử lý của một số callback của engine (:ref:`_ready()<class_Node_private_method__ready>`, :ref:`_process()<class_Node_private_method__process>`, v.v.) và các notification được gửi qua :ref:`propagate_notification()<class_Node_method_propagate_notification>` chịu ảnh hưởng của thứ tự trong cây. Các node :ref:`CanvasItem<class_CanvasItem>` cũng được render theo thứ tự trong cây. Xem thêm :ref:`process_priority<class_Node_property_process_priority>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2740,7 +2740,7 @@ Moves ``child_node`` to the given index. A node's index is the order among its s
 
 |void| **notify_deferred_thread_group**\ (\ what\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Node_method_notify_deferred_thread_group>`
 
-Similar to :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>`, but for notifications.
+Tương tự như :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>`, nhưng dành cho notification.
 
 .. rst-class:: classref-item-separator
 
@@ -2752,7 +2752,7 @@ Similar to :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_th
 
 |void| **notify_thread_safe**\ (\ what\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Node_method_notify_thread_safe>`
 
-Similar to :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, but for notifications.
+Tương tự như :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, nhưng dành cho notification.
 
 .. rst-class:: classref-item-separator
 
@@ -2764,9 +2764,9 @@ Similar to :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, but fo
 
 |void| **print_orphan_nodes**\ (\ ) |static| :ref:`🔗<class_Node_method_print_orphan_nodes>`
 
-Prints all orphan nodes (nodes outside the :ref:`SceneTree<class_SceneTree>`). Useful for debugging.
+In tất cả các node mồ côi (các node nằm ngoài :ref:`SceneTree<class_SceneTree>`). Hữu ích cho việc debug.
 
-\ **Note:** This method only works in debug builds. It does nothing in a project exported in release mode.
+\ **Lưu ý:** Phương thức này chỉ hoạt động trong các bản build debug. Phương thức này không làm gì trong một project được export ở chế độ release.
 
 .. rst-class:: classref-item-separator
 
@@ -2778,9 +2778,9 @@ Prints all orphan nodes (nodes outside the :ref:`SceneTree<class_SceneTree>`). U
 
 |void| **print_tree**\ (\ ) :ref:`🔗<class_Node_method_print_tree>`
 
-Prints the node and its children to the console, recursively. The node does not have to be inside the tree. This method outputs :ref:`NodePath<class_NodePath>`\ s relative to this node, and is good for copy/pasting into :ref:`get_node()<class_Node_method_get_node>`. See also :ref:`print_tree_pretty()<class_Node_method_print_tree_pretty>`.
+In node và các node con của nó ra console theo cách đệ quy. Node không cần phải nằm bên trong tree. Phương thức này xuất :ref:`NodePath<class_NodePath>`\ s tương đối với node này và phù hợp để sao chép/dán vào :ref:`get_node()<class_Node_method_get_node>`. Xem thêm :ref:`print_tree_pretty()<class_Node_method_print_tree_pretty>`.
 
-May print, for example:
+Có thể in ra, chẳng hạn:
 
 .. code:: text
 
@@ -2801,9 +2801,9 @@ May print, for example:
 
 |void| **print_tree_pretty**\ (\ ) :ref:`🔗<class_Node_method_print_tree_pretty>`
 
-Prints the node and its children to the console, recursively. The node does not have to be inside the tree. Similar to :ref:`print_tree()<class_Node_method_print_tree>`, but the graphical representation looks like what is displayed in the editor's Scene dock. It is useful for inspecting larger trees.
+In node và các node con của nó ra console theo cách đệ quy. Node không cần phải nằm bên trong tree. Tương tự như :ref:`print_tree()<class_Node_method_print_tree>`, nhưng biểu diễn đồ họa trông giống như nội dung được hiển thị trong Scene dock của editor. Phương thức này hữu ích để kiểm tra các tree lớn hơn.
 
-May print, for example:
+Có thể in ra, chẳng hạn:
 
 .. code:: text
 
@@ -2824,9 +2824,9 @@ May print, for example:
 
 |void| **propagate_call**\ (\ method\: :ref:`StringName<class_StringName>`, args\: :ref:`Array<class_Array>` = [], parent_first\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node_method_propagate_call>`
 
-Calls the given ``method`` name, passing ``args`` as arguments, on this node and all of its children, recursively.
+Gọi tên ``method`` đã cho, truyền ``args`` làm đối số, trên node này và tất cả các node con của nó theo cách đệ quy.
 
-If ``parent_first`` is ``true``, the method is called on this node first, then on all of its children. If ``false``, the children's methods are called first.
+Nếu ``parent_first`` là ``true``, phương thức được gọi trước trên node này, sau đó trên tất cả các node con của nó. Nếu ``false``, các phương thức của node con được gọi trước.
 
 .. rst-class:: classref-item-separator
 
@@ -2838,7 +2838,7 @@ If ``parent_first`` is ``true``, the method is called on this node first, then o
 
 |void| **propagate_notification**\ (\ what\: :ref:`int<class_int>`\ ) :ref:`🔗<class_Node_method_propagate_notification>`
 
-Calls :ref:`Object.notification()<class_Object_method_notification>` with ``what`` on this node and all of its children, recursively.
+Gọi :ref:`Object.notification()<class_Object_method_notification>` với ``what`` trên nút này và tất cả các nút con của nó, theo cách đệ quy.
 
 .. rst-class:: classref-item-separator
 
@@ -2850,7 +2850,7 @@ Calls :ref:`Object.notification()<class_Object_method_notification>` with ``what
 
 |void| **queue_accessibility_update**\ (\ ) :ref:`🔗<class_Node_method_queue_accessibility_update>`
 
-Queues an accessibility information update for this node.
+Xếp hàng một bản cập nhật thông tin accessibility cho nút này.
 
 .. rst-class:: classref-item-separator
 
@@ -2862,11 +2862,11 @@ Queues an accessibility information update for this node.
 
 |void| **queue_free**\ (\ ) :ref:`🔗<class_Node_method_queue_free>`
 
-Queues this node to be deleted at the end of the current frame. When deleted, all of its children are deleted as well, and all references to the node and its children become invalid.
+Xếp nút này vào hàng đợi để xóa vào cuối frame hiện tại. Khi bị xóa, tất cả các nút con của nó cũng bị xóa, và mọi tham chiếu đến nút này cùng các nút con của nó đều trở nên không hợp lệ.
 
-Unlike with :ref:`Object.free()<class_Object_method_free>`, the node is not deleted instantly, and it can still be accessed before deletion. It is also safe to call :ref:`queue_free()<class_Node_method_queue_free>` multiple times. Use :ref:`Object.is_queued_for_deletion()<class_Object_method_is_queued_for_deletion>` to check if the node will be deleted at the end of the frame.
+Không giống như với :ref:`Object.free()<class_Object_method_free>`, nút này không bị xóa ngay lập tức và vẫn có thể được truy cập trước khi bị xóa. Bạn cũng có thể gọi :ref:`queue_free()<class_Node_method_queue_free>` nhiều lần một cách an toàn. Sử dụng :ref:`Object.is_queued_for_deletion()<class_Object_method_is_queued_for_deletion>` để kiểm tra xem nút này có bị xóa vào cuối frame hay không.
 
-\ **Note:** The node will only be freed after all other deferred calls are finished. Using this method is not always the same as calling :ref:`Object.free()<class_Object_method_free>` through :ref:`Object.call_deferred()<class_Object_method_call_deferred>`.
+\ **Lưu ý:** Nút này chỉ được giải phóng sau khi tất cả các deferred call khác đã hoàn tất. Việc sử dụng phương thức này không phải lúc nào cũng giống như gọi :ref:`Object.free()<class_Object_method_free>` thông qua :ref:`Object.call_deferred()<class_Object_method_call_deferred>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2878,9 +2878,9 @@ Unlike with :ref:`Object.free()<class_Object_method_free>`, the node is not dele
 
 |void| **remove_child**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_Node_method_remove_child>`
 
-Removes a child ``node``. The ``node``, along with its children, are **not** deleted. To delete a node, see :ref:`queue_free()<class_Node_method_queue_free>`.
+Xóa một nút con ``node``. ``node``, cùng với các nút con của nó, **không** bị xóa. Để xóa một nút, hãy xem :ref:`queue_free()<class_Node_method_queue_free>`.
 
-\ **Note:** When this node is inside the tree, this method sets the :ref:`owner<class_Node_property_owner>` of the removed ``node`` (or its descendants) to ``null``, if their :ref:`owner<class_Node_property_owner>` is no longer an ancestor (see :ref:`is_ancestor_of()<class_Node_method_is_ancestor_of>`).
+\ **Lưu ý:** Khi nút này nằm trong cây, phương thức này đặt :ref:`owner<class_Node_property_owner>` của ``node`` đã bị xóa (hoặc các nút con của nó) thành ``null``, nếu :ref:`owner<class_Node_property_owner>` của chúng không còn là một nút tổ tiên nữa (xem :ref:`is_ancestor_of()<class_Node_method_is_ancestor_of>`).
 
 .. rst-class:: classref-item-separator
 
@@ -2892,7 +2892,7 @@ Removes a child ``node``. The ``node``, along with its children, are **not** del
 
 |void| **remove_from_group**\ (\ group\: :ref:`StringName<class_StringName>`\ ) :ref:`🔗<class_Node_method_remove_from_group>`
 
-Removes the node from the given ``group``. Does nothing if the node is not in the ``group``. See also notes in the description, and the :ref:`SceneTree<class_SceneTree>`'s group methods.
+Xóa node khỏi ``group``. Không làm gì nếu node không nằm trong ``group``. Xem thêm các ghi chú trong phần mô tả và các phương thức nhóm của :ref:`SceneTree<class_SceneTree>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2904,11 +2904,11 @@ Removes the node from the given ``group``. Does nothing if the node is not in th
 
 |void| **reparent**\ (\ new_parent\: :ref:`Node<class_Node>`, keep_global_transform\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_Node_method_reparent>`
 
-Changes the parent of this **Node** to the ``new_parent``. The node needs to already have a parent. The node's :ref:`owner<class_Node_property_owner>` is preserved if its owner is still reachable from the new location (i.e., the node is still a descendant of the new parent after the operation).
+Thay đổi node cha của **Node** thành ``new_parent``. Node phải có sẵn node cha. :ref:`owner<class_Node_property_owner>` của node được giữ nguyên nếu owner của nó vẫn có thể truy cập từ vị trí mới (tức là node vẫn là hậu duệ của node cha mới sau thao tác).
 
-If ``keep_global_transform`` is ``true``, the node's global transform will be preserved if supported. :ref:`Node2D<class_Node2D>`, :ref:`Node3D<class_Node3D>` and :ref:`Control<class_Control>` support this argument (but :ref:`Control<class_Control>` keeps only position).
+Nếu ``keep_global_transform`` là ``true``, transform toàn cục của node sẽ được giữ nguyên nếu được hỗ trợ. :ref:`Node2D<class_Node2D>`, :ref:`Node3D<class_Node3D>` và :ref:`Control<class_Control>` hỗ trợ đối số này (nhưng :ref:`Control<class_Control>` chỉ giữ lại vị trí).
 
-\ **Warning:** If :ref:`ProjectSettings.physics/common/physics_interpolation<class_ProjectSettings_property_physics/common/physics_interpolation>` is enabled and reparenting causes a large change in global transform, the object may appear to move from its old position to its new one over the next physics tick. To avoid this, call :ref:`reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>` after reparenting.
+\ **Cảnh báo:** Nếu :ref:`ProjectSettings.physics/common/physics_interpolation <class_ProjectSettings_property_physics/common/physics_interpolation>` được bật và việc thay đổi node cha gây ra thay đổi lớn về transform toàn cục, đối tượng có thể xuất hiện như đang di chuyển từ vị trí cũ đến vị trí mới trong tick vật lý tiếp theo. Để tránh điều này, hãy gọi :ref:`reset_physics_interpolation()<class_Node_method_reset_physics_interpolation>` sau khi thay đổi node cha.
 
 .. rst-class:: classref-item-separator
 
@@ -2920,11 +2920,11 @@ If ``keep_global_transform`` is ``true``, the node's global transform will be pr
 
 |void| **replace_by**\ (\ node\: :ref:`Node<class_Node>`, keep_groups\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_Node_method_replace_by>`
 
-Replaces this node by the given ``node``. All children of this node are moved to ``node``.
+Thay thế node này bằng ``node`` đã cho. Tất cả node con của node này được chuyển sang ``node``.
 
-If ``keep_groups`` is ``true``, the ``node`` is added to the same groups that the replaced node is in (see :ref:`add_to_group()<class_Node_method_add_to_group>`).
+Nếu ``keep_groups`` là ``true``, ``node`` sẽ được thêm vào cùng các group mà node bị thay thế đang thuộc về (xem :ref:`add_to_group()<class_Node_method_add_to_group>`).
 
-\ **Warning:** The replaced node is removed from the tree, but it is **not** deleted. To prevent memory leaks, store a reference to the node in a variable, or use :ref:`Object.free()<class_Object_method_free>`.
+\ **Cảnh báo:** Node bị thay thế được xóa khỏi cây, nhưng **không** bị xóa. Để tránh rò rỉ bộ nhớ, hãy lưu tham chiếu đến node trong một biến hoặc sử dụng :ref:`Object.free()<class_Object_method_free>`.
 
 .. rst-class:: classref-item-separator
 
@@ -2936,9 +2936,9 @@ If ``keep_groups`` is ``true``, the ``node`` is added to the same groups that th
 
 |void| **request_ready**\ (\ ) :ref:`🔗<class_Node_method_request_ready>`
 
-Requests :ref:`_ready()<class_Node_private_method__ready>` to be called again the next time the node enters the tree. Does **not** immediately call :ref:`_ready()<class_Node_private_method__ready>`.
+Yêu cầu :ref:`_ready()<class_Node_private_method__ready>` được gọi lại vào lần tiếp theo node đi vào tree. **Không** gọi :ref:`_ready()<class_Node_private_method__ready>` ngay lập tức.
 
-\ **Note:** This method only affects the current node. If the node's children also need to request ready, this method needs to be called for each one of them. When the node and its children enter the tree again, the order of :ref:`_ready()<class_Node_private_method__ready>` callbacks will be the same as normal.
+\ **Lưu ý:** Phương thức này chỉ ảnh hưởng đến node hiện tại. Nếu các node con của node cũng cần yêu cầu ready, phương thức này cần được gọi cho từng node con. Khi node và các node con của nó đi vào tree lần nữa, thứ tự của các callback :ref:`_ready()<class_Node_private_method__ready>` sẽ giống như bình thường.
 
 .. rst-class:: classref-item-separator
 
@@ -2950,13 +2950,13 @@ Requests :ref:`_ready()<class_Node_private_method__ready>` to be called again th
 
 |void| **reset_physics_interpolation**\ (\ ) :ref:`🔗<class_Node_method_reset_physics_interpolation>`
 
-When physics interpolation is active, moving a node to a radically different transform (such as placement within a level) can result in a visible glitch as the object is rendered moving from the old to new position over the physics tick.
+Khi physics interpolation đang hoạt động, việc di chuyển một node đến một transform hoàn toàn khác (chẳng hạn như vị trí trong một level) có thể gây ra hiện tượng giật thấy rõ, vì đối tượng được render khi di chuyển từ vị trí cũ sang vị trí mới trong suốt một physics tick.
 
-That glitch can be prevented by calling this method, which temporarily disables interpolation until the physics tick is complete.
+Có thể ngăn hiện tượng giật này bằng cách gọi phương thức này, phương thức này sẽ tạm thời vô hiệu hóa interpolation cho đến khi physics tick hoàn tất.
 
-The notification :ref:`NOTIFICATION_RESET_PHYSICS_INTERPOLATION<class_Node_constant_NOTIFICATION_RESET_PHYSICS_INTERPOLATION>` will be received by the node and all children recursively.
+Node và tất cả các node con theo cách đệ quy sẽ nhận được notification :ref:`NOTIFICATION_RESET_PHYSICS_INTERPOLATION<class_Node_constant_NOTIFICATION_RESET_PHYSICS_INTERPOLATION>`.
 
-\ **Note:** This function should be called **after** moving the node, rather than before.
+\ **Lưu ý:** Hàm này nên được gọi **sau khi** di chuyển node, thay vì trước đó.
 
 .. rst-class:: classref-item-separator
 
@@ -2968,11 +2968,11 @@ The notification :ref:`NOTIFICATION_RESET_PHYSICS_INTERPOLATION<class_Node_const
 
 :ref:`Error<enum_@GlobalScope_Error>` **rpc**\ (\ method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_Node_method_rpc>`
 
-Sends a remote procedure call request for the given ``method`` to peers on the network (and locally), sending additional arguments to the method called by the RPC. The call request will only be received by nodes with the same :ref:`NodePath<class_NodePath>`, including the exact same :ref:`name<class_Node_property_name>`. Behavior depends on the RPC configuration for the given ``method`` (see :ref:`rpc_config()<class_Node_method_rpc_config>` and :ref:`@GDScript.@rpc<class_@GDScript_annotation_@rpc>`). By default, methods are not exposed to RPCs.
+Gửi yêu cầu gọi thủ tục từ xa cho ``method`` đã cho đến các peer trên mạng (và cục bộ), đồng thời gửi các đối số bổ sung đến phương thức được RPC gọi. Yêu cầu gọi sẽ chỉ được các node có cùng :ref:`NodePath<class_NodePath>` nhận, bao gồm chính xác cùng :ref:`name<class_Node_property_name>`. Hành vi phụ thuộc vào cấu hình RPC của ``method`` đã cho (xem :ref:`rpc_config()<class_Node_method_rpc_config>` và :ref:`@GDScript.@rpc <class_@GDScript_annotation_@rpc>`). Theo mặc định, các phương thức không được expose cho RPC.
 
-May return :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the call is successful, :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the arguments passed in the ``method`` do not match, :ref:`@GlobalScope.ERR_UNCONFIGURED<class_@GlobalScope_constant_ERR_UNCONFIGURED>` if the node's :ref:`multiplayer<class_Node_property_multiplayer>` cannot be fetched (such as when the node is not inside the tree), :ref:`@GlobalScope.ERR_CONNECTION_ERROR<class_@GlobalScope_constant_ERR_CONNECTION_ERROR>` if :ref:`multiplayer<class_Node_property_multiplayer>`'s connection is not available.
+Có thể trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu lệnh gọi thành công, :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu các đối số được truyền trong ``method`` không khớp, :ref:`@GlobalScope.ERR_UNCONFIGURED <class_@GlobalScope_constant_ERR_UNCONFIGURED>` nếu không thể lấy :ref:`multiplayer<class_Node_property_multiplayer>` của node (chẳng hạn khi node không nằm trong cây), :ref:`@GlobalScope.ERR_CONNECTION_ERROR <class_@GlobalScope_constant_ERR_CONNECTION_ERROR>` nếu kết nối của :ref:`multiplayer<class_Node_property_multiplayer>` không khả dụng.
 
-\ **Note:** You can only safely use RPCs on clients after you received the :ref:`MultiplayerAPI.connected_to_server<class_MultiplayerAPI_signal_connected_to_server>` signal from the :ref:`MultiplayerAPI<class_MultiplayerAPI>`. You also need to keep track of the connection state, either by the :ref:`MultiplayerAPI<class_MultiplayerAPI>` signals like :ref:`MultiplayerAPI.server_disconnected<class_MultiplayerAPI_signal_server_disconnected>` or by checking (``get_multiplayer().peer.get_connection_status() == CONNECTION_CONNECTED``).
+\ **Lưu ý:** Bạn chỉ có thể sử dụng RPC an toàn trên các client sau khi nhận được signal :ref:`MultiplayerAPI.connected_to_server<class_MultiplayerAPI_signal_connected_to_server>` từ :ref:`MultiplayerAPI<class_MultiplayerAPI>`. Bạn cũng cần theo dõi trạng thái kết nối, bằng các signal :ref:`MultiplayerAPI<class_MultiplayerAPI>` như :ref:`MultiplayerAPI.server_disconnected<class_MultiplayerAPI_signal_server_disconnected>` hoặc bằng cách kiểm tra (``get_multiplayer().peer.get_connection_status() == CONNECTION_CONNECTED``).
 
 .. rst-class:: classref-item-separator
 
@@ -2984,17 +2984,17 @@ May return :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the call is
 
 |void| **rpc_config**\ (\ method\: :ref:`StringName<class_StringName>`, config\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Node_method_rpc_config>`
 
-Changes the RPC configuration for the given ``method``. ``config`` should either be ``null`` to disable the feature (as by default), or a :ref:`Dictionary<class_Dictionary>` containing the following entries:
+Thay đổi cấu hình RPC cho ``method`` đã cho. ``config`` phải là ``null`` để tắt tính năng này (theo mặc định), hoặc là một :ref:`Dictionary<class_Dictionary>` chứa các mục sau:
 
-- ``rpc_mode``: see :ref:`RPCMode<enum_MultiplayerAPI_RPCMode>`;
+- ``rpc_mode``: xem :ref:`RPCMode <enum_MultiplayerAPI_RPCMode>`;”
 
-- ``transfer_mode``: see :ref:`TransferMode<enum_MultiplayerPeer_TransferMode>`;
+- ``transfer_mode``: xem :ref:`TransferMode <enum_MultiplayerPeer_TransferMode>`;”
 
-- ``call_local``: if ``true``, the method will also be called locally;
+- ``call_local``: nếu là ``true``, phương thức cũng sẽ được gọi cục bộ;
 
-- ``channel``: an :ref:`int<class_int>` representing the channel to send the RPC on.
+- ``channel``: một :ref:`int<class_int>` đại diện cho channel dùng để gửi RPC.
 
-\ **Note:** In GDScript, this method corresponds to the :ref:`@GDScript.@rpc<class_@GDScript_annotation_@rpc>` annotation, with various parameters passed (``@rpc(any)``, ``@rpc(authority)``...). See also the :doc:`high-level multiplayer <../tutorials/networking/high_level_multiplayer>` tutorial.
+\ **Lưu ý:** Trong GDScript, phương thức này tương ứng với annotation :ref:`@GDScript.@rpc <class_@GDScript_annotation_@rpc>`, với nhiều tham số khác nhau được truyền vào (``@rpc(any)``, ``@rpc(authority)``...). Xem thêm tutorial về :doc:`multiplayer cấp cao <../tutorials/networking/high_level_multiplayer>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3006,9 +3006,9 @@ Changes the RPC configuration for the given ``method``. ``config`` should either
 
 :ref:`Error<enum_@GlobalScope_Error>` **rpc_id**\ (\ peer_id\: :ref:`int<class_int>`, method\: :ref:`StringName<class_StringName>`, ...\ ) |vararg| :ref:`🔗<class_Node_method_rpc_id>`
 
-Sends a :ref:`rpc()<class_Node_method_rpc>` to a specific peer identified by ``peer_id`` (see :ref:`MultiplayerPeer.set_target_peer()<class_MultiplayerPeer_method_set_target_peer>`).
+Gửi một :ref:`rpc()<class_Node_method_rpc>` đến một peer cụ thể được xác định bởi ``peer_id`` (xem :ref:`MultiplayerPeer.set_target_peer()<class_MultiplayerPeer_method_set_target_peer>`).
 
-May return :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the call is successful, :ref:`@GlobalScope.ERR_INVALID_PARAMETER<class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` if the arguments passed in the ``method`` do not match, :ref:`@GlobalScope.ERR_UNCONFIGURED<class_@GlobalScope_constant_ERR_UNCONFIGURED>` if the node's :ref:`multiplayer<class_Node_property_multiplayer>` cannot be fetched (such as when the node is not inside the tree), :ref:`@GlobalScope.ERR_CONNECTION_ERROR<class_@GlobalScope_constant_ERR_CONNECTION_ERROR>` if :ref:`multiplayer<class_Node_property_multiplayer>`'s connection is not available.
+Có thể trả về :ref:`@GlobalScope.OK <class_@GlobalScope_constant_OK>` nếu lệnh gọi thành công, :ref:`@GlobalScope.ERR_INVALID_PARAMETER <class_@GlobalScope_constant_ERR_INVALID_PARAMETER>` nếu các đối số được truyền trong ``method`` không khớp, :ref:`@GlobalScope.ERR_UNCONFIGURED <class_@GlobalScope_constant_ERR_UNCONFIGURED>` nếu không thể lấy :ref:`multiplayer<class_Node_property_multiplayer>` của node (chẳng hạn khi node không nằm trong cây), :ref:`@GlobalScope.ERR_CONNECTION_ERROR <class_@GlobalScope_constant_ERR_CONNECTION_ERROR>` nếu kết nối của :ref:`multiplayer<class_Node_property_multiplayer>` không khả dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -3020,7 +3020,7 @@ May return :ref:`@GlobalScope.OK<class_@GlobalScope_constant_OK>` if the call is
 
 |void| **set_deferred_thread_group**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Node_method_set_deferred_thread_group>`
 
-Similar to :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>`, but for setting properties.
+Tương tự :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_thread_group>`, nhưng dùng để thiết lập các thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -3032,7 +3032,7 @@ Similar to :ref:`call_deferred_thread_group()<class_Node_method_call_deferred_th
 
 |void| **set_display_folded**\ (\ fold\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_display_folded>`
 
-If set to ``true``, the node appears folded in the Scene dock. As a result, all of its children are hidden. This method is intended to be used in editor plugins and tools, but it also works in release builds. See also :ref:`is_displayed_folded()<class_Node_method_is_displayed_folded>`.
+Nếu được đặt thành ``true``, node sẽ hiển thị ở trạng thái thu gọn trong Scene dock. Do đó, tất cả các node con của nó sẽ bị ẩn. Phương thức này предназначено để sử dụng trong editor plugin và tool, nhưng cũng hoạt động trong các bản build release. Xem thêm :ref:`is_displayed_folded()<class_Node_method_is_displayed_folded>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3044,7 +3044,7 @@ If set to ``true``, the node appears folded in the Scene dock. As a result, all 
 
 |void| **set_editable_instance**\ (\ node\: :ref:`Node<class_Node>`, is_editable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_editable_instance>`
 
-Set to ``true`` to allow all nodes owned by ``node`` to be available, and editable, in the Scene dock, even if their :ref:`owner<class_Node_property_owner>` is not the scene root. This method is intended to be used in editor plugins and tools, but it also works in release builds. See also :ref:`is_editable_instance()<class_Node_method_is_editable_instance>`.
+Đặt thành ``true`` để cho phép tất cả các node do ``node`` sở hữu được hiển thị và chỉnh sửa trong Scene dock, ngay cả khi :ref:`owner<class_Node_property_owner>` của chúng không phải là scene root. Phương thức này предназначено để sử dụng trong editor plugin và tool, nhưng cũng hoạt động trong các bản build release. Xem thêm :ref:`is_editable_instance()<class_Node_method_is_editable_instance>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3056,11 +3056,11 @@ Set to ``true`` to allow all nodes owned by ``node`` to be available, and editab
 
 |void| **set_multiplayer_authority**\ (\ id\: :ref:`int<class_int>`, recursive\: :ref:`bool<class_bool>` = true\ ) :ref:`🔗<class_Node_method_set_multiplayer_authority>`
 
-Sets the node's multiplayer authority to the peer with the given peer ``id``. The multiplayer authority is the peer that has authority over the node on the network. Defaults to peer ID 1 (the server). Useful in conjunction with :ref:`rpc_config()<class_Node_method_rpc_config>` and the :ref:`MultiplayerAPI<class_MultiplayerAPI>`.
+Đặt authority multiplayer của node thành peer có ``id`` tương ứng. Authority multiplayer là peer có quyền kiểm soát node đó trên network. Mặc định là peer ID 1 (server). Hữu ích khi kết hợp với :ref:`rpc_config()<class_Node_method_rpc_config>` và :ref:`MultiplayerAPI<class_MultiplayerAPI>`.
 
-If ``recursive`` is ``true``, the given peer is recursively set as the authority for all children of this node.
+Nếu ``recursive`` là ``true``, peer đã cho sẽ được đặt đệ quy làm authority cho tất cả các node con của node này.
 
-\ **Warning:** This does **not** automatically replicate the new authority to other peers. It is the developer's responsibility to do so. You may replicate the new authority's information using :ref:`MultiplayerSpawner.spawn_function<class_MultiplayerSpawner_property_spawn_function>`, an RPC, or a :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`. Furthermore, the parent's authority does **not** propagate to newly added children.
+\ **Cảnh báo:** Điều này **không** tự động sao chép authority mới sang các peer khác. Nhà phát triển có trách nhiệm thực hiện việc đó. Bạn có thể sao chép thông tin của authority mới bằng :ref:`MultiplayerSpawner.spawn_function<class_MultiplayerSpawner_property_spawn_function>`, một RPC hoặc một :ref:`MultiplayerSynchronizer<class_MultiplayerSynchronizer>`. Ngoài ra, authority của node cha **không** được truyền sang các node con mới được thêm vào.
 
 .. rst-class:: classref-item-separator
 
@@ -3072,9 +3072,9 @@ If ``recursive`` is ``true``, the given peer is recursively set as the authority
 
 |void| **set_physics_process**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_physics_process>`
 
-If set to ``true``, enables physics (fixed framerate) processing. When a node is being processed, it will receive a :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>` at a fixed (usually 60 FPS, see :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` to change) interval (and the :ref:`_physics_process()<class_Node_private_method__physics_process>` callback will be called if it exists).
+Nếu được đặt thành ``true``, tính năng xử lý physics (fixed framerate) sẽ được bật. Khi một node đang được xử lý, node đó sẽ nhận được một :ref:`NOTIFICATION_PHYSICS_PROCESS<class_Node_constant_NOTIFICATION_PHYSICS_PROCESS>` theo khoảng thời gian cố định (thường là 60 FPS, xem :ref:`Engine.physics_ticks_per_second<class_Engine_property_physics_ticks_per_second>` để thay đổi), và callback :ref:`_physics_process()<class_Node_private_method__physics_process>` sẽ được gọi nếu tồn tại.
 
-\ **Note:** If :ref:`_physics_process()<class_Node_private_method__physics_process>` is overridden, this will be automatically enabled before :ref:`_ready()<class_Node_private_method__ready>` is called.
+\ **Lưu ý:** Nếu :ref:`_physics_process()<class_Node_private_method__physics_process>` bị ghi đè, tính năng này sẽ tự động được bật trước khi :ref:`_ready()<class_Node_private_method__ready>` được gọi.
 
 .. rst-class:: classref-item-separator
 
@@ -3086,9 +3086,9 @@ If set to ``true``, enables physics (fixed framerate) processing. When a node is
 
 |void| **set_physics_process_internal**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_physics_process_internal>`
 
-If set to ``true``, enables internal physics for this node. Internal physics processing happens in isolation from the normal :ref:`_physics_process()<class_Node_private_method__physics_process>` calls and is used by some nodes internally to guarantee proper functioning even if the node is paused or physics processing is disabled for scripting (:ref:`set_physics_process()<class_Node_method_set_physics_process>`).
+Nếu được đặt thành ``true``, tính năng xử lý physics nội bộ cho node này sẽ được bật. Việc xử lý physics nội bộ diễn ra độc lập với các lệnh gọi :ref:`_physics_process()<class_Node_private_method__physics_process>` thông thường và được một số node sử dụng nội bộ để đảm bảo hoạt động chính xác ngay cả khi node bị tạm dừng hoặc tính năng xử lý physics cho scripting bị tắt (:ref:`set_physics_process()<class_Node_method_set_physics_process>`).
 
-\ **Warning:** Built-in nodes rely on internal processing for their internal logic. Disabling it is unsafe and may lead to unexpected behavior. Use this method if you know what you are doing.
+\ **Cảnh báo:** Các node tích hợp sẵn phụ thuộc vào quá trình xử lý nội bộ để thực hiện logic bên trong. Việc tắt tính năng này không an toàn và có thể dẫn đến hành vi không mong muốn. Hãy sử dụng phương thức này nếu bạn biết mình đang làm gì.
 
 .. rst-class:: classref-item-separator
 
@@ -3100,11 +3100,11 @@ If set to ``true``, enables internal physics for this node. Internal physics pro
 
 |void| **set_process**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_process>`
 
-If set to ``true``, enables processing. When a node is being processed, it will receive a :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>` on every drawn frame (and the :ref:`_process()<class_Node_private_method__process>` callback will be called if it exists).
+Nếu được đặt thành ``true``, tính năng xử lý sẽ được bật. Khi một node đang được xử lý, node đó sẽ nhận được một :ref:`NOTIFICATION_PROCESS<class_Node_constant_NOTIFICATION_PROCESS>` ở mỗi khung hình được vẽ (và callback :ref:`_process()<class_Node_private_method__process>` sẽ được gọi nếu tồn tại).
 
-\ **Note:** If :ref:`_process()<class_Node_private_method__process>` is overridden, this will be automatically enabled before :ref:`_ready()<class_Node_private_method__ready>` is called.
+\ **Ghi chú:** Nếu :ref:`_process()<class_Node_private_method__process>` bị ghi đè, tùy chọn này sẽ tự động được bật trước khi :ref:`_ready()<class_Node_private_method__ready>` được gọi.
 
-\ **Note:** This method only affects the :ref:`_process()<class_Node_private_method__process>` callback, i.e. it has no effect on other callbacks like :ref:`_physics_process()<class_Node_private_method__physics_process>`. If you want to disable all processing for the node, set :ref:`process_mode<class_Node_property_process_mode>` to :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
+\ **Ghi chú:** Phương thức này chỉ ảnh hưởng đến callback :ref:`_process()<class_Node_private_method__process>`, tức là không ảnh hưởng đến các callback khác như :ref:`_physics_process()<class_Node_private_method__physics_process>`. Nếu bạn muốn tắt mọi hoạt động xử lý cho node, hãy đặt :ref:`process_mode<class_Node_property_process_mode>` thành :ref:`PROCESS_MODE_DISABLED<class_Node_constant_PROCESS_MODE_DISABLED>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3116,9 +3116,9 @@ If set to ``true``, enables processing. When a node is being processed, it will 
 
 |void| **set_process_input**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_process_input>`
 
-If set to ``true``, enables input processing.
+Nếu được đặt thành ``true``, tùy chọn này sẽ bật xử lý đầu vào.
 
-\ **Note:** If :ref:`_input()<class_Node_private_method__input>` is overridden, this will be automatically enabled before :ref:`_ready()<class_Node_private_method__ready>` is called. Input processing is also already enabled for GUI controls, such as :ref:`Button<class_Button>` and :ref:`TextEdit<class_TextEdit>`.
+\ **Ghi chú:** Nếu :ref:`_input()<class_Node_private_method__input>` bị ghi đè, tùy chọn này sẽ tự động được bật trước khi :ref:`_ready()<class_Node_private_method__ready>` được gọi. Xử lý đầu vào cũng đã được bật sẵn cho các điều khiển GUI, chẳng hạn như :ref:`Button<class_Button>` và :ref:`TextEdit<class_TextEdit>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3130,9 +3130,9 @@ If set to ``true``, enables input processing.
 
 |void| **set_process_internal**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_process_internal>`
 
-If set to ``true``, enables internal processing for this node. Internal processing happens in isolation from the normal :ref:`_process()<class_Node_private_method__process>` calls and is used by some nodes internally to guarantee proper functioning even if the node is paused or processing is disabled for scripting (:ref:`set_process()<class_Node_method_set_process>`).
+Nếu được đặt thành ``true``, tùy chọn này sẽ bật hoạt động xử lý nội bộ cho node này. Hoạt động xử lý nội bộ diễn ra tách biệt với các lệnh gọi :ref:`_process()<class_Node_private_method__process>` thông thường và được một số node sử dụng nội bộ để đảm bảo hoạt động chính xác ngay cả khi node bị tạm dừng hoặc đã tắt xử lý cho scripting (:ref:`set_process()<class_Node_method_set_process>`).
 
-\ **Warning:** Built-in nodes rely on internal processing for their internal logic. Disabling it is unsafe and may lead to unexpected behavior. Use this method if you know what you are doing.
+\ **Cảnh báo:** Các node tích hợp sẵn phụ thuộc vào quá trình xử lý nội bộ để thực hiện logic bên trong. Việc tắt tính năng này không an toàn và có thể dẫn đến hành vi không mong muốn. Hãy sử dụng phương thức này nếu bạn biết mình đang làm gì.
 
 .. rst-class:: classref-item-separator
 
@@ -3144,9 +3144,9 @@ If set to ``true``, enables internal processing for this node. Internal processi
 
 |void| **set_process_shortcut_input**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_process_shortcut_input>`
 
-If set to ``true``, enables shortcut processing for this node.
+Nếu được đặt thành ``true``, tùy chọn này sẽ bật xử lý phím tắt cho node này.
 
-\ **Note:** If :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` is overridden, this will be automatically enabled before :ref:`_ready()<class_Node_private_method__ready>` is called.
+\ **Lưu ý:** Nếu :ref:`_shortcut_input()<class_Node_private_method__shortcut_input>` được ghi đè, tính năng này sẽ tự động được bật trước khi gọi :ref:`_ready()<class_Node_private_method__ready>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3158,9 +3158,9 @@ If set to ``true``, enables shortcut processing for this node.
 
 |void| **set_process_unhandled_input**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_process_unhandled_input>`
 
-If set to ``true``, enables unhandled input processing. It enables the node to receive all input that was not previously handled (usually by a :ref:`Control<class_Control>`).
+Nếu được đặt thành ``true``, tính năng này sẽ bật xử lý đầu vào chưa được xử lý. Tính năng này cho phép node nhận mọi đầu vào chưa được xử lý trước đó (thường bởi một :ref:`Control<class_Control>`).
 
-\ **Note:** If :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` is overridden, this will be automatically enabled before :ref:`_ready()<class_Node_private_method__ready>` is called. Unhandled input processing is also already enabled for GUI controls, such as :ref:`Button<class_Button>` and :ref:`TextEdit<class_TextEdit>`.
+\ **Lưu ý:** Nếu :ref:`_unhandled_input()<class_Node_private_method__unhandled_input>` được ghi đè, tính năng này sẽ tự động được bật trước khi gọi :ref:`_ready()<class_Node_private_method__ready>`. Tính năng xử lý đầu vào chưa được xử lý cũng đã được bật cho các GUI control, chẳng hạn như :ref:`Button<class_Button>` và :ref:`TextEdit<class_TextEdit>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3172,9 +3172,9 @@ If set to ``true``, enables unhandled input processing. It enables the node to r
 
 |void| **set_process_unhandled_key_input**\ (\ enable\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_process_unhandled_key_input>`
 
-If set to ``true``, enables unhandled key input processing.
+Nếu được đặt thành ``true``, tính năng này sẽ bật xử lý đầu vào phím chưa được xử lý.
 
-\ **Note:** If :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` is overridden, this will be automatically enabled before :ref:`_ready()<class_Node_private_method__ready>` is called.
+\ **Lưu ý:** Nếu :ref:`_unhandled_key_input()<class_Node_private_method__unhandled_key_input>` được ghi đè, tính năng này sẽ tự động được bật trước khi gọi :ref:`_ready()<class_Node_private_method__ready>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3186,7 +3186,7 @@ If set to ``true``, enables unhandled key input processing.
 
 |void| **set_scene_instance_load_placeholder**\ (\ load_placeholder\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_Node_method_set_scene_instance_load_placeholder>`
 
-If set to ``true``, the node becomes an :ref:`InstancePlaceholder<class_InstancePlaceholder>` when packed and instantiated from a :ref:`PackedScene<class_PackedScene>`. See also :ref:`get_scene_instance_load_placeholder()<class_Node_method_get_scene_instance_load_placeholder>`.
+Nếu được đặt thành ``true``, node sẽ trở thành một :ref:`InstancePlaceholder<class_InstancePlaceholder>` khi được đóng gói và khởi tạo từ một :ref:`PackedScene<class_PackedScene>`. Xem thêm :ref:`get_scene_instance_load_placeholder()<class_Node_method_get_scene_instance_load_placeholder>`.
 
 .. rst-class:: classref-item-separator
 
@@ -3198,7 +3198,7 @@ If set to ``true``, the node becomes an :ref:`InstancePlaceholder<class_Instance
 
 |void| **set_thread_safe**\ (\ property\: :ref:`StringName<class_StringName>`, value\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_Node_method_set_thread_safe>`
 
-Similar to :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, but for setting properties.
+Tương tự :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, nhưng dùng để đặt các thuộc tính.
 
 .. rst-class:: classref-item-separator
 
@@ -3210,9 +3210,9 @@ Similar to :ref:`call_thread_safe()<class_Node_method_call_thread_safe>`, but fo
 
 |void| **set_translation_domain_inherited**\ (\ ) :ref:`🔗<class_Node_method_set_translation_domain_inherited>`
 
-Makes this node inherit the translation domain from its parent node. If this node has no parent, the main translation domain will be used.
+Khiến node này kế thừa translation domain từ node cha. Nếu node này không có node cha, translation domain chính sẽ được sử dụng.
 
-This is the default behavior for all nodes. Calling :ref:`Object.set_translation_domain()<class_Object_method_set_translation_domain>` disables this behavior.
+Đây là hành vi mặc định cho tất cả node. Gọi :ref:`Object.set_translation_domain()<class_Object_method_set_translation_domain>` sẽ vô hiệu hóa hành vi này.
 
 .. rst-class:: classref-item-separator
 
@@ -3224,14 +3224,14 @@ This is the default behavior for all nodes. Calling :ref:`Object.set_translation
 
 |void| **update_configuration_warnings**\ (\ ) :ref:`🔗<class_Node_method_update_configuration_warnings>`
 
-Refreshes the warnings displayed for this node in the Scene dock. Use :ref:`_get_configuration_warnings()<class_Node_private_method__get_configuration_warnings>` to customize the warning messages to display.
+Làm mới các cảnh báo được hiển thị cho node này trong dock Scene. Sử dụng :ref:`_get_configuration_warnings()<class_Node_private_method__get_configuration_warnings>` để tùy chỉnh các thông báo cảnh báo cần hiển thị.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên override method này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải override method này khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Method này không có side effect. Nó không sửa đổi bất kỳ member variable nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Method này chấp nhận bất kỳ số lượng argument nào sau các argument được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

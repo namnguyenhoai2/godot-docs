@@ -13,23 +13,23 @@
 MultiMeshInstance2D
 ===================
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Node that instances a :ref:`MultiMesh<class_MultiMesh>` in 2D.
+Node tạo một instance của :ref:`MultiMesh<class_MultiMesh>` trong 2D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**MultiMeshInstance2D** is a specialized node to instance a :ref:`MultiMesh<class_MultiMesh>` resource in 2D. This can be faster to render compared to displaying many :ref:`Sprite2D<class_Sprite2D>` nodes with large transparent areas, especially if the nodes take up a lot of space on screen at high viewport resolutions. This is because using a mesh designed to fit the sprites' opaque areas will reduce GPU fill rate utilization (at the cost of increased vertex processing utilization).
+**MultiMeshInstance2D** là một node chuyên dụng để tạo instance của resource :ref:`MultiMesh<class_MultiMesh>` trong 2D. Node này có thể render nhanh hơn so với việc hiển thị nhiều node :ref:`Sprite2D<class_Sprite2D>` có các vùng trong suốt lớn, đặc biệt nếu các node chiếm nhiều không gian trên màn hình ở độ phân giải viewport cao. Điều này là do việc sử dụng một mesh được thiết kế vừa với các vùng không trong suốt của sprite sẽ làm giảm mức sử dụng fill rate của GPU (đổi lại làm tăng mức sử dụng khả năng xử lý vertex).
 
-Usage is the same as :ref:`MultiMeshInstance3D<class_MultiMeshInstance3D>`.
+Cách sử dụng giống như :ref:`MultiMeshInstance3D<class_MultiMeshInstance3D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_MultiMeshInstance2D_signal_texture_changed:
 
@@ -55,7 +55,7 @@ Signals
 
 **texture_changed**\ (\ ) :ref:`🔗<class_MultiMeshInstance2D_signal_texture_changed>`
 
-Emitted when the :ref:`texture<class_MultiMeshInstance2D_property_texture>` is changed.
+Được phát ra khi :ref:`texture<class_MultiMeshInstance2D_property_texture>` được thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -63,21 +63,21 @@ Emitted when the :ref:`texture<class_MultiMeshInstance2D_property_texture>` is c
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MultiMeshInstance2D_property_multimesh:
 
 .. rst-class:: classref-property
 
-:ref:`MultiMesh<class_MultiMesh>` **multimesh** :ref:`🔗<class_MultiMeshInstance2D_property_multimesh>`
+:ref:`MultiMesh<class_MultiMesh>` **multimesh** :ref:`🔗 <class_MultiMeshInstance2D_property_multimesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_multimesh**\ (\ value\: :ref:`MultiMesh<class_MultiMesh>`\ )
 - :ref:`MultiMesh<class_MultiMesh>` **get_multimesh**\ (\ )
 
-The :ref:`MultiMesh<class_MultiMesh>` that will be drawn by the **MultiMeshInstance2D**.
+:ref:`MultiMesh<class_MultiMesh>` sẽ được vẽ bởi **MultiMeshInstance2D**.
 
 .. rst-class:: classref-item-separator
 
@@ -87,21 +87,21 @@ The :ref:`MultiMesh<class_MultiMesh>` that will be drawn by the **MultiMeshInsta
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗<class_MultiMeshInstance2D_property_texture>`
+:ref:`Texture2D<class_Texture2D>` **texture** :ref:`🔗 <class_MultiMeshInstance2D_property_texture>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_texture**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_texture**\ (\ )
 
-The :ref:`Texture2D<class_Texture2D>` that will be used if using the default :ref:`CanvasItemMaterial<class_CanvasItemMaterial>`. Can be accessed as ``TEXTURE`` in CanvasItem shader.
+:ref:`Texture2D<class_Texture2D>` sẽ được sử dụng khi dùng :ref:`CanvasItemMaterial<class_CanvasItemMaterial>` mặc định. Có thể truy cập dưới dạng ``TEXTURE`` trong shader CanvasItem.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

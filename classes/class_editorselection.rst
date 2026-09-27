@@ -10,23 +10,23 @@
 EditorSelection
 ===============
 
-**Inherits:** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Object<class_Object>`
 
-Manages the SceneTree selection in the editor.
+Quản lý lựa chọn SceneTree trong trình soạn thảo.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This object manages the SceneTree selection in the editor.
+Đối tượng này quản lý lựa chọn SceneTree trong trình soạn thảo.
 
-\ **Note:** This class shouldn't be instantiated directly. Instead, access the singleton using :ref:`EditorInterface.get_selection()<class_EditorInterface_method_get_selection>`.
+\ **Lưu ý:** Không nên khởi tạo trực tiếp lớp này. Thay vào đó, hãy truy cập singleton bằng :ref:`EditorInterface.get_selection()<class_EditorInterface_method_get_selection>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -51,8 +51,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Signals
--------
+Tín hiệu
+--------
 
 .. _class_EditorSelection_signal_selection_changed:
 
@@ -60,7 +60,7 @@ Signals
 
 **selection_changed**\ (\ ) :ref:`🔗<class_EditorSelection_signal_selection_changed>`
 
-Emitted when the selection changes.
+Được phát ra khi vùng chọn thay đổi.
 
 .. rst-class:: classref-section-separator
 
@@ -68,8 +68,8 @@ Emitted when the selection changes.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_EditorSelection_method_add_node:
 
@@ -77,9 +77,9 @@ Method Descriptions
 
 |void| **add_node**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_EditorSelection_method_add_node>`
 
-Adds a node to the selection.
+Thêm một node vào vùng chọn.
 
-\ **Note:** The newly selected node will not be automatically edited in the inspector. If you want to edit a node, use :ref:`EditorInterface.edit_node()<class_EditorInterface_method_edit_node>`.
+\ **Lưu ý:** Node vừa được chọn sẽ không tự động được chỉnh sửa trong inspector. Nếu muốn chỉnh sửa một node, hãy sử dụng :ref:`EditorInterface.edit_node()<class_EditorInterface_method_edit_node>`.
 
 .. rst-class:: classref-item-separator
 
@@ -91,7 +91,7 @@ Adds a node to the selection.
 
 |void| **clear**\ (\ ) :ref:`🔗<class_EditorSelection_method_clear>`
 
-Clear the selection.
+Xóa vùng chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -103,7 +103,7 @@ Clear the selection.
 
 :ref:`Array<class_Array>`\[:ref:`Node<class_Node>`\] **get_selected_nodes**\ (\ ) :ref:`🔗<class_EditorSelection_method_get_selected_nodes>`
 
-Returns the list of selected nodes.
+Trả về danh sách các node đã chọn.
 
 .. rst-class:: classref-item-separator
 
@@ -115,9 +115,9 @@ Returns the list of selected nodes.
 
 :ref:`Array<class_Array>`\[:ref:`Node<class_Node>`\] **get_top_selected_nodes**\ (\ ) :ref:`🔗<class_EditorSelection_method_get_top_selected_nodes>`
 
-Returns the list of top selected nodes only, excluding any children. This is useful for performing transform operations (moving them, rotating, etc.).
+Chỉ trả về danh sách các node cấp cao nhất đã chọn, loại trừ mọi node con. Điều này hữu ích khi thực hiện các thao tác transform (di chuyển, xoay, v.v.).
 
-For example, if there is a node A with a child B and a sibling C, then selecting all three will cause this method to return only A and C. Changing the global transform of A will affect the global transform of B, so there is no need to change B separately.
+Ví dụ: nếu có một node A với node con B và node cùng cấp C, thì việc chọn cả ba sẽ khiến phương thức này chỉ trả về A và C. Việc thay đổi transform toàn cục của A sẽ ảnh hưởng đến transform toàn cục của B, vì vậy không cần thay đổi B riêng.
 
 .. rst-class:: classref-item-separator
 
@@ -129,9 +129,9 @@ For example, if there is a node A with a child B and a sibling C, then selecting
 
 :ref:`Array<class_Array>`\[:ref:`Node<class_Node>`\] **get_transformable_selected_nodes**\ (\ ) :ref:`🔗<class_EditorSelection_method_get_transformable_selected_nodes>`
 
-**Deprecated:** Use :ref:`get_top_selected_nodes()<class_EditorSelection_method_get_top_selected_nodes>` instead.
+**Đã lỗi thời:** Thay vào đó, hãy sử dụng :ref:`get_top_selected_nodes()<class_EditorSelection_method_get_top_selected_nodes>`.
 
-Returns the list of top selected nodes only, excluding any children. This is useful for performing transform operations (moving them, rotating, etc.). See :ref:`get_top_selected_nodes()<class_EditorSelection_method_get_top_selected_nodes>`.
+Chỉ trả về danh sách các node cấp cao nhất đã chọn, loại trừ mọi node con. Điều này hữu ích khi thực hiện các thao tác transform (di chuyển, xoay, v.v.). Xem :ref:`get_top_selected_nodes()<class_EditorSelection_method_get_top_selected_nodes>`.
 
 .. rst-class:: classref-item-separator
 
@@ -143,14 +143,14 @@ Returns the list of top selected nodes only, excluding any children. This is use
 
 |void| **remove_node**\ (\ node\: :ref:`Node<class_Node>`\ ) :ref:`🔗<class_EditorSelection_method_remove_node>`
 
-Removes a node from the selection.
+Xóa một node khỏi vùng chọn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thực thể để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

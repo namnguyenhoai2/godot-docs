@@ -13,36 +13,36 @@
 CheckButton
 ===========
 
-**Inherits:** :ref:`Button<class_Button>` **<** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Button<class_Button>` **<** :ref:`BaseButton<class_BaseButton>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A button that represents a binary choice.
+Một nút biểu thị một lựa chọn nhị phân.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**CheckButton** is a toggle button displayed as a check field. It's similar to :ref:`CheckBox<class_CheckBox>` in functionality, but it has a different appearance. To follow established UX patterns, it's recommended to use **CheckButton** when toggling it has an **immediate** effect on something. For example, it can be used when pressing it shows or hides advanced settings, without asking the user to confirm this action.
+**CheckButton** là một toggle button được hiển thị dưới dạng trường đánh dấu. Về chức năng, nó tương tự :ref:`CheckBox<class_CheckBox>`, nhưng có giao diện khác. Để tuân theo các mẫu UX đã được thiết lập, bạn nên sử dụng **CheckButton** khi việc chuyển đổi nó có **tác động ngay lập tức** đến một thành phần nào đó. Ví dụ, có thể sử dụng nó khi việc nhấn nút sẽ hiển thị hoặc ẩn các cài đặt nâng cao mà không yêu cầu người dùng xác nhận hành động này.
 
-See also :ref:`BaseButton<class_BaseButton>` which contains common properties and methods associated with this node.
+Xem thêm :ref:`BaseButton<class_BaseButton>`, chứa các thuộc tính và phương thức phổ biến liên quan đến node này.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +-------------------------------------------------------------------+-------------+-------------------------------------------------------------------------------+
-   | :ref:`HorizontalAlignment<enum_@GlobalScope_HorizontalAlignment>` | alignment   | ``0`` (overrides :ref:`Button<class_Button_property_alignment>`)              |
-   +-------------------------------------------------------------------+-------------+-------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                                           | toggle_mode | ``true`` (overrides :ref:`BaseButton<class_BaseButton_property_toggle_mode>`) |
-   +-------------------------------------------------------------------+-------------+-------------------------------------------------------------------------------+
+   +--------------------------------------------------------------------+-------------+-----------------------------------------------------------------------------+
+   | :ref:`HorizontalAlignment <enum_@GlobalScope_HorizontalAlignment>` | alignment   | ``0`` (ghi đè :ref:`Button<class_Button_property_alignment>`)               |
+   +--------------------------------------------------------------------+-------------+-----------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                                            | toggle_mode | ``true`` (ghi đè :ref:`BaseButton<class_BaseButton_property_toggle_mode>`)ớ |
+   +--------------------------------------------------------------------+-------------+-----------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -78,8 +78,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_CheckButton_theme_color_button_checked_color:
 
@@ -87,7 +87,7 @@ Theme Property Descriptions
 
 :ref:`Color<class_Color>` **button_checked_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_CheckButton_theme_color_button_checked_color>`
 
-The color of the checked icon when the checkbox is pressed.
+Màu của biểu tượng đã chọn khi checkbox được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -99,7 +99,7 @@ The color of the checked icon when the checkbox is pressed.
 
 :ref:`Color<class_Color>` **button_unchecked_color** = ``Color(1, 1, 1, 1)`` :ref:`🔗<class_CheckButton_theme_color_button_unchecked_color>`
 
-The color of the unchecked icon when the checkbox is not pressed.
+Màu của biểu tượng chưa chọn khi checkbox không được nhấn.
 
 .. rst-class:: classref-item-separator
 
@@ -111,7 +111,7 @@ The color of the unchecked icon when the checkbox is not pressed.
 
 :ref:`int<class_int>` **check_v_offset** = ``0`` :ref:`🔗<class_CheckButton_theme_constant_check_v_offset>`
 
-The vertical offset used when rendering the toggle icons (in pixels).
+Độ lệch dọc được sử dụng khi kết xuất các biểu tượng chuyển đổi (tính bằng pixel).
 
 .. rst-class:: classref-item-separator
 
@@ -121,9 +121,9 @@ The vertical offset used when rendering the toggle icons (in pixels).
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked** :ref:`🔗<class_CheckButton_theme_icon_checked>`
+:ref:`Texture2D<class_Texture2D>` **checked** :ref:`🔗 <class_CheckButton_theme_icon_checked>`
 
-The icon to display when the **CheckButton** is checked (for left-to-right layouts).
+Biểu tượng hiển thị khi **CheckButton** được chọn (đối với bố cục từ trái sang phải).
 
 .. rst-class:: classref-item-separator
 
@@ -133,9 +133,9 @@ The icon to display when the **CheckButton** is checked (for left-to-right layou
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked_disabled** :ref:`🔗<class_CheckButton_theme_icon_checked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **checked_disabled** :ref:`🔗 <class_CheckButton_theme_icon_checked_disabled>`
 
-The icon to display when the **CheckButton** is checked and disabled (for left-to-right layouts).
+Biểu tượng hiển thị khi **CheckButton** được chọn và bị vô hiệu hóa (đối với bố cục từ trái sang phải).
 
 .. rst-class:: classref-item-separator
 
@@ -145,9 +145,9 @@ The icon to display when the **CheckButton** is checked and disabled (for left-t
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked_disabled_mirrored** :ref:`🔗<class_CheckButton_theme_icon_checked_disabled_mirrored>`
+:ref:`Texture2D<class_Texture2D>` **checked_disabled_mirrored** :ref:`🔗 <class_CheckButton_theme_icon_checked_disabled_mirrored>`
 
-The icon to display when the **CheckButton** is checked and disabled (for right-to-left layouts).
+Biểu tượng hiển thị khi **CheckButton** được chọn và bị tắt (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -157,9 +157,9 @@ The icon to display when the **CheckButton** is checked and disabled (for right-
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **checked_mirrored** :ref:`🔗<class_CheckButton_theme_icon_checked_mirrored>`
+:ref:`Texture2D<class_Texture2D>` **checked_mirrored** :ref:`🔗 <class_CheckButton_theme_icon_checked_mirrored>`
 
-The icon to display when the **CheckButton** is checked (for right-to-left layouts).
+Biểu tượng hiển thị khi **CheckButton** được chọn (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -169,9 +169,9 @@ The icon to display when the **CheckButton** is checked (for right-to-left layou
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked** :ref:`🔗<class_CheckButton_theme_icon_unchecked>`
+:ref:`Texture2D<class_Texture2D>` **unchecked** :ref:`🔗 <class_CheckButton_theme_icon_unchecked>`
 
-The icon to display when the **CheckButton** is unchecked (for left-to-right layouts).
+Biểu tượng hiển thị khi **CheckButton** không được chọn (đối với bố cục từ trái sang phải).
 
 .. rst-class:: classref-item-separator
 
@@ -181,9 +181,9 @@ The icon to display when the **CheckButton** is unchecked (for left-to-right lay
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked_disabled** :ref:`🔗<class_CheckButton_theme_icon_unchecked_disabled>`
+:ref:`Texture2D<class_Texture2D>` **unchecked_disabled** :ref:`🔗 <class_CheckButton_theme_icon_unchecked_disabled>`
 
-The icon to display when the **CheckButton** is unchecked and disabled (for left-to-right layouts).
+Biểu tượng hiển thị khi **CheckButton** ở trạng thái không được chọn và bị vô hiệu hóa (đối với bố cục từ trái sang phải).
 
 .. rst-class:: classref-item-separator
 
@@ -193,9 +193,9 @@ The icon to display when the **CheckButton** is unchecked and disabled (for left
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked_disabled_mirrored** :ref:`🔗<class_CheckButton_theme_icon_unchecked_disabled_mirrored>`
+:ref:`Texture2D<class_Texture2D>` **unchecked_disabled_mirrored** :ref:`🔗 <class_CheckButton_theme_icon_unchecked_disabled_mirrored>`
 
-The icon to display when the **CheckButton** is unchecked and disabled (for right-to-left layouts).
+Biểu tượng hiển thị khi **CheckButton** ở trạng thái không được chọn và bị vô hiệu hóa (đối với bố cục từ phải sang trái).
 
 .. rst-class:: classref-item-separator
 
@@ -205,16 +205,16 @@ The icon to display when the **CheckButton** is unchecked and disabled (for righ
 
 .. rst-class:: classref-themeproperty
 
-:ref:`Texture2D<class_Texture2D>` **unchecked_mirrored** :ref:`🔗<class_CheckButton_theme_icon_unchecked_mirrored>`
+:ref:`Texture2D<class_Texture2D>` **unchecked_mirrored** :ref:`🔗 <class_CheckButton_theme_icon_unchecked_mirrored>`
 
-The icon to display when the **CheckButton** is unchecked (for right-to-left layouts).
+Biểu tượng hiển thị khi **CheckButton** ở trạng thái không được chọn (đối với bố cục từ phải sang trái).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

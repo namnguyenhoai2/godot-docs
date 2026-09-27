@@ -10,25 +10,25 @@
 OpenXRActionMap
 ===============
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Collection of :ref:`OpenXRActionSet<class_OpenXRActionSet>` and :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>` resources for the OpenXR module.
+Tập hợp các tài nguyên :ref:`OpenXRActionSet<class_OpenXRActionSet>` và :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>` cho mô-đun OpenXR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-OpenXR uses an action system similar to Godots Input map system to bind inputs and outputs on various types of XR controllers to named actions. OpenXR specifies more detail on these inputs and outputs than Godot supports.
+OpenXR sử dụng một hệ thống action tương tự hệ thống Input map của Godot để liên kết các đầu vào và đầu ra trên nhiều loại bộ điều khiển XR khác nhau với các action được đặt tên. OpenXR chỉ định chi tiết hơn về các đầu vào và đầu ra này so với những gì Godot hỗ trợ.
 
-Another important distinction is that OpenXR offers no control over these bindings. The bindings we register are suggestions, it is up to the XR runtime to offer users the ability to change these bindings. This allows the XR runtime to fill in the gaps if new hardware becomes available.
+Một điểm khác biệt quan trọng khác là OpenXR không cung cấp quyền kiểm soát các liên kết này. Các liên kết mà chúng ta đăng ký chỉ là những đề xuất; XR runtime có trách nhiệm cung cấp cho người dùng khả năng thay đổi các liên kết này. Điều này cho phép XR runtime bổ sung các phần còn thiếu nếu phần cứng mới xuất hiện.
 
-The action map therefore needs to be loaded at startup and can't be changed afterwards. This resource is a container for the entire action map.
+Do đó, action map cần được tải khi khởi động và không thể thay đổi sau đó. Resource này là một vùng chứa cho toàn bộ action map.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -77,8 +77,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRActionMap_property_action_sets:
 
@@ -91,7 +91,7 @@ Property Descriptions
 - |void| **set_action_sets**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_action_sets**\ (\ )
 
-Collection of :ref:`OpenXRActionSet<class_OpenXRActionSet>`\ s that are part of this action map.
+Tập hợp các :ref:`OpenXRActionSet<class_OpenXRActionSet>`\ s thuộc action map này.
 
 .. rst-class:: classref-item-separator
 
@@ -108,7 +108,7 @@ Collection of :ref:`OpenXRActionSet<class_OpenXRActionSet>`\ s that are part of 
 - |void| **set_interaction_profiles**\ (\ value\: :ref:`Array<class_Array>`\ )
 - :ref:`Array<class_Array>` **get_interaction_profiles**\ (\ )
 
-Collection of :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>`\ s that are part of this action map.
+Tập hợp các :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>`\ s thuộc action map này.
 
 .. rst-class:: classref-section-separator
 
@@ -116,8 +116,8 @@ Collection of :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>`\ s
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRActionMap_method_add_action_set:
 
@@ -125,7 +125,7 @@ Method Descriptions
 
 |void| **add_action_set**\ (\ action_set\: :ref:`OpenXRActionSet<class_OpenXRActionSet>`\ ) :ref:`🔗<class_OpenXRActionMap_method_add_action_set>`
 
-Add an action set.
+Thêm một action set.
 
 .. rst-class:: classref-item-separator
 
@@ -137,7 +137,7 @@ Add an action set.
 
 |void| **add_interaction_profile**\ (\ interaction_profile\: :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>`\ ) :ref:`🔗<class_OpenXRActionMap_method_add_interaction_profile>`
 
-Add an interaction profile.
+Thêm một interaction profile.
 
 .. rst-class:: classref-item-separator
 
@@ -149,7 +149,7 @@ Add an interaction profile.
 
 |void| **create_default_action_sets**\ (\ ) :ref:`🔗<class_OpenXRActionMap_method_create_default_action_sets>`
 
-Setup this action set with our default actions.
+Thiết lập action set này với các action mặc định của chúng tôi.
 
 .. rst-class:: classref-item-separator
 
@@ -161,7 +161,7 @@ Setup this action set with our default actions.
 
 :ref:`OpenXRActionSet<class_OpenXRActionSet>` **find_action_set**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OpenXRActionMap_method_find_action_set>`
 
-Retrieve an action set by name.
+Lấy một action set theo tên.
 
 .. rst-class:: classref-item-separator
 
@@ -173,7 +173,7 @@ Retrieve an action set by name.
 
 :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>` **find_interaction_profile**\ (\ name\: :ref:`String<class_String>`\ ) |const| :ref:`🔗<class_OpenXRActionMap_method_find_interaction_profile>`
 
-Find an interaction profile by its name (path).
+Tìm interaction profile theo tên (path) của nó.
 
 .. rst-class:: classref-item-separator
 
@@ -185,7 +185,7 @@ Find an interaction profile by its name (path).
 
 :ref:`OpenXRActionSet<class_OpenXRActionSet>` **get_action_set**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OpenXRActionMap_method_get_action_set>`
 
-Retrieve the action set at this index.
+Lấy action set tại index này.
 
 .. rst-class:: classref-item-separator
 
@@ -197,7 +197,7 @@ Retrieve the action set at this index.
 
 :ref:`int<class_int>` **get_action_set_count**\ (\ ) |const| :ref:`🔗<class_OpenXRActionMap_method_get_action_set_count>`
 
-Retrieve the number of actions sets in our action map.
+Lấy số lượng action set trong action map của chúng tôi.
 
 .. rst-class:: classref-item-separator
 
@@ -209,7 +209,7 @@ Retrieve the number of actions sets in our action map.
 
 :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>` **get_interaction_profile**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_OpenXRActionMap_method_get_interaction_profile>`
 
-Get the interaction profile at this index.
+Lấy interaction profile tại index này.
 
 .. rst-class:: classref-item-separator
 
@@ -221,7 +221,7 @@ Get the interaction profile at this index.
 
 :ref:`int<class_int>` **get_interaction_profile_count**\ (\ ) |const| :ref:`🔗<class_OpenXRActionMap_method_get_interaction_profile_count>`
 
-Retrieve the number of interaction profiles in our action map.
+Lấy số lượng hồ sơ tương tác trong bản đồ hành động của chúng ta.
 
 .. rst-class:: classref-item-separator
 
@@ -233,7 +233,7 @@ Retrieve the number of interaction profiles in our action map.
 
 |void| **remove_action_set**\ (\ action_set\: :ref:`OpenXRActionSet<class_OpenXRActionSet>`\ ) :ref:`🔗<class_OpenXRActionMap_method_remove_action_set>`
 
-Remove an action set.
+Xóa một bộ hành động.
 
 .. rst-class:: classref-item-separator
 
@@ -245,14 +245,14 @@ Remove an action set.
 
 |void| **remove_interaction_profile**\ (\ interaction_profile\: :ref:`OpenXRInteractionProfile<class_OpenXRInteractionProfile>`\ ) :ref:`🔗<class_OpenXRActionMap_method_remove_interaction_profile>`
 
-Remove an interaction profile.
+Xóa một hồ sơ tương tác.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

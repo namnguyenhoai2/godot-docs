@@ -10,30 +10,30 @@
 ArrayOccluder3D
 ===============
 
-**Inherits:** :ref:`Occluder3D<class_Occluder3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Occluder3D<class_Occluder3D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-3D polygon shape for use with occlusion culling in :ref:`OccluderInstance3D<class_OccluderInstance3D>`.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-**ArrayOccluder3D** stores an arbitrary 3D polygon shape that can be used by the engine's occlusion culling system. This is analogous to :ref:`ArrayMesh<class_ArrayMesh>`, but for occluders.
-
-See :ref:`OccluderInstance3D<class_OccluderInstance3D>`'s documentation for instructions on setting up occlusion culling.
+Hình đa giác 3D để sử dụng với occlusion culling trong :ref:`OccluderInstance3D<class_OccluderInstance3D>`.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+**ArrayOccluder3D** lưu trữ một hình đa giác 3D tùy ý mà hệ thống occlusion culling của engine có thể sử dụng. Hình này tương tự như :ref:`ArrayMesh<class_ArrayMesh>`, nhưng dành cho các đối tượng che khuất.
+
+Xem tài liệu của :ref:`OccluderInstance3D<class_OccluderInstance3D>` để biết hướng dẫn thiết lập occlusion culling.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
 - :doc:`Occlusion culling <../tutorials/3d/occlusion_culling>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -46,8 +46,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -62,8 +62,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ArrayOccluder3D_property_indices:
 
@@ -76,11 +76,11 @@ Property Descriptions
 - |void| **set_indices**\ (\ value\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ )
 - :ref:`PackedInt32Array<class_PackedInt32Array>` **get_indices**\ (\ )
 
-The occluder's index position. Indices determine which points from the :ref:`vertices<class_ArrayOccluder3D_property_vertices>` array should be drawn, and in which order.
+Vị trí chỉ mục của occluder. Các chỉ mục xác định những điểm nào từ mảng :ref:`vertices<class_ArrayOccluder3D_property_vertices>` sẽ được vẽ và theo thứ tự nào.
 
-\ **Note:** The occluder is always updated after setting this value. If creating occluders procedurally, consider using :ref:`set_arrays()<class_ArrayOccluder3D_method_set_arrays>` instead to avoid updating the occluder twice when it's created.
+\ **Lưu ý:** Occluder luôn được cập nhật sau khi đặt giá trị này. Nếu tạo occluder theo cách thủ tục, hãy cân nhắc sử dụng :ref:`set_arrays()<class_ArrayOccluder3D_method_set_arrays>` thay thế để tránh cập nhật occluder hai lần khi tạo.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedInt32Array<class_PackedInt32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedInt32Array<class_PackedInt32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -97,11 +97,11 @@ The occluder's index position. Indices determine which points from the :ref:`ver
 - |void| **set_vertices**\ (\ value\: :ref:`PackedVector3Array<class_PackedVector3Array>`\ )
 - :ref:`PackedVector3Array<class_PackedVector3Array>` **get_vertices**\ (\ )
 
-The occluder's vertex positions in local 3D coordinates.
+Vị trí các đỉnh của occluder trong hệ tọa độ 3D cục bộ.
 
-\ **Note:** The occluder is always updated after setting this value. If creating occluders procedurally, consider using :ref:`set_arrays()<class_ArrayOccluder3D_method_set_arrays>` instead to avoid updating the occluder twice when it's created.
+\ **Lưu ý:** Occluder luôn được cập nhật sau khi đặt giá trị này. Nếu tạo occluder theo cách thủ tục, hãy cân nhắc sử dụng :ref:`set_arrays()<class_ArrayOccluder3D_method_set_arrays>` thay thế để tránh cập nhật occluder hai lần khi tạo.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector3Array<class_PackedVector3Array>` for more details.
+**Lưu ý:** Mảng được trả về là *bản sao* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector3Array<class_PackedVector3Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-section-separator
 
@@ -109,8 +109,8 @@ The occluder's vertex positions in local 3D coordinates.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ArrayOccluder3D_method_set_arrays:
 
@@ -118,14 +118,14 @@ Method Descriptions
 
 |void| **set_arrays**\ (\ vertices\: :ref:`PackedVector3Array<class_PackedVector3Array>`, indices\: :ref:`PackedInt32Array<class_PackedInt32Array>`\ ) :ref:`🔗<class_ArrayOccluder3D_method_set_arrays>`
 
-Sets :ref:`indices<class_ArrayOccluder3D_property_indices>` and :ref:`vertices<class_ArrayOccluder3D_property_vertices>`, while updating the final occluder only once after both values are set.
+Thiết lập :ref:`indices<class_ArrayOccluder3D_property_indices>` và :ref:`vertices<class_ArrayOccluder3D_property_vertices>`, đồng thời chỉ cập nhật occluder cuối cùng một lần sau khi cả hai giá trị đã được thiết lập.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

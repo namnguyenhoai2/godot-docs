@@ -10,26 +10,26 @@
 SkeletonModification2DJiggle
 ============================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể bị thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`SkeletonModification2D<class_SkeletonModification2D>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A modification that jiggles :ref:`Bone2D<class_Bone2D>` nodes as they move towards a target.
+Một modification làm các :ref:`Bone2D<class_Bone2D>` node rung lắc khi chúng di chuyển về phía một target.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This modification moves a series of bones, typically called a bone chain, towards a target. What makes this modification special is that it calculates the velocity and acceleration for each bone in the bone chain, and runs a very light physics-like calculation using the inputted values. This allows the bones to overshoot the target and "jiggle" around. It can be configured to act more like a spring, or sway around like cloth might.
+Modification này di chuyển một chuỗi bone, thường được gọi là bone chain, về phía một target. Điểm đặc biệt của modification này là nó tính toán vận tốc và gia tốc cho mỗi bone trong bone chain, rồi thực hiện một phép tính rất nhẹ giống như physics bằng các giá trị đã nhập. Nhờ đó, các bone có thể vượt quá target và "rung lắc" xung quanh. Bạn có thể cấu hình để nó hoạt động giống một lò xo hơn hoặc đung đưa như vải.
 
-This modification is useful for adding additional motion to things like hair, the edges of clothing, and more. It has several settings to that allow control over how the joint moves when the target moves.
+Modification này hữu ích để thêm chuyển động bổ sung cho những thứ như tóc, mép quần áo và nhiều đối tượng khác. Nó có một số thiết lập cho phép kiểm soát cách joint di chuyển khi target di chuyển.
 
-\ **Note:** The Jiggle modifier has ``jiggle_joints``, which are the data objects that hold the data for each joint in the Jiggle chain. This is different from than :ref:`Bone2D<class_Bone2D>` nodes! Jiggle joints hold the data needed for each :ref:`Bone2D<class_Bone2D>` in the bone chain used by the Jiggle modification.
+\ **Lưu ý:** Jiggle modifier có ``jiggle_joints``, là các đối tượng dữ liệu chứa dữ liệu cho từng joint trong Jiggle chain. Điều này khác với các :ref:`Bone2D<class_Bone2D>` node! Jiggle joint chứa dữ liệu cần thiết cho từng :ref:`Bone2D<class_Bone2D>` trong bone chain được Jiggle modification sử dụng.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -53,8 +53,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -109,8 +109,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_SkeletonModification2DJiggle_property_damping:
 
@@ -123,7 +123,7 @@ Property Descriptions
 - |void| **set_damping**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_damping**\ (\ )
 
-The default amount of damping applied to the Jiggle joints, if they are not overridden. Higher values lead to more of the calculated velocity being applied.
+Lượng damping mặc định được áp dụng cho các Jiggle joint nếu chúng không bị ghi đè. Giá trị cao hơn khiến nhiều vận tốc đã tính toán hơn được áp dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -140,7 +140,7 @@ The default amount of damping applied to the Jiggle joints, if they are not over
 - |void| **set_gravity**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_gravity**\ (\ )
 
-The default amount of gravity applied to the Jiggle joints, if they are not overridden.
+Lượng gravity mặc định được áp dụng cho các Jiggle joint nếu chúng không bị ghi đè.
 
 .. rst-class:: classref-item-separator
 
@@ -157,7 +157,7 @@ The default amount of gravity applied to the Jiggle joints, if they are not over
 - |void| **set_jiggle_data_chain_length**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_jiggle_data_chain_length**\ (\ )
 
-The amount of Jiggle joints in the Jiggle modification.
+Số lượng Jiggle joint trong Jiggle modification.
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ The amount of Jiggle joints in the Jiggle modification.
 - |void| **set_mass**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_mass**\ (\ )
 
-The default amount of mass assigned to the Jiggle joints, if they are not overridden. Higher values lead to faster movements and more overshooting.
+Lượng mass mặc định được gán cho các Jiggle joint nếu chúng không bị ghi đè. Giá trị cao hơn khiến chuyển động nhanh hơn và vượt quá target nhiều hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -191,7 +191,7 @@ The default amount of mass assigned to the Jiggle joints, if they are not overri
 - |void| **set_stiffness**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_stiffness**\ (\ )
 
-The default amount of stiffness assigned to the Jiggle joints, if they are not overridden. Higher values act more like springs, quickly moving into the correct position.
+Lượng stiffness mặc định được gán cho các Jiggle joint nếu chúng không bị ghi đè. Giá trị cao hơn khiến chúng hoạt động giống lò xo hơn, nhanh chóng di chuyển vào đúng vị trí.
 
 .. rst-class:: classref-item-separator
 
@@ -208,7 +208,7 @@ The default amount of stiffness assigned to the Jiggle joints, if they are not o
 - |void| **set_target_node**\ (\ value\: :ref:`NodePath<class_NodePath>`\ )
 - :ref:`NodePath<class_NodePath>` **get_target_node**\ (\ )
 
-The NodePath to the node that is the target for the Jiggle modification. This node is what the Jiggle chain will attempt to rotate the bone chain to.
+NodePath đến node đóng vai trò là target cho Jiggle modification. Đây là node mà Jiggle chain sẽ cố gắng xoay bone chain đến đó.
 
 .. rst-class:: classref-item-separator
 
@@ -225,7 +225,7 @@ The NodePath to the node that is the target for the Jiggle modification. This no
 - |void| **set_use_gravity**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_use_gravity**\ (\ )
 
-Whether the gravity vector, :ref:`gravity<class_SkeletonModification2DJiggle_property_gravity>`, should be applied to the Jiggle joints, assuming they are not overriding the default settings.
+Liệu vectơ trọng lực, :ref:`gravity<class_SkeletonModification2DJiggle_property_gravity>`, có nên được áp dụng cho các khớp Jiggle hay không, với giả định rằng chúng không ghi đè các thiết lập mặc định.
 
 .. rst-class:: classref-section-separator
 
@@ -233,8 +233,8 @@ Whether the gravity vector, :ref:`gravity<class_SkeletonModification2DJiggle_pro
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_SkeletonModification2DJiggle_method_get_collision_mask:
 
@@ -242,7 +242,7 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_collision_mask**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_collision_mask>`
 
-Returns the collision mask used by the Jiggle modifier when collisions are enabled.
+Trả về collision mask được modifier Jiggle sử dụng khi bật tính năng va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -254,7 +254,7 @@ Returns the collision mask used by the Jiggle modifier when collisions are enabl
 
 :ref:`NodePath<class_NodePath>` **get_jiggle_joint_bone2d_node**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_bone2d_node>`
 
-Returns the :ref:`Bone2D<class_Bone2D>` node assigned to the Jiggle joint at ``joint_idx``.
+Trả về node :ref:`Bone2D<class_Bone2D>` được gán cho khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -266,7 +266,7 @@ Returns the :ref:`Bone2D<class_Bone2D>` node assigned to the Jiggle joint at ``j
 
 :ref:`int<class_int>` **get_jiggle_joint_bone_index**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_bone_index>`
 
-Returns the index of the :ref:`Bone2D<class_Bone2D>` node assigned to the Jiggle joint at ``joint_idx``.
+Trả về chỉ mục của node :ref:`Bone2D<class_Bone2D>` được gán cho khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -278,7 +278,7 @@ Returns the index of the :ref:`Bone2D<class_Bone2D>` node assigned to the Jiggle
 
 :ref:`float<class_float>` **get_jiggle_joint_damping**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_damping>`
 
-Returns the amount of damping of the Jiggle joint at ``joint_idx``.
+Trả về mức damping của khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -290,7 +290,7 @@ Returns the amount of damping of the Jiggle joint at ``joint_idx``.
 
 :ref:`Vector2<class_Vector2>` **get_jiggle_joint_gravity**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_gravity>`
 
-Returns a :ref:`Vector2<class_Vector2>` representing the amount of gravity the Jiggle joint at ``joint_idx`` is influenced by.
+Trả về một :ref:`Vector2<class_Vector2>` biểu thị mức độ trọng lực mà khớp Jiggle tại ``joint_idx`` chịu ảnh hưởng.
 
 .. rst-class:: classref-item-separator
 
@@ -302,7 +302,7 @@ Returns a :ref:`Vector2<class_Vector2>` representing the amount of gravity the J
 
 :ref:`float<class_float>` **get_jiggle_joint_mass**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_mass>`
 
-Returns the amount of mass of the jiggle joint at ``joint_idx``.
+Trả về khối lượng của khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ Returns the amount of mass of the jiggle joint at ``joint_idx``.
 
 :ref:`bool<class_bool>` **get_jiggle_joint_override**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_override>`
 
-Returns a boolean that indicates whether the joint at ``joint_idx`` is overriding the default Jiggle joint data defined in the modification.
+Trả về một boolean cho biết khớp tại ``joint_idx`` có ghi đè dữ liệu khớp Jiggle mặc định được định nghĩa trong modification hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -326,7 +326,7 @@ Returns a boolean that indicates whether the joint at ``joint_idx`` is overridin
 
 :ref:`float<class_float>` **get_jiggle_joint_stiffness**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_stiffness>`
 
-Returns the stiffness of the Jiggle joint at ``joint_idx``.
+Trả về độ stiffness của khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -338,7 +338,7 @@ Returns the stiffness of the Jiggle joint at ``joint_idx``.
 
 :ref:`bool<class_bool>` **get_jiggle_joint_use_gravity**\ (\ joint_idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_jiggle_joint_use_gravity>`
 
-Returns a boolean that indicates whether the joint at ``joint_idx`` is using gravity or not.
+Trả về một boolean cho biết khớp tại ``joint_idx`` có sử dụng trọng lực hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -350,7 +350,7 @@ Returns a boolean that indicates whether the joint at ``joint_idx`` is using gra
 
 :ref:`bool<class_bool>` **get_use_colliders**\ (\ ) |const| :ref:`🔗<class_SkeletonModification2DJiggle_method_get_use_colliders>`
 
-Returns whether the jiggle modifier is taking physics colliders into account when solving.
+Trả về việc modifier Jiggle có tính đến các physics collider khi giải hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -362,7 +362,7 @@ Returns whether the jiggle modifier is taking physics colliders into account whe
 
 |void| **reset**\ (\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_reset>`
 
-Resets the internal jiggle simulation state to the current bone positions, clearing velocity, acceleration, and accumulated forces.
+Đặt lại trạng thái mô phỏng jiggle nội bộ về vị trí xương hiện tại, đồng thời xóa vận tốc, gia tốc và các lực đã tích lũy.
 
 .. rst-class:: classref-item-separator
 
@@ -374,7 +374,7 @@ Resets the internal jiggle simulation state to the current bone positions, clear
 
 |void| **set_collision_mask**\ (\ collision_mask\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_collision_mask>`
 
-Sets the collision mask that the Jiggle modifier will use when reacting to colliders, if the Jiggle modifier is set to take colliders into account.
+Đặt collision mask mà modifier Jiggle sẽ sử dụng khi phản ứng với các collider, nếu modifier Jiggle được thiết lập để tính đến các collider.
 
 .. rst-class:: classref-item-separator
 
@@ -386,7 +386,7 @@ Sets the collision mask that the Jiggle modifier will use when reacting to colli
 
 |void| **set_jiggle_joint_bone2d_node**\ (\ joint_idx\: :ref:`int<class_int>`, bone2d_node\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_bone2d_node>`
 
-Sets the :ref:`Bone2D<class_Bone2D>` node assigned to the Jiggle joint at ``joint_idx``.
+Đặt node :ref:`Bone2D<class_Bone2D>` được gán cho khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -398,7 +398,7 @@ Sets the :ref:`Bone2D<class_Bone2D>` node assigned to the Jiggle joint at ``join
 
 |void| **set_jiggle_joint_bone_index**\ (\ joint_idx\: :ref:`int<class_int>`, bone_idx\: :ref:`int<class_int>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_bone_index>`
 
-Sets the bone index, ``bone_idx``, of the Jiggle joint at ``joint_idx``. When possible, this will also update the ``bone2d_node`` of the Jiggle joint based on data provided by the linked skeleton.
+Đặt chỉ mục xương, ``bone_idx``, của khớp Jiggle tại ``joint_idx``. Khi có thể, thao tác này cũng sẽ cập nhật ``bone2d_node`` của khớp Jiggle dựa trên dữ liệu do skeleton được liên kết cung cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -410,7 +410,7 @@ Sets the bone index, ``bone_idx``, of the Jiggle joint at ``joint_idx``. When po
 
 |void| **set_jiggle_joint_damping**\ (\ joint_idx\: :ref:`int<class_int>`, damping\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_damping>`
 
-Sets the amount of damping of the Jiggle joint at ``joint_idx``.
+Đặt mức damping của khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -422,7 +422,7 @@ Sets the amount of damping of the Jiggle joint at ``joint_idx``.
 
 |void| **set_jiggle_joint_gravity**\ (\ joint_idx\: :ref:`int<class_int>`, gravity\: :ref:`Vector2<class_Vector2>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_gravity>`
 
-Sets the gravity vector of the Jiggle joint at ``joint_idx``.
+Đặt vectơ trọng lực của khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -434,7 +434,7 @@ Sets the gravity vector of the Jiggle joint at ``joint_idx``.
 
 |void| **set_jiggle_joint_mass**\ (\ joint_idx\: :ref:`int<class_int>`, mass\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_mass>`
 
-Sets the of mass of the Jiggle joint at ``joint_idx``.
+Đặt khối lượng của khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -446,7 +446,7 @@ Sets the of mass of the Jiggle joint at ``joint_idx``.
 
 |void| **set_jiggle_joint_override**\ (\ joint_idx\: :ref:`int<class_int>`, override\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_override>`
 
-Sets whether the Jiggle joint at ``joint_idx`` should override the default Jiggle joint settings. Setting this to ``true`` will make the joint use its own settings rather than the default ones attached to the modification.
+Đặt việc khớp Jiggle tại ``joint_idx`` có ghi đè các thiết lập khớp Jiggle mặc định hay không. Đặt giá trị này thành ``true`` sẽ khiến khớp sử dụng các thiết lập riêng thay vì các thiết lập mặc định gắn với modification.
 
 .. rst-class:: classref-item-separator
 
@@ -458,7 +458,7 @@ Sets whether the Jiggle joint at ``joint_idx`` should override the default Jiggl
 
 |void| **set_jiggle_joint_stiffness**\ (\ joint_idx\: :ref:`int<class_int>`, stiffness\: :ref:`float<class_float>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_stiffness>`
 
-Sets the of stiffness of the Jiggle joint at ``joint_idx``.
+Đặt độ stiffness của khớp Jiggle tại ``joint_idx``.
 
 .. rst-class:: classref-item-separator
 
@@ -470,7 +470,7 @@ Sets the of stiffness of the Jiggle joint at ``joint_idx``.
 
 |void| **set_jiggle_joint_use_gravity**\ (\ joint_idx\: :ref:`int<class_int>`, use_gravity\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_jiggle_joint_use_gravity>`
 
-Sets whether the Jiggle joint at ``joint_idx`` should use gravity.
+Đặt việc khớp Jiggle tại ``joint_idx`` có sử dụng trọng lực hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -482,14 +482,14 @@ Sets whether the Jiggle joint at ``joint_idx`` should use gravity.
 
 |void| **set_use_colliders**\ (\ use_colliders\: :ref:`bool<class_bool>`\ ) :ref:`🔗<class_SkeletonModification2DJiggle_method_set_use_colliders>`
 
-If ``true``, the Jiggle modifier will take colliders into account, keeping them from entering into these collision objects.
+Nếu ``true``, modifier Jiggle sẽ tính đến các collider, ngăn chúng đi vào các đối tượng va chạm này.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

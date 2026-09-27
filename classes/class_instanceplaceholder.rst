@@ -10,23 +10,23 @@
 InstancePlaceholder
 ===================
 
-**Inherits:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-Placeholder for the root :ref:`Node<class_Node>` of a :ref:`PackedScene<class_PackedScene>`.
+Trình giữ chỗ cho :ref:`Node<class_Node>` gốc của một :ref:`PackedScene<class_PackedScene>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Turning on the option **Load As Placeholder** for an instantiated scene in the editor causes it to be replaced by an **InstancePlaceholder** when running the game, this will not replace the node in the editor. This makes it possible to delay actually loading the scene until calling :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>`. This is useful to avoid loading large scenes all at once by loading parts of it selectively.
+Bật tùy chọn **Load As Placeholder** cho một scene được khởi tạo trong editor sẽ khiến scene đó được thay thế bằng một **InstancePlaceholder** khi chạy game; việc này không thay thế node trong editor. Nhờ đó, bạn có thể trì hoãn việc thực sự tải scene cho đến khi gọi :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>`. Điều này hữu ích để tránh tải toàn bộ scene lớn cùng lúc bằng cách tải có chọn lọc từng phần của scene.
 
-\ **Note:** Like :ref:`Node<class_Node>`, **InstancePlaceholder** does not have a transform. This causes any child nodes to be positioned relatively to the :ref:`Viewport<class_Viewport>` origin, rather than their parent as displayed in the editor. Replacing the placeholder with a scene with a transform will transform children relatively to their parent again.
+\ **Lưu ý:** Giống như :ref:`Node<class_Node>`, **InstancePlaceholder** không có transform. Điều này khiến mọi node con được định vị tương đối với gốc :ref:`Viewport<class_Viewport>`, thay vì node cha như hiển thị trong editor. Việc thay thế placeholder bằng một scene có transform sẽ lại biến đổi các node con tương đối với node cha.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -45,8 +45,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_InstancePlaceholder_method_create_instance:
 
@@ -54,9 +54,9 @@ Method Descriptions
 
 :ref:`Node<class_Node>` **create_instance**\ (\ replace\: :ref:`bool<class_bool>` = false, custom_scene\: :ref:`PackedScene<class_PackedScene>` = null\ ) :ref:`🔗<class_InstancePlaceholder_method_create_instance>`
 
-Call this method to actually load in the node. The created node will be placed as a sibling *above* the **InstancePlaceholder** in the scene tree. The :ref:`Node<class_Node>`'s reference is also returned for convenience.
+Gọi phương thức này để thực sự tải nút vào. Nút được tạo sẽ được đặt làm nút cùng cấp *phía trên* **InstancePlaceholder** trong cây cảnh. Tham chiếu đến :ref:`Node<class_Node>` cũng được trả về để thuận tiện.
 
-\ **Note:** :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>` is not thread-safe. Use :ref:`Object.call_deferred()<class_Object_method_call_deferred>` if calling from a thread.
+\ **Lưu ý:** :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>` không an toàn luồng. Hãy sử dụng :ref:`Object.call_deferred()<class_Object_method_call_deferred>` nếu gọi từ một luồng.
 
 .. rst-class:: classref-item-separator
 
@@ -68,7 +68,7 @@ Call this method to actually load in the node. The created node will be placed a
 
 :ref:`String<class_String>` **get_instance_path**\ (\ ) |const| :ref:`🔗<class_InstancePlaceholder_method_get_instance_path>`
 
-Gets the path to the :ref:`PackedScene<class_PackedScene>` resource file that is loaded by default when calling :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>`. Not thread-safe. Use :ref:`Object.call_deferred()<class_Object_method_call_deferred>` if calling from a thread.
+Lấy đường dẫn đến tệp tài nguyên :ref:`PackedScene<class_PackedScene>` được tải theo mặc định khi gọi :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>`. Không an toàn luồng. Hãy sử dụng :ref:`Object.call_deferred()<class_Object_method_call_deferred>` nếu gọi từ một luồng.
 
 .. rst-class:: classref-item-separator
 
@@ -80,16 +80,16 @@ Gets the path to the :ref:`PackedScene<class_PackedScene>` resource file that is
 
 :ref:`Dictionary<class_Dictionary>` **get_stored_values**\ (\ with_order\: :ref:`bool<class_bool>` = false\ ) :ref:`🔗<class_InstancePlaceholder_method_get_stored_values>`
 
-Returns the list of properties that will be applied to the node when :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>` is called.
+Trả về danh sách các thuộc tính sẽ được áp dụng cho nút khi gọi :ref:`create_instance()<class_InstancePlaceholder_method_create_instance>`.
 
-If ``with_order`` is ``true``, a key named ``.order`` (note the leading period) is added to the dictionary. This ``.order`` key is an :ref:`Array<class_Array>` of :ref:`String<class_String>` property names specifying the order in which properties will be applied (with index 0 being the first).
+Nếu ``with_order`` là ``true``, một khóa có tên ``.order`` (lưu ý dấu chấm ở đầu) sẽ được thêm vào từ điển. Khóa ``.order`` này là một :ref:`Array<class_Array>` gồm các tên thuộc tính của :ref:`String<class_String>`, xác định thứ tự áp dụng các thuộc tính (trong đó chỉ mục 0 là phần tử đầu tiên).
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Cần ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

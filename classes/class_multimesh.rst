@@ -13,78 +13,78 @@
 MultiMesh
 =========
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides high-performance drawing of a mesh multiple times using GPU instancing.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-MultiMesh provides low-level mesh instancing. Drawing thousands of :ref:`MeshInstance3D<class_MeshInstance3D>` nodes can be slow, since each object is submitted to the GPU then drawn individually.
-
-MultiMesh is much faster as it can draw thousands of instances with a single draw call, resulting in less API overhead.
-
-As a drawback, if the instances are too far away from each other, performance may be reduced as every single instance will always render (they are spatially indexed as one, for the whole object).
-
-Since instances may have any behavior, the AABB used for visibility must be provided by the user.
-
-\ **Note:** A MultiMesh is a single object, therefore the same maximum lights per object restriction applies. This means, that once the maximum lights are consumed by one or more instances, the rest of the MultiMesh instances will **not** receive any lighting.
-
-\ **Note:** Blend Shapes will be ignored if used in a MultiMesh.
+Cung cấp khả năng vẽ mesh hiệu năng cao nhiều lần bằng GPU instancing.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+MultiMesh cung cấp khả năng instancing mesh ở cấp thấp. Việc vẽ hàng nghìn node :ref:`MeshInstance3D<class_MeshInstance3D>` có thể chậm, vì mỗi đối tượng được gửi đến GPU rồi vẽ riêng lẻ.
+
+MultiMesh nhanh hơn nhiều vì có thể vẽ hàng nghìn instance bằng một draw call duy nhất, nhờ đó giảm overhead của API.
+
+Một nhược điểm là nếu các instance ở quá xa nhau, hiệu năng có thể giảm vì mọi instance riêng lẻ sẽ luôn được render (chúng được lập chỉ mục không gian như một đối tượng duy nhất, cho toàn bộ đối tượng).
+
+Vì các instance có thể có bất kỳ hành vi nào, AABB được sử dụng cho khả năng hiển thị phải do người dùng cung cấp.
+
+\ **Lưu ý:** MultiMesh là một đối tượng duy nhất, vì vậy giới hạn số ánh sáng tối đa trên mỗi đối tượng cũng được áp dụng. Điều này có nghĩa là một khi số ánh sáng tối đa đã được sử dụng bởi một hoặc nhiều instance, các instance còn lại của MultiMesh sẽ **không** nhận được bất kỳ ánh sáng nào.
+
+\ **Lưu ý:** Blend Shapes sẽ bị bỏ qua nếu được sử dụng trong MultiMesh.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Using MultiMeshInstance <../tutorials/3d/using_multi_mesh_instance>`
+- :doc:`Sử dụng MultiMeshInstance <../tutorials/3d/using_multi_mesh_instance>`
 
-- :doc:`Optimization using MultiMeshes <../tutorials/performance/using_multimesh>`
+- :doc:`Tối ưu hóa bằng MultiMesh <../tutorials/performance/using_multimesh>`
 
-- :doc:`Animating thousands of fish with MultiMeshInstance <../tutorials/performance/vertex_animation/animating_thousands_of_fish>`
+- :doc:`Tạo hoạt ảnh cho hàng nghìn con cá bằng MultiMeshInstance <../tutorials/performance/vertex_animation/animating_thousands_of_fish>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`PackedFloat32Array<class_PackedFloat32Array>`                            | :ref:`buffer<class_MultiMesh_property_buffer>`                                               | ``PackedFloat32Array()``   |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`PackedColorArray<class_PackedColorArray>`                                | :ref:`color_array<class_MultiMesh_property_color_array>`                                     |                            |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`AABB<class_AABB>`                                                        | :ref:`custom_aabb<class_MultiMesh_property_custom_aabb>`                                     | ``AABB(0, 0, 0, 0, 0, 0)`` |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`PackedColorArray<class_PackedColorArray>`                                | :ref:`custom_data_array<class_MultiMesh_property_custom_data_array>`                         |                            |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`int<class_int>`                                                          | :ref:`instance_count<class_MultiMesh_property_instance_count>`                               | ``0``                      |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`Mesh<class_Mesh>`                                                        | :ref:`mesh<class_MultiMesh_property_mesh>`                                                   |                            |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`PhysicsInterpolationQuality<enum_MultiMesh_PhysicsInterpolationQuality>` | :ref:`physics_interpolation_quality<class_MultiMesh_property_physics_interpolation_quality>` | ``0``                      |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`PackedVector2Array<class_PackedVector2Array>`                            | :ref:`transform_2d_array<class_MultiMesh_property_transform_2d_array>`                       |                            |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`PackedVector3Array<class_PackedVector3Array>`                            | :ref:`transform_array<class_MultiMesh_property_transform_array>`                             |                            |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`TransformFormat<enum_MultiMesh_TransformFormat>`                         | :ref:`transform_format<class_MultiMesh_property_transform_format>`                           | ``0``                      |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`use_colors<class_MultiMesh_property_use_colors>`                                       | ``false``                  |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`bool<class_bool>`                                                        | :ref:`use_custom_data<class_MultiMesh_property_use_custom_data>`                             | ``false``                  |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
-   | :ref:`int<class_int>`                                                          | :ref:`visible_instance_count<class_MultiMesh_property_visible_instance_count>`               | ``-1``                     |
-   +--------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`PackedFloat32Array<class_PackedFloat32Array>`                             | :ref:`buffer<class_MultiMesh_property_buffer>`                                               | ``PackedFloat32Array()``   |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`PackedColorArray<class_PackedColorArray>`                                 | :ref:`color_array<class_MultiMesh_property_color_array>`                                     |                            |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`AABB<class_AABB>`                                                         | :ref:`custom_aabb<class_MultiMesh_property_custom_aabb>`                                     | ``AABB(0, 0, 0, 0, 0, 0)`` |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`PackedColorArray<class_PackedColorArray>`                                 | :ref:`custom_data_array<class_MultiMesh_property_custom_data_array>`                         |                            |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`int<class_int>`                                                           | :ref:`instance_count<class_MultiMesh_property_instance_count>`                               | ``0``                      |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`Mesh<class_Mesh>`                                                         | :ref:`mesh<class_MultiMesh_property_mesh>`                                                   |                            |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`PhysicsInterpolationQuality <enum_MultiMesh_PhysicsInterpolationQuality>` | :ref:`physics_interpolation_quality<class_MultiMesh_property_physics_interpolation_quality>` | ``0``                      |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`PackedVector2Array<class_PackedVector2Array>`                             | :ref:`transform_2d_array<class_MultiMesh_property_transform_2d_array>`                       |                            |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`PackedVector3Array<class_PackedVector3Array>`                             | :ref:`transform_array<class_MultiMesh_property_transform_array>`                             |                            |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`TransformFormat <enum_MultiMesh_TransformFormat>`                         | :ref:`transform_format<class_MultiMesh_property_transform_format>`                           | ``0``                      |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`use_colors<class_MultiMesh_property_use_colors>`                                       | ``false``                  |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`bool<class_bool>`                                                         | :ref:`use_custom_data<class_MultiMesh_property_use_custom_data>`                             | ``false``                  |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
+   | :ref:`int<class_int>`                                                           | :ref:`visible_instance_count<class_MultiMesh_property_visible_instance_count>`               | ``-1``                     |
+   +---------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+----------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -121,14 +121,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_MultiMesh_TransformFormat:
 
 .. rst-class:: classref-enumeration
 
-enum **TransformFormat**: :ref:`🔗<enum_MultiMesh_TransformFormat>`
+enum **TransformFormat**: :ref:`🔗 <enum_MultiMesh_TransformFormat>`
 
 .. _class_MultiMesh_constant_TRANSFORM_2D:
 
@@ -136,7 +136,7 @@ enum **TransformFormat**: :ref:`🔗<enum_MultiMesh_TransformFormat>`
 
 :ref:`TransformFormat<enum_MultiMesh_TransformFormat>` **TRANSFORM_2D** = ``0``
 
-Use this when using 2D transforms.
+Sử dụng giá trị này khi dùng các phép biến đổi 2D.
 
 .. _class_MultiMesh_constant_TRANSFORM_3D:
 
@@ -144,7 +144,7 @@ Use this when using 2D transforms.
 
 :ref:`TransformFormat<enum_MultiMesh_TransformFormat>` **TRANSFORM_3D** = ``1``
 
-Use this when using 3D transforms.
+Sử dụng giá trị này khi dùng các phép biến đổi 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -154,7 +154,7 @@ Use this when using 3D transforms.
 
 .. rst-class:: classref-enumeration
 
-enum **PhysicsInterpolationQuality**: :ref:`🔗<enum_MultiMesh_PhysicsInterpolationQuality>`
+enum **PhysicsInterpolationQuality**: :ref:`🔗 <enum_MultiMesh_PhysicsInterpolationQuality>`
 
 .. _class_MultiMesh_constant_INTERP_QUALITY_FAST:
 
@@ -162,7 +162,7 @@ enum **PhysicsInterpolationQuality**: :ref:`🔗<enum_MultiMesh_PhysicsInterpola
 
 :ref:`PhysicsInterpolationQuality<enum_MultiMesh_PhysicsInterpolationQuality>` **INTERP_QUALITY_FAST** = ``0``
 
-Always interpolate using Basis lerping, which can produce warping artifacts in some situations.
+Luôn nội suy bằng cách lerp Basis, thao tác này có thể tạo ra hiện tượng méo trong một số trường hợp.
 
 .. _class_MultiMesh_constant_INTERP_QUALITY_HIGH:
 
@@ -170,7 +170,7 @@ Always interpolate using Basis lerping, which can produce warping artifacts in s
 
 :ref:`PhysicsInterpolationQuality<enum_MultiMesh_PhysicsInterpolationQuality>` **INTERP_QUALITY_HIGH** = ``1``
 
-Attempt to interpolate using Basis slerping (spherical linear interpolation) where possible, otherwise fall back to lerping.
+Cố gắng nội suy bằng slerp Basis (nội suy tuyến tính hình cầu) khi có thể; nếu không, chuyển sang lerp.
 
 .. rst-class:: classref-section-separator
 
@@ -178,8 +178,8 @@ Attempt to interpolate using Basis slerping (spherical linear interpolation) whe
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_MultiMesh_property_buffer:
 
@@ -196,7 +196,7 @@ Property Descriptions
 
 	There is currently no description for this property. Please help us by `contributing one <https://contributing.godotengine.org/en/latest/documentation/class_reference.html>`__!
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedFloat32Array<class_PackedFloat32Array>` for more details.
+**Lưu ý:** Mảng được trả về là *sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedFloat32Array<class_PackedFloat32Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -206,13 +206,13 @@ Property Descriptions
 
 .. rst-class:: classref-property
 
-:ref:`PackedColorArray<class_PackedColorArray>` **color_array** :ref:`🔗<class_MultiMesh_property_color_array>`
+:ref:`PackedColorArray<class_PackedColorArray>` **color_array** :ref:`🔗 <class_MultiMesh_property_color_array>`
 
-**Deprecated:** Accessing this property is very slow. Use :ref:`set_instance_color()<class_MultiMesh_method_set_instance_color>` and :ref:`get_instance_color()<class_MultiMesh_method_get_instance_color>` instead.
+**Không dùng nữa:** Việc truy cập thuộc tính này rất chậm. Thay vào đó, hãy sử dụng :ref:`set_instance_color()<class_MultiMesh_method_set_instance_color>` và :ref:`get_instance_color()<class_MultiMesh_method_get_instance_color>`.
 
-Array containing each :ref:`Color<class_Color>` used by all instances of this mesh.
+Mảng chứa từng :ref:`Color<class_Color>` được tất cả các instance của mesh này sử dụng.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedColorArray<class_PackedColorArray>` for more details.
+**Lưu ý:** Mảng được trả về là *sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedColorArray<class_PackedColorArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -229,7 +229,7 @@ Array containing each :ref:`Color<class_Color>` used by all instances of this me
 - |void| **set_custom_aabb**\ (\ value\: :ref:`AABB<class_AABB>`\ )
 - :ref:`AABB<class_AABB>` **get_custom_aabb**\ (\ )
 
-Custom AABB for this MultiMesh resource. Setting this manually prevents costly runtime AABB recalculations.
+AABB tùy chỉnh cho resource MultiMesh này. Việc đặt thủ công giá trị này sẽ ngăn việc tính toán lại AABB tốn kém trong runtime.
 
 .. rst-class:: classref-item-separator
 
@@ -239,13 +239,13 @@ Custom AABB for this MultiMesh resource. Setting this manually prevents costly r
 
 .. rst-class:: classref-property
 
-:ref:`PackedColorArray<class_PackedColorArray>` **custom_data_array** :ref:`🔗<class_MultiMesh_property_custom_data_array>`
+:ref:`PackedColorArray<class_PackedColorArray>` **custom_data_array** :ref:`🔗 <class_MultiMesh_property_custom_data_array>`
 
-**Deprecated:** Accessing this property is very slow. Use :ref:`set_instance_custom_data()<class_MultiMesh_method_set_instance_custom_data>` and :ref:`get_instance_custom_data()<class_MultiMesh_method_get_instance_custom_data>` instead.
+**Đã lỗi thời:** Việc truy cập thuộc tính này rất chậm. Thay vào đó, hãy sử dụng :ref:`set_instance_custom_data()<class_MultiMesh_method_set_instance_custom_data>` và :ref:`get_instance_custom_data()<class_MultiMesh_method_get_instance_custom_data>`.
 
-Array containing each custom data value used by all instances of this mesh, as a :ref:`PackedColorArray<class_PackedColorArray>`.
+Mảng chứa từng giá trị dữ liệu tùy chỉnh được tất cả các instance của mesh sử dụng, dưới dạng một :ref:`PackedColorArray<class_PackedColorArray>`.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedColorArray<class_PackedColorArray>` for more details.
+**Lưu ý:** Mảng được trả về là *sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedColorArray<class_PackedColorArray>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -262,9 +262,9 @@ Array containing each custom data value used by all instances of this mesh, as a
 - |void| **set_instance_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_instance_count**\ (\ )
 
-Number of instances that will get drawn. This clears and (re)sizes the buffers. Setting data format or flags afterwards will have no effect.
+Số lượng instance sẽ được vẽ. Thao tác này xóa và thay đổi kích thước các buffer. Việc thiết lập định dạng dữ liệu hoặc các flag sau đó sẽ không có hiệu lực.
 
-By default, all instances are drawn but you can limit this with :ref:`visible_instance_count<class_MultiMesh_property_visible_instance_count>`.
+Theo mặc định, tất cả các instance đều được vẽ, nhưng bạn có thể giới hạn số lượng này bằng :ref:`visible_instance_count<class_MultiMesh_property_visible_instance_count>`.
 
 .. rst-class:: classref-item-separator
 
@@ -274,16 +274,16 @@ By default, all instances are drawn but you can limit this with :ref:`visible_in
 
 .. rst-class:: classref-property
 
-:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗<class_MultiMesh_property_mesh>`
+:ref:`Mesh<class_Mesh>` **mesh** :ref:`🔗 <class_MultiMesh_property_mesh>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_mesh**\ (\ value\: :ref:`Mesh<class_Mesh>`\ )
 - :ref:`Mesh<class_Mesh>` **get_mesh**\ (\ )
 
-:ref:`Mesh<class_Mesh>` resource to be instanced.
+:ref:`Mesh<class_Mesh>` tài nguyên sẽ được khởi tạo.
 
-The looks of the individual instances can be modified using :ref:`set_instance_color()<class_MultiMesh_method_set_instance_color>` and :ref:`set_instance_custom_data()<class_MultiMesh_method_set_instance_custom_data>`.
+Có thể sửa đổi diện mạo của từng instance bằng :ref:`set_instance_color()<class_MultiMesh_method_set_instance_color>` và :ref:`set_instance_custom_data()<class_MultiMesh_method_set_instance_custom_data>`.
 
 .. rst-class:: classref-item-separator
 
@@ -300,11 +300,11 @@ The looks of the individual instances can be modified using :ref:`set_instance_c
 - |void| **set_physics_interpolation_quality**\ (\ value\: :ref:`PhysicsInterpolationQuality<enum_MultiMesh_PhysicsInterpolationQuality>`\ )
 - :ref:`PhysicsInterpolationQuality<enum_MultiMesh_PhysicsInterpolationQuality>` **get_physics_interpolation_quality**\ (\ )
 
-Choose whether to use an interpolation method that favors speed or quality.
+Chọn sử dụng phương pháp nội suy ưu tiên tốc độ hay chất lượng.
 
-When using low physics tick rates (typically below 20) or high rates of object rotation, you may get better results from the high quality setting.
+Khi sử dụng tốc độ tick vật lý thấp (thường dưới 20) hoặc tốc độ xoay đối tượng cao, bạn có thể nhận được kết quả tốt hơn với thiết lập chất lượng cao.
 
-\ **Note:** Fast quality does not equate to low quality. Except in the special cases mentioned above, the quality should be comparable to high quality.
+\ **Lưu ý:** Chất lượng nhanh không đồng nghĩa với chất lượng thấp. Ngoại trừ các trường hợp đặc biệt được đề cập ở trên, chất lượng này sẽ tương đương với chất lượng cao.
 
 .. rst-class:: classref-item-separator
 
@@ -314,13 +314,13 @@ When using low physics tick rates (typically below 20) or high rates of object r
 
 .. rst-class:: classref-property
 
-:ref:`PackedVector2Array<class_PackedVector2Array>` **transform_2d_array** :ref:`🔗<class_MultiMesh_property_transform_2d_array>`
+:ref:`PackedVector2Array<class_PackedVector2Array>` **transform_2d_array** :ref:`🔗 <class_MultiMesh_property_transform_2d_array>`
 
-**Deprecated:** Accessing this property is very slow. Use :ref:`set_instance_transform_2d()<class_MultiMesh_method_set_instance_transform_2d>` and :ref:`get_instance_transform_2d()<class_MultiMesh_method_get_instance_transform_2d>` instead.
+**Đã ngừng sử dụng:** Việc truy cập thuộc tính này rất chậm. Thay vào đó, hãy sử dụng :ref:`set_instance_transform_2d()<class_MultiMesh_method_set_instance_transform_2d>` và :ref:`get_instance_transform_2d()<class_MultiMesh_method_get_instance_transform_2d>`.
 
-Array containing each :ref:`Transform2D<class_Transform2D>` value used by all instances of this mesh, as a :ref:`PackedVector2Array<class_PackedVector2Array>`. Each transform is divided into 3 :ref:`Vector2<class_Vector2>` values corresponding to the transforms' ``x``, ``y``, and ``origin``.
+Mảng chứa từng giá trị :ref:`Transform2D<class_Transform2D>` được tất cả các instance của mesh này sử dụng, dưới dạng :ref:`PackedVector2Array<class_PackedVector2Array>`. Mỗi transform được chia thành 3 giá trị :ref:`Vector2<class_Vector2>` tương ứng với ``x``, ``y`` và ``origin`` của các transform.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector2Array<class_PackedVector2Array>` for more details.
+**Lưu ý:** Mảng được trả về là *sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector2Array<class_PackedVector2Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -330,13 +330,13 @@ Array containing each :ref:`Transform2D<class_Transform2D>` value used by all in
 
 .. rst-class:: classref-property
 
-:ref:`PackedVector3Array<class_PackedVector3Array>` **transform_array** :ref:`🔗<class_MultiMesh_property_transform_array>`
+:ref:`PackedVector3Array<class_PackedVector3Array>` **transform_array** :ref:`🔗 <class_MultiMesh_property_transform_array>`
 
-**Deprecated:** Accessing this property is very slow. Use :ref:`set_instance_transform()<class_MultiMesh_method_set_instance_transform>` and :ref:`get_instance_transform()<class_MultiMesh_method_get_instance_transform>` instead.
+**Đã lỗi thời:** Việc truy cập thuộc tính này rất chậm. Thay vào đó, hãy sử dụng :ref:`set_instance_transform()<class_MultiMesh_method_set_instance_transform>` và :ref:`get_instance_transform()<class_MultiMesh_method_get_instance_transform>`.
 
-Array containing each :ref:`Transform3D<class_Transform3D>` value used by all instances of this mesh, as a :ref:`PackedVector3Array<class_PackedVector3Array>`. Each transform is divided into 4 :ref:`Vector3<class_Vector3>` values corresponding to the transforms' ``x``, ``y``, ``z``, and ``origin``.
+Mảng chứa từng giá trị :ref:`Transform3D<class_Transform3D>` được tất cả các instance của mesh này sử dụng, dưới dạng :ref:`PackedVector3Array<class_PackedVector3Array>`. Mỗi transform được chia thành 4 giá trị :ref:`Vector3<class_Vector3>` tương ứng với ``x``, ``y``, ``z`` và ``origin`` của các transform.
 
-**Note:** The returned array is *copied* and any changes to it will not update the original property value. See :ref:`PackedVector3Array<class_PackedVector3Array>` for more details.
+**Lưu ý:** Mảng được trả về là *sao chép* và mọi thay đổi đối với mảng này sẽ không cập nhật giá trị thuộc tính ban đầu. Xem :ref:`PackedVector3Array<class_PackedVector3Array>` để biết thêm chi tiết.
 
 .. rst-class:: classref-item-separator
 
@@ -353,7 +353,7 @@ Array containing each :ref:`Transform3D<class_Transform3D>` value used by all in
 - |void| **set_transform_format**\ (\ value\: :ref:`TransformFormat<enum_MultiMesh_TransformFormat>`\ )
 - :ref:`TransformFormat<enum_MultiMesh_TransformFormat>` **get_transform_format**\ (\ )
 
-Format of transform used to transform mesh, either 2D or 3D.
+Định dạng của transform được sử dụng để biến đổi mesh, có thể là 2D hoặc 3D.
 
 .. rst-class:: classref-item-separator
 
@@ -370,7 +370,7 @@ Format of transform used to transform mesh, either 2D or 3D.
 - |void| **set_use_colors**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_colors**\ (\ )
 
-If ``true``, the **MultiMesh** will use color data (see :ref:`set_instance_color()<class_MultiMesh_method_set_instance_color>`). Can only be set when :ref:`instance_count<class_MultiMesh_property_instance_count>` is ``0`` or less. This means that you need to call this method before setting the instance count, or temporarily reset it to ``0``.
+Nếu ``true``, **MultiMesh** sẽ sử dụng dữ liệu màu (xem :ref:`set_instance_color()<class_MultiMesh_method_set_instance_color>`). Chỉ có thể thiết lập khi :ref:`instance_count<class_MultiMesh_property_instance_count>` là ``0`` hoặc nhỏ hơn. Điều này có nghĩa là bạn cần gọi phương thức này trước khi thiết lập số lượng instance hoặc tạm thời đặt lại về ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -387,7 +387,7 @@ If ``true``, the **MultiMesh** will use color data (see :ref:`set_instance_color
 - |void| **set_use_custom_data**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_using_custom_data**\ (\ )
 
-If ``true``, the **MultiMesh** will use custom data (see :ref:`set_instance_custom_data()<class_MultiMesh_method_set_instance_custom_data>`). Can only be set when :ref:`instance_count<class_MultiMesh_property_instance_count>` is ``0`` or less. This means that you need to call this method before setting the instance count, or temporarily reset it to ``0``.
+Nếu ``true``, **MultiMesh** sẽ sử dụng dữ liệu tùy chỉnh (xem :ref:`set_instance_custom_data()<class_MultiMesh_method_set_instance_custom_data>`). Chỉ có thể thiết lập khi :ref:`instance_count<class_MultiMesh_property_instance_count>` là ``0`` hoặc nhỏ hơn. Điều này có nghĩa là bạn cần gọi phương thức này trước khi thiết lập số lượng instance hoặc tạm thời đặt lại về ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -404,7 +404,7 @@ If ``true``, the **MultiMesh** will use custom data (see :ref:`set_instance_cust
 - |void| **set_visible_instance_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_visible_instance_count**\ (\ )
 
-Limits the number of instances drawn, -1 draws all instances. Changing this does not change the sizes of the buffers.
+Giới hạn số lượng instance được vẽ; -1 sẽ vẽ tất cả instance. Việc thay đổi giá trị này không làm thay đổi kích thước của các buffer.
 
 .. rst-class:: classref-section-separator
 
@@ -412,8 +412,8 @@ Limits the number of instances drawn, -1 draws all instances. Changing this does
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_MultiMesh_method_get_aabb:
 
@@ -421,7 +421,7 @@ Method Descriptions
 
 :ref:`AABB<class_AABB>` **get_aabb**\ (\ ) |const| :ref:`🔗<class_MultiMesh_method_get_aabb>`
 
-Returns the visibility axis-aligned bounding box in local space.
+Trả về hộp giới hạn căn chỉnh theo trục trong local space.
 
 .. rst-class:: classref-item-separator
 
@@ -433,7 +433,7 @@ Returns the visibility axis-aligned bounding box in local space.
 
 :ref:`Color<class_Color>` **get_instance_color**\ (\ instance\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MultiMesh_method_get_instance_color>`
 
-Gets a specific instance's color multiplier.
+Lấy hệ số nhân màu của một instance cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -445,7 +445,7 @@ Gets a specific instance's color multiplier.
 
 :ref:`Color<class_Color>` **get_instance_custom_data**\ (\ instance\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MultiMesh_method_get_instance_custom_data>`
 
-Returns the custom data that has been set for a specific instance.
+Trả về dữ liệu tùy chỉnh đã được thiết lập cho một instance cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -457,7 +457,7 @@ Returns the custom data that has been set for a specific instance.
 
 :ref:`Transform3D<class_Transform3D>` **get_instance_transform**\ (\ instance\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MultiMesh_method_get_instance_transform>`
 
-Returns the :ref:`Transform3D<class_Transform3D>` of a specific instance.
+Trả về :ref:`Transform3D<class_Transform3D>` của một instance cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -469,7 +469,7 @@ Returns the :ref:`Transform3D<class_Transform3D>` of a specific instance.
 
 :ref:`Transform2D<class_Transform2D>` **get_instance_transform_2d**\ (\ instance\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_MultiMesh_method_get_instance_transform_2d>`
 
-Returns the :ref:`Transform2D<class_Transform2D>` of a specific instance.
+Trả về :ref:`Transform2D<class_Transform2D>` của một instance cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -481,9 +481,9 @@ Returns the :ref:`Transform2D<class_Transform2D>` of a specific instance.
 
 |void| **reset_instance_physics_interpolation**\ (\ instance\: :ref:`int<class_int>`\ ) :ref:`🔗<class_MultiMesh_method_reset_instance_physics_interpolation>`
 
-When using *physics interpolation*, this function allows you to prevent interpolation on an instance in the current physics tick.
+Khi sử dụng *physics interpolation*, hàm này cho phép bạn ngăn việc nội suy trên một instance trong tick vật lý hiện tại.
 
-This allows you to move instances instantaneously, and should usually be used when initially placing an instance such as a bullet to prevent graphical glitches.
+Điều này cho phép bạn di chuyển các instance ngay lập tức và thường nên được sử dụng khi đặt một instance ban đầu, chẳng hạn như một viên đạn, để ngăn lỗi hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -495,9 +495,9 @@ This allows you to move instances instantaneously, and should usually be used wh
 
 |void| **reset_instances_physics_interpolation**\ (\ ) :ref:`🔗<class_MultiMesh_method_reset_instances_physics_interpolation>`
 
-When using *physics interpolation*, this function allows you to prevent interpolation for all instances in the current physics tick.
+Khi sử dụng *physics interpolation*, hàm này cho phép bạn ngăn việc nội suy cho tất cả các instance trong tick vật lý hiện tại.
 
-This allows you to move all instances instantaneously, and should usually be used when initially placing instances to prevent graphical glitches.
+Điều này cho phép bạn di chuyển tất cả các instance ngay lập tức và thường nên được sử dụng khi đặt các instance ban đầu để ngăn lỗi hiển thị.
 
 .. rst-class:: classref-item-separator
 
@@ -509,11 +509,11 @@ This allows you to move all instances instantaneously, and should usually be use
 
 |void| **set_buffer_interpolated**\ (\ buffer_curr\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`, buffer_prev\: :ref:`PackedFloat32Array<class_PackedFloat32Array>`\ ) :ref:`🔗<class_MultiMesh_method_set_buffer_interpolated>`
 
-An alternative to setting the :ref:`buffer<class_MultiMesh_property_buffer>` property, which can be used with *physics interpolation*. This method takes two arrays, and can set the data for the current and previous tick in one go. The renderer will automatically interpolate the data at each frame.
+Một giải pháp thay thế cho việc thiết lập thuộc tính :ref:`buffer<class_MultiMesh_property_buffer>`, có thể được sử dụng với *physics interpolation*. Phương thức này nhận hai mảng và có thể thiết lập dữ liệu cho tick hiện tại và tick trước đó trong một lần. Renderer sẽ tự động nội suy dữ liệu ở mỗi frame.
 
-This is useful for situations where the order of instances may change from physics tick to tick, such as particle systems.
+Điều này hữu ích trong các tình huống thứ tự của các instance có thể thay đổi giữa các physics tick, chẳng hạn như trong các hệ thống hạt.
 
-When the order of instances is coherent, the simpler alternative of setting :ref:`buffer<class_MultiMesh_property_buffer>` can still be used with interpolation.
+Khi thứ tự của các instance nhất quán, vẫn có thể sử dụng cách đơn giản hơn là thiết lập :ref:`buffer<class_MultiMesh_property_buffer>` cùng với phép nội suy.
 
 .. rst-class:: classref-item-separator
 
@@ -525,11 +525,11 @@ When the order of instances is coherent, the simpler alternative of setting :ref
 
 |void| **set_instance_color**\ (\ instance\: :ref:`int<class_int>`, color\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_MultiMesh_method_set_instance_color>`
 
-Sets the color of a specific instance by *multiplying* the mesh's existing vertex colors. This allows for different color tinting per instance.
+Thiết lập màu của một instance cụ thể bằng cách *nhân* với màu vertex hiện có của mesh. Điều này cho phép áp dụng sắc độ màu khác nhau cho từng instance.
 
-\ **Note:** Each component is stored in 32 bits in the Forward+ and Mobile rendering methods, but is packed into 16 bits in the Compatibility rendering method.
+\ **Lưu ý:** Mỗi thành phần được lưu trữ trong 32 bit ở các phương thức kết xuất Forward+ và Mobile, nhưng được đóng gói vào 16 bit ở phương thức kết xuất Compatibility.
 
-For the color to take effect, ensure that :ref:`use_colors<class_MultiMesh_property_use_colors>` is ``true`` on the **MultiMesh** and :ref:`BaseMaterial3D.vertex_color_use_as_albedo<class_BaseMaterial3D_property_vertex_color_use_as_albedo>` is ``true`` on the material. If you intend to set an absolute color instead of tinting, make sure the material's albedo color is set to pure white (``Color(1, 1, 1)``).
+Để màu có hiệu lực, hãy đảm bảo rằng :ref:`use_colors<class_MultiMesh_property_use_colors>` là ``true`` trên **MultiMesh** và :ref:`BaseMaterial3D.vertex_color_use_as_albedo<class_BaseMaterial3D_property_vertex_color_use_as_albedo>` là ``true`` trên material. Nếu bạn định thiết lập màu tuyệt đối thay vì tint, hãy đảm bảo màu albedo của material được đặt thành trắng tinh (``Color(1, 1, 1)``).
 
 .. rst-class:: classref-item-separator
 
@@ -541,13 +541,13 @@ For the color to take effect, ensure that :ref:`use_colors<class_MultiMesh_prope
 
 |void| **set_instance_custom_data**\ (\ instance\: :ref:`int<class_int>`, custom_data\: :ref:`Color<class_Color>`\ ) :ref:`🔗<class_MultiMesh_method_set_instance_custom_data>`
 
-Sets custom data for a specific instance. ``custom_data`` is a :ref:`Color<class_Color>` type only to contain 4 floating-point numbers.
+Thiết lập dữ liệu tùy chỉnh cho một instance cụ thể. ``custom_data`` chỉ là kiểu :ref:`Color<class_Color>` dùng để chứa 4 số dấu phẩy động.
 
-\ **Note:** Each number is stored in 32 bits in the Forward+ and Mobile rendering methods, but is packed into 16 bits in the Compatibility rendering method.
+\ **Lưu ý:** Mỗi số được lưu trữ trong 32 bit ở các phương thức kết xuất Forward+ và Mobile, nhưng được đóng gói vào 16 bit ở phương thức kết xuất Compatibility.
 
-For the custom data to be used, ensure that :ref:`use_custom_data<class_MultiMesh_property_use_custom_data>` is ``true``.
+Để sử dụng dữ liệu tùy chỉnh, hãy đảm bảo rằng :ref:`use_custom_data<class_MultiMesh_property_use_custom_data>` là ``true``.
 
-This custom instance data has to be manually accessed in your custom shader using ``INSTANCE_CUSTOM``.
+Dữ liệu instance tùy chỉnh này phải được truy cập thủ công trong shader tùy chỉnh của bạn bằng ``INSTANCE_CUSTOM``.
 
 .. rst-class:: classref-item-separator
 
@@ -559,7 +559,7 @@ This custom instance data has to be manually accessed in your custom shader usin
 
 |void| **set_instance_transform**\ (\ instance\: :ref:`int<class_int>`, transform\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_MultiMesh_method_set_instance_transform>`
 
-Sets the :ref:`Transform3D<class_Transform3D>` for a specific instance.
+Thiết lập :ref:`Transform3D<class_Transform3D>` cho một instance cụ thể.
 
 .. rst-class:: classref-item-separator
 
@@ -571,14 +571,14 @@ Sets the :ref:`Transform3D<class_Transform3D>` for a specific instance.
 
 |void| **set_instance_transform_2d**\ (\ instance\: :ref:`int<class_int>`, transform\: :ref:`Transform2D<class_Transform2D>`\ ) :ref:`🔗<class_MultiMesh_method_set_instance_transform_2d>`
 
-Sets the :ref:`Transform2D<class_Transform2D>` for a specific instance.
+Thiết lập :ref:`Transform2D<class_Transform2D>` cho một instance cụ thể.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào ngoài các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

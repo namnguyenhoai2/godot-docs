@@ -10,24 +10,24 @@
 ExternalTexture
 ===============
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Texture which displays the content of an external buffer.
+Texture hiển thị nội dung của một buffer bên ngoài.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Displays the content of an external buffer provided by the platform.
+Hiển thị nội dung của một buffer bên ngoài do nền tảng cung cấp.
 
-Requires the `OES_EGL_image_external <https://registry.khronos.org/OpenGL/extensions/OES/OES_EGL_image_external.txt>`__ extension (OpenGL) or `VK_ANDROID_external_memory_android_hardware_buffer <https://registry.khronos.org/vulkan/specs/1.1-extensions/html/vkspec.html#VK_ANDROID_external_memory_android_hardware_buffer>`__ extension (Vulkan).
+Yêu cầu extension `OES_EGL_image_external <https://registry.khronos.org/OpenGL/extensions/OES/OES_EGL_image_external.txt>`__ (OpenGL) hoặc extension `VK_ANDROID_external_memory_android_hardware_buffer <https://registry.khronos.org/vulkan/specs/1.1-extensions/html/vkspec.html#VK_ANDROID_external_memory_android_hardware_buffer>`__ (Vulkan).
 
-\ **Note:** This is currently only supported in Android builds.
+\ **Lưu ý:** Hiện tại, tính năng này chỉ được hỗ trợ trong các bản build Android.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -41,8 +41,8 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -59,8 +59,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ExternalTexture_property_size:
 
@@ -73,7 +73,7 @@ Property Descriptions
 - |void| **set_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_size**\ (\ )
 
-External texture size.
+Kích thước texture bên ngoài.
 
 .. rst-class:: classref-section-separator
 
@@ -81,8 +81,8 @@ External texture size.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ExternalTexture_method_get_external_texture_id:
 
@@ -90,9 +90,9 @@ Method Descriptions
 
 :ref:`int<class_int>` **get_external_texture_id**\ (\ ) |const| :ref:`🔗<class_ExternalTexture_method_get_external_texture_id>`
 
-Returns the external texture ID.
+Trả về ID texture bên ngoài.
 
-Depending on your use case, you may need to pass this to platform APIs, for example, when creating an ``android.graphics.SurfaceTexture`` on Android.
+Tùy thuộc vào trường hợp sử dụng, bạn có thể cần truyền giá trị này cho các API của nền tảng, chẳng hạn như khi tạo ``android.graphics.SurfaceTexture`` trên Android.
 
 .. rst-class:: classref-item-separator
 
@@ -104,16 +104,16 @@ Depending on your use case, you may need to pass this to platform APIs, for exam
 
 |void| **set_external_buffer_id**\ (\ external_buffer_id\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ExternalTexture_method_set_external_buffer_id>`
 
-Sets the external buffer ID.
+Thiết lập ID buffer bên ngoài.
 
-Depending on your use case, you may need to call this with data received from a platform API, for example, ``SurfaceTexture.getHardwareBuffer()`` on Android.
+Tùy thuộc vào trường hợp sử dụng, bạn có thể cần gọi phương thức này với dữ liệu nhận được từ một API của nền tảng, chẳng hạn như ``SurfaceTexture.getHardwareBuffer()`` trên Android.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

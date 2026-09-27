@@ -10,33 +10,33 @@
 CollisionShape2D
 ================
 
-**Inherits:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Node2D<class_Node2D>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A node that provides a :ref:`Shape2D<class_Shape2D>` to a :ref:`CollisionObject2D<class_CollisionObject2D>` parent.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A node that provides a :ref:`Shape2D<class_Shape2D>` to a :ref:`CollisionObject2D<class_CollisionObject2D>` parent and allows it to be edited. This can give a detection shape to an :ref:`Area2D<class_Area2D>` or turn a :ref:`PhysicsBody2D<class_PhysicsBody2D>` into a solid object.
+Một node cung cấp một :ref:`Shape2D<class_Shape2D>` cho một :ref:`CollisionObject2D<class_CollisionObject2D>` node cha.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một node cung cấp một :ref:`Shape2D<class_Shape2D>` cho một :ref:`CollisionObject2D<class_CollisionObject2D>` node cha và cho phép chỉnh sửa node đó. Điều này có thể cung cấp hình dạng phát hiện cho một :ref:`Area2D<class_Area2D>` hoặc biến một :ref:`PhysicsBody2D<class_PhysicsBody2D>` thành một đối tượng rắn.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
-- `2D Dodge The Creeps Demo <https://godotengine.org/asset-library/asset/2712>`__
+- `Bản demo 2D Dodge The Creeps <https://godotengine.org/asset-library/asset/2712>`__
 
-- `2D Pong Demo <https://godotengine.org/asset-library/asset/2728>`__
+- `Bản demo Pong 2D <https://godotengine.org/asset-library/asset/2728>`__
 
-- `2D Kinematic Character Demo <https://godotengine.org/asset-library/asset/2719>`__
+- `Bản demo nhân vật động học <https://godotengine.org/asset-library/asset/2719>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -62,8 +62,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CollisionShape2D_property_debug_color:
 
@@ -76,9 +76,9 @@ Property Descriptions
 - |void| **set_debug_color**\ (\ value\: :ref:`Color<class_Color>`\ )
 - :ref:`Color<class_Color>` **get_debug_color**\ (\ )
 
-The collision shape color that is displayed in the editor, or in the running project if **Debug > Visible Collision Shapes** is checked at the top of the editor.
+Màu của hình dạng va chạm được hiển thị trong editor hoặc trong project đang chạy nếu **Debug > Visible Collision Shapes** được đánh dấu ở đầu editor.
 
-\ **Note:** The default value is :ref:`ProjectSettings.debug/shapes/collision/shape_color<class_ProjectSettings_property_debug/shapes/collision/shape_color>`. The ``Color(0, 0, 0, 0)`` value documented here is a placeholder, and not the actual default debug color.
+\ **Lưu ý:** Giá trị mặc định là :ref:`ProjectSettings.debug/shapes/collision/shape_color <class_ProjectSettings_property_debug/shapes/collision/shape_color>`. Giá trị ``Color(0, 0, 0, 0)`` được ghi lại ở đây là một placeholder, không phải màu debug mặc định thực tế.
 
 .. rst-class:: classref-item-separator
 
@@ -95,7 +95,7 @@ The collision shape color that is displayed in the editor, or in the running pro
 - |void| **set_disabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_disabled**\ (\ )
 
-A disabled collision shape has no effect in the world. This property should be changed with :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
+Hình dạng va chạm bị tắt không có tác động nào trong thế giới. Nên thay đổi thuộc tính này bằng :ref:`Object.set_deferred()<class_Object_method_set_deferred>`.
 
 .. rst-class:: classref-item-separator
 
@@ -112,11 +112,11 @@ A disabled collision shape has no effect in the world. This property should be c
 - |void| **set_one_way_collision**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_one_way_collision_enabled**\ (\ )
 
-Sets whether this collision shape should only detect collision on one side (top or bottom).
+Xác định liệu hình dạng va chạm này chỉ phát hiện va chạm ở một phía (trên hoặc dưới) hay không.
 
-\ **Note:** This property has no effect if this **CollisionShape2D** is a child of an :ref:`Area2D<class_Area2D>` node.
+\ **Lưu ý:** Thuộc tính này không có tác dụng nếu **CollisionShape2D** này là node con của một node :ref:`Area2D<class_Area2D>`.
 
-\ **Note:** The one way collision direction can be configured by setting :ref:`one_way_collision_direction<class_CollisionShape2D_property_one_way_collision_direction>`.
+\ **Lưu ý:** Có thể cấu hình hướng va chạm một chiều bằng cách thiết lập :ref:`one_way_collision_direction<class_CollisionShape2D_property_one_way_collision_direction>`.
 
 .. rst-class:: classref-item-separator
 
@@ -133,7 +133,7 @@ Sets whether this collision shape should only detect collision on one side (top 
 - |void| **set_one_way_collision_direction**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_one_way_collision_direction**\ (\ )
 
-The direction used for one-way collision.
+Hướng được sử dụng cho va chạm một chiều.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ The direction used for one-way collision.
 - |void| **set_one_way_collision_margin**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_one_way_collision_margin**\ (\ )
 
-The margin used for one-way collision (in pixels). Higher values will make the shape thicker, and work better for colliders that enter the shape at a high velocity.
+Lề được sử dụng cho va chạm một chiều (tính bằng pixel). Giá trị cao hơn sẽ làm hình dạng dày hơn và hoạt động tốt hơn đối với các collider đi vào hình dạng với vận tốc cao.
 
 .. rst-class:: classref-item-separator
 
@@ -160,21 +160,21 @@ The margin used for one-way collision (in pixels). Higher values will make the s
 
 .. rst-class:: classref-property
 
-:ref:`Shape2D<class_Shape2D>` **shape** :ref:`🔗<class_CollisionShape2D_property_shape>`
+:ref:`Shape2D<class_Shape2D>` **shape** :ref:`🔗 <class_CollisionShape2D_property_shape>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_shape**\ (\ value\: :ref:`Shape2D<class_Shape2D>`\ )
 - :ref:`Shape2D<class_Shape2D>` **get_shape**\ (\ )
 
-The actual shape owned by this collision shape.
+Hình dạng thực tế do hình dạng va chạm này sở hữu.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này để phương thức có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

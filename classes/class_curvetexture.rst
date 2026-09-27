@@ -10,36 +10,36 @@
 CurveTexture
 ============
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A 1D texture where pixel brightness corresponds to points on a curve.
+Một texture 1D trong đó độ sáng của pixel tương ứng với các điểm trên một đường cong.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A 1D texture where pixel brightness corresponds to points on a unit :ref:`Curve<class_Curve>` resource, either in grayscale or in red. This visual representation simplifies the task of saving curves as image files.
+Một texture 1D trong đó độ sáng của pixel tương ứng với các điểm trên một tài nguyên :ref:`Curve<class_Curve>` đơn vị, ở dạng thang độ xám hoặc màu đỏ. Biểu diễn trực quan này giúp đơn giản hóa việc lưu các đường cong dưới dạng tệp hình ảnh.
 
-If you need to store up to 3 curves within a single texture, use :ref:`CurveXYZTexture<class_CurveXYZTexture>` instead. See also :ref:`GradientTexture1D<class_GradientTexture1D>` and :ref:`GradientTexture2D<class_GradientTexture2D>`.
+Nếu cần lưu trữ tối đa 3 đường cong trong một texture, hãy sử dụng :ref:`CurveXYZTexture<class_CurveXYZTexture>` thay thế. Xem thêm :ref:`GradientTexture1D<class_GradientTexture1D>` và :ref:`GradientTexture2D<class_GradientTexture2D>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------+---------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`Curve<class_Curve>`                         | :ref:`curve<class_CurveTexture_property_curve>`               |                                                                                        |
-   +---------------------------------------------------+---------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                           | resource_local_to_scene                                       | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +---------------------------------------------------+---------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`TextureMode<enum_CurveTexture_TextureMode>` | :ref:`texture_mode<class_CurveTexture_property_texture_mode>` | ``0``                                                                                  |
-   +---------------------------------------------------+---------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                             | :ref:`width<class_CurveTexture_property_width>`               | ``256``                                                                                |
-   +---------------------------------------------------+---------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   +----------------------------------------------------+---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`Curve<class_Curve>`                          | :ref:`curve<class_CurveTexture_property_curve>`               |                                                                                     |
+   +----------------------------------------------------+---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                            | resource_local_to_scene                                       | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +----------------------------------------------------+---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`TextureMode <enum_CurveTexture_TextureMode>` | :ref:`texture_mode<class_CurveTexture_property_texture_mode>` | ``0``                                                                               |
+   +----------------------------------------------------+---------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                              | :ref:`width<class_CurveTexture_property_width>`               | ``256``                                                                             |
+   +----------------------------------------------------+---------------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -47,14 +47,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các giá trị enum
+----------------
 
 .. _enum_CurveTexture_TextureMode:
 
 .. rst-class:: classref-enumeration
 
-enum **TextureMode**: :ref:`🔗<enum_CurveTexture_TextureMode>`
+enum **TextureMode**: :ref:`🔗 <enum_CurveTexture_TextureMode>`
 
 .. _class_CurveTexture_constant_TEXTURE_MODE_RGB:
 
@@ -62,7 +62,7 @@ enum **TextureMode**: :ref:`🔗<enum_CurveTexture_TextureMode>`
 
 :ref:`TextureMode<enum_CurveTexture_TextureMode>` **TEXTURE_MODE_RGB** = ``0``
 
-Store the curve equally across the red, green and blue channels. This uses more video memory, but is more compatible with shaders that only read the green and blue values.
+Lưu đường cong đồng đều trên các kênh đỏ, xanh lá và xanh dương. Cách này sử dụng nhiều video memory hơn, nhưng tương thích tốt hơn với các shader chỉ đọc các giá trị xanh lá và xanh dương.
 
 .. _class_CurveTexture_constant_TEXTURE_MODE_RED:
 
@@ -70,7 +70,7 @@ Store the curve equally across the red, green and blue channels. This uses more 
 
 :ref:`TextureMode<enum_CurveTexture_TextureMode>` **TEXTURE_MODE_RED** = ``1``
 
-Store the curve only in the red channel. This saves video memory, but some custom shaders may not be able to work with this.
+Chỉ lưu đường cong trên kênh đỏ. Cách này tiết kiệm video memory, nhưng một số shader tùy chỉnh có thể không hoạt động với cách này.
 
 .. rst-class:: classref-section-separator
 
@@ -78,21 +78,21 @@ Store the curve only in the red channel. This saves video memory, but some custo
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CurveTexture_property_curve:
 
 .. rst-class:: classref-property
 
-:ref:`Curve<class_Curve>` **curve** :ref:`🔗<class_CurveTexture_property_curve>`
+:ref:`Curve<class_Curve>` **curve** :ref:`🔗 <class_CurveTexture_property_curve>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_curve**\ (\ value\: :ref:`Curve<class_Curve>`\ )
 - :ref:`Curve<class_Curve>` **get_curve**\ (\ )
 
-The :ref:`Curve<class_Curve>` that is rendered onto the texture. Should be a unit :ref:`Curve<class_Curve>`.
+:ref:`Curve<class_Curve>` được kết xuất lên texture. Đối tượng này phải là một :ref:`Curve<class_Curve>` đơn vị.
 
 .. rst-class:: classref-item-separator
 
@@ -109,7 +109,7 @@ The :ref:`Curve<class_Curve>` that is rendered onto the texture. Should be a uni
 - |void| **set_texture_mode**\ (\ value\: :ref:`TextureMode<enum_CurveTexture_TextureMode>`\ )
 - :ref:`TextureMode<enum_CurveTexture_TextureMode>` **get_texture_mode**\ (\ )
 
-The format the texture should be generated with. When passing a CurveTexture as an input to a :ref:`Shader<class_Shader>`, this may need to be adjusted.
+Định dạng mà texture sẽ được tạo bằng. Khi truyền CurveTexture làm đầu vào cho một :ref:`Shader<class_Shader>`, bạn có thể cần điều chỉnh định dạng này.
 
 .. rst-class:: classref-item-separator
 
@@ -126,14 +126,14 @@ The format the texture should be generated with. When passing a CurveTexture as 
 - |void| **set_width**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_width**\ (\ )
 
-The width of the texture (in pixels). Higher values make it possible to represent high-frequency data better (such as sudden direction changes), at the cost of increased generation time and memory usage.
+Chiều rộng của texture (tính bằng pixel). Giá trị cao hơn giúp biểu diễn dữ liệu có tần số cao tốt hơn (chẳng hạn như những thay đổi hướng đột ngột), nhưng phải đánh đổi bằng thời gian tạo và mức sử dụng bộ nhớ tăng lên.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên class.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask của các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

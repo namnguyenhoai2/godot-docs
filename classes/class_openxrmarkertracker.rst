@@ -10,39 +10,39 @@
 OpenXRMarkerTracker
 ===================
 
-**Experimental:** This class may be changed or removed in future versions.
+**Thử nghiệm:** Lớp này có thể được thay đổi hoặc loại bỏ trong các phiên bản tương lai.
 
-**Inherits:** :ref:`OpenXRSpatialEntityTracker<class_OpenXRSpatialEntityTracker>` **<** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`OpenXRSpatialEntityTracker<class_OpenXRSpatialEntityTracker>` **<** :ref:`XRPositionalTracker<class_XRPositionalTracker>` **<** :ref:`XRTracker<class_XRTracker>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Spatial entity tracker for our spatial entity marker tracking extension.
+Trình theo dõi thực thể không gian cho extension theo dõi marker của thực thể không gian.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Spatial entity tracker for our OpenXR spatial entity marker tracking extension. These trackers identify entities in our real space detected by a visual marker such as a QRCode or Aruco code, and map their location to our virtual space.
+Trình theo dõi thực thể không gian cho extension theo dõi marker của thực thể không gian OpenXR. Các trình theo dõi này xác định những thực thể trong không gian thực của chúng ta được phát hiện bằng marker trực quan như mã QRCode hoặc mã Aruco, rồi ánh xạ vị trí của chúng vào không gian ảo.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
-   | :ref:`Vector2<class_Vector2>`                                       | :ref:`bounds_size<class_OpenXRMarkerTracker_property_bounds_size>` | ``Vector2(0, 0)`` |
-   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
-   | :ref:`int<class_int>`                                               | :ref:`marker_id<class_OpenXRMarkerTracker_property_marker_id>`     | ``0``             |
-   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
-   | :ref:`MarkerType<enum_OpenXRSpatialComponentMarkerList_MarkerType>` | :ref:`marker_type<class_OpenXRMarkerTracker_property_marker_type>` | ``0``             |
-   +---------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
+   +----------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
+   | :ref:`Vector2<class_Vector2>`                                        | :ref:`bounds_size<class_OpenXRMarkerTracker_property_bounds_size>` | ``Vector2(0, 0)`` |
+   +----------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
+   | :ref:`int<class_int>`                                                | :ref:`marker_id<class_OpenXRMarkerTracker_property_marker_id>`     | ``0``             |
+   +----------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
+   | :ref:`MarkerType <enum_OpenXRSpatialComponentMarkerList_MarkerType>` | :ref:`marker_type<class_OpenXRMarkerTracker_property_marker_type>` | ``0``             |
+   +----------------------------------------------------------------------+--------------------------------------------------------------------+-------------------+
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -59,8 +59,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_OpenXRMarkerTracker_property_bounds_size:
 
@@ -73,7 +73,7 @@ Property Descriptions
 - |void| **set_bounds_size**\ (\ value\: :ref:`Vector2<class_Vector2>`\ )
 - :ref:`Vector2<class_Vector2>` **get_bounds_size**\ (\ )
 
-The bounds size for this marker.
+Kích thước giới hạn của marker này.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ The bounds size for this marker.
 - |void| **set_marker_id**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_marker_id**\ (\ )
 
-The marker ID for this marker, this is only returned for Aruco and April Tag markers. Call :ref:`get_marker_data()<class_OpenXRMarkerTracker_method_get_marker_data>` for QRCode markers.
+ID của marker này; giá trị này chỉ được trả về cho các marker Aruco và April Tag. Gọi :ref:`get_marker_data()<class_OpenXRMarkerTracker_method_get_marker_data>` đối với các marker QRCode.
 
 .. rst-class:: classref-item-separator
 
@@ -107,7 +107,7 @@ The marker ID for this marker, this is only returned for Aruco and April Tag mar
 - |void| **set_marker_type**\ (\ value\: :ref:`MarkerType<enum_OpenXRSpatialComponentMarkerList_MarkerType>`\ )
 - :ref:`MarkerType<enum_OpenXRSpatialComponentMarkerList_MarkerType>` **get_marker_type**\ (\ )
 
-The type of marker.
+Loại marker.
 
 .. rst-class:: classref-section-separator
 
@@ -115,8 +115,8 @@ The type of marker.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_OpenXRMarkerTracker_method_get_marker_data:
 
@@ -124,7 +124,7 @@ Method Descriptions
 
 :ref:`Variant<class_Variant>` **get_marker_data**\ (\ ) |const| :ref:`🔗<class_OpenXRMarkerTracker_method_get_marker_data>`
 
-Returns the marker data for this marker. This can return a :ref:`String<class_String>` or :ref:`PackedByteArray<class_PackedByteArray>`. Only applicable to QR Code based markers.
+Trả về dữ liệu marker cho marker này. Giá trị trả về có thể là :ref:`String<class_String>` hoặc :ref:`PackedByteArray<class_PackedByteArray>`. Chỉ áp dụng cho các marker dựa trên QR Code.
 
 .. rst-class:: classref-item-separator
 
@@ -136,16 +136,16 @@ Returns the marker data for this marker. This can return a :ref:`String<class_St
 
 |void| **set_marker_data**\ (\ marker_data\: :ref:`Variant<class_Variant>`\ ) :ref:`🔗<class_OpenXRMarkerTracker_method_set_marker_data>`
 
-Sets the marker data for this marker.
+Thiết lập dữ liệu marker cho marker này.
 
-\ **Note:** This should only be set by marker discovery logic.
+\ **Lưu ý:** Chỉ nên thiết lập giá trị này bởi logic phát hiện marker.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

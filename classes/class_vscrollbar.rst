@@ -10,34 +10,34 @@
 VScrollBar
 ==========
 
-**Inherits:** :ref:`ScrollBar<class_ScrollBar>` **<** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ScrollBar<class_ScrollBar>` **<** :ref:`Range<class_Range>` **<** :ref:`Control<class_Control>` **<** :ref:`CanvasItem<class_CanvasItem>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A vertical scrollbar that goes from top (min) to bottom (max).
+Một thanh cuộn dọc đi từ trên cùng (min) đến dưới cùng (max).
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A vertical scrollbar, typically used to navigate through content that extends beyond the visible height of a control. It is a :ref:`Range<class_Range>`-based control and goes from top (min) to bottom (max). Note that this direction is the opposite of :ref:`VSlider<class_VSlider>`'s.
+Một thanh cuộn dọc, thường được dùng để điều hướng qua nội dung vượt quá chiều cao hiển thị của một control. Đây là một control dựa trên :ref:`Range<class_Range>` và đi từ trên cùng (min) đến dưới cùng (max). Lưu ý rằng hướng này ngược với :ref:`VSlider<class_VSlider>`.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------------------+-----------------------+--------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\] | size_flags_horizontal | ``0`` (overrides :ref:`Control<class_Control_property_size_flags_horizontal>`) |
-   +--------------------------------------------------------+-----------------------+--------------------------------------------------------------------------------+
-   | |bitfield|\[:ref:`SizeFlags<enum_Control_SizeFlags>`\] | size_flags_vertical   | ``1`` (overrides :ref:`Control<class_Control_property_size_flags_vertical>`)   |
-   +--------------------------------------------------------+-----------------------+--------------------------------------------------------------------------------+
+   +---------------------------------------------------------+-----------------------+-----------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`SizeFlags <enum_Control_SizeFlags>`\] | size_flags_horizontal | ``0`` (ghi đè :ref:`Control<class_Control_property_size_flags_horizontal>`) |
+   +---------------------------------------------------------+-----------------------+-----------------------------------------------------------------------------+
+   | |bitfield|\[:ref:`SizeFlags <enum_Control_SizeFlags>`\] | size_flags_vertical   | ``1`` (ghi đè :ref:`Control<class_Control_property_size_flags_vertical>`)   |
+   +---------------------------------------------------------+-----------------------+-----------------------------------------------------------------------------+
 
 .. rst-class:: classref-reftable-group
 
-Theme Properties
+Thuộc tính Theme
 ----------------
 
 .. table::
@@ -55,8 +55,8 @@ Theme Properties
 
 .. rst-class:: classref-descriptions-group
 
-Theme Property Descriptions
----------------------------
+Mô tả thuộc tính Theme
+----------------------
 
 .. _class_VScrollBar_theme_constant_padding_left:
 
@@ -64,9 +64,9 @@ Theme Property Descriptions
 
 :ref:`int<class_int>` **padding_left** = ``0`` :ref:`🔗<class_VScrollBar_theme_constant_padding_left>`
 
-Padding between the left of the :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` element and the :ref:`ScrollBar.grabber<class_ScrollBar_theme_style_grabber>`.
+Khoảng đệm giữa bên trái của phần tử :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` và :ref:`ScrollBar.grabber<class_ScrollBar_theme_style_grabber>`.
 
-\ **Note:** To apply vertical padding, modify the top/bottom content margins of :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` instead.
+\ **Lưu ý:** Để áp dụng padding theo chiều dọc, hãy sửa đổi lề nội dung trên/dưới của :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` thay thế.
 
 .. rst-class:: classref-item-separator
 
@@ -78,16 +78,16 @@ Padding between the left of the :ref:`ScrollBar.scroll<class_ScrollBar_theme_sty
 
 :ref:`int<class_int>` **padding_right** = ``0`` :ref:`🔗<class_VScrollBar_theme_constant_padding_right>`
 
-Padding between the right of the :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` element and the :ref:`ScrollBar.grabber<class_ScrollBar_theme_style_grabber>`.
+Khoảng padding giữa phía bên phải của phần tử :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` và :ref:`ScrollBar.grabber<class_ScrollBar_theme_style_grabber>`.
 
-\ **Note:** To apply vertical padding, modify the top/bottom content margins of :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` instead.
+\ **Lưu ý:** Để áp dụng padding theo chiều dọc, hãy sửa đổi lề nội dung trên/dưới của :ref:`ScrollBar.scroll<class_ScrollBar_theme_style_scroll>` thay thế.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bạn phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,36 +10,36 @@
 CameraTexture
 =============
 
-**Inherits:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture2D<class_Texture2D>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Texture provided by a :ref:`CameraFeed<class_CameraFeed>`.
+Texture được cung cấp bởi một :ref:`CameraFeed<class_CameraFeed>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-This texture gives access to the camera texture provided by a :ref:`CameraFeed<class_CameraFeed>`.
+Texture này cho phép truy cập texture camera do một :ref:`CameraFeed<class_CameraFeed>` cung cấp.
 
-\ **Note:** Many cameras supply YCbCr images which need to be converted in a shader.
+\ **Lưu ý:** Nhiều camera cung cấp hình ảnh YCbCr cần được chuyển đổi trong shader.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`int<class_int>`                         | :ref:`camera_feed_id<class_CameraTexture_property_camera_feed_id>`     | ``0``                                                                                  |
-   +-----------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                       | :ref:`camera_is_active<class_CameraTexture_property_camera_is_active>` | ``false``                                                                              |
-   +-----------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>`                       | resource_local_to_scene                                                | ``false`` (overrides :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
-   +-----------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-   | :ref:`FeedImage<enum_CameraServer_FeedImage>` | :ref:`which_feed<class_CameraTexture_property_which_feed>`             | ``0``                                                                                  |
-   +-----------------------------------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
+   +------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                          | :ref:`camera_feed_id<class_CameraTexture_property_camera_feed_id>`     | ``0``                                                                               |
+   +------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                        | :ref:`camera_is_active<class_CameraTexture_property_camera_is_active>` | ``false``                                                                           |
+   +------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                        | resource_local_to_scene                                                | ``false`` (ghi đè :ref:`Resource<class_Resource_property_resource_local_to_scene>`) |
+   +------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
+   | :ref:`FeedImage <enum_CameraServer_FeedImage>` | :ref:`which_feed<class_CameraTexture_property_which_feed>`             | ``0``                                                                               |
+   +------------------------------------------------+------------------------------------------------------------------------+-------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_CameraTexture_property_camera_feed_id:
 
@@ -61,7 +61,7 @@ Property Descriptions
 - |void| **set_camera_feed_id**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_camera_feed_id**\ (\ )
 
-The ID of the :ref:`CameraFeed<class_CameraFeed>` for which we want to display the image.
+ID của :ref:`CameraFeed<class_CameraFeed>` mà chúng ta muốn hiển thị hình ảnh.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ The ID of the :ref:`CameraFeed<class_CameraFeed>` for which we want to display t
 - |void| **set_camera_active**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **get_camera_active**\ (\ )
 
-Convenience property that gives access to the active property of the :ref:`CameraFeed<class_CameraFeed>`.
+Thuộc tính tiện ích cho phép truy cập thuộc tính đang hoạt động của :ref:`CameraFeed<class_CameraFeed>`.
 
 .. rst-class:: classref-item-separator
 
@@ -95,14 +95,14 @@ Convenience property that gives access to the active property of the :ref:`Camer
 - |void| **set_which_feed**\ (\ value\: :ref:`FeedImage<enum_CameraServer_FeedImage>`\ )
 - :ref:`FeedImage<enum_CameraServer_FeedImage>` **get_which_feed**\ (\ )
 
-Which image within the :ref:`CameraFeed<class_CameraFeed>` we want access to, important if the camera image is split in a Y and CbCr component.
+Hình ảnh nào trong :ref:`CameraFeed<class_CameraFeed>` mà chúng ta muốn truy cập; điều này quan trọng nếu hình ảnh camera được tách thành thành phần Y và CbCr.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường được người dùng ghi đè để có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

@@ -10,28 +10,28 @@
 VisualShaderNodeParticleAccelerator
 ===================================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A visual shader node that accelerates particles.
+Một node visual shader dùng để tăng tốc các hạt.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Particle accelerator can be used in "process" step of particle shader. It will accelerate the particles. Connect it to the Velocity output port.
+Particle accelerator có thể được sử dụng trong bước "process" của particle shader. Nó sẽ tăng tốc các hạt. Hãy kết nối nó với cổng đầu ra Velocity.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------------------------+----------------------------------------------------------------------+-------+
-   | :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>` | :ref:`mode<class_VisualShaderNodeParticleAccelerator_property_mode>` | ``0`` |
-   +------------------------------------------------------------+----------------------------------------------------------------------+-------+
+   +-------------------------------------------------------------+----------------------------------------------------------------------+-------+
+   | :ref:`Mode <enum_VisualShaderNodeParticleAccelerator_Mode>` | :ref:`mode<class_VisualShaderNodeParticleAccelerator_property_mode>` | ``0`` |
+   +-------------------------------------------------------------+----------------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -39,14 +39,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeParticleAccelerator_Mode:
 
 .. rst-class:: classref-enumeration
 
-enum **Mode**: :ref:`🔗<enum_VisualShaderNodeParticleAccelerator_Mode>`
+enum **Mode**: :ref:`🔗 <enum_VisualShaderNodeParticleAccelerator_Mode>`
 
 .. _class_VisualShaderNodeParticleAccelerator_constant_MODE_LINEAR:
 
@@ -54,7 +54,7 @@ enum **Mode**: :ref:`🔗<enum_VisualShaderNodeParticleAccelerator_Mode>`
 
 :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>` **MODE_LINEAR** = ``0``
 
-The particles will be accelerated based on their velocity.
+Các particle sẽ được tăng tốc dựa trên vận tốc của chúng.
 
 .. _class_VisualShaderNodeParticleAccelerator_constant_MODE_RADIAL:
 
@@ -62,7 +62,7 @@ The particles will be accelerated based on their velocity.
 
 :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>` **MODE_RADIAL** = ``1``
 
-The particles will be accelerated towards or away from the center.
+Các particle sẽ được tăng tốc hướng về phía tâm hoặc ra xa tâm.
 
 .. _class_VisualShaderNodeParticleAccelerator_constant_MODE_TANGENTIAL:
 
@@ -70,7 +70,7 @@ The particles will be accelerated towards or away from the center.
 
 :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>` **MODE_TANGENTIAL** = ``2``
 
-The particles will be accelerated tangentially to the radius vector from center to their position.
+Các particle sẽ được tăng tốc theo phương tiếp tuyến với vector bán kính từ tâm đến vị trí của chúng.
 
 .. _class_VisualShaderNodeParticleAccelerator_constant_MODE_MAX:
 
@@ -78,7 +78,7 @@ The particles will be accelerated tangentially to the radius vector from center 
 
 :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>` **MODE_MAX** = ``3``
 
-Represents the size of the :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>` enum.
+Biểu thị kích thước của enum :ref:`Mode <enum_VisualShaderNodeParticleAccelerator_Mode>`.
 
 .. rst-class:: classref-section-separator
 
@@ -86,8 +86,8 @@ Represents the size of the :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_M
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeParticleAccelerator_property_mode:
 
@@ -100,14 +100,14 @@ Property Descriptions
 - |void| **set_mode**\ (\ value\: :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>`\ )
 - :ref:`Mode<enum_VisualShaderNodeParticleAccelerator_Mode>` **get_mode**\ (\ )
 
-Defines in what manner the particles will be accelerated.
+Xác định cách thức các particle sẽ được tăng tốc.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng cần ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được cấu thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

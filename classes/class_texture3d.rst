@@ -10,27 +10,27 @@
 Texture3D
 =========
 
-**Inherits:** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CompressedTexture3D<class_CompressedTexture3D>`, :ref:`ImageTexture3D<class_ImageTexture3D>`, :ref:`NoiseTexture3D<class_NoiseTexture3D>`, :ref:`PlaceholderTexture3D<class_PlaceholderTexture3D>`, :ref:`Texture3DRD<class_Texture3DRD>`
+**Được kế thừa bởi:** :ref:`CompressedTexture3D<class_CompressedTexture3D>`, :ref:`ImageTexture3D<class_ImageTexture3D>`, :ref:`NoiseTexture3D<class_NoiseTexture3D>`, :ref:`PlaceholderTexture3D<class_PlaceholderTexture3D>`, :ref:`Texture3DRD<class_Texture3DRD>`
 
-Base class for 3-dimensional textures.
+Lớp cơ sở cho các texture 3 chiều.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base class for :ref:`ImageTexture3D<class_ImageTexture3D>` and :ref:`CompressedTexture3D<class_CompressedTexture3D>`. Cannot be used directly, but contains all the functions necessary for accessing the derived resource types. **Texture3D** is the base class for all 3-dimensional texture types. See also :ref:`TextureLayered<class_TextureLayered>`.
+Lớp cơ sở cho :ref:`ImageTexture3D<class_ImageTexture3D>` và :ref:`CompressedTexture3D<class_CompressedTexture3D>`. Không thể sử dụng trực tiếp, nhưng chứa tất cả các hàm cần thiết để truy cập những loại tài nguyên dẫn xuất. **Texture3D** là lớp cơ sở cho tất cả các loại texture 3 chiều. Xem thêm :ref:`TextureLayered<class_TextureLayered>`.
 
-All images need to have the same width, height and number of mipmap levels.
+Tất cả hình ảnh phải có cùng chiều rộng, chiều cao và số lượng cấp mipmap.
 
-To create such a texture file yourself, reimport your image files using the Godot Editor import presets.
+Để tự tạo tệp texture như vậy, hãy nhập lại các tệp hình ảnh bằng các thiết lập nhập của Godot Editor.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -40,7 +40,7 @@ Methods
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                  | :ref:`_get_depth<class_Texture3D_private_method__get_depth>`\ (\ ) |virtual| |required| |const|     |
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
-   | :ref:`Format<enum_Image_Format>`                       | :ref:`_get_format<class_Texture3D_private_method__get_format>`\ (\ ) |virtual| |required| |const|   |
+   | :ref:`Format <enum_Image_Format>`                      | :ref:`_get_format<class_Texture3D_private_method__get_format>`\ (\ ) |virtual| |required| |const|   |
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                  | :ref:`_get_height<class_Texture3D_private_method__get_height>`\ (\ ) |virtual| |required| |const|   |
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
@@ -54,7 +54,7 @@ Methods
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                  | :ref:`get_depth<class_Texture3D_method_get_depth>`\ (\ ) |const|                                    |
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
-   | :ref:`Format<enum_Image_Format>`                       | :ref:`get_format<class_Texture3D_method_get_format>`\ (\ ) |const|                                  |
+   | :ref:`Format <enum_Image_Format>`                      | :ref:`get_format<class_Texture3D_method_get_format>`\ (\ ) |const|                                  |
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                                  | :ref:`get_height<class_Texture3D_method_get_height>`\ (\ ) |const|                                  |
    +--------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
@@ -69,8 +69,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Texture3D_private_method__get_data:
 
@@ -78,7 +78,7 @@ Method Descriptions
 
 :ref:`Array<class_Array>`\[:ref:`Image<class_Image>`\] **_get_data**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Texture3D_private_method__get_data>`
 
-Called when the **Texture3D**'s data is queried.
+Được gọi khi dữ liệu của **Texture3D** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -90,7 +90,7 @@ Called when the **Texture3D**'s data is queried.
 
 :ref:`int<class_int>` **_get_depth**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Texture3D_private_method__get_depth>`
 
-Called when the **Texture3D**'s depth is queried.
+Được gọi khi độ sâu của **Texture3D** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -102,7 +102,7 @@ Called when the **Texture3D**'s depth is queried.
 
 :ref:`Format<enum_Image_Format>` **_get_format**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Texture3D_private_method__get_format>`
 
-Called when the **Texture3D**'s format is queried.
+Được gọi khi định dạng của **Texture3D** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -114,7 +114,7 @@ Called when the **Texture3D**'s format is queried.
 
 :ref:`int<class_int>` **_get_height**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Texture3D_private_method__get_height>`
 
-Called when the **Texture3D**'s height is queried.
+Được gọi khi chiều cao của **Texture3D** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -126,7 +126,7 @@ Called when the **Texture3D**'s height is queried.
 
 :ref:`int<class_int>` **_get_width**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Texture3D_private_method__get_width>`
 
-Called when the **Texture3D**'s width is queried.
+Được gọi khi chiều rộng của **Texture3D** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -138,7 +138,7 @@ Called when the **Texture3D**'s width is queried.
 
 :ref:`bool<class_bool>` **_has_mipmaps**\ (\ ) |virtual| |required| |const| :ref:`🔗<class_Texture3D_private_method__has_mipmaps>`
 
-Called when the presence of mipmaps in the **Texture3D** is queried.
+Được gọi khi trạng thái có mipmap của **Texture3D** được truy vấn.
 
 .. rst-class:: classref-item-separator
 
@@ -150,7 +150,7 @@ Called when the presence of mipmaps in the **Texture3D** is queried.
 
 :ref:`Resource<class_Resource>` **create_placeholder**\ (\ ) |const| :ref:`🔗<class_Texture3D_method_create_placeholder>`
 
-Creates a placeholder version of this resource (:ref:`PlaceholderTexture3D<class_PlaceholderTexture3D>`).
+Tạo một phiên bản giữ chỗ của tài nguyên này (:ref:`PlaceholderTexture3D<class_PlaceholderTexture3D>`).
 
 .. rst-class:: classref-item-separator
 
@@ -162,7 +162,7 @@ Creates a placeholder version of this resource (:ref:`PlaceholderTexture3D<class
 
 :ref:`Array<class_Array>`\[:ref:`Image<class_Image>`\] **get_data**\ (\ ) |const| :ref:`🔗<class_Texture3D_method_get_data>`
 
-Returns the **Texture3D**'s data as an array of :ref:`Image<class_Image>`\ s. Each :ref:`Image<class_Image>` represents a *slice* of the **Texture3D**, with different slices mapping to different depth (Z axis) levels.
+Trả về dữ liệu của **Texture3D** dưới dạng một mảng gồm các :ref:`Image<class_Image>`\ s. Mỗi :ref:`Image<class_Image>` đại diện cho một *slice* của **Texture3D**, trong đó các slice khác nhau ánh xạ tới các mức độ sâu khác nhau (trục Z).
 
 .. rst-class:: classref-item-separator
 
@@ -174,7 +174,7 @@ Returns the **Texture3D**'s data as an array of :ref:`Image<class_Image>`\ s. Ea
 
 :ref:`int<class_int>` **get_depth**\ (\ ) |const| :ref:`🔗<class_Texture3D_method_get_depth>`
 
-Returns the **Texture3D**'s depth in pixels. Depth is typically represented by the Z axis (a dimension not present in :ref:`Texture2D<class_Texture2D>`).
+Trả về độ sâu của **Texture3D** theo pixel. Độ sâu thường được biểu diễn bằng trục Z (một chiều không có trong :ref:`Texture2D<class_Texture2D>`).
 
 .. rst-class:: classref-item-separator
 
@@ -186,7 +186,7 @@ Returns the **Texture3D**'s depth in pixels. Depth is typically represented by t
 
 :ref:`Format<enum_Image_Format>` **get_format**\ (\ ) |const| :ref:`🔗<class_Texture3D_method_get_format>`
 
-Returns the current format being used by this texture.
+Trả về định dạng hiện đang được texture này sử dụng.
 
 .. rst-class:: classref-item-separator
 
@@ -198,7 +198,7 @@ Returns the current format being used by this texture.
 
 :ref:`int<class_int>` **get_height**\ (\ ) |const| :ref:`🔗<class_Texture3D_method_get_height>`
 
-Returns the **Texture3D**'s height in pixels. Width is typically represented by the Y axis.
+Trả về chiều cao của **Texture3D** theo pixel. Chiều rộng thường được biểu diễn bằng trục Y.
 
 .. rst-class:: classref-item-separator
 
@@ -210,7 +210,7 @@ Returns the **Texture3D**'s height in pixels. Width is typically represented by 
 
 :ref:`int<class_int>` **get_width**\ (\ ) |const| :ref:`🔗<class_Texture3D_method_get_width>`
 
-Returns the **Texture3D**'s width in pixels. Width is typically represented by the X axis.
+Trả về chiều rộng của **Texture3D** theo pixel. Chiều rộng thường được biểu diễn bằng trục X.
 
 .. rst-class:: classref-item-separator
 
@@ -222,14 +222,14 @@ Returns the **Texture3D**'s width in pixels. Width is typically represented by t
 
 :ref:`bool<class_bool>` **has_mipmaps**\ (\ ) |const| :ref:`🔗<class_Texture3D_method_has_mipmaps>`
 
-Returns ``true`` if the **Texture3D** has generated mipmaps.
+Trả về ``true`` nếu **Texture3D** đã tạo mipmap.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau những đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, nên có thể được gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

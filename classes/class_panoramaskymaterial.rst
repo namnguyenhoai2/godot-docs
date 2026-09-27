@@ -10,25 +10,25 @@
 PanoramaSkyMaterial
 ===================
 
-**Inherits:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Material<class_Material>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A material that provides a special texture to a :ref:`Sky<class_Sky>`, usually an HDR panorama.
+Một material cung cấp texture đặc biệt cho :ref:`Sky<class_Sky>`, thường là một panorama HDR.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A resource referenced in a :ref:`Sky<class_Sky>` that is used to draw a background. **PanoramaSkyMaterial** functions similar to skyboxes in other engines, except it uses an equirectangular sky map instead of a :ref:`Cubemap<class_Cubemap>`.
+Một resource được tham chiếu trong :ref:`Sky<class_Sky>` và được dùng để vẽ background. **PanoramaSkyMaterial** hoạt động tương tự như skybox trong các engine khác, ngoại trừ việc sử dụng sky map dạng equirectangular thay vì :ref:`Cubemap<class_Cubemap>`.
 
-Using an HDR panorama is strongly recommended for accurate, high-quality reflections. Godot supports the Radiance HDR (``.hdr``) and OpenEXR (``.exr``) image formats for this purpose.
+Bạn nên sử dụng panorama HDR để có phản chiếu chính xác và chất lượng cao. Godot hỗ trợ các định dạng ảnh Radiance HDR (``.hdr``) và OpenEXR (``.exr``) cho mục đích này.
 
-You can use `this tool <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`__ to convert a cubemap to an equirectangular sky map.
+Bạn có thể sử dụng `công cụ này <https://danilw.github.io/GLSL-howto/cubemap_to_panorama_js/cubemap_to_panorama.html>`__ để chuyển đổi cubemap thành sky map dạng equirectangular.
 
 .. rst-class:: classref-reftable-group
 
-Properties
-----------
+Các thuộc tính
+--------------
 
 .. table::
    :widths: auto
@@ -47,8 +47,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_PanoramaSkyMaterial_property_energy_multiplier:
 
@@ -61,7 +61,7 @@ Property Descriptions
 - |void| **set_energy_multiplier**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_energy_multiplier**\ (\ )
 
-The sky's overall brightness multiplier. Higher values result in a brighter sky.
+Hệ số nhân độ sáng tổng thể của bầu trời. Giá trị cao hơn sẽ làm bầu trời sáng hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -78,7 +78,7 @@ The sky's overall brightness multiplier. Higher values result in a brighter sky.
 - |void| **set_filtering_enabled**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_filtering_enabled**\ (\ )
 
-A boolean value to determine if the background texture should be filtered or not.
+Một giá trị boolean xác định liệu texture nền có nên được lọc hay không.
 
 .. rst-class:: classref-item-separator
 
@@ -88,21 +88,21 @@ A boolean value to determine if the background texture should be filtered or not
 
 .. rst-class:: classref-property
 
-:ref:`Texture2D<class_Texture2D>` **panorama** :ref:`🔗<class_PanoramaSkyMaterial_property_panorama>`
+:ref:`Texture2D<class_Texture2D>` **toàn cảnh** :ref:`🔗 <class_PanoramaSkyMaterial_property_panorama>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_panorama**\ (\ value\: :ref:`Texture2D<class_Texture2D>`\ )
 - :ref:`Texture2D<class_Texture2D>` **get_panorama**\ (\ )
 
-:ref:`Texture2D<class_Texture2D>` to be applied to the **PanoramaSkyMaterial**.
+:ref:`Texture2D<class_Texture2D>` được áp dụng cho **PanoramaSkyMaterial**.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả tại đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để xây dựng một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

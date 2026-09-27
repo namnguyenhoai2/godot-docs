@@ -10,18 +10,18 @@
 HashingContext
 ==============
 
-**Inherits:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Provides functionality for computing cryptographic hashes chunk by chunk.
+Cung cấp chức năng tính toán các mã băm mật mã theo từng khối.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The HashingContext class provides an interface for computing cryptographic hashes over multiple iterations. Useful for computing hashes of big files (so you don't have to load them all in memory), network streams, and data streams in general (so you don't have to hold buffers).
+Lớp HashingContext cung cấp một interface để tính toán các mã băm mật mã qua nhiều lần lặp. Hữu ích khi tính mã băm của các tệp lớn (để bạn không phải tải toàn bộ chúng vào bộ nhớ), các luồng mạng và các luồng dữ liệu nói chung (để bạn không phải giữ các bộ đệm).
 
-The :ref:`HashType<enum_HashingContext_HashType>` enum shows the supported hashing algorithms.
+Enum :ref:`HashType <enum_HashingContext_HashType>` hiển thị các thuật toán băm được hỗ trợ.
 
 
 .. tabs::
@@ -31,21 +31,21 @@ The :ref:`HashType<enum_HashingContext_HashType>` enum shows the supported hashi
     const CHUNK_SIZE = 1024
 
     func hash_file(path):
-        # Check that file exists.
+        # Kiểm tra xem tệp có tồn tại không.
         if not FileAccess.file_exists(path):
             return
-        # Start an SHA-256 context.
+        # Bắt đầu context SHA-256.
         var ctx = HashingContext.new()
         ctx.start(HashingContext.HASH_SHA256)
-        # Open the file to hash.
+        # Mở tệp cần băm.
         var file = FileAccess.open(path, FileAccess.READ)
-        # Update the context after reading each chunk.
+        # Cập nhật context sau khi đọc từng khối.
         while file.get_position() < file.get_length():
             var remaining = file.get_length() - file.get_position()
             ctx.update(file.get_buffer(min(remaining, CHUNK_SIZE)))
-        # Get the computed hash.
+        # Lấy hash đã tính.
         var res = ctx.finish()
-        # Print the result as hex string and array.
+        # In kết quả dưới dạng chuỗi hex và mảng.
         printt(res.hex_encode(), Array(res))
 
  .. code-tab:: csharp
@@ -54,25 +54,25 @@ The :ref:`HashType<enum_HashingContext_HashType>` enum shows the supported hashi
 
     public void HashFile(string path)
     {
-        // Check that file exists.
+        // Kiểm tra tệp có tồn tại.
         if (!FileAccess.FileExists(path))
         {
             return;
         }
-        // Start an SHA-256 context.
+        // Khởi tạo context SHA-256.
         var ctx = new HashingContext();
         ctx.Start(HashingContext.HashType.Sha256);
-        // Open the file to hash.
+        // Mở tệp cần băm.
         using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
-        // Update the context after reading each chunk.
+        // Cập nhật context sau khi đọc từng chunk.
         while (file.GetPosition() < file.GetLength())
         {
             int remaining = (int)(file.GetLength() - file.GetPosition());
             ctx.Update(file.GetBuffer(Mathf.Min(remaining, ChunkSize)));
         }
-        // Get the computed hash.
+        // Lấy hash đã tính.
         byte[] res = ctx.Finish();
-        // Print the result as hex string and array.
+        // In kết quả dưới dạng chuỗi hex và mảng.
         GD.PrintT(res.HexEncode(), (Variant)res);
     }
 
@@ -80,8 +80,8 @@ The :ref:`HashType<enum_HashingContext_HashType>` enum shows the supported hashi
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
@@ -89,9 +89,9 @@ Methods
    +-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
    | :ref:`PackedByteArray<class_PackedByteArray>` | :ref:`finish<class_HashingContext_method_finish>`\ (\ )                                                        |
    +-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`start<class_HashingContext_method_start>`\ (\ type\: :ref:`HashType<enum_HashingContext_HashType>`\ )    |
+   | :ref:`Error <enum_@GlobalScope_Error>`        | :ref:`start<class_HashingContext_method_start>`\ (\ type\: :ref:`HashType <enum_HashingContext_HashType>`\ )   |
    +-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`         | :ref:`update<class_HashingContext_method_update>`\ (\ chunk\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |
+   | :ref:`Error <enum_@GlobalScope_Error>`        | :ref:`update<class_HashingContext_method_update>`\ (\ chunk\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) |
    +-----------------------------------------------+----------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
@@ -100,14 +100,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_HashingContext_HashType:
 
 .. rst-class:: classref-enumeration
 
-enum **HashType**: :ref:`🔗<enum_HashingContext_HashType>`
+enum **HashType**: :ref:`🔗 <enum_HashingContext_HashType>`
 
 .. _class_HashingContext_constant_HASH_MD5:
 
@@ -115,7 +115,7 @@ enum **HashType**: :ref:`🔗<enum_HashingContext_HashType>`
 
 :ref:`HashType<enum_HashingContext_HashType>` **HASH_MD5** = ``0``
 
-Hashing algorithm: MD5.
+Thuật toán băm: MD5.
 
 .. _class_HashingContext_constant_HASH_SHA1:
 
@@ -123,7 +123,7 @@ Hashing algorithm: MD5.
 
 :ref:`HashType<enum_HashingContext_HashType>` **HASH_SHA1** = ``1``
 
-Hashing algorithm: SHA-1.
+Thuật toán băm: SHA-1.
 
 .. _class_HashingContext_constant_HASH_SHA256:
 
@@ -131,7 +131,7 @@ Hashing algorithm: SHA-1.
 
 :ref:`HashType<enum_HashingContext_HashType>` **HASH_SHA256** = ``2``
 
-Hashing algorithm: SHA-256.
+Thuật toán băm: SHA-256.
 
 .. rst-class:: classref-section-separator
 
@@ -139,8 +139,8 @@ Hashing algorithm: SHA-256.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_HashingContext_method_finish:
 
@@ -148,7 +148,7 @@ Method Descriptions
 
 :ref:`PackedByteArray<class_PackedByteArray>` **finish**\ (\ ) :ref:`🔗<class_HashingContext_method_finish>`
 
-Closes the current context, and return the computed hash.
+Đóng ngữ cảnh hiện tại và trả về hash đã tính toán.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +160,7 @@ Closes the current context, and return the computed hash.
 
 :ref:`Error<enum_@GlobalScope_Error>` **start**\ (\ type\: :ref:`HashType<enum_HashingContext_HashType>`\ ) :ref:`🔗<class_HashingContext_method_start>`
 
-Starts a new hash computation of the given ``type`` (e.g. :ref:`HASH_SHA256<class_HashingContext_constant_HASH_SHA256>` to start computation of an SHA-256).
+Bắt đầu tính toán hash mới cho ``type`` đã cho (ví dụ: :ref:`HASH_SHA256<class_HashingContext_constant_HASH_SHA256>` để bắt đầu tính toán SHA-256).
 
 .. rst-class:: classref-item-separator
 
@@ -172,14 +172,14 @@ Starts a new hash computation of the given ``type`` (e.g. :ref:`HASH_SHA256<clas
 
 :ref:`Error<enum_@GlobalScope_Error>` **update**\ (\ chunk\: :ref:`PackedByteArray<class_PackedByteArray>`\ ) :ref:`🔗<class_HashingContext_method_update>`
 
-Updates the computation with the given ``chunk`` of data.
+Cập nhật phép tính bằng ``chunk`` dữ liệu đã cho.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

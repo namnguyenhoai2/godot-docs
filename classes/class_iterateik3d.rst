@@ -10,26 +10,26 @@
 IterateIK3D
 ===========
 
-**Inherits:** :ref:`ChainIK3D<class_ChainIK3D>` **<** :ref:`IKModifier3D<class_IKModifier3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ChainIK3D<class_ChainIK3D>` **<** :ref:`IKModifier3D<class_IKModifier3D>` **<** :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`CCDIK3D<class_CCDIK3D>`, :ref:`FABRIK3D<class_FABRIK3D>`, :ref:`JacobianIK3D<class_JacobianIK3D>`
+**Được kế thừa bởi:** :ref:`CCDIK3D<class_CCDIK3D>`, :ref:`FABRIK3D<class_FABRIK3D>`, :ref:`JacobianIK3D<class_JacobianIK3D>`
 
-A :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` to approach the goal by repeating small rotations.
+Một :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` để tiến đến mục tiêu bằng cách lặp lại các phép xoay nhỏ.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base class of :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` to approach the goal by repeating small rotations.
+Lớp cơ sở của :ref:`SkeletonModifier3D<class_SkeletonModifier3D>` để tiến đến mục tiêu bằng cách lặp lại các phép xoay nhỏ.
 
-Each bone chain (setting) has one effector, which is processed in order of the setting list. You can set some limitations for each joint.
+Mỗi chuỗi bone (thiết lập) có một effector, được xử lý theo thứ tự trong danh sách thiết lập. Bạn có thể đặt một số giới hạn cho từng joint.
 
-\ **Note:** All the methods in this class take an ``index`` parameter. This parameter specifies which setting list entry to return if the IK has multiple entries (e.g. ``settings/<index>/target_node``).
+\ **Lưu ý:** Tất cả các phương thức trong lớp này đều nhận một tham số ``index``. Tham số này chỉ định mục trong danh sách thiết lập cần trả về nếu IK có nhiều mục (ví dụ: ``settings/<index>/target_node``).
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -49,41 +49,41 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`JointLimitation3D<class_JointLimitation3D>`                     | :ref:`get_joint_limitation<class_IterateIK3D_method_get_joint_limitation>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                                                  |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` | :ref:`get_joint_limitation_right_axis<class_IterateIK3D_method_get_joint_limitation_right_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                            |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                         | :ref:`get_joint_limitation_right_axis_vector<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                              |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Quaternion<class_Quaternion>`                                   | :ref:`get_joint_limitation_rotation_offset<class_IterateIK3D_method_get_joint_limitation_rotation_offset>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                  |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`             | :ref:`get_joint_rotation_axis<class_IterateIK3D_method_get_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                                            |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Vector3<class_Vector3>`                                         | :ref:`get_joint_rotation_axis_vector<class_IterateIK3D_method_get_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                              |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`NodePath<class_NodePath>`                                       | :ref:`get_target_node<class_IterateIK3D_method_get_target_node>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                           |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`set_joint_limitation<class_IterateIK3D_method_set_joint_limitation>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, limitation\: :ref:`JointLimitation3D<class_JointLimitation3D>`\ )                                          |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`set_joint_limitation_right_axis<class_IterateIK3D_method_set_joint_limitation_right_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, direction\: :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>`\ ) |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`set_joint_limitation_right_axis_vector<class_IterateIK3D_method_set_joint_limitation_right_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ )                              |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`set_joint_limitation_rotation_offset<class_IterateIK3D_method_set_joint_limitation_rotation_offset>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, offset\: :ref:`Quaternion<class_Quaternion>`\ )                            |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`set_joint_rotation_axis<class_IterateIK3D_method_set_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`\ )                                  |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`set_joint_rotation_axis_vector<class_IterateIK3D_method_set_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis_vector\: :ref:`Vector3<class_Vector3>`\ )                                         |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                                                | :ref:`set_target_node<class_IterateIK3D_method_set_target_node>`\ (\ index\: :ref:`int<class_int>`, target_node\: :ref:`NodePath<class_NodePath>`\ )                                                                                                    |
-   +-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`JointLimitation3D<class_JointLimitation3D>`                      | :ref:`get_joint_limitation<class_IterateIK3D_method_get_joint_limitation>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                                                   |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`SecondaryDirection <enum_SkeletonModifier3D_SecondaryDirection>` | :ref:`get_joint_limitation_right_axis<class_IterateIK3D_method_get_joint_limitation_right_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                             |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                          | :ref:`get_joint_limitation_right_axis_vector<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                               |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Quaternion<class_Quaternion>`                                    | :ref:`get_joint_limitation_rotation_offset<class_IterateIK3D_method_get_joint_limitation_rotation_offset>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                   |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`RotationAxis <enum_SkeletonModifier3D_RotationAxis>`             | :ref:`get_joint_rotation_axis<class_IterateIK3D_method_get_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                                             |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Vector3<class_Vector3>`                                          | :ref:`get_joint_rotation_axis_vector<class_IterateIK3D_method_get_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const|                                                                               |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`NodePath<class_NodePath>`                                        | :ref:`get_target_node<class_IterateIK3D_method_get_target_node>`\ (\ index\: :ref:`int<class_int>`\ ) |const|                                                                                                                                            |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`set_joint_limitation<class_IterateIK3D_method_set_joint_limitation>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, limitation\: :ref:`JointLimitation3D<class_JointLimitation3D>`\ )                                           |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`set_joint_limitation_right_axis<class_IterateIK3D_method_set_joint_limitation_right_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, direction\: :ref:`SecondaryDirection <enum_SkeletonModifier3D_SecondaryDirection>`\ ) |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`set_joint_limitation_right_axis_vector<class_IterateIK3D_method_set_joint_limitation_right_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ )                               |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`set_joint_limitation_rotation_offset<class_IterateIK3D_method_set_joint_limitation_rotation_offset>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, offset\: :ref:`Quaternion<class_Quaternion>`\ )                             |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`set_joint_rotation_axis<class_IterateIK3D_method_set_joint_rotation_axis>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis <enum_SkeletonModifier3D_RotationAxis>`\ )                                  |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`set_joint_rotation_axis_vector<class_IterateIK3D_method_set_joint_rotation_axis_vector>`\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis_vector\: :ref:`Vector3<class_Vector3>`\ )                                          |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                                                 | :ref:`set_target_node<class_IterateIK3D_method_set_target_node>`\ (\ index\: :ref:`int<class_int>`, target_node\: :ref:`NodePath<class_NodePath>`\ )                                                                                                     |
+   +------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -91,8 +91,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_IterateIK3D_property_angular_delta_limit:
 
@@ -105,9 +105,9 @@ Property Descriptions
 - |void| **set_angular_delta_limit**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_angular_delta_limit**\ (\ )
 
-The maximum amount each bone can rotate in a single iteration.
+Mức tối đa mà mỗi bone có thể xoay trong một lần lặp.
 
-\ **Note:** This limitation is applied during each iteration. For example, if :ref:`max_iterations<class_IterateIK3D_property_max_iterations>` is ``4`` and :ref:`angular_delta_limit<class_IterateIK3D_property_angular_delta_limit>` is ``5`` degrees, the maximum rotation possible in a single frame is ``20`` degrees.
+\ **Lưu ý:** Giới hạn này được áp dụng trong mỗi lần lặp. Ví dụ: nếu :ref:`max_iterations<class_IterateIK3D_property_max_iterations>` là ``4`` và :ref:`angular_delta_limit<class_IterateIK3D_property_angular_delta_limit>` là ``5`` độ, thì góc xoay tối đa có thể thực hiện trong một frame là ``20`` độ.
 
 .. rst-class:: classref-item-separator
 
@@ -124,9 +124,9 @@ The maximum amount each bone can rotate in a single iteration.
 - |void| **set_deterministic**\ (\ value\: :ref:`bool<class_bool>`\ )
 - :ref:`bool<class_bool>` **is_deterministic**\ (\ )
 
-If ``false``, the result is calculated from the previous frame's **IterateIK3D** result as the initial state.
+Nếu ``false``, kết quả được tính từ kết quả **IterateIK3D** của khung hình trước làm trạng thái ban đầu.
 
-If ``true``, the previous frame's **IterateIK3D** result is discarded. At this point, the new result is calculated from the bone pose excluding the **IterateIK3D** as the initial state. This means the result will be always equal as long as the target position and the previous bone pose are the same. However, if :ref:`angular_delta_limit<class_IterateIK3D_property_angular_delta_limit>` and :ref:`max_iterations<class_IterateIK3D_property_max_iterations>` are set too small, the end bone of the chain will never reach the target.
+Nếu ``true``, kết quả **IterateIK3D** của khung hình trước sẽ bị loại bỏ. Tại thời điểm này, kết quả mới được tính từ tư thế xương, không bao gồm **IterateIK3D**, làm trạng thái ban đầu. Điều này có nghĩa là kết quả sẽ luôn giống nhau miễn là vị trí đích và tư thế xương trước đó giống nhau. Tuy nhiên, nếu :ref:`angular_delta_limit<class_IterateIK3D_property_angular_delta_limit>` và :ref:`max_iterations<class_IterateIK3D_property_max_iterations>` được đặt quá nhỏ, xương cuối của chuỗi sẽ không bao giờ đạt đến đích.
 
 .. rst-class:: classref-item-separator
 
@@ -143,7 +143,7 @@ If ``true``, the previous frame's **IterateIK3D** result is discarded. At this p
 - |void| **set_max_iterations**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_max_iterations**\ (\ )
 
-The number of iteration loops used by the IK solver to produce more accurate results.
+Số vòng lặp được solver IK sử dụng để tạo ra kết quả chính xác hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -160,7 +160,7 @@ The number of iteration loops used by the IK solver to produce more accurate res
 - |void| **set_min_distance**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_min_distance**\ (\ )
 
-The minimum distance between the end bone and the target. If the distance is below this value, the IK solver stops any further iterations.
+Khoảng cách tối thiểu giữa xương cuối và đích. Nếu khoảng cách nhỏ hơn giá trị này, solver IK sẽ dừng mọi lần lặp tiếp theo.
 
 .. rst-class:: classref-item-separator
 
@@ -177,7 +177,7 @@ The minimum distance between the end bone and the target. If the distance is bel
 - |void| **set_setting_count**\ (\ value\: :ref:`int<class_int>`\ )
 - :ref:`int<class_int>` **get_setting_count**\ (\ )
 
-The number of settings.
+Số lượng thiết lập.
 
 .. rst-class:: classref-section-separator
 
@@ -185,8 +185,8 @@ The number of settings.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_IterateIK3D_method_get_joint_limitation:
 
@@ -194,7 +194,7 @@ Method Descriptions
 
 :ref:`JointLimitation3D<class_JointLimitation3D>` **get_joint_limitation**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IterateIK3D_method_get_joint_limitation>`
 
-Returns the joint limitation at ``joint`` in the bone chain's joint list.
+Trả về giới hạn khớp tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -206,7 +206,7 @@ Returns the joint limitation at ``joint`` in the bone chain's joint list.
 
 :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>` **get_joint_limitation_right_axis**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IterateIK3D_method_get_joint_limitation_right_axis>`
 
-Returns the joint limitation right axis at ``joint`` in the bone chain's joint list.
+Trả về trục phải của giới hạn khớp tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -218,9 +218,9 @@ Returns the joint limitation right axis at ``joint`` in the bone chain's joint l
 
 :ref:`Vector3<class_Vector3>` **get_joint_limitation_right_axis_vector**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>`
 
-Returns the joint limitation right axis vector at ``joint`` in the bone chain's joint list.
+Trả về vector trục phải của giới hạn khớp tại ``joint`` trong danh sách khớp của chuỗi xương.
 
-If :ref:`get_joint_limitation_right_axis()<class_IterateIK3D_method_get_joint_limitation_right_axis>` is :ref:`SkeletonModifier3D.SECONDARY_DIRECTION_NONE<class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_NONE>`, this method returns ``Vector3(0, 0, 0)``.
+Nếu :ref:`get_joint_limitation_right_axis()<class_IterateIK3D_method_get_joint_limitation_right_axis>` là :ref:`SkeletonModifier3D.SECONDARY_DIRECTION_NONE<class_SkeletonModifier3D_constant_SECONDARY_DIRECTION_NONE>`, phương thức này trả về ``Vector3(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -232,15 +232,15 @@ If :ref:`get_joint_limitation_right_axis()<class_IterateIK3D_method_get_joint_li
 
 :ref:`Quaternion<class_Quaternion>` **get_joint_limitation_rotation_offset**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IterateIK3D_method_get_joint_limitation_rotation_offset>`
 
-Returns the joint limitation rotation offset at ``joint`` in the bone chain's joint list.
+Trả về độ lệch xoay của giới hạn khớp tại ``joint`` trong danh sách khớp của chuỗi xương.
 
-Rotation is done in the local space which is constructed by the bone direction (in general parent to child) as the +Y axis and :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` as the +X axis.
+Phép xoay được thực hiện trong không gian cục bộ, được xác định bởi hướng của xương (thông thường từ xương cha đến xương con) làm trục +Y và :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` làm trục +X.
 
-If the +X and +Y axes are not orthogonal, the +X axis is implicitly modified to make it orthogonal.
+Nếu các trục +X và +Y không trực giao, trục +X sẽ được ngầm điều chỉnh để trở nên trực giao.
 
-Also, if the length of :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` is zero, the space is created by rotating the reference pose using the shortest arc that rotates the +Y axis of the reference pose to match the bone direction.
+Ngoài ra, nếu độ dài của :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` bằng không, không gian sẽ được tạo bằng cách xoay tư thế tham chiếu theo cung ngắn nhất, đưa trục +Y của tư thế tham chiếu khớp với hướng của xương.
 
-In here, the reference pose is the bone pose immediately before processing IK.
+Ở đây, tư thế tham chiếu là tư thế xương ngay trước khi xử lý IK.
 
 .. rst-class:: classref-item-separator
 
@@ -252,7 +252,7 @@ In here, the reference pose is the bone pose immediately before processing IK.
 
 :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>` **get_joint_rotation_axis**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IterateIK3D_method_get_joint_rotation_axis>`
 
-Returns the rotation axis at ``joint`` in the bone chain's joint list.
+Trả về trục xoay tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -264,9 +264,9 @@ Returns the rotation axis at ``joint`` in the bone chain's joint list.
 
 :ref:`Vector3<class_Vector3>` **get_joint_rotation_axis_vector**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IterateIK3D_method_get_joint_rotation_axis_vector>`
 
-Returns the rotation axis vector for the specified joint in the bone chain. This vector represents the axis around which the joint can rotate. It is determined based on the rotation axis set for the joint.
+Trả về vector trục xoay cho khớp được chỉ định trong chuỗi xương. Vector này biểu thị trục mà khớp có thể xoay quanh. Trục này được xác định dựa trên trục xoay được thiết lập cho khớp.
 
-If :ref:`get_joint_rotation_axis()<class_IterateIK3D_method_get_joint_rotation_axis>` is :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`, this method returns ``Vector3(0, 0, 0)``.
+Nếu :ref:`get_joint_rotation_axis()<class_IterateIK3D_method_get_joint_rotation_axis>` là :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`, phương thức này trả về ``Vector3(0, 0, 0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -278,7 +278,7 @@ If :ref:`get_joint_rotation_axis()<class_IterateIK3D_method_get_joint_rotation_a
 
 :ref:`NodePath<class_NodePath>` **get_target_node**\ (\ index\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_IterateIK3D_method_get_target_node>`
 
-Returns the target node that the end bone is trying to reach.
+Trả về node mục tiêu mà xương cuối đang cố gắng tiếp cận.
 
 .. rst-class:: classref-item-separator
 
@@ -290,7 +290,7 @@ Returns the target node that the end bone is trying to reach.
 
 |void| **set_joint_limitation**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, limitation\: :ref:`JointLimitation3D<class_JointLimitation3D>`\ ) :ref:`🔗<class_IterateIK3D_method_set_joint_limitation>`
 
-Sets the joint limitation at ``joint`` in the bone chain's joint list.
+Thiết lập giới hạn khớp tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -302,7 +302,7 @@ Sets the joint limitation at ``joint`` in the bone chain's joint list.
 
 |void| **set_joint_limitation_right_axis**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, direction\: :ref:`SecondaryDirection<enum_SkeletonModifier3D_SecondaryDirection>`\ ) :ref:`🔗<class_IterateIK3D_method_set_joint_limitation_right_axis>`
 
-Sets the joint limitation right axis at ``joint`` in the bone chain's joint list.
+Thiết lập trục phải của giới hạn khớp tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -314,7 +314,7 @@ Sets the joint limitation right axis at ``joint`` in the bone chain's joint list
 
 |void| **set_joint_limitation_right_axis_vector**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, vector\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_IterateIK3D_method_set_joint_limitation_right_axis_vector>`
 
-Sets the optional joint limitation right axis vector at ``joint`` in the bone chain's joint list.
+Thiết lập vector trục bên phải của giới hạn khớp tùy chọn tại ``joint`` trong danh sách khớp của chuỗi xương.
 
 .. rst-class:: classref-item-separator
 
@@ -326,15 +326,15 @@ Sets the optional joint limitation right axis vector at ``joint`` in the bone ch
 
 |void| **set_joint_limitation_rotation_offset**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, offset\: :ref:`Quaternion<class_Quaternion>`\ ) :ref:`🔗<class_IterateIK3D_method_set_joint_limitation_rotation_offset>`
 
-Sets the joint limitation rotation offset at ``joint`` in the bone chain's joint list.
+Thiết lập độ lệch xoay của giới hạn khớp tại ``joint`` trong danh sách khớp của chuỗi xương.
 
-Rotation is done in the local space which is constructed by the bone direction (in general parent to child) as the +Y axis and :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` as the +X axis.
+Phép xoay được thực hiện trong không gian cục bộ, được xác định bởi hướng của xương (thông thường từ xương cha đến xương con) làm trục +Y và :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` làm trục +X.
 
-If the +X and +Y axes are not orthogonal, the +X axis is implicitly modified to make it orthogonal.
+Nếu các trục +X và +Y không trực giao, trục +X sẽ được ngầm điều chỉnh để trở nên trực giao.
 
-Also, if the length of :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` is zero, the space is created by rotating the reference pose using the shortest arc that rotates the +Y axis of the reference pose to match the bone direction.
+Ngoài ra, nếu độ dài của :ref:`get_joint_limitation_right_axis_vector()<class_IterateIK3D_method_get_joint_limitation_right_axis_vector>` bằng không, không gian sẽ được tạo bằng cách xoay tư thế tham chiếu theo cung ngắn nhất, đưa trục +Y của tư thế tham chiếu khớp với hướng của xương.
 
-In here, the reference pose is the bone pose immediately before processing IK.
+Ở đây, tư thế tham chiếu là tư thế xương ngay trước khi xử lý IK.
 
 .. rst-class:: classref-item-separator
 
@@ -346,13 +346,13 @@ In here, the reference pose is the bone pose immediately before processing IK.
 
 |void| **set_joint_rotation_axis**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis\: :ref:`RotationAxis<enum_SkeletonModifier3D_RotationAxis>`\ ) :ref:`🔗<class_IterateIK3D_method_set_joint_rotation_axis>`
 
-Sets the rotation axis at ``joint`` in the bone chain's joint list.
+Thiết lập trục xoay tại ``joint`` trong danh sách khớp của chuỗi xương.
 
-The axes are based on the reference pose's space, if ``axis`` is :ref:`SkeletonModifier3D.ROTATION_AXIS_CUSTOM<class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM>`, you can specify any axis.
+Các trục dựa trên không gian của tư thế tham chiếu; nếu ``axis`` là :ref:`SkeletonModifier3D.ROTATION_AXIS_CUSTOM<class_SkeletonModifier3D_constant_ROTATION_AXIS_CUSTOM>`, bạn có thể chỉ định bất kỳ trục nào.
 
-In here, the reference pose is the bone pose immediately before processing IK.
+Ở đây, tư thế tham chiếu là tư thế xương ngay trước khi xử lý IK.
 
-\ **Note:** The rotation axis and the forward vector shouldn't be colinear to avoid unintended rotation since :ref:`ChainIK3D<class_ChainIK3D>` does not factor in twisting forces.
+\ **Lưu ý:** Trục xoay và vector hướng về phía trước không nên thẳng hàng để tránh xoay ngoài ý muốn, vì :ref:`ChainIK3D<class_ChainIK3D>` không tính đến các lực xoắn.
 
 .. rst-class:: classref-item-separator
 
@@ -364,11 +364,11 @@ In here, the reference pose is the bone pose immediately before processing IK.
 
 |void| **set_joint_rotation_axis_vector**\ (\ index\: :ref:`int<class_int>`, joint\: :ref:`int<class_int>`, axis_vector\: :ref:`Vector3<class_Vector3>`\ ) :ref:`🔗<class_IterateIK3D_method_set_joint_rotation_axis_vector>`
 
-Sets the rotation axis vector for the specified joint in the bone chain.
+Thiết lập vector trục xoay cho khớp được chỉ định trong chuỗi xương.
 
-This vector is normalized by an internal process and represents the axis around which the bone chain can rotate.
+Vector này được chuẩn hóa bằng một quy trình nội bộ và biểu thị trục mà quanh đó chuỗi xương có thể xoay.
 
-If the vector length is ``0``, it is considered synonymous with :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`.
+Nếu độ dài vector là ``0``, nó được xem là tương đương với :ref:`SkeletonModifier3D.ROTATION_AXIS_ALL<class_SkeletonModifier3D_constant_ROTATION_AXIS_ALL>`.
 
 .. rst-class:: classref-item-separator
 
@@ -380,14 +380,14 @@ If the vector length is ``0``, it is considered synonymous with :ref:`SkeletonMo
 
 |void| **set_target_node**\ (\ index\: :ref:`int<class_int>`, target_node\: :ref:`NodePath<class_NodePath>`\ ) :ref:`🔗<class_IterateIK3D_method_set_target_node>`
 
-Sets the target node that the end bone is trying to reach.
+Thiết lập node đích mà xương cuối đang cố gắng chạm tới.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có bất kỳ tác dụng nào.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một type.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một operator hợp lệ để sử dụng với type này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit (bitmask) từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

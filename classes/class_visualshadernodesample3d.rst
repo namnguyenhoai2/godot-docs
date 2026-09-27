@@ -10,30 +10,30 @@
 VisualShaderNodeSample3D
 ========================
 
-**Inherits:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`VisualShaderNode<class_VisualShaderNode>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`VisualShaderNodeTexture2DArray<class_VisualShaderNodeTexture2DArray>`, :ref:`VisualShaderNodeTexture3D<class_VisualShaderNodeTexture3D>`
+**Được kế thừa bởi:** :ref:`VisualShaderNodeTexture2DArray<class_VisualShaderNodeTexture2DArray>`, :ref:`VisualShaderNodeTexture3D<class_VisualShaderNodeTexture3D>`
 
-A base node for nodes which samples 3D textures in the visual shader graph.
+Node cơ sở cho các node lấy mẫu texture 3D trong visual shader graph.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-A virtual class, use the descendants instead.
+Một lớp ảo, hãy sử dụng các lớp dẫn xuất thay thế.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +-----------------------------------------------------+---------------------------------------------------------------+-------+
-   | :ref:`Source<enum_VisualShaderNodeSample3D_Source>` | :ref:`source<class_VisualShaderNodeSample3D_property_source>` | ``0`` |
-   +-----------------------------------------------------+---------------------------------------------------------------+-------+
+   +------------------------------------------------------+---------------------------------------------------------------+-------+
+   | :ref:`Source <enum_VisualShaderNodeSample3D_Source>` | :ref:`source<class_VisualShaderNodeSample3D_property_source>` | ``0`` |
+   +------------------------------------------------------+---------------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -41,14 +41,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_VisualShaderNodeSample3D_Source:
 
 .. rst-class:: classref-enumeration
 
-enum **Source**: :ref:`🔗<enum_VisualShaderNodeSample3D_Source>`
+enum **Source**: :ref:`🔗 <enum_VisualShaderNodeSample3D_Source>`
 
 .. _class_VisualShaderNodeSample3D_constant_SOURCE_TEXTURE:
 
@@ -56,7 +56,7 @@ enum **Source**: :ref:`🔗<enum_VisualShaderNodeSample3D_Source>`
 
 :ref:`Source<enum_VisualShaderNodeSample3D_Source>` **SOURCE_TEXTURE** = ``0``
 
-Creates internal uniform and provides a way to assign it within node.
+Tạo một uniform nội bộ và cung cấp cách gán uniform đó trong node.
 
 .. _class_VisualShaderNodeSample3D_constant_SOURCE_PORT:
 
@@ -64,7 +64,7 @@ Creates internal uniform and provides a way to assign it within node.
 
 :ref:`Source<enum_VisualShaderNodeSample3D_Source>` **SOURCE_PORT** = ``1``
 
-Use the uniform texture from sampler port.
+Sử dụng texture uniform từ cổng sampler.
 
 .. _class_VisualShaderNodeSample3D_constant_SOURCE_MAX:
 
@@ -72,7 +72,7 @@ Use the uniform texture from sampler port.
 
 :ref:`Source<enum_VisualShaderNodeSample3D_Source>` **SOURCE_MAX** = ``2``
 
-Represents the size of the :ref:`Source<enum_VisualShaderNodeSample3D_Source>` enum.
+Biểu thị kích thước của enum :ref:`Source <enum_VisualShaderNodeSample3D_Source>`.
 
 .. rst-class:: classref-section-separator
 
@@ -80,8 +80,8 @@ Represents the size of the :ref:`Source<enum_VisualShaderNodeSample3D_Source>` e
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VisualShaderNodeSample3D_property_source:
 
@@ -94,14 +94,14 @@ Property Descriptions
 - |void| **set_source**\ (\ value\: :ref:`Source<enum_VisualShaderNodeSample3D_Source>`\ )
 - :ref:`Source<enum_VisualShaderNodeSample3D_Source>` **get_source**\ (\ )
 
-An input source type.
+Một loại nguồn đầu vào.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Người dùng thường cần ghi đè phương thức này thì phương thức mới có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng mặt nạ bit (bitmask) của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

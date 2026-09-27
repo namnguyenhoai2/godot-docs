@@ -10,32 +10,32 @@
 Sky
 ===
 
-**Inherits:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Defines a 3D environment's background by using a :ref:`Material<class_Material>`.
+Xác định nền của môi trường 3D bằng cách sử dụng một :ref:`Material<class_Material>`.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **Sky** class uses a :ref:`Material<class_Material>` to render a 3D environment's background and the light it emits by updating the reflection/radiance cubemaps.
+Lớp **Sky** sử dụng một :ref:`Material<class_Material>` để kết xuất nền của môi trường 3D và ánh sáng mà nó phát ra bằng cách cập nhật các cubemap phản xạ/bức xạ.
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +--------------------------------------------+--------------------------------------------------------+-------+
-   | :ref:`ProcessMode<enum_Sky_ProcessMode>`   | :ref:`process_mode<class_Sky_property_process_mode>`   | ``0`` |
-   +--------------------------------------------+--------------------------------------------------------+-------+
-   | :ref:`RadianceSize<enum_Sky_RadianceSize>` | :ref:`radiance_size<class_Sky_property_radiance_size>` | ``3`` |
-   +--------------------------------------------+--------------------------------------------------------+-------+
-   | :ref:`Material<class_Material>`            | :ref:`sky_material<class_Sky_property_sky_material>`   |       |
-   +--------------------------------------------+--------------------------------------------------------+-------+
+   +---------------------------------------------+--------------------------------------------------------+-------+
+   | :ref:`ProcessMode <enum_Sky_ProcessMode>`   | :ref:`process_mode<class_Sky_property_process_mode>`   | ``0`` |
+   +---------------------------------------------+--------------------------------------------------------+-------+
+   | :ref:`RadianceSize <enum_Sky_RadianceSize>` | :ref:`radiance_size<class_Sky_property_radiance_size>` | ``3`` |
+   +---------------------------------------------+--------------------------------------------------------+-------+
+   | :ref:`Material<class_Material>`             | :ref:`sky_material<class_Sky_property_sky_material>`   |       |
+   +---------------------------------------------+--------------------------------------------------------+-------+
 
 .. rst-class:: classref-section-separator
 
@@ -43,14 +43,14 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_Sky_RadianceSize:
 
 .. rst-class:: classref-enumeration
 
-enum **RadianceSize**: :ref:`🔗<enum_Sky_RadianceSize>`
+enum **RadianceSize**: :ref:`🔗 <enum_Sky_RadianceSize>`
 
 .. _class_Sky_constant_RADIANCE_SIZE_32:
 
@@ -58,7 +58,7 @@ enum **RadianceSize**: :ref:`🔗<enum_Sky_RadianceSize>`
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_32** = ``0``
 
-Radiance texture size is 32×32 pixels.
+Kích thước texture bức xạ là 32×32 pixel.
 
 .. _class_Sky_constant_RADIANCE_SIZE_64:
 
@@ -66,7 +66,7 @@ Radiance texture size is 32×32 pixels.
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_64** = ``1``
 
-Radiance texture size is 64×64 pixels.
+Kích thước texture bức xạ là 64×64 pixel.
 
 .. _class_Sky_constant_RADIANCE_SIZE_128:
 
@@ -74,7 +74,7 @@ Radiance texture size is 64×64 pixels.
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_128** = ``2``
 
-Radiance texture size is 128×128 pixels.
+Kích thước texture bức xạ là 128×128 pixel.
 
 .. _class_Sky_constant_RADIANCE_SIZE_256:
 
@@ -82,7 +82,7 @@ Radiance texture size is 128×128 pixels.
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_256** = ``3``
 
-Radiance texture size is 256×256 pixels.
+Kích thước texture bức xạ là 256×256 pixel.
 
 .. _class_Sky_constant_RADIANCE_SIZE_512:
 
@@ -90,7 +90,7 @@ Radiance texture size is 256×256 pixels.
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_512** = ``4``
 
-Radiance texture size is 512×512 pixels.
+Kích thước texture bức xạ là 512×512 pixel.
 
 .. _class_Sky_constant_RADIANCE_SIZE_1024:
 
@@ -98,7 +98,7 @@ Radiance texture size is 512×512 pixels.
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_1024** = ``5``
 
-Radiance texture size is 1024×1024 pixels.
+Kích thước texture bức xạ là 1024×1024 pixel.
 
 .. _class_Sky_constant_RADIANCE_SIZE_2048:
 
@@ -106,7 +106,7 @@ Radiance texture size is 1024×1024 pixels.
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_2048** = ``6``
 
-Radiance texture size is 2048×2048 pixels.
+Kích thước texture bức xạ là 2048×2048 pixel.
 
 .. _class_Sky_constant_RADIANCE_SIZE_MAX:
 
@@ -114,7 +114,7 @@ Radiance texture size is 2048×2048 pixels.
 
 :ref:`RadianceSize<enum_Sky_RadianceSize>` **RADIANCE_SIZE_MAX** = ``7``
 
-Represents the size of the :ref:`RadianceSize<enum_Sky_RadianceSize>` enum.
+Đại diện cho enum :ref:`RadianceSize <enum_Sky_RadianceSize>`.
 
 .. rst-class:: classref-item-separator
 
@@ -124,7 +124,7 @@ Represents the size of the :ref:`RadianceSize<enum_Sky_RadianceSize>` enum.
 
 .. rst-class:: classref-enumeration
 
-enum **ProcessMode**: :ref:`🔗<enum_Sky_ProcessMode>`
+enum **ProcessMode**: :ref:`🔗 <enum_Sky_ProcessMode>`
 
 .. _class_Sky_constant_PROCESS_MODE_AUTOMATIC:
 
@@ -132,7 +132,7 @@ enum **ProcessMode**: :ref:`🔗<enum_Sky_ProcessMode>`
 
 :ref:`ProcessMode<enum_Sky_ProcessMode>` **PROCESS_MODE_AUTOMATIC** = ``0``
 
-Automatically selects the appropriate process mode based on your sky shader. If your shader uses ``TIME`` or ``POSITION``, this will use :ref:`PROCESS_MODE_REALTIME<class_Sky_constant_PROCESS_MODE_REALTIME>`. If your shader uses any of the ``LIGHT_*`` variables or any custom uniforms, this uses :ref:`PROCESS_MODE_INCREMENTAL<class_Sky_constant_PROCESS_MODE_INCREMENTAL>`. Otherwise, this defaults to :ref:`PROCESS_MODE_QUALITY<class_Sky_constant_PROCESS_MODE_QUALITY>`.
+Tự động chọn chế độ xử lý thích hợp dựa trên shader bầu trời của bạn. Nếu shader của bạn sử dụng ``TIME`` hoặc ``POSITION``, chế độ này sẽ sử dụng :ref:`PROCESS_MODE_REALTIME<class_Sky_constant_PROCESS_MODE_REALTIME>`. Nếu shader của bạn sử dụng bất kỳ biến ``LIGHT_*`` nào hoặc bất kỳ uniform tùy chỉnh nào, chế độ này sẽ sử dụng :ref:`PROCESS_MODE_INCREMENTAL<class_Sky_constant_PROCESS_MODE_INCREMENTAL>`. Nếu không, chế độ mặc định là :ref:`PROCESS_MODE_QUALITY<class_Sky_constant_PROCESS_MODE_QUALITY>`.
 
 .. _class_Sky_constant_PROCESS_MODE_QUALITY:
 
@@ -140,7 +140,7 @@ Automatically selects the appropriate process mode based on your sky shader. If 
 
 :ref:`ProcessMode<enum_Sky_ProcessMode>` **PROCESS_MODE_QUALITY** = ``1``
 
-Uses high quality importance sampling to process the radiance map. In general, this results in much higher quality than :ref:`PROCESS_MODE_REALTIME<class_Sky_constant_PROCESS_MODE_REALTIME>` but takes much longer to generate. This should not be used if you plan on changing the sky at runtime. If you are finding that the reflection is not blurry enough and is showing sparkles or fireflies, try increasing :ref:`ProjectSettings.rendering/reflections/sky_reflections/ggx_samples<class_ProjectSettings_property_rendering/reflections/sky_reflections/ggx_samples>`.
+Sử dụng phép lấy mẫu tầm quan trọng chất lượng cao để xử lý bản đồ bức xạ. Nhìn chung, kết quả có chất lượng cao hơn nhiều so với :ref:`PROCESS_MODE_REALTIME<class_Sky_constant_PROCESS_MODE_REALTIME>` nhưng mất nhiều thời gian hơn để tạo. Không nên sử dụng tùy chọn này nếu bạn dự định thay đổi bầu trời trong runtime. Nếu bạn thấy hình phản xạ chưa đủ mờ và xuất hiện các đốm sáng hoặc đốm lóe, hãy thử tăng :ref:`ProjectSettings.rendering/reflections/sky_reflections/ggx_samples <class_ProjectSettings_property_rendering/reflections/sky_reflections/ggx_samples>`.
 
 .. _class_Sky_constant_PROCESS_MODE_INCREMENTAL:
 
@@ -148,7 +148,7 @@ Uses high quality importance sampling to process the radiance map. In general, t
 
 :ref:`ProcessMode<enum_Sky_ProcessMode>` **PROCESS_MODE_INCREMENTAL** = ``2``
 
-Uses the same high quality importance sampling to process the radiance map as :ref:`PROCESS_MODE_QUALITY<class_Sky_constant_PROCESS_MODE_QUALITY>`, but updates over several frames. The number of frames is determined by :ref:`ProjectSettings.rendering/reflections/sky_reflections/roughness_layers<class_ProjectSettings_property_rendering/reflections/sky_reflections/roughness_layers>`. Use this when you need highest quality radiance maps, but have a sky that updates slowly.
+Sử dụng cùng phép lấy mẫu tầm quan trọng chất lượng cao để xử lý bản đồ bức xạ như :ref:`PROCESS_MODE_QUALITY<class_Sky_constant_PROCESS_MODE_QUALITY>`, nhưng cập nhật qua nhiều khung hình. Số khung hình được xác định bởi :ref:`ProjectSettings.rendering/reflections/sky_reflections/roughness_layers <class_ProjectSettings_property_rendering/reflections/sky_reflections/roughness_layers>`. Sử dụng tùy chọn này khi bạn cần bản đồ bức xạ chất lượng cao nhất nhưng có bầu trời cập nhật chậm.
 
 .. _class_Sky_constant_PROCESS_MODE_REALTIME:
 
@@ -156,9 +156,9 @@ Uses the same high quality importance sampling to process the radiance map as :r
 
 :ref:`ProcessMode<enum_Sky_ProcessMode>` **PROCESS_MODE_REALTIME** = ``3``
 
-Uses the fast filtering algorithm to process the radiance map. In general this results in lower quality, but substantially faster run times. If you need better quality, but still need to update the sky every frame, consider turning on :ref:`ProjectSettings.rendering/reflections/sky_reflections/fast_filter_high_quality<class_ProjectSettings_property_rendering/reflections/sky_reflections/fast_filter_high_quality>`.
+Sử dụng thuật toán lọc nhanh để xử lý bản đồ bức xạ. Nhìn chung, kết quả có chất lượng thấp hơn nhưng thời gian chạy nhanh hơn đáng kể. Nếu bạn cần chất lượng tốt hơn nhưng vẫn phải cập nhật bầu trời ở mọi khung hình, hãy cân nhắc bật :ref:`ProjectSettings.rendering/reflections/sky_reflections/fast_filter_high_quality <class_ProjectSettings_property_rendering/reflections/sky_reflections/fast_filter_high_quality>`.
 
-\ **Note:** The fast filtering algorithm is limited to 256×256 cubemaps, so :ref:`radiance_size<class_Sky_property_radiance_size>` must be set to :ref:`RADIANCE_SIZE_256<class_Sky_constant_RADIANCE_SIZE_256>`. Otherwise, a warning is printed and the overridden radiance size is ignored.
+\ **Lưu ý:** Thuật toán lọc nhanh bị giới hạn ở các cubemap 256×256, vì vậy :ref:`radiance_size<class_Sky_property_radiance_size>` phải được đặt thành :ref:`RADIANCE_SIZE_256<class_Sky_constant_RADIANCE_SIZE_256>`. Nếu không, một cảnh báo sẽ được in ra và kích thước bức xạ bị ghi đè sẽ bị bỏ qua.
 
 .. rst-class:: classref-section-separator
 
@@ -166,8 +166,8 @@ Uses the fast filtering algorithm to process the radiance map. In general this r
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_Sky_property_process_mode:
 
@@ -180,7 +180,7 @@ Property Descriptions
 - |void| **set_process_mode**\ (\ value\: :ref:`ProcessMode<enum_Sky_ProcessMode>`\ )
 - :ref:`ProcessMode<enum_Sky_ProcessMode>` **get_process_mode**\ (\ )
 
-The method for generating the radiance map from the sky. The radiance map is a cubemap with increasingly blurry versions of the sky corresponding to different levels of roughness. Radiance maps can be expensive to calculate.
+Phương thức tạo bản đồ bức xạ từ bầu trời. Bản đồ bức xạ là một cubemap chứa các phiên bản bầu trời ngày càng mờ, tương ứng với các mức độ roughness khác nhau. Việc tính toán bản đồ bức xạ có thể tốn nhiều tài nguyên.
 
 .. rst-class:: classref-item-separator
 
@@ -197,9 +197,9 @@ The method for generating the radiance map from the sky. The radiance map is a c
 - |void| **set_radiance_size**\ (\ value\: :ref:`RadianceSize<enum_Sky_RadianceSize>`\ )
 - :ref:`RadianceSize<enum_Sky_RadianceSize>` **get_radiance_size**\ (\ )
 
-The **Sky**'s radiance map size. The higher the radiance map size, the more detailed the lighting from the **Sky** will be.
+Kích thước bản đồ bức xạ của **Sky**. Kích thước bản đồ bức xạ càng lớn thì ánh sáng từ **Sky** càng chi tiết.
 
-\ **Note:** Some hardware will have trouble with higher radiance sizes, especially :ref:`RADIANCE_SIZE_512<class_Sky_constant_RADIANCE_SIZE_512>` and above. Only use such high values on high-end hardware.
+\ **Lưu ý:** Một số phần cứng sẽ gặp vấn đề với các kích thước bức xạ lớn hơn, đặc biệt là :ref:`RADIANCE_SIZE_512<class_Sky_constant_RADIANCE_SIZE_512>` trở lên. Chỉ sử dụng các giá trị cao như vậy trên phần cứng cao cấp.
 
 .. rst-class:: classref-item-separator
 
@@ -209,21 +209,21 @@ The **Sky**'s radiance map size. The higher the radiance map size, the more deta
 
 .. rst-class:: classref-property
 
-:ref:`Material<class_Material>` **sky_material** :ref:`🔗<class_Sky_property_sky_material>`
+:ref:`Material<class_Material>` **sky_material** :ref:`🔗 <class_Sky_property_sky_material>`
 
 .. rst-class:: classref-property-setget
 
 - |void| **set_material**\ (\ value\: :ref:`Material<class_Material>`\ )
 - :ref:`Material<class_Material>` **get_material**\ (\ )
 
-:ref:`Material<class_Material>` used to draw the background. Can be :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`, :ref:`ProceduralSkyMaterial<class_ProceduralSkyMaterial>`, :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>`, or even a :ref:`ShaderMaterial<class_ShaderMaterial>` if you want to use your own custom shader.
+:ref:`Material<class_Material>` được sử dụng để vẽ nền. Có thể là :ref:`PanoramaSkyMaterial<class_PanoramaSkyMaterial>`, :ref:`ProceduralSkyMaterial<class_ProceduralSkyMaterial>`, :ref:`PhysicalSkyMaterial<class_PhysicalSkyMaterial>` hoặc thậm chí là một :ref:`ShaderMaterial<class_ShaderMaterial>` nếu bạn muốn sử dụng shader tùy chỉnh của riêng mình.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để phương thức có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không thay đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

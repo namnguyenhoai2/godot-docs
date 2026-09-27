@@ -10,51 +10,51 @@
 VehicleBody3D
 =============
 
-**Inherits:** :ref:`RigidBody3D<class_RigidBody3D>` **<** :ref:`PhysicsBody3D<class_PhysicsBody3D>` **<** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`RigidBody3D<class_RigidBody3D>` **<** :ref:`PhysicsBody3D<class_PhysicsBody3D>` **<** :ref:`CollisionObject3D<class_CollisionObject3D>` **<** :ref:`Node3D<class_Node3D>` **<** :ref:`Node<class_Node>` **<** :ref:`Object<class_Object>`
 
-A 3D physics body that simulates the behavior of a car.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-This physics body implements all the physics logic needed to simulate a car. It is based on the raycast vehicle system commonly found in physics engines. Aside from a :ref:`CollisionShape3D<class_CollisionShape3D>` for the main body of the vehicle, you must also add a :ref:`VehicleWheel3D<class_VehicleWheel3D>` node for each wheel. You should also add a :ref:`MeshInstance3D<class_MeshInstance3D>` to this node for the 3D model of the vehicle, but this model should generally not include meshes for the wheels. You can control the vehicle by using the :ref:`brake<class_VehicleBody3D_property_brake>`, :ref:`engine_force<class_VehicleBody3D_property_engine_force>`, and :ref:`steering<class_VehicleBody3D_property_steering>` properties. The position or orientation of this node shouldn't be changed directly.
-
-\ **Note:** The local forward for this node is :ref:`Vector3.MODEL_FRONT<class_Vector3_constant_MODEL_FRONT>`.
-
-\ **Note:** The origin point of your VehicleBody3D will determine the center of gravity of your vehicle. To make the vehicle more grounded, the origin point is usually kept low, moving the :ref:`CollisionShape3D<class_CollisionShape3D>` and :ref:`MeshInstance3D<class_MeshInstance3D>` upwards.
-
-\ **Note:** This class has known issues and isn't designed to provide realistic 3D vehicle physics. If you want advanced vehicle physics, you may have to write your own physics integration using :ref:`CharacterBody3D<class_CharacterBody3D>` or :ref:`RigidBody3D<class_RigidBody3D>`.
+Một physics body 3D mô phỏng hành vi của một chiếc xe.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Physics body này triển khai toàn bộ logic vật lý cần thiết để mô phỏng một chiếc xe. Nó dựa trên hệ thống raycast vehicle thường có trong các physics engine. Ngoài một :ref:`CollisionShape3D<class_CollisionShape3D>` cho phần thân chính của xe, bạn cũng phải thêm một node :ref:`VehicleWheel3D<class_VehicleWheel3D>` cho mỗi bánh xe. Bạn cũng nên thêm một :ref:`MeshInstance3D<class_MeshInstance3D>` vào node này để chứa model 3D của xe, nhưng model này nhìn chung không nên bao gồm mesh của các bánh xe. Bạn có thể điều khiển xe bằng cách sử dụng các thuộc tính :ref:`brake<class_VehicleBody3D_property_brake>`, :ref:`engine_force<class_VehicleBody3D_property_engine_force>` và :ref:`steering<class_VehicleBody3D_property_steering>`. Không nên thay đổi trực tiếp vị trí hoặc hướng của node này.
+
+\ **Lưu ý:** Hướng tiến cục bộ của node này là :ref:`Vector3.MODEL_FRONT<class_Vector3_constant_MODEL_FRONT>`.
+
+\ **Lưu ý:** Điểm gốc của VehicleBody3D sẽ xác định trọng tâm của xe. Để xe bám mặt đất hơn, điểm gốc thường được giữ ở vị trí thấp, bằng cách di chuyển :ref:`CollisionShape3D<class_CollisionShape3D>` và :ref:`MeshInstance3D<class_MeshInstance3D>` lên trên.
+
+\ **Lưu ý:** Lớp này có các vấn đề đã biết và không được thiết kế để cung cấp physics 3D thực tế. Nếu muốn có physics nâng cao cho xe, bạn có thể phải tự viết phần tích hợp physics bằng cách sử dụng :ref:`CharacterBody3D<class_CharacterBody3D>` hoặc :ref:`RigidBody3D<class_RigidBody3D>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Physics introduction <../tutorials/physics/physics_introduction>`
+- :doc:`Giới thiệu về vật lý <../tutorials/physics/physics_introduction>`
 
-- :doc:`Troubleshooting physics issues <../tutorials/physics/troubleshooting_physics_issues>`
+- :doc:`Khắc phục sự cố vật lý <../tutorials/physics/troubleshooting_physics_issues>`
 
-- `3D Truck Town Demo <https://godotengine.org/asset-library/asset/2752>`__
+- `Bản trình diễn Thị trấn Xe tải 3D <https://godotengine.org/asset-library/asset/2752>`__
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
    :widths: auto
 
-   +---------------------------+----------------------------------------------------------------+--------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`brake<class_VehicleBody3D_property_brake>`               | ``0.0``                                                                  |
-   +---------------------------+----------------------------------------------------------------+--------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`engine_force<class_VehicleBody3D_property_engine_force>` | ``0.0``                                                                  |
-   +---------------------------+----------------------------------------------------------------+--------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | mass                                                           | ``40.0`` (overrides :ref:`RigidBody3D<class_RigidBody3D_property_mass>`) |
-   +---------------------------+----------------------------------------------------------------+--------------------------------------------------------------------------+
-   | :ref:`float<class_float>` | :ref:`steering<class_VehicleBody3D_property_steering>`         | ``0.0``                                                                  |
-   +---------------------------+----------------------------------------------------------------+--------------------------------------------------------------------------+
+   +---------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`brake<class_VehicleBody3D_property_brake>`               | ``0.0``                                                               |
+   +---------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`engine_force<class_VehicleBody3D_property_engine_force>` | ``0.0``                                                               |
+   +---------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------+
+   | :ref:`float<class_float>` | mass                                                           | ``40.0`` (ghi đè :ref:`RigidBody3D<class_RigidBody3D_property_mass>`) |
+   +---------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------+
+   | :ref:`float<class_float>` | :ref:`steering<class_VehicleBody3D_property_steering>`         | ``0.0``                                                               |
+   +---------------------------+----------------------------------------------------------------+-----------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -62,8 +62,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_VehicleBody3D_property_brake:
 
@@ -76,7 +76,7 @@ Property Descriptions
 - |void| **set_brake**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_brake**\ (\ )
 
-Slows down the vehicle by applying a braking force. The vehicle is only slowed down if the wheels are in contact with a surface. The force you need to apply to adequately slow down your vehicle depends on the :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` of the vehicle. For a vehicle with a mass set to 1000, try a value in the 25 - 30 range for hard braking.
+Làm xe chậm lại bằng cách áp dụng lực phanh. Xe chỉ giảm tốc nếu các bánh xe tiếp xúc với một bề mặt. Lực bạn cần áp dụng để giảm tốc xe phù hợp phụ thuộc vào :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` của xe. Với xe có khối lượng được đặt là 1000, hãy thử giá trị trong khoảng 25 - 30 để phanh gấp.
 
 .. rst-class:: classref-item-separator
 
@@ -93,11 +93,11 @@ Slows down the vehicle by applying a braking force. The vehicle is only slowed d
 - |void| **set_engine_force**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_engine_force**\ (\ )
 
-Accelerates the vehicle by applying an engine force. The vehicle is only sped up if the wheels that have :ref:`VehicleWheel3D.use_as_traction<class_VehicleWheel3D_property_use_as_traction>` set to ``true`` and are in contact with a surface. The :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` of the vehicle has an effect on the acceleration of the vehicle. For a vehicle with a mass set to 1000, try a value in the 25 - 50 range for acceleration.
+Tăng tốc cho xe bằng cách áp dụng lực động cơ. Xe chỉ tăng tốc nếu các bánh xe có :ref:`VehicleWheel3D.use_as_traction<class_VehicleWheel3D_property_use_as_traction>` được đặt thành ``true`` và đang tiếp xúc với một bề mặt. :ref:`RigidBody3D.mass<class_RigidBody3D_property_mass>` của xe ảnh hưởng đến khả năng tăng tốc của xe. Với xe có khối lượng được đặt là 1000, hãy thử giá trị trong khoảng 25 - 50 để tăng tốc.
 
-\ **Note:** The simulation does not take the effect of gears into account, you will need to add logic for this if you wish to simulate gears.
+\ **Lưu ý:** Mô phỏng không tính đến ảnh hưởng của các bánh răng; bạn sẽ cần thêm logic cho việc này nếu muốn mô phỏng bánh răng.
 
-A negative value will result in the vehicle reversing.
+Giá trị âm sẽ khiến xe chạy lùi.
 
 .. rst-class:: classref-item-separator
 
@@ -114,16 +114,16 @@ A negative value will result in the vehicle reversing.
 - |void| **set_steering**\ (\ value\: :ref:`float<class_float>`\ )
 - :ref:`float<class_float>` **get_steering**\ (\ )
 
-The steering angle for the vehicle. Setting this to a non-zero value will result in the vehicle turning when it's moving. Wheels that have :ref:`VehicleWheel3D.use_as_steering<class_VehicleWheel3D_property_use_as_steering>` set to ``true`` will automatically be rotated.
+Góc đánh lái của xe. Đặt giá trị khác 0 sẽ khiến xe rẽ khi đang di chuyển. Các bánh xe có :ref:`VehicleWheel3D.use_as_steering<class_VehicleWheel3D_property_use_as_steering>` được đặt thành ``true`` sẽ tự động xoay.
 
-\ **Note:** This property is edited in the inspector in degrees. In code the property is set in radians.
+\ **Lưu ý:** Thuộc tính này được chỉnh sửa trong inspector theo đơn vị độ. Trong code, thuộc tính được đặt theo đơn vị radian.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

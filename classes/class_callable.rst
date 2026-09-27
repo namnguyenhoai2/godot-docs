@@ -10,14 +10,14 @@
 Callable
 ========
 
-A built-in type representing a method or a standalone function.
+Một kiểu dựng sẵn đại diện cho một method hoặc một hàm độc lập.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-**Callable** is a built-in :ref:`Variant<class_Variant>` type that represents a function. It can either be a method within an :ref:`Object<class_Object>` instance, or a custom callable used for different purposes (see :ref:`is_custom()<class_Callable_method_is_custom>`). Like all :ref:`Variant<class_Variant>` types, it can be stored in variables and passed to other functions. It is most commonly used for signal callbacks.
+**Callable** là một kiểu :ref:`Variant<class_Variant>` dựng sẵn đại diện cho một hàm. Nó có thể là một method bên trong một instance :ref:`Object<class_Object>`, hoặc một callable tùy chỉnh được dùng cho nhiều mục đích khác nhau (xem :ref:`is_custom()<class_Callable_method_is_custom>`). Giống như mọi kiểu :ref:`Variant<class_Variant>`, nó có thể được lưu trong các biến và truyền cho các hàm khác. Nó thường được dùng nhất cho các signal callback.
 
 
 .. tabs::
@@ -29,13 +29,13 @@ Description
 
     func test():
         var callable = Callable(self, "print_args")
-        callable.call("hello", "world")  # Prints "hello world ".
-        callable.call(Vector2.UP, 42, callable)  # Prints "(0.0, -1.0) 42 Node(node.gd)::print_args"
-        callable.call("invalid")  # Invalid call, should have at least 2 arguments.
+        callable.call("hello", "world")  # In ra "hello world ".
+        callable.call(Vector2.UP, 42, callable)  # In ra "(0.0, -1.0) 42 Node(node.gd)::print_args"
+        callable.call("invalid")  # Lệnh gọi không hợp lệ, phải có ít nhất 2 đối số.
 
  .. code-tab:: csharp
 
-    // Default parameter values are not supported.
+    // Không hỗ trợ các giá trị tham số mặc định.
     public void PrintArgs(Variant arg1, Variant arg2, Variant arg3 = default)
     {
         GD.PrintS(arg1, arg2, arg3);
@@ -43,16 +43,16 @@ Description
 
     public void Test()
     {
-        // Invalid calls fail silently.
+        // Các lệnh gọi không hợp lệ sẽ âm thầm thất bại.
         Callable callable = new Callable(this, MethodName.PrintArgs);
-        callable.Call("hello", "world"); // Default parameter values are not supported, should have 3 arguments.
-        callable.Call(Vector2.Up, 42, callable); // Prints "(0, -1) 42 Node(Node.cs)::PrintArgs"
-        callable.Call("invalid"); // Invalid call, should have 3 arguments.
+        callable.Call("hello", "world"); // Các giá trị tham số mặc định không được hỗ trợ, cần có 3 đối số.
+        callable.Call(Vector2.Up, 42, callable); // In ra "(0, -1) 42 Node(Node.cs)::PrintArgs"
+        callable.Call("invalid"); // Lệnh gọi không hợp lệ, cần có 3 đối số.
     }
 
 
 
-In GDScript, it's possible to create lambda functions within a method. Lambda functions are custom callables that are not associated with an :ref:`Object<class_Object>` instance. Optionally, lambda functions can also be named. The name will be displayed in the debugger, or when calling :ref:`get_method()<class_Callable_method_get_method>`.
+Trong GDScript, bạn có thể tạo các hàm lambda bên trong một phương thức. Các hàm lambda là những callable tùy chỉnh không được liên kết với một instance :ref:`Object<class_Object>`. Bạn cũng có thể đặt tên cho các hàm lambda. Tên này sẽ được hiển thị trong debugger hoặc khi gọi :ref:`get_method()<class_Callable_method_get_method>`.
 
 ::
 
@@ -66,7 +66,7 @@ In GDScript, it's possible to create lambda functions within a method. Lambda fu
         # Prints "Attack!", when the button_pressed signal is emitted.
         button_pressed.connect(func(): print("Attack!"))
 
-In GDScript, you can access methods and global functions as **Callable**\ s:
+Trong GDScript, bạn có thể truy cập các phương thức và hàm toàn cục dưới dạng **Callable**\ s:
 
 ::
 
@@ -74,7 +74,7 @@ In GDScript, you can access methods and global functions as **Callable**\ s:
     tween.tween_callback(array.clear)  # Methods of built-in types.
     tween.tween_callback(print.bind("Test"))  # Global functions.
 
-\ **Note:** :ref:`Dictionary<class_Dictionary>` does not support the above due to ambiguity with keys.
+\ **Lưu ý:** :ref:`Dictionary<class_Dictionary>` không hỗ trợ nội dung trên do sự mơ hồ với các khóa.
 
 ::
 
@@ -86,7 +86,7 @@ In GDScript, you can access methods and global functions as **Callable**\ s:
     # This will work.
     tween.tween_callback(Callable.create(dictionary, "clear"))
 
-\ **Note:** In a boolean context, a callable will evaluate to ``false`` if it's null (see :ref:`is_null()<class_Callable_method_is_null>`). Otherwise, a callable will always evaluate to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, một callable sẽ được đánh giá là ``false`` nếu nó là null (xem :ref:`is_null()<class_Callable_method_is_null>`). Nếu không, một callable sẽ luôn được đánh giá là ``true``.
 
 .. note::
 
@@ -94,7 +94,7 @@ In GDScript, you can access methods and global functions as **Callable**\ s:
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -110,8 +110,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -162,17 +162,17 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Toán tử
+-------
 
 .. table::
    :widths: auto
 
-   +-------------------------+---------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator !=<class_Callable_operator_neq_Callable>`\ (\ right\: :ref:`Callable<class_Callable>`\ ) |
-   +-------------------------+---------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ==<class_Callable_operator_eq_Callable>`\ (\ right\: :ref:`Callable<class_Callable>`\ )  |
-   +-------------------------+---------------------------------------------------------------------------------------------------------+
+   +-------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator != <class_Callable_operator_neq_Callable>`\ (\ right\: :ref:`Callable<class_Callable>`\ ) |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator == <class_Callable_operator_eq_Callable>`\ (\ right\: :ref:`Callable<class_Callable>`\ )  |
+   +-------------------------+----------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -180,8 +180,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả hàm khởi tạo
+------------------
 
 .. _class_Callable_constructor_Callable:
 
@@ -189,7 +189,7 @@ Constructor Descriptions
 
 :ref:`Callable<class_Callable>` **Callable**\ (\ ) :ref:`🔗<class_Callable_constructor_Callable>`
 
-Constructs an empty **Callable**, with no object nor method bound.
+Tạo một **Callable** rỗng, không liên kết với đối tượng hay phương thức nào.
 
 .. rst-class:: classref-item-separator
 
@@ -199,7 +199,7 @@ Constructs an empty **Callable**, with no object nor method bound.
 
 :ref:`Callable<class_Callable>` **Callable**\ (\ from\: :ref:`Callable<class_Callable>`\ )
 
-Constructs a **Callable** as a copy of the given **Callable**.
+Tạo một **Callable** dưới dạng bản sao của **Callable** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -209,9 +209,9 @@ Constructs a **Callable** as a copy of the given **Callable**.
 
 :ref:`Callable<class_Callable>` **Callable**\ (\ object\: :ref:`Object<class_Object>`, method\: :ref:`StringName<class_StringName>`\ )
 
-Creates a new **Callable** for the method named ``method`` in the specified ``object``.
+Tạo một **Callable** mới cho phương thức có tên ``method`` trong ``object`` được chỉ định.
 
-\ **Note:** For methods of built-in :ref:`Variant<class_Variant>` types, use :ref:`create()<class_Callable_method_create>` instead.
+\ **Lưu ý:** Đối với các phương thức của các kiểu :ref:`Variant<class_Variant>` tích hợp sẵn, hãy sử dụng :ref:`create()<class_Callable_method_create>` thay thế.
 
 .. rst-class:: classref-section-separator
 
@@ -219,8 +219,8 @@ Creates a new **Callable** for the method named ``method`` in the specified ``ob
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_Callable_method_bind:
 
@@ -228,9 +228,9 @@ Method Descriptions
 
 :ref:`Callable<class_Callable>` **bind**\ (\ ...\ ) |vararg| |const| :ref:`🔗<class_Callable_method_bind>`
 
-Returns a copy of this **Callable** with one or more arguments bound. When called, the bound arguments are passed *after* the arguments supplied by :ref:`call()<class_Callable_method_call>`. See also :ref:`unbind()<class_Callable_method_unbind>`.
+Trả về một bản sao của **Callable** này với một hoặc nhiều đối số được liên kết. Khi được gọi, các đối số đã liên kết sẽ được truyền *sau* các đối số do :ref:`call()<class_Callable_method_call>` cung cấp. Xem thêm :ref:`unbind()<class_Callable_method_unbind>`.
 
-\ **Note:** When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.
+\ **Lưu ý:** Khi phương thức này được kết hợp với các phương thức tương tự khác, thứ tự sửa đổi danh sách đối số được đọc từ phải sang trái.
 
 .. rst-class:: classref-item-separator
 
@@ -242,9 +242,9 @@ Returns a copy of this **Callable** with one or more arguments bound. When calle
 
 :ref:`Callable<class_Callable>` **bindv**\ (\ arguments\: :ref:`Array<class_Array>`\ ) :ref:`🔗<class_Callable_method_bindv>`
 
-Returns a copy of this **Callable** with one or more arguments bound, reading them from an array. When called, the bound arguments are passed *after* the arguments supplied by :ref:`call()<class_Callable_method_call>`. See also :ref:`unbind()<class_Callable_method_unbind>`.
+Trả về một bản sao của **Callable** này với một hoặc nhiều đối số được gắn sẵn, đọc chúng từ một mảng. Khi được gọi, các đối số đã gắn sẵn được truyền *sau* các đối số do :ref:`call()<class_Callable_method_call>` cung cấp. Xem thêm :ref:`unbind()<class_Callable_method_unbind>`.
 
-\ **Note:** When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.
+\ **Lưu ý:** Khi phương thức này được kết hợp với các phương thức tương tự khác, thứ tự sửa đổi danh sách đối số được đọc từ phải sang trái.
 
 .. rst-class:: classref-item-separator
 
@@ -256,7 +256,7 @@ Returns a copy of this **Callable** with one or more arguments bound, reading th
 
 :ref:`Variant<class_Variant>` **call**\ (\ ...\ ) |vararg| |const| :ref:`🔗<class_Callable_method_call>`
 
-Calls the method represented by this **Callable**. Arguments can be passed and should match the method's signature.
+Gọi phương thức được biểu diễn bởi **Callable** này. Có thể truyền các đối số và chúng phải khớp với chữ ký của phương thức.
 
 .. rst-class:: classref-item-separator
 
@@ -268,7 +268,7 @@ Calls the method represented by this **Callable**. Arguments can be passed and s
 
 |void| **call_deferred**\ (\ ...\ ) |vararg| |const| :ref:`🔗<class_Callable_method_call_deferred>`
 
-Calls the method represented by this **Callable** in deferred mode, i.e. at the end of the current frame. Arguments can be passed and should match the method's signature.
+Gọi phương thức được biểu diễn bởi **Callable** này ở chế độ trì hoãn, tức là vào cuối frame hiện tại. Có thể truyền các đối số và chúng phải khớp với chữ ký của phương thức.
 
 
 .. tabs::
@@ -287,9 +287,9 @@ Calls the method represented by this **Callable** in deferred mode, i.e. at the 
 
 
 
-\ **Note:** Deferred calls are processed at idle time. Idle time happens mainly at the end of process and physics frames. In it, deferred calls will be run until there are none left, which means you can defer calls from other deferred calls and they'll still be run in the current idle time cycle. This means you should not call a method deferred from itself (or from a method called by it), as this causes infinite recursion the same way as if you had called the method directly.
+\ **Lưu ý:** Các lệnh gọi bị trì hoãn được xử lý vào thời gian rảnh. Thời gian rảnh chủ yếu diễn ra vào cuối các frame xử lý và vật lý. Trong khoảng thời gian này, các lệnh gọi bị trì hoãn sẽ được chạy cho đến khi không còn lệnh gọi nào, nghĩa là bạn có thể trì hoãn các lệnh gọi từ những lệnh gọi bị trì hoãn khác và chúng vẫn sẽ được chạy trong chu kỳ thời gian rảnh hiện tại. Điều này có nghĩa là bạn không nên trì hoãn một phương thức từ chính nó (hoặc từ một phương thức được nó gọi), vì điều đó gây ra đệ quy vô hạn, giống như khi bạn gọi phương thức trực tiếp.
 
-See also :ref:`Object.call_deferred()<class_Object_method_call_deferred>`.
+Xem thêm :ref:`Object.call_deferred()<class_Object_method_call_deferred>`.
 
 .. rst-class:: classref-item-separator
 
@@ -301,7 +301,7 @@ See also :ref:`Object.call_deferred()<class_Object_method_call_deferred>`.
 
 :ref:`Variant<class_Variant>` **callv**\ (\ arguments\: :ref:`Array<class_Array>`\ ) |const| :ref:`🔗<class_Callable_method_callv>`
 
-Calls the method represented by this **Callable**. Unlike :ref:`call()<class_Callable_method_call>`, this method expects all arguments to be contained inside the ``arguments`` :ref:`Array<class_Array>`.
+Gọi phương thức được biểu diễn bởi **Callable** này. Không giống :ref:`call()<class_Callable_method_call>`, phương thức này yêu cầu tất cả các đối số phải được chứa trong ``arguments`` :ref:`Array<class_Array>`.
 
 .. rst-class:: classref-item-separator
 
@@ -313,9 +313,9 @@ Calls the method represented by this **Callable**. Unlike :ref:`call()<class_Cal
 
 :ref:`Callable<class_Callable>` **create**\ (\ variant\: :ref:`Variant<class_Variant>`, method\: :ref:`StringName<class_StringName>`\ ) |static| :ref:`🔗<class_Callable_method_create>`
 
-Creates a new **Callable** for the method named ``method`` in the specified ``variant``. To represent a method of a built-in :ref:`Variant<class_Variant>` type, a custom callable is used (see :ref:`is_custom()<class_Callable_method_is_custom>`). If ``variant`` is :ref:`Object<class_Object>`, then a standard callable will be created instead.
+Tạo một **Callable** mới cho phương thức có tên ``method`` trong ``variant`` được chỉ định. Để biểu diễn một phương thức của kiểu :ref:`Variant<class_Variant>` dựng sẵn, một callable tùy chỉnh được sử dụng (xem :ref:`is_custom()<class_Callable_method_is_custom>`). Nếu ``variant`` là :ref:`Object<class_Object>`, thì thay vào đó một callable tiêu chuẩn sẽ được tạo.
 
-\ **Note:** This method is always necessary for the :ref:`Dictionary<class_Dictionary>` type, as property syntax is used to access its entries. You may also use this method when ``variant``'s type is not known in advance (for polymorphism).
+\ **Lưu ý:** Phương thức này luôn cần thiết cho kiểu :ref:`Dictionary<class_Dictionary>`, vì cú pháp thuộc tính được sử dụng để truy cập các mục của nó. Bạn cũng có thể sử dụng phương thức này khi chưa biết trước kiểu của ``variant`` (cho tính đa hình).
 
 .. rst-class:: classref-item-separator
 
@@ -327,7 +327,7 @@ Creates a new **Callable** for the method named ``method`` in the specified ``va
 
 :ref:`int<class_int>` **get_argument_count**\ (\ ) |const| :ref:`🔗<class_Callable_method_get_argument_count>`
 
-Returns the total number of arguments this **Callable** should take, including optional arguments. This means that any arguments bound with :ref:`bind()<class_Callable_method_bind>` are *subtracted* from the result, and any arguments unbound with :ref:`unbind()<class_Callable_method_unbind>` are *added* to the result.
+Trả về tổng số đối số mà **Callable** này sẽ nhận, bao gồm cả các đối số tùy chọn. Điều này có nghĩa là mọi đối số được liên kết bằng :ref:`bind()<class_Callable_method_bind>` đều bị *trừ* khỏi kết quả, còn mọi đối số không được liên kết bằng :ref:`unbind()<class_Callable_method_unbind>` sẽ được *cộng* vào kết quả.
 
 .. rst-class:: classref-item-separator
 
@@ -339,7 +339,7 @@ Returns the total number of arguments this **Callable** should take, including o
 
 :ref:`Array<class_Array>` **get_bound_arguments**\ (\ ) |const| :ref:`🔗<class_Callable_method_get_bound_arguments>`
 
-Returns the array of arguments bound via successive :ref:`bind()<class_Callable_method_bind>` or :ref:`unbind()<class_Callable_method_unbind>` calls. These arguments will be added *after* the arguments passed to the call, from which :ref:`get_unbound_arguments_count()<class_Callable_method_get_unbound_arguments_count>` arguments on the right have been previously excluded.
+Trả về mảng các đối số được liên kết thông qua các lệnh gọi :ref:`bind()<class_Callable_method_bind>` hoặc :ref:`unbind()<class_Callable_method_unbind>` liên tiếp. Các đối số này sẽ được thêm *sau* các đối số được truyền vào lệnh gọi, trong đó :ref:`get_unbound_arguments_count()<class_Callable_method_get_unbound_arguments_count>` đối số ở bên phải đã bị loại trừ trước đó.
 
 ::
 
@@ -359,9 +359,9 @@ Returns the array of arguments bound via successive :ref:`bind()<class_Callable_
 
 :ref:`int<class_int>` **get_bound_arguments_count**\ (\ ) |const| :ref:`🔗<class_Callable_method_get_bound_arguments_count>`
 
-Returns the total amount of arguments bound via successive :ref:`bind()<class_Callable_method_bind>` or :ref:`unbind()<class_Callable_method_unbind>` calls. This is the same as the size of the array returned by :ref:`get_bound_arguments()<class_Callable_method_get_bound_arguments>`. See :ref:`get_bound_arguments()<class_Callable_method_get_bound_arguments>` for details.
+Trả về tổng số đối số được liên kết thông qua các lệnh gọi :ref:`bind()<class_Callable_method_bind>` hoặc :ref:`unbind()<class_Callable_method_unbind>` liên tiếp. Giá trị này giống với kích thước của mảng được :ref:`get_bound_arguments()<class_Callable_method_get_bound_arguments>` trả về. Xem :ref:`get_bound_arguments()<class_Callable_method_get_bound_arguments>` để biết chi tiết.
 
-\ **Note:** The :ref:`get_bound_arguments_count()<class_Callable_method_get_bound_arguments_count>` and :ref:`get_unbound_arguments_count()<class_Callable_method_get_unbound_arguments_count>` methods can both return positive values.
+\ **Lưu ý:** Cả hai phương thức :ref:`get_bound_arguments_count()<class_Callable_method_get_bound_arguments_count>` và :ref:`get_unbound_arguments_count()<class_Callable_method_get_unbound_arguments_count>` đều có thể trả về các giá trị dương.
 
 .. rst-class:: classref-item-separator
 
@@ -373,7 +373,7 @@ Returns the total amount of arguments bound via successive :ref:`bind()<class_Ca
 
 :ref:`StringName<class_StringName>` **get_method**\ (\ ) |const| :ref:`🔗<class_Callable_method_get_method>`
 
-Returns the name of the method represented by this **Callable**. If the callable is a GDScript lambda function, returns the function's name or ``"<anonymous lambda>"``.
+Trả về tên của phương thức được biểu diễn bởi **Callable** này. Nếu callable là một hàm lambda GDScript, trả về tên của hàm hoặc ``"<anonymous lambda>"``.
 
 .. rst-class:: classref-item-separator
 
@@ -385,7 +385,7 @@ Returns the name of the method represented by this **Callable**. If the callable
 
 :ref:`Object<class_Object>` **get_object**\ (\ ) |const| :ref:`🔗<class_Callable_method_get_object>`
 
-Returns the object on which this **Callable** is called.
+Trả về đối tượng mà **Callable** này được gọi trên đó.
 
 .. rst-class:: classref-item-separator
 
@@ -397,7 +397,7 @@ Returns the object on which this **Callable** is called.
 
 :ref:`int<class_int>` **get_object_id**\ (\ ) |const| :ref:`🔗<class_Callable_method_get_object_id>`
 
-Returns the ID of this **Callable**'s object (see :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`).
+Trả về ID của đối tượng thuộc **Callable** này (xem :ref:`Object.get_instance_id()<class_Object_method_get_instance_id>`).
 
 .. rst-class:: classref-item-separator
 
@@ -409,9 +409,9 @@ Returns the ID of this **Callable**'s object (see :ref:`Object.get_instance_id()
 
 :ref:`int<class_int>` **get_unbound_arguments_count**\ (\ ) |const| :ref:`🔗<class_Callable_method_get_unbound_arguments_count>`
 
-Returns the total amount of arguments unbound via successive :ref:`bind()<class_Callable_method_bind>` or :ref:`unbind()<class_Callable_method_unbind>` calls. See :ref:`get_bound_arguments()<class_Callable_method_get_bound_arguments>` for details.
+Trả về tổng số đối số chưa được liên kết qua các lần gọi :ref:`bind()<class_Callable_method_bind>` hoặc :ref:`unbind()<class_Callable_method_unbind>` liên tiếp. Xem :ref:`get_bound_arguments()<class_Callable_method_get_bound_arguments>` để biết chi tiết.
 
-\ **Note:** The :ref:`get_bound_arguments_count()<class_Callable_method_get_bound_arguments_count>` and :ref:`get_unbound_arguments_count()<class_Callable_method_get_unbound_arguments_count>` methods can both return positive values.
+\ **Lưu ý:** Cả hai phương thức :ref:`get_bound_arguments_count()<class_Callable_method_get_bound_arguments_count>` và :ref:`get_unbound_arguments_count()<class_Callable_method_get_unbound_arguments_count>` đều có thể trả về các giá trị dương.
 
 .. rst-class:: classref-item-separator
 
@@ -423,9 +423,9 @@ Returns the total amount of arguments unbound via successive :ref:`bind()<class_
 
 :ref:`int<class_int>` **hash**\ (\ ) |const| :ref:`🔗<class_Callable_method_hash>`
 
-Returns the 32-bit hash value of this **Callable**'s object.
+Trả về giá trị hash 32-bit của đối tượng thuộc **Callable** này.
 
-\ **Note:** **Callable**\ s with equal content will always produce identical hash values. However, the reverse is not true. Returning identical hash values does *not* imply the callables are equal, because different callables can have identical hash values due to hash collisions. The engine uses a 32-bit hash algorithm for :ref:`hash()<class_Callable_method_hash>`.
+\ **Lưu ý:** **Callable**\ s có nội dung giống nhau sẽ luôn tạo ra các giá trị hash giống hệt nhau. Tuy nhiên, điều ngược lại không đúng. Việc trả về các giá trị hash giống hệt nhau *không* có nghĩa là các callable bằng nhau, vì các callable khác nhau có thể có các giá trị hash giống hệt nhau do va chạm hash. Engine sử dụng thuật toán hash 32-bit cho :ref:`hash()<class_Callable_method_hash>`.
 
 .. rst-class:: classref-item-separator
 
@@ -437,15 +437,15 @@ Returns the 32-bit hash value of this **Callable**'s object.
 
 :ref:`bool<class_bool>` **is_custom**\ (\ ) |const| :ref:`🔗<class_Callable_method_is_custom>`
 
-Returns ``true`` if this **Callable** is a custom callable. Custom callables are used:
+Trả về ``true`` nếu **Callable** này là một callable tùy chỉnh. Callable tùy chỉnh được dùng để:
 
-- for binding/unbinding arguments (see :ref:`bind()<class_Callable_method_bind>` and :ref:`unbind()<class_Callable_method_unbind>`);
+- dùng để liên kết/hủy liên kết các đối số (xem :ref:`bind()<class_Callable_method_bind>` và :ref:`unbind()<class_Callable_method_unbind>`);
 
-- for representing methods of built-in :ref:`Variant<class_Variant>` types (see :ref:`create()<class_Callable_method_create>`);
+- dùng để biểu diễn các phương thức của các kiểu :ref:`Variant<class_Variant>` tích hợp sẵn (xem :ref:`create()<class_Callable_method_create>`);
 
-- for representing global, lambda, and RPC functions in GDScript;
+- dùng để biểu diễn các hàm global, lambda và RPC trong GDScript;
 
-- for other purposes in the core, GDExtension, and C#.
+- dùng cho các mục đích khác trong core, GDExtension và C#.
 
 .. rst-class:: classref-item-separator
 
@@ -457,9 +457,9 @@ Returns ``true`` if this **Callable** is a custom callable. Custom callables are
 
 :ref:`bool<class_bool>` **is_null**\ (\ ) |const| :ref:`🔗<class_Callable_method_is_null>`
 
-Returns ``true`` if this **Callable** has no target to call the method on. Equivalent to ``callable == Callable()``.
+Trả về ``true`` nếu **Callable** này không có target để gọi phương thức. Tương đương với ``callable == Callable()``.
 
-\ **Note:** This is *not* the same as ``not is_valid()`` and using ``not is_null()`` will *not* guarantee that this callable can be called. Use :ref:`is_valid()<class_Callable_method_is_valid>` instead.
+\ **Lưu ý:** Điều này *không* giống với ``not is_valid()`` và việc sử dụng ``not is_null()`` sẽ *không* đảm bảo rằng callable này có thể được gọi. Thay vào đó, hãy sử dụng :ref:`is_valid()<class_Callable_method_is_valid>`.
 
 .. rst-class:: classref-item-separator
 
@@ -471,7 +471,7 @@ Returns ``true`` if this **Callable** has no target to call the method on. Equiv
 
 :ref:`bool<class_bool>` **is_standard**\ (\ ) |const| :ref:`🔗<class_Callable_method_is_standard>`
 
-Returns ``true`` if this **Callable** is a standard callable. This method is the opposite of :ref:`is_custom()<class_Callable_method_is_custom>`. Returns ``false`` if this callable is a lambda function.
+Trả về ``true`` nếu **Callable** này là một callable tiêu chuẩn. Phương thức này ngược với :ref:`is_custom()<class_Callable_method_is_custom>`. Trả về ``false`` nếu callable này là một hàm lambda.
 
 .. rst-class:: classref-item-separator
 
@@ -483,7 +483,7 @@ Returns ``true`` if this **Callable** is a standard callable. This method is the
 
 :ref:`bool<class_bool>` **is_valid**\ (\ ) |const| :ref:`🔗<class_Callable_method_is_valid>`
 
-Returns ``true`` if the callable's object exists and has a valid method name assigned, or is a custom callable.
+Trả về ``true`` nếu đối tượng của callable tồn tại và có tên phương thức hợp lệ được gán, hoặc là một callable tùy chỉnh.
 
 .. rst-class:: classref-item-separator
 
@@ -495,7 +495,7 @@ Returns ``true`` if the callable's object exists and has a valid method name ass
 
 |void| **rpc**\ (\ ...\ ) |vararg| |const| :ref:`🔗<class_Callable_method_rpc>`
 
-Perform an RPC (Remote Procedure Call) on all connected peers. This is used for multiplayer and is normally not available, unless the function being called has been marked as *RPC* (using :ref:`@GDScript.@rpc<class_@GDScript_annotation_@rpc>` or :ref:`Node.rpc_config()<class_Node_method_rpc_config>`). Calling this method on unsupported functions will result in an error. See :ref:`Node.rpc()<class_Node_method_rpc>`.
+Thực hiện RPC (Remote Procedure Call) trên tất cả các peer đã kết nối. Tính năng này được dùng cho multiplayer và thường không khả dụng, trừ khi hàm được gọi đã được đánh dấu là *RPC* (bằng :ref:`@GDScript.@rpc <class_@GDScript_annotation_@rpc>` hoặc :ref:`Node.rpc_config()<class_Node_method_rpc_config>`). Việc gọi phương thức này trên các hàm không được hỗ trợ sẽ gây ra lỗi. Xem :ref:`Node.rpc()<class_Node_method_rpc>`.
 
 .. rst-class:: classref-item-separator
 
@@ -507,7 +507,7 @@ Perform an RPC (Remote Procedure Call) on all connected peers. This is used for 
 
 |void| **rpc_id**\ (\ peer_id\: :ref:`int<class_int>`, ...\ ) |vararg| |const| :ref:`🔗<class_Callable_method_rpc_id>`
 
-Perform an RPC (Remote Procedure Call) on a specific peer ID (see multiplayer documentation for reference). This is used for multiplayer and is normally not available unless the function being called has been marked as *RPC* (using :ref:`@GDScript.@rpc<class_@GDScript_annotation_@rpc>` or :ref:`Node.rpc_config()<class_Node_method_rpc_config>`). Calling this method on unsupported functions will result in an error. See :ref:`Node.rpc_id()<class_Node_method_rpc_id>`.
+Thực hiện RPC (Remote Procedure Call) trên một peer cụ thể theo ID (xem tài liệu về multiplayer để tham khảo). Tính năng này được dùng cho multiplayer và thường không khả dụng, trừ khi hàm được gọi đã được đánh dấu là *RPC* (bằng :ref:`@GDScript.@rpc <class_@GDScript_annotation_@rpc>` hoặc :ref:`Node.rpc_config()<class_Node_method_rpc_config>`). Việc gọi phương thức này trên các hàm không được hỗ trợ sẽ gây ra lỗi. Xem :ref:`Node.rpc_id()<class_Node_method_rpc_id>`.
 
 .. rst-class:: classref-item-separator
 
@@ -519,9 +519,9 @@ Perform an RPC (Remote Procedure Call) on a specific peer ID (see multiplayer do
 
 :ref:`Callable<class_Callable>` **unbind**\ (\ argcount\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_Callable_method_unbind>`
 
-Returns a copy of this **Callable** with a number of arguments unbound. In other words, when the new callable is called the last few arguments supplied by the user are ignored, according to ``argcount``. The remaining arguments are passed to the callable. This allows to use the original callable in a context that attempts to pass more arguments than this callable can handle, e.g. a signal with a fixed number of arguments. See also :ref:`bind()<class_Callable_method_bind>`.
+Trả về một bản sao của **Callable** này với một số đối số được bỏ liên kết. Nói cách khác, khi callable mới được gọi, một vài đối số cuối do người dùng cung cấp sẽ bị bỏ qua, theo ``argcount``. Các đối số còn lại được truyền cho callable. Điều này cho phép sử dụng callable ban đầu trong ngữ cảnh cố gắng truyền nhiều đối số hơn số lượng callable này có thể xử lý, chẳng hạn như một signal có số lượng đối số cố định. Xem thêm :ref:`bind()<class_Callable_method_bind>`.
 
-\ **Note:** When this method is chained with other similar methods, the order in which the argument list is modified is read from right to left.
+\ **Lưu ý:** Khi phương thức này được kết hợp với các phương thức tương tự khác, thứ tự sửa đổi danh sách đối số được đọc từ phải sang trái.
 
 ::
 
@@ -535,16 +535,16 @@ Returns a copy of this **Callable** with a number of arguments unbound. In other
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_Callable_operator_neq_Callable:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_Callable_operator_neq_Callable>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗 <class_Callable_operator_neq_Callable>`
 
-Returns ``true`` if both **Callable**\ s invoke different targets.
+Trả về ``true`` nếu cả hai **Callable**\ s gọi các target khác nhau.
 
 .. rst-class:: classref-item-separator
 
@@ -554,16 +554,16 @@ Returns ``true`` if both **Callable**\ s invoke different targets.
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗<class_Callable_operator_eq_Callable>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`Callable<class_Callable>`\ ) :ref:`🔗 <class_Callable_operator_eq_Callable>`
 
-Returns ``true`` if both **Callable**\ s invoke the same custom target.
+Trả về ``true`` nếu cả hai **Callable**\ s gọi cùng một custom target.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Phương thức này thường nên được người dùng ghi đè để có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phương thức này bắt buộc phải được ghi đè khi mở rộng base class của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có side effect. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu dữ liệu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu dữ liệu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các flag sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

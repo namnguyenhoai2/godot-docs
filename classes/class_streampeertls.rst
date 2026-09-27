@@ -10,47 +10,47 @@
 StreamPeerTLS
 =============
 
-**Inherits:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`StreamPeer<class_StreamPeer>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-A stream peer that handles TLS connections.
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-A stream peer that handles TLS connections. This object can be used to connect to a TLS server or accept a single TLS client connection.
-
-\ **Note:** When exporting to Android, make sure to enable the ``INTERNET`` permission in the Android export preset before exporting the project or using one-click deploy. Otherwise, network communication of any kind will be blocked by Android.
+Một stream peer xử lý các kết nối TLS.
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Một stream peer xử lý các kết nối TLS. Đối tượng này có thể được dùng để kết nối đến máy chủ TLS hoặc chấp nhận một kết nối máy khách TLS duy nhất.
+
+\ **Lưu ý:** Khi export sang Android, hãy đảm bảo bật quyền ``INTERNET`` trong Android export preset trước khi export project hoặc sử dụng one-click deploy. Nếu không, Android sẽ chặn mọi hình thức giao tiếp mạng.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`TLS certificates <../tutorials/networking/ssl_certificates>`
+- :doc:`Chứng chỉ TLS <../tutorials/networking/ssl_certificates>`
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`    | :ref:`accept_stream<class_StreamPeerTLS_method_accept_stream>`\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`, server_options\: :ref:`TLSOptions<class_TLSOptions>`\ )                                                           |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>`    | :ref:`connect_to_stream<class_StreamPeerTLS_method_connect_to_stream>`\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`, common_name\: :ref:`String<class_String>`, client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                   | :ref:`disconnect_from_stream<class_StreamPeerTLS_method_disconnect_from_stream>`\ (\ )                                                                                                                                             |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Status<enum_StreamPeerTLS_Status>` | :ref:`get_status<class_StreamPeerTLS_method_get_status>`\ (\ ) |const|                                                                                                                                                             |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`StreamPeer<class_StreamPeer>`      | :ref:`get_stream<class_StreamPeerTLS_method_get_stream>`\ (\ ) |const|                                                                                                                                                             |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                   | :ref:`poll<class_StreamPeerTLS_method_poll>`\ (\ )                                                                                                                                                                                 |
-   +------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`accept_stream<class_StreamPeerTLS_method_accept_stream>`\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`, server_options\: :ref:`TLSOptions<class_TLSOptions>`\ )                                                           |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>`    | :ref:`connect_to_stream<class_StreamPeerTLS_method_connect_to_stream>`\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`, common_name\: :ref:`String<class_String>`, client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                    | :ref:`disconnect_from_stream<class_StreamPeerTLS_method_disconnect_from_stream>`\ (\ )                                                                                                                                             |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Status <enum_StreamPeerTLS_Status>` | :ref:`get_status<class_StreamPeerTLS_method_get_status>`\ (\ ) |const|                                                                                                                                                             |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`StreamPeer<class_StreamPeer>`       | :ref:`get_stream<class_StreamPeerTLS_method_get_stream>`\ (\ ) |const|                                                                                                                                                             |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                    | :ref:`poll<class_StreamPeerTLS_method_poll>`\ (\ )                                                                                                                                                                                 |
+   +-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -58,14 +58,14 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Enumerations
-------------
+Các kiểu liệt kê
+----------------
 
 .. _enum_StreamPeerTLS_Status:
 
 .. rst-class:: classref-enumeration
 
-enum **Status**: :ref:`🔗<enum_StreamPeerTLS_Status>`
+enum **Status**: :ref:`🔗 <enum_StreamPeerTLS_Status>`
 
 .. _class_StreamPeerTLS_constant_STATUS_DISCONNECTED:
 
@@ -73,7 +73,7 @@ enum **Status**: :ref:`🔗<enum_StreamPeerTLS_Status>`
 
 :ref:`Status<enum_StreamPeerTLS_Status>` **STATUS_DISCONNECTED** = ``0``
 
-A status representing a **StreamPeerTLS** that is disconnected.
+Một trạng thái biểu thị một **StreamPeerTLS** đã ngắt kết nối.
 
 .. _class_StreamPeerTLS_constant_STATUS_HANDSHAKING:
 
@@ -81,7 +81,7 @@ A status representing a **StreamPeerTLS** that is disconnected.
 
 :ref:`Status<enum_StreamPeerTLS_Status>` **STATUS_HANDSHAKING** = ``1``
 
-A status representing a **StreamPeerTLS** during handshaking.
+Một trạng thái biểu thị một **StreamPeerTLS** trong quá trình bắt tay.
 
 .. _class_StreamPeerTLS_constant_STATUS_CONNECTED:
 
@@ -89,7 +89,7 @@ A status representing a **StreamPeerTLS** during handshaking.
 
 :ref:`Status<enum_StreamPeerTLS_Status>` **STATUS_CONNECTED** = ``2``
 
-A status representing a **StreamPeerTLS** that is connected to a host.
+Một trạng thái biểu thị một **StreamPeerTLS** đã kết nối với máy chủ.
 
 .. _class_StreamPeerTLS_constant_STATUS_ERROR:
 
@@ -97,7 +97,7 @@ A status representing a **StreamPeerTLS** that is connected to a host.
 
 :ref:`Status<enum_StreamPeerTLS_Status>` **STATUS_ERROR** = ``3``
 
-A status representing a **StreamPeerTLS** in error state.
+Một trạng thái biểu thị một **StreamPeerTLS** đang ở trạng thái lỗi.
 
 .. _class_StreamPeerTLS_constant_STATUS_ERROR_HOSTNAME_MISMATCH:
 
@@ -105,7 +105,7 @@ A status representing a **StreamPeerTLS** in error state.
 
 :ref:`Status<enum_StreamPeerTLS_Status>` **STATUS_ERROR_HOSTNAME_MISMATCH** = ``4``
 
-An error status that shows a mismatch in the TLS certificate domain presented by the host and the domain requested for validation.
+Trạng thái lỗi cho biết miền của chứng chỉ TLS do máy chủ cung cấp không khớp với miền được yêu cầu để xác thực.
 
 .. rst-class:: classref-section-separator
 
@@ -113,8 +113,8 @@ An error status that shows a mismatch in the TLS certificate domain presented by
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_StreamPeerTLS_method_accept_stream:
 
@@ -122,7 +122,7 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **accept_stream**\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`, server_options\: :ref:`TLSOptions<class_TLSOptions>`\ ) :ref:`🔗<class_StreamPeerTLS_method_accept_stream>`
 
-Accepts a peer connection as a server using the given ``server_options``. See :ref:`TLSOptions.server()<class_TLSOptions_method_server>`.
+Chấp nhận một kết nối peer với vai trò máy chủ bằng cách sử dụng ``server_options`` đã cho. Xem :ref:`TLSOptions.server()<class_TLSOptions_method_server>`.
 
 .. rst-class:: classref-item-separator
 
@@ -134,7 +134,7 @@ Accepts a peer connection as a server using the given ``server_options``. See :r
 
 :ref:`Error<enum_@GlobalScope_Error>` **connect_to_stream**\ (\ stream\: :ref:`StreamPeer<class_StreamPeer>`, common_name\: :ref:`String<class_String>`, client_options\: :ref:`TLSOptions<class_TLSOptions>` = null\ ) :ref:`🔗<class_StreamPeerTLS_method_connect_to_stream>`
 
-Connects to a peer using an underlying :ref:`StreamPeer<class_StreamPeer>` ``stream`` and verifying the remote certificate is correctly signed for the given ``common_name``. You can pass the optional ``client_options`` parameter to customize the trusted certification authorities, or disable the common name verification. See :ref:`TLSOptions.client()<class_TLSOptions_method_client>` and :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
+Kết nối đến một peer bằng :ref:`StreamPeer<class_StreamPeer>` ``stream`` bên dưới và xác minh rằng chứng chỉ từ xa được ký hợp lệ cho ``common_name`` đã cho. Bạn có thể truyền tham số ``client_options`` tùy chọn để tùy chỉnh các certification authority được tin cậy hoặc tắt xác minh common name. Xem :ref:`TLSOptions.client()<class_TLSOptions_method_client>` và :ref:`TLSOptions.client_unsafe()<class_TLSOptions_method_client_unsafe>`.
 
 .. rst-class:: classref-item-separator
 
@@ -146,7 +146,7 @@ Connects to a peer using an underlying :ref:`StreamPeer<class_StreamPeer>` ``str
 
 |void| **disconnect_from_stream**\ (\ ) :ref:`🔗<class_StreamPeerTLS_method_disconnect_from_stream>`
 
-Disconnects from host.
+Ngắt kết nối khỏi máy chủ.
 
 .. rst-class:: classref-item-separator
 
@@ -158,7 +158,7 @@ Disconnects from host.
 
 :ref:`Status<enum_StreamPeerTLS_Status>` **get_status**\ (\ ) |const| :ref:`🔗<class_StreamPeerTLS_method_get_status>`
 
-Returns the status of the connection.
+Trả về trạng thái của kết nối.
 
 .. rst-class:: classref-item-separator
 
@@ -170,7 +170,7 @@ Returns the status of the connection.
 
 :ref:`StreamPeer<class_StreamPeer>` **get_stream**\ (\ ) |const| :ref:`🔗<class_StreamPeerTLS_method_get_stream>`
 
-Returns the underlying :ref:`StreamPeer<class_StreamPeer>` connection, used in :ref:`accept_stream()<class_StreamPeerTLS_method_accept_stream>` or :ref:`connect_to_stream()<class_StreamPeerTLS_method_connect_to_stream>`.
+Trả về kết nối :ref:`StreamPeer<class_StreamPeer>` bên dưới, được sử dụng trong :ref:`accept_stream()<class_StreamPeerTLS_method_accept_stream>` hoặc :ref:`connect_to_stream()<class_StreamPeerTLS_method_connect_to_stream>`.
 
 .. rst-class:: classref-item-separator
 
@@ -182,14 +182,14 @@ Returns the underlying :ref:`StreamPeer<class_StreamPeer>` connection, used in :
 
 |void| **poll**\ (\ ) :ref:`🔗<class_StreamPeerTLS_method_poll>`
 
-Poll the connection to check for incoming bytes. Call this right before :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` for it to work properly.
+Thăm dò kết nối để kiểm tra các byte đến. Gọi phương thức này ngay trước :ref:`StreamPeer.get_available_bytes()<class_StreamPeer_method_get_available_bytes>` để hoạt động chính xác.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận mọi số lượng đối số sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau đây.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

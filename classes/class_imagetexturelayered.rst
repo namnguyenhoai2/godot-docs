@@ -10,32 +10,32 @@
 ImageTextureLayered
 ===================
 
-**Inherits:** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`TextureLayered<class_TextureLayered>` **<** :ref:`Texture<class_Texture>` **<** :ref:`Resource<class_Resource>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-**Inherited By:** :ref:`Cubemap<class_Cubemap>`, :ref:`CubemapArray<class_CubemapArray>`, :ref:`Texture2DArray<class_Texture2DArray>`
+**Được kế thừa bởi:** :ref:`Cubemap<class_Cubemap>`, :ref:`CubemapArray<class_CubemapArray>`, :ref:`Texture2DArray<class_Texture2DArray>`
 
-Base class for texture types which contain the data of multiple :ref:`ImageTexture<class_ImageTexture>`\ s. Each image is of the same size and format.
+Lớp cơ sở cho các loại texture chứa dữ liệu của nhiều :ref:`ImageTexture<class_ImageTexture>`\ s. Mỗi image có cùng kích thước và định dạng.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-Base class for :ref:`Texture2DArray<class_Texture2DArray>`, :ref:`Cubemap<class_Cubemap>` and :ref:`CubemapArray<class_CubemapArray>`. Cannot be used directly, but contains all the functions necessary for accessing the derived resource types. See also :ref:`Texture3D<class_Texture3D>`.
+Lớp cơ sở cho :ref:`Texture2DArray<class_Texture2DArray>`, :ref:`Cubemap<class_Cubemap>` và :ref:`CubemapArray<class_CubemapArray>`. Không thể sử dụng trực tiếp, nhưng chứa tất cả các hàm cần thiết để truy cập các loại resource dẫn xuất. Xem thêm :ref:`Texture3D<class_Texture3D>`.
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Các phương thức
+---------------
 
 .. table::
    :widths: auto
 
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | :ref:`Error<enum_@GlobalScope_Error>` | :ref:`create_from_images<class_ImageTextureLayered_method_create_from_images>`\ (\ images\: :ref:`Array<class_Array>`\[:ref:`Image<class_Image>`\]\ ) |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | |void|                                | :ref:`update_layer<class_ImageTextureLayered_method_update_layer>`\ (\ image\: :ref:`Image<class_Image>`, layer\: :ref:`int<class_int>`\ )            |
-   +---------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | :ref:`Error <enum_@GlobalScope_Error>` | :ref:`create_from_images<class_ImageTextureLayered_method_create_from_images>`\ (\ images\: :ref:`Array<class_Array>`\[:ref:`Image<class_Image>`\]\ ) |
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | |void|                                 | :ref:`update_layer<class_ImageTextureLayered_method_update_layer>`\ (\ image\: :ref:`Image<class_Image>`, layer\: :ref:`int<class_int>`\ )            |
+   +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -43,8 +43,8 @@ Methods
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_ImageTextureLayered_method_create_from_images:
 
@@ -52,9 +52,9 @@ Method Descriptions
 
 :ref:`Error<enum_@GlobalScope_Error>` **create_from_images**\ (\ images\: :ref:`Array<class_Array>`\[:ref:`Image<class_Image>`\]\ ) :ref:`🔗<class_ImageTextureLayered_method_create_from_images>`
 
-Creates an **ImageTextureLayered** from an array of :ref:`Image<class_Image>`\ s. See :ref:`Image.create()<class_Image_method_create>` for the expected data format. The first image decides the width, height, image format and mipmapping setting. The other images *must* have the same width, height, image format and mipmapping setting.
+Tạo một **ImageTextureLayered** từ một mảng :ref:`Image<class_Image>`\ s. Xem :ref:`Image.create()<class_Image_method_create>` để biết định dạng dữ liệu dự kiến. Ảnh đầu tiên quyết định chiều rộng, chiều cao, định dạng ảnh và thiết lập mipmapping. Các ảnh khác *must* có cùng chiều rộng, chiều cao, định dạng ảnh và thiết lập mipmapping.
 
-Each :ref:`Image<class_Image>` represents one ``layer``.
+Mỗi :ref:`Image<class_Image>` đại diện cho một ``layer``.
 
 ::
 
@@ -100,20 +100,20 @@ Each :ref:`Image<class_Image>` represents one ``layer``.
 
 |void| **update_layer**\ (\ image\: :ref:`Image<class_Image>`, layer\: :ref:`int<class_int>`\ ) :ref:`🔗<class_ImageTextureLayered_method_update_layer>`
 
-Replaces the existing :ref:`Image<class_Image>` data at the given ``layer`` with this new image.
+Thay thế dữ liệu :ref:`Image<class_Image>` hiện có tại ``layer`` đã cho bằng ảnh mới này.
 
-The given :ref:`Image<class_Image>` must have the same width, height, image format, and mipmapping flag as the rest of the referenced images.
+:ref:`Image<class_Image>` đã cho phải có cùng chiều rộng, chiều cao, định dạng ảnh và cờ mipmapping như các ảnh được tham chiếu còn lại.
 
-If the image format is unsupported, it will be decompressed and converted to a similar and supported :ref:`Format<enum_Image_Format>`.
+Nếu định dạng hình ảnh không được hỗ trợ, hình ảnh sẽ được giải nén và chuyển đổi sang :ref:`Format <enum_Image_Format>` tương tự và được hỗ trợ.
 
-The update is immediate: it's synchronized with drawing.
+Bản cập nhật diễn ra ngay lập tức: bản cập nhật được đồng bộ với việc vẽ.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của thực thể.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một thể hiện để được gọi, vì vậy bạn có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

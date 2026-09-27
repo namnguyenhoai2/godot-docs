@@ -10,20 +10,20 @@
 AABB
 ====
 
-A 3D axis-aligned bounding box.
+Một hộp bao trục song song trong không gian 3D.
 
 .. rst-class:: classref-introduction-group
 
-Description
------------
+Mô tả
+-----
 
-The **AABB** built-in :ref:`Variant<class_Variant>` type represents an axis-aligned bounding box in a 3D space. It is defined by its :ref:`position<class_AABB_property_position>` and :ref:`size<class_AABB_property_size>`, which are :ref:`Vector3<class_Vector3>`. It is frequently used for fast overlap tests (see :ref:`intersects()<class_AABB_method_intersects>`). Although **AABB** itself is axis-aligned, it can be combined with :ref:`Transform3D<class_Transform3D>` to represent a rotated or skewed bounding box.
+Kiểu tích hợp **AABB** :ref:`Variant<class_Variant>` biểu diễn một hộp bao trục song song trong không gian 3D. Nó được xác định bởi :ref:`position<class_AABB_property_position>` và :ref:`size<class_AABB_property_size>`, là các :ref:`Vector3<class_Vector3>`. Nó thường được dùng để kiểm tra chồng lấn nhanh (xem :ref:`intersects()<class_AABB_method_intersects>`). Mặc dù bản thân **AABB** có các trục song song, nó có thể được kết hợp với :ref:`Transform3D<class_Transform3D>` để biểu diễn một hộp bao bị xoay hoặc lệch.
 
-It uses floating-point coordinates. The 2D counterpart to **AABB** is :ref:`Rect2<class_Rect2>`. There is no version of **AABB** that uses integer coordinates.
+Nó sử dụng tọa độ dấu phẩy động. Đối tượng 2D tương ứng với **AABB** là :ref:`Rect2<class_Rect2>`. Không có phiên bản nào của **AABB** sử dụng tọa độ số nguyên.
 
-\ **Note:** Negative values for :ref:`size<class_AABB_property_size>` are not supported. With negative size, most **AABB** methods do not work correctly. Use :ref:`abs()<class_AABB_method_abs>` to get an equivalent **AABB** with a non-negative size.
+\ **Lưu ý:** Không hỗ trợ các giá trị âm cho :ref:`size<class_AABB_property_size>`. Khi kích thước âm, hầu hết các phương thức **AABB** không hoạt động chính xác. Hãy sử dụng :ref:`abs()<class_AABB_method_abs>` để lấy một **AABB** tương đương với kích thước không âm.
 
-\ **Note:** In a boolean context, an **AABB** evaluates to ``false`` if both :ref:`position<class_AABB_property_position>` and :ref:`size<class_AABB_property_size>` are zero (equal to :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`). Otherwise, it always evaluates to ``true``.
+\ **Lưu ý:** Trong ngữ cảnh boolean, **AABB** cho kết quả là ``false`` nếu cả :ref:`position<class_AABB_property_position>` và :ref:`size<class_AABB_property_size>` đều bằng 0 (bằng :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`). Trong mọi trường hợp khác, nó luôn cho kết quả là ``true``.
 
 .. note::
 
@@ -31,18 +31,18 @@ It uses floating-point coordinates. The 2D counterpart to **AABB** is :ref:`Rect
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Hướng dẫn
 ---------
 
-- :doc:`Math documentation index <../tutorials/math/index>`
+- :doc:`Chỉ mục tài liệu Math <../tutorials/math/index>`
 
-- :doc:`Vector math <../tutorials/math/vector_math>`
+- :doc:`Toán vector <../tutorials/math/vector_math>`
 
-- :doc:`Advanced vector math <../tutorials/math/vectors_advanced>`
+- :doc:`Toán vector nâng cao <../tutorials/math/vectors_advanced>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -58,7 +58,7 @@ Properties
 
 .. rst-class:: classref-reftable-group
 
-Constructors
+Hàm khởi tạo
 ------------
 
 .. table::
@@ -74,8 +74,8 @@ Constructors
 
 .. rst-class:: classref-reftable-group
 
-Methods
--------
+Phương thức
+-----------
 
 .. table::
    :widths: auto
@@ -134,19 +134,19 @@ Methods
 
 .. rst-class:: classref-reftable-group
 
-Operators
----------
+Các toán tử
+-----------
 
 .. table::
    :widths: auto
 
-   +-------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator !=<class_AABB_operator_neq_AABB>`\ (\ right\: :ref:`AABB<class_AABB>`\ )                     |
-   +-------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`AABB<class_AABB>` | :ref:`operator *<class_AABB_operator_mul_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) |
-   +-------------------------+-------------------------------------------------------------------------------------------------------------+
-   | :ref:`bool<class_bool>` | :ref:`operator ==<class_AABB_operator_eq_AABB>`\ (\ right\: :ref:`AABB<class_AABB>`\ )                      |
-   +-------------------------+-------------------------------------------------------------------------------------------------------------+
+   +-------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator != <class_AABB_operator_neq_AABB>`\ (\ right\: :ref:`AABB<class_AABB>`\ )                     |
+   +-------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`AABB<class_AABB>` | :ref:`operator * <class_AABB_operator_mul_Transform3D>`\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) |
+   +-------------------------+--------------------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>` | :ref:`operator == <class_AABB_operator_eq_AABB>`\ (\ right\: :ref:`AABB<class_AABB>`\ )                      |
+   +-------------------------+--------------------------------------------------------------------------------------------------------------+
 
 .. rst-class:: classref-section-separator
 
@@ -154,8 +154,8 @@ Operators
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_AABB_property_end:
 
@@ -163,7 +163,7 @@ Property Descriptions
 
 :ref:`Vector3<class_Vector3>` **end** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_AABB_property_end>`
 
-The ending point. This is usually the corner on the top-right and back of the bounding box, and is equivalent to ``position + size``. Setting this point affects the :ref:`size<class_AABB_property_size>`.
+Điểm kết thúc. Đây thường là góc ở phía trên bên phải và phía sau của bounding box, tương đương với ``position + size``. Việc đặt điểm này ảnh hưởng đến :ref:`size<class_AABB_property_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -175,7 +175,7 @@ The ending point. This is usually the corner on the top-right and back of the bo
 
 :ref:`Vector3<class_Vector3>` **position** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_AABB_property_position>`
 
-The origin point. This is usually the corner on the bottom-left and forward of the bounding box.
+Điểm gốc. Đây thường là góc ở phía dưới bên trái và phía trước của bounding box.
 
 .. rst-class:: classref-item-separator
 
@@ -187,9 +187,9 @@ The origin point. This is usually the corner on the bottom-left and forward of t
 
 :ref:`Vector3<class_Vector3>` **size** = ``Vector3(0, 0, 0)`` :ref:`🔗<class_AABB_property_size>`
 
-The bounding box's width, height, and depth starting from :ref:`position<class_AABB_property_position>`. Setting this value also affects the :ref:`end<class_AABB_property_end>` point.
+Chiều rộng, chiều cao và chiều sâu của hộp giới hạn bắt đầu từ :ref:`position<class_AABB_property_position>`. Việc đặt giá trị này cũng ảnh hưởng đến điểm :ref:`end<class_AABB_property_end>`.
 
-\ **Note:** It's recommended setting the width, height, and depth to non-negative values. This is because most methods in Godot assume that the :ref:`position<class_AABB_property_position>` is the bottom-left-forward corner, and the :ref:`end<class_AABB_property_end>` is the top-right-back corner. To get an equivalent bounding box with non-negative size, use :ref:`abs()<class_AABB_method_abs>`.
+\ **Lưu ý:** Bạn nên đặt chiều rộng, chiều cao và chiều sâu thành các giá trị không âm. Điều này là vì hầu hết các phương thức trong Godot đều giả định rằng :ref:`position<class_AABB_property_position>` là góc dưới-trái-trước, còn :ref:`end<class_AABB_property_end>` là góc trên-phải-sau. Để lấy một hộp giới hạn tương đương có kích thước không âm, hãy sử dụng :ref:`abs()<class_AABB_method_abs>`.
 
 .. rst-class:: classref-section-separator
 
@@ -197,8 +197,8 @@ The bounding box's width, height, and depth starting from :ref:`position<class_A
 
 .. rst-class:: classref-descriptions-group
 
-Constructor Descriptions
-------------------------
+Mô tả Constructor
+-----------------
 
 .. _class_AABB_constructor_AABB:
 
@@ -206,7 +206,7 @@ Constructor Descriptions
 
 :ref:`AABB<class_AABB>` **AABB**\ (\ ) :ref:`🔗<class_AABB_constructor_AABB>`
 
-Constructs an **AABB** with its :ref:`position<class_AABB_property_position>` and :ref:`size<class_AABB_property_size>` set to :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`.
+Tạo một **AABB** với :ref:`position<class_AABB_property_position>` và :ref:`size<class_AABB_property_size>` được đặt thành :ref:`Vector3.ZERO<class_Vector3_constant_ZERO>`.
 
 .. rst-class:: classref-item-separator
 
@@ -216,7 +216,7 @@ Constructs an **AABB** with its :ref:`position<class_AABB_property_position>` an
 
 :ref:`AABB<class_AABB>` **AABB**\ (\ from\: :ref:`AABB<class_AABB>`\ )
 
-Constructs an **AABB** as a copy of the given **AABB**.
+Tạo một **AABB** dưới dạng bản sao của **AABB** đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -226,7 +226,7 @@ Constructs an **AABB** as a copy of the given **AABB**.
 
 :ref:`AABB<class_AABB>` **AABB**\ (\ position\: :ref:`Vector3<class_Vector3>`, size\: :ref:`Vector3<class_Vector3>`\ )
 
-Constructs an **AABB** by ``position`` and ``size``.
+Tạo một **AABB** bằng cách ``position`` và ``size``.
 
 .. rst-class:: classref-section-separator
 
@@ -234,8 +234,8 @@ Constructs an **AABB** by ``position`` and ``size``.
 
 .. rst-class:: classref-descriptions-group
 
-Method Descriptions
--------------------
+Mô tả phương thức
+-----------------
 
 .. _class_AABB_method_abs:
 
@@ -243,7 +243,7 @@ Method Descriptions
 
 :ref:`AABB<class_AABB>` **abs**\ (\ ) |const| :ref:`🔗<class_AABB_method_abs>`
 
-Returns an **AABB** equivalent to this bounding box, with its width, height, and depth modified to be non-negative values.
+Trả về một **AABB** tương đương với hộp giới hạn này, với chiều rộng, chiều cao và chiều sâu được điều chỉnh thành các giá trị không âm.
 
 
 .. tabs::
@@ -252,19 +252,19 @@ Returns an **AABB** equivalent to this bounding box, with its width, height, and
 
     var box = AABB(Vector3(5, 0, 5), Vector3(-20, -10, -5))
     var absolute = box.abs()
-    print(absolute.position) # Prints (-15.0, -10.0, 0.0)
-    print(absolute.size)     # Prints (20.0, 10.0, 5.0)
+    print(absolute.position) # In ra (-15.0, -10.0, 0.0)
+    print(absolute.size)     # In ra (20.0, 10.0, 5.0)
 
  .. code-tab:: csharp
 
     var box = new Aabb(new Vector3(5, 0, 5), new Vector3(-20, -10, -5));
     var absolute = box.Abs();
-    GD.Print(absolute.Position); // Prints (-15, -10, 0)
-    GD.Print(absolute.Size);     // Prints (20, 10, 5)
+    GD.Print(absolute.Position); // In ra (-15, -10, 0)
+    GD.Print(absolute.Size);     // In ra (20, 10, 5)
 
 
 
-\ **Note:** It's recommended to use this method when :ref:`size<class_AABB_property_size>` is negative, as most other methods in Godot assume that the :ref:`size<class_AABB_property_size>`'s components are greater than ``0``.
+\ **Lưu ý:** Bạn nên sử dụng phương thức này khi :ref:`size<class_AABB_property_size>` là số âm, vì hầu hết các phương thức khác trong Godot đều giả định rằng các thành phần của :ref:`size<class_AABB_property_size>` lớn hơn ``0``.
 
 .. rst-class:: classref-item-separator
 
@@ -276,7 +276,7 @@ Returns an **AABB** equivalent to this bounding box, with its width, height, and
 
 :ref:`bool<class_bool>` **encloses**\ (\ with\: :ref:`AABB<class_AABB>`\ ) |const| :ref:`🔗<class_AABB_method_encloses>`
 
-Returns ``true`` if this bounding box *completely* encloses the ``with`` box. The edges of both boxes are included.
+Trả về ``true`` nếu hộp giới hạn này *hoàn toàn* bao quanh hộp ``with``. Các cạnh của cả hai hộp đều được tính.
 
 
 .. tabs::
@@ -287,9 +287,9 @@ Returns ``true`` if this bounding box *completely* encloses the ``with`` box. Th
     var b = AABB(Vector3(1, 1, 1), Vector3(3, 3, 3))
     var c = AABB(Vector3(2, 2, 2), Vector3(8, 8, 8))
 
-    print(a.encloses(a)) # Prints true
-    print(a.encloses(b)) # Prints true
-    print(a.encloses(c)) # Prints false
+    print(a.encloses(a)) # In ra true
+    print(a.encloses(b)) # In ra true
+    print(a.encloses(c)) # In ra false
 
  .. code-tab:: csharp
 
@@ -297,9 +297,9 @@ Returns ``true`` if this bounding box *completely* encloses the ``with`` box. Th
     var b = new Aabb(new Vector3(1, 1, 1), new Vector3(3, 3, 3));
     var c = new Aabb(new Vector3(2, 2, 2), new Vector3(8, 8, 8));
 
-    GD.Print(a.Encloses(a)); // Prints True
-    GD.Print(a.Encloses(b)); // Prints True
-    GD.Print(a.Encloses(c)); // Prints False
+    GD.Print(a.Encloses(a)); // In ra True
+    GD.Print(a.Encloses(b)); // In ra True
+    GD.Print(a.Encloses(c)); // In ra False
 
 
 
@@ -313,7 +313,7 @@ Returns ``true`` if this bounding box *completely* encloses the ``with`` box. Th
 
 :ref:`AABB<class_AABB>` **expand**\ (\ to_point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_AABB_method_expand>`
 
-Returns a copy of this bounding box expanded to align the edges with the given ``to_point``, if necessary.
+Trả về một bản sao của bounding box này được mở rộng để căn chỉnh các cạnh với ``to_point`` đã cho, nếu cần.
 
 
 .. tabs::
@@ -323,24 +323,24 @@ Returns a copy of this bounding box expanded to align the edges with the given `
     var box = AABB(Vector3(0, 0, 0), Vector3(5, 2, 5))
 
     box = box.expand(Vector3(10, 0, 0))
-    print(box.position) # Prints (0.0, 0.0, 0.0)
-    print(box.size)     # Prints (10.0, 2.0, 5.0)
+    print(box.position) # In ra (0.0, 0.0, 0.0)
+    print(box.size)     # In ra (10.0, 2.0, 5.0)
 
     box = box.expand(Vector3(-5, 0, 5))
-    print(box.position) # Prints (-5.0, 0.0, 0.0)
-    print(box.size)     # Prints (15.0, 2.0, 5.0)
+    print(box.position) # In ra (-5.0, 0.0, 0.0)
+    print(box.size)     # In ra (15.0, 2.0, 5.0)
 
  .. code-tab:: csharp
 
     var box = new Aabb(new Vector3(0, 0, 0), new Vector3(5, 2, 5));
 
     box = box.Expand(new Vector3(10, 0, 0));
-    GD.Print(box.Position); // Prints (0, 0, 0)
-    GD.Print(box.Size);     // Prints (10, 2, 5)
+    GD.Print(box.Position); // In ra (0, 0, 0)
+    GD.Print(box.Size);     // In ra (10, 2, 5)
 
     box = box.Expand(new Vector3(-5, 0, 5));
-    GD.Print(box.Position); // Prints (-5, 0, 0)
-    GD.Print(box.Size);     // Prints (15, 2, 5)
+    GD.Print(box.Position); // In ra (-5, 0, 0)
+    GD.Print(box.Size);     // In ra (15, 2, 5)
 
 
 
@@ -354,7 +354,7 @@ Returns a copy of this bounding box expanded to align the edges with the given `
 
 :ref:`Vector3<class_Vector3>` **get_center**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_center>`
 
-Returns the center point of the bounding box. This is the same as ``position + (size / 2.0)``.
+Trả về điểm trung tâm của hộp giới hạn. Giá trị này giống với ``position + (size / 2.0)``.
 
 .. rst-class:: classref-item-separator
 
@@ -366,7 +366,7 @@ Returns the center point of the bounding box. This is the same as ``position + (
 
 :ref:`Vector3<class_Vector3>` **get_endpoint**\ (\ idx\: :ref:`int<class_int>`\ ) |const| :ref:`🔗<class_AABB_method_get_endpoint>`
 
-Returns the position of one of the 8 vertices that compose this bounding box. With an ``idx`` of ``0`` this is the same as :ref:`position<class_AABB_property_position>`, and an ``idx`` of ``7`` is the same as :ref:`end<class_AABB_property_end>`.
+Trả về vị trí của một trong 8 đỉnh tạo thành hộp giới hạn này. Với ``idx`` là ``0``, giá trị này giống với :ref:`position<class_AABB_property_position>`, và ``idx`` là ``7`` thì giống với :ref:`end<class_AABB_property_end>`.
 
 .. rst-class:: classref-item-separator
 
@@ -378,7 +378,7 @@ Returns the position of one of the 8 vertices that compose this bounding box. Wi
 
 :ref:`Vector3<class_Vector3>` **get_longest_axis**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_longest_axis>`
 
-Returns the longest normalized axis of this bounding box's :ref:`size<class_AABB_property_size>`, as a :ref:`Vector3<class_Vector3>` (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`, :ref:`Vector3.UP<class_Vector3_constant_UP>`, or :ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
+Trả về trục chuẩn hóa dài nhất của :ref:`size<class_AABB_property_size>` của hộp giới hạn này, dưới dạng :ref:`Vector3<class_Vector3>` (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`, :ref:`Vector3.UP<class_Vector3_constant_UP>` hoặc :ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
 
 
 .. tabs::
@@ -387,21 +387,21 @@ Returns the longest normalized axis of this bounding box's :ref:`size<class_AABB
 
     var box = AABB(Vector3(0, 0, 0), Vector3(2, 4, 8))
 
-    print(box.get_longest_axis())       # Prints (0.0, 0.0, 1.0)
-    print(box.get_longest_axis_index()) # Prints 2
-    print(box.get_longest_axis_size())  # Prints 8.0
+    print(box.get_longest_axis())       # In ra (0.0, 0.0, 1.0)
+    print(box.get_longest_axis_index()) # In ra 2
+    print(box.get_longest_axis_size())  # In ra 8.0
 
  .. code-tab:: csharp
 
     var box = new Aabb(new Vector3(0, 0, 0), new Vector3(2, 4, 8));
 
-    GD.Print(box.GetLongestAxis());      // Prints (0, 0, 1)
-    GD.Print(box.GetLongestAxisIndex()); // Prints Z
-    GD.Print(box.GetLongestAxisSize());  // Prints 8
+    GD.Print(box.GetLongestAxis());      // In ra (0, 0, 1)
+    GD.Print(box.GetLongestAxisIndex()); // In ra Z
+    GD.Print(box.GetLongestAxisSize());  // In ra 8
 
 
 
-See also :ref:`get_longest_axis_index()<class_AABB_method_get_longest_axis_index>` and :ref:`get_longest_axis_size()<class_AABB_method_get_longest_axis_size>`.
+Xem thêm :ref:`get_longest_axis_index()<class_AABB_method_get_longest_axis_index>` và :ref:`get_longest_axis_size()<class_AABB_method_get_longest_axis_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -413,9 +413,9 @@ See also :ref:`get_longest_axis_index()<class_AABB_method_get_longest_axis_index
 
 :ref:`int<class_int>` **get_longest_axis_index**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_longest_axis_index>`
 
-Returns the index to the longest axis of this bounding box's :ref:`size<class_AABB_property_size>` (see :ref:`Vector3.AXIS_X<class_Vector3_constant_AXIS_X>`, :ref:`Vector3.AXIS_Y<class_Vector3_constant_AXIS_Y>`, and :ref:`Vector3.AXIS_Z<class_Vector3_constant_AXIS_Z>`).
+Trả về chỉ mục của trục dài nhất của :ref:`size<class_AABB_property_size>` của hộp bao này (xem :ref:`Vector3.AXIS_X<class_Vector3_constant_AXIS_X>`, :ref:`Vector3.AXIS_Y<class_Vector3_constant_AXIS_Y>` và :ref:`Vector3.AXIS_Z<class_Vector3_constant_AXIS_Z>`).
 
-For an example, see :ref:`get_longest_axis()<class_AABB_method_get_longest_axis>`.
+Để xem ví dụ, hãy xem :ref:`get_longest_axis()<class_AABB_method_get_longest_axis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -427,9 +427,9 @@ For an example, see :ref:`get_longest_axis()<class_AABB_method_get_longest_axis>
 
 :ref:`float<class_float>` **get_longest_axis_size**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_longest_axis_size>`
 
-Returns the longest dimension of this bounding box's :ref:`size<class_AABB_property_size>`.
+Trả về kích thước dài nhất của :ref:`size<class_AABB_property_size>` của hộp bao này.
 
-For an example, see :ref:`get_longest_axis()<class_AABB_method_get_longest_axis>`.
+Để xem ví dụ, hãy xem :ref:`get_longest_axis()<class_AABB_method_get_longest_axis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -441,7 +441,7 @@ For an example, see :ref:`get_longest_axis()<class_AABB_method_get_longest_axis>
 
 :ref:`Vector3<class_Vector3>` **get_shortest_axis**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_shortest_axis>`
 
-Returns the shortest normalized axis of this bounding box's :ref:`size<class_AABB_property_size>`, as a :ref:`Vector3<class_Vector3>` (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`, :ref:`Vector3.UP<class_Vector3_constant_UP>`, or :ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
+Trả về trục chuẩn hóa ngắn nhất của :ref:`size<class_AABB_property_size>` của bounding box này, dưới dạng :ref:`Vector3<class_Vector3>` (:ref:`Vector3.RIGHT<class_Vector3_constant_RIGHT>`, :ref:`Vector3.UP<class_Vector3_constant_UP>` hoặc :ref:`Vector3.BACK<class_Vector3_constant_BACK>`).
 
 
 .. tabs::
@@ -450,21 +450,21 @@ Returns the shortest normalized axis of this bounding box's :ref:`size<class_AAB
 
     var box = AABB(Vector3(0, 0, 0), Vector3(2, 4, 8))
 
-    print(box.get_shortest_axis())       # Prints (1.0, 0.0, 0.0)
-    print(box.get_shortest_axis_index()) # Prints 0
-    print(box.get_shortest_axis_size())  # Prints 2.0
+    print(box.get_shortest_axis())       # In ra (1.0, 0.0, 0.0)
+    print(box.get_shortest_axis_index()) # In ra 0
+    print(box.get_shortest_axis_size())  # In ra 2.0
 
  .. code-tab:: csharp
 
     var box = new Aabb(new Vector3(0, 0, 0), new Vector3(2, 4, 8));
 
-    GD.Print(box.GetShortestAxis());      // Prints (1, 0, 0)
-    GD.Print(box.GetShortestAxisIndex()); // Prints X
-    GD.Print(box.GetShortestAxisSize());  // Prints 2
+    GD.Print(box.GetShortestAxis());      // In ra (1, 0, 0)
+    GD.Print(box.GetShortestAxisIndex()); // In ra X
+    GD.Print(box.GetShortestAxisSize());  // In ra 2
 
 
 
-See also :ref:`get_shortest_axis_index()<class_AABB_method_get_shortest_axis_index>` and :ref:`get_shortest_axis_size()<class_AABB_method_get_shortest_axis_size>`.
+Xem thêm :ref:`get_shortest_axis_index()<class_AABB_method_get_shortest_axis_index>` và :ref:`get_shortest_axis_size()<class_AABB_method_get_shortest_axis_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -476,9 +476,9 @@ See also :ref:`get_shortest_axis_index()<class_AABB_method_get_shortest_axis_ind
 
 :ref:`int<class_int>` **get_shortest_axis_index**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_shortest_axis_index>`
 
-Returns the index to the shortest axis of this bounding box's :ref:`size<class_AABB_property_size>` (see :ref:`Vector3.AXIS_X<class_Vector3_constant_AXIS_X>`, :ref:`Vector3.AXIS_Y<class_Vector3_constant_AXIS_Y>`, and :ref:`Vector3.AXIS_Z<class_Vector3_constant_AXIS_Z>`).
+Trả về chỉ số của trục ngắn nhất của :ref:`size<class_AABB_property_size>` của bounding box này (xem :ref:`Vector3.AXIS_X<class_Vector3_constant_AXIS_X>`, :ref:`Vector3.AXIS_Y<class_Vector3_constant_AXIS_Y>` và :ref:`Vector3.AXIS_Z<class_Vector3_constant_AXIS_Z>`).
 
-For an example, see :ref:`get_shortest_axis()<class_AABB_method_get_shortest_axis>`.
+Để xem ví dụ, hãy xem :ref:`get_shortest_axis()<class_AABB_method_get_shortest_axis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -490,9 +490,9 @@ For an example, see :ref:`get_shortest_axis()<class_AABB_method_get_shortest_axi
 
 :ref:`float<class_float>` **get_shortest_axis_size**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_shortest_axis_size>`
 
-Returns the shortest dimension of this bounding box's :ref:`size<class_AABB_property_size>`.
+Trả về kích thước ngắn nhất của :ref:`size<class_AABB_property_size>` của bounding box này.
 
-For an example, see :ref:`get_shortest_axis()<class_AABB_method_get_shortest_axis>`.
+Để xem ví dụ, hãy xem :ref:`get_shortest_axis()<class_AABB_method_get_shortest_axis>`.
 
 .. rst-class:: classref-item-separator
 
@@ -504,7 +504,7 @@ For an example, see :ref:`get_shortest_axis()<class_AABB_method_get_shortest_axi
 
 :ref:`Vector3<class_Vector3>` **get_support**\ (\ direction\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_AABB_method_get_support>`
 
-Returns the vertex's position of this bounding box that's the farthest in the given direction. This point is commonly known as the support point in collision detection algorithms.
+Trả về vị trí của đỉnh thuộc bounding box này nằm xa nhất theo hướng đã cho. Điểm này thường được gọi là support point trong các thuật toán phát hiện va chạm.
 
 .. rst-class:: classref-item-separator
 
@@ -516,7 +516,7 @@ Returns the vertex's position of this bounding box that's the farthest in the gi
 
 :ref:`float<class_float>` **get_volume**\ (\ ) |const| :ref:`🔗<class_AABB_method_get_volume>`
 
-Returns the bounding box's volume. This is equivalent to ``size.x * size.y * size.z``. See also :ref:`has_volume()<class_AABB_method_has_volume>`.
+Trả về thể tích của bounding box. Tương đương với ``size.x * size.y * size.z``. Xem thêm :ref:`has_volume()<class_AABB_method_has_volume>`.
 
 .. rst-class:: classref-item-separator
 
@@ -528,7 +528,7 @@ Returns the bounding box's volume. This is equivalent to ``size.x * size.y * siz
 
 :ref:`AABB<class_AABB>` **grow**\ (\ by\: :ref:`float<class_float>`\ ) |const| :ref:`🔗<class_AABB_method_grow>`
 
-Returns a copy of this bounding box extended on all sides by the given amount ``by``. A negative amount shrinks the box instead.
+Trả về một bản sao của bounding box này được mở rộng ở tất cả các mặt theo lượng đã cho ``by``. Nếu lượng này là số âm, hộp sẽ được thu nhỏ thay thế.
 
 
 .. tabs::
@@ -536,22 +536,22 @@ Returns a copy of this bounding box extended on all sides by the given amount ``
  .. code-tab:: gdscript
 
     var a = AABB(Vector3(4, 4, 4), Vector3(8, 8, 8)).grow(4)
-    print(a.position) # Prints (0.0, 0.0, 0.0)
-    print(a.size)     # Prints (16.0, 16.0, 16.0)
+    print(a.position) # In ra (0.0, 0.0, 0.0)
+    print(a.size)     # In ra (16.0, 16.0, 16.0)
 
     var b = AABB(Vector3(0, 0, 0), Vector3(8, 4, 2)).grow(2)
-    print(b.position) # Prints (-2.0, -2.0, -2.0)
-    print(b.size)     # Prints (12.0, 8.0, 6.0)
+    print(b.position) # In ra (-2.0, -2.0, -2.0)
+    print(b.size)     # In ra (12.0, 8.0, 6.0)
 
  .. code-tab:: csharp
 
     var a = new Aabb(new Vector3(4, 4, 4), new Vector3(8, 8, 8)).Grow(4);
-    GD.Print(a.Position); // Prints (0, 0, 0)
-    GD.Print(a.Size);     // Prints (16, 16, 16)
+    GD.Print(a.Position); // In ra (0, 0, 0)
+    GD.Print(a.Size);     // In ra (16, 16, 16)
 
     var b = new Aabb(new Vector3(0, 0, 0), new Vector3(8, 4, 2)).Grow(2);
-    GD.Print(b.Position); // Prints (-2, -2, -2)
-    GD.Print(b.Size);     // Prints (12, 8, 6)
+    GD.Print(b.Position); // In ra (-2, -2, -2)
+    GD.Print(b.Size);     // In ra (12, 8, 6)
 
 
 
@@ -565,9 +565,9 @@ Returns a copy of this bounding box extended on all sides by the given amount ``
 
 :ref:`bool<class_bool>` **has_point**\ (\ point\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_AABB_method_has_point>`
 
-Returns ``true`` if the bounding box contains the given ``point``. By convention, points exactly on the right, top, and front sides are **not** included.
+Trả về ``true`` nếu bounding box chứa ``point`` đã cho. Theo quy ước, các điểm nằm chính xác trên các mặt bên phải, trên và trước sẽ **không** được bao gồm.
 
-\ **Note:** This method is not reliable for **AABB** with a *negative* :ref:`size<class_AABB_property_size>`. Use :ref:`abs()<class_AABB_method_abs>` first to get a valid bounding box.
+\ **Lưu ý:** Phương thức này không đáng tin cậy đối với **AABB** có *âm* :ref:`size<class_AABB_property_size>`. Trước tiên, hãy sử dụng :ref:`abs()<class_AABB_method_abs>` để nhận bounding box hợp lệ.
 
 .. rst-class:: classref-item-separator
 
@@ -579,7 +579,7 @@ Returns ``true`` if the bounding box contains the given ``point``. By convention
 
 :ref:`bool<class_bool>` **has_surface**\ (\ ) |const| :ref:`🔗<class_AABB_method_has_surface>`
 
-Returns ``true`` if this bounding box has a surface or a length, that is, at least one component of :ref:`size<class_AABB_property_size>` is greater than ``0``. Otherwise, returns ``false``.
+Trả về ``true`` nếu bounding box này có một bề mặt hoặc độ dài, tức là ít nhất một thành phần của :ref:`size<class_AABB_property_size>` lớn hơn ``0``. Nếu không, trả về ``false``.
 
 .. rst-class:: classref-item-separator
 
@@ -591,7 +591,7 @@ Returns ``true`` if this bounding box has a surface or a length, that is, at lea
 
 :ref:`bool<class_bool>` **has_volume**\ (\ ) |const| :ref:`🔗<class_AABB_method_has_volume>`
 
-Returns ``true`` if this bounding box's width, height, and depth are all positive. See also :ref:`get_volume()<class_AABB_method_get_volume>`.
+Trả về ``true`` nếu chiều rộng, chiều cao và chiều sâu của bounding box này đều dương. Xem thêm :ref:`get_volume()<class_AABB_method_get_volume>`.
 
 .. rst-class:: classref-item-separator
 
@@ -603,7 +603,7 @@ Returns ``true`` if this bounding box's width, height, and depth are all positiv
 
 :ref:`AABB<class_AABB>` **intersection**\ (\ with\: :ref:`AABB<class_AABB>`\ ) |const| :ref:`🔗<class_AABB_method_intersection>`
 
-Returns the intersection between this bounding box and ``with``. If the boxes do not intersect, returns an empty **AABB**. If the boxes intersect at the edge, returns a flat **AABB** with no volume (see :ref:`has_surface()<class_AABB_method_has_surface>` and :ref:`has_volume()<class_AABB_method_has_volume>`).
+Trả về phần giao giữa hộp giới hạn này và ``with``. Nếu các hộp không giao nhau, trả về một **AABB** rỗng. Nếu các hộp giao nhau tại cạnh, trả về một **AABB** phẳng không có thể tích (xem :ref:`has_surface()<class_AABB_method_has_surface>` và :ref:`has_volume()<class_AABB_method_has_volume>`).
 
 
 .. tabs::
@@ -614,8 +614,8 @@ Returns the intersection between this bounding box and ``with``. If the boxes do
     var box2 = AABB(Vector3(2, 0, 2), Vector3(8, 4, 4))
 
     var intersection = box1.intersection(box2)
-    print(intersection.position) # Prints (2.0, 0.0, 2.0)
-    print(intersection.size)     # Prints (3.0, 2.0, 4.0)
+    print(intersection.position) # In ra (2.0, 0.0, 2.0)
+    print(intersection.size)     # In ra (3.0, 2.0, 4.0)
 
  .. code-tab:: csharp
 
@@ -623,12 +623,12 @@ Returns the intersection between this bounding box and ``with``. If the boxes do
     var box2 = new Aabb(new Vector3(2, 0, 2), new Vector3(8, 4, 4));
 
     var intersection = box1.Intersection(box2);
-    GD.Print(intersection.Position); // Prints (2, 0, 2)
-    GD.Print(intersection.Size);     // Prints (3, 2, 4)
+    GD.Print(intersection.Position); // In ra (2, 0, 2)
+    GD.Print(intersection.Size);     // In ra (3, 2, 4)
 
 
 
-\ **Note:** If you only need to know whether two bounding boxes are intersecting, use :ref:`intersects()<class_AABB_method_intersects>`, instead.
+\ **Lưu ý:** Nếu bạn chỉ cần biết hai hộp giới hạn có giao nhau hay không, hãy sử dụng :ref:`intersects()<class_AABB_method_intersects>`.
 
 .. rst-class:: classref-item-separator
 
@@ -640,7 +640,7 @@ Returns the intersection between this bounding box and ``with``. If the boxes do
 
 :ref:`bool<class_bool>` **intersects**\ (\ with\: :ref:`AABB<class_AABB>`\ ) |const| :ref:`🔗<class_AABB_method_intersects>`
 
-Returns ``true`` if this bounding box overlaps with the box ``with``. The edges of both boxes are *always* excluded.
+Trả về ``true`` nếu hộp giới hạn này chồng lên hộp ``with``. Các cạnh của cả hai hộp *luôn* bị loại trừ.
 
 .. rst-class:: classref-item-separator
 
@@ -652,7 +652,7 @@ Returns ``true`` if this bounding box overlaps with the box ``with``. The edges 
 
 :ref:`bool<class_bool>` **intersects_plane**\ (\ plane\: :ref:`Plane<class_Plane>`\ ) |const| :ref:`🔗<class_AABB_method_intersects_plane>`
 
-Returns ``true`` if this bounding box is on both sides of the given ``plane``.
+Trả về ``true`` nếu hộp giới hạn này nằm ở cả hai phía của ``plane`` đã cho.
 
 .. rst-class:: classref-item-separator
 
@@ -664,9 +664,9 @@ Returns ``true`` if this bounding box is on both sides of the given ``plane``.
 
 :ref:`Variant<class_Variant>` **intersects_ray**\ (\ from\: :ref:`Vector3<class_Vector3>`, dir\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_AABB_method_intersects_ray>`
 
-Returns the first point where this bounding box and the given ray intersect, as a :ref:`Vector3<class_Vector3>`. If no intersection occurs, returns ``null``.
+Trả về điểm đầu tiên mà hộp giới hạn này và tia đã cho giao nhau, dưới dạng :ref:`Vector3<class_Vector3>`. Nếu không xảy ra giao nhau, trả về ``null``.
 
-The ray begin at ``from``, faces ``dir`` and extends towards infinity.
+Tia bắt đầu tại ``from``, hướng về ``dir`` và kéo dài đến vô hạn.
 
 .. rst-class:: classref-item-separator
 
@@ -678,9 +678,9 @@ The ray begin at ``from``, faces ``dir`` and extends towards infinity.
 
 :ref:`Variant<class_Variant>` **intersects_segment**\ (\ from\: :ref:`Vector3<class_Vector3>`, to\: :ref:`Vector3<class_Vector3>`\ ) |const| :ref:`🔗<class_AABB_method_intersects_segment>`
 
-Returns the first point where this bounding box and the given segment intersect, as a :ref:`Vector3<class_Vector3>`. If no intersection occurs, returns ``null``.
+Trả về điểm đầu tiên mà hộp giới hạn này và đoạn thẳng đã cho giao nhau, dưới dạng :ref:`Vector3<class_Vector3>`. Nếu không xảy ra giao nhau, trả về ``null``.
 
-The segment begins at ``from`` and ends at ``to``.
+Đoạn thẳng bắt đầu tại ``from`` và kết thúc tại ``to``.
 
 .. rst-class:: classref-item-separator
 
@@ -692,7 +692,7 @@ The segment begins at ``from`` and ends at ``to``.
 
 :ref:`bool<class_bool>` **is_equal_approx**\ (\ aabb\: :ref:`AABB<class_AABB>`\ ) |const| :ref:`🔗<class_AABB_method_is_equal_approx>`
 
-Returns ``true`` if this bounding box and ``aabb`` are approximately equal, by calling :ref:`Vector3.is_equal_approx()<class_Vector3_method_is_equal_approx>` on the :ref:`position<class_AABB_property_position>` and the :ref:`size<class_AABB_property_size>`.
+Trả về ``true`` nếu các giá trị của hộp giới hạn này và ``aabb`` xấp xỉ bằng nhau, bằng cách gọi :ref:`Vector3.is_equal_approx()<class_Vector3_method_is_equal_approx>` trên :ref:`position<class_AABB_property_position>` và :ref:`size<class_AABB_property_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -704,7 +704,7 @@ Returns ``true`` if this bounding box and ``aabb`` are approximately equal, by c
 
 :ref:`bool<class_bool>` **is_finite**\ (\ ) |const| :ref:`🔗<class_AABB_method_is_finite>`
 
-Returns ``true`` if this bounding box's values are finite, by calling :ref:`Vector3.is_finite()<class_Vector3_method_is_finite>` on the :ref:`position<class_AABB_property_position>` and the :ref:`size<class_AABB_property_size>`.
+Trả về ``true`` nếu các giá trị của hộp giới hạn này là hữu hạn, bằng cách gọi :ref:`Vector3.is_finite()<class_Vector3_method_is_finite>` trên :ref:`position<class_AABB_property_position>` và :ref:`size<class_AABB_property_size>`.
 
 .. rst-class:: classref-item-separator
 
@@ -716,7 +716,7 @@ Returns ``true`` if this bounding box's values are finite, by calling :ref:`Vect
 
 :ref:`AABB<class_AABB>` **merge**\ (\ with\: :ref:`AABB<class_AABB>`\ ) |const| :ref:`🔗<class_AABB_method_merge>`
 
-Returns an **AABB** that encloses both this bounding box and ``with`` around the edges. See also :ref:`encloses()<class_AABB_method_encloses>`.
+Trả về một **AABB** bao quanh cả bounding box này và ``with`` quanh các cạnh. Xem thêm :ref:`encloses()<class_AABB_method_encloses>`.
 
 .. rst-class:: classref-section-separator
 
@@ -724,18 +724,18 @@ Returns an **AABB** that encloses both this bounding box and ``with`` around the
 
 .. rst-class:: classref-descriptions-group
 
-Operator Descriptions
----------------------
+Mô tả toán tử
+-------------
 
 .. _class_AABB_operator_neq_AABB:
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`AABB<class_AABB>`\ ) :ref:`🔗<class_AABB_operator_neq_AABB>`
+:ref:`bool<class_bool>` **operator !=**\ (\ right\: :ref:`AABB<class_AABB>`\ ) :ref:`🔗 <class_AABB_operator_neq_AABB>`
 
-Returns ``true`` if the :ref:`position<class_AABB_property_position>` or :ref:`size<class_AABB_property_size>` of both bounding boxes are not equal.
+Trả về ``true`` nếu :ref:`position<class_AABB_property_position>` hoặc :ref:`size<class_AABB_property_size>` của cả hai bounding box không bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_AABB_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác của số dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_AABB_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
 .. rst-class:: classref-item-separator
 
@@ -745,13 +745,13 @@ Returns ``true`` if the :ref:`position<class_AABB_property_position>` or :ref:`s
 
 .. rst-class:: classref-operator
 
-:ref:`AABB<class_AABB>` **operator ***\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗<class_AABB_operator_mul_Transform3D>`
+:ref:`AABB<class_AABB>` **operator ***\ (\ right\: :ref:`Transform3D<class_Transform3D>`\ ) :ref:`🔗 <class_AABB_operator_mul_Transform3D>`
 
-Inversely transforms (multiplies) the **AABB** by the given :ref:`Transform3D<class_Transform3D>` transformation matrix, under the assumption that the transformation basis is orthonormal (i.e. rotation/reflection is fine, scaling/skew is not).
+Biến đổi ngược (nhân) **AABB** bằng ma trận biến đổi :ref:`Transform3D<class_Transform3D>` đã cho, với giả định rằng cơ sở biến đổi là trực chuẩn (tức là phép xoay/phản chiếu được chấp nhận, còn phép co giãn/xiên thì không).
 
-\ ``aabb * transform`` is equivalent to ``transform.inverse() * aabb``. See :ref:`Transform3D.inverse()<class_Transform3D_method_inverse>`.
+\ ``aabb * transform`` tương đương với ``transform.inverse() * aabb``. Xem :ref:`Transform3D.inverse()<class_Transform3D_method_inverse>`.
 
-For transforming by inverse of an affine transformation (e.g. with scaling) ``transform.affine_inverse() * aabb`` can be used instead. See :ref:`Transform3D.affine_inverse()<class_Transform3D_method_affine_inverse>`.
+Để biến đổi theo phép nghịch đảo của một phép biến đổi affine (ví dụ: có scaling), có thể sử dụng ``transform.affine_inverse() * aabb`` thay thế. Xem :ref:`Transform3D.affine_inverse()<class_Transform3D_method_affine_inverse>`.
 
 .. rst-class:: classref-item-separator
 
@@ -761,18 +761,18 @@ For transforming by inverse of an affine transformation (e.g. with scaling) ``tr
 
 .. rst-class:: classref-operator
 
-:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`AABB<class_AABB>`\ ) :ref:`🔗<class_AABB_operator_eq_AABB>`
+:ref:`bool<class_bool>` **operator ==**\ (\ right\: :ref:`AABB<class_AABB>`\ ) :ref:`🔗 <class_AABB_operator_eq_AABB>`
 
-Returns ``true`` if both :ref:`position<class_AABB_property_position>` and :ref:`size<class_AABB_property_size>` of the bounding boxes are exactly equal, respectively.
+Trả về ``true`` nếu cả :ref:`position<class_AABB_property_position>` và :ref:`size<class_AABB_property_size>` của các bounding box lần lượt hoàn toàn bằng nhau.
 
-\ **Note:** Due to floating-point precision errors, consider using :ref:`is_equal_approx()<class_AABB_method_is_equal_approx>` instead, which is more reliable.
+\ **Lưu ý:** Do lỗi độ chính xác của số dấu phẩy động, hãy cân nhắc sử dụng :ref:`is_equal_approx()<class_AABB_method_is_equal_approx>` thay thế vì cách này đáng tin cậy hơn.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có hiệu lực.)`
+.. |required| replace:: :abbr:`required (Bắt buộc phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Phương thức không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận thêm bất kỳ số lượng đối số nào sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được dùng để khởi tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần một instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask từ các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`

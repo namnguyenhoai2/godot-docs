@@ -10,27 +10,27 @@
 ResourceImporterBitMap
 ======================
 
-**Inherits:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
+**Kế thừa:** :ref:`ResourceImporter<class_ResourceImporter>` **<** :ref:`RefCounted<class_RefCounted>` **<** :ref:`Object<class_Object>`
 
-Imports a :ref:`BitMap<class_BitMap>` resource (2D array of boolean values).
-
-.. rst-class:: classref-introduction-group
-
-Description
------------
-
-:ref:`BitMap<class_BitMap>` resources are typically used as click masks in :ref:`TextureButton<class_TextureButton>` and :ref:`TouchScreenButton<class_TouchScreenButton>`.
+Nhập một tài nguyên :ref:`BitMap<class_BitMap>` (mảng 2D gồm các giá trị boolean).
 
 .. rst-class:: classref-introduction-group
 
-Tutorials
+Mô tả
+-----
+
+Các tài nguyên :ref:`BitMap<class_BitMap>` thường được sử dụng làm mặt nạ nhấp chuột trong :ref:`TextureButton<class_TextureButton>` và :ref:`TouchScreenButton<class_TouchScreenButton>`.
+
+.. rst-class:: classref-introduction-group
+
+Hướng dẫn
 ---------
 
-- :doc:`Importing images <../tutorials/assets_pipeline/importing_images>`
+- :doc:`Nhập hình ảnh <../tutorials/assets_pipeline/importing_images>`
 
 .. rst-class:: classref-reftable-group
 
-Properties
+Thuộc tính
 ----------
 
 .. table::
@@ -48,8 +48,8 @@ Properties
 
 .. rst-class:: classref-descriptions-group
 
-Property Descriptions
----------------------
+Mô tả thuộc tính
+----------------
 
 .. _class_ResourceImporterBitMap_property_create_from:
 
@@ -57,11 +57,11 @@ Property Descriptions
 
 :ref:`int<class_int>` **create_from** = ``0`` :ref:`🔗<class_ResourceImporterBitMap_property_create_from>`
 
-The data source to use for generating the bitmap.
+Nguồn dữ liệu được sử dụng để tạo bitmap.
 
-\ **Black & White:** Pixels whose HSV value is greater than the :ref:`threshold<class_ResourceImporterBitMap_property_threshold>` will be considered as "enabled" (bit is ``true``). If the pixel is lower than or equal to the threshold, it will be considered as "disabled" (bit is ``false``).
+\ **Black & White:** Các pixel có giá trị HSV lớn hơn :ref:`threshold<class_ResourceImporterBitMap_property_threshold>` sẽ được xem là "được bật" (bit là ``true``). Nếu pixel nhỏ hơn hoặc bằng ngưỡng, nó sẽ được xem là "bị tắt" (bit là ``false``).
 
-\ **Alpha:** Pixels whose alpha value is greater than the :ref:`threshold<class_ResourceImporterBitMap_property_threshold>` will be considered as "enabled" (bit is ``true``). If the pixel is lower than or equal to the threshold, it will be considered as "disabled" (bit is ``false``).
+\ **Alpha:** Các pixel có giá trị alpha lớn hơn :ref:`threshold<class_ResourceImporterBitMap_property_threshold>` sẽ được xem là "được bật" (bit là ``true``). Nếu pixel nhỏ hơn hoặc bằng ngưỡng, nó sẽ được xem là "bị tắt" (bit là ``false``).
 
 .. rst-class:: classref-item-separator
 
@@ -73,14 +73,14 @@ The data source to use for generating the bitmap.
 
 :ref:`float<class_float>` **threshold** = ``0.5`` :ref:`🔗<class_ResourceImporterBitMap_property_threshold>`
 
-The threshold to use to determine which bits should be considered enabled or disabled. See also :ref:`create_from<class_ResourceImporterBitMap_property_create_from>`.
+Ngưỡng được sử dụng để xác định các bit nào được xem là bật hoặc tắt. Xem thêm :ref:`create_from<class_ResourceImporterBitMap_property_create_from>`.
 
-.. |virtual| replace:: :abbr:`virtual (This method should typically be overridden by the user to have any effect.)`
-.. |required| replace:: :abbr:`required (This method is required to be overridden when extending its base class.)`
-.. |const| replace:: :abbr:`const (This method has no side effects. It doesn't modify any of the instance's member variables.)`
-.. |vararg| replace:: :abbr:`vararg (This method accepts any number of arguments after the ones described here.)`
-.. |constructor| replace:: :abbr:`constructor (This method is used to construct a type.)`
-.. |static| replace:: :abbr:`static (This method doesn't need an instance to be called, so it can be called directly using the class name.)`
-.. |operator| replace:: :abbr:`operator (This method describes a valid operator to use with this type as left-hand operand.)`
-.. |bitfield| replace:: :abbr:`BitField (This value is an integer composed as a bitmask of the following flags.)`
-.. |void| replace:: :abbr:`void (No return value.)`
+.. |virtual| replace:: :abbr:`virtual (Thông thường, người dùng nên ghi đè phương thức này để nó có tác dụng.)`
+.. |required| replace:: :abbr:`required (Phải ghi đè phương thức này khi mở rộng lớp cơ sở của nó.)`
+.. |const| replace:: :abbr:`const (Phương thức này không có tác dụng phụ. Nó không sửa đổi bất kỳ biến thành viên nào của instance.)`
+.. |vararg| replace:: :abbr:`vararg (Phương thức này chấp nhận số lượng đối số bất kỳ sau các đối số được mô tả ở đây.)`
+.. |constructor| replace:: :abbr:`constructor (Phương thức này được sử dụng để tạo một kiểu.)`
+.. |static| replace:: :abbr:`static (Phương thức này không cần instance để được gọi, vì vậy có thể gọi trực tiếp bằng tên lớp.)`
+.. |operator| replace:: :abbr:`operator (Phương thức này mô tả một toán tử hợp lệ để sử dụng với kiểu này làm toán hạng bên trái.)`
+.. |bitfield| replace:: :abbr:`BitField (Giá trị này là một số nguyên được tạo thành dưới dạng bitmask của các cờ sau.)`
+.. |void| replace:: :abbr:`void (Không có giá trị trả về.)`
